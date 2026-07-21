@@ -1,0 +1,2252 @@
+<!--
+  PAC·DART — Treino de digitação que ensina Dart & Flutter
+  Currículo progressivo (Iniciante → Intermediário → Avançado → Flutter)
+  com Pac-Man comendo o código, syntax highlight e narração por voz.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PAC·DART — Treino de digitação Dart & Flutter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100;300;400;500;600;700&family=Funnel+Display:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* ===== Mixart Design System — tokens (Brandguide V1.0 · CADMO 2026) ===== */
+    --color-bg:#010101;              /* Preto (nunca #000000) */
+    --color-surface:#0F0F0F;         /* cards, sheets, tiles */
+    --color-surface-hi:#1F1F1F;      /* chips, inputs aninhados, pills secundárias */
+    --color-text:#F4F1EA;            /* Off-White */
+    --color-text-muted:#9CA3AF;
+    --color-text-faint:#6B7280;
+    --color-text-hint:#4B5563;
+    --color-brand:#FFC73B;           /* Amarelo Mixart (protagonista) */
+    --color-on-brand:#010101;        /* sobre amarelo, texto/ícone SEMPRE preto */
+    --color-brand-on-light:#CF9A12;
+    --color-brand-sub:rgba(255,199,59,.08);
+    --color-brand-dim:rgba(255,199,59,.45);
+    --color-border:#1F1F1F;
+    --color-danger:#F2555A;          /* erro / curtir / sair = vermelho */
+
+    --radius-lg:18px; --radius-md:16px; --radius-chip:24px; --radius-pill:999px;
+    --ease-spring:cubic-bezier(.16,1,.3,1);
+    --ease-slide:cubic-bezier(.4,0,.2,1);
+
+    --font-display:'Funnel Display',system-ui,sans-serif;
+    --font-ui:'Archivo',system-ui,-apple-system,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+
+    /* código — monocromático com disciplina no amarelo (nada de arco-íris) */
+    --kw:var(--color-brand);
+    --type:var(--color-text);
+    --fn:var(--color-text);
+    --str:var(--color-text-muted);
+    --num:var(--color-text-muted);
+    --punct:var(--color-text-faint);
+    --op:var(--color-text-faint);
+    --cmt:var(--color-text-hint);
+    --id:var(--color-text);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--color-bg);
+    color:var(--color-text);
+    font-family:var(--font-ui);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:24px 20px 48px}
+
+  /* motivo das barras — final de compasso (fino · vão largo · fino · vão estreito · largo) */
+  .bars{display:inline-flex;align-items:flex-end;height:.72em;line-height:0}
+  .bars i{display:block;width:2px;height:100%;background:var(--color-brand);border-radius:1px}
+  .bars i:nth-child(1){margin-right:5px}
+  .bars i:nth-child(2){margin-right:2px}
+  .bars i:nth-child(3){width:5px}
+
+  .kicker{
+    display:inline-flex;align-items:center;gap:8px;margin:5px 0 0;
+    font-family:var(--font-ui);font-size:.6875rem;font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--color-brand);
+  }
+
+  /* ---------- HUD ---------- */
+  .hud{
+    display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 18px;
+    background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);
+  }
+  .brand{display:flex;align-items:center;gap:14px;margin-right:auto}
+  .brand .logo{
+    width:38px;height:38px;border-radius:50%;background:var(--color-brand);
+    clip-path:polygon(100% 22%,42% 50%,100% 78%,100% 100%,0 100%,0 0,100% 0);
+    animation:chomp .34s linear infinite alternate;position:relative;flex:none;
+  }
+  .brand .logo::after{content:"";position:absolute;top:7px;left:16px;width:4px;height:4px;border-radius:50%;background:var(--color-bg)}
+  .brand h1{font-family:var(--font-display);font-weight:700;font-size:1.7rem;letter-spacing:-.02em;margin:0;line-height:1;color:var(--color-text)}
+  .brand h1 .dot{color:var(--color-brand)}
+
+  .stats{display:flex;gap:10px;flex-wrap:wrap}
+  .stat{min-width:74px;padding:10px 12px;border-radius:var(--radius-md);background:var(--color-surface-hi);border:1px solid var(--color-border);text-align:center}
+  .stat .k{font-family:var(--font-ui);font-size:10px;font-weight:600;color:var(--color-text-muted);letter-spacing:.08em;text-transform:uppercase}
+  .stat .v{font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin-top:5px;color:var(--color-text);letter-spacing:-.01em}
+  .stat.sco .v{color:var(--color-brand)}
+  .stat.err .v{color:var(--color-danger)}
+
+  .toggles{display:flex;gap:8px;flex:none}
+  .tgl{
+    height:40px;padding:0 14px;border-radius:var(--radius-pill);cursor:pointer;display:flex;align-items:center;gap:8px;
+    background:var(--color-surface-hi);border:1px solid var(--color-border);color:var(--color-text-muted);
+    font-family:var(--font-ui);font-size:13px;font-weight:500;transition:.15s var(--ease-slide);white-space:nowrap;
+  }
+  .tgl:hover{color:var(--color-text);border-color:var(--color-brand-dim)}
+  .tgl.on{color:var(--color-on-brand);background:var(--color-brand);border-color:var(--color-brand);font-weight:700}
+  .tgl .ic{display:inline-flex}
+  .tgl .ic svg{width:17px;height:17px;display:block}
+
+  /* ---------- Níveis (chips pill) ---------- */
+  .niveis{display:flex;gap:8px;margin:18px 0 10px;flex-wrap:wrap}
+  .niv{
+    display:flex;align-items:center;gap:9px;padding:10px 16px;border-radius:var(--radius-pill);cursor:pointer;
+    background:var(--color-surface);border:1px solid var(--color-border);color:var(--color-text-muted);
+    font-family:var(--font-ui);font-size:13px;font-weight:600;transition:.15s var(--ease-slide);
+  }
+  .niv .em{font-size:15px}
+  .niv small{font-size:10px;font-weight:400;color:var(--color-text-faint)}
+  .niv:hover{color:var(--color-text);border-color:var(--color-brand-dim)}
+  .niv[aria-selected="true"]{color:var(--color-on-brand);background:var(--color-brand);border-color:var(--color-brand);font-weight:700}
+  .niv[aria-selected="true"] small{color:rgba(1,1,1,.62)}
+
+  /* ---------- Lições (chips pill) ---------- */
+  .licoes{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+  .lic{
+    display:flex;align-items:center;gap:7px;padding:8px 14px;border-radius:var(--radius-pill);cursor:pointer;
+    background:var(--color-surface);border:1px solid var(--color-border);color:var(--color-text-muted);
+    font-family:var(--font-ui);font-size:12.5px;font-weight:500;transition:.15s var(--ease-slide);
+  }
+  .lic .em{font-size:14px;filter:grayscale(.5);transition:.15s}
+  .lic:hover{color:var(--color-text);border-color:var(--color-brand-dim)}
+  .lic[aria-selected="true"]{color:var(--color-on-brand);background:var(--color-brand);border-color:var(--color-brand);font-weight:700}
+  .lic[aria-selected="true"] .em{filter:none}
+  .lic .chk{color:var(--color-brand);font-weight:800}
+  .lic[aria-selected="true"] .chk{color:var(--color-on-brand)}
+
+  /* ---------- Palco (card) ---------- */
+  .palco{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:20px;position:relative;box-shadow:0 24px 60px -30px rgba(0,0,0,.9)}
+
+  /* dica — highlight banner: tint 8% + borda amarela + ícone circular amarelo (glifo preto) */
+  .dica{
+    display:flex;gap:12px;align-items:flex-start;padding:12px 14px;margin-bottom:16px;
+    background:var(--color-brand-sub);border:1px solid var(--color-brand-dim);
+    border-radius:var(--radius-md);font-size:13.5px;line-height:1.55;color:var(--color-text);
+  }
+  .dica .lamp{flex:none;width:28px;height:28px;border-radius:50%;background:var(--color-brand);display:grid;place-items:center;color:var(--color-on-brand)}
+  .dica .lamp svg{width:16px;height:16px;display:block}
+  .dica .txt{flex:1;padding-top:3px}
+  .dica b{color:var(--color-text);font-weight:700}
+  .dica code{color:var(--color-brand);font-family:var(--mono);background:var(--color-surface-hi);padding:1px 6px;border-radius:6px;font-size:.92em}
+  .dica .ouvir{
+    flex:none;width:30px;height:30px;border-radius:50%;cursor:pointer;display:grid;place-items:center;
+    background:var(--color-surface-hi);border:1px solid var(--color-border);color:var(--color-brand);transition:.15s var(--ease-slide);
+  }
+  .dica .ouvir svg{width:16px;height:16px;display:block}
+  .dica .ouvir:hover{background:var(--color-brand);color:var(--color-on-brand);border-color:var(--color-brand)}
+  .dica .ouvir.falando{animation:pulse 1s ease infinite}
+  @keyframes pulse{50%{transform:scale(1.12)}}
+
+  /* tela de código (terminal sobre o preto) */
+  .tela{position:relative;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:26px 26px 26px 30px;overflow:hidden}
+  .tela::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--color-brand-dim)}
+  #codigo{position:relative;z-index:1;font-family:var(--mono);font-size:22px;line-height:2.05;white-space:pre-wrap;word-break:break-word;letter-spacing:.3px;caret-color:transparent}
+
+  .ch{position:relative;transition:color .12s,opacity .12s}
+  .tok-kw{color:var(--kw);font-weight:700} .tok-type{color:var(--type);font-weight:600} .tok-str{color:var(--str)}
+  .tok-num{color:var(--num)} .tok-fn{color:var(--fn)} .tok-punct{color:var(--punct)}
+  .tok-op{color:var(--op)} .tok-cmt{color:var(--cmt);font-style:italic} .tok-id{color:var(--id)} .tok-plain{color:var(--id)}
+  .ch.done{color:var(--color-text-hint)!important;opacity:.6;font-weight:400!important}
+  .ch.err{color:#fff!important;background:var(--color-danger);border-radius:4px;animation:shake .22s}
+  .ch.cur{background:var(--color-brand-sub);border-radius:4px;box-shadow:0 0 0 1px var(--color-brand-dim)}
+  .ch.sp.pend::before{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;transform:translate(-50%,-50%);border-radius:50%;background:var(--color-text-hint)}
+  .ch.sp.done::before{content:none}
+  .ch.nl{color:var(--color-text-hint)} .ch.nl.done{opacity:.3}
+
+  #pac{
+    position:absolute;z-index:3;left:0;top:0;width:23px;height:23px;border-radius:50%;background:var(--color-brand);
+    clip-path:polygon(100% 22%,42% 50%,100% 78%,100% 100%,0 100%,0 0,100% 0);
+    animation:chomp .28s linear infinite alternate;transition:transform .09s linear;pointer-events:none;
+  }
+  #pac::after{content:"";position:absolute;top:4px;left:10px;width:3px;height:3px;border-radius:50%;background:var(--color-bg)}
+  #pac.win{animation:spin .6s ease}
+  @keyframes chomp{from{clip-path:polygon(100% 48%,42% 50%,100% 52%,100% 100%,0 100%,0 0,100% 0)}to{clip-path:polygon(100% 18%,42% 50%,100% 82%,100% 100%,0 100%,0 0,100% 0)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes shake{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+
+  #trap{position:absolute;opacity:0;inset:0;width:100%;height:100%;border:0;resize:none;cursor:text;font-size:16px}
+
+  .barra{display:flex;align-items:center;gap:14px;margin-top:16px;flex-wrap:wrap}
+  .prog{flex:1;min-width:160px}
+  .prog .lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--color-text-muted);margin-bottom:6px;font-weight:500}
+  .prog .track{height:8px;border-radius:var(--radius-pill);background:var(--color-surface-hi);border:1px solid var(--color-border);overflow:hidden}
+  .prog .fill{height:100%;width:0;border-radius:var(--radius-pill);background:var(--color-brand);transition:width .18s var(--ease-slide)}
+  .btn{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:var(--radius-pill);cursor:pointer;border:1px solid var(--color-border);background:var(--color-surface-hi);color:var(--color-text);font-family:var(--font-ui);font-size:13px;font-weight:500;transition:.15s var(--ease-slide)}
+  .btn:hover{border-color:var(--color-brand-dim);transform:translateY(-1px)}
+  .btn svg{width:15px;height:15px}
+
+  .console{margin-top:16px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:12px 14px;font-size:13px;min-height:46px;display:flex;flex-direction:column;gap:5px;transition:.2s}
+  .console .head{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--color-text-muted);font-family:var(--font-ui);font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+  .console .head .led{width:8px;height:8px;border-radius:50%;background:var(--color-text-hint)}
+  .console.ok .head .led{background:var(--color-brand)}
+  .console .row{font-family:var(--mono);color:var(--color-text-muted);white-space:pre-wrap}
+  .console .row.out{color:var(--color-text)}
+  .console .row .arrow{color:var(--color-brand)}
+  .console .idle{color:var(--color-text-hint);font-style:italic}
+  .console .row.proximo{margin-top:4px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+    font-family:var(--font-ui);font-weight:600;color:var(--color-brand);letter-spacing:.02em;
+    animation:blink 1.15s ease infinite;width:max-content;user-select:none}
+  .console .row.proximo .ent{display:inline-grid;place-items:center;min-width:22px;height:20px;padding:0 5px;
+    border:1px solid var(--color-brand-dim);border-radius:6px;font-family:var(--mono);font-size:12px;line-height:1}
+  .console .row.proximo .seta{transition:transform .15s var(--ease-slide)}
+  .console .row.proximo:hover{filter:brightness(1.12)}
+  .console .row.proximo:hover .seta{transform:translateX(3px)}
+  @keyframes blink{50%{opacity:.5}}
+
+  .over{position:absolute;inset:0;z-index:10;border-radius:var(--radius-lg);background:rgba(1,1,1,.93);backdrop-filter:blur(4px);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px}
+  .over.show{display:flex;animation:fade .3s var(--ease-spring)}
+  .over .big{font-family:var(--font-display);font-weight:700;font-size:1.9rem;letter-spacing:-.02em;color:var(--color-brand);margin:0 0 8px}
+  .over .sub{color:var(--color-text-muted);font-size:13px;margin-bottom:22px}
+  .over .scoreline{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:24px}
+  .over .sc{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:12px 18px;min-width:92px}
+  .over .sc .k{font-size:10px;color:var(--color-text-muted);font-family:var(--font-ui);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .over .sc .v{font-family:var(--font-display);font-weight:700;font-size:1.2rem;margin-top:6px;color:var(--color-text)}
+  .over .acts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .over .btn.prim{background:var(--color-brand);color:var(--color-on-brand);border-color:var(--color-brand);font-weight:700}
+  .over .btn.prim:hover{filter:brightness(1.06)}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .hint-mob{display:none;margin-top:12px;font-size:11.5px;color:var(--color-text-hint);text-align:center}
+  footer{margin-top:24px;text-align:center;color:var(--color-text-faint);font-size:11.5px;line-height:1.7}
+  footer .k{color:var(--color-text-muted);background:var(--color-surface-hi);border:1px solid var(--color-border);border-radius:6px;padding:1px 7px;font-family:var(--mono)}
+
+  /* ---------- Menu de navegação ---------- */
+  .menubar{display:flex;align-items:center;gap:10px;margin:18px 0 16px;flex-wrap:wrap}
+  .menu{position:relative}
+  .menu-btn{display:flex;align-items:center;gap:11px;padding:9px 14px 9px 12px;border-radius:var(--radius-md);cursor:pointer;
+    background:var(--color-surface);border:1px solid var(--color-border);color:var(--color-text);transition:.15s var(--ease-slide)}
+  .menu-btn:hover{border-color:var(--color-brand-dim)}
+  .menu.open .menu-btn{border-color:var(--color-brand);background:var(--color-surface-hi)}
+  .mb-ic{font-size:18px;line-height:1;flex:none}
+  .mb-tx{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15;min-width:0}
+  .mb-k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-text-faint);font-weight:600}
+  .mb-v{font-size:13.5px;font-weight:700;color:var(--color-text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:190px}
+  .mb-ch{width:16px;height:16px;flex:none;color:var(--color-text-faint);transition:.2s}
+  .menu.open .mb-ch{transform:rotate(180deg);color:var(--color-brand)}
+  .menu-pop{position:absolute;top:calc(100% + 8px);left:0;z-index:40;min-width:236px;
+    background:#141414;border:1px solid var(--color-border);border-radius:var(--radius-md);
+    box-shadow:0 24px 60px -24px rgba(0,0,0,.95);padding:7px;opacity:0;transform:translateY(-6px) scale(.98);
+    pointer-events:none;transition:.16s var(--ease-slide);max-height:62vh;overflow-y:auto}
+  .menu-pop.wide{min-width:312px}
+  .menu.open .menu-pop{opacity:1;transform:none;pointer-events:auto}
+  .menu-pop::-webkit-scrollbar{width:8px}.menu-pop::-webkit-scrollbar-thumb{background:#2a2a2a;border-radius:4px}
+  .mi{display:flex;align-items:center;gap:11px;padding:9px 11px;border-radius:10px;cursor:pointer;
+    color:var(--color-text-muted);font-family:var(--font-ui);font-size:13px;transition:.12s;border:1px solid transparent}
+  .mi:hover{background:var(--color-surface-hi);color:var(--color-text)}
+  .mi .mi-em{font-size:16px;flex:none;width:22px;text-align:center}
+  .mi .mi-nm{flex:1;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mi .mi-sub{font-size:10.5px;color:var(--color-text-faint);font-weight:400;flex:none}
+  .mi .mi-chk{color:var(--color-brand);font-weight:800;font-size:13px;flex:none}
+  .mi[aria-current="true"]{background:var(--color-brand);color:var(--color-on-brand);font-weight:700}
+  .mi[aria-current="true"] .mi-sub{color:rgba(1,1,1,.6)}
+  .mi[aria-current="true"] .mi-chk{color:var(--color-on-brand)}
+  .menu-spacer{flex:1}
+  .menu-count{font-family:var(--mono);font-size:11px;color:var(--color-text-faint);white-space:nowrap}
+  .menu-count b{color:var(--color-text-muted);font-weight:600}
+
+  /* ---------- Prévia Flutter (moldura de celular) ---------- */
+  .preview{margin-top:16px;background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);overflow:hidden}
+  .preview.reveal{animation:pvreveal .42s var(--ease-slide)}
+  @keyframes pvreveal{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+  .pv-head{display:flex;align-items:center;gap:9px;padding:9px 14px;border-bottom:1px solid var(--color-border);background:var(--color-surface)}
+  .pv-dots{display:flex;gap:5px}
+  .pv-dots i{width:9px;height:9px;border-radius:50%;display:block}
+  .pv-dots .r{background:#F2555A}.pv-dots .y{background:#FFC73B}.pv-dots .g{background:#3FB950}
+  .pv-name{font-family:var(--font-ui);font-size:12px;font-weight:600;color:var(--color-text-muted)}
+  .pv-tag{margin-left:auto;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    padding:3px 9px;border-radius:var(--radius-pill);background:rgba(63,185,80,.14);color:#5FC66E;border:1px solid rgba(63,185,80,.3)}
+  .pv-tag.concept{background:rgba(255,199,59,.13);color:var(--color-brand);border-color:rgba(255,199,59,.3)}
+  .phone{display:flex;justify-content:center;padding:22px 16px;background:radial-gradient(circle at 50% 0,rgba(255,255,255,.03),transparent 60%)}
+  .phone-scr{width:290px;min-height:210px;max-height:440px;overflow:auto;background:#FAFAFA;border-radius:22px;
+    border:7px solid #1b1b1b;box-shadow:0 0 0 1px #333,0 26px 50px -20px rgba(0,0,0,.9);
+    padding:18px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative;color:#212121;font-family:Roboto,system-ui}
+  .phone-scr::-webkit-scrollbar{width:6px}.phone-scr::-webkit-scrollbar-thumb{background:#cfcfcf;border-radius:3px}
+  .phone-scr.run{animation:pvrun .55s var(--ease-spring)}
+  @keyframes pvrun{0%{box-shadow:0 0 0 1px #333,0 0 0 3px rgba(255,199,59,.55),0 26px 50px -20px rgba(0,0,0,.9)}100%{box-shadow:0 0 0 1px #333,0 26px 50px -20px rgba(0,0,0,.9)}}
+  .phone-scr>*{max-width:100%}
+
+  /* ---------- Widgets renderizados (fv-*) ---------- */
+  .fv-btn{transition:filter .15s,transform .05s;position:relative;overflow:hidden}
+  .fv-btn:hover{filter:brightness(1.07)}.fv-btn:active{transform:translateY(1px)}
+  .fv-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.55);transform:scale(0);animation:fvrip .5s ease-out;pointer-events:none}
+  @keyframes fvrip{to{transform:scale(4);opacity:0}}
+  .fv-check{width:22px;height:22px;border-radius:4px;border:2px solid #78909C;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s;vertical-align:middle}
+  .fv-check.on{background:#1565C0;border-color:#1565C0}
+  .fv-switch{width:40px;height:22px;border-radius:11px;background:#B0BEC5;position:relative;display:inline-block;cursor:pointer;transition:.2s;vertical-align:middle}
+  .fv-switch.on{background:#90CAF9}
+  .fv-switch .fv-knob{position:absolute;top:2px;left:2px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.4);transition:.2s}
+  .fv-switch.on .fv-knob{left:20px;background:#1565C0}
+  .fv-radio{width:20px;height:20px;border-radius:50%;border:2px solid #78909C;display:inline-block;position:relative;cursor:pointer;vertical-align:middle}
+  .fv-radio.on{border-color:#1565C0}.fv-radio.on::after{content:"";position:absolute;inset:3px;border-radius:50%;background:#1565C0}
+  .fv-slider{display:inline-flex;align-items:center;width:150px;height:22px;position:relative;cursor:pointer;vertical-align:middle}
+  .fv-strack{position:absolute;left:0;right:0;height:4px;border-radius:2px;background:#CFD8DC}
+  .fv-sfill{display:block;height:100%;width:45%;border-radius:2px;background:#1565C0}
+  .fv-slider .fv-thumb{position:absolute;left:45%;width:16px;height:16px;border-radius:50%;background:#1565C0;box-shadow:0 1px 4px rgba(0,0,0,.4);transform:translateX(-50%)}
+  .fv-field{display:inline-block;min-width:150px;padding:10px 12px;border:1px solid #B0BEC5;border-radius:6px;color:#90A4AE;font:400 14px Roboto,system-ui;background:#fff}
+  .fv-spin{width:26px;height:26px;border:3px solid #BBDEFB;border-top-color:#1565C0;border-radius:50%;display:inline-block;animation:fvspin .8s linear infinite}
+  @keyframes fvspin{to{transform:rotate(360deg)}}
+  .fv-anim{border-radius:8px;cursor:pointer;width:var(--w1);height:var(--h1);transition:all .5s var(--ease-spring)}
+  .fv-anim.go{width:calc(var(--w1) * 1.7);height:calc(var(--h1) * .62);filter:hue-rotate(55deg)}
+  .fv-anim-op{cursor:pointer;transition:opacity .4s}.fv-anim-op.go{opacity:.22}
+  /* --- animações que "rodam" na conclusão --- */
+  .fv-check.on::after{content:"✓";color:#fff;font:700 15px system-ui;line-height:1}
+  @keyframes fvpop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+  @keyframes fvitem{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+  @keyframes fvdialog{0%{opacity:0;transform:scale(.8)}62%{transform:scale(1.03)}100%{opacity:1;transform:none}}
+  @keyframes fvdrawer{from{transform:translateX(-100%);opacity:.4}to{transform:none;opacity:1}}
+  @keyframes fvbar{from{transform:translateY(-110%);opacity:.4}to{transform:none;opacity:1}}
+  /* --- loops contínuos enquanto a prévia está aberta --- */
+  .fv-anim.loop{animation:fvAnimLoop 1.9s var(--ease-slide) infinite alternate}
+  @keyframes fvAnimLoop{from{width:var(--w1);height:var(--h1);filter:none}to{width:calc(var(--w1) * 1.7);height:calc(var(--h1) * .62);filter:hue-rotate(60deg)}}
+  .fv-anim-op.loop{animation:fvFadeLoop 1.5s ease-in-out infinite alternate}
+  @keyframes fvFadeLoop{from{opacity:1}to{opacity:.18}}
+  .fv-slider.loop .fv-sfill{animation:fvFill 2.6s var(--ease-slide) infinite alternate}
+  .fv-slider.loop .fv-thumb{animation:fvThumb 2.6s var(--ease-slide) infinite alternate}
+  @keyframes fvFill{from{width:8%}to{width:90%}}
+  @keyframes fvThumb{from{left:8%}to{left:90%}}
+
+  /* ---------- Cartão de conceito ---------- */
+  .fv-concept{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:6px}
+  .fv-cvis{min-height:52px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px}
+  .fv-ctitle{font:700 15px var(--font-ui,system-ui);color:#1565C0}
+  .fv-cdesc{font:400 12.5px var(--font-ui,system-ui);color:#607D8B;max-width:232px;line-height:1.45}
+  .fv-flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center}
+  .fv-node{background:#ECEFF1;border:1px solid #CFD8DC;border-radius:8px;padding:6px 10px;font:600 11px Roboto;color:#37474F;white-space:nowrap}
+  .fv-arrow{color:#90A4AE;font-weight:700}
+  .fv-screens{position:relative;width:130px;height:70px;overflow:hidden;border-radius:8px}
+  .fv-scr{position:absolute;inset:0;border-radius:8px;background:#E3F2FD;border:1px solid #90CAF9;display:flex;align-items:center;justify-content:center;font:600 12px Roboto;color:#1565C0}
+  .fv-scr2{background:#1565C0;color:#fff;border-color:#1565C0}
+  .fv-scr2.in{animation:scrin 1.6s var(--ease-slide) infinite}
+  .fv-scr2.out{animation:scrout 1.6s var(--ease-slide) infinite}
+  @keyframes scrin{0%,12%{transform:translateX(100%)}52%,88%{transform:translateX(0)}100%{transform:translateX(100%)}}
+  @keyframes scrout{0%,12%{transform:translateX(0)}52%,88%{transform:translateX(100%)}100%{transform:translateX(0)}}
+  .fv-varchip{background:#ECEFF1;border:1px solid #CFD8DC;border-radius:8px;padding:8px 14px;font:600 14px Roboto;color:#37474F;max-width:250px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .fv-varchip b{color:#1565C0}
+
+  @media (max-width:640px){
+    .menu{flex:1}.menu-btn{width:100%}.menu-pop,.menu-pop.wide{min-width:0;width:min(88vw,340px)}
+    .phone-scr{width:88%;max-width:290px}.menu-count{display:none}
+    .stat{min-width:60px;padding:8px} .stat .v{font-size:1rem}
+    #codigo{font-size:18px;line-height:2} #pac{width:19px;height:19px}
+    .tela{padding:20px 16px 20px 22px}
+    .niv small{display:none}
+    .hint-mob{display:block}
+    .toggles{width:100%}
+    .tgl{flex:1;justify-content:center}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .brand .logo,#pac{clip-path:polygon(100% 20%,42% 50%,100% 80%,100% 100%,0 100%,0 0,100% 0)}
+  }
+  :focus-visible{outline:2px solid var(--color-brand);outline-offset:2px}
+</style>
+
+<div class="wrap">
+  <div class="hud">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <h1>PAC<span class="dot">·</span>DART</h1>
+        <div class="kicker"><span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>Dart &amp; Flutter</div>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat sco"><div class="k">Score</div><div class="v" id="s-score">0</div></div>
+      <div class="stat"><div class="k">PPM</div><div class="v" id="s-wpm">0</div></div>
+      <div class="stat"><div class="k">Precisão</div><div class="v" id="s-acc">100%</div></div>
+      <div class="stat err"><div class="k">Erros</div><div class="v" id="s-err">0</div></div>
+      <div class="stat"><div class="k">Tempo</div><div class="v" id="s-time">0:00</div></div>
+    </div>
+    <div class="toggles">
+      <button class="tgl" id="tgl-voz" title="Narrar as explicações em voz"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span><span>Voz</span></button>
+      <button class="tgl" id="tgl-som" title="Sons de digitação"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg></span></button>
+    </div>
+  </div>
+
+  <div class="menubar">
+    <div class="menu" data-menu>
+      <button class="menu-btn" id="btn-trilha" aria-haspopup="true" aria-expanded="false">
+        <span class="mb-ic" id="tr-ic">🧩</span>
+        <span class="mb-tx"><span class="mb-k">Trilha</span><span class="mb-v" id="tr-nome">—</span></span>
+        <svg class="mb-ch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="menu-pop" id="pop-trilha" role="menu" aria-label="Escolha a trilha"></div>
+    </div>
+    <div class="menu" data-menu>
+      <button class="menu-btn" id="btn-licao" aria-haspopup="true" aria-expanded="false">
+        <span class="mb-ic" id="li-ic">📋</span>
+        <span class="mb-tx"><span class="mb-k">Lição</span><span class="mb-v" id="li-nome">—</span></span>
+        <svg class="mb-ch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="menu-pop wide" id="pop-licao" role="menu" aria-label="Escolha a lição"></div>
+    </div>
+    <div class="menu-spacer"></div>
+    <div class="menu-count" id="menu-count"></div>
+  </div>
+
+  <div class="palco">
+    <div class="dica">
+      <span class="lamp" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5"/></svg></span>
+      <span class="txt" id="dica-txt"></span>
+      <button class="ouvir" id="btn-ouvir" title="Ouvir a explicação" aria-label="Ouvir a explicação"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
+    </div>
+
+    <div class="tela" id="tela">
+      <div id="codigo" aria-live="off"></div>
+      <div id="pac" aria-hidden="true"></div>
+      <textarea id="trap" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-label="Área de digitação do código"></textarea>
+    </div>
+
+    <div class="barra">
+      <div class="prog">
+        <div class="lbl"><span id="p-lbl">Trecho</span><span id="p-num">1 / 1</span></div>
+        <div class="track"><div class="fill" id="p-fill"></div></div>
+      </div>
+      <button class="btn" id="btn-reset" title="Recomeçar este trecho">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        Recomeçar
+      </button>
+    </div>
+
+    <div class="preview" id="preview" hidden>
+      <div class="pv-head">
+        <span class="pv-dots"><i class="r"></i><i class="y"></i><i class="g"></i></span>
+        <span class="pv-name">Prévia Flutter</span>
+        <span class="pv-tag" id="pv-tag">ao vivo</span>
+      </div>
+      <div class="phone"><div class="phone-scr" id="phone-scr"></div></div>
+    </div>
+
+    <div class="console" id="console">
+      <div class="head"><span class="led"></span><span>CONSOLE</span></div>
+      <div class="row idle" id="console-body">Digite o código acima para compilar…</div>
+    </div>
+
+    <div class="hint-mob">A digitação de código funciona melhor num teclado físico.</div>
+
+    <div class="over" id="over">
+      <p class="big" id="over-big">LIÇÃO CONCLUÍDA!</p>
+      <p class="sub" id="over-sub"></p>
+      <div class="scoreline">
+        <div class="sc"><div class="k">PPM</div><div class="v" id="o-wpm">0</div></div>
+        <div class="sc"><div class="k">PRECISÃO</div><div class="v" id="o-acc">0%</div></div>
+        <div class="sc"><div class="k">SCORE</div><div class="v" id="o-score">0</div></div>
+      </div>
+      <div class="acts">
+        <button class="btn prim" id="o-next">Próxima lição →</button>
+        <button class="btn" id="o-again">Repetir</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <kbd class="k">Enter</kbd> pula linha · a indentação é comida sozinha ·
+    <kbd class="k">Backspace</kbd> corrige · clique na tela pra focar<br>
+    Treino de Dart &amp; Flutter · PPM = palavras por minuto (5 toques = 1 palavra)
+  </footer>
+</div>
+
+<script>
+/* ===== CURRÍCULO PAC·DART — Dart 3.12 & Flutter 3.44 (2026) =====
+   6 trilhas · baseado na documentação oficial (dart.dev / docs.flutter.dev) */
+const CURRICULO = [
+
+/* ========= TRILHA 1 — FUNDAMENTOS ========= */
+{ nivel:"Fundamentos", emoji:"🌱", licoes:[
+
+  { nome:"Variáveis", emoji:"📦", trechos:[
+    { cod:"var nome = 'Ana';", dica:"<b>var</b> deixa o Dart inferir o tipo pelo valor.", out:"nome = 'Ana'" },
+    { cod:"final pais = 'Brasil';", dica:"<b>final</b> não muda depois de definido.", out:"pais = 'Brasil'" },
+    { cod:"const pi = 3.14;", dica:"<b>const</b> é um valor fixo já na compilação.", out:"pi = 3.14" },
+    { cod:"int idade = 30;", dica:"Você também pode dizer o tipo direto, como <b>int</b>.", out:"idade = 30" },
+    { cod:"Object algo = 'oi';", dica:"<b>Object</b> é o tipo pai de tudo em Dart.", out:"algo = 'oi'" },
+    { cod:"late String titulo;", dica:"<b>late</b> adia a inicialização para depois.", out:"pronto pra receber" },
+    { cod:"var x = 1, y = 2;", dica:"Dá pra declarar várias variáveis numa linha.", out:"x = 1, y = 2" },
+    { cod:"dynamic livre = 10;", dica:"<b>dynamic</b> aceita qualquer tipo e pode trocar.", out:"livre = 10" },
+  ]},
+
+  { nome:"Inteiros", emoji:"🔢", trechos:[
+    { cod:"int n = 42;", dica:"<b>int</b> representa números inteiros.", out:"n = 42" },
+    { cod:"var soma = 3 + 4;", dica:"A soma comum entre inteiros.", out:"soma = 7" },
+    { cod:"var q = 17 ~/ 5;", dica:"<b>Barra-til</b> faz a divisão inteira.", out:"q = 3" },
+    { cod:"var grande = 1_000_000;", dica:"<b>Underscores</b> separam dígitos e facilitam a leitura.", out:"grande = 1000000" },
+    { cod:"var hex = 0xFF;", dica:"<b>0x</b> escreve o número em hexadecimal.", out:"hex = 255" },
+    { cod:"var par = 10.isEven;", dica:"<b>isEven</b> diz se o número é par.", out:"par = true" },
+    { cod:"var abs = (-8).abs();", dica:"<b>abs</b> devolve o valor absoluto.", out:"abs = 8" },
+    { cod:"var v = 5.clamp(1, 3);", dica:"<b>clamp</b> prende o valor dentro de um intervalo.", out:"v = 3" },
+  ]},
+
+  { nome:"Decimais", emoji:"💧", trechos:[
+    { cod:"double preco = 9.99;", dica:"<b>double</b> guarda números com casas decimais.", out:"preco = 9.99" },
+    { cod:"var meio = 1 / 2;", dica:"A divisão com barra sempre resulta em double.", out:"meio = 0.5" },
+    { cod:"var arred = 3.7.round();", dica:"<b>round</b> arredonda para o inteiro mais próximo.", out:"arred = 4" },
+    { cod:"var piso = 3.9.floor();", dica:"<b>floor</b> arredonda para baixo.", out:"piso = 3" },
+    { cod:"var teto = 3.1.ceil();", dica:"<b>ceil</b> arredonda para cima.", out:"teto = 4" },
+    { cod:"var f = 3.14159.toStringAsFixed(2);", dica:"<b>toStringAsFixed</b> limita as casas decimais.", out:"f = '3.14'" },
+    { cod:"num misto = 5;", dica:"<b>num</b> aceita tanto int quanto double.", out:"misto = 5" },
+    { cod:"var i = 9.9.toInt();", dica:"<b>toInt</b> corta a parte decimal.", out:"i = 9" },
+  ]},
+
+  { nome:"Booleanos", emoji:"✅", trechos:[
+    { cod:"bool ligado = true;", dica:"<b>bool</b> só pode ser verdadeiro ou falso.", out:"ligado = true" },
+    { cod:"var maior = 7 > 3;", dica:"Comparações devolvem um booleano.", out:"maior = true" },
+    { cod:"var e = true && false;", dica:"<b>E lógico</b> exige que os dois sejam verdadeiros.", out:"e = false" },
+    { cod:"var ou = false || true;", dica:"<b>Ou lógico</b> basta um ser verdadeiro.", out:"ou = true" },
+    { cod:"var nao = !true;", dica:"A <b>exclamação</b> inverte o valor.", out:"nao = false" },
+    { cod:"var difere = 4 != 5;", dica:"<b>Diferente de</b> compara desigualdade.", out:"difere = true" },
+    { cod:"var faixa = 5 > 0 && 5 < 10;", dica:"Você pode combinar comparações num teste só.", out:"faixa = true" },
+  ]},
+
+  { nome:"Operadores", emoji:"➕", trechos:[
+    { cod:"var soma = 5 + 3;", dica:"O <b>mais</b> soma dois números.", out:"soma = 8" },
+    { cod:"var resto = 10 % 3;", dica:"O <b>porcento</b> devolve o resto da divisão.", out:"resto = 1" },
+    { cod:"var c = 5;\nc += 2;", dica:"<b>Mais-igual</b> acumula no próprio lugar.", out:"c = 7" },
+    { cod:"var d = 10;\nd *= 3;", dica:"<b>Vezes-igual</b> multiplica e guarda.", out:"d = 30" },
+    { cod:"var i = 1;\ni++;", dica:"<b>Mais-mais</b> soma um à variável.", out:"i = 2" },
+    { cod:"var bit = 5 & 3;", dica:"O <b>E-comercial</b> faz E bit a bit.", out:"bit = 1" },
+    { cod:"var desl = 1 << 4;", dica:"<b>Menores</b> empurram os bits para a esquerda.", out:"desl = 16" },
+    { cod:"var t = 8 > 5 ? 'sim' : 'não';", dica:"O <b>ternário</b> escolhe entre dois valores.", out:"t = 'sim'" },
+  ]},
+
+  { nome:"Texto básico", emoji:"🔤", trechos:[
+    { cod:"var s = 'Olá';", dica:"Texto fica entre aspas simples.", out:"s = 'Olá'" },
+    { cod:"var d = \"aspas duplas\";", dica:"Aspas duplas também funcionam.", out:"d = 'aspas duplas'" },
+    { cod:"print('Oi, $nome');", dica:"O <b>cifrão</b> insere o valor de uma variável.", out:"Oi, Ana" },
+    { cod:"print('Soma: ${2 + 3}');", dica:"<b>Chaves</b> avaliam uma expressão dentro do texto.", out:"Soma: 5" },
+    { cod:"var junta = 'Dart' + '!';", dica:"O <b>mais</b> junta dois textos.", out:"junta = 'Dart!'" },
+    { cod:"var rep = 'ab' * 3;", dica:"O <b>vezes</b> repete o texto.", out:"rep = 'ababab'" },
+    { cod:"var tam = 'Flutter'.length;", dica:"<b>length</b> conta os caracteres.", out:"tam = 7" },
+    { cod:"var vazio = ''.isEmpty;", dica:"<b>isEmpty</b> checa se o texto está vazio.", out:"vazio = true" },
+  ]},
+
+  { nome:"Texto: métodos", emoji:"🔧", trechos:[
+    { cod:"var m = 'dart'.toUpperCase();", dica:"<b>toUpperCase</b> deixa tudo em maiúsculas.", out:"m = 'DART'" },
+    { cod:"var mi = 'DART'.toLowerCase();", dica:"<b>toLowerCase</b> deixa tudo em minúsculas.", out:"mi = 'dart'" },
+    { cod:"var tem = 'flutter'.contains('lut');", dica:"<b>contains</b> procura um pedaço no texto.", out:"tem = true" },
+    { cod:"var ini = 'flutter'.startsWith('fl');", dica:"<b>startsWith</b> checa o começo.", out:"ini = true" },
+    { cod:"var tr = 'aXa'.replaceAll('X', '-');", dica:"<b>replaceAll</b> troca todas as ocorrências.", out:"tr = 'a-a'" },
+    { cod:"var corte = ' oi '.trim();", dica:"<b>trim</b> remove os espaços das pontas.", out:"corte = 'oi'" },
+    { cod:"var sub = 'flutter'.substring(0, 4);", dica:"<b>substring</b> recorta por índice.", out:"sub = 'flut'" },
+    { cod:"var idx = 'abc'.indexOf('b');", dica:"<b>indexOf</b> acha a posição de um trecho.", out:"idx = 1" },
+    { cod:"var p = 'a,b,c'.split(',');", dica:"<b>split</b> quebra o texto numa lista.", out:"p = [a, b, c]" },
+  ]},
+
+  { nome:"Texto avançado", emoji:"📝", trechos:[
+    { cod:"var m = '''\nduas\nlinhas\n''';", dica:"<b>Três aspas</b> criam texto de várias linhas.", out:"duas linhas" },
+    { cod:"var raw = r'C:\\Users';", dica:"O <b>r</b> na frente ignora os escapes.", out:"raw = C:\\Users" },
+    { cod:"var buf = StringBuffer();\nbuf.write('oi');", dica:"<b>StringBuffer</b> monta textos grandes sem desperdício.", out:"'oi'" },
+    { cod:"var c = 'A'.codeUnitAt(0);", dica:"<b>codeUnitAt</b> pega o código do caractere.", out:"c = 65" },
+    { cod:"var pad = '7'.padLeft(3, '0');", dica:"<b>padLeft</b> completa à esquerda até um tamanho.", out:"pad = '007'" },
+    { cod:"var inv = 'abc'.split('').reversed.join();", dica:"Encadeie métodos para inverter um texto.", out:"inv = 'cba'" },
+    { cod:"var r = 'oi'.runes.toList();", dica:"<b>runes</b> lê os pontos Unicode do texto.", out:"r = [111, 105]" },
+  ]},
+
+  { nome:"Conversões", emoji:"🔄", trechos:[
+    { cod:"var n = int.parse('42');", dica:"<b>int.parse</b> lê um inteiro de um texto.", out:"n = 42" },
+    { cod:"var d = double.parse('3.14');", dica:"<b>double.parse</b> lê um decimal de um texto.", out:"d = 3.14" },
+    { cod:"var t = 42.toString();", dica:"<b>toString</b> transforma número em texto.", out:"t = '42'" },
+    { cod:"var s = int.tryParse('abc');", dica:"<b>tryParse</b> devolve null em vez de dar erro.", out:"s = null" },
+    { cod:"var j = [1, 2, 3].join('-');", dica:"<b>join</b> transforma uma lista em texto.", out:"j = '1-2-3'" },
+    { cod:"var l = 'a,b'.split(',');", dica:"Um texto vira lista com <b>split</b>.", out:"l = [a, b]" },
+    { cod:"var b = bool.parse('true');", dica:"<b>bool.parse</b> lê verdadeiro ou falso.", out:"b = true" },
+    { cod:"var f = 3.1416.toStringAsFixed(1);", dica:"Formate um double com casas fixas.", out:"f = '3.1'" },
+  ]},
+
+  { nome:"Comentários", emoji:"💬", trechos:[
+    { cod:"// isto é um comentário", dica:"<b>Duas barras</b> comentam até o fim da linha.", out:"ignorado" },
+    { cod:"/* bloco de\ncomentário */", dica:"<b>Barra-asterisco</b> comenta vários trechos.", out:"ignorado" },
+    { cod:"/// Documenta a função.", dica:"<b>Três barras</b> viram documentação da API.", out:"vira doc" },
+    { cod:"var x = 5; // valor inicial", dica:"Comentários explicam o código ao lado.", out:"x = 5" },
+    { cod:"// TODO: melhorar isto", dica:"<b>TODO</b> marca o que ainda falta fazer.", out:"lembrete" },
+    { cod:"print('roda'); // isto não", dica:"O que vem depois das barras não é executado.", out:"roda" },
+  ]},
+
+]},
+
+/* ========= TRILHA 2 — LÓGICA & FUNÇÕES ========= */
+{ nivel:"Lógica", emoji:"🔀", licoes:[
+
+  { nome:"Condições", emoji:"🔀", trechos:[
+    { cod:"if (idade >= 18) {\n  print('Adulto');\n}", dica:"<b>if</b> roda o bloco só quando a condição é verdadeira.", out:"Adulto" },
+    { cod:"if (vazio) {\n  print('Sim');\n} else {\n  print('Não');\n}", dica:"<b>else</b> roda quando o if é falso.", out:"Não" },
+    { cod:"if (n > 0) {\n  print('+');\n} else if (n < 0) {\n  print('-');\n}", dica:"<b>else if</b> encadeia várias condições.", out:"+ ou -" },
+    { cod:"var t = ativo ? 'on' : 'off';", dica:"O <b>ternário</b> decide entre dois valores.", out:"t = 'on'" },
+    { cod:"var maior = a > b ? a : b;", dica:"Guarde o maior entre dois valores numa linha.", out:"o maior" },
+    { cod:"var msg = nome ?? 'anônimo';", dica:"<b>Duas interrogações</b> usam um padrão se for nulo.", out:"msg = 'anônimo'" },
+    { cod:"if (lista.isNotEmpty) {\n  print(lista.first);\n}", dica:"<b>isNotEmpty</b> evita mexer numa lista vazia.", out:"primeiro item" },
+    { cod:"if (x case int n) {\n  print(n);\n}", dica:"<b>if-case</b> testa um padrão e extrai o valor.", out:"valor de x" },
+  ]},
+
+  { nome:"Switch", emoji:"🎚️", trechos:[
+    { cod:"switch (nota) {\n  case 'A':\n    print('Ótimo');\n}", dica:"<b>switch</b> compara um valor com vários casos.", out:"Ótimo" },
+    { cod:"switch (dia) {\n  case 1:\n    print('Seg');\n    break;\n}", dica:"<b>break</b> encerra o caso atual.", out:"Seg" },
+    { cod:"switch (cor) {\n  case 'azul':\n    print('frio');\n  default:\n    print('?');\n}", dica:"<b>default</b> cobre o que não casou.", out:"frio ou ?" },
+    { cod:"switch (n) {\n  case 1:\n  case 2:\n    print('baixo');\n}", dica:"Casos podem compartilhar o mesmo bloco.", out:"baixo" },
+    { cod:"switch (obj) {\n  case int():\n    print('inteiro');\n}", dica:"O switch aceita padrões de tipo.", out:"inteiro" },
+    { cod:"switch (nivel) {\n  case >= 90:\n    print('top');\n}", dica:"Um caso pode usar comparações.", out:"top" },
+    { cod:"switch (x) {\n  case var v when v > 0:\n    print('positivo');\n}", dica:"<b>when</b> adiciona uma condição ao caso.", out:"positivo" },
+  ]},
+
+  { nome:"Switch expr", emoji:"⚡", trechos:[
+    { cod:"var t = switch (n) {\n  1 => 'um',\n  _ => 'outro',\n};", dica:"O <b>switch como expressão</b> devolve um valor.", out:"t = 'um'" },
+    { cod:"var s = switch (x) {\n  > 0 => '+',\n  < 0 => '-',\n  _ => '0',\n};", dica:"Cada braço aponta para um resultado.", out:"s = '+'" },
+    { cod:"var nome = switch (cod) {\n  1 => 'BR',\n  2 => 'US',\n  _ => '??',\n};", dica:"O <b>underscore</b> é o caso padrão.", out:"nome = 'BR'" },
+    { cod:"var tipo = switch (v) {\n  int() => 'int',\n  String() => 'txt',\n  _ => '?',\n};", dica:"Combine com padrões de tipo.", out:"conforme v" },
+    { cod:"var f = switch (letra) {\n  'a' => 'abacate',\n  'b' => 'banana',\n  _ => '?',\n};", dica:"Ótimo para mapear valores em outros.", out:"f = 'abacate'" },
+    { cod:"var faixa = switch (idade) {\n  < 13 => 'criança',\n  < 18 => 'jovem',\n  _ => 'adulto',\n};", dica:"Braços com comparação criam faixas.", out:"conforme idade" },
+    { cod:"var r = switch ((x, y)) {\n  (0, 0) => 'origem',\n  _ => 'ponto',\n};", dica:"Você pode casar um record inteiro.", out:"r = 'origem'" },
+  ]},
+
+  { nome:"Padrões", emoji:"🧩", trechos:[
+    { cod:"var (a, b) = (1, 2);", dica:"Destrinche um <b>record</b> em variáveis.", out:"a = 1, b = 2" },
+    { cod:"var [x, y, z] = [1, 2, 3];", dica:"Também dá pra destrinchar listas.", out:"x=1, y=2, z=3" },
+    { cod:"var {'nome': n} = mapa;", dica:"E até extrair chaves de um Map.", out:"valor do nome" },
+    { cod:"final (nome, idade) = pessoa;", dica:"<b>final</b> vale na desestruturação.", out:"separa os campos" },
+    { cod:"if (par case (var a, var b)) {\n  print(a + b);\n}", dica:"O case extrai dois valores de uma vez.", out:"soma" },
+    { cod:"var [primeiro, ...resto] = lista;", dica:"As <b>reticências</b> capturam o restante da lista.", out:"resto" },
+    { cod:"switch (ponto) {\n  case (0, var y):\n    print(y);\n}", dica:"Padrões casam partes e ignoram o resto.", out:"y do eixo" },
+  ]},
+
+  { nome:"Laços for", emoji:"🔁", trechos:[
+    { cod:"for (var i = 0; i < 3; i++) {\n  print(i);\n}", dica:"<b>for</b> repete um número definido de vezes.", out:"0\n1\n2" },
+    { cod:"for (var f in frutas) {\n  print(f);\n}", dica:"<b>for-in</b> percorre cada item.", out:"cada fruta" },
+    { cod:"for (final n in [1, 2, 3]) {\n  print(n);\n}", dica:"Use <b>final</b> quando o item não muda.", out:"1\n2\n3" },
+    { cod:"for (var i = 10; i > 0; i--) {\n  print(i);\n}", dica:"Dá pra contar de trás pra frente.", out:"10..1" },
+    { cod:"for (var i = 0; i < 10; i += 2) {\n  print(i);\n}", dica:"O passo pode pular de dois em dois.", out:"pares" },
+    { cod:"lista.forEach((x) => print(x));", dica:"<b>forEach</b> roda algo para cada item.", out:"cada item" },
+    { cod:"for (var e in mapa.entries) {\n  print(e.key);\n}", dica:"Percorra as <b>entries</b> de um Map.", out:"as chaves" },
+    { cod:"for (var i in Iterable.generate(3)) {\n  print(i);\n}", dica:"<b>generate</b> cria uma sequência na hora.", out:"0 1 2" },
+  ]},
+
+  { nome:"Laços while", emoji:"♾️", trechos:[
+    { cod:"while (n > 0) {\n  n--;\n}", dica:"<b>while</b> repete enquanto a condição valer.", out:"até n = 0" },
+    { cod:"var i = 0;\nwhile (i < 3) {\n  print(i);\n  i++;\n}", dica:"Mude a condição para o laço não travar.", out:"0\n1\n2" },
+    { cod:"do {\n  print('roda');\n} while (false);", dica:"<b>do-while</b> roda o bloco ao menos uma vez.", out:"roda" },
+    { cod:"var s = 0;\nwhile (s < 10) {\n  s += 3;\n}", dica:"Acumule valores até um limite.", out:"s = 12" },
+    { cod:"while (true) {\n  if (pronto) break;\n}", dica:"<b>break</b> sai de um laço infinito.", out:"para quando pronto" },
+    { cod:"var f = 1;\nwhile (n > 1) {\n  f *= n--;\n}", dica:"Um while também calcula fatoriais.", out:"fatorial" },
+    { cod:"do {\n  tentar();\n} while (falhou);", dica:"Repita uma ação até dar certo.", out:"tenta de novo" },
+  ]},
+
+  { nome:"Fluxo", emoji:"🚦", trechos:[
+    { cod:"for (var i = 0; i < 5; i++) {\n  if (i == 3) break;\n}", dica:"<b>break</b> interrompe o laço na hora.", out:"para no 3" },
+    { cod:"for (var i = 0; i < 4; i++) {\n  if (i == 1) continue;\n}", dica:"<b>continue</b> pula para a próxima volta.", out:"pula o 1" },
+    { cod:"externo:\nfor (var i in a) {\n  break externo;\n}", dica:"Um <b>rótulo</b> permite sair de laços aninhados.", out:"sai de tudo" },
+    { cod:"assert(idade > 0);", dica:"<b>assert</b> checa uma suposição durante o desenvolvimento.", out:"valida" },
+    { cod:"assert(nome.isNotEmpty, 'vazio!');", dica:"O assert aceita uma mensagem de erro.", out:"valida com aviso" },
+    { cod:"if (erro) return;", dica:"<b>return</b> encerra a função ali mesmo.", out:"interrompe" },
+  ]},
+
+  { nome:"Funções", emoji:"📞", trechos:[
+    { cod:"void main() {\n  print('Início');\n}", dica:"<b>main</b> é onde o programa começa.", out:"Início" },
+    { cod:"void oi() {\n  print('Olá');\n}", dica:"<b>void</b> é uma função que não devolve valor.", out:"Olá" },
+    { cod:"int soma(int a, int b) {\n  return a + b;\n}", dica:"<b>return</b> devolve o resultado.", out:"soma(2,3) → 5" },
+    { cod:"String saudar(String n) {\n  return 'Oi, $n';\n}", dica:"Funções recebem e devolvem valores.", out:"Oi, Ana" },
+    { cod:"bool ehPar(int n) {\n  return n % 2 == 0;\n}", dica:"Devolva um booleano a partir de um teste.", out:"true/false" },
+    { cod:"void log(String m) {\n  print('[LOG] $m');\n}", dica:"Funções organizam código que se repete.", out:"[LOG] ..." },
+    { cod:"int quadrado(int x) {\n  return x * x;\n}", dica:"Devolva um valor calculado.", out:"quadrado(5) → 25" },
+  ]},
+
+  { nome:"Parâmetros", emoji:"🎛️", trechos:[
+    { cod:"void oi(String nome) {\n  print('Oi $nome');\n}", dica:"Um <b>parâmetro posicional</b> vem na ordem.", out:"Oi Ana" },
+    { cod:"void log(String m, {bool erro = false}) {\n}", dica:"<b>Chaves</b> criam parâmetros nomeados.", out:"flexível" },
+    { cod:"void criar({required String nome}) {\n}", dica:"<b>required</b> obriga a passar o nomeado.", out:"exige nome" },
+    { cod:"int somar([int a = 0, int b = 0]) => a + b;", dica:"<b>Colchetes</b> criam opcionais posicionais.", out:"somar() → 0" },
+    { cod:"void ola({String nome = 'você'}) {\n}", dica:"Nomeados podem ter um valor padrão.", out:"Oi você" },
+    { cod:"void ponto({int x = 0, int y = 0}) {\n}", dica:"Vários nomeados deixam a chamada clara.", out:"x=0, y=0" },
+    { cod:"void aceita(int a, {int? b}) {\n}", dica:"Misture posicional e nomeado opcional.", out:"b pode faltar" },
+  ]},
+
+  { nome:"Arrow/anônimas", emoji:"➡️", trechos:[
+    { cod:"int dobro(int x) => x * 2;", dica:"A <b>seta</b> é o atalho de função de uma linha.", out:"dobro(4) → 8" },
+    { cod:"var soma = (a, b) => a + b;", dica:"Guarde uma função anônima numa variável.", out:"soma(2,3) → 5" },
+    { cod:"lista.map((x) => x + 1);", dica:"Passe uma função anônima como argumento.", out:"cada +1" },
+    { cod:"var ola = () => print('oi');", dica:"Funções sem parâmetros também usam a seta.", out:"oi" },
+    { cod:"nums.where((n) => n > 0);", dica:"<b>where</b> recebe uma função de teste.", out:"positivos" },
+    { cod:"var f = (int x) {\n  return x * x;\n};", dica:"Anônimas podem ter corpo com chaves.", out:"quadrado" },
+    { cod:"botao(onTap: () => print('ok'));", dica:"Muito usado em <b>callbacks</b> do Flutter.", out:"ok" },
+  ]},
+
+  { nome:"Closures", emoji:"🎯", trechos:[
+    { cod:"Function contador() {\n  var n = 0;\n  return () => n++;\n}", dica:"Uma <b>closure</b> lembra as variáveis ao seu redor.", out:"conta a cada chamada" },
+    { cod:"int aplicar(int x, int Function(int) f) => f(x);", dica:"Funções podem receber outras funções.", out:"aplica f" },
+    { cod:"Function vezes(int f) => (x) => x * f;", dica:"Devolva uma função personalizada.", out:"multiplica por f" },
+    { cod:"var dobrar = vezes(2);", dica:"Guarde a função que foi devolvida.", out:"dobrar(5) → 10" },
+    { cod:"[1, 2, 3].map((x) => x * 10);", dica:"<b>map</b> é uma função de alta ordem.", out:"(10, 20, 30)" },
+    { cod:"nums.forEach(print);", dica:"Passe uma função pelo nome (<b>tear-off</b>).", out:"imprime tudo" },
+  ]},
+
+  { nome:"Generators", emoji:"🌀", trechos:[
+    { cod:"Iterable<int> ate(int n) sync* {\n  for (var i = 0; i < n; i++) yield i;\n}", dica:"<b>sync*</b> e <b>yield</b> geram itens sob demanda.", out:"0..n-1" },
+    { cod:"Stream<int> contar() async* {\n  yield 1;\n  yield 2;\n}", dica:"<b>async*</b> cria um Stream de valores.", out:"1, 2" },
+    { cod:"Iterable<int> pares() sync* {\n  var i = 0;\n  while (true) yield i += 2;\n}", dica:"Geradores podem ser infinitos e preguiçosos.", out:"2, 4, 6..." },
+    { cod:"await for (var x in contar()) {\n  print(x);\n}", dica:"Consuma um Stream com <b>await for</b>.", out:"cada valor" },
+  ]},
+
+]},
+
+/* ========= TRILHA 3 — COLEÇÕES ========= */
+{ nivel:"Coleções", emoji:"📦", licoes:[
+
+  { nome:"Listas", emoji:"📋", trechos:[
+    { cod:"var nums = [1, 2, 3];", dica:"Uma <b>lista</b> guarda valores em ordem.", out:"[1, 2, 3]" },
+    { cod:"var vazia = <int>[];", dica:"Crie uma lista vazia informando o tipo.", out:"[]" },
+    { cod:"nums.add(4);", dica:"<b>add</b> coloca um item no fim.", out:"[1, 2, 3, 4]" },
+    { cod:"nums.insert(0, 9);", dica:"<b>insert</b> coloca numa posição específica.", out:"[9, 1, 2, 3]" },
+    { cod:"nums.remove(2);", dica:"<b>remove</b> tira a primeira ocorrência do valor.", out:"sem o 2" },
+    { cod:"nums.removeAt(0);", dica:"<b>removeAt</b> tira o item pela posição.", out:"sem o primeiro" },
+    { cod:"var p = nums[0];", dica:"<b>Colchetes</b> acessam pelo índice.", out:"primeiro" },
+    { cod:"nums[1] = 99;", dica:"Também dá pra trocar um item pelo índice.", out:"muda o índice 1" },
+  ]},
+
+  { nome:"Listas: buscar", emoji:"🔍", trechos:[
+    { cod:"var n = nums.length;", dica:"<b>length</b> conta os itens.", out:"quantidade" },
+    { cod:"var tem = nums.contains(3);", dica:"<b>contains</b> checa se o valor existe.", out:"true" },
+    { cod:"var pri = nums.first;", dica:"<b>first</b> pega o primeiro item.", out:"primeiro" },
+    { cod:"var ult = nums.last;", dica:"<b>last</b> pega o último item.", out:"último" },
+    { cod:"var vazio = nums.isEmpty;", dica:"<b>isEmpty</b> diz se a lista está vazia.", out:"false" },
+    { cod:"var idx = nums.indexOf(3);", dica:"<b>indexOf</b> acha a posição do valor.", out:"índice" },
+    { cod:"var a = nums.firstWhere((n) => n > 2);", dica:"<b>firstWhere</b> pega o primeiro que passa.", out:"o item" },
+    { cod:"var qtd = nums.where((n) => n > 1).length;", dica:"Conte quantos passam num teste.", out:"contagem" },
+  ]},
+
+  { nome:"Listas: mudar", emoji:"🔀", trechos:[
+    { cod:"var d = nums.map((n) => n * 2).toList();", dica:"<b>map</b> transforma cada item.", out:"dobrados" },
+    { cod:"var f = nums.where((n) => n.isEven).toList();", dica:"<b>where</b> filtra os itens.", out:"só pares" },
+    { cod:"var s = nums.reduce((a, b) => a + b);", dica:"<b>reduce</b> combina tudo num valor só.", out:"soma" },
+    { cod:"var t = nums.fold(0, (s, n) => s + n);", dica:"<b>fold</b> combina com um valor inicial.", out:"soma" },
+    { cod:"var e = [[1, 2], [3]].expand((l) => l).toList();", dica:"<b>expand</b> achata listas aninhadas.", out:"[1, 2, 3]" },
+    { cod:"var todos = nums.every((n) => n > 0);", dica:"<b>every</b> checa se todos passam.", out:"true" },
+    { cod:"var algum = nums.any((n) => n > 5);", dica:"<b>any</b> checa se ao menos um passa.", out:"true/false" },
+    { cod:"var take = nums.take(2).toList();", dica:"<b>take</b> pega os primeiros N itens.", out:"dois itens" },
+  ]},
+
+  { nome:"Sets", emoji:"🎯", trechos:[
+    { cod:"var s = {1, 2, 3};", dica:"Um <b>Set</b> guarda valores únicos.", out:"{1, 2, 3}" },
+    { cod:"var vazio = <int>{};", dica:"Crie um Set vazio informando o tipo.", out:"{}" },
+    { cod:"s.add(2);", dica:"Adicionar um repetido não muda nada.", out:"{1, 2, 3}" },
+    { cod:"var tem = s.contains(2);", dica:"<b>contains</b> checa a presença.", out:"true" },
+    { cod:"var u = {1, 2}.union({2, 3});", dica:"<b>union</b> junta dois conjuntos.", out:"{1, 2, 3}" },
+    { cod:"var i = {1, 2}.intersection({2, 3});", dica:"<b>intersection</b> pega o que há em comum.", out:"{2}" },
+    { cod:"var lista = s.toList();", dica:"Um Set vira lista com <b>toList</b>.", out:"[1, 2, 3]" },
+  ]},
+
+  { nome:"Maps", emoji:"🗺️", trechos:[
+    { cod:"var m = {'a': 1, 'b': 2};", dica:"Um <b>Map</b> liga chaves a valores.", out:"{a: 1, b: 2}" },
+    { cod:"var vazio = <String, int>{};", dica:"Crie um Map vazio tipado.", out:"{}" },
+    { cod:"m['c'] = 3;", dica:"Adicione ou mude pelo colchete.", out:"{..., c: 3}" },
+    { cod:"var v = m['a'];", dica:"Acesse o valor pela chave.", out:"1" },
+    { cod:"m.remove('a');", dica:"<b>remove</b> tira uma chave.", out:"sem 'a'" },
+    { cod:"var tem = m.containsKey('b');", dica:"<b>containsKey</b> checa a chave.", out:"true" },
+    { cod:"var n = m.length;", dica:"<b>length</b> conta os pares.", out:"quantidade" },
+    { cod:"var val = m.containsValue(2);", dica:"<b>containsValue</b> checa o valor.", out:"true" },
+  ]},
+
+  { nome:"Maps: métodos", emoji:"🔑", trechos:[
+    { cod:"var k = m.keys.toList();", dica:"<b>keys</b> devolve as chaves.", out:"as chaves" },
+    { cod:"var v = m.values.toList();", dica:"<b>values</b> devolve os valores.", out:"os valores" },
+    { cod:"m.forEach((k, v) => print('$k=$v'));", dica:"<b>forEach</b> percorre par a par.", out:"cada par" },
+    { cod:"var soma = m.values.reduce((a, b) => a + b);", dica:"Some todos os valores do Map.", out:"total" },
+    { cod:"var x = m.putIfAbsent('d', () => 9);", dica:"<b>putIfAbsent</b> cria só se a chave faltar.", out:"garante a chave" },
+    { cod:"m.update('a', (v) => v + 1);", dica:"<b>update</b> muda um valor existente.", out:"incrementa" },
+    { cod:"for (var e in m.entries) {\n  print(e.value);\n}", dica:"<b>entries</b> dá acesso a chave e valor.", out:"percorre" },
+  ]},
+
+  { nome:"Iterables", emoji:"🌊", trechos:[
+    { cod:"var it = [1, 2, 3].map((n) => n * 2);", dica:"<b>map</b> devolve um Iterable preguiçoso.", out:"sob demanda" },
+    { cod:"var l = it.toList();", dica:"<b>toList</b> materializa o Iterable.", out:"vira lista" },
+    { cod:"var f = [1, 2, 3, 4].skip(2);", dica:"<b>skip</b> pula os primeiros itens.", out:"[3, 4]" },
+    { cod:"var w = [1, 2, 3].takeWhile((n) => n < 3);", dica:"<b>takeWhile</b> pega enquanto o teste passar.", out:"[1, 2]" },
+    { cod:"var c = [1, 2].followedBy([3, 4]);", dica:"<b>followedBy</b> concatena sequências.", out:"1..4" },
+    { cod:"var g = Iterable.generate(3, (i) => i);", dica:"<b>generate</b> cria uma sequência do zero.", out:"0 1 2" },
+  ]},
+
+  { nome:"Literais", emoji:"✨", trechos:[
+    { cod:"var l = [0, ...outros];", dica:"O <b>spread</b> insere os itens de outra lista.", out:"juntos" },
+    { cod:"var s = [if (logado) 'sair'];", dica:"<b>collection-if</b> inclui itens condicionalmente.", out:"inclui se logado" },
+    { cod:"var q = [for (var i in nums) i * i];", dica:"<b>collection-for</b> gera itens num laço.", out:"quadrados" },
+    { cod:"var m = {...base, 'novo': 1};", dica:"O spread também funciona em Maps.", out:"mescla" },
+    { cod:"var seguro = [...?talvezNula];", dica:"O <b>spread com interrogação</b> aceita nulo.", out:"ignora se nula" },
+    { cod:"var g = [for (var i = 0; i < 3; i++) i];", dica:"Use o for tradicional dentro da coleção.", out:"[0, 1, 2]" },
+  ]},
+
+  { nome:"Records", emoji:"🎁", trechos:[
+    { cod:"var ponto = (1, 2);", dica:"Um <b>record</b> agrupa valores sem criar classe.", out:"(1, 2)" },
+    { cod:"var x = ponto.$1;", dica:"Acesse campos posicionais com <b>cifrão-número</b>.", out:"1" },
+    { cod:"var p = (nome: 'Ana', idade: 30);", dica:"Records podem ter campos <b>nomeados</b>.", out:"dados juntos" },
+    { cod:"var nome = p.nome;", dica:"Acesse o campo nomeado pelo nome.", out:"'Ana'" },
+    { cod:"(int, int) divmod(int a, int b) => (a ~/ b, a % b);", dica:"Devolva <b>vários valores</b> de uma função.", out:"quociente e resto" },
+    { cod:"var (q, r) = divmod(10, 3);", dica:"Destrinche o record devolvido.", out:"q = 3, r = 1" },
+    { cod:"var igual = (1, 2) == (1, 2);", dica:"Records são comparados <b>por valor</b>.", out:"true" },
+  ]},
+
+  { nome:"Ordenar", emoji:"📊", trechos:[
+    { cod:"var l = [3, 1, 2]..sort();", dica:"<b>sort</b> ordena em ordem crescente.", out:"[1, 2, 3]" },
+    { cod:"l.sort((a, b) => b - a);", dica:"Passe um comparador para inverter a ordem.", out:"decrescente" },
+    { cod:"var nomes = ['Bia', 'Ana']..sort();", dica:"O sort também ordena textos.", out:"alfabética" },
+    { cod:"var max = [4, 9, 2].reduce((a, b) => a > b ? a : b);", dica:"Encontre o maior com <b>reduce</b>.", out:"9" },
+    { cod:"var u = [1, 1, 2].toSet().toList();", dica:"Remova duplicados passando por um Set.", out:"[1, 2]" },
+    { cod:"var inv = [1, 2, 3].reversed.toList();", dica:"<b>reversed</b> inverte a ordem.", out:"[3, 2, 1]" },
+    { cod:"nomes.sort((a, b) => a.length.compareTo(b.length));", dica:"<b>compareTo</b> ajuda a ordenar por critério.", out:"por tamanho" },
+  ]},
+
+]},
+
+/* ========= TRILHA 4 — ORIENTAÇÃO A OBJETOS ========= */
+{ nivel:"Objetos", emoji:"🧱", licoes:[
+
+  { nome:"Classes", emoji:"🧱", trechos:[
+    { cod:"class Ponto {\n  int x = 0;\n  int y = 0;\n}", dica:"<b>class</b> é um molde para criar objetos.", out:"classe pronta" },
+    { cod:"var p = Ponto();", dica:"Crie um objeto chamando a classe.", out:"novo Ponto" },
+    { cod:"p.x = 5;", dica:"Acesse e mude atributos com o ponto.", out:"x = 5" },
+    { cod:"class Gato {\n  void miar() {\n    print('Miau');\n  }\n}", dica:"<b>Métodos</b> são funções da classe.", out:"Miau" },
+    { cod:"class Caixa {\n  int itens = 0;\n  void por() => itens++;\n}", dica:"Métodos alteram os atributos.", out:"itens sobe" },
+    { cod:"class Pessoa {\n  String nome = '';\n  String oi() => 'Sou $nome';\n}", dica:"Métodos usam os atributos do objeto.", out:"Sou ..." },
+    { cod:"class Contador {\n  int _n = 0;\n}", dica:"O <b>underscore</b> deixa o atributo privado.", out:"privado" },
+    { cod:"class Circulo {\n  double raio = 1;\n  double area() => 3.14 * raio * raio;\n}", dica:"Métodos podem calcular e devolver.", out:"a área" },
+  ]},
+
+  { nome:"Construtores", emoji:"🏗️", trechos:[
+    { cod:"class Ponto {\n  int x, y;\n  Ponto(this.x, this.y);\n}", dica:"O <b>construtor</b> recebe e guarda valores.", out:"cria o ponto" },
+    { cod:"var p = Ponto(3, 4);", dica:"Passe os argumentos ao criar.", out:"(3, 4)" },
+    { cod:"class User {\n  String nome;\n  User({required this.nome});\n}", dica:"Construtor com parâmetro <b>nomeado</b>.", out:"exige nome" },
+    { cod:"class Cor {\n  int r, g, b;\n  Cor(this.r, this.g, this.b);\n}", dica:"Vários parâmetros no construtor.", out:"uma cor" },
+    { cod:"class Config {\n  int volume;\n  Config([this.volume = 5]);\n}", dica:"Construtor com valor <b>opcional</b>.", out:"volume 5" },
+    { cod:"class Ret {\n  int l, a;\n  Ret(this.l, this.a);\n  Ret.quadrado(int x) : l = x, a = x;\n}", dica:"Um <b>construtor nomeado</b> é uma variação.", out:"quadrado" },
+    { cod:"var q = Ret.quadrado(5);", dica:"Chame o construtor nomeado com ponto.", out:"5x5" },
+    { cod:"class P {\n  final int x;\n  P(this.x);\n}", dica:"<b>final</b> cria atributos imutáveis.", out:"fixo" },
+  ]},
+
+  { nome:"Construtores+", emoji:"⚒️", trechos:[
+    { cod:"class Cor {\n  final int v;\n  const Cor(this.v);\n}", dica:"<b>const</b> cria objetos imutáveis e reutilizáveis.", out:"cor const" },
+    { cod:"var preto = const Cor(0);", dica:"<b>const</b> antes da criação congela o objeto.", out:"reutilizado" },
+    { cod:"class Logger {\n  static final _i = Logger._();\n  factory Logger() => _i;\n  Logger._();\n}", dica:"<b>factory</b> controla a criação e pode reusar.", out:"singleton" },
+    { cod:"class Ponto {\n  int x, y;\n  Ponto(this.x, this.y);\n  Ponto.zero() : this(0, 0);\n}", dica:"Um construtor pode <b>redirecionar</b> para outro.", out:"(0, 0)" },
+    { cod:"class Temp {\n  double c;\n  Temp(double f) : c = (f - 32) / 1.8;\n}", dica:"A <b>lista de inicialização</b> roda antes do corpo.", out:"converte" },
+    { cod:"class User {\n  final String nome;\n  User(this.nome) {\n    print('criado');\n  }\n}", dica:"O corpo do construtor roda depois.", out:"criado" },
+    { cod:"class Vazio {\n  Vazio._();\n}", dica:"Um construtor privado bloqueia a criação externa.", out:"controlado" },
+  ]},
+
+  { nome:"Get/Set", emoji:"🎚️", trechos:[
+    { cod:"class Circulo {\n  double raio = 1;\n  double get area => 3.14 * raio * raio;\n}", dica:"<b>get</b> cria uma propriedade calculada.", out:"lê a área" },
+    { cod:"var a = c.area;", dica:"Use o getter <b>sem parênteses</b>.", out:"valor" },
+    { cod:"class Temp {\n  double c = 0;\n  double get f => c * 1.8 + 32;\n}", dica:"Getters derivam valores de atributos.", out:"em Fahrenheit" },
+    { cod:"class Caixa {\n  int _n = 0;\n  set itens(int v) => _n = v < 0 ? 0 : v;\n}", dica:"<b>set</b> valida antes de guardar.", out:"protege" },
+    { cod:"c.itens = -5;", dica:"Atribuir um valor chama o setter.", out:"vira 0" },
+    { cod:"class P {\n  String _n = '';\n  String get nome => _n;\n  set nome(String v) => _n = v.trim();\n}", dica:"Combine getter e setter na mesma propriedade.", out:"controla acesso" },
+    { cod:"class Conta {\n  double _s = 0;\n  double get saldo => _s;\n}", dica:"Um getter sem setter é <b>só leitura</b>.", out:"só leitura" },
+  ]},
+
+  { nome:"Estáticos", emoji:"📌", trechos:[
+    { cod:"class Mat {\n  static const pi = 3.14;\n}", dica:"<b>static</b> pertence à classe, não ao objeto.", out:"Mat.pi" },
+    { cod:"var p = Mat.pi;", dica:"Acesse pela classe, sem instanciar.", out:"3.14" },
+    { cod:"class Util {\n  static int dobro(int x) => x * 2;\n}", dica:"Métodos estáticos são <b>utilitários</b>.", out:"Util.dobro(4)" },
+    { cod:"var d = Util.dobro(5);", dica:"Chame direto pela classe.", out:"10" },
+    { cod:"class Contador {\n  static int total = 0;\n  Contador() {\n    total++;\n  }\n}", dica:"Um estático é <b>compartilhado</b> por todos.", out:"conta instâncias" },
+    { cod:"class App {\n  static String versao = '1.0';\n}", dica:"Guarde dados globais da classe.", out:"versão" },
+  ]},
+
+  { nome:"Herança", emoji:"🌳", trechos:[
+    { cod:"class Animal {\n  void comer() => print('nham');\n}\nclass Gato extends Animal {}", dica:"<b>extends</b> herda tudo da classe mãe.", out:"Gato come" },
+    { cod:"var g = Gato();\ng.comer();", dica:"O filho usa métodos herdados.", out:"nham" },
+    { cod:"class Cao extends Animal {\n  @override\n  void comer() => print('cão come');\n}", dica:"<b>override</b> substitui um método herdado.", out:"cão come" },
+    { cod:"class Filho extends Pai {\n  Filho() : super();\n}", dica:"<b>super</b> chama o construtor da mãe.", out:"herda" },
+    { cod:"class Gato extends Animal {\n  void tudo() {\n    super.comer();\n  }\n}", dica:"<b>super</b> também chama métodos da mãe.", out:"usa a mãe" },
+    { cod:"class B extends A {\n  B(int x) : super(x);\n}", dica:"Passe argumentos ao construtor da mãe.", out:"repassa" },
+    { cod:"class Ave extends Animal {\n  @override\n  String toString() => 'uma ave';\n}", dica:"<b>override</b> troca o toString.", out:"uma ave" },
+    { cod:"print(g is Animal);", dica:"<b>is</b> checa a hierarquia de tipos.", out:"true" },
+  ]},
+
+  { nome:"Abstract", emoji:"📐", trechos:[
+    { cod:"abstract class Forma {\n  double area();\n}", dica:"<b>abstract</b> define um contrato sem corpo.", out:"molde" },
+    { cod:"class Quadrado extends Forma {\n  double area() => 4;\n}", dica:"A subclasse implementa o método.", out:"area = 4" },
+    { cod:"class Circulo implements Forma {\n  double area() => 3.14;\n}", dica:"<b>implements</b> obriga a criar tudo.", out:"area = 3.14" },
+    { cod:"abstract class Ave {\n  void voar();\n  void comer() => print('come');\n}", dica:"Abstratas misturam abstrato e concreto.", out:"parte pronta" },
+    { cod:"class Pato implements Ave {\n  void voar() {}\n  void comer() {}\n}", dica:"Implementar exige todos os métodos.", out:"contrato cumprido" },
+    { cod:"void desenhar(Forma f) => print(f.area());", dica:"Programe pela interface, não pelo tipo.", out:"genérico" },
+  ]},
+
+  { nome:"Mixins", emoji:"🧬", trechos:[
+    { cod:"mixin Voar {\n  void voar() => print('voando');\n}", dica:"<b>mixin</b> guarda comportamento reutilizável.", out:"voando" },
+    { cod:"class Passaro with Voar {}", dica:"<b>with</b> mistura o mixin na classe.", out:"Passaro voa" },
+    { cod:"mixin Nadar {\n  void nadar() => print('nadando');\n}", dica:"Crie vários mixins independentes.", out:"nadando" },
+    { cod:"class Pato with Voar, Nadar {}", dica:"Combine vários mixins de uma vez.", out:"voa e nada" },
+    { cod:"mixin Log on Animal {\n  void reg() => print('log');\n}", dica:"<b>on</b> limita onde o mixin pode entrar.", out:"restrito" },
+    { cod:"class Heroi extends Pessoa with Voar {}", dica:"Misture herança e mixin juntos.", out:"herda e voa" },
+  ]},
+
+  { nome:"Enums", emoji:"🎨", trechos:[
+    { cod:"enum Cor { vermelho, verde, azul }", dica:"<b>enum</b> lista opções fixas.", out:"Cor.vermelho" },
+    { cod:"var c = Cor.azul;", dica:"Acesse um valor pelo nome.", out:"azul" },
+    { cod:"print(c.name);", dica:"<b>name</b> devolve o nome como texto.", out:"'azul'" },
+    { cod:"print(c.index);", dica:"<b>index</b> dá a posição do valor.", out:"2" },
+    { cod:"for (var v in Cor.values) print(v);", dica:"<b>values</b> percorre todas as opções.", out:"todas" },
+    { cod:"enum Nivel {\n  baixo(1),\n  alto(3);\n  final int peso;\n  const Nivel(this.peso);\n}", dica:"Enums avançados têm campos e construtor.", out:"com peso" },
+    { cod:"switch (c) {\n  case Cor.azul:\n    print('frio');\n}", dica:"Combine enum com switch.", out:"frio" },
+  ]},
+
+  { nome:"Extensions", emoji:"🔌", trechos:[
+    { cod:"extension on String {\n  String gritar() => toUpperCase() + '!';\n}", dica:"<b>extension</b> adiciona métodos a um tipo existente.", out:"'oi'.gritar()" },
+    { cod:"print('oi'.gritar());", dica:"Use o novo método como se fosse nativo.", out:"OI!" },
+    { cod:"extension on int {\n  bool get ehPar => this % 2 == 0;\n}", dica:"Adicione até <b>getters</b> com extension.", out:"4.ehPar" },
+    { cod:"print(4.ehPar);", dica:"<b>this</b> se refere ao próprio valor.", out:"true" },
+    { cod:"extension Dobrar on int {\n  int get dobro => this * 2;\n}", dica:"Dê um nome à sua extension.", out:"5.dobro" },
+    { cod:"extension on List<int> {\n  int get soma => fold(0, (a, b) => a + b);\n}", dica:"Estenda tipos com generics.", out:"[1,2,3].soma" },
+    { cod:"print([1, 2, 3].soma);", dica:"Métodos novos deixam o código fluido.", out:"6" },
+  ]},
+
+  { nome:"Operadores", emoji:"🧮", trechos:[
+    { cod:"class Vetor {\n  int x, y;\n  Vetor(this.x, this.y);\n  Vetor operator +(Vetor o) => Vetor(x + o.x, y + o.y);\n}", dica:"<b>operator</b> define o que o mais faz.", out:"soma vetores" },
+    { cod:"var v = Vetor(1, 1) + Vetor(2, 3);", dica:"Agora o mais funciona no seu tipo.", out:"(3, 4)" },
+    { cod:"class Dinheiro {\n  int c;\n  Dinheiro(this.c);\n  bool operator >(Dinheiro o) => c > o.c;\n}", dica:"Sobrecarregue comparações também.", out:"compara" },
+    { cod:"class Lista {\n  final _d = [1, 2, 3];\n  int operator [](int i) => _d[i];\n}", dica:"<b>operator []</b> permite indexação.", out:"acesso[i]" },
+    { cod:"class Contador {\n  int n = 0;\n  int call() => ++n;\n}", dica:"<b>call</b> deixa o objeto ser chamado como função.", out:"obj()" },
+  ]},
+
+  { nome:"Generics", emoji:"♊", trechos:[
+    { cod:"class Caixa<T> {\n  T valor;\n  Caixa(this.valor);\n}", dica:"<b>Generics</b> fazem a classe servir para qualquer tipo.", out:"flexível" },
+    { cod:"var c = Caixa<int>(5);", dica:"Diga o tipo ao criar.", out:"Caixa de int" },
+    { cod:"T primeiro<T>(List<T> l) => l[0];", dica:"Funções genéricas preservam o tipo.", out:"devolve T" },
+    { cod:"class Par<A, B> {\n  A a;\n  B b;\n  Par(this.a, this.b);\n}", dica:"Use <b>vários</b> tipos genéricos.", out:"par tipado" },
+    { cod:"T maior<T extends num>(T a, T b) => a > b ? a : b;", dica:"<b>extends</b> limita quais tipos são aceitos.", out:"só números" },
+    { cod:"class Pilha<T> {\n  final _itens = <T>[];\n  void push(T x) => _itens.add(x);\n}", dica:"Coleções internas também são genéricas.", out:"pilha tipada" },
+    { cod:"List<String> nomes = <String>[];", dica:"Generics tornam as coleções seguras.", out:"lista de textos" },
+  ]},
+
+  { nome:"Extension types", emoji:"🪞", trechos:[
+    { cod:"extension type Id(int valor) {}", dica:"Um <b>extension type</b> embrulha um tipo sem custo extra.", out:"Id seguro" },
+    { cod:"var id = Id(42);", dica:"Crie envolvendo o valor.", out:"Id(42)" },
+    { cod:"extension type Km(double v) {\n  Km operator +(Km o) => Km(v + o.v);\n}", dica:"Adicione métodos ao tipo embrulhado.", out:"soma km" },
+    { cod:"extension type Email(String v) {\n  bool get valido => v.contains('@');\n}", dica:"Ganhe segurança de tipo sem criar classe.", out:"valida" },
+    { cod:"print(Email('a@b.com').valido);", dica:"Use como um tipo normal.", out:"true" },
+    { cod:"extension type const Porta(int n) {}", dica:"Extension types também podem ser const.", out:"leve" },
+  ]},
+
+  { nome:"Modifiers", emoji:"🔒", trechos:[
+    { cod:"sealed class Forma {}", dica:"<b>sealed</b> fecha a hierarquia e ativa o switch exaustivo.", out:"controlado" },
+    { cod:"final class Config {}", dica:"<b>final</b> impede que outros estendam a classe.", out:"fechada" },
+    { cod:"base class Animal {}", dica:"<b>base</b> obriga herdar, não implementar.", out:"controla herança" },
+    { cod:"interface class Repo {}", dica:"<b>interface</b> só permite implements.", out:"contrato puro" },
+    { cod:"class Circulo extends Forma {}", dica:"Subclasses de uma sealed ficam no mesmo arquivo.", out:"parte do conjunto" },
+    { cod:"var m = switch (forma) {\n  Circulo() => 'círculo',\n};", dica:"Com sealed, o switch cobre todos os casos.", out:"exaustivo" },
+  ]},
+
+]},
+
+/* ========= TRILHA 5 — ASSÍNCRONO & AVANÇADO ========= */
+{ nivel:"Avançado", emoji:"⏳", licoes:[
+
+  { nome:"Null safety", emoji:"❓", trechos:[
+    { cod:"String? nome;", dica:"A <b>interrogação</b> permite que o valor seja nulo.", out:"null" },
+    { cod:"int? idade = null;", dica:"Só tipos com interrogação aceitam null.", out:"null" },
+    { cod:"var v = nome ?? 'padrão';", dica:"<b>??</b> usa um padrão se o valor for nulo.", out:"'padrão'" },
+    { cod:"nome ??= 'Ana';", dica:"<b>??=</b> atribui só se estiver nulo.", out:"'Ana'" },
+    { cod:"var tam = texto?.length;", dica:"<b>?.</b> evita erro quando o valor é nulo.", out:"tam ou null" },
+    { cod:"var certo = texto!;", dica:"<b>!</b> afirma que o valor não é nulo.", out:"garante" },
+    { cod:"if (nome != null) print(nome);", dica:"Após checar, o Dart sabe que não é nulo ali.", out:"imprime" },
+    { cod:"var n = lista?.length ?? 0;", dica:"Combine <b>?.</b> com <b>??</b> para um padrão seguro.", out:"0 se nula" },
+  ]},
+
+  { nome:"Null safety+", emoji:"🛟", trechos:[
+    { cod:"late String config;", dica:"<b>late</b> promete inicializar antes de usar.", out:"adiado" },
+    { cod:"int? achar() => null;", dica:"Uma função pode devolver nulo.", out:"pode faltar" },
+    { cod:"var x = achar() ?? -1;", dica:"Trate o nulo assim que receber.", out:"-1" },
+    { cod:"String n = pessoa?.nome ?? '?';", dica:"Encadeie acessos seguros.", out:"'?' se faltar" },
+    { cod:"lista?.forEach(print);", dica:"Chame métodos só se não for nulo.", out:"roda se existir" },
+    { cod:"var y = mapa['k']!;", dica:"Use <b>!</b> quando tiver certeza da chave.", out:"garante" },
+  ]},
+
+  { nome:"Future", emoji:"⏳", trechos:[
+    { cod:"Future<int> buscar() async {\n  return 42;\n}", dica:"<b>async</b> marca uma função que trabalha no futuro.", out:"Future de 42" },
+    { cod:"var d = await buscar();", dica:"<b>await</b> espera o Future e pega o valor.", out:"42" },
+    { cod:"Future<void> salvar() async {\n  print('salvo');\n}", dica:"<b>Future void</b> só termina, sem devolver.", out:"salvo" },
+    { cod:"void main() async {\n  await salvar();\n}", dica:"O main pode ser async para usar await.", out:"usa await" },
+    { cod:"await Future.delayed(Duration(seconds: 1));", dica:"<b>Future.delayed</b> espera um tempo.", out:"pausa" },
+    { cod:"Future<String> nome() async => 'Ana';", dica:"Funções async também usam a seta.", out:"'Ana'" },
+    { cod:"try {\n  await buscar();\n} catch (e) {\n  print(e);\n}", dica:"<b>try/catch</b> trata erros assíncronos.", out:"trata" },
+    { cod:"Future<int> soma() async {\n  var a = await umValor();\n  return a + 1;\n}", dica:"Encadeie vários <b>await</b>.", out:"soma futura" },
+  ]},
+
+  { nome:"Future: métodos", emoji:"🔗", trechos:[
+    { cod:"buscar().then((v) => print(v));", dica:"<b>then</b> roda quando o Future fica pronto.", out:"imprime" },
+    { cod:"buscar().catchError((e) => print(e));", dica:"<b>catchError</b> trata falhas.", out:"trata erro" },
+    { cod:"var r = await Future.wait([a(), b()]);", dica:"<b>Future.wait</b> espera vários ao mesmo tempo.", out:"todos juntos" },
+    { cod:"Future.value(10);", dica:"<b>Future.value</b> cria um resultado já pronto.", out:"10" },
+    { cod:"buscar().whenComplete(() => print('fim'));", dica:"<b>whenComplete</b> roda no final, sempre.", out:"fim" },
+    { cod:"Future<int> f = Future(() => 7);", dica:"<b>Future()</b> agenda um cálculo.", out:"7 depois" },
+  ]},
+
+  { nome:"Streams", emoji:"🌊", trechos:[
+    { cod:"Stream<int> contar() async* {\n  yield 1;\n  yield 2;\n}", dica:"<b>async*</b> cria um Stream de valores.", out:"1, 2" },
+    { cod:"await for (var x in contar()) {\n  print(x);\n}", dica:"<b>await for</b> consome cada valor.", out:"1 2" },
+    { cod:"contar().listen((v) => print(v));", dica:"<b>listen</b> reage a cada valor emitido.", out:"reage" },
+    { cod:"var s = await contar().reduce((a, b) => a + b);", dica:"Streams também têm <b>reduce</b>.", out:"soma" },
+    { cod:"contar().where((n) => n > 1);", dica:"Filtre um Stream com <b>where</b>.", out:"só > 1" },
+    { cod:"contar().map((n) => n * 10);", dica:"Transforme os valores com <b>map</b>.", out:"(10, 20)" },
+    { cod:"var l = await contar().toList();", dica:"<b>toList</b> junta o Stream numa lista.", out:"[1, 2]" },
+  ]},
+
+  { nome:"Streams+", emoji:"📡", trechos:[
+    { cod:"var c = StreamController<int>();", dica:"<b>StreamController</b> cria um Stream manual.", out:"fonte" },
+    { cod:"c.add(1);", dica:"<b>add</b> empurra um valor no Stream.", out:"emite 1" },
+    { cod:"c.stream.listen(print);", dica:"Ouça o stream do controller.", out:"escuta" },
+    { cod:"c.close();", dica:"<b>close</b> encerra o Stream.", out:"fecha" },
+    { cod:"var b = StreamController<int>.broadcast();", dica:"<b>broadcast</b> permite vários ouvintes.", out:"multi" },
+    { cod:"Stream.periodic(Duration(seconds: 1));", dica:"<b>periodic</b> emite em intervalos.", out:"a cada tempo" },
+  ]},
+
+  { nome:"Erros: tratar", emoji:"🛡️", trechos:[
+    { cod:"try {\n  arriscado();\n} catch (e) {\n  print(e);\n}", dica:"<b>try</b> tenta; <b>catch</b> pega o erro.", out:"trata" },
+    { cod:"try {\n  algo();\n} finally {\n  limpar();\n}", dica:"<b>finally</b> sempre roda no final.", out:"limpa sempre" },
+    { cod:"try {\n  algo();\n} on FormatException {\n  print('formato');\n}", dica:"<b>on</b> filtra por tipo de erro.", out:"pega o tipo" },
+    { cod:"try {\n  algo();\n} catch (e, s) {\n  print(s);\n}", dica:"O segundo parâmetro traz o <b>stack trace</b>.", out:"rastreio" },
+    { cod:"try {\n  x();\n} on Exception catch (e) {\n  print(e);\n}", dica:"Combine <b>on</b> e <b>catch</b>.", out:"erro tipado" },
+    { cod:"try {\n  b();\n} catch (e) {\n  rethrow;\n}", dica:"<b>rethrow</b> repassa o erro para cima.", out:"relança" },
+  ]},
+
+  { nome:"Erros: lançar", emoji:"💥", trechos:[
+    { cod:"throw Exception('Falhou');", dica:"<b>throw</b> dispara um erro.", out:"lança" },
+    { cod:"if (n < 0) throw 'Negativo';", dica:"Valide lançando um erro.", out:"erro se < 0" },
+    { cod:"throw ArgumentError('inválido');", dica:"Use erros prontos como <b>ArgumentError</b>.", out:"argumento inválido" },
+    { cod:"class MeuErro implements Exception {\n  final String msg;\n  MeuErro(this.msg);\n}", dica:"Crie o seu próprio tipo de erro.", out:"erro sob medida" },
+    { cod:"throw MeuErro('ops');", dica:"Lance o seu erro personalizado.", out:"ops" },
+    { cod:"throw StateError('estado ruim');", dica:"<b>StateError</b> sinaliza um estado inválido.", out:"estado" },
+  ]},
+
+  { nome:"Bibliotecas", emoji:"📚", trechos:[
+    { cod:"import 'dart:math';", dica:"<b>import</b> traz uma biblioteca.", out:"math disponível" },
+    { cod:"import 'dart:convert';", dica:"Importe a conversão de dados.", out:"json disponível" },
+    { cod:"import 'package:http/http.dart';", dica:"Importe pacotes do <b>pub.dev</b>.", out:"pacote externo" },
+    { cod:"import 'utils.dart' as u;", dica:"<b>as</b> dá um apelido à biblioteca.", out:"u.algo" },
+    { cod:"import 'lib.dart' show soma;", dica:"<b>show</b> traz só o que você quer.", out:"só soma" },
+    { cod:"import 'lib.dart' hide erro;", dica:"<b>hide</b> esconde parte da biblioteca.", out:"sem erro" },
+    { cod:"export 'src/api.dart';", dica:"<b>export</b> reexporta para quem usa o seu pacote.", out:"expõe" },
+  ]},
+
+  { nome:"JSON", emoji:"📦", trechos:[
+    { cod:"import 'dart:convert';", dica:"O json mora em <b>dart:convert</b>.", out:"pronto" },
+    { cod:"var m = jsonDecode('{\"n\": 1}');", dica:"<b>jsonDecode</b> vira Map ou List.", out:"{n: 1}" },
+    { cod:"var s = jsonEncode({'n': 1});", dica:"<b>jsonEncode</b> vira texto JSON.", out:"'{\"n\":1}'" },
+    { cod:"var n = m['n'];", dica:"Acesse os campos como num Map.", out:"1" },
+    { cod:"var l = jsonDecode('[1, 2, 3]');", dica:"JSON de lista também funciona.", out:"[1, 2, 3]" },
+    { cod:"var t = utf8.encode('oi');", dica:"<b>utf8</b> converte texto em bytes.", out:"bytes" },
+    { cod:"var v = utf8.decode(bytes);", dica:"E de volta para texto.", out:"'oi'" },
+  ]},
+
+  { nome:"Math", emoji:"🧮", trechos:[
+    { cod:"import 'dart:math';", dica:"Traga a biblioteca de matemática.", out:"pronto" },
+    { cod:"var r = sqrt(16);", dica:"<b>sqrt</b> calcula a raiz quadrada.", out:"4.0" },
+    { cod:"var p = pow(2, 10);", dica:"<b>pow</b> eleva à potência.", out:"1024" },
+    { cod:"var m = max(3, 7);", dica:"<b>max</b> devolve o maior.", out:"7" },
+    { cod:"var n = min(3, 7);", dica:"<b>min</b> devolve o menor.", out:"3" },
+    { cod:"var d = Random().nextInt(6);", dica:"<b>Random</b> gera números aleatórios.", out:"0..5" },
+    { cod:"print(pi);", dica:"A constante <b>pi</b> já vem pronta.", out:"3.1415..." },
+  ]},
+
+  { nome:"Isolates", emoji:"🧵", trechos:[
+    { cod:"import 'dart:isolate';", dica:"<b>Isolates</b> trazem concorrência de verdade.", out:"pronto" },
+    { cod:"await Isolate.run(() => pesado());", dica:"<b>Isolate.run</b> roda em paralelo sem travar.", out:"em paralelo" },
+    { cod:"var r = await Isolate.run(() => 2 + 2);", dica:"Devolve o resultado do trabalho pesado.", out:"4" },
+    { cod:"Isolate.spawn(tarefa, msg);", dica:"<b>spawn</b> cria um novo isolate.", out:"novo fluxo" },
+    { cod:"compute(funcao, dado);", dica:"No Flutter, <b>compute</b> simplifica isolates.", out:"fora da UI" },
+  ]},
+
+]},
+
+/* ========= TRILHA 6 — FLUTTER (Material 3) ========= */
+{ nivel:"Flutter", emoji:"💙", licoes:[
+
+  { nome:"Primeiros widgets", emoji:"💙", trechos:[
+    { cod:"class App extends StatelessWidget {}", dica:"<b>StatelessWidget</b> é uma tela que não muda sozinha.", out:"widget base" },
+    { cod:"Widget build(BuildContext context) {\n  return Text('Oi');\n}", dica:"<b>build</b> descreve o que aparece na tela.", out:"mostra Oi" },
+    { cod:"MaterialApp(home: Tela());", dica:"<b>MaterialApp</b> é a raiz de um app Material.", out:"app pronto" },
+    { cod:"Scaffold(body: Center(child: Text('Oi')));", dica:"<b>Scaffold</b> dá a estrutura básica da tela.", out:"layout base" },
+    { cod:"runApp(MyApp());", dica:"<b>runApp</b> liga o app na tela.", out:"inicia" },
+    { cod:"const Text('Olá');", dica:"<b>const</b> deixa o widget mais eficiente.", out:"Olá" },
+    { cod:"Scaffold(\n  appBar: AppBar(title: Text('App')),\n);", dica:"O Scaffold aceita uma barra no topo.", out:"com barra" },
+    { cod:"@override\nWidget build(BuildContext c) => Container();", dica:"Todo widget precisa de um <b>build</b>.", out:"vazio" },
+  ]},
+
+  { nome:"Text e estilo", emoji:"✍️", trechos:[
+    { cod:"Text('Olá, Flutter');", dica:"<b>Text</b> mostra um texto na tela.", out:"Olá, Flutter" },
+    { cod:"Text('Oi', style: TextStyle(fontSize: 24));", dica:"<b>TextStyle</b> controla a aparência.", out:"maior" },
+    { cod:"TextStyle(color: Colors.blue);", dica:"<b>color</b> muda a cor do texto.", out:"azul" },
+    { cod:"TextStyle(fontWeight: FontWeight.bold);", dica:"<b>fontWeight</b> deixa em negrito.", out:"negrito" },
+    { cod:"Text('t', textAlign: TextAlign.center);", dica:"<b>textAlign</b> alinha o texto.", out:"centralizado" },
+    { cod:"Text('x', maxLines: 1, overflow: TextOverflow.ellipsis);", dica:"<b>overflow</b> trata texto que não cabe.", out:"com ..." },
+    { cod:"TextStyle(fontStyle: FontStyle.italic);", dica:"<b>fontStyle</b> deixa em itálico.", out:"itálico" },
+  ]},
+
+  { nome:"Imagens e ícones", emoji:"🖼️", trechos:[
+    { cod:"Icon(Icons.home);", dica:"<b>Icon</b> mostra um ícone do Material.", out:"casa" },
+    { cod:"Icon(Icons.star, color: Colors.amber);", dica:"Ícones aceitam cor e tamanho.", out:"estrela dourada" },
+    { cod:"Image.asset('logo.png');", dica:"<b>Image.asset</b> mostra imagem do projeto.", out:"imagem local" },
+    { cod:"Image.network('https://...');", dica:"<b>Image.network</b> carrega da internet.", out:"imagem online" },
+    { cod:"Icon(Icons.favorite, size: 40);", dica:"<b>size</b> ajusta o tamanho do ícone.", out:"coração grande" },
+    { cod:"CircleAvatar(child: Icon(Icons.person));", dica:"<b>CircleAvatar</b> cria um avatar redondo.", out:"avatar" },
+    { cod:"Image.asset('foto.png', fit: BoxFit.cover);", dica:"<b>fit</b> controla como a imagem preenche.", out:"preenche" },
+  ]},
+
+  { nome:"Container", emoji:"📦", trechos:[
+    { cod:"Container(width: 100, height: 100);", dica:"<b>Container</b> é uma caixa flexível.", out:"caixa 100x100" },
+    { cod:"Container(color: Colors.red);", dica:"<b>color</b> pinta o fundo.", out:"vermelho" },
+    { cod:"Container(\n  decoration: BoxDecoration(color: Colors.blue),\n);", dica:"<b>BoxDecoration</b> adiciona estilo à caixa.", out:"decorada" },
+    { cod:"BoxDecoration(borderRadius: BorderRadius.circular(12));", dica:"<b>borderRadius</b> arredonda os cantos.", out:"cantos redondos" },
+    { cod:"BoxDecoration(border: Border.all());", dica:"<b>Border</b> desenha uma borda.", out:"com borda" },
+    { cod:"Container(margin: EdgeInsets.all(8));", dica:"<b>margin</b> afasta a caixa por fora.", out:"espaço externo" },
+    { cod:"BoxDecoration(boxShadow: [BoxShadow(blurRadius: 4)]);", dica:"<b>boxShadow</b> adiciona sombra.", out:"com sombra" },
+  ]},
+
+  { nome:"Espaçamento", emoji:"📏", trechos:[
+    { cod:"Padding(padding: EdgeInsets.all(16), child: Text('Oi'));", dica:"<b>Padding</b> cria espaço interno.", out:"com respiro" },
+    { cod:"EdgeInsets.all(8);", dica:"<b>all</b> aplica o mesmo espaço em tudo.", out:"8 nos lados" },
+    { cod:"EdgeInsets.symmetric(horizontal: 12);", dica:"<b>symmetric</b> separa horizontal e vertical.", out:"laterais" },
+    { cod:"EdgeInsets.only(top: 20);", dica:"<b>only</b> aplica só onde você quer.", out:"só no topo" },
+    { cod:"SizedBox(height: 16);", dica:"<b>SizedBox</b> cria um espaço fixo.", out:"espaço vertical" },
+    { cod:"SizedBox(width: 8);", dica:"Também serve como espaço horizontal.", out:"espaço lateral" },
+    { cod:"SizedBox.shrink();", dica:"<b>shrink</b> ocupa espaço zero.", out:"invisível" },
+  ]},
+
+  { nome:"Column e Row", emoji:"📐", trechos:[
+    { cod:"Column(children: [Text('A'), Text('B')]);", dica:"<b>Column</b> empilha widgets na vertical.", out:"um sobre o outro" },
+    { cod:"Row(children: [Icon(Icons.star), Text('5')]);", dica:"<b>Row</b> alinha widgets na horizontal.", out:"lado a lado" },
+    { cod:"Column(\n  mainAxisAlignment: MainAxisAlignment.center,\n  children: [],\n);", dica:"<b>mainAxisAlignment</b> alinha no eixo principal.", out:"centralizado" },
+    { cod:"Row(\n  crossAxisAlignment: CrossAxisAlignment.start,\n  children: [],\n);", dica:"<b>crossAxisAlignment</b> alinha no eixo cruzado.", out:"no início" },
+    { cod:"MainAxisAlignment.spaceBetween;", dica:"<b>spaceBetween</b> distribui o espaço entre os itens.", out:"espaçado" },
+    { cod:"Column(mainAxisSize: MainAxisSize.min, children: []);", dica:"<b>min</b> faz a Column ocupar só o necessário.", out:"compacta" },
+    { cod:"Column(children: [for (var i in itens) Text(i)]);", dica:"Gere filhos com <b>collection-for</b>.", out:"lista dinâmica" },
+  ]},
+
+  { nome:"Expanded/Flexible", emoji:"↔️", trechos:[
+    { cod:"Expanded(child: Container(color: Colors.red));", dica:"<b>Expanded</b> ocupa todo o espaço livre.", out:"preenche" },
+    { cod:"Row(children: [Expanded(child: A()), Expanded(child: B())]);", dica:"Dois Expanded dividem igualmente.", out:"meio a meio" },
+    { cod:"Expanded(flex: 2, child: A());", dica:"<b>flex</b> define a proporção do espaço.", out:"dobro do espaço" },
+    { cod:"Flexible(child: Text('cabe'));", dica:"<b>Flexible</b> cede espaço sem forçar.", out:"flexível" },
+    { cod:"Spacer();", dica:"<b>Spacer</b> é um espaço que cresce.", out:"empurra" },
+    { cod:"Spacer(flex: 2);", dica:"O Spacer também aceita flex.", out:"espaço maior" },
+    { cod:"Row(children: [Text('a'), Spacer(), Text('b')]);", dica:"Separe extremos com um Spacer.", out:"nas pontas" },
+  ]},
+
+  { nome:"Stack/Align", emoji:"🎯", trechos:[
+    { cod:"Stack(children: [A(), B()]);", dica:"<b>Stack</b> sobrepõe widgets em camadas.", out:"empilha" },
+    { cod:"Positioned(top: 10, left: 10, child: A());", dica:"<b>Positioned</b> coloca em coordenadas exatas.", out:"posição exata" },
+    { cod:"Align(alignment: Alignment.center, child: A());", dica:"<b>Align</b> posiciona o filho na caixa.", out:"alinhado" },
+    { cod:"Center(child: Text('meio'));", dica:"<b>Center</b> centraliza o filho.", out:"no centro" },
+    { cod:"Positioned(bottom: 0, child: A());", dica:"Fixe algo na base da pilha.", out:"embaixo" },
+    { cod:"Alignment.topRight;", dica:"Alinhamentos prontos facilitam a vida.", out:"canto superior" },
+    { cod:"Stack(children: [Container(), Positioned(right: 8, child: Icon(Icons.close))]);", dica:"Combine Stack e Positioned para sobrepor.", out:"ícone no canto" },
+  ]},
+
+  { nome:"Wrap/GridView", emoji:"🔲", trechos:[
+    { cod:"Wrap(children: [Chip(label: Text('a')), Chip(label: Text('b'))]);", dica:"<b>Wrap</b> quebra a linha quando não cabe.", out:"várias linhas" },
+    { cod:"Wrap(spacing: 8, children: []);", dica:"<b>spacing</b> separa os itens.", out:"com respiro" },
+    { cod:"GridView.count(crossAxisCount: 2, children: []);", dica:"<b>GridView.count</b> cria uma grade de N colunas.", out:"2 colunas" },
+    { cod:"GridView.builder(\n  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),\n  itemBuilder: (c, i) => Card(),\n);", dica:"<b>builder</b> cria a grade sob demanda.", out:"grade grande" },
+    { cod:"Wrap(runSpacing: 4, children: []);", dica:"<b>runSpacing</b> separa as linhas.", out:"entre linhas" },
+  ]},
+
+  { nome:"Listas", emoji:"📜", trechos:[
+    { cod:"ListView(children: [Text('A'), Text('B')]);", dica:"<b>ListView</b> rola uma lista de widgets.", out:"rolável" },
+    { cod:"ListView.builder(\n  itemCount: 100,\n  itemBuilder: (c, i) => Text('$i'),\n);", dica:"<b>builder</b> cria os itens sob demanda.", out:"eficiente" },
+    { cod:"ListTile(title: Text('Item'));", dica:"<b>ListTile</b> é uma linha pronta de lista.", out:"linha" },
+    { cod:"ListTile(\n  leading: Icon(Icons.person),\n  title: Text('Ana'),\n);", dica:"<b>leading</b> põe um ícone à esquerda.", out:"com ícone" },
+    { cod:"ListTile(trailing: Icon(Icons.arrow_forward));", dica:"<b>trailing</b> põe algo à direita.", out:"com seta" },
+    { cod:"ListView.separated(\n  itemCount: 3,\n  separatorBuilder: (c, i) => Divider(),\n  itemBuilder: (c, i) => Text('$i'),\n);", dica:"<b>separated</b> coloca divisores entre itens.", out:"separados" },
+    { cod:"ListTile(onTap: () => print('clicou'));", dica:"<b>onTap</b> torna a linha clicável.", out:"clicável" },
+    { cod:"ListView.builder(\n  itemCount: itens.length,\n  itemBuilder: (c, i) => ListTile(title: Text(itens[i])),\n);", dica:"Monte a lista a partir de dados.", out:"de uma lista" },
+  ]},
+
+  { nome:"Material", emoji:"🎨", trechos:[
+    { cod:"AppBar(title: Text('Início'));", dica:"<b>AppBar</b> é a barra no topo da tela.", out:"barra" },
+    { cod:"FloatingActionButton(onPressed: () {}, child: Icon(Icons.add));", dica:"O <b>FAB</b> é o botão circular flutuante.", out:"botão +" },
+    { cod:"Drawer(child: ListView(children: []));", dica:"<b>Drawer</b> é o menu lateral.", out:"menu lateral" },
+    { cod:"BottomNavigationBar(items: []);", dica:"<b>BottomNavigationBar</b> navega no rodapé.", out:"abas embaixo" },
+    { cod:"Card(child: ListTile(title: Text('Oi')));", dica:"<b>Card</b> agrupa conteúdo com sombra.", out:"cartão" },
+    { cod:"Chip(label: Text('tag'));", dica:"<b>Chip</b> mostra uma etiqueta compacta.", out:"etiqueta" },
+    { cod:"AppBar(actions: [IconButton(icon: Icon(Icons.search), onPressed: () {})]);", dica:"<b>actions</b> põe botões na AppBar.", out:"ações" },
+    { cod:"Scaffold(\n  appBar: AppBar(title: Text('App')),\n  floatingActionButton: FloatingActionButton(onPressed: () {}),\n);", dica:"Junte AppBar e FAB no Scaffold.", out:"tela completa" },
+  ]},
+
+  { nome:"Botões", emoji:"🔘", trechos:[
+    { cod:"ElevatedButton(onPressed: () {}, child: Text('OK'));", dica:"<b>ElevatedButton</b> é o botão elevado principal.", out:"botão OK" },
+    { cod:"TextButton(onPressed: () {}, child: Text('Cancelar'));", dica:"<b>TextButton</b> é um botão plano de texto.", out:"botão texto" },
+    { cod:"OutlinedButton(onPressed: () {}, child: Text('Mais'));", dica:"<b>OutlinedButton</b> tem apenas a borda.", out:"contornado" },
+    { cod:"IconButton(icon: Icon(Icons.add), onPressed: () {});", dica:"<b>IconButton</b> é um botão de ícone.", out:"botão ícone" },
+    { cod:"ElevatedButton(onPressed: null, child: Text('X'));", dica:"<b>onPressed</b> nulo desativa o botão.", out:"desativado" },
+    { cod:"GestureDetector(onTap: () {}, child: Container());", dica:"<b>GestureDetector</b> detecta toques em qualquer widget.", out:"detecta toque" },
+    { cod:"InkWell(onTap: () {}, child: Text('toque'));", dica:"<b>InkWell</b> mostra o efeito de onda ao tocar.", out:"com ondinha" },
+    { cod:"ElevatedButton.icon(onPressed: () {}, icon: Icon(Icons.send), label: Text('Enviar'));", dica:"<b>.icon</b> junta ícone e texto no botão.", out:"com ícone" },
+  ]},
+
+  { nome:"Entrada", emoji:"⌨️", trechos:[
+    { cod:"TextField();", dica:"<b>TextField</b> recebe texto do usuário.", out:"campo" },
+    { cod:"TextField(decoration: InputDecoration(labelText: 'Nome'));", dica:"<b>InputDecoration</b> adiciona rótulo e dicas.", out:"com rótulo" },
+    { cod:"TextField(onChanged: (v) => print(v));", dica:"<b>onChanged</b> reage a cada tecla.", out:"escuta digitação" },
+    { cod:"var ctrl = TextEditingController();", dica:"O <b>controller</b> lê e controla o campo.", out:"controle" },
+    { cod:"TextField(controller: ctrl);", dica:"Ligue o controller ao campo.", out:"conectado" },
+    { cod:"TextField(obscureText: true);", dica:"<b>obscureText</b> esconde a senha.", out:"senha" },
+    { cod:"TextField(keyboardType: TextInputType.number);", dica:"<b>keyboardType</b> escolhe o teclado.", out:"teclado numérico" },
+  ]},
+
+  { nome:"Seletores", emoji:"🎚️", trechos:[
+    { cod:"Checkbox(value: true, onChanged: (v) {});", dica:"<b>Checkbox</b> liga ou desliga uma opção.", out:"caixinha" },
+    { cod:"Switch(value: false, onChanged: (v) {});", dica:"<b>Switch</b> é um interruptor de ligar/desligar.", out:"interruptor" },
+    { cod:"Slider(value: 0.5, onChanged: (v) {});", dica:"<b>Slider</b> escolhe um valor numa faixa.", out:"deslizante" },
+    { cod:"Radio(value: 1, groupValue: 1, onChanged: (v) {});", dica:"<b>Radio</b> escolhe uma opção de um grupo.", out:"escolha única" },
+    { cod:"DropdownButton(items: [], onChanged: (v) {});", dica:"<b>DropdownButton</b> abre uma lista de opções.", out:"menu suspenso" },
+    { cod:"Slider(value: v, min: 0, max: 100, onChanged: (x) {});", dica:"<b>min</b> e <b>max</b> definem a faixa.", out:"0 a 100" },
+    { cod:"Checkbox(value: on, onChanged: (v) => setState(() => on = v!));", dica:"Combine com setState para atualizar.", out:"reativo" },
+  ]},
+
+  { nome:"Estado", emoji:"🔄", trechos:[
+    { cod:"class Contador extends StatefulWidget {}", dica:"<b>StatefulWidget</b> guarda estado que muda.", out:"com estado" },
+    { cod:"class _ContadorState extends State<Contador> {}", dica:"O estado mora numa classe <b>State</b>.", out:"classe de estado" },
+    { cod:"int n = 0;", dica:"Guarde a variável de estado na classe State.", out:"valor atual" },
+    { cod:"setState(() => n++);", dica:"<b>setState</b> avisa o Flutter para redesenhar.", out:"atualiza a tela" },
+    { cod:"@override\nWidget build(BuildContext c) => Text('$n');", dica:"O build usa o estado atual.", out:"mostra n" },
+    { cod:"ElevatedButton(onPressed: () => setState(() => n++), child: Text('+'));", dica:"Um toque muda o estado e redesenha.", out:"botão soma" },
+    { cod:"bool ligado = false;", dica:"Estados podem ser de qualquer tipo.", out:"flag" },
+    { cod:"setState(() => ligado = !ligado);", dica:"Inverta um booleano no estado.", out:"alterna" },
+  ]},
+
+  { nome:"Ciclo de vida", emoji:"♻️", trechos:[
+    { cod:"@override\nvoid initState() {\n  super.initState();\n}", dica:"<b>initState</b> roda uma vez ao criar o widget.", out:"ao iniciar" },
+    { cod:"@override\nvoid dispose() {\n  super.dispose();\n}", dica:"<b>dispose</b> limpa recursos ao sair.", out:"ao encerrar" },
+    { cod:"initState() {\n  super.initState();\n  carregar();\n}", dica:"Bom lugar para buscar dados iniciais.", out:"carrega no início" },
+    { cod:"dispose() {\n  controller.dispose();\n  super.dispose();\n}", dica:"Libere controllers no dispose.", out:"libera memória" },
+    { cod:"@override\nvoid didUpdateWidget(old) {\n  super.didUpdateWidget(old);\n}", dica:"<b>didUpdateWidget</b> reage a mudanças de fora.", out:"ao atualizar" },
+  ]},
+
+  { nome:"Navegação", emoji:"🧭", trechos:[
+    { cod:"Navigator.push(context, MaterialPageRoute(builder: (c) => Tela2()));", dica:"<b>push</b> abre uma nova tela.", out:"avança" },
+    { cod:"Navigator.pop(context);", dica:"<b>pop</b> volta para a tela anterior.", out:"volta" },
+    { cod:"Navigator.pushNamed(context, '/detalhes');", dica:"<b>pushNamed</b> navega por uma rota nomeada.", out:"rota nomeada" },
+    { cod:"MaterialApp(routes: {'/': (c) => Home()});", dica:"<b>routes</b> registra as telas do app.", out:"mapa de rotas" },
+    { cod:"Navigator.pop(context, resultado);", dica:"Devolva um valor ao voltar.", out:"retorna dado" },
+    { cod:"var r = await Navigator.push(context, rota);", dica:"Espere o resultado da tela aberta.", out:"recebe de volta" },
+    { cod:"Navigator.pushReplacement(context, rota);", dica:"<b>pushReplacement</b> troca a tela sem deixar voltar.", out:"substitui" },
+  ]},
+
+  { nome:"Diálogos", emoji:"💬", trechos:[
+    { cod:"showDialog(context: context, builder: (c) => AlertDialog());", dica:"<b>showDialog</b> abre uma janela sobre a tela.", out:"pop-up" },
+    { cod:"AlertDialog(title: Text('Aviso'), content: Text('Certeza?'));", dica:"<b>AlertDialog</b> mostra título e conteúdo.", out:"alerta" },
+    { cod:"AlertDialog(actions: [TextButton(onPressed: () {}, child: Text('OK'))]);", dica:"<b>actions</b> adiciona os botões do diálogo.", out:"com botões" },
+    { cod:"ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Salvo')));", dica:"<b>SnackBar</b> mostra um aviso rápido embaixo.", out:"mensagem rápida" },
+    { cod:"showModalBottomSheet(context: context, builder: (c) => Container());", dica:"<b>showModalBottomSheet</b> sobe um painel de baixo.", out:"painel inferior" },
+    { cod:"Navigator.pop(context);", dica:"Feche o diálogo com pop.", out:"fecha" },
+  ]},
+
+  { nome:"FutureBuilder", emoji:"⏳", trechos:[
+    { cod:"FutureBuilder(future: buscar(), builder: (c, snap) => Text('$snap'));", dica:"<b>FutureBuilder</b> desenha a tela conforme um Future.", out:"espera dados" },
+    { cod:"if (snap.hasData) return Text('${snap.data}');", dica:"<b>hasData</b> indica que o valor chegou.", out:"pronto" },
+    { cod:"if (!snap.hasData) return CircularProgressIndicator();", dica:"Mostre um carregando enquanto espera.", out:"girando" },
+    { cod:"if (snap.hasError) return Text('Erro');", dica:"<b>hasError</b> indica que algo falhou.", out:"trata erro" },
+    { cod:"StreamBuilder(stream: contar(), builder: (c, snap) => Text('$snap'));", dica:"<b>StreamBuilder</b> reage a cada valor do Stream.", out:"ao vivo" },
+    { cod:"snap.connectionState == ConnectionState.waiting;", dica:"<b>connectionState</b> informa o status atual.", out:"carregando" },
+  ]},
+
+  { nome:"Tema", emoji:"🌈", trechos:[
+    { cod:"MaterialApp(theme: ThemeData(primarySwatch: Colors.blue));", dica:"<b>ThemeData</b> define as cores do app.", out:"tema azul" },
+    { cod:"ThemeData(brightness: Brightness.dark);", dica:"<b>brightness</b> ativa o modo escuro.", out:"escuro" },
+    { cod:"Theme.of(context).primaryColor;", dica:"<b>Theme.of</b> lê o tema atual.", out:"cor do tema" },
+    { cod:"ThemeData(useMaterial3: true);", dica:"<b>useMaterial3</b> ativa o visual Material 3.", out:"material 3" },
+    { cod:"ColorScheme.fromSeed(seedColor: Colors.teal);", dica:"<b>fromSeed</b> gera uma paleta a partir de uma cor.", out:"paleta" },
+    { cod:"Text('Oi', style: Theme.of(context).textTheme.titleLarge);", dica:"<b>textTheme</b> traz estilos de texto prontos.", out:"estilo do tema" },
+    { cod:"ThemeData(scaffoldBackgroundColor: Colors.grey);", dica:"Personalize o fundo das telas.", out:"fundo cinza" },
+  ]},
+
+  { nome:"Animações", emoji:"✨", trechos:[
+    { cod:"AnimatedContainer(duration: Duration(seconds: 1), width: w);", dica:"<b>AnimatedContainer</b> anima mudanças sozinho.", out:"anima suave" },
+    { cod:"AnimatedOpacity(opacity: v, duration: Duration(milliseconds: 300));", dica:"<b>AnimatedOpacity</b> faz aparecer e sumir.", out:"fade" },
+    { cod:"var ctrl = AnimationController(vsync: this, duration: Duration(seconds: 2));", dica:"<b>AnimationController</b> comanda a animação.", out:"controle" },
+    { cod:"ctrl.forward();", dica:"<b>forward</b> toca a animação para frente.", out:"inicia" },
+    { cod:"Tween(begin: 0.0, end: 1.0);", dica:"<b>Tween</b> define o início e o fim do valor.", out:"interpola" },
+    { cod:"AnimatedBuilder(animation: ctrl, builder: (c, _) => Container());", dica:"<b>AnimatedBuilder</b> redesenha a cada quadro.", out:"quadro a quadro" },
+    { cod:"Hero(tag: 'foto', child: Image.asset('x.png'));", dica:"<b>Hero</b> anima um elemento entre telas.", out:"transição" },
+  ]},
+
+  { nome:"Cupertino", emoji:"🍎", trechos:[
+    { cod:"import 'package:flutter/cupertino.dart';", dica:"<b>Cupertino</b> traz o visual do iOS.", out:"estilo iOS" },
+    { cod:"CupertinoApp(home: Tela());", dica:"<b>CupertinoApp</b> é a raiz de um app iOS.", out:"app iOS" },
+    { cod:"CupertinoButton(onPressed: () {}, child: Text('OK'));", dica:"<b>CupertinoButton</b> é o botão estilo iOS.", out:"botão iOS" },
+    { cod:"CupertinoNavigationBar(middle: Text('Título'));", dica:"A barra de navegação do iOS.", out:"barra iOS" },
+    { cod:"CupertinoPageScaffold(child: Center(child: Text('Oi')));", dica:"O Scaffold do mundo Cupertino.", out:"tela iOS" },
+    { cod:"showCupertinoDialog(context: context, builder: (c) => CupertinoAlertDialog());", dica:"Diálogos no estilo iOS.", out:"alerta iOS" },
+  ]},
+
+  { nome:"Rolagem", emoji:"📜", trechos:[
+    { cod:"SingleChildScrollView(child: Column(children: []));", dica:"<b>SingleChildScrollView</b> rola um conteúdo que não cabe.", out:"rolável" },
+    { cod:"var ctrl = ScrollController();", dica:"O <b>ScrollController</b> controla a rolagem.", out:"controle" },
+    { cod:"ListView(controller: ctrl, children: []);", dica:"Ligue o controller à lista.", out:"conectado" },
+    { cod:"ctrl.animateTo(0, duration: Duration(seconds: 1), curve: Curves.ease);", dica:"<b>animateTo</b> rola suavemente até um ponto.", out:"volta ao topo" },
+    { cod:"RefreshIndicator(onRefresh: recarregar, child: ListView(children: []));", dica:"<b>RefreshIndicator</b> ativa o puxar-para-atualizar.", out:"puxa e atualiza" },
+    { cod:"Scrollbar(child: ListView(children: []));", dica:"<b>Scrollbar</b> mostra a barra de rolagem.", out:"com barra" },
+    { cod:"SingleChildScrollView(scrollDirection: Axis.horizontal, child: Row(children: []));", dica:"<b>scrollDirection</b> rola na horizontal.", out:"rola de lado" },
+  ]},
+
+  { nome:"Abas", emoji:"🗂️", trechos:[
+    { cod:"DefaultTabController(length: 3, child: Tela());", dica:"<b>DefaultTabController</b> coordena as abas.", out:"3 abas" },
+    { cod:"TabBar(tabs: [Tab(text: 'A'), Tab(text: 'B')]);", dica:"<b>TabBar</b> mostra as abas no topo.", out:"barra de abas" },
+    { cod:"Tab(icon: Icon(Icons.home), text: 'Início');", dica:"Uma <b>Tab</b> pode ter ícone e texto.", out:"aba com ícone" },
+    { cod:"TabBarView(children: [Tela1(), Tela2()]);", dica:"<b>TabBarView</b> mostra o conteúdo de cada aba.", out:"conteúdo" },
+    { cod:"AppBar(bottom: TabBar(tabs: []));", dica:"Coloque a TabBar na base da AppBar.", out:"abas na barra" },
+    { cod:"var tc = TabController(length: 2, vsync: this);", dica:"Controle as abas manualmente com <b>TabController</b>.", out:"controle manual" },
+    { cod:"TabBar(isScrollable: true, tabs: []);", dica:"<b>isScrollable</b> permite muitas abas roláveis.", out:"abas roláveis" },
+  ]},
+
+  { nome:"Responsivo", emoji:"📱", trechos:[
+    { cod:"var w = MediaQuery.of(context).size.width;", dica:"<b>MediaQuery</b> informa o tamanho da tela.", out:"largura" },
+    { cod:"LayoutBuilder(builder: (c, con) => Text('${con.maxWidth}'));", dica:"<b>LayoutBuilder</b> reage ao espaço disponível.", out:"adapta" },
+    { cod:"SafeArea(child: Text('Oi'));", dica:"<b>SafeArea</b> evita o notch e as bordas do sistema.", out:"área segura" },
+    { cod:"OrientationBuilder(builder: (c, o) => Text('$o'));", dica:"<b>OrientationBuilder</b> detecta retrato ou paisagem.", out:"orientação" },
+    { cod:"if (largura > 600) return Tablet();", dica:"Escolha o layout conforme o tamanho da tela.", out:"tablet vs celular" },
+    { cod:"var top = MediaQuery.of(context).padding.top;", dica:"Descubra o espaço da barra de status.", out:"altura do topo" },
+    { cod:"FractionallySizedBox(widthFactor: 0.5, child: A());", dica:"<b>FractionallySizedBox</b> ocupa uma fração do pai.", out:"metade" },
+  ]},
+
+  { nome:"Formulário+", emoji:"📝", trechos:[
+    { cod:"final chave = GlobalKey<FormState>();", dica:"A <b>GlobalKey</b> dá acesso ao estado do formulário.", out:"referência" },
+    { cod:"Form(key: chave, child: Column(children: []));", dica:"<b>Form</b> agrupa e valida vários campos.", out:"formulário" },
+    { cod:"TextFormField(validator: (v) => v!.isEmpty ? 'Obrigatório' : null);", dica:"<b>validator</b> checa o valor e devolve o erro.", out:"valida campo" },
+    { cod:"if (chave.currentState!.validate()) enviar();", dica:"<b>validate</b> roda todos os validadores.", out:"valida tudo" },
+    { cod:"TextFormField(onSaved: (v) => nome = v!);", dica:"<b>onSaved</b> guarda o valor no envio.", out:"salva" },
+    { cod:"chave.currentState!.save();", dica:"<b>save</b> dispara todos os onSaved.", out:"salva tudo" },
+    { cod:"TextFormField(decoration: InputDecoration(errorText: erro));", dica:"Mostre a mensagem de erro no campo.", out:"com erro" },
+  ]},
+
+  { nome:"Estado compartilhado", emoji:"🔗", trechos:[
+    { cod:"final contador = ValueNotifier<int>(0);", dica:"<b>ValueNotifier</b> guarda um valor observável.", out:"valor reativo" },
+    { cod:"ValueListenableBuilder(valueListenable: contador, builder: (c, v, _) => Text('$v'));", dica:"Reconstrói só quando o valor muda.", out:"escuta o valor" },
+    { cod:"contador.value++;", dica:"Mudar o <b>value</b> avisa os ouvintes.", out:"atualiza" },
+    { cod:"class Loja extends InheritedWidget {}", dica:"<b>InheritedWidget</b> compartilha dados na árvore.", out:"dados globais" },
+    { cod:"Loja.of(context);", dica:"<b>of</b> busca o dado mais próximo na árvore.", out:"acessa de baixo" },
+    { cod:"contador.addListener(() => print('mudou'));", dica:"<b>addListener</b> reage a cada mudança.", out:"observa" },
+    { cod:"contador.dispose();", dica:"Libere o notifier quando não precisar mais.", out:"limpa" },
+  ]},
+
+  { nome:"Provider", emoji:"🧩", trechos:[
+    { cod:"class Contador extends ChangeNotifier {}", dica:"<b>ChangeNotifier</b> avisa a UI quando o estado muda.", out:"modelo reativo" },
+    { cod:"void somar() {\n  n++;\n  notifyListeners();\n}", dica:"<b>notifyListeners</b> redesenha quem escuta.", out:"notifica" },
+    { cod:"ChangeNotifierProvider(create: (_) => Contador(), child: App());", dica:"O <b>Provider</b> disponibiliza o modelo na árvore.", out:"fornece" },
+    { cod:"context.watch<Contador>().n;", dica:"<b>watch</b> lê o valor e reconstrói ao mudar.", out:"observa" },
+    { cod:"context.read<Contador>().somar();", dica:"<b>read</b> chama um método sem reconstruir.", out:"age" },
+    { cod:"Consumer<Contador>(builder: (c, m, _) => Text('${m.n}'));", dica:"<b>Consumer</b> reconstrói só o trecho que usa o modelo.", out:"consome" },
+    { cod:"Provider.of<Contador>(context);", dica:"<b>Provider.of</b> também acessa o modelo.", out:"acessa" },
+  ]},
+
+  { nome:"Slivers", emoji:"🌀", trechos:[
+    { cod:"CustomScrollView(slivers: []);", dica:"<b>CustomScrollView</b> combina áreas roláveis flexíveis.", out:"rolagem avançada" },
+    { cod:"SliverAppBar(title: Text('Topo'), floating: true);", dica:"<b>SliverAppBar</b> é uma barra que encolhe ao rolar.", out:"barra elástica" },
+    { cod:"SliverList(delegate: SliverChildListDelegate([]));", dica:"<b>SliverList</b> é uma lista dentro do CustomScrollView.", out:"lista sliver" },
+    { cod:"SliverToBoxAdapter(child: Container());", dica:"Encaixe um widget normal entre os slivers.", out:"adapta" },
+    { cod:"SliverGrid.count(crossAxisCount: 2, children: []);", dica:"Uma grade que rola junto com o resto.", out:"grade sliver" },
+    { cod:"SliverAppBar(expandedHeight: 200, flexibleSpace: FlexibleSpaceBar());", dica:"<b>expandedHeight</b> cria um cabeçalho grande.", out:"cabeçalho" },
+  ]},
+
+  { nome:"Widgets úteis", emoji:"🧰", trechos:[
+    { cod:"SafeArea(child: Text('Oi'));", dica:"<b>SafeArea</b> protege o conteúdo das bordas.", out:"seguro" },
+    { cod:"Visibility(visible: false, child: Text('some'));", dica:"<b>Visibility</b> mostra ou esconde um widget.", out:"ocultável" },
+    { cod:"Opacity(opacity: 0.5, child: A());", dica:"<b>Opacity</b> deixa um widget semitransparente.", out:"translúcido" },
+    { cod:"ClipRRect(borderRadius: BorderRadius.circular(12), child: A());", dica:"<b>ClipRRect</b> arredonda os cantos do filho.", out:"cantos redondos" },
+    { cod:"Transform.rotate(angle: 0.5, child: A());", dica:"<b>Transform</b> gira, move ou escala um widget.", out:"girado" },
+    { cod:"FittedBox(child: Text('grande'));", dica:"<b>FittedBox</b> ajusta o filho ao espaço.", out:"encaixa" },
+    { cod:"Tooltip(message: 'Ajuda', child: Icon(Icons.info));", dica:"<b>Tooltip</b> mostra uma dica ao segurar.", out:"dica flutuante" },
+    { cod:"AspectRatio(aspectRatio: 16 / 9, child: A());", dica:"<b>AspectRatio</b> mantém a proporção.", out:"proporção fixa" },
+  ]},
+
+]}
+,
+
+/* ========= TRILHA 7 — DESAFIOS (código maior · problemas básicos) ========= */
+{ nivel:"Desafios", emoji:"🧩", licoes:[
+
+  { nome:"Números", emoji:"🔢", trechos:[
+    { cod:"for (var i = 1; i <= 15; i++) {\n  if (i % 15 == 0) {\n    print('FizzBuzz');\n  } else if (i % 3 == 0) {\n    print('Fizz');\n  } else if (i % 5 == 0) {\n    print('Buzz');\n  } else {\n    print(i);\n  }\n}", dica:"<b>FizzBuzz</b>: Fizz para múltiplos de 3, Buzz para 5, FizzBuzz para ambos.", out:"1 2 Fizz 4 Buzz Fizz 7 8 Fizz Buzz 11 Fizz 13 14 FizzBuzz" },
+    { cod:"int fatorial(int n) {\n  var r = 1;\n  for (var i = 2; i <= n; i++) {\n    r *= i;\n  }\n  return r;\n}", dica:"<b>Fatorial</b>: multiplica todos os números de 1 até n.", out:"fatorial(5) = 120" },
+    { cod:"void fibonacci(int n) {\n  var a = 0, b = 1;\n  for (var i = 0; i < n; i++) {\n    print(a);\n    var soma = a + b;\n    a = b;\n    b = soma;\n  }\n}", dica:"<b>Fibonacci</b>: cada número é a soma dos dois anteriores.", out:"0 1 1 2 3 5 8 13..." },
+    { cod:"bool ehPrimo(int n) {\n  if (n < 2) return false;\n  for (var i = 2; i * i <= n; i++) {\n    if (n % i == 0) return false;\n  }\n  return true;\n}", dica:"<b>Primo</b>: só divisível por 1 e por ele mesmo.", out:"ehPrimo(7) = true" },
+    { cod:"int mdc(int a, int b) {\n  while (b != 0) {\n    var t = b;\n    b = a % b;\n    a = t;\n  }\n  return a;\n}", dica:"<b>MDC</b> pelo algoritmo de Euclides.", out:"mdc(12, 8) = 4" },
+    { cod:"int somaDigitos(int n) {\n  var soma = 0;\n  while (n > 0) {\n    soma += n % 10;\n    n = n ~/ 10;\n  }\n  return soma;\n}", dica:"<b>Soma dos dígitos</b> de um número.", out:"somaDigitos(123) = 6" },
+  ]},
+
+  { nome:"Textos", emoji:"🔤", trechos:[
+    { cod:"bool ehPalindromo(String s) {\n  var invertida = s.split('').reversed.join();\n  return s == invertida;\n}", dica:"<b>Palíndromo</b>: lê igual de trás pra frente.", out:"ehPalindromo('arara') = true" },
+    { cod:"int contarVogais(String s) {\n  var total = 0;\n  for (var c in s.toLowerCase().split('')) {\n    if ('aeiou'.contains(c)) total++;\n  }\n  return total;\n}", dica:"<b>Conte as vogais</b> de um texto.", out:"contarVogais('Dart') = 1" },
+    { cod:"String inverter(String frase) {\n  var palavras = frase.split(' ');\n  return palavras.reversed.join(' ');\n}", dica:"<b>Inverta a ordem</b> das palavras.", out:"'oi mundo' vira 'mundo oi'" },
+    { cod:"int contarPalavras(String frase) {\n  var palavras = frase.split(' ');\n  var total = 0;\n  for (var p in palavras) {\n    if (p.isNotEmpty) total++;\n  }\n  return total;\n}", dica:"<b>Conte as palavras</b> de uma frase.", out:"3 palavras" },
+    { cod:"String capitalizar(String frase) {\n  return frase.split(' ').map((p) {\n    return p[0].toUpperCase() + p.substring(1);\n  }).join(' ');\n}", dica:"<b>Deixe maiúscula</b> a primeira letra de cada palavra.", out:"'ana bia' vira 'Ana Bia'" },
+    { cod:"int contarLetra(String s, String letra) {\n  var total = 0;\n  for (var c in s.split('')) {\n    if (c == letra) total++;\n  }\n  return total;\n}", dica:"<b>Conte quantas vezes</b> uma letra aparece.", out:"contarLetra('banana', 'a') = 3" },
+  ]},
+
+  { nome:"Listas", emoji:"📋", trechos:[
+    { cod:"int maiorDaLista(List<int> nums) {\n  var maior = nums[0];\n  for (var n in nums) {\n    if (n > maior) maior = n;\n  }\n  return maior;\n}", dica:"<b>Encontre o maior</b> número da lista.", out:"maior de [3, 9, 2] = 9" },
+    { cod:"double media(List<int> nums) {\n  var soma = 0;\n  for (var n in nums) {\n    soma += n;\n  }\n  return soma / nums.length;\n}", dica:"<b>Média</b>: soma dividida pela quantidade.", out:"media de [2, 4, 6] = 4.0" },
+    { cod:"List<int> pares(List<int> nums) {\n  var resultado = <int>[];\n  for (var n in nums) {\n    if (n % 2 == 0) resultado.add(n);\n  }\n  return resultado;\n}", dica:"<b>Filtre</b> apenas os números pares.", out:"pares de [1..6] = [2, 4, 6]" },
+    { cod:"void bubbleSort(List<int> lista) {\n  for (var i = 0; i < lista.length - 1; i++) {\n    for (var j = 0; j < lista.length - 1 - i; j++) {\n      if (lista[j] > lista[j + 1]) {\n        var t = lista[j];\n        lista[j] = lista[j + 1];\n        lista[j + 1] = t;\n      }\n    }\n  }\n}", dica:"<b>Bubble sort</b>: ordena trocando vizinhos fora de ordem.", out:"[3, 1, 2] vira [1, 2, 3]" },
+    { cod:"List<int> semDuplicados(List<int> nums) {\n  var vistos = <int>{};\n  var resultado = <int>[];\n  for (var n in nums) {\n    if (vistos.add(n)) resultado.add(n);\n  }\n  return resultado;\n}", dica:"<b>Remova os repetidos</b> mantendo a ordem.", out:"[1, 1, 2, 3] vira [1, 2, 3]" },
+    { cod:"int buscar(List<int> nums, int alvo) {\n  for (var i = 0; i < nums.length; i++) {\n    if (nums[i] == alvo) return i;\n  }\n  return -1;\n}", dica:"<b>Busca linear</b>: devolve a posição, ou -1.", out:"buscar 7 em [4, 7, 9] = 1" },
+  ]},
+
+  { nome:"Funções", emoji:"🧠", trechos:[
+    { cod:"void converter(double celsius) {\n  var fahrenheit = celsius * 9 / 5 + 32;\n  var kelvin = celsius + 273.15;\n  print('$fahrenheit F');\n  print('$kelvin K');\n}", dica:"<b>Converta</b> Celsius em Fahrenheit e Kelvin.", out:"25 C → 77.0 F e 298.15 K" },
+    { cod:"num calcular(num a, num b, String op) {\n  switch (op) {\n    case '+':\n      return a + b;\n    case '-':\n      return a - b;\n    case '*':\n      return a * b;\n    default:\n      return a / b;\n  }\n}", dica:"<b>Calculadora</b> simples com as quatro operações.", out:"calcular(6, 2, '/') = 3.0" },
+    { cod:"String situacao(List<double> notas) {\n  var soma = 0.0;\n  for (var n in notas) {\n    soma += n;\n  }\n  var media = soma / notas.length;\n  return media >= 6 ? 'Aprovado' : 'Reprovado';\n}", dica:"<b>Aprovado ou reprovado</b> pela média das notas.", out:"[7, 8, 5] → Aprovado" },
+    { cod:"Map<String, int> contar(List<String> itens) {\n  var contagem = <String, int>{};\n  for (var item in itens) {\n    contagem[item] = (contagem[item] ?? 0) + 1;\n  }\n  return contagem;\n}", dica:"<b>Conte as ocorrências</b> de cada item.", out:"['a','b','a'] → {a: 2, b: 1}" },
+    { cod:"int contarPares(List<int> nums) {\n  var total = 0;\n  for (var n in nums) {\n    if (n.isEven) total++;\n  }\n  return total;\n}", dica:"<b>Quantos números pares</b> há na lista?", out:"[1, 2, 3, 4] → 2" },
+    { cod:"bool ehBissexto(int ano) {\n  if (ano % 400 == 0) return true;\n  if (ano % 100 == 0) return false;\n  return ano % 4 == 0;\n}", dica:"<b>Ano bissexto</b>: divisível por 4, com a regra dos séculos.", out:"ehBissexto(2024) = true" },
+  ]},
+
+  { nome:"Classes", emoji:"🧱", trechos:[
+    { cod:"class Conta {\n  double saldo = 0;\n  void depositar(double v) {\n    saldo += v;\n  }\n  bool sacar(double v) {\n    if (v > saldo) return false;\n    saldo -= v;\n    return true;\n  }\n}", dica:"<b>Conta bancária</b>: deposita e saca se houver saldo.", out:"deposita e saca do saldo" },
+    { cod:"class Retangulo {\n  double largura, altura;\n  Retangulo(this.largura, this.altura);\n  double get area => largura * altura;\n  double get perimetro => 2 * (largura + altura);\n}", dica:"<b>Retângulo</b> com área e perímetro calculados.", out:"Retangulo(3, 4): area 12" },
+    { cod:"class Pilha {\n  final _itens = <int>[];\n  void empilhar(int x) => _itens.add(x);\n  int desempilhar() => _itens.removeLast();\n  bool get vazia => _itens.isEmpty;\n}", dica:"<b>Pilha</b>: o último a entrar é o primeiro a sair.", out:"empilha e desempilha" },
+    { cod:"class Carrinho {\n  final itens = <String, double>{};\n  void adicionar(String nome, double preco) {\n    itens[nome] = preco;\n  }\n  double get total {\n    var soma = 0.0;\n    for (var p in itens.values) {\n      soma += p;\n    }\n    return soma;\n  }\n}", dica:"<b>Carrinho</b> que soma o total dos itens.", out:"soma o total das compras" },
+    { cod:"class Contador {\n  int _valor = 0;\n  int get valor => _valor;\n  void incrementar() => _valor++;\n  void resetar() => _valor = 0;\n}", dica:"<b>Contador</b> com incrementar, ler e resetar.", out:"conta, lê e reseta" },
+    { cod:"class Temperatura {\n  double celsius;\n  Temperatura(this.celsius);\n  double get fahrenheit => celsius * 9 / 5 + 32;\n  double get kelvin => celsius + 273.15;\n}", dica:"<b>Temperatura</b> que converte para Fahrenheit e Kelvin.", out:"converte C em F e K" },
+  ]}
+
+]}
+];
+
+</script>
+<script>
+/* =====================================================================
+   FlutterView — mini interpretador Flutter → HTML (subconjunto do curso)
+   Analisa a expressão de widget do exercício e renderiza uma prévia real.
+   API:  FlutterView.render(codigoDart) -> { kind:'live'|'concept', html, label }
+   ===================================================================== */
+(function (global) {
+  "use strict";
+
+  /* ---------------- Tokenizer ---------------- */
+  function tokenize(src) {
+    const toks = []; let i = 0; const n = src.length;
+    const idc = c => /[A-Za-z0-9_$]/.test(c);
+    while (i < n) {
+      const c = src[i];
+      if (c === ' ' || c === '\n' || c === '\t' || c === '\r') { i++; continue; }
+      if (c === "'" || c === '"') {
+        const q = c; let j = i + 1, s = '';
+        while (j < n && src[j] !== q) { if (src[j] === '\\') { s += src[j + 1]; j += 2; } else { s += src[j]; j++; } }
+        toks.push({ t: 'str', v: s }); i = j + 1; continue;
+      }
+      if (/[0-9]/.test(c) || (c === '.' && /[0-9]/.test(src[i + 1] || ''))) {
+        let j = i; while (j < n && /[0-9._]/.test(src[j])) j++;
+        toks.push({ t: 'num', v: parseFloat(src.slice(i, j).replace(/_/g, '')) }); i = j; continue;
+      }
+      if (/[A-Za-z_$]/.test(c)) { let j = i; while (j < n && idc(src[j])) j++; toks.push({ t: 'id', v: src.slice(i, j) }); i = j; continue; }
+      if (c === '=' && src[i + 1] === '>') { toks.push({ t: 'op', v: '=>' }); i += 2; continue; }
+      if ('()[]{},:.;'.includes(c)) { toks.push({ t: 'p', v: c }); i++; continue; }
+      let j = i; while (j < n && !idc(src[j]) && !" \n\t\r()[]{},:;.".includes(src[j]) && src[j] !== "'" && src[j] !== '"') j++;
+      toks.push({ t: 'op', v: src.slice(i, j) }); i = Math.max(j, i + 1);
+    }
+    return toks;
+  }
+
+  /* ---------------- Parser (subconjunto de expressões) ---------------- */
+  function parse(toks) {
+    let p = 0;
+    const peek = () => toks[p], nx = () => toks[p++];
+    const eat = v => (peek() && peek().v === v) ? (nx(), true) : false;
+
+    function parseValue() {
+      const tk = peek();
+      if (!tk) return { t: 'nil' };
+      if (tk.t === 'str') { nx(); return { t: 'str', v: tk.v }; }
+      if (tk.t === 'num') { nx(); return { t: 'num', v: tk.v }; }
+      if (tk.t === 'p' && tk.v === '[') {
+        nx(); const items = [];
+        while (peek() && peek().v !== ']') { items.push(parseValue()); eat(','); }
+        eat(']'); return { t: 'list', items };
+      }
+      if (tk.t === 'p' && tk.v === '(') return parseLambda();
+      if (tk.t === 'id') {
+        let name = nx().v;
+        while (peek() && peek().v === '.') { nx(); const seg = peek(); if (seg && seg.t === 'id') { nx(); name += '.' + seg.v; } else break; }
+        if (peek() && peek().v === '(') { const args = parseArgs(); skipTail(); return { t: 'call', name, args }; }
+        skipTail(); return { t: 'ident', name };
+      }
+      nx(); return { t: 'nil' };
+    }
+    // pula encadeamentos pós-fixados que não afetam a prévia: .method(...), .prop
+    function skipTail() {
+      while (peek() && peek().v === '.') {
+        nx(); const seg = peek(); if (!seg || seg.t !== 'id') break; nx();
+        if (peek() && peek().v === '(') { let d = 0; do { const v = peek() && peek().v; if (v === '(') d++; else if (v === ')') d--; nx(); } while (peek() && d > 0); }
+      }
+    }
+    function parseLambda() {
+      nx(); const params = [];
+      while (peek() && peek().v !== ')') { if (peek().t === 'id') params.push(peek().v); nx(); eat(','); }
+      eat(')');
+      let body = null;
+      if (peek() && peek().v === '=>') { nx(); body = parseValue(); }
+      else if (peek() && peek().v === '{') { let d = 0; do { const v = peek() && peek().v; if (v === '{') d++; else if (v === '}') d--; nx(); } while (peek() && d > 0); }
+      return { t: 'lambda', params, body };
+    }
+    function parseArgs() {
+      nx(); const args = [];
+      while (peek() && peek().v !== ')') {
+        let nm = null;
+        if (peek().t === 'id' && toks[p + 1] && toks[p + 1].v === ':') { nm = nx().v; nx(); }
+        args.push({ name: nm, value: parseValue() }); eat(',');
+      }
+      eat(')'); return args;
+    }
+    return parseValue();
+  }
+
+  /* ---------------- Helpers ---------------- */
+  const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const argMap = node => { const m = { _pos: [] }; if (node && node.args) for (const a of node.args) { if (a.name) m[a.name] = a.value; else m._pos.push(a.value); } return m; };
+  const numOf = (node, d) => (node && node.t === 'num') ? node.v : d;
+  const tail = node => (node && node.name) ? node.name.split('.').pop() : null;
+
+  const COLORS = { red:'#EF5350', pink:'#EC407A', purple:'#AB47BC', deepPurple:'#7E57C2', indigo:'#5C6BC0', blue:'#42A5F5', lightBlue:'#29B6F6', cyan:'#26C6DA', teal:'#26A69A', green:'#66BB6A', lightGreen:'#9CCC65', lime:'#D4E157', yellow:'#FFEE58', amber:'#FFCA28', orange:'#FFA726', deepOrange:'#FF7043', brown:'#8D6E63', grey:'#BDBDBD', gray:'#BDBDBD', blueGrey:'#78909C', black:'#212121', black87:'#212121', black54:'#616161', white:'#FFFFFF', white70:'#E0E0E0', transparent:'transparent' };
+  function colorOf(node) {
+    if (!node) return null;
+    if (node.t === 'ident') { const p = node.name.split('.'); if (p[0] === 'Colors') return COLORS[p[1]] || '#90A4AE'; return null; }
+    if (node.t === 'call') { const p = node.name.split('.'); if (p[0] === 'Color') return '#90A4AE'; if (p[0] === 'Colors') return COLORS[p[1]] || '#90A4AE'; }
+    return null;
+  }
+  function strOf(node, ctx) {
+    if (!node) return '';
+    if (node.t === 'str') return subst(node.v, ctx);
+    if (node.t === 'num') return String(node.v);
+    if (node.t === 'ident') return '';
+    return '';
+  }
+  // interpolação '$var' / '${...}' -> valor de amostra do contexto (ou remove marcadores)
+  function subst(s, ctx) {
+    ctx = ctx || {};
+    return String(s)
+      .replace(/\$\{([^}]*)\}/g, (_, e) => sampleFor(e.trim(), ctx))
+      .replace(/\$([A-Za-z_][A-Za-z0-9_]*)/g, (_, id) => (id in ctx ? ctx[id] : ''));
+  }
+  function sampleFor(expr, ctx) {
+    if (expr in ctx) return ctx[expr];
+    const m = expr.match(/^([A-Za-z_][A-Za-z0-9_]*)/);
+    if (m && m[1] in ctx) return String(expr.replace(m[1], ctx[m[1]]));
+    return '';
+  }
+
+  function edge(node) {
+    if (!node || node.t !== 'call') return null;
+    const m = argMap(node), k = node.name.split('.')[1];
+    if (k === 'all') { const v = numOf(m._pos[0], 0); return { t: v, r: v, b: v, l: v }; }
+    if (k === 'symmetric') { const h = numOf(m.horizontal, 0), v = numOf(m.vertical, 0); return { t: v, b: v, l: h, r: h }; }
+    if (k === 'only') { return { t: numOf(m.top, 0), b: numOf(m.bottom, 0), l: numOf(m.left, 0), r: numOf(m.right, 0) }; }
+    if (k === 'fromLTRB') { return { l: numOf(m._pos[0], 0), t: numOf(m._pos[1], 0), r: numOf(m._pos[2], 0), b: numOf(m._pos[3], 0) }; }
+    return null;
+  }
+  const edgeCss = e => e ? `${e.t}px ${e.r}px ${e.b}px ${e.l}px` : '0';
+  function brad(node) { if (!node || node.t !== 'call') return 0; const m = argMap(node); return numOf(m._pos[0], numOf(m.circular || m._pos[0], 8)); }
+  function bord(node) { if (!node || node.t !== 'call') return '1px solid #90A4AE'; const m = argMap(node); const c = colorOf(m.color) || '#90A4AE'; const w = numOf(m.width, 1); return `${w}px solid ${c}`; }
+
+  function textStyle(node, ctx) {
+    const s = {}; if (!node || node.t !== 'call') return s;
+    const m = argMap(node);
+    const c = colorOf(m.color); if (c) s.color = c;
+    const fs = numOf(m.fontSize, null); if (fs) s['font-size'] = fs + 'px';
+    if (m.fontWeight) { const w = tail(m.fontWeight) || ''; if (/bold|w[6-9]/.test(w)) s['font-weight'] = '700'; }
+    if (m.fontStyle && /italic/.test(tail(m.fontStyle) || '')) s['font-style'] = 'italic';
+    if (m.letterSpacing) s['letter-spacing'] = numOf(m.letterSpacing, 0) + 'px';
+    if (m.decoration && /underline/.test(tail(m.decoration) || '')) s['text-decoration'] = 'underline';
+    return s;
+  }
+  const styleStr = o => Object.entries(o).map(([k, v]) => `${k}:${v}`).join(';');
+
+  const MAIN = { start:'flex-start', end:'flex-end', center:'center', spaceBetween:'space-between', spaceAround:'space-around', spaceEvenly:'space-evenly' };
+  const CROSS = { start:'flex-start', end:'flex-end', center:'center', stretch:'stretch', baseline:'baseline' };
+  function alignCss(t) {
+    const map = {
+      center:['center','center'], topLeft:['flex-start','flex-start'], topCenter:['flex-start','center'], topRight:['flex-start','flex-end'],
+      centerLeft:['center','flex-start'], centerRight:['center','flex-end'], bottomLeft:['flex-end','flex-start'], bottomCenter:['flex-end','center'], bottomRight:['flex-end','flex-end']
+    };
+    const a = map[t] || map.center; return `align-items:${a[0]};justify-content:${a[1]}`;
+  }
+
+  /* ---------------- Ícones (lucide-style) ---------------- */
+  const IP = {
+    star:'M12 2l2.9 6.3 6.8.6-5.1 4.5 1.5 6.7L12 17l-6 3.6 1.5-6.7L2.4 9.5l6.8-.6z',
+    home:'M3 10l9-7 9 7v9a2 2 0 0 1-2 2h-4v-6H9v6H5a2 2 0 0 1-2-2z',
+    favorite:'M12 21s-7.5-4.7-10-9C.5 8 2 4 6 4c2 0 3.2 1.3 4 2.3C10.8 5.3 12 4 14 4c4 0 5.5 4 4 8-2.5 4.3-10 9-10 9z',
+    settings:'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z|M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.4 1a7 7 0 0 0-1.7-1L14.5 3h-4l-.3 2.6a7 7 0 0 0-1.7 1l-2.4-1-2 3.4L4.1 11a7 7 0 0 0 0 2l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 1.7 1l.3 2.6h4l.3-2.6a7 7 0 0 0 1.7-1l2.4 1 2-3.4-2-1.6a7 7 0 0 0 .1-1z',
+    add:'M12 5v14M5 12h14', remove:'M5 12h14', menu:'M3 6h18M3 12h18M3 18h18',
+    search:'M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.3-4.3',
+    person:'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',
+    check:'M20 6L9 17l-5-5', close:'M18 6L6 18M6 6l12 12',
+    delete:'M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14',
+    arrow_back:'M19 12H5M12 19l-7-7 7-7', arrow_forward:'M5 12h14M12 5l7 7-7 7',
+    arrow_upward:'M12 19V5M5 12l7-7 7 7', arrow_downward:'M12 5v14M5 12l7 7 7-7',
+    edit:'M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z',
+    share:'M18 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM18 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM8.6 13.5l6.8 4M15.4 6.5l-6.8 4',
+    email:'M4 6h16v12H4zM4 7l8 6 8-6', phone:'M22 16.9v3a2 2 0 0 1-2.2 2A19 19 0 0 1 3 5.2 2 2 0 0 1 5 3h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.4 2.1L9 12a16 16 0 0 0 3 3l1.6-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.6 2.6.7a2 2 0 0 1 1.7 2z',
+    camera:'M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z',
+    image:'M3 3h18v18H3zM3 15l5-5 4 4 3-3 6 6M9 9a2 2 0 1 0 0-.1',
+    shopping_cart:'M9 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM20 22a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6',
+    notifications:'M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0',
+    info:'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 16v-4M12 8h.01',
+    warning:'M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01',
+    thumb_up:'M7 10v11H4a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1zM7 10l4-8a3 3 0 0 1 3 3v3h5a2 2 0 0 1 2 2.4l-1.4 7A2 2 0 0 1 17.6 21H7',
+    location_on:'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0zM12 12a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
+    more_vert:'M12 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM12 13a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM12 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2z',
+    chevron_right:'M9 6l6 6-6 6', chevron_left:'M15 6l-6 6 6 6', done:'M20 6L9 17l-5-5',
+    play_arrow:'M6 4l14 8-14 8z', pause:'M7 4h4v16H7zM15 4h4v16h-4z', refresh:'M23 4v6h-6M1 20v-6h6M3.5 9a9 9 0 0 1 15-3.4L23 10M1 14l4.5 4.4A9 9 0 0 0 20.5 15',
+    lock:'M5 11h14v10H5zM8 11V7a4 4 0 1 1 8 0v4', map:'M9 3L3 6v15l6-3 6 3 6-3V3l-6 3-6-3z',
+    calendar:'M3 5h18v16H3zM3 9h18M8 3v4M16 3v4', flutter:'M12 2L2 12l3 3 13-13zM12 22l6-6-3-3-6 6z'
+  };
+  function icon(nm, size, col) {
+    size = size || 24; col = col || '#212121';
+    const key = (nm || '').replace(/[^a-z_]/gi, '');
+    const d = IP[key];
+    if (!d) return `<span style="display:inline-block;width:${size}px;height:${size}px;border-radius:3px;background:${col};opacity:.85"></span>`;
+    const paths = d.split('|').map(p => `<path d="${p}"/>`).join('');
+    const filled = /favorite|star|thumb_up|home/.test(key);
+    return `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="${filled ? col : 'none'}" stroke="${col}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle">${paths}</svg>`;
+  }
+
+  function btn(label, kind) {
+    const base = 'font:600 14px Roboto,system-ui;padding:8px 18px;border-radius:6px;cursor:pointer;border:none;letter-spacing:.3px';
+    if (kind === 'text') return `<button class="fv-btn" style="${base};background:transparent;color:#1565C0">${label}</button>`;
+    if (kind === 'outlined') return `<button class="fv-btn" style="${base};background:transparent;color:#1565C0;border:1px solid #90CAF9">${label}</button>`;
+    return `<button class="fv-btn" style="${base};background:#1565C0;color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.3)">${label}</button>`;
+  }
+  function hintOf(node) {
+    if (!node || node.t !== 'call') return '';
+    const m = argMap(node);
+    if (m.hintText) return strOf(m.hintText) || '';
+    if (m.labelText) return strOf(m.labelText) || '';
+    return '';
+  }
+  function delegateItems(node, ctx) {
+    if (!node || node.t !== 'call') return [];
+    const m = argMap(node); const first = m._pos[0];
+    if (first && first.t === 'list') return first.items.map(x => W(x, ctx));
+    const b = (first && first.t === 'lambda') ? first : m.builder;
+    if (b && b.t === 'lambda') { const cnt = Math.min(numOf(m.childCount, 3), 4) || 3; const out = []; for (let k = 0; k < cnt; k++) { const c2 = Object.assign({}, ctx); if (b.params && b.params[1]) c2[b.params[1]] = k; out.push(b.body ? W(b.body, c2) : ''); } return out; }
+    return [];
+  }
+
+  /* ---------------- Renderer ---------------- */
+  function W(node, ctx) {
+    ctx = ctx || {};
+    if (!node) return '';
+    if (node.t === 'str') return esc(subst(node.v, ctx));
+    if (node.t === 'num') return esc(String(node.v));
+    if (node.t === 'list') return node.items.map(x => W(x, ctx)).join('');
+    if (node.t === 'ident') return '';
+    if (node.t === 'lambda') return node.body ? W(node.body, ctx) : '';
+    if (node.t !== 'call') return '';
+    const base = node.name.split('.')[0];
+    const sub = node.name.split('.')[1];
+    const m = argMap(node);
+    const child = () => m.child ? W(m.child, ctx) : '';
+    const kids = () => (m.children && m.children.t === 'list') ? m.children.items : [];
+
+    switch (base) {
+      case 'Text': return `<span style="${styleStr(Object.assign({ color:'#212121', font:'400 15px Roboto,system-ui' }, textStyle(m.style, ctx)))}">${esc(strOf(m._pos[0], ctx))}</span>`;
+      case 'Icon': return icon(tail(m._pos[0]), numOf(m.size, 24), colorOf(m.color) || '#455A64');
+      case 'SizedBox': {
+        const w = numOf(m.width, null), h = numOf(m.height, null);
+        return `<div style="display:inline-flex;${w != null ? `width:${w}px;` : ''}${h != null ? `height:${h}px;` : ''}">${child()}</div>`;
+      }
+      case 'Container': {
+        let bg = colorOf(m.color), radius = '', border = '', shadow = '';
+        if (m.decoration && m.decoration.t === 'call') {
+          const dm = argMap(m.decoration);
+          const dc = colorOf(dm.color); if (dc) bg = dc;
+          if (dm.borderRadius) radius = `border-radius:${brad(dm.borderRadius)}px;`;
+          if (dm.border) border = `border:${bord(dm.border)};`;
+          if (dm.shape && /circle/.test(tail(dm.shape) || '')) radius = 'border-radius:50%;';
+          if (dm.boxShadow) shadow = 'box-shadow:0 3px 8px rgba(0,0,0,.25);';
+        }
+        const w = numOf(m.width, null), h = numOf(m.height, null);
+        const pad = edge(m.padding), mar = edge(m.margin);
+        const al = m.alignment ? `display:flex;${alignCss(tail(m.alignment))};` : '';
+        const st = `box-sizing:border-box;${w != null ? `width:${w}px;` : ''}${h != null ? `height:${h}px;` : ''}${bg ? `background:${bg};` : ''}${pad ? `padding:${edgeCss(pad)};` : ''}${mar ? `margin:${edgeCss(mar)};` : ''}${radius}${border}${shadow}${al}${(!w && !h && !bg && !border) ? 'min-width:40px;min-height:40px;border:1px dashed #B0BEC5;' : ''}`;
+        return `<div style="${st}">${child()}</div>`;
+      }
+      case 'DecoratedBox': return W(Object.assign({}, node, { name: 'Container' }), ctx);
+      case 'Padding': return `<div style="display:inline-flex;padding:${edgeCss(edge(m.padding))}">${child()}</div>`;
+      case 'Center': return `<div style="display:flex;align-items:center;justify-content:center;width:100%;min-height:100%">${child()}</div>`;
+      case 'Align': return `<div style="display:flex;width:100%;min-height:100%;${alignCss(tail(m.alignment))}">${child()}</div>`;
+      case 'Column': case 'Row': {
+        const dir = base === 'Column' ? 'column' : 'row';
+        const mainA = MAIN[tail(m.mainAxisAlignment)] || 'flex-start';
+        const crossA = CROSS[tail(m.crossAxisAlignment)] || 'center';
+        const inner = kids().map(x => `<div style="flex:0 0 auto">${W(x, ctx)}</div>`).join('');
+        return `<div class="fv-stagger" style="display:flex;flex-direction:${dir};justify-content:${mainA};align-items:${crossA};gap:8px;${dir === 'row' ? '' : ''}">${inner || '<span style="color:#B0BEC5;font:italic 12px Roboto">vazio</span>'}</div>`;
+      }
+      case 'Stack': {
+        const inner = kids().map((x, i) => `<div style="position:${i === 0 ? 'relative' : 'absolute'};top:0;left:0">${W(x, ctx)}</div>`).join('');
+        return `<div style="position:relative;display:inline-block;min-width:56px;min-height:56px">${inner}</div>`;
+      }
+      case 'Positioned': return child();
+      case 'Expanded': case 'Flexible': return `<div style="flex:${numOf(m.flex, 1)} 1 0;min-width:0">${child()}</div>`;
+      case 'Spacer': return `<div style="flex:1"></div>`;
+      case 'Wrap': return `<div class="fv-stagger" style="display:flex;flex-wrap:wrap;gap:8px">${kids().map(x => `<div>${W(x, ctx)}</div>`).join('')}</div>`;
+      case 'Card': return `<div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.18);padding:6px;display:inline-block">${child()}</div>`;
+      case 'Divider': return `<div style="height:1px;background:rgba(0,0,0,.14);width:100%;margin:8px 0"></div>`;
+      case 'ElevatedButton': case 'FilledButton': return btn(child() || 'Botão', 'elevated');
+      case 'TextButton': return btn(child() || 'Texto', 'text');
+      case 'OutlinedButton': return btn(child() || 'Borda', 'outlined');
+      case 'IconButton': return `<button class="fv-btn" style="background:transparent;border:none;padding:8px;border-radius:50%;cursor:pointer">${m.icon ? W(m.icon, ctx) : icon('star', 24, '#455A64')}</button>`;
+      case 'FloatingActionButton': return `<button class="fv-btn" style="background:#1565C0;border:none;width:48px;height:48px;border-radius:50%;color:#fff;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.35);display:inline-flex;align-items:center;justify-content:center">${m.child ? W(m.child, ctx) : icon('add', 24, '#fff')}</button>`;
+      case 'ListTile': {
+        const lead = m.leading ? `<div style="margin-right:14px">${W(m.leading, ctx)}</div>` : '';
+        const title = m.title ? W(m.title, ctx) : '';
+        const st = m.subtitle ? `<div style="font:400 12px Roboto;color:#78909C;margin-top:2px">${W(m.subtitle, ctx)}</div>` : '';
+        const tr = m.trailing ? `<div style="margin-left:auto">${W(m.trailing, ctx)}</div>` : '';
+        return `<div style="display:flex;align-items:center;padding:12px 16px;width:100%;box-sizing:border-box">${lead}<div style="min-width:0"><div style="font:500 15px Roboto;color:#212121">${title}</div>${st}</div>${tr}</div>`;
+      }
+      case 'ListView': {
+        let arr;
+        if (sub === 'builder' || sub === 'separated') {
+          const b = m.itemBuilder; const cnt = Math.min(numOf(m.itemCount, 3), 5) || 3; arr = [];
+          for (let k = 0; k < cnt; k++) { const c2 = Object.assign({}, ctx); if (b && b.params) { if (b.params[1]) c2[b.params[1]] = k; else if (b.params[0]) c2[b.params[0]] = k; } arr.push(b && b.body ? W(b.body, c2) : ''); }
+        } else arr = kids().map(x => W(x, ctx));
+        return `<div class="fv-stagger" style="width:100%;display:flex;flex-direction:column">${arr.map(h => `<div style="border-bottom:1px solid rgba(0,0,0,.06)">${h}</div>`).join('')}</div>`;
+      }
+      case 'GridView': {
+        const cols = numOf(m.crossAxisCount, sub === 'count' ? 2 : 2) || 2;
+        return `<div class="fv-stagger" style="display:grid;grid-template-columns:repeat(${cols},1fr);gap:8px;width:100%">${kids().map(x => `<div style="background:#E3F2FD;border-radius:6px;min-height:44px;display:flex;align-items:center;justify-content:center">${W(x, ctx)}</div>`).join('')}</div>`;
+      }
+      case 'Image': return `<div style="width:64px;height:64px;background:#ECEFF1;border-radius:6px;display:flex;align-items:center;justify-content:center">${icon('image', 30, '#90A4AE')}</div>`;
+      case 'CircleAvatar': return `<div style="width:44px;height:44px;border-radius:50%;background:${colorOf(m.backgroundColor) || '#B0BEC5'};color:#fff;display:flex;align-items:center;justify-content:center;font:600 15px Roboto">${m.child ? W(m.child, ctx) : ''}</div>`;
+      case 'Chip': return `<span style="display:inline-flex;align-items:center;gap:6px;background:#ECEFF1;border-radius:16px;padding:6px 12px;font:500 13px Roboto;color:#37474F">${m.avatar ? W(m.avatar, ctx) : ''}${m.label ? W(m.label, ctx) : ''}</span>`;
+      case 'Checkbox': { const on = m.value && tail(m.value) === 'true'; return `<span class="fv-check${on ? ' on' : ''}" data-fv="check"></span>`; }
+      case 'Switch': { const on = m.value && tail(m.value) === 'true'; return `<span class="fv-switch${on ? ' on' : ''}" data-fv="switch"><span class="fv-knob"></span></span>`; }
+      case 'Radio': { const on = m.value && m.groupValue && node.name && tail(m.value) === tail(m.groupValue); return `<span class="fv-radio${on ? ' on' : ''}" data-fv="radio"></span>`; }
+      case 'Slider': return `<span class="fv-slider" data-fv="slider"><span class="fv-strack"><span class="fv-sfill"></span></span><span class="fv-thumb"></span></span>`;
+      case 'TextField': case 'TextFormField': { const h = hintOf(m.decoration); return `<span class="fv-field">${esc(h) || 'Digite aqui…'}</span>`; }
+      case 'DropdownButton': return `<span class="fv-field" style="display:inline-flex;align-items:center;gap:10px;width:auto">Opção ${icon('chevron_right', 16, '#607D8B')}</span>`;
+      case 'AppBar': return `<div class="fv-appbar" style="background:#1565C0;color:#fff;padding:12px 16px;font:600 17px Roboto;display:flex;align-items:center;gap:14px">${m.leading ? W(m.leading, ctx) : icon('menu', 22, '#fff')}<span>${m.title ? W(m.title, ctx) : ''}</span></div>`;
+      case 'Scaffold': {
+        const bar = m.appBar ? W(m.appBar, ctx) : '';
+        const body = m.body ? `<div style="padding:16px;flex:1">${W(m.body, ctx)}</div>` : '';
+        const fab = m.floatingActionButton ? `<div style="position:absolute;right:16px;bottom:16px">${W(m.floatingActionButton, ctx)}</div>` : '';
+        return `<div style="position:relative;display:flex;flex-direction:column;height:100%;background:#FAFAFA">${bar}${body}${fab}</div>`;
+      }
+      case 'SafeArea': case 'Material': case 'Scrollbar': case 'SingleChildScrollView': case 'Flexible': case 'Builder': return child() || kids().map(x => W(x, ctx)).join('');
+      case 'FlutterLogo': return icon('flutter', 44, '#42A5F5');
+      case 'Placeholder': return `<div style="width:100%;height:60px;border:2px solid #90A4AE;position:relative"><div style="position:absolute;inset:0;background:linear-gradient(45deg,transparent 49%,#90A4AE 49% 51%,transparent 51%),linear-gradient(-45deg,transparent 49%,#90A4AE 49% 51%,transparent 51%)"></div></div>`;
+      case 'CircularProgressIndicator': return `<span class="fv-spin"></span>`;
+      case 'LinearProgressIndicator': return `<span style="display:block;width:80%;height:5px;border-radius:3px;background:#BBDEFB;overflow:hidden"><span style="display:block;width:60%;height:100%;background:#1565C0"></span></span>`;
+      case 'AnimatedContainer': { const bg = colorOf(m.color) || '#42A5F5'; const w = numOf(m.width, 70), h = numOf(m.height, 70); return `<div class="fv-anim" data-fv="anim" style="background:${bg};--w1:${w}px;--h1:${h}px"></div>`; }
+      case 'AnimatedOpacity': return `<div class="fv-anim-op" data-fv="fade">${child()}</div>`;
+      case 'Opacity': return `<div style="opacity:${numOf(m.opacity, 1)}">${child()}</div>`;
+      case 'Transform': return child();
+      case 'Tooltip': return child();
+      case 'GestureDetector': case 'InkWell': return child();
+      case 'MaterialApp': case 'CupertinoApp': case 'WidgetsApp': case 'DefaultTabController': case 'Form': case 'Hero': case 'FittedBox': case 'ConstrainedBox': case 'RefreshIndicator': case 'RepaintBoundary': case 'AbsorbPointer': case 'IgnorePointer': case 'PhysicalModel':
+        return m.home ? W(m.home, ctx) : (m.child ? child() : kids().map(x => W(x, ctx)).join(''));
+      case 'Visibility': { const vis = !(m.visible && tail(m.visible) === 'false'); return vis ? child() : `<span style="opacity:.3;font:italic 12px Roboto;color:#90A4AE">(oculto)</span>`; }
+      case 'ClipRRect': { const r = m.borderRadius ? brad(m.borderRadius) : 12; return `<div style="border-radius:${r}px;overflow:hidden;display:inline-block">${child()}</div>`; }
+      case 'ClipOval': return `<div style="border-radius:50%;overflow:hidden;display:inline-block">${child()}</div>`;
+      case 'AspectRatio': { const ar = numOf(m.aspectRatio, 1.5) || 1.5; const w = 96, h = Math.round(w / ar); return `<div style="width:${w}px;height:${h}px;background:#E3F2FD;border:1px solid #90CAF9;display:flex;align-items:center;justify-content:center">${child()}</div>`; }
+      case 'FractionallySizedBox': { const wf = numOf(m.widthFactor, 0.6) || 0.6; return `<div style="width:${Math.round(wf * 100)}%;background:#E3F2FD;border-radius:4px;min-height:30px">${child()}</div>`; }
+      case 'AlertDialog': case 'CupertinoAlertDialog': case 'SimpleDialog': case 'Dialog': {
+        const title = m.title ? `<div style="font:600 17px Roboto;color:#212121;margin-bottom:8px">${W(m.title, ctx)}</div>` : '';
+        const content = m.content ? `<div style="font:400 14px Roboto;color:#546E7A">${W(m.content, ctx)}</div>` : '';
+        const acts = (m.actions && m.actions.t === 'list') ? `<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px">${m.actions.items.map(x => W(x, ctx)).join('')}</div>` : '';
+        return `<div class="fv-dialog" style="background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.3);padding:20px;max-width:240px;box-sizing:border-box">${title}${content}${acts}</div>`;
+      }
+      case 'Drawer': return `<div class="fv-drawer" style="width:150px;background:#fff;box-shadow:2px 0 12px rgba(0,0,0,.2);border-radius:0 10px 10px 0;padding:8px 0;overflow:hidden">${(m.child ? [m.child] : kids()).map(x => W(x, ctx)).join('')}</div>`;
+      case 'BottomNavigationBar': case 'NavigationBar': {
+        const items = (m.items && m.items.t === 'list') ? m.items.items : (m.destinations && m.destinations.t === 'list' ? m.destinations.items : []);
+        const cells = items.map((it, i) => { const im = argMap(it); const ic = im.icon ? W(im.icon, ctx) : icon('home', 22, i === 0 ? '#1565C0' : '#90A4AE'); const lb = im.label ? esc(strOf(im.label, ctx)) : (im.title ? W(im.title, ctx) : ''); return `<div style="display:flex;flex-direction:column;align-items:center;gap:2px;color:${i === 0 ? '#1565C0' : '#90A4AE'};font:500 11px Roboto">${ic}<span>${lb}</span></div>`; }).join('');
+        return `<div style="display:flex;justify-content:space-around;align-items:center;background:#fff;box-shadow:0 -2px 8px rgba(0,0,0,.12);padding:8px 6px;width:100%;box-sizing:border-box">${cells || '<span style="color:#90A4AE;font:11px Roboto">itens</span>'}</div>`;
+      }
+      case 'BottomAppBar': return `<div style="display:flex;align-items:center;gap:16px;background:#fff;box-shadow:0 -2px 8px rgba(0,0,0,.12);padding:10px 16px;width:100%;box-sizing:border-box">${child()}</div>`;
+      case 'TabBar': { const tabs = (m.tabs && m.tabs.t === 'list') ? m.tabs.items : []; return `<div style="display:flex;background:#1565C0;width:100%">${tabs.map((tb, i) => `<div style="flex:1;text-align:center;padding:12px 8px;color:#fff;font:600 13px Roboto;border-bottom:${i === 0 ? '3px solid #fff' : '3px solid transparent'}">${W(tb, ctx)}</div>`).join('') || '<div style="padding:12px;color:#fff">abas</div>'}</div>`; }
+      case 'Tab': { const t = m.text ? esc(strOf(m.text, ctx)) : ''; const ic = m.icon ? W(m.icon, ctx) : ''; return `${ic}${t}`; }
+      case 'TabBarView': case 'PageView': return kids().length ? W(kids()[0], ctx) : child();
+      case 'CustomScrollView': { const sl = (m.slivers && m.slivers.t === 'list') ? m.slivers.items : []; return `<div style="width:100%;display:flex;flex-direction:column">${sl.map(x => W(x, ctx)).join('')}</div>`; }
+      case 'SliverAppBar': return `<div style="background:#1565C0;color:#fff;padding:14px 16px;font:600 17px Roboto">${m.title ? W(m.title, ctx) : 'AppBar'}</div>`;
+      case 'SliverToBoxAdapter': case 'SliverFillRemaining': case 'SliverPadding': return child();
+      case 'SliverList': case 'SliverFixedExtentList': { const items = delegateItems(m.delegate, ctx); return `<div class="fv-stagger" style="width:100%;display:flex;flex-direction:column">${items.map(h => `<div style="border-bottom:1px solid rgba(0,0,0,.06)">${h}</div>`).join('')}</div>`; }
+      case 'SliverGrid': { const items = delegateItems(m.delegate, ctx); return `<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%">${items.map(h => `<div style="background:#E3F2FD;border-radius:6px;min-height:40px;display:flex;align-items:center;justify-content:center">${h}</div>`).join('')}</div>`; }
+      case 'CupertinoButton': return `<button class="fv-btn" style="background:${m.color ? (colorOf(m.color) || '#007AFF') : 'transparent'};color:${m.color ? '#fff' : '#007AFF'};border:none;padding:9px 16px;border-radius:8px;font:500 15px -apple-system,Roboto;cursor:pointer">${child() || 'Botão'}</button>`;
+      case 'CupertinoNavigationBar': return `<div style="background:#F8F8F8;border-bottom:1px solid #ccc;text-align:center;padding:12px;font:600 16px -apple-system,Roboto;color:#000">${m.middle ? W(m.middle, ctx) : ''}</div>`;
+      case 'CupertinoPageScaffold': { const nav = m.navigationBar ? W(m.navigationBar, ctx) : ''; const body = m.child ? `<div style="padding:16px">${child()}</div>` : ''; return `<div style="background:#fff;height:100%">${nav}${body}</div>`; }
+      case 'CupertinoSwitch': { const on = m.value && tail(m.value) === 'true'; return `<span class="fv-switch${on ? ' on' : ''}" data-fv="switch">${''}<span class="fv-knob"></span></span>`; }
+      case 'CupertinoSlider': return `<span class="fv-slider" data-fv="slider"><span class="fv-strack"><span class="fv-sfill"></span></span><span class="fv-thumb"></span></span>`;
+      case 'CupertinoActivityIndicator': return `<span class="fv-spin"></span>`;
+      case 'AnimatedBuilder': case 'ValueListenableBuilder': case 'LayoutBuilder': case 'OrientationBuilder': case 'StreamBuilder': case 'FutureBuilder': { const b = m.builder; return (b && b.t === 'lambda' && b.body) ? W(b.body, ctx) : (m.child ? child() : ''); }
+      default:
+        if (m.child) return child();
+        if (m.children && m.children.t === 'list') return kids().map(x => W(x, ctx)).join('');
+        return '';
+    }
+  }
+
+  /* ---------------- Classificação: live vs conceito ---------------- */
+  const VISUAL = new Set(['Text','Icon','SizedBox','Container','DecoratedBox','Padding','Center','Align','Column','Row','Stack','Positioned','Expanded','Flexible','Spacer','Wrap','Card','Divider','ElevatedButton','FilledButton','TextButton','OutlinedButton','IconButton','FloatingActionButton','ListTile','ListView','GridView','Image','CircleAvatar','Chip','Checkbox','Switch','Radio','Slider','TextField','TextFormField','DropdownButton','AppBar','Scaffold','SafeArea','Material','FlutterLogo','Placeholder','CircularProgressIndicator','LinearProgressIndicator','AnimatedContainer','AnimatedOpacity','Opacity','SingleChildScrollView','Scrollbar','Tooltip','GestureDetector','InkWell','MaterialApp','CupertinoApp','DefaultTabController','Form','Hero','FittedBox','ConstrainedBox','RefreshIndicator','Visibility','ClipRRect','ClipOval','AspectRatio','FractionallySizedBox','AlertDialog','CupertinoAlertDialog','SimpleDialog','Dialog','Drawer','BottomNavigationBar','NavigationBar','BottomAppBar','TabBar','Tab','TabBarView','PageView','CustomScrollView','SliverAppBar','SliverToBoxAdapter','SliverFillRemaining','SliverList','SliverFixedExtentList','SliverGrid','SliverPadding','CupertinoButton','CupertinoNavigationBar','CupertinoPageScaffold','CupertinoSwitch','CupertinoSlider','CupertinoActivityIndicator','AnimatedBuilder','ValueListenableBuilder','LayoutBuilder','OrientationBuilder','Transform']);
+
+  function conceptCard(cod) {
+    const c = cod.trim();
+    let title = 'Conceito', desc = '', vis = '';
+    if (/extends\s+StatefulWidget/.test(c)) { title = 'StatefulWidget'; desc = 'Widget que guarda estado e pode se redesenhar.'; vis = flowState(); }
+    else if (/extends\s+State\s*</.test(c) || /class\s+_\w+State/.test(c)) { title = 'State'; desc = 'Onde o estado vive e o build() reconstrói a tela.'; vis = flowState(); }
+    else if (/extends\s+StatelessWidget/.test(c)) { title = 'StatelessWidget'; desc = 'Widget imutável: só depende dos parâmetros recebidos.'; vis = flowStateless(); }
+    else if (/extends\s+ChangeNotifier|with\s+ChangeNotifier/.test(c)) { title = 'ChangeNotifier'; desc = 'Guarda dados e avisa os ouvintes quando mudam.'; vis = flowNotify(); }
+    else if (/setState/.test(c)) { title = 'setState()'; desc = 'Marca o estado como sujo → o build() roda de novo.'; vis = flowRebuild(); }
+    else if (/Navigator\.(push|pushNamed|pushReplacement)/.test(c)) { title = 'Navigator.push'; desc = 'Empilha uma nova tela por cima da atual.'; vis = flowNav('push'); }
+    else if (/Navigator\.pop/.test(c)) { title = 'Navigator.pop'; desc = 'Remove a tela do topo e volta à anterior.'; vis = flowNav('pop'); }
+    else if (/AnimationController|Tween|CurvedAnimation/.test(c)) { title = 'Animação'; desc = 'Controla um valor que muda ao longo do tempo.'; vis = `<div class="fv-anim" data-fv="anim" style="background:#7E57C2;--w1:80px;--h1:40px"></div>`; }
+    else if (/^\s*(int|double|num|bool|String)\s+\w+\s*=/.test(c)) { const val = (c.match(/=\s*([^;]+)/) || [])[1] || ''; title = 'Variável de estado'; desc = 'Um dado que o widget usa e pode alterar.'; vis = `<div class="fv-varchip">${esc((c.match(/\b(int|double|num|bool|String)\s+(\w+)/) || [])[2] || 'x')} = <b>${esc(val.trim())}</b></div>`; }
+    else if (/TextStyle\s*\(/.test(c)) { title = 'TextStyle'; desc = 'Define a aparência do texto.'; const st = styleStr(textStyle(parse(tokenize(c.replace(/;$/, ''))), {})); vis = `<span style="font:400 22px Roboto;${st}">Amostra Aa</span>`; }
+    else if (/BoxDecoration\s*\(/.test(c)) { title = 'BoxDecoration'; desc = 'Fundo, borda e cantos de um Container.'; const node = parse(tokenize(c.replace(/;$/, ''))); const dm = argMap(node); const bg = colorOf(dm.color) || '#42A5F5'; const rad = dm.borderRadius ? brad(dm.borderRadius) : 0; const bd = dm.border ? bord(dm.border) : 'none'; vis = `<div style="width:80px;height:56px;background:${bg};border-radius:${rad}px;border:${bd}"></div>`; }
+    else if (/EdgeInsets/.test(c)) { title = 'EdgeInsets'; desc = 'Espaçamento (padding/margin) ao redor.'; const e = edge(parse(tokenize(c.replace(/;$/, '')))) || { t: 12, r: 12, b: 12, l: 12 }; vis = `<div style="padding:${edgeCss(e)};background:#E3F2FD;border:1px dashed #64B5F6;display:inline-block"><div style="width:48px;height:32px;background:#1565C0;border-radius:4px"></div></div>`; }
+    else if (/Duration\s*\(/.test(c)) { title = 'Duration'; desc = 'Um intervalo de tempo.'; vis = `<div class="fv-varchip">${esc(c.match(/Duration\([^)]*\)/)[0])}</div>`; }
+    else if (/Provider|Consumer|context\.watch|context\.read/.test(c)) { title = 'Provider'; desc = 'Compartilha estado entre widgets distantes.'; vis = flowNotify(); }
+    else { title = (c.match(/\b([A-Z][A-Za-z]+)\b/) || [])[1] || 'Conceito'; desc = 'Trecho de apoio — sem saída visual direta.'; vis = `<div class="fv-varchip" style="font-family:var(--mono,monospace)">${esc(c.length > 46 ? c.slice(0, 46) + '…' : c)}</div>`; }
+    return `<div class="fv-concept"><div class="fv-cvis">${vis}</div><div class="fv-ctitle">${esc(title)}</div><div class="fv-cdesc">${esc(desc)}</div></div>`;
+  }
+
+  // mini-diagramas de conceito
+  const chip = (t, c) => `<span class="fv-node" style="${c || ''}">${t}</span>`;
+  const arrow = () => `<span class="fv-arrow">→</span>`;
+  const flowState = () => `<div class="fv-flow">${chip('StatefulWidget')}${arrow()}${chip('State', 'background:#FFF3D6;border-color:#FFC73B')}${arrow()}${chip('build()')}</div>`;
+  const flowStateless = () => `<div class="fv-flow">${chip('parâmetros')}${arrow()}${chip('build()', 'background:#FFF3D6;border-color:#FFC73B')}${arrow()}${chip('UI')}</div>`;
+  const flowRebuild = () => `<div class="fv-flow">${chip('setState()', 'background:#FFF3D6;border-color:#FFC73B')}${arrow()}${chip('estado sujo')}${arrow()}${chip('build()')}</div>`;
+  const flowNotify = () => `<div class="fv-flow">${chip('dados')}${arrow()}${chip('notifyListeners', 'background:#FFF3D6;border-color:#FFC73B')}${arrow()}${chip('ouvintes')}</div>`;
+  const flowNav = dir => dir === 'push'
+    ? `<div class="fv-screens"><span class="fv-scr">Tela 1</span><span class="fv-scr fv-scr2 in">Tela 2</span></div>`
+    : `<div class="fv-screens"><span class="fv-scr">Tela 1</span><span class="fv-scr fv-scr2 out">Tela 2</span></div>`;
+
+  /* ---------------- API pública ---------------- */
+  function render(cod) {
+    let clean = String(cod || '').trim().replace(/;+\s*$/, '');
+    let ast;
+    try { ast = parse(tokenize(clean)); } catch (e) { ast = { t: 'nil' }; }
+    const isDecl = /^\s*(class|enum|mixin|typedef|abstract|@override|void\s+\w+\s*\()/.test(cod) || /extends\s+\w/.test(cod);
+    const rootVisual = ast && ast.t === 'call' && VISUAL.has(ast.name.split('.')[0]);
+    if (!isDecl && rootVisual) {
+      let html = '';
+      try { html = W(ast, {}); } catch (e) { html = ''; }
+      if (html && html.replace(/<[^>]+>/g, '').trim().length + (html.match(/<(svg|div|span|button)/g) || []).length > 0)
+        return { kind: 'live', html };
+    }
+    return { kind: 'concept', html: conceptCard(cod) };
+  }
+
+  global.FlutterView = { render, tokenize, parse, W };
+})(typeof window !== 'undefined' ? window : globalThis);
+
+</script>
+<script>
+/* ============ SYNTAX HIGHLIGHT (tokenizer Dart) ============ */
+const KW = new Set("abstract as assert async await base break case catch class const continue covariant default deferred do dynamic else enum export extends extension external factory false final finally for get hide if implements import in interface is late library mixin new null on operator part required rethrow return sealed set show static super switch sync this throw true try typedef var void while with yield".split(" "));
+const TIPOS = new Set("int double String bool List Map Set num Object Widget BuildContext Future Stream Iterable Duration Exception Error void dynamic Function Record Comparable Symbol Type".split(" "));
+
+function tokenizar(src){
+  const t=[]; let i=0; const n=src.length; const push=(x,y)=>t.push({text:x,tipo:y});
+  while(i<n){
+    const c=src[i];
+    if(c==='/'&&src[i+1]==='/'){let j=i;while(j<n&&src[j]!=='\n')j++;push(src.slice(i,j),'cmt');i=j;continue;}
+    if(c==='/'&&src[i+1]==='*'){let j=i+2;while(j<n&&!(src[j]==='*'&&src[j+1]==='/'))j++;j=Math.min(j+2,n);push(src.slice(i,j),'cmt');i=j;continue;}
+    if(c==="'"||c==='"'){const q=c;let j=i+1;while(j<n&&src[j]!==q){if(src[j]==='\\')j++;j++;}j=Math.min(j+1,n);push(src.slice(i,j),'str');i=j;continue;}
+    if(c>='0'&&c<='9'){let j=i+1;while(j<n&&/[0-9_]/.test(src[j]))j++;if(src[j]==='.'&&/[0-9]/.test(src[j+1])){j++;while(j<n&&/[0-9_]/.test(src[j]))j++;}if(src[j]==='x'||src[j]==='X'){j++;while(j<n&&/[0-9a-fA-F]/.test(src[j]))j++;}push(src.slice(i,j),'num');i=j;continue;}
+    if(/[A-Za-z_$]/.test(c)){
+      let j=i;while(j<n&&/[A-Za-z0-9_$]/.test(src[j]))j++;
+      const w=src.slice(i,j); let tipo='id';
+      if(KW.has(w))tipo='kw'; else if(TIPOS.has(w)||/^[A-Z]/.test(w))tipo='type'; else if(src[j]==='(')tipo='fn';
+      push(w,tipo);i=j;continue;
+    }
+    if(/[{}()\[\];,.]/.test(c)){push(c,'punct');i++;continue;}
+    if(/[+\-*/=<>!&|%?:@]/.test(c)){push(c,'op');i++;continue;}
+    push(c,'plain');i++;
+  }
+  return t;
+}
+function charsComTipo(src){const o=[];for(const tk of tokenizar(src))for(const ch of tk.text)o.push({ch,tipo:tk.tipo});return o;}
+
+/* ============ ESTADO ============ */
+const $=id=>document.getElementById(id);
+let nivelAtual=0, licAtual=0, trechoAtual=0;
+let alvo="", chars=[], idx=0;
+let iniSessao=null, timer=null;
+let toquesTotal=0, acertosTotal=0, errosTotal=0, score=0;
+let travado=false, som=false, voz=false, aguardandoProximo=false;
+const feitas=new Set();
+const chaveLic=(n,l)=>n+"-"+l;
+
+/* ============ SOM (Web Audio) ============ */
+let actx=null;
+function beep(freq,dur=0.05,type='square',vol=0.05){
+  if(!som)return;
+  try{
+    actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+    const o=actx.createOscillator(),g=actx.createGain();
+    o.type=type;o.frequency.value=freq;o.connect(g);g.connect(actx.destination);
+    g.gain.setValueAtTime(vol,actx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+dur);
+    o.start();o.stop(actx.currentTime+dur);
+  }catch(e){}
+}
+const waka=()=>beep(560+Math.random()*90,0.045,'square',0.04);
+const erroSom=()=>beep(150,0.12,'sawtooth',0.05);
+const winSom=()=>{[523,659,784,1047].forEach((f,i)=>setTimeout(()=>beep(f,0.12,'triangle',0.05),i*90));};
+
+/* ============ VOZ (Text-to-Speech) ============ */
+const temVoz = 'speechSynthesis' in window;
+let vozPT=null;
+function carregarVozes(){
+  if(!temVoz)return;
+  const vs=speechSynthesis.getVoices();
+  vozPT = vs.find(v=>v.lang==='pt-BR') || vs.find(v=>v.lang&&v.lang.toLowerCase().startsWith('pt')) || null;
+}
+if(temVoz){ carregarVozes(); speechSynthesis.onvoiceschanged=carregarVozes; }
+function textoPuro(html){const d=document.createElement('div');d.innerHTML=html;return (d.textContent||'').replace(/\s+/g,' ').trim();}
+function falar(texto){
+  if(!temVoz||!texto)return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(texto);
+  u.lang='pt-BR'; if(vozPT)u.voice=vozPT; u.rate=1.0; u.pitch=1.0;
+  const btn=$("btn-ouvir");
+  u.onstart=()=>btn.classList.add('falando');
+  u.onend=()=>btn.classList.remove('falando');
+  u.onerror=()=>btn.classList.remove('falando');
+  speechSynthesis.speak(u);
+}
+function pararVoz(){ if(temVoz){speechSynthesis.cancel();$("btn-ouvir").classList.remove('falando');} }
+function narrarDica(){ const tr=trechoAtualObj(); if(tr) falar(textoPuro(tr.dica)); }
+
+/* ============ ACESSO AO CURRÍCULO ============ */
+const nivelObj=()=>CURRICULO[nivelAtual];
+const licObj=()=>nivelObj().licoes[licAtual];
+const trechoAtualObj=()=>licObj().trechos[trechoAtual];
+
+/* ============ RENDER DE SELETORES ============ */
+function montarNiveis(){
+  const nv=nivelObj();
+  $("tr-ic").textContent=nv.emoji;
+  $("tr-nome").textContent=nv.nivel;
+  const pop=$("pop-trilha"); pop.innerHTML="";
+  CURRICULO.forEach((n,i)=>{
+    const el=document.createElement("div");
+    el.className="mi"; el.setAttribute("role","menuitem");
+    el.setAttribute("aria-current", i===nivelAtual?"true":"false");
+    el.innerHTML=`<span class="mi-em">${n.emoji}</span><span class="mi-nm">${n.nivel}</span><span class="mi-sub">${n.licoes.length} lições</span>`;
+    el.onclick=()=>{ fecharMenus(); if(i===nivelAtual)return; nivelAtual=i; licAtual=0; trechoAtual=0; montarNiveis(); montarLicoes(); carregarTrecho(); };
+    pop.appendChild(el);
+  });
+}
+function montarLicoes(){
+  const lic=licObj();
+  $("li-ic").textContent=lic.emoji;
+  $("li-nome").textContent=lic.nome;
+  const pop=$("pop-licao"); pop.innerHTML="";
+  nivelObj().licoes.forEach((l,i)=>{
+    const done=feitas.has(chaveLic(nivelAtual,i));
+    const el=document.createElement("div");
+    el.className="mi"; el.setAttribute("role","menuitem");
+    el.setAttribute("aria-current", i===licAtual?"true":"false");
+    el.innerHTML=`<span class="mi-em">${l.emoji}</span><span class="mi-nm">${l.nome}</span>`+
+      (done?'<span class="mi-chk">✓</span>':`<span class="mi-sub">${l.trechos.length}</span>`);
+    el.onclick=()=>{ fecharMenus(); if(i===licAtual)return; licAtual=i; trechoAtual=0; montarLicoes(); carregarTrecho(); };
+    pop.appendChild(el);
+  });
+  $("menu-count").innerHTML=`Trilha <b>${nivelAtual+1}/${CURRICULO.length}</b> · Lição <b>${licAtual+1}/${nivelObj().licoes.length}</b>`;
+}
+/* abre/fecha os menus dropdown */
+function fecharMenus(){ document.querySelectorAll(".menu.open").forEach(m=>{ m.classList.remove("open"); const b=m.querySelector(".menu-btn"); if(b)b.setAttribute("aria-expanded","false"); }); }
+function setupMenus(){
+  document.querySelectorAll(".menu-btn").forEach(btn=>{
+    btn.addEventListener("click",e=>{ e.stopPropagation(); const menu=btn.closest(".menu"); const aberto=menu.classList.contains("open"); fecharMenus(); if(!aberto){ menu.classList.add("open"); btn.setAttribute("aria-expanded","true"); } });
+  });
+  document.addEventListener("click",e=>{ if(!e.target.closest(".menu")) fecharMenus(); });
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape") fecharMenus(); });
+}
+
+/* ============ PRÉVIA FLUTTER ============ */
+let previewEhFlutter=false;
+let loopTimers=[];
+function pararLoop(){ loopTimers.forEach(t=>clearInterval(t)); loopTimers=[]; }
+function atualizarPreview(){
+  pararLoop();
+  const prev=$("preview");
+  previewEhFlutter = nivelObj().nivel==="Flutter" && typeof FlutterView!=="undefined";
+  prev.hidden=true; prev.classList.remove("reveal");   // escondida enquanto se digita
+  if(!previewEhFlutter) return;
+  const scr=$("phone-scr");
+  let res; try{ res=FlutterView.render(trechoAtualObj().cod); }catch(e){ res={kind:"concept",html:'<div class="fv-varchip">prévia indisponível</div>'}; }
+  scr.innerHTML=res.html;
+  const tag=$("pv-tag");
+  if(res.kind==="live"){ tag.textContent="ao vivo"; tag.classList.remove("concept"); }
+  else{ tag.textContent="conceito"; tag.classList.add("concept"); }
+  ativarInterativos(scr);
+}
+function ativarInterativos(box){
+  box.querySelectorAll(".fv-btn").forEach(b=>{
+    b.addEventListener("click",e=>{
+      const r=document.createElement("span"); r.className="fv-ripple";
+      const rect=b.getBoundingClientRect(); const d=Math.max(rect.width,rect.height)||40;
+      r.style.width=r.style.height=d+"px";
+      r.style.left=(e.clientX-rect.left-d/2)+"px"; r.style.top=(e.clientY-rect.top-d/2)+"px";
+      b.appendChild(r); setTimeout(()=>r.remove(),500);
+    });
+  });
+  box.querySelectorAll('[data-fv="check"],[data-fv="switch"],[data-fv="radio"]').forEach(el=>{
+    el.addEventListener("click",()=>el.classList.toggle("on"));
+  });
+  box.querySelectorAll('[data-fv="slider"]').forEach(sl=>{
+    const mover=x=>{ const rect=sl.getBoundingClientRect(); let p=Math.max(0,Math.min(1,(x-rect.left)/rect.width)); const f=sl.querySelector(".fv-sfill"),t=sl.querySelector(".fv-thumb"); if(f)f.style.width=(p*100)+"%"; if(t)t.style.left=(p*100)+"%"; };
+    let drag=false;
+    sl.addEventListener("mousedown",e=>{drag=true;mover(e.clientX);e.preventDefault();});
+    window.addEventListener("mousemove",e=>{if(drag)mover(e.clientX);});
+    window.addEventListener("mouseup",()=>drag=false);
+  });
+  box.querySelectorAll('[data-fv="anim"],[data-fv="fade"]').forEach(el=>{
+    el.addEventListener("click",()=>el.classList.toggle("go"));
+  });
+}
+function rodarPreview(){
+  if(!previewEhFlutter)return;
+  const prev=$("preview"); prev.hidden=false;
+  prev.classList.remove("reveal"); void prev.offsetWidth; prev.classList.add("reveal");
+  const scr=$("phone-scr");
+  scr.classList.remove("run"); void scr.offsetWidth; scr.classList.add("run");
+  animarPreview(scr);
+}
+function animarPreview(scr){
+  pararLoop();
+  // --- entrada (uma vez só) ---
+  const raiz=scr.firstElementChild;
+  if(raiz && !raiz.matches('[data-fv="anim"],[data-fv="fade"]')) raiz.style.animation="fvpop .45s var(--ease-slide) both";
+  scr.querySelectorAll(".fv-stagger").forEach(cont=>{
+    [...cont.children].forEach((c,i)=>{ c.style.animation="fvitem .42s var(--ease-slide) both"; c.style.animationDelay=(80+i*80)+"ms"; });
+  });
+  scr.querySelectorAll(".fv-dialog").forEach(d=>d.style.animation="fvdialog .5s var(--ease-slide) both");
+  scr.querySelectorAll(".fv-appbar").forEach(d=>d.style.animation="fvbar .45s var(--ease-slide) both");
+  scr.querySelectorAll(".fv-drawer").forEach(d=>d.style.animation="fvdrawer .5s var(--ease-slide) both");
+  // --- loops contínuos (movimento) via CSS ---
+  scr.querySelectorAll('[data-fv="anim"],[data-fv="fade"],[data-fv="slider"]').forEach(el=>el.classList.add("loop"));
+  // --- seletores alternam em loop calmo ---
+  const sel=scr.querySelectorAll('[data-fv="switch"],[data-fv="check"],[data-fv="radio"]');
+  if(sel.length){ setTimeout(()=>sel.forEach(e=>e.classList.add("on")),430); loopTimers.push(setInterval(()=>sel.forEach(e=>e.classList.toggle("on")),1700)); }
+  // --- botões dão um toque periódico ---
+  const btns=scr.querySelectorAll(".fv-btn");
+  if(btns.length){
+    const tocar=()=>{ let n=0; btns.forEach(b=>{ if(n++<2) rippleCentro(b); }); };
+    setTimeout(tocar,320); loopTimers.push(setInterval(tocar,2300));
+  }
+}
+function rippleCentro(b){
+  const r=document.createElement("span"); r.className="fv-ripple";
+  const d=Math.max(b.offsetWidth,b.offsetHeight)||40;
+  r.style.width=r.style.height=d+"px"; r.style.left=(b.offsetWidth/2-d/2)+"px"; r.style.top=(b.offsetHeight/2-d/2)+"px";
+  b.appendChild(r); setTimeout(()=>r.remove(),520);
+}
+
+/* ============ CARREGAR TRECHO ============ */
+function carregarTrecho(){
+  const tr=trechoAtualObj();
+  alvo=tr.cod; chars=charsComTipo(alvo); idx=0; travado=false; aguardandoProximo=false;
+  $("dica-txt").innerHTML=tr.dica;
+  $("p-lbl").textContent=`${nivelObj().emoji} ${licObj().nome}`;
+  $("p-num").textContent=`${trechoAtual+1} / ${licObj().trechos.length}`;
+  $("over").classList.remove("show");
+  $("pac").classList.remove("win");
+  resetConsole();
+  render(); posicionarPac(); atualizarProgresso();
+  atualizarPreview();
+  $("trap").value=""; $("trap").focus({preventScroll:true});
+  pararVoz();
+  if(voz) setTimeout(narrarDica, 220);
+}
+
+function render(){
+  let html="";
+  for(let i=0;i<chars.length;i++){
+    const {ch,tipo}=chars[i];
+    let cls="ch tok-"+tipo;
+    if(ch===" ")cls+=" sp"; if(ch==="\n")cls+=" nl";
+    if(i<idx)cls+=" done"; else if(i===idx)cls+=(travado?"":" cur"); else cls+=" pend";
+    if(ch==="\n"){ html+=`<span class="${cls}">↵</span>\n`; }
+    else{ const s=ch==="<"?"&lt;":ch===">"?"&gt;":ch==="&"?"&amp;":ch; html+=`<span class="${cls}">${s}</span>`; }
+  }
+  $("codigo").innerHTML=html;
+}
+function marcarErro(){
+  const s=$("codigo").querySelectorAll(".ch")[idx]; if(!s)return;
+  s.classList.remove("cur"); s.classList.add("err"); setTimeout(render,240);
+}
+function posicionarPac(){
+  const pac=$("pac"), code=$("codigo"), tela=$("tela");
+  const spans=code.querySelectorAll(".ch");
+  let target=spans[Math.min(idx,spans.length-1)];
+  if(!target){pac.style.opacity=0;return;}
+  pac.style.opacity=1;
+  const tr=target.getBoundingClientRect(), telaR=tela.getBoundingClientRect();
+  const pacW=pac.offsetWidth;
+  let x=tr.left-telaR.left-pacW-1;
+  let y=tr.top-telaR.top+(tr.height-pac.offsetHeight)/2;
+  if(idx>=spans.length){ x=tr.right-telaR.left+2; }
+  if(x<2)x=2;
+  pac.style.transform=`translate(${x}px,${y}px)`;
+}
+
+/* ============ DIGITAÇÃO ============ */
+function comecarTimerSePreciso(){ if(iniSessao===null){ iniSessao=Date.now(); timer=setInterval(atualizarStats,200);} }
+function pularIndentacao(){ while(idx<chars.length&&chars[idx].ch===" ")idx++; }
+
+function digitar(tecla){
+  if(travado||idx>=chars.length)return;
+  const esp=chars[idx].ch;
+  const ok=(tecla==="\n")?(esp==="\n"):(tecla===esp);
+  comecarTimerSePreciso(); toquesTotal++;
+  if(ok){
+    acertosTotal++; score+=10; idx++;
+    if(esp==="\n")pularIndentacao();
+    render(); posicionarPac(); waka(); atualizarStats(); atualizarProgresso();
+    if(idx>=chars.length)concluirTrecho();
+  }else{ errosTotal++; marcarErro(); erroSom(); atualizarStats(); }
+}
+function apagar(){
+  if(travado||idx<=0)return;
+  idx--;
+  while(idx>0&&chars[idx].ch===" "&&(chars[idx-1].ch===" "||chars[idx-1].ch==="\n"))idx--;
+  render(); posicionarPac();
+}
+
+/* ============ CONCLUSÃO ============ */
+function concluirTrecho(){
+  travado=true; aguardandoProximo=true;
+  render(); posicionarPac(); score+=100; mostrarConsole(); atualizarStats(); mostrarProximo();
+  rodarPreview();
+}
+function avancar(){
+  if(!aguardandoProximo)return;
+  aguardandoProximo=false;
+  const lic=licObj();
+  if(trechoAtual<lic.trechos.length-1){ trechoAtual++; carregarTrecho(); }
+  else{ feitas.add(chaveLic(nivelAtual,licAtual)); montarLicoes(); vitoriaLicao(); }
+}
+function mostrarProximo(){
+  const ultimo = trechoAtual >= licObj().trechos.length-1;
+  const txt = ultimo ? "Enter para concluir a lição" : "Enter para o próximo";
+  const el = document.createElement("div");
+  el.className = "row proximo";
+  el.innerHTML = `<span class="ent">↵</span><span>${txt}</span><span class="seta">→</span>`;
+  el.title = "Pressione Enter (ou clique) para continuar";
+  el.setAttribute("role","button");
+  el.onclick = avancar;
+  $("console-body").appendChild(el);
+}
+function vitoriaLicao(){
+  winSom(); pararVoz(); $("pac").classList.add("win");
+  $("o-wpm").textContent=$("s-wpm").textContent;
+  $("o-acc").textContent=$("s-acc").textContent;
+  $("o-score").textContent=score.toLocaleString('pt-BR');
+  const ehFimNivel = licAtual>=nivelObj().licoes.length-1;
+  const ehFimTudo = ehFimNivel && nivelAtual>=CURRICULO.length-1;
+  $("over-big").textContent = ehFimTudo ? "VOCÊ ZEROU O JOGO!" : "LIÇÃO CONCLUÍDA!";
+  $("over-sub").innerHTML = ehFimTudo
+    ? "Você digitou todo o currículo de Dart & Flutter. 🏆"
+    : `Você dominou <b style="color:var(--pac)">${nivelObj().emoji} ${licObj().nome}</b>.`;
+  $("o-next").textContent = ehFimTudo ? "Recomeçar ↺" : (ehFimNivel ? "Próximo nível →" : "Próxima lição →");
+  $("over").classList.add("show");
+}
+
+/* ============ CONSOLE ============ */
+function resetConsole(){ $("console").classList.remove("ok"); const b=$("console-body"); b.className="row idle"; b.innerHTML="Digite o código acima para compilar…"; }
+function mostrarConsole(){
+  const tr=trechoAtualObj(); $("console").classList.add("ok");
+  const linhas=(tr.out||"").split("\n").map(l=>`<div class="row out"><span class="arrow">›</span> ${escaparHTML(l)}</div>`).join("");
+  const b=$("console-body"); b.className="";
+  b.innerHTML=`<div class="row" style="color:var(--color-brand);font-weight:600">✓ Compilado com sucesso · 0 erros</div>${linhas}`;
+}
+function escaparHTML(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+/* ============ STATS ============ */
+function fmtTempo(ms){const s=Math.floor(ms/1000);return `${Math.floor(s/60)}:${String(s%60).padStart(2,"0")}`;}
+function atualizarStats(){
+  $("s-score").textContent=score.toLocaleString('pt-BR');
+  $("s-err").textContent=errosTotal;
+  $("s-acc").textContent=(toquesTotal>0?Math.round(acertosTotal/toquesTotal*100):100)+"%";
+  if(iniSessao!==null){
+    const dt=Date.now()-iniSessao; $("s-time").textContent=fmtTempo(dt);
+    const min=dt/60000; $("s-wpm").textContent = min>0?Math.round((acertosTotal/5)/min):0;
+  }
+}
+function atualizarProgresso(){ $("p-fill").style.width=(chars.length?Math.round(idx/chars.length*100):0)+"%"; }
+
+/* ============ EVENTOS ============ */
+document.addEventListener("keydown",e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey)return;
+  const k=e.key;
+  if(k==="Tab"){e.preventDefault();return;}
+  if(k==="Backspace"){e.preventDefault();apagar();return;}
+  if(k==="Enter"){e.preventDefault(); if(trap.value)processarEntrada(trap.value); if(aguardandoProximo){avancar();} else {digitar("\n");} return;}
+  // Caracteres (inclusive acentuados via tecla morta, AltGr ou IME) chegam pelo evento input do #trap.
+});
+const trap=$("trap");
+function processarEntrada(txt){ for(const ch of txt){ digitar(ch==="\n"?"\n":ch); } trap.value=""; }
+// compositionend entrega o caractere composto (ex.: ´ + a = á) já pronto
+trap.addEventListener("compositionend",()=>{ processarEntrada(trap.value); });
+trap.addEventListener("input",e=>{
+  if(e.isComposing)return; // aguarda o fim da composição de teclas mortas/IME
+  if(e.inputType&&e.inputType.indexOf("delete")===0){ apagar(); trap.value=""; return; }
+  if(aguardandoProximo&&trap.value.indexOf("\n")>=0){ trap.value=""; avancar(); return; }
+  processarEntrada(trap.value);
+});
+// Mantém o campo de digitação focado após clicar em qualquer botão (níveis, lições, toggles)
+document.addEventListener("click",()=>{ setTimeout(()=>trap.focus({preventScroll:true}),0); });
+$("tela").addEventListener("mousedown",()=>setTimeout(()=>trap.focus({preventScroll:true}),0));
+$("tela").addEventListener("touchstart",()=>trap.focus({preventScroll:true}),{passive:true});
+
+$("btn-reset").onclick=()=>{ idx=0; travado=false; aguardandoProximo=false; resetConsole(); render(); posicionarPac(); atualizarProgresso(); trap.focus({preventScroll:true}); };
+
+$("tgl-som").onclick=()=>{
+  som=!som; const t=$("tgl-som"); t.classList.toggle("on",som);
+  t.querySelector(".ic").innerHTML=som
+    ?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>'
+    :'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>';
+  if(som){ try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();}catch(e){} beep(660,0.06,'triangle',0.05); }
+};
+$("tgl-voz").onclick=()=>{
+  if(!temVoz){ alert("Seu navegador não tem síntese de voz disponível."); return; }
+  voz=!voz; $("tgl-voz").classList.toggle("on",voz);
+  if(voz) narrarDica(); else pararVoz();
+};
+$("btn-ouvir").onclick=()=>{ if(!temVoz){alert("Seu navegador não tem síntese de voz disponível.");return;} narrarDica(); };
+
+$("o-next").onclick=()=>{
+  const ehFimNivel = licAtual>=nivelObj().licoes.length-1;
+  if(ehFimNivel){
+    if(nivelAtual<CURRICULO.length-1){ nivelAtual++; licAtual=0; }
+    else { nivelAtual=0; licAtual=0; }
+  } else { licAtual++; }
+  trechoAtual=0; montarNiveis(); montarLicoes(); carregarTrecho();
+};
+$("o-again").onclick=()=>{ trechoAtual=0; carregarTrecho(); };
+
+window.addEventListener("resize",posicionarPac);
+
+/* ============ INIT ============ */
+if(!temVoz){ $("tgl-voz").style.opacity=.4; $("tgl-voz").title="Voz indisponível neste navegador"; }
+setupMenus();
+montarNiveis(); montarLicoes(); carregarTrecho();
+setTimeout(()=>trap.focus({preventScroll:true}),120);
+</script>
