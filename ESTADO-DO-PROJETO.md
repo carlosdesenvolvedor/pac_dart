@@ -12,7 +12,7 @@
 ## 🔗 Links e acesso
 
 - **App no ar:** https://pac-dart.web.app  *(sempre dar hard refresh: `Ctrl/Cmd + Shift + R`)*
-- **GitHub:** https://github.com/carlosdesenvolvedor/pac_dart  ⚠️ **só tem o commit inicial antigo — o código desta sessão AINDA NÃO foi pushado.**
+- **GitHub:** https://github.com/carlosdesenvolvedor/pac_dart  ✅ **sincronizado (main)** — todo o código está pushado (commit `b364070`, jul/2026).
 - **Firebase project:** `pac-dart` (Firestore em São Paulo / southamerica-east1)
 - **Pasta local:** `/Users/fazplay/pac_dart`
 
