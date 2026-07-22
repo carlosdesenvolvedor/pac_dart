@@ -54,7 +54,7 @@ class PreviewPanel extends StatelessWidget {
           // cabeçalho estilo janela
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Mixart.surface,
               border: Border(bottom: BorderSide(color: Mixart.border)),
               borderRadius: BorderRadius.vertical(top: Radius.circular(Mixart.radiusMd)),

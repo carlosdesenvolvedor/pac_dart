@@ -162,9 +162,9 @@ class _QuizPageState extends State<QuizPage> {
   Widget _cabecalho() => Row(children: [
         IconButton(
           onPressed: () => Navigator.of(context).pop(),
-          icon: const Icon(Icons.arrow_back, color: Mixart.text, size: 20),
+          icon: Icon(Icons.arrow_back, color: Mixart.text, size: 20),
           style: IconButton.styleFrom(
-              backgroundColor: Mixart.surfaceHi, side: const BorderSide(color: Mixart.border)),
+              backgroundColor: Mixart.surfaceHi, side: BorderSide(color: Mixart.border)),
         ),
         const SizedBox(width: 12),
         Expanded(
@@ -291,7 +291,7 @@ class _QuizPageState extends State<QuizPage> {
             OutlinedButton(
               style: OutlinedButton.styleFrom(
                 foregroundColor: Mixart.text,
-                side: const BorderSide(color: Mixart.border),
+                side: BorderSide(color: Mixart.border),
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
                 textStyle: Mixart.ui(size: 13),
@@ -349,6 +349,8 @@ class _AreaRespostaLivreState extends State<_AreaRespostaLivre> {
   }
 
   void _processaTexto() {
+    // Espera a composição de acentos terminar (dead keys: ~ + a = ã).
+    if (!_ctrl.value.composing.isCollapsed) return;
     final txt = _ctrl.text;
     if (txt.isEmpty || widget.submetido) {
       _ctrl.clear();
@@ -446,7 +448,7 @@ class _AreaRespostaLivreState extends State<_AreaRespostaLivre> {
                   maxLines: 1,
                   autocorrect: false,
                   enableSuggestions: false,
-                  keyboardType: TextInputType.visiblePassword,
+                  keyboardType: TextInputType.text,
                   onTapOutside: (_) => _foco.requestFocus(),
                 ),
               ),

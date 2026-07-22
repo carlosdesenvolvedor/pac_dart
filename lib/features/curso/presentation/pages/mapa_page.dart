@@ -7,13 +7,29 @@ import '../../../../core/theme/mixart.dart';
 import '../../domain/curriculo.dart';
 import '../bloc/curso_bloc.dart';
 import '../widgets/pacman.dart';
+import 'projeto_page.dart';
 import 'quiz_page.dart';
+import 'teoria_page.dart';
 
 /// Mapa da Jornada: um caminho de nós por trilha (concluída ✓, atual com
 /// Pac-Man, disponível apagada), com dashboard de progresso. Tocar num nó
 /// abre a lição (praticar) ou o quiz. Progresso vem do estado local.
-class MapaPage extends StatelessWidget {
+class MapaPage extends StatefulWidget {
   const MapaPage({super.key});
+
+  @override
+  State<MapaPage> createState() => _MapaPageState();
+}
+
+class _MapaPageState extends State<MapaPage> {
+  final _busca = TextEditingController();
+  String _query = '';
+
+  @override
+  void dispose() {
+    _busca.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +38,32 @@ class MapaPage extends StatelessWidget {
       body: BlocBuilder<CursoBloc, CursoState>(
         builder: (context, st) {
           if (st.status != CursoStatus.pronto) {
-            return const Center(child: CircularProgressIndicator(color: Mixart.brand));
+            return Center(child: CircularProgressIndicator(color: Mixart.brand));
           }
+          final buscando = _query.trim().isNotEmpty;
           return Stack(children: [
             const Positioned.fill(child: _FundoPontilhado()),
             Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 780),
                 child: CustomScrollView(slivers: [
-                  _BarraTopo(st: st),
-                  SliverToBoxAdapter(child: _HeroDashboard(st: st)),
-                  for (var t = 0; t < st.trilhas.length; t++) ...[
-                    SliverToBoxAdapter(child: _SecaoTrilha(st: st, t: t)),
-                    if (t < st.trilhas.length - 1)
+                  _BarraTopo(
+                    st: st,
+                    controle: _busca,
+                    onBusca: (v) => setState(() => _query = v),
+                  ),
+                  if (buscando)
+                    _Resultados(st: st, query: _query)
+                  else ...[
+                    SliverToBoxAdapter(child: _HeroDashboard(st: st)),
+                    for (var t = 0; t < st.trilhas.length; t++) ...[
+                      SliverToBoxAdapter(child: _SecaoTrilha(st: st, t: t)),
                       const SliverToBoxAdapter(child: _Conector()),
+                    ],
+                    if (st.masterApps.isNotEmpty)
+                      SliverToBoxAdapter(child: _SecaoMaster(projetos: st.masterApps)),
+                    const SliverToBoxAdapter(child: SizedBox(height: 56)),
                   ],
-                  const SliverToBoxAdapter(child: SizedBox(height: 56)),
                 ]),
               ),
             ),
@@ -48,10 +74,23 @@ class MapaPage extends StatelessWidget {
   }
 }
 
+/// Remove acentos e caixa para busca tolerante.
+String _norm(String s) {
+  const de = 'áàâãäéèêëíìîïóòôõöúùûüçñ';
+  const para = 'aaaaaeeeeiiiiooooouuuucn';
+  var r = s.toLowerCase();
+  for (var i = 0; i < de.length; i++) {
+    r = r.replaceAll(de[i], para[i]);
+  }
+  return r;
+}
+
 // ───────────────────────── barra superior ─────────────────────────
 class _BarraTopo extends StatelessWidget {
   final CursoState st;
-  const _BarraTopo({required this.st});
+  final TextEditingController controle;
+  final ValueChanged<String> onBusca;
+  const _BarraTopo({required this.st, required this.controle, required this.onBusca});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +105,7 @@ class _BarraTopo extends StatelessWidget {
       titleSpacing: 0,
       leading: IconButton(
         onPressed: () => Navigator.of(context).pop(),
-        icon: const Icon(Icons.arrow_back, color: Mixart.text, size: 20),
+        icon: Icon(Icons.arrow_back, color: Mixart.text, size: 20),
       ),
       title: Row(children: [
         Text('Mapa da Jornada', style: Mixart.display(size: 17)),
@@ -82,11 +121,172 @@ class _BarraTopo extends StatelessWidget {
         ),
       ]),
       bottom: PreferredSize(
-        preferredSize: const Size.fromHeight(1),
-        child: Container(height: 1, color: Mixart.border),
+        preferredSize: const Size.fromHeight(58),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+          child: TextField(
+            controller: controle,
+            onChanged: onBusca,
+            style: Mixart.ui(size: 14, color: Mixart.text),
+            decoration: InputDecoration(
+              isDense: true,
+              hintText: 'Buscar lição ou app por nome…',
+              hintStyle: Mixart.ui(size: 13.5, color: Mixart.textFaint),
+              prefixIcon: Icon(Icons.search, size: 19, color: Mixart.textMuted),
+              suffixIcon: controle.text.isEmpty
+                  ? null
+                  : IconButton(
+                      icon: Icon(Icons.close, size: 17, color: Mixart.textMuted),
+                      onPressed: () {
+                        controle.clear();
+                        onBusca('');
+                      },
+                    ),
+              filled: true,
+              fillColor: Mixart.surface,
+              contentPadding: const EdgeInsets.symmetric(vertical: 11),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Mixart.radiusMd),
+                borderSide: BorderSide(color: Mixart.border),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(Mixart.radiusMd),
+                borderSide: BorderSide(color: Mixart.brand, width: 1.4),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
+}
+
+/// Lista de resultados da busca: lições, projetos e apps que casam com o nome.
+class _Resultados extends StatelessWidget {
+  final CursoState st;
+  final String query;
+  const _Resultados({required this.st, required this.query});
+
+  @override
+  Widget build(BuildContext context) {
+    final q = _norm(query.trim());
+    final itens = <Widget>[];
+
+    for (var t = 0; t < st.trilhas.length; t++) {
+      final tr = st.trilhas[t];
+      for (var l = 0; l < tr.licoes.length; l++) {
+        final lic = tr.licoes[l];
+        if (_norm(lic.nome).contains(q)) {
+          itens.add(_ItemResultado(
+            emoji: lic.emoji,
+            nome: lic.nome,
+            contexto: '${tr.emoji} ${tr.nivel} · lição',
+            feito: st.licaoConcluida(t, l),
+            onTap: () => mostrarOpcoesLicao(context, st, t, l, st.quizNotas[st.chave(t, l)]),
+          ));
+        }
+      }
+      for (final p in tr.projetos) {
+        if (_norm(p.nome).contains(q)) {
+          itens.add(_ItemResultado(
+            emoji: p.emoji,
+            nome: p.nome,
+            contexto: '${tr.emoji} ${tr.nivel} · mão na massa',
+            onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
+              builder: (_) => ProjetoPage(nivel: tr.nivel, projeto: p),
+            )),
+          ));
+        }
+      }
+    }
+    for (final p in st.masterApps) {
+      if (_norm(p.nome).contains(q)) {
+        itens.add(_ItemResultado(
+          emoji: p.emoji,
+          nome: p.nome,
+          contexto: '🏆 Teste Master · app',
+          onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
+            builder: (_) => ProjetoPage(nivel: 'Flutter', projeto: p, master: true),
+          )),
+        ));
+      }
+    }
+
+    if (itens.isEmpty) {
+      return SliverToBoxAdapter(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(20, 60, 20, 20),
+          child: Column(children: [
+            Icon(Icons.search_off, size: 40, color: Mixart.textFaint),
+            const SizedBox(height: 12),
+            Text('Nada encontrado para "$query"',
+                textAlign: TextAlign.center, style: Mixart.ui(size: 14, color: Mixart.textMuted)),
+          ]),
+        ),
+      );
+    }
+
+    return SliverPadding(
+      padding: const EdgeInsets.fromLTRB(16, 12, 16, 40),
+      sliver: SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, i) {
+            if (i == 0) {
+              return Padding(
+                padding: const EdgeInsets.only(bottom: 10, left: 4),
+                child: Text('${itens.length} resultado${itens.length == 1 ? '' : 's'}',
+                    style: Mixart.ui(size: 11.5, weight: FontWeight.w600, color: Mixart.textMuted)),
+              );
+            }
+            return itens[i - 1];
+          },
+          childCount: itens.length + 1,
+        ),
+      ),
+    );
+  }
+}
+
+class _ItemResultado extends StatelessWidget {
+  final String emoji, nome, contexto;
+  final bool feito;
+  final VoidCallback onTap;
+  const _ItemResultado(
+      {required this.emoji, required this.nome, required this.contexto, this.feito = false, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(bottom: 8),
+        child: Material(
+          color: Mixart.surface,
+          borderRadius: BorderRadius.circular(Mixart.radiusMd),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(Mixart.radiusMd),
+            onTap: onTap,
+            child: Container(
+              padding: const EdgeInsets.all(13),
+              decoration: BoxDecoration(
+                border: Border.all(color: Mixart.border),
+                borderRadius: BorderRadius.circular(Mixart.radiusMd),
+              ),
+              child: Row(children: [
+                Text(emoji, style: const TextStyle(fontSize: 20)),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text(nome, style: Mixart.ui(size: 14, weight: FontWeight.w700)),
+                    const SizedBox(height: 2),
+                    Text(contexto, style: Mixart.ui(size: 11.5, color: Mixart.textMuted)),
+                  ]),
+                ),
+                if (feito) Icon(Icons.check_circle, size: 17, color: Mixart.brand),
+                const SizedBox(width: 4),
+                Icon(Icons.chevron_right, size: 18, color: Mixart.textFaint),
+              ]),
+            ),
+          ),
+        ),
+      );
 }
 
 // ───────────────────────── dashboard ─────────────────────────
@@ -111,7 +311,7 @@ class _HeroDashboard extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
-          gradient: const LinearGradient(
+          gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [Color(0xFF161616), Mixart.surface],
@@ -231,7 +431,7 @@ class _SecaoTrilha extends StatelessWidget {
                     Flexible(child: Text(trilha.nivel, style: Mixart.display(size: 18), overflow: TextOverflow.ellipsis)),
                     if (completa) ...[
                       const SizedBox(width: 8),
-                      const Icon(Icons.verified, size: 16, color: Mixart.brand),
+                      Icon(Icons.verified, size: 16, color: Mixart.brand),
                     ] else if (ehAtual) ...[
                       const SizedBox(width: 8),
                       _EtiquetaAtual(),
@@ -259,12 +459,162 @@ class _SecaoTrilha extends StatelessWidget {
               builder: (context, box) => _CaminhoLicoes(st: st, t: t, largura: box.maxWidth),
             ),
           ),
+          if (trilha.temProjetos) _MaoNaMassa(nivel: trilha.nivel, projetos: trilha.projetos),
         ]),
       ),
     );
   }
 
   int _ex(Trilha t) => t.licoes.fold<int>(0, (a, l) => a + l.trechos.length);
+}
+
+/// Rodapé "Mão na Massa": 3 projetos completos ao fim do módulo.
+class _MaoNaMassa extends StatelessWidget {
+  final String nivel;
+  final List<Projeto> projetos;
+  const _MaoNaMassa({required this.nivel, required this.projetos});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(14, 0, 14, 16),
+      padding: const EdgeInsets.all(14),
+      decoration: BoxDecoration(
+        color: Mixart.brandSub,
+        border: Border.all(color: Mixart.brandDim),
+        borderRadius: BorderRadius.circular(Mixart.radiusMd),
+      ),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(children: [
+          Icon(Icons.construction, size: 16, color: Mixart.brand),
+          const SizedBox(width: 8),
+          Text('MÃO NA MASSA',
+              style: Mixart.ui(size: 11, weight: FontWeight.w800, color: Mixart.brand).copyWith(letterSpacing: 1.5)),
+          const SizedBox(width: 8),
+          Text('· construa ${projetos.length} apps',
+              style: Mixart.ui(size: 11, color: Mixart.textMuted)),
+        ]),
+        const SizedBox(height: 10),
+        for (final p in projetos)
+          _ChipProjeto(
+            projeto: p,
+            onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
+              builder: (_) => ProjetoPage(nivel: nivel, projeto: p),
+            )),
+          ),
+      ]),
+    );
+  }
+}
+
+class _ChipProjeto extends StatelessWidget {
+  final Projeto projeto;
+  final VoidCallback onTap;
+  final bool master;
+  const _ChipProjeto({required this.projeto, required this.onTap, this.master = false});
+
+  @override
+  Widget build(BuildContext context) => InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(Mixart.radiusMd),
+        child: Container(
+          margin: const EdgeInsets.only(bottom: 8),
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: Mixart.surface,
+            border: Border.all(color: Mixart.border),
+            borderRadius: BorderRadius.circular(Mixart.radiusMd),
+          ),
+          child: Row(children: [
+            Text(projeto.emoji, style: const TextStyle(fontSize: 20)),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(projeto.nome, style: Mixart.ui(size: 14, weight: FontWeight.w700)),
+                const SizedBox(height: 2),
+                Text(projeto.descricao,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: Mixart.ui(size: 11.5, color: Mixart.textMuted).copyWith(height: 1.35)),
+              ]),
+            ),
+            const SizedBox(width: 8),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              decoration: BoxDecoration(
+                color: Mixart.brandSub,
+                borderRadius: BorderRadius.circular(999),
+              ),
+              child: Row(mainAxisSize: MainAxisSize.min, children: [
+                Icon(projeto.flutter ? Icons.phone_iphone : Icons.terminal, size: 12, color: Mixart.brand),
+                const SizedBox(width: 4),
+                Text(projeto.flutter ? 'app' : 'programa',
+                    style: Mixart.ui(size: 10, weight: FontWeight.w600, color: Mixart.brand)),
+              ]),
+            ),
+          ]),
+        ),
+      );
+}
+
+/// Seção especial do Teste Master: os apps Flutter finais.
+class _SecaoMaster extends StatelessWidget {
+  final List<Projeto> projetos;
+  const _SecaoMaster({required this.projetos});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 12, 18, 0),
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Mixart.brand.withValues(alpha: .18), Mixart.surface],
+          ),
+          border: Border.all(color: Mixart.brandDim),
+          borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          boxShadow: const [BoxShadow(color: Color(0x22FFC73B), blurRadius: 40, spreadRadius: -14)],
+        ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(18, 18, 18, 4),
+            child: Row(children: [
+              const Text('🏆', style: TextStyle(fontSize: 30)),
+              const SizedBox(width: 13),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text('Teste Master', style: Mixart.display(size: 20)),
+                  Text('${projetos.length} apps Flutter para construir, do simples ao avançado',
+                      style: Mixart.ui(size: 11.5, color: Mixart.textMuted)),
+                ]),
+              ),
+            ]),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(18, 6, 18, 0),
+            child: Text(
+                'Cada app se monta na telinha enquanto você digita. Ao terminar, copie o código e rode numa IDE de verdade.',
+                style: Mixart.ui(size: 12, color: Mixart.textFaint).copyWith(height: 1.45)),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(14),
+            child: Column(children: [
+              for (final p in projetos)
+                _ChipProjeto(
+                  projeto: p,
+                  master: true,
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
+                    builder: (_) => ProjetoPage(nivel: 'Flutter', projeto: p, master: true),
+                  )),
+                ),
+            ]),
+          ),
+        ]),
+      ),
+    );
+  }
 }
 
 class _EtiquetaAtual extends StatelessWidget {
@@ -375,36 +725,55 @@ class _CaminhoLicoes extends StatelessWidget {
     );
   }
 
-  void _abreOpcoes(BuildContext context, int l, int? nota) {
-    final licao = st.trilhas[t].licoes[l];
-    final cursoBloc = context.read<CursoBloc>();
-    final feita = st.licaoConcluida(t, l);
-    showModalBottomSheet<void>(
-      context: context,
-      backgroundColor: const Color(0xFF141414),
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(Mixart.radiusLg))),
-      builder: (sheet) => _LicaoSheet(
-        licao: licao,
-        feita: feita,
-        nota: nota,
-        onPraticar: () {
-          Navigator.of(sheet).pop();
-          cursoBloc.add(TrilhaSelecionada(t));
-          cursoBloc.add(LicaoSelecionada(l));
-          Navigator.of(context).pop();
-        },
-        onQuiz: () {
-          Navigator.of(sheet).pop();
-          final pool = st.trilhas[t].licoes.expand((li) => li.trechos.map((tr) => tr.cod)).toList();
-          Navigator.of(context).push(MaterialPageRoute<void>(
-            builder: (_) => QuizPage(trilhaIdx: t, licaoIdx: l, licao: licao, poolTrilha: pool),
-          ));
-        },
-      ),
-    );
-  }
+  void _abreOpcoes(BuildContext context, int l, int? nota) =>
+      mostrarOpcoesLicao(context, st, t, l, nota);
+}
+
+/// Abre a folha de opções de uma lição (Teoria / Praticar / Quiz). Reutilizada
+/// pelos nós do mapa e pelos resultados da busca.
+void mostrarOpcoesLicao(BuildContext context, CursoState st, int t, int l, int? nota) {
+  final licao = st.trilhas[t].licoes[l];
+  final cursoBloc = context.read<CursoBloc>();
+  final feita = st.licaoConcluida(t, l);
+  showModalBottomSheet<void>(
+    context: context,
+    backgroundColor: const Color(0xFF141414),
+    isScrollControlled: true,
+    shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(Mixart.radiusLg))),
+    builder: (sheet) => _LicaoSheet(
+      licao: licao,
+      feita: feita,
+      nota: nota,
+      onTeoria: () {
+        Navigator.of(sheet).pop();
+        Navigator.of(context).push(MaterialPageRoute<void>(
+          builder: (_) => TeoriaPage(
+            nivel: st.trilhas[t].nivel,
+            licao: licao,
+            onPraticar: () {
+              cursoBloc.add(TrilhaSelecionada(t));
+              cursoBloc.add(LicaoSelecionada(l));
+              Navigator.of(context).pop();
+            },
+          ),
+        ));
+      },
+      onPraticar: () {
+        Navigator.of(sheet).pop();
+        cursoBloc.add(TrilhaSelecionada(t));
+        cursoBloc.add(LicaoSelecionada(l));
+        Navigator.of(context).pop();
+      },
+      onQuiz: () {
+        Navigator.of(sheet).pop();
+        final pool = st.trilhas[t].licoes.expand((li) => li.trechos.map((tr) => tr.cod)).toList();
+        Navigator.of(context).push(MaterialPageRoute<void>(
+          builder: (_) => QuizPage(trilhaIdx: t, licaoIdx: l, licao: licao, poolTrilha: pool),
+        ));
+      },
+    ),
+  );
 }
 
 class _Rotulo extends StatelessWidget {
@@ -502,7 +871,7 @@ class _NoLicaoState extends State<_NoLicao> with SingleTickerProviderStateMixin 
     List<BoxShadow> sombra = const [];
 
     if (widget.feita) {
-      deco = const BoxDecoration(
+      deco = BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -511,7 +880,7 @@ class _NoLicaoState extends State<_NoLicao> with SingleTickerProviderStateMixin 
         shape: BoxShape.circle,
       );
       sombra = const [BoxShadow(color: Color(0x55FFC73B), blurRadius: 16, spreadRadius: -2)];
-      miolo = const Icon(Icons.check_rounded, size: 26, color: Mixart.onBrand);
+      miolo = Icon(Icons.check_rounded, size: 26, color: Mixart.onBrand);
     } else if (widget.atual) {
       deco = BoxDecoration(
         color: Mixart.brandSub,
@@ -568,8 +937,8 @@ class _NoLicaoState extends State<_NoLicao> with SingleTickerProviderStateMixin 
             top: -3,
             child: Container(
               padding: const EdgeInsets.all(2),
-              decoration: const BoxDecoration(color: Mixart.bg, shape: BoxShape.circle),
-              child: const Icon(Icons.star, size: 14, color: Mixart.brand),
+              decoration: BoxDecoration(color: Mixart.bg, shape: BoxShape.circle),
+              child: Icon(Icons.star, size: 14, color: Mixart.brand),
             ),
           ),
       ]),
@@ -638,11 +1007,12 @@ class _LicaoSheet extends StatelessWidget {
   final Licao licao;
   final bool feita;
   final int? nota;
-  final VoidCallback onPraticar, onQuiz;
+  final VoidCallback onTeoria, onPraticar, onQuiz;
   const _LicaoSheet(
       {required this.licao,
       required this.feita,
       this.nota,
+      required this.onTeoria,
       required this.onPraticar,
       required this.onQuiz});
 
@@ -671,7 +1041,7 @@ class _LicaoSheet extends StatelessWidget {
                 border: Border.all(color: feita ? Mixart.brand : Mixart.border),
               ),
               child: feita
-                  ? const Icon(Icons.check_rounded, color: Mixart.onBrand, size: 24)
+                  ? Icon(Icons.check_rounded, color: Mixart.onBrand, size: 24)
                   : Text(licao.emoji, style: const TextStyle(fontSize: 22)),
             ),
             const SizedBox(width: 12),
@@ -691,7 +1061,7 @@ class _LicaoSheet extends StatelessWidget {
                   borderRadius: BorderRadius.circular(999),
                 ),
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
-                  const Icon(Icons.star, size: 13, color: Mixart.brand),
+                  Icon(Icons.star, size: 13, color: Mixart.brand),
                   const SizedBox(width: 4),
                   Text('$nota/10', style: Mixart.ui(size: 11.5, weight: FontWeight.w700, color: Mixart.brand)),
                 ]),
@@ -707,7 +1077,7 @@ class _LicaoSheet extends StatelessWidget {
                 borderRadius: BorderRadius.circular(Mixart.radiusMd),
               ),
               child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                const Icon(Icons.menu_book_outlined, size: 16, color: Mixart.textMuted),
+                Icon(Icons.menu_book_outlined, size: 16, color: Mixart.textMuted),
                 const SizedBox(width: 10),
                 Expanded(
                   child: Text(licao.resumo,
@@ -717,11 +1087,21 @@ class _LicaoSheet extends StatelessWidget {
             ),
           ],
           const SizedBox(height: 16),
+          if (licao.temTeoria) ...[
+            _OpcaoSheet(
+              icone: Icons.menu_book_outlined,
+              titulo: 'Teoria (Nivelamento)',
+              subtitulo: 'entenda o conceito antes de digitar',
+              destaque: true,
+              onTap: onTeoria,
+            ),
+            const SizedBox(height: 10),
+          ],
           _OpcaoSheet(
             icone: Icons.keyboard_alt_outlined,
             titulo: feita ? 'Praticar de novo' : 'Praticar lição',
             subtitulo: 'digite os exercícios com o Pac-Man',
-            destaque: true,
+            destaque: !licao.temTeoria,
             onTap: onPraticar,
           ),
           const SizedBox(height: 10),
@@ -766,7 +1146,7 @@ class _OpcaoSheet extends StatelessWidget {
             Container(
               width: 40,
               height: 40,
-              decoration: const BoxDecoration(color: Mixart.brand, shape: BoxShape.circle),
+              decoration: BoxDecoration(color: Mixart.brand, shape: BoxShape.circle),
               child: Icon(icone, size: 20, color: Mixart.onBrand),
             ),
             const SizedBox(width: 13),
@@ -777,7 +1157,7 @@ class _OpcaoSheet extends StatelessWidget {
                 Text(subtitulo, style: Mixart.ui(size: 11.5, color: Mixart.textMuted)),
               ]),
             ),
-            const Icon(Icons.chevron_right, size: 18, color: Mixart.textFaint),
+            Icon(Icons.chevron_right, size: 18, color: Mixart.textFaint),
           ]),
         ),
       );

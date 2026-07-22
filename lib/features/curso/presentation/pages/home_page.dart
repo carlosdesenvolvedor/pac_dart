@@ -10,8 +10,10 @@ import '../bloc/voz_cubit.dart';
 import '../widgets/code_view.dart';
 import '../widgets/console_view.dart';
 import '../widgets/dica_banner.dart';
+import '../widgets/fundo_fase.dart';
 import '../widgets/hud.dart';
 import '../widgets/menu_trilhas.dart';
+import 'teoria_page.dart';
 import '../widgets/preview_panel.dart';
 import '../widgets/victory_overlay.dart';
 
@@ -38,34 +40,37 @@ class HomePage extends StatelessWidget {
         child: BlocBuilder<CursoBloc, CursoState>(
           builder: (context, curso) {
             if (curso.status == CursoStatus.carregando) {
-              return const Center(child: CircularProgressIndicator(color: Mixart.brand));
+              return Center(child: CircularProgressIndicator(color: Mixart.brand));
             }
             if (curso.status == CursoStatus.erro) {
               return Center(
                   child: Text('Não consegui carregar o currículo 😢',
                       style: Mixart.ui(size: 14, color: Mixart.textMuted)));
             }
-            return Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 980),
-                child: ListView(
-                  padding: const EdgeInsets.fromLTRB(20, 24, 20, 48),
-                  children: [
-                    const Hud(),
-                    const SizedBox(height: 18),
-                    const MenuTrilhas(),
-                    const SizedBox(height: 16),
-                    _Palco(curso: curso),
-                    const SizedBox(height: 24),
-                    Text(
-                      'Enter pula linha · a indentação é comida sozinha · Backspace corrige · clique no código pra focar',
-                      textAlign: TextAlign.center,
-                      style: Mixart.ui(size: 11.5, color: Mixart.textFaint).copyWith(height: 1.7),
-                    ),
-                  ],
+            return Stack(children: [
+              FundoFase(nivel: curso.trilha.nivel),
+              Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 980),
+                  child: ListView(
+                    padding: const EdgeInsets.fromLTRB(20, 24, 20, 48),
+                    children: [
+                      const Hud(),
+                      const SizedBox(height: 18),
+                      const MenuTrilhas(),
+                      const SizedBox(height: 16),
+                      _Palco(curso: curso),
+                      const SizedBox(height: 24),
+                      Text(
+                        'Enter pula linha · a indentação é comida sozinha · Backspace corrige · clique no código pra focar',
+                        textAlign: TextAlign.center,
+                        style: Mixart.ui(size: 11.5, color: Mixart.textFaint).copyWith(height: 1.7),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            );
+            ]);
           },
         ),
       ),
@@ -146,15 +151,18 @@ class _PalcoState extends State<_Palco> {
       ),
       child: Stack(children: [
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          if (curso.trechoIdx == 0 && curso.licao.resumo.isNotEmpty) ...[
-            _IntroLicao(licao: curso.licao),
+          if (curso.trechoIdx == 0 && (curso.licao.resumo.isNotEmpty || curso.licao.temTeoria)) ...[
+            _IntroLicao(licao: curso.licao, nivel: curso.trilha.nivel),
             const SizedBox(height: 12),
           ],
           DicaBanner(trecho: curso.trecho),
           const SizedBox(height: 16),
           CodeView(
             focusNode: _focoDigitacao,
+            ehFlutter: curso.ehFlutter,
             onAvancar: () => context.read<CursoBloc>().add(const TrechoAvancado()),
+            vitoria: curso.vitoria,
+            onProximaLicao: () => context.read<CursoBloc>().add(const ProximaLicaoPedida()),
           ),
           const SizedBox(height: 16),
           _BarraProgresso(curso: curso),
@@ -179,10 +187,11 @@ class _PalcoState extends State<_Palco> {
   }
 }
 
-/// Introdução da lição (resumo), mostrada no primeiro exercício.
+/// Introdução da lição (resumo + acesso à teoria), no primeiro exercício.
 class _IntroLicao extends StatelessWidget {
   final Licao licao;
-  const _IntroLicao({required this.licao});
+  final String nivel;
+  const _IntroLicao({required this.licao, required this.nivel});
 
   @override
   Widget build(BuildContext context) {
@@ -211,8 +220,28 @@ class _IntroLicao extends StatelessWidget {
                     style: Mixart.ui(size: 10, weight: FontWeight.w600, color: Mixart.textMuted)),
               ),
             ]),
-            const SizedBox(height: 5),
-            Text(licao.resumo, style: Mixart.ui(size: 12.5, color: Mixart.textMuted).copyWith(height: 1.5)),
+            if (licao.resumo.isNotEmpty) ...[
+              const SizedBox(height: 5),
+              Text(licao.resumo, style: Mixart.ui(size: 12.5, color: Mixart.textMuted).copyWith(height: 1.5)),
+            ],
+            if (licao.temTeoria) ...[
+              const SizedBox(height: 8),
+              InkWell(
+                onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
+                  builder: (_) => TeoriaPage(nivel: nivel, licao: licao, onPraticar: () {}),
+                )),
+                borderRadius: BorderRadius.circular(8),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 3),
+                  child: Row(mainAxisSize: MainAxisSize.min, children: [
+                    Icon(Icons.menu_book_outlined, size: 14, color: Mixart.brand),
+                    const SizedBox(width: 6),
+                    Text('Ler a teoria (Nivelamento)',
+                        style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.brand)),
+                  ]),
+                ),
+              ),
+            ],
           ]),
         ),
       ]),
@@ -252,7 +281,7 @@ class _BarraProgresso extends StatelessWidget {
       OutlinedButton.icon(
         style: OutlinedButton.styleFrom(
           foregroundColor: Mixart.text,
-          side: const BorderSide(color: Mixart.border),
+          side: BorderSide(color: Mixart.border),
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           textStyle: Mixart.ui(size: 13),

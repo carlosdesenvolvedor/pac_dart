@@ -40,8 +40,8 @@ class _DicaBannerState extends State<DicaBanner> {
           Container(
             width: 28,
             height: 28,
-            decoration: const BoxDecoration(color: Mixart.brand, shape: BoxShape.circle),
-            child: const Icon(Icons.lightbulb_outline, size: 16, color: Mixart.onBrand),
+            decoration: BoxDecoration(color: Mixart.brand, shape: BoxShape.circle),
+            child: Icon(Icons.lightbulb_outline, size: 16, color: Mixart.onBrand),
           ),
           const SizedBox(width: 12),
           Expanded(
@@ -55,10 +55,10 @@ class _DicaBannerState extends State<DicaBanner> {
           IconButton(
             onPressed: () => context.read<VozCubit>().falarSempre(trecho.dicaPlana),
             tooltip: 'Ouvir a explicação',
-            icon: const Icon(Icons.volume_up_outlined, size: 18, color: Mixart.brand),
+            icon: Icon(Icons.volume_up_outlined, size: 18, color: Mixart.brand),
             style: IconButton.styleFrom(
               backgroundColor: Mixart.surfaceHi,
-              side: const BorderSide(color: Mixart.border),
+              side: BorderSide(color: Mixart.border),
             ),
           ),
         ]),

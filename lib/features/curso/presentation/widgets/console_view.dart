@@ -47,7 +47,7 @@ class ConsoleView extends StatelessWidget {
               padding: const EdgeInsets.only(top: 3),
               child: RichText(
                 text: TextSpan(style: Mixart.mono(size: 13), children: [
-                  const TextSpan(text: '→ ', style: TextStyle(color: Mixart.brand)),
+                  TextSpan(text: '→ ', style: TextStyle(color: Mixart.brand)),
                   TextSpan(text: out),
                 ]),
               ),
@@ -96,7 +96,7 @@ class _EnterProximoState extends State<_EnterProximo> with SingleTickerProviderS
             Text('Enter para o próximo',
                 style: Mixart.ui(size: 13, weight: FontWeight.w600, color: Mixart.brand)),
             const SizedBox(width: 6),
-            const Icon(Icons.arrow_forward, size: 14, color: Mixart.brand),
+            Icon(Icons.arrow_forward, size: 14, color: Mixart.brand),
           ]),
         ),
       );

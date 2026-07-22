@@ -62,6 +62,7 @@ class CursoState extends Equatable {
   final int trechoIdx;
   final Set<String> concluidas; // chaves "trilha:licao"
   final Map<String, int> quizNotas; // "trilha:licao" → melhores acertos
+  final List<Projeto> masterApps; // apps do Teste Master
   final bool vitoria;
 
   const CursoState({
@@ -72,6 +73,7 @@ class CursoState extends Equatable {
     this.trechoIdx = 0,
     this.concluidas = const {},
     this.quizNotas = const {},
+    this.masterApps = const [],
     this.vitoria = false,
   });
 
@@ -91,6 +93,7 @@ class CursoState extends Equatable {
     int? trechoIdx,
     Set<String>? concluidas,
     Map<String, int>? quizNotas,
+    List<Projeto>? masterApps,
     bool? vitoria,
   }) =>
       CursoState(
@@ -101,12 +104,13 @@ class CursoState extends Equatable {
         trechoIdx: trechoIdx ?? this.trechoIdx,
         concluidas: concluidas ?? this.concluidas,
         quizNotas: quizNotas ?? this.quizNotas,
+        masterApps: masterApps ?? this.masterApps,
         vitoria: vitoria ?? this.vitoria,
       );
 
   @override
   List<Object?> get props =>
-      [status, trilhas, trilhaIdx, licaoIdx, trechoIdx, concluidas, quizNotas, vitoria];
+      [status, trilhas, trilhaIdx, licaoIdx, trechoIdx, concluidas, quizNotas, masterApps, vitoria];
 }
 
 // ---------- Bloc ----------
@@ -136,6 +140,7 @@ class CursoBloc extends Bloc<CursoEvent, CursoState> {
   Future<void> _iniciar(CursoIniciado e, Emitter<CursoState> emit) async {
     try {
       final trilhas = await loader.carregar();
+      final master = await loader.carregarMaster();
       final feitas = await progresso.concluidas();
       final notas = await progresso.quizNotas();
       final (t, l) = await progresso.posicao();
@@ -144,6 +149,7 @@ class CursoBloc extends Bloc<CursoEvent, CursoState> {
       emit(state.copyWith(
         status: CursoStatus.pronto,
         trilhas: trilhas,
+        masterApps: master,
         trilhaIdx: ti,
         licaoIdx: li,
         trechoIdx: 0,

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/mixart.dart';
+import '../../../../core/theme/seletor_tema.dart';
+import '../../../auth/presentation/auth_cubit.dart';
 import '../bloc/typing_bloc.dart';
 import '../bloc/voz_cubit.dart';
 import '../pages/mapa_page.dart';
@@ -57,7 +59,7 @@ class _HudState extends State<Hud> {
             const SizedBox(width: 12),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               RichText(
-                text: TextSpan(style: Mixart.display(size: 26), children: const [
+                text: TextSpan(style: Mixart.display(size: 26), children: [
                   TextSpan(text: 'PAC'),
                   TextSpan(text: '·', style: TextStyle(color: Mixart.brand)),
                   TextSpan(text: 'DART'),
@@ -95,6 +97,10 @@ class _HudState extends State<Hud> {
                 onTap: () => context.read<VozCubit>().alternar(),
               ),
             ),
+            const SizedBox(width: 8),
+            const SeletorTema(compacto: true),
+            const SizedBox(width: 8),
+            const _ContaBotao(),
           ]),
         ],
       ),
@@ -108,15 +114,70 @@ class _LogoPac extends StatelessWidget {
   Widget build(BuildContext context) => Container(
         width: 38,
         height: 38,
-        decoration: const BoxDecoration(color: Mixart.brand, shape: BoxShape.circle),
-        child: const Icon(Icons.play_arrow, color: Mixart.onBrand),
+        decoration: BoxDecoration(color: Mixart.brand, shape: BoxShape.circle),
+        child: Icon(Icons.play_arrow, color: Mixart.onBrand),
       );
+}
+
+/// Botão de conta: mostra o usuário e permite sair.
+class _ContaBotao extends StatelessWidget {
+  const _ContaBotao();
+
+  @override
+  Widget build(BuildContext context) {
+    final user = context.select((AuthCubit c) => c.state.user);
+    return PopupMenuButton<String>(
+      tooltip: 'Sua conta',
+      color: const Color(0xFF141414),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(Mixart.radiusMd),
+        side: BorderSide(color: Mixart.border),
+      ),
+      offset: const Offset(0, 46),
+      onSelected: (v) {
+        if (v == 'sair') context.read<AuthCubit>().sair();
+      },
+      itemBuilder: (context) => [
+        PopupMenuItem<String>(
+          enabled: false,
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text('Logado como', style: Mixart.ui(size: 10, weight: FontWeight.w600, color: Mixart.textFaint)),
+            const SizedBox(height: 2),
+            Text(user?.email ?? '—', style: Mixart.ui(size: 12.5, weight: FontWeight.w600, color: Mixart.text)),
+          ]),
+        ),
+        const PopupMenuDivider(),
+        PopupMenuItem<String>(
+          value: 'sair',
+          child: Row(children: [
+            Icon(Icons.logout, size: 16, color: Mixart.danger),
+            const SizedBox(width: 10),
+            Text('Sair da conta', style: Mixart.ui(size: 13, weight: FontWeight.w600, color: Mixart.danger)),
+          ]),
+        ),
+      ],
+      child: Container(
+        height: 40,
+        width: 40,
+        decoration: BoxDecoration(
+          color: Mixart.surfaceHi,
+          border: Border.all(color: Mixart.border),
+          borderRadius: BorderRadius.circular(999),
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          (user?.apelido.isNotEmpty ?? false) ? user!.apelido[0].toUpperCase() : '?',
+          style: Mixart.display(size: 15, color: Mixart.brand),
+        ),
+      ),
+    );
+  }
 }
 
 class _Stat extends StatelessWidget {
   final String k, v;
-  final Color cor;
-  const _Stat(this.k, this.v, {this.cor = Mixart.text});
+  final Color? cor;
+  const _Stat(this.k, this.v, {this.cor});
   @override
   Widget build(BuildContext context) => Container(
         constraints: const BoxConstraints(minWidth: 72),
@@ -129,7 +190,7 @@ class _Stat extends StatelessWidget {
         child: Column(children: [
           Text(k, style: Mixart.ui(size: 9.5, weight: FontWeight.w600, color: Mixart.textMuted).copyWith(letterSpacing: 1)),
           const SizedBox(height: 4),
-          Text(v, style: Mixart.display(size: 17, color: cor)),
+          Text(v, style: Mixart.display(size: 17, color: cor ?? Mixart.text)),
         ]),
       );
 }

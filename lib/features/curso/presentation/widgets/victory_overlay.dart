@@ -55,7 +55,7 @@ class VictoryOverlay extends StatelessWidget {
               OutlinedButton(
                 style: OutlinedButton.styleFrom(
                   foregroundColor: Mixart.text,
-                  side: const BorderSide(color: Mixart.border),
+                  side: BorderSide(color: Mixart.border),
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
                   textStyle: Mixart.ui(size: 13),
@@ -63,6 +63,20 @@ class VictoryOverlay extends StatelessWidget {
                 onPressed: () => context.read<CursoBloc>().add(const LicaoRepetida()),
                 child: const Text('Repetir'),
               ),
+            ]),
+            const SizedBox(height: 14),
+            Row(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Mixart.brandDim),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Text('↵', style: Mixart.mono(size: 12, color: Mixart.brand)),
+              ),
+              const SizedBox(width: 8),
+              Text('Enter para a próxima lição',
+                  style: Mixart.ui(size: 12, weight: FontWeight.w600, color: Mixart.textMuted)),
             ]),
           ]),
         ),

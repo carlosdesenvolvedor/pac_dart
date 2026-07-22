@@ -2,9 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pac_dart/core/theme/mixart.dart';
+import 'package:pac_dart/features/auth/data/auth_repository.dart';
+import 'package:pac_dart/features/auth/domain/app_user.dart';
+import 'package:pac_dart/features/auth/presentation/auth_cubit.dart';
+import 'package:pac_dart/features/curso/data/progresso_repository.dart';
 import 'package:pac_dart/features/curso/presentation/pages/mapa_page.dart';
 import 'package:pac_dart/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+/// Auth fake já autenticado — evita tocar no Firebase real nos testes.
+class _FakeAuthRepo implements AuthRepository {
+  static const _user = AppUser(uid: 'teste-uid', email: 'teste@pac.dart');
+  @override
+  Stream<AppUser?> get mudancas => Stream.value(_user);
+  @override
+  AppUser? get atual => _user;
+  @override
+  Future<void> entrar(String email, String senha) async {}
+  @override
+  Future<void> cadastrar(String email, String senha) async {}
+  @override
+  Future<void> redefinirSenha(String email) async {}
+  @override
+  Future<void> sair() async {}
+}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -14,9 +35,15 @@ void main() {
   testWidgets('app monta, carrega o currículo e processa digitação', (tester) async {
     SharedPreferences.setMockInitialValues({});
     await tester.runAsync(() async {
-      await tester.pumpWidget(const PacDartApp());
+      await tester.pumpWidget(PacDartApp(
+        authCubitOverride: AuthCubit(_FakeAuthRepo()),
+        progressoBuilder: (_) => LocalProgressoRepository(),
+      ));
+      await Future<void>.delayed(const Duration(milliseconds: 100));
+      await tester.pump(); // aplica o login → cria o CursoBloc
       // dá tempo real para o rootBundle ler assets/curriculo.json
-      await Future<void>.delayed(const Duration(milliseconds: 400));
+      await Future<void>.delayed(const Duration(milliseconds: 500));
+      await tester.pump(); // currículo carregado → HomePage
     });
     await tester.pump();
     await tester.pump();

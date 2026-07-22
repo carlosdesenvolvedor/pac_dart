@@ -89,7 +89,7 @@ class _MenuBotao extends StatelessWidget {
         shape: WidgetStatePropertyAll(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(Mixart.radiusMd),
-            side: const BorderSide(color: Mixart.border),
+            side: BorderSide(color: Mixart.border),
           ),
         ),
         padding: const WidgetStatePropertyAll(EdgeInsets.all(7)),
