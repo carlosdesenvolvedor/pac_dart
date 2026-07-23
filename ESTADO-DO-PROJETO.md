@@ -100,11 +100,15 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
   Cache por texto (dica repetida = instantâneo), gerações atropelam falas antigas, e QUALQUER
   falha (cota/rede/VM) cai no fallback antigo do flutter_tts sem drama (`VozCubit.falarSempre`
   tenta natural → senão sistema). Fora da web o stub desiste na hora (teste garante zero rede).
-  ⚠️ **Cota do TTS grátis = 10 pedidos/min** (metric generate_content_free_tier_requests) —
-  navegar rápido estourava e "a voz antiga voltava" (era o fallback!). Defesas: **debounce de
-  900ms** no `VozCubit.falar` (só narra o trecho em que o aluno ASSENTOU) + **cooldown de 60s**
-  no VozNatural após um 429 (para de queimar cota; volta sozinho). Botões explícitos
-  (`falarSempre`) e a fala do tutor não têm debounce.
+  ⚠️ **Cota do TTS grátis é POR DIA (~10 áudios)** — confirmado empiricamente: 429 persiste
+  horas ("a voz perfeita veio nas primeiras vezes e depois se perdeu" = cota diária, não bug).
+  **Política de gasto**: a voz neural é RESERVADA para a fala do Prof. Dash e para toques
+  explícitos no 🔊/"ouvir" (falarSempre); a narração AUTOMÁTICA das dicas usa a MELHOR voz do
+  navegador (`_escolherMelhorVoz`: getVoices → prioriza nome com "Google"/"Natural" e locale
+  pt-BR — no Chrome, a "Google português do Brasil" é de rede e bem menos robótica que a voz
+  local padrão). Debounce de 900ms segue nas dicas; cooldown pós-429 = 5 min. Se um dia
+  quiser voz neural EM TUDO: ativar billing no projeto (TTS pago custa centavos) e voltar
+  `falar()` a chamar `falarSempre()`.
   - **O Prof. Dash também FALA** (mesma voz): toggle 🔊 no cabeçalho do painel (persistido em
     `voz_tutor`, padrão ligado) narra cada resposta ao terminar de chegar + link "ouvir" em cada
     bolha. `domain/texto_falavel.dart` prepara a fala: blocos ``` viram "dá uma olhada no exemplo

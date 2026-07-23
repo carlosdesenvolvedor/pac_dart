@@ -28,8 +28,8 @@ class VozNatural {
   /// Falas atropelam as anteriores: só a geração mais nova pode tocar.
   int _geracao = 0;
 
-  /// Depois de um 429 (cota do minuto: 10 pedidos no plano grátis), a voz
-  /// neural descansa um pouco — o fallback assume e ninguém fica mudo.
+  /// Depois de um 429 (a cota grátis do TTS é ~10 áudios por DIA!), a voz
+  /// neural descansa 5 min — o fallback assume e ninguém fica mudo.
   DateTime _descansaAte = DateTime.fromMillisecondsSinceEpoch(0);
 
   /// Fala [texto] com a voz neural. Devolve false quando NÃO deu (sem
@@ -86,7 +86,7 @@ class VozNatural {
       }),
     );
     if (resp.statusCode == 429) {
-      _descansaAte = DateTime.now().add(const Duration(seconds: 60));
+      _descansaAte = DateTime.now().add(const Duration(minutes: 5));
       return null;
     }
     if (resp.statusCode != 200) return null;
