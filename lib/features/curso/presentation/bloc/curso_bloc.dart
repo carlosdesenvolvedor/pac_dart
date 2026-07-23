@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../dartpad/mapa_rodavel.dart';
 import '../../data/curriculo_loader.dart';
 import '../../data/progresso_repository.dart';
 import '../../domain/curriculo.dart';
@@ -51,6 +52,14 @@ class QuizFinalizado extends CursoEvent {
   List<Object?> get props => [trilha, licao, acertos];
 }
 
+/// Um projeto "Mão na Massa"/Master foi digitado até o fim.
+class ProjetoConcluido extends CursoEvent {
+  final String chave; // "proj:t:i" ou "master:i"
+  const ProjetoConcluido(this.chave);
+  @override
+  List<Object?> get props => [chave];
+}
+
 // ---------- Estado ----------
 enum CursoStatus { carregando, pronto, erro }
 
@@ -62,7 +71,11 @@ class CursoState extends Equatable {
   final int trechoIdx;
   final Set<String> concluidas; // chaves "trilha:licao"
   final Map<String, int> quizNotas; // "trilha:licao" → melhores acertos
+  final Set<String> projetosFeitos; // chaves "proj:t:i" e "master:i"
   final List<Projeto> masterApps; // apps do Teste Master
+
+  /// O que o DartPad consegue rodar (vem de assets/roda.json).
+  final MapaRodavel rodavel;
   final bool vitoria;
 
   const CursoState({
@@ -73,7 +86,9 @@ class CursoState extends Equatable {
     this.trechoIdx = 0,
     this.concluidas = const {},
     this.quizNotas = const {},
+    this.projetosFeitos = const {},
     this.masterApps = const [],
+    this.rodavel = MapaRodavel.vazio,
     this.vitoria = false,
   });
 
@@ -85,6 +100,32 @@ class CursoState extends Equatable {
   String chave(int t, int l) => '$t:$l';
   bool licaoConcluida(int t, int l) => concluidas.contains(chave(t, l));
 
+  /// O quiz da lição já foi respondido alguma vez (guarda a melhor nota).
+  bool quizFeito(int t, int l) => quizNotas.containsKey(chave(t, l));
+
+  /// Chave do projeto "Mão na Massa" [i] da trilha [t].
+  static String chaveProjeto(int t, int i) => 'proj:$t:$i';
+
+  /// Chave do app [i] do Teste Master.
+  static String chaveMaster(int i) => 'master:$i';
+
+  bool projetoFeito(String chave) => projetosFeitos.contains(chave);
+
+  /// Todas as lições da trilha [t] já foram concluídas.
+  bool trilhaSemLicoesPendentes(int t) {
+    final licoes = trilhas[t].licoes;
+    for (var l = 0; l < licoes.length; l++) {
+      if (!licaoConcluida(t, l)) return false;
+    }
+    return true;
+  }
+
+  /// Índices dos projetos da trilha [t] que ainda faltam.
+  List<int> projetosPendentes(int t) => [
+        for (var i = 0; i < trilhas[t].projetos.length; i++)
+          if (!projetoFeito(chaveProjeto(t, i))) i,
+      ];
+
   CursoState copyWith({
     CursoStatus? status,
     List<Trilha>? trilhas,
@@ -93,7 +134,9 @@ class CursoState extends Equatable {
     int? trechoIdx,
     Set<String>? concluidas,
     Map<String, int>? quizNotas,
+    Set<String>? projetosFeitos,
     List<Projeto>? masterApps,
+    MapaRodavel? rodavel,
     bool? vitoria,
   }) =>
       CursoState(
@@ -104,13 +147,32 @@ class CursoState extends Equatable {
         trechoIdx: trechoIdx ?? this.trechoIdx,
         concluidas: concluidas ?? this.concluidas,
         quizNotas: quizNotas ?? this.quizNotas,
+        projetosFeitos: projetosFeitos ?? this.projetosFeitos,
         masterApps: masterApps ?? this.masterApps,
+        rodavel: rodavel ?? this.rodavel,
         vitoria: vitoria ?? this.vitoria,
       );
 
   @override
-  List<Object?> get props =>
-      [status, trilhas, trilhaIdx, licaoIdx, trechoIdx, concluidas, quizNotas, masterApps, vitoria];
+  List<Object?> get props => [
+        status,
+        trilhas,
+        trilhaIdx,
+        licaoIdx,
+        trechoIdx,
+        concluidas,
+        quizNotas,
+        projetosFeitos,
+        masterApps,
+        vitoria,
+      ];
+
+  /// O trecho atual vira um programa que compila? (só então mostramos "rodar")
+  bool get trechoRodavel => rodavel.trecho(trilhaIdx, licaoIdx, trechoIdx);
+
+  /// Trechos anteriores da lição — dão contexto ao programa gerado.
+  List<String> get contextoDoTrecho =>
+      licao.trechos.take(trechoIdx).map((t) => t.cod).toList();
 }
 
 // ---------- Bloc ----------
@@ -126,6 +188,13 @@ class CursoBloc extends Bloc<CursoEvent, CursoState> {
     on<ProximaLicaoPedida>(_proximaLicao);
     on<LicaoRepetida>((e, emit) => emit(state.copyWith(trechoIdx: 0, vitoria: false)));
     on<QuizFinalizado>(_quizFinalizado);
+    on<ProjetoConcluido>(_projetoConcluido);
+  }
+
+  void _projetoConcluido(ProjetoConcluido e, Emitter<CursoState> emit) {
+    if (state.projetoFeito(e.chave)) return;
+    emit(state.copyWith(projetosFeitos: {...state.projetosFeitos, e.chave}));
+    progresso.marcarProjetoFeito(e.chave);
   }
 
   void _quizFinalizado(QuizFinalizado e, Emitter<CursoState> emit) {
@@ -141,8 +210,10 @@ class CursoBloc extends Bloc<CursoEvent, CursoState> {
     try {
       final trilhas = await loader.carregar();
       final master = await loader.carregarMaster();
+      final rodavel = await loader.carregarRodaveis();
       final feitas = await progresso.concluidas();
       final notas = await progresso.quizNotas();
+      final projetos = await progresso.projetosFeitos();
       final (t, l) = await progresso.posicao();
       final ti = t.clamp(0, trilhas.length - 1);
       final li = l.clamp(0, trilhas[ti].licoes.length - 1);
@@ -150,11 +221,13 @@ class CursoBloc extends Bloc<CursoEvent, CursoState> {
         status: CursoStatus.pronto,
         trilhas: trilhas,
         masterApps: master,
+        rodavel: rodavel,
         trilhaIdx: ti,
         licaoIdx: li,
         trechoIdx: 0,
         concluidas: feitas,
         quizNotas: notas,
+        projetosFeitos: projetos,
       ));
     } catch (_) {
       emit(state.copyWith(status: CursoStatus.erro));

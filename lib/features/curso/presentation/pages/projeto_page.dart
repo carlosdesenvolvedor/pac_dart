@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/mixart.dart';
+import '../../../ranking/presentation/ranking_cubit.dart';
 import '../../domain/curriculo.dart';
+import '../bloc/curso_bloc.dart';
 import '../bloc/typing_bloc.dart';
+import '../widgets/botao_pular.dart';
 import '../widgets/code_view.dart';
 import '../widgets/console_view.dart';
 import '../widgets/fundo_fase.dart';
@@ -11,13 +14,31 @@ import '../widgets/preview_ao_vivo.dart';
 import '../widgets/preview_panel.dart';
 
 /// Tela de um projeto "Mão na Massa" ou app do Teste Master: a pessoa digita
-/// um programa/app completo. Ao concluir, mostra a saída (ou a prévia Flutter).
+/// um programa/app completo. Ao concluir, mostra a saída (ou a prévia Flutter)
+/// e marca o projeto como feito no progresso.
+///
+/// Em [emSequencia] (veio emendado depois das lições da trilha) a tela mostra
+/// "projeto X de Y", ganha um "pular" e devolve `true` para o fluxo seguir.
 class ProjetoPage extends StatefulWidget {
   final String nivel;
   final Projeto projeto;
   final bool master;
 
-  const ProjetoPage({super.key, required this.nivel, required this.projeto, this.master = false});
+  /// Chave do progresso ("proj:t:i" ou "master:i").
+  final String chaveProgresso;
+  final bool emSequencia;
+  final int passo, total;
+
+  const ProjetoPage({
+    super.key,
+    required this.nivel,
+    required this.projeto,
+    required this.chaveProgresso,
+    this.master = false,
+    this.emSequencia = false,
+    this.passo = 1,
+    this.total = 1,
+  });
 
   @override
   State<ProjetoPage> createState() => _ProjetoPageState();
@@ -34,54 +55,66 @@ class _ProjetoPageState extends State<ProjetoPage> {
     super.dispose();
   }
 
+  /// Fecha a tela: [seguir] diz se a sequência continua no próximo projeto.
+  void _sair({required bool seguir}) => Navigator.of(context).pop(seguir);
+
   @override
   Widget build(BuildContext context) {
     final p = widget.projeto;
     return BlocProvider.value(
       value: _typing,
-      child: Scaffold(
-        backgroundColor: Mixart.bg,
-        body: Stack(children: [
-          FundoFase(nivel: widget.nivel),
-          SafeArea(
-            child: Center(
-              child: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 980),
-                child: ListView(
-                  padding: const EdgeInsets.fromLTRB(20, 12, 20, 40),
-                  children: [
-                    _cabecalho(context, p),
-                    const SizedBox(height: 16),
-                    _briefing(p),
-                    const SizedBox(height: 16),
-                    _areaCodigo(p),
-                    const SizedBox(height: 16),
-                    _BarraProjeto(),
-                    const SizedBox(height: 16),
-                    BlocBuilder<TypingBloc, TypingState>(
-                      buildWhen: (a, b) => a.concluido != b.concluido,
-                      builder: (context, st) => Column(children: [
-                        if (st.concluido && p.flutter) ...[
-                          PreviewPanel(trecho: p.comoTrecho),
-                          const SizedBox(height: 16),
-                        ],
-                        ConsoleView(
-                          concluido: st.concluido,
-                          out: p.flutter ? '${p.out} (app compilado)' : p.out,
-                          onProximo: () => Navigator.of(context).maybePop(),
-                        ),
-                        if (st.concluido) ...[
-                          const SizedBox(height: 16),
-                          _feito(context),
-                        ],
-                      ]),
-                    ),
-                  ],
+      child: BlocListener<TypingBloc, TypingState>(
+        // digitou o projeto inteiro → conta como concluído no mapa
+        listenWhen: (a, b) => !a.concluido && b.concluido,
+        listener: (context, st) {
+          context.read<CursoBloc>().add(ProjetoConcluido(widget.chaveProgresso));
+          // o TypingBloc é desta tela (nasce zerado): os números vão inteiros
+          RankingCubit.de(context)?.projetoConcluido(st);
+        },
+        child: Scaffold(
+          backgroundColor: Mixart.bg,
+          body: Stack(children: [
+            FundoFase(nivel: widget.nivel),
+            SafeArea(
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 980),
+                  child: ListView(
+                    padding: const EdgeInsets.fromLTRB(20, 12, 20, 40),
+                    children: [
+                      _cabecalho(context, p),
+                      const SizedBox(height: 16),
+                      _briefing(p),
+                      const SizedBox(height: 16),
+                      _areaCodigo(p),
+                      const SizedBox(height: 16),
+                      _BarraProjeto(),
+                      const SizedBox(height: 16),
+                      BlocBuilder<TypingBloc, TypingState>(
+                        buildWhen: (a, b) => a.concluido != b.concluido,
+                        builder: (context, st) => Column(children: [
+                          if (st.concluido && p.flutter) ...[
+                            PreviewPanel(trecho: p.comoTrecho),
+                            const SizedBox(height: 16),
+                          ],
+                          ConsoleView(
+                            concluido: st.concluido,
+                            out: p.flutter ? '${p.out} (app compilado)' : p.out,
+                            onProximo: () => _sair(seguir: true),
+                          ),
+                          if (st.concluido) ...[
+                            const SizedBox(height: 16),
+                            _feito(context),
+                          ],
+                        ]),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ]),
+          ]),
+        ),
       ),
     );
   }
@@ -92,7 +125,9 @@ class _ProjetoPageState extends State<ProjetoPage> {
     final code = CodeView(
       focusNode: _foco,
       ehFlutter: p.flutter,
-      onAvancar: () => Navigator.of(context).maybePop(),
+      titulo: p.nome,
+      podeRodar: context.read<CursoBloc>().state.rodavel.projeto(widget.chaveProgresso),
+      onAvancar: () => _sair(seguir: true),
     );
     if (!p.flutter) return code;
 
@@ -114,7 +149,8 @@ class _ProjetoPageState extends State<ProjetoPage> {
 
   Widget _cabecalho(BuildContext context, Projeto p) => Row(children: [
         IconButton(
-          onPressed: () => Navigator.of(context).pop(),
+          tooltip: widget.emSequencia ? 'Sair da sequência' : 'Voltar',
+          onPressed: () => _sair(seguir: false),
           icon: Icon(Icons.arrow_back, color: Mixart.text, size: 20),
           style: IconButton.styleFrom(
               backgroundColor: Mixart.surfaceHi, side: BorderSide(color: Mixart.border)),
@@ -122,7 +158,10 @@ class _ProjetoPageState extends State<ProjetoPage> {
         const SizedBox(width: 14),
         Expanded(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(widget.master ? 'TESTE MASTER' : 'MÃO NA MASSA',
+            Text(
+                widget.emSequencia
+                    ? 'MÃO NA MASSA · ${widget.passo} DE ${widget.total}'
+                    : (widget.master ? 'TESTE MASTER' : 'MÃO NA MASSA'),
                 style: Mixart.ui(size: 10, weight: FontWeight.w700, color: Mixart.brand).copyWith(letterSpacing: 2)),
             const SizedBox(height: 2),
             Row(children: [
@@ -132,6 +171,13 @@ class _ProjetoPageState extends State<ProjetoPage> {
             ]),
           ]),
         ),
+        if (widget.emSequencia) ...[
+          const SizedBox(width: 10),
+          BotaoPular(
+            rotulo: widget.passo < widget.total ? 'Pular' : 'Pular projeto',
+            onTap: () => _sair(seguir: true),
+          ),
+        ],
       ]);
 
   Widget _briefing(Projeto p) => Container(
@@ -164,9 +210,11 @@ class _ProjetoPageState extends State<ProjetoPage> {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
             textStyle: Mixart.ui(size: 14, weight: FontWeight.w700),
           ),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => _sair(seguir: true),
           icon: const Icon(Icons.check, size: 18),
-          label: const Text('Projeto concluído!'),
+          label: Text(widget.emSequencia && widget.passo < widget.total
+              ? 'Projeto concluído — próximo →'
+              : 'Projeto concluído!'),
         ),
       ]);
 }

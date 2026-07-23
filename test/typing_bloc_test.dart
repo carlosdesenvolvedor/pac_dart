@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pac_dart/features/curso/presentation/bloc/typing_bloc.dart';
 
 void main() {
+  _deadKeys();
   group('TypingBloc — motor de digitação', () {
     late TypingBloc bloc;
 
@@ -86,6 +87,42 @@ void main() {
       await Future<void>.delayed(Duration.zero);
       expect(bloc.state.idx, 0);
       expect(bloc.state.acertosSessao, acertos);
+    });
+  });
+}
+
+// ── tecla morta do teclado ABNT (~ ^ ´ `) ───────────────────────────────
+void _deadKeys() {
+  group('acento morto (ABNT)', () {
+    late TypingBloc bloc;
+    setUp(() => bloc = TypingBloc());
+    tearDown(() => bloc.close());
+
+    Future<void> digita(List<String> teclas) async {
+      for (final t in teclas) {
+        bloc.add(TeclaDigitada(t));
+      }
+      await Future<void>.delayed(Duration.zero);
+    }
+
+    test('o espaço que solta o ~ não conta erro', () async {
+      bloc.add(const TrechoCarregado('a ~/ b'));
+      await digita(['a', ' ', '~', ' ', '/']);
+      expect(bloc.state.errosTrecho, 0);
+      expect(bloc.state.idx, 4);
+    });
+
+    test('espaço ANTES do ~ chegar também é engolido', () async {
+      bloc.add(const TrechoCarregado('a ~/ b'));
+      await digita(['a', ' ', ' ', '~']);
+      expect(bloc.state.errosTrecho, 0);
+      expect(bloc.state.idx, 3);
+    });
+
+    test('erro comum continua sendo cobrado', () async {
+      bloc.add(const TrechoCarregado('a b'));
+      await digita(['a', 'x']);
+      expect(bloc.state.errosTrecho, 1);
     });
   });
 }

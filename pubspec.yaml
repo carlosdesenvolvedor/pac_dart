@@ -19,6 +19,8 @@ dependencies:
   firebase_core: ^3.8.0
   firebase_auth: ^5.3.4
   cloud_firestore: ^5.6.0
+  # iframe do DartPad (só usado no build web, via import condicional)
+  web: ^1.1.0
 
 dev_dependencies:
   flutter_test:
@@ -32,4 +34,5 @@ flutter:
   assets:
     - assets/curriculo.json
     - assets/master.json
+    - assets/roda.json
     - assets/backgrounds/

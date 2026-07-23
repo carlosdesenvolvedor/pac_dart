@@ -85,10 +85,17 @@ void main() {
     expect(find.textContaining('QUIZ ·'), findsOneWidget);
     expect(find.textContaining('Qual código'), findsOneWidget);
 
-    // digita uma resposta qualquer e envia com Enter → veredito aparece
+    // Enter NÃO envia: só quebra linha (era o bug de corrigir antes da hora)
     await tester.enterText(find.byType(TextField).last, 'resposta errada');
     await tester.pump();
     await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    await tester.pump();
+    expect(find.textContaining('Errou'), findsNothing);
+
+    // quem envia é o botão
+    await tester.ensureVisible(find.text('Responder'));
+    await tester.pump();
+    await tester.tap(find.text('Responder'));
     await tester.pump();
     expect(find.textContaining('Errou'), findsOneWidget);
     expect(find.textContaining('Enter para a próxima'), findsOneWidget);

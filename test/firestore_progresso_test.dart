@@ -14,8 +14,17 @@ void main() {
   test('usuário novo começa vazio', () async {
     expect(await repo.concluidas(), isEmpty);
     expect(await repo.quizNotas(), isEmpty);
+    expect(await repo.projetosFeitos(), isEmpty);
     expect(await repo.posicao(), (0, 0));
     expect(await repo.recorde(), 0);
+  });
+
+  test('projetos feitos acumulam sem duplicar', () async {
+    await repo.marcarProjetoFeito('proj:0:0');
+    await repo.marcarProjetoFeito('master:2');
+    await repo.marcarProjetoFeito('proj:0:0'); // repetido
+    expect(await repo.projetosFeitos(), {'proj:0:0', 'master:2'});
+    expect(await repo.concluidas(), isEmpty); // não mistura com as lições
   });
 
   test('marcarConcluida acumula sem duplicar (arrayUnion)', () async {

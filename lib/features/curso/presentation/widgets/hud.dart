@@ -3,9 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/som/sons.dart';
+import '../../../../core/brand/logo_pacdart.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../../../core/theme/seletor_tema.dart';
+import '../../../arcade/presentation/arcade_page.dart';
 import '../../../auth/presentation/auth_cubit.dart';
+import '../../../ranking/presentation/ranking_page.dart';
 import '../bloc/typing_bloc.dart';
 import '../bloc/voz_cubit.dart';
 import '../pages/mapa_page.dart';
@@ -24,6 +28,9 @@ class _HudState extends State<Hud> {
   @override
   void initState() {
     super.initState();
+    Sons.carregar().then((_) {
+      if (mounted) setState(() {});
+    });
     // relógio e PPM atualizam a cada segundo
     _tick = Timer.periodic(const Duration(seconds: 1), (_) => setState(() {}));
   }
@@ -89,6 +96,24 @@ class _HudState extends State<Hud> {
               ),
             ),
             const SizedBox(width: 8),
+            _Toggle(
+              rotulo: 'Arcade',
+              icone: Icons.sports_esports_outlined,
+              ligado: false,
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(builder: (_) => const ArcadePage()),
+              ),
+            ),
+            const SizedBox(width: 8),
+            _Toggle(
+              rotulo: 'Ranking',
+              icone: Icons.emoji_events_outlined,
+              ligado: false,
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute<void>(builder: (_) => const RankingPage()),
+              ),
+            ),
+            const SizedBox(width: 8),
             BlocBuilder<VozCubit, bool>(
               builder: (context, vozOn) => _Toggle(
                 rotulo: 'Voz',
@@ -96,6 +121,16 @@ class _HudState extends State<Hud> {
                 ligado: vozOn,
                 onTap: () => context.read<VozCubit>().alternar(),
               ),
+            ),
+            const SizedBox(width: 8),
+            _Toggle(
+              rotulo: 'Som',
+              icone: Icons.music_note_outlined,
+              ligado: Sons.ligado,
+              onTap: () {
+                Sons.alternar();
+                setState(() {});
+              },
             ),
             const SizedBox(width: 8),
             const SeletorTema(compacto: true),
@@ -111,12 +146,7 @@ class _HudState extends State<Hud> {
 class _LogoPac extends StatelessWidget {
   const _LogoPac();
   @override
-  Widget build(BuildContext context) => Container(
-        width: 38,
-        height: 38,
-        decoration: BoxDecoration(color: Mixart.brand, shape: BoxShape.circle),
-        child: Icon(Icons.play_arrow, color: Mixart.onBrand),
-      );
+  Widget build(BuildContext context) => const LogoPacDart(tamanho: 42);
 }
 
 /// Botão de conta: mostra o usuário e permite sair.

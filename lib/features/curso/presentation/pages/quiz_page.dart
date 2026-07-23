@@ -2,20 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/som/sons.dart';
 import '../../../../core/syntax/tokenizer.dart';
 import '../../../../core/theme/mixart.dart';
+import '../../../ranking/presentation/ranking_cubit.dart';
 import '../../domain/curriculo.dart';
 import '../../domain/quiz.dart';
 import '../bloc/curso_bloc.dart';
+import '../bloc/typing_bloc.dart';
+import '../fluxo_licao.dart';
+import '../widgets/botao_pular.dart';
 import '../widgets/pacman.dart';
 
 /// Quiz da lição: até 10 perguntas geradas dos próprios exercícios.
 /// O jogador ESCOLHE uma alternativa e a digita livremente — a resposta
 /// só é avaliada quando ele dá Enter no final.
+///
+/// Em [emSequencia] (veio emendado logo depois da lição) a tela devolve
+/// `true` quando o jogador quer seguir o fluxo — terminando o quiz ou
+/// pulando — e `false` quando ele sai pela seta de voltar.
 class QuizPage extends StatefulWidget {
   final int trilhaIdx, licaoIdx;
   final Licao licao;
   final List<String> poolTrilha;
+  final bool emSequencia;
 
   const QuizPage({
     super.key,
@@ -23,6 +33,7 @@ class QuizPage extends StatefulWidget {
     required this.licaoIdx,
     required this.licao,
     required this.poolTrilha,
+    this.emSequencia = false,
   });
 
   @override
@@ -33,7 +44,7 @@ class _QuizPageState extends State<QuizPage> {
   late final List<PerguntaQuiz> perguntas = gerarQuiz(
     widget.licao,
     widget.poolTrilha,
-    seed: widget.trilhaIdx * 1000 + widget.licaoIdx,
+    seed: sementeQuiz(widget.trilhaIdx, widget.licaoIdx),
   );
 
   int i = 0;
@@ -43,31 +54,58 @@ class _QuizPageState extends State<QuizPage> {
   // resposta da pergunta atual
   bool submetido = false;
   bool acertou = false;
+  int? escolhida; // alternativa clicada (quando respondeu por clique)
+
+  /// Compara código ignorando SÓ formatação: quebra de linha, indentação e
+  /// espaço colado em pontuação. Digitar tudo numa linha vale; trocar
+  /// `isNotEmpty` por `istnotEmpty` não vale. Variantes de teclado
+  /// (˜ do Mac, aspas curvas) contam como o ASCII equivalente.
+  static String _semFormatacao(String s) {
+    var t = s;
+    TypingBloc.equivalenciasTeclado.forEach((k, v) => t = t.replaceAll(k, v));
+    t = t.replaceAll(RegExp(r'\s+'), ' ').trim();
+    return t.replaceAll(RegExp(r'\s*([(){}\[\];,.:=+\-*/<>!?&|])\s*'), r'$1');
+  }
 
   void _responder(String digitado) {
     if (submetido) return;
     final p = perguntas[i];
-    String norm(String s) =>
-        s.split('\n').map((l) => l.trimRight()).join('\n').trim();
     setState(() {
       submetido = true;
-      acertou = norm(digitado) == norm(p.codigoCerto);
+      acertou = _semFormatacao(digitado) == _semFormatacao(p.codigoCerto);
       if (acertou) acertos++;
     });
+    Sons.toca(acertou ? Som.blip : Som.erro);
+  }
+
+  /// Resposta pelo caminho curto: clicou na alternativa.
+  void _responderClique(int a) {
+    if (submetido) return;
+    setState(() {
+      submetido = true;
+      escolhida = a;
+      acertou = a == perguntas[i].correta;
+      if (acertou) acertos++;
+    });
+    Sons.toca(acertou ? Som.blip : Som.erro);
   }
 
   void _proxima() {
     if (i >= perguntas.length - 1) {
+      Sons.toca(Som.fanfarra);
       setState(() => terminou = true);
       context
           .read<CursoBloc>()
           .add(QuizFinalizado(widget.trilhaIdx, widget.licaoIdx, acertos));
+      // cada acerto vale 10 pts no placar público
+      RankingCubit.de(context)?.quizRespondido(acertos, perguntas.length);
       return;
     }
     setState(() {
       i++;
       submetido = false;
       acertou = false;
+      escolhida = null;
     });
   }
 
@@ -78,8 +116,13 @@ class _QuizPageState extends State<QuizPage> {
       terminou = false;
       submetido = false;
       acertou = false;
+      escolhida = null;
     });
   }
+
+  /// Fecha a tela: [seguir] diz se a sequência (projetos / próxima lição)
+  /// continua. Fora da sequência o valor é ignorado.
+  void _fechar({required bool seguir}) => Navigator.of(context).pop(seguir);
 
   @override
   Widget build(BuildContext context) {
@@ -122,10 +165,16 @@ class _QuizPageState extends State<QuizPage> {
       const SizedBox(height: 14),
       for (var a = 0; a < p.alternativas.length; a++)
         _alternativa(a, p.alternativas[a], p),
-      const SizedBox(height: 14),
-      Text('Escolha uma alternativa e digite o código dela — Enter no final envia:',
-          style: Mixart.ui(size: 12, weight: FontWeight.w600, color: Mixart.textMuted)),
-      const SizedBox(height: 8),
+      const SizedBox(height: 6),
+      Row(children: [
+        Icon(Icons.touch_app_outlined, size: 15, color: Mixart.brand),
+        const SizedBox(width: 7),
+        Expanded(
+          child: Text('Toque na alternativa certa — ou digite o código dela aqui embaixo:',
+              style: Mixart.ui(size: 12, weight: FontWeight.w600, color: Mixart.textMuted)),
+        ),
+      ]),
+      const SizedBox(height: 10),
       _AreaRespostaLivre(
         key: ValueKey(i), // zera a digitação a cada pergunta
         alternativas: p.alternativas,
@@ -135,7 +184,8 @@ class _QuizPageState extends State<QuizPage> {
       ),
       const SizedBox(height: 12),
       if (!submetido)
-        Text('Você pode digitar qualquer alternativa — o veredito só sai no Enter.',
+        Text('Enter quebra linha — não envia. Não precisa acertar a indentação: '
+            'pode digitar tudo numa linha só.',
             style: Mixart.ui(size: 11.5, color: Mixart.textFaint))
       else
         Row(children: [
@@ -161,7 +211,8 @@ class _QuizPageState extends State<QuizPage> {
 
   Widget _cabecalho() => Row(children: [
         IconButton(
-          onPressed: () => Navigator.of(context).pop(),
+          tooltip: widget.emSequencia ? 'Sair da sequência' : 'Voltar',
+          onPressed: () => _fechar(seguir: false),
           icon: Icon(Icons.arrow_back, color: Mixart.text, size: 20),
           style: IconButton.styleFrom(
               backgroundColor: Mixart.surfaceHi, side: BorderSide(color: Mixart.border)),
@@ -185,40 +236,62 @@ class _QuizPageState extends State<QuizPage> {
         ),
         const SizedBox(width: 12),
         Text('${i + 1}/${perguntas.length}', style: Mixart.mono(size: 12, color: Mixart.textMuted)),
+        if (widget.emSequencia) ...[
+          const SizedBox(width: 8),
+          BotaoPular(rotulo: 'Pular quiz', onTap: () => _fechar(seguir: true)),
+        ],
       ]);
 
+  /// Alternativa: clicar nela JÁ responde (o caminho curto).
   Widget _alternativa(int a, String cod, PerguntaQuiz p) {
     final letra = String.fromCharCode(65 + a);
-    // após o envio, pinta a certa (e a errada, se foi o caso)
+    final ehCerta = submetido && a == p.correta;
+    final ehErradaEscolhida = submetido && escolhida == a && a != p.correta;
+
     Color borda = Mixart.border;
-    if (submetido && a == p.correta) borda = Mixart.brand;
-    return Container(
-      margin: const EdgeInsets.only(bottom: 8),
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-      decoration: BoxDecoration(
+    if (ehCerta) borda = Mixart.brand;
+    if (ehErradaEscolhida) borda = Mixart.danger;
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Material(
         color: Mixart.surface,
-        border: Border.all(color: borda, width: submetido && a == p.correta ? 1.6 : 1),
         borderRadius: BorderRadius.circular(Mixart.radiusMd),
-      ),
-      child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Container(
-          width: 24,
-          height: 24,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: submetido && a == p.correta ? Mixart.brand : Mixart.surfaceHi,
-            shape: BoxShape.circle,
-            border: Border.all(color: Mixart.border),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(Mixart.radiusMd),
+          onTap: submetido ? null : () => _responderClique(a),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+            decoration: BoxDecoration(
+              border: Border.all(color: borda, width: ehCerta || ehErradaEscolhida ? 1.6 : 1),
+              borderRadius: BorderRadius.circular(Mixart.radiusMd),
+            ),
+            child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Container(
+                width: 24,
+                height: 24,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: ehCerta
+                      ? Mixart.brand
+                      : ehErradaEscolhida
+                          ? Mixart.danger
+                          : Mixart.surfaceHi,
+                  shape: BoxShape.circle,
+                  border: Border.all(color: Mixart.border),
+                ),
+                child: Text(letra,
+                    style: Mixart.ui(
+                        size: 12,
+                        weight: FontWeight.w700,
+                        color: ehCerta || ehErradaEscolhida ? Mixart.onBrand : Mixart.textMuted)),
+              ),
+              const SizedBox(width: 12),
+              Expanded(child: _codigoColorido(cod)),
+            ]),
           ),
-          child: Text(letra,
-              style: Mixart.ui(
-                  size: 12,
-                  weight: FontWeight.w700,
-                  color: submetido && a == p.correta ? Mixart.onBrand : Mixart.textMuted)),
         ),
-        const SizedBox(width: 12),
-        Expanded(child: _codigoColorido(cod)),
-      ]),
+      ),
     );
   }
 
@@ -244,6 +317,15 @@ class _QuizPageState extends State<QuizPage> {
       TextSpan(children: spans),
       style: Mixart.mono(size: 13).copyWith(height: 1.6),
     );
+  }
+
+  /// Anuncia a próxima etapa da sequência (projetos ou lição seguinte).
+  String _oQueVem() {
+    final n = projetosNaSequencia(context.read<CursoBloc>().state);
+    if (n == 0) return 'A seguir: a próxima lição.';
+    return n == 1
+        ? 'A seguir: 1 app do Mão na Massa.'
+        : 'A seguir: $n apps do Mão na Massa.';
   }
 
   Widget _resultado() {
@@ -275,6 +357,12 @@ class _QuizPageState extends State<QuizPage> {
             otimo ? 'Mandou muito! ⭐' : 'Refaça a lição e tente de novo!',
             style: Mixart.ui(size: 13, color: Mixart.textMuted),
           ),
+          if (widget.emSequencia) ...[
+            const SizedBox(height: 10),
+            Text(_oQueVem(),
+                textAlign: TextAlign.center,
+                style: Mixart.ui(size: 12, weight: FontWeight.w600, color: Mixart.brand)),
+          ],
           const SizedBox(height: 22),
           Wrap(spacing: 10, runSpacing: 10, alignment: WrapAlignment.center, children: [
             FilledButton(
@@ -285,8 +373,8 @@ class _QuizPageState extends State<QuizPage> {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
                 textStyle: Mixart.ui(size: 13, weight: FontWeight.w700),
               ),
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Voltar ao mapa'),
+              onPressed: () => _fechar(seguir: true),
+              child: Text(widget.emSequencia ? 'Continuar →' : 'Voltar ao mapa'),
             ),
             OutlinedButton(
               style: OutlinedButton.styleFrom(
@@ -366,8 +454,11 @@ class _AreaRespostaLivreState extends State<_AreaRespostaLivre> {
     if (e.logicalKey == LogicalKeyboardKey.enter || e.logicalKey == LogicalKeyboardKey.numpadEnter) {
       if (widget.submetido) {
         widget.onProxima();
+      } else if (HardwareKeyboard.instance.isControlPressed ||
+          HardwareKeyboard.instance.isMetaPressed) {
+        _enviar(); // Ctrl/Cmd + Enter envia
       } else if (buffer.isNotEmpty) {
-        _enter();
+        _quebraLinha(); // Enter sozinho NUNCA envia: só quebra a linha
       }
       return KeyEventResult.handled;
     }
@@ -380,24 +471,28 @@ class _AreaRespostaLivreState extends State<_AreaRespostaLivre> {
     return KeyEventResult.ignored;
   }
 
-  /// Enter: quebra de linha se ainda casa com alguma alternativa; senão envia.
-  void _enter() {
+  void _enviar() {
+    if (widget.submetido || buffer.trim().isEmpty) return;
+    widget.onEnviar(buffer);
+  }
+
+  /// Enter só quebra a linha — nunca envia (era isso que corrigia a questão
+  /// antes da hora). Se o que já foi digitado casa com alguma alternativa,
+  /// emenda a indentação dela; mas é só conforto, a correção ignora formatação.
+  void _quebraLinha() {
     final comQuebra = '$buffer\n';
     final candidata = widget.alternativas
         .where((a) => a.startsWith(comQuebra) && a.length > comQuebra.length)
         .firstOrNull;
+    var novo = comQuebra;
     if (candidata != null) {
-      // auto-indentação: já emenda os espaços do começo da próxima linha
-      var novo = comQuebra;
       var k = comQuebra.length;
       while (k < candidata.length && candidata[k] == ' ') {
         novo += ' ';
         k++;
       }
-      setState(() => buffer = novo);
-    } else {
-      widget.onEnviar(buffer);
     }
+    setState(() => buffer = novo);
   }
 
   void _backspace() {
@@ -416,6 +511,32 @@ class _AreaRespostaLivreState extends State<_AreaRespostaLivre> {
 
   @override
   Widget build(BuildContext context) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      _caixa(context),
+      if (!widget.submetido) ...[
+        const SizedBox(height: 10),
+        Row(children: [
+          FilledButton.icon(
+            style: FilledButton.styleFrom(
+              backgroundColor: buffer.trim().isEmpty ? Mixart.surfaceHi : Mixart.brand,
+              foregroundColor: buffer.trim().isEmpty ? Mixart.textFaint : Mixart.onBrand,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+              textStyle: Mixart.ui(size: 13, weight: FontWeight.w700),
+            ),
+            onPressed: buffer.trim().isEmpty ? null : _enviar,
+            icon: const Icon(Icons.send_rounded, size: 16),
+            label: const Text('Responder'),
+          ),
+          const SizedBox(width: 12),
+          Text('ou Ctrl/Cmd + Enter',
+              style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
+        ]),
+      ],
+    ]);
+  }
+
+  Widget _caixa(BuildContext context) {
     return GestureDetector(
       onTap: () => _foco.requestFocus(),
       child: Container(

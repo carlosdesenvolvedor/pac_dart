@@ -16,6 +16,8 @@ import 'features/curso/presentation/bloc/curso_bloc.dart';
 import 'features/curso/presentation/bloc/typing_bloc.dart';
 import 'features/curso/presentation/bloc/voz_cubit.dart';
 import 'features/curso/presentation/pages/home_page.dart';
+import 'features/ranking/data/ranking_repository.dart';
+import 'features/ranking/presentation/ranking_cubit.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -66,8 +68,10 @@ class PacDartApp extends StatelessWidget {
   /// Injetáveis para testes (evitam tocar no Firebase real).
   final AuthCubit? authCubitOverride;
   final ProgressoRepository Function(AppUser user)? progressoBuilder;
+  final RankingRepository Function()? rankingBuilder;
 
-  const PacDartApp({super.key, this.authCubitOverride, this.progressoBuilder});
+  const PacDartApp(
+      {super.key, this.authCubitOverride, this.progressoBuilder, this.rankingBuilder});
 
   @override
   Widget build(BuildContext context) {
@@ -97,6 +101,16 @@ class PacDartApp extends StatelessWidget {
                 ),
                 BlocProvider(create: (_) => TypingBloc()),
                 BlocProvider(create: (_) => VozCubit()),
+                // placar público (lazy: só toca o Firestore quando usado)
+                BlocProvider(
+                  create: (_) => RankingCubit(
+                    repo: rankingBuilder != null
+                        ? rankingBuilder!()
+                        : FirestoreRankingRepository(),
+                    uid: estado.user!.uid,
+                    apelido: estado.user!.apelido,
+                  ),
+                ),
               ],
               child: const _AppShell(home: HomePage()),
             ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/brand/logo_pacdart.dart';
 import '../../../core/theme/mixart.dart';
 import '../../../core/theme/seletor_tema.dart';
-import '../../curso/presentation/widgets/pacman.dart';
 import 'auth_cubit.dart';
 import '../data/auth_repository.dart';
 
@@ -188,17 +188,8 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _cabecalho() => Column(
     children: [
-      Container(
-        width: 64,
-        height: 64,
-        decoration: BoxDecoration(color: Mixart.brand, shape: BoxShape.circle),
-        alignment: Alignment.center,
-        child: const Padding(
-          padding: EdgeInsets.all(12),
-          child: Pacman(tamanho: 36),
-        ),
-      ),
-      const SizedBox(height: 16),
+      const LogoPacDart(tamanho: 96),
+      const SizedBox(height: 18),
       RichText(
         text: TextSpan(
           style: Mixart.display(size: 30),

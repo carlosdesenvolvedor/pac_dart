@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../domain/curriculo.dart';
 import '../bloc/curso_bloc.dart';
+import '../fluxo_licao.dart';
 import '../widgets/pacman.dart';
 import 'projeto_page.dart';
 import 'quiz_page.dart';
@@ -61,7 +62,7 @@ class _MapaPageState extends State<MapaPage> {
                       const SliverToBoxAdapter(child: _Conector()),
                     ],
                     if (st.masterApps.isNotEmpty)
-                      SliverToBoxAdapter(child: _SecaoMaster(projetos: st.masterApps)),
+                      SliverToBoxAdapter(child: _SecaoMaster(st: st)),
                     const SliverToBoxAdapter(child: SizedBox(height: 56)),
                   ],
                 ]),
@@ -186,27 +187,40 @@ class _Resultados extends StatelessWidget {
           ));
         }
       }
-      for (final p in tr.projetos) {
+      for (var i = 0; i < tr.projetos.length; i++) {
+        final p = tr.projetos[i];
         if (_norm(p.nome).contains(q)) {
           itens.add(_ItemResultado(
             emoji: p.emoji,
             nome: p.nome,
             contexto: '${tr.emoji} ${tr.nivel} · mão na massa',
-            onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
-              builder: (_) => ProjetoPage(nivel: tr.nivel, projeto: p),
+            feito: st.projetoFeito(CursoState.chaveProjeto(t, i)),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute<bool>(
+              builder: (_) => ProjetoPage(
+                nivel: tr.nivel,
+                projeto: p,
+                chaveProgresso: CursoState.chaveProjeto(t, i),
+              ),
             )),
           ));
         }
       }
     }
-    for (final p in st.masterApps) {
+    for (var i = 0; i < st.masterApps.length; i++) {
+      final p = st.masterApps[i];
       if (_norm(p.nome).contains(q)) {
         itens.add(_ItemResultado(
           emoji: p.emoji,
           nome: p.nome,
           contexto: '🏆 Teste Master · app',
-          onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
-            builder: (_) => ProjetoPage(nivel: 'Flutter', projeto: p, master: true),
+          feito: st.projetoFeito(CursoState.chaveMaster(i)),
+          onTap: () => Navigator.of(context).push(MaterialPageRoute<bool>(
+            builder: (_) => ProjetoPage(
+              nivel: 'Flutter',
+              projeto: p,
+              chaveProgresso: CursoState.chaveMaster(i),
+              master: true,
+            ),
           )),
         ));
       }
@@ -459,7 +473,7 @@ class _SecaoTrilha extends StatelessWidget {
               builder: (context, box) => _CaminhoLicoes(st: st, t: t, largura: box.maxWidth),
             ),
           ),
-          if (trilha.temProjetos) _MaoNaMassa(nivel: trilha.nivel, projetos: trilha.projetos),
+          if (trilha.temProjetos) _MaoNaMassa(st: st, t: t),
         ]),
       ),
     );
@@ -468,14 +482,20 @@ class _SecaoTrilha extends StatelessWidget {
   int _ex(Trilha t) => t.licoes.fold<int>(0, (a, l) => a + l.trechos.length);
 }
 
-/// Rodapé "Mão na Massa": 3 projetos completos ao fim do módulo.
+/// Rodapé "Mão na Massa": os projetos completos ao fim do módulo, com quantos
+/// já foram construídos.
 class _MaoNaMassa extends StatelessWidget {
-  final String nivel;
-  final List<Projeto> projetos;
-  const _MaoNaMassa({required this.nivel, required this.projetos});
+  final CursoState st;
+  final int t;
+  const _MaoNaMassa({required this.st, required this.t});
 
   @override
   Widget build(BuildContext context) {
+    final trilha = st.trilhas[t];
+    final projetos = trilha.projetos;
+    final feitos = projetos.length - st.projetosPendentes(t).length;
+    final completos = feitos == projetos.length;
+
     return Container(
       margin: const EdgeInsets.fromLTRB(14, 0, 14, 16),
       padding: const EdgeInsets.all(14),
@@ -486,20 +506,35 @@ class _MaoNaMassa extends StatelessWidget {
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(children: [
-          Icon(Icons.construction, size: 16, color: Mixart.brand),
+          Icon(completos ? Icons.verified : Icons.construction, size: 16, color: Mixart.brand),
           const SizedBox(width: 8),
           Text('MÃO NA MASSA',
               style: Mixart.ui(size: 11, weight: FontWeight.w800, color: Mixart.brand).copyWith(letterSpacing: 1.5)),
           const SizedBox(width: 8),
-          Text('· construa ${projetos.length} apps',
-              style: Mixart.ui(size: 11, color: Mixart.textMuted)),
+          Flexible(
+            child: Text(
+              feitos == 0
+                  ? '· construa ${projetos.length} apps'
+                  : '· $feitos de ${projetos.length} construídos',
+              overflow: TextOverflow.ellipsis,
+              style: Mixart.ui(
+                  size: 11,
+                  weight: feitos > 0 ? FontWeight.w600 : FontWeight.w400,
+                  color: completos ? Mixart.brand : Mixart.textMuted),
+            ),
+          ),
         ]),
         const SizedBox(height: 10),
-        for (final p in projetos)
+        for (var i = 0; i < projetos.length; i++)
           _ChipProjeto(
-            projeto: p,
-            onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
-              builder: (_) => ProjetoPage(nivel: nivel, projeto: p),
+            projeto: projetos[i],
+            feito: st.projetoFeito(CursoState.chaveProjeto(t, i)),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute<bool>(
+              builder: (_) => ProjetoPage(
+                nivel: trilha.nivel,
+                projeto: projetos[i],
+                chaveProgresso: CursoState.chaveProjeto(t, i),
+              ),
             )),
           ),
       ]),
@@ -511,7 +546,9 @@ class _ChipProjeto extends StatelessWidget {
   final Projeto projeto;
   final VoidCallback onTap;
   final bool master;
-  const _ChipProjeto({required this.projeto, required this.onTap, this.master = false});
+  final bool feito;
+  const _ChipProjeto(
+      {required this.projeto, required this.onTap, this.master = false, this.feito = false});
 
   @override
   Widget build(BuildContext context) => InkWell(
@@ -522,15 +559,35 @@ class _ChipProjeto extends StatelessWidget {
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
             color: Mixart.surface,
-            border: Border.all(color: Mixart.border),
+            border: Border.all(color: feito ? Mixart.brandDim : Mixart.border),
             borderRadius: BorderRadius.circular(Mixart.radiusMd),
           ),
           child: Row(children: [
-            Text(projeto.emoji, style: const TextStyle(fontSize: 20)),
+            // feito vira medalhinha de check no lugar do emoji
+            feito
+                ? Container(
+                    width: 26,
+                    height: 26,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(color: Mixart.brand, shape: BoxShape.circle),
+                    child: Icon(Icons.check_rounded, size: 17, color: Mixart.onBrand),
+                  )
+                : Text(projeto.emoji, style: const TextStyle(fontSize: 20)),
             const SizedBox(width: 12),
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(projeto.nome, style: Mixart.ui(size: 14, weight: FontWeight.w700)),
+                Row(children: [
+                  Flexible(
+                    child: Text(projeto.nome,
+                        overflow: TextOverflow.ellipsis,
+                        style: Mixart.ui(size: 14, weight: FontWeight.w700)),
+                  ),
+                  if (feito) ...[
+                    const SizedBox(width: 8),
+                    Text('construído',
+                        style: Mixart.ui(size: 10, weight: FontWeight.w700, color: Mixart.brand)),
+                  ],
+                ]),
                 const SizedBox(height: 2),
                 Text(projeto.descricao,
                     maxLines: 2,
@@ -559,11 +616,15 @@ class _ChipProjeto extends StatelessWidget {
 
 /// Seção especial do Teste Master: os apps Flutter finais.
 class _SecaoMaster extends StatelessWidget {
-  final List<Projeto> projetos;
-  const _SecaoMaster({required this.projetos});
+  final CursoState st;
+  const _SecaoMaster({required this.st});
 
   @override
   Widget build(BuildContext context) {
+    final projetos = st.masterApps;
+    final feitos = List.generate(projetos.length, (i) => st.projetoFeito(CursoState.chaveMaster(i)))
+        .where((f) => f)
+        .length;
     return Padding(
       padding: const EdgeInsets.fromLTRB(18, 12, 18, 0),
       child: Container(
@@ -586,8 +647,14 @@ class _SecaoMaster extends StatelessWidget {
               Expanded(
                 child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                   Text('Teste Master', style: Mixart.display(size: 20)),
-                  Text('${projetos.length} apps Flutter para construir, do simples ao avançado',
-                      style: Mixart.ui(size: 11.5, color: Mixart.textMuted)),
+                  Text(
+                      feitos == 0
+                          ? '${projetos.length} apps Flutter para construir, do simples ao avançado'
+                          : '$feitos de ${projetos.length} apps construídos',
+                      style: Mixart.ui(
+                          size: 11.5,
+                          weight: feitos > 0 ? FontWeight.w600 : FontWeight.w400,
+                          color: feitos == projetos.length ? Mixart.brand : Mixart.textMuted)),
                 ]),
               ),
             ]),
@@ -601,12 +668,18 @@ class _SecaoMaster extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(14),
             child: Column(children: [
-              for (final p in projetos)
+              for (var i = 0; i < projetos.length; i++)
                 _ChipProjeto(
-                  projeto: p,
+                  projeto: projetos[i],
                   master: true,
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
-                    builder: (_) => ProjetoPage(nivel: 'Flutter', projeto: p, master: true),
+                  feito: st.projetoFeito(CursoState.chaveMaster(i)),
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute<bool>(
+                    builder: (_) => ProjetoPage(
+                      nivel: 'Flutter',
+                      projeto: projetos[i],
+                      chaveProgresso: CursoState.chaveMaster(i),
+                      master: true,
+                    ),
                   )),
                 ),
             ]),
@@ -767,9 +840,13 @@ void mostrarOpcoesLicao(BuildContext context, CursoState st, int t, int l, int? 
       },
       onQuiz: () {
         Navigator.of(sheet).pop();
-        final pool = st.trilhas[t].licoes.expand((li) => li.trechos.map((tr) => tr.cod)).toList();
-        Navigator.of(context).push(MaterialPageRoute<void>(
-          builder: (_) => QuizPage(trilhaIdx: t, licaoIdx: l, licao: licao, poolTrilha: pool),
+        Navigator.of(context).push(MaterialPageRoute<bool>(
+          builder: (_) => QuizPage(
+            trilhaIdx: t,
+            licaoIdx: l,
+            licao: licao,
+            poolTrilha: poolDaTrilha(st.trilhas[t]),
+          ),
         ));
       },
     ),
@@ -931,14 +1008,16 @@ class _NoLicaoState extends State<_NoLicao> with SingleTickerProviderStateMixin 
       customBorder: const CircleBorder(),
       child: Stack(clipBehavior: Clip.none, children: [
         circulo,
-        if (widget.nota != null && widget.nota! >= 8)
+        // estrela = quiz já respondido (cheia quando foi bem)
+        if (widget.nota != null)
           Positioned(
             right: -3,
             top: -3,
             child: Container(
               padding: const EdgeInsets.all(2),
               decoration: BoxDecoration(color: Mixart.bg, shape: BoxShape.circle),
-              child: Icon(Icons.star, size: 14, color: Mixart.brand),
+              child: Icon(widget.nota! >= 8 ? Icons.star : Icons.star_border,
+                  size: 14, color: widget.nota! >= 8 ? Mixart.brand : Mixart.textMuted),
             ),
           ),
       ]),
@@ -1111,6 +1190,7 @@ class _LicaoSheet extends StatelessWidget {
             subtitulo: nota != null
                 ? 'seu recorde: $nota/10 — tente superar'
                 : 'até 10 perguntas — escolha e digite o código certo',
+            feito: nota != null,
             onTap: onQuiz,
           ),
         ]),
@@ -1123,12 +1203,14 @@ class _OpcaoSheet extends StatelessWidget {
   final IconData icone;
   final String titulo, subtitulo;
   final bool destaque;
+  final bool feito;
   final VoidCallback onTap;
   const _OpcaoSheet(
       {required this.icone,
       required this.titulo,
       required this.subtitulo,
       this.destaque = false,
+      this.feito = false,
       required this.onTap});
 
   @override
@@ -1152,7 +1234,17 @@ class _OpcaoSheet extends StatelessWidget {
             const SizedBox(width: 13),
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(titulo, style: Mixart.ui(size: 14.5, weight: FontWeight.w700)),
+                Row(children: [
+                  Flexible(
+                    child: Text(titulo,
+                        overflow: TextOverflow.ellipsis,
+                        style: Mixart.ui(size: 14.5, weight: FontWeight.w700)),
+                  ),
+                  if (feito) ...[
+                    const SizedBox(width: 8),
+                    Icon(Icons.check_circle, size: 15, color: Mixart.brand),
+                  ],
+                ]),
                 const SizedBox(height: 2),
                 Text(subtitulo, style: Mixart.ui(size: 11.5, color: Mixart.textMuted)),
               ]),

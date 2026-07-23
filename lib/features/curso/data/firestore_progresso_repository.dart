@@ -4,7 +4,7 @@ import 'progresso_repository.dart';
 
 /// Progresso na nuvem: um documento por usuário em `users/{uid}`.
 /// Campos: concluidas (lista "t:l"), quizNotas (mapa "t:l"→int),
-/// trilha, licao, recorde.
+/// projetos (lista "proj:t:i"/"master:i"), trilha, licao, recorde.
 class FirestoreProgressoRepository implements ProgressoRepository {
   final String uid;
   final FirebaseFirestore _db;
@@ -55,6 +55,16 @@ class FirestoreProgressoRepository implements ProgressoRepository {
       'quizNotas': {chave: acertos}
     }, SetOptions(merge: true));
   }
+
+  @override
+  Future<Set<String>> projetosFeitos() async {
+    final d = await _dados();
+    return ((d['projetos'] as List?)?.map((e) => e.toString()) ?? const <String>[]).toSet();
+  }
+
+  @override
+  Future<void> marcarProjetoFeito(String chave) =>
+      _doc.set({'projetos': FieldValue.arrayUnion([chave])}, SetOptions(merge: true));
 
   @override
   Future<int> recorde() async {

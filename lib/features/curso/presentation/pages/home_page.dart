@@ -1,12 +1,17 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/mixart.dart';
+import '../../../../core/util/codigo_executavel.dart';
+import '../../../ranking/presentation/ranking_cubit.dart';
 import '../../domain/curriculo.dart';
 import '../bloc/curso_bloc.dart';
 import '../bloc/typing_bloc.dart';
 import '../bloc/voz_cubit.dart';
+import '../fluxo_licao.dart';
 import '../widgets/code_view.dart';
 import '../widgets/console_view.dart';
 import '../widgets/dica_banner.dart';
@@ -25,18 +30,28 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocListener<CursoBloc, CursoState>(
-        // sempre que o trecho muda, recarrega o motor e narra a dica
-        listenWhen: (a, b) =>
-            a.status != b.status ||
-            a.trilhaIdx != b.trilhaIdx ||
-            a.licaoIdx != b.licaoIdx ||
-            a.trechoIdx != b.trechoIdx,
-        listener: (context, st) {
-          if (st.status != CursoStatus.pronto) return;
-          context.read<TypingBloc>().add(TrechoCarregado(st.trecho.cod));
-          context.read<VozCubit>().falar(st.trecho.dicaPlana);
-        },
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<CursoBloc, CursoState>(
+            // sempre que o trecho muda, recarrega o motor e narra a dica
+            listenWhen: (a, b) =>
+                a.status != b.status ||
+                a.trilhaIdx != b.trilhaIdx ||
+                a.licaoIdx != b.licaoIdx ||
+                a.trechoIdx != b.trechoIdx,
+            listener: (context, st) {
+              if (st.status != CursoStatus.pronto) return;
+              context.read<TypingBloc>().add(TrechoCarregado(st.trecho.cod));
+              context.read<VozCubit>().falar(st.trecho.dicaPlana);
+            },
+          ),
+          BlocListener<CursoBloc, CursoState>(
+            // lição digitada até o fim → publica a conquista no ranking
+            listenWhen: (a, b) => !a.vitoria && b.vitoria,
+            listener: (context, _) => RankingCubit.de(context)
+                ?.licaoConcluida(context.read<TypingBloc>().state),
+          ),
+        ],
         child: BlocBuilder<CursoBloc, CursoState>(
           builder: (context, curso) {
             if (curso.status == CursoStatus.carregando) {
@@ -90,12 +105,52 @@ class _PalcoState extends State<_Palco> {
   /// Foco da área de digitação — devolvido ao fechar o popup da prévia.
   final _focoDigitacao = FocusNode();
 
+  /// Respiro para ver o placar antes de o quiz abrir sozinho.
+  static const _esperaAuto = Duration(milliseconds: 3400);
+
+  Timer? _auto;
+  bool _emSequencia = false;
+
   CursoState get curso => widget.curso;
 
   @override
+  void didUpdateWidget(covariant _Palco old) {
+    super.didUpdateWidget(old);
+    if (old.curso.vitoria == curso.vitoria) return;
+    if (curso.vitoria) {
+      // lição concluída: o quiz entra na sequência sozinho
+      _auto?.cancel();
+      if (_temQuizAgora) _auto = Timer(_esperaAuto, () => _seguir(comQuiz: true));
+    } else {
+      _auto?.cancel();
+    }
+  }
+
+  @override
   void dispose() {
+    _auto?.cancel();
     _focoDigitacao.dispose();
     super.dispose();
+  }
+
+  bool get _temQuizAgora => temQuiz(curso, curso.trilhaIdx, curso.licaoIdx);
+
+  /// Emenda o pós-lição (quiz → projetos → próxima lição). Ignora chamadas
+  /// repetidas (Enter junto com a contagem) e não empurra nada por cima de
+  /// outra tela já aberta.
+  Future<void> _seguir({required bool comQuiz}) async {
+    _auto?.cancel();
+    if (!mounted || _emSequencia) return;
+    if (ModalRoute.of(context)?.isCurrent != true) return;
+    _emSequencia = true;
+    await seguirDepoisDaLicao(context, comQuiz: comQuiz);
+    _emSequencia = false;
+    if (mounted) _focoDigitacao.requestFocus();
+  }
+
+  void _repetir() {
+    _auto?.cancel();
+    context.read<CursoBloc>().add(const LicaoRepetida());
   }
 
   void _abrePreview(BuildContext context) {
@@ -159,10 +214,14 @@ class _PalcoState extends State<_Palco> {
           const SizedBox(height: 16),
           CodeView(
             focusNode: _focoDigitacao,
-            ehFlutter: curso.ehFlutter,
+            ehFlutter: ehTrilhaFlutter(curso.trilha.nivel) || curso.ehFlutter,
+            titulo: curso.licao.nome,
+            podeRodar: curso.trechoRodavel,
+            contexto: curso.contextoDoTrecho,
             onAvancar: () => context.read<CursoBloc>().add(const TrechoAvancado()),
             vitoria: curso.vitoria,
-            onProximaLicao: () => context.read<CursoBloc>().add(const ProximaLicaoPedida()),
+            // Enter na vitória: já começa o quiz (ou segue o fluxo sem ele)
+            onProximaLicao: () => _seguir(comQuiz: _temQuizAgora),
           ),
           const SizedBox(height: 16),
           _BarraProgresso(curso: curso),
@@ -181,7 +240,14 @@ class _PalcoState extends State<_Palco> {
             ),
           ),
         ]),
-        if (curso.vitoria) const VictoryOverlay(),
+        if (curso.vitoria)
+          VictoryOverlay(
+            esperaAuto: _temQuizAgora ? _esperaAuto : null,
+            projetosDepois: projetosNaSequencia(curso),
+            onQuiz: () => _seguir(comQuiz: true),
+            onPularQuiz: () => _seguir(comQuiz: false),
+            onRepetir: _repetir,
+          ),
       ]),
     );
   }

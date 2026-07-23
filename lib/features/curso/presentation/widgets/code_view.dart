@@ -5,8 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/syntax/tokenizer.dart';
+import '../../../../core/som/sons.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../../../core/util/codigo_executavel.dart';
+import '../../../dartpad/dartpad_page.dart';
 import '../bloc/typing_bloc.dart';
 import 'pacman.dart';
 
@@ -28,6 +30,16 @@ class CodeView extends StatefulWidget {
   /// Código Flutter (widget) → o botão copiar gera um app rodável.
   final bool ehFlutter;
 
+  /// Nome do exercício/projeto — aparece no cabeçalho do DartPad.
+  final String titulo;
+
+  /// Só mostra "rodar" quando o trecho vira um programa que compila
+  /// (conferido offline — ver `assets/roda.json`).
+  final bool podeRodar;
+
+  /// Trechos anteriores da lição, para o programa gerado ter contexto.
+  final List<String> contexto;
+
   const CodeView({
     super.key,
     required this.onAvancar,
@@ -35,6 +47,9 @@ class CodeView extends StatefulWidget {
     this.vitoria = false,
     this.onProximaLicao,
     this.ehFlutter = false,
+    this.titulo = 'Exercício',
+    this.podeRodar = false,
+    this.contexto = const [],
   });
 
   @override
@@ -107,6 +122,19 @@ class _CodeViewState extends State<CodeView> {
     }
   }
 
+  /// Abre o exercício atual no DartPad de verdade (tela cheia).
+  void _abrirDartPad() {
+    final cod = context.read<TypingBloc>().state.chars.join();
+    Navigator.of(context).push(MaterialPageRoute<void>(
+      builder: (_) => DartPadPage(
+        titulo: widget.titulo,
+        cod: cod,
+        ehFlutter: widget.ehFlutter,
+        contexto: widget.contexto,
+      ),
+    ));
+  }
+
   Future<void> _copiar() async {
     final cod = context.read<TypingBloc>().state.chars.join();
     await Clipboard.setData(ClipboardData(text: codigoExecutavel(cod, widget.ehFlutter)));
@@ -119,9 +147,31 @@ class _CodeViewState extends State<CodeView> {
     ));
   }
 
+  // baseline do placar para saber O QUE mudou (o listener só vê o estado novo)
+  int _somAcertos = 0, _somErros = 0;
+  bool _somConcluido = false;
+
+  void _trilhaSonora(TypingState st) {
+    if (st.acertosSessao > _somAcertos) {
+      Sons.toca(Som.waka);
+    } else if (st.errosSessao > _somErros) {
+      Sons.toca(Som.erro);
+    }
+    if (st.concluido && !_somConcluido) Sons.toca(Som.blip);
+    _somAcertos = st.acertosSessao;
+    _somErros = st.errosSessao;
+    _somConcluido = st.concluido;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return BlocListener<TypingBloc, TypingState>(
+      listenWhen: (a, b) =>
+          a.acertosSessao != b.acertosSessao ||
+          a.errosSessao != b.errosSessao ||
+          a.concluido != b.concluido,
+      listener: (_, st) => _trilhaSonora(st),
+      child: GestureDetector(
       onTap: () => _foco.requestFocus(),
       child: Container(
         width: double.infinity,
@@ -148,32 +198,53 @@ class _CodeViewState extends State<CodeView> {
                   ),
                 ),
               ),
-              // botão copiar (canto superior direito)
+              // aviso do teclado ABNT quando o próximo caractere é tecla morta
+              Positioned(
+                left: 30,
+                right: 24,
+                bottom: 6,
+                child: BlocBuilder<TypingBloc, TypingState>(
+                  buildWhen: (a, b) => a.idx != b.idx || a.chars != b.chars,
+                  builder: (context, st) {
+                    final proximo = st.idx < st.chars.length ? st.chars[st.idx] : '';
+                    if (!TypingBloc.acentosMortos.contains(proximo)) {
+                      return const SizedBox.shrink();
+                    }
+                    return Row(children: [
+                      Icon(Icons.keyboard_alt_outlined, size: 13, color: Mixart.brand),
+                      const SizedBox(width: 6),
+                      Flexible(
+                        child: Text(
+                          'teclado ABNT: aperte  $proximo  e depois ESPAÇO para soltar o acento',
+                          style: Mixart.ui(size: 11, weight: FontWeight.w600, color: Mixart.brand),
+                        ),
+                      ),
+                    ]);
+                  },
+                ),
+              ),
+              // rodar no DartPad + copiar (canto superior direito)
               Positioned(
                 top: 6,
                 right: 6,
-                child: Tooltip(
-                  message: 'Copiar código para rodar numa IDE',
-                  child: Material(
-                    color: Mixart.surfaceHi,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      side: BorderSide(color: Mixart.border),
+                child: Row(mainAxisSize: MainAxisSize.min, children: [
+                  if (widget.podeRodar) ...[
+                    _BotaoTopo(
+                      dica: 'Abrir este código no DartPad e rodar de verdade',
+                      icone: Icons.play_arrow_rounded,
+                      rotulo: 'rodar',
+                      destaque: true,
+                      onTap: _abrirDartPad,
                     ),
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(8),
-                      onTap: _copiar,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 6),
-                        child: Row(mainAxisSize: MainAxisSize.min, children: [
-                          Icon(Icons.copy_all_outlined, size: 14, color: Mixart.textMuted),
-                          const SizedBox(width: 5),
-                          Text('copiar', style: Mixart.ui(size: 11, weight: FontWeight.w600, color: Mixart.textMuted)),
-                        ]),
-                      ),
-                    ),
+                    const SizedBox(width: 6),
+                  ],
+                  _BotaoTopo(
+                    dica: 'Copiar código para rodar numa IDE',
+                    icone: Icons.copy_all_outlined,
+                    rotulo: 'copiar',
+                    onTap: _copiar,
                   ),
-                ),
+                ]),
               ),
               // TextField invisível, sempre focado
               Positioned(
@@ -199,6 +270,7 @@ class _CodeViewState extends State<CodeView> {
           ),
         ),
       ),
+    ),
     );
   }
 
@@ -285,6 +357,48 @@ class _CodeViewState extends State<CodeView> {
         controller: _scroll,
         physics: const ClampingScrollPhysics(),
         child: conteudo,
+      ),
+    );
+  }
+}
+
+/// Botãozinho do canto do editor ("rodar" / "copiar").
+class _BotaoTopo extends StatelessWidget {
+  final String dica, rotulo;
+  final IconData icone;
+  final bool destaque;
+  final VoidCallback onTap;
+  const _BotaoTopo({
+    required this.dica,
+    required this.icone,
+    required this.rotulo,
+    required this.onTap,
+    this.destaque = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final cor = destaque ? Mixart.brand : Mixart.textMuted;
+    return Tooltip(
+      message: dica,
+      child: Material(
+        color: destaque ? Mixart.brandSub : Mixart.surfaceHi,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+          side: BorderSide(color: destaque ? Mixart.brandDim : Mixart.border),
+        ),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(8),
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 6),
+            child: Row(mainAxisSize: MainAxisSize.min, children: [
+              Icon(icone, size: destaque ? 16 : 14, color: cor),
+              const SizedBox(width: 5),
+              Text(rotulo, style: Mixart.ui(size: 11, weight: FontWeight.w600, color: cor)),
+            ]),
+          ),
+        ),
       ),
     );
   }

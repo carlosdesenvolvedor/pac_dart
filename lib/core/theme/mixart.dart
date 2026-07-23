@@ -164,11 +164,27 @@ abstract final class Mixart {
         : TextStyle(fontSize: size, fontWeight: weight, color: c);
   }
 
+  /// SEM ligaduras tipográficas: num treinador de digitação, "->" precisa
+  /// PARECER '-' e '>' (a JetBrains Mono fundia em → e != virava ≠,
+  /// escondendo do jogador o que teclar).
+  static const _semLigaduras = [
+    FontFeature.disable('liga'),
+    FontFeature.disable('calt'),
+    FontFeature.disable('clig'),
+    FontFeature.disable('dlig'),
+  ];
+
   static TextStyle mono({double size = 13, FontWeight weight = FontWeight.w400, Color? color}) {
     final c = color ?? atual.text;
     return usarGoogleFonts
-        ? GoogleFonts.jetBrainsMono(fontSize: size, fontWeight: weight, color: c)
-        : TextStyle(fontSize: size, fontWeight: weight, color: c, fontFamily: 'monospace');
+        ? GoogleFonts.jetBrainsMono(
+            fontSize: size, fontWeight: weight, color: c, fontFeatures: _semLigaduras)
+        : TextStyle(
+            fontSize: size,
+            fontWeight: weight,
+            color: c,
+            fontFamily: 'monospace',
+            fontFeatures: _semLigaduras);
   }
 
   static ThemeData tema() {

@@ -128,10 +128,37 @@ class TypingBloc extends Bloc<TypingEvent, TypingState> {
         chars: e.cod.split(''), idx: 0, errosTrecho: 0, concluido: false, ultimoErrou: false));
   }
 
+  /// Acentos do teclado ABNT são TECLA MORTA: `~ ^ ´ \`` só saem depois da
+  /// próxima tecla, e quem "solta" o acento sozinho é o ESPAÇO. Esse espaço
+  /// chega aqui como uma tecla a mais — e não é erro de ninguém.
+  /// (Sem isso, todo `~/` do Dart custava um erro. Ver PAC-DART.md.)
+  static const acentosMortos = {'~', '^', '´', '`'};
+
+  /// Variantes que alguns teclados soltam no lugar do ASCII esperado.
+  /// No Mac, `~` + espaço produz U+02DC (˜) — que NÃO é o `~` do Dart — e
+  /// teclados móveis trocam aspas retas por curvas e hífen por travessão.
+  static const equivalenciasTeclado = {
+    '˜': '~', // U+02DC small tilde (Mac, tecla morta + espaço)
+    '∼': '~', // U+223C tilde operator
+    'ˆ': '^', // U+02C6 modifier circumflex (Mac)
+    '‘': "'", '’': "'", // aspas simples curvas
+    '“': '"', '”': '"', // aspas duplas curvas
+    '–': '-', '—': '-', // en/em dash de autocorreção
+  };
+
+  bool _espacoQueSoltaAcento(String tecla, String esperado) {
+    if (tecla != ' ' || esperado == ' ') return false;
+    final anterior = state.idx > 0 ? state.chars[state.idx - 1] : '';
+    // ou o acento acabou de entrar, ou é ele que estamos esperando
+    return acentosMortos.contains(anterior) || acentosMortos.contains(esperado);
+  }
+
   void _digitar(TeclaDigitada e, Emitter<TypingState> emit) {
     if (state.concluido || state.idx >= state.chars.length) return;
     final esperado = state.chars[state.idx];
-    final ok = e.tecla == esperado;
+    final tecla = equivalenciasTeclado[e.tecla] ?? e.tecla;
+    if (_espacoQueSoltaAcento(tecla, esperado)) return; // engole, sem erro
+    final ok = tecla == esperado;
     final inicio = state.inicioSessao ?? DateTime.now();
 
     if (!ok) {
@@ -145,7 +172,7 @@ class TypingBloc extends Bloc<TypingEvent, TypingState> {
     }
 
     var idx = state.idx + 1;
-    if (e.tecla == '\n') {
+    if (tecla == '\n') {
       // Auto-indentação: pula TODOS os espaços do começo da linha.
       while (idx < state.chars.length && state.chars[idx] == ' ') {
         idx++;

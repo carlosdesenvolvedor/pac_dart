@@ -12,6 +12,10 @@ abstract interface class ProgressoRepository {
   Future<Map<String, int>> quizNotas();
   Future<void> salvarQuizNota(String chave, int acertos);
 
+  /// Projetos concluídos: chaves "proj:t:i" (Mão na Massa) e "master:i".
+  Future<Set<String>> projetosFeitos();
+  Future<void> marcarProjetoFeito(String chave);
+
   Future<int> recorde();
   Future<void> salvarRecorde(int score);
 }
@@ -24,6 +28,7 @@ class LocalProgressoRepository implements ProgressoRepository {
   static const _kLicao = 'licao';
   static const _kRecorde = 'recorde';
   static const _kQuiz = 'quiz_notas';
+  static const _kProjetos = 'projetos_feitos';
 
   @override
   Future<Set<String>> concluidas() async {
@@ -70,6 +75,19 @@ class LocalProgressoRepository implements ProgressoRepository {
     if ((m[chave] ?? -1) >= acertos) return; // guarda só a melhor
     m[chave] = acertos;
     await p.setStringList(_kQuiz, m.entries.map((e) => '${e.key}=${e.value}').toList());
+  }
+
+  @override
+  Future<Set<String>> projetosFeitos() async {
+    final p = await SharedPreferences.getInstance();
+    return (p.getStringList(_kProjetos) ?? const []).toSet();
+  }
+
+  @override
+  Future<void> marcarProjetoFeito(String chave) async {
+    final p = await SharedPreferences.getInstance();
+    final atual = (p.getStringList(_kProjetos) ?? const []).toSet()..add(chave);
+    await p.setStringList(_kProjetos, atual.toList());
   }
 
   @override
