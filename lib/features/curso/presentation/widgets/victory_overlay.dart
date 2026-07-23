@@ -104,21 +104,33 @@ class VictoryOverlay extends StatelessWidget {
         ]),
       ],
       const SizedBox(height: 14),
-      Row(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-          decoration: BoxDecoration(
-            border: Border.all(color: Mixart.brandDim),
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: Text('↵', style: Mixart.mono(size: 12, color: Mixart.brand)),
-        ),
-        const SizedBox(width: 8),
-        Text(_temQuiz ? 'Enter começa o quiz agora' : 'Enter para a próxima lição',
-            style: Mixart.ui(size: 12, weight: FontWeight.w600, color: Mixart.textMuted)),
-      ]),
+      Wrap(
+          spacing: 8,
+          runSpacing: 6,
+          alignment: WrapAlignment.center,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            _tecla('↵ Enter'),
+            Text(_temQuiz ? 'quiz' : 'próxima lição',
+                style: Mixart.ui(size: 12, weight: FontWeight.w600, color: Mixart.textMuted)),
+            if (_temQuiz) ...[
+              Text('·', style: Mixart.ui(size: 12, color: Mixart.textFaint)),
+              _tecla('Esc'),
+              Text('próxima lição, sem quiz',
+                  style: Mixart.ui(size: 12, weight: FontWeight.w600, color: Mixart.textMuted)),
+            ],
+          ]),
     ]);
   }
+
+  Widget _tecla(String rotulo) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+        decoration: BoxDecoration(
+          border: Border.all(color: Mixart.brandDim),
+          borderRadius: BorderRadius.circular(6),
+        ),
+        child: Text(rotulo, style: Mixart.mono(size: 12, color: Mixart.brand)),
+      );
 
   ButtonStyle _contorno() => OutlinedButton.styleFrom(
         foregroundColor: Mixart.text,

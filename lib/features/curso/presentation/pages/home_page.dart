@@ -238,8 +238,10 @@ class _PalcoState extends State<_Palco> {
             contexto: curso.contextoDoTrecho,
             onAvancar: () => context.read<CursoBloc>().add(const TrechoAvancado()),
             vitoria: curso.vitoria,
-            // Enter na vitória: já começa o quiz (ou segue o fluxo sem ele)
+            // Enter na vitória: já começa o quiz (ou segue o fluxo sem ele);
+            // Esc: segue direto pra próxima etapa, sem quiz
             onProximaLicao: () => _seguir(comQuiz: _temQuizAgora),
+            onPularQuiz: () => _seguir(comQuiz: false),
           ),
           const SizedBox(height: 16),
           _BarraProgresso(curso: curso),

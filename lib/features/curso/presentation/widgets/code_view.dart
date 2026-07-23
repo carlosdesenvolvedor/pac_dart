@@ -40,12 +40,16 @@ class CodeView extends StatefulWidget {
   /// Trechos anteriores da lição, para o programa gerado ter contexto.
   final List<String> contexto;
 
+  /// Esc na tela de vitória: segue o fluxo SEM o quiz.
+  final VoidCallback? onPularQuiz;
+
   const CodeView({
     super.key,
     required this.onAvancar,
     this.focusNode,
     this.vitoria = false,
     this.onProximaLicao,
+    this.onPularQuiz,
     this.ehFlutter = false,
     this.titulo = 'Exercício',
     this.podeRodar = false,
@@ -97,6 +101,11 @@ class _CodeViewState extends State<CodeView> {
       } else {
         bloc.add(const TeclaDigitada('\n'));
       }
+      return KeyEventResult.handled;
+    }
+    if (e.logicalKey == LogicalKeyboardKey.escape && widget.vitoria) {
+      // Esc na vitória → pula o quiz e vai pra próxima etapa
+      widget.onPularQuiz?.call();
       return KeyEventResult.handled;
     }
     if (e.logicalKey == LogicalKeyboardKey.tab) return KeyEventResult.handled;

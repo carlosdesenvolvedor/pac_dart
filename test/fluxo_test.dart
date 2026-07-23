@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pac_dart/core/theme/mixart.dart';
@@ -158,6 +159,26 @@ void main() {
       expect(bloc.state.licaoIdx, 1);
       expect(bloc.state.vitoria, isFalse);
       expect(repo.licoes, {'0:0'});
+      await tester.runAsync(() => bloc.close());
+    });
+
+    testWidgets('Esc na vitória pula o quiz e segue pra próxima lição',
+        (tester) async {
+      final repo = _RepoFake();
+      final bloc = await montar(tester, repo);
+
+      await concluirLicao(tester, bloc);
+      expect(find.text('LIÇÃO CONCLUÍDA!'), findsOneWidget);
+      // o aviso mostra os DOIS atalhos
+      expect(find.textContaining('sem quiz'), findsOneWidget);
+
+      await tester.sendKeyEvent(LogicalKeyboardKey.escape);
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 400));
+
+      expect(find.textContaining('QUIZ ·'), findsNothing); // não abriu quiz
+      expect(bloc.state.licaoIdx, 1); // foi pra próxima lição
+      expect(bloc.state.vitoria, isFalse);
       await tester.runAsync(() => bloc.close());
     });
 

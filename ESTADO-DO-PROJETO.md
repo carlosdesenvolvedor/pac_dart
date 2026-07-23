@@ -72,7 +72,7 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
     (`istnotEmpty`) continua errado — é código.
 - **Sequência automática pós-lição** (`presentation/fluxo_licao.dart`): terminou de digitar a lição →
   o **quiz** abre sozinho depois de ~3,4s (barrinha de contagem no overlay de vitória; Enter começa na
-  hora, "Pular quiz" segue sem ele) → quando **todas as lições da trilha** estão feitas, emendam os
+  hora, "Pular quiz" segue sem ele; **Esc na vitória também pula o quiz** — o overlay mostra os dois atalhos: ↵ Enter → quiz · Esc → próxima lição) → quando **todas as lições da trilha** estão feitas, emendam os
   projetos **Mão na Massa** que ainda faltam, um a um ("projeto X de Y", cada um com "Pular") →
   próxima lição. A seta de voltar sai da sequência.
 - **Progresso de projetos**: digitar um projeto/app até o fim marca ele como **construído**
@@ -368,7 +368,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
-## 🧪 Testes (145, todos passando)
+## 🧪 Testes (146, todos passando)
 
 `test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). E **previa_viva** (regressão da "tela de criando junto": app Flutter do Mão na Massa TEM a PreviewAoVivo lado a lado/empilhada e ela sobrevive à digitação; projeto Dart console NÃO tem — é por design, não bug). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).
