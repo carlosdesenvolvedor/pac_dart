@@ -100,6 +100,11 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
   Cache por texto (dica repetida = instantâneo), gerações atropelam falas antigas, e QUALQUER
   falha (cota/rede/VM) cai no fallback antigo do flutter_tts sem drama (`VozCubit.falarSempre`
   tenta natural → senão sistema). Fora da web o stub desiste na hora (teste garante zero rede).
+  - **O Prof. Dash também FALA** (mesma voz): toggle 🔊 no cabeçalho do painel (persistido em
+    `voz_tutor`, padrão ligado) narra cada resposta ao terminar de chegar + link "ouvir" em cada
+    bolha. `domain/texto_falavel.dart` prepara a fala: blocos ``` viram "dá uma olhada no exemplo
+    de código aqui no chat", marcação e emoji somem. Reusa `VozCubit.falarSempre` (natural →
+    fallback), lido null-safe no painel.
 - **🏆 Ranking de jogadores** (`lib/features/ranking/`, jul/2026): placar público em
   `ranking/{uid}` no Firestore (apelido + pontos, teclas, erros, lições, projetos, quiz, arcade,
   recordes por joguinho). Alimentado sozinho ao concluir lição (HomePage escuta `vitoria`),
@@ -343,7 +348,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
-## 🧪 Testes (137, todos passando)
+## 🧪 Testes (140, todos passando)
 
 `test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).
