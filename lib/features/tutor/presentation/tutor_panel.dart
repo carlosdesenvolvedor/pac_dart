@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/theme/mixart.dart';
 import '../../arcade/domain/personagem.dart';
@@ -7,7 +8,9 @@ import '../../arcade/presentation/widgets/arcade_ui.dart';
 import '../../arcade/presentation/widgets/avatares.dart';
 import '../../curso/presentation/bloc/curso_bloc.dart';
 import '../../curso/presentation/bloc/typing_bloc.dart';
+import '../../curso/presentation/bloc/voz_cubit.dart';
 import '../domain/contexto_estudo.dart';
+import '../domain/texto_falavel.dart';
 import 'tutor_cubit.dart';
 
 /// 🐦 O painel do Prof. Dash: um chat que SEMPRE enxerga o que o aluno está
@@ -23,6 +26,39 @@ class TutorPanel extends StatefulWidget {
 class _TutorPanelState extends State<TutorPanel> {
   final _ctrl = TextEditingController();
   final _rolagem = ScrollController();
+
+  /// O professor NARRA as respostas (voz neural, persistido por aparelho).
+  bool _falaAuto = true;
+
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((p) {
+      if (mounted) setState(() => _falaAuto = p.getBool('voz_tutor') ?? true);
+    }).catchError((_) {});
+  }
+
+  void _alternarFala() {
+    setState(() => _falaAuto = !_falaAuto);
+    if (!_falaAuto) _voz()?.falarSempre(''); // corta a fala atual
+    SharedPreferences.getInstance()
+        .then((p) => p.setBool('voz_tutor', _falaAuto))
+        .catchError((_) => false);
+  }
+
+  /// VozCubit é opcional (testes antigos sem provider seguem de boa).
+  VozCubit? _voz() {
+    try {
+      return context.read<VozCubit>();
+    } catch (_) {
+      return null;
+    }
+  }
+
+  void _falarResposta(String texto) {
+    final falavel = textoFalavel(texto);
+    if (falavel.isNotEmpty) _voz()?.falarSempre(falavel);
+  }
 
   static const _sugestoes = [
     'O que esse trecho faz?',
@@ -63,7 +99,15 @@ class _TutorPanelState extends State<TutorPanel> {
     // o campo do chat vive em harmonia com o campo oculto do CodeView:
     // TextFieldTapRegion impede o "rouba-foco" entre eles
     return TextFieldTapRegion(
-      child: Container(
+      child: BlocListener<TutorCubit, TutorState>(
+        // resposta terminou de chegar → o professor fala (se a voz estiver on)
+        listenWhen: (a, b) => a.digitando && !b.digitando,
+        listener: (_, st) {
+          if (!_falaAuto || st.mensagens.isEmpty) return;
+          final ultima = st.mensagens.last;
+          if (!ultima.doAluno && ultima.texto.isNotEmpty) _falarResposta(ultima.texto);
+        },
+        child: Container(
         decoration: BoxDecoration(
           color: Mixart.surface,
           border: Border(right: BorderSide(color: Mixart.border)),
@@ -75,6 +119,7 @@ class _TutorPanelState extends State<TutorPanel> {
           if (chat.mensagens.isEmpty) _sugestoesChips(),
           _entrada(chat),
         ]),
+        ),
       ),
     );
   }
@@ -96,6 +141,12 @@ class _TutorPanelState extends State<TutorPanel> {
                     color: chat.digitando ? Mixart.brand : Mixart.textMuted),
               ),
             ]),
+          ),
+          IconButton(
+            tooltip: _falaAuto ? 'Professor falando (desligar voz)' : 'Ligar a voz do professor',
+            onPressed: _alternarFala,
+            icon: Icon(_falaAuto ? Icons.volume_up : Icons.volume_off_outlined,
+                size: 18, color: _falaAuto ? Mixart.brand : Mixart.textFaint),
           ),
           if (chat.mensagens.isNotEmpty)
             IconButton(
@@ -182,9 +233,25 @@ class _TutorPanelState extends State<TutorPanel> {
                 ? Text(m.texto,
                     style: Mixart.ui(size: 12.5, color: Mixart.onBrand)
                         .copyWith(height: 1.45))
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: _renderizaResposta(m.texto)),
+                : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    ..._renderizaResposta(m.texto),
+                    if (m.texto.isNotEmpty && !escrevendo)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4),
+                        child: InkWell(
+                          onTap: () => _falarResposta(m.texto),
+                          borderRadius: BorderRadius.circular(999),
+                          child: Row(mainAxisSize: MainAxisSize.min, children: [
+                            Icon(Icons.volume_up_outlined,
+                                size: 13, color: Mixart.textFaint),
+                            const SizedBox(width: 4),
+                            Text('ouvir',
+                                style:
+                                    Mixart.ui(size: 10, color: Mixart.textFaint)),
+                          ]),
+                        ),
+                      ),
+                  ]),
       ),
     );
   }

@@ -168,6 +168,7 @@ void main() {
         providers: [
           BlocProvider.value(value: curso),
           BlocProvider(create: (_) => TypingBloc()),
+          BlocProvider(create: (_) => VozCubit()),
           BlocProvider.value(value: cubit),
         ],
         child: MaterialApp(
@@ -188,6 +189,12 @@ void main() {
       expect(fake.contexto, contains('var a = 1;'));
       expect(find.text('O que esse trecho faz?'), findsOneWidget); // bolha do aluno
       expect(find.textContaining('Piu!'), findsOneWidget); // resposta
+
+      // a voz do professor: toggle no cabeçalho + "ouvir" na resposta
+      expect(find.byIcon(Icons.volume_up), findsOneWidget);
+      expect(find.text('ouvir'), findsOneWidget);
+      await tester.tap(find.text('ouvir')); // fallback silencioso na VM
+      await tester.pump();
       expect(tester.takeException(), isNull);
 
       await tester.pumpWidget(Container());
