@@ -92,7 +92,14 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
     **1174 dos 2354 exercícios (49%)** e **85 dos 121 projetos**. O resto não tem como rodar —
     depende de pacote que o DartPad não carrega (dio, sqflite, shared_preferences, Firebase, http),
     do `package:test`, ou é pedaço solto demais. Melhor sem botão do que com tela de erro vermelho.
-- **Narração por voz** (TTS pt-BR) das dicas.
+- **Narração por voz NATURAL** (jul/2026): `core/voz/voz_natural.dart` — as dicas falam com a
+  voz neural do **Gemini TTS** (`gemini-2.5-flash-preview-tts`, voz Zephyr, instrução de estilo
+  em pt-BR que NÃO é lida), usando a MESMA chave trancada por domínio do Prof. Dash. Resposta é
+  PCM16 24kHz base64 → tocado no Web Audio (`voz_natural_web.dart`; ⚠️ `package:web` exporta um
+  `Float32List` de interop que sombreia o de dart:typed_data — importar com `hide Float32List`).
+  Cache por texto (dica repetida = instantâneo), gerações atropelam falas antigas, e QUALQUER
+  falha (cota/rede/VM) cai no fallback antigo do flutter_tts sem drama (`VozCubit.falarSempre`
+  tenta natural → senão sistema). Fora da web o stub desiste na hora (teste garante zero rede).
 - **🏆 Ranking de jogadores** (`lib/features/ranking/`, jul/2026): placar público em
   `ranking/{uid}` no Firestore (apelido + pontos, teclas, erros, lições, projetos, quiz, arcade,
   recordes por joguinho). Alimentado sozinho ao concluir lição (HomePage escuta `vitoria`),
@@ -336,7 +343,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
-## 🧪 Testes (134, todos passando)
+## 🧪 Testes (137, todos passando)
 
 `test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).

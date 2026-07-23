@@ -1,11 +1,18 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
-/// Liga/desliga a narração por voz (TTS pt-BR) e fala as dicas.
+import '../../../../core/voz/voz_natural.dart';
+
+/// Liga/desliga a narração por voz e fala as dicas: primeiro tenta a voz
+/// NEURAL do Gemini (natural, estilo assistente moderno); se não der
+/// (cota/rede/plataforma), cai na voz do sistema sem drama.
 class VozCubit extends Cubit<bool> {
   final FlutterTts _tts = FlutterTts();
+  final VozNatural _natural;
 
-  VozCubit() : super(false) {
+  VozCubit({VozNatural? natural})
+      : _natural = natural ?? VozNatural(),
+        super(false) {
     _configurar();
   }
 
@@ -29,13 +36,18 @@ class VozCubit extends Cubit<bool> {
   }
 
   Future<void> falarSempre(String texto) async {
+    _natural.parar();
     try {
       await _tts.stop();
+    } catch (_) {}
+    if (await _natural.falar(texto)) return;
+    try {
       await _tts.speak(texto);
     } catch (_) {}
   }
 
   Future<void> _parar() async {
+    _natural.parar();
     try {
       await _tts.stop();
     } catch (_) {}
