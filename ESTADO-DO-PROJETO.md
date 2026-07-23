@@ -195,7 +195,10 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
   (`package:http`, POST generateContent, modelo **`gemini-flash-latest`** — alias que acompanha
   o flash mais novo; o gemini-2.5-flash foi APOSENTADO pra contas novas e derrubou a 1ª versão).
   A chave (criada via `gcloud services api-keys create`) é RESTRITA por referer
-  (`https://pac-dart.web.app/*` + `http://localhost:*/*`) E por API (só generativelanguage) —
+  (`https://pac-dart.web.app/*`, **`https://pac-dart.web.app./*` — SIM, com PONTO FINAL:
+  o usuário navega no FQDN `pac-dart.web.app.` e o browser manda esse referer, que é OUTRA
+  origem** — mais `pac-dart.firebaseapp.com/*` e `http://localhost:*/*`) E por API (só
+  generativelanguage) —
   pública por design, igual à chave web do Firebase; testada com curl (200 no domínio, 403 fora).
   ⚠️ Tentativa anterior com `firebase_ai`/AI Logic exigia onboarding CLICADO no console
   ("AI logic config is missing") — abandonada; firebase_ai removido do pubspec.
