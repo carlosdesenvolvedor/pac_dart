@@ -18,6 +18,8 @@ import 'features/curso/presentation/bloc/voz_cubit.dart';
 import 'features/curso/presentation/pages/home_page.dart';
 import 'features/ranking/data/ranking_repository.dart';
 import 'features/ranking/presentation/ranking_cubit.dart';
+import 'features/tutor/data/tutor_service.dart';
+import 'features/tutor/presentation/tutor_cubit.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -69,9 +71,15 @@ class PacDartApp extends StatelessWidget {
   final AuthCubit? authCubitOverride;
   final ProgressoRepository Function(AppUser user)? progressoBuilder;
   final RankingRepository Function()? rankingBuilder;
+  final TutorService Function()? tutorBuilder;
 
-  const PacDartApp(
-      {super.key, this.authCubitOverride, this.progressoBuilder, this.rankingBuilder});
+  const PacDartApp({
+    super.key,
+    this.authCubitOverride,
+    this.progressoBuilder,
+    this.rankingBuilder,
+    this.tutorBuilder,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -101,6 +109,12 @@ class PacDartApp extends StatelessWidget {
                 ),
                 BlocProvider(create: (_) => TypingBloc()),
                 BlocProvider(create: (_) => VozCubit()),
+                // Prof. Dash — o modelo só é criado na primeira pergunta
+                BlocProvider(
+                  create: (_) => TutorCubit(
+                    service: tutorBuilder != null ? tutorBuilder!() : GeminiTutorService(),
+                  ),
+                ),
                 // placar público (lazy: só toca o Firestore quando usado)
                 BlocProvider(
                   create: (_) => RankingCubit(

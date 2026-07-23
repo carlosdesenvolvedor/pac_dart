@@ -7,6 +7,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../../../core/util/codigo_executavel.dart';
 import '../../../ranking/presentation/ranking_cubit.dart';
+import '../../../tutor/presentation/tutor_cubit.dart';
+import '../../../tutor/presentation/tutor_panel.dart';
 import '../../domain/curriculo.dart';
 import '../bloc/curso_bloc.dart';
 import '../bloc/typing_bloc.dart';
@@ -62,7 +64,7 @@ class HomePage extends StatelessWidget {
                   child: Text('Não consegui carregar o currículo 😢',
                       style: Mixart.ui(size: 14, color: Mixart.textMuted)));
             }
-            return Stack(children: [
+            final conteudo = Stack(children: [
               FundoFase(nivel: curso.trilha.nivel),
               Center(
                 child: ConstrainedBox(
@@ -86,6 +88,22 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ]);
+            // Prof. Dash: painel fixo à ESQUERDA quando cabe; senão, botão
+            // flutuante que abre a folha. Sem TutorCubit (testes antigos), some.
+            final temTutor = TutorCubit.de(context) != null;
+            return LayoutBuilder(builder: (context, caixa) {
+              if (temTutor && caixa.maxWidth >= 1240) {
+                return Row(children: [
+                  const SizedBox(width: 330, child: TutorPanel()),
+                  Expanded(child: conteudo),
+                ]);
+              }
+              return Stack(children: [
+                conteudo,
+                if (temTutor)
+                  const Positioned(left: 14, bottom: 14, child: BotaoTutor()),
+              ]);
+            });
           },
         ),
       ),

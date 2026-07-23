@@ -188,6 +188,19 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
   - **Prova visual sem login**: `lib/main_arcade_probe.dart` renderiza PistaPro/cenários/avatares
     cru — `flutter build web -t lib/main_arcade_probe.dart --output=build/probe` + Chrome headless
     `--screenshot` servindo a pasta. Foi assim que o layout do cenário foi conferido/ajustado.
+- **🐦 Prof. Dash — tutor de IA (jul/2026)** (`lib/features/tutor/`): chat que SEMPRE enxerga o
+  estudo — `contextoDoEstudo(CursoState, TypingState)` empacota trilha/lição/resumo/teoria/o
+  trecho digitado/saída esperada/precisão e VIAJA junto de cada pergunta (chip "👀 vendo: …"
+  mostra ao aluno). Backend: **Firebase AI Logic** (`firebase_ai` ^2.3, `gemini-2.5-flash`,
+  streaming) — sem backend próprio, chave fica no Firebase; APIs `firebasevertexai` +
+  `generativelanguage` habilitadas via gcloud. ⚠️ Se responder erro de setup, ativar no console
+  (Build → AI Logic → Get started) — o cubit já mostra esse recado amigável. UI: painel fixo à
+  ESQUERDA em telas ≥1240px, senão botão flutuante (avatar Dash) que abre folha; markdown de
+  bolso nas respostas (```dart → CartaoCodigo, `inline`, **negrito**); sugestões prontas;
+  memória curta (últimas 6 mensagens). `GenerativeModel` criado LAZY na 1ª pergunta (testes e
+  boot nunca tocam o Firebase); `TutorCubit.de(context)` null-safe (fluxo_test sem tutor não vê
+  nada). ⚠️ O campo do chat convive com o TextField oculto do CodeView via `TextFieldTapRegion`
+  (sem isso o onTapOutside do CodeView rouba o foco do chat).
 - **Marca própria** (`lib/core/brand/logo_pacdart.dart`): o Pac comendo dois pontos — os mesmos que
   viram o "·" de PAC·DART. É **desenhada** (CustomPainter, caixa lógica 100×100), não imagem: fica
   nítida em qualquer tamanho e segue a paleta. `selo: true` põe a moldura arredondada (versão ícone).
@@ -305,7 +318,8 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ## 📋 Pendências / próximos passos
 
-- ✅ Código sincronizado com o GitHub (commit desta sessão: ranking + arcade + fases + missões + sons).
+- ✅ Código sincronizado com o GitHub (última sessão: Prof. Dash tutor IA + tudo anterior).
+- ⚠️ **Conferir no console do Firebase se o AI Logic pede o "Get started"** (as APIs já foram habilitadas via gcloud; se o tutor responder com recado de setup, é um clique no console).
 - Adicionar os **topics** no GitHub (flutter, dart, bloc, typing-game, education, pacman) — precisa do agente do Chrome no site.
 - (opcional) Sincronizar o **tema por usuário** (hoje é por dispositivo, no shared_preferences).
 - (opcional) Sons de arcade (waka-waka), mais joguinhos (o hub em `arcade_page.dart` é uma lista — é só acrescentar o card + página), troféus/temporadas no ranking (hoje é all-time), avatar/apelido editável.
@@ -313,9 +327,9 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
-## 🧪 Testes (125, todos passando)
+## 🧪 Testes (134, todos passando)
 
-`test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Rodar: `flutter test`.
+`test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).
 Também há `logo_test` (a marca desenha em 16…512 px, solta e em selo) e `quiz_ui_test`
 (responder por clique, digitar tudo numa linha, e Enter não corrigindo antes da hora).
