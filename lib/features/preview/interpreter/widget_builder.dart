@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart' show CupertinoButton, CupertinoSwitch;
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'parser.dart';
@@ -196,13 +198,29 @@ class WidgetBuilderPreview {
     );
   }
 
-  Widget? _filho(Node n, Map<String, Object?> ctx) =>
-      n.named['child'] != null ? construir(n.named['child']!, ctx) : null;
+  Widget? _filho(Node n, Map<String, Object?> ctx) {
+    final c = n.named['child'];
+    // child: variavel → não dá pra construir; null aciona o fallback local
+    if (c == null || c.t == 'ident') return null;
+    return construir(c, ctx);
+  }
+
+  /// A lista de filhos tem Expanded/Flexible/Spacer? (pede eixo finito)
+  bool _temFlex(Node n) {
+    final filhos = n.named['children'];
+    if (filhos == null || filhos.t != 'list') return false;
+    return filhos.pos.any((f) =>
+        f.t == 'call' &&
+        (f.base == 'Expanded' || f.base == 'Flexible' || f.base == 'Spacer'));
+  }
 
   List<Widget> _filhos(Node n, Map<String, Object?> ctx) {
     final c = n.named['children'];
     if (c == null || c.t != 'list') return const [];
-    return c.pos.map((x) => construir(x, ctx)).toList();
+    return [
+      for (final x in c.pos)
+        if (x.t != 'ident') construir(x, ctx),
+    ];
   }
 
   // ---------- o mapa de widgets ----------
@@ -213,6 +231,40 @@ class WidgetBuilderPreview {
         final home = n.named['home'];
         return home != null ? construir(home, ctx) : (_filho(n, ctx) ?? const SizedBox.shrink());
       case 'Scaffold':
+        final gaveta = n.named['drawer'] ?? n.named['endDrawer'];
+        if (n.named['appBar'] == null &&
+            n.named['body'] == null &&
+            n.named['floatingActionButton'] == null &&
+            n.named['bottomNavigationBar'] == null) {
+          if (gaveta == null) throw StateError('scaffold sem nada pra mostrar');
+          // só o menu lateral: mostra a gaveta entreaberta
+          return Container(
+            width: 170,
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: const BorderRadius.horizontal(right: Radius.circular(14)),
+              boxShadow: const [BoxShadow(color: Colors.black26, blurRadius: 14, offset: Offset(4, 0))],
+              border: Border.all(color: const Color(0xFFE0E0E0)),
+            ),
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const CircleAvatar(radius: 16, child: Icon(Icons.person, size: 18)),
+                  const SizedBox(height: 10),
+                  for (final item in const ['Início', 'Perfil', 'Sair'])
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 5),
+                      child: Row(children: [
+                        const Icon(Icons.chevron_right, size: 15, color: Color(0xFF1565C0)),
+                        const SizedBox(width: 6),
+                        Text(item, style: const TextStyle(fontSize: 12.5, color: Color(0xFF37474F))),
+                      ]),
+                    ),
+                ]),
+          );
+        }
         return Column(mainAxisSize: MainAxisSize.min, children: [
           if (n.named['appBar'] != null) construir(n.named['appBar']!, ctx),
           if (n.named['body'] != null)
@@ -244,12 +296,23 @@ class WidgetBuilderPreview {
       case 'AnimatedContainer':
         final deco = _decor(n.named['decoration']);
         var cor = deco == null ? _cor(n.named['color']) : null;
+        // o autor PEDIU cor (Colors.black26, Theme.of(context)...) que não
+        // resolvemos: melhor uma cor de amostra que uma caixa invisível
+        if (cor == null && deco == null && n.named.containsKey('color')) {
+          cor = const Color(0xFF90CAF9);
+        }
         final temTamanho = n.named['width'] != null || n.named['height'] != null;
         // caixa sem cor ficaria invisível no fundo claro — dá uma cor de amostra
         if (cor == null && deco == null && temTamanho) cor = const Color(0xFF90CAF9);
+        // caixa COM cor mas sem tamanho nem filho sumia (0x0/0x20):
+        // no preview ela ganha um corpo mínimo pra aparecer
+        final semFilho = _filho(n, ctx) == null;
+        final pintada = cor != null || deco != null;
+        final wPadrao = (pintada && semFilho && n.named['width'] == null) ? 96.0 : null;
+        final hPadrao = (pintada && semFilho && n.named['height'] == null) ? 56.0 : null;
         final base = Container(
-          width: _num(n.named['width']),
-          height: _num(n.named['height']),
+          width: _num(n.named['width']) ?? wPadrao,
+          height: _num(n.named['height']) ?? hPadrao,
           color: cor,
           decoration: deco,
           padding: _edge(n.named['padding']),
@@ -276,17 +339,22 @@ class WidgetBuilderPreview {
         return Icon(_icone(n.pos.isNotEmpty ? n.pos.first : null) ?? Icons.circle,
             size: _num(n.named['size']) ?? 24, color: _cor(n.named['color']));
       case 'Column':
-        return Column(
+        final col = Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: _main(n.named['mainAxisAlignment']),
             crossAxisAlignment: _cross(n.named['crossAxisAlignment']),
             children: _filhos(n, ctx));
+        // Expanded/Spacer precisam de altura FINITA — no scroll do preview
+        // não há: damos um palco fixo pra coluna flex não explodir
+        return _temFlex(n) ? SizedBox(height: 240, width: 220, child: col) : col;
       case 'Row':
-        return Row(
+        final row = Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: _main(n.named['mainAxisAlignment']),
             crossAxisAlignment: _cross(n.named['crossAxisAlignment']),
             children: _filhos(n, ctx));
+        // Row com Expanded colapsava em 768x0: palco com altura visível
+        return _temFlex(n) ? SizedBox(height: 64, width: 240, child: row) : row;
       case 'Wrap':
         return Wrap(spacing: _num(n.named['spacing']) ?? 6, runSpacing: _num(n.named['runSpacing']) ?? 6, children: _filhos(n, ctx));
       case 'Stack':
@@ -538,14 +606,21 @@ class WidgetBuilderPreview {
   }
 
   Widget _lista(Node n, Map<String, Object?> ctx) {
-    // ListView.builder: gera 3 itens de amostra com o índice no contexto.
-    if (n.name == 'ListView.builder') {
+    // .builder e .separated: 3 itens de amostra com o índice no contexto.
+    if (n.name == 'ListView.builder' || n.name == 'ListView.separated') {
       final lam = n.named['itemBuilder'];
       final itens = <Widget>[];
       for (var i = 0; i < 3; i++) {
-        if (lam != null && lam.t == 'lambda' && lam.corpo != null) {
+        if (lam != null && lam.t == 'lambda' && lam.corpo != null && lam.corpo!.t != 'ident') {
           final nomeIdx = lam.params.length > 1 ? lam.params[1] : 'index';
-          itens.add(construir(lam.corpo!, {...ctx, nomeIdx: i}));
+          try {
+            itens.add(construir(lam.corpo!, {...ctx, nomeIdx: i}));
+          } catch (_) {
+            itens.add(ListTile(dense: true, title: Text('Item $i')));
+          }
+        }
+        if (n.name == 'ListView.separated' && i < 2) {
+          itens.add(const Divider(height: 8));
         }
       }
       if (itens.isEmpty) {
@@ -553,7 +628,13 @@ class WidgetBuilderPreview {
       }
       return _ListaAnimada(itens: itens);
     }
-    return _ListaAnimada(itens: _filhos(n, ctx));
+    final itens = _filhos(n, ctx);
+    // children: variavel/.map(...) → lista de amostra em vez de tela vazia
+    if (itens.isEmpty) {
+      return _ListaAnimada(
+          itens: List.generate(3, (i) => ListTile(dense: true, title: Text('Item $i'))));
+    }
+    return _ListaAnimada(itens: itens);
   }
 }
 
@@ -675,17 +756,19 @@ class _EntradaAnimada extends StatefulWidget {
 
 class _EntradaAnimadaState extends State<_EntradaAnimada> with SingleTickerProviderStateMixin {
   late final _c = AnimationController(vsync: this, duration: const Duration(milliseconds: 420));
+  Timer? _espera;
 
   @override
   void initState() {
     super.initState();
-    Future.delayed(widget.atraso, () {
+    _espera = Timer(widget.atraso, () {
       if (mounted) _c.forward();
     });
   }
 
   @override
   void dispose() {
+    _espera?.cancel();
     _c.dispose();
     super.dispose();
   }

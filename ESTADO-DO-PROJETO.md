@@ -317,9 +317,20 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 6. **Verificação visual (headless):** `Chrome --headless=new --disable-gpu --enable-unsafe-swiftshader --force-device-scale-factor=1` servindo `build/web`; usar largura **≥600px** (headless tem largura mínima que distorce abaixo disso). Headless NÃO carrega os módulos ES do Firebase (gstatic) — pra checar o boot, ler o console (`--enable-logging=stderr`) e ver "Initializing Firebase" sem "channel-error".
 7. **Ordem das trilhas:** progresso é keyed por `"trilhaIdx:licaoIdx"`. **Nunca inserir trilha no meio** — só no fim — senão quebra o progresso salvo.
 8. **Sem emoji no `cod`:** emoji não é digitável e vira "tofu"/ratinho na fonte mono. Já há testes que barram isso.
-9. **Motor de prévia (projetos `flutter:true`) — só um SUBSET:** o `cod` deve ser UMA expressão de widget LITERAL começando por `Scaffold(`/`Center(` (sem variáveis/funções/setState/classes). O interpretador **não** entende: `Color(0xFF...)` (use `Colors.*`), tipos genéricos `Widget<Tipo>(...)` (ex.: `DropdownButton<String>`), `Sliver*`, `PageView`, `CustomPaint`, `FilledButton`, `LayoutBuilder`, `MediaQuery`, `Theme.of`. `SizedBox(height:N)` sem filho vira, **de propósito**, uma caixinha de contorno azul-claro (marca o espaço). Valide qualquer app novo com `PREVIEW_JSON=arquivo.json flutter test test/tools/preview_check.dart` — tem que dar **status OK** (raiz parseia inteira), não "PARCIAL".
-10. **Toda lição PRECISA de ≥1 bloco `teoria` do tipo `code`** (o `teoria_test` exige). Lições de comparação/decisão também.
-11. **DartPad embutido — o jeito documentado MORREU.** A wiki oficial ainda cita `embed-flutter.html`
+9. **Prévias EM BRANCO — exterminadas (jul/2026):** o motor rotulava "AO VIVO" coisas que
+    pintavam 0×0 (ex.: `Wrap(children: itens)` com variável, `Text(variavel)`, `SizedBox.shrink`,
+    Scaffold só-drawer, `Colors.black26`/`Theme.of` não resolvidos, `ListView.separated`,
+    raiz `Expanded/Positioned`). Correções: `interpreter/visibilidade.dart` (só é vivo se a
+    árvore parseada tem folha que PINTA — Text exige string literal), engine pula raízes
+    Expanded/Flexible/Positioned/Spacer, builder ganhou: Container colorido sem tamanho → caixa
+    96×56, Row/Column com flex → palco finito, `.separated` mocka 3 itens + Divider, children
+    `ident` são pulados, `_lista` vazia vira 3 ListTiles de amostra, Scaffold só-drawer vira
+    gaveta entreaberta, cor pedida-mas-desconhecida vira azul de amostra, `_EntradaAnimada`
+    cancela o Timer no dispose. **`test/previa_sem_branco_test.dart` RENDERIZA as 377 prévias
+    ao vivo do currículo inteiro e exige área > 64px²** — regressão impossível de passar batida.
+10. **Motor de prévia (projetos `flutter:true`) — só um SUBSET:** o `cod` deve ser UMA expressão de widget LITERAL começando por `Scaffold(`/`Center(` (sem variáveis/funções/setState/classes). O interpretador **não** entende: `Color(0xFF...)` (use `Colors.*`), tipos genéricos `Widget<Tipo>(...)` (ex.: `DropdownButton<String>`), `Sliver*`, `PageView`, `CustomPaint`, `FilledButton`, `LayoutBuilder`, `MediaQuery`, `Theme.of`. `SizedBox(height:N)` sem filho vira, **de propósito**, uma caixinha de contorno azul-claro (marca o espaço). Valide qualquer app novo com `PREVIEW_JSON=arquivo.json flutter test test/tools/preview_check.dart` — tem que dar **status OK** (raiz parseia inteira), não "PARCIAL".
+11. **Toda lição PRECISA de ≥1 bloco `teoria` do tipo `code`** (o `teoria_test` exige). Lições de comparação/decisão também.
+12. **DartPad embutido — o jeito documentado MORREU.** A wiki oficial ainda cita `embed-flutter.html`
     / `embed-inline.html` + gist: **não funciona mais** ("no longer supported"). O que funciona hoje
     (achado no `main.dart.js` de produção do dartpad.dev e confirmado no Chrome):
     - iframe em `https://dartpad.dev/?embed=true&theme=dark|light&run=true`;
@@ -333,7 +344,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
       `flutter test` (que roda na VM) para de compilar.
     - Headless com `--virtual-time-budget` **não** completa o boot do DartPad dentro do iframe (o
       "ready" nunca chega). Para testar de verdade: Chrome headless em tempo real + CDP.
-12. **`assets/roda.json` é GERADO — regere se mexer no currículo ou no gerador.** Receita (o lab fica
+13. **`assets/roda.json` é GERADO — regere se mexer no currículo ou no gerador.** Receita (o lab fica
     FORA do projeto):
     ```bash
     LAB=/tmp/rodavel_lab   # pubspec com dependência flutter + flutter pub get
@@ -343,9 +354,9 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
     ```
     O app tem que gerar EXATAMENTE o mesmo programa que foi analisado: mesma noção de "é Flutter"
     (`ehTrilhaFlutter`) e mesmo `contexto` (trechos anteriores da lição). Se divergir, o mapa mente.
-13. **`carregarRodaveis()` faz I/O de asset:** em `testWidgets` o relógio é falso e o `rootBundle`
+14. **`carregarRodaveis()` faz I/O de asset:** em `testWidgets` o relógio é falso e o `rootBundle`
     nunca resolve — o fake do loader nos testes PRECISA sobrescrever esse método (ver `fluxo_test`).
-14. **Fonte mono SEM ligaduras + teclado Mac:** `Mixart.mono()` desliga liga/calt/clig/dlig —
+15. **Fonte mono SEM ligaduras + teclado Mac:** `Mixart.mono()` desliga liga/calt/clig/dlig —
     a JetBrains Mono fundia `->` em `→` e `!=` em `≠` e o jogador não sabia o que teclar
     (bug real, jul/2026). NÃO reativar. No Mac ABNT, `~`+espaço solta U+02DC (˜), não `~`:
     `TypingBloc.equivalenciasTeclado` normaliza (˜→~, ˆ→^, aspas curvas→retas, travessões→hífen)
@@ -353,7 +364,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
     precisa ser 100% digitável (ASCII + acentos pt-BR): `test/conteudo_digitavel_test.dart`
     varre os 2445 códigos — `°`/`º` foram trocados por texto puro no Card de Clima e no
     Placar do Campeonato (cod E out).
-15. **Subagentes podem deixar lixo no projeto:** ao gerar conteúdo em massa, eles às vezes criam arquivos `*_check.dart`/`tmp_*.dart` em `test/tools/` ou na raiz pra validar render. Faça uma varredura (`find . -name '*.dart'` fora de `lib/` e não-`_test`) e remova antes do `flutter analyze`/deploy. O único arquivo legítimo em `test/tools/` é `preview_check.dart`.
+16. **Subagentes podem deixar lixo no projeto:** ao gerar conteúdo em massa, eles às vezes criam arquivos `*_check.dart`/`tmp_*.dart` em `test/tools/` ou na raiz pra validar render. Faça uma varredura (`find . -name '*.dart'` fora de `lib/` e não-`_test`) e remova antes do `flutter analyze`/deploy. O único arquivo legítimo em `test/tools/` é `preview_check.dart`.
 
 ---
 
@@ -368,7 +379,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
-## 🧪 Testes (146, todos passando)
+## 🧪 Testes (147, todos passando)
 
 `test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). E **previa_viva** (regressão da "tela de criando junto": app Flutter do Mão na Massa TEM a PreviewAoVivo lado a lado/empilhada e ela sobrevive à digitação; projeto Dart console NÃO tem — é por design, não bug). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'demos/demos.dart';
 import 'interpreter/parser.dart';
+import 'interpreter/visibilidade.dart';
 import 'interpreter/widget_builder.dart';
 
 enum PreviewModo {
@@ -30,8 +31,16 @@ class PreviewEngine {
       final nome = m.group(1)!;
       if (!widgetsVivos.contains(nome)) continue;
       if (nome == 'InputDecoration') continue; // só faz sentido dentro de TextField
+      // esses só existem DENTRO de Row/Column/Stack — como raiz, quebram;
+      // pulamos e o laço acha o widget de dentro (Container, etc.)
+      if (const {'Expanded', 'Flexible', 'Positioned', 'Spacer'}.contains(nome)) {
+        continue;
+      }
       try {
         final node = parseWidget(cod, m.start);
+        // parseou mas não pintaria NADA (ex.: children: variavel)?
+        // melhor uma demo/conceito bonita que uma tela em branco.
+        if (!temFolhaVisivel(node)) continue;
         final w = _builder.construir(node);
         // toda prévia ao vivo "acontece": entrada com pop + flutuação contínua
         return PreviewResultado(modo: PreviewModo.vivo, widget: VidaPreview(child: w));
