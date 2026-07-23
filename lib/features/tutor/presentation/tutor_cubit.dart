@@ -89,17 +89,16 @@ class TutorCubit extends Cubit<TutorState> {
 
   String _erroAmigavel(String erro) {
     final curto = erro.length > 180 ? '${erro.substring(0, 180)}…' : erro;
-    final config = erro.contains('firebasevertexai') ||
-        erro.contains('PERMISSION_DENIED') ||
-        erro.contains('403') ||
-        erro.contains('not been used') ||
-        erro.contains('API key');
-    return config
-        ? '😴 Ainda não me ligaram na tomada: ative o **Firebase AI Logic** no '
-            'console do Firebase (Build → AI Logic → Get started) e tente de novo.\n\n'
-            '`$curto`'
-        : '😵 Não consegui falar com a central agora — confere a internet e '
-            'tenta de novo?\n\n`$curto`';
+    if (erro.contains('PERMISSION_DENIED') || erro.contains('403')) {
+      return '🔒 A credencial do tutor recusou a chamada — a chave só funciona '
+          'no site oficial (pac-dart.web.app) e em localhost.\n\n`$curto`';
+    }
+    if (erro.contains('429') || erro.contains('RESOURCE_EXHAUSTED')) {
+      return '😮‍💨 Muita gente perguntando ao mesmo tempo (cota do minuto '
+          'esgotou) — respira 30s e pergunta de novo.\n\n`$curto`';
+    }
+    return '😵 Não consegui falar com a central agora — confere a internet e '
+        'tenta de novo?\n\n`$curto`';
   }
 
   void limpar() => emit(const TutorState());

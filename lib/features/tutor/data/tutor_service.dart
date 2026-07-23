@@ -1,4 +1,6 @@
-import 'package:firebase_ai/firebase_ai.dart';
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 
 /// Contrato do tutor — o Gemini de verdade em produção, um fake nos testes.
 abstract interface class TutorService {
@@ -10,17 +12,19 @@ abstract interface class TutorService {
   });
 }
 
-/// Prof. Dash falando via **Firebase AI Logic** (Gemini): a chave fica no
-/// Firebase, nada exposto no cliente — e sem precisar de backend próprio.
+/// Prof. Dash falando direto com a API do Gemini.
+///
+/// A [_chave] é RESTRITA de dois jeitos (criada via gcloud):
+///  1. por referer — só aceita chamadas vindas de https://pac-dart.web.app
+///     e de localhost (dev); de qualquer outro lugar, 403;
+///  2. por API — só serve para a generativelanguage.googleapis.com.
+/// Ou seja: é pública por design, como a própria chave web do Firebase.
 class GeminiTutorService implements TutorService {
-  GenerativeModel? _model;
+  static const _chave = 'AIzaSyCnYsKY9LV1wvuquuKX9zm6L_qFAIhWBpI';
 
-  /// Criado só na primeira pergunta (testes e boot nunca tocam o Firebase).
-  GenerativeModel get _m => _model ??= FirebaseAI.googleAI().generativeModel(
-        model: 'gemini-2.5-flash',
-        generationConfig: GenerationConfig(temperature: 0.4, maxOutputTokens: 900),
-        systemInstruction: Content.system(_persona),
-      );
+  /// Alias que acompanha SEMPRE o flash mais novo — imune a modelo aposentado
+  /// (o gemini-2.5-flash morreu pra contas novas e quase nos pegou).
+  static const _modelo = 'gemini-flash-latest';
 
   static const _persona = '''
 Você é o Prof. Dash, o passarinho azul tutor de Dart e Flutter do app PAC·DART
@@ -38,6 +42,9 @@ Regras de ouro:
 - Se perguntarem algo fora de programação, redirecione com bom humor para o Dart.
 ''';
 
+  final http.Client _http;
+  GeminiTutorService({http.Client? client}) : _http = client ?? http.Client();
+
   @override
   Stream<String> perguntar({
     required String contexto,
@@ -47,10 +54,40 @@ Regras de ouro:
     final prompt = 'CONTEXTO DO ALUNO AGORA:\n$contexto\n\n'
         '${historico.isEmpty ? '' : 'CONVERSA RECENTE:\n$historico\n\n'}'
         'PERGUNTA DO ALUNO: $pergunta';
-    final resposta = _m.generateContentStream([Content.text(prompt)]);
-    await for (final pedaco in resposta) {
-      final t = pedaco.text;
-      if (t != null && t.isNotEmpty) yield t;
+
+    final resp = await _http.post(
+      Uri.parse('https://generativelanguage.googleapis.com/v1beta/'
+          'models/$_modelo:generateContent?key=$_chave'),
+      headers: const {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'systemInstruction': {
+          'parts': [
+            {'text': _persona}
+          ]
+        },
+        'contents': [
+          {
+            'role': 'user',
+            'parts': [
+              {'text': prompt}
+            ]
+          }
+        ],
+        'generationConfig': {'temperature': 0.4, 'maxOutputTokens': 2048},
+      }),
+    );
+
+    if (resp.statusCode != 200) {
+      throw Exception('Gemini ${resp.statusCode}: ${utf8.decode(resp.bodyBytes)}');
     }
+    final json = jsonDecode(utf8.decode(resp.bodyBytes)) as Map<String, dynamic>;
+    final candidatos = json['candidates'] as List?;
+    final partes =
+        ((candidatos?.firstOrNull as Map?)?['content'] as Map?)?['parts'] as List?;
+    final texto = [
+      for (final p in partes ?? const [])
+        if ((p as Map)['text'] != null) p['text'] as String,
+    ].join();
+    if (texto.isNotEmpty) yield texto;
   }
 }

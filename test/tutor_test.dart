@@ -35,7 +35,7 @@ class _TutorFake implements TutorService {
     this.contexto = contexto;
     this.historico = historico;
     this.pergunta = pergunta;
-    if (falha) throw Exception('firebasevertexai has not been used');
+    if (falha) throw Exception('Gemini 403: PERMISSION_DENIED (referer bloqueado)');
     for (final r in resposta) {
       yield r;
     }
@@ -140,11 +140,11 @@ void main() {
       await cubit.close();
     });
 
-    test('erro de configuração vira recado amigável de setup', () async {
+    test('erro de credencial vira recado amigável (trava de domínio)', () async {
       final fake = _TutorFake()..falha = true;
       final cubit = TutorCubit(service: fake);
       await cubit.perguntar('Oi?', 'CTX');
-      expect(cubit.state.mensagens.last.texto, contains('Firebase AI Logic'));
+      expect(cubit.state.mensagens.last.texto, contains('pac-dart.web.app'));
       expect(cubit.state.digitando, isFalse);
       await cubit.close();
     });

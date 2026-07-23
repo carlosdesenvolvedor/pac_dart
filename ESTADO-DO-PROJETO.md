@@ -191,10 +191,16 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
 - **🐦 Prof. Dash — tutor de IA (jul/2026)** (`lib/features/tutor/`): chat que SEMPRE enxerga o
   estudo — `contextoDoEstudo(CursoState, TypingState)` empacota trilha/lição/resumo/teoria/o
   trecho digitado/saída esperada/precisão e VIAJA junto de cada pergunta (chip "👀 vendo: …"
-  mostra ao aluno). Backend: **Firebase AI Logic** (`firebase_ai` ^2.3, `gemini-2.5-flash`,
-  streaming) — sem backend próprio, chave fica no Firebase; APIs `firebasevertexai` +
-  `generativelanguage` habilitadas via gcloud. ⚠️ Se responder erro de setup, ativar no console
-  (Build → AI Logic → Get started) — o cubit já mostra esse recado amigável. UI: painel fixo à
+  mostra ao aluno). Backend: **API do Gemini DIRETA**
+  (`package:http`, POST generateContent, modelo **`gemini-flash-latest`** — alias que acompanha
+  o flash mais novo; o gemini-2.5-flash foi APOSENTADO pra contas novas e derrubou a 1ª versão).
+  A chave (criada via `gcloud services api-keys create`) é RESTRITA por referer
+  (`https://pac-dart.web.app/*` + `http://localhost:*/*`) E por API (só generativelanguage) —
+  pública por design, igual à chave web do Firebase; testada com curl (200 no domínio, 403 fora).
+  ⚠️ Tentativa anterior com `firebase_ai`/AI Logic exigia onboarding CLICADO no console
+  ("AI logic config is missing") — abandonada; firebase_ai removido do pubspec.
+  ⚠️ web/index.html NÃO pode ganhar `<meta name="referrer" content="no-referrer">` — a trava
+  da chave depende do browser mandar a origem. UI: painel fixo à
   ESQUERDA em telas ≥1240px, senão botão flutuante (avatar Dash) que abre folha; markdown de
   bolso nas respostas (```dart → CartaoCodigo, `inline`, **negrito**); sugestões prontas;
   memória curta (últimas 6 mensagens). `GenerativeModel` criado LAZY na 1ª pergunta (testes e
@@ -319,7 +325,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 ## 📋 Pendências / próximos passos
 
 - ✅ Código sincronizado com o GitHub (última sessão: Prof. Dash tutor IA + tudo anterior).
-- ⚠️ **Conferir no console do Firebase se o AI Logic pede o "Get started"** (as APIs já foram habilitadas via gcloud; se o tutor responder com recado de setup, é um clique no console).
+- (nada pendente no console: o tutor fala com o Gemini via chave restrita por domínio)
 - Adicionar os **topics** no GitHub (flutter, dart, bloc, typing-game, education, pacman) — precisa do agente do Chrome no site.
 - (opcional) Sincronizar o **tema por usuário** (hoje é por dispositivo, no shared_preferences).
 - (opcional) Sons de arcade (waka-waka), mais joguinhos (o hub em `arcade_page.dart` é uma lista — é só acrescentar o card + página), troféus/temporadas no ranking (hoje é all-time), avatar/apelido editável.
