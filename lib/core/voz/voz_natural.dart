@@ -28,10 +28,15 @@ class VozNatural {
   /// Falas atropelam as anteriores: só a geração mais nova pode tocar.
   int _geracao = 0;
 
+  /// Depois de um 429 (cota do minuto: 10 pedidos no plano grátis), a voz
+  /// neural descansa um pouco — o fallback assume e ninguém fica mudo.
+  DateTime _descansaAte = DateTime.fromMillisecondsSinceEpoch(0);
+
   /// Fala [texto] com a voz neural. Devolve false quando NÃO deu (sem
   /// suporte, sem rede, sem cota) — aí o chamador usa a voz do sistema.
   Future<bool> falar(String texto) async {
     if (!player.suportado || texto.trim().isEmpty) return false;
+    if (DateTime.now().isBefore(_descansaAte)) return false;
     final g = ++_geracao;
     try {
       var pcm = _cache[texto];
@@ -80,6 +85,10 @@ class VozNatural {
         },
       }),
     );
+    if (resp.statusCode == 429) {
+      _descansaAte = DateTime.now().add(const Duration(seconds: 60));
+      return null;
+    }
     if (resp.statusCode != 200) return null;
     final json = jsonDecode(utf8.decode(resp.bodyBytes)) as Map<String, dynamic>;
     final parte = ((((json['candidates'] as List?)?.firstOrNull as Map?)?['content']

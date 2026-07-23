@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
@@ -30,9 +32,18 @@ class VozCubit extends Cubit<bool> {
     emit(!state);
   }
 
+  /// Espera você "assentar" no exercício antes de narrar: atravessar
+  /// trechos rapidinho não gasta a cota da voz neural (10/min no grátis).
+  Timer? _aguarda;
+
   Future<void> falar(String texto) async {
     if (!state) return;
-    await falarSempre(texto);
+    _aguarda?.cancel();
+    _natural.parar();
+    try {
+      await _tts.stop();
+    } catch (_) {}
+    _aguarda = Timer(const Duration(milliseconds: 900), () => falarSempre(texto));
   }
 
   Future<void> falarSempre(String texto) async {
@@ -55,6 +66,7 @@ class VozCubit extends Cubit<bool> {
 
   @override
   Future<void> close() {
+    _aguarda?.cancel();
     _parar();
     return super.close();
   }
