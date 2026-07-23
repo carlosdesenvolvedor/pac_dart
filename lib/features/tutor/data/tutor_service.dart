@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../../../core/gemini/chave_gemini.dart';
+
 /// Contrato do tutor — o Gemini de verdade em produção, um fake nos testes.
 abstract interface class TutorService {
   /// Responde em streaming (pedaços de texto conforme chegam).
@@ -14,13 +16,9 @@ abstract interface class TutorService {
 
 /// Prof. Dash falando direto com a API do Gemini.
 ///
-/// A [_chave] é RESTRITA de dois jeitos (criada via gcloud):
-///  1. por referer — só aceita chamadas vindas de https://pac-dart.web.app
-///     e de localhost (dev); de qualquer outro lugar, 403;
-///  2. por API — só serve para a generativelanguage.googleapis.com.
-/// Ou seja: é pública por design, como a própria chave web do Firebase.
+/// A chave vem do Firestore em runtime ([ChaveGemini]) — nunca do código —
+/// e é restrita por referer (só o site oficial) e por API (só o Gemini).
 class GeminiTutorService implements TutorService {
-  static const _chave = 'AIzaSyCnYsKY9LV1wvuquuKX9zm6L_qFAIhWBpI';
 
   /// Alias que acompanha SEMPRE o flash mais novo — imune a modelo aposentado
   /// (o gemini-2.5-flash morreu pra contas novas e quase nos pegou).
@@ -55,9 +53,13 @@ Regras de ouro:
         '${historico.isEmpty ? '' : 'CONVERSA RECENTE:\n$historico\n\n'}'
         'PERGUNTA DO ALUNO: $pergunta';
 
+    final chave = await ChaveGemini.obter();
+    if (chave == null) {
+      throw Exception('config do tutor ausente (Firestore config/tutor)');
+    }
     final resp = await _http.post(
       Uri.parse('https://generativelanguage.googleapis.com/v1beta/'
-          'models/$_modelo:generateContent?key=$_chave'),
+          'models/$_modelo:generateContent?key=$chave'),
       headers: const {'Content-Type': 'application/json'},
       body: jsonEncode({
         'systemInstruction': {

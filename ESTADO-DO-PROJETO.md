@@ -206,12 +206,23 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
   mostra ao aluno). Backend: **API do Gemini DIRETA**
   (`package:http`, POST generateContent, modelo **`gemini-flash-latest`** — alias que acompanha
   o flash mais novo; o gemini-2.5-flash foi APOSENTADO pra contas novas e derrubou a 1ª versão).
-  A chave (criada via `gcloud services api-keys create`) é RESTRITA por referer
-  (`https://pac-dart.web.app/*`, **`https://pac-dart.web.app./*` — SIM, com PONTO FINAL:
-  o usuário navega no FQDN `pac-dart.web.app.` e o browser manda esse referer, que é OUTRA
-  origem** — mais `pac-dart.firebaseapp.com/*` e `http://localhost:*/*`) E por API (só
-  generativelanguage) —
-  pública por design, igual à chave web do Firebase; testada com curl (200 no domínio, 403 fora).
+  ⚠️ **A CHAVE NUNCA VAI NO REPO NEM NO BUNDLE** (lição paga: a 1ª chave foi commitada no
+  GitHub público e o Google a BLOQUEOU em horas — "reported as leaked"). Ela mora no Firestore
+  em **`config/tutor`** (campo `chaveGemini`), legível SÓ por usuário logado (rules: write
+  sempre false), buscada em runtime por `core/gemini/chave_gemini.dart` (cache em memória).
+  **Rotacionar = criar chave nova no gcloud + PATCH no doc via REST autenticado — sem redeploy**:
+  ```bash
+  gcloud services api-keys create --project=pac-dart --display-name="..." \
+    --api-target=service=generativelanguage.googleapis.com \
+    --allowed-referrers="https://pac-dart.web.app/*,https://pac-dart.web.app./*,https://pac-dart.firebaseapp.com/*,http://localhost:*/*"
+  curl -X PATCH "https://firestore.googleapis.com/v1/projects/pac-dart/databases/(default)/documents/config/tutor" \
+    -H "Authorization: Bearer $(gcloud auth print-access-token)" -H "Content-Type: application/json" \
+    -d '{"fields":{"chaveGemini":{"stringValue":"NOVA_CHAVE"}}}'
+  ```
+  A chave é RESTRITA por referer
+  (incluindo **`https://pac-dart.web.app./*` com PONTO FINAL** — o usuário navega no FQDN e o
+  browser manda esse referer, que é OUTRA origem — mais firebaseapp.com e localhost) E por API
+  (só generativelanguage); testada com curl (200 no domínio, 403 fora).
   ⚠️ Tentativa anterior com `firebase_ai`/AI Logic exigia onboarding CLICADO no console
   ("AI logic config is missing") — abandonada; firebase_ai removido do pubspec.
   ⚠️ web/index.html NÃO pode ganhar `<meta name="referrer" content="no-referrer">` — a trava
@@ -348,7 +359,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
-## 🧪 Testes (140, todos passando)
+## 🧪 Testes (142, todos passando)
 
 `test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).

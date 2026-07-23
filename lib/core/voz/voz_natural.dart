@@ -2,14 +2,14 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../gemini/chave_gemini.dart';
 import 'voz_natural_stub.dart' if (dart.library.js_interop) 'voz_natural_web.dart'
     as player;
 
-/// 🎙️ Narração NATURAL via Gemini TTS — a mesma API e a MESMA chave
-/// (trancada por domínio) do Prof. Dash. Se qualquer coisa falhar (cota,
-/// rede, plataforma sem Web Audio), quem chamou usa o fallback do sistema.
+/// 🎙️ Narração NATURAL via Gemini TTS — a mesma API e a mesma chave do
+/// Prof. Dash (buscada do Firestore em runtime, nunca no código). Se algo
+/// falhar (cota, rede, plataforma sem Web Audio), usa-se o fallback.
 class VozNatural {
-  static const _chave = 'AIzaSyCnYsKY9LV1wvuquuKX9zm6L_qFAIhWBpI';
   static const _modelo = 'gemini-2.5-flash-preview-tts';
 
   /// Voz pré-construída do Gemini (Zephyr = clara e animada).
@@ -55,9 +55,11 @@ class VozNatural {
   }
 
   Future<List<int>?> _sintetizar(String texto) async {
+    final chave = await ChaveGemini.obter();
+    if (chave == null) return null;
     final resp = await _http.post(
       Uri.parse('https://generativelanguage.googleapis.com/v1beta/'
-          'models/$_modelo:generateContent?key=$_chave'),
+          'models/$_modelo:generateContent?key=$chave'),
       headers: const {'Content-Type': 'application/json'},
       body: jsonEncode({
         'contents': [
