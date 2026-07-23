@@ -57,7 +57,7 @@ void main() {
         return bloc;
       }))!;
 
-  Widget _app(CursoBloc curso) => BlocProvider.value(
+  Widget app(CursoBloc curso) => BlocProvider.value(
         value: curso,
         child: MaterialApp(
           theme: Mixart.tema(),
@@ -76,7 +76,7 @@ void main() {
     addTearDown(tester.view.reset);
 
     final curso = await cursoPronto(tester);
-    await tester.pumpWidget(_app(curso));
+    await tester.pumpWidget(app(curso));
     await tester.pump();
     await tester.pump();
 
@@ -100,7 +100,7 @@ void main() {
     addTearDown(tester.view.reset);
 
     final curso = await cursoPronto(tester);
-    await tester.pumpWidget(_app(curso));
+    await tester.pumpWidget(app(curso));
     await tester.pump();
     await tester.pump();
 
