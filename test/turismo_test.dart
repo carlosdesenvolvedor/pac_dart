@@ -86,11 +86,12 @@ void main() {
       e.tick(.5);
       expect(e.posicao, greaterThan(0));
       expect(e.velocidade, lessThan(v1)); // o arrasto já freia
-      for (var i = 0; i < 60; i++) {
+      final limite = pistasGt[0].tempoLimite.ceil() + 2;
+      for (var i = 0; i < limite; i++) {
         e.tick(1);
       }
       expect(e.velocidade, 0);
-      expect(e.tempoEsgotado, isTrue); // 60 s parado na pista 1 = tempo estourado
+      expect(e.tempoEsgotado, isTrue); // parado até o limite da pista 1 = tempo estourado
     });
 
     test('completar a palavra troca de faixa, pontua, dá boost — e o portal certo passa limpo', () {
@@ -280,7 +281,7 @@ void main() {
       expect(e.teclar('a'), TeclaGt.nada);
 
       final f = TurismoEngine(pista: pistasGt[0], rnd: Random(3));
-      for (var t = 0; t < 70; t++) {
+      for (var t = 0; t < pistasGt[0].tempoLimite.ceil() + 2; t++) {
         f.tick(1);
       }
       expect(f.tempoEsgotado, isTrue);

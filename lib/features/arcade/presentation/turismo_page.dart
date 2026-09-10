@@ -10,6 +10,7 @@ import '../../ranking/presentation/ranking_cubit.dart';
 import '../domain/personagem.dart';
 import '../domain/progresso_turismo.dart';
 import '../domain/turismo.dart';
+import '../data/engenheiro_gt.dart';
 import 'widgets/arcade_ui.dart';
 import 'widgets/campanha.dart';
 import 'widgets/campo_teclas.dart';
@@ -27,7 +28,10 @@ class TurismoPage extends StatefulWidget {
 
   /// Abre direto correndo esta pista (1–10); null = tela do campeonato.
   final int? pistaInicial;
-  const TurismoPage({super.key, this.semente, this.pistaInicial});
+
+  /// A engenheira de pista (IA) — injetável nos testes.
+  final EngenheiroGt? engenheiro;
+  const TurismoPage({super.key, this.semente, this.pistaInicial, this.engenheiro});
 
   @override
   State<TurismoPage> createState() => _TurismoPageState();
@@ -54,6 +58,10 @@ class _TurismoPageState extends State<TurismoPage>
 
   /// Câmera da vista 3D (C troca; escolha salva).
   String _camera = camerasGt.first;
+
+  /// 🎸 Música da fase (escolha salva) e 🎧 o debrief da engenheira.
+  bool _musica = true;
+  String? _radio;
 
   _Tela _tela = _Tela.campeonato;
   PistaGt? _pista;
@@ -94,12 +102,14 @@ class _TurismoPageState extends State<TurismoPage>
     final carro = await ProgressoTurismo.carroEscolhido();
     final setas = await ProgressoTurismo.modoSetas();
     final camera = await ProgressoTurismo.camera();
+    final musica = await ProgressoTurismo.musicaLigada();
     if (mounted) {
       setState(() {
         _campeonato = c;
         _carro = carro;
         _modoSetas = setas;
         _camera = camera;
+        _musica = musica;
       });
     }
   }
@@ -109,6 +119,12 @@ class _TurismoPageState extends State<TurismoPage>
     Sons.toca(Som.blip);
     setState(() => _modoSetas = setas);
     ProgressoTurismo.escolherModo(setas: setas);
+  }
+
+  void _alternarMusica() {
+    Sons.toca(Som.blip);
+    setState(() => _musica = !_musica);
+    ProgressoTurismo.ligarMusica(_musica);
   }
 
   void _proximaCamera() {
@@ -221,6 +237,7 @@ class _TurismoPageState extends State<TurismoPage>
       _corridaId++;
       _gas = false;
       _freio = false;
+      _radio = null;
       _tela = _Tela.corrida;
       _contagem = true;
       _acabou = false;
@@ -310,7 +327,9 @@ class _TurismoPageState extends State<TurismoPage>
       pausado = false;
       _campeao = e.terminou && pista.numero == pistasGt.length && e.medalha > 0;
       _moedasCorrida = e.moedas + moedasPorMedalha[e.medalha];
+      _radio = null;
     });
+    _pedirDebrief(e);
     if (e.terminou) {
       Sons.toca(e.medalha == 3 ? Som.fanfarra : Som.fase);
       await ProgressoTurismo.registrar(
@@ -329,6 +348,14 @@ class _TurismoPageState extends State<TurismoPage>
       if (mounted && recorde == true) setState(() => _novoRecorde = true);
     }
     await _carregarCampeonato();
+  }
+
+  /// 🎧 A engenheira (Gemini, ou a de bolso) comenta a corrida que acabou.
+  Future<void> _pedirDebrief(TurismoEngine e) async {
+    final id = _corridaId;
+    final carro = carrosGt.firstWhere((c) => c.id == _carro, orElse: () => carrosGt.first).nome;
+    final texto = await (widget.engenheiro ?? EngenheiroGt()).debrief(TelemetriaGt.de(e, carro: carro));
+    if (mounted && _corridaId == id) setState(() => _radio = texto);
   }
 
   String _seg(double s) => '${s.toStringAsFixed(1)}s';
@@ -414,7 +441,8 @@ class _TurismoPageState extends State<TurismoPage>
           'Créditos 3D · Carros: Porsche 911 (930) Turbo 1975, Nissan Skyline R34 GT-R, Honda NSX 1990, '
           'Mazda Miata MX-5 NA e Toyota Corolla AE86 Trueno, por Lexyc16 (sketchfab.com/Lexyc16), '
           'licença CC BY 4.0 · Céus HDRI, texturas e postes: Poly Haven (CC0) · Som do motor: "Car Engine Loop" '
-          'por qubodup (OpenGameArt), CC BY 3.0 · Som da batida: qubodup (CC0) · Motor 3D: three.js (MIT).',
+          'por qubodup (OpenGameArt), CC BY 3.0 · Som da batida: qubodup (CC0) · Músicas: "Rock Music Pack" '
+          'por Ragnar Random (OpenGameArt, CC0) · Engenheira de pista: Gemini · Motor 3D: three.js (MIT).',
           style: Mixart.ui(size: 10.5, color: Mixart.textFaint).copyWith(height: 1.5),
         ),
       ],
@@ -432,9 +460,12 @@ class _TurismoPageState extends State<TurismoPage>
         _opcaoModo(false, '⌨️ Digitação', 'as palavras são o volante — e treinam você'),
         _opcaoModo(true, '🎮 Setas', '← → trocam de faixa · ↑ acelera · ↓ freia'),
       ]),
-      const SizedBox(height: 8),
-      Text('Câmera: ${nomesCamera[_camera]} — na corrida, o botão 🎥 (ou a tecla C no modo setas) troca.',
-          style: Mixart.ui(size: 11, color: Mixart.textFaint)),
+      const SizedBox(height: 10),
+      Wrap(spacing: 10, runSpacing: 8, crossAxisAlignment: WrapCrossAlignment.center, children: [
+        _botaoMusica(),
+        Text('Câmera: ${nomesCamera[_camera]} — na corrida, o botão 🎥 (ou a tecla C no modo setas) troca.',
+            style: Mixart.ui(size: 11, color: Mixart.textFaint)),
+      ]),
     ]);
   }
 
@@ -461,6 +492,31 @@ class _TurismoPageState extends State<TurismoPage>
               Text(titulo, style: Mixart.display(size: 13, color: escolhido ? Mixart.brand : Mixart.text)),
               Text(legenda, style: Mixart.ui(size: 10.5, color: Mixart.textMuted)),
             ]),
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// 🎸 Liga/desliga a trilha de rock da fase.
+  Widget _botaoMusica() {
+    return Semantics(
+      button: true,
+      toggled: _musica,
+      label: 'música ${_musica ? 'ligada' : 'desligada'}',
+      child: Material(
+        color: _musica ? Mixart.brandSub : Mixart.surface,
+        shape: const StadiumBorder(),
+        child: InkWell(
+          customBorder: const StadiumBorder(),
+          onTap: _alternarMusica,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: ShapeDecoration(
+              shape: StadiumBorder(side: BorderSide(color: _musica ? Mixart.brand : Mixart.border)),
+            ),
+            child: Text('🎸 Rock ${_musica ? 'ligado' : 'desligado'}',
+                style: Mixart.ui(size: 11, weight: FontWeight.w700, color: _musica ? Mixart.brand : Mixart.text)),
           ),
         ),
       ),
@@ -588,6 +644,8 @@ class _TurismoPageState extends State<TurismoPage>
                   '${(p.distancia / 1000).toStringAsFixed(1)} km · limite ${p.tempoLimite.round()}s',
                   style: Mixart.ui(size: 11, color: Mixart.textMuted),
                 ),
+                if (p.tituloMusica.isNotEmpty)
+                  Text('🎸 ${p.tituloMusica}', style: Mixart.ui(size: 10.5, color: Mixart.textFaint)),
               ]),
             ),
             const SizedBox(width: 8),
@@ -660,6 +718,7 @@ class _TurismoPageState extends State<TurismoPage>
                 som: Sons.ligado,
                 pausado: pausado,
                 camera: _camera,
+                musica: _musica,
               ),
             ),
             Positioned(left: 12, top: 12, right: 132, child: _barraProgresso(e)),
@@ -946,6 +1005,8 @@ class _TurismoPageState extends State<TurismoPage>
                       ChipPlacar('BATIDAS', '${e.colisoes}', cor: e.colisoes > 0 ? Mixart.danger : null),
                       ChipPlacar('MELHOR COMBO', '${e.melhorCombo}'),
                     ]),
+                    const SizedBox(height: 14),
+                    _radioDaEquipe(),
                     const SizedBox(height: 18),
                     Wrap(spacing: 10, runSpacing: 10, alignment: WrapAlignment.center, children: [
                       if (proxima != null)
@@ -961,6 +1022,32 @@ class _TurismoPageState extends State<TurismoPage>
           ]),
         ),
       ),
+    );
+  }
+
+  /// 🎧 O rádio da equipe na tela de fim: a engenheira lê a telemetria.
+  Widget _radioDaEquipe() {
+    final texto = _radio;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        color: Mixart.surface,
+        border: Border.all(color: Mixart.border),
+        borderRadius: BorderRadius.circular(Mixart.radiusMd),
+      ),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text('🎧 RÁDIO DA EQUIPE · ENGENHEIRA DE PISTA',
+            style: Mixart.ui(size: 10, weight: FontWeight.w800, color: Mixart.textMuted).copyWith(letterSpacing: 2)),
+        const SizedBox(height: 6),
+        if (texto == null)
+          Row(children: [
+            SizedBox(width: 12, height: 12, child: CircularProgressIndicator(strokeWidth: 2, color: Mixart.brand)),
+            const SizedBox(width: 8),
+            Text('lendo a telemetria da sua corrida…', style: Mixart.ui(size: 11.5, color: Mixart.textMuted)),
+          ])
+        else
+          Text(texto, style: Mixart.ui(size: 12.5, color: Mixart.text).copyWith(height: 1.5)),
+      ]),
     );
   }
 

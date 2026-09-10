@@ -12,7 +12,7 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 const TEMAS = {
   1: { hdri: 'campina', chao: 'leafy_grass', repChao: 260, exposicao: 1.0, sol: [-0.5, 0.75, 0.35], solCor: 0xfff1d6, solForca: 2.4, noturno: false, neblina: 0xdbe9ff, densidade: 0.0016 },
   2: { hdri: 'deserto', chao: 'sand_01', repChao: 220, exposicao: 1.05, sol: [0.55, 0.6, -0.3], solCor: 0xffe6c0, solForca: 2.6, noturno: false, neblina: 0xf3dcb4, densidade: 0.0014 },
-  3: { hdri: 'cidade', chao: 'concrete_floor_02', repChao: 200, exposicao: 0.85, sol: [0.3, 0.7, 0.4], solCor: 0x9fb7ff, solForca: 0.35, noturno: true, neblina: 0x141a28, densidade: 0.0022, lampadas: true },
+  3: { hdri: 'cidade', chao: 'concrete_floor_02', repChao: 200, exposicao: 0.85, sol: [0.3, 0.7, 0.4], solCor: 0x9fb7ff, solForca: 0.35, noturno: true, neblina: 0x141a28, densidade: 0.0022, lampadas: true, cidade: true },
   4: { hdri: 'neve', chao: 'snow_02', repChao: 240, exposicao: 1.0, sol: [-0.35, 0.65, 0.5], solCor: 0xffffff, solForca: 2.0, noturno: false, neblina: 0xeaf3ff, densidade: 0.0020 },
   5: { hdri: 'vulcao', chao: 'dark_rock', repChao: 200, exposicao: 1.05, sol: [0.7, 0.35, 0.2], solCor: 0xff9a6a, solForca: 1.6, noturno: true, neblina: 0x3a1c14, densidade: 0.0024 },
   6: { hdri: 'espaco', chao: 'dark_rock', repChao: 200, exposicao: 0.95, sol: [0.1, 0.8, 0.3], solCor: 0xc8d8ff, solForca: 0.5, noturno: true, neblina: 0x0a0e1e, densidade: 0.0015 },
@@ -424,10 +424,12 @@ function animarFaiscas(dt) {
 
 function atualizarPlacas() {
   if (!estado || !estado.portais) return;
-  for (let k = 0; k < portais.length; k++) {
-    const flags = estado.portais[k];
+  for (let j = 0; j < estado.portais.length; j++) {
+    const flags = estado.portais[j];
     if (!flags) continue;
+    const k = flags.indice != null ? flags.indice : j;
     const port = portais[k];
+    if (!port) continue;
     // carros de tráfego: seguem a posição do motor; batido → arremesso
     if (flags.carros) {
       for (let i = 0; i < flags.carros.length; i++) {
@@ -563,6 +565,98 @@ async function construirObstaculos() {
 // Postes de luz (cidade): o modelo é clonado ao longo da pista, mas só um
 // PUNHADO de luzes reais existe — elas pulam pros postes mais próximos do
 // carro a cada frame (dezenas de PointLights travariam a GPU).
+// ---------- cidade construída ----------
+// Prédios procedurais dos dois lados da pista, seguindo as curvas: caixas
+// instanciadas (3 faixas de altura, pra janela não esticar) com fachada de
+// janelas pintada em canvas; à noite as janelas acendem (emissivo).
+let predios = [];
+function texturaFachada(andares, colunas, semente) {
+  let s = semente;
+  const rnd = () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
+  const w = 256, h = 512;
+  const cw = w / colunas, ch = h / andares;
+  const base = canvasTex(w, h, (ctx) => {
+    const tom = 44 + Math.floor(rnd() * 50);
+    ctx.fillStyle = `rgb(${tom},${tom + 4},${tom + 12})`;
+    ctx.fillRect(0, 0, w, h);
+    for (let a = 0; a < andares; a++) {
+      for (let c = 0; c < colunas; c++) {
+        ctx.fillStyle = 'rgba(120,140,170,0.55)';
+        ctx.fillRect(c * cw + cw * .18, a * ch + ch * .2, cw * .64, ch * .56);
+      }
+    }
+    // faixa mais escura entre andares
+    ctx.fillStyle = 'rgba(0,0,0,0.25)';
+    for (let a = 0; a < andares; a++) ctx.fillRect(0, a * ch, w, ch * .06);
+  });
+  const luz = canvasTex(w, h, (ctx) => {
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0, 0, w, h);
+    for (let a = 0; a < andares; a++) {
+      for (let c = 0; c < colunas; c++) {
+        if (rnd() < 0.42) {
+          const q = rnd();
+          ctx.fillStyle = q < .5 ? '#ffd88a' : (q < .8 ? '#fff4d6' : '#9fc4ff');
+          ctx.fillRect(c * cw + cw * .18, a * ch + ch * .2, cw * .64, ch * .56);
+        }
+      }
+    }
+  });
+  return { mapa: base.tex, luz: luz.tex };
+}
+function construirCidade() {
+  const bandas = [
+    { andares: 4, colunas: 5, hMin: 11, hMax: 16 },
+    { andares: 9, colunas: 6, hMin: 20, hMax: 34 },
+    { andares: 16, colunas: 7, hMin: 38, hMax: 64 },
+  ];
+  const noturno = cfg.tema.noturno;
+  const geo = new THREE.BoxGeometry(1, 1, 1);
+  geo.translate(0, 0.5, 0); // base no chão
+  let s = 7;
+  const rnd = () => { s = (s * 48271) % 2147483647; return s / 2147483647; };
+  const lotes = [];
+  const total = centro.length * L;
+  for (let d = 30; d < total - 40; d += 26) {
+    for (const lado of [-1, 1]) {
+      if (rnd() < 0.12) continue; // um terreno vazio de vez em quando
+      const r1 = rnd();
+      const bandaI = r1 < .45 ? 0 : (r1 < .8 ? 1 : 2);
+      const banda = bandas[bandaI];
+      const larg = 14 + rnd() * 10, prof = 14 + rnd() * 10;
+      const alt = banda.hMin + rnd() * (banda.hMax - banda.hMin);
+      const q = pose(d + rnd() * 6);
+      const r = direita(q.h);
+      const afast = MEIA_PISTA + 9 + prof / 2 + rnd() * 4;
+      const m = new THREE.Matrix4().makeRotationY(-q.h);
+      m.multiply(new THREE.Matrix4().makeScale(larg, alt, prof));
+      m.setPosition(q.x + r.x * afast * lado, 0, q.z + r.z * afast * lado);
+      lotes.push({ bandaI, m });
+    }
+  }
+  bandas.forEach((banda, i) => {
+    const meus = lotes.filter((l) => l.bandaI === i);
+    if (!meus.length) return;
+    const tex = texturaFachada(banda.andares, banda.colunas, 11 + i * 97);
+    const fachada = new THREE.MeshStandardMaterial({ map: tex.mapa, roughness: .7, metalness: .1, emissive: 0xffffff, emissiveMap: tex.luz, emissiveIntensity: noturno ? 1.1 : 0.06 });
+    const telhado = new THREE.MeshStandardMaterial({ color: 0x2a2d33, roughness: .95 });
+    const inst = new THREE.InstancedMesh(geo, [fachada, fachada, telhado, telhado, fachada, fachada], meus.length);
+    meus.forEach((l, k) => inst.setMatrixAt(k, l.m));
+    inst.instanceMatrix.needsUpdate = true;
+    scene.add(inst);
+    predios.push(inst);
+  });
+  // calçadas de concreto dos dois lados, entre o guard-rail e os prédios
+  const concreto = new THREE.MeshStandardMaterial({ color: 0x8d8d8d, roughness: .95 });
+  for (const lado of [-1, 1]) {
+    const a = lado * (MEIA_PISTA + 2.6), b = lado * (MEIA_PISTA + 8.5);
+    const calcada = new THREE.Mesh(faixaGeometria(Math.min(a, b), Math.max(a, b), 0.14, 0.14, 4), concreto);
+    calcada.receiveShadow = true;
+    scene.add(calcada);
+  }
+  console.info('[turismo3d] cidade:', lotes.length, 'prédios');
+}
+
 let postesLuz = [];
 let luzesPool = [];
 function construirLampadas() {
@@ -671,6 +765,7 @@ async function montar(canvas, config) {
   try {
     construirCentro(config.segmentos);
     construirPista(cfg.tema);
+    if (cfg.tema.cidade) construirCidade();
     construirPortais();
     construirLampadas();
   } catch (e) {
@@ -681,6 +776,7 @@ async function montar(canvas, config) {
   construirPainel();
   prepararAudio();
   if (audioCtx && buffers.motor && !motorFonte) ligarMotor(); // corrida nova: motor volta a roncar
+  if (audioCtx) { if (cfg.musica) carregarMusica(cfg.musica); ligarVento(); }
   console.info('[turismo3d] cena montada:', centro.length, 'pontos,', cfg.portais.length, 'portais');
 
   // tamanho: o Dart manda a medida do widget em `atualizar` (fonte
@@ -838,6 +934,57 @@ function posicionarPaineis(e) {
 // Motor: um loop gravado com o tom (playbackRate) e o volume seguindo a
 // velocidade; batida: amostra curta. O AudioContext nasce no 1º gesto.
 let audioCtx = null, motorFonte = null, motorGanho = null, motorFiltro = null, buffers = {}, audioPedido = false;
+// 🎸 música da fase (loop) com ducking na batida; 🌬️ vento = ruído filtrado
+let musicaFonte = null, musicaGanho = null, musicaUrl = null, musicasCache = {}, duckAte = 0;
+let ventoFonte = null, ventoGanho = null, ventoFiltro = null;
+function carregarMusica(url) {
+  if (!audioCtx || !url || musicaUrl === url) return;
+  musicaUrl = url;
+  const tocar = (buf) => {
+    if (musicaUrl !== url || musicaFonte) return;
+    musicaFonte = audioCtx.createBufferSource();
+    musicaFonte.buffer = buf;
+    musicaFonte.loop = true;
+    musicaGanho = audioCtx.createGain();
+    musicaGanho.gain.value = 0;
+    musicaFonte.connect(musicaGanho); musicaGanho.connect(audioCtx.destination);
+    musicaFonte.start();
+  };
+  if (musicasCache[url]) { tocar(musicasCache[url]); return; }
+  fetch(url).then((r) => r.arrayBuffer()).then((b) => audioCtx.decodeAudioData(b))
+    .then((buf) => { musicasCache[url] = buf; tocar(buf); })
+    .catch((e) => console.warn('[turismo3d] música', e));
+}
+function atualizarMusica(e) {
+  if (!musicaGanho || !audioCtx) return;
+  const t = audioCtx.currentTime;
+  const ligada = e.som !== false && e.musica !== false && !e.pausado && !e.acabou;
+  const alvo = !ligada ? 0 : (t < duckAte ? 0.09 : 0.28);
+  musicaGanho.gain.setTargetAtTime(alvo, t, ligada ? .5 : .15);
+}
+function ligarVento() {
+  if (!audioCtx || ventoFonte) return;
+  const sr = audioCtx.sampleRate, buf = audioCtx.createBuffer(1, sr * 2, sr), d = buf.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  ventoFonte = audioCtx.createBufferSource();
+  ventoFonte.buffer = buf;
+  ventoFonte.loop = true;
+  ventoFiltro = audioCtx.createBiquadFilter();
+  ventoFiltro.type = 'bandpass';
+  ventoFiltro.frequency.value = 420;
+  ventoFiltro.Q.value = 0.6;
+  ventoGanho = audioCtx.createGain();
+  ventoGanho.gain.value = 0;
+  ventoFonte.connect(ventoFiltro); ventoFiltro.connect(ventoGanho); ventoGanho.connect(audioCtx.destination);
+  ventoFonte.start();
+}
+function atualizarVento(fracao, e) {
+  if (!ventoGanho || !audioCtx) return;
+  const t = audioCtx.currentTime;
+  const ligado = e.som !== false && !e.pausado && !e.acabou;
+  ventoGanho.gain.setTargetAtTime(ligado ? fracao * fracao * 0.16 : 0, t, .2);
+  ventoFiltro.frequency.setTargetAtTime(300 + fracao * 1100, t, .3);
+}
 function prepararAudio() {
   if (audioPedido) return;
   audioPedido = true;
@@ -847,6 +994,8 @@ function prepararAudio() {
       for (const [nome, url] of Object.entries({ motor: 'assets3d/som/motor.m4a', batida: 'assets3d/som/batida.m4a' })) {
         fetch(url).then((r) => r.arrayBuffer()).then((b) => audioCtx.decodeAudioData(b)).then((buf) => { buffers[nome] = buf; if (nome === 'motor') ligarMotor(); }).catch((e) => console.warn('[turismo3d] som', nome, e));
       }
+      if (cfg && cfg.musica) carregarMusica(cfg.musica);
+      ligarVento();
     }
     if (audioCtx.state === 'suspended') audioCtx.resume();
   };
@@ -876,6 +1025,7 @@ function atualizarMotorAudio(fracao, e) {
 }
 function tocarBatida() {
   if (!audioCtx || !buffers.batida || (estado && estado.som === false)) return;
+  duckAte = audioCtx.currentTime + 1.8;
   const src = audioCtx.createBufferSource();
   src.buffer = buffers.batida;
   const g = audioCtx.createGain();
@@ -887,6 +1037,12 @@ function pararAudio() {
   try { if (motorGanho && audioCtx) motorGanho.gain.setTargetAtTime(0, audioCtx.currentTime, .05); } catch (e) {}
   try { if (motorFonte) { const f = motorFonte; setTimeout(() => { try { f.stop(); } catch (e) {} }, 300); } } catch (e) {}
   motorFonte = null; motorGanho = null; motorFiltro = null;
+  try { if (musicaGanho && audioCtx) musicaGanho.gain.setTargetAtTime(0, audioCtx.currentTime, .1); } catch (e) {}
+  try { if (musicaFonte) { const f = musicaFonte; setTimeout(() => { try { f.stop(); } catch (e) {} }, 500); } } catch (e) {}
+  musicaFonte = null; musicaGanho = null; musicaUrl = null;
+  try { if (ventoGanho && audioCtx) ventoGanho.gain.setTargetAtTime(0, audioCtx.currentTime, .05); } catch (e) {}
+  try { if (ventoFonte) { const f = ventoFonte; setTimeout(() => { try { f.stop(); } catch (e) {} }, 300); } } catch (e) {}
+  ventoFonte = null; ventoGanho = null; ventoFiltro = null;
 }
 
 let tamanhoCanvas = null, ultimoW = 0, ultimoH = 0;
@@ -999,6 +1155,8 @@ function quadro() {
   relogioAnim += dt;
   animarFichas(relogioAnim, e.posicao || 0);
   atualizarMotorAudio(fracao, e);
+  atualizarMusica(e);
+  atualizarVento(fracao, e);
   // só os carros parados dos próximos portais entram na cena (desempenho)
   for (const o of obstaculos) {
     if (o.userData.arremessado) continue;
@@ -1024,6 +1182,7 @@ function destruir() {
   api.pronto = false;
   api.progresso = 0;
   cinemaPonto = null;
+  predios = [];
 }
 
 function debug() {
@@ -1033,6 +1192,7 @@ function debug() {
     carro: carro ? { pos: carro.position.toArray().map((v) => +v.toFixed(2)), caixa: carro.userData.caixa, visiveis: (() => { let n = 0; carro.traverse((o) => { if (o.isMesh && o.visible) n++; }); return n; })() } : null,
     camera: camera ? camera.position.toArray().map((v) => +v.toFixed(2)) : null,
     modoCamera: estado ? estado.camera : null,
+    musica: musicaUrl, predios: predios.reduce((n, p) => n + p.count, 0),
     estado: { posicao: e.posicao, velocidade: e.velocidade, x: e.x },
     obstaculos: obstaculos.length,
     audio: { ctx: !!audioCtx, motor: !!buffers.motor, batida: !!buffers.batida, fonte: !!motorFonte, estado: audioCtx && audioCtx.state },

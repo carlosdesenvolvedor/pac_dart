@@ -43,6 +43,9 @@ class Vista3D extends StatefulWidget {
 
   /// Câmera: perseguicao · capo · cinema · alta.
   final String camera;
+
+  /// 🎸 Música da fase ligada.
+  final bool musica;
   const Vista3D({
     super.key,
     required this.engine,
@@ -52,6 +55,7 @@ class Vista3D extends StatefulWidget {
     this.som = true,
     this.pausado = false,
     this.camera = 'perseguicao',
+    this.musica = true,
   });
 
   static bool get disponivel => _turismo3dObj != null;
@@ -105,6 +109,8 @@ class _Vista3DState extends State<Vista3D> {
     final e = widget.engine;
     final config = {
       'tema': e.pista.tema,
+      'pista': e.pista.numero,
+      'musica': e.pista.musica.isEmpty ? null : 'assets3d/som/musica/${e.pista.musica}',
       'segmentos': [for (final s in e.segmentos) s.curva],
       'comprimentoSegmento': TurismoEngine.comprimentoSegmento,
       'distancia': e.pista.distancia,
@@ -195,12 +201,16 @@ class _Vista3DState extends State<Vista3D> {
       'som': widget.som,
       'pausado': widget.pausado,
       'camera': widget.camera,
+      'musica': widget.musica,
       'acabou': !e.correndo,
       'impacto': e.impacto,
       'boost': e.boost,
+      // só a janela de portais em volta do carro viaja por frame (as pistas
+      // têm até 60+ portais; mandar todos era lixo pro GC a 60 fps)
       'portais': [
-        for (final p in e.portais)
+        for (final p in _janelaDePortais(e))
           {
+            'indice': p.indice,
             'digitado': p.digitado,
             'batido': p.batido,
             'travada': identical(p, digitando) ? (e.palavraTravada ?? -1) : -1,
@@ -212,6 +222,14 @@ class _Vista3DState extends State<Vista3D> {
       ],
     }.jsify()!);
     if (!_pronto && js.pronto) setState(() => _pronto = true);
+  }
+
+  /// Do portal anterior ao 5º à frente: é o que o JS precisa animar.
+  Iterable<Portal> _janelaDePortais(TurismoEngine e) {
+    final atual = e.portalAtual?.indice ?? e.portais.length;
+    final de = (atual - 2).clamp(0, e.portais.length);
+    final ate = (atual + 6).clamp(0, e.portais.length);
+    return e.portais.getRange(de, ate);
   }
 
   @override

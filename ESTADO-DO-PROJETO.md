@@ -521,6 +521,40 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
     - Testes: +3 no motor (pedais/freio, virar+portal limpo+combo, batida na faixa errada) e +2 de
       UI (modo setas sem TextField, ↑ anda, ← troca de faixa, C gira a câmera; seletor salva a pref).
 
+- **🏎️ DART TURISMO — rodada 5: pistas 4× mais longas, rock por fase, cidade construída, engenheira de pista (IA), vento (set/2026)**
+  Pedidos: "fases pelo menos 4 vezes o tamanho", "música de rock instrumental, diferente em cada
+  fase", "cidade construída", "IA integrada" (o Gemini que já existe), "sensação de realismo".
+    - **Pistas 4–12 km** (`distancia` ×4 em `pistasGt`; limites de tempo/portais/medalhas derivam
+      dela, então escalaram sozinhos: 240 s na pista 1, 288 s na 10). ⚠️ Testes que contavam
+      "60 s parado = tempo estourado" agora usam `pista.tempoLimite`. Com 48–64 portais por pista,
+      o Dart manda ao JS por frame SÓ uma janela de portais (`_janelaDePortais`: do anterior ao
+      5º à frente, cada um com `indice`) — antes mandava todos e virava lixo pro GC a 60 fps.
+    - **🎸 Rock instrumental por fase**: 10 faixas do "Rock Music Pack" de Ragnar Random
+      (OpenGameArt, **CC0**) em `web/assets3d/som/musica/NN_nome.m4a` (AAC 80 kbps, ~0,6 MB
+      cada — baixadas com curl e convertidas com ffmpeg). `PistaGt.musica/tituloMusica`; o card da
+      pista mostra "🎸 título"; botão "🎸 Rock ligado/desligado" no campeonato (pref
+      `turismo_musica`). No JS: `carregarMusica(url)` (cache por URL, loop, ganho .28) toca quando
+      o AudioContext nasce (1º gesto) ou quando a cena monta com ele já vivo; **ducking** pra .09
+      por 1,8 s na batida (`duckAte` em `tocarBatida`); some no pause e no fim; `pararAudio`
+      para tudo e zera `musicaUrl` (a próxima pista recarrega a dela).
+    - **🌬️ Vento**: ruído branco em bandpass (300–1400 Hz) com ganho ∝ velocidade² — sensação
+      de velocidade sem asset novo.
+    - **🏙️ Cidade construída** (tema 3 `cidade: true` → `construirCidade()`): prédios
+      procedurais dos dois lados seguindo as curvas (lotes a cada 26 m, 12% vazios), 3
+      `InstancedMesh` por faixa de altura (11–16 m / 20–34 m / 38–64 m, pra janela não esticar),
+      fachada e mapa de janelas acesas pintados em canvas (`texturaFachada`, 42% acesas em 3 tons),
+      emissivo 1.1 à noite; telhado escuro por grupos de material; calçadas de concreto entre o
+      guard-rail e os prédios. Custa 3 draw calls.
+    - **🎧 Engenheira de pista (IA)** (`lib/features/arcade/data/engenheiro_gt.dart`): depois da
+      corrida, `EngenheiroGt.debrief(TelemetriaGt)` manda a telemetria (pista, modo, medalha,
+      tempo vs ouro, batidas, combo, precisão/portais limpos, fichas pegas) ao Gemini
+      (`gemini-flash-latest`, a MESMA chave do Prof. Dash via `ChaveGemini`) com persona de rádio
+      de equipe: ≤ 3 frases, um dado concreto + UMA dica + curiosidade de Dart sobre uma ficha.
+      **Nunca trava a tela de fim**: sem chave/rede/429/corpo estranho → `debriefLocal` (regras
+      simples + 20 curiosidades locais por ficha). Card "🎧 RÁDIO DA EQUIPE" no overlay de fim
+      com spinner enquanto lê. `TurismoPage(engenheiro:)` injetável. 4 testes com `MockClient`
+      + `FakeFirebaseFirestore` (`test/engenheiro_gt_test.dart`).
+
 ---
 
 ## 🏗️ Arquitetura (arquivos-chave)
@@ -646,13 +680,10 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 - ⚠️ Código NÃO sincronizado com o GitHub desde o Arcade 2.0 (Turismo 3D inteiro só local + Firebase).
   Push só quando o usuário pedir.
-- **Fila do Dart Turismo (pedidos do usuário, set/2026)**: pistas ≥ 4× mais longas; música de
-  rock instrumental diferente por fase (12 faixas CC0 do "Rock Music Pack" de Ragnar Random /
-  OpenGameArt já baixadas e convertidas pra AAC 80 kbps no scratchpad `rock/` — ~0,6 MB cada);
-  cidade construída (prédios ao longo da pista urbana); IA integrada (Gemini, a mesma chave
-  do Prof. Dash) — engenheiro de pista com debrief pós-corrida; mais realismo (cenário por
-  tema, sons de derrapagem/vento); tutorial na 1ª corrida; opções de qualidade/tremor; minimapa;
-  carro-fantasma da melhor volta; estatísticas/troféus.
+- **Fila do Dart Turismo (pedidos do usuário, set/2026)**: ✅ pistas 4×, ✅ rock por fase,
+  ✅ cidade, ✅ engenheira IA, ✅ vento. Faltam: cenário por tema (árvores/rochas — modelos
+  realistas são pesados, ver armadilhas); tutorial na 1ª corrida; opções de qualidade/tremor;
+  minimapa; carro-fantasma da melhor volta; estatísticas/troféus; som de derrapagem gravado.
 - Adicionar os **topics** no GitHub (flutter, dart, bloc, typing-game, education, pacman) — precisa do agente do Chrome no site.
 - (opcional) Sincronizar o **tema por usuário** (hoje é por dispositivo, no shared_preferences).
 - (opcional) Sons de arcade (waka-waka), mais joguinhos (o hub em `arcade_page.dart` é uma lista — é só acrescentar o card + página), troféus/temporadas no ranking (hoje é all-time), avatar/apelido editável.

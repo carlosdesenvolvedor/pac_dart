@@ -58,6 +58,24 @@ abstract final class ProgressoTurismo {
   static const _chaveComprados = 'turismo_comprados';
   static const _chaveModo = 'turismo_modo';
   static const _chaveCamera = 'turismo_camera';
+  static const _chaveMusica = 'turismo_musica';
+
+  /// 🎸 Música da fase ligada? (padrão: sim)
+  static Future<bool> musicaLigada() async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      return p.getBool(_chaveMusica) ?? true;
+    } catch (_) {
+      return true;
+    }
+  }
+
+  static Future<void> ligarMusica(bool ligada) async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      await p.setBool(_chaveMusica, ligada);
+    } catch (_) {}
+  }
 
   /// Câmera da vista 3D escolhida (padrão: perseguição).
   static Future<String> camera() async {

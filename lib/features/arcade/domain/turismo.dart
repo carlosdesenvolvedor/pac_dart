@@ -34,6 +34,10 @@ class PistaGt {
   /// Portais com DUAS faixas livres (o jogador escolhe qual palavra digitar).
   final bool duasSaidas;
 
+  /// 🎸 Trilha da fase (arquivo em web/assets3d/som/musica) e o título dela.
+  final String musica;
+  final String tituloMusica;
+
   const PistaGt({
     required this.numero,
     required this.nome,
@@ -45,6 +49,8 @@ class PistaGt {
     required this.curvaMax,
     required this.nivelPalavras,
     this.duasSaidas = false,
+    this.musica = '',
+    this.tituloMusica = '',
   });
 
   double get velAlvoMs => velAlvo / 3.6;
@@ -78,16 +84,16 @@ class PistaGt {
 
 /// O campeonato: 10 pistas, do autódromo de iniciante à final lendária.
 const List<PistaGt> pistasGt = [
-  PistaGt(numero: 1, nome: 'Autódromo da Campina', dificuldade: 'Iniciante', tema: 1, distancia: 1000, velAlvo: 60, tempoPorPortal: 5.0, curvaMax: 1.5, nivelPalavras: 1),
-  PistaGt(numero: 2, nome: 'Circuito do Deserto', dificuldade: 'Iniciante', tema: 2, distancia: 1200, velAlvo: 70, tempoPorPortal: 4.9, curvaMax: 2.0, nivelPalavras: 1),
-  PistaGt(numero: 3, nome: 'Noturno da Cidade', dificuldade: 'Amador', tema: 3, distancia: 1400, velAlvo: 80, tempoPorPortal: 4.8, curvaMax: 2.5, nivelPalavras: 1),
-  PistaGt(numero: 4, nome: 'Serra Nevada', dificuldade: 'Amador', tema: 4, distancia: 1600, velAlvo: 90, tempoPorPortal: 4.8, curvaMax: 3.0, nivelPalavras: 2),
-  PistaGt(numero: 5, nome: 'Rota do Vulcão', dificuldade: 'Semi-pro', tema: 5, distancia: 1800, velAlvo: 100, tempoPorPortal: 4.7, curvaMax: 3.5, nivelPalavras: 2),
-  PistaGt(numero: 6, nome: 'Anel Sideral', dificuldade: 'Semi-pro', tema: 6, distancia: 2000, velAlvo: 110, tempoPorPortal: 4.7, curvaMax: 4.0, nivelPalavras: 2),
-  PistaGt(numero: 7, nome: 'Campina GP', dificuldade: 'Profissional', tema: 1, distancia: 2300, velAlvo: 120, tempoPorPortal: 4.6, curvaMax: 4.5, nivelPalavras: 3, duasSaidas: true),
-  PistaGt(numero: 8, nome: 'Deserto Endurance', dificuldade: 'Profissional', tema: 2, distancia: 2600, velAlvo: 130, tempoPorPortal: 4.6, curvaMax: 5.0, nivelPalavras: 3, duasSaidas: true),
-  PistaGt(numero: 9, nome: 'Cidade 24 Horas', dificuldade: 'Lendário', tema: 3, distancia: 2800, velAlvo: 140, tempoPorPortal: 4.5, curvaMax: 5.5, nivelPalavras: 3, duasSaidas: true),
-  PistaGt(numero: 10, nome: 'Grande Final Sideral', dificuldade: 'Lendário', tema: 6, distancia: 3000, velAlvo: 150, tempoPorPortal: 4.5, curvaMax: 6.0, nivelPalavras: 3, duasSaidas: true),
+  PistaGt(numero: 1, nome: 'Autódromo da Campina', dificuldade: 'Iniciante', tema: 1, distancia: 4000, velAlvo: 60, tempoPorPortal: 5.0, curvaMax: 1.5, nivelPalavras: 1, musica: '01_youthful_elf.m4a', tituloMusica: 'Youthful Elf Seeking Adventure'),
+  PistaGt(numero: 2, nome: 'Circuito do Deserto', dificuldade: 'Iniciante', tema: 2, distancia: 4800, velAlvo: 70, tempoPorPortal: 4.9, curvaMax: 2.0, nivelPalavras: 1, musica: '02_last_spike.m4a', tituloMusica: 'Last Spike'),
+  PistaGt(numero: 3, nome: 'Noturno da Cidade', dificuldade: 'Amador', tema: 3, distancia: 5600, velAlvo: 80, tempoPorPortal: 4.8, curvaMax: 2.5, nivelPalavras: 1, musica: '03_downtown_destruction.m4a', tituloMusica: 'Downtown Destruction'),
+  PistaGt(numero: 4, nome: 'Serra Nevada', dificuldade: 'Amador', tema: 4, distancia: 6400, velAlvo: 90, tempoPorPortal: 4.8, curvaMax: 3.0, nivelPalavras: 2, musica: '04_dinosaur_spirit_guide.m4a', tituloMusica: 'Dinosaur Spirit Guide'),
+  PistaGt(numero: 5, nome: 'Rota do Vulcão', dificuldade: 'Semi-pro', tema: 5, distancia: 7200, velAlvo: 100, tempoPorPortal: 4.7, curvaMax: 3.5, nivelPalavras: 2, musica: '05_hammer_of_the_berserker.m4a', tituloMusica: 'Hammer of the Berserker'),
+  PistaGt(numero: 6, nome: 'Anel Sideral', dificuldade: 'Semi-pro', tema: 6, distancia: 8000, velAlvo: 110, tempoPorPortal: 4.7, curvaMax: 4.0, nivelPalavras: 2, musica: '06_welcome_to_warp_zone.m4a', tituloMusica: 'Welcome to Warp Zone'),
+  PistaGt(numero: 7, nome: 'Campina GP', dificuldade: 'Profissional', tema: 1, distancia: 9200, velAlvo: 120, tempoPorPortal: 4.6, curvaMax: 4.5, nivelPalavras: 3, duasSaidas: true, musica: '07_rock_city_ransom.m4a', tituloMusica: 'Rock City Ransom'),
+  PistaGt(numero: 8, nome: 'Deserto Endurance', dificuldade: 'Profissional', tema: 2, distancia: 10400, velAlvo: 130, tempoPorPortal: 4.6, curvaMax: 5.0, nivelPalavras: 3, duasSaidas: true, musica: '08_chick_with_weapon.m4a', tituloMusica: 'Chick with Weapon'),
+  PistaGt(numero: 9, nome: 'Cidade 24 Horas', dificuldade: 'Lendário', tema: 3, distancia: 11200, velAlvo: 140, tempoPorPortal: 4.5, curvaMax: 5.5, nivelPalavras: 3, duasSaidas: true, musica: '09_reason_of_the_itch.m4a', tituloMusica: 'Reason of the Itch'),
+  PistaGt(numero: 10, nome: 'Grande Final Sideral', dificuldade: 'Lendário', tema: 6, distancia: 12000, velAlvo: 150, tempoPorPortal: 4.5, curvaMax: 6.0, nivelPalavras: 3, duasSaidas: true, musica: '10_cheap_speed_think_fast.m4a', tituloMusica: 'Cheap Speed, Think Fast'),
 ];
 
 const nomesMedalha = ['—', 'Bronze', 'Prata', 'Ouro'];

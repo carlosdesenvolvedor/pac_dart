@@ -19,6 +19,7 @@ import 'package:pac_dart/features/arcade/presentation/futebol_page.dart';
 import 'package:pac_dart/features/arcade/presentation/missao_page.dart';
 import 'package:pac_dart/features/arcade/presentation/rali_page.dart';
 import 'package:pac_dart/features/arcade/presentation/turismo_page.dart';
+import 'package:pac_dart/features/arcade/data/engenheiro_gt.dart';
 import 'package:pac_dart/features/arcade/domain/turismo.dart';
 import 'package:pac_dart/features/arcade/presentation/widgets/arcade_ui.dart';
 import 'package:pac_dart/features/arcade/presentation/widgets/campo_teclas.dart';
@@ -477,6 +478,30 @@ void main() {
     await tester.pumpWidget(Container());
   });
 
+  testWidgets('Dart Turismo: fim da corrida chama a engenheira de pista (rádio da equipe)', (tester) async {
+    tester.view.physicalSize = const Size(1000, 1600);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    SharedPreferences.setMockInitialValues({'turismo_modo': true});
+
+    final cubit = RankingCubit(repo: _RepoFake(), uid: 'u1', apelido: 'carlos');
+    await tester.pumpWidget(_app(cubit, TurismoPage(semente: 3, pistaInicial: 1, engenheiro: _EngenheiraFake())));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 20));
+    await _largada(tester);
+    // parado na largada até o relógio da pista 1 estourar (passos de 100 ms)
+    final passos = (pistasGt[0].tempoLimite * 10).ceil() + 5;
+    for (var i = 0; i < passos; i++) {
+      await tester.pump(const Duration(milliseconds: 100));
+    }
+    expect(find.text('⏱ TEMPO ESGOTADO'), findsOneWidget);
+    expect(find.textContaining('RÁDIO DA EQUIPE'), findsOneWidget);
+    await tester.pump(); // o Future do debrief resolve
+    expect(find.text('Rádio: bela volta, piloto!'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    await tester.pumpWidget(Container());
+  });
+
   testWidgets('Dart Turismo: campeonato — o seletor ⌨️/🎮 salva o modo', (tester) async {
     tester.view.physicalSize = const Size(1000, 2400);
     tester.view.devicePixelRatio = 1;
@@ -542,4 +567,10 @@ void main() {
     await tester.pumpWidget(Container());
     await tester.runAsync(cubit.close);
   });
+}
+
+/// A engenheira de pista de mentira: responde na hora, sem rede.
+class _EngenheiraFake extends EngenheiroGt {
+  @override
+  Future<String> debrief(TelemetriaGt t) async => 'Rádio: bela volta, piloto!';
 }
