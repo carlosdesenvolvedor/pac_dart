@@ -1253,7 +1253,7 @@ function posicionarPaineis(e) {
   // baixas pra caberem no quadro; no helicóptero, mais altas
   const modo = e.camera || 'perseguicao';
   const aFrente = modo === 'capo' ? 16 : (modo === 'alta' ? 8 : 5);
-  const altura = modo === 'capo' ? 1.7 : (modo === 'alta' ? 2.6 : 2.05);
+  const altura = modo === 'capo' ? 1.9 : (modo === 'alta' ? 3.4 : 3.0);
   const q = pose((e.posicao || 0) + aFrente);
   const r = direita(q.h);
   // tamanho CONSTANTE na tela: a placa ocupa ~1/3 da largura da vista, seja
@@ -1288,7 +1288,7 @@ function posicionarPaineis(e) {
     painel.mesh.visible = true;
     painel.mesh.scale.setScalar(esc);
     // sobe junto com o tamanho pra base não entrar no asfalto
-    painel.mesh.position.set(q.x + r.x * lat, altura + (esc - 1) * 0.55, q.z + r.z * lat);
+    painel.mesh.position.set(q.x + r.x * lat, altura + (esc - 1) * 0.8, q.z + r.z * lat);
     painel.mesh.quaternion.copy(camera.quaternion);
     pintarPainel(painel, pal);
   }
@@ -1458,6 +1458,10 @@ function loop() {
 //         pra um ponto mais à frente, alternando os lados
 // alta: helicóptero, alta e atrás
 let cinemaPonto = null, cinemaLado = 1;
+// a câmera segue a velocidade SUAVIZADA: cada palavra completada dá um
+// impulso e a instantânea sobe e desce o tempo todo — o zoom, a distância
+// e a altura mudavam a cada 2–3 s ("muita mudança de câmera")
+let fracaoSuave = 0;
 // FOV definido pela HORIZONTAL (graus) → vertical conforme a proporção da
 // janela: 83° horizontais = 62° verticais numa vista 3:2, mas só ~50° numa
 // tela larga e baixa — o carro e as placas param de encolher
@@ -1468,22 +1472,25 @@ function fovVertical(horizontal) {
 }
 function posicionarCamera(e, f, px, pz, fracao, dt) {
   const modo = e.camera || 'perseguicao';
+  fracaoSuave += (fracao - fracaoSuave) * (1 - Math.exp(-dt / 1.8));
+  const v = fracaoSuave;
   let alvoPos, alvoOlhar, fov, rigida = false, olharRapido = false;
   if (modo === 'capo') {
     alvoPos = new THREE.Vector3(px + f.x * 2.2, 0.95, pz + f.z * 2.2);
     alvoOlhar = new THREE.Vector3(px + f.x * 40, 0.7, pz + f.z * 40);
-    fov = fovVertical(88 + fracao * 18 + (e.boost || 0) * 5);
+    fov = fovVertical(88 + v * 14);
     rigida = true; olharRapido = true;
   } else if (modo === 'alta') {
-    alvoPos = new THREE.Vector3(px - f.x * 13, 8.5 + fracao * 1.5, pz - f.z * 13);
+    alvoPos = new THREE.Vector3(px - f.x * 13, 8.5 + v * 1.5, pz - f.z * 13);
     alvoOlhar = new THREE.Vector3(px + f.x * 12, 0.4, pz + f.z * 12);
-    fov = fovVertical(69 + fracao * 10);
+    fov = fovVertical(69 + v * 8);
   } else if (modo === 'cinema') {
     const zc = e.posicao || 0;
-    if (!cinemaPonto || zc > cinemaPonto.z + 14 || zc < cinemaPonto.z - 90) {
-      // novo ponto de TV: 48 m à frente, na beira da pista, do outro lado
+    // corta só quando o carro já passou 45 m do ponto (a câmera acompanha
+    // ele se afastando): um corte a cada ~140 m, não a cada 60
+    if (!cinemaPonto || zc > cinemaPonto.z + 45 || zc < cinemaPonto.z - 160) {
       cinemaLado = -cinemaLado;
-      const zp = zc + 48;
+      const zp = zc + 95;
       const qp = pose(zp), rp = direita(qp.h);
       cinemaPonto = { z: zp, pos: new THREE.Vector3(qp.x + rp.x * 9.5 * cinemaLado, 3.4, qp.z + rp.z * 9.5 * cinemaLado) };
       camPos.copy(cinemaPonto.pos);
@@ -1493,17 +1500,18 @@ function posicionarCamera(e, f, px, pz, fracao, dt) {
     alvoOlhar = new THREE.Vector3(px + f.x * 1.5, 0.8, pz + f.z * 1.5);
     // teleobjetiva: fecha o zoom quando o carro está longe
     const dist = alvoPos.distanceTo(alvoOlhar);
-    fov = fovVertical(Math.max(26, Math.min(78, 2000 / (dist + 8))));
+    const fovAlvo = fovVertical(Math.max(26, Math.min(78, 2000 / (dist + 8))));
+    fov = camera.fov + (fovAlvo - camera.fov) * (1 - Math.exp(-dt / 0.35));
     rigida = true; olharRapido = true;
   } else {
-    alvoPos = new THREE.Vector3(px - f.x * (7.2 + fracao * 1.8), 2.9 + fracao * 0.35, pz - f.z * (7.2 + fracao * 1.8));
+    alvoPos = new THREE.Vector3(px - f.x * (7.4 + v * 1.4), 3.0 + v * 0.3, pz - f.z * (7.4 + v * 1.4));
     alvoOlhar = new THREE.Vector3(px + f.x * 9, 1.1, pz + f.z * 9);
-    fov = fovVertical(83 + fracao * 16 + (e.boost || 0) * 5);
+    fov = fovVertical(84 + v * 12);
   }
   if (modo !== 'cinema') cinemaPonto = null;
   if (rigida) camPos.copy(alvoPos); else camPos.lerp(alvoPos, 1 - Math.pow(0.001, dt));
   camAlvo.lerp(alvoOlhar, 1 - Math.pow(olharRapido ? 0.000001 : 0.0005, dt));
-  const forca = modo === 'cinema' ? 0.04 : (modo === 'capo' ? 0.16 : 0.28);
+  const forca = modo === 'cinema' ? 0.04 : (modo === 'capo' ? 0.12 : 0.2);
   tremor = e.tremor === false ? 0 : Math.max(0, (e.impacto || 0) * forca);
   camera.position.set(camPos.x + (Math.random() - .5) * tremor, camPos.y + (Math.random() - .5) * tremor, camPos.z + (Math.random() - .5) * tremor);
   camera.lookAt(camAlvo);
@@ -1590,6 +1598,7 @@ function destruir() {
   api.pronto = false;
   api.progresso = 0;
   cinemaPonto = null;
+  fracaoSuave = 0;
   chaoPlano = null;
   fantasma = null;
   coletas = []; popups = []; popupTex = null;

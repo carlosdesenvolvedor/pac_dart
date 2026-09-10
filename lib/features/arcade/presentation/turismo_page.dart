@@ -533,8 +533,8 @@ class _TurismoPageState extends State<TurismoPage>
           'Créditos 3D · Carros: Porsche 911 (930) Turbo 1975, Nissan Skyline R34 GT-R, Honda NSX 1990, '
           'Mazda Miata MX-5 NA e Toyota Corolla AE86 Trueno, por Lexyc16 (sketchfab.com/Lexyc16), '
           'licença CC BY 4.0 · Céus HDRI, texturas e postes: Poly Haven (CC0) · Som do motor: "Car Engine Loop" '
-          'por qubodup (OpenGameArt), CC BY 3.0 · Som da batida: qubodup (CC0) · Músicas: "Rock Music Pack" '
-          'por Ragnar Random (OpenGameArt, CC0) · Fachadas dos prédios: ambientCG (CC0) · Rochas, arbustos e '
+          'por qubodup (OpenGameArt), CC BY 3.0 · Som da batida: qubodup (CC0) · Músicas: Kevin MacLeod '
+          '(incompetech.com), licença CC BY 4.0 · Fachadas dos prédios: ambientCG (CC0) · Rochas, arbustos e '
           'árvores: Poly Haven (CC0) · Pneu cantando: audible-edge (OpenGameArt, CC BY 3.0) · '
           'Engenheira de pista: Gemini · Motor 3D: three.js (MIT).',
           style: Mixart.ui(size: 10.5, color: Mixart.textFaint).copyWith(height: 1.5),

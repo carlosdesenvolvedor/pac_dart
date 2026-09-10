@@ -679,6 +679,25 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
       No motor a coleta virou tolerância lateral (`alcanceLateralFicha` 2,3 m do centro da ficha)
       em vez da faixa arredondada — pega enquanto desliza entre faixas (teste novo).
 
+- **🏎️ DART TURISMO — rodada 12: câmera estável, placa mais alta, rock de verdade (set/2026)**
+  Feedback: "pode ficar um pouco pra cima pra não atrapalhar ver o carro", "tem muita mudança de
+  câmera, precisa estabilizar por bom tempo" e "a música precisa ser um rock com mp3, esse som de
+  video game é horrível".
+    - **Câmera**: zoom (FOV), distância e altura seguiam a velocidade INSTANTÂNEA — e no modo
+      digitação cada palavra dá um impulso, então a vista "respirava" a cada 2–3 s, mais o pulso
+      de zoom do turbo. Agora tudo segue `fracaoSuave` (filtro exponencial, τ = 1,8 s), sem pulso
+      do turbo; tremor da batida menor (.2); cinema corta só 45 m depois de o carro passar e
+      escolhe o ponto 95 m à frente (um corte a cada ~140 m em vez de 60), com zoom filtrado.
+      Medido: FOV variando 0,4°/frame no máximo enquanto se digita palavra atrás de palavra.
+    - **Placas** 1 m mais altas (3,0 m + 0,8 por unidade de escala): o carro e a ficha ficam
+      inteiros abaixo delas.
+    - **Música**: o "Rock Music Pack" (fakebit) saiu. Entraram 10 instrumentais de rock com
+      guitarra/baixo/bateria de **Kevin MacLeod** (incompetech.com, **CC BY 4.0** — crédito no
+      jogo e em `CREDITOS.txt`): Cool Rock, Hotrock, Big Rock, Delay Rock, Neolith, Exhilarate,
+      Riptide, Ready Aim Fire, Metalmania, Summon the Rawk (pistas 1–10). Catálogo em
+      `https://incompetech.com/music/royalty-free/pieces.json` (genre "19" = rock; mp3 em
+      `.../mp3-royaltyfree/<filename>`). Reencodadas sem a capa embutida (~3–5 MB cada).
+
 ---
 
 ## 🏗️ Arquitetura (arquivos-chave)
