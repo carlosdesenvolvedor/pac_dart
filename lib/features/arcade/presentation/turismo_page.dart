@@ -19,6 +19,7 @@ import 'widgets/cenario.dart';
 import 'widgets/minimapa.dart';
 import 'widgets/tutorial_turismo.dart';
 import 'widgets/vista_3d.dart';
+import 'widgets/vista_3d_controlador.dart';
 
 /// 🏎️ Dart Turismo — campeonato de digitação em 10 pistas pseudo-3D.
 /// Cada portal marca a faixa livre com uma PALAVRA: digite-a pra entrar na
@@ -73,6 +74,11 @@ class _TurismoPageState extends State<TurismoPage>
   /// 📖 Tutorial da 1ª corrida (por modo) e 🗺️ o traçado pro minimapa.
   bool _tutorial = false;
   List<Offset> _tracado = const [];
+
+  /// A cena 3D recebe o estado a cada tick por aqui; o HUD redesenha a cada
+  /// 2 frames (30 Hz) — metade do trabalho do Flutter.
+  final _vista = Vista3DControlador();
+  int _quadro = 0;
 
   /// A cena 3D está pronta pra largar? (sem 3D, sempre; com 3D, quando o
   /// JS terminou de carregar tráfego, texturas e shaders — ou após 60 s)
@@ -352,10 +358,12 @@ class _TurismoPageState extends State<TurismoPage>
       if (!_foco.hasFocus) _foco.requestFocus();
       e.pedais(dt, gas: _gas, freio: _freio);
     }
-    setState(() {
-      e.tick(dt);
-      _relogio += dt;
-    });
+    e.tick(dt);
+    _relogio += dt;
+    _vista.enviar();
+    _quadro++;
+    final aconteceu = e.colisoes > colisoesAntes || e.fichasPegas > fichasAntes || !e.correndo;
+    if (_quadro.isEven || aconteceu) setState(() {});
     if (e.portaisLimpos > limposAntes) Sons.toca(Som.turbo);
     if (e.colisoes > colisoesAntes) Sons.toca(Som.explosao);
     if (e.fichasPegas > fichasAntes) Sons.toca(Som.blip);
@@ -913,6 +921,7 @@ class _TurismoPageState extends State<TurismoPage>
                 tremor: _tremor,
                 fantasma: _fantasma,
                 onPronto: _cenaFicouPronta,
+                controlador: _vista,
               ),
             ),
             Positioned(left: 12, top: 12, right: 136, child: _barraProgresso(e)),

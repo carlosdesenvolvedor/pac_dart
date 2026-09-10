@@ -9,6 +9,7 @@ import '../../../../core/theme/mixart.dart';
 import '../../domain/turismo.dart';
 import 'pista_gt.dart';
 import 'cenario.dart';
+import 'vista_3d_controlador.dart';
 import 'velocimetro.dart';
 
 @JS('turismo3d')
@@ -57,6 +58,9 @@ class Vista3D extends StatefulWidget {
   /// 👻 A melhor volta da pista (carro translúcido), se houver.
   final VoltaFantasma? fantasma;
 
+  /// A página manda o estado por aqui a cada tick (sem depender do rebuild).
+  final Vista3DControlador? controlador;
+
   /// Chamado UMA vez quando a cena está pronta pra largada (tráfego,
   /// texturas e shaders carregados) — ou quando o 3D falhou e a vista em
   /// Canvas assumiu. A página segura a contagem 3-2-1 até lá.
@@ -75,6 +79,7 @@ class Vista3D extends StatefulWidget {
     this.tremor = true,
     this.fantasma,
     this.onPronto,
+    this.controlador,
   });
 
   static bool get disponivel => _turismo3dObj != null;
@@ -99,6 +104,7 @@ class _Vista3DState extends State<Vista3D> {
   @override
   void initState() {
     super.initState();
+    widget.controlador?.ligar(_enviarEstado);
     _ligarRelogioDeCarga();
     final obj = _turismo3dObj;
     if (obj == null) {
@@ -165,10 +171,20 @@ class _Vista3DState extends State<Vista3D> {
   @override
   void didUpdateWidget(covariant Vista3D old) {
     super.didUpdateWidget(old);
+    if (old.controlador != widget.controlador) {
+      old.controlador?.ligar(null);
+      widget.controlador?.ligar(_enviarEstado);
+    }
+    _enviarEstado();
+  }
+
+  /// O estado do motor (e as opções) vai pro JS — chamado pela página a
+  /// cada tick e em qualquer rebuild.
+  void _enviarEstado() {
     final js = _js;
-    if (js == null) return;
+    if (js == null || !mounted) return;
     // o elemento do platform view só entra no DOM quando o frame compõe:
-    // insiste até achar o canvas (a página redesenha a cada frame)
+    // insiste até achar o canvas
     if (!_montado) {
       _montar();
       return;
@@ -267,6 +283,7 @@ class _Vista3DState extends State<Vista3D> {
 
   @override
   void dispose() {
+    widget.controlador?.ligar(null);
     _relogioCarga?.cancel();
     _js?.destruir();
     super.dispose();

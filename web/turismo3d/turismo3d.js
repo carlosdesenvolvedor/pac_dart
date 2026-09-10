@@ -84,9 +84,69 @@ function sondarGpu() {
   }
 }
 let nivelQualidade = 'alta'; // alta · leve · minima
+// o que cada nível liga: cenário instanciado (arbustos com alpha = overdraw
+// caro em GPU fraca), luzes dinâmicas (faróis, luz de acompanhamento,
+// postes) e até onde o tráfego é desenhado
+const PERFIS = {
+  alta: { cenario: true, luzes: true, trafego: 320 },
+  leve: { cenario: true, luzes: true, trafego: 240 },
+  minima: { cenario: false, luzes: false, trafego: 150 },
+};
+let perfilAtual = PERFIS.alta;
+// benchmark de ~0,3 s num renderer descartável: 24 esferas de 12k
+// triângulos com textura e 3 luzes — se isso não roda a 50 fps, a cena de
+// verdade não vai rodar. Decide o nível ANTES de baixar céu 2k/texturas 1k.
+async function benchmarkGpu(antialias) {
+  let r = null;
+  try {
+    const c = document.createElement('canvas');
+    r = new THREE.WebGLRenderer({ canvas: c, antialias, powerPreference: 'high-performance' });
+    r.setPixelRatio(1);
+    r.setSize(960, 600, false);
+    const cena = new THREE.Scene();
+    const cam = new THREE.PerspectiveCamera(60, 1.6, 0.1, 100);
+    cam.position.set(0, 0, 13);
+    const geo = new THREE.SphereGeometry(1.25, 96, 64);
+    const tex = canvasTex(512, 512, (ctx, w, h) => {
+      for (let i = 0; i < 300; i++) { ctx.fillStyle = `hsl(${(i * 37) % 360},60%,50%)`; ctx.fillRect((i * 97) % w, (i * 53) % h, 48, 48); }
+    }).tex;
+    const mat = new THREE.MeshStandardMaterial({ map: tex, metalness: .4, roughness: .5 });
+    for (let i = 0; i < 24; i++) {
+      const m = new THREE.Mesh(geo, mat);
+      m.position.set((i % 6 - 2.5) * 3.1, (Math.floor(i / 6) - 1.5) * 3.1, 0);
+      cena.add(m);
+    }
+    cena.add(new THREE.HemisphereLight(0xffffff, 0x444444, 1));
+    for (let i = 0; i < 3; i++) { const l = new THREE.PointLight(0xffffff, 40, 50); l.position.set(i * 6 - 6, 4, 7); cena.add(l); }
+    r.render(cena, cam); // compila os shaders fora da medição
+    await new Promise((res) => requestAnimationFrame(res));
+    const ts = [];
+    let ultimo = performance.now();
+    for (let i = 0; i < 16; i++) {
+      await new Promise((res) => requestAnimationFrame(res));
+      r.render(cena, cam);
+      const t = performance.now();
+      ts.push(t - ultimo);
+      ultimo = t;
+    }
+    geo.dispose(); mat.dispose(); tex.dispose();
+    r.dispose();
+    try { r.forceContextLoss(); } catch (e) {}
+    return mediana(ts.slice(3));
+  } catch (e) {
+    console.warn('[turismo3d] benchmark', e);
+    try { if (r) r.dispose(); } catch (e2) {}
+    return 0;
+  }
+}
 function aplicarQualidade(nivel) {
   nivelQualidade = nivel;
+  perfilAtual = PERFIS[nivel] || PERFIS.alta;
   api.qualidadeEfetiva = nivel;
+  for (const m of cenarioMalhas) m.visible = perfilAtual.cenario;
+  if (luzCarro) luzCarro.visible = perfilAtual.luzes;
+  for (const l of faroisLuz) l.visible = perfilAtual.luzes;
+  if (!perfilAtual.luzes) for (const l of luzesPool) l.visible = false;
   if (!renderer) return;
   const dpr = window.devicePixelRatio || 1;
   renderer.setPixelRatio(nivel === 'alta' ? Math.min(dpr, 2) : (nivel === 'leve' ? Math.min(dpr, 1.25) : 1));
@@ -883,7 +943,7 @@ const CENARIO_MODELOS = {
 let cenarioMalhas = [], nCenario = 0;
 async function construirCenario() {
   const cen = cfg.tema.cenario;
-  if (!cen || !gltfLoader) return;
+  if (!cen || !gltfLoader || !perfilAtual.cenario) return;
   const total = centro.length * L;
   let s = 99;
   const rnd = () => { s = (s * 48271) % 2147483647; return s / 2147483647; };
@@ -986,7 +1046,7 @@ function construirLampadas() {
   }, undefined, (e) => console.warn('lampadas', e));
 }
 function atualizarLuzes(posicao) {
-  if (!luzesPool.length || !postesLuz.length) return;
+  if (!luzesPool.length || !postesLuz.length || !perfilAtual.luzes) return;
   // os 5 postes mais próximos à frente/atrás do carro ganham luz de verdade
   const perto = postesLuz.filter((p) => p.d > posicao - 40 && p.d < posicao + 160).slice(0, luzesPool.length);
   luzesPool.forEach((luz, i) => {
@@ -1023,10 +1083,18 @@ async function montar(canvas, config) {
   api.gpu = gpu.nome;
   api.aviso = gpu.software ? 'software' : null;
   const pref = config.qualidade || 'auto';
+  api.benchMs = null;
   if (pref === 'alta') nivelQualidade = 'alta';
   else if (pref === 'leve') nivelQualidade = 'leve';
-  else nivelQualidade = gpu.software ? 'minima' : ((gpu.fraca || !resolverQualidade('auto')) ? 'leve' : 'alta');
+  else if (gpu.software) nivelQualidade = 'minima';
+  else {
+    const ms = await benchmarkGpu(true);
+    api.benchMs = +ms.toFixed(1);
+    nivelQualidade = ms > 34 ? 'minima' : (ms > 19 || gpu.fraca || !resolverQualidade('auto')) ? 'leve' : 'alta';
+    console.info('[turismo3d] benchmark', api.benchMs, 'ms →', nivelQualidade);
+  }
   qualidadeAlta = nivelQualidade === 'alta';
+  perfilAtual = PERFIS[nivelQualidade];
   api.qualidadeEfetiva = nivelQualidade;
   api.frameMs = null;
   vigiaTempos = []; vigiaAte = 0; ultimoQuadroMs = 0;
@@ -1078,7 +1146,8 @@ async function montar(canvas, config) {
   construirPainel();
   prepararAudio();
   if (audioCtx && buffers.motor && !motorFonte) ligarMotor(); // corrida nova: motor volta a roncar
-  if (audioCtx) { if (cfg.musica) carregarMusica(cfg.musica); ligarVento(); }
+  prepararMusica(cfg.musica);
+  if (audioCtx) { if (audioCtx.state === 'running') { ligarVento(); tocarMusica(); } }
   console.info('[turismo3d] cena montada:', centro.length, 'pontos,', cfg.portais.length, 'portais');
 
   // tamanho: o Dart manda a medida do widget em `atualizar` (fonte
@@ -1165,6 +1234,7 @@ async function montar(canvas, config) {
   try { await construirObstaculos(); } catch (e) { console.warn('[turismo3d] tráfego', e); }
   api.progresso = 0.82;
   await esperarCarregamento(30000);
+  await Promise.race([carregarAmostras(), new Promise((r) => setTimeout(r, 8000))]);
   api.progresso = 0.9;
   await aquecer();
   api.progresso = 0.96;
@@ -1298,33 +1368,38 @@ function posicionarPaineis(e) {
 // Motor: um loop gravado com o tom (playbackRate) e o volume seguindo a
 // velocidade; batida: amostra curta. O AudioContext nasce no 1º gesto.
 let audioCtx = null, motorFonte = null, motorGanho = null, motorFiltro = null, buffers = {}, audioPedido = false;
-// 🎸 música da fase (loop) com ducking na batida; 🌬️ vento = ruído filtrado
-let musicaFonte = null, musicaGanho = null, musicaUrl = null, musicasCache = {}, duckAte = 0;
+// 🎸 música da fase: um <audio> em STREAMING com loop (o mp3 de 3–5 min
+// decodificado em buffer ocupava ~80 MB de RAM por faixa e engasgava a
+// máquina); ducking na batida e fade no pause. 🌬️ vento = ruído filtrado.
+let musicaEl = null, musicaUrl = null, musicaVol = 0, musicaQuerTocar = false, duckAte = 0;
 let ventoFonte = null, ventoGanho = null, ventoFiltro = null;
-function carregarMusica(url) {
-  if (!audioCtx || !url || musicaUrl === url) return;
+const VOLUME_MUSICA = 0.6, VOLUME_MUSICA_BATIDA = 0.22;
+function prepararMusica(url) {
+  if (!url) return;
+  if (musicaEl) { try { musicaEl.pause(); musicaEl.src = ''; } catch (e) {} }
   musicaUrl = url;
-  const tocar = (buf) => {
-    if (musicaUrl !== url || musicaFonte) return;
-    musicaFonte = audioCtx.createBufferSource();
-    musicaFonte.buffer = buf;
-    musicaFonte.loop = true;
-    musicaGanho = audioCtx.createGain();
-    musicaGanho.gain.value = 0;
-    musicaFonte.connect(musicaGanho); musicaGanho.connect(audioCtx.destination);
-    musicaFonte.start();
-  };
-  if (musicasCache[url]) { tocar(musicasCache[url]); return; }
-  fetch(url).then((r) => r.arrayBuffer()).then((b) => audioCtx.decodeAudioData(b))
-    .then((buf) => { musicasCache[url] = buf; tocar(buf); })
-    .catch((e) => console.warn('[turismo3d] música', e));
+  musicaEl = new Audio(url);
+  musicaEl.loop = true;
+  musicaEl.preload = 'auto';
+  musicaEl.volume = 0;
+  musicaVol = 0;
+  musicaQuerTocar = false;
+  try { musicaEl.load(); } catch (e) {}
 }
-function atualizarMusica(e) {
-  if (!musicaGanho || !audioCtx) return;
-  const t = audioCtx.currentTime;
+function tocarMusica() {
+  if (!musicaEl || musicaQuerTocar) return;
+  musicaQuerTocar = true;
+  const p = musicaEl.play();
+  if (p && p.catch) p.catch(() => { musicaQuerTocar = false; });
+}
+function atualizarMusica(e, dt) {
+  if (!musicaEl) return;
   const ligada = e.som !== false && e.musica !== false && !e.pausado && !e.acabou;
-  const alvo = !ligada ? 0 : (t < duckAte ? 0.09 : 0.28);
-  musicaGanho.gain.setTargetAtTime(alvo, t, ligada ? .5 : .15);
+  const alvo = !ligada ? 0 : (performance.now() < duckAte ? VOLUME_MUSICA_BATIDA : VOLUME_MUSICA);
+  musicaVol += (alvo - musicaVol) * Math.min(1, (dt || 0.016) * (alvo > musicaVol ? 1.6 : 4));
+  const v = Math.max(0, Math.min(1, musicaVol));
+  if (Math.abs(musicaEl.volume - v) > 0.004) musicaEl.volume = v;
+  if (ligada && !musicaQuerTocar && audioCtx && audioCtx.state === 'running') tocarMusica();
 }
 function ligarVento() {
   if (!audioCtx || ventoFonte) return;
@@ -1346,22 +1421,32 @@ function atualizarVento(fracao, e) {
   if (!ventoGanho || !audioCtx) return;
   const t = audioCtx.currentTime;
   const ligado = e.som !== false && !e.pausado && !e.acabou;
-  ventoGanho.gain.setTargetAtTime(ligado ? fracao * fracao * 0.16 : 0, t, .2);
+  ventoGanho.gain.setTargetAtTime(ligado ? fracao * fracao * 0.08 : 0, t, .2);
   ventoFiltro.frequency.setTargetAtTime(300 + fracao * 1100, t, .3);
+}
+// As amostras curtas (motor, batida, pneu) são decodificadas na tela de
+// carga — o AudioContext pode nascer suspenso e acorda no 1º gesto. Antes,
+// tudo era baixado e decodificado no meio da corrida (engasgo garantido).
+let amostrasPromessa = null;
+function carregarAmostras() {
+  if (amostrasPromessa) return amostrasPromessa;
+  try { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { return Promise.resolve(); }
+  const lista = Object.entries({ motor: 'assets3d/som/motor.m4a', batida: 'assets3d/som/batida.m4a', derrapagem: 'assets3d/som/derrapagem.m4a' });
+  amostrasPromessa = Promise.all(lista.map(([nome, url]) =>
+    fetch(url).then((r) => r.arrayBuffer()).then((b) => audioCtx.decodeAudioData(b))
+      .then((buf) => { buffers[nome] = buf; })
+      .catch((e) => console.warn('[turismo3d] som', nome, e))));
+  return amostrasPromessa;
 }
 function prepararAudio() {
   if (audioPedido) return;
   audioPedido = true;
   const iniciar = () => {
-    if (!audioCtx) {
-      try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { return; }
-      for (const [nome, url] of Object.entries({ motor: 'assets3d/som/motor.m4a', batida: 'assets3d/som/batida.m4a', derrapagem: 'assets3d/som/derrapagem.m4a' })) {
-        fetch(url).then((r) => r.arrayBuffer()).then((b) => audioCtx.decodeAudioData(b)).then((buf) => { buffers[nome] = buf; if (nome === 'motor') ligarMotor(); }).catch((e) => console.warn('[turismo3d] som', nome, e));
-      }
-      if (cfg && cfg.musica) carregarMusica(cfg.musica);
-      ligarVento();
-    }
-    if (audioCtx.state === 'suspended') audioCtx.resume();
+    if (!audioCtx) carregarAmostras();
+    if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+    if (audioCtx && buffers.motor && !motorFonte) ligarMotor();
+    ligarVento();
+    tocarMusica();
   };
   for (const ev of ['keydown', 'pointerdown', 'touchstart']) window.addEventListener(ev, iniciar, { passive: true });
 }
@@ -1385,11 +1470,12 @@ function atualizarMotorAudio(fracao, e) {
   // marcha lenta em 0,55×, giro máximo em 1,9×
   motorFonte.playbackRate.setTargetAtTime(0.55 + fracao * 1.35, t, .12);
   motorFiltro.frequency.setTargetAtTime(700 + fracao * 3800, t, .15);
-  motorGanho.gain.setTargetAtTime(ligado ? 0.10 + fracao * 0.22 : 0, t, .1);
+  // motor bem mais baixo que a música (era o contrário)
+  motorGanho.gain.setTargetAtTime(ligado ? 0.045 + fracao * 0.10 : 0, t, .1);
 }
 function tocarBatida() {
   if (!audioCtx || !buffers.batida || (estado && estado.som === false)) return;
-  duckAte = audioCtx.currentTime + 1.8;
+  duckAte = performance.now() + 1800;
   const src = audioCtx.createBufferSource();
   src.buffer = buffers.batida;
   const g = audioCtx.createGain();
@@ -1416,9 +1502,8 @@ function pararAudio() {
   try { if (motorGanho && audioCtx) motorGanho.gain.setTargetAtTime(0, audioCtx.currentTime, .05); } catch (e) {}
   try { if (motorFonte) { const f = motorFonte; setTimeout(() => { try { f.stop(); } catch (e) {} }, 300); } } catch (e) {}
   motorFonte = null; motorGanho = null; motorFiltro = null;
-  try { if (musicaGanho && audioCtx) musicaGanho.gain.setTargetAtTime(0, audioCtx.currentTime, .1); } catch (e) {}
-  try { if (musicaFonte) { const f = musicaFonte; setTimeout(() => { try { f.stop(); } catch (e) {} }, 500); } } catch (e) {}
-  musicaFonte = null; musicaGanho = null; musicaUrl = null;
+  try { if (musicaEl) { musicaEl.pause(); musicaEl.src = ''; } } catch (e) {}
+  musicaEl = null; musicaUrl = null; musicaVol = 0; musicaQuerTocar = false;
   try { if (ventoGanho && audioCtx) ventoGanho.gain.setTargetAtTime(0, audioCtx.currentTime, .05); } catch (e) {}
   try { if (ventoFonte) { const f = ventoFonte; setTimeout(() => { try { f.stop(); } catch (e) {} }, 300); } } catch (e) {}
   ventoFonte = null; ventoGanho = null; ventoFiltro = null;
@@ -1571,13 +1656,13 @@ function quadro() {
   atualizarMotorAudio(fracao, e);
   if (ultimaFaixaSom !== null && e.faixa !== undefined && e.faixa !== ultimaFaixaSom) tocarDerrapagem(fracao);
   if (e.faixa !== undefined) ultimaFaixaSom = e.faixa;
-  atualizarMusica(e);
+  atualizarMusica(e, dt);
   atualizarVento(fracao, e);
   // só os carros parados dos próximos portais entram na cena (desempenho)
   for (const o of obstaculos) {
     if (o.userData.arremessado) continue;
     const dz = o.userData.z - e.posicao;
-    o.visible = dz > -30 && dz < 320;
+    o.visible = dz > -30 && dz < perfilAtual.trafego;
   }
   atualizarPlacas();
   renderer.render(scene, camera);
@@ -1614,7 +1699,8 @@ function debug() {
     carro: carro ? { pos: carro.position.toArray().map((v) => +v.toFixed(2)), caixa: carro.userData.caixa, visiveis: (() => { let n = 0; carro.traverse((o) => { if (o.isMesh && o.visible) n++; }); return n; })() } : null,
     camera: camera ? camera.position.toArray().map((v) => +v.toFixed(2)) : null,
     modoCamera: estado ? estado.camera : null,
-    musica: musicaUrl, predios: nPredios, cenario: nCenario, lotesCenario: cenarioMalhas.length,
+    musica: musicaUrl, musicaEl: musicaEl ? { tocando: !musicaEl.paused, volume: +musicaEl.volume.toFixed(2), t: +musicaEl.currentTime.toFixed(1), pronta: musicaEl.readyState } : null,
+    benchMs: api.benchMs, perfil: perfilAtual, predios: nPredios, cenario: nCenario, lotesCenario: cenarioMalhas.length,
     qualidade: nivelQualidade, gpu: api.gpu, frameMs: api.frameMs, aviso: api.aviso, tremor: estado ? estado.tremor : null,
     fantasma: fantasma ? { visivel: fantasma.visible, pos: fantasma.position.toArray().map((v) => +v.toFixed(1)) } : null,
     coletas: coletas.length, popups: popups.filter((sp) => sp.visible).length,
@@ -1632,4 +1718,6 @@ function debug() {
   };
 }
 Object.assign(api, { montar, atualizar, destruir, debug, CARROS: Object.keys(CARROS) });
+// gancho de teste/diagnóstico: turismo3d.forcarQualidade('minima')
+api.forcarQualidade = (nivel) => { if (PERFIS[nivel]) aplicarQualidade(nivel); return nivelQualidade; };
 window.turismo3d = api;

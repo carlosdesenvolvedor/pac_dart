@@ -698,6 +698,26 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
       `https://incompetech.com/music/royalty-free/pieces.json` (genre "19" = rock; mp3 em
       `.../mp3-royaltyfree/<filename>`). Reencodadas sem a capa embutida (~3–5 MB cada).
 
+- **🏎️ DART TURISMO — rodada 13: máquina fraca de verdade ("dá umas travada ainda", nível mínima) + volume (set/2026)**
+  O console do usuário mostrou `qualidade: minima` logo na carga — a medição de frames viu
+  > 40 ms ANTES de a cena rodar (só o Flutter + overlay), ou seja, máquina bem fraca.
+    - **Benchmark real da GPU** (`benchmarkGpu`, ~0,3 s, renderer descartável com 24 esferas
+      texturizadas e 3 luzes) decide o nível no `auto` ANTES de baixar céu 2k/texturas 1k:
+      > 34 ms → mínima, > 19 ms → leve. `api.benchMs` no `debug()`.
+    - **Perfis por nível** (`PERFIS`): mínima = sem cenário instanciado (arbustos com alpha =
+      overdraw caro), sem luz de acompanhamento/faróis/postes, tráfego desenhado só a 150 m;
+      leve = tráfego a 240 m. `aplicarQualidade` aplica em tempo real (o vigia também rebaixa).
+      Gancho `turismo3d.forcarQualidade('minima')` pra testar.
+    - **Música em streaming**: `<audio loop>` (`prepararMusica/tocarMusica/atualizarMusica`) no
+      lugar de `decodeAudioData` — cada mp3 de 3–5 min decodificado virava ~80 MB de RAM (e o
+      cache guardava um por pista visitada). Volume 0,6 (ducking 0,22 por 1,8 s na batida), fade
+      no pause. Amostras curtas (motor/batida/pneu) decodificadas na tela de carga
+      (`carregarAmostras`, AudioContext nasce suspenso e acorda no 1º gesto).
+    - **Balanço de áudio**: motor 0,045 + 0,10·v (era 0,10 + 0,22·v), vento pela metade.
+    - **HUD a 30 Hz**: `Vista3DControlador` — a página manda o estado do motor pro JS a cada
+      tick (`_vista.enviar()`) e só chama `setState` a cada 2 frames (ou em batida/ficha/fim).
+      Metade do trabalho do CanvasKit, que pesa em GPU fraca.
+
 ---
 
 ## 🏗️ Arquitetura (arquivos-chave)
