@@ -604,6 +604,25 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
     - `web/assets3d` foi de 89 → 135 MB (tudo carregado por corrida, sob demanda). Créditos
       novos na tela do campeonato e em `CREDITOS.txt` de cada pasta.
 
+- **🏎️ DART TURISMO — rodada 8: carro-fantasma, estatísticas e troféus (set/2026)**
+    - **👻 Fantasma**: o motor grava `gravacao` (posição, x a cada 0,25 s — `VoltaFantasma.passo`)
+      e no fim a melhor volta da pista vai pra pref `turismo_fantasma_N` (`serializar()`:
+      `tempo|p,x,p,x…`, ~14 KB por pista). Na corrida seguinte a vista recebe `fantasma` e o JS
+      clona o carro do jogador **antes** das lanternas/faróis (clonar luz = luz a mais),
+      translúcido (opacity .34, emissivo azulado, sem sombra) e o move pelo relógio da corrida
+      (`estado.tempo`). Chip "👻 FANTASMA −1,2s/+0,8s" no HUD = `tempo − fantasma.tempoEm(posicao)`
+      (busca binária nas posições, que só crescem). Bater o fantasma mostra chip no fim e conta
+      pro troféu.
+    - **📊 Estatísticas** (`EstatisticasGt`, JSON em `turismo_stats`): corridas, chegadas, voltas
+      limpas, palavras, fichas, batidas, melhor combo, fantasmas batidos, portais limpos, km,
+      segundos — `somar(engine)` no `_fim` (também em tempo esgotado).
+    - **🏆 12 troféus** (`trofeusGt`: condição sobre stats + campeonato): primeira bandeirada,
+      ouro, volta limpa, combo x3, caça-fantasma, colecionador (100 fichas), mil palavras,
+      maratonista (50 km), garagem cheia, meio campeonato, campeão, coleção dourada. Seção
+      "TROFÉUS · n/12" no campeonato com os chips de stats; troféus novos aparecem no overlay
+      de fim com fanfarra. Testes: gravação/fantasma (ida e volta pelo texto, tempoEm) e stats +
+      troféus em `turismo_test.dart`; o teste de fim de corrida confere `turismo_stats`.
+
 ---
 
 ## 🏗️ Arquitetura (arquivos-chave)
@@ -731,9 +750,10 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
   Push só quando o usuário pedir.
 - **Fila do Dart Turismo (pedidos do usuário, set/2026)**: ✅ pistas 4×, ✅ rock por fase,
   ✅ cidade, ✅ engenheira IA, ✅ vento, ✅ qualidade alta/leve, ✅ tremor opcional, ✅ tutorial,
-  ✅ minimapa, ✅ fachadas fotográficas, ✅ cenário real por tema, ✅ pneu cantando. Faltam:
-  carro-fantasma da melhor volta; estatísticas/troféus; árvores frondosas realistas (as do Poly
-  Haven têm .bin de 100–480 MB — inviável na web).
+  ✅ minimapa, ✅ fachadas fotográficas, ✅ cenário real por tema, ✅ pneu cantando,
+  ✅ carro-fantasma, ✅ estatísticas/troféus. Ideias seguintes: árvores frondosas realistas (as
+  do Poly Haven têm .bin de 100–480 MB — inviável na web; alternativa = billboards CC0);
+  chuva/clima; replay; ranking de tempos por pista entre amigos (Firestore).
 - Adicionar os **topics** no GitHub (flutter, dart, bloc, typing-game, education, pacman) — precisa do agente do Chrome no site.
 - (opcional) Sincronizar o **tema por usuário** (hoje é por dispositivo, no shared_preferences).
 - (opcional) Sons de arcade (waka-waka), mais joguinhos (o hub em `arcade_page.dart` é uma lista — é só acrescentar o card + página), troféus/temporadas no ranking (hoje é all-time), avatar/apelido editável.
@@ -741,7 +761,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
-## 🧪 Testes (187, todos passando)
+## 🧪 Testes (189, todos passando)
 
 `test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines, baralho progressivo por fase sem repetir, combo do TiroEngine) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, Esc pausando a Corrida (CPU congela frame a frame — no flutter_test um AnimationController gasta 2 frames por ciclo) e retomando, Caça-Bug esmagando a linha certa, largada 3-2-1 antes de qualquer interação, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). E **previa_viva** (regressão da "tela de criando junto": app Flutter do Mão na Massa TEM a PreviewAoVivo lado a lado/empilhada e ela sobrevive à digitação; projeto Dart console NÃO tem — é por design, não bug). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).

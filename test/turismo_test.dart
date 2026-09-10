@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -400,6 +401,59 @@ void main() {
       final e = TurismoEngine(pista: pistasGt[0], rnd: Random(3));
       final t = tracadoDaPista([for (final s in e.segmentos) s.curva]);
       expect(t.length, e.segmentos.length + 1);
+    });
+  });
+
+  group('VoltaFantasma e estatísticas', () {
+    test('o motor grava a volta a cada 0,25 s e o fantasma responde posição/tempo', () {
+      final e = TurismoEngine(pista: pistasGt[0], rnd: Random(3));
+      while (e.correndo) {
+        final p = e.portalAtual;
+        if (p != null && !p.livre) {
+          for (final ch in p.palavras.first.split('')) {
+            e.teclar(ch);
+          }
+        }
+        e.velocidade = e.velMax;
+        e.tick(.05);
+      }
+      expect(e.terminou, isTrue);
+      final v = VoltaFantasma(e.tempoFinal!, e.gravacao);
+      expect(v.n, greaterThan(e.tempoFinal! / VoltaFantasma.passo - 2));
+      expect(v.posicaoEm(0), 0);
+      expect(v.posicaoEm(1e9), closeTo(pistasGt[0].distancia, 3)); // o último tick passa da linha
+      final meio = v.posicaoEm(e.tempoFinal! / 2);
+      expect(v.tempoEm(meio), closeTo(e.tempoFinal! / 2, VoltaFantasma.passo));
+      // ida e volta pelo texto salvo
+      final de = VoltaFantasma.desserializar(v.serializar())!;
+      expect(de.tempo, closeTo(v.tempo, .01));
+      expect(de.n, v.n);
+      expect(de.xEm(3), closeTo(v.xEm(3), .1));
+      expect(VoltaFantasma.desserializar('lixo'), isNull);
+      expect(VoltaFantasma.desserializar(null), isNull);
+    });
+
+    test('estatísticas somam corridas e os troféus abrem na hora certa', () {
+      final e = TurismoEngine(pista: pistasGt[0], rnd: Random(3));
+      e.terminou = true;
+      e.palavras = 12;
+      e.fichasPegas = 30;
+      e.melhorCombo = 11;
+      e.posicao = 4000;
+      var s = EstatisticasGt.vazio.somar(e);
+      expect(s.corridas, 1);
+      expect(s.chegadas, 1);
+      expect(s.voltasLimpas, 1);
+      expect(s.km, closeTo(4, 1e-9));
+      expect(s.melhorCombo, 11);
+      s = EstatisticasGt.fromJson(jsonDecode(jsonEncode(s.toJson())) as Map<String, dynamic>).somar(e, bateuFantasma: true);
+      expect(s.corridas, 2);
+      expect(s.fantasmasBatidos, 1);
+      const camp = EstadoCampeonato(medalhas: {1: 3});
+      final ganhos = trofeusGt.where((t) => t.ganhou(s, camp)).map((t) => t.id).toSet();
+      expect(ganhos, containsAll(['bandeirada', 'ouro', 'limpa', 'combo', 'fantasma']));
+      expect(ganhos, isNot(contains('maratona')));
+      expect(ganhos, isNot(contains('garagem')));
     });
   });
 

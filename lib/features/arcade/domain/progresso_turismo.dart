@@ -1,7 +1,113 @@
+import 'dart:convert';
+
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'turismo.dart';
 
 /// Situação do campeonato Dart Turismo (por dispositivo): até que pista o
 /// jogador chegou e a melhor medalha/tempo de cada uma.
+/// 📊 Números acumulados de todas as corridas (persistidos em JSON).
+class EstatisticasGt {
+  final int corridas;
+  final int chegadas;
+  final int voltasLimpas;
+  final int palavras;
+  final int fichas;
+  final int batidas;
+  final int melhorCombo;
+  final int fantasmasBatidos;
+  final int portaisLimpos;
+  final double km;
+  final double segundos;
+  const EstatisticasGt({
+    this.corridas = 0,
+    this.chegadas = 0,
+    this.voltasLimpas = 0,
+    this.palavras = 0,
+    this.fichas = 0,
+    this.batidas = 0,
+    this.melhorCombo = 0,
+    this.fantasmasBatidos = 0,
+    this.portaisLimpos = 0,
+    this.km = 0,
+    this.segundos = 0,
+  });
+
+  static const vazio = EstatisticasGt();
+
+  /// Soma uma corrida que acabou de terminar.
+  EstatisticasGt somar(TurismoEngine e, {bool bateuFantasma = false}) => EstatisticasGt(
+        corridas: corridas + 1,
+        chegadas: chegadas + (e.terminou ? 1 : 0),
+        voltasLimpas: voltasLimpas + (e.terminou && e.colisoes == 0 ? 1 : 0),
+        palavras: palavras + e.palavras,
+        fichas: fichas + e.fichasPegas,
+        batidas: batidas + e.colisoes,
+        melhorCombo: e.melhorCombo > melhorCombo ? e.melhorCombo : melhorCombo,
+        fantasmasBatidos: fantasmasBatidos + (bateuFantasma ? 1 : 0),
+        portaisLimpos: portaisLimpos + e.portaisLimpos,
+        km: km + e.posicao / 1000,
+        segundos: segundos + e.tempo,
+      );
+
+  Map<String, num> toJson() => {
+        'corridas': corridas,
+        'chegadas': chegadas,
+        'voltasLimpas': voltasLimpas,
+        'palavras': palavras,
+        'fichas': fichas,
+        'batidas': batidas,
+        'melhorCombo': melhorCombo,
+        'fantasmasBatidos': fantasmasBatidos,
+        'portaisLimpos': portaisLimpos,
+        'km': km,
+        'segundos': segundos,
+      };
+
+  factory EstatisticasGt.fromJson(Map<String, dynamic> j) {
+    int i(String k) => (j[k] as num?)?.toInt() ?? 0;
+    double d(String k) => (j[k] as num?)?.toDouble() ?? 0;
+    return EstatisticasGt(
+      corridas: i('corridas'),
+      chegadas: i('chegadas'),
+      voltasLimpas: i('voltasLimpas'),
+      palavras: i('palavras'),
+      fichas: i('fichas'),
+      batidas: i('batidas'),
+      melhorCombo: i('melhorCombo'),
+      fantasmasBatidos: i('fantasmasBatidos'),
+      portaisLimpos: i('portaisLimpos'),
+      km: d('km'),
+      segundos: d('segundos'),
+    );
+  }
+}
+
+/// 🏆 Um troféu: condição sobre as estatísticas + o campeonato.
+class TrofeuGt {
+  final String id;
+  final String emoji;
+  final String nome;
+  final String como;
+  final bool Function(EstatisticasGt s, EstadoCampeonato c) ganhou;
+  const TrofeuGt(this.id, this.emoji, this.nome, this.como, this.ganhou);
+}
+
+final trofeusGt = <TrofeuGt>[
+  TrofeuGt('bandeirada', '🏁', 'Primeira bandeirada', 'complete uma pista', (s, c) => s.chegadas >= 1),
+  TrofeuGt('ouro', '🥇', 'Ouro na veia', 'ganhe um ouro', (s, c) => c.ouros >= 1),
+  TrofeuGt('limpa', '🧼', 'Volta limpa', 'complete uma pista sem batida', (s, c) => s.voltasLimpas >= 1),
+  TrofeuGt('combo', '🔥', 'Combo x3', 'chegue a um combo de 10', (s, c) => s.melhorCombo >= 10),
+  TrofeuGt('fantasma', '👻', 'Caça-fantasma', 'bata o seu próprio fantasma', (s, c) => s.fantasmasBatidos >= 1),
+  TrofeuGt('fichas', '🪙', 'Colecionador', 'pegue 100 fichas de código', (s, c) => s.fichas >= 100),
+  TrofeuGt('palavras', '⌨️', 'Mil palavras', 'acerte 1000 palavras', (s, c) => s.palavras >= 1000),
+  TrofeuGt('maratona', '🛣️', 'Maratonista', 'percorra 50 km', (s, c) => s.km >= 50),
+  TrofeuGt('garagem', '🚗', 'Garagem cheia', 'compre todos os carros', (s, c) => carrosGt.every((k) => c.temCarro(k.id))),
+  TrofeuGt('metade', '🥈', 'Meio campeonato', 'medalha em 5 pistas', (s, c) => c.totalMedalhas >= 5),
+  TrofeuGt('campeao', '🏆', 'Campeão Dart Turismo', 'medalha nas 10 pistas', (s, c) => c.totalMedalhas >= 10),
+  TrofeuGt('dourado', '👑', 'Coleção dourada', 'ouro nas 10 pistas', (s, c) => c.ouros >= 10),
+];
+
 class EstadoCampeonato {
   /// Maior pista liberada (1 = só a primeira).
   final int pistaMax;
@@ -60,6 +166,44 @@ abstract final class ProgressoTurismo {
   static const _chaveCamera = 'turismo_camera';
   static const _chaveMusica = 'turismo_musica';
   static const _chaveQualidade = 'turismo_qualidade';
+  static const _chaveStats = 'turismo_stats';
+  static String _chaveFantasma(int pista) => 'turismo_fantasma_$pista';
+
+  /// 👻 A melhor volta gravada da pista (null = ainda não há fantasma).
+  static Future<VoltaFantasma?> fantasma(int pista) async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      return VoltaFantasma.desserializar(p.getString(_chaveFantasma(pista)));
+    } catch (_) {
+      return null;
+    }
+  }
+
+  static Future<void> salvarFantasma(int pista, VoltaFantasma volta) async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      await p.setString(_chaveFantasma(pista), volta.serializar());
+    } catch (_) {}
+  }
+
+  /// 📊 Estatísticas acumuladas.
+  static Future<EstatisticasGt> estatisticas() async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      final s = p.getString(_chaveStats);
+      if (s == null) return EstatisticasGt.vazio;
+      return EstatisticasGt.fromJson(jsonDecode(s) as Map<String, dynamic>);
+    } catch (_) {
+      return EstatisticasGt.vazio;
+    }
+  }
+
+  static Future<void> salvarEstatisticas(EstatisticasGt s) async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      await p.setString(_chaveStats, jsonEncode(s.toJson()));
+    } catch (_) {}
+  }
   static const _chaveTremor = 'turismo_tremor';
 
   /// Qualidade da vista 3D: auto · alta · leve.

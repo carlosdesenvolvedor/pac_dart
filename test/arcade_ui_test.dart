@@ -499,6 +499,9 @@ void main() {
     expect(find.textContaining('RÁDIO DA EQUIPE'), findsOneWidget);
     await tester.pump(); // o Future do debrief resolve
     expect(find.text('Rádio: bela volta, piloto!'), findsOneWidget);
+    // 📊 a corrida entrou nas estatísticas (mesmo sem chegar)
+    final prefs = await SharedPreferences.getInstance();
+    expect(prefs.getString('turismo_stats'), contains('"corridas":1'));
     expect(tester.takeException(), isNull);
     await tester.pumpWidget(Container());
   });

@@ -50,6 +50,9 @@ class Vista3D extends StatefulWidget {
   /// Qualidade (auto · alta · leve) e tremor de câmera na batida.
   final String qualidade;
   final bool tremor;
+
+  /// 👻 A melhor volta da pista (carro translúcido), se houver.
+  final VoltaFantasma? fantasma;
   const Vista3D({
     super.key,
     required this.engine,
@@ -62,6 +65,7 @@ class Vista3D extends StatefulWidget {
     this.musica = true,
     this.qualidade = 'auto',
     this.tremor = true,
+    this.fantasma,
   });
 
   static bool get disponivel => _turismo3dObj != null;
@@ -117,6 +121,8 @@ class _Vista3DState extends State<Vista3D> {
       'tema': e.pista.tema,
       'pista': e.pista.numero,
       'qualidade': widget.qualidade,
+      'fantasma': widget.fantasma?.amostras,
+      'fantasmaPasso': VoltaFantasma.passo,
       'musica': e.pista.musica.isEmpty ? null : 'assets3d/som/musica/${e.pista.musica}',
       'segmentos': [for (final s in e.segmentos) s.curva],
       'comprimentoSegmento': TurismoEngine.comprimentoSegmento,
@@ -200,6 +206,7 @@ class _Vista3DState extends State<Vista3D> {
       'altura': _altura,
       'palavras': palavras,
       'posicao': e.posicao,
+      'tempo': e.tempo,
       'velocidade': e.velocidade,
       'velMax': e.velMax,
       'x': e.xAtual,

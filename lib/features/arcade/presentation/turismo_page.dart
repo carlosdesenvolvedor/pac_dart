@@ -73,6 +73,12 @@ class _TurismoPageState extends State<TurismoPage>
   bool _tutorial = false;
   List<Offset> _tracado = const [];
 
+  /// 👻 O fantasma da pista atual, 📊 as estatísticas e 🏆 os troféus novos.
+  VoltaFantasma? _fantasma;
+  bool _bateuFantasma = false;
+  EstatisticasGt _estatisticas = EstatisticasGt.vazio;
+  List<TrofeuGt> _trofeusNovos = const [];
+
   _Tela _tela = _Tela.campeonato;
   PistaGt? _pista;
   TurismoEngine? _engine;
@@ -115,6 +121,7 @@ class _TurismoPageState extends State<TurismoPage>
     final musica = await ProgressoTurismo.musicaLigada();
     final qualidade = await ProgressoTurismo.qualidade();
     final tremor = await ProgressoTurismo.tremorLigado();
+    final estatisticas = await ProgressoTurismo.estatisticas();
     if (mounted) {
       setState(() {
         _campeonato = c;
@@ -124,6 +131,7 @@ class _TurismoPageState extends State<TurismoPage>
         _musica = musica;
         _qualidade = qualidade;
         _tremor = tremor;
+        _estatisticas = estatisticas;
       });
     }
   }
@@ -263,6 +271,7 @@ class _TurismoPageState extends State<TurismoPage>
   Future<void> _correr(PistaGt p) async {
     Sons.motorParar();
     final tutorial = !await ProgressoTurismo.tutorialVisto(setas: _modoSetas);
+    final fantasma = await ProgressoTurismo.fantasma(p.numero);
     if (!mounted) return;
     setState(() {
       _pista = p;
@@ -274,6 +283,9 @@ class _TurismoPageState extends State<TurismoPage>
       _tracado = tracadoDaPista([for (final s in _engine!.segmentos) s.curva],
           comprimento: TurismoEngine.comprimentoSegmento);
       _tutorial = tutorial;
+      _fantasma = fantasma;
+      _bateuFantasma = false;
+      _trofeusNovos = const [];
       _corridaId++;
       _gas = false;
       _freio = false;
@@ -378,9 +390,19 @@ class _TurismoPageState extends State<TurismoPage>
         tempo: e.tempoFinal!,
         totalPistas: pistasGt.length,
       );
+      // 👻 a melhor volta vira (ou continua sendo) o fantasma da pista
+      final antes = _fantasma;
+      final bateu = antes == null || e.tempoFinal! < antes.tempo;
+      if (bateu) await ProgressoTurismo.salvarFantasma(pista.numero, VoltaFantasma(e.tempoFinal!, e.gravacao));
+      _bateuFantasma = antes != null && bateu;
     } else {
       Sons.toca(Som.defesa);
     }
+    // 📊 estatísticas e 🏆 troféus que abriram com esta corrida
+    final statsAntes = _estatisticas;
+    final statsDepois = statsAntes.somar(e, bateuFantasma: _bateuFantasma);
+    await ProgressoTurismo.salvarEstatisticas(statsDepois);
+    final campAntes = _campeonato;
     if (_moedasCorrida > 0) await ProgressoTurismo.ganharMoedas(_moedasCorrida);
     if (!_pontuado) {
       _pontuado = true;
@@ -388,6 +410,15 @@ class _TurismoPageState extends State<TurismoPage>
       if (mounted && recorde == true) setState(() => _novoRecorde = true);
     }
     await _carregarCampeonato();
+    if (!mounted) return;
+    setState(() {
+      _estatisticas = statsDepois;
+      _trofeusNovos = [
+        for (final t in trofeusGt)
+          if (!t.ganhou(statsAntes, campAntes) && t.ganhou(statsDepois, _campeonato)) t,
+      ];
+    });
+    if (_trofeusNovos.isNotEmpty) Sons.toca(Som.fanfarra);
   }
 
   /// 🎧 A engenheira (Gemini, ou a de bolso) comenta a corrida que acabou.
@@ -470,6 +501,8 @@ class _TurismoPageState extends State<TurismoPage>
         _seletorModo(),
         const SizedBox(height: 18),
         _garagem(),
+        const SizedBox(height: 18),
+        _trofeus(),
         const SizedBox(height: 18),
         LayoutBuilder(builder: (context, box) {
           final colunas = box.maxWidth >= 640 ? 2 : 1;
@@ -633,6 +666,58 @@ class _TurismoPageState extends State<TurismoPage>
     );
   }
 
+  /// 🏆 Troféus e 📊 estatísticas acumuladas.
+  Widget _trofeus() {
+    final s = _estatisticas;
+    final ganhos = trofeusGt.where((t) => t.ganhou(s, _campeonato)).length;
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text('TROFÉUS · $ganhos/${trofeusGt.length}',
+          style: Mixart.ui(size: 10, weight: FontWeight.w700, color: Mixart.textMuted)
+              .copyWith(letterSpacing: 2)),
+      const SizedBox(height: 10),
+      Wrap(spacing: 8, runSpacing: 8, children: [
+        ChipPlacar('CORRIDAS', '${s.corridas}'),
+        ChipPlacar('KM', s.km.toStringAsFixed(1)),
+        ChipPlacar('PALAVRAS', '${s.palavras}'),
+        ChipPlacar('FICHAS', '${s.fichas}'),
+        ChipPlacar('VOLTAS LIMPAS', '${s.voltasLimpas}'),
+        ChipPlacar('MELHOR COMBO', '${s.melhorCombo}'),
+      ]),
+      const SizedBox(height: 10),
+      Wrap(spacing: 8, runSpacing: 8, children: [
+        for (final t in trofeusGt) _cartaoTrofeu(t, t.ganhou(s, _campeonato)),
+      ]),
+    ]);
+  }
+
+  Widget _cartaoTrofeu(TrofeuGt t, bool ganhou) {
+    return Semantics(
+      label: 'troféu ${t.nome} ${ganhou ? 'conquistado' : 'bloqueado'}',
+      child: Opacity(
+        opacity: ganhou ? 1 : .5,
+        child: Container(
+          width: 168,
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+          decoration: BoxDecoration(
+            color: ganhou ? Mixart.brandSub : Mixart.surface,
+            border: Border.all(color: ganhou ? Mixart.brand : Mixart.border),
+            borderRadius: BorderRadius.circular(Mixart.radiusMd),
+          ),
+          child: Row(children: [
+            Text(ganhou ? t.emoji : '🔒', style: const TextStyle(fontSize: 20)),
+            const SizedBox(width: 8),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(t.nome, style: Mixart.display(size: 12), maxLines: 1, overflow: TextOverflow.ellipsis),
+                Text(t.como, style: Mixart.ui(size: 10, color: Mixart.textMuted), maxLines: 2),
+              ]),
+            ),
+          ]),
+        ),
+      ),
+    );
+  }
+
   /// A garagem: escolha do carro (modelo 3D real na corrida).
   Widget _garagem() {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -782,7 +867,8 @@ class _TurismoPageState extends State<TurismoPage>
             ChipPlacar('PALAVRAS', '${e.palavras}'),
             ChipPlacar('COMBO', e.multiplicador > 1 ? 'x${e.multiplicador}' : '${e.combo}/5',
                 cor: e.multiplicador > 1 ? Mixart.brand : null),
-            ChipPlacar('ERROS', '${e.erros}'),
+            if (e.porSetas) ChipPlacar('PORTAIS', '${e.portaisLimpos}') else ChipPlacar('ERROS', '${e.erros}'),
+            if (_fantasma != null) _chipFantasma(e),
           ],
           acao: Row(mainAxisSize: MainAxisSize.min, children: [
             _botaoCamera(),
@@ -808,6 +894,7 @@ class _TurismoPageState extends State<TurismoPage>
                 musica: _musica,
                 qualidade: _qualidade,
                 tremor: _tremor,
+                fantasma: _fantasma,
               ),
             ),
             Positioned(left: 12, top: 12, right: 136, child: _barraProgresso(e)),
@@ -841,6 +928,18 @@ class _TurismoPageState extends State<TurismoPage>
       else
         CampoTeclas(onChar: _tecla),
     ]);
+  }
+
+  /// 👻 Quantos segundos à frente (verde) ou atrás (vermelho) do fantasma.
+  Widget _chipFantasma(TurismoEngine e) {
+    final f = _fantasma!;
+    final delta = e.tempo - f.tempoEm(e.posicao);
+    final naFrente = delta <= 0;
+    return ChipPlacar(
+      '👻 FANTASMA',
+      '${naFrente ? '−' : '+'}${delta.abs().toStringAsFixed(1)}s',
+      cor: naFrente ? const Color(0xFF57C765) : Mixart.danger,
+    );
   }
 
   Widget _barraProgresso(TurismoEngine e) {
@@ -1103,6 +1202,14 @@ class _TurismoPageState extends State<TurismoPage>
                       ChipPlacar('BATIDAS', '${e.colisoes}', cor: e.colisoes > 0 ? Mixart.danger : null),
                       ChipPlacar('MELHOR COMBO', '${e.melhorCombo}'),
                     ]),
+                    if (_bateuFantasma || _trofeusNovos.isNotEmpty) ...[
+                      const SizedBox(height: 12),
+                      Wrap(spacing: 8, runSpacing: 8, alignment: WrapAlignment.center, children: [
+                        if (_bateuFantasma)
+                          ChipPlacar('👻 FANTASMA', 'batido!', cor: const Color(0xFF57C765)),
+                        for (final t in _trofeusNovos) ChipPlacar('🏆 TROFÉU NOVO', '${t.emoji} ${t.nome}', cor: Mixart.brand),
+                      ]),
+                    ],
                     const SizedBox(height: 14),
                     _radioDaEquipe(),
                     const SizedBox(height: 18),

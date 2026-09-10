@@ -179,6 +179,66 @@ enum TeclaGt { avancou, completou, errou, nada }
 /// modo de aprender) ou pelas SETAS (acelera, freia e troca de faixa).
 enum ModoControle { digitacao, setas }
 
+/// 👻 Uma volta gravada: posição (m) e x lateral (m) do carro a cada [passo]
+/// segundos. A melhor de cada pista vira o carro-fantasma da próxima.
+class VoltaFantasma {
+  static const passo = 0.25;
+  final double tempo;
+
+  /// posicao0, x0, posicao1, x1, … (as posições nunca diminuem).
+  final List<double> amostras;
+  const VoltaFantasma(this.tempo, this.amostras);
+
+  int get n => amostras.length ~/ 2;
+
+  double _lerp(int par, double t) {
+    if (n == 0) return 0;
+    final i = t / passo;
+    final a = i.floor().clamp(0, n - 1);
+    final b = (a + 1).clamp(0, n - 1);
+    final f = (i - a).clamp(0.0, 1.0);
+    return amostras[a * 2 + par] + (amostras[b * 2 + par] - amostras[a * 2 + par]) * f;
+  }
+
+  /// Onde o fantasma estava aos [t] segundos.
+  double posicaoEm(double t) => _lerp(0, t);
+  double xEm(double t) => _lerp(1, t);
+
+  /// Em que segundo o fantasma passou por [posicao] (busca binária).
+  double tempoEm(double posicao) {
+    if (n == 0) return 0;
+    var lo = 0, hi = n - 1;
+    while (lo < hi) {
+      final m = (lo + hi) ~/ 2;
+      if (amostras[m * 2] < posicao) {
+        lo = m + 1;
+      } else {
+        hi = m;
+      }
+    }
+    if (lo == 0) return 0;
+    final p0 = amostras[(lo - 1) * 2], p1 = amostras[lo * 2];
+    final f = p1 > p0 ? ((posicao - p0) / (p1 - p0)).clamp(0.0, 1.0) : 0.0;
+    return (lo - 1 + f) * passo;
+  }
+
+  String serializar() =>
+      '${tempo.toStringAsFixed(2)}|${amostras.map((v) => v.toStringAsFixed(1)).join(',')}';
+
+  static VoltaFantasma? desserializar(String? s) {
+    if (s == null || !s.contains('|')) return null;
+    try {
+      final partes = s.split('|');
+      final tempo = double.parse(partes[0]);
+      final amostras = partes[1].split(',').map(double.parse).toList();
+      if (amostras.length < 4 || amostras.length.isOdd) return null;
+      return VoltaFantasma(tempo, amostras);
+    } catch (_) {
+      return null;
+    }
+  }
+}
+
 /// O motor da corrida. Tudo em metros, segundos e m/s.
 ///
 /// - Cada tecla certa dá um impulso; o arrasto (quadrático) freia sempre —
@@ -277,6 +337,11 @@ class TurismoEngine {
 
   /// Portais atravessados numa faixa livre (modo setas).
   int portaisLimpos = 0;
+
+  /// 👻 A volta sendo gravada (posição, x a cada 0,25 s) — vira fantasma se
+  /// for a melhor da pista.
+  final gravacao = <double>[];
+  double _proximaAmostra = 0;
 
   /// Aceleração e freio do modo setas (frações da máxima por segundo).
   static const aceleracaoSetas = .55;
@@ -453,6 +518,11 @@ class TurismoEngine {
   /// Avança a corrida em [dt] segundos.
   void tick(double dt) {
     if (!correndo) return;
+    if (tempo >= _proximaAmostra) {
+      gravacao.add(posicao);
+      gravacao.add(xAtual);
+      _proximaAmostra += VoltaFantasma.passo;
+    }
     tempo += dt;
     // arrasto quadrático: parou de digitar, vai parando
     final r = velocidade / velMax;
@@ -521,6 +591,8 @@ class TurismoEngine {
       terminou = true;
       tempoFinal = tempo;
       velocidade = velocidade.clamp(0, velMax);
+      gravacao.add(posicao);
+      gravacao.add(xAtual);
     } else if (tempo >= pista.tempoLimite) {
       tempoEsgotado = true;
     }

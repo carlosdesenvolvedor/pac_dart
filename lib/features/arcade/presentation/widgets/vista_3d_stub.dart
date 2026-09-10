@@ -15,6 +15,7 @@ class Vista3D extends StatelessWidget {
   final bool musica;
   final String qualidade;
   final bool tremor;
+  final VoltaFantasma? fantasma;
   const Vista3D({
     super.key,
     required this.engine,
@@ -27,6 +28,7 @@ class Vista3D extends StatelessWidget {
     this.musica = true,
     this.qualidade = 'auto',
     this.tremor = true,
+    this.fantasma,
   });
 
   static bool get disponivel => false;

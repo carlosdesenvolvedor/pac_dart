@@ -40,7 +40,7 @@ const CURVA_RAD = 0.028; // curva 6 → raio ≈ 48 m; curva 1,5 → ≈ 190 m (
 let renderer, scene, camera, sol, relogio, luzCarro = null, chaoPlano = null;
 let cfg = null, estado = null, animId = 0, resizeObs = null;
 let centro = [], L = 8;
-let carro = null, faroisLuz = [];
+let carro = null, faroisLuz = [], fantasma = null;
 let portais = []; // { grupo, placas:[{tex, ctx, canvas, faixa, estiloAtual}], flags }
 let obstaculos = [];
 let modelosCache = {};
@@ -927,6 +927,29 @@ async function montar(canvas, config) {
   try {
     carro = (await carregarCarro(config.carro || 'porsche_930')).clone();
     console.info('[turismo3d] carro ok');
+    // 👻 o fantasma da melhor volta: o mesmo carro, translúcido, sem sombra
+    // (clonado ANTES das lanternas e dos faróis — luz clonada é luz a mais)
+    if (cfg.fantasma && cfg.fantasma.length >= 4) {
+      fantasma = carro.clone();
+      fantasma.traverse((o) => {
+        if (o.isMesh) {
+          o.material = Array.isArray(o.material) ? o.material.map((m) => m.clone()) : o.material.clone();
+          for (const m of (Array.isArray(o.material) ? o.material : [o.material])) {
+            // holograma azulado: some a textura, brilha por conta própria
+            m.transparent = true; m.opacity = 0.55; m.depthWrite = false;
+            m.map = null; m.metalness = 0; m.roughness = 1;
+            m.color.set(0x8fb6ff);
+            if (m.emissive) m.emissive.set(0x3b7cff);
+            m.emissiveMap = null;
+            m.emissiveIntensity = 0.9;
+            m.needsUpdate = true;
+          }
+          o.castShadow = false; o.receiveShadow = false;
+        }
+      });
+      fantasma.visible = false;
+      scene.add(fantasma);
+    }
     // lanternas traseiras e faróis dianteiros emissivos: o carro é visto de
     // longe mesmo no escuro
     const caixa = carro.userData.caixa || [1.8, 1.3, 4.3];
@@ -1281,6 +1304,17 @@ function quadro() {
     carro.position.set(px, 0, pz);
     carro.rotation.set(-fracao * 0.012 - (e.boost || 0) * 0.02, -q.h - guinada, guinada * 0.6);
   }
+  // 👻 o fantasma segue a volta gravada pelo relógio da corrida
+  if (fantasma) {
+    const g = cfg.fantasma, passo = cfg.fantasmaPasso || 0.25, n = g.length / 2;
+    const t = Math.max(0, e.tempo || 0), i = t / passo;
+    const a = Math.min(n - 1, Math.floor(i)), b = Math.min(n - 1, a + 1), fr = Math.min(1, i - a);
+    const pg = g[a * 2] + (g[b * 2] - g[a * 2]) * fr, xg = g[a * 2 + 1] + (g[b * 2 + 1] - g[a * 2 + 1]) * fr;
+    const qg = pose(pg), rg = direita(qg.h);
+    fantasma.position.set(qg.x + rg.x * xg, 0.02, qg.z + rg.z * xg);
+    fantasma.rotation.set(0, -qg.h, 0);
+    fantasma.visible = t > 0.05 && !e.acabou && Math.abs(pg - (e.posicao || 0)) < 260;
+  }
   // as palavras flutuam sobre a faixa pra onde levam, à frente do carro
   posicionarPaineis(e);
   posicionarCamera(e, f, px, pz, fracao, dt);
@@ -1334,6 +1368,7 @@ function destruir() {
   api.progresso = 0;
   cinemaPonto = null;
   chaoPlano = null;
+  fantasma = null;
   predios = []; nPredios = 0;
   cenarioMalhas = []; nCenario = 0;
   ultimaFaixaSom = null;
@@ -1348,6 +1383,7 @@ function debug() {
     modoCamera: estado ? estado.camera : null,
     musica: musicaUrl, predios: nPredios, cenario: nCenario, lotesCenario: cenarioMalhas.length,
     qualidade: qualidadeAlta ? 'alta' : 'leve', tremor: estado ? estado.tremor : null,
+    fantasma: fantasma ? { visivel: fantasma.visible, pos: fantasma.position.toArray().map((v) => +v.toFixed(1)) } : null,
     estado: { posicao: e.posicao, velocidade: e.velocidade, x: e.x },
     obstaculos: obstaculos.length,
     audio: { ctx: !!audioCtx, motor: !!buffers.motor, batida: !!buffers.batida, fonte: !!motorFonte, estado: audioCtx && audioCtx.state },
