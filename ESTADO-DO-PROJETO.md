@@ -623,6 +623,12 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
       de fim com fanfarra. Testes: gravação/fantasma (ida e volta pelo texto, tempoEm) e stats +
       troféus em `turismo_test.dart`; o teste de fim de corrida confere `turismo_stats`.
 
+- **🏎️ DART TURISMO — rodada 9: cabeçalho dos jogos no celular (set/2026)**
+  Prova em 400×800 (Playwright): o `CabecalhoJogo` (Row: voltar · título · chips · ação) espremia o
+  título a 1 caractere de largura e empurrava 🎥/⏸ pra fora da tela; a vista 3D sobrava com 256 px.
+  Agora, abaixo de 640 px, vira Column (voltar · título · ação na 1ª linha; chips numa linha
+  própria) e, largo, os chips ficam num `Flexible` alinhado à direita. Vale pros 6 jogos.
+
 ---
 
 ## 🏗️ Arquitetura (arquivos-chave)

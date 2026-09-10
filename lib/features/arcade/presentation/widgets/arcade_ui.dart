@@ -109,28 +109,47 @@ class CabecalhoJogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      IconButton(
-        tooltip: 'Voltar',
-        onPressed: () => Navigator.of(context).pop(),
-        icon: Icon(Icons.arrow_back, color: Mixart.text, size: 20),
-        style: IconButton.styleFrom(
-            backgroundColor: Mixart.surfaceHi, side: BorderSide(color: Mixart.border)),
-      ),
-      const SizedBox(width: 14),
-      Expanded(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(rotulo,
-              style: Mixart.ui(size: 10, weight: FontWeight.w700, color: Mixart.brand)
-                  .copyWith(letterSpacing: 2)),
-          const SizedBox(height: 2),
-          Text(titulo, style: Mixart.display(size: 21), overflow: TextOverflow.ellipsis),
-        ]),
-      ),
-      const SizedBox(width: 10),
-      Wrap(spacing: 8, runSpacing: 8, children: chips),
-      if (acao != null) ...[const SizedBox(width: 10), acao!],
+    final voltar = IconButton(
+      tooltip: 'Voltar',
+      onPressed: () => Navigator.of(context).pop(),
+      icon: Icon(Icons.arrow_back, color: Mixart.text, size: 20),
+      style: IconButton.styleFrom(
+          backgroundColor: Mixart.surfaceHi, side: BorderSide(color: Mixart.border)),
+    );
+    final titulos = Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(rotulo,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Mixart.ui(size: 10, weight: FontWeight.w700, color: Mixart.brand).copyWith(letterSpacing: 2)),
+      const SizedBox(height: 2),
+      Text(titulo, style: Mixart.display(size: 21), maxLines: 1, overflow: TextOverflow.ellipsis),
     ]);
+    return LayoutBuilder(builder: (context, box) {
+      // celular: os chips descem pra uma linha própria (senão o título
+      // fica com um caractere de largura e o botão de pausa some da tela)
+      if (box.maxWidth < 640) {
+        return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(children: [
+            voltar,
+            const SizedBox(width: 10),
+            Expanded(child: titulos),
+            if (acao != null) ...[const SizedBox(width: 8), acao!],
+          ]),
+          if (chips.isNotEmpty) ...[
+            const SizedBox(height: 8),
+            Wrap(spacing: 6, runSpacing: 6, children: chips),
+          ],
+        ]);
+      }
+      return Row(children: [
+        voltar,
+        const SizedBox(width: 14),
+        Expanded(child: titulos),
+        const SizedBox(width: 10),
+        Flexible(child: Wrap(spacing: 8, runSpacing: 8, alignment: WrapAlignment.end, children: chips)),
+        if (acao != null) ...[const SizedBox(width: 10), acao!],
+      ]);
+    });
   }
 }
 
