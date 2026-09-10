@@ -237,9 +237,11 @@ class _Vista3DState extends State<Vista3D> {
       // só a janela de portais em volta do carro viaja por frame (as pistas
       // têm até 60+ portais; mandar todos era lixo pro GC a 60 fps)
       'portais': [
-        for (final p in _janelaDePortais(e))
+        for (final (k, p) in e.janelaDePortais())
           {
-            'indice': p.indice,
+            // k = posição na lista (o array `portais` do JS); `indice` do
+            // portal é o segmento da pista — já confundiu os dois uma vez
+            'k': k,
             'digitado': p.digitado,
             'batido': p.batido,
             'travada': identical(p, digitando) ? (e.palavraTravada ?? -1) : -1,
@@ -261,14 +263,6 @@ class _Vista3DState extends State<Vista3D> {
     if (_avisou) return;
     _avisou = true;
     widget.onPronto?.call();
-  }
-
-  /// Do portal anterior ao 5º à frente: é o que o JS precisa animar.
-  Iterable<Portal> _janelaDePortais(TurismoEngine e) {
-    final atual = e.portalAtual?.indice ?? e.portais.length;
-    final de = (atual - 2).clamp(0, e.portais.length);
-    final ate = (atual + 6).clamp(0, e.portais.length);
-    return e.portais.getRange(de, ate);
   }
 
   @override

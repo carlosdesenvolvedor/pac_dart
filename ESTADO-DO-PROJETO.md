@@ -654,6 +654,31 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
       1024×320 via `setTransform`), minimapa repinta a cada 4 m, velocímetro por 0,4% e a
       bolinha do progresso em pixel inteiro; textura 4096 px do AE86 reduzida a 1024.
 
+- **🏎️ DART TURISMO — rodada 11: placas legíveis, FOV por proporção, ficha com animação (set/2026)**
+  Print do usuário numa tela larga e baixa (854×443 de vista): "tá muito pequeno de ler a
+  letra na pista" e "a moeda não está pegando, precisa de uma animação".
+    - **Placas de palavra com tamanho constante na tela**: em `posicionarPaineis` a escala vem
+      da distância da câmera e do FOV (`visW = 2·d·tan(fov/2)·aspect`; a placa ocupa 36% da
+      largura da vista, 31% cada quando há duas) — antes eram 4,4 m fixos a 12–14 m da câmera,
+      ~14 px de letra em tela pequena. Duas placas vizinhas grandes se afastam cada uma pro seu
+      lado (`sep = max(3,7·Δfaixa, largura+0,4)`); sobem 0,55 m por unidade de escala.
+    - **FOV pela horizontal** (`fovVertical(h)`): os FOVs eram verticais fixos (62–76°), o que
+      em janela 1,93:1 virava >100° horizontais — carro e placas minúsculos. Agora perseguição
+      83°+16·v, capô 88°, helicóptero 69°, cinema 26–78° horizontais → vertical pela proporção
+      (limitado a 40–82°).
+    - 🐛 **Bug sério achado de tabela (desde a rodada 5)**: a janela de portais mandada por
+      frame usava `Portal.indice` — que é o índice do SEGMENTO (`z / 8`: 93, 104, 114…), não a
+      posição na lista — tanto pra recortar a janela (`getRange(91, 99)` com o carro no portal
+      0) quanto pro JS achar `portais[indice]` (undefined → `continue`). Efeito: tráfego parado
+      no pórtico, placas sem ✓/batida e fichas que não sumiam ("a moeda não está pegando").
+      Agora o motor tem `ordinalDoPortalAtual` + `janelaDePortais()` (lista de `(k, portal)`,
+      testada) e o JS sincroniza por `k`. ⚠️ Lição: `indice` de portal ≠ posição no array.
+    - **Ficha pega com festa**: `coletarFicha()` — a moeda voa 2,4 m girando, cresce e some
+      (0,55 s), 52 faíscas, sprite "+3 🪙" subindo (pool de 6, tamanho constante na tela) e o
+      chip MOEDAS do HUD pulsa (`_chipPulsante`, TweenAnimationBuilder com key pelo valor).
+      No motor a coleta virou tolerância lateral (`alcanceLateralFicha` 2,3 m do centro da ficha)
+      em vez da faixa arredondada — pega enquanto desliza entre faixas (teste novo).
+
 ---
 
 ## 🏗️ Arquitetura (arquivos-chave)
@@ -792,7 +817,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
-## 🧪 Testes (189, todos passando)
+## 🧪 Testes (191, todos passando)
 
 `test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines, baralho progressivo por fase sem repetir, combo do TiroEngine) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, Esc pausando a Corrida (CPU congela frame a frame — no flutter_test um AnimationController gasta 2 frames por ciclo) e retomando, Caça-Bug esmagando a linha certa, largada 3-2-1 antes de qualquer interação, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). E **previa_viva** (regressão da "tela de criando junto": app Flutter do Mão na Massa TEM a PreviewAoVivo lado a lado/empilhada e ela sobrevive à digitação; projeto Dart console NÃO tem — é por design, não bug). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).

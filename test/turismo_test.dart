@@ -404,6 +404,49 @@ void main() {
     });
   });
 
+  group('Janela de portais (vista 3D)', () {
+    test('usa a posição na lista, não o índice do segmento; acompanha o carro', () {
+      final e = TurismoEngine(pista: pistasGt[0], rnd: Random(4));
+      expect(e.portais.first.indice, greaterThan(5)); // indice = segmento, nunca 0
+      final j0 = e.janelaDePortais();
+      expect(j0.first.$1, 0);
+      expect(j0.length, 6);
+      expect(identical(j0.first.$2, e.portais.first), isTrue);
+      for (var i = 0; i < 3; i++) {
+        e.portais[i].passado = true;
+      }
+      expect(e.ordinalDoPortalAtual, 3);
+      final j3 = e.janelaDePortais();
+      expect(j3.first.$1, 1);
+      expect(j3.last.$1, 8);
+      for (final p in e.portais) {
+        p.passado = true;
+      }
+      expect(e.janelaDePortais().first.$1, e.portais.length - 2);
+    });
+  });
+
+  group('Fichas — alcance lateral', () {
+    test('pega a 2 m do centro (deslizando) e não pega na faixa vizinha', () {
+      final e = TurismoEngine(pista: pistasGt[0], rnd: Random(4));
+      final p = e.portalAtual!;
+      final f = p.fichas.first;
+      // a 2 m da ficha, ainda dentro da largura do carro
+      e.xAtual = (f.faixa - 1) * TurismoEngine.larguraFaixa + 2.0;
+      e.faixa = f.faixa;
+      e.posicao = f.z - 0.5;
+      e.tick(.016);
+      expect(f.pega, isTrue);
+      // outra ficha: uma faixa inteira ao lado, não pega
+      final g = p.fichas[1];
+      e.xAtual = (g.faixa - 1) * TurismoEngine.larguraFaixa + TurismoEngine.larguraFaixa;
+      e.faixa = (g.faixa + 1).clamp(0, 2);
+      e.posicao = g.z - 0.5;
+      e.tick(.016);
+      expect(g.pega, isFalse);
+    });
+  });
+
   group('VoltaFantasma e estatísticas', () {
     test('o motor grava a volta a cada 0,25 s e o fantasma responde posição/tempo', () {
       final e = TurismoEngine(pista: pistasGt[0], rnd: Random(3));

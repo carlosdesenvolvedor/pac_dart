@@ -274,6 +274,7 @@ class TurismoEngine {
   /// Alcance da batida (m) e da coleta de ficha (m).
   static const alcanceBatida = 4.2;
   static const alcanceFicha = 3.0;
+  static const alcanceLateralFicha = 2.3;
   static const moedasPorFicha = 3;
 
   /// Metros depois de um pórtico em que a troca de faixa do PRÓXIMO portal
@@ -390,6 +391,26 @@ class TurismoEngine {
 
   Segmento segmentoEm(double z) =>
       segmentos[(z / comprimentoSegmento).floor().clamp(0, segmentos.length - 1)];
+
+  /// Posição (na lista) do próximo portal não cruzado; `portais.length` se
+  /// já passou por todos. ⚠️ Não confundir com `Portal.indice`, que é o
+  /// índice do SEGMENTO da pista onde o pórtico está.
+  int get ordinalDoPortalAtual {
+    for (var i = 0; i < portais.length; i++) {
+      if (!portais[i].passado) return i;
+    }
+    return portais.length;
+  }
+
+  /// Os portais em volta do carro (do 2º anterior ao 5º à frente) com a
+  /// posição de cada um na lista — é o que a vista 3D precisa animar por
+  /// frame; mandar os 48–64 portais inteiros virava lixo pro GC.
+  List<(int, Portal)> janelaDePortais({int antes = 2, int depois = 6}) {
+    final atual = ordinalDoPortalAtual;
+    final de = (atual - antes).clamp(0, portais.length);
+    final ate = (atual + depois).clamp(0, portais.length);
+    return [for (var i = de; i < ate; i++) (i, portais[i])];
+  }
 
   /// O próximo portal ainda não cruzado.
   Portal? get portalAtual {
@@ -560,9 +581,11 @@ class TurismoEngine {
           impacto = 1;
         }
       }
-      // fichas: passou por cima, na faixa delas
+      // fichas: passou por cima — a 2,3 m do centro dela já pega (o carro tem
+      // 1,8 m de largura; enquanto desliza entre faixas também conta)
       for (final f in p.fichas) {
-        if (f.pega || f.faixa != visual || (f.z - posicao).abs() > alcanceFicha) continue;
+        if (f.pega || (f.z - posicao).abs() > alcanceFicha) continue;
+        if ((xAtual - (f.faixa - 1) * larguraFaixa).abs() > alcanceLateralFicha) continue;
         f.pega = true;
         fichasPegas++;
         moedas += moedasPorFicha;

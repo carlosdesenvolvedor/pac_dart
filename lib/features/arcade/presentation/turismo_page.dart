@@ -880,7 +880,7 @@ class _TurismoPageState extends State<TurismoPage>
           titulo: '🏎️ ${pista.nome}',
           chips: [
             ChipPlacar('TEMPO', _seg(e.tempoRestante), cor: urgente ? Mixart.danger : null),
-            ChipPlacar('MOEDAS', '🪙 ${e.moedas}', cor: Mixart.brand),
+            _chipPulsante(e.moedas, ChipPlacar('MOEDAS', '🪙 ${e.moedas}', cor: Mixart.brand)),
             ChipPlacar('PALAVRAS', '${e.palavras}'),
             ChipPlacar('COMBO', e.multiplicador > 1 ? 'x${e.multiplicador}' : '${e.combo}/5',
                 cor: e.multiplicador > 1 ? Mixart.brand : null),
@@ -946,6 +946,18 @@ class _TurismoPageState extends State<TurismoPage>
       else
         CampoTeclas(onChar: _tecla),
     ]);
+  }
+
+  /// Dá um pulo quando o valor muda (a moeda recém-pega "chega" no placar).
+  Widget _chipPulsante(int valor, Widget chip) {
+    return TweenAnimationBuilder<double>(
+      key: ValueKey('pulso-$valor'),
+      tween: Tween(begin: valor == 0 ? 1.0 : 1.45, end: 1.0),
+      duration: const Duration(milliseconds: 420),
+      curve: Curves.easeOutBack,
+      builder: (_, t, child) => Transform.scale(scale: t, child: child),
+      child: chip,
+    );
   }
 
   /// 👻 Quantos segundos à frente (verde) ou atrás (vermelho) do fantasma.

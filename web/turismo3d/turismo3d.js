@@ -423,6 +423,65 @@ function animarFichas(t, posicao) {
     }
   }
 }
+// 🪙 pegou a ficha: ela voa pra cima girando, cresce e some num brilho,
+// e um "+3 🪙" sobe do lugar (pool de 6 sprites)
+let coletas = [], popups = [], popupTex = null;
+function coletarFicha(fx) {
+  fx.userData.pega = true;
+  fx.userData.baseY = fx.position.y;
+  fx.userData.t0 = relogioAnim;
+  coletas.push(fx);
+  soltarFaiscas(fx.position.clone(), frente(0), 0xffd54f, 40);
+  soltarFaiscas(fx.position.clone(), frente(0), 0xffffff, 12);
+  if (!popupTex) {
+    popupTex = canvasTex(256, 128, (ctx, w, h) => {
+      ctx.clearRect(0, 0, w, h);
+      ctx.font = '900 84px "Inter", "Roboto", sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.lineWidth = 10; ctx.strokeStyle = 'rgba(0,0,0,0.75)';
+      ctx.strokeText('+3 🪙', w / 2, h / 2);
+      ctx.fillStyle = '#ffd54f';
+      ctx.fillText('+3 🪙', w / 2, h / 2);
+    }).tex;
+  }
+  let sp = popups.find((x) => !x.visible);
+  if (!sp && popups.length < 6) {
+    sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: popupTex, transparent: true, depthTest: false }));
+    sp.renderOrder = 998;
+    scene.add(sp);
+    popups.push(sp);
+  }
+  if (sp) {
+    sp.visible = true;
+    sp.position.copy(fx.position);
+    sp.position.y += 0.6;
+    sp.userData.t0 = relogioAnim;
+    sp.material.opacity = 1;
+  }
+}
+function animarColetas(t) {
+  for (let i = coletas.length - 1; i >= 0; i--) {
+    const m = coletas[i];
+    const p = (t - m.userData.t0) / 0.55;
+    if (p >= 1) { m.visible = false; coletas.splice(i, 1); continue; }
+    m.visible = true;
+    m.position.y = m.userData.baseY + 2.4 * p;
+    m.rotation.y += 0.45;
+    const esc = 1 + 1.1 * Math.sin(p * Math.PI) * (1 - p * 0.5);
+    m.scale.setScalar(Math.max(0.01, esc * (1 - p * p)));
+  }
+  for (const sp of popups) {
+    if (!sp.visible) continue;
+    const p = (t - sp.userData.t0) / 0.95;
+    if (p >= 1) { sp.visible = false; continue; }
+    sp.position.y += 0.05;
+    sp.material.opacity = p < 0.6 ? 1 : 1 - (p - 0.6) / 0.4;
+    // tamanho constante na tela: escala com a distância da câmera
+    const dist = camera ? camera.position.distanceTo(sp.position) : 10;
+    const k = dist * 0.065 * (1 + 0.35 * Math.min(1, p * 3));
+    sp.scale.set(2 * k, 1 * k, 1);
+  }
+}
 
 function construirPortais() {
   const posteGeo = new THREE.CylinderGeometry(0.14, 0.16, 5.8, 12);
@@ -558,7 +617,8 @@ function atualizarPlacas() {
   for (let j = 0; j < estado.portais.length; j++) {
     const flags = estado.portais[j];
     if (!flags) continue;
-    const k = flags.indice != null ? flags.indice : j;
+    // `k` = posição no array (o Dart manda só uma janela de portais)
+    const k = flags.k != null ? flags.k : j;
     const port = portais[k];
     if (!port) continue;
     // carros de tráfego: seguem a posição do motor; batido → arremesso
@@ -584,11 +644,7 @@ function atualizarPlacas() {
     if (flags.fichas && port.fichas) {
       for (let i = 0; i < flags.fichas.length; i++) {
         const fx = port.fichas[i];
-        if (fx && flags.fichas[i] && !fx.userData.pega) {
-          fx.userData.pega = true;
-          fx.visible = false;
-          soltarFaiscas(fx.position.clone(), frente(0), 0xffd54f, 24);
-        }
+        if (fx && flags.fichas[i] && !fx.userData.pega) coletarFicha(fx);
       }
     }
     for (const placa of port.placas) {
@@ -1200,14 +1256,39 @@ function posicionarPaineis(e) {
   const altura = modo === 'capo' ? 1.7 : (modo === 'alta' ? 2.6 : 2.05);
   const q = pose((e.posicao || 0) + aFrente);
   const r = direita(q.h);
+  // tamanho CONSTANTE na tela: a placa ocupa ~1/3 da largura da vista, seja
+  // qual for a câmera, o FOV ou a proporção da janela (em tela larga e
+  // baixa ela ficava minúscula — "muito pequeno de ler")
+  const ativos = lista.filter((pal) => pal && pal.texto).length;
+  const fracao = ativos > 1 ? 0.31 : 0.36;
+  const tanMeio = Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2);
+  const ancora = new THREE.Vector3(q.x, altura, q.z);
+  const dist = Math.max(3, camera.position.distanceTo(ancora));
+  const visW = 2 * dist * tanMeio * (camera.aspect || 1.5);
+  const esc = THREE.MathUtils.clamp((visW * fracao) / 4.4, 0.9, 7);
+  const larg = 4.4 * esc;
+  // duas placas vizinhas grandes demais pra 3,7 m: afasta cada uma pro seu lado
+  const faixas = lista.map((pal) => (pal && pal.texto) ? (pal.faixa == null ? 1 : pal.faixa) : null);
+  let centroLat = 0, sep = 0;
+  if (ativos > 1) {
+    const fa = faixas.filter((f) => f !== null);
+    centroLat = ((fa[0] - 1) + (fa[1] - 1)) * LARGURA_FAIXA / 2;
+    sep = Math.max(Math.abs(fa[0] - fa[1]) * LARGURA_FAIXA, larg + 0.4);
+  }
   for (let k = 0; k < paineis.length; k++) {
     const painel = paineis[k];
     const pal = lista[k];
     if (!pal || !pal.texto) { painel.mesh.visible = false; continue; }
     const faixa = pal.faixa == null ? 1 : pal.faixa;
-    const lat = (faixa - 1) * LARGURA_FAIXA;
+    let lat = (faixa - 1) * LARGURA_FAIXA;
+    if (ativos > 1) {
+      const outra = faixas.find((f, j) => f !== null && j !== k);
+      lat = centroLat + (faixa <= outra ? -1 : 1) * sep / 2;
+    }
     painel.mesh.visible = true;
-    painel.mesh.position.set(q.x + r.x * lat, altura, q.z + r.z * lat);
+    painel.mesh.scale.setScalar(esc);
+    // sobe junto com o tamanho pra base não entrar no asfalto
+    painel.mesh.position.set(q.x + r.x * lat, altura + (esc - 1) * 0.55, q.z + r.z * lat);
     painel.mesh.quaternion.copy(camera.quaternion);
     pintarPainel(painel, pal);
   }
@@ -1377,18 +1458,26 @@ function loop() {
 //         pra um ponto mais à frente, alternando os lados
 // alta: helicóptero, alta e atrás
 let cinemaPonto = null, cinemaLado = 1;
+// FOV definido pela HORIZONTAL (graus) → vertical conforme a proporção da
+// janela: 83° horizontais = 62° verticais numa vista 3:2, mas só ~50° numa
+// tela larga e baixa — o carro e as placas param de encolher
+function fovVertical(horizontal) {
+  const a = (camera && camera.aspect) || 1.5;
+  const v = 2 * Math.atan(Math.tan(THREE.MathUtils.degToRad(horizontal) / 2) / a) * 180 / Math.PI;
+  return THREE.MathUtils.clamp(v, 40, 82);
+}
 function posicionarCamera(e, f, px, pz, fracao, dt) {
   const modo = e.camera || 'perseguicao';
   let alvoPos, alvoOlhar, fov, rigida = false, olharRapido = false;
   if (modo === 'capo') {
     alvoPos = new THREE.Vector3(px + f.x * 2.2, 0.95, pz + f.z * 2.2);
     alvoOlhar = new THREE.Vector3(px + f.x * 40, 0.7, pz + f.z * 40);
-    fov = 66 + fracao * 16 + (e.boost || 0) * 4;
+    fov = fovVertical(88 + fracao * 18 + (e.boost || 0) * 5);
     rigida = true; olharRapido = true;
   } else if (modo === 'alta') {
     alvoPos = new THREE.Vector3(px - f.x * 13, 8.5 + fracao * 1.5, pz - f.z * 13);
     alvoOlhar = new THREE.Vector3(px + f.x * 12, 0.4, pz + f.z * 12);
-    fov = 50 + fracao * 8;
+    fov = fovVertical(69 + fracao * 10);
   } else if (modo === 'cinema') {
     const zc = e.posicao || 0;
     if (!cinemaPonto || zc > cinemaPonto.z + 14 || zc < cinemaPonto.z - 90) {
@@ -1404,12 +1493,12 @@ function posicionarCamera(e, f, px, pz, fracao, dt) {
     alvoOlhar = new THREE.Vector3(px + f.x * 1.5, 0.8, pz + f.z * 1.5);
     // teleobjetiva: fecha o zoom quando o carro está longe
     const dist = alvoPos.distanceTo(alvoOlhar);
-    fov = Math.max(20, Math.min(58, 1500 / (dist + 8)));
+    fov = fovVertical(Math.max(26, Math.min(78, 2000 / (dist + 8))));
     rigida = true; olharRapido = true;
   } else {
     alvoPos = new THREE.Vector3(px - f.x * (7.2 + fracao * 1.8), 2.9 + fracao * 0.35, pz - f.z * (7.2 + fracao * 1.8));
     alvoOlhar = new THREE.Vector3(px + f.x * 9, 1.1, pz + f.z * 9);
-    fov = 62 + fracao * 14 + (e.boost || 0) * 4;
+    fov = fovVertical(83 + fracao * 16 + (e.boost || 0) * 5);
   }
   if (modo !== 'cinema') cinemaPonto = null;
   if (rigida) camPos.copy(alvoPos); else camPos.lerp(alvoPos, 1 - Math.pow(0.001, dt));
@@ -1470,6 +1559,7 @@ function quadro() {
   animarFaiscas(dt);
   relogioAnim += dt;
   animarFichas(relogioAnim, e.posicao || 0);
+  animarColetas(relogioAnim);
   atualizarMotorAudio(fracao, e);
   if (ultimaFaixaSom !== null && e.faixa !== undefined && e.faixa !== ultimaFaixaSom) tocarDerrapagem(fracao);
   if (e.faixa !== undefined) ultimaFaixaSom = e.faixa;
@@ -1502,6 +1592,7 @@ function destruir() {
   cinemaPonto = null;
   chaoPlano = null;
   fantasma = null;
+  coletas = []; popups = []; popupTex = null;
   predios = []; nPredios = 0;
   cenarioMalhas = []; nCenario = 0;
   ultimaFaixaSom = null;
@@ -1517,6 +1608,12 @@ function debug() {
     musica: musicaUrl, predios: nPredios, cenario: nCenario, lotesCenario: cenarioMalhas.length,
     qualidade: nivelQualidade, gpu: api.gpu, frameMs: api.frameMs, aviso: api.aviso, tremor: estado ? estado.tremor : null,
     fantasma: fantasma ? { visivel: fantasma.visible, pos: fantasma.position.toArray().map((v) => +v.toFixed(1)) } : null,
+    coletas: coletas.length, popups: popups.filter((sp) => sp.visible).length,
+    fichasPegasJs: portais.reduce((n, pt) => n + (pt.fichas || []).filter((f) => f.userData.pega).length, 0),
+    flagsFichas: estado && estado.portais ? estado.portais.map((fl) => [fl.k, (fl.fichas || []).filter(Boolean).length, (fl.fichas || []).length]) : null,
+    trafegoAndando: obstaculos.filter((o) => o.visible && !o.userData.arremessado && Math.abs(o.userData.z - (estado ? estado.posicao : 0)) < 120).map((o) => +o.userData.z.toFixed(1)).slice(0, 4),
+    fichasJs: portais.slice(0, 3).map((pt) => (pt.fichas || []).length),
+    placas: paineis.filter((pn) => pn.mesh.visible).map((pn) => +pn.mesh.scale.x.toFixed(2)), fov: camera ? +camera.fov.toFixed(1) : null,
     estado: { posicao: e.posicao, velocidade: e.velocidade, x: e.x },
     obstaculos: obstaculos.length,
     audio: { ctx: !!audioCtx, motor: !!buffers.motor, batida: !!buffers.batida, fonte: !!motorFonte, estado: audioCtx && audioCtx.state },
