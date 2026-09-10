@@ -555,6 +555,27 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
       com spinner enquanto lê. `TurismoPage(engenheiro:)` injetável. 4 testes com `MockClient`
       + `FakeFirebaseFirestore` (`test/engenheiro_gt_test.dart`).
 
+- **🏎️ DART TURISMO — rodada 6: qualidade Alta/Leve, tremor opcional, tutorial da 1ª corrida, minimapa (set/2026)**
+  O usuário liberou carregamento mais longo em troca de qualidade ("o usuário está acostumado
+  com loading"). Então:
+    - **Presets de qualidade** (`qualidadesGt` auto/alta/leve, pref `turismo_qualidade`; no JS
+      `resolverQualidade` — auto = leve só em tela de toque < 700 px): **alta** = HDRI **2k**
+      (`hdri/<tema>_2k.hdr`, ~6,4 MB cada, Poly Haven CC0), texturas **1k** (`assets3d/tex1k/`,
+      1–3,5 MB por material), sombra 2048, pixel ratio ≤ 2, anisotropia 16; **leve** = os 1k/512
+      de antes, sombra 1024, pixel ratio ≤ 1,5. `web/assets3d` foi de 32 → 89 MB, mas cada corrida
+      só baixa o céu + 3 materiais + o carro + a música dela (cache do browser depois).
+      ⚠️ Hosting no plano Spark tem ~360 MB/dia de saída — ok entre amigos, atenção se viralizar.
+    - **Tremor de câmera** desligável (pref `turismo_tremor` → `estado.tremor` no JS; a batida
+      ainda mostra faíscas e som).
+    - **Tutorial da 1ª corrida** (`widgets/tutorial_turismo.dart`), um por modo (prefs
+      `turismo_tutorial_digitacao/_setas`): 3 cartões + "Entendi, largar! ↵" (Enter/espaço). A
+      contagem 3-2-1 só monta DEPOIS dele; a cena 3D carrega por baixo enquanto isso.
+      ⚠️ Testes de corrida direta precisam marcar o tutorial como visto nas prefs mock.
+    - **Minimapa** (`widgets/minimapa.dart`): `tracadoDaPista(curvas)` integra o traçado com a
+      MESMA fórmula do JS (`CURVA_RAD` .028, 8 m) — trecho feito acende, chegada xadrez, carro
+      como bolinha; canto superior direito da vista. Teste do traçado em `turismo_test.dart`.
+    - Seção "⚙️ OPÇÕES" no campeonato: 🎸 rock, 📳 tremor, qualidade Auto/Alta/Leve.
+
 ---
 
 ## 🏗️ Arquitetura (arquivos-chave)
@@ -681,9 +702,9 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 - ⚠️ Código NÃO sincronizado com o GitHub desde o Arcade 2.0 (Turismo 3D inteiro só local + Firebase).
   Push só quando o usuário pedir.
 - **Fila do Dart Turismo (pedidos do usuário, set/2026)**: ✅ pistas 4×, ✅ rock por fase,
-  ✅ cidade, ✅ engenheira IA, ✅ vento. Faltam: cenário por tema (árvores/rochas — modelos
-  realistas são pesados, ver armadilhas); tutorial na 1ª corrida; opções de qualidade/tremor;
-  minimapa; carro-fantasma da melhor volta; estatísticas/troféus; som de derrapagem gravado.
+  ✅ cidade, ✅ engenheira IA, ✅ vento, ✅ qualidade alta/leve, ✅ tremor opcional, ✅ tutorial,
+  ✅ minimapa. Faltam: cenário por tema (árvores/rochas — modelos realistas são pesados);
+  carro-fantasma da melhor volta; estatísticas/troféus; som de derrapagem gravado.
 - Adicionar os **topics** no GitHub (flutter, dart, bloc, typing-game, education, pacman) — precisa do agente do Chrome no site.
 - (opcional) Sincronizar o **tema por usuário** (hoje é por dispositivo, no shared_preferences).
 - (opcional) Sons de arcade (waka-waka), mais joguinhos (o hub em `arcade_page.dart` é uma lista — é só acrescentar o card + página), troféus/temporadas no ranking (hoje é all-time), avatar/apelido editável.
@@ -691,7 +712,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
-## 🧪 Testes (180, todos passando)
+## 🧪 Testes (188, todos passando)
 
 `test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines, baralho progressivo por fase sem repetir, combo do TiroEngine) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, Esc pausando a Corrida (CPU congela frame a frame — no flutter_test um AnimationController gasta 2 frames por ciclo) e retomando, Caça-Bug esmagando a linha certa, largada 3-2-1 antes de qualquer interação, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). E **previa_viva** (regressão da "tela de criando junto": app Flutter do Mão na Massa TEM a PreviewAoVivo lado a lado/empilhada e ela sobrevive à digitação; projeto Dart console NÃO tem — é por design, não bug). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).

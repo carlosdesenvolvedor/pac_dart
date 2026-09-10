@@ -15,6 +15,8 @@ import 'widgets/arcade_ui.dart';
 import 'widgets/campanha.dart';
 import 'widgets/campo_teclas.dart';
 import 'widgets/cenario.dart';
+import 'widgets/minimapa.dart';
+import 'widgets/tutorial_turismo.dart';
 import 'widgets/vista_3d.dart';
 
 /// 🏎️ Dart Turismo — campeonato de digitação em 10 pistas pseudo-3D.
@@ -63,6 +65,14 @@ class _TurismoPageState extends State<TurismoPage>
   bool _musica = true;
   String? _radio;
 
+  /// ⚙️ Qualidade da vista 3D e tremor de câmera (escolhas salvas).
+  String _qualidade = qualidadesGt.first;
+  bool _tremor = true;
+
+  /// 📖 Tutorial da 1ª corrida (por modo) e 🗺️ o traçado pro minimapa.
+  bool _tutorial = false;
+  List<Offset> _tracado = const [];
+
   _Tela _tela = _Tela.campeonato;
   PistaGt? _pista;
   TurismoEngine? _engine;
@@ -80,7 +90,7 @@ class _TurismoPageState extends State<TurismoPage>
   static const _setas = ['⬅ ESQUERDA', '⬆ MEIO', '➡ DIREITA'];
 
   @override
-  bool get podePausar => _tela == _Tela.corrida && _engine != null && !_contagem && !_acabou;
+  bool get podePausar => _tela == _Tela.corrida && _engine != null && !_contagem && !_acabou && !_tutorial;
 
   @override
   void initState() {
@@ -103,6 +113,8 @@ class _TurismoPageState extends State<TurismoPage>
     final setas = await ProgressoTurismo.modoSetas();
     final camera = await ProgressoTurismo.camera();
     final musica = await ProgressoTurismo.musicaLigada();
+    final qualidade = await ProgressoTurismo.qualidade();
+    final tremor = await ProgressoTurismo.tremorLigado();
     if (mounted) {
       setState(() {
         _campeonato = c;
@@ -110,6 +122,8 @@ class _TurismoPageState extends State<TurismoPage>
         _modoSetas = setas;
         _camera = camera;
         _musica = musica;
+        _qualidade = qualidade;
+        _tremor = tremor;
       });
     }
   }
@@ -119,6 +133,27 @@ class _TurismoPageState extends State<TurismoPage>
     Sons.toca(Som.blip);
     setState(() => _modoSetas = setas);
     ProgressoTurismo.escolherModo(setas: setas);
+  }
+
+  void _escolherQualidade(String q) {
+    if (_qualidade == q) return;
+    Sons.toca(Som.blip);
+    setState(() => _qualidade = q);
+    ProgressoTurismo.escolherQualidade(q);
+  }
+
+  void _alternarTremor() {
+    Sons.toca(Som.blip);
+    setState(() => _tremor = !_tremor);
+    ProgressoTurismo.ligarTremor(_tremor);
+  }
+
+  void _fecharTutorial() {
+    if (!_tutorial) return;
+    Sons.toca(Som.largada);
+    setState(() => _tutorial = false);
+    ProgressoTurismo.marcarTutorial(setas: _modoSetas);
+    if (_modoSetas) _foco.requestFocus();
   }
 
   void _alternarMusica() {
@@ -225,8 +260,10 @@ class _TurismoPageState extends State<TurismoPage>
 
   // ---------- corrida ----------
 
-  void _correr(PistaGt p) {
+  Future<void> _correr(PistaGt p) async {
     Sons.motorParar();
+    final tutorial = !await ProgressoTurismo.tutorialVisto(setas: _modoSetas);
+    if (!mounted) return;
     setState(() {
       _pista = p;
       _engine = TurismoEngine(
@@ -234,6 +271,9 @@ class _TurismoPageState extends State<TurismoPage>
         rnd: math.Random(widget.semente),
         modo: _modoSetas ? ModoControle.setas : ModoControle.digitacao,
       );
+      _tracado = tracadoDaPista([for (final s in _engine!.segmentos) s.curva],
+          comprimento: TurismoEngine.comprimentoSegmento);
+      _tutorial = tutorial;
       _corridaId++;
       _gas = false;
       _freio = false;
@@ -376,7 +416,9 @@ class _TurismoPageState extends State<TurismoPage>
               constraints: const BoxConstraints(maxWidth: 920),
               child: Stack(children: [
                 if (_tela == _Tela.campeonato || e == null) _telaCampeonato() else _telaCorrida(e),
-                if (_contagem && _pista != null)
+                if (_tutorial && _pista != null)
+                  TutorialTurismo(porSetas: _modoSetas, onLargar: _fecharTutorial)
+                else if (_contagem && _pista != null)
                   ContagemRegressiva(
                     onFim: _largada,
                     legenda: '${emojiDaFase(_pista!.tema)} ${_pista!.nome} — '
@@ -460,12 +502,30 @@ class _TurismoPageState extends State<TurismoPage>
         _opcaoModo(false, '⌨️ Digitação', 'as palavras são o volante — e treinam você'),
         _opcaoModo(true, '🎮 Setas', '← → trocam de faixa · ↑ acelera · ↓ freia'),
       ]),
+      const SizedBox(height: 14),
+      Text('⚙️ OPÇÕES',
+          style: Mixart.ui(size: 10, weight: FontWeight.w700, color: Mixart.textMuted)
+              .copyWith(letterSpacing: 2)),
       const SizedBox(height: 10),
-      Wrap(spacing: 10, runSpacing: 8, crossAxisAlignment: WrapCrossAlignment.center, children: [
+      Wrap(spacing: 8, runSpacing: 8, crossAxisAlignment: WrapCrossAlignment.center, children: [
         _botaoMusica(),
-        Text('Câmera: ${nomesCamera[_camera]} — na corrida, o botão 🎥 (ou a tecla C no modo setas) troca.',
-            style: Mixart.ui(size: 11, color: Mixart.textFaint)),
+        _botaoPilula(
+          '${_tremor ? '📳' : '🚫'} Tremor ${_tremor ? 'ligado' : 'desligado'}',
+          ativo: _tremor,
+          rotulo: 'tremor de câmera ${_tremor ? 'ligado' : 'desligado'}',
+          onTap: _alternarTremor,
+        ),
+        Text('Qualidade 3D:', style: Mixart.ui(size: 11, color: Mixart.textMuted)),
+        for (final q in qualidadesGt)
+          _botaoPilula(nomesQualidade[q]!,
+              ativo: _qualidade == q, rotulo: 'qualidade ${nomesQualidade[q]}', onTap: () => _escolherQualidade(q)),
       ]),
+      const SizedBox(height: 8),
+      Text(
+        'Câmera: ${nomesCamera[_camera]} — na corrida, o botão 🎥 (ou a tecla C no modo setas) troca. '
+        'Qualidade Alta usa céus 2k e texturas 1k (carrega mais, fica mais bonito); Auto escolhe Leve em celular.',
+        style: Mixart.ui(size: 11, color: Mixart.textFaint),
+      ),
     ]);
   }
 
@@ -492,6 +552,31 @@ class _TurismoPageState extends State<TurismoPage>
               Text(titulo, style: Mixart.display(size: 13, color: escolhido ? Mixart.brand : Mixart.text)),
               Text(legenda, style: Mixart.ui(size: 10.5, color: Mixart.textMuted)),
             ]),
+          ),
+        ),
+      ),
+    );
+  }
+
+  /// Pílula de opção (liga/desliga ou escolha).
+  Widget _botaoPilula(String texto, {required bool ativo, required String rotulo, required VoidCallback onTap}) {
+    return Semantics(
+      button: true,
+      selected: ativo,
+      label: rotulo,
+      child: Material(
+        color: ativo ? Mixart.brandSub : Mixart.surface,
+        shape: const StadiumBorder(),
+        child: InkWell(
+          customBorder: const StadiumBorder(),
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: ShapeDecoration(
+              shape: StadiumBorder(side: BorderSide(color: ativo ? Mixart.brand : Mixart.border)),
+            ),
+            child: Text(texto,
+                style: Mixart.ui(size: 11, weight: FontWeight.w700, color: ativo ? Mixart.brand : Mixart.text)),
           ),
         ),
       ),
@@ -719,9 +804,20 @@ class _TurismoPageState extends State<TurismoPage>
                 pausado: pausado,
                 camera: _camera,
                 musica: _musica,
+                qualidade: _qualidade,
+                tremor: _tremor,
               ),
             ),
-            Positioned(left: 12, top: 12, right: 132, child: _barraProgresso(e)),
+            Positioned(left: 12, top: 12, right: 136, child: _barraProgresso(e)),
+            Positioned(
+              right: 12,
+              top: 12,
+              child: Minimapa(
+                tracado: _tracado,
+                posicao: e.posicao,
+                comprimentoSegmento: TurismoEngine.comprimentoSegmento,
+              ),
+            ),
           ]),
         ),
       ),

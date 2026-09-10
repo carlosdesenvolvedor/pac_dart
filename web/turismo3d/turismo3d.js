@@ -45,6 +45,20 @@ let camPos = new THREE.Vector3(), camAlvo = new THREE.Vector3();
 let tremor = 0;
 const api = { pronto: false, erro: null, progresso: 0 };
 
+// ---------- qualidade ----------
+// 'alta': HDRI 2k, texturas 1k, sombra 2048, pixel ratio ≤ 2, anisotropia 16
+// 'leve': HDRI 1k, texturas 512, sombra 1024, pixel ratio ≤ 1.5
+// 'auto': leve em tela de toque pequena, alta no resto. (O usuário topou
+// carregamento mais longo em troca de qualidade.)
+let qualidadeAlta = true;
+function resolverQualidade(pref) {
+  if (pref === 'alta') return true;
+  if (pref === 'leve') return false;
+  const toque = (navigator.maxTouchPoints || 0) > 0;
+  const pequena = Math.min(window.innerWidth, window.innerHeight) < 700;
+  return !(toque && pequena);
+}
+
 function pose(d) {
   const n = centro.length - 1;
   const f = Math.max(0, Math.min(d / L, n - 0.0001));
@@ -78,10 +92,11 @@ function textura(url, { srgb = false, rep = 1 } = {}) {
   t.repeat.set(rep, rep);
   if (srgb) t.colorSpace = THREE.SRGBColorSpace;
   t.anisotropy = 8;
+  if (t.anisotropy !== undefined) t.anisotropy = qualidadeAlta ? 16 : 8;
   return t;
 }
 function materialPbr(nome, { repU = 1, repV = 1, rough = 1, metal = 0 } = {}) {
-  const base = `assets3d/tex/${nome}/`;
+  const base = `assets3d/${qualidadeAlta ? 'tex1k' : 'tex'}/${nome}/`;
   const arm = textura(base + 'arm.jpg');
   const m = new THREE.MeshStandardMaterial({
     map: textura(base + 'diff.jpg', { srgb: true }),
@@ -709,7 +724,7 @@ function atualizarLuzes(posicao) {
 // ---------- ambiente ----------
 function carregarCeu(tema) {
   return new Promise((resolve) => {
-    new RGBELoader().load(`assets3d/hdri/${tema.hdri}.hdr`, (tex) => {
+    new RGBELoader().load(`assets3d/hdri/${tema.hdri}${qualidadeAlta ? '_2k' : ''}.hdr`, (tex) => {
       tex.mapping = THREE.EquirectangularReflectionMapping;
       scene.background = tex;
       scene.environment = tex;
@@ -729,9 +744,10 @@ async function montar(canvas, config) {
   api.pronto = false;
   api.erro = null;
   api.progresso = 0.05;
+  qualidadeAlta = resolverQualidade(config.qualidade || 'auto');
 
   renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, qualidadeAlta ? 2 : 1.5));
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -744,7 +760,7 @@ async function montar(canvas, config) {
 
   sol = new THREE.DirectionalLight(cfg.tema.solCor, cfg.tema.solForca);
   sol.castShadow = true;
-  sol.shadow.mapSize.set(1536, 1536);
+  sol.shadow.mapSize.set(qualidadeAlta ? 2048 : 1024, qualidadeAlta ? 2048 : 1024);
   sol.shadow.camera.near = 1; sol.shadow.camera.far = 160;
   sol.shadow.camera.left = -30; sol.shadow.camera.right = 30;
   sol.shadow.camera.top = 40; sol.shadow.camera.bottom = -40;
@@ -1193,6 +1209,7 @@ function debug() {
     camera: camera ? camera.position.toArray().map((v) => +v.toFixed(2)) : null,
     modoCamera: estado ? estado.camera : null,
     musica: musicaUrl, predios: predios.reduce((n, p) => n + p.count, 0),
+    qualidade: qualidadeAlta ? 'alta' : 'leve', tremor: estado ? estado.tremor : null,
     estado: { posicao: e.posicao, velocidade: e.velocidade, x: e.x },
     obstaculos: obstaculos.length,
     audio: { ctx: !!audioCtx, motor: !!buffers.motor, batida: !!buffers.batida, fonte: !!motorFonte, estado: audioCtx && audioCtx.state },

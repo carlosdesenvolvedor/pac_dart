@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pac_dart/features/arcade/domain/progresso_turismo.dart';
 import 'package:pac_dart/features/arcade/domain/turismo.dart';
+import 'package:pac_dart/features/arcade/presentation/widgets/minimapa.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -385,6 +386,20 @@ void main() {
       }
       expect(e.colisoes, 1);
       expect(e.portaisLimpos, 0);
+    });
+  });
+
+  group('Minimapa — traçado', () {
+    test('reta vai pro norte; curva pra direita dobra pra +x; um ponto por segmento + 1', () {
+      final reta = tracadoDaPista([0, 0, 0], comprimento: 8);
+      expect(reta.length, 4);
+      expect(reta.last.dx, closeTo(0, 1e-9));
+      expect(reta.last.dy, closeTo(24, 1e-9));
+      final direita = tracadoDaPista(List.filled(40, 6.0), comprimento: 8);
+      expect(direita[10].dx, greaterThan(0));
+      final e = TurismoEngine(pista: pistasGt[0], rnd: Random(3));
+      final t = tracadoDaPista([for (final s in e.segmentos) s.curva]);
+      expect(t.length, e.segmentos.length + 1);
     });
   });
 

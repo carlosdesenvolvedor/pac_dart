@@ -59,6 +59,60 @@ abstract final class ProgressoTurismo {
   static const _chaveModo = 'turismo_modo';
   static const _chaveCamera = 'turismo_camera';
   static const _chaveMusica = 'turismo_musica';
+  static const _chaveQualidade = 'turismo_qualidade';
+  static const _chaveTremor = 'turismo_tremor';
+
+  /// Qualidade da vista 3D: auto · alta · leve.
+  static Future<String> qualidade() async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      final q = p.getString(_chaveQualidade);
+      return q != null && qualidadesGt.contains(q) ? q : qualidadesGt.first;
+    } catch (_) {
+      return qualidadesGt.first;
+    }
+  }
+
+  static Future<void> escolherQualidade(String q) async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      await p.setString(_chaveQualidade, q);
+    } catch (_) {}
+  }
+
+  /// Tremor de câmera na batida (acessibilidade: dá pra desligar).
+  static Future<bool> tremorLigado() async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      return p.getBool(_chaveTremor) ?? true;
+    } catch (_) {
+      return true;
+    }
+  }
+
+  static Future<void> ligarTremor(bool ligado) async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      await p.setBool(_chaveTremor, ligado);
+    } catch (_) {}
+  }
+
+  /// O tutorial da 1ª corrida já foi visto neste modo?
+  static Future<bool> tutorialVisto({required bool setas}) async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      return p.getBool('turismo_tutorial_${setas ? 'setas' : 'digitacao'}') ?? false;
+    } catch (_) {
+      return true;
+    }
+  }
+
+  static Future<void> marcarTutorial({required bool setas}) async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      await p.setBool('turismo_tutorial_${setas ? 'setas' : 'digitacao'}', true);
+    } catch (_) {}
+  }
 
   /// 🎸 Música da fase ligada? (padrão: sim)
   static Future<bool> musicaLigada() async {
@@ -207,6 +261,10 @@ abstract final class ProgressoTurismo {
     } catch (_) {}
   }
 }
+
+/// Presets de qualidade da vista 3D (auto decide por tela de toque pequena).
+const qualidadesGt = ['auto', 'alta', 'leve'];
+const nomesQualidade = {'auto': 'Auto', 'alta': 'Alta (2k)', 'leve': 'Leve'};
 
 /// Câmeras da vista 3D, na ordem em que o botão 🎥 (ou a tecla C) gira.
 const camerasGt = ['perseguicao', 'capo', 'cinema', 'alta'];

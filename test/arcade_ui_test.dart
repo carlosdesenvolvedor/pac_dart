@@ -19,6 +19,7 @@ import 'package:pac_dart/features/arcade/presentation/futebol_page.dart';
 import 'package:pac_dart/features/arcade/presentation/missao_page.dart';
 import 'package:pac_dart/features/arcade/presentation/rali_page.dart';
 import 'package:pac_dart/features/arcade/presentation/turismo_page.dart';
+import 'package:pac_dart/features/arcade/presentation/widgets/minimapa.dart';
 import 'package:pac_dart/features/arcade/data/engenheiro_gt.dart';
 import 'package:pac_dart/features/arcade/domain/turismo.dart';
 import 'package:pac_dart/features/arcade/presentation/widgets/arcade_ui.dart';
@@ -439,7 +440,7 @@ void main() {
     tester.view.physicalSize = const Size(1000, 1400);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
-    SharedPreferences.setMockInitialValues({'turismo_modo': true});
+    SharedPreferences.setMockInitialValues({'turismo_modo': true, 'turismo_tutorial_setas': true});
 
     final cubit = RankingCubit(repo: _RepoFake(), uid: 'u1', apelido: 'carlos');
     await tester.pumpWidget(_app(cubit, const TurismoPage(semente: 3, pistaInicial: 1)));
@@ -482,7 +483,7 @@ void main() {
     tester.view.physicalSize = const Size(1000, 1600);
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.reset);
-    SharedPreferences.setMockInitialValues({'turismo_modo': true});
+    SharedPreferences.setMockInitialValues({'turismo_modo': true, 'turismo_tutorial_setas': true});
 
     final cubit = RankingCubit(repo: _RepoFake(), uid: 'u1', apelido: 'carlos');
     await tester.pumpWidget(_app(cubit, TurismoPage(semente: 3, pistaInicial: 1, engenheiro: _EngenheiraFake())));
@@ -498,6 +499,31 @@ void main() {
     expect(find.textContaining('RÁDIO DA EQUIPE'), findsOneWidget);
     await tester.pump(); // o Future do debrief resolve
     expect(find.text('Rádio: bela volta, piloto!'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    await tester.pumpWidget(Container());
+  });
+
+  testWidgets('Dart Turismo: a 1ª corrida abre o tutorial; Enter larga e ele não volta', (tester) async {
+    tester.view.physicalSize = const Size(1000, 1600);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    SharedPreferences.setMockInitialValues({});
+
+    final cubit = RankingCubit(repo: _RepoFake(), uid: 'u1', apelido: 'carlos');
+    await tester.pumpWidget(_app(cubit, const TurismoPage(semente: 3, pistaInicial: 1)));
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 20));
+    expect(find.textContaining('COMO JOGAR'), findsOneWidget);
+    expect(find.text('1 · A palavra é o volante'), findsOneWidget);
+    expect(find.textContaining('digite pra acelerar'), findsNothing); // a contagem espera o tutorial
+    expect(find.byType(Minimapa), findsOneWidget);
+    await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+    await tester.pump();
+    expect(find.textContaining('COMO JOGAR'), findsNothing);
+    expect(find.textContaining('digite pra acelerar'), findsOneWidget);
+    await tester.pump(const Duration(milliseconds: 30));
+    final prefs = await SharedPreferences.getInstance();
+    expect(prefs.getBool('turismo_tutorial_digitacao'), isTrue);
     expect(tester.takeException(), isNull);
     await tester.pumpWidget(Container());
   });
@@ -526,6 +552,7 @@ void main() {
     addTearDown(tester.view.reset);
     SharedPreferences.setMockInitialValues({});
 
+    SharedPreferences.setMockInitialValues({'turismo_tutorial_digitacao': true});
     final cubit = RankingCubit(repo: _RepoFake(), uid: 'u1', apelido: 'carlos');
     await tester.pumpWidget(_app(cubit, const TurismoPage(semente: 3, pistaInicial: 1)));
     await tester.pump();
