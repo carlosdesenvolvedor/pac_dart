@@ -31,6 +31,9 @@ enum TiroResultado { avancou, destruiu, errou, nada }
 /// TRAVA a mira na palavra mais baixa que começa com ela, e cada letra
 /// certa é um tiro do Pac. Palavra completa explode e pontua (ouro = 4x).
 /// Palavra que toca o chão custa uma vida; com 3 quedas o jogo acaba.
+///
+/// COMBO: palavras destruídas em sequência sem NENHUM erro de tecla (nem
+/// palavra no chão) multiplicam os pontos — x2 a partir da 5ª, x3 da 10ª.
 class TiroEngine {
   final Random rnd;
   final List<String> curtas;
@@ -47,6 +50,13 @@ class TiroEngine {
   int erros = 0;
   int nivel = 1;
 
+  /// Palavras seguidas sem erro (zera na tecla errada e na palavra no chão).
+  int combo = 0;
+  int melhorCombo = 0;
+
+  /// Pontos da última palavra destruída (já com ouro e combo).
+  int ultimoGanho = 0;
+
   final List<PalavraCaindo> ativas = [];
   int? alvoId;
 
@@ -61,6 +71,14 @@ class TiroEngine {
   });
 
   bool get fim => vidas <= 0;
+
+  /// Multiplicador do combo atual: x1, x2 (5+ seguidas) ou x3 (10+).
+  int get multiplicador => multiplicadorDoCombo(combo);
+
+  static int multiplicadorDoCombo(int combo) => combo >= 10 ? 3 : (combo >= 5 ? 2 : 1);
+
+  /// Quantas palavras faltam pro próximo multiplicador (0 = já no máximo).
+  int get faltamProCombo => combo >= 10 ? 0 : (combo >= 5 ? 10 - combo : 5 - combo);
 
   PalavraCaindo? get alvo {
     for (final p in ativas) {
@@ -95,6 +113,7 @@ class TiroEngine {
       ativas.remove(p);
       if (alvoId == p.id) alvoId = null;
       vidas--;
+      combo = 0;
     }
   }
 
@@ -134,6 +153,7 @@ class TiroEngine {
       ];
       if (candidatas.isEmpty) {
         erros++;
+        combo = 0;
         return (TiroResultado.errou, null);
       }
       candidatas.sort((p, q) => q.y.compareTo(p.y));
@@ -145,11 +165,15 @@ class TiroEngine {
         a.digitadas++;
       } else {
         erros++;
+        combo = 0;
         return (TiroResultado.errou, a);
       }
     }
     if (a.digitadas >= a.texto.length) {
-      pontos += (10 + a.texto.length) * (a.ouro ? 4 : 1);
+      combo++;
+      if (combo > melhorCombo) melhorCombo = combo;
+      ultimoGanho = (10 + a.texto.length) * (a.ouro ? 4 : 1) * multiplicador;
+      pontos += ultimoGanho;
       destruidas++;
       ativas.remove(a);
       alvoId = null;

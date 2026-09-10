@@ -44,6 +44,12 @@ enum Som {
 
   /// 🔮 Ajuda misteriosa (glissando descendo, clima de mistério).
   misterio,
+
+  /// Combo subiu de multiplicador (duas notas rápidas subindo).
+  combo,
+
+  /// "VAI!" da largada 3-2-1 (tom cheio e curto).
+  largada,
 }
 
 /// Liga/desliga global (persistido por dispositivo) + disparo dos efeitos.
@@ -75,5 +81,23 @@ abstract final class Sons {
     } catch (_) {
       // sem áudio (teste/navegador bloqueou): o jogo segue mudo e feliz
     }
+  }
+
+  /// 🏎️ Ronco contínuo do motor: [intensidade] 0 (parado) → 1 (velocidade
+  /// máxima). Chame a cada frame (ou quase); pare com [motorParar].
+  static void motorRonco(double intensidade) {
+    if (!ligado) {
+      motorParar();
+      return;
+    }
+    try {
+      motor.motorRonco(intensidade.clamp(0, 1).toDouble());
+    } catch (_) {}
+  }
+
+  static void motorParar() {
+    try {
+      motor.motorParar();
+    } catch (_) {}
   }
 }

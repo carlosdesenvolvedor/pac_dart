@@ -1,6 +1,9 @@
 import 'dart:math' as math;
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
+
+import 'perspectiva.dart';
 
 /// Os 6 cenários que os jogos percorrem ao passar de fase (depois ciclam).
 const _temas = [
@@ -14,6 +17,63 @@ const _temas = [
 
 String nomeDaFase(int fase) => _temas[(fase - 1) % _temas.length].$2;
 String emojiDaFase(int fase) => _temas[(fase - 1) % _temas.length].$1;
+
+/// Material do CHÃO de cada mundo (o plano em perspectiva dos jogos 3D):
+/// duas cores pra faixas alternadas, a neblina do horizonte, a cor da linha
+/// de grade (só nos mundos que têm) e o adereço da beira da estrada.
+class TemaChao {
+  final Color claro;
+  final Color escuro;
+  final Color neblina;
+  final Color? linha;
+  final Adereco adereco;
+  const TemaChao({
+    required this.claro,
+    required this.escuro,
+    required this.neblina,
+    this.linha,
+    required this.adereco,
+  });
+}
+
+enum Adereco { arvore, cacto, poste, pinheiro, rocha, cristal }
+
+const _chaos = [
+  TemaChao(
+      claro: Color(0xFF6FAE5E),
+      escuro: Color(0xFF5E9B4F),
+      neblina: Color(0xFFFFE2B0),
+      adereco: Adereco.arvore),
+  TemaChao(
+      claro: Color(0xFFE2B276),
+      escuro: Color(0xFFD1A063),
+      neblina: Color(0xFFFFE6C2),
+      adereco: Adereco.cacto),
+  TemaChao(
+      claro: Color(0xFF2B3542),
+      escuro: Color(0xFF232C38),
+      neblina: Color(0xFF6C8BB5),
+      linha: Color(0xFF4FC3F7),
+      adereco: Adereco.poste),
+  TemaChao(
+      claro: Color(0xFFEAF4FB),
+      escuro: Color(0xFFD6E6F2),
+      neblina: Color(0xFFFFFFFF),
+      adereco: Adereco.pinheiro),
+  TemaChao(
+      claro: Color(0xFF4A2A22),
+      escuro: Color(0xFF3B1F1A),
+      neblina: Color(0xFFFF8A65),
+      adereco: Adereco.rocha),
+  TemaChao(
+      claro: Color(0xFF151C33),
+      escuro: Color(0xFF0E1326),
+      neblina: Color(0xFF7C4DFF),
+      linha: Color(0xFF80DEEA),
+      adereco: Adereco.cristal),
+];
+
+TemaChao chaoDaFase(int fase) => _chaos[(fase - 1) % _chaos.length];
 
 /// Pano de fundo pintado da fase — céu, astro, morros e adereços mudam a
 /// cada fase pra dar a sensação de viagem.
@@ -127,10 +187,28 @@ class _CenarioPainter extends CustomPainter {
     _nuvem(c, s.width * .55, s.height * .38, s.height * .05, Colors.white.withValues(alpha: .7));
     _morros(c, s, .78, s.height * .10, const Color(0xFF7CB56B));
     _morros(c, s, .90, s.height * .07, const Color(0xFF5B9A50), desloca: 1.8);
-    for (final fx in [.12, .38, .68, .9]) {
-      _triangulo(c, s.width * fx, s.height * .92, s.width * .035, s.height * .13,
-          const Color(0xFF3E7B39));
+    for (final (fx, esc) in [(.12, 1.0), (.38, .8), (.68, 1.1), (.9, .9)]) {
+      _arvore(c, s.width * fx, s.height * .93, s.height * .14 * esc);
     }
+  }
+
+  /// Árvore redonda com copa iluminada de um lado (lê bem em qualquer escala).
+  void _arvore(Canvas c, double x, double base, double alt) {
+    final tronco = alt * .12;
+    c.drawRect(Rect.fromLTWH(x - tronco / 2, base - alt * .45, tronco, alt * .45),
+        Paint()..color = const Color(0xFF6D4C2F));
+    final copa = Rect.fromCircle(center: Offset(x, base - alt * .62), radius: alt * .4);
+    c.drawOval(
+        copa,
+        Paint()
+          ..shader = const RadialGradient(
+            center: Alignment(-.35, -.4),
+            radius: .9,
+            colors: [Color(0xFF6DBB5B), Color(0xFF3E7B39), Color(0xFF2E5F2B)],
+            stops: [0, .6, 1],
+          ).createShader(copa));
+    c.drawCircle(Offset(x - alt * .18, base - alt * .78), alt * .2,
+        Paint()..color = const Color(0xFF7FCB6B).withValues(alpha: .55));
   }
 
   void _deserto(Canvas c, Size s) {
@@ -243,4 +321,70 @@ class _CenarioPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(_CenarioPainter old) => old.tema != tema;
+}
+
+
+/// Palco em PSEUDO-3D de um mundo: céu e morros do cenário até o horizonte
+/// (em [horizonte], fração da altura) e, dali pra baixo, o chão da fase em
+/// faixas de profundidade com grade que foge pro ponto de fuga, neblina e
+/// brilho na linha do horizonte. Usado na arena da Chuva e na faixa do
+/// Caça-Bug.
+class PalcoFase extends StatelessWidget {
+  final int fase;
+  final double horizonte;
+
+  /// Grade do chão (linhas de fuga + divisórias) — cara de palco digital.
+  final bool grade;
+  const PalcoFase({super.key, required this.fase, this.horizonte = .56, this.grade = true});
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, box) {
+      final w = box.maxWidth;
+      final h = box.maxHeight;
+      final p = Perspectiva(largura: w, altura: h, horizonte: h * horizonte, meiaLargura: w * .5);
+      return Stack(children: [
+        Positioned(left: 0, right: 0, top: 0, height: p.horizonte + 3, child: CenarioFase(fase: fase)),
+        Positioned.fill(
+          child: RepaintBoundary(
+            child: CustomPaint(painter: _PalcoPainter(p: p, tema: chaoDaFase(fase), grade: grade)),
+          ),
+        ),
+      ]);
+    });
+  }
+}
+
+class _PalcoPainter extends CustomPainter {
+  final Perspectiva p;
+  final TemaChao tema;
+  final bool grade;
+  _PalcoPainter({required this.p, required this.tema, required this.grade});
+
+  @override
+  void paint(Canvas c, Size s) {
+    pintarChaoEmFaixas(
+      c,
+      p,
+      claro: tom(tema.claro, .8),
+      escuro: tom(tema.escuro, .74),
+      linha: grade ? (tema.linha ?? Colors.white.withValues(alpha: .35)) : null,
+      segmento: .28,
+    );
+    if (grade) {
+      pintarLinhasDeFuga(c, p, (tema.linha ?? Colors.white).withValues(alpha: .10), passo: .26, n: 10);
+    }
+    pintarNeblina(c, p, tema.neblina, ate: .5);
+    // brilho na linha do horizonte
+    c.drawRect(
+      Rect.fromLTWH(0, p.horizonte - 1.5, p.largura, 3),
+      Paint()
+        ..color = tema.neblina.withValues(alpha: .75)
+        ..maskFilter = ui.MaskFilter.blur(ui.BlurStyle.normal, 3),
+    );
+  }
+
+  @override
+  bool shouldRepaint(_PalcoPainter old) =>
+      old.tema != tema || old.grade != grade || old.p.largura != p.largura || old.p.altura != p.altura;
 }

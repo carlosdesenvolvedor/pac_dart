@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pac_dart/features/arcade/domain/banco_desafios.dart';
+import 'package:pac_dart/features/arcade/domain/baralho.dart';
 import 'package:pac_dart/features/arcade/domain/caca_bug_engine.dart';
 import 'package:pac_dart/features/arcade/domain/corrida_engine.dart';
 import 'package:pac_dart/features/arcade/domain/desafio.dart';
@@ -308,6 +309,133 @@ void main() {
       expect(e.nivel, 2);
       expect(e.velocidade, greaterThan(v0));
       expect(e.intervaloSpawn, lessThan(s0));
+    });
+  });
+
+  group('Baralho de campanha (níveis por fase, sem repetir)', () {
+    test('fase 1 só entrega nível 1; fase 3 só 2 e 3; fase 4+ pende pro 3', () {
+      final b = BaralhoDesafios(rnd: Random(1), tipo: TipoDesafio.logica, banco: bancoDesafios);
+      for (var i = 0; i < 6; i++) {
+        expect(b.proximo(1).nivel, 1);
+      }
+      final b3 = BaralhoDesafios(rnd: Random(2), tipo: TipoDesafio.logica, banco: bancoDesafios);
+      for (var i = 0; i < 12; i++) {
+        expect(b3.proximo(3).nivel, inInclusiveRange(2, 3));
+      }
+      // fase 4+: 70% nível 3 — amostra grande, baralhos novos (nada esgota)
+      var tres = 0;
+      const total = 30 * 10;
+      for (var semente = 0; semente < 30; semente++) {
+        final b4 = BaralhoDesafios(
+            rnd: Random(semente), tipo: TipoDesafio.sintaxe, banco: bancoDesafios);
+        for (var i = 0; i < 10; i++) {
+          final n = b4.proximo(5).nivel;
+          expect(n, greaterThanOrEqualTo(2));
+          if (n == 3) tres++;
+        }
+      }
+      expect(tres / total, inInclusiveRange(0.6, 0.8));
+    });
+
+    test('não repete carta até esgotar o nível — e aí recicla em vez de quebrar', () {
+      final b = BaralhoDesafios(rnd: Random(4), tipo: TipoDesafio.logica, banco: bancoDesafios);
+      final dez = [for (var i = 0; i < 10; i++) b.proximo(1)]; // o banco tem 10 de nível 1
+      expect({for (final d in dez) d.pergunta + d.codigo}.length, 10, reason: 'repetiu');
+      expect(b.proximo(1).nivel, 1); // reciclou
+      final bugs = BaralhoBugs(rnd: Random(4), banco: bancoBugs);
+      final lote = bugs.sortear(6, 1); // 6 bugs de nível 1 no banco
+      expect(lote.toSet().length, 6);
+      expect(lote.every((x) => x.nivel == 1), isTrue);
+    });
+
+    test('lote sai em escadinha e as opções vêm embaralhadas com a certa preservada', () {
+      final b = BaralhoDesafios(rnd: Random(5), tipo: TipoDesafio.sintaxe, banco: bancoDesafios);
+      final lote = b.sortear(8, 2);
+      for (var i = 1; i < lote.length; i++) {
+        expect(lote[i].nivel, greaterThanOrEqualTo(lote[i - 1].nivel));
+      }
+      for (final d in lote) {
+        final original = bancoDesafios.firstWhere((o) => o.pergunta == d.pergunta && o.codigo == d.codigo);
+        expect(d.opcoes[d.certa], original.opcoes[original.certa]);
+      }
+    });
+
+    test('mesma semente, mesma partida (os testes de tela dependem disso)', () {
+      final a = BaralhoDesafios(rnd: Random(42), tipo: TipoDesafio.sintaxe, banco: bancoDesafios);
+      final b = BaralhoDesafios(rnd: Random(42), tipo: TipoDesafio.sintaxe, banco: bancoDesafios);
+      expect(a.sortear(5, 1), b.sortear(5, 1));
+    });
+
+    test('pesos das fases somam 1', () {
+      for (final f in [1, 2, 3, 4, 9]) {
+        final soma = pesosDaFase(f).values.fold<double>(0, (s, v) => s + v);
+        expect(soma, closeTo(1, 1e-9));
+      }
+    });
+  });
+
+  group('TiroEngine — combo', () {
+    TiroEngine engine() => TiroEngine(rnd: Random(1));
+
+    void destroi(TiroEngine e, int id) {
+      e.ativas.add(PalavraCaindo(id: id, texto: 'var', x: .5, y: .5));
+      e.teclar('v');
+      e.teclar('a');
+      e.teclar('r');
+    }
+
+    test('5 palavras sem erro ligam o x2, 10 ligam o x3 — e a última já vale dobrado', () {
+      final e = engine();
+      for (var i = 1; i <= 4; i++) {
+        destroi(e, i);
+        expect(e.multiplicador, 1);
+        expect(e.ultimoGanho, 13);
+      }
+      destroi(e, 5);
+      expect(e.combo, 5);
+      expect(e.multiplicador, 2);
+      expect(e.ultimoGanho, 26);
+      for (var i = 6; i <= 9; i++) {
+        destroi(e, i);
+      }
+      destroi(e, 10);
+      expect(e.multiplicador, 3);
+      expect(e.ultimoGanho, 39);
+      expect(e.melhorCombo, 10);
+      expect(TiroEngine.multiplicadorDoCombo(4), 1);
+      expect(TiroEngine.multiplicadorDoCombo(5), 2);
+      expect(TiroEngine.multiplicadorDoCombo(10), 3);
+    });
+
+    test('tecla errada zera o combo (o melhor fica guardado); ouro multiplica junto', () {
+      final e = engine();
+      for (var i = 1; i <= 5; i++) {
+        destroi(e, i);
+      }
+      expect(e.multiplicador, 2);
+      e.ativas.add(PalavraCaindo(id: 99, texto: 'int', x: .5, y: .5, ouro: true));
+      e.teclar('x'); // sem palavra com x: erro
+      expect(e.combo, 0);
+      expect(e.multiplicador, 1);
+      expect(e.melhorCombo, 5);
+      e.teclar('i');
+      e.teclar('n');
+      e.teclar('t');
+      expect(e.ultimoGanho, 13 * 4); // ouro 4x, combo voltou a 1
+      expect(e.faltamProCombo, 4);
+    });
+
+    test('palavra no chão também quebra o combo', () {
+      final e = engine();
+      for (var i = 1; i <= 6; i++) {
+        destroi(e, i);
+      }
+      expect(e.multiplicador, 2);
+      e.ativas.add(PalavraCaindo(id: 50, texto: 'xyz', x: .5, y: .99));
+      e.tick(0.5);
+      expect(e.vidas, 2);
+      expect(e.combo, 0);
+      expect(e.multiplicador, 1);
     });
   });
 }

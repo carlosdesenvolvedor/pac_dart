@@ -122,7 +122,7 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
   reenvia na próxima). Página com pódio 🥇🥈🥉 (vagas livres convidam amigos), critérios
   **Geral / Precisão / Digitação / Arcade** (precisão exige 300+ toques pra valer) e badge VOCÊ.
   `RankingCubit.de(context)` devolve null fora do app logado — telas antigas e testes não quebram.
-- **🎮 Arcade Dart** (`lib/features/arcade/`, jul/2026) — joguinhos de programação, banco
+- **🎮 Arcade Dart** (`lib/features/arcade/`, jul/2026; 6 jogos desde set/2026 com o Dart Turismo) — joguinhos de programação, banco
   autoral de **76 desafios** (30 lógica + 30 sintaxe + 16 caça-bugs, níveis 1–3, escadinha
   fácil→difícil, opções embaralhadas por partida). **Os 30 de lógica foram RODADOS de verdade**
   (harness no scratchpad gera programa + runZoned captura print e compara com a opção certa).
@@ -206,9 +206,242 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
   - **🎊 Confete** (`Confete` em arcade_ui, CustomPainter determinístico de uma passada):
     FimDeJogo ganhou `celebrar:` (true quando venceu fases / recorde na Chuva), FaseVencida e
     a vitória de missão sempre celebram.
-  - **Prova visual sem login**: `lib/main_arcade_probe.dart` renderiza PistaPro/cenários/avatares
-    cru — `flutter build web -t lib/main_arcade_probe.dart --output=build/probe` + Chrome headless
-    `--screenshot` servindo a pasta. Foi assim que o layout do cenário foi conferido/ajustado.
+  - **Prova visual sem login**: `lib/main_arcade_probe.dart` abre o HUB DO ARCADE de verdade
+    (os jogos rodam sem Firebase — `RankingCubit.de` vira no-op) + rota `/galeria` com
+    pista/cenários/avatares crus. `flutter build web -t lib/main_arcade_probe.dart
+    --output=build/probe`, `python3 -m http.server 8788 --directory build/probe` e o MCP do
+    Playwright: `document.querySelector('flt-semantics-placeholder').click()` liga a
+    acessibilidade do canvas e aí `role=button[name=/Fácil/]` etc. viram alvos clicáveis;
+    `browser_run_code_unsafe` encadeia clique → espera → screenshot sem latência (foi assim
+    que o voo da bola e a pausa foram fotografados). O cartão "Lógica Animada" NÃO abre no
+    probe (precisa de `CursoBloc`).
+  - **🕹️ ARCADE 2.0 (set/2026) — jogabilidade**:
+    - **Baralho progressivo** (`domain/baralho.dart`): `Baralho<T>` genérico + `BaralhoDesafios`
+      / `BaralhoBugs`. Antes, `sortearDesafios` ordenava o banco por nível e cada fase
+      recomeçava do nível 1 — Corrida e Gol NUNCA mostravam níveis 2-3 (2/3 do banco morto).
+      Agora `pesosDaFase`: fase 1 = {1}, fase 2 = {1: .4, 2: .6}, fase 3 = {2: .5, 3: .5},
+      4+ = {2: .3, 3: .7}; nenhuma carta repete até o nível esgotar (aí recicla só ele);
+      lotes saem em escadinha. Os testes de tela reproduzem o sorteio com a mesma semente
+      (`BaralhoDesafios(rnd: Random(42), …).sortear(5, 1)`). Selo `NÍVEL ★★☆` no desafio.
+    - **Pausa em todos os jogos** (`presentation/widgets/campanha.dart`, mixin `PausaDeJogo`):
+      Esc, botão ⏸ no cabeçalho e AUTOMÁTICA no `didChangeAppLifecycleState != resumed` (outra
+      aba, janela sem foco). Corrida/Rali param os `AnimationController`s; Futebol/Caça-Bug
+      deixam o `Timer.periodic` rodando mas o tick sai cedo se `pausado` (o avanço entre
+      rodadas ainda acontece, o relógio não); Chuva sincroniza `_ultimo` no ticker.
+      `pausarSeEscondido()` cobre largada terminando com a aba escondida. Overlay
+      `PausaOverlay` (Continuar / Sair do jogo — sair publica o parcial no dispose).
+    - **`CampanhaDeFases`** (mesmo arquivo): fase/fator(+10%/fase)/total/faseVencida/acabou/
+      novoRecorde/pontuado + `encerrar()` (publica no ranking UMA vez) e `pontosParciais`
+      (parcial no dispose) — tirou ~60 linhas duplicadas de cada uma das 4 páginas de
+      campanha. Ordem obrigatória dos mixins: `with WidgetsBindingObserver, PausaDeJogo<X>,
+      CampanhaDeFases<X>` (+ `TickerProviderStateMixin` se precisar).
+    - **Largada 3-2-1** (`ContagemRegressiva`, 4 × 650 ms = 2,6 s, sons tique + `Som.largada`)
+      na Corrida, no Rali e na Chuva — relógios só ligam no `onFim`. Nos testes:
+      `tester.pump(ContagemRegressiva.duracao + 50ms)` antes de interagir.
+    - **Corrida**: barra do TURBO visível (`AnimationController` de 6 s por pergunta —
+      `rapida = !_turboCtrl.isCompleted`, pausa-friendly) e **medidor da CPU** na pista
+      (`cargaCpu`, o `_cpuCtrl` cuja conclusão dá o passo do rival e reinicia). Chama 🔥 no
+      passo dobrado. **Rali**: idem + fila "a seguir: x · y" e PPM descontando pausas.
+    - **Chuva**: **COMBO** no `TiroEngine` (palavras seguidas sem erro: x2 aos 5, x3 aos 10;
+      tecla errada ou palavra no chão zera; `ultimoGanho`, `melhorCombo`, `faltamProCombo`),
+      chip COMBO + aviso "🔥 COMBO x2", `Som.combo`; estilhaços na palavra destruída
+      (`Estilhacos`), tremor da arena e chão vermelho ao perder vida (`Tremor`), próxima letra
+      do alvo com cursor (sem riscar o digitado), chips em perigo (y > .78) com borda vermelha,
+      mira tracejada Pac → alvo, tiros com rastro luminoso (`_TirosPainter`), `px = x·(w-200)`.
+    - **Gol**: bola em ARCO (`TweenAnimationBuilder` com `sin(πt)`), rede, `Tremor` na defesa,
+      `BarraTempo` compartilhada. **Caça-Bug**: estilhaços na linha esmagada, tremor na errada.
+    - Widgets novos em `arcade_ui.dart`: `BarraTempo`, `SeloNivel`, `BotaoPausa`,
+      `PausaOverlay`, `ContagemRegressiva`, `Tremor`, `Estilhacos`, `CartaoInclinavel`,
+      `ChamaTurbo`, `CargaCpu`; `CabecalhoJogo.acao`; `FimDeJogo.noRanking`.
+      Sons novos: `Som.combo`, `Som.largada`.
+  - **🎮 ARCADE 2.0 — visual PSEUDO-3D (set/2026)**: pedido do usuário ("cara mais realista
+    tipo 3D"). Sem motor 3D nem dependência nova: tudo é Canvas com projeção de perspectiva.
+    - `widgets/perspectiva.dart`: `Perspectiva` (câmera olhando pro horizonte: `y(d) =
+      horizonte + alturaChao/d`, `x(d, l) = fugaX + l·meiaLargura/d`, escala `1/d`, `acima()`
+      pra alturas), `Sombra` (elipse com blur), `pintarChaoEmFaixas` (faixas horizontais
+      cada vez mais finas = profundidade), `pintarLinhasDeFuga`, `pintarQuadriculado`,
+      `pintarNeblina`, `pintarTexto`, `tom()`.
+    - `widgets/pista3d.dart` (**`PistaPro`**, mesma API, exportada por `arcade_ui.dart`):
+      estrada em segmentos alternados com zebras vermelhas/brancas e faixa central, chão do
+      mundo em faixas, adereços por tema (árvore/cacto/poste/pinheiro/rocha/cristal) do mais
+      longe pro mais perto, largada quadriculada perto (d=1,28) e **portal de CHEGADA** ao
+      fundo (d=2,6). Corredores andam PRA DENTRO da tela (jogador na faixa −.46, CPU +.46),
+      escalam com `1/d` (crachá com mínimo .78), sombra no chão, quem está mais longe é
+      pintado primeiro. Altura 272.
+    - `widgets/cenario.dart`: `TemaChao`/`chaoDaFase()` (cores do chão, neblina, linha de
+      grade e adereço por mundo) + **`PalcoFase`** (céu do cenário até o horizonte + chão em
+      perspectiva com grade e brilho) — usado na arena da Chuva (`horizonte: .58`) e na faixa
+      do Caça-Bug. Árvores da campina viraram copas redondas com luz.
+    - `widgets/gol3d.dart` (**`Gol3D`**): estádio da marca do pênalti — gramado listrado em
+      perspectiva com linhas da área e marca, arquibancada com torcida (pontinhos estáveis) e
+      placas, trave com **rede em caixa** (fundo a d=2,5, laterais, teto), **goleiro desenhado**
+      (`_GoleiroPainter`, mergulha girando pro canto) e **bola com gomos e brilho** que voa em
+      arco diminuindo, com sombra correndo no gramado. `chuteId` reanima. Altura 216.
+    - `widgets/avatares.dart`: **`Pac3D`** (esfera com gradiente radial, lábios em sombra,
+      brilho especular, olho com reflexo; mastiga), Dash com luz/contraluz, **`RoboCpu`**
+      (cabeça metálica, visor, olhos ciano acesos, antena) — substitui o 🤖 emoji.
+    - Chuva: sombra sob o Pac, chips com sombra (flutuam sobre o palco). Caça-Bug: código
+      dentro de um **monitor** (`_Monitor`: moldura metálica com luz, reflexo + scanlines
+      por cima sem bloquear clique, LED, pé). Hub: `CartaoInclinavel` (inclina em perspectiva
+      seguindo o mouse, sombra que cresce) + gradiente e emoji com sombra nos cartões.
+    - O Pac do CodeView (`curso/.../pacman.dart`) NÃO mudou — só o arcade usa o 3D.
+  - **🏎️ DART TURISMO (set/2026)** — 6º jogo do hub, pedido do usuário: "corrida profissional
+    tipo Gran Turismo, tudo 3D; no lugar de setas, o que muda de lado são PALAVRAS; se parar de
+    escrever o carro vai parando; 10 fases com níveis de dificuldade".
+    - **Regra**: campeonato de 10 pistas (`domain/turismo.dart`, tabela `pistasGt`). A cada
+      `intervaloPortais` metros há um PORTAL: as faixas livres (1, ou 2 nas pistas 7-10 —
+      `duasSaidas`) têm uma palavra na placa; as outras estão bloqueadas por carros parados.
+      Digitar a palavra = o carro vai pra faixa dela. Cada tecla certa dá impulso
+      (`velMax·0,075`), completar a palavra dá boost (`velMax·0,12`); arrasto quadrático
+      `velMax·(0,02 + 0,13·r²)` por segundo → parar de digitar é ir parando até zero (~10 s).
+      Tecla errada: −10% de velocidade. Portal cruzado em faixa bloqueada: BATIDA (velocidade
+      a 30%, `impacto` = 1 pro tremor/vinheta). COMBO de palavras sem erro/batida: x2 aos 5,
+      x3 aos 10. Pontos = (3+letras)·mult + bônus da medalha (60/120/200) — calibrado no probe: um bot a 15 letras/s fez 3.822 pts com (10+letras), fora da escala dos outros jogos; um humano a ~1 palavra/s faz ~500-900 por corrida com (3+letras).
+    - **Dificuldade derivada, não chutada**: `velAlvo` (média mínima, km/h) e `tempoPorPortal`
+      (s) definem `tempoLimite = distancia/velAlvo` (bronze; prata ≤ 86%, ouro ≤ 72%),
+      `intervaloPortais = velAlvo·tempoPorPortal` e `velMax = intervalo/2,8` (sempre ≥ 2,8 s
+      por portal na máxima). Teste garante que o ouro exige ≤ 92% da máxima em toda pista.
+      Pista 1: 1 km, 60 km/h, palavras curtas, curvas 1,5 · Pista 10: 3 km, 150 km/h,
+      médias+longas, curvas 6, duas saídas. Vocabulário = `palavras_dart.dart` por nível.
+    - **Sempre há o que digitar — COMBUSTÍVEL**: `portalParaDigitar` = o próximo portal se
+      ainda não digitado; digitada a palavra dele, `_atualizaAlvo()` sorteia `palavraGas`
+      (mesmo vocabulário) que só acelera (boost menor, `velMax·0,06`, mesmos pontos/combo).
+      Ao cruzar o portal, o portal seguinte assume a vez — mas uma palavra de combustível pela
+      metade termina antes (prioridade do portal só com gás intocado). Foi assim que se
+      resolveu o problema visto no probe: com "digitar adiantado" o jogador esgotava as 11
+      palavras em 4 s e o carro parava sem ter o que digitar. A primeira letra escolhe a
+      palavra quando há duas saídas (`palavraTravada`). Portal cruzado sem palavra zera a
+      digitação pela metade. O cartão da tela marca `Semantics(label: 'digite: <palavra>')`
+      — é o gancho que o Playwright usa pra ler a palavra na vez (`[aria-label^="digite: "]`).
+    - **Pista gerada** (`_gerarPista`): segmentos de 8 m com curva acumulada (técnica dos
+      racers clássicos — a curva soma segmento a segmento e dobra a estrada na tela), largada
+      reta de 10 segmentos, seções entrada/manter/saída com `_suave`; portais nunca liberam a
+      faixa que o carro já ocupa (todo portal exige digitar). Determinística por semente.
+    - **Persistência** (`domain/progresso_turismo.dart`): `turismo_pista_max`,
+      `turismo_medalha_N`, `turismo_tempo_N` (só melhora); medalha > 0 libera a próxima.
+      Ranking: `arcadeJogado('turismo', pontosFinais)` ao fim de cada corrida (parcial no
+      dispose se sair no meio).
+    - **Tela** (`presentation/turismo_page.dart`): campeonato (grade das 10 pistas com
+      medalha/tempo/🔒) → corrida (cabeçalho TEMPO/PALAVRAS/COMBO/ERROS + ⏸, vista 3D em
+      `Expanded`, cartão da palavra com seta da faixa — ⬅ ESQUERDA · ⬆ MEIO · ➡ DIREITA —,
+      cursor, "✓ próximo portal liberado", "a seguir") → fim (medalha, tempos de ouro/prata/
+      bronze, pontos, recorde, Próxima pista / Correr de novo / Campeonato; "🏆 CAMPEÃO"
+      na 10ª com medalha; ⏱ TEMPO ESGOTADO com tentar de novo). Largada 3-2-1, pausa
+      (`PausaDeJogo`), `Tremor` na batida. Ticker de 60 fps com `setState` da página.
+    - **Vista 3D** (`widgets/pista_gt.dart`, `VistaCorrida` + `_EstradaGtPainter`): projeção
+      `escala = 0,84/z`, horizonte em 46%, câmera a 1,5 m seguindo `xAtual`; segmentos
+      pintados do longe pro perto (o segmento sob o carro é cortado no plano próximo),
+      zebras, faixas tracejadas, largada/chegada quadriculadas, neblina exponencial por
+      distância (`tema.neblina`), adereços por tema com sorteio estável por segmento, pórtico
+      (postes + viga + placas: verde/palavra, ✓ quando digitada, ✕ vermelho bloqueada) e
+      carros parados nas faixas bloqueadas; carro do jogador visto de trás (`_carro`: rodas,
+      para-choque, carroceria com gradiente, vidro com reflexo, aerofólio, capacete do piloto
+      na cor do personagem, lanternas que acendem ao frear, chamas no boost, placa DART),
+      inclina ao trocar de faixa, faróis em cone nas pistas noturnas (cidade/vulcão/espaço),
+      rastros de velocidade acima de 35% da máxima, vinheta vermelha na batida, velocímetro
+      de ponteiro (arco amarelo→vermelho, km/h). Paralaxe do céu pela curva atual.
+    - **Som**: `Sons.motorRonco(intensidade)` (serra + quadrada num passa-baixas, sobe de tom
+      e abre o filtro com a velocidade; chamado a cada 80 ms) e `Sons.motorParar()`; waka na
+      tecla, turbo na palavra, combo, erro, explosão na batida, fase/fanfarra na chegada.
+    - **Probe**: rotas `#/turismo` (pista 1, semente 3: add trim true yield this Text for
+      false final build where), `#/turismo3` (noturna) e `#/turismo10` (duas saídas).
+      Testes: `test/turismo_test.dart` (campeonato, geração, física, adiantado, batida,
+      medalhas, combo, progresso) + 2 testes de tela em `arcade_ui_test.dart`.
+  - **🏎️ DART TURISMO em 3D REAL (set/2026)** — o usuário achou o Canvas "desenho" e pediu
+    "super realista, carros top, pode baixar 3D". Solução: **Three.js (WebGL) embutido num
+    `HtmlElementView`** só na web; a lógica segue em Dart e o estado do motor vai pro JS a
+    cada frame. Fora da web (e nos testes) a vista em Canvas continua (`vista_3d_stub.dart`).
+    - **Arquivos**: `web/turismo3d/turismo3d.js` (módulo ES: `window.turismo3d.{montar,
+      atualizar, destruir, pronto, erro, debug, CARROS}`), `web/lib3d/` (three r0.186 MIT
+      auto-hospedado: `three.module.min.js` + `three.core.js` + addons GLTFLoader/RGBELoader/
+      DRACOLoader + decoder Draco — importmap no `web/index.html`), `web/assets3d/`
+      (32 MB: `hdri/<mundo>.hdr` 1k, `tex/<nome>/{diff,nor,arm}.jpg` 512px, `modelos/`
+      poste e barreira, `carros/<id>/scene.gltf` + bin + textures + license.txt),
+      `lib/.../widgets/vista_3d.dart` (export condicional) + `vista_3d_web.dart`
+      (`Vista3D`: registra `pac-turismo3d`, canvas com `pointer-events: none` pra os toques
+      chegarem ao Flutter, manda tamanho/estado/palavra em `atualizar`, HUD Flutter por
+      cima com `Velocimetro` de `widgets/velocimetro.dart`) + `vista_3d_stub.dart`.
+    - **Assets e licenças** (créditos no rodapé do campeonato): carros do Sketchfab por
+      **Lexyc16, CC BY 4.0** (Porsche 911 (930) Turbo 1975, Nissan Skyline R34 GT-R, Honda
+      NSX 1990, Mazda Miata MX-5 NA, Toyota Corolla AE86 Trueno — baixados pelo Chrome do
+      usuário logado; a Ferrari do exemplo do three.js foi DESCARTADA porque a página do
+      Sketchfab está desativada e a licença não confere); céus/texturas/modelos da **Poly
+      Haven, CC0** (API pública `api.polyhaven.com/files/<id>` exige User-Agent; os modelos
+      de árvore têm .bin de 100-480 MB — não use; postes e barreira ok). Texturas reduzidas
+      com `sips -Z 512`.
+    - **Cena** (JS): centro da pista integra a curva do motor (`CURVA_RAD = 0,012` rad por
+      segmento de 8 m → curva 6 ≈ raio 110 m) e vira faixas de geometria real (asfalto PBR
+      `asphalt_track`, pintura em CanvasTexture com bordas e tracejado, zebras, chão do mundo
+      4 km², guard-rail com lâmina de `metal_plate` + postes instanciados, largada/chegada
+      quadriculadas, pórticos com placas CanvasTexture verde/✓/✕ atualizadas pelo estado,
+      carros parados nas faixas bloqueadas só visíveis a −30..320 m). HDRI = background +
+      environment; sol direcional com sombra 1536 seguindo o carro; FogExp2 por mundo; ACES.
+      Câmera de perseguição com atraso (7,2-9 m atrás, 2,9-3,25 m alto, FOV 62+14·v);
+      tremor no impacto. Faróis SpotLight à noite; cidade: postes clonados a cada 60 m com
+      bulbo emissivo e um POOL de 5 PointLights que pulam pros postes próximos (39 luzes
+      reais travaram a GPU — lição aprendida). Normalização dos glTF: mede caixa por malha,
+      esconde plano de sombra (achatado e gigante ou nome shadow/plane), escala pelo
+      comprimento em metros, frente pra −z (`giro: Math.PI` pros 5 modelos), chão em y=0.
+      `faixaGeometria` precisa de índices anti-horários vistos de cima (normal +y) — a
+      primeira versão saiu preta por isso. `materialPbr` nasce cinza com `metalness: 0`
+      (asfalto/grama nunca ficam pretos enquanto as texturas chegam).
+    - **Painéis das palavras no cenário** (dicas do usuário: "sentir que dirige enquanto
+      escreve" e "a escrita do lado pra onde vai"): até 2 planos de 4,4×1,375 m, 5 m à
+      frente do carro e 2,05 m de altura, cada um SOBRE A FAIXA pra onde a palavra leva
+      (lateral `(faixa−1)·3,7 m` do centro da pista; combustível fica na faixa atual),
+      sempre virados pra câmera (`depthTest: false`), CanvasTexture com rótulo da faixa,
+      digitado em amarelo (verde no combustível), próxima letra destacada, palavra não
+      escolhida esmaecida. O Dart manda `palavras: [{texto, digitadas, faixa, rotulo, tipo,
+      ativa}]` em `atualizar`.
+    - **Garagem**: `carrosGt` + `ProgressoTurismo.carroEscolhido()/escolherCarro()`
+      (`turismo_carro`); a tela do campeonato tem os chips; o tráfego são os outros 4.
+    - **Como depurar**: Playwright travou em screenshots com a cena pesada; o Chrome do
+      usuário (extensão) mostrou `[turismo3d] cena montada / céu ok / carro ok` no console
+      e `window.turismo3d.debug()` devolve carro/câmera/estado. JS muda sem rebuild: copie
+      `web/turismo3d/turismo3d.js` pra `build/probe/turismo3d/` e recarregue.
+    - **Peso**: ~32 MB de assets em `web/` vão pro Firebase Hosting; cada corrida carrega só
+      o HDRI do mundo (~1,6 MB), 3 texturas e os carros (4-6 MB cada) — cuidado com a cota
+      de banda do plano gratuito se o jogo viralizar.
+    - **Rodada 2 (feedback "atravessa o carro / poucas curvas / som antigo")**: os carros
+      parados ficam LOGO DEPOIS do pórtico (`p.z + 2,6`), e quando o motor marca `batido` o JS
+      **arremessa** o carro da faixa (voa, gira, capota, some em 1,6 s) com **faíscas**
+      (`THREE.Points`) e som de batida; `CURVA_RAD` 0,012 → 0,028 (curva 6 ≈ raio 48 m) e o
+      gerador Dart faz sequência de S (só 12% de retas, curvas com 50-100% da máxima,
+      alternando o lado em 80% das vezes). **Som gravado**: `web/assets3d/som/motor.m4a`
+      (qubodup, CC BY 3.0, loop de 4 s; `playbackRate` 0,55→1,9 e passa-baixas abrindo com a
+      velocidade) e `batida.m4a` (qubodup, CC0) tocados pelo JS via Web Audio (contexto nasce
+      no 1º keydown/pointerdown); o Dart manda `som`/`pausado`/`acabou`/`faixa` em
+      `atualizar` e só usa o ronco sintetizado quando o 3D não existe. O 7z do OpenGameArt
+      abre com o `tar` do macOS (bsdtar lê 7-Zip); ffmpeg converte pra AAC.
+    - **Rodada 3 (feedback "ainda atravessa / carros parados / quero moedas")**:
+      - **Batida por CONTATO na faixa VISUAL** (`faixaVisual` = arredondamento de `xAtual`):
+        a linha do pórtico não bate mais; bate quem encosta (|Δz| < 4,2 m) num carro à frente
+        na mesma faixa física. Foi isso que resolvia o "atravessa": a versão anterior usava a
+        faixa ALVO, então digitar em cima da hora passava por dentro do carro.
+      - **Tráfego que anda** (`CarroTrafego`): parado no pórtico, arranca do zero quando o
+        jogador chega a 25 m dele (`distanciaArranque`), acelera em 1,5 s até 32% da máxima
+        (`fracaoTrafego`) — mas nunca acima de 45% da velocidade ATUAL do jogador
+        (`fracaoDoJogador`), senão quem chega devagar na faixa errada nunca alcança o carro
+        (visto no probe: 12 m/s contra 8,9 m/s do tráfego = zero batidas). Segue na faixa
+        dele; quem passou deixa o carro pra trás (carro atrás nunca bate). Lição do traçado de
+        testes: arrancar a 90 m fazia o tráfego do portal anterior parar na faixa do portal
+        seguinte (10 batidas numa corrida limpa).
+      - **Troca de faixa com folga** (`folgaTroca` = 14 m): a palavra do próximo portal só
+        troca a faixa 14 m depois do pórtico anterior (`faixaPendente`), senão o jogador
+        entrava em cima do tráfego recém-deixado. Lerp de `xAtual` subiu pra 8/s.
+      - **Fichas de programação** (`Ficha`, `fichasDart`: `=>`, `{ }`, `;`, `??`, `...`,
+        `async`…): 3 por portal, na faixa livre, a −34/−24/−14 m do pórtico (marcam o caminho
+        certo); passar por cima na faixa delas (|Δz| < 3 m) = +3 moedas e +5 pontos. Moedas
+        somam entre corridas (`turismo_moedas`) com bônus por medalha (15/30/50) e compram
+        os carros da garagem (`CarroGt.preco`: AE86 80, Miata 140, NSX 260, Skyline 420;
+        `turismo_comprados`; `ProgressoTurismo.comprarCarro`). HUD e fim mostram 🪙.
+      - JS: tráfego segue `portais[k].carros[i].z` do Dart a cada frame (arremesso quando
+        `batido`); fichas são discos dourados girando (`CircleGeometry` + CanvasTexture com o
+        símbolo, `animarFichas`) que somem com faíscas douradas ao serem pegas.
+      - **Cena por corrida**: `Vista3D` recebe `key: ValueKey('vista3d-$_corridaId')` — sem
+        isso o State sobrevivia à troca de pista e a cena da 1ª pista (campina) ficava pra
+        todas ("todas as fases com o mesmo cenário", visto pelo usuário na Rota do Vulcão).
+        O `montar` novo religa o motor gravado (`ligarMotor` se o buffer já existe).
 - **🐦 Prof. Dash — tutor de IA (jul/2026)** (`lib/features/tutor/`): chat que SEMPRE enxerga o
   estudo — `contextoDoEstudo(CursoState, TypingState)` empacota trilha/lição/resumo/teoria/o
   trecho digitado/saída esperada/precisão e VIAJA junto de cada pergunta (chip "👀 vendo: …"
@@ -248,6 +481,46 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
   Favicon/PWA saem do MESMO desenho — regerar com
   `bash <scratchpad>/icones/gerar.sh web` (SVG → Chrome headless → PNG 512/192/64 + maskable).
 
+- **🏎️ DART TURISMO — rodada 4: modo SETAS, 4 câmeras, carro visível no escuro, tela de carga (set/2026)**
+  Pedido do usuário: "coloque uma possibilidade de jogar normal por seta, sem ser digitação" +
+  "um carro preto no escuro desapareceu" + "câmeras diferentes" + "pode ir melhorando e
+  implantando sem parar". Antes de mexer, um curso-relâmpago de boas práticas na web
+  (Three.js: pixel ratio ≤ 2, poucas luzes, shadow map pequeno em celular, dispose; game feel:
+  câmera com atraso suave, FOV abrindo com a velocidade, tremor só na batida; UX: jogo em < 60 s,
+  feedback imediato; acessibilidade: modo sem digitação, menus rasos). O que entrou:
+    - **`ModoControle` no motor** (`turismo.dart`): `digitacao` (o de sempre) ou `setas`.
+      No modo setas `teclar()` vira no-op e `portalParaDigitar` é null; entram `virar(±1)`
+      (troca de faixa NA HORA, sem a folga dos 14 m — quem muda em cima de um carro bate, e é
+      justo) e `pedais(dt, gas:, freio:)` (aceleração .55·velMax/s, freio 1.4·velMax/s; sem gás
+      o arrasto quadrático de sempre vai parando o carro). Passar o portal pela faixa livre
+      conta `portaisLimpos++`, sobe o combo, dá 10×mult pontos e boost — o equivalente da
+      palavra acertada. Tráfego, fichas, medalhas e moedas são idênticos nos dois modos.
+    - **Página**: seletor "COMO DIRIGIR" (⌨️ Digitação / 🎮 Setas) no campeonato, salvo em
+      `turismo_modo` (`ProgressoTurismo.modoSetas/escolherModo`). ⚠️ A corrida direta
+      (`pistaInicial`) agora só larga DEPOIS de `_carregarCampeonato()` — senão o motor nascia
+      no modo errado (o teste pegou). No modo setas não há `CampoTeclas`: o `Focus` raiz
+      (`_foco`) segura o teclado (o `_tick` re-pede foco se um botão roubou) e trata ← → ↑ ↓
+      (ou A D W S) em `_teclaGlobal`; `KeyDown` liga gás/freio, `KeyUp` desliga, repeat é
+      ignorado. Botões na tela (`BotoesSetas`): ◀ ▶ por `onTapDown`, ▼ FREIO / ▲ GÁS por
+      `Listener` (valem enquanto o dedo segura) — celular joga sem teclado. O cartão de baixo vira
+      "FAIXA LIVRE ⬅ ESQUERDA · palavra · portal em X m · sua faixa: …". Placas 3D no modo
+      setas (`tipo: 'seta'`): a SETA gigante com a palavra de legenda.
+    - **4 câmeras** (`camerasGt` em `progresso_turismo.dart`, salva em `turismo_camera`; botão 🎥
+      no HUD e tecla C no modo setas): `perseguicao` (atrás, atraso suave — padrão), `capo`
+      (para-choque, rígida, FOV 66–82: a mais rápida), `cinema` (câmera de TV parada na beira da
+      pista 48 m à frente, alternando lados, teleobjetiva com zoom pela distância — o carro passa e
+      ela pula) e `alta` (helicóptero). `posicionarCamera()` no JS; as placas se reposicionam por
+      câmera (capô: 16 m à frente e mais baixas; helicóptero: mais altas).
+    - **Carro visível no escuro**: `luzCarro` (PointLight 26 à noite / 6 de dia) segue atrás e acima
+      do carro; lanternas traseiras e faróis emissivos embutidos na carroceria (caixas
+      MeshBasicMaterial na altura das lanternas reais); hemisfério .28 à noite; exposição
+      espaço .95 / vulcão 1.05. Verificado por screenshot na Grande Final Sideral.
+    - **Tela de carga real**: o JS expõe `api.progresso` (0.05 renderer → .2 → .45 céu → .85
+      carro → 1 tráfego); o Dart mostra barra + etapa ("baixando o céu…", "construindo a pista e o
+      carro…") com um `Timer.periodic` só enquanto não está pronto.
+    - Testes: +3 no motor (pedais/freio, virar+portal limpo+combo, batida na faixa errada) e +2 de
+      UI (modo setas sem TextField, ↑ anda, ← troca de faixa, C gira a câmera; seletor salva a pref).
+
 ---
 
 ## 🏗️ Arquitetura (arquivos-chave)
@@ -278,10 +551,11 @@ lib/
   features/ranking/             # domain/jogador_ranking (critérios+ordenação) ·
                                 # data/ranking_repository (Firestore `ranking/{uid}`) ·
                                 # presentation/ranking_cubit (deltas+pendências) + ranking_page (pódio)
-  features/arcade/              # domain: desafio, banco_desafios (76), palavras_dart (93),
+  features/arcade/              # domain: desafio, banco_desafios (76), baralho (níveis por fase), turismo (10 pistas + motor), progresso_turismo, palavras_dart (93),
                                 #   corrida/futebol/caca_bug/tiro_engine, digitar_palavra
-                                # presentation: arcade_page (hub) + 5 jogos (corrida, futebol,
-                                #   caca_bug, chuva, rali) + widgets (arcade_ui, campo_teclas)
+                                # presentation: arcade_page (hub) + 6 jogos (turismo, corrida, futebol,
+                                #   caca_bug, chuva, rali) + widgets (arcade_ui, campanha [pausa+fases],
+                                #   perspectiva, pista3d, pista_gt [VistaCorrida], gol3d, cenario [PalcoFase], avatares, campo_teclas)
   features/preview/             # interpretador próprio (parser + widget_builder) + preview_engine
   firebase_options.dart         # gerado por flutterfire configure
 assets/  curriculo.json · master.json · backgrounds/ · fonts (google_fonts em runtime)
@@ -370,8 +644,15 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ## 📋 Pendências / próximos passos
 
-- ✅ Código sincronizado com o GitHub (última sessão: Prof. Dash tutor IA + tudo anterior).
-- (nada pendente no console: o tutor fala com o Gemini via chave restrita por domínio)
+- ⚠️ Código NÃO sincronizado com o GitHub desde o Arcade 2.0 (Turismo 3D inteiro só local + Firebase).
+  Push só quando o usuário pedir.
+- **Fila do Dart Turismo (pedidos do usuário, set/2026)**: pistas ≥ 4× mais longas; música de
+  rock instrumental diferente por fase (12 faixas CC0 do "Rock Music Pack" de Ragnar Random /
+  OpenGameArt já baixadas e convertidas pra AAC 80 kbps no scratchpad `rock/` — ~0,6 MB cada);
+  cidade construída (prédios ao longo da pista urbana); IA integrada (Gemini, a mesma chave
+  do Prof. Dash) — engenheiro de pista com debrief pós-corrida; mais realismo (cenário por
+  tema, sons de derrapagem/vento); tutorial na 1ª corrida; opções de qualidade/tremor; minimapa;
+  carro-fantasma da melhor volta; estatísticas/troféus.
 - Adicionar os **topics** no GitHub (flutter, dart, bloc, typing-game, education, pacman) — precisa do agente do Chrome no site.
 - (opcional) Sincronizar o **tema por usuário** (hoje é por dispositivo, no shared_preferences).
 - (opcional) Sons de arcade (waka-waka), mais joguinhos (o hub em `arcade_page.dart` é uma lista — é só acrescentar o card + página), troféus/temporadas no ranking (hoje é all-time), avatar/apelido editável.
@@ -379,9 +660,9 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
-## 🧪 Testes (147, todos passando)
+## 🧪 Testes (180, todos passando)
 
-`test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). E **previa_viva** (regressão da "tela de criando junto": app Flutter do Mão na Massa TEM a PreviewAoVivo lado a lado/empilhada e ela sobrevive à digitação; projeto Dart console NÃO tem — é por design, não bug). Rodar: `flutter test`.
+`test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines, baralho progressivo por fase sem repetir, combo do TiroEngine) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, Esc pausando a Corrida (CPU congela frame a frame — no flutter_test um AnimationController gasta 2 frames por ciclo) e retomando, Caça-Bug esmagando a linha certa, largada 3-2-1 antes de qualquer interação, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). E **previa_viva** (regressão da "tela de criando junto": app Flutter do Mão na Massa TEM a PreviewAoVivo lado a lado/empilhada e ela sobrevive à digitação; projeto Dart console NÃO tem — é por design, não bug). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).
 Também há `logo_test` (a marca desenha em 16…512 px, solta e em selo) e `quiz_ui_test`
 (responder por clique, digitar tudo numa linha, e Enter não corrigindo antes da hora).

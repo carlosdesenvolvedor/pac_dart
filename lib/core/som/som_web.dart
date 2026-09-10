@@ -79,5 +79,63 @@ void tocar(Som som) {
     case Som.misterio:
       _nota('sine', 880, 440, .30, volume: .10);
       _nota('sine', 1108, 554, .30, atraso: .05, volume: .06);
+    case Som.combo:
+      _nota('square', 784, 784, .07, volume: .10);
+      _nota('square', 1175, 1175, .12, atraso: .07, volume: .10);
+    case Som.largada:
+      _nota('square', 880, 880, .28, volume: .13);
+      _nota('triangle', 1760, 1760, .28, volume: .06);
   }
+}
+
+
+// ---------- ronco do motor (Dart Turismo) ----------
+// Duas ondas (serra grave + quadrada uma oitava acima) num passa-baixas:
+// rumor de motor que sobe de tom e abre o filtro com a velocidade.
+OscillatorNode? _motorOsc;
+OscillatorNode? _motorOsc2;
+GainNode? _motorGanho;
+BiquadFilterNode? _motorFiltro;
+
+void motorRonco(double intensidade) {
+  final ctx = _audio;
+  if (_motorOsc == null) {
+    final filtro = ctx.createBiquadFilter()..type = 'lowpass';
+    filtro.frequency.value = 320;
+    filtro.Q.value = 1.1;
+    final ganho = ctx.createGain();
+    ganho.gain.value = 0;
+    final osc = ctx.createOscillator()..type = 'sawtooth';
+    osc.frequency.value = 44;
+    final osc2 = ctx.createOscillator()..type = 'square';
+    osc2.frequency.value = 88.5;
+    osc.connect(filtro);
+    osc2.connect(filtro);
+    filtro.connect(ganho);
+    ganho.connect(ctx.destination);
+    osc.start();
+    osc2.start();
+    _motorOsc = osc;
+    _motorOsc2 = osc2;
+    _motorGanho = ganho;
+    _motorFiltro = filtro;
+  }
+  final t = ctx.currentTime;
+  _motorOsc!.frequency.setTargetAtTime(44 + 130 * intensidade, t, .1);
+  _motorOsc2!.frequency.setTargetAtTime(88.5 + 260 * intensidade, t, .1);
+  _motorFiltro!.frequency.setTargetAtTime(280 + 1100 * intensidade, t, .15);
+  _motorGanho!.gain.setTargetAtTime(.01 + .05 * intensidade, t, .12);
+}
+
+void motorParar() {
+  final ganho = _motorGanho;
+  if (ganho == null) return;
+  final ctx = _audio;
+  ganho.gain.setTargetAtTime(0, ctx.currentTime, .06);
+  _motorOsc?.stop(ctx.currentTime + .4);
+  _motorOsc2?.stop(ctx.currentTime + .4);
+  _motorOsc = null;
+  _motorOsc2 = null;
+  _motorGanho = null;
+  _motorFiltro = null;
 }

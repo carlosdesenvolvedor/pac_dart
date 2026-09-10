@@ -11,6 +11,7 @@ import 'corrida_page.dart';
 import 'futebol_page.dart';
 import 'missoes_page.dart';
 import 'rali_page.dart';
+import 'turismo_page.dart';
 import 'widgets/arcade_ui.dart';
 
 /// 🎮 Hub do Arcade: os joguinhos de Dart, com o recorde pessoal de cada um.
@@ -36,12 +37,22 @@ class _ArcadePageState extends State<ArcadePage> {
 
   static final _jogos = [
     (
+      id: 'turismo',
+      emoji: '🏎️',
+      nome: 'Dart Turismo',
+      tag: 'DIGITAÇÃO',
+      descricao: 'Campeonato de 10 pistas em 3D: digite a palavra da faixa livre pra '
+          'fazer a curva. Cada tecla acelera — parar de digitar é ir parando. '
+          'Ouro, prata ou bronze no relógio.',
+      abre: (BuildContext c) => const TurismoPage(),
+    ),
+    (
       id: 'chuva',
       emoji: '☄️',
       nome: 'Chuva de Código',
       tag: 'DIGITAÇÃO',
       descricao: 'Palavras do Dart despencam do céu e o Pac atira pela boca: '
-          'cada letra digitada é um tiro. Não deixe nada tocar o chão!',
+          'cada letra digitada é um tiro. Sem errar, o COMBO multiplica os pontos!',
       abre: (BuildContext c) => const ChuvaPage(),
     ),
     (
@@ -49,17 +60,17 @@ class _ArcadePageState extends State<ArcadePage> {
       emoji: '🏁',
       nome: 'Rali de Digitação',
       tag: 'DIGITAÇÃO',
-      descricao: 'Cada palavra digitada acelera seu carrinho — palavra perfeita '
-          'dá TURBO. A CPU corre no relógio e não espera ninguém.',
+      descricao: 'Cada palavra digitada acelera seu personagem — palavra perfeita '
+          'dá TURBO. O medidor mostra quando a CPU vai andar: fique na frente!',
       abre: (BuildContext c) => const RaliPage(),
     ),
     (
       id: 'corrida',
-      emoji: '🏎️',
+      emoji: '🚗',
       nome: 'Corrida do Código',
       tag: 'LÓGICA',
-      descricao: 'Preveja o que o código imprime para acelerar. '
-          'Resposta rápida liga o turbo — e a CPU não perdoa derrapada.',
+      descricao: 'Preveja o que o código imprime para acelerar. Responda com a '
+          'barra do TURBO cheia pra dobrar o passo — as fases sobem de nível.',
       abre: (BuildContext c) => const CorridaPage(),
     ),
     (
@@ -105,7 +116,8 @@ class _ArcadePageState extends State<ArcadePage> {
                   child: Text(
                     'Treine a lógica e a sintaxe do Dart jogando. Vença as fases, '
                     'viaje pelos cenários e acumule pontos no seu ranking 🏆 — o '
-                    'recorde pessoal de cada jogo fica guardado.',
+                    'recorde pessoal de cada jogo fica guardado. Esc pausa qualquer '
+                    'jogo (e sair da aba pausa sozinho).',
                     style: Mixart.ui(size: 13, color: Mixart.text).copyWith(height: 1.55),
                   ),
                 ),
@@ -248,8 +260,10 @@ class _ArcadePageState extends State<ArcadePage> {
         Widget Function(BuildContext) abre,
       }) jogo,
       RankingCubit? cubit) {
-    return Material(
-      color: Mixart.surface,
+    return CartaoInclinavel(
+      raio: BorderRadius.circular(Mixart.radiusLg),
+      child: Material(
+      color: Colors.transparent,
       borderRadius: BorderRadius.circular(Mixart.radiusLg),
       child: InkWell(
         borderRadius: BorderRadius.circular(Mixart.radiusLg),
@@ -261,10 +275,18 @@ class _ArcadePageState extends State<ArcadePage> {
           decoration: BoxDecoration(
             border: Border.all(color: Mixart.border),
             borderRadius: BorderRadius.circular(Mixart.radiusLg),
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [Mixart.surfaceHi, Mixart.surface],
+            ),
           ),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(children: [
-              Text(jogo.emoji, style: const TextStyle(fontSize: 34)),
+              Text(jogo.emoji,
+                  style: const TextStyle(fontSize: 34, shadows: [
+                    Shadow(color: Color(0x99000000), blurRadius: 10, offset: Offset(0, 5)),
+                  ])),
               const Spacer(),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
@@ -324,6 +346,7 @@ class _ArcadePageState extends State<ArcadePage> {
             ]),
           ]),
         ),
+      ),
       ),
     );
   }

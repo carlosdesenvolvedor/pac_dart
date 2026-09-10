@@ -1,10 +1,15 @@
+import 'dart:async';
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
+import '../../../../core/som/sons.dart';
 import '../../../../core/syntax/tokenizer.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../domain/corrida_engine.dart';
-import 'avatares.dart';
 import 'cenario.dart';
+
+export 'pista3d.dart' show PistaPro;
 
 /// Código com destaque de sintaxe (mesma pintura do quiz), sem edição.
 class CodigoRealcado extends StatelessWidget {
@@ -91,7 +96,16 @@ class CabecalhoJogo extends StatelessWidget {
   final String rotulo;
   final String titulo;
   final List<Widget> chips;
-  const CabecalhoJogo({super.key, required this.rotulo, required this.titulo, this.chips = const []});
+
+  /// Botão extra no canto (⏸ pausa).
+  final Widget? acao;
+  const CabecalhoJogo({
+    super.key,
+    required this.rotulo,
+    required this.titulo,
+    this.chips = const [],
+    this.acao,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -115,6 +129,7 @@ class CabecalhoJogo extends StatelessWidget {
       ),
       const SizedBox(width: 10),
       Wrap(spacing: 8, runSpacing: 8, children: chips),
+      if (acao != null) ...[const SizedBox(width: 10), acao!],
     ]);
   }
 }
@@ -205,168 +220,68 @@ class BotaoOpcao extends StatelessWidget {
   }
 }
 
-/// A pista profissional da corrida: cenário da fase ao fundo, asfalto com
-/// faixas, largada e chegada quadriculadas, personagens com crachá.
-/// Compartilhada pela Corrida do Código e pelo Rali de Digitação.
-class PistaPro extends StatelessWidget {
-  final int posJogador, posCpu, pista;
-  final int fase;
-  const PistaPro({
-    super.key,
-    required this.posJogador,
-    required this.posCpu,
-    required this.pista,
-    this.fase = 1,
-  });
+/// 🔥 Chama tremulante atrás do corredor turbinado.
+class ChamaTurbo extends StatefulWidget {
+  const ChamaTurbo({super.key});
 
-  static const _alturaAsfalto = 118.0;
+  @override
+  State<ChamaTurbo> createState() => _ChamaTurboState();
+}
+
+class _ChamaTurboState extends State<ChamaTurbo> with SingleTickerProviderStateMixin {
+  late final _ctrl = AnimationController(vsync: this, duration: const Duration(milliseconds: 160))
+    ..repeat(reverse: true);
+
+  @override
+  void dispose() {
+    _ctrl.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => AnimatedBuilder(
+        animation: _ctrl,
+        builder: (_, _) => Transform.scale(
+          scaleX: 1 + _ctrl.value * .35,
+          scaleY: .85 + _ctrl.value * .25,
+          alignment: Alignment.centerRight,
+          child: const Text('🔥', style: TextStyle(fontSize: 22)),
+        ),
+      );
+}
+
+/// Barrinha que enche até o próximo passo do rival.
+class CargaCpu extends StatelessWidget {
+  final Animation<double> carga;
+  const CargaCpu({super.key, required this.carga});
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(Mixart.radiusLg),
-      child: SizedBox(
-        height: 246,
-        child: LayoutBuilder(builder: (context, box) {
-          final w = box.maxWidth;
-          final h = box.maxHeight;
-          final topoAsfalto = h - _alturaAsfalto;
-          double x(int pos) => 18 + (pos / pista).clamp(0, 1) * (w - 108);
-
-          return Stack(children: [
-            // o cenário vive ACIMA do asfalto (senão os morros somem atrás dele)
-            Positioned(
-              left: 0,
-              right: 0,
-              top: 0,
-              height: topoAsfalto + 4,
-              child: CenarioFase(fase: fase),
-            ),
-            Positioned(
-              left: 0,
-              right: 0,
-              bottom: 0,
-              height: _alturaAsfalto,
-              child: CustomPaint(painter: _AsfaltoPainter()),
-            ),
-            // crachá da fase
-            Positioned(
-              left: 10,
-              top: 10,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                  color: const Color(0xCC10131A),
-                  borderRadius: BorderRadius.circular(999),
-                ),
-                child: Text(
-                  '${emojiDaFase(fase)} FASE $fase · ${nomeDaFase(fase)}',
-                  style: const TextStyle(
-                      color: Colors.white, fontSize: 10.5, fontWeight: FontWeight.w700),
-                ),
-              ),
-            ),
-            _corredor(
-              nome: 'VOCÊ',
-              corBadge: Mixart.brand,
-              corTexto: Mixart.onBrand,
-              left: x(posJogador),
-              top: topoAsfalto + 6,
-              avatar: const AvatarPersonagem(tamanho: 34),
-            ),
-            _corredor(
-              nome: 'CPU',
-              corBadge: const Color(0xE6262B33),
-              corTexto: Colors.white,
-              left: x(posCpu),
-              top: topoAsfalto + 62,
-              avatar: const Text('🤖', style: TextStyle(fontSize: 28)),
-            ),
-          ]);
-        }),
-      ),
-    );
-  }
-
-  Widget _corredor({
-    required String nome,
-    required Color corBadge,
-    required Color corTexto,
-    required double left,
-    required double top,
-    required Widget avatar,
-  }) {
-    return AnimatedPositioned(
-      duration: const Duration(milliseconds: 450),
-      curve: Mixart.spring,
-      left: left,
-      top: top,
-      child: Column(mainAxisSize: MainAxisSize.min, children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+    return AnimatedBuilder(
+      animation: carga,
+      builder: (_, _) {
+        final v = carga.value.clamp(0.0, 1.0);
+        return Container(
+          width: 40,
+          height: 5,
           decoration: BoxDecoration(
-            color: corBadge,
+            color: const Color(0x8010131A),
             borderRadius: BorderRadius.circular(999),
           ),
-          child: Text(nome,
-              style: TextStyle(
-                  color: corTexto,
-                  fontSize: 9,
-                  fontWeight: FontWeight.w800,
-                  letterSpacing: .8)),
-        ),
-        const SizedBox(height: 3),
-        SizedBox(height: 36, child: Center(child: avatar)),
-      ]),
-    );
-  }
-}
-
-/// Asfalto: faixa central tracejada, bordas, largada e chegada quadriculadas.
-class _AsfaltoPainter extends CustomPainter {
-  @override
-  void paint(Canvas c, Size s) {
-    // asfalto com leve luz
-    c.drawRect(
-      Offset.zero & s,
-      Paint()
-        ..shader = const LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Color(0xFF3A4048), Color(0xFF272C33)],
-        ).createShader(Offset.zero & s),
-    );
-    // acostamento (bordas brancas)
-    final borda = Paint()..color = Colors.white.withValues(alpha: .85);
-    c.drawRect(Rect.fromLTWH(0, 2, s.width, 3), borda);
-    c.drawRect(Rect.fromLTWH(0, s.height - 5, s.width, 3), borda);
-    // faixa central tracejada
-    final tracejada = Paint()..color = Colors.white.withValues(alpha: .55);
-    final meioY = s.height / 2 - 1.5;
-    for (double xx = 6; xx < s.width; xx += 34) {
-      c.drawRect(Rect.fromLTWH(xx, meioY, 18, 3), tracejada);
-    }
-    // largada (esquerda) e chegada (direita) quadriculadas
-    _quadriculada(c, 8, s.height, 11);
-    _quadriculada(c, s.width - 34, s.height, 13);
-  }
-
-  void _quadriculada(Canvas c, double x, double altura, double lado) {
-    final claro = Paint()..color = Colors.white;
-    final escuro = Paint()..color = const Color(0xFF16191E);
-    final linhas = (altura / lado).ceil();
-    for (var l = 0; l < linhas; l++) {
-      for (var col = 0; col < 2; col++) {
-        c.drawRect(
-          Rect.fromLTWH(x + col * lado, l * lado, lado, lado),
-          (l + col).isEven ? claro : escuro,
+          alignment: Alignment.centerLeft,
+          child: FractionallySizedBox(
+            widthFactor: v,
+            child: Container(
+              decoration: BoxDecoration(
+                color: v > .8 ? const Color(0xFFF2555A) : Colors.white.withValues(alpha: .85),
+                borderRadius: BorderRadius.circular(999),
+              ),
+            ),
+          ),
         );
-      }
-    }
+      },
+    );
   }
-
-  @override
-  bool shouldRepaint(_AsfaltoPainter old) => false;
 }
 
 /// Overlay de fase vencida: pontos da fase + total acumulado + dica de Dart.
@@ -603,6 +518,9 @@ class FimDeJogo extends StatelessWidget {
   /// Solta confete (vitórias/campanhas com fase vencida).
   final bool celebrar;
 
+  /// Há ranking pra receber os pontos (jogador logado)?
+  final bool noRanking;
+
   const FimDeJogo({
     super.key,
     required this.emoji,
@@ -614,6 +532,7 @@ class FimDeJogo extends StatelessWidget {
     required this.onDeNovo,
     required this.onSair,
     this.celebrar = false,
+    this.noRanking = true,
   });
 
   @override
@@ -667,7 +586,10 @@ class FimDeJogo extends StatelessWidget {
                   for (final (k, v) in stats) ChipPlacar(k, v),
                 ]),
                 const SizedBox(height: 10),
-                Text('Os pontos já somaram no seu ranking 🏆',
+                Text(
+                    noRanking
+                        ? 'Os pontos já somaram no seu ranking 🏆'
+                        : 'Entre na sua conta pra guardar pontos no ranking 🏆',
                     style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
                 const SizedBox(height: 18),
                 Wrap(spacing: 10, runSpacing: 10, alignment: WrapAlignment.center, children: [
@@ -699,6 +621,374 @@ class FimDeJogo extends StatelessWidget {
           ),
           ]),
         ),
+      ),
+    );
+  }
+}
+
+
+/// Barra de relógio das rodadas (escoa suave, fica vermelha na urgência).
+class BarraTempo extends StatelessWidget {
+  final int restante;
+  final int total;
+
+  /// A partir de quantos segundos restantes a barra vira vermelha.
+  final int urgenteAte;
+  const BarraTempo({super.key, required this.restante, required this.total, this.urgenteAte = 5});
+
+  @override
+  Widget build(BuildContext context) {
+    final urgente = restante <= urgenteAte;
+    final cor = urgente ? Mixart.danger : Mixart.brand;
+    return Row(children: [
+      Icon(Icons.timer_outlined, size: 15, color: urgente ? Mixart.danger : Mixart.textMuted),
+      const SizedBox(width: 8),
+      Expanded(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(999),
+          child: TweenAnimationBuilder<double>(
+            tween: Tween(end: total <= 0 ? 0 : (restante / total).clamp(0, 1).toDouble()),
+            duration: const Duration(milliseconds: 900),
+            curve: Curves.linear,
+            builder: (_, v, _) => LinearProgressIndicator(
+              value: v,
+              minHeight: 7,
+              backgroundColor: Mixart.surfaceHi,
+              color: cor,
+            ),
+          ),
+        ),
+      ),
+      const SizedBox(width: 8),
+      SizedBox(
+        width: 30,
+        child: Text('${restante.clamp(0, 99)}s',
+            textAlign: TextAlign.right,
+            style: Mixart.mono(size: 12, color: urgente ? Mixart.danger : Mixart.textMuted)),
+      ),
+    ]);
+  }
+}
+
+/// Selo do nível do desafio (★☆☆ básico … ★★★ chefão).
+class SeloNivel extends StatelessWidget {
+  final int nivel;
+  const SeloNivel(this.nivel, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final n = nivel.clamp(1, 3);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
+      decoration: BoxDecoration(
+        color: Mixart.surfaceHi,
+        border: Border.all(color: Mixart.border),
+        borderRadius: BorderRadius.circular(999),
+      ),
+      child: Text('NÍVEL ${'★' * n}${'☆' * (3 - n)}',
+          style: Mixart.ui(size: 9.5, weight: FontWeight.w700, color: n == 3 ? Mixart.brand : Mixart.textMuted)
+              .copyWith(letterSpacing: 1)),
+    );
+  }
+}
+
+/// Botão ⏸ do cabeçalho (mesma cara do botão de voltar).
+class BotaoPausa extends StatelessWidget {
+  final VoidCallback? onTap;
+  const BotaoPausa({super.key, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => IconButton(
+        tooltip: 'Pausar (Esc)',
+        onPressed: onTap,
+        icon: Icon(Icons.pause_rounded, color: onTap == null ? Mixart.textFaint : Mixart.text, size: 20),
+        style: IconButton.styleFrom(
+            backgroundColor: Mixart.surfaceHi, side: BorderSide(color: Mixart.border)),
+      );
+}
+
+/// Overlay de jogo pausado: relógios parados até o jogador voltar.
+class PausaOverlay extends StatelessWidget {
+  final VoidCallback onContinuar;
+  final VoidCallback onSair;
+  const PausaOverlay({super.key, required this.onContinuar, required this.onSair});
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned.fill(
+      child: Container(
+        color: const Color(0xE6010101),
+        padding: const EdgeInsets.all(20),
+        child: Center(
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
+            const Text('⏸', style: TextStyle(fontSize: 46)),
+            const SizedBox(height: 8),
+            Text('PAUSADO', style: Mixart.display(size: 26, color: Mixart.brand)),
+            const SizedBox(height: 6),
+            Text('Relógios parados. Respire, tome uma água — a CPU também espera.',
+                textAlign: TextAlign.center,
+                style: Mixart.ui(size: 12.5, color: Mixart.textMuted).copyWith(height: 1.4)),
+            const SizedBox(height: 18),
+            Wrap(spacing: 10, runSpacing: 10, alignment: WrapAlignment.center, children: [
+              FilledButton.icon(
+                style: FilledButton.styleFrom(
+                  backgroundColor: Mixart.brand,
+                  foregroundColor: Mixart.onBrand,
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+                  textStyle: Mixart.ui(size: 13, weight: FontWeight.w700),
+                ),
+                onPressed: onContinuar,
+                icon: const Icon(Icons.play_arrow_rounded, size: 18),
+                label: const Text('Continuar'),
+              ),
+              OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Mixart.text,
+                  side: BorderSide(color: Mixart.border),
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+                  textStyle: Mixart.ui(size: 13),
+                ),
+                onPressed: onSair,
+                child: const Text('Sair do jogo'),
+              ),
+            ]),
+            const SizedBox(height: 12),
+            Text('Esc também continua · os pontos até aqui ficam guardados',
+                style: Mixart.ui(size: 11, color: Mixart.textFaint)),
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
+/// Largada 3 · 2 · 1 · VAI! — ninguém começa a corrida sem estar pronto.
+class ContagemRegressiva extends StatefulWidget {
+  final VoidCallback onFim;
+
+  /// O grito final ("VAI!", "JÁ!").
+  final String grito;
+
+  /// O que aparece embaixo do número (ex.: "prepare os dedos").
+  final String legenda;
+  const ContagemRegressiva({
+    super.key,
+    required this.onFim,
+    this.grito = 'VAI!',
+    this.legenda = '',
+  });
+
+  static const passo = Duration(milliseconds: 650);
+
+  /// Duração total até o [onFim] (3 números + o grito).
+  static const duracao = Duration(milliseconds: 650 * 4);
+
+  @override
+  State<ContagemRegressiva> createState() => _ContagemRegressivaState();
+}
+
+class _ContagemRegressivaState extends State<ContagemRegressiva> {
+  int _n = 3;
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    Sons.toca(Som.tique);
+    _timer = Timer.periodic(ContagemRegressiva.passo, (_) {
+      if (!mounted) return;
+      if (_n <= 0) {
+        _timer?.cancel();
+        widget.onFim();
+        return;
+      }
+      setState(() => _n--);
+      Sons.toca(_n > 0 ? Som.tique : Som.largada);
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final vai = _n <= 0;
+    return Positioned.fill(
+      child: IgnorePointer(
+        child: Container(
+          color: const Color(0xB3010101),
+          child: Center(
+            child: TweenAnimationBuilder<double>(
+              key: ValueKey(_n),
+              tween: Tween(begin: 0, end: 1),
+              duration: const Duration(milliseconds: 420),
+              curve: Mixart.spring,
+              builder: (_, t, child) => Opacity(
+                opacity: t.clamp(0, 1),
+                child: Transform.scale(scale: .55 + .45 * t, child: child),
+              ),
+              child: Column(mainAxisSize: MainAxisSize.min, children: [
+                Text(vai ? widget.grito : '$_n',
+                    style: Mixart.display(size: vai ? 64 : 84, color: Mixart.brand)),
+                if (widget.legenda.isNotEmpty) ...[
+                  const SizedBox(height: 6),
+                  Text(widget.legenda,
+                      style: Mixart.ui(size: 12.5, weight: FontWeight.w600, color: Mixart.text)),
+                ],
+              ]),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Sacode o filho quando [gatilho] muda (perdeu vida, defesa, linha errada).
+/// Parado, não custa nada.
+class Tremor extends StatelessWidget {
+  final int gatilho;
+  final double forca;
+  final Widget child;
+  const Tremor({super.key, required this.gatilho, required this.child, this.forca = 7});
+
+  @override
+  Widget build(BuildContext context) {
+    return TweenAnimationBuilder<double>(
+      key: ValueKey(gatilho),
+      tween: Tween(begin: gatilho == 0 ? 1 : 0, end: 1),
+      duration: const Duration(milliseconds: 380),
+      builder: (_, t, c) {
+        final d = math.sin(t * math.pi * 5) * forca * (1 - t);
+        return Transform.translate(offset: Offset(d, d * .35), child: c);
+      },
+      child: child,
+    );
+  }
+}
+
+/// 💥 Estilhaços de uma passada: pedacinhos voando do centro (palavra
+/// destruída, bug esmagado). Posicione com o centro em (alcance, alcance).
+class Estilhacos extends StatelessWidget {
+  final Color cor;
+  final int pedacos;
+  final double alcance;
+  final int semente;
+  const Estilhacos({
+    super.key,
+    required this.cor,
+    this.pedacos = 12,
+    this.alcance = 44,
+    this.semente = 0,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IgnorePointer(
+      child: SizedBox(
+        width: alcance * 2,
+        height: alcance * 2,
+        child: TweenAnimationBuilder<double>(
+          tween: Tween(begin: 0, end: 1),
+          duration: const Duration(milliseconds: 560),
+          curve: Curves.easeOutCubic,
+          builder: (_, t, _) => CustomPaint(painter: _EstilhacosPainter(t, cor, pedacos, semente)),
+        ),
+      ),
+    );
+  }
+}
+
+class _EstilhacosPainter extends CustomPainter {
+  final double t;
+  final Color cor;
+  final int n;
+  final int semente;
+  _EstilhacosPainter(this.t, this.cor, this.n, this.semente);
+
+  @override
+  void paint(Canvas c, Size s) {
+    final centro = Offset(s.width / 2, s.height / 2);
+    final raio = s.width / 2;
+    final tinta = Paint()..color = cor.withValues(alpha: (1 - t).clamp(0, 1).toDouble());
+    for (var i = 0; i < n; i++) {
+      final k = (i * 37 + semente * 11) % 50 / 50; // pseudo-aleatório estável
+      final ang = (i / n) * math.pi * 2 + k * .9;
+      final dist = raio * (.45 + k * .55) * t;
+      final p = centro + Offset(math.cos(ang), math.sin(ang)) * dist;
+      c.drawCircle(p, (3.6 - 2.2 * t) * (.7 + k * .6), tinta);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_EstilhacosPainter old) => old.t != t;
+}
+
+
+/// Cartão com PROFUNDIDADE: inclina levemente seguindo o mouse (perspectiva
+/// 3D), com sombra que cresce ao passar por cima. No toque, só a sombra.
+class CartaoInclinavel extends StatefulWidget {
+  final Widget child;
+  final BorderRadius raio;
+  const CartaoInclinavel({super.key, required this.child, required this.raio});
+
+  @override
+  State<CartaoInclinavel> createState() => _CartaoInclinavelState();
+}
+
+class _CartaoInclinavelState extends State<CartaoInclinavel> {
+  Offset _alvo = Offset.zero; // -1..1 em cada eixo
+  bool _sobre = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => _sobre = true),
+      onExit: (_) => setState(() {
+        _sobre = false;
+        _alvo = Offset.zero;
+      }),
+      onHover: (e) {
+        final box = context.findRenderObject() as RenderBox?;
+        if (box == null || !box.hasSize) return;
+        final s = box.size;
+        setState(() => _alvo = Offset(
+              (e.localPosition.dx / s.width * 2 - 1).clamp(-1, 1),
+              (e.localPosition.dy / s.height * 2 - 1).clamp(-1, 1),
+            ));
+      },
+      child: TweenAnimationBuilder<Offset>(
+        tween: Tween(end: _alvo),
+        duration: const Duration(milliseconds: 160),
+        curve: Curves.easeOut,
+        builder: (_, incl, child) => AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          decoration: BoxDecoration(
+            borderRadius: widget.raio,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: _sobre ? .55 : .35),
+                blurRadius: _sobre ? 26 : 14,
+                offset: Offset(-incl.dx * 6, _sobre ? 14 : 8),
+              ),
+            ],
+          ),
+          child: Transform(
+            alignment: Alignment.center,
+            transform: Matrix4.identity()
+              ..setEntry(3, 2, 0.0014)
+              ..rotateX(-incl.dy * .09)
+              ..rotateY(incl.dx * .09)
+              ..scaleByDouble(_sobre ? 1.015 : 1.0, _sobre ? 1.015 : 1.0, 1.0, 1.0),
+            child: child,
+          ),
+        ),
+        child: widget.child,
       ),
     );
   }

@@ -1,22 +1,25 @@
 import 'dart:async';
 import 'dart:math' as math;
+import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
-import '../../ranking/presentation/ranking_cubit.dart';
 import '../domain/banco_desafios.dart';
+import '../domain/baralho.dart';
 import '../domain/caca_bug_engine.dart';
 import '../domain/desafio.dart';
 import '../domain/dicas_dart.dart';
 import 'widgets/arcade_ui.dart';
+import 'widgets/campanha.dart';
 import 'widgets/cenario.dart';
 
 /// 🐞 Caça-Bug — campanha em FASES de 8 rodadas: ache a linha defeituosa
 /// antes de o relógio zerar. 5+ bugs caçados avançam de fase — o cenário
-/// muda e o relógio fica 10% mais apressado. Pontos acumulam.
+/// muda, os bugs sobem de nível e o relógio fica 10% mais apressado. Bug
+/// esmagado estilhaça, linha errada sacode, Esc pausa. Pontos acumulam.
 class CacaBugPage extends StatefulWidget {
   /// Semente do sorteio (fixa nos testes; null = aleatório de verdade).
   final int? semente;
@@ -26,21 +29,19 @@ class CacaBugPage extends StatefulWidget {
   State<CacaBugPage> createState() => _CacaBugPageState();
 }
 
-class _CacaBugPageState extends State<CacaBugPage> {
+class _CacaBugPageState extends State<CacaBugPage>
+    with WidgetsBindingObserver, PausaDeJogo<CacaBugPage>, CampanhaDeFases<CacaBugPage> {
   static const _rodadas = 8;
   static const _paraPassar = 5;
 
-  RankingCubit? _ranking;
   late math.Random _rnd;
+  late BaralhoBugs _baralho;
   late CacaBugEngine _engine;
   late DesafioBug _bug;
   int _numRodada = 1;
   int _tempoTotal = 14;
   int _restante = 14;
 
-  int _fase = 1;
-  int _fasesVencidas = 0;
-  int _pontosTotal = 0;
   int _acertosRun = 0;
 
   bool _revelado = false;
@@ -48,20 +49,24 @@ class _CacaBugPageState extends State<CacaBugPage> {
   int? _linhaEscolhida;
   int _ganho = 0;
 
+  /// Sacode o código quando a linha escolhida estava sã (ou o bug escapou).
+  int _tremor = 0;
+
   Timer? _relogio;
   Timer? _avanco;
 
-  bool _faseVencida = false;
-  bool _acabou = false;
-  bool _novoRecorde = false;
-  bool _pontuado = false;
+  @override
+  String get jogoId => 'cacaBug';
 
-  double get _fator => 1 + 0.1 * (_fase - 1);
+  @override
+  int get pontosDoMotor => _engine.pontos;
+
+  @override
+  bool get emPartida => true;
 
   @override
   void initState() {
     super.initState();
-    _ranking = RankingCubit.de(context);
     _comecarRun();
   }
 
@@ -69,29 +74,17 @@ class _CacaBugPageState extends State<CacaBugPage> {
   void dispose() {
     _relogio?.cancel();
     _avanco?.cancel();
-    final resto = _pontosParciais();
-    if (!_pontuado && resto > 0) _ranking?.arcadeJogado('cacaBug', resto);
     super.dispose();
-  }
-
-  int _pontosParciais() {
-    final parcial =
-        (!_faseVencida && !_acabou) ? (_engine.pontos * _fator).round() : 0;
-    return _pontosTotal + parcial;
   }
 
   // ---------- campanha ----------
 
   void _comecarRun() {
     _rnd = math.Random(widget.semente);
+    _baralho = BaralhoBugs(rnd: _rnd, banco: bancoBugs);
     setState(() {
-      _fase = 1;
-      _fasesVencidas = 0;
-      _pontosTotal = 0;
+      zerarCampanha();
       _acertosRun = 0;
-      _acabou = false;
-      _novoRecorde = false;
-      _pontuado = false;
     });
     _comecarFase();
   }
@@ -99,48 +92,30 @@ class _CacaBugPageState extends State<CacaBugPage> {
   void _comecarFase() {
     _relogio?.cancel();
     _avanco?.cancel();
-    _engine = CacaBugEngine(
-        rodadas: sortearBugs(quantidade: _rodadas, rnd: _rnd, banco: bancoBugs));
-    setState(() {
-      _faseVencida = false;
-      _carregaRodada(1);
-    });
+    _engine = CacaBugEngine(rodadas: _baralho.sortear(_rodadas, fase));
+    setState(() => _carregaRodada(1));
     _relogio = Timer.periodic(const Duration(seconds: 1), (_) => _tick());
+    pausarSeEscondido();
   }
 
   void _venceuFase() {
-    Sons.toca(Som.fase);
     _relogio?.cancel();
     _avanco?.cancel();
-    setState(() {
-      _fasesVencidas++;
-      _pontosTotal += (_engine.pontos * _fator).round();
-      _acertosRun += _engine.acertos;
-      _faseVencida = true;
-    });
+    _acertosRun += _engine.acertos;
+    registrarFaseVencida();
   }
 
   void _proximaFase() {
-    setState(() => _fase++);
+    avancarFase();
     _comecarFase();
   }
 
-  Future<void> _fimDeJogo({bool somaFaseAtual = true}) async {
-    if (_pontuado) return;
-    _pontuado = true;
+  Future<void> _fimDeJogo({bool somaFaseAtual = true}) {
+    if (pontuado) return Future.value();
     _relogio?.cancel();
     _avanco?.cancel();
-    setState(() {
-      if (somaFaseAtual) {
-        _pontosTotal += (_engine.pontos * _fator).round();
-        _acertosRun += _engine.acertos;
-      }
-      _faseVencida = false;
-      _acabou = true;
-    });
-    Sons.toca(_fasesVencidas > 0 ? Som.fanfarra : Som.defesa);
-    final recorde = await _ranking?.arcadeJogado('cacaBug', _pontosTotal);
-    if (mounted && recorde == true) setState(() => _novoRecorde = true);
+    if (somaFaseAtual) _acertosRun += _engine.acertos;
+    return encerrar(somaFaseAtual: somaFaseAtual);
   }
 
   // ---------- rodadas ----------
@@ -150,7 +125,7 @@ class _CacaBugPageState extends State<CacaBugPage> {
   void _carregaRodada(int numero) {
     _bug = _engine.atual;
     _numRodada = numero;
-    _tempoTotal = (_engine.tempoRodada.inSeconds * math.pow(0.9, _fase - 1))
+    _tempoTotal = (_engine.tempoRodada.inSeconds * math.pow(0.9, fase - 1))
         .round()
         .clamp(4, 20);
     _restante = _tempoTotal;
@@ -161,7 +136,7 @@ class _CacaBugPageState extends State<CacaBugPage> {
   }
 
   void _tick() {
-    if (_revelado || _acabou || _faseVencida) return;
+    if (pausado || _revelado || acabou || faseVencida) return;
     setState(() => _restante--);
     if (_restante > 0) return;
     // relógio zerou: o bug escapou
@@ -171,25 +146,28 @@ class _CacaBugPageState extends State<CacaBugPage> {
       _revelado = true;
       _acertou = false;
       _linhaEscolhida = null;
+      _tremor++;
     });
     _agendaProxima(const Duration(milliseconds: 2600));
   }
 
   void _escolher(int linha) {
-    if (_revelado || _acabou || _faseVencida) return;
+    if (_revelado || acabou || faseVencida || pausado) return;
     final sobra = _restante;
     setState(() {
       _acertou = _engine.escolher(linha, sobra);
       _ganho = _acertou ? 10 + sobra : 0;
       _linhaEscolhida = linha;
       _revelado = true;
+      if (!_acertou) _tremor++;
     });
-    Sons.toca(_acertou ? Som.blip : Som.erro);
+    Sons.toca(_acertou ? Som.explosao : Som.erro);
     _agendaProxima(Duration(milliseconds: _acertou ? 1400 : 2600));
   }
 
   void _agendaProxima(Duration espera) {
     _avanco = Timer(espera, () {
+      if (!mounted) return;
       if (_engine.terminou) {
         _engine.acertos >= _paraPassar ? _venceuFase() : _fimDeJogo();
       } else {
@@ -199,7 +177,8 @@ class _CacaBugPageState extends State<CacaBugPage> {
   }
 
   KeyEventResult _tecla(FocusNode node, KeyEvent e) {
-    if (e is! KeyDownEvent) return KeyEventResult.ignored;
+    if (teclaDePausa(e)) return KeyEventResult.handled;
+    if (e is! KeyDownEvent || pausado) return KeyEventResult.ignored;
     const teclas = [
       [LogicalKeyboardKey.digit1, LogicalKeyboardKey.numpad1],
       [LogicalKeyboardKey.digit2, LogicalKeyboardKey.numpad2],
@@ -236,11 +215,12 @@ class _CacaBugPageState extends State<CacaBugPage> {
                       rotulo: 'ARCADE · ATENÇÃO',
                       titulo: '🐞 Caça-Bug',
                       chips: [
-                        ChipPlacar('FASE', '$_fase'),
+                        ChipPlacar('FASE', '$fase'),
                         ChipPlacar('RODADA', '$_numRodada/$_rodadas'),
                         ChipPlacar('CAÇADOS', '${_engine.acertos}'),
-                        ChipPlacar('TOTAL', '${_pontosParciais()}', cor: Mixart.brand),
+                        ChipPlacar('TOTAL', '$pontosParciais', cor: Mixart.brand),
                       ],
+                      acao: BotaoPausa(onTap: podePausar ? pausar : null),
                     ),
                     const SizedBox(height: 14),
                     _faixaCenario(),
@@ -263,37 +243,46 @@ class _CacaBugPageState extends State<CacaBugPage> {
                                 .copyWith(height: 1.5),
                           ),
                         ),
+                        const SizedBox(width: 10),
+                        SeloNivel(_bug.nivel),
                       ]),
                     ),
                     const SizedBox(height: 14),
-                    _relogioBarra(),
+                    BarraTempo(restante: _restante, total: _tempoTotal, urgenteAte: 3),
                     const SizedBox(height: 14),
-                    _codigo(),
+                    Tremor(gatilho: _tremor, child: _Monitor(child: _codigo())),
                     const SizedBox(height: 12),
                     SizedBox(height: 58, child: _veredito()),
                   ],
                 ),
-                if (_faseVencida)
+                if (pausado)
+                  PausaOverlay(onContinuar: retomar, onSair: () => Navigator.of(context).pop()),
+                if (faseVencida)
                   FaseVencida(
-                    fase: _fase,
-                    pontosFase: (_engine.pontos * _fator).round(),
-                    pontosTotal: _pontosTotal,
-                    dica: dicaDaFase(_fase),
-                    aviso: 'o relógio fica 10% mais apressado — olho vivo!',
+                    fase: fase,
+                    pontosFase: comFator(pontosDoMotor),
+                    pontosTotal: pontosTotal,
+                    dica: dicaDaFase(fase),
+                    aviso: fase == 1
+                        ? 'bugs de nível 2 entram na jogada e o relógio aperta 10%!'
+                        : fase == 2
+                            ? 'chegam os bugs de nível 3 — e o relógio aperta mais 10%!'
+                            : 'o relógio fica 10% mais apressado — olho vivo!',
                     onProxima: _proximaFase,
                     onParar: () => _fimDeJogo(somaFaseAtual: false),
                   ),
-                if (_acabou)
+                if (acabou)
                   FimDeJogo(
-                    emoji: _fasesVencidas > 0 ? '🏆' : '🐞',
-                    titulo: _fasesVencidas > 0 ? 'FIM DA CAMPANHA!' : 'OS BUGS ESCAPARAM…',
+                    emoji: fasesVencidas > 0 ? '🏆' : '🐞',
+                    titulo: fasesVencidas > 0 ? 'FIM DA CAMPANHA!' : 'OS BUGS ESCAPARAM…',
                     subtitulo:
                         'Você esmagou $_acertosRun bugs — cace $_paraPassar+ por fase pra seguir viagem.',
-                    pontos: _pontosTotal,
-                    novoRecorde: _novoRecorde,
-                    celebrar: _fasesVencidas > 0,
+                    pontos: pontosTotal,
+                    novoRecorde: novoRecorde,
+                    celebrar: fasesVencidas > 0,
+                    noRanking: ranking != null,
                     stats: [
-                      ('FASES', '$_fasesVencidas'),
+                      ('FASES', '$fasesVencidas'),
                       ('CAÇADOS', '$_acertosRun'),
                     ],
                     onDeNovo: _comecarRun,
@@ -314,9 +303,9 @@ class _CacaBugPageState extends State<CacaBugPage> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(Mixart.radiusMd),
       child: SizedBox(
-        height: 74,
+        height: 96,
         child: Stack(children: [
-          Positioned.fill(child: CenarioFase(fase: _fase)),
+          Positioned.fill(child: PalcoFase(fase: fase, horizonte: .62, grade: false)),
           Positioned.fill(child: Container(color: const Color(0x2906070B))),
           Center(
             child: Container(
@@ -326,7 +315,7 @@ class _CacaBugPageState extends State<CacaBugPage> {
                 borderRadius: BorderRadius.circular(999),
               ),
               child: Text(
-                '${emojiDaFase(_fase)} FASE $_fase · ${nomeDaFase(_fase)}',
+                '${emojiDaFase(fase)} FASE $fase · ${nomeDaFase(fase)}',
                 style: const TextStyle(
                     color: Colors.white, fontSize: 12, fontWeight: FontWeight.w700),
               ),
@@ -335,28 +324,6 @@ class _CacaBugPageState extends State<CacaBugPage> {
         ]),
       ),
     );
-  }
-
-  Widget _relogioBarra() {
-    final urgente = _restante <= 3;
-    return Row(children: [
-      Icon(Icons.timer_outlined, size: 15, color: urgente ? Mixart.danger : Mixart.textMuted),
-      const SizedBox(width: 8),
-      Expanded(
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(999),
-          child: LinearProgressIndicator(
-            value: (_restante / _tempoTotal).clamp(0, 1),
-            minHeight: 7,
-            backgroundColor: Mixart.surfaceHi,
-            color: urgente ? Mixart.danger : Mixart.brand,
-          ),
-        ),
-      ),
-      const SizedBox(width: 8),
-      Text('${_restante.clamp(0, 99)}s',
-          style: Mixart.mono(size: 12, color: urgente ? Mixart.danger : Mixart.textMuted)),
-    ]);
   }
 
   Widget _codigo() {
@@ -376,6 +343,7 @@ class _CacaBugPageState extends State<CacaBugPage> {
   Widget _linha(int i) {
     final ehBug = i == _bug.linhaComBug;
     final escolhidaErrada = _revelado && _linhaEscolhida == i && !ehBug;
+    final esmagado = _revelado && ehBug && _acertou;
 
     Color? fundo;
     Color borda = Colors.transparent;
@@ -400,24 +368,33 @@ class _CacaBugPageState extends State<CacaBugPage> {
               border: Border.all(color: borda),
               borderRadius: BorderRadius.circular(10),
             ),
-            child: Row(children: [
-              SizedBox(
-                width: 26,
-                child: Text('${i + 1}',
-                    style: Mixart.mono(size: 11.5, color: Mixart.textFaint)),
-              ),
-              Expanded(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: CodigoRealcado(_bug.linhas[i], tamanho: 13.5),
+            child: Stack(clipBehavior: Clip.none, children: [
+              Row(children: [
+                SizedBox(
+                  width: 26,
+                  child: Text('${i + 1}',
+                      style: Mixart.mono(size: 11.5, color: Mixart.textFaint)),
                 ),
-              ),
-              if (_revelado && ehBug)
-                Text(_acertou ? '🐞 +$_ganho pts' : '🐞 era aqui',
-                    style: Mixart.ui(
-                        size: 11.5,
-                        weight: FontWeight.w700,
-                        color: _acertou ? Mixart.brand : Mixart.danger)),
+                Expanded(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: CodigoRealcado(_bug.linhas[i], tamanho: 13.5),
+                  ),
+                ),
+                if (_revelado && ehBug)
+                  Text(_acertou ? '🐞 +$_ganho pts' : '🐞 era aqui',
+                      style: Mixart.ui(
+                          size: 11.5,
+                          weight: FontWeight.w700,
+                          color: _acertou ? Mixart.brand : Mixart.danger)),
+              ]),
+              // 💥 o bug estilhaça na linha esmagada
+              if (esmagado)
+                Positioned(
+                  left: -30,
+                  top: -32,
+                  child: Estilhacos(cor: Mixart.brand, alcance: 40, semente: i),
+                ),
             ]),
           ),
         ),
@@ -429,7 +406,7 @@ class _CacaBugPageState extends State<CacaBugPage> {
     if (!_revelado) {
       return Align(
         alignment: Alignment.centerLeft,
-        child: Text('⌨️ os números 1–${_bug.linhas.length} escolhem a linha',
+        child: Text('⌨️ os números 1–${_bug.linhas.length} escolhem a linha · Esc pausa',
             style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
       );
     }
@@ -448,4 +425,125 @@ class _CacaBugPageState extends State<CacaBugPage> {
           overflow: TextOverflow.ellipsis),
     );
   }
+}
+
+/// O trecho de código num MONITOR com profundidade: moldura metálica com
+/// luz, tela com reflexo e scanlines sutis, LED e pé — o bug mora dentro.
+class _Monitor extends StatelessWidget {
+  final Widget child;
+  const _Monitor({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Container(
+        padding: const EdgeInsets.fromLTRB(10, 10, 10, 14),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          gradient: const LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [Color(0xFF394049), Color(0xFF232830), Color(0xFF14181E)],
+            stops: [0, .55, 1],
+          ),
+          boxShadow: const [
+            BoxShadow(color: Color(0x99000000), blurRadius: 26, offset: Offset(0, 14)),
+          ],
+          border: Border.all(color: const Color(0xFF4A525C), width: 1),
+        ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(Mixart.radiusMd),
+            child: Stack(children: [
+              child,
+              // reflexo de luz + scanlines por cima da tela (não bloqueia o clique)
+              Positioned.fill(
+                child: IgnorePointer(
+                  child: CustomPaint(painter: _TelaPainter()),
+                ),
+              ),
+            ]),
+          ),
+          const SizedBox(height: 6),
+          Row(mainAxisSize: MainAxisSize.min, children: [
+            Text('PAC·DART IDE',
+                style: Mixart.ui(size: 8, weight: FontWeight.w700, color: const Color(0xFF8A96A3))
+                    .copyWith(letterSpacing: 1.5)),
+            const SizedBox(width: 8),
+            Container(
+              width: 6,
+              height: 6,
+              decoration: const BoxDecoration(
+                color: Color(0xFF57C765),
+                shape: BoxShape.circle,
+                boxShadow: [BoxShadow(color: Color(0x9957C765), blurRadius: 6)],
+              ),
+            ),
+          ]),
+        ]),
+      ),
+      // o pé do monitor
+      CustomPaint(size: const Size(120, 22), painter: _PeDoMonitorPainter()),
+    ]);
+  }
+}
+
+class _TelaPainter extends CustomPainter {
+  @override
+  void paint(Canvas c, Size s) {
+    // reflexo diagonal no canto de cima
+    final r = Rect.fromLTWH(0, 0, s.width, s.height * .45);
+    c.drawRect(
+      r,
+      Paint()
+        ..shader = const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomCenter,
+          colors: [Color(0x14FFFFFF), Color(0x00FFFFFF)],
+        ).createShader(r),
+    );
+    // scanlines
+    final linha = Paint()..color = const Color(0x0DFFFFFF);
+    for (double y = 0; y < s.height; y += 3) {
+      c.drawRect(Rect.fromLTWH(0, y, s.width, 1), linha);
+    }
+  }
+
+  @override
+  bool shouldRepaint(_TelaPainter old) => false;
+}
+
+class _PeDoMonitorPainter extends CustomPainter {
+  @override
+  void paint(Canvas c, Size s) {
+    final cx = s.width / 2;
+    final pescoco = Rect.fromLTWH(cx - 12, 0, 24, s.height * .55);
+    c.drawRect(
+      pescoco,
+      Paint()
+        ..shader = const LinearGradient(
+          colors: [Color(0xFF4A525C), Color(0xFF2A3038), Color(0xFF4A525C)],
+        ).createShader(pescoco),
+    );
+    final base = RRect.fromRectAndRadius(
+        Rect.fromLTWH(cx - s.width / 2, s.height * .5, s.width, s.height * .5), const Radius.circular(8));
+    c.drawRRect(
+      base,
+      Paint()
+        ..shader = const LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [Color(0xFF3B434C), Color(0xFF1B2026)],
+        ).createShader(base.outerRect),
+    );
+    c.drawOval(
+      Rect.fromLTWH(cx - s.width * .7, s.height * .8, s.width * 1.4, s.height * .5),
+      Paint()
+        ..color = Colors.black.withValues(alpha: .35)
+        ..maskFilter = const ui.MaskFilter.blur(ui.BlurStyle.normal, 6),
+    );
+  }
+
+  @override
+  bool shouldRepaint(_PeDoMonitorPainter old) => false;
 }
