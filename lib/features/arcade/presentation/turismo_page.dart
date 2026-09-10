@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -72,6 +73,11 @@ class _TurismoPageState extends State<TurismoPage>
   /// 📖 Tutorial da 1ª corrida (por modo) e 🗺️ o traçado pro minimapa.
   bool _tutorial = false;
   List<Offset> _tracado = const [];
+
+  /// A cena 3D está pronta pra largar? (sem 3D, sempre; com 3D, quando o
+  /// JS terminou de carregar tráfego, texturas e shaders — ou após 60 s)
+  bool _cenaPronta = true;
+  Timer? _esperaCena;
 
   /// 👻 O fantasma da pista atual, 📊 as estatísticas e 🏆 os troféus novos.
   VoltaFantasma? _fantasma;
@@ -249,6 +255,7 @@ class _TurismoPageState extends State<TurismoPage>
   @override
   void dispose() {
     _ticker.dispose();
+    _esperaCena?.cancel();
     _foco.dispose();
     Sons.motorParar();
     _publicarParcial();
@@ -286,6 +293,10 @@ class _TurismoPageState extends State<TurismoPage>
       _fantasma = fantasma;
       _bateuFantasma = false;
       _trofeusNovos = const [];
+      // a contagem 3-2-1 só começa com a cena pronta (o loading fica na tela)
+      _cenaPronta = !Vista3D.disponivel;
+      _esperaCena?.cancel();
+      if (!_cenaPronta) _esperaCena = Timer(const Duration(seconds: 60), _cenaFicouPronta);
       _corridaId++;
       _gas = false;
       _freio = false;
@@ -298,6 +309,12 @@ class _TurismoPageState extends State<TurismoPage>
       _campeao = false;
       pausado = false;
     });
+  }
+
+  void _cenaFicouPronta() {
+    if (!mounted || _cenaPronta) return;
+    _esperaCena?.cancel();
+    setState(() => _cenaPronta = true);
   }
 
   void _largada() {
@@ -449,7 +466,7 @@ class _TurismoPageState extends State<TurismoPage>
                 if (_tela == _Tela.campeonato || e == null) _telaCampeonato() else _telaCorrida(e),
                 if (_tutorial && _pista != null)
                   TutorialTurismo(porSetas: _modoSetas, onLargar: _fecharTutorial)
-                else if (_contagem && _pista != null)
+                else if (_contagem && _cenaPronta && _pista != null)
                   ContagemRegressiva(
                     onFim: _largada,
                     legenda: '${emojiDaFase(_pista!.tema)} ${_pista!.nome} — '
@@ -895,6 +912,7 @@ class _TurismoPageState extends State<TurismoPage>
                 qualidade: _qualidade,
                 tremor: _tremor,
                 fantasma: _fantasma,
+                onPronto: _cenaFicouPronta,
               ),
             ),
             Positioned(left: 12, top: 12, right: 136, child: _barraProgresso(e)),
@@ -957,7 +975,8 @@ class _TurismoPageState extends State<TurismoPage>
           child: SizedBox(
             height: 12,
             child: LayoutBuilder(builder: (context, box) {
-              final x = e.progresso * (box.maxWidth - 10);
+              // pixel inteiro: a bolinha só repinta quando anda de verdade
+              final x = (e.progresso * (box.maxWidth - 10)).floorToDouble();
               return Stack(children: [
                 Positioned(
                   left: 0,

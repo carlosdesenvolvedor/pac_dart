@@ -141,12 +141,17 @@ class CabecalhoJogo extends StatelessWidget {
           ],
         ]);
       }
+      // largo: os chips ficam numa linha só (até sobrar ~220 px pro título,
+      // que corta com reticências); só embrulham se realmente não couberem
       return Row(children: [
         voltar,
         const SizedBox(width: 14),
         Expanded(child: titulos),
         const SizedBox(width: 10),
-        Flexible(child: Wrap(spacing: 8, runSpacing: 8, alignment: WrapAlignment.end, children: chips)),
+        ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: (box.maxWidth - 260).clamp(200.0, double.infinity)),
+          child: Wrap(spacing: 8, runSpacing: 8, alignment: WrapAlignment.end, children: chips),
+        ),
         if (acao != null) ...[const SizedBox(width: 10), acao!],
       ]);
     });

@@ -30,7 +30,7 @@ class _VelocimetroPainter extends CustomPainter {
   void paint(Canvas c, Size s) => pintarVelocimetro(c, Offset(s.width / 2, s.height / 2), s.width / 2, fracao, kmh);
 
   @override
-  bool shouldRepaint(_VelocimetroPainter old) => old.fracao != fracao || old.kmh != kmh;
+  bool shouldRepaint(_VelocimetroPainter old) => (old.fracao - fracao).abs() > 0.004 || old.kmh != kmh;
 }
 
 /// Pinta o velocímetro num canvas qualquer (compartilhado com o painter 2D).

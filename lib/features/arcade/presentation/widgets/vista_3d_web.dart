@@ -21,6 +21,9 @@ extension type _Turismo3d(JSObject _) implements JSObject {
   external bool get pronto;
   external String? get erro;
   external double get progresso;
+  external String? get qualidadeEfetiva;
+  external String? get aviso;
+  external String? get gpu;
 }
 
 /// Setas das faixas, como no painel 3D.
@@ -53,6 +56,11 @@ class Vista3D extends StatefulWidget {
 
   /// 👻 A melhor volta da pista (carro translúcido), se houver.
   final VoltaFantasma? fantasma;
+
+  /// Chamado UMA vez quando a cena está pronta pra largada (tráfego,
+  /// texturas e shaders carregados) — ou quando o 3D falhou e a vista em
+  /// Canvas assumiu. A página segura a contagem 3-2-1 até lá.
+  final VoidCallback? onPronto;
   const Vista3D({
     super.key,
     required this.engine,
@@ -66,6 +74,7 @@ class Vista3D extends StatefulWidget {
     this.qualidade = 'auto',
     this.tremor = true,
     this.fantasma,
+    this.onPronto,
   });
 
   static bool get disponivel => _turismo3dObj != null;
@@ -90,6 +99,7 @@ class _Vista3DState extends State<Vista3D> {
   @override
   void initState() {
     super.initState();
+    _ligarRelogioDeCarga();
     final obj = _turismo3dObj;
     if (obj == null) {
       _falhou = true;
@@ -142,9 +152,13 @@ class _Vista3DState extends State<Vista3D> {
       ],
     };
     js.montar(canvas, config.jsify()!).toDart.then((_) {
-      if (mounted) setState(() => _pronto = js.pronto);
+      if (!mounted) return;
+      setState(() => _pronto = js.pronto);
+      if (js.pronto) _avisarPronto();
     }).catchError((Object erro) {
-      if (mounted) setState(() => _falhou = true);
+      if (!mounted) return;
+      setState(() => _falhou = true);
+      _avisarPronto();
     });
   }
 
@@ -236,7 +250,17 @@ class _Vista3DState extends State<Vista3D> {
           },
       ],
     }.jsify()!);
-    if (!_pronto && js.pronto) setState(() => _pronto = true);
+    if (!_pronto && js.pronto) {
+      setState(() => _pronto = true);
+      _avisarPronto();
+    }
+  }
+
+  bool _avisou = false;
+  void _avisarPronto() {
+    if (_avisou) return;
+    _avisou = true;
+    widget.onPronto?.call();
   }
 
   /// Do portal anterior ao 5º à frente: é o que o JS precisa animar.
@@ -256,25 +280,73 @@ class _Vista3DState extends State<Vista3D> {
 
   Timer? _relogioCarga;
 
-  /// Tela de carga: barra com o progresso real (céu → pista → carro → tráfego).
-  Widget _carregando() {
+  /// Aviso discreto nos primeiros segundos: o nível de qualidade caiu
+  /// sozinho (GPU fraca) ou o navegador está sem aceleração de hardware.
+  Widget _avisoQualidade() {
+    final js = _js;
+    if (js == null) return const SizedBox.shrink();
+    final efetiva = js.qualidadeEfetiva;
+    final aviso = js.aviso;
+    String? texto;
+    if (aviso == 'software') {
+      texto = '⚠️ O navegador está sem aceleração de hardware — ative em chrome://settings/system pra fluir';
+    } else if (efetiva != null && efetiva != widget.qualidade && !(widget.qualidade == 'auto' && efetiva == 'alta')) {
+      texto = '⚡ Modo ${efetiva == 'minima' ? 'mínimo' : 'leve'} ativado automaticamente pra manter a fluidez';
+    }
+    if (texto == null) return const SizedBox.shrink();
+    return Positioned(
+      left: 12,
+      bottom: 16,
+      right: 140,
+      child: Align(
+        alignment: Alignment.bottomLeft,
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          decoration: BoxDecoration(color: const Color(0xCC10131A), borderRadius: BorderRadius.circular(999)),
+          child: Text(texto, style: Mixart.ui(size: 11, weight: FontWeight.w600, color: Colors.white)),
+        ),
+      ),
+    );
+  }
+
+  /// Enquanto carrega, um relógio próprio: tenta montar a cena (o canvas do
+  /// platform view só entra no DOM depois do 1º frame — e a página não
+  /// redesenha sozinha enquanto espera a cena ficar pronta) e redesenha a
+  /// barra de progresso.
+  void _ligarRelogioDeCarga() {
     _relogioCarga ??= Timer.periodic(const Duration(milliseconds: 150), (t) {
-      if (!mounted || _pronto) {
+      if (!mounted || _pronto || _falhou) {
         t.cancel();
         _relogioCarga = null;
         return;
       }
+      if (!_montado) _montar();
+      final js = _js;
+      if (js != null && _montado && js.pronto && !_pronto) {
+        setState(() => _pronto = true);
+        _avisarPronto();
+        return;
+      }
       setState(() {});
     });
+  }
+
+  /// Tela de carga: barra com o progresso real (céu → pista → carro → tráfego).
+  Widget _carregando() {
+    _ligarRelogioDeCarga();
     final js = _js;
     final progresso = js == null ? 0.0 : js.progresso.clamp(0.0, 1.0);
     final etapa = progresso < .2
         ? 'preparando o motor 3D'
         : progresso < .45
             ? 'baixando o céu'
-            : progresso < .85
-                ? 'construindo a pista e o carro'
-                : 'chamando o tráfego';
+            : progresso < .72
+                ? 'construindo a pista, o carro e o cenário'
+                : progresso < .82
+                    ? 'chamando o tráfego'
+                    : progresso < .9
+                        ? 'baixando as texturas'
+                        : 'aquecendo os shaders e medindo a fluidez';
     return Positioned.fill(
       child: Container(
         color: const Color(0xEE0B0E14),
@@ -327,6 +399,7 @@ class _Vista3DState extends State<Vista3D> {
           ),
         ),
         if (!_pronto) _carregando(),
+        if (_pronto && widget.relogio < 9) _avisoQualidade(),
         Positioned(
           right: 16,
           bottom: 16,

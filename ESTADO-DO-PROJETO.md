@@ -629,6 +629,31 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
   Agora, abaixo de 640 px, vira Column (voltar · título · ação na 1ª linha; chips numa linha
   própria) e, largo, os chips ficam num `Flexible` alinhado à direita. Vale pros 6 jogos.
 
+- **🏎️ DART TURISMO — rodada 10: desempenho ("no Windows a opção de escrever vai travando") (set/2026)**
+  Diagnóstico: a corrida era marcada `pronto` ANTES do tráfego carregar (`construirObstaculos`
+  vinha depois), e as texturas 1k, os 4 carros do tráfego e a compilação dos shaders
+  aconteciam nos primeiros segundos de corrida — no Windows o Chrome roda WebGL via ANGLE
+  (GLSL→HLSL), onde cada material novo custa um engasgo no 1º frame em que aparece; somado ao
+  preset Alta (dpr 2, sombra 2048) numa GPU integrada, dava "vai travando" logo no começo.
+    - **Largada só com tudo pronto**: `LoadingManager` único (`gerente`) em TextureLoader,
+      GLTFLoader e RGBELoader → `esperarCarregamento(30 s)`; depois `aquecer()` =
+      `renderer.compileAsync` + 3 renders (com o tráfego visível) pra subir texturas/PMREM e
+      compilar shaders; depois `medirDesempenho()` (mediana de 24 frames) e só então
+      `api.pronto`. O Dart segura a **contagem 3-2-1 até `onPronto`** (`_cenaPronta`; sem 3D é
+      imediato; timer de segurança de 60 s). Etapas novas na tela de carga ("baixando as
+      texturas", "aquecendo os shaders e medindo a fluidez").
+    - **Qualidade adaptativa em 3 níveis** (alta · leve · mínima): `sondarGpu()` lê
+      `UNMASKED_RENDERER` num contexto descartável ANTES do renderer — SwiftShader/"software"
+      → mínima (sem sombras, sem antialias, dpr 1) + aviso "sem aceleração de hardware";
+      Intel HD/UHD, Mali, Adreno antigo → começa em leve. `medirDesempenho` (> 24 ms → leve,
+      > 40 ms → mínima) e o `vigiarDesempenho` por frame (mediana de 150 frames > 26 ms →
+      desce um nível, 6 s de calma) ajustam `aplicarQualidade` (dpr, sombras, tamanho do
+      shadow map). Pill "⚡ Modo leve ativado automaticamente" nos 9 primeiros segundos.
+      `debug()` mostra `gpu`, `frameMs` e `qualidade` efetiva.
+    - **Menos trabalho por frame/tecla**: placas de palavra em canvas 768×240 (pintura lógica
+      1024×320 via `setTransform`), minimapa repinta a cada 4 m, velocímetro por 0,4% e a
+      bolinha do progresso em pixel inteiro; textura 4096 px do AE86 reduzida a 1024.
+
 ---
 
 ## 🏗️ Arquitetura (arquivos-chave)

@@ -125,5 +125,6 @@ class _PintorMinimapa extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(covariant _PintorMinimapa old) => old.indice != indice || old.tracado != tracado;
+  bool shouldRepaint(covariant _PintorMinimapa old) =>
+      (old.indice - indice).abs() >= 0.5 || old.tracado != tracado; // meio segmento = 4 m
 }

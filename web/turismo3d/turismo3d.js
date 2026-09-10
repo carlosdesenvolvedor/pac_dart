@@ -44,8 +44,117 @@ let carro = null, faroisLuz = [], fantasma = null;
 let portais = []; // { grupo, placas:[{tex, ctx, canvas, faixa, estiloAtual}], flags }
 let obstaculos = [];
 let modelosCache = {};
-let texLoader = new THREE.TextureLoader();
+// Um LoadingManager só: dá pra ESPERAR tudo (texturas, glTF, HDRI) antes da
+// largada — e é isso que evita os engasgos dos primeiros segundos
+// (cada textura que chega é um upload pra GPU no meio da corrida).
+const gerente = new THREE.LoadingManager();
+let carregando = false, esperandoCarga = [];
+gerente.onStart = () => { carregando = true; };
+gerente.onLoad = () => { carregando = false; for (const r of esperandoCarga.splice(0)) r(); };
+gerente.onError = (url) => console.warn('[turismo3d] falhou:', url);
+function esperarCarregamento(ms) {
+  if (!carregando) return Promise.resolve();
+  return new Promise((res) => {
+    esperandoCarga.push(res);
+    setTimeout(res, ms);
+  });
+}
+let texLoader = new THREE.TextureLoader(gerente);
 let gltfLoader = null;
+
+// ---------- GPU e qualidade adaptativa ----------
+// Sonda a GPU num contexto descartável ANTES de criar o renderer: sem
+// aceleração (SwiftShader) ou GPU integrada fraca começa em nível mais leve;
+// depois uma medição real (mediana de 24 frames com a cena pronta) e um
+// vigia durante a corrida rebaixam o nível se o frame passar de ~26 ms.
+function sondarGpu() {
+  try {
+    const c = document.createElement('canvas');
+    const gl = c.getContext('webgl2') || c.getContext('webgl');
+    if (!gl) return { nome: '', software: false, fraca: false };
+    const ext = gl.getExtension('WEBGL_debug_renderer_info');
+    const nome = String(ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER));
+    const l = gl.getExtension('WEBGL_lose_context');
+    if (l) l.loseContext();
+    const software = /swiftshader|software|llvmpipe|basic render|microsoft basic/i.test(nome);
+    const fraca = software || /intel\(r\) (hd|uhd) graphics|intel hd|intel uhd|mali-|adreno [1-5]|powervr/i.test(nome);
+    return { nome, software, fraca };
+  } catch (e) {
+    return { nome: '', software: false, fraca: false };
+  }
+}
+let nivelQualidade = 'alta'; // alta · leve · minima
+function aplicarQualidade(nivel) {
+  nivelQualidade = nivel;
+  api.qualidadeEfetiva = nivel;
+  if (!renderer) return;
+  const dpr = window.devicePixelRatio || 1;
+  renderer.setPixelRatio(nivel === 'alta' ? Math.min(dpr, 2) : (nivel === 'leve' ? Math.min(dpr, 1.25) : 1));
+  if (ultimoW && ultimoH) renderer.setSize(ultimoW, ultimoH, false);
+  const sombras = nivel !== 'minima';
+  renderer.shadowMap.enabled = sombras;
+  if (sol) {
+    sol.castShadow = sombras;
+    const n = nivel === 'alta' ? 2048 : 1024;
+    if (sol.shadow.mapSize.x !== n) {
+      sol.shadow.mapSize.set(n, n);
+      if (sol.shadow.map) { sol.shadow.map.dispose(); sol.shadow.map = null; }
+    }
+  }
+  console.info('[turismo3d] qualidade:', nivel);
+}
+function medirFrames(n) {
+  return new Promise((res) => {
+    const ts = [];
+    let ultimo = performance.now();
+    const f = () => {
+      const t = performance.now();
+      ts.push(t - ultimo);
+      ultimo = t;
+      if (ts.length < n) requestAnimationFrame(f); else res(ts);
+    };
+    requestAnimationFrame(f);
+  });
+}
+function mediana(lista) {
+  const o = [...lista].sort((a, b) => a - b);
+  return o.length ? o[Math.floor(o.length / 2)] : 0;
+}
+async function medirDesempenho() {
+  const ts = await medirFrames(30);
+  const m = mediana(ts.slice(6));
+  api.frameMs = +m.toFixed(1);
+  if (m > 40 && nivelQualidade !== 'minima') aplicarQualidade('minima');
+  else if (m > 24 && nivelQualidade === 'alta') aplicarQualidade('leve');
+}
+let vigiaTempos = [], vigiaAte = 0, ultimoQuadroMs = 0;
+function vigiarDesempenho() {
+  const agora = performance.now();
+  const dt = ultimoQuadroMs ? agora - ultimoQuadroMs : 16;
+  ultimoQuadroMs = agora;
+  if (!api.pronto || agora < vigiaAte || dt > 500) return;
+  vigiaTempos.push(dt);
+  if (vigiaTempos.length < 150) return;
+  const m = mediana(vigiaTempos);
+  vigiaTempos = [];
+  api.frameMs = +m.toFixed(1);
+  if (m > 26 && nivelQualidade !== 'minima') {
+    aplicarQualidade(nivelQualidade === 'alta' ? 'leve' : 'minima');
+    vigiaAte = agora + 6000;
+  }
+}
+// compila os shaders e força os uploads de textura/PMREM antes da largada
+// (no Windows o ANGLE traduz GLSL→HLSL: cada material novo custava um
+// engasgo no primeiro frame em que aparecia)
+async function aquecer() {
+  try {
+    if (renderer.compileAsync) await renderer.compileAsync(scene, camera); else renderer.compile(scene, camera);
+  } catch (e) { console.warn('[turismo3d] compile', e); }
+  const salvo = [];
+  for (const o of obstaculos) { salvo.push(o.visible); o.visible = true; }
+  try { for (let i = 0; i < 3; i++) renderer.render(scene, camera); } catch (e) { console.warn('[turismo3d] aquecer', e); }
+  obstaculos.forEach((o, i) => { o.visible = salvo[i]; });
+}
 let camPos = new THREE.Vector3(), camAlvo = new THREE.Vector3();
 let tremor = 0;
 const api = { pronto: false, erro: null, progresso: 0 };
@@ -834,7 +943,7 @@ function atualizarLuzes(posicao) {
 // ---------- ambiente ----------
 function carregarCeu(tema) {
   return new Promise((resolve) => {
-    new RGBELoader().load(`assets3d/hdri/${tema.hdri}${qualidadeAlta ? '_2k' : ''}.hdr`, (tex) => {
+    new RGBELoader(gerente).load(`assets3d/hdri/${tema.hdri}${qualidadeAlta ? '_2k' : ''}.hdr`, (tex) => {
       tex.mapping = THREE.EquirectangularReflectionMapping;
       scene.background = tex;
       scene.environment = tex;
@@ -854,11 +963,21 @@ async function montar(canvas, config) {
   api.pronto = false;
   api.erro = null;
   api.progresso = 0.05;
-  qualidadeAlta = resolverQualidade(config.qualidade || 'auto');
+  const gpu = sondarGpu();
+  api.gpu = gpu.nome;
+  api.aviso = gpu.software ? 'software' : null;
+  const pref = config.qualidade || 'auto';
+  if (pref === 'alta') nivelQualidade = 'alta';
+  else if (pref === 'leve') nivelQualidade = 'leve';
+  else nivelQualidade = gpu.software ? 'minima' : ((gpu.fraca || !resolverQualidade('auto')) ? 'leve' : 'alta');
+  qualidadeAlta = nivelQualidade === 'alta';
+  api.qualidadeEfetiva = nivelQualidade;
+  api.frameMs = null;
+  vigiaTempos = []; vigiaAte = 0; ultimoQuadroMs = 0;
 
-  renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, qualidadeAlta ? 2 : 1.5));
-  renderer.shadowMap.enabled = true;
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: nivelQualidade !== 'minima', powerPreference: 'high-performance' });
+  renderer.setPixelRatio(nivelQualidade === 'alta' ? Math.min(window.devicePixelRatio, 2) : (nivelQualidade === 'leve' ? Math.min(window.devicePixelRatio, 1.25) : 1));
+  renderer.shadowMap.enabled = nivelQualidade !== 'minima';
   renderer.shadowMap.type = THREE.PCFShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = cfg.tema.exposicao;
@@ -871,6 +990,7 @@ async function montar(canvas, config) {
   sol = new THREE.DirectionalLight(cfg.tema.solCor, cfg.tema.solForca);
   sol.castShadow = true;
   sol.shadow.mapSize.set(qualidadeAlta ? 2048 : 1024, qualidadeAlta ? 2048 : 1024);
+  sol.castShadow = nivelQualidade !== 'minima';
   sol.shadow.camera.near = 1; sol.shadow.camera.far = 160;
   sol.shadow.camera.left = -30; sol.shadow.camera.right = 30;
   sol.shadow.camera.top = 40; sol.shadow.camera.bottom = -40;
@@ -885,7 +1005,7 @@ async function montar(canvas, config) {
 
   const draco = new DRACOLoader();
   draco.setDecoderPath('lib3d/addons/libs/draco/gltf/');
-  gltfLoader = new GLTFLoader();
+  gltfLoader = new GLTFLoader(gerente);
   gltfLoader.setDRACOLoader(draco);
 
   try {
@@ -976,16 +1096,25 @@ async function montar(canvas, config) {
         faroisLuz.push(farol);
       }
     }
-    api.progresso = 0.7;
+    api.progresso = 0.62;
     await construirCenario();
-    api.progresso = 0.85;
-    api.pronto = true;
+    api.progresso = 0.72;
   } catch (e) {
     console.error('carro', e);
     api.erro = String(e);
   }
-  await construirObstaculos();
+  // TUDO que a corrida usa entra ANTES da largada: tráfego, texturas,
+  // shaders compilados e uma medição de desempenho — senão os primeiros
+  // segundos engasgam enquanto o resto chega (pior no Windows/ANGLE)
+  try { await construirObstaculos(); } catch (e) { console.warn('[turismo3d] tráfego', e); }
+  api.progresso = 0.82;
+  await esperarCarregamento(30000);
+  api.progresso = 0.9;
+  await aquecer();
+  api.progresso = 0.96;
+  await medirDesempenho();
   api.progresso = 1;
+  api.pronto = true;
 }
 
 // ---------- painéis das palavras no cenário ----------
@@ -996,7 +1125,9 @@ let paineis = [];
 function construirPainel() {
   paineis = [];
   for (let k = 0; k < 2; k++) {
-    const ct = canvasTex(1024, 320, (ctx, w, h) => ctx.clearRect(0, 0, w, h));
+    // 768×240 físicos pintados em coordenadas lógicas de 1024×320: 44% menos
+    // bytes por upload a cada tecla digitada
+    const ct = canvasTex(768, 240, (ctx, w, h) => ctx.clearRect(0, 0, w, h));
     const mat = new THREE.MeshBasicMaterial({ map: ct.tex, transparent: true, depthTest: false, depthWrite: false });
     const mesh = new THREE.Mesh(new THREE.PlaneGeometry(4.4, 1.375), mat);
     mesh.renderOrder = 999;
@@ -1013,6 +1144,7 @@ function pintarPainel(painel, pal) {
   if (chave === painel.chave) return;
   painel.chave = chave;
   const ctx = painel.ctx, w = 1024, h = 320;
+  ctx.setTransform(0.75, 0, 0, 0.75, 0, 0);
   ctx.clearRect(0, 0, w, h);
   if (!palavra) { painel.tex.needsUpdate = true; return; }
   const gas = pal.tipo === 'gas';
@@ -1291,6 +1423,7 @@ function posicionarCamera(e, f, px, pz, fracao, dt) {
 }
 
 function quadro() {
+  vigiarDesempenho();
   const dt = Math.min(relogio.getDelta(), 0.1);
   const e = estado || { posicao: 0, velocidade: 0, velMax: 30, x: 0, xAlvo: 0, impacto: 0, boost: 0 };
   const q = pose(e.posicao);
@@ -1382,7 +1515,7 @@ function debug() {
     camera: camera ? camera.position.toArray().map((v) => +v.toFixed(2)) : null,
     modoCamera: estado ? estado.camera : null,
     musica: musicaUrl, predios: nPredios, cenario: nCenario, lotesCenario: cenarioMalhas.length,
-    qualidade: qualidadeAlta ? 'alta' : 'leve', tremor: estado ? estado.tremor : null,
+    qualidade: nivelQualidade, gpu: api.gpu, frameMs: api.frameMs, aviso: api.aviso, tremor: estado ? estado.tremor : null,
     fantasma: fantasma ? { visivel: fantasma.visible, pos: fantasma.position.toArray().map((v) => +v.toFixed(1)) } : null,
     estado: { posicao: e.posicao, velocidade: e.velocidade, x: e.x },
     obstaculos: obstaculos.length,
