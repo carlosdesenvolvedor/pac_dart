@@ -576,6 +576,34 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
       como bolinha; canto superior direito da vista. Teste do traçado em `turismo_test.dart`.
     - Seção "⚙️ OPÇÕES" no campeonato: 🎸 rock, 📳 tremor, qualidade Auto/Alta/Leve.
 
+- **🏎️ DART TURISMO — rodada 7: prédios com fachadas fotográficas, cenário real por tema, pneu cantando (set/2026)**
+  Pedido: "prédios mais reais, pode fazer download de fotos de prédio". Fontes CC0 encontradas
+  pela API: **ambientCG** (materiais `Facade0xx` com cor + normal + rugosidade + **emissão** das
+  janelas acesas — `https://ambientcg.com/get?file=Facade002_1K-JPG.zip`) e **Poly Haven**
+  (`api.polyhaven.com/files/<id>` → `gltf.1k.gltf.url` + `include` com .bin e texturas; os
+  modelos pequenos de 1–5 MB: shrub_03/04, rock_moss_set_01, tree_stump_01,
+  namaqualand_boulder_04, rock_09, quiver_tree_02, boulder_01, dead_tree_trunk, moon_rock_01/03/05).
+    - **Cidade**: `construirCidade()` agora gera 4 paredes por prédio (`parede()` = PlaneGeometry
+      com **UV em metros** — `tile` é o tamanho real da foto: 24 m nas de vidro, 16 m na de
+      tijolo, 48–64 m nas de arranha-céu noturno) e **funde** tudo de uma mesma fachada numa
+      geometria só (`fundir()`, sem BufferGeometryUtils): 5 fachadas + telhados = **6 draw calls**
+      pra 390 prédios, 60 fps. Deslocamento de UV por prédio pra vizinhos não acenderem as
+      mesmas janelas; as fotos de arranha-céu viram torres de 40–82 m. Pastas
+      `web/assets3d/fachadas/{1k,512}/<id>/{color,nor,rough,emis}.jpg` (Alta usa 1k).
+    - **Cenário por tema** (`cfg.tema.cenario` → `construirCenario()`): modelos glTF reais
+      instanciados ao longo da pista, normalizados pelo maior lado e sorteados em `tam` (metros,
+      tabela `CENARIO_MODELOS`); 55% ficam na beira (4,5–13,5 m do guard-rail), o resto até 38 m.
+      ⚠️ Um `InstancedMesh` da pista inteira desenha tudo sempre (bounding sphere gigante) —
+      as instâncias são agrupadas por **trecho de 320 m** e `computeBoundingSphere()` deixa o
+      frustum culling descartar o que está longe. Campina: arbustos/rochas/tocos; deserto:
+      rochas + árvore-aljava; neve: rochas + troncos secos; vulcão/espaço: rochas lunares.
+    - **Chão que acompanha o carro**: o plano de 4 km pulava fora nas pistas de 12 km — agora
+      salta de tile em tile (`4000 / repChao`) atrás do carro, sem a textura deslizar.
+    - **🛞 Pneu cantando** na troca de faixa (`derrapagem.m4a`, "Car tire squeal skid loop" de
+      audible-edge, CC BY 3.0): fatia de 0,6 s do loop em posição aleatória, volume ∝ velocidade.
+    - `web/assets3d` foi de 89 → 135 MB (tudo carregado por corrida, sob demanda). Créditos
+      novos na tela do campeonato e em `CREDITOS.txt` de cada pasta.
+
 ---
 
 ## 🏗️ Arquitetura (arquivos-chave)
@@ -703,8 +731,9 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
   Push só quando o usuário pedir.
 - **Fila do Dart Turismo (pedidos do usuário, set/2026)**: ✅ pistas 4×, ✅ rock por fase,
   ✅ cidade, ✅ engenheira IA, ✅ vento, ✅ qualidade alta/leve, ✅ tremor opcional, ✅ tutorial,
-  ✅ minimapa. Faltam: cenário por tema (árvores/rochas — modelos realistas são pesados);
-  carro-fantasma da melhor volta; estatísticas/troféus; som de derrapagem gravado.
+  ✅ minimapa, ✅ fachadas fotográficas, ✅ cenário real por tema, ✅ pneu cantando. Faltam:
+  carro-fantasma da melhor volta; estatísticas/troféus; árvores frondosas realistas (as do Poly
+  Haven têm .bin de 100–480 MB — inviável na web).
 - Adicionar os **topics** no GitHub (flutter, dart, bloc, typing-game, education, pacman) — precisa do agente do Chrome no site.
 - (opcional) Sincronizar o **tema por usuário** (hoje é por dispositivo, no shared_preferences).
 - (opcional) Sons de arcade (waka-waka), mais joguinhos (o hub em `arcade_page.dart` é uma lista — é só acrescentar o card + página), troféus/temporadas no ranking (hoje é all-time), avatar/apelido editável.
@@ -712,7 +741,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
-## 🧪 Testes (188, todos passando)
+## 🧪 Testes (187, todos passando)
 
 `test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines, baralho progressivo por fase sem repetir, combo do TiroEngine) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, Esc pausando a Corrida (CPU congela frame a frame — no flutter_test um AnimationController gasta 2 frames por ciclo) e retomando, Caça-Bug esmagando a linha certa, largada 3-2-1 antes de qualquer interação, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). E **previa_viva** (regressão da "tela de criando junto": app Flutter do Mão na Massa TEM a PreviewAoVivo lado a lado/empilhada e ela sobrevive à digitação; projeto Dart console NÃO tem — é por design, não bug). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).

@@ -10,12 +10,17 @@ import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
 const TEMAS = {
-  1: { hdri: 'campina', chao: 'leafy_grass', repChao: 260, exposicao: 1.0, sol: [-0.5, 0.75, 0.35], solCor: 0xfff1d6, solForca: 2.4, noturno: false, neblina: 0xdbe9ff, densidade: 0.0016 },
-  2: { hdri: 'deserto', chao: 'sand_01', repChao: 220, exposicao: 1.05, sol: [0.55, 0.6, -0.3], solCor: 0xffe6c0, solForca: 2.6, noturno: false, neblina: 0xf3dcb4, densidade: 0.0014 },
+  1: { hdri: 'campina', chao: 'leafy_grass', repChao: 260, exposicao: 1.0, sol: [-0.5, 0.75, 0.35], solCor: 0xfff1d6, solForca: 2.4, noturno: false, neblina: 0xdbe9ff, densidade: 0.0016,
+       cenario: { modelos: ['shrub_03', 'shrub_04', 'rock_moss_set_01', 'tree_stump_01'], pesos: [5, 4, 2, 1], passo: 9 } },
+  2: { hdri: 'deserto', chao: 'sand_01', repChao: 220, exposicao: 1.05, sol: [0.55, 0.6, -0.3], solCor: 0xffe6c0, solForca: 2.6, noturno: false, neblina: 0xf3dcb4, densidade: 0.0014,
+       cenario: { modelos: ['namaqualand_boulder_04', 'rock_09', 'quiver_tree_02'], pesos: [3, 3, 2], passo: 13 } },
   3: { hdri: 'cidade', chao: 'concrete_floor_02', repChao: 200, exposicao: 0.85, sol: [0.3, 0.7, 0.4], solCor: 0x9fb7ff, solForca: 0.35, noturno: true, neblina: 0x141a28, densidade: 0.0022, lampadas: true, cidade: true },
-  4: { hdri: 'neve', chao: 'snow_02', repChao: 240, exposicao: 1.0, sol: [-0.35, 0.65, 0.5], solCor: 0xffffff, solForca: 2.0, noturno: false, neblina: 0xeaf3ff, densidade: 0.0020 },
-  5: { hdri: 'vulcao', chao: 'dark_rock', repChao: 200, exposicao: 1.05, sol: [0.7, 0.35, 0.2], solCor: 0xff9a6a, solForca: 1.6, noturno: true, neblina: 0x3a1c14, densidade: 0.0024 },
-  6: { hdri: 'espaco', chao: 'dark_rock', repChao: 200, exposicao: 0.95, sol: [0.1, 0.8, 0.3], solCor: 0xc8d8ff, solForca: 0.5, noturno: true, neblina: 0x0a0e1e, densidade: 0.0015 },
+  4: { hdri: 'neve', chao: 'snow_02', repChao: 240, exposicao: 1.0, sol: [-0.35, 0.65, 0.5], solCor: 0xffffff, solForca: 2.0, noturno: false, neblina: 0xeaf3ff, densidade: 0.0020,
+       cenario: { modelos: ['boulder_01', 'rock_09', 'dead_tree_trunk'], pesos: [2, 3, 2], passo: 19 } },
+  5: { hdri: 'vulcao', chao: 'dark_rock', repChao: 200, exposicao: 1.05, sol: [0.7, 0.35, 0.2], solCor: 0xff9a6a, solForca: 1.6, noturno: true, neblina: 0x3a1c14, densidade: 0.0024,
+       cenario: { modelos: ['moon_rock_01', 'moon_rock_03', 'moon_rock_05'], pesos: [1, 1, 1], passo: 15 } },
+  6: { hdri: 'espaco', chao: 'dark_rock', repChao: 200, exposicao: 0.95, sol: [0.1, 0.8, 0.3], solCor: 0xc8d8ff, solForca: 0.5, noturno: true, neblina: 0x0a0e1e, densidade: 0.0015,
+       cenario: { modelos: ['moon_rock_01', 'moon_rock_03', 'moon_rock_05'], pesos: [1, 1, 1], passo: 24 } },
 };
 
 // Carros (Sketchfab, CC Attribution — créditos no jogo). `giro` alinha a
@@ -32,7 +37,7 @@ const LARGURA_FAIXA = 3.7;
 const MEIA_PISTA = LARGURA_FAIXA * 1.5;
 const CURVA_RAD = 0.028; // curva 6 → raio ≈ 48 m; curva 1,5 → ≈ 190 m (segmentos de 8 m)
 
-let renderer, scene, camera, sol, relogio, luzCarro = null;
+let renderer, scene, camera, sol, relogio, luzCarro = null, chaoPlano = null;
 let cfg = null, estado = null, animId = 0, resizeObs = null;
 let centro = [], L = 8;
 let carro = null, faroisLuz = [];
@@ -192,7 +197,9 @@ function construirPista(tema) {
   plano.rotation.x = -Math.PI / 2;
   plano.position.y = -0.04;
   plano.receiveShadow = true;
+  plano.userData.tile = 4000 / tema.repChao;
   scene.add(plano);
+  chaoPlano = plano;
 
   // guard-rails: lâmina metálica + postes
   const metal = materialPbr('metal_plate', { repU: 1, repV: 1, rough: .5, metal: 1 });
@@ -581,86 +588,110 @@ async function construirObstaculos() {
 // PUNHADO de luzes reais existe — elas pulam pros postes mais próximos do
 // carro a cada frame (dezenas de PointLights travariam a GPU).
 // ---------- cidade construída ----------
-// Prédios procedurais dos dois lados da pista, seguindo as curvas: caixas
-// instanciadas (3 faixas de altura, pra janela não esticar) com fachada de
-// janelas pintada em canvas; à noite as janelas acendem (emissivo).
-let predios = [];
-function texturaFachada(andares, colunas, semente) {
-  let s = semente;
-  const rnd = () => { s = (s * 16807) % 2147483647; return s / 2147483647; };
-  const w = 256, h = 512;
-  const cw = w / colunas, ch = h / andares;
-  const base = canvasTex(w, h, (ctx) => {
-    const tom = 44 + Math.floor(rnd() * 50);
-    ctx.fillStyle = `rgb(${tom},${tom + 4},${tom + 12})`;
-    ctx.fillRect(0, 0, w, h);
-    for (let a = 0; a < andares; a++) {
-      for (let c = 0; c < colunas; c++) {
-        ctx.fillStyle = 'rgba(120,140,170,0.55)';
-        ctx.fillRect(c * cw + cw * .18, a * ch + ch * .2, cw * .64, ch * .56);
-      }
-    }
-    // faixa mais escura entre andares
-    ctx.fillStyle = 'rgba(0,0,0,0.25)';
-    for (let a = 0; a < andares; a++) ctx.fillRect(0, a * ch, w, ch * .06);
+// Prédios dos dois lados da pista seguindo as curvas, com FACHADAS
+// FOTOGRÁFICAS PBR (ambientCG, CC0: cor + normal + rugosidade + janelas
+// acesas no mapa de emissão). Cada prédio vira 4 paredes com UV em METROS
+// (tile = tamanho real da foto) e tudo de uma mesma fachada é fundido numa
+// geometria só: 5 fachadas + telhados = 6 draw calls pra cidade inteira.
+const FACHADAS = [
+  { id: 'facade002', tile: 24, alta: false },
+  { id: 'facade004', tile: 24, alta: false },
+  { id: 'facade018a', tile: 16, alta: false },
+  { id: 'facade008', tile: 64, alta: true },
+  { id: 'facade011', tile: 48, alta: true },
+];
+let predios = [], nPredios = 0;
+function materialFachada(f, noturno) {
+  const base = `assets3d/fachadas/${qualidadeAlta ? '1k' : '512'}/${f.id}/`;
+  const m = new THREE.MeshStandardMaterial({
+    map: textura(base + 'color.jpg', { srgb: true }),
+    normalMap: textura(base + 'nor.jpg'),
+    roughnessMap: textura(base + 'rough.jpg'),
+    emissive: 0xffffff,
+    emissiveMap: textura(base + 'emis.jpg', { srgb: true }),
+    emissiveIntensity: noturno ? 1.6 : 0.12,
+    roughness: 1,
+    metalness: 0.05,
+    color: 0x6a6f78, // até a foto chegar
   });
-  const luz = canvasTex(w, h, (ctx) => {
-    ctx.fillStyle = '#000';
-    ctx.fillRect(0, 0, w, h);
-    for (let a = 0; a < andares; a++) {
-      for (let c = 0; c < colunas; c++) {
-        if (rnd() < 0.42) {
-          const q = rnd();
-          ctx.fillStyle = q < .5 ? '#ffd88a' : (q < .8 ? '#fff4d6' : '#9fc4ff');
-          ctx.fillRect(c * cw + cw * .18, a * ch + ch * .2, cw * .64, ch * .56);
-        }
-      }
-    }
-  });
-  return { mapa: base.tex, luz: luz.tex };
+  m.map.onUpdate = () => { m.color.set(0xffffff); };
+  return m;
+}
+// parede: um plano com UV em metros (tile = tamanho real da foto) e um
+// deslocamento por prédio, pra dois vizinhos não acenderem as mesmas janelas
+function parede(w, h, tile, offU, offV) {
+  const g = new THREE.PlaneGeometry(w, h);
+  const uv = g.attributes.uv;
+  for (let i = 0; i < uv.count; i++) uv.setXY(i, uv.getX(i) * (w / tile) + offU, uv.getY(i) * (h / tile) + offV);
+  return g;
+}
+// funde geometrias indexadas (position/normal/uv) numa só
+function fundir(geos) {
+  let nv = 0, ni = 0;
+  for (const g of geos) { nv += g.attributes.position.count; ni += g.index.count; }
+  const pos = new Float32Array(nv * 3), nor = new Float32Array(nv * 3), uv = new Float32Array(nv * 2), idx = new Uint32Array(ni);
+  let ov = 0, oi = 0;
+  for (const g of geos) {
+    pos.set(g.attributes.position.array, ov * 3);
+    nor.set(g.attributes.normal.array, ov * 3);
+    uv.set(g.attributes.uv.array, ov * 2);
+    const ia = g.index.array;
+    for (let k = 0; k < ia.length; k++) idx[oi + k] = ia[k] + ov;
+    ov += g.attributes.position.count;
+    oi += ia.length;
+  }
+  const out = new THREE.BufferGeometry();
+  out.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  out.setAttribute('normal', new THREE.BufferAttribute(nor, 3));
+  out.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
+  out.setIndex(new THREE.BufferAttribute(idx, 1));
+  return out;
 }
 function construirCidade() {
-  const bandas = [
-    { andares: 4, colunas: 5, hMin: 11, hMax: 16 },
-    { andares: 9, colunas: 6, hMin: 20, hMax: 34 },
-    { andares: 16, colunas: 7, hMin: 38, hMax: 64 },
-  ];
   const noturno = cfg.tema.noturno;
-  const geo = new THREE.BoxGeometry(1, 1, 1);
-  geo.translate(0, 0.5, 0); // base no chão
   let s = 7;
   const rnd = () => { s = (s * 48271) % 2147483647; return s / 2147483647; };
-  const lotes = [];
   const total = centro.length * L;
+  const porFachada = FACHADAS.map(() => []);
+  const telhados = [];
+  nPredios = 0;
   for (let d = 30; d < total - 40; d += 26) {
     for (const lado of [-1, 1]) {
       if (rnd() < 0.12) continue; // um terreno vazio de vez em quando
+      const fi = Math.floor(rnd() * FACHADAS.length);
+      const f = FACHADAS[fi];
+      const larg = 14 + rnd() * 12, prof = 14 + rnd() * 10;
       const r1 = rnd();
-      const bandaI = r1 < .45 ? 0 : (r1 < .8 ? 1 : 2);
-      const banda = bandas[bandaI];
-      const larg = 14 + rnd() * 10, prof = 14 + rnd() * 10;
-      const alt = banda.hMin + rnd() * (banda.hMax - banda.hMin);
-      const q = pose(d + rnd() * 6);
-      const r = direita(q.h);
+      // as fotos de arranha-céu (tile grande) viram torres; as outras, prédios médios
+      const alt = f.alta ? 40 + rnd() * 42 : (r1 < .5 ? 12 + rnd() * 10 : 22 + rnd() * 28);
+      const q = pose(d + rnd() * 6), r = direita(q.h);
       const afast = MEIA_PISTA + 9 + prof / 2 + rnd() * 4;
-      const m = new THREE.Matrix4().makeRotationY(-q.h);
-      m.multiply(new THREE.Matrix4().makeScale(larg, alt, prof));
-      m.setPosition(q.x + r.x * afast * lado, 0, q.z + r.z * afast * lado);
-      lotes.push({ bandaI, m });
+      const M = new THREE.Matrix4().makeRotationY(-q.h);
+      M.setPosition(q.x + r.x * afast * lado, 0, q.z + r.z * afast * lado);
+      const offU = Math.floor(rnd() * 8), offV = Math.floor(rnd() * 4);
+      const paredes = [
+        parede(larg, alt, f.tile, offU, offV).translate(0, alt / 2, prof / 2),
+        parede(larg, alt, f.tile, offU + 3, offV).rotateY(Math.PI).translate(0, alt / 2, -prof / 2),
+        parede(prof, alt, f.tile, offU + 5, offV).rotateY(Math.PI / 2).translate(larg / 2, alt / 2, 0),
+        parede(prof, alt, f.tile, offU + 7, offV).rotateY(-Math.PI / 2).translate(-larg / 2, alt / 2, 0),
+      ];
+      for (const pg of paredes) porFachada[fi].push(pg.applyMatrix4(M));
+      telhados.push(new THREE.PlaneGeometry(larg, prof).rotateX(-Math.PI / 2).translate(0, alt, 0).applyMatrix4(M));
+      nPredios++;
     }
   }
-  bandas.forEach((banda, i) => {
-    const meus = lotes.filter((l) => l.bandaI === i);
-    if (!meus.length) return;
-    const tex = texturaFachada(banda.andares, banda.colunas, 11 + i * 97);
-    const fachada = new THREE.MeshStandardMaterial({ map: tex.mapa, roughness: .7, metalness: .1, emissive: 0xffffff, emissiveMap: tex.luz, emissiveIntensity: noturno ? 1.1 : 0.06 });
-    const telhado = new THREE.MeshStandardMaterial({ color: 0x2a2d33, roughness: .95 });
-    const inst = new THREE.InstancedMesh(geo, [fachada, fachada, telhado, telhado, fachada, fachada], meus.length);
-    meus.forEach((l, k) => inst.setMatrixAt(k, l.m));
-    inst.instanceMatrix.needsUpdate = true;
-    scene.add(inst);
-    predios.push(inst);
+  FACHADAS.forEach((f, i) => {
+    if (!porFachada[i].length) return;
+    const mesh = new THREE.Mesh(fundir(porFachada[i]), materialFachada(f, noturno));
+    mesh.receiveShadow = true;
+    scene.add(mesh);
+    predios.push(mesh);
   });
+  if (telhados.length) {
+    const telhado = new THREE.Mesh(fundir(telhados), new THREE.MeshStandardMaterial({ color: 0x23262c, roughness: .95 }));
+    scene.add(telhado);
+    predios.push(telhado);
+  }
   // calçadas de concreto dos dois lados, entre o guard-rail e os prédios
   const concreto = new THREE.MeshStandardMaterial({ color: 0x8d8d8d, roughness: .95 });
   for (const lado of [-1, 1]) {
@@ -669,7 +700,86 @@ function construirCidade() {
     calcada.receiveShadow = true;
     scene.add(calcada);
   }
-  console.info('[turismo3d] cidade:', lotes.length, 'prédios');
+  console.info('[turismo3d] cidade:', nPredios, 'prédios em', predios.length, 'draw calls');
+}
+
+// ---------- cenário por tema (modelos reais, CC0 do Poly Haven) ----------
+// Arbustos, rochas, tocos e árvores instanciados ao longo da pista. Cada
+// modelo é normalizado pelo maior lado e sorteado dentro de `tam` (metros);
+// as instâncias são agrupadas por trecho de 320 m pra o frustum culling
+// descartar o que está longe (senão um InstancedMesh da pista inteira
+// desenha tudo, sempre).
+const CENARIO_MODELOS = {
+  shrub_03: { tam: [1.0, 1.9] }, shrub_04: { tam: [1.0, 1.9] }, rock_moss_set_01: { tam: [1.2, 2.6] }, tree_stump_01: { tam: [0.9, 1.4] },
+  namaqualand_boulder_04: { tam: [2.0, 5.0] }, rock_09: { tam: [1.2, 3.0] }, quiver_tree_02: { tam: [3.5, 6.5] },
+  boulder_01: { tam: [2.0, 4.5] }, dead_tree_trunk: { tam: [3.0, 6.0] },
+  moon_rock_01: { tam: [1.0, 3.5] }, moon_rock_03: { tam: [1.0, 3.5] }, moon_rock_05: { tam: [1.5, 4.5] },
+};
+let cenarioMalhas = [], nCenario = 0;
+async function construirCenario() {
+  const cen = cfg.tema.cenario;
+  if (!cen || !gltfLoader) return;
+  const total = centro.length * L;
+  let s = 99;
+  const rnd = () => { s = (s * 48271) % 2147483647; return s / 2147483647; };
+  const lotes = cen.modelos.map(() => []);
+  const somaPesos = cen.pesos.reduce((a, b) => a + b, 0);
+  for (let d = 20; d < total - 30; d += cen.passo * (0.6 + rnd() * 0.8)) {
+    for (const lado of [-1, 1]) {
+      if (rnd() < 0.3) continue;
+      let r = rnd() * somaPesos, i = 0;
+      while (i < cen.pesos.length - 1 && r > cen.pesos[i]) { r -= cen.pesos[i]; i++; }
+      const perto = rnd() < 0.55; // mais da metade fica na beira da pista
+      lotes[i].push({ d, lado, afast: MEIA_PISTA + 4.5 + rnd() * (perto ? 9 : 34), giro: rnd() * Math.PI * 2, t: rnd() });
+    }
+  }
+  nCenario = lotes.reduce((n, l) => n + l.length, 0);
+  const CHUNK = 320;
+  for (let i = 0; i < cen.modelos.length; i++) {
+    const nome = cen.modelos[i];
+    const info = CENARIO_MODELOS[nome] || { tam: [1, 2] };
+    let gltf;
+    try {
+      gltf = await new Promise((res, rej) => gltfLoader.load(`assets3d/modelos/${nome}/${nome}.gltf`, res, undefined, rej));
+    } catch (e) { console.warn('[turismo3d] cenário', nome, e); continue; }
+    const raiz = gltf.scene;
+    raiz.updateMatrixWorld(true);
+    const caixa = new THREE.Box3().setFromObject(raiz);
+    const maior = Math.max(caixa.max.x - caixa.min.x, caixa.max.y - caixa.min.y, caixa.max.z - caixa.min.z) || 1;
+    const baseY = caixa.min.y;
+    const malhas = [];
+    raiz.traverse((o) => { if (o.isMesh) malhas.push(o); });
+    const porChunk = new Map();
+    for (const l of lotes[i]) {
+      const c = Math.floor(l.d / CHUNK);
+      if (!porChunk.has(c)) porChunk.set(c, []);
+      porChunk.get(c).push(l);
+    }
+    for (const lista of porChunk.values()) {
+      for (const m of malhas) {
+        const inst = new THREE.InstancedMesh(m.geometry, m.material, lista.length);
+        const mat = new THREE.Matrix4();
+        const posV = new THREE.Vector3(), quat = new THREE.Quaternion(), escV = new THREE.Vector3();
+        lista.forEach((l, k) => {
+          const q = pose(l.d), r = direita(q.h);
+          const esc = (info.tam[0] + (info.tam[1] - info.tam[0]) * l.t) / maior;
+          posV.set(q.x + r.x * l.afast * l.lado, -baseY * esc, q.z + r.z * l.afast * l.lado);
+          quat.setFromEuler(new THREE.Euler(0, l.giro, 0));
+          escV.set(esc, esc, esc);
+          mat.compose(posV, quat, escV);
+          mat.multiply(m.matrixWorld);
+          inst.setMatrixAt(k, mat);
+        });
+        inst.instanceMatrix.needsUpdate = true;
+        inst.castShadow = true;
+        inst.receiveShadow = true;
+        if (inst.computeBoundingSphere) inst.computeBoundingSphere();
+        scene.add(inst);
+        cenarioMalhas.push(inst);
+      }
+    }
+  }
+  console.info('[turismo3d] cenário:', nCenario, 'peças em', cenarioMalhas.length, 'lotes');
 }
 
 let postesLuz = [];
@@ -843,6 +953,8 @@ async function montar(canvas, config) {
         faroisLuz.push(farol);
       }
     }
+    api.progresso = 0.7;
+    await construirCenario();
     api.progresso = 0.85;
     api.pronto = true;
   } catch (e) {
@@ -1007,7 +1119,7 @@ function prepararAudio() {
   const iniciar = () => {
     if (!audioCtx) {
       try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { return; }
-      for (const [nome, url] of Object.entries({ motor: 'assets3d/som/motor.m4a', batida: 'assets3d/som/batida.m4a' })) {
+      for (const [nome, url] of Object.entries({ motor: 'assets3d/som/motor.m4a', batida: 'assets3d/som/batida.m4a', derrapagem: 'assets3d/som/derrapagem.m4a' })) {
         fetch(url).then((r) => r.arrayBuffer()).then((b) => audioCtx.decodeAudioData(b)).then((buf) => { buffers[nome] = buf; if (nome === 'motor') ligarMotor(); }).catch((e) => console.warn('[turismo3d] som', nome, e));
       }
       if (cfg && cfg.musica) carregarMusica(cfg.musica);
@@ -1048,6 +1160,21 @@ function tocarBatida() {
   g.gain.value = .9;
   src.connect(g); g.connect(audioCtx.destination);
   src.start();
+}
+// 🛞 um pedaço do loop de pneu cantando a cada troca de faixa (mais alto
+// quanto mais rápido); sem áudio ou parado, nada
+let ultimaFaixaSom = null;
+function tocarDerrapagem(fracao) {
+  if (!audioCtx || !buffers.derrapagem || (estado && estado.som === false) || fracao < 0.12) return;
+  const src = audioCtx.createBufferSource();
+  src.buffer = buffers.derrapagem;
+  const g = audioCtx.createGain();
+  const t = audioCtx.currentTime;
+  g.gain.setValueAtTime(0.05 + fracao * 0.4, t);
+  g.gain.setTargetAtTime(0, t + 0.28, 0.08);
+  src.connect(g); g.connect(audioCtx.destination);
+  const dur = buffers.derrapagem.duration;
+  src.start(t, Math.random() * Math.max(0, dur - 0.6), 0.6);
 }
 function pararAudio() {
   try { if (motorGanho && audioCtx) motorGanho.gain.setTargetAtTime(0, audioCtx.currentTime, .05); } catch (e) {}
@@ -1158,6 +1285,12 @@ function quadro() {
   posicionarPaineis(e);
   posicionarCamera(e, f, px, pz, fracao, dt);
 
+  // o chão (4 km) acompanha o carro de tile em tile — as pistas têm até 12 km
+  if (chaoPlano) {
+    const tile = chaoPlano.userData.tile || 20;
+    chaoPlano.position.x = Math.round(px / tile) * tile;
+    chaoPlano.position.z = Math.round(pz / tile) * tile;
+  }
   // a luz de acompanhamento vai junto (atrás e acima do carro)
   if (luzCarro) luzCarro.position.set(px - f.x * 3.2, 3.4, pz - f.z * 3.2);
   // o sol e a sombra acompanham o carro
@@ -1171,6 +1304,8 @@ function quadro() {
   relogioAnim += dt;
   animarFichas(relogioAnim, e.posicao || 0);
   atualizarMotorAudio(fracao, e);
+  if (ultimaFaixaSom !== null && e.faixa !== undefined && e.faixa !== ultimaFaixaSom) tocarDerrapagem(fracao);
+  if (e.faixa !== undefined) ultimaFaixaSom = e.faixa;
   atualizarMusica(e);
   atualizarVento(fracao, e);
   // só os carros parados dos próximos portais entram na cena (desempenho)
@@ -1198,7 +1333,10 @@ function destruir() {
   api.pronto = false;
   api.progresso = 0;
   cinemaPonto = null;
-  predios = [];
+  chaoPlano = null;
+  predios = []; nPredios = 0;
+  cenarioMalhas = []; nCenario = 0;
+  ultimaFaixaSom = null;
 }
 
 function debug() {
@@ -1208,7 +1346,7 @@ function debug() {
     carro: carro ? { pos: carro.position.toArray().map((v) => +v.toFixed(2)), caixa: carro.userData.caixa, visiveis: (() => { let n = 0; carro.traverse((o) => { if (o.isMesh && o.visible) n++; }); return n; })() } : null,
     camera: camera ? camera.position.toArray().map((v) => +v.toFixed(2)) : null,
     modoCamera: estado ? estado.camera : null,
-    musica: musicaUrl, predios: predios.reduce((n, p) => n + p.count, 0),
+    musica: musicaUrl, predios: nPredios, cenario: nCenario, lotesCenario: cenarioMalhas.length,
     qualidade: qualidadeAlta ? 'alta' : 'leve', tremor: estado ? estado.tremor : null,
     estado: { posicao: e.posicao, velocidade: e.velocidade, x: e.x },
     obstaculos: obstaculos.length,
