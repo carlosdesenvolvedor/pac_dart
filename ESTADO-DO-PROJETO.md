@@ -718,6 +718,28 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
       tick (`_vista.enviar()`) e só chama `setState` a cada 2 frames (ou em batida/ficha/fim).
       Metade do trabalho do CanvasKit, que pesa em GPU fraca.
 
+- **🏎️ DART TURISMO — rodada 14: corrida mais larga no desktop, probe do app logado e material de portfólio (set/2026)**
+    - A vista da corrida vai a **1400 px** no desktop (era presa a 920 px com faixas pretas
+      enormes em 1920); o campeonato continua em 920.
+    - `lib/main_portfolio_probe.dart`: o app inteiro SEM Firebase (usuário fake logado,
+      `LocalProgressoRepository`, ranking em memória, Prof. Dash de mentira que responde em
+      streaming) pra fotografar telas: `flutter build web -t lib/main_portfolio_probe.dart
+      --output=build/probe_app --no-tree-shake-icons --no-wasm-dry-run` + `python3 -m http.server
+      8789 --directory build/probe_app`. ⚠️ O `--no-wasm-dry-run` importa: a checagem wasm ficou
+      TRAVADA (1 s de CPU em 10 min) duas vezes seguidas; e o tree-shake de ícones falhou com dois
+      builds em paralelo.
+    - Pasta `portfolio/` (gitignored): 19 PNGs 1920×1080 (corrida em vários mundos/câmeras, ficha
+      sendo pega, tutorial, celular, fim de corrida com a engenheira, campeonato, hub, lição, mapa,
+      projeto com prévia ao vivo, tutor, quiz, login), `PAC-DART-resumo.pdf` (gerado do
+      `resumo.html` com Chrome headless `--print-to-pdf`) e `README.md` com legenda de cada imagem
+      e os créditos. Receita das fotos: injetar prefs no localStorage COM JSON (`flutter.<chave>`
+      = `JSON.stringify(valor)`; lista = array JSON, não string dupla — senão `getStringList`
+      lança e `carregar()` devolve tudo vazio), ligar a semântica (`flt-semantics-placeholder`),
+      dirigir com um robô que lê "faixa livre"/"sua faixa" dos aria-labels e aperta ←/→.
+    - 🐛 Achado nas fotos: com o combustível pela metade e o portal ainda sem palavra, o cartão
+      mostrava "✓ undefined marcada" (índice −1 em dart2js sem checagem). Agora diz "⛽ COMBUSTÍVEL
+      · termine a palavra, depois vem a do portal".
+
 ---
 
 ## 🏗️ Arquitetura (arquivos-chave)

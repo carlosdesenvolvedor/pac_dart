@@ -1108,7 +1108,11 @@ class _TurismoPageState extends State<TurismoPage>
               Text(
                 atual == null
                     ? '🏁 RETA FINAL · ⛽ COMBUSTÍVEL'
-                    : '✓ ${_setas[atual.faixas[atual.digitado]]} marcada · ⛽ COMBUSTÍVEL',
+                    : atual.digitado >= 0
+                        ? '✓ ${_setas[atual.faixas[atual.digitado]]} marcada · ⛽ COMBUSTÍVEL'
+                        // combustível pela metade antes da palavra do portal: nada
+                        // marcado ainda (dart2js devolvia "undefined" no índice -1)
+                        : '⛽ COMBUSTÍVEL · termine a palavra, depois vem a do portal',
                 style: Mixart.ui(size: 10, weight: FontWeight.w800, color: const Color(0xFF57C765))
                     .copyWith(letterSpacing: 2),
               ),
