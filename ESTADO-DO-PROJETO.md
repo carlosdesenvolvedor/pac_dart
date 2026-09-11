@@ -740,6 +740,30 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
       mostrava "✓ undefined marcada" (índice −1 em dart2js sem checagem). Agora diz "⛽ COMBUSTÍVEL
       · termine a palavra, depois vem a do portal".
 
+- **🏎️ DART TURISMO — rodada 15: "trava muito" mesmo em mínima → o que pesava de verdade (set/2026)**
+  Medição com `renderer.info` (novo `debug().render` e `composicao()`): a campina desenhava
+  **931 draw calls e 13,4 MILHÕES de triângulos por frame** (cidade: 744 / 2,3 M). Culpados:
+  os modelos do Poly Haven são pesados (shrub_04 27k, rock_moss_set 63k, tree_stump 41k, boulder
+  66k, dead_tree_trunk 102k triângulos cada) × 450–650 instâncias em lotes de 320 m sempre
+  visíveis; postes de luz clonados (30k triângulos × 93); 3 malhas por pórtico × 64; carros
+  do Sketchfab em 15–38 malhas cada. Até no nível mínima sobravam ~500 draw calls.
+    - **Cenário**: densidade ~metade (passo 16–30 m), pesos puxados pros modelos leves, lotes de
+      **160 m ligados por distância a cada frame** (`cularPorDistancia`: alta até 420 m, leve até
+      240 m e só a metade A das instâncias, mínima nada).
+    - **Postes**: `InstancedMesh` por malha e por trecho de 160 m (culling por distância) +
+      um InstancedMesh só pros bulbos.
+    - **Pórticos**: postes e vigas de TODOS os portais fundidos em 2 malhas (`fundir`).
+    - **Carros**: `fundirPorMaterial` no `carregarCarro` — funde as malhas por material (só
+      position/normal/uv, não indexado) e esconde as originais: ~27 → ~15 draw calls por carro;
+      tráfego desenhado a 260/200/150 m por nível.
+    - **Mínima** renderiza a 75% da resolução (preenchimento é o gargalo em GPU integrada);
+      sombra do cenário só no alta; poste de luz procedural (~150 tris) fora do alta.
+    - Resultado (M2, 1366×700): campina alta 931 → ~500 draw calls e 13,4 M → ~3,9 M triângulos
+      contando a passagem de sombra (~1,9 M na cena); cidade leve 744 → ~270 draw calls, 2,3 M →
+      ~0,7 M triângulos, 60 fps; mínima ~255 draw calls / 0,7 M. ⚠️ Lição: medir
+      `renderer.info` ANTES de otimizar — a "qualidade mínima" antiga cortava luzes e sombras
+      mas deixava 500 draw calls e o cenário de 13 M de triângulos no leve.
+
 ---
 
 ## 🏗️ Arquitetura (arquivos-chave)

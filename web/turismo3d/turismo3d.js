@@ -11,16 +11,16 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
 const TEMAS = {
   1: { hdri: 'campina', chao: 'leafy_grass', repChao: 260, exposicao: 1.0, sol: [-0.5, 0.75, 0.35], solCor: 0xfff1d6, solForca: 2.4, noturno: false, neblina: 0xdbe9ff, densidade: 0.0016,
-       cenario: { modelos: ['shrub_03', 'shrub_04', 'rock_moss_set_01', 'tree_stump_01'], pesos: [5, 4, 2, 1], passo: 9 } },
+       cenario: { modelos: ['shrub_03', 'shrub_04', 'rock_moss_set_01', 'tree_stump_01'], pesos: [7, 3, 1, 1], passo: 16 } },
   2: { hdri: 'deserto', chao: 'sand_01', repChao: 220, exposicao: 1.05, sol: [0.55, 0.6, -0.3], solCor: 0xffe6c0, solForca: 2.6, noturno: false, neblina: 0xf3dcb4, densidade: 0.0014,
-       cenario: { modelos: ['namaqualand_boulder_04', 'rock_09', 'quiver_tree_02'], pesos: [3, 3, 2], passo: 13 } },
+       cenario: { modelos: ['namaqualand_boulder_04', 'rock_09', 'quiver_tree_02'], pesos: [2, 5, 1], passo: 20 } },
   3: { hdri: 'cidade', chao: 'concrete_floor_02', repChao: 200, exposicao: 0.85, sol: [0.3, 0.7, 0.4], solCor: 0x9fb7ff, solForca: 0.35, noturno: true, neblina: 0x141a28, densidade: 0.0022, lampadas: true, cidade: true },
   4: { hdri: 'neve', chao: 'snow_02', repChao: 240, exposicao: 1.0, sol: [-0.35, 0.65, 0.5], solCor: 0xffffff, solForca: 2.0, noturno: false, neblina: 0xeaf3ff, densidade: 0.0020,
-       cenario: { modelos: ['boulder_01', 'rock_09', 'dead_tree_trunk'], pesos: [2, 3, 2], passo: 19 } },
+       cenario: { modelos: ['boulder_01', 'rock_09', 'dead_tree_trunk'], pesos: [1, 5, 1], passo: 26 } },
   5: { hdri: 'vulcao', chao: 'dark_rock', repChao: 200, exposicao: 1.05, sol: [0.7, 0.35, 0.2], solCor: 0xff9a6a, solForca: 1.6, noturno: true, neblina: 0x3a1c14, densidade: 0.0024,
-       cenario: { modelos: ['moon_rock_01', 'moon_rock_03', 'moon_rock_05'], pesos: [1, 1, 1], passo: 15 } },
+       cenario: { modelos: ['moon_rock_01', 'moon_rock_03', 'moon_rock_05'], pesos: [1, 2, 2], passo: 22 } },
   6: { hdri: 'espaco', chao: 'dark_rock', repChao: 200, exposicao: 0.95, sol: [0.1, 0.8, 0.3], solCor: 0xc8d8ff, solForca: 0.5, noturno: true, neblina: 0x0a0e1e, densidade: 0.0015,
-       cenario: { modelos: ['moon_rock_01', 'moon_rock_03', 'moon_rock_05'], pesos: [1, 1, 1], passo: 24 } },
+       cenario: { modelos: ['moon_rock_01', 'moon_rock_03', 'moon_rock_05'], pesos: [1, 2, 2], passo: 30 } },
 };
 
 // Carros (Sketchfab, CC Attribution — créditos no jogo). `giro` alinha a
@@ -88,10 +88,19 @@ let nivelQualidade = 'alta'; // alta · leve · minima
 // caro em GPU fraca), luzes dinâmicas (faróis, luz de acompanhamento,
 // postes) e até onde o tráfego é desenhado
 const PERFIS = {
-  alta: { cenario: true, luzes: true, trafego: 320 },
-  leve: { cenario: true, luzes: true, trafego: 240 },
-  minima: { cenario: false, luzes: false, trafego: 150 },
+  alta: { cenario: true, cenarioAlcance: 420, metade: false, luzes: true, trafego: 220 },
+  leve: { cenario: true, cenarioAlcance: 240, metade: true, luzes: true, trafego: 170 },
+  minima: { cenario: false, cenarioAlcance: 0, metade: true, luzes: false, trafego: 150 },
 };
+// cenário e postes: trechos de 160 m ligados por distância a cada frame
+const TRECHO = 160;
+let lampadasMalhas = [];
+function cularPorDistancia(lista, pos, ligado, alcance, soMetade) {
+  for (const m of lista) {
+    const dz = m.userData.d - pos;
+    m.visible = ligado && dz > -(TRECHO / 2 + 60) && dz < alcance + TRECHO / 2 && (!soMetade || m.userData.metade === 0);
+  }
+}
 let perfilAtual = PERFIS.alta;
 // benchmark de ~0,3 s num renderer descartável: 24 esferas de 12k
 // triângulos com textura e 3 luzes — se isso não roda a 50 fps, a cena de
@@ -143,13 +152,15 @@ function aplicarQualidade(nivel) {
   nivelQualidade = nivel;
   perfilAtual = PERFIS[nivel] || PERFIS.alta;
   api.qualidadeEfetiva = nivel;
-  for (const m of cenarioMalhas) m.visible = perfilAtual.cenario;
+  for (const m of cenarioMalhas) m.castShadow = nivel === 'alta';
+  for (const m of lampadasMalhas) m.castShadow = false;
   if (luzCarro) luzCarro.visible = perfilAtual.luzes;
   for (const l of faroisLuz) l.visible = perfilAtual.luzes;
   if (!perfilAtual.luzes) for (const l of luzesPool) l.visible = false;
   if (!renderer) return;
   const dpr = window.devicePixelRatio || 1;
-  renderer.setPixelRatio(nivel === 'alta' ? Math.min(dpr, 2) : (nivel === 'leve' ? Math.min(dpr, 1.25) : 1));
+  // mínima renderiza a 75% da resolução: em GPU fraca o gargalo é o preenchimento
+  renderer.setPixelRatio(nivel === 'alta' ? Math.min(dpr, 2) : (nivel === 'leve' ? Math.min(dpr, 1.25) : 0.75));
   if (ultimoW && ultimoH) renderer.setSize(ultimoW, ultimoH, false);
   const sombras = nivel !== 'minima';
   renderer.shadowMap.enabled = sombras;
@@ -212,6 +223,8 @@ async function aquecer() {
   } catch (e) { console.warn('[turismo3d] compile', e); }
   const salvo = [];
   for (const o of obstaculos) { salvo.push(o.visible); o.visible = true; }
+  for (const m of cenarioMalhas) m.visible = true;
+  for (const m of lampadasMalhas) m.visible = true;
   try { for (let i = 0; i < 3; i++) renderer.render(scene, camera); } catch (e) { console.warn('[turismo3d] aquecer', e); }
   obstaculos.forEach((o, i) => { o.visible = salvo[i]; });
 }
@@ -550,21 +563,20 @@ function construirPortais() {
   const vigaMat = new THREE.MeshStandardMaterial({ color: 0x2a2f38, roughness: .5, metalness: .6 });
   const placaGeo = new THREE.PlaneGeometry(3.1, 1.05);
   portais = [];
+  // postes e vigas de todos os pórticos viram UMA malha cada (2 draw calls
+  // pra pista inteira em vez de 3 por pórtico)
+  const postesGeos = [], vigasGeos = [];
   for (const p of cfg.portais) {
     const grupo = new THREE.Group();
     const q = pose(p.z);
     grupo.position.set(q.x, 0, q.z);
     grupo.rotation.y = -q.h;
+    const M = new THREE.Matrix4().makeRotationY(-q.h);
+    M.setPosition(q.x, 0, q.z);
     for (const lado of [-1, 1]) {
-      const poste = new THREE.Mesh(posteGeo, posteMat);
-      poste.position.set(lado * (MEIA_PISTA + 1.1), 2.9, 0);
-      poste.castShadow = true;
-      grupo.add(poste);
+      postesGeos.push(posteGeo.clone().translate(lado * (MEIA_PISTA + 1.1), 2.9, 0).applyMatrix4(M));
     }
-    const viga = new THREE.Mesh(vigaGeo, vigaMat);
-    viga.position.set(0, 5.6, 0);
-    viga.castShadow = true;
-    grupo.add(viga);
+    vigasGeos.push(vigaGeo.clone().translate(0, 5.6, 0).applyMatrix4(M));
     const placas = [];
     for (let faixa = 0; faixa < 3; faixa++) {
       const i = p.faixas.indexOf(faixa);
@@ -581,6 +593,14 @@ function construirPortais() {
     const port = { grupo, placas, dados: p };
     construirFichas(port, p);
     portais.push(port);
+  }
+  if (postesGeos.length) {
+    const postes = new THREE.Mesh(fundir(postesGeos), posteMat);
+    postes.castShadow = true;
+    scene.add(postes);
+    const vigas = new THREE.Mesh(fundir(vigasGeos), vigaMat);
+    vigas.castShadow = true;
+    scene.add(vigas);
   }
 }
 
@@ -773,8 +793,58 @@ async function carregarCarro(id) {
       if (o.material && o.material.map) o.material.map.anisotropy = 8;
     }
   });
+  fundirPorMaterial(envolt);
   modelosCache[id] = envolt;
   return envolt;
+}
+// Modelos do Sketchfab vêm em dezenas de malhas que compartilham material:
+// funde por material (só position/normal/uv, sem índice) e esconde as
+// originais — cada carro de tráfego custa a metade dos draw calls.
+function fundirNaoIndexadas(geos) {
+  let nv = 0;
+  for (const g of geos) nv += g.attributes.position.count;
+  const pos = new Float32Array(nv * 3), nor = new Float32Array(nv * 3), uv = new Float32Array(nv * 2);
+  let ov = 0;
+  for (const g of geos) {
+    pos.set(g.attributes.position.array, ov * 3);
+    nor.set(g.attributes.normal.array, ov * 3);
+    uv.set(g.attributes.uv.array, ov * 2);
+    ov += g.attributes.position.count;
+  }
+  const out = new THREE.BufferGeometry();
+  out.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  out.setAttribute('normal', new THREE.BufferAttribute(nor, 3));
+  out.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
+  return out;
+}
+function fundirPorMaterial(envolt) {
+  envolt.updateMatrixWorld(true);
+  const grupos = new Map();
+  const originais = [];
+  envolt.traverse((o) => {
+    if (!o.isMesh || !o.visible || o.isSkinnedMesh || Array.isArray(o.material)) return;
+    if (o.geometry.morphAttributes && Object.keys(o.geometry.morphAttributes).length) return;
+    let g = o.geometry.clone();
+    if (g.index) g = g.toNonIndexed();
+    if (!g.attributes.normal) g.computeVertexNormals();
+    if (!g.attributes.uv) g.setAttribute('uv', new THREE.BufferAttribute(new Float32Array(g.attributes.position.count * 2), 2));
+    for (const nome of Object.keys(g.attributes)) if (!['position', 'normal', 'uv'].includes(nome)) g.deleteAttribute(nome);
+    g.applyMatrix4(o.matrixWorld);
+    const chave = o.material.uuid;
+    if (!grupos.has(chave)) grupos.set(chave, { material: o.material, geos: [] });
+    grupos.get(chave).geos.push(g);
+    originais.push(o);
+  });
+  if (originais.length <= grupos.size) return; // nada a ganhar
+  for (const o of originais) o.visible = false;
+  for (const { material, geos } of grupos.values()) {
+    material.vertexColors = false;
+    const m = new THREE.Mesh(fundirNaoIndexadas(geos), material);
+    m.castShadow = true;
+    m.receiveShadow = true;
+    envolt.add(m);
+  }
+  console.info('[turismo3d] carro fundido:', originais.length, 'malhas →', grupos.size);
 }
 
 async function construirObstaculos() {
@@ -959,7 +1029,7 @@ async function construirCenario() {
     }
   }
   nCenario = lotes.reduce((n, l) => n + l.length, 0);
-  const CHUNK = 320;
+  const CHUNK = TRECHO;
   for (let i = 0; i < cen.modelos.length; i++) {
     const nome = cen.modelos[i];
     const info = CENARIO_MODELOS[nome] || { tam: [1, 2] };
@@ -974,15 +1044,19 @@ async function construirCenario() {
     const baseY = caixa.min.y;
     const malhas = [];
     raiz.traverse((o) => { if (o.isMesh) malhas.push(o); });
+    // por trecho de 160 m e em duas metades (A/B): o nível leve mostra só a A
     const porChunk = new Map();
-    for (const l of lotes[i]) {
-      const c = Math.floor(l.d / CHUNK);
-      if (!porChunk.has(c)) porChunk.set(c, []);
-      porChunk.get(c).push(l);
-    }
-    for (const lista of porChunk.values()) {
+    lotes[i].forEach((l, idx) => {
+      const c = Math.floor(l.d / CHUNK), metade = idx % 2;
+      const chave = c * 2 + metade;
+      if (!porChunk.has(chave)) porChunk.set(chave, { c, metade, lista: [] });
+      porChunk.get(chave).lista.push(l);
+    });
+    for (const { c, metade, lista } of porChunk.values()) {
       for (const m of malhas) {
         const inst = new THREE.InstancedMesh(m.geometry, m.material, lista.length);
+        inst.userData.d = (c + 0.5) * CHUNK;
+        inst.userData.metade = metade;
         const mat = new THREE.Matrix4();
         const posV = new THREE.Vector3(), quat = new THREE.Quaternion(), escV = new THREE.Vector3();
         lista.forEach((l, k) => {
@@ -996,8 +1070,9 @@ async function construirCenario() {
           inst.setMatrixAt(k, mat);
         });
         inst.instanceMatrix.needsUpdate = true;
-        inst.castShadow = true;
+        inst.castShadow = nivelQualidade === 'alta';
         inst.receiveShadow = true;
+        inst.visible = false;
         if (inst.computeBoundingSphere) inst.computeBoundingSphere();
         scene.add(inst);
         cenarioMalhas.push(inst);
@@ -1018,32 +1093,71 @@ function construirLampadas() {
     scene.add(luz);
     luzesPool.push(luz);
   }
-  gltfLoader.load('assets3d/modelos/street_lamp_01/street_lamp_01.gltf', (gltf) => {
-    const base = gltf.scene;
-    base.traverse((o) => {
-      if (o.isMesh) {
-        o.castShadow = false;
-        if (o.material && o.material.emissive) { o.material = o.material.clone(); }
-      }
-    });
+  const montarPostes = (base) => {
+    base.updateMatrixWorld(true);
+    const malhas = [];
+    base.traverse((o) => { if (o.isMesh) malhas.push(o); });
     const n = Math.floor(cfg.distancia / 60);
+    const lotes = [];
     for (let k = 0; k < n; k++) {
       const d = 30 + k * 60;
       const q = pose(d);
       const lado = k % 2 ? 1 : -1;
       const r = direita(q.h);
       const lat = lado * (MEIA_PISTA + 3.2);
-      const lamp = base.clone();
-      lamp.position.set(q.x + r.x * lat, 0, q.z + r.z * lat);
-      lamp.rotation.y = -q.h + (lado > 0 ? Math.PI : 0);
-      scene.add(lamp);
-      // bulbo emissivo: brilha mesmo sem luz real
-      const bulbo = new THREE.Mesh(new THREE.SphereGeometry(0.18, 10, 8), new THREE.MeshBasicMaterial({ color: 0xfff1c0 }));
-      bulbo.position.set(q.x + r.x * (lat - lado * 1.4), 4.6, q.z + r.z * (lat - lado * 1.4));
-      scene.add(bulbo);
-      postesLuz.push({ d, pos: bulbo.position.clone() });
+      const bulboPos = new THREE.Vector3(q.x + r.x * (lat - lado * 1.4), 4.6, q.z + r.z * (lat - lado * 1.4));
+      lotes.push({ d, pos: new THREE.Vector3(q.x + r.x * lat, 0, q.z + r.z * lat), rot: -q.h + (lado > 0 ? Math.PI : 0), bulboPos });
+      postesLuz.push({ d, pos: bulboPos.clone() });
     }
-  }, undefined, (e) => console.warn('lampadas', e));
+    // postes: um InstancedMesh por malha do modelo e por trecho de 160 m
+    // (o modelo tem 30k triângulos — 93 clones era meio milhão por frame)
+    const porTrecho = new Map();
+    for (const l of lotes) { const c = Math.floor(l.d / TRECHO); if (!porTrecho.has(c)) porTrecho.set(c, []); porTrecho.get(c).push(l); }
+    const mat4 = new THREE.Matrix4(), quat = new THREE.Quaternion(), um = new THREE.Vector3(1, 1, 1);
+    for (const [c, lista] of porTrecho) {
+      for (const m of malhas) {
+        const inst = new THREE.InstancedMesh(m.geometry, m.material, lista.length);
+        lista.forEach((l, k) => {
+          quat.setFromEuler(new THREE.Euler(0, l.rot, 0));
+          mat4.compose(l.pos, quat, um);
+          mat4.multiply(m.matrixWorld);
+          inst.setMatrixAt(k, mat4);
+        });
+        inst.instanceMatrix.needsUpdate = true;
+        inst.userData.d = (c + 0.5) * TRECHO;
+        inst.userData.metade = 0;
+        inst.visible = false;
+        if (inst.computeBoundingSphere) inst.computeBoundingSphere();
+        scene.add(inst);
+        lampadasMalhas.push(inst);
+      }
+    }
+    // bulbos emissivos (brilham mesmo sem luz real): um InstancedMesh só
+    const bulbos = new THREE.InstancedMesh(new THREE.SphereGeometry(0.18, 10, 8), new THREE.MeshBasicMaterial({ color: 0xfff1c0 }), lotes.length);
+    lotes.forEach((l, k) => { mat4.makeTranslation(l.bulboPos.x, l.bulboPos.y, l.bulboPos.z); bulbos.setMatrixAt(k, mat4); });
+    bulbos.instanceMatrix.needsUpdate = true;
+    if (bulbos.computeBoundingSphere) bulbos.computeBoundingSphere();
+    scene.add(bulbos);
+  };
+  if (nivelQualidade === 'alta') {
+    gltfLoader.load('assets3d/modelos/street_lamp_01/street_lamp_01.gltf', (gltf) => {
+      const base = gltf.scene;
+      base.traverse((o) => { if (o.isMesh) { o.castShadow = false; if (o.material && o.material.emissive) o.material = o.material.clone(); } });
+      montarPostes(base);
+    }, undefined, (e) => console.warn('lampadas', e));
+  } else {
+    // poste procedural de ~150 triângulos (o modelo do Poly Haven tem 30k)
+    const base = new THREE.Group();
+    const metal = new THREE.MeshStandardMaterial({ color: 0x555b63, roughness: .6, metalness: .6 });
+    const haste = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.11, 6.0, 8), metal);
+    haste.position.y = 3.0;
+    const braco = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.08, 0.08), metal);
+    braco.position.set(-0.7, 5.9, 0);
+    const cabeca = new THREE.Mesh(new THREE.BoxGeometry(0.5, 0.14, 0.26), metal);
+    cabeca.position.set(-1.4, 5.85, 0);
+    base.add(haste, braco, cabeca);
+    montarPostes(base);
+  }
 }
 function atualizarLuzes(posicao) {
   if (!luzesPool.length || !postesLuz.length || !perfilAtual.luzes) return;
@@ -1658,6 +1772,9 @@ function quadro() {
   if (e.faixa !== undefined) ultimaFaixaSom = e.faixa;
   atualizarMusica(e, dt);
   atualizarVento(fracao, e);
+  // cenário e postes: só os trechos perto do carro; metade no nível leve
+  cularPorDistancia(cenarioMalhas, e.posicao || 0, perfilAtual.cenario, perfilAtual.cenarioAlcance, perfilAtual.metade);
+  cularPorDistancia(lampadasMalhas, e.posicao || 0, perfilAtual.cenario || perfilAtual.luzes, Math.max(260, perfilAtual.cenarioAlcance), false);
   // só os carros parados dos próximos portais entram na cena (desempenho)
   for (const o of obstaculos) {
     if (o.userData.arremessado) continue;
@@ -1688,7 +1805,7 @@ function destruir() {
   fantasma = null;
   coletas = []; popups = []; popupTex = null;
   predios = []; nPredios = 0;
-  cenarioMalhas = []; nCenario = 0;
+  cenarioMalhas = []; nCenario = 0; lampadasMalhas = [];
   ultimaFaixaSom = null;
 }
 
@@ -1701,6 +1818,9 @@ function debug() {
     modoCamera: estado ? estado.camera : null,
     musica: musicaUrl, musicaEl: musicaEl ? { tocando: !musicaEl.paused, volume: +musicaEl.volume.toFixed(2), t: +musicaEl.currentTime.toFixed(1), pronta: musicaEl.readyState } : null,
     benchMs: api.benchMs, perfil: perfilAtual, predios: nPredios, cenario: nCenario, lotesCenario: cenarioMalhas.length,
+    render: renderer ? { calls: renderer.info.render.calls, triangulos: renderer.info.render.triangles, texturas: renderer.info.memory.textures, geometrias: renderer.info.memory.geometries, programas: renderer.info.programs ? renderer.info.programs.length : null } : null,
+    malhasCarro: carro ? (() => { let n = 0, mats = new Set(); carro.traverse((o) => { if (o.isMesh && o.visible) { n++; (Array.isArray(o.material) ? o.material : [o.material]).forEach((m) => mats.add(m.uuid)); } }); return { malhas: n, materiais: mats.size }; })() : null,
+    obstaculosVisiveis: obstaculos.filter((o) => o.visible).length,
     qualidade: nivelQualidade, gpu: api.gpu, frameMs: api.frameMs, aviso: api.aviso, tremor: estado ? estado.tremor : null,
     fantasma: fantasma ? { visivel: fantasma.visible, pos: fantasma.position.toArray().map((v) => +v.toFixed(1)) } : null,
     coletas: coletas.length, popups: popups.filter((sp) => sp.visible).length,
@@ -1718,6 +1838,29 @@ function debug() {
   };
 }
 Object.assign(api, { montar, atualizar, destruir, debug, CARROS: Object.keys(CARROS) });
+// diagnóstico: o que está sendo desenhado, por categoria
+api.composicao = () => {
+  if (!scene || !camera) return null;
+  const frustum = new THREE.Frustum();
+  const m = new THREE.Matrix4().multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
+  frustum.setFromProjectionMatrix(m);
+  const cat = {};
+  const conta = (nome, o) => { const c = cat[nome] || (cat[nome] = { objetos: 0, noFrustum: 0, tris: 0 }); c.objetos++; if (!o.geometry) return; let t = 0; const g = o.geometry; t = g.index ? g.index.count / 3 : (g.attributes.position ? g.attributes.position.count / 3 : 0); if (o.isInstancedMesh) t *= o.count; if (!o.frustumCulled || (o.geometry.boundingSphere && frustum.intersectsObject(o))) { c.noFrustum++; c.tris += t; } };
+  const emCarro = new Set(); if (carro) carro.traverse((o) => emCarro.add(o));
+  const emObst = new Set(); for (const ob of obstaculos) ob.traverse((o) => emObst.add(o));
+  const emCen = new Set(cenarioMalhas);
+  const emFant = new Set(); if (fantasma) fantasma.traverse((o) => emFant.add(o));
+  const emPredio = new Set(predios);
+  scene.traverse((o) => {
+    if (!(o.isMesh || o.isPoints || o.isSprite)) return;
+    if (!o.visible) return;
+    let pai = o, oculto = false; while (pai) { if (!pai.visible) { oculto = true; break; } pai = pai.parent; }
+    if (oculto) return;
+    const nome = emCarro.has(o) ? 'carro' : emObst.has(o) ? 'trafego' : emCen.has(o) ? 'cenario' : emFant.has(o) ? 'fantasma' : emPredio.has(o) ? 'predios' : (o.isPoints ? 'faiscas' : (o.isSprite ? 'sprites' : 'outros'));
+    conta(nome, o);
+  });
+  return cat;
+};
 // gancho de teste/diagnóstico: turismo3d.forcarQualidade('minima')
 api.forcarQualidade = (nivel) => { if (PERFIS[nivel]) aplicarQualidade(nivel); return nivelQualidade; };
 window.turismo3d = api;
