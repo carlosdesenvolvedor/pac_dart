@@ -469,7 +469,9 @@ class _TurismoPageState extends State<TurismoPage>
         child: SafeArea(
           child: Center(
             child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 920),
+              // a corrida merece a tela: até 1400 px no desktop (o campeonato
+              // continua em coluna de leitura)
+              constraints: BoxConstraints(maxWidth: _tela == _Tela.corrida ? 1400 : 920),
               child: Stack(children: [
                 if (_tela == _Tela.campeonato || e == null) _telaCampeonato() else _telaCorrida(e),
                 if (_tutorial && _pista != null)
