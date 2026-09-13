@@ -66,7 +66,7 @@ let gltfLoader = null;
 // Sonda a GPU num contexto descartável ANTES de criar o renderer: sem
 // aceleração (SwiftShader) ou GPU integrada fraca começa em nível mais leve;
 // depois uma medição real (mediana de 24 frames com a cena pronta) e um
-// vigia durante a corrida rebaixam o nível se o frame passar de ~26 ms.
+// vigia durante a corrida rebaixam o nível se o frame passar de 25 ms.
 function sondarGpu() {
   try {
     const c = document.createElement('canvas');
@@ -102,18 +102,59 @@ function cularPorDistancia(lista, pos, ligado, alcance, soMetade) {
   }
 }
 let perfilAtual = PERFIS.alta;
-// benchmark de ~0,3 s num renderer descartável: 24 esferas de 12k
-// triângulos com textura e 3 luzes — se isso não roda a 50 fps, a cena de
-// verdade não vai rodar. Decide o nível ANTES de baixar céu 2k/texturas 1k.
-async function benchmarkGpu(antialias) {
+// ---------- orçamento de pixels ----------
+// O custo de preenchimento é largura × altura × dpr². Num ultrawide HiDPI
+// (dpr 2) a vista de 1400 px virava ~4,5 Mpx por frame — 8× o que o
+// benchmark antigo media em 960×600@1 — e como no Apple Silicon a GPU é
+// dividida com o WindowServer, a máquina inteira congelava junto. Agora
+// cada nível tem um teto de megapixels e um teto de dpr; o dpr efetivo é o
+// menor dos dois (e nunca acima do dpr do dispositivo).
+const ORCAMENTO_MPX = { alta: 1.8, leve: 1.1, minima: 0.6 };
+const TETO_DPR = { alta: 1.5, leve: 1.25, minima: 1 };
+let escalaExtra = 1; // o vigia baixa isso na mínima quando nem ela dá conta
+function pixelRatioPara(nivel, w, h) {
+  const dev = window.devicePixelRatio || 1;
+  const orc = (ORCAMENTO_MPX[nivel] || ORCAMENTO_MPX.alta) * 1e6;
+  const porArea = (w > 0 && h > 0) ? Math.sqrt(orc / (w * h)) : 1;
+  const dpr = Math.min(dev, TETO_DPR[nivel] || 1.5, porArea) * escalaExtra;
+  return Math.max(0.5, Math.round(dpr * 100) / 100);
+}
+function aplicarTamanho() {
+  if (!renderer || !ultimoW || !ultimoH) return;
+  const dpr = pixelRatioPara(nivelQualidade, ultimoW, ultimoH);
+  renderer.setPixelRatio(dpr);
+  renderer.setSize(ultimoW, ultimoH, false);
+  api.pixelRatio = dpr;
+  api.pixelsMpx = +((ultimoW * ultimoH * dpr * dpr) / 1e6).toFixed(2);
+}
+// mede o canvas de verdade (o Dart já o dimensionou dentro do platform
+// view); se ainda não tem layout, assume uma vista de desktop
+function medirCanvas(canvas) {
+  let w = 0, h = 0;
+  try { const r = canvas.getBoundingClientRect(); w = Math.round(r.width); h = Math.round(r.height); } catch (e) {}
+  if (w < 32 || h < 32) { w = Math.min(1400, window.innerWidth || 1280); h = Math.round(w * 9 / 16); }
+  return { w, h };
+}
+// benchmark de ~0,5 s num renderer descartável: 24 esferas de 12k
+// triângulos com textura, 3 luzes, sol com sombra PCF 2048 e chão que a
+// recebe — renderizado NO TAMANHO REAL do canvas e no dpr que o nível
+// "alta" usaria, pra medir o custo que a corrida vai ter de verdade (o
+// antigo media 960×600@1, 8× menos pixels que a vista no desktop HiDPI).
+// Se isso não roda a 50 fps, a cena de verdade não vai rodar. Decide o
+// nível ANTES de baixar céu 2k/texturas 1k.
+async function benchmarkGpu(antialias, w, h, dpr) {
   let r = null;
   try {
     const c = document.createElement('canvas');
     r = new THREE.WebGLRenderer({ canvas: c, antialias, powerPreference: 'high-performance' });
-    r.setPixelRatio(1);
-    r.setSize(960, 600, false);
+    w = w || 960; h = h || 600;
+    r.setPixelRatio(dpr || 1);
+    r.setSize(w, h, false);
+    r.shadowMap.enabled = true;
+    r.shadowMap.type = THREE.PCFShadowMap;
+    r.toneMapping = THREE.ACESFilmicToneMapping;
     const cena = new THREE.Scene();
-    const cam = new THREE.PerspectiveCamera(60, 1.6, 0.1, 100);
+    const cam = new THREE.PerspectiveCamera(60, w / h, 0.1, 100);
     cam.position.set(0, 0, 13);
     const geo = new THREE.SphereGeometry(1.25, 96, 64);
     const tex = canvasTex(512, 512, (ctx, w, h) => {
@@ -123,9 +164,21 @@ async function benchmarkGpu(antialias) {
     for (let i = 0; i < 24; i++) {
       const m = new THREE.Mesh(geo, mat);
       m.position.set((i % 6 - 2.5) * 3.1, (Math.floor(i / 6) - 1.5) * 3.1, 0);
+      m.castShadow = true; m.receiveShadow = true;
       cena.add(m);
     }
+    const chaoGeo = new THREE.PlaneGeometry(60, 60);
+    const chaoMat = new THREE.MeshStandardMaterial({ color: 0x777777, roughness: .9 });
+    const chao = new THREE.Mesh(chaoGeo, chaoMat);
+    chao.position.z = -2; chao.receiveShadow = true;
+    cena.add(chao);
     cena.add(new THREE.HemisphereLight(0xffffff, 0x444444, 1));
+    const solB = new THREE.DirectionalLight(0xffffff, 2.5);
+    solB.position.set(6, 10, 12); solB.castShadow = true;
+    solB.shadow.mapSize.set(2048, 2048);
+    solB.shadow.camera.near = 1; solB.shadow.camera.far = 60;
+    solB.shadow.camera.left = -14; solB.shadow.camera.right = 14; solB.shadow.camera.top = 14; solB.shadow.camera.bottom = -14;
+    cena.add(solB);
     for (let i = 0; i < 3; i++) { const l = new THREE.PointLight(0xffffff, 40, 50); l.position.set(i * 6 - 6, 4, 7); cena.add(l); }
     r.render(cena, cam); // compila os shaders fora da medição
     await new Promise((res) => requestAnimationFrame(res));
@@ -138,7 +191,8 @@ async function benchmarkGpu(antialias) {
       ts.push(t - ultimo);
       ultimo = t;
     }
-    geo.dispose(); mat.dispose(); tex.dispose();
+    geo.dispose(); mat.dispose(); tex.dispose(); chaoGeo.dispose(); chaoMat.dispose();
+    if (solB.shadow.map) solB.shadow.map.dispose();
     r.dispose();
     try { r.forceContextLoss(); } catch (e) {}
     return mediana(ts.slice(3));
@@ -158,10 +212,7 @@ function aplicarQualidade(nivel) {
   for (const l of faroisLuz) l.visible = perfilAtual.luzes;
   if (!perfilAtual.luzes) for (const l of luzesPool) l.visible = false;
   if (!renderer) return;
-  const dpr = window.devicePixelRatio || 1;
-  // mínima renderiza a 75% da resolução: em GPU fraca o gargalo é o preenchimento
-  renderer.setPixelRatio(nivel === 'alta' ? Math.min(dpr, 2) : (nivel === 'leve' ? Math.min(dpr, 1.25) : 0.75));
-  if (ultimoW && ultimoH) renderer.setSize(ultimoW, ultimoH, false);
+  aplicarTamanho();
   const sombras = nivel !== 'minima';
   renderer.shadowMap.enabled = sombras;
   if (sol) {
@@ -198,21 +249,38 @@ async function medirDesempenho() {
   if (m > 40 && nivelQualidade !== 'minima') aplicarQualidade('minima');
   else if (m > 24 && nivelQualidade === 'alta') aplicarQualidade('leve');
 }
-let vigiaTempos = [], vigiaAte = 0, ultimoQuadroMs = 0;
+let vigiaTempos = [], vigiaAte = 0, ultimoQuadroMs = 0, vigiaSomaMs = 0, vigiaLentosSeguidos = 0;
+// vigia durante a corrida: junta ~2 s de frames (ou 150, o que vier antes)
+// e, se a mediana passar de 25 ms, cai um nível. Frames acima de 500 ms
+// NÃO são descartados (eram — e é justamente quando a máquina engasga que
+// eles aparecem): entram truncados em 500 ms, e 5 seguidos acima de 100 ms
+// rebaixam na hora. Aba oculta e a volta dela não contam.
 function vigiarDesempenho() {
   const agora = performance.now();
-  const dt = ultimoQuadroMs ? agora - ultimoQuadroMs : 16;
+  if (document.hidden) { ultimoQuadroMs = 0; return; }
+  if (!ultimoQuadroMs) { ultimoQuadroMs = agora; return; }
+  const dt = Math.min(agora - ultimoQuadroMs, 500);
   ultimoQuadroMs = agora;
-  if (!api.pronto || agora < vigiaAte || dt > 500) return;
+  if (!api.pronto || agora < vigiaAte) return;
   vigiaTempos.push(dt);
-  if (vigiaTempos.length < 150) return;
-  const m = mediana(vigiaTempos);
-  vigiaTempos = [];
+  vigiaSomaMs += dt;
+  vigiaLentosSeguidos = dt > 100 ? vigiaLentosSeguidos + 1 : 0;
+  const emergencia = vigiaLentosSeguidos >= 5;
+  if (!emergencia && vigiaSomaMs < 2000 && vigiaTempos.length < 150) return;
+  const m = emergencia ? mediana(vigiaTempos.slice(-5)) : mediana(vigiaTempos);
+  vigiaTempos = []; vigiaSomaMs = 0; vigiaLentosSeguidos = 0;
   api.frameMs = +m.toFixed(1);
-  if (m > 26 && nivelQualidade !== 'minima') {
-    aplicarQualidade(nivelQualidade === 'alta' ? 'leve' : 'minima');
-    vigiaAte = agora + 6000;
-  }
+  if (m > 25) rebaixar(emergencia ? 'emergência' : 'lento', m);
+}
+// um degrau por vez: alta → leve → mínima → mínima com menos pixels (até 60%)
+function rebaixar(motivo, ms) {
+  if (nivelQualidade === 'alta') aplicarQualidade('leve');
+  else if (nivelQualidade === 'leve') aplicarQualidade('minima');
+  else if (escalaExtra > 0.6) { escalaExtra = Math.max(0.6, +(escalaExtra - 0.2).toFixed(2)); aplicarTamanho(); }
+  else return; // já está no chão
+  api.rebaixamentos = (api.rebaixamentos || 0) + 1;
+  console.info('[turismo3d] vigia:', motivo, Math.round(ms) + ' ms →', nivelQualidade, 'escala', escalaExtra, 'dpr', api.pixelRatio);
+  vigiaAte = performance.now() + 6000;
 }
 // compila os shaders e força os uploads de textura/PMREM antes da largada
 // (no Windows o ANGLE traduz GLSL→HLSL: cada material novo custava um
@@ -231,6 +299,7 @@ async function aquecer() {
 let camPos = new THREE.Vector3(), camAlvo = new THREE.Vector3();
 let tremor = 0;
 const api = { pronto: false, erro: null, progresso: 0 };
+document.addEventListener('visibilitychange', () => { ultimoQuadroMs = 0; }, { passive: true });
 
 // ---------- qualidade ----------
 // 'alta': HDRI 2k, texturas 1k, sombra 2048, pixel ratio ≤ 2, anisotropia 16
@@ -1197,24 +1266,38 @@ async function montar(canvas, config) {
   api.gpu = gpu.nome;
   api.aviso = gpu.software ? 'software' : null;
   const pref = config.qualidade || 'auto';
+  const medida = medirCanvas(canvas);
   api.benchMs = null;
+  api.benchEm = null;
   if (pref === 'alta') nivelQualidade = 'alta';
   else if (pref === 'leve') nivelQualidade = 'leve';
   else if (gpu.software) nivelQualidade = 'minima';
   else {
-    const ms = await benchmarkGpu(true);
+    const dprAlta = pixelRatioPara('alta', medida.w, medida.h);
+    let ms = await benchmarkGpu(true, medida.w, medida.h, dprAlta);
+    // resultado ruim pode ser só o momento (aba recém-visível, Flutter ainda
+    // desenhando o carregamento): espera meio segundo e mede de novo, e vale
+    // o melhor dos dois — um falso "mínima" custa mais que 0,5 s de espera
+    if (ms > 19) {
+      await new Promise((res) => setTimeout(res, 500));
+      const ms2 = await benchmarkGpu(true, medida.w, medida.h, dprAlta);
+      console.info('[turismo3d] benchmark repetido:', +ms.toFixed(1), '→', +ms2.toFixed(1), 'ms');
+      if (ms2 > 0) ms = Math.min(ms, ms2);
+    }
     api.benchMs = +ms.toFixed(1);
+    api.benchEm = { largura: medida.w, altura: medida.h, dpr: dprAlta };
     nivelQualidade = ms > 34 ? 'minima' : (ms > 19 || gpu.fraca || !resolverQualidade('auto')) ? 'leve' : 'alta';
-    console.info('[turismo3d] benchmark', api.benchMs, 'ms →', nivelQualidade);
+    console.info('[turismo3d] benchmark', api.benchMs, 'ms @', medida.w + '×' + medida.h, 'dpr', dprAlta, '→', nivelQualidade);
   }
   qualidadeAlta = nivelQualidade === 'alta';
   perfilAtual = PERFIS[nivelQualidade];
   api.qualidadeEfetiva = nivelQualidade;
   api.frameMs = null;
-  vigiaTempos = []; vigiaAte = 0; ultimoQuadroMs = 0;
+  vigiaTempos = []; vigiaAte = 0; ultimoQuadroMs = 0; vigiaSomaMs = 0; vigiaLentosSeguidos = 0;
+  escalaExtra = 1; api.rebaixamentos = 0;
 
   renderer = new THREE.WebGLRenderer({ canvas, antialias: nivelQualidade !== 'minima', powerPreference: 'high-performance' });
-  renderer.setPixelRatio(nivelQualidade === 'alta' ? Math.min(window.devicePixelRatio, 2) : (nivelQualidade === 'leve' ? Math.min(window.devicePixelRatio, 1.25) : 1));
+  renderer.setPixelRatio(pixelRatioPara(nivelQualidade, medida.w, medida.h));
   renderer.shadowMap.enabled = nivelQualidade !== 'minima';
   renderer.shadowMap.type = THREE.PCFShadowMap;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -1353,6 +1436,7 @@ async function montar(canvas, config) {
   await aquecer();
   api.progresso = 0.96;
   await medirDesempenho();
+  vigiaAte = performance.now() + 3000;
   api.progresso = 1;
   api.pronto = true;
 }
@@ -1628,7 +1712,7 @@ function redimensionar(w, h) {
   w = Math.round(w); h = Math.round(h);
   if (!renderer || w < 32 || h < 32 || (w === ultimoW && h === ultimoH)) return;
   ultimoW = w; ultimoH = h;
-  renderer.setSize(w, h, false);
+  aplicarTamanho();
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
 }
