@@ -1,0 +1,341 @@
+{
+  "id": "present-perfect-just-yet.alguem-viu-resultado-agora",
+  "trilha": "present-perfect-just-yet",
+  "nome": "Alguém viu? resultado agora",
+  "emoji": "🔑",
+  "cena": "Saindo de casa atrasado, você procura chaves, carteira e guarda-chuva com a ajuda da Emma, sua vizinha, que também perdeu os óculos.",
+  "resumo": "Contar algo que aconteceu e ainda importa agora com o present perfect: Have you seen my...?, I've broken..., I can't find it.",
+  "fechamento": false,
+  "novos": [
+    "glasses",
+    "Have you seen my...?",
+    "forgotten",
+    "broken",
+    "I can't find it."
+  ],
+  "apoio": [
+    "lost (particípio)",
+    "wallet"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Resultado agora: I've broken, I've forgotten"
+    },
+    {
+      "t": "p",
+      "c": "O present perfect conta algo que aconteceu e **ainda importa agora**: *I think I've broken my phone* (está quebrado agora)."
+    },
+    {
+      "t": "ex",
+      "c": "Have you seen my keys?\nVocê viu as minhas chaves?"
+    },
+    {
+      "t": "ex",
+      "c": "I can't find it.\nNão consigo achar."
+    },
+    {
+      "t": "warn",
+      "c": "Com data é passado (não: I've lost my keys yesterday). Para perda simples, o en-US também usa *I lost my keys*. E o objeto não some: *find it* (BR18)."
+    }
+  ],
+  "imagem": "🔑👛👓",
+  "visualizacao": "Você está no corredor, atrasado, revirando os bolsos. A Emma abre a porta do apartamento ao lado, meio rindo, com as suas chaves na mão.",
+  "foto_busca": "looking for keys apartment hallway",
+  "trechos": [
+    {
+      "id": "f-027117",
+      "quem": "voce",
+      "cod": "Have you seen my keys?",
+      "dica": "Você viu as minhas chaves?",
+      "img": "🔑❓",
+      "alvo": "Have you seen my",
+      "alvo_pt": "Você viu",
+      "conceito": "Procurando algo agora: Have you seen my...? = Você viu meu/minha...?",
+      "var": [
+        {
+          "em": "Have you seen",
+          "aceita": [
+            "Did you see"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did you saw",
+        "you saw"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3096237,
+        "en_autor": "CK",
+        "pt_id": 6960166,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ffa372",
+      "quem": "emma",
+      "contexto": "f-027117",
+      "cod": "Yes, they're here. Have you forgotten anything else?",
+      "dica": "Vi, estão aqui. Você esqueceu mais alguma coisa?",
+      "img": "🔑🙄❓",
+      "alvo": "forgotten",
+      "alvo_pt": "esqueceu",
+      "conceito": "forget → forgot → forgotten. Mais alguma coisa? = anything else?",
+      "var": [
+        {
+          "em": "Have you forgotten",
+          "aceita": [
+            "Did you forget"
+          ]
+        },
+        {
+          "em": "anything",
+          "aceita": [
+            "something"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR01"
+      ],
+      "armadilhas": [
+        "forgeted",
+        "are here",
+        "more something"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5a21aa",
+      "quem": "voce",
+      "contexto": "f-ffa372",
+      "cod": "My wallet! I can't find it.",
+      "dica": "Minha carteira! Não consigo achar.",
+      "img": "👛🔍😰",
+      "alvo": "I can't find it",
+      "alvo_pt": "Não consigo achar",
+      "lit": "[lit.: não consigo achar isso]",
+      "conceito": "Não consigo achar = I can't find it: o it é obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "i can't find.",
+        "i don't find"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dad481",
+      "quem": "emma",
+      "contexto": "f-5a21aa",
+      "cod": "Don't worry. I've forgotten my wallet lots of times.",
+      "dica": "Não se preocupa. Já esqueci minha carteira um monte de vezes.",
+      "img": "😅👛🔁",
+      "alvo": "forgotten",
+      "alvo_pt": "esqueci",
+      "conceito": "Experiência repetida sem data: I've forgotten... lots of times.",
+      "var": [
+        {
+          "em": "lots of times",
+          "aceita": [
+            "a lot of times"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR07"
+      ],
+      "armadilhas": [
+        "forgot",
+        "forgeted"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-256fa3",
+      "quem": "emma",
+      "cod": "Have you seen my glasses?",
+      "dica": "Você viu os meus óculos?",
+      "img": "👓❓",
+      "alvo": "Have you seen my",
+      "alvo_pt": "Você viu",
+      "var": [
+        {
+          "em": "Have you seen",
+          "aceita": [
+            "Did you see"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did you saw",
+        "my glass"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4708047,
+        "en_autor": "adamtrousers",
+        "pt_id": 4716775,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "pen → glasses (no PT: a minha caneta → os meus óculos)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c9438b",
+      "quem": "voce",
+      "contexto": "f-256fa3",
+      "cod": "Your glasses are on the couch.",
+      "dica": "Seus óculos estão no sofá.",
+      "img": "👓🛋️",
+      "alvo": "glasses",
+      "alvo_pt": "óculos",
+      "conceito": "glasses = óculos, sempre no plural: glasses are.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "glasses is",
+        "in the couch"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6223a7",
+      "quem": "emma",
+      "contexto": "f-c9438b",
+      "cod": "Thanks! I can't read without my glasses.",
+      "dica": "Valeu! Não consigo ler sem os meus óculos.",
+      "img": "📖👓🙏",
+      "alvo": "glasses",
+      "alvo_pt": "óculos",
+      "registro": "informal",
+      "interferencias": [],
+      "armadilhas": [
+        "my glass"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-57337a",
+      "quem": "voce",
+      "cod": "Oh no! I think I've broken my phone.",
+      "dica": "Ah, não! Acho que quebrei meu celular.",
+      "img": "📱💥😱",
+      "alvo": "broken",
+      "alvo_pt": "quebrei",
+      "conceito": "break → broke → broken. Quebrou e continua quebrado: resultado agora.",
+      "var": [
+        {
+          "em": "I've broken",
+          "aceita": [
+            "I broke"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "broked",
+        "breaked"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2407917,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "my arm → my phone; acrescentado Oh no!; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6ec25a",
+      "quem": "emma",
+      "contexto": "f-57337a",
+      "cod": "Let me see. No, it isn't broken.",
+      "dica": "Deixa eu ver. Não, não está quebrado.",
+      "img": "🔍📱👍",
+      "alvo": "broken",
+      "alvo_pt": "quebrado",
+      "conceito": "broken também é adjetivo: It's broken. = Está quebrado.",
+      "var": [
+        {
+          "em": "it isn't",
+          "aceita": [
+            "it's not"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "no is",
+        "broke."
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-684055",
+      "quem": "voce",
+      "cod": "Where's my umbrella? I can't find it.",
+      "dica": "Cadê meu guarda-chuva? Não consigo achar.",
+      "img": "☔🔍",
+      "alvo": "I can't find it",
+      "alvo_pt": "Não consigo achar",
+      "conceito": "Cadê...? = Where's...? E o it fica: I can't find it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "i can't find.",
+        "i don't find"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1227266,
+        "en_autor": "CK",
+        "pt_id": 5052487,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado I can't find it. (no PT: + Não consigo achar.)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

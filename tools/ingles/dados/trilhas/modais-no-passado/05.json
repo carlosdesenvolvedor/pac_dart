@@ -1,0 +1,253 @@
+{
+  "id": "modais-no-passado.devia-podia-era-pra-o-contraste",
+  "trilha": "modais-no-passado",
+  "nome": "Devia, podia, era pra: o contraste",
+  "emoji": "⚖️",
+  "cena": "Na manhã seguinte à festa do time, que deu errado, você e a Ana voltam ao terraço do escritório e repassam o que aconteceu.",
+  "resumo": "Escolher entre should have, could have, might have e was supposed to numa mesma conversa.",
+  "fechamento": false,
+  "contraste": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Devia, era pra, podia, pode ter"
+    },
+    {
+      "t": "p",
+      "c": "**should have** = devia ter (crítica). **was supposed to** = era pra (plano que falhou). **could have** = podia ter (opção que existia). **might have** = pode ter (talvez tenha acontecido)."
+    },
+    {
+      "t": "tip",
+      "c": "Se o PT diz era pra, é plano: was supposed to. Se diz devia ter, é crítica: should have."
+    },
+    {
+      "t": "warn",
+      "c": "Pode ter (talvez) = might have. Podia ter (dava, e ninguém fez) = could have. Não troque um pelo outro."
+    },
+    {
+      "t": "ex",
+      "c": "The musician was supposed to be here at nine.\nEra pro músico estar aqui às nove."
+    }
+  ],
+  "imagem": "🎸🌧️🎉",
+  "visualizacao": "Manhã seguinte, no terraço do escritório onde foi a festa. Você e a Ana tomam café olhando o palco vazio e as cadeiras ainda molhadas da chuva de ontem.",
+  "foto_busca": "empty outdoor stage rain party",
+  "trechos": [
+    {
+      "id": "f-b9b967",
+      "quem": "ana",
+      "cod": "The musician was supposed to be here at nine.",
+      "dica": "Era pro músico estar aqui às nove.",
+      "img": "🎸🕘",
+      "alvo": "was supposed to",
+      "alvo_pt": "Era pro",
+      "conceito": "era pra = was supposed to: plano que não se cumpriu.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2977999,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "They were → The musician was; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-966cdb",
+      "quem": "voce",
+      "contexto": "f-b9b967",
+      "cod": "He might have gotten lost.",
+      "dica": "Ele pode ter se perdido.",
+      "img": "🗺️😵",
+      "alvo": "might have",
+      "alvo_pt": "pode ter",
+      "conceito": "pode ter = might have (talvez). Se perder = get lost, sem -self.",
+      "registro": "informal",
+      "interferencias": [
+        "BR62"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f085e6",
+      "quem": "ana",
+      "contexto": "f-966cdb",
+      "cod": "Or he might have mixed up the dates.",
+      "dica": "Ou ele pode ter confundido as datas.",
+      "img": "📅🔀",
+      "alvo": "might have",
+      "alvo_pt": "pode ter",
+      "conceito": "mix up = confundir uma coisa com outra.",
+      "var": [
+        {
+          "em": "mixed up the dates",
+          "aceita": [
+            "gotten the dates mixed up"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a848fd",
+      "quem": "ana",
+      "cod": "Did you call him the day before?",
+      "dica": "Você ligou pra ele no dia anterior?",
+      "img": "📞📆",
+      "conceito": "Pergunta no passado: Did + verbo na forma base. call = ligar para (sem preposição).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR42"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the day before",
+          "aceita": [
+            "the previous day"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-67578b",
+      "quem": "voce",
+      "contexto": "f-a848fd",
+      "cod": "No. I should have called him.",
+      "dica": "Não. Eu devia ter ligado pra ele.",
+      "img": "📞😔",
+      "alvo": "should have",
+      "alvo_pt": "devia ter",
+      "conceito": "devia ter = should have: crítica, aqui a você mesmo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2247408,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "should've → should have; + No. e him; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-241f04",
+      "quem": "ana",
+      "contexto": "f-67578b",
+      "cod": "You could have asked me for help.",
+      "dica": "Você podia ter me pedido ajuda.",
+      "img": "🙋🤝",
+      "alvo": "could have",
+      "alvo_pt": "podia ter",
+      "conceito": "podia ter = could have: a opção existia (pedir ajuda) e ninguém usou. ask someone for help.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2954458,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "could've → could have; warned me → asked me for help (encadeia com a fala seguinte); PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d4b002",
+      "quem": "voce",
+      "contexto": "f-241f04",
+      "cod": "I know. I shouldn't have done everything by myself.",
+      "dica": "Eu sei. Não devia ter feito tudo sozinho.",
+      "img": "🙇📋",
+      "alvo": "shouldn't have",
+      "alvo_pt": "Não devia ter",
+      "conceito": "sozinho = by myself.",
+      "pt_f": "Eu sei. Não devia ter feito tudo sozinha.",
+      "registro": "informal",
+      "interferencias": [
+        "BR62"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-14a9af",
+      "quem": "ana",
+      "cod": "And it wasn't supposed to rain!",
+      "dica": "E não era pra chover!",
+      "img": "🌧️🙄",
+      "alvo": "wasn't supposed to",
+      "alvo_pt": "não era pra",
+      "conceito": "não era pra chover: a previsão dizia sol. Chover pede it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3129810,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "happen → rain; And no início; ! no fim; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5b8bb2",
+      "quem": "voce",
+      "cod": "We could have moved the party inside.",
+      "dica": "A gente podia ter levado a festa pra dentro.",
+      "img": "🏠🎉",
+      "alvo": "could have",
+      "alvo_pt": "podia ter",
+      "var": [
+        {
+          "em": "moved",
+          "aceita": [
+            "taken"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-938abd",
+      "quem": "ana",
+      "contexto": "f-5b8bb2",
+      "cod": "Well, it could have been worse!",
+      "dica": "Bom, podia ter sido pior!",
+      "img": "🙂👍",
+      "alvo": "could have",
+      "alvo_pt": "podia ter",
+      "conceito": "Podia ter sido pior = It could have been worse (it obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

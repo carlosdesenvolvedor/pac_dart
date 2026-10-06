@@ -1,0 +1,242 @@
+{
+  "id": "phrasal-verbs-b2.investigar-e-descartar",
+  "trilha": "phrasal-verbs-b2",
+  "nome": "Investigar e descartar",
+  "emoji": "🔦",
+  "cena": "Um cliente relata erros intermitentes, e você e o Mike investigam juntos.",
+  "resumo": "Investigar problemas técnicos com look into, rule out, narrow down e track down.",
+  "fechamento": false,
+  "novos": [
+    "look into",
+    "rule out",
+    "narrow down",
+    "track down"
+  ],
+  "apoio": [
+    "go through",
+    "logs",
+    "nice catch"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Investigar e descartar"
+    },
+    {
+      "t": "p",
+      "c": "**look into** = investigar · **go through** = revisar com cuidado · **rule out** = descartar (uma hipótese) · **narrow down** = afunilar · **track down** = rastrear até achar."
+    },
+    {
+      "t": "warn",
+      "c": "Na conversa, look into soa mais natural que investigate. Descartar uma hipótese = rule out (não: discard, que é jogar fora). Com pronome: narrow it down."
+    },
+    {
+      "t": "ex",
+      "c": "We've ruled out the database, so it must be the network.\nJá descartamos o banco de dados, então deve ser a rede."
+    }
+  ],
+  "imagem": "🔦🐞🖥️",
+  "visualizacao": "Você e o Mike dividem a tela numa chamada, com os logs rolando sem parar. Cada hipótese descartada vira um risco no seu caderno, e a lista vai encolhendo.",
+  "foto_busca": "developers debugging logs screen",
+  "trechos": [
+    {
+      "id": "f-a29fe0",
+      "quem": "voce",
+      "cod": "We're looking into the problem and will update you soon.",
+      "dica": "Estamos investigando o problema e vamos te atualizar em breve.",
+      "img": "🔍🐞📨",
+      "alvo": "looking into",
+      "alvo_pt": "investigando",
+      "lit": "[lit.: olhando para dentro]",
+      "conceito": "look into = investigar (mais natural que investigate na conversa).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "armadilhas": [
+        "investigating"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2712929,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"They're looking into the problem.\"; They're → We're; + and will update you soon; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "and will",
+          "aceita": [
+            "and we'll",
+            "and we will"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-994094",
+      "quem": "mike",
+      "cod": "Can you look into why the requests are failing?",
+      "dica": "Você pode investigar por que as requisições estão falhando?",
+      "img": "🔍📡❌",
+      "alvo": "look into",
+      "alvo_pt": "investigar",
+      "conceito": "Pergunta encaixada sem inverter: why the requests are failing.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "armadilhas": [
+        "investigate",
+        "are"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-70535e",
+      "quem": "voce",
+      "cod": "I went through the logs and ruled out the database.",
+      "dica": "Revisei os logs e descartei o banco de dados.",
+      "img": "📜🗄️❌",
+      "alvo": "ruled out",
+      "alvo_pt": "descartei",
+      "conceito": "rule out = descartar (hipótese); discard = jogar fora.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR60"
+      ],
+      "armadilhas": [
+        "discarded"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c2e395",
+      "quem": "mike",
+      "contexto": "f-70535e",
+      "cod": "Good. Can we rule out the network too?",
+      "dica": "Boa. A gente pode descartar a rede também?",
+      "img": "🌐❓",
+      "alvo": "rule out",
+      "alvo_pt": "descartar",
+      "conceito": "Depois de can, a forma base: can we rule out.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "discard"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-895468",
+      "quem": "voce",
+      "contexto": "f-c2e395",
+      "cod": "Not yet, but I've narrowed it down to two servers.",
+      "dica": "Ainda não, mas afunilei para dois servidores.",
+      "img": "🔻🖥️🖥️",
+      "alvo": "narrowed it down",
+      "alvo_pt": "afunilei",
+      "lit": "[lit.: estreitei para baixo]",
+      "conceito": "narrow down = afunilar; com pronome no meio: narrowed it down.",
+      "var": [
+        {
+          "em": "I've narrowed",
+          "aceita": [
+            "I narrowed"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "down"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-543532",
+      "quem": "mike",
+      "contexto": "f-895468",
+      "cod": "Great. Let's narrow it down to one before we call the client.",
+      "dica": "Ótimo. Vamos afunilar para um só antes de ligar para o cliente.",
+      "img": "🔻☎️",
+      "alvo": "narrow it down",
+      "alvo_pt": "afunilar",
+      "conceito": "Com pronome, ele vai no meio: narrow it down; before + oração: before we call.",
+      "var": [
+        {
+          "em": "before we call",
+          "aceita": [
+            "before calling"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        6
+      ]
+    },
+    {
+      "id": "f-79ad5b",
+      "quem": "voce",
+      "cod": "I finally tracked down the bug. It only happens on one server.",
+      "dica": "Finalmente rastreei o bug. Só acontece em um servidor.",
+      "img": "🎯🐞🖥️",
+      "alvo": "tracked down",
+      "alvo_pt": "rastreei",
+      "conceito": "track down = rastrear até achar; Só acontece = It only happens (it obrigatório).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR02"
+      ],
+      "armadilhas": [
+        "found",
+        "happen"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ed5036",
+      "quem": "mike",
+      "contexto": "f-79ad5b",
+      "cod": "Nice catch. It always takes a while to track these bugs down.",
+      "dica": "Bem observado. Sempre leva um tempo pra rastrear esses bugs.",
+      "img": "👏⏳🐞",
+      "alvo": "track these bugs down",
+      "alvo_pt": "rastrear",
+      "conceito": "leva um tempo = it takes a while; o objeto pode ir no meio do phrasal verb.",
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR02"
+      ],
+      "armadilhas": [
+        "take",
+        "find"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "id": "colocacoes-expressoes.fazer-uma-pausa-prestar-atencao",
+  "trilha": "colocacoes-expressoes",
+  "nome": "Fazer uma pausa, prestar atenção",
+  "emoji": "☕",
+  "cena": "Num workshop longo com o time, você organiza as pausas e dá avisos.",
+  "resumo": "Colocações com take, pay e keep para organizar o trabalho e dar avisos.",
+  "fechamento": false,
+  "novos": [
+    "pay attention to",
+    "keep in mind",
+    "take notes",
+    "take turns"
+  ],
+  "apoio": [
+    "take a break"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Take, pay e keep"
+    },
+    {
+      "t": "p",
+      "c": "**take notes** = anotar. **take turns** = revezar-se. **pay attention to** = prestar atenção em. **keep in mind** = ter em mente."
+    },
+    {
+      "t": "warn",
+      "c": "Fazer uma pausa = **take a break** (não: make a break). Prestar atenção **em** = pay attention **to**."
+    },
+    {
+      "t": "ex",
+      "c": "Let's take a ten-minute break and come back at three.\nVamos fazer uma pausa de dez minutos e voltar às três."
+    }
+  ],
+  "imagem": "🧑‍🏫📝☕",
+  "visualizacao": "Você conduz um workshop longo pela câmera. Na tela, slides, rostos cansados e xícaras de café; alguém pede uma pausa e você olha o relógio.",
+  "foto_busca": "online workshop team laptop",
+  "trechos": [
+    {
+      "id": "f-5df1db",
+      "quem": "voce",
+      "cod": "Please take notes during the workshop.",
+      "dica": "Por favor, anotem durante o workshop.",
+      "img": "📝🧑‍🏫",
+      "alvo": "take notes",
+      "alvo_pt": "anotem",
+      "conceito": "anotar = take notes.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR32"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-568033",
+      "quem": "dev-novo",
+      "contexto": "f-5df1db",
+      "cod": "Do we need to take notes on everything?",
+      "dica": "A gente precisa anotar tudo?",
+      "img": "📝❓📚",
+      "alvo": "take notes",
+      "alvo_pt": "anotar",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b0e2c4",
+      "quem": "voce",
+      "contexto": "f-568033",
+      "cod": "Just the main points. And please pay attention to the error messages.",
+      "dica": "Só os pontos principais. E, por favor, prestem atenção nas mensagens de erro.",
+      "img": "👀⚠️💻",
+      "alvo": "pay attention to",
+      "alvo_pt": "prestem atenção nas",
+      "conceito": "prestar atenção em = pay attention to (não: pay attention in).",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "in",
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-55a7e1",
+      "quem": "ana",
+      "cod": "Sorry, I wasn't paying attention. Can we take a break?",
+      "dica": "Desculpa, eu não estava prestando atenção. A gente pode fazer uma pausa?",
+      "img": "😴☕⏸️",
+      "alvo": "paying attention",
+      "alvo_pt": "prestando atenção",
+      "conceito": "fazer uma pausa = take a break (não: make a break).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb3858",
+      "quem": "voce",
+      "cod": "Keep in mind that the client is in a different time zone.",
+      "dica": "Tenham em mente que o cliente está em outro fuso horário.",
+      "img": "🧠🌎🕐",
+      "alvo": "Keep in mind",
+      "alvo_pt": "Tenham em mente",
+      "conceito": "keep in mind = ter em mente, levar em conta.",
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a different",
+          "aceita": [
+            "another"
+          ]
+        }
+      ],
+      "opcional": [
+        "that"
+      ]
+    },
+    {
+      "id": "f-5bca50",
+      "quem": "mike",
+      "cod": "Also, keep in mind that this is a breaking change.",
+      "dica": "Além disso, tenham em mente que isso é uma breaking change.",
+      "img": "💥🧩⚠️",
+      "alvo": "keep in mind",
+      "alvo_pt": "tenham em mente",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "opcional": [
+        "that"
+      ]
+    },
+    {
+      "id": "f-3f8070",
+      "quem": "ana",
+      "contexto": "So who's going to present the demo to the client?",
+      "cod": "We could take turns.",
+      "dica": "A gente podia se revezar.",
+      "img": "🔄👥🎤",
+      "alvo": "take turns",
+      "alvo_pt": "se revezar",
+      "conceito": "revezar-se = take turns.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3819034,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Nós poderíamos nos revezar.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c4a203",
+      "quem": "voce",
+      "contexto": "f-3f8070",
+      "cod": "Good idea. We'll take turns, so everyone gets ten minutes.",
+      "dica": "Boa ideia. A gente vai se revezar, então todo mundo tem dez minutos.",
+      "img": "⏱️🔄🙂",
+      "alvo": "take turns",
+      "alvo_pt": "se revezar",
+      "var": [
+        {
+          "em": "gets",
+          "aceita": [
+            "has"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

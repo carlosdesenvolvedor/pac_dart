@@ -1,0 +1,209 @@
+{
+  "id": "revisao-b2.negociar-prazo-e-escopo",
+  "trilha": "revisao-b2",
+  "nome": "Negociar prazo e escopo",
+  "emoji": "📐",
+  "cena": "Depois da reunião, você e a Sarah negociam um plano realista para apresentar ao cliente.",
+  "resumo": "Negociar com a condicional mista, I could live with that if... e Would you be willing to take on...?",
+  "fechamento": false,
+  "novos": [
+    "unrealistic",
+    "hard deadline",
+    "headcount",
+    "trim"
+  ],
+  "apoio": [
+    "I could live with that",
+    "be willing to",
+    "take on",
+    "roadmap",
+    "quality bar (régua de qualidade)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Negociar prazo e escopo"
+    },
+    {
+      "t": "p",
+      "c": "**unrealistic** = irreal. **hard deadline** = prazo fixo, que não muda. **headcount** = o número de pessoas do time (o PT corporativo também diz headcount). **trim** = enxugar, cortar um pouco."
+    },
+    {
+      "t": "tip",
+      "c": "Condicional mista: **If we had planned better, this deadline wouldn't be...** = Se a gente tivesse planejado melhor, esse prazo não seria... (não: If we would have planned)."
+    },
+    {
+      "t": "warn",
+      "c": "Assumir uma tarefa = **take on** (não: assume, que é supor)."
+    },
+    {
+      "t": "ex",
+      "c": "I could live with that if we trim the reports.\nIsso eu consigo aceitar, se a gente enxugar os relatórios."
+    }
+  ],
+  "imagem": "📐📅🤝",
+  "visualizacao": "Você e a Sarah estão diante de um quadro com post-its. Vocês tiram cartões da coluna da sprint, riscam itens e chegam a um plano que dá para cumprir.",
+  "foto_busca": "planning board sticky notes",
+  "trechos": [
+    {
+      "id": "f-f4d1d8",
+      "quem": "sarah",
+      "cod": "This deadline is unrealistic.",
+      "dica": "Esse prazo é irreal.",
+      "img": "📅😵❌",
+      "alvo": "unrealistic",
+      "alvo_pt": "irreal",
+      "conceito": "unrealistic = irreal, impossível de cumprir.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3f0228",
+      "quem": "voce",
+      "contexto": "f-f4d1d8",
+      "cod": "Is it a hard deadline, or can we move it?",
+      "dica": "É um prazo fixo, ou a gente pode mudar?",
+      "img": "🔒📅❓",
+      "alvo": "hard deadline",
+      "alvo_pt": "prazo fixo",
+      "conceito": "hard deadline = prazo fixo, inegociável. O it é obrigatório: Is it...?",
+      "var": [
+        {
+          "em": "move it",
+          "aceita": [
+            "change it"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-65bb1b",
+      "quem": "sarah",
+      "contexto": "f-3f0228",
+      "cod": "The hard deadline is Monday. The client was very clear.",
+      "dica": "O prazo fixo é segunda. O cliente foi muito claro.",
+      "img": "📌📅🗣️",
+      "alvo": "hard deadline",
+      "alvo_pt": "prazo fixo",
+      "conceito": "Dia da semana sem preposição depois de is: The deadline is Monday.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4494473,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"The deadline is Monday.\" (acrescentado hard e a segunda frase); PT reescrito (original: \"O prazo é segunda.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7b43fd",
+      "quem": "voce",
+      "cod": "If we had planned better, this deadline wouldn't be so unrealistic.",
+      "dica": "Se a gente tivesse planejado melhor, esse prazo não seria tão irreal.",
+      "img": "🗓️🤦📉",
+      "alvo": "unrealistic",
+      "alvo_pt": "irreal",
+      "conceito": "Mista: If + had + particípio (passado), wouldn't + verbo (agora). Não: If we would have.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8038f7",
+      "quem": "sarah",
+      "cod": "We can't increase headcount, so the roadmap has to change.",
+      "dica": "A gente não pode aumentar o headcount, então o roadmap tem que mudar.",
+      "img": "👥🚫🗺️",
+      "alvo": "headcount",
+      "alvo_pt": "headcount",
+      "conceito": "headcount = o número de pessoas e vagas do time.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-32685f",
+      "quem": "voce",
+      "cod": "Then let's trim the scope and keep the quality bar high.",
+      "dica": "Então vamos enxugar o escopo e manter a régua de qualidade alta.",
+      "img": "✂️📋⭐",
+      "alvo": "trim",
+      "alvo_pt": "enxugar",
+      "conceito": "trim = enxugar, aparar. quality bar = régua de qualidade.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-decba1",
+      "quem": "voce",
+      "cod": "Since we can't increase headcount, would you be willing to take on the extra testing?",
+      "dica": "Já que a gente não pode aumentar o headcount, você estaria disposta a assumir os testes extras?",
+      "img": "🧪🙋‍♀️➕",
+      "alvo": "headcount",
+      "alvo_pt": "headcount",
+      "conceito": "Assumir uma tarefa = take on (não: assume, que é supor).",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR60"
+      ],
+      "armadilhas": [
+        "assume"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1e2b7b",
+      "quem": "sarah",
+      "contexto": "f-decba1",
+      "cod": "I could live with that if we trim the reports, not the checkout.",
+      "dica": "Isso eu consigo aceitar, se a gente enxugar os relatórios, não o checkout.",
+      "img": "🤝📊🛒",
+      "alvo": "trim",
+      "alvo_pt": "enxugar",
+      "conceito": "I could live with that = eu consigo aceitar isso. if + presente: if we trim.",
+      "blocos": [
+        10
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR53"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

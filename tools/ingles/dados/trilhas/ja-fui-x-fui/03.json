@@ -1,0 +1,382 @@
+{
+  "id": "ja-fui-x-fui.voce-viu-o-jogo-ontem",
+  "trilha": "ja-fui-x-fui",
+  "nome": "Você viu o jogo ontem?",
+  "emoji": "📺",
+  "cena": "Você e o Ben trocam mensagens sobre o jogo de ontem, a série que os dois assistem e um show no fim de semana.",
+  "resumo": "O marcador escolhe o tempo: last night e on Sunday pedem passado; lately, so far, recently e yet, present perfect.",
+  "fechamento": false,
+  "novos": [
+    "lately",
+    "season",
+    "so far",
+    "recently",
+    "episode"
+  ],
+  "apoio": [
+    "series",
+    "concert"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O marcador manda no tempo"
+    },
+    {
+      "t": "p",
+      "c": "Tempo terminado (**yesterday, last night, on Sunday, ago**) → passado: Did you see the game last night? Período que chega até agora (**lately, so far, recently, yet**) → present perfect: I've only seen the first episode."
+    },
+    {
+      "t": "p",
+      "c": "**I've been + adjetivo + lately** = ando + adjetivo ultimamente: I've been really busy lately."
+    },
+    {
+      "t": "warn",
+      "c": "Nada de present perfect com last night (não: Have you seen the game last night?) e nada de passado com so far."
+    },
+    {
+      "t": "ex",
+      "c": "I haven't watched the new season yet. Have you?\nAinda não assisti à temporada nova. E você?"
+    }
+  ],
+  "imagem": "📺🏟️🎵",
+  "visualizacao": "Você está no sofá com o celular na mão. O Ben manda mensagem animado com o jogo de ontem, fala da série que vocês assistem e de um show no fim de semana.",
+  "foto_busca": "friends watching sports on tv",
+  "trechos": [
+    {
+      "id": "f-a937ca",
+      "quem": "ben",
+      "cod": "Did you see the game last night? Best game of the season!",
+      "dica": "Você viu o jogo ontem à noite? Melhor jogo da temporada!",
+      "img": "🏟️🏆",
+      "alvo": "season",
+      "alvo_pt": "temporada",
+      "conceito": "last night (tempo terminado) = passado: Did you see...? temporada = season.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have",
+        "seen"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "see",
+          "aceita": [
+            "watch"
+          ]
+        },
+        {
+          "em": "Best game",
+          "aceita": [
+            "The best game"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-36d55b",
+      "quem": "voce",
+      "contexto": "f-a937ca",
+      "cod": "No, I missed it. I've been really busy lately.",
+      "dica": "Não, perdi. Ando muito ocupado ultimamente.",
+      "img": "😩💻",
+      "alvo": "lately",
+      "alvo_pt": "ultimamente",
+      "lit": "[lit.: tenho estado muito ocupado]",
+      "conceito": "Ando + adjetivo ultimamente = I've been + adjetivo lately. Perder um evento = miss.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "pt_f": "Não, perdi. Ando muito ocupada ultimamente.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR34"
+      ],
+      "armadilhas": [
+        "lost",
+        "was",
+        "lastly"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3314159,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I've been busy lately. → No, I missed it. I've been really busy lately.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c7b8ef",
+      "quem": "ben",
+      "contexto": "f-36d55b",
+      "cod": "My team has won every game so far.",
+      "dica": "O meu time ganhou todos os jogos até agora.",
+      "img": "🥇📈",
+      "alvo": "so far",
+      "alvo_pt": "até agora",
+      "conceito": "até agora = so far, com present perfect (não com o passado). Ganhar jogo = win.",
+      "var": [
+        {
+          "em": "every game",
+          "aceita": [
+            "all the games",
+            "all of the games",
+            "all their games"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR35"
+      ],
+      "armadilhas": [
+        "earned",
+        "won every game until"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8936850,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Our team hasn't won a single game so far. → My team has won every game so far.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-dd392f",
+      "quem": "voce",
+      "contexto": "f-c7b8ef",
+      "cod": "Wow! How many games have they played so far?",
+      "dica": "Nossa! Quantos jogos eles jogaram até agora?",
+      "img": "🤔🏀",
+      "alvo": "so far",
+      "alvo_pt": "até agora",
+      "conceito": "O time = they. até agora pede present perfect: have they played.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did",
+        "much"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-abcd5a",
+      "quem": "ben",
+      "cod": "Have you watched the new season of our favorite show yet?",
+      "dica": "Você já assistiu à temporada nova da nossa série favorita?",
+      "img": "🍿📺",
+      "alvo": "season",
+      "alvo_pt": "temporada",
+      "conceito": "já...? = Have you...yet? série de TV = show (series também vale). Assistir a = watch, sem to.",
+      "var": [
+        {
+          "em": "watched",
+          "aceita": [
+            "seen"
+          ]
+        },
+        {
+          "em": "show",
+          "aceita": [
+            "series"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "assisted",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e43be9",
+      "quem": "voce",
+      "contexto": "f-abcd5a",
+      "cod": "Not yet. I've only seen the first episode. Have you?",
+      "dica": "Ainda não. Só vi o primeiro episódio. E você?",
+      "img": "🎬👀",
+      "alvo": "episode",
+      "alvo_pt": "episódio",
+      "conceito": "Have you? = eco curto (E você?), com o mesmo auxiliar da pergunta.",
+      "var": [
+        {
+          "em": "seen",
+          "aceita": [
+            "watched"
+          ]
+        },
+        {
+          "em": "Have you?",
+          "aceita": [
+            "How about you?",
+            "What about you?"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "saw",
+        "and"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-838e5d",
+      "quem": "ben",
+      "contexto": "f-e43be9",
+      "cod": "Yes, I watched the last episode on Sunday.",
+      "dica": "Sim, assisti ao último episódio no domingo.",
+      "img": "🛋️📅",
+      "alvo": "episode",
+      "alvo_pt": "episódio",
+      "conceito": "on Sunday (dia definido) = passado simples: I watched.",
+      "var": [
+        {
+          "em": "watched",
+          "aceita": [
+            "saw"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR17"
+      ],
+      "armadilhas": [
+        "have",
+        "in",
+        "sunday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1b00a5",
+      "quem": "ben",
+      "cod": "Have you been to any concerts recently?",
+      "dica": "Você foi a algum show recentemente?",
+      "img": "🎤🎟️",
+      "alvo": "recently",
+      "alvo_pt": "recentemente",
+      "conceito": "recently com present perfect; show (de música) = concert. O en-US também aceita Did you go to... recently?",
+      "var": [
+        {
+          "em": "Have you been to",
+          "aceita": [
+            "Did you go to",
+            "Have you gone to"
+          ]
+        },
+        {
+          "em": "any concerts",
+          "aceita": [
+            "any shows",
+            "a concert",
+            "a show"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "recent"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c433e5",
+      "quem": "voce",
+      "contexto": "f-1b00a5",
+      "cod": "Not recently. But there's a jazz concert this weekend.",
+      "dica": "Recentemente, não. Mas tem um show de jazz neste fim de semana.",
+      "img": "🎷📆",
+      "alvo": "recently",
+      "alvo_pt": "Recentemente",
+      "conceito": "tem (existe) = there's. O show deste fim de semana já está marcado.",
+      "var": [
+        {
+          "em": "concert",
+          "aceita": [
+            "show"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-af29fe",
+      "quem": "ben",
+      "contexto": "f-c433e5",
+      "cod": "Let's go! I haven't gone out much lately.",
+      "dica": "Vamos! Não tenho saído muito ultimamente.",
+      "img": "🌃🙌",
+      "alvo": "lately",
+      "alvo_pt": "ultimamente",
+      "conceito": "Não tenho saído muito ultimamente = I haven't gone out much lately (present perfect com lately).",
+      "var": [
+        {
+          "em": "gone out",
+          "aceita": [
+            "been out",
+            "been going out"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "didn't",
+        "go"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "id": "comparar.cena-escolhendo-um-notebook",
+  "trilha": "comparar",
+  "nome": "Cena: escolhendo um notebook",
+  "emoji": "🛒",
+  "cena": "Você decide qual notebook comprar e, no caminho de volta, compara Austin e Chicago com a Sarah ao telefone.",
+  "resumo": "Juntar -er, more, better e worse, this one e the other one numa cena só.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: comparar"
+    },
+    {
+      "t": "p",
+      "c": "Curto + -er (cheaper, bigger, hotter); longo com more (more expensive). Irregulares: good → **better**, bad → **worse**."
+    },
+    {
+      "t": "tip",
+      "c": "Para escolher: **Which one...?** = Qual...? · **this one** = este · **the other one** = o outro."
+    },
+    {
+      "t": "ex",
+      "c": "This one is cheaper, but the screen is worse.\nEste é mais barato, mas a tela é pior."
+    }
+  ],
+  "imagem": "🛒💻📞",
+  "visualizacao": "No balcão, os dois notebooks lado a lado e a sacola na mão. Depois, na rua fria de Chicago, você liga para a Sarah, que está no calor de Austin.",
+  "foto_busca": "laptop shopping checkout counter",
+  "trechos": [
+    {
+      "id": "f-ed880c",
+      "quem": "voce",
+      "cod": "Which one is cheaper?",
+      "dica": "Qual é mais barato?",
+      "img": "🤔💵",
+      "alvo": "cheaper",
+      "alvo_pt": "mais barato",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "opcional": [
+        "one"
+      ]
+    },
+    {
+      "id": "f-337d36",
+      "quem": "atendente",
+      "contexto": "f-ed880c",
+      "cod": "This one is cheaper, but the screen is worse.",
+      "dica": "Este é mais barato, mas a tela é pior.",
+      "img": "📺👎",
+      "alvo": "worse",
+      "alvo_pt": "pior",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6357393,
+        "en_autor": "CK",
+        "pt_id": 9707443,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"This one is cheaper.\"; PT original: \"Este aqui é mais barato.\"; acrescentado but the screen is worse; PT: Este aqui → Este, + mas a tela é pior",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-424f0b",
+      "quem": "voce",
+      "cod": "The other one is faster, but it's more expensive.",
+      "dica": "O outro é mais rápido, mas é mais caro.",
+      "img": "⚡💸",
+      "alvo": "more expensive",
+      "alvo_pt": "mais caro",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a6d6c9",
+      "quem": "atendente",
+      "contexto": "f-424f0b",
+      "cod": "Yes, and it's better than this one.",
+      "dica": "É, e é melhor que este.",
+      "img": "👍⚖️",
+      "alvo": "better than",
+      "alvo_pt": "melhor que",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d26a00",
+      "quem": "voce",
+      "cod": "OK, I'll take the other one.",
+      "dica": "Tá bom, vou levar o outro.",
+      "img": "✅🛍️",
+      "alvo": "the other one",
+      "alvo_pt": "o outro",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ebbcad",
+      "quem": "voce",
+      "cod": "Which city is bigger, Austin or Chicago?",
+      "dica": "Qual cidade é maior, Austin ou Chicago?",
+      "img": "🏙️❓📞",
+      "alvo": "bigger",
+      "alvo_pt": "maior",
+      "conceito": "city = cidade.",
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3731441,
+        "en_autor": "CM",
+        "pt_id": 5126589,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Which city is larger, Boston or Chicago?\"; PT original: \"Qual cidade é maior, Boston ou Chicago?\"; larger → bigger, Boston → Austin; PT: Boston → Austin",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bea52f",
+      "quem": "sarah",
+      "contexto": "f-ebbcad",
+      "cod": "Chicago, but Austin is hotter.",
+      "dica": "Chicago, mas Austin é mais quente.",
+      "img": "☀️🥵",
+      "alvo": "hotter",
+      "alvo_pt": "mais quente",
+      "conceito": "hot → hotter (dobra o t, como big → bigger).",
+      "registro": "informal",
+      "armadilhas": [
+        "hoter",
+        "more"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-193622",
+      "quem": "sarah",
+      "cod": "Austin is very different. You're going to love it.",
+      "dica": "Austin é muito diferente. Você vai adorar.",
+      "img": "🎸❤️",
+      "alvo": "different",
+      "alvo_pt": "diferente",
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

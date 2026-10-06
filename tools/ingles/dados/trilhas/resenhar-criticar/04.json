@@ -1,0 +1,209 @@
+{
+  "id": "resenhar-criticar.nao-correspondeu-as-expectativas",
+  "trilha": "resenhar-criticar",
+  "nome": "Não correspondeu às expectativas",
+  "emoji": "🤨",
+  "cena": "Você dá a sua opinião sincera sobre um curso online que a empresa pagou para o time.",
+  "resumo": "Criticar com tato: live up to, hit or miss, room for improvement, not my cup of tea.",
+  "fechamento": false,
+  "novos": [
+    "live up to",
+    "not my cup of tea",
+    "room for improvement",
+    "hit or miss"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Criticar sem ser grosseiro"
+    },
+    {
+      "t": "p",
+      "c": "**It didn't live up to my expectations** (não correspondeu), **it was hit or miss** (era uma loteria), **there's room for improvement** (tem espaço para melhorar) e **It's not my cup of tea** (não é a minha praia)."
+    },
+    {
+      "t": "warn",
+      "c": "Corresponder às expectativas = live up to (não: correspond to the expectations). Não é a minha praia = not my cup of tea (não: not my beach)."
+    },
+    {
+      "t": "ex",
+      "c": "The idea is good, but there's still room for improvement.\nA ideia é boa, mas ainda tem espaço para melhorar."
+    }
+  ],
+  "imagem": "💻🎓🤨",
+  "visualizacao": "A Sarah abre a call com o certificado do curso na tela. Você pensa nas horas de vídeo que assistiu e procura palavras sinceras, mas gentis.",
+  "foto_busca": "online course video lesson laptop",
+  "trechos": [
+    {
+      "id": "f-b4b69e",
+      "quem": "sarah",
+      "cod": "Did the online course live up to your expectations?",
+      "dica": "O curso online correspondeu às suas expectativas?",
+      "img": "🎓❓",
+      "alvo": "live up to",
+      "alvo_pt": "correspondeu às",
+      "conceito": "corresponder às expectativas = live up to (não: correspond to).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "correspond",
+        "lived"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ad3e15",
+      "quem": "voce",
+      "contexto": "f-b4b69e",
+      "cod": "Not really. It didn't live up to the hype.",
+      "dica": "Não muito. Não correspondeu ao hype.",
+      "img": "📢👎",
+      "alvo": "live up to",
+      "alvo_pt": "correspondeu ao",
+      "conceito": "Depois de didn't, o verbo volta à forma base: didn't live (não: didn't lived).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR07"
+      ],
+      "armadilhas": [
+        "lived",
+        "correspond"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-da1c94",
+      "quem": "voce",
+      "cod": "I've finished the course, and overall it was hit or miss.",
+      "dica": "Já terminei o curso, e no geral foi uma loteria.",
+      "img": "🎯🎲",
+      "alvo": "hit or miss",
+      "alvo_pt": "uma loteria",
+      "conceito": "hit or miss = irregular: às vezes acerta, às vezes erra.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "lottery",
+        "finished"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bd76d0",
+      "quem": "voce",
+      "cod": "The videos could have been shorter, and the quality was hit or miss.",
+      "dica": "Os vídeos podiam ter sido mais curtos, e a qualidade era uma loteria.",
+      "img": "🎞️✂️",
+      "alvo": "hit or miss",
+      "alvo_pt": "uma loteria",
+      "conceito": "podia ter sido = could have been + adjetivo (crítica com tato).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "could be",
+        "more short"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3a8ff6",
+      "quem": "voce",
+      "cod": "The idea is good, but there's still room for improvement.",
+      "dica": "A ideia é boa, mas ainda tem espaço para melhorar.",
+      "img": "💡📈",
+      "alvo": "room for improvement",
+      "alvo_pt": "espaço para melhorar",
+      "conceito": "room = espaço (incontável aqui). Tem (existe) = there is.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "space",
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c1ff90",
+      "quem": "ana",
+      "cod": "I agree. There's a lot of room for improvement in the exercises.",
+      "dica": "Concordo. Tem muito espaço para melhorar nos exercícios.",
+      "img": "📝📈",
+      "alvo": "room for improvement",
+      "alvo_pt": "espaço para melhorar",
+      "conceito": "Concordo = I agree (não: I am agree).",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "am",
+        "space"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6c202e",
+      "quem": "ana",
+      "cod": "I stopped halfway through. It's not my cup of tea.",
+      "dica": "Parei na metade. Não é a minha praia.",
+      "img": "⏸️🍵",
+      "alvo": "not my cup of tea",
+      "alvo_pt": "Não é a minha praia",
+      "lit": "[lit.: não é a minha xícara de chá]",
+      "conceito": "Idiom: not my cup of tea = não é a minha praia (não: not my beach).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "beach",
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-70dc3c",
+      "quem": "voce",
+      "contexto": "Do you want to join the live sessions at 7:00 in the morning?",
+      "cod": "That's not my cup of tea.",
+      "dica": "Isso não é a minha praia.",
+      "img": "🌅🙅",
+      "alvo": "not my cup of tea",
+      "alvo_pt": "não é a minha praia",
+      "conceito": "Recusa leve e simpática: That's not my cup of tea.",
+      "registro": "informal",
+      "armadilhas": [
+        "beach"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5379448,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT do Tatoeba (Não é minha praia.) com o pronome Isso, pelo That; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

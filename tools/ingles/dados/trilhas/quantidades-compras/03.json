@@ -1,0 +1,211 @@
+{
+  "id": "quantidades-compras.muito-algum-no-mercado",
+  "trilha": "quantidades-compras",
+  "nome": "Muito, algum: no mercado",
+  "emoji": "🛒",
+  "cena": "De manhã, na cozinha da Emma, vocês veem o que falta; depois, na lanchonete do mercado, pedem ao atendente.",
+  "resumo": "Dizer o que falta e pedir com some, any e a lot of: We need some... / Do you have any...?",
+  "fechamento": false,
+  "novos": [
+    "Do you have any...?",
+    "We need some...",
+    "fruit",
+    "salt"
+  ],
+  "apoio": [
+    "a lot of"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "some, any e a lot of"
+    },
+    {
+      "t": "p",
+      "c": "**some** na afirmativa (*We need some milk*); **any** na pergunta e na negativa (*Do you have any milk? We don't have any salt*). **a lot of** = muito, com qualquer coisa."
+    },
+    {
+      "t": "ex",
+      "c": "Do you have any cold water?\nVocê tem água gelada?"
+    },
+    {
+      "t": "warn",
+      "c": "Não tem fruta (não existe) = *There's no fruit*. A gente não tem sal = *We don't have any salt*."
+    }
+  ],
+  "imagem": "🥛🧂🍎",
+  "visualizacao": "Você abre a geladeira da Emma: pouco leite e nenhuma fruta. Depois, no balcão da lanchonete do mercado, cheiro de café e o atendente esperando o pedido.",
+  "foto_busca": "grocery store deli counter",
+  "trechos": [
+    {
+      "id": "f-7a5f55",
+      "quem": "emma",
+      "cod": "We need some milk.",
+      "dica": "A gente precisa de leite.",
+      "img": "🥛📝",
+      "alvo": "We need some",
+      "alvo_pt": "A gente precisa de",
+      "conceito": "some (um pouco de, uns) vai na afirmativa e muitas vezes nem aparece no português.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3d8c43",
+      "quem": "voce",
+      "contexto": "f-7a5f55",
+      "cod": "OK. We need some bread too.",
+      "dica": "Tá bom. A gente precisa de pão também.",
+      "img": "🍞➕",
+      "alvo": "We need some",
+      "alvo_pt": "A gente precisa de",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a3758",
+      "quem": "emma",
+      "cod": "There's no fruit in the fridge.",
+      "dica": "Não tem fruta na geladeira.",
+      "img": "🍎🚫",
+      "alvo": "fruit",
+      "alvo_pt": "fruta",
+      "conceito": "fruit costuma ficar sem plural: some fruit, a lot of fruit.",
+      "var": [
+        {
+          "em": "There's no",
+          "aceita": [
+            "There isn't any"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "fruits",
+        "have"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2252652,
+        "en_autor": "CK",
+        "pt_id": 5655727,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"There's no coffee.\"; PT original: \"Não tem café.\"; coffee → fruit, + in the fridge; PT: café → fruta, + na geladeira",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5f9884",
+      "quem": "voce",
+      "contexto": "f-4a3758",
+      "cod": "Do you eat a lot of fruit?",
+      "dica": "Você come muita fruta?",
+      "img": "🍌🍊❓",
+      "alvo": "fruit",
+      "alvo_pt": "fruta",
+      "var": [
+        {
+          "em": "a lot of",
+          "aceita": [
+            "much"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "fruits"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-55b0b9",
+      "quem": "voce",
+      "cod": "We don't have any salt.",
+      "dica": "A gente não tem sal.",
+      "img": "🧂🚫",
+      "alvo": "salt",
+      "alvo_pt": "sal",
+      "conceito": "A gente não tem sal = We don't have any salt. Não tem sal (não existe) = There's no salt.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4497887,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"We don't have any water.\"; water → salt; PT reescrito no registro informal (original: \"Não temos água.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-93c922",
+      "quem": "emma",
+      "cod": "Hi, do you have any milk?",
+      "dica": "Oi, você tem leite?",
+      "img": "🥛❓",
+      "alvo": "do you have any",
+      "alvo_pt": "você tem",
+      "conceito": "Para o atendente: Do you have any...? (any na pergunta).",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1449758,
+        "en_autor": "CK",
+        "pt_id": 1664970,
+        "pt_autor": "DracoKall",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Do you have any beer?\"; PT original: \"Você tem cerveja?\"; + Hi, beer → milk; PT: + Oi, cerveja → leite",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-88956a",
+      "quem": "voce",
+      "cod": "Do you have any cold water?",
+      "dica": "Você tem água gelada?",
+      "img": "🧊💧",
+      "alvo": "Do you have any",
+      "alvo_pt": "Você tem",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-965e34",
+      "quem": "voce",
+      "contexto": "How's your rice?",
+      "cod": "It needs more salt.",
+      "dica": "Precisa de mais sal.",
+      "img": "🍚🧂",
+      "alvo": "salt",
+      "alvo_pt": "sal",
+      "conceito": "O it não some: It needs more salt (não: Needs more salt).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 7371425,
+        "en_autor": "Eccles17",
+        "pt_id": 7371463,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

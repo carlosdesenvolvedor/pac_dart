@@ -1,0 +1,174 @@
+{
+  "id": "registro-variantes.para-a-chefe-e-para-o-amigo",
+  "trilha": "registro-variantes",
+  "nome": "Para a chefe e para o amigo",
+  "emoji": "🎚️",
+  "cena": "Você manda mensagens parecidas para o Ben, para a Ana e para a diretora da empresa, cada uma no registro certo.",
+  "resumo": "Formal: Could you possibly...? e Would it be possible to...? Informal: Got a minute? e What's up?",
+  "fechamento": false,
+  "novos": [
+    "could you possibly",
+    "would it be possible to",
+    "got a minute",
+    "what's up"
+  ],
+  "apoio": [
+    "rarely",
+    "standup (a daily)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O mesmo pedido em dois registros"
+    },
+    {
+      "t": "p",
+      "c": "Com a diretora: **Could you possibly...?** (Será que você poderia...?) e **Would it be possible to...?** (Seria possível...?). Com amigos e colegas próximos: **Got a minute?** (Tem um minuto?) e **What's up?** (O que foi?)."
+    },
+    {
+      "t": "tip",
+      "c": "*Got a minute?* é a forma curta e informal de *Do you have a minute?*, muito comum nos EUA (não: Have a minute?)."
+    },
+    {
+      "t": "warn",
+      "c": "No PT, nada de \"a senhora\" com a diretora de uma empresa de tech: \"Será que você poderia...?\" já é educado."
+    },
+    {
+      "t": "ex",
+      "c": "Could you possibly move our meeting to Thursday?\nSerá que você poderia passar a nossa reunião para quinta?"
+    }
+  ],
+  "imagem": "💬👔👋",
+  "visualizacao": "Você está com duas conversas abertas: numa, o Ben e a Ana, com emojis e frases curtas; na outra, a diretora, com saudação e frases completas. Você escolhe cada palavra.",
+  "foto_busca": "typing message laptop office",
+  "trechos": [
+    {
+      "id": "f-6c2f56",
+      "quem": "voce",
+      "cod": "Hey Ben, got a minute?",
+      "dica": "Ei, Ben, tem um minuto?",
+      "img": "👋⏱️❓",
+      "alvo": "got a minute",
+      "alvo_pt": "tem um minuto",
+      "conceito": "Got a minute? = Do you have a minute?, curto e informal (não: Have a minute?).",
+      "registro": "informal",
+      "armadilhas": [
+        "have"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-07d90c",
+      "quem": "ben",
+      "contexto": "f-6c2f56",
+      "cod": "Sure, what's up?",
+      "dica": "Claro, o que foi?",
+      "img": "🙂❔",
+      "alvo": "what's up",
+      "alvo_pt": "o que foi",
+      "conceito": "What's up? = o que foi?, o que houve? (informal).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f13400",
+      "quem": "voce",
+      "cod": "Got a minute after standup? I have a quick question.",
+      "dica": "Tem um minuto depois da daily? Tenho uma pergunta rápida.",
+      "img": "🗓️❓⏱️",
+      "alvo": "Got a minute",
+      "alvo_pt": "Tem um minuto",
+      "conceito": "daily (como o dev brasileiro fala) = standup (EUA).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c0c719",
+      "quem": "ana",
+      "contexto": "f-f13400",
+      "cod": "Yeah, I'm free after standup. What's up?",
+      "dica": "Sim, estou livre depois da daily. O que foi?",
+      "img": "🙋‍♀️✅❔",
+      "alvo": "What's up",
+      "alvo_pt": "O que foi",
+      "conceito": "What's up? pede para a pessoa dizer o que precisa.",
+      "var": [
+        {
+          "em": "Yeah",
+          "aceita": [
+            "Yes"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-86dab2",
+      "quem": "voce",
+      "cod": "Could you possibly move our meeting to Thursday?",
+      "dica": "Será que você poderia passar a nossa reunião para quinta?",
+      "img": "📅➡️🙏",
+      "alvo": "Could you possibly",
+      "alvo_pt": "Será que você poderia",
+      "conceito": "Could you possibly + verbo? é o pedido mais educado: Será que você poderia...?",
+      "registro": "formal",
+      "armadilhas": [
+        "can"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-df62f6",
+      "quem": "voce",
+      "cod": "Would it be possible to start at ten? Ana has a doctor's appointment.",
+      "dica": "Seria possível começar às dez? A Ana tem consulta médica.",
+      "img": "🕙🩺🙏",
+      "alvo": "Would it be possible to",
+      "alvo_pt": "Seria possível",
+      "conceito": "Would it be possible to + verbo? = Seria possível...? (formal, sem pressionar).",
+      "blocos": [
+        8
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5f8920",
+      "quem": "voce",
+      "cod": "I rarely ask for favors, but could you possibly approve my request today?",
+      "dica": "Eu raramente peço favores, mas será que você poderia aprovar o meu pedido hoje?",
+      "img": "📝✅🙏",
+      "alvo": "could you possibly",
+      "alvo_pt": "será que você poderia",
+      "conceito": "rarely vem antes do verbo: I rarely ask.",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ae8cc4",
+      "quem": "voce",
+      "cod": "As discussed, would it be possible to share the agenda in advance?",
+      "dica": "Conforme conversamos, seria possível compartilhar a pauta com antecedência?",
+      "img": "📧📋⏩",
+      "alvo": "would it be possible to",
+      "alvo_pt": "seria possível",
+      "conceito": "As discussed = conforme conversamos (e-mail de trabalho). agenda = pauta.",
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    }
+  ]
+}

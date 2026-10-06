@@ -1,0 +1,237 @@
+{
+  "id": "passiva-2.esta-sendo-consertado",
+  "trilha": "passiva-2",
+  "nome": "Está sendo consertado",
+  "emoji": "🚧",
+  "cena": "A caminho do coworking em Chicago, você passa por obras na rua e no prédio e vai explicando tudo à Ana pelo chat.",
+  "resumo": "Descrever obras e serviços em andamento com a passiva contínua: The road is being repaired.",
+  "fechamento": false,
+  "novos": [
+    "longer route",
+    "repair",
+    "renovate",
+    "repaint"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Está sendo consertado = is being repaired"
+    },
+    {
+      "t": "p",
+      "c": "Passiva em andamento: **is / are being + particípio** (agora) e **was / were being + particípio** (no passado). Quem faz o serviço não importa, então fica de fora."
+    },
+    {
+      "t": "ex",
+      "c": "When I got here, the elevator was being repaired, so I took the stairs.\nQuando eu cheguei, o elevador estava sendo consertado, então eu fui de escada."
+    },
+    {
+      "t": "warn",
+      "c": "Não: The road is repairing (a rua não conserta nada) nem is been repaired. Fui de escada = I took the stairs."
+    }
+  ],
+  "imagem": "🚧🚌🏢",
+  "visualizacao": "Da janela do ônibus, você vê cones laranja e ouve uma britadeira. No prédio do coworking, uma placa no elevador e cheiro de tinta fresca.",
+  "foto_busca": "road construction city bus detour",
+  "trechos": [
+    {
+      "id": "f-858bb8",
+      "quem": "voce",
+      "cod": "My bus is taking a longer route today.",
+      "dica": "O meu ônibus está fazendo um caminho mais longo hoje.",
+      "img": "🚌↪️",
+      "alvo": "longer route",
+      "alvo_pt": "caminho mais longo",
+      "conceito": "Fazer um caminho = take a route. Mais longo = longer.",
+      "registro": "informal",
+      "armadilhas": [
+        "doing",
+        "more long"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ff91af",
+      "quem": "ana",
+      "contexto": "f-858bb8",
+      "cod": "Why? Is the road being repaired?",
+      "dica": "Por quê? A rua está sendo consertada?",
+      "img": "🛣️🔧❓",
+      "alvo": "repaired",
+      "alvo_pt": "consertada",
+      "conceito": "Está sendo + particípio = is being + particípio. Consertar (obra, serviço) = repair.",
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "repairing",
+        "is been"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "road",
+          "aceita": [
+            "street"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0fe3b3",
+      "quem": "voce",
+      "contexto": "f-ff91af",
+      "cod": "Yes, and every bus has to take a longer route this week.",
+      "dica": "Sim, e todo ônibus tem que fazer um caminho mais longo esta semana.",
+      "img": "🚌🚌🗺️",
+      "alvo": "longer route",
+      "alvo_pt": "caminho mais longo",
+      "conceito": "every + singular: every bus has (com -s).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "have to",
+        "every buses"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0d504a",
+      "quem": "voce",
+      "cod": "When I got here, the elevator was being repaired, so I took the stairs.",
+      "dica": "Quando eu cheguei, o elevador estava sendo consertado, então eu fui de escada.",
+      "img": "🛗🚫🪜",
+      "alvo": "repaired",
+      "alvo_pt": "consertado",
+      "conceito": "Estava sendo + particípio = was being + particípio. Ir de escada = take the stairs.",
+      "var": [
+        {
+          "em": "got here",
+          "aceita": [
+            "arrived"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "was repairing",
+        "by stairs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a117fd",
+      "quem": "voce",
+      "cod": "The kitchen on our floor is being renovated this week.",
+      "dica": "A cozinha do nosso andar está sendo reformada esta semana.",
+      "img": "🍳🔨",
+      "alvo": "renovated",
+      "alvo_pt": "reformada",
+      "conceito": "reformar (cozinha, casa) = renovate. reform é mudar leis e sistemas.",
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "reformed",
+        "renovating"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-095902",
+      "quem": "ana",
+      "contexto": "f-a117fd",
+      "cod": "My building is also being renovated. The noise is terrible!",
+      "dica": "O meu prédio também está sendo reformado. O barulho é horrível!",
+      "img": "🏢🔊😫",
+      "alvo": "renovated",
+      "alvo_pt": "reformado",
+      "conceito": "also vem entre o verbo be e o resto: is also being renovated.",
+      "var": [
+        {
+          "em": "is also being renovated",
+          "aceita": [
+            "is being renovated too"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "reformed",
+        "too is"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8773554,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Our airport' → 'My building', + 'The noise is terrible!'; PT autoral",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7ac590",
+      "quem": "voce",
+      "cod": "The hallways are being repainted, so the whole place smells like paint.",
+      "dica": "Os corredores estão sendo pintados de novo, então o lugar todo está com cheiro de tinta.",
+      "img": "🖌️🚪👃",
+      "alvo": "repainted",
+      "alvo_pt": "pintados de novo",
+      "conceito": "repaint = pintar de novo. Estar com cheiro de = smell like.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "painted again",
+        "smells of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0d6ff9",
+      "quem": "ana",
+      "contexto": "f-7ac590",
+      "cod": "Is the outside being repainted too?",
+      "dica": "A parte de fora também está sendo pintada de novo?",
+      "img": "🏢🎨❓",
+      "alvo": "repainted",
+      "alvo_pt": "pintada de novo",
+      "conceito": "Pergunta na passiva contínua: Is + sujeito + being + particípio?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "is being the outside",
+        "painted again"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "id": "tres-futuros.sexta-eu-encontro-a-ana-combinados",
+  "trilha": "tres-futuros",
+  "nome": "Sexta eu encontro a Ana: combinados",
+  "emoji": "📅",
+  "cena": "Numa chamada, a Sarah quer marcar uma reunião e você passa a sua agenda da semana: dentista na quinta e voo na terça.",
+  "resumo": "Falar de compromissos já marcados com o presente contínuo: I'm flying to Denver next Tuesday.",
+  "fechamento": false,
+  "novos": [
+    "next Tuesday",
+    "appointment (hora marcada)",
+    "dentist",
+    "fly",
+    "this Thursday"
+  ],
+  "apoio": [
+    "meet (encontrar com)",
+    "Are you free on...?",
+    "conference"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Combinado = presente contínuo"
+    },
+    {
+      "t": "p",
+      "c": "Compromisso já marcado (hora, consulta, passagem comprada) usa **be + -ing**: I'm flying, I'm going to the dentist. Em português a gente usa o presente ou o \"vou\"."
+    },
+    {
+      "t": "ex",
+      "c": "I'm flying to a conference in Denver.\n(combinado) Vou de avião para uma conferência em Denver."
+    },
+    {
+      "t": "warn",
+      "c": "Plano marcado não vai no presente simples (não: Tuesday I fly to Denver)."
+    },
+    {
+      "t": "tip",
+      "c": "on + dia: on Thursday. Com this e next, sem on: this Thursday, next Tuesday."
+    }
+  ],
+  "imagem": "📅🦷✈️",
+  "visualizacao": "Você está numa chamada de vídeo com a Sarah. A agenda está aberta na tela, a quinta tem o dentista marcado e a passagem da terça já chegou por e-mail.",
+  "foto_busca": "weekly planner calendar video call",
+  "trechos": [
+    {
+      "id": "f-b90f75",
+      "quem": "sarah",
+      "cod": "Are you free this Thursday?",
+      "dica": "Você está livre nesta quinta?",
+      "img": "🗓️❓",
+      "alvo": "this Thursday",
+      "alvo_pt": "nesta quinta",
+      "conceito": "this Thursday = nesta quinta (sem on).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "on"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8244182,
+        "en_autor": "CK",
+        "pt_id": 8245611,
+        "pt_autor": "josivangoncalves",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'on Monday afternoon' trocado por 'this Thursday'; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6ca385",
+      "quem": "voce",
+      "contexto": "f-b90f75",
+      "cod": "Sorry, I'm going to the dentist on Thursday.",
+      "dica": "(combinado) Desculpa, vou ao dentista na quinta.",
+      "img": "🦷📅",
+      "alvo": "dentist",
+      "alvo_pt": "dentista",
+      "conceito": "Combinado: I'm going (be + -ing). on + dia: on Thursday.",
+      "var": [
+        {
+          "em": "I'm going to the dentist",
+          "aceita": [
+            "I'm going to go to the dentist"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR29",
+        "BR17"
+      ],
+      "armadilhas": [
+        "go",
+        "at"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2712890,
+        "en_autor": "CK",
+        "pt_id": 10001517,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Sorry,' acrescentado e 'tomorrow' trocado por 'on Thursday'; PT com a pista (combinado)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a9e82d",
+      "quem": "sarah",
+      "contexto": "f-6ca385",
+      "cod": "Is it a long appointment?",
+      "dica": "É uma consulta demorada?",
+      "img": "⏳🦷",
+      "alvo": "appointment",
+      "alvo_pt": "consulta",
+      "lit": "[lit.: é isso uma consulta longa?]",
+      "conceito": "appointment = consulta, hora marcada (médico, dentista). É uma...? = Is it a...?",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2e2fe0",
+      "quem": "voce",
+      "contexto": "f-a9e82d",
+      "cod": "My appointment is at nine. I'm free after lunch.",
+      "dica": "Minha consulta é às nove. Estou livre depois do almoço.",
+      "img": "🕘🍽️",
+      "alvo": "appointment",
+      "alvo_pt": "consulta",
+      "conceito": "at + hora: at nine.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-640ffa",
+      "quem": "sarah",
+      "contexto": "f-2e2fe0",
+      "cod": "Great. Let's meet this Thursday at two.",
+      "dica": "Ótimo. Vamos nos reunir nesta quinta, às duas.",
+      "img": "🤝🕑",
+      "alvo": "this Thursday",
+      "alvo_pt": "nesta quinta",
+      "conceito": "Let's meet = vamos nos reunir / vamos nos encontrar.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b2a74d",
+      "quem": "sarah",
+      "cod": "And what are you doing next Tuesday?",
+      "dica": "E o que você vai fazer na terça que vem?",
+      "img": "📆❓",
+      "alvo": "next Tuesday",
+      "alvo_pt": "na terça que vem",
+      "conceito": "next Tuesday = na terça que vem (sem on). Agenda: What are you doing...?",
+      "var": [
+        {
+          "em": "are you doing",
+          "aceita": [
+            "are you going to do"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR29",
+        "BR06"
+      ],
+      "armadilhas": [
+        "do you do",
+        "on"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2682152,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'And' acrescentado e 'this weekend' trocado por 'next Tuesday'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d0f140",
+      "quem": "voce",
+      "contexto": "f-b2a74d",
+      "cod": "I'm flying to a conference in Denver.",
+      "dica": "(combinado) Vou de avião para uma conferência em Denver.",
+      "img": "✈️🎤",
+      "alvo": "flying",
+      "alvo_pt": "Vou de avião",
+      "lit": "[lit.: estou voando para uma conferência]",
+      "conceito": "fly = ir de avião. Voo marcado: I'm flying.",
+      "var": [
+        {
+          "em": "I'm flying",
+          "aceita": [
+            "I'm going to fly"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR29"
+      ],
+      "armadilhas": [
+        "fly"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-381d8b",
+      "quem": "sarah",
+      "contexto": "f-d0f140",
+      "cod": "Is Ana flying to Denver with you?",
+      "dica": "(combinado) A Ana vai de avião para Denver com você?",
+      "img": "👩‍🎨✈️❓",
+      "alvo": "flying",
+      "alvo_pt": "vai de avião",
+      "conceito": "Pergunta com o contínuo: Is Ana flying...?",
+      "var": [
+        {
+          "em": "Is Ana flying",
+          "aceita": [
+            "Is Ana going to fly"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR29"
+      ],
+      "armadilhas": [
+        "does"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a45993",
+      "quem": "voce",
+      "contexto": "f-381d8b",
+      "cod": "Yes, we're flying next Tuesday at seven.",
+      "dica": "(combinado) Sim, a gente vai na terça que vem, às sete.",
+      "img": "🛫🕖",
+      "alvo": "next Tuesday",
+      "alvo_pt": "na terça que vem",
+      "conceito": "Dia e hora marcados: we're flying next Tuesday at seven.",
+      "var": [
+        {
+          "em": "flying",
+          "aceita": [
+            "going",
+            "going to fly"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR29",
+        "BR17"
+      ],
+      "armadilhas": [
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-edb70a",
+      "quem": "sarah",
+      "cod": "Good luck at the dentist!",
+      "dica": "Boa sorte no dentista!",
+      "img": "🍀🦷",
+      "alvo": "dentist",
+      "alvo_pt": "dentista",
+      "conceito": "at the dentist = no dentista (no consultório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

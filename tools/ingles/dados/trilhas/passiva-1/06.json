@@ -1,0 +1,280 @@
+{
+  "id": "passiva-1.cidade-e-pipeline",
+  "trilha": "passiva-1",
+  "nome": "Cidade e pipeline",
+  "emoji": "🏗️",
+  "cena": "A Ana visita Chicago: de manhã você mostra a cidade a ela; à tarde, no escritório, explica como o app é testado.",
+  "resumo": "Cena de fechamento: passiva no presente e no passado, com e sem by, e get + particípio.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: a passiva"
+    },
+    {
+      "t": "p",
+      "c": "Presente para o que acontece sempre (is used, are run); passado para o que aconteceu (was built, were fixed); **by** só quando quem fez importa; e **get** + particípio na conversa (I got stuck)."
+    },
+    {
+      "t": "warn",
+      "c": "Construíram, testam, cancelaram (sem dizer quem) viram passiva em inglês: It was built in the seventies. E o it é obrigatório (não: Was built)."
+    },
+    {
+      "t": "ex",
+      "c": "Our app is used by thousands of people every day.\nNosso app é usado por milhares de pessoas todo dia."
+    }
+  ],
+  "imagem": "🏙️☕💻",
+  "visualizacao": "De manhã, você e a Ana andam pela beira do rio entre prédios de vidro. À tarde, no escritório, ela puxa uma cadeira para ver o pipeline na sua tela.",
+  "foto_busca": "city river walk skyscrapers",
+  "trechos": [
+    {
+      "id": "f-6429ad",
+      "quem": "ana",
+      "cod": "Sorry I'm late. I got stuck in traffic.",
+      "dica": "Desculpa, estou atrasada. Fiquei presa no trânsito.",
+      "img": "🚗🚦⏰",
+      "alvo": "got stuck",
+      "alvo_pt": "Fiquei presa",
+      "conceito": "ficar preso = get stuck (ficar + estado = get).",
+      "registro": "informal",
+      "interferencias": [
+        "BR33"
+      ],
+      "armadilhas": [
+        "stayed"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1972606,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "We → I; acrescentado 'Sorry I'm late.'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fe0c6b",
+      "quem": "ana",
+      "cod": "Is that tower made of glass?",
+      "dica": "Aquela torre é feita de vidro?",
+      "img": "🏙️🪟❓",
+      "alvo": "made of",
+      "alvo_pt": "feita de",
+      "registro": "informal",
+      "armadilhas": [
+        "from"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f2eeb4",
+      "quem": "voce",
+      "contexto": "f-fe0c6b",
+      "cod": "Yes, and it was built in the seventies.",
+      "dica": "É, sim, e foi construída nos anos setenta.",
+      "img": "🏗️📅",
+      "alvo": "was built",
+      "alvo_pt": "foi construída",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR58"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yes, it is"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-bccce5",
+      "quem": "ana",
+      "cod": "Is the city named after a person?",
+      "dica": "A cidade tem o nome de alguma pessoa?",
+      "img": "🏙️🧑❓",
+      "alvo": "named after",
+      "alvo_pt": "tem o nome de",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Is the city",
+          "aceita": [
+            "Was the city"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cf7aae",
+      "quem": "voce",
+      "contexto": "f-bccce5",
+      "cod": "No, the name comes from a Native American word.",
+      "dica": "Não, o nome vem de uma palavra indígena.",
+      "img": "🪶🗣️",
+      "conceito": "Native American (as duas com maiúscula) = indígena dos EUA. Chicago vem de cebola selvagem.",
+      "registro": "informal",
+      "armadilhas": [
+        "come"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a Native American",
+          "aceita": [
+            "an indigenous",
+            "an Indigenous"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-425da0",
+      "quem": "voce",
+      "cod": "The boat tour was canceled because of the rain.",
+      "dica": "O passeio de barco foi cancelado por causa da chuva.",
+      "img": "🚤🌧️🚫",
+      "alvo": "was canceled",
+      "alvo_pt": "foi cancelado",
+      "conceito": "canceled (EUA, com um l); cancelled é a grafia britânica.",
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4501614,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "picnic → boat tour; rain → the rain; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "boat tour",
+          "aceita": [
+            "boat ride"
+          ]
+        },
+        {
+          "em": "was canceled",
+          "aceita": [
+            "got canceled"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-33bf42",
+      "quem": "voce",
+      "cod": "Our app is used by thousands of people every day.",
+      "dica": "Nosso app é usado por milhares de pessoas todo dia.",
+      "img": "📱🌎",
+      "alvo": "used by",
+      "alvo_pt": "usado por",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-af7162",
+      "quem": "ana",
+      "cod": "How is the code tested?",
+      "dica": "Como o código é testado?",
+      "img": "🧪❓",
+      "alvo": "tested",
+      "alvo_pt": "testado",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "does",
+        "codes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6053b9",
+      "quem": "voce",
+      "contexto": "f-af7162",
+      "cod": "Every commit is tested automatically before it's merged.",
+      "dica": "Todo commit é testado automaticamente antes de ser mergeado.",
+      "img": "🔁🧪🔀",
+      "alvo": "is tested",
+      "alvo_pt": "é testado",
+      "conceito": "antes de ser mergeado = before it's merged (ou before being merged).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR58"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "is tested automatically",
+          "aceita": [
+            "is automatically tested"
+          ]
+        },
+        {
+          "em": "before it's merged",
+          "aceita": [
+            "before being merged"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ba0cf4",
+      "quem": "voce",
+      "cod": "The bug you reported was fixed this morning.",
+      "dica": "O bug que você reportou foi corrigido hoje de manhã.",
+      "img": "🐛🔧🌅",
+      "alvo": "was fixed",
+      "alvo_pt": "foi corrigido",
+      "conceito": "the bug you reported: relativa sem that. Hoje de manhã = this morning (sem in the).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR05"
+      ],
+      "armadilhas": [
+        "today"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 777031,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Some bugs were fixed.' -> 'The bug you reported was fixed this morning.' (sujeito com relativa e 'this morning'); PT autoral",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "was fixed",
+          "aceita": [
+            "got fixed"
+          ]
+        }
+      ]
+    }
+  ]
+}

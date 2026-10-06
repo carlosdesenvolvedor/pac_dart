@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../domain/curriculo.dart';
 import '../domain/quiz.dart';
 import 'bloc/curso_bloc.dart';
+import 'pages/desafios_page.dart';
 import 'pages/projeto_page.dart';
 import 'pages/quiz_page.dart';
 
@@ -11,7 +12,8 @@ import 'pages/quiz_page.dart';
 ///
 /// 1. o **quiz da lição** (dá para pular);
 /// 2. quando as lições da trilha acabam, os projetos **Mão na Massa** que
-///    ainda faltam, um a um (cada um dá para pular);
+///    ainda faltam, um a um (cada um dá para pular), e os **desafios de
+///    lógica** da trilha que ainda não foram resolvidos;
 /// 3. a próxima lição.
 ///
 /// Cada etapa devolve `true` para seguir a sequência; sair (seta de voltar)
@@ -21,6 +23,13 @@ Future<void> seguirDepoisDaLicao(BuildContext context, {bool comQuiz = true}) as
   final nav = Navigator.of(context);
   final t = bloc.state.trilhaIdx, l = bloc.state.licaoIdx;
   final trilha = bloc.state.trilhas[t];
+
+  // Inglês: a prova de memória já fechou a lição (o "treino de memória"
+  // fica no mapa); segue direto para a próxima.
+  if (bloc.state.ehIngles) {
+    if (!bloc.isClosed) bloc.add(const ProximaLicaoPedida());
+    return;
+  }
 
   if (comQuiz && temQuiz(bloc.state, t, l)) {
     final seguiu = await nav.push<bool>(MaterialPageRoute<bool>(
@@ -42,12 +51,21 @@ Future<void> seguirDepoisDaLicao(BuildContext context, {bool comQuiz = true}) as
       final seguiu = await nav.push<bool>(MaterialPageRoute<bool>(
         builder: (_) => ProjetoPage(
           nivel: trilha.nivel,
+          fundo: trilha.fundo,
+          perfil: trilha.perfil,
           projeto: trilha.projetos[pendentes[i]],
           chaveProgresso: CursoState.chaveProjeto(t, pendentes[i]),
           emSequencia: true,
           passo: i + 1,
           total: pendentes.length,
         ),
+      ));
+      if (seguiu != true || !nav.mounted) return;
+    }
+    // …e depois os desafios de lógica da trilha que ainda faltam.
+    if (trilha.temDesafios && bloc.state.desafiosFeitos(t) < trilha.desafios.length) {
+      final seguiu = await nav.push<bool>(MaterialPageRoute<bool>(
+        builder: (_) => DesafiosPage(trilhaIdx: t, trilha: trilha, emSequencia: true),
       ));
       if (seguiu != true || !nav.mounted) return;
     }
@@ -65,7 +83,9 @@ int sementeQuiz(int t, int l) => t * 1000 + l;
 
 /// A lição consegue gerar perguntas? (todas do currículo conseguem, mas o
 /// fluxo não pode empurrar uma tela vazia se um dia isso mudar).
-bool temQuiz(CursoState st, int t, int l) => gerarQuiz(
+bool temQuiz(CursoState st, int t, int l) => st.ehIngles
+    ? false
+    : gerarQuiz(
       st.trilhas[t].licoes[l],
       poolDaTrilha(st.trilhas[t]),
       seed: sementeQuiz(t, l),

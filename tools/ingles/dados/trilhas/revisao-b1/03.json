@@ -1,0 +1,304 @@
+{
+  "id": "revisao-b1.voo-cancelado",
+  "trilha": "revisao-b1",
+  "nome": "Voo cancelado",
+  "emoji": "🛑",
+  "cena": "Seu voo de Chicago para Austin foi cancelado: você resolve tudo no balcão da companhia aérea e depois liga para a Sarah.",
+  "resumo": "Resolver um voo cancelado: passiva no passado, dedução com must, vouchers e lamentar com a 3ª condicional.",
+  "fechamento": false,
+  "novos": [
+    "the next available flight",
+    "cancellation",
+    "rebooked",
+    "voucher",
+    "meal voucher"
+  ],
+  "apoio": [
+    "was canceled",
+    "There must be",
+    "at least",
+    "If I had..., I would have..."
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Voo cancelado no balcão"
+    },
+    {
+      "t": "p",
+      "c": "Próximo voo disponível = **the next available flight**; remarcado = **rebooked**; voucher de alimentação = **meal voucher**."
+    },
+    {
+      "t": "tip",
+      "c": "Dedução: **There must be** a lot of cancellations (deve ter). Lamentar: **If I had checked** the forecast, **I would have** rebooked."
+    },
+    {
+      "t": "warn",
+      "c": "Foi cancelado = **was canceled** (não: My flight canceled; en-US com um l só). No if da 3ª condicional, **had** + particípio (não: If I would have checked)."
+    },
+    {
+      "t": "ex",
+      "c": "Can you at least give me a meal voucher?\nVocê pode pelo menos me dar um voucher de alimentação?"
+    }
+  ],
+  "imagem": "✈️🛑🧾",
+  "visualizacao": "O painel do aeroporto de Chicago fica vermelho: cancelado. Você puxa a mala até o balcão da companhia, a fila é enorme, e lá fora a tempestade não para.",
+  "foto_busca": "airport departures board canceled flights",
+  "trechos": [
+    {
+      "id": "f-319b72",
+      "quem": "voce",
+      "cod": "My flight was canceled. When is the next available flight?",
+      "dica": "O meu voo foi cancelado. Quando é o próximo voo disponível?",
+      "img": "✈️❌🕐",
+      "alvo": "the next available flight",
+      "alvo_pt": "o próximo voo disponível",
+      "conceito": "Foi cancelado = was canceled (passiva). Adjetivo antes do substantivo: available flight.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58",
+        "BR08"
+      ],
+      "armadilhas": [
+        "cancelled"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6582596,
+        "en_autor": "Eccles17",
+        "pt_id": 8805301,
+        "pt_autor": "heo598",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: cancelled → canceled (en-US); acrescentado \"When is the next available flight?\" (original: \"My flight was cancelled.\"); PT: acrescentado \"Quando é o próximo voo disponível?\" (original: \"O meu voo foi cancelado.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "When is",
+          "aceita": [
+            "When's"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4429ff",
+      "quem": "atendente",
+      "contexto": "f-319b72",
+      "cod": "We apologize. The next available flight leaves tomorrow at 7:00.",
+      "dica": "Pedimos desculpas. O próximo voo disponível sai amanhã às 7h00.",
+      "img": "🙏✈️🌅",
+      "alvo": "The next available flight",
+      "alvo_pt": "O próximo voo disponível",
+      "conceito": "apologize = pedir desculpas (formal). O voo sai = the flight leaves, com -s.",
+      "registro": "formal",
+      "interferencias": [
+        "BR02",
+        "BR17"
+      ],
+      "armadilhas": [
+        "leave",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5ccf43",
+      "quem": "voce",
+      "contexto": "f-4429ff",
+      "cod": "Tomorrow? There must be a lot of cancellations today.",
+      "dica": "Amanhã? Deve ter muitos cancelamentos hoje.",
+      "img": "🤔❌📈",
+      "alvo": "cancellations",
+      "alvo_pt": "cancelamentos",
+      "conceito": "Deve ter (dedução, existir) = there must be. cancellation tem ll; canceled, um l só.",
+      "var": [
+        {
+          "em": "a lot of",
+          "aceita": [
+            "lots of",
+            "many"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b7df8e",
+      "quem": "atendente",
+      "contexto": "f-5ccf43",
+      "cod": "Yes, there are. I've already rebooked you on the 7:00 flight.",
+      "dica": "Tem, sim. Já remarquei você no voo das 7h00.",
+      "img": "✅🎫🕖",
+      "alvo": "rebooked",
+      "alvo_pt": "remarquei",
+      "lit": "[lit.: reservei você de novo]",
+      "conceito": "Tem, sim = Yes, there are. rebook = remarcar (passagem). Já fiz, sem data = present perfect com already.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03",
+        "BR27"
+      ],
+      "armadilhas": [
+        "in",
+        "have"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        3
+      ]
+    },
+    {
+      "id": "f-bfb887",
+      "quem": "voce",
+      "cod": "Can you at least give me a meal voucher?",
+      "dica": "Você pode pelo menos me dar um voucher de alimentação?",
+      "img": "🍔🎟️❓",
+      "alvo": "meal voucher",
+      "alvo_pt": "voucher de alimentação",
+      "conceito": "at least = pelo menos (antes do verbo principal). meal = refeição.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a48884",
+      "quem": "atendente",
+      "contexto": "f-bfb887",
+      "cod": "Of course. Here's a meal voucher for $15.",
+      "dica": "Claro. Aqui está um voucher de alimentação de 15 dólares.",
+      "img": "🍔🎟️💵",
+      "alvo": "meal voucher",
+      "alvo_pt": "voucher de alimentação",
+      "conceito": "Aqui está = Here's. Um voucher de 15 dólares = a voucher for $15 (ou a $15 voucher).",
+      "var": [
+        {
+          "em": "Here's",
+          "aceita": [
+            "Here is"
+          ]
+        },
+        {
+          "em": "Of course",
+          "aceita": [
+            "Sure"
+          ]
+        },
+        {
+          "em": "a meal voucher for $15",
+          "aceita": [
+            "a $15 meal voucher"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ef8eba",
+      "quem": "voce",
+      "cod": "I was waiting at the gate when they announced the cancellation.",
+      "dica": "(para a Sarah) Eu estava esperando no portão quando anunciaram o cancelamento.",
+      "img": "⏳🚪📢",
+      "alvo": "cancellation",
+      "alvo_pt": "cancelamento",
+      "conceito": "Cena em andamento = was + -ing; o que interrompe = passado simples.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ebc234",
+      "quem": "sarah",
+      "contexto": "f-ef8eba",
+      "cod": "Oh no! Did they give you a hotel voucher?",
+      "dica": "Ah, não! Eles te deram um voucher de hotel?",
+      "img": "🏨🎟️❓",
+      "alvo": "voucher",
+      "alvo_pt": "voucher",
+      "conceito": "voucher = vale (de hotel, de refeição); o brasileiro também diz voucher.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "gave"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f1757c",
+      "quem": "voce",
+      "contexto": "f-ebc234",
+      "cod": "No. They only give hotel vouchers when it's their fault.",
+      "dica": "Não. Eles só dão vouchers de hotel quando é culpa deles.",
+      "img": "🏨🚫⛈️",
+      "alvo": "vouchers",
+      "alvo_pt": "vouchers",
+      "conceito": "Ser culpa de alguém = be someone's fault: é culpa deles = it's their fault (com it).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "gives",
+        "guilt",
+        "is"
+      ],
+      "origem": "autoral_ia",
+      "interferencias": [
+        "BR01"
+      ]
+    },
+    {
+      "id": "f-d191cd",
+      "quem": "voce",
+      "cod": "If I had checked the forecast, I would have rebooked my flight yesterday.",
+      "dica": "Se eu tivesse olhado a previsão do tempo, teria remarcado o meu voo ontem.",
+      "img": "🌦️🤦",
+      "alvo": "rebooked",
+      "alvo_pt": "remarcado",
+      "conceito": "Se eu tivesse..., teria... = If I had + particípio, I would have + particípio.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the forecast",
+          "aceita": [
+            "the weather forecast"
+          ]
+        }
+      ]
+    }
+  ]
+}

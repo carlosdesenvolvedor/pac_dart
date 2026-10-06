@@ -1,0 +1,213 @@
+{
+  "id": "dev-incidentes.cena-sexta-a-noite",
+  "trilha": "dev-incidentes",
+  "nome": "Cena: sexta à noite",
+  "emoji": "🌃",
+  "cena": "Você escreve o resumo do incidente de sexta para a empresa toda.",
+  "resumo": "O incidente do alerta ao postmortem: past perfect, passiva perfeita e should have, sem culpar ninguém.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O resumo do incidente"
+    },
+    {
+      "t": "p",
+      "c": "Linha do tempo com **had + particípio** (By 9:30, we had rolled back...), status com a **passiva perfeita** (has been identified) e o processo, não a pessoa, como sujeito."
+    },
+    {
+      "t": "warn",
+      "c": "BR58: status sem dizer quem fez = passiva com has/have been: The root cause has been identified (não: Identified the root cause)."
+    },
+    {
+      "t": "ex",
+      "c": "The root cause has been identified.\nA causa raiz já foi identificada."
+    }
+  ],
+  "imagem": "🌃📝📣",
+  "visualizacao": "Segunda de manhã, o incidente já passou. Você relê a linha do tempo, respira fundo e escreve um resumo calmo e claro para a empresa toda.",
+  "foto_busca": "person writing report laptop morning",
+  "trechos": [
+    {
+      "id": "f-e5b2d0",
+      "quem": "voce",
+      "cod": "The site went down at 9:00 on Friday night.",
+      "dica": "O site caiu às 9h00 na sexta à noite.",
+      "img": "🌐⬇️🌙",
+      "alvo": "went down",
+      "alvo_pt": "caiu",
+      "conceito": "O momento da queda: went down (passado de go down).",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "fell",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c28028",
+      "quem": "voce",
+      "cod": "By 9:30, we had rolled back the deploy.",
+      "dica": "Até as 9h30, já tínhamos revertido o deploy.",
+      "img": "⏪🕤",
+      "alvo": "had rolled back",
+      "alvo_pt": "já tínhamos revertido",
+      "conceito": "by + horário = até aquele momento (prazo), com past perfect (had + particípio).",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "have",
+        "reverted"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b26690",
+      "quem": "voce",
+      "cod": "Some payments kept failing until the hotfix went live at 11:00.",
+      "dica": "Alguns pagamentos ficaram falhando até o hotfix ir pro ar, às 11h00.",
+      "img": "💳❌🩹",
+      "alvo": "kept failing",
+      "alvo_pt": "ficaram falhando",
+      "conceito": "ficar + gerúndio = keep + -ing (kept failing); ir pro ar = go live.",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "continued",
+        "fail"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-618a96",
+      "quem": "voce",
+      "cod": "The root cause has been identified: a missing index on the orders table.",
+      "dica": "A causa raiz já foi identificada: um índice faltando na tabela de pedidos.",
+      "img": "🌱🔎🗂️",
+      "alvo": "has been identified",
+      "alvo_pt": "já foi identificada",
+      "conceito": "Status sem agente = passiva: has been identified (não: identified it).",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "was",
+        "identified"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7c2901",
+      "quem": "voce",
+      "cod": "All affected customers have been notified.",
+      "dica": "Todos os clientes afetados já foram avisados.",
+      "img": "📧👥",
+      "alvo": "have been notified",
+      "alvo_pt": "já foram avisados",
+      "conceito": "customers (plural) pede have been, não has been.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "has",
+        "advised"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "All affected",
+          "aceita": [
+            "All the affected",
+            "All of the affected"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-07d1fd",
+      "quem": "voce",
+      "cod": "If we had had better alerts, we would have caught the problem earlier.",
+      "dica": "Se tivéssemos tido alertas melhores, teríamos pegado o problema antes.",
+      "img": "🚨🔔⏪",
+      "alvo": "had had",
+      "alvo_pt": "tivéssemos tido",
+      "conceito": "had had: o 1º had é o auxiliar, o 2º é o particípio de have.",
+      "var": [
+        {
+          "em": "we would have",
+          "aceita": [
+            "we'd have"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would have had"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6d6c5c",
+      "quem": "voce",
+      "cod": "This isn't anyone's fault. The process should have caught it.",
+      "dica": "Não é culpa de ninguém. O processo é que deveria ter pegado isso.",
+      "img": "🙅⚙️",
+      "alvo": "should have caught",
+      "alvo_pt": "deveria ter pegado",
+      "conceito": "Postmortem sem culpados: o sujeito é o processo. anyone em frase negativa.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "nobody",
+        "should caught"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "This isn't anyone's",
+          "aceita": [
+            "This is nobody's",
+            "It isn't anyone's",
+            "It's nobody's"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7853fd",
+      "quem": "mike",
+      "contexto": "f-6d6c5c",
+      "cod": "That's just what I was thinking. Our pipeline needs an index check.",
+      "dica": "Era exatamente isso que eu estava pensando. O nosso pipeline precisa de uma checagem de índices.",
+      "img": "💭✅",
+      "alvo": "needs",
+      "alvo_pt": "precisa",
+      "conceito": "pipeline (it) pede o -s: needs.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "need",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

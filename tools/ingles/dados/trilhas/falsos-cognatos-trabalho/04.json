@@ -1,0 +1,299 @@
+{
+  "id": "falsos-cognatos-trabalho.os-pares-lado-a-lado",
+  "trilha": "falsos-cognatos-trabalho",
+  "nome": "Os pares lado a lado",
+  "emoji": "🪞",
+  "cena": "Na reunião de status semanal com a Sarah, os falsos cognatos aparecem lado a lado com os pares certos.",
+  "resumo": "Cena de fechamento: actually x currently, realize x carry out, plan to x pretend, assume x take on, eventually x occasionally, can't stand, summarize x resume.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "actually",
+    "currently",
+    "realize",
+    "carry out",
+    "plan to",
+    "take on",
+    "assume",
+    "eventually",
+    "occasionally",
+    "summarize",
+    "resume",
+    "policy"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Os pares"
+    },
+    {
+      "t": "p",
+      "c": "actually (na verdade) x currently (atualmente); eventually (no fim) x occasionally (eventualmente); realize (perceber) x carry out (realizar); assume (supor) x take on (assumir)."
+    },
+    {
+      "t": "p",
+      "c": "support (apoiar) x can't stand (não suportar); resume (currículo) x summarize (resumir); plan to (pretender) x pretend (fingir)."
+    },
+    {
+      "t": "warn",
+      "c": "Atualmente = currently (não: actually). Pretendo = I plan to (não: I pretend). Realizei uma auditoria = I carried out an audit (não: I realized)."
+    },
+    {
+      "t": "ex",
+      "c": "Actually, I'm currently working on the payment screen.\nNa verdade, atualmente estou trabalhando na tela de pagamento."
+    }
+  ],
+  "imagem": "🪞📊🗣️",
+  "visualizacao": "Quarta-feira, reunião de status. A Sarah compartilha a tela com o quadro da sprint, e você tem a lista de pendências aberta ao lado.",
+  "foto_busca": "weekly status meeting laptop",
+  "trechos": [
+    {
+      "id": "f-46202f",
+      "quem": "voce",
+      "contexto": "Are you still working on the login screen?",
+      "cod": "Actually, I'm currently working on the payment screen.",
+      "dica": "Na verdade, atualmente estou trabalhando na tela de pagamento.",
+      "img": "💳💻",
+      "alvo": "currently",
+      "alvo_pt": "atualmente",
+      "conceito": "actually = na verdade; currently = atualmente.",
+      "var": [
+        {
+          "em": "I'm currently working",
+          "aceita": [
+            "currently I'm working"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ab8e86",
+      "quem": "voce",
+      "cod": "I didn't realize we had to carry out an audit this month.",
+      "dica": "Não percebi que a gente tinha que realizar uma auditoria este mês.",
+      "img": "😳🔐",
+      "alvo": "carry out",
+      "alvo_pt": "realizar",
+      "conceito": "realize = perceber; carry out = realizar.",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "realize"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0f969b",
+      "quem": "voce",
+      "cod": "I haven't started yet, but I plan to take on the audit.",
+      "dica": "Ainda não comecei, mas pretendo assumir a auditoria.",
+      "img": "🙋📋",
+      "alvo": "take on",
+      "alvo_pt": "assumir",
+      "conceito": "pretendo = I plan to; assumir = take on; ainda não = present perfect + yet.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR56"
+      ],
+      "armadilhas": [
+        "pretend",
+        "assume"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ed3a55",
+      "quem": "sarah",
+      "contexto": "f-0f969b",
+      "cod": "Great. I assume you have a plan.",
+      "dica": "Ótimo. Suponho que você tenha um plano.",
+      "img": "🗺️🤔",
+      "alvo": "assume",
+      "alvo_pt": "Suponho",
+      "var": [
+        {
+          "em": "assume you",
+          "aceita": [
+            "assume that you"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2543041,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I'm assuming → I assume; + Great.; PT reescrito (assumindo → suponho)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-084be6",
+      "quem": "voce",
+      "contexto": "f-ed3a55",
+      "cod": "Yes, but it's actually not that simple.",
+      "dica": "Sim, mas na verdade não é tão simples.",
+      "img": "🧩😅",
+      "alvo": "actually",
+      "alvo_pt": "na verdade",
+      "var": [
+        {
+          "em": "it's actually not",
+          "aceita": [
+            "it actually isn't",
+            "actually it isn't",
+            "actually it's not",
+            "it isn't actually"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR56"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1975718,
+        "en_autor": "CK",
+        "pt_id": 4899948,
+        "pt_autor": "ToinhoAlam",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Yes, but / Sim, mas; It actually isn't → it's actually not (mais comum na fala)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-369dac",
+      "quem": "voce",
+      "cod": "Eventually, we sorted out the payment bug.",
+      "dica": "No fim, a gente resolveu o bug do pagamento.",
+      "img": "🐞🔧✅",
+      "alvo": "Eventually",
+      "alvo_pt": "No fim",
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR60"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-605a1e",
+      "quem": "mike",
+      "contexto": "f-369dac",
+      "cod": "Good. But the login error still happens occasionally.",
+      "dica": "Boa. Mas o erro do login ainda acontece eventualmente.",
+      "img": "🔐⚠️",
+      "alvo": "occasionally",
+      "alvo_pt": "eventualmente",
+      "conceito": "eventualmente = occasionally; happens com -s.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "eventually",
+        "happen"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3819672,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "It → the login error; from time to time → occasionally; + Good. But; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5d7b1d",
+      "quem": "ana",
+      "contexto": "We have a new policy: meetings end after thirty minutes.",
+      "cod": "I support the new policy. I can't stand long meetings.",
+      "dica": "Eu apoio a nova política. Não suporto reunião longa.",
+      "img": "👍😩",
+      "alvo": "can't stand",
+      "alvo_pt": "Não suporto",
+      "conceito": "support = apoiar; não suportar = can't stand.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "support"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f5c89b",
+      "quem": "sarah",
+      "cod": "Could you summarize the main points in a short email?",
+      "dica": "Você poderia resumir os pontos principais num e-mail curto?",
+      "img": "📧✂️",
+      "alvo": "summarize",
+      "alvo_pt": "resumir",
+      "conceito": "resumir = summarize; resume (EUA) = currículo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "resume"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-628e61",
+      "quem": "voce",
+      "contexto": "f-f5c89b",
+      "cod": "Sure. By the way, did you get the resume I sent you?",
+      "dica": "Claro. Aliás, você recebeu o currículo que eu te mandei?",
+      "img": "📄📨",
+      "alvo": "resume",
+      "alvo_pt": "currículo",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR56"
+      ],
+      "armadilhas": [
+        "curriculum"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

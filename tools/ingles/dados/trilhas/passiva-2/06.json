@@ -1,0 +1,213 @@
+{
+  "id": "passiva-2.cena-status-de-um-incidente",
+  "trilha": "passiva-2",
+  "nome": "Cena: status de um incidente",
+  "emoji": "🛠️",
+  "cena": "Depois de uma queda no banco de dados, você escreve a atualização de status para a empresa toda.",
+  "resumo": "Escrever uma atualização de status com a passiva em vários tempos e com modais, sem itens novos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Cena: status de um incidente"
+    },
+    {
+      "t": "p",
+      "c": "No status, o foco é o sistema, não as pessoas: **is being restored** (em andamento), **have been notified** (feito), **has been canceled** (decidido), **should have been checked** (falha de processo)."
+    },
+    {
+      "t": "ex",
+      "c": "The database is being restored from last night's backup.\nO banco de dados está sendo restaurado a partir do backup de ontem à noite."
+    },
+    {
+      "t": "tip",
+      "c": "Postmortem sem culpados: o sujeito é o processo (The backup should have been checked), nunca um colega."
+    },
+    {
+      "t": "warn",
+      "c": "Status sem agente pede passiva em todos os tempos: The database is being restored (não: The database is restoring)."
+    }
+  ],
+  "imagem": "🗄️🚨📝",
+  "visualizacao": "Painéis vermelhos na tela, o telefone vibrando sem parar. Você respira, abre o documento de status e escreve com calma, frase por frase, para a empresa toda.",
+  "foto_busca": "server room alert monitor dashboard",
+  "trechos": [
+    {
+      "id": "f-1291d2",
+      "quem": "voce",
+      "cod": "Our main database stopped working at 9:10 this morning.",
+      "dica": "O nosso banco de dados principal parou de funcionar às 9h10 hoje de manhã.",
+      "img": "🗄️❌🕘",
+      "alvo": "stopped working",
+      "alvo_pt": "parou de funcionar",
+      "conceito": "Parar de + verbo = stop + -ing. Hora com dígitos: 9:10 = 9h10.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "stopped to work",
+        "at the"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e3c256",
+      "quem": "voce",
+      "cod": "The database is being restored from last night's backup.",
+      "dica": "O banco de dados está sendo restaurado a partir do backup de ontem à noite.",
+      "img": "♻️🗄️🌙",
+      "alvo": "is being restored",
+      "alvo_pt": "está sendo restaurado",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "is restoring",
+        "is been"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-081fe9",
+      "quem": "voce",
+      "cod": "All affected customers have been notified by email.",
+      "dica": "Todos os clientes afetados já foram avisados por e-mail.",
+      "img": "📧👥✅",
+      "alvo": "have been notified",
+      "alvo_pt": "já foram avisados",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR27",
+        "BR58"
+      ],
+      "armadilhas": [
+        "were notified",
+        "has been"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a65519",
+      "quem": "voce",
+      "cod": "This afternoon's release has been canceled.",
+      "dica": "A release desta tarde foi cancelada.",
+      "img": "🚀🚫",
+      "alvo": "has been canceled",
+      "alvo_pt": "foi cancelada",
+      "conceito": "Decisão com efeito agora = has been canceled. canceled (EUA) com um l.",
+      "var": [
+        {
+          "em": "has been",
+          "aceita": [
+            "was"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "cancelled",
+        "has canceled"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8597067,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'meeting' → 'release'; PT autoral",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6d0435",
+      "quem": "voce",
+      "cod": "Initial findings suggest the problem was caused by a single bad line of code.",
+      "dica": "As primeiras análises indicam que o problema foi causado por uma única linha de código errada.",
+      "img": "🔍📄🐞",
+      "alvo": "was caused by",
+      "alvo_pt": "foi causado por",
+      "conceito": "Initial findings suggest = as primeiras análises indicam (tom de relatório).",
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "was caused for",
+        "line of codes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d567f0",
+      "quem": "voce",
+      "cod": "The backup should have been checked before the upgrade.",
+      "dica": "O backup deveria ter sido verificado antes da atualização.",
+      "img": "💾🔍⬆️",
+      "alvo": "should have been checked",
+      "alvo_pt": "deveria ter sido verificado",
+      "conceito": "Falha de processo, sem culpar ninguém: should have been + particípio.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "should be checked",
+        "should have checked"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-06b2d6",
+      "quem": "mike",
+      "cod": "Thanks for the update. Has the fix been approved yet?",
+      "dica": "Obrigado pela atualização. A correção já foi aprovada?",
+      "img": "🙏🩹❓",
+      "alvo": "Has the fix been approved",
+      "alvo_pt": "A correção já foi aprovada",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR27"
+      ],
+      "armadilhas": [
+        "was approved",
+        "the fix has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-02b474",
+      "quem": "voce",
+      "contexto": "f-06b2d6",
+      "cod": "Not yet. It's still being tested.",
+      "dica": "Ainda não. Ainda está sendo testada.",
+      "img": "⏳🧪",
+      "alvo": "It's still being tested",
+      "alvo_pt": "Ainda está sendo testada",
+      "conceito": "It é obrigatório em inglês, mesmo quando o português omite o sujeito.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR58"
+      ],
+      "armadilhas": [
+        "is still",
+        "still is being"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7869643,
+        "en_autor": "shekitten",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'The medication is still being tested' → 'Not yet. It's still being tested'; PT autoral",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "id": "situacao-saude.emergencia-e-seguro-viagem",
+  "trilha": "situacao-saude",
+  "nome": "Emergência e seguro-viagem",
+  "emoji": "🚑",
+  "cena": "No hotel em Austin, a Ana cai na escada e torce o tornozelo, e você pede ajuda na recepção.",
+  "resumo": "Pedir ajuda numa emergência leve: Is there a clinic near here? / Where's the nearest...?",
+  "fechamento": false,
+  "novos": [
+    "nearest",
+    "hospital",
+    "clinic",
+    "insurance",
+    "travel insurance"
+  ],
+  "apoio": [
+    "ambulance"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Mais próximo = the nearest"
+    },
+    {
+      "t": "p",
+      "c": "O mais próximo: **the nearest** hospital, **the nearest** pharmacy. Seguro-viagem = **travel insurance** (substantivo + substantivo)."
+    },
+    {
+      "t": "warn",
+      "c": "Tem (existe) = **Is there...?**: Is there a clinic near here? (não: Have a clinic near here?)"
+    },
+    {
+      "t": "tip",
+      "c": "Cada lugar com a sua preposição: on the stairs, at the hotel, in the lobby."
+    },
+    {
+      "t": "ex",
+      "c": "Where's the nearest pharmacy?\nOnde fica a farmácia mais próxima?"
+    }
+  ],
+  "imagem": "🏨🚑🩹",
+  "visualizacao": "Você está no saguão do hotel em Austin. A Ana está sentada no último degrau da escada, segurando o tornozelo, e o recepcionista atende o telefone atrás do balcão.",
+  "foto_busca": "hotel lobby reception desk",
+  "trechos": [
+    {
+      "id": "f-811f73",
+      "quem": "voce",
+      "cod": "Excuse me. Is there a hospital near here?",
+      "dica": "Com licença. Tem um hospital aqui perto?",
+      "img": "🏥❓",
+      "alvo": "hospital",
+      "alvo_pt": "hospital",
+      "conceito": "Tem (existe) = there is: Is there...? (não: Have a hospital...?).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-216847",
+      "quem": "recepcionista",
+      "contexto": "f-811f73",
+      "cod": "The nearest hospital is downtown. It's twenty minutes by car.",
+      "dica": "O hospital mais próximo fica no centro. Fica a vinte minutos de carro.",
+      "img": "🏥🚗⏱️",
+      "alvo": "nearest",
+      "alvo_pt": "mais próximo",
+      "conceito": "Fica no centro = is downtown (sem in). Fica a vinte minutos = It's twenty minutes: it obrigatório.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "more"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "twenty minutes by car",
+          "aceita": [
+            "twenty minutes away by car"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b22ec2",
+      "quem": "voce",
+      "contexto": "f-216847",
+      "cod": "Ana fell on the stairs. Is there a clinic near here?",
+      "dica": "A Ana caiu na escada. Tem uma clínica aqui perto?",
+      "img": "🪜🤕🏥",
+      "alvo": "clinic",
+      "alvo_pt": "clínica",
+      "conceito": "Na escada = on the stairs.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR17",
+        "BR03"
+      ],
+      "armadilhas": [
+        "in",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4896dc",
+      "quem": "recepcionista",
+      "contexto": "f-b22ec2",
+      "cod": "Yes, there's a clinic across the street.",
+      "dica": "Tem, sim, uma clínica do outro lado da rua.",
+      "img": "🏥🚶",
+      "alvo": "clinic",
+      "alvo_pt": "clínica",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e7a4e7",
+      "quem": "ana",
+      "cod": "I don't want to go to the hospital.",
+      "dica": "Não quero ir ao hospital.",
+      "img": "🏥🙅‍♀️",
+      "alvo": "hospital",
+      "alvo_pt": "hospital",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2323296,
+        "en_autor": "CK",
+        "pt_id": 4982598,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-00f6ce",
+      "quem": "voce",
+      "cod": "Ana, do you have travel insurance?",
+      "dica": "Ana, você tem seguro-viagem?",
+      "img": "✈️🛡️❓",
+      "alvo": "travel insurance",
+      "alvo_pt": "seguro-viagem",
+      "conceito": "seguro-viagem = travel insurance (substantivo + substantivo).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24",
+        "BR06"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4497961,
+        "en_autor": "CK",
+        "pt_id": 8575216,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'Ana,' acrescentado e 'insurance' virou 'travel insurance'; o PT foi ajustado do mesmo jeito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-543c28",
+      "quem": "ana",
+      "contexto": "f-00f6ce",
+      "cod": "Don't worry. I have travel insurance.",
+      "dica": "Não se preocupa. Tenho seguro-viagem.",
+      "img": "🙂🛡️✈️",
+      "alvo": "travel insurance",
+      "alvo_pt": "seguro-viagem",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1860383,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'insurance' virou 'travel insurance'; PT reescrito no imperativo falado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9fffbb",
+      "quem": "atendente",
+      "cod": "Can I see your insurance card?",
+      "dica": "Posso ver o seu cartão do seguro?",
+      "img": "💳🛡️",
+      "alvo": "insurance",
+      "alvo_pt": "seguro",
+      "conceito": "Cartão do seguro = insurance card: o inglês junta os substantivos.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6c1659",
+      "quem": "ana",
+      "cod": "I haven't called the insurance company yet.",
+      "dica": "Ainda não liguei para a seguradora.",
+      "img": "📞🛡️⏳",
+      "alvo": "insurance",
+      "alvo_pt": "seguradora",
+      "conceito": "Ainda não = haven't... yet. call sem to (não: call to).",
+      "var": [
+        {
+          "em": "I haven't called",
+          "aceita": [
+            "I didn't call"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR42"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-be85e9",
+      "quem": "voce",
+      "cod": "Where's the nearest pharmacy?",
+      "dica": "Onde fica a farmácia mais próxima?",
+      "img": "📍💊",
+      "alvo": "nearest",
+      "alvo_pt": "mais próxima",
+      "registro": "neutro",
+      "armadilhas": [
+        "more"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2362510,
+        "en_autor": "Gulliver",
+        "pt_id": 378196,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'bank' trocado por 'pharmacy'; no PT, 'o banco mais próximo' virou 'a farmácia mais próxima'",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

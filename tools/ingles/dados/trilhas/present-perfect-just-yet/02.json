@@ -1,0 +1,375 @@
+{
+  "id": "present-perfect-just-yet.ja-mandei-already",
+  "trilha": "present-perfect-just-yet",
+  "nome": "Já mandei: already",
+  "emoji": "✅",
+  "cena": "Véspera da viagem a Austin: a Sarah pergunta se você já resolveu tudo, e você já resolveu.",
+  "resumo": "Dizer que algo já está feito com have/has already + particípio e responder a pedidos que você já cumpriu.",
+  "fechamento": false,
+  "novos": [
+    "already",
+    "paid",
+    "booked",
+    "tickets",
+    "ordered"
+  ],
+  "apoio": [
+    "bought (particípio)",
+    "told (particípio)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Já fiz = I've already + particípio"
+    },
+    {
+      "t": "p",
+      "c": "Para dizer que algo **já está feito**: **have/has + already + particípio**. O *already* fica entre o auxiliar e o particípio."
+    },
+    {
+      "t": "ex",
+      "c": "I've already booked the hotel.\nJá reservei o hotel."
+    },
+    {
+      "t": "tip",
+      "c": "*read* no particípio se escreve igual, mas soa como *red*: I've already read it."
+    },
+    {
+      "t": "warn",
+      "c": "Pay → *paid* (não: payed). O en-US também aceita *I already paid*; aqui a forma treinada é o present perfect, sem data (BR27)."
+    }
+  ],
+  "imagem": "🧳✅🎟️",
+  "visualizacao": "Você está em casa, na véspera da viagem a Austin. A mala está fechada no canto do quarto, e no celular a Sarah manda uma pergunta atrás da outra.",
+  "foto_busca": "packed suitcase phone travel checklist",
+  "trechos": [
+    {
+      "id": "f-cd6eec",
+      "quem": "voce",
+      "contexto": "Are you ready for the trip?",
+      "cod": "Almost! I've already packed.",
+      "dica": "Quase! Já fiz a mala.",
+      "img": "🧳👌",
+      "alvo": "already",
+      "alvo_pt": "Já",
+      "conceito": "pack = fazer a mala. Já fiz = I've already + particípio.",
+      "var": [
+        {
+          "em": "I've already packed",
+          "aceita": [
+            "I already packed",
+            "I've already packed my bag",
+            "I've already packed my bags",
+            "I already packed my bag"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "i've already pack",
+        "i already pack"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1a606d",
+      "quem": "voce",
+      "contexto": "Did you book the hotel?",
+      "cod": "Yes, I've already booked it.",
+      "dica": "Sim, já reservei.",
+      "img": "🏨📅",
+      "alvo": "booked",
+      "alvo_pt": "reservei",
+      "conceito": "book = reservar (hotel, mesa, voo). E o it não some: booked it.",
+      "var": [
+        {
+          "em": "I've already booked",
+          "aceita": [
+            "I already booked"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "armadilhas": [
+        "reserved",
+        "booked."
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e58251",
+      "quem": "voce",
+      "contexto": "Did you pay for it?",
+      "cod": "Don't worry, I've already paid.",
+      "dica": "Não se preocupa, já paguei.",
+      "img": "💳👍",
+      "alvo": "paid",
+      "alvo_pt": "paguei",
+      "conceito": "pay → paid (não: payed). Não se preocupa = Don't worry.",
+      "var": [
+        {
+          "em": "I've already paid",
+          "aceita": [
+            "I already paid"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "payed"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6220093,
+        "en_autor": "CK",
+        "pt_id": 11208375,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado Don't worry, (no PT: Eu já paguei → Não se preocupa, já paguei)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f4aac4",
+      "quem": "sarah",
+      "cod": "Mike has already bought the tickets for the game.",
+      "dica": "O Mike já comprou os ingressos pro jogo.",
+      "img": "🎟️🏀",
+      "alvo": "tickets",
+      "alvo_pt": "ingressos",
+      "conceito": "ticket = ingresso (jogo, show) ou passagem (avião, trem).",
+      "var": [
+        {
+          "em": "has already bought",
+          "aceita": [
+            "already bought"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have already",
+        "buyed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5b6513",
+      "quem": "voce",
+      "contexto": "f-f4aac4",
+      "cod": "Great! I've already paid him for my ticket.",
+      "dica": "Ótimo! Já paguei o meu ingresso pra ele.",
+      "img": "💵🤝",
+      "alvo": "paid",
+      "alvo_pt": "paguei",
+      "conceito": "pay someone for something = pagar algo pra alguém (sem to).",
+      "var": [
+        {
+          "em": "I've already paid",
+          "aceita": [
+            "I already paid"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "armadilhas": [
+        "payed",
+        "paid to him"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e4f18d",
+      "quem": "sarah",
+      "cod": "And I've already sent you the tickets.",
+      "dica": "E eu já te mandei os ingressos.",
+      "img": "📧🎟️",
+      "alvo": "tickets",
+      "alvo_pt": "ingressos",
+      "var": [
+        {
+          "em": "I've already sent",
+          "aceita": [
+            "I already sent"
+          ]
+        },
+        {
+          "em": "you the tickets",
+          "aceita": [
+            "the tickets to you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "sent to you the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-134dbb",
+      "quem": "sarah",
+      "cod": "I've already booked a table for Monday night.",
+      "dica": "Já reservei uma mesa pra segunda à noite.",
+      "img": "🍽️🌙",
+      "alvo": "booked",
+      "alvo_pt": "reservei",
+      "conceito": "Dias da semana com maiúscula: Monday night = segunda à noite.",
+      "var": [
+        {
+          "em": "I've already booked",
+          "aceita": [
+            "I already booked"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR15"
+      ],
+      "armadilhas": [
+        "monday",
+        "reserved"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10282194,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "for four → for Monday night; acrescentado already; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bd06d9",
+      "quem": "sarah",
+      "cod": "Also, I've already ordered lunch for your first day.",
+      "dica": "Também já pedi almoço pro seu primeiro dia.",
+      "img": "🥪📦",
+      "alvo": "ordered",
+      "alvo_pt": "pedi",
+      "conceito": "order = pedir (comida, produto); ask = pedir (pergunta, favor).",
+      "var": [
+        {
+          "em": "I've already ordered",
+          "aceita": [
+            "I already ordered"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "asked lunch",
+        "asked for lunch"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-968962",
+      "quem": "voce",
+      "contexto": "What about dinner tonight?",
+      "cod": "I've already ordered a pizza.",
+      "dica": "Já pedi uma pizza.",
+      "img": "🍕📲",
+      "alvo": "ordered",
+      "alvo_pt": "pedi",
+      "var": [
+        {
+          "em": "I've already ordered",
+          "aceita": [
+            "I already ordered"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "asked a pizza"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8400308,
+        "en_autor": "CK",
+        "pt_id": 5087210,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado already (no PT: Eu pedi → Já pedi)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6396f7",
+      "quem": "sarah",
+      "contexto": "f-968962",
+      "cod": "Wow, you've already done everything!",
+      "dica": "Nossa, você já fez tudo!",
+      "img": "🤩✅",
+      "alvo": "already",
+      "alvo_pt": "já",
+      "conceito": "already fica entre have e o particípio: you've already done.",
+      "var": [
+        {
+          "em": "you've already done",
+          "aceita": [
+            "you already did"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "you did already",
+        "you've already did"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3354518,
+        "en_autor": "CK",
+        "pt_id": 4872890,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "that → everything; acrescentado Wow, (no PT: isso → tudo, + Nossa,)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

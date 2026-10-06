@@ -1,0 +1,254 @@
+{
+  "id": "tres-futuros.vai-chover-going-to-com-evidencia",
+  "trilha": "tres-futuros",
+  "nome": "Vai chover! Going to com evidência",
+  "emoji": "⛈️",
+  "cena": "Saindo do escritório com o Mike em Chicago: o céu fecha, o ônibus lota e o build não para de falhar.",
+  "resumo": "Prever o que vai acontecer quando a evidência está na sua frente: Look at those clouds. It's going to rain.",
+  "fechamento": false,
+  "novos": [
+    "clouds",
+    "fail (falhar)",
+    "the build",
+    "sky",
+    "dark"
+  ],
+  "apoio": [
+    "Be careful!",
+    "floor",
+    "crowded"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Vai chover: going to com evidência"
+    },
+    {
+      "t": "p",
+      "c": "Quando você VÊ o sinal (nuvens, um erro na tela), o inglês prevê com **be going to + verbo**. Em português a gente diz \"vai\"; o inglês não usa o presente simples para isso."
+    },
+    {
+      "t": "ex",
+      "c": "Look at those clouds. It's going to rain.\nOlha aquelas nuvens. Vai chover."
+    },
+    {
+      "t": "warn",
+      "c": "Previsão não vai no presente simples, e tempo e luz pedem sujeito: **It's going to rain**, **it's dark** (não: It rains soon / Is going to rain)."
+    },
+    {
+      "t": "tip",
+      "c": "Vai ter (existir) no futuro = **there's going to be**: There's going to be a storm."
+    }
+  ],
+  "imagem": "⛈️☁️💻🚌",
+  "visualizacao": "Você sai do escritório com o Mike em Chicago. O céu escurece de repente, o vento do lago é gelado e, no notebook aberto, o build fica vermelho de novo.",
+  "foto_busca": "dark storm clouds city street",
+  "trechos": [
+    {
+      "id": "f-668aca",
+      "quem": "mike",
+      "cod": "Why is it so dark today?",
+      "dica": "Por que está tão escuro hoje?",
+      "img": "🌑❓",
+      "alvo": "dark",
+      "alvo_pt": "escuro",
+      "conceito": "Luz e tempo pedem sujeito: it's dark, it's cold (não: is dark).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5745414,
+        "en_autor": "CM",
+        "pt_id": 9698618,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fa4bf3",
+      "quem": "voce",
+      "contexto": "f-668aca",
+      "cod": "Look at those clouds. It's going to rain.",
+      "dica": "Olha aquelas nuvens. Vai chover.",
+      "img": "☁️🌧️👀",
+      "alvo": "clouds",
+      "alvo_pt": "nuvens",
+      "conceito": "Viu a evidência (as nuvens)? A previsão vai com going to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR29"
+      ],
+      "armadilhas": [
+        "rains",
+        "will"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-69a6de",
+      "quem": "mike",
+      "cod": "Look at the sky! There's going to be a storm.",
+      "dica": "Olha o céu! Vai ter uma tempestade.",
+      "img": "🌩️☝️",
+      "alvo": "sky",
+      "alvo_pt": "céu",
+      "lit": "[lit.: vai existir uma tempestade]",
+      "conceito": "Vai ter, no sentido de existir, é there's going to be (não: have).",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR29"
+      ],
+      "armadilhas": [
+        "have",
+        "has",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-472236",
+      "quem": "voce",
+      "cod": "This test is going to fail. Look at this error.",
+      "dica": "Este teste vai falhar. Olha este erro.",
+      "img": "🧪❌",
+      "alvo": "fail",
+      "alvo_pt": "falhar",
+      "conceito": "fail = falhar (teste, build). O erro na tela é a evidência: going to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR29"
+      ],
+      "armadilhas": [
+        "fails",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-93f788",
+      "quem": "voce",
+      "cod": "The build isn't going to work today.",
+      "dica": "(previsão) O build não vai funcionar hoje.",
+      "img": "🏗️🚫",
+      "alvo": "The build",
+      "alvo_pt": "O build",
+      "conceito": "Previsão no negativo: isn't going to + verbo. build com artigo: the build.",
+      "registro": "informal",
+      "interferencias": [
+        "BR29"
+      ],
+      "armadilhas": [
+        "won't",
+        "doesn't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b76876",
+      "quem": "mike",
+      "contexto": "f-93f788",
+      "cod": "Did the build fail on your laptop too?",
+      "dica": "O build falhou no seu notebook também?",
+      "img": "💻❓",
+      "alvo": "fail",
+      "alvo_pt": "falhou",
+      "conceito": "Depois de did, o verbo volta à forma base: did ... fail (não: did ... failed).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR17"
+      ],
+      "armadilhas": [
+        "failed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-53c71c",
+      "quem": "voce",
+      "contexto": "f-b76876",
+      "cod": "Yes, I was fixing the build all afternoon.",
+      "dica": "Sim, eu estava corrigindo o build a tarde inteira.",
+      "img": "🔧🕓",
+      "alvo": "the build",
+      "alvo_pt": "o build",
+      "conceito": "all afternoon = a tarde inteira (sem the, sem preposição).",
+      "registro": "informal",
+      "interferencias": [],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e2509a",
+      "quem": "mike",
+      "cod": "Hurry up! The sky is black.",
+      "dica": "Anda logo! O céu está preto.",
+      "img": "🏃⛈️",
+      "alvo": "sky",
+      "alvo_pt": "céu",
+      "conceito": "Hurry up! = Anda logo! / Corre!",
+      "registro": "informal",
+      "interferencias": [],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-039bf3",
+      "quem": "voce",
+      "cod": "The clouds are really low. Is it going to snow?",
+      "dica": "As nuvens estão bem baixas. Vai nevar?",
+      "img": "☁️❄️❓",
+      "alvo": "clouds",
+      "alvo_pt": "nuvens",
+      "conceito": "low = baixo. Pergunta de previsão: Is it going to...? (it obrigatório).",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR29"
+      ],
+      "armadilhas": [
+        "snows",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e12029",
+      "quem": "mike",
+      "cod": "It's dark, and the bus is really crowded.",
+      "dica": "Está escuro e o ônibus está bem lotado.",
+      "img": "🚌👥🌃",
+      "alvo": "dark",
+      "alvo_pt": "escuro",
+      "conceito": "crowded = lotado, cheio de gente.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

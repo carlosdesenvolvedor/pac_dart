@@ -1,0 +1,169 @@
+{
+  "id": "instrucoes-e-lets.segue-em-frente-vira-a-esquerda",
+  "trilha": "instrucoes-e-lets",
+  "nome": "Segue em frente, vira à esquerda",
+  "emoji": "⬅️",
+  "cena": "Você chega de táxi ao prédio em Chicago, e a recepcionista explica como chegar à sala do time.",
+  "resumo": "Dar e entender direções simples: Go straight ahead. Turn left. It's on the left.",
+  "fechamento": false,
+  "novos": [
+    "Go straight ahead.",
+    "turn",
+    "Turn left.",
+    "left"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Direções"
+    },
+    {
+      "t": "p",
+      "c": "**Go straight ahead** = segue em frente. **Turn** = vira. **Turn left** = vira à esquerda. **on the left** = à esquerda."
+    },
+    {
+      "t": "ex",
+      "c": "Turn left at the corner.\nVira à esquerda na esquina."
+    },
+    {
+      "t": "tip",
+      "c": "Uma direção por vez: a direita (right) entra na próxima lição."
+    }
+  ],
+  "imagem": "🚕🏢⬅️",
+  "visualizacao": "O táxi para na frente de um prédio alto de vidro. No saguão, a recepcionista sorri e aponta o corredor, e você ouve o bip do elevador à esquerda.",
+  "foto_busca": "office building lobby reception desk",
+  "trechos": [
+    {
+      "id": "f-3d635d",
+      "quem": "voce",
+      "cod": "Turn at the corner, please.",
+      "dica": "(no táxi) Vira na esquina, por favor.",
+      "img": "🚕👉",
+      "alvo": "Turn",
+      "alvo_pt": "Vira",
+      "conceito": "turn = virar; corner = esquina.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5f943c",
+      "quem": "voce",
+      "contexto": "f-3d635d",
+      "cod": "OK, turn here. Thanks!",
+      "dica": "(no táxi) Tá bom, vira aqui. Valeu!",
+      "img": "🚕📍🙏",
+      "alvo": "turn",
+      "alvo_pt": "vira",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c6e8ea",
+      "quem": "recepcionista",
+      "contexto": "Excuse me, where's the team room?",
+      "cod": "Go straight ahead.",
+      "dica": "Segue em frente.",
+      "img": "⬆️🚶",
+      "alvo": "Go straight ahead",
+      "alvo_pt": "Segue em frente",
+      "lit": "[lit.: vai reto à frente]",
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 269559,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ad6c6d",
+      "quem": "recepcionista",
+      "cod": "Turn left at the corner.",
+      "dica": "Vira à esquerda na esquina.",
+      "img": "⬅️🚶",
+      "alvo": "Turn left",
+      "alvo_pt": "Vira à esquerda",
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 48961,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-82854d",
+      "quem": "recepcionista",
+      "cod": "Take the elevator on the left.",
+      "dica": "Pega o elevador à esquerda.",
+      "img": "🛗⬅️",
+      "alvo": "left",
+      "alvo_pt": "esquerda",
+      "conceito": "on the left = à esquerda; take the elevator = pegar o elevador.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5fe8f0",
+      "quem": "voce",
+      "contexto": "f-ad6c6d",
+      "cod": "Go straight ahead and turn left?",
+      "dica": "Segue em frente e vira à esquerda?",
+      "img": "⬆️⬅️❓",
+      "alvo": "Go straight ahead",
+      "alvo_pt": "Segue em frente",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-18d1ba",
+      "quem": "recepcionista",
+      "contexto": "And the restroom?",
+      "cod": "The restroom is on the left.",
+      "dica": "O banheiro fica à esquerda.",
+      "img": "🚻⬅️",
+      "alvo": "left",
+      "alvo_pt": "esquerda",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8618987,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: exit → restroom; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-89c0c2",
+      "quem": "mike",
+      "contexto": "Mike, I'm at the elevator.",
+      "cod": "OK, now turn left.",
+      "dica": "Tá bom, agora vira à esquerda.",
+      "img": "📞🛗⬅️",
+      "alvo": "turn left",
+      "alvo_pt": "vira à esquerda",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "id": "verbos-de-relato.ofereceu-recusou-prometeu",
+  "trilha": "verbos-de-relato",
+  "nome": "Ofereceu, recusou, prometeu",
+  "emoji": "🤲",
+  "cena": "Você relata ao Mike como foi a negociação de contrato com um cliente novo.",
+  "resumo": "Relatar ofertas, recusas, promessas e acordos: offer / refuse / promise / agree + to + verbo.",
+  "fechamento": false,
+  "novos": [
+    "offer to",
+    "agree to",
+    "refuse to",
+    "promise to"
+  ],
+  "apoio": [
+    "deposit"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ofereceu, recusou, prometeu, concordou"
+    },
+    {
+      "t": "p",
+      "c": "**offer / refuse / promise / agree + to + verbo**: The client offered to pay. Their manager refused to sign."
+    },
+    {
+      "t": "warn",
+      "c": "Sem pronome reflexivo: se ofereceu = offered (não: offered himself); se recusou = refused (não: refused himself). E sem -ing: refused to sign (não: refused signing)."
+    },
+    {
+      "t": "ex",
+      "c": "Sarah promised to send the new proposal by Monday.\nA Sarah prometeu mandar a nova proposta até segunda."
+    }
+  ],
+  "imagem": "🤝📄✍️",
+  "visualizacao": "Depois da reunião com o cliente novo, você liga para o Mike. Na mesa, o contrato impresso cheio de anotações em vermelho; você conta quem ofereceu, quem recusou e quem prometeu.",
+  "foto_busca": "contract negotiation meeting table",
+  "trechos": [
+    {
+      "id": "f-be815f",
+      "quem": "voce",
+      "cod": "The client offered to pay for the extra work.",
+      "dica": "O cliente se ofereceu para pagar pelo trabalho extra.",
+      "img": "💵🛠️",
+      "alvo": "offered to",
+      "alvo_pt": "se ofereceu para",
+      "conceito": "se ofereceu para = offered to + verbo (não: offered himself to pay).",
+      "registro": "neutro",
+      "armadilhas": [
+        "himself",
+        "paying"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-274c0a",
+      "quem": "mike",
+      "contexto": "f-be815f",
+      "cod": "Great. Did they agree to sign the contract this week?",
+      "dica": "Ótimo. Eles concordaram em assinar o contrato esta semana?",
+      "img": "✍️❓",
+      "alvo": "agree to",
+      "alvo_pt": "concordaram em",
+      "conceito": "concordar em + verbo = agree to + verbo. Com did, agree na forma base.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "agreed",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e0d544",
+      "quem": "voce",
+      "contexto": "f-274c0a",
+      "cod": "Not yet. Their manager refused to sign without changes.",
+      "dica": "Ainda não. O gerente deles se recusou a assinar sem mudanças.",
+      "img": "🙅✍️",
+      "alvo": "refused to",
+      "alvo_pt": "se recusou a",
+      "conceito": "se recusou a = refused to + verbo (não: refused signing / refused himself).",
+      "registro": "neutro",
+      "armadilhas": [
+        "himself",
+        "signing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7fb332",
+      "quem": "voce",
+      "cod": "He also refused to pay a deposit.",
+      "dica": "Ele também se recusou a pagar um sinal.",
+      "img": "💰🚫",
+      "alvo": "refused to",
+      "alvo_pt": "se recusou a",
+      "conceito": "deposit = sinal num contrato (no aluguel, caução).",
+      "registro": "neutro",
+      "armadilhas": [
+        "himself"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eb6c29",
+      "quem": "voce",
+      "cod": "So I offered to drop the deposit to keep it simple.",
+      "dica": "Então eu me ofereci para tirar o sinal, para manter simples.",
+      "img": "🤝💵✂️",
+      "alvo": "offered to",
+      "alvo_pt": "me ofereci para",
+      "conceito": "me ofereci para = I offered to + verbo. keep it simple: o it é obrigatório.",
+      "var": [
+        {
+          "em": "drop",
+          "aceita": [
+            "remove",
+            "skip",
+            "waive"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "myself"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a945fb",
+      "quem": "voce",
+      "cod": "Sarah promised to call their manager tomorrow.",
+      "dica": "A Sarah prometeu ligar para o gerente deles amanhã.",
+      "img": "🤞📩",
+      "alvo": "promised to",
+      "alvo_pt": "prometeu",
+      "conceito": "promise to + verbo. ligar para alguém = call alguém (sem preposição).",
+      "registro": "neutro",
+      "armadilhas": [
+        "to call to"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5112822,
+        "en_autor": "CK",
+        "pt_id": 6917271,
+        "pt_autor": "Bran",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → Sarah; Mary → their manager; + tomorrow (original: \"Tom promised to call Mary.\"); PT: Tom → A Sarah; a Mary → o gerente deles; + amanhã (original: \"Tom prometeu ligar para a Mary.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8fa9e4",
+      "quem": "mike",
+      "contexto": "f-a945fb",
+      "cod": "Don't promise to deliver anything before we read the fine print.",
+      "dica": "Não promete entregar nada antes de a gente ler as letras miúdas.",
+      "img": "🔍📜",
+      "alvo": "promise to",
+      "alvo_pt": "promete",
+      "conceito": "the fine print = as letras miúdas do contrato. não... nada = don't... anything.",
+      "var": [
+        {
+          "em": "before we read",
+          "aceita": [
+            "before reading"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "nothing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3bc750",
+      "quem": "voce",
+      "contexto": "f-8fa9e4",
+      "cod": "We haven't agreed to anything yet.",
+      "dica": "A gente ainda não concordou com nada.",
+      "img": "🤝⏳",
+      "alvo": "agreed to",
+      "alvo_pt": "concordou com",
+      "conceito": "agree to + proposta = concordar com uma proposta; agree with = concordar com alguém.",
+      "var": [
+        {
+          "em": "agreed to",
+          "aceita": [
+            "agreed on"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "with",
+        "nothing"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3312575,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN sem mudança; PT reescrito (original: \"Nós não concordamos em nada ainda.\")",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

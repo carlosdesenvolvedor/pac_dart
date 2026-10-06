@@ -1,0 +1,298 @@
+{
+  "id": "deducao-perguntas-indiretas.voce-sabe-onde-e",
+  "trilha": "deducao-perguntas-indiretas",
+  "nome": "Você sabe onde é?",
+  "emoji": "🏢",
+  "cena": "Primeiro dia no escritório novo de Chicago: você procura a reunião, o banheiro e o refeitório e pergunta às pessoas.",
+  "resumo": "Perguntar com educação com Do you know where / if... sem inverter sujeito e verbo; cafeteria (EUA) = refeitório.",
+  "fechamento": false,
+  "novos": [
+    "Do you know where",
+    "Do you know if",
+    "cafeteria (EUA = refeitório)",
+    "the office closes",
+    "badge"
+  ],
+  "apoio": [
+    "floor",
+    "elevator",
+    "stairs",
+    "restroom",
+    "lobby"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Você sabe onde...? Do you know where..."
+    },
+    {
+      "t": "p",
+      "c": "Pergunta dentro de pergunta: depois de **Do you know where / if / what time**, a ordem volta a ser a normal (sujeito + verbo) e o do/does some."
+    },
+    {
+      "t": "warn",
+      "c": "Do you know where the meeting is? (não: where is the meeting). Do you know what time the office closes? (não: what time does the office close)."
+    },
+    {
+      "t": "tip",
+      "c": "cafeteria (EUA) = refeitório. A cafeteria do Brasil é coffee shop."
+    },
+    {
+      "t": "ex",
+      "c": "Do you know if the cafeteria is open today?\nVocê sabe se o refeitório está aberto hoje?"
+    }
+  ],
+  "imagem": "🏢📛🛗",
+  "visualizacao": "Primeiro dia no escritório de Chicago. O lobby cheira a café, a recepcionista sorri com o seu crachá na mão e as portas do elevador abrem e fecham sem parar.",
+  "foto_busca": "office lobby reception desk",
+  "trechos": [
+    {
+      "id": "f-3b8b38",
+      "quem": "recepcionista",
+      "cod": "Welcome! Here's your badge.",
+      "dica": "Bem-vindo! Aqui está o seu crachá.",
+      "img": "👋📛",
+      "alvo": "badge",
+      "alvo_pt": "crachá",
+      "pt_f": "Bem-vinda! Aqui está o seu crachá.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f7a174",
+      "quem": "voce",
+      "contexto": "f-3b8b38",
+      "cod": "Thanks. Do you know where the meeting is?",
+      "dica": "Obrigado. Você sabe onde é a reunião?",
+      "img": "🧭👥",
+      "alvo": "Do you know where",
+      "alvo_pt": "Você sabe onde",
+      "conceito": "Dentro da pergunta indireta, ordem normal: where the meeting is (não: where is the meeting).",
+      "pt_f": "Obrigada. Você sabe onde é a reunião?",
+      "registro": "neutro",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4bf18d",
+      "quem": "recepcionista",
+      "contexto": "f-f7a174",
+      "cod": "Fifth floor. You need your badge to use the elevator.",
+      "dica": "Quinto andar. Você precisa do seu crachá para usar o elevador.",
+      "img": "🛗📛",
+      "alvo": "badge",
+      "alvo_pt": "crachá",
+      "conceito": "para + verbo (finalidade) = to + verbo (não: for to).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Fifth floor",
+          "aceita": [
+            "The fifth floor",
+            "On the fifth floor",
+            "It's on the fifth floor"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7189df",
+      "quem": "voce",
+      "cod": "Excuse me, do you know where the restroom is?",
+      "dica": "Com licença, você sabe onde fica o banheiro?",
+      "img": "🚻❓",
+      "alvo": "do you know where",
+      "alvo_pt": "você sabe onde",
+      "conceito": "Onde fica...? dentro de Do you know = where the restroom is, com is no fim.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3247153,
+        "en_autor": "CK",
+        "pt_id": 3247303,
+        "pt_autor": "sergiomelo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: the hospital → the restroom; acrescentado 'Excuse me,' (original: \"Do you know where the hospital is?\"); PT: o hospital → o banheiro; acrescentado 'Com licença,' (original: \"Você sabe onde fica o hospital?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d0aa4b",
+      "quem": "mike",
+      "cod": "Let's have lunch in the cafeteria. It's on the second floor.",
+      "dica": "Vamos almoçar no refeitório. Fica no segundo andar.",
+      "img": "🍱🏢",
+      "alvo": "cafeteria",
+      "alvo_pt": "refeitório",
+      "conceito": "cafeteria (EUA) = refeitório; cafeteria (Brasil) = coffee shop.",
+      "var": [
+        {
+          "em": "have lunch",
+          "aceita": [
+            "eat lunch"
+          ]
+        },
+        {
+          "em": "in the cafeteria",
+          "aceita": [
+            "at the cafeteria"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR01"
+      ],
+      "armadilhas": [
+        "restaurant"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-515747",
+      "quem": "voce",
+      "contexto": "f-d0aa4b",
+      "cod": "Do you know if they have coffee there?",
+      "dica": "Você sabe se tem café lá?",
+      "img": "☕❓",
+      "alvo": "Do you know if",
+      "alvo_pt": "Você sabe se",
+      "conceito": "Você sabe se...? = Do you know if + frase normal (sem do).",
+      "var": [
+        {
+          "em": "they have",
+          "aceita": [
+            "there's",
+            "there is"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR50",
+        "BR21"
+      ],
+      "armadilhas": [
+        "do",
+        "does"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8566d4",
+      "quem": "mike",
+      "contexto": "f-515747",
+      "cod": "Yes, and the cafeteria coffee is free.",
+      "dica": "Tem, sim, e o café do refeitório é de graça.",
+      "img": "☕💵🚫",
+      "alvo": "cafeteria",
+      "alvo_pt": "refeitório",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the cafeteria coffee",
+          "aceita": [
+            "the coffee in the cafeteria",
+            "the coffee at the cafeteria"
+          ]
+        }
+      ],
+      "conceito": "cafeteria coffee: o substantivo da frente funciona como adjetivo (café do refeitório)."
+    },
+    {
+      "id": "f-30e87b",
+      "quem": "voce",
+      "cod": "Do you know what time the office closes?",
+      "dica": "Você sabe a que horas o escritório fecha?",
+      "img": "🕖🚪",
+      "alvo": "the office closes",
+      "alvo_pt": "o escritório fecha",
+      "conceito": "Sem does dentro da pergunta indireta: what time the office closes (com -s).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "does",
+        "close"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10148047,
+        "en_autor": "CK",
+        "pt_id": 11090400,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: the flower shop → the office (original: \"Do you know what time the flower shop closes?\"); PT: a floricultura → o escritório (original: \"Você sabe a que horas a floricultura fecha?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7e5d1f",
+      "quem": "mike",
+      "contexto": "f-30e87b",
+      "cod": "The office closes at seven, but the cafeteria closes at three.",
+      "dica": "O escritório fecha às sete, mas o refeitório fecha às três.",
+      "img": "🏢🕖🍽️",
+      "alvo": "The office closes",
+      "alvo_pt": "O escritório fecha",
+      "conceito": "closes: -s da 3ª pessoa nos dois sujeitos. Às sete = at seven.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-37681e",
+      "quem": "voce",
+      "contexto": "f-7e5d1f",
+      "cod": "Do you know if the office is open on Saturdays?",
+      "dica": "Você sabe se o escritório abre aos sábados?",
+      "img": "🏢🗓️❔",
+      "alvo": "Do you know if",
+      "alvo_pt": "Você sabe se",
+      "var": [
+        {
+          "em": "is open",
+          "aceita": [
+            "opens"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "does"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

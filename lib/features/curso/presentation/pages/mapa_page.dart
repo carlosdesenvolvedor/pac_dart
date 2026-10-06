@@ -3,11 +3,16 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/util/abrir_url.dart';
+import '../../../ingles/domain/fonte_frase.dart';
+import '../../../ingles/presentation/fixacao.dart';
+
 import '../../../../core/theme/mixart.dart';
 import '../../domain/curriculo.dart';
 import '../bloc/curso_bloc.dart';
 import '../fluxo_licao.dart';
 import '../widgets/pacman.dart';
+import 'desafios_page.dart';
 import 'projeto_page.dart';
 import 'quiz_page.dart';
 import 'teoria_page.dart';
@@ -58,11 +63,16 @@ class _MapaPageState extends State<MapaPage> {
                   else ...[
                     SliverToBoxAdapter(child: _HeroDashboard(st: st)),
                     for (var t = 0; t < st.trilhas.length; t++) ...[
+                      // faixa da etapa (Iniciante → Sênior) quando ela muda
+                      if (st.trilhas[t].etapa.isNotEmpty &&
+                          (t == 0 || st.trilhas[t - 1].etapa != st.trilhas[t].etapa))
+                        SliverToBoxAdapter(child: _FaixaEtapa(st: st, t: t)),
                       SliverToBoxAdapter(child: _SecaoTrilha(st: st, t: t)),
                       const SliverToBoxAdapter(child: _Conector()),
                     ],
                     if (st.masterApps.isNotEmpty)
                       SliverToBoxAdapter(child: _SecaoMaster(st: st)),
+                    if (st.ehIngles) SliverToBoxAdapter(child: _CreditosIngles(st: st)),
                     const SliverToBoxAdapter(child: SizedBox(height: 56)),
                   ],
                 ]),
@@ -70,6 +80,109 @@ class _MapaPageState extends State<MapaPage> {
             ),
           ]);
         },
+      ),
+    );
+  }
+}
+
+/// Rodapé da trilha no inglês: "já sei isso" → teste de nivelamento.
+class _TesteDaTrilha extends StatelessWidget {
+  final int t;
+  const _TesteDaTrilha({required this.t});
+
+  @override
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.fromLTRB(14, 0, 14, 14),
+        child: InkWell(
+          borderRadius: BorderRadius.circular(Mixart.radiusMd),
+          onTap: () => abrirTesteTrilha(context, t),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 11),
+            decoration: BoxDecoration(
+              color: Mixart.bg,
+              border: Border.all(color: Mixart.border),
+              borderRadius: BorderRadius.circular(Mixart.radiusMd),
+            ),
+            child: Row(children: [
+              const Text('⏭️', style: TextStyle(fontSize: 18)),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text('Já sei esta trilha', style: Mixart.ui(size: 13, weight: FontWeight.w800, color: Mixart.text)),
+                  Text('teste de $frasesDoTeste frases de memória — acertou 8, pula a trilha',
+                      style: Mixart.ui(size: 11.5, color: Mixart.textMuted)),
+                ]),
+              ),
+              Icon(Icons.chevron_right_rounded, color: Mixart.textMuted),
+            ]),
+          ),
+        ),
+      );
+}
+
+/// Créditos do curso de inglês: as frases que vieram do Tatoeba (a licença
+/// CC BY 2.0 FR pede atribuição), com os autores, e de onde vem o áudio.
+class _CreditosIngles extends StatelessWidget {
+  final CursoState st;
+  const _CreditosIngles({required this.st});
+
+  @override
+  Widget build(BuildContext context) {
+    final autores = <String, int>{};
+    var tatoeba = 0, total = 0;
+    for (final t in st.trilhas) {
+      for (final l in t.licoes) {
+        for (final f in l.trechos) {
+          total++;
+          final fonte = FonteFrase.ler(f.fonte);
+          if (fonte == null) continue;
+          tatoeba++;
+          autores[fonte.enAutor] = (autores[fonte.enAutor] ?? 0) + 1;
+          if (fonte.ptAutor != null) autores[fonte.ptAutor!] = (autores[fonte.ptAutor!] ?? 0) + 1;
+        }
+      }
+    }
+    final lista = autores.entries.toList()..sort((a, b) => b.value.compareTo(a.value));
+    final estilo = Mixart.ui(size: 11.5, color: Mixart.textMuted).copyWith(height: 1.5);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 26, 18, 0),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Mixart.surface,
+          border: Border.all(color: Mixart.border),
+          borderRadius: BorderRadius.circular(Mixart.radiusLg),
+        ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text('Créditos e fontes', style: Mixart.display(size: 15)),
+          const SizedBox(height: 8),
+          if (tatoeba > 0) ...[
+            Text(
+                '$tatoeba das $total frases vêm do Tatoeba (tatoeba.org), um acervo colaborativo de frases '
+                'e traduções, sob a licença Creative Commons Atribuição 2.0 França. Cada uma mostra o número '
+                'e o autor originais; as marcadas como "adaptada" foram modificadas por nós. As demais foram '
+                'escritas para o curso.',
+                style: estilo),
+            const SizedBox(height: 6),
+            Wrap(spacing: 12, children: [
+              InkWell(
+                onTap: () => abrirUrl('https://tatoeba.org'),
+                child: Text('tatoeba.org', style: Mixart.ui(size: 11.5, weight: FontWeight.w700, color: Mixart.brand)),
+              ),
+              InkWell(
+                onTap: () => abrirUrl(FonteFrase.urlLicenca),
+                child: Text('licença CC BY 2.0 FR',
+                    style: Mixart.ui(size: 11.5, weight: FontWeight.w700, color: Mixart.brand)),
+              ),
+            ]),
+            const SizedBox(height: 6),
+            Text('Autores: ${lista.map((e) => '${e.key} (${e.value})').join(', ')}.', style: estilo),
+          ] else
+            Text('As frases foram escritas para o curso.', style: estilo),
+          const SizedBox(height: 6),
+          Text('O áudio é a voz em inglês do seu navegador (Web Speech) — no Edge e no Chrome ela soa mais natural.',
+              style: estilo),
+        ]),
       ),
     );
   }
@@ -198,6 +311,8 @@ class _Resultados extends StatelessWidget {
             onTap: () => Navigator.of(context).push(MaterialPageRoute<bool>(
               builder: (_) => ProjetoPage(
                 nivel: tr.nivel,
+                fundo: tr.fundo,
+                perfil: tr.perfil,
                 projeto: p,
                 chaveProgresso: CursoState.chaveProjeto(t, i),
               ),
@@ -212,11 +327,12 @@ class _Resultados extends StatelessWidget {
         itens.add(_ItemResultado(
           emoji: p.emoji,
           nome: p.nome,
-          contexto: '🏆 Teste Master · app',
+          contexto: '🏆 Teste Master · ${p.flutter ? 'app' : 'programa'}',
           feito: st.projetoFeito(CursoState.chaveMaster(i)),
           onTap: () => Navigator.of(context).push(MaterialPageRoute<bool>(
             builder: (_) => ProjetoPage(
-              nivel: 'Flutter',
+              nivel: st.ehCSharp ? 'Teste Master' : 'Flutter',
+              fundo: st.ehCSharp ? 'desafios' : '',
               projeto: p,
               chaveProgresso: CursoState.chaveMaster(i),
               master: true,
@@ -340,9 +456,21 @@ class _HeroDashboard extends StatelessWidget {
             const SizedBox(width: 18),
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text('Sua jornada Dart & Flutter', style: Mixart.display(size: 18)),
+                Text('Sua jornada ${st.linguagem.nomeCurso}', style: Mixart.display(size: 18)),
                 const SizedBox(height: 4),
                 Text(_frase(pct), style: Mixart.ui(size: 12.5, color: Mixart.textMuted).copyWith(height: 1.45)),
+                if (st.ehIngles) ...[
+                  const SizedBox(height: 8),
+                  InkWell(
+                    onTap: () => abrirNivelamento(context),
+                    borderRadius: BorderRadius.circular(8),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 3),
+                      child: Text('🧭 Nivelamento: pule os níveis que você já domina',
+                          style: Mixart.ui(size: 12, weight: FontWeight.w800, color: Mixart.brand)),
+                    ),
+                  ),
+                ],
               ]),
             ),
           ]),
@@ -354,7 +482,7 @@ class _HeroDashboard extends StatelessWidget {
             const SizedBox(width: 10),
             _StatTile(emoji: '🧩', valor: '$trilhasIniciadas/${st.trilhas.length}', rotulo: 'trilhas'),
             const SizedBox(width: 10),
-            _StatTile(emoji: '⌨️', valor: _compacto(totalEx), rotulo: 'exercícios'),
+            _StatTile(emoji: '⌨️', valor: _compacto(totalEx), rotulo: st.ehIngles ? 'frases' : 'exercícios'),
           ]),
         ]),
       ),
@@ -362,7 +490,11 @@ class _HeroDashboard extends StatelessWidget {
   }
 
   String _frase(double pct) {
-    if (pct <= 0) return 'Comece pela primeira lição e vá comendo o código com o Pac-Man.';
+    if (pct <= 0) {
+      return st.ehIngles
+          ? 'Comece pela primeira lição: ouça, copie e digite as frases de memória.'
+          : 'Comece pela primeira lição e vá comendo o código com o Pac-Man.';
+    }
     if (pct < .25) return 'Bom começo! Continue avançando pela trilha.';
     if (pct < .6) return 'Você está pegando o ritmo. Siga em frente!';
     if (pct < 1) return 'Reta final — falta pouco para dominar tudo.';
@@ -452,7 +584,9 @@ class _SecaoTrilha extends StatelessWidget {
                     ],
                   ]),
                   const SizedBox(height: 2),
-                  Text('$concluidas de ${trilha.licoes.length} lições · ${_ex(trilha)} exercícios',
+                  Text(
+                      '$concluidas de ${trilha.licoes.length} lições · ${_ex(trilha)} ${st.ehIngles ? 'frases' : 'exercícios'}'
+                      '${trilha.etapa.isNotEmpty ? ' · ${trilha.etapa}' : ''}',
                       style: Mixart.ui(size: 11.5, color: Mixart.textMuted)),
                 ]),
               ),
@@ -473,13 +607,129 @@ class _SecaoTrilha extends StatelessWidget {
               builder: (context, box) => _CaminhoLicoes(st: st, t: t, largura: box.maxWidth),
             ),
           ),
+          if (st.ehIngles && !completa) _TesteDaTrilha(t: t),
           if (trilha.temProjetos) _MaoNaMassa(st: st, t: t),
+          if (trilha.temDesafios) _DesafiosDaTrilha(st: st, t: t),
         ]),
       ),
     );
   }
 
   int _ex(Trilha t) => t.licoes.fold<int>(0, (a, l) => a + l.trechos.length);
+}
+
+/// Faixa que abre uma etapa da carreira no mapa do C# (Iniciante,
+/// Intermediário, Avançado, Sênior), com quantas trilhas e lições ela tem.
+class _FaixaEtapa extends StatelessWidget {
+  final CursoState st;
+  final int t;
+  const _FaixaEtapa({required this.st, required this.t});
+
+  static const _emojis = {'Iniciante': '🌱', 'Intermediário': '🚀', 'Avançado': '⚙️', 'Sênior': '🏛️'};
+  static const _frases = {
+    'Iniciante': 'Lógica e a base da linguagem: do primeiro programa às coleções.',
+    'Intermediário': 'Orientação a objetos, LINQ, async e o C# moderno.',
+    'Avançado': '.NET de verdade: testes, web, banco de dados, desempenho e jogos.',
+    'Sênior': 'Arquitetura, padrões, sistemas distribuídos e decisões de projeto.',
+  };
+
+  /// Inglês: etapas pelo nível do Quadro Europeu ("A1", "B2 · …").
+  static const _niveis = {
+    'A1': ('🌱', 'O básico para se virar: apresentar-se, pedir e perguntar.'),
+    'A2': ('🌿', 'Rotina, passado, planos e as situações do dia a dia.'),
+    'B1': ('🚀', 'Conversar com independência: opinar, contar histórias, trabalhar.'),
+    'B2': ('⚙️', 'Fluência para argumentar, negociar e trabalhar em inglês.'),
+    'C1': ('🏛️', 'Precisão e naturalidade: nuance, registro e expressões.'),
+    'C2': ('👑', 'Domínio pleno do idioma.'),
+    'DEV': ('💻', 'Inglês de trabalho em tech: reuniões, code review, incidentes, entrevistas e liderança.'),
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    final etapa = st.trilhas[t].etapa;
+    final nivel = _niveis[etapa.split(RegExp(r'[ ·—-]')).first.toUpperCase()];
+    var trilhas = 0, licoes = 0, feitas = 0;
+    for (var k = 0; k < st.trilhas.length; k++) {
+      if (st.trilhas[k].etapa != etapa) continue;
+      trilhas++;
+      licoes += st.trilhas[k].licoes.length;
+      for (var l = 0; l < st.trilhas[k].licoes.length; l++) {
+        if (st.licaoConcluida(k, l)) feitas++;
+      }
+    }
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 22, 18, 4),
+      child: Row(children: [
+        Text(nivel?.$1 ?? _emojis[etapa] ?? '⭐', style: const TextStyle(fontSize: 26)),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(etapa.toUpperCase(),
+                style: Mixart.display(size: 17, color: Mixart.brand).copyWith(letterSpacing: 2.2)),
+            const SizedBox(height: 2),
+            Text('${nivel?.$2 ?? _frases[etapa] ?? ''} $trilhas ${trilhas == 1 ? 'trilha' : 'trilhas'} · $feitas/$licoes lições.',
+                style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4)),
+          ]),
+        ),
+      ]),
+    );
+  }
+}
+
+/// Rodapé "Desafios de lógica" da trilha: quantos já foram acertados e o
+/// botão que abre a bateria (prever saída, lacuna, ordenar, bug…).
+class _DesafiosDaTrilha extends StatelessWidget {
+  final CursoState st;
+  final int t;
+  const _DesafiosDaTrilha({required this.st, required this.t});
+
+  @override
+  Widget build(BuildContext context) {
+    final trilha = st.trilhas[t];
+    final total = trilha.desafios.length;
+    final feitos = st.desafiosFeitos(t);
+    final jogos = trilha.desafios.where((d) => d.ehJogo).length;
+    final completos = feitos == total;
+    return InkWell(
+      onTap: () => Navigator.of(context).push(MaterialPageRoute<bool>(
+        builder: (_) => DesafiosPage(trilhaIdx: t, trilha: trilha),
+      )),
+      borderRadius: BorderRadius.circular(Mixart.radiusMd),
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(14, 0, 14, 16),
+        padding: const EdgeInsets.all(14),
+        decoration: BoxDecoration(
+          color: Mixart.surfaceHi,
+          border: Border.all(color: completos ? Mixart.brandDim : Mixart.border),
+          borderRadius: BorderRadius.circular(Mixart.radiusMd),
+        ),
+        child: Row(children: [
+          const Text('🧠', style: TextStyle(fontSize: 22)),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Row(children: [
+                Text('DESAFIOS DE LÓGICA',
+                    style: Mixart.ui(size: 11, weight: FontWeight.w800, color: Mixart.brand).copyWith(letterSpacing: 1.5)),
+                if (completos) ...[
+                  const SizedBox(width: 6),
+                  Icon(Icons.verified, size: 14, color: Mixart.brand),
+                ],
+              ]),
+              const SizedBox(height: 3),
+              Text(
+                  feitos == 0
+                      ? '$total desafios sem digitação${jogos > 0 ? ' · $jogos com tema de jogo' : ''}'
+                      : '$feitos de $total resolvidos${jogos > 0 ? ' · $jogos com tema de jogo' : ''}',
+                  style: Mixart.ui(size: 11.5, color: Mixart.textMuted)),
+            ]),
+          ),
+          const SizedBox(width: 8),
+          Icon(Icons.play_circle_fill, color: Mixart.brand, size: 28),
+        ]),
+      ),
+    );
+  }
 }
 
 /// Rodapé "Mão na Massa": os projetos completos ao fim do módulo, com quantos
@@ -514,7 +764,7 @@ class _MaoNaMassa extends StatelessWidget {
           Flexible(
             child: Text(
               feitos == 0
-                  ? '· construa ${projetos.length} apps'
+                  ? '· construa ${projetos.length} ${projetos.any((p) => p.flutter) ? 'app' : 'programa'}${projetos.length == 1 ? '' : 's'}'
                   : '· $feitos de ${projetos.length} construídos',
               overflow: TextOverflow.ellipsis,
               style: Mixart.ui(
@@ -532,6 +782,8 @@ class _MaoNaMassa extends StatelessWidget {
             onTap: () => Navigator.of(context).push(MaterialPageRoute<bool>(
               builder: (_) => ProjetoPage(
                 nivel: trilha.nivel,
+                fundo: trilha.fundo,
+                perfil: trilha.perfil,
                 projeto: projetos[i],
                 chaveProgresso: CursoState.chaveProjeto(t, i),
               ),
@@ -649,8 +901,10 @@ class _SecaoMaster extends StatelessWidget {
                   Text('Teste Master', style: Mixart.display(size: 20)),
                   Text(
                       feitos == 0
-                          ? '${projetos.length} apps Flutter para construir, do simples ao avançado'
-                          : '$feitos de ${projetos.length} apps construídos',
+                          ? (st.ehCSharp
+                              ? '${projetos.length} sistemas em C# para construir, do simples ao sênior'
+                              : '${projetos.length} apps Flutter para construir, do simples ao avançado')
+                          : '$feitos de ${projetos.length} ${st.ehCSharp ? 'sistemas' : 'apps'} construídos',
                       style: Mixart.ui(
                           size: 11.5,
                           weight: feitos > 0 ? FontWeight.w600 : FontWeight.w400,
@@ -662,7 +916,9 @@ class _SecaoMaster extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(18, 6, 18, 0),
             child: Text(
-                'Cada app se monta na telinha enquanto você digita. Ao terminar, copie o código e rode numa IDE de verdade.',
+                st.ehCSharp
+                    ? 'Programas completos que juntam tudo o que você estudou. Ao terminar, copie o código e rode com dotnet run.'
+                    : 'Cada app se monta na telinha enquanto você digita. Ao terminar, copie o código e rode numa IDE de verdade.',
                 style: Mixart.ui(size: 12, color: Mixart.textFaint).copyWith(height: 1.45)),
           ),
           Padding(
@@ -675,7 +931,8 @@ class _SecaoMaster extends StatelessWidget {
                   feito: st.projetoFeito(CursoState.chaveMaster(i)),
                   onTap: () => Navigator.of(context).push(MaterialPageRoute<bool>(
                     builder: (_) => ProjetoPage(
-                      nivel: 'Flutter',
+                      nivel: st.ehCSharp ? 'Teste Master' : 'Flutter',
+                      fundo: st.ehCSharp ? 'desafios' : '',
                       projeto: projetos[i],
                       chaveProgresso: CursoState.chaveMaster(i),
                       master: true,
@@ -818,11 +1075,13 @@ void mostrarOpcoesLicao(BuildContext context, CursoState st, int t, int l, int? 
       licao: licao,
       feita: feita,
       nota: nota,
+      ingles: st.ehIngles,
       onTeoria: () {
         Navigator.of(sheet).pop();
         Navigator.of(context).push(MaterialPageRoute<void>(
           builder: (_) => TeoriaPage(
             nivel: st.trilhas[t].nivel,
+            fundo: st.trilhas[t].fundo,
             licao: licao,
             onPraticar: () {
               cursoBloc.add(TrilhaSelecionada(t));
@@ -840,6 +1099,10 @@ void mostrarOpcoesLicao(BuildContext context, CursoState st, int t, int l, int? 
       },
       onQuiz: () {
         Navigator.of(sheet).pop();
+        if (st.ehIngles) {
+          abrirFixacao(context, t, l);
+          return;
+        }
         Navigator.of(context).push(MaterialPageRoute<bool>(
           builder: (_) => QuizPage(
             trilhaIdx: t,
@@ -1086,11 +1349,15 @@ class _LicaoSheet extends StatelessWidget {
   final Licao licao;
   final bool feita;
   final int? nota;
+
+  /// Curso de inglês: frases, "Entenda a lição" e Fixação no lugar do quiz.
+  final bool ingles;
   final VoidCallback onTeoria, onPraticar, onQuiz;
   const _LicaoSheet(
       {required this.licao,
       required this.feita,
       this.nota,
+      this.ingles = false,
       required this.onTeoria,
       required this.onPraticar,
       required this.onQuiz});
@@ -1127,7 +1394,7 @@ class _LicaoSheet extends StatelessWidget {
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                 Text(licao.nome, style: Mixart.display(size: 19)),
-                Text('${licao.trechos.length} exercícios${feita ? ' · concluída' : ''}',
+                Text('${licao.trechos.length} ${ingles ? 'frases' : 'exercícios'}${feita ? ' · concluída' : ''}',
                     style: Mixart.ui(size: 12, color: feita ? Mixart.brand : Mixart.textMuted)),
               ]),
             ),
@@ -1169,8 +1436,8 @@ class _LicaoSheet extends StatelessWidget {
           if (licao.temTeoria) ...[
             _OpcaoSheet(
               icone: Icons.menu_book_outlined,
-              titulo: 'Teoria (Nivelamento)',
-              subtitulo: 'entenda o conceito antes de digitar',
+              titulo: ingles ? 'Entenda a lição' : 'Teoria (Nivelamento)',
+              subtitulo: ingles ? 'a explicação em português, com exemplos' : 'entenda o conceito antes de digitar',
               destaque: true,
               onTap: onTeoria,
             ),
@@ -1179,17 +1446,21 @@ class _LicaoSheet extends StatelessWidget {
           _OpcaoSheet(
             icone: Icons.keyboard_alt_outlined,
             titulo: feita ? 'Praticar de novo' : 'Praticar lição',
-            subtitulo: 'digite os exercícios com o Pac-Man',
+            subtitulo: ingles
+                ? 'copie, complete e digite as frases de memória'
+                : 'digite os exercícios com o Pac-Man',
             destaque: !licao.temTeoria,
             onTap: onPraticar,
           ),
           const SizedBox(height: 10),
           _OpcaoSheet(
             icone: Icons.quiz_outlined,
-            titulo: 'Quiz da lição',
-            subtitulo: nota != null
-                ? 'seu recorde: $nota/10 — tente superar'
-                : 'até 10 perguntas — escolha e digite o código certo',
+            titulo: ingles ? 'Treino de memória' : 'Quiz da lição',
+            subtitulo: ingles
+                ? '${nota != null ? 'prova da lição: $nota/10 · ' : ''}todas as frases de memória, fora de ordem'
+                : nota != null
+                    ? 'seu recorde: $nota/10 — tente superar'
+                    : 'até 10 perguntas — escolha e digite o código certo',
             feito: nota != null,
             onTap: onQuiz,
           ),

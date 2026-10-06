@@ -1,0 +1,303 @@
+{
+  "id": "regencia-preposicoes.depende-do-cliente",
+  "trilha": "regencia-preposicoes",
+  "nome": "Depende do cliente",
+  "emoji": "🧭",
+  "cena": "Numa chamada, o Mike, que está no escritório de Austin esta semana, fala de um cliente novo e da vaga sênior para a qual você pensa em se candidatar.",
+  "resumo": "Verbos com preposição própria: depend on, arrive in / arrive at, wait for.",
+  "fechamento": false,
+  "novos": [
+    "It depends on",
+    "arrive in",
+    "the budget",
+    "depend on",
+    "arrive at"
+  ],
+  "apoio": [
+    "wait for",
+    "apply for"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Depender de = depend on"
+    },
+    {
+      "t": "p",
+      "c": "Em inglês a preposição vem do verbo, não do português: **depend on** (depender de), **wait for** (esperar), **arrive in** + cidade ou país, **arrive at** + lugar específico (hotel, escritório)."
+    },
+    {
+      "t": "warn",
+      "c": "Não: depend of, wait the bus, arrive to Austin, think in."
+    },
+    {
+      "t": "ex",
+      "c": "It depends on the client.\nDepende do cliente."
+    },
+    {
+      "t": "ex",
+      "c": "I arrived at the hotel at midnight.\nCheguei no hotel à meia-noite."
+    }
+  ],
+  "imagem": "🛬🏢💰",
+  "visualizacao": "Você abre a chamada e vê o Mike numa sala de vidro em Austin, com cara de sono. No canto, uma mala; atrás dele, um quadro branco cheio de números do cliente.",
+  "foto_busca": "video call glass meeting room",
+  "trechos": [
+    {
+      "id": "f-430c92",
+      "quem": "mike",
+      "cod": "I arrived in Austin last night, but my bags didn't.",
+      "dica": "Cheguei em Austin ontem à noite, mas as minhas malas não.",
+      "img": "🛬🧳",
+      "alvo": "arrived in",
+      "alvo_pt": "Cheguei em",
+      "conceito": "chegar em + cidade ou país = arrive in (não: arrive to Austin).",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6350741,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I arrived in Boston last night.\"; Boston → Austin; + \", but my bags didn't\"; PT reescrito (na noite passada → ontem à noite)",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "my bags didn't",
+          "aceita": [
+            "my suitcases didn't",
+            "my luggage didn't"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6ce5a6",
+      "quem": "voce",
+      "contexto": "f-430c92",
+      "cod": "Oh no! Did they arrive at the hotel later?",
+      "dica": "Ah, não! Elas chegaram no hotel depois?",
+      "img": "🏨🧳❓",
+      "alvo": "arrive at",
+      "alvo_pt": "chegaram no",
+      "conceito": "chegar num lugar específico (hotel, escritório, aeroporto) = arrive at.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "to",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-02798f",
+      "quem": "mike",
+      "contexto": "f-6ce5a6",
+      "cod": "Yeah, at three in the morning! So I arrived at the office half asleep.",
+      "dica": "Chegaram, às três da manhã! Aí eu cheguei no escritório meio dormindo.",
+      "img": "🕒😴🏢",
+      "alvo": "arrived at",
+      "alvo_pt": "cheguei no",
+      "conceito": "chegar num lugar específico = arrive at: arrived at the office; half asleep = meio dormindo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "to",
+        "in"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Yeah",
+          "aceita": [
+            "Yes",
+            "They did"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-176e07",
+      "quem": "mike",
+      "cod": "So, thousands of people depend on our new client's app.",
+      "dica": "Então, milhares de pessoas dependem do app do nosso cliente novo.",
+      "img": "👥📱",
+      "alvo": "depend on",
+      "alvo_pt": "dependem do",
+      "conceito": "depender de = depend on; people é plural: people depend, sem -s.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53",
+        "BR14"
+      ],
+      "armadilhas": [
+        "of",
+        "depends"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-072f2f",
+      "quem": "voce",
+      "contexto": "f-176e07",
+      "cod": "Do we have the budget yet?",
+      "dica": "A gente já tem o orçamento?",
+      "img": "💰❓",
+      "alvo": "the budget",
+      "alvo_pt": "o orçamento",
+      "conceito": "budget = orçamento, a verba do projeto; yet no fim da pergunta = já.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Do we have the budget yet",
+          "aceita": [
+            "Do we already have the budget"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0e9617",
+      "quem": "mike",
+      "contexto": "f-072f2f",
+      "cod": "Not yet. We're still waiting for the client to approve the budget.",
+      "dica": "Ainda não. A gente ainda está esperando o cliente aprovar o orçamento.",
+      "img": "⏳✅💰",
+      "alvo": "the budget",
+      "alvo_pt": "o orçamento",
+      "conceito": "esperar alguém fazer algo = wait for + pessoa + to + verbo (não: wait the client approve).",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-30f109",
+      "quem": "mike",
+      "contexto": "So how long will the project take?",
+      "cod": "It depends on the budget.",
+      "dica": "Depende do orçamento.",
+      "img": "⚖️💰",
+      "alvo": "It depends on",
+      "alvo_pt": "Depende do",
+      "lit": "[lit.: isso depende no orçamento]",
+      "conceito": "Depende de... = It depends on... (o it é obrigatório; não: depends of).",
+      "registro": "informal",
+      "interferencias": [
+        "BR53",
+        "BR01"
+      ],
+      "armadilhas": [
+        "of",
+        "depend"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3521885,
+        "en_autor": "CK",
+        "pt_id": 5675550,
+        "pt_autor": "KimiP",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"It depends on the situation.\"; PT original: \"Depende da situação.\"; the situation → the budget; PT: da situação → do orçamento",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-964d40",
+      "quem": "voce",
+      "contexto": "So, are you going to apply for the senior job here?",
+      "cod": "I'm thinking about it. It depends on the salary.",
+      "dica": "Estou pensando nisso. Depende do salário.",
+      "img": "🤔💵",
+      "alvo": "It depends on",
+      "alvo_pt": "Depende do",
+      "conceito": "pensar em algo = think about (não: think in); depender de = depend on.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "in",
+        "of"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-30f109"
+    },
+    {
+      "id": "f-56885c",
+      "quem": "mike",
+      "contexto": "f-964d40",
+      "cod": "Think about it. The team here would really depend on you.",
+      "dica": "Pensa nisso. O time daqui ia depender muito de você.",
+      "img": "🤝👨‍💻",
+      "alvo": "depend on",
+      "alvo_pt": "depender muito de",
+      "conceito": "ia depender (hipótese) = would depend; depender de alguém = depend on.",
+      "var": [
+        {
+          "em": "would really depend on you",
+          "aceita": [
+            "would depend on you a lot",
+            "would depend a lot on you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-653d7e",
+      "quem": "voce",
+      "contexto": "f-56885c",
+      "cod": "If I get the job, when do I need to arrive in Austin?",
+      "dica": "Se eu conseguir a vaga, quando eu preciso chegar em Austin?",
+      "img": "📅🛬",
+      "alvo": "arrive in",
+      "alvo_pt": "chegar em",
+      "conceito": "Se eu conseguir = If I get (presente depois de if, não will).",
+      "var": [
+        {
+          "em": "job",
+          "aceita": [
+            "position"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53",
+        "BR28"
+      ],
+      "armadilhas": [
+        "to",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

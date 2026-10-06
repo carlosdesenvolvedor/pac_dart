@@ -1,0 +1,253 @@
+{
+  "id": "dev-code-review.isso-pode-causar-problema",
+  "trilha": "dev-code-review",
+  "nome": "Isso pode causar problema",
+  "emoji": "🐛",
+  "cena": "No mesmo PR, você encontra trechos que podem quebrar em produção.",
+  "resumo": "Apontar riscos com might + verbo, I'm not sure this... e What happens if...?",
+  "fechamento": false,
+  "novos": [
+    "race condition",
+    "null value",
+    "handle",
+    "empty list"
+  ],
+  "apoio": [
+    "catch"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Apontar um risco sem acusar"
+    },
+    {
+      "t": "p",
+      "c": "**This might cause...** (isso pode causar), **I'm not sure this handles...** (não tenho certeza se isso trata) e **What happens if...?** (o que acontece se...?) falam do código, não da pessoa."
+    },
+    {
+      "t": "warn",
+      "c": "Tratar um caso no código = handle (não: treat). Depois de if, presente: if two users click (não: will click)."
+    },
+    {
+      "t": "ex",
+      "c": "What happens if the API returns a null value?\nO que acontece se a API retornar um valor nulo?"
+    }
+  ],
+  "imagem": "💻🐛⚠️",
+  "visualizacao": "Você continua no mesmo PR, agora com a testa franzida. Imagina dois usuários clicando ao mesmo tempo e o app quebrando; respira e escreve o comentário com calma.",
+  "foto_busca": "developer thinking bug code screen",
+  "trechos": [
+    {
+      "id": "f-566f08",
+      "quem": "voce",
+      "cod": "This might cause a race condition if two users click at the same time.",
+      "dica": "Isso pode causar uma condição de corrida se dois usuários clicarem ao mesmo tempo.",
+      "img": "🏎️🏎️💥",
+      "alvo": "race condition",
+      "alvo_pt": "condição de corrida",
+      "conceito": "race condition = duas operações disputando o mesmo dado ao mesmo tempo.",
+      "var": [
+        {
+          "em": "might",
+          "aceita": [
+            "could",
+            "may"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f09ccd",
+      "quem": "voce",
+      "cod": "Two requests can update the same order, which creates a race condition.",
+      "dica": "Duas requisições podem atualizar o mesmo pedido, o que cria uma condição de corrida.",
+      "img": "📨📨🧾",
+      "alvo": "race condition",
+      "alvo_pt": "condição de corrida",
+      "conceito": ", which comenta a frase inteira: o que cria...",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "what",
+        "create"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8e8f72",
+      "quem": "voce",
+      "cod": "What happens if the API returns a null value?",
+      "dica": "O que acontece se a API retornar um valor nulo?",
+      "img": "🕳️❓",
+      "alvo": "null value",
+      "alvo_pt": "valor nulo",
+      "conceito": "se a API retornar = if the API returns (presente depois de if).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR28",
+        "BR02"
+      ],
+      "armadilhas": [
+        "return",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c4ab5",
+      "quem": "dev-novo",
+      "contexto": "f-8e8f72",
+      "cod": "The backend never sends null values, so it should be fine.",
+      "dica": "O backend nunca manda valores nulos, então deve ficar tudo bem.",
+      "img": "🛡️🙂",
+      "alvo": "null values",
+      "alvo_pt": "valores nulos",
+      "conceito": "it should be fine = deve ficar tudo bem (o it é obrigatório).",
+      "var": [
+        {
+          "em": "it should be fine",
+          "aceita": [
+            "everything should be fine"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02",
+        "BR01"
+      ],
+      "armadilhas": [
+        "send"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e686b8",
+      "quem": "voce",
+      "contexto": "f-4c4ab5",
+      "cod": "I'm not sure this screen handles null values correctly, though.",
+      "dica": "Mas não tenho certeza se esta tela trata valores nulos corretamente.",
+      "img": "📱🤔",
+      "alvo": "handles",
+      "alvo_pt": "trata",
+      "conceito": "though no fim = mas (também vale But no começo); tratar um caso no código = handle, não treat.",
+      "var": [
+        {
+          "em": "I'm not sure this",
+          "aceita": [
+            "But I'm not sure this",
+            "But I'm not sure if this",
+            "I'm not sure if this"
+          ]
+        }
+      ],
+      "opcional": [
+        "though"
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "treats",
+        "handle"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-11ced6",
+      "quem": "voce",
+      "cod": "The app should handle errors from the payment API without crashing.",
+      "dica": "O app deveria tratar os erros da API de pagamento sem quebrar.",
+      "img": "💳🧯",
+      "alvo": "handle",
+      "alvo_pt": "tratar",
+      "conceito": "without + -ing: without crashing (sem quebrar).",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "treat",
+        "crash"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e040fa",
+      "quem": "voce",
+      "cod": "What happens if the search returns an empty list?",
+      "dica": "O que acontece se a busca retornar uma lista vazia?",
+      "img": "📋🫙",
+      "alvo": "empty list",
+      "alvo_pt": "lista vazia",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "return",
+        "a"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-8e8f72"
+    },
+    {
+      "id": "f-17c8ec",
+      "quem": "dev-novo",
+      "contexto": "f-e040fa",
+      "cod": "Good catch. An empty list breaks the whole screen right now.",
+      "dica": "Bem observado. Uma lista vazia quebra a tela inteira agora.",
+      "img": "📱💔",
+      "alvo": "empty list",
+      "alvo_pt": "lista vazia",
+      "conceito": "Good catch = Nice catch = bem observado; An empty list: an antes de som de vogal.",
+      "var": [
+        {
+          "em": "Good catch",
+          "aceita": [
+            "Nice catch"
+          ]
+        }
+      ],
+      "opcional": [
+        "right"
+      ],
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "break",
+        "a"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

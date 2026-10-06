@@ -7,7 +7,10 @@ import '../../../../core/theme/mixart.dart';
 /// a leitura, só dá clima.
 class FundoFase extends StatelessWidget {
   final String nivel;
-  const FundoFase({super.key, required this.nivel});
+
+  /// Foto escolhida pela própria trilha (campo `fundo` do currículo C#).
+  final String fundo;
+  const FundoFase({super.key, required this.nivel, this.fundo = ''});
 
   static const _porTrilha = {
     'Fundamentos': 'fundamentos',
@@ -20,8 +23,11 @@ class FundoFase extends StatelessWidget {
     'Pacotes': 'pacotes',
   };
 
-  static String asset(String nivel) =>
-      'assets/backgrounds/${_porTrilha[nivel] ?? 'fundamentos'}.jpg';
+  static const _fotos = {'fundamentos', 'logica', 'colecoes', 'objetos', 'avancado', 'flutter', 'desafios', 'pacotes'};
+
+  static String asset(String nivel, {String fundo = ''}) => _fotos.contains(fundo)
+      ? 'assets/backgrounds/$fundo.jpg'
+      : 'assets/backgrounds/${_porTrilha[nivel] ?? 'fundamentos'}.jpg';
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +43,7 @@ class FundoFase extends StatelessWidget {
         fit: StackFit.expand,
         children: [
           Image.asset(
-            asset(nivel),
+            asset(nivel, fundo: fundo),
             fit: BoxFit.cover,
             alignment: Alignment.topCenter,
             gaplessPlayback: true,

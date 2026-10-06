@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'palavras_dart.dart';
+import 'palavras_csharp.dart';
 
 /// 🏎️ Dart Turismo — campeonato de digitação em 10 pistas.
 ///
@@ -68,11 +68,14 @@ class PistaGt {
   double get velMax => intervaloPortais / 2.8;
   double get velMaxKmh => velMax * 3.6;
 
-  List<String> get vocabulario => switch (nivelPalavras) {
-        1 => palavrasCurtas,
-        2 => [...palavrasCurtas, ...palavrasMedias],
-        _ => [...palavrasMedias, ...palavrasLongas],
-      };
+  List<String> get vocabulario {
+    final v = vocabularioDe();
+    return switch (nivelPalavras) {
+      1 => v.curtas,
+      2 => [...v.curtas, ...v.medias],
+      _ => [...v.medias, ...v.longas],
+    };
+  }
 
   /// Medalha pra um tempo de chegada: 3 ouro · 2 prata · 1 bronze · 0 nada.
   int medalha(double tempo) {

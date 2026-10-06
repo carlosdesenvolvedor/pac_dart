@@ -1,0 +1,184 @@
+{
+  "id": "quantidades-compras.quantos-how-many",
+  "trilha": "quantidades-compras",
+  "nome": "Quantos? How many",
+  "emoji": "🍎",
+  "cena": "No mercado, você e a Emma conferem a lista do jantar que ela vai fazer para os amigos.",
+  "resumo": "Perguntar quantos de uma coisa que se conta com How many...? e pedir a dozen.",
+  "fechamento": false,
+  "novos": [
+    "How many...?",
+    "tomatoes",
+    "eggs",
+    "a dozen"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Quantos? How many + plural"
+    },
+    {
+      "t": "p",
+      "c": "**How many** + plural, para o que se conta: *How many eggs? How many tomatoes?* O que não se conta continua com *How much*."
+    },
+    {
+      "t": "ex",
+      "c": "How many eggs do we need?\nDe quantos ovos a gente precisa?"
+    },
+    {
+      "t": "tip",
+      "c": "**a dozen** = uma dúzia, sem *of*: *a dozen eggs*. Plural com -es: *tomato → tomatoes*."
+    },
+    {
+      "t": "warn",
+      "c": "Contável no plural pede **How many**: *How many eggs?* (não: *How much eggs?*). *How much* fica com o que não se conta: *How much water?*"
+    }
+  ],
+  "imagem": "🥚🍅📝",
+  "visualizacao": "Você está no corredor de hortifrúti com a Emma. Ela lê a lista do jantar em voz alta; caixas de ovos e tomates vermelhos bem na sua frente.",
+  "foto_busca": "grocery store produce tomatoes eggs",
+  "trechos": [
+    {
+      "id": "f-8bd838",
+      "quem": "voce",
+      "cod": "How many eggs do we need?",
+      "dica": "De quantos ovos a gente precisa?",
+      "img": "🥚❓",
+      "alvo": "How many",
+      "alvo_pt": "quantos",
+      "conceito": "How many + plural: o que se conta (eggs, apples, people).",
+      "registro": "informal",
+      "armadilhas": [
+        "much"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e5fe99",
+      "quem": "emma",
+      "contexto": "f-8bd838",
+      "cod": "A dozen, I think.",
+      "dica": "Uma dúzia, acho.",
+      "img": "📦🥚",
+      "alvo": "A dozen",
+      "alvo_pt": "Uma dúzia",
+      "conceito": "a dozen eggs = uma dúzia de ovos, sem of.",
+      "registro": "informal",
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d9a602",
+      "quem": "emma",
+      "cod": "I always have eggs for breakfast.",
+      "dica": "Sempre como ovos no café da manhã.",
+      "img": "🍳☀️",
+      "alvo": "eggs",
+      "alvo_pt": "ovos",
+      "conceito": "have + comida: have eggs for breakfast = comer ovos no café da manhã.",
+      "var": [
+        {
+          "em": "have",
+          "aceita": [
+            "eat"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 7084960,
+        "en_autor": "CK",
+        "pt_id": 7087975,
+        "pt_autor": "pajunior",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-87b366",
+      "quem": "voce",
+      "cod": "The eggs are next to the milk.",
+      "dica": "Os ovos ficam do lado do leite.",
+      "img": "🥚🥛",
+      "alvo": "eggs",
+      "alvo_pt": "ovos",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d00a95",
+      "quem": "emma",
+      "cod": "How many apples do you want?",
+      "dica": "Quantas maçãs você quer?",
+      "img": "🍎❓",
+      "alvo": "How many",
+      "alvo_pt": "Quantas",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2912459,
+        "en_autor": "CK",
+        "pt_id": 3708894,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"How many apples do you have?\"; PT original: \"Quantas maçãs você tem?\"; have → want; PT: tem → quer",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-07ff76",
+      "quem": "voce",
+      "contexto": "f-d00a95",
+      "cod": "Four. And a dozen eggs, right?",
+      "dica": "Quatro. E uma dúzia de ovos, né?",
+      "img": "🍎🥚📝",
+      "alvo": "a dozen",
+      "alvo_pt": "uma dúzia",
+      "registro": "informal",
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ec9a74",
+      "quem": "emma",
+      "cod": "And how many tomatoes?",
+      "dica": "E quantos tomates?",
+      "img": "🍅❓",
+      "alvo": "tomatoes",
+      "alvo_pt": "tomates",
+      "conceito": "tomato → tomatoes: plural com -es, como potato → potatoes.",
+      "registro": "informal",
+      "armadilhas": [
+        "tomatos"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1f7b50",
+      "quem": "voce",
+      "contexto": "f-ec9a74",
+      "cod": "Six. The tomatoes here are small.",
+      "dica": "Seis. Os tomates aqui são pequenos.",
+      "img": "🍅🤏",
+      "alvo": "tomatoes",
+      "alvo_pt": "tomates",
+      "registro": "informal",
+      "armadilhas": [
+        "tomatos"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

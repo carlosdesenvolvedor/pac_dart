@@ -1,0 +1,298 @@
+{
+  "id": "quantificadores-incontaveis.agenda-cheia-e-um-conselho",
+  "trilha": "quantificadores-incontaveis",
+  "nome": "Agenda cheia e um conselho",
+  "emoji": "🧮",
+  "cena": "Sexta à tarde, você e a Ana fazem um balanço da semana e trocam conselhos.",
+  "resumo": "Cena de fechamento: much, many, too many, a few e a little lado a lado, uma negação só e incontáveis sem plural.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "too many",
+    "too much",
+    "a few",
+    "a little",
+    "nobody",
+    "anything",
+    "information",
+    "advice",
+    "news"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: quantidade sem tropeço"
+    },
+    {
+      "t": "p",
+      "c": "much (não se conta) x many (se conta); too much / too many = demais; a little (não se conta) x a few (plural); nobody / nothing ou don't ... any: uma negação só."
+    },
+    {
+      "t": "warn",
+      "c": "Incontáveis sem plural (information, advice, news) e generalização sem the: Meetings are always too long."
+    }
+  ],
+  "imagem": "🗓️☕💬",
+  "visualizacao": "Sexta, fim de tarde, a luz do sol entrando de lado na sala. Você e a Ana na chamada, com caneca na mão, rindo da semana corrida e já pensando no fim de semana.",
+  "foto_busca": "friday afternoon video call coffee",
+  "trechos": [
+    {
+      "id": "f-aa04e6",
+      "quem": "ana",
+      "cod": "How was your week?",
+      "dica": "Como foi a sua semana?",
+      "img": "🗓️🙂",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2648525,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f9865e",
+      "quem": "voce",
+      "contexto": "f-aa04e6",
+      "cod": "Too many meetings and not much time.",
+      "dica": "Reunião demais e pouco tempo.",
+      "img": "📆⏳",
+      "alvo": "Too many",
+      "alvo_pt": "demais",
+      "conceito": "pouco tempo = not much time.",
+      "registro": "informal",
+      "interferencias": [
+        "BR23"
+      ],
+      "armadilhas": [
+        "much",
+        "many"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "not much",
+          "aceita": [
+            "not enough",
+            "little"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-608018",
+      "quem": "ana",
+      "contexto": "f-f9865e",
+      "cod": "I know. Meetings are always too long.",
+      "dica": "Eu sei. As reuniões são sempre longas demais.",
+      "img": "🕐😴",
+      "alvo": "Meetings are",
+      "alvo_pt": "As reuniões são",
+      "conceito": "Falando em geral, sem the: Meetings are always too long.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f866f2",
+      "quem": "voce",
+      "cod": "And I didn't get any information about the new feature.",
+      "dica": "E não recebi nenhuma informação sobre a nova feature.",
+      "img": "📭❓",
+      "alvo": "any information",
+      "alvo_pt": "nenhuma informação",
+      "conceito": "Uma negação só: didn't + any (não: didn't get no informations).",
+      "registro": "informal",
+      "interferencias": [
+        "BR25",
+        "BR22"
+      ],
+      "armadilhas": [
+        "no",
+        "informations"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "get",
+          "aceita": [
+            "receive"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f77d3c",
+      "quem": "ana",
+      "contexto": "f-f866f2",
+      "cod": "Sarah has all the information. Call her.",
+      "dica": "A Sarah tem todas as informações. Liga pra ela.",
+      "img": "👩‍💼📞",
+      "alvo": "all the information",
+      "alvo_pt": "todas as informações",
+      "conceito": "Sem artigo antes de nome: Sarah has... (A Sarah tem...).",
+      "registro": "informal",
+      "interferencias": [
+        "BR22",
+        "BR12"
+      ],
+      "armadilhas": [
+        "informations",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0a0b28",
+      "quem": "voce",
+      "cod": "I have some more bad news.",
+      "dica": "Tenho mais notícias ruins.",
+      "img": "📰😬",
+      "alvo": "bad news",
+      "alvo_pt": "notícias ruins",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "a"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6666058,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cb9628",
+      "quem": "ana",
+      "contexto": "f-0a0b28",
+      "cod": "Nobody likes bad news.",
+      "dica": "Ninguém gosta de notícias ruins.",
+      "img": "🙅📰",
+      "alvo": "Nobody likes",
+      "alvo_pt": "Ninguém gosta",
+      "conceito": "Nobody já é negativo: Nobody likes (não: Nobody doesn't like).",
+      "registro": "informal",
+      "interferencias": [
+        "BR25"
+      ],
+      "armadilhas": [
+        "like",
+        "doesn't"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2547072,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-19638e",
+      "quem": "ana",
+      "cod": "Can I give you a little advice?",
+      "dica": "Posso te dar um conselho?",
+      "img": "💡🤏",
+      "alvo": "a little advice",
+      "alvo_pt": "um conselho",
+      "var": [
+        {
+          "em": "a little advice",
+          "aceita": [
+            "some advice",
+            "a piece of advice"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "an",
+        "advices"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4017371,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'friendly' omitido",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-14bf65",
+      "quem": "ana",
+      "contexto": "f-19638e",
+      "cod": "Put your phone on silent and close a few tabs.",
+      "dica": "Coloca o celular no silencioso e fecha umas abas.",
+      "img": "📵🗂️",
+      "alvo": "a few tabs",
+      "alvo_pt": "umas abas",
+      "var": [
+        {
+          "em": "your phone",
+          "aceita": [
+            "the phone"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "little"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dabc91",
+      "quem": "voce",
+      "contexto": "f-14bf65",
+      "cod": "Thanks. And don't work too much this weekend!",
+      "dica": "Valeu. E não trabalha demais neste fim de semana!",
+      "img": "🏖️🙂",
+      "alvo": "too much",
+      "alvo_pt": "demais",
+      "registro": "informal",
+      "interferencias": [
+        "BR23"
+      ],
+      "armadilhas": [
+        "very"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

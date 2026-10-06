@@ -1,0 +1,242 @@
+{
+  "id": "quantificadores-incontaveis.os-dois-nenhum-dos-dois",
+  "trilha": "quantificadores-incontaveis",
+  "nome": "Os dois, nenhum dos dois",
+  "emoji": "✌️",
+  "cena": "Numa chamada, você e a Sarah escolhem o notebook do dev novo e uma data para a reunião do time.",
+  "resumo": "Escolher entre duas opções com both, neither e either (e os pares both... and / either... or).",
+  "fechamento": false,
+  "novos": [
+    "both (os dois)",
+    "neither (nenhum dos dois)",
+    "either (qualquer um dos dois)",
+    "either... or"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Os dois, nenhum, qualquer um"
+    },
+    {
+      "t": "p",
+      "c": "Para escolher entre **duas** coisas: **both** (os dois), **neither** (nenhum dos dois), **either** (qualquer um dos dois). E os pares: **both... and** (tanto... quanto) e **either... or** (ou... ou)."
+    },
+    {
+      "t": "ex",
+      "c": "Neither date works for me.\nNenhuma das duas datas dá pra mim."
+    },
+    {
+      "t": "warn",
+      "c": "Neither já é negativo: Neither day works (não: Neither day doesn't work)."
+    }
+  ],
+  "imagem": "💻💻📅",
+  "visualizacao": "A Sarah compartilha a tela com dois notebooks lado a lado e, embaixo, o calendário da semana que vem. Ela toma um gole de café e espera a sua opinião.",
+  "foto_busca": "two laptops side by side",
+  "trechos": [
+    {
+      "id": "f-54223b",
+      "quem": "sarah",
+      "cod": "Both laptops are good.",
+      "dica": "Os dois notebooks são bons.",
+      "img": "💻💻👍",
+      "alvo": "Both",
+      "alvo_pt": "Os dois",
+      "conceito": "both = os dois (as duas), sempre com plural.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-170d6f",
+      "quem": "voce",
+      "contexto": "f-54223b",
+      "cod": "They're both the same price.",
+      "dica": "Os dois têm o mesmo preço.",
+      "img": "🏷️⚖️",
+      "alvo": "both",
+      "alvo_pt": "Os dois",
+      "conceito": "Com be, both vem depois do verbo: They're both...",
+      "var": [
+        {
+          "em": "They're both the same price",
+          "aceita": [
+            "They both have the same price",
+            "Both are the same price",
+            "Both have the same price"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6390862,
+        "en_autor": "CarpeLanam",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'We are' trocado por 'They're'; 'age' trocado por 'price'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ab35fc",
+      "quem": "sarah",
+      "contexto": "f-170d6f",
+      "cod": "So we can buy either the black one or the white one.",
+      "dica": "Então a gente pode comprar ou o preto ou o branco.",
+      "img": "⬛⬜🤔",
+      "alvo": "either the black one or the white one",
+      "alvo_pt": "ou o preto ou o branco",
+      "conceito": "either... or = ou... ou (uma das duas opções).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f03170",
+      "quem": "voce",
+      "contexto": "f-ab35fc",
+      "cod": "Either is fine. You choose.",
+      "dica": "Qualquer um dos dois serve. Você escolhe.",
+      "img": "🤷👉",
+      "alvo": "Either",
+      "alvo_pt": "Qualquer um dos dois",
+      "conceito": "either = qualquer um dos dois (só quando são dois).",
+      "var": [
+        {
+          "em": "is fine",
+          "aceita": [
+            "is OK",
+            "is okay",
+            "works"
+          ]
+        },
+        {
+          "em": "Either",
+          "aceita": [
+            "Either one"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2bf679",
+      "quem": "voce",
+      "contexto": "Can we meet on Monday or Wednesday?",
+      "cod": "Sorry, neither day works for me.",
+      "dica": "Desculpa, nenhum dos dois dias dá pra mim.",
+      "img": "📅❌",
+      "alvo": "neither day",
+      "alvo_pt": "nenhum dos dois dias",
+      "lit": "[lit.: nenhum dia funciona pra mim]",
+      "conceito": "neither já é negativo: neither day works (não: doesn't work).",
+      "registro": "informal",
+      "interferencias": [
+        "BR25"
+      ],
+      "armadilhas": [
+        "doesn't",
+        "either"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e1137e",
+      "quem": "voce",
+      "cod": "I'm free either Tuesday or Thursday.",
+      "dica": "Estou livre ou na terça ou na quinta.",
+      "img": "📅✌️",
+      "alvo": "either Tuesday or Thursday",
+      "alvo_pt": "ou na terça ou na quinta",
+      "var": [
+        {
+          "em": "either Tuesday or Thursday",
+          "aceita": [
+            "either on Tuesday or on Thursday",
+            "either on Tuesday or Thursday",
+            "on either Tuesday or Thursday"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ca1973",
+      "quem": "sarah",
+      "contexto": "f-e1137e",
+      "cod": "Either day is good for me.",
+      "dica": "Qualquer um dos dois dias é bom pra mim.",
+      "img": "📅👍",
+      "alvo": "Either day",
+      "alvo_pt": "Qualquer um dos dois dias",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ee738a",
+      "quem": "sarah",
+      "cod": "Do you want to invite both Mike and Ana?",
+      "dica": "Você quer convidar tanto o Mike quanto a Ana?",
+      "img": "✉️👥",
+      "alvo": "both Mike and Ana",
+      "alvo_pt": "tanto o Mike quanto a Ana",
+      "conceito": "both... and = tanto... quanto. Sem artigo antes de nome.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f2998b",
+      "quem": "voce",
+      "contexto": "f-ee738a",
+      "cod": "Neither of them is free on Thursday.",
+      "dica": "Nenhum dos dois está livre na quinta.",
+      "img": "🙅🙅📅",
+      "alvo": "Neither of them",
+      "alvo_pt": "Nenhum dos dois",
+      "conceito": "Uma negação só: Neither of them is free (não: isn't free).",
+      "var": [
+        {
+          "em": "is free",
+          "aceita": [
+            "are free"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR25",
+        "BR17"
+      ],
+      "armadilhas": [
+        "isn't",
+        "aren't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c91f77",
+      "quem": "sarah",
+      "contexto": "f-f2998b",
+      "cod": "OK. So Tuesday works for both of us.",
+      "dica": "Tá. Então terça dá pra nós dois.",
+      "img": "📅🤝",
+      "alvo": "both of us",
+      "alvo_pt": "nós dois",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

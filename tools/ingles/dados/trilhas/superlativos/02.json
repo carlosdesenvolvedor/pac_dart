@@ -1,0 +1,286 @@
+{
+  "id": "superlativos.o-melhor-da-cidade-most-best-worst",
+  "trilha": "superlativos",
+  "nome": "O melhor da cidade: most, best, worst",
+  "emoji": "🍽️",
+  "cena": "O Mike te dá dicas de Chicago: o melhor restaurante, a vista mais bonita e a pior pizzaria do centro.",
+  "resumo": "Recomendar lugares com the best, the worst e the most + adjetivo longo, com in + lugar depois.",
+  "fechamento": false,
+  "novos": [
+    "the best",
+    "the worst",
+    "in town",
+    "view",
+    "pizza place"
+  ],
+  "apoio": [
+    "beautiful",
+    "museum",
+    "downtown"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O melhor da cidade = the best in town"
+    },
+    {
+      "t": "p",
+      "c": "Irregulares: good → **the best**, bad → **the worst**. Adjetivo longo: **the most** + adjetivo (the most beautiful, the most expensive)."
+    },
+    {
+      "t": "ex",
+      "c": "It's the most expensive restaurant in town.\nÉ o restaurante mais caro da cidade."
+    },
+    {
+      "t": "warn",
+      "c": "Depois do superlativo, lugar vai com in: the best in town, the best in Chicago (não: of the city)."
+    },
+    {
+      "t": "warn",
+      "c": "beautiful: b-e-a-u-t-i-f-u-l (não: beatiful)."
+    }
+  ],
+  "imagem": "🍕🌆🗺️",
+  "visualizacao": "Você caminha com o Mike pelo centro de Chicago. O vento frio vem do lago, ele aponta os restaurantes no caminho e você anota as dicas no celular.",
+  "foto_busca": "chicago downtown restaurants street",
+  "trechos": [
+    {
+      "id": "f-baa707",
+      "quem": "voce",
+      "cod": "What's the best restaurant in Chicago?",
+      "dica": "Qual é o melhor restaurante de Chicago?",
+      "img": "🏆🍽️❓",
+      "alvo": "the best",
+      "alvo_pt": "o melhor",
+      "conceito": "good → the best. Lugar com in: in Chicago (não: of Chicago).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "of",
+        "most"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-421dd8",
+      "quem": "mike",
+      "contexto": "f-baa707",
+      "cod": "This is one of the best restaurants in town.",
+      "dica": "Este é um dos melhores restaurantes da cidade.",
+      "img": "🍽️⭐",
+      "alvo": "in town",
+      "alvo_pt": "da cidade",
+      "lit": "[lit.: na cidade]",
+      "conceito": "in town = da cidade (a cidade onde a gente está). one of the best = um dos melhores.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR09"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4134182,
+        "en_autor": "CK",
+        "pt_id": 9391421,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-81bdfb",
+      "quem": "voce",
+      "cod": "Is there a good pizza place near here?",
+      "dica": "Tem uma pizzaria boa aqui perto?",
+      "img": "🍕📍❓",
+      "alvo": "pizza place",
+      "alvo_pt": "pizzaria",
+      "conceito": "pizzaria = pizza place. Tem (existe) = Is there...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR08",
+        "BR24"
+      ],
+      "armadilhas": [
+        "have",
+        "pizzeria"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-786845",
+      "quem": "mike",
+      "contexto": "f-81bdfb",
+      "cod": "There's one next to the office. It's the best in town.",
+      "dica": "Tem uma do lado do escritório. É a melhor da cidade.",
+      "img": "🍕🏢🏆",
+      "alvo": "the best",
+      "alvo_pt": "a melhor",
+      "conceito": "Tem (existe) = there's. a melhor da cidade = the best in town (in, não of).",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR01"
+      ],
+      "armadilhas": [
+        "have",
+        "of the city"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3451047,
+        "en_autor": "CK",
+        "pt_id": 3453915,
+        "pt_autor": "piterkeo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN reescrita como resposta (There's one next to the office.) mantendo 'the best ... in town'; PT refeito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0c7174",
+      "quem": "voce",
+      "cod": "What's the worst month in Chicago?",
+      "dica": "Qual é o pior mês em Chicago?",
+      "img": "🥶📅",
+      "alvo": "the worst",
+      "alvo_pt": "o pior",
+      "conceito": "bad → the worst (o pior).",
+      "registro": "neutro",
+      "interferencias": [],
+      "armadilhas": [
+        "baddest",
+        "most"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-48c13a",
+      "quem": "mike",
+      "contexto": "f-0c7174",
+      "cod": "January. The worst thing about winter is the snow.",
+      "dica": "Janeiro. A pior coisa do inverno é a neve.",
+      "img": "❄️☃️",
+      "alvo": "The worst",
+      "alvo_pt": "A pior",
+      "conceito": "a pior coisa do inverno = the worst thing about winter (about, não of). January com maiúscula.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 837448,
+        "en_autor": "Zifre",
+        "pt_id": 2782158,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN e PT: 'January.' / 'Janeiro.' acrescentado no começo",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-000955",
+      "quem": "voce",
+      "cod": "Where's the most beautiful view in Chicago?",
+      "dica": "Onde fica a vista mais bonita de Chicago?",
+      "img": "🌇👀",
+      "alvo": "view",
+      "alvo_pt": "vista",
+      "conceito": "Adjetivo longo: the most beautiful. view = vista.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR45"
+      ],
+      "armadilhas": [
+        "beatiful",
+        "beautifulest"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bb4845",
+      "quem": "mike",
+      "contexto": "f-000955",
+      "cod": "The best view is from my apartment!",
+      "dica": "A melhor vista é do meu apartamento!",
+      "img": "🏙️🪟😎",
+      "alvo": "view",
+      "alvo_pt": "vista",
+      "conceito": "a melhor vista = the best view. do meu apartamento (de onde se olha) = from my apartment.",
+      "registro": "neutro",
+      "interferencias": [],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9419349,
+        "en_autor": "sundown",
+        "pt_id": 9457568,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'The view from the hotel is very beautiful.' virou resposta com superlativo (The best view is from my apartment!); PT refeito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c6474f",
+      "quem": "mike",
+      "contexto": "What about that pizza place on the corner?",
+      "cod": "Don't go there. It's the worst pizza place downtown.",
+      "dica": "Não vai lá. É a pior pizzaria do centro.",
+      "img": "🍕👎",
+      "alvo": "pizza place",
+      "alvo_pt": "pizzaria",
+      "conceito": "a pior pizzaria do centro = the worst pizza place downtown (sem in, sem of).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-216628",
+      "quem": "mike",
+      "contexto": "And the restaurant by the lake?",
+      "cod": "It's the most expensive restaurant in town.",
+      "dica": "É o restaurante mais caro da cidade.",
+      "img": "💰🍽️",
+      "alvo": "in town",
+      "alvo_pt": "da cidade",
+      "conceito": "Adjetivo longo: the most expensive (não: the expensivest).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR08"
+      ],
+      "armadilhas": [
+        "of",
+        "expensivest"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

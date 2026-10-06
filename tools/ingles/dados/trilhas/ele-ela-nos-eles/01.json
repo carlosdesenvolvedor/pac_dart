@@ -1,0 +1,229 @@
+{
+  "id": "ele-ela-nos-eles.esta-e-a-ana-ela-e-designer",
+  "trilha": "ele-ela-nos-eles",
+  "nome": "Esta é a Ana. Ela é designer.",
+  "emoji": "👩‍🎨",
+  "cena": "Num café perto do escritório de Chicago, você apresenta a Ana ao Ben, seu amigo de Boston que está de passagem pela cidade.",
+  "resumo": "Apresentar alguém e falar dele: This is... / He's... / She's... / a friend.",
+  "fechamento": false,
+  "novos": [
+    "This is...",
+    "he's",
+    "she's",
+    "friend"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Essa é a Ana. Ela é designer."
+    },
+    {
+      "t": "p",
+      "c": "Para apresentar alguém: **This is** + nome. Depois, fale da pessoa com **he's** (ele é / está) ou **she's** (ela é / está)."
+    },
+    {
+      "t": "ex",
+      "c": "Ben, this is Ana. She's a designer.\nBen, essa é a Ana. Ela é designer."
+    },
+    {
+      "t": "warn",
+      "c": "O pronome não some: She's a designer. Em português, \"É designer\" basta; em inglês, não."
+    },
+    {
+      "t": "tip",
+      "c": "Ao telefone, o americano se identifica com This is: Hi, Ben! This is Carlos. = Oi, Ben! Aqui é o Carlos."
+    }
+  ],
+  "imagem": "☕🤝👥",
+  "visualizacao": "Você e a Ana estão num café em Chicago, com cheiro de pão quente. A porta abre, o Ben entra de casaco, acena e vem até a mesa.",
+  "foto_busca": "friends meeting coffee shop",
+  "trechos": [
+    {
+      "id": "f-5003c2",
+      "quem": "voce",
+      "cod": "Hi, Ben! This is {nome}.",
+      "dica": "(ao telefone) Oi, Ben! Aqui é o {nome}.",
+      "pt_f": "(ao telefone) Oi, Ben! Aqui é a {nome}.",
+      "img": "📞👋",
+      "alvo": "This is",
+      "alvo_pt": "Aqui é",
+      "conceito": "Ao telefone, para dizer quem fala: This is + nome (= aqui é o / aqui é a). Não: Here is.",
+      "registro": "informal",
+      "armadilhas": [
+        "i'm",
+        "here"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8df15a",
+      "quem": "voce",
+      "cod": "Ana, my friend Ben is here!",
+      "dica": "Ana, o meu amigo Ben está aqui!",
+      "img": "🧑‍🤝‍🧑🚪",
+      "alvo": "friend",
+      "alvo_pt": "amigo",
+      "conceito": "friend = amigo ou amiga; my friend Ben = o meu amigo Ben.",
+      "registro": "informal",
+      "armadilhas": [
+        "my friend is ben"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a01ae9",
+      "quem": "voce",
+      "contexto": "f-8df15a",
+      "cod": "Ben, this is Ana.",
+      "dica": "Ben, essa é a Ana.",
+      "img": "🤝👩",
+      "alvo": "this is",
+      "alvo_pt": "essa é",
+      "lit": "[lit.: isto é a Ana]",
+      "conceito": "Para apresentar alguém: This is + nome (essa é / esse é).",
+      "registro": "neutro",
+      "armadilhas": [
+        "she is ana",
+        "it's ana"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a67491",
+      "quem": "voce",
+      "contexto": "f-a01ae9",
+      "cod": "She's a designer, from Recife.",
+      "dica": "Ela é designer, de Recife.",
+      "img": "👩‍🎨🌴",
+      "alvo": "She's",
+      "alvo_pt": "Ela é",
+      "conceito": "She's = she is. O pronome não some, e a profissão leva a: She's a designer.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR13"
+      ],
+      "armadilhas": [
+        "is a designer",
+        "she's designer"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2745111,
+        "en_autor": "Hybrid",
+        "pt_id": 5463368,
+        "pt_autor": "ToinhoAlam",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "fashion designer → designer, + from Recife (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1bab85",
+      "quem": "voce",
+      "cod": "Ana, this is Ben, a good friend.",
+      "dica": "Ana, esse é o Ben, um bom amigo.",
+      "img": "🤗👍",
+      "alvo": "friend",
+      "alvo_pt": "amigo",
+      "conceito": "a good friend = um bom amigo. Depois do nome, só a vírgula: this is Ben, a good friend.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "the ben"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1868240,
+        "en_autor": "CK",
+        "pt_id": 2623615,
+        "pt_autor": "MarlonX19",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom is → Ana, this is Ben, (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-98032a",
+      "quem": "voce",
+      "cod": "He's from Boston.",
+      "dica": "Ele é de Boston.",
+      "img": "🧑🏙️",
+      "alvo": "He's",
+      "alvo_pt": "Ele é",
+      "conceito": "He's = he is (ele é / ele está). O he não some: He's from Boston.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR15"
+      ],
+      "armadilhas": [
+        "is from",
+        "of boston"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bc5911",
+      "quem": "voce",
+      "contexto": "And Mike?",
+      "cod": "Mike? He's busy today.",
+      "dica": "O Mike? Ele está ocupado hoje.",
+      "img": "👨‍💼⏳",
+      "alvo": "He's",
+      "alvo_pt": "Ele está",
+      "conceito": "He's serve para ser e para estar: He's busy = ele está ocupado.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "is busy",
+        "he busy"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1093482,
+        "en_autor": "CK",
+        "pt_id": 4878356,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Mike? He's, - extremely (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c2a343",
+      "quem": "voce",
+      "contexto": "And Sarah?",
+      "cod": "Sarah? She's in Austin.",
+      "dica": "A Sarah? Ela está em Austin.",
+      "img": "👩‍💼📍",
+      "alvo": "She's",
+      "alvo_pt": "Ela está",
+      "conceito": "She's in + lugar = ela está em.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "is in austin",
+        "she in"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

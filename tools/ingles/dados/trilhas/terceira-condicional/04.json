@@ -1,0 +1,301 @@
+{
+  "id": "terceira-condicional.se-eu-soubesse-se-eu-tivesse-sabido",
+  "trilha": "terceira-condicional",
+  "nome": "Se eu soubesse, se eu tivesse sabido",
+  "emoji": "⚖️",
+  "cena": "Num café perto da sua casa, o Lucas conta que esqueceu o aniversário da namorada, e vocês falam do que dá pra fazer agora e do que podia ter sido feito.",
+  "resumo": "Escolher entre a 2ª condicional (agora, imaginário) e a 3ª (passado que não aconteceu).",
+  "fechamento": false,
+  "contraste": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Agora ou no passado?"
+    },
+    {
+      "t": "p",
+      "c": "2ª condicional, o **agora** imaginário: If I had more money, I'd buy her a gift. 3ª, o **passado** que não aconteceu: If I had known, I would have bought flowers."
+    },
+    {
+      "t": "tip",
+      "c": "O PT mostra a diferença na outra metade: compraria (agora) x teria comprado (passado)."
+    },
+    {
+      "t": "warn",
+      "c": "Se eu soubesse pode ser as duas: If I knew (agora) ou If I had known (passado)."
+    },
+    {
+      "t": "ex",
+      "c": "If I knew how to cook, I'd make her a cake.\n(agora) Se eu soubesse cozinhar, faria um bolo pra ela."
+    }
+  ],
+  "imagem": "☕🎂💐",
+  "visualizacao": "Fim de tarde num café perto da sua casa. O Lucas mexe no celular sem parar e o café dele esfria na mesa. Ele suspira: hoje é o aniversário da namorada e ele esqueceu.",
+  "foto_busca": "two brothers talking coffee shop",
+  "trechos": [
+    {
+      "id": "f-3f69cb",
+      "quem": "lucas",
+      "cod": "I forgot my girlfriend's birthday.",
+      "dica": "Eu esqueci o aniversário da minha namorada.",
+      "img": "📅😱",
+      "conceito": "my girlfriend's birthday: 's de posse.",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6825875,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → I; Mary's → my girlfriend's; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d818ac",
+      "quem": "voce",
+      "contexto": "f-3f69cb",
+      "cod": "If I were you, I'd call her right now.",
+      "dica": "Se eu fosse você, ligaria pra ela agora mesmo.",
+      "img": "📞⚡",
+      "alvo": "If I were you",
+      "alvo_pt": "Se eu fosse você",
+      "conceito": "2ª condicional (agora): If I were you, I'd...",
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5899230,
+        "en_autor": "tvindy",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "a doctor → her right now; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8ccd4a",
+      "quem": "lucas",
+      "contexto": "f-d818ac",
+      "cod": "I called. If she weren't upset, she'd answer.",
+      "dica": "Eu liguei. Se ela não estivesse chateada, ela atenderia.",
+      "img": "📵😠",
+      "alvo": "she'd answer",
+      "alvo_pt": "ela atenderia",
+      "conceito": "2ª condicional: agora, imaginário. atender o telefone = answer.",
+      "var": [
+        {
+          "em": "weren't",
+          "aceita": [
+            "wasn't"
+          ]
+        },
+        {
+          "em": "answer",
+          "aceita": [
+            "pick up"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-955597",
+      "quem": "voce",
+      "contexto": "f-8ccd4a",
+      "cod": "You wouldn't have forgotten if you had checked your calendar.",
+      "dica": "Você não teria esquecido se tivesse olhado a sua agenda.",
+      "img": "🗓️👀",
+      "alvo": "wouldn't have",
+      "alvo_pt": "não teria",
+      "conceito": "3ª condicional: o passado que não aconteceu. calendar = agenda.",
+      "var": [
+        {
+          "em": "checked",
+          "aceita": [
+            "looked at"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8a83d1",
+      "quem": "lucas",
+      "contexto": "f-955597",
+      "cod": "If I had known it was today, I would have bought flowers.",
+      "dica": "Se eu soubesse que era hoje, teria comprado flores.",
+      "img": "💐⏰",
+      "alvo": "If I had known",
+      "alvo_pt": "Se eu soubesse",
+      "conceito": "Se eu soubesse + teria = 3ª (passado). Era hoje = it was today.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57",
+        "BR01"
+      ],
+      "armadilhas": [
+        "knew",
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-182f5e",
+      "quem": "voce",
+      "contexto": "f-8a83d1",
+      "cod": "I would have helped you if you had asked.",
+      "dica": "Eu teria te ajudado se você tivesse pedido.",
+      "img": "🤝🙋",
+      "alvo": "would have",
+      "alvo_pt": "teria",
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2538963,
+        "en_autor": "CK",
+        "pt_id": 11110107,
+        "pt_autor": "MrJuice",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "would've → would have",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-88b0a6",
+      "quem": "lucas",
+      "cod": "I'd buy her a nice gift if I had more money.",
+      "dica": "Eu compraria um presente legal pra ela se tivesse mais dinheiro.",
+      "img": "🎁💸",
+      "alvo": "if I had more money",
+      "alvo_pt": "se tivesse mais dinheiro",
+      "conceito": "2ª condicional: compraria (agora) = I'd buy.",
+      "var": [
+        {
+          "em": "nice",
+          "aceita": [
+            "good"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6698885,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "ordem invertida; that → her a nice gift; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7711ca",
+      "quem": "voce",
+      "cod": "It would have been easier if you had planned in advance.",
+      "dica": "Teria sido mais fácil se você tivesse se planejado com antecedência.",
+      "img": "📅📝",
+      "alvo": "It would have been",
+      "alvo_pt": "Teria sido",
+      "conceito": "Teria sido = It would have been (it obrigatório). Se planejar = plan, sem yourself.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR57"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "in advance",
+          "aceita": [
+            "ahead"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0f92c5",
+      "quem": "lucas",
+      "cod": "If I knew how to cook, I'd make her a cake.",
+      "dica": "(agora) Se eu soubesse cozinhar, faria um bolo pra ela.",
+      "img": "🍳🎂",
+      "alvo": "If I knew",
+      "alvo_pt": "Se eu soubesse",
+      "conceito": "Se eu soubesse + faria = 2ª (agora): If I knew. saber + verbo = know how to.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57",
+        "BR32"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e7ae0e",
+      "quem": "voce",
+      "contexto": "f-0f92c5",
+      "cod": "And you'd better not forget it next year!",
+      "dica": "E é melhor você não esquecer ano que vem!",
+      "img": "⚠️📅",
+      "alvo": "'d better not",
+      "alvo_pt": "é melhor você não",
+      "conceito": "é melhor não = 'd better not (aviso).",
+      "var": [
+        {
+          "em": "forget it",
+          "aceita": [
+            "forget"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

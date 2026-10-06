@@ -1,0 +1,204 @@
+{
+  "id": "dev-calls-daily.pair-programming-quem-digita",
+  "trilha": "dev-calls-daily",
+  "nome": "Pair programming: quem digita?",
+  "emoji": "👨‍💻",
+  "cena": "Numa sessão de pair programming com o Mike, vocês revezam quem digita e caçam um bug juntos.",
+  "resumo": "Combinar quem digita, navegar pelo código e rodar os testes: Can you go back to line twenty?",
+  "fechamento": false,
+  "novos": [
+    "line (de código)",
+    "function",
+    "go back to",
+    "navigate",
+    "run the tests"
+  ],
+  "apoio": [
+    "drive (pilotar, no pair)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Quem digita, quem orienta"
+    },
+    {
+      "t": "p",
+      "c": "No pair, quem digita **drives** (assume o teclado) e quem orienta **navigates**. Para pedir: Can you **go back to** line twenty? Let's **run the tests**."
+    },
+    {
+      "t": "warn",
+      "c": "Pergunta no presente pede does: What does this function do? (não: What this function does?)"
+    },
+    {
+      "t": "ex",
+      "c": "What does this function do?\nO que essa função faz?"
+    }
+  ],
+  "imagem": "👨‍💻⌨️🐞",
+  "visualizacao": "Você e o Mike estão numa chamada, com o mesmo editor aberto na tela. O cursor pisca na linha vinte e o teste vermelho insiste em falhar.",
+  "foto_busca": "pair programming two developers screen",
+  "trechos": [
+    {
+      "id": "f-ff7374",
+      "quem": "mike",
+      "cod": "Do you want to drive? I can navigate.",
+      "dica": "Quer assumir o teclado? Eu posso orientar.",
+      "img": "⌨️🧭",
+      "alvo": "navigate",
+      "alvo_pt": "orientar",
+      "conceito": "No pair: drive = assumir o teclado; navigate = orientar quem digita.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-533971",
+      "quem": "voce",
+      "contexto": "f-ff7374",
+      "cod": "Sure, I'll drive. You navigate.",
+      "dica": "Claro, eu assumo o teclado. Você orienta.",
+      "img": "🙋⌨️",
+      "alvo": "navigate",
+      "alvo_pt": "orienta",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-66cf69",
+      "quem": "mike",
+      "cod": "There's a bug on line twenty.",
+      "dica": "Tem um bug na linha vinte.",
+      "img": "🐞📍",
+      "alvo": "line",
+      "alvo_pt": "linha",
+      "conceito": "Na linha vinte = on line twenty (sem artigo). Tem (existe) = there's.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR17"
+      ],
+      "armadilhas": [
+        "have",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-79eab8",
+      "quem": "voce",
+      "cod": "What does this function do?",
+      "dica": "O que essa função faz?",
+      "img": "🤔⚙️",
+      "alvo": "function",
+      "alvo_pt": "função",
+      "conceito": "Pergunta no presente pede does: What does... do?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "this",
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d602b3",
+      "quem": "mike",
+      "contexto": "f-79eab8",
+      "cod": "It checks the password. The bug is in this function.",
+      "dica": "Ela confere a senha. O bug está nessa função.",
+      "img": "🔑🐞⚙️",
+      "alvo": "function",
+      "alvo_pt": "função",
+      "conceito": "Para coisa, it (nunca she): It checks the password. Bug dentro da função = in this function.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "she",
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-71fda1",
+      "quem": "mike",
+      "cod": "Can you go back to line twenty?",
+      "dica": "Você pode voltar para a linha vinte?",
+      "img": "⏪📍",
+      "alvo": "go back to",
+      "alvo_pt": "voltar para",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6cb7af",
+      "quem": "voce",
+      "cod": "Wait, let me go back to the test file.",
+      "dica": "Espera, deixa eu voltar para o arquivo de teste.",
+      "img": "⏪📄🧪",
+      "alvo": "go back to",
+      "alvo_pt": "voltar para",
+      "conceito": "Arquivo de teste = test file (substantivo + substantivo).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d93ddf",
+      "quem": "mike",
+      "cod": "Now let's run the tests.",
+      "dica": "Agora vamos rodar os testes.",
+      "img": "▶️🧪",
+      "alvo": "run the tests",
+      "alvo_pt": "rodar os testes",
+      "conceito": "Rodar os testes = run the tests.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e5615e",
+      "quem": "voce",
+      "cod": "One test failed on line forty.",
+      "dica": "Um teste falhou na linha quarenta.",
+      "img": "🧪❌📍",
+      "alvo": "line",
+      "alvo_pt": "linha",
+      "var": [
+        {
+          "em": "One test",
+          "aceita": [
+            "A test"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-83576f",
+      "quem": "voce",
+      "cod": "I fixed it. Let me run the tests again.",
+      "dica": "Corrigi. Deixa eu rodar os testes de novo.",
+      "img": "🔧🔁🧪",
+      "alvo": "run the tests",
+      "alvo_pt": "rodar os testes",
+      "conceito": "O objeto é obrigatório: I fixed it (em português, só 'corrigi'). Deixa eu = let me.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "id": "contar-historia.ha-dois-anos-ago",
+  "trilha": "contar-historia",
+  "nome": "Há dois anos: ago",
+  "emoji": "⏳",
+  "cena": "No almoço virtual do time, o Mike quer saber da sua história e conta um pouco da dele.",
+  "resumo": "Dizer há quanto tempo algo aconteceu com ago no fim: It was two years ago.",
+  "fechamento": false,
+  "novos": [
+    "ago",
+    "leave / left (sair de)",
+    "first job",
+    "spend / spent",
+    "begin / began"
+  ],
+  "apoio": [
+    "apartment"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Há + passado = ago, no fim"
+    },
+    {
+      "t": "p",
+      "c": "Para dizer **há quanto tempo** algo aconteceu (e acabou), o inglês põe o tempo + **ago** depois: two years ago. Também pode abrir a frase: Two years ago, I..."
+    },
+    {
+      "t": "ex",
+      "c": "I joined the company two years ago.\nEntrei na empresa há dois anos."
+    },
+    {
+      "t": "tip",
+      "c": "Irregulares novos: leave → **left** (saí), spend → **spent** (passei), begin → **began** (comecei)."
+    },
+    {
+      "t": "warn",
+      "c": "Há dois anos = two years ago (não: there are two years / before two years)."
+    }
+  ],
+  "imagem": "🥪💻⏳",
+  "visualizacao": "Você almoça na frente do notebook, numa chamada com o time. O Mike come um sanduíche em Chicago, pergunta da sua história e ri das próprias lembranças.",
+  "foto_busca": "virtual team lunch video call",
+  "trechos": [
+    {
+      "id": "f-cb8bb3",
+      "quem": "mike",
+      "cod": "How long ago did you join the company?",
+      "dica": "Há quanto tempo você entrou na empresa?",
+      "img": "🏢⏳❓",
+      "alvo": "How long ago",
+      "alvo_pt": "Há quanto tempo",
+      "conceito": "How long ago...? = há quanto tempo...? (fato terminado, pergunta com did)",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR26"
+      ],
+      "armadilhas": [
+        "joined",
+        "much time"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f3f726",
+      "quem": "voce",
+      "contexto": "f-cb8bb3",
+      "cod": "It was two years ago.",
+      "dica": "Foi há dois anos.",
+      "img": "📅⏪",
+      "alvo": "two years ago",
+      "alvo_pt": "há dois anos",
+      "lit": "[lit.: foi dois anos atrás]",
+      "conceito": "há + passado = ago, no fim. Foi = It was (it obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR26"
+      ],
+      "armadilhas": [
+        "there",
+        "before",
+        "was"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3527971,
+        "en_autor": "CK",
+        "pt_id": 5196321,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'That' → 'It', 'three' → 'two'; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-77bc42",
+      "quem": "mike",
+      "contexto": "f-f3f726",
+      "cod": "I began working here in 2015.",
+      "dica": "Comecei a trabalhar aqui em 2015.",
+      "img": "🏁🏢",
+      "alvo": "began",
+      "alvo_pt": "Comecei",
+      "conceito": "começar = begin ou start; aqui, begin → began (irregular). Depois de begin: -ing ou to + verbo.",
+      "registro": "informal",
+      "armadilhas": [
+        "begun",
+        "beginned"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-769f3c",
+      "quem": "mike",
+      "cod": "My first job was at a bank in Ohio.",
+      "dica": "Meu primeiro emprego foi num banco em Ohio.",
+      "img": "🏦💼",
+      "alvo": "first job",
+      "alvo_pt": "primeiro emprego",
+      "conceito": "emprego = job; trabalho (em geral) = work.",
+      "registro": "informal",
+      "armadilhas": [
+        "work",
+        "employ"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9b67d3",
+      "quem": "voce",
+      "contexto": "f-769f3c",
+      "cod": "Why did you leave the bank?",
+      "dica": "Por que você saiu do banco?",
+      "img": "🏦🚪❓",
+      "alvo": "leave",
+      "alvo_pt": "saiu",
+      "conceito": "leave = sair de (lugar, emprego), sem preposição. Com did, fica puro: leave.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR07"
+      ],
+      "armadilhas": [
+        "left",
+        "leaved",
+        "from"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2648202,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'the bank' acrescentado; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8094bb",
+      "quem": "mike",
+      "contexto": "f-9b67d3",
+      "cod": "I left because I wanted to be a developer.",
+      "dica": "Saí porque eu queria ser desenvolvedor.",
+      "img": "🚪👨‍💻",
+      "alvo": "left",
+      "alvo_pt": "Saí",
+      "conceito": "leave → left (passado irregular): I left = saí.",
+      "registro": "informal",
+      "armadilhas": [
+        "leaved",
+        "leave"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-685261",
+      "quem": "mike",
+      "contexto": "f-8094bb",
+      "cod": "But I spent five great years there.",
+      "dica": "Mas passei cinco anos ótimos lá.",
+      "img": "🙂⏳",
+      "alvo": "spent",
+      "alvo_pt": "passei",
+      "conceito": "passar (tempo) = spend → spent. Pass é outra coisa (passar por, passar na prova).",
+      "registro": "informal",
+      "armadilhas": [
+        "spended",
+        "passed"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2406561,
+        "en_autor": "CK",
+        "pt_id": 5969872,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'three years in Boston' → 'five great years there', 'But' acrescentado; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0e69bb",
+      "quem": "voce",
+      "cod": "I got my first job as a developer {anos_dev} years ago.",
+      "dica": "Arrumei meu primeiro emprego como desenvolvedor há {anos_dev} anos.",
+      "img": "👨‍💻🎉",
+      "alvo": "first job",
+      "alvo_pt": "primeiro emprego",
+      "conceito": "get a job = arrumar, conseguir um emprego. há + tempo = ... ago, no fim.",
+      "blocos": [
+        5
+      ],
+      "pt_f": "Arrumei meu primeiro emprego como desenvolvedora há {anos_dev} anos.",
+      "registro": "informal",
+      "interferencias": [
+        "BR26"
+      ],
+      "armadilhas": [
+        "before",
+        "there"
+      ],
+      "bio": [
+        "anos_dev"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5680f2",
+      "quem": "voce",
+      "cod": "We began this project three months ago.",
+      "dica": "A gente começou este projeto há três meses.",
+      "img": "📁🗓️",
+      "alvo": "began",
+      "alvo_pt": "começou",
+      "conceito": "begin → began. há três meses = three months ago, no fim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR26"
+      ],
+      "armadilhas": [
+        "begun",
+        "before"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a61d7c",
+      "quem": "mike",
+      "contexto": "f-5680f2",
+      "cod": "And we spent a lot of time on the design.",
+      "dica": "E a gente passou muito tempo no design.",
+      "img": "🎨⏳",
+      "alvo": "spent",
+      "alvo_pt": "passou",
+      "conceito": "spend time on = passar tempo em (alguma coisa).",
+      "registro": "informal",
+      "armadilhas": [
+        "spended",
+        "passed"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

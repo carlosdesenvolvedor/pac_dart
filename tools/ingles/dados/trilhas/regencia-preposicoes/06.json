@@ -1,0 +1,281 @@
+{
+  "id": "regencia-preposicoes.um-a-um-com-o-mike",
+  "trilha": "regencia-preposicoes",
+  "nome": "Um a um com o Mike",
+  "emoji": "🗣️",
+  "cena": "Na reunião 1:1 com o Mike, você fala das suas preocupações, pede explicações e compara duas opções para o app.",
+  "resumo": "Fechamento: preposições, explain e suggest, e comparações na mesma conversa.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão da trilha"
+    },
+    {
+      "t": "tip",
+      "c": "worried about · wait for · It depends on · explain it to me · suggest that · different from · most people x most of them."
+    },
+    {
+      "t": "warn",
+      "c": "discuss não leva about: We discussed two options (não: discussed about)."
+    }
+  ],
+  "imagem": "☕🗣️📊",
+  "visualizacao": "Fim de tarde, chamada só você e o Mike. Ele segura uma caneca, abre um caderno e pergunta, sem pressa, como foi a sua semana.",
+  "foto_busca": "one on one meeting video call",
+  "trechos": [
+    {
+      "id": "f-4e04be",
+      "quem": "mike",
+      "cod": "Are you worried about anything this week?",
+      "dica": "Você está preocupado com alguma coisa esta semana?",
+      "pt_f": "Você está preocupada com alguma coisa esta semana?",
+      "img": "😟❓",
+      "alvo": "worried about",
+      "alvo_pt": "preocupado com",
+      "conceito": "preocupado com = worried about (não: worried with).",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7f5f3c",
+      "quem": "voce",
+      "contexto": "f-4e04be",
+      "cod": "I'm worried about the deadline. We're still waiting for the API.",
+      "dica": "Estou preocupado com o prazo. A gente ainda está esperando a API.",
+      "pt_f": "Estou preocupada com o prazo. A gente ainda está esperando a API.",
+      "img": "⏰🔌",
+      "alvo": "waiting for",
+      "alvo_pt": "esperando",
+      "conceito": "esperar algo = wait for: waiting for the API.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5938537,
+        "en_autor": "CK",
+        "pt_id": 6073922,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm worried about the kids.\"; PT original: \"Estou preocupado com as crianças.\"; the kids → the deadline; + We're still waiting for the API.; PT adaptado (o prazo; + A gente ainda está esperando a API.)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7ebd17",
+      "quem": "mike",
+      "contexto": "f-7f5f3c",
+      "cod": "It depends on the other team. I'll talk to them today.",
+      "dica": "Depende do outro time. Vou falar com eles hoje.",
+      "img": "🤝📞",
+      "alvo": "It depends on",
+      "alvo_pt": "Depende do",
+      "conceito": "o it é obrigatório: It depends on (não: Depends of).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR53"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "talk to them",
+          "aceita": [
+            "talk with them"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-86f969",
+      "quem": "voce",
+      "cod": "Also, can you explain the new requirements to me?",
+      "dica": "Além disso, você pode me explicar os requisitos novos?",
+      "img": "📋❓",
+      "alvo": "explain the new requirements to me",
+      "alvo_pt": "me explicar os requisitos novos",
+      "conceito": "explain + o quê + to me (não: explain me the requirements).",
+      "registro": "informal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "me"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-04b609",
+      "quem": "mike",
+      "contexto": "f-86f969",
+      "cod": "Sure. Most of them are about the payment screen.",
+      "dica": "Claro. A maioria deles é sobre a tela de pagamento.",
+      "img": "💳📱",
+      "alvo": "Most of them",
+      "alvo_pt": "A maioria deles",
+      "conceito": "a maioria deles = most of them, com of; a maioria das pessoas = most people.",
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-83f1f3",
+      "quem": "mike",
+      "cod": "Last week, we discussed two options for that screen.",
+      "dica": "Semana passada, a gente discutiu duas opções pra essa tela.",
+      "img": "🗣️⚖️📱",
+      "alvo": "discussed",
+      "alvo_pt": "discutiu",
+      "conceito": "discutir sobre algo = discuss, sem about.",
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "about"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "that screen",
+          "aceita": [
+            "this screen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-28bf02",
+      "quem": "voce",
+      "contexto": "f-83f1f3",
+      "cod": "Ana suggested that we test both options with users.",
+      "dica": "A Ana sugeriu que a gente testasse as duas opções com usuários.",
+      "img": "🧪👥",
+      "alvo": "suggested that",
+      "alvo_pt": "sugeriu que",
+      "conceito": "suggest that + sujeito + verbo base: suggested that we test.",
+      "opcional": [
+        "that"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "to",
+        "testing"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "both options",
+          "aceita": [
+            "the two options"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7f5aa0",
+      "quem": "mike",
+      "contexto": "f-28bf02",
+      "cod": "Good idea. The second option is very different from the first one.",
+      "dica": "Boa ideia. A segunda opção é bem diferente da primeira.",
+      "img": "⚖️🔀",
+      "alvo": "different from",
+      "alvo_pt": "diferente da",
+      "conceito": "diferente de = different from (não: different of).",
+      "var": [
+        {
+          "em": "very",
+          "aceita": [
+            "really",
+            "pretty"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "of",
+        "than"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "one"
+      ]
+    },
+    {
+      "id": "f-512ef7",
+      "quem": "voce",
+      "cod": "I think most people will prefer the second one.",
+      "dica": "Acho que a maioria das pessoas vai preferir a segunda.",
+      "img": "👥👍",
+      "alvo": "most people",
+      "alvo_pt": "a maioria das pessoas",
+      "conceito": "pessoas em geral: most people, sem the e sem of.",
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "one"
+      ]
+    },
+    {
+      "id": "f-5c7653",
+      "quem": "mike",
+      "contexto": "f-512ef7",
+      "cod": "Maybe. I'm really interested in seeing the results.",
+      "dica": "Pode ser. Estou muito interessado em ver os resultados.",
+      "img": "📊👀",
+      "alvo": "interested in",
+      "alvo_pt": "interessado em",
+      "conceito": "interessado em + verbo = interested in + -ing (não: interested on, interested in see).",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53",
+        "BR52"
+      ],
+      "armadilhas": [
+        "on",
+        "see"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

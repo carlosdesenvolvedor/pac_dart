@@ -1,0 +1,232 @@
+{
+  "id": "passiva-1.foi-construida-em-1920",
+  "trilha": "passiva-1",
+  "nome": "Foi construída em 1920",
+  "emoji": "🏛️",
+  "cena": "Num passeio guiado pelo centro de Chicago, o guia conta para você e a Emma a história de casas, torres e ruas.",
+  "resumo": "Passiva no passado para contar a história de lugares: was built, was finished, was opened, was named after.",
+  "fechamento": false,
+  "novos": [
+    "was built",
+    "was finished",
+    "tower",
+    "opened to the public",
+    "named after"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Foi construída = was built"
+    },
+    {
+      "t": "p",
+      "c": "Para contar a história de um lugar, o inglês usa **was / were + particípio**. O que importa é o lugar, não quem fez: This house was built in 1920."
+    },
+    {
+      "t": "warn",
+      "c": "Construíram em 1920 (sem dizer quem) também vira passiva: It was built in 1920. E o it é obrigatório."
+    },
+    {
+      "t": "ex",
+      "c": "When was the museum opened to the public?\nQuando o museu foi aberto ao público?"
+    },
+    {
+      "t": "tip",
+      "c": "named after = recebeu o nome de (em homenagem a): This street was named after a president."
+    }
+  ],
+  "imagem": "🏛️🏙️🚶",
+  "visualizacao": "Você sente o vento frio do lago, entre prédios de vidro e de pedra. O guia levanta a plaquinha do grupo, aponta para uma torre antiga e começa a contar a história.",
+  "foto_busca": "walking tour downtown city architecture",
+  "trechos": [
+    {
+      "id": "f-154866",
+      "quem": "guia",
+      "cod": "This house was built in 1920.",
+      "dica": "Esta casa foi construída em 1920.",
+      "img": "🏠🔨",
+      "alvo": "was built",
+      "alvo_pt": "foi construída",
+      "conceito": "build, built, built: was built = foi construída.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "builded",
+        "build"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5170306,
+        "en_autor": "tabular",
+        "pt_id": 5177287,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "ano trocado (1870 → 1920) nas duas línguas",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b7b790",
+      "quem": "guia",
+      "cod": "The first Ferris wheel was built in 1893 in Chicago.",
+      "dica": "A primeira roda-gigante foi construída em 1893, em Chicago.",
+      "img": "🎡🕰️",
+      "alvo": "was built",
+      "alvo_pt": "foi construída",
+      "conceito": "Ferris wheel = roda-gigante (do nome do engenheiro que a criou).",
+      "registro": "neutro",
+      "armadilhas": [
+        "builded"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4496192,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (o original diz 'no ano de 1893')",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8bcfeb",
+      "quem": "emma",
+      "cod": "This tower looks so old. When was it built?",
+      "dica": "Esta torre parece tão antiga. Quando foi construída?",
+      "img": "🗼🤔",
+      "alvo": "tower",
+      "alvo_pt": "torre",
+      "conceito": "This tower looks: -s da 3ª pessoa.",
+      "registro": "informal",
+      "armadilhas": [
+        "look",
+        "tour"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-126cc2",
+      "quem": "guia",
+      "contexto": "f-8bcfeb",
+      "cod": "It was finished in 1869, before the big fire.",
+      "dica": "Foi terminada em 1869, antes do grande incêndio.",
+      "img": "🔥🏛️",
+      "alvo": "was finished",
+      "alvo_pt": "Foi terminada",
+      "conceito": "it obrigatório: It was finished (não: Was finished in 1869).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "was"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3b9269",
+      "quem": "voce",
+      "cod": "Can we go up the tower?",
+      "dica": "A gente pode subir na torre?",
+      "img": "🗼⬆️",
+      "alvo": "tower",
+      "alvo_pt": "torre",
+      "conceito": "subir = go up.",
+      "registro": "informal",
+      "armadilhas": [
+        "in",
+        "tour"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d0eb42",
+      "quem": "guia",
+      "contexto": "f-3b9269",
+      "cod": "Not this one, but that one is open. It was finished in 1974.",
+      "dica": "Nessa não, mas aquela está aberta. Foi terminada em 1974.",
+      "img": "🏙️👆",
+      "alvo": "was finished",
+      "alvo_pt": "Foi terminada",
+      "conceito": "that one = aquela (sem repetir tower). E o it é obrigatório: It was finished.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3fa297",
+      "quem": "emma",
+      "cod": "When was the museum opened to the public?",
+      "dica": "Quando o museu foi aberto ao público?",
+      "img": "🏛️🚪",
+      "alvo": "opened to the public",
+      "alvo_pt": "aberto ao público",
+      "conceito": "Pergunta na passiva: When was + sujeito + particípio?",
+      "registro": "informal",
+      "armadilhas": [
+        "did"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f9d660",
+      "quem": "guia",
+      "contexto": "f-3fa297",
+      "cod": "It was opened to the public in 1893.",
+      "dica": "Foi aberto ao público em 1893.",
+      "img": "🎟️🏛️",
+      "alvo": "opened to the public",
+      "alvo_pt": "aberto ao público",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "conceito": "it obrigatório: It was opened (não: Was opened in 1893)."
+    },
+    {
+      "id": "f-d51a3d",
+      "quem": "guia",
+      "cod": "This street was named after a president.",
+      "dica": "Esta rua recebeu o nome de um presidente.",
+      "img": "🛣️🎩",
+      "alvo": "named after",
+      "alvo_pt": "recebeu o nome de",
+      "lit": "[lit.: foi nomeada depois de um presidente]",
+      "conceito": "named after = recebeu o nome de, em homenagem a.",
+      "registro": "neutro",
+      "armadilhas": [
+        "for",
+        "by"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-69c978",
+      "quem": "voce",
+      "contexto": "f-d51a3d",
+      "cod": "Was the city named after someone, too?",
+      "dica": "A cidade também recebeu o nome de alguém?",
+      "img": "🏙️❓🧑",
+      "alvo": "named after",
+      "alvo_pt": "recebeu o nome de",
+      "registro": "informal",
+      "armadilhas": [
+        "did"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

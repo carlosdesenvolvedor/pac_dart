@@ -1,0 +1,173 @@
+{
+  "id": "dev-ponte-a1.cena-primeira-chamada-tecnica",
+  "trilha": "dev-ponte-a1",
+  "nome": "Cena: primeira chamada técnica",
+  "emoji": "💻",
+  "cena": "Pair programming rápido com o Mike: você compartilha a tela e mostra o bug.",
+  "resumo": "Uma chamada inteira em inglês: áudio, tela, o que você está fazendo e o bug.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: a chamada"
+    },
+    {
+      "t": "p",
+      "c": "No mudo = **on mute** · Deixa eu... = **Let me...** · Estou trabalhando em = **I'm working on** · Tem um erro = **There's an error**."
+    },
+    {
+      "t": "warn",
+      "c": "Tem um erro = **There's an error** (não: Have an error). Mensagem de erro = **error message**: o que descreve vem antes."
+    },
+    {
+      "t": "ex",
+      "c": "There's an error message. Can you see it?\nTem uma mensagem de erro. Você está vendo?"
+    }
+  ],
+  "imagem": "👨‍💻🖥️🐞",
+  "visualizacao": "Fim de tarde, chamada rápida com o Mike, em Chicago. Você compartilha a tela, o código aparece grande e, no canto, uma mensagem de erro vermelha.",
+  "foto_busca": "pair programming screen sharing",
+  "trechos": [
+    {
+      "id": "f-4a631c",
+      "quem": "voce",
+      "cod": "Hi, Mike! I think you're on mute.",
+      "dica": "Oi, Mike! Acho que você está no mudo.",
+      "img": "👋🔇",
+      "alvo": "you're on mute",
+      "alvo_pt": "você está no mudo",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d130b1",
+      "quem": "mike",
+      "contexto": "f-4a631c",
+      "cod": "Sorry! Can you hear me now?",
+      "dica": "Desculpa! Está me ouvindo agora?",
+      "img": "🎧❓",
+      "alvo": "Can you hear me",
+      "alvo_pt": "Está me ouvindo",
+      "conceito": "Está me ouvindo? = Can you hear me? (can + hear).",
+      "registro": "informal",
+      "armadilhas": [
+        "are",
+        "hearing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a4038b",
+      "quem": "voce",
+      "contexto": "f-d130b1",
+      "cod": "Yes. Just a second. Let me share my screen.",
+      "dica": "Sim. Só um segundo. Deixa eu compartilhar minha tela.",
+      "img": "⏱️🖥️",
+      "alvo": "Let me share my screen",
+      "alvo_pt": "Deixa eu compartilhar minha tela",
+      "conceito": "Só um segundo = Just a second.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ac2955",
+      "quem": "mike",
+      "contexto": "f-a4038b",
+      "cod": "Can you make it bigger?",
+      "dica": "Você pode deixar maior?",
+      "img": "🔍➕",
+      "alvo": "bigger",
+      "alvo_pt": "maior",
+      "conceito": "deixar maior = make it bigger (com it).",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-57a7c5",
+      "quem": "voce",
+      "cod": "I'm working on a bug on the login page.",
+      "dica": "Estou trabalhando num bug na página de login.",
+      "img": "🐞🔐",
+      "alvo": "login page",
+      "alvo_pt": "página de login",
+      "var": [
+        {
+          "em": "on the login page",
+          "aceita": [
+            "in the login page"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a5509f",
+      "quem": "voce",
+      "cod": "There's an error message. Can you see it?",
+      "dica": "Tem uma mensagem de erro. Você está vendo?",
+      "img": "⚠️👀",
+      "alvo": "error message",
+      "alvo_pt": "mensagem de erro",
+      "conceito": "mensagem de erro = error message (o que descreve vem antes).",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR24"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2b8bec",
+      "quem": "mike",
+      "contexto": "f-a5509f",
+      "cod": "Really? It works on my machine.",
+      "dica": "Sério? Na minha máquina funciona.",
+      "img": "🖥️✅",
+      "alvo": "It works on my machine",
+      "alvo_pt": "Na minha máquina funciona",
+      "lit": "[lit.: funciona na minha máquina]",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1df306",
+      "quem": "voce",
+      "contexto": "f-2b8bec",
+      "cod": "Not on my laptop. I need to fix it.",
+      "dica": "No meu notebook, não. Preciso corrigir.",
+      "img": "💻🙅🛠️",
+      "alvo": "fix",
+      "alvo_pt": "corrigir",
+      "conceito": "corrigir (um bug) = fix. Preciso corrigir = I need to fix it: o inglês exige o it.",
+      "var": [
+        {
+          "em": "laptop",
+          "aceita": [
+            "machine"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

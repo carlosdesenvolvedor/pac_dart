@@ -1,0 +1,256 @@
+{
+  "id": "passiva-2.ja-foi-feito",
+  "trilha": "passiva-2",
+  "nome": "Já foi feito",
+  "emoji": "✅",
+  "cena": "No canal do time, você atualiza a Sarah sobre o andamento das correções da semana.",
+  "resumo": "Dar status sem dizer quem fez, com a passiva no present perfect: The patch has already been released.",
+  "fechamento": false,
+  "novos": [
+    "affected",
+    "patch",
+    "restore",
+    "notify"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Já foi feito = has been done"
+    },
+    {
+      "t": "p",
+      "c": "Status com resultado no presente: **has / have been + particípio**. Pergunta: **Has it been... yet?** Negativo: **hasn't been... yet**."
+    },
+    {
+      "t": "ex",
+      "c": "The affected accounts have been restored.\nAs contas afetadas já foram restauradas."
+    },
+    {
+      "t": "tip",
+      "c": "Já foi / ainda não foi + particípio = has been / hasn't been... yet. Sem data, o americano usa o present perfect no status."
+    },
+    {
+      "t": "warn",
+      "c": "Sem a passiva o sentido muda: The fix has deployed (não). The fix has been deployed."
+    }
+  ],
+  "imagem": "✅💬🛠️",
+  "visualizacao": "O canal do time pisca com mensagens novas. Você abre a lista de tarefas, risca o que já foi feito e responde à Sarah, item por item.",
+  "foto_busca": "developer typing status update chat",
+  "trechos": [
+    {
+      "id": "f-cd138b",
+      "quem": "sarah",
+      "cod": "Have the affected users been notified yet?",
+      "dica": "Os usuários afetados já foram avisados?",
+      "img": "👥⚠️❓",
+      "alvo": "affected",
+      "alvo_pt": "afetados",
+      "conceito": "Pergunta de status: Have + sujeito + been + particípio + yet?",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR58"
+      ],
+      "armadilhas": [
+        "were",
+        "affecting"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dccf38",
+      "quem": "voce",
+      "contexto": "f-cd138b",
+      "cod": "Yes, they've all been notified by email.",
+      "dica": "Sim, todos eles já foram avisados por e-mail.",
+      "img": "📧🔔",
+      "alvo": "notified",
+      "alvo_pt": "avisados",
+      "conceito": "notify = avisar oficialmente. all vem depois do auxiliar: they've all been.",
+      "var": [
+        {
+          "em": "they've all been",
+          "aceita": [
+            "all of them have been"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR58"
+      ],
+      "armadilhas": [
+        "were notified",
+        "all they"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b56bac",
+      "quem": "voce",
+      "cod": "And a patch for the login bug has already been written.",
+      "dica": "E um patch para o bug do login já foi escrito.",
+      "img": "🩹🚀",
+      "alvo": "patch",
+      "alvo_pt": "patch",
+      "conceito": "patch = correção pequena de software. Já foi escrito = has already been written.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "was written already",
+        "has written"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        6
+      ]
+    },
+    {
+      "id": "f-6d3311",
+      "quem": "sarah",
+      "contexto": "f-b56bac",
+      "cod": "Great. Has the patch been tested on older phones yet?",
+      "dica": "Ótimo. O patch já foi testado nos celulares antigos?",
+      "img": "🩹📱🔍",
+      "alvo": "patch",
+      "alvo_pt": "patch",
+      "var": [
+        {
+          "em": "Great",
+          "aceita": [
+            "Good"
+          ]
+        },
+        {
+          "em": "older phones",
+          "aceita": [
+            "old phones"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "was tested",
+        "in older"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1ebabe",
+      "quem": "voce",
+      "contexto": "f-6d3311",
+      "cod": "Not yet, but the deleted accounts have been restored.",
+      "dica": "Ainda não, mas as contas apagadas já foram restauradas.",
+      "img": "♻️👤",
+      "alvo": "restored",
+      "alvo_pt": "restauradas",
+      "conceito": "restore = restaurar, trazer de volta (dados, contas, backup).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "were restored",
+        "have restored"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4fbae5",
+      "quem": "sarah",
+      "contexto": "f-1ebabe",
+      "cod": "Has all the deleted data been restored yet?",
+      "dica": "Todos os dados apagados já foram restaurados?",
+      "img": "🗄️♻️❓",
+      "alvo": "restored",
+      "alvo_pt": "restaurados",
+      "conceito": "data é incontável: Has all the data been...? (não: Have all the datas).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "have all",
+        "datas"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b0c9ad",
+      "quem": "voce",
+      "contexto": "f-4fbae5",
+      "cod": "Most of it. Luckily, not everyone was affected.",
+      "dica": "A maior parte. Por sorte, nem todo mundo foi afetado.",
+      "img": "🍀👥",
+      "alvo": "affected",
+      "alvo_pt": "afetado",
+      "conceito": "Fato fechado do incidente: was affected. everyone pede verbo no singular.",
+      "var": [
+        {
+          "em": "was",
+          "aceita": [
+            "has been"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "have been",
+        "nobody"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4529888,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: + 'Most of it. Luckily, not', has been → was (fato fechado, mais natural); PT autoral",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4d21f3",
+      "quem": "sarah",
+      "contexto": "f-b0c9ad",
+      "cod": "And has the support team been notified?",
+      "dica": "E o time de suporte já foi avisado?",
+      "img": "🎧🔔❓",
+      "alvo": "notified",
+      "alvo_pt": "avisado",
+      "conceito": "Já foi avisado (pergunta) = Has... been notified (yet)?",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR06"
+      ],
+      "armadilhas": [
+        "was notified",
+        "the support team has"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "notified",
+          "aceita": [
+            "notified yet"
+          ]
+        }
+      ]
+    }
+  ]
+}

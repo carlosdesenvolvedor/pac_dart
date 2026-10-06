@@ -1,0 +1,266 @@
+{
+  "id": "situacao-aluguel-contas.visitando-o-apartamento",
+  "trilha": "situacao-aluguel-contas",
+  "nome": "Visitando o apartamento",
+  "emoji": "🔑",
+  "cena": "Você liga para o dono de um apartamento mobiliado em Austin e depois faz a visita.",
+  "resumo": "Perguntar se o apartamento está disponível, o que está incluído no aluguel e se mais alguém já se candidatou.",
+  "fechamento": false,
+  "novos": [
+    "utilities (luz, água, gás)",
+    "furnished (mobiliado)",
+    "apply for"
+  ],
+  "apoio": [
+    "available",
+    "rent (aluguel)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Alugar: as perguntas de todo inquilino"
+    },
+    {
+      "t": "p",
+      "c": "**utilities** = as contas da casa (água, luz e gás). **furnished** = mobiliado. **apply for** = se candidatar (a um apartamento, uma vaga, um visto)."
+    },
+    {
+      "t": "tip",
+      "c": "Já, sem data, é present perfect: Has anyone else applied for it?"
+    },
+    {
+      "t": "warn",
+      "c": "Tem (existe) é there is, nunca have: Is there a washer?"
+    },
+    {
+      "t": "ex",
+      "c": "Are utilities included in the rent?\nÁgua, luz e gás estão incluídos no aluguel?"
+    }
+  ],
+  "imagem": "🏠🔑🛋️",
+  "visualizacao": "Você entra num apartamento mobiliado em Austin, ainda com o celular na mão depois da ligação. O dono abre as cortinas, o sol entra e você olha o sofá, a cozinha e a lavanderia.",
+  "foto_busca": "furnished apartment living room",
+  "trechos": [
+    {
+      "id": "f-121f90",
+      "quem": "voce",
+      "cod": "Hi, is the furnished apartment on Oak Street still available?",
+      "dica": "Oi, o apartamento mobiliado da Oak Street ainda está disponível?",
+      "img": "🏠🛋️❓",
+      "alvo": "furnished",
+      "alvo_pt": "mobiliado",
+      "conceito": "furnished = mobiliado (já vem com móveis).",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9a8baa",
+      "quem": "proprietario",
+      "contexto": "f-121f90",
+      "cod": "Yes, it's still available. It's fully furnished, too.",
+      "dica": "Sim, ainda está disponível. É todo mobiliado também.",
+      "img": "✅🛋️🛏️",
+      "alvo": "furnished",
+      "alvo_pt": "mobiliado",
+      "conceito": "fully furnished = todo mobiliado, com tudo dentro.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d63644",
+      "quem": "voce",
+      "cod": "Are utilities included in the rent?",
+      "dica": "Água, luz e gás estão incluídos no aluguel?",
+      "img": "💡💧🔥",
+      "alvo": "utilities",
+      "alvo_pt": "Água, luz e gás",
+      "conceito": "utilities = as contas da casa: água, luz e gás.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9a25d8",
+      "quem": "proprietario",
+      "contexto": "f-d63644",
+      "cod": "The rent includes utilities, but not internet.",
+      "dica": "O aluguel inclui água, luz e gás, mas não a internet.",
+      "img": "🧾✅📶",
+      "alvo": "utilities",
+      "alvo_pt": "água, luz e gás",
+      "conceito": "includes: -s da 3ª pessoa (the rent = it).",
+      "var": [
+        {
+          "em": "not internet",
+          "aceita": [
+            "not the internet"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "include"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0ff8ae",
+      "quem": "voce",
+      "contexto": "f-9a25d8",
+      "cod": "Oh, good. Utilities can get really expensive in the summer.",
+      "dica": "Ah, que bom. Água, luz e gás podem ficar bem caros no verão.",
+      "img": "☀️💸💡",
+      "alvo": "Utilities",
+      "alvo_pt": "Água, luz e gás",
+      "conceito": "ficar caro = get expensive: get + adjetivo é ficar, mudar de estado.",
+      "var": [
+        {
+          "em": "get",
+          "aceita": [
+            "be"
+          ]
+        },
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0c13fb",
+      "quem": "voce",
+      "cod": "Has anyone else applied for it?",
+      "dica": "Mais alguém já se candidatou?",
+      "img": "🙋📝❓",
+      "alvo": "applied for",
+      "alvo_pt": "se candidatou",
+      "conceito": "Já, sem dizer quando: present perfect (Has anyone applied?). apply for = se candidatar.",
+      "var": [
+        {
+          "em": "applied for it",
+          "aceita": [
+            "applied"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1c22fe",
+      "quem": "proprietario",
+      "contexto": "f-0c13fb",
+      "cod": "Two people have applied, but nobody has signed anything yet.",
+      "dica": "Duas pessoas já se candidataram, mas ninguém assinou nada ainda.",
+      "img": "👥📝✍️",
+      "alvo": "have applied",
+      "alvo_pt": "se candidataram",
+      "conceito": "have applied / has signed: o que já aconteceu, sem data.",
+      "var": [
+        {
+          "em": "nobody",
+          "aceita": [
+            "no one"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-60a6d2",
+      "quem": "voce",
+      "cod": "It's nicely furnished. Is there a washer, too?",
+      "dica": "É bem mobiliado. Tem máquina de lavar também?",
+      "img": "🛋️🧺❓",
+      "alvo": "furnished",
+      "alvo_pt": "mobiliado",
+      "conceito": "Tem (existe) = is there. washer = máquina de lavar roupa (EUA).",
+      "var": [
+        {
+          "em": "nicely",
+          "aceita": [
+            "well",
+            "really well"
+          ]
+        },
+        {
+          "em": "Is there a washer",
+          "aceita": [
+            "Does it have a washer",
+            "Is there a washing machine",
+            "Does it have a washing machine"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fa3457",
+      "quem": "proprietario",
+      "contexto": "The rent is a little high.",
+      "cod": "Furnished apartments near downtown usually cost more.",
+      "dica": "Apartamentos mobiliados perto do centro costumam custar mais.",
+      "img": "🏙️🛋️💰",
+      "alvo": "Furnished",
+      "alvo_pt": "mobiliados",
+      "conceito": "Generalização sem artigo: Furnished apartments... (não: The furnished apartments...).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2e021d",
+      "quem": "voce",
+      "cod": "I'd like to apply. Who do I send my documents to?",
+      "dica": "Eu gostaria de me candidatar. Pra quem eu mando os meus documentos?",
+      "img": "📄📨🙋",
+      "alvo": "apply",
+      "alvo_pt": "me candidatar",
+      "conceito": "Pra quem...? = Who... to? A preposição vai para o fim da pergunta.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

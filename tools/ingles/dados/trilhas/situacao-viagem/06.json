@@ -1,0 +1,250 @@
+{
+  "id": "situacao-viagem.chegando-carona-hotel-e-check-out",
+  "trilha": "situacao-viagem",
+  "nome": "Chegando: carona, hotel e check-out",
+  "emoji": "🛎️",
+  "cena": "No último dia em Boston, você resolve o check-out no hotel e liga para a Emma combinar a carona.",
+  "resumo": "Resolver o check-out no hotel e pedir carona: My key card doesn't work. / Can you pick me up at the hotel?",
+  "fechamento": false,
+  "novos": [
+    "front desk",
+    "key card",
+    "pick up (buscar)",
+    "check out",
+    "late checkout"
+  ],
+  "apoio": [
+    "elevator",
+    "until",
+    "lobby"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Hotel e carona"
+    },
+    {
+      "t": "p",
+      "c": "**front desk** = recepção; **key card** = cartão do quarto; **check out** = fazer o check-out; **late checkout** = check-out mais tarde; **pick up** = buscar alguém."
+    },
+    {
+      "t": "ex",
+      "c": "Can you pick me up at the hotel?\nVocê pode me buscar no hotel?"
+    },
+    {
+      "t": "warn",
+      "c": "Com pronome, ele vai no meio: pick me up, pick you up (não: pick up me)."
+    }
+  ],
+  "imagem": "🛎️🔑🚗",
+  "visualizacao": "Você desce para a recepção com a mala e o cartão do quarto na mão. Cheiro de café no saguão, a recepcionista ao telefone e, lá fora, um carro buzinando.",
+  "foto_busca": "hotel front desk reception",
+  "trechos": [
+    {
+      "id": "f-6d0e0c",
+      "quem": "voce",
+      "cod": "My key card doesn't work.",
+      "dica": "Meu cartão do quarto não funciona.",
+      "img": "🔑💳❌",
+      "alvo": "key card",
+      "alvo_pt": "cartão do quarto",
+      "conceito": "Sujeito na 3ª pessoa: doesn't work.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "don't"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2272067,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'phone' trocado por 'key card'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-89796e",
+      "quem": "recepcionista",
+      "contexto": "f-6d0e0c",
+      "cod": "Sorry! Here's a new key card.",
+      "dica": "Desculpa! Aqui está um novo cartão do quarto.",
+      "img": "🔑💳✨",
+      "alvo": "key card",
+      "alvo_pt": "cartão do quarto",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fcde4c",
+      "quem": "voce",
+      "cod": "Can I check out at noon?",
+      "dica": "Posso fazer o check-out ao meio-dia?",
+      "img": "🧳🕛",
+      "alvo": "check out",
+      "alvo_pt": "fazer o check-out",
+      "conceito": "check out (verbo, separado) = fazer o check-out; checkout é o substantivo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a69f7",
+      "quem": "recepcionista",
+      "contexto": "f-fcde4c",
+      "cod": "Checkout is at eleven. Do you want a late checkout?",
+      "dica": "O check-out é às onze. Quer um late check-out?",
+      "img": "🕚🛏️",
+      "alvo": "late checkout",
+      "alvo_pt": "late check-out",
+      "conceito": "late checkout = check-out mais tarde, que o hotel libera ou cobra.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17",
+        "BR06"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Checkout is",
+          "aceita": [
+            "The checkout is"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f2f5f7",
+      "quem": "voce",
+      "contexto": "f-4a69f7",
+      "cod": "A late checkout? Is it free?",
+      "dica": "Um late check-out? É de graça?",
+      "img": "🛏️💲❓",
+      "alvo": "late checkout",
+      "alvo_pt": "late check-out",
+      "conceito": "É de graça? = Is it free? (o it não some).",
+      "var": [
+        {
+          "em": "Is it free?",
+          "aceita": [
+            "It's free?"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fc610d",
+      "quem": "voce",
+      "cod": "Hi, I'd like to check out, please.",
+      "dica": "Oi, eu queria fazer o check-out, por favor.",
+      "img": "👋🧳",
+      "alvo": "check out",
+      "alvo_pt": "fazer o check-out",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-007f76",
+      "quem": "voce",
+      "cod": "Can I leave my bag at the front desk?",
+      "dica": "Posso deixar a minha mala na recepção?",
+      "img": "🧳🛎️",
+      "alvo": "front desk",
+      "alvo_pt": "recepção",
+      "conceito": "front desk = recepção (do hotel).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1495837,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'here' trocado por 'at the front desk'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7716f6",
+      "quem": "recepcionista",
+      "contexto": "f-007f76",
+      "cod": "Sure. The front desk is open 24 hours.",
+      "dica": "Claro. A recepção fica aberta 24 horas.",
+      "img": "🛎️🌙☀️",
+      "alvo": "front desk",
+      "alvo_pt": "recepção",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-38536c",
+      "quem": "voce",
+      "cod": "Emma, can you pick me up at the hotel?",
+      "dica": "Emma, você pode me buscar no hotel?",
+      "img": "📞🚗",
+      "alvo": "pick me up",
+      "alvo_pt": "me buscar",
+      "lit": "[lit.: me pegar; up = para cima]",
+      "conceito": "O pronome fica no meio: pick me up (não: pick up me).",
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR17"
+      ],
+      "armadilhas": [
+        "up"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d152de",
+      "quem": "voce",
+      "contexto": "Sure! No problem.",
+      "cod": "What time are you coming to pick me up?",
+      "dica": "A que horas você vem me buscar?",
+      "img": "⏰🚗",
+      "alvo": "pick me up",
+      "alvo_pt": "me buscar",
+      "conceito": "Combinado: presente contínuo (are you coming).",
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR29"
+      ],
+      "armadilhas": [
+        "up"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 9795482,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

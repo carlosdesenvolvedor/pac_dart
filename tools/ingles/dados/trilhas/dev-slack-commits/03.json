@@ -1,0 +1,233 @@
+{
+  "id": "dev-slack-commits.bug-report-esperado-x-real",
+  "trilha": "dev-slack-commits",
+  "nome": "Bug report: esperado x real",
+  "emoji": "🐞",
+  "cena": "Você abre uma issue sobre um bug que só aparece no celular de um cliente e conversa com o Mike nos comentários.",
+  "resumo": "Escrever uma issue com Steps to reproduce, Expected behavior e Actual behavior.",
+  "fechamento": false,
+  "novos": [
+    "reproduce",
+    "expected behavior",
+    "actual behavior",
+    "freeze / freezes",
+    "steps to reproduce"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Bug report: esperado x real"
+    },
+    {
+      "t": "p",
+      "c": "Uma issue clara tem: **Steps to reproduce** (os passos, no imperativo), **Expected behavior** (o que deveria acontecer) e **Actual behavior** (o que acontece de verdade)."
+    },
+    {
+      "t": "ex",
+      "c": "Actual behavior: the app freezes.\nComportamento real: o app trava."
+    },
+    {
+      "t": "warn",
+      "c": "actual = real, nunca atual (atual = current). E behavior, sem u, no inglês americano."
+    },
+    {
+      "t": "tip",
+      "c": "I can't reproduce it. = Não consigo reproduzir. O inglês exige o it."
+    }
+  ],
+  "imagem": "🐞📱📝",
+  "visualizacao": "Você está na tela da issue em branco, o cursor piscando. No celular do cliente, o app congela na página de pagamento e nada responde ao toque.",
+  "foto_busca": "bug report laptop smartphone desk",
+  "trechos": [
+    {
+      "id": "f-abb573",
+      "quem": "voce",
+      "cod": "The app freezes on the payment page.",
+      "dica": "(issue) O app trava na página de pagamento.",
+      "img": "📱🧊",
+      "alvo": "freezes",
+      "alvo_pt": "trava",
+      "conceito": "freeze = travar, congelar; na 3ª pessoa, freezes.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "freeze"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c54932",
+      "quem": "voce",
+      "contexto": "f-abb573",
+      "cod": "Steps to reproduce: log in and open the payment page.",
+      "dica": "Passos para reproduzir: faça login e abra a página de pagamento.",
+      "img": "👣🔁",
+      "alvo": "Steps to reproduce",
+      "alvo_pt": "Passos para reproduzir",
+      "conceito": "Steps to reproduce: + imperativo, como uma receita.",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-735c88",
+      "quem": "voce",
+      "contexto": "f-abb573",
+      "cod": "Expected behavior: the page should load.",
+      "dica": "Comportamento esperado: a página deveria carregar.",
+      "img": "✅📄",
+      "alvo": "Expected behavior",
+      "alvo_pt": "Comportamento esperado",
+      "conceito": "behavior, sem u (EUA); should = o que deveria acontecer.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR46"
+      ],
+      "armadilhas": [
+        "behaviour"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bb7f02",
+      "quem": "voce",
+      "contexto": "f-abb573",
+      "cod": "Actual behavior: the app freezes.",
+      "dica": "Comportamento real: o app trava.",
+      "img": "❌🧊",
+      "alvo": "Actual behavior",
+      "alvo_pt": "Comportamento real",
+      "conceito": "actual = real (não: atual); atual = current.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "current"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d3617a",
+      "quem": "mike",
+      "contexto": "f-abb573",
+      "cod": "I can't reproduce it on my machine.",
+      "dica": "Não consigo reproduzir na minha máquina.",
+      "img": "💻🤷",
+      "alvo": "reproduce",
+      "alvo_pt": "reproduzir",
+      "conceito": "reproduce = fazer o bug acontecer de novo. O inglês exige o it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-594ec4",
+      "quem": "voce",
+      "contexto": "f-d3617a",
+      "cod": "The client can reproduce it every time.",
+      "dica": "O cliente consegue reproduzir toda vez.",
+      "img": "📱🔁",
+      "alvo": "reproduce",
+      "alvo_pt": "reproduzir",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b0bdd3",
+      "quem": "mike",
+      "contexto": "f-594ec4",
+      "cod": "Does it freeze right away?",
+      "dica": "Trava na hora?",
+      "img": "⏱️🧊",
+      "alvo": "freeze",
+      "alvo_pt": "Trava",
+      "conceito": "Depois de does, o verbo fica sem -s: Does it freeze?",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR07"
+      ],
+      "armadilhas": [
+        "freezes"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "right away",
+          "aceita": [
+            "immediately"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cf4e9f",
+      "quem": "voce",
+      "contexto": "f-b0bdd3",
+      "cod": "No, after ten seconds. I'll add that to the actual behavior.",
+      "dica": "Não, depois de dez segundos. Vou adicionar isso no comportamento real.",
+      "img": "⏳📝",
+      "alvo": "actual behavior",
+      "alvo_pt": "comportamento real",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "current"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "add that",
+          "aceita": [
+            "add this",
+            "add it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-53d62c",
+      "quem": "mike",
+      "contexto": "f-cf4e9f",
+      "cod": "Thanks. Can you add more steps to reproduce?",
+      "dica": "Valeu. Você pode adicionar mais passos para reproduzir?",
+      "img": "➕👣",
+      "alvo": "steps to reproduce",
+      "alvo_pt": "passos para reproduzir",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ae1752",
+      "quem": "voce",
+      "contexto": "f-53d62c",
+      "cod": "Sure. I'll also add the expected behavior after payment.",
+      "dica": "Claro. Também vou adicionar o comportamento esperado depois do pagamento.",
+      "img": "📝✅",
+      "alvo": "expected behavior",
+      "alvo_pt": "comportamento esperado",
+      "registro": "informal",
+      "interferencias": [
+        "BR46"
+      ],
+      "armadilhas": [
+        "behaviour"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "id": "dev-calls-daily.no-standup-ontem-hoje-impedimentos",
+  "trilha": "dev-calls-daily",
+  "nome": "No standup: ontem, hoje, impedimentos",
+  "emoji": "🧍",
+  "cena": "Na daily do time remoto, às 9h de Chicago, cada um fala de ontem, de hoje e dos impedimentos.",
+  "resumo": "Dar o status na daily: Yesterday I worked on... / Today I'm going to... / I'm blocked by...",
+  "fechamento": false,
+  "novos": [
+    "blocked by",
+    "payment integration",
+    "No blockers on my side.",
+    "ready for review",
+    "That's it from me."
+  ],
+  "apoio": [
+    "still"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O status da daily"
+    },
+    {
+      "t": "p",
+      "c": "Ontem: **Yesterday I worked on...** Hoje: **Today I'm going to...** Travado: **I'm blocked by...** Nada travando: **No blockers on my side.** Para fechar: **That's it from me.**"
+    },
+    {
+      "t": "warn",
+      "c": "Com yesterday, passado simples (não: I've worked yesterday)."
+    },
+    {
+      "t": "tip",
+      "c": "Daily (como o dev brasileiro fala) = standup (como o time americano fala)."
+    }
+  ],
+  "imagem": "🧍💬🗓️",
+  "visualizacao": "São 9h em Chicago e você entra na daily com o café do lado. Quatro rostos na tela; a Sarah chama um por um, e chega a sua vez de falar.",
+  "foto_busca": "remote team standup video call",
+  "trechos": [
+    {
+      "id": "f-d131bc",
+      "quem": "voce",
+      "cod": "Yesterday I worked on the payment integration.",
+      "dica": "Ontem eu trabalhei na integração de pagamento.",
+      "img": "⏮️💳🔌",
+      "alvo": "payment integration",
+      "alvo_pt": "integração de pagamento",
+      "conceito": "Integração de pagamento = payment integration (o inglês junta os substantivos).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24",
+        "BR27"
+      ],
+      "armadilhas": [
+        "have",
+        "of"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9de327",
+      "quem": "voce",
+      "cod": "Today I'm going to finish the payment integration.",
+      "dica": "Hoje vou terminar a integração de pagamento.",
+      "img": "📅🏁💳",
+      "alvo": "payment integration",
+      "alvo_pt": "integração de pagamento",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5c3dde",
+      "quem": "voce",
+      "cod": "But I'm blocked by the API changes.",
+      "dica": "Mas estou travado por causa das mudanças na API.",
+      "img": "🚧🔌",
+      "alvo": "blocked by",
+      "alvo_pt": "travado por causa",
+      "conceito": "blocked by = travado por causa de (um impedimento).",
+      "pt_f": "Mas estou travada por causa das mudanças na API.",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "because"
+      ],
+      "origem": "autoral_ia",
+      "lit": "[lit.: bloqueado pelas mudanças na API]"
+    },
+    {
+      "id": "f-cac90e",
+      "quem": "mike",
+      "contexto": "f-5c3dde",
+      "cod": "My pull request fixes that. It's ready for review.",
+      "dica": "Meu pull request corrige isso. Está pronto para revisão.",
+      "img": "🔀✅👀",
+      "alvo": "ready for review",
+      "alvo_pt": "pronto para revisão",
+      "conceito": "fixes: -s da 3ª pessoa. Está pronto = It's ready (it obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR02"
+      ],
+      "armadilhas": [
+        "fix",
+        "to"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "fixes that",
+          "aceita": [
+            "fixes this",
+            "fixes it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-3cd140",
+      "quem": "voce",
+      "cod": "That's it from me.",
+      "dica": "É isso da minha parte.",
+      "img": "🎤✋",
+      "alvo": "That's it from me",
+      "alvo_pt": "É isso da minha parte",
+      "conceito": "That's it from me = é isso da minha parte (fecha a sua vez na daily).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c67da5",
+      "quem": "ana",
+      "cod": "I finished the new icons. No blockers on my side.",
+      "dica": "Terminei os ícones novos. Nenhum impedimento do meu lado.",
+      "img": "🎨✅🟢",
+      "alvo": "No blockers on my side",
+      "alvo_pt": "Nenhum impedimento do meu lado",
+      "conceito": "blocker = o que trava o trabalho. No blockers = nenhum impedimento.",
+      "var": [
+        {
+          "em": "I finished",
+          "aceita": [
+            "I've finished"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia",
+      "lit": "[lit.: nenhum bloqueador do meu lado]"
+    },
+    {
+      "id": "f-cee318",
+      "quem": "sarah",
+      "cod": "Ana, are the new screens ready for review?",
+      "dica": "Ana, as telas novas estão prontas para revisão?",
+      "img": "📱👀❓",
+      "alvo": "ready for review",
+      "alvo_pt": "prontas para revisão",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7a5cb1",
+      "quem": "ana",
+      "contexto": "f-cee318",
+      "cod": "Yes, they are. That's it from me.",
+      "dica": "Estão, sim. É isso da minha parte.",
+      "img": "👍🎤",
+      "alvo": "That's it from me",
+      "alvo_pt": "É isso da minha parte",
+      "conceito": "Resposta curta repete o verbo da pergunta: Yes, they are.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-11232b",
+      "quem": "mike",
+      "cod": "I'm still blocked by the database migration.",
+      "dica": "Ainda estou travado por causa da migração do banco de dados.",
+      "img": "🗄️🚧",
+      "alvo": "blocked by",
+      "alvo_pt": "travado por causa",
+      "conceito": "still = ainda: vem depois de am e antes do resto (I'm still blocked).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c46944",
+      "quem": "sarah",
+      "cod": "No blockers on my side either.",
+      "dica": "Nenhum impedimento do meu lado também.",
+      "img": "🟢🙌",
+      "alvo": "No blockers on my side",
+      "alvo_pt": "Nenhum impedimento do meu lado",
+      "conceito": "Também, depois de frase negativa = either.",
+      "registro": "informal",
+      "armadilhas": [
+        "too"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

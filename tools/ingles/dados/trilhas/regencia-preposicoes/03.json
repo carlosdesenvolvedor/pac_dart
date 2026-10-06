@@ -1,0 +1,319 @@
+{
+  "id": "regencia-preposicoes.me-explica-de-novo",
+  "trilha": "regencia-preposicoes",
+  "nome": "Me explica de novo?",
+  "emoji": "🧑‍🏫",
+  "cena": "Numa chamada, o Mike mostra o diagrama da nova arquitetura do app, e você pede explicações e conta o que a Ana sugeriu.",
+  "resumo": "Pedir explicação e sugerir: explain it to me, describe it to me, suggest that.",
+  "fechamento": false,
+  "novos": [
+    "explain it to me",
+    "approach",
+    "in detail",
+    "suggest that",
+    "describe it to me"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Me explica = explain it to me"
+    },
+    {
+      "t": "p",
+      "c": "**Explain** e **describe** não aceitam a pessoa logo depois: primeiro vem o que se explica, e a pessoa vem com **to**. Explain it to me. Describe it to me."
+    },
+    {
+      "t": "p",
+      "c": "**Suggest that** + sujeito + verbo: Ana suggested that I use a different approach."
+    },
+    {
+      "t": "warn",
+      "c": "Não: explain me, describe me, She suggested me to use."
+    },
+    {
+      "t": "ex",
+      "c": "Can you explain it to me again?\nVocê pode me explicar de novo?"
+    }
+  ],
+  "imagem": "💻🗺️❓",
+  "visualizacao": "Na tela, o Mike compartilha um diagrama cheio de caixas e setas. Ele fala rápido, aponta com o mouse, e você franze a testa tentando acompanhar.",
+  "foto_busca": "software architecture diagram screen",
+  "trechos": [
+    {
+      "id": "f-1f55ef",
+      "quem": "voce",
+      "contexto": "So that's the new architecture. Any questions?",
+      "cod": "Sorry, can you explain it to me again?",
+      "dica": "Desculpa, você pode me explicar de novo?",
+      "img": "🔁❓",
+      "alvo": "explain it to me",
+      "alvo_pt": "me explicar",
+      "lit": "[lit.: explicar isso para mim]",
+      "conceito": "me explica = explain it to me: primeiro o que se explica, depois to me (não: explain me).",
+      "registro": "informal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "me"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4731141,
+        "en_autor": "hajenso",
+        "pt_id": 4740498,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Can you explain it to me, please?\"; PT original: \"Você pode me explicar isso, por favor?\"; + Sorry,; please → again; PT adaptado (Desculpa, ... de novo?)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4b3419",
+      "quem": "mike",
+      "contexto": "f-1f55ef",
+      "cod": "Sure. This time I'll explain it in detail.",
+      "dica": "Claro. Desta vez eu vou explicar em detalhes.",
+      "img": "🔍📋",
+      "alvo": "in detail",
+      "alvo_pt": "em detalhes",
+      "conceito": "em detalhes = in detail, sem s.",
+      "registro": "informal",
+      "armadilhas": [
+        "details"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5ceae4",
+      "quem": "voce",
+      "contexto": "f-4b3419",
+      "cod": "I don't get this diagram. Could you explain it to me step by step?",
+      "dica": "Não entendi esse diagrama. Você poderia me explicar passo a passo?",
+      "img": "🗺️🪜",
+      "alvo": "explain it to me",
+      "alvo_pt": "me explicar",
+      "conceito": "I don't get it = não entendi (informal); step by step = passo a passo.",
+      "var": [
+        {
+          "em": "don't get",
+          "aceita": [
+            "don't understand",
+            "didn't get",
+            "didn't understand"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "me"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-663175",
+      "quem": "mike",
+      "cod": "So, what do you think of the new approach?",
+      "dica": "E aí, o que você acha da nova abordagem?",
+      "img": "🧭💭",
+      "alvo": "approach",
+      "alvo_pt": "abordagem",
+      "conceito": "approach = abordagem, o jeito de resolver; atenção ao pp (não: aproach).",
+      "var": [
+        {
+          "em": "of",
+          "aceita": [
+            "about"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR45"
+      ],
+      "armadilhas": [
+        "aproach"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-996053",
+      "quem": "voce",
+      "contexto": "f-663175",
+      "cod": "It's good, but Ana suggested that I use a different approach.",
+      "dica": "É boa, mas a Ana me sugeriu usar uma abordagem diferente.",
+      "img": "💡👩‍🎨",
+      "alvo": "suggested that",
+      "alvo_pt": "me sugeriu",
+      "lit": "[lit.: sugeriu que eu use]",
+      "conceito": "me sugeriu usar = suggested that I use (não: suggested me to use).",
+      "opcional": [
+        "that"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "me",
+        "to"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6257728,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom suggested that I study French.\"; + It's good, but; Tom → Ana; study French → use a different approach; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6f513f",
+      "quem": "mike",
+      "contexto": "f-996053",
+      "cod": "Interesting. Can you describe it to me?",
+      "dica": "Interessante. Você pode descrever pra mim?",
+      "img": "🗣️🖼️",
+      "alvo": "describe it to me",
+      "alvo_pt": "descrever pra mim",
+      "conceito": "descrever pra mim = describe it to me (não: describe me).",
+      "registro": "informal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "me"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7369d2",
+      "quem": "voce",
+      "contexto": "f-6f513f",
+      "cod": "Sure. She described it to me in detail yesterday.",
+      "dica": "Claro. Ela me descreveu em detalhes ontem.",
+      "img": "📝🔍",
+      "alvo": "in detail",
+      "alvo_pt": "em detalhes",
+      "conceito": "me descreveu = described it to me: o it vem antes, a pessoa vai com to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "details",
+        "me"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3734307,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom described the problem in detail.\"; + Sure.; Tom → She; the problem → it to me; + yesterday; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4c2fdb",
+      "quem": "voce",
+      "cod": "Her approach uses a separate module for each feature.",
+      "dica": "A abordagem dela usa um módulo separado pra cada feature.",
+      "img": "🧩🧩🧩",
+      "alvo": "approach",
+      "alvo_pt": "abordagem",
+      "conceito": "a abordagem dela = her approach; approach uses: -s da 3ª pessoa.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "use"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f8ccba",
+      "quem": "mike",
+      "contexto": "f-4c2fdb",
+      "cod": "I like it. I suggest that we test both approaches.",
+      "dica": "Gostei. Sugiro que a gente teste as duas abordagens.",
+      "img": "🧪⚖️",
+      "alvo": "suggest that",
+      "alvo_pt": "Sugiro que",
+      "conceito": "Sugiro que a gente teste = I suggest that we test: verbo base, sem to.",
+      "var": [
+        {
+          "em": "I like it",
+          "aceita": [
+            "I liked it"
+          ]
+        },
+        {
+          "em": "both approaches",
+          "aceita": [
+            "the two approaches"
+          ]
+        }
+      ],
+      "opcional": [
+        "that"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "to",
+        "testing"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2222,
+        "en_autor": "CK",
+        "pt_id": 418045,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I suggest that we go out on Friday.\"; PT original: \"Eu sugiro que a gente saia na sexta.\"; + I like it.; go out on Friday → test both approaches; PT adaptado (Gostei. Sugiro que a gente teste as duas abordagens.)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-124453",
+      "quem": "mike",
+      "cod": "And ask Ana to describe it to me after standup.",
+      "dica": "E pede pra Ana descrever pra mim depois da daily.",
+      "img": "📅🗣️",
+      "alvo": "describe it to me",
+      "alvo_pt": "descrever pra mim",
+      "conceito": "pede pra ela descrever = ask her to describe; daily (BR) = standup (EUA).",
+      "registro": "informal",
+      "interferencias": [
+        "BR54",
+        "BR61"
+      ],
+      "armadilhas": [
+        "me",
+        "the"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-6f513f"
+    }
+  ]
+}

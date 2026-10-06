@@ -1,0 +1,219 @@
+{
+  "id": "dev-planning-retro.cena-a-retro-do-sprint-ruim",
+  "trilha": "dev-planning-retro",
+  "nome": "Cena: a retro da sprint ruim",
+  "emoji": "📋",
+  "cena": "No fim da retrospectiva, o time junta os aprendizados da sprint ruim e define os próximos passos.",
+  "resumo": "Cena de fechamento: analisar a sprint, discordar com tato, negociar escopo e fechar com os action items.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "went wrong",
+    "had been",
+    "should have",
+    "cut the scope",
+    "I see your point",
+    "trade-off",
+    "I'd rather",
+    "buffer",
+    "action items",
+    "own"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Uma retro do começo ao fim"
+    },
+    {
+      "t": "p",
+      "c": "Analise com a terceira condicional (**If the requirements had been clearer, we wouldn't have lost...**), discorde com **I see your point, but...** e feche com os **action items** e quem fica responsável (**own**)."
+    },
+    {
+      "t": "warn",
+      "c": "Se tivessem sido = If they had been (não: If they would have been)."
+    },
+    {
+      "t": "ex",
+      "c": "Good idea. Let's recap the action items before we finish.\nBoa ideia. Vamos recapitular os action items antes de terminar."
+    }
+  ],
+  "imagem": "📋🔁✅",
+  "visualizacao": "Fim de tarde, última parte da retro. Você vê o quadro cheio de post-its; o Mike abre uma lista vazia de action items e espera quem vai falar primeiro.",
+  "foto_busca": "team meeting action items whiteboard",
+  "trechos": [
+    {
+      "id": "f-3f262c",
+      "quem": "mike",
+      "cod": "So, what went wrong with the payment story?",
+      "dica": "Então, o que deu errado com a história do pagamento?",
+      "img": "💳❌",
+      "alvo": "went wrong",
+      "alvo_pt": "deu errado",
+      "conceito": "deu errado = went wrong (go wrong, no passado).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-56c8de",
+      "quem": "voce",
+      "contexto": "f-3f262c",
+      "cod": "If the requirements had been clearer, we wouldn't have lost two days.",
+      "dica": "Se os requisitos tivessem sido mais claros, a gente não teria perdido dois dias.",
+      "img": "📄🌫️",
+      "alvo": "had been clearer",
+      "alvo_pt": "tivessem sido mais claros",
+      "conceito": "Se tivessem sido = If they had been (não: If they would have been).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-27f5b9",
+      "quem": "sarah",
+      "contexto": "f-56c8de",
+      "cod": "That's fair. I should have written better acceptance criteria.",
+      "dica": "É justo. Eu devia ter escrito critérios de aceite melhores.",
+      "img": "✍️📋",
+      "alvo": "should have written",
+      "alvo_pt": "devia ter escrito",
+      "conceito": "devia ter + particípio = should have + particípio (write, wrote, written).",
+      "registro": "neutro",
+      "armadilhas": [
+        "wrote"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-954754",
+      "quem": "mike",
+      "cod": "We could cut the scope again to catch up.",
+      "dica": "A gente poderia cortar o escopo de novo para tirar o atraso.",
+      "img": "✂️🏃",
+      "alvo": "cut the scope",
+      "alvo_pt": "cortar o escopo",
+      "conceito": "catch up = tirar o atraso. Para + verbo = to + verbo (não: for to).",
+      "registro": "informal",
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-669972",
+      "quem": "voce",
+      "contexto": "f-954754",
+      "cod": "I see your point, but that's a trade-off I'd rather avoid.",
+      "dica": "Entendo o seu ponto, mas esse é um trade-off que eu preferia evitar.",
+      "img": "⚖️🙅",
+      "alvo": "I'd rather",
+      "alvo_pt": "eu preferia",
+      "conceito": "I'd rather + verbo sem to = eu preferia (não: I'd rather to avoid).",
+      "var": [
+        {
+          "em": "I'd rather",
+          "aceita": [
+            "I would rather"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-73ae43",
+      "quem": "ana",
+      "contexto": "f-669972",
+      "cod": "What if we added a buffer instead?",
+      "dica": "E se a gente deixasse uma folga, em vez disso?",
+      "img": "🛟💭",
+      "alvo": "buffer",
+      "alvo_pt": "folga",
+      "conceito": "E se a gente deixasse = What if we added (passado simples, não would).",
+      "var": [
+        {
+          "em": "added",
+          "aceita": [
+            "left",
+            "included"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-06c380",
+      "quem": "mike",
+      "contexto": "f-73ae43",
+      "cod": "Good idea. Let's recap the action items before we finish.",
+      "dica": "Boa ideia. Vamos recapitular os action items antes de terminar.",
+      "img": "📝✅",
+      "alvo": "action items",
+      "alvo_pt": "action items",
+      "conceito": "the action items: artigo the para os itens desta reunião.",
+      "var": [
+        {
+          "em": "before we finish",
+          "aceita": [
+            "before finishing"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-514a5e",
+      "quem": "voce",
+      "contexto": "f-06c380",
+      "cod": "I'll own the requirements doc for the next sprint.",
+      "dica": "Eu fico responsável pelo documento de requisitos na próxima sprint.",
+      "img": "🙋📄",
+      "alvo": "own",
+      "alvo_pt": "fico responsável",
+      "conceito": "own = ficar responsável por (sem preposição em inglês).",
+      "var": [
+        {
+          "em": "I'll own",
+          "aceita": [
+            "I can own"
+          ]
+        },
+        {
+          "em": "for the next",
+          "aceita": [
+            "in the next"
+          ]
+        },
+        {
+          "em": "doc",
+          "aceita": [
+            "document"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

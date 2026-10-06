@@ -1,0 +1,242 @@
+{
+  "id": "dev-docs-email.espero-que-esteja-bem",
+  "trilha": "dev-docs-email",
+  "nome": "Espero que esteja bem",
+  "emoji": "✉️",
+  "cena": "Você escreve os primeiros e-mails para um cliente novo sobre o cronograma do projeto.",
+  "resumo": "Abrir e fechar e-mails profissionais e dizer o motivo da mensagem.",
+  "fechamento": false,
+  "novos": [
+    "I hope you're doing well",
+    "I'm writing to",
+    "timeline",
+    "any questions",
+    "Best regards"
+  ],
+  "apoio": [
+    "Let me know if"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "E-mail: abrir e fechar"
+    },
+    {
+      "t": "p",
+      "c": "Abertura: **Hi + nome,** e **I hope you're doing well.** Motivo: **I'm writing to** + verbo. Fecho: **Let me know if you have any questions.** e **Best regards,** + nome."
+    },
+    {
+      "t": "tip",
+      "c": "Qualquer dúvida, me avise. = Let me know if you have any questions. (dúvida no singular, questions no plural)"
+    },
+    {
+      "t": "warn",
+      "c": "information não tem plural: any information (não: informations)."
+    },
+    {
+      "t": "ex",
+      "c": "I'm writing to share the project timeline.\nEstou escrevendo para compartilhar o cronograma do projeto."
+    }
+  ],
+  "imagem": "✉️💻☕",
+  "visualizacao": "Segunda cedo, café do lado do teclado. O e-mail novo está aberto, o cursor pisca depois do Hi, e você quer causar uma boa primeira impressão no cliente.",
+  "foto_busca": "writing email laptop coffee",
+  "trechos": [
+    {
+      "id": "f-3313c9",
+      "quem": "voce",
+      "cod": "Hi everyone, I hope you're doing well.",
+      "dica": "Oi, pessoal, espero que vocês estejam bem.",
+      "img": "👋😊",
+      "alvo": "I hope you're doing well",
+      "alvo_pt": "espero que vocês estejam bem",
+      "conceito": "Abertura padrão de e-mail: I hope you're doing well.",
+      "registro": "escrito-trabalho",
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "everyone",
+          "aceita": [
+            "all"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e26155",
+      "quem": "voce",
+      "cod": "I'm writing to share the project timeline.",
+      "dica": "Estou escrevendo para compartilhar o cronograma do projeto.",
+      "img": "✍️🗓️",
+      "alvo": "I'm writing to",
+      "alvo_pt": "Estou escrevendo para",
+      "conceito": "Motivo do e-mail: I'm writing to + verbo (não: for).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR30",
+        "BR24"
+      ],
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3b3c05",
+      "quem": "voce",
+      "cod": "The timeline has three phases.",
+      "dica": "O cronograma tem três fases.",
+      "img": "🗓️🧩",
+      "alvo": "timeline",
+      "alvo_pt": "cronograma",
+      "conceito": "timeline = cronograma (do projeto).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5026f4",
+      "quem": "voce",
+      "cod": "Let me know if you have any questions.",
+      "dica": "Qualquer dúvida, me avise.",
+      "img": "🙋📩",
+      "alvo": "any questions",
+      "alvo_pt": "Qualquer dúvida",
+      "conceito": "Qualquer dúvida = any questions (no plural). Doubt é dúvida de desconfiança.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "question",
+        "doubt",
+        "doubts"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-21a7f2",
+      "quem": "voce",
+      "cod": "Best regards, {nome}.",
+      "dica": "Atenciosamente, {nome}.",
+      "img": "🤝✉️",
+      "bio": [
+        "nome"
+      ],
+      "alvo": "Best regards",
+      "alvo_pt": "Atenciosamente",
+      "conceito": "Fecho de e-mail profissional: Best regards, + nome.",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f200f6",
+      "quem": "cliente",
+      "contexto": "f-3b3c05",
+      "cod": "Thanks, {nome}. The timeline looks great.",
+      "dica": "Obrigado, {nome}. O cronograma parece ótimo.",
+      "img": "👍🗓️",
+      "bio": [
+        "nome"
+      ],
+      "alvo": "timeline",
+      "alvo_pt": "cronograma",
+      "conceito": "parecer ótimo (pelo que se vê) = look great: the timeline looks, com -s.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "look"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f4b571",
+      "quem": "voce",
+      "cod": "Good morning, I hope you're doing well and had a great weekend.",
+      "dica": "Bom dia, espero que você esteja bem e tenha tido um ótimo fim de semana.",
+      "img": "☀️☕",
+      "alvo": "I hope you're doing well",
+      "alvo_pt": "espero que você esteja bem",
+      "conceito": "tenha tido um ótimo fim de semana = had a great weekend (passado simples).",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "variacao_de": "f-3313c9",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-446ab1",
+      "quem": "voce",
+      "cod": "I'm writing to ask whether Monday works for you.",
+      "dica": "Estou escrevendo para perguntar se segunda funciona para você.",
+      "img": "📅❓",
+      "alvo": "I'm writing to",
+      "alvo_pt": "Estou escrevendo para",
+      "conceito": "se (pergunta indireta) = whether / if. Dias com maiúscula: Monday.",
+      "var": [
+        {
+          "em": "whether",
+          "aceita": [
+            "if"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR15",
+        "BR02"
+      ],
+      "armadilhas": [
+        "monday",
+        "work"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8d9468",
+      "quem": "voce",
+      "cod": "Do you have any questions so far?",
+      "dica": "Vocês têm alguma dúvida até agora?",
+      "img": "🙋‍♀️❓",
+      "alvo": "any questions",
+      "alvo_pt": "alguma dúvida",
+      "conceito": "alguma dúvida? = any questions? (em inglês, no plural).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR22"
+      ],
+      "armadilhas": [
+        "question",
+        "doubt"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d0bd1c",
+      "quem": "voce",
+      "cod": "Thanks again for your time. Best regards, {nome}.",
+      "dica": "Obrigado de novo pelo seu tempo. Atenciosamente, {nome}.",
+      "pt_f": "Obrigada de novo pelo seu tempo. Atenciosamente, {nome}.",
+      "img": "🙏✉️",
+      "bio": [
+        "nome"
+      ],
+      "alvo": "Best regards",
+      "alvo_pt": "Atenciosamente",
+      "conceito": "Thanks again = obrigado de novo; o fecho vem depois.",
+      "registro": "escrito-trabalho",
+      "variacao_de": "f-21a7f2",
+      "origem": "autoral_ia"
+    }
+  ]
+}

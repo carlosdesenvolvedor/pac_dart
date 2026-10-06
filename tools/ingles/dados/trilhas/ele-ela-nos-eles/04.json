@@ -1,0 +1,242 @@
+{
+  "id": "ele-ela-nos-eles.ela-esta-online-esta-sim",
+  "trilha": "ele-ela-nos-eles",
+  "nome": "Ela está online? Está, sim.",
+  "emoji": "✅",
+  "cena": "Na chamada da manhã, a Sarah, de Austin, pergunta por quem não apareceu e você explica.",
+  "resumo": "Perguntar sobre outras pessoas e responder curto: Are they...? / Is he...? / Yes, she is. / sick.",
+  "fechamento": false,
+  "novos": [
+    "Are they...?",
+    "sick",
+    "Is he...?",
+    "Yes, she is."
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ela está online? Está, sim."
+    },
+    {
+      "t": "p",
+      "c": "Na pergunta, o **is / are** vai para a frente: He's OK. → **Is** he OK? They're online. → **Are** they online?"
+    },
+    {
+      "t": "ex",
+      "c": "Mike and Ana? Are they online?\nO Mike e a Ana? Eles estão online?"
+    },
+    {
+      "t": "ex",
+      "c": "Yes, she is.\nEstá, sim."
+    },
+    {
+      "t": "warn",
+      "c": "A resposta curta termina com a forma cheia: Yes, she is. (não: Yes, she's.) E o it não some na pergunta: Is it cold? (não: Is cold?)"
+    }
+  ],
+  "imagem": "💻🤒📅",
+  "visualizacao": "Na tela, a Sarah aparece de Austin com uma caneca na mão e estranha os quadradinhos vazios da chamada. Você liga o microfone para explicar.",
+  "foto_busca": "video call empty tiles",
+  "trechos": [
+    {
+      "id": "f-cb00f6",
+      "quem": "sarah",
+      "cod": "Mike and Ana? Are they online?",
+      "dica": "O Mike e a Ana? Eles estão online?",
+      "img": "💻👥❓",
+      "alvo": "Are they",
+      "alvo_pt": "Eles estão",
+      "conceito": "Are they...? = eles estão / eles são...? O are vem antes do they.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "they are online?",
+        "is they"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2244919,
+        "en_autor": "CK",
+        "pt_id": 6475916,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "here → online, + Mike and Ana? (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-696a24",
+      "quem": "voce",
+      "contexto": "f-cb00f6",
+      "cod": "No. Mike is sick today.",
+      "dica": "Não. O Mike está doente hoje.",
+      "img": "🤒🏠",
+      "alvo": "sick",
+      "alvo_pt": "doente",
+      "conceito": "sick = doente. Mike is sick = o Mike está doente.",
+      "registro": "neutro",
+      "armadilhas": [
+        "mike sick",
+        "mike is ill"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-efca29",
+      "quem": "sarah",
+      "contexto": "f-696a24",
+      "cod": "Oh no! Is he OK?",
+      "dica": "Ah, não! Ele está bem?",
+      "img": "😟❓",
+      "alvo": "Is he",
+      "alvo_pt": "Ele está",
+      "conceito": "Is he...? = ele está / ele é...? O is vem antes do he.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "he is ok?",
+        "is ok?"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4927698,
+        "en_autor": "Hybrid",
+        "pt_id": 5191812,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "alright → OK, + Oh no! (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a97ee6",
+      "quem": "voce",
+      "contexto": "f-efca29",
+      "cod": "He's OK, just sick.",
+      "dica": "Ele está bem, só doente.",
+      "img": "🤧🙂",
+      "alvo": "sick",
+      "alvo_pt": "doente",
+      "conceito": "just = só (suaviza): just sick = só doente.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "is ok",
+        "only sick"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-520a6e",
+      "quem": "voce",
+      "contexto": "And Ana? Is she in a meeting?",
+      "cod": "Yes, she is. She's really busy.",
+      "dica": "Está, sim. Ela está bem ocupada.",
+      "img": "👩‍💼📅",
+      "alvo": "Yes, she is.",
+      "alvo_pt": "Está, sim.",
+      "lit": "[lit.: sim, ela está]",
+      "conceito": "Resposta curta: Yes, she is. (não: Yes, she's.) Depois, o pronome volta: She's...",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "yes, she's.",
+        "yes, is",
+        "is really busy"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-82dcd2",
+      "quem": "voce",
+      "contexto": "And the new designer? Is she online?",
+      "cod": "Yes, she is. She's here.",
+      "dica": "Está, sim. Ela está aqui.",
+      "img": "👩‍🎨✅",
+      "alvo": "Yes, she is.",
+      "alvo_pt": "Está, sim.",
+      "conceito": "A resposta curta repete o is: Yes, she is.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "yes, she's.",
+        "is here"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6ea50b",
+      "quem": "sarah",
+      "cod": "And the new dev? Is he online?",
+      "dica": "E o dev novo? Ele está online?",
+      "img": "🧑‍💻❓",
+      "alvo": "Is he",
+      "alvo_pt": "Ele está",
+      "conceito": "Adjetivo antes do substantivo: the new dev = o dev novo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "dev new",
+        "he is online?"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6149785,
+        "en_autor": "robbieheslop",
+        "pt_id": 6813596,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "in Berlin → online, + And the new dev? (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-87e2eb",
+      "quem": "sarah",
+      "contexto": "Yes, he is. He's here, too.",
+      "cod": "OK! Are they in Chicago, too?",
+      "dica": "Tá bom! Eles estão em Chicago também?",
+      "img": "🏙️👥❓",
+      "alvo": "Are they",
+      "alvo_pt": "Eles estão",
+      "conceito": "too = também, no fim da pergunta: Are they in Chicago, too?",
+      "var": [
+        {
+          "em": "Are they in Chicago, too",
+          "aceita": [
+            "Are they also in Chicago"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "they are in",
+        "too are they"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

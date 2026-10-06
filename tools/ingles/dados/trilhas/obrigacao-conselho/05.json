@@ -1,0 +1,243 @@
+{
+  "id": "obrigacao-conselho.regras-e-conselhos-no-escritorio",
+  "trilha": "obrigacao-conselho",
+  "nome": "Regras e conselhos no escritório",
+  "emoji": "🏢",
+  "cena": "A Ana começa no escritório de Chicago, e você explica as regras e dá dicas para a primeira semana.",
+  "resumo": "Juntar have to, don't have to, can't, not allowed to, must e should numa conversa só.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Tudo junto"
+    },
+    {
+      "t": "p",
+      "c": "**have to** = tem que · **don't have to** = não precisa · **can't / not allowed to** = proibido · **must** = regra escrita · **should** = conselho."
+    },
+    {
+      "t": "ex",
+      "c": "You don't have to come every day.\nVocê não precisa vir todo dia."
+    },
+    {
+      "t": "ex",
+      "c": "You can't park here.\nAqui você não pode estacionar."
+    },
+    {
+      "t": "warn",
+      "c": "Não precisa ≠ é proibido: don't have to ≠ can't. E sem to depois de should, must e can't (não: should to ask)."
+    }
+  ],
+  "imagem": "🏢☕📛",
+  "visualizacao": "Segunda de manhã no escritório de Chicago. Cheiro de café na cozinha, crachá no pescoço, e a Ana olhando tudo com curiosidade ao seu lado.",
+  "foto_busca": "modern office kitchen coffee",
+  "trechos": [
+    {
+      "id": "f-91f26d",
+      "quem": "ana",
+      "cod": "Do I have to come to the office every day?",
+      "dica": "Eu tenho que vir ao escritório todo dia?",
+      "img": "🏢📅",
+      "alvo": "Do I have to",
+      "alvo_pt": "Eu tenho que",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4eece2",
+      "quem": "voce",
+      "contexto": "f-91f26d",
+      "cod": "No, you don't have to come every day.",
+      "dica": "Não, você não precisa vir todo dia.",
+      "img": "🏠💻",
+      "alvo": "don't have to",
+      "alvo_pt": "não precisa",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dd9da2",
+      "quem": "voce",
+      "cod": "But you have to sign in at the front desk.",
+      "dica": "Mas você tem que se registrar na recepção.",
+      "img": "🛎️✍️",
+      "alvo": "have to",
+      "alvo_pt": "tem que",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-945a16",
+      "quem": "ana",
+      "cod": "Can I park here?",
+      "dica": "Eu posso estacionar aqui?",
+      "img": "🚗❓",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3327497,
+        "en_autor": "CK",
+        "pt_id": 5305062,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-247461",
+      "quem": "voce",
+      "contexto": "f-945a16",
+      "cod": "No, you can't park here. It's only for visitors.",
+      "dica": "Não, aqui você não pode estacionar. É só para visitantes.",
+      "img": "🚫🚗",
+      "alvo": "can't",
+      "alvo_pt": "não pode",
+      "conceito": "Proibido, na fala: can't. Não precisa: don't have to. São coisas diferentes!",
+      "registro": "informal",
+      "interferencias": [
+        "BR30",
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-37adc8",
+      "quem": "placa",
+      "cod": "Everyone must wash their own cups.",
+      "dica": "(aviso) Todos devem lavar as próprias xícaras.",
+      "img": "☕🧽",
+      "alvo": "must",
+      "alvo_pt": "devem",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Everyone",
+          "aceita": [
+            "Everybody"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-700815",
+      "quem": "voce",
+      "cod": "And we're not allowed to eat in the meeting rooms.",
+      "dica": "E não temos permissão para comer nas salas de reunião.",
+      "img": "🥪🚫🚪",
+      "alvo": "not allowed to",
+      "alvo_pt": "não temos permissão para",
+      "var": [
+        {
+          "em": "we're not",
+          "aceita": [
+            "we aren't"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b07b52",
+      "quem": "ana",
+      "cod": "Did you have to fill out a lot of forms?",
+      "dica": "Você teve que preencher muitos formulários?",
+      "img": "📝📚",
+      "alvo": "Did you have to",
+      "alvo_pt": "Você teve que",
+      "var": [
+        {
+          "em": "a lot of",
+          "aceita": [
+            "many"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-db53ee",
+      "quem": "voce",
+      "contexto": "f-b07b52",
+      "cod": "Yes, and I had to answer a lot of questions.",
+      "dica": "Sim, e tive que responder muitas perguntas.",
+      "img": "🙋‍♂️❓",
+      "alvo": "had to",
+      "alvo_pt": "tive que",
+      "var": [
+        {
+          "em": "a lot of",
+          "aceita": [
+            "many"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b6059e",
+      "quem": "voce",
+      "contexto": "I have a question about the project.",
+      "cod": "You should ask Mike first. He's very nice.",
+      "dica": "Você deveria perguntar para o Mike primeiro. Ele é muito legal.",
+      "img": "🙂🤝",
+      "alvo": "should",
+      "alvo_pt": "deveria",
+      "conceito": "Perguntar para alguém = ask + pessoa, sem to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR42",
+        "BR30"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6786260,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → Mike; acrescentado He's very nice. (original: \"You should ask Tom first.\"); PT reescrito (original: \"Você deveria perguntar ao Tom primeiro.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "very nice",
+          "aceita": [
+            "really nice"
+          ]
+        }
+      ]
+    }
+  ]
+}

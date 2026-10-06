@@ -1,0 +1,244 @@
+{
+  "id": "situacao-aluguel-contas.o-contrato-e-o-deposito",
+  "trilha": "situacao-aluguel-contas",
+  "nome": "O contrato e o depósito",
+  "emoji": "📝",
+  "cena": "No escritório da imobiliária, você lê o contrato de aluguel com a corretora.",
+  "resumo": "Entender o contrato e o depósito caução, perguntar quando pode se mudar e reagir a uma taxa inesperada.",
+  "fechamento": false,
+  "novos": [
+    "security deposit",
+    "move in / move out",
+    "fee (taxa)",
+    "lease (contrato de aluguel)"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Contrato, depósito e mudança"
+    },
+    {
+      "t": "p",
+      "c": "**lease** = contrato de aluguel. **security deposit** = depósito caução. **move in** = se mudar (para o imóvel); **move out** = sair do imóvel. **fee** = taxa."
+    },
+    {
+      "t": "warn",
+      "c": "Pergunta dentro de pergunta não inverte: Could you tell me when I can move in? (não: when can I)"
+    },
+    {
+      "t": "ex",
+      "c": "If I'd known about the fee, I would have planned for it.\nSe eu soubesse da taxa, teria me planejado."
+    }
+  ],
+  "imagem": "📝🔑💵",
+  "visualizacao": "Você está numa mesa de imobiliária, com o contrato impresso e uma caneta na sua frente. A corretora aponta para a segunda página enquanto você lê com atenção.",
+  "foto_busca": "signing lease contract office",
+  "trechos": [
+    {
+      "id": "f-aaca27",
+      "quem": "corretora",
+      "cod": "Here's the lease. Please read it carefully.",
+      "dica": "Aqui está o contrato de aluguel. Por favor, lê com atenção.",
+      "img": "📄👀",
+      "alvo": "lease",
+      "alvo_pt": "contrato de aluguel",
+      "conceito": "lease = contrato de aluguel; contract = contrato em geral.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ff3f59",
+      "quem": "voce",
+      "cod": "How much is the security deposit?",
+      "dica": "Quanto é o depósito caução?",
+      "img": "💵🔒❓",
+      "alvo": "security deposit",
+      "alvo_pt": "depósito caução",
+      "conceito": "security deposit = o depósito caução, devolvido no fim do contrato.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c29c2d",
+      "quem": "corretora",
+      "contexto": "f-ff3f59",
+      "cod": "The security deposit is one month's rent.",
+      "dica": "O depósito caução é um mês de aluguel.",
+      "img": "📅💵",
+      "alvo": "security deposit",
+      "alvo_pt": "depósito caução",
+      "lit": "[lit.: o aluguel de um mês]",
+      "conceito": "one month's rent: o 's também marca quantidade de tempo.",
+      "var": [
+        {
+          "em": "one month's rent",
+          "aceita": [
+            "one month of rent",
+            "a month's rent"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR10"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e13bb8",
+      "quem": "corretora",
+      "cod": "You get it back when you move out.",
+      "dica": "Você recebe de volta quando sair do apartamento.",
+      "img": "📦🚪💵",
+      "alvo": "move out",
+      "alvo_pt": "sair do apartamento",
+      "conceito": "move out = sair do imóvel de vez; move in = se mudar para ele.",
+      "registro": "neutro",
+      "armadilhas": [
+        "leave"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-99b194",
+      "quem": "voce",
+      "cod": "Could you tell me when I can move in?",
+      "dica": "Você poderia me dizer quando eu posso me mudar?",
+      "img": "📦🏠📅",
+      "alvo": "move in",
+      "alvo_pt": "me mudar",
+      "conceito": "Dentro de outra pergunta, a ordem é normal: when I can (não: when can I).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "can"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-10d91d",
+      "quem": "corretora",
+      "contexto": "f-99b194",
+      "cod": "You can move in on Saturday morning.",
+      "dica": "Você pode se mudar no sábado de manhã.",
+      "img": "🗓️🌅📦",
+      "alvo": "move in",
+      "alvo_pt": "se mudar",
+      "conceito": "Dia da semana leva on: on Saturday morning.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in",
+        "at"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2a59dc",
+      "quem": "voce",
+      "cod": "What's this fee on the second page?",
+      "dica": "Que taxa é essa na segunda página?",
+      "img": "📄🔍💲",
+      "alvo": "fee",
+      "alvo_pt": "taxa",
+      "conceito": "fee = taxa (de serviço, de limpeza, do banco). Página leva on: on the second page.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7f97c3",
+      "quem": "corretora",
+      "contexto": "f-2a59dc",
+      "cod": "That's the cleaning fee. It's $200.",
+      "dica": "Essa é a taxa de limpeza. São 200 dólares.",
+      "img": "🧽💲",
+      "alvo": "fee",
+      "alvo_pt": "taxa",
+      "conceito": "Preço: $200 se lê two hundred dollars.",
+      "var": [
+        {
+          "em": "That's",
+          "aceita": [
+            "This is"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-421ce9",
+      "quem": "voce",
+      "cod": "If I'd known about the fee, I would have planned for it.",
+      "dica": "Se eu soubesse da taxa, teria me planejado.",
+      "img": "🤦💲⏪",
+      "alvo": "fee",
+      "alvo_pt": "taxa",
+      "conceito": "Passado que não aconteceu: If I had known..., I would have... (nunca would no if).",
+      "var": [
+        {
+          "em": "planned for it",
+          "aceita": [
+            "planned ahead"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would",
+        "knew"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-383229",
+      "quem": "voce",
+      "cod": "This is the first time I've signed a lease in the US.",
+      "dica": "Essa é a primeira vez que eu assino um contrato de aluguel nos EUA.",
+      "img": "✍️📄🇺🇸",
+      "alvo": "lease",
+      "alvo_pt": "contrato de aluguel",
+      "conceito": "É a primeira vez que + presente em PT = the first time + present perfect.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "sign"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1688750,
+        "en_autor": "Amastan",
+        "pt_id": 4490859,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: tirado 'ever'; a contract → a lease in the US (original: \"This is the first time I've ever signed a contract.\"); PT: assino → eu assino; contrato → contrato de aluguel nos EUA (original: \"Essa é a primeira vez que assino um contrato.\")",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

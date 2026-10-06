@@ -1,0 +1,203 @@
+{
+  "id": "dev-calls-daily.o-standup-de-segunda",
+  "trilha": "dev-calls-daily",
+  "nome": "O standup de segunda",
+  "emoji": "☕",
+  "cena": "Na daily de segunda, a Sarah conduz, o Mike está com a internet ruim e você combina um pair com a Ana.",
+  "resumo": "Uma daily completa: status, problema de áudio, pedido de tela e combinação de pair.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A daily inteira"
+    },
+    {
+      "t": "p",
+      "c": "Sexta ou ontem: passado. Hoje: going to. Travado: blocked by. Problema na chamada: you cut out / can you scroll down a bit?"
+    },
+    {
+      "t": "warn",
+      "c": "Dia que já passou pede passado simples: On Friday I finished... (não: I've finished on Friday)."
+    },
+    {
+      "t": "tip",
+      "c": "Depois da daily = after standup (sem artigo, como after lunch)."
+    }
+  ],
+  "imagem": "☕💻🗓️",
+  "visualizacao": "Segunda-feira, 9h em Chicago. Você abre a chamada com a caneca de café na mão; a Sarah já está lá, e o vídeo do Mike chega travando.",
+  "foto_busca": "monday morning video meeting coffee",
+  "trechos": [
+    {
+      "id": "f-8f702a",
+      "quem": "sarah",
+      "cod": "Good morning, everyone. Who wants to start?",
+      "dica": "Bom dia, pessoal. Quem quer começar?",
+      "img": "☀️👋",
+      "alvo": "Who wants",
+      "alvo_pt": "Quem quer",
+      "conceito": "Pergunta sobre o sujeito, sem do: Who wants...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "does",
+        "want"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f0ff53",
+      "quem": "voce",
+      "contexto": "f-8f702a",
+      "cod": "On Friday I finished the payment integration.",
+      "dica": "Na sexta eu terminei a integração de pagamento.",
+      "img": "🏁💳",
+      "alvo": "payment integration",
+      "alvo_pt": "integração de pagamento",
+      "conceito": "Dia que já passou: passado simples (finished).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5b4051",
+      "quem": "voce",
+      "cod": "Today I'm going to start the database migration.",
+      "dica": "Hoje vou começar a migração do banco de dados.",
+      "img": "🗄️🚀",
+      "alvo": "I'm going to",
+      "alvo_pt": "vou",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5abe27",
+      "quem": "voce",
+      "cod": "No blockers on my side. That's it from me.",
+      "dica": "Nenhum impedimento do meu lado. É isso da minha parte.",
+      "img": "🟢🎤",
+      "alvo": "That's it from me",
+      "alvo_pt": "É isso da minha parte",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f6ddd6",
+      "quem": "sarah",
+      "cod": "Thanks. Mike, how about you?",
+      "dica": "Valeu. Mike, e você?",
+      "img": "👉🙂",
+      "alvo": "how about you",
+      "alvo_pt": "e você",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "how about you",
+          "aceita": [
+            "what about you"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-3e0df5",
+      "quem": "voce",
+      "cod": "Sorry, Mike, you cut out for a second.",
+      "dica": "Desculpa, Mike, sua voz cortou por um segundo.",
+      "img": "📶🔇",
+      "alvo": "cut out",
+      "alvo_pt": "cortou",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "you cut out",
+          "aceita": [
+            "your voice cut out"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-133dbf",
+      "quem": "mike",
+      "contexto": "f-3e0df5",
+      "cod": "Sorry. I'm still blocked by the server error.",
+      "dica": "Desculpa. Ainda estou travado por causa do erro no servidor.",
+      "img": "🚧🖥️⏳",
+      "alvo": "blocked by",
+      "alvo_pt": "travado por causa",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-31149a",
+      "quem": "sarah",
+      "cod": "Mike, can you scroll down a bit?",
+      "dica": "Mike, você pode rolar um pouco para baixo?",
+      "img": "🖱️⬇️🤏",
+      "alvo": "scroll down",
+      "alvo_pt": "rolar",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a bit",
+          "aceita": [
+            "a little"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cc1f4e",
+      "quem": "voce",
+      "cod": "Ana, do you want to pair after standup?",
+      "dica": "Ana, quer parear depois da daily?",
+      "img": "👥💻",
+      "alvo": "after standup",
+      "alvo_pt": "depois da daily",
+      "conceito": "after standup: sem artigo, como after lunch. Daily (BR) = standup (EUA).",
+      "registro": "informal",
+      "armadilhas": [
+        "the",
+        "daily"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ebad9b",
+      "quem": "ana",
+      "contexto": "f-cc1f4e",
+      "cod": "Sure! Let's do that. Do you want to drive?",
+      "dica": "Claro! Vamos fazer isso. Quer assumir o teclado?",
+      "img": "🤝⌨️",
+      "alvo": "Let's do that",
+      "alvo_pt": "Vamos fazer isso",
+      "var": [
+        {
+          "em": "Let's do that",
+          "aceita": [
+            "Let's do it"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

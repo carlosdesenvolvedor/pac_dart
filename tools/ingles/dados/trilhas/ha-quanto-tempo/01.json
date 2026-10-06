@@ -1,0 +1,330 @@
+{
+  "id": "ha-quanto-tempo.moro-aqui-ha-cinco-anos",
+  "trilha": "ha-quanto-tempo",
+  "nome": "Moro aqui há cinco anos",
+  "emoji": "🏠",
+  "cena": "No corredor do prédio, a vizinha Emma puxa conversa: há quanto tempo cada um mora ali e no bairro.",
+  "resumo": "Algo que começou e continua: have + particípio + for (I've lived here for two years).",
+  "fechamento": false,
+  "novos": [
+    "neighborhood",
+    "decade",
+    "area",
+    "landlord",
+    "roommate"
+  ],
+  "apoio": [
+    "for (duração até agora)",
+    "building",
+    "rent",
+    "downtown",
+    "noisy"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Moro aqui há... = I've lived here for..."
+    },
+    {
+      "t": "p",
+      "c": "Quando algo **começou no passado e continua**, o português usa o presente + há; o inglês usa **have / has + particípio + for**: Moro aqui há dois anos = I've lived here for two years."
+    },
+    {
+      "t": "warn",
+      "c": "Presente simples com for é erro típico de brasileiro (não: I live here for two years). E aqui o há não vira ago: ago é para o que já acabou."
+    },
+    {
+      "t": "p",
+      "c": "Vale também para know e have: Conheço ele há anos = I've known him for years."
+    },
+    {
+      "t": "ex",
+      "c": "We've known each other for ten years.\nA gente se conhece há dez anos."
+    }
+  ],
+  "imagem": "🏢🚪👋",
+  "visualizacao": "Você está no corredor do prédio, com a chave na mão. A Emma abre a porta do lado, o gato dela espia, e ela puxa conversa sobre o bairro.",
+  "foto_busca": "apartment building hallway neighbors",
+  "trechos": [
+    {
+      "id": "f-1f5016",
+      "quem": "voce",
+      "cod": "I've lived in this neighborhood for two years.",
+      "dica": "Moro neste bairro há dois anos.",
+      "img": "🏘️📅",
+      "alvo": "neighborhood",
+      "alvo_pt": "bairro",
+      "lit": "[lit.: tenho morado neste bairro por dois anos]",
+      "conceito": "Moro aqui há (e continuo) = I've lived here for (não: I live here for).",
+      "registro": "informal",
+      "interferencias": [
+        "BR47",
+        "BR26"
+      ],
+      "armadilhas": [
+        "live",
+        "ago",
+        "since"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0e2f0d",
+      "quem": "emma",
+      "contexto": "f-1f5016",
+      "cod": "Really? I've lived here for a decade.",
+      "dica": "Sério? Eu moro aqui há uma década.",
+      "img": "🕰️🏠",
+      "alvo": "decade",
+      "alvo_pt": "década",
+      "conceito": "há uma década (e continua) = for a decade.",
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "live",
+        "ago"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4976778,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I've lived here for years. → Really? I've lived here for a decade.; PT reescrito (o PT original estava no passado)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-55953a",
+      "quem": "voce",
+      "cod": "I really like this neighborhood. It's so quiet.",
+      "dica": "Gosto muito deste bairro. É tão tranquilo.",
+      "img": "🌳😌",
+      "alvo": "neighborhood",
+      "alvo_pt": "bairro",
+      "conceito": "gosto muito = really like. É tranquilo: it obrigatório (It's so quiet).",
+      "var": [
+        {
+          "em": "really like this neighborhood",
+          "aceita": [
+            "like this neighborhood a lot",
+            "like this neighborhood very much"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2377489,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I like this neighborhood. → I really like this neighborhood. It's so quiet.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c23e3d",
+      "quem": "emma",
+      "contexto": "f-55953a",
+      "cod": "Yes, but rent is really high in this area.",
+      "dica": "É, mas o aluguel é muito alto nessa região.",
+      "img": "💸🏢",
+      "alvo": "area",
+      "alvo_pt": "região",
+      "conceito": "aluguel (em geral) = rent, sem the. região (da cidade) = area.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the",
+        "rents",
+        "region"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8506408,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Rents are high in this area. → Yes, but rent is really high in this area.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        },
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yeah"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b2f12d",
+      "quem": "voce",
+      "contexto": "f-c23e3d",
+      "cod": "I know. It's not the cheapest area in town.",
+      "dica": "Eu sei. Não é a região mais barata da cidade.",
+      "img": "🏷️🤷",
+      "alvo": "area",
+      "alvo_pt": "região",
+      "conceito": "a mais barata da cidade = the cheapest in town (superlativo + in).",
+      "var": [
+        {
+          "em": "in town",
+          "aceita": [
+            "in the city"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "of",
+        "more"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5ed34e",
+      "quem": "emma",
+      "cod": "My sister has had the same apartment for a decade.",
+      "dica": "Minha irmã tem o mesmo apartamento há uma década.",
+      "img": "👩🔑",
+      "alvo": "decade",
+      "alvo_pt": "década",
+      "conceito": "tem há uma década (e continua) = has had... for a decade (não: has... for).",
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-87ffe9",
+      "quem": "emma",
+      "cod": "I've known our landlord for years.",
+      "dica": "Conheço o nosso proprietário há anos.",
+      "img": "🤝🏠",
+      "alvo": "landlord",
+      "alvo_pt": "proprietário",
+      "conceito": "landlord = o proprietário que aluga o imóvel. Conheço há anos = I've known... for years.",
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "know",
+        "owner"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-85f530",
+      "quem": "emma",
+      "contexto": "f-87ffe9",
+      "cod": "We were roommates in college.",
+      "dica": "Nós éramos colegas de quarto na faculdade.",
+      "img": "🎓🛏️",
+      "alvo": "roommates",
+      "alvo_pt": "colegas de quarto",
+      "conceito": "roommate = colega de quarto ou de apartamento. Na faculdade (fase que acabou) = passado.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "colleagues"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2643127,
+        "en_autor": "CK",
+        "pt_id": 5551918,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-db1a0b",
+      "quem": "voce",
+      "contexto": "f-85f530",
+      "cod": "Wow, I've never even seen our landlord.",
+      "dica": "Nossa, eu nunca nem vi o nosso proprietário.",
+      "img": "😮👤",
+      "alvo": "landlord",
+      "alvo_pt": "proprietário",
+      "conceito": "nunca nem vi = I've never even seen (o even vem logo depois do never).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "saw",
+        "known"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b914b4",
+      "quem": "emma",
+      "cod": "Do you live by yourself or with a roommate?",
+      "dica": "Você mora sozinho ou com um colega de apartamento?",
+      "img": "🧍🛋️",
+      "alvo": "roommate",
+      "alvo_pt": "colega de apartamento",
+      "conceito": "sozinho = by yourself (aqui o reflexivo é de verdade, BR62).",
+      "var": [
+        {
+          "em": "by yourself",
+          "aceita": [
+            "alone"
+          ]
+        }
+      ],
+      "pt_f": "Você mora sozinha ou com uma colega de apartamento?",
+      "registro": "informal",
+      "interferencias": [
+        "BR62"
+      ],
+      "armadilhas": [
+        "only"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

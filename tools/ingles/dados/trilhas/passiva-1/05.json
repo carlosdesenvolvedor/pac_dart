@@ -1,0 +1,328 @@
+{
+  "id": "passiva-1.fui-promovido-get-participio",
+  "trilha": "passiva-1",
+  "nome": "Fui promovido: get + particípio",
+  "emoji": "📈",
+  "cena": "Num café em Boston, você e o Ben trocam novidades: promoção, salário e um e-mail hackeado.",
+  "resumo": "Passiva da conversa com get: got promoted, get paid, got hacked.",
+  "fechamento": false,
+  "novos": [
+    "get promoted",
+    "get hacked",
+    "get paid"
+  ],
+  "apoio": [
+    "get stuck (ficar preso)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Get + particípio: a passiva da conversa"
+    },
+    {
+      "t": "p",
+      "c": "Para contar algo que **aconteceu** com alguém, a conversa prefere **get + particípio**: I got promoted (fui promovido). My email got hacked (meu e-mail foi hackeado)."
+    },
+    {
+      "t": "tip",
+      "c": "get paid = receber (salário): Lucas gets paid by the hour."
+    },
+    {
+      "t": "warn",
+      "c": "Fui promovido não é promoted myself. Use got promoted (fala) ou was promoted (mais formal)."
+    },
+    {
+      "t": "ex",
+      "c": "I got promoted last week.\nFui promovido semana passada."
+    }
+  ],
+  "imagem": "☕📈🔐",
+  "visualizacao": "Você está numa mesa de canto num café em Boston, com duas canecas soltando fumaça. O Ben chega sorrindo e mal tira o casaco antes de contar a novidade.",
+  "foto_busca": "two friends talking coffee shop",
+  "trechos": [
+    {
+      "id": "f-3c340c",
+      "quem": "ben",
+      "cod": "I got promoted last week.",
+      "dica": "Fui promovido semana passada.",
+      "img": "📈🎉",
+      "alvo": "got promoted",
+      "alvo_pt": "Fui promovido",
+      "conceito": "got promoted = fui promovido (não: promoted myself).",
+      "registro": "informal",
+      "interferencias": [
+        "BR58",
+        "BR27"
+      ],
+      "armadilhas": [
+        "promoted",
+        "myself"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6666306,
+        "en_autor": "CK",
+        "pt_id": 6677135,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "got promoted",
+          "aceita": [
+            "was promoted"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-aec955",
+      "quem": "voce",
+      "contexto": "f-3c340c",
+      "cod": "Congratulations! So you get paid more now?",
+      "dica": "Parabéns! Então agora você recebe mais?",
+      "img": "💵⬆️",
+      "alvo": "get paid",
+      "alvo_pt": "recebe",
+      "conceito": "get paid = receber (salário).",
+      "registro": "informal",
+      "armadilhas": [
+        "win",
+        "earn"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "So you get paid more now",
+          "aceita": [
+            "So now you get paid more"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-dfeb98",
+      "quem": "ben",
+      "contexto": "f-aec955",
+      "cod": "A little, but I don't get paid for overtime anymore.",
+      "dica": "Um pouco, mas não recebo mais por hora extra.",
+      "img": "⏰🚫💵",
+      "alvo": "get paid",
+      "alvo_pt": "recebo",
+      "conceito": "not ... anymore = não ... mais.",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "more"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-63fec3",
+      "quem": "voce",
+      "cod": "My brother Lucas gets paid by the hour.",
+      "dica": "Meu irmão Lucas recebe por hora.",
+      "img": "👨⏱️💵",
+      "alvo": "gets paid",
+      "alvo_pt": "recebe",
+      "conceito": "-s da 3ª pessoa: Lucas gets paid. Por hora = by the hour.",
+      "var": [
+        {
+          "em": "by the hour",
+          "aceita": [
+            "per hour"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "get",
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-086f73",
+      "quem": "ben",
+      "contexto": "f-63fec3",
+      "cod": "Really? How much does he get paid an hour?",
+      "dica": "Sério? Quanto ele recebe por hora?",
+      "img": "💵❓⏱️",
+      "alvo": "get paid",
+      "alvo_pt": "recebe",
+      "conceito": "Depois de does, o verbo fica sem -s: does he get.",
+      "var": [
+        {
+          "em": "an hour",
+          "aceita": [
+            "per hour"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "gets"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8412665,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "you → he (does); acrescentado 'Really?'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-01974c",
+      "quem": "ben",
+      "cod": "Has anyone on your team gotten promoted this year?",
+      "dica": "Alguém do seu time foi promovido este ano?",
+      "img": "👥📈❓",
+      "alvo": "gotten promoted",
+      "alvo_pt": "foi promovido",
+      "conceito": "this year (ainda não acabou) combina com present perfect. gotten = particípio de get (EUA).",
+      "var": [
+        {
+          "em": "Has anyone on your team gotten promoted",
+          "aceita": [
+            "Did anyone on your team get promoted",
+            "Has anyone on your team been promoted",
+            "Was anyone on your team promoted"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "got"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-757eaa",
+      "quem": "voce",
+      "contexto": "f-01974c",
+      "cod": "Yes, Ana led the app redesign, and she got promoted in March.",
+      "dica": "Sim, a Ana liderou o redesign do app e foi promovida em março.",
+      "img": "🎨📈",
+      "alvo": "got promoted",
+      "alvo_pt": "foi promovida",
+      "conceito": "Com data (em março), passado simples. March com maiúscula.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR15"
+      ],
+      "armadilhas": [
+        "has",
+        "march"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "got promoted",
+          "aceita": [
+            "was promoted"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b38502",
+      "quem": "ben",
+      "cod": "Oh, and my email got hacked on Monday.",
+      "dica": "Ah, e meu e-mail foi hackeado na segunda.",
+      "img": "📧🔓😱",
+      "alvo": "got hacked",
+      "alvo_pt": "foi hackeado",
+      "conceito": "got hacked = foi hackeado (aconteceu com ele).",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in",
+        "was"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "got hacked",
+          "aceita": [
+            "was hacked"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0a830c",
+      "quem": "voce",
+      "contexto": "f-b38502",
+      "cod": "Did your bank account get hacked too?",
+      "dica": "Sua conta do banco também foi hackeada?",
+      "img": "🏦🔓❓",
+      "alvo": "get hacked",
+      "alvo_pt": "foi hackeada",
+      "conceito": "Pergunta com get: Did + sujeito + get hacked?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "got",
+        "was"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Did your bank account get hacked",
+          "aceita": [
+            "Was your bank account hacked"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1c3dcc",
+      "quem": "ben",
+      "contexto": "f-0a830c",
+      "cod": "No. But after my email got hacked, I changed all my passwords.",
+      "dica": "Não. Mas depois que meu e-mail foi hackeado, mudei todas as minhas senhas.",
+      "img": "🔑🔄",
+      "alvo": "got hacked",
+      "alvo_pt": "foi hackeado",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "was"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "got hacked",
+          "aceita": [
+            "was hacked"
+          ]
+        }
+      ]
+    }
+  ]
+}

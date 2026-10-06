@@ -1,0 +1,269 @@
+{
+  "id": "dev-code-review.cena-uma-revisao-completa",
+  "trilha": "dev-code-review",
+  "nome": "Cena: uma revisão completa",
+  "emoji": "🧐",
+  "cena": "Você e o Mike revisam juntos um PR grande do dev novo antes da release, e ele responde aos comentários.",
+  "resumo": "Uma revisão inteira de memória: sugestão, risco, pedido de teste, resposta e nova olhada.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "Nit:",
+    "Consider + -ing",
+    "might",
+    "take another look",
+    "latest commit"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão da trilha"
+    },
+    {
+      "t": "p",
+      "c": "Quem revisa sugere (**Consider renaming...**, **Nit:**), aponta risco (**This might break if...**) e pede teste. Quem recebe agradece e pede **another look**."
+    },
+    {
+      "t": "warn",
+      "c": "Consider renaming (não: consider to rename); thanks for the feedback (não: feedbacks); explain to us (não: explain us)."
+    }
+  ],
+  "imagem": "👥💻🚀",
+  "visualizacao": "Véspera de release. Você e o Mike estão na chamada, cada um com o mesmo PR enorme aberto, comentando em voz alta e digitando em paralelo. O relógio corre.",
+  "foto_busca": "two developers video call code",
+  "trechos": [
+    {
+      "id": "f-009e0a",
+      "quem": "mike",
+      "cod": "Consider renaming this function because the current name is confusing.",
+      "dica": "Considere renomear esta função, porque o nome atual é confuso.",
+      "img": "🏷️😵‍💫",
+      "alvo": "",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to",
+        "rename"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7ae26b",
+      "quem": "voce",
+      "cod": "Agreed. And this hardcoded timeout might cause problems in production.",
+      "dica": "Concordo. E esse timeout hardcoded pode causar problemas em produção.",
+      "img": "⏲️🔒⚠️",
+      "alvo": "",
+      "var": [
+        {
+          "em": "might",
+          "aceita": [
+            "could",
+            "may"
+          ]
+        },
+        {
+          "em": "Agreed",
+          "aceita": [
+            "I agree"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-678ffc",
+      "quem": "mike",
+      "cod": "Nit: this comment doesn't match what the code does.",
+      "dica": "Detalhe: esse comentário não bate com o que o código faz.",
+      "img": "💬↔️",
+      "alvo": "",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR07",
+        "BR02"
+      ],
+      "armadilhas": [
+        "don't",
+        "do"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-38aa0d",
+      "quem": "voce",
+      "cod": "This might break if the user has no profile picture. Could you check?",
+      "dica": "Isso pode quebrar se o usuário não tiver foto de perfil. Você pode verificar?",
+      "img": "🖼️❌",
+      "alvo": "",
+      "var": [
+        {
+          "em": "might",
+          "aceita": [
+            "could",
+            "may"
+          ]
+        },
+        {
+          "em": "Could you",
+          "aceita": [
+            "Can you"
+          ]
+        },
+        {
+          "em": "has no",
+          "aceita": [
+            "doesn't have a"
+          ]
+        },
+        {
+          "em": "picture",
+          "aceita": [
+            "photo"
+          ]
+        }
+      ],
+      "blocos": [
+        10
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fee4f5",
+      "quem": "voce",
+      "cod": "Could you explain to us why this test is skipped?",
+      "dica": "Você pode explicar pra gente por que este teste está sendo pulado?",
+      "img": "🧪⏭️❓",
+      "alvo": "",
+      "var": [
+        {
+          "em": "Could you",
+          "aceita": [
+            "Can you"
+          ]
+        },
+        {
+          "em": "is skipped",
+          "aceita": [
+            "is being skipped"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR54",
+        "BR50"
+      ],
+      "armadilhas": [
+        "explain us"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ed8ed6",
+      "quem": "dev-novo",
+      "cod": "Thanks for the feedback! I've added tests for the edge cases.",
+      "dica": "Obrigado pelo feedback! Já adicionei testes para os casos de borda.",
+      "img": "🙏🧪",
+      "alvo": "",
+      "conceito": "edge case = caso de borda, a situação no limite (lista vazia, valor nulo).",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22",
+        "BR27"
+      ],
+      "armadilhas": [
+        "feedbacks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ce9354",
+      "quem": "dev-novo",
+      "cod": "Could you both take another look? Everything is in the latest commit.",
+      "dica": "Vocês dois podem dar mais uma olhada? Está tudo no último commit.",
+      "img": "👀👀",
+      "alvo": "",
+      "var": [
+        {
+          "em": "Could you",
+          "aceita": [
+            "Can you"
+          ]
+        },
+        {
+          "em": "Everything is",
+          "aceita": [
+            "Everything's",
+            "It's all"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c087e0",
+      "quem": "mike",
+      "contexto": "f-ce9354",
+      "cod": "Looks good to me. Nice work, and thanks for adding the tests.",
+      "dica": "Pra mim, ficou bom. Bom trabalho e obrigado por adicionar os testes.",
+      "img": "👍🎉",
+      "alvo": "",
+      "lit": "[lit.: parece bom para mim]",
+      "conceito": "Looks good to me = LGTM, a aprovação no PR; thanks for + -ing.",
+      "var": [
+        {
+          "em": "Looks",
+          "aceita": [
+            "It looks"
+          ]
+        },
+        {
+          "em": "Nice work",
+          "aceita": [
+            "Good work",
+            "Nice job",
+            "Good job"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "add"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

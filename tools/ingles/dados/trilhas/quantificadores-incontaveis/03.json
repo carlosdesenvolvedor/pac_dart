@@ -1,0 +1,281 @@
+{
+  "id": "quantificadores-incontaveis.so-um-pouquinho-a-little",
+  "trilha": "quantificadores-incontaveis",
+  "nome": "Só um pouquinho: a little",
+  "emoji": "🤏",
+  "cena": "De manhã, na cozinha da Emma, e depois numa chamada com o Mike: um pouco de açúcar, um pouco mais de tempo.",
+  "resumo": "Pedir e oferecer um pouco de algo que não se conta: a little, a little more, a little bit.",
+  "fechamento": false,
+  "novos": [
+    "a little more",
+    "sugar",
+    "a little bit"
+  ],
+  "apoio": [
+    "a little (um pouco de)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Um pouco de: a little"
+    },
+    {
+      "t": "p",
+      "c": "**a little** vai com o que não se conta: a little sugar, a little time. Para pedir mais: **a little more**. Na conversa, **a little bit** = um pouquinho."
+    },
+    {
+      "t": "ex",
+      "c": "I need a little more time.\nPreciso de um pouco mais de tempo."
+    },
+    {
+      "t": "warn",
+      "c": "Não: a few time. A few é só com plural (a few minutes); a little, com o que não se conta."
+    }
+  ],
+  "imagem": "☕🍬🤏",
+  "visualizacao": "Cozinha da Emma, cheiro de café passado. Ela segura o açucareiro e espera sua resposta. Mais tarde, no notebook, a voz do Mike chega baixinha e cortando.",
+  "foto_busca": "coffee cup sugar kitchen table",
+  "trechos": [
+    {
+      "id": "f-41aa09",
+      "quem": "emma",
+      "cod": "Do you want sugar in your coffee?",
+      "dica": "Quer açúcar no café?",
+      "img": "☕🍬❓",
+      "alvo": "sugar",
+      "alvo_pt": "açúcar",
+      "var": [
+        {
+          "em": "your",
+          "aceita": [
+            "the"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ef575f",
+      "quem": "voce",
+      "contexto": "f-41aa09",
+      "cod": "Just a little sugar, please.",
+      "dica": "Só um pouco de açúcar, por favor.",
+      "img": "🍬🤏",
+      "alvo": "sugar",
+      "alvo_pt": "açúcar",
+      "conceito": "a little + o que não se conta: a little sugar.",
+      "var": [
+        {
+          "em": "a little",
+          "aceita": [
+            "a little bit of"
+          ]
+        },
+        {
+          "em": "Just",
+          "aceita": [
+            "Only"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "few"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b53871",
+      "quem": "emma",
+      "cod": "I don't like coffee without sugar.",
+      "dica": "Não gosto de café sem açúcar.",
+      "img": "☕➖🍬",
+      "alvo": "sugar",
+      "alvo_pt": "açúcar",
+      "conceito": "Café em geral é coffee, sem the.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6662883,
+        "en_autor": "CK",
+        "pt_id": 11087017,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-238198",
+      "quem": "emma",
+      "cod": "Do you want a little more coffee?",
+      "dica": "Quer mais um pouco de café?",
+      "img": "☕➕",
+      "alvo": "a little more",
+      "alvo_pt": "mais um pouco",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d49b2e",
+      "quem": "voce",
+      "contexto": "f-238198",
+      "cod": "Just a little more.",
+      "dica": "Só mais um pouco.",
+      "img": "🤏☕",
+      "alvo": "a little more",
+      "alvo_pt": "mais um pouco",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 495631,
+        "en_autor": "FeuDRenais",
+        "pt_id": 916979,
+        "pt_autor": "npc",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "Just",
+          "aceita": [
+            "Only"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-eae4fa",
+      "quem": "voce",
+      "contexto": "Hi! Can you hear me?",
+      "cod": "Not really. Can you speak a little bit louder?",
+      "dica": "Não muito bem. Você pode falar um pouquinho mais alto?",
+      "img": "🔊👂",
+      "alvo": "a little bit",
+      "alvo_pt": "um pouquinho",
+      "conceito": "a little bit = um pouquinho (bem comum na conversa).",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Not really",
+          "aceita": [
+            "Not very well"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f0168e",
+      "quem": "mike",
+      "contexto": "f-eae4fa",
+      "cod": "Sorry. My internet is a little bit slow today.",
+      "dica": "Desculpa. Minha internet está um pouquinho lenta hoje.",
+      "img": "📶🐌",
+      "alvo": "a little bit",
+      "alvo_pt": "um pouquinho",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fe743d",
+      "quem": "voce",
+      "contexto": "So, do you like the new design?",
+      "cod": "I want to think about it a little more.",
+      "dica": "Quero pensar mais um pouco sobre isso.",
+      "img": "🤔💭",
+      "alvo": "a little more",
+      "alvo_pt": "mais um pouco",
+      "conceito": "O objeto não some: think about it (pensar sobre isso).",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6344287,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "about it a little more",
+          "aceita": [
+            "a little more about it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1c2d55",
+      "quem": "voce",
+      "contexto": "Is the login page ready?",
+      "cod": "I need a little more time.",
+      "dica": "Preciso de um pouco mais de tempo.",
+      "img": "⏳➕",
+      "alvo": "a little more",
+      "alvo_pt": "um pouco mais",
+      "conceito": "time não se conta: a little more time (não: a few more time).",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "few"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2387450,
+        "en_autor": "CK",
+        "pt_id": 5541793,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a51815",
+      "quem": "mike",
+      "contexto": "f-1c2d55",
+      "cod": "Sure. It's a little more difficult than we thought.",
+      "dica": "Claro. É um pouco mais difícil do que a gente pensava.",
+      "img": "🧩😅",
+      "alvo": "a little more",
+      "alvo_pt": "um pouco mais",
+      "conceito": "Sujeito it obrigatório: It's a little more difficult.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

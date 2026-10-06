@@ -1,0 +1,277 @@
+{
+  "id": "situacao-saude.nao-estou-bem-onde-doi",
+  "trilha": "situacao-saude",
+  "nome": "Não estou bem: onde dói",
+  "emoji": "🤒",
+  "cena": "Em casa, você acorda doente: avisa o Mike por mensagem e mostra à Julia, sua irmã, onde dói.",
+  "resumo": "Dizer como se sente e onde dói: I don't feel well. / It hurts here.",
+  "fechamento": false,
+  "novos": [
+    "I don't feel well.",
+    "dizzy",
+    "feel sick",
+    "It hurts here.",
+    "hurt"
+  ],
+  "apoio": [
+    "back (costas)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Doer = hurt"
+    },
+    {
+      "t": "p",
+      "c": "Parte do corpo + **hurts**: My head hurts. Sem dizer a parte do corpo, o inglês exige o **it**: It hurts here. / Where does it hurt?"
+    },
+    {
+      "t": "warn",
+      "c": "O it é obrigatório: Dói aqui = It hurts here. Começou ontem à noite = It started last night. E muito com verbo = a lot: It hurts a lot (não: very hurts)."
+    },
+    {
+      "t": "ex",
+      "c": "I don't feel well today.\nNão estou me sentindo bem hoje."
+    }
+  ],
+  "imagem": "🛏️🤒📱",
+  "visualizacao": "Você acorda em casa com a cabeça pesada e o estômago embrulhado. Pega o celular para avisar o Mike, e a Julia chega com um café que você nem consegue olhar.",
+  "foto_busca": "sick person in bed phone",
+  "trechos": [
+    {
+      "id": "f-3be797",
+      "quem": "voce",
+      "cod": "Hi, Mike. I don't feel well today.",
+      "dica": "Oi, Mike. Não estou me sentindo bem hoje.",
+      "img": "📱🤒",
+      "alvo": "I don't feel well",
+      "alvo_pt": "Não estou me sentindo bem",
+      "conceito": "I don't feel well = não estou me sentindo bem.",
+      "var": [
+        {
+          "em": "I don't feel",
+          "aceita": [
+            "I'm not feeling"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b0e16a",
+      "quem": "voce",
+      "contexto": "Oh no. What's wrong?",
+      "cod": "I feel sick. It started last night.",
+      "dica": "Estou passando mal. Começou ontem à noite.",
+      "img": "🤢🌙",
+      "alvo": "feel sick",
+      "alvo_pt": "passando mal",
+      "conceito": "Começou ontem à noite = It started last night: it obrigatório e passado.",
+      "var": [
+        {
+          "em": "I feel",
+          "aceita": [
+            "I'm feeling"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR27"
+      ],
+      "armadilhas": [
+        "started",
+        "since"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f552a9",
+      "quem": "mike",
+      "contexto": "f-b0e16a",
+      "cod": "Do you feel dizzy too?",
+      "dica": "Você está sentindo tontura também?",
+      "img": "😵❓",
+      "alvo": "dizzy",
+      "alvo_pt": "tontura",
+      "conceito": "dizzy = tonto, com tontura.",
+      "var": [
+        {
+          "em": "Do you feel",
+          "aceita": [
+            "Are you",
+            "Are you feeling"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-633d4c",
+      "quem": "voce",
+      "contexto": "f-f552a9",
+      "cod": "Yes, I'm a little dizzy.",
+      "dica": "Sim, estou um pouco tonto.",
+      "img": "😵🤏",
+      "alvo": "dizzy",
+      "alvo_pt": "tonto",
+      "pt_f": "Sim, estou um pouco tonta.",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2548743,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado 'Yes,'; PT reescrito (o original diz 'atordoado')",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-16c79d",
+      "quem": "voce",
+      "cod": "My head hurts a lot. I can't work today.",
+      "dica": "Minha cabeça está doendo muito. Não consigo trabalhar hoje.",
+      "img": "🤕💻🚫",
+      "alvo": "hurt",
+      "alvo_pt": "doendo",
+      "conceito": "Muito com verbo = a lot: hurts a lot (não: very hurts).",
+      "registro": "informal",
+      "interferencias": [
+        "BR23"
+      ],
+      "armadilhas": [
+        "very",
+        "much"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "My head hurts",
+          "aceita": [
+            "My head is hurting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f4dd2f",
+      "quem": "voce",
+      "contexto": "Do you want some coffee?",
+      "cod": "No, thanks. I feel sick.",
+      "dica": "Não, obrigado. Estou passando mal.",
+      "img": "☕🙅🤢",
+      "alvo": "feel sick",
+      "alvo_pt": "passando mal",
+      "var": [
+        {
+          "em": "I feel",
+          "aceita": [
+            "I'm feeling"
+          ]
+        }
+      ],
+      "pt_f": "Não, obrigada. Estou passando mal.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a4d98f",
+      "quem": "julia",
+      "cod": "Where does it hurt?",
+      "dica": "Onde dói?",
+      "img": "🩹❓",
+      "alvo": "hurt",
+      "alvo_pt": "dói",
+      "lit": "[lit.: onde isso dói?]",
+      "conceito": "Sem a parte do corpo, o inglês pede it: Where does it hurt?",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR06"
+      ],
+      "armadilhas": [
+        "hurts"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-013313",
+      "quem": "voce",
+      "contexto": "f-a4d98f",
+      "cod": "It hurts here, near my stomach.",
+      "dica": "Dói aqui, perto do estômago.",
+      "img": "👇😣",
+      "alvo": "It hurts here",
+      "alvo_pt": "Dói aqui",
+      "conceito": "Parte do corpo vem com possessivo: my stomach, my back.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "hurts",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ee4778",
+      "quem": "voce",
+      "contexto": "Just there?",
+      "cod": "No, it hurts here too.",
+      "dica": "Não, dói aqui também.",
+      "img": "👆😖",
+      "alvo": "it hurts here",
+      "alvo_pt": "dói aqui",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "variacao_de": "f-013313",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-959517",
+      "quem": "voce",
+      "cod": "I don't feel well. Can you call a doctor?",
+      "dica": "Não estou me sentindo bem. Você pode ligar para um médico?",
+      "img": "📞👩‍⚕️",
+      "alvo": "I don't feel well",
+      "alvo_pt": "Não estou me sentindo bem",
+      "conceito": "call a doctor: call sem to (não: call to a doctor).",
+      "var": [
+        {
+          "em": "I don't feel",
+          "aceita": [
+            "I'm not feeling"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

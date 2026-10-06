@@ -1,0 +1,289 @@
+{
+  "id": "opinar-conduzir-conversa.entendo-mas-nao-concordo",
+  "trilha": "opinar-conduzir-conversa",
+  "nome": "Entendo, mas não concordo",
+  "emoji": "⚖️",
+  "cena": "No almoço no escritório de Austin, o Mike (de visita) e você discutem trabalho remoto x escritório.",
+  "resumo": "Concordar e discordar com educação: I see what you mean, but... / That's a good point. / I'm not so sure about that.",
+  "fechamento": false,
+  "novos": [
+    "That's a good point",
+    "I see what you mean",
+    "I'm not so sure about that",
+    "agree with",
+    "totally"
+  ],
+  "apoio": [
+    "Not really",
+    "the office"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Concordar e discordar com educação"
+    },
+    {
+      "t": "p",
+      "c": "Antes de discordar, mostre que entendeu: **I see what you mean, but...** Para aceitar o argumento: **That's a good point.** Para duvidar sem brigar: **I'm not so sure about that.**"
+    },
+    {
+      "t": "warn",
+      "c": "Concordar é verbo: I agree / I don't agree (não: I am agree). Acho que sim / acho que não = I think so / I don't think so (não: I think that yes)."
+    },
+    {
+      "t": "ex",
+      "c": "I see what you mean, but I don't agree.\nEntendo o que você quer dizer, mas não concordo."
+    }
+  ],
+  "imagem": "🥗🗣️🏢",
+  "visualizacao": "Hora do almoço no escritório de Austin. Você e o Mike dividem uma mesa perto da janela, bandejas na mão, e ele começa a defender o trabalho no escritório.",
+  "foto_busca": "coworkers lunch office table",
+  "trechos": [
+    {
+      "id": "f-91408d",
+      "quem": "mike",
+      "cod": "Do you agree with what Sarah said about remote work?",
+      "dica": "Você concorda com o que a Sarah disse sobre trabalho remoto?",
+      "img": "🏠💻❓",
+      "alvo": "agree with",
+      "alvo_pt": "concorda com",
+      "conceito": "concordar com = agree with; é verbo, então a pergunta usa do. Trabalho remoto em geral, sem the.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "are"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8026600,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → Sarah; acrescentado \"about remote work\" (original: \"Do you agree with what Tom said?\"); PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-82be07",
+      "quem": "voce",
+      "contexto": "f-91408d",
+      "cod": "Yes, totally. I focus better at home.",
+      "dica": "Sim, totalmente. Me concentro melhor em casa.",
+      "img": "🎯🏠",
+      "alvo": "totally",
+      "alvo_pt": "totalmente",
+      "conceito": "Me concentro = I focus (ou I concentrate), sem myself.",
+      "registro": "informal",
+      "interferencias": [
+        "BR62"
+      ],
+      "armadilhas": [
+        "myself"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "focus",
+          "aceita": [
+            "concentrate"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b7920e",
+      "quem": "mike",
+      "contexto": "f-82be07",
+      "cod": "I see what you mean, but people work better in the office.",
+      "dica": "Entendo o que você quer dizer, mas as pessoas trabalham melhor no escritório.",
+      "img": "🏢👥",
+      "alvo": "I see what you mean",
+      "alvo_pt": "Entendo o que você quer dizer",
+      "lit": "[lit.: eu vejo o que você quer dizer]",
+      "conceito": "Pessoas em geral = people, sem the.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "in the office",
+          "aceita": [
+            "at the office"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1fd7d4",
+      "quem": "voce",
+      "contexto": "f-b7920e",
+      "cod": "I'm not so sure about that.",
+      "dica": "Não tenho tanta certeza disso.",
+      "img": "🤷",
+      "alvo": "I'm not so sure about that",
+      "alvo_pt": "Não tenho tanta certeza disso",
+      "conceito": "Duvidar com educação: I'm not so sure about that.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2544706,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → that (original: \"I'm not so sure about Tom.\"); PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3ebe69",
+      "quem": "voce",
+      "cod": "Most of the team agreed with me at the last meeting.",
+      "dica": "A maioria do time concordou comigo na última reunião.",
+      "img": "🙋👥",
+      "alvo": "agreed with",
+      "alvo_pt": "concordou com",
+      "conceito": "a maioria do time = most of the team (não: the most of).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "at the last meeting",
+          "aceita": [
+            "in the last meeting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-574c77",
+      "quem": "mike",
+      "contexto": "f-3ebe69",
+      "cod": "That's a good point, but new people learn faster here.",
+      "dica": "É um bom ponto, mas gente nova aprende mais rápido aqui.",
+      "img": "🌱📚",
+      "alvo": "That's a good point",
+      "alvo_pt": "É um bom ponto",
+      "conceito": "gente nova (pessoas em geral) = new people; people é plural: people learn (não: people learns).",
+      "registro": "informal",
+      "interferencias": [
+        "BR14"
+      ],
+      "armadilhas": [
+        "learns"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-48587f",
+      "quem": "voce",
+      "contexto": "f-574c77",
+      "cod": "OK, that's a good point. I hadn't thought about that.",
+      "dica": "Tá, é um bom ponto. Eu não tinha pensado nisso.",
+      "img": "💡🤔",
+      "alvo": "that's a good point",
+      "alvo_pt": "é um bom ponto",
+      "conceito": "Eu não tinha pensado = I hadn't thought (pensar em = think about).",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "variacao_de": "f-574c77",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "about that",
+          "aceita": [
+            "about it",
+            "of that"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-31972e",
+      "quem": "mike",
+      "cod": "Our last video call was totally confusing.",
+      "dica": "Nossa última chamada de vídeo foi totalmente confusa.",
+      "img": "📹😵",
+      "alvo": "totally",
+      "alvo_pt": "totalmente",
+      "conceito": "confusing = que confunde; confused = confuso (a pessoa).",
+      "registro": "informal",
+      "interferencias": [
+        "BR41"
+      ],
+      "armadilhas": [
+        "confused"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-02aece",
+      "quem": "voce",
+      "contexto": "f-31972e",
+      "cod": "I see what you mean, but yesterday's meeting went well.",
+      "dica": "Entendo o que você quer dizer, mas a reunião de ontem foi bem.",
+      "img": "📅👍",
+      "alvo": "I see what you mean",
+      "alvo_pt": "Entendo o que você quer dizer",
+      "conceito": "a reunião de ontem = yesterday's meeting.",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "variacao_de": "f-b7920e",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ea578c",
+      "quem": "mike",
+      "contexto": "f-02aece",
+      "cod": "I'm not so sure about that. Most people prefer the office.",
+      "dica": "Não tenho tanta certeza disso. A maioria das pessoas prefere o escritório.",
+      "img": "🏢❤️",
+      "alvo": "I'm not so sure about that",
+      "alvo_pt": "Não tenho tanta certeza disso",
+      "conceito": "a maioria das pessoas = most people (sem the, sem of).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

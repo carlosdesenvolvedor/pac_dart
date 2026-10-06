@@ -1,0 +1,218 @@
+{
+  "id": "comparar.melhor-que-better",
+  "trilha": "comparar",
+  "nome": "Melhor que: better",
+  "emoji": "👍",
+  "cena": "Ainda na loja, você e a Ana decidem entre dois notebooks, um preto e um azul.",
+  "resumo": "Dizer que algo é melhor (better, better than) e apontar com this one e the other one.",
+  "fechamento": false,
+  "novos": [
+    "better",
+    "better than",
+    "this one",
+    "the other one"
+  ],
+  "apoio": [
+    "one"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Melhor = better"
+    },
+    {
+      "t": "p",
+      "c": "good → **better** (melhor). Com o que: **better than** (melhor que)."
+    },
+    {
+      "t": "p",
+      "c": "Para não repetir o substantivo, o inglês põe **one**: este = **this one**, o outro = **the other one**, o azul = the blue one."
+    },
+    {
+      "t": "warn",
+      "c": "Nada de more good: melhor é **better**. E o outro = **the other one** (não: the other)."
+    },
+    {
+      "t": "ex",
+      "c": "This one is better than the other one.\nEste é melhor que o outro."
+    }
+  ],
+  "imagem": "💻⚖️👍",
+  "visualizacao": "Dois notebooks lado a lado no balcão, um preto e um azul. A Ana aponta para um, você para o outro, e o vendedor espera vocês decidirem.",
+  "foto_busca": "two laptops store counter",
+  "trechos": [
+    {
+      "id": "f-b38f9e",
+      "quem": "voce",
+      "cod": "Which one is better?",
+      "dica": "Qual é melhor?",
+      "img": "🤔👍",
+      "alvo": "better",
+      "alvo_pt": "melhor",
+      "conceito": "melhor = better (good → better). which one = qual (entre opções).",
+      "registro": "informal",
+      "armadilhas": [
+        "more",
+        "gooder"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4755147,
+        "en_autor": "garborg",
+        "pt_id": 4756823,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Which one is easier?\"; PT original: \"Qual é mais fácil?\"; easier → better; PT: mais fácil → melhor",
+        "export": "2026-10-03"
+      },
+      "opcional": [
+        "one"
+      ]
+    },
+    {
+      "id": "f-302e8f",
+      "quem": "atendente",
+      "contexto": "f-b38f9e",
+      "cod": "This one is better.",
+      "dica": "Este é melhor.",
+      "img": "👉💻",
+      "alvo": "This one",
+      "alvo_pt": "Este",
+      "lit": "[lit.: este um é melhor]",
+      "conceito": "Este (escolhendo entre opções) = this one: o one fica no lugar de notebook.",
+      "registro": "neutro",
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4397544,
+        "en_autor": "CK",
+        "pt_id": 5667995,
+        "pt_autor": "KimiP",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"This one is bigger.\"; PT original: \"Este é maior.\"; bigger → better; PT: maior → melhor",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e9ba0f",
+      "quem": "ana",
+      "cod": "I want the other one.",
+      "dica": "Eu quero o outro.",
+      "img": "👈💻",
+      "alvo": "the other one",
+      "alvo_pt": "o outro",
+      "conceito": "o outro = the other one (não: the other).",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2011560,
+        "en_autor": "CK",
+        "pt_id": 4872926,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ba7bee",
+      "quem": "voce",
+      "contexto": "f-e9ba0f",
+      "cod": "Is it better than this one?",
+      "dica": "É melhor que este?",
+      "img": "⚖️❓",
+      "alvo": "better than",
+      "alvo_pt": "melhor que",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "then"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4dd277",
+      "quem": "ana",
+      "contexto": "f-ba7bee",
+      "cod": "Yes, the blue one is better.",
+      "dica": "É, o azul é melhor.",
+      "img": "🔵👍",
+      "alvo": "better",
+      "alvo_pt": "melhor",
+      "conceito": "o azul = the blue one (cor + one).",
+      "registro": "informal",
+      "armadilhas": [
+        "blue"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-081dcf",
+      "quem": "voce",
+      "contexto": "f-4dd277",
+      "cod": "Yes, but the other one is cheaper.",
+      "dica": "É, mas o outro é mais barato.",
+      "img": "💵👈",
+      "alvo": "the other one",
+      "alvo_pt": "o outro",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-33b3e4",
+      "quem": "voce",
+      "cod": "It's better than my laptop at home.",
+      "dica": "É melhor que o meu notebook de casa.",
+      "img": "🏠💻⬆️",
+      "alvo": "better than",
+      "alvo_pt": "melhor que",
+      "var": [
+        {
+          "em": "my laptop at home",
+          "aceita": [
+            "my home laptop"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-574fa1",
+      "quem": "voce",
+      "cod": "I think I'll take this one.",
+      "dica": "Acho que vou levar este.",
+      "img": "🛍️💻",
+      "alvo": "this one",
+      "alvo_pt": "este",
+      "conceito": "este = this one. Vou levar = I'll take (fórmula da loja).",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2407884,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Eu acho que vou levar esse aqui.\"; PT reescrito: este = this one, como no resto da trilha",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

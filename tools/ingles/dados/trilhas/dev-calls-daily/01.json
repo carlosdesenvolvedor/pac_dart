@@ -1,0 +1,223 @@
+{
+  "id": "dev-calls-daily.na-chamada-zoom-tela-e-audio",
+  "trilha": "dev-calls-daily",
+  "nome": "Na chamada: zoom, tela e áudio",
+  "emoji": "🖥️",
+  "cena": "Numa chamada com o Mike, a internet oscila, a voz corta e você pede zoom e rolagem no código.",
+  "resumo": "Resolver os problemas de uma chamada: zoom in, scroll down, you cut out, a bit.",
+  "fechamento": false,
+  "novos": [
+    "zoom in",
+    "scroll down",
+    "a bit",
+    "cut out",
+    "for a second"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pedidos na chamada"
+    },
+    {
+      "t": "p",
+      "c": "**Can you / Could you** + verbo: Can you **zoom in**? Could you **scroll down**? Para suavizar o pedido, **a bit** (ou a little): zoom out a bit."
+    },
+    {
+      "t": "tip",
+      "c": "Sua voz cortou = you cut out. Minha tela travou = my screen froze."
+    },
+    {
+      "t": "warn",
+      "c": "O inglês exige o objeto: Can you repeat that? (não: Can you repeat?). E substantivo + substantivo: error message (não: message of error)."
+    },
+    {
+      "t": "ex",
+      "c": "Sorry, you cut out for a second.\nDesculpa, sua voz cortou por um segundo."
+    }
+  ],
+  "imagem": "💻🎧🔍",
+  "visualizacao": "Você está no seu home office com o fone no ouvido. Na tela, o código do Mike aparece minúsculo, e a imagem dele congela de vez em quando.",
+  "foto_busca": "video call home office laptop",
+  "trechos": [
+    {
+      "id": "f-a0fbb5",
+      "quem": "voce",
+      "cod": "Mike, can you zoom in, please?",
+      "dica": "Mike, você pode dar um zoom, por favor?",
+      "img": "🔍👀",
+      "alvo": "zoom in",
+      "alvo_pt": "dar um zoom",
+      "conceito": "zoom in = aumentar o zoom; zoom out = diminuir.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aba0d2",
+      "quem": "voce",
+      "contexto": "Is this better?",
+      "cod": "Yes, thanks. Can you scroll down?",
+      "dica": "Sim, valeu. Você pode rolar para baixo?",
+      "img": "🖱️⬇️",
+      "alvo": "scroll down",
+      "alvo_pt": "rolar para baixo",
+      "conceito": "scroll down = rolar para baixo; scroll up = para cima.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b696e8",
+      "quem": "voce",
+      "cod": "Stop there. Can you zoom in on the error message?",
+      "dica": "Para aí. Você pode dar um zoom na mensagem de erro?",
+      "img": "✋🔍⚠️",
+      "alvo": "zoom in",
+      "alvo_pt": "dar um zoom",
+      "conceito": "zoom in on + coisa. Mensagem de erro = error message (substantivo + substantivo).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24",
+        "BR17"
+      ],
+      "armadilhas": [
+        "message"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-058bcc",
+      "quem": "mike",
+      "cod": "Sorry, you cut out. Can you repeat that?",
+      "dica": "Desculpa, sua voz cortou. Pode repetir?",
+      "img": "🔇🔁",
+      "alvo": "cut out",
+      "alvo_pt": "cortou",
+      "conceito": "cut out = cortar (a voz ou o sinal, numa chamada). Repetir isso = repeat that (com objeto).",
+      "var": [
+        {
+          "em": "repeat that",
+          "aceita": [
+            "say that again"
+          ]
+        },
+        {
+          "em": "you cut out",
+          "aceita": [
+            "your voice cut out"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-28b253",
+      "quem": "voce",
+      "contexto": "f-058bcc",
+      "cod": "Sorry, I cut out for a second.",
+      "dica": "Desculpa, minha voz cortou por um segundo.",
+      "img": "📶⏱️",
+      "alvo": "for a second",
+      "alvo_pt": "por um segundo",
+      "var": [
+        {
+          "em": "I cut out",
+          "aceita": [
+            "my voice cut out"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f1bb6d",
+      "quem": "voce",
+      "cod": "Can you speak a bit louder?",
+      "dica": "Você pode falar um pouco mais alto?",
+      "img": "🗣️🔊",
+      "alvo": "a bit",
+      "alvo_pt": "um pouco",
+      "conceito": "a bit (ou a little) = um pouco: suaviza o pedido.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a bit",
+          "aceita": [
+            "a little"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7c7623",
+      "quem": "mike",
+      "cod": "My screen froze for a second.",
+      "dica": "Minha tela travou por um segundo.",
+      "img": "🖥️🧊",
+      "alvo": "for a second",
+      "alvo_pt": "por um segundo",
+      "conceito": "Travar (tela, app) = freeze; no passado, froze.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c2c47",
+      "quem": "voce",
+      "contexto": "f-7c7623",
+      "cod": "Yes, and you cut out again.",
+      "dica": "Sim, e sua voz cortou de novo.",
+      "img": "🔇🔄",
+      "alvo": "cut out",
+      "alvo_pt": "cortou",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "you cut out",
+          "aceita": [
+            "your voice cut out"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-35bf57",
+      "quem": "voce",
+      "cod": "Could you scroll down to the tests?",
+      "dica": "Você poderia rolar para baixo até os testes?",
+      "img": "⬇️🧪",
+      "alvo": "scroll down",
+      "alvo_pt": "rolar para baixo",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f56d87",
+      "quem": "voce",
+      "cod": "Can you zoom out a bit?",
+      "dica": "Você pode diminuir um pouco o zoom?",
+      "img": "🔍➖",
+      "alvo": "a bit",
+      "alvo_pt": "um pouco",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a bit",
+          "aceita": [
+            "a little"
+          ]
+        }
+      ]
+    }
+  ]
+}

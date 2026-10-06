@@ -1,0 +1,242 @@
+{
+  "id": "relativas-gerundio.meu-vizinho-que-e-medico",
+  "trilha": "relativas-gerundio",
+  "nome": "Meu vizinho, que é médico",
+  "emoji": "🧑‍⚕️",
+  "cena": "Numa festa na casa da Emma, em Chicago, ela apresenta os convidados a você, um por um.",
+  "resumo": "Dar informação extra entre vírgulas com who, which e where (orações não definidoras).",
+  "fechamento": false,
+  "novos": [
+    "lawyer",
+    "nurse",
+    "originally",
+    "close friend",
+    "hometown"
+  ],
+  "apoio": [
+    "engineer",
+    "husband",
+    "grew up in"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Informação extra entre vírgulas"
+    },
+    {
+      "t": "p",
+      "c": "Entre vírgulas vai a informação extra, que pode sair da frase: **who** para pessoas, **which** para coisas, **where** para lugares."
+    },
+    {
+      "t": "warn",
+      "c": "that não entra entre vírgulas (não: My husband, that is a lawyer, ...)."
+    },
+    {
+      "t": "ex",
+      "c": "My husband, who's a lawyer, grew up in Texas.\nMeu marido, que é advogado, cresceu no Texas."
+    }
+  ],
+  "imagem": "🏡🥂👋",
+  "visualizacao": "Sala cheia na casa da Emma, em Chicago: música baixa, tacos na mesa e conversa em todo canto. A Emma te leva de convidado em convidado e apresenta cada um com um detalhe.",
+  "foto_busca": "house party guests living room",
+  "trechos": [
+    {
+      "id": "f-d7e5c0",
+      "quem": "emma",
+      "cod": "My husband, who's a lawyer, grew up in Texas.",
+      "dica": "Meu marido, que é advogado, cresceu no Texas.",
+      "img": "👨‍⚖️🤠",
+      "alvo": "lawyer",
+      "alvo_pt": "advogado",
+      "conceito": "Entre vírgulas, who (pessoa) traz informação extra; that não entra aí.",
+      "registro": "informal",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "that"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ea4fa8",
+      "quem": "convidado",
+      "cod": "I'm a lawyer, but I don't talk about work at parties.",
+      "dica": "Sou advogado, mas não falo de trabalho em festas.",
+      "img": "⚖️🤐🎉",
+      "alvo": "lawyer",
+      "alvo_pt": "advogado",
+      "conceito": "Profissão leva a/an: I am a lawyer. Trabalho (em geral) = work.",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR13",
+        "BR07"
+      ],
+      "armadilhas": [
+        "job"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-599acd",
+      "quem": "convidado",
+      "cod": "My hometown, where everyone knows everyone, is near Austin.",
+      "dica": "Minha cidade natal, onde todo mundo se conhece, fica perto de Austin.",
+      "img": "🏘️👋🤠",
+      "alvo": "hometown",
+      "alvo_pt": "cidade natal",
+      "conceito": "where entre vírgulas = onde, para lugar. hometown = cidade natal.",
+      "var": [
+        {
+          "em": "everyone knows everyone",
+          "aceita": [
+            "everyone knows each other",
+            "everybody knows everybody",
+            "everybody knows each other"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-93a4f9",
+      "quem": "voce",
+      "contexto": "f-599acd",
+      "cod": "My hometown is {cidade_natal}, in Brazil.",
+      "dica": "Minha cidade natal é {cidade_natal}, no Brasil.",
+      "img": "🏙️🇧🇷",
+      "alvo": "hometown",
+      "alvo_pt": "cidade natal",
+      "conceito": "Brazil, com z e maiúscula.",
+      "registro": "informal",
+      "bio": [
+        "cidade_natal"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-95bcfc",
+      "quem": "emma",
+      "cod": "And my sister, who's a nurse, works nights at the hospital.",
+      "dica": "E a minha irmã, que é enfermeira, trabalha à noite no hospital.",
+      "img": "👩‍⚕️🌙🏥",
+      "alvo": "nurse",
+      "alvo_pt": "enfermeira",
+      "conceito": "works: -s da 3ª pessoa, mesmo com a oração no meio.",
+      "var": [
+        {
+          "em": "works nights",
+          "aceita": [
+            "works at night"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "work"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c5a3d9",
+      "quem": "convidada",
+      "cod": "I've been a nurse for ten years, and I still love it.",
+      "dica": "Sou enfermeira há dez anos e ainda adoro.",
+      "img": "👩‍⚕️📅❤️",
+      "alvo": "nurse",
+      "alvo_pt": "enfermeira",
+      "conceito": "Sou... há dez anos = I have been... for ten years (algo que continua).",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "i'm"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-15d401",
+      "quem": "emma",
+      "cod": "Our neighbor, who's originally from Mexico, made the tacos.",
+      "dica": "Nosso vizinho, que é originalmente do México, fez os tacos.",
+      "img": "🌮🇲🇽👨",
+      "alvo": "originally",
+      "alvo_pt": "originalmente",
+      "conceito": "originally from = originalmente de (onde a pessoa nasceu ou cresceu).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-078ba2",
+      "quem": "convidado",
+      "cod": "I live in Chicago now, but I'm originally from Mexico.",
+      "dica": "Eu moro em Chicago agora, mas sou originalmente do México.",
+      "img": "🏙️🇲🇽",
+      "alvo": "originally",
+      "alvo_pt": "originalmente",
+      "conceito": "Ser de um lugar = be from: I'm originally from Mexico (não: I'm of Mexico).",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5958188,
+        "en_autor": "CK",
+        "pt_id": 5974765,
+        "pt_autor": "piterkeo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Boston → Chicago; Chicago → Mexico (original: \"I live in Boston now, but I'm originally from Chicago.\"); PT: Boston → Chicago; eu sou originalmente de Chicago → sou originalmente do México (original: \"Eu moro em Boston agora, mas eu sou originalmente de Chicago.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-993aff",
+      "quem": "emma",
+      "cod": "Almost everyone here tonight is a close friend of ours.",
+      "dica": "Quase todo mundo aqui hoje à noite é um amigo próximo nosso.",
+      "img": "🏡👥💛",
+      "alvo": "close friend",
+      "alvo_pt": "amigo próximo",
+      "conceito": "a close friend of ours = um amigo próximo nosso. everyone pede verbo no singular: is.",
+      "registro": "informal",
+      "armadilhas": [
+        "are"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-13c9af",
+      "quem": "voce",
+      "contexto": "f-993aff",
+      "cod": "Ben, who's a close friend of mine, would love this party.",
+      "dica": "O Ben, que é um amigo próximo meu, ia adorar essa festa.",
+      "img": "🧑🤝🎉",
+      "alvo": "close friend",
+      "alvo_pt": "amigo próximo",
+      "conceito": "a close friend of mine = um amigo próximo meu. Ia adorar = would love.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

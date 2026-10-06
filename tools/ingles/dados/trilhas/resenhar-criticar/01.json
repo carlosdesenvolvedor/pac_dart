@@ -1,0 +1,248 @@
+{
+  "id": "resenhar-criticar.confuso-entediado-decepcionante",
+  "trilha": "resenhar-criticar",
+  "nome": "Confuso, entediado, decepcionante",
+  "emoji": "🍿",
+  "cena": "Na segunda de manhã, o time comenta a série que todo mundo viu no fim de semana.",
+  "resumo": "Falar de séries com -ing (a coisa: disappointing, gripping) e -ed (a pessoa: bored, confused).",
+  "fechamento": false,
+  "novos": [
+    "disappointing",
+    "cast",
+    "gripping",
+    "binge-watch"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "-ing é a coisa, -ed é a pessoa"
+    },
+    {
+      "t": "p",
+      "c": "O final **é** disappointing / confusing / boring (a característica). Eu **fiquei** disappointed / confused / bored (o sentimento)."
+    },
+    {
+      "t": "warn",
+      "c": "Fiquei entediado = I was bored (não: I was boring, que é ser chato). Decepcionante = disappointing (não: deceiving)."
+    },
+    {
+      "t": "ex",
+      "c": "The ending was really disappointing.\nO final foi muito decepcionante."
+    }
+  ],
+  "imagem": "📺🍿☕",
+  "visualizacao": "Segunda, nove da manhã. Antes da daily, todo mundo abre a câmera com café na mão e já começa a falar do último episódio da série.",
+  "foto_busca": "coworkers chatting coffee video call",
+  "trechos": [
+    {
+      "id": "f-84b1df",
+      "quem": "voce",
+      "cod": "I binge-watched the whole series over the weekend.",
+      "dica": "Maratonei a série inteira no fim de semana.",
+      "img": "📺🍿🛋️",
+      "alvo": "binge-watched",
+      "alvo_pt": "Maratonei",
+      "conceito": "binge-watch = maratonar. Na segunda, o fim de semana que passou = over the weekend.",
+      "registro": "informal",
+      "armadilhas": [
+        "marathoned",
+        "this weekend"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b534dc",
+      "quem": "ana",
+      "contexto": "f-84b1df",
+      "cod": "Me too! It was gripping from the first episode.",
+      "dica": "Eu também! Foi eletrizante desde o primeiro episódio.",
+      "img": "😲📺",
+      "alvo": "gripping",
+      "alvo_pt": "eletrizante",
+      "conceito": "gripping = eletrizante, que prende a atenção (grip = agarrar).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "since",
+        "electrifying"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6681bb",
+      "quem": "mike",
+      "contexto": "f-b534dc",
+      "cod": "Really? I didn't think it was gripping at all. I was bored.",
+      "dica": "Sério? Não achei nem um pouco eletrizante. Fiquei entediado.",
+      "img": "🥱📺",
+      "alvo": "gripping",
+      "alvo_pt": "eletrizante",
+      "conceito": "Fiquei entediado = I was bored (não: I was boring).",
+      "var": [
+        {
+          "em": "think it was",
+          "aceita": [
+            "find it"
+          ]
+        },
+        {
+          "em": "I was bored",
+          "aceita": [
+            "I got bored"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR41"
+      ],
+      "armadilhas": [
+        "boring"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-847446",
+      "quem": "sarah",
+      "contexto": "f-6681bb",
+      "cod": "It was disappointing.",
+      "dica": "Foi decepcionante.",
+      "img": "👎🎬",
+      "alvo": "disappointing",
+      "alvo_pt": "decepcionante",
+      "conceito": "disappointing = decepcionante (deceiving = enganoso).",
+      "registro": "informal",
+      "interferencias": [
+        "BR41",
+        "BR01"
+      ],
+      "armadilhas": [
+        "disappointed",
+        "deceiving"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4497339,
+        "en_autor": "CK",
+        "pt_id": 5539705,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d7e5b1",
+      "quem": "voce",
+      "cod": "I didn't find it disappointing at all, just a little confusing.",
+      "dica": "Eu não achei nada decepcionante, só um pouco confuso.",
+      "img": "😕❓",
+      "alvo": "disappointing",
+      "alvo_pt": "decepcionante",
+      "conceito": "A série é confusing (a coisa); quem assiste fica confused.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR41",
+        "BR06"
+      ],
+      "armadilhas": [
+        "disappointed",
+        "confused"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "find it",
+          "aceita": [
+            "think it was"
+          ]
+        },
+        {
+          "em": "a little",
+          "aceita": [
+            "a bit"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7ce6c8",
+      "quem": "ana",
+      "cod": "At least the cast was amazing, especially the lead actress.",
+      "dica": "Pelo menos o elenco estava incrível, principalmente a atriz principal.",
+      "img": "🎭⭐",
+      "alvo": "cast",
+      "alvo_pt": "elenco",
+      "conceito": "cast = elenco (casting é a seleção). Atriz principal = lead actress (não: main actress).",
+      "registro": "informal",
+      "armadilhas": [
+        "casting",
+        "were",
+        "main"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e04a4f",
+      "quem": "voce",
+      "cod": "The cast is great, whereas the plot takes a while to get going.",
+      "dica": "O elenco é ótimo, enquanto a história demora a engrenar.",
+      "img": "🎭🐢",
+      "alvo": "cast",
+      "alvo_pt": "elenco",
+      "conceito": "whereas = enquanto (contraste). the plot takes: -s da 3ª pessoa.",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "take",
+        "while"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "whereas",
+          "aceita": [
+            "while"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-678a5a",
+      "quem": "mike",
+      "cod": "OK, I might binge-watch the second season, then.",
+      "dica": "Tá, talvez eu maratone a segunda temporada, então.",
+      "img": "📺📺🍿",
+      "alvo": "binge-watch",
+      "alvo_pt": "maratone",
+      "conceito": "talvez + verbo = might + verbo (sem to).",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "maybe",
+        "to"
+      ],
+      "origem": "autoral_ia",
+      "contexto": "f-e04a4f"
+    }
+  ]
+}

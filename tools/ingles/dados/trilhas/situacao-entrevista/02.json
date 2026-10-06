@@ -1,0 +1,299 @@
+{
+  "id": "situacao-entrevista.no-meu-ultimo-emprego",
+  "trilha": "situacao-entrevista",
+  "nome": "No meu último emprego",
+  "emoji": "🏆",
+  "cena": "Na mesma entrevista, o entrevistador técnico pergunta sobre os projetos que você liderou.",
+  "resumo": "Contar conquistas do emprego anterior no passado: In my last job, I led a team of...",
+  "fechamento": false,
+  "novos": [
+    "In my last job",
+    "led",
+    "a team of",
+    "responsible for",
+    "percent"
+  ],
+  "apoio": [
+    "improve"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Experiência com data = passado simples"
+    },
+    {
+      "t": "p",
+      "c": "Quando você diz **quando** foi (no meu último emprego, em 2021), o inglês usa o passado simples: In my last job, I led a small team. Sem data, o present perfect: Have you ever led a team?"
+    },
+    {
+      "t": "warn",
+      "c": "Em português, \"liderei\" serve para os dois casos. Em inglês: Have you ever led...? (experiência, sem data) x In my last job, I led... (fato com data)."
+    },
+    {
+      "t": "ex",
+      "c": "We improved the app's performance by 40 percent.\nNós melhoramos a performance do app em 40 por cento."
+    },
+    {
+      "t": "tip",
+      "c": "percent sempre por extenso (nunca %). Melhorar em 40 por cento = improve by 40 percent."
+    }
+  ],
+  "imagem": "🏆👥📈",
+  "visualizacao": "Agora quem aparece na tela é o entrevistador técnico, de caneca na mão. Ele anota cada número que você diz sobre o seu último emprego.",
+  "foto_busca": "technical interview video call developer",
+  "trechos": [
+    {
+      "id": "f-dda5de",
+      "quem": "entrevistador",
+      "cod": "Have you ever led a team?",
+      "dica": "Você já liderou uma equipe?",
+      "img": "👥🧭❓",
+      "alvo": "led",
+      "alvo_pt": "liderou",
+      "conceito": "led = passado e particípio de lead (liderar). Sem data: Have you ever led...?",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "leaded",
+        "lead"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f7f862",
+      "quem": "voce",
+      "contexto": "f-dda5de",
+      "cod": "Yes. In my last job, I led a small team.",
+      "dica": "Sim. No meu último emprego, liderei uma equipe pequena.",
+      "img": "🏢👥",
+      "alvo": "In my last job",
+      "alvo_pt": "No meu último emprego",
+      "conceito": "Com data (no meu último emprego), passado simples: I led. Sem data: I've led.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "i've",
+        "have"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8ad5c9",
+      "quem": "voce",
+      "contexto": "How many people were on your team?",
+      "cod": "It was a team of four developers and one designer.",
+      "dica": "Era uma equipe de quatro desenvolvedores e um designer.",
+      "img": "👨‍💻👩‍💻🎨",
+      "alvo": "a team of",
+      "alvo_pt": "uma equipe de",
+      "conceito": "a team of + número = uma equipe de. E o it é obrigatório: It was...",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "was"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "one designer",
+          "aceita": [
+            "a designer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-97a670",
+      "quem": "voce",
+      "cod": "I was responsible for the payment system.",
+      "dica": "Eu era responsável pelo sistema de pagamentos.",
+      "img": "💳⚙️",
+      "alvo": "responsible for",
+      "alvo_pt": "responsável pelo",
+      "conceito": "responsável por = responsible for (for, não by).",
+      "var": [
+        {
+          "em": "payment system",
+          "aceita": [
+            "payments system"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "by",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-66d411",
+      "quem": "entrevistador",
+      "contexto": "f-97a670",
+      "cod": "Were you also responsible for the backend?",
+      "dica": "Você também era responsável pelo backend?",
+      "img": "🖥️❓",
+      "alvo": "responsible for",
+      "alvo_pt": "responsável pelo",
+      "registro": "neutro",
+      "armadilhas": [
+        "by"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Were you also responsible for the backend",
+          "aceita": [
+            "Were you responsible for the backend too"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-47f1d9",
+      "quem": "voce",
+      "contexto": "f-66d411",
+      "cod": "No, but I led a few backend projects.",
+      "dica": "Não, mas liderei alguns projetos de backend.",
+      "img": "🗂️🧭",
+      "alvo": "led",
+      "alvo_pt": "liderei",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "leaded",
+        "projects backend"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a few",
+          "aceita": [
+            "some"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e3d835",
+      "quem": "voce",
+      "cod": "We improved the app's performance by 40 percent.",
+      "dica": "Nós melhoramos a performance do app em 40 por cento.",
+      "img": "📱⚡📈",
+      "alvo": "percent",
+      "alvo_pt": "por cento",
+      "conceito": "melhorar em X por cento = improve by X percent (by, não in).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR10"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the app's performance",
+          "aceita": [
+            "the performance of the app"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0731d9",
+      "quem": "voce",
+      "contexto": "Performance really matters to our users.",
+      "cod": "I agree one hundred percent.",
+      "dica": "Concordo cem por cento.",
+      "img": "🤝👍",
+      "alvo": "percent",
+      "alvo_pt": "por cento",
+      "conceito": "Concordo = I agree (não: I am agree). Cem por cento = one hundred percent.",
+      "var": [
+        {
+          "em": "one hundred",
+          "aceita": [
+            "a hundred"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "am"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4495531,
+        "en_autor": "CK",
+        "pt_id": 5035903,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-85ffda",
+      "quem": "entrevistador",
+      "cod": "In this role, you'd lead a team of five developers.",
+      "dica": "Nesta vaga, você lideraria uma equipe de cinco desenvolvedores.",
+      "img": "👥🖐️🧭",
+      "alvo": "a team of",
+      "alvo_pt": "uma equipe de",
+      "conceito": "you'd lead = você lideraria (would + verbo, hipótese).",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "role",
+          "aceita": [
+            "position",
+            "job"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-517538",
+      "quem": "voce",
+      "contexto": "What was hard for you at the beginning?",
+      "cod": "In my last job, I got really nervous before my first demo.",
+      "dica": "No meu último emprego, fiquei muito nervoso antes da minha primeira demo.",
+      "img": "😰🖥️",
+      "alvo": "In my last job",
+      "alvo_pt": "No meu último emprego",
+      "conceito": "ficar + emoção = get: I got nervous (não: I stayed nervous).",
+      "pt_f": "No meu último emprego, fiquei muito nervosa antes da minha primeira demo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR33",
+        "BR27"
+      ],
+      "armadilhas": [
+        "stayed",
+        "stay"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ]
+    }
+  ]
+}

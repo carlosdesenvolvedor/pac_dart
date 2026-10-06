@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pac_dart/core/linguagem/linguagem.dart';
 import 'package:pac_dart/core/theme/mixart.dart';
 import 'package:pac_dart/features/auth/data/auth_repository.dart';
 import 'package:pac_dart/features/auth/domain/app_user.dart';
@@ -72,6 +73,7 @@ void main() {
     await tester.pumpWidget(PacDartApp(
       authCubitOverride: AuthCubit(repo),
       progressoBuilder: (_) => LocalProgressoRepository(),
+      linguagemInicial: Linguagem.dart,
     ));
     repo.emitir(null); // não autenticado
     await tester.pump();
@@ -90,6 +92,7 @@ void main() {
     await tester.pumpWidget(PacDartApp(
       authCubitOverride: AuthCubit(repo),
       progressoBuilder: (_) => LocalProgressoRepository(),
+      linguagemInicial: Linguagem.dart,
     ));
     repo.emitir(null);
     await tester.pump();

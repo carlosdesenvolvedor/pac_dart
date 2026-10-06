@@ -1,0 +1,198 @@
+{
+  "id": "passado-was-were.voce-estava-la-onde-nasceu",
+  "trilha": "passado-was-were",
+  "nome": "Você estava lá? Onde nasceu?",
+  "emoji": "👶",
+  "cena": "Num almoço em Chicago, com a Sarah de visita, ela e o Mike perguntam sobre a sua vida no Brasil e sobre a noite anterior.",
+  "resumo": "Perguntar com Were you...? e dizer onde nasceu com I was born in...",
+  "fechamento": false,
+  "novos": [
+    "Were you...?",
+    "Where were you born?",
+    "I was born in...",
+    "born"
+  ],
+  "apoio": [
+    "there"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Onde você nasceu? be born"
+    },
+    {
+      "t": "p",
+      "c": "Nascer, em inglês, é **be born**: *I was born in...*, *Where were you born?* Na pergunta com was/were, o verbo vem antes: **Were you there?**"
+    },
+    {
+      "t": "ex",
+      "c": "Where were you born?\nOnde você nasceu?"
+    },
+    {
+      "t": "warn",
+      "c": "Não existe *I born* nem *I am born*: **I was born in...**"
+    }
+  ],
+  "imagem": "🍽️👶🗺️",
+  "visualizacao": "Você está num restaurante cheio na hora do almoço. A Sarah apoia o garfo no prato e pergunta da sua cidade; o Mike ri e conta da festa de ontem.",
+  "foto_busca": "coworkers lunch restaurant table",
+  "trechos": [
+    {
+      "id": "f-86bfd2",
+      "quem": "sarah",
+      "cod": "Where were you born?",
+      "dica": "Onde você nasceu?",
+      "img": "👶🗺️",
+      "alvo": "Where were you born?",
+      "alvo_pt": "Onde você nasceu?",
+      "lit": "[lit.: onde você foi nascido?]",
+      "conceito": "nascer = be born: I was born (não: I born, nem I am born).",
+      "registro": "informal",
+      "armadilhas": [
+        "did"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bbda03",
+      "quem": "voce",
+      "contexto": "f-86bfd2",
+      "cod": "I was born in {cidade_natal}.",
+      "dica": "Eu nasci em {cidade_natal}.",
+      "img": "🙋👶🏙️",
+      "alvo": "I was born in",
+      "alvo_pt": "Eu nasci em",
+      "registro": "informal",
+      "armadilhas": [
+        "born",
+        "am"
+      ],
+      "bio": [
+        "cidade_natal"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2293566,
+        "en_autor": "CK",
+        "pt_id": 4587559,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I was born in Boston.\"; Boston → {cidade_natal}; PT original: \"Nasci em Boston.\"; PT: + Eu, Boston → {cidade_natal}",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-05b790",
+      "quem": "mike",
+      "cod": "Was Ana born in Recife?",
+      "dica": "A Ana nasceu em Recife?",
+      "img": "👩🏖️❓",
+      "alvo": "born",
+      "alvo_pt": "nasceu",
+      "registro": "informal",
+      "armadilhas": [
+        "did"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ac6ae5",
+      "quem": "voce",
+      "contexto": "f-05b790",
+      "cod": "Yes, she was born in Recife.",
+      "dica": "Nasceu, sim, em Recife.",
+      "img": "👩👶🏖️",
+      "alvo": "born",
+      "alvo_pt": "Nasceu",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1023998,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom was born in Boston.\"; + Yes, Tom → she, Boston → Recife; PT reescrito (original: \"Tom nasceu em Boston.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5175ce",
+      "quem": "voce",
+      "cod": "And you, Mike? Where were you born?",
+      "dica": "E você, Mike? Onde você nasceu?",
+      "img": "👨❓",
+      "alvo": "Where were you born?",
+      "alvo_pt": "Onde você nasceu?",
+      "registro": "informal",
+      "variacao_de": "f-86bfd2",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-11d23e",
+      "quem": "mike",
+      "contexto": "f-5175ce",
+      "cod": "I was born here, in Chicago.",
+      "dica": "Eu nasci aqui, em Chicago.",
+      "img": "👨👶🌆",
+      "alvo": "I was born",
+      "alvo_pt": "Eu nasci",
+      "registro": "informal",
+      "armadilhas": [
+        "born"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8b1608",
+      "quem": "sarah",
+      "cod": "Were you at the party last night?",
+      "dica": "Você estava na festa ontem à noite?",
+      "img": "🎉🌙❓",
+      "alvo": "Were you",
+      "alvo_pt": "Você estava",
+      "conceito": "Na pergunta, were vem antes de you: Were you...?",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3821585,
+        "en_autor": "CK",
+        "pt_id": 5098523,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Were you at the party?\"; + last night; PT original: \"Você estava na festa?\"; PT: + ontem à noite",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c2dedd",
+      "quem": "voce",
+      "contexto": "f-8b1608",
+      "cod": "Yes, I was. Mike, were you there too?",
+      "dica": "Estava, sim. Mike, você estava lá também?",
+      "img": "👨🎉❓",
+      "alvo": "were you",
+      "alvo_pt": "você estava",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1839605,
+        "en_autor": "CK",
+        "pt_id": 4806644,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Were you there?\"; + Yes, I was. Mike, + too; PT original: \"Você estava lá?\"; PT: + Estava, sim. Mike, + também",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

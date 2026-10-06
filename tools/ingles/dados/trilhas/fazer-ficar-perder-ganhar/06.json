@@ -1,0 +1,309 @@
+{
+  "id": "fazer-ficar-perder-ganhar.ganhar-o-jogo-perder-tempo-win-waste",
+  "trilha": "fazer-ficar-perder-ganhar",
+  "nome": "Ganhar o jogo, perder tempo: win, waste",
+  "emoji": "🏆",
+  "cena": "Segunda-feira: o time do Ben ganhou, a Ana ganhou um prêmio, e você conta da reunião que não serviu para nada.",
+  "resumo": "Usar win para jogo e prêmio, e waste para tempo e dinheiro jogados fora.",
+  "fechamento": false,
+  "novos": [
+    "win / won (ganhar jogo)",
+    "waste time",
+    "waste money",
+    "prize"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ganhar jogo = win · perder tempo = waste"
+    },
+    {
+      "t": "p",
+      "c": "**win / won**: ganhar jogo, prêmio ou competição. **waste**: desperdiçar tempo ou dinheiro (perder tempo, jogar dinheiro fora)."
+    },
+    {
+      "t": "ex",
+      "c": "Don't waste your time on meetings like that.\nNão perde seu tempo com reuniões assim."
+    },
+    {
+      "t": "tip",
+      "c": "**prize** = prêmio; **price** = preço."
+    },
+    {
+      "t": "warn",
+      "c": "Perder tempo = **waste** time (não: lose time). Ganhar jogo = **win** (não: earn the game)."
+    }
+  ],
+  "imagem": "🏆⏳💸",
+  "visualizacao": "Segunda de manhã, depois de uma reunião longa. Você abre o chat e o Ben está eufórico com a vitória do time dele.",
+  "foto_busca": "sports fans celebrating win",
+  "trechos": [
+    {
+      "id": "f-e3101c",
+      "quem": "ben",
+      "cod": "Did you watch the game? Our team won!",
+      "dica": "Você assistiu ao jogo? Nosso time ganhou!",
+      "img": "🏀🏆",
+      "alvo": "won",
+      "alvo_pt": "ganhou",
+      "conceito": "ganhar jogo = win / won (não: earn). Assistir = watch.",
+      "registro": "informal",
+      "interferencias": [
+        "BR35",
+        "BR20"
+      ],
+      "armadilhas": [
+        "earned",
+        "gained",
+        "assisted"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-28c334",
+      "quem": "voce",
+      "contexto": "f-e3101c",
+      "cod": "Yes! Are they going to win again on Sunday?",
+      "dica": "Assisti! Eles vão ganhar de novo no domingo?",
+      "img": "🏀🔁",
+      "alvo": "win",
+      "alvo_pt": "ganhar",
+      "var": [
+        {
+          "em": "Yes",
+          "aceita": [
+            "I did",
+            "I watched it"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR35",
+        "BR17"
+      ],
+      "armadilhas": [
+        "earn",
+        "won",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7c40d9",
+      "quem": "ben",
+      "contexto": "f-28c334",
+      "cod": "I hope so! They really want to win this year.",
+      "dica": "Espero que sim! Eles querem muito ganhar este ano.",
+      "img": "🤞🏆",
+      "alvo": "win",
+      "alvo_pt": "ganhar",
+      "conceito": "Espero que sim = I hope so.",
+      "registro": "informal",
+      "interferencias": [
+        "BR35"
+      ],
+      "armadilhas": [
+        "earn"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2011282,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: I want to win → They really want to win this year; acrescentado I hope so! (original: \"I want to win.\"); PT reescrito (original: \"Quero vencer.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-185356",
+      "quem": "voce",
+      "cod": "And Ana won a prize at work!",
+      "dica": "E a Ana ganhou um prêmio no trabalho!",
+      "img": "🏅👩",
+      "alvo": "prize",
+      "alvo_pt": "prêmio",
+      "conceito": "prize = prêmio; price = preço. No trabalho = at work, sem the.",
+      "registro": "informal",
+      "interferencias": [
+        "BR35",
+        "BR16"
+      ],
+      "armadilhas": [
+        "price",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-165f38",
+      "quem": "ben",
+      "contexto": "f-185356",
+      "cod": "Wow! What was the prize?",
+      "dica": "Nossa! Qual foi o prêmio?",
+      "img": "🎁❓",
+      "alvo": "prize",
+      "alvo_pt": "prêmio",
+      "registro": "informal",
+      "armadilhas": [
+        "price"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a2d5c",
+      "quem": "voce",
+      "contexto": "f-165f38",
+      "cod": "The prize was a new laptop.",
+      "dica": "O prêmio foi um notebook novo.",
+      "img": "💻🎁",
+      "alvo": "prize",
+      "alvo_pt": "prêmio",
+      "conceito": "notebook (o computador) = laptop.",
+      "registro": "informal",
+      "armadilhas": [
+        "price",
+        "notebook"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9d7200",
+      "quem": "voce",
+      "cod": "But we just wasted two hours in a meeting.",
+      "dica": "Mas a gente acabou de perder duas horas numa reunião.",
+      "img": "⏳😩",
+      "alvo": "wasted two hours",
+      "alvo_pt": "perder duas horas",
+      "conceito": "perder tempo = waste time (não: lose time). acabar de = just.",
+      "registro": "informal",
+      "interferencias": [
+        "BR34"
+      ],
+      "armadilhas": [
+        "lost",
+        "lose"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3281664,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 30 minutes → two hours in a meeting; acrescentado But (original: \"We just wasted 30 minutes.\"); PT reescrito (original: \"Acabamos de perder 30 minutos.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-eaf6bc",
+      "quem": "ben",
+      "contexto": "f-9d7200",
+      "cod": "Don't waste your time on meetings like that.",
+      "dica": "Não perde seu tempo com reuniões assim.",
+      "img": "🚫⏳",
+      "alvo": "waste your time",
+      "alvo_pt": "perde seu tempo",
+      "conceito": "perder tempo com algo = waste time on something.",
+      "registro": "informal",
+      "interferencias": [
+        "BR34",
+        "BR53"
+      ],
+      "armadilhas": [
+        "lose",
+        "with"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1860393,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: doing that → on meetings like that (original: \"Don't waste your time doing that.\"); PT reescrito (original: \"Não desperdice o seu tempo fazendo isso.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0d623f",
+      "quem": "ben",
+      "contexto": "How's your new phone?",
+      "cod": "It's already broken. I wasted my money.",
+      "dica": "Já quebrou. Joguei meu dinheiro fora.",
+      "img": "📱💥💸",
+      "alvo": "wasted my money",
+      "alvo_pt": "Joguei meu dinheiro fora",
+      "lit": "[lit.: desperdicei meu dinheiro]",
+      "conceito": "jogar dinheiro fora = waste money.",
+      "var": [
+        {
+          "em": "It's already broken",
+          "aceita": [
+            "It already broke"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR34",
+        "BR01"
+      ],
+      "armadilhas": [
+        "lost",
+        "threw"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3822291,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: I've wasted → I wasted; acrescentado It's already broken. (original: \"I've wasted my money.\"); PT reescrito (original: \"Eu gastei meu dinheiro.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cb1a09",
+      "quem": "voce",
+      "contexto": "f-0d623f",
+      "cod": "Don't waste money on cheap phones.",
+      "dica": "Não joga dinheiro fora com celulares baratos.",
+      "img": "📱🚫💸",
+      "alvo": "waste money",
+      "alvo_pt": "joga dinheiro fora",
+      "conceito": "waste money on something = jogar dinheiro fora com alguma coisa.",
+      "var": [
+        {
+          "em": "waste money",
+          "aceita": [
+            "waste your money"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR34",
+        "BR53"
+      ],
+      "armadilhas": [
+        "lose",
+        "with"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

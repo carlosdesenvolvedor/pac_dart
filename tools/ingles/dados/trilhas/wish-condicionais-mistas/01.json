@@ -1,0 +1,289 @@
+{
+  "id": "wish-condicionais-mistas.queria-ter-mais-tempo",
+  "trilha": "wish-condicionais-mistas",
+  "nome": "Queria ter mais tempo",
+  "emoji": "🌅",
+  "cena": "Numa conversa com o Ben, você fala do que mudaria na sua rotina e na sua casa, se pudesse.",
+  "resumo": "Expressar desejos sobre um presente que não é como você quer: I wish I had... / If only it were...!",
+  "fechamento": false,
+  "novos": [
+    "wish",
+    "if only",
+    "closer to",
+    "spare time"
+  ],
+  "apoio": [
+    "weekday"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Queria ter = I wish I had"
+    },
+    {
+      "t": "p",
+      "c": "Para desejar um presente diferente: **I wish + passado**. O verbo vai para o passado, mas o sentido é agora: I wish I had more time = queria ter mais tempo."
+    },
+    {
+      "t": "tip",
+      "c": "Quem dera...! = If only...! Com be, use were para todas as pessoas: If only it were Friday! (was também se ouve)."
+    },
+    {
+      "t": "warn",
+      "c": "Queria que a gente morasse = I wish we lived (não: I wish we live / I wish we would live)."
+    },
+    {
+      "t": "ex",
+      "c": "If only it were Friday!\nQuem dera fosse sexta!"
+    }
+  ],
+  "imagem": "🌅🏖️⏳",
+  "visualizacao": "Fim de tarde, chamada de vídeo com o Ben. Ele está no sofá em Boston, você na sua mesa de trabalho, ainda com o notebook aberto e o céu já escurecendo.",
+  "foto_busca": "video call friends evening home",
+  "trechos": [
+    {
+      "id": "f-bf13c6",
+      "quem": "voce",
+      "cod": "I wish I had more time for my family.",
+      "dica": "Queria ter mais tempo para a minha família.",
+      "img": "👨‍👩‍👧⏳",
+      "alvo": "wish",
+      "alvo_pt": "Queria",
+      "conceito": "Desejo sobre o presente: wish + passado (I wish I had, não: I wish I have).",
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "have",
+        "would have",
+        "want"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1888388,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: more money → more time for my family (original: \"I wish I had more money.\"); PT reescrito (original: \"Eu queria ter mais dinheiro.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-29a130",
+      "quem": "ben",
+      "contexto": "f-bf13c6",
+      "cod": "Really? You have more spare time than I do!",
+      "dica": "Sério? Você tem mais tempo livre do que eu!",
+      "img": "🛋️🤷",
+      "alvo": "spare time",
+      "alvo_pt": "tempo livre",
+      "conceito": "spare time = tempo livre (free time também). than I do = do que eu.",
+      "var": [
+        {
+          "em": "spare time",
+          "aceita": [
+            "free time"
+          ]
+        },
+        {
+          "em": "than I do",
+          "aceita": [
+            "than me"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "than I have",
+        "that I"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5791550,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado 'Really?'; Tom has → You have; free time → spare time (original: \"Tom has more free time than I do.\"); PT reescrito (original: \"Tom tem mais tempo livre que eu.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ce3f1a",
+      "quem": "voce",
+      "contexto": "f-29a130",
+      "cod": "Not on weekdays. If only the days were longer!",
+      "dica": "Durante a semana, não. Quem dera os dias fossem mais longos!",
+      "img": "☀️📏",
+      "alvo": "If only",
+      "alvo_pt": "Quem dera",
+      "conceito": "Quem dera...! = If only + passado. weekdays = dias de semana.",
+      "var": [
+        {
+          "em": "Not on weekdays",
+          "aceita": [
+            "Not during the week"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "are",
+        "would be"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9501b8",
+      "quem": "voce",
+      "cod": "Honestly, I wish I lived closer to the beach.",
+      "dica": "Sinceramente, queria morar mais perto da praia.",
+      "img": "🏠🏖️",
+      "alvo": "closer to",
+      "alvo_pt": "mais perto da",
+      "conceito": "Queria morar = I wish I lived (passado, sentido de agora). closer to = mais perto de.",
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "live",
+        "near to",
+        "more close"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-317f16",
+      "quem": "ben",
+      "cod": "If only it were Friday!",
+      "dica": "Quem dera fosse sexta!",
+      "img": "📅🎉",
+      "alvo": "If only",
+      "alvo_pt": "Quem dera",
+      "conceito": "fosse sexta = it were Friday: sujeito it obrigatório; were para todas as pessoas.",
+      "var": [
+        {
+          "em": "were",
+          "aceita": [
+            "was"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR57"
+      ],
+      "armadilhas": [
+        "is",
+        "friday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-af0568",
+      "quem": "voce",
+      "cod": "I wish I were at the beach right now.",
+      "dica": "Queria estar na praia agora mesmo.",
+      "img": "🏖️☀️",
+      "alvo": "wish",
+      "alvo_pt": "Queria",
+      "conceito": "Queria estar = I wish I were (were também com I).",
+      "var": [
+        {
+          "em": "were",
+          "aceita": [
+            "was"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "am",
+        "would be"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3024216,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: in Boston now → at the beach right now (original: \"I wish I were in Boston now.\"); PT reescrito (original: \"Eu queria estar em Boston agora.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-52a337",
+      "quem": "ben",
+      "cod": "Sometimes I wish my office were closer to home.",
+      "dica": "Às vezes eu queria que o meu escritório fosse mais perto de casa.",
+      "img": "🏢🏡",
+      "alvo": "closer to",
+      "alvo_pt": "mais perto de",
+      "conceito": "Queria que (outra coisa) fosse = I wish + sujeito + were. closer to home = mais perto de casa.",
+      "var": [
+        {
+          "em": "were",
+          "aceita": [
+            "was"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "is",
+        "would be",
+        "the home"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cf63a9",
+      "quem": "voce",
+      "cod": "If only I had more spare time to read!",
+      "dica": "Quem dera eu tivesse mais tempo livre para ler!",
+      "img": "📚⏳",
+      "alvo": "spare time",
+      "alvo_pt": "tempo livre",
+      "conceito": "Quem dera eu tivesse = If only I had. Finalidade com to: to read (não: for read).",
+      "var": [
+        {
+          "em": "spare time",
+          "aceita": [
+            "free time"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR30",
+        "BR57"
+      ],
+      "armadilhas": [
+        "for read",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "id": "relativas-gerundio.a-dev-cuja-biblioteca-usamos",
+  "trilha": "relativas-gerundio",
+  "nome": "A dev cuja biblioteca usamos",
+  "emoji": "🧵",
+  "cena": "Num meetup de devs em Chicago, você conhece a mantenedora de uma biblioteca e conversa com o Mike sobre como entrou no time.",
+  "resumo": "Acrescentar posse, momento e motivo a um substantivo com whose, the day when e the reason why.",
+  "fechamento": false,
+  "novos": [
+    "whose",
+    "the day when",
+    "the reason why",
+    "open source",
+    "maintainer"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "whose, the day when, the reason why"
+    },
+    {
+      "t": "p",
+      "c": "**whose** = cujo, cuja. **the day when** = o dia em que. **the reason why** = o motivo pelo qual. Na fala, when e why podem cair: the day I met you."
+    },
+    {
+      "t": "warn",
+      "c": "whose (cujo) e who's (= who is) soam igual, mas a grafia é outra."
+    },
+    {
+      "t": "ex",
+      "c": "She's the developer whose library we use.\nEla é a desenvolvedora cuja biblioteca a gente usa."
+    }
+  ],
+  "imagem": "👩‍💻📚🍕",
+  "visualizacao": "Você entra num salão cheio de devs em Chicago, com pizza, crachás e notebooks abertos. O Mike aponta para uma mulher perto do telão: é a dev da biblioteca que vocês usam.",
+  "foto_busca": "developer meetup laptops pizza",
+  "trechos": [
+    {
+      "id": "f-f91333",
+      "quem": "mike",
+      "cod": "That's the developer whose library we use in the app.",
+      "dica": "Aquela é a desenvolvedora cuja biblioteca a gente usa no app.",
+      "img": "👩‍💻📚📱",
+      "alvo": "whose",
+      "alvo_pt": "cuja",
+      "conceito": "whose = cujo, cuja: a posse vem antes da coisa (whose library).",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "armadilhas": [
+        "who's",
+        "who"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-656d66",
+      "quem": "voce",
+      "cod": "Hi! Are you the maintainer of the chart library?",
+      "dica": "Oi! Você é a mantenedora da biblioteca de gráficos?",
+      "img": "👋📊📚",
+      "alvo": "maintainer",
+      "alvo_pt": "mantenedora",
+      "conceito": "maintainer = quem mantém um projeto: revisa, corrige e publica versões.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c17cbe",
+      "quem": "desenvolvedora",
+      "contexto": "f-656d66",
+      "cod": "Yes, I am. It's an open source project, so anyone can help.",
+      "dica": "Sou, sim. É um projeto open source, então qualquer pessoa pode ajudar.",
+      "img": "🔓💻🤝",
+      "alvo": "open source",
+      "alvo_pt": "open source",
+      "conceito": "open source = código aberto; an open source project (an antes de vogal).",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR13"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-79e761",
+      "quem": "voce",
+      "contexto": "f-c17cbe",
+      "cod": "Who's the guy whose name is on every commit?",
+      "dica": "Quem é o cara cujo nome está em todos os commits?",
+      "img": "🧑‍💻📝🔁",
+      "alvo": "whose",
+      "alvo_pt": "cujo",
+      "conceito": "Who's = who is (quem é); whose = cujo. O som é igual, a grafia não.",
+      "var": [
+        {
+          "em": "every commit",
+          "aceita": [
+            "all the commits"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "armadilhas": [
+        "who's"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1ad5a0",
+      "quem": "desenvolvedora",
+      "contexto": "f-79e761",
+      "cod": "He's the other maintainer. He started the project in 2019.",
+      "dica": "É o outro mantenedor. Ele começou o projeto em 2019.",
+      "img": "🧑‍💻🌱📅",
+      "alvo": "maintainer",
+      "alvo_pt": "mantenedor",
+      "conceito": "Ano com in: in 2019.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-26d705",
+      "quem": "desenvolvedora",
+      "cod": "What's your favorite open source project?",
+      "dica": "Qual é o seu projeto open source favorito?",
+      "img": "⭐🔓💻",
+      "alvo": "open source",
+      "alvo_pt": "open source",
+      "conceito": "favorite: grafia americana, sem u.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 906835,
+        "en_autor": "CK",
+        "pt_id": 1061545,
+        "pt_autor": "bufo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: software → project (original: \"What's your favorite open source software?\"); PT: software de código aberto → projeto open source (original: \"Qual é o seu software de código aberto favorito?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d62703",
+      "quem": "voce",
+      "cod": "I'll never forget the day when I met the team.",
+      "dica": "Nunca vou esquecer o dia em que conheci o time.",
+      "img": "👥💙🗓️",
+      "alvo": "the day when",
+      "alvo_pt": "o dia em que",
+      "conceito": "Conhecer alguém pela primeira vez = meet / met.",
+      "opcional": [
+        "when"
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1174774,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado 'when'; I fell into the well → I met the team (original: \"I'll never forget the day I fell into the well.\"); PT reescrito (original: \"Jamais me esquecerei do dia em que caí no poço.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-085ce0",
+      "quem": "mike",
+      "contexto": "f-d62703",
+      "cod": "Me neither. That was the day when the app crashed.",
+      "dica": "Nem eu. Foi o dia em que o app caiu.",
+      "img": "💥📱🗓️",
+      "alvo": "the day when",
+      "alvo_pt": "o dia em que",
+      "conceito": "Foi o dia em que... = That was the day when... Me neither responde a frase negativa (never).",
+      "var": [
+        {
+          "em": "That was",
+          "aceita": [
+            "It was"
+          ]
+        },
+        {
+          "em": "crashed",
+          "aceita": [
+            "went down"
+          ]
+        }
+      ],
+      "opcional": [
+        "when"
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "too"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-36bfc9",
+      "quem": "voce",
+      "cod": "Honestly, the team is the reason why I accepted the offer.",
+      "dica": "Sinceramente, o time é o motivo pelo qual eu aceitei a oferta.",
+      "img": "🤩🤝📄",
+      "alvo": "the reason why",
+      "alvo_pt": "o motivo pelo qual",
+      "conceito": "o motivo pelo qual = the reason why (o why pode cair: the reason I accepted the offer).",
+      "opcional": [
+        "why"
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8338612,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: That's → Honestly, the team is; acrescentado 'why' (original: \"That's the reason I accepted the offer.\"); PT reescrito (original: \"Essa é a razão pela qual aceitei a oferta.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-dac0a8",
+      "quem": "mike",
+      "contexto": "f-36bfc9",
+      "cod": "And the reason why we hired you was your code.",
+      "dica": "E o motivo pelo qual a gente te contratou foi o seu código.",
+      "img": "💻⭐🤝",
+      "alvo": "the reason why",
+      "alvo_pt": "o motivo pelo qual",
+      "conceito": "hire = contratar.",
+      "opcional": [
+        "why"
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "id": "quantificadores-incontaveis.informacoes-e-conselhos-incontaveis",
+  "trilha": "quantificadores-incontaveis",
+  "nome": "Informações e conselhos: incontáveis",
+  "emoji": "💡",
+  "cena": "Você pede conselho ao Mike sobre o seu primeiro code review, e no dia seguinte ele traz dúvidas e notícias do time.",
+  "resumo": "Usar information, advice, news, code e feedback sem plural e sem a/an, e generalizar sem the.",
+  "fechamento": false,
+  "novos": [
+    "information",
+    "advice",
+    "code",
+    "news",
+    "feedback"
+  ],
+  "apoio": [
+    "software"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Incontáveis: information, advice, news"
+    },
+    {
+      "t": "p",
+      "c": "**information, advice, news, code, feedback** e **software** não vão para o plural nem levam a/an. A quantidade vem com **some, a lot of, more**."
+    },
+    {
+      "t": "ex",
+      "c": "We need more information about the error.\nPrecisamos de mais informações sobre o erro."
+    },
+    {
+      "t": "warn",
+      "c": "Não: informations, advices, a news, codes. Um conselho = some advice (ou a piece of advice). News pede singular: What's the news?"
+    },
+    {
+      "t": "tip",
+      "c": "Generalizando, sem the: Feedback is important. (O feedback é importante.)"
+    }
+  ],
+  "imagem": "💻💬💡",
+  "visualizacao": "Você está no chat com o Mike, o cursor piscando sobre o seu primeiro pull request. Do outro lado, ele responde rápido, tranquilo, com aquele jeito de quem já viu mil code reviews.",
+  "foto_busca": "developer laptop code review chat",
+  "trechos": [
+    {
+      "id": "f-c3272d",
+      "quem": "voce",
+      "cod": "I need your advice.",
+      "dica": "Preciso do seu conselho.",
+      "img": "🙋💡",
+      "alvo": "advice",
+      "alvo_pt": "conselho",
+      "conceito": "advice = conselho; não tem plural nem leva a/an.",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "advices"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2249,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d9618e",
+      "quem": "mike",
+      "contexto": "f-c3272d",
+      "cod": "Sure. Send me your code.",
+      "dica": "Claro. Me manda o seu código.",
+      "img": "📤💻",
+      "alvo": "code",
+      "alvo_pt": "código",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-51fd45",
+      "quem": "voce",
+      "contexto": "f-d9618e",
+      "cod": "Here you go. I wrote a lot of code today.",
+      "dica": "Aqui está. Escrevi muito código hoje.",
+      "img": "⌨️📄📄",
+      "alvo": "code",
+      "alvo_pt": "código",
+      "conceito": "code (de programação) não se conta: a lot of code (não: many codes).",
+      "registro": "informal",
+      "interferencias": [
+        "BR22",
+        "BR23"
+      ],
+      "armadilhas": [
+        "codes",
+        "many"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Here you go",
+          "aceita": [
+            "Here it is",
+            "Here you are"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-623131",
+      "quem": "mike",
+      "contexto": "f-51fd45",
+      "cod": "Don't worry. Feedback is a good thing.",
+      "dica": "Não se preocupa. O feedback é uma coisa boa.",
+      "img": "💬👍",
+      "alvo": "Feedback",
+      "alvo_pt": "feedback",
+      "conceito": "Generalização sem the: Feedback is a good thing.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21",
+        "BR22"
+      ],
+      "armadilhas": [
+        "the",
+        "feedbacks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d703ca",
+      "quem": "voce",
+      "contexto": "f-623131",
+      "cod": "Thanks for the advice.",
+      "dica": "Obrigado pelo conselho.",
+      "img": "🙏💡",
+      "alvo": "advice",
+      "alvo_pt": "conselho",
+      "pt_f": "Obrigada pelo conselho.",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "advices"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a3c1bd",
+      "quem": "mike",
+      "cod": "I need more information.",
+      "dica": "Preciso de mais informações.",
+      "img": "🔍📄",
+      "alvo": "information",
+      "alvo_pt": "informações",
+      "conceito": "information não tem plural: more information (não: informations).",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "informations"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2387499,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-55029d",
+      "quem": "voce",
+      "contexto": "f-a3c1bd",
+      "cod": "What kind of information do you need?",
+      "dica": "Que tipo de informação você precisa?",
+      "img": "🤔📋",
+      "alvo": "information",
+      "alvo_pt": "informação",
+      "registro": "informal",
+      "interferencias": [
+        "BR22",
+        "BR06"
+      ],
+      "armadilhas": [
+        "informations"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4014211,
+        "en_autor": "CK",
+        "pt_id": 7791442,
+        "pt_autor": "Mecamute",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-671324",
+      "quem": "mike",
+      "cod": "I have some great news.",
+      "dica": "Tenho uma ótima notícia.",
+      "img": "📰🎉",
+      "alvo": "news",
+      "alvo_pt": "notícia",
+      "conceito": "news não se conta: some great news (não: a great news).",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "a"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3619797,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-303d13",
+      "quem": "voce",
+      "contexto": "f-671324",
+      "cod": "Really? What's the news?",
+      "dica": "Sério? Qual é a notícia?",
+      "img": "😮❓",
+      "alvo": "news",
+      "alvo_pt": "notícia",
+      "conceito": "news leva verbo no singular: What's the news?",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "are"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a521bf",
+      "quem": "mike",
+      "contexto": "f-303d13",
+      "cod": "The feedback on your code was really good.",
+      "dica": "O feedback no seu código foi muito bom.",
+      "img": "📝💻👍",
+      "alvo": "feedback",
+      "alvo_pt": "feedback",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "feedbacks",
+        "were"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4494598,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado 'on your code'; 'good' trocado por 'really good'",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ]
+    }
+  ]
+}

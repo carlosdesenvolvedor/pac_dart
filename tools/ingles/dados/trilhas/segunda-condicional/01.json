@@ -1,0 +1,324 @@
+{
+  "id": "segunda-condicional.se-eu-tivesse-mais-tempo",
+  "trilha": "segunda-condicional",
+  "nome": "Se eu tivesse mais tempo...",
+  "emoji": "🎸",
+  "cena": "Num parque em Boston, você e o Ben conversam sobre o que fariam se tivessem mais tempo livre e mais férias.",
+  "resumo": "Imaginar o presente diferente: if + passado e, na outra metade, would ('d) + verbo.",
+  "fechamento": false,
+  "novos": [
+    "by the beach",
+    "surfing",
+    "vacation days",
+    "free time",
+    "retire"
+  ],
+  "apoio": [
+    "would",
+    "I'd",
+    "the guitar"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Se eu tivesse..., eu faria..."
+    },
+    {
+      "t": "p",
+      "c": "Para imaginar algo que **não é real agora**, use **if + passado** e, na outra metade, **would ('d) + verbo**. A ordem pode inverter: I'd... if..."
+    },
+    {
+      "t": "ex",
+      "c": "If I had more time, I'd learn the guitar.\nSe eu tivesse mais tempo, aprenderia violão."
+    },
+    {
+      "t": "warn",
+      "c": "O would nunca entra no if (não: If I would have time). E nada de presente com would (não: If I have more time, I would...)."
+    },
+    {
+      "t": "tip",
+      "c": "Com o if no começo, vírgula no meio; com o if no fim, sem vírgula."
+    }
+  ],
+  "imagem": "🌳🎸🏄",
+  "visualizacao": "Você está num banco de parque em Boston, folhas secas no chão e um café na mão. O Ben estica as pernas e começa a sonhar em voz alta.",
+  "foto_busca": "friends talking park bench autumn",
+  "trechos": [
+    {
+      "id": "f-c116b0",
+      "quem": "ben",
+      "cod": "I'd learn the guitar if I had more free time.",
+      "dica": "Eu aprenderia violão se tivesse mais tempo livre.",
+      "img": "🎸⏳",
+      "alvo": "free time",
+      "alvo_pt": "tempo livre",
+      "conceito": "I'd = I would. if + passado (had); sem vírgula quando o if vem depois.",
+      "var": [
+        {
+          "em": "learn the guitar",
+          "aceita": [
+            "learn guitar",
+            "learn to play the guitar",
+            "learn to play guitar"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "have",
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1fface",
+      "quem": "voce",
+      "contexto": "f-c116b0",
+      "cod": "What do you usually do in your free time?",
+      "dica": "O que você costuma fazer no seu tempo livre?",
+      "img": "🛋️❓",
+      "alvo": "free time",
+      "alvo_pt": "tempo livre",
+      "conceito": "in your free time = no seu tempo livre. usually = costumar (hábito de agora).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR19"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3737842,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"O que você costuma fazer em seu tempo livre?\"; PT reescrito: no seu (fala do Brasil)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fd2739",
+      "quem": "ben",
+      "contexto": "f-1fface",
+      "cod": "Not much. I used to go surfing when I lived in Brazil.",
+      "dica": "Quase nada. Eu ia surfar quando morava no Brasil.",
+      "img": "🏄🇧🇷",
+      "alvo": "surfing",
+      "alvo_pt": "surfar",
+      "conceito": "go surfing = ir surfar. used to = imperfeito (eu ia surfar).",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-786a0b",
+      "quem": "voce",
+      "contexto": "f-fd2739",
+      "cod": "When was the last time you went surfing?",
+      "dica": "Quando foi a última vez que você foi surfar?",
+      "img": "🌊📅",
+      "alvo": "surfing",
+      "alvo_pt": "foi surfar",
+      "conceito": "went surfing = foi surfar, surfou.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5756268,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Qual foi a última vez que você surfou?\"; PT reescrito: foi surfar (went surfing)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3fb574",
+      "quem": "ben",
+      "contexto": "f-786a0b",
+      "cod": "Two years ago. If I lived by the beach, I'd go every morning.",
+      "dica": "Há dois anos. Se eu morasse na beira da praia, iria toda manhã.",
+      "img": "🏖️🌅",
+      "alvo": "by the beach",
+      "alvo_pt": "na beira da praia",
+      "conceito": "by the beach = na beira da praia (near the beach = perto da praia). if + passado, would na outra metade.",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57",
+        "BR26"
+      ],
+      "armadilhas": [
+        "live",
+        "would"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-14a948",
+      "quem": "voce",
+      "cod": "Ana from my team grew up by the beach in Recife.",
+      "dica": "A Ana, do meu time, cresceu na beira da praia, em Recife.",
+      "img": "👩‍🎨🏝️",
+      "alvo": "by the beach",
+      "alvo_pt": "na beira da praia",
+      "conceito": "grow up / grew up = crescer (na infância).",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-805d8a",
+      "quem": "ben",
+      "cod": "If I had more vacation days, I'd travel all the time.",
+      "dica": "Se eu tivesse mais dias de férias, viajaria o tempo todo.",
+      "img": "🧳🌎",
+      "alvo": "vacation days",
+      "alvo_pt": "dias de férias",
+      "conceito": "vacation days = dias de férias (EUA). all the time = o tempo todo.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "have",
+        "would"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6403813,
+        "en_autor": "alishalikescats",
+        "pt_id": 10787079,
+        "pt_autor": "DavidDias",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'money' trocado por 'more vacation days'; PT ajustado (original: \"Se eu tivesse dinheiro, viajaria o tempo todo.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-57512f",
+      "quem": "voce",
+      "contexto": "f-805d8a",
+      "cod": "How many vacation days do you get a year?",
+      "dica": "Quantos dias de férias você tem por ano?",
+      "img": "📆🌴",
+      "alvo": "vacation days",
+      "alvo_pt": "dias de férias",
+      "conceito": "a year = por ano.",
+      "var": [
+        {
+          "em": "get",
+          "aceita": [
+            "have"
+          ]
+        },
+        {
+          "em": "a year",
+          "aceita": [
+            "per year"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-138662",
+      "quem": "ben",
+      "contexto": "f-57512f",
+      "cod": "Only ten. That's why I plan to retire when I'm sixty.",
+      "dica": "Só dez. Por isso pretendo me aposentar quando tiver sessenta anos.",
+      "img": "👴⛱️",
+      "alvo": "retire",
+      "alvo_pt": "me aposentar",
+      "conceito": "plan to = pretender. when + presente: when I'm sixty (sem years old, mais natural na fala).",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR04"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5851994,
+        "en_autor": "CK",
+        "pt_id": 8120823,
+        "pt_autor": "lucasmg123",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Only ten. That's why' acrescentado e 'years old' cortado; PT ajustado com 'Só dez. Por isso' e sem o 'eu' redundante",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "sixty",
+          "aceita": [
+            "sixty years old"
+          ]
+        },
+        {
+          "em": "That's why",
+          "aceita": [
+            "So"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-69dda8",
+      "quem": "voce",
+      "contexto": "f-138662",
+      "cod": "If I retired today, I'd get bored in a week.",
+      "dica": "Se eu me aposentasse hoje, ficaria entediado em uma semana.",
+      "pt_f": "Se eu me aposentasse hoje, ficaria entediada em uma semana.",
+      "img": "🥱🗓️",
+      "alvo": "retired",
+      "alvo_pt": "me aposentasse",
+      "conceito": "if + passado (retired); would na outra metade: I'd get bored.",
+      "registro": "informal",
+      "interferencias": [
+        "BR57",
+        "BR41"
+      ],
+      "armadilhas": [
+        "retire",
+        "would"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

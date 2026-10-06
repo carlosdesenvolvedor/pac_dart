@@ -1,0 +1,230 @@
+{
+  "id": "convites-pedidos.organizando-o-happy-hour",
+  "trilha": "convites-pedidos",
+  "nome": "Organizando o happy hour",
+  "emoji": "🥂",
+  "cena": "No chat do time, você organiza o happy hour de fim de mês com a Sarah, o Mike e a Ana.",
+  "resumo": "Convidar, sugerir, pedir e oferecer na mesma conversa, com a fórmula certa para cada intenção.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Cada intenção, uma fórmula"
+    },
+    {
+      "t": "p",
+      "c": "Sugerir: **Why don't we...?** / **How about...?** Convidar: **Would you like to...?** Pedir: **Could you...?** Oferecer: **Should I...?** / **I'll...**"
+    },
+    {
+      "t": "warn",
+      "c": "Convite para onde a pessoa está: come, mesmo quando o português diz ir (Eu adoraria ir = I'd love to come). E join us, sem with."
+    },
+    {
+      "t": "tip",
+      "c": "Levar algo ou alguém para o evento de quem convida: bring (Can I bring a friend?)."
+    }
+  ],
+  "imagem": "🥂💬📅",
+  "visualizacao": "Fim de mês, fim de sprint. No chat do time as mensagens pipocam na tela enquanto você tenta marcar o dia, a mesa e quem vai ao happy hour.",
+  "foto_busca": "coworkers happy hour bar table",
+  "trechos": [
+    {
+      "id": "f-759dd9",
+      "quem": "voce",
+      "cod": "Why don't we have a happy hour this month?",
+      "dica": "Por que a gente não faz um happy hour este mês?",
+      "img": "🥂📅❓",
+      "alvo": "Why don't we",
+      "alvo_pt": "Por que a gente não",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-82f4b7",
+      "quem": "sarah",
+      "contexto": "f-759dd9",
+      "cod": "How about Friday after work?",
+      "dica": "Que tal sexta depois do trabalho?",
+      "img": "📅💼🕔",
+      "alvo": "How about",
+      "alvo_pt": "Que tal",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8226852,
+        "en_autor": "CK",
+        "pt_id": 8339625,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'Monday' trocado por 'Friday after work' (happy hour é depois do expediente); no PT, 'segunda' trocado por 'sexta depois do trabalho'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cbc8ac",
+      "quem": "voce",
+      "contexto": "f-82f4b7",
+      "cod": "Let's do that. Should I book a table?",
+      "dica": "Vamos fazer isso. Eu reservo uma mesa?",
+      "img": "👍🪑📞",
+      "alvo": "Should I",
+      "alvo_pt": "Eu reservo",
+      "conceito": "Oferta: Eu reservo? = Should I book...?",
+      "var": [
+        {
+          "em": "Let's do that",
+          "aceita": [
+            "Let's do it",
+            "Let's do this"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "shall"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a81ae7",
+      "quem": "voce",
+      "cod": "Mike, would you like to join us on Friday?",
+      "dica": "Mike, você gostaria de se juntar a nós na sexta?",
+      "img": "📨👥",
+      "alvo": "join us",
+      "alvo_pt": "se juntar a nós",
+      "registro": "neutro",
+      "interferencias": [
+        "BR42",
+        "BR17"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-09bc20",
+      "quem": "mike",
+      "contexto": "f-a81ae7",
+      "cod": "I'd love to come, but I'm traveling that week.",
+      "dica": "Eu adoraria ir, mas vou viajar nessa semana.",
+      "img": "✈️🧳🙏",
+      "alvo": "come",
+      "alvo_pt": "ir",
+      "conceito": "Convite para onde a pessoa está: come (em português, ir).",
+      "registro": "informal",
+      "interferencias": [
+        "BR37"
+      ],
+      "armadilhas": [
+        "go"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1c6c54",
+      "quem": "ana",
+      "cod": "Can I bring a friend?",
+      "dica": "Posso levar um amigo?",
+      "img": "🧑‍🤝‍🧑❓",
+      "alvo": "bring",
+      "alvo_pt": "levar",
+      "conceito": "Levar alguém ao evento de quem convida = bring (não take).",
+      "registro": "informal",
+      "interferencias": [
+        "BR37"
+      ],
+      "armadilhas": [
+        "take"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4135359,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito com 'levar', como o brasileiro diz",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e02811",
+      "quem": "voce",
+      "contexto": "f-1c6c54",
+      "cod": "Sure! Could you send the invitation to the team?",
+      "dica": "Claro! Você poderia mandar o convite para o time?",
+      "img": "📩👥",
+      "alvo": "Could you",
+      "alvo_pt": "Você poderia",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-961fbb",
+      "quem": "ana",
+      "contexto": "f-e02811",
+      "cod": "Sure, I'll send it now.",
+      "dica": "Claro, mando agora.",
+      "img": "📤⚡",
+      "alvo": "I'll send it",
+      "alvo_pt": "mando",
+      "conceito": "Decisão na hora: I'll + verbo. O objeto é obrigatório: send it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-616d72",
+      "quem": "ana",
+      "cod": "Have you booked the table yet?",
+      "dica": "Você já reservou a mesa?",
+      "img": "🪑✅❓",
+      "alvo": "yet",
+      "alvo_pt": "já",
+      "conceito": "Já...? (pergunta) = Have you... yet? Em en-US também vale Did you... yet?",
+      "var": [
+        {
+          "em": "Have you booked",
+          "aceita": [
+            "Did you book"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-41bcf2",
+      "quem": "voce",
+      "contexto": "f-616d72",
+      "cod": "Yes, I booked it this morning.",
+      "dica": "Sim, reservei hoje de manhã.",
+      "img": "☀️📞✅",
+      "alvo": "booked",
+      "alvo_pt": "reservei",
+      "conceito": "Com o momento dito (this morning), passado simples. E o it: booked it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

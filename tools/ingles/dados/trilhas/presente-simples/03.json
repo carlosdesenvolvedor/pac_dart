@@ -1,0 +1,219 @@
+{
+  "id": "presente-simples.quero-aprender-want-to-need-to",
+  "trilha": "presente-simples",
+  "nome": "Quero aprender: want to, need to",
+  "emoji": "🎯",
+  "cena": "Na primeira semana em Chicago, na copa do escritório, a Ana, o Mike e você falam do que querem aprender e do que precisam fazer hoje.",
+  "resumo": "Dizer o que quer, precisa e gostaria de fazer: I want to / I need to / I'd like to + verbo.",
+  "fechamento": false,
+  "novos": [
+    "I want to...",
+    "I need to...",
+    "I'd like to...",
+    "learn"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Quero, preciso, gostaria de"
+    },
+    {
+      "t": "p",
+      "c": "Depois de **want**, **need** e **'d like** vem **to** + verbo: I want to learn, I need to fix, I'd like to live."
+    },
+    {
+      "t": "ex",
+      "c": "I need to fix this bug today.\nPreciso corrigir esse bug hoje."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca for to: I want to learn (não: I want for to learn)."
+    },
+    {
+      "t": "tip",
+      "c": "**I'd like to** = I would like to: o jeito educado de dizer que quer."
+    }
+  ],
+  "imagem": "🎯🏢📝",
+  "visualizacao": "Segunda-feira de manhã no escritório de Chicago. Pela janela você vê os prédios altos; a Ana suspira olhando a vista, e o Mike chega com o notebook debaixo do braço.",
+  "foto_busca": "office window city view",
+  "trechos": [
+    {
+      "id": "f-4a2e48",
+      "quem": "voce",
+      "cod": "I want to work here.",
+      "dica": "Eu quero trabalhar aqui.",
+      "img": "🏢😍",
+      "alvo": "I want to",
+      "alvo_pt": "Eu quero",
+      "conceito": "Querer + verbo = want to + verbo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "for"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2011499,
+        "en_autor": "CK",
+        "pt_id": 5022042,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bb7c6f",
+      "quem": "ana",
+      "contexto": "f-4a2e48",
+      "cod": "Me too. I'd like to live in Chicago.",
+      "dica": "Eu também. Gostaria de morar em Chicago.",
+      "img": "🌆🏠",
+      "alvo": "I'd like to",
+      "alvo_pt": "Gostaria de",
+      "conceito": "I'd like to = gostaria de: o jeito educado de querer.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2652927,
+        "en_autor": "CK",
+        "pt_id": 2395789,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Europe → Chicago; + Me too. (PT: na Europa → em Chicago; + Eu também.)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4aafeb",
+      "quem": "ana",
+      "cod": "I need to talk to Mike.",
+      "dica": "Eu preciso falar com o Mike.",
+      "img": "🗣️👨‍💼",
+      "alvo": "I need to",
+      "alvo_pt": "Eu preciso",
+      "conceito": "Precisar + verbo = need to + verbo.",
+      "var": [
+        {
+          "em": "talk to",
+          "aceita": [
+            "talk with",
+            "speak to",
+            "speak with"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2387756,
+        "en_autor": "CK",
+        "pt_id": 2847540,
+        "pt_autor": "MarlonX19",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Mike (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a49ec7",
+      "quem": "voce",
+      "contexto": "Lunch downtown, guys?",
+      "cod": "Sorry, I need to fix this bug today.",
+      "dica": "Desculpa, preciso corrigir esse bug hoje.",
+      "img": "🐛🔧",
+      "alvo": "I need to",
+      "alvo_pt": "preciso",
+      "conceito": "fix = corrigir, consertar. E bug é bug mesmo.",
+      "var": [
+        {
+          "em": "this",
+          "aceita": [
+            "that"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9e2883",
+      "quem": "mike",
+      "cod": "Ana, I want to learn Portuguese.",
+      "dica": "Ana, eu quero aprender português.",
+      "img": "📚🗣️",
+      "alvo": "learn",
+      "alvo_pt": "aprender",
+      "conceito": "learn = aprender. Língua com maiúscula: Portuguese.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-313dd4",
+      "quem": "ana",
+      "contexto": "f-9e2883",
+      "cod": "Really? I'd like to learn Spanish.",
+      "dica": "Sério? Eu gostaria de aprender espanhol.",
+      "img": "🤔📖",
+      "alvo": "I'd like to",
+      "alvo_pt": "Eu gostaria de",
+      "registro": "neutro",
+      "variacao_de": "f-bb7c6f",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-381bd5",
+      "quem": "voce",
+      "contexto": "f-313dd4",
+      "cod": "Me too! Let's learn together.",
+      "dica": "Eu também! Vamos aprender juntos.",
+      "pt_f": "Eu também! Vamos aprender juntas.",
+      "img": "🤝📚",
+      "alvo": "learn",
+      "alvo_pt": "aprender",
+      "conceito": "Me too = eu também. together = juntos. Let's + verbo = vamos + verbo.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-580bce",
+      "quem": "voce",
+      "contexto": "It's six o'clock. Let's go!",
+      "cod": "Great! I don't want to work late.",
+      "dica": "Ótimo! Não quero trabalhar até tarde.",
+      "img": "🌙🙅",
+      "alvo": "want to",
+      "alvo_pt": "quero",
+      "conceito": "Não quero + verbo = I don't want to + verbo. work late = trabalhar até tarde.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "no",
+        "not"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

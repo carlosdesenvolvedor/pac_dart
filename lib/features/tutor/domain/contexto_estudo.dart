@@ -24,6 +24,17 @@ String contextoDoEstudo(CursoState curso, TypingState typing) {
         '(${curso.licaoIdx + 1} de ${trilha.licoes.length})');
   if (licao.resumo.isNotEmpty) b.writeln('Resumo da lição: ${licao.resumo}');
   if (teoria.isNotEmpty) b.writeln('Teoria (começo): $teoria');
+  if (curso.ehIngles) {
+    b
+      ..writeln('Frase atual: ${curso.trechoIdx + 1} de ${licao.trechos.length}')
+      ..writeln('Tradução (o que o aluno vê em cima): ${trecho.dicaPlana}')
+      ..writeln('Frase em inglês que ele está digitando: ${trecho.cod}');
+    if (trecho.literal.isNotEmpty) b.writeln('Ao pé da letra: ${trecho.literal}');
+    if (trecho.temConceito) b.writeln('Nota da frase: ${Trecho.semTags(trecho.conceito)}');
+    b.write('Digitação na sessão: ${typing.precisao}% de precisão, '
+        '${typing.errosSessao} erro(s).');
+    return b.toString();
+  }
   b
     ..writeln('Exercício atual: trecho ${curso.trechoIdx + 1} '
         'de ${licao.trechos.length}')

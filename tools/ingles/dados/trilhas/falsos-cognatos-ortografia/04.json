@@ -1,0 +1,275 @@
+{
+  "id": "falsos-cognatos-ortografia.pais-parentes-e-outras-armadilhas",
+  "trilha": "falsos-cognatos-ortografia",
+  "nome": "Pais, parentes e outras armadilhas",
+  "emoji": "⚠️",
+  "cena": "A Sarah vem conhecer a sua cidade: vocês passeiam pelo centro, ela vai jantar com os seus pais e os seus parentes chegam na quarta.",
+  "resumo": "Usar os falsos cognatos e as grafias difíceis lado a lado: parents x relatives, push x pull, library x bookstore, college x high school, lunch x snack.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Os pares, agora juntos"
+    },
+    {
+      "t": "p",
+      "c": "**parents** (pais) x **relatives** (parentes); **push** (empurrar) x **pull** (puxar); **library** (biblioteca) x **bookstore** (livraria); **college** (faculdade) x **high school** (colégio); **lunch** (almoço) x **snack** (lanche)."
+    },
+    {
+      "t": "ex",
+      "c": "Push the door. Don't pull it.\nEmpurra a porta. Não puxa."
+    },
+    {
+      "t": "tip",
+      "c": "Grafias: fina**ll**y, We**d**nesday, w**h**ich, co**mm**unity, di**ff**erent."
+    },
+    {
+      "t": "warn",
+      "c": "parents não é parentes, college não é colégio, library não é livraria. E nada de letra a menos: finaly, wich, Wensday."
+    }
+  ],
+  "imagem": "👨‍👩‍👦📚🚪",
+  "visualizacao": "A Sarah acabou de chegar. Vocês andam pelo centro, sentem cheiro de café saindo de uma livraria e param na porta pesada da biblioteca antiga.",
+  "foto_busca": "friends walking downtown old library",
+  "trechos": [
+    {
+      "id": "f-f01e23",
+      "quem": "voce",
+      "cod": "It's so nice to finally meet you in person!",
+      "dica": "É muito bom finalmente te conhecer pessoalmente!",
+      "img": "🤗✨",
+      "alvo": "finally",
+      "alvo_pt": "finalmente",
+      "conceito": "finally tem ll (-ally). Conhecer pessoalmente = meet in person.",
+      "registro": "informal",
+      "interferencias": [
+        "BR46",
+        "BR36",
+        "BR01"
+      ],
+      "armadilhas": [
+        "finaly",
+        "know"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3573778,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado in person; ponto final → exclamação (original: \"It's so nice to finally meet you.\"); PT reescrito (original: \"É muito bom finalmente te conhecer.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "so",
+          "aceita": [
+            "really",
+            "very"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ab17d0",
+      "quem": "voce",
+      "cod": "My parents are going to love you.",
+      "dica": "Meus pais vão te amar.",
+      "img": "👨‍👩‍👦❤️",
+      "alvo": "parents",
+      "alvo_pt": "pais",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "relatives"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4011555,
+        "en_autor": "CK",
+        "pt_id": 4677255,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5cf130",
+      "quem": "sarah",
+      "contexto": "f-ab17d0",
+      "cod": "Are your relatives coming to dinner too?",
+      "dica": "Seus parentes vêm pro jantar também?",
+      "img": "👪🍽️❓",
+      "alvo": "relatives",
+      "alvo_pt": "parentes",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "parents"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "to dinner",
+          "aceita": [
+            "for dinner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-9d771b",
+      "quem": "voce",
+      "contexto": "f-5cf130",
+      "cod": "No, they're coming for lunch on Wednesday.",
+      "dica": "Não, eles vêm pro almoço na quarta.",
+      "img": "📅🍲",
+      "alvo": "lunch",
+      "alvo_pt": "almoço",
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR46",
+        "BR17"
+      ],
+      "armadilhas": [
+        "snack",
+        "wensday"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "for lunch",
+          "aceita": [
+            "to lunch"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b4d59c",
+      "quem": "sarah",
+      "cod": "Can we have a snack first? I'm hungry.",
+      "dica": "A gente pode fazer um lanche antes? Estou com fome.",
+      "img": "🥐😋",
+      "alvo": "snack",
+      "alvo_pt": "lanche",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "lunch"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d532cc",
+      "quem": "voce",
+      "contexto": "f-b4d59c",
+      "cod": "Sure. The bookstore across the street has a cafe.",
+      "dica": "Claro. A livraria do outro lado da rua tem um café.",
+      "img": "📚☕🛣️",
+      "alvo": "bookstore",
+      "alvo_pt": "livraria",
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR02"
+      ],
+      "armadilhas": [
+        "library",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a3c80a",
+      "quem": "sarah",
+      "cod": "Which way is the library?",
+      "dica": "Pra que lado fica a biblioteca?",
+      "img": "🧭📚",
+      "alvo": "library",
+      "alvo_pt": "biblioteca",
+      "conceito": "which tem h; library = biblioteca.",
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR46"
+      ],
+      "armadilhas": [
+        "bookstore",
+        "wich"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ce35e2",
+      "quem": "voce",
+      "cod": "Push the door. Don't pull it.",
+      "dica": "Empurra a porta. Não puxa.",
+      "img": "🚪👉",
+      "alvo": "Push",
+      "alvo_pt": "Empurra",
+      "conceito": "push = empurrar; pull = puxar.",
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR01"
+      ],
+      "armadilhas": [
+        "pull"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f7c1f7",
+      "quem": "sarah",
+      "cod": "Is that building a college?",
+      "dica": "Aquele prédio é uma faculdade?",
+      "img": "🏛️❓",
+      "alvo": "college",
+      "alvo_pt": "faculdade",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "school"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a6d285",
+      "quem": "voce",
+      "contexto": "f-f7c1f7",
+      "cod": "No, it's a high school.",
+      "dica": "Não, é um colégio.",
+      "img": "🏫🎒",
+      "alvo": "high school",
+      "alvo_pt": "colégio",
+      "conceito": "colégio = high school; college = faculdade.",
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR01"
+      ],
+      "armadilhas": [
+        "college"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

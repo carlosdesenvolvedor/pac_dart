@@ -1,0 +1,251 @@
+{
+  "id": "passado-simples-afirmativo.vi-comprei-conheci-comi",
+  "trilha": "passado-simples-afirmativo",
+  "nome": "Vi, comprei, conheci, comi",
+  "emoji": "🛍️",
+  "cena": "Domingo à noite, em Chicago, você troca mensagens com a sua irmã Julia sobre o fim de semana.",
+  "resumo": "Contar passeios e compras com os irregulares saw, bought, met e ate.",
+  "fechamento": false,
+  "novos": [
+    "saw",
+    "bought",
+    "met",
+    "ate"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Vi, comprei, conheci, comi"
+    },
+    {
+      "t": "p",
+      "c": "Mais quatro irregulares: see → **saw**, buy → **bought**, meet → **met**, eat → **ate**."
+    },
+    {
+      "t": "warn",
+      "c": "Conheci alguém (pela primeira vez) = **met**: I met Mike's wife. (não: I knew Mike's wife)"
+    },
+    {
+      "t": "ex",
+      "c": "I ate too much.\nComi demais."
+    }
+  ],
+  "imagem": "📱🏀🌭",
+  "visualizacao": "Domingo à noite, no quarto do hotel em Chicago. Celular na mão, você manda para a Julia as fotos do jogo, da comida e da cidade.",
+  "foto_busca": "hotel room phone night",
+  "trechos": [
+    {
+      "id": "f-72beb1",
+      "quem": "voce",
+      "cod": "We saw a basketball game!",
+      "dica": "(ao vivo) A gente viu um jogo de basquete!",
+      "img": "🏀👀",
+      "alvo": "saw",
+      "alvo_pt": "viu",
+      "conceito": "see → saw. Ver um jogo ao vivo = see a game.",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "armadilhas": [
+        "see",
+        "seed"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5b14bb",
+      "quem": "julia",
+      "contexto": "f-72beb1",
+      "cod": "Wow! I saw your photos.",
+      "dica": "Nossa! Vi suas fotos.",
+      "img": "📸😍",
+      "alvo": "saw",
+      "alvo_pt": "Vi",
+      "registro": "informal",
+      "armadilhas": [
+        "see",
+        "seed"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2483286,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I saw the pictures.\"; PT original: \"Eu vi as fotos.\"; Wow! acrescentado; the pictures → your photos; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-21a862",
+      "quem": "voce",
+      "cod": "Mike ate three hot dogs!",
+      "dica": "O Mike comeu três cachorros-quentes!",
+      "img": "🌭🌭🌭",
+      "alvo": "ate",
+      "alvo_pt": "comeu",
+      "conceito": "eat → ate.",
+      "registro": "informal",
+      "armadilhas": [
+        "eat",
+        "eated"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3154847,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I ate three hot dogs.\"; PT original: \"Eu comi três cachorros quentes.\"; I → Mike; PT reescrito (cachorros-quentes)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3ad69f",
+      "quem": "voce",
+      "cod": "I ate too much.",
+      "dica": "Comi demais.",
+      "img": "🥴🍽️",
+      "alvo": "ate",
+      "alvo_pt": "Comi",
+      "conceito": "demais (quantidade) = too much.",
+      "registro": "informal",
+      "armadilhas": [
+        "eat",
+        "eated"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 953366,
+        "en_autor": "CK",
+        "pt_id": 1048352,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-99cbf3",
+      "quem": "voce",
+      "cod": "Yesterday, I met Mike's wife.",
+      "dica": "Ontem conheci a esposa do Mike.",
+      "img": "🤝👩",
+      "alvo": "met",
+      "alvo_pt": "conheci",
+      "conceito": "Conhecer alguém pela primeira vez = meet → met.",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "armadilhas": [
+        "knew",
+        "meeted"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-175873",
+      "quem": "voce",
+      "cod": "I bought a T-shirt for Lucas.",
+      "dica": "Comprei uma camiseta para o Lucas.",
+      "img": "👕🎁",
+      "alvo": "bought",
+      "alvo_pt": "Comprei",
+      "conceito": "buy → bought.",
+      "var": [
+        {
+          "em": "a T-shirt for Lucas",
+          "aceita": [
+            "Lucas a T-shirt"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "buy",
+        "buyed"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2612080,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I bought a T-shirt.\"; PT original: \"Comprei uma camiseta.\"; acrescentado for Lucas; PT adaptado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d86064",
+      "quem": "julia",
+      "contexto": "f-175873",
+      "cod": "Mom bought a new laptop.",
+      "dica": "A mãe comprou um notebook novo.",
+      "img": "👩💻✨",
+      "alvo": "bought",
+      "alvo_pt": "comprou",
+      "conceito": "Notebook (o computador) = laptop. Em inglês, notebook é caderno.",
+      "var": [
+        {
+          "em": "Mom",
+          "aceita": [
+            "Our mom",
+            "My mom"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "buy",
+        "buyed",
+        "notebook"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-71b749",
+      "quem": "voce",
+      "cod": "At the office, I met a lot of people.",
+      "dica": "No escritório, conheci muita gente.",
+      "img": "🏢👥",
+      "alvo": "met",
+      "alvo_pt": "conheci",
+      "conceito": "muita gente = a lot of people (plural).",
+      "registro": "informal",
+      "interferencias": [
+        "BR14"
+      ],
+      "armadilhas": [
+        "knew",
+        "meeted"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6529016,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I've met a lot of interesting people.\"; PT original: \"Conheci muitas pessoas interessantes.\"; passado simples no lugar do present perfect; interesting removido; At the office acrescentado; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

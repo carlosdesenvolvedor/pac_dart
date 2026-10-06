@@ -1,0 +1,256 @@
+{
+  "id": "conhecer-levar-emprestar-dizer.emprestar-trazer-contar-tudo-junto",
+  "trilha": "conhecer-levar-emprestar-dizer",
+  "nome": "Emprestar, trazer, contar: tudo junto",
+  "emoji": "🗣️",
+  "cena": "A Julia, sua irmã, vem passar o fim de semana com você depois de uma viagem a Salvador; vocês combinam o que fazer e quem ela vai conhecer.",
+  "resumo": "Escolher entre meet / know / visit, come / bring / take, lend / borrow, say / tell, bored / boring e trip / job, agora com os pares juntos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Os pares, agora juntos"
+    },
+    {
+      "t": "p",
+      "c": "**come** (vir) x **go** (ir); **bring** (trazer) x **take** (levar); **borrow** (pegar emprestado) x **lend** (emprestar); **say** (dizer algo) x **tell** (contar a alguém)."
+    },
+    {
+      "t": "p",
+      "c": "**meet** (conhecer pela 1ª vez) x **know** (já conhecer) x **visit** (conhecer um lugar); **bored** (entediado) x **boring** (chato); **trip** (viagem) x **travel** (viajar)."
+    },
+    {
+      "t": "ex",
+      "c": "Julia's bored. I want to take her to the beach.\nA Julia está entediada. Quero levar ela pra praia."
+    },
+    {
+      "t": "warn",
+      "c": "Não: I'm going! (a quem chama) / Can you borrow me...? / She said me... Certo: I'm coming! / Can you lend me...? / She told me..."
+    }
+  ],
+  "imagem": "🎂🧳🚗",
+  "visualizacao": "Sexta à noite, você ouve a campainha. A Julia está na porta com uma mala de rodinhas e uma caixa de bolo, ainda bronzeada da viagem.",
+  "foto_busca": "woman arriving with suitcase",
+  "trechos": [
+    {
+      "id": "f-54af7b",
+      "quem": "voce",
+      "contexto": "I'm at the door!",
+      "cod": "I'm coming! Did you bring the cake?",
+      "dica": "Já vou! Você trouxe o bolo?",
+      "img": "🚪🎂",
+      "alvo": "I'm coming!",
+      "alvo_pt": "Já vou!",
+      "conceito": "Já vou! = I'm coming!; trazer = bring (depois de did, na base).",
+      "registro": "informal",
+      "interferencias": [
+        "BR37",
+        "BR06"
+      ],
+      "armadilhas": [
+        "going",
+        "brought",
+        "take"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eb631a",
+      "quem": "voce",
+      "cod": "How was your trip to Salvador?",
+      "dica": "Como foi a sua viagem a Salvador?",
+      "img": "🏖️🧳❓",
+      "alvo": "trip",
+      "alvo_pt": "viagem",
+      "registro": "informal",
+      "interferencias": [
+        "BR40"
+      ],
+      "armadilhas": [
+        "travel"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3148452,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Boston → Salvador (original: \"How was your trip to Boston?\"); PT reescrito (original: \"Como foi a sua viagem a Boston?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-365d3c",
+      "quem": "julia",
+      "contexto": "f-eb631a",
+      "cod": "Great! I visited the old town.",
+      "dica": "Ótima! Conheci o centro histórico.",
+      "img": "🏛️⛪",
+      "alvo": "visited",
+      "alvo_pt": "Conheci",
+      "lit": "[lit.: a cidade velha]",
+      "conceito": "Conhecer um lugar = visit. the old town = o centro histórico.",
+      "registro": "informal",
+      "interferencias": [
+        "BR36"
+      ],
+      "armadilhas": [
+        "knew",
+        "met"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the old town",
+          "aceita": [
+            "the historic center",
+            "the historic district"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8aaf84",
+      "quem": "julia",
+      "cod": "But the flight back was really boring.",
+      "dica": "Mas o voo de volta foi muito chato.",
+      "img": "✈️😴",
+      "alvo": "boring",
+      "alvo_pt": "chato",
+      "registro": "informal",
+      "interferencias": [
+        "BR41"
+      ],
+      "armadilhas": [
+        "bored"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very",
+            "so"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1650db",
+      "quem": "julia",
+      "cod": "My battery is low. Can I borrow your charger?",
+      "dica": "Minha bateria está baixa. Posso pegar emprestado o seu carregador?",
+      "img": "🔋🔌🙋‍♀️",
+      "alvo": "Can I borrow",
+      "alvo_pt": "Posso pegar emprestado",
+      "registro": "informal",
+      "interferencias": [
+        "BR38"
+      ],
+      "armadilhas": [
+        "lend"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2b0000",
+      "quem": "julia",
+      "cod": "Lucas told me about his new job.",
+      "dica": "O Lucas me contou do emprego novo dele.",
+      "img": "📞💼",
+      "alvo": "told me",
+      "alvo_pt": "me contou",
+      "conceito": "contar para alguém = tell + pessoa (told me). say vem sem a pessoa.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31",
+        "BR40"
+      ],
+      "armadilhas": [
+        "said",
+        "work"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-53cdb9",
+      "quem": "voce",
+      "cod": "Do you know Ana? She's from Recife.",
+      "dica": "Você conhece a Ana? Ela é de Recife.",
+      "img": "👩🌴❓",
+      "alvo": "Do you know",
+      "alvo_pt": "Você conhece",
+      "registro": "informal",
+      "interferencias": [
+        "BR36",
+        "BR06"
+      ],
+      "armadilhas": [
+        "meet"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-10558a",
+      "quem": "julia",
+      "contexto": "f-53cdb9",
+      "cod": "No, but I'd love to meet her!",
+      "dica": "Não, mas adoraria conhecer ela!",
+      "img": "🤝😊",
+      "alvo": "meet her",
+      "alvo_pt": "conhecer ela",
+      "conceito": "Já conhecer = know; conhecer pela 1ª vez = meet.",
+      "registro": "informal",
+      "interferencias": [
+        "BR36"
+      ],
+      "armadilhas": [
+        "know"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-72f3d7",
+      "quem": "voce",
+      "cod": "Lucas, can you lend me your car on Saturday?",
+      "dica": "Lucas, você pode me emprestar seu carro no sábado?",
+      "img": "🚗🔑",
+      "alvo": "lend me",
+      "alvo_pt": "me emprestar",
+      "registro": "informal",
+      "interferencias": [
+        "BR38",
+        "BR17"
+      ],
+      "armadilhas": [
+        "borrow"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d75c2f",
+      "quem": "voce",
+      "cod": "Julia's bored. I want to take her to the beach.",
+      "dica": "A Julia está entediada. Quero levar ela pra praia.",
+      "img": "🏖️🚗💨",
+      "alvo": "take her",
+      "alvo_pt": "levar ela",
+      "conceito": "bored = entediada (como ela se sente). Levar para lá = take.",
+      "registro": "informal",
+      "interferencias": [
+        "BR41",
+        "BR37"
+      ],
+      "armadilhas": [
+        "boring",
+        "bring"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

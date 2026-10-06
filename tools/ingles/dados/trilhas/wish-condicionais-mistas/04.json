@@ -1,0 +1,252 @@
+{
+  "id": "wish-condicionais-mistas.prefiro-ja-esta-na-hora",
+  "trilha": "wish-condicionais-mistas",
+  "nome": "Prefiro, já está na hora",
+  "emoji": "⏰",
+  "cena": "Você e a Ana discutem como querem trabalhar no próximo ano e o que precisa mudar no equipamento do time.",
+  "resumo": "Dizer preferências com I'd rather e propor mudanças com It's time we + passado.",
+  "fechamento": false,
+  "novos": [
+    "I'd rather",
+    "it's time we",
+    "office days",
+    "hybrid"
+  ],
+  "apoio": [
+    "headset"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Prefiro = I'd rather; já está na hora = it's time we"
+    },
+    {
+      "t": "p",
+      "c": "**I'd rather + verbo** (sem to) = prefiro. Sobre outra pessoa: **I'd rather you + passado** = preferia que você..."
+    },
+    {
+      "t": "p",
+      "c": "**It's time we + passado** = já está na hora de a gente... O verbo vai para o passado, mas o sentido é agora."
+    },
+    {
+      "t": "warn",
+      "c": "Não: I'd rather to work / I'd rather you don't share / It's time we replace."
+    },
+    {
+      "t": "ex",
+      "c": "It's time we replaced these old headsets.\nJá está na hora de a gente trocar esses headsets velhos."
+    }
+  ],
+  "imagem": "🏠🏢🎧",
+  "visualizacao": "Chamada de fim de tarde com a Ana. Na tela dela, um calendário com dias marcados no escritório; no seu ouvido, o headset velho chiando a cada palavra.",
+  "foto_busca": "remote worker headset video call",
+  "trechos": [
+    {
+      "id": "f-254ab7",
+      "quem": "voce",
+      "contexto": "Are you coming to the office next week?",
+      "cod": "I'd rather stay home.",
+      "dica": "Prefiro ficar em casa.",
+      "img": "🏠🙂",
+      "alvo": "I'd rather",
+      "alvo_pt": "Prefiro",
+      "conceito": "I'd rather + verbo sem to = prefiro (I'd = I would).",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "to stay",
+        "prefer"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4499897,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN sem alteração; PT reescrito (original: \"Eu prefiro ficar em casa.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "stay home",
+          "aceita": [
+            "stay at home"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-101406",
+      "quem": "ana",
+      "contexto": "f-254ab7",
+      "cod": "The company wants three office days a week now.",
+      "dica": "A empresa agora quer três dias de escritório por semana.",
+      "img": "🏢📅",
+      "alvo": "office days",
+      "alvo_pt": "dias de escritório",
+      "conceito": "office days = dias de trabalho no escritório. a week = por semana. wants: -s.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR07"
+      ],
+      "armadilhas": [
+        "want"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a week",
+          "aceita": [
+            "per week"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b8ed19",
+      "quem": "voce",
+      "contexto": "f-101406",
+      "cod": "Three office days a week is too much for me.",
+      "dica": "Três dias de escritório por semana é demais pra mim.",
+      "img": "📆🙅",
+      "alvo": "office days",
+      "alvo_pt": "dias de escritório",
+      "conceito": "Três dias por semana vistos como um bloco: is too much (é demais).",
+      "registro": "informal",
+      "armadilhas": [
+        "very much",
+        "too many"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a week",
+          "aceita": [
+            "per week"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-339b11",
+      "quem": "ana",
+      "cod": "I think a hybrid model with two office days would work better.",
+      "dica": "Acho que um modelo híbrido com dois dias de escritório funcionaria melhor.",
+      "img": "🔀🏠",
+      "alvo": "hybrid",
+      "alvo_pt": "híbrido",
+      "conceito": "hybrid = híbrido (parte em casa, parte no escritório).",
+      "registro": "informal",
+      "armadilhas": [
+        "model hybrid"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        2,
+        9
+      ]
+    },
+    {
+      "id": "f-dbc181",
+      "quem": "voce",
+      "contexto": "f-339b11",
+      "cod": "Do you think Mike would accept a hybrid model?",
+      "dica": "Você acha que o Mike aceitaria um modelo híbrido?",
+      "img": "🤔👍",
+      "alvo": "hybrid",
+      "alvo_pt": "híbrido",
+      "conceito": "Pergunta com do: Do you think...? Nomes de pessoa sem artigo: Mike.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR12"
+      ],
+      "armadilhas": [
+        "you think",
+        "the mike"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3c7bfb",
+      "quem": "ana",
+      "cod": "It's time we replaced these old headsets.",
+      "dica": "Já está na hora de a gente trocar esses headsets velhos.",
+      "img": "🎧🗑️",
+      "alvo": "It's time we",
+      "alvo_pt": "Já está na hora de a gente",
+      "conceito": "It's time we + passado (replaced), mesmo falando de agora.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "replace",
+        "to replace",
+        "is time"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c917ea",
+      "quem": "voce",
+      "contexto": "f-3c7bfb",
+      "cod": "And it's time we talked to Mike about new laptops.",
+      "dica": "E já está na hora de a gente falar com o Mike sobre notebooks novos.",
+      "img": "💻✨",
+      "alvo": "it's time we",
+      "alvo_pt": "já está na hora de a gente",
+      "conceito": "falar com alguém = talk to; notebook (computador) = laptop.",
+      "var": [
+        {
+          "em": "talked to",
+          "aceita": [
+            "talked with",
+            "spoke to",
+            "spoke with"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "talk",
+        "notebooks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e4cbcc",
+      "quem": "ana",
+      "cod": "I'd rather you didn't mention this to the team yet.",
+      "dica": "Preferia que você não comentasse isso com o time ainda.",
+      "img": "🤫👥",
+      "alvo": "I'd rather",
+      "alvo_pt": "Preferia",
+      "conceito": "Preferia que você não... = I'd rather you didn't + verbo (passado).",
+      "var": [
+        {
+          "em": "mention this to the team",
+          "aceita": [
+            "tell the team about this"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "don't",
+        "you not"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

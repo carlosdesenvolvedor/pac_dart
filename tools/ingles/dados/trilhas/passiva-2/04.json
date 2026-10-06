@@ -1,0 +1,263 @@
+{
+  "id": "passiva-2.mandei-consertar",
+  "trilha": "passiva-2",
+  "nome": "Mandei consertar",
+  "emoji": "🔧",
+  "cena": "Antes de uma viagem, você resolve as pendências do carro na oficina e conta tudo para a Emma.",
+  "resumo": "Contar serviços que você contratou com have / get something done: I had my brakes fixed yesterday.",
+  "fechamento": false,
+  "novos": [
+    "mechanic",
+    "repair shop",
+    "brakes",
+    "oil change"
+  ],
+  "apoio": [
+    "sink"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Mandei consertar = I had it fixed"
+    },
+    {
+      "t": "p",
+      "c": "Serviço feito por outra pessoa: **have + objeto + particípio** (I had my brakes fixed). Mais informal: **get + objeto + particípio** (I get my car checked)."
+    },
+    {
+      "t": "ex",
+      "c": "Have you had your oil changed recently?\nVocê mandou trocar o óleo recentemente?"
+    },
+    {
+      "t": "warn",
+      "c": "Mandei consertar o carro = I had my car fixed (não: I sent to fix my car). Cortei o cabelo, no salão = I got my hair cut."
+    }
+  ],
+  "imagem": "🔧🚗🧰",
+  "visualizacao": "Cheiro de graxa, um carro suspenso no elevador da oficina e o barulho de uma parafusadeira. Você mostra o recibo para a Emma na calçada.",
+  "foto_busca": "car repair shop mechanic garage",
+  "trechos": [
+    {
+      "id": "f-cc3777",
+      "quem": "voce",
+      "cod": "I had my brakes fixed yesterday.",
+      "dica": "Mandei consertar os meus freios ontem.",
+      "img": "🛑🔧",
+      "alvo": "brakes",
+      "alvo_pt": "freios",
+      "conceito": "Mandei consertar = had + objeto + particípio (outra pessoa fez o serviço).",
+      "var": [
+        {
+          "em": "had",
+          "aceita": [
+            "got"
+          ]
+        },
+        {
+          "em": "fixed",
+          "aceita": [
+            "repaired"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "sent to fix",
+        "fixed my"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bc3c8e",
+      "quem": "voce",
+      "contexto": "What happened?",
+      "cod": "Last week, I slammed on the brakes and heard a strange noise.",
+      "dica": "Na semana passada, pisei com tudo no freio e ouvi um barulho estranho.",
+      "img": "🦶🛑🔊",
+      "alvo": "brakes",
+      "alvo_pt": "freio",
+      "lit": "[lit.: bati com força nos freios]",
+      "conceito": "pisar fundo no freio = slam on the brakes (em inglês, no plural).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "the brake",
+        "stepped"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2406523,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: + 'Last week,' e 'and heard a strange noise'; PT autoral",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bd0f42",
+      "quem": "emma",
+      "cod": "Which repair shop did you go to?",
+      "dica": "Em qual oficina você foi?",
+      "img": "🏪🔧❓",
+      "alvo": "repair shop",
+      "alvo_pt": "oficina",
+      "conceito": "repair shop = oficina. A preposição fica no fim da pergunta: go to?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "office",
+        "workshop"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Which",
+          "aceita": [
+            "What"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-9330f2",
+      "quem": "voce",
+      "contexto": "f-bd0f42",
+      "cod": "The repair shop near the gas station. I always get my car checked there.",
+      "dica": "Na oficina perto do posto de gasolina. Eu sempre mando revisar o meu carro lá.",
+      "img": "⛽🚗✅",
+      "alvo": "repair shop",
+      "alvo_pt": "oficina",
+      "conceito": "Mando revisar = get + objeto + particípio (get my car checked).",
+      "var": [
+        {
+          "em": "get",
+          "aceita": [
+            "have"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "office",
+        "check my car"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aac11a",
+      "quem": "voce",
+      "cod": "The mechanic said my brakes were worn out.",
+      "dica": "O mecânico disse que os meus freios estavam gastos.",
+      "img": "👨‍🔧🛑",
+      "alvo": "mechanic",
+      "alvo_pt": "mecânico",
+      "conceito": "worn out (peças) = gasto. Discurso indireto: said + were.",
+      "registro": "informal",
+      "armadilhas": [
+        "mechanical",
+        "are worn"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e499c4",
+      "quem": "emma",
+      "cod": "Have you had your oil changed recently?",
+      "dica": "Você mandou trocar o óleo recentemente?",
+      "img": "🛢️🔄❓",
+      "alvo": "oil changed",
+      "alvo_pt": "trocar o óleo",
+      "conceito": "Mandar trocar o óleo = have the oil changed; a troca de óleo = an oil change.",
+      "var": [
+        {
+          "em": "your oil",
+          "aceita": [
+            "the oil"
+          ]
+        },
+        {
+          "em": "Have you had",
+          "aceita": [
+            "Did you have",
+            "Did you get"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "changed your oil",
+        "did you change"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4496391,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN igual ao original; PT reescrito (Você trocou o óleo há pouco tempo? → Você mandou trocar o óleo recentemente?)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1b52e8",
+      "quem": "voce",
+      "contexto": "f-e499c4",
+      "cod": "Yes, I got an oil change last month.",
+      "dica": "Sim, fiz a troca de óleo no mês passado.",
+      "img": "🛢️📅",
+      "alvo": "oil change",
+      "alvo_pt": "troca de óleo",
+      "conceito": "Na oficina, fazer a troca de óleo = get an oil change (quem faz é o mecânico).",
+      "registro": "informal",
+      "interferencias": [
+        "BR12",
+        "BR27"
+      ],
+      "armadilhas": [
+        "made",
+        "did",
+        "a oil"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "got",
+          "aceita": [
+            "had"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0808e5",
+      "quem": "emma",
+      "cod": "Great. Can you send me your mechanic's number?",
+      "dica": "Ótimo. Você me manda o número do seu mecânico?",
+      "img": "📱👨‍🔧",
+      "alvo": "mechanic",
+      "alvo_pt": "mecânico",
+      "conceito": "Posse com 's: your mechanic's number (não: the number of your mechanic).",
+      "registro": "informal",
+      "armadilhas": [
+        "number of",
+        "mechanical"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

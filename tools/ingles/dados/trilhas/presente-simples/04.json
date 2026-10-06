@@ -1,0 +1,220 @@
+{
+  "id": "presente-simples.nao-como-carne-don-t",
+  "trilha": "presente-simples",
+  "nome": "Não como carne: don't",
+  "emoji": "🥗",
+  "cena": "No jantar com o time num restaurante de Chicago, cada um diz o que come, o que não come e o que toma.",
+  "resumo": "Dizer o que você não faz com don't + verbo: I don't eat meat. I don't drink milk.",
+  "fechamento": false,
+  "novos": [
+    "eat",
+    "drink",
+    "meat",
+    "fish"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Não: don't + verbo"
+    },
+    {
+      "t": "p",
+      "c": "A negativa do presente usa **don't** antes do verbo: I don't eat meat. O not sozinho não funciona com verbo."
+    },
+    {
+      "t": "ex",
+      "c": "I don't drink milk.\nEu não tomo leite."
+    },
+    {
+      "t": "warn",
+      "c": "Não: I no eat / I not eat. Sempre **don't** + verbo."
+    },
+    {
+      "t": "tip",
+      "c": "comer = **eat**; tomar (café, leite) = **drink**; mas = **but**."
+    }
+  ],
+  "imagem": "🍽️🐟🥩",
+  "visualizacao": "Você está numa mesa comprida de restaurante em Chicago, com o time. O garçom espera com o bloquinho; a Ana olha o cardápio e o Mike já sabe o que quer.",
+  "foto_busca": "restaurant dinner table friends",
+  "trechos": [
+    {
+      "id": "f-ff091d",
+      "quem": "voce",
+      "cod": "Let's eat here.",
+      "dica": "Vamos comer aqui.",
+      "img": "🍽️👉",
+      "alvo": "eat",
+      "alvo_pt": "comer",
+      "conceito": "eat = comer.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2007902,
+        "en_autor": "CK",
+        "pt_id": 4809032,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5d4400",
+      "quem": "ana",
+      "contexto": "Fish or meat?",
+      "cod": "Fish, please. I don't eat meat.",
+      "dica": "Peixe, por favor. Não como carne.",
+      "img": "🐟🚫🥩",
+      "alvo": "meat",
+      "alvo_pt": "carne",
+      "conceito": "Não + verbo = don't + verbo: I don't eat (não: I no eat).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "no",
+        "not"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e3a381",
+      "quem": "mike",
+      "contexto": "f-5d4400",
+      "cod": "Oh, I love meat!",
+      "dica": "Ah, eu amo carne!",
+      "img": "🥩😍",
+      "alvo": "meat",
+      "alvo_pt": "carne",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b64688",
+      "quem": "mike",
+      "cod": "I don't eat fish.",
+      "dica": "Eu não como peixe.",
+      "img": "🐟🙅",
+      "alvo": "fish",
+      "alvo_pt": "peixe",
+      "conceito": "fish = peixe (a comida e o animal).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "no",
+        "not"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5858616,
+        "en_autor": "CK",
+        "pt_id": 5867843,
+        "pt_autor": "ianna",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-aaa9cf",
+      "quem": "ana",
+      "contexto": "f-b64688",
+      "cod": "Really? I eat fish every day.",
+      "dica": "Sério? Eu como peixe todo dia.",
+      "img": "🐟📅",
+      "alvo": "fish",
+      "alvo_pt": "peixe",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9288914,
+        "en_autor": "CK",
+        "pt_id": 9837864,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Really? (PT: + Sério?)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-851b54",
+      "quem": "voce",
+      "cod": "In Brazil, we eat rice and beans.",
+      "dica": "No Brasil, a gente come arroz e feijão.",
+      "img": "🍚🍽️",
+      "alvo": "eat",
+      "alvo_pt": "come",
+      "conceito": "A gente come = we eat.",
+      "var": [
+        {
+          "em": "In Brazil, we eat rice and beans",
+          "aceita": [
+            "We eat rice and beans in Brazil"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d23e57",
+      "quem": "voce",
+      "contexto": "Milk in your coffee?",
+      "cod": "No, thanks. I don't drink milk.",
+      "dica": "Não, obrigado. Não tomo leite.",
+      "pt_f": "Não, obrigada. Não tomo leite.",
+      "img": "☕🚫🥛",
+      "alvo": "drink",
+      "alvo_pt": "tomo",
+      "conceito": "Tomar (café, leite, suco) = drink.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "no",
+        "not",
+        "take"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7cbe35",
+      "quem": "mike",
+      "contexto": "f-d23e57",
+      "cod": "I drink coffee with milk.",
+      "dica": "Eu tomo café com leite.",
+      "img": "☕🥛",
+      "alvo": "drink",
+      "alvo_pt": "tomo",
+      "registro": "neutro",
+      "armadilhas": [
+        "take"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6733372,
+        "en_autor": "Eccles17",
+        "pt_id": 10080571,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT: bebo → tomo (tomar café, como no resto da trilha)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

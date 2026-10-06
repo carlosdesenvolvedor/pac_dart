@@ -1,0 +1,282 @@
+{
+  "id": "relativas-definidoras.quem-e-quem-no-time",
+  "trilha": "relativas-definidoras",
+  "nome": "Quem é quem no time",
+  "emoji": "🔗",
+  "cena": "Você faz o onboarding de uma estagiária nova, numa chamada: apresenta o time, as ferramentas e as páginas do projeto.",
+  "resumo": "Definir pessoas, coisas e lugares misturando who, that, where, a omissão do pronome e substantivo + substantivo.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Quem, que, onde"
+    },
+    {
+      "t": "p",
+      "c": "**who** = pessoa · **that / which** = coisa · **where** = lugar. O that some quando vem outro sujeito: the tool **we use**."
+    },
+    {
+      "t": "ex",
+      "c": "Sarah is the one who talks to the client.\nA Sarah é quem fala com o cliente."
+    },
+    {
+      "t": "tip",
+      "c": "Substantivo + substantivo, sem of: error message, search bar."
+    },
+    {
+      "t": "warn",
+      "c": "Não: message of error · the person who he reviews · the tool we use it. Certo: error message, the person who reviews, the tool we use."
+    }
+  ],
+  "imagem": "🧑‍💻👋🗂️",
+  "visualizacao": "Primeiro dia da estagiária. Na chamada de vídeo, você compartilha a tela e apresenta o time, um rosto de cada vez.",
+  "foto_busca": "remote onboarding video call",
+  "trechos": [
+    {
+      "id": "f-068056",
+      "quem": "voce",
+      "cod": "Mike is the person who reviews your code.",
+      "dica": "O Mike é a pessoa que revisa o seu código.",
+      "img": "👨‍💻🔍",
+      "alvo": "the person who",
+      "alvo_pt": "a pessoa que",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "review",
+        "he"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9ec5ac",
+      "quem": "voce",
+      "cod": "Sarah is the one who talks to the client.",
+      "dica": "A Sarah é quem fala com o cliente.",
+      "img": "👩‍💼🤝",
+      "alvo": "the one who",
+      "alvo_pt": "quem",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "talk",
+        "she"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7b8e64",
+      "quem": "estagiaria",
+      "contexto": "f-9ec5ac",
+      "cod": "Is Ana the designer who works with Sarah?",
+      "dica": "A Ana é a designer que trabalha com a Sarah?",
+      "img": "👩‍🎨❓",
+      "alvo": "who works",
+      "alvo_pt": "que trabalha",
+      "var": [
+        {
+          "em": "who",
+          "aceita": [
+            "that"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "work",
+        "she"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-526b71",
+      "quem": "voce",
+      "cod": "This is the tool we use for testing. It's free.",
+      "dica": "Esta é a ferramenta que a gente usa para testes. É de graça.",
+      "img": "🧪🎁",
+      "alvo": "the tool we use",
+      "alvo_pt": "a ferramenta que a gente usa",
+      "var": [
+        {
+          "em": "for testing",
+          "aceita": [
+            "for tests"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "it"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4071ad",
+      "quem": "estagiaria",
+      "cod": "Is there a page where I can see my tasks?",
+      "dica": "Tem uma página onde eu posso ver as minhas tarefas?",
+      "img": "📄✅",
+      "alvo": "a page where",
+      "alvo_pt": "uma página onde",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "that"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f5bd1b",
+      "quem": "voce",
+      "contexto": "f-4071ad",
+      "cod": "Yes. Click the search bar and type your name.",
+      "dica": "Sim. Clica na barra de busca e digita o seu nome.",
+      "img": "🔍✍️",
+      "alvo": "search bar",
+      "alvo_pt": "barra de busca",
+      "var": [
+        {
+          "em": "Click",
+          "aceita": [
+            "Click on"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d2e0ab",
+      "quem": "voce",
+      "cod": "If you get an error message, let me know.",
+      "dica": "Se você receber uma mensagem de erro, me avisa.",
+      "img": "⚠️💬",
+      "alvo": "error message",
+      "alvo_pt": "mensagem de erro",
+      "conceito": "se você receber = if you get (presente depois de if).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR28"
+      ],
+      "armadilhas": [
+        "of",
+        "will"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2051812,
+        "en_autor": "AlanF_US",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: need any help → get an error message (original: \"If you need any help, let me know.\"); PT reescrito (original: \"Se você precisar de alguma ajuda, me fale.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2999b0",
+      "quem": "estagiaria",
+      "contexto": "f-d2e0ab",
+      "cod": "What happens if I make a mistake in the code?",
+      "dica": "O que acontece se eu cometer um erro no código?",
+      "img": "😟🐛",
+      "alvo": "make a mistake",
+      "alvo_pt": "cometer um erro",
+      "var": [
+        {
+          "em": "What happens",
+          "aceita": [
+            "What will happen"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR32",
+        "BR28"
+      ],
+      "armadilhas": [
+        "do",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ce7519",
+      "quem": "voce",
+      "contexto": "f-2999b0",
+      "cod": "Don't worry. We have tests that find bugs.",
+      "dica": "Não se preocupa. A gente tem testes que encontram bugs.",
+      "img": "🧪🐛",
+      "alvo": "tests that find",
+      "alvo_pt": "testes que encontram",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "which"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "finds",
+        "they"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f2f5d7",
+      "quem": "estagiaria",
+      "contexto": "f-ce7519",
+      "cod": "Great! I've never worked with a team that writes tests.",
+      "dica": "Ótimo! Eu nunca trabalhei com um time que escreve testes.",
+      "img": "🤩🧪",
+      "alvo": "a team that writes",
+      "alvo_pt": "um time que escreve",
+      "conceito": "Experiência sem data = present perfect: I've never worked.",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "which"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR02"
+      ],
+      "armadilhas": [
+        "write",
+        "worked"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,239 @@
+{
+  "id": "terceira-pessoa.ela-trabalha-de-casa-o-s",
+  "trilha": "terceira-pessoa",
+  "nome": "Ela trabalha de casa: o -s",
+  "emoji": "👩‍💻",
+  "cena": "Por vídeo, você mostra ao Ben, seu amigo de Boston, quem é quem no seu time.",
+  "resumo": "Falar do que outra pessoa faz: he / she + verbo com -s (lives, works, speaks, likes).",
+  "fechamento": false,
+  "novos": [
+    "works",
+    "lives",
+    "speaks",
+    "likes"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ele mora, ela trabalha: o -s"
+    },
+    {
+      "t": "p",
+      "c": "Falando de **uma** pessoa (he, she, Mike, Ana), o verbo do presente ganha **-s**: live → lives, work → works."
+    },
+    {
+      "t": "ex",
+      "c": "Mike lives in Chicago.\nO Mike mora em Chicago."
+    },
+    {
+      "t": "warn",
+      "c": "O pronome não some: This is Ana. **She** works from home. Em português, \"Trabalha de casa\" basta; em inglês, não."
+    },
+    {
+      "t": "tip",
+      "c": "O -s é só de he, she, it e nomes. Com I, you, we e they, o verbo fica sem -s."
+    }
+  ],
+  "imagem": "👩‍💻🏙️👥",
+  "visualizacao": "Você está numa videochamada com o Ben. Na tela, as fotos do time; você aponta cada rosto e conta quem mora onde, enquanto ele ri e toma café.",
+  "foto_busca": "video call team photos",
+  "trechos": [
+    {
+      "id": "f-51ad0e",
+      "quem": "voce",
+      "cod": "Mike lives in Chicago.",
+      "dica": "O Mike mora em Chicago.",
+      "img": "🏙️🏠",
+      "alvo": "lives",
+      "alvo_pt": "mora",
+      "conceito": "Com he/she/it e com nomes (Mike, Ana), o verbo ganha -s: live → lives.",
+      "registro": "neutro",
+      "armadilhas": [
+        "live in"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1093268,
+        "en_autor": "CK",
+        "pt_id": 5308181,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Mike e Boston → Chicago (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e6f3f3",
+      "quem": "voce",
+      "cod": "This is Ana. She works from home.",
+      "dica": "Essa é a Ana. Trabalha de casa.",
+      "img": "👩‍💻🏡",
+      "alvo": "works",
+      "alvo_pt": "Trabalha",
+      "lit": "[lit.: ela trabalha de casa]",
+      "conceito": "O pronome não some: She works... Em português, \"Trabalha de casa\" basta.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "works from",
+        "she work from"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ef117f",
+      "quem": "ben",
+      "contexto": "f-e6f3f3",
+      "cod": "My sister works from home too.",
+      "dica": "Minha irmã também trabalha de casa.",
+      "img": "👭💻",
+      "alvo": "works",
+      "alvo_pt": "trabalha",
+      "conceito": "too (também) fica no fim da frase.",
+      "registro": "informal",
+      "armadilhas": [
+        "work from",
+        "too works"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-99db20",
+      "quem": "voce",
+      "cod": "Sarah speaks English and Spanish.",
+      "dica": "A Sarah fala inglês e espanhol.",
+      "img": "👩‍💼🗣️🌎",
+      "alvo": "speaks",
+      "alvo_pt": "fala",
+      "conceito": "Línguas têm maiúscula em inglês: English, Spanish.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "speak english"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ec137d",
+      "quem": "voce",
+      "cod": "Mike speaks a little Portuguese.",
+      "dica": "O Mike fala um pouco de português.",
+      "img": "👨‍💼💬🤏",
+      "alvo": "speaks",
+      "alvo_pt": "fala",
+      "conceito": "um pouco de = a little (sem of).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "a little of",
+        "speak a little"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f062bb",
+      "quem": "voce",
+      "cod": "Sarah lives in Austin with her family.",
+      "dica": "A Sarah mora em Austin com a família dela.",
+      "img": "👨‍👩‍👧🏡",
+      "alvo": "lives",
+      "alvo_pt": "mora",
+      "conceito": "her family = a família dela: o possessivo segue o dono (Sarah → her).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11"
+      ],
+      "armadilhas": [
+        "live in austin",
+        "his family"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1040585,
+        "en_autor": "CK",
+        "pt_id": 4609446,
+        "pt_autor": "KimiP",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Sarah, Boston → Austin, his parents → her family (EN e PT); PT: com a família dela (posse explícita)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c284c9",
+      "quem": "voce",
+      "cod": "Ana likes her job.",
+      "dica": "A Ana gosta do trabalho dela.",
+      "img": "👩‍🎨❤️",
+      "alvo": "likes",
+      "alvo_pt": "gosta",
+      "conceito": "her = dela; gostar de = like (sem of).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11"
+      ],
+      "armadilhas": [
+        "like her",
+        "likes of",
+        "his job"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2865085,
+        "en_autor": "Amastan",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "She → Ana; PT autoral",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7760a9",
+      "quem": "voce",
+      "cod": "Everybody likes Mike.",
+      "dica": "Todo mundo gosta do Mike.",
+      "img": "👥👍",
+      "alvo": "likes",
+      "alvo_pt": "gosta",
+      "conceito": "everybody (todo mundo) é singular: Everybody likes, com -s.",
+      "var": [
+        {
+          "em": "Everybody",
+          "aceita": [
+            "Everyone"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "everybody like "
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2094827,
+        "en_autor": "CK",
+        "pt_id": 5100808,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Mike (EN e PT)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

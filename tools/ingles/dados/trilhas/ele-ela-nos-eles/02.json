@@ -1,0 +1,263 @@
+{
+  "id": "ele-ela-nos-eles.esta-tarde-esta-frio-o-it",
+  "trilha": "ele-ela-nos-eles",
+  "nome": "Está tarde, está frio: o it",
+  "emoji": "🌡️",
+  "cena": "De noite, do aeroporto de Chicago para o hotel, você comenta a hora, o frio e o preço do táxi.",
+  "resumo": "Comentar hora, tempo e preço com It's: It's late. / It's cold. / really + adjetivo.",
+  "fechamento": false,
+  "novos": [
+    "It's late.",
+    "late",
+    "cold",
+    "really"
+  ],
+  "apoio": [
+    "expensive"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Está tarde, está frio: o it"
+    },
+    {
+      "t": "p",
+      "c": "Hora, tempo (clima) e preço não têm sujeito em português: \"Está frio\". Em inglês, o sujeito **it** é obrigatório: **It's** cold."
+    },
+    {
+      "t": "ex",
+      "c": "It's really cold today.\nEstá bem frio hoje."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca Is cold. ou Is late. Sempre It's cold. / It's late."
+    },
+    {
+      "t": "tip",
+      "c": "late = tarde (It's late) e também atrasado (I'm late)."
+    }
+  ],
+  "imagem": "✈️🚕❄️",
+  "visualizacao": "Você sai do aeroporto de Chicago às onze da noite. O vento gelado bate no rosto, o motorista abre o porta-malas e o taxímetro já está ligado.",
+  "foto_busca": "taxi airport night winter",
+  "trechos": [
+    {
+      "id": "f-ccd1f1",
+      "quem": "voce",
+      "cod": "Sorry, I'm late.",
+      "dica": "Desculpa, estou atrasado.",
+      "pt_f": "Desculpa, estou atrasada.",
+      "img": "🏃⏰",
+      "alvo": "late",
+      "alvo_pt": "atrasado",
+      "conceito": "late = atrasado (pessoa) e tarde (hora): I'm late. / It's late.",
+      "registro": "informal",
+      "armadilhas": [
+        "i'm delayed"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4728682,
+        "en_autor": "paper1n0",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (Desculpa, no registro falado)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9ac016",
+      "quem": "motorista",
+      "contexto": "f-ccd1f1",
+      "cod": "No problem. It's cold today!",
+      "dica": "Sem problema. Está frio hoje!",
+      "img": "🥶🌬️",
+      "alvo": "cold",
+      "alvo_pt": "frio",
+      "conceito": "Está frio = It's cold: o it é obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is cold",
+        "make cold"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-57231a",
+      "quem": "voce",
+      "contexto": "f-9ac016",
+      "cod": "Yes, it's really cold!",
+      "dica": "É, está bem frio!",
+      "img": "❄️🧥",
+      "alvo": "really",
+      "alvo_pt": "bem",
+      "conceito": "really + adjetivo = bem / muito: really cold = bem frio.",
+      "var": [
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yeah"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is really",
+        "very"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2249206,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Yes; PT reescrito (bem frio)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-af4bff",
+      "quem": "voce",
+      "contexto": "It's eleven o'clock.",
+      "cod": "Eleven o'clock? It's late!",
+      "dica": "Onze horas? Está tarde!",
+      "img": "🕚🌙",
+      "alvo": "It's late",
+      "alvo_pt": "Está tarde",
+      "lit": "[lit.: isso é tarde]",
+      "conceito": "Está tarde = It's late (não: Is late). O it não se traduz.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is late"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f47a97",
+      "quem": "voce",
+      "cod": "It's really late in Brazil.",
+      "dica": "Está bem tarde no Brasil.",
+      "img": "🇧🇷🌙😴",
+      "alvo": "late",
+      "alvo_pt": "tarde",
+      "conceito": "O horário do Brasil está à frente do de Chicago.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR15"
+      ],
+      "armadilhas": [
+        "is really late",
+        "brasil"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2ae472",
+      "quem": "voce",
+      "contexto": "That's sixty dollars.",
+      "cod": "Sixty dollars? That's really expensive!",
+      "dica": "Sessenta dólares? Isso é bem caro!",
+      "img": "💵😮",
+      "alvo": "really",
+      "alvo_pt": "bem",
+      "conceito": "really + adjetivo = bem: really expensive = bem caro. Para reagir a um preço: That's...",
+      "registro": "informal",
+      "armadilhas": [
+        "is really expensive",
+        "very"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2249203,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "It's → That's, big → expensive, + Sixty dollars?; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bca0d3",
+      "quem": "recepcionista",
+      "cod": "Hi! It's cold outside, right?",
+      "dica": "Oi! Está frio lá fora, né?",
+      "img": "🏨🥶",
+      "alvo": "cold",
+      "alvo_pt": "frio",
+      "conceito": "outside = lá fora.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is cold"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2545253,
+        "en_autor": "CK",
+        "pt_id": 8903829,
+        "pt_autor": "Brasiliense",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "- really, + Hi! e right? (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-08039c",
+      "quem": "voce",
+      "contexto": "f-bca0d3",
+      "cod": "Yes! And it's late, too.",
+      "dica": "É! E também está tarde.",
+      "img": "🛏️🌙",
+      "alvo": "it's late",
+      "alvo_pt": "está tarde",
+      "conceito": "too (também) vai no fim: it's late, too.",
+      "var": [
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yeah"
+          ]
+        },
+        {
+          "em": "it's late, too",
+          "aceita": [
+            "it's also late"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is late",
+        "too it's"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

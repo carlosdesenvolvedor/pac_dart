@@ -1,0 +1,199 @@
+{
+  "id": "primeiro-contato.obrigado-desculpa-com-licenca",
+  "trilha": "primeiro-contato",
+  "nome": "Obrigado, desculpa, com licença",
+  "emoji": "🙏",
+  "cena": "No escritório de Chicago, você passa pela recepção, chega com atraso para encontrar o Mike e esbarra na Sarah no corredor.",
+  "resumo": "Agradecer, pedir licença e pedir desculpas: Thanks a lot. / Excuse me. / I'm sorry. / Sorry!",
+  "fechamento": false,
+  "novos": [
+    "Thanks a lot.",
+    "Excuse me.",
+    "I'm sorry.",
+    "Sorry!"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Com licença, desculpa, obrigado"
+    },
+    {
+      "t": "p",
+      "c": "Excuse me = com licença (para passar ou chamar alguém). Sorry! = desculpa (rápido, coisa pequena). I'm sorry. = me desculpa, sinto muito (mais sério)."
+    },
+    {
+      "t": "ex",
+      "c": "Thanks a lot, Mike!\nMuito obrigado, Mike!"
+    },
+    {
+      "t": "tip",
+      "c": "Thanks a lot = muito obrigado. Thank you very much também vale, mas é mais formal."
+    },
+    {
+      "t": "warn",
+      "c": "Desculpa por atraso ou erro é sorry, não excuse me. Excuse me é para pedir licença ou chamar alguém."
+    }
+  ],
+  "imagem": "🏢🙏☕",
+  "visualizacao": "Você entra no saguão do escritório em Chicago com o crachá na mão. Gente passando apressada, cheiro de café, e a recepcionista sorri atrás do balcão.",
+  "foto_busca": "office lobby reception desk",
+  "trechos": [
+    {
+      "id": "f-53836f",
+      "quem": "voce",
+      "cod": "Excuse me.",
+      "dica": "Com licença.",
+      "img": "🚶👥",
+      "alvo": "Excuse me",
+      "alvo_pt": "Com licença",
+      "conceito": "Excuse me = com licença: para passar ou chamar a atenção de alguém.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a8842b",
+      "quem": "voce",
+      "contexto": "Welcome to Chicago!",
+      "cod": "Thanks a lot!",
+      "dica": "Muito obrigado!",
+      "pt_f": "Muito obrigada!",
+      "img": "🙏😊",
+      "alvo": "Thanks a lot",
+      "alvo_pt": "Muito obrigado",
+      "conceito": "Thanks a lot = muito obrigado. Thank you very much também vale.",
+      "var": [
+        {
+          "em": "Thanks a lot",
+          "aceita": [
+            "Thank you very much"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-698356",
+      "quem": "voce",
+      "contexto": "Hi, {nome}!",
+      "cod": "I'm sorry I'm late.",
+      "dica": "Me desculpa, estou atrasado.",
+      "pt_f": "Me desculpa, estou atrasada.",
+      "img": "⏰😓",
+      "alvo": "I'm sorry",
+      "alvo_pt": "Me desculpa",
+      "conceito": "I'm sorry = me desculpa, sinto muito. late = atrasado.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "i'm"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4728682,
+        "en_autor": "paper1n0",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Sorry, I'm late. → I'm sorry I'm late. (sem vírgula, como o nativo escreve); PT reescrito (Me desculpa, glossário)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b2b8ae",
+      "quem": "voce",
+      "contexto": "No problem! Coffee?",
+      "cod": "Thanks a lot, Mike!",
+      "dica": "Muito obrigado, Mike!",
+      "pt_f": "Muito obrigada, Mike!",
+      "img": "☕🙏",
+      "alvo": "Thanks a lot",
+      "alvo_pt": "Muito obrigado",
+      "var": [
+        {
+          "em": "Thanks a lot",
+          "aceita": [
+            "Thank you very much"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4628685,
+        "en_autor": "Lazovic",
+        "pt_id": 4638074,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "teacher → Mike (no PT, professor → Mike)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a707df",
+      "quem": "voce",
+      "cod": "Excuse me, Mike.",
+      "dica": "(para sair) Com licença, Mike.",
+      "img": "🚪🚶",
+      "alvo": "Excuse me",
+      "alvo_pt": "Com licença",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-49ce74",
+      "quem": "voce",
+      "cod": "Sorry, Sarah!",
+      "dica": "Desculpa, Sarah!",
+      "img": "💥😳",
+      "alvo": "Sorry",
+      "alvo_pt": "Desculpa",
+      "conceito": "Sorry! = desculpa rápido, para um esbarrão ou um engano pequeno.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-84ed93",
+      "quem": "sarah",
+      "contexto": "f-49ce74",
+      "cod": "Sorry! Hi, {nome}!",
+      "dica": "Desculpa! Oi, {nome}!",
+      "img": "😅👋",
+      "alvo": "Sorry",
+      "alvo_pt": "Desculpa",
+      "registro": "informal",
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d022d5",
+      "quem": "voce",
+      "contexto": "f-84ed93",
+      "cod": "Hi, Sarah! I'm sorry.",
+      "dica": "Oi, Sarah! Me desculpa.",
+      "img": "😔🙏",
+      "alvo": "I'm sorry",
+      "alvo_pt": "Me desculpa",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "i'm"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

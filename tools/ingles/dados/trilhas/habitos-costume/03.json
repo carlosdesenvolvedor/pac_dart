@@ -1,0 +1,260 @@
+{
+  "id": "habitos-costume.voce-vai-se-acostumar",
+  "trilha": "habitos-costume",
+  "nome": "Você vai se acostumar",
+  "emoji": "🧳",
+  "cena": "Nas primeiras semanas de uma temporada de trabalho perto de Chicago, você fica na casa da Emma, que ajuda você a se adaptar.",
+  "resumo": "Falar do processo de adaptação: get used to + -ing ou + substantivo, tipping, sales tax e adapt.",
+  "fechamento": false,
+  "novos": [
+    "get used to",
+    "tipping",
+    "sales tax",
+    "adapt"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Vou me acostumar: get used to"
+    },
+    {
+      "t": "p",
+      "c": "**get used to + -ing / substantivo** = se acostumar (o processo): You'll get used to the weather. I'm still trying to get used to the cold."
+    },
+    {
+      "t": "warn",
+      "c": "Acostumar com = get used to (não: get used with). E -ing depois: getting used to tipping (não: to tip)."
+    },
+    {
+      "t": "tip",
+      "c": "Levei meses para me acostumar com... = It took me months to get used to..."
+    },
+    {
+      "t": "ex",
+      "c": "It took me months to get used to the cold weather.\nLevei meses para me acostumar com o frio."
+    }
+  ],
+  "imagem": "🧳❄️🧾",
+  "visualizacao": "Começo de inverno perto de Chicago. Você chega do mercado com o rosto gelado e o recibo na mão; a Emma ri, coloca água para ferver e pergunta como foi.",
+  "foto_busca": "snowy suburban street winter",
+  "trechos": [
+    {
+      "id": "f-1b9696",
+      "quem": "emma",
+      "cod": "Don't worry. You'll get used to the weather.",
+      "dica": "Não se preocupa. Você vai se acostumar com o clima.",
+      "img": "🌨️🙂",
+      "alvo": "get used to",
+      "alvo_pt": "se acostumar com",
+      "conceito": "get used to = se acostumar (o processo); be used to = já estar acostumado.",
+      "registro": "informal",
+      "interferencias": [
+        "BR49"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3361251,
+        "en_autor": "Hybrid",
+        "pt_id": 3767557,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: + Don't worry. (original: \"You'll get used to the weather.\"); PT: + Não se preocupa. (original: \"Você vai se acostumar com o clima.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c929de",
+      "quem": "voce",
+      "contexto": "f-1b9696",
+      "cod": "I'm still trying to get used to the cold.",
+      "dica": "Ainda estou tentando me acostumar com o frio.",
+      "img": "🥶🧣",
+      "alvo": "get used to",
+      "alvo_pt": "me acostumar com",
+      "conceito": "acostumar com = get used to, sem with (não: get used with the cold).",
+      "registro": "informal",
+      "interferencias": [
+        "BR49"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2540072,
+        "en_autor": "CK",
+        "pt_id": 5261125,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: it → the cold (original: \"I'm still trying to get used to it.\"); PT: + com o frio (original: \"Ainda estou tentando me acostumar.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d8fb94",
+      "quem": "voce",
+      "cod": "Tipping is the hardest part to get used to.",
+      "dica": "Dar gorjeta é a parte mais difícil de se acostumar.",
+      "img": "💵😅",
+      "alvo": "Tipping",
+      "alvo_pt": "Dar gorjeta",
+      "conceito": "-ing como sujeito: Tipping = dar gorjeta. get used to no fim, sem with.",
+      "registro": "informal",
+      "interferencias": [
+        "BR49"
+      ],
+      "armadilhas": [
+        "tip",
+        "with"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "part",
+          "aceita": [
+            "thing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-150ca5",
+      "quem": "emma",
+      "contexto": "f-d8fb94",
+      "cod": "Tipping fifteen to twenty percent is normal at restaurants.",
+      "dica": "Dar de quinze a vinte por cento de gorjeta é normal em restaurante.",
+      "img": "🍽️💰",
+      "alvo": "Tipping",
+      "alvo_pt": "gorjeta",
+      "conceito": "tip = gorjeta; tipping = dar gorjeta. percent sempre por extenso.",
+      "var": [
+        {
+          "em": "at restaurants",
+          "aceita": [
+            "in restaurants"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "tip"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f4da93",
+      "quem": "voce",
+      "cod": "The price on the shelf never includes sales tax.",
+      "dica": "O preço na prateleira nunca inclui o imposto sobre vendas.",
+      "img": "🏷️🧾",
+      "alvo": "sales tax",
+      "alvo_pt": "imposto sobre vendas",
+      "conceito": "Nos EUA, o sales tax entra só no caixa. never antes do verbo: never includes.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "include"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "includes sales tax",
+          "aceita": [
+            "includes the sales tax"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-17974b",
+      "quem": "emma",
+      "contexto": "f-f4da93",
+      "cod": "Right. Sales tax is added at the register.",
+      "dica": "Pois é. O imposto sobre vendas é somado no caixa.",
+      "img": "➕🛒",
+      "alvo": "Sales tax",
+      "alvo_pt": "imposto sobre vendas",
+      "conceito": "is added = é somado (passiva). register = caixa da loja.",
+      "var": [
+        {
+          "em": "Right",
+          "aceita": [
+            "Yeah",
+            "Yes"
+          ]
+        },
+        {
+          "em": "Sales tax",
+          "aceita": [
+            "The sales tax"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7393e8",
+      "quem": "emma",
+      "cod": "You've adapted really well in just two weeks.",
+      "dica": "Você se adaptou muito bem em só duas semanas.",
+      "img": "🌱👏",
+      "alvo": "adapted",
+      "alvo_pt": "se adaptou",
+      "conceito": "se adaptar = adapt, sem pronome reflexivo (não: adapted yourself).",
+      "var": [
+        {
+          "em": "You've adapted",
+          "aceita": [
+            "You adapted"
+          ]
+        },
+        {
+          "em": "really well",
+          "aceita": [
+            "very well"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "yourself"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dc75ca",
+      "quem": "voce",
+      "contexto": "f-7393e8",
+      "cod": "Thanks. It's easier to adapt with your help.",
+      "dica": "Valeu. É mais fácil se adaptar com a sua ajuda.",
+      "img": "🤝🏠",
+      "alvo": "adapt",
+      "alvo_pt": "se adaptar",
+      "conceito": "It obrigatório: It's easier to adapt (não: Is easier).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "myself"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "id": "can-pedidos-habilidades.posso-pagar-com-cartao",
+  "trilha": "can-pedidos-habilidades",
+  "nome": "Posso pagar com cartão?",
+  "emoji": "💳",
+  "cena": "Numa loja em Chicago você paga com cartão; depois, no museu, pede para tirar foto e paga na lojinha.",
+  "resumo": "Pedir permissão com Can I...? e pagar com cartão.",
+  "fechamento": false,
+  "novos": [
+    "Can I...?",
+    "pay",
+    "card",
+    "by card"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Posso...? = Can I...?"
+    },
+    {
+      "t": "p",
+      "c": "Para pedir permissão: **Can I** + verbo puro? A resposta mais comum é *Sure.* (Claro.)."
+    },
+    {
+      "t": "ex",
+      "c": "Can I pay by card?\nPosso pagar com cartão?"
+    },
+    {
+      "t": "tip",
+      "c": "Com cartão = **by card**, sem artigo."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca *Can I to pay?*: depois de can, o verbo vem direto."
+    }
+  ],
+  "imagem": "💳🛍️🏛️📸",
+  "visualizacao": "Você está no caixa de uma loja em Chicago, cartão na mão. Depois, o silêncio de um museu, quadros enormes e o celular pronto para a foto.",
+  "foto_busca": "store checkout card payment",
+  "trechos": [
+    {
+      "id": "f-474bf3",
+      "quem": "voce",
+      "cod": "Hi! Can I pay here?",
+      "dica": "Oi! Posso pagar aqui?",
+      "img": "🏪💵",
+      "alvo": "pay",
+      "alvo_pt": "pagar",
+      "conceito": "Can I + verbo puro = Posso...? (nunca Can I to pay).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-79f4c7",
+      "quem": "atendente",
+      "contexto": "f-474bf3",
+      "cod": "Sure. How do you want to pay?",
+      "dica": "Claro. Como você quer pagar?",
+      "img": "🤔💳💵",
+      "alvo": "pay",
+      "alvo_pt": "pagar",
+      "conceito": "Sure. = Claro. É a resposta mais comum a um pedido.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0c5696",
+      "quem": "voce",
+      "contexto": "f-79f4c7",
+      "cod": "By card, please.",
+      "dica": "Com cartão, por favor.",
+      "img": "💳🙏",
+      "alvo": "By card",
+      "alvo_pt": "Com cartão",
+      "registro": "neutro",
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b7c1d8",
+      "quem": "atendente",
+      "cod": "Here's your card.",
+      "dica": "Aqui está seu cartão.",
+      "img": "🤲💳",
+      "alvo": "card",
+      "alvo_pt": "cartão",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2163055,
+        "en_autor": "Hybrid",
+        "pt_id": 418131,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Here's your change.\"; PT original: \"Aqui está seu troco.\"; change → card; PT: troco → cartão",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7cef02",
+      "quem": "voce",
+      "contexto": "Let's go to the museum!",
+      "cod": "Can I come too?",
+      "dica": "Posso ir também?",
+      "img": "🏛️🙋",
+      "alvo": "Can I",
+      "alvo_pt": "Posso",
+      "lit": "[lit.: posso vir também?]",
+      "conceito": "Ir junto com quem fala = come: Can I come too?",
+      "var": [
+        {
+          "em": "come",
+          "aceita": [
+            "go"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 742072,
+        "en_autor": "CK",
+        "pt_id": 742888,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8ea5fc",
+      "quem": "voce",
+      "cod": "Excuse me, can I take a photo here?",
+      "dica": "Com licença, posso tirar uma foto aqui?",
+      "img": "📸🖼️❓",
+      "alvo": "can I",
+      "alvo_pt": "posso",
+      "conceito": "Tirar foto = take a photo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-886cac",
+      "quem": "voce",
+      "contexto": "That's twenty dollars.",
+      "cod": "Can I pay by card?",
+      "dica": "Posso pagar com cartão?",
+      "img": "💳❓",
+      "alvo": "by card",
+      "alvo_pt": "com cartão",
+      "conceito": "Com cartão = by card, sem artigo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2238,
+        "en_autor": "CK",
+        "pt_id": 405166,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Can I pay by credit card?\"; PT original: \"Posso pagar com cartão de crédito?\"; credit card → card; PT: cartão de crédito → cartão",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7e7441",
+      "quem": "atendente",
+      "cod": "Is this your card?",
+      "dica": "Esse cartão é seu?",
+      "img": "💳🔎",
+      "alvo": "card",
+      "alvo_pt": "cartão",
+      "conceito": "Essa X é sua? = Is this your X?",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8353330,
+        "en_autor": "CK",
+        "pt_id": 8354813,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Is this your hat?\"; PT original: \"Esse chapéu é seu?\"; hat → card; PT: chapéu → cartão",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

@@ -1,0 +1,268 @@
+{
+  "id": "falsos-cognatos-trabalho.curriculo-pauta-e-politica",
+  "trilha": "falsos-cognatos-trabalho",
+  "nome": "Currículo, pauta e política",
+  "emoji": "📄",
+  "cena": "No RH e depois na reunião de time: um currículo, a pauta do dia e a nova política de férias.",
+  "resumo": "Usar job application (candidatura), agenda (pauta), policy (política) e pick this back up (retomar).",
+  "fechamento": false,
+  "novos": [
+    "job application",
+    "agenda",
+    "policy",
+    "pick this back up"
+  ],
+  "apoio": [
+    "resume (EUA = currículo)",
+    "reach out",
+    "running out of time"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Palavras de RH e de reunião"
+    },
+    {
+      "t": "p",
+      "c": "**resume** (EUA) = currículo. **job application** = candidatura. **agenda** = pauta da reunião. **policy** = política, regra da empresa."
+    },
+    {
+      "t": "warn",
+      "c": "Não traduza pelo som: resumir é summarize (resume é currículo); a agenda pessoal é calendar; política partidária é politics."
+    },
+    {
+      "t": "tip",
+      "c": "Retomar a reunião: **Let's pick this back up.**"
+    },
+    {
+      "t": "ex",
+      "c": "What's next on the agenda?\nQual é o próximo item da pauta?"
+    }
+  ],
+  "imagem": "📄📋🏖️",
+  "visualizacao": "No escritório de Austin, você vê primeiro uma pilha de currículos na mesa do RH; depois, na sala de reunião, a pauta projetada na parede.",
+  "foto_busca": "office meeting room agenda screen",
+  "trechos": [
+    {
+      "id": "f-3ad461",
+      "quem": "recrutadora",
+      "cod": "We got thirty job applications for the senior role.",
+      "dica": "A gente recebeu trinta candidaturas para a vaga de sênior.",
+      "img": "📨📚",
+      "alvo": "job applications",
+      "alvo_pt": "candidaturas",
+      "conceito": "job application = candidatura a uma vaga; role = vaga, cargo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8ee31a",
+      "quem": "recrutadora",
+      "cod": "This job application looks great. Here's his resume.",
+      "dica": "Essa candidatura parece ótima. Aqui está o currículo dele.",
+      "img": "📄⭐",
+      "alvo": "job application",
+      "alvo_pt": "candidatura",
+      "conceito": "resume (EUA) = currículo; resumir = summarize.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR11"
+      ],
+      "armadilhas": [
+        "curriculum"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e29ed1",
+      "quem": "mike",
+      "cod": "What's on the agenda today?",
+      "dica": "O que tem na pauta hoje?",
+      "img": "📋❓",
+      "alvo": "agenda",
+      "alvo_pt": "pauta",
+      "conceito": "agenda (de reunião) = pauta; a agenda pessoal é calendar.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4501245,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (agenda → pauta)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b92a17",
+      "quem": "sarah",
+      "contexto": "f-e29ed1",
+      "cod": "There are three items on the agenda.",
+      "dica": "Tem três itens na pauta.",
+      "img": "📝📋",
+      "alvo": "agenda",
+      "alvo_pt": "pauta",
+      "conceito": "Tem (existe) = there are; on the agenda = na pauta.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03",
+        "BR17"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eaad97",
+      "quem": "sarah",
+      "cod": "First, we're updating our vacation policy.",
+      "dica": "Primeiro, a gente está atualizando a nossa política de férias.",
+      "img": "🏖️📜",
+      "alvo": "policy",
+      "alvo_pt": "política",
+      "conceito": "policy = política, regras da empresa; politics = política partidária.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR24"
+      ],
+      "armadilhas": [
+        "politics"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8606101,
+        "en_autor": "shekitten",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Privacy Policy → vacation policy; + First,; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d3740f",
+      "quem": "ana",
+      "cod": "Does the new policy apply to people who work remotely?",
+      "dica": "A nova política vale para quem trabalha remoto?",
+      "img": "🏠🌎",
+      "alvo": "policy",
+      "alvo_pt": "política",
+      "conceito": "apply to = valer para (uma regra); a pergunta no presente pede does.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR14"
+      ],
+      "armadilhas": [
+        "politics"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "people who work",
+          "aceita": [
+            "those who work",
+            "anyone who works"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-576769",
+      "quem": "sarah",
+      "cod": "If you have any questions about the policy, reach out to HR.",
+      "dica": "Se tiverem alguma dúvida sobre a política, entrem em contato com o RH.",
+      "img": "❓📩",
+      "alvo": "policy",
+      "alvo_pt": "política",
+      "conceito": "reach out to = entrar em contato com.",
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28",
+        "BR60"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6c6177",
+      "quem": "mike",
+      "cod": "We're running out of time. Let's pick this back up after the break.",
+      "dica": "Estamos ficando sem tempo. Vamos retomar depois do intervalo.",
+      "img": "☕⏸️",
+      "alvo": "pick this back up",
+      "alvo_pt": "retomar",
+      "lit": "[lit.: pegar isso de volta]",
+      "conceito": "retomar a reunião = pick this back up; resume, como verbo, soa formal.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR60"
+      ],
+      "armadilhas": [
+        "resume"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-be53a1",
+      "quem": "sarah",
+      "cod": "OK, let's pick this back up. Where were we?",
+      "dica": "Bom, vamos retomar. Onde a gente estava?",
+      "img": "▶️📋",
+      "alvo": "pick this back up",
+      "alvo_pt": "retomar",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "resume"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f4c0a3",
+      "quem": "voce",
+      "cod": "What's next on the agenda?",
+      "dica": "Qual é o próximo item da pauta?",
+      "img": "⏭️📋",
+      "alvo": "agenda",
+      "alvo_pt": "pauta",
+      "conceito": "next on the agenda = o próximo item da pauta.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "What's next on the agenda",
+          "aceita": [
+            "What's the next item on the agenda"
+          ]
+        }
+      ]
+    }
+  ]
+}

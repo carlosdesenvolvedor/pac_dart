@@ -1,0 +1,279 @@
+{
+  "id": "deducao-perguntas-indiretas.voce-poderia-me-dizer",
+  "trilha": "deducao-perguntas-indiretas",
+  "nome": "Você poderia me dizer...?",
+  "emoji": "🚇",
+  "cena": "Fim de semana em Boston: você pede informação a desconhecidos na rua, no metrô e no ônibus.",
+  "resumo": "Pedir informação a desconhecidos com Could you tell me...? e dizer que não tem certeza com I'm not sure if...",
+  "fechamento": false,
+  "novos": [
+    "Could you tell me",
+    "I'm not sure if",
+    "which line",
+    "ticket machine",
+    "bus stop"
+  ],
+  "apoio": [
+    "the nearest",
+    "ATM",
+    "two blocks"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Você poderia me dizer...? Could you tell me..."
+    },
+    {
+      "t": "p",
+      "c": "**Could you tell me** + where / which / if + sujeito + verbo: o jeito educado de pedir informação na rua. Dentro dela, ordem normal e sem do."
+    },
+    {
+      "t": "warn",
+      "c": "Could you tell me where the station is? (não: where is the station)."
+    },
+    {
+      "t": "tip",
+      "c": "**I'm not sure if** + frase = não tenho certeza se..."
+    },
+    {
+      "t": "ex",
+      "c": "Could you tell me if this train stops downtown?\nVocê poderia me dizer se esse trem para no centro?"
+    }
+  ],
+  "imagem": "🚇🎫🗺️",
+  "visualizacao": "Sábado de manhã em Boston. Vento frio na esquina, o mapa aberto no celular e uma moradora esperando o sinal abrir ao seu lado.",
+  "foto_busca": "city subway entrance street",
+  "trechos": [
+    {
+      "id": "f-69f3e1",
+      "quem": "voce",
+      "cod": "Excuse me, could you tell me where the subway station is?",
+      "dica": "Com licença, você poderia me dizer onde fica a estação de metrô?",
+      "img": "🚇❓",
+      "alvo": "could you tell me",
+      "alvo_pt": "você poderia me dizer",
+      "conceito": "Could you tell me + where + sujeito + verbo: ordem normal, is no fim.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8242238,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Can → Could; Park Street → the subway station; acrescentado 'Excuse me,' (original: \"Can you tell me where Park Street is?\"); PT reescrito (original: \"Pode me dizer onde fica o Park Street?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-062e30",
+      "quem": "moradora",
+      "contexto": "f-69f3e1",
+      "cod": "It's two blocks from here, next to the bus stop.",
+      "dica": "Fica a duas quadras daqui, do lado do ponto de ônibus.",
+      "img": "🚏👉",
+      "alvo": "bus stop",
+      "alvo_pt": "ponto de ônibus",
+      "conceito": "Ponto de ônibus = bus stop. Quadra = block.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "from here",
+          "aceita": [
+            "away"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-92694d",
+      "quem": "voce",
+      "cod": "Excuse me. The ticket machine isn't working.",
+      "dica": "Com licença. A máquina de bilhete não está funcionando.",
+      "img": "🎫🚫",
+      "alvo": "ticket machine",
+      "alvo_pt": "máquina de bilhete",
+      "var": [
+        {
+          "em": "isn't working",
+          "aceita": [
+            "doesn't work"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c08e1",
+      "quem": "atendente",
+      "contexto": "f-92694d",
+      "cod": "There's another ticket machine next to the exit.",
+      "dica": "Tem outra máquina de bilhete do lado da saída.",
+      "img": "🎫➡️🚪",
+      "alvo": "ticket machine",
+      "alvo_pt": "máquina de bilhete",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "There's",
+          "aceita": [
+            "There is"
+          ]
+        }
+      ],
+      "conceito": "Tem (existe) = there's. Outra = another (junto, uma palavra só).",
+      "interferencias": [
+        "BR03"
+      ]
+    },
+    {
+      "id": "f-1fcdb2",
+      "quem": "voce",
+      "contexto": "f-4c08e1",
+      "cod": "I'm not sure if I'm doing this right.",
+      "dica": "Não tenho certeza se estou fazendo isso direito.",
+      "img": "🤔🎫",
+      "alvo": "I'm not sure if",
+      "alvo_pt": "Não tenho certeza se",
+      "var": [
+        {
+          "em": "if",
+          "aceita": [
+            "whether"
+          ]
+        },
+        {
+          "em": "this",
+          "aceita": [
+            "it"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2538528,
+        "en_autor": "CK",
+        "pt_id": 5984679,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: correctly → right (original: \"I'm not sure if I'm doing this correctly.\"); PT: corretamente → direito (original: \"Não tenho certeza se estou fazendo isso corretamente.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-50c1fc",
+      "quem": "atendente",
+      "contexto": "f-1fcdb2",
+      "cod": "Which line do you need?",
+      "dica": "De qual linha você precisa?",
+      "img": "🚇🔀",
+      "alvo": "Which line",
+      "alvo_pt": "qual linha",
+      "var": [
+        {
+          "em": "Which",
+          "aceita": [
+            "What"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0f7b2a",
+      "quem": "voce",
+      "contexto": "f-50c1fc",
+      "cod": "I want to go downtown. Which line goes there?",
+      "dica": "Quero ir para o centro. Qual linha vai pra lá?",
+      "img": "🏙️🚇",
+      "alvo": "Which line",
+      "alvo_pt": "Qual linha",
+      "conceito": "Pergunta sobre o sujeito, sem do: Which line goes there? (não: Which line does go).",
+      "registro": "neutro",
+      "armadilhas": [
+        "does"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e65cd6",
+      "quem": "voce",
+      "cod": "I'm not sure if this bus stops downtown.",
+      "dica": "Não tenho certeza se esse ônibus para no centro.",
+      "img": "🚌🏙️",
+      "alvo": "I'm not sure if",
+      "alvo_pt": "Não tenho certeza se",
+      "conceito": "stops: -s da 3ª pessoa, também depois de if.",
+      "var": [
+        {
+          "em": "if",
+          "aceita": [
+            "whether"
+          ]
+        },
+        {
+          "em": "this bus",
+          "aceita": [
+            "that bus"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-860e67",
+      "quem": "ben",
+      "cod": "I'm at the bus stop in front of the museum.",
+      "dica": "Estou no ponto de ônibus em frente ao museu.",
+      "img": "🚏🏛️",
+      "alvo": "bus stop",
+      "alvo_pt": "ponto de ônibus",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7aff4f",
+      "quem": "voce",
+      "cod": "Could you tell me where the nearest ATM is?",
+      "dica": "Você poderia me dizer onde fica o caixa eletrônico mais próximo?",
+      "img": "🏧📍",
+      "alvo": "Could you tell me",
+      "alvo_pt": "Você poderia me dizer",
+      "conceito": "O mais próximo = the nearest. Na pergunta indireta, is vai para o fim.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

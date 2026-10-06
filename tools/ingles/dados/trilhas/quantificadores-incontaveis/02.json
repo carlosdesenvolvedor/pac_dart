@@ -1,0 +1,294 @@
+{
+  "id": "quantificadores-incontaveis.reuniao-demais-too-many-a-few",
+  "trilha": "quantificadores-incontaveis",
+  "nome": "Reunião demais: too many, a few",
+  "emoji": "📆",
+  "cena": "Semana cheia: você reclama das reuniões com a Ana e depois pede uns minutos ao Mike.",
+  "resumo": "Dizer que há coisas demais (too many, too much) e pedir uns poucos minutos (a few).",
+  "fechamento": false,
+  "novos": [
+    "too many",
+    "too much",
+    "a few (uns, alguns)",
+    "notifications",
+    "open tabs"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Demais: too many, too much"
+    },
+    {
+      "t": "p",
+      "c": "**too many** + plural (meetings, tabs, people); **too much** + o que não se conta (work, coffee) ou logo depois do verbo (You work too much)."
+    },
+    {
+      "t": "ex",
+      "c": "There are too many meetings this week.\nTem reunião demais esta semana."
+    },
+    {
+      "t": "tip",
+      "c": "**a few** = uns, alguns, sempre com plural: a few minutes. O a little, com o que não se conta, vem na próxima lição."
+    },
+    {
+      "t": "warn",
+      "c": "Demais não é very: too much work (não: very work, very much meetings)."
+    }
+  ],
+  "imagem": "📆🔔😩",
+  "visualizacao": "Segunda de manhã, o calendário está pintado de reuniões do começo ao fim. O celular vibra sem parar, o navegador está lotado de abas e a Ana ri da sua cara na chamada.",
+  "foto_busca": "busy calendar many meetings",
+  "trechos": [
+    {
+      "id": "f-554747",
+      "quem": "voce",
+      "cod": "There are too many meetings this week.",
+      "dica": "Tem reunião demais esta semana.",
+      "img": "📆😩",
+      "alvo": "too many",
+      "alvo_pt": "demais",
+      "conceito": "Demais com plural = too many; com o que não se conta = too much.",
+      "registro": "informal",
+      "interferencias": [
+        "BR23",
+        "BR03"
+      ],
+      "armadilhas": [
+        "much",
+        "very"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2a7e60",
+      "quem": "ana",
+      "contexto": "f-554747",
+      "cod": "There are too many people in every meeting.",
+      "dica": "Tem gente demais em toda reunião.",
+      "img": "👥🗣️😵",
+      "alvo": "too many",
+      "alvo_pt": "demais",
+      "conceito": "People é plural: too many people (não: too much people).",
+      "var": [
+        {
+          "em": "every",
+          "aceita": [
+            "each"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR14",
+        "BR23"
+      ],
+      "armadilhas": [
+        "much"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 775904,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'here' trocado por 'in every meeting'; segunda frase omitida",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f86535",
+      "quem": "voce",
+      "cod": "I have too much work today.",
+      "dica": "Tenho trabalho demais hoje.",
+      "img": "💻📚😰",
+      "alvo": "too much",
+      "alvo_pt": "demais",
+      "conceito": "work não se conta: too much work (não: too many works).",
+      "registro": "informal",
+      "interferencias": [
+        "BR23",
+        "BR22"
+      ],
+      "armadilhas": [
+        "many",
+        "works"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-509ccd",
+      "quem": "ana",
+      "contexto": "f-f86535",
+      "cod": "You work too much.",
+      "dica": "Você trabalha demais.",
+      "img": "💻🕙😓",
+      "alvo": "too much",
+      "alvo_pt": "demais",
+      "conceito": "Depois do verbo, demais = too much.",
+      "registro": "informal",
+      "interferencias": [
+        "BR23"
+      ],
+      "armadilhas": [
+        "very"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 454444,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fdb009",
+      "quem": "voce",
+      "cod": "My phone gets too many notifications.",
+      "dica": "Meu celular recebe notificações demais.",
+      "img": "📱🔔🔔",
+      "alvo": "notifications",
+      "alvo_pt": "notificações",
+      "conceito": "Sujeito na 3ª pessoa: My phone gets (com -s).",
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR23"
+      ],
+      "armadilhas": [
+        "get",
+        "much"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fcc58c",
+      "quem": "ana",
+      "contexto": "f-fdb009",
+      "cod": "I didn't check my notifications all morning.",
+      "dica": "Não chequei minhas notificações a manhã toda.",
+      "img": "🔕☀️",
+      "alvo": "notifications",
+      "alvo_pt": "notificações",
+      "conceito": "all morning = a manhã toda (sem the).",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5d3d3f",
+      "quem": "voce",
+      "cod": "Can you see my screen? Sorry about all the open tabs.",
+      "dica": "Você está vendo a minha tela? Desculpa por todas essas abas abertas.",
+      "img": "🖥️🗂️",
+      "alvo": "open tabs",
+      "alvo_pt": "abas abertas",
+      "lit": "[lit.: abertas abas]",
+      "conceito": "O adjetivo vem antes: open tabs.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "all the",
+          "aceita": [
+            "all these",
+            "all those"
+          ]
+        },
+        {
+          "em": "Sorry about",
+          "aceita": [
+            "Sorry for"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4e6377",
+      "quem": "ana",
+      "contexto": "f-5d3d3f",
+      "cod": "Wow, that's too many open tabs!",
+      "dica": "Nossa, é aba aberta demais!",
+      "img": "🗂️🤯",
+      "alvo": "open tabs",
+      "alvo_pt": "aba aberta",
+      "registro": "informal",
+      "interferencias": [
+        "BR23"
+      ],
+      "armadilhas": [
+        "much"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "that's",
+          "aceita": [
+            "that is",
+            "there are"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a1b4d5",
+      "quem": "voce",
+      "cod": "Mike, can you give me a few minutes?",
+      "dica": "Mike, você pode me dar uns minutinhos?",
+      "img": "🙏⏱️",
+      "alvo": "a few minutes",
+      "alvo_pt": "uns minutinhos",
+      "conceito": "a few = uns, alguns (com plural): a few minutes.",
+      "registro": "informal",
+      "armadilhas": [
+        "little"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5e97c2",
+      "quem": "mike",
+      "contexto": "f-a1b4d5",
+      "cod": "Sure, but I only have a few minutes.",
+      "dica": "Claro, mas só tenho alguns minutos.",
+      "img": "⏳🏃",
+      "alvo": "a few minutes",
+      "alvo_pt": "alguns minutos",
+      "var": [
+        {
+          "em": "only have",
+          "aceita": [
+            "have only"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "little"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2630303,
+        "en_autor": "meerkat",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado 'Sure, but'; 'have only' trocado por 'only have'",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

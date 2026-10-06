@@ -1,0 +1,267 @@
+{
+  "id": "superlativos.escolhendo-hotel-e-restaurante",
+  "trilha": "superlativos",
+  "nome": "Escolhendo hotel e restaurante",
+  "emoji": "🏨",
+  "cena": "Você e a Ana escolhem onde ficar e onde jantar na viagem do time a Austin.",
+  "resumo": "Comparar e escolher misturando comparativo (cheaper than), superlativo (the best) e as...as.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Mais, o mais, tão... quanto"
+    },
+    {
+      "t": "p",
+      "c": "Dois: **cheaper than**, **more expensive than**. O mais de todos: **the cheapest**, **the best**, **the most popular**. Igual: **as... as**."
+    },
+    {
+      "t": "ex",
+      "c": "This is one of the best hotels in Austin.\nEste é um dos melhores hotéis de Austin."
+    },
+    {
+      "t": "warn",
+      "c": "Comparativo usa than; superlativo usa the (não: the cheaper, nem cheapest than)."
+    },
+    {
+      "t": "warn",
+      "c": "Tem (existe) = **There's**: There's a great restaurant near the hotel (não: Have a great restaurant)."
+    }
+  ],
+  "imagem": "🏨🍽️💻",
+  "visualizacao": "Você e a Ana dividem a tela numa chamada, com fotos de hotéis e restaurantes de Austin lado a lado, os preços em destaque e o mapa da cidade ao fundo.",
+  "foto_busca": "austin hotel restaurant city",
+  "trechos": [
+    {
+      "id": "f-0a378f",
+      "quem": "ana",
+      "cod": "We need to book a hotel in Austin.",
+      "dica": "A gente precisa reservar um hotel em Austin.",
+      "img": "🏨📅",
+      "alvo": "book a hotel",
+      "alvo_pt": "reservar um hotel",
+      "conceito": "book = reservar (hotel, mesa, voo).",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c69669",
+      "quem": "voce",
+      "cod": "This is one of the best hotels in Austin.",
+      "dica": "Este é um dos melhores hotéis de Austin.",
+      "img": "🏨⭐",
+      "alvo": "the best",
+      "alvo_pt": "melhores",
+      "conceito": "um dos melhores... de Austin = one of the best... in Austin (in, não of).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR09"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3023974,
+        "en_autor": "CK",
+        "pt_id": 6484326,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'one of Boston's best hotels' virou 'one of the best hotels in Austin' (in + lugar da trilha); PT: 'Boston' trocado por 'Austin'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4f9016",
+      "quem": "ana",
+      "contexto": "f-c69669",
+      "cod": "Yes, but it's more expensive than the other one.",
+      "dica": "É, mas é mais caro que o outro.",
+      "img": "💸⬆️",
+      "alvo": "more expensive than",
+      "alvo_pt": "mais caro que",
+      "conceito": "Comparativo de dois: more expensive than.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "expensiver",
+        "that"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-904ba1",
+      "quem": "voce",
+      "contexto": "f-4f9016",
+      "cod": "The other one is cheaper, but it's noisier.",
+      "dica": "O outro é mais barato, mas é mais barulhento.",
+      "img": "🔊💵",
+      "alvo": "cheaper",
+      "alvo_pt": "mais barato",
+      "conceito": "noisy → noisier (o y vira i).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "cheapest",
+        "more"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6c2923",
+      "quem": "ana",
+      "contexto": "f-904ba1",
+      "cod": "I never stay at expensive hotels.",
+      "dica": "Nunca fico em hotéis caros.",
+      "img": "🙅‍♀️💰",
+      "alvo": "expensive hotels",
+      "alvo_pt": "hotéis caros",
+      "conceito": "Adjetivo não vai ao plural: expensive hotels.",
+      "var": [
+        {
+          "em": "stay at",
+          "aceita": [
+            "stay in"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR09",
+        "BR08"
+      ],
+      "armadilhas": [
+        "expensives"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8598512,
+        "en_autor": "CK",
+        "pt_id": 8629505,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-35b258",
+      "quem": "voce",
+      "cod": "Is the cheap one as comfortable as this one?",
+      "dica": "O barato é tão confortável quanto este?",
+      "img": "🛏️⚖️",
+      "alvo": "as comfortable as",
+      "alvo_pt": "tão confortável quanto",
+      "conceito": "the cheap one = o barato (one no lugar de hotel).",
+      "registro": "informal",
+      "interferencias": [
+        "BR45"
+      ],
+      "armadilhas": [
+        "confortable",
+        "so"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-680b43",
+      "quem": "ana",
+      "contexto": "f-35b258",
+      "cod": "Yes, and the rooms aren't as small as I thought.",
+      "dica": "É, e os quartos não são tão pequenos quanto eu pensava.",
+      "img": "🛏️📏",
+      "alvo": "as I thought",
+      "alvo_pt": "quanto eu pensava",
+      "conceito": "not as...as I thought = não tão... quanto eu pensava.",
+      "registro": "informal",
+      "interferencias": [],
+      "armadilhas": [
+        "think"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f645c5",
+      "quem": "voce",
+      "cod": "There's a great restaurant near the hotel.",
+      "dica": "Tem um restaurante ótimo perto do hotel.",
+      "img": "🍽️📍",
+      "alvo": "There's",
+      "alvo_pt": "Tem",
+      "conceito": "Tem, no sentido de existir, é there's (não: have).",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR08"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-57dc31",
+      "quem": "ana",
+      "contexto": "f-f645c5",
+      "cod": "I think it's the best restaurant in Austin.",
+      "dica": "Acho que é o melhor restaurante de Austin.",
+      "img": "🍽️🏆",
+      "alvo": "the best",
+      "alvo_pt": "o melhor",
+      "conceito": "o melhor... de Austin = the best... in Austin.",
+      "registro": "informal",
+      "interferencias": [],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3024255,
+        "en_autor": "CK",
+        "pt_id": 3464106,
+        "pt_autor": "piterkeo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Boston' trocado por 'Austin' e 'this is' por 'it's' (resposta a quem citou o restaurante); PT: 'de Austin'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5b6899",
+      "quem": "voce",
+      "contexto": "f-57dc31",
+      "cod": "It's the most popular one, so let's book a table.",
+      "dica": "É o mais popular, então vamos reservar uma mesa.",
+      "img": "🔥📞",
+      "alvo": "the most popular one",
+      "alvo_pt": "o mais popular",
+      "conceito": "Adjetivo longo: the most popular. book a table = reservar uma mesa.",
+      "opcional": [
+        "one"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "popularest"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

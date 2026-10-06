@@ -1,0 +1,195 @@
+{
+  "id": "situacao-caminho-compras.na-loja-de-roupas",
+  "trilha": "situacao-caminho-compras",
+  "nome": "Na loja de roupas",
+  "emoji": "👖",
+  "cena": "Numa loja de roupas no centro de Chicago, você procura um casaco para o frio.",
+  "resumo": "Experimentar, dizer que ficou grande, pequeno ou caro demais e decidir levar.",
+  "fechamento": false,
+  "novos": [
+    "Can I try it on?",
+    "too",
+    "It's too expensive.",
+    "I'll take it."
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Na loja: experimentar e levar"
+    },
+    {
+      "t": "p",
+      "c": "**Can I try it on?** = Posso experimentar? **too** + adjetivo = demais, é um problema: *too big, too expensive*. **I'll take it.** = Vou levar."
+    },
+    {
+      "t": "ex",
+      "c": "It's very nice, but it's too expensive.\nÉ muito bonito, mas é caro demais."
+    },
+    {
+      "t": "warn",
+      "c": "**very** = muito; **too** + adjetivo = demais: *It's too expensive* não é elogio. No fim da frase, *too* = também: *I'll take it too*."
+    }
+  ],
+  "imagem": "🧥🪞🛍️",
+  "visualizacao": "Você entra numa loja de roupas quentinha no centro de Chicago. Casacos pendurados, um espelho grande, o atendente segurando uma jaqueta azul para você.",
+  "foto_busca": "clothing store coats rack",
+  "trechos": [
+    {
+      "id": "f-4a7391",
+      "quem": "voce",
+      "contexto": "This coat is very warm.",
+      "cod": "Can I try it on?",
+      "dica": "Posso experimentar?",
+      "img": "🧥🪞",
+      "alvo": "Can I try it on?",
+      "alvo_pt": "Posso experimentar?",
+      "conceito": "try on = experimentar roupa; com it, o it vai no meio: try it on.",
+      "registro": "neutro",
+      "armadilhas": [
+        "experiment",
+        "prove"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2253793,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Try it on.\"; virou pergunta com Can I; PT reescrito (original: \"Experimente-a.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-23a892",
+      "quem": "voce",
+      "contexto": "f-4a7391",
+      "cod": "It's too big.",
+      "dica": "Está grande demais.",
+      "img": "🧥📏😩",
+      "alvo": "too",
+      "alvo_pt": "demais",
+      "conceito": "too = demais (é um problema); very = muito.",
+      "registro": "neutro",
+      "armadilhas": [
+        "very"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 435409,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito: o original \"É muito grande.\" levaria a very",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b60c8a",
+      "quem": "atendente",
+      "contexto": "f-23a892",
+      "cod": "Do you want to try this jacket on?",
+      "dica": "Quer experimentar essa jaqueta?",
+      "img": "🧥🙋",
+      "alvo": "try this jacket on",
+      "alvo_pt": "experimentar essa jaqueta",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-003bc6",
+      "quem": "voce",
+      "contexto": "f-b60c8a",
+      "cod": "This jacket is too small for me.",
+      "dica": "Essa jaqueta está pequena demais pra mim.",
+      "img": "🧥🤏",
+      "alvo": "too",
+      "alvo_pt": "demais",
+      "registro": "neutro",
+      "armadilhas": [
+        "very"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3314633,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"These shoes are too small for me.\"; these shoes are → this jacket is; PT reescrito (original: \"Estes sapatos são muito pequenos para mim.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1d21a2",
+      "quem": "voce",
+      "contexto": "This coat is three hundred dollars.",
+      "cod": "Wow, it's too expensive for me.",
+      "dica": "Nossa, é caro demais pra mim.",
+      "img": "💸😮",
+      "alvo": "it's too expensive",
+      "alvo_pt": "é caro demais",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 586669,
+        "en_autor": "CK",
+        "pt_id": 2735388,
+        "pt_autor": "MarlonX19",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"This book is too expensive for me.\"; This book is → Wow, it's; PT original: \"Esse livro é caro demais para mim.\"; PT: Nossa, é ... pra mim",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c140a4",
+      "quem": "voce",
+      "contexto": "This black coat is two hundred dollars.",
+      "cod": "It's very nice, but it's too expensive.",
+      "dica": "É muito bonito, mas é caro demais.",
+      "img": "👍💸",
+      "alvo": "it's too expensive",
+      "alvo_pt": "é caro demais",
+      "conceito": "very nice = muito bonito; too expensive = caro demais.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4671c6",
+      "quem": "voce",
+      "contexto": "This blue jacket is forty dollars.",
+      "cod": "OK, I'll take it.",
+      "dica": "Tá bom, vou levar.",
+      "img": "🛍️👍",
+      "alvo": "I'll take it",
+      "alvo_pt": "vou levar",
+      "conceito": "I'll take it = vou levar (decidi na hora de comprar).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-146225",
+      "quem": "voce",
+      "contexto": "And this T-shirt?",
+      "cod": "I'll take it too. Can I pay by card?",
+      "dica": "Vou levar também. Posso pagar com cartão?",
+      "img": "👕💳",
+      "alvo": "I'll take it",
+      "alvo_pt": "Vou levar",
+      "conceito": "too no fim da frase = também; too antes de adjetivo = demais (too expensive).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

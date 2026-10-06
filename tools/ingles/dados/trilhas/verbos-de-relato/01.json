@@ -1,0 +1,254 @@
+{
+  "id": "verbos-de-relato.ela-sugeriu-adiar-a-demo",
+  "trilha": "verbos-de-relato",
+  "nome": "Ela sugeriu adiar a demo",
+  "emoji": "💡",
+  "cena": "A Ana faltou à reunião, e você resume para ela o que cada pessoa propôs.",
+  "resumo": "Relatar sugestões e recomendações: suggest / recommend + -ing ou suggest that + pessoa + verbo.",
+  "fechamento": false,
+  "novos": [
+    "suggest + -ing",
+    "pilot",
+    "feature flag",
+    "recommend + -ing"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Sugeriu, recomendou"
+    },
+    {
+      "t": "p",
+      "c": "**suggest / recommend + -ing**: Sarah suggested moving the demo. Ou **suggest that + pessoa + verbo**: Mike suggested that we run a pilot."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca suggest + pessoa + to: She suggested me to use (errado). Diga: She suggested using... / She suggested that I use..."
+    },
+    {
+      "t": "ex",
+      "c": "Sarah suggested moving the demo to Thursday.\nA Sarah sugeriu passar a demo para quinta."
+    }
+  ],
+  "imagem": "💡📅💻",
+  "visualizacao": "Fim de tarde. A Ana entra na chamada com um café e pergunta o que perdeu. Você abre as suas anotações da reunião e vai lendo, item por item.",
+  "foto_busca": "colleagues video call notes",
+  "trechos": [
+    {
+      "id": "f-6061cf",
+      "quem": "voce",
+      "cod": "Sarah suggested moving the demo to Thursday.",
+      "dica": "A Sarah sugeriu passar a demo para quinta.",
+      "img": "💡📅",
+      "alvo": "suggested moving",
+      "alvo_pt": "sugeriu passar",
+      "conceito": "suggest + -ing: suggested moving (não: suggested to move).",
+      "var": [
+        {
+          "em": "suggested moving",
+          "aceita": [
+            "suggested pushing",
+            "suggested that we move",
+            "suggested we move"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-74d1be",
+      "quem": "ana",
+      "contexto": "f-6061cf",
+      "cod": "Did anyone suggest testing the new checkout with a few users first?",
+      "dica": "Alguém sugeriu testar o novo checkout com alguns usuários primeiro?",
+      "img": "🧪👥",
+      "alvo": "suggest testing",
+      "alvo_pt": "sugeriu testar",
+      "conceito": "Com did, suggest fica na forma base; depois dele, -ing: testing.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR52"
+      ],
+      "armadilhas": [
+        "suggested",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-13ca70",
+      "quem": "voce",
+      "contexto": "f-74d1be",
+      "cod": "Yes, Mike suggested that we run a small pilot first.",
+      "dica": "Sim, o Mike sugeriu que a gente fizesse um piloto pequeno primeiro.",
+      "img": "🚀🧪",
+      "alvo": "pilot",
+      "alvo_pt": "piloto",
+      "conceito": "suggested that we run: verbo na forma base depois de that (não: suggested us to run).",
+      "var": [
+        {
+          "em": "that we run",
+          "aceita": [
+            "we run",
+            "that we should run",
+            "we should run",
+            "that we do"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "us"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-877c86",
+      "quem": "voce",
+      "cod": "The pilot starts next Monday with five percent of our users.",
+      "dica": "O piloto começa segunda que vem com cinco por cento dos nossos usuários.",
+      "img": "🚦📊",
+      "alvo": "pilot",
+      "alvo_pt": "piloto",
+      "conceito": "The pilot starts: -s da 3ª pessoa. percent sempre por extenso.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        5
+      ]
+    },
+    {
+      "id": "f-3f435a",
+      "quem": "ana",
+      "cod": "Are we going to use a feature flag for the pilot?",
+      "dica": "A gente vai usar uma feature flag no piloto?",
+      "img": "🚩❓",
+      "alvo": "feature flag",
+      "alvo_pt": "feature flag",
+      "conceito": "feature flag = chave no código para ligar ou desligar uma função sem novo deploy.",
+      "var": [
+        {
+          "em": "for the pilot",
+          "aceita": [
+            "in the pilot"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "blocos": [
+        8
+      ]
+    },
+    {
+      "id": "f-09869e",
+      "quem": "voce",
+      "contexto": "f-3f435a",
+      "cod": "Yes. Mike recommended using one for every new screen.",
+      "dica": "Vai, sim. O Mike recomendou usar uma em toda tela nova.",
+      "img": "👍🚩",
+      "alvo": "recommended using",
+      "alvo_pt": "recomendou usar",
+      "conceito": "recommend + -ing: recommended using (não: recommended to use). one evita repetir feature flag.",
+      "var": [
+        {
+          "em": "for every new screen",
+          "aceita": [
+            "on every new screen",
+            "in every new screen"
+          ]
+        },
+        {
+          "em": "recommended using",
+          "aceita": [
+            "recommended that we use",
+            "recommended we use"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e9b83b",
+      "quem": "voce",
+      "cod": "With a feature flag, we can turn off the new checkout in seconds.",
+      "dica": "Com uma feature flag, dá para desligar o novo checkout em segundos.",
+      "img": "🔌⏱️",
+      "alvo": "feature flag",
+      "alvo_pt": "feature flag",
+      "conceito": "turn off = desligar; o objeto pode vir no meio: turn the new checkout off.",
+      "var": [
+        {
+          "em": "turn off the new checkout",
+          "aceita": [
+            "turn the new checkout off"
+          ]
+        },
+        {
+          "em": "we can",
+          "aceita": [
+            "you can"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ea44b1",
+      "quem": "voce",
+      "cod": "Sarah also recommended inviting the sales team to the demo.",
+      "dica": "A Sarah também recomendou convidar o time de vendas para a demo.",
+      "img": "📨👔",
+      "alvo": "recommended inviting",
+      "alvo_pt": "recomendou convidar",
+      "conceito": "recommend + -ing também: recommended inviting (não: recommended to invite).",
+      "var": [
+        {
+          "em": "recommended inviting",
+          "aceita": [
+            "recommended that we invite",
+            "recommended we invite"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

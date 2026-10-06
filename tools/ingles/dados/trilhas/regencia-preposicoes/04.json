@@ -1,0 +1,293 @@
+{
+  "id": "regencia-preposicoes.igual-ao-seu",
+  "trilha": "regencia-preposicoes",
+  "nome": "Igual ao seu",
+  "emoji": "🟰",
+  "cena": "Na pausa do café, você e a Ana comparam celulares, teclados e as configurações do app.",
+  "resumo": "Comparar com precisão: most people, different from, the same as, prefer.",
+  "fechamento": false,
+  "novos": [
+    "most people",
+    "different from",
+    "prefer",
+    "dark mode",
+    "layout"
+  ],
+  "apoio": [
+    "the same as",
+    "keyboard"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A maioria das pessoas = most people"
+    },
+    {
+      "t": "p",
+      "c": "Para pessoas em geral: **most people**, sem the e sem of. Diferente de = **different from**. Igual a = **the same as**."
+    },
+    {
+      "t": "warn",
+      "c": "Não: the most of the people, different of, the same of."
+    },
+    {
+      "t": "tip",
+      "c": "people é plural: most people prefer, sem -s."
+    },
+    {
+      "t": "ex",
+      "c": "Most people prefer it too.\nA maioria das pessoas também prefere."
+    }
+  ],
+  "imagem": "📱⌨️🌙",
+  "visualizacao": "Duas canecas de café na mesa e dois celulares lado a lado, com a tela escura. A Ana puxa o seu teclado e olha as teclas de perto, curiosa.",
+  "foto_busca": "two smartphones on table dark mode",
+  "trechos": [
+    {
+      "id": "f-028ad9",
+      "quem": "ana",
+      "cod": "Do you use dark mode on your phone?",
+      "dica": "Você usa o modo escuro no seu celular?",
+      "img": "🌙📱",
+      "alvo": "dark mode",
+      "alvo_pt": "o modo escuro",
+      "conceito": "modo escuro = dark mode, sem artigo em inglês.",
+      "registro": "informal",
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2660d7",
+      "quem": "voce",
+      "contexto": "f-028ad9",
+      "cod": "Yes, I prefer it. It's better for my eyes.",
+      "dica": "Sim, eu prefiro. É melhor pros meus olhos.",
+      "img": "👀🌙",
+      "alvo": "prefer it",
+      "alvo_pt": "prefiro",
+      "conceito": "prefiro = I prefer it: o objeto it é obrigatório em inglês.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a08f2b",
+      "quem": "ana",
+      "contexto": "f-2660d7",
+      "cod": "Most people prefer it too.",
+      "dica": "A maioria das pessoas também prefere.",
+      "img": "👥🌙",
+      "alvo": "Most people",
+      "alvo_pt": "A maioria das pessoas",
+      "conceito": "A maioria das pessoas = most people (não: the most of the people); people prefer, sem -s.",
+      "registro": "informal",
+      "interferencias": [
+        "BR55",
+        "BR14"
+      ],
+      "armadilhas": [
+        "the",
+        "prefers"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "prefer it too",
+          "aceita": [
+            "also prefer it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-701493",
+      "quem": "ana",
+      "cod": "That's why we've just added dark mode to the app.",
+      "dica": "Por isso a gente acabou de adicionar o modo escuro no app.",
+      "img": "➕🌙📲",
+      "alvo": "dark mode",
+      "alvo_pt": "o modo escuro",
+      "conceito": "acabou de + verbo = have just + particípio.",
+      "var": [
+        {
+          "em": "we've just added",
+          "aceita": [
+            "we just added"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a44aa3",
+      "quem": "voce",
+      "contexto": "f-701493",
+      "cod": "Great! Will the layout change too?",
+      "dica": "Ótimo! O layout também vai mudar?",
+      "img": "📐🔄",
+      "alvo": "the layout",
+      "alvo_pt": "O layout",
+      "conceito": "layout = a disposição dos elementos na tela; em inglês também é layout.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-265cab",
+      "quem": "ana",
+      "contexto": "f-a44aa3",
+      "cod": "Yes. The new layout is very different from the old one.",
+      "dica": "Vai. O layout novo é bem diferente do antigo.",
+      "img": "🗂️↔️",
+      "alvo": "different from",
+      "alvo_pt": "diferente do",
+      "conceito": "diferente de = different from (não: different of).",
+      "var": [
+        {
+          "em": "very",
+          "aceita": [
+            "really",
+            "pretty"
+          ]
+        },
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yeah",
+            "It will",
+            "Yes, it will"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "of",
+        "than"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1524af",
+      "quem": "voce",
+      "contexto": "f-265cab",
+      "cod": "Can I see it? I prefer simple layouts.",
+      "dica": "Posso ver? Eu prefiro layouts simples.",
+      "img": "👁️📏",
+      "alvo": "prefer",
+      "alvo_pt": "prefiro",
+      "conceito": "prefer + plural sem artigo para falar em geral: I prefer simple layouts.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bcf076",
+      "quem": "ana",
+      "contexto": "f-1524af",
+      "cod": "Sure. In the settings, most people choose the default option.",
+      "dica": "Claro. Nas configurações, a maioria das pessoas escolhe a opção padrão.",
+      "img": "⚙️👥",
+      "alvo": "most people",
+      "alvo_pt": "a maioria das pessoas",
+      "conceito": "default = padrão, a opção que já vem marcada; most people choose, sem -s.",
+      "registro": "informal",
+      "interferencias": [
+        "BR55",
+        "BR14"
+      ],
+      "armadilhas": [
+        "the",
+        "chooses"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5905784,
+        "en_autor": "Hybrid",
+        "pt_id": 5908848,
+        "pt_autor": "sergiomelo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Most people choose the default option.\"; PT original: \"A maioria das pessoas escolhe a opção padrão.\"; + Sure. In the settings,; PT adaptado (+ Claro. Nas configurações,)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d8590b",
+      "quem": "voce",
+      "cod": "Wait, your keyboard layout is different from mine!",
+      "dica": "Peraí, o layout do seu teclado é diferente do meu!",
+      "img": "⌨️🔀",
+      "alvo": "different from",
+      "alvo_pt": "diferente do",
+      "conceito": "keyboard layout = layout do teclado: o substantivo que descreve vem antes.",
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "of",
+        "than"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6823774,
+        "en_autor": "CK",
+        "pt_id": 9245156,
+        "pt_autor": "heo598",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Your answer is different from mine.\"; PT original: \"A sua resposta é diferente da minha.\"; + Wait,; answer → keyboard layout; . → !; PT adaptado (Peraí, o layout do seu teclado é diferente do meu!)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-432e52",
+      "quem": "ana",
+      "contexto": "f-d8590b",
+      "cod": "Yes, I use the Brazilian layout, the same as on my laptop.",
+      "dica": "É, eu uso o layout brasileiro, igual ao do meu notebook.",
+      "img": "🇧🇷⌨️💻",
+      "alvo": "the Brazilian layout",
+      "alvo_pt": "o layout brasileiro",
+      "conceito": "igual ao = the same as (não: the same of); Brazilian com maiúscula.",
+      "var": [
+        {
+          "em": "the same as on my laptop",
+          "aceita": [
+            "the same as my laptop"
+          ]
+        },
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yeah"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR55",
+        "BR15"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

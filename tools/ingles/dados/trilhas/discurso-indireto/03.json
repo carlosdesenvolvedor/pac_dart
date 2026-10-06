@@ -1,0 +1,280 @@
+{
+  "id": "discurso-indireto.disseram-que-iam-ligar-de-volta",
+  "trilha": "discurso-indireto",
+  "nome": "Disseram que iam ligar de volta",
+  "emoji": "📞",
+  "cena": "Você conta à sua irmã Julia o que a empresa de entrega e o técnico prometeram sobre o seu notebook e o pacote.",
+  "resumo": "Relatar promessas e notícias com o recuo: will → would, can → could, have sent → had sent, is going to → was going to.",
+  "fechamento": false,
+  "novos": [
+    "call back",
+    "package",
+    "technician",
+    "delivery company",
+    "tracking number"
+  ],
+  "apoio": [
+    "order",
+    "already sent",
+    "arrive"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Disseram que iam...: o recuo dos tempos"
+    },
+    {
+      "t": "p",
+      "c": "No relato, cada tempo recua um passo: will → **would**, can → **could**, have sent → **had sent**, is going to → **was going to**."
+    },
+    {
+      "t": "warn",
+      "c": "Promessa que já venceu: They said they would call (não: they said they will call)."
+    },
+    {
+      "t": "ex",
+      "c": "The technician said he could come on Thursday.\nO técnico disse que podia vir na quinta."
+    }
+  ],
+  "imagem": "📦🔧📱",
+  "visualizacao": "Domingo à tarde no sofá, a Julia ao seu lado. Sem notebook, você mexe no celular: o pacote não chegou e o código de rastreio só mostra uma tela de erro.",
+  "foto_busca": "cardboard package doorstep delivery",
+  "trechos": [
+    {
+      "id": "f-ec20b1",
+      "quem": "voce",
+      "contexto": "Did the repair shop call you?",
+      "cod": "Not yet. They said they would call back.",
+      "dica": "Ainda não. Disseram que iam ligar de volta.",
+      "img": "📞🔙",
+      "alvo": "call back",
+      "alvo_pt": "ligar de volta",
+      "conceito": "will vira would no relato (não: they said they will call).",
+      "var": [
+        {
+          "em": "would",
+          "aceita": [
+            "were going to"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-763b22",
+      "quem": "voce",
+      "cod": "The technician said he could fix my laptop by Monday.",
+      "dica": "O técnico disse que conseguia consertar o meu notebook até segunda.",
+      "img": "🔧💻",
+      "alvo": "technician",
+      "alvo_pt": "técnico",
+      "conceito": "can vira could no relato. Até (prazo) = by.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "can",
+        "until"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e6aefa",
+      "quem": "julia",
+      "cod": "What about the package from the store?",
+      "dica": "E o pacote da loja?",
+      "img": "📦❓",
+      "alvo": "package",
+      "alvo_pt": "pacote",
+      "var": [
+        {
+          "em": "What about",
+          "aceita": [
+            "And"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0ab7a9",
+      "quem": "voce",
+      "contexto": "f-e6aefa",
+      "cod": "The delivery company said they had already sent it.",
+      "dica": "A empresa de entrega disse que já tinha mandado.",
+      "img": "🚚✅",
+      "alvo": "delivery company",
+      "alvo_pt": "empresa de entrega",
+      "conceito": "have sent vira had sent no relato. Objeto obrigatório: sent it.",
+      "var": [
+        {
+          "em": "sent",
+          "aceita": [
+            "shipped"
+          ]
+        },
+        {
+          "em": "they had",
+          "aceita": [
+            "it had"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR31",
+        "BR01"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-062098",
+      "quem": "voce",
+      "cod": "They said the package was going to arrive yesterday.",
+      "dica": "Disseram que o pacote ia chegar ontem.",
+      "img": "📦📅",
+      "alvo": "package",
+      "alvo_pt": "pacote",
+      "conceito": "is going to vira was going to no relato.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "was going to",
+          "aceita": [
+            "would"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8ef243",
+      "quem": "julia",
+      "contexto": "f-062098",
+      "cod": "Do you have the tracking number?",
+      "dica": "Você tem o código de rastreio?",
+      "img": "🔍📦",
+      "alvo": "tracking number",
+      "alvo_pt": "código de rastreio",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a8a993",
+      "quem": "voce",
+      "contexto": "f-8ef243",
+      "cod": "Yes, but their app can't find the tracking number.",
+      "dica": "Tenho, mas o app deles não acha o código de rastreio.",
+      "img": "📱🔍❌",
+      "alvo": "tracking number",
+      "alvo_pt": "código de rastreio",
+      "var": [
+        {
+          "em": "can't find",
+          "aceita": [
+            "doesn't find"
+          ]
+        },
+        {
+          "em": "Yes",
+          "aceita": [
+            "I do",
+            "Yes, I do"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1bf57e",
+      "quem": "julia",
+      "contexto": "f-a8a993",
+      "cod": "Call the delivery company. They can check it for you.",
+      "dica": "Liga para a empresa de entrega. Eles podem verificar pra você.",
+      "img": "☎️🚚",
+      "alvo": "delivery company",
+      "alvo_pt": "empresa de entrega",
+      "conceito": "Objeto obrigatório: check it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-669ac3",
+      "quem": "voce",
+      "contexto": "f-1bf57e",
+      "cod": "I already did, but they didn't call me back.",
+      "dica": "Já liguei, mas eles não me ligaram de volta.",
+      "img": "📵😤",
+      "alvo": "call me back",
+      "alvo_pt": "me ligaram de volta",
+      "conceito": "call back com pronome: call me back (o me fica no meio).",
+      "registro": "informal",
+      "armadilhas": [
+        "back me"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9055003,
+        "en_autor": "CK",
+        "pt_id": 9092681,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado 'I already did, but' (original: \"They didn't call me back.\"); PT: acrescentado 'Já liguei, mas' (original: \"Eles não me ligaram de volta.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "I already did",
+          "aceita": [
+            "I already called",
+            "I've already called"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ebbaf4",
+      "quem": "voce",
+      "cod": "And the technician said the problem was the battery.",
+      "dica": "E o técnico disse que o problema era a bateria.",
+      "img": "🔋🔧",
+      "alvo": "technician",
+      "alvo_pt": "técnico",
+      "conceito": "is vira was no relato.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

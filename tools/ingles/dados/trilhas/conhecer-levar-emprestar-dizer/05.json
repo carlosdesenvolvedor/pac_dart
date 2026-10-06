@@ -1,0 +1,296 @@
+{
+  "id": "conhecer-levar-emprestar-dizer.posso-pegar-emprestado-borrow-e-say",
+  "trilha": "conhecer-levar-emprestar-dizer",
+  "nome": "Posso pegar emprestado? Borrow e say",
+  "emoji": "🎒",
+  "cena": "Fim de semana com a Emma, sua vizinha: você pega a escada dela emprestada, agradece, e ela passa na sua casa antes de viajar.",
+  "resumo": "Pedir algo emprestado com borrow (Can I borrow...?), levar com take e usar say com a coisa dita: say thanks, say goodbye.",
+  "fechamento": false,
+  "novos": [
+    "borrow",
+    "Can I borrow...?",
+    "ladder",
+    "say goodbye",
+    "say thanks"
+  ],
+  "apoio": [
+    "take (levar)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pegar emprestado = borrow"
+    },
+    {
+      "t": "p",
+      "c": "**borrow** = pegar emprestado (quem recebe). **lend** é quem dá. Quem pede diz: **Can I borrow...?** Levar (para lá) é **take**: Take my umbrella."
+    },
+    {
+      "t": "ex",
+      "c": "Can I borrow a cup of sugar?\nPosso pegar emprestada uma xícara de açúcar?"
+    },
+    {
+      "t": "tip",
+      "c": "**say** vem com a coisa dita: say thanks (dizer obrigado), say goodbye (se despedir)."
+    },
+    {
+      "t": "warn",
+      "c": "Não: Can you borrow me...? / She said me... Certo: Can I borrow...? / She said..."
+    }
+  ],
+  "imagem": "🪜🏡☔",
+  "visualizacao": "Sábado de manhã, garoa fina. Você bate na porta da Emma, sente cheiro de bolo saindo da cozinha e ouve o gato miando lá dentro.",
+  "foto_busca": "neighbor house front porch",
+  "trechos": [
+    {
+      "id": "f-72b2fd",
+      "quem": "voce",
+      "cod": "I need a ladder.",
+      "dica": "Preciso de uma escada.",
+      "img": "🪜❗",
+      "alvo": "ladder",
+      "alvo_pt": "escada",
+      "conceito": "ladder = escada de mão (a que se carrega). A escada do prédio é stairs.",
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "stairs",
+        "of"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5577228,
+        "en_autor": "CK",
+        "pt_id": 5785732,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6d6793",
+      "quem": "voce",
+      "cod": "Emma, can I borrow your ladder this weekend?",
+      "dica": "Emma, posso pegar emprestada a sua escada neste fim de semana?",
+      "img": "🙋🪜",
+      "alvo": "can I borrow",
+      "alvo_pt": "posso pegar emprestada",
+      "conceito": "pegar emprestado = borrow: quem recebe é o sujeito (Can I borrow...?).",
+      "registro": "informal",
+      "interferencias": [
+        "BR38"
+      ],
+      "armadilhas": [
+        "lend"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5004ae",
+      "quem": "emma",
+      "contexto": "f-6d6793",
+      "cod": "Sure! I'll get the ladder.",
+      "dica": "Claro! Vou pegar a escada.",
+      "img": "🏃‍♀️🪜",
+      "alvo": "ladder",
+      "alvo_pt": "escada",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2878230,
+        "en_autor": "CK",
+        "pt_id": 5900535,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'll get the ladder.\"; PT original: \"Vou pegar a escada.\"; + Sure! (revisão nativa: a Emma responde ao pedido da escada); PT: + Claro!",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f94fe3",
+      "quem": "emma",
+      "cod": "Take my umbrella. It's raining.",
+      "dica": "Leva meu guarda-chuva. Está chovendo.",
+      "img": "🌂🤲🌧️",
+      "alvo": "Take",
+      "alvo_pt": "Leva",
+      "conceito": "Levar (para lá) = take; trazer (para cá) = bring. O it é obrigatório: It's raining.",
+      "registro": "informal",
+      "interferencias": [
+        "BR37",
+        "BR01"
+      ],
+      "armadilhas": [
+        "bring"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e5f6dc",
+      "quem": "voce",
+      "cod": "I just wanted to say thanks.",
+      "dica": "Eu só queria dizer obrigado.",
+      "img": "🙏🪜",
+      "alvo": "say thanks",
+      "alvo_pt": "dizer obrigado",
+      "conceito": "say + a coisa dita: say thanks (sem a pessoa logo depois de say).",
+      "pt_f": "Eu só queria dizer obrigada.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2240478,
+        "en_autor": "Hybrid",
+        "pt_id": 6065775,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "thanks",
+          "aceita": [
+            "thank you"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-226b9a",
+      "quem": "emma",
+      "cod": "Can I borrow a cup of sugar?",
+      "dica": "Posso pegar emprestada uma xícara de açúcar?",
+      "img": "🥄🍬",
+      "alvo": "Can I borrow",
+      "alvo_pt": "Posso pegar emprestada",
+      "conceito": "Posso pegar emprestado...? = Can I borrow...? (não: Can you borrow me...?).",
+      "registro": "informal",
+      "interferencias": [
+        "BR38"
+      ],
+      "armadilhas": [
+        "lend"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6602141,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Pode me emprestar uma xícara de açúcar?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-91945a",
+      "quem": "emma",
+      "cod": "Say thanks to Julia for me. The cake was great!",
+      "dica": "Diz obrigada pra Julia por mim. O bolo estava ótimo!",
+      "img": "🎂🙏",
+      "alvo": "Say thanks",
+      "alvo_pt": "Diz obrigada",
+      "conceito": "Say thanks to + pessoa + for me = agradecer a alguém por mim. A pessoa vem depois de to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "tell"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "thanks",
+          "aceita": [
+            "thank you"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6c6e9e",
+      "quem": "emma",
+      "cod": "I'm traveling tomorrow, so I wanted to say goodbye.",
+      "dica": "Vou viajar amanhã, então queria me despedir.",
+      "img": "🧳👋",
+      "alvo": "say goodbye",
+      "alvo_pt": "me despedir",
+      "conceito": "se despedir = say goodbye (sem myself).",
+      "registro": "informal",
+      "interferencias": [
+        "BR31",
+        "BR62"
+      ],
+      "armadilhas": [
+        "myself"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c3c783",
+      "quem": "voce",
+      "contexto": "f-6c6e9e",
+      "cod": "Thanks for coming over to say goodbye!",
+      "dica": "Obrigado por vir aqui se despedir!",
+      "img": "🚪👋🙏",
+      "alvo": "say goodbye",
+      "alvo_pt": "se despedir",
+      "registro": "informal",
+      "interferencias": [
+        "BR62"
+      ],
+      "armadilhas": [
+        "myself"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2360563,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I have to say goodbye.\"; PT original: \"Eu tenho que me despedir.\"; reescrito para \"Thanks for coming over to say goodbye!\" (revisão nativa: a versão anterior, despedir-se do gato da vizinha que ia viajar, não tinha situação plausível); PT autoral",
+        "export": "2026-10-03"
+      },
+      "pt_f": "Obrigada por vir aqui se despedir!",
+      "conceito": "se despedir = say goodbye (sem myself). Thanks for + -ing: Thanks for coming over."
+    },
+    {
+      "id": "f-6fb990",
+      "quem": "emma",
+      "contexto": "f-c3c783",
+      "cod": "You can borrow my bike while I'm away.",
+      "dica": "Pode pegar emprestada minha bike enquanto eu estiver fora.",
+      "img": "🚲🧳",
+      "alvo": "borrow",
+      "alvo_pt": "pegar emprestada",
+      "conceito": "while + presente = enquanto eu estiver fora (away).",
+      "registro": "informal",
+      "interferencias": [
+        "BR38",
+        "BR28"
+      ],
+      "armadilhas": [
+        "lend"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

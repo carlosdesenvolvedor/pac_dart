@@ -1,0 +1,296 @@
+{
+  "id": "eu-costumava.eu-jogava-bola-todo-fim-de-semana",
+  "trilha": "eu-costumava",
+  "nome": "Eu jogava bola todo fim de semana",
+  "emoji": "⚽",
+  "cena": "Num churrasco na casa dos pais do Ben, em Boston, ele conta como era a infância dele e você fala do seu irmão.",
+  "resumo": "Contar hábitos e estados que acabaram com used to + verbo, em português no imperfeito: eu brincava, a gente visitava.",
+  "fechamento": false,
+  "novos": [
+    "used to",
+    "grandparents",
+    "cousins",
+    "the countryside",
+    "after school"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Eu brincava, a gente visitava: used to"
+    },
+    {
+      "t": "p",
+      "c": "Para um hábito ou estado que **acabou**, use **used to + verbo**. Em português, isso vira o **imperfeito**: brincava, visitava, morava."
+    },
+    {
+      "t": "ex",
+      "c": "Every summer, we used to visit my grandparents.\nTodo verão, a gente visitava meus avós."
+    },
+    {
+      "t": "warn",
+      "c": "Na afirmativa é **used**, com -d: I used to play (não: I use to play). Hábito do passado não vai no contínuo (não: I was playing every day)."
+    },
+    {
+      "t": "tip",
+      "c": "**the countryside** = o interior, o campo. **after school** = depois da aula."
+    }
+  ],
+  "imagem": "🍖🌳⚽",
+  "visualizacao": "Você está no quintal dos pais do Ben, em Boston. Cheiro de churrasco, crianças correndo, e o Ben aponta para uma árvore grande onde ele subia depois da aula.",
+  "foto_busca": "backyard barbecue big tree",
+  "trechos": [
+    {
+      "id": "f-d23c13",
+      "quem": "ben",
+      "cod": "I used to play here when I was a kid.",
+      "dica": "Eu brincava aqui quando era criança.",
+      "img": "🧒🌳",
+      "alvo": "used to play",
+      "alvo_pt": "brincava",
+      "lit": "[lit.: eu costumava brincar aqui]",
+      "conceito": "used to + verbo = hábito que acabou; em português, o imperfeito: brincava.",
+      "var": [
+        {
+          "em": "a kid",
+          "aceita": [
+            "a child"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "use to",
+        "was playing"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8285494,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN igual ao original; PT reescrito no imperfeito (o original usava costumava jogar)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c3f516",
+      "quem": "ben",
+      "contexto": "f-d23c13",
+      "cod": "After school, I used to climb that big tree.",
+      "dica": "Depois da aula, eu subia naquela árvore grande.",
+      "img": "🎒🧗🌳",
+      "alvo": "After school",
+      "alvo_pt": "Depois da aula",
+      "conceito": "after school = depois da aula (sem the). climb = subir em árvore, escada.",
+      "var": [
+        {
+          "em": "After school, I used to climb that big tree",
+          "aceita": [
+            "I used to climb that big tree after school"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "after the school",
+        "was climbing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0be03f",
+      "quem": "voce",
+      "contexto": "f-c3f516",
+      "cod": "My brother Lucas used to play soccer after school.",
+      "dica": "Meu irmão Lucas jogava futebol depois da aula.",
+      "img": "👦⚽🎒",
+      "alvo": "after school",
+      "alvo_pt": "depois da aula",
+      "conceito": "jogava (hábito que acabou) = used to play. Futebol, nos EUA, é soccer.",
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "was playing",
+        "football"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c32523",
+      "quem": "ben",
+      "cod": "Every summer, we used to visit my grandparents.",
+      "dica": "Todo verão, a gente visitava meus avós.",
+      "img": "☀️👴👵",
+      "alvo": "my grandparents",
+      "alvo_pt": "meus avós",
+      "conceito": "grandparents = avós (o avô e a avó). visitava = used to visit.",
+      "var": [
+        {
+          "em": "Every summer, we used to visit my grandparents",
+          "aceita": [
+            "We used to visit my grandparents every summer"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "were visiting",
+        "grandfathers"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7e9c8e",
+      "quem": "ben",
+      "contexto": "f-c32523",
+      "cod": "They used to have a big farm in the countryside.",
+      "dica": "Eles tinham uma fazenda grande no interior.",
+      "img": "🚜🌾",
+      "alvo": "in the countryside",
+      "alvo_pt": "no interior",
+      "conceito": "the countryside = o interior, o campo (fora da cidade).",
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "interior",
+        "in countryside"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7acd27",
+      "quem": "voce",
+      "contexto": "f-7e9c8e",
+      "cod": "Do your grandparents still live there?",
+      "dica": "Seus avós ainda moram lá?",
+      "img": "👴👵❓",
+      "alvo": "your grandparents",
+      "alvo_pt": "Seus avós",
+      "conceito": "Pergunta no presente: Do + sujeito + verbo. still = ainda, antes do verbo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "lives",
+        "live still"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2f9b04",
+      "quem": "ben",
+      "contexto": "f-7acd27",
+      "cod": "Not anymore. It used to be my favorite place.",
+      "dica": "Não moram mais. Era o meu lugar favorito.",
+      "img": "🚜💛",
+      "alvo": "used to be",
+      "alvo_pt": "Era",
+      "conceito": "Era (e não é mais) = It used to be. Em inglês, o it é obrigatório.",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR48"
+      ],
+      "armadilhas": [
+        "used to was",
+        "was being"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5a4e5a",
+      "quem": "ben",
+      "cod": "My cousins used to live on the farm too.",
+      "dica": "Meus primos também moravam na fazenda.",
+      "img": "👦👧🏡",
+      "alvo": "My cousins",
+      "alvo_pt": "Meus primos",
+      "conceito": "cousins = primos (vale para primo e prima). too no fim = também.",
+      "var": [
+        {
+          "em": "My cousins used to live on the farm too",
+          "aceita": [
+            "My cousins also used to live on the farm"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "primes",
+        "were living"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a4ccbd",
+      "quem": "voce",
+      "contexto": "f-5a4e5a",
+      "cod": "That sounds fun! I've never lived in the countryside.",
+      "dica": "Parece divertido! Nunca morei no interior.",
+      "img": "🌾🙅",
+      "alvo": "in the countryside",
+      "alvo_pt": "no interior",
+      "conceito": "Nunca morei (até hoje) = I have never lived: present perfect, não used to.",
+      "var": [
+        {
+          "em": "That sounds fun",
+          "aceita": [
+            "That sounds like fun",
+            "Sounds fun",
+            "Sounds like fun"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "interior",
+        "didn't use to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ad9a47",
+      "quem": "ben",
+      "cod": "I still see my cousins every Christmas.",
+      "dica": "Eu ainda vejo meus primos todo Natal.",
+      "img": "🎄👦👧",
+      "alvo": "my cousins",
+      "alvo_pt": "meus primos",
+      "conceito": "Hoje (presente): I still see. Christmas = Natal, sempre com maiúscula.",
+      "registro": "informal",
+      "armadilhas": [
+        "christmas",
+        "used to see"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

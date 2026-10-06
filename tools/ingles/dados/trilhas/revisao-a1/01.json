@@ -1,0 +1,224 @@
+{
+  "id": "revisao-a1.quem-sou-eu",
+  "trilha": "revisao-a1",
+  "nome": "Quem sou eu",
+  "emoji": "🙋‍♂️",
+  "cena": "Seu primeiro dia no escritório de Chicago e, à noite, uma visita à Emma, a sua vizinha.",
+  "resumo": "Apresentar-se no primeiro dia e reencontrar a vizinha: It's my first day. / Nice to see you.",
+  "fechamento": false,
+  "novos": [
+    "first day",
+    "It's my first day.",
+    "neighbor",
+    "Nice to see you."
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Primeiro dia e vizinhos"
+    },
+    {
+      "t": "p",
+      "c": "**It's my first day.** = É o meu primeiro dia. **neighbor** = vizinho ou vizinha."
+    },
+    {
+      "t": "tip",
+      "c": "**Nice to meet you.** = prazer (na primeira vez). **Nice to see you.** = que bom te ver (alguém que você já conhece)."
+    },
+    {
+      "t": "warn",
+      "c": "Profissão leva **a**: I'm a developer (não: I'm developer). País e nacionalidade com maiúscula: Brazil, Brazilian."
+    },
+    {
+      "t": "ex",
+      "c": "How was your first day?\nComo foi seu primeiro dia?"
+    }
+  ],
+  "imagem": "🏢👋🏠",
+  "visualizacao": "De manhã, crachá novo no peito e o saguão do escritório em Chicago. À noite, a porta da casa da Emma se abre, cheiro de jantar, e uma vizinha vem dar oi.",
+  "foto_busca": "office lobby reception desk",
+  "trechos": [
+    {
+      "id": "f-eba17b",
+      "quem": "voce",
+      "cod": "Hi, I'm {nome}. It's my first day.",
+      "dica": "Oi, eu sou o {nome}. É o meu primeiro dia.",
+      "pt_f": "Oi, eu sou a {nome}. É o meu primeiro dia.",
+      "img": "👋🏢",
+      "alvo": "It's my first day",
+      "alvo_pt": "É o meu primeiro dia",
+      "conceito": "É o meu... = It's my... (com it).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR15"
+      ],
+      "teste": true,
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4f01d1",
+      "quem": "voce",
+      "contexto": "Are you new here?",
+      "cod": "Yes, it's my first day. I'm a developer from Brazil.",
+      "dica": "Sim, é o meu primeiro dia. Sou desenvolvedor, do Brasil.",
+      "pt_f": "Sim, é o meu primeiro dia. Sou desenvolvedora, do Brasil.",
+      "img": "💻🇧🇷",
+      "alvo": "it's my first day",
+      "alvo_pt": "é o meu primeiro dia",
+      "conceito": "Sou desenvolvedor = I'm a developer (com a).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13",
+        "BR15",
+        "BR12"
+      ],
+      "armadilhas": [
+        "developer",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c1b4bf",
+      "quem": "voce",
+      "cod": "Good evening, Emma! Nice to see you.",
+      "dica": "(ao chegar) Boa noite, Emma! Que bom te ver.",
+      "img": "🌆🤗",
+      "alvo": "Nice to see you",
+      "alvo_pt": "Que bom te ver",
+      "conceito": "Que bom te ver = Nice to see you (alguém que você já conhece).",
+      "registro": "informal",
+      "armadilhas": [
+        "meet"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-338c10",
+      "quem": "emma",
+      "contexto": "f-c1b4bf",
+      "cod": "Nice to see you too! Is this for me?",
+      "dica": "Que bom te ver também! Isso é pra mim?",
+      "img": "🎁😊",
+      "alvo": "Nice to see you",
+      "alvo_pt": "Que bom te ver",
+      "registro": "informal",
+      "armadilhas": [
+        "meet"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4500172,
+        "en_autor": "CK",
+        "pt_id": 5917183,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Is this for me?\"; PT original: \"É para mim?\"; acrescentado Nice to see you too!; PT: + Que bom te ver também!, para → pra",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9c557a",
+      "quem": "emma",
+      "cod": "How was your first day?",
+      "dica": "Como foi seu primeiro dia?",
+      "img": "🏢❓",
+      "alvo": "first day",
+      "alvo_pt": "primeiro dia",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 7356935,
+        "en_autor": "Hybrid",
+        "pt_id": 8659720,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-96ae42",
+      "quem": "voce",
+      "contexto": "f-9c557a",
+      "cod": "My first day was great. Everyone is very nice.",
+      "dica": "Meu primeiro dia foi ótimo. Todo mundo é muito legal.",
+      "img": "😃👍",
+      "alvo": "first day",
+      "alvo_pt": "primeiro dia",
+      "var": [
+        {
+          "em": "Everyone",
+          "aceita": [
+            "Everybody"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-837749",
+      "quem": "emma",
+      "cod": "We have a new neighbor! This is {nome}.",
+      "dica": "A gente tem um vizinho novo! Esse é o {nome}.",
+      "pt_f": "A gente tem uma vizinha nova! Essa é a {nome}.",
+      "img": "🏠🤝",
+      "alvo": "neighbor",
+      "alvo_pt": "vizinho",
+      "conceito": "vizinho novo = new neighbor (o adjetivo vem antes).",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2546299,
+        "en_autor": "CK",
+        "pt_id": 2686193,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"We have a new neighbor.\"; PT original: \"Temos um novo vizinho.\"; ! no lugar de ., acrescentado This is {nome}.; PT: A gente tem um vizinho novo (informal), + Esse é o {nome}.",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9c1939",
+      "quem": "vizinha",
+      "contexto": "f-837749",
+      "cod": "Hi! I'm Emma's neighbor too. That's my apartment.",
+      "dica": "Oi! Também sou vizinha da Emma. Aquele é o meu apartamento.",
+      "img": "🚪👉",
+      "alvo": "neighbor",
+      "alvo_pt": "vizinha",
+      "conceito": "vizinha da Emma = Emma's neighbor ('s de posse).",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I'm Emma's neighbor too",
+          "aceita": [
+            "I'm also Emma's neighbor"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "id": "relativas-definidoras.o-app-que-eu-uso-that-e-which",
+  "trilha": "relativas-definidoras",
+  "nome": "O app que eu uso: that e which",
+  "emoji": "📱",
+  "cena": "Numa chamada, a Ana pergunta que ferramentas você usa, e você mostra seu setup: editor, extensões, teclado e mouse.",
+  "resumo": "Identificar coisas com that / which e omitir o pronome quando ele é objeto: the editor I use.",
+  "fechamento": false,
+  "novos": [
+    "keyboard",
+    "tool",
+    "editor",
+    "extension",
+    "mouse"
+  ],
+  "apoio": [
+    "that (relativo)",
+    "which (relativo)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Que (coisa) = that / which"
+    },
+    {
+      "t": "p",
+      "c": "Para coisas, use **that** (ou which): an extension **that checks** my code."
+    },
+    {
+      "t": "p",
+      "c": "Se depois vem outro sujeito (I use, you bought), o **that pode sumir**: the editor **I use**."
+    },
+    {
+      "t": "ex",
+      "c": "This is the editor I use every day.\nEste é o editor que eu uso todo dia."
+    },
+    {
+      "t": "warn",
+      "c": "Não repita o objeto: the editor I use (não: the editor I use it)."
+    }
+  ],
+  "imagem": "💻⌨️🖱️",
+  "visualizacao": "Sua mesa de trabalho em casa: o editor aberto na tela, o teclado e o mouse ao lado. Você vira a câmera para a Ana ver tudo.",
+  "foto_busca": "developer desk keyboard mouse",
+  "trechos": [
+    {
+      "id": "f-f47f45",
+      "quem": "ana",
+      "cod": "What text editor do you use?",
+      "dica": "Que editor de texto você usa?",
+      "img": "📝❓",
+      "alvo": "editor",
+      "alvo_pt": "editor",
+      "conceito": "editor de texto = text editor (substantivo + substantivo, sem of).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24",
+        "BR06"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2847251,
+        "en_autor": "eirik174",
+        "pt_id": 5184692,
+        "pt_autor": "KimiP",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "What",
+          "aceita": [
+            "Which"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-fe4e58",
+      "quem": "voce",
+      "contexto": "f-f47f45",
+      "cod": "This is the editor I use every day.",
+      "dica": "Este é o editor que eu uso todo dia.",
+      "img": "💻📅",
+      "alvo": "editor",
+      "alvo_pt": "editor",
+      "conceito": "o editor que eu uso = the editor I use: o that pode sumir, e o it nunca entra.",
+      "registro": "informal",
+      "armadilhas": [
+        "it"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-87170d",
+      "quem": "ana",
+      "contexto": "f-fe4e58",
+      "cod": "Nice! What other tools do you use?",
+      "dica": "Legal! Que outras ferramentas você usa?",
+      "img": "🧰❓",
+      "alvo": "tools",
+      "alvo_pt": "ferramentas",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "others"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6772de",
+      "quem": "voce",
+      "contexto": "f-87170d",
+      "cod": "I use an extension that checks my code.",
+      "dica": "Eu uso uma extensão que verifica o meu código.",
+      "img": "🧩✅",
+      "alvo": "extension",
+      "alvo_pt": "extensão",
+      "conceito": "que (coisa) = that ou which, seguido do verbo: that checks.",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "which"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR13",
+        "BR02"
+      ],
+      "armadilhas": [
+        "check",
+        "it"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e725dd",
+      "quem": "voce",
+      "cod": "Look at this tool that finds bugs in the code.",
+      "dica": "Olha essa ferramenta que encontra bugs no código.",
+      "img": "🔎🐛",
+      "alvo": "tool",
+      "alvo_pt": "ferramenta",
+      "conceito": "olhar para algo = look at (não: look this tool).",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "which"
+          ]
+        },
+        {
+          "em": "this tool",
+          "aceita": [
+            "that tool"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR20",
+        "BR02"
+      ],
+      "armadilhas": [
+        "find",
+        "it"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a7d2b6",
+      "quem": "ana",
+      "contexto": "f-6772de",
+      "cod": "Can you send me the extensions you use?",
+      "dica": "Você pode me mandar as extensões que você usa?",
+      "img": "📤🧩",
+      "alvo": "extensions",
+      "alvo_pt": "extensões",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "them"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a6050a",
+      "quem": "ana",
+      "cod": "My keyboard isn't working. Which one do you use?",
+      "dica": "Meu teclado não está funcionando. Qual você usa?",
+      "img": "⌨️❌",
+      "alvo": "keyboard",
+      "alvo_pt": "teclado",
+      "conceito": "Qual (de vários) você usa? = Which one do you use?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "what"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 11202506,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado Which one do you use? (original: \"My keyboard isn't working.\"); PT reescrito (original: \"O meu teclado não está funcionando.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5b20e7",
+      "quem": "voce",
+      "contexto": "f-a6050a",
+      "cod": "This one. It's the best keyboard I've ever had.",
+      "dica": "Este aqui. É o melhor teclado que eu já tive.",
+      "img": "⌨️⭐",
+      "alvo": "keyboard",
+      "alvo_pt": "teclado",
+      "conceito": "o melhor que eu já tive = the best I've ever had (sem that).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "had",
+        "it"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9345896,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Mr. Jackson is the best teacher → It's the best keyboard; acrescentado This one. (original: \"Mr. Jackson is the best teacher I've ever had.\"); PT reescrito (original: \"O Sr. Jackson é o melhor professor que eu já tive.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-86eec1",
+      "quem": "ana",
+      "cod": "I need a mouse that doesn't make noise.",
+      "dica": "Eu preciso de um mouse que não faça barulho.",
+      "img": "🖱️🤫",
+      "alvo": "mouse",
+      "alvo_pt": "mouse",
+      "conceito": "fazer barulho = make noise. Preciso de = need (sem of).",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "which"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR32",
+        "BR07"
+      ],
+      "armadilhas": [
+        "of",
+        "do"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d10d09",
+      "quem": "voce",
+      "contexto": "f-86eec1",
+      "cod": "This is the mouse I use. It's very quiet.",
+      "dica": "Este é o mouse que eu uso. É bem silencioso.",
+      "img": "🖱️🔇",
+      "alvo": "mouse",
+      "alvo_pt": "mouse",
+      "var": [
+        {
+          "em": "very",
+          "aceita": [
+            "really"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "it"
+      ],
+      "variacao_de": "f-fe4e58",
+      "origem": "autoral_ia"
+    }
+  ]
+}

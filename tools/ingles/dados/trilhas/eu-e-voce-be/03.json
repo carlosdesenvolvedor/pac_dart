@@ -1,0 +1,233 @@
+{
+  "id": "eu-e-voce-be.voce-e-sou-sim",
+  "trilha": "eu-e-voce-be",
+  "nome": "Você é...? Sou, sim.",
+  "emoji": "❔",
+  "cena": "Na chamada, um dev novo confere quem é quem; no avião, a passageira ao lado tenta adivinhar de onde você é.",
+  "resumo": "Confirmar e responder com be: ..., right? / Yes, I am. / No, I'm not. / I'm not...",
+  "fechamento": false,
+  "novos": [
+    "No, I'm not.",
+    "I'm not...",
+    "right?",
+    "Yes, I am."
+  ],
+  "apoio": [
+    "Are you...?"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Você é...? Sou, sim."
+    },
+    {
+      "t": "p",
+      "c": "Para confirmar o que você acha, ponha **right?** no fim: You're Mike, right? (= né?). A pergunta com be troca a ordem: You're new. → Are you new?"
+    },
+    {
+      "t": "ex",
+      "c": "Yes, I am. Nice to meet you!\nSou, sim. Prazer em conhecer você!"
+    },
+    {
+      "t": "ex",
+      "c": "No, I'm not. I'm Brazilian.\nNão, não sou. Sou brasileiro."
+    },
+    {
+      "t": "warn",
+      "c": "Resposta curta termina com am: Yes, I am. Nunca Yes, I'm. E o not vem depois do am: I'm not."
+    }
+  ],
+  "imagem": "💻✈️❓",
+  "visualizacao": "Você vê um dev novo entrar na chamada, de fone e crachá, conferindo os nomes; no avião, a moça da janela olha para você e arrisca um palpite.",
+  "foto_busca": "video call new colleague",
+  "trechos": [
+    {
+      "id": "f-d3144f",
+      "quem": "dev-novo",
+      "cod": "Hi! You're {nome}, right?",
+      "dica": "Oi! Você é o {nome}, né?",
+      "pt_f": "Oi! Você é a {nome}, né?",
+      "img": "👋🤔",
+      "alvo": "right?",
+      "alvo_pt": "né?",
+      "conceito": "..., right? no fim da frase = né? Pede confirmação.",
+      "registro": "informal",
+      "armadilhas": [
+        "no?",
+        "isn't it"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5817797,
+        "en_autor": "CK",
+        "pt_id": 5918869,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → perfil, + Hi!; PT: certo → né",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-53e009",
+      "quem": "voce",
+      "contexto": "f-d3144f",
+      "cod": "Yes, I am. Nice to meet you!",
+      "dica": "Sou, sim. Prazer em conhecer você!",
+      "img": "✅🤝",
+      "alvo": "Yes, I am.",
+      "alvo_pt": "Sou, sim.",
+      "lit": "[lit.: sim, eu sou]",
+      "conceito": "Resposta curta repete o verbo: Yes, I am. (não: Yes, I'm.)",
+      "registro": "neutro",
+      "armadilhas": [
+        "yes, i'm"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-088273",
+      "quem": "voce",
+      "cod": "You're new here, right?",
+      "dica": "Você é novo aqui, né?",
+      "img": "🧑‍💻❓",
+      "alvo": "right?",
+      "alvo_pt": "né?",
+      "conceito": "You're = você é/está. Com right? no fim, vira uma pergunta de confirmação.",
+      "registro": "informal",
+      "armadilhas": [
+        "you new here"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2218220,
+        "en_autor": "CK",
+        "pt_id": 7583257,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ right? (EN) / + né? (PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-34ac5a",
+      "quem": "dev-novo",
+      "contexto": "f-088273",
+      "cod": "Yes, I am. I'm in Chicago.",
+      "dica": "Sou, sim. Estou em Chicago.",
+      "img": "✅🏙️",
+      "alvo": "Yes, I am.",
+      "alvo_pt": "Sou, sim.",
+      "conceito": "I'm in + lugar = estou em. O mesmo am serve para ser e estar.",
+      "registro": "neutro",
+      "armadilhas": [
+        "yes, i'm"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f9c3d6",
+      "quem": "voce",
+      "contexto": "So you're in Chicago, too.",
+      "cod": "I'm not in Chicago. I'm in {cidade}.",
+      "dica": "Não estou em Chicago. Estou em {cidade}.",
+      "img": "🚫🏙️🏠",
+      "alvo": "I'm not",
+      "alvo_pt": "Não estou",
+      "conceito": "O not vem depois do am: I'm not (não: I not am).",
+      "registro": "neutro",
+      "armadilhas": [
+        "i not",
+        "i'm no "
+      ],
+      "bio": [
+        "cidade"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5858951,
+        "en_autor": "CK",
+        "pt_id": 5891060,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Boston → Chicago, + I'm in {cidade}. (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e2925f",
+      "quem": "sarah",
+      "contexto": "Hi, Ana!",
+      "cod": "Oh, I'm not Ana. I'm Sarah!",
+      "dica": "Ah, não sou a Ana. Sou a Sarah!",
+      "img": "🙅‍♀️👩",
+      "alvo": "I'm not",
+      "alvo_pt": "não sou",
+      "conceito": "I'm not = não sou / não estou.",
+      "registro": "informal",
+      "armadilhas": [
+        "i not",
+        "i no "
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2235773,
+        "en_autor": "CK",
+        "pt_id": 4867286,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Ana, + Oh, + I'm Sarah! (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b55342",
+      "quem": "voce",
+      "contexto": "Are you American?",
+      "cod": "No, I'm not. I'm Brazilian.",
+      "dica": "Não, não sou. Sou brasileiro.",
+      "pt_f": "Não, não sou. Sou brasileira.",
+      "img": "✈️🇧🇷",
+      "alvo": "No, I'm not.",
+      "alvo_pt": "Não, não sou.",
+      "conceito": "Resposta curta negativa: No, I'm not. Brazilian sempre com maiúscula.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "no, i am not",
+        "brazilian"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7bcccf",
+      "quem": "passageira",
+      "contexto": "Are you from Boston?",
+      "cod": "No, I'm not. I'm from Chicago.",
+      "dica": "Não, não sou. Sou de Chicago.",
+      "img": "✈️🏙️",
+      "alvo": "No, I'm not.",
+      "alvo_pt": "Não, não sou.",
+      "conceito": "Depois do No, I'm not., quem responde costuma dar a informação certa.",
+      "registro": "neutro",
+      "armadilhas": [
+        "no, i'm no"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-b55342"
+    }
+  ]
+}

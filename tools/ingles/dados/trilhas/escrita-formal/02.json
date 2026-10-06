@@ -1,0 +1,231 @@
+{
+  "id": "escrita-formal.escrevo-para-reclamar",
+  "trilha": "escrita-formal",
+  "nome": "Escrevo para reclamar",
+  "emoji": "😠",
+  "cena": "A fatura da hospedagem veio errada pela segunda vez, e você escreve uma reclamação.",
+  "resumo": "Reclamar por escrito com firmeza e educação e pedir uma solução com prazo.",
+  "fechamento": false,
+  "novos": [
+    "I would appreciate it if",
+    "formal complaint",
+    "incorrect",
+    "disappointed"
+  ],
+  "apoio": [
+    "charged twice"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Firme, mas educado"
+    },
+    {
+      "t": "p",
+      "c": "Diga o problema com a passiva (**We were charged twice**), mostre o impacto (**we are very disappointed**) e peça a solução com prazo: **I would appreciate it if you could... by Monday.**"
+    },
+    {
+      "t": "warn",
+      "c": "Eu agradeceria se = I would appreciate it if (não: I would appreciate if / I would thank if). Reclamar de = complain about."
+    },
+    {
+      "t": "ex",
+      "c": "I would appreciate it if you could resolve this by Monday.\nEu agradeceria se vocês pudessem resolver isso até segunda."
+    }
+  ],
+  "imagem": "🧾❌😠",
+  "visualizacao": "A fatura da hospedagem está aberta na tela, com a mesma cobrança aparecendo duas vezes. Você respira fundo, tira a irritação da voz e começa o e-mail.",
+  "foto_busca": "frustrated man reading invoice laptop",
+  "trechos": [
+    {
+      "id": "f-0fc50c",
+      "quem": "voce",
+      "cod": "I am writing to make a formal complaint about our last invoice.",
+      "dica": "Escrevo para fazer uma reclamação formal sobre a nossa última fatura.",
+      "img": "📝😠",
+      "alvo": "formal complaint",
+      "alvo_pt": "reclamação formal",
+      "conceito": "fazer uma reclamação = make a complaint (não: do a complaint / reclaim).",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "do",
+        "reclamation"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-161969",
+      "quem": "voce",
+      "cod": "First of all, the invoice is incorrect. We were charged twice in March.",
+      "dica": "Antes de mais nada, a fatura está incorreta. Fomos cobrados duas vezes em março.",
+      "img": "🧾✖️",
+      "alvo": "incorrect",
+      "alvo_pt": "incorreta",
+      "conceito": "Fomos cobrados = we were charged (passiva com be no passado).",
+      "blocos": [
+        7
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "wrong",
+        "charge"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bdd438",
+      "quem": "voce",
+      "cod": "This is the second time we have received an incorrect invoice.",
+      "dica": "É a segunda vez que recebemos uma fatura incorreta.",
+      "img": "🔁🧾",
+      "alvo": "incorrect",
+      "alvo_pt": "incorreta",
+      "conceito": "the second time + present perfect: we have received (não: we receive).",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "receive",
+        "received"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "This is",
+          "aceita": [
+            "It is"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7ffaee",
+      "quem": "voce",
+      "cod": "We did not expect this, and we are very disappointed.",
+      "dica": "Não esperávamos isso, e estamos muito decepcionados.",
+      "img": "😞🧾",
+      "alvo": "disappointed",
+      "alvo_pt": "decepcionados",
+      "conceito": "disappointed = decepcionado (a pessoa); disappointing = decepcionante (a coisa).",
+      "registro": "formal",
+      "interferencias": [
+        "BR41",
+        "BR07"
+      ],
+      "armadilhas": [
+        "disappointing",
+        "deceived"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-662216",
+      "quem": "voce",
+      "cod": "Also, I am disappointed that nobody has replied to my previous emails.",
+      "dica": "Além disso, estou decepcionado por ninguém ter respondido aos meus e-mails anteriores.",
+      "pt_f": "Além disso, estou decepcionada por ninguém ter respondido aos meus e-mails anteriores.",
+      "img": "📭😞",
+      "alvo": "disappointed",
+      "alvo_pt": "decepcionado",
+      "conceito": "nobody já é negativo: nobody has replied (não: nobody hasn't replied).",
+      "blocos": [
+        4
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR41"
+      ],
+      "armadilhas": [
+        "disappointing",
+        "hasn't"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "nobody",
+          "aceita": [
+            "no one"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-11beb1",
+      "quem": "voce",
+      "cod": "I would appreciate it if you could resolve this by Monday.",
+      "dica": "Eu agradeceria se vocês pudessem resolver isso até segunda.",
+      "img": "🙏📅",
+      "alvo": "I would appreciate it if",
+      "alvo_pt": "Eu agradeceria se",
+      "conceito": "appreciate pede objeto: appreciate it if (não: appreciate if).",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "thank",
+        "until"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cda78f",
+      "quem": "voce",
+      "cod": "Finally, I would appreciate it if you could explain why this happened.",
+      "dica": "Por fim, eu agradeceria se vocês pudessem explicar por que isso aconteceu.",
+      "img": "❓🧾",
+      "alvo": "I would appreciate it if",
+      "alvo_pt": "eu agradeceria se",
+      "conceito": "explain why (não: explain me why). Se tiver pessoa: explain to me.",
+      "blocos": [
+        7
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "me",
+        "thank"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9c1477",
+      "quem": "voce",
+      "cod": "Please confirm that you have received this formal complaint.",
+      "dica": "Por favor, confirmem que receberam esta reclamação formal.",
+      "img": "📨✅",
+      "alvo": "formal complaint",
+      "alvo_pt": "reclamação formal",
+      "conceito": "Imperativo formal no e-mail: Please confirm... (Por favor, confirme...).",
+      "var": [
+        {
+          "em": "have received",
+          "aceita": [
+            "received"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "reclamation"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "that"
+      ]
+    }
+  ]
+}

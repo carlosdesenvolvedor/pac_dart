@@ -1,0 +1,261 @@
+{
+  "id": "futuro-avancado.cena-o-roadmap-da-demo",
+  "trilha": "futuro-avancado",
+  "nome": "Cena: o roadmap da demo",
+  "emoji": "🗺️",
+  "cena": "Na véspera da demo para o cliente, o time revisa o que vai estar pronto e o que ainda é arriscado.",
+  "resumo": "Planejar a véspera de uma demo com future perfect, future perfect continuous, be about to e be likely to, sem itens novos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Cena: o roadmap da demo"
+    },
+    {
+      "t": "p",
+      "c": "Concluído até o prazo: **will have + particípio**. Duração até um marco: **will have been + -ing**. Iminente: **be about to**. Provável: **be likely to**."
+    },
+    {
+      "t": "ex",
+      "c": "By the time the client arrives tomorrow, we'll have fixed most of the bugs.\nQuando o cliente chegar amanhã, a gente vai ter corrigido a maioria dos bugs."
+    },
+    {
+      "t": "warn",
+      "c": "Quando o cliente chegar = when / by the time the client **arrives** (nunca will arrive)."
+    }
+  ],
+  "imagem": "🖥️📊⏰",
+  "visualizacao": "Véspera da demo, nove da noite. Café frio na sua mesa, os slides numa tela e a lista de bugs na outra. Você ouve cada um ler em voz alta o que vai estar pronto.",
+  "foto_busca": "team preparing presentation late night",
+  "trechos": [
+    {
+      "id": "f-415a43",
+      "quem": "mike",
+      "cod": "By the time the client arrives tomorrow, we'll have fixed most of the bugs.",
+      "dica": "Quando o cliente chegar amanhã, a gente vai ter corrigido a maioria dos bugs.",
+      "img": "🤝🐞✅",
+      "alvo": "we'll have fixed",
+      "alvo_pt": "a gente vai ter corrigido",
+      "conceito": "Quando o cliente chegar = by the time the client arrives (presente).",
+      "var": [
+        {
+          "em": "By the time",
+          "aceita": [
+            "When"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will arrive",
+        "will fix"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-97777b",
+      "quem": "sarah",
+      "contexto": "f-415a43",
+      "cod": "Good. The client is likely to ask about costs.",
+      "dica": "Ótimo. É provável que o cliente pergunte sobre custos.",
+      "img": "💵❓",
+      "alvo": "is likely to",
+      "alvo_pt": "É provável que",
+      "conceito": "Perguntar sobre = ask about (sem artigo em costs).",
+      "var": [
+        {
+          "em": "Good",
+          "aceita": [
+            "Great"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR53",
+        "BR12"
+      ],
+      "armadilhas": [
+        "probable",
+        "the costs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9fff66",
+      "quem": "voce",
+      "cod": "I'm about to finish the last slide.",
+      "dica": "Estou prestes a terminar o último slide.",
+      "img": "🖼️🏁",
+      "alvo": "about to",
+      "alvo_pt": "prestes a",
+      "registro": "informal",
+      "armadilhas": [
+        "about to finishing"
+      ],
+      "origem": "autoral_ia",
+      "conceito": "Estar prestes a + verbo = be about to + verbo base."
+    },
+    {
+      "id": "f-1c68cb",
+      "quem": "sarah",
+      "cod": "Will you have tested the login on every phone by tomorrow morning?",
+      "dica": "Vocês vão ter testado o login em todos os celulares até amanhã de manhã?",
+      "img": "📱🔐❓",
+      "alvo": "Will you have tested",
+      "alvo_pt": "Vocês vão ter testado",
+      "blocos": [
+        9
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "until",
+        "all the phones"
+      ],
+      "origem": "autoral_ia",
+      "conceito": "Vão ter testado até amanhã = will have + particípio + by (prazo).",
+      "var": [
+        {
+          "em": "every phone",
+          "aceita": [
+            "all the phones",
+            "all phones"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e7853d",
+      "quem": "voce",
+      "contexto": "f-1c68cb",
+      "cod": "Not every phone, but we'll have tested the most popular ones.",
+      "dica": "Em todos não, mas a gente vai ter testado os mais populares.",
+      "img": "📱📱✅",
+      "alvo": "we'll have tested",
+      "alvo_pt": "a gente vai ter testado",
+      "registro": "informal",
+      "armadilhas": [
+        "will test",
+        "most populars"
+      ],
+      "origem": "autoral_ia",
+      "conceito": "Em todos não = Not every phone. Concluído até o prazo = will have + particípio.",
+      "var": [
+        {
+          "em": "Not every phone",
+          "aceita": [
+            "Not all of them",
+            "Not on every phone"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-12b074",
+      "quem": "mike",
+      "cod": "Tomorrow, I'll have been working on this project for six months.",
+      "dica": "Amanhã vai fazer seis meses que eu trabalho nesse projeto.",
+      "img": "🗓️🛠️⏳",
+      "alvo": "I'll have been working",
+      "alvo_pt": "vai fazer seis meses que eu trabalho",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "i work on",
+        "since six"
+      ],
+      "origem": "autoral_ia",
+      "conceito": "Vai fazer seis meses que eu trabalho = I'll have been working for six months."
+    },
+    {
+      "id": "f-2cb75f",
+      "quem": "mike",
+      "cod": "Something is likely to break if we change anything tonight.",
+      "dica": "É provável que algo quebre se a gente mudar alguma coisa hoje à noite.",
+      "img": "💥🔧🌙",
+      "alvo": "is likely to",
+      "alvo_pt": "É provável que",
+      "conceito": "Se + presente (if we change), nunca if we will change.",
+      "var": [
+        {
+          "em": "anything",
+          "aceita": [
+            "something"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will change",
+        "probable"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9081094,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Something bad is likely to happen if you do that' → 'Something is likely to break if we change anything tonight'; PT autoral",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fa40fc",
+      "quem": "voce",
+      "cod": "It's going to be such a long day tomorrow. Let's get some sleep.",
+      "dica": "Amanhã vai ser um dia tão longo. Vamos dormir um pouco.",
+      "img": "😴🛏️",
+      "alvo": "such a",
+      "alvo_pt": "tão",
+      "conceito": "tão + adjetivo + substantivo = such a + adjetivo + substantivo.",
+      "var": [
+        {
+          "em": "It's going to be",
+          "aceita": [
+            "It'll be",
+            "It will be"
+          ]
+        },
+        {
+          "em": "get some sleep",
+          "aceita": [
+            "sleep a little",
+            "sleep a bit"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "so long day",
+        "a such"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        9
+      ]
+    }
+  ]
+}

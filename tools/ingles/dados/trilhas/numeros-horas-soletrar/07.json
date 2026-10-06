@@ -1,0 +1,155 @@
+{
+  "id": "numeros-horas-soletrar.cena-o-cadastro-por-telefone",
+  "trilha": "numeros-horas-soletrar",
+  "nome": "Cena: o cadastro por telefone",
+  "emoji": "📋",
+  "cena": "Numa ligação, você anota o telefone do escritório da Sarah em Austin, confere como se escreve o nome dela e pergunta a hora lá.",
+  "resumo": "Juntar números, soletrar e horas numa ligação, com treze e trinta juntos pela primeira vez.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "What's your phone number?",
+    "or",
+    "thirteen",
+    "thirty",
+    "with an S or a Z",
+    "What time is it?"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Treze ou trinta?"
+    },
+    {
+      "t": "p",
+      "c": "thirTEEN (13) tem a força no fim; THIRty (30), no começo. Na dúvida, peça os dígitos: three zero."
+    },
+    {
+      "t": "ex",
+      "c": "Sorry, thirteen or thirty?\nDesculpa, treze ou trinta?"
+    }
+  ],
+  "imagem": "📞📋🕕",
+  "visualizacao": "Você está no sofá com o celular no ouvido e um papel no joelho. Do outro lado, a Sarah fala rápido, e você anota o número dela devagar, dígito por dígito.",
+  "foto_busca": "man phone call taking notes",
+  "trechos": [
+    {
+      "id": "f-ffebc4",
+      "quem": "voce",
+      "cod": "And what's your phone number?",
+      "dica": "E qual é o seu telefone?",
+      "img": "📋📱",
+      "alvo": "what's your phone number",
+      "alvo_pt": "qual é o seu telefone",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 466624,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ And (no PT, + E); PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3e381e",
+      "quem": "sarah",
+      "contexto": "f-ffebc4",
+      "cod": "Five five five, thirty thirteen.",
+      "dica": "Cinco cinco cinco, trinta treze.",
+      "img": "☎️📝",
+      "alvo": "thirty thirteen",
+      "alvo_pt": "trinta treze",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5f261b",
+      "quem": "voce",
+      "contexto": "f-3e381e",
+      "cod": "Sorry, thirteen or thirty?",
+      "dica": "Desculpa, treze ou trinta?",
+      "img": "🤔👂",
+      "alvo": "thirteen or thirty",
+      "alvo_pt": "treze ou trinta",
+      "conceito": "thirTEEN: força no fim; THIRty: força no começo.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7a9386",
+      "quem": "sarah",
+      "contexto": "f-5f261b",
+      "cod": "Three zero, one three.",
+      "dica": "Três zero, um três.",
+      "img": "✍️✅",
+      "alvo": "Three zero, one three",
+      "alvo_pt": "Três zero, um três",
+      "conceito": "Na dúvida, o americano repete dígito por dígito.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6d600e",
+      "quem": "voce",
+      "cod": "Sarah, with an H?",
+      "dica": "Sarah, com H?",
+      "img": "📇❓",
+      "alvo": "with an H",
+      "alvo_pt": "com H",
+      "conceito": "No Brasil, Sara às vezes vem sem H. an H: o nome da letra H começa com som de vogal.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-53ef4b",
+      "quem": "sarah",
+      "contexto": "f-6d600e",
+      "cod": "With an H. S-A-R-A-H.",
+      "dica": "Com H. S-A-R-A-H.",
+      "img": "👩‍💼✅",
+      "alvo": "With an H",
+      "alvo_pt": "Com H",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5ce3e9",
+      "quem": "voce",
+      "cod": "What time is it in Austin?",
+      "dica": "Que horas são em Austin?",
+      "img": "🕕❓",
+      "alvo": "What time is it",
+      "alvo_pt": "Que horas são",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2882527,
+        "en_autor": "CK",
+        "pt_id": 5541760,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Boston → Austin (no PT também)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-062582",
+      "quem": "sarah",
+      "contexto": "f-5ce3e9",
+      "cod": "It's six fifteen.",
+      "dica": "São seis e quinze.",
+      "img": "🕕📞",
+      "alvo": "six fifteen",
+      "alvo_pt": "seis e quinze",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

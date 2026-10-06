@@ -1,0 +1,281 @@
+{
+  "id": "perguntas-todos-tempos.quem-ligou-perguntas-de-sujeito",
+  "trilha": "perguntas-todos-tempos",
+  "nome": "Quem ligou? Perguntas de sujeito",
+  "emoji": "📞",
+  "cena": "Você volta do almoço, abre a chamada com a Ana e pergunta o que aconteceu na reunião que você perdeu.",
+  "resumo": "Perguntar quem fez algo e o que aconteceu, sem auxiliar: Who invited the client? What happened?",
+  "fechamento": false,
+  "novos": [
+    "What happened?",
+    "client",
+    "invite",
+    "Who else...?",
+    "Who knows?"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Quem fez? Pergunta sem auxiliar"
+    },
+    {
+      "t": "p",
+      "c": "Quando **who** ou **what** é o sujeito (quem fez a ação), não entra do/did: **Who invited** the client? **What happened**? Quando é o objeto, o did volta: Who else **did** he invite?"
+    },
+    {
+      "t": "ex",
+      "c": "Who invited the client?\nQuem convidou o cliente?"
+    },
+    {
+      "t": "tip",
+      "c": "Resposta curta: **Mike did.** = Foi o Mike. No presente, who leva -s: Who knows...? Who wants...?"
+    },
+    {
+      "t": "warn",
+      "c": "What happened? (não: What did happen?)"
+    }
+  ],
+  "imagem": "🍽️💬👩‍💻",
+  "visualizacao": "Você volta do almoço e abre a chamada com a Ana. Ela ainda está agitada, com as anotações da reunião abertas numa aba, e você quer saber de tudo.",
+  "foto_busca": "coworkers talking video call",
+  "trechos": [
+    {
+      "id": "f-2a77fd",
+      "quem": "ana",
+      "cod": "Hi! What happened to you?",
+      "dica": "Oi! O que aconteceu com você?",
+      "img": "😮❓",
+      "alvo": "What happened",
+      "alvo_pt": "O que aconteceu",
+      "conceito": "What happened? = o que aconteceu? Sem did: what é o sujeito.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did",
+        "happen"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-117a5e",
+      "quem": "voce",
+      "contexto": "f-2a77fd",
+      "cod": "I was at lunch. What happened in the meeting?",
+      "dica": "Eu estava no almoço. O que aconteceu na reunião?",
+      "img": "🍽️❓",
+      "alvo": "What happened",
+      "alvo_pt": "O que aconteceu",
+      "conceito": "at lunch = no almoço. What happened in...? = o que aconteceu em...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did",
+        "happen"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-48c07c",
+      "quem": "ana",
+      "contexto": "f-117a5e",
+      "cod": "The client joined the meeting!",
+      "dica": "O cliente entrou na reunião!",
+      "img": "🤝😲",
+      "alvo": "client",
+      "alvo_pt": "cliente",
+      "conceito": "client = cliente (de empresa). join = entrar (numa reunião, num time), sem preposição.",
+      "registro": "informal",
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f3c6a5",
+      "quem": "voce",
+      "contexto": "f-48c07c",
+      "cod": "Really? Who invited the client?",
+      "dica": "Sério? Quem convidou o cliente?",
+      "img": "✉️❓",
+      "alvo": "invited",
+      "alvo_pt": "convidou",
+      "conceito": "Who é o sujeito: Who invited...? (não: Who did invite...?)",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR18"
+      ],
+      "armadilhas": [
+        "did",
+        "invite"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2254856,
+        "en_autor": "CK",
+        "pt_id": 4985493,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'you' → 'the client', 'Really?' acrescentado; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f878f8",
+      "quem": "ana",
+      "contexto": "f-f3c6a5",
+      "cod": "Mike did. He invited Sarah too.",
+      "dica": "Foi o Mike. Ele convidou a Sarah também.",
+      "img": "👨‍💼✉️",
+      "alvo": "invited",
+      "alvo_pt": "convidou",
+      "conceito": "Resposta curta à pergunta de sujeito: Mike did. = Foi o Mike.",
+      "var": [
+        {
+          "em": "Mike did",
+          "aceita": [
+            "It was Mike"
+          ]
+        },
+        {
+          "em": "He invited Sarah too",
+          "aceita": [
+            "He also invited Sarah"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "invite"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c19a8e",
+      "quem": "voce",
+      "contexto": "f-f878f8",
+      "cod": "Who else did he invite?",
+      "dica": "Quem mais ele convidou?",
+      "img": "👥❓",
+      "alvo": "Who else",
+      "alvo_pt": "Quem mais",
+      "conceito": "Aqui who é o objeto (ele convidou quem?): entra did, e invite fica puro.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR07"
+      ],
+      "armadilhas": [
+        "invited"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8229828,
+        "en_autor": "CK",
+        "pt_id": 8332225,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'did you see' → 'did he invite'; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3da6ce",
+      "quem": "ana",
+      "contexto": "f-c19a8e",
+      "cod": "Just Sarah. The client didn't like our design.",
+      "dica": "Só a Sarah. O cliente não gostou do nosso design.",
+      "img": "🎨👎",
+      "alvo": "client",
+      "alvo_pt": "cliente",
+      "conceito": "didn't + verbo puro: didn't like (não: didn't liked).",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "liked"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Just",
+          "aceita": [
+            "Only"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d1705d",
+      "quem": "voce",
+      "contexto": "f-3da6ce",
+      "cod": "Oh no. Who knows the client well?",
+      "dica": "Ah, não. Quem conhece bem o cliente?",
+      "img": "🤔🤝",
+      "alvo": "Who knows",
+      "alvo_pt": "Quem conhece",
+      "conceito": "Who + verbo com -s, como he/she: Who knows...? know = saber e também conhecer.",
+      "registro": "informal",
+      "armadilhas": [
+        "know",
+        "does"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-50b68f",
+      "quem": "ana",
+      "cod": "There's another call tomorrow. Who else wants to join?",
+      "dica": "Tem outra chamada amanhã. Quem mais quer participar?",
+      "img": "📅📞➕",
+      "alvo": "Who else",
+      "alvo_pt": "Quem mais",
+      "conceito": "Who else wants...? (want com -s). join = participar de, sem preposição.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "want",
+        "does"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4fcb2d",
+      "quem": "voce",
+      "contexto": "f-50b68f",
+      "cod": "I do. Who knows the password for the call?",
+      "dica": "Eu quero. Quem sabe a senha da chamada?",
+      "img": "🙋🔑",
+      "alvo": "Who knows",
+      "alvo_pt": "Quem sabe",
+      "conceito": "I do. = eu quero (o do retoma o want). Who knows...? = quem sabe...? (com -s)",
+      "registro": "informal",
+      "armadilhas": [
+        "know",
+        "does"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I do",
+          "aceita": [
+            "I want to"
+          ]
+        }
+      ]
+    }
+  ]
+}

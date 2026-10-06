@@ -1,0 +1,230 @@
+{
+  "id": "planos-going-to.cena-o-fim-de-semana-que-vem",
+  "trilha": "planos-going-to",
+  "nome": "Cena: o fim de semana que vem",
+  "emoji": "📅",
+  "cena": "Sexta no fim do expediente: numa chamada rápida, você, a Ana e o Ben contam os planos do fim de semana.",
+  "resumo": "Contar e perguntar planos com going to e contrastar com o passado.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Planos x passado"
+    },
+    {
+      "t": "p",
+      "c": "Plano: **I'm going to see** a game. Passado: **I went** to the beach. Pergunta: **Are you going to** travel?"
+    },
+    {
+      "t": "ex",
+      "c": "This weekend, I'm going to rest.\nNeste fim de semana, vou descansar."
+    },
+    {
+      "t": "warn",
+      "c": "Dias da semana com maiúscula: **Saturday**, **Sunday** (não: saturday). Hoje à noite = **tonight**."
+    }
+  ],
+  "imagem": "📅🏟️😴",
+  "visualizacao": "Sexta, fim do dia. Três janelinhas na tela: a Ana já de óculos escuros, o Ben com uma bola na mão e você fechando o notebook.",
+  "foto_busca": "friends video call weekend",
+  "trechos": [
+    {
+      "id": "f-e45ec6",
+      "quem": "ana",
+      "cod": "What are you going to do this weekend?",
+      "dica": "(plano) O que você vai fazer neste fim de semana?",
+      "img": "🗓️🤔",
+      "alvo": "What are you going to do",
+      "alvo_pt": "O que você vai fazer",
+      "registro": "informal",
+      "interferencias": [
+        "BR05",
+        "BR06"
+      ],
+      "armadilhas": [
+        "you",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-78127d",
+      "quem": "voce",
+      "contexto": "f-e45ec6",
+      "cod": "I'm going to see a game on Saturday.",
+      "dica": "(plano) Vou ver um jogo no sábado.",
+      "img": "🏟️⚾",
+      "alvo": "I'm going to",
+      "alvo_pt": "Vou",
+      "conceito": "Ver um jogo ao vivo = see a game. Saturday com maiúscula.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR20"
+      ],
+      "armadilhas": [
+        "saturday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-da14cb",
+      "quem": "voce",
+      "cod": "Are you going to travel, Ana?",
+      "dica": "(plano) Você vai viajar, Ana?",
+      "img": "🧳❓",
+      "alvo": "Are you going to",
+      "alvo_pt": "Você vai",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5c1f5c",
+      "quem": "ana",
+      "contexto": "f-da14cb",
+      "cod": "No, I went to the beach last weekend.",
+      "dica": "Não, fui à praia no fim de semana passado.",
+      "img": "🏖️⏪",
+      "alvo": "went",
+      "alvo_pt": "fui",
+      "conceito": "Passado (went) x plano (going to).",
+      "var": [
+        {
+          "em": "No,",
+          "aceita": [
+            "No, I'm not."
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "goed",
+        "go"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5860766,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I went to the beach last weekend.\"; PT original: \"Fui à praia no último fim de semana.\"; No, acrescentado; PT reescrito (fim de semana passado)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5bf497",
+      "quem": "ana",
+      "cod": "This weekend, I'm going to rest.",
+      "dica": "(plano) Neste fim de semana, vou descansar.",
+      "img": "😴🛋️",
+      "alvo": "This weekend",
+      "alvo_pt": "Neste fim de semana",
+      "conceito": "Descansar = rest.",
+      "registro": "informal",
+      "interferencias": [
+        "BR05"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4269254,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm going to rest today.\"; PT original: \"Vou descansar hoje.\"; today → This weekend, no começo; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d99750",
+      "quem": "voce",
+      "cod": "What are you going to do, Ben?",
+      "dica": "(plano) O que você vai fazer, Ben?",
+      "img": "🙋‍♂️❓",
+      "alvo": "What are you going to do",
+      "alvo_pt": "O que você vai fazer",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fabdc7",
+      "quem": "ben",
+      "contexto": "f-d99750",
+      "cod": "I'm going to stay with my parents.",
+      "dica": "(plano) Vou ficar na casa dos meus pais.",
+      "img": "🏡👴👵",
+      "alvo": "stay with",
+      "alvo_pt": "ficar na casa dos",
+      "conceito": "Ficar na casa de alguém = stay with + pessoa.",
+      "registro": "informal",
+      "armadilhas": [
+        "in",
+        "house"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3185220,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom is going to stay with you.\"; PT original: \"O Tom vai ficar com você.\"; Tom is → I'm; you → my parents; PT reescrito (ficar na casa de)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b65b08",
+      "quem": "ben",
+      "contexto": "f-fabdc7",
+      "cod": "And I'm not going to work!",
+      "dica": "(plano) E não vou trabalhar!",
+      "img": "💼🚫",
+      "alvo": "I'm not going to",
+      "alvo_pt": "não vou",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "don't",
+        "no"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2543537,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm not going to work today.\"; PT original: \"Eu não vou trabalhar hoje.\"; And acrescentado; today removido; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

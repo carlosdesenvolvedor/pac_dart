@@ -1,0 +1,240 @@
+{
+  "id": "eu-e-voce-be.sou-desenvolvedor-a-an",
+  "trilha": "eu-e-voce-be",
+  "nome": "Sou desenvolvedor: a/an",
+  "emoji": "💼",
+  "cena": "Na chamada, cada um diz o que faz no time e você descobre quem é dev, designer e engenheiro.",
+  "resumo": "Dizer a profissão com a ou an: I'm a software developer. / Are you a designer? / an engineer.",
+  "fechamento": false,
+  "novos": [
+    "developer",
+    "software developer",
+    "designer",
+    "engineer"
+  ],
+  "apoio": [
+    "an"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Sou desenvolvedor: a/an"
+    },
+    {
+      "t": "p",
+      "c": "Antes de profissão, o inglês **sempre** usa **a** ou **an**: I'm a developer. Em português, \"Sou desenvolvedor\" fica sem artigo."
+    },
+    {
+      "t": "ex",
+      "c": "I'm a software developer.\nSou desenvolvedor de software."
+    },
+    {
+      "t": "tip",
+      "c": "**an** antes de som de vogal (an engineer); **a** antes de som de consoante (a designer, a developer)."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca I'm developer. Sempre I'm a developer."
+    }
+  ],
+  "imagem": "💻👥💼",
+  "visualizacao": "Você olha a chamada: a câmera de cada um mostra a mesa, com telas cheias de código, a mesa digitalizadora da Ana e o quadro branco do Mike.",
+  "foto_busca": "developers video call desk",
+  "trechos": [
+    {
+      "id": "f-f0fedc",
+      "quem": "voce",
+      "cod": "Hi! I'm a software developer.",
+      "dica": "Oi! Sou desenvolvedor de software.",
+      "pt_f": "Oi! Sou desenvolvedora de software.",
+      "img": "🧑‍💻📱",
+      "alvo": "software developer",
+      "alvo_pt": "desenvolvedor de software",
+      "lit": "[lit.: eu sou um desenvolvedor de software]",
+      "conceito": "Profissão leva a/an: I'm a developer (não: I'm developer).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "i'm software",
+        "i'm developer",
+        "developer of software"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-23bea4",
+      "quem": "voce",
+      "cod": "Sarah, are you a developer, too?",
+      "dica": "Sarah, você também é desenvolvedora?",
+      "img": "👩‍💼❓",
+      "alvo": "developer",
+      "alvo_pt": "desenvolvedora",
+      "conceito": "too = também, no fim da frase. Developer serve para os dois gêneros.",
+      "var": [
+        {
+          "em": "are you a developer, too",
+          "aceita": [
+            "are you also a developer"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "are you developer",
+        "too are you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8ffc7f",
+      "quem": "sarah",
+      "contexto": "f-23bea4",
+      "cod": "No, I'm not a developer.",
+      "dica": "Não, não sou desenvolvedora.",
+      "img": "🙅‍♀️💻",
+      "alvo": "developer",
+      "alvo_pt": "desenvolvedora",
+      "conceito": "Na negativa o artigo também fica: I'm not a developer.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "not developer"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5958474,
+        "en_autor": "CK",
+        "pt_id": 5960596,
+        "pt_autor": "sergiomelo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "engineer → developer, + No (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-272509",
+      "quem": "voce",
+      "cod": "Ana, are you a designer?",
+      "dica": "Ana, você é designer?",
+      "img": "👩‍🎨❓",
+      "alvo": "designer",
+      "alvo_pt": "designer",
+      "conceito": "Are you a + profissão? O artigo a fica também na pergunta.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "are you designer"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2894605,
+        "en_autor": "AlanF_US",
+        "pt_id": 4587548,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "teacher → designer, + Ana (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f915e2",
+      "quem": "ana",
+      "contexto": "f-272509",
+      "cod": "Yes! I'm a product designer.",
+      "dica": "Sim! Sou designer de produto.",
+      "img": "🎨📱",
+      "alvo": "designer",
+      "alvo_pt": "designer",
+      "conceito": "product designer = designer de produto; o a fica antes: I'm a product designer.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "i'm designer"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d1fc0a",
+      "quem": "voce",
+      "cod": "Mike, are you an engineer?",
+      "dica": "Mike, você é engenheiro?",
+      "img": "👨‍💼⚙️❓",
+      "alvo": "engineer",
+      "alvo_pt": "engenheiro",
+      "conceito": "an antes de som de vogal: an engineer (não: a engineer).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "a engineer",
+        "are you engineer"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8819a2",
+      "quem": "mike",
+      "contexto": "f-d1fc0a",
+      "cod": "Yes, I'm a software engineer.",
+      "dica": "Sim, sou engenheiro de software.",
+      "img": "⚙️💻",
+      "alvo": "engineer",
+      "alvo_pt": "engenheiro",
+      "conceito": "software engineer = engenheiro de software; software vem antes, como adjetivo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "engineer of software",
+        "i'm software engineer"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9af0b5",
+      "quem": "dev-novo",
+      "cod": "Hi! I'm a software developer, too.",
+      "dica": "Oi! Também sou desenvolvedor de software.",
+      "img": "🧑‍💻🤝",
+      "alvo": "software developer",
+      "alvo_pt": "desenvolvedor de software",
+      "conceito": "também = too, no fim: I'm a developer, too.",
+      "var": [
+        {
+          "em": "I'm a software developer, too",
+          "aceita": [
+            "I'm also a software developer"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "i'm too",
+        "too i'm"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-f0fedc"
+    }
+  ]
+}

@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
-import '../domain/banco_desafios.dart';
+import 'banco_arcade.dart';
 import '../domain/baralho.dart';
 import '../domain/corrida_engine.dart';
 import '../domain/desafio.dart';
@@ -106,7 +106,7 @@ class _CorridaPageState extends State<CorridaPage>
     setState(() {
       _dificuldade = d;
       _rnd = math.Random(widget.semente);
-      _baralho = BaralhoDesafios(rnd: _rnd, tipo: TipoDesafio.logica, banco: bancoDesafios);
+      _baralho = BaralhoDesafios(rnd: _rnd, tipo: TipoDesafio.logica, banco: BancoArcade.desafios(context, TipoDesafio.logica));
       zerarCampanha();
       _acertosRun = 0;
       _errosRun = 0;
@@ -313,7 +313,7 @@ class _CorridaPageState extends State<CorridaPage>
                     emoji: fasesVencidas > 0 ? '🏆' : '🤖',
                     titulo: fasesVencidas > 0 ? 'FIM DA CAMPANHA!' : 'A CPU VENCEU…',
                     subtitulo: fasesVencidas > 0
-                        ? 'Você venceu $fasesVencidas fase${fasesVencidas > 1 ? 's' : ''} de pura lógica Dart.'
+                        ? 'Você venceu $fasesVencidas fase${fasesVencidas > 1 ? 's' : ''} de pura lógica ${BancoArcade.linguagem}.'
                         : 'Responda enquanto a barra do TURBO está cheia pra dobrar o passo — e tente de novo!',
                     pontos: pontosTotal,
                     novoRecorde: novoRecorde,

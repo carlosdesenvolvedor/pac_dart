@@ -1,0 +1,292 @@
+{
+  "id": "revisao-a2.marcando-um-jantar",
+  "trilha": "revisao-a2",
+  "nome": "Marcando um jantar",
+  "emoji": "📆",
+  "cena": "No chat, você, a Ana e o Ben tentam marcar um jantar para comemorar o fim do projeto.",
+  "resumo": "Combinar dia, hora e lugar: Would you like to...?, How about...?, plano com -ing e if + presente.",
+  "fechamento": false,
+  "novos": [
+    "outdoor table",
+    "rooftop",
+    "around eight",
+    "confirm",
+    "parking"
+  ],
+  "apoio": [
+    "Works for me."
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Combinar dia, hora e lugar"
+    },
+    {
+      "t": "p",
+      "c": "Convite: **Would you like to...?** Outra proposta: **How about Friday?** Plano já combinado: **be + -ing** (I'm working late on Thursday)."
+    },
+    {
+      "t": "warn",
+      "c": "Se + futuro do subjuntivo = **if + presente**: If it's not too cold... (não: if it will be)."
+    },
+    {
+      "t": "tip",
+      "c": "**around eight** = lá pelas oito. **Works for me.** = Pra mim dá."
+    },
+    {
+      "t": "ex",
+      "c": "If it's not too cold, let's get an outdoor table.\nSe não estiver frio demais, vamos pegar uma mesa ao ar livre."
+    }
+  ],
+  "imagem": "💬🍽️📆",
+  "visualizacao": "Você digita no chat do grupo com a Ana e o Ben. O projeto acabou, as mensagens chegam rápido e cada um propõe um dia diferente para o jantar.",
+  "foto_busca": "rooftop restaurant outdoor tables",
+  "trechos": [
+    {
+      "id": "f-01a6cd",
+      "quem": "voce",
+      "cod": "Would you like to have dinner on Thursday, around eight?",
+      "dica": "Vocês gostariam de jantar na quinta, lá pelas oito?",
+      "img": "🍽️🕗❓",
+      "alvo": "around eight",
+      "alvo_pt": "lá pelas oito",
+      "conceito": "lá pelas oito = around eight (hora aproximada); na quinta = on Thursday.",
+      "registro": "informal",
+      "interferencias": [
+        "BR39",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in",
+        "at"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4030951,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "with me → on Thursday, around eight; PT reescrito (vocês)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-213544",
+      "quem": "ana",
+      "contexto": "f-01a6cd",
+      "cod": "I'm working late on Thursday. How about Friday, around eight?",
+      "dica": "(combinado) Quinta eu trabalho até tarde. Que tal sexta, lá pelas oito?",
+      "img": "💼🌙",
+      "alvo": "around eight",
+      "alvo_pt": "lá pelas oito",
+      "lit": "[lit.: estou trabalhando até tarde na quinta]",
+      "conceito": "Plano já combinado = be + -ing: I'm working late (não: I work late).",
+      "registro": "informal",
+      "interferencias": [
+        "BR29",
+        "BR17"
+      ],
+      "armadilhas": [
+        "work"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-65fc82",
+      "quem": "voce",
+      "contexto": "f-213544",
+      "cod": "Perfect! The new restaurant downtown has a rooftop.",
+      "dica": "Perfeito! O restaurante novo do centro tem terraço.",
+      "img": "🏙️🍽️",
+      "alvo": "rooftop",
+      "alvo_pt": "terraço",
+      "conceito": "rooftop = terraço no alto do prédio; o restaurante tem = has.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "have",
+        "terrace"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a22af0",
+      "quem": "ben",
+      "contexto": "f-65fc82",
+      "cod": "Friday works for me! I know that place. The rooftop is great.",
+      "dica": "Sexta pra mim dá! Conheço esse lugar. O terraço é ótimo.",
+      "img": "👍🏙️",
+      "alvo": "rooftop",
+      "alvo_pt": "terraço",
+      "conceito": "conhecer um lugar onde já foi = know (conhecer pela 1ª vez = visit).",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "this"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR36"
+      ],
+      "armadilhas": [
+        "meet",
+        "met",
+        "visit"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9cd478",
+      "quem": "voce",
+      "cod": "There's parking next to the restaurant.",
+      "dica": "Tem estacionamento do lado do restaurante.",
+      "img": "🚗🏢",
+      "alvo": "parking",
+      "alvo_pt": "estacionamento",
+      "conceito": "Tem (existe) = there's; do lado de = next to.",
+      "var": [
+        {
+          "em": "parking",
+          "aceita": [
+            "a parking lot"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ff0633",
+      "quem": "ana",
+      "contexto": "f-9cd478",
+      "cod": "I'm not driving, so I don't need parking.",
+      "dica": "Eu não vou de carro, então não preciso de estacionamento.",
+      "img": "🚶🚫🚗",
+      "alvo": "parking",
+      "alvo_pt": "estacionamento",
+      "lit": "[lit.: não estou dirigindo]",
+      "conceito": "Plano = be + -ing: I'm not driving. Precisar de = need (sem of).",
+      "var": [
+        {
+          "em": "driving",
+          "aceita": [
+            "going by car"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR29",
+        "BR42"
+      ],
+      "armadilhas": [
+        "of",
+        "go"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dbf985",
+      "quem": "voce",
+      "cod": "If it's not too cold, let's get an outdoor table.",
+      "dica": "Se não estiver frio demais, vamos pegar uma mesa ao ar livre.",
+      "img": "🌤️🪑",
+      "alvo": "outdoor table",
+      "alvo_pt": "mesa ao ar livre",
+      "conceito": "Se + futuro do subjuntivo = if + presente: if it's (não: if it will be).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR23"
+      ],
+      "armadilhas": [
+        "will",
+        "very"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-13136b",
+      "quem": "ben",
+      "contexto": "f-dbf985",
+      "cod": "OK, but if there's a storm, forget the outdoor table!",
+      "dica": "Tá, mas se tiver tempestade, esquece a mesa ao ar livre!",
+      "img": "⛈️🙅‍♂️",
+      "alvo": "outdoor table",
+      "alvo_pt": "mesa ao ar livre",
+      "conceito": "se tiver = if there's (presente depois de if).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR03"
+      ],
+      "armadilhas": [
+        "will",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-744de8",
+      "quem": "voce",
+      "cod": "I'll call the restaurant and confirm the reservation.",
+      "dica": "Eu ligo pro restaurante e confirmo a reserva.",
+      "img": "📞✅",
+      "alvo": "confirm",
+      "alvo_pt": "confirmo",
+      "conceito": "Promessa = I'll + verbo; ligar para alguém = call (sem to).",
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4dee50",
+      "quem": "ben",
+      "contexto": "f-744de8",
+      "cod": "Have you confirmed the reservation yet?",
+      "dica": "Você já confirmou a reserva?",
+      "img": "🍽️✅❓",
+      "alvo": "confirmed",
+      "alvo_pt": "confirmou",
+      "conceito": "Já...? esperando que aconteça = Have you + particípio... yet?",
+      "var": [
+        {
+          "em": "Have you confirmed",
+          "aceita": [
+            "Did you confirm"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did you confirmed",
+        "already"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

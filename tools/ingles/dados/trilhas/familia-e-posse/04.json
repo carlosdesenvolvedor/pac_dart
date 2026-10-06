@@ -1,0 +1,217 @@
+{
+  "id": "familia-e-posse.nosso-e-deles-achados-no-escritorio",
+  "trilha": "familia-e-posse",
+  "nome": "Nosso e deles: achados no escritório",
+  "emoji": "🔑",
+  "cena": "Fim do dia no escritório de Chicago: coisas esquecidas nas mesas, dois devs novos e a pergunta 'é seu?'.",
+  "resumo": "Perguntar e dizer de quem são as coisas com Is this your...?, our e their.",
+  "fechamento": false,
+  "novos": [
+    "our",
+    "their",
+    "Is this your...?",
+    "wallet"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Nosso e deles: our e their"
+    },
+    {
+      "t": "p",
+      "c": "**our** = nosso, nossa, nossos, nossas. **their** = deles, delas. **its** = dele/dela para coisa ou animal."
+    },
+    {
+      "t": "ex",
+      "c": "Is this your wallet?\nEssa carteira é sua?"
+    },
+    {
+      "t": "ex",
+      "c": "What are their names?\nQuais são os nomes deles?"
+    },
+    {
+      "t": "warn",
+      "c": "O seu/sua do português pode ser dele, dela ou deles: as chaves deles = **their** keys (não: his keys, your keys)."
+    }
+  ],
+  "imagem": "🔑👛🏢",
+  "visualizacao": "Você olha o escritório de Chicago quase vazio: luzes baixas, cadeiras vazias e, em cima das mesas, uma carteira, um celular e um molho de chaves.",
+  "foto_busca": "empty office desks evening",
+  "trechos": [
+    {
+      "id": "f-812544",
+      "quem": "mike",
+      "cod": "Where's my wallet?",
+      "dica": "Cadê a minha carteira?",
+      "img": "👛🔍",
+      "alvo": "wallet",
+      "alvo_pt": "carteira",
+      "conceito": "wallet = carteira (de dinheiro).",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2254656,
+        "en_autor": "CK",
+        "pt_id": 5049051,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4f5dca",
+      "quem": "voce",
+      "contexto": "f-812544",
+      "cod": "Is this your wallet?",
+      "dica": "Essa carteira é sua?",
+      "img": "👛❓",
+      "alvo": "Is this your",
+      "alvo_pt": "é sua",
+      "conceito": "Essa X é sua? = Is this your X? O sua vira your.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6602144,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-981360",
+      "quem": "mike",
+      "contexto": "f-4f5dca",
+      "cod": "Yes, that's my wallet. Thanks!",
+      "dica": "Sim, é a minha carteira. Valeu!",
+      "img": "👛✅🙏",
+      "alvo": "wallet",
+      "alvo_pt": "carteira",
+      "var": [
+        {
+          "em": "that's",
+          "aceita": [
+            "it's"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf25ee",
+      "quem": "voce",
+      "contexto": "They're new here.",
+      "cod": "What are their names?",
+      "dica": "Quais são os nomes deles?",
+      "img": "👥📛❓",
+      "alvo": "their",
+      "alvo_pt": "deles",
+      "conceito": "their = deles/delas: o mesmo para homens e mulheres.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11"
+      ],
+      "armadilhas": [
+        "his",
+        "your"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2646765,
+        "en_autor": "CK",
+        "pt_id": 4818995,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ba5dff",
+      "quem": "mike",
+      "cod": "This is our team.",
+      "dica": "Esse é o nosso time.",
+      "img": "👨‍💻👩‍💻🤝",
+      "alvo": "our",
+      "alvo_pt": "nosso",
+      "conceito": "our = nosso/nossa (não muda); team = time.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5158668,
+        "en_autor": "CK",
+        "pt_id": 5167907,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT: Esta é a nossa equipe → Esse é o nosso time (team = time no curso)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2c7817",
+      "quem": "voce",
+      "cod": "Is this your phone?",
+      "dica": "Esse celular é seu?",
+      "img": "📱❓",
+      "alvo": "Is this your",
+      "alvo_pt": "é seu",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6945954,
+        "en_autor": "CK",
+        "pt_id": 6945979,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: cellphone → phone; PT na ordem do glossário (Esse X é seu?)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4d725d",
+      "quem": "mike",
+      "cod": "Their keys are here, too.",
+      "dica": "As chaves deles também estão aqui.",
+      "img": "🔑🔑👥",
+      "alvo": "Their",
+      "alvo_pt": "deles",
+      "conceito": "their = deles; keys = chaves.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11"
+      ],
+      "armadilhas": [
+        "his",
+        "your"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-343578",
+      "quem": "voce",
+      "cod": "Mike, our taxi is here!",
+      "dica": "Mike, o nosso táxi está aqui!",
+      "img": "🚕👋",
+      "alvo": "our",
+      "alvo_pt": "nosso",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,277 @@
+{
+  "id": "opinar-conduzir-conversa.desculpa-interromper",
+  "trilha": "opinar-conduzir-conversa",
+  "nome": "Desculpa interromper",
+  "emoji": "🙋",
+  "cena": "Uma conversa de corredor com a Sarah, no escritório de Austin, vira uma pequena reunião improvisada com o Mike e a Ana.",
+  "resumo": "Interromper, mudar de assunto e voltar ao ponto: Sorry to interrupt, By the way, Anyway.",
+  "fechamento": false,
+  "novos": [
+    "Sorry to interrupt",
+    "By the way",
+    "Anyway",
+    "What were we talking about?",
+    "the email from the client"
+  ],
+  "apoio": [
+    "go back to"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Interromper, mudar de assunto e voltar"
+    },
+    {
+      "t": "p",
+      "c": "**Sorry to interrupt, but...** pede licença para entrar na conversa. **By the way** (aliás) muda de assunto. **Anyway** (enfim) fecha o desvio e volta ao ponto."
+    },
+    {
+      "t": "warn",
+      "c": "Do que a gente estava falando? = What were we talking about? A preposição vai para o fim (não: About what were we talking?)."
+    },
+    {
+      "t": "ex",
+      "c": "Sorry to interrupt, but I have a question.\nDesculpa interromper, mas tenho uma pergunta."
+    }
+  ],
+  "imagem": "🏢💬📧",
+  "visualizacao": "Corredor do escritório de Austin, perto da máquina de café. A Sarah para você com o notebook aberto no braço, e logo o Mike e a Ana aparecem também.",
+  "foto_busca": "coworkers talking office hallway",
+  "trechos": [
+    {
+      "id": "f-fa4b81",
+      "quem": "sarah",
+      "contexto": "So the new screens are almost ready.",
+      "cod": "By the way, did you see the email from the client?",
+      "dica": "Aliás, você viu o e-mail do cliente?",
+      "img": "📧👀",
+      "alvo": "By the way",
+      "alvo_pt": "Aliás",
+      "conceito": "By the way = aliás (muda de assunto).",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the email from the client",
+          "aceita": [
+            "the client's email"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d27a4e",
+      "quem": "voce",
+      "contexto": "f-fa4b81",
+      "cod": "The email from the client? I haven't read it yet.",
+      "dica": "O e-mail do cliente? Ainda não li.",
+      "img": "📧⏳",
+      "alvo": "The email from the client",
+      "alvo_pt": "O e-mail do cliente",
+      "conceito": "o e-mail do cliente (que veio dele) = the email from the client. Ainda não li = I haven't read it yet.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-49ab27",
+      "quem": "sarah",
+      "contexto": "f-d27a4e",
+      "cod": "They have a few questions. Anyway, it's not urgent.",
+      "dica": "Eles têm algumas perguntas. Enfim, não é urgente.",
+      "img": "📝🙂",
+      "alvo": "Anyway",
+      "alvo_pt": "Enfim",
+      "conceito": "Anyway = enfim, de qualquer forma. Não é urgente = it's not urgent.",
+      "var": [
+        {
+          "em": "a few",
+          "aceita": [
+            "some"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9c68c5",
+      "quem": "mike",
+      "cod": "Sorry to interrupt, but are you talking about the client?",
+      "dica": "Desculpa interromper, mas vocês estão falando do cliente?",
+      "img": "🙋✋",
+      "alvo": "Sorry to interrupt",
+      "alvo_pt": "Desculpa interromper",
+      "conceito": "Desculpa interromper = Sorry to interrupt. Falar de = talk about.",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "are you talking",
+          "aceita": [
+            "are you guys talking"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b45e92",
+      "quem": "sarah",
+      "contexto": "f-9c68c5",
+      "cod": "Yes, the email from the client. Did you read it?",
+      "dica": "Sim, o e-mail do cliente. Você leu?",
+      "img": "📧📖",
+      "alvo": "the email from the client",
+      "alvo_pt": "e-mail do cliente",
+      "conceito": "Você leu? = Did you read it? O inglês pede o objeto (it).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR06"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Did you read it",
+          "aceita": [
+            "Have you read it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-371099",
+      "quem": "mike",
+      "contexto": "f-b45e92",
+      "cod": "I did. By the way, they loved the new design.",
+      "dica": "Li. Aliás, eles adoraram o design novo.",
+      "img": "❤️🎨",
+      "alvo": "By the way",
+      "alvo_pt": "Aliás",
+      "conceito": "Li. = I did. (resposta curta com o auxiliar)",
+      "var": [
+        {
+          "em": "I did",
+          "aceita": [
+            "I read it"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c08fa8",
+      "quem": "voce",
+      "contexto": "f-371099",
+      "cod": "Great! Anyway, let's go back to the client's questions.",
+      "dica": "Ótimo! Enfim, vamos voltar às perguntas do cliente.",
+      "img": "↩️📝",
+      "alvo": "Anyway",
+      "alvo_pt": "Enfim",
+      "conceito": "Anyway (enfim) fecha o desvio e volta ao assunto. Voltar a um assunto = go back to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "go back to",
+          "aceita": [
+            "get back to"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-111503",
+      "quem": "ana",
+      "cod": "Sorry to interrupt, but I need Mike for a minute.",
+      "dica": "Desculpa interromper, mas preciso do Mike por um minutinho.",
+      "img": "⏱️🙏",
+      "alvo": "Sorry to interrupt",
+      "alvo_pt": "Desculpa interromper",
+      "conceito": "preciso do Mike = I need Mike (sem of).",
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "variacao_de": "f-9c68c5",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-39f464",
+      "quem": "sarah",
+      "cod": "What were we talking about?",
+      "dica": "Do que a gente estava falando?",
+      "img": "🤔💬",
+      "alvo": "What were we talking about?",
+      "alvo_pt": "Do que a gente estava falando?",
+      "lit": "[lit.: o que a gente estava falando sobre?]",
+      "conceito": "A preposição vai para o fim: What were we talking about?",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "about"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9091390,
+        "en_autor": "Nylez",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: retirado \"exactly\" (original: \"What exactly were we talking about?\"); PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c3199c",
+      "quem": "mike",
+      "cod": "I'm back. So, what were we talking about?",
+      "dica": "Voltei. Então, do que a gente estava falando?",
+      "img": "🚶💬",
+      "alvo": "what were we talking about?",
+      "alvo_pt": "do que a gente estava falando?",
+      "conceito": "Voltei. = I'm back. (estou de volta)",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "variacao_de": "f-39f464",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "id": "previsoes-futuro-continuo.nao-vamos-conseguir-terminar",
+  "trilha": "previsoes-futuro-continuo",
+  "nome": "Não vamos conseguir terminar",
+  "emoji": "🚧",
+  "cena": "No fim do dia, você avisa a Sarah pelo chat que o time não vai conseguir terminar hoje e combina o que vai dar para fazer.",
+  "resumo": "Conseguir no futuro: will be able to, won't be able to e make it.",
+  "fechamento": false,
+  "novos": [
+    "be able to",
+    "won't be able to",
+    "make it",
+    "in time",
+    "access"
+  ],
+  "apoio": [
+    "by Friday"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Vou conseguir = I'll be able to"
+    },
+    {
+      "t": "p",
+      "c": "**Can** não combina com will. Para \"vou conseguir\", use **will be able to**; para \"não vou conseguir\", **won't be able to**."
+    },
+    {
+      "t": "ex",
+      "c": "We won't be able to finish today.\nA gente não vai conseguir terminar hoje."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca dois modais juntos (não: I will can / I'll can to)."
+    },
+    {
+      "t": "tip",
+      "c": "make it = conseguir ir ou chegar: I won't be able to make it. (Não vou conseguir ir.)"
+    }
+  ],
+  "imagem": "🚧💻⏳",
+  "visualizacao": "Fim de tarde, a luz da janela já está laranja. Você olha a lista de tarefas que ainda faltam e abre o chat para falar com a Sarah.",
+  "foto_busca": "developer laptop evening deadline",
+  "trechos": [
+    {
+      "id": "f-34b117",
+      "quem": "voce",
+      "cod": "Sarah, we won't be able to finish today.",
+      "dica": "Sarah, a gente não vai conseguir terminar hoje.",
+      "img": "🚧⌛",
+      "alvo": "won't be able to",
+      "alvo_pt": "não vai conseguir",
+      "conceito": "won't be able to = não vai conseguir (não existe will can).",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "can't",
+        "can"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0c8c1d",
+      "quem": "sarah",
+      "contexto": "f-34b117",
+      "cod": "Will you be able to finish by Friday?",
+      "dica": "Vocês vão conseguir terminar até sexta?",
+      "img": "🗓️✅",
+      "alvo": "be able to",
+      "alvo_pt": "conseguir",
+      "conceito": "Will you be able to...? = Você vai conseguir...? by Friday = até sexta.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "can"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d7ad45",
+      "quem": "voce",
+      "contexto": "f-0c8c1d",
+      "cod": "I think so, but we need access to the new server.",
+      "dica": "Acho que sim, mas a gente precisa de acesso ao servidor novo.",
+      "img": "🔑🖥️",
+      "alvo": "access",
+      "alvo_pt": "acesso",
+      "conceito": "access to = acesso a.",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c1c028",
+      "quem": "sarah",
+      "contexto": "f-d7ad45",
+      "cod": "I'll ask Mike. You'll have access by tomorrow.",
+      "dica": "Vou pedir pro Mike. Vocês vão ter acesso até amanhã.",
+      "img": "🔓📆",
+      "alvo": "access",
+      "alvo_pt": "acesso",
+      "conceito": "by tomorrow = até amanhã (no máximo amanhã).",
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I'll ask Mike",
+          "aceita": [
+            "I'm going to ask Mike"
+          ]
+        },
+        {
+          "em": "You'll have",
+          "aceita": [
+            "You're going to have"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cebd99",
+      "quem": "voce",
+      "contexto": "f-c1c028",
+      "cod": "Great. Then I'll be able to do it on my own.",
+      "dica": "Ótimo. Então vou conseguir fazer isso por conta própria.",
+      "img": "💪🧑‍💻",
+      "alvo": "be able to",
+      "alvo_pt": "conseguir",
+      "conceito": "on my own = por conta própria, sem ajuda.",
+      "var": [
+        {
+          "em": "do it",
+          "aceita": [
+            "do that",
+            "do this"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "can"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2541464,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Great. Then' acrescentado (liga à fala da Sarah); PT reescrito (original: \"Eu poderei fazer isso sozinho.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fc3247",
+      "quem": "sarah",
+      "contexto": "f-cebd99",
+      "cod": "We'll get there in time.",
+      "dica": "A gente vai chegar lá a tempo.",
+      "img": "🏁⏱️",
+      "alvo": "in time",
+      "alvo_pt": "a tempo",
+      "conceito": "in time = a tempo (antes do limite). get there = chegar lá, conseguir.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3312018,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Nós vamos chegar lá a tempo.\"; PT reescrito: registro de chat (a gente)",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "We'll get there",
+          "aceita": [
+            "We're going to get there"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-5b8629",
+      "quem": "sarah",
+      "cod": "Quick question: can you make it to dinner on Friday?",
+      "dica": "Pergunta rápida: você consegue ir ao jantar na sexta?",
+      "img": "🍽️❓",
+      "alvo": "make it",
+      "alvo_pt": "consegue ir",
+      "conceito": "make it = conseguir ir ou chegar.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "to dinner",
+          "aceita": [
+            "to the dinner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f58f7d",
+      "quem": "voce",
+      "contexto": "f-5b8629",
+      "cod": "I'm sorry, but I won't be able to make it. I'll be in Boston.",
+      "dica": "Sinto muito, mas não vou conseguir ir. Vou estar em Boston.",
+      "img": "😔✈️",
+      "alvo": "won't be able to",
+      "alvo_pt": "não vou conseguir",
+      "conceito": "I won't be able to make it = não vou conseguir ir.",
+      "blocos": [
+        10
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "can't"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I'll be in Boston",
+          "aceita": [
+            "I'm going to be in Boston"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4b4cae",
+      "quem": "sarah",
+      "contexto": "f-f58f7d",
+      "cod": "Oh, right. Will you be back in time for the demo?",
+      "dica": "Ah, é. Você vai estar de volta a tempo da demo?",
+      "img": "🔙🎬",
+      "alvo": "in time",
+      "alvo_pt": "a tempo",
+      "conceito": "be back = estar de volta. in time for = a tempo de.",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0a889f",
+      "quem": "voce",
+      "contexto": "f-4b4cae",
+      "cod": "Yes, I'll make it. I land on Sunday night.",
+      "dica": "Sim, vou conseguir chegar. Pouso no domingo à noite.",
+      "img": "🛬🌙",
+      "alvo": "make it",
+      "alvo_pt": "conseguir chegar",
+      "conceito": "make it = conseguir chegar (a tempo). Horário de voo: presente (I land).",
+      "var": [
+        {
+          "em": "I'll make it",
+          "aceita": [
+            "I'll be able to make it"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

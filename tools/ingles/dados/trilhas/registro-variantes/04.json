@@ -1,0 +1,222 @@
+{
+  "id": "registro-variantes.cena-dois-registros",
+  "trilha": "registro-variantes",
+  "nome": "Cena: dois registros",
+  "emoji": "🎛️",
+  "cena": "No fim do dia, você manda os recados para a diretora, para o Ben e para os colegas de Londres, cada um no registro certo.",
+  "resumo": "Formal e informal na mesma tarde, com do enfático e inglês americano, sem itens novos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "would it be possible to",
+    "got a minute",
+    "what's up",
+    "I do understand",
+    "on vacation",
+    "on the weekend"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: o registro certo"
+    },
+    {
+      "t": "p",
+      "c": "Diretora: **Would it be possible to...?** Amigo: **Got a minute?** e **What's up?** Ênfase: **I do appreciate**, **we did fix**."
+    },
+    {
+      "t": "warn",
+      "c": "Os colegas britânicos dizem *holiday* e *at the weekend*: você entende, mas digita **on vacation** e **on the weekend** (não: at the weekend)."
+    },
+    {
+      "t": "ex",
+      "c": "I do appreciate the offer, but I'd rather stay at a hotel.\nEu agradeço, sim, a oferta, mas prefiro ficar num hotel."
+    }
+  ],
+  "imagem": "📨🎚️🌆",
+  "visualizacao": "É fim de tarde. Você revisa os recados do dia, um por um: o da diretora fica mais formal, o do Ben ganha um Hey, e o dos colegas de Londres sai em inglês americano.",
+  "foto_busca": "evening desk writing messages",
+  "trechos": [
+    {
+      "id": "f-5b17ee",
+      "quem": "voce",
+      "cod": "Would it be possible to review my proposal before Friday?",
+      "dica": "Seria possível revisar a minha proposta antes de sexta?",
+      "img": "📄🔍📅",
+      "alvo": "Would it be possible to",
+      "alvo_pt": "Seria possível",
+      "registro": "formal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2c0513",
+      "quem": "voce",
+      "cod": "Got a minute tonight? I need a quick favor.",
+      "dica": "Tem um minuto hoje à noite? Preciso de um favor rápido.",
+      "img": "🌙⏱️🙏",
+      "alvo": "Got a minute",
+      "alvo_pt": "Tem um minuto",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-97c5b7",
+      "quem": "ben",
+      "contexto": "f-2c0513",
+      "cod": "Sure. What's up? Did something happen?",
+      "dica": "Claro. O que foi? Aconteceu alguma coisa?",
+      "img": "🤔❔👍",
+      "alvo": "What's up",
+      "alvo_pt": "O que foi",
+      "conceito": "Pergunta no passado com did: Did something happen?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d52be9",
+      "quem": "voce",
+      "contexto": "You can stay at my place when you come to Boston.",
+      "cod": "I do appreciate the offer, but I'd rather stay at a hotel.",
+      "dica": "Eu agradeço, sim, a oferta, mas prefiro ficar num hotel.",
+      "img": "🏨🙏🏠",
+      "alvo": "I do appreciate",
+      "alvo_pt": "Eu agradeço, sim",
+      "conceito": "I'd rather + verbo = prefiro (agora, nesta escolha).",
+      "var": [
+        {
+          "em": "at a hotel",
+          "aceita": [
+            "in a hotel"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1a620b",
+      "quem": "ben",
+      "contexto": "f-d52be9",
+      "cod": "Let me know in advance when you're coming to Boston.",
+      "dica": "Me avisa com antecedência quando você vier para Boston.",
+      "img": "📲✈️🗓️",
+      "alvo": "in advance",
+      "alvo_pt": "com antecedência",
+      "conceito": "quando você vier = when you're coming: presente para o futuro (não: when you will come).",
+      "var": [
+        {
+          "em": "you're coming",
+          "aceita": [
+            "you come"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3148368,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Me avise com antecedência quando você virá para Boston.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6210eb",
+      "quem": "voce",
+      "contexto": "Is the Chicago team on holiday this week?",
+      "cod": "Yes, they're all on vacation until Monday.",
+      "dica": "Sim, estão todos de férias até segunda.",
+      "img": "🏖️👥📅",
+      "alvo": "on vacation",
+      "alvo_pt": "de férias",
+      "conceito": "holiday (UK) = vacation (EUA): on vacation = de férias.",
+      "registro": "neutro",
+      "armadilhas": [
+        "holiday",
+        "holidays"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3818815,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"They're all on vacation.\" (acrescentado Yes e until Monday); PT reescrito (original: \"Estão todos de férias.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-016e40",
+      "quem": "voce",
+      "contexto": "Shall we finish the slides at the weekend?",
+      "cod": "Sure, let's finish them on the weekend. Saturday morning works for me.",
+      "dica": "Claro, vamos terminar no fim de semana. Sábado de manhã é bom para mim.",
+      "img": "🖥️📅☀️",
+      "alvo": "on the weekend",
+      "alvo_pt": "no fim de semana",
+      "conceito": "at the weekend (UK) = on the weekend (EUA). Shall we? = Vamos? (britânico, só reconhecer).",
+      "var": [
+        {
+          "em": "works for me",
+          "aceita": [
+            "is good for me"
+          ]
+        }
+      ],
+      "opcional": [
+        "them"
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR17"
+      ],
+      "armadilhas": [
+        "at"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d592f1",
+      "quem": "voce",
+      "cod": "We did fix the login bug, but the report will take two more days.",
+      "dica": "Nós corrigimos, sim, o bug de login, mas o relatório vai levar mais dois dias.",
+      "img": "🐞✅⏳",
+      "alvo": "We did fix",
+      "alvo_pt": "Nós corrigimos, sim",
+      "conceito": "did + verbo base dá ênfase no passado: we did fix (não: did fixed).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "fixed"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

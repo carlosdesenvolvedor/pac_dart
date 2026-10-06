@@ -1,0 +1,187 @@
+{
+  "id": "numeros-horas-soletrar.que-horas-sao",
+  "trilha": "numeros-horas-soletrar",
+  "nome": "Que horas são?",
+  "emoji": "🕐",
+  "cena": "Numa chamada com o Mike, você pergunta a hora em Chicago e confere a diferença de fuso com o Brasil.",
+  "resumo": "Perguntar e dizer as horas: What time is it? / It's ten o'clock. / seven thirty / noon e midnight.",
+  "fechamento": false,
+  "novos": [
+    "What time is it?",
+    "o'clock",
+    "seven thirty (hora + minutos)",
+    "noon / midnight"
+  ],
+  "apoio": [
+    "about"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Que horas são?"
+    },
+    {
+      "t": "p",
+      "c": "Hora cheia: It's ten o'clock. Hora e minutos: It's seven thirty. Meio-dia = noon; meia-noite = midnight."
+    },
+    {
+      "t": "ex",
+      "c": "What time is it in Chicago?\nQue horas são em Chicago?"
+    },
+    {
+      "t": "tip",
+      "c": "about = umas, por volta de: About seven thirty. = Umas sete e meia."
+    },
+    {
+      "t": "warn",
+      "c": "A hora vem com It's, no singular, e sem hours: It's ten o'clock (não: They are ten hours)."
+    }
+  ],
+  "imagem": "🕐🌎💻",
+  "visualizacao": "Na tela, atrás do Mike, a janela de Chicago ainda tem luz de manhã. Do seu lado, o sol já está alto. Você olha o relógio no canto da tela e faz a conta.",
+  "foto_busca": "world clock time zones",
+  "trechos": [
+    {
+      "id": "f-4bded5",
+      "quem": "voce",
+      "cod": "What time is it in Chicago?",
+      "dica": "Que horas são em Chicago?",
+      "img": "🕐🏙️",
+      "alvo": "What time is it",
+      "alvo_pt": "Que horas são",
+      "lit": "[lit.: que hora é?]",
+      "conceito": "What time is it? = Que horas são? Sempre com it, no singular.",
+      "registro": "neutro",
+      "armadilhas": [
+        "hours",
+        "are"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2882527,
+        "en_autor": "CK",
+        "pt_id": 5541760,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Boston → Chicago (no PT também)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-19cb57",
+      "quem": "mike",
+      "contexto": "f-4bded5",
+      "cod": "It's ten o'clock.",
+      "dica": "São dez horas.",
+      "img": "🕙☕",
+      "alvo": "o'clock",
+      "alvo_pt": "horas",
+      "lit": "[lit.: é dez do relógio]",
+      "conceito": "o'clock só na hora cheia: ten o'clock = dez horas.",
+      "registro": "neutro",
+      "armadilhas": [
+        "hours"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b9c5f9",
+      "quem": "voce",
+      "contexto": "f-19cb57",
+      "cod": "Ten o'clock? It's noon here.",
+      "dica": "Dez horas? É meio-dia aqui.",
+      "img": "🕛☀️",
+      "alvo": "noon",
+      "alvo_pt": "meio-dia",
+      "conceito": "noon = meio-dia. De março a novembro, o Brasil fica duas horas à frente de Chicago.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5c7edd",
+      "quem": "mike",
+      "cod": "What time is it in Brazil?",
+      "dica": "(no fim do dia) Que horas são no Brasil?",
+      "img": "🕖🇧🇷",
+      "alvo": "What time is it",
+      "alvo_pt": "Que horas são",
+      "registro": "neutro",
+      "variacao_de": "f-4bded5",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2882527,
+        "en_autor": "CK",
+        "pt_id": 5541760,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Boston → Brazil (no PT, em Boston → no Brasil)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a3143a",
+      "quem": "voce",
+      "contexto": "f-5c7edd",
+      "cod": "About seven thirty.",
+      "dica": "Umas sete e meia.",
+      "img": "🕢🌆",
+      "alvo": "seven thirty",
+      "alvo_pt": "sete e meia",
+      "conceito": "Hora + minutos: seven thirty = sete e meia. about = umas, por volta de.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d75bd5",
+      "quem": "mike",
+      "contexto": "f-a3143a",
+      "cod": "Seven thirty? Wow!",
+      "dica": "Sete e meia? Nossa!",
+      "img": "😮🌙",
+      "alvo": "Seven thirty",
+      "alvo_pt": "Sete e meia",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-72efdb",
+      "quem": "voce",
+      "contexto": "How about nine thirty?",
+      "cod": "It's almost midnight here!",
+      "dica": "É quase meia-noite aqui!",
+      "img": "🕛🌙",
+      "alvo": "midnight",
+      "alvo_pt": "meia-noite",
+      "conceito": "midnight = meia-noite; almost = quase.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3736476,
+        "en_autor": "CK",
+        "pt_id": 4815004,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ here (no PT, + aqui); exclamação",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9bc5d6",
+      "quem": "mike",
+      "contexto": "f-72efdb",
+      "cod": "Sorry! Eight o'clock?",
+      "dica": "Desculpa! Oito horas?",
+      "img": "🙏🕗",
+      "alvo": "o'clock",
+      "alvo_pt": "horas",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/linguagem/linguagem.dart';
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
 import '../../curso/presentation/bloc/typing_bloc.dart';
@@ -88,7 +89,7 @@ class _MissaoPageState extends State<MissaoPage> {
     _typing?.close();
     setState(() {
       _indice = i;
-      _missao = missaoPara(widget.trilhaIdx, i);
+      _missao = missaoPara(widget.trilhaIdx, i, linguagem: Linguagem.atual);
       _estadoCena = {..._missao.dados};
       _etapa = _Etapa.previsao;
       _escolhida = null;
@@ -337,6 +338,7 @@ class _MissaoPageState extends State<MissaoPage> {
             ehFlutter: false,
             titulo: _missao.titulo,
             podeRodar: false,
+            variante: Linguagem.atual == Linguagem.csharp ? 'cs' : 'dart',
             onAvancar: _iniciarAnimacao,
           ),
         ),

@@ -1,0 +1,237 @@
+{
+  "id": "planos-going-to.voce-vai-viajar-nao-vou",
+  "trilha": "planos-going-to",
+  "nome": "Você vai viajar? Não vou.",
+  "emoji": "🧳",
+  "cena": "Na pausa do almoço, numa chamada com o time, cada um pergunta e conta os planos de férias.",
+  "resumo": "Perguntar e negar planos: Are you going to...?, What are you going to do?, I'm not going to...",
+  "fechamento": false,
+  "novos": [
+    "Are you going to...?",
+    "What are you going to do?",
+    "I'm not going to...",
+    "this year"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Perguntar e negar planos"
+    },
+    {
+      "t": "p",
+      "c": "Pergunta: **Are you going to** travel? / **What are you going to do?** Negativa: **I'm not going to** work."
+    },
+    {
+      "t": "ex",
+      "c": "Are you going to travel this summer?\nVocê vai viajar neste verão?"
+    },
+    {
+      "t": "tip",
+      "c": "Tirar férias = **take a vacation**; nas férias = **on vacation** (EUA)."
+    },
+    {
+      "t": "warn",
+      "c": "Na pergunta, o **are** vem antes de you: Are you going to travel? (não: You are going to travel?)"
+    }
+  ],
+  "imagem": "🧳✈️🍽️",
+  "visualizacao": "Hora do almoço, você come com o prato ao lado do notebook. Na tela, o Mike fala animado da viagem ao Japão e a Sarah ri: este ano, nada de férias.",
+  "foto_busca": "lunch break video call",
+  "trechos": [
+    {
+      "id": "f-ea98eb",
+      "quem": "mike",
+      "cod": "Are you going to travel this summer?",
+      "dica": "(plano) Você vai viajar neste verão?",
+      "img": "✈️☀️",
+      "alvo": "Are you going to",
+      "alvo_pt": "Você vai",
+      "conceito": "Pergunta: o are vem antes de you. Verão = summer, com minúscula.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you",
+        "go"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b7b8c1",
+      "quem": "voce",
+      "contexto": "f-ea98eb",
+      "cod": "No, I'm not going to have time.",
+      "dica": "(plano) Não, não vou ter tempo.",
+      "img": "⏳🚫",
+      "alvo": "I'm not going to",
+      "alvo_pt": "não vou",
+      "conceito": "Negativa: I'm not going to + verbo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "don't",
+        "no"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-737df9",
+      "quem": "mike",
+      "cod": "We're going to go to Japan this year.",
+      "dica": "(plano) A gente vai para o Japão este ano.",
+      "img": "🇯🇵🗾",
+      "alvo": "this year",
+      "alvo_pt": "este ano",
+      "conceito": "Este ano = this year (sem in).",
+      "var": [
+        {
+          "em": "going to go to Japan",
+          "aceita": [
+            "going to Japan"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9cf650",
+      "quem": "voce",
+      "contexto": "f-737df9",
+      "cod": "What are you going to do in Japan?",
+      "dica": "(plano) O que vocês vão fazer no Japão?",
+      "img": "🗾❓",
+      "alvo": "What are you going to do",
+      "alvo_pt": "O que vocês vão fazer",
+      "conceito": "you serve para você e vocês.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2539928,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"What are you going to do in Boston?\"; PT original: \"O que você vai fazer em Boston?\"; Boston → Japan; PT reescrito (vocês)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3f3621",
+      "quem": "ana",
+      "cod": "Sarah, are you going to see your parents?",
+      "dica": "(plano) Sarah, você vai ver os seus pais?",
+      "img": "👩👴👵",
+      "alvo": "are you going to",
+      "alvo_pt": "você vai",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-884ffa",
+      "quem": "sarah",
+      "contexto": "f-3f3621",
+      "cod": "I'm not going to take a vacation this year.",
+      "dica": "(plano) Não vou tirar férias este ano.",
+      "img": "🏖️🚫",
+      "alvo": "I'm not going to",
+      "alvo_pt": "Não vou",
+      "conceito": "Tirar férias = take a vacation (EUA).",
+      "var": [
+        {
+          "em": "take a vacation",
+          "aceita": [
+            "take vacation"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "don't",
+        "no"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3449365,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom isn't going to take a vacation this year.\"; PT original: \"Tom não vai tirar férias este ano.\"; Tom isn't → I'm not; PT adaptado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6faffa",
+      "quem": "sarah",
+      "cod": "What are you going to do on vacation, Ana?",
+      "dica": "(plano) O que você vai fazer nas férias, Ana?",
+      "img": "🌴❓",
+      "alvo": "What are you going to do",
+      "alvo_pt": "O que você vai fazer",
+      "conceito": "Nas férias = on vacation.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f04487",
+      "quem": "ana",
+      "contexto": "f-6faffa",
+      "cod": "This year, I'm going to stay home.",
+      "dica": "(plano) Este ano, vou ficar em casa.",
+      "img": "🏠😌",
+      "alvo": "This year",
+      "alvo_pt": "Este ano",
+      "var": [
+        {
+          "em": "home",
+          "aceita": [
+            "at home"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR16"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

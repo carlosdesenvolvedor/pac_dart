@@ -1,0 +1,187 @@
+{
+  "id": "instrucoes-e-lets.nao-se-preocupa-vamos",
+  "trilha": "instrucoes-e-lets",
+  "nome": "Não se preocupa. Vamos!",
+  "emoji": "👍",
+  "cena": "Começo da reunião: o Mike acha o seu crachá, tranquiliza você sobre o inglês e elogia o seu cuidado; mais tarde, a Sarah propõe uma pausa para o café.",
+  "resumo": "Tranquilizar e alertar com Don't worry e Be careful, e sugerir com Let's.",
+  "fechamento": false,
+  "novos": [
+    "Don't worry.",
+    "worry",
+    "Be careful.",
+    "careful"
+  ],
+  "apoio": [
+    "right"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Não + verbo: Don't"
+    },
+    {
+      "t": "p",
+      "c": "Imperativo negativo = **Don't** + verbo: Don't worry. Alerta com **Be** + adjetivo: Be careful."
+    },
+    {
+      "t": "ex",
+      "c": "Turn right.\nVira à direita."
+    },
+    {
+      "t": "warn",
+      "c": "Vamos (sugestão) = **Let's** + verbo: Let's take a break. (não: We go)"
+    }
+  ],
+  "imagem": "☕🤝💬",
+  "visualizacao": "A sala de reunião tem cheiro de café. Você sente um frio na barriga com o inglês, mas o Mike ri e aponta o seu crachá em cima da mesa, à sua direita.",
+  "foto_busca": "coffee break office meeting",
+  "trechos": [
+    {
+      "id": "f-9ab1bd",
+      "quem": "mike",
+      "contexto": "Oh no! Where's my badge?",
+      "cod": "Don't worry. It's on your right.",
+      "dica": "Não se preocupa. Está à sua direita.",
+      "img": "📛➡️😌",
+      "alvo": "Don't worry",
+      "alvo_pt": "Não se preocupa",
+      "conceito": "Não + verbo = Don't + verbo. right = direita (e também certo: You're right).",
+      "var": [
+        {
+          "em": "on your right",
+          "aceita": [
+            "to your right"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "no",
+        "not",
+        "left"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-63e5c5",
+      "quem": "mike",
+      "contexto": "Sorry, my English isn't very good.",
+      "cod": "Please don't worry about your English.",
+      "dica": "Por favor, não se preocupa com o seu inglês.",
+      "img": "🗣️😌",
+      "alvo": "worry",
+      "alvo_pt": "preocupa",
+      "conceito": "worry about = se preocupar com.",
+      "registro": "neutro",
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-37a5df",
+      "quem": "mike",
+      "cod": "You're very careful, {nome}.",
+      "dica": "Você é muito cuidadoso, {nome}.",
+      "img": "🔍✅",
+      "alvo": "careful",
+      "alvo_pt": "cuidadoso",
+      "conceito": "careful = cuidadoso; Be careful = Cuidado.",
+      "pt_f": "Você é muito cuidadosa, {nome}.",
+      "registro": "neutro",
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7a44f8",
+      "quem": "sarah",
+      "cod": "Mike is very careful with the code.",
+      "dica": "O Mike é muito cuidadoso com o código.",
+      "img": "👨‍💻🔍",
+      "alvo": "careful",
+      "alvo_pt": "cuidadoso",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-54759b",
+      "quem": "voce",
+      "contexto": "Are you OK? You're very quiet.",
+      "cod": "I'm OK. Don't worry about me.",
+      "dica": "Estou bem. Não se preocupa comigo.",
+      "img": "🙂👌",
+      "alvo": "worry",
+      "alvo_pt": "preocupa",
+      "registro": "informal",
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3098898,
+        "en_autor": "CK",
+        "pt_id": 5152743,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: as duas frases em ordem inversa (I'm OK. primeiro); PT na mesma ordem e na forma falada do imperativo",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ae9cf2",
+      "quem": "sarah",
+      "contexto": "Sorry, I'm really tired.",
+      "cod": "Don't worry. Let's take a break.",
+      "dica": "Não se preocupa. Vamos fazer uma pausa.",
+      "img": "☕😌",
+      "alvo": "Don't worry",
+      "alvo_pt": "Não se preocupa",
+      "conceito": "Let's + verbo = vamos (sugestão); take a break = fazer uma pausa.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2307dd",
+      "quem": "mike",
+      "cod": "Be careful! The coffee is hot.",
+      "dica": "Cuidado! O café está quente.",
+      "img": "☕🔥",
+      "alvo": "Be careful",
+      "alvo_pt": "Cuidado",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10050854,
+        "en_autor": "ddnktr",
+        "pt_id": 10050943,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Careful! The soup's hot → Be careful! The coffee is hot; PT: sopa → café",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-43899d",
+      "quem": "mike",
+      "cod": "Be careful. It's very cold outside.",
+      "dica": "Cuidado. Está muito frio lá fora.",
+      "img": "🧥❄️",
+      "alvo": "Be careful",
+      "alvo_pt": "Cuidado",
+      "conceito": "It's cold: o it é obrigatório (não: Is cold).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "id": "passado-simples-afirmativo.fui-tive-cheguei-fiz",
+  "trilha": "passado-simples-afirmativo",
+  "nome": "Fui, tive, cheguei, fiz",
+  "emoji": "🏖️",
+  "cena": "Numa chamada com a Ana, você conta o seu domingo em Chicago: praia no lago, almoço e a volta para o hotel.",
+  "resumo": "Usar os irregulares mais comuns: went, had, got e did.",
+  "fechamento": false,
+  "novos": [
+    "went",
+    "had",
+    "beach",
+    "went to the beach"
+  ],
+  "apoio": [
+    "got"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Irregulares: went, had, got, did"
+    },
+    {
+      "t": "p",
+      "c": "Os verbos mais usados não levam -ed: go → **went**, have → **had**, get → **got**, do → **did**. Também são iguais para todas as pessoas."
+    },
+    {
+      "t": "ex",
+      "c": "We went to the beach on Sunday.\nA gente foi à praia no domingo."
+    },
+    {
+      "t": "ex",
+      "c": "I did the dishes.\nLavei a louça."
+    },
+    {
+      "t": "warn",
+      "c": "O irregular já é o passado (não: goed, haved)."
+    }
+  ],
+  "imagem": "🏖️☀️📞",
+  "visualizacao": "Domingo à noite, no quarto do hotel. Você ainda sente o sol no rosto e conta para a Ana, na tela, que Chicago tem praia.",
+  "foto_busca": "chicago lake beach summer",
+  "trechos": [
+    {
+      "id": "f-090300",
+      "quem": "voce",
+      "cod": "We went to the beach on Sunday.",
+      "dica": "A gente foi à praia no domingo.",
+      "img": "🏖️☀️",
+      "alvo": "went to the beach",
+      "alvo_pt": "foi à praia",
+      "conceito": "go → went: ir à praia = go to the beach.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "goed",
+        "sunday"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3006740,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"We went to the beach together.\"; PT original: \"Fomos à praia juntos.\"; together → on Sunday; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7ed842",
+      "quem": "ana",
+      "contexto": "f-090300",
+      "cod": "A beach? In Chicago?",
+      "dica": "Praia? Em Chicago?",
+      "img": "🌊🤔",
+      "alvo": "beach",
+      "alvo_pt": "Praia",
+      "opcional": [
+        "A"
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf4771",
+      "quem": "voce",
+      "contexto": "f-7ed842",
+      "cod": "Yes, there's a beach near my hotel.",
+      "dica": "Sim, tem uma praia perto do meu hotel.",
+      "img": "🏨🏖️",
+      "alvo": "beach",
+      "alvo_pt": "praia",
+      "lit": "[lit.: existe uma praia perto do meu hotel]",
+      "conceito": "Tem (existir) = there is. Chicago tem praias no lago.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fa5b66",
+      "quem": "voce",
+      "cod": "We had lunch at a small restaurant.",
+      "dica": "A gente almoçou num restaurante pequeno.",
+      "img": "🍽️🥗",
+      "alvo": "had",
+      "alvo_pt": "almoçou",
+      "conceito": "have → had. Almoçar = have lunch → had lunch.",
+      "var": [
+        {
+          "em": "at a small restaurant",
+          "aceita": [
+            "in a small restaurant"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "have",
+        "haved"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-97765d",
+      "quem": "ana",
+      "cod": "On Saturday, I went to a party.",
+      "dica": "No sábado, eu fui a uma festa.",
+      "img": "🎉🕺",
+      "alvo": "went",
+      "alvo_pt": "fui",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "goed",
+        "saturday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5aad79",
+      "quem": "ana",
+      "cod": "And on Sunday, I went to the beach too.",
+      "dica": "E no domingo eu também fui à praia.",
+      "img": "🌞🌊",
+      "alvo": "went to the beach",
+      "alvo_pt": "fui à praia",
+      "var": [
+        {
+          "em": "I went to the beach too",
+          "aceita": [
+            "I also went to the beach"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "goed",
+        "sunday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f738f8",
+      "quem": "ana",
+      "cod": "I had dinner with my parents.",
+      "dica": "Jantei com os meus pais.",
+      "img": "🍝👨‍👩‍👧",
+      "alvo": "had",
+      "alvo_pt": "Jantei",
+      "conceito": "Jantar = have dinner → had dinner.",
+      "registro": "informal",
+      "armadilhas": [
+        "have",
+        "haved"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2646593,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I had dinner with Tom.\"; PT original: \"Eu jantei com Tom.\"; Tom → my parents; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f995b3",
+      "quem": "voce",
+      "cod": "I got to the hotel and went to bed.",
+      "dica": "Cheguei no hotel e fui dormir.",
+      "img": "🛏️🌙",
+      "alvo": "went",
+      "alvo_pt": "fui",
+      "conceito": "get → got (cheguei); go → went. Ir dormir = go to bed.",
+      "var": [
+        {
+          "em": "to bed",
+          "aceita": [
+            "to sleep"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR16"
+      ],
+      "armadilhas": [
+        "goed",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "id": "talvez-might.previsao-do-tempo-e-da-demo",
+  "trilha": "talvez-might",
+  "nome": "Previsão do tempo e da demo",
+  "emoji": "🌦️",
+  "cena": "No fim do dia, na chamada com a Ana: o tempo amanhã, a noite mal dormida e a demo.",
+  "resumo": "Fechamento: might, could e couldn't, com os pares de resposta curta juntos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Os pares, agora juntos"
+    },
+    {
+      "t": "p",
+      "c": "Depois de frase **afirmativa** ou de algo bom: **Me too / I think so / I hope so**. Depois de frase **negativa** ou de algo ruim: **Me neither / I don't think so / I hope not**."
+    },
+    {
+      "t": "tip",
+      "c": "might, may e could = talvez, pode ser. couldn't = não consegui (passado)."
+    },
+    {
+      "t": "warn",
+      "c": "Nem eu = Me neither (não: Me too not). Acho que não = I don't think so (não: I think that no)."
+    },
+    {
+      "t": "ex",
+      "c": "No, I don't think so. But it might rain.\nNão, acho que não. Mas pode ser que chova."
+    }
+  ],
+  "imagem": "🌦️💬😴",
+  "visualizacao": "Fim do dia, você e a Ana ainda na chamada, câmeras ligadas. Pela janela dela o céu de Chicago fica cinza; a demo é amanhã e os dois bocejam.",
+  "foto_busca": "evening video call window rain",
+  "trechos": [
+    {
+      "id": "f-a7f444",
+      "quem": "ana",
+      "cod": "Do you think it's going to snow?",
+      "dica": "Você acha que vai nevar?",
+      "img": "❄️🤔",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR01"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4919023,
+        "en_autor": "CK",
+        "pt_id": 6325781,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "it's going to",
+          "aceita": [
+            "it'll",
+            "it will"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-39ae63",
+      "quem": "voce",
+      "contexto": "f-a7f444",
+      "cod": "No, I don't think so. But it might rain.",
+      "dica": "Não, acho que não. Mas pode ser que chova.",
+      "img": "🙅‍♂️🌧️",
+      "alvo": "I don't think so",
+      "alvo_pt": "acho que não",
+      "registro": "informal",
+      "interferencias": [
+        "BR43",
+        "BR30"
+      ],
+      "armadilhas": [
+        "that"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7fb918",
+      "quem": "ana",
+      "contexto": "f-39ae63",
+      "cod": "Oh, I hope not. I walk to work.",
+      "dica": "Ah, espero que não. Eu vou a pé para o trabalho.",
+      "img": "🚶‍♀️☔",
+      "alvo": "I hope not",
+      "alvo_pt": "espero que não",
+      "conceito": "ir a pé = walk. to work, sem artigo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR43",
+        "BR16"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2fcf98",
+      "quem": "voce",
+      "contexto": "You look tired today.",
+      "cod": "I couldn't fall asleep.",
+      "dica": "Não consegui pegar no sono.",
+      "img": "😩🛌",
+      "alvo": "couldn't",
+      "alvo_pt": "Não consegui",
+      "conceito": "pegar no sono = fall asleep.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2816316,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Eu não consegui dormir.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-563e13",
+      "quem": "ana",
+      "contexto": "f-2fcf98",
+      "cod": "Me neither. My neighbors are very noisy.",
+      "dica": "Nem eu. Meus vizinhos são muito barulhentos.",
+      "img": "🎶😫",
+      "alvo": "Me neither",
+      "alvo_pt": "Nem eu",
+      "conceito": "Nem eu = Me neither (não: Me too not).",
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "armadilhas": [
+        "too"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9936110,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Me neither.' acrescentado (original: \"My neighbors are very noisy.\"); PT reescrito (original: \"Meus vizinhos são muito barulhentos.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2aa00e",
+      "quem": "voce",
+      "cod": "Are you ready for the demo tomorrow?",
+      "dica": "Você está pronta para a demo amanhã?",
+      "img": "📊🗓️",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8c87a6",
+      "quem": "ana",
+      "contexto": "f-2aa00e",
+      "cod": "Yes, I think so. But the app might be slow.",
+      "dica": "Sim, acho que sim. Mas talvez o app fique lento.",
+      "img": "👍🐢",
+      "alvo": "I think so",
+      "alvo_pt": "acho que sim",
+      "registro": "informal",
+      "interferencias": [
+        "BR43",
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c5c06d",
+      "quem": "voce",
+      "contexto": "f-8c87a6",
+      "cod": "It could be the office network. Mike can fix that.",
+      "dica": "Pode ser a rede do escritório. O Mike consegue resolver isso.",
+      "img": "📶🔧",
+      "alvo": "could",
+      "alvo_pt": "Pode ser",
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-865cc1",
+      "quem": "ana",
+      "contexto": "f-c5c06d",
+      "cod": "I hope so. I'm going to bed early tonight.",
+      "dica": "Espero que sim. Vou dormir cedo hoje à noite.",
+      "img": "🙏🛏️",
+      "alvo": "I hope so",
+      "alvo_pt": "Espero que sim",
+      "registro": "informal",
+      "interferencias": [
+        "BR43",
+        "BR16",
+        "BR05"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-85a1fc",
+      "quem": "voce",
+      "contexto": "f-865cc1",
+      "cod": "Me too. Good night, Ana!",
+      "dica": "Eu também. Boa noite, Ana!",
+      "img": "👋🌙",
+      "alvo": "Me too",
+      "alvo_pt": "Eu também",
+      "conceito": "Good night = boa noite na despedida (Good evening = ao chegar).",
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "id": "se-e-quando.se-chover-a-gente-fica-em-casa",
+  "trilha": "se-e-quando",
+  "nome": "Se chover, a gente fica em casa",
+  "emoji": "☔",
+  "cena": "Sexta à noite em Boston, você e o Ben combinam o piquenique de sábado e um plano B para o caso de chuva.",
+  "resumo": "Combinar o que vai acontecer em cada caso: if + presente, will + verbo (primeira condicional).",
+  "fechamento": false,
+  "novos": [
+    "stay home",
+    "sunny",
+    "plan B",
+    "picnic",
+    "forecast"
+  ],
+  "apoio": [
+    "weather"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Se chover...: if + presente, will"
+    },
+    {
+      "t": "p",
+      "c": "Para combinar o que **vai** acontecer em cada caso: **if + presente**, depois **will** + verbo. O \"se chover\" do português vira presente: **if it rains**."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca will depois do if: If it rains (não: If it will rain)."
+    },
+    {
+      "t": "tip",
+      "c": "Tempo sempre com it: it rains, it's sunny (chove, faz sol)."
+    },
+    {
+      "t": "ex",
+      "c": "If it rains, we'll stay home.\nSe chover, a gente fica em casa."
+    }
+  ],
+  "imagem": "🌦️🧺🎲",
+  "visualizacao": "Sexta à noite, você está na cozinha do Ben em Boston. O celular dele mostra sol de manhã e nuvens à tarde, e a cesta de piquenique espera em cima da mesa.",
+  "foto_busca": "picnic basket park cloudy sky",
+  "trechos": [
+    {
+      "id": "f-6998a9",
+      "quem": "ben",
+      "cod": "How about a picnic on Saturday?",
+      "dica": "Que tal um piquenique no sábado?",
+      "img": "🧺🌳📅",
+      "alvo": "picnic",
+      "alvo_pt": "piquenique",
+      "conceito": "Que tal...? = How about...? (sugestão). No sábado = on Saturday.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3160249,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'What about' → 'How about' (a fórmula do curso); 'on Saturday' acrescentado (original: \"What about a picnic?\"); PT reescrito (original: \"E que tal um piquenique?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-05d1f6",
+      "quem": "voce",
+      "contexto": "f-6998a9",
+      "cod": "Sure! Have you checked the forecast yet?",
+      "dica": "Claro! Você já olhou a previsão do tempo?",
+      "img": "📱🌦️❓",
+      "alvo": "forecast",
+      "alvo_pt": "previsão do tempo",
+      "conceito": "forecast = previsão do tempo. Já...? em pergunta = present perfect com yet.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b1f4c8",
+      "quem": "ben",
+      "contexto": "f-05d1f6",
+      "cod": "I think it'll be sunny.",
+      "dica": "Acho que vai fazer sol.",
+      "img": "🤔☀️",
+      "alvo": "sunny",
+      "alvo_pt": "fazer sol",
+      "lit": "[lit.: vai estar ensolarado]",
+      "conceito": "Fazer sol = be sunny, sempre com it: it'll be sunny.",
+      "var": [
+        {
+          "em": "it'll",
+          "aceita": [
+            "it's going to"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8240907,
+        "en_autor": "CK",
+        "pt_id": 8329740,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6b8e88",
+      "quem": "voce",
+      "contexto": "f-b1f4c8",
+      "cod": "Great! But what's our plan B if it rains?",
+      "dica": "Ótimo! Mas qual é o nosso plano B se chover?",
+      "img": "🌧️🤔📋",
+      "alvo": "plan B",
+      "alvo_pt": "plano B",
+      "conceito": "se chover = if it rains (presente; nunca will depois do if).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR01"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1ad03e",
+      "quem": "ben",
+      "contexto": "f-6b8e88",
+      "cod": "If it rains, we'll stay home and play board games.",
+      "dica": "Se chover, a gente fica em casa e joga jogos de tabuleiro.",
+      "img": "🌧️🏠🎲",
+      "alvo": "stay home",
+      "alvo_pt": "fica em casa",
+      "conceito": "ficar em casa = stay home (o americano costuma dizer sem at).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR16"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-98a3c2",
+      "quem": "voce",
+      "contexto": "f-1ad03e",
+      "cod": "OK. And if it's sunny, I'll bring the food.",
+      "dica": "Tá bom. E se fizer sol, eu levo a comida.",
+      "img": "☀️🥪",
+      "alvo": "sunny",
+      "alvo_pt": "fizer sol",
+      "conceito": "se fizer sol = if it's sunny. Eu levo (para onde vocês vão) = I'll bring.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR28",
+        "BR37"
+      ],
+      "armadilhas": [
+        "take"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-46fb94",
+      "quem": "ben",
+      "cod": "The forecast says it's going to rain on Sunday.",
+      "dica": "A previsão do tempo diz que vai chover no domingo.",
+      "img": "📺🌧️📅",
+      "alvo": "forecast",
+      "alvo_pt": "previsão do tempo",
+      "conceito": "-s da 3ª pessoa: the forecast says. Vai chover (previsão) = it's going to rain.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "it's going to",
+          "aceita": [
+            "it'll",
+            "it will"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-9a6b99",
+      "quem": "voce",
+      "contexto": "f-46fb94",
+      "cod": "Then we need a plan B for Sunday too.",
+      "dica": "Então a gente precisa de um plano B para domingo também.",
+      "img": "🗓️📋",
+      "alvo": "plan B",
+      "alvo_pt": "plano B",
+      "conceito": "need sem of: we need a plan B (não: need of).",
+      "var": [
+        {
+          "em": "Then",
+          "aceita": [
+            "So"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f6591f",
+      "quem": "ben",
+      "contexto": "f-9a6b99",
+      "cod": "Do you want to go out or stay home?",
+      "dica": "Quer sair ou ficar em casa?",
+      "img": "🚶🏠❓",
+      "alvo": "stay home",
+      "alvo_pt": "ficar em casa",
+      "conceito": "Quer + verbo? (convite) = Do you want to...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8032102,
+        "en_autor": "CK",
+        "pt_id": 9700312,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0cd789",
+      "quem": "voce",
+      "contexto": "f-f6591f",
+      "cod": "If it's sunny, let's have another picnic.",
+      "dica": "Se fizer sol, vamos fazer outro piquenique.",
+      "img": "☀️🧺🔁",
+      "alvo": "picnic",
+      "alvo_pt": "piquenique",
+      "conceito": "se fizer sol = if it's sunny (presente, it obrigatório). fazer um piquenique = have a picnic.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR28"
+      ],
+      "armadilhas": [
+        "will",
+        "make"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

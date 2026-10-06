@@ -1,0 +1,302 @@
+{
+  "id": "contar-historia.por-tres-anos-durante-o-voo",
+  "trilha": "contar-historia",
+  "nome": "Por três anos, durante o voo",
+  "emoji": "⏳",
+  "cena": "De volta de Boston, você conta para a Sarah como foi a viagem e fala um pouco do Ben.",
+  "resumo": "Dizer quanto tempo algo durou com for e quando aconteceu com during.",
+  "fechamento": false,
+  "novos": [
+    "the whole trip",
+    "fall asleep / fell asleep",
+    "for + duração (for two years)",
+    "during + evento (during the flight)"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Durante: for ou during?"
+    },
+    {
+      "t": "p",
+      "c": "**for** + quanto tempo (duração): for two hours, for two years. **during** + o evento: during the flight, during the trip."
+    },
+    {
+      "t": "ex",
+      "c": "I fell asleep during the flight.\nPeguei no sono durante o voo."
+    },
+    {
+      "t": "warn",
+      "c": "Durante três anos = for three years (não: during three years)."
+    },
+    {
+      "t": "tip",
+      "c": "Há dois anos = two years ago (quando foi); por dois anos = for two years (quanto durou)."
+    }
+  ],
+  "imagem": "✈️😴🧳",
+  "visualizacao": "Você já está em casa, numa chamada com a Sarah, a mala ainda aberta no chão. Ela pergunta do voo, e você lembra do portão lotado e do filme que não terminou.",
+  "foto_busca": "airport gate waiting passengers",
+  "trechos": [
+    {
+      "id": "f-2e4aef",
+      "quem": "voce",
+      "contexto": "How was your trip back?",
+      "cod": "Long! I waited at the gate for two hours.",
+      "dica": "Longa! Esperei no portão por duas horas.",
+      "img": "🛫⏳",
+      "alvo": "for two hours",
+      "alvo_pt": "por duas horas",
+      "conceito": "for + duração: for two hours (não: during two hours).",
+      "registro": "informal",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "during"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8226840,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'thirty minutes' → 'two hours', 'Long!' e 'at the gate' acrescentados; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-aa0384",
+      "quem": "sarah",
+      "contexto": "f-2e4aef",
+      "cod": "Two hours? Did you sleep during the flight?",
+      "dica": "Duas horas? Você dormiu durante o voo?",
+      "img": "✈️😴❓",
+      "alvo": "during the flight",
+      "alvo_pt": "durante o voo",
+      "conceito": "during + evento: during the flight.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR63"
+      ],
+      "armadilhas": [
+        "for",
+        "slept"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-20788d",
+      "quem": "voce",
+      "contexto": "f-aa0384",
+      "cod": "Yes, I fell asleep before the end of the movie.",
+      "dica": "Sim, peguei no sono antes do fim do filme.",
+      "img": "🎬😴",
+      "alvo": "fell asleep",
+      "alvo_pt": "peguei no sono",
+      "conceito": "fall asleep = pegar no sono. Passado: fell asleep (não: felt asleep).",
+      "registro": "informal",
+      "armadilhas": [
+        "felt",
+        "slept"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3822211,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Yes,' acrescentado; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-14c306",
+      "quem": "sarah",
+      "contexto": "f-20788d",
+      "cod": "Wow! I never fall asleep on long flights.",
+      "dica": "Nossa! Eu nunca pego no sono em voos longos.",
+      "img": "🛩️🚫😴",
+      "alvo": "fall asleep",
+      "alvo_pt": "pego no sono",
+      "conceito": "Presente: fall asleep. never vem antes do verbo.",
+      "registro": "informal",
+      "armadilhas": [
+        "fell",
+        "sleep"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b46749",
+      "quem": "voce",
+      "cod": "In Boston, it rained during the whole trip.",
+      "dica": "Em Boston, choveu durante a viagem inteira.",
+      "img": "🌧️🧳",
+      "alvo": "the whole trip",
+      "alvo_pt": "a viagem inteira",
+      "conceito": "the whole trip = a viagem inteira. Choveu = it rained (it obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR63"
+      ],
+      "armadilhas": [
+        "all the trip",
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1e2f3f",
+      "quem": "sarah",
+      "contexto": "f-b46749",
+      "cod": "The whole trip? What did you do?",
+      "dica": "A viagem inteira? O que você fez?",
+      "img": "🤷🌧️",
+      "alvo": "The whole trip",
+      "alvo_pt": "A viagem inteira",
+      "conceito": "Pergunta de eco: The whole trip? Com did, do fica puro: What did you do?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did you did",
+        "all"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-153256",
+      "quem": "voce",
+      "contexto": "f-1e2f3f",
+      "cod": "I visited my friend Ben. He lived in Brazil for two years.",
+      "dica": "Visitei meu amigo Ben. Ele morou no Brasil por dois anos.",
+      "img": "🇧🇷🏠",
+      "alvo": "for two years",
+      "alvo_pt": "por dois anos",
+      "conceito": "for + duração: for two years (não: during two years, nem two years ago).",
+      "registro": "informal",
+      "interferencias": [
+        "BR63",
+        "BR26"
+      ],
+      "armadilhas": [
+        "during",
+        "ago"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2377667,
+        "en_autor": "CK",
+        "pt_id": 2486461,
+        "pt_autor": "MarlonX19",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'I lived in Boston for three years' → 'He lived in Brazil for two years', 'I visited my friend Ben.' acrescentado; PT ajustado",
+        "export": "2026-10-03"
+      },
+      "blocos": [
+        5
+      ]
+    },
+    {
+      "id": "f-722635",
+      "quem": "sarah",
+      "contexto": "f-153256",
+      "cod": "For two years? Does he speak Portuguese?",
+      "dica": "Por dois anos? Ele fala português?",
+      "img": "🗣️❓",
+      "alvo": "For two years",
+      "alvo_pt": "Por dois anos",
+      "conceito": "Does + verbo puro: Does he speak...? (não: speaks)",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "speaks",
+        "during"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c75030",
+      "quem": "voce",
+      "contexto": "f-722635",
+      "cod": "Yes! He talked to me in Portuguese during the trip.",
+      "dica": "Sim! Ele falou comigo em português durante a viagem.",
+      "img": "💬😄",
+      "alvo": "during the trip",
+      "alvo_pt": "durante a viagem",
+      "conceito": "during + evento: during the trip. talk to me = falar comigo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "talked to me",
+          "aceita": [
+            "talked with me",
+            "spoke to me",
+            "spoke with me"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b2c4a7",
+      "quem": "sarah",
+      "contexto": "f-c75030",
+      "cod": "Nice! I lived in Mexico for a year.",
+      "dica": "Que legal! Eu morei no México por um ano.",
+      "img": "🇲🇽🏠",
+      "alvo": "for a year",
+      "alvo_pt": "por um ano",
+      "conceito": "for + duração terminada: I lived there for a year.",
+      "registro": "informal",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "during"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5696078,
+        "en_autor": "CK",
+        "pt_id": 7284521,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Australia for three years' → 'Mexico for a year', 'Nice!' acrescentado; PT ajustado",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "for a year",
+          "aceita": [
+            "for one year"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -3,15 +3,19 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/linguagem/linguagem_cubit.dart';
 import '../../../../core/som/sons.dart';
 import '../../../../core/brand/logo_pacdart.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../../../core/theme/seletor_tema.dart';
 import '../../../arcade/presentation/arcade_page.dart';
 import '../../../auth/presentation/auth_cubit.dart';
+import '../../../ingles/presentation/fixacao.dart';
+import '../../../ingles/presentation/revisao_cubit.dart';
 import '../../../ranking/presentation/ranking_page.dart';
 import '../bloc/typing_bloc.dart';
 import '../bloc/voz_cubit.dart';
+import '../pages/escolha_linguagem_page.dart';
 import '../pages/mapa_page.dart';
 
 /// Cabeçalho: logo Pac-Man, título e estatísticas ao vivo.
@@ -64,18 +68,7 @@ class _HudState extends State<Hud> {
           Row(mainAxisSize: MainAxisSize.min, children: [
             const _LogoPac(),
             const SizedBox(width: 12),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              RichText(
-                text: TextSpan(style: Mixart.display(size: 26), children: [
-                  TextSpan(text: 'PAC'),
-                  TextSpan(text: '·', style: TextStyle(color: Mixart.brand)),
-                  TextSpan(text: 'DART'),
-                ]),
-              ),
-              Text('DART & FLUTTER',
-                  style: Mixart.ui(size: 10, weight: FontWeight.w600, color: Mixart.brand)
-                      .copyWith(letterSpacing: 2.4)),
-            ]),
+            const _Marca(),
           ]),
           BlocBuilder<TypingBloc, TypingState>(
             builder: (context, st) => Wrap(spacing: 8, runSpacing: 8, children: [
@@ -86,7 +79,8 @@ class _HudState extends State<Hud> {
               _Stat('TEMPO', _tempo(st.inicioSessao)),
             ]),
           ),
-          Row(mainAxisSize: MainAxisSize.min, children: [
+          // Wrap: no celular os botões quebram linha em vez de sumir pela borda
+          Wrap(spacing: 8, runSpacing: 8, crossAxisAlignment: WrapCrossAlignment.center, children: [
             _Toggle(
               rotulo: 'Mapa',
               icone: Icons.route_outlined,
@@ -95,7 +89,6 @@ class _HudState extends State<Hud> {
                 MaterialPageRoute<void>(builder: (_) => const MapaPage()),
               ),
             ),
-            const SizedBox(width: 8),
             _Toggle(
               rotulo: 'Arcade',
               icone: Icons.sports_esports_outlined,
@@ -104,7 +97,6 @@ class _HudState extends State<Hud> {
                 MaterialPageRoute<void>(builder: (_) => const ArcadePage()),
               ),
             ),
-            const SizedBox(width: 8),
             _Toggle(
               rotulo: 'Ranking',
               icone: Icons.emoji_events_outlined,
@@ -113,16 +105,29 @@ class _HudState extends State<Hud> {
                 MaterialPageRoute<void>(builder: (_) => const RankingPage()),
               ),
             ),
-            const SizedBox(width: 8),
-            BlocBuilder<VozCubit, bool>(
-              builder: (context, vozOn) => _Toggle(
-                rotulo: 'Voz',
-                icone: Icons.campaign_outlined,
-                ligado: vozOn,
-                onTap: () => context.read<VozCubit>().alternar(),
+            // inglês: a revisão espaçada do dia no lugar da narração das
+            // dicas (o áudio das frases fica no próprio palco)
+            if (RevisaoCubit.de(context) != null)
+              BlocBuilder<RevisaoCubit, RevisaoState>(
+                builder: (context, rv) {
+                  final n = rv.quantasDevidas(context.read<RevisaoCubit>().hoje);
+                  return _Toggle(
+                    rotulo: n > 0 ? 'Revisão · $n' : 'Revisão',
+                    icone: Icons.replay_rounded,
+                    ligado: n > 0,
+                    onTap: () => abrirRevisao(context),
+                  );
+                },
+              )
+            else
+              BlocBuilder<VozCubit, bool>(
+                builder: (context, vozOn) => _Toggle(
+                  rotulo: 'Voz',
+                  icone: Icons.campaign_outlined,
+                  ligado: vozOn,
+                  onTap: () => context.read<VozCubit>().alternar(),
+                ),
               ),
-            ),
-            const SizedBox(width: 8),
             _Toggle(
               rotulo: 'Som',
               icone: Icons.music_note_outlined,
@@ -132,15 +137,54 @@ class _HudState extends State<Hud> {
                 setState(() {});
               },
             ),
-            const SizedBox(width: 8),
             const SeletorTema(compacto: true),
-            const SizedBox(width: 8),
             const _ContaBotao(),
           ]),
         ],
       ),
     );
   }
+}
+
+/// PAC·DART / PAC·C# / PAC·ENGLISH + a linha da vertente, que também é o
+/// botão de trocar de curso (volta para a tela "Escolha sua trilha").
+class _Marca extends StatelessWidget {
+  const _Marca();
+
+  @override
+  Widget build(BuildContext context) {
+    final lg = LinguagemCubit.de(context);
+    final temCubit = LinguagemCubit.existe(context);
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      RichText(
+        text: TextSpan(style: Mixart.display(size: 26), children: [
+          const TextSpan(text: 'PAC'),
+          TextSpan(text: '·', style: TextStyle(color: Mixart.brand)),
+          TextSpan(text: lg.marca),
+        ]),
+      ),
+      InkWell(
+        onTap: temCubit
+            ? () => Navigator.of(context).push(MaterialPageRoute<void>(
+                  builder: (_) => const EscolhaLinguagemPage(podeVoltar: true),
+                ))
+            : null,
+        borderRadius: BorderRadius.circular(6),
+        child: Tooltip(
+          message: temCubit ? 'Trocar de curso (Dart ⇄ C# ⇄ Inglês)' : '',
+          child: Row(mainAxisSize: MainAxisSize.min, children: [
+            Text(lg.subtitulo,
+                style: Mixart.ui(size: 10, weight: FontWeight.w600, color: Mixart.brand).copyWith(letterSpacing: 2.4)),
+            if (temCubit) ...[
+              const SizedBox(width: 5),
+              Icon(Icons.swap_horiz_rounded, size: 14, color: Mixart.brand),
+            ],
+          ]),
+        ),
+      ),
+    ]);
+  }
+
 }
 
 class _LogoPac extends StatelessWidget {

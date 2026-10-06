@@ -1,0 +1,287 @@
+{
+  "id": "fazer-ficar-perder-ganhar.um-dia-daqueles-os-verbos-juntos",
+  "trilha": "fazer-ficar-perder-ganhar",
+  "nome": "Um dia daqueles: os verbos juntos",
+  "emoji": "🔄",
+  "cena": "À noite, você conta para a Ana um dia caótico: táxi, chuva, um erro no trabalho, a demo e, no fim, um descanso.",
+  "resumo": "Escolher o verbo certo para fazer, ficar, perder, ganhar, usar e tomar numa mesma história, agora com os pares juntos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Um verbo para cada sentido"
+    },
+    {
+      "t": "p",
+      "c": "**make** cria (a mistake) · **do** executa (it again, a good job) · **get** muda de estado (wet, nervous) · **stay** = ficar num lugar."
+    },
+    {
+      "t": "p",
+      "c": "**miss** ônibus e voo · **lose** objeto e jogo · **waste** tempo e dinheiro · **win** jogo · **earn** salário."
+    },
+    {
+      "t": "tip",
+      "c": "Usar roupa = **wear**. Tomar café da manhã = **have** breakfast; tomar banho = **take** a shower."
+    },
+    {
+      "t": "warn",
+      "c": "Não: I lost the bus · I did a mistake · I stayed nervous · I won a good salary · I took breakfast."
+    }
+  ],
+  "imagem": "☔🚕😅",
+  "visualizacao": "Noite de chuva. Você tira os sapatos molhados, abre o notebook e liga para a Ana para contar o dia maluco.",
+  "foto_busca": "rainy night taxi city",
+  "trechos": [
+    {
+      "id": "f-0a7291",
+      "quem": "voce",
+      "cod": "What a day! I didn't have breakfast.",
+      "dica": "Que dia! Não tomei café da manhã.",
+      "img": "🚫🍳",
+      "alvo": "have breakfast",
+      "alvo_pt": "tomei café da manhã",
+      "conceito": "tomar café da manhã = have breakfast (não: take breakfast).",
+      "registro": "informal",
+      "interferencias": [
+        "BR39",
+        "BR07"
+      ],
+      "armadilhas": [
+        "take",
+        "took",
+        "had"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-980268",
+      "quem": "voce",
+      "cod": "I took a taxi because I missed the bus.",
+      "dica": "Peguei um táxi porque perdi o ônibus.",
+      "img": "🚕🚌",
+      "alvo": "missed the bus",
+      "alvo_pt": "perdi o ônibus",
+      "conceito": "perder ônibus, trem ou voo = miss (não: lose).",
+      "registro": "informal",
+      "interferencias": [
+        "BR34"
+      ],
+      "armadilhas": [
+        "lost"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 11020618,
+        "en_autor": "CK",
+        "pt_id": 11020797,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-32fb96",
+      "quem": "voce",
+      "cod": "And I lost my umbrella on the way.",
+      "dica": "E perdi meu guarda-chuva no caminho.",
+      "img": "☂️❌",
+      "alvo": "lost my umbrella",
+      "alvo_pt": "perdi meu guarda-chuva",
+      "conceito": "perder objeto = lose. Perder o ônibus = miss.",
+      "registro": "informal",
+      "interferencias": [
+        "BR34"
+      ],
+      "armadilhas": [
+        "missed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-199daf",
+      "quem": "ana",
+      "contexto": "f-32fb96",
+      "cod": "Did you get wet?",
+      "dica": "Você se molhou?",
+      "img": "🌧️💧",
+      "alvo": "get wet",
+      "alvo_pt": "se molhou",
+      "lit": "[lit.: você ficou molhado?]",
+      "registro": "informal",
+      "interferencias": [
+        "BR33",
+        "BR06"
+      ],
+      "armadilhas": [
+        "got",
+        "stayed"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5853263,
+        "en_autor": "CK",
+        "pt_id": 6216293,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bd9a70",
+      "quem": "voce",
+      "contexto": "f-199daf",
+      "cod": "Yes, and I was wearing my new shoes!",
+      "dica": "Sim, e eu estava usando meus sapatos novos!",
+      "img": "👟💦",
+      "alvo": "wearing",
+      "alvo_pt": "usando",
+      "conceito": "usar roupa ou sapato = wear (não: use).",
+      "registro": "informal",
+      "interferencias": [
+        "BR39"
+      ],
+      "armadilhas": [
+        "using"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6aa22a",
+      "quem": "voce",
+      "cod": "I made a mistake, so I have to do the report again.",
+      "dica": "Cometi um erro, então tenho que fazer o relatório de novo.",
+      "img": "❌🔁",
+      "alvo": "made a mistake",
+      "alvo_pt": "Cometi um erro",
+      "conceito": "make cria (a mistake); do executa (do the report again).",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR32",
+        "BR18"
+      ],
+      "armadilhas": [
+        "did",
+        "make"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bd0b3b",
+      "quem": "ana",
+      "contexto": "f-6aa22a",
+      "cod": "Don't waste time on that now. Do it tomorrow.",
+      "dica": "Não perde tempo com isso agora. Faz amanhã.",
+      "img": "🚫⏳📅",
+      "alvo": "waste time",
+      "alvo_pt": "perde tempo",
+      "conceito": "perder tempo = waste time; Faz amanhã = Do it tomorrow (it obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR34",
+        "BR18"
+      ],
+      "armadilhas": [
+        "lose",
+        "make"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d76032",
+      "quem": "voce",
+      "cod": "In the demo, I got nervous, but I did a good job.",
+      "dica": "Na demo, fiquei nervoso, mas fiz um bom trabalho.",
+      "pt_f": "Na demo, fiquei nervosa, mas fiz um bom trabalho.",
+      "img": "😬✅",
+      "alvo": "got nervous",
+      "alvo_pt": "fiquei nervoso",
+      "conceito": "ficar + emoção = get; fazer um bom trabalho = do a good job.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR33",
+        "BR32"
+      ],
+      "armadilhas": [
+        "stayed",
+        "made"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "In the demo",
+          "aceita": [
+            "During the demo",
+            "At the demo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-320c38",
+      "quem": "ana",
+      "contexto": "f-d76032",
+      "cod": "See? Some days you win, some days you lose.",
+      "dica": "Viu? Tem dia que você ganha, tem dia que você perde.",
+      "img": "⚖️🙂",
+      "alvo": "win",
+      "alvo_pt": "ganha",
+      "conceito": "ganhar e perder (jogo, disputa) = win e lose.",
+      "registro": "informal",
+      "interferencias": [
+        "BR35",
+        "BR34"
+      ],
+      "armadilhas": [
+        "earn",
+        "miss"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0dafb5",
+      "quem": "voce",
+      "contexto": "f-320c38",
+      "cod": "I think I'll stay home and rest tonight.",
+      "dica": "Acho que vou ficar em casa e descansar hoje à noite.",
+      "img": "🏠🛋️",
+      "alvo": "stay home",
+      "alvo_pt": "ficar em casa",
+      "conceito": "ficar num lugar = stay; ficar + emoção = get.",
+      "registro": "informal",
+      "interferencias": [
+        "BR33",
+        "BR16"
+      ],
+      "armadilhas": [
+        "get",
+        "at"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5849736,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado and rest tonight (original: \"I think I'll stay home.\"); PT reescrito (original: \"Eu acho que vou ficar em casa.\")",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

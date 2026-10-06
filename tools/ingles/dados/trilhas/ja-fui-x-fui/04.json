@@ -1,0 +1,310 @@
+{
+  "id": "ja-fui-x-fui.o-melhor-que-ja-comi",
+  "trilha": "ja-fui-x-fui",
+  "nome": "O melhor que já comi",
+  "emoji": "🍕",
+  "cena": "Jantar numa pizzaria de Chicago com o Mike e a Emma: a comida, a vista da cidade e outras primeiras vezes.",
+  "resumo": "Avaliar experiências: the best... I've ever had, This is the first time I've..., How many times...? e What was it like?",
+  "fechamento": false,
+  "novos": [
+    "What was it like?",
+    "the first time",
+    "skiing",
+    "How many times",
+    "meal"
+  ],
+  "apoio": [
+    "view",
+    "delicious"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O melhor que já... / a primeira vez que..."
+    },
+    {
+      "t": "p",
+      "c": "Superlativo + **I've ever** + particípio: the best meal I've ever had (a melhor refeição que eu já comi)."
+    },
+    {
+      "t": "warn",
+      "c": "É a primeira vez que eu como... = **This is the first time I've had...** (present perfect; não: the first time I eat)."
+    },
+    {
+      "t": "p",
+      "c": "Para pedir que a pessoa descreva: **What was it like?** (Como foi?, pedindo detalhes). How was it? pede só uma opinião. Viagem que acabou: How many times did you fall? Na vida até hoje: How many times have you been to Brazil?"
+    },
+    {
+      "t": "tip",
+      "c": "conhecer um lugar = visit ou have been to (nunca know): Have you ever been to Rio?"
+    }
+  ],
+  "imagem": "🍕🌆🍽️",
+  "visualizacao": "Você está numa mesa perto da janela, com uma pizza alta e fumegante na frente. Lá fora, os prédios de Chicago acendem as luzes; o Mike e a Emma riem das histórias de viagem.",
+  "foto_busca": "deep dish pizza restaurant table",
+  "trechos": [
+    {
+      "id": "f-c23288",
+      "quem": "atendente",
+      "cod": "Enjoy your meal!",
+      "dica": "Bom apetite!",
+      "img": "🍕😋",
+      "alvo": "Enjoy your meal",
+      "alvo_pt": "Bom apetite",
+      "conceito": "Bom apetite! = Enjoy your meal! (meal = refeição).",
+      "registro": "neutro",
+      "armadilhas": [
+        "appetite",
+        "good"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2370,
+        "en_autor": "CK",
+        "pt_id": 404800,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fb21e1",
+      "quem": "mike",
+      "cod": "Is this the first time you've been here?",
+      "dica": "É a primeira vez que você vem aqui?",
+      "img": "🪑❓",
+      "alvo": "the first time",
+      "alvo_pt": "a primeira vez",
+      "conceito": "É a primeira vez que você vem aqui? = Is this the first time you've been here? (não: you come).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "come",
+        "are"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6713354,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "inglês igual; PT reescrito (vem aqui, no restaurante)",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "you've been",
+          "aceita": [
+            "you've come"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-36c33c",
+      "quem": "voce",
+      "contexto": "f-fb21e1",
+      "cod": "Yes! And this is the best meal I've ever had.",
+      "dica": "É, sim! E essa é a melhor refeição que eu já comi.",
+      "img": "😍🍽️",
+      "alvo": "meal",
+      "alvo_pt": "refeição",
+      "conceito": "a melhor... que eu já comi = the best... I've ever had (superlativo + ever).",
+      "var": [
+        {
+          "em": "had",
+          "aceita": [
+            "eaten"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "ate",
+        "eat"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-05971f",
+      "quem": "voce",
+      "cod": "It's also the first time I've had deep-dish pizza.",
+      "dica": "Também é a primeira vez que eu como pizza deep-dish.",
+      "img": "🍕🥇",
+      "alvo": "the first time",
+      "alvo_pt": "a primeira vez",
+      "conceito": "a primeira vez que eu como = the first time I've had (não: I eat). deep-dish = a pizza alta de Chicago.",
+      "var": [
+        {
+          "em": "had",
+          "aceita": [
+            "eaten",
+            "tried"
+          ]
+        },
+        {
+          "em": "It's also",
+          "aceita": [
+            "This is also"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "eat",
+        "ate"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cf6635",
+      "quem": "voce",
+      "cod": "Mike, have you ever tried skiing?",
+      "dica": "Mike, você já experimentou esquiar?",
+      "img": "⛷️❓",
+      "alvo": "skiing",
+      "alvo_pt": "esquiar",
+      "conceito": "experimentar + atividade = try + -ing (try skiing).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "ski",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-286199",
+      "quem": "mike",
+      "contexto": "f-cf6635",
+      "cod": "Yes, I went skiing in Colorado last winter.",
+      "dica": "Sim, fui esquiar no Colorado no inverno passado.",
+      "img": "🏔️❄️",
+      "alvo": "skiing",
+      "alvo_pt": "esquiar",
+      "conceito": "ir esquiar = go skiing. last winter puxa o passado simples.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "ski",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9b5bbd",
+      "quem": "voce",
+      "contexto": "f-286199",
+      "cod": "So, what was it like?",
+      "dica": "(pedindo detalhes) E aí, como foi?",
+      "img": "🤔💬",
+      "alvo": "what was it like?",
+      "alvo_pt": "como foi?",
+      "lit": "[lit.: com o que aquilo se parecia?]",
+      "conceito": "Como foi? pedindo detalhes = What was it like? (How was it? pede só uma opinião). Aqui like = como.",
+      "registro": "informal",
+      "armadilhas": [
+        "how",
+        "liked"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5724907,
+        "en_autor": "Hybrid",
+        "pt_id": 6568145,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "inglês igual; PT adaptado do pt_id: pista (pedindo detalhes) e E aí, para separar de How was it?",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8adbd9",
+      "quem": "emma",
+      "cod": "How many times did you fall, Mike?",
+      "dica": "Quantas vezes você caiu, Mike?",
+      "img": "😂🏂",
+      "alvo": "How many times",
+      "alvo_pt": "Quantas vezes",
+      "conceito": "Numa viagem que já acabou: How many times did you...? (passado).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "much",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0954a4",
+      "quem": "voce",
+      "cod": "Emma, how many times have you been to Brazil?",
+      "dica": "Emma, quantas vezes você já foi ao Brasil?",
+      "img": "🇧🇷✈️",
+      "alvo": "how many times",
+      "alvo_pt": "quantas vezes",
+      "conceito": "Na vida até hoje: How many times have you been to...? (o já vira present perfect).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did",
+        "went",
+        "much"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b3aa29",
+      "quem": "voce",
+      "contexto": "Just once. My husband and I went to Rio in 2018.",
+      "cod": "Nice! What was it like in Rio?",
+      "dica": "(pedindo detalhes) Que legal! Como foi no Rio?",
+      "img": "🏖️🌴",
+      "alvo": "What was it like",
+      "alvo_pt": "Como foi",
+      "conceito": "Pedindo que descreva: What was it like in Rio? (How was Rio? pede só uma opinião rápida).",
+      "registro": "informal",
+      "armadilhas": [
+        "how",
+        "liked"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8388902,
+        "en_autor": "CK",
+        "pt_id": 8395463,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Australia → Rio (EN e PT); Nice! / Que legal! acrescentado; pista (pedindo detalhes) no PT",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

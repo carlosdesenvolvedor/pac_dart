@@ -7,6 +7,8 @@ import 'package:flutter/scheduler.dart';
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
 import '../../ranking/presentation/ranking_cubit.dart';
+import '../domain/palavras_csharp.dart';
+import 'banco_arcade.dart';
 import '../domain/personagem.dart';
 import '../domain/tiro_engine.dart';
 import 'widgets/arcade_ui.dart';
@@ -59,8 +61,14 @@ class _Explosao {
 class _ChuvaPageState extends State<ChuvaPage>
     with WidgetsBindingObserver, PausaDeJogo<ChuvaPage>, SingleTickerProviderStateMixin {
   RankingCubit? _ranking;
-  late TiroEngine _engine = TiroEngine(rnd: math.Random(widget.semente));
+  late TiroEngine _engine = _novoEngine();
   late final Ticker _ticker = createTicker(_tick);
+
+  /// Motor com as palavras da vertente em uso (Dart ou C#).
+  TiroEngine _novoEngine() {
+    final v = vocabularioDe();
+    return TiroEngine(rnd: math.Random(widget.semente), curtas: v.curtas, medias: v.medias, longas: v.longas);
+  }
   Duration _ultimo = Duration.zero;
 
   final List<_Tiro> _tiros = [];
@@ -103,7 +111,7 @@ class _ChuvaPageState extends State<ChuvaPage>
 
   void _reiniciar() {
     setState(() {
-      _engine = TiroEngine(rnd: math.Random(widget.semente));
+      _engine = _novoEngine();
       _tiros.clear();
       _premios.clear();
       _explosoes.clear();
@@ -236,7 +244,7 @@ class _ChuvaPageState extends State<ChuvaPage>
                     padding: const EdgeInsets.fromLTRB(20, 16, 20, 10),
                     child: CabecalhoJogo(
                       rotulo: 'ARCADE · DIGITAÇÃO',
-                      titulo: '☄️ Chuva de Código',
+                      titulo: BancoArcade.soDigitacao ? '☄️ Chuva de Palavras' : '☄️ Chuva de Código',
                       chips: [
                         ChipPlacar('VIDAS', '❤️' * _engine.vidas + '·' * (3 - _engine.vidas)),
                         ChipPlacar('NÍVEL', '${_engine.nivel}'),

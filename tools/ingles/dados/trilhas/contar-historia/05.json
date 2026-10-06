@@ -1,0 +1,304 @@
+{
+  "id": "contar-historia.como-eu-conheci-o-ben",
+  "trilha": "contar-historia",
+  "nome": "Como eu conheci o Ben",
+  "emoji": "🍻",
+  "cena": "Na pausa do café, a Ana pergunta de onde você conhece o Ben e você conta a história do começo ao fim.",
+  "resumo": "Contar uma história curta, do começo ao fim, com ago, for, first, then e after that.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Contar uma história"
+    },
+    {
+      "t": "p",
+      "c": "Quando: **six years ago**. Quanto durou: **for two years**. Em ordem: **First... then... After that...** E o ouvinte pergunta: How did you meet? What happened after that?"
+    },
+    {
+      "t": "ex",
+      "c": "Ben lived in Brazil for two years.\nO Ben morou no Brasil por dois anos."
+    },
+    {
+      "t": "warn",
+      "c": "Há seis anos = six years ago, no fim (não: there are six years / before six years)."
+    }
+  ],
+  "imagem": "☕🗣️🎸",
+  "visualizacao": "Pausa do café na chamada com a Ana. Ela viu uma foto sua com o Ben e quer saber de onde vocês se conhecem; você sorri e começa a contar.",
+  "foto_busca": "friends playing guitar party",
+  "trechos": [
+    {
+      "id": "f-2a88a9",
+      "quem": "ana",
+      "cod": "How do you know Ben?",
+      "dica": "De onde você conhece o Ben?",
+      "img": "🤔👨",
+      "alvo": "How do you know",
+      "alvo_pt": "De onde você conhece",
+      "lit": "[lit.: como você conhece o Ben?]",
+      "conceito": "How do you know...? = de onde você conhece...? (pergunta com do)",
+      "var": [
+        {
+          "em": "How do you know Ben",
+          "aceita": [
+            "Where do you know Ben from"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you know"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8e6956",
+      "quem": "voce",
+      "contexto": "f-2a88a9",
+      "cod": "I met him in {cidade} six years ago.",
+      "dica": "Conheci ele em {cidade} há seis anos.",
+      "img": "🤝🏙️",
+      "alvo": "six years ago",
+      "alvo_pt": "há seis anos",
+      "conceito": "met = conheci (pela primeira vez). há seis anos = six years ago, no fim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR26",
+        "BR18"
+      ],
+      "armadilhas": [
+        "there",
+        "before",
+        "knew"
+      ],
+      "teste": true,
+      "bio": [
+        "cidade"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 641118,
+        "en_autor": "CS",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'in January' → 'in {cidade} six years ago'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-aa3133",
+      "quem": "ana",
+      "contexto": "f-8e6956",
+      "cod": "In {cidade}? Why was he there?",
+      "dica": "Em {cidade}? Por que ele estava lá?",
+      "img": "❓🧳",
+      "alvo": "Why was he",
+      "alvo_pt": "Por que ele estava",
+      "conceito": "Com be no passado, was vem antes do sujeito: Why was he...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did"
+      ],
+      "bio": [
+        "cidade"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-63b8b5",
+      "quem": "voce",
+      "contexto": "f-aa3133",
+      "cod": "He worked here for two years.",
+      "dica": "Ele trabalhou aqui por dois anos.",
+      "img": "💼🇧🇷",
+      "alvo": "for two years",
+      "alvo_pt": "por dois anos",
+      "conceito": "for + duração (não: during two years).",
+      "registro": "informal",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "during"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fa0af2",
+      "quem": "ana",
+      "contexto": "f-63b8b5",
+      "cod": "Nice! How did you two meet?",
+      "dica": "Que legal! Como vocês dois se conheceram?",
+      "img": "🤝❓",
+      "alvo": "How did you two meet",
+      "alvo_pt": "Como vocês dois se conheceram",
+      "conceito": "you two = vocês dois. se conhecer (pela 1ª vez) = meet; com did, fica puro.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR07"
+      ],
+      "armadilhas": [
+        "met",
+        "knew"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1553495,
+        "en_autor": "CK",
+        "pt_id": 2418950,
+        "pt_autor": "MarlonX19",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Nice!' acrescentado; PT ajustado (vocês dois)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-dfb270",
+      "quem": "voce",
+      "contexto": "f-fa0af2",
+      "cod": "We met at a party.",
+      "dica": "A gente se conheceu numa festa.",
+      "img": "🎉👥",
+      "alvo": "met",
+      "alvo_pt": "se conheceu",
+      "conceito": "A gente se conheceu = we met (sem each other, sem reflexivo).",
+      "registro": "informal",
+      "armadilhas": [
+        "knew",
+        "ourselves"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2980250,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (a gente)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-100c07",
+      "quem": "voce",
+      "cod": "First we talked about music, then we played guitar.",
+      "dica": "Primeiro a gente falou de música, depois tocou violão.",
+      "img": "🎵🎸",
+      "alvo": "then",
+      "alvo_pt": "depois",
+      "conceito": "First..., then... = primeiro..., depois... play guitar = tocar violão.",
+      "registro": "informal",
+      "armadilhas": [
+        "after",
+        "touched"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "played guitar",
+          "aceita": [
+            "played the guitar"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e5d47c",
+      "quem": "ana",
+      "contexto": "f-100c07",
+      "cod": "Wow! What happened after that?",
+      "dica": "Nossa! O que aconteceu depois disso?",
+      "img": "😮➡️",
+      "alvo": "after that",
+      "alvo_pt": "depois disso",
+      "conceito": "What happened...? sem did. after that = depois disso.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-075758",
+      "quem": "voce",
+      "contexto": "f-e5d47c",
+      "cod": "After that, he came to my house for dinner.",
+      "dica": "Depois disso, ele veio até a minha casa pra jantar.",
+      "img": "🏠🍝",
+      "alvo": "After that",
+      "alvo_pt": "Depois disso",
+      "conceito": "come → came. come to my house for dinner = vir jantar na minha casa.",
+      "registro": "informal",
+      "armadilhas": [
+        "comed"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "for dinner",
+          "aceita": [
+            "to have dinner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a77a90",
+      "quem": "voce",
+      "cod": "He went back to Boston four years ago.",
+      "dica": "Ele voltou para Boston há quatro anos.",
+      "img": "✈️🏙️",
+      "alvo": "four years ago",
+      "alvo_pt": "há quatro anos",
+      "conceito": "go back = voltar. há quatro anos = four years ago, no fim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR26"
+      ],
+      "armadilhas": [
+        "before",
+        "there"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5850634,
+        "en_autor": "CK",
+        "pt_id": 11105832,
+        "pt_autor": "MrJuice",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'I' → 'He', 'last weekend' → 'four years ago'; PT ajustado",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "went back",
+          "aceita": [
+            "moved back"
+          ]
+        }
+      ]
+    }
+  ]
+}

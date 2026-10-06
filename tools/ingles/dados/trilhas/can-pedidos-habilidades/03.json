@@ -1,0 +1,192 @@
+{
+  "id": "can-pedidos-habilidades.voce-pode-me-ajudar-hear-e-socorro",
+  "trilha": "can-pedidos-habilidades",
+  "nome": "Você pode me ajudar? hear e socorro",
+  "emoji": "🆘",
+  "cena": "Na rua em Chicago e ao telefone: você pede ajuda, não ouve direito e, numa emergência, pede um médico.",
+  "resumo": "Pedir ajuda, dizer que não está ouvindo e pedir socorro numa emergência.",
+  "fechamento": false,
+  "novos": [
+    "Can you help me?",
+    "I can't hear you.",
+    "I need a doctor.",
+    "Call an ambulance!"
+  ],
+  "apoio": [
+    "Help!"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ajuda, ouvir e socorro"
+    },
+    {
+      "t": "p",
+      "c": "**Can you help me?** pede ajuda. **I need a doctor.** e **Call an ambulance!** são frases de emergência."
+    },
+    {
+      "t": "ex",
+      "c": "Sorry, I can't hear you.\nDesculpa, não estou te ouvindo."
+    },
+    {
+      "t": "tip",
+      "c": "Nos EUA, o número de emergência é 911."
+    },
+    {
+      "t": "warn",
+      "c": "Não estou te ouvindo = **I can't hear you**: ouvir um som é *hear*, com *can* (não: I'm not hearing you)."
+    }
+  ],
+  "imagem": "📞🚑🩺",
+  "visualizacao": "Você está numa calçada movimentada de Chicago, celular no ouvido e vento forte. De repente, alguém grita pedindo ajuda.",
+  "foto_busca": "busy city street phone call",
+  "trechos": [
+    {
+      "id": "f-b42dfb",
+      "quem": "voce",
+      "cod": "Can you help me, please?",
+      "dica": "Você pode me ajudar, por favor?",
+      "img": "🙋🗺️",
+      "alvo": "Can you help me",
+      "alvo_pt": "Você pode me ajudar",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3327791,
+        "en_autor": "CK",
+        "pt_id": 732379,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Can you please help me?\"; please movido para o fim; PT original mantido",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-581e04",
+      "quem": "ana",
+      "cod": "Can you help me with the app?",
+      "dica": "Você pode me ajudar com o app?",
+      "img": "📱🤝",
+      "alvo": "Can you help me",
+      "alvo_pt": "Você pode me ajudar",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-43854d",
+      "quem": "voce",
+      "contexto": "f-581e04",
+      "cod": "Sorry, Ana, I can't hear you.",
+      "dica": "Desculpa, Ana, não estou te ouvindo.",
+      "img": "📞👂🔇",
+      "alvo": "I can't hear you",
+      "alvo_pt": "não estou te ouvindo",
+      "lit": "[lit.: eu não consigo te ouvir]",
+      "conceito": "Ouvir um som = hear, e com hear o inglês usa can: I can't hear you.",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "armadilhas": [
+        "listen",
+        "hearing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b5be92",
+      "quem": "mike",
+      "cod": "Hello? I can't hear you very well.",
+      "dica": "Alô? Não estou te ouvindo muito bem.",
+      "img": "☎️👂❓",
+      "alvo": "I can't hear you",
+      "alvo_pt": "Não estou te ouvindo",
+      "conceito": "very well vai no fim da frase.",
+      "registro": "informal",
+      "interferencias": [
+        "BR19",
+        "BR20"
+      ],
+      "armadilhas": [
+        "listen"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ee6149",
+      "quem": "moradora",
+      "cod": "Help! I need a doctor!",
+      "dica": "Socorro! Preciso de um médico!",
+      "img": "🤕🩺❗",
+      "alvo": "I need a doctor",
+      "alvo_pt": "Preciso de um médico",
+      "conceito": "Frase de emergência: Help! = Socorro!",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1daf98",
+      "quem": "voce",
+      "contexto": "f-ee6149",
+      "cod": "Please call an ambulance!",
+      "dica": "Por favor, chamem uma ambulância!",
+      "img": "🚑📞",
+      "alvo": "call an ambulance",
+      "alvo_pt": "chamem uma ambulância",
+      "conceito": "an antes de som de vogal: an ambulance.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ede518",
+      "quem": "voce",
+      "cod": "Ana, you need a doctor.",
+      "dica": "Ana, você precisa de um médico.",
+      "img": "🤒🩺",
+      "alvo": "need a doctor",
+      "alvo_pt": "precisa de um médico",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2648181,
+        "en_autor": "CK",
+        "pt_id": 2726792,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"You need a doctor.\"; PT original: \"Você precisa de um médico.\"; acrescentado o vocativo Ana (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-63c72f",
+      "quem": "ana",
+      "contexto": "f-ede518",
+      "cod": "No, I'm OK. Don't call an ambulance.",
+      "dica": "Não, estou bem. Não chama ambulância.",
+      "img": "🙂🚫🚑",
+      "alvo": "call an ambulance",
+      "alvo_pt": "chama ambulância",
+      "var": [
+        {
+          "em": "OK",
+          "aceita": [
+            "fine"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "id": "dev-slack-commits.a-thread-do-bug",
+  "trilha": "dev-slack-commits",
+  "nome": "A thread do bug",
+  "emoji": "🧵",
+  "cena": "Uma thread no chat do time sobre um bug em produção, do primeiro aviso da Sarah até a correção no staging.",
+  "resumo": "Acompanhar uma thread de bug juntando chat, status, commit e bug report.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Do aviso ao staging"
+    },
+    {
+      "t": "p",
+      "c": "Na thread: **Heads-up** para avisar, **Any updates?** para cobrar, **I've just...** para o status, commit no **imperativo** e **when + presente** para o próximo passo."
+    },
+    {
+      "t": "ex",
+      "c": "I've just merged the fix. It's on staging now.\nAcabei de fazer o merge da correção. Agora está no staging."
+    },
+    {
+      "t": "warn",
+      "c": "**actually** = na verdade (atualmente = currently). E **updates** vai no plural, mas feedback não: Thanks for the feedback."
+    }
+  ],
+  "imagem": "🧵🐞🚀",
+  "visualizacao": "O chat do time apita sem parar: a Sarah avisa que ninguém consegue entrar no app. Você abre o código, o coração acelera e a thread vai crescendo.",
+  "foto_busca": "developer laptop chat bug fix",
+  "trechos": [
+    {
+      "id": "f-5cd4db",
+      "quem": "sarah",
+      "cod": "Heads-up: users can't log in to the app.",
+      "dica": "Aviso: os usuários não conseguem fazer login no app.",
+      "img": "🚨🔒",
+      "alvo": "Heads-up",
+      "alvo_pt": "Aviso",
+      "conceito": "Generalização sem artigo: users (os usuários).",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "log in to",
+          "aceita": [
+            "log into"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a0a338",
+      "quem": "voce",
+      "contexto": "f-5cd4db",
+      "cod": "Quick question: is it only on older phones?",
+      "dica": "Pergunta rápida: é só nos celulares mais antigos?",
+      "img": "❓📱",
+      "alvo": "Quick question:",
+      "alvo_pt": "Pergunta rápida:",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "only",
+          "aceita": [
+            "just"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-638f1f",
+      "quem": "mike",
+      "contexto": "f-a0a338",
+      "cod": "Actually, it happens on every phone.",
+      "dica": "Na verdade, acontece em todos os celulares.",
+      "img": "📱📱⚠️",
+      "alvo": "Actually",
+      "alvo_pt": "Na verdade",
+      "conceito": "actually = na verdade (atualmente = currently).",
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR01"
+      ],
+      "armadilhas": [
+        "currently"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "every phone",
+          "aceita": [
+            "all phones",
+            "all the phones"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6d0aa6",
+      "quem": "sarah",
+      "cod": "Any updates on this? The client is asking.",
+      "dica": "Alguma novidade sobre isso? O cliente está perguntando.",
+      "img": "⏳👔",
+      "alvo": "Any updates on this",
+      "alvo_pt": "Alguma novidade sobre isso",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0c1f3a",
+      "quem": "voce",
+      "contexto": "f-6d0aa6",
+      "cod": "Sorry for the late reply. I've just found the bug.",
+      "dica": "Desculpa a demora para responder. Acabei de achar o bug.",
+      "img": "🐞💡",
+      "alvo": "I've just found",
+      "alvo_pt": "Acabei de achar",
+      "var": [
+        {
+          "em": "I've just found",
+          "aceita": [
+            "I just found"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-62484d",
+      "quem": "voce",
+      "contexto": "f-0c1f3a",
+      "cod": "Fix crash when the user logs in.",
+      "dica": "(commit) Corrige crash quando o usuário faz login.",
+      "img": "🔧🔑",
+      "alvo": "Fix",
+      "alvo_pt": "Corrige",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "fixed",
+        "fixes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1f7848",
+      "quem": "mike",
+      "contexto": "f-62484d",
+      "cod": "It looks good. Ping me when it's on staging.",
+      "dica": "Ficou bom. Me dá um toque quando estiver no staging.",
+      "img": "👍🔔",
+      "alvo": "when it's on staging",
+      "alvo_pt": "quando estiver no staging",
+      "conceito": "staging = o ambiente de teste antes da produção.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR01"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-24b9a0",
+      "quem": "voce",
+      "contexto": "f-1f7848",
+      "cod": "I've just merged the fix. It's on staging now.",
+      "dica": "Acabei de fazer o merge da correção. Agora está no staging.",
+      "img": "🔀✅",
+      "alvo": "I've just merged",
+      "alvo_pt": "Acabei de fazer o merge",
+      "var": [
+        {
+          "em": "I've just merged",
+          "aceita": [
+            "I just merged"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf39ef",
+      "quem": "sarah",
+      "contexto": "f-24b9a0",
+      "cod": "Thanks! Is there a workaround for the client?",
+      "dica": "Valeu! Tem um paliativo para o cliente?",
+      "img": "🩹🤔",
+      "alvo": "workaround",
+      "alvo_pt": "paliativo",
+      "conceito": "workaround = solução provisória, um paliativo (o dev também diz workaround).",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f7aade",
+      "quem": "voce",
+      "contexto": "f-bf39ef",
+      "cod": "Yes. They can clear the cache for now.",
+      "dica": "Sim. Eles podem limpar o cache por enquanto.",
+      "img": "🧹💾",
+      "alvo": "clear the cache",
+      "alvo_pt": "limpar o cache",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "conceito": "for now = por enquanto: o workaround resolve até a correção ir pro ar."
+    }
+  ]
+}

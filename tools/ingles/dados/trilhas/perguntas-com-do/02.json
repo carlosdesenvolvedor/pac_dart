@@ -1,0 +1,231 @@
+{
+  "id": "perguntas-com-do.onde-voce-mora-com-o-que-trabalha",
+  "trilha": "perguntas-com-do",
+  "nome": "Onde você mora? Com o que trabalha?",
+  "emoji": "🧭",
+  "cena": "No intervalo da reunião, na máquina de café, você puxa conversa com um colega novo que chegou esta semana.",
+  "resumo": "Perguntar onde a pessoa mora, com o que trabalha e como se diz algo: Where / What / How + do you...?",
+  "fechamento": false,
+  "novos": [
+    "Where do you live?",
+    "What do you do?",
+    "How do you say...?",
+    "say"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Onde, o que, como + do"
+    },
+    {
+      "t": "p",
+      "c": "A palavra de pergunta vem primeiro; depois, **do you** + verbo: Where do you live? What do you do?"
+    },
+    {
+      "t": "ex",
+      "c": "What do you do?\nCom o que você trabalha?"
+    },
+    {
+      "t": "tip",
+      "c": "**How do you say** ... **in English?** = Como se diz ... em inglês?"
+    },
+    {
+      "t": "warn",
+      "c": "Não: Where you live? O do não pode faltar."
+    }
+  ],
+  "imagem": "☕🧭💬",
+  "visualizacao": "Intervalo da reunião: a máquina de café chia, e um rapaz de crachá novo espera a vez ao seu lado. Ele sorri meio sem jeito, e você puxa conversa.",
+  "foto_busca": "office coffee machine break",
+  "trechos": [
+    {
+      "id": "f-9d2cb6",
+      "quem": "voce",
+      "cod": "What do you do?",
+      "dica": "Com o que você trabalha?",
+      "img": "💼❓",
+      "alvo": "What do you do",
+      "alvo_pt": "Com o que você trabalha",
+      "lit": "[lit.: o que você faz?]",
+      "conceito": "What do you do? = qual é o seu trabalho. O 1º do marca a pergunta; o 2º é fazer.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-304f7f",
+      "quem": "dev-novo",
+      "contexto": "f-9d2cb6",
+      "cod": "I'm a developer. What do you do?",
+      "dica": "Sou desenvolvedor. Com o que você trabalha?",
+      "img": "👨‍💻❓",
+      "alvo": "What do you do",
+      "alvo_pt": "Com o que você trabalha",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "variacao_de": "f-9d2cb6",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7b033e",
+      "quem": "dev-novo",
+      "cod": "Where do you live?",
+      "dica": "Onde você mora?",
+      "img": "🗺️❓",
+      "alvo": "Where do you live",
+      "alvo_pt": "Onde você mora",
+      "conceito": "Palavra de pergunta + do you + verbo: Where do you live?",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 370708,
+        "en_autor": "saeb",
+        "pt_id": 393581,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3c1dd7",
+      "quem": "voce",
+      "contexto": "f-7b033e",
+      "cod": "In {cidade}. Where do you live?",
+      "dica": "Em {cidade}. Onde você mora?",
+      "img": "🏙️❓",
+      "alvo": "Where do you live",
+      "alvo_pt": "Onde você mora",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "bio": [
+        "cidade"
+      ],
+      "variacao_de": "f-7b033e",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f2d219",
+      "quem": "dev-novo",
+      "contexto": "f-3c1dd7",
+      "cod": "Denver. How do you say thank you in Portuguese?",
+      "dica": "Em Denver. Como se diz thank you em português?",
+      "img": "🙏💬",
+      "alvo": "How do you say",
+      "alvo_pt": "Como se diz",
+      "lit": "[lit.: como você diz...?]",
+      "conceito": "Como se diz = How do you say: o you aqui é geral (a gente, qualquer um).",
+      "var": [
+        {
+          "em": "Denver",
+          "aceita": [
+            "In Denver"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR15"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4664055,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "aspas tiradas; French → Portuguese; + Denver.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-58e7f1",
+      "quem": "voce",
+      "contexto": "f-f2d219",
+      "cod": "We say obrigado or obrigada.",
+      "dica": "A gente diz obrigado ou obrigada.",
+      "img": "🙏🗣️",
+      "alvo": "say",
+      "alvo_pt": "diz",
+      "conceito": "say = dizer. Homem diz obrigado; mulher, obrigada.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f98db7",
+      "quem": "voce",
+      "cod": "And how do you say cafezinho in English?",
+      "dica": "E como se diz cafezinho em inglês?",
+      "img": "☕🤏",
+      "alvo": "how do you say",
+      "alvo_pt": "como se diz",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "variacao_de": "f-f2d219",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1312867,
+        "en_autor": "CK",
+        "pt_id": 6781501,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "yuri → cafezinho, sem aspas; + And (PT: yuri → cafezinho, sem aspas; + E)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b4b0ae",
+      "quem": "dev-novo",
+      "contexto": "f-f98db7",
+      "cod": "Hmm. We just say coffee!",
+      "dica": "Hum. A gente só diz coffee!",
+      "img": "🤷☕",
+      "alvo": "say",
+      "alvo_pt": "diz",
+      "var": [
+        {
+          "em": "Hmm",
+          "aceita": [
+            "Hm",
+            "Hum"
+          ]
+        },
+        {
+          "em": "just",
+          "aceita": [
+            "only"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "variacao_de": "f-58e7f1",
+      "origem": "autoral_ia"
+    }
+  ]
+}

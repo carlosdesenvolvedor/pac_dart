@@ -1,0 +1,316 @@
+{
+  "id": "present-perfect-experiencias.ja-trabalhei-com-isso-done-made-met",
+  "trilha": "present-perfect-experiencias",
+  "nome": "Já trabalhei com isso: done, written",
+  "emoji": "💼",
+  "cena": "Num café perto do escritório, a Sarah pergunta o que você já fez como dev, e a Ana entra na conversa.",
+  "resumo": "Contar experiências de trabalho sem data com worked with, used, done e written.",
+  "fechamento": false,
+  "novos": [
+    "written",
+    "worked with",
+    "blog post",
+    "done",
+    "used (particípio)"
+  ],
+  "apoio": [
+    "made (particípio)",
+    "met (particípio)",
+    "presentation"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Particípios do trabalho: done, written, used"
+    },
+    {
+      "t": "p",
+      "c": "Experiência profissional sem data: *I've worked with...*, *I've used...*. Regulares = passado (*worked, used*); irregulares mudam: *do → done*, *write → written*."
+    },
+    {
+      "t": "ex",
+      "c": "Have you ever worked with Flutter?\nVocê já trabalhou com Flutter?"
+    },
+    {
+      "t": "ex",
+      "c": "I've never written a blog post.\nNunca escrevi um post de blog."
+    },
+    {
+      "t": "warn",
+      "c": "Particípio irregular: *written*, *done* (não: writed, did). Sem data e, por enquanto, sem for/since (BR27)."
+    }
+  ],
+  "imagem": "☕💼💻",
+  "visualizacao": "Você está num café perto do escritório, com o notebook aberto na mesa. A Sarah faz perguntas sobre a sua carreira, e a Ana, do lado, comenta animada.",
+  "foto_busca": "colleagues coffee shop laptop conversation",
+  "trechos": [
+    {
+      "id": "f-fab994",
+      "quem": "sarah",
+      "cod": "Have you ever worked with Flutter?",
+      "dica": "Você já trabalhou com Flutter?",
+      "img": "💼📱❓",
+      "alvo": "worked with",
+      "alvo_pt": "trabalhou com",
+      "conceito": "work with = trabalhar com (uma tecnologia, um cliente, uma pessoa).",
+      "var": [
+        {
+          "em": "Have you ever worked",
+          "aceita": [
+            "Did you ever work"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did you worked",
+        "worked in"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "opcional": [
+        "ever"
+      ]
+    },
+    {
+      "id": "f-2b96e9",
+      "quem": "voce",
+      "contexto": "f-fab994",
+      "cod": "Yes, I've used it a lot.",
+      "dica": "Sim, já usei bastante.",
+      "img": "✅📱💪",
+      "alvo": "used",
+      "alvo_pt": "usei",
+      "conceito": "use → used (regular). E o it fica: I've used it a lot.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "armadilhas": [
+        "i've used a lot"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a4395c",
+      "quem": "ana",
+      "cod": "I've never used Flutter. Do you like it?",
+      "dica": "Nunca usei Flutter. Você gosta?",
+      "img": "🤷‍♀️📱❤️",
+      "alvo": "used",
+      "alvo_pt": "usei",
+      "conceito": "Você gosta? = Do you like it? O do da pergunta e o it são obrigatórios.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR18"
+      ],
+      "armadilhas": [
+        "you like",
+        "like?"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 11047503,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "a wheelbarrow → Flutter; acrescentado Do you like it?; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6357f9",
+      "quem": "ana",
+      "cod": "I've worked with two startups.",
+      "dica": "Já trabalhei com duas startups.",
+      "img": "🚀🤝",
+      "alvo": "worked with",
+      "alvo_pt": "trabalhei com",
+      "conceito": "startup = empresa nova de tecnologia; a palavra é igual em português.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "worked in two"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-301f6d",
+      "quem": "voce",
+      "cod": "I'd like to write a blog post in English.",
+      "dica": "Eu gostaria de escrever um post de blog em inglês.",
+      "img": "✍️📝🌐",
+      "alvo": "blog post",
+      "alvo_pt": "post de blog",
+      "conceito": "blog post = post de blog: o substantivo que descreve vem antes. English com maiúscula.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15",
+        "BR24"
+      ],
+      "armadilhas": [
+        "post of blog",
+        "english"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-80f76c",
+      "quem": "sarah",
+      "contexto": "f-301f6d",
+      "cod": "Have you ever done that before?",
+      "dica": "Você já fez isso antes?",
+      "img": "🤔🔁",
+      "alvo": "done",
+      "alvo_pt": "fez",
+      "conceito": "do → did → done. Você já fez...? = Have you ever done...?",
+      "var": [
+        {
+          "em": "Have you ever done",
+          "aceita": [
+            "Did you ever do"
+          ]
+        },
+        {
+          "em": "that",
+          "aceita": [
+            "this",
+            "it"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did that",
+        "made that"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4017009,
+        "en_autor": "CK",
+        "pt_id": 5699216,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      },
+      "opcional": [
+        "ever"
+      ]
+    },
+    {
+      "id": "f-9b7d7b",
+      "quem": "voce",
+      "contexto": "f-80f76c",
+      "cod": "No, I've never written a blog post.",
+      "dica": "Não, nunca escrevi um post de blog.",
+      "img": "🙅‍♂️✍️",
+      "alvo": "written",
+      "alvo_pt": "escrevi",
+      "conceito": "write → wrote → written (não: writed).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "writed",
+        "wrote"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4663231,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "a letter in French before → a blog post; acrescentado No,; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e5687e",
+      "quem": "ana",
+      "contexto": "f-9b7d7b",
+      "cod": "I've done it. It's not difficult.",
+      "dica": "Eu já fiz. Não é difícil.",
+      "img": "💪👌",
+      "alvo": "done",
+      "alvo_pt": "fiz",
+      "conceito": "Já fiz = I've done it; Não é difícil = It's not difficult. O it aparece duas vezes.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR01"
+      ],
+      "armadilhas": [
+        "i've did",
+        "is not difficult"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "It's not",
+          "aceita": [
+            "It isn't"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8d19b7",
+      "quem": "voce",
+      "contexto": "f-e5687e",
+      "cod": "Really? Can I read your blog posts?",
+      "dica": "Sério? Posso ler os posts do seu blog?",
+      "img": "👀📰",
+      "alvo": "blog post",
+      "alvo_pt": "posts do seu blog",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "posts of your blog"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-44bb72",
+      "quem": "ana",
+      "contexto": "f-8d19b7",
+      "cod": "Sure! I've written three in English.",
+      "dica": "Claro! Já escrevi três em inglês.",
+      "img": "📝📝📝",
+      "alvo": "written",
+      "alvo_pt": "escrevi",
+      "conceito": "Já escrevi = I've written: particípio irregular, com dois t.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR15"
+      ],
+      "armadilhas": [
+        "writen",
+        "wrote"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

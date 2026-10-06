@@ -1,0 +1,201 @@
+{
+  "id": "dev-code-review.bloqueante-ou-nao",
+  "trilha": "dev-code-review",
+  "nome": "Bloqueante ou não?",
+  "emoji": "🚦",
+  "cena": "No fim da revisão, você classifica cada comentário para o autor saber o que é obrigatório.",
+  "resumo": "Marcar a severidade dos comentários (Non-blocking:, Suggestion:, Optional:) e aprovar com ressalvas.",
+  "fechamento": false,
+  "novos": [
+    "non-blocking",
+    "suggestion",
+    "follow-up PR",
+    "early return"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Obrigatório ou opcional?"
+    },
+    {
+      "t": "p",
+      "c": "Um rótulo no começo do comentário diz o peso: **Non-blocking:**, **Suggestion:**, **Optional:**. Para propor sem exigir: **we could...**, **this would be...**."
+    },
+    {
+      "t": "tip",
+      "c": "Aprovar com um pedido: I'm approving this, but... (vou aprovar, mas...)."
+    },
+    {
+      "t": "warn",
+      "c": "Vou aprovar, decidido na hora = I'll approve / I'm approving (não: I go approve). O rótulo vem sem parênteses: Non-blocking: ..."
+    },
+    {
+      "t": "ex",
+      "c": "Non-blocking: we could cache this result.\nNão bloqueante: a gente poderia cachear este resultado."
+    }
+  ],
+  "imagem": "🚦📝✅",
+  "visualizacao": "Você chega ao fim do diff com uma lista de comentários. Um por um, coloca um rótulo na frente, como semáforos: o que trava o merge e o que pode esperar.",
+  "foto_busca": "developer approving pull request laptop",
+  "trechos": [
+    {
+      "id": "f-836d88",
+      "quem": "voce",
+      "cod": "Non-blocking: we could cache this result.",
+      "dica": "Não bloqueante: a gente poderia cachear este resultado.",
+      "img": "🟢🗃️",
+      "alvo": "Non-blocking",
+      "alvo_pt": "Não bloqueante",
+      "conceito": "non-blocking = não impede o merge.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "can"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-68e987",
+      "quem": "voce",
+      "cod": "This one is non-blocking, so feel free to merge without it.",
+      "dica": "Este aqui não é bloqueante, então fica à vontade para fazer o merge sem ele.",
+      "img": "🟢🔀",
+      "alvo": "non-blocking",
+      "alvo_pt": "não é bloqueante",
+      "conceito": "feel free to = fica à vontade para.",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c088b9",
+      "quem": "voce",
+      "cod": "Suggestion: this method could have a shorter name.",
+      "dica": "Sugestão: este método podia ter um nome mais curto.",
+      "img": "💡🏷️",
+      "alvo": "Suggestion",
+      "alvo_pt": "Sugestão",
+      "conceito": "could have + substantivo = podia ter (não é o could have + particípio).",
+      "var": [
+        {
+          "em": "could",
+          "aceita": [
+            "might"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5338a0",
+      "quem": "dev-novo",
+      "contexto": "f-c088b9",
+      "cod": "Is that suggestion a must-fix, or can it wait?",
+      "dica": "Essa sugestão é um must-fix ou pode esperar?",
+      "img": "❓⏳",
+      "alvo": "suggestion",
+      "alvo_pt": "sugestão",
+      "conceito": "must-fix = o que precisa ser corrigido antes do merge.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-708868",
+      "quem": "voce",
+      "contexto": "f-5338a0",
+      "cod": "It can wait. We can do it in a follow-up PR.",
+      "dica": "Pode esperar. A gente pode fazer isso num PR de acompanhamento.",
+      "img": "⏭️📬",
+      "alvo": "follow-up PR",
+      "alvo_pt": "PR de acompanhamento",
+      "conceito": "follow-up = de acompanhamento, que vem depois.",
+      "var": [
+        {
+          "em": "do it",
+          "aceita": [
+            "do this",
+            "do that"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-87e131",
+      "quem": "voce",
+      "cod": "I'm approving this, but please open a follow-up PR for the docs.",
+      "dica": "Vou aprovar, mas, por favor, abra um PR de acompanhamento para a documentação.",
+      "img": "✅📚",
+      "alvo": "follow-up PR",
+      "alvo_pt": "PR de acompanhamento",
+      "conceito": "Decidido na hora: I'm approving / I'll approve (não: I go approve).",
+      "var": [
+        {
+          "em": "I'm approving this",
+          "aceita": [
+            "I'll approve this",
+            "I'm going to approve this",
+            "I'll approve it",
+            "I'm approving it"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "go"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cf76f5",
+      "quem": "voce",
+      "cod": "Optional: this would be easier to read with an early return.",
+      "dica": "Opcional: isso ficaria mais fácil de ler com um retorno antecipado.",
+      "img": "↩️📖",
+      "alvo": "early return",
+      "alvo_pt": "retorno antecipado",
+      "conceito": "early return = sair da função logo no começo, em vez de aninhar ifs.",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5e99d5",
+      "quem": "dev-novo",
+      "contexto": "f-cf76f5",
+      "cod": "Does an early return here change the behavior?",
+      "dica": "Um retorno antecipado aqui muda o comportamento?",
+      "img": "↩️🔄❓",
+      "alvo": "early return",
+      "alvo_pt": "retorno antecipado",
+      "conceito": "Pergunta com does: Does an early return change...? (change sem -s).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "changes"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

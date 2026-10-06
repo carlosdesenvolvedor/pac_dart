@@ -1,0 +1,191 @@
+{
+  "id": "situacao-cafe-restaurante.mesa-para-dois-e-o-cardapio",
+  "trilha": "situacao-cafe-restaurante",
+  "nome": "Mesa para dois e o cardápio",
+  "emoji": "🍽️",
+  "cena": "Jantar com o time num restaurante em Chicago: a mesa, o cardápio e o pedido.",
+  "resumo": "Pedir mesa e cardápio e fazer o pedido com Can I have...?",
+  "fechamento": false,
+  "novos": [
+    "table",
+    "menu",
+    "Can I see the menu?",
+    "Can I have...?"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Mesa, cardápio e pedido"
+    },
+    {
+      "t": "p",
+      "c": "Cardápio = **menu**. Para pedir um prato: **Can I have...?** (Pode me trazer...?). *Can I get...?* também vale."
+    },
+    {
+      "t": "ex",
+      "c": "Can I have the steak with fries?\nPode me trazer o bife com fritas?"
+    },
+    {
+      "t": "warn",
+      "c": "*Can I have...?* não é \"posso ter?\": é o jeito normal de pedir um prato. *I want...* soa seco."
+    }
+  ],
+  "imagem": "🍽️📖🥩",
+  "visualizacao": "Você entra com o time num restaurante cheio em Chicago. Luz baixa, cheiro de carne na grelha, e o garçom vem com os cardápios.",
+  "foto_busca": "restaurant table menu dinner",
+  "trechos": [
+    {
+      "id": "f-265498",
+      "quem": "voce",
+      "cod": "Hi, a table for four, please.",
+      "dica": "Oi, uma mesa para quatro, por favor.",
+      "img": "🍽️👥",
+      "alvo": "table",
+      "alvo_pt": "mesa",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-74080f",
+      "quem": "sarah",
+      "cod": "I'd like a table near the window.",
+      "dica": "Eu queria uma mesa perto da janela.",
+      "img": "🪟🍽️",
+      "alvo": "table",
+      "alvo_pt": "mesa",
+      "conceito": "perto da janela = near the window.",
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5609645,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Gostaria de uma mesa perto da janela.\"; PT reescrito: I'd like = eu queria",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c7dcf9",
+      "quem": "voce",
+      "cod": "Excuse me, can I see the menu?",
+      "dica": "Com licença, posso ver o cardápio?",
+      "img": "📖❓",
+      "alvo": "can I see the menu",
+      "alvo_pt": "posso ver o cardápio",
+      "conceito": "cardápio = menu.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1b2711",
+      "quem": "atendente",
+      "contexto": "f-c7dcf9",
+      "cod": "Sure. Here's the menu.",
+      "dica": "Claro. Aqui está o cardápio.",
+      "img": "🤲📖",
+      "alvo": "menu",
+      "alvo_pt": "cardápio",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 540287,
+        "en_autor": "CM",
+        "pt_id": 541464,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Here's the change.\"; PT original: \"Aqui está o troco.\"; the change → the menu, acrescentado Sure.; PT: troco → cardápio, + Claro.",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4d37aa",
+      "quem": "sarah",
+      "cod": "Can I see the menu too?",
+      "dica": "Posso ver o cardápio também?",
+      "img": "📖🙋",
+      "alvo": "Can I see the menu",
+      "alvo_pt": "Posso ver o cardápio",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-826c68",
+      "quem": "mike",
+      "cod": "I can't read the menu.",
+      "dica": "Não estou conseguindo ler o cardápio.",
+      "img": "👓📖",
+      "alvo": "menu",
+      "alvo_pt": "cardápio",
+      "conceito": "Não estou conseguindo = I can't (can de capacidade).",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6614453,
+        "en_autor": "Eccles17",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Não estou conseguindo ler o menu.\"; PT reescrito: menu → cardápio",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ee3efd",
+      "quem": "voce",
+      "cod": "Can I have the steak with fries?",
+      "dica": "Pode me trazer o bife com fritas?",
+      "img": "🥩🍟",
+      "alvo": "Can I have",
+      "alvo_pt": "Pode me trazer",
+      "lit": "[lit.: posso ter o bife com fritas?]",
+      "conceito": "Para pedir no restaurante: Can I have...? (não: Can you bring me...?). Can I get...? também se ouve.",
+      "var": [
+        {
+          "em": "Can I have",
+          "aceita": [
+            "Can I get"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "you",
+        "want"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fd09b8",
+      "quem": "ana",
+      "cod": "And can I have the fish? I don't eat meat.",
+      "dica": "E pode me trazer o peixe? Eu não como carne.",
+      "img": "🐟🚫🥩",
+      "alvo": "can I have",
+      "alvo_pt": "pode me trazer",
+      "var": [
+        {
+          "em": "can I have",
+          "aceita": [
+            "can I get"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "you",
+        "want"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

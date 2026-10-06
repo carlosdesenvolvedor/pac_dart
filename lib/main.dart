@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'core/linguagem/linguagem.dart';
+import 'core/linguagem/linguagem_cubit.dart';
 import 'core/theme/mixart.dart';
 import 'core/theme/theme_cubit.dart';
 import 'features/auth/data/auth_repository.dart';
@@ -15,7 +17,10 @@ import 'features/curso/data/progresso_repository.dart';
 import 'features/curso/presentation/bloc/curso_bloc.dart';
 import 'features/curso/presentation/bloc/typing_bloc.dart';
 import 'features/curso/presentation/bloc/voz_cubit.dart';
+import 'features/curso/presentation/pages/escolha_linguagem_page.dart';
 import 'features/curso/presentation/pages/home_page.dart';
+import 'features/ingles/data/revisao_repository.dart';
+import 'features/ingles/presentation/revisao_cubit.dart';
 import 'features/ranking/data/ranking_repository.dart';
 import 'features/ranking/presentation/ranking_cubit.dart';
 import 'features/tutor/data/tutor_service.dart';
@@ -73,17 +78,40 @@ class PacDartApp extends StatelessWidget {
   final RankingRepository Function()? rankingBuilder;
   final TutorService Function()? tutorBuilder;
 
+  /// Pula a tela de escolha já numa vertente (testes). null = lê a escolha
+  /// salva; sem escolha salva, mostra a tela "Escolha sua trilha".
+  final Linguagem? linguagemInicial;
+
+  /// Carregador do currículo por vertente (testes usam um sem I/O de asset).
+  final CurriculoLoader Function(Linguagem linguagem)? curriculoBuilder;
+
+  /// Progresso por vertente (probe/testes locais: `LocalProgressoRepository(prefixo:)`).
+  /// Tem prioridade sobre [progressoBuilder].
+  final ProgressoRepository Function(AppUser user, Linguagem linguagem)? progressoPorLinguagem;
+
+  /// Revisão espaçada do inglês (testes/probe: `LocalRevisaoRepository()`).
+  final RevisaoRepository Function(AppUser user)? revisaoBuilder;
+
   const PacDartApp({
     super.key,
     this.authCubitOverride,
     this.progressoBuilder,
     this.rankingBuilder,
     this.tutorBuilder,
+    this.linguagemInicial,
+    this.curriculoBuilder,
+    this.progressoPorLinguagem,
+    this.revisaoBuilder,
   });
 
   @override
   Widget build(BuildContext context) {
-    final builder = progressoBuilder ?? (u) => FirestoreProgressoRepository(u.uid);
+    // Cada vertente guarda o progresso com o próprio prefixo no mesmo doc
+    // (Dart sem prefixo, C# com "cs_", inglês com "en_").
+    ProgressoRepository progressoDe(AppUser u, Linguagem l) =>
+        progressoPorLinguagem?.call(u, l) ??
+        progressoBuilder?.call(u) ??
+        FirestoreProgressoRepository(u.uid, prefixo: l.prefixoProgresso);
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (_) => ThemeCubit()),
@@ -98,51 +126,79 @@ class PacDartApp extends StatelessWidget {
         builder: (context, estado) => switch (estado.status) {
           AuthStatus.desconhecido => const _AppShell(home: _TelaCarregando()),
           AuthStatus.naoAutenticado => const _AppShell(home: LoginPage()),
-          AuthStatus.autenticado => MultiBlocProvider(
-              key: ValueKey(estado.user!.uid), // trocar de conta recria os blocs
-              providers: [
-                BlocProvider(
-                  create: (_) => CursoBloc(
-                    loader: CurriculoLoader(),
-                    progresso: builder(estado.user!),
-                  )..add(const CursoIniciado()),
-                ),
-                BlocProvider(create: (_) => TypingBloc()),
-                BlocProvider(create: (_) => VozCubit()),
-                // Prof. Dash — o modelo só é criado na primeira pergunta
-                BlocProvider(
-                  create: (_) => TutorCubit(
-                    service: tutorBuilder != null ? tutorBuilder!() : GeminiTutorService(),
-                  ),
-                ),
-                // placar público (lazy: só toca o Firestore quando usado)
-                BlocProvider(
-                  create: (_) => RankingCubit(
-                    repo: rankingBuilder != null
-                        ? rankingBuilder!()
-                        : FirestoreRankingRepository(),
-                    uid: estado.user!.uid,
-                    apelido: estado.user!.apelido,
-                  ),
-                ),
-              ],
-              child: const _AppShell(home: HomePage()),
+          AuthStatus.autenticado => BlocProvider(
+              key: ValueKey('lg:${estado.user!.uid}'),
+              create: (_) => LinguagemCubit(uid: estado.user!.uid, inicial: linguagemInicial),
+              child: BlocBuilder<LinguagemCubit, LinguagemState>(
+                builder: (context, lg) {
+                  if (!lg.carregado) return const _AppShell(home: _TelaCarregando());
+                  final linguagem = lg.escolhida;
+                  if (linguagem == null) {
+                    return const _AppShell(home: EscolhaLinguagemPage());
+                  }
+                  return _cursoDe(estado.user!, linguagem, progressoDe(estado.user!, linguagem));
+                },
+              ),
             ),
         },
       ),
     );
   }
+
+  /// Os blocs do curso de uma vertente. Trocar de conta OU de linguagem
+  /// recria tudo (currículo, progresso, digitação).
+  Widget _cursoDe(AppUser user, Linguagem linguagem, ProgressoRepository progresso) =>
+      MultiBlocProvider(
+        key: ValueKey('${user.uid}:${linguagem.id}'),
+        providers: [
+          BlocProvider(
+            create: (_) => CursoBloc(
+              loader: curriculoBuilder?.call(linguagem) ?? CurriculoLoader(linguagem: linguagem),
+              progresso: progresso,
+            )..add(const CursoIniciado()),
+          ),
+          BlocProvider(create: (_) => TypingBloc()),
+          BlocProvider(create: (_) => VozCubit()),
+          // Prof. Dash — o modelo só é criado na primeira pergunta
+          BlocProvider(
+            create: (_) => TutorCubit(
+              service: tutorBuilder != null ? tutorBuilder!() : GeminiTutorService(),
+            ),
+          ),
+          // placar público (lazy: só toca o Firestore quando usado)
+          BlocProvider(
+            create: (_) => RankingCubit(
+              repo: rankingBuilder != null
+                  ? rankingBuilder!()
+                  : FirestoreRankingRepository(),
+              uid: user.uid,
+              apelido: user.apelido,
+            ),
+          ),
+          // inglês: as frases aprendidas voltam na revisão espaçada
+          if (linguagem == Linguagem.ingles)
+            BlocProvider(
+              create: (_) => RevisaoCubit(
+                repo: revisaoBuilder?.call(user) ?? FirestoreRevisaoRepository(user.uid),
+              ),
+            ),
+        ],
+        child: _AppShell(home: const HomePage(), linguagem: linguagem),
+      );
 }
 
 class _AppShell extends StatelessWidget {
   final Widget home;
-  const _AppShell({required this.home});
+  final Linguagem? linguagem;
+  const _AppShell({required this.home, this.linguagem});
 
   @override
   Widget build(BuildContext context) => BlocBuilder<ThemeCubit, Paleta>(
         // troca de tema reconstrói o MaterialApp inteiro → tudo recolore
         builder: (context, _) => MaterialApp(
-          title: 'PAC·DART — Treino de digitação Dart & Flutter',
+          title: linguagem == null
+              ? 'PAC·DART — Treino de digitação: Dart, Flutter, C# e inglês'
+              : '${linguagem!.nomeApp} — Treino de digitação ${linguagem!.nomeCurso}',
           debugShowCheckedModeBanner: false,
           theme: Mixart.tema(),
           home: home,

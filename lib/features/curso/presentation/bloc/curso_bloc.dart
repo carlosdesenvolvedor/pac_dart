@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/linguagem/linguagem.dart';
 import '../../../dartpad/mapa_rodavel.dart';
 import '../../data/curriculo_loader.dart';
 import '../../data/progresso_repository.dart';
@@ -44,6 +45,31 @@ class LicaoRepetida extends CursoEvent {
   const LicaoRepetida();
 }
 
+/// A lição atual terminou por um caminho que não é o de avançar trecho a
+/// trecho (o inglês tem o próprio roteiro de repetições): marca concluída
+/// e mostra a vitória.
+class LicaoFinalizada extends CursoEvent {
+  const LicaoFinalizada();
+}
+
+/// Passou no teste de nivelamento da trilha [trilha] (inglês): as lições
+/// contam como concluídas sem passar pelo roteiro.
+class TrilhaTestada extends CursoEvent {
+  final int trilha;
+  const TrilhaTestada(this.trilha);
+  @override
+  List<Object?> get props => [trilha];
+}
+
+/// O roteiro do inglês mostrou a frase [indice] da lição (o tutor e o
+/// mapa olham o trecho atual).
+class TrechoMostrado extends CursoEvent {
+  final int indice;
+  const TrechoMostrado(this.indice);
+  @override
+  List<Object?> get props => [indice];
+}
+
 /// Quiz da lição terminou com [acertos] de [total].
 class QuizFinalizado extends CursoEvent {
   final int trilha, licao, acertos;
@@ -78,6 +104,9 @@ class CursoState extends Equatable {
   final MapaRodavel rodavel;
   final bool vitoria;
 
+  /// Vertente do currículo carregado (Dart ou C#).
+  final Linguagem linguagem;
+
   const CursoState({
     this.status = CursoStatus.carregando,
     this.trilhas = const [],
@@ -90,14 +119,26 @@ class CursoState extends Equatable {
     this.masterApps = const [],
     this.rodavel = MapaRodavel.vazio,
     this.vitoria = false,
+    this.linguagem = Linguagem.dart,
   });
 
   Trilha get trilha => trilhas[trilhaIdx];
   Licao get licao => trilha.licoes[licaoIdx];
   Trecho get trecho => licao.trechos[trechoIdx];
-  bool get ehFlutter => trilha.nivel == 'Flutter';
+  bool get ehFlutter => linguagem == Linguagem.dart && trilha.nivel == 'Flutter';
+  bool get ehCSharp => linguagem == Linguagem.csharp;
+  bool get ehIngles => linguagem == Linguagem.ingles;
 
-  String chave(int t, int l) => '$t:$l';
+  /// Chave do progresso da lição [l] da trilha [t]: o id estável da lição
+  /// quando o conteúdo tem (inglês — o curso cresce no meio), senão a
+  /// posição "t:l" (Dart e C#, como sempre foi).
+  String chave(int t, int l) {
+    if (t >= 0 && t < trilhas.length && l >= 0 && l < trilhas[t].licoes.length) {
+      final id = trilhas[t].licoes[l].id;
+      if (id.isNotEmpty) return id;
+    }
+    return '$t:$l';
+  }
   bool licaoConcluida(int t, int l) => concluidas.contains(chave(t, l));
 
   /// O quiz da lição já foi respondido alguma vez (guarda a melhor nota).
@@ -110,6 +151,19 @@ class CursoState extends Equatable {
   static String chaveMaster(int i) => 'master:$i';
 
   bool projetoFeito(String chave) => projetosFeitos.contains(chave);
+
+  /// Chave do desafio de lógica [i] da trilha [t] (mora no mesmo conjunto
+  /// dos projetos feitos — é só mais uma conquista marcada).
+  static String chaveDesafio(int t, int i) => 'desafio:$t:$i';
+
+  /// Quantos desafios de lógica da trilha [t] já foram acertados.
+  int desafiosFeitos(int t) {
+    var n = 0;
+    for (var i = 0; i < trilhas[t].desafios.length; i++) {
+      if (projetoFeito(chaveDesafio(t, i))) n++;
+    }
+    return n;
+  }
 
   /// Todas as lições da trilha [t] já foram concluídas.
   bool trilhaSemLicoesPendentes(int t) {
@@ -138,6 +192,7 @@ class CursoState extends Equatable {
     List<Projeto>? masterApps,
     MapaRodavel? rodavel,
     bool? vitoria,
+    Linguagem? linguagem,
   }) =>
       CursoState(
         status: status ?? this.status,
@@ -151,6 +206,7 @@ class CursoState extends Equatable {
         masterApps: masterApps ?? this.masterApps,
         rodavel: rodavel ?? this.rodavel,
         vitoria: vitoria ?? this.vitoria,
+        linguagem: linguagem ?? this.linguagem,
       );
 
   @override
@@ -165,14 +221,16 @@ class CursoState extends Equatable {
         projetosFeitos,
         masterApps,
         vitoria,
+        linguagem,
       ];
 
   /// O trecho atual vira um programa que compila? (só então mostramos "rodar")
   bool get trechoRodavel => rodavel.trecho(trilhaIdx, licaoIdx, trechoIdx);
 
-  /// Trechos anteriores da lição — dão contexto ao programa gerado.
+  /// Trechos anteriores da lição — dão contexto ao programa gerado
+  /// (só os que são código da linguagem do curso: um `dotnet run` não entra).
   List<String> get contextoDoTrecho =>
-      licao.trechos.take(trechoIdx).map((t) => t.cod).toList();
+      licao.trechos.take(trechoIdx).where((t) => t.ehCodigoDoCurso).map((t) => t.cod).toList();
 }
 
 // ---------- Bloc ----------
@@ -187,6 +245,17 @@ class CursoBloc extends Bloc<CursoEvent, CursoState> {
     on<TrechoAvancado>(_avancarTrecho);
     on<ProximaLicaoPedida>(_proximaLicao);
     on<LicaoRepetida>((e, emit) => emit(state.copyWith(trechoIdx: 0, vitoria: false)));
+    on<LicaoFinalizada>((e, emit) => _concluirLicao(emit));
+    on<TrilhaTestada>((e, emit) {
+      final chaves = [for (var l = 0; l < state.trilhas[e.trilha].licoes.length; l++) state.chave(e.trilha, l)];
+      for (final c in chaves) {
+        if (!state.concluidas.contains(c)) progresso.marcarConcluida(c);
+      }
+      emit(state.copyWith(concluidas: {...state.concluidas, ...chaves}));
+    });
+    on<TrechoMostrado>((e, emit) {
+      if (e.indice >= 0 && e.indice < state.licao.trechos.length) emit(state.copyWith(trechoIdx: e.indice));
+    });
     on<QuizFinalizado>(_quizFinalizado);
     on<ProjetoConcluido>(_projetoConcluido);
   }
@@ -214,11 +283,18 @@ class CursoBloc extends Bloc<CursoEvent, CursoState> {
       final feitas = await progresso.concluidas();
       final notas = await progresso.quizNotas();
       final projetos = await progresso.projetosFeitos();
-      final (t, l) = await progresso.posicao();
+      var (t, l) = await progresso.posicao();
+      if (loader.linguagem == Linguagem.ingles) {
+        // curso linear que cresce no meio: retoma na 1ª lição ainda não feita
+        // (a posição salva é um índice e pode ter mudado de lição)
+        final primeira = _primeiraPendente(trilhas, feitas);
+        if (primeira != null) (t, l) = primeira;
+      }
       final ti = t.clamp(0, trilhas.length - 1);
       final li = l.clamp(0, trilhas[ti].licoes.length - 1);
       emit(state.copyWith(
         status: CursoStatus.pronto,
+        linguagem: loader.linguagem,
         trilhas: trilhas,
         masterApps: master,
         rodavel: rodavel,
@@ -232,6 +308,17 @@ class CursoBloc extends Bloc<CursoEvent, CursoState> {
     } catch (_) {
       emit(state.copyWith(status: CursoStatus.erro));
     }
+  }
+
+  /// A primeira lição (na ordem do curso) que ainda não está em [feitas].
+  static (int, int)? _primeiraPendente(List<Trilha> trilhas, Set<String> feitas) {
+    for (var t = 0; t < trilhas.length; t++) {
+      for (var l = 0; l < trilhas[t].licoes.length; l++) {
+        final id = trilhas[t].licoes[l].id;
+        if (!feitas.contains(id.isNotEmpty ? id : '$t:$l')) return (t, l);
+      }
+    }
+    return null;
   }
 
   void _selecionarTrilha(TrilhaSelecionada e, Emitter<CursoState> emit) {
@@ -249,7 +336,11 @@ class CursoBloc extends Bloc<CursoEvent, CursoState> {
       emit(state.copyWith(trechoIdx: state.trechoIdx + 1));
       return;
     }
-    // Fim da lição: marca concluída e mostra a vitória.
+    _concluirLicao(emit);
+  }
+
+  /// Fim da lição: marca concluída e mostra a vitória.
+  void _concluirLicao(Emitter<CursoState> emit) {
     final chave = state.chave(state.trilhaIdx, state.licaoIdx);
     progresso.marcarConcluida(chave);
     emit(state.copyWith(concluidas: {...state.concluidas, chave}, vitoria: true));

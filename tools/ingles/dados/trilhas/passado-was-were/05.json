@@ -1,0 +1,193 @@
+{
+  "id": "passado-was-were.cena-segunda-de-manha",
+  "trilha": "passado-was-were",
+  "nome": "Cena: segunda de manhã",
+  "emoji": "☕",
+  "cena": "Segunda de manhã, antes da reunião, o time troca as novidades do fim de semana.",
+  "resumo": "Contar e perguntar onde cada um estava e como foi o fim de semana, com was e were.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: was e were"
+    },
+    {
+      "t": "p",
+      "c": "Onde estava: *I was at home*. Como foi: *How was...? It was great*. Tinha: *there was / there were*. Perguntas: *Were you...? Was it...?*"
+    },
+    {
+      "t": "ex",
+      "c": "Good morning! How was your weekend?\nBom dia! Como foi o seu fim de semana?"
+    },
+    {
+      "t": "warn",
+      "c": "O *it* não some: *Was it cold?* (não: *Was cold?*). Dia da semana com maiúscula: *on Friday*."
+    }
+  ],
+  "imagem": "☕🗓️👋",
+  "visualizacao": "Segunda, nove da manhã: você senta na sala de reunião, canecas de café na mesa. O Mike pergunta do seu fim de semana e a Sarah conta da festa dela.",
+  "foto_busca": "meeting room coffee mugs morning",
+  "trechos": [
+    {
+      "id": "f-205e8a",
+      "quem": "mike",
+      "cod": "Good morning! How was your weekend?",
+      "dica": "Bom dia! Como foi o seu fim de semana?",
+      "img": "☀️👋❓",
+      "alvo": "How was your weekend",
+      "alvo_pt": "Como foi o seu fim de semana",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 466007,
+        "en_autor": "CK",
+        "pt_id": 5559527,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"How was your weekend?\"; + Good morning!; PT original: \"Como foi o seu fim de semana?\"; PT: + Bom dia!",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5d252a",
+      "quem": "voce",
+      "contexto": "f-205e8a",
+      "cod": "It was great. I was in Boston with Ben.",
+      "dica": "Foi ótimo. Eu estava em Boston com o Ben.",
+      "img": "🏙️👬",
+      "alvo": "It was great",
+      "alvo_pt": "Foi ótimo",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1abac9",
+      "quem": "mike",
+      "contexto": "f-5d252a",
+      "cod": "Was it cold there?",
+      "dica": "Estava frio lá?",
+      "img": "🥶❓",
+      "alvo": "Was it cold",
+      "alvo_pt": "Estava frio",
+      "conceito": "O it não some: Was it cold? (não: Was cold?)",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2253870,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Was it cold?\"; + there; PT reescrito (original: \"Era frio?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fae29f",
+      "quem": "voce",
+      "contexto": "f-1abac9",
+      "cod": "Yes, but the park was beautiful.",
+      "dica": "Sim, mas o parque estava lindo.",
+      "img": "🌳😍",
+      "alvo": "was beautiful",
+      "alvo_pt": "estava lindo",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8d9e2a",
+      "quem": "sarah",
+      "cod": "My birthday party was last night.",
+      "dica": "A minha festa de aniversário foi ontem à noite.",
+      "img": "🎂🎉",
+      "alvo": "last night",
+      "alvo_pt": "ontem à noite",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-251139",
+      "quem": "voce",
+      "contexto": "f-8d9e2a",
+      "cod": "Were there a lot of people there?",
+      "dica": "Tinha muita gente lá?",
+      "img": "👥👥❓",
+      "alvo": "Were there",
+      "alvo_pt": "Tinha",
+      "var": [
+        {
+          "em": "a lot of",
+          "aceita": [
+            "many"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR14"
+      ],
+      "armadilhas": [
+        "was",
+        "had"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 9050258,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Havia muitas pessoas lá?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c6f98f",
+      "quem": "mike",
+      "cod": "Ana, where were you on Friday?",
+      "dica": "Ana, onde você estava na sexta?",
+      "img": "📆❓",
+      "alvo": "where were you",
+      "alvo_pt": "onde você estava",
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "was"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-69f23e",
+      "quem": "ana",
+      "contexto": "f-c6f98f",
+      "cod": "I wasn't here. I was sick.",
+      "dica": "Eu não estava aqui. Estava doente.",
+      "img": "🤒🏠",
+      "alvo": "wasn't",
+      "alvo_pt": "não estava",
+      "registro": "informal",
+      "armadilhas": [
+        "weren't"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../banco_arcade.dart';
+
 import '../../../../core/theme/mixart.dart';
 
 /// 📖 Tutorial da 1ª corrida (um por modo de controle): três cartões e o
@@ -60,7 +62,7 @@ class TutorialTurismo extends StatelessWidget {
                   Text('COMO JOGAR · ${porSetas ? '🎮 MODO SETAS' : '⌨️ MODO DIGITAÇÃO'}',
                       style: Mixart.ui(size: 11, weight: FontWeight.w800, color: Mixart.brand).copyWith(letterSpacing: 2)),
                   const SizedBox(height: 6),
-                  Text('🏎️ Dart Turismo', style: Mixart.display(size: 24)),
+                  Text('🏎️ ${BancoArcade.linguagem} Turismo', style: Mixart.display(size: 24)),
                   const SizedBox(height: 16),
                   for (var i = 0; i < passos.length; i++) ...[
                     if (i > 0) const SizedBox(height: 10),

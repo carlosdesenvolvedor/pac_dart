@@ -1,0 +1,220 @@
+{
+  "id": "colocacoes-expressoes.aconteca-o-que-acontecer",
+  "trilha": "colocacoes-expressoes",
+  "nome": "Aconteça o que acontecer",
+  "emoji": "🔄",
+  "cena": "Por vídeo com o Ben, você fala de um bug teimoso e das manias do time.",
+  "resumo": "Expressões frequentes da fala: no matter what, no matter how, I'm afraid e as usual.",
+  "fechamento": false,
+  "novos": [
+    "no matter what",
+    "no matter how",
+    "I'm afraid (infelizmente, educado)",
+    "as usual"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Aconteça o que acontecer"
+    },
+    {
+      "t": "p",
+      "c": "**no matter what** + oração = não importa o que, aconteça o que acontecer. **no matter how** + adjetivo = por mais que: no matter how hard I try."
+    },
+    {
+      "t": "tip",
+      "c": "**I'm afraid...** = infelizmente, de um jeito educado. Não tem nada de medo: I'm afraid I have work to do."
+    },
+    {
+      "t": "warn",
+      "c": "Como de costume = **as usual** (não: like usual). Por mais que = no matter how (não: for more that)."
+    },
+    {
+      "t": "ex",
+      "c": "No matter what happens, call me.\nAconteça o que acontecer, me liga."
+    }
+  ],
+  "imagem": "📱🐞💬",
+  "visualizacao": "É noite e você conversa com o Ben por vídeo, o notebook ainda aberto com o mesmo erro vermelho na tela. Ele ri, você esfrega os olhos.",
+  "foto_busca": "video call friends evening laptop",
+  "trechos": [
+    {
+      "id": "f-a3b7d4",
+      "quem": "voce",
+      "cod": "No matter how hard I try, I can't fix this bug.",
+      "dica": "Por mais que eu tente, não consigo corrigir esse bug.",
+      "img": "🐞😫🔧",
+      "alvo": "No matter how hard I try",
+      "alvo_pt": "Por mais que eu tente",
+      "conceito": "por mais que eu tente = no matter how hard I try (não: for more that I try).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "for",
+        "more"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eb68ed",
+      "quem": "ben",
+      "contexto": "f-a3b7d4",
+      "cod": "No matter what happens, don't stay up all night.",
+      "dica": "Aconteça o que acontecer, não vira a noite.",
+      "img": "🌙💻🚫",
+      "alvo": "No matter what happens",
+      "alvo_pt": "Aconteça o que acontecer",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3154015,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"No matter what happens, don't give up.\" (stay up all night no lugar de give up); PT reescrito (original: \"Não importa o que aconteça, não desista.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b79afa",
+      "quem": "voce",
+      "contexto": "f-eb68ed",
+      "cod": "The app keeps crashing, no matter what I change.",
+      "dica": "O app fica dando crash, não importa o que eu mude.",
+      "img": "📱💥🔁",
+      "alvo": "no matter what",
+      "alvo_pt": "não importa o que",
+      "conceito": "não importa o que eu mude = no matter what I change (presente).",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-320e1c",
+      "quem": "voce",
+      "contexto": "Was anyone online before you this morning?",
+      "cod": "As usual, Mike was the first one online.",
+      "dica": "Como de costume, o Mike foi o primeiro a ficar online.",
+      "img": "🌅💻🥇",
+      "alvo": "As usual",
+      "alvo_pt": "Como de costume",
+      "conceito": "como de costume = as usual (não: like usual).",
+      "registro": "informal",
+      "armadilhas": [
+        "like"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "first one online",
+          "aceita": [
+            "first one to get online",
+            "first to get online",
+            "first to be online"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-3bd16b",
+      "quem": "ben",
+      "contexto": "f-320e1c",
+      "cod": "And you were the last one, as usual?",
+      "dica": "E você foi o último, como de costume?",
+      "pt_f": "E você foi a última, como de costume?",
+      "img": "😂🐢🏁",
+      "alvo": "as usual",
+      "alvo_pt": "como de costume",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "opcional": [
+        "one"
+      ]
+    },
+    {
+      "id": "f-b2ccda",
+      "quem": "voce",
+      "contexto": "Why don't you just restart everything?",
+      "cod": "I'm afraid that won't work. I've already tried it twice.",
+      "dica": "Infelizmente isso não vai funcionar. Já tentei duas vezes.",
+      "img": "🔄🙅😕",
+      "alvo": "I'm afraid",
+      "alvo_pt": "Infelizmente",
+      "conceito": "I'm afraid aqui é infelizmente, educado; não fala de medo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR27"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 416232,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm afraid it won't work.\" (that no lugar de it; acrescentado I've already tried it twice); PT reescrito (original: \"Receio que isso não vá funcionar.\")",
+        "export": "2026-10-03"
+      },
+      "opcional": [
+        "it"
+      ],
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-bddbe5",
+      "quem": "voce",
+      "contexto": "Can we talk again later tonight?",
+      "cod": "I'm afraid I have work to do.",
+      "dica": "Infelizmente eu tenho trabalho pra fazer.",
+      "img": "🍝🙅💼",
+      "alvo": "I'm afraid",
+      "alvo_pt": "Infelizmente",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2543053,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Eu temo que tenha trabalho a fazer.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cf33f7",
+      "quem": "ben",
+      "contexto": "f-bddbe5",
+      "cod": "Take a break tonight, no matter how busy you are.",
+      "dica": "Faz uma pausa hoje à noite, por mais ocupado que você esteja.",
+      "pt_f": "Faz uma pausa hoje à noite, por mais ocupada que você esteja.",
+      "img": "🌙☕🛋️",
+      "alvo": "no matter how",
+      "alvo_pt": "por mais",
+      "conceito": "por mais ocupado que = no matter how busy (adjetivo logo depois de how).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

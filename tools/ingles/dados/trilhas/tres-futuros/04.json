@@ -1,0 +1,304 @@
+{
+  "id": "tres-futuros.eu-abro-a-janela-ofertas",
+  "trilha": "tres-futuros",
+  "nome": "Eu abro a janela? Ofertas",
+  "emoji": "🙌",
+  "cena": "A Ana chega de Recife ao escritório de Chicago com malas e caixas, e você e o Mike oferecem ajuda.",
+  "resumo": "Oferecer ajuda com Should I...?, I'll... e Let me... e aceitar ou recusar uma oferta com educação.",
+  "fechamento": false,
+  "novos": [
+    "Should I...? (oferta)",
+    "carry",
+    "heavy",
+    "drive you home",
+    "window"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Eu abro a janela? = Should I open the window?"
+    },
+    {
+      "t": "p",
+      "c": "Para oferecer ajuda perguntando, use **Should I + verbo?**. Oferecendo direto: **I'll + verbo** ou **Let me + verbo**."
+    },
+    {
+      "t": "ex",
+      "c": "Should I open the window?\nEu abro a janela?"
+    },
+    {
+      "t": "warn",
+      "c": "Sem to depois de Should I e de I'll (não: Should I to open...?)."
+    },
+    {
+      "t": "tip",
+      "c": "Shall I...? também existe, mas é britânico ou formal: só para reconhecer."
+    }
+  ],
+  "imagem": "🧳📦🏢",
+  "visualizacao": "Você ouve rodinhas de mala no corredor do escritório de Chicago. A Ana chega de Recife cansada, com uma mala enorme e duas caixas, e o Mike segura a porta.",
+  "foto_busca": "office suitcase moving boxes",
+  "trechos": [
+    {
+      "id": "f-220cb6",
+      "quem": "ana",
+      "cod": "This bag is too heavy.",
+      "dica": "Essa mala está pesada demais.",
+      "img": "🧳😩",
+      "alvo": "heavy",
+      "alvo_pt": "pesada",
+      "conceito": "too heavy = pesado demais.",
+      "var": [
+        {
+          "em": "This bag",
+          "aceita": [
+            "That bag"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4328913,
+        "en_autor": "AlanF_US",
+        "pt_id": 6959242,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c64cd5",
+      "quem": "voce",
+      "contexto": "f-220cb6",
+      "cod": "I'll carry it.",
+      "dica": "(decidi agora) Eu carrego.",
+      "img": "💪🧳",
+      "alvo": "carry",
+      "alvo_pt": "carrego",
+      "conceito": "Oferta decidida na hora: I'll + verbo, sem to. Objeto obrigatório: it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR30"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0310ca",
+      "quem": "mike",
+      "cod": "Let me carry your other bag, Ana.",
+      "dica": "Deixa eu carregar a sua outra mala, Ana.",
+      "img": "🙋‍♂️🧳",
+      "alvo": "carry",
+      "alvo_pt": "carregar",
+      "conceito": "Let me + verbo = deixa eu + verbo (oferta).",
+      "registro": "informal",
+      "interferencias": [
+        "BR11"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c5ad3",
+      "quem": "ana",
+      "contexto": "f-0310ca",
+      "cod": "No, thanks. It isn't heavy.",
+      "dica": "Não, obrigada. Não está pesada.",
+      "img": "🙅‍♀️🪶",
+      "alvo": "heavy",
+      "alvo_pt": "pesada",
+      "conceito": "Recusar com educação: No, thanks. (it obrigatório: It isn't heavy.)",
+      "var": [
+        {
+          "em": "It isn't",
+          "aceita": [
+            "It's not"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5825533,
+        "en_autor": "CK",
+        "pt_id": 6097791,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'No, thanks.' acrescentado; PT ajustado (obrigada, está pesada)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f6d5d5",
+      "quem": "mike",
+      "cod": "Should I close the door?",
+      "dica": "Eu fecho a porta?",
+      "img": "🚪❓",
+      "alvo": "Should I close",
+      "alvo_pt": "Eu fecho",
+      "conceito": "Oferta: Should I + verbo? = Eu + verbo? (Eu fecho a porta?)",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "do",
+        "can"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1886851,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cbe61c",
+      "quem": "mike",
+      "cod": "There's only one window in this office.",
+      "dica": "Só tem uma janela neste escritório.",
+      "img": "🪟☝️",
+      "alvo": "window",
+      "alvo_pt": "janela",
+      "conceito": "Tem, no sentido de existir, é there's (não: have).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2641724,
+        "en_autor": "CK",
+        "pt_id": 5409666,
+        "pt_autor": "ToinhoAlam",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'in my room' trocado por 'in this office'; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8428df",
+      "quem": "voce",
+      "contexto": "f-cbe61c",
+      "cod": "Should I open the window?",
+      "dica": "Eu abro a janela?",
+      "img": "🥵🪟",
+      "alvo": "window",
+      "alvo_pt": "janela",
+      "conceito": "Eu abro...? (oferta) = Should I open...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "can"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1886846,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'windows' no singular; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fa9b5b",
+      "quem": "voce",
+      "cod": "Should I put the boxes on your desk?",
+      "dica": "Eu coloco as caixas na sua mesa?",
+      "img": "📦🖥️",
+      "alvo": "Should I put",
+      "alvo_pt": "Eu coloco",
+      "conceito": "put = colocar. on your desk = em cima da sua mesa.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17",
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-64060a",
+      "quem": "mike",
+      "cod": "I can drive you home after work.",
+      "dica": "Posso te levar em casa de carro depois do trabalho.",
+      "img": "🚗🏠",
+      "alvo": "drive you home",
+      "alvo_pt": "te levar em casa de carro",
+      "lit": "[lit.: dirigir você para casa]",
+      "conceito": "drive you home = te levar em casa de carro (sem to antes de home).",
+      "registro": "informal",
+      "interferencias": [
+        "BR16"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8276f4",
+      "quem": "mike",
+      "contexto": "Thanks, but I can take a taxi.",
+      "cod": "It's late. I'll drive you home.",
+      "dica": "(decidi agora) É tarde. Te levo em casa de carro.",
+      "img": "🚗🌃",
+      "alvo": "drive you home",
+      "alvo_pt": "Te levo em casa de carro",
+      "conceito": "Insistir na oferta, decidida na hora: I'll + verbo. Hora pede sujeito: It's late.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR16",
+        "BR30"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9795722,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Come on,' trocado por 'It's late.' (Come on não tem par fixo em PT); PT reescrito com a pista (decidi agora)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

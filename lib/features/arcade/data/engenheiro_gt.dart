@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../../../core/gemini/chave_gemini.dart';
+import '../../../core/linguagem/linguagem.dart';
 import '../domain/turismo.dart';
 
 /// 🎧 A engenheira de pista da equipe PAC·DART: depois da corrida, o Gemini
@@ -15,7 +16,21 @@ class EngenheiroGt {
   /// O alias que acompanha o flash mais novo (o mesmo do tutor).
   static const _modelo = 'gemini-flash-latest';
 
-  static const _persona = '''
+  /// A persona segue a vertente em uso (as fichas da pista são palavras
+  /// de Dart ou de C#).
+  static String get _persona => switch (Linguagem.atual) {
+        Linguagem.csharp => _personaBase
+            .replaceAll('PAC·DART no Dart Turismo', 'PAC·C# no C# Turismo')
+            .replaceAll('ensina Dart e Flutter', 'ensina C# e .NET')
+            .replaceAll('em Dart/Flutter', 'em C#/.NET'),
+        Linguagem.ingles => _personaBase
+            .replaceAll('PAC·DART no Dart Turismo', 'PAC·ENGLISH no English Turismo')
+            .replaceAll('ensina Dart e Flutter', 'ensina inglês')
+            .replaceAll('em Dart/Flutter', 'em inglês'),
+        Linguagem.dart => _personaBase,
+      };
+
+  static const _personaBase = '''
 Você é a engenheira de pista da equipe PAC·DART no Dart Turismo, um jogo de
 corrida que ensina Dart e Flutter. Você fala pelo rádio com o piloto logo
 depois da corrida, em português do Brasil.

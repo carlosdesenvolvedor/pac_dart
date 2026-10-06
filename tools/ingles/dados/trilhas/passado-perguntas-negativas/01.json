@@ -1,0 +1,223 @@
+{
+  "id": "passado-perguntas-negativas.voce-dormiu-bem-did-you",
+  "trilha": "passado-perguntas-negativas",
+  "nome": "Você dormiu bem? Did you...?",
+  "emoji": "😴",
+  "cena": "Terça de manhã no escritório de Chicago: o Mike e a Sarah perguntam como foi a sua noite e se você recebeu os e-mails.",
+  "resumo": "Perguntar sobre o passado com Did you...? e o verbo puro: Did you sleep well?",
+  "fechamento": false,
+  "novos": [
+    "Did you...?",
+    "sleep well",
+    "Did you sleep well?",
+    "Did you get my email?"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Did you...? = pergunta no passado"
+    },
+    {
+      "t": "p",
+      "c": "No passado, a pergunta usa **did** + sujeito + verbo **puro**: Did you **sleep** well? O verbo não vai para o passado, porque o did já marca o tempo."
+    },
+    {
+      "t": "ex",
+      "c": "Did you get my email?\nVocê recebeu meu e-mail?"
+    },
+    {
+      "t": "tip",
+      "c": "Respostas curtas: **Yes, I did.** / **No, I didn't.**"
+    },
+    {
+      "t": "warn",
+      "c": "Did you sleep well? (não: Did you slept well? nem You slept well?)"
+    }
+  ],
+  "imagem": "😴☕📧",
+  "visualizacao": "Terça cedo no escritório. Você boceja na frente do notebook, o Mike chega com o café e pergunta da sua noite; a Sarah aparece logo depois.",
+  "foto_busca": "office morning coffee colleagues",
+  "trechos": [
+    {
+      "id": "f-d26825",
+      "quem": "mike",
+      "cod": "Good morning. Did you sleep well?",
+      "dica": "Bom dia! Dormiu bem?",
+      "img": "🌅😴",
+      "alvo": "Did you sleep well",
+      "alvo_pt": "Dormiu bem",
+      "lit": "[lit.: fez você dormir bem?]",
+      "conceito": "Pergunta no passado: did + verbo puro (sleep, não slept).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "slept",
+        "you"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6566253,
+        "en_autor": "Hybrid",
+        "pt_id": 6566308,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-18eb96",
+      "quem": "voce",
+      "contexto": "f-d26825",
+      "cod": "No, I never sleep well in hotels.",
+      "dica": "Não, eu nunca durmo bem em hotéis.",
+      "img": "🏨😵",
+      "alvo": "sleep well",
+      "alvo_pt": "durmo bem",
+      "conceito": "never vem antes do verbo: I never sleep well.",
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "armadilhas": [
+        "slept"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f5f454",
+      "quem": "mike",
+      "contexto": "f-18eb96",
+      "cod": "And did you have breakfast?",
+      "dica": "E você tomou café da manhã?",
+      "img": "🥞❓",
+      "alvo": "did you",
+      "alvo_pt": "você tomou",
+      "conceito": "Tomar café da manhã = have breakfast. Com did, have fica puro.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "had",
+        "you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-db7f26",
+      "quem": "voce",
+      "cod": "Did you sleep well, Sarah?",
+      "dica": "Você dormiu bem, Sarah?",
+      "img": "👩🛏️",
+      "alvo": "Did you sleep well",
+      "alvo_pt": "Você dormiu bem",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "slept",
+        "you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-269580",
+      "quem": "sarah",
+      "contexto": "f-db7f26",
+      "cod": "Yes, I did. I always sleep well in hotels.",
+      "dica": "Dormi, sim. Eu sempre durmo bem em hotéis.",
+      "img": "😌🛌👍",
+      "alvo": "sleep well",
+      "alvo_pt": "durmo bem",
+      "lit": "[lit.: sim, eu fiz.]",
+      "conceito": "Resposta curta: Yes, I did. / No, I didn't. O did ocupa o lugar do verbo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "armadilhas": [
+        "slept"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d2f537",
+      "quem": "sarah",
+      "cod": "Hey, did you watch the game last night?",
+      "dica": "Ei, você assistiu ao jogo ontem à noite?",
+      "img": "📺🏈",
+      "alvo": "did you",
+      "alvo_pt": "você assistiu",
+      "conceito": "did + watch (puro); ontem à noite = last night.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR20"
+      ],
+      "armadilhas": [
+        "watched",
+        "you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ed6491",
+      "quem": "mike",
+      "cod": "{nome}, did you get my email?",
+      "dica": "{nome}, você recebeu meu e-mail?",
+      "img": "📧📥",
+      "alvo": "did you get my email",
+      "alvo_pt": "você recebeu meu e-mail",
+      "conceito": "Receber (e-mail, mensagem) = get.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "got",
+        "receive"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2891050,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Did you get my message?\"; PT original: \"Você recebeu a minha mensagem?\"; nome do aluno acrescentado; message → email; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2ba939",
+      "quem": "sarah",
+      "contexto": "f-ed6491",
+      "cod": "Did you get my email too?",
+      "dica": "Você recebeu meu e-mail também?",
+      "img": "📨👩",
+      "alvo": "Did you get my email",
+      "alvo_pt": "Você recebeu meu e-mail",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "got"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+{
+  "id": "terceira-condicional.retrospectiva-do-projeto",
+  "trilha": "terceira-condicional",
+  "nome": "Retrospectiva do projeto",
+  "emoji": "🔁",
+  "cena": "Na retro do projeto, você, o Mike, a Sarah e a Ana analisam o que teria sido diferente com outras escolhas.",
+  "resumo": "Analisar decisões de um projeto com a 3ª condicional e perguntar What would you have done...?",
+  "fechamento": false,
+  "novos": [
+    "real users",
+    "had had",
+    "What would you have done",
+    "retro",
+    "requirements"
+  ],
+  "apoio": [
+    "caught (um bug)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Na retro: o que teria acontecido se..."
+    },
+    {
+      "t": "p",
+      "c": "Para analisar decisões: If we had tested it with real users, we would have caught the problem. Para perguntar: **What would you have done** if...?"
+    },
+    {
+      "t": "tip",
+      "c": "had had: o 1º had é o auxiliar, o 2º é o verbo ter. If I had had more time = se eu tivesse tido mais tempo."
+    },
+    {
+      "t": "warn",
+      "c": "2ª x 3ª: If I had time (agora, imaginário). If I had had time (no passado)."
+    },
+    {
+      "t": "ex",
+      "c": "What would you have done if the client had said no?\nO que você teria feito se o cliente tivesse dito não?"
+    }
+  ],
+  "imagem": "📋🔁💬",
+  "visualizacao": "Você olha a parede da sala de reunião: post-its verdes para o que deu certo, vermelhos para o que deu errado. O Mike segura a caneta e a Sarah abre a linha do tempo do projeto.",
+  "foto_busca": "team retrospective sticky notes wall",
+  "trechos": [
+    {
+      "id": "f-8d5ff8",
+      "quem": "sarah",
+      "cod": "OK, let's start the retro.",
+      "dica": "Bom, vamos começar a retro.",
+      "img": "▶️🗒️",
+      "alvo": "retro",
+      "alvo_pt": "retro",
+      "conceito": "retro = retrospectiva, a reunião do fim da sprint.",
+      "var": [
+        {
+          "em": "OK",
+          "aceita": [
+            "Well",
+            "So"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d28079",
+      "quem": "mike",
+      "cod": "A good retro focuses on the process, not on people.",
+      "dica": "Uma boa retro foca no processo, não nas pessoas.",
+      "img": "⚙️👥",
+      "alvo": "retro",
+      "alvo_pt": "retro",
+      "conceito": "focus on = focar em. focuses: -s com it (a retro).",
+      "var": [
+        {
+          "em": "not on people",
+          "aceita": [
+            "not on the people"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR21"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b6d7b4",
+      "quem": "ana",
+      "cod": "We never tested the app with real users.",
+      "dica": "A gente nunca testou o app com usuários reais.",
+      "img": "📱👥❌",
+      "alvo": "real users",
+      "alvo_pt": "usuários reais",
+      "conceito": "real users = usuários reais (o adjetivo vem antes).",
+      "var": [
+        {
+          "em": "We never tested",
+          "aceita": [
+            "We've never tested",
+            "We have never tested"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a875d",
+      "quem": "mike",
+      "contexto": "f-b6d7b4",
+      "cod": "If we had tested it with real users, we would have caught the problem.",
+      "dica": "Se a gente tivesse testado com usuários reais, teria pegado o problema.",
+      "img": "🐛🔍",
+      "alvo": "real users",
+      "alvo_pt": "usuários reais",
+      "conceito": "catch a bug / a problem = pegar um bug, um problema. O it (o app) pode ficar implícito.",
+      "var": [
+        {
+          "em": "caught",
+          "aceita": [
+            "found"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR57",
+        "BR18"
+      ],
+      "armadilhas": [
+        "would",
+        "tested"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "opcional": [
+        "it"
+      ]
+    },
+    {
+      "id": "f-8174d6",
+      "quem": "sarah",
+      "cod": "The requirements changed three times.",
+      "dica": "Os requisitos mudaram três vezes.",
+      "img": "📄🔄",
+      "alvo": "requirements",
+      "alvo_pt": "requisitos",
+      "conceito": "requirement = requisito (não requerimento).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6caad4",
+      "quem": "ana",
+      "contexto": "f-8174d6",
+      "cod": "We would have finished on time if the requirements had been clearer.",
+      "dica": "A gente teria terminado no prazo se os requisitos tivessem sido mais claros.",
+      "img": "📄✨⏰",
+      "alvo": "requirements",
+      "alvo_pt": "requisitos",
+      "conceito": "Com o if no meio, sem vírgula. on time = no prazo.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "were"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-500f4a",
+      "quem": "voce",
+      "cod": "If I had had more time last sprint, I would have written more tests.",
+      "dica": "Se eu tivesse tido mais tempo na última sprint, teria escrito mais testes.",
+      "img": "⏳🧪",
+      "alvo": "had had",
+      "alvo_pt": "tivesse tido",
+      "conceito": "had had: o 1º had é o auxiliar, o 2º é o verbo ter.",
+      "var": [
+        {
+          "em": "last sprint",
+          "aceita": [
+            "in the last sprint",
+            "during the last sprint"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR57"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4e5dff",
+      "quem": "sarah",
+      "cod": "What would you have done differently, Ana?",
+      "dica": "O que você teria feito diferente, Ana?",
+      "img": "🤔🔀",
+      "alvo": "What would you have done",
+      "alvo_pt": "O que você teria feito",
+      "conceito": "diferente (de outro jeito) = differently.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ccdcd2",
+      "quem": "ana",
+      "contexto": "f-4e5dff",
+      "cod": "If we had had a prototype, I would have shown it to users.",
+      "dica": "Se a gente tivesse tido um protótipo, eu teria mostrado pros usuários.",
+      "img": "🖼️👀",
+      "alvo": "had had",
+      "alvo_pt": "tivesse tido",
+      "conceito": "show it to someone: o objeto it é obrigatório.",
+      "var": [
+        {
+          "em": "to users",
+          "aceita": [
+            "to the users",
+            "to real users"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR57",
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c64f8",
+      "quem": "mike",
+      "cod": "What would you have done if the client had said no?",
+      "dica": "O que você teria feito se o cliente tivesse dito não?",
+      "img": "🙅❓",
+      "alvo": "What would you have done",
+      "alvo_pt": "O que você teria feito",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

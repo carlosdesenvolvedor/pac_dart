@@ -1,0 +1,224 @@
+{
+  "id": "passado-was-were.tinha-muita-gente-there-was",
+  "trilha": "passado-was-were",
+  "nome": "Tinha muita gente: there was",
+  "emoji": "👥",
+  "cena": "Segunda de manhã, você conta para a Ana como estava o trânsito hoje e como foi o show do fim de semana.",
+  "resumo": "Dizer o que tinha num lugar no passado: there was / there were, Was there...? e There wasn't any...",
+  "fechamento": false,
+  "novos": [
+    "There was...",
+    "There were...",
+    "Was there...?",
+    "There wasn't any..."
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Tinha (existia): there was / there were"
+    },
+    {
+      "t": "p",
+      "c": "**Tinha** (existia) = **there was** (uma coisa ou o que não se conta) e **there were** (plural). Pergunta: **Was there...?** Negativa: **There wasn't any...**"
+    },
+    {
+      "t": "ex",
+      "c": "There were a lot of people at the concert.\nTinha muita gente no show."
+    },
+    {
+      "t": "warn",
+      "c": "Tinha muito trânsito = *There was a lot of traffic* (não: *Had a lot of traffic*). *people* é plural: *there were*."
+    }
+  ],
+  "imagem": "🚗❄️🎤",
+  "visualizacao": "Você tira o casaco cheio de neve e senta perto da Ana. Lá fora, buzinas e carros parados; na sua cabeça, ainda o barulho do show de sábado.",
+  "foto_busca": "city traffic jam snow",
+  "trechos": [
+    {
+      "id": "f-fbbd6b",
+      "quem": "voce",
+      "cod": "There was a lot of traffic this morning.",
+      "dica": "Tinha muito trânsito hoje de manhã.",
+      "img": "🚗🚕🚙",
+      "alvo": "There was",
+      "alvo_pt": "Tinha",
+      "lit": "[lit.: havia muito trânsito]",
+      "conceito": "Tinha (existia) = there was; had é posse (não: Had a lot of traffic).",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR05"
+      ],
+      "armadilhas": [
+        "had",
+        "have"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4fc363",
+      "quem": "ana",
+      "contexto": "f-fbbd6b",
+      "cod": "Was there a lot of snow?",
+      "dica": "Tinha muita neve?",
+      "img": "❄️🚗❓",
+      "alvo": "Was there",
+      "alvo_pt": "Tinha",
+      "conceito": "Na pergunta, was vem antes de there: Was there...?",
+      "var": [
+        {
+          "em": "a lot of",
+          "aceita": [
+            "much"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "had"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 418879,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"There was a lot of snow last year.\"; virou pergunta, sem last year; PT reescrito (original: \"Havia muita neve no ano passado.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-18fe4c",
+      "quem": "voce",
+      "contexto": "f-4fc363",
+      "cod": "Yes, and there was a problem on the subway.",
+      "dica": "Sim, e teve um problema no metrô.",
+      "img": "🚇⚠️",
+      "alvo": "there was",
+      "alvo_pt": "teve",
+      "conceito": "teve (aconteceu) também é there was.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR17"
+      ],
+      "armadilhas": [
+        "had"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dacf33",
+      "quem": "voce",
+      "cod": "There were a lot of people at the concert.",
+      "dica": "Tinha muita gente no show.",
+      "img": "🎤👥👥",
+      "alvo": "There were",
+      "alvo_pt": "Tinha",
+      "conceito": "people é plural: there were a lot of people (não: there was).",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR14"
+      ],
+      "armadilhas": [
+        "was",
+        "had"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2779224,
+        "en_autor": "_undertoad",
+        "pt_id": 3515924,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"There were a lot of people on the street.\"; on the street → at the concert; PT original: \"Tinha muita gente na rua.\"; PT: na rua → no show",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-619100",
+      "quem": "ana",
+      "contexto": "f-dacf33",
+      "cod": "Was there any food at the concert?",
+      "dica": "Tinha comida no show?",
+      "img": "🍔❓",
+      "alvo": "Was there",
+      "alvo_pt": "Tinha",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "had"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d89762",
+      "quem": "voce",
+      "contexto": "f-619100",
+      "cod": "No, there wasn't any food.",
+      "dica": "Não, não tinha comida.",
+      "img": "🍔🚫",
+      "alvo": "there wasn't any",
+      "alvo_pt": "não tinha",
+      "conceito": "Não tinha X = there wasn't any X (any na negativa).",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "had",
+        "no"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-876322",
+      "quem": "voce",
+      "cod": "And there wasn't any hot water at the hotel.",
+      "dica": "E não tinha água quente no hotel.",
+      "img": "🚿🥶",
+      "alvo": "there wasn't any",
+      "alvo_pt": "não tinha",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "had"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cfa08a",
+      "quem": "ana",
+      "cod": "On Friday, there were five bugs in the app.",
+      "dica": "Na sexta, tinha cinco bugs no app.",
+      "img": "🐛🐛📱",
+      "alvo": "there were",
+      "alvo_pt": "tinha",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR15"
+      ],
+      "armadilhas": [
+        "was",
+        "had"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

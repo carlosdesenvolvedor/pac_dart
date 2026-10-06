@@ -1,0 +1,211 @@
+{
+  "id": "revisao-b2.lancamento-adiado-propor-e-objetar",
+  "trilha": "revisao-b2",
+  "nome": "Lançamento adiado: propor e objetar",
+  "emoji": "📉",
+  "cena": "Numa reunião de emergência, o time descobre que o lançamento vai atrasar e discute o que fazer.",
+  "resumo": "Propor com What I'd suggest is..., objetar com I see your point, but if... e cobrar com should have been + particípio.",
+  "fechamento": false,
+  "novos": [
+    "stakeholders",
+    "release candidate",
+    "go-live",
+    "slip (a date)"
+  ],
+  "apoio": [
+    "I see your point",
+    "look into",
+    "be likely to",
+    "contingency plan (plano de contingência)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Reunião de crise"
+    },
+    {
+      "t": "p",
+      "c": "**stakeholders** = as partes interessadas (no PT corporativo, também stakeholders). **release candidate** = a versão candidata a ir pro ar. **go-live** = a entrada no ar. **slip** = a data escorregar, atrasar."
+    },
+    {
+      "t": "tip",
+      "c": "Objetar com educação: **I see your point, but if** + presente (não: if it will slip)."
+    },
+    {
+      "t": "warn",
+      "c": "Deveria ter sido + particípio = **should have been** + particípio: The date should have been shared."
+    },
+    {
+      "t": "ex",
+      "c": "What I'd suggest is shipping a release candidate on Friday.\nO que eu sugeriria é lançar uma release candidate na sexta."
+    }
+  ],
+  "imagem": "📉🚨👥",
+  "visualizacao": "Você está numa reunião virtual lotada. Na tela, a data do lançamento riscada em vermelho; a Sarah fala rápido, o Mike franze a testa e todos esperam a sua proposta.",
+  "foto_busca": "tense team meeting whiteboard",
+  "trechos": [
+    {
+      "id": "f-7c7b12",
+      "quem": "mike",
+      "cod": "We need to tell the stakeholders today.",
+      "dica": "A gente precisa avisar os stakeholders hoje.",
+      "img": "📣👥📅",
+      "alvo": "stakeholders",
+      "alvo_pt": "stakeholders",
+      "conceito": "stakeholders = as partes interessadas: cliente, diretoria, outros times.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-76b3cb",
+      "quem": "sarah",
+      "cod": "The go-live date is likely to slip by two weeks.",
+      "dica": "É provável que a data do go-live escorregue duas semanas.",
+      "img": "📅⬇️😬",
+      "alvo": "slip",
+      "alvo_pt": "escorregue",
+      "conceito": "slip = escorregar (a data): atrasar. be likely to = é provável que.",
+      "var": [
+        {
+          "em": "is likely to slip",
+          "aceita": [
+            "will probably slip"
+          ]
+        }
+      ],
+      "opcional": [
+        "by"
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-242af0",
+      "quem": "voce",
+      "contexto": "Let's just postpone the go-live and tell the client later.",
+      "cod": "I see your point, but if the go-live slips, we might lose the client.",
+      "dica": "Entendo o seu ponto, mas, se o go-live escorregar, talvez a gente perca o cliente.",
+      "img": "🤔⚠️💼",
+      "alvo": "go-live",
+      "alvo_pt": "go-live",
+      "conceito": "if + presente para o futuro: if the go-live slips (não: if it will slip). talvez = might.",
+      "var": [
+        {
+          "em": "might",
+          "aceita": [
+            "could"
+          ]
+        }
+      ],
+      "blocos": [
+        9
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28",
+        "BR57"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-81ecca",
+      "quem": "voce",
+      "cod": "What I'd suggest is shipping a release candidate on Friday.",
+      "dica": "O que eu sugeriria é lançar uma release candidate na sexta.",
+      "img": "💡📦📅",
+      "alvo": "release candidate",
+      "alvo_pt": "release candidate",
+      "conceito": "What I'd suggest is + -ing = O que eu sugeriria é...: clivada para propor.",
+      "var": [
+        {
+          "em": "shipping",
+          "aceita": [
+            "releasing",
+            "launching"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-39187d",
+      "quem": "mike",
+      "contexto": "f-81ecca",
+      "cod": "Our release candidate should have been tested last week.",
+      "dica": "A nossa release candidate deveria ter sido testada na semana passada.",
+      "img": "🧪⏪📦",
+      "alvo": "release candidate",
+      "alvo_pt": "release candidate",
+      "conceito": "deveria ter sido + particípio = should have been + particípio.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "test"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f4683b",
+      "quem": "sarah",
+      "cod": "The new date should have been shared with the stakeholders yesterday.",
+      "dica": "A nova data deveria ter sido compartilhada com os stakeholders ontem.",
+      "img": "📅📤👥",
+      "alvo": "stakeholders",
+      "alvo_pt": "stakeholders",
+      "conceito": "Passiva com modal no passado: should have been shared.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fab4f4",
+      "quem": "voce",
+      "cod": "Have we looked into what's blocking the go-live?",
+      "dica": "A gente já investigou o que está travando o go-live?",
+      "img": "🔍🚧❓",
+      "alvo": "go-live",
+      "alvo_pt": "go-live",
+      "conceito": "look into = investigar. Pergunta com já = present perfect.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR60"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1df321",
+      "quem": "mike",
+      "cod": "If the date slips again, we'll need a contingency plan.",
+      "dica": "Se a data escorregar de novo, a gente vai precisar de um plano de contingência.",
+      "img": "🔁📅🛟",
+      "alvo": "slips",
+      "alvo_pt": "escorregar",
+      "conceito": "contingency plan = plano de contingência, o plano B. If + presente: if the date slips.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR02"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

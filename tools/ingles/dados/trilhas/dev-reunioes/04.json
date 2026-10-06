@@ -1,0 +1,205 @@
+{
+  "id": "dev-reunioes.sprint-planning-completo",
+  "trilha": "dev-reunioes",
+  "nome": "Sprint planning completo",
+  "emoji": "🗓️",
+  "cena": "Segunda de manhã, sprint planning com Mike, Sarah e Ana, da abertura até quem fica com cada tarefa.",
+  "resumo": "Cena de fechamento: abrir, esclarecer, estimar e fechar a reunião com tudo da trilha.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "Let's get started",
+    "Just to clarify",
+    "I'm not sure I follow",
+    "I'd say",
+    "at least",
+    "take this offline",
+    "running out of time",
+    "recap",
+    "action items",
+    "own"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Um planning do começo ao fim"
+    },
+    {
+      "t": "p",
+      "c": "Abrir (Let's get started), esclarecer (Just to clarify, I'm not sure I follow), estimar (I'd say, at least) e fechar (take this offline, recap the action items, own)."
+    },
+    {
+      "t": "warn",
+      "c": "Pergunta dentro de pergunta fica na ordem normal: Do you know when it'll be ready? (não: when will it be ready)."
+    },
+    {
+      "t": "ex",
+      "c": "Just to clarify, who's going to own the payment bug?\nSó para esclarecer: quem vai ficar responsável pelo bug do pagamento?"
+    }
+  ],
+  "imagem": "🗓️💻☕",
+  "visualizacao": "Segunda, nove da manhã. Você vê quatro rostos na chamada e o backlog na tela, com o primeiro café ainda quente. O Mike abre o planning.",
+  "foto_busca": "developers planning meeting laptops coffee",
+  "trechos": [
+    {
+      "id": "f-e4368b",
+      "quem": "mike",
+      "cod": "Good morning, everyone. Let's get started with the backlog.",
+      "dica": "(abrindo a reunião) Bom dia, pessoal. Vamos começar pelo backlog.",
+      "img": "☀️📋",
+      "alvo": "Let's get started",
+      "alvo_pt": "Vamos começar",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6f9222",
+      "quem": "sarah",
+      "cod": "The first user story depends on the API.",
+      "dica": "A primeira user story depende da API.",
+      "img": "🔗🧩",
+      "alvo": "depends on",
+      "alvo_pt": "depende da",
+      "conceito": "depends: -s da 3ª pessoa; depend on = depender de.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "depend",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dd2677",
+      "quem": "voce",
+      "contexto": "f-6f9222",
+      "cod": "I'm not sure I follow. Do you mean the old API?",
+      "dica": "Não sei se acompanhei. Você quer dizer a API antiga?",
+      "img": "🤔🔙",
+      "alvo": "I'm not sure I follow",
+      "alvo_pt": "Não sei se acompanhei",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aa3378",
+      "quem": "sarah",
+      "contexto": "f-dd2677",
+      "cod": "No, the new one. Do you know when it'll be ready?",
+      "dica": "Não, a nova. Você sabe quando vai ficar pronta?",
+      "img": "✨⏰",
+      "alvo": "Do you know when",
+      "alvo_pt": "Você sabe quando",
+      "conceito": "Dentro da pergunta, ordem normal: when it'll be ready.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR50",
+        "BR01"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-12d3d2",
+      "quem": "mike",
+      "contexto": "f-aa3378",
+      "cod": "I'd say it'll take at least a week, unless we get help.",
+      "dica": "Eu diria que vai levar pelo menos uma semana, a não ser que a gente consiga ajuda.",
+      "img": "🗓️🙋",
+      "alvo": "at least",
+      "alvo_pt": "pelo menos",
+      "conceito": "unless = a não ser que (com presente em inglês).",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7b9440",
+      "quem": "ana",
+      "cod": "Just to clarify, what's this filter supposed to do?",
+      "dica": "Só para esclarecer: esse filtro é pra fazer o quê?",
+      "img": "🔍❓",
+      "alvo": "Just to clarify",
+      "alvo_pt": "Só para esclarecer",
+      "conceito": "be supposed to = é pra (o que se espera de algo).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-676ec5",
+      "quem": "sarah",
+      "contexto": "f-7b9440",
+      "cod": "It only shows the products that the user saved.",
+      "dica": "Só mostra os produtos que o usuário salvou.",
+      "img": "💾🛍️",
+      "conceito": "It só mostra: o inglês não deixa o sujeito cair; shows com -s.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c12cda",
+      "quem": "voce",
+      "cod": "We don't have enough time today. Let's take this offline.",
+      "dica": "A gente não tem tempo suficiente hoje. Vamos tratar disso fora da reunião.",
+      "img": "⏳📴",
+      "alvo": "take this offline",
+      "alvo_pt": "tratar disso fora da reunião",
+      "conceito": "enough time = tempo suficiente (enough antes do substantivo).",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d2ad86",
+      "quem": "sarah",
+      "cod": "We're running out of time, so let's recap the action items.",
+      "dica": "Estamos ficando sem tempo, então vamos recapitular os action items.",
+      "img": "⌛📋",
+      "alvo": "running out of time",
+      "alvo_pt": "ficando sem tempo",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-622881",
+      "quem": "mike",
+      "cod": "Ana owns the designs, and I own the API.",
+      "dica": "A Ana fica responsável pelos designs, e eu, pela API.",
+      "img": "🎨🔌",
+      "alvo": "owns",
+      "alvo_pt": "fica responsável",
+      "conceito": "Ana owns: -s da 3ª pessoa; I own: sem -s.",
+      "registro": "neutro",
+      "armadilhas": [
+        "own"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,235 @@
+{
+  "id": "argumentar-conectores.resumindo-no-geral",
+  "trilha": "argumentar-conectores",
+  "nome": "Resumindo, no geral",
+  "emoji": "🧮",
+  "cena": "Você fecha o e-mail de recomendação com uma conclusão clara para o Mike e a Sarah.",
+  "resumo": "Concluir um argumento com to sum up, overall, in the long term e outweigh.",
+  "fechamento": false,
+  "novos": [
+    "to sum up",
+    "overall",
+    "in the long term",
+    "outweigh"
+  ],
+  "apoio": [
+    "in the short term",
+    "benefit",
+    "integration test"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fechar o argumento"
+    },
+    {
+      "t": "p",
+      "c": "**To sum up,** = resumindo. **Overall,** = no geral. **in the long term** = a longo prazo (in the short term = a curto prazo). **outweigh** = superar, pesar mais que."
+    },
+    {
+      "t": "warn",
+      "c": "resumindo = to sum up (não: resuming, que é retomar). E a longo prazo = in the long term (não: in long term)."
+    },
+    {
+      "t": "ex",
+      "c": "To sum up, the benefits clearly outweigh the costs.\nResumindo, os benefícios claramente superam os custos."
+    }
+  ],
+  "imagem": "📧📈✅",
+  "visualizacao": "Fim de tarde. Você relê o e-mail inteiro, ajusta o último parágrafo e deixa o mouse parado sobre o botão de enviar.",
+  "foto_busca": "business email conclusion laptop office",
+  "trechos": [
+    {
+      "id": "f-fefe7a",
+      "quem": "voce",
+      "cod": "Overall, the first month with the new tool went well.",
+      "dica": "No geral, o primeiro mês com a ferramenta nova foi bem.",
+      "img": "🗓️🛠️👍",
+      "alvo": "Overall",
+      "alvo_pt": "No geral",
+      "conceito": "Overall, no começo = no geral, de modo geral.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "general"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fc40ca",
+      "quem": "voce",
+      "cod": "In the long term, this tool will save us a lot of money.",
+      "dica": "A longo prazo, essa ferramenta vai nos economizar muito dinheiro.",
+      "img": "📆💰",
+      "alvo": "In the long term",
+      "alvo_pt": "A longo prazo",
+      "conceito": "save us money = nos economizar dinheiro (sem for); a longo prazo = in the long term.",
+      "var": [
+        {
+          "em": "will save",
+          "aceita": [
+            "is going to save"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "long-term"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b1bf86",
+      "quem": "voce",
+      "cod": "It costs more in the short term, but it's cheaper in the long term.",
+      "dica": "Custa mais a curto prazo, mas sai mais barato a longo prazo.",
+      "img": "📉📈💵",
+      "alvo": "in the long term",
+      "alvo_pt": "a longo prazo",
+      "conceito": "Custa / sai: o inglês exige o sujeito it nas duas orações.",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01",
+        "BR02"
+      ],
+      "armadilhas": [
+        "cost",
+        "more"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3cb37a",
+      "quem": "voce",
+      "cod": "So far, the benefits have outweighed the costs.",
+      "dica": "Até agora, os benefícios superaram os custos.",
+      "img": "⚖️👍",
+      "alvo": "outweighed",
+      "alvo_pt": "superaram",
+      "conceito": "Até agora = so far + present perfect (o período ainda não acabou).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "outweigh",
+        "overcame"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2f172c",
+      "quem": "mike",
+      "contexto": "f-3cb37a",
+      "cod": "Do the benefits really outweigh the license fee?",
+      "dica": "Os benefícios realmente superam o valor da licença?",
+      "img": "🤔⚖️🧾",
+      "alvo": "outweigh",
+      "alvo_pt": "superam",
+      "conceito": "Pergunta com do: Do the benefits... outweigh? (verbo na forma base).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "outweighs",
+        "overcome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bbe200",
+      "quem": "voce",
+      "contexto": "f-2f172c",
+      "cod": "To sum up, the tool saves each developer five hours a week.",
+      "dica": "Resumindo, a ferramenta economiza cinco horas por semana para cada desenvolvedor.",
+      "img": "⏱️👩‍💻💚",
+      "alvo": "To sum up",
+      "alvo_pt": "Resumindo",
+      "conceito": "resumindo = to sum up (não: resuming, que é retomar).",
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56",
+        "BR02"
+      ],
+      "armadilhas": [
+        "resuming",
+        "save"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "saves each developer five hours a week",
+          "aceita": [
+            "saves five hours a week for each developer"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-55600b",
+      "quem": "voce",
+      "cod": "To sum up, I recommend buying the full license.",
+      "dica": "Resumindo, recomendo comprar a licença completa.",
+      "img": "🛒🧾✅",
+      "alvo": "To sum up",
+      "alvo_pt": "Resumindo",
+      "conceito": "recommend + -ing: recommend buying (não: recommend to buy).",
+      "var": [
+        {
+          "em": "buying",
+          "aceita": [
+            "that we buy",
+            "we buy"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "resuming",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-067c34",
+      "quem": "sarah",
+      "contexto": "f-55600b",
+      "cod": "Overall, I agree. Let's discuss it at our next meeting.",
+      "dica": "No geral, eu concordo. Vamos discutir isso na nossa próxima reunião.",
+      "img": "🤝📅",
+      "alvo": "Overall",
+      "alvo_pt": "No geral",
+      "conceito": "discuss sem about (não: discuss about it); concordo = I agree (não: I am agree).",
+      "var": [
+        {
+          "em": "at our",
+          "aceita": [
+            "in our"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "about",
+        "am"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -4,10 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/linguagem/linguagem.dart';
 import '../../../../core/syntax/tokenizer.dart';
 import '../../../../core/som/sons.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../../../core/util/codigo_executavel.dart';
+import '../../../../core/util/abrir_url.dart';
+import '../../../../core/util/programa_csharp.dart';
+import '../../../../core/util/sharplab.dart';
 import '../../../dartpad/dartpad_page.dart';
 import '../bloc/typing_bloc.dart';
 import 'pacman.dart';
@@ -43,6 +47,13 @@ class CodeView extends StatefulWidget {
   /// Esc na tela de vitória: segue o fluxo SEM o quiz.
   final VoidCallback? onPularQuiz;
 
+  /// Linguagem própria do trecho quando não é código do curso (bash, json,
+  /// xml, sql…): muda o destaque e o botão copiar entrega o texto puro.
+  final String variante;
+
+  /// Perfil da trilha C# (console, web, testes, unity…) — diz onde colar.
+  final String perfil;
+
   const CodeView({
     super.key,
     required this.onAvancar,
@@ -54,6 +65,8 @@ class CodeView extends StatefulWidget {
     this.titulo = 'Exercício',
     this.podeRodar = false,
     this.contexto = const [],
+    this.variante = '',
+    this.perfil = '',
   });
 
   @override
@@ -131,6 +144,25 @@ class _CodeViewState extends State<CodeView> {
     }
   }
 
+  /// Rodar: no Dart, o DartPad embutido; no C#, o SharpLab numa aba nova
+  /// (já no modo Run, com os usings do dotnet e a cultura pt-BR).
+  void _rodar() {
+    final csharp = widget.variante == 'cs' || (widget.variante.isEmpty && Linguagem.atual == Linguagem.csharp);
+    if (!csharp) return _abrirDartPad();
+    final cod = context.read<TypingBloc>().state.chars.join();
+    final url = urlSharpLab(programaCSharp([...widget.contexto, cod], paraSharpLab: true));
+    final abriu = abrirUrl(url);
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      backgroundColor: Mixart.surfaceHi,
+      duration: const Duration(seconds: 4),
+      content: Text(
+          abriu
+              ? 'Abrindo no SharpLab (outra aba): ele compila e roda o programa no servidor.'
+              : 'O SharpLab só abre no navegador. Use o botão copiar e rode com dotnet run.',
+          style: Mixart.ui(size: 13, color: Mixart.text)),
+    ));
+  }
+
   /// Abre o exercício atual no DartPad de verdade (tela cheia).
   void _abrirDartPad() {
     final cod = context.read<TypingBloc>().state.chars.join();
@@ -144,15 +176,31 @@ class _CodeViewState extends State<CodeView> {
     ));
   }
 
+  bool get _ehCodigoDoCurso => widget.variante.isEmpty || widget.variante == 'cs' || widget.variante == 'dart';
+
   Future<void> _copiar() async {
     final cod = context.read<TypingBloc>().state.chars.join();
-    await Clipboard.setData(ClipboardData(text: codigoExecutavel(cod, widget.ehFlutter)));
+    // a linguagem do TRECHO manda (variante 'dart'/'cs' vence a vertente em uso)
+    final csharp = widget.variante == 'cs' || (widget.variante.isEmpty && Linguagem.atual == Linguagem.csharp);
+    final String texto;
+    final String aviso;
+    if (!_ehCodigoDoCurso) {
+      texto = cod;
+      aviso = 'Copiado!';
+    } else if (csharp) {
+      // o mesmo programa que o laboratório compilou: contexto + trecho
+      texto = programaCSharp([...widget.contexto, cod]);
+      aviso = 'Código copiado! ${comoRodarCSharp(widget.perfil)}';
+    } else {
+      texto = codigoExecutavel(cod, widget.ehFlutter);
+      aviso = 'Código copiado! Cole no DartPad (dartpad.dev) ou na sua IDE para rodar.';
+    }
+    await Clipboard.setData(ClipboardData(text: texto));
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       backgroundColor: Mixart.surfaceHi,
-      duration: const Duration(seconds: 3),
-      content: Text('Código copiado! Cole no DartPad (dartpad.dev) ou na sua IDE para rodar.',
-          style: Mixart.ui(size: 13, color: Mixart.text)),
+      duration: const Duration(seconds: 4),
+      content: Text(aviso, style: Mixart.ui(size: 13, color: Mixart.text)),
     ));
   }
 
@@ -239,11 +287,13 @@ class _CodeViewState extends State<CodeView> {
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
                   if (widget.podeRodar) ...[
                     _BotaoTopo(
-                      dica: 'Abrir este código no DartPad e rodar de verdade',
+                      dica: Linguagem.atual == Linguagem.csharp
+                          ? 'Rodar este código de verdade no SharpLab (abre outra aba)'
+                          : 'Abrir este código no DartPad e rodar de verdade',
                       icone: Icons.play_arrow_rounded,
                       rotulo: 'rodar',
                       destaque: true,
-                      onTap: _abrirDartPad,
+                      onTap: _rodar,
                     ),
                     const SizedBox(width: 6),
                   ],
@@ -285,9 +335,15 @@ class _CodeViewState extends State<CodeView> {
 
   Widget _codigo(TypingState st, double maxWidth, double alturaMax) {
     if (st.chars.isEmpty) return const SizedBox(height: 60);
-    final fontSize = maxWidth < 560 ? 17.0 : 21.0;
     final cod = st.chars.join();
-    final tipos = tokenizar(cod);
+    // A linha mais comprida tem que caber sem quebrar (linha quebrada confunde
+    // quem digita). JetBrains Mono: cada caractere = 0,6 em + 0,3 de
+    // letterSpacing; encolhe só o necessário, nunca abaixo de 12.
+    final maiorLinha = cod.split('\n').fold<int>(0, (m, l) => math.max(m, l.length));
+    final base = maxWidth < 560 ? 17.0 : 21.0;
+    final cabe = maiorLinha == 0 ? base : ((maxWidth - 12) / maiorLinha - 0.3) / 0.6;
+    final fontSize = cabe < base ? math.max(12.0, cabe) : base;
+    final tipos = tokenizar(cod, variante: widget.variante);
     final estiloBase = Mixart.mono(size: fontSize).copyWith(height: 2.05, letterSpacing: .3);
 
     final spans = <InlineSpan>[];

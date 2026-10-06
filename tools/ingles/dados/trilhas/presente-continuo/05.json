@@ -1,0 +1,210 @@
+{
+  "id": "presente-continuo.esta-de-casaco-wear-e-take-off",
+  "trilha": "presente-continuo",
+  "nome": "Está de casaco? wear e take off",
+  "emoji": "🧥",
+  "cena": "Na casa da Emma, você tira os sapatos na entrada e vocês comentam a roupa do pessoal nas fotos do celular.",
+  "resumo": "Dizer o que alguém está vestindo com wear e pedir para tirar algo com take off.",
+  "fechamento": false,
+  "novos": [
+    "take off (tirar)",
+    "shoes / shirt / T-shirt",
+    "jeans",
+    "wear (usar roupa)"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Usar roupa = wear; tirar = take off"
+    },
+    {
+      "t": "p",
+      "c": "Roupa no corpo: **wear**. She's wearing a red T-shirt. Tirar roupa ou sapato: **take off**."
+    },
+    {
+      "t": "ex",
+      "c": "Please take off your coat.\nPor favor, tira o seu casaco."
+    },
+    {
+      "t": "tip",
+      "c": "Em inglês a roupa leva o dono: your coat, my shoes, our shoes."
+    },
+    {
+      "t": "warn",
+      "c": "Não: She's using jeans. Roupa no corpo é wear, não use."
+    }
+  ],
+  "imagem": "🏠👟🧥",
+  "visualizacao": "Você entra na casa da Emma, tira os sapatos no tapete da porta e sente o chão quente. No sofá, vocês passam fotos no celular e riem das roupas.",
+  "foto_busca": "shoes at front door home",
+  "trechos": [
+    {
+      "id": "f-e7eecd",
+      "quem": "emma",
+      "cod": "Please take off your coat.",
+      "dica": "Por favor, tira o seu casaco.",
+      "img": "🧥🚪",
+      "alvo": "take off",
+      "alvo_pt": "tira",
+      "conceito": "take off = tirar (roupa, sapato). Também vale: take your coat off.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6354279,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Por favor, tire o seu casaco.\"; PT original \"tire\"; reescrito no imperativo falado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-65a96c",
+      "quem": "voce",
+      "contexto": "f-e7eecd",
+      "cod": "Thanks! Do I take off my shoes, too?",
+      "dica": "Obrigado! Eu tiro os sapatos também?",
+      "pt_f": "Obrigada! Eu tiro os sapatos também?",
+      "img": "👟❓",
+      "alvo": "shoes",
+      "alvo_pt": "sapatos",
+      "conceito": "Em inglês, a roupa leva o dono: my shoes (os meus sapatos).",
+      "var": [
+        {
+          "em": "my shoes",
+          "aceita": [
+            "the shoes"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3593d2",
+      "quem": "emma",
+      "contexto": "f-65a96c",
+      "cod": "Yes. We always take off our shoes here.",
+      "dica": "Sim. A gente sempre tira os sapatos aqui.",
+      "img": "👟🏠",
+      "alvo": "take off",
+      "alvo_pt": "tira",
+      "var": [
+        {
+          "em": "our shoes",
+          "aceita": [
+            "the shoes"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-62a609",
+      "quem": "emma",
+      "cod": "Look! My husband is wearing my coat.",
+      "dica": "Olha! Meu marido está usando o meu casaco.",
+      "img": "🖼️🧥😄",
+      "alvo": "wearing",
+      "alvo_pt": "usando",
+      "conceito": "Usar roupa = wear (não: use). Está usando = is wearing.",
+      "registro": "informal",
+      "interferencias": [
+        "BR39"
+      ],
+      "armadilhas": [
+        "using",
+        "use"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6b6c76",
+      "quem": "voce",
+      "contexto": "f-62a609",
+      "cod": "And you're wearing a red T-shirt.",
+      "dica": "E você está usando uma camiseta vermelha.",
+      "img": "👕🔴",
+      "alvo": "T-shirt",
+      "alvo_pt": "camiseta",
+      "conceito": "T-shirt = camiseta; shirt = camisa (de botão). A cor vem antes: a red T-shirt.",
+      "registro": "informal",
+      "interferencias": [
+        "BR08",
+        "BR39"
+      ],
+      "armadilhas": [
+        "using",
+        "shirt"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-73534d",
+      "quem": "voce",
+      "cod": "This is Mike. He always wears jeans.",
+      "dica": "Esse é o Mike. Ele sempre usa calça jeans.",
+      "img": "👖👨",
+      "alvo": "jeans",
+      "alvo_pt": "calça jeans",
+      "conceito": "calça jeans = jeans (sem pants). Rotina no simples: he always wears.",
+      "registro": "informal",
+      "interferencias": [
+        "BR39"
+      ],
+      "armadilhas": [
+        "uses",
+        "use"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c92427",
+      "quem": "emma",
+      "contexto": "f-73534d",
+      "cod": "You're wearing jeans today, too!",
+      "dica": "Você também está de calça jeans hoje!",
+      "img": "👖📅",
+      "alvo": "jeans",
+      "alvo_pt": "calça jeans",
+      "conceito": "Estar de (roupa) = be wearing: Você está de jeans = You're wearing jeans.",
+      "var": [
+        {
+          "em": "You're wearing jeans today, too",
+          "aceita": [
+            "You're also wearing jeans today"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR39"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6c0c7c",
+      "quem": "emma",
+      "cod": "What do you usually wear at work?",
+      "dica": "O que você normalmente usa no trabalho?",
+      "img": "💼👔",
+      "alvo": "wear",
+      "alvo_pt": "usa",
+      "registro": "informal",
+      "interferencias": [
+        "BR39",
+        "BR16"
+      ],
+      "armadilhas": [
+        "use"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

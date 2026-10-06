@@ -1,0 +1,238 @@
+{
+  "id": "funcoes-conversa-b2.isso-eu-consigo-aceitar",
+  "trilha": "funcoes-conversa-b2",
+  "nome": "Isso eu consigo aceitar",
+  "emoji": "💬",
+  "cena": "Numa call a sós, você negocia com a Sarah um prazo novo em troca de mais gente no time.",
+  "resumo": "Negociar prazo e condições até fechar o acordo.",
+  "fechamento": false,
+  "novos": [
+    "I could live with that",
+    "willing to",
+    "meet halfway",
+    "it's a deal"
+  ],
+  "apoio": [
+    "condition"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Negociar condições"
+    },
+    {
+      "t": "p",
+      "c": "**Would you be willing to...?** = Você estaria disposto a...? **I could live with that.** = Isso eu consigo aceitar. **meet halfway** = chegar num meio-termo. **It's a deal.** = Fechado."
+    },
+    {
+      "t": "warn",
+      "c": "Estar disposto a = **be willing to** (não: be disposed to)."
+    },
+    {
+      "t": "ex",
+      "c": "I could live with that if we get one more developer.\nIsso eu consigo aceitar, se a gente ganhar mais um desenvolvedor."
+    }
+  ],
+  "imagem": "🤝📅⚖️",
+  "visualizacao": "Você está numa call a sós com a Sarah. Na tela, o calendário do lançamento cheio de marcações; ela sorri de leve e espera a sua proposta.",
+  "foto_busca": "business negotiation video call",
+  "trechos": [
+    {
+      "id": "f-da6016",
+      "quem": "voce",
+      "cod": "Would you be willing to extend the deadline by a week?",
+      "dica": "Você estaria disposta a estender o prazo em uma semana?",
+      "img": "📅➕🙏",
+      "alvo": "willing to",
+      "alvo_pt": "disposta a",
+      "conceito": "estar disposto a = be willing to (não: be disposed to).",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "disposed"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a week",
+          "aceita": [
+            "one week"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8458e1",
+      "quem": "sarah",
+      "contexto": "f-da6016",
+      "cod": "I'm willing to try, but we'd have to cut a few features.",
+      "dica": "Estou disposta a tentar, mas a gente teria que cortar algumas features.",
+      "img": "✂️📋🤔",
+      "alvo": "willing to",
+      "alvo_pt": "disposta a",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3819041,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm willing to try.\" (acrescentado but we'd have to cut a few features); PT reescrito (original: \"Estou disposto a tentar.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "a few",
+          "aceita": [
+            "some"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-790a7b",
+      "quem": "voce",
+      "contexto": "f-8458e1",
+      "cod": "I could live with that if we keep the login.",
+      "dica": "Isso eu consigo aceitar, se a gente mantiver o login.",
+      "img": "🔐🙂👌",
+      "alvo": "I could live with that",
+      "alvo_pt": "Isso eu consigo aceitar",
+      "conceito": "I could live with that = isso eu consigo aceitar: não é o ideal, mas serve.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "could",
+          "aceita": [
+            "can"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-aef08c",
+      "quem": "sarah",
+      "cod": "How about we meet halfway and launch on the twentieth?",
+      "dica": "Que tal a gente chegar num meio-termo e lançar no dia vinte?",
+      "img": "🤝↔️🚀",
+      "alvo": "meet halfway",
+      "alvo_pt": "chegar num meio-termo",
+      "conceito": "meet halfway = chegar num meio-termo, cada um cede um pouco.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-50f16f",
+      "quem": "voce",
+      "contexto": "f-aef08c",
+      "cod": "I could live with that if we get one more developer.",
+      "dica": "Isso eu consigo aceitar, se a gente ganhar mais um desenvolvedor.",
+      "img": "👩‍💻➕👍",
+      "alvo": "I could live with that",
+      "alvo_pt": "Isso eu consigo aceitar",
+      "var": [
+        {
+          "em": "get",
+          "aceita": [
+            "have"
+          ]
+        },
+        {
+          "em": "could",
+          "aceita": [
+            "can"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e88a0a",
+      "quem": "sarah",
+      "contexto": "f-50f16f",
+      "cod": "Okay, one more developer until launch. It's a deal.",
+      "dica": "Tá bom, mais um desenvolvedor até o lançamento. Fechado.",
+      "img": "🤝✅🎉",
+      "alvo": "It's a deal",
+      "alvo_pt": "Fechado",
+      "conceito": "It's a deal. = Fechado! / Negócio fechado.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Okay",
+          "aceita": [
+            "OK"
+          ]
+        },
+        {
+          "em": "until launch",
+          "aceita": [
+            "until the launch"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7f6cce",
+      "quem": "voce",
+      "contexto": "f-e88a0a",
+      "cod": "Thanks for meeting me halfway.",
+      "dica": "Obrigado por chegar num meio-termo comigo.",
+      "pt_f": "Obrigada por chegar num meio-termo comigo.",
+      "img": "🙏🤝😊",
+      "alvo": "meeting me halfway",
+      "alvo_pt": "chegar num meio-termo",
+      "conceito": "Depois de preposição, -ing: Thanks for meeting...",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b84c1a",
+      "quem": "voce",
+      "contexto": "So, launch on the twentieth with one more developer?",
+      "cod": "Yes, it's a deal. I'll let the team know today.",
+      "dica": "Sim, fechado. Vou avisar o time hoje.",
+      "img": "🤝📣✅",
+      "alvo": "it's a deal",
+      "alvo_pt": "fechado",
+      "conceito": "It's a deal. = Fechado! (aceitar a proposta); let the team know = avisar o time.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "let the team know",
+          "aceita": [
+            "tell the team"
+          ]
+        }
+      ]
+    }
+  ]
+}

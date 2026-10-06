@@ -1,0 +1,223 @@
+{
+  "id": "situacao-hotel.probleminhas-no-quarto",
+  "trilha": "situacao-hotel",
+  "nome": "Probleminhas no quarto",
+  "emoji": "🧺",
+  "cena": "Na primeira noite o quarto é barulhento; de manhã falta toalha e água quente; no último dia, você pede um táxi para o aeroporto.",
+  "resumo": "Avisar de um problema simples, pedir mais uma coisa com another e agradecer a ajuda.",
+  "fechamento": false,
+  "novos": [
+    "another",
+    "Another towel, please.",
+    "noisy",
+    "help"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pequenos problemas no hotel"
+    },
+    {
+      "t": "p",
+      "c": "Para reclamar, **be + adjetivo**: My room is very noisy (meu quarto está muito barulhento). Para pedir mais uma coisa: **another** + coisa."
+    },
+    {
+      "t": "ex",
+      "c": "Another towel, please.\nOutra toalha, por favor."
+    },
+    {
+      "t": "warn",
+      "c": "Estar barulhento = **be** noisy: My room **is** noisy (não: My room noisy). Sem o be, a frase fica sem verbo."
+    },
+    {
+      "t": "tip",
+      "c": "Obrigado pela ajuda = Thanks for your help. Água quente = **hot water**: o adjetivo vem antes."
+    }
+  ],
+  "imagem": "🛏️🔊🧺",
+  "visualizacao": "É tarde e o barulho da rua não deixa você dormir. Você desce de chinelo até a recepção; o saguão está vazio e o recepcionista levanta os olhos.",
+  "foto_busca": "hotel room towels bed",
+  "trechos": [
+    {
+      "id": "f-c8b6f8",
+      "quem": "voce",
+      "cod": "Excuse me, my room is very noisy.",
+      "dica": "Com licença, o meu quarto está muito barulhento.",
+      "img": "🛏️🔊",
+      "alvo": "noisy",
+      "alvo_pt": "barulhento",
+      "lit": "[lit.: meu quarto é muito barulhento]",
+      "conceito": "Estar + adjetivo = be + adjetivo: my room is noisy.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR04"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-517855",
+      "quem": "recepcionista",
+      "contexto": "f-c8b6f8",
+      "cod": "I'm sorry. How about another room?",
+      "dica": "Sinto muito. Que tal outro quarto?",
+      "img": "🔄🚪",
+      "alvo": "another",
+      "alvo_pt": "outro",
+      "conceito": "another = outro, outra (mais um ou um diferente).",
+      "var": [
+        {
+          "em": "How about",
+          "aceita": [
+            "What about"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-430232",
+      "quem": "voce",
+      "contexto": "f-517855",
+      "cod": "Yes, please. Thanks for your help.",
+      "dica": "Sim, por favor. Obrigado pela ajuda.",
+      "pt_f": "Sim, por favor. Obrigada pela ajuda.",
+      "img": "🙏😊",
+      "alvo": "help",
+      "alvo_pt": "ajuda",
+      "conceito": "Obrigado pela ajuda = Thanks for your help (for + coisa).",
+      "var": [
+        {
+          "em": "Thanks",
+          "aceita": [
+            "Thank you"
+          ]
+        },
+        {
+          "em": "your help",
+          "aceita": [
+            "the help"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b69951",
+      "quem": "voce",
+      "contexto": "Front desk. Good morning!",
+      "cod": "Good morning. Another towel, please.",
+      "dica": "Bom dia. Outra toalha, por favor.",
+      "img": "🚿🧺",
+      "alvo": "Another towel, please",
+      "alvo_pt": "Outra toalha, por favor",
+      "conceito": "towel = toalha.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d40b04",
+      "quem": "voce",
+      "contexto": "Sure. How's the new room?",
+      "cod": "It's great. It isn't noisy.",
+      "dica": "Está ótimo. Não está barulhento.",
+      "img": "🤫🛏️",
+      "alvo": "noisy",
+      "alvo_pt": "barulhento",
+      "conceito": "Não está barulhento = it isn't noisy: be + not + adjetivo.",
+      "var": [
+        {
+          "em": "It isn't",
+          "aceita": [
+            "It's not"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f883fa",
+      "quem": "voce",
+      "cod": "I have another question. What time is checkout?",
+      "dica": "Tenho outra pergunta. Que horas é o check-out?",
+      "img": "❓🕚",
+      "alvo": "another",
+      "alvo_pt": "outra",
+      "conceito": "checkout = check-out, a hora de sair do hotel.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1887358,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentada a pergunta What time is checkout?; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8f598f",
+      "quem": "voce",
+      "contexto": "Front desk. How can I help you?",
+      "cod": "There's no hot water. And another towel, please.",
+      "dica": "Não tem água quente. E outra toalha, por favor.",
+      "img": "🚿🥶",
+      "alvo": "another towel, please",
+      "alvo_pt": "outra toalha, por favor",
+      "conceito": "Não tem (está faltando) = there's no: there's no hot water.",
+      "registro": "neutro",
+      "variacao_de": "f-b69951",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2217696,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado And another towel, please.; PT reescrito (Não há → Não tem)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-35b96e",
+      "quem": "voce",
+      "contexto": "Here's your receipt. Anything else?",
+      "cod": "A taxi to the airport, please. Thanks for your help!",
+      "dica": "Um táxi para o aeroporto, por favor. Obrigado pela ajuda!",
+      "pt_f": "Um táxi para o aeroporto, por favor. Obrigada pela ajuda!",
+      "img": "🚕✈️",
+      "alvo": "help",
+      "alvo_pt": "ajuda",
+      "conceito": "A taxi to the airport = um táxi para o aeroporto.",
+      "var": [
+        {
+          "em": "Thanks",
+          "aceita": [
+            "Thank you"
+          ]
+        },
+        {
+          "em": "your help",
+          "aceita": [
+            "the help"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "variacao_de": "f-430232",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "id": "dev-reunioes.quem-fica-responsavel",
+  "trilha": "dev-reunioes",
+  "nome": "Quem fica responsável?",
+  "emoji": "✅",
+  "cena": "No fim da reunião com produto, o time define quem cuida de cada tarefa antes de o tempo acabar.",
+  "resumo": "Fechar a reunião: Who's going to own this?, action items, Let's recap, Let's take this offline, We're running out of time.",
+  "fechamento": false,
+  "novos": [
+    "own",
+    "action items",
+    "recap",
+    "take this offline",
+    "running out of time"
+  ],
+  "apoio": [
+    "move on to",
+    "should have",
+    "run out of"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fechar a reunião"
+    },
+    {
+      "t": "p",
+      "c": "**Who's going to own this?** = quem vai ficar responsável por isso? **Action items** são as tarefas que saem da reunião, cada uma com um dono."
+    },
+    {
+      "t": "p",
+      "c": "Sem tempo: **We're running out of time** (estamos ficando sem tempo). Assunto longo: **Let's take this offline**. No fim: **Let's recap the action items.**"
+    },
+    {
+      "t": "warn",
+      "c": "Brasileiro foge do phrasal verb (We don't have more time; Let's proceed to...). Na fala: run out of (ficar sem), move on to (passar para)."
+    },
+    {
+      "t": "ex",
+      "c": "We're running out of time. Let's move on to the next topic.\nEstamos ficando sem tempo. Vamos passar para o próximo assunto."
+    }
+  ],
+  "imagem": "⏰✅📋",
+  "visualizacao": "Faltam cinco minutos para acabar a chamada. Você vê a Sarah olhar o relógio e o Mike rolar a lista de tarefas na tela: quem fica com o quê?",
+  "foto_busca": "meeting wrap up sticky notes",
+  "trechos": [
+    {
+      "id": "f-68438d",
+      "quem": "sarah",
+      "cod": "Who's going to own this?",
+      "dica": "Quem vai ficar responsável por isso?",
+      "img": "🙋❓",
+      "alvo": "own",
+      "alvo_pt": "ficar responsável",
+      "lit": "[lit.: quem vai ser o dono disso?]",
+      "conceito": "own (uma tarefa) = ficar responsável por ela, ser o dono.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f18587",
+      "quem": "voce",
+      "contexto": "f-68438d",
+      "cod": "I can own that. I worked on the first version.",
+      "dica": "Posso ficar responsável por isso. Trabalhei na primeira versão.",
+      "img": "✋💪",
+      "alvo": "own",
+      "alvo_pt": "ficar responsável",
+      "conceito": "own that = ficar responsável por isso (sem preposição em inglês).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "own that",
+          "aceita": [
+            "own this",
+            "own it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-47ad37",
+      "quem": "mike",
+      "cod": "We're running out of time. Let's move on to the next topic.",
+      "dica": "Estamos ficando sem tempo. Vamos passar para o próximo assunto.",
+      "img": "⏳➡️",
+      "alvo": "running out of time",
+      "alvo_pt": "ficando sem tempo",
+      "conceito": "run out of = ficar sem (tempo, café); move on to = passar para.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ea4245",
+      "quem": "ana",
+      "cod": "We're running out of time again. We should have started earlier.",
+      "dica": "Estamos ficando sem tempo de novo. A gente devia ter começado mais cedo.",
+      "img": "⌛😩",
+      "alvo": "running out of time",
+      "alvo_pt": "ficando sem tempo",
+      "conceito": "should have + particípio = devia ter.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR60"
+      ],
+      "variacao_de": "f-47ad37",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-37fc20",
+      "quem": "mike",
+      "cod": "This could take a while. Let's take this offline.",
+      "dica": "Isso pode demorar. Vamos tratar disso fora da reunião.",
+      "img": "📴💬",
+      "alvo": "take this offline",
+      "alvo_pt": "tratar disso fora da reunião",
+      "conceito": "take this offline = tratar do assunto fora da reunião.",
+      "var": [
+        {
+          "em": "could",
+          "aceita": [
+            "might",
+            "may"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f2e1ce",
+      "quem": "sarah",
+      "contexto": "I have a few more questions about the API.",
+      "cod": "Can we take this offline? I'll call you after lunch.",
+      "dica": "A gente pode tratar disso fora da reunião? Eu te ligo depois do almoço.",
+      "img": "📞🥪",
+      "alvo": "take this offline",
+      "alvo_pt": "tratar disso fora da reunião",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e59c83",
+      "quem": "sarah",
+      "cod": "We have three action items. Who wants to take the first one?",
+      "dica": "A gente tem três action items. Quem quer pegar o primeiro?",
+      "img": "📋✍️",
+      "alvo": "action items",
+      "alvo_pt": "action items",
+      "conceito": "action items = as tarefas que saem da reunião, cada uma com um dono.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c83fd8",
+      "quem": "mike",
+      "cod": "It's almost five, so let's recap the action items.",
+      "dica": "São quase cinco, então vamos recapitular os action items.",
+      "img": "🔁📋",
+      "alvo": "recap",
+      "alvo_pt": "recapitular",
+      "conceito": "recap = recapitular o que foi decidido. Hora pede it: It's almost five.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f47371",
+      "quem": "voce",
+      "cod": "Let me recap what we decided, just to be sure.",
+      "dica": "Deixa eu recapitular o que a gente decidiu, só pra garantir.",
+      "img": "🧠✅",
+      "alvo": "recap",
+      "alvo_pt": "recapitular",
+      "conceito": "what we decided: ordem normal, sem did (não: what did we decide).",
+      "registro": "informal",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "did"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "just to be sure",
+          "aceita": [
+            "just to make sure"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-750dbe",
+      "quem": "sarah",
+      "cod": "Great. I'll send the action items to everyone by email.",
+      "dica": "Ótimo. Eu mando os action items pra todo mundo por e-mail.",
+      "img": "📧👥",
+      "alvo": "action items",
+      "alvo_pt": "action items",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "send the action items to everyone",
+          "aceita": [
+            "send everyone the action items"
+          ]
+        }
+      ]
+    }
+  ]
+}

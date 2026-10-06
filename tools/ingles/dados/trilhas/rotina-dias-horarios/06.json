@@ -1,0 +1,230 @@
+{
+  "id": "rotina-dias-horarios.julho-a-dezembro-e-as-datas",
+  "trilha": "rotina-dias-horarios",
+  "nome": "Julho a dezembro e as datas",
+  "emoji": "📆",
+  "cena": "Por vídeo, você e a Sarah marcam as datas da conferência, do voo e da próxima reunião.",
+  "resumo": "Meses de julho a dezembro e datas no padrão americano: on October fourth.",
+  "fechamento": false,
+  "novos": [
+    "ordinais (first a thirty-first)",
+    "on + data (on October fourth)",
+    "July, August, September",
+    "October, November, December"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Datas americanas: October fourth"
+    },
+    {
+      "t": "p",
+      "c": "Nos EUA, a data é **mês + ordinal**, com **on**: on October fourth (no dia quatro de outubro). Ordinais: first, second, third, fourth... twenty-first."
+    },
+    {
+      "t": "ex",
+      "c": "Our flight is on October third.\nNosso voo é no dia três de outubro."
+    },
+    {
+      "t": "warn",
+      "c": "Não: in October fourth / on October four. Com o dia, é **on** e o ordinal: on October **fourth**."
+    },
+    {
+      "t": "tip",
+      "c": "Só o mês: in (in August). Dia com data: on (on August fourth)."
+    }
+  ],
+  "imagem": "✈️📆🎤",
+  "visualizacao": "Você e a Sarah, em videochamada, olham o mesmo calendário. Ela circula outubro, você confere o voo, e vocês riscam as datas que não dão.",
+  "foto_busca": "conference calendar flight dates",
+  "trechos": [
+    {
+      "id": "f-d33c40",
+      "quem": "sarah",
+      "cod": "The conference is in October.",
+      "dica": "A conferência é em outubro.",
+      "img": "🎤📅",
+      "alvo": "October",
+      "alvo_pt": "outubro",
+      "conceito": "Meses com maiúscula e in: in October.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "on october"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-db2911",
+      "quem": "voce",
+      "contexto": "f-d33c40",
+      "cod": "Does it rain a lot in October?",
+      "dica": "Chove muito em outubro?",
+      "img": "🌧️❓",
+      "alvo": "October",
+      "alvo_pt": "outubro",
+      "conceito": "Chove? = Does it rain? O it é obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR06"
+      ],
+      "armadilhas": [
+        "rains a lot",
+        "does rain"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 7737478,
+        "en_autor": "CK",
+        "pt_id": 8667867,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-03a820",
+      "quem": "sarah",
+      "contexto": "f-d33c40",
+      "cod": "It starts on the fourth.",
+      "dica": "Começa no dia quatro.",
+      "img": "🚩📆",
+      "alvo": "fourth",
+      "alvo_pt": "quatro",
+      "conceito": "dia quatro = the fourth: o dia do mês vai com ordinal.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR17"
+      ],
+      "armadilhas": [
+        "on four",
+        "in the four"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aa9b76",
+      "quem": "voce",
+      "cod": "Our flight is on October third.",
+      "dica": "Nosso voo é no dia três de outubro.",
+      "img": "✈️🗓️",
+      "alvo": "on October third",
+      "alvo_pt": "no dia três de outubro",
+      "lit": "[lit.: em outubro terceiro]",
+      "conceito": "Data americana: on + mês + ordinal (on October third).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in october",
+        "on third of october",
+        "on october three"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-11cb8f",
+      "quem": "sarah",
+      "cod": "My vacation is in August.",
+      "dica": "Minhas férias são em agosto.",
+      "img": "🏖️☀️",
+      "alvo": "August",
+      "alvo_pt": "agosto",
+      "conceito": "férias = vacation (EUA), no singular.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "vacations",
+        "holidays"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4cbd38",
+      "quem": "voce",
+      "contexto": "f-11cb8f",
+      "cod": "Let's wait until September.",
+      "dica": "(a reunião) Vamos esperar até setembro.",
+      "img": "⏳🍂",
+      "alvo": "September",
+      "alvo_pt": "setembro",
+      "conceito": "até (um mês ou dia) = until.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "wait to september",
+        "until the september"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6220509,
+        "en_autor": "CK",
+        "pt_id": 7347447,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "October → September; PT: outubro → setembro, com a pista (a reunião)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cbedae",
+      "quem": "sarah",
+      "contexto": "f-4cbd38",
+      "cod": "Is September twenty-first good for you?",
+      "dica": "Dia vinte e um de setembro é bom pra você?",
+      "img": "📆👍❓",
+      "alvo": "twenty-first",
+      "alvo_pt": "vinte e um",
+      "conceito": "vinte e um (na data) = twenty-first, com hífen.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "twenty one",
+        "twenty-one"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-adc81d",
+      "quem": "voce",
+      "contexto": "f-cbedae",
+      "cod": "Yes. See you on the twenty-first.",
+      "dica": "Sim. Te vejo no dia vinte e um.",
+      "img": "🤝📆",
+      "alvo": "on the twenty-first",
+      "alvo_pt": "no dia vinte e um",
+      "conceito": "Com o mês já dito, basta o ordinal: on the twenty-first (no dia vinte e um).",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in the twenty-first",
+        "on twenty-first",
+        "on the twenty-one"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

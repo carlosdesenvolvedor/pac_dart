@@ -1,0 +1,258 @@
+{
+  "id": "modais-no-passado.depois-do-deploy",
+  "trilha": "modais-no-passado",
+  "nome": "Depois do deploy",
+  "emoji": "🧯",
+  "cena": "Segunda de manhã, na daily, o time conversa sobre o deploy de sexta que derrubou o login.",
+  "resumo": "Lamentar, apontar alternativas e especular sobre a causa de um problema no trabalho.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Depois do problema: devia, podia, pode ter"
+    },
+    {
+      "t": "p",
+      "c": "Num postmortem sem culpados, fale do processo: **We shouldn't have deployed...**, **We were supposed to test...**, **Someone might have changed...**."
+    },
+    {
+      "t": "tip",
+      "c": "Para a causa, use o past perfect: it broke because we had deleted a line (tinha apagado)."
+    },
+    {
+      "t": "warn",
+      "c": "Com dia definido, passado simples: I fixed it on Friday (não: I have fixed it on Friday)."
+    },
+    {
+      "t": "ex",
+      "c": "You could have called me. I was online all night.\nVocê podia ter me ligado. Eu estava online a noite toda."
+    }
+  ],
+  "imagem": "💻🔥🧯",
+  "visualizacao": "Segunda, nove da manhã. Na chamada, você vê o Mike com cara de sono, e a Sarah compartilha o gráfico de login com um buraco na sexta à noite.",
+  "foto_busca": "developer video call monday morning",
+  "trechos": [
+    {
+      "id": "f-b64605",
+      "quem": "sarah",
+      "cod": "We shouldn't have deployed on a Friday afternoon.",
+      "dica": "A gente não devia ter feito deploy numa sexta à tarde.",
+      "img": "🚀📅😬",
+      "alvo": "shouldn't have",
+      "alvo_pt": "não devia ter",
+      "conceito": "on a Friday afternoon: on para dia da semana, mesmo com a parte do dia.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-71e990",
+      "quem": "mike",
+      "contexto": "f-b64605",
+      "cod": "It shouldn't have happened.",
+      "dica": "Isso não devia ter acontecido.",
+      "img": "💥🙁",
+      "alvo": "shouldn't have",
+      "alvo_pt": "não devia ter",
+      "var": [
+        {
+          "em": "It",
+          "aceita": [
+            "That",
+            "This"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3129809,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Não deveria ter acontecido.\"; PT reescrito: devia ter (glossário) e sujeito Isso",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bfec8d",
+      "quem": "voce",
+      "cod": "Someone might have changed the config file.",
+      "dica": "Alguém pode ter mudado o arquivo de configuração.",
+      "img": "⚙️📄❓",
+      "alvo": "might have",
+      "alvo_pt": "pode ter",
+      "conceito": "config file = arquivo de configuração.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "config file",
+          "aceita": [
+            "configuration file"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-460804",
+      "quem": "mike",
+      "contexto": "f-bfec8d",
+      "cod": "No, it broke because we had deleted a line of code.",
+      "dica": "Não, quebrou porque a gente tinha apagado uma linha de código.",
+      "img": "📄✂️",
+      "alvo": "had deleted",
+      "alvo_pt": "tinha apagado",
+      "conceito": "tinha apagado = had deleted: a causa, antes do problema (past perfect).",
+      "var": [
+        {
+          "em": "deleted",
+          "aceita": [
+            "removed"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1f24ee",
+      "quem": "voce",
+      "cod": "You could have called me. I was online all night.",
+      "dica": "Você podia ter me ligado. Eu estava online a noite toda.",
+      "img": "📞🌙",
+      "alvo": "could have",
+      "alvo_pt": "podia ter",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "all night",
+          "aceita": [
+            "the whole night"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-01f6e5",
+      "quem": "mike",
+      "contexto": "f-1f24ee",
+      "cod": "Sorry, I wasn't sure whether you were awake.",
+      "dica": "Desculpa, eu não tinha certeza se você estava acordado.",
+      "img": "😴❓",
+      "alvo": "whether",
+      "alvo_pt": "se",
+      "conceito": "whether = se (dúvida). Ordem direta depois dele: you were awake.",
+      "var": [
+        {
+          "em": "whether",
+          "aceita": [
+            "if"
+          ]
+        }
+      ],
+      "pt_f": "Desculpa, eu não tinha certeza se você estava acordada.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR50",
+        "BR07"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-43151d",
+      "quem": "sarah",
+      "cod": "Have you fixed the login yet?",
+      "dica": "Vocês já consertaram o login?",
+      "img": "🔐🔧",
+      "alvo": "Have you fixed",
+      "alvo_pt": "Vocês já consertaram",
+      "conceito": "já + resultado, sem tempo definido: present perfect com yet na pergunta.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "yet"
+      ]
+    },
+    {
+      "id": "f-58af4e",
+      "quem": "mike",
+      "contexto": "f-43151d",
+      "cod": "Yes. I stayed up late on Friday and fixed it.",
+      "dica": "Sim. Fiquei acordado até tarde na sexta e consertei.",
+      "img": "🌙💻✅",
+      "alvo": "stayed up late",
+      "alvo_pt": "Fiquei acordado até tarde",
+      "conceito": "Com dia definido (on Friday), passado simples, não present perfect.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7a6ae7",
+      "quem": "voce",
+      "cod": "We were supposed to test everything on staging first.",
+      "dica": "Era pra gente ter testado tudo no staging antes.",
+      "img": "🧪📋",
+      "alvo": "were supposed to",
+      "alvo_pt": "Era pra",
+      "conceito": "staging = ambiente de teste antes da produção.",
+      "var": [
+        {
+          "em": "first",
+          "aceita": [
+            "before"
+          ]
+        },
+        {
+          "em": "on staging",
+          "aceita": [
+            "in staging"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a3c35f",
+      "quem": "sarah",
+      "cod": "Next time, let's deploy on a Monday morning instead.",
+      "dica": "Da próxima vez, vamos fazer deploy numa segunda de manhã em vez disso.",
+      "img": "📅☀️🚀",
+      "alvo": "instead",
+      "alvo_pt": "em vez disso",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

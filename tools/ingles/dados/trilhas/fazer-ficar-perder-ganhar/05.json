@@ -1,0 +1,307 @@
+{
+  "id": "fazer-ficar-perder-ganhar.quanto-voce-ganha-earn",
+  "trilha": "fazer-ficar-perder-ganhar",
+  "nome": "Quanto você ganha? earn",
+  "emoji": "💵",
+  "cena": "Papo com o Lucas sobre trabalho, salário e uma proposta de emprego nova.",
+  "resumo": "Falar de salário e de quanto alguém ganha com earn e more than I do.",
+  "fechamento": false,
+  "novos": [
+    "earn (ganhar dinheiro)",
+    "more than I do",
+    "salary"
+  ],
+  "apoio": [
+    "an hour (por hora)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ganhar dinheiro = earn"
+    },
+    {
+      "t": "p",
+      "c": "Para salário e pagamento, use **earn**: How much does a developer earn? Com he/she: **earns**."
+    },
+    {
+      "t": "ex",
+      "c": "My girlfriend earns more than I do.\nMinha namorada ganha mais do que eu."
+    },
+    {
+      "t": "tip",
+      "c": "Mais do que eu = **more than I do** (na conversa também se ouve more than me)."
+    },
+    {
+      "t": "warn",
+      "c": "Não: I win a good salary. **win** é ganhar jogo ou prêmio; salário é **earn**."
+    }
+  ],
+  "imagem": "💵💼📈",
+  "visualizacao": "Sábado à tarde, você e o Lucas tomam café na varanda. Ele mostra no celular a mensagem com uma proposta de emprego nova.",
+  "foto_busca": "two men talking coffee balcony",
+  "trechos": [
+    {
+      "id": "f-847b8c",
+      "quem": "lucas",
+      "cod": "How much does a developer earn in Chicago?",
+      "dica": "Quanto ganha um desenvolvedor em Chicago?",
+      "img": "💵🏙️",
+      "alvo": "earn",
+      "alvo_pt": "ganha",
+      "conceito": "ganhar dinheiro = earn (não: win). Com does, o verbo fica sem -s.",
+      "registro": "informal",
+      "interferencias": [
+        "BR35",
+        "BR06"
+      ],
+      "armadilhas": [
+        "win",
+        "earns",
+        "gain"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0dce43",
+      "quem": "voce",
+      "contexto": "f-847b8c",
+      "cod": "Salaries are good, but rent is very expensive there.",
+      "dica": "Os salários são bons, mas o aluguel é muito caro lá.",
+      "img": "💰🏠💸",
+      "alvo": "Salaries",
+      "alvo_pt": "salários",
+      "conceito": "Salário e aluguel em geral, sem the: salaries are good, rent is expensive.",
+      "var": [
+        {
+          "em": "Salaries",
+          "aceita": [
+            "The salaries"
+          ]
+        },
+        {
+          "em": "rent",
+          "aceita": [
+            "the rent"
+          ]
+        },
+        {
+          "em": "very",
+          "aceita": [
+            "really"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "salario"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-049c98",
+      "quem": "lucas",
+      "cod": "I'd like to earn more money.",
+      "dica": "Gostaria de ganhar mais dinheiro.",
+      "img": "💵⬆️",
+      "alvo": "earn",
+      "alvo_pt": "ganhar",
+      "registro": "informal",
+      "interferencias": [
+        "BR35"
+      ],
+      "armadilhas": [
+        "win",
+        "gain"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8267322,
+        "en_autor": "CK",
+        "pt_id": 8293604,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-940b13",
+      "quem": "voce",
+      "contexto": "f-049c98",
+      "cod": "Why do you want to earn more?",
+      "dica": "Por que você quer ganhar mais?",
+      "img": "❓💵",
+      "alvo": "earn",
+      "alvo_pt": "ganhar",
+      "registro": "informal",
+      "interferencias": [
+        "BR35",
+        "BR06"
+      ],
+      "armadilhas": [
+        "win"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6582524,
+        "en_autor": "Eccles17",
+        "pt_id": 6763609,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-627fee",
+      "quem": "lucas",
+      "contexto": "f-940b13",
+      "cod": "My girlfriend earns more than I do.",
+      "dica": "Minha namorada ganha mais do que eu.",
+      "img": "👩💵⬆️",
+      "alvo": "more than I do",
+      "alvo_pt": "mais do que eu",
+      "conceito": "mais do que eu = more than I do: o do repete o verbo earn.",
+      "registro": "informal",
+      "interferencias": [
+        "BR35",
+        "BR02"
+      ],
+      "armadilhas": [
+        "wins",
+        "earn"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-912d95",
+      "quem": "voce",
+      "contexto": "f-627fee",
+      "cod": "Don't worry. Julia earns more than I do too.",
+      "dica": "Não se preocupa. A Julia também ganha mais do que eu.",
+      "img": "👧💵",
+      "alvo": "more than I do",
+      "alvo_pt": "mais do que eu",
+      "var": [
+        {
+          "em": "earns more than I do too",
+          "aceita": [
+            "also earns more than I do"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR35",
+        "BR02"
+      ],
+      "armadilhas": [
+        "earn",
+        "win"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e97de8",
+      "quem": "lucas",
+      "cod": "I got a new job offer. The salary is better.",
+      "dica": "Recebi uma nova proposta de emprego. O salário é melhor.",
+      "img": "📩💼",
+      "alvo": "salary",
+      "alvo_pt": "salário",
+      "conceito": "proposta de emprego = job offer (substantivo + substantivo, sem of).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "more"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "got",
+          "aceita": [
+            "received"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4eda4a",
+      "quem": "voce",
+      "contexto": "f-e97de8",
+      "cod": "Great! What's the salary?",
+      "dica": "Ótimo! Qual é o salário?",
+      "img": "💼❓",
+      "alvo": "salary",
+      "alvo_pt": "salário",
+      "conceito": "Qual é o salário? = What's the salary? (não: Which is the salary?)",
+      "var": [
+        {
+          "em": "What's",
+          "aceita": [
+            "How much is"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "which",
+        "many"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c709c4",
+      "quem": "lucas",
+      "contexto": "f-4eda4a",
+      "cod": "It's more than I earn now, but I haven't decided yet.",
+      "dica": "É mais do que eu ganho agora, mas ainda não decidi.",
+      "img": "🤔💵",
+      "alvo": "earn",
+      "alvo_pt": "ganho",
+      "conceito": "ainda não decidi = I haven't decided yet (yet no fim).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR35",
+        "BR27",
+        "BR01"
+      ],
+      "armadilhas": [
+        "win",
+        "didn't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8db49e",
+      "quem": "voce",
+      "contexto": "f-c709c4",
+      "cod": "Take it! You're going to earn more than I do.",
+      "dica": "Aceita! Você vai ganhar mais do que eu.",
+      "img": "✅💵",
+      "alvo": "more than I do",
+      "alvo_pt": "mais do que eu",
+      "registro": "informal",
+      "interferencias": [
+        "BR35"
+      ],
+      "armadilhas": [
+        "win"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

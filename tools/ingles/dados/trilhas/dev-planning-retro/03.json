@@ -1,0 +1,234 @@
+{
+  "id": "dev-planning-retro.entendo-seu-ponto-mas",
+  "trilha": "dev-planning-retro",
+  "nome": "Entendo seu ponto, mas...",
+  "emoji": "🤝",
+  "cena": "O Mike propõe adotar um framework novo, e você defende com tato uma solução mais simples.",
+  "resumo": "Discordar com tato e propor alternativas: I see your point, but... / I'm not convinced... / keep it simple.",
+  "fechamento": false,
+  "novos": [
+    "framework",
+    "I see your point",
+    "not convinced",
+    "keep it simple"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Discordar sem brigar"
+    },
+    {
+      "t": "p",
+      "c": "Primeiro reconheça (**I see your point, but...**), depois discorde (**I'm not convinced we need...**) e proponha (**Let's keep it simple**, **Would it make sense to...?**)."
+    },
+    {
+      "t": "warn",
+      "c": "convinced + oração, sem of: I'm not convinced we need it (não: convinced of that we need)."
+    },
+    {
+      "t": "tip",
+      "c": "assume = supor (não: assumir). Assumir a tarefa = take on."
+    },
+    {
+      "t": "ex",
+      "c": "I see your point, but it's a big change for the team.\nEntendo o seu ponto, mas é uma mudança grande para o time."
+    }
+  ],
+  "imagem": "🤝🧩💬",
+  "visualizacao": "Reunião técnica por vídeo. O Mike mostra slides de um framework novo, animado. Você ouve, anota duas dúvidas e espera a sua vez de falar, com calma.",
+  "foto_busca": "developers discussing architecture video call",
+  "trechos": [
+    {
+      "id": "f-8081d1",
+      "quem": "mike",
+      "cod": "We should move to a new framework.",
+      "dica": "A gente deveria migrar para um framework novo.",
+      "img": "🏗️➡️",
+      "alvo": "framework",
+      "alvo_pt": "framework",
+      "conceito": "framework: o dev brasileiro usa o termo em inglês.",
+      "var": [
+        {
+          "em": "move",
+          "aceita": [
+            "switch",
+            "migrate"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-35aeb4",
+      "quem": "voce",
+      "contexto": "f-8081d1",
+      "cod": "I see your point, but I assume the team would need some training.",
+      "dica": "Entendo o seu ponto, mas suponho que o time precisaria de treinamento.",
+      "img": "👀📚",
+      "alvo": "I see your point",
+      "alvo_pt": "Entendo o seu ponto",
+      "conceito": "assume = supor, falso cognato (não: assumir).",
+      "var": [
+        {
+          "em": "assume",
+          "aceita": [
+            "suppose",
+            "guess"
+          ]
+        }
+      ],
+      "opcional": [
+        "some"
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "understand"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ffc05e",
+      "quem": "mike",
+      "contexto": "f-35aeb4",
+      "cod": "The old framework is slow and hard to test.",
+      "dica": "O framework antigo é lento e difícil de testar.",
+      "img": "🐢🧪",
+      "alvo": "framework",
+      "alvo_pt": "framework",
+      "conceito": "hard to test = difícil de testar (to + verbo depois do adjetivo).",
+      "registro": "neutro",
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a62728",
+      "quem": "voce",
+      "contexto": "f-ffc05e",
+      "cod": "I'm not convinced we need a new framework for this.",
+      "dica": "Não estou convencido de que a gente precise de um framework novo para isso.",
+      "img": "🤨🧩",
+      "alvo": "not convinced",
+      "alvo_pt": "convencido",
+      "conceito": "convinced + oração, sem of nem de (não: convinced of that we need).",
+      "pt_f": "Não estou convencida de que a gente precise de um framework novo para isso.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-636f15",
+      "quem": "ana",
+      "contexto": "f-ffc05e",
+      "cod": "I'm not convinced it would save us time.",
+      "dica": "Não estou convencida de que isso economizaria tempo.",
+      "img": "⏳🤷",
+      "alvo": "not convinced",
+      "alvo_pt": "convencida",
+      "conceito": "convinced + oração direta, sem of: I'm not convinced (that) it would save us time.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "us"
+      ],
+      "var": [
+        {
+          "em": "it would",
+          "aceita": [
+            "that it would",
+            "that would"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-5e4294",
+      "quem": "voce",
+      "cod": "Let's keep it simple and fix the slow screens first.",
+      "dica": "Vamos manter simples e corrigir as telas lentas primeiro.",
+      "img": "🧘🔧",
+      "alvo": "keep it simple",
+      "alvo_pt": "manter simples",
+      "conceito": "keep it simple: o it é obrigatório (não: keep simple).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d6be2c",
+      "quem": "mike",
+      "contexto": "f-5e4294",
+      "cod": "I see your point. Would it make sense to build a prototype first?",
+      "dica": "Entendo o seu ponto. Faria sentido construir um protótipo primeiro?",
+      "img": "🧪🛠️",
+      "alvo": "I see your point",
+      "alvo_pt": "Entendo o seu ponto",
+      "conceito": "Would it make sense to + verbo? = Faria sentido...? (proposta educada).",
+      "var": [
+        {
+          "em": "build",
+          "aceita": [
+            "make"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c01d24",
+      "quem": "sarah",
+      "cod": "Keep it simple for now, and we can pick this back up next quarter.",
+      "dica": "Mantém simples por enquanto, e a gente pode retomar isso no próximo trimestre.",
+      "img": "📆🔙",
+      "alvo": "Keep it simple",
+      "alvo_pt": "Mantém simples",
+      "conceito": "pick this back up = retomar (não: resume, que é currículo).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "resume"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "next quarter",
+          "aceita": [
+            "in the next quarter"
+          ]
+        }
+      ]
+    }
+  ]
+}

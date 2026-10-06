@@ -1,0 +1,329 @@
+{
+  "id": "ja-fui-x-fui.ja-mandei-mandei-hoje-de-manha",
+  "trilha": "ja-fui-x-fui",
+  "nome": "Já mandei. Mandei hoje de manhã.",
+  "emoji": "📰",
+  "cena": "Segunda-feira, numa chamada rápida, a Sarah conta as novidades da semana e pede o status das tarefas.",
+  "resumo": "Notícia ou status sem data com present perfect (Have you heard?, I've sent); o quando com passado simples (last week, this morning).",
+  "fechamento": false,
+  "novos": [
+    "Have you heard?",
+    "contract",
+    "promotion",
+    "job offer",
+    "announce"
+  ],
+  "apoio": [
+    "sign"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Notícia sem data x quando aconteceu"
+    },
+    {
+      "t": "p",
+      "c": "Para dar a notícia ou o status sem dizer quando: **present perfect** (Have you heard? / I've already sent it). Para dizer quando: **passado simples** (I sent it this morning / Ana got promoted last week)."
+    },
+    {
+      "t": "warn",
+      "c": "this morning, com a manhã já terminada, pede passado: I sent it this morning (não: I've sent it this morning). this week, que ainda não acabou, aceita present perfect."
+    },
+    {
+      "t": "tip",
+      "c": "got promoted = foi promovido (get + particípio; a passiva vem numa trilha mais à frente)."
+    },
+    {
+      "t": "ex",
+      "c": "Mike has approved the budget! He told me on Friday.\nO Mike aprovou o orçamento! Ele me contou na sexta."
+    }
+  ],
+  "imagem": "💻📰📄",
+  "visualizacao": "É segunda de manhã: você segura o café e vê a Sarah na tela do notebook. Ela sorri ao contar as novidades da semana e pergunta, item por item, o que já foi feito.",
+  "foto_busca": "video call laptop home office",
+  "trechos": [
+    {
+      "id": "f-195112",
+      "quem": "sarah",
+      "cod": "Have you heard? Ana got promoted last week.",
+      "dica": "Você ficou sabendo? A Ana foi promovida semana passada.",
+      "img": "📣🎉",
+      "alvo": "Have you heard?",
+      "alvo_pt": "Você ficou sabendo?",
+      "lit": "[lit.: você ouviu?]",
+      "conceito": "Have you heard? = notícia sem data. got promoted last week: com data, passado.",
+      "var": [
+        {
+          "em": "Have you heard?",
+          "aceita": [
+            "Did you hear?"
+          ]
+        },
+        {
+          "em": "got promoted",
+          "aceita": [
+            "was promoted"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "listened",
+        "was"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6666306,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I got promoted last week. → Have you heard? Ana got promoted last week.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fc4663",
+      "quem": "voce",
+      "contexto": "f-195112",
+      "cod": "Yes! She told me about her promotion on Friday.",
+      "dica": "Sim! Ela me contou da promoção dela na sexta.",
+      "img": "📱😄",
+      "alvo": "promotion",
+      "alvo_pt": "promoção",
+      "conceito": "promotion (no trabalho) = promoção. on Friday (dia definido) = passado simples.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR17"
+      ],
+      "armadilhas": [
+        "has",
+        "in",
+        "his"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f536fb",
+      "quem": "sarah",
+      "cod": "Mike announced it at the team meeting.",
+      "dica": "O Mike anunciou na reunião do time.",
+      "img": "🎤👥",
+      "alvo": "announced",
+      "alvo_pt": "anunciou",
+      "conceito": "anunciar = announce. Objeto obrigatório: announced it (o português omite).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "has",
+        "anounced"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "at the team meeting",
+          "aceita": [
+            "in the team meeting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-14eca7",
+      "quem": "voce",
+      "cod": "Let's celebrate her promotion!",
+      "dica": "Vamos comemorar a promoção dela!",
+      "img": "🥳🎊",
+      "alvo": "promotion",
+      "alvo_pt": "promoção",
+      "conceito": "a promoção dela = her promotion (posse explícita).",
+      "registro": "informal",
+      "armadilhas": [
+        "his",
+        "the"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2007310,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Let's go celebrate your promotion. → Let's celebrate her promotion!; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-44f5a6",
+      "quem": "sarah",
+      "cod": "Mike wants to announce the new feature next week.",
+      "dica": "O Mike quer anunciar a feature nova semana que vem.",
+      "img": "🗓️📢",
+      "alvo": "announce",
+      "alvo_pt": "anunciar",
+      "conceito": "Mike wants: 3ª pessoa com -s. feature nova = new feature.",
+      "registro": "informal",
+      "armadilhas": [
+        "want"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f3ede2",
+      "quem": "sarah",
+      "cod": "And we've made a job offer to a senior developer.",
+      "dica": "E a gente fez uma proposta de emprego para um dev sênior.",
+      "img": "🤝💼",
+      "alvo": "job offer",
+      "alvo_pt": "proposta de emprego",
+      "conceito": "fazer uma proposta = make a job offer. Notícia sem data: we've made (o en-US aceita we made).",
+      "var": [
+        {
+          "em": "we've made",
+          "aceita": [
+            "we made"
+          ]
+        },
+        {
+          "em": "senior developer",
+          "aceita": [
+            "senior dev"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "did",
+        "proposal"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3c00a4",
+      "quem": "voce",
+      "contexto": "f-f3ede2",
+      "cod": "That's great! Has he accepted the job offer yet?",
+      "dica": "Que ótimo! Ele já aceitou a proposta de emprego?",
+      "img": "✅❓",
+      "alvo": "job offer",
+      "alvo_pt": "proposta de emprego",
+      "conceito": "já...? (resultado, sem quando) = Has he...yet? O yet vai no fim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did",
+        "proposal"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "That's great!",
+          "aceita": [
+            "Great!"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-85fd5c",
+      "quem": "sarah",
+      "cod": "Have you sent the contract to the client yet?",
+      "dica": "Você já mandou o contrato pro cliente?",
+      "img": "📄📤",
+      "alvo": "contract",
+      "alvo_pt": "contrato",
+      "conceito": "já...? (status, sem quando) = Have you...yet?",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did",
+        "sended"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2f4ad5",
+      "quem": "voce",
+      "contexto": "f-85fd5c",
+      "cod": "Yes, I sent the contract this morning.",
+      "dica": "Sim, mandei o contrato hoje de manhã.",
+      "img": "✉️🌅",
+      "alvo": "contract",
+      "alvo_pt": "contrato",
+      "conceito": "Com hoje de manhã (a manhã já acabou), passado: I sent (não: I've sent it this morning).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR05"
+      ],
+      "armadilhas": [
+        "sended",
+        "today"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3736362,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I've already signed the contract. → Yes, I sent the contract this morning.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-665ae4",
+      "quem": "sarah",
+      "contexto": "f-2f4ad5",
+      "cod": "Perfect. Have you heard? The client has approved the new design.",
+      "dica": "Perfeito. Você ficou sabendo? O cliente aprovou o design novo.",
+      "img": "👍🎨",
+      "alvo": "Have you heard?",
+      "alvo_pt": "Você ficou sabendo?",
+      "conceito": "Notícia sem data: The client has approved... (o en-US também aceita approved).",
+      "var": [
+        {
+          "em": "Have you heard?",
+          "aceita": [
+            "Did you hear?"
+          ]
+        },
+        {
+          "em": "has approved",
+          "aceita": [
+            "approved"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "aproved",
+        "listened"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

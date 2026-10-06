@@ -1,0 +1,196 @@
+{
+  "id": "planos-going-to.planos-de-viagem",
+  "trilha": "planos-going-to",
+  "nome": "Planos de viagem",
+  "emoji": "🚗",
+  "cena": "Você e o Ben planejam uma viagem de carro para depois da visita a Chicago.",
+  "resumo": "Planejar uma viagem: book (reservar) e rent (alugar).",
+  "fechamento": false,
+  "novos": [
+    "book",
+    "book a hotel",
+    "rent",
+    "rent a car"
+  ],
+  "apoio": [
+    "lake"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Reservar e alugar"
+    },
+    {
+      "t": "p",
+      "c": "**book** = reservar (hotel, mesa, apartamento). **rent** = alugar (carro, apartamento, bicicleta)."
+    },
+    {
+      "t": "ex",
+      "c": "We're going to rent a car.\nA gente vai alugar um carro."
+    },
+    {
+      "t": "tip",
+      "c": "Ficar na casa de alguém = **stay with** + pessoa: We can stay with Emma."
+    }
+  ],
+  "imagem": "🚗🗺️🏨",
+  "visualizacao": "Você abre o mapa na mesa, com o Ben no viva-voz. Vocês riscam a rota de carro, procuram um lago bonito e discutem onde dormir.",
+  "foto_busca": "road trip planning map",
+  "trechos": [
+    {
+      "id": "f-2367c3",
+      "quem": "ben",
+      "cod": "We're going to rent a car.",
+      "dica": "(plano) A gente vai alugar um carro.",
+      "img": "🚗🔑",
+      "alvo": "rent a car",
+      "alvo_pt": "alugar um carro",
+      "conceito": "Alugar (pagar para usar) = rent.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-43d49b",
+      "quem": "voce",
+      "contexto": "f-2367c3",
+      "cod": "Are you going to book a hotel?",
+      "dica": "(plano) Você vai reservar um hotel?",
+      "img": "🏨📅",
+      "alvo": "book a hotel",
+      "alvo_pt": "reservar um hotel",
+      "conceito": "Reservar = book (hotel, mesa, passagem).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "reserve"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-862eb5",
+      "quem": "ben",
+      "contexto": "f-43d49b",
+      "cod": "No, let's rent an apartment.",
+      "dica": "Não, vamos alugar um apartamento.",
+      "img": "🏢🔑",
+      "alvo": "rent",
+      "alvo_pt": "alugar",
+      "conceito": "Vamos + verbo (sugestão) = let's.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-de879d",
+      "quem": "ben",
+      "cod": "I'm going to book the apartment tonight.",
+      "dica": "(plano) Vou reservar o apartamento hoje à noite.",
+      "img": "💻🌙",
+      "alvo": "book",
+      "alvo_pt": "reservar",
+      "registro": "informal",
+      "interferencias": [
+        "BR05"
+      ],
+      "armadilhas": [
+        "reserve",
+        "today"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ef2b2d",
+      "quem": "voce",
+      "cod": "Can we rent a car at the airport?",
+      "dica": "A gente pode alugar um carro no aeroporto?",
+      "img": "✈️🚙",
+      "alvo": "rent a car",
+      "alvo_pt": "alugar um carro",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-56ed1b",
+      "quem": "ben",
+      "contexto": "f-ef2b2d",
+      "cod": "Yes! And let's rent bikes at the lake.",
+      "dica": "Pode! E vamos alugar bicicletas no lago.",
+      "img": "🚲🏞️",
+      "alvo": "rent",
+      "alvo_pt": "alugar",
+      "var": [
+        {
+          "em": "Yes!",
+          "aceita": [
+            "Yes, we can!"
+          ]
+        },
+        {
+          "em": "bikes",
+          "aceita": [
+            "bicycles"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9315049,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Let's rent a boat.\"; PT original: \"Aluguemos um barco.\"; Yes! And acrescentado; a boat → bikes at the lake; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-eccf1b",
+      "quem": "voce",
+      "cod": "I'm going to book a hotel near the airport.",
+      "dica": "(plano) Vou reservar um hotel perto do aeroporto.",
+      "img": "🏨🛫",
+      "alvo": "book a hotel",
+      "alvo_pt": "reservar um hotel",
+      "registro": "informal",
+      "armadilhas": [
+        "reserve"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1744970,
+        "en_autor": "Amastan",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I have to book a hotel room.\"; PT original: \"Tenho que fazer uma reserva em um hotel.\"; have to → I'm going to; a hotel room → a hotel near the airport; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-26cc34",
+      "quem": "ben",
+      "cod": "Let's book a table for Saturday night.",
+      "dica": "Vamos reservar uma mesa para sábado à noite.",
+      "img": "🍽️🌃",
+      "alvo": "book",
+      "alvo_pt": "reservar",
+      "conceito": "Reservar uma mesa = book a table. Saturday com maiúscula.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "reserve",
+        "saturday"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "id": "quantidades-compras.quanto-how-much",
+  "trilha": "quantidades-compras",
+  "nome": "Quanto? How much",
+  "emoji": "💧",
+  "cena": "No mercado perto do apartamento da Emma, em Chicago, vocês compram o básico da semana.",
+  "resumo": "Perguntar quanto de uma coisa que não se conta com How much...? e pedir a bottle of.",
+  "fechamento": false,
+  "novos": [
+    "bread",
+    "money",
+    "a bottle of",
+    "bottle"
+  ],
+  "apoio": [
+    "How much...?"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Quanto? How much + o que não se conta"
+    },
+    {
+      "t": "p",
+      "c": "**How much** + coisa que não se conta: *How much bread? How much money?* Para a embalagem, **a bottle of** = uma garrafa de."
+    },
+    {
+      "t": "ex",
+      "c": "How much bread do we need?\nDe quanto pão a gente precisa?"
+    },
+    {
+      "t": "warn",
+      "c": "*money* e *bread* não têm plural nem *a*: *a lot of money* (não: *moneys*)."
+    }
+  ],
+  "imagem": "🛒🍞💧",
+  "visualizacao": "Você empurra o carrinho num mercado de Chicago ao lado da Emma. Pão quentinho na prateleira, garrafas de água geladas, a lista na mão dela.",
+  "foto_busca": "supermarket aisle bread shelf",
+  "trechos": [
+    {
+      "id": "f-f50459",
+      "quem": "voce",
+      "cod": "How much bread do we need?",
+      "dica": "De quanto pão a gente precisa?",
+      "img": "🍞❓",
+      "alvo": "bread",
+      "alvo_pt": "pão",
+      "conceito": "bread não se conta: How much bread? (não: How many breads?)",
+      "registro": "informal",
+      "armadilhas": [
+        "many",
+        "breads"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-adce98",
+      "quem": "emma",
+      "contexto": "f-f50459",
+      "cod": "I don't eat bread every day.",
+      "dica": "Eu não como pão todos os dias.",
+      "img": "🍞🚫📅",
+      "alvo": "bread",
+      "alvo_pt": "pão",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 7795298,
+        "en_autor": "CK",
+        "pt_id": 7795309,
+        "pt_autor": "Mecamute",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a87af4",
+      "quem": "voce",
+      "cod": "How much is a bottle of water?",
+      "dica": "Quanto custa uma garrafa de água?",
+      "img": "💧💵❓",
+      "alvo": "a bottle of",
+      "alvo_pt": "uma garrafa de",
+      "conceito": "a bottle of water = uma garrafa de água; a água continua sem plural.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3819731,
+        "en_autor": "CK",
+        "pt_id": 8502652,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"How much is a ticket?\"; PT original: \"Quanto custa um bilhete?\"; a ticket → a bottle of water; PT: um bilhete → uma garrafa de água",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-aaf211",
+      "quem": "emma",
+      "contexto": "f-a87af4",
+      "cod": "This bottle is two dollars.",
+      "dica": "Essa garrafa é dois dólares.",
+      "img": "🏷️💵",
+      "alvo": "bottle",
+      "alvo_pt": "garrafa",
+      "var": [
+        {
+          "em": "This",
+          "aceita": [
+            "That"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-14a0c9",
+      "quem": "emma",
+      "cod": "Do you want a bottle of water?",
+      "dica": "Você quer uma garrafa de água?",
+      "img": "💧🙋",
+      "alvo": "a bottle of",
+      "alvo_pt": "uma garrafa de",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2adc7f",
+      "quem": "voce",
+      "contexto": "f-14a0c9",
+      "cod": "Yes, a small bottle, please.",
+      "dica": "Sim, uma garrafa pequena, por favor.",
+      "img": "🤏💧",
+      "alvo": "bottle",
+      "alvo_pt": "garrafa",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c3c791",
+      "quem": "voce",
+      "contexto": "That's eighty dollars.",
+      "cod": "Wow, that's a lot of money!",
+      "dica": "Nossa, é muito dinheiro!",
+      "img": "😮💸",
+      "alvo": "money",
+      "alvo_pt": "dinheiro",
+      "conceito": "money não tem plural nem a: a lot of money (não: moneys).",
+      "var": [
+        {
+          "em": "that's",
+          "aceita": [
+            "it's"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "moneys"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf283a",
+      "quem": "emma",
+      "contexto": "f-c3c791",
+      "cod": "Don't worry about the money.",
+      "dica": "Não se preocupa com o dinheiro.",
+      "img": "🙂💵",
+      "alvo": "money",
+      "alvo_pt": "dinheiro",
+      "conceito": "worry about = se preocupar com.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

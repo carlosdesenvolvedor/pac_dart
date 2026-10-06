@@ -93,6 +93,11 @@ class RankingCubit extends Cubit<RankingState> {
   Future<void> quizRespondido(int acertos, int total) =>
       _soma({'pontos': acertos * 10, 'quizAcertos': acertos});
 
+  /// Desafios de lógica acertados numa rodada: cada acerto vale 15 pontos
+  /// (pesa mais que o quiz — é raciocínio, não reconhecimento).
+  Future<void> desafiosResolvidos(int acertos) =>
+      acertos <= 0 ? Future.value() : _soma({'pontos': acertos * 15, 'desafios': acertos});
+
   /// Missão do Lógica Animada cumprida.
   Future<void> missaoConcluida(int pontos) =>
       _soma({'pontos': pontos, 'missoes': 1});

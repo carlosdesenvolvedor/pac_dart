@@ -1,0 +1,212 @@
+{
+  "id": "there-is-lugares.cena-o-bairro-e-o-apartamento",
+  "trilha": "there-is-lugares",
+  "nome": "Cena: o bairro e o apartamento",
+  "emoji": "🏢",
+  "cena": "O Ben vai visitar Chicago e ficar num apartamento perto da casa da Emma: ele quer saber como é e o que tem por perto.",
+  "resumo": "Descrever um apartamento e um bairro com there is / there are, any e as preposições de lugar.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: there is / there are"
+    },
+    {
+      "t": "p",
+      "c": "Uma coisa: **There's**. Várias: **There are**. Pergunta: **Is there / Are there any**. Negativa: **There's no / There aren't any**."
+    },
+    {
+      "t": "warn",
+      "c": "Tem (existir) é sempre there is / there are, nunca have."
+    }
+  ],
+  "imagem": "🏢🌳🛏️",
+  "visualizacao": "Você caminha pelo bairro da Emma com o celular na mão, numa chamada de vídeo com o Ben, mostrando o prédio, o parque e a pizzaria da esquina.",
+  "foto_busca": "apartment building neighborhood street",
+  "trechos": [
+    {
+      "id": "f-410243",
+      "quem": "ben",
+      "cod": "Is there a park near the apartment?",
+      "dica": "Tem um parque perto do apartamento?",
+      "img": "🌳❓",
+      "alvo": "Is there",
+      "alvo_pt": "Tem",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2953007,
+        "en_autor": "CK",
+        "pt_id": 6117762,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Is there a park near your house?\"; PT original: \"Tem um parque perto da sua casa?\"; your house → the apartment, no EN e no PT",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6ccaaf",
+      "quem": "voce",
+      "contexto": "f-410243",
+      "cod": "Yes, there's one across the street.",
+      "dica": "Tem, sim, um do outro lado da rua.",
+      "img": "🌳🛣️",
+      "alvo": "across the street",
+      "alvo_pt": "do outro lado da rua",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-070659",
+      "quem": "ben",
+      "cod": "Are there any good restaurants downtown?",
+      "dica": "Tem algum restaurante bom no centro?",
+      "img": "🍽️🏙️",
+      "alvo": "Are there any",
+      "alvo_pt": "Tem algum",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-978f64",
+      "quem": "voce",
+      "contexto": "f-070659",
+      "cod": "Sure! There are some great pizza places.",
+      "dica": "Claro! Tem umas pizzarias ótimas.",
+      "img": "🍕😋",
+      "alvo": "There are",
+      "alvo_pt": "Tem",
+      "conceito": "some (uns, umas) na afirmativa; any na pergunta e na negativa.",
+      "var": [
+        {
+          "em": "pizza places",
+          "aceita": [
+            "pizzerias"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ecafbb",
+      "quem": "voce",
+      "cod": "There are two bedrooms in the apartment.",
+      "dica": "Tem dois quartos no apartamento.",
+      "img": "🛏️🛏️",
+      "alvo": "There are",
+      "alvo_pt": "Tem",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5254789,
+        "en_autor": "Airvian",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"There are four bedrooms in my house.\"; PT original: \"Há quatro quartos na minha casa.\"; four → two, my house → the apartment; PT reescrito com \"Tem\"",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d2112e",
+      "quem": "voce",
+      "cod": "But there's no TV in the living room.",
+      "dica": "Mas não tem TV na sala.",
+      "img": "📺🚫",
+      "alvo": "there's no",
+      "alvo_pt": "não tem",
+      "conceito": "living room = sala (de estar).",
+      "var": [
+        {
+          "em": "there's no TV",
+          "aceita": [
+            "there isn't a TV"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ec2235",
+      "quem": "ben",
+      "contexto": "f-d2112e",
+      "cod": "That's OK. Is there Wi-Fi?",
+      "dica": "Tudo bem. Tem Wi-Fi?",
+      "img": "📶❓",
+      "alvo": "Is there",
+      "alvo_pt": "Tem",
+      "var": [
+        {
+          "em": "That's OK",
+          "aceita": [
+            "It's OK",
+            "That's okay"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c1f870",
+      "quem": "voce",
+      "contexto": "f-ec2235",
+      "cod": "Yes. The password is on the fridge.",
+      "dica": "Sim. A senha está na geladeira.",
+      "img": "📝🧊",
+      "alvo": "on the fridge",
+      "alvo_pt": "na geladeira",
+      "conceito": "Na porta da geladeira (na superfície) = on the fridge.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

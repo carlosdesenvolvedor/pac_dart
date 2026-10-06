@@ -1,0 +1,253 @@
+{
+  "id": "coisas-e-descricoes.um-teclado-uma-ideia-a-an",
+  "trilha": "coisas-e-descricoes",
+  "nome": "Um teclado, uma ideia: a/an",
+  "emoji": "⌨️",
+  "cena": "No seu home office, você arruma a mesa e mostra o setup para a Ana na chamada.",
+  "resumo": "Nomear coisas com a e an, escolhidos pelo som: a notebook, an idea, an hour.",
+  "fechamento": false,
+  "novos": [
+    "notebook",
+    "idea",
+    "hour",
+    "good idea"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Um, uma: a ou an"
+    },
+    {
+      "t": "p",
+      "c": "**a** antes de som de consoante (a notebook, a good idea); **an** antes de som de vogal (an idea, an hour: o h de hour é mudo)."
+    },
+    {
+      "t": "warn",
+      "c": "Um/uma como artigo é **a/an**, nunca one: It's a desk. (não: It's one desk)"
+    },
+    {
+      "t": "warn",
+      "c": "**notebook** = caderno. O notebook (computador) do português é **laptop**."
+    }
+  ],
+  "imagem": "🏠💻📓",
+  "visualizacao": "Você está no seu home office. A luz da manhã bate na mesa, o caderno está aberto ao lado do laptop e a Ana aparece na tela, curiosa com o seu setup.",
+  "foto_busca": "home office desk notebook laptop",
+  "trechos": [
+    {
+      "id": "f-ba7c1d",
+      "quem": "voce",
+      "cod": "Where's my notebook?",
+      "dica": "Cadê o meu caderno?",
+      "img": "📓🔍",
+      "alvo": "notebook",
+      "alvo_pt": "caderno",
+      "conceito": "notebook = caderno; o notebook (computador) é laptop.",
+      "registro": "informal",
+      "armadilhas": [
+        "laptop"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3821988,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c28745",
+      "quem": "voce",
+      "contexto": "Is that your new laptop?",
+      "cod": "It's a notebook, not a laptop.",
+      "dica": "É um caderno, não um notebook.",
+      "img": "📓🚫💻",
+      "alvo": "notebook",
+      "alvo_pt": "caderno",
+      "conceito": "Um = a (artigo), não one: a notebook.",
+      "registro": "informal",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "one"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-95be18",
+      "quem": "ana",
+      "contexto": "I have an idea.",
+      "cod": "What's your idea?",
+      "dica": "Qual é a sua ideia?",
+      "img": "💡❓",
+      "alvo": "idea",
+      "alvo_pt": "ideia",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2234174,
+        "en_autor": "CK",
+        "pt_id": 10109140,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2422c7",
+      "quem": "voce",
+      "contexto": "A new chair for your desk?",
+      "cod": "That's an idea.",
+      "dica": "É uma ideia.",
+      "img": "🪑💡",
+      "alvo": "an idea",
+      "alvo_pt": "uma ideia",
+      "conceito": "an antes de som de vogal: an idea.",
+      "var": [
+        {
+          "em": "That's",
+          "aceita": [
+            "It's"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "a",
+        "one"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2251053,
+        "en_autor": "CK",
+        "pt_id": 4832762,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT: Essa é uma ideia → É uma ideia",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-23b2a8",
+      "quem": "ana",
+      "contexto": "A big desk and a new chair.",
+      "cod": "That's a good idea!",
+      "dica": "Que boa ideia!",
+      "img": "👍💡",
+      "alvo": "good idea",
+      "alvo_pt": "boa ideia",
+      "var": [
+        {
+          "em": "That's a",
+          "aceita": [
+            "What a"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1568,
+        "en_autor": "CK",
+        "pt_id": 405393,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a614e2",
+      "quem": "ana",
+      "contexto": "This desk is a thousand dollars.",
+      "cod": "Is that a good idea?",
+      "dica": "Isso é uma boa ideia?",
+      "img": "🤔💸",
+      "alvo": "good idea",
+      "alvo_pt": "boa ideia",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "it",
+            "this"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1886916,
+        "en_autor": "CK",
+        "pt_id": 6993938,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT: Essa é → Isso é (o que se avalia é a compra, não a ideia)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c016b7",
+      "quem": "voce",
+      "contexto": "Hi! Is the meeting now?",
+      "cod": "You're an hour early.",
+      "dica": "Você está uma hora adiantada.",
+      "img": "⏰😅",
+      "alvo": "an hour",
+      "alvo_pt": "uma hora",
+      "lit": "[lit.: você é uma hora cedo]",
+      "conceito": "an hour: o h é mudo, então o som é de vogal.",
+      "registro": "informal",
+      "armadilhas": [
+        "a"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2547440,
+        "en_autor": "CK",
+        "pt_id": 5513602,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT no feminino (fala com a Ana)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1dbaff",
+      "quem": "voce",
+      "cod": "Our meeting is in an hour.",
+      "dica": "A nossa reunião é daqui a uma hora.",
+      "img": "📅⏳",
+      "alvo": "an hour",
+      "alvo_pt": "uma hora",
+      "conceito": "in an hour = daqui a uma hora.",
+      "registro": "informal",
+      "armadilhas": [
+        "a"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

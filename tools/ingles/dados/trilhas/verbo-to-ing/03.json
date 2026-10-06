@@ -1,0 +1,302 @@
+{
+  "id": "verbo-to-ing.vim-para-te-ver-to-de-finalidade",
+  "trilha": "verbo-to-ing",
+  "nome": "Vim para te ver: to de finalidade",
+  "emoji": "🎁",
+  "cena": "Você passa no escritório de Chicago sem avisar, explica para o Mike por que veio e resolve umas coisas por telefone.",
+  "resumo": "Explicar para que você fez algo: to + verbo (para), nunca for to.",
+  "fechamento": false,
+  "novos": [
+    "I came here to...",
+    "I'm calling to ask about...",
+    "order (pedido)",
+    "get some cash",
+    "say hi"
+  ],
+  "apoio": [
+    "to (finalidade)",
+    "ATM"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Para + verbo = to"
+    },
+    {
+      "t": "p",
+      "c": "Para dizer a finalidade (para quê), use **to** + verbo."
+    },
+    {
+      "t": "ex",
+      "c": "I came here to see you.\nEu vim aqui para te ver."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca for to (não: I came here for to see you)."
+    },
+    {
+      "t": "tip",
+      "c": "Ligar para alguém = call + pessoa, sem to: I called Mike."
+    }
+  ],
+  "imagem": "🏢🎁📞",
+  "visualizacao": "Você entra no escritório de Chicago com um pacote de café do Brasil na mão. O Mike levanta da mesa surpreso, e o seu celular começa a tocar.",
+  "foto_busca": "office reception friendly greeting",
+  "trechos": [
+    {
+      "id": "f-e64ef2",
+      "quem": "voce",
+      "contexto": "Hey! What are you doing here?",
+      "cod": "I came here to see you.",
+      "dica": "Eu vim aqui para te ver.",
+      "img": "👋😃",
+      "alvo": "I came here to",
+      "alvo_pt": "Eu vim aqui para",
+      "conceito": "para + verbo (finalidade) = to + verbo (não: for to see).",
+      "registro": "informal",
+      "interferencias": [
+        "BR30",
+        "BR18"
+      ],
+      "armadilhas": [
+        "for"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3921624,
+        "en_autor": "CK",
+        "pt_id": 7292897,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e4b39b",
+      "quem": "voce",
+      "cod": "I came here to give you this. It's coffee from Brazil.",
+      "dica": "Eu vim aqui para te dar isto. É café do Brasil.",
+      "img": "🎁☕",
+      "alvo": "I came here to",
+      "alvo_pt": "Eu vim aqui para",
+      "conceito": "É café do Brasil = It's coffee from Brazil (o it é obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR30",
+        "BR01"
+      ],
+      "armadilhas": [
+        "for",
+        "is"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2300253,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: I came to give you this → I came here to give you this; acrescentado It's coffee from Brazil. (original: \"I came to give you this.\"); PT reescrito (original: \"Eu vim para te dar isso.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-241d45",
+      "quem": "mike",
+      "contexto": "f-e4b39b",
+      "cod": "Thanks! Go say hi to Ana. She's in the kitchen.",
+      "dica": "Valeu! Vai dar um oi para a Ana. Ela está na cozinha.",
+      "img": "👋👩‍🎨",
+      "alvo": "say hi",
+      "alvo_pt": "dar um oi",
+      "conceito": "say hi to someone = dar um oi para alguém.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9359792,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → Ana; acrescentados Thanks! e She's in the kitchen. (original: \"Go say hi to Tom.\"); PT reescrito (original: \"Vá cumprimentar Tom.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "Go say",
+          "aceita": [
+            "Go and say"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-69f4c2",
+      "quem": "voce",
+      "contexto": "Let's have lunch together!",
+      "cod": "Great! First, I'm going to the ATM to get some cash.",
+      "dica": "Ótimo! Primeiro, vou ao caixa eletrônico para sacar dinheiro.",
+      "img": "🏧💵",
+      "alvo": "get some cash",
+      "alvo_pt": "sacar dinheiro",
+      "conceito": "get some cash = sacar dinheiro. to the ATM = lugar; to get = para quê.",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d79843",
+      "quem": "mike",
+      "contexto": "f-69f4c2",
+      "cod": "Wait, I need to get some cash too!",
+      "dica": "Espera, eu também preciso sacar dinheiro!",
+      "img": "✋💳",
+      "alvo": "get some cash",
+      "alvo_pt": "sacar dinheiro",
+      "registro": "informal",
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I need to get some cash too",
+          "aceita": [
+            "I also need to get some cash"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-dad023",
+      "quem": "voce",
+      "cod": "Hi, I'm calling to ask about my order.",
+      "dica": "Oi, estou ligando para perguntar sobre o meu pedido.",
+      "img": "📞📦",
+      "alvo": "I'm calling to ask about",
+      "alvo_pt": "estou ligando para perguntar sobre",
+      "conceito": "I'm calling to... = estou ligando para... (finalidade com to).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-beabf1",
+      "quem": "atendente",
+      "contexto": "f-dad023",
+      "cod": "Is there a problem with your order?",
+      "dica": "Tem algum problema com o seu pedido?",
+      "img": "📦❗",
+      "alvo": "order",
+      "alvo_pt": "pedido",
+      "conceito": "order = pedido (de compra). to order = pedir (comida, produto).",
+      "var": [
+        {
+          "em": "a problem",
+          "aceita": [
+            "any problem",
+            "any problems"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5336528,
+        "en_autor": "mailohilohi",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Há algum problema em seu pedido?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-34548e",
+      "quem": "voce",
+      "contexto": "f-beabf1",
+      "cod": "Yes, my order hasn't arrived yet.",
+      "dica": "Tem, meu pedido ainda não chegou.",
+      "img": "📭😕",
+      "alvo": "order",
+      "alvo_pt": "pedido",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "hasn't arrived",
+          "aceita": [
+            "didn't arrive"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e36385",
+      "quem": "voce",
+      "cod": "Hi, I'm calling to ask about my reservation.",
+      "dica": "Oi, estou ligando para perguntar sobre a minha reserva.",
+      "img": "🏨📞",
+      "alvo": "I'm calling to ask about",
+      "alvo_pt": "estou ligando para perguntar sobre",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "for"
+      ],
+      "variacao_de": "f-dad023",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1ca8f5",
+      "quem": "voce",
+      "contexto": "Hey! Is everything OK?",
+      "cod": "I'm just calling to say hi.",
+      "dica": "Só estou ligando para dar um oi.",
+      "img": "📱💬",
+      "alvo": "say hi",
+      "alvo_pt": "dar um oi",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2544160,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Só liguei para dizer oi.\")",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

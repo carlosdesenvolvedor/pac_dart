@@ -1,0 +1,182 @@
+{
+  "id": "numeros-horas-soletrar.treze-a-dezenove-o-teen",
+  "trilha": "numeros-horas-soletrar",
+  "nome": "Treze a dezenove: o -teen",
+  "emoji": "💵",
+  "cena": "Numa loja de eletrônicos em Chicago, você pergunta o preço de um cabo e de um adaptador.",
+  "resumo": "Números de 13 a 19 e preços baratos: How much is it? / It's fifteen dollars.",
+  "fechamento": false,
+  "novos": [
+    "How much is it?",
+    "dollars",
+    "It's ... dollars.",
+    "thirteen a nineteen (-teen)"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "13 a 19: o -teen"
+    },
+    {
+      "t": "p",
+      "c": "thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen. A força vai no fim: thirTEEN, fifTEEN."
+    },
+    {
+      "t": "ex",
+      "c": "How much is it?\nQuanto custa?"
+    },
+    {
+      "t": "tip",
+      "c": "Preço com It's: It's fifteen dollars. = Custa quinze dólares."
+    },
+    {
+      "t": "warn",
+      "c": "Os -ty (thirty, forty...) ficam para a próxima lição: treze e trinta se confundem no ouvido."
+    }
+  ],
+  "imagem": "🛒🔌💵",
+  "visualizacao": "Você está numa loja de eletrônicos em Chicago, entre prateleiras de cabos e adaptadores. Luz branca, etiquetas pequenas e um atendente vindo te ajudar.",
+  "foto_busca": "electronics store cables aisle",
+  "trechos": [
+    {
+      "id": "f-3ac720",
+      "quem": "voce",
+      "cod": "Excuse me, how much is it?",
+      "dica": "(um cabo) Com licença, quanto custa?",
+      "img": "🔌❓",
+      "alvo": "how much is it",
+      "alvo_pt": "quanto custa",
+      "lit": "[lit.: quanto é isso?]",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3847206,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "this → it; PT reescrito (Quanto custa?)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-459a83",
+      "quem": "atendente",
+      "contexto": "f-3ac720",
+      "cod": "It's fifteen dollars.",
+      "dica": "Custa quinze dólares.",
+      "img": "💵🏷️",
+      "alvo": "It's fifteen dollars",
+      "alvo_pt": "Custa quinze dólares",
+      "lit": "[lit.: é quinze dólares]",
+      "conceito": "Preço com It's: It's + número + dollars.",
+      "registro": "neutro",
+      "armadilhas": [
+        "costs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0f9edc",
+      "quem": "voce",
+      "contexto": "f-459a83",
+      "cod": "Sorry, fourteen dollars?",
+      "dica": "Desculpa, catorze dólares?",
+      "img": "👂💵",
+      "alvo": "fourteen",
+      "alvo_pt": "catorze",
+      "conceito": "-teen: a força vai no fim, fourTEEN.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d975ec",
+      "quem": "atendente",
+      "contexto": "f-0f9edc",
+      "cod": "No, fifteen dollars.",
+      "dica": "Não, quinze dólares.",
+      "img": "☝️💵",
+      "alvo": "dollars",
+      "alvo_pt": "dólares",
+      "conceito": "dollars vai para o plural, como dólares.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a82a58",
+      "quem": "voce",
+      "cod": "Sorry, how much is it?",
+      "dica": "(o adaptador) Desculpa, quanto custa?",
+      "img": "🛍️❓",
+      "alvo": "how much is it",
+      "alvo_pt": "quanto custa",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1885879,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "that → it; + Sorry; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0630ec",
+      "quem": "atendente",
+      "contexto": "f-a82a58",
+      "cod": "It's thirteen dollars.",
+      "dica": "Custa treze dólares.",
+      "img": "🏷️💲",
+      "alvo": "It's thirteen dollars",
+      "alvo_pt": "Custa treze dólares",
+      "registro": "neutro",
+      "armadilhas": [
+        "costs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-02f040",
+      "quem": "voce",
+      "contexto": "f-0630ec",
+      "cod": "Thirteen dollars? Thanks!",
+      "dica": "Treze dólares? Obrigado!",
+      "pt_f": "Treze dólares? Obrigada!",
+      "img": "😀💵",
+      "alvo": "dollars",
+      "alvo_pt": "dólares",
+      "var": [
+        {
+          "em": "Thanks",
+          "aceita": [
+            "Thank you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5bccae",
+      "quem": "atendente",
+      "cod": "I'm sorry, it's nineteen dollars.",
+      "dica": "(no caixa) Me desculpa, custa dezenove dólares.",
+      "img": "🧾😬",
+      "alvo": "nineteen",
+      "alvo_pt": "dezenove",
+      "conceito": "No caixa, o preço do adaptador é outro. nineteen = 19, com a força no -teen.",
+      "registro": "neutro",
+      "armadilhas": [
+        "costs"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

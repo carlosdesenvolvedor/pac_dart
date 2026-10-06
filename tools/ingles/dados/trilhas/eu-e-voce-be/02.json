@@ -1,0 +1,222 @@
+{
+  "id": "eu-e-voce-be.brasileiro-americano",
+  "trilha": "eu-e-voce-be",
+  "nome": "Brasileiro, americano",
+  "emoji": "🌎",
+  "cena": "No avião para Chicago, você conversa com a moça da poltrona ao lado; depois, na chamada, o Mike pede que a Ana fale em inglês.",
+  "resumo": "Dizer a sua nacionalidade e a do outro, com maiúscula: I'm Brazilian. / I'm American. / in English.",
+  "fechamento": false,
+  "novos": [
+    "Brazilian",
+    "American",
+    "English",
+    "in English"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Nacionalidades e línguas: maiúscula"
+    },
+    {
+      "t": "p",
+      "c": "Para dizer a nacionalidade: **I'm** + nacionalidade. **Brazilian** e **American** servem para homem e mulher. A língua é **English**; em inglês = **in English**."
+    },
+    {
+      "t": "ex",
+      "c": "I'm Brazilian. How about you?\nSou brasileiro. E você?"
+    },
+    {
+      "t": "ex",
+      "c": "Ana, in English, please!\nAna, em inglês, por favor!"
+    },
+    {
+      "t": "warn",
+      "c": "Nacionalidade e língua começam com maiúscula: Brazilian, American, English (não: brazilian, english). E o país é Brazil, com Z."
+    }
+  ],
+  "imagem": "✈️💺🗣️",
+  "visualizacao": "Você está no avião para Chicago, na poltrona do meio. A moça ao lado puxa conversa; depois, na chamada, o Mike ri quando a Ana escapa para o português.",
+  "foto_busca": "airplane passengers talking",
+  "trechos": [
+    {
+      "id": "f-fc2666",
+      "quem": "voce",
+      "contexto": "Where are you from?",
+      "cod": "I'm Brazilian. How about you?",
+      "dica": "Sou brasileiro. E você?",
+      "pt_f": "Sou brasileira. E você?",
+      "img": "🙋🇧🇷",
+      "alvo": "Brazilian",
+      "alvo_pt": "brasileiro",
+      "conceito": "Nacionalidade tem maiúscula em inglês: Brazilian (não: brazilian).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "brazilian",
+        "brasilian",
+        "brazillian"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2491ec",
+      "quem": "passageira",
+      "contexto": "f-fc2666",
+      "cod": "Me? I'm American, from Chicago.",
+      "dica": "Eu? Sou americana, de Chicago.",
+      "img": "👩🇺🇸",
+      "alvo": "American",
+      "alvo_pt": "americana",
+      "conceito": "American não muda com o gênero: americano e americana são American.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "american",
+        "americana"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-930532",
+      "quem": "passageira",
+      "cod": "Wow, your English is good!",
+      "dica": "Nossa, seu inglês é bom!",
+      "img": "😮🗣️👍",
+      "alvo": "English",
+      "alvo_pt": "inglês",
+      "conceito": "A língua também tem maiúscula: English (não: english).",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "english"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3352669,
+        "en_autor": "Hybrid",
+        "pt_id": 5357472,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "His → your, - really, + Wow (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a87498",
+      "quem": "voce",
+      "contexto": "f-930532",
+      "cod": "Thanks! My English is OK.",
+      "dica": "Valeu! Meu inglês é ok.",
+      "img": "🙏🙂",
+      "alvo": "English",
+      "alvo_pt": "inglês",
+      "conceito": "Thanks! = valeu. OK aqui é razoável, nem ótimo nem ruim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "english"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5966491,
+        "en_autor": "mailohilohi",
+        "pt_id": 5968144,
+        "pt_autor": "sergiomelo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "terrible → OK, + Thanks! (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e4f2f3",
+      "quem": "voce",
+      "contexto": "Brasil, with an S?",
+      "cod": "In English, it's with a Z.",
+      "dica": "Em inglês, é com Z.",
+      "img": "✍️🇧🇷",
+      "alvo": "In English",
+      "alvo_pt": "Em inglês",
+      "conceito": "Brasil em português; Brazil, com Z, em inglês.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "with s",
+        "brasil"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a72c88",
+      "quem": "mike",
+      "cod": "Ana, in English, please!",
+      "dica": "Ana, em inglês, por favor!",
+      "img": "☝️🗣️",
+      "alvo": "in English",
+      "alvo_pt": "em inglês",
+      "conceito": "em inglês = in English, sem artigo (não: in the English).",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "in the english",
+        "in english"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1a3d5c",
+      "quem": "ana",
+      "contexto": "f-a72c88",
+      "cod": "Sorry, Mike! I'm Brazilian!",
+      "dica": "Desculpa, Mike! Sou brasileira!",
+      "img": "😅🇧🇷",
+      "alvo": "Brazilian",
+      "alvo_pt": "brasileira",
+      "conceito": "Brazilian serve para brasileiro e brasileira; sempre com maiúscula.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "brazilian"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-df8522",
+      "quem": "mike",
+      "contexto": "f-1a3d5c",
+      "cod": "And I'm American, Ana!",
+      "dica": "E eu sou americano, Ana!",
+      "img": "😄🇺🇸",
+      "alvo": "American",
+      "alvo_pt": "americano",
+      "conceito": "American = americano ou americana, sempre com maiúscula (não: american).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "american"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

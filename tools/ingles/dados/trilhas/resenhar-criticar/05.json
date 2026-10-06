@@ -1,0 +1,249 @@
+{
+  "id": "resenhar-criticar.cena-avaliar-a-ferramenta-nova",
+  "trilha": "resenhar-criticar",
+  "nome": "Cena: avaliar a ferramenta nova",
+  "emoji": "⭐",
+  "cena": "Depois de testar uma ferramenta nova por um mês, você escreve a avaliação para o time.",
+  "resumo": "Uma avaliação com elogio, crítica e recomendação: -ed x -ing, intensificadores e comparação forte.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A avaliação inteira"
+    },
+    {
+      "t": "p",
+      "c": "Elogio (**pretty impressive**), crítica com tato (**confusing at first**), comparação (**far better than**), custo (**well worth the price**) e conclusão (**Overall, I'd highly recommend it.**)."
+    },
+    {
+      "t": "warn",
+      "c": "BR41: a ferramenta é impressive / confusing (a coisa); você fica impressed / confused (a pessoa). Não: I was impressive."
+    },
+    {
+      "t": "ex",
+      "c": "Overall, I'd highly recommend it to the whole team.\nNo geral, eu recomendaria muito para o time inteiro."
+    }
+  ],
+  "imagem": "🛠️⭐📝",
+  "visualizacao": "Um mês depois, você abre a ferramenta nova pela última vez antes da avaliação. Repassa as anotações do bloco, os prós de um lado, os contras do outro.",
+  "foto_busca": "developer writing review notebook laptop",
+  "trechos": [
+    {
+      "id": "f-925354",
+      "quem": "voce",
+      "cod": "I've been testing the new tool for a month.",
+      "dica": "Estou testando a ferramenta nova há um mês.",
+      "img": "🛠️📅",
+      "alvo": "I've been testing",
+      "alvo_pt": "Estou testando",
+      "conceito": "presente + há (ainda em curso) = have been + -ing + for.",
+      "var": [
+        {
+          "em": "I've been testing",
+          "aceita": [
+            "I've tested"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "am testing",
+        "since"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c54ef0",
+      "quem": "voce",
+      "cod": "On the one hand, the tool is pretty impressive.",
+      "dica": "Por um lado, a ferramenta é bem impressionante.",
+      "img": "🤩🛠️",
+      "alvo": "impressive",
+      "alvo_pt": "impressionante",
+      "conceito": "A ferramenta é impressive (causa); você fica impressed.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR41"
+      ],
+      "armadilhas": [
+        "impressed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bafd8f",
+      "quem": "voce",
+      "cod": "On the other hand, the documentation is confusing.",
+      "dica": "Por outro lado, a documentação é confusa.",
+      "img": "📄😵",
+      "alvo": "confusing",
+      "alvo_pt": "confusa",
+      "conceito": "A documentação é confusing; quem lê fica confused.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR41"
+      ],
+      "armadilhas": [
+        "confused"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ebf04a",
+      "quem": "voce",
+      "cod": "I found the setup confusing at first.",
+      "dica": "Achei a configuração confusa no começo.",
+      "img": "⚙️😕",
+      "alvo": "found",
+      "alvo_pt": "Achei",
+      "conceito": "find + coisa + adjetivo = achar algo (adjetivo): I found it confusing.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR41"
+      ],
+      "armadilhas": [
+        "confused",
+        "thought"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7951064,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I found this confusing at first.\"; this → the setup; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e988ae",
+      "quem": "voce",
+      "cod": "The tool is expensive, but it's well worth the price.",
+      "dica": "A ferramenta é cara, mas vale muito o preço.",
+      "img": "💰👍",
+      "alvo": "well worth",
+      "alvo_pt": "vale muito",
+      "conceito": "worth + substantivo: well worth the price.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "worths",
+        "value"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10796419,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"This coat is expensive, but it's worth the price.\"; This coat → The tool; worth → well worth; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-94827a",
+      "quem": "voce",
+      "cod": "It's far better than what we use now.",
+      "dica": "É bem melhor do que o que usamos agora.",
+      "img": "⬆️🛠️",
+      "alvo": "far better",
+      "alvo_pt": "bem melhor",
+      "conceito": "É (a ferramenta): o it é obrigatório. far better than (não: more better).",
+      "var": [
+        {
+          "em": "far better",
+          "aceita": [
+            "much better"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01",
+        "BR55"
+      ],
+      "armadilhas": [
+        "more",
+        "then"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-967bc1",
+      "quem": "voce",
+      "cod": "I wasn't very impressed by the reports, though.",
+      "dica": "Mas não fiquei muito impressionado com os relatórios.",
+      "pt_f": "Mas não fiquei muito impressionada com os relatórios.",
+      "img": "📊😐",
+      "alvo": "impressed",
+      "alvo_pt": "impressionado",
+      "conceito": "Você fica impressed by / with (o sentimento, com -ed).",
+      "var": [
+        {
+          "em": "by",
+          "aceita": [
+            "with"
+          ]
+        },
+        {
+          "em": "I wasn't",
+          "aceita": [
+            "But I wasn't"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR41"
+      ],
+      "armadilhas": [
+        "impressive",
+        "didn't"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4999736,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I wasn't very impressed by that.\"; that → the reports; + though; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "opcional": [
+        "though"
+      ]
+    },
+    {
+      "id": "f-9b598b",
+      "quem": "voce",
+      "cod": "Overall, I'd highly recommend it to the whole team.",
+      "dica": "No geral, eu recomendaria muito para o time inteiro.",
+      "img": "👍👥",
+      "alvo": "highly recommend",
+      "alvo_pt": "recomendaria muito",
+      "conceito": "highly recommend = recomendar muito (não: very recommend).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "very",
+        "for"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <!--
+    Laboratório do PAC·C#: valida o currículo compilando cada exercício com o
+    Roslyn e rodando os programas. As PackageReference abaixo são também as
+    bibliotecas que os exercícios podem usar (entram como referência de
+    compilação via TRUSTED_PLATFORM_ASSEMBLIES).
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>PacLab</RootNamespace>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <NoWarn>$(NoWarn);NU1603;NU1608;NU1701;NU1903;NU1902;NU1904</NoWarn>
+    <SatelliteResourceLanguages>pt-BR;en</SatelliteResourceLanguages>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- compilador -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="*" />
+
+    <!-- dados -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.*" />
+    <PackageReference Include="Dapper" Version="*" />
+
+    <!-- testes -->
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="Moq" Version="4.20.72" />
+    <PackageReference Include="NSubstitute" Version="*" />
+    <PackageReference Include="Shouldly" Version="*" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.*" />
+    <PackageReference Include="BenchmarkDotNet" Version="*" />
+
+    <!-- arquitetura / pacotes populares -->
+    <PackageReference Include="MediatR" Version="12.5.0" />
+    <PackageReference Include="FluentValidation" Version="*" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="*" />
+    <PackageReference Include="ErrorOr" Version="*" />
+    <PackageReference Include="Mapster" Version="*" />
+    <PackageReference Include="Serilog.AspNetCore" Version="*" />
+    <PackageReference Include="Polly" Version="*" />
+    <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="10.*" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="*" />
+    <PackageReference Include="Newtonsoft.Json" Version="*" />
+    <PackageReference Include="Humanizer.Core" Version="*" />
+    <PackageReference Include="Humanizer.Core.pt" Version="*" />
+    <PackageReference Include="Bogus" Version="*" />
+    <PackageReference Include="Spectre.Console" Version="*" />
+    <PackageReference Include="StackExchange.Redis" Version="*" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Hybrid" Version="10.*" />
+    <PackageReference Include="RabbitMQ.Client" Version="*" />
+
+    <!-- web -->
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.*" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.*" />
+    <PackageReference Include="Scalar.AspNetCore" Version="*" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="10.*" />
+
+    <!-- observabilidade -->
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="*" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" Version="*" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="*" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="*" />
+
+    <!-- jogos -->
+    <PackageReference Include="MonoGame.Framework.DesktopGL" Version="*" />
+    <PackageReference Include="GodotSharp" Version="*" />
+    <PackageReference Include="Godot.SourceGenerators" Version="4.7.2" PrivateAssets="all" IncludeAssets="none" GeneratePathProperty="true" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- API do .NET Standard 2.1 = a superfície de BCL que o Unity 6 expõe aos scripts -->
+    <PackageDownload Include="NETStandard.Library.Ref" Version="[2.1.0]" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- o stub do UnityEngine é compilado em memória pelo próprio lab -->
+    <Compile Remove="stubs/**" />
+    <None Include="stubs/**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

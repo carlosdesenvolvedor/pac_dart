@@ -1,0 +1,247 @@
+{
+  "id": "convites-pedidos.quer-vir-jantar-would-you-like-to",
+  "trilha": "convites-pedidos",
+  "nome": "Quer vir jantar? Would you like to",
+  "emoji": "🍷",
+  "cena": "Em Chicago, a Emma faz um churrasco no sábado e você convida o time; uns aceitam, outros recusam.",
+  "resumo": "Convidar com Would you like to...? e aceitar ou recusar com educação: I'd love to, but I can't.",
+  "fechamento": false,
+  "novos": [
+    "Would you like to...?",
+    "I'd love to.",
+    "I'd love to, but I can't.",
+    "come to dinner",
+    "join us"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Convite educado: Would you like to...?"
+    },
+    {
+      "t": "p",
+      "c": "**Would you like to** + verbo? = você gostaria de...? Para aceitar: **I'd love to!** Para recusar sem grosseria: **I'd love to, but I can't.**"
+    },
+    {
+      "t": "warn",
+      "c": "join us, sem with (não: join with us). Convite para onde você está: come (vir), não go."
+    },
+    {
+      "t": "ex",
+      "c": "Would you like to come to dinner on Saturday?\nVocê gostaria de vir jantar no sábado?"
+    }
+  ],
+  "imagem": "🍖🍷📨",
+  "visualizacao": "Você está no quintal da Emma em Chicago, com cheiro de churrasco no ar. Com o celular na mão, você manda os convites para o time e espera as respostas.",
+  "foto_busca": "backyard barbecue friends dinner",
+  "trechos": [
+    {
+      "id": "f-15dabb",
+      "quem": "emma",
+      "cod": "Would you like to invite your team?",
+      "dica": "Você gostaria de convidar o seu time?",
+      "img": "👥📨❓",
+      "alvo": "Would you like to",
+      "alvo_pt": "Você gostaria de",
+      "conceito": "Would you like to + verbo = você gostaria de... (convite ou oferta educada).",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-93e487",
+      "quem": "voce",
+      "contexto": "f-15dabb",
+      "cod": "Yes, thanks! I'd love to.",
+      "dica": "Sim, obrigado! Eu adoraria.",
+      "img": "😊👍",
+      "alvo": "I'd love to",
+      "alvo_pt": "Eu adoraria",
+      "conceito": "I'd love to = eu adoraria. O to fica no fim, sem repetir o verbo.",
+      "pt_f": "Sim, obrigada! Eu adoraria.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-88a54c",
+      "quem": "voce",
+      "cod": "Would you like to come to dinner on Saturday?",
+      "dica": "Você gostaria de vir jantar no sábado?",
+      "img": "🍽️📅❓",
+      "alvo": "come to dinner",
+      "alvo_pt": "vir jantar",
+      "conceito": "Convite para onde você está: come (vir).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR37"
+      ],
+      "armadilhas": [
+        "go"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "come to dinner",
+          "aceita": [
+            "come for dinner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-36b813",
+      "quem": "mike",
+      "contexto": "f-88a54c",
+      "cod": "I'd love to! Can I bring anything?",
+      "dica": "Eu adoraria! Posso levar alguma coisa?",
+      "img": "🤩🎁❓",
+      "alvo": "I'd love to",
+      "alvo_pt": "Eu adoraria",
+      "conceito": "Levar algo para a casa de quem convida = bring (não take).",
+      "var": [
+        {
+          "em": "anything",
+          "aceita": [
+            "something"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR37"
+      ],
+      "armadilhas": [
+        "take"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3c99f2",
+      "quem": "voce",
+      "cod": "Sarah, would you like to join us?",
+      "dica": "Sarah, você gostaria de se juntar a nós?",
+      "img": "👋👥",
+      "alvo": "join us",
+      "alvo_pt": "se juntar a nós",
+      "conceito": "join us, sem with (não: join with us).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4012158,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'Sarah,' acrescentado; PT reescrito (o original tem crase errada)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4dd88d",
+      "quem": "sarah",
+      "contexto": "f-3c99f2",
+      "cod": "I'd love to, but I can't. My husband has a fever.",
+      "dica": "Eu adoraria, mas não posso. Meu marido está com febre.",
+      "img": "🙏🤒",
+      "alvo": "I'd love to, but I can't",
+      "alvo_pt": "Eu adoraria, mas não posso",
+      "conceito": "Recusa educada: I'd love to, but I can't. Está com febre = has a fever.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR04",
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-da7f22",
+      "quem": "voce",
+      "contexto": "f-4dd88d",
+      "cod": "No problem. You can join us next time.",
+      "dica": "Sem problema. Você pode se juntar a nós da próxima vez.",
+      "img": "👌🔜👥",
+      "alvo": "join us",
+      "alvo_pt": "se juntar a nós",
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8159b0",
+      "quem": "voce",
+      "cod": "Ana, would you like to come to dinner too?",
+      "dica": "Ana, você gostaria de vir jantar também?",
+      "img": "🍽️🙋‍♀️",
+      "alvo": "come to dinner",
+      "alvo_pt": "vir jantar",
+      "registro": "neutro",
+      "interferencias": [
+        "BR37"
+      ],
+      "armadilhas": [
+        "go"
+      ],
+      "variacao_de": "f-88a54c",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "come to dinner",
+          "aceita": [
+            "come for dinner"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-5cf196",
+      "quem": "ana",
+      "contexto": "f-8159b0",
+      "cod": "Sorry, I'd love to, but I can't.",
+      "dica": "Desculpa, eu adoraria, mas não posso.",
+      "img": "😔🙏",
+      "alvo": "I'd love to, but I can't",
+      "alvo_pt": "eu adoraria, mas não posso",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3fe507",
+      "quem": "mike",
+      "cod": "Would you like to have lunch with me?",
+      "dica": "Você gostaria de almoçar comigo?",
+      "img": "🥪👥❓",
+      "alvo": "Would you like to",
+      "alvo_pt": "Você gostaria de",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7545210,
+        "en_autor": "CK",
+        "pt_id": 7553914,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'go out for lunch' trocado por 'have lunch with me' (evita o par come/go na lição de come); PT ajustado",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

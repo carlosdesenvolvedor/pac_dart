@@ -1,0 +1,253 @@
+{
+  "id": "terceira-condicional.se-eu-soubesse-teria-ligado",
+  "trilha": "terceira-condicional",
+  "nome": "Se eu soubesse, teria ligado",
+  "emoji": "🔙",
+  "cena": "Na segunda, o Mike conta que o time fez uma festa surpresa para a Ana na sexta, e você descobre que ninguém te mandou o endereço.",
+  "resumo": "Imaginar o passado diferente: If I had known, I would have... (Se eu soubesse, teria...).",
+  "fechamento": false,
+  "novos": [
+    "If I had known",
+    "would have",
+    "the address",
+    "bought her a gift",
+    "a surprise party"
+  ],
+  "apoio": [
+    "about it",
+    "come (would have come)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Se eu soubesse, teria...: 3ª condicional"
+    },
+    {
+      "t": "p",
+      "c": "Para imaginar o passado diferente: **If + had + particípio**, **would have + particípio**. If I had known, I would have come."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca would dentro do if: If I had known (não: If I would have known)."
+    },
+    {
+      "t": "tip",
+      "c": "Na fala: If I'd known... I'd have come. O app aceita as contrações."
+    },
+    {
+      "t": "ex",
+      "c": "If I had known, I would have come.\nSe eu soubesse, teria ido."
+    }
+  ],
+  "imagem": "🎉🎂😮",
+  "visualizacao": "Segunda de manhã, a chamada abre e o Mike mostra as fotos de sexta: balões, um bolo enorme e a Ana surpresa. Você procura o seu rosto nas fotos e não acha.",
+  "foto_busca": "surprise birthday party office cake",
+  "trechos": [
+    {
+      "id": "f-e07ef6",
+      "quem": "mike",
+      "cod": "We had a surprise party for Ana on Friday.",
+      "dica": "A gente fez uma festa surpresa pra Ana na sexta.",
+      "img": "🎉🎂",
+      "alvo": "a surprise party",
+      "alvo_pt": "uma festa surpresa",
+      "conceito": "fazer uma festa = have / throw a party (não: make a party).",
+      "var": [
+        {
+          "em": "had",
+          "aceita": [
+            "threw"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR32",
+        "BR17"
+      ],
+      "armadilhas": [
+        "made",
+        "did"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-06c5b9",
+      "quem": "voce",
+      "contexto": "f-e07ef6",
+      "cod": "A surprise party? Nobody told me!",
+      "dica": "Uma festa surpresa? Ninguém me falou!",
+      "img": "😮❓",
+      "alvo": "A surprise party",
+      "alvo_pt": "Uma festa surpresa",
+      "conceito": "tell (told) pede a pessoa: Nobody told me.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "said"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-723573",
+      "quem": "mike",
+      "contexto": "f-06c5b9",
+      "cod": "Ana would have loved to see you there.",
+      "dica": "A Ana teria adorado te ver lá.",
+      "img": "🥰👀",
+      "alvo": "would have",
+      "alvo_pt": "teria",
+      "conceito": "would have + particípio = teria + particípio.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5bd8aa",
+      "quem": "voce",
+      "contexto": "f-723573",
+      "cod": "If I had known, I would have come.",
+      "dica": "Se eu soubesse, teria ido.",
+      "img": "💡🏃",
+      "alvo": "If I had known",
+      "alvo_pt": "Se eu soubesse",
+      "lit": "[lit.: se eu tivesse sabido]",
+      "conceito": "If + had + particípio; o would fica na outra metade, nunca no if.",
+      "var": [
+        {
+          "em": "come",
+          "aceita": [
+            "gone"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would",
+        "knew"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6fce15",
+      "quem": "mike",
+      "cod": "Sarah was supposed to send you the address.",
+      "dica": "Era pra Sarah ter te mandado o endereço.",
+      "img": "📍✉️",
+      "alvo": "the address",
+      "alvo_pt": "o endereço",
+      "conceito": "era pra = was supposed to (trilha anterior).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1f15e7",
+      "quem": "voce",
+      "contexto": "f-6fce15",
+      "cod": "She never sent me the address.",
+      "dica": "Ela nunca me mandou o endereço.",
+      "img": "📭🤷",
+      "alvo": "the address",
+      "alvo_pt": "o endereço",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d053c4",
+      "quem": "mike",
+      "contexto": "f-1f15e7",
+      "cod": "If I had known you didn't have the address, I would have called you.",
+      "dica": "Se eu soubesse que você não tinha o endereço, teria te ligado.",
+      "img": "📍❓📞",
+      "alvo": "If I had known",
+      "alvo_pt": "Se eu soubesse",
+      "conceito": "Se eu soubesse que... = If I had known (that)...: o that é opcional.",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2263fd",
+      "quem": "voce",
+      "cod": "I feel terrible. I would have bought her a gift.",
+      "dica": "Me sinto péssimo. Eu teria comprado um presente pra ela.",
+      "img": "😞🎁",
+      "alvo": "bought her a gift",
+      "alvo_pt": "comprado um presente pra ela",
+      "conceito": "buy someone a gift = comprar um presente pra alguém. Me sinto = I feel.",
+      "pt_f": "Me sinto péssima. Eu teria comprado um presente pra ela.",
+      "registro": "informal",
+      "interferencias": [
+        "BR62"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "bought her a gift",
+          "aceita": [
+            "bought a gift for her"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-46df34",
+      "quem": "mike",
+      "contexto": "f-2263fd",
+      "cod": "Don't worry. The whole team bought her a gift.",
+      "dica": "Não se preocupa. O time todo comprou um presente pra ela.",
+      "img": "👥🎁",
+      "alvo": "bought her a gift",
+      "alvo_pt": "comprou um presente pra ela",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "bought her a gift",
+          "aceita": [
+            "bought a gift for her"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-de38bb",
+      "quem": "ana",
+      "contexto": "Happy birthday, Ana! Sorry I missed your party.",
+      "cod": "You would have loved the cake!",
+      "dica": "Você teria adorado o bolo!",
+      "img": "🍰😋",
+      "alvo": "would have",
+      "alvo_pt": "teria",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2544473,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "would've → would have; Boston → the cake; ! no fim; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

@@ -8,6 +8,7 @@ import 'features/auth/data/auth_repository.dart';
 import 'features/auth/domain/app_user.dart';
 import 'features/auth/presentation/auth_cubit.dart';
 import 'features/curso/data/progresso_repository.dart';
+import 'features/ingles/data/revisao_repository.dart';
 import 'features/ranking/data/ranking_repository.dart';
 import 'features/ranking/domain/jogador_ranking.dart';
 import 'features/tutor/data/tutor_service.dart';
@@ -15,7 +16,8 @@ import 'main.dart';
 
 void main() => runApp(PacDartApp(
       authCubitOverride: AuthCubit(_AuthFake()),
-      progressoBuilder: (_) => LocalProgressoRepository(),
+      progressoPorLinguagem: (_, l) => LocalProgressoRepository(prefixo: l.prefixoProgresso),
+      revisaoBuilder: (_) => LocalRevisaoRepository(),
       rankingBuilder: () => _RankingFake(),
       tutorBuilder: () => _TutorFake(),
     ));

@@ -1,0 +1,355 @@
+{
+  "id": "revisao-b1.reclamacao-por-telefone",
+  "trilha": "revisao-b1",
+  "nome": "Reclamação por telefone",
+  "emoji": "☎️",
+  "cena": "Você liga para o atendimento da loja, espera meia hora na linha e fala com um atendente e com a supervisora dele.",
+  "resumo": "Reclamar por telefone: há quanto tempo espera, o que já disseram, perguntas indiretas e pedir para falar com um gerente.",
+  "fechamento": false,
+  "novos": [
+    "on hold",
+    "representative",
+    "supervisor",
+    "case number",
+    "speak to a manager"
+  ],
+  "apoio": [
+    "I've been ... for",
+    "told me that",
+    "Could you tell me",
+    "I'd like to"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Reclamar por telefone"
+    },
+    {
+      "t": "p",
+      "c": "O que já disseram: **a representative told me that** someone would call me back. Se não resolverem: **If you can't solve this**, I want to **speak to a manager**."
+    },
+    {
+      "t": "warn",
+      "c": "Estou na espera há meia hora = **I've been on hold for** half an hour (não: I'm on hold for). Pergunta dentro de pergunta, sem inversão: Could you tell me **what your case number is**?"
+    },
+    {
+      "t": "tip",
+      "c": "Protocolo = **case number**. Usar o carregador = **use**; wear é para roupa e óculos."
+    },
+    {
+      "t": "ex",
+      "c": "Can I put you on hold? It'll only take a minute.\nPosso colocar você na espera? Vai levar só um minuto."
+    }
+  ],
+  "imagem": "☎️⏳🎧",
+  "visualizacao": "Celular no viva-voz, a mesma musiquinha de espera há meia hora. Finalmente uma voz atende, e você explica tudo de novo, anotando cada nome num papel.",
+  "foto_busca": "man phone call waiting on hold",
+  "trechos": [
+    {
+      "id": "f-7736f0",
+      "quem": "voce",
+      "cod": "I've been on hold for almost half an hour.",
+      "dica": "Estou na espera há quase meia hora.",
+      "img": "📞⏳😩",
+      "alvo": "on hold",
+      "alvo_pt": "na espera",
+      "lit": "[lit.: tenho estado na espera por quase meia hora]",
+      "conceito": "há + algo que continua = for + present perfect (não: I am on hold for).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "i'm",
+        "am",
+        "since"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2894659,
+        "en_autor": "CK",
+        "pt_id": 11136580,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: waiting → on hold (original: \"I've been waiting for almost half an hour.\"); PT: esperando → na espera (original: \"Estou esperando há quase meia hora.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8e087c",
+      "quem": "atendente",
+      "contexto": "f-7736f0",
+      "cod": "Sorry for the wait. All of our representatives were on other calls.",
+      "dica": "Desculpe pela espera. Todos os nossos atendentes estavam em outras ligações.",
+      "img": "🎧👥",
+      "alvo": "representatives",
+      "alvo_pt": "atendentes",
+      "conceito": "representative = atendente de call center. Estar em outra ligação = be on another call (on, não in).",
+      "var": [
+        {
+          "em": "All of our",
+          "aceita": [
+            "All our"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "was",
+        "in"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        4
+      ],
+      "interferencias": [
+        "BR17"
+      ]
+    },
+    {
+      "id": "f-28bdb3",
+      "quem": "voce",
+      "contexto": "f-8e087c",
+      "cod": "Last week, a representative told me that someone would call me back.",
+      "dica": "Semana passada, um atendente me disse que alguém ia me ligar de volta.",
+      "img": "🗓️🎧📞",
+      "alvo": "representative",
+      "alvo_pt": "atendente",
+      "conceito": "tell + pessoa (told me); no relato, will vira would.",
+      "var": [
+        {
+          "em": "would",
+          "aceita": [
+            "was going to"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR31"
+      ],
+      "armadilhas": [
+        "said",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ee3d31",
+      "quem": "atendente",
+      "contexto": "f-28bdb3",
+      "cod": "I see. Could you tell me what your case number is?",
+      "dica": "Entendo. Você poderia me dizer qual é o seu número de protocolo?",
+      "img": "📋❓",
+      "alvo": "case number",
+      "alvo_pt": "número de protocolo",
+      "lit": "[lit.: número do caso]",
+      "conceito": "Dentro de Could you tell me..., ordem normal: what your case number is.",
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I see",
+          "aceita": [
+            "I understand"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6adb42",
+      "quem": "voce",
+      "contexto": "f-ee3d31",
+      "cod": "Nobody gave me a case number.",
+      "dica": "Ninguém me deu um número de protocolo.",
+      "img": "🤷📋",
+      "alvo": "case number",
+      "alvo_pt": "número de protocolo",
+      "conceito": "Nobody já é negativo: gave, sem didn't.",
+      "var": [
+        {
+          "em": "Nobody",
+          "aceita": [
+            "No one"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR25"
+      ],
+      "armadilhas": [
+        "didn't",
+        "give"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-11bca8",
+      "quem": "atendente",
+      "contexto": "f-6adb42",
+      "cod": "Can I put you on hold? It'll only take a minute.",
+      "dica": "Posso colocar você na espera? Vai levar só um minuto.",
+      "img": "⏸️📞",
+      "alvo": "on hold",
+      "alvo_pt": "na espera",
+      "conceito": "put someone on hold = colocar na espera. Levar (tempo) = take, com it.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Can I",
+          "aceita": [
+            "May I"
+          ]
+        },
+        {
+          "em": "only take a minute",
+          "aceita": [
+            "take only a minute"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c7a721",
+      "quem": "voce",
+      "contexto": "f-11bca8",
+      "cod": "Please don't. I'd like to speak to a manager.",
+      "dica": "Por favor, não. Eu gostaria de falar com um gerente.",
+      "img": "🙅👔",
+      "alvo": "speak to a manager",
+      "alvo_pt": "falar com um gerente",
+      "conceito": "falar com alguém = speak to (ou with) someone. Please don't = por favor, não.",
+      "var": [
+        {
+          "em": "speak to",
+          "aceita": [
+            "speak with"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10133789,
+        "en_autor": "CK",
+        "pt_id": 9953181,
+        "pt_autor": "lucasmg123",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado \"Please don't.\"; speak with your manager → speak to a manager (original: \"I'd like to speak with your manager.\"); PT: acrescentado \"Por favor, não.\"; o gerente → um gerente (original: \"Eu gostaria de falar com o gerente.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-996ca2",
+      "quem": "atendente",
+      "contexto": "f-c7a721",
+      "cod": "I'll transfer you to my supervisor.",
+      "dica": "Vou transferir você para a minha supervisora.",
+      "img": "🔀👩‍💼",
+      "alvo": "supervisor",
+      "alvo_pt": "supervisora",
+      "conceito": "transfer someone to = transferir alguém para (a ligação).",
+      "registro": "neutro",
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dcd068",
+      "quem": "supervisora",
+      "cod": "Hi, I'm the supervisor. Did you use the original charger?",
+      "dica": "Oi, eu sou a supervisora. Você usou o carregador original?",
+      "img": "🔌❓",
+      "alvo": "supervisor",
+      "alvo_pt": "supervisora",
+      "conceito": "usar um objeto = use; usar roupa ou óculos = wear.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR39",
+        "BR06"
+      ],
+      "armadilhas": [
+        "wear",
+        "used"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bb2faa",
+      "quem": "voce",
+      "contexto": "f-dcd068",
+      "cod": "Yes. If you can't solve this, I want to speak to a manager.",
+      "dica": "Usei. Se você não puder resolver isso, quero falar com um gerente.",
+      "img": "😤👔📞",
+      "alvo": "speak to a manager",
+      "alvo_pt": "falar com um gerente",
+      "conceito": "Se você não puder = if you can't (presente depois do if).",
+      "var": [
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yes, I did",
+            "I did"
+          ]
+        },
+        {
+          "em": "speak to",
+          "aceita": [
+            "speak with"
+          ]
+        },
+        {
+          "em": "solve this",
+          "aceita": [
+            "solve that",
+            "solve it"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "won't"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

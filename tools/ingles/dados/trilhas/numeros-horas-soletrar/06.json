@@ -1,0 +1,197 @@
+{
+  "id": "numeros-horas-soletrar.como-se-escreve-soletrar",
+  "trilha": "numeros-horas-soletrar",
+  "nome": "Como se escreve? Soletrar",
+  "emoji": "🔤",
+  "cena": "A Sarah faz o cadastro do time por chamada: você soletra o seu sobrenome, a sua cidade e o país, e a Ana, o sobrenome dela.",
+  "resumo": "Soletrar e perguntar como se escreve: How do you spell it? / With an S or a Z? / double L.",
+  "fechamento": false,
+  "novos": [
+    "How do you spell it?",
+    "spell",
+    "with an S or a Z",
+    "double L"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Como se escreve?"
+    },
+    {
+      "t": "p",
+      "c": "How do you spell it? = Como se escreve? Para soletrar, diga letra por letra: S-O-U-Z-A."
+    },
+    {
+      "t": "tip",
+      "c": "Letra dobrada: double L = L dobrado. Mello = M-E, double L, O."
+    },
+    {
+      "t": "ex",
+      "c": "With an S or a Z?\nCom S ou com Z?"
+    },
+    {
+      "t": "warn",
+      "c": "Como se escreve? é How do you spell it? (não: How do you write it?). E Brazil, em inglês, é com Z."
+    }
+  ],
+  "imagem": "📝📞✍️",
+  "visualizacao": "A Sarah compartilha a tela com um formulário aberto. O cursor pisca no campo do sobrenome, e ela espera, com os dedos no teclado, você soletrar letra por letra.",
+  "foto_busca": "online form typing keyboard",
+  "trechos": [
+    {
+      "id": "f-9bf25d",
+      "quem": "sarah",
+      "contexto": "My last name is {sobrenome}.",
+      "cod": "How do you spell it?",
+      "dica": "Como se escreve?",
+      "img": "✍️❓",
+      "alvo": "How do you spell it",
+      "alvo_pt": "Como se escreve",
+      "lit": "[lit.: como você soletra isso?]",
+      "registro": "neutro",
+      "armadilhas": [
+        "write"
+      ],
+      "bio": [
+        "sobrenome"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1451679,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "that word → it; PT reescrito (Como se escreve?)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4d455b",
+      "quem": "voce",
+      "contexto": "f-9bf25d",
+      "cod": "Let me spell it. {sobrenome_soletrado}.",
+      "dica": "Deixa eu soletrar. {sobrenome_soletrado}.",
+      "img": "🗣️✍️",
+      "alvo": "spell",
+      "alvo_pt": "soletrar",
+      "conceito": "spell = soletrar. Let me = deixa eu.",
+      "registro": "informal",
+      "bio": [
+        "sobrenome_soletrado"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bbcfe8",
+      "quem": "sarah",
+      "contexto": "And the city is {cidade}.",
+      "cod": "Can you spell it, please?",
+      "dica": "Você pode soletrar, por favor?",
+      "img": "🏙️✍️",
+      "alvo": "spell",
+      "alvo_pt": "soletrar",
+      "registro": "neutro",
+      "bio": [
+        "cidade"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4997283,
+        "en_autor": "3040403",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "your name for me → it; + please; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b39216",
+      "quem": "sarah",
+      "contexto": "And the country is Brazil.",
+      "cod": "With an S or a Z?",
+      "dica": "Com S ou com Z?",
+      "img": "🇧🇷❓",
+      "alvo": "With an S or a Z",
+      "alvo_pt": "Com S ou com Z",
+      "conceito": "an S: o nome da letra S começa com som de vogal (ess).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a03b05",
+      "quem": "voce",
+      "contexto": "f-b39216",
+      "cod": "With a Z. B-R-A-Z-I-L.",
+      "dica": "Com Z. B-R-A-Z-I-L.",
+      "img": "🇧🇷✅",
+      "alvo": "With a Z",
+      "alvo_pt": "Com Z",
+      "conceito": "Em inglês, Brazil é com Z; em português, Brasil é com S.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "brasil"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cad436",
+      "quem": "sarah",
+      "cod": "Ana? How do you spell Mello?",
+      "dica": "Ana? Como se escreve Mello?",
+      "img": "👩‍🎨✍️",
+      "alvo": "How do you spell",
+      "alvo_pt": "Como se escreve",
+      "registro": "neutro",
+      "armadilhas": [
+        "write"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1539,
+        "en_autor": "AlanF_US",
+        "pt_id": 380521,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "pretty → Mello, sem aspas; + Ana? (no PT também)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8c157d",
+      "quem": "ana",
+      "contexto": "f-cad436",
+      "cod": "It's Mello, with a double L.",
+      "dica": "É Mello, com L dobrado.",
+      "img": "✌️📝",
+      "alvo": "double L",
+      "alvo_pt": "L dobrado",
+      "conceito": "Letra dobrada: double + letra. Mello = M-E, double L, O.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5229d0",
+      "quem": "sarah",
+      "contexto": "f-8c157d",
+      "cod": "M-E, double L, O? Got it.",
+      "dica": "M-E, L dobrado, O? Entendi.",
+      "img": "⌨️✅",
+      "alvo": "double L",
+      "alvo_pt": "L dobrado",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

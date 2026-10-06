@@ -1,0 +1,305 @@
+{
+  "id": "ha-quanto-tempo.estou-nesse-bug-a-manha-inteira",
+  "trilha": "ha-quanto-tempo",
+  "nome": "Estou nesse bug a manhã toda",
+  "emoji": "🐛",
+  "cena": "Na daily de sexta, você explica para o Mike por que o bug do login está demorando tanto.",
+  "resumo": "Ação que começou e ainda continua: have been + -ing (I've been working on this issue all morning).",
+  "fechamento": false,
+  "novos": [
+    "cause",
+    "all week",
+    "issue",
+    "solution",
+    "frustrated"
+  ],
+  "apoio": [
+    "all morning",
+    "all afternoon",
+    "crash",
+    "traffic"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Estou nisso há horas: have been + -ing"
+    },
+    {
+      "t": "p",
+      "c": "Para uma ação que começou e **ainda está acontecendo**, use **have / has been + -ing**: I've been working on this issue all morning (Estou nessa issue a manhã toda)."
+    },
+    {
+      "t": "warn",
+      "c": "Não: I'm working on this bug for two hours. Com for, since ou all morning, o inglês pede o present perfect continuous."
+    },
+    {
+      "t": "p",
+      "c": "O it continua obrigatório: **It's been raining all week.** (Está chovendo a semana toda.)"
+    },
+    {
+      "t": "tip",
+      "c": "Com verbos de estado (know, have, be), fica o present perfect simples: I've known him for years."
+    }
+  ],
+  "imagem": "🐛💻☕",
+  "visualizacao": "Sexta de manhã, chuva batendo na janela. Você entra na daily com o log do erro ainda na tela e o café frio do lado, e o Mike pergunta do bug do login.",
+  "foto_busca": "developer debugging code rainy morning",
+  "trechos": [
+    {
+      "id": "f-b37971",
+      "quem": "mike",
+      "cod": "It's been raining all week.",
+      "dica": "Está chovendo a semana toda.",
+      "img": "🌧️📅",
+      "alvo": "all week",
+      "alvo_pt": "a semana toda",
+      "conceito": "Está chovendo (há dias, e continua) = It's been raining. O it é obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR47"
+      ],
+      "armadilhas": [
+        "is",
+        "raining"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6917179,
+        "en_autor": "CK",
+        "pt_id": 7445514,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d05c2b",
+      "quem": "voce",
+      "contexto": "How's the login bug going?",
+      "cod": "I've been working on this issue all morning.",
+      "dica": "Estou nessa issue a manhã toda.",
+      "img": "🐞⌨️",
+      "alvo": "issue",
+      "alvo_pt": "issue",
+      "lit": "[lit.: tenho estado trabalhando nessa issue]",
+      "conceito": "Estou nisso (desde cedo, e continuo) = I've been working on... (não: I'm working... all morning).",
+      "var": [
+        {
+          "em": "working on",
+          "aceita": [
+            "on"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "i'm",
+        "problem"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2b381c",
+      "quem": "mike",
+      "contexto": "f-d05c2b",
+      "cod": "Have you found the cause yet?",
+      "dica": "Você já achou a causa?",
+      "img": "🔎❓",
+      "alvo": "cause",
+      "alvo_pt": "causa",
+      "conceito": "já...? = Have you...yet? a causa (do bug) = the cause.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "reason",
+        "did"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3e6a16",
+      "quem": "voce",
+      "contexto": "f-2b381c",
+      "cod": "No. We've been trying to find the cause for two days.",
+      "dica": "Não. A gente está tentando achar a causa há dois dias.",
+      "img": "🔍📆",
+      "alvo": "cause",
+      "alvo_pt": "causa",
+      "conceito": "A gente está tentando há dois dias = We've been trying... for two days (não: We're trying for).",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "are",
+        "ago"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d8885e",
+      "quem": "voce",
+      "cod": "I'm frustrated. I've been reading logs since eight.",
+      "dica": "Estou frustrado. Estou lendo logs desde as oito.",
+      "img": "😤📜",
+      "alvo": "frustrated",
+      "alvo_pt": "frustrado",
+      "conceito": "desde as oito (e continuo) = since eight, com have been + -ing.",
+      "var": [
+        {
+          "em": "since eight",
+          "aceita": [
+            "since eight o'clock"
+          ]
+        }
+      ],
+      "pt_f": "Estou frustrada. Estou lendo logs desde as oito.",
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "frustrating",
+        "i'm"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3f2d95",
+      "quem": "mike",
+      "contexto": "f-d8885e",
+      "cod": "I understand. This issue has been open all week.",
+      "dica": "Entendo. Essa issue está aberta a semana toda.",
+      "img": "📂🗓️",
+      "alvo": "all week",
+      "alvo_pt": "a semana toda",
+      "conceito": "Está aberta (desde segunda, e continua) = has been open (com be, sem -ing).",
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2516c0",
+      "quem": "mike",
+      "cod": "Did you have the same issue last week?",
+      "dica": "Vocês tiveram a mesma issue semana passada?",
+      "img": "🔁❔",
+      "alvo": "issue",
+      "alvo_pt": "issue",
+      "conceito": "semana passada (terminou) = Did you have...? (passado).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR06"
+      ],
+      "armadilhas": [
+        "had"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6baedb",
+      "quem": "voce",
+      "cod": "We need a solution today. The client has been waiting since Monday.",
+      "dica": "A gente precisa de uma solução hoje. O cliente está esperando desde segunda.",
+      "img": "💡⏰",
+      "alvo": "solution",
+      "alvo_pt": "solução",
+      "conceito": "Está esperando desde segunda = has been waiting since Monday.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR47",
+        "BR15"
+      ],
+      "armadilhas": [
+        "is",
+        "monday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8becd9",
+      "quem": "ana",
+      "contexto": "f-6baedb",
+      "cod": "We're close to a solution.",
+      "dica": "Estamos perto de uma solução.",
+      "img": "🤞💡",
+      "alvo": "solution",
+      "alvo_pt": "solução",
+      "conceito": "perto de = close to.",
+      "registro": "informal",
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3820714,
+        "en_autor": "CK",
+        "pt_id": 7575463,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-acc387",
+      "quem": "mike",
+      "cod": "You look frustrated. Let's work on it together after standup.",
+      "dica": "Você parece frustrado. Vamos trabalhar nisso juntos depois da daily.",
+      "img": "🤝👀",
+      "alvo": "frustrated",
+      "alvo_pt": "frustrado",
+      "conceito": "parecer + adjetivo = look + adjetivo. daily (como o dev brasileiro fala) = standup.",
+      "var": [
+        {
+          "em": "after standup",
+          "aceita": [
+            "after the standup"
+          ]
+        }
+      ],
+      "pt_f": "Você parece frustrada. Vamos trabalhar nisso juntos depois da daily.",
+      "registro": "informal",
+      "armadilhas": [
+        "seem",
+        "daily"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6349174,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "You look like you're frustrated. → You look frustrated. Let's work on it together after standup.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

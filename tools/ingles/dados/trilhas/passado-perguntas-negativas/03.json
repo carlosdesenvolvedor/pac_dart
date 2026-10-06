@@ -1,0 +1,228 @@
+{
+  "id": "passado-perguntas-negativas.o-que-voce-fez-aonde-foi",
+  "trilha": "passado-perguntas-negativas",
+  "nome": "O que você fez? Aonde foi?",
+  "emoji": "🗺️",
+  "cena": "Segunda-feira, numa chamada: a Ana quer saber da apresentação de sexta e do seu fim de semana.",
+  "resumo": "Perguntar o que, onde e quando no passado: What / Where / When + did you...?",
+  "fechamento": false,
+  "novos": [
+    "What did you do?",
+    "Where did you go?",
+    "presentation",
+    "When did you...?"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "What / Where / When + did"
+    },
+    {
+      "t": "p",
+      "c": "Palavra de pergunta + **did** + sujeito + verbo puro: **What did you do?** **Where did you go?** **When did you** buy it?"
+    },
+    {
+      "t": "ex",
+      "c": "What did you do last weekend?\nO que você fez no fim de semana passado?"
+    },
+    {
+      "t": "warn",
+      "c": "Where did you go? (não: Where you went?)"
+    }
+  ],
+  "imagem": "📞🗺️📊",
+  "visualizacao": "Segunda de manhã, você entra na chamada e a Ana aparece na tela com um sorriso curioso: ela quer saber de tudo, da apresentação de sexta ao seu domingo.",
+  "foto_busca": "video call colleague smiling laptop",
+  "trechos": [
+    {
+      "id": "f-0e6fc0",
+      "quem": "ana",
+      "cod": "How was the presentation?",
+      "dica": "Como foi a apresentação?",
+      "img": "📊🤔",
+      "alvo": "presentation",
+      "alvo_pt": "apresentação",
+      "conceito": "Como foi...? = How was...?",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-51a29e",
+      "quem": "ana",
+      "contexto": "It went well. Mike loved it.",
+      "cod": "Great! Can you send me the presentation?",
+      "dica": "Ótimo! Você pode me mandar a apresentação?",
+      "img": "📊📩",
+      "alvo": "presentation",
+      "alvo_pt": "apresentação",
+      "conceito": "Me mandar = send me (sem to antes do me).",
+      "registro": "informal",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9429b1",
+      "quem": "ana",
+      "cod": "What did you do last weekend?",
+      "dica": "O que você fez no fim de semana passado?",
+      "img": "🗓️❓",
+      "alvo": "What did you do",
+      "alvo_pt": "O que você fez",
+      "lit": "[lit.: o que fez você fazer?]",
+      "conceito": "O primeiro do é o auxiliar (did); o segundo é o verbo fazer.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did",
+        "you"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-55ddb3",
+      "quem": "ana",
+      "contexto": "I went out on Saturday.",
+      "cod": "Where did you go?",
+      "dica": "Aonde você foi?",
+      "img": "🧭❓",
+      "alvo": "Where did you go",
+      "alvo_pt": "Aonde você foi",
+      "conceito": "Aonde você foi? = Where did you go? (did + go puro).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "went",
+        "you"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1140034,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Para onde você foi?\"; PT reescrito: Aonde você foi?, a mesma tradução de Where did you go? no resto da trilha",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1f5b12",
+      "quem": "ana",
+      "contexto": "I went to my brother's party.",
+      "cod": "When did you go home?",
+      "dica": "Quando você foi para casa?",
+      "img": "🏠🕐",
+      "alvo": "When did you",
+      "alvo_pt": "Quando você",
+      "conceito": "Ir para casa = go home, sem to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR16"
+      ],
+      "armadilhas": [
+        "went",
+        "to"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1327753,
+        "en_autor": "CK",
+        "pt_id": 7689441,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-31cea9",
+      "quem": "voce",
+      "contexto": "f-1f5b12",
+      "cod": "Late! What did you do, Ana?",
+      "dica": "Tarde! O que você fez, Ana?",
+      "img": "🌙🙋‍♀️",
+      "alvo": "What did you do",
+      "alvo_pt": "O que você fez",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did",
+        "you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9432fd",
+      "quem": "voce",
+      "contexto": "I went to Recife to see my parents.",
+      "cod": "Where did you go in Recife?",
+      "dica": "Aonde você foi em Recife?",
+      "img": "🏖️🗺️",
+      "alvo": "Where did you go",
+      "alvo_pt": "Aonde você foi",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "went",
+        "you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b5191f",
+      "quem": "ana",
+      "cod": "Nice phone! When did you buy it?",
+      "dica": "Que celular bonito! Quando você comprou?",
+      "img": "📱✨",
+      "alvo": "When did you",
+      "alvo_pt": "Quando você",
+      "conceito": "O objeto é obrigatório: buy it (o português omite).",
+      "var": [
+        {
+          "em": "Nice phone!",
+          "aceita": [
+            "What a nice phone!"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR18"
+      ],
+      "armadilhas": [
+        "bought",
+        "you"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6645875,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"When did you buy this?\"; PT original: \"Quando você comprou isto?\"; Nice phone! acrescentado; this → it; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

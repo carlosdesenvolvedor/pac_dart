@@ -1,0 +1,197 @@
+{
+  "id": "familia-e-posse.cena-fotos-da-familia",
+  "trilha": "familia-e-posse",
+  "nome": "Cena: fotos da família",
+  "emoji": "🖼️",
+  "cena": "No almoço em Chicago, você e o Mike trocam fotos da família no celular.",
+  "resumo": "Dizer quem é quem e de quem é cada coisa numa conversa: my, your, his, her, their e 's.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: de quem é?"
+    },
+    {
+      "t": "p",
+      "c": "Possessivo + coisa (my, your, his, her, our, their) ou nome + 's (Julia's house, my brother's dog). Idade sempre com be."
+    },
+    {
+      "t": "ex",
+      "c": "This is my brother's wife.\nEssa é a esposa do meu irmão."
+    },
+    {
+      "t": "warn",
+      "c": "O dono vem primeiro, com 's, e sem artigo antes do nome: Julia's dog (não: the dog of Julia). E o dono decide: her husband, his wife."
+    }
+  ],
+  "imagem": "🍽️📱🖼️",
+  "visualizacao": "Vocês estão numa mesa perto da janela, com os pratos ainda pela metade. O Mike passa as fotos no celular e você se inclina para ver, rindo do cachorro.",
+  "foto_busca": "friends sharing photos at lunch",
+  "trechos": [
+    {
+      "id": "f-bf37a3",
+      "quem": "mike",
+      "cod": "This is my brother's wife.",
+      "dica": "Essa é a esposa do meu irmão.",
+      "img": "👰📸",
+      "alvo": "my brother's wife",
+      "alvo_pt": "a esposa do meu irmão",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "armadilhas": [
+        "the",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-95b2b6",
+      "quem": "voce",
+      "contexto": "f-bf37a3",
+      "cod": "What's her name?",
+      "dica": "Qual é o nome dela?",
+      "img": "📛❓",
+      "alvo": "her name",
+      "alvo_pt": "nome dela",
+      "registro": "informal",
+      "interferencias": [
+        "BR11"
+      ],
+      "armadilhas": [
+        "his"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a7d120",
+      "quem": "mike",
+      "cod": "Their house is big and new.",
+      "dica": "A casa deles é grande e nova.",
+      "img": "🏡✨",
+      "alvo": "Their house",
+      "alvo_pt": "A casa deles",
+      "registro": "informal",
+      "interferencias": [
+        "BR11"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-711f6b",
+      "quem": "voce",
+      "contexto": "And this is my son.",
+      "cod": "How old is your son?",
+      "dica": "Quantos anos tem o seu filho?",
+      "img": "👦🎂❓",
+      "alvo": "How old is",
+      "alvo_pt": "Quantos anos tem",
+      "lit": "[lit.: quão velho é o seu filho?]",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5656546,
+        "en_autor": "protondonor",
+        "pt_id": 6112864,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "brother trocado por son (EN e PT); PT na ordem falada",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-359610",
+      "quem": "mike",
+      "cod": "Is that your sister?",
+      "dica": "Essa é a sua irmã?",
+      "img": "👩📱❓",
+      "alvo": "your sister",
+      "alvo_pt": "sua irmã",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "this"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2195468,
+        "en_autor": "Hybrid",
+        "pt_id": 4891457,
+        "pt_autor": "ToinhoAlam",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-efe08c",
+      "quem": "voce",
+      "contexto": "f-359610",
+      "cod": "Yes. Her name is Julia.",
+      "dica": "Sim. O nome dela é Julia.",
+      "img": "👩📛✅",
+      "alvo": "Her name",
+      "alvo_pt": "nome dela",
+      "registro": "informal",
+      "interferencias": [
+        "BR11"
+      ],
+      "armadilhas": [
+        "his"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1b3703",
+      "quem": "mike",
+      "cod": "Is this your sister's dog?",
+      "dica": "Esse é o cachorro da sua irmã?",
+      "img": "🐕❓",
+      "alvo": "your sister's dog",
+      "alvo_pt": "o cachorro da sua irmã",
+      "conceito": "dog = cachorro. O dono vem antes, com 's.",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a44a42",
+      "quem": "voce",
+      "contexto": "f-1b3703",
+      "cod": "No, it's my brother's dog.",
+      "dica": "Não, é o cachorro do meu irmão.",
+      "img": "🐕👨",
+      "alvo": "my brother's dog",
+      "alvo_pt": "o cachorro do meu irmão",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "armadilhas": [
+        "the",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

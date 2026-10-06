@@ -1,0 +1,245 @@
+{
+  "id": "primeiro-contato.oi-tudo-bem",
+  "trilha": "primeiro-contato",
+  "nome": "Oi, tudo bem?",
+  "emoji": "👋",
+  "cena": "Na sua primeira chamada de vídeo com o time, você cumprimenta o Mike, em Chicago, e a Ana, no Brasil, que entra logo depois.",
+  "resumo": "Cumprimentar e responder ao 'tudo bem?' como um americano: How's it going? / I'm good, thanks.",
+  "fechamento": false,
+  "novos": [
+    "Good morning. / Good afternoon. / Good evening.",
+    "How's it going?",
+    "I'm good, thanks.",
+    "How about you?"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Bom dia, tudo bem?"
+    },
+    {
+      "t": "p",
+      "c": "Good morning (manhã), Good afternoon (tarde) e Good evening (noite, só ao chegar). Para o 'tudo bem?', o mais comum é How's it going?"
+    },
+    {
+      "t": "ex",
+      "c": "I'm good, thanks. How about you?\nTudo bem, obrigado. E você?"
+    },
+    {
+      "t": "warn",
+      "c": "I é sempre maiúsculo, até dentro de I'm. E I'm fine, thank you. And you? é frase de livro: prefira I'm good, thanks."
+    }
+  ],
+  "imagem": "💻👋☀️",
+  "visualizacao": "Você abre a chamada de vídeo no notebook. O rosto do Mike aparece, com a luz da manhã de Chicago na janela atrás dele, e ele acena sorrindo.",
+  "foto_busca": "video call laptop home office",
+  "trechos": [
+    {
+      "id": "f-ceea0d",
+      "quem": "voce",
+      "cod": "Good morning, Mike!",
+      "dica": "Bom dia, Mike!",
+      "img": "☀️👋",
+      "alvo": "Good morning",
+      "alvo_pt": "Bom dia",
+      "conceito": "Good morning vale até o meio-dia. Em Chicago, ainda é manhã.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7265251,
+        "en_autor": "azraelgnosis",
+        "pt_id": 7834994,
+        "pt_autor": "piterkeo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Mother → Mike (no PT, mãe → Mike); ponto final → exclamação",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-138833",
+      "quem": "mike",
+      "contexto": "f-ceea0d",
+      "cod": "Hi, {nome}! How's it going?",
+      "dica": "Oi, {nome}! Tudo bem?",
+      "img": "🙂❓",
+      "alvo": "How's it going",
+      "alvo_pt": "Tudo bem",
+      "lit": "[lit.: como está indo?]",
+      "conceito": "How's it going? = Tudo bem? É o cumprimento mais comum entre colegas.",
+      "registro": "informal",
+      "bio": [
+        "nome"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 428407,
+        "en_autor": "witbrock",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "nome do aluno acrescentado; PT reescrito (Tudo bem?, glossário)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cddcb0",
+      "quem": "voce",
+      "contexto": "f-138833",
+      "cod": "Pretty good, thanks. How about you?",
+      "dica": "Tudo certo, obrigado. E você?",
+      "pt_f": "Tudo certo, obrigada. E você?",
+      "img": "👍🔁",
+      "alvo": "How about you",
+      "alvo_pt": "E você",
+      "lit": "[lit.: que tal você?]",
+      "conceito": "How about you? devolve a pergunta (And you? soa a livro didático). Pretty good = tudo certo.",
+      "var": [
+        {
+          "em": "thanks",
+          "aceita": [
+            "thank you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "and"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0f3970",
+      "quem": "mike",
+      "contexto": "f-cddcb0",
+      "cod": "I'm good, thanks.",
+      "dica": "Tudo bem, obrigado.",
+      "img": "😊👍",
+      "alvo": "I'm good, thanks",
+      "alvo_pt": "Tudo bem, obrigado",
+      "lit": "[lit.: eu estou bem, obrigado]",
+      "conceito": "Resposta natural nos EUA. I'm fine, thank you soa como frase de livro.",
+      "var": [
+        {
+          "em": "thanks",
+          "aceita": [
+            "thank you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "i'm",
+        "fine"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-34d001",
+      "quem": "voce",
+      "cod": "Hi, Ana! Good afternoon!",
+      "dica": "Oi, Ana! Boa tarde!",
+      "img": "🌤️👋",
+      "alvo": "Good afternoon",
+      "alvo_pt": "Boa tarde",
+      "conceito": "Para a Ana, no Brasil, já é tarde: Good afternoon.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e15dec",
+      "quem": "ana",
+      "contexto": "f-34d001",
+      "cod": "How's it going, {nome}?",
+      "dica": "Tudo bem, {nome}?",
+      "img": "👩‍🎨❓",
+      "alvo": "How's it going",
+      "alvo_pt": "Tudo bem",
+      "registro": "informal",
+      "bio": [
+        "nome"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2647683,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → nome do aluno; PT reescrito (Tudo bem?, glossário)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3a3e3a",
+      "quem": "voce",
+      "contexto": "f-e15dec",
+      "cod": "I'm good, thanks. How about you?",
+      "dica": "Tudo bem, obrigado. E você?",
+      "pt_f": "Tudo bem, obrigada. E você?",
+      "img": "🙂↩️",
+      "alvo": "I'm good, thanks",
+      "alvo_pt": "Tudo bem, obrigado",
+      "var": [
+        {
+          "em": "thanks",
+          "aceita": [
+            "thank you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "i'm",
+        "fine"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2354171,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I'm hungry → I'm good, thanks; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f9d8da",
+      "quem": "ana",
+      "contexto": "f-3a3e3a",
+      "cod": "Good, thanks. How about you, Mike?",
+      "dica": "Bem, obrigada. E você, Mike?",
+      "img": "👉👨‍💻❓",
+      "alvo": "How about you",
+      "alvo_pt": "E você",
+      "var": [
+        {
+          "em": "thanks",
+          "aceita": [
+            "thank you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "and"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

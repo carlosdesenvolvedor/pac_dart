@@ -1,0 +1,224 @@
+{
+  "id": "dev-incidentes.ainda-estamos-investigando",
+  "trilha": "dev-incidentes",
+  "nome": "Ainda estamos investigando",
+  "emoji": "📡",
+  "cena": "Durante o incidente, você atualiza o canal da empresa a cada meia hora.",
+  "resumo": "Dar status durante o incidente: next update, partially down, degraded, ETA.",
+  "fechamento": false,
+  "novos": [
+    "next update",
+    "degraded",
+    "partially",
+    "ETA"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Status curto e com horário"
+    },
+    {
+      "t": "p",
+      "c": "Um bom status diz o que se sabe, o que já foi feito e quando vem a próxima atualização: **We're still looking into it. Next update in thirty minutes.**"
+    },
+    {
+      "t": "warn",
+      "c": "O serviço voltou = the service is up again / back up (não: returned). Já aplicamos = we've applied (present perfect, não: we applied already)."
+    },
+    {
+      "t": "ex",
+      "c": "The service is up again, but performance is still degraded.\nO serviço voltou, mas o desempenho ainda está degradado."
+    }
+  ],
+  "imagem": "📡💬⏱️",
+  "visualizacao": "Você está com o canal da empresa aberto ao lado dos gráficos. A cada meia hora, o relógio no canto da tela lembra: está na hora de escrever o próximo status.",
+  "foto_busca": "developer monitoring dashboards laptop night",
+  "trechos": [
+    {
+      "id": "f-6f90c2",
+      "quem": "voce",
+      "cod": "We're still looking into it. Next update in thirty minutes.",
+      "dica": "Ainda estamos investigando. Próxima atualização em trinta minutos.",
+      "img": "🔍⏱️",
+      "alvo": "Next update",
+      "alvo_pt": "Próxima atualização",
+      "conceito": "look into = investigar. Status curto pode omitir o verbo: Next update in...",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "investigating"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-230118",
+      "quem": "sarah",
+      "cod": "Do we have an ETA for the fix?",
+      "dica": "A gente tem uma previsão para a correção?",
+      "img": "⏳❓",
+      "alvo": "ETA",
+      "alvo_pt": "previsão",
+      "conceito": "ETA (estimated time of arrival) = previsão de quando fica pronto. Fala-se E-T-A.",
+      "registro": "informal",
+      "armadilhas": [
+        "prevision",
+        "a"
+      ],
+      "fala": "Do we have an E.T.A. for the fix?",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f79734",
+      "quem": "voce",
+      "contexto": "f-230118",
+      "cod": "Not yet. The checkout endpoint is still partially down.",
+      "dica": "Ainda não. O endpoint de checkout ainda está parcialmente fora do ar.",
+      "img": "🌗💳",
+      "alvo": "partially",
+      "alvo_pt": "parcialmente",
+      "conceito": "partially = parcialmente, em parte. Vem antes do adjetivo: partially down.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "partial"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3b7694",
+      "quem": "voce",
+      "cod": "We've applied a workaround, and payments are partially working again.",
+      "dica": "Já aplicamos um paliativo, e os pagamentos estão funcionando parcialmente de novo.",
+      "img": "🩹💳",
+      "alvo": "partially",
+      "alvo_pt": "parcialmente",
+      "conceito": "Já aplicamos (resultado agora) = we have applied (não: we applied already).",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "applied"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "and payments",
+          "aceita": [
+            "and the payments"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-37972e",
+      "quem": "voce",
+      "cod": "The service is up again, but performance is still degraded.",
+      "dica": "O serviço voltou, mas o desempenho ainda está degradado.",
+      "img": "✅🐢",
+      "alvo": "degraded",
+      "alvo_pt": "degradado",
+      "conceito": "o serviço voltou = is up again / back up (não: returned).",
+      "var": [
+        {
+          "em": "up again",
+          "aceita": [
+            "back up"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "returned",
+        "the performance"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b546da",
+      "quem": "sarah",
+      "contexto": "f-37972e",
+      "cod": "Degraded? What does that mean for our customers?",
+      "dica": "Degradado? O que isso significa para os nossos clientes?",
+      "img": "📉🤔",
+      "alvo": "Degraded",
+      "alvo_pt": "Degradado",
+      "conceito": "Pergunta com does: What does that mean? (não: What that means?).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "means",
+        "signify"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eb5c35",
+      "quem": "voce",
+      "contexto": "f-b546da",
+      "cod": "Pages are loading, but slowly. Our ETA for a fix is midnight.",
+      "dica": "As páginas estão carregando, mas devagar. Nossa previsão de correção é meia-noite.",
+      "img": "🕛🛠️",
+      "alvo": "ETA",
+      "alvo_pt": "previsão",
+      "conceito": "slowly (advérbio) modifica o verbo loading; slow é adjetivo.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "slow"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Pages",
+          "aceita": [
+            "The pages"
+          ]
+        },
+        {
+          "em": "a fix",
+          "aceita": [
+            "the fix"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c0a90a",
+      "quem": "voce",
+      "cod": "Next update at 10:30, or sooner if anything changes.",
+      "dica": "Próxima atualização às 10h30, ou antes, se algo mudar.",
+      "img": "📣🕥",
+      "alvo": "Next update",
+      "alvo_pt": "Próxima atualização",
+      "conceito": "se algo mudar = if anything changes (presente depois de if).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will",
+        "change"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "anything",
+          "aceita": [
+            "something"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "id": "pronomes-objeto.cena-deixando-recado",
+  "trilha": "pronomes-objeto",
+  "nome": "Cena: deixando recado",
+  "emoji": "📝",
+  "cena": "No escritório de Chicago, o Mike está fora: você atende quem procura por ele e combina recados com a Ana.",
+  "resumo": "Deixar e passar recados usando me, you, him, her, it, us e them depois do verbo.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: a pessoa depois do verbo"
+    },
+    {
+      "t": "p",
+      "c": "**me, you, him, her, it, us, them** vêm depois do verbo, sem **to**: call him, tell her, send me. Com wait, use for: wait for me."
+    },
+    {
+      "t": "tip",
+      "c": "**their** = deles, delas: their number (o número deles). **them** = eles, depois do verbo: call them."
+    },
+    {
+      "t": "warn",
+      "c": "O objeto não some: I'm sending **it** now (não: I'm sending now)."
+    }
+  ],
+  "imagem": "📝📞🏢",
+  "visualizacao": "Escritório de Chicago, mesa do Mike vazia, telefone tocando. Você atende com um bloco de notas na mão enquanto a Ana espera para ir almoçar.",
+  "foto_busca": "office desk phone notes",
+  "trechos": [
+    {
+      "id": "f-3e7905",
+      "quem": "voce",
+      "contexto": "Hi! Can I talk to Mike, please?",
+      "cod": "Sorry, he isn't here. Can you call him later?",
+      "dica": "Desculpa, ele não está aqui. Você pode ligar pra ele mais tarde?",
+      "img": "☎️⏰",
+      "alvo": "call him",
+      "alvo_pt": "ligar pra ele",
+      "var": [
+        {
+          "em": "he isn't",
+          "aceita": [
+            "he's not"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "to",
+        "he"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-23a592",
+      "quem": "cliente",
+      "contexto": "f-3e7905",
+      "cod": "OK. Tell him it's about the app.",
+      "dica": "Tá bom. Fala pra ele que é sobre o app.",
+      "img": "💬📱",
+      "alvo": "Tell him",
+      "alvo_pt": "Fala pra ele",
+      "registro": "neutro",
+      "interferencias": [
+        "BR18",
+        "BR01"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bfe985",
+      "quem": "voce",
+      "contexto": "f-23a592",
+      "cod": "Sure. I can send him a message.",
+      "dica": "Claro. Posso mandar uma mensagem pra ele.",
+      "img": "✉️👨",
+      "alvo": "send him",
+      "alvo_pt": "mandar uma mensagem pra ele",
+      "var": [
+        {
+          "em": "send him a message",
+          "aceita": [
+            "send a message to him"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6d8f6a",
+      "quem": "ana",
+      "contexto": "It's the people from Austin.",
+      "cod": "The people from Austin? I know them.",
+      "dica": "O pessoal de Austin? Eu conheço eles.",
+      "img": "👥✅",
+      "alvo": "them",
+      "alvo_pt": "eles",
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR14"
+      ],
+      "armadilhas": [
+        "they"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-744d0b",
+      "quem": "mike",
+      "cod": "Thanks! Please call them this evening.",
+      "dica": "Valeu! Por favor, liga pra eles hoje à noite.",
+      "img": "📞🌆",
+      "alvo": "call them",
+      "alvo_pt": "liga pra eles",
+      "var": [
+        {
+          "em": "this evening",
+          "aceita": [
+            "tonight"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "to",
+        "they"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1871028,
+        "en_autor": "Amastan",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Call them this evening.\"; PT original: \"Telefone para eles hoje à noite.\"; acrescentados \"Thanks! Please\"; PT reescrito: Telefone → liga (forma falada)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bee3f6",
+      "quem": "voce",
+      "contexto": "f-744d0b",
+      "cod": "OK! Can you send me their number?",
+      "dica": "Tá bom! Você pode me mandar o número deles?",
+      "img": "📱🔢",
+      "alvo": "send me",
+      "alvo_pt": "me mandar",
+      "conceito": "their = deles (o número deles); them = eles depois do verbo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR11",
+        "BR18"
+      ],
+      "armadilhas": [
+        "them"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-59dc6d",
+      "quem": "mike",
+      "contexto": "f-bee3f6",
+      "cod": "Sure, I'm sending it now.",
+      "dica": "Claro, estou mandando agora.",
+      "img": "📤✅",
+      "alvo": "sending it",
+      "alvo_pt": "estou mandando",
+      "conceito": "O objeto não some: sending it (não: I'm sending now).",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "now"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb7d3c",
+      "quem": "voce",
+      "cod": "Ana, wait for me outside, please.",
+      "dica": "Ana, me espera lá fora, por favor.",
+      "img": "🚪⏳",
+      "alvo": "wait for me",
+      "alvo_pt": "me espera",
+      "conceito": "Me espera = wait for me (com for).",
+      "registro": "informal",
+      "armadilhas": [
+        "me"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3413000,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Wait for me outside.\"; PT original: \"Me espere lá fora.\"; acrescentados \"Ana,\" e \"please\"; PT reescrito no imperativo falado",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

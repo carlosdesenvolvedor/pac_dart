@@ -1,0 +1,318 @@
+{
+  "id": "revisao-a2.no-dia-do-jantar-imprevistos-e-favores",
+  "trilha": "revisao-a2",
+  "nome": "No dia do jantar: imprevistos e favores",
+  "emoji": "🏁",
+  "cena": "Sábado à noite: atrasos, um pedido de carona e o que cada um leva para o jantar na casa da Emma.",
+  "resumo": "Os pares agora juntos no dia do jantar: bring, come, tell, say, make e borrow.",
+  "fechamento": false,
+  "novos": [
+    "on my way",
+    "dessert",
+    "flowers",
+    "in ten minutes",
+    "Sorry I'm late."
+  ],
+  "apoio": [
+    "a bottle of"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Os pares, agora juntos"
+    },
+    {
+      "t": "p",
+      "c": "Levar para a casa de quem convidou = **bring**. Já vou! = **I'm coming!** Fala pra alguém = **tell** Emma; falou que = **said**."
+    },
+    {
+      "t": "warn",
+      "c": "Me empresta? = **Can you lend me...?** Posso pegar emprestado? = **Can I borrow...?** Fazer comida = **make** dessert (não: do); tarefa = **do** the dishes."
+    },
+    {
+      "t": "tip",
+      "c": "**on my way** = a caminho. **in ten minutes** = em (daqui a) dez minutos."
+    },
+    {
+      "t": "ex",
+      "c": "Tell Emma I'm on my way.\nFala pra Emma que eu estou a caminho."
+    }
+  ],
+  "imagem": "🚗⏰🍰",
+  "visualizacao": "Sábado à noite, o celular vibra sem parar no grupo. Você sai de casa com a sobremesa no banco do carro, o trânsito está lento e a Emma já está cozinhando.",
+  "foto_busca": "friends arriving dinner party flowers",
+  "trechos": [
+    {
+      "id": "f-b8e739",
+      "quem": "voce",
+      "cod": "Emma, should I bring dessert?",
+      "dica": "Emma, eu levo sobremesa?",
+      "img": "🍰❓",
+      "alvo": "dessert",
+      "alvo_pt": "sobremesa",
+      "conceito": "Levar para a casa de quem convidou = bring (não: take).",
+      "registro": "informal",
+      "interferencias": [
+        "BR37"
+      ],
+      "armadilhas": [
+        "take"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f20e43",
+      "quem": "emma",
+      "contexto": "f-b8e739",
+      "cod": "Yes, please! I'm not making dessert this time.",
+      "dica": "Sim, por favor! Eu não vou fazer sobremesa desta vez.",
+      "img": "👩‍🍳🚫🍰",
+      "alvo": "dessert",
+      "alvo_pt": "sobremesa",
+      "conceito": "Fazer comida = make (do = tarefa, como do the dishes).",
+      "registro": "informal",
+      "interferencias": [
+        "BR32",
+        "BR29"
+      ],
+      "armadilhas": [
+        "doing",
+        "do"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-48db43",
+      "quem": "ana",
+      "cod": "Quick question: should we bring flowers?",
+      "dica": "Pergunta rápida: a gente leva flores?",
+      "img": "💐❓",
+      "alvo": "flowers",
+      "alvo_pt": "flores",
+      "conceito": "A gente leva...? (oferta) = Should we bring...? Para a casa de quem convidou = bring.",
+      "registro": "informal",
+      "interferencias": [
+        "BR37"
+      ],
+      "armadilhas": [
+        "take"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-b8e739"
+    },
+    {
+      "id": "f-3861c0",
+      "quem": "voce",
+      "cod": "Tell Emma I'm on my way.",
+      "dica": "Fala pra Emma que eu estou a caminho.",
+      "img": "🗣️🚗💨",
+      "alvo": "on my way",
+      "alvo_pt": "a caminho",
+      "lit": "[lit.: estou no meu caminho]",
+      "conceito": "Fala pra alguém = tell + pessoa (não: say Emma); o that é opcional.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "say",
+        "speak",
+        "talk"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3199963,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Emma; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f7f47f",
+      "quem": "ben",
+      "contexto": "f-3861c0",
+      "cod": "OK! Emma said dinner will be ready in ten minutes.",
+      "dica": "Tá! A Emma falou que o jantar fica pronto em dez minutos.",
+      "img": "🍝⏲️",
+      "alvo": "in ten minutes",
+      "alvo_pt": "em dez minutos",
+      "conceito": "Falou (algo) = said, sem pessoa; ficar pronto = be ready.",
+      "var": [
+        {
+          "em": "will be",
+          "aceita": [
+            "is",
+            "would be"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR31",
+        "BR33"
+      ],
+      "armadilhas": [
+        "told",
+        "stay",
+        "stays"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-232268",
+      "quem": "voce",
+      "contexto": "f-f7f47f",
+      "cod": "I'm coming! I'll be there in ten minutes.",
+      "dica": "Já vou! Chego aí em dez minutos.",
+      "img": "🏃⏱️",
+      "alvo": "in ten minutes",
+      "alvo_pt": "em dez minutos",
+      "lit": "[lit.: estou vindo!]",
+      "conceito": "Já vou! = I'm coming! (indo até quem espera = come, não go).",
+      "var": [
+        {
+          "em": "be there",
+          "aceita": [
+            "get there"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR37"
+      ],
+      "armadilhas": [
+        "going",
+        "go"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5946685,
+        "en_autor": "marcj794",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado \"I'm coming!\" no início; PT reescrito (Estarei aí → Chego aí)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1c498e",
+      "quem": "ana",
+      "cod": "I'm on my way.",
+      "dica": "Estou a caminho.",
+      "img": "🚕🛣️",
+      "alvo": "on my way",
+      "alvo_pt": "a caminho",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 707205,
+        "en_autor": "CK",
+        "pt_id": 1014249,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c9e4e9",
+      "quem": "voce",
+      "cod": "Sorry I'm late! Can I borrow a knife for the cake?",
+      "dica": "Desculpa, estou atrasado! Posso pegar uma faca emprestada pro bolo?",
+      "img": "🙇🔪🍰",
+      "alvo": "Sorry I'm late",
+      "alvo_pt": "Desculpa, estou atrasado",
+      "conceito": "Pegar emprestado = borrow (Can I borrow...?); emprestar a alguém = lend (Can you lend me...?).",
+      "var": [
+        {
+          "em": "Can I borrow",
+          "aceita": [
+            "Can you lend me"
+          ]
+        }
+      ],
+      "pt_f": "Desculpa, estou atrasada! Posso pegar uma faca emprestada pro bolo?",
+      "registro": "informal",
+      "interferencias": [
+        "BR38"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-17305f",
+      "quem": "ana",
+      "cod": "Sorry I'm late! Can you drive me home later?",
+      "dica": "Desculpa, estou atrasada! Você me leva pra casa depois?",
+      "img": "🚗🏠🌙",
+      "alvo": "Sorry I'm late",
+      "alvo_pt": "Desculpa, estou atrasada",
+      "conceito": "Levar alguém de carro para casa = drive (ou take) someone home; bring é para cá.",
+      "var": [
+        {
+          "em": "drive",
+          "aceita": [
+            "take"
+          ]
+        },
+        {
+          "em": "Can you",
+          "aceita": [
+            "Could you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR37"
+      ],
+      "armadilhas": [
+        "bring",
+        "carry"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e36493",
+      "quem": "emma",
+      "cod": "Thanks for the flowers.",
+      "dica": "Obrigada pelas flores.",
+      "img": "💐😊",
+      "alvo": "flowers",
+      "alvo_pt": "flores",
+      "conceito": "Thanks for + coisa = obrigado/obrigada por...",
+      "var": [
+        {
+          "em": "Thanks",
+          "aceita": [
+            "Thank you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2646003,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito no feminino (Emma): Obrigada pelas flores.",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

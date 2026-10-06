@@ -1,0 +1,198 @@
+{
+  "id": "situacao-hotel.check-in-tenho-uma-reserva",
+  "trilha": "situacao-hotel",
+  "nome": "Check-in: tenho uma reserva",
+  "emoji": "🛎️",
+  "cena": "À noite, logo depois do voo, você faz o check-in num hotel em Chicago, e a recepcionista não acha a sua reserva de primeira.",
+  "resumo": "Fazer o check-in: dizer que tem reserva, dar o nome, as noites e o passaporte.",
+  "fechamento": false,
+  "novos": [
+    "I have a reservation.",
+    "reservation",
+    "for three nights",
+    "passport"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Tenho uma reserva"
+    },
+    {
+      "t": "p",
+      "c": "No check-in, três falas resolvem: **I have a reservation** (tenho uma reserva), o seu nome e **for three nights** (para três noites)."
+    },
+    {
+      "t": "ex",
+      "c": "Good evening. I have a reservation.\nBoa noite. Tenho uma reserva."
+    },
+    {
+      "t": "tip",
+      "c": "Boa noite **ao chegar** = Good evening. Here's my passport = Aqui está o meu passaporte."
+    },
+    {
+      "t": "warn",
+      "c": "Nome, sobrenome e Brazil sempre com maiúscula em inglês."
+    }
+  ],
+  "imagem": "🛎️🏨🔑",
+  "visualizacao": "É noite e você chega do voo ao balcão do hotel, puxando a mala. A recepcionista sorri, digita no computador e franze a testa olhando a tela.",
+  "foto_busca": "hotel reception desk check in",
+  "trechos": [
+    {
+      "id": "f-63efc6",
+      "quem": "voce",
+      "cod": "Good evening. I have a reservation.",
+      "dica": "(ao chegar) Boa noite. Tenho uma reserva.",
+      "img": "🛎️📋",
+      "alvo": "I have a reservation",
+      "alvo_pt": "Tenho uma reserva",
+      "conceito": "Boa noite ao chegar = Good evening.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2546908,
+        "en_autor": "CK",
+        "pt_id": 4815086,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "We → I e acrescentado Good evening. (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-951147",
+      "quem": "voce",
+      "contexto": "Sure. What's the name?",
+      "cod": "{nome} {sobrenome}, for three nights.",
+      "dica": "{nome} {sobrenome}, para três noites.",
+      "img": "🗓️🌙",
+      "alvo": "for three nights",
+      "alvo_pt": "para três noites",
+      "conceito": "for + noites = para quantas noites é a reserva.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "bio": [
+        "nome",
+        "sobrenome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aa29ad",
+      "quem": "voce",
+      "contexto": "Hmm, sorry. I don't see your name here.",
+      "cod": "Oh no. But I have a reservation.",
+      "dica": "Ah, não. Mas eu tenho uma reserva.",
+      "img": "😟📋",
+      "alvo": "I have a reservation",
+      "alvo_pt": "eu tenho uma reserva",
+      "conceito": "but = mas. Oh no = ah, não (surpresa, sem drama).",
+      "registro": "neutro",
+      "variacao_de": "f-63efc6",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-07b82f",
+      "quem": "voce",
+      "contexto": "OK. How do you spell your last name?",
+      "cod": "Here's my passport.",
+      "dica": "Aqui está o meu passaporte.",
+      "img": "🛂🤝",
+      "alvo": "passport",
+      "alvo_pt": "passaporte",
+      "conceito": "Here's = Here is: aqui está.",
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2648130,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (Eis o meu → Aqui está o meu)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b0373f",
+      "quem": "recepcionista",
+      "contexto": "f-07b82f",
+      "cod": "Oh, here's your reservation!",
+      "dica": "Ah, aqui está a sua reserva!",
+      "img": "💻✅",
+      "alvo": "reservation",
+      "alvo_pt": "reserva",
+      "conceito": "your = seu/sua de você; dele é his, dela é her.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-50252d",
+      "quem": "voce",
+      "contexto": "f-b0373f",
+      "cod": "Great. It's for three nights, right?",
+      "dica": "Ótimo. É para três noites, né?",
+      "img": "🌙❓",
+      "alvo": "for three nights",
+      "alvo_pt": "para três noites",
+      "conceito": "right? no fim = né?",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0446a8",
+      "quem": "recepcionista",
+      "contexto": "f-50252d",
+      "cod": "That's right. Your reservation is for three nights.",
+      "dica": "Isso mesmo. A sua reserva é para três noites.",
+      "img": "👍📅",
+      "alvo": "reservation",
+      "alvo_pt": "reserva",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d33c8e",
+      "quem": "recepcionista",
+      "cod": "Here's your passport and your key.",
+      "dica": "Aqui está o seu passaporte e a sua chave.",
+      "img": "🛂🔑",
+      "alvo": "passport",
+      "alvo_pt": "passaporte",
+      "conceito": "key = chave. Seu/sua de você = your.",
+      "var": [
+        {
+          "em": "Here's",
+          "aceita": [
+            "Here are"
+          ]
+        },
+        {
+          "em": "and your key",
+          "aceita": [
+            "and key"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR11"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

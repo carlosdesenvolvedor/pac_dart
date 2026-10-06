@@ -1,0 +1,202 @@
+{
+  "id": "comparar.igual-ou-diferente-the-same",
+  "trilha": "comparar",
+  "nome": "Igual ou diferente: the same",
+  "emoji": "🟰",
+  "cena": "Numa loja em Chicago, por chamada de vídeo, a Julia quer um notebook igual ao seu e vocês comparam os preços.",
+  "resumo": "Dizer que é o mesmo, igual a ou diferente (the same, the same as, different) e falar de preço.",
+  "fechamento": false,
+  "novos": [
+    "the same (o mesmo)",
+    "the same as (igual a)",
+    "different (diferente)",
+    "price"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O mesmo, igual a, diferente"
+    },
+    {
+      "t": "p",
+      "c": "**the same** = o mesmo (sempre com the). **the same as** = igual a / o mesmo que. **different** = diferente. **price** = preço."
+    },
+    {
+      "t": "warn",
+      "c": "O mesmo que = the same as (não: the same that). Adjetivo não vai para o plural: The prices are different (não: differents)."
+    },
+    {
+      "t": "ex",
+      "c": "It's the same as last year.\nÉ o mesmo do ano passado."
+    }
+  ],
+  "imagem": "📱💻🏷️",
+  "visualizacao": "Você segura o celular numa loja de Chicago. Na tela, a Julia, em Curitiba, aponta para o seu notebook, e o vendedor mostra as etiquetas de preço.",
+  "foto_busca": "video call phone electronics store",
+  "trechos": [
+    {
+      "id": "f-3f9458",
+      "quem": "julia",
+      "cod": "I want the same laptop.",
+      "dica": "Quero o mesmo notebook.",
+      "img": "💻👯",
+      "alvo": "the same",
+      "alvo_pt": "o mesmo",
+      "conceito": "o mesmo = the same (sempre com the).",
+      "registro": "informal",
+      "armadilhas": [
+        "same"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-902463",
+      "quem": "voce",
+      "contexto": "f-3f9458",
+      "cod": "Our parents have the same laptop too.",
+      "dica": "Nossos pais também têm o mesmo notebook.",
+      "img": "👫💻",
+      "alvo": "the same",
+      "alvo_pt": "o mesmo",
+      "registro": "informal",
+      "armadilhas": [
+        "same"
+      ],
+      "variacao_de": "f-3f9458",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "have the same laptop too",
+          "aceita": [
+            "also have the same laptop"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e73504",
+      "quem": "julia",
+      "cod": "What's the price?",
+      "dica": "Qual é o preço?",
+      "img": "🏷️❓",
+      "alvo": "price",
+      "alvo_pt": "preço",
+      "conceito": "preço = price.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2234121,
+        "en_autor": "CK",
+        "pt_id": 935431,
+        "pt_autor": "une_monica",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d94383",
+      "quem": "voce",
+      "contexto": "f-e73504",
+      "cod": "It's the same as last year.",
+      "dica": "É o mesmo do ano passado.",
+      "img": "🏷️📅",
+      "alvo": "the same as",
+      "alvo_pt": "o mesmo do",
+      "conceito": "o mesmo do / igual ao = the same as (não: the same that / the same of).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "that",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c2d727",
+      "quem": "atendente",
+      "cod": "This one is different. It's newer.",
+      "dica": "Este é diferente. É mais novo.",
+      "img": "💻✨",
+      "alvo": "different",
+      "alvo_pt": "diferente",
+      "conceito": "diferente = different. mais novo = newer (new + -er).",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2892275,
+        "en_autor": "CK",
+        "pt_id": 5272422,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"This one is different.\"; PT original: \"Este é diferente.\"; acrescentado It's newer. / É mais novo.",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9884e1",
+      "quem": "julia",
+      "contexto": "f-c2d727",
+      "cod": "Are the prices different?",
+      "dica": "Os preços são diferentes?",
+      "img": "🏷️🔀❓",
+      "alvo": "different",
+      "alvo_pt": "diferentes",
+      "conceito": "Adjetivo não vai para o plural: different (não: differents).",
+      "registro": "informal",
+      "interferencias": [
+        "BR09"
+      ],
+      "armadilhas": [
+        "differents"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-941c96",
+      "quem": "atendente",
+      "contexto": "f-9884e1",
+      "cod": "The price is the same as the other one.",
+      "dica": "O preço é igual ao do outro.",
+      "img": "🏷️⚖️",
+      "alvo": "the same as",
+      "alvo_pt": "igual ao",
+      "registro": "neutro",
+      "armadilhas": [
+        "that",
+        "equal"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-df69e6",
+      "quem": "voce",
+      "cod": "The price is good. I'll take it.",
+      "dica": "O preço é bom. Vou levar.",
+      "img": "🏷️👍🛍️",
+      "alvo": "price",
+      "alvo_pt": "preço",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1663343,
+        "en_autor": "CM",
+        "pt_id": 9065777,
+        "pt_autor": "gleydin",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"The price is good.\"; PT original: \"O preço é bom.\"; acrescentado I'll take it. / Vou levar.",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

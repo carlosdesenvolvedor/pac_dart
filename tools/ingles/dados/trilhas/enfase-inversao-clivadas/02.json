@@ -1,0 +1,241 @@
+{
+  "id": "enfase-inversao-clivadas.mal-sentei-o-celular-tocou",
+  "trilha": "enfase-inversao-clivadas",
+  "nome": "Mal sentei, o celular tocou",
+  "emoji": "📱",
+  "cena": "Você conta ao Ben um dia em que nada deu certo; depois escreve o resumo para o time.",
+  "resumo": "Contar uma coisa logo atrás da outra com the moment na fala e No sooner had... than na escrita.",
+  "fechamento": false,
+  "novos": [
+    "the moment",
+    "No sooner had... than",
+    "pour"
+  ],
+  "apoio": [
+    "as soon as"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "No momento em que, mal"
+    },
+    {
+      "t": "p",
+      "c": "Na fala: **The moment** I sat down, ... (no momento em que) ou As soon as I sat down, ... (assim que). Por escrito, dá para enfatizar com **No sooner had** + sujeito + particípio + **than**."
+    },
+    {
+      "t": "warn",
+      "c": "No sooner... than, nunca when (não: No sooner had it started when...). E pour, para chuva, é cair um toró; chover forte é rain hard."
+    },
+    {
+      "t": "ex",
+      "c": "No sooner had the meeting started than the internet went down.\n(por escrito) Mal a reunião começou, a internet caiu."
+    }
+  ],
+  "imagem": "📱🌧️🔌",
+  "visualizacao": "Você está no sofá, ao telefone com o Ben, rindo do próprio azar. Lá fora a chuva bate forte na janela e o roteador ainda pisca vermelho.",
+  "foto_busca": "heavy rain window phone call",
+  "trechos": [
+    {
+      "id": "f-03a37c",
+      "quem": "voce",
+      "cod": "The moment I sat down, my phone started ringing.",
+      "dica": "No momento em que eu sentei, o celular começou a tocar.",
+      "img": "🪑📱🔔",
+      "alvo": "The moment",
+      "alvo_pt": "No momento em que",
+      "conceito": "the moment + oração = no momento em que (logo na hora em que).",
+      "var": [
+        {
+          "em": "my phone",
+          "aceita": [
+            "the phone"
+          ]
+        },
+        {
+          "em": "ringing",
+          "aceita": [
+            "to ring"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "when",
+        "in"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 829531,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"As soon as I hung up, the phone started ringing again.\"; As soon as I hung up → The moment I sat down; the phone → my phone; - again; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-735e93",
+      "quem": "voce",
+      "contexto": "f-03a37c",
+      "cod": "Then, the moment we left the house, it started pouring.",
+      "dica": "Depois, no momento em que a gente saiu de casa, começou a cair um toró.",
+      "img": "🏠🚶🌧️",
+      "alvo": "pouring",
+      "alvo_pt": "cair um toró",
+      "lit": "[lit.: derramando]",
+      "conceito": "pour = cair um toró (rain hard = chover forte); o it é obrigatório: it started pouring.",
+      "var": [
+        {
+          "em": "pouring",
+          "aceita": [
+            "to pour"
+          ]
+        },
+        {
+          "em": "the house",
+          "aceita": [
+            "home"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "raining",
+        "started"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d0d837",
+      "quem": "ben",
+      "contexto": "f-735e93",
+      "cod": "Oh no! Did it pour all day?",
+      "dica": "Ah, não! Caiu toró o dia todo?",
+      "img": "😱☔",
+      "alvo": "pour",
+      "alvo_pt": "Caiu toró",
+      "conceito": "Pergunta no passado: Did it pour? (verbo na forma base depois de did).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR01"
+      ],
+      "armadilhas": [
+        "poured",
+        "rain"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-00ee5c",
+      "quem": "voce",
+      "contexto": "f-d0d837",
+      "cod": "It poured all afternoon, and then the power went out.",
+      "dica": "Caiu toró a tarde toda, e aí acabou a luz.",
+      "img": "⛈️💡❌",
+      "alvo": "poured",
+      "alvo_pt": "Caiu toró",
+      "conceito": "It poured = caiu toró (o it é obrigatório); acabou a luz = the power went out.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "the",
+        "light"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6dcad3",
+      "quem": "voce",
+      "cod": "The moment the power came back, my laptop started updating.",
+      "dica": "No momento em que a luz voltou, o notebook começou a atualizar.",
+      "img": "💡💻🔄",
+      "alvo": "The moment",
+      "alvo_pt": "No momento em que",
+      "conceito": "the moment + passado, depois o que aconteceu em seguida.",
+      "var": [
+        {
+          "em": "my laptop",
+          "aceita": [
+            "the laptop"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "when",
+        "returned"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-df8af1",
+      "quem": "ben",
+      "contexto": "f-6dcad3",
+      "cod": "Classic. Everything breaks the moment you need it.",
+      "dica": "Clássico. Tudo quebra no momento em que você precisa.",
+      "img": "🙄🔧",
+      "alvo": "the moment",
+      "alvo_pt": "no momento em que",
+      "conceito": "everything é 3ª pessoa: breaks; need it: o objeto é obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR01"
+      ],
+      "armadilhas": [
+        "break",
+        "need"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-460d16",
+      "quem": "voce",
+      "cod": "No sooner had the meeting started than the internet went down.",
+      "dica": "(por escrito) Mal a reunião começou, a internet caiu.",
+      "img": "📝📶❌",
+      "alvo": "No sooner had",
+      "alvo_pt": "Mal",
+      "conceito": "Escrito: No sooner had + sujeito + particípio + than (nunca when).",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "when",
+        "start"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-25a600",
+      "quem": "voce",
+      "cod": "No sooner had we fixed the connection than the power went out again.",
+      "dica": "(por escrito) Mal consertamos a conexão, a luz acabou de novo.",
+      "img": "🛠️📶🔌",
+      "alvo": "No sooner had",
+      "alvo_pt": "Mal",
+      "conceito": "Depois de No sooner had, o particípio: had we fixed... than.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "when",
+        "fix"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

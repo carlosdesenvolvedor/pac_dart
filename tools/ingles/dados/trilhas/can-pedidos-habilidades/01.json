@@ -1,0 +1,223 @@
+{
+  "id": "can-pedidos-habilidades.sei-nadar-can-e-can-t",
+  "trilha": "can-pedidos-habilidades",
+  "nome": "Sei nadar? can e can't",
+  "emoji": "🏊",
+  "cena": "No almoço do time em Chicago, cada um conta o que sabe e o que não sabe fazer.",
+  "resumo": "Dizer o que você sabe ou não sabe fazer com can e can't + verbo puro.",
+  "fechamento": false,
+  "novos": [
+    "can't",
+    "swim",
+    "play",
+    "guitar"
+  ],
+  "apoio": [
+    "can"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Saber fazer = can"
+    },
+    {
+      "t": "p",
+      "c": "Para habilidade, o inglês usa **can** + verbo. A negativa é **can't**; a pergunta, **Can you...?**"
+    },
+    {
+      "t": "ex",
+      "c": "I can't swim.\nEu não sei nadar."
+    },
+    {
+      "t": "tip",
+      "c": "*Do you play the guitar?* pergunta o hábito (você toca?); *Can you play the guitar?* pergunta se a pessoa sabe."
+    },
+    {
+      "t": "warn",
+      "c": "Depois de *can*, verbo direto: I can swim (não: I can to swim). E *very well* vai no fim: I can cook very well."
+    }
+  ],
+  "imagem": "🍽️🏊🎸",
+  "visualizacao": "Você está numa mesa comprida de restaurante em Chicago, com o time. Barulho de talheres, risadas, e cada um conta o que sabe fazer.",
+  "foto_busca": "team lunch restaurant table",
+  "trechos": [
+    {
+      "id": "f-1c4fed",
+      "quem": "voce",
+      "cod": "Can you swim, Ana?",
+      "dica": "Você sabe nadar, Ana?",
+      "img": "🏊❓",
+      "alvo": "swim",
+      "alvo_pt": "nadar",
+      "conceito": "Saber fazer (habilidade) = can: Can you swim? = Você sabe nadar?",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "to",
+        "know"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d41d48",
+      "quem": "ana",
+      "contexto": "f-1c4fed",
+      "cod": "I can't swim, but my brother can.",
+      "dica": "Não sei nadar, mas meu irmão sabe.",
+      "img": "🚫🏊👦",
+      "alvo": "can't",
+      "alvo_pt": "Não sei",
+      "conceito": "Não sei + verbo = can't + verbo puro. No fim, o can fica sozinho: my brother can.",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "to",
+        "don't"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 9824091,
+        "en_autor": "CK",
+        "pt_id": 10696910,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d487be",
+      "quem": "mike",
+      "contexto": "f-d41d48",
+      "cod": "Really? I swim every day.",
+      "dica": "Sério? Eu nado todo dia.",
+      "img": "😮🏊📅",
+      "alvo": "swim",
+      "alvo_pt": "nado",
+      "conceito": "Sem can, é o hábito: I swim every day = eu nado todo dia.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-794820",
+      "quem": "voce",
+      "cod": "Do you play the guitar, Mike?",
+      "dica": "Você toca violão, Mike?",
+      "img": "🎸❓",
+      "alvo": "play",
+      "alvo_pt": "toca",
+      "conceito": "Tocar instrumento = play (the guitar). Do you play? pergunta o hábito.",
+      "opcional": [
+        "the"
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2050572,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Do you play the guitar?\"; PT original: \"Você toca guitarra?\"; acrescentado o vocativo Mike; PT reescrito (guitarra → violão)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b5dd14",
+      "quem": "mike",
+      "contexto": "f-794820",
+      "cod": "Yes, I play on the weekend.",
+      "dica": "Toco, sim, no fim de semana.",
+      "img": "🎸🗓️",
+      "alvo": "play",
+      "alvo_pt": "Toco",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d6e67b",
+      "quem": "sarah",
+      "cod": "My husband plays the guitar too.",
+      "dica": "O meu marido também toca violão.",
+      "img": "👨🎸👍",
+      "alvo": "guitar",
+      "alvo_pt": "violão",
+      "conceito": "guitar = violão ou guitarra; play the guitar = tocar violão.",
+      "var": [
+        {
+          "em": "plays the guitar too",
+          "aceita": [
+            "also plays the guitar",
+            "also plays guitar"
+          ]
+        }
+      ],
+      "opcional": [
+        "the"
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1173652,
+        "en_autor": "CK",
+        "pt_id": 1312057,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"He can play the guitar.\"; PT original: \"Ele sabe tocar violão.\"; He can play → My husband plays, + too (revisão nativa: eco do hábito que o Mike acabou de contar); PT adaptado (O meu marido também toca violão)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2e5bac",
+      "quem": "voce",
+      "cod": "Ana, can you play the guitar?",
+      "dica": "Ana, você sabe tocar violão?",
+      "img": "👩🎸❓",
+      "alvo": "guitar",
+      "alvo_pt": "violão",
+      "opcional": [
+        "the"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "know"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cded6d",
+      "quem": "ana",
+      "contexto": "f-2e5bac",
+      "cod": "No, I can't. But I can cook very well.",
+      "dica": "Não, não sei. Mas sei cozinhar muito bem.",
+      "img": "🍳👌",
+      "alvo": "can't",
+      "alvo_pt": "não sei",
+      "conceito": "very well vai no fim: I can cook very well (não: I can very well cook).",
+      "registro": "informal",
+      "interferencias": [
+        "BR19",
+        "BR30"
+      ],
+      "armadilhas": [
+        "to",
+        "don't"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

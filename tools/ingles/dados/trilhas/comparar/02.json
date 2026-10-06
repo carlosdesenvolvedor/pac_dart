@@ -1,0 +1,224 @@
+{
+  "id": "comparar.mais-caro-mais-confortavel",
+  "trilha": "comparar",
+  "nome": "Mais caro, mais confortável",
+  "emoji": "💻",
+  "cena": "Numa loja em Chicago, você e a Ana escolhem um notebook novo e conversam com o vendedor.",
+  "resumo": "Comparar com adjetivo longo (more expensive, more difficult) e dizer que algo é pior: worse.",
+  "fechamento": false,
+  "novos": [
+    "more expensive",
+    "difficult",
+    "more difficult",
+    "worse"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Adjetivo longo: more + adjetivo"
+    },
+    {
+      "t": "p",
+      "c": "Com adjetivo longo (duas sílabas ou mais), o inglês usa **more**: **more expensive** (mais caro), **more difficult** (mais difícil), more comfortable. Exceção: os terminados em -y (easy → easier)."
+    },
+    {
+      "t": "warn",
+      "c": "Adjetivo longo não leva -er (não: expensiver). E pior = **worse** (não: more bad)."
+    },
+    {
+      "t": "ex",
+      "c": "This laptop is more expensive.\nEste notebook é mais caro."
+    }
+  ],
+  "imagem": "🏬💻🏷️",
+  "visualizacao": "Você e a Ana andam entre mesas cheias de notebooks numa loja de Chicago. Telas acesas, etiquetas de preço, e um vendedor sorridente vem ajudar.",
+  "foto_busca": "electronics store laptops display",
+  "trechos": [
+    {
+      "id": "f-fc0152",
+      "quem": "ana",
+      "cod": "This laptop is more expensive.",
+      "dica": "Este notebook é mais caro.",
+      "img": "💻💰",
+      "alvo": "more expensive",
+      "alvo_pt": "mais caro",
+      "conceito": "Adjetivo longo: more + adjetivo (não: expensiver).",
+      "registro": "informal",
+      "armadilhas": [
+        "expensiver"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cc7fed",
+      "quem": "voce",
+      "contexto": "f-fc0152",
+      "cod": "Yes, but the black laptop is worse.",
+      "dica": "É, mas o notebook preto é pior.",
+      "img": "💻👎",
+      "alvo": "worse",
+      "alvo_pt": "pior",
+      "conceito": "pior = worse (não: more bad).",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "more",
+        "badder"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-725b3f",
+      "quem": "atendente",
+      "cod": "Is English difficult for you?",
+      "dica": "Inglês é difícil para você?",
+      "img": "🗣️🤔",
+      "alvo": "difficult",
+      "alvo_pt": "difícil",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "english"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5cde1f",
+      "quem": "voce",
+      "contexto": "f-725b3f",
+      "cod": "Yes, it's more difficult than you think.",
+      "dica": "Sim, é mais difícil do que você pensa.",
+      "img": "📚😓",
+      "alvo": "more difficult",
+      "alvo_pt": "mais difícil",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "difficulter"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2449,
+        "en_autor": "CK",
+        "pt_id": 418146,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"It's more difficult than you think.\"; PT original: \"É mais difícil do que você pensa.\"; acrescentado Yes, / Sim,",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b8f067",
+      "quem": "atendente",
+      "cod": "Is Portuguese more difficult than English?",
+      "dica": "Português é mais difícil do que inglês?",
+      "img": "🗣️⚖️❓",
+      "alvo": "more difficult",
+      "alvo_pt": "mais difícil",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "portuguese",
+        "english"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2451317,
+        "en_autor": "CK",
+        "pt_id": 2592362,
+        "pt_autor": "MarlonX19",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Is French more difficult than English?\"; PT original: \"Francês é mais difícil do que inglês?\"; French → Portuguese; PT: Francês → Português",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e0dcbb",
+      "quem": "ana",
+      "contexto": "f-b8f067",
+      "cod": "Not for me. I think English is difficult.",
+      "dica": "Pra mim, não. Acho inglês difícil.",
+      "img": "🤷📖",
+      "alvo": "difficult",
+      "alvo_pt": "difícil",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5096541,
+        "en_autor": "CK",
+        "pt_id": 5924634,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I think French is difficult.\"; PT original: \"Acho francês difícil.\"; French → English, acrescentado Not for me. / Pra mim, não. (revisão nativa: a Ana é brasileira, 'I don't know' não respondia à pergunta)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8fff04",
+      "quem": "voce",
+      "cod": "In Brazil, this laptop is more expensive.",
+      "dica": "No Brasil, este notebook é mais caro.",
+      "img": "🇧🇷💻💸",
+      "alvo": "more expensive",
+      "alvo_pt": "mais caro",
+      "var": [
+        {
+          "em": "In Brazil, this laptop is more expensive",
+          "aceita": [
+            "This laptop is more expensive in Brazil"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "variacao_de": "f-fc0152",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3fba9e",
+      "quem": "ana",
+      "cod": "My laptop at home is worse.",
+      "dica": "O meu notebook de casa é pior.",
+      "img": "🏠💻👎",
+      "alvo": "worse",
+      "alvo_pt": "pior",
+      "var": [
+        {
+          "em": "My laptop at home",
+          "aceita": [
+            "My home laptop"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "more"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

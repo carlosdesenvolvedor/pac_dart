@@ -1,0 +1,269 @@
+{
+  "id": "situacao-aluguel-contas.internet-luz-e-o-tecnico",
+  "trilha": "situacao-aluguel-contas",
+  "nome": "Internet, luz e o técnico",
+  "emoji": "💡",
+  "cena": "Primeira semana no apartamento: você contrata internet, fica sem luz e conta à Sarah o que o técnico disse.",
+  "resumo": "Instalar internet, avisar que está sem luz desde cedo e contar o que o técnico disse.",
+  "fechamento": false,
+  "novos": [
+    "set up internet",
+    "the power is out (acabou a luz)",
+    "bill (conta)"
+  ],
+  "apoio": [
+    "technician"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Internet, luz e conta"
+    },
+    {
+      "t": "p",
+      "c": "**set up internet** = instalar internet. **the power is out** = está sem luz. **bill** = conta (de luz, de internet)."
+    },
+    {
+      "t": "warn",
+      "c": "Está sem luz desde hoje de manhã = The power has been out since this morning (não: is out since)."
+    },
+    {
+      "t": "tip",
+      "c": "Com pronome, a partícula vai para o fim: set it up (não: set up it)."
+    }
+  ],
+  "imagem": "💡🔌🧾",
+  "visualizacao": "Seu apartamento novo está escuro e quieto; a geladeira parou de fazer barulho. Você liga para o dono com a lanterna do celular acesa e, no dia seguinte, conta tudo para a Sarah.",
+  "foto_busca": "dark apartment power outage",
+  "trechos": [
+    {
+      "id": "f-5848af",
+      "quem": "voce",
+      "cod": "Hi, I'd like to set up internet at my new address.",
+      "dica": "Oi, eu gostaria de instalar internet no meu endereço novo.",
+      "img": "📶🏠📞",
+      "alvo": "set up internet",
+      "alvo_pt": "instalar internet",
+      "lit": "[up: pronto, montado]",
+      "conceito": "set up = montar, deixar funcionando: set up internet, set up an account.",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a22179",
+      "quem": "atendente",
+      "contexto": "f-5848af",
+      "cod": "Sure. We can set up your internet on Thursday morning.",
+      "dica": "Claro. Podemos instalar sua internet na quinta de manhã.",
+      "img": "🗓️🛠️📶",
+      "alvo": "set up your internet",
+      "alvo_pt": "instalar sua internet",
+      "conceito": "on Thursday morning: dia da semana com on.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5836ee",
+      "quem": "voce",
+      "contexto": "f-a22179",
+      "cod": "Great. How much is the internet bill every month?",
+      "dica": "Ótimo. Quanto é a conta de internet por mês?",
+      "img": "🧾📶💲",
+      "alvo": "bill",
+      "alvo_pt": "conta",
+      "conceito": "bill = a conta a pagar (luz, internet, restaurante); account = conta no banco.",
+      "var": [
+        {
+          "em": "every month",
+          "aceita": [
+            "a month",
+            "per month"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "account"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3bce62",
+      "quem": "voce",
+      "cod": "Hi, the power is out in my apartment.",
+      "dica": "Oi, está sem luz no meu apartamento.",
+      "img": "🔌🌑🏠",
+      "alvo": "the power is out",
+      "alvo_pt": "está sem luz",
+      "lit": "[lit.: a energia está fora]",
+      "conceito": "Estar sem luz = the power is out. A luz acabou (o momento) = the power went out.",
+      "registro": "neutro",
+      "armadilhas": [
+        "light"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b7e5a8",
+      "quem": "proprietario",
+      "contexto": "f-3bce62",
+      "cod": "Oh no. Is the power out in the whole building?",
+      "dica": "Ah, não. Está sem luz no prédio todo?",
+      "img": "🏢🌑❓",
+      "alvo": "Is the power out",
+      "alvo_pt": "Está sem luz",
+      "conceito": "Pergunta com be: Is the power out...?",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0012f5",
+      "quem": "voce",
+      "contexto": "f-b7e5a8",
+      "cod": "I guess so. The power has been out since this morning.",
+      "dica": "É, acho que sim. Está sem luz desde hoje de manhã.",
+      "img": "🌅🕯️⏳",
+      "alvo": "The power has been out",
+      "alvo_pt": "Está sem luz",
+      "conceito": "Está sem luz desde... = has been out since: começou e continua (não: is out since).",
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-92a14b",
+      "quem": "proprietario",
+      "contexto": "f-0012f5",
+      "cod": "I forgot to pay the electric bill.",
+      "dica": "Eu esqueci de pagar a conta de luz.",
+      "img": "🤦🧾💡",
+      "alvo": "bill",
+      "alvo_pt": "conta",
+      "conceito": "electric bill = conta de luz.",
+      "var": [
+        {
+          "em": "electric bill",
+          "aceita": [
+            "electricity bill",
+            "power bill"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2931936,
+        "en_autor": "CK",
+        "pt_id": 4718184,
+        "pt_autor": "anthrax26",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c4f8b0",
+      "quem": "voce",
+      "contexto": "Is your internet working yet?",
+      "cod": "Why does it take them so long to set up internet?",
+      "dica": "Por que eles demoram tanto pra instalar internet?",
+      "img": "⏳📶😤",
+      "alvo": "set up internet",
+      "alvo_pt": "instalar internet",
+      "conceito": "Demorar = it takes + tempo, com it de sujeito: Why does it take them so long?",
+      "var": [
+        {
+          "em": "does it take them",
+          "aceita": [
+            "do they take"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1054780,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: my internet connection → internet (original: \"Why does it take them so long to set up my internet connection?\"); PT reescrito (original: \"Por que eles levam tanto tempo para instalar minha conexão de Internet?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b11e5d",
+      "quem": "voce",
+      "cod": "The technician said he would set it up on Thursday.",
+      "dica": "O técnico disse que ia instalar na quinta.",
+      "img": "👷🛠️🗓️",
+      "alvo": "set it up",
+      "alvo_pt": "instalar",
+      "conceito": "No relato, will vira would. Com pronome, a partícula vai depois: set it up.",
+      "var": [
+        {
+          "em": "would",
+          "aceita": [
+            "was going to"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "told",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-33761a",
+      "quem": "voce",
+      "cod": "It was so boring last night. The power was out until ten.",
+      "dica": "Foi tão chato ontem à noite. Ficou sem luz até as dez.",
+      "img": "🌙🥱🕙",
+      "alvo": "The power was out",
+      "alvo_pt": "Ficou sem luz",
+      "conceito": "Foi chato = It was boring: it obrigatório, e boring (a situação), não bored (a pessoa).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR41"
+      ],
+      "armadilhas": [
+        "bored",
+        "was"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

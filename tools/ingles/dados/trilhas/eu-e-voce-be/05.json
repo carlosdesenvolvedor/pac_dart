@@ -1,0 +1,223 @@
+{
+  "id": "eu-e-voce-be.cena-conversa-no-aviao",
+  "trilha": "eu-e-voce-be",
+  "nome": "Cena: conversa no avião",
+  "emoji": "✈️",
+  "cena": "No voo para Chicago, o passageiro da janela vê o seu notebook cheio de código e puxa conversa.",
+  "resumo": "Fechamento: apresentar-se a um desconhecido com nome, origem, nacionalidade e profissão.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Cena: conversa no avião"
+    },
+    {
+      "t": "p",
+      "c": "Tudo da trilha numa conversa só: I'm from..., nacionalidade com maiúscula, I'm a/an + profissão, Are you...? e as respostas curtas."
+    },
+    {
+      "t": "ex",
+      "c": "No, I'm not. I'm Canadian.\nNão, não sou. Sou canadense."
+    },
+    {
+      "t": "warn",
+      "c": "Profissão leva a/an: I'm a developer, I'm an engineer (não: I'm developer). E nacionalidade com maiúscula: Canadian, Brazilian."
+    }
+  ],
+  "imagem": "✈️💺🤝",
+  "visualizacao": "Você está no voo para Chicago com o notebook aberto. O rapaz da janela olha para a tela cheia de código, sorri e puxa conversa.",
+  "foto_busca": "airplane seat neighbors chatting",
+  "trechos": [
+    {
+      "id": "f-25ac36",
+      "quem": "passageiro",
+      "cod": "Hi! Where are you from?",
+      "dica": "Oi! De onde você é?",
+      "img": "✈️👋❓",
+      "alvo": "Where are you from?",
+      "alvo_pt": "De onde você é?",
+      "registro": "informal",
+      "armadilhas": [
+        "from where"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 370703,
+        "en_autor": "saeb",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Hi!; PT reescrito (De onde você é?)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e6b16f",
+      "quem": "voce",
+      "contexto": "f-25ac36",
+      "cod": "I'm from Brazil. Are you American?",
+      "dica": "Sou do Brasil. Você é americano?",
+      "img": "🇧🇷🇺🇸❓",
+      "alvo": "I'm from",
+      "alvo_pt": "Sou do",
+      "conceito": "Brazil e American com maiúscula; na pergunta, o are vem antes do you.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "brasil",
+        "you are american?"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9bb835",
+      "quem": "passageiro",
+      "contexto": "f-e6b16f",
+      "cod": "No, I'm not. I'm Canadian.",
+      "dica": "Não, não sou. Sou canadense.",
+      "img": "🍁🙂",
+      "alvo": "No, I'm not.",
+      "alvo_pt": "Não, não sou.",
+      "conceito": "Canadian = canadense; nacionalidade sempre com maiúscula.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "canadian"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2248127,
+        "en_autor": "CK",
+        "pt_id": 4707207,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ No, I'm not. e afirmativa (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-03c749",
+      "quem": "passageiro",
+      "cod": "Are you a developer?",
+      "dica": "Você é desenvolvedor?",
+      "pt_f": "Você é desenvolvedora?",
+      "img": "💻👀❓",
+      "alvo": "a developer",
+      "alvo_pt": "desenvolvedor",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "are you developer"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3378205,
+        "en_autor": "CM",
+        "pt_id": 4878450,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "reporter → developer (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e309a2",
+      "quem": "voce",
+      "contexto": "f-03c749",
+      "cod": "Yes, I am. How about you?",
+      "dica": "Sou, sim. E você?",
+      "img": "✅🙂",
+      "alvo": "Yes, I am.",
+      "alvo_pt": "Sou, sim.",
+      "registro": "neutro",
+      "armadilhas": [
+        "yes, i'm"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-768c5d",
+      "quem": "passageiro",
+      "contexto": "f-e309a2",
+      "cod": "I'm an engineer in Toronto.",
+      "dica": "Sou engenheiro em Toronto.",
+      "img": "⚙️🍁",
+      "alvo": "an engineer",
+      "alvo_pt": "engenheiro",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "i'm engineer",
+        "a engineer"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 397588,
+        "en_autor": "CM",
+        "pt_id": 1734801,
+        "pt_autor": "Balamax",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ in Toronto (EN e PT); PT no masculino",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-44b31b",
+      "quem": "passageiro",
+      "cod": "Sorry, what's your name?",
+      "dica": "Desculpa, qual é o seu nome?",
+      "img": "🙋❓",
+      "alvo": "what's your name?",
+      "alvo_pt": "qual é o seu nome?",
+      "registro": "informal",
+      "armadilhas": [
+        "how you call"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 408293,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Sorry; PT reescrito (o original usa tu)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3e4601",
+      "quem": "voce",
+      "contexto": "f-44b31b",
+      "cod": "{nome}. Nice to meet you!",
+      "dica": "{nome}. Prazer em conhecer você!",
+      "img": "🤝😊",
+      "alvo": "Nice to meet you",
+      "alvo_pt": "Prazer em conhecer você",
+      "registro": "informal",
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

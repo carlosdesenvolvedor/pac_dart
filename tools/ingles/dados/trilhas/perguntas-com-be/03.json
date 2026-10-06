@@ -1,0 +1,277 @@
+{
+  "id": "perguntas-com-be.estou-com-fome-be-adjetivo",
+  "trilha": "perguntas-com-be",
+  "nome": "Estou com fome: be + adjetivo",
+  "emoji": "😋",
+  "cena": "Hora do almoço no escritório: você e a Ana estão com fome, mas o Mike diz que está com pressa.",
+  "resumo": "Dizer como você está com be: hungry, thirsty, in a hurry, You're right.",
+  "fechamento": false,
+  "novos": [
+    "hungry",
+    "You're right.",
+    "in a hurry",
+    "thirsty"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Estou com fome: be + adjetivo"
+    },
+    {
+      "t": "p",
+      "c": "Onde o português usa **estar com** ou **ter**, o inglês usa **be**: I'm hungry (estou com fome), I'm thirsty (estou com sede), I'm in a hurry (estou com pressa)."
+    },
+    {
+      "t": "ex",
+      "c": "You're right.\nVocê tem razão."
+    },
+    {
+      "t": "ex",
+      "c": "In a hurry? Are you sure?\nCom pressa? Tem certeza?"
+    },
+    {
+      "t": "warn",
+      "c": "Nunca I have hungry nem You have reason. Sempre I'm hungry / You're right."
+    }
+  ],
+  "imagem": "🍔🥤⏱️",
+  "visualizacao": "Meio-dia no escritório de Chicago. Sua barriga ronca, a Ana já pegou o casaco e o Mike passa correndo com o notebook debaixo do braço.",
+  "foto_busca": "office lunch break coworkers",
+  "trechos": [
+    {
+      "id": "f-8fc34f",
+      "quem": "voce",
+      "cod": "I'm hungry. How about you?",
+      "dica": "Estou com fome. E você?",
+      "img": "😋🍽️",
+      "alvo": "hungry",
+      "alvo_pt": "com fome",
+      "lit": "[lit.: eu estou faminto]",
+      "conceito": "Estar com fome = be hungry (não: I have hungry).",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "i have hungry",
+        "i have hunger"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2354171,
+        "en_autor": "Hybrid",
+        "pt_id": 10610267,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6f8e20",
+      "quem": "ana",
+      "contexto": "f-8fc34f",
+      "cod": "I'm hungry, too!",
+      "dica": "Eu também estou com fome!",
+      "img": "🙋‍♀️🍔",
+      "alvo": "hungry",
+      "alvo_pt": "com fome",
+      "conceito": "também = too, no fim da frase.",
+      "var": [
+        {
+          "em": "I'm hungry, too",
+          "aceita": [
+            "I'm also hungry"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "i have hungry",
+        "too i'm"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2046659,
+        "en_autor": "CK",
+        "pt_id": 4818943,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "busy → hungry (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-92f66f",
+      "quem": "mike",
+      "contexto": "Mike, are you hungry?",
+      "cod": "No, I'm not. I'm in a hurry.",
+      "dica": "Não, não estou. Estou com pressa.",
+      "img": "🏃‍♂️⏱️",
+      "alvo": "in a hurry",
+      "alvo_pt": "com pressa",
+      "conceito": "Estar com pressa = be in a hurry.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "i have hurry",
+        "in hurry"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5354c4",
+      "quem": "voce",
+      "contexto": "f-92f66f",
+      "cod": "In a hurry? Are you sure?",
+      "dica": "Com pressa? Tem certeza?",
+      "img": "🤨⏱️",
+      "alvo": "In a hurry",
+      "alvo_pt": "Com pressa",
+      "conceito": "Ter certeza também é com be: Are you sure? = tem certeza?",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "do you have sure",
+        "in hurry"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2648572,
+        "en_autor": "CK",
+        "pt_id": 5143961,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → In a hurry? (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-52f692",
+      "quem": "mike",
+      "contexto": "f-5354c4",
+      "cod": "You're right. I'm hungry, too.",
+      "dica": "Você tem razão. Também estou com fome.",
+      "img": "👍🍽️",
+      "alvo": "You're right",
+      "alvo_pt": "Você tem razão",
+      "lit": "[lit.: você está certo]",
+      "conceito": "Ter razão = be right (não: You have reason).",
+      "var": [
+        {
+          "em": "I'm hungry, too",
+          "aceita": [
+            "I'm also hungry"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "you have reason",
+        "you are reason"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2490139,
+        "en_autor": "AlanF_US",
+        "pt_id": 8127695,
+        "pt_autor": "lucasmg123",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I'll go by taxi → I'm hungry, too (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-854cdb",
+      "quem": "voce",
+      "contexto": "Wow, it's really cold outside!",
+      "cod": "You're right, Ana.",
+      "dica": "Você tem razão, Ana.",
+      "img": "🥶👍",
+      "alvo": "You're right",
+      "alvo_pt": "Você tem razão",
+      "conceito": "You're right = você tem razão (para ele ou para ela).",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "you have reason"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2218356,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Ana; PT reescrito (tem razão)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f4961f",
+      "quem": "ana",
+      "cod": "Are you thirsty, {nome}?",
+      "dica": "Você está com sede, {nome}?",
+      "img": "🥤❓",
+      "alvo": "thirsty",
+      "alvo_pt": "com sede",
+      "conceito": "Estar com sede = be thirsty.",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "do you have thirst",
+        "are you thirst"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-71000d",
+      "quem": "voce",
+      "contexto": "f-f4961f",
+      "cod": "Yes! I'm hungry and thirsty.",
+      "dica": "Sim! Estou com fome e com sede.",
+      "img": "😋🥤",
+      "alvo": "thirsty",
+      "alvo_pt": "com sede",
+      "conceito": "Dois estados juntos: hungry and thirsty = com fome e com sede.",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "i have thirst",
+        "thirst"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

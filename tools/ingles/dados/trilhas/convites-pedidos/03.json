@@ -1,0 +1,245 @@
+{
+  "id": "convites-pedidos.voce-poderia-pedidos-e-favores",
+  "trilha": "convites-pedidos",
+  "nome": "Você poderia? Pedidos e favores",
+  "emoji": "🙏",
+  "cena": "Antes de viajar, você pede favores à Emma, sua vizinha; depois, numa chamada, combina coisas com a Sarah.",
+  "resumo": "Pedir favor com Could you...? e permissão com Could I...?, com verbos sem preposição.",
+  "fechamento": false,
+  "novos": [
+    "do me a favor",
+    "plants",
+    "discuss",
+    "Could I...?",
+    "go ahead"
+  ],
+  "apoio": [
+    "Could you...?",
+    "water (regar)",
+    "cat"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pedidos educados com could"
+    },
+    {
+      "t": "p",
+      "c": "**Could you** + verbo? pede um favor (você poderia...?). **Could I** + verbo? pede permissão (eu poderia...?). Para deixar: **Sure, go ahead.**"
+    },
+    {
+      "t": "warn",
+      "c": "Sem preposição depois de call, ask, tell e discuss: discuss it (não: discuss about it), ask you, call me."
+    },
+    {
+      "t": "ex",
+      "c": "Could you do me a favor?\nVocê poderia me fazer um favor?"
+    }
+  ],
+  "imagem": "🚪🪴🔑",
+  "visualizacao": "Você bate na porta da Emma com a mala pronta no corredor. Lá dentro o gato dela mia; na sua sala, os vasos de planta esperam água.",
+  "foto_busca": "neighbor door potted plants",
+  "trechos": [
+    {
+      "id": "f-21def0",
+      "quem": "voce",
+      "cod": "Emma, could you do me a favor?",
+      "dica": "Emma, você poderia me fazer um favor?",
+      "img": "🙏🚪",
+      "alvo": "do me a favor",
+      "alvo_pt": "me fazer um favor",
+      "conceito": "Me fazer um favor = do me a favor (o me vem antes de a favor).",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 485496,
+        "en_autor": "CK",
+        "pt_id": 981332,
+        "pt_autor": "une_monica",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'Emma,' acrescentado no EN; 'Emma, você' acrescentado no PT",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c68692",
+      "quem": "voce",
+      "contexto": "Sure. What is it?",
+      "cod": "Could you water my plants while I'm away?",
+      "dica": "Você poderia regar minhas plantas enquanto eu estiver fora?",
+      "img": "🪴💧",
+      "alvo": "plants",
+      "alvo_pt": "plantas",
+      "conceito": "water = regar (verbo): water my plants.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8389191,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito ('aguar' trocado por 'regar')",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-414eab",
+      "quem": "emma",
+      "contexto": "f-c68692",
+      "cod": "No problem. How often do your plants need water?",
+      "dica": "Sem problema. Com que frequência suas plantas precisam de água?",
+      "img": "🪴🗓️❓",
+      "alvo": "plants",
+      "alvo_pt": "plantas",
+      "conceito": "Pergunta com How often pede do: How often do...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9b2026",
+      "quem": "voce",
+      "cod": "Could you do me a favor and send me the file?",
+      "dica": "Você poderia me fazer um favor e me mandar o arquivo?",
+      "img": "📄📤🙏",
+      "alvo": "do me a favor",
+      "alvo_pt": "me fazer um favor",
+      "conceito": "send me the file: o me vem direto, sem to.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-21e1b3",
+      "quem": "voce",
+      "cod": "Sarah, could I share my screen?",
+      "dica": "Sarah, eu poderia compartilhar a minha tela?",
+      "img": "🖥️🙋",
+      "alvo": "could I",
+      "alvo_pt": "eu poderia",
+      "conceito": "Could I + verbo? = eu poderia...? (pedir permissão).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5f5c52",
+      "quem": "sarah",
+      "contexto": "f-21e1b3",
+      "cod": "Sure, go ahead.",
+      "dica": "Claro, vai em frente.",
+      "img": "👍▶️",
+      "alvo": "go ahead",
+      "alvo_pt": "vai em frente",
+      "conceito": "go ahead = vai em frente, pode (fazer): dá permissão.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-13a7e5",
+      "quem": "sarah",
+      "cod": "Could I talk to you for a second?",
+      "dica": "Eu poderia falar com você um segundo?",
+      "img": "💬⏱️",
+      "alvo": "Could I",
+      "alvo_pt": "Eu poderia",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2588806,
+        "en_autor": "CK",
+        "pt_id": 2672508,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'alone' removido do EN; o PT original já não traduzia 'alone'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4000b2",
+      "quem": "voce",
+      "contexto": "f-13a7e5",
+      "cod": "Go ahead. What's up?",
+      "dica": "Pode falar. O que foi?",
+      "img": "👂🙂",
+      "alvo": "Go ahead",
+      "alvo_pt": "Pode falar",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "lit": "[lit.: vá em frente]",
+      "conceito": "Go ahead também dá permissão para falar: pode falar."
+    },
+    {
+      "id": "f-842e39",
+      "quem": "sarah",
+      "contexto": "f-4000b2",
+      "cod": "I'd like to discuss the new feature with you.",
+      "dica": "Eu gostaria de discutir a nova feature com você.",
+      "img": "🗣️🧩",
+      "alvo": "discuss",
+      "alvo_pt": "discutir",
+      "conceito": "discuss sem about: discuss the feature (não: discuss about).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "about"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-48331c",
+      "quem": "voce",
+      "contexto": "f-842e39",
+      "cod": "Sure. Let's discuss it on Monday morning.",
+      "dica": "Claro. Vamos discutir isso na segunda de manhã.",
+      "img": "📅☀️💬",
+      "alvo": "discuss",
+      "alvo_pt": "discutir",
+      "conceito": "discuss it: com objeto e sem about. Na segunda de manhã = on Monday morning.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR42",
+        "BR18",
+        "BR17"
+      ],
+      "armadilhas": [
+        "about"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "discuss it",
+          "aceita": [
+            "discuss this",
+            "discuss that"
+          ]
+        }
+      ]
+    }
+  ]
+}

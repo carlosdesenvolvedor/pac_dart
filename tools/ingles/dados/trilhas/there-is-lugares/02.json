@@ -1,0 +1,214 @@
+{
+  "id": "there-is-lugares.tem-farmacia-aqui-perto",
+  "trilha": "there-is-lugares",
+  "nome": "Tem farmácia aqui perto?",
+  "emoji": "💊",
+  "cena": "Na rua, perto do hotel em Chicago, você pede ajuda a uma moradora e depois entra numa cafeteria.",
+  "resumo": "Perguntar se existe algo por perto com Is there...? e responder com near, near here e around here.",
+  "fechamento": false,
+  "novos": [
+    "Is there...?",
+    "near",
+    "near here",
+    "around here"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Tem... aqui perto? = Is there... near here?"
+    },
+    {
+      "t": "p",
+      "c": "Na pergunta, **there** troca de lugar com **is**: There's a bank. → **Is there** a bank near here?"
+    },
+    {
+      "t": "ex",
+      "c": "Is there an ATM around here?\nTem um caixa eletrônico por aqui?"
+    },
+    {
+      "t": "tip",
+      "c": "Resposta curta: Yes, there is. / No, there isn't. **near here** = aqui perto; **around here** = por aqui."
+    },
+    {
+      "t": "warn",
+      "c": "Não: Have a pharmacy near here? Tem (existir) = Is there...?"
+    }
+  ],
+  "imagem": "💊🏦🗺️",
+  "visualizacao": "Calçada movimentada em Chicago, vento frio no rosto. Você para uma moradora de cachecol e sacolas e pergunta, apontando para a rua.",
+  "foto_busca": "city street asking directions",
+  "trechos": [
+    {
+      "id": "f-b78acf",
+      "quem": "voce",
+      "cod": "Excuse me. Is there a bank on this street?",
+      "dica": "Com licença. Tem um banco nesta rua?",
+      "img": "🏦❓",
+      "alvo": "Is there",
+      "alvo_pt": "Tem",
+      "lit": "[lit.: há um banco nesta rua?]",
+      "conceito": "Tem...? (existe) = Is there...? O is vem antes do there.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03",
+        "BR17"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9d53e2",
+      "quem": "moradora",
+      "contexto": "f-b78acf",
+      "cod": "No, but there's one near the coffee shop.",
+      "dica": "Não, mas tem um perto da cafeteria.",
+      "img": "☕📍",
+      "alvo": "near",
+      "alvo_pt": "perto da",
+      "conceito": "near = perto de (sem of): near the coffee shop.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fc73ef",
+      "quem": "voce",
+      "contexto": "f-9d53e2",
+      "cod": "Is the coffee shop near here?",
+      "dica": "A cafeteria fica aqui perto?",
+      "img": "☕🚶",
+      "alvo": "near here",
+      "alvo_pt": "aqui perto",
+      "conceito": "aqui perto = near here (a ordem inverte).",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3823890,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Is the zoo near here?\"; PT original: \"O zoológico é perto daqui?\"; zoo → coffee shop; PT reescrito: \"A cafeteria fica aqui perto?\"",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b4744e",
+      "quem": "moradora",
+      "contexto": "f-fc73ef",
+      "cod": "Yes. Go straight ahead. It's near the pharmacy.",
+      "dica": "Sim. Segue em frente. Fica perto da farmácia.",
+      "img": "🚶⬆️💊",
+      "alvo": "near",
+      "alvo_pt": "perto da",
+      "conceito": "near = perto de (sem of). Go straight ahead = segue em frente.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a073f1",
+      "quem": "voce",
+      "cod": "And is there an ATM around here?",
+      "dica": "E tem um caixa eletrônico por aqui?",
+      "img": "💵❓",
+      "alvo": "around here",
+      "alvo_pt": "por aqui",
+      "conceito": "ATM = caixa eletrônico. an antes de som de vogal: an ATM.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "a"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5c5726",
+      "quem": "moradora",
+      "contexto": "f-a073f1",
+      "cod": "Yes, there's one near here.",
+      "dica": "Tem, sim, um aqui perto.",
+      "img": "👍💵",
+      "alvo": "near here",
+      "alvo_pt": "aqui perto",
+      "lit": "[lit.: sim, há um perto daqui]",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dc066d",
+      "quem": "voce",
+      "cod": "Is there a restroom here?",
+      "dica": "Tem banheiro aqui?",
+      "img": "🚻❓",
+      "alvo": "Is there",
+      "alvo_pt": "Tem",
+      "conceito": "Em inglês o artigo não some: Is there a restroom?",
+      "var": [
+        {
+          "em": "restroom",
+          "aceita": [
+            "bathroom"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-626fa4",
+      "quem": "voce",
+      "contexto": "Sure, it's in the back.",
+      "cod": "Thanks! Is there a good pizza place around here?",
+      "dica": "Obrigado! Tem uma pizzaria boa por aqui?",
+      "pt_f": "Obrigada! Tem uma pizzaria boa por aqui?",
+      "img": "🍕❓",
+      "alvo": "around here",
+      "alvo_pt": "por aqui",
+      "conceito": "pizza place = pizzaria.",
+      "var": [
+        {
+          "em": "pizza place",
+          "aceita": [
+            "pizzeria"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

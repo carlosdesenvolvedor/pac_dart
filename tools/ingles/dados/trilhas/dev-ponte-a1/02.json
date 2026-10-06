@@ -1,0 +1,199 @@
+{
+  "id": "dev-ponte-a1.estou-na-tela-de-login",
+  "trilha": "dev-ponte-a1",
+  "nome": "Estou na página de login",
+  "emoji": "🐞",
+  "cena": "Na daily com o time, você conta em que está trabalhando e mostra um bug na página de login.",
+  "resumo": "Dizer em que está trabalhando: I'm working on... / the login page / the new feature.",
+  "fechamento": false,
+  "novos": [
+    "I'm working on...",
+    "login page",
+    "page",
+    "feature"
+  ],
+  "apoio": [
+    "work on"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Estou trabalhando em..."
+    },
+    {
+      "t": "p",
+      "c": "Trabalhar em (uma tarefa) = **work on**: **I'm working on the login page.** (página de login)."
+    },
+    {
+      "t": "warn",
+      "c": "Substantivo + substantivo: o que descreve vem antes. página de login = **login page** (não: page of login)."
+    },
+    {
+      "t": "warn",
+      "c": "Tem (existe) = **there's**: There's a bug in the app (não: Have a bug)."
+    },
+    {
+      "t": "ex",
+      "c": "There's a bug in the new feature.\nTem um bug na feature nova."
+    }
+  ],
+  "imagem": "💻🐞🗓️",
+  "visualizacao": "Daily de manhã, cada um na sua câmera. Chega a sua vez de falar: o editor aberto e a página de login com uma mensagem de erro vermelha.",
+  "foto_busca": "software developer video meeting",
+  "trechos": [
+    {
+      "id": "f-7bef79",
+      "quem": "voce",
+      "cod": "I'm working on a bug in the app.",
+      "dica": "Estou trabalhando num bug no app.",
+      "img": "🐞🔧",
+      "alvo": "I'm working on",
+      "alvo_pt": "Estou trabalhando",
+      "conceito": "trabalhar em (uma tarefa) = work on.",
+      "registro": "neutro",
+      "armadilhas": [
+        "in"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8ed976",
+      "quem": "mike",
+      "contexto": "f-7bef79",
+      "cod": "Which page?",
+      "dica": "Qual página?",
+      "img": "📄❓",
+      "alvo": "page",
+      "alvo_pt": "página",
+      "var": [
+        {
+          "em": "Which",
+          "aceita": [
+            "What"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2fbbe2",
+      "quem": "voce",
+      "contexto": "f-8ed976",
+      "cod": "The login page. It doesn't work.",
+      "dica": "A página de login. Não funciona.",
+      "img": "🔐❌",
+      "alvo": "login page",
+      "alvo_pt": "página de login",
+      "conceito": "página de login = login page: o que descreve vem antes.",
+      "registro": "informal",
+      "interferencias": [
+        "BR24",
+        "BR01"
+      ],
+      "armadilhas": [
+        "page",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1f8ee6",
+      "quem": "mike",
+      "contexto": "f-2fbbe2",
+      "cod": "Really? The login page works for me.",
+      "dica": "Sério? Pra mim a página de login funciona.",
+      "img": "🤷✅",
+      "alvo": "login page",
+      "alvo_pt": "página de login",
+      "var": [
+        {
+          "em": "The login page works for me",
+          "aceita": [
+            "For me, the login page works",
+            "For me the login page works"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f2344c",
+      "quem": "ana",
+      "cod": "There's a bug on this page too.",
+      "dica": "Tem um bug nesta página também.",
+      "img": "🐞📄",
+      "alvo": "page",
+      "alvo_pt": "página",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "There's a bug on this page too",
+          "aceita": [
+            "There's also a bug on this page",
+            "There's a bug in this page too",
+            "There's also a bug in this page"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b4f339",
+      "quem": "sarah",
+      "cod": "How's the new feature going?",
+      "dica": "Como está indo a feature nova?",
+      "img": "✨❓",
+      "alvo": "feature",
+      "alvo_pt": "feature",
+      "conceito": "feature: o dev brasileiro fala assim mesmo. A feature nova = the new feature.",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0263d2",
+      "quem": "voce",
+      "contexto": "f-b4f339",
+      "cod": "I'm working on it today.",
+      "dica": "Estou trabalhando nela hoje.",
+      "img": "🛠️📅",
+      "alvo": "I'm working on",
+      "alvo_pt": "Estou trabalhando",
+      "conceito": "nela (na feature) = on it.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-318618",
+      "quem": "ana",
+      "cod": "The new feature is great!",
+      "dica": "A feature nova está ótima!",
+      "img": "😍✨",
+      "alvo": "feature",
+      "alvo_pt": "feature",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,202 @@
+{
+  "id": "situacao-caminho-compras.como-chego-a-estacao",
+  "trilha": "situacao-caminho-compras",
+  "nome": "Como chego à estação?",
+  "emoji": "🚉",
+  "cena": "Passeando pelo centro de Chicago, você pergunta a moradores como chegar à estação e ao museu.",
+  "resumo": "Pedir e entender o caminho: How do I get to...? / Is it far from here?",
+  "fechamento": false,
+  "novos": [
+    "How do I get to...?",
+    "get to",
+    "station",
+    "Is it far from here?"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pedindo o caminho"
+    },
+    {
+      "t": "p",
+      "c": "**How do I get to...?** = Como eu chego a...? **get to** = chegar a um lugar. **far from here** = longe daqui; *near here* = aqui perto."
+    },
+    {
+      "t": "ex",
+      "c": "How do I get to the station from here?\nComo eu chego à estação daqui?"
+    },
+    {
+      "t": "warn",
+      "c": "a pé = **on foot** (não: *by foot*); de metrô = **by subway**; na esquina = **at** the corner."
+    }
+  ],
+  "imagem": "🗺️🚉🚶",
+  "visualizacao": "Você está numa esquina do centro de Chicago. Vento frio, prédios altos, o barulho do trem lá em cima; uma moradora para e ouve a sua pergunta.",
+  "foto_busca": "downtown city street corner pedestrians",
+  "trechos": [
+    {
+      "id": "f-51b77e",
+      "quem": "voce",
+      "cod": "Excuse me, is there a subway station near here?",
+      "dica": "Com licença, tem uma estação de metrô aqui perto?",
+      "img": "🚉❓",
+      "alvo": "station",
+      "alvo_pt": "estação",
+      "conceito": "station = estação; subway = metrô (EUA): a subway station = uma estação de metrô.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b15c94",
+      "quem": "moradora",
+      "contexto": "f-51b77e",
+      "cod": "Yes, there's a station two blocks from here.",
+      "dica": "Sim, tem uma estação a duas quadras daqui.",
+      "img": "🚉🏙️",
+      "alvo": "station",
+      "alvo_pt": "estação",
+      "conceito": "block = quadra, quarteirão: two blocks from here = a duas quadras daqui.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7901922,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"It's three blocks from here.\"; It's → Yes, there's a station, three → two; PT reescrito (original: \"É a três quadras daqui.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5fd5fb",
+      "quem": "voce",
+      "contexto": "f-b15c94",
+      "cod": "How do I get to the station from here?",
+      "dica": "Como eu chego à estação daqui?",
+      "img": "🗺️🚶",
+      "alvo": "How do I get to",
+      "alvo_pt": "Como eu chego à",
+      "conceito": "get to = chegar a um lugar: How do I get to...? = Como eu chego a...?",
+      "registro": "neutro",
+      "armadilhas": [
+        "arrive"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4135188,
+        "en_autor": "CK",
+        "pt_id": 10198105,
+        "pt_autor": "BranTheOliver",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT ajustado: \"chego na\" → \"chego à\" (mesma tradução de get to na lição; original: \"Como eu chego na estação daqui?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3e8d03",
+      "quem": "moradora",
+      "contexto": "f-5fd5fb",
+      "cod": "Go straight ahead. You can get to the station on foot.",
+      "dica": "Segue em frente. Dá pra chegar à estação a pé.",
+      "img": "⬆️🚶",
+      "alvo": "get to",
+      "alvo_pt": "chegar à",
+      "conceito": "a pé = on foot (não: by foot).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "by"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f20248",
+      "quem": "voce",
+      "cod": "Is the museum far from here?",
+      "dica": "O museu é longe daqui?",
+      "img": "🏛️❓",
+      "alvo": "far from here",
+      "alvo_pt": "longe daqui",
+      "conceito": "far from here = longe daqui; near here = aqui perto.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9965956,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Is your office far from here?\"; your office → the museum; PT reescrito (o original usa \"teu\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9139ad",
+      "quem": "moradora",
+      "contexto": "f-f20248",
+      "cod": "Yes, it's far from here. Take the subway.",
+      "dica": "Sim, é longe daqui. Pega o metrô.",
+      "img": "🚇🏛️",
+      "alvo": "far from here",
+      "alvo_pt": "longe daqui",
+      "conceito": "subway = metrô (EUA).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-038297",
+      "quem": "voce",
+      "contexto": "f-9139ad",
+      "cod": "And how do I get to the museum by subway?",
+      "dica": "E como eu chego ao museu de metrô?",
+      "img": "🚇❓",
+      "alvo": "how do I get to",
+      "alvo_pt": "como eu chego ao",
+      "conceito": "de metrô = by subway; de ônibus = by bus.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-95a0f9",
+      "quem": "moradora",
+      "contexto": "f-038297",
+      "cod": "It's easy. You can get to the museum in ten minutes.",
+      "dica": "É fácil. Dá pra chegar ao museu em dez minutos.",
+      "img": "🚇⏱️",
+      "alvo": "get to",
+      "alvo_pt": "chegar ao",
+      "conceito": "em dez minutos = in ten minutes.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

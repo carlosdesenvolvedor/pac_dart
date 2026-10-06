@@ -1,0 +1,304 @@
+{
+  "id": "situacao-entrevista.e-se-acontecesse",
+  "trilha": "situacao-entrevista",
+  "nome": "E se acontecesse...?",
+  "emoji": "🤔",
+  "cena": "Na segunda etapa da entrevista, o tech lead faz perguntas comportamentais e sobre o seu futuro.",
+  "resumo": "Responder a perguntas hipotéticas e sobre o futuro: What would you do if...? / Where do you see yourself...?",
+  "fechamento": false,
+  "novos": [
+    "tech lead",
+    "in private",
+    "Where do you see yourself",
+    "leadership",
+    "disagree"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Hipótese na entrevista"
+    },
+    {
+      "t": "p",
+      "c": "What would you do if...? pede a 2ª condicional: **if + passado** e **would** na outra parte. If I disagreed with my manager, I'd talk to him in private."
+    },
+    {
+      "t": "warn",
+      "c": "Nada de would dentro do if: if I disagreed (não: if I would disagree). E profissão com artigo: I'd like to be **a** tech lead."
+    },
+    {
+      "t": "ex",
+      "c": "Where do you see yourself three years from now?\nOnde você se vê daqui a três anos?"
+    },
+    {
+      "t": "tip",
+      "c": "Verbo depois de enjoy e means vai com -ing: Good leadership means helping people. / I enjoy building products (não: I enjoy to build)."
+    }
+  ],
+  "imagem": "🤔🧭👥",
+  "visualizacao": "Agora quem está na tela é o tech lead, de moletom, com um quadro branco atrás. Ele faz uma pausa e pergunta o que você faria numa situação difícil.",
+  "foto_busca": "team lead interview whiteboard office",
+  "trechos": [
+    {
+      "id": "f-a3ba6c",
+      "quem": "entrevistador",
+      "cod": "Where do you see yourself three years from now?",
+      "dica": "Onde você se vê daqui a três anos?",
+      "img": "🔭🗓️",
+      "alvo": "Where do you see yourself",
+      "alvo_pt": "Onde você se vê",
+      "lit": "[lit.: onde você vê a si mesmo]",
+      "conceito": "se ver = see yourself (verbo + yourself).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8208490,
+        "en_autor": "CK",
+        "pt_id": 8208491,
+        "pt_autor": "josivangoncalves",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "three years from now",
+          "aceita": [
+            "in three years"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f453e6",
+      "quem": "voce",
+      "contexto": "f-a3ba6c",
+      "cod": "In three years, I'd like to be a tech lead.",
+      "dica": "Daqui a três anos, eu gostaria de ser tech lead.",
+      "img": "🚀👥",
+      "alvo": "tech lead",
+      "alvo_pt": "tech lead",
+      "conceito": "Profissão com artigo: a tech lead (em português, sem artigo).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "tech"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "In three years",
+          "aceita": [
+            "Three years from now"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-3b72fa",
+      "quem": "entrevistador",
+      "contexto": "f-f453e6",
+      "cod": "Why are you interested in leadership?",
+      "dica": "Por que você tem interesse em liderança?",
+      "img": "🧭❓",
+      "alvo": "leadership",
+      "alvo_pt": "liderança",
+      "conceito": "interested in + substantivo (não: interesting, nem interested on).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR41"
+      ],
+      "armadilhas": [
+        "interesting",
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-37cc27",
+      "quem": "voce",
+      "contexto": "f-3b72fa",
+      "cod": "For me, good leadership means helping people grow.",
+      "dica": "Para mim, uma boa liderança significa ajudar as pessoas a crescer.",
+      "img": "🌱🤝",
+      "alvo": "leadership",
+      "alvo_pt": "liderança",
+      "conceito": "means + -ing: means helping. E sem artigo: good leadership, people (as pessoas em geral).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR52",
+        "BR21"
+      ],
+      "armadilhas": [
+        "help",
+        "to"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "people grow",
+          "aceita": [
+            "people to grow"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-2e58bf",
+      "quem": "entrevistador",
+      "contexto": "A good tech lead doesn't need to write code.",
+      "cod": "Do you agree or disagree?",
+      "dica": "Você concorda ou discorda?",
+      "img": "👍👎❓",
+      "alvo": "disagree",
+      "alvo_pt": "discorda",
+      "conceito": "concordar = agree; discordar = disagree (sem be: não I am agree).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "are",
+        "disagrees"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2610912,
+        "en_autor": "CK",
+        "pt_id": 2610915,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-85cbb3",
+      "quem": "voce",
+      "contexto": "f-2e58bf",
+      "cod": "I disagree. The best tech leads I've ever worked with still write code.",
+      "dica": "Discordo. Os melhores tech leads com quem eu já trabalhei ainda escrevem código.",
+      "img": "🧭⌨️",
+      "alvo": "tech leads",
+      "alvo_pt": "tech leads",
+      "conceito": "Os melhores... com quem eu já trabalhei = the best... I've ever worked with (ever com superlativo).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "worked",
+        "am",
+        "with who"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2cc5d9",
+      "quem": "entrevistador",
+      "cod": "What would you do if you disagreed with your manager?",
+      "dica": "O que você faria se discordasse do seu gerente?",
+      "img": "😐👔❓",
+      "alvo": "disagreed",
+      "alvo_pt": "discordasse",
+      "conceito": "if + passado (disagreed), would na outra parte. Nunca would no if.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-af60de",
+      "quem": "voce",
+      "contexto": "f-2cc5d9",
+      "cod": "I'd talk to him in private.",
+      "dica": "Eu conversaria com ele em particular.",
+      "img": "🚪🗣️",
+      "alvo": "in private",
+      "alvo_pt": "em particular",
+      "conceito": "em particular (a sós) = in private; em público = in public.",
+      "var": [
+        {
+          "em": "talk to",
+          "aceita": [
+            "talk with"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "particular"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-294798",
+      "quem": "entrevistador",
+      "contexto": "f-af60de",
+      "cod": "Good. Here, we always give feedback in private.",
+      "dica": "Ótimo. Aqui, sempre damos feedback em particular.",
+      "img": "🔒💬",
+      "alvo": "in private",
+      "alvo_pt": "em particular",
+      "conceito": "feedback é incontável: give feedback (não: give a feedback).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "feedbacks",
+        "a"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Good",
+          "aceita": [
+            "Great"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-fcdc6c",
+      "quem": "entrevistador",
+      "cod": "Last question: where do you see yourself on this team?",
+      "dica": "Última pergunta: onde você se vê neste time?",
+      "img": "🧩👥❓",
+      "alvo": "where do you see yourself",
+      "alvo_pt": "onde você se vê",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "variacao_de": "f-a3ba6c",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "on this team",
+          "aceita": [
+            "in this team"
+          ]
+        }
+      ]
+    }
+  ]
+}

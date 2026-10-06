@@ -1,0 +1,271 @@
+{
+  "id": "dev-docs-email.instale-as-dependencias",
+  "trilha": "dev-docs-email",
+  "nome": "Instale as dependências",
+  "emoji": "📘",
+  "cena": "Você escreve o README de uma biblioteca interna do time, e o dev novo tira dúvidas no chat.",
+  "resumo": "Instruções de README com imperativo, make sure (that) e comandos.",
+  "fechamento": false,
+  "novos": [
+    "install",
+    "dependencies",
+    "make sure (that)",
+    "the following command",
+    "root folder"
+  ],
+  "apoio": [
+    "set (uma variável)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "README: instruções curtas"
+    },
+    {
+      "t": "p",
+      "c": "Instrução de README é imperativo, sem sujeito: **Install**, **Run**, **Clone**. Para checar algo antes: **Make sure (that)** + frase."
+    },
+    {
+      "t": "tip",
+      "c": "No README, o PT usa o imperativo formal (Instale, Rode, Certifique-se). No chat com o colega, vale o falado: instala, roda."
+    },
+    {
+      "t": "warn",
+      "c": "dependency, dependencies (não: dependancy). Code é incontável: your code (não: your codes)."
+    },
+    {
+      "t": "ex",
+      "c": "Run the following command in the root folder.\nExecute o seguinte comando na pasta raiz."
+    }
+  ],
+  "imagem": "📘💻📦",
+  "visualizacao": "Tela dividida: de um lado o terminal, do outro o README em branco. Você escreve os passos devagar, pensando no dev novo que vai clonar o projeto amanhã.",
+  "foto_busca": "developer writing documentation laptop",
+  "trechos": [
+    {
+      "id": "f-6cdbad",
+      "quem": "voce",
+      "cod": "This library has only two dependencies.",
+      "dica": "Esta biblioteca tem apenas duas dependências.",
+      "img": "📚🔗",
+      "alvo": "dependencies",
+      "alvo_pt": "dependências",
+      "conceito": "dependency, dependencies: com -en- (não: dependancy).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR45",
+        "BR02"
+      ],
+      "armadilhas": [
+        "dependences",
+        "dependancies",
+        "have"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "has only",
+          "aceita": [
+            "only has"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e75202",
+      "quem": "voce",
+      "cod": "Clone the repo and open the root folder.",
+      "dica": "Clone o repositório e abra a pasta raiz.",
+      "img": "📂🌳",
+      "alvo": "root folder",
+      "alvo_pt": "pasta raiz",
+      "conceito": "pasta raiz = root folder (a pasta principal do projeto).",
+      "var": [
+        {
+          "em": "repo",
+          "aceita": [
+            "repository"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5b0b60",
+      "quem": "voce",
+      "cod": "Install the dependencies before you run the app.",
+      "dica": "Instale as dependências antes de rodar o app.",
+      "img": "📦⬇️",
+      "alvo": "Install",
+      "alvo_pt": "Instale",
+      "conceito": "Instrução de README: verbo no imperativo, sem you. Antes de rodar = before you run.",
+      "var": [
+        {
+          "em": "before you run",
+          "aceita": [
+            "before running"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9c00a7",
+      "quem": "voce",
+      "cod": "Run the following command in the root folder.",
+      "dica": "Rode o seguinte comando na pasta raiz.",
+      "img": "⌨️⚡",
+      "alvo": "the following command",
+      "alvo_pt": "o seguinte comando",
+      "conceito": "Rodar (um comando) = run. O seguinte comando = the following command (o que vem logo abaixo).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6d920c",
+      "quem": "voce",
+      "cod": "Make sure that Git is installed on your machine.",
+      "dica": "Certifique-se de que o Git está instalado na sua máquina.",
+      "img": "✅💻",
+      "alvo": "Make sure that",
+      "alvo_pt": "Certifique-se de que",
+      "conceito": "Certifique-se de que = Make sure (that). Git, sem artigo.",
+      "opcional": [
+        "that"
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR12",
+        "BR17"
+      ],
+      "armadilhas": [
+        "the",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f0b65b",
+      "quem": "voce",
+      "cod": "To update the dependencies, run the following command.",
+      "dica": "Para atualizar as dependências, rode o seguinte comando.",
+      "img": "🔄⌨️",
+      "alvo": "the following command",
+      "alvo_pt": "o seguinte comando",
+      "conceito": "Para + verbo (finalidade) = to + verbo (não: for to).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "for"
+      ],
+      "variacao_de": "f-9c00a7",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7617e2",
+      "quem": "voce",
+      "cod": "Make sure the tests pass before you push your code.",
+      "dica": "Certifique-se de que os testes passam antes de fazer push do seu código.",
+      "img": "🧪✅",
+      "alvo": "Make sure",
+      "alvo_pt": "Certifique-se",
+      "conceito": "code é incontável: your code (não: your codes).",
+      "var": [
+        {
+          "em": "before you push",
+          "aceita": [
+            "before pushing"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "codes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7df89a",
+      "quem": "dev-novo",
+      "cod": "Quick question: where's the root folder?",
+      "dica": "Pergunta rápida: onde fica a pasta raiz?",
+      "img": "❓📂",
+      "alvo": "root folder",
+      "alvo_pt": "pasta raiz",
+      "conceito": "Quick question: = Pergunta rápida: (abre uma pergunta no chat).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e9739d",
+      "quem": "dev-novo",
+      "cod": "It says some dependencies are missing.",
+      "dica": "Está dizendo que faltam algumas dependências.",
+      "img": "🧩❌",
+      "alvo": "dependencies",
+      "alvo_pt": "dependências",
+      "conceito": "Está dizendo (o terminal) = It says. O it é obrigatório; o that depois de says pode sumir.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "says"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "It says",
+          "aceita": [
+            "It's saying"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a41f4b",
+      "quem": "voce",
+      "contexto": "f-e9739d",
+      "cod": "Then just install them again with the same command.",
+      "dica": "Então instala de novo com o mesmo comando.",
+      "img": "🔁📦",
+      "alvo": "install",
+      "alvo_pt": "instala",
+      "conceito": "No chat, imperativo falado: instala. Instalar de novo = install them again (objeto obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "again"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "just"
+      ]
+    }
+  ]
+}

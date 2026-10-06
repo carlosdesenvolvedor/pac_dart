@@ -1,0 +1,253 @@
+{
+  "id": "escrita-formal.infelizmente-nao-podemos",
+  "trilha": "escrita-formal",
+  "nome": "Infelizmente, não podemos",
+  "emoji": "🚫",
+  "cena": "Agora você está do outro lado: responde, em nome da empresa, a um cliente que pediu reembolso.",
+  "resumo": "Recusar com educação e oferecer uma alternativa: unable to, decline, at this time, would be happy to.",
+  "fechamento": false,
+  "novos": [
+    "unable to",
+    "decline",
+    "at this time",
+    "would be happy to"
+  ],
+  "apoio": [
+    "credit"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Dizer não sem fechar a porta"
+    },
+    {
+      "t": "p",
+      "c": "Recuse com **I'm afraid** ou **we are unable to**, explique em uma linha e ofereça uma saída: **However, we would be happy to...** (no entanto, teríamos prazer em...)."
+    },
+    {
+      "t": "warn",
+      "c": "Não temos como = we are unable to (não: we are not able of). Reembolso de compra = refund; reimbursement é de despesas."
+    },
+    {
+      "t": "ex",
+      "c": "However, we would be happy to offer you a credit for your next order.\nNo entanto, teríamos prazer em oferecer um crédito para o seu próximo pedido."
+    }
+  ],
+  "imagem": "🏢📧🙅",
+  "visualizacao": "Agora você está do lado da empresa, com o pedido do cliente aberto e a política de reembolso ao lado. Você quer dizer não sem perder o cliente.",
+  "foto_busca": "customer service agent email desk",
+  "trechos": [
+    {
+      "id": "f-5980df",
+      "quem": "voce",
+      "cod": "I'm afraid we have to decline your request for a refund.",
+      "dica": "Infelizmente, precisamos recusar o seu pedido de reembolso.",
+      "img": "🙅💸",
+      "alvo": "decline",
+      "alvo_pt": "recusar",
+      "conceito": "decline = recusar com educação. refund = reembolso (reimbursement é de despesas).",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "refuse",
+        "reimbursement"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "have to",
+          "aceita": [
+            "need to"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-07cc9b",
+      "quem": "voce",
+      "cod": "As the order has already shipped, we are unable to cancel it.",
+      "dica": "Como o pedido já foi enviado, não temos como cancelá-lo.",
+      "img": "📦🚚🚫",
+      "alvo": "unable to",
+      "alvo_pt": "não temos como",
+      "conceito": "be unable to = não ter como (formal); na conversa, can't.",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "able of",
+        "shipped"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "As the",
+          "aceita": [
+            "Since the"
+          ]
+        },
+        {
+          "em": "has already shipped",
+          "aceita": [
+            "has already been shipped"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-fb72b0",
+      "quem": "voce",
+      "cod": "We are also unable to make an exception to our terms and conditions.",
+      "dica": "Também não temos como abrir uma exceção aos nossos termos e condições.",
+      "img": "📜🚫",
+      "alvo": "unable to",
+      "alvo_pt": "não temos como",
+      "conceito": "abrir uma exceção = make an exception (não: open an exception).",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "open",
+        "able of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a00304",
+      "quem": "voce",
+      "cod": "However, we would be happy to offer you a credit for your next order.",
+      "dica": "No entanto, teríamos prazer em oferecer um crédito para o seu próximo pedido.",
+      "img": "🎟️🛒",
+      "alvo": "would be happy to",
+      "alvo_pt": "teríamos prazer em",
+      "conceito": "would be happy to + verbo = teria prazer em (oferta educada).",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "in",
+        "offering"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3c187a",
+      "quem": "voce",
+      "contexto": "Could you add the credit to my account now?",
+      "cod": "I would be happy to do so.",
+      "dica": "Eu teria prazer em fazer isso.",
+      "img": "😊✅",
+      "alvo": "would be happy to",
+      "alvo_pt": "teria prazer em",
+      "conceito": "do so = fazer isso (formal), retoma o pedido anterior.",
+      "var": [
+        {
+          "em": "do so",
+          "aceita": [
+            "do that",
+            "do it"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "in",
+        "doing"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2044604,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT do Tatoeba (Me alegraria fazer assim.) pouco natural; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fa47cb",
+      "quem": "voce",
+      "cod": "Free shipping is not available at this time.",
+      "dica": "Frete grátis não está disponível neste momento.",
+      "img": "🚚🚫⏳",
+      "alvo": "at this time",
+      "alvo_pt": "neste momento",
+      "conceito": "at this time = neste momento (formal); na conversa, right now.",
+      "registro": "formal",
+      "armadilhas": [
+        "moment",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7ca4e1",
+      "quem": "voce",
+      "cod": "We have decided to decline your proposal at this time.",
+      "dica": "Decidimos recusar a sua proposta neste momento.",
+      "img": "📄🙅",
+      "alvo": "decline",
+      "alvo_pt": "recusar",
+      "conceito": "decide + to: decided to decline (não: decided declining).",
+      "var": [
+        {
+          "em": "have decided",
+          "aceita": [
+            "decided"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "refuse",
+        "declining"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-080c8d",
+      "quem": "voce",
+      "cod": "At this time, we are looking into other options for you.",
+      "dica": "Neste momento, estamos investigando outras opções para você.",
+      "img": "🔍🧩",
+      "alvo": "At this time",
+      "alvo_pt": "Neste momento",
+      "conceito": "look into = investigar, verificar (um caso, uma opção). At this time = neste momento (formal).",
+      "blocos": [
+        3
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "moment",
+        "investigating"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10129872,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"At this time, we're looking into every possibility.\"; we're → we are (registro formal); every possibility → other options for you; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

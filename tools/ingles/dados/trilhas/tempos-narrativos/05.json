@@ -1,0 +1,285 @@
+{
+  "id": "tempos-narrativos.a-viagem-que-deu-errado",
+  "trilha": "tempos-narrativos",
+  "nome": "A viagem que deu errado",
+  "emoji": "🌨️",
+  "cena": "Na segunda, numa call, a Ana pergunta da sua viagem a Boston, e você conta do começo ao fim a noite que passou no aeroporto.",
+  "resumo": "Narrar uma viagem com imprevistos misturando passado contínuo, passado simples e past perfect.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Os três tempos da história"
+    },
+    {
+      "t": "p",
+      "c": "**was/were + -ing**: o cenário (I was on my way...). **Passado simples**: os fatos, em ordem. **had + particípio**: o que já tinha acontecido antes (they had already canceled...)."
+    },
+    {
+      "t": "ex",
+      "c": "By the time I got there, they had already canceled my flight.\nAté eu chegar lá, já tinham cancelado meu voo."
+    },
+    {
+      "t": "tip",
+      "c": "Para a sequência: first, then, after that, finally."
+    },
+    {
+      "t": "warn",
+      "c": "Até eu chegar lá = By the time I got there (não: until). Nunca tinha dormido = I had never slept (não: I have never slept)."
+    }
+  ],
+  "imagem": "🌨️✈️😴",
+  "visualizacao": "Você está numa call com a Ana, café na mão. Ela arregala os olhos enquanto você conta da neve, do painel cheio de voos cancelados e do banco duro do aeroporto.",
+  "foto_busca": "airport waiting area night snow",
+  "trechos": [
+    {
+      "id": "f-9e1bf2",
+      "quem": "ana",
+      "cod": "How was your trip to Boston?",
+      "dica": "Como foi a sua viagem a Boston?",
+      "img": "✈️🏙️❓",
+      "conceito": "How was...? = Como foi...? trip = viagem.",
+      "registro": "informal",
+      "armadilhas": [
+        "how is",
+        "travel"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3148452,
+        "en_autor": "CK",
+        "pt_id": 4899587,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1034df",
+      "quem": "voce",
+      "contexto": "f-9e1bf2",
+      "cod": "A disaster! I spent the night at the airport.",
+      "dica": "Um desastre! Passei a noite no aeroporto.",
+      "img": "🌙💺",
+      "alvo": "spent the night",
+      "alvo_pt": "Passei a noite",
+      "conceito": "passar a noite = spend the night (spent no passado).",
+      "registro": "informal",
+      "armadilhas": [
+        "passed the night",
+        "in the airport"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1d771f",
+      "quem": "ana",
+      "contexto": "f-1034df",
+      "cod": "What? What happened?",
+      "dica": "O quê? O que aconteceu?",
+      "img": "😮❓",
+      "alvo": "What happened",
+      "alvo_pt": "O que aconteceu",
+      "conceito": "What happened? sem did: o what é o sujeito.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did happen",
+        "what did"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-66878c",
+      "quem": "voce",
+      "contexto": "f-1d771f",
+      "cod": "I was on my way to the airport when it started to snow.",
+      "dica": "Eu estava a caminho do aeroporto quando começou a nevar.",
+      "img": "🚕🌨️",
+      "alvo": "was on my way",
+      "alvo_pt": "estava a caminho",
+      "conceito": "Cenário (was) + fato (started). Nevar pede it: it started to snow.",
+      "var": [
+        {
+          "em": "started to snow",
+          "aceita": [
+            "started snowing",
+            "began to snow",
+            "began snowing"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "started snow",
+        "was starting"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0369e9",
+      "quem": "voce",
+      "cod": "By the time I got there, they had already canceled my flight.",
+      "dica": "Até eu chegar lá, já tinham cancelado meu voo.",
+      "img": "🛫❌",
+      "alvo": "had already canceled",
+      "alvo_pt": "já tinham cancelado",
+      "conceito": "Antes de eu chegar: had already canceled. canceled (EUA) com um l só.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "cancelled",
+        "until"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c62096",
+      "quem": "ana",
+      "contexto": "f-0369e9",
+      "cod": "Oh no! Couldn't you take another flight?",
+      "dica": "Ah, não! Você não conseguiu pegar outro voo?",
+      "img": "✈️🔁❓",
+      "alvo": "Couldn't you",
+      "alvo_pt": "não conseguiu",
+      "conceito": "couldn't = não conseguiu (no passado). pegar um voo = take a flight.",
+      "var": [
+        {
+          "em": "take",
+          "aceita": [
+            "get",
+            "catch"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "didn't can",
+        "other flight"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1c645a",
+      "quem": "voce",
+      "contexto": "f-c62096",
+      "cod": "No. All the flights that night were sold out.",
+      "dica": "Não. Todos os voos daquela noite estavam esgotados.",
+      "img": "✈️🎫🚫",
+      "alvo": "sold out",
+      "alvo_pt": "esgotados",
+      "conceito": "sold out = esgotado (vale para voo, show e ingresso).",
+      "registro": "informal",
+      "armadilhas": [
+        "were selled",
+        "that night was"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c30e2",
+      "quem": "voce",
+      "cod": "I had never slept at an airport before. It was terrible!",
+      "dica": "Eu nunca tinha dormido num aeroporto antes. Foi horrível!",
+      "img": "😴💺😫",
+      "alvo": "had never slept",
+      "alvo_pt": "nunca tinha dormido",
+      "conceito": "had never + particípio + before = nunca tinha... antes. sleep, slept, slept.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have never",
+        "sleeped"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-09aeaa",
+      "quem": "ana",
+      "contexto": "f-4c30e2",
+      "cod": "So what time did you finally board?",
+      "dica": "E a que horas você finalmente embarcou?",
+      "img": "🕕✈️❓",
+      "alvo": "finally",
+      "alvo_pt": "finalmente",
+      "conceito": "board = embarcar. did + board (o verbo fica sem -ed).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "boarded",
+        "embark"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b05b92",
+      "quem": "voce",
+      "contexto": "f-09aeaa",
+      "cod": "At six. After that, I slept for a couple of hours on the plane.",
+      "dica": "Às seis. Depois disso, dormi umas duas horas no avião.",
+      "img": "✈️😴🕕",
+      "alvo": "After that",
+      "alvo_pt": "Depois disso",
+      "conceito": "After that = depois disso. a couple of = uns dois, umas duas.",
+      "var": [
+        {
+          "em": "plane",
+          "aceita": [
+            "airplane"
+          ]
+        },
+        {
+          "em": "for a couple of hours",
+          "aceita": [
+            "a couple of hours"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "after this",
+        "in the plane"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4135211,
+        "en_autor": "CK",
+        "pt_id": 10198147,
+        "pt_autor": "BranTheOliver",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'At six. After that,' acrescentado, airplane → plane; PT ajustado (umas duas horas)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

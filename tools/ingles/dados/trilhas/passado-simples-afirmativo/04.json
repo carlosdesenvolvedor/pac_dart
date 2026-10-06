@@ -1,0 +1,245 @@
+{
+  "id": "passado-simples-afirmativo.fiz-peguei-vim-disse",
+  "trilha": "passado-simples-afirmativo",
+  "nome": "Fiz, peguei, vim, disse",
+  "emoji": "🚌",
+  "cena": "Últimos dias da viagem: você conta para a Ana, por áudio, como foram os dias no escritório de Chicago.",
+  "resumo": "Contar o dia a dia com made, took, came e said.",
+  "fechamento": false,
+  "novos": [
+    "made",
+    "took",
+    "came",
+    "said"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fiz, peguei, vim, disse"
+    },
+    {
+      "t": "p",
+      "c": "make → **made**, take → **took**, come → **came**, say → **said**. Pegar o ônibus = **take the bus**; tirar foto = **take a photo**."
+    },
+    {
+      "t": "ex",
+      "c": "I took the bus to the office.\nPeguei o ônibus para o escritório."
+    },
+    {
+      "t": "tip",
+      "c": "Voltar (para cá) = **come back** → came back."
+    }
+  ],
+  "imagem": "🚌🏢📸",
+  "visualizacao": "Manhã fria em Chicago. Você desce do ônibus, entra no escritório, sente o cheiro de café e vê o time todo reunido pela última vez.",
+  "foto_busca": "city bus office morning",
+  "trechos": [
+    {
+      "id": "f-965ccc",
+      "quem": "voce",
+      "cod": "I took the bus to the office.",
+      "dica": "Peguei o ônibus para o escritório.",
+      "img": "🚌🏢",
+      "alvo": "took",
+      "alvo_pt": "Peguei",
+      "conceito": "take → took. Pegar o ônibus = take the bus.",
+      "registro": "informal",
+      "armadilhas": [
+        "take",
+        "taked"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f2f05e",
+      "quem": "voce",
+      "cod": "Sarah came to Chicago yesterday.",
+      "dica": "A Sarah veio para Chicago ontem.",
+      "img": "✈️👩",
+      "alvo": "came",
+      "alvo_pt": "veio",
+      "conceito": "come → came: veio (para onde eu estou).",
+      "registro": "informal",
+      "armadilhas": [
+        "come",
+        "comed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0101ef",
+      "quem": "voce",
+      "cod": "Sarah said hi to everyone.",
+      "dica": "A Sarah deu oi para todo mundo.",
+      "img": "👋😊",
+      "alvo": "said",
+      "alvo_pt": "deu oi",
+      "conceito": "say → said. Dar oi = say hi.",
+      "var": [
+        {
+          "em": "hi",
+          "aceita": [
+            "hello"
+          ]
+        },
+        {
+          "em": "everyone",
+          "aceita": [
+            "everybody"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "say",
+        "sayed"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8539921,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom said hi to everyone.\"; PT original: \"O Tom cumprimentou todo o mundo.\"; Tom → Sarah; PT reescrito (deu oi)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-aa3332",
+      "quem": "voce",
+      "cod": "Mike made coffee for the team.",
+      "dica": "O Mike fez café para o time.",
+      "img": "☕👥",
+      "alvo": "made",
+      "alvo_pt": "fez",
+      "conceito": "make → made. Fazer café = make coffee.",
+      "registro": "informal",
+      "armadilhas": [
+        "make",
+        "did"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6440613,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom made coffee.\"; PT original: \"Tom fez café.\"; Tom → Mike; acrescentado for the team; PT adaptado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cd17b2",
+      "quem": "voce",
+      "cod": "Ben came from Boston to see me.",
+      "dica": "O Ben veio de Boston para me ver.",
+      "img": "🧳🤗",
+      "alvo": "came",
+      "alvo_pt": "veio",
+      "registro": "informal",
+      "armadilhas": [
+        "come",
+        "comed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5db9e1",
+      "quem": "voce",
+      "cod": "Mike took a photo of the team.",
+      "dica": "O Mike tirou uma foto do time.",
+      "img": "📸👥",
+      "alvo": "took",
+      "alvo_pt": "tirou",
+      "conceito": "Tirar foto = take a photo → took a photo.",
+      "var": [
+        {
+          "em": "photo",
+          "aceita": [
+            "picture"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "take",
+        "taked"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2644306,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom took a picture of Mary.\"; PT original: \"Tom tirou uma foto de Maria.\"; Tom → Mike; picture of Mary → photo of the team; PT adaptado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bac4dc",
+      "quem": "voce",
+      "cod": "I made a lot of friends here.",
+      "dica": "Fiz muitos amigos aqui.",
+      "img": "👫😊",
+      "alvo": "made",
+      "alvo_pt": "Fiz",
+      "conceito": "Fazer amigos = make friends → made friends.",
+      "var": [
+        {
+          "em": "a lot of",
+          "aceita": [
+            "many",
+            "lots of"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "make",
+        "did"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dc4485",
+      "quem": "voce",
+      "cod": "Everyone said goodbye.",
+      "dica": "Todo mundo se despediu.",
+      "img": "🚪👋",
+      "alvo": "said",
+      "alvo_pt": "se despediu",
+      "conceito": "Despedir-se = say goodbye → said goodbye.",
+      "var": [
+        {
+          "em": "goodbye",
+          "aceita": [
+            "bye"
+          ]
+        },
+        {
+          "em": "Everyone",
+          "aceita": [
+            "Everybody"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "say",
+        "sayed"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

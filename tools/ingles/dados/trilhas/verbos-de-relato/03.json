@@ -1,0 +1,269 @@
+{
+  "id": "verbos-de-relato.avisaram-esperam-nao-permitem",
+  "trilha": "verbos-de-relato",
+  "nome": "Avisaram, esperam, não permitem",
+  "emoji": "⚠️",
+  "cena": "Na véspera de um feriado prolongado, o time recebe vários avisos e lembretes antes de desligar.",
+  "resumo": "Relatar avisos, conselhos e lembretes: warn / advise / remind + pessoa + (not) to + verbo.",
+  "fechamento": false,
+  "novos": [
+    "SSL certificate",
+    "remind sb to",
+    "warn sb (not) to",
+    "advise"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Avisou, lembrou, aconselhou"
+    },
+    {
+      "t": "p",
+      "c": "**warn / remind / advise + pessoa + (not) to + verbo**: They warned us not to deploy. Mike reminded me to renew it."
+    },
+    {
+      "t": "warn",
+      "c": "O not vem antes do to: warned us not to deploy (não: warned us for not deploying). Lembrar alguém de = remind sb to (não: remind of renew)."
+    },
+    {
+      "t": "tip",
+      "c": "Esperar que alguém faça = expect sb to: Mike expects me to renew it (não: expects that I renew)."
+    },
+    {
+      "t": "ex",
+      "c": "They warned us not to deploy on Friday afternoon.\nEles avisaram a gente para não fazer deploy na sexta à tarde."
+    }
+  ],
+  "imagem": "⚠️🔒📅",
+  "visualizacao": "Quinta à tarde, véspera de feriado prolongado. As mensagens não param de chegar: o certificado vencendo, o code freeze, os lembretes da Sarah. Você anota tudo antes de desligar.",
+  "foto_busca": "laptop calendar sticky note reminder",
+  "trechos": [
+    {
+      "id": "f-adb6cc",
+      "quem": "ana",
+      "cod": "The SSL certificate expires on Saturday.",
+      "dica": "O certificado SSL vence no sábado.",
+      "img": "🔒⌛",
+      "alvo": "SSL certificate",
+      "alvo_pt": "certificado SSL",
+      "conceito": "expires: -s da 3ª pessoa. on Saturday: on com dia da semana.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17",
+        "BR02"
+      ],
+      "armadilhas": [
+        "in",
+        "at"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-199f4a",
+      "quem": "voce",
+      "contexto": "f-adb6cc",
+      "cod": "I know. Mike expects me to renew the SSL certificate before I leave.",
+      "dica": "Eu sei. O Mike espera que eu renove o certificado SSL antes de sair.",
+      "img": "🔄🔒",
+      "alvo": "SSL certificate",
+      "alvo_pt": "certificado SSL",
+      "conceito": "espera que eu renove = expects me to renew (não: expects that I renew).",
+      "var": [
+        {
+          "em": "before I leave",
+          "aceita": [
+            "before leaving"
+          ]
+        }
+      ],
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR61"
+      ],
+      "armadilhas": [
+        "that"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-db72c3",
+      "quem": "voce",
+      "cod": "Sarah reminded everyone to add their days off to the calendar.",
+      "dica": "A Sarah lembrou todo mundo de colocar as folgas no calendário.",
+      "img": "🗓️🏖️",
+      "alvo": "reminded everyone to",
+      "alvo_pt": "lembrou todo mundo de",
+      "conceito": "remind alguém to + verbo = lembrar alguém de fazer (não: reminded everyone of add).",
+      "var": [
+        {
+          "em": "add their days off to the calendar",
+          "aceita": [
+            "put their days off on the calendar",
+            "put their days off in the calendar"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d36b2e",
+      "quem": "mike",
+      "cod": "I'll remind you to check the logs on Monday.",
+      "dica": "Vou te lembrar de olhar os logs na segunda.",
+      "img": "🔔📜",
+      "alvo": "remind you to",
+      "alvo_pt": "te lembrar de",
+      "conceito": "remind + pessoa + to: remind you to check. on Monday: on com dia.",
+      "var": [
+        {
+          "em": "I'll remind",
+          "aceita": [
+            "I'm going to remind"
+          ]
+        },
+        {
+          "em": "check",
+          "aceita": [
+            "look at"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6910120,
+        "en_autor": "CK",
+        "pt_id": 7707748,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: do that tomorrow → check the logs on Monday (original: \"I'll remind you to do that tomorrow.\"); PT: fazer isso amanhã → olhar os logs na segunda (original: \"Vou te lembrar de fazer isso amanhã.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d735bc",
+      "quem": "voce",
+      "cod": "The infra team warned us not to deploy during the code freeze.",
+      "dica": "O time de infra avisou a gente para não fazer deploy durante o code freeze.",
+      "img": "🧊🚫",
+      "alvo": "warned us not to",
+      "alvo_pt": "avisou a gente para não",
+      "conceito": "warn alguém not to + verbo: o not vem antes do to. code freeze = congelamento de deploys.",
+      "var": [
+        {
+          "em": "infra",
+          "aceita": [
+            "infrastructure",
+            "ops"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "for",
+        "to not"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a08742",
+      "quem": "voce",
+      "cod": "Mike warned me not to touch the payment code before the holiday.",
+      "dica": "O Mike me avisou para não mexer no código de pagamento antes do feriado.",
+      "img": "💳✋",
+      "alvo": "warned me not to",
+      "alvo_pt": "me avisou para não",
+      "conceito": "holiday nos EUA = feriado. me avisou para não = warned me not to.",
+      "var": [
+        {
+          "em": "touch",
+          "aceita": [
+            "change"
+          ]
+        }
+      ],
+      "blocos": [
+        9
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "to not"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-900583",
+      "quem": "voce",
+      "cod": "Mike advised Ana to take a break.",
+      "dica": "O Mike aconselhou a Ana a fazer uma pausa.",
+      "img": "☕🛋️",
+      "alvo": "advised",
+      "alvo_pt": "aconselhou",
+      "conceito": "advise + pessoa + to + verbo = aconselhar alguém a fazer.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6139883,
+        "en_autor": "CK",
+        "pt_id": 9849443,
+        "pt_autor": "lucasmg123",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → Mike; Mary → Ana (original: \"Tom advised Mary to take a break.\"); PT: Tom → O Mike; Mary → a Ana; tirar uma folga → fazer uma pausa (original: \"Tom aconselhou Mary a tirar uma folga.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-244d61",
+      "quem": "voce",
+      "cod": "Our security team advises us not to share logs in public channels.",
+      "dica": "O nosso time de segurança aconselha a gente a não compartilhar logs em canais públicos.",
+      "img": "🔐📢",
+      "alvo": "advises us not to",
+      "alvo_pt": "aconselha a gente a não",
+      "conceito": "advises: -s da 3ª pessoa. O not vem antes do to: advises us not to share.",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "advise",
+        "to not"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

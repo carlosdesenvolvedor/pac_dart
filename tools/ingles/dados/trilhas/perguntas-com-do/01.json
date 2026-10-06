@@ -1,0 +1,208 @@
+{
+  "id": "perguntas-com-do.voce-fala-ingles-do-you",
+  "trilha": "perguntas-com-do",
+  "nome": "Você fala inglês? Do you...?",
+  "emoji": "🗣️",
+  "cena": "Na festa de boas-vindas do time em Chicago, você conversa com o Mike e conhece gente de outros escritórios: a Sarah, de Austin, e um dev novo.",
+  "resumo": "Perguntar sobre hábitos com Do you...? e responder curto: Yes, I do. / No, I don't.",
+  "fechamento": false,
+  "novos": [
+    "No, I don't.",
+    "Do you speak...?",
+    "Do you have...?",
+    "a little"
+  ],
+  "apoio": [
+    "Do you...?"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Do you...? marca a pergunta"
+    },
+    {
+      "t": "p",
+      "c": "Em português, a pergunta é só a entonação. Em inglês, o presente pede **do** no começo: **Do you speak Portuguese?** O do não se traduz."
+    },
+    {
+      "t": "ex",
+      "c": "Do you speak Spanish?\nVocê fala espanhol?"
+    },
+    {
+      "t": "tip",
+      "c": "Resposta curta: **Yes, I do.** / **No, I don't.** = Falo, sim. / Não falo."
+    },
+    {
+      "t": "warn",
+      "c": "Não: You speak Portuguese? Na pergunta, o **do** vem antes de you: Do you speak Portuguese?"
+    }
+  ],
+  "imagem": "🎉🗣️🤝",
+  "visualizacao": "Uma sala cheia no escritório de Chicago, com balões, café e salgadinhos. Crachá no peito, gente de Austin e de Chicago se apresenta, e o Mike acena para você.",
+  "foto_busca": "office welcome party colleagues",
+  "trechos": [
+    {
+      "id": "f-ad690f",
+      "quem": "voce",
+      "cod": "Do you speak Portuguese?",
+      "dica": "Você fala português?",
+      "img": "🗣️❓",
+      "alvo": "Do you speak",
+      "alvo_pt": "Você fala",
+      "lit": "[lit.: (do) você fala português?]",
+      "conceito": "Pergunta no presente = Do you + verbo. O do não se traduz.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR15"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5871053,
+        "en_autor": "mailohilohi",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (português com minúscula)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b8f9eb",
+      "quem": "mike",
+      "contexto": "f-ad690f",
+      "cod": "Yes, a little.",
+      "dica": "Sim, um pouco.",
+      "img": "🤏🙂",
+      "alvo": "a little",
+      "alvo_pt": "um pouco",
+      "conceito": "a little = um pouco.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1a827f",
+      "quem": "voce",
+      "cod": "Sarah, do you speak Spanish?",
+      "dica": "Sarah, você fala espanhol?",
+      "img": "👩‍💼❓",
+      "alvo": "do you speak",
+      "alvo_pt": "você fala",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR15"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "variacao_de": "f-ad690f",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e24e16",
+      "quem": "sarah",
+      "contexto": "f-1a827f",
+      "cod": "Yes, I do. And a little French.",
+      "dica": "Falo, sim. E um pouco de francês.",
+      "img": "👍🤏",
+      "alvo": "a little",
+      "alvo_pt": "um pouco",
+      "conceito": "Yes, I do. = Falo, sim. A resposta curta repete o do, não o verbo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR19"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8fb443",
+      "quem": "voce",
+      "cod": "Do you have a pet?",
+      "dica": "Você tem um bicho de estimação?",
+      "img": "🐶❓",
+      "alvo": "Do you have",
+      "alvo_pt": "Você tem",
+      "conceito": "pet = bicho de estimação.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 953189,
+        "en_autor": "CK",
+        "pt_id": 1048433,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-53afbb",
+      "quem": "dev-novo",
+      "contexto": "f-8fb443",
+      "cod": "No, I don't.",
+      "dica": "Não tenho.",
+      "img": "🚫🐾",
+      "alvo": "No, I don't",
+      "alvo_pt": "Não tenho",
+      "lit": "[lit.: não, eu não (tenho)]",
+      "conceito": "Em inglês, a resposta curta repete o do: No, I don't. Em português, repete o verbo: Não tenho.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-371bdb",
+      "quem": "voce",
+      "cod": "Mike, do you have the Wi-Fi password?",
+      "dica": "Mike, você tem a senha do Wi-Fi?",
+      "img": "📶🔑",
+      "alvo": "do you have",
+      "alvo_pt": "você tem",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "variacao_de": "f-8fb443",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ed3bec",
+      "quem": "voce",
+      "contexto": "Do you drink coffee with milk?",
+      "cod": "No, I don't. Just black coffee.",
+      "dica": "Não tomo. Só café puro.",
+      "img": "☕🖤",
+      "alvo": "No, I don't",
+      "alvo_pt": "Não tomo",
+      "conceito": "black coffee = café puro, sem leite.",
+      "var": [
+        {
+          "em": "Just",
+          "aceita": [
+            "Only"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "variacao_de": "f-53afbb",
+      "origem": "autoral_ia"
+    }
+  ]
+}

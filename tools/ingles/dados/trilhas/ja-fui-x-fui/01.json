@@ -1,0 +1,310 @@
+{
+  "id": "ja-fui-x-fui.ja-foi-quando-foi",
+  "trilha": "ja-fui-x-fui",
+  "nome": "Já foi? Quando foi?",
+  "emoji": "🧳",
+  "cena": "No almoço do escritório de Chicago, você, o Mike e a Ana contam para onde já viajaram e dão os detalhes.",
+  "resumo": "Have you ever...? para a experiência sem data; quando entra a data (in 2019, last year), passado simples.",
+  "fechamento": false,
+  "novos": [
+    "abroad",
+    "coast",
+    "festival",
+    "culture",
+    "foreign country"
+  ],
+  "apoio": [
+    "island",
+    "on business",
+    "on vacation",
+    "local food",
+    "crowded",
+    "the whole trip"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Já foi? (sem data) x Quando foi? (com data)"
+    },
+    {
+      "t": "p",
+      "c": "Experiência sem data: **Have you ever + particípio?** Resposta curta: **Yes, I have. / No, I haven't.** Com data (in 2019, last year, two years ago), **passado simples**: I went there in 2019."
+    },
+    {
+      "t": "warn",
+      "c": "Com data, nunca present perfect (não: I have been to Recife in 2019). O detalhe também vai para o passado: **When did you go? Who did you go with?**"
+    },
+    {
+      "t": "ex",
+      "c": "I've been to Mexico twice. I went there last year.\nJá fui ao México duas vezes. Fui lá no ano passado."
+    },
+    {
+      "t": "tip",
+      "c": "abroad = no exterior / para o exterior, sem to e sem the: travel abroad, study abroad, live abroad."
+    }
+  ],
+  "imagem": "🍽️✈️🌍",
+  "visualizacao": "Você está numa mesa de almoço no escritório de Chicago. O Mike mostra no celular as fotos de um festival, a Ana fala do Japão e todo mundo ri das histórias de viagem.",
+  "foto_busca": "office lunch coworkers talking",
+  "trechos": [
+    {
+      "id": "f-db8bda",
+      "quem": "voce",
+      "cod": "Have you ever studied abroad?",
+      "dica": "Você já estudou no exterior?",
+      "img": "🎓✈️",
+      "alvo": "abroad",
+      "alvo_pt": "no exterior",
+      "conceito": "Experiência sem data: Have you ever + particípio. no exterior = abroad (sem in e sem the).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "in",
+        "the",
+        "outside",
+        "exterior"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3550602,
+        "en_autor": "CK",
+        "pt_id": 4864203,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8d07ab",
+      "quem": "ana",
+      "contexto": "f-db8bda",
+      "cod": "Yes, I studied in Japan in 2019. I loved the culture.",
+      "dica": "Sim, estudei no Japão em 2019. Adorei a cultura.",
+      "img": "🇯🇵🏯",
+      "alvo": "culture",
+      "alvo_pt": "cultura",
+      "conceito": "Com data (in 2019), passado simples: I studied (não: I have studied in 2019).",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aaf788",
+      "quem": "voce",
+      "contexto": "f-8d07ab",
+      "cod": "What did you like most about the culture there?",
+      "dica": "Do que você mais gostou na cultura de lá?",
+      "img": "🤔🏮",
+      "alvo": "culture",
+      "alvo_pt": "cultura",
+      "conceito": "Pergunta de detalhe sobre uma viagem que já acabou: passado com did.",
+      "var": [
+        {
+          "em": "most",
+          "aceita": [
+            "best",
+            "the most"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR06"
+      ],
+      "armadilhas": [
+        "liked",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6cae7f",
+      "quem": "ana",
+      "contexto": "f-aaf788",
+      "cod": "Everything! Living in a foreign country taught me a lot.",
+      "dica": "Tudo! Morar num país estrangeiro me ensinou muito.",
+      "img": "🌏📚",
+      "alvo": "foreign country",
+      "alvo_pt": "país estrangeiro",
+      "conceito": "Morar, como sujeito, vira -ing: Living in... país estrangeiro = foreign country.",
+      "var": [
+        {
+          "em": "a lot",
+          "aceita": [
+            "so much"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "live",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5b30cc",
+      "quem": "ana",
+      "cod": "How about you? Have you ever lived abroad?",
+      "dica": "E você? Já morou no exterior?",
+      "img": "🏠✈️❓",
+      "alvo": "abroad",
+      "alvo_pt": "no exterior",
+      "conceito": "E você? = How about you? Morar no exterior = live abroad.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "in",
+        "outside"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "How about you?",
+          "aceita": [
+            "What about you?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c9265e",
+      "quem": "voce",
+      "contexto": "f-5b30cc",
+      "cod": "No, but I'd love to live in a foreign country one day.",
+      "dica": "Não, mas eu adoraria morar num país estrangeiro um dia.",
+      "img": "💭🌍🏡",
+      "alvo": "foreign country",
+      "alvo_pt": "país estrangeiro",
+      "conceito": "I'd love to + verbo = eu adoraria. A resposta curta completa seria No, I haven't.",
+      "var": [
+        {
+          "em": "one day",
+          "aceita": [
+            "someday"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "strange",
+        "stranger"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4e7e57",
+      "quem": "voce",
+      "cod": "Mike, have you ever been to a music festival?",
+      "dica": "Mike, você já foi a um festival de música?",
+      "img": "🎸🎪",
+      "alvo": "festival",
+      "alvo_pt": "festival",
+      "conceito": "Já foi a (experiência, sem data) = have been to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "gone",
+        "went"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cff8b7",
+      "quem": "mike",
+      "contexto": "f-4e7e57",
+      "cod": "Yes, I went to a festival in Austin last year. It was amazing!",
+      "dica": "Sim, fui a um festival em Austin no ano passado. Foi incrível!",
+      "img": "🎶🤩",
+      "alvo": "festival",
+      "alvo_pt": "festival",
+      "conceito": "last year puxa o passado simples. Foi incrível = It was amazing (it obrigatório).",
+      "blocos": [
+        10
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR01"
+      ],
+      "armadilhas": [
+        "have",
+        "been"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-38a50b",
+      "quem": "ana",
+      "cod": "I grew up on the coast, in Recife.",
+      "dica": "Cresci no litoral, em Recife.",
+      "img": "🏖️🌊",
+      "alvo": "coast",
+      "alvo_pt": "litoral",
+      "conceito": "no litoral = on the coast. Cresci (fase que acabou) = passado simples.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in",
+        "littoral"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b0718b",
+      "quem": "mike",
+      "contexto": "f-38a50b",
+      "cod": "I've been to Brazil lots of times, but never to the coast.",
+      "dica": "Já fui ao Brasil um monte de vezes, mas nunca ao litoral.",
+      "img": "🇧🇷🏙️",
+      "alvo": "coast",
+      "alvo_pt": "litoral",
+      "conceito": "Experiência sem data: I've been to... lots of times / never.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "went",
+        "know"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "lots of times",
+          "aceita": [
+            "a lot of times"
+          ]
+        }
+      ]
+    }
+  ]
+}

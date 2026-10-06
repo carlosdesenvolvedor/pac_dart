@@ -1,0 +1,237 @@
+{
+  "id": "perguntas-com-do.voce-gosta-adoro-o-objeto",
+  "trilha": "perguntas-com-do",
+  "nome": "Você gosta? Adoro! (o objeto)",
+  "emoji": "💬",
+  "cena": "Na sala de reunião, a Ana mostra no telão o novo design do app e quer saber o que você e o Mike acham.",
+  "resumo": "Falar de gostos sem esquecer o objeto: Do you like it? I love it. I like them.",
+  "fechamento": false,
+  "novos": [
+    "them",
+    "Do you like it?",
+    "I love it.",
+    "think"
+  ],
+  "apoio": [
+    "it",
+    "need",
+    "want",
+    "a lot"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O objeto não some"
+    },
+    {
+      "t": "p",
+      "c": "Em português basta dizer Adoro! ou Você gosta?. Em inglês, o objeto é obrigatório: **I love it.** / **Do you like them?**"
+    },
+    {
+      "t": "ex",
+      "c": "Do you like it?\nVocê gosta?"
+    },
+    {
+      "t": "tip",
+      "c": "**it** = isso (uma coisa); **them** = eles, elas (várias coisas). What do you think? = O que você acha?"
+    },
+    {
+      "t": "warn",
+      "c": "Não: Yes, I love. / Do you like? Em inglês, like, love e need pedem o objeto: I love **it**, I need **them**."
+    }
+  ],
+  "imagem": "🎨📱💬",
+  "visualizacao": "A sala está meio escura e o telão mostra as telas novas do app, bem coloridas. A Ana segura o controle, ansiosa, e olha para você esperando a sua opinião.",
+  "foto_busca": "designer presenting app screen meeting",
+  "trechos": [
+    {
+      "id": "f-aeb612",
+      "quem": "ana",
+      "cod": "What do you think? Do you like it?",
+      "dica": "O que você acha? Você gosta?",
+      "img": "🎨🤔",
+      "alvo": "Do you like it",
+      "alvo_pt": "Você gosta",
+      "lit": "[lit.: você gosta disso?]",
+      "conceito": "O it (isso) é obrigatório: Do you like it? (não: Do you like?)",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR18"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-01533a",
+      "quem": "voce",
+      "contexto": "f-aeb612",
+      "cod": "Yes, I love it.",
+      "dica": "Sim, eu adoro.",
+      "img": "😍👍",
+      "alvo": "I love it",
+      "alvo_pt": "eu adoro",
+      "conceito": "Adoro = I love it. Sem o it, a frase fica incompleta.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5bfa21",
+      "quem": "ana",
+      "contexto": "And these are the new icons.",
+      "cod": "Do you like them?",
+      "dica": "Você gosta deles?",
+      "img": "🖼️❓",
+      "alvo": "them",
+      "alvo_pt": "deles",
+      "conceito": "them = eles, elas (várias coisas). O objeto não some.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3820032,
+        "en_autor": "CK",
+        "pt_id": 5608120,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f2a9db",
+      "quem": "voce",
+      "contexto": "f-5bfa21",
+      "cod": "Yes, I like them a lot.",
+      "dica": "Sim, gosto muito deles.",
+      "img": "❤️🖼️",
+      "alvo": "them",
+      "alvo_pt": "deles",
+      "conceito": "Gosto muito = I like ... a lot: o a lot vai no fim.",
+      "var": [
+        {
+          "em": "a lot",
+          "aceita": [
+            "very much"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR18",
+        "BR19"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-95f423",
+      "quem": "ana",
+      "cod": "Mike, what do you think?",
+      "dica": "Mike, o que você acha?",
+      "img": "👨‍💼🤔",
+      "alvo": "think",
+      "alvo_pt": "acha",
+      "lit": "[lit.: o que você pensa?]",
+      "conceito": "Achar (dar opinião) = think: What do you think?",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d20ca6",
+      "quem": "mike",
+      "contexto": "f-95f423",
+      "cod": "I love it! Great job, Ana.",
+      "dica": "Adoro! Mandou bem, Ana.",
+      "img": "🤩👏",
+      "alvo": "I love it",
+      "alvo_pt": "Adoro",
+      "conceito": "Great job = mandou bem, ótimo trabalho.",
+      "var": [
+        {
+          "em": "Great job",
+          "aceita": [
+            "Good job",
+            "Nice job"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "variacao_de": "f-01533a",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f1c1de",
+      "quem": "ana",
+      "cod": "What do you think of this one?",
+      "dica": "O que você acha deste?",
+      "img": "👉🎨",
+      "alvo": "think",
+      "alvo_pt": "acha",
+      "conceito": "this one = este (aqui, a outra versão).",
+      "var": [
+        {
+          "em": "of",
+          "aceita": [
+            "about"
+          ]
+        }
+      ],
+      "opcional": [
+        "one"
+      ],
+      "registro": "neutro",
+      "variacao_de": "f-95f423",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2881068,
+        "en_autor": "CK",
+        "pt_id": 5141051,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-957adf",
+      "quem": "voce",
+      "contexto": "f-f1c1de",
+      "cod": "Hmm, I don't know. Do you like it?",
+      "dica": "Hum, não sei. Você gosta?",
+      "img": "🤷❓",
+      "alvo": "Do you like it",
+      "alvo_pt": "Você gosta",
+      "conceito": "I don't know = não sei.",
+      "var": [
+        {
+          "em": "Hmm",
+          "aceita": [
+            "Hm",
+            "Hum"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "variacao_de": "f-aeb612",
+      "origem": "autoral_ia"
+    }
+  ]
+}

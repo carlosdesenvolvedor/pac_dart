@@ -1,0 +1,225 @@
+{
+  "id": "dev-planning-retro.qual-e-o-trade-off",
+  "trilha": "dev-planning-retro",
+  "nome": "Qual é o trade-off?",
+  "emoji": "⚖️",
+  "cena": "A Sarah quer tudo pronto para sexta, e você mostra o que dá para entregar se o escopo diminuir.",
+  "resumo": "Negociar escopo com condicionais: trade-off, cut the scope, ship e nice-to-have.",
+  "fechamento": false,
+  "novos": [
+    "trade-off",
+    "cut the scope",
+    "ship",
+    "nice-to-have"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Menos escopo, entrega mais cedo"
+    },
+    {
+      "t": "p",
+      "c": "Para propor, use a segunda condicional: **If we cut the scope, we could ship on Friday.** O se + imperfeito do subjuntivo do PT vira passado simples em inglês."
+    },
+    {
+      "t": "warn",
+      "c": "Se a gente cortasse = If we cut (não: If we would cut). O would/could fica só na outra parte da frase."
+    },
+    {
+      "t": "tip",
+      "c": "must-have = o que não pode faltar; nice-to-have = um extra, que pode ir para a próxima sprint."
+    },
+    {
+      "t": "ex",
+      "c": "What's the trade-off here?\nQual é o trade-off aqui?"
+    }
+  ],
+  "imagem": "⚖️✂️📦",
+  "visualizacao": "Quinta à tarde. A Sarah compartilha a lista de features e pede tudo para sexta. Você olha a lista, respira fundo e começa a riscar o que é só extra.",
+  "foto_busca": "product manager whiteboard priorities",
+  "trechos": [
+    {
+      "id": "f-449f58",
+      "quem": "voce",
+      "cod": "What's the trade-off here?",
+      "dica": "Qual é o trade-off aqui?",
+      "img": "⚖️❓",
+      "alvo": "trade-off",
+      "alvo_pt": "trade-off",
+      "conceito": "trade-off: o que se ganha e o que se perde numa escolha. O dev brasileiro usa o termo em inglês.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ff0c29",
+      "quem": "mike",
+      "contexto": "f-449f58",
+      "cod": "The trade-off is fewer tests and more risk.",
+      "dica": "O trade-off é menos testes e mais risco.",
+      "img": "🧪⚠️",
+      "alvo": "trade-off",
+      "alvo_pt": "trade-off",
+      "conceito": "fewer com contável (tests); less com incontável (time).",
+      "registro": "neutro",
+      "armadilhas": [
+        "less"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f0fd7c",
+      "quem": "voce",
+      "cod": "If we cut the scope, we could finish on Friday.",
+      "dica": "Se a gente cortasse o escopo, daria para terminar na sexta.",
+      "img": "✂️📅",
+      "alvo": "cut the scope",
+      "alvo_pt": "cortasse o escopo",
+      "conceito": "Se a gente cortasse = If we cut (passado simples), não If we would cut. on Friday: on com dia.",
+      "registro": "informal",
+      "interferencias": [
+        "BR57",
+        "BR17"
+      ],
+      "armadilhas": [
+        "would",
+        "escope",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-82e9f5",
+      "quem": "sarah",
+      "contexto": "f-f0fd7c",
+      "cod": "We've already cut the scope twice this month.",
+      "dica": "A gente já cortou o escopo duas vezes este mês.",
+      "img": "✂️✌️",
+      "alvo": "cut the scope",
+      "alvo_pt": "cortou o escopo",
+      "conceito": "this month ainda não acabou: present perfect (we've cut). Na sprint passada: we cut.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "escope"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-12bd9c",
+      "quem": "voce",
+      "cod": "Dark mode is just a nice-to-have, so let's move it to the next sprint.",
+      "dica": "O modo escuro é só um extra, então vamos passar para a próxima sprint.",
+      "img": "🌙➡️",
+      "alvo": "nice-to-have",
+      "alvo_pt": "um extra",
+      "conceito": "nice-to-have = um extra, desejável mas não essencial. O it é obrigatório: move it.",
+      "var": [
+        {
+          "em": "move",
+          "aceita": [
+            "push"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6657b3",
+      "quem": "sarah",
+      "contexto": "f-12bd9c",
+      "cod": "Login is a must-have, but the animations are just a nice-to-have.",
+      "dica": "O login é um must-have, mas as animações são só um extra.",
+      "img": "🔐✨",
+      "alvo": "nice-to-have",
+      "alvo_pt": "um extra",
+      "conceito": "must-have = o que não pode faltar. Login sem artigo: nome de feature em geral.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        4
+      ]
+    },
+    {
+      "id": "f-3df5d3",
+      "quem": "mike",
+      "cod": "If we ship the main flow first, we get feedback sooner.",
+      "dica": "Se a gente entregar o fluxo principal primeiro, recebe feedback mais cedo.",
+      "img": "🚢💬",
+      "alvo": "ship",
+      "alvo_pt": "entregar",
+      "conceito": "ship = entregar para o usuário. If + presente para o futuro (não: If we will ship).",
+      "var": [
+        {
+          "em": "we get",
+          "aceita": [
+            "we'll get"
+          ]
+        },
+        {
+          "em": "sooner",
+          "aceita": [
+            "earlier"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        7
+      ]
+    },
+    {
+      "id": "f-fc017b",
+      "quem": "sarah",
+      "contexto": "f-3df5d3",
+      "cod": "Fine. Let's ship the main flow on Friday and open a follow-up ticket.",
+      "dica": "Tá bom. Vamos entregar o fluxo principal na sexta e abrir um ticket de follow-up.",
+      "img": "📦🎫",
+      "alvo": "ship",
+      "alvo_pt": "entregar",
+      "conceito": "follow-up ticket = tarefa aberta para depois, com o que ficou fora do escopo.",
+      "var": [
+        {
+          "em": "Fine",
+          "aceita": [
+            "OK",
+            "Okay",
+            "Alright",
+            "All right"
+          ]
+        },
+        {
+          "em": "open",
+          "aceita": [
+            "create"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

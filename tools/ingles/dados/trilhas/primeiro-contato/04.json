@@ -1,0 +1,197 @@
+{
+  "id": "primeiro-contato.nao-entendi-pode-repetir",
+  "trilha": "primeiro-contato",
+  "nome": "Não entendi. Pode repetir?",
+  "emoji": "🔁",
+  "cena": "Na chamada, o Mike e a Sarah falam rápido: você pede para repetir, para falar mais devagar e confirma que entendeu.",
+  "resumo": "Controlar a conversa: I didn't catch that. / Can you repeat that, please? / More slowly, please. / Got it.",
+  "fechamento": false,
+  "novos": [
+    "Sorry, I didn't catch that.",
+    "Can you repeat that, please?",
+    "More slowly, please.",
+    "Got it."
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Não peguei. Pode repetir?"
+    },
+    {
+      "t": "p",
+      "c": "Não ouviu ou não pegou o que a pessoa disse? Sorry, I didn't catch that. Para pedir de novo, Can you repeat that, please? (repeat pede o that)."
+    },
+    {
+      "t": "ex",
+      "c": "More slowly, please.\nMais devagar, por favor."
+    },
+    {
+      "t": "tip",
+      "c": "Got it. = Entendi. Com ponto de interrogação, Got it? = Entendeu?"
+    },
+    {
+      "t": "warn",
+      "c": "I don't understand é não entender o assunto. Para a frase que você não pegou, use I didn't catch that."
+    }
+  ],
+  "imagem": "🎧💬🐢",
+  "visualizacao": "Você está de fone, olhando a tela. O Mike fala rápido, a conexão engasga e as palavras se misturam. Você respira fundo e pede para ele repetir.",
+  "foto_busca": "man headset video call listening",
+  "trechos": [
+    {
+      "id": "f-265f59",
+      "quem": "voce",
+      "cod": "Sorry, I didn't catch that.",
+      "dica": "Desculpa, não peguei.",
+      "img": "👂❓",
+      "alvo": "I didn't catch that",
+      "alvo_pt": "não peguei",
+      "lit": "[lit.: eu não peguei isso]",
+      "conceito": "Não peguei o que você disse. I don't understand = não entendo o assunto.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "understand",
+        "don't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-16b51e",
+      "quem": "voce",
+      "cod": "Can you repeat that, please?",
+      "dica": "Você pode repetir, por favor?",
+      "img": "🔁🙏",
+      "alvo": "Can you repeat that, please",
+      "alvo_pt": "Você pode repetir, por favor",
+      "lit": "[lit.: você pode repetir isso, por favor?]",
+      "conceito": "Em inglês, repeat pede um objeto: repeat that.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5942603,
+        "en_autor": "nicholas_martin",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "the question → that; + please; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-45c18f",
+      "quem": "voce",
+      "cod": "More slowly, please.",
+      "dica": "Mais devagar, por favor.",
+      "img": "🐢🗣️",
+      "alvo": "More slowly, please",
+      "alvo_pt": "Mais devagar, por favor",
+      "conceito": "slowly = devagar. Aqui, fórmula pronta, sem verbo.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3259252,
+        "en_autor": "CK",
+        "pt_id": 405384,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "sem Speak (o imperativo abre na trilha 8); no PT, sem Fale",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-098e80",
+      "quem": "mike",
+      "cod": "Got it?",
+      "dica": "Entendeu?",
+      "img": "🤔❓",
+      "alvo": "Got it",
+      "alvo_pt": "Entendeu",
+      "lit": "[lit.: pegou?]",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5eefec",
+      "quem": "voce",
+      "contexto": "f-098e80",
+      "cod": "Got it. Thanks, Mike!",
+      "dica": "Entendi. Obrigado, Mike!",
+      "pt_f": "Entendi. Obrigada, Mike!",
+      "img": "💡👍",
+      "alvo": "Got it",
+      "alvo_pt": "Entendi",
+      "conceito": "Got it. = Entendi, peguei a ideia.",
+      "var": [
+        {
+          "em": "Thanks",
+          "aceita": [
+            "Thank you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a2c597",
+      "quem": "voce",
+      "cod": "I'm sorry, I didn't catch that.",
+      "dica": "(para a Sarah) Me desculpa, não peguei.",
+      "img": "🎧❓",
+      "alvo": "I didn't catch that",
+      "alvo_pt": "não peguei",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "understand"
+      ],
+      "variacao_de": "f-265f59",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2361911,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "hear you → catch that; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-236e60",
+      "quem": "voce",
+      "cod": "Sarah, can you repeat that, please?",
+      "dica": "Sarah, você pode repetir, por favor?",
+      "img": "👩‍💼🔁",
+      "alvo": "can you repeat that, please",
+      "alvo_pt": "você pode repetir, por favor",
+      "registro": "neutro",
+      "variacao_de": "f-16b51e",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1798ef",
+      "quem": "voce",
+      "cod": "One more time, more slowly, please.",
+      "dica": "Mais uma vez, mais devagar, por favor.",
+      "img": "☝️🐌",
+      "alvo": "more slowly, please",
+      "alvo_pt": "mais devagar, por favor",
+      "conceito": "One more time = mais uma vez.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

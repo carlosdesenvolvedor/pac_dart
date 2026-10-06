@@ -1,0 +1,210 @@
+{
+  "id": "relativas-3.os-arquivos-guardados-no-servidor",
+  "trilha": "relativas-3",
+  "nome": "Os arquivos guardados no servidor",
+  "emoji": "🗄️",
+  "cena": "No escritório de Austin, você explica a arquitetura do app para um dev que acabou de entrar no time.",
+  "resumo": "Encurtar a relativa com -ing (sentido ativo) e com particípio (sentido passivo): requests coming from..., the endpoint used by...",
+  "fechamento": false,
+  "novos": [
+    "gateway",
+    "sitting next to",
+    "HTTP request",
+    "endpoint"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Relativa encurtada"
+    },
+    {
+      "t": "p",
+      "c": "Dá para tirar **that + be**: requests (that are) **coming** from the app; the endpoint (that is) **used** by the app. **-ing** = a coisa faz; **particípio** = a coisa sofre a ação."
+    },
+    {
+      "t": "warn",
+      "c": "Sentado ao lado = sitting next to (não: sat next to). Vindas de = coming from (não: that come of)."
+    },
+    {
+      "t": "ex",
+      "c": "Requests coming from the app go through the API gateway.\nAs requisições vindas do app passam pelo API gateway."
+    }
+  ],
+  "imagem": "🏢🧑‍💻🔀",
+  "visualizacao": "Escritório de Austin, fim de manhã. Você e o dev novo estão na frente de um monitor grande com o diagrama do app; ao fundo, gente conversando e a máquina de café chiando.",
+  "foto_busca": "developers office monitor architecture diagram",
+  "trechos": [
+    {
+      "id": "f-488a96",
+      "quem": "voce",
+      "cod": "Requests coming from the app go through the API gateway.",
+      "dica": "As requisições vindas do app passam pelo API gateway.",
+      "img": "📱➡️🚪",
+      "alvo": "gateway",
+      "alvo_pt": "gateway",
+      "conceito": "coming from = vindas de (sentido ativo: as requisições vêm).",
+      "registro": "neutro",
+      "armadilhas": [
+        "come",
+        "that come of"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1d2fde",
+      "quem": "dev-novo",
+      "cod": "Is the gateway the only service exposed to the internet?",
+      "dica": "O gateway é o único serviço exposto à internet?",
+      "img": "🚪🌐❓",
+      "alvo": "gateway",
+      "alvo_pt": "gateway",
+      "conceito": "exposed to = exposto a (particípio: o serviço é exposto).",
+      "registro": "neutro",
+      "armadilhas": [
+        "exposing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-634b19",
+      "quem": "voce",
+      "cod": "Every HTTP request sent to the gateway is logged.",
+      "dica": "Toda requisição HTTP enviada ao gateway é logada.",
+      "img": "📨📝",
+      "alvo": "HTTP request",
+      "alvo_pt": "requisição HTTP",
+      "conceito": "sent to = enviada a (particípio, sentido passivo).",
+      "registro": "neutro",
+      "armadilhas": [
+        "sending",
+        "requests"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e5e741",
+      "quem": "voce",
+      "cod": "HTTP requests taking more than two seconds trigger an alert.",
+      "dica": "Requisições HTTP demorando mais de dois segundos disparam um alerta.",
+      "img": "🐢⏱️🚨",
+      "alvo": "HTTP requests",
+      "alvo_pt": "Requisições HTTP",
+      "conceito": "taking = demorando, que levam (sentido ativo, relativa encurtada com -ing).",
+      "var": [
+        {
+          "em": "taking",
+          "aceita": [
+            "that take"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "taken",
+        "triggers"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-abc2c2",
+      "quem": "voce",
+      "cod": "The endpoint used by the mobile app has become a bottleneck.",
+      "dica": "O endpoint usado pelo app mobile virou um gargalo.",
+      "img": "🔌🚧",
+      "alvo": "endpoint",
+      "alvo_pt": "endpoint",
+      "conceito": "used by = usado por (particípio, sentido passivo).",
+      "var": [
+        {
+          "em": "has become",
+          "aceita": [
+            "became"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "using"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-685362",
+      "quem": "dev-novo",
+      "cod": "Are the endpoints listed in the docs still up to date?",
+      "dica": "Os endpoints listados na documentação ainda estão atualizados?",
+      "img": "📋🔌❓",
+      "alvo": "endpoints",
+      "alvo_pt": "endpoints",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "listing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8ee6c5",
+      "quem": "dev-novo",
+      "cod": "Who's the guy sitting next to Sarah?",
+      "dica": "Quem é o cara sentado ao lado da Sarah?",
+      "img": "🪑👀",
+      "alvo": "sitting next to",
+      "alvo_pt": "sentado ao lado",
+      "conceito": "sentado ao lado = sitting next to (não: sat next to).",
+      "registro": "informal",
+      "armadilhas": [
+        "sat",
+        "seated"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-595558",
+      "quem": "voce",
+      "cod": "The woman sitting next to me on the plane was a developer too.",
+      "dica": "A mulher sentada ao meu lado no avião também era desenvolvedora.",
+      "img": "✈️💺👩‍💻",
+      "alvo": "sitting next to",
+      "alvo_pt": "sentada ao meu lado",
+      "var": [
+        {
+          "em": "was a developer too",
+          "aceita": [
+            "was also a developer"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "sat",
+        "seated"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6228435,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'was very talkative' → 'was a developer too'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

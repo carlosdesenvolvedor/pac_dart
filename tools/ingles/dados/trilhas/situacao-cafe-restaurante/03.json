@@ -1,0 +1,192 @@
+{
+  "id": "situacao-cafe-restaurante.sem-cebola-alergias",
+  "trilha": "situacao-cafe-restaurante",
+  "nome": "Sem cebola: alergias",
+  "emoji": "🥜",
+  "cena": "Ainda no jantar com o time: a Ana avisa da alergia e cada um pede ajustes no prato.",
+  "resumo": "Avisar uma alergia e pedir um prato sem algum ingrediente.",
+  "fechamento": false,
+  "novos": [
+    "I'm allergic to...",
+    "allergic",
+    "peanuts",
+    "without"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Alergia e sem"
+    },
+    {
+      "t": "p",
+      "c": "Alérgico **a** = allergic **to**. Sem = **without**."
+    },
+    {
+      "t": "ex",
+      "c": "I'm allergic to peanuts.\nSou alérgico a amendoim."
+    },
+    {
+      "t": "warn",
+      "c": "O objeto não some: Can I have **it** without peanuts?"
+    }
+  ],
+  "imagem": "🥜🚫🥗",
+  "visualizacao": "Ainda à mesa, você vê o garçom anotando os pedidos. A Ana olha a salada com cuidado: amendoim e cebola picada por cima.",
+  "foto_busca": "restaurant waiter taking order",
+  "trechos": [
+    {
+      "id": "f-1bf1ae",
+      "quem": "ana",
+      "cod": "I'm allergic to peanuts.",
+      "dica": "Sou alérgica a amendoim.",
+      "img": "🥜🚫",
+      "alvo": "I'm allergic to",
+      "alvo_pt": "Sou alérgica a",
+      "conceito": "Alérgico a = allergic to (não: of, with).",
+      "registro": "neutro",
+      "armadilhas": [
+        "of",
+        "with"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2547791,
+        "en_autor": "CK",
+        "pt_id": 5370827,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm allergic to cats.\"; PT original: \"Eu sou alérgico a gatos.\"; cats → peanuts; PT: gatos → amendoim, no feminino (Ana)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d928db",
+      "quem": "mike",
+      "contexto": "f-1bf1ae",
+      "cod": "Really? I'm allergic to fish.",
+      "dica": "Sério? Sou alérgico a peixe.",
+      "img": "😮🐟🚫",
+      "alvo": "I'm allergic to",
+      "alvo_pt": "Sou alérgico a",
+      "registro": "informal",
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2547790,
+        "en_autor": "CK",
+        "pt_id": 3705322,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm allergic to dogs.\"; PT original: \"Sou alérgico a cães.\"; dogs → fish, acrescentado Really?; PT: cães → peixe, + Sério?",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2c0af2",
+      "quem": "voce",
+      "cod": "Ana, the salad has peanuts!",
+      "dica": "Ana, a salada tem amendoim!",
+      "img": "🥗🥜❗",
+      "alvo": "peanuts",
+      "alvo_pt": "amendoim",
+      "conceito": "Amendoim, no geral, vai no plural: peanuts.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f7775f",
+      "quem": "ana",
+      "contexto": "f-2c0af2",
+      "cod": "Can I have it without peanuts?",
+      "dica": "Pode me trazer sem amendoim?",
+      "img": "🥗➖🥜",
+      "alvo": "without",
+      "alvo_pt": "sem",
+      "lit": "[lit.: posso tê-la sem amendoim?]",
+      "conceito": "O objeto não some: Can I have it without...?",
+      "var": [
+        {
+          "em": "Can I have",
+          "aceita": [
+            "Can I get"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7e9307",
+      "quem": "atendente",
+      "contexto": "f-f7775f",
+      "cod": "Sure. Are you allergic?",
+      "dica": "Claro. Você é alérgica?",
+      "img": "🤔🥜",
+      "alvo": "allergic",
+      "alvo_pt": "alérgica",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-86dce0",
+      "quem": "ana",
+      "contexto": "f-7e9307",
+      "cod": "Yes, I'm very allergic.",
+      "dica": "Sim, sou muito alérgica.",
+      "img": "⚠️🥜",
+      "alvo": "allergic",
+      "alvo_pt": "alérgica",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3ef1ca",
+      "quem": "atendente",
+      "cod": "OK, one salad without peanuts.",
+      "dica": "Tá bom, uma salada sem amendoim.",
+      "img": "📝🥗",
+      "alvo": "peanuts",
+      "alvo_pt": "amendoim",
+      "var": [
+        {
+          "em": "one salad",
+          "aceita": [
+            "a salad"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1e7fae",
+      "quem": "voce",
+      "cod": "Can I have the steak without onions?",
+      "dica": "Pode me trazer o bife sem cebola?",
+      "img": "🥩🧅🚫",
+      "alvo": "without",
+      "alvo_pt": "sem",
+      "var": [
+        {
+          "em": "Can I have",
+          "aceita": [
+            "Can I get"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

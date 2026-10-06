@@ -1,0 +1,206 @@
+{
+  "id": "situacao-cafe-restaurante.no-cafe-eu-queria",
+  "trilha": "situacao-cafe-restaurante",
+  "nome": "No café: eu queria...",
+  "emoji": "☕",
+  "cena": "No café perto do hotel em Chicago, antes da reunião, você, o Mike e a Ana pedem no balcão.",
+  "resumo": "Pedir no balcão com I'd like..., escolher o tamanho e dizer se é pra viagem.",
+  "fechamento": false,
+  "novos": [
+    "muffin",
+    "to go",
+    "small",
+    "That's all, thanks."
+  ],
+  "apoio": [
+    "I'd like..."
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "No balcão do café"
+    },
+    {
+      "t": "p",
+      "c": "**I'd like...** = eu queria (mais educado que *I want*). Pra viagem = **to go**."
+    },
+    {
+      "t": "ex",
+      "c": "I'd like a small coffee, please.\nEu queria um café pequeno, por favor."
+    },
+    {
+      "t": "tip",
+      "c": "*For here or to go?* = Pra tomar aqui ou pra viagem?"
+    },
+    {
+      "t": "warn",
+      "c": "Do Mike = **Mike's**: Is this Mike's muffin? (não: the muffin of Mike)."
+    }
+  ],
+  "imagem": "☕🧁🧾",
+  "visualizacao": "Você está no balcão de um café em Chicago. Cheiro de café, fila andando, a atendente sorri e espera o seu pedido.",
+  "foto_busca": "coffee shop counter barista",
+  "trechos": [
+    {
+      "id": "f-d9775a",
+      "quem": "voce",
+      "cod": "I'd like a small coffee, please.",
+      "dica": "Eu queria um café pequeno, por favor.",
+      "img": "☕🤏",
+      "alvo": "small",
+      "alvo_pt": "pequeno",
+      "conceito": "I'd like = eu queria. O adjetivo vem antes: a small coffee.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2019168,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'd like a glass of red wine, please.\"; PT original: \"Eu gostaria de uma taça de vinho tinto, por favor.\"; a glass of red wine → a small coffee; PT reescrito (I'd like = eu queria)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b4c0a5",
+      "quem": "atendente",
+      "contexto": "f-d9775a",
+      "cod": "For here or to go?",
+      "dica": "Pra tomar aqui ou pra viagem?",
+      "img": "🪑🥤❓",
+      "alvo": "to go",
+      "alvo_pt": "pra viagem",
+      "conceito": "to go = pra viagem (EUA); for here = pra consumir aqui.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4f69f0",
+      "quem": "voce",
+      "contexto": "f-b4c0a5",
+      "cod": "To go, please.",
+      "dica": "Pra viagem, por favor.",
+      "img": "🥤🚶",
+      "alvo": "To go",
+      "alvo_pt": "Pra viagem",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9f39a5",
+      "quem": "voce",
+      "contexto": "Anything else?",
+      "cod": "No, that's all, thanks.",
+      "dica": "Não, é só isso, obrigado.",
+      "pt_f": "Não, é só isso, obrigada.",
+      "img": "✋🙂",
+      "alvo": "that's all, thanks",
+      "alvo_pt": "é só isso, obrigado",
+      "lit": "[lit.: isso é tudo, obrigado]",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-755288",
+      "quem": "mike",
+      "cod": "I'd like a muffin, please.",
+      "dica": "Eu queria um muffin, por favor.",
+      "img": "🧁🙏",
+      "alvo": "muffin",
+      "alvo_pt": "muffin",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5288666,
+        "en_autor": "mailohilohi",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'd like one ticket, please.\"; PT original: \"Um ingresso, por favor.\"; one ticket → a muffin; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8e6885",
+      "quem": "mike",
+      "contexto": "Anything else?",
+      "cod": "That's all, thanks. How much is it?",
+      "dica": "É só isso, obrigado. Quanto custa?",
+      "img": "🧾💵",
+      "alvo": "That's all, thanks",
+      "alvo_pt": "É só isso, obrigado",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9c4e38",
+      "quem": "ana",
+      "cod": "Two small coffees, please.",
+      "dica": "Dois cafés pequenos, por favor.",
+      "img": "☕☕",
+      "alvo": "small",
+      "alvo_pt": "pequenos",
+      "conceito": "O adjetivo não vai pro plural: two small coffees.",
+      "registro": "neutro",
+      "armadilhas": [
+        "smalls"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 715671,
+        "en_autor": "CK",
+        "pt_id": 4611721,
+        "pt_autor": "KimiP",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Two coffees, please.\"; PT original: \"Dois cafés, por favor.\"; acrescentado small; PT: + pequenos",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6da83f",
+      "quem": "ana",
+      "cod": "Is this Mike's muffin?",
+      "dica": "Esse muffin é do Mike?",
+      "img": "🧁👨❓",
+      "alvo": "muffin",
+      "alvo_pt": "muffin",
+      "lit": "[lit.: esse é o muffin do Mike?]",
+      "conceito": "do Mike = Mike's (genitivo 's).",
+      "var": [
+        {
+          "em": "this Mike's muffin",
+          "aceita": [
+            "this muffin Mike's"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1027418,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Is this Tom's bag?\"; PT original: \"Esta é a bolsa de Tom?\"; Tom's bag → Mike's muffin; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

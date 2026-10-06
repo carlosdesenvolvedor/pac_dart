@@ -1,0 +1,235 @@
+{
+  "id": "situacao-carro-estrada.o-carro-deu-problema",
+  "trilha": "situacao-carro-estrada",
+  "nome": "O carro deu problema",
+  "emoji": "🛞",
+  "cena": "Na volta para Austin, um pneu fura na rodovia e a luz do motor acende; você pede socorro e depois conta o que aconteceu.",
+  "resumo": "Pedir socorro na estrada e contar depois o que aconteceu.",
+  "fechamento": false,
+  "novos": [
+    "tow truck (guincho)",
+    "engine light",
+    "roadside assistance"
+  ],
+  "apoio": [
+    "flat tire (pneu furado)",
+    "insurance"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Socorro na estrada"
+    },
+    {
+      "t": "p",
+      "c": "**roadside assistance** = assistência na estrada; **tow truck** = guincho; **engine light** = luz do motor no painel."
+    },
+    {
+      "t": "warn",
+      "c": "Fazia duas horas que a gente estava esperando = we'd been waiting for two hours (não: we were waiting since two hours)."
+    },
+    {
+      "t": "tip",
+      "c": "Mandei verificar o carro = I had the car checked (have + objeto + particípio)."
+    }
+  ],
+  "imagem": "🚨🚗🚛",
+  "visualizacao": "Acostamento da rodovia, pisca-alerta ligado. A Sarah olha o pneu murcho, a luz laranja do motor brilha no painel e você liga para a assistência.",
+  "foto_busca": "flat tire highway roadside car",
+  "trechos": [
+    {
+      "id": "f-a31347",
+      "quem": "voce",
+      "cod": "I think we have a flat tire.",
+      "dica": "Acho que a gente está com um pneu furado.",
+      "img": "🚗💨",
+      "alvo": "flat tire",
+      "alvo_pt": "pneu furado",
+      "conceito": "estar com um pneu furado = have a flat tire.",
+      "registro": "informal",
+      "armadilhas": [
+        "are with",
+        "furated"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10130961,
+        "en_autor": "shekitten",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: You have → I think we have (original: \"You have a flat tire.\"); PT reescrito (original: \"Você tem um pneu vazio.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b6e0fc",
+      "quem": "sarah",
+      "contexto": "f-a31347",
+      "cod": "And did the engine light just come on?",
+      "dica": "E a luz do motor acabou de acender?",
+      "img": "🟠💡",
+      "alvo": "engine light",
+      "alvo_pt": "luz do motor",
+      "conceito": "acender (luz do painel) = come on. acabou de = just, com o passado em en-US.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "came on",
+        "turn on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4b4898",
+      "quem": "voce",
+      "cod": "Hi, is this roadside assistance? Our car broke down on the highway.",
+      "dica": "Oi, é da assistência na estrada? O nosso carro quebrou na rodovia.",
+      "img": "📞🚨",
+      "alvo": "roadside assistance",
+      "alvo_pt": "assistência na estrada",
+      "conceito": "Ao telefone: is this...? = é da...? quebrar (carro) = break down.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "broke on",
+        "is here"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-48bddb",
+      "quem": "atendente",
+      "contexto": "f-4b4898",
+      "cod": "We'll send a tow truck as soon as possible.",
+      "dica": "Vamos mandar um guincho o mais rápido possível.",
+      "img": "🚛⏩",
+      "alvo": "tow truck",
+      "alvo_pt": "guincho",
+      "conceito": "tow truck = guincho (o caminhão); tow = guinchar.",
+      "registro": "neutro",
+      "armadilhas": [
+        "guincho",
+        "the most fast"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-661af6",
+      "quem": "voce",
+      "contexto": "f-48bddb",
+      "cod": "Will my insurance cover this?",
+      "dica": "O meu seguro vai cobrir isso?",
+      "img": "🛡️❓",
+      "alvo": "insurance",
+      "alvo_pt": "seguro",
+      "conceito": "cobrir (seguro) = cover.",
+      "registro": "neutro",
+      "armadilhas": [
+        "assurance"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6577482,
+        "en_autor": "Eccles17",
+        "pt_id": 11106274,
+        "pt_autor": "MrJuice",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-577cc7",
+      "quem": "atendente",
+      "contexto": "f-661af6",
+      "cod": "Yes, roadside assistance is included with your rental.",
+      "dica": "Sim, a assistência na estrada está incluída no seu aluguel.",
+      "img": "✅🚗",
+      "alvo": "roadside assistance",
+      "alvo_pt": "assistência na estrada",
+      "conceito": "Serviço em geral, sem artigo: roadside assistance is included.",
+      "var": [
+        {
+          "em": "with",
+          "aceita": [
+            "in"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the roadside",
+        "rent"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-834880",
+      "quem": "voce",
+      "cod": "By the time the tow truck arrived, we'd been waiting for two hours.",
+      "dica": "Quando o guincho chegou, fazia duas horas que a gente estava esperando.",
+      "img": "⏳🚛",
+      "alvo": "tow truck",
+      "alvo_pt": "guincho",
+      "conceito": "Fazia duas horas que a gente estava esperando = we'd (had) been waiting for two hours.",
+      "var": [
+        {
+          "em": "By the time",
+          "aceita": [
+            "When"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR47",
+        "BR63"
+      ],
+      "armadilhas": [
+        "were waiting",
+        "since two hours",
+        "during two hours"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-96409d",
+      "quem": "voce",
+      "cod": "The engine light came on, so I had the car checked.",
+      "dica": "A luz do motor acendeu, então eu mandei verificar o carro.",
+      "img": "🔧🚗",
+      "alvo": "engine light",
+      "alvo_pt": "luz do motor",
+      "conceito": "Mandei verificar = I had the car checked (have + objeto + particípio).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "checked the car",
+        "made check",
+        "turned on"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

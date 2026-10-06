@@ -1,0 +1,237 @@
+{
+  "id": "rotina-dias-horarios.fim-de-semana-e-frequencia",
+  "trilha": "rotina-dias-horarios",
+  "nome": "Fim de semana e frequência",
+  "emoji": "🗓️",
+  "cena": "Sexta à tarde no escritório, você e a Ana falam do fim de semana de cada um.",
+  "resumo": "Falar do fim de semana e de frequência: on the weekend, once a week, never, often.",
+  "fechamento": false,
+  "novos": [
+    "on the weekend",
+    "once a week / twice a week",
+    "never / often",
+    "Saturday, Sunday"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fim de semana e frequência"
+    },
+    {
+      "t": "p",
+      "c": "No inglês americano, no fim de semana = **on the weekend**. **never** (nunca) e **often** (com frequência) vão antes do verbo; **once a week** e **twice a week** vão no fim."
+    },
+    {
+      "t": "ex",
+      "c": "Ana goes to the gym twice a week.\nA Ana vai à academia duas vezes por semana."
+    },
+    {
+      "t": "warn",
+      "c": "Não: I go never. / I don't never go. **never** já é negativo e vem antes do verbo: I never go."
+    },
+    {
+      "t": "tip",
+      "c": "at the weekend é britânico: aqui, sempre on the weekend."
+    }
+  ],
+  "imagem": "🛋️🍳🏋️",
+  "visualizacao": "Sexta à tarde, o escritório esvaziando. Você e a Ana fecham os notebooks e falam do fim de semana: academia, cozinha e descanso.",
+  "foto_busca": "friday afternoon office chat",
+  "trechos": [
+    {
+      "id": "f-43fcb5",
+      "quem": "voce",
+      "cod": "What do you usually do on the weekend?",
+      "dica": "O que você normalmente faz no fim de semana?",
+      "img": "🛋️❓",
+      "alvo": "on the weekend",
+      "alvo_pt": "no fim de semana",
+      "conceito": "no fim de semana = on the weekend (inglês americano).",
+      "registro": "informal",
+      "interferencias": [
+        "BR17",
+        "BR06"
+      ],
+      "armadilhas": [
+        "in the weekend",
+        "at the weekend"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3738447,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "on weekends → on the weekend (alvo da lição); PT autoral",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ffbfee",
+      "quem": "ana",
+      "contexto": "f-43fcb5",
+      "cod": "Well, I never get up early on the weekend.",
+      "dica": "Bom, eu nunca levanto cedo no fim de semana.",
+      "img": "😴🛏️",
+      "alvo": "never",
+      "alvo_pt": "nunca",
+      "conceito": "never vem antes do verbo: I never get up.",
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "armadilhas": [
+        "i get up never",
+        "i don't never"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c601e",
+      "quem": "ana",
+      "cod": "I go to the gym on Saturdays and Sundays.",
+      "dica": "Eu vou à academia aos sábados e domingos.",
+      "img": "🏋️‍♀️🗓️",
+      "alvo": "Saturdays and Sundays",
+      "alvo_pt": "sábados e domingos",
+      "conceito": "Saturday e Sunday também têm maiúscula.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in saturdays"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fea761",
+      "quem": "voce",
+      "contexto": "f-4c601e",
+      "cod": "Mike goes once a week, on Fridays.",
+      "dica": "O Mike vai uma vez por semana, às sextas.",
+      "img": "👨‍💼🏋️",
+      "alvo": "once a week",
+      "alvo_pt": "uma vez por semana",
+      "conceito": "uma vez por semana = once a week (sem per nem for).",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "one time per week",
+        "one time for week"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d1ed0e",
+      "quem": "ana",
+      "cod": "I call my mom twice a week.",
+      "dica": "Eu ligo pra minha mãe duas vezes por semana.",
+      "img": "📞👩‍🦳",
+      "alvo": "twice a week",
+      "alvo_pt": "duas vezes por semana",
+      "conceito": "duas vezes = twice; ligar para alguém = call (sem to).",
+      "var": [
+        {
+          "em": "mom",
+          "aceita": [
+            "mother"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "two times",
+        "call to my"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-98396c",
+      "quem": "ana",
+      "cod": "Mike often works late at the office.",
+      "dica": "O Mike trabalha até tarde no escritório com frequência.",
+      "img": "🌙💻",
+      "alvo": "often",
+      "alvo_pt": "com frequência",
+      "conceito": "often vai antes do verbo, mesmo que \"com frequência\" fique no fim em português.",
+      "var": [
+        {
+          "em": "at the office",
+          "aceita": [
+            "in the office"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "armadilhas": [
+        "works often",
+        "works late often"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5902893,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I → Mike (work → works) e + at the office; PT autoral",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ef881b",
+      "quem": "voce",
+      "cod": "Do you often cook on Sundays?",
+      "dica": "Você cozinha com frequência aos domingos?",
+      "img": "🍳❓",
+      "alvo": "Sundays",
+      "alvo_pt": "domingos",
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR19"
+      ],
+      "armadilhas": [
+        "you cook often",
+        "in sundays"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b3fd16",
+      "quem": "ana",
+      "contexto": "f-ef881b",
+      "cod": "No, I usually go out on the weekend.",
+      "dica": "Não, eu normalmente saio no fim de semana.",
+      "img": "🌃🎉",
+      "alvo": "on the weekend",
+      "alvo_pt": "no fim de semana",
+      "conceito": "sair (para se divertir) = go out; usually vem antes do verbo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17",
+        "BR19"
+      ],
+      "armadilhas": [
+        "in the weekend",
+        "at the weekend",
+        "go usually"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

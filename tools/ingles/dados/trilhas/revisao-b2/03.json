@@ -1,0 +1,248 @@
+{
+  "id": "revisao-b2.debate-sobre-prioridades",
+  "trilha": "revisao-b2",
+  "nome": "Debate sobre prioridades",
+  "emoji": "🗳️",
+  "cena": "No planejamento do trimestre, produto e engenharia discutem o que vem primeiro: receita ou dívida técnica.",
+  "resumo": "Pesar prós e contras com On the one hand..., be used to + -ing, keep + -ing e rule out + -ing.",
+  "fechamento": false,
+  "novos": [
+    "revenue",
+    "tech debt",
+    "firefighting",
+    "quick win"
+  ],
+  "apoio": [
+    "on the one hand",
+    "keep + -ing",
+    "rule out",
+    "be used to + -ing",
+    "would it be possible to",
+    "long-term health (saúde a longo prazo)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Debate de prioridades"
+    },
+    {
+      "t": "p",
+      "c": "**revenue** = receita. **tech debt** = dívida técnica. **firefighting** = apagar incêndio, viver resolvendo urgência. **quick win** = ganho rápido, uma melhoria fácil e visível."
+    },
+    {
+      "t": "tip",
+      "c": "Estar acostumado a + verbo = **be used to** + -ing: Our team isn't used to working... (não: used to work)."
+    },
+    {
+      "t": "warn",
+      "c": "Descartar uma opção = **rule out** + -ing (não: discard)."
+    },
+    {
+      "t": "ex",
+      "c": "We've ruled out rewriting everything. Is there a quick win instead?\nA gente já descartou reescrever tudo. Tem algum ganho rápido em vez disso?"
+    }
+  ],
+  "imagem": "⚖️💰🔥",
+  "visualizacao": "Na sala de planejamento, uma balança imaginária: de um lado, as funcionalidades que trazem receita; do outro, os bugs que voltam toda semana. Você ouve os dois lados.",
+  "foto_busca": "team debate meeting table",
+  "trechos": [
+    {
+      "id": "f-755323",
+      "quem": "sarah",
+      "cod": "We have to generate new revenue.",
+      "dica": "A gente tem que gerar receita nova.",
+      "img": "💰📈🎯",
+      "alvo": "revenue",
+      "alvo_pt": "receita",
+      "conceito": "revenue = receita; é incontável: new revenue (não: new revenues).",
+      "registro": "informal",
+      "armadilhas": [
+        "revenues"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5728825,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Temos que gerar novas receitas.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-700da3",
+      "quem": "mike",
+      "cod": "On the one hand, features bring in revenue. On the other, bugs keep coming back.",
+      "dica": "Por um lado, funcionalidades trazem receita. Por outro, os bugs ficam voltando.",
+      "img": "⚖️💵🐞",
+      "alvo": "revenue",
+      "alvo_pt": "receita",
+      "conceito": "bring in revenue = trazer receita. keep + -ing = ficar + gerúndio: bugs keep coming back.",
+      "var": [
+        {
+          "em": "On the other",
+          "aceita": [
+            "On the other hand"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "revenues",
+        "come"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-87d7fb",
+      "quem": "mike",
+      "cod": "We keep firefighting instead of fixing the real problems.",
+      "dica": "A gente fica apagando incêndio em vez de resolver os problemas de verdade.",
+      "img": "🧯🔥🔁",
+      "alvo": "firefighting",
+      "alvo_pt": "apagando incêndio",
+      "conceito": "firefighting = apagar incêndio: só resolver urgências. instead of + -ing = em vez de.",
+      "var": [
+        {
+          "em": "fixing",
+          "aceita": [
+            "solving"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fdf1be",
+      "quem": "voce",
+      "cod": "Our team isn't used to working with this much tech debt.",
+      "dica": "O nosso time não está acostumado a trabalhar com tanta dívida técnica.",
+      "img": "🧱💸😩",
+      "alvo": "tech debt",
+      "alvo_pt": "dívida técnica",
+      "conceito": "be used to + -ing: isn't used to working (não: used to work).",
+      "var": [
+        {
+          "em": "this much",
+          "aceita": [
+            "so much"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR49"
+      ],
+      "armadilhas": [
+        "work"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8326231,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom isn't used to working with others.\" (Tom trocado por Our team; others trocado por this much tech debt); PT reescrito (original: \"Tom não está acostumado a trabalhar com os outros.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-08fa58",
+      "quem": "sarah",
+      "cod": "We've ruled out rewriting everything. Is there a quick win instead?",
+      "dica": "A gente já descartou reescrever tudo. Tem algum ganho rápido em vez disso?",
+      "img": "🚫📝⚡",
+      "alvo": "quick win",
+      "alvo_pt": "ganho rápido",
+      "conceito": "rule out + -ing = descartar uma opção (não: discard).",
+      "var": [
+        {
+          "em": "a quick win",
+          "aceita": [
+            "any quick win"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR60",
+        "BR27"
+      ],
+      "armadilhas": [
+        "discarded"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d56cee",
+      "quem": "voce",
+      "cod": "Tech debt is hurting the long-term health of the app.",
+      "dica": "A dívida técnica está prejudicando a saúde do app a longo prazo.",
+      "img": "🩺📱📉",
+      "alvo": "Tech debt",
+      "alvo_pt": "dívida técnica",
+      "conceito": "Sem artigo no sentido geral: Tech debt is... long-term health = saúde a longo prazo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c75c9",
+      "quem": "voce",
+      "cod": "Would it be possible to fix the login screen first? It's a quick win.",
+      "dica": "Seria possível consertar a tela de login primeiro? É um ganho rápido.",
+      "img": "🔑🖥️⚡",
+      "alvo": "quick win",
+      "alvo_pt": "ganho rápido",
+      "conceito": "O it é obrigatório: It's a quick win (não: Is a quick win).",
+      "blocos": [
+        10
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-779274",
+      "quem": "voce",
+      "cod": "It's hard to plan anything when we spend half the week firefighting.",
+      "dica": "É difícil planejar qualquer coisa quando a gente passa metade da semana apagando incêndio.",
+      "img": "🗓️🔥😓",
+      "alvo": "firefighting",
+      "alvo_pt": "apagando incêndio",
+      "conceito": "spend + tempo + -ing = passar o tempo fazendo algo.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

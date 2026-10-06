@@ -1,0 +1,192 @@
+{
+  "id": "primeiro-contato.prazer-ate-amanha",
+  "trilha": "primeiro-contato",
+  "nome": "Prazer! Até amanhã.",
+  "emoji": "🤝",
+  "cena": "No fim da primeira chamada, a Sarah entra atrasada, você se apresenta e depois se despede do time.",
+  "resumo": "Apresentar-se, responder ao prazer e se despedir: Nice to meet you. / See you tomorrow. / See you later.",
+  "fechamento": false,
+  "novos": [
+    "Nice to meet you.",
+    "See you tomorrow.",
+    "Nice to meet you too.",
+    "See you later."
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Prazer e até logo"
+    },
+    {
+      "t": "p",
+      "c": "Nice to meet you = prazer em conhecer você. A resposta acrescenta too: Nice to meet you too."
+    },
+    {
+      "t": "ex",
+      "c": "See you tomorrow, Mike!\nAté amanhã, Mike!"
+    },
+    {
+      "t": "tip",
+      "c": "See you later = até mais (serve para qualquer despedida). Bye! = tchau. Boa noite, ao se despedir, é Good night."
+    },
+    {
+      "t": "warn",
+      "c": "Conhecer alguém pela primeira vez é meet, não know: Nice to meet you."
+    }
+  ],
+  "imagem": "🤝💻👋",
+  "visualizacao": "A chamada está quase no fim quando a Sarah entra, um pouco ofegante. Você vê o sorriso dela na câmera, diz o seu nome e, no fim, acena para todo mundo.",
+  "foto_busca": "team video call waving goodbye",
+  "trechos": [
+    {
+      "id": "f-9a18d7",
+      "quem": "voce",
+      "contexto": "Hi, I'm Sarah.",
+      "cod": "I'm {nome}. Nice to meet you.",
+      "dica": "Eu sou {nome}. Prazer em conhecer você.",
+      "img": "🙋🤝",
+      "alvo": "Nice to meet you",
+      "alvo_pt": "Prazer em conhecer você",
+      "lit": "[lit.: legal conhecer você]",
+      "conceito": "Conhecer alguém pela primeira vez = meet (não know).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "know"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d5f957",
+      "quem": "sarah",
+      "contexto": "f-9a18d7",
+      "cod": "Nice to meet you too, {nome}.",
+      "dica": "Prazer em conhecer você também, {nome}.",
+      "img": "😊🤝",
+      "alvo": "Nice to meet you too",
+      "alvo_pt": "Prazer em conhecer você também",
+      "conceito": "A resposta ao prazer leva too no fim.",
+      "registro": "neutro",
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f2328f",
+      "quem": "voce",
+      "cod": "See you tomorrow, Mike!",
+      "dica": "Até amanhã, Mike!",
+      "img": "👋📅",
+      "alvo": "See you tomorrow",
+      "alvo_pt": "Até amanhã",
+      "lit": "[lit.: vejo você amanhã]",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 497969,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Mike; PT reescrito (Até amanhã)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7e94d2",
+      "quem": "mike",
+      "contexto": "f-f2328f",
+      "cod": "Bye! See you tomorrow!",
+      "dica": "Tchau! Até amanhã!",
+      "img": "🖐️🗓️",
+      "alvo": "See you tomorrow",
+      "alvo_pt": "Até amanhã",
+      "conceito": "Bye! = tchau.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d9bcef",
+      "quem": "voce",
+      "cod": "Bye, Ana! See you later!",
+      "dica": "Tchau, Ana! Até mais!",
+      "img": "👋⏳",
+      "alvo": "See you later",
+      "alvo_pt": "Até mais",
+      "lit": "[lit.: vejo você mais tarde]",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1841588,
+        "en_autor": "CK",
+        "pt_id": 576736,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Bye, Ana! (no PT, + Tchau, Ana!)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c946a0",
+      "quem": "ana",
+      "contexto": "f-d9bcef",
+      "cod": "See you later, {nome}!",
+      "dica": "Até mais, {nome}!",
+      "img": "👩‍🎨👋",
+      "alvo": "See you later",
+      "alvo_pt": "Até mais",
+      "conceito": "See you later serve para qualquer despedida, mesmo sem hora marcada.",
+      "registro": "informal",
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cbf3d7",
+      "quem": "voce",
+      "cod": "Sarah, nice to meet you!",
+      "dica": "(ao sair) Sarah, prazer em conhecer você!",
+      "img": "🤝😀",
+      "alvo": "nice to meet you",
+      "alvo_pt": "prazer em conhecer você",
+      "conceito": "Na despedida de um primeiro encontro, o americano repete: Nice to meet you!",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2732594,
+        "en_autor": "mackay",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Sarah; PT reescrito (prazer em conhecer você, como no resto do curso)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9bca6a",
+      "quem": "sarah",
+      "contexto": "f-cbf3d7",
+      "cod": "Nice to meet you too. Bye!",
+      "dica": "Prazer em conhecer você também. Tchau!",
+      "img": "🙂🖐️",
+      "alvo": "Nice to meet you too",
+      "alvo_pt": "Prazer em conhecer você também",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

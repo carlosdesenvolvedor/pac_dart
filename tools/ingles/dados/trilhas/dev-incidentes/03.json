@@ -1,0 +1,223 @@
+{
+  "id": "dev-incidentes.revertemos-o-deploy",
+  "trilha": "dev-incidentes",
+  "nome": "Revertemos o deploy",
+  "emoji": "⏪",
+  "cena": "Com o site instável, você e o Mike decidem como estancar o problema antes do pico da noite.",
+  "resumo": "Conter o problema: roll back, hotfix, redeploy, emergency change e until + presente.",
+  "fechamento": false,
+  "novos": [
+    "hotfix",
+    "evening traffic",
+    "redeploy",
+    "emergency change"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Reverter, corrigir, subir de novo"
+    },
+    {
+      "t": "p",
+      "c": "**roll back** = reverter (rolled back no passado); **hotfix** = correção urgente; **redeploy** = refazer o deploy. Depois de until, before e when, o verbo fica no presente."
+    },
+    {
+      "t": "warn",
+      "c": "Revertemos o deploy = we rolled back the deploy (não: we reverted back). Até a gente entender = until we understand (não: until we will understand)."
+    },
+    {
+      "t": "ex",
+      "c": "Let's turn off the feature flag until we understand the problem.\nVamos desligar a feature flag até a gente entender o problema."
+    }
+  ],
+  "imagem": "⏪🩹🚀",
+  "visualizacao": "Você e o Mike estão numa call, cada um com o terminal aberto. No canto da tela, o gráfico de tráfego começa a subir e o relógio corre.",
+  "foto_busca": "two developers video call terminal",
+  "trechos": [
+    {
+      "id": "f-9c0925",
+      "quem": "voce",
+      "cod": "We rolled back the last deploy, but we still need a hotfix.",
+      "dica": "Revertemos o último deploy, mas ainda precisamos de um hotfix.",
+      "img": "⏪🩹",
+      "alvo": "hotfix",
+      "alvo_pt": "hotfix",
+      "conceito": "reverter o deploy = roll back (não: revert back). hotfix = correção urgente.",
+      "var": [
+        {
+          "em": "We rolled back",
+          "aceita": [
+            "We've rolled back"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "reverted"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e9a05e",
+      "quem": "mike",
+      "contexto": "f-9c0925",
+      "cod": "Can we get the hotfix out before the evening traffic starts?",
+      "dica": "Dá pra soltar o hotfix antes de o tráfego da noite começar?",
+      "img": "🩹🌆",
+      "alvo": "evening traffic",
+      "alvo_pt": "tráfego da noite",
+      "conceito": "antes de o tráfego começar = before the traffic starts (presente).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will",
+        "night traffic"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-86bcf3",
+      "quem": "voce",
+      "contexto": "f-e9a05e",
+      "cod": "Probably not. Let's turn off the feature flag until the evening traffic slows down.",
+      "dica": "Provavelmente não. Vamos desligar a feature flag até o tráfego da noite diminuir.",
+      "img": "🚩📴",
+      "alvo": "evening traffic",
+      "alvo_pt": "tráfego da noite",
+      "conceito": "até o tráfego diminuir = until the traffic slows down (presente depois de until).",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will",
+        "slow"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-67115d",
+      "quem": "mike",
+      "cod": "Good idea. I'll write the hotfix while you watch the dashboards.",
+      "dica": "Boa ideia. Eu escrevo o hotfix enquanto você acompanha os dashboards.",
+      "img": "⌨️📊",
+      "alvo": "hotfix",
+      "alvo_pt": "hotfix",
+      "conceito": "Decisão na hora: I will. Acompanhar um gráfico = watch.",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "follow"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-541e3e",
+      "quem": "voce",
+      "cod": "When the hotfix passes the tests, we'll redeploy.",
+      "dica": "Quando o hotfix passar nos testes, a gente refaz o deploy.",
+      "img": "✅🔁",
+      "alvo": "redeploy",
+      "alvo_pt": "refaz o deploy",
+      "conceito": "redeploy = refazer o deploy. Quando passar = when it passes (presente).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will pass",
+        "deploy again"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-12e902",
+      "quem": "mike",
+      "cod": "Before we redeploy, someone from billing needs to check the numbers.",
+      "dica": "Antes de a gente refazer o deploy, alguém do faturamento precisa conferir os números.",
+      "img": "💰🔢",
+      "alvo": "redeploy",
+      "alvo_pt": "refazer o deploy",
+      "conceito": "someone needs: someone pede o -s da 3ª pessoa.",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "need"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f5b508",
+      "quem": "mike",
+      "cod": "This is an emergency change, so we can skip the usual approval.",
+      "dica": "É uma mudança emergencial, então a gente pode pular a aprovação de sempre.",
+      "img": "🚨⏩",
+      "alvo": "emergency change",
+      "alvo_pt": "mudança emergencial",
+      "conceito": "emergency change = mudança emergencial, fora do fluxo normal de aprovação.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "a",
+        "emergencial"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "This is",
+          "aceita": [
+            "It's"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-51b3b8",
+      "quem": "voce",
+      "contexto": "f-f5b508",
+      "cod": "OK. I'll let Sarah know about the emergency change after the deploy.",
+      "dica": "Tá. Eu aviso a Sarah sobre a mudança emergencial depois do deploy.",
+      "img": "📣🚨",
+      "alvo": "emergency change",
+      "alvo_pt": "mudança emergencial",
+      "conceito": "avisar alguém = let someone know (não: advise someone).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "advise",
+        "warn"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

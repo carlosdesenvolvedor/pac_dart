@@ -1,0 +1,170 @@
+{
+  "id": "presente-continuo.cena-status-para-o-time",
+  "trilha": "presente-continuo",
+  "nome": "Cena: status para o time",
+  "emoji": "📲",
+  "cena": "Dia de neve em Chicago: você troca mensagens com o time, atende uma ligação do Ben e cuida da Ana na casa da Emma.",
+  "resumo": "Juntar a trilha: o que está acontecendo agora, a rotina x hoje, o tempo e a roupa.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: agora x sempre"
+    },
+    {
+      "t": "p",
+      "c": "**I'm working** (agora) x **I work** (sempre). Tempo com **it**: It's snowing. Roupa: **wear**, **put on**, **take off**."
+    },
+    {
+      "t": "warn",
+      "c": "Não: Is snowing. / I'm needing. / She's using a coat."
+    }
+  ],
+  "imagem": "❄️📲💬",
+  "visualizacao": "Neve batendo na janela da casa da Emma. Você está de meias no sofá, notebook no colo, e o celular não para de vibrar com mensagens do time.",
+  "foto_busca": "snowy window laptop phone",
+  "trechos": [
+    {
+      "id": "f-82924c",
+      "quem": "voce",
+      "cod": "Good morning! It's still snowing here.",
+      "dica": "Bom dia! Ainda está nevando aqui.",
+      "img": "❄️🌅",
+      "alvo": "It's still snowing",
+      "alvo_pt": "Ainda está nevando",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3409214,
+        "en_autor": "CK",
+        "pt_id": 6399465,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"It's still snowing.\"; PT original: \"Ainda está nevando.\"; acrescentados \"Good morning!\" e \"here\" (Bom dia! / aqui)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d9561e",
+      "quem": "voce",
+      "cod": "I'm working from Emma's house today.",
+      "dica": "Hoje estou trabalhando da casa da Emma.",
+      "img": "🏠💻",
+      "alvo": "I'm working",
+      "alvo_pt": "estou trabalhando",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-509fc8",
+      "quem": "sarah",
+      "cod": "It isn't snowing in Austin, but it's raining.",
+      "dica": "Não está nevando em Austin, mas está chovendo.",
+      "img": "🌧️🌵",
+      "alvo": "it's raining",
+      "alvo_pt": "está chovendo",
+      "var": [
+        {
+          "em": "It isn't",
+          "aceita": [
+            "It's not"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b74c25",
+      "quem": "ben",
+      "cod": "Hey! Are you working right now?",
+      "dica": "Ei! Você está trabalhando agora mesmo?",
+      "img": "☎️💼",
+      "alvo": "Are you working",
+      "alvo_pt": "Você está trabalhando",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c642bf",
+      "quem": "voce",
+      "contexto": "f-b74c25",
+      "cod": "Yes, I'm in a meeting at the moment.",
+      "dica": "Sim, estou numa reunião no momento.",
+      "img": "👥💻",
+      "alvo": "at the moment",
+      "alvo_pt": "no momento",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e0b8a1",
+      "quem": "voce",
+      "cod": "It's snowing, but Ana isn't wearing a coat.",
+      "dica": "Está nevando, mas a Ana não está usando um casaco.",
+      "img": "❄️🙅‍♀️🧥",
+      "alvo": "isn't wearing",
+      "alvo_pt": "não está usando",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR39"
+      ],
+      "armadilhas": [
+        "using"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 682391,
+        "en_autor": "Source_VOA",
+        "pt_id": 3214818,
+        "pt_autor": "gleydin",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"It's raining, but she's not wearing a coat.\"; PT original: \"Está chovendo, mas ela não está usando um casaco.\"; raining → snowing, she's not → Ana isn't (elenco); PT adaptado igual",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3b0181",
+      "quem": "voce",
+      "cod": "Wait, Ana! Put on my coat.",
+      "dica": "Espera, Ana! Coloca o meu casaco.",
+      "img": "🧥🤝",
+      "alvo": "Put on",
+      "alvo_pt": "Coloca",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ee77be",
+      "quem": "emma",
+      "cod": "Come in, Ana! Take off your shoes.",
+      "dica": "Entra, Ana! Tira os sapatos.",
+      "img": "🚪👟",
+      "alvo": "Take off",
+      "alvo_pt": "Tira",
+      "var": [
+        {
+          "em": "your shoes",
+          "aceita": [
+            "the shoes"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,238 @@
+{
+  "id": "deducao-perguntas-indiretas.com-quem-voce-esta-falando",
+  "trilha": "deducao-perguntas-indiretas",
+  "nome": "Com quem você está falando?",
+  "emoji": "☎️",
+  "cena": "No escritório, a Ana está ao telefone, chega com um presente e acha coisas estranhas na sua mesa: você pergunta de tudo.",
+  "resumo": "Fazer perguntas com a preposição no fim, como o inglês exige: Who are you talking to? Who is it for? What's it about?",
+  "fechamento": false,
+  "novos": [
+    "Who are you talking to?",
+    "Who is it for?",
+    "gift",
+    "What's it about?",
+    "What is it for?"
+  ],
+  "apoio": [
+    "tool",
+    "cable"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Com quem? Pra quê? A preposição vai pro fim"
+    },
+    {
+      "t": "p",
+      "c": "Em português a preposição abre a pergunta (**com** quem, **pra** quem, **sobre** o quê). Em inglês ela vai para o **fim**: Who are you talking **to**? Who is it **for**? What's it **about**?"
+    },
+    {
+      "t": "warn",
+      "c": "Não: Who are you talking? / With who are you talking? E pra que serve? = What is it for? (não: What does it serve?)"
+    },
+    {
+      "t": "ex",
+      "c": "What are you looking for?\nO que você está procurando?"
+    }
+  ],
+  "imagem": "📞🎁🎂",
+  "visualizacao": "Meio da tarde no escritório. A Ana ri ao telefone, chega com uma sacola de presente colorida, tem bolo na cozinha e um cabo estranho em cima da sua mesa.",
+  "foto_busca": "office desk gift bag",
+  "trechos": [
+    {
+      "id": "f-868f04",
+      "quem": "voce",
+      "cod": "Who are you talking to?",
+      "dica": "Com quem você está falando?",
+      "img": "📞🤔",
+      "alvo": "Who are you talking to",
+      "alvo_pt": "Com quem você está falando",
+      "lit": "[lit.: quem você está falando com?]",
+      "conceito": "Com quem...? = Who... to? A preposição vai para o fim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a3db23",
+      "quem": "voce",
+      "cod": "What a beautiful gift! Who is it for?",
+      "dica": "Que presente lindo! É pra quem?",
+      "img": "🎁😍",
+      "alvo": "Who is it for",
+      "alvo_pt": "É pra quem",
+      "lit": "[lit.: quem é isso para?]",
+      "conceito": "Pra quem é? = Who is it for? O for fica no fim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-52f424",
+      "quem": "ana",
+      "contexto": "f-a3db23",
+      "cod": "It's a birthday gift for Sarah.",
+      "dica": "É um presente de aniversário para a Sarah.",
+      "img": "🎁🎂",
+      "alvo": "gift",
+      "alvo_pt": "presente",
+      "conceito": "Presente (o que se dá) = gift; present também existe. Presente de aniversário = birthday gift.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-de7a2d",
+      "quem": "voce",
+      "contexto": "f-52f424",
+      "cod": "Oh no! I still haven't bought a gift for Julia.",
+      "dica": "Ah, não! Ainda não comprei um presente para a Julia.",
+      "img": "😬🎁",
+      "alvo": "gift",
+      "alvo_pt": "presente",
+      "conceito": "Ainda não comprei = I still haven't bought (present perfect).",
+      "var": [
+        {
+          "em": "I still haven't bought a gift for Julia",
+          "aceita": [
+            "I haven't bought a gift for Julia yet",
+            "I still haven't bought Julia a gift",
+            "I haven't bought Julia a gift yet"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fd8931",
+      "quem": "voce",
+      "cod": "Wow, a cake! Who is it for?",
+      "dica": "Nossa, um bolo! É pra quem?",
+      "img": "🎂❓",
+      "alvo": "Who is it for",
+      "alvo_pt": "É pra quem",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e47abd",
+      "quem": "ana",
+      "cod": "Who's Mike talking to in the kitchen?",
+      "dica": "Com quem o Mike está falando na cozinha?",
+      "img": "👀☕",
+      "alvo": "Who's Mike talking to",
+      "alvo_pt": "Com quem o Mike está falando",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8c31a1",
+      "quem": "voce",
+      "contexto": "Mike just called a meeting for four o'clock.",
+      "cod": "Really? What's it about?",
+      "dica": "Sério? É sobre o quê?",
+      "img": "📋❓",
+      "alvo": "What's it about",
+      "alvo_pt": "É sobre o quê",
+      "lit": "[lit.: o que é isso sobre?]",
+      "conceito": "Sobre o quê? = What... about? O about vai para o fim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-01509c",
+      "quem": "ana",
+      "cod": "Is this yours? What is it for?",
+      "dica": "Isso é seu? Pra que serve?",
+      "img": "🔌❓",
+      "alvo": "What is it for",
+      "alvo_pt": "Pra que serve",
+      "conceito": "Pra que serve? = What is it for? (não: What does it serve?)",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "serve"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3738435,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado 'Is this yours?' (original: \"What is it for?\"); PT reescrito (original: \"Para que é isso?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0c185f",
+      "quem": "voce",
+      "contexto": "I'm writing a blog post tonight.",
+      "cod": "Cool. What's it about?",
+      "dica": "Legal. É sobre o quê?",
+      "img": "📝💭",
+      "alvo": "What's it about",
+      "alvo_pt": "É sobre o quê",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e0b8ea",
+      "quem": "ana",
+      "cod": "And this little key? What is it for?",
+      "dica": "E essa chavinha? Pra que serve?",
+      "img": "🔑❔",
+      "alvo": "What is it for",
+      "alvo_pt": "Pra que serve",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "serve"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "little",
+          "aceita": [
+            "small"
+          ]
+        }
+      ]
+    }
+  ]
+}

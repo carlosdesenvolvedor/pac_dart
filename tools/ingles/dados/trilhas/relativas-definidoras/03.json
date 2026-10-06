@@ -1,0 +1,288 @@
+{
+  "id": "relativas-definidoras.onde-a-gente-se-conheceu-compostos",
+  "trilha": "relativas-definidoras",
+  "nome": "Onde a gente se conheceu + compostos",
+  "emoji": "📍",
+  "cena": "Você liga para o suporte e descreve um problema no app; depois mostra para a Julia a foto do café onde conheceu o Ben.",
+  "resumo": "Identificar lugares com where e juntar substantivos sem of: login button, password field, search bar.",
+  "fechamento": false,
+  "novos": [
+    "login button",
+    "the place where...",
+    "password field",
+    "settings page",
+    "search bar"
+  ],
+  "apoio": [
+    "where (relativo)",
+    "error message",
+    "coffee shop"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Onde = where · botão de login = login button"
+    },
+    {
+      "t": "p",
+      "c": "Para lugares, use **where**: the place **where** I met Ben."
+    },
+    {
+      "t": "p",
+      "c": "Substantivo + substantivo, **sem of**: o principal vem por último. botão de login = **login button**; campo de senha = **password field**."
+    },
+    {
+      "t": "ex",
+      "c": "The login button isn't working.\nO botão de login não está funcionando."
+    },
+    {
+      "t": "warn",
+      "c": "O 1º substantivo fica no singular: password field (não: passwords field). Settings é exceção: settings page."
+    }
+  ],
+  "imagem": "📞🔐☕",
+  "visualizacao": "Celular no viva-voz, o app aberto no notebook e a tela de login travada. Mais tarde, com a Julia, você abre uma foto antiga de um café.",
+  "foto_busca": "customer support phone call laptop",
+  "trechos": [
+    {
+      "id": "f-709316",
+      "quem": "voce",
+      "contexto": "Hi, how can I help you?",
+      "cod": "The login button isn't working.",
+      "dica": "O botão de login não está funcionando.",
+      "img": "🔘❌",
+      "alvo": "login button",
+      "alvo_pt": "botão de login",
+      "lit": "[lit.: o login botão]",
+      "conceito": "botão de login = login button: o 1º substantivo vem antes, sem of.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR07"
+      ],
+      "armadilhas": [
+        "of",
+        "button"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1d5bbf",
+      "quem": "atendente",
+      "contexto": "f-709316",
+      "cod": "Can you see the password field?",
+      "dica": "Você está vendo o campo de senha?",
+      "img": "🔑👀",
+      "alvo": "password field",
+      "alvo_pt": "campo de senha",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR20"
+      ],
+      "armadilhas": [
+        "of",
+        "field"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Can you see",
+          "aceita": [
+            "Do you see"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ec3fbb",
+      "quem": "voce",
+      "contexto": "f-1d5bbf",
+      "cod": "Yes, but I can't type in the password field.",
+      "dica": "Sim, mas não consigo digitar no campo de senha.",
+      "img": "⌨️🔒",
+      "alvo": "password field",
+      "alvo_pt": "campo de senha",
+      "conceito": "O 1º substantivo fica no singular: password field (não: passwords field).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "passwords",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-908ba8",
+      "quem": "atendente",
+      "contexto": "f-ec3fbb",
+      "cod": "OK. Open the settings page, please.",
+      "dica": "Tá bom. Abre a página de configurações, por favor.",
+      "img": "⚙️📄",
+      "alvo": "settings page",
+      "alvo_pt": "página de configurações",
+      "conceito": "página de configurações = settings page (settings fica no plural: é o nome da tela).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "of",
+        "page"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b76b03",
+      "quem": "voce",
+      "contexto": "f-908ba8",
+      "cod": "OK, I'm on the settings page now.",
+      "dica": "Tá, agora estou na página de configurações.",
+      "img": "⚙️✅",
+      "alvo": "settings page",
+      "alvo_pt": "página de configurações",
+      "conceito": "numa página ou tela = on the page.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-57e164",
+      "quem": "atendente",
+      "contexto": "f-b76b03",
+      "cod": "Is there a search bar at the top?",
+      "dica": "Tem uma barra de busca lá em cima?",
+      "img": "🔍❓",
+      "alvo": "search bar",
+      "alvo_pt": "barra de busca",
+      "conceito": "Tem (existe) = there is. barra de busca = search bar.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0e2fa1",
+      "quem": "voce",
+      "contexto": "f-57e164",
+      "cod": "Yes, the search bar is next to the help button.",
+      "dica": "Sim, a barra de busca fica do lado do botão de ajuda.",
+      "img": "🔍🔘",
+      "alvo": "search bar",
+      "alvo_pt": "barra de busca",
+      "conceito": "fica (localização) = is (não: stays). botão de ajuda = help button.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR33"
+      ],
+      "armadilhas": [
+        "stays",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-487cc4",
+      "quem": "atendente",
+      "contexto": "f-0e2fa1",
+      "cod": "Now go back and click the login button again.",
+      "dica": "Agora volta e clica no botão de login de novo.",
+      "img": "🔘🔁",
+      "alvo": "login button",
+      "alvo_pt": "botão de login",
+      "var": [
+        {
+          "em": "click",
+          "aceita": [
+            "click on"
+          ]
+        }
+      ],
+      "conceito": "voltar (para a tela anterior) = go back.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "of",
+        "button"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4496212,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: OK button → login button; acrescentado Now go back and e again (original: \"Click the OK button.\"); PT reescrito (original: \"Clica no botão OK.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-06c884",
+      "quem": "voce",
+      "cod": "Look, Julia. This is the place where I met Ben.",
+      "dica": "Olha, Julia. Este é o lugar onde eu conheci o Ben.",
+      "img": "☕🤝",
+      "alvo": "the place where",
+      "alvo_pt": "o lugar onde",
+      "conceito": "onde (lugar) = where. Conhecer alguém pela 1ª vez = meet (met).",
+      "registro": "informal",
+      "interferencias": [
+        "BR36"
+      ],
+      "armadilhas": [
+        "knew",
+        "that"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b80317",
+      "quem": "julia",
+      "contexto": "f-06c884",
+      "cod": "Nice! Is it near the place where you stayed?",
+      "dica": "Legal! É perto do lugar onde você ficou?",
+      "img": "🏨📍❓",
+      "alvo": "the place where",
+      "alvo_pt": "o lugar onde",
+      "conceito": "ficar (num lugar, hospedado) = stay; ficar + emoção = get.",
+      "registro": "informal",
+      "interferencias": [
+        "BR33"
+      ],
+      "armadilhas": [
+        "get",
+        "that"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "near",
+          "aceita": [
+            "close to"
+          ]
+        }
+      ]
+    }
+  ]
+}

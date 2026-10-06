@@ -1,0 +1,257 @@
+{
+  "id": "verbo-to-ing.terminei-de-ler-verbo-ing",
+  "trilha": "verbo-to-ing",
+  "nome": "Terminei de ler: verbo + -ing",
+  "emoji": "📚",
+  "cena": "No clube do livro virtual do time, vocês falam de leitura e de hábitos e pedem um minutinho uns aos outros.",
+  "resumo": "Usar avoid, keep e Do you mind + -ing, e responder I don't mind.",
+  "fechamento": false,
+  "novos": [
+    "Do you mind...?",
+    "avoid",
+    "late at night",
+    "I don't mind.",
+    "keep + -ing"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Verbo + -ing"
+    },
+    {
+      "t": "p",
+      "c": "Depois de **enjoy, finish, mind, keep** e **avoid**, o verbo vem com **-ing**."
+    },
+    {
+      "t": "ex",
+      "c": "Do you mind waiting a minute?\nVocê se importa de esperar um minuto?"
+    },
+    {
+      "t": "tip",
+      "c": "Responder **No, I don't mind.** a um Do you mind...? quer dizer: pode, sim."
+    },
+    {
+      "t": "warn",
+      "c": "Não: avoid to eat / finish to read / keep to read."
+    }
+  ],
+  "imagem": "📚💻☕",
+  "visualizacao": "Você está numa chamada de vídeo à noite: os rostos do time em quadradinhos, cada um com o mesmo livro na mão. Alguém ri, alguém some da câmera por um minuto.",
+  "foto_busca": "book club video call",
+  "trechos": [
+    {
+      "id": "f-aecb9c",
+      "quem": "voce",
+      "contexto": "Did everyone finish the book?",
+      "cod": "Almost. I can only read late at night.",
+      "dica": "Quase. Só consigo ler tarde da noite.",
+      "img": "📖🌙",
+      "alvo": "late at night",
+      "alvo_pt": "tarde da noite",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5c15da",
+      "quem": "sarah",
+      "contexto": "f-aecb9c",
+      "cod": "Keep reading! The ending is great.",
+      "dica": "Continua lendo! O final é ótimo.",
+      "img": "🏁📘",
+      "alvo": "Keep reading",
+      "alvo_pt": "Continua lendo",
+      "conceito": "keep + -ing = continuar fazendo (não: keep to read).",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "to",
+        "read"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "ending",
+          "aceita": [
+            "end"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-78b363",
+      "quem": "mike",
+      "contexto": "f-aecb9c",
+      "cod": "Really? I avoid reading late at night.",
+      "dica": "Sério? Eu evito ler tarde da noite.",
+      "img": "🙅‍♂️📚🌙",
+      "alvo": "avoid",
+      "alvo_pt": "evito",
+      "conceito": "avoid + -ing = evitar fazer (não: avoid to read).",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "to",
+        "read"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-960078",
+      "quem": "ana",
+      "cod": "I keep forgetting the names in this book.",
+      "dica": "Eu vivo esquecendo os nomes deste livro.",
+      "img": "🤔📛🔁",
+      "alvo": "keep forgetting",
+      "alvo_pt": "vivo esquecendo",
+      "conceito": "keep + -ing também é repetir sem parar: viver fazendo algo.",
+      "registro": "informal",
+      "armadilhas": [
+        "forget"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9194909,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: your name → the names in this book (original: \"I keep forgetting your name.\"); PT reescrito (original: \"Eu vivo esquecendo o seu nome.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-55e0f5",
+      "quem": "sarah",
+      "cod": "Do you mind sharing your screen, Mike?",
+      "dica": "Você se importa de compartilhar a sua tela, Mike?",
+      "img": "🖥️🙏",
+      "alvo": "Do you mind",
+      "alvo_pt": "Você se importa de",
+      "lit": "[lit.: você se importa compartilhando...?]",
+      "conceito": "Do you mind + -ing? = você se importa de...? (pedido educado)",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "share",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-16faf0",
+      "quem": "mike",
+      "contexto": "f-55e0f5",
+      "cod": "No, I don't mind.",
+      "dica": "Não, não me importo.",
+      "img": "👌🙂",
+      "alvo": "I don't mind",
+      "alvo_pt": "não me importo",
+      "conceito": "Responder No a Do you mind...? = pode, sim, sem problema.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-866c6a",
+      "quem": "mike",
+      "cod": "Do you mind waiting a minute?",
+      "dica": "Vocês se importam de esperar um minuto?",
+      "img": "⏱️✋",
+      "alvo": "Do you mind",
+      "alvo_pt": "Vocês se importam de",
+      "registro": "neutro",
+      "armadilhas": [
+        "wait",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e28403",
+      "quem": "ana",
+      "contexto": "f-866c6a",
+      "cod": "No problem. I don't mind waiting.",
+      "dica": "Sem problema. Não me importo de esperar.",
+      "img": "😊⏳",
+      "alvo": "I don't mind",
+      "alvo_pt": "Não me importo",
+      "registro": "informal",
+      "armadilhas": [
+        "wait",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4aeca0",
+      "quem": "ana",
+      "contexto": "Do you read the news in the morning?",
+      "cod": "I avoid reading the news.",
+      "dica": "Eu evito ler as notícias.",
+      "img": "📰🙅‍♀️",
+      "alvo": "avoid",
+      "alvo_pt": "evito",
+      "registro": "informal",
+      "armadilhas": [
+        "to",
+        "read"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8606091,
+        "en_autor": "shekitten",
+        "pt_id": 9965246,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-dc7cbf",
+      "quem": "sarah",
+      "contexto": "When do you read, Sarah?",
+      "cod": "Late at night, after I finish working.",
+      "dica": "Tarde da noite, depois que eu termino de trabalhar.",
+      "img": "🌃💻",
+      "alvo": "Late at night",
+      "alvo_pt": "Tarde da noite",
+      "conceito": "finish + -ing = terminar de fazer (não: finish to work).",
+      "var": [
+        {
+          "em": "finish working",
+          "aceita": [
+            "finish work"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR30",
+        "BR17"
+      ],
+      "armadilhas": [
+        "to",
+        "work"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

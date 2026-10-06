@@ -1,0 +1,316 @@
+{
+  "id": "relativas-definidoras.a-mulher-que-mora-ao-lado-who",
+  "trilha": "relativas-definidoras",
+  "nome": "A mulher que mora ao lado: who",
+  "emoji": "👩",
+  "cena": "Num churrasco do prédio, você explica para a Julia quem é quem entre os vizinhos e conta quem te contratou.",
+  "resumo": "Identificar pessoas com who logo depois do substantivo: the woman who lives next door.",
+  "fechamento": false,
+  "novos": [
+    "next door",
+    "guy",
+    "the one who...",
+    "the person who...",
+    "hire"
+  ],
+  "apoio": [
+    "who (relativo)",
+    "neighbor"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Que (pessoa) = who"
+    },
+    {
+      "t": "p",
+      "c": "Para dizer **qual** pessoa, ponha **who** logo depois dela, e o verbo em seguida: the woman **who lives** next door."
+    },
+    {
+      "t": "ex",
+      "c": "She's the woman who lives next door.\nEla é a mulher que mora ao lado."
+    },
+    {
+      "t": "tip",
+      "c": "**the one who** = quem, o que, a que: He's the one who hired me."
+    },
+    {
+      "t": "warn",
+      "c": "Depois de who não entra outro sujeito: who lives (não: who she lives). E o -s continua: who works."
+    }
+  ],
+  "imagem": "🍖👥🏢",
+  "visualizacao": "Sábado à tarde no salão do prédio. Cheiro de churrasco, música baixa, vizinhos conversando em grupinhos e a Julia curiosa ao seu lado.",
+  "foto_busca": "neighbors barbecue apartment building",
+  "trechos": [
+    {
+      "id": "f-3cff2a",
+      "quem": "voce",
+      "contexto": "Who's that woman?",
+      "cod": "She's the woman who lives next door.",
+      "dica": "Ela é a mulher que mora ao lado.",
+      "img": "👩🚪",
+      "alvo": "next door",
+      "alvo_pt": "ao lado",
+      "conceito": "que (pessoa) = who + verbo: who lives (não: who she lives).",
+      "var": [
+        {
+          "em": "who",
+          "aceita": [
+            "that"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "she",
+        "live"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8765db",
+      "quem": "julia",
+      "contexto": "f-3cff2a",
+      "cod": "Was she the one who called you yesterday?",
+      "dica": "Foi ela quem te ligou ontem?",
+      "img": "👩📞",
+      "alvo": "the one who",
+      "alvo_pt": "quem",
+      "lit": "[lit.: ela foi a que te ligou ontem?]",
+      "conceito": "the one who = a que / o que / quem.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "she"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5618359,
+        "en_autor": "gravnash",
+        "pt_id": 5605897,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT: que → quem (original: \"Foi ela que te ligou ontem?\"), como as outras frases com the one who",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4a1aeb",
+      "quem": "voce",
+      "contexto": "f-8765db",
+      "cod": "Yes. She's the person who organizes the parties here.",
+      "dica": "Sim. Ela é a pessoa que organiza as festas aqui.",
+      "img": "👩🎉",
+      "alvo": "the person who",
+      "alvo_pt": "a pessoa que",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "organize",
+        "she"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6946e3",
+      "quem": "voce",
+      "cod": "And that's the guy who helped me yesterday.",
+      "dica": "E aquele é o cara que me ajudou ontem.",
+      "img": "👨🤝",
+      "alvo": "guy",
+      "alvo_pt": "cara",
+      "conceito": "guy = cara (informal).",
+      "var": [
+        {
+          "em": "who",
+          "aceita": [
+            "that"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "he"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6917160,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: boy → guy; acrescentado And (original: \"That's the boy who helped me yesterday.\"); PT reescrito (original: \"Aquele é o garoto que me ajudou ontem.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-47ca07",
+      "quem": "julia",
+      "contexto": "f-6946e3",
+      "cod": "What a nice guy!",
+      "dica": "Que cara legal!",
+      "img": "😊👍",
+      "alvo": "guy",
+      "alvo_pt": "cara",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4495415,
+        "en_autor": "CK",
+        "pt_id": 5012453,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT: bacana → legal (original: \"Que cara bacana!\"), nice = legal no curso",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4d3b49",
+      "quem": "voce",
+      "contexto": "f-47ca07",
+      "cod": "The people next door are nice too.",
+      "dica": "O pessoal do lado também é legal.",
+      "img": "👥😊",
+      "alvo": "next door",
+      "alvo_pt": "do lado",
+      "lit": "[lit.: as pessoas do lado também são legais]",
+      "conceito": "people é plural: people are (o pessoal é → people are).",
+      "var": [
+        {
+          "em": "are nice too",
+          "aceita": [
+            "are also nice"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR14"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-951b89",
+      "quem": "julia",
+      "cod": "Who hired you, Mike or Sarah?",
+      "dica": "Quem te contratou, o Mike ou a Sarah?",
+      "img": "💼❓",
+      "alvo": "hired",
+      "alvo_pt": "contratou",
+      "conceito": "contratar = hire. Quem é o sujeito, então não tem did: Who hired you?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did",
+        "contracted"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b8d2dd",
+      "quem": "voce",
+      "contexto": "f-951b89",
+      "cod": "Mike. He's the one who hired me.",
+      "dica": "O Mike. Ele é quem me contratou.",
+      "img": "👨‍💼🤝",
+      "alvo": "the one who",
+      "alvo_pt": "quem",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "he"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b37f88",
+      "quem": "voce",
+      "cod": "Now we need to hire someone who knows Flutter.",
+      "dica": "Agora a gente precisa contratar alguém que saiba Flutter.",
+      "img": "🔎👩‍💻",
+      "alvo": "hire",
+      "alvo_pt": "contratar",
+      "var": [
+        {
+          "em": "who",
+          "aceita": [
+            "that"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "know",
+        "contract"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6563593,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: can speak French → knows Flutter; acrescentado Now (original: \"We need to hire someone who can speak French.\"); PT reescrito (original: \"Precisamos contratar alguém que fala francês.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-71bebd",
+      "quem": "julia",
+      "contexto": "f-b37f88",
+      "cod": "Ask Lucas. He's the person who knows everyone.",
+      "dica": "Pergunta pro Lucas. Ele é a pessoa que conhece todo mundo.",
+      "img": "👦🤝👥",
+      "alvo": "the person who",
+      "alvo_pt": "a pessoa que",
+      "conceito": "Depois de who, o verbo leva -s: who knows (não: who know).",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "know",
+        "he"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "everyone",
+          "aceita": [
+            "everybody"
+          ]
+        }
+      ]
+    }
+  ]
+}

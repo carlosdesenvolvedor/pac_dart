@@ -1,0 +1,240 @@
+{
+  "id": "wish-condicionais-mistas.queria-ter-estudado-mais",
+  "trilha": "wish-condicionais-mistas",
+  "nome": "Queria ter estudado mais",
+  "emoji": "🎓",
+  "cena": "Olhando fotos antigas com o Ben, vocês falam das escolhas da época da faculdade.",
+  "resumo": "Falar de arrependimentos com wish / if only + past perfect: I wish I'd... / If only I had...!",
+  "fechamento": false,
+  "novos": [
+    "if only I had",
+    "student loan",
+    "gap year",
+    "seriously"
+  ],
+  "apoio": [
+    "exchange program"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Queria ter estudado = I wish I'd studied"
+    },
+    {
+      "t": "p",
+      "c": "Arrependimento sobre o passado: **wish / if only + had + particípio**. I wish I'd taken college more seriously = queria ter levado a faculdade mais a sério."
+    },
+    {
+      "t": "tip",
+      "c": "I'd + particípio = I had (I'd taken). Don't you wish you'd...? = Você não queria ter...?"
+    },
+    {
+      "t": "warn",
+      "c": "I wish I studied fala do presente. Para o passado: I wish I'd studied. Sem would: não diga If only I would have listened."
+    },
+    {
+      "t": "ex",
+      "c": "If only I had gone on that exchange program!\nQuem dera eu tivesse ido naquele intercâmbio!"
+    }
+  ],
+  "imagem": "🎓📸🛋️",
+  "visualizacao": "No sofá do Ben, um álbum de fotos aberto no colo. Ele ri de uma foto de formatura, aponta para os amigos de intercâmbio e suspira.",
+  "foto_busca": "friends looking at old photo album",
+  "trechos": [
+    {
+      "id": "f-6336b4",
+      "quem": "ben",
+      "cod": "I wish I'd taken college more seriously.",
+      "dica": "Queria ter levado a faculdade mais a sério.",
+      "img": "🎓😔",
+      "alvo": "seriously",
+      "alvo_pt": "a sério",
+      "conceito": "Queria ter + particípio = I wish I'd (I had) + particípio. levar a sério = take seriously.",
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "took",
+        "would have",
+        "serious"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5018f5",
+      "quem": "voce",
+      "contexto": "f-6336b4",
+      "cod": "Seriously? You always got great grades!",
+      "dica": "Fala sério! Você sempre tirava notas ótimas!",
+      "img": "😮📝",
+      "alvo": "Seriously",
+      "alvo_pt": "Fala sério",
+      "conceito": "Fala sério! (espanto) = Seriously? No curso, Sério? (surpresa simples) = Really?",
+      "var": [
+        {
+          "em": "got",
+          "aceita": [
+            "had"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "serious",
+        "notes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-393844",
+      "quem": "ben",
+      "cod": "If only I had gone on that exchange program!",
+      "dica": "Quem dera eu tivesse ido naquele intercâmbio!",
+      "img": "✈️🌍",
+      "alvo": "If only I had",
+      "alvo_pt": "Quem dera eu tivesse",
+      "conceito": "Quem dera eu tivesse ido = If only I had gone. exchange program = intercâmbio.",
+      "var": [
+        {
+          "em": "on that",
+          "aceita": [
+            "to that"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would have",
+        "went",
+        "interchange"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8192556,
+        "en_autor": "Lameen",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado 'on that exchange program' (original: \"If only I had gone!\"); PT reescrito (original: \"Se tivesse ido embora!\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e4517e",
+      "quem": "ben",
+      "cod": "I'm still paying off my student loan.",
+      "dica": "Eu ainda estou pagando o meu empréstimo estudantil.",
+      "img": "💸🎓",
+      "alvo": "student loan",
+      "alvo_pt": "empréstimo estudantil",
+      "conceito": "student loan = empréstimo estudantil. pay off = quitar, pagar até o fim.",
+      "opcional": [
+        "off"
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "student's loan",
+        "studant"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-890479",
+      "quem": "voce",
+      "contexto": "f-e4517e",
+      "cod": "How much of your salary goes to your student loan?",
+      "dica": "Quanto do seu salário vai para o seu empréstimo estudantil?",
+      "img": "💰📉",
+      "alvo": "student loan",
+      "alvo_pt": "empréstimo estudantil",
+      "conceito": "How much of your salary goes...? O sujeito é how much: goes, com -s.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR07"
+      ],
+      "armadilhas": [
+        "go to",
+        "how many"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-16f2ec",
+      "quem": "ben",
+      "cod": "My gap year in Brazil changed my life.",
+      "dica": "O meu ano sabático no Brasil mudou a minha vida.",
+      "img": "🇧🇷🌱",
+      "alvo": "gap year",
+      "alvo_pt": "ano sabático",
+      "conceito": "gap year = ano sabático (um ano de pausa, comum antes ou depois da faculdade).",
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "the brazil",
+        "sabbatical"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fcfe7b",
+      "quem": "ben",
+      "cod": "Don't you wish you'd taken a gap year?",
+      "dica": "Você não queria ter tirado um ano sabático?",
+      "img": "🤔🗺️",
+      "alvo": "gap year",
+      "alvo_pt": "ano sabático",
+      "conceito": "Você não queria ter...? = Don't you wish you'd (you had) + particípio?",
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "took",
+        "made a gap year"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-91981a",
+      "quem": "voce",
+      "contexto": "f-fcfe7b",
+      "cod": "Not really. But if only I had started learning English earlier!",
+      "dica": "Nem tanto. Mas quem dera eu tivesse começado a aprender inglês mais cedo!",
+      "img": "🗣️⏰",
+      "alvo": "if only I had",
+      "alvo_pt": "quem dera eu tivesse",
+      "conceito": "Quem dera eu tivesse começado = If only I had started. English com maiúscula.",
+      "var": [
+        {
+          "em": "learning",
+          "aceita": [
+            "to learn"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR57"
+      ],
+      "armadilhas": [
+        "english",
+        "would have"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        2
+      ]
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "id": "relativas-3.o-time-com-quem-falamos",
+  "trilha": "relativas-3",
+  "nome": "O time com quem falamos",
+  "emoji": "🔗",
+  "cena": "Você explica para um dev novo quem é quem no projeto e onde o app roda.",
+  "resumo": "Preposição no fim da relativa na fala (the server the app runs on) e to whom só no e-mail muito formal.",
+  "fechamento": false,
+  "novos": [
+    "the server the app runs on",
+    "the team we shared it with",
+    "stakeholder",
+    "addressed to"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Em que, com quem, a quem"
+    },
+    {
+      "t": "p",
+      "c": "Na fala e no e-mail do dia a dia, a preposição vai para o fim: **the server the app runs on**, **the team we shared it with**, **Who was it addressed to?**"
+    },
+    {
+      "t": "tip",
+      "c": "to whom / on which existem, mas só em texto muito formal. Na fala americana, whom quase não aparece."
+    },
+    {
+      "t": "warn",
+      "c": "A preposição não some nem vai para a frente na fala: the team we shared it with (não: the team we shared it / with who we shared it)."
+    },
+    {
+      "t": "ex",
+      "c": "The server the app runs on is in Ohio.\nO servidor em que o app roda fica em Ohio."
+    }
+  ],
+  "imagem": "🧑‍💻🗺️🖥️",
+  "visualizacao": "Você divide a tela com o dev novo. No quadro, caixinhas e setas: o app, o servidor, os times. Ele anota tudo e faz pergunta atrás de pergunta.",
+  "foto_busca": "developer explaining diagram screen",
+  "trechos": [
+    {
+      "id": "f-4c8a84",
+      "quem": "voce",
+      "cod": "The server the app runs on is in Ohio.",
+      "dica": "O servidor em que o app roda fica em Ohio.",
+      "img": "🖥️📍",
+      "alvo": "The server the app runs on",
+      "alvo_pt": "O servidor em que o app roda",
+      "lit": "[lit.: o servidor o app roda em]",
+      "conceito": "em que = preposição no fim: the server the app runs on (aqui treinamos runs on, não where).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR51",
+        "BR02"
+      ],
+      "armadilhas": [
+        "where",
+        "in"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-854e4e",
+      "quem": "dev-novo",
+      "contexto": "f-4c8a84",
+      "cod": "Do we have access to the server the app runs on?",
+      "dica": "A gente tem acesso ao servidor em que o app roda?",
+      "img": "🔑🖥️❓",
+      "alvo": "the server the app runs on",
+      "alvo_pt": "servidor em que o app roda",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR51"
+      ],
+      "armadilhas": [
+        "where"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-4c8a84"
+    },
+    {
+      "id": "f-c7ead6",
+      "quem": "dev-novo",
+      "cod": "Who are the stakeholders I should talk to first?",
+      "dica": "Quem são os stakeholders com quem eu devo falar primeiro?",
+      "img": "👔👥❓",
+      "alvo": "stakeholders",
+      "alvo_pt": "stakeholders",
+      "conceito": "stakeholder = quem tem interesse no projeto (cliente, diretoria, produto).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "with who"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3ea97e",
+      "quem": "voce",
+      "contexto": "f-c7ead6",
+      "cod": "Start with Sarah. She's the stakeholder you'll work with the most.",
+      "dica": "Começa pela Sarah. Ela é a stakeholder com quem você mais vai trabalhar.",
+      "img": "👩‍💼👉",
+      "alvo": "stakeholder",
+      "alvo_pt": "stakeholder",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR51",
+        "BR02"
+      ],
+      "armadilhas": [
+        "with who"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9050896,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Those are the people you have to talk to.' → 'Start with Sarah. She's the stakeholder you'll work with the most.'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-faa4b3",
+      "quem": "voce",
+      "cod": "Before you change the API, talk to the team we shared it with.",
+      "dica": "Antes de mudar a API, fala com o time com quem a gente compartilhou.",
+      "img": "🔧🗣️👥",
+      "alvo": "the team we shared it with",
+      "alvo_pt": "o time com quem a gente compartilhou",
+      "conceito": "it = a API; com quem = preposição no fim: shared it with.",
+      "var": [
+        {
+          "em": "Before you change",
+          "aceita": [
+            "Before changing"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "with who"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-377a6e",
+      "quem": "voce",
+      "cod": "There's a bug in the beta, so let's warn the team we shared it with.",
+      "dica": "Tem um bug na beta, então vamos avisar o time com quem a gente compartilhou.",
+      "img": "🐞⚠️",
+      "alvo": "the team we shared it with",
+      "alvo_pt": "o time com quem a gente compartilhou",
+      "conceito": "warn = avisar de um risco (warn the team).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "with who"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-faa4b3"
+    },
+    {
+      "id": "f-0162e8",
+      "quem": "dev-novo",
+      "cod": "Who was this email addressed to?",
+      "dica": "Pra quem esse e-mail estava endereçado?",
+      "img": "📧❓",
+      "alvo": "addressed to",
+      "alvo_pt": "endereçado",
+      "conceito": "Na fala, a preposição vai para o fim: Who was it addressed to?",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "whom",
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6bbfdc",
+      "quem": "voce",
+      "cod": "Please confirm the name of the person to whom the invoice should be addressed.",
+      "dica": "(e-mail formal) Por favor, confirme o nome da pessoa a quem a fatura deve ser endereçada.",
+      "img": "🧾✉️",
+      "alvo": "addressed",
+      "alvo_pt": "endereçada",
+      "conceito": "to whom só no e-mail muito formal; na fala: who it should be addressed to.",
+      "blocos": [
+        7
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "who"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

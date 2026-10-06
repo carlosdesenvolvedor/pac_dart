@@ -1,0 +1,278 @@
+{
+  "id": "terceira-condicional.nao-teriamos-perdido-o-voo",
+  "trilha": "terceira-condicional",
+  "nome": "Não teríamos perdido o voo",
+  "emoji": "🛬",
+  "cena": "De volta para casa, você e a Emma repassam a viagem de carro e avião que deu errado no inverno.",
+  "resumo": "Usar a 3ª condicional na negativa (If we hadn't..., wouldn't have...) e com could have na consequência.",
+  "fechamento": false,
+  "novos": [
+    "wouldn't have",
+    "if we hadn't",
+    "a direct flight",
+    "wrong turn",
+    "saved (tempo)"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Não teria...: wouldn't have"
+    },
+    {
+      "t": "p",
+      "c": "Na consequência negativa: **wouldn't have** + particípio (não teria). No if negativo: **If we hadn't** + particípio (se a gente não tivesse)."
+    },
+    {
+      "t": "tip",
+      "c": "Para uma chance que existia: **could have** + particípio (podia ter): we could have caught the flight."
+    },
+    {
+      "t": "warn",
+      "c": "No if da 3ª, sempre had + particípio: If we had left earlier (não: If we left earlier)."
+    },
+    {
+      "t": "ex",
+      "c": "If we had left earlier, we wouldn't have missed the flight.\nSe a gente tivesse saído mais cedo, não teria perdido o voo."
+    }
+  ],
+  "imagem": "🚗✈️❄️",
+  "visualizacao": "Você e a Emma tomam chocolate quente na cozinha dela. Na mesa, os cartões de embarque amassados; lá fora, a mesma neve que prendeu vocês uma noite inteira no aeroporto.",
+  "foto_busca": "airport departures board snow delay",
+  "trechos": [
+    {
+      "id": "f-4ea678",
+      "quem": "emma",
+      "cod": "We took a wrong turn near the airport.",
+      "dica": "A gente virou errado perto do aeroporto.",
+      "img": "↩️🛣️",
+      "alvo": "wrong turn",
+      "alvo_pt": "virou errado",
+      "lit": "[lit.: pegamos uma virada errada]",
+      "conceito": "virar errado = take a wrong turn (make a wrong turn também se usa).",
+      "var": [
+        {
+          "em": "took",
+          "aceita": [
+            "made"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR32"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aaa9a2",
+      "quem": "voce",
+      "contexto": "f-4ea678",
+      "cod": "If we had left earlier, we wouldn't have missed the flight.",
+      "dica": "Se a gente tivesse saído mais cedo, não teria perdido o voo.",
+      "img": "⏰✈️",
+      "alvo": "wouldn't have",
+      "alvo_pt": "não teria",
+      "conceito": "wouldn't have + particípio = não teria. Perder o voo = miss the flight.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57",
+        "BR34"
+      ],
+      "armadilhas": [
+        "would",
+        "left",
+        "lost"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-320fd1",
+      "quem": "emma",
+      "contexto": "f-aaa9a2",
+      "cod": "If we hadn't taken that wrong turn, we could have caught the flight.",
+      "dica": "Se a gente não tivesse virado errado, podia ter pegado o voo.",
+      "img": "🔄✈️",
+      "alvo": "If we hadn't",
+      "alvo_pt": "Se a gente não tivesse",
+      "conceito": "could have na consequência = podia ter (uma chance que existia).",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "a"
+          ]
+        },
+        {
+          "em": "taken",
+          "aceita": [
+            "made"
+          ]
+        },
+        {
+          "em": "caught",
+          "aceita": [
+            "made"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would",
+        "didn't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b36bea",
+      "quem": "voce",
+      "cod": "We didn't book a direct flight, so we had to change planes.",
+      "dica": "A gente não reservou um voo direto, então teve que trocar de avião.",
+      "img": "✈️🔀",
+      "alvo": "a direct flight",
+      "alvo_pt": "um voo direto",
+      "conceito": "direct flight = voo direto; change planes = trocar de avião (plural em inglês).",
+      "var": [
+        {
+          "em": "book",
+          "aceita": [
+            "buy",
+            "get",
+            "take"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-624f1e",
+      "quem": "emma",
+      "cod": "A direct flight would have been more expensive.",
+      "dica": "Um voo direto teria sido mais caro.",
+      "img": "💸✈️",
+      "alvo": "A direct flight",
+      "alvo_pt": "Um voo direto",
+      "conceito": "teria sido = would have been.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-036c6e",
+      "quem": "voce",
+      "contexto": "f-624f1e",
+      "cod": "Yes, but we would have saved six hours.",
+      "dica": "É, mas a gente teria economizado seis horas.",
+      "img": "⏳✅",
+      "alvo": "saved",
+      "alvo_pt": "economizado",
+      "conceito": "save time / money = economizar tempo / dinheiro.",
+      "var": [
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yeah"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a17d4c",
+      "quem": "emma",
+      "contexto": "f-036c6e",
+      "cod": "But my plan saved us a lot of money.",
+      "dica": "Mas o meu plano economizou muito dinheiro pra gente.",
+      "img": "💰🙂",
+      "alvo": "saved",
+      "alvo_pt": "economizou",
+      "conceito": "save someone money = economizar dinheiro pra alguém.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6256535,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ But no início (responde à fala anterior); PT reescrito (poupou → economizou)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cece9f",
+      "quem": "voce",
+      "cod": "And we wouldn't have slept at the airport. It was freezing!",
+      "dica": "E a gente não teria dormido no aeroporto. Estava congelando!",
+      "img": "🛏️✈️🥶",
+      "alvo": "wouldn't have",
+      "alvo_pt": "não teria",
+      "conceito": "Estava congelando = It was freezing (o tempo pede it).",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-275eb5",
+      "quem": "emma",
+      "cod": "If we hadn't brought warm clothes, we would have frozen.",
+      "dica": "Se a gente não tivesse levado roupa quente, teria congelado.",
+      "img": "🧥🥶",
+      "alvo": "If we hadn't",
+      "alvo_pt": "Se a gente não tivesse",
+      "conceito": "frozen = particípio de freeze (congelar). warm clothes = roupa quente.",
+      "var": [
+        {
+          "em": "brought",
+          "aceita": [
+            "taken",
+            "packed"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57",
+        "BR37"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f48a48",
+      "quem": "voce",
+      "cod": "Next time, let's use the GPS. No more wrong turns!",
+      "dica": "Da próxima vez, vamos usar o GPS. Chega de virar errado!",
+      "img": "🧭📱",
+      "alvo": "wrong turns",
+      "alvo_pt": "virar errado",
+      "conceito": "No more + substantivo = chega de...",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

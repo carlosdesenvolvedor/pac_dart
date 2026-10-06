@@ -54,6 +54,128 @@ Depois de todo deploy, avise o usuário para **hard refresh** (o service worker 
 
 ---
 
+## 🟣 PAC·C# — a vertente C# (set/2026, EM ANDAMENTO)
+
+Pedido do usuário (27/set/2026): escolher a linguagem no início (Dart ou C#); currículo C# com **pelo menos o
+dobro** dos exercícios do Dart (≥ 4.708), progressivo **Iniciante → Intermediário → Avançado → Sênior**
+(com arquitetura: SOLID, padrões, Clean Architecture, DDD, CQRS, microsserviços), baseado na doc oficial +
+pesquisa de bons treinos; **desafios de lógica que não são de digitação** (só com o que já foi estudado) e
+**desafios/trilhas de jogos** (C# puro, Unity 6, Godot 4, MonoGame). Autorizou ultracode (workflows).
+
+**No app (feito):**
+- `lib/core/linguagem/linguagem.dart` (enum `Linguagem.dart/.csharp`: marca, assets, prefixo de progresso;
+  `Linguagem.atual` estático como `Mixart.atual`) + `linguagem_cubit.dart` (pref `linguagem`, por dispositivo).
+- `EscolhaLinguagemPage` ("Escolha sua trilha", teclas 1/2) aparece quando não há escolha salva e quando se
+  toca em "DART & FLUTTER ⇄" / "C# & .NET ⇄" no HUD. `PacDartApp(linguagemInicial:, curriculoBuilder:)` para testes.
+- Progresso do C# no MESMO doc `users/{uid}` com prefixo **`cs_`** (`cs_concluidas`, `cs_quizNotas`,
+  `cs_projetos`, `cs_trilha`, `cs_licao`, `cs_recorde`); o Dart segue sem prefixo (progresso antigo intacto).
+  Regras do Firestore não mudaram (valem por documento).
+- Modelo: `Trilha.etapa/fundo/perfil/desafios`, `Trecho.linguagem` e `BlocoTeoria.linguagem` (campo `l` no
+  JSON: bash/json/xml/sql… = texto que não é C#), `DesafioLogica` (saida · valor · lacuna · ordenar · bug ·
+  escolha). `DesafiosPage`: fila do fácil ao difícil, teclas 1-4/A-D e Enter, gabarito + explicação; acerto novo
+  vira `desafio:t:i` em `projetosFeitos` e 15 pts no ranking (`RankingCubit.desafiosResolvidos`). Correção pura
+  em `domain/conferir_desafio.dart` (número com vírgula ou ponto, True/true, texto com/sem aspas).
+- Mapa: faixas de etapa (🌱/🚀/⚙️/🏛️), rodapé "🧠 Desafios de lógica" por trilha; fluxo pós-lição emenda os
+  desafios pendentes depois dos projetos.
+- **Teste Master do C#** (`assets/csharp/master.json`): 30 sistemas de console (2.054 linhas), do "Caixa da Padaria" à
+  "Saga de Pagamento" (lotes: 1-10 iniciante→intermediário, 11-20 POO/LINQ/async/JSON, 21-30 arquitetura: State,
+  Specification, DDD, middlewares, token bucket, motor de jogo, CQRS+outbox, saga) — todos compilados e executados no lab,
+  `out` = saída real. Gerados/revisados pelo workflow `teste-master-csharp` (3 autores + 3 revisores adversariais).
+- **Currículo C#**: esboço de **50 trilhas / 615 lições** (8 Iniciante · 13 Intermediário · 15 Avançado · 14 Sênior) em
+  `…/scratchpad/csharp/esboco_final.json` (cópia em `tools/csharp_lab/esboco.json`), gerado por pesquisa multiagente
+  (docs oficiais, roadmap.sh, arquitetura, Exercism/treinos, jogos, sênior). Geração em 3 lotes (A 1-16, B 17-33,
+  C 34-50) pelo workflow `tools/csharp_lab/workflow_gerar_trilhas.js`: autor → desafios → revisor adversarial, cada
+  trilha só vale com "RESULTADO: OK" nos dois validadores.
+- Destaque de sintaxe C# (`tokenizer.dart`, `tokenizar(cod, linguagem:, variante:)`), `CodigoColorido`,
+  botão **copiar** monta o Program.cs com `lib/core/util/programa_csharp.dart` — **mesma regra** do `Montador.cs`
+  do laboratório (usings no topo, comandos na ordem, tipos no fim, `namespace X;` vira bloco). Mudou num, mude no outro.
+- Botão **rodar** no C#: abre o programa no **SharpLab** (sharplab.io) numa aba nova, já no modo Run
+  (`lib/core/util/sharplab.dart`: URL `#v2:` + `LZString.compressToBase64("t:run|código")` — LZString portado 1:1 e
+  conferido contra o JS; `@` vira `@@`). O SharpLab não tem ImplicitUsings nem pt-BR: `programaCSharp(..., paraSharpLab: true)`
+  põe os 7 usings implícitos no topo e `CultureInfo.CurrentCulture = new("pt-BR")` antes dos comandos (testado no navegador:
+  sai "R$ 12,50" como no console do app). Só aparece em perfil console, sem NuGet de fora e sem ReadLine (`rodaNoSharpLab`).
+- A escolha de linguagem é **por conta** (`linguagem_<uid>` nas prefs — navegador compartilhado não vaza a escolha); o "⇄" do
+  HUD abre a escolha como ROTA com "voltar" e escolher a mesma linguagem não derruba a sessão (revisão multiagente, 14 achados
+  confirmados e corrigidos em 27/set).
+- Tutor (Prof. Dash) com persona C# (`GeminiTutorService.persona(Linguagem)`), Arcade no modo C#: palavras C#
+  (`palavras_csharp.dart`), dicas C#, Corrida/Gol/Caça-Bug usam os desafios do currículo C#
+  (`domain/banco_curriculo.dart` + `presentation/banco_arcade.dart`); Lógica Animada segue em Dart.
+
+**Laboratório (a garantia de qualidade):** projeto .NET 10 com Roslyn 5.9 — `Lab trilha arq.json --fix`
+compila cada lição inteira E cada prefixo (o "copiar" de qualquer trecho compila), trata aviso como erro
+(menos "não usado"), roda a lição com cultura **pt-BR** e **preenche o `out` com a saída real** (detecta saída
+não determinística rodando 2×); valida teoria (todo bloco `code` compila sozinho, salvo `// não compila`) e
+projetos. `Lab desafios arq.json --fix` executa cada desafio e corrige o gabarito; lacuna/ordenar checam
+ambiguidade. Perfis: console · web · testes · biblioteca · unity (stub próprio do UnityEngine 6, C# 9;
+`velocity`/`FindObjectOfType` obsoletos) · godot (GodotSharp + Godot.SourceGenerators) · monogame.
+Guias dos agentes geradores: `GUIA-GERADOR.md` e `GUIA-DESAFIOS.md`. Integração: `integrar.py`.
+Cópia durável em **`tools/csharp_lab/`** (fonte do lab + stub Unity + guias + `integrar.py` + `paridade/` +
+`workflow_gerar_trilhas.js`, o roteiro do workflow que gera as trilhas). Paridade app↔lab:
+`Lab montar-lote arq.json lab.json` + `dart run tools/csharp_lab/paridade/bin/paridade.dart arq.json lab.json`
+(fora do projeto: copie a pasta; 20/20 casos difíceis idênticos, inclusive identificadores acentuados).
+
+---
+
+## 🗽 PAC·ENGLISH — o curso de inglês (out/2026, EM ANDAMENTO)
+
+Pedido do usuário (4/out/2026): "terceiro curso, de inglês — frases em inglês para eu escrever com a tradução em
+cima, escrever várias vezes para decorar o contexto, de forma progressiva; sempre escrevo em inglês". Ultracode
+autorizado (pesquisa + criação).
+
+**Pesquisa (workflow `pesquisa-curso-ingles`, 7 dossiês + arquiteto + 3 críticos + revisor):** em
+`<scratchpad da sessão 8078ca22…>/ingles/` — `pesquisa/01-memoria.md` (ciência da memorização digitando),
+`02-progressao.md` (CEFR A1→C1), `03-vocabulario.md`, `04-brasileiros.md` (interferências + regras de tradução),
+`05-produtos.md` (benchmark de UX), `06-audio-teclado.md` (Web Speech + ABNT2/US-Intl), `07-fontes.md` (Tatoeba e
+naturalidade; `pesquisa/fontes07/tatoeba_candidatas_en_ptbr.tsv` = 85 mil pares EN↔PT-BR filtrados),
+`DESIGN.md` (método) e `esboco.json` (117 trilhas / 559 lições: a1 28 · a2 23 · b1 21 · b2 20 · c1 14 · dev 11).
+
+**Método (com evidência — não é "copiar 5× seguidas", que é a pior retenção):** cada frase é digitada **5 vezes
+intercalada** com as outras, com apoio que some: D1 cópia com áudio antes → D2 só as iniciais → D3 só o esqueleto
+(tracinhos) → D4 escondida (só a tradução) → D5 prova na rodada final embaralhada (lags 3/5/7/8 digitações).
+Digitação de memória: pontuação preenchida sozinha e 1ª maiúscula livre (apóstrofo, I, dias e nomes exigidos), nota
+POR PALAVRA (≤1 tecla errada por palavra > 3 letras), Tab = 1 letra, Tab Tab = palavra, Esc = "não sei", errar 2× a
+mesma letra a revela. Errou → frase completa com as palavras erradas sublinhadas + áudio + **cópia de correção** e a
+frase desce um degrau. Teto 8 digitações/frase/dia. Revisão espaçada **Leitner 1·3·7·16·35·80·180 dias** (acertou
+sobe, tropeço fica, errou desce 2 caixas) na "Revisão do dia" (HUD "Revisão · N" e aviso no começo da lição).
+Teste de nivelamento por trilha no mapa ("Já sei esta trilha": 10 frases de memória, 8 limpas = trilha concluída e
+frases na caixa 3). Treino de memória por lição no mapa (nota = melhor).
+
+**No app:**
+- `Linguagem.ingles` (marca ENGLISH, `assets/ingles/`, prefixo `en_`, `ehProgramacao=false`), 3º cartão na escolha
+  (tecla 3). `CursoState.ehIngles`; HomePage troca o palco por `PalcoIngles` (o conteúdo tem GlobalKey: cruzar 1240
+  px não recria a fila). Eventos novos no CursoBloc: `LicaoFinalizada`, `TrechoMostrado` (tutor vê a frase da vez),
+  `TrilhaTestada`.
+- `lib/features/ingles/`: `domain/roteiro.dart` (`FilaLicao` determinística — o começo reproduz a simulação do
+  dossiê; `ModoFrase`, `mascaraDaFrase`), `domain/avaliacao.dart` (nota por palavra), `domain/revisao.dart`
+  (Leitner, chave = hash do texto em inglês), `domain/fonte_frase.dart` (atribuição Tatoeba), `data/voz_ingles.dart`
+  + `fala_web.dart` (Web Speech DIRETO: espera `voiceschanged`, `lang=en-US` sempre, ranking de vozes Edge Natural >
+  Google > Apple; o flutter_tts deixava a 1ª frase sair em voz portuguesa), `data/revisao_repository.dart` (mapa
+  `en_revisao` no `users/{uid}`, cartão "caixa|dia|lapsos"), `presentation/palco_ingles.dart`,
+  `sessao_memoria_page.dart` (Revisão do dia / Treino / Teste, com reaprendizagem sucessiva), `fixacao.dart`,
+  `widgets/frase_view.dart`, `widgets/traducao_card.dart` (PT grande, "ao pé da letra", nota, 🔊 🐢 💡 👁, fonte).
+- Frase = `Trecho(cod: en, dica: pt, lit, conceito: nota, alvo, src)`; teoria ganhou bloco `ex` ("inglês\ntradução"
+  com 🔊). `TypingBloc`: `TrechoCarregado(cod, tolerante:)`, `errosPorPosicao`, aceita ´/` como apóstrofo, NBSP,
+  …, invisíveis, espaço repetido e o desdobramento US-International (`'`+`c` = `ç` vale por `'c` — também ajuda as
+  strings do Dart/C#).
+- Arcade no inglês: só Turismo/Chuva/Rali com `palavras_ingles.dart` (+ `dicasIngles`); Prof. Dash vira professor
+  de inglês (`_personaIngles`, sugestões próprias); mapa com faixas A1…C1, "Créditos e fontes" (Tatoeba CC BY 2.0 FR).
+- Testes: `test/ingles_dominio_test.dart` (fila, máscara, nota, Leitner) e `test/ingles_ui_test.dart` (escolha,
+  lição inteira, correção, Revisão, redimensionar, nivelamento). ⚠️ App montado dentro de `tester.runAsync`: os
+  listeners dos blocs só andam com tempo REAL entre os pumps; páginas abertas por toque nascem na zona falsa.
+
+**Conteúdo:** gerado por workflow (autor → revisor nativo EN → revisor PT/progressão, cada trilha só vale com o
+validador OK). Ferramentas em `tools/ingles/`: `validar.js` (só ASCII digitável, pontuação final, tamanho por
+nível, alvo ⊂ frase, fonte Tatoeba) e `integrar.py` (trilhas → `assets/ingles/curriculo.json`, `src` da atribuição).
+Dados duráveis em `tools/ingles/dados/` (esboço final 120 trilhas / 595 lições, DESIGN.md, IMAGENS.md, pacotes.json,
+trilhas prontas); roteiro para continuar em `tools/ingles/PROMPT-CONTINUAR.md`.
+
+**No ar (6/out/2026):** A1 + A2 + B1 + B2 = **95 trilhas · 465 lições · 4.166 frases** (1.035 do Tatoeba). O B2 (22
+trilhas, 8 pacotes) passou pelo autor e pelos 2 revisores, e o validador deu OK em todas. Falta **C1 + dev** (6 + 4
+pacotes), integrado com `--etapas a1,a2,b1,b2,c1,dev`. Até lá, só o teste de volume (≥ 100 trilhas) de
+`test/ingles_curriculo_test.dart` falha.
+
+---
+
 ## ✨ Features (o que existe)
 
 - **Motor de digitação** Pac-Man: auto-indentação, backspace inteligente, acentos/IME (dead keys).

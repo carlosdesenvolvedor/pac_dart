@@ -1,0 +1,204 @@
+{
+  "id": "dev-code-review.bem-observado-resolvido",
+  "trilha": "dev-code-review",
+  "nome": "Bem observado, resolvido",
+  "emoji": "🙌",
+  "cena": "Agora é o seu PR que recebeu comentários, e você responde um por um.",
+  "resumo": "Responder a comentários no seu PR: Nice catch!, Addressed in the latest commit., I'll push again e Could you take another look?",
+  "fechamento": false,
+  "novos": [
+    "nice catch",
+    "latest commit",
+    "take another look",
+    "push again"
+  ],
+  "apoio": [
+    "addressed"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Responder à revisão"
+    },
+    {
+      "t": "p",
+      "c": "Agradeça (**Nice catch!**), diga o que mudou (**I've added the tests.**, **Addressed in the latest commit.**) e peça nova revisão (**Could you take another look?**)."
+    },
+    {
+      "t": "warn",
+      "c": "Subir código (dar push) = push (não: upload). Já adicionei = I've added (present perfect, sem tempo marcado)."
+    },
+    {
+      "t": "ex",
+      "c": "Nice catch! Addressed in the latest commit.\nBem observado! Resolvido no último commit."
+    }
+  ],
+  "imagem": "📬💬🙌",
+  "visualizacao": "De manhã, você abre o notebook e vê seis comentários novos no seu PR. Pega o café, respira e vai respondendo um por um, sem pressa e com bom humor.",
+  "foto_busca": "developer replying comments laptop morning",
+  "trechos": [
+    {
+      "id": "f-a665ea",
+      "quem": "voce",
+      "cod": "Nice catch! Addressed in the latest commit.",
+      "dica": "Bem observado! Resolvido no último commit.",
+      "img": "🎯✅",
+      "alvo": "Nice catch",
+      "alvo_pt": "Bem observado",
+      "lit": "[lit.: boa pegada]",
+      "conceito": "Nice catch! = bem observado; addressed = resolvido (o comentário foi tratado).",
+      "registro": "escrito-trabalho",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c23041",
+      "quem": "voce",
+      "cod": "Nice catch, I didn't think about empty lists.",
+      "dica": "Bem observado, não pensei em listas vazias.",
+      "img": "🎯🫙",
+      "alvo": "Nice catch",
+      "alvo_pt": "Bem observado",
+      "conceito": "think about = pensar em (não: think in).",
+      "var": [
+        {
+          "em": "think about",
+          "aceita": [
+            "think of"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "in",
+        "don't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-81f051",
+      "quem": "voce",
+      "cod": "I've added the missing tests. They're in the latest commit.",
+      "dica": "Já adicionei os testes que faltavam. Estão no último commit.",
+      "img": "🧪➕",
+      "alvo": "latest commit",
+      "alvo_pt": "último commit",
+      "conceito": "latest = o mais recente; last = o último de uma série que terminou.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR27",
+        "BR02"
+      ],
+      "armadilhas": [
+        "added",
+        "last"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-63df90",
+      "quem": "mike",
+      "contexto": "f-81f051",
+      "cod": "Thanks, but the error message in the latest commit could be clearer.",
+      "dica": "Valeu, mas a mensagem de erro do último commit podia ser mais clara.",
+      "img": "⚠️💬🤔",
+      "alvo": "latest commit",
+      "alvo_pt": "último commit",
+      "conceito": "could be clearer = podia ser mais clara: crítica ao código, sem acusar ninguém.",
+      "blocos": [
+        9
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "last"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-528373",
+      "quem": "voce",
+      "contexto": "f-63df90",
+      "cod": "Good point, I'll fix it and push again.",
+      "dica": "Bom ponto, vou corrigir e dar push de novo.",
+      "img": "🔧⬆️",
+      "alvo": "push again",
+      "alvo_pt": "dar push de novo",
+      "conceito": "subir o código (dar push) = push (não: upload).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "upload"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a3d6b3",
+      "quem": "voce",
+      "cod": "There's a conflict with main. Let me rebase and push again.",
+      "dica": "Tem um conflito com a main. Deixa eu fazer o rebase e dar push de novo.",
+      "img": "🔀⬆️",
+      "alvo": "push again",
+      "alvo_pt": "dar push de novo",
+      "conceito": "rebase = reaplicar seus commits em cima da branch principal.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "upload"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-650c51",
+      "quem": "voce",
+      "cod": "Could you take another look when you have a minute?",
+      "dica": "Você pode dar mais uma olhada quando tiver um minuto?",
+      "img": "👀🔁",
+      "alvo": "take another look",
+      "alvo_pt": "dar mais uma olhada",
+      "conceito": "quando você tiver = when you have (presente depois de when).",
+      "var": [
+        {
+          "em": "Could you",
+          "aceita": [
+            "Can you"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-228f02",
+      "quem": "mike",
+      "contexto": "f-650c51",
+      "cod": "Sure, I'll take another look after lunch.",
+      "dica": "Claro, vou dar mais uma olhada depois do almoço.",
+      "img": "🍽️👀",
+      "alvo": "take another look",
+      "alvo_pt": "dar mais uma olhada",
+      "var": [
+        {
+          "em": "I'll",
+          "aceita": [
+            "I'm going to"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    }
+  ]
+}

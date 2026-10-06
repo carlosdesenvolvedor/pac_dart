@@ -1,0 +1,220 @@
+{
+  "id": "presente-continuo.esta-chovendo-o-tempo",
+  "trilha": "presente-continuo",
+  "nome": "Está chovendo: o tempo",
+  "emoji": "🌧️",
+  "cena": "Manhãs frias em Chicago: antes de sair, você conversa com a Emma, sua anfitriã, sobre a chuva e a neve.",
+  "resumo": "Falar do tempo com It's raining / It's snowing (o it é obrigatório), again e put on.",
+  "fechamento": false,
+  "novos": [
+    "It's raining.",
+    "again",
+    "It's snowing.",
+    "put on"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Está chovendo = It's raining"
+    },
+    {
+      "t": "p",
+      "c": "Em português o tempo não tem sujeito. Em inglês tem: **it**. It's raining. It's snowing. It's cold."
+    },
+    {
+      "t": "ex",
+      "c": "It's raining again!\nEstá chovendo de novo!"
+    },
+    {
+      "t": "tip",
+      "c": "**put on** = colocar (roupa): Put on your coat. **again** = de novo, no fim."
+    },
+    {
+      "t": "warn",
+      "c": "Não: Is raining. O **it** é obrigatório."
+    }
+  ],
+  "imagem": "🌧️❄️🧥",
+  "visualizacao": "Você abre a cortina na casa da Emma, em Chicago. Lá fora, chuva fina e vento gelado; no cabide perto da porta, o seu casaco espera.",
+  "foto_busca": "rainy window city morning",
+  "trechos": [
+    {
+      "id": "f-f597f4",
+      "quem": "voce",
+      "cod": "Is it raining now?",
+      "dica": "Está chovendo agora?",
+      "img": "🌧️❓",
+      "alvo": "raining",
+      "alvo_pt": "chovendo",
+      "lit": "[lit.: isso está chovendo agora?]",
+      "conceito": "O tempo tem sujeito em inglês: Is it raining? (não: Is raining?)",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1300494,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Está chovendo?\"; PT original sem o \"agora\" (now); PT reescrito fiel ao EN",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c47347",
+      "quem": "emma",
+      "contexto": "f-f597f4",
+      "cod": "It's raining again!",
+      "dica": "Está chovendo de novo!",
+      "img": "🌧️🔁",
+      "alvo": "again",
+      "alvo_pt": "de novo",
+      "conceito": "again = de novo; vai no fim da frase.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 507341,
+        "en_autor": "CM",
+        "pt_id": 735012,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e0fc58",
+      "quem": "voce",
+      "contexto": "Come on, let's go!",
+      "cod": "Wait, I'm putting on my coat.",
+      "dica": "Espera, estou colocando o meu casaco.",
+      "img": "🧥🚪",
+      "alvo": "putting on",
+      "alvo_pt": "colocando",
+      "conceito": "Estou colocando = I'm putting on. Atenção: put → putting, com dois t.",
+      "registro": "informal",
+      "armadilhas": [
+        "puting",
+        "put"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-54ebe8",
+      "quem": "voce",
+      "cod": "I'm late because it's raining.",
+      "dica": "Estou atrasado porque está chovendo.",
+      "pt_f": "Estou atrasada porque está chovendo.",
+      "img": "⏰🌧️",
+      "alvo": "it's raining",
+      "alvo_pt": "está chovendo",
+      "conceito": "because = porque. Depois dele, o it continua: because it's raining.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3222a6",
+      "quem": "emma",
+      "cod": "Look, it's snowing!",
+      "dica": "Olha! Está nevando!",
+      "img": "❄️👀",
+      "alvo": "it's snowing",
+      "alvo_pt": "Está nevando",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1147423,
+        "en_autor": "CM",
+        "pt_id": 2083953,
+        "pt_autor": "MarlonX19",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9ae546",
+      "quem": "voce",
+      "contexto": "Hi! How's the weather there?",
+      "cod": "It's snowing here in Chicago.",
+      "dica": "Está nevando aqui em Chicago.",
+      "img": "🌨️🏙️",
+      "alvo": "It's snowing",
+      "alvo_pt": "Está nevando",
+      "conceito": "How's the weather? = Como está o tempo?",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6264185,
+        "en_autor": "CK",
+        "pt_id": 7239913,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"It's snowing here in Boston.\"; PT original: \"Está nevando aqui em Boston.\"; cidade trocada: Boston → Chicago, no EN e no PT",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d7585f",
+      "quem": "emma",
+      "cod": "Put on your coat. It's cold outside.",
+      "dica": "Coloca seu casaco. Está frio lá fora.",
+      "img": "🧥🥶",
+      "alvo": "Put on",
+      "alvo_pt": "Coloca",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8389006,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Coloque seu casaco. Está frio lá fora.\"; PT original \"Coloque seu casaco...\"; reescrito no imperativo falado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a344d2",
+      "quem": "voce",
+      "cod": "Sorry, Mike. I'm late again.",
+      "dica": "Desculpa, Mike. Estou atrasado de novo.",
+      "pt_f": "Desculpa, Mike. Estou atrasada de novo.",
+      "img": "😬⏰",
+      "alvo": "again",
+      "alvo_pt": "de novo",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/mixart.dart';
+import '../../../../core/util/sharplab.dart';
 import '../../../ranking/presentation/ranking_cubit.dart';
 import '../../domain/curriculo.dart';
 import '../bloc/curso_bloc.dart';
@@ -29,6 +30,10 @@ class ProjetoPage extends StatefulWidget {
   final bool emSequencia;
   final int passo, total;
 
+  /// Foto de fundo e perfil da trilha (currículo C#).
+  final String fundo;
+  final String perfil;
+
   const ProjetoPage({
     super.key,
     required this.nivel,
@@ -38,6 +43,8 @@ class ProjetoPage extends StatefulWidget {
     this.emSequencia = false,
     this.passo = 1,
     this.total = 1,
+    this.fundo = '',
+    this.perfil = '',
   });
 
   @override
@@ -74,7 +81,7 @@ class _ProjetoPageState extends State<ProjetoPage> {
         child: Scaffold(
           backgroundColor: Mixart.bg,
           body: Stack(children: [
-            FundoFase(nivel: widget.nivel),
+            FundoFase(nivel: widget.nivel, fundo: widget.fundo),
             SafeArea(
               child: Center(
                 child: ConstrainedBox(
@@ -126,7 +133,10 @@ class _ProjetoPageState extends State<ProjetoPage> {
       focusNode: _foco,
       ehFlutter: p.flutter,
       titulo: p.nome,
-      podeRodar: context.read<CursoBloc>().state.rodavel.projeto(widget.chaveProgresso),
+      podeRodar: context.read<CursoBloc>().state.ehCSharp
+          ? !p.flutter && trechoRodaNoSharpLab([p.cod], widget.perfil)
+          : context.read<CursoBloc>().state.rodavel.projeto(widget.chaveProgresso),
+      perfil: widget.perfil,
       onAvancar: () => _sair(seguir: true),
     );
     if (!p.flutter) return code;

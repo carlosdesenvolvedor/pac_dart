@@ -1,0 +1,294 @@
+{
+  "id": "segunda-condicional.se-eu-fosse-voce",
+  "trilha": "segunda-condicional",
+  "nome": "Se eu fosse você...",
+  "emoji": "🧭",
+  "cena": "A Ana recebeu uma proposta de outra empresa e pede o seu conselho por mensagem.",
+  "resumo": "Aconselhar com If I were you, I'd... e I wouldn't..., com were para todas as pessoas.",
+  "fechamento": false,
+  "novos": [
+    "If I were you",
+    "accept",
+    "a raise",
+    "ask for",
+    "take the job"
+  ],
+  "apoio": [
+    "manager",
+    "decision",
+    "stay"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Se eu fosse você = If I were you"
+    },
+    {
+      "t": "p",
+      "c": "Para aconselhar, imagine-se no lugar da pessoa: **If I were you, I'd** + verbo (ou **I wouldn't** + verbo)."
+    },
+    {
+      "t": "ex",
+      "c": "If I were you, I'd accept the offer.\nSe eu fosse você, aceitaria a proposta."
+    },
+    {
+      "t": "tip",
+      "c": "No if imaginário, **were** serve para todas as pessoas: if it were my decision. Na fala, If I was you também aparece."
+    },
+    {
+      "t": "warn",
+      "c": "Nada de would no if (não: If I would be you)."
+    }
+  ],
+  "imagem": "📱💬🧭",
+  "visualizacao": "Seu celular vibra em cima da mesa. É a Ana, com uma mensagem comprida e três pontos de interrogação: ela quer saber o que você faria.",
+  "foto_busca": "smartphone message advice friend",
+  "trechos": [
+    {
+      "id": "f-a02a26",
+      "quem": "ana",
+      "cod": "I got an offer from another company, but I haven't accepted it yet.",
+      "dica": "Recebi uma proposta de outra empresa, mas ainda não aceitei.",
+      "img": "📩🏢",
+      "alvo": "accepted",
+      "alvo_pt": "aceitei",
+      "conceito": "accept = aceitar. haven't... yet = ainda não (até agora). it obrigatório.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "got",
+          "aceita": [
+            "received"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c9d7dc",
+      "quem": "voce",
+      "contexto": "f-a02a26",
+      "cod": "Congrats! Do you want to accept it?",
+      "dica": "Parabéns! Você quer aceitar?",
+      "img": "🎉❓",
+      "alvo": "accept",
+      "alvo_pt": "aceitar",
+      "conceito": "want to + verbo. it obrigatório: accept it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR18"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Congrats",
+          "aceita": [
+            "Congratulations"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ac49b5",
+      "quem": "ana",
+      "contexto": "f-c9d7dc",
+      "cod": "I don't know. My manager might give me a raise.",
+      "dica": "Não sei. Talvez a minha gestora me dê um aumento.",
+      "img": "💵📈",
+      "alvo": "a raise",
+      "alvo_pt": "um aumento",
+      "conceito": "a raise = um aumento (de salário). Talvez + verbo = might.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8c0afc",
+      "quem": "voce",
+      "contexto": "f-ac49b5",
+      "cod": "Then ask for a raise before you decide.",
+      "dica": "Então pede um aumento antes de decidir.",
+      "img": "🙋💬",
+      "alvo": "ask for",
+      "alvo_pt": "pede",
+      "conceito": "ask for = pedir (algo). before + presente: before you decide.",
+      "var": [
+        {
+          "em": "Then",
+          "aceita": [
+            "So"
+          ]
+        },
+        {
+          "em": "before you decide",
+          "aceita": [
+            "before deciding"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR52"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ab5052",
+      "quem": "ana",
+      "contexto": "f-8c0afc",
+      "cod": "I already asked for a raise in May.",
+      "dica": "Eu já pedi um aumento em maio.",
+      "img": "🗓️🙋‍♀️",
+      "alvo": "a raise",
+      "alvo_pt": "um aumento",
+      "conceito": "Com in May (tempo terminado), passado: I already asked (não: I have asked in May).",
+      "registro": "informal",
+      "interferencias": [
+        "BR17",
+        "BR27",
+        "BR15"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5860805,
+        "en_autor": "CK",
+        "pt_id": 5870322,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'already' e 'in May' acrescentados; PT ajustado (original: \"Eu pedi aumento.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f0210b",
+      "quem": "voce",
+      "contexto": "f-ab5052",
+      "cod": "Well, if I were you, I'd accept the offer.",
+      "dica": "Bom, se eu fosse você, aceitaria a proposta.",
+      "img": "🧭👉",
+      "alvo": "if I were you",
+      "alvo_pt": "se eu fosse você",
+      "conceito": "If I were you = Se eu fosse você (were, também com I).",
+      "var": [
+        {
+          "em": "if I were you",
+          "aceita": [
+            "if I was you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-45d4a9",
+      "quem": "ana",
+      "contexto": "f-f0210b",
+      "cod": "But if I take the job, I'll have to move.",
+      "dica": "Mas, se eu pegar a vaga, vou ter que me mudar.",
+      "img": "📦🚚",
+      "alvo": "take the job",
+      "alvo_pt": "pegar a vaga",
+      "conceito": "take the job = pegar a vaga, aceitar o emprego. Plano real: if + presente, will.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "took",
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8dfc19",
+      "quem": "voce",
+      "contexto": "f-45d4a9",
+      "cod": "Don't be afraid to ask for help with the move.",
+      "dica": "Não tenha medo de pedir ajuda com a mudança.",
+      "img": "🤝🙋‍♀️",
+      "alvo": "ask for",
+      "alvo_pt": "pedir",
+      "conceito": "ask for help = pedir ajuda (com for). the move = a mudança (de casa).",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2811882,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'with the move' acrescentado (liga à fala da Ana); PT reescrito no singular (original: \"Não tenham medo de pedir ajuda.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-20998e",
+      "quem": "ana",
+      "contexto": "f-8dfc19",
+      "cod": "Honestly, would you take the job?",
+      "dica": "Sinceramente, você pegaria a vaga?",
+      "img": "🤔💼",
+      "alvo": "take the job",
+      "alvo_pt": "pegaria a vaga",
+      "conceito": "would you + verbo? = você + -ria?",
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-27cba2",
+      "quem": "voce",
+      "contexto": "f-20998e",
+      "cod": "If I were you, I'd take it. It's a great opportunity.",
+      "dica": "Se eu fosse você, pegaria. É uma ótima oportunidade.",
+      "img": "🚀🌟",
+      "alvo": "If I were you",
+      "alvo_pt": "Se eu fosse você",
+      "lit": "[lit.: eu pegaria ela]",
+      "conceito": "it obrigatório: I'd take it. É uma... = It's a...",
+      "var": [
+        {
+          "em": "If I were you",
+          "aceita": [
+            "If I was you"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57",
+        "BR18",
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

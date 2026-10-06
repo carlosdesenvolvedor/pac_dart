@@ -1,0 +1,332 @@
+{
+  "id": "situacao-saude.na-farmacia-dor-de-cabeca-e-resfriado",
+  "trilha": "situacao-saude",
+  "nome": "Na farmácia: dor de cabeça e resfriado",
+  "emoji": "💊",
+  "cena": "Numa viagem a Austin, você acorda mal e vai à farmácia perto do hotel.",
+  "resumo": "Dizer o que está sentindo e pedir remédio: I have a headache. / Do you have anything for...?",
+  "fechamento": false,
+  "novos": [
+    "headache",
+    "a cold",
+    "sore throat",
+    "fever",
+    "cough"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Estou com dor de... = I have a..."
+    },
+    {
+      "t": "p",
+      "c": "Sintoma em inglês vem com **have** e artigo: I have **a** headache, **a** sore throat, **a** fever. Nada de *I'm with*."
+    },
+    {
+      "t": "warn",
+      "c": "Estou resfriado = I have a cold. *I'm cold* = estou com frio."
+    },
+    {
+      "t": "ex",
+      "c": "Do you have anything for a headache?\nVocê tem alguma coisa para dor de cabeça?"
+    }
+  ],
+  "imagem": "🏪💊🤧",
+  "visualizacao": "Você está no balcão de uma farmácia em Austin, de manhã cedo. A cabeça lateja, a garganta arranha e a farmacêutica espera você explicar o que sente.",
+  "foto_busca": "pharmacy counter pharmacist customer",
+  "trechos": [
+    {
+      "id": "f-470924",
+      "quem": "voce",
+      "cod": "Hi. Do you have anything for a headache?",
+      "dica": "Oi. Você tem alguma coisa para dor de cabeça?",
+      "img": "🤕💊❓",
+      "alvo": "headache",
+      "alvo_pt": "dor de cabeça",
+      "conceito": "Sintoma leva artigo em inglês: a headache (dor de cabeça).",
+      "var": [
+        {
+          "em": "anything",
+          "aceita": [
+            "something"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cf46b7",
+      "quem": "farmaceutica",
+      "contexto": "f-470924",
+      "cod": "Do you have a fever?",
+      "dica": "Você está com febre?",
+      "img": "🌡️❓",
+      "alvo": "fever",
+      "alvo_pt": "febre",
+      "lit": "[lit.: você tem uma febre?]",
+      "conceito": "Estar com febre = have a fever: have e artigo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR04",
+        "BR13"
+      ],
+      "armadilhas": [
+        "are",
+        "with"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4300659,
+        "en_autor": "Ronin1134",
+        "pt_id": 4300677,
+        "pt_autor": "jackcool",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "só a 1ª frase do par (EN e PT); a 2ª frase foi removida",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fbfc2d",
+      "quem": "voce",
+      "contexto": "f-cf46b7",
+      "cod": "No, I don't have a fever.",
+      "dica": "Não, não estou com febre.",
+      "img": "🌡️🙅",
+      "alvo": "fever",
+      "alvo_pt": "febre",
+      "registro": "neutro",
+      "interferencias": [
+        "BR04",
+        "BR07"
+      ],
+      "armadilhas": [
+        "am",
+        "with"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1252922,
+        "en_autor": "CK",
+        "pt_id": 4831147,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado 'No,' no EN e 'Não,' no PT",
+        "export": "2026-10-03"
+      },
+      "conceito": "Não estou com febre = I don't have a fever: do na negativa, have e artigo."
+    },
+    {
+      "id": "f-8e3e2f",
+      "quem": "voce",
+      "cod": "I woke up with a sore throat.",
+      "dica": "Acordei com dor de garganta.",
+      "img": "⏰😣🗣️",
+      "alvo": "sore throat",
+      "alvo_pt": "dor de garganta",
+      "lit": "[lit.: uma garganta dolorida]",
+      "conceito": "Dor de garganta = a sore throat (sore = dolorido).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1123905,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito: o original diz 'garganta inflamada'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-09fb5f",
+      "quem": "farmaceutica",
+      "contexto": "f-8e3e2f",
+      "cod": "Do you have a cough?",
+      "dica": "Você está com tosse?",
+      "img": "😷💨❓",
+      "alvo": "cough",
+      "alvo_pt": "tosse",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "variacao_de": "f-cf46b7",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3bd9d1",
+      "quem": "voce",
+      "contexto": "f-09fb5f",
+      "cod": "Yes, I cough a lot at night.",
+      "dica": "Sim, tusso muito à noite.",
+      "img": "🌙😷💨",
+      "alvo": "cough",
+      "alvo_pt": "tusso",
+      "conceito": "cough = tosse e também tossir: I cough = eu tusso. Muito com verbo = a lot.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR23"
+      ],
+      "armadilhas": [
+        "very",
+        "much"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5840513,
+        "en_autor": "CK",
+        "pt_id": 7262157,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentados 'Yes,' e 'at night' no EN e 'Sim,' e 'à noite' no PT",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-234fab",
+      "quem": "voce",
+      "cod": "I have a bit of a cold.",
+      "dica": "Estou um pouco resfriado.",
+      "img": "🤧🤏",
+      "alvo": "a cold",
+      "alvo_pt": "resfriado",
+      "lit": "[lit.: tenho um pouco de um resfriado]",
+      "conceito": "Estou resfriado = I have a cold. I'm cold = estou com frio.",
+      "pt_f": "Estou um pouco resfriada.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "i'm",
+        "am"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2821984,
+        "en_autor": "Dejo",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito: o original ('Peguei um resfriado') não é fiel",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "a bit of a cold",
+          "aceita": [
+            "a little cold"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cfa406",
+      "quem": "voce",
+      "cod": "What should I take for a cold?",
+      "dica": "O que eu devo tomar para resfriado?",
+      "img": "🤧💊🤔",
+      "alvo": "a cold",
+      "alvo_pt": "resfriado",
+      "conceito": "Tomar remédio = take. Depois de should, verbo sem to.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30",
+        "BR06"
+      ],
+      "armadilhas": [
+        "to",
+        "drink"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3cb145",
+      "quem": "farmaceutica",
+      "contexto": "f-cfa406",
+      "cod": "Try this. It's good for a sore throat too.",
+      "dica": "Experimenta este. É bom para dor de garganta também.",
+      "img": "👉💊🗣️",
+      "alvo": "sore throat",
+      "alvo_pt": "dor de garganta",
+      "conceito": "É bom = It's good: o it é obrigatório.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Try this",
+          "aceita": [
+            "Try this one"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a8d679",
+      "quem": "voce",
+      "contexto": "f-3cb145",
+      "cod": "I have a headache too. Is it good for that?",
+      "dica": "Estou com dor de cabeça também. É bom para isso?",
+      "img": "🤕👍❓",
+      "alvo": "headache",
+      "alvo_pt": "dor de cabeça",
+      "conceito": "Estou com dor de cabeça = I have a headache: have e artigo (não: I am with).",
+      "var": [
+        {
+          "em": "for that",
+          "aceita": [
+            "for it",
+            "for this"
+          ]
+        },
+        {
+          "em": "I have a headache too",
+          "aceita": [
+            "I also have a headache"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR04",
+        "BR13",
+        "BR01"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

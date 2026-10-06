@@ -1,0 +1,335 @@
+{
+  "id": "eu-costumava.a-gente-nao-tinha-internet",
+  "trilha": "eu-costumava",
+  "nome": "A gente não tinha internet",
+  "emoji": "📼",
+  "cena": "No apartamento da Julia, vocês abrem uma caixa de coisas antigas e comparam aquele tempo com hoje.",
+  "resumo": "Negar e perguntar sobre o passado com didn't use to e Did you use to...?, e comparar com hoje: these days, nowadays.",
+  "fechamento": false,
+  "novos": [
+    "didn't use to",
+    "Did you use to...?",
+    "these days",
+    "cell phone",
+    "nowadays"
+  ],
+  "apoio": [
+    "slow"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Não tinha / Você tinha?: didn't use to e Did you use to"
+    },
+    {
+      "t": "p",
+      "c": "Na negativa e na pergunta, o **did** já marca o passado: fica **use**, sem -d. I **didn't use to**... / **Did you use to**...? Resposta curta: Yes, I did. / No, I didn't."
+    },
+    {
+      "t": "ex",
+      "c": "Phones didn't use to have internet.\nOs celulares não tinham internet."
+    },
+    {
+      "t": "tip",
+      "c": "**these days** = hoje em dia (conversa); **nowadays** = nos dias de hoje (um pouco mais formal)."
+    },
+    {
+      "t": "warn",
+      "c": "Evite didn't used to e Did you used to: o -d fica só na afirmativa (I used to)."
+    }
+  ],
+  "imagem": "📦📱🎮",
+  "visualizacao": "Você está no sofá da Julia, com uma caixa velha aberta no chão. Ela tira um celular pequeno, jogos de videogame e um mapa dobrado, e vocês dois riem.",
+  "foto_busca": "old cell phone box memories",
+  "trechos": [
+    {
+      "id": "f-a75c4e",
+      "quem": "voce",
+      "cod": "Is this your first cell phone?",
+      "dica": "Esse é o seu primeiro celular?",
+      "img": "📱🤔",
+      "alvo": "cell phone",
+      "alvo_pt": "celular",
+      "conceito": "cell phone = (telefone) celular; no dia a dia, muita gente diz só phone.",
+      "var": [
+        {
+          "em": "cell phone",
+          "aceita": [
+            "phone",
+            "cellphone"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "celular",
+        "mobile"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6945954,
+        "en_autor": "CK",
+        "pt_id": 6945979,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'cellphone' → 'first cell phone'; PT ajustado (primeiro)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-71c26f",
+      "quem": "julia",
+      "contexto": "f-a75c4e",
+      "cod": "Yes! Phones didn't use to have internet.",
+      "dica": "É! Os celulares não tinham internet.",
+      "img": "📱🌐🚫",
+      "alvo": "didn't use to have",
+      "alvo_pt": "não tinham",
+      "lit": "[lit.: celulares não costumavam ter internet]",
+      "conceito": "Negativa: didn't use to (use sem -d: o did já marca o passado).",
+      "var": [
+        {
+          "em": "Phones",
+          "aceita": [
+            "Cell phones"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48",
+        "BR07"
+      ],
+      "armadilhas": [
+        "didn't used",
+        "weren't having"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ec1ff1",
+      "quem": "voce",
+      "contexto": "f-71c26f",
+      "cod": "Right. These days, they do everything.",
+      "dica": "Pois é. Hoje em dia, fazem de tudo.",
+      "img": "📱🎧📸",
+      "alvo": "These days",
+      "alvo_pt": "Hoje em dia",
+      "conceito": "these days = hoje em dia. Em inglês, o sujeito they é obrigatório.",
+      "var": [
+        {
+          "em": "Right",
+          "aceita": [
+            "Yeah",
+            "I know"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "make everything",
+        "do of everything"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ed5fa6",
+      "quem": "voce",
+      "contexto": "f-a75c4e",
+      "cod": "Did you use to take it to school?",
+      "dica": "Você levava pra escola?",
+      "img": "🎒📱❓",
+      "alvo": "Did you use to take",
+      "alvo_pt": "Você levava",
+      "lit": "[lit.: você costumava levá-lo pra escola?]",
+      "conceito": "Pergunta: Did you use to + verbo? (use sem -d). O objeto é obrigatório: take it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR48",
+        "BR18"
+      ],
+      "armadilhas": [
+        "used",
+        "bring"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6ee512",
+      "quem": "julia",
+      "contexto": "f-ed5fa6",
+      "cod": "No, I didn't. Kids didn't use to take phones to school.",
+      "dica": "Não levava. As crianças não levavam celular pra escola.",
+      "img": "🧒📵🏫",
+      "alvo": "didn't use to take",
+      "alvo_pt": "não levavam",
+      "conceito": "Resposta curta: No, I didn't. Kids, no geral, vai sem the.",
+      "var": [
+        {
+          "em": "phones",
+          "aceita": [
+            "cell phones",
+            "their phones"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48",
+        "BR21"
+      ],
+      "armadilhas": [
+        "didn't used",
+        "the kids"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-afa31c",
+      "quem": "voce",
+      "contexto": "f-6ee512",
+      "cod": "Nowadays, kids get a phone at eight.",
+      "dica": "Nos dias de hoje, as crianças ganham celular aos oito.",
+      "img": "🧒🎁📱",
+      "alvo": "Nowadays",
+      "alvo_pt": "Nos dias de hoje",
+      "conceito": "nowadays = nos dias de hoje (these days = hoje em dia). Ganhar (receber) = get, não win.",
+      "var": [
+        {
+          "em": "a phone",
+          "aceita": [
+            "a cell phone",
+            "phones"
+          ]
+        },
+        {
+          "em": "at eight",
+          "aceita": [
+            "at age eight",
+            "at eight years old"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR35"
+      ],
+      "armadilhas": [
+        "win",
+        "earn"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b60620",
+      "quem": "julia",
+      "contexto": "f-afa31c",
+      "cod": "That's pretty common these days.",
+      "dica": "Isso é bem comum hoje em dia.",
+      "img": "👍📱",
+      "alvo": "these days",
+      "alvo_pt": "hoje em dia",
+      "conceito": "these days costuma ir no fim da frase. pretty + adjetivo = bem, bastante.",
+      "var": [
+        {
+          "em": "pretty",
+          "aceita": [
+            "very",
+            "really"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "in these days"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5132203,
+        "en_autor": "CK",
+        "pt_id": 8594310,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN igual ao original; PT ajustado: muito comum → bem comum (pretty)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1bdae5",
+      "quem": "voce",
+      "cod": "Did you use to play these games with Lucas?",
+      "dica": "Você jogava esses jogos com o Lucas?",
+      "img": "🎮👫❓",
+      "alvo": "Did you use to play",
+      "alvo_pt": "Você jogava",
+      "conceito": "Você jogava...? = Did you use to play...? O did leva a marca do passado.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR48"
+      ],
+      "armadilhas": [
+        "used",
+        "were you playing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1dc292",
+      "quem": "julia",
+      "contexto": "f-1bdae5",
+      "cod": "Every day! Now he only plays on his cell phone.",
+      "dica": "Todo dia! Agora ele só joga no celular dele.",
+      "img": "👦📱🕹️",
+      "alvo": "cell phone",
+      "alvo_pt": "celular",
+      "conceito": "-s da 3ª pessoa: he plays. only antes do verbo = só.",
+      "var": [
+        {
+          "em": "cell phone",
+          "aceita": [
+            "phone",
+            "cellphone"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "play",
+        "in his"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9a2e31",
+      "quem": "julia",
+      "cod": "Look at this old map! Nowadays, nobody prints maps.",
+      "dica": "Olha esse mapa velho! Nos dias de hoje, ninguém imprime mapa.",
+      "img": "🗺️🖨️🚫",
+      "alvo": "Nowadays",
+      "alvo_pt": "Nos dias de hoje",
+      "conceito": "nobody + verbo afirmativo, com -s: nobody prints (uma negação só).",
+      "registro": "informal",
+      "armadilhas": [
+        "doesn't print",
+        "print"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

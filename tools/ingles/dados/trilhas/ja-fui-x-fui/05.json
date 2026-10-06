@@ -1,0 +1,301 @@
+{
+  "id": "ja-fui-x-fui.ja-revisou-revisou-quando-no-trabalho",
+  "trilha": "ja-fui-x-fui",
+  "nome": "Já revisou? Revisou quando? No trabalho",
+  "emoji": "🔁",
+  "cena": "No fim da tarde, numa call, o Mike pede status: o PR da Ana, o deploy e o retorno do cliente.",
+  "resumo": "Status com present perfect (yet, still haven't) e o quando com passado simples (an hour ago, last week).",
+  "fechamento": false,
+  "novos": [
+    "still haven't (ainda não)",
+    "an hour ago",
+    "hear back from (ter retorno de)"
+  ],
+  "apoio": [
+    "review (revisar)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Status: já / ainda não / quando"
+    },
+    {
+      "t": "p",
+      "c": "Sem quando: **Have you heard back from the client yet?** / **I still haven't heard back.** Quando aparece o quando, a conversa muda de tempo: **She reviewed it an hour ago.**"
+    },
+    {
+      "t": "p",
+      "c": "**still haven't** = continuo sem / ainda não, com a ideia de demora. O still vem antes do haven't; o yet fica no fim da frase."
+    },
+    {
+      "t": "warn",
+      "c": "há uma hora = an hour ago, no fim e com passado (não: She has reviewed it an hour ago / before one hour)."
+    },
+    {
+      "t": "ex",
+      "c": "Has Ana reviewed the PR yet? She reviewed it this morning.\nA Ana já revisou o PR? Ela revisou hoje de manhã."
+    }
+  ],
+  "imagem": "💻🔁⏰",
+  "visualizacao": "Fim de tarde, o sol entra torto pela sua janela. Na call, você vê o Mike abrir a lista de tarefas e perguntar, uma por uma, o que já saiu e o que ainda está parado.",
+  "foto_busca": "developer video call status meeting",
+  "trechos": [
+    {
+      "id": "f-325053",
+      "quem": "mike",
+      "cod": "Have you heard back from the client yet?",
+      "dica": "Você já teve retorno do cliente?",
+      "img": "📨❓",
+      "alvo": "heard back from",
+      "alvo_pt": "teve retorno",
+      "lit": "[lit.: ouviu de volta de]",
+      "conceito": "ter retorno de alguém = hear back from. já...? sem quando = Have you...yet?",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "return",
+        "did"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb13a3",
+      "quem": "voce",
+      "contexto": "f-325053",
+      "cod": "No, I still haven't heard back from them.",
+      "dica": "Não, continuo sem ter retorno deles.",
+      "img": "🤷📭",
+      "alvo": "still haven't",
+      "alvo_pt": "continuo sem",
+      "conceito": "continuo sem / ainda não (com demora) = still haven't. O still vem antes do auxiliar.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "yet",
+        "didn't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1418e1",
+      "quem": "mike",
+      "contexto": "f-cb13a3",
+      "cod": "That's strange. Last time, we heard back from them the same day.",
+      "dica": "Que estranho. Da última vez, a gente teve retorno deles no mesmo dia.",
+      "img": "🗓️🤨",
+      "alvo": "heard back from",
+      "alvo_pt": "teve retorno",
+      "conceito": "Da última vez (já acabou) = passado: we heard back (não: we've heard back).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have",
+        "hear"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        2
+      ],
+      "var": [
+        {
+          "em": "Last time",
+          "aceita": [
+            "The last time"
+          ]
+        },
+        {
+          "em": "the same day",
+          "aceita": [
+            "on the same day"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b08687",
+      "quem": "voce",
+      "contexto": "Has Ana reviewed the PR yet?",
+      "cod": "Yes, she reviewed it an hour ago.",
+      "dica": "Sim, ela revisou há uma hora.",
+      "img": "🕐✅",
+      "alvo": "an hour ago",
+      "alvo_pt": "há uma hora",
+      "conceito": "há + tempo (passado terminado) = ... ago, no fim. Com quando, passado: reviewed.",
+      "registro": "informal",
+      "interferencias": [
+        "BR26",
+        "BR27"
+      ],
+      "armadilhas": [
+        "before",
+        "has",
+        "there"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a6bc51",
+      "quem": "ana",
+      "cod": "I heard back from Sarah an hour ago. She approved the colors.",
+      "dica": "Tive retorno da Sarah há uma hora. Ela aprovou as cores.",
+      "img": "🎨👍",
+      "alvo": "an hour ago",
+      "alvo_pt": "há uma hora",
+      "conceito": "Com há uma hora, o ter retorno vai para o passado: I heard back.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR26",
+        "BR27"
+      ],
+      "armadilhas": [
+        "have",
+        "before"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-560b05",
+      "quem": "ana",
+      "cod": "But I still haven't had time to finish the icons.",
+      "dica": "Mas continuo sem tempo pra terminar os ícones.",
+      "img": "⏳🖌️",
+      "alvo": "still haven't",
+      "alvo_pt": "continuo sem",
+      "conceito": "continuo sem tempo pra... = I still haven't had time to...",
+      "var": [
+        {
+          "em": "haven't had",
+          "aceita": [
+            "don't have"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "yet",
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d28b12",
+      "quem": "voce",
+      "contexto": "And the deploy?",
+      "cod": "We haven't deployed it yet. We tested it an hour ago.",
+      "dica": "Ainda não fizemos deploy. Testamos há uma hora.",
+      "img": "🚀⏸️",
+      "alvo": "an hour ago",
+      "alvo_pt": "há uma hora",
+      "conceito": "Ainda não (status) = haven't...yet. Testamos há uma hora = We tested it an hour ago (com o objeto it).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR26",
+        "BR27"
+      ],
+      "armadilhas": [
+        "before",
+        "didn't"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "deployed it",
+          "aceita": [
+            "deployed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-47c091",
+      "quem": "voce",
+      "cod": "We still haven't found the problem with the login.",
+      "dica": "A gente continua sem achar o problema do login.",
+      "img": "🔍🔐",
+      "alvo": "still haven't",
+      "alvo_pt": "continua sem",
+      "conceito": "a gente continua sem achar = we still haven't found.",
+      "var": [
+        {
+          "em": "the problem with the login",
+          "aceita": [
+            "the login problem"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "yet",
+        "didn't"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5325834,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I still haven't found a job. → We still haven't found the problem with the login.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6bd53a",
+      "quem": "mike",
+      "cod": "Let me know when you hear back from the client.",
+      "dica": "Me avisa quando tiver retorno do cliente.",
+      "img": "📲🔔",
+      "alvo": "hear back from",
+      "alvo_pt": "tiver retorno",
+      "conceito": "quando + presente com sentido de futuro: when you hear back (não: when you will hear).",
+      "registro": "informal",
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-392bac",
+      "quem": "voce",
+      "contexto": "f-6bd53a",
+      "cod": "Sure. I emailed them again an hour ago.",
+      "dica": "Claro. Mandei e-mail pra eles de novo há uma hora.",
+      "img": "📧🔁",
+      "alvo": "an hour ago",
+      "alvo_pt": "há uma hora",
+      "conceito": "há uma hora = an hour ago, com passado simples.",
+      "var": [
+        {
+          "em": "emailed them",
+          "aceita": [
+            "sent them an email"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR26"
+      ],
+      "armadilhas": [
+        "before",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

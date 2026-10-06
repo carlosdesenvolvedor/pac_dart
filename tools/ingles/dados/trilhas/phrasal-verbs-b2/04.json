@@ -1,0 +1,237 @@
+{
+  "id": "phrasal-verbs-b2.assumir-e-levantar-um-assunto",
+  "trilha": "phrasal-verbs-b2",
+  "nome": "Assumir e levantar um assunto",
+  "emoji": "🙋",
+  "cena": "Numa conversa individual com o Mike, você negocia o que consegue assumir no próximo trimestre.",
+  "resumo": "Negociar tarefas com bring up, sign up for, fill in for e step in.",
+  "fechamento": false,
+  "novos": [
+    "bring up",
+    "step in",
+    "fill in for",
+    "sign up for"
+  ],
+  "apoio": [
+    "take on",
+    "workload",
+    "by the way"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Levantar, se inscrever, substituir"
+    },
+    {
+      "t": "p",
+      "c": "**bring up** = levantar (um assunto) · **sign up for** = se inscrever em · **fill in for** = substituir alguém · **step in** = intervir. **take on** (assumir) você já conhece."
+    },
+    {
+      "t": "warn",
+      "c": "assumir uma tarefa = take on (não: assume, que é supor). Com pronome, a partícula vai depois: bring it up, turn it down (não: turned down it)."
+    },
+    {
+      "t": "ex",
+      "c": "I'd like to bring something up before we finish.\nEu gostaria de levantar um assunto antes de a gente terminar."
+    }
+  ],
+  "imagem": "🙋📋🤝",
+  "visualizacao": "Conversa individual com o Mike, só vocês dois na chamada. Você tem três itens anotados no caderno e respira fundo antes de falar do primeiro.",
+  "foto_busca": "one on one meeting video call notes",
+  "trechos": [
+    {
+      "id": "f-a78f2c",
+      "quem": "voce",
+      "cod": "I'd like to bring something up before we finish.",
+      "dica": "Eu gostaria de levantar um assunto antes de a gente terminar.",
+      "img": "🙋💬",
+      "alvo": "bring something up",
+      "alvo_pt": "levantar um assunto",
+      "lit": "[lit.: trazer algo para cima]",
+      "conceito": "bring up = levantar (assunto); com objeto curto, ele vai no meio.",
+      "var": [
+        {
+          "em": "I'd like",
+          "aceita": [
+            "I would like"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "armadilhas": [
+        "raise"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bca26b",
+      "quem": "mike",
+      "contexto": "f-a78f2c",
+      "cod": "Sure. What did you want to bring up?",
+      "dica": "Claro. Que assunto você queria levantar?",
+      "img": "👂❓",
+      "alvo": "bring up",
+      "alvo_pt": "levantar",
+      "conceito": "Pergunta com did: What did you want...? (want na forma base).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "wanted"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ff75bc",
+      "quem": "voce",
+      "contexto": "f-bca26b",
+      "cod": "It's my workload. I signed up for too many projects.",
+      "dica": "É a minha carga de trabalho. Me inscrevi em projetos demais.",
+      "img": "📚😵",
+      "alvo": "signed up for",
+      "alvo_pt": "Me inscrevi em",
+      "conceito": "se inscrever em = sign up for; projetos demais = too many projects.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR62"
+      ],
+      "armadilhas": [
+        "subscribed",
+        "in",
+        "myself"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c3a724",
+      "quem": "mike",
+      "contexto": "f-ff75bc",
+      "cod": "Then don't sign up for any more projects this quarter.",
+      "dica": "Então não se inscreve em mais nenhum projeto neste trimestre.",
+      "img": "🚫📝",
+      "alvo": "sign up for",
+      "alvo_pt": "se inscreve em",
+      "conceito": "mais nenhum projeto = any more projects (negativa com any); neste trimestre = this quarter.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "in",
+        "another",
+        "no"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9345766,
+        "en_autor": "Nylez",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Please don't sign up for that course.\"; Please → Then; that course → any more projects this quarter; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8f26d3",
+      "quem": "voce",
+      "cod": "Also, could you fill in for me on Friday's client call?",
+      "dica": "E também, você poderia me substituir na call com o cliente de sexta?",
+      "img": "🔄📞",
+      "alvo": "fill in for me",
+      "alvo_pt": "me substituir",
+      "conceito": "substituir alguém = fill in for someone; na call = on the call (en-US).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "substitute",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d96219",
+      "quem": "mike",
+      "contexto": "f-8f26d3",
+      "cod": "I can't, but Sarah can fill in for you.",
+      "dica": "Eu não posso, mas a Sarah pode te substituir.",
+      "img": "🙅➡️👩",
+      "alvo": "fill in for you",
+      "alvo_pt": "te substituir",
+      "conceito": "Sarah sem artigo; fill in for you = te substituir.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "the",
+        "substitute"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-10a890",
+      "quem": "mike",
+      "contexto": "f-d96219",
+      "cod": "If the client gets difficult, Sarah can call me and I'll step in.",
+      "dica": "Se o cliente ficar difícil, a Sarah pode me ligar e eu intervenho.",
+      "img": "😠🛡️",
+      "alvo": "step in",
+      "alvo_pt": "intervenho",
+      "conceito": "step in = intervir, entrar para ajudar; if + presente (não: if the client will get).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR28",
+        "BR33"
+      ],
+      "armadilhas": [
+        "will",
+        "intervene"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        5
+      ]
+    },
+    {
+      "id": "f-5962b4",
+      "quem": "voce",
+      "contexto": "f-10a890",
+      "cod": "By the way, thanks for stepping in last time.",
+      "dica": "Aliás, obrigado por ter intervindo da última vez.",
+      "pt_f": "Aliás, obrigada por ter intervindo da última vez.",
+      "img": "🙏🛡️",
+      "alvo": "stepping in",
+      "alvo_pt": "intervindo",
+      "conceito": "thanks for + -ing: thanks for stepping in (não: for step in).",
+      "var": [
+        {
+          "em": "last time",
+          "aceita": [
+            "the last time"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "step",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

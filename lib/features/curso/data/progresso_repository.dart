@@ -23,12 +23,17 @@ abstract interface class ProgressoRepository {
 /// Persistência local no dispositivo (shared_preferences). Usada offline e
 /// nos testes.
 class LocalProgressoRepository implements ProgressoRepository {
-  static const _kConcluidas = 'concluidas';
-  static const _kTrilha = 'trilha';
-  static const _kLicao = 'licao';
-  static const _kRecorde = 'recorde';
-  static const _kQuiz = 'quiz_notas';
-  static const _kProjetos = 'projetos_feitos';
+  /// Prefixo das chaves — cada vertente (Dart, C#) guarda o próprio
+  /// progresso. O Dart usa '' (as chaves de sempre).
+  final String prefixo;
+  LocalProgressoRepository({this.prefixo = ''});
+
+  String get _kConcluidas => '${prefixo}concluidas';
+  String get _kTrilha => '${prefixo}trilha';
+  String get _kLicao => '${prefixo}licao';
+  String get _kRecorde => '${prefixo}recorde';
+  String get _kQuiz => '${prefixo}quiz_notas';
+  String get _kProjetos => '${prefixo}projetos_feitos';
 
   @override
   Future<Set<String>> concluidas() async {

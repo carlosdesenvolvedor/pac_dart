@@ -1,0 +1,293 @@
+{
+  "id": "ha-quanto-tempo.trabalho-aqui-desde-2022",
+  "trilha": "ha-quanto-tempo",
+  "nome": "Trabalho aqui desde 2022",
+  "emoji": "📅",
+  "cena": "Primeira call com um cliente novo: você e a Sarah se apresentam e dizem desde quando estão na empresa e no cargo.",
+  "resumo": "Desde quando: have + particípio + since + o começo (since 2020, since January, since May).",
+  "fechamento": false,
+  "novos": [
+    "since",
+    "role",
+    "position",
+    "full-time",
+    "part-time"
+  ],
+  "apoio": [
+    "hire"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Desde quando? since + o começo"
+    },
+    {
+      "t": "p",
+      "c": "**for** + duração (for two years); **since** + o começo (since 2020, since January, since Monday). Os dois pedem **present perfect**: I've worked from home since 2020."
+    },
+    {
+      "t": "warn",
+      "c": "Trabalho aqui desde 2022 = I've worked here since 2022 (não: I work here since 2022)."
+    },
+    {
+      "t": "tip",
+      "c": "função no time = role; cargo na empresa = position; tempo integral = full-time; meio período = part-time."
+    },
+    {
+      "t": "ex",
+      "c": "She's been our designer since May.\nEla é a nossa designer desde maio."
+    }
+  ],
+  "imagem": "💻🤝📅",
+  "visualizacao": "Sua câmera liga e aparecem rostos novos na tela: o cliente e o time dele. A Sarah sorri, faz as apresentações e chega a sua vez de falar.",
+  "foto_busca": "video conference introductions laptop",
+  "trechos": [
+    {
+      "id": "f-8d9942",
+      "quem": "voce",
+      "cod": "I've worked from home since 2020.",
+      "dica": "Trabalho de casa desde 2020.",
+      "img": "🏡💻",
+      "alvo": "since",
+      "alvo_pt": "desde",
+      "conceito": "Trabalho desde (e continuo) = I've worked since (não: I work since).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "work",
+        "for"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8144af",
+      "quem": "sarah",
+      "cod": "Mike, our tech lead, has worked here since 2015.",
+      "dica": "O Mike, nosso tech lead, trabalha aqui desde 2015.",
+      "img": "🏢🗓️",
+      "alvo": "since",
+      "alvo_pt": "desde",
+      "conceito": "Mike has worked (3ª pessoa: has). desde 2015 = since 2015.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "works",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d46bc9",
+      "quem": "cliente",
+      "cod": "And what's your role on the project?",
+      "dica": "E qual é a sua função no projeto?",
+      "img": "🧩❓",
+      "alvo": "role",
+      "alvo_pt": "função",
+      "conceito": "função (o papel no time) = role.",
+      "registro": "neutro",
+      "armadilhas": [
+        "function",
+        "in"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "on the project",
+          "aceita": [
+            "in the project"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b2742d",
+      "quem": "voce",
+      "contexto": "f-d46bc9",
+      "cod": "I'm the mobile developer. I've been in this role for two years.",
+      "dica": "Sou o desenvolvedor mobile. Estou nessa função há dois anos.",
+      "img": "📱🛠️",
+      "alvo": "role",
+      "alvo_pt": "função",
+      "conceito": "Estou nessa função há dois anos = I've been in this role for two years.",
+      "blocos": [
+        4
+      ],
+      "pt_f": "Sou a desenvolvedora mobile. Estou nessa função há dois anos.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR47",
+        "BR63"
+      ],
+      "armadilhas": [
+        "function",
+        "ago"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-41045d",
+      "quem": "cliente",
+      "cod": "Sarah, what's your position at the company?",
+      "dica": "Sarah, qual é o seu cargo na empresa?",
+      "img": "🏷️👔",
+      "alvo": "position",
+      "alvo_pt": "cargo",
+      "conceito": "cargo = position (o nome do posto na empresa).",
+      "registro": "neutro",
+      "armadilhas": [
+        "charge",
+        "post"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "at the company",
+          "aceita": [
+            "in the company"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7f4815",
+      "quem": "sarah",
+      "contexto": "f-41045d",
+      "cod": "I'm a product manager. I've been in this position since 2021.",
+      "dica": "Sou gerente de produto. Estou nesse cargo desde 2021.",
+      "img": "📊👩",
+      "alvo": "position",
+      "alvo_pt": "cargo",
+      "conceito": "Estou nesse cargo desde 2021 = I've been in this position since 2021. Profissão com a: a product manager.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR47",
+        "BR13"
+      ],
+      "armadilhas": [
+        "charge"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-510d44",
+      "quem": "cliente",
+      "cod": "Do you work on our project full-time?",
+      "dica": "Você trabalha no nosso projeto em tempo integral?",
+      "img": "⏰📆",
+      "alvo": "full-time",
+      "alvo_pt": "em tempo integral",
+      "conceito": "tempo integral = full-time.",
+      "var": [
+        {
+          "em": "work on our project full-time",
+          "aceita": [
+            "work on our project full time",
+            "work full-time on our project",
+            "work full time on our project"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "integral"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-022a66",
+      "quem": "voce",
+      "contexto": "f-510d44",
+      "cod": "Yes, I've worked on it full-time since Monday.",
+      "dica": "Sim, trabalho nele em tempo integral desde segunda.",
+      "img": "✅🗓️",
+      "alvo": "full-time",
+      "alvo_pt": "em tempo integral",
+      "conceito": "desde segunda (e continuo) = since Monday, com present perfect. Dia da semana com maiúscula.",
+      "var": [
+        {
+          "em": "full-time",
+          "aceita": [
+            "full time"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR47",
+        "BR15"
+      ],
+      "armadilhas": [
+        "work",
+        "monday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-614295",
+      "quem": "voce",
+      "cod": "Our new designer works part-time during the summer.",
+      "dica": "A nossa designer nova trabalha meio período durante o verão.",
+      "img": "🎨☀️",
+      "alvo": "part-time",
+      "alvo_pt": "meio período",
+      "conceito": "meio período = part-time. durante o verão = during the summer (during + período, não duração).",
+      "var": [
+        {
+          "em": "part-time",
+          "aceita": [
+            "part time"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "work",
+        "half",
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-da71c6",
+      "quem": "sarah",
+      "contexto": "f-614295",
+      "cod": "She's worked part-time with us since May.",
+      "dica": "Ela trabalha meio período conosco desde maio.",
+      "img": "🌸🤝",
+      "alvo": "part-time",
+      "alvo_pt": "meio período",
+      "conceito": "she's worked = she has worked (o 's antes de particípio é has).",
+      "var": [
+        {
+          "em": "part-time",
+          "aceita": [
+            "part time"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR47",
+        "BR15"
+      ],
+      "armadilhas": [
+        "works",
+        "for",
+        "may"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

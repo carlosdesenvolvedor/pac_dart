@@ -1,0 +1,268 @@
+{
+  "id": "deducao-no-passado.por-que-o-build-quebrou",
+  "trilha": "deducao-no-passado",
+  "nome": "Por que o build quebrou?",
+  "emoji": "🔎",
+  "cena": "O build da noite quebrou, e você e o Mike levantam hipóteses numa chamada rápida.",
+  "resumo": "Investigar a causa de um problema técnico graduando a certeza: must have, might have e couldn't have.",
+  "fechamento": false,
+  "novos": [
+    "expire",
+    "environment variable",
+    "version mismatch",
+    "outdated"
+  ],
+  "apoio": [
+    "config file",
+    "credentials"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Deve ter, pode ter, não pode ter"
+    },
+    {
+      "t": "p",
+      "c": "Na investigação, a certeza muda o modal: **must have** = deve ter (quase certeza); **might have** = pode ter (possibilidade); **couldn't have** = não pode ter (impossível)."
+    },
+    {
+      "t": "tip",
+      "c": "It couldn't have been the network. = Não pode ter sido a rede. Com substantivo, use been."
+    },
+    {
+      "t": "warn",
+      "c": "Alguém deve ter mudado = must have changed. should have changed é crítica (devia ter mudado)."
+    },
+    {
+      "t": "ex",
+      "c": "The credentials might have expired last night.\nAs credenciais podem ter expirado ontem à noite."
+    }
+  ],
+  "imagem": "💻🔴🎧",
+  "visualizacao": "É cedo e o painel do build está vermelho. Você e o Mike estão numa chamada de vídeo, café na mão, rolando os logs e falando em voz baixa.",
+  "foto_busca": "developer laptop error logs video call",
+  "trechos": [
+    {
+      "id": "f-cdf9a8",
+      "quem": "voce",
+      "cod": "The credentials might have expired last night.",
+      "dica": "As credenciais podem ter expirado ontem à noite.",
+      "img": "🔑🌙",
+      "alvo": "expired",
+      "alvo_pt": "expirado",
+      "conceito": "might have + particípio = pode ter (possibilidade). expire = expirar, vencer.",
+      "registro": "neutro",
+      "armadilhas": [
+        "can have",
+        "could"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "might have",
+          "aceita": [
+            "could have"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-727b5e",
+      "quem": "mike",
+      "contexto": "f-cdf9a8",
+      "cod": "They couldn't have expired. I renewed them last week.",
+      "dica": "Elas não podem ter expirado. Eu renovei na semana passada.",
+      "img": "🙅📅",
+      "alvo": "expired",
+      "alvo_pt": "expirado",
+      "conceito": "Renovei (o quê?): em inglês o objeto é obrigatório, renewed them.",
+      "var": [
+        {
+          "em": "couldn't have",
+          "aceita": [
+            "can't have"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "mustn't",
+        "the last week"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fd5c84",
+      "quem": "mike",
+      "cod": "Someone must have changed an environment variable without telling us.",
+      "dica": "Alguém deve ter mudado uma variável de ambiente sem avisar a gente.",
+      "img": "🧑‍💻⚙️",
+      "alvo": "environment variable",
+      "alvo_pt": "variável de ambiente",
+      "conceito": "deve ter mudado (dedução) = must have changed. Depois de without, verbo com -ing.",
+      "var": [
+        {
+          "em": "telling us",
+          "aceita": [
+            "warning us",
+            "letting us know"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "should",
+        "without tell"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6320a0",
+      "quem": "voce",
+      "contexto": "f-fd5c84",
+      "cod": "Did anyone touch the environment variables on the server?",
+      "dica": "Alguém mexeu nas variáveis de ambiente do servidor?",
+      "img": "🖐️🖥️",
+      "alvo": "environment variable",
+      "alvo_pt": "variáveis de ambiente",
+      "conceito": "Pergunta no passado com did; em pergunta, alguém = anyone.",
+      "var": [
+        {
+          "em": "touch",
+          "aceita": [
+            "change"
+          ]
+        },
+        {
+          "em": "anyone",
+          "aceita": [
+            "anybody",
+            "someone"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "touched",
+        "someone touched"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b40c16",
+      "quem": "voce",
+      "cod": "It might have been a version mismatch between the two libraries.",
+      "dica": "Pode ter sido uma incompatibilidade de versão entre as duas bibliotecas.",
+      "img": "📦🔀📦",
+      "alvo": "version mismatch",
+      "alvo_pt": "incompatibilidade de versão",
+      "conceito": "Pode ter sido = It might have been: o sujeito it é obrigatório.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "might have was",
+        "can have"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        6
+      ],
+      "var": [
+        {
+          "em": "might have been",
+          "aceita": [
+            "could have been"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e9352a",
+      "quem": "mike",
+      "contexto": "f-b40c16",
+      "cod": "It couldn't have been the network. A version mismatch makes more sense.",
+      "dica": "Não pode ter sido a rede. Uma incompatibilidade de versão faz mais sentido.",
+      "img": "🌐✅",
+      "alvo": "version mismatch",
+      "alvo_pt": "incompatibilidade de versão",
+      "conceito": "couldn't have been + substantivo = não pode ter sido. fazer mais sentido = make more sense.",
+      "var": [
+        {
+          "em": "couldn't have",
+          "aceita": [
+            "can't have"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "mustn't",
+        "make sense"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-845c85",
+      "quem": "voce",
+      "cod": "Someone must have used an outdated config file.",
+      "dica": "Alguém deve ter usado um arquivo de configuração desatualizado.",
+      "img": "📄🕰️",
+      "alvo": "outdated",
+      "alvo_pt": "desatualizado",
+      "conceito": "outdated = desatualizado; o adjetivo vem antes do substantivo.",
+      "var": [
+        {
+          "em": "config file",
+          "aceita": [
+            "configuration file"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "should",
+        "config file outdated"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-609646",
+      "quem": "mike",
+      "contexto": "f-845c85",
+      "cod": "Apparently, the config file on the server was outdated.",
+      "dica": "Pelo jeito, o arquivo de configuração do servidor estava desatualizado.",
+      "img": "🖥️📄❌",
+      "alvo": "outdated",
+      "alvo_pt": "desatualizado",
+      "conceito": "Pelo jeito = Apparently (não: actually).",
+      "var": [
+        {
+          "em": "config file",
+          "aceita": [
+            "configuration file"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "actually"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

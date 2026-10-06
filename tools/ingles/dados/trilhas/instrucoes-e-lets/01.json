@@ -1,0 +1,197 @@
+{
+  "id": "instrucoes-e-lets.entra-e-senta",
+  "trilha": "instrucoes-e-lets",
+  "nome": "Entra e senta",
+  "emoji": "🚪",
+  "cena": "O Mike recebe você na sala de reunião em Chicago e explica o que fazer até a chamada começar.",
+  "resumo": "Receber alguém e dar instruções simples com o imperativo: Come in. Wait here. Write it down.",
+  "fechamento": false,
+  "novos": [
+    "Come in.",
+    "wait",
+    "a minute",
+    "Write it down."
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Imperativo: o verbo puro"
+    },
+    {
+      "t": "p",
+      "c": "Para dar uma instrução, comece pelo verbo, sem sujeito: **Come in.** (Entra.) **Wait here.** (Espera aqui.) Com **please**, o pedido fica gentil."
+    },
+    {
+      "t": "ex",
+      "c": "Write it down, please.\nAnota, por favor."
+    },
+    {
+      "t": "tip",
+      "c": "come in = entrar; sit down = sentar; write down = anotar. A partícula completa o sentido do verbo."
+    }
+  ],
+  "imagem": "🚪🪑📝",
+  "visualizacao": "Você bate na porta de vidro da sala de reunião. O Mike abre, sorri e aponta uma cadeira; na tela grande, a chamada ainda não começou.",
+  "foto_busca": "meeting room glass door office",
+  "trechos": [
+    {
+      "id": "f-c29810",
+      "quem": "mike",
+      "cod": "Please come in.",
+      "dica": "Entra, por favor.",
+      "img": "🚪🚶",
+      "alvo": "come in",
+      "alvo_pt": "Entra",
+      "lit": "[lit.: vem para dentro]",
+      "var": [
+        {
+          "em": "Please come in.",
+          "aceita": [
+            "Come in, please."
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 435705,
+        "en_autor": "CK",
+        "pt_id": 729171,
+        "pt_autor": "lenon_perez",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT na forma falada do imperativo (Entre → Entra), como no glossário",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5f5930",
+      "quem": "mike",
+      "contexto": "The meeting is at ten, not nine.",
+      "cod": "Oh, wait! You're right.",
+      "dica": "Ah, espera! Você tem razão.",
+      "img": "✋💡",
+      "alvo": "wait",
+      "alvo_pt": "espera",
+      "lit": "[lit.: você está certo]",
+      "conceito": "wait = esperar. Ter razão é com be: You are right.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-35fa49",
+      "quem": "mike",
+      "cod": "Write it down, please.",
+      "dica": "Anota, por favor.",
+      "img": "📝✍️",
+      "alvo": "Write it down",
+      "alvo_pt": "Anota",
+      "lit": "[lit.: escreve isso para baixo]",
+      "conceito": "write down = anotar; o it (isso) não pode faltar.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ba6241",
+      "quem": "mike",
+      "cod": "Write it down in your notebook.",
+      "dica": "Anota isso no seu caderno.",
+      "img": "📓✍️",
+      "alvo": "Write it down",
+      "alvo_pt": "Anota isso",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "variacao_de": "f-35fa49"
+    },
+    {
+      "id": "f-c2acee",
+      "quem": "voce",
+      "contexto": "f-ba6241",
+      "cod": "Wait a minute. Where's my notebook?",
+      "dica": "Espera um minuto. Cadê o meu caderno?",
+      "img": "⏱️📓❓",
+      "alvo": "a minute",
+      "alvo_pt": "um minuto",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-67d5d8",
+      "quem": "mike",
+      "contexto": "Mike, are you ready?",
+      "cod": "Just a minute, please.",
+      "dica": "Só um minuto, por favor.",
+      "img": "☝️⏱️",
+      "alvo": "a minute",
+      "alvo_pt": "um minuto",
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5294565,
+        "en_autor": "CK",
+        "pt_id": 5300713,
+        "pt_autor": "ToinhoAlam",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8377c3",
+      "quem": "mike",
+      "contexto": "Hi, Mike! Sorry I'm late.",
+      "cod": "Come in and sit down.",
+      "dica": "Entra e senta.",
+      "img": "👋🚪🪑",
+      "alvo": "Come in",
+      "alvo_pt": "Entra",
+      "conceito": "sit down = sentar [down: para baixo].",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1860747,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: here → in; PT reescrito na forma falada",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6f1aed",
+      "quem": "mike",
+      "cod": "Wait here a minute.",
+      "dica": "Espera aqui um minuto.",
+      "img": "🧍⏳",
+      "alvo": "Wait",
+      "alvo_pt": "Espera",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3393234,
+        "en_autor": "CK",
+        "pt_id": 5608112,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT na forma falada do imperativo (Espere → Espera)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

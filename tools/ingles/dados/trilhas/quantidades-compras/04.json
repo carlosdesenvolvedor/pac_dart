@@ -1,0 +1,169 @@
+{
+  "id": "quantidades-compras.cena-a-lista-de-compras",
+  "trilha": "quantidades-compras",
+  "nome": "Cena: a lista de compras",
+  "emoji": "📝",
+  "cena": "Sábado de manhã: você e a Emma fazem a lista de compras e vão ao mercado.",
+  "resumo": "Montar a lista e comprar juntando How much, How many, some, any, a bottle of e a dozen.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: How much x How many"
+    },
+    {
+      "t": "p",
+      "c": "**How much** + o que não se conta (*water, rice, money*); **How many** + plural (*apples, eggs*). **some** na afirmativa; **any** na pergunta e na negativa."
+    },
+    {
+      "t": "ex",
+      "c": "How many apples do we need? Six?\nDe quantas maçãs a gente precisa? Seis?"
+    },
+    {
+      "t": "warn",
+      "c": "Dá para contar (*six apples, two bottles*)? **How many**. Não dá (*water, rice, money*)? **How much**. Não: *How much apples?*"
+    }
+  ],
+  "imagem": "📝🛒🍎",
+  "visualizacao": "Sábado de manhã na cozinha da Emma: ela escreve a lista num papel, você confere a geladeira. Depois, o mercado cheio e o barulho dos carrinhos.",
+  "foto_busca": "shopping list grocery cart",
+  "trechos": [
+    {
+      "id": "f-729686",
+      "quem": "emma",
+      "cod": "Let's make a shopping list.",
+      "dica": "Vamos fazer uma lista de compras.",
+      "img": "📝✏️",
+      "alvo": "",
+      "conceito": "shopping list = lista de compras.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-98c1e9",
+      "quem": "voce",
+      "contexto": "f-729686",
+      "cod": "How much water do we need?",
+      "dica": "De quanta água a gente precisa?",
+      "img": "💧❓",
+      "alvo": "How much",
+      "alvo_pt": "quanta",
+      "conceito": "How much + o que não se conta (water); How many + plural (apples).",
+      "registro": "informal",
+      "armadilhas": [
+        "many"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e8c32a",
+      "quem": "emma",
+      "contexto": "f-98c1e9",
+      "cod": "Two big bottles, I think.",
+      "dica": "Duas garrafas grandes, acho.",
+      "img": "💧💧",
+      "alvo": "bottles",
+      "alvo_pt": "garrafas",
+      "registro": "informal",
+      "interferencias": [
+        "BR09"
+      ],
+      "armadilhas": [
+        "bigs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-405cd1",
+      "quem": "voce",
+      "cod": "How many apples do we need? Six?",
+      "dica": "De quantas maçãs a gente precisa? Seis?",
+      "img": "🍎🍎❓",
+      "alvo": "How many",
+      "alvo_pt": "quantas",
+      "registro": "informal",
+      "armadilhas": [
+        "much"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7fb661",
+      "quem": "emma",
+      "cod": "We don't have any eggs. Let's buy a dozen.",
+      "dica": "A gente não tem ovo. Vamos comprar uma dúzia.",
+      "img": "🥚🛒",
+      "alvo": "a dozen",
+      "alvo_pt": "uma dúzia",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2401252,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"We don't have any money.\"; money → eggs, + Let's buy a dozen; PT reescrito (original: \"Nós não temos dinheiro.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c4296e",
+      "quem": "voce",
+      "cod": "Excuse me, do you have any rice?",
+      "dica": "Com licença, você tem arroz?",
+      "img": "🍚❓",
+      "alvo": "do you have any",
+      "alvo_pt": "você tem",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-49c630",
+      "quem": "voce",
+      "cod": "And how much is this bag of rice?",
+      "dica": "E quanto custa esse pacote de arroz?",
+      "img": "🍚🏷️",
+      "alvo": "how much is",
+      "alvo_pt": "quanto custa",
+      "conceito": "a bag of rice = um pacote de arroz.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4817728,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"How much is this hat?\"; + And, hat → bag of rice; PT reescrito (original: \"Quanto é esse chapéu?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d8c7f3",
+      "quem": "emma",
+      "cod": "There are a lot of people here today.",
+      "dica": "Tem muita gente aqui hoje.",
+      "img": "👥👥🛒",
+      "alvo": "a lot of people",
+      "alvo_pt": "muita gente",
+      "conceito": "muita gente = a lot of people, que é plural: there are (não: there is).",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR14"
+      ],
+      "armadilhas": [
+        "is",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

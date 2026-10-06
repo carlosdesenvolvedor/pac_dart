@@ -1,0 +1,282 @@
+{
+  "id": "ha-quanto-tempo.apresentacao-e-um-atraso",
+  "trilha": "ha-quanto-tempo",
+  "nome": "Apresentação e um atraso",
+  "emoji": "🎙️",
+  "cena": "Primeira call com um cliente novo: você entra dez minutos atrasado, se desculpa e apresenta sua trajetória.",
+  "resumo": "Tudo junto: for, since e ago na mesma conversa, e have been + -ing para explicar o atraso.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: for, since, ago e have been + -ing"
+    },
+    {
+      "t": "p",
+      "c": "O que **continua**: present perfect + **for** (duração) ou **since** (o começo): I've been a developer for eight years. O que **acabou**: passado + **ago**: I joined this company two years ago."
+    },
+    {
+      "t": "warn",
+      "c": "Sou desenvolvedor há oito anos = I've been a developer for eight years (não: I'm a developer for eight years / eight years ago)."
+    },
+    {
+      "t": "ex",
+      "c": "Sorry I'm late. I've been stuck in traffic for an hour.\nDesculpa, estou atrasado. Estou preso no trânsito há uma hora."
+    }
+  ],
+  "imagem": "🎙️💻⏰",
+  "visualizacao": "Você entra na call correndo, ajeita o fone e vê o cliente já esperando na tela. Respira fundo, pede desculpas e começa a se apresentar.",
+  "foto_busca": "video call client meeting laptop",
+  "trechos": [
+    {
+      "id": "f-5344de",
+      "quem": "voce",
+      "cod": "Sorry I'm late. I've been on another call since two o'clock.",
+      "dica": "Desculpa, estou atrasado. Estou em outra call desde as duas.",
+      "img": "🏃📞",
+      "alvo": "since two o'clock",
+      "alvo_pt": "desde as duas",
+      "conceito": "Estou em outra call desde as duas = I've been on another call since two o'clock.",
+      "var": [
+        {
+          "em": "two o'clock",
+          "aceita": [
+            "two"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "pt_f": "Desculpa, estou atrasada. Estou em outra call desde as duas.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "i'm",
+        "from"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8fec8b",
+      "quem": "cliente",
+      "contexto": "f-5344de",
+      "cod": "No problem. We started a few minutes ago.",
+      "dica": "Sem problema. Começamos há poucos minutos.",
+      "img": "👌⏱️",
+      "alvo": "a few minutes ago",
+      "alvo_pt": "há poucos minutos",
+      "conceito": "começamos há poucos minutos (já aconteceu) = started a few minutes ago.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR26"
+      ],
+      "armadilhas": [
+        "before",
+        "has"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5374935,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "The meeting started thirty minutes ago. → No problem. We started a few minutes ago.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d07d6a",
+      "quem": "cliente",
+      "cod": "So, how long have you been a developer?",
+      "dica": "Então, há quanto tempo você é desenvolvedor?",
+      "img": "💻❓",
+      "alvo": "how long have you been",
+      "alvo_pt": "há quanto tempo você é",
+      "conceito": "Há quanto tempo você é...? = How long have you been...?",
+      "pt_f": "Então, há quanto tempo você é desenvolvedora?",
+      "registro": "neutro",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "are",
+        "do"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-123169",
+      "quem": "voce",
+      "contexto": "f-d07d6a",
+      "cod": "I've been a developer for {anos_dev} years.",
+      "dica": "Sou desenvolvedor há {anos_dev} anos.",
+      "img": "📈💼",
+      "alvo": "for {anos_dev} years",
+      "alvo_pt": "há {anos_dev} anos",
+      "conceito": "Sou desenvolvedor há X anos = I've been a developer for X years (não: I'm a developer for).",
+      "pt_f": "Sou desenvolvedora há {anos_dev} anos.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR47",
+        "BR13"
+      ],
+      "armadilhas": [
+        "i'm",
+        "ago"
+      ],
+      "bio": [
+        "anos_dev"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2a1337",
+      "quem": "voce",
+      "cod": "I joined the company two years ago.",
+      "dica": "Entrei na empresa há dois anos.",
+      "img": "🏢🚪",
+      "alvo": "two years ago",
+      "alvo_pt": "há dois anos",
+      "conceito": "Entrei há dois anos (fato que acabou) = joined... two years ago.",
+      "var": [
+        {
+          "em": "joined the company",
+          "aceita": [
+            "started at the company"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR26"
+      ],
+      "armadilhas": [
+        "entered",
+        "before"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-152f11",
+      "quem": "cliente",
+      "cod": "And how long have you been working from home?",
+      "dica": "E há quanto tempo você trabalha de casa?",
+      "img": "🏡⏳",
+      "alvo": "have you been working",
+      "alvo_pt": "você trabalha",
+      "conceito": "Há quanto tempo você trabalha...? = How long have you been working...? (aceita have you worked).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "do"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb3593",
+      "quem": "voce",
+      "contexto": "f-152f11",
+      "cod": "Since 2020. I love it!",
+      "dica": "Desde 2020. Adoro!",
+      "img": "💚🏠",
+      "alvo": "Since 2020",
+      "alvo_pt": "Desde 2020",
+      "conceito": "Resposta curta com o começo: Since 2020. Adoro = I love it (objeto it obrigatório).",
+      "registro": "neutro",
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-30db79",
+      "quem": "cliente",
+      "cod": "I've wanted to work with a Brazilian team for a while.",
+      "dica": "Faz um tempo que eu quero trabalhar com um time brasileiro.",
+      "img": "🇧🇷🤝",
+      "alvo": "for a while",
+      "alvo_pt": "Faz um tempo",
+      "conceito": "Faz um tempo que eu quero = I've wanted... for a while. Nacionalidade com maiúscula: Brazilian.",
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR47",
+        "BR15"
+      ],
+      "armadilhas": [
+        "want",
+        "brazilian"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I've wanted",
+          "aceita": [
+            "I've been wanting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-710b04",
+      "quem": "cliente",
+      "cod": "It's been snowing here since Monday.",
+      "dica": "Está nevando aqui desde segunda.",
+      "img": "❄️🌨️",
+      "alvo": "since Monday",
+      "alvo_pt": "desde segunda",
+      "conceito": "Está nevando desde segunda = It's been snowing since Monday (it obrigatório).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR47"
+      ],
+      "armadilhas": [
+        "is",
+        "monday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b366d6",
+      "quem": "voce",
+      "contexto": "f-710b04",
+      "cod": "Wow! It's been really hot here for a week.",
+      "dica": "Nossa! Aqui está muito quente há uma semana.",
+      "img": "☀️🥵",
+      "alvo": "for a week",
+      "alvo_pt": "há uma semana",
+      "conceito": "Está quente há uma semana = It's been hot for a week (it obrigatório).",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR47"
+      ],
+      "armadilhas": [
+        "is",
+        "ago"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

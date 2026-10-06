@@ -1,0 +1,311 @@
+{
+  "id": "argumentar-conectores.ainda-assim-portanto",
+  "trilha": "argumentar-conectores",
+  "nome": "Ainda assim, portanto",
+  "emoji": "➡️",
+  "cena": "Você escreve um e-mail para o Mike recomendando uma ferramenta paga de testes.",
+  "resumo": "Encadear argumentos por escrito com nevertheless, therefore, as a result e consequently.",
+  "fechamento": false,
+  "novos": [
+    "nevertheless",
+    "therefore",
+    "as a result",
+    "consequently"
+  ],
+  "apoio": [
+    "worth it",
+    "skip",
+    "license fee"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Conectores de texto"
+    },
+    {
+      "t": "p",
+      "c": "**Nevertheless** = ainda assim. **Therefore** = portanto. **As a result** = como resultado. **Consequently** = consequentemente. Na escrita: ponto antes, vírgula depois."
+    },
+    {
+      "t": "warn",
+      "c": "ainda assim = nevertheless (não: still so). Em conversa casual, so soa mais natural que therefore."
+    },
+    {
+      "t": "ex",
+      "c": "We changed the requirements twice. As a result, we lost two weeks.\nMudamos os requisitos duas vezes. Como resultado, perdemos duas semanas."
+    }
+  ],
+  "imagem": "📧🧪💵",
+  "visualizacao": "Você está escrevendo um e-mail caprichado para o Mike, com a planilha de custos aberta ao lado. O cursor pisca enquanto você escolhe cada conector.",
+  "foto_busca": "writing business email laptop spreadsheet",
+  "trechos": [
+    {
+      "id": "f-87a272",
+      "quem": "voce",
+      "cod": "The new tool is expensive. Nevertheless, I think it's worth it.",
+      "dica": "A ferramenta nova é cara. Ainda assim, acho que vale a pena.",
+      "img": "💸🤔👍",
+      "alvo": "Nevertheless",
+      "alvo_pt": "Ainda assim",
+      "conceito": "ainda assim = nevertheless; however = porém.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "still",
+        "however"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3823440,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I think it's worth it.\"; + The new tool is expensive. Nevertheless,; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cda16c",
+      "quem": "voce",
+      "cod": "Our tests are slow. Therefore, developers often skip them.",
+      "dica": "Nossos testes são lentos. Portanto, os desenvolvedores muitas vezes pulam os testes.",
+      "img": "🐢🧪⏭️",
+      "alvo": "Therefore",
+      "alvo_pt": "Portanto",
+      "conceito": "often vem antes do verbo principal: developers often skip them (muitas vezes pulam).",
+      "var": [
+        {
+          "em": "skip them",
+          "aceita": [
+            "skip the tests"
+          ]
+        },
+        {
+          "em": "developers",
+          "aceita": [
+            "the developers",
+            "our developers"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [],
+      "armadilhas": [
+        "the",
+        "so"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-833cb6",
+      "quem": "voce",
+      "cod": "We changed the requirements twice. As a result, we lost two weeks.",
+      "dica": "Mudamos os requisitos duas vezes. Como resultado, perdemos duas semanas.",
+      "img": "📝🔁📉",
+      "alvo": "As a result",
+      "alvo_pt": "Como resultado",
+      "conceito": "As a result, + consequência; perder tempo = lose / waste time.",
+      "var": [
+        {
+          "em": "lost",
+          "aceita": [
+            "wasted"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f12313",
+      "quem": "voce",
+      "cod": "This tool runs tests in parallel. As a result, builds are much faster.",
+      "dica": "Essa ferramenta roda os testes em paralelo. Como resultado, os builds ficam muito mais rápidos.",
+      "img": "🧪⚡🏗️",
+      "alvo": "As a result",
+      "alvo_pt": "Como resultado",
+      "conceito": "much + comparativo: much faster = muito mais rápido.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "run",
+        "more"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "runs tests",
+          "aceita": [
+            "runs the tests"
+          ]
+        },
+        {
+          "em": "builds are",
+          "aceita": [
+            "the builds are",
+            "builds get"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-03125b",
+      "quem": "voce",
+      "cod": "The license fee is high. Consequently, we'll need Sarah's approval.",
+      "dica": "O valor da licença é alto. Consequentemente, vamos precisar da aprovação da Sarah.",
+      "img": "🧾✍️",
+      "alvo": "Consequently",
+      "alvo_pt": "Consequentemente",
+      "conceito": "a aprovação da Sarah = Sarah's approval (posse com 's).",
+      "var": [
+        {
+          "em": "we'll need",
+          "aceita": [
+            "we need"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "the",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3a6193",
+      "quem": "voce",
+      "cod": "Developers would get feedback in minutes. Consequently, they'd waste less time.",
+      "dica": "Os desenvolvedores teriam feedback em minutos. Consequentemente, perderiam menos tempo.",
+      "img": "⏱️👩‍💻",
+      "alvo": "Consequently",
+      "alvo_pt": "Consequentemente",
+      "conceito": "perder tempo = waste time (não: lose time, aqui).",
+      "var": [
+        {
+          "em": "waste",
+          "aceita": [
+            "lose"
+          ]
+        },
+        {
+          "em": "Developers",
+          "aceita": [
+            "The developers",
+            "Our developers"
+          ]
+        },
+        {
+          "em": "get",
+          "aceita": [
+            "have"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR34"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-94bc41",
+      "quem": "voce",
+      "cod": "It isn't cheap. Therefore, I suggest we try it for a month first.",
+      "dica": "Não é barata. Portanto, sugiro que a gente experimente por um mês primeiro.",
+      "img": "🗓️🧪",
+      "alvo": "Therefore",
+      "alvo_pt": "Portanto",
+      "conceito": "Não é barata = It isn't cheap (o it é obrigatório); suggest + oração: I suggest we try it.",
+      "var": [
+        {
+          "em": "It isn't",
+          "aceita": [
+            "It's not"
+          ]
+        },
+        {
+          "em": "try it",
+          "aceita": [
+            "test it"
+          ]
+        },
+        {
+          "em": "a month",
+          "aceita": [
+            "one month"
+          ]
+        }
+      ],
+      "opcional": [
+        "first"
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "to",
+        "during"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-21e5d0",
+      "quem": "mike",
+      "contexto": "f-94bc41",
+      "cod": "Good point. Nevertheless, I'd like to see the numbers first.",
+      "dica": "Bom ponto. Ainda assim, eu gostaria de ver os números antes.",
+      "img": "📊👀",
+      "alvo": "Nevertheless",
+      "alvo_pt": "Ainda assim",
+      "conceito": "Nevertheless introduz uma ressalva depois de concordar.",
+      "var": [
+        {
+          "em": "first",
+          "aceita": [
+            "before"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "still",
+        "however"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

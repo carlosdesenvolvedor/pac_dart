@@ -1,0 +1,218 @@
+{
+  "id": "dev-incidentes.o-servidor-caiu",
+  "trilha": "dev-incidentes",
+  "nome": "O servidor caiu",
+  "emoji": "🚨",
+  "cena": "Sexta à noite, os alertas disparam e você avisa o time no canal de incidentes.",
+  "resumo": "Avisar um incidente com calma: X is down, We're seeing a spike, I'm on call.",
+  "fechamento": false,
+  "novos": [
+    "production server",
+    "on call",
+    "spike",
+    "be down"
+  ],
+  "apoio": [
+    "outage"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Caiu = is down"
+    },
+    {
+      "t": "p",
+      "c": "Servidor, site ou API fora do ar: **is down** (o estado) ou **went down** (o momento). Nunca *fell*, que é cair no chão. Plantão é **on call**: I'm on call this week."
+    },
+    {
+      "t": "warn",
+      "c": "Estou de plantão = I'm on call (não: I'm in call). Pico de erros = a spike in errors."
+    },
+    {
+      "t": "ex",
+      "c": "Heads up: the production server is down.\nAviso: o servidor de produção caiu."
+    }
+  ],
+  "imagem": "🚨🖥️🌙",
+  "visualizacao": "Sexta, nove da noite. O celular vibra em cima da mesa, o gráfico de erros fica vermelho e você abre o notebook no escuro para avisar o time.",
+  "foto_busca": "server room red alert night",
+  "trechos": [
+    {
+      "id": "f-3ad8e3",
+      "quem": "voce",
+      "cod": "Heads up: the production server is down.",
+      "dica": "Aviso: o servidor de produção caiu.",
+      "img": "🖥️🔥",
+      "alvo": "production server",
+      "alvo_pt": "servidor de produção",
+      "conceito": "Heads-up: (com ou sem hífen) abre um aviso no chat. production server: o qualificador vem antes.",
+      "var": [
+        {
+          "em": "is down",
+          "aceita": [
+            "went down"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "fell",
+        "server production"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-41042f",
+      "quem": "mike",
+      "contexto": "f-3ad8e3",
+      "cod": "Thanks for the heads-up. Who's on call this week?",
+      "dica": "Valeu pelo aviso. Quem está de plantão esta semana?",
+      "img": "📟❓",
+      "alvo": "on call",
+      "alvo_pt": "de plantão",
+      "conceito": "estar de plantão = be on call (não: in call).",
+      "registro": "informal",
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-07876a",
+      "quem": "voce",
+      "contexto": "f-41042f",
+      "cod": "I'm on call, so I got paged at nine.",
+      "dica": "Eu estou de plantão, então fui acionado às nove.",
+      "pt_f": "Eu estou de plantão, então fui acionada às nove.",
+      "img": "📟🌙",
+      "alvo": "on call",
+      "alvo_pt": "de plantão",
+      "conceito": "get paged = ser acionado pelo alerta do plantão (aceita was paged).",
+      "registro": "informal",
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "got paged",
+          "aceita": [
+            "was paged"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a39771",
+      "quem": "voce",
+      "cod": "We're seeing a spike in errors on the checkout page.",
+      "dica": "Estamos vendo um pico de erros na página de checkout.",
+      "img": "📈❌",
+      "alvo": "spike",
+      "alvo_pt": "pico",
+      "conceito": "spike = pico repentino num gráfico (erros, tráfego, CPU).",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "peak",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6d4834",
+      "quem": "mike",
+      "contexto": "f-a39771",
+      "cod": "I'm seeing it too. The spike started right after the last deploy.",
+      "dica": "Também estou vendo. O pico começou logo depois do último deploy.",
+      "img": "📈🚢",
+      "alvo": "spike",
+      "alvo_pt": "pico",
+      "conceito": "I'm seeing it too: o inglês pede o objeto it (não: I'm seeing too).",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "peak"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e18706",
+      "quem": "voce",
+      "cod": "The payment API is down too, and customers can't pay.",
+      "dica": "A API de pagamento também está fora do ar, e os clientes não conseguem pagar.",
+      "img": "💳🔌",
+      "alvo": "is down",
+      "alvo_pt": "está fora do ar",
+      "conceito": "be down = estar fora do ar, ter caído (não: fall).",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "fell",
+        "offline"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "is down too",
+          "aceita": [
+            "is also down"
+          ]
+        },
+        {
+          "em": "customers",
+          "aceita": [
+            "the customers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-18024f",
+      "quem": "mike",
+      "contexto": "f-e18706",
+      "cod": "The database server isn't down, but it's really slow.",
+      "dica": "O servidor do banco de dados não está fora do ar, mas está muito lento.",
+      "img": "🗄️🐢",
+      "alvo": "isn't down",
+      "alvo_pt": "não está fora do ar",
+      "conceito": "Está lento: o inglês exige o sujeito (it is really slow).",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is slow",
+        "fell"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-73c810",
+      "quem": "voce",
+      "cod": "Let's figure out what's wrong with the production server.",
+      "dica": "Vamos entender o que tem de errado com o servidor de produção.",
+      "img": "🔍🖥️",
+      "alvo": "production server",
+      "alvo_pt": "servidor de produção",
+      "conceito": "figure out = entender, descobrir (depois de investigar).",
+      "registro": "informal",
+      "armadilhas": [
+        "discover"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "id": "passado-was-were.como-foi-a-viagem",
+  "trilha": "passado-was-were",
+  "nome": "Como foi a viagem?",
+  "emoji": "✈️",
+  "cena": "Segunda de manhã, de volta de um fim de semana em Boston, o Mike e a Sarah perguntam como foi tudo.",
+  "resumo": "Perguntar e contar como foi: How was...? / It was great! e negar com wasn't.",
+  "fechamento": false,
+  "novos": [
+    "How was...?",
+    "How was your trip?",
+    "It was great!",
+    "fun"
+  ],
+  "apoio": [
+    "trip"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Como foi? How was...?"
+    },
+    {
+      "t": "p",
+      "c": "**How was** + coisa? = Como foi...? Resposta: **It was great!** Negativa: **wasn't** / **weren't** (*it wasn't expensive* = não foi caro)."
+    },
+    {
+      "t": "ex",
+      "c": "How was your trip?\nComo foi a viagem?"
+    },
+    {
+      "t": "tip",
+      "c": "**fun** é substantivo: *It was a lot of fun* = Foi muito divertido (não: *very fun*)."
+    },
+    {
+      "t": "warn",
+      "c": "Foi ótimo! = *It was great!* (não: *Was great!*): o *it* não some no passado."
+    }
+  ],
+  "imagem": "🧳🏙️😄",
+  "visualizacao": "Você chega ao escritório e deixa a mala num canto. O Mike levanta da mesa sorrindo e a Sarah acena na tela, curiosos com o seu fim de semana.",
+  "foto_busca": "colleagues chatting office coffee",
+  "trechos": [
+    {
+      "id": "f-d96928",
+      "quem": "mike",
+      "cod": "How was your trip?",
+      "dica": "Como foi a viagem?",
+      "img": "🧳❓",
+      "alvo": "How was your trip?",
+      "alvo_pt": "Como foi a viagem?",
+      "var": [
+        {
+          "em": "your",
+          "aceita": [
+            "the"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "is"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1140188,
+        "en_autor": "CK",
+        "pt_id": 4969721,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f61239",
+      "quem": "voce",
+      "contexto": "f-d96928",
+      "cod": "It was great!",
+      "dica": "Foi ótima!",
+      "img": "🤩👍",
+      "alvo": "It was great!",
+      "alvo_pt": "Foi ótima!",
+      "lit": "[lit.: isso foi ótimo]",
+      "conceito": "O it não some no passado: It was great! (não: Was great!)",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f55b52",
+      "quem": "mike",
+      "contexto": "f-f61239",
+      "cod": "And how was the hotel?",
+      "dica": "E como foi o hotel?",
+      "img": "🏨❓",
+      "alvo": "how was",
+      "alvo_pt": "como foi",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b11a0f",
+      "quem": "voce",
+      "contexto": "f-f55b52",
+      "cod": "It was great, and it wasn't expensive.",
+      "dica": "Foi ótimo, e não foi caro.",
+      "img": "🏨💵👍",
+      "alvo": "It was great",
+      "alvo_pt": "Foi ótimo",
+      "conceito": "wasn't = was not: it wasn't expensive = não foi caro.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7b461a",
+      "quem": "sarah",
+      "cod": "How was your trip to Boston?",
+      "dica": "Como foi a sua viagem a Boston?",
+      "img": "🏙️🧳",
+      "alvo": "How was your trip",
+      "alvo_pt": "Como foi a sua viagem",
+      "registro": "informal",
+      "variacao_de": "f-d96928",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3148452,
+        "en_autor": "CK",
+        "pt_id": 4899587,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-40510d",
+      "quem": "voce",
+      "contexto": "f-7b461a",
+      "cod": "Oh, it was a lot of fun!",
+      "dica": "Ah, foi muito divertido!",
+      "img": "🎉😄",
+      "alvo": "fun",
+      "alvo_pt": "divertido",
+      "conceito": "fun é substantivo: a lot of fun = muito divertido (não: very fun).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "very"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 503864,
+        "en_autor": "CK",
+        "pt_id": 1593703,
+        "pt_autor": "roger_rf",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"It was a lot of fun.\"; + Oh, ponto → exclamação; PT original: \"Foi muito divertido.\"; PT: + Ah, ponto → exclamação",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6bd72e",
+      "quem": "sarah",
+      "contexto": "f-40510d",
+      "cod": "So, how was the party on Saturday?",
+      "dica": "Então, como foi a festa no sábado?",
+      "img": "🎈❓",
+      "alvo": "how was",
+      "alvo_pt": "como foi",
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3818328,
+        "en_autor": "CK",
+        "pt_id": 6940013,
+        "pt_autor": "Mecamute",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"How was the party yesterday?\"; + So, yesterday → on Saturday; PT original: \"Como foi a festa ontem?\"; PT: + Então, ontem → no sábado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-dbbb1d",
+      "quem": "voce",
+      "contexto": "f-6bd72e",
+      "cod": "The party was fun, but it was very crowded.",
+      "dica": "A festa foi divertida, mas estava muito cheia de gente.",
+      "img": "🎉👥👥",
+      "alvo": "fun",
+      "alvo_pt": "divertida",
+      "conceito": "crowded = lotado, cheio de gente.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4495136,
+        "en_autor": "CK",
+        "pt_id": 5165415,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"The party was fun.\"; + but it was very crowded; PT original: \"A festa foi divertida.\"; PT: + mas estava muito cheia de gente",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

@@ -1,0 +1,310 @@
+{
+  "id": "perguntas-todos-tempos.entrevista-informal-com-o-time",
+  "trilha": "perguntas-todos-tempos",
+  "nome": "Entrevista informal com o time",
+  "emoji": "🎙️",
+  "cena": "A Sarah faz uma entrevista informal com você para o boletim interno do time.",
+  "resumo": "Uma conversa só de perguntas: be, do, does, did, can, ou nenhum auxiliar quando who é o sujeito.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Qual auxiliar?"
+    },
+    {
+      "t": "p",
+      "c": "Presente: **do/does**. Passado: **did**. Com be: **is/are/was/were** na frente. Pedido e permissão: **can**. Quem fez (sujeito): **nenhum**."
+    },
+    {
+      "t": "ex",
+      "c": "Who helped you in Chicago?\nQuem te ajudou em Chicago?"
+    },
+    {
+      "t": "warn",
+      "c": "Who helped you? (não: Who did help you?)"
+    }
+  ],
+  "imagem": "🎙️📝🙂",
+  "visualizacao": "Você abre a chamada e vê a Sarah com um bloco de notas ao lado. Ela ri, anota cada resposta sua e avisa que a entrevista vai sair no boletim do time.",
+  "foto_busca": "informal interview video call notes",
+  "trechos": [
+    {
+      "id": "f-941652",
+      "quem": "sarah",
+      "cod": "Nice to see you! Can I ask you some questions?",
+      "dica": "Que bom te ver! Posso te fazer umas perguntas?",
+      "img": "👋📝",
+      "alvo": "Can I ask",
+      "alvo_pt": "Posso te fazer",
+      "conceito": "Can I...? = posso...? ask a question = fazer uma pergunta.",
+      "opcional": [
+        "some"
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "make",
+        "do"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 795220,
+        "en_autor": "CK",
+        "pt_id": 1014247,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Nice to see you!' acrescentado e 'a question' → 'some questions'; PT ajustado",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "some",
+          "aceita": [
+            "a few"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8feb70",
+      "quem": "sarah",
+      "cod": "How long was your trip to Chicago?",
+      "dica": "Quanto tempo durou a sua viagem a Chicago?",
+      "img": "✈️🏙️⏳",
+      "alvo": "How long",
+      "alvo_pt": "Quanto tempo",
+      "conceito": "How long was...? = quanto tempo durou...?",
+      "registro": "informal",
+      "armadilhas": [
+        "much time"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6793216,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'to Chicago' acrescentado; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "How long was your trip to Chicago",
+          "aceita": [
+            "How long did your trip to Chicago last"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-86035d",
+      "quem": "voce",
+      "contexto": "f-8feb70",
+      "cod": "For five days. I met the team there.",
+      "dica": "Cinco dias. Conheci o time lá.",
+      "img": "🤝👥",
+      "alvo": "met",
+      "alvo_pt": "Conheci",
+      "conceito": "Conhecer alguém pela primeira vez = meet (passado: met).",
+      "opcional": [
+        "For"
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "knew",
+        "during"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cbaeab",
+      "quem": "sarah",
+      "contexto": "f-86035d",
+      "cod": "Who helped you in Chicago?",
+      "dica": "Quem te ajudou em Chicago?",
+      "img": "🙋🏙️",
+      "alvo": "Who helped",
+      "alvo_pt": "Quem te ajudou",
+      "conceito": "Pergunta de sujeito, sem did: Who helped you? (não: Who did help you?)",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR18"
+      ],
+      "armadilhas": [
+        "did"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3636488,
+        "en_autor": "CK",
+        "pt_id": 8238719,
+        "pt_autor": "josivangoncalves",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'else' retirado e 'in Chicago' acrescentado; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2df844",
+      "quem": "voce",
+      "contexto": "f-cbaeab",
+      "cod": "Mike did. He helps everyone on the team.",
+      "dica": "Foi o Mike. Ele ajuda todo mundo do time.",
+      "img": "👨‍💼🤝",
+      "alvo": "Mike did",
+      "alvo_pt": "Foi o Mike",
+      "conceito": "Resposta curta: Mike did. Presente na 3ª pessoa com -s: he helps.",
+      "var": [
+        {
+          "em": "Mike did",
+          "aceita": [
+            "It was Mike"
+          ]
+        },
+        {
+          "em": "everyone",
+          "aceita": [
+            "everybody"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "help"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2d7b4b",
+      "quem": "sarah",
+      "cod": "Do you like your job?",
+      "dica": "Você gosta do seu emprego?",
+      "img": "💼🙂❓",
+      "alvo": "Do you like",
+      "alvo_pt": "Você gosta",
+      "conceito": "Presente com do: Do you like...? (não: You like your job?)",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you like"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2800768,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-47fa01",
+      "quem": "voce",
+      "contexto": "f-2d7b4b",
+      "cod": "I love working here.",
+      "dica": "Eu adoro trabalhar aqui.",
+      "img": "😍💻",
+      "alvo": "I love working",
+      "alvo_pt": "Eu adoro trabalhar",
+      "conceito": "Eu adoro + verbo = I love + -ing.",
+      "registro": "informal",
+      "armadilhas": [
+        "work"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4499969,
+        "en_autor": "CK",
+        "pt_id": 6002983,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f18750",
+      "quem": "sarah",
+      "cod": "What kind of projects do you like?",
+      "dica": "De que tipo de projetos você gosta?",
+      "img": "🗂️❓",
+      "alvo": "What kind of",
+      "alvo_pt": "De que tipo de",
+      "conceito": "What kind of + plural: What kind of projects...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "type"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9069495,
+        "en_autor": "CK",
+        "pt_id": 9112989,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'desserts' → 'projects'; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-92addd",
+      "quem": "voce",
+      "contexto": "f-f18750",
+      "cod": "I like big projects with a good team.",
+      "dica": "Gosto de projetos grandes, com um time bom.",
+      "img": "🏗️👥",
+      "alvo": "big projects",
+      "alvo_pt": "projetos grandes",
+      "conceito": "Adjetivo antes do substantivo e sem plural: big projects.",
+      "registro": "informal",
+      "armadilhas": [
+        "bigs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3f76ab",
+      "quem": "sarah",
+      "cod": "How often do you have calls with the client?",
+      "dica": "Com que frequência você tem chamadas com o cliente?",
+      "img": "📞🔁",
+      "alvo": "How often",
+      "alvo_pt": "Com que frequência",
+      "conceito": "How often do you...? (do + have puro)",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "has"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "id": "talvez-might.nao-consegui-dormir-could-couldn-t",
+  "trilha": "talvez-might",
+  "nome": "Não consegui dormir: could, couldn't",
+  "emoji": "😴",
+  "cena": "Segunda difícil: você dormiu mal, a Ana não consegue logar, e vocês dois procuram a causa do bug.",
+  "resumo": "Dizer o que não conseguiu fazer com couldn't e levantar hipóteses com could (pode ser).",
+  "fechamento": false,
+  "novos": [
+    "couldn't",
+    "cache",
+    "network",
+    "connect",
+    "I don't think so."
+  ],
+  "apoio": [
+    "could (possibilidade)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Não consegui = I couldn't"
+    },
+    {
+      "t": "p",
+      "c": "**couldn't** + verbo = não consegui, não pude (o passado de can't). **could** também serve para possibilidade: It could be the cache. = Pode ser o cache."
+    },
+    {
+      "t": "warn",
+      "c": "Nem eu (depois de frase negativa) = Me neither (não: Me too not). Acho que não = I don't think so (não: I think that no)."
+    },
+    {
+      "t": "ex",
+      "c": "I couldn't sleep last night.\nNão consegui dormir ontem à noite."
+    }
+  ],
+  "imagem": "😴💻🐛",
+  "visualizacao": "Segunda-feira cedo: você vê as olheiras no espelho e sente o cheiro do café forte. Na chamada, a Ana aparece com cara de sono e uma tela de login travada.",
+  "foto_busca": "tired developer morning coffee laptop",
+  "trechos": [
+    {
+      "id": "f-476244",
+      "quem": "voce",
+      "contexto": "You look tired. Are you OK?",
+      "cod": "I couldn't sleep last night.",
+      "dica": "Não consegui dormir ontem à noite.",
+      "img": "🛏️👀",
+      "alvo": "couldn't",
+      "alvo_pt": "Não consegui",
+      "conceito": "couldn't + verbo = não consegui (o passado de can't).",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "didn't"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4665340,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'on the plane' → 'last night' (original: \"I couldn't sleep on the plane.\"); PT reescrito (original: \"Não consegui dormir no avião.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8b83dc",
+      "quem": "ana",
+      "contexto": "f-476244",
+      "cod": "Me neither. And I couldn't log in this morning.",
+      "dica": "Nem eu. E não consegui logar hoje de manhã.",
+      "img": "🔐❌",
+      "alvo": "couldn't",
+      "alvo_pt": "não consegui",
+      "conceito": "Nem eu (depois de frase negativa) = Me neither. Hoje de manhã = this morning.",
+      "var": [
+        {
+          "em": "log in",
+          "aceita": [
+            "sign in"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR43",
+        "BR05"
+      ],
+      "armadilhas": [
+        "too"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6a73a5",
+      "quem": "voce",
+      "contexto": "f-8b83dc",
+      "cod": "It could be the network.",
+      "dica": "Pode ser a rede.",
+      "img": "📶🤔",
+      "alvo": "network",
+      "alvo_pt": "rede",
+      "conceito": "Pode ser + substantivo = It could be... (possibilidade).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-138a1d",
+      "quem": "ana",
+      "contexto": "f-6a73a5",
+      "cod": "Well, I don't think so.",
+      "dica": "Bom, acho que não.",
+      "img": "🤔👎",
+      "alvo": "I don't think so",
+      "alvo_pt": "acho que não",
+      "conceito": "Acho que não = I don't think so (não: I think that no).",
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "armadilhas": [
+        "that",
+        "no"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8912754,
+        "en_autor": "CK",
+        "pt_id": 8924419,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3ade05",
+      "quem": "voce",
+      "contexto": "f-138a1d",
+      "cod": "Then it could be the cache.",
+      "dica": "Então pode ser o cache.",
+      "img": "🗃️❓",
+      "alvo": "cache",
+      "alvo_pt": "cache",
+      "conceito": "cache se pronuncia como cash.",
+      "var": [
+        {
+          "em": "Then",
+          "aceita": [
+            "So"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-61f8c6",
+      "quem": "ana",
+      "contexto": "f-3ade05",
+      "cod": "The cache? How do I clear it?",
+      "dica": "O cache? Como eu limpo?",
+      "img": "🧹🗃️",
+      "alvo": "cache",
+      "alvo_pt": "cache",
+      "conceito": "Objeto obrigatório: How do I clear it? (em português ele some). clear = limpar.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9b6c57",
+      "quem": "voce",
+      "cod": "Wait. Are you on the office network?",
+      "dica": "Espera. Você está na rede do escritório?",
+      "img": "🏢📶",
+      "alvo": "network",
+      "alvo_pt": "rede",
+      "conceito": "na rede = on the network. rede do escritório = office network.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17",
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-67653a",
+      "quem": "ana",
+      "contexto": "f-9b6c57",
+      "cod": "I don't think so. Let me check.",
+      "dica": "Acho que não. Deixa eu conferir.",
+      "img": "🔍💻",
+      "alvo": "I don't think so",
+      "alvo_pt": "Acho que não",
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "armadilhas": [
+        "that",
+        "no"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9b4491",
+      "quem": "ana",
+      "contexto": "f-9b6c57",
+      "cod": "You're right! Now I can connect.",
+      "dica": "Você tem razão! Agora eu consigo conectar.",
+      "img": "✅🔌",
+      "alvo": "connect",
+      "alvo_pt": "conectar",
+      "conceito": "Você tem razão = You're right (be, não have).",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-078f6c",
+      "quem": "voce",
+      "contexto": "f-9b4491",
+      "cod": "Great. Let me know if you can't connect again.",
+      "dica": "Ótimo. Me avisa se você não conseguir conectar de novo.",
+      "img": "👍📲",
+      "alvo": "connect",
+      "alvo_pt": "conectar",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

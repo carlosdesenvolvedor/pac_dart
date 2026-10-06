@@ -1,0 +1,246 @@
+{
+  "id": "escrita-formal.cena-a-reclamacao-completa",
+  "trilha": "escrita-formal",
+  "nome": "Cena: a reclamação completa",
+  "emoji": "✉️",
+  "cena": "Você escreve, do começo ao fim, uma reclamação formal sobre um pedido atrasado.",
+  "resumo": "Uma reclamação formal inteira, da abertura ao fecho, sem itens novos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A reclamação inteira"
+    },
+    {
+      "t": "p",
+      "c": "Abertura (**I am writing to complain about...**), fatos com datas, impacto, pedido com prazo (**We would appreciate it if...**), anexo e fecho (**I look forward to your reply.**). Formas plenas e nenhuma gíria."
+    },
+    {
+      "t": "warn",
+      "c": "No corpo do e-mail formal: formas plenas (I am, I would, has not) e nada de gíria. Segue em anexo = Please find... attached (não: Follows attached)."
+    },
+    {
+      "t": "ex",
+      "c": "Please find a copy of the original invoice attached.\nSegue em anexo uma cópia da fatura original."
+    }
+  ],
+  "imagem": "✉️📦⏳",
+  "visualizacao": "O pedido devia ter chegado ontem e a caixa de entrada continua vazia. Você abre um e-mail novo e escreve a reclamação inteira, do bom-dia à assinatura.",
+  "foto_busca": "waiting for package delivery laptop",
+  "trechos": [
+    {
+      "id": "f-e73439",
+      "quem": "voce",
+      "cod": "I am writing to complain about the delay in our last order.",
+      "dica": "Escrevo para reclamar do atraso no nosso último pedido.",
+      "img": "📦⏳",
+      "alvo": "complain about",
+      "alvo_pt": "reclamar do",
+      "conceito": "reclamar de = complain about (não: complain of / reclaim).",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "reclaim",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2d0fb7",
+      "quem": "voce",
+      "cod": "We placed the order on March 3, and it still has not arrived.",
+      "dica": "Fizemos o pedido em 3 de março, e ele ainda não chegou.",
+      "img": "🗓️📦❓",
+      "alvo": "still has not arrived",
+      "alvo_pt": "ainda não chegou",
+      "conceito": "fazer um pedido = place an order. Data: on March 3 (on + dia).",
+      "blocos": [
+        7
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR01",
+        "BR27",
+        "BR17"
+      ],
+      "armadilhas": [
+        "did",
+        "in",
+        "made"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "still has not arrived",
+          "aceita": [
+            "has not arrived yet",
+            "has still not arrived"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-005be4",
+      "quem": "voce",
+      "cod": "The delivery deadline was yesterday.",
+      "dica": "O prazo de entrega era ontem.",
+      "img": "📅❗",
+      "alvo": "delivery deadline",
+      "alvo_pt": "prazo de entrega",
+      "conceito": "prazo = deadline (o dia limite).",
+      "registro": "formal",
+      "armadilhas": [
+        "term"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4494108,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"The deadline was yesterday.\"; The deadline → The delivery deadline; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5dba26",
+      "quem": "voce",
+      "cod": "I am still waiting for a reply to my previous email.",
+      "dica": "Ainda estou esperando uma resposta ao meu e-mail anterior.",
+      "img": "📭⏳",
+      "alvo": "still waiting for",
+      "alvo_pt": "Ainda estou esperando",
+      "conceito": "esperar alguma coisa = wait for (não: wait a reply).",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "waiting a",
+        "expecting"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3821196,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm still waiting for a reply.\"; I'm → I am (registro formal); + to my previous email; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bbe6d8",
+      "quem": "voce",
+      "cod": "It seems the delay was caused by a problem on your end.",
+      "dica": "Parece que o atraso foi causado por um problema do lado de vocês.",
+      "img": "🏭⚠️",
+      "alvo": "on your end",
+      "alvo_pt": "do lado de vocês",
+      "conceito": "Parece que = it seems (o it é obrigatório). on your end = do seu lado.",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR01",
+        "BR58"
+      ],
+      "armadilhas": [
+        "seems",
+        "side"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "It seems",
+          "aceita": [
+            "It seems that"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-5a40f0",
+      "quem": "voce",
+      "cod": "We would appreciate it if you could send us a new delivery date.",
+      "dica": "Agradeceríamos se vocês pudessem nos mandar uma nova data de entrega.",
+      "img": "🙏📅",
+      "alvo": "would appreciate it if",
+      "alvo_pt": "Agradeceríamos se",
+      "conceito": "appreciate it if: o it é obrigatório.",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "thank",
+        "appreciate if"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8cb2c6",
+      "quem": "voce",
+      "cod": "Please find a copy of the original invoice attached.",
+      "dica": "Segue em anexo uma cópia da fatura original.",
+      "img": "📎🧾",
+      "alvo": "attached",
+      "alvo_pt": "em anexo",
+      "conceito": "Segue em anexo = Please find... attached (attached no fim).",
+      "registro": "formal",
+      "armadilhas": [
+        "annex",
+        "follows"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "find a copy of the original invoice attached",
+          "aceita": [
+            "find attached a copy of the original invoice"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7a4a5c",
+      "quem": "voce",
+      "cod": "Thank you for your attention. I look forward to your reply.",
+      "dica": "Obrigado pela atenção. Aguardo a sua resposta.",
+      "pt_f": "Obrigada pela atenção. Aguardo a sua resposta.",
+      "img": "🙏✉️",
+      "alvo": "I look forward to your reply",
+      "alvo_pt": "Aguardo a sua resposta",
+      "conceito": "look forward to + substantivo: your reply (não: to hear your reply).",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "hear",
+        "wait"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

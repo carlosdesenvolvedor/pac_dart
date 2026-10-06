@@ -1,0 +1,322 @@
+{
+  "id": "ligar-ideias.voce-e-brasileiro-ne",
+  "trilha": "ligar-ideias",
+  "nome": "Você é brasileiro, né?",
+  "emoji": "🤙",
+  "cena": "Num bar em Austin, você assiste aos playoffs com o Ben e um amigo dele que você acabou de conhecer.",
+  "resumo": "O né? do inglês: question tags que espelham o verbo, e Neither can I / Neither do I.",
+  "fechamento": false,
+  "novos": [
+    "aren't you?",
+    "doesn't it?",
+    "Neither can I",
+    "didn't you?",
+    "Neither do I"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Né? = a tag que espelha o verbo"
+    },
+    {
+      "t": "p",
+      "c": "O né? do português é sempre igual. Em inglês ele repete o auxiliar da frase e inverte: frase afirmativa, tag negativa. You're Brazilian, **aren't you?** It works, **doesn't it?** You came, **didn't you?**"
+    },
+    {
+      "t": "p",
+      "c": "Para concordar com uma negação: I can't hear → **Neither can I**. I don't understand → **Neither do I**. Sem verbo, Nem eu. = Me neither."
+    },
+    {
+      "t": "warn",
+      "c": "Não: You're Brazilian, no? / isn't it? para tudo."
+    },
+    {
+      "t": "ex",
+      "c": "You're from Austin, aren't you?\nVocê é de Austin, né?"
+    }
+  ],
+  "imagem": "🏈📺🍕",
+  "visualizacao": "Bar lotado, telões por todo lado e o jogo dos playoffs começando. O Ben grita com a TV, e o amigo dele, de boné, puxa conversa com você no balcão.",
+  "foto_busca": "sports bar crowd watching game",
+  "trechos": [
+    {
+      "id": "f-4d7546",
+      "quem": "amigo-do-ben",
+      "cod": "You're Brazilian, aren't you?",
+      "dica": "Você é brasileiro, né?",
+      "pt_f": "Você é brasileira, né?",
+      "img": "🇧🇷🙂❓",
+      "alvo": "aren't you?",
+      "alvo_pt": "né?",
+      "conceito": "o né? em inglês repete o verbo da frase, no negativo: You're... aren't you?",
+      "registro": "informal",
+      "interferencias": [
+        "BR59",
+        "BR15"
+      ],
+      "armadilhas": [
+        "no",
+        "isn't"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4494024,
+        "en_autor": "CK",
+        "pt_id": 4708304,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"You're Canadian, aren't you?\"; PT original: \"Você é canadense, não é?\"; Canadian → Brazilian; PT adaptado (brasileiro, né?)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-457463",
+      "quem": "voce",
+      "contexto": "f-4d7546",
+      "cod": "Yes, I am. And you're from Austin, aren't you?",
+      "dica": "Sou, sim. E você é de Austin, né?",
+      "img": "🤠🏙️",
+      "alvo": "aren't you?",
+      "alvo_pt": "né?",
+      "conceito": "Sou, sim. = Yes, I am. (resposta curta com o auxiliar); you're → aren't you?",
+      "registro": "informal",
+      "interferencias": [
+        "BR59"
+      ],
+      "armadilhas": [
+        "no",
+        "isn't"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2713006,
+        "en_autor": "CK",
+        "pt_id": 5018360,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"You're from Boston, aren't you?\"; PT original: \"Você é de Boston, não é?\"; + Yes, I am. And; Boston → Austin; PT adaptado (Sou, sim. E você é de Austin, né?)",
+        "export": "2026-10-03"
+      },
+      "variacao_de": "f-4d7546"
+    },
+    {
+      "id": "f-13fb19",
+      "quem": "amigo-do-ben",
+      "contexto": "f-457463",
+      "cod": "Born and raised. You came here for work, didn't you?",
+      "dica": "Nascido e criado. Você veio pra cá a trabalho, né?",
+      "img": "💼✈️",
+      "alvo": "didn't you?",
+      "alvo_pt": "né?",
+      "conceito": "No passado, a tag usa did: You came..., didn't you?",
+      "registro": "informal",
+      "interferencias": [
+        "BR59"
+      ],
+      "armadilhas": [
+        "no",
+        "isn't",
+        "aren't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ef5fb5",
+      "quem": "ben",
+      "cod": "The game starts at eight, doesn't it?",
+      "dica": "O jogo começa às oito, né?",
+      "img": "🏈🕗",
+      "alvo": "doesn't it?",
+      "alvo_pt": "né?",
+      "conceito": "starts (presente, 3ª pessoa) → doesn't it?",
+      "registro": "informal",
+      "interferencias": [
+        "BR59",
+        "BR02"
+      ],
+      "armadilhas": [
+        "isn't",
+        "no"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-816a59",
+      "quem": "ben",
+      "contexto": "I can't hear the TV.",
+      "cod": "Neither can I. Let's sit closer.",
+      "dica": "Eu também não consigo. Vamos sentar mais perto.",
+      "img": "🔇👂",
+      "alvo": "Neither can I",
+      "alvo_pt": "Eu também não consigo",
+      "lit": "[lit.: nem posso eu]",
+      "conceito": "Eu também não consigo = Neither can I (eco com can); sem verbo, Nem eu. = Me neither.",
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "armadilhas": [
+        "me",
+        "too"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4f5141",
+      "quem": "amigo-do-ben",
+      "contexto": "f-816a59",
+      "cod": "That makes a big difference, doesn't it?",
+      "dica": "Faz uma grande diferença, né?",
+      "img": "🔊👍",
+      "alvo": "doesn't it?",
+      "alvo_pt": "né?",
+      "conceito": "makes (presente) → doesn't it?; fazer diferença = make a difference.",
+      "registro": "informal",
+      "interferencias": [
+        "BR59"
+      ],
+      "armadilhas": [
+        "isn't",
+        "no"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2891901,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN igual ao original; PT reescrito (original: \"Isso faz uma grande diferença, não faz?\" → né?)",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "That makes",
+          "aceita": [
+            "It makes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c9db71",
+      "quem": "amigo-do-ben",
+      "contexto": "I don't understand this rule.",
+      "cod": "Neither do I, and I watch every game!",
+      "dica": "Eu também não entendo, e olha que eu assisto todo jogo!",
+      "img": "🤷📋",
+      "alvo": "Neither do I",
+      "alvo_pt": "Eu também não entendo",
+      "conceito": "I don't understand → Neither do I (eco negativo com do).",
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "armadilhas": [
+        "me",
+        "too"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5ad5e3",
+      "quem": "ben",
+      "cod": "You got paid yesterday, didn't you? The pizza's on you!",
+      "dica": "Você recebeu ontem, né? A pizza é por sua conta!",
+      "img": "💵🍕",
+      "alvo": "didn't you?",
+      "alvo_pt": "né?",
+      "conceito": "receber o salário = get paid; got (passado) → didn't you?; on you = por sua conta.",
+      "var": [
+        {
+          "em": "pizza's",
+          "aceita": [
+            "pizza is"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR59"
+      ],
+      "armadilhas": [
+        "no",
+        "isn't"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2288167,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"You got paid, didn't you?\"; + yesterday; + The pizza's on you!; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3a8ea0",
+      "quem": "voce",
+      "contexto": "I can't stay up late on weeknights.",
+      "cod": "Neither can I. I start work at seven.",
+      "dica": "Eu também não consigo. Começo a trabalhar às sete.",
+      "img": "⏰😴",
+      "alvo": "Neither can I",
+      "alvo_pt": "Eu também não consigo",
+      "conceito": "can't → Neither can I.",
+      "var": [
+        {
+          "em": "start work",
+          "aceita": [
+            "start working"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "armadilhas": [
+        "me",
+        "too"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-816a59"
+    },
+    {
+      "id": "f-5532df",
+      "quem": "ben",
+      "contexto": "I don't really like the new coach.",
+      "cod": "Yeah, neither do I. He changes the lineup every week.",
+      "dica": "É, eu também não gosto. Ele muda a escalação toda semana.",
+      "img": "🔄📋👎",
+      "alvo": "neither do I",
+      "alvo_pt": "eu também não gosto",
+      "conceito": "don't like → Neither do I; lineup = escalação; He changes: -s da 3ª pessoa.",
+      "registro": "informal",
+      "interferencias": [
+        "BR43",
+        "BR02"
+      ],
+      "armadilhas": [
+        "me",
+        "change"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-c9db71",
+      "opcional": [
+        "Yeah"
+      ]
+    }
+  ]
+}

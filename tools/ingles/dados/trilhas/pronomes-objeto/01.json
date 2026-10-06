@@ -1,0 +1,254 @@
+{
+  "id": "pronomes-objeto.me-liga-amanha-me-e-us",
+  "trilha": "pronomes-objeto",
+  "nome": "Me liga amanhã: me e us",
+  "emoji": "📞",
+  "cena": "Fim do dia, véspera da viagem para Chicago: você combina com a Sarah e o Mike como falar com você e com o time.",
+  "resumo": "Pedir que alguém fale com você ou com o time: Call me, send me, help us.",
+  "fechamento": false,
+  "novos": [
+    "us",
+    "Call me tomorrow.",
+    "send me",
+    "file"
+  ],
+  "apoio": [
+    "me"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Me liga = Call me"
+    },
+    {
+      "t": "p",
+      "c": "Em inglês, a pessoa vem **depois** do verbo: Call **me**. Send **me** the file. Help **us**."
+    },
+    {
+      "t": "ex",
+      "c": "Call me tomorrow afternoon.\nMe liga amanhã à tarde."
+    },
+    {
+      "t": "tip",
+      "c": "**us** = nos / a gente: Can you help us? = Você pode nos ajudar?"
+    },
+    {
+      "t": "warn",
+      "c": "Sem **to** depois de call: Call me (não: Call to me). E o me não some: Call me, não só Call."
+    }
+  ],
+  "imagem": "📞📁✈️",
+  "visualizacao": "Fim de tarde, mala aberta no canto do quarto. Na tela, a Sarah sorri lá de Austin e vocês combinam os últimos detalhes antes da viagem.",
+  "foto_busca": "video call end of day",
+  "trechos": [
+    {
+      "id": "f-9e4cb7",
+      "quem": "sarah",
+      "cod": "Where are the files?",
+      "dica": "Onde estão os arquivos?",
+      "img": "📁❓",
+      "alvo": "files",
+      "alvo_pt": "arquivos",
+      "conceito": "file = arquivo (de computador); files = arquivos.",
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2548011,
+        "en_autor": "CK",
+        "pt_id": 3489979,
+        "pt_autor": "piterkeo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9eff8b",
+      "quem": "voce",
+      "contexto": "f-9e4cb7",
+      "cod": "Sorry! I'm sending you the files now.",
+      "dica": "Desculpa! Estou te mandando os arquivos agora.",
+      "img": "📤📁",
+      "alvo": "files",
+      "alvo_pt": "arquivos",
+      "conceito": "Te mando = I'm sending you: a pessoa vem logo depois do verbo, sem to.",
+      "var": [
+        {
+          "em": "sending you the files",
+          "aceita": [
+            "sending the files to you"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f735bb",
+      "quem": "sarah",
+      "contexto": "f-9eff8b",
+      "cod": "Thanks! Can you send me a screenshot, too?",
+      "dica": "Valeu! Você pode me mandar um print também?",
+      "img": "📸📲",
+      "alvo": "send me",
+      "alvo_pt": "me mandar",
+      "conceito": "Me manda = send me + coisa (sem to): send me a screenshot.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2763237,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Can you send me a screenshot?\"; PT original: \"Você pode me enviar um print?\"; acrescentados \"Thanks!\" e \"too\"; PT reescrito: enviar → mandar",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-75571c",
+      "quem": "sarah",
+      "cod": "Can you help us tonight?",
+      "dica": "Você pode nos ajudar hoje à noite?",
+      "img": "🙏🌙",
+      "alvo": "us",
+      "alvo_pt": "nos",
+      "conceito": "us = nos / a gente, sempre depois do verbo: help us.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR18",
+        "BR05"
+      ],
+      "armadilhas": [
+        "we"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2645542,
+        "en_autor": "CK",
+        "pt_id": 7583825,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-553cd6",
+      "quem": "voce",
+      "contexto": "f-75571c",
+      "cod": "Sorry, I can't. Call me tomorrow afternoon.",
+      "dica": "Desculpa, não posso. Me liga amanhã à tarde.",
+      "img": "📞🌤️",
+      "alvo": "Call me tomorrow",
+      "alvo_pt": "Me liga amanhã",
+      "conceito": "Me liga = Call me: o me vem depois do verbo, sem to.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "to",
+        "tomorrow"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3826923,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Call me tomorrow afternoon.\"; PT original: \"Me ligue amanhã à tarde.\"; acrescentado \"Sorry, I can't.\"; PT reescrito no imperativo falado (Me liga)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4cfd8c",
+      "quem": "sarah",
+      "contexto": "f-553cd6",
+      "cod": "OK. Send me your number in Chicago.",
+      "dica": "Tá bom. Me manda o seu número de Chicago.",
+      "img": "🔢📱",
+      "alvo": "Send me",
+      "alvo_pt": "Me manda",
+      "var": [
+        {
+          "em": "your number in Chicago",
+          "aceita": [
+            "your Chicago number"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d58997",
+      "quem": "sarah",
+      "cod": "And please call us from the hotel.",
+      "dica": "E, por favor, liga pra gente do hotel.",
+      "img": "🏨📞",
+      "alvo": "us",
+      "alvo_pt": "pra gente",
+      "conceito": "Liga pra gente = call us (sem to, sem for).",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "to",
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f61ca1",
+      "quem": "mike",
+      "cod": "Have a nice trip! Call me tomorrow.",
+      "dica": "Boa viagem! Me liga amanhã.",
+      "img": "✈️👋",
+      "alvo": "Call me tomorrow",
+      "alvo_pt": "Me liga amanhã",
+      "var": [
+        {
+          "em": "nice",
+          "aceita": [
+            "good"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "id": "falsos-cognatos-ortografia.meus-pais-moram-em-curitiba",
+  "trilha": "falsos-cognatos-ortografia",
+  "nome": "Meus pais moram em Curitiba",
+  "emoji": "👨‍👩‍👦",
+  "cena": "Numa chamada na hora do almoço, o Ben conta da faculdade e dos pais dele e pergunta da sua família.",
+  "resumo": "Falar de família e estudos com parents (pais), college (faculdade), library (biblioteca), major (curso) e lunch break (horário de almoço).",
+  "fechamento": false,
+  "novos": [
+    "college",
+    "library",
+    "computer science",
+    "lunch break",
+    "major (curso da faculdade)"
+  ],
+  "apoio": [
+    "parents"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Palavras que parecem, mas não são"
+    },
+    {
+      "t": "p",
+      "c": "**parents** = pais (parentes é relatives). **college** = faculdade (colégio é high school). **library** = biblioteca (livraria é bookstore). **lunch** = almoço (lanche é snack)."
+    },
+    {
+      "t": "ex",
+      "c": "My parents met in college.\nMeus pais se conheceram na faculdade."
+    },
+    {
+      "t": "tip",
+      "c": "**major** = o curso que a pessoa fez na faculdade. course é uma matéria."
+    },
+    {
+      "t": "warn",
+      "c": "Generalização sem the: Computer science is very popular. (não: The computer science...)"
+    }
+  ],
+  "imagem": "🎓📚🥪",
+  "visualizacao": "Hora do almoço. Você come um sanduíche na frente do notebook, e o Ben fala baixinho de uma biblioteca silenciosa, com estantes atrás dele.",
+  "foto_busca": "quiet university library shelves",
+  "trechos": [
+    {
+      "id": "f-eaed7d",
+      "quem": "ben",
+      "cod": "What did your sister study in college?",
+      "dica": "O que a sua irmã estudou na faculdade?",
+      "img": "👩‍🎓❓",
+      "alvo": "college",
+      "alvo_pt": "faculdade",
+      "conceito": "college = faculdade (não colégio; colégio é high school).",
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR06"
+      ],
+      "armadilhas": [
+        "school",
+        "studied"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-501c0a",
+      "quem": "voce",
+      "contexto": "f-eaed7d",
+      "cod": "Computer science. She loved it.",
+      "dica": "Ciência da computação. Ela adorou.",
+      "img": "💻❤️",
+      "alvo": "Computer science",
+      "alvo_pt": "Ciência da computação",
+      "conceito": "O objeto é obrigatório: She loved it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-06639d",
+      "quem": "ben",
+      "contexto": "f-501c0a",
+      "cod": "Cool! My major was computer science too.",
+      "dica": "Legal! Meu curso era ciência da computação também.",
+      "img": "🎓💻",
+      "alvo": "major",
+      "alvo_pt": "curso",
+      "conceito": "major = o curso da faculdade; course é uma matéria.",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "course"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7c6753",
+      "quem": "voce",
+      "cod": "Computer science is very popular in Brazil.",
+      "dica": "Ciência da computação é muito popular no Brasil.",
+      "img": "💻🇧🇷📈",
+      "alvo": "Computer science",
+      "alvo_pt": "Ciência da computação",
+      "conceito": "Generalização sem artigo: Computer science is... (não: The computer science).",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-360d32",
+      "quem": "ben",
+      "cod": "My parents met in college.",
+      "dica": "Meus pais se conheceram na faculdade.",
+      "img": "👫🎓",
+      "alvo": "college",
+      "alvo_pt": "faculdade",
+      "conceito": "parents = pais (parentes = relatives). in college = na faculdade.",
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR36"
+      ],
+      "armadilhas": [
+        "relatives",
+        "knew"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2648263,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: We → My parents (original: \"We met in college.\"); PT reescrito (original: \"Nós nos conhecemos na faculdade.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0235b3",
+      "quem": "voce",
+      "contexto": "f-360d32",
+      "cod": "Really? What was your mom's major?",
+      "dica": "Sério? Qual era o curso da sua mãe?",
+      "img": "🤔👩📚",
+      "alvo": "major",
+      "alvo_pt": "curso",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "course"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "mom's",
+          "aceita": [
+            "mother's"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ff8954",
+      "quem": "ben",
+      "contexto": "f-0235b3",
+      "cod": "Art. They met at the college library.",
+      "dica": "Artes. Eles se conheceram na biblioteca da faculdade.",
+      "img": "🎨📚💘",
+      "alvo": "library",
+      "alvo_pt": "biblioteca",
+      "conceito": "library = biblioteca (livraria = bookstore). college library = biblioteca da faculdade.",
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR24"
+      ],
+      "armadilhas": [
+        "bookstore"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Art",
+          "aceita": [
+            "Arts"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-357271",
+      "quem": "ben",
+      "cod": "I'm working from the library today.",
+      "dica": "Hoje estou trabalhando da biblioteca.",
+      "img": "💻📚🤫",
+      "alvo": "library",
+      "alvo_pt": "biblioteca",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "bookstore"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-be310d",
+      "quem": "voce",
+      "cod": "My parents live near me. I visit them on my lunch break.",
+      "dica": "Meus pais moram perto de mim. Visito eles no meu horário de almoço.",
+      "img": "👨‍👩‍👦🥪🚶",
+      "alvo": "lunch break",
+      "alvo_pt": "horário de almoço",
+      "conceito": "lunch = almoço (lanche = snack). lunch break = horário de almoço.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR01"
+      ],
+      "armadilhas": [
+        "snack",
+        "relatives"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "on my lunch break",
+          "aceita": [
+            "during my lunch break"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c683ac",
+      "quem": "voce",
+      "cod": "Sorry, Ben, my lunch break is over.",
+      "dica": "Desculpa, Ben, meu horário de almoço acabou.",
+      "img": "⏰🥪👋",
+      "alvo": "lunch break",
+      "alvo_pt": "horário de almoço",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "snack"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3199030,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Our → my; acrescentado Sorry, Ben,; lunch break's → lunch break is (original: \"Our lunch break's over.\"); PT reescrito (original: \"Nosso horário de almoço terminou.\")",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

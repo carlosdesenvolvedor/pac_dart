@@ -1,0 +1,158 @@
+{
+  "id": "instrucoes-e-lets.cena-indo-para-a-reuniao",
+  "trilha": "instrucoes-e-lets",
+  "nome": "Cena: indo para a reunião",
+  "emoji": "🧭",
+  "cena": "A Ana chegou hoje a Chicago, e você a guia da recepção até a sala da reunião.",
+  "resumo": "Guiar alguém e começar uma reunião com o imperativo e Let's, com left e right juntos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: guiar e começar"
+    },
+    {
+      "t": "p",
+      "c": "Imperativo (Come in. Go straight ahead.), negativo (Don't worry.) e Let's (Let's start.). Agora left e right juntos: Turn right, not left."
+    },
+    {
+      "t": "ex",
+      "c": "Turn right, not left.\nVira à direita, não à esquerda."
+    },
+    {
+      "t": "warn",
+      "c": "left = esquerda; right = direita (e também certo: You're right). Vamos (sugestão) = Let's + verbo (não: We go)."
+    }
+  ],
+  "imagem": "🧭🛗🚪",
+  "visualizacao": "A Ana chega com a mala de rodinhas e o crachá na mão. Vocês sobem no elevador, andam pelo corredor e você ouve as vozes do time atrás da porta.",
+  "foto_busca": "office hallway elevator colleagues walking",
+  "trechos": [
+    {
+      "id": "f-00a131",
+      "quem": "voce",
+      "cod": "Come in, Ana. Let's take the elevator.",
+      "dica": "Entra, Ana. Vamos pegar o elevador.",
+      "img": "🚪🛗",
+      "alvo": "Come in",
+      "alvo_pt": "Entra",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-024359",
+      "quem": "ana",
+      "contexto": "f-00a131",
+      "cod": "Is it far from here?",
+      "dica": "É longe daqui?",
+      "img": "🗺️❓",
+      "alvo": "far from here",
+      "alvo_pt": "longe daqui",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1651,
+        "en_autor": "CK",
+        "pt_id": 893383,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8844cc",
+      "quem": "voce",
+      "contexto": "f-024359",
+      "cod": "No. Go straight ahead and turn left.",
+      "dica": "Não. Segue em frente e vira à esquerda.",
+      "img": "⬆️⬅️",
+      "alvo": "Go straight ahead",
+      "alvo_pt": "Segue em frente",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bb9ae5",
+      "quem": "voce",
+      "cod": "Sorry! Turn right, not left.",
+      "dica": "Desculpa! Vira à direita, não à esquerda.",
+      "img": "➡️😅",
+      "alvo": "Turn right",
+      "alvo_pt": "Vira à direita",
+      "registro": "informal",
+      "armadilhas": [
+        "left"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-982ec6",
+      "quem": "ana",
+      "cod": "Wait a minute. Where's the restroom?",
+      "dica": "Espera um minuto. Onde fica o banheiro?",
+      "img": "✋🚻",
+      "alvo": "Wait a minute",
+      "alvo_pt": "Espera um minuto",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4e9e75",
+      "quem": "voce",
+      "contexto": "f-982ec6",
+      "cod": "Go straight ahead. It's on the right.",
+      "dica": "Segue em frente. Fica à direita.",
+      "img": "⬆️➡️🚻",
+      "alvo": "on the right",
+      "alvo_pt": "à direita",
+      "registro": "informal",
+      "armadilhas": [
+        "left"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aed61b",
+      "quem": "voce",
+      "contexto": "I'm a little nervous.",
+      "cod": "Don't worry. Mike is very nice.",
+      "dica": "Não se preocupa. O Mike é muito legal.",
+      "img": "😌👨",
+      "alvo": "Don't worry",
+      "alvo_pt": "Não se preocupa",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-27594f",
+      "quem": "mike",
+      "cod": "Hi, Ana! Please sit down. Let's start.",
+      "dica": "Oi, Ana! Senta, por favor. Vamos começar.",
+      "img": "👋🪑▶️",
+      "alvo": "Let's start",
+      "alvo_pt": "Vamos começar",
+      "conceito": "Sit down. sozinho soa como ordem; com please fica gentil. start = começar.",
+      "var": [
+        {
+          "em": "Please sit down.",
+          "aceita": [
+            "Sit down, please."
+          ]
+        },
+        {
+          "em": "start",
+          "aceita": [
+            "get started"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

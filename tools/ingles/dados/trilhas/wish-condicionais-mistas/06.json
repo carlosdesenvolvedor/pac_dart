@@ -1,0 +1,258 @@
+{
+  "id": "wish-condicionais-mistas.cena-escolhas-de-carreira",
+  "trilha": "wish-condicionais-mistas",
+  "nome": "Cena: escolhas de carreira",
+  "emoji": "🧭",
+  "cena": "Você e o Ben fazem um balanço da carreira de cada um e pensam no que mudar no ano que vem.",
+  "resumo": "Misturar wish, I'd rather, It's time we e a condicional mista num balanço de carreira, sem itens novos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Três desejos, três formas"
+    },
+    {
+      "t": "p",
+      "c": "**I wish I had** = queria ter (agora). **I wish I'd learned** = queria ter aprendido (passado). **I wish you would** = queria que você... (irritado, outra pessoa)."
+    },
+    {
+      "t": "tip",
+      "c": "Para decidir o próximo passo: I'd rather stay = prefiro ficar; It's time we talked = já está na hora de a gente conversar."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca would depois de if, if only ou wish sobre você mesmo: If I had started (não: If I would have started)."
+    }
+  ],
+  "imagem": "🧭💼🗓️",
+  "visualizacao": "Fim de ano, chamada longa com o Ben. Cada um com um caderno aberto, rabiscando planos para o ano que vem entre uma risada e outra.",
+  "foto_busca": "planning notebook new year goals",
+  "trechos": [
+    {
+      "id": "f-c27311",
+      "quem": "ben",
+      "cod": "I wish I had a job as good as yours.",
+      "dica": "Queria ter um emprego tão bom quanto o seu.",
+      "img": "💼✨",
+      "alvo": "I wish I had",
+      "alvo_pt": "Queria ter",
+      "conceito": "Queria ter (agora) = I wish I had. tão bom quanto o seu = as good as yours.",
+      "registro": "informal",
+      "interferencias": [
+        "BR40",
+        "BR57"
+      ],
+      "armadilhas": [
+        "have",
+        "a work"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6126254,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN sem alteração; PT reescrito (original: \"Queria eu ter um trabalho tão bom quanto o seu.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-302a17",
+      "quem": "voce",
+      "contexto": "f-c27311",
+      "cod": "It's a good job, but I wish the salary were higher.",
+      "dica": "É um bom emprego, mas queria que o salário fosse maior.",
+      "img": "💰⬆️",
+      "alvo": "were higher",
+      "alvo_pt": "fosse maior",
+      "conceito": "Queria que fosse = I wish + were. É um bom emprego: sujeito it obrigatório.",
+      "var": [
+        {
+          "em": "were",
+          "aceita": [
+            "was"
+          ]
+        },
+        {
+          "em": "the salary",
+          "aceita": [
+            "my salary"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR57"
+      ],
+      "armadilhas": [
+        "is",
+        "would be",
+        "bigger"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-383525",
+      "quem": "voce",
+      "cod": "Looking back, I wish I'd learned English earlier.",
+      "dica": "Olhando pra trás, queria ter aprendido inglês mais cedo.",
+      "img": "🔙🗣️",
+      "alvo": "I wish I'd learned",
+      "alvo_pt": "queria ter aprendido",
+      "conceito": "Arrependimento: wish + had + particípio (I'd learned = I had learned).",
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR57"
+      ],
+      "armadilhas": [
+        "learned english",
+        "would have learned"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a41d0a",
+      "quem": "voce",
+      "contexto": "f-383525",
+      "cod": "If I had started earlier, I'd be a tech lead by now.",
+      "dica": "Se eu tivesse começado mais cedo, já seria tech lead.",
+      "img": "🧑‍💻⭐",
+      "alvo": "I'd be",
+      "alvo_pt": "já seria",
+      "conceito": "Mista: se eu tivesse começado (passado) + já seria (agora). Profissão com a: a tech lead.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR13",
+        "BR57"
+      ],
+      "armadilhas": [
+        "would have been",
+        "be tech lead"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I'd be a tech lead by now",
+          "aceita": [
+            "I'd already be a tech lead",
+            "I would already be a tech lead"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d6eed4",
+      "quem": "ben",
+      "cod": "It's time we made some changes, don't you think?",
+      "dica": "Já está na hora de a gente fazer algumas mudanças, não acha?",
+      "img": "🔄🧭",
+      "alvo": "It's time we",
+      "alvo_pt": "Já está na hora de a gente",
+      "conceito": "It's time we + passado (made), mesmo falando de agora. não acha? = don't you think?",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "make",
+        "isn't it"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f7e043",
+      "quem": "voce",
+      "contexto": "f-d6eed4",
+      "cod": "Honestly, I'd rather stay at this company for now.",
+      "dica": "Sinceramente, prefiro ficar nesta empresa por enquanto.",
+      "img": "🏢🙂",
+      "alvo": "I'd rather",
+      "alvo_pt": "prefiro",
+      "conceito": "I'd rather + verbo sem to. Na empresa = at the company.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17",
+        "BR30"
+      ],
+      "armadilhas": [
+        "to stay",
+        "in this company"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1ddd59",
+      "quem": "ben",
+      "contexto": "Would you ever move to New York for a job?",
+      "cod": "I'd rather stay here in Boston.",
+      "dica": "Prefiro ficar aqui em Boston.",
+      "img": "🏙️⚓",
+      "alvo": "I'd rather",
+      "alvo_pt": "Prefiro",
+      "conceito": "I'd rather + verbo sem to (não: I'd rather to stay).",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "to stay",
+        "prefer"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4499621,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN sem alteração; PT reescrito (original: \"Eu prefiro ficar aqui em Boston.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8f8945",
+      "quem": "ben",
+      "cod": "I wish I could go back in time.",
+      "dica": "Queria poder voltar no tempo.",
+      "img": "⏪⏳",
+      "alvo": "I wish I could",
+      "alvo_pt": "Queria poder",
+      "conceito": "Queria poder = I wish I could + verbo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "can",
+        "would"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1350887,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN sem alteração; PT reescrito (original: \"Eu queria poder voltar no tempo.\")",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

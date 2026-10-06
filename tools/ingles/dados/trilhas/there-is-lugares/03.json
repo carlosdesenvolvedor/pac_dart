@@ -1,0 +1,246 @@
+{
+  "id": "there-is-lugares.tem-restaurantes-some-e-any",
+  "trilha": "there-is-lugares",
+  "nome": "Tem restaurantes? some e any",
+  "emoji": "🍔",
+  "cena": "Você pergunta à Emma o que tem no centro de Chicago e, no trabalho, fala com o time sobre os bugs de um arquivo.",
+  "resumo": "Falar de várias coisas com There are, perguntar com Are there any...? e negar com There aren't any.",
+  "fechamento": false,
+  "novos": [
+    "There are...",
+    "Are there any...?",
+    "any",
+    "restaurants"
+  ],
+  "apoio": [
+    "There's no...",
+    "downtown"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Plural: There are"
+    },
+    {
+      "t": "p",
+      "c": "Uma coisa: **There's**. Várias: **There are**: There are three bugs in this file."
+    },
+    {
+      "t": "p",
+      "c": "Na pergunta e na negativa, use **any**: Are there any questions? There aren't any tests. Nada de nada: **There's no** coffee (não tem café)."
+    },
+    {
+      "t": "ex",
+      "c": "There are a lot of restaurants downtown.\nTem muitos restaurantes no centro."
+    },
+    {
+      "t": "warn",
+      "c": "Não: Have three bugs in this file. Tem (existir) = there are."
+    }
+  ],
+  "imagem": "🍔🏙️🐛",
+  "visualizacao": "Fim de tarde na cozinha da Emma, cheiro de chá e a cidade acesa lá fora. Você pergunta dos restaurantes enquanto ela mostra o mapa no celular.",
+  "foto_busca": "downtown restaurants street evening",
+  "trechos": [
+    {
+      "id": "f-d5b282",
+      "quem": "voce",
+      "cod": "Emma, is there a good restaurant near here?",
+      "dica": "Emma, tem um restaurante bom aqui perto?",
+      "img": "🍽️❓",
+      "alvo": "restaurant",
+      "alvo_pt": "restaurante",
+      "conceito": "Restaurante bom = a good restaurant: o adjetivo vem antes.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-06d573",
+      "quem": "emma",
+      "contexto": "f-d5b282",
+      "cod": "No, there aren't any restaurants around here.",
+      "dica": "Não, não tem nenhum restaurante por aqui.",
+      "img": "🚫🍽️",
+      "alvo": "restaurants",
+      "alvo_pt": "restaurante",
+      "conceito": "Não tem nenhum = there aren't any (o inglês usa uma negação só).",
+      "var": [
+        {
+          "em": "there aren't any",
+          "aceita": [
+            "there are no"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4501802,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"There aren't any restaurants around here.\"; acrescentado \"No,\"; PT autoral",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-68298c",
+      "quem": "voce",
+      "contexto": "f-06d573",
+      "cod": "Really? Are there any downtown?",
+      "dica": "Sério? Tem algum no centro?",
+      "img": "🏙️❓",
+      "alvo": "Are there any",
+      "alvo_pt": "Tem algum",
+      "conceito": "downtown = no centro (sem in, sem the). Pergunta no plural: Are there any...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c55568",
+      "quem": "emma",
+      "contexto": "f-68298c",
+      "cod": "Sure, there are a lot downtown.",
+      "dica": "Claro, tem muitos no centro.",
+      "img": "🏙️🍜🍕",
+      "alvo": "there are",
+      "alvo_pt": "tem",
+      "lit": "[lit.: claro, há muitos no centro]",
+      "conceito": "Várias coisas: there are (não: there's a lot).",
+      "var": [
+        {
+          "em": "a lot",
+          "aceita": [
+            "many"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "there's"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-83a8aa",
+      "quem": "voce",
+      "cod": "There are three bugs in this file.",
+      "dica": "Tem três bugs neste arquivo.",
+      "img": "🐛🐛🐛",
+      "alvo": "There are",
+      "alvo_pt": "Tem",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f95026",
+      "quem": "mike",
+      "contexto": "f-83a8aa",
+      "cod": "OK. Are there any tests for this file?",
+      "dica": "Tá bom. Tem algum teste para este arquivo?",
+      "img": "🧪📄❓",
+      "alvo": "Are there any",
+      "alvo_pt": "Tem algum",
+      "conceito": "Na pergunta: Are there any + plural (any tests = algum teste).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-defb50",
+      "quem": "voce",
+      "contexto": "f-f95026",
+      "cod": "No, there aren't any.",
+      "dica": "Não, não tem nenhum.",
+      "img": "🚫🧪",
+      "alvo": "any",
+      "alvo_pt": "nenhum",
+      "conceito": "Resposta curta no plural: No, there aren't any. = Não, não tem nenhum.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2252614,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"There aren't any.\"; acrescentado \"No,\"; troca da frase anterior (There aren't any problems., en_id 1277910): agora responde se há testes; PT autoral",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8fe3a4",
+      "quem": "mike",
+      "cod": "Are there any questions?",
+      "dica": "Tem alguma pergunta?",
+      "img": "🙋❓",
+      "alvo": "any",
+      "alvo_pt": "alguma",
+      "conceito": "Na pergunta: any = algum, alguma.",
+      "var": [
+        {
+          "em": "Are there any questions",
+          "aceita": [
+            "Do you have any questions"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1553537,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Alguma pergunta?\"; PT original \"Alguma pergunta?\" (leva a Any questions?); reescrito com \"Tem\"",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

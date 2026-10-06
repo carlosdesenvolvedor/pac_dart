@@ -1,0 +1,162 @@
+{
+  "id": "numeros-horas-soletrar.zero-a-doze-o-telefone",
+  "trilha": "numeros-horas-soletrar",
+  "nome": "Zero a doze: o telefone",
+  "emoji": "☎️",
+  "cena": "No fim da chamada, você pega o telefone da Sarah e do Mike para pôr no grupo do time.",
+  "resumo": "Números de zero a doze para ditar e conferir um telefone: What's your phone number? / Nine or five?",
+  "fechamento": false,
+  "novos": [
+    "What's your phone number?",
+    "or",
+    "zero a doze (zero, one, two... twelve)"
+  ],
+  "apoio": [
+    "Sorry?"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Números de 0 a 12"
+    },
+    {
+      "t": "p",
+      "c": "zero, one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve."
+    },
+    {
+      "t": "tip",
+      "c": "Telefone se dita em blocos: five five five, eleven twelve. Muitos americanos dizem oh no lugar de zero."
+    },
+    {
+      "t": "ex",
+      "c": "What's your phone number?\nQual é o seu telefone?"
+    }
+  ],
+  "imagem": "📱☎️📝",
+  "visualizacao": "A chamada está acabando. Você pega o celular, abre os contatos e espera, com o dedo no teclado numérico, a Sarah ditar o número dela.",
+  "foto_busca": "smartphone contacts dial pad",
+  "trechos": [
+    {
+      "id": "f-64a006",
+      "quem": "voce",
+      "cod": "What's your phone number, Sarah?",
+      "dica": "Qual é o seu telefone, Sarah?",
+      "img": "📱❓",
+      "alvo": "What's your phone number",
+      "alvo_pt": "Qual é o seu telefone",
+      "lit": "[lit.: qual é o seu número de telefone?]",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 466624,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Sarah; PT reescrito (Qual é o seu telefone?)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cd28e1",
+      "quem": "sarah",
+      "contexto": "f-64a006",
+      "cod": "It's five five five.",
+      "dica": "É cinco cinco cinco.",
+      "img": "🖐️📞",
+      "alvo": "five five five",
+      "alvo_pt": "cinco cinco cinco",
+      "conceito": "Telefone se dita número por número, em blocos.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-12efe9",
+      "quem": "voce",
+      "contexto": "f-cd28e1",
+      "cod": "Sorry? Nine or five?",
+      "dica": "Desculpa? Nove ou cinco?",
+      "img": "👂🤔",
+      "alvo": "Nine or five",
+      "alvo_pt": "Nove ou cinco",
+      "conceito": "or = ou. Para conferir um número: Nine or five?",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5ac529",
+      "quem": "sarah",
+      "contexto": "f-12efe9",
+      "cod": "Five. And zero one, zero two.",
+      "dica": "Cinco. E zero um, zero dois.",
+      "img": "✍️📱",
+      "alvo": "zero one, zero two",
+      "alvo_pt": "zero um, zero dois",
+      "conceito": "Em telefone, o americano também diz oh no lugar de zero: oh one, oh two.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f228c7",
+      "quem": "voce",
+      "cod": "Mike, what's your phone number?",
+      "dica": "Mike, qual é o seu telefone?",
+      "img": "👨‍💻📱",
+      "alvo": "what's your phone number",
+      "alvo_pt": "qual é o seu telefone",
+      "registro": "neutro",
+      "variacao_de": "f-64a006",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 466624,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Mike; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d7b1f2",
+      "quem": "mike",
+      "contexto": "f-f228c7",
+      "cod": "Five five five, eleven twelve.",
+      "dica": "Cinco cinco cinco, onze doze.",
+      "img": "☎️📇",
+      "alvo": "eleven twelve",
+      "alvo_pt": "onze doze",
+      "conceito": "Os quatro últimos dígitos podem vir em pares: eleven twelve = 11 12.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3403d9",
+      "quem": "voce",
+      "contexto": "f-d7b1f2",
+      "cod": "Sorry, eleven or seven?",
+      "dica": "Desculpa, onze ou sete?",
+      "img": "🧐📞",
+      "alvo": "eleven or seven",
+      "alvo_pt": "onze ou sete",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6da6da",
+      "quem": "mike",
+      "contexto": "f-3403d9",
+      "cod": "Eleven. Eleven twelve. Got it?",
+      "dica": "Onze. Onze doze. Entendeu?",
+      "img": "✅📲",
+      "alvo": "Eleven twelve",
+      "alvo_pt": "Onze doze",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

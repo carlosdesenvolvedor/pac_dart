@@ -1,0 +1,253 @@
+{
+  "id": "se-e-quando.plano-b-e-aviso-de-deploy",
+  "trilha": "se-e-quando",
+  "nome": "Plano B e aviso de deploy",
+  "emoji": "🔀",
+  "cena": "Sexta à tarde: você avisa o time sobre o deploy e combina o churrasco de sábado com o Ben.",
+  "resumo": "Fechamento: if (talvez aconteça) e when (vai acontecer), sempre com presente depois.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "If ou when?"
+    },
+    {
+      "t": "p",
+      "c": "**If** = talvez aconteça. **When** = vai acontecer. Nas duas, o verbo logo depois fica no **presente**; o resto vai com **will**, **can** ou imperativo."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca will logo depois de if ou when: when the deploy finishes (não: when the deploy will finish)."
+    },
+    {
+      "t": "ex",
+      "c": "I'll text you when the deploy finishes.\nTe mando mensagem quando o deploy terminar."
+    },
+    {
+      "t": "ex",
+      "c": "If it rains, we can eat inside.\nSe chover, a gente pode comer lá dentro."
+    }
+  ],
+  "imagem": "🚀📅🌦️",
+  "visualizacao": "Sexta, quatro da tarde. Você vê a barra do deploy andar devagar na tela; no celular, o Ben manda mensagem sobre o churrasco de sábado e a chuva.",
+  "foto_busca": "laptop desk friday afternoon",
+  "trechos": [
+    {
+      "id": "f-733908",
+      "quem": "voce",
+      "cod": "I'll text you when the deploy finishes.",
+      "dica": "Te mando mensagem quando o deploy terminar.",
+      "img": "🚀📲",
+      "alvo": "when the deploy finishes",
+      "alvo_pt": "quando o deploy terminar",
+      "conceito": "when + presente com -s: when the deploy finishes (não: will finish).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8bfbf6",
+      "quem": "mike",
+      "contexto": "f-733908",
+      "cod": "Great. What happens if the tests fail?",
+      "dica": "Ótimo. O que acontece se os testes falharem?",
+      "img": "🧪❌❓",
+      "alvo": "if the tests fail",
+      "alvo_pt": "se os testes falharem",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "What happens",
+          "aceita": [
+            "What will happen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-296c3e",
+      "quem": "voce",
+      "contexto": "f-8bfbf6",
+      "cod": "If they fail, we'll stop the deploy.",
+      "dica": "Se falharem, a gente para o deploy.",
+      "img": "🛑🚀",
+      "alvo": "If they fail",
+      "alvo_pt": "Se falharem",
+      "conceito": "Sujeito obrigatório: if they fail (em português ele some).",
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR28"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "we'll stop",
+          "aceita": [
+            "we stop"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f81094",
+      "quem": "voce",
+      "cod": "If the page doesn't load, restart the app.",
+      "dica": "Se a página não carregar, reinicia o app.",
+      "img": "📄⏳🔄",
+      "alvo": "If the page doesn't load",
+      "alvo_pt": "Se a página não carregar",
+      "conceito": "Se + presente, imperativo: instrução para quando acontecer.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR07"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-10d6b2",
+      "quem": "mike",
+      "cod": "Call me if you have a problem.",
+      "dica": "Me liga se você tiver um problema.",
+      "img": "📞⚠️",
+      "alvo": "if you have a problem",
+      "alvo_pt": "se você tiver um problema",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR42"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2663365,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Me chame caso você tenha algum problema.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cb4dbd",
+      "quem": "ben",
+      "cod": "Let's have a barbecue at my place on Saturday.",
+      "dica": "Vamos fazer um churrasco lá em casa no sábado.",
+      "img": "🍖🔥📅",
+      "conceito": "fazer um churrasco = have a barbecue (não: make). lá em casa = at my place.",
+      "var": [
+        {
+          "em": "place",
+          "aceita": [
+            "house"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "make"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-38da79",
+      "quem": "voce",
+      "contexto": "f-cb4dbd",
+      "cod": "Sure, if it doesn't rain.",
+      "dica": "Claro, se não chover.",
+      "img": "🌂🤞",
+      "alvo": "if it doesn't rain",
+      "alvo_pt": "se não chover",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR28",
+        "BR07"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b18d2b",
+      "quem": "ben",
+      "contexto": "f-38da79",
+      "cod": "If it rains, we can eat inside.",
+      "dica": "Se chover, a gente pode comer lá dentro.",
+      "img": "🌧️🍽️🏠",
+      "alvo": "If it rains",
+      "alvo_pt": "Se chover",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR28"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8240404,
+        "en_autor": "CK",
+        "pt_id": 8329868,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4c9d7e",
+      "quem": "voce",
+      "contexto": "f-b18d2b",
+      "cod": "Can you check the forecast on Saturday morning?",
+      "dica": "Você pode olhar a previsão do tempo no sábado de manhã?",
+      "img": "🌤️📱",
+      "alvo": "forecast",
+      "alvo_pt": "previsão do tempo",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8c5739",
+      "quem": "ben",
+      "contexto": "f-4c9d7e",
+      "cod": "I'll let you know.",
+      "dica": "Pode deixar que eu te aviso.",
+      "img": "👍📩",
+      "alvo": "I'll let you know",
+      "alvo_pt": "eu te aviso",
+      "conceito": "Pode deixar que eu te aviso = I'll let you know.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1911834,
+        "en_autor": "CK",
+        "pt_id": 8541993,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

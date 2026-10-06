@@ -1,0 +1,272 @@
+{
+  "id": "modais-no-passado.podem-ter-perdido-o-onibus",
+  "trilha": "modais-no-passado",
+  "nome": "Podem ter perdido o ônibus",
+  "emoji": "🤷",
+  "cena": "O Lucas não aparece na sua festa de aniversário, e você e a Julia tentam adivinhar o que aconteceu.",
+  "resumo": "Especular sobre o que pode ter acontecido com might have, might not have e may have + particípio.",
+  "fechamento": false,
+  "novos": [
+    "might have",
+    "might not have",
+    "may have",
+    "spam folder",
+    "the wrong address"
+  ],
+  "apoio": [
+    "got lost",
+    "gotten (en-US)",
+    "fall asleep",
+    "the invitation"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pode ter: might have + particípio"
+    },
+    {
+      "t": "p",
+      "c": "Para especular sobre o passado: **might have** + particípio (pode ter). Na negativa, **might not have** (pode não ter). **may have** é igual."
+    },
+    {
+      "t": "tip",
+      "c": "Agora x antes: He might be lost (pode estar perdido). He might have gotten lost (pode ter se perdido)."
+    },
+    {
+      "t": "warn",
+      "c": "Depois de might, sempre have + particípio: He might have seen (não: He might saw)."
+    },
+    {
+      "t": "ex",
+      "c": "He might not have seen my message.\nEle pode não ter visto a minha mensagem."
+    }
+  ],
+  "imagem": "🎂🎉🤷",
+  "visualizacao": "A sua sala está cheia, o bolo de aniversário espera na mesa com as velas apagadas. A Julia olha o celular de novo: nada do Lucas, nenhuma mensagem.",
+  "foto_busca": "birthday party cake living room",
+  "trechos": [
+    {
+      "id": "f-16a339",
+      "quem": "julia",
+      "contexto": "It's nine already. Where's Lucas?",
+      "cod": "He might have missed the bus.",
+      "dica": "Ele pode ter perdido o ônibus.",
+      "img": "🚌💨",
+      "alvo": "might have",
+      "alvo_pt": "pode ter",
+      "conceito": "might have + particípio = pode ter: talvez tenha acontecido. Perder o ônibus = miss.",
+      "registro": "informal",
+      "interferencias": [
+        "BR34"
+      ],
+      "armadilhas": [
+        "lost",
+        "maybe"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6676899,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → He; may → might; his train → the bus; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-893fc2",
+      "quem": "voce",
+      "contexto": "f-16a339",
+      "cod": "Or he might have taken the wrong bus.",
+      "dica": "Ou ele pode ter pegado o ônibus errado.",
+      "img": "🚌❌",
+      "alvo": "might have",
+      "alvo_pt": "pode ter",
+      "conceito": "the wrong bus = o ônibus errado (com the).",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "taken",
+          "aceita": [
+            "caught",
+            "gotten on"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-18e09a",
+      "quem": "julia",
+      "cod": "Lucas might not have seen my message.",
+      "dica": "O Lucas pode não ter visto a minha mensagem.",
+      "img": "📱🙈",
+      "alvo": "might not have",
+      "alvo_pt": "pode não ter",
+      "conceito": "might not have + particípio = pode não ter.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3736096,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Lucas; us → my message; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a09d58",
+      "quem": "voce",
+      "cod": "He might not have gotten the invitation.",
+      "dica": "Ele pode não ter recebido o convite.",
+      "img": "✉️❓",
+      "alvo": "might not have",
+      "alvo_pt": "pode não ter",
+      "conceito": "gotten = particípio de get no inglês americano (aqui, receber).",
+      "var": [
+        {
+          "em": "gotten",
+          "aceita": [
+            "received"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-76e692",
+      "quem": "julia",
+      "cod": "He may have forgotten about the party.",
+      "dica": "Ele pode ter esquecido da festa.",
+      "img": "🎉🤦",
+      "alvo": "may have",
+      "alvo_pt": "pode ter",
+      "conceito": "may have = might have: as duas formas são aceitas.",
+      "var": [
+        {
+          "em": "forgotten about",
+          "aceita": [
+            "forgotten"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-90c037",
+      "quem": "voce",
+      "cod": "Or the invitation may have gone to his spam folder.",
+      "dica": "Ou o convite pode ter ido pra pasta de spam dele.",
+      "img": "📧🗑️",
+      "alvo": "spam folder",
+      "alvo_pt": "pasta de spam",
+      "conceito": "spam folder = pasta de spam: substantivo + substantivo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR11",
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e31b36",
+      "quem": "julia",
+      "contexto": "f-90c037",
+      "cod": "Lucas never checks his spam folder.",
+      "dica": "O Lucas nunca olha a pasta de spam.",
+      "img": "📂🚫",
+      "alvo": "spam folder",
+      "alvo_pt": "pasta de spam",
+      "conceito": "never checks: -s com ele (Lucas). Nome próprio sem artigo.",
+      "var": [
+        {
+          "em": "checks",
+          "aceita": [
+            "looks at"
+          ]
+        },
+        {
+          "em": "his",
+          "aceita": [
+            "the"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-34cccb",
+      "quem": "voce",
+      "cod": "Wait. He may have gone to my old apartment.",
+      "dica": "Peraí. Ele pode ter ido pro meu apartamento antigo.",
+      "img": "🏢🔙",
+      "alvo": "may have",
+      "alvo_pt": "pode ter",
+      "conceito": "my old apartment = o meu apartamento antigo (adjetivo antes).",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3256bc",
+      "quem": "julia",
+      "contexto": "f-34cccb",
+      "cod": "You're right! The invitation had the wrong address.",
+      "dica": "Você tem razão! O convite estava com o endereço errado.",
+      "img": "📍❌",
+      "alvo": "the wrong address",
+      "alvo_pt": "o endereço errado",
+      "conceito": "ter razão = be right (You're right).",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-14c7a4",
+      "quem": "lucas",
+      "contexto": "Lucas, where are you?",
+      "cod": "I went to the wrong address.",
+      "dica": "Eu fui pro endereço errado.",
+      "img": "🚶📍",
+      "alvo": "the wrong address",
+      "alvo_pt": "o endereço errado",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2543741,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Fui ao endereço errado.\"; PT reescrito: registro falado (fui pro)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

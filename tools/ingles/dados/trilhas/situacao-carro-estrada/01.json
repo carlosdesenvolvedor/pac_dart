@@ -1,0 +1,235 @@
+{
+  "id": "situacao-carro-estrada.alugando-o-carro",
+  "trilha": "situacao-carro-estrada",
+  "nome": "Alugando o carro",
+  "emoji": "🔑",
+  "cena": "No balcão da locadora do aeroporto de Austin, você retira o carro que reservou.",
+  "resumo": "Retirar o carro reservado e entender seguro, combustível e devolução.",
+  "fechamento": false,
+  "novos": [
+    "pick up the car",
+    "full tank",
+    "return (devolver)"
+  ],
+  "apoio": [
+    "insurance",
+    "driver's license"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Na locadora"
+    },
+    {
+      "t": "p",
+      "c": "**pick up the car** = retirar o carro; **return it** = devolver; **with a full tank** = com o tanque cheio."
+    },
+    {
+      "t": "tip",
+      "c": "O carro que reservei = the car I reserved (o that pode sumir)."
+    },
+    {
+      "t": "warn",
+      "c": "Devolver com o tanque cheio = return it with a full tank: o objeto it é obrigatório."
+    },
+    {
+      "t": "ex",
+      "c": "Is insurance included, or do I have to pay extra?\nO seguro está incluído ou eu tenho que pagar à parte?"
+    }
+  ],
+  "imagem": "🔑🚗🛫",
+  "visualizacao": "Balcão da locadora no aeroporto de Austin. Fila curta, chaves penduradas na parede atrás do atendente e o calor do Texas entrando pela porta automática.",
+  "foto_busca": "car rental counter airport keys",
+  "trechos": [
+    {
+      "id": "f-8cf988",
+      "quem": "voce",
+      "cod": "Hi, I'd like to pick up the car I reserved online.",
+      "dica": "Oi, eu gostaria de retirar o carro que reservei pela internet.",
+      "img": "🚗📱",
+      "alvo": "pick up the car",
+      "alvo_pt": "retirar o carro",
+      "conceito": "pick up = retirar, buscar. the car I reserved = o carro que eu reservei (sem that).",
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "take the car",
+        "withdraw"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-23250c",
+      "quem": "atendente",
+      "contexto": "f-8cf988",
+      "cod": "May I see your driver's license?",
+      "dica": "Posso ver sua carteira de motorista?",
+      "img": "📄👀",
+      "alvo": "driver's license",
+      "alvo_pt": "carteira de motorista",
+      "conceito": "driver's license = carteira de motorista (com apóstrofo).",
+      "var": [
+        {
+          "em": "May I",
+          "aceita": [
+            "Can I"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "drivers license",
+        "driving license"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 405789,
+        "en_autor": "CK",
+        "pt_id": 2743972,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2bad45",
+      "quem": "voce",
+      "cod": "Is insurance included, or do I have to pay extra?",
+      "dica": "O seguro está incluído ou eu tenho que pagar à parte?",
+      "img": "🛡️💵",
+      "alvo": "Is insurance included",
+      "alvo_pt": "O seguro está incluído",
+      "conceito": "insurance (seguro, em geral) vai sem artigo. pagar à parte = pay extra.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR21"
+      ],
+      "armadilhas": [
+        "the insurance",
+        "insurance is included"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e7feed",
+      "quem": "atendente",
+      "contexto": "f-2bad45",
+      "cod": "You need to return it with a full tank.",
+      "dica": "Você precisa devolver com o tanque cheio.",
+      "img": "⛽💯",
+      "alvo": "full tank",
+      "alvo_pt": "tanque cheio",
+      "conceito": "Devolver (o quê?): o objeto it é obrigatório. com o tanque cheio = with a full tank.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "return with",
+        "tank full",
+        "the full tank"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f873fc",
+      "quem": "voce",
+      "contexto": "f-e7feed",
+      "cod": "What happens if I don't return it with a full tank?",
+      "dica": "O que acontece se eu não devolver com o tanque cheio?",
+      "img": "⛽❓",
+      "alvo": "full tank",
+      "alvo_pt": "tanque cheio",
+      "conceito": "se eu não devolver (futuro do subjuntivo) = if I don't return: presente depois de if.",
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "won't return",
+        "return with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-99a8e2",
+      "quem": "voce",
+      "cod": "Is there a charge for returning the car late?",
+      "dica": "Tem alguma taxa por devolver o carro atrasado?",
+      "img": "⏰💲",
+      "alvo": "returning the car",
+      "alvo_pt": "devolver o carro",
+      "conceito": "Tem (existe) = Is there...? Depois de for, o verbo vai com -ing.",
+      "var": [
+        {
+          "em": "a charge",
+          "aceita": [
+            "any charge",
+            "a fee",
+            "any fee"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have a",
+        "for return"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dad1fb",
+      "quem": "atendente",
+      "contexto": "f-99a8e2",
+      "cod": "Only if you return it after noon on Sunday.",
+      "dica": "Só se você devolver depois do meio-dia de domingo.",
+      "img": "🕛📅",
+      "alvo": "return",
+      "alvo_pt": "devolver",
+      "conceito": "Dia da semana com on e maiúscula: on Sunday. noon = meio-dia.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in sunday",
+        "sunday",
+        "midday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3beca1",
+      "quem": "atendente",
+      "cod": "You can pick up the car in the parking lot across the street.",
+      "dica": "Você pode retirar o carro no estacionamento do outro lado da rua.",
+      "img": "🅿️↔️",
+      "alvo": "pick up the car",
+      "alvo_pt": "retirar o carro",
+      "conceito": "estacionamento = parking lot; do outro lado da rua = across the street.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "parking",
+        "in front"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

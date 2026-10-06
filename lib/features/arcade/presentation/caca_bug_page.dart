@@ -7,7 +7,7 @@ import 'package:flutter/services.dart';
 
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
-import '../domain/banco_desafios.dart';
+import 'banco_arcade.dart';
 import '../domain/baralho.dart';
 import '../domain/caca_bug_engine.dart';
 import '../domain/desafio.dart';
@@ -81,7 +81,7 @@ class _CacaBugPageState extends State<CacaBugPage>
 
   void _comecarRun() {
     _rnd = math.Random(widget.semente);
-    _baralho = BaralhoBugs(rnd: _rnd, banco: bancoBugs);
+    _baralho = BaralhoBugs(rnd: _rnd, banco: BancoArcade.bugs(context));
     setState(() {
       zerarCampanha();
       _acertosRun = 0;
@@ -186,6 +186,9 @@ class _CacaBugPageState extends State<CacaBugPage>
       [LogicalKeyboardKey.digit4, LogicalKeyboardKey.numpad4],
       [LogicalKeyboardKey.digit5, LogicalKeyboardKey.numpad5],
       [LogicalKeyboardKey.digit6, LogicalKeyboardKey.numpad6],
+      [LogicalKeyboardKey.digit7, LogicalKeyboardKey.numpad7],
+      [LogicalKeyboardKey.digit8, LogicalKeyboardKey.numpad8],
+      [LogicalKeyboardKey.digit9, LogicalKeyboardKey.numpad9],
     ];
     for (var i = 0; i < teclas.length && i < _bug.linhas.length; i++) {
       if (teclas[i].contains(e.logicalKey)) {
@@ -466,7 +469,7 @@ class _Monitor extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Row(mainAxisSize: MainAxisSize.min, children: [
-            Text('PAC·DART IDE',
+            Text('PAC·${BancoArcade.linguagem == 'C#' ? 'C#' : 'DART'} IDE',
                 style: Mixart.ui(size: 8, weight: FontWeight.w700, color: const Color(0xFF8A96A3))
                     .copyWith(letterSpacing: 1.5)),
             const SizedBox(width: 8),

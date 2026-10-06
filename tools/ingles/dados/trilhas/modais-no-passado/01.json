@@ -1,0 +1,301 @@
+{
+  "id": "modais-no-passado.voce-devia-ter-me-falado",
+  "trilha": "modais-no-passado",
+  "nome": "Você devia ter me falado",
+  "emoji": "😬",
+  "cena": "No fim de um passeio em Boston que deu errado (chuva, sol forte e ingresso caro), você e o Ben lamentam as escolhas do dia.",
+  "resumo": "Lamentar e criticar com tato o que já passou: should have / shouldn't have + particípio.",
+  "fechamento": false,
+  "novos": [
+    "should have",
+    "shouldn't have",
+    "in advance",
+    "the forecast",
+    "the second slice"
+  ],
+  "apoio": [
+    "umbrella",
+    "sunscreen",
+    "careful",
+    "a jacket",
+    "booked"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Devia ter: should have + particípio"
+    },
+    {
+      "t": "p",
+      "c": "Para lamentar ou criticar o que já passou, use **should have** + particípio: I should have brought an umbrella. Na negativa, **shouldn't have**."
+    },
+    {
+      "t": "warn",
+      "c": "O particípio é obrigatório: You should have told me (não: You should told me)."
+    },
+    {
+      "t": "tip",
+      "c": "Na fala, soa should've. O app aceita a contração e a forma plena."
+    },
+    {
+      "t": "ex",
+      "c": "We should have booked the tickets in advance.\nA gente devia ter comprado os ingressos com antecedência."
+    }
+  ],
+  "imagem": "☔🏛️🍕",
+  "visualizacao": "Fim de dia em Boston, no apartamento do Ben. Seu tênis ainda está molhado da chuva, o rosto arde de sol e a caixa de pizza está aberta em cima da mesa.",
+  "foto_busca": "friends eating pizza after rainy day",
+  "trechos": [
+    {
+      "id": "f-570f99",
+      "quem": "voce",
+      "cod": "I should have brought an umbrella.",
+      "dica": "Eu devia ter trazido um guarda-chuva.",
+      "img": "☔😩",
+      "alvo": "should have",
+      "alvo_pt": "devia ter",
+      "conceito": "should have + particípio = devia ter: lamentar algo que você não fez.",
+      "registro": "informal",
+      "interferencias": [
+        "BR37"
+      ],
+      "armadilhas": [
+        "had",
+        "bring"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6260765,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "should've → should have; more food → an umbrella; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a7262c",
+      "quem": "ben",
+      "contexto": "f-570f99",
+      "cod": "We should have checked the forecast.",
+      "dica": "A gente devia ter olhado a previsão do tempo.",
+      "img": "📱🌦️",
+      "alvo": "the forecast",
+      "alvo_pt": "a previsão do tempo",
+      "conceito": "the forecast = a previsão do tempo; check = olhar, conferir.",
+      "var": [
+        {
+          "em": "checked",
+          "aceita": [
+            "looked at"
+          ]
+        },
+        {
+          "em": "the forecast",
+          "aceita": [
+            "the weather forecast"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b4c08c",
+      "quem": "voce",
+      "contexto": "f-a7262c",
+      "cod": "Yeah. The forecast said it would rain all morning.",
+      "dica": "É. A previsão do tempo dizia que ia chover a manhã toda.",
+      "img": "🌧️🕘",
+      "alvo": "The forecast",
+      "alvo_pt": "A previsão do tempo",
+      "conceito": "said it would rain: discurso indireto (will vira would). Chover pede sujeito: it.",
+      "var": [
+        {
+          "em": "would",
+          "aceita": [
+            "was going to"
+          ]
+        },
+        {
+          "em": "Yeah",
+          "aceita": [
+            "Yes"
+          ]
+        },
+        {
+          "em": "The forecast",
+          "aceita": [
+            "The weather forecast"
+          ]
+        },
+        {
+          "em": "all morning",
+          "aceita": [
+            "the whole morning"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR31"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9e48ef",
+      "quem": "ben",
+      "cod": "We should have booked the tickets in advance.",
+      "dica": "A gente devia ter comprado os ingressos com antecedência.",
+      "img": "🎟️💸",
+      "alvo": "in advance",
+      "alvo_pt": "com antecedência",
+      "conceito": "in advance = com antecedência; fica no fim da frase.",
+      "var": [
+        {
+          "em": "booked",
+          "aceita": [
+            "bought"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3953ad",
+      "quem": "voce",
+      "contexto": "f-9e48ef",
+      "cod": "Next time, I'll book everything in advance.",
+      "dica": "Da próxima vez, vou reservar tudo com antecedência.",
+      "img": "📅✅",
+      "alvo": "in advance",
+      "alvo_pt": "com antecedência",
+      "conceito": "book = reservar (ingresso, mesa, hotel).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3c0882",
+      "quem": "ben",
+      "cod": "You shouldn't have stayed in the sun all afternoon.",
+      "dica": "Você não devia ter ficado no sol a tarde toda.",
+      "img": "☀️🥵",
+      "alvo": "shouldn't have",
+      "alvo_pt": "não devia ter",
+      "conceito": "shouldn't have + particípio = não devia ter. Ficar num lugar = stay; no sol = in the sun.",
+      "registro": "informal",
+      "interferencias": [
+        "BR33",
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "all afternoon",
+          "aceita": [
+            "the whole afternoon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-40c973",
+      "quem": "voce",
+      "contexto": "f-3c0882",
+      "cod": "I know. I shouldn't have left my sunscreen at the hotel.",
+      "dica": "Eu sei. Não devia ter deixado meu protetor solar no hotel.",
+      "img": "🧴🏨",
+      "alvo": "shouldn't have",
+      "alvo_pt": "Não devia ter",
+      "conceito": "deixar algo num lugar = leave (left); no hotel = at the hotel.",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ea33f0",
+      "quem": "ben",
+      "cod": "And you shouldn't have eaten the second slice.",
+      "dica": "E você não devia ter comido a segunda fatia.",
+      "img": "🍕🍕😬",
+      "alvo": "the second slice",
+      "alvo_pt": "a segunda fatia",
+      "conceito": "slice = fatia (de pizza, de bolo, de pão).",
+      "var": [
+        {
+          "em": "eaten",
+          "aceita": [
+            "had"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9779914,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "so much → the second slice; And no início; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7476d1",
+      "quem": "voce",
+      "contexto": "f-ea33f0",
+      "cod": "But the second slice was the best part!",
+      "dica": "Mas a segunda fatia foi a melhor parte!",
+      "img": "🍕😋",
+      "alvo": "the second slice",
+      "alvo_pt": "a segunda fatia",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0392cb",
+      "quem": "ben",
+      "contexto": "Honestly, I was tired all day.",
+      "cod": "You should have told me you were tired.",
+      "dica": "Você devia ter me falado que estava cansado.",
+      "img": "😴🗣️",
+      "alvo": "should have",
+      "alvo_pt": "devia ter",
+      "conceito": "tell me (that) you were tired: o that é opcional; tell pede a pessoa (me).",
+      "pt_f": "Você devia ter me falado que estava cansada.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "said"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3199897,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "should've → should have; + you were tired; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

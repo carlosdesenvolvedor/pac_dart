@@ -1,0 +1,197 @@
+{
+  "id": "situacao-caminho-compras.na-farmacia-o-carregador",
+  "trilha": "situacao-caminho-compras",
+  "nome": "Na farmácia: o carregador",
+  "emoji": "🔌",
+  "cena": "Numa farmácia grande em Chicago, você procura um carregador e o que esqueceu no Brasil.",
+  "resumo": "Dizer o que procura e perguntar onde fica: I'm looking for... / Where can I find...?",
+  "fechamento": false,
+  "novos": [
+    "I'm looking for...",
+    "toothpaste",
+    "sunscreen",
+    "Where can I find...?"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Procurando na farmácia"
+    },
+    {
+      "t": "p",
+      "c": "**I'm looking for...** = Estou procurando... **Where can I find...?** = Onde posso encontrar...?"
+    },
+    {
+      "t": "ex",
+      "c": "Hi, I'm looking for a phone charger.\nOi, estou procurando um carregador de celular."
+    },
+    {
+      "t": "warn",
+      "c": "procurar = **look for** (não: *search*, que é buscar, na internet)."
+    },
+    {
+      "t": "tip",
+      "c": "**aisle** = corredor de loja: *It's in aisle five.* = Fica no corredor cinco."
+    }
+  ],
+  "imagem": "💊🔌🪥",
+  "visualizacao": "Você entra numa farmácia enorme em Chicago: luz branca, corredores numerados, prateleiras de tudo. Um atendente de colete aponta para o fundo da loja.",
+  "foto_busca": "drugstore aisle shelves",
+  "trechos": [
+    {
+      "id": "f-d240fe",
+      "quem": "voce",
+      "cod": "Hi, I'm looking for a phone charger.",
+      "dica": "Oi, estou procurando um carregador de celular.",
+      "img": "🔌📱🔎",
+      "alvo": "I'm looking for",
+      "alvo_pt": "estou procurando",
+      "conceito": "procurar = look for (search é buscar, na internet).",
+      "registro": "neutro",
+      "armadilhas": [
+        "search",
+        "searching"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2546575,
+        "en_autor": "CK",
+        "pt_id": 4332943,
+        "pt_autor": "KimiP",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm looking for my hat.\"; + Hi, my hat → a phone charger; PT original: \"Estou procurando o meu chapéu.\"; PT: + Oi, o meu chapéu → um carregador de celular",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-315ac3",
+      "quem": "atendente",
+      "contexto": "f-d240fe",
+      "cod": "It's in aisle five, next to the toothpaste.",
+      "dica": "Fica no corredor cinco, do lado da pasta de dente.",
+      "img": "🪥🔌",
+      "alvo": "toothpaste",
+      "alvo_pt": "pasta de dente",
+      "conceito": "aisle = corredor de loja ou de mercado.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cd2974",
+      "quem": "voce",
+      "cod": "Where can I find an adapter?",
+      "dica": "Onde posso encontrar um adaptador?",
+      "img": "🔌🔄❓",
+      "alvo": "Where can I find",
+      "alvo_pt": "Onde posso encontrar",
+      "conceito": "adapter = adaptador de tomada.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3826493,
+        "en_autor": "CK",
+        "pt_id": 4492517,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Where can I find an ATM?\"; PT original: \"Onde posso encontrar um caixa eletrônico?\"; ATM → adapter; PT: caixa eletrônico → adaptador",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c1f2fd",
+      "quem": "voce",
+      "cod": "Do you have any sunscreen?",
+      "dica": "Você tem protetor solar?",
+      "img": "🧴☀️❓",
+      "alvo": "sunscreen",
+      "alvo_pt": "protetor solar",
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2545018,
+        "en_autor": "CK",
+        "pt_id": 5941984,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4d20e9",
+      "quem": "atendente",
+      "contexto": "f-c1f2fd",
+      "cod": "Yes, there's sunscreen in aisle two.",
+      "dica": "Sim, tem protetor solar no corredor dois.",
+      "img": "🧴➡️",
+      "alvo": "sunscreen",
+      "alvo_pt": "protetor solar",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c36a07",
+      "quem": "voce",
+      "cod": "I'm looking for a cable for my laptop.",
+      "dica": "Estou procurando um cabo pro meu notebook.",
+      "img": "💻🔌",
+      "alvo": "I'm looking for",
+      "alvo_pt": "Estou procurando",
+      "conceito": "laptop = notebook (o computador); notebook em inglês é caderno.",
+      "registro": "neutro",
+      "armadilhas": [
+        "search",
+        "notebook"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-800c5e",
+      "quem": "voce",
+      "cod": "Where can I find shampoo?",
+      "dica": "Onde posso encontrar xampu?",
+      "img": "🚿❓",
+      "alvo": "Where can I find",
+      "alvo_pt": "Onde posso encontrar",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6915174,
+        "en_autor": "Eccles17",
+        "pt_id": 8018594,
+        "pt_autor": "jvlopes91",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Where can I find food?\"; PT original: \"Onde eu posso encontrar comida?\"; food → shampoo; PT: comida → xampu, sem o eu",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ba4241",
+      "quem": "voce",
+      "contexto": "Is that everything?",
+      "cod": "Yes, just the charger and the toothpaste.",
+      "dica": "Sim, só o carregador e a pasta de dente.",
+      "img": "🪥🧾",
+      "alvo": "toothpaste",
+      "alvo_pt": "pasta de dente",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

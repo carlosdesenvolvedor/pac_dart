@@ -1,0 +1,300 @@
+{
+  "id": "falsos-cognatos-trabalho.na-verdade-nao-percebi",
+  "trilha": "falsos-cognatos-trabalho",
+  "nome": "Na verdade, não percebi",
+  "emoji": "🚧",
+  "cena": "Na reunião de status, o time comenta como foi o lançamento e o que cada um percebeu tarde demais.",
+  "resumo": "Usar eventually, realize, pretend e assume com o sentido inglês: no fim, perceber, fingir e supor.",
+  "fechamento": false,
+  "novos": [
+    "eventually",
+    "realize",
+    "I didn't realize",
+    "pretend",
+    "assume"
+  ],
+  "apoio": [
+    "actually",
+    "the logs",
+    "the docs"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Parecem, mas não são"
+    },
+    {
+      "t": "p",
+      "c": "**eventually** = no fim, depois de um tempo. **realize** = perceber que, se dar conta. **pretend** = fingir. **assume** = supor."
+    },
+    {
+      "t": "warn",
+      "c": "Não traduza pelo som: eventualmente é occasionally, realizar é carry out, pretender é plan to, assumir (cargo) é take on. Perceber algo, notar, é notice."
+    },
+    {
+      "t": "tip",
+      "c": "**actually** = na verdade. Atualmente é **currently** (próxima lição)."
+    },
+    {
+      "t": "ex",
+      "c": "I didn't realize it was so late.\nNão percebi que era tão tarde."
+    }
+  ],
+  "imagem": "📊🚀🤔",
+  "visualizacao": "Reunião de status na segunda. Você vê o gráfico do lançamento na tela, a Sarah anotando tudo, e cada um conta o que percebeu tarde demais.",
+  "foto_busca": "team status meeting chart screen",
+  "trechos": [
+    {
+      "id": "f-a4fb80",
+      "quem": "voce",
+      "contexto": "What happened with the payment bug?",
+      "cod": "Eventually, we fixed it, but it took three days.",
+      "dica": "No fim, a gente corrigiu, mas levou três dias.",
+      "img": "🐞✅",
+      "alvo": "Eventually",
+      "alvo_pt": "No fim",
+      "conceito": "eventually = no fim, depois de um tempo; eventualmente = occasionally.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR18"
+      ],
+      "armadilhas": [
+        "occasionally"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-990aa4",
+      "quem": "mike",
+      "cod": "The first version was slow, but eventually it got better.",
+      "dica": "A primeira versão era lenta, mas no fim melhorou.",
+      "img": "🐢➡️🐇",
+      "alvo": "eventually",
+      "alvo_pt": "no fim",
+      "conceito": "melhorou = it got better: o inglês precisa do sujeito it.",
+      "var": [
+        {
+          "em": "eventually it got better",
+          "aceita": [
+            "it eventually got better",
+            "it got better eventually"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR01"
+      ],
+      "variacao_de": "f-a4fb80",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ddc00d",
+      "quem": "sarah",
+      "cod": "When did you realize that the API had changed?",
+      "dica": "Quando você percebeu que a API tinha mudado?",
+      "img": "🔌❗",
+      "alvo": "realize",
+      "alvo_pt": "percebeu",
+      "conceito": "realize = perceber que, se dar conta (notar algo = notice; realizar = carry out).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR06"
+      ],
+      "armadilhas": [
+        "noticed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a70bb5",
+      "quem": "mike",
+      "contexto": "f-ddc00d",
+      "cod": "On Tuesday morning, I realized what was happening.",
+      "dica": "Na terça de manhã, eu percebi o que estava acontecendo.",
+      "img": "📈😳",
+      "alvo": "realized",
+      "alvo_pt": "percebi",
+      "conceito": "what was happening: ordem normal dentro da frase.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR17"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2389937,
+        "en_autor": "CK",
+        "pt_id": 5033576,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ On Tuesday morning / Na terça de manhã, no começo da frase",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-111522",
+      "quem": "ana",
+      "cod": "I didn't realize I'd made a mistake.",
+      "dica": "Não percebi que tinha cometido um erro.",
+      "img": "🙈✏️",
+      "alvo": "I didn't realize",
+      "alvo_pt": "Não percebi",
+      "conceito": "I'd made = I had made: tinha cometido (make a mistake = cometer um erro).",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6250264,
+        "en_autor": "CK",
+        "pt_id": 9963680,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c1d0a3",
+      "quem": "mike",
+      "cod": "We can't pretend it never happened.",
+      "dica": "A gente não pode fingir que nunca aconteceu.",
+      "img": "🎭🚫",
+      "alvo": "pretend",
+      "alvo_pt": "fingir",
+      "conceito": "pretend = fingir (pretender = plan to).",
+      "var": [
+        {
+          "em": "pretend it",
+          "aceita": [
+            "pretend that it"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR01"
+      ],
+      "armadilhas": [
+        "intend"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3129530,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Let's pretend → We can't pretend; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6ec01d",
+      "quem": "voce",
+      "cod": "At first, I pretended to understand the old code.",
+      "dica": "No começo, eu fingi que entendia o código antigo.",
+      "img": "🎭💻",
+      "alvo": "pretended",
+      "alvo_pt": "fingi",
+      "var": [
+        {
+          "em": "pretended to understand",
+          "aceita": [
+            "pretended that I understood",
+            "pretended I understood"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f349ce",
+      "quem": "voce",
+      "cod": "I assumed the API was ready, but it wasn't.",
+      "dica": "Supus que a API estava pronta, mas não estava.",
+      "img": "🤷🔌",
+      "alvo": "assumed",
+      "alvo_pt": "Supus",
+      "conceito": "assume = supor (assumir uma tarefa ou cargo = take on).",
+      "var": [
+        {
+          "em": "assumed the",
+          "aceita": [
+            "assumed that the"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-260f1b",
+      "quem": "sarah",
+      "cod": "Let's not assume that everyone reads the docs.",
+      "dica": "Não vamos supor que todo mundo lê a documentação.",
+      "img": "📚🤔",
+      "alvo": "assume",
+      "alvo_pt": "supor",
+      "conceito": "everyone reads: everyone pede o -s da 3ª pessoa.",
+      "opcional": [
+        "that"
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "read"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the docs",
+          "aceita": [
+            "the documentation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4abe79",
+      "quem": "sarah",
+      "cod": "Sorry, I didn't realize it was so late. Let's stop here.",
+      "dica": "Desculpa, não percebi que era tão tarde. Vamos parar por aqui.",
+      "img": "🕔😅",
+      "alvo": "I didn't realize",
+      "alvo_pt": "não percebi",
+      "conceito": "era tarde = it was late: hora e tempo pedem it.",
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

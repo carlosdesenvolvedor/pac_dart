@@ -1,0 +1,327 @@
+{
+  "id": "present-perfect-just-yet.ainda-nao-yet",
+  "trilha": "present-perfect-just-yet",
+  "nome": "Ainda não: yet",
+  "emoji": "🔜",
+  "cena": "Na daily assíncrona, no chat do time, o Mike pergunta o status e várias coisas ainda não foram feitas.",
+  "resumo": "Perguntar se algo já aconteceu e responder que ainda não, com yet e Not yet.",
+  "fechamento": false,
+  "novos": [
+    "yet",
+    "answered",
+    "Not yet.",
+    "decided",
+    "tested"
+  ],
+  "apoio": [
+    "haven't",
+    "fixed"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Já? / Ainda não = yet"
+    },
+    {
+      "t": "p",
+      "c": "Na pergunta, *yet* = **já**: *Have you tested it yet?* Na negativa, *yet* = **ainda**: *I haven't tested it yet.* O *yet* vai no fim."
+    },
+    {
+      "t": "ex",
+      "c": "Have you finished yet?\nVocê já terminou?"
+    },
+    {
+      "t": "ex",
+      "c": "I haven't seen it yet.\nAinda não vi."
+    },
+    {
+      "t": "warn",
+      "c": "Ainda não = *Not yet.* ou *haven't... yet* (não: still not) (BR27). O en-US também aceita *Did you test it yet?*"
+    }
+  ],
+  "imagem": "🗓️💬⏳",
+  "visualizacao": "Você abre o chat cedinho, com a caneca de café na mão. A mensagem do Mike está no topo, cheia de perguntas, e algumas tarefas ainda estão pela metade.",
+  "foto_busca": "morning laptop chat coffee mug",
+  "trechos": [
+    {
+      "id": "f-248bd7",
+      "quem": "mike",
+      "cod": "Have you tested the login page yet?",
+      "dica": "Você já testou a tela de login?",
+      "img": "🧪📱❓",
+      "alvo": "tested",
+      "alvo_pt": "testou",
+      "conceito": "Na pergunta, o já vira yet, no fim: Have you tested it yet?",
+      "var": [
+        {
+          "em": "Have you tested",
+          "aceita": [
+            "Did you test"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "you tested",
+        "did you tested"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a516c",
+      "quem": "voce",
+      "contexto": "f-248bd7",
+      "cod": "Not yet. I'm fixing a bug.",
+      "dica": "Ainda não. Estou corrigindo um bug.",
+      "img": "⏳🐛🔧",
+      "alvo": "Not yet.",
+      "alvo_pt": "Ainda não.",
+      "conceito": "Ainda não. = Not yet. (não: Still not.)",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "still not",
+        "no yet"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aea2eb",
+      "quem": "mike",
+      "cod": "Has the client answered your email yet?",
+      "dica": "O cliente já respondeu ao seu e-mail?",
+      "img": "📨❓",
+      "alvo": "answered",
+      "alvo_pt": "respondeu",
+      "conceito": "answer = responder (e-mail, pergunta, telefone), sem preposição: answer your email.",
+      "var": [
+        {
+          "em": "Has the client answered",
+          "aceita": [
+            "Did the client answer"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have the client",
+        "answered to",
+        "responded"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-675b75",
+      "quem": "voce",
+      "contexto": "f-aea2eb",
+      "cod": "Not yet. I've already left a message.",
+      "dica": "Ainda não. Já deixei um recado.",
+      "img": "⏳📞💬",
+      "alvo": "Not yet.",
+      "alvo_pt": "Ainda não.",
+      "conceito": "leave a message = deixar recado; leave → left.",
+      "var": [
+        {
+          "em": "I've already left",
+          "aceita": [
+            "I already left"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "still not",
+        "leaved"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3618658,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado Not yet.; PT reescrito (deixei recado)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-44db8f",
+      "quem": "voce",
+      "cod": "Sarah hasn't answered my question yet.",
+      "dica": "A Sarah ainda não respondeu à minha pergunta.",
+      "img": "🤷❓⌛",
+      "alvo": "answered",
+      "alvo_pt": "respondeu",
+      "conceito": "Ainda não respondeu = hasn't answered... yet: o yet vai no fim.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "still not",
+        "didn't answer"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2996847,
+        "en_autor": "CK",
+        "pt_id": 5933202,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "You still haven't → Sarah hasn't ... yet (no PT: Você ainda não → A Sarah ainda não)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c14306",
+      "quem": "mike",
+      "cod": "Ana, have you decided on the colors yet?",
+      "dica": "Ana, você já decidiu as cores?",
+      "img": "🎨🤔",
+      "alvo": "yet",
+      "alvo_pt": "já",
+      "conceito": "decide on = escolher, decidir sobre. O yet vai no fim da pergunta.",
+      "var": [
+        {
+          "em": "have you decided",
+          "aceita": [
+            "did you decide"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "colours",
+        "did you decided"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2f1d6d",
+      "quem": "ana",
+      "contexto": "f-c14306",
+      "cod": "No, we haven't decided yet. We like both options.",
+      "dica": "Não, a gente ainda não decidiu. A gente gosta das duas opções.",
+      "img": "🎨🎨🤷‍♀️",
+      "alvo": "decided",
+      "alvo_pt": "decidiu",
+      "conceito": "both = os dois, as duas. Ainda não decidiu = haven't decided yet.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "still not",
+        "the two"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4849988,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado No, e We like both options.; PT reescrito (a gente)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7d9a03",
+      "quem": "voce",
+      "cod": "Has Sarah decided on the new feature yet?",
+      "dica": "A Sarah já decidiu sobre a feature nova?",
+      "img": "👩‍💼🧩❓",
+      "alvo": "decided",
+      "alvo_pt": "decidiu",
+      "conceito": "Com she ou um nome, a pergunta usa has: Has Sarah decided...?",
+      "var": [
+        {
+          "em": "Has Sarah decided",
+          "aceita": [
+            "Did Sarah decide"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have sarah",
+        "did sarah decided"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d692b8",
+      "quem": "voce",
+      "cod": "I haven't tested the new screens yet.",
+      "dica": "Ainda não testei as telas novas.",
+      "img": "🖼️🧪⏳",
+      "alvo": "tested",
+      "alvo_pt": "testei",
+      "conceito": "Ainda não testei = I haven't tested... yet. O ainda vira yet, no fim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR08"
+      ],
+      "armadilhas": [
+        "still not",
+        "didn't test"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf1cfb",
+      "quem": "mike",
+      "cod": "OK, thanks. I haven't seen the new build yet.",
+      "dica": "Ok, valeu. Ainda não vi o build novo.",
+      "img": "👀🏗️⏳",
+      "alvo": "yet",
+      "alvo_pt": "Ainda",
+      "conceito": "Na negativa, yet = ainda: I haven't seen it yet = ainda não vi.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "still not",
+        "didn't see"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3818324,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "that movie → the new build; acrescentado OK, thanks.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

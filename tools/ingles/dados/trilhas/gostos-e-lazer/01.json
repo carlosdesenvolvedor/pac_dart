@@ -1,0 +1,230 @@
+{
+  "id": "gostos-e-lazer.gosto-de-cozinhar-like-ing",
+  "trilha": "gostos-e-lazer",
+  "nome": "Gosto de cozinhar: like + -ing",
+  "emoji": "🍳",
+  "cena": "Papo de segunda-feira: você, a Ana e o Mike falam de hobbies e trocam fotos do fim de semana.",
+  "resumo": "Dizer do que você gosta de fazer com like, love e enjoy + -ing, e mostrar fotos com look at.",
+  "fechamento": false,
+  "novos": [
+    "enjoy",
+    "cooking",
+    "traveling",
+    "look at"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Gostar de fazer = like + -ing"
+    },
+    {
+      "t": "p",
+      "c": "Depois de **like, love, hate** e **enjoy**, o verbo vem com **-ing**: I love traveling. **Enjoy** (curtir) só aceita o -ing."
+    },
+    {
+      "t": "ex",
+      "c": "I enjoy cooking on the weekend.\nEu curto cozinhar no fim de semana."
+    },
+    {
+      "t": "warn",
+      "c": "Olhar para algo = **look at** + coisa: Look at this photo! (não: Look this photo)."
+    }
+  ],
+  "imagem": "🍳✈️📷",
+  "visualizacao": "Segunda de manhã, café na mão, você e a Ana passam fotos no celular. Comida bonita nas fotos, risadas, e o Mike chegando para ver.",
+  "foto_busca": "friends sharing photos phone",
+  "trechos": [
+    {
+      "id": "f-5183ea",
+      "quem": "voce",
+      "cod": "Do you like cooking?",
+      "dica": "Você gosta de cozinhar?",
+      "img": "🍳❓",
+      "alvo": "cooking",
+      "alvo_pt": "cozinhar",
+      "conceito": "Gostar de + verbo = like + verbo com -ing.",
+      "registro": "informal",
+      "armadilhas": [
+        "cook"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 953202,
+        "en_autor": "CK",
+        "pt_id": 4490805,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-604481",
+      "quem": "ana",
+      "contexto": "f-5183ea",
+      "cod": "Yes! I enjoy cooking on the weekend.",
+      "dica": "Sim! Eu curto cozinhar no fim de semana.",
+      "img": "👩‍🍳🗓️",
+      "alvo": "enjoy",
+      "alvo_pt": "curto",
+      "conceito": "enjoy = curtir, sempre com -ing (não: enjoy to cook).",
+      "registro": "informal",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-85c296",
+      "quem": "ana",
+      "cod": "Look at these photos.",
+      "dica": "Olha essas fotos.",
+      "img": "📱🖼️",
+      "alvo": "Look at",
+      "alvo_pt": "Olha",
+      "conceito": "Olhar algo = look at + coisa (não: look these photos).",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "armadilhas": [
+        "these"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2995220,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Olhe para estas fotos\"; PT reescrito na forma falada",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4ce282",
+      "quem": "voce",
+      "cod": "Look at this photo of my parents.",
+      "dica": "Olha essa foto dos meus pais.",
+      "img": "👴👵📷",
+      "alvo": "Look at",
+      "alvo_pt": "Olha",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3630641,
+        "en_autor": "MTC",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Look at this photo.\"; PT original: \"Olhe essa foto.\"; acrescentado of my parents; PT reescrito na forma falada",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8f0078",
+      "quem": "ana",
+      "cod": "I love traveling.",
+      "dica": "Eu adoro viajar.",
+      "img": "✈️❤️",
+      "alvo": "traveling",
+      "alvo_pt": "viajar",
+      "conceito": "Eu adoro + verbo = I love + -ing. Grafia americana: traveling, com um l.",
+      "registro": "informal",
+      "armadilhas": [
+        "travel"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2245968,
+        "en_autor": "CK",
+        "pt_id": 1043743,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6ea1c4",
+      "quem": "mike",
+      "contexto": "f-8f0078",
+      "cod": "I don't really enjoy traveling.",
+      "dica": "Eu não curto muito viajar.",
+      "img": "✈️👎",
+      "alvo": "traveling",
+      "alvo_pt": "viajar",
+      "conceito": "Não curto muito = I don't really enjoy (really suaviza a negativa).",
+      "var": [
+        {
+          "em": "really enjoy traveling",
+          "aceita": [
+            "enjoy traveling very much",
+            "enjoy traveling much"
+          ]
+        }
+      ],
+      "opcional": [
+        "really"
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2271839,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I don't enjoy traveling.\"; PT original: \"Eu não gosto de viajar.\"; + really (revisão nativa: resposta mais suave à Ana); PT reescrito: enjoy = curtir, not really = não... muito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d6da12",
+      "quem": "mike",
+      "cod": "But I enjoy reading on Sundays.",
+      "dica": "Mas eu curto ler aos domingos.",
+      "img": "📚🛋️",
+      "alvo": "enjoy",
+      "alvo_pt": "curto",
+      "registro": "informal",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a656f7",
+      "quem": "ana",
+      "contexto": "f-d6da12",
+      "cod": "Do you enjoy cooking, Mike?",
+      "dica": "Você curte cozinhar, Mike?",
+      "img": "👨‍🍳❓",
+      "alvo": "cooking",
+      "alvo_pt": "cozinhar",
+      "registro": "informal",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

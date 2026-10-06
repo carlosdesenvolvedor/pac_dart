@@ -1,0 +1,213 @@
+{
+  "id": "dev-code-review.voce-poderia-adicionar-um-teste",
+  "trilha": "dev-code-review",
+  "nome": "Você poderia adicionar um teste?",
+  "emoji": "🧪",
+  "cena": "Você pede mais testes e quer entender por que o colega escolheu uma abordagem diferente.",
+  "resumo": "Pedir testes com Could you add...? e entender decisões com Why did we choose X over Y? e Do you know why...?",
+  "fechamento": false,
+  "novos": [
+    "choose X over Y",
+    "happy path",
+    "test coverage",
+    "integration test"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pedir teste e entender a escolha"
+    },
+    {
+      "t": "p",
+      "c": "**Could you add...?** pede com educação. **choose X over Y** = escolher X em vez de Y. **Do you know why...?** pergunta sem pressionar."
+    },
+    {
+      "t": "warn",
+      "c": "Depois de Do you know why, ordem normal: Do you know why the coverage dropped? (não: why did the coverage drop)."
+    },
+    {
+      "t": "ex",
+      "c": "Why did we choose this approach over the other one?\nPor que escolhemos esta abordagem em vez da outra?"
+    }
+  ],
+  "imagem": "🧪📊💬",
+  "visualizacao": "Na aba do PR, o relatório de cobertura aparece em amarelo. Você abre os testes, vê que só o caso simples está coberto e começa a escrever uma pergunta gentil.",
+  "foto_busca": "software testing report screen",
+  "trechos": [
+    {
+      "id": "f-442310",
+      "quem": "voce",
+      "cod": "Could you add an integration test for this?",
+      "dica": "Você poderia adicionar um teste de integração para isso?",
+      "img": "🧪🔗",
+      "alvo": "integration test",
+      "alvo_pt": "teste de integração",
+      "conceito": "integration test = teste que junta partes reais (API, banco) num mesmo fluxo.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "a"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-377c49",
+      "quem": "voce",
+      "cod": "The unit tests look good, but we still need an integration test.",
+      "dica": "Os testes unitários estão bons, mas a gente ainda precisa de um teste de integração.",
+      "img": "✅🧩",
+      "alvo": "integration test",
+      "alvo_pt": "teste de integração",
+      "conceito": "an integration test: an antes de som de vogal.",
+      "var": [
+        {
+          "em": "look good",
+          "aceita": [
+            "are good"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "a"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2f103a",
+      "quem": "voce",
+      "cod": "Right now, the tests only cover the happy path.",
+      "dica": "Por enquanto, os testes só cobrem o caminho feliz.",
+      "img": "🛤️😊",
+      "alvo": "happy path",
+      "alvo_pt": "caminho feliz",
+      "conceito": "happy path = o fluxo em que tudo dá certo, sem erro.",
+      "var": [
+        {
+          "em": "Right now",
+          "aceita": [
+            "For now"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "covers"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f93b91",
+      "quem": "voce",
+      "cod": "Could you also test the error cases, not just the happy path?",
+      "dica": "Você poderia testar também os casos de erro, e não só o caminho feliz?",
+      "img": "🛤️⚠️",
+      "alvo": "happy path",
+      "alvo_pt": "caminho feliz",
+      "conceito": "not just = não só.",
+      "var": [
+        {
+          "em": "not just",
+          "aceita": [
+            "not only"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d23d96",
+      "quem": "voce",
+      "cod": "Do you know why the test coverage dropped after this change?",
+      "dica": "Você sabe por que a cobertura de testes caiu depois desta mudança?",
+      "img": "📉🧪❓",
+      "alvo": "test coverage",
+      "alvo_pt": "cobertura de testes",
+      "conceito": "Pergunta indireta, ordem normal: why the test coverage dropped.",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "did"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ccb0c8",
+      "quem": "dev-novo",
+      "contexto": "f-d23d96",
+      "cod": "I removed some old tests, which lowered the test coverage.",
+      "dica": "Tirei uns testes antigos, o que baixou a cobertura de testes.",
+      "img": "🗑️📉",
+      "alvo": "test coverage",
+      "alvo_pt": "cobertura de testes",
+      "conceito": ", which comenta a frase inteira: o que baixou...",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "what"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6332f4",
+      "quem": "voce",
+      "cod": "Why did we choose this approach over the other one?",
+      "dica": "Por que escolhemos esta abordagem em vez da outra?",
+      "img": "🔀🤔",
+      "alvo": "choose this approach over",
+      "alvo_pt": "escolhemos esta abordagem em vez da",
+      "lit": "[lit.: escolher esta abordagem acima da outra]",
+      "conceito": "choose X over Y = escolher X em vez de Y.",
+      "opcional": [
+        "one"
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "instead",
+        "chose"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aad9db",
+      "quem": "dev-novo",
+      "contexto": "f-6332f4",
+      "cod": "We chose a simple cache over a new service because it's faster to ship.",
+      "dica": "Escolhemos um cache simples em vez de um serviço novo porque é mais rápido de entregar.",
+      "img": "🗃️🚀",
+      "alvo": "chose a simple cache over",
+      "alvo_pt": "Escolhemos um cache simples em vez de",
+      "conceito": "chose = passado de choose; over = em vez de.",
+      "blocos": [
+        9
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "choose",
+        "instead"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

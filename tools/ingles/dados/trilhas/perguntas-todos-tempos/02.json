@@ -1,0 +1,334 @@
+{
+  "id": "perguntas-todos-tempos.como-foi-perguntas-com-did-was-e-can",
+  "trilha": "perguntas-todos-tempos",
+  "nome": "Como foi? Perguntas com did, was e can",
+  "emoji": "🕑",
+  "cena": "Segunda de manhã, o Ben te liga de Boston e quer saber da viagem de carro que você fez no fim de semana.",
+  "resumo": "Perguntar sobre o passado e a duração com did, was, can e How long...?",
+  "fechamento": false,
+  "novos": [
+    "How long...?",
+    "anywhere",
+    "road trip",
+    "It takes...",
+    "mountains"
+  ],
+  "apoio": [
+    "drive (substantivo: a viagem de carro)",
+    "about (cerca de)",
+    "lake",
+    "the game"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Passado e duração: did, was, How long"
+    },
+    {
+      "t": "p",
+      "c": "No passado, a pergunta usa **did** + verbo puro: Did you go anywhere? Com be, **was/were** vem na frente: How was your weekend? Was it cold?"
+    },
+    {
+      "t": "ex",
+      "c": "How long does it take by bus?\nQuanto tempo leva de ônibus?"
+    },
+    {
+      "t": "tip",
+      "c": "**It takes** + tempo = leva, demora: It takes three hours. No passado: It took two hours."
+    },
+    {
+      "t": "warn",
+      "c": "Did you go anywhere? (não: Did you went...?)"
+    }
+  ],
+  "imagem": "🚗⛰️🏞️",
+  "visualizacao": "Segunda cedo, você atende a chamada do Ben com o café na mão. Ele quer saber do fim de semana, e você ainda lembra da estrada, das montanhas e do lago.",
+  "foto_busca": "mountain road trip car",
+  "trechos": [
+    {
+      "id": "f-26b14b",
+      "quem": "ben",
+      "cod": "How was your weekend? Did you go anywhere?",
+      "dica": "Como foi o seu fim de semana? Você foi a algum lugar?",
+      "img": "🗓️🧭❓",
+      "alvo": "anywhere",
+      "alvo_pt": "algum lugar",
+      "conceito": "anywhere = algum lugar, em pergunta e negativa. Com did, go fica puro.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "went",
+        "somewhere"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 466007,
+        "en_autor": "CK",
+        "pt_id": 5559527,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Did you go anywhere?' acrescentado; PT completado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-11f36e",
+      "quem": "voce",
+      "contexto": "f-26b14b",
+      "cod": "Yes, I did. Lucas and I went on a road trip.",
+      "dica": "Fui, sim. O Lucas e eu fizemos uma viagem de carro.",
+      "img": "🚗🛣️",
+      "alvo": "road trip",
+      "alvo_pt": "viagem de carro",
+      "conceito": "go on a road trip = fazer uma viagem de carro. Resposta curta: Yes, I did.",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "made",
+        "did a"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "went on",
+          "aceita": [
+            "took"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-42f2fc",
+      "quem": "ben",
+      "contexto": "f-11f36e",
+      "cod": "A road trip? Where did you go?",
+      "dica": "Uma viagem de carro? Pra onde vocês foram?",
+      "img": "🗺️❓",
+      "alvo": "road trip",
+      "alvo_pt": "viagem de carro",
+      "conceito": "Where did you go? = pra onde você(s) foi/foram? Com did, go fica puro.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "went"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1140034,
+        "en_autor": "CK",
+        "pt_id": 3263030,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'A road trip?' acrescentado; PT ajustado para vocês",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-18d0d3",
+      "quem": "voce",
+      "contexto": "f-42f2fc",
+      "cod": "We went to a lake in the mountains.",
+      "dica": "Fomos a um lago nas montanhas.",
+      "img": "⛰️🏞️",
+      "alvo": "mountains",
+      "alvo_pt": "montanhas",
+      "conceito": "the mountains = as montanhas (com the). go to = ir a/para.",
+      "registro": "informal",
+      "armadilhas": [
+        "mountain"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-80df99",
+      "quem": "ben",
+      "contexto": "f-18d0d3",
+      "cod": "Nice! How long did it take?",
+      "dica": "Que legal! Quanto tempo levou?",
+      "img": "⏱️❓",
+      "alvo": "How long",
+      "alvo_pt": "Quanto tempo",
+      "conceito": "How long did it take? = quanto tempo levou? Com did, take fica puro.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR06"
+      ],
+      "armadilhas": [
+        "took",
+        "much time"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-99d544",
+      "quem": "voce",
+      "contexto": "f-80df99",
+      "cod": "About two hours. It takes longer by bus.",
+      "dica": "Umas duas horas. Leva mais tempo de ônibus.",
+      "img": "🚗⏱️🚌",
+      "alvo": "It takes",
+      "alvo_pt": "Leva",
+      "lit": "[lit.: isso leva mais tempo]",
+      "conceito": "It takes + tempo = leva, demora (sujeito it obrigatório). about = cerca de, umas.",
+      "var": [
+        {
+          "em": "longer",
+          "aceita": [
+            "more time"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "take"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ad119a",
+      "quem": "ben",
+      "contexto": "f-99d544",
+      "cod": "How long does it take by bus?",
+      "dica": "Quanto tempo leva de ônibus?",
+      "img": "🚌⏱️",
+      "alvo": "How long",
+      "alvo_pt": "Quanto tempo",
+      "conceito": "Presente: How long does it take? (does + take sem -s)",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR07"
+      ],
+      "armadilhas": [
+        "takes",
+        "much time"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3023064,
+        "en_autor": "patgfisher",
+        "pt_id": 1267572,
+        "pt_autor": "paula_guisard",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'to get there' retirado; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-92918d",
+      "quem": "voce",
+      "contexto": "f-ad119a",
+      "cod": "It takes three hours to get there.",
+      "dica": "Leva três horas para chegar lá.",
+      "img": "🕒🛣️",
+      "alvo": "It takes",
+      "alvo_pt": "Leva",
+      "conceito": "It takes + tempo + to + verbo: leva três horas para chegar.",
+      "var": [
+        {
+          "em": "to get there",
+          "aceita": [
+            "to go there"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "take"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2540440,
+        "en_autor": "CK",
+        "pt_id": 4968167,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-61fd60",
+      "quem": "ben",
+      "cod": "Can you send me some photos of the mountains?",
+      "dica": "Você pode me mandar umas fotos das montanhas?",
+      "img": "📸⛰️",
+      "alvo": "mountains",
+      "alvo_pt": "montanhas",
+      "conceito": "Can you...? = você pode...? (pedido). send me = me mandar.",
+      "opcional": [
+        "some"
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "to me"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "some",
+          "aceita": [
+            "a few"
+          ]
+        },
+        {
+          "em": "photos",
+          "aceita": [
+            "pictures"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-bba4e8",
+      "quem": "voce",
+      "contexto": "f-61fd60",
+      "cod": "Sure! How about you? Did you go anywhere?",
+      "dica": "Claro! E você? Foi a algum lugar?",
+      "img": "🙂🧭",
+      "alvo": "anywhere",
+      "alvo_pt": "algum lugar",
+      "conceito": "Did you go anywhere? = foi a algum lugar? (did + go puro)",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "went",
+        "somewhere"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "How about you",
+          "aceita": [
+            "What about you",
+            "And you"
+          ]
+        }
+      ]
+    }
+  ]
+}

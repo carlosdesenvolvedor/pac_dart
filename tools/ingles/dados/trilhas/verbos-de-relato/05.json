@@ -1,0 +1,236 @@
+{
+  "id": "verbos-de-relato.cena-a-ata-da-reuniao",
+  "trilha": "verbos-de-relato",
+  "nome": "Cena: a ata da reunião",
+  "emoji": "📢",
+  "cena": "Você escreve a ata da reunião com o cliente para quem não pôde participar.",
+  "resumo": "Cena de fechamento: uma ata com sugestões, admissões, recusas, promessas e lembretes.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "apologize for + -ing",
+    "deny + -ing",
+    "admit + -ing",
+    "offer to",
+    "suggest + -ing",
+    "refuse to",
+    "agree to",
+    "promise to",
+    "remind sb not to"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A ata da reunião"
+    },
+    {
+      "t": "p",
+      "c": "Depois de **suggest, admit, deny** e de **apologize for**, vem -ing. Depois de **offer, refuse, promise, agree**, vem to + verbo. Depois de **remind, warn, advise**, vem pessoa + (not) to."
+    },
+    {
+      "t": "warn",
+      "c": "Não: suggested to wait / admitted to forget / offered paying / refused himself. -ing depois de suggest, admit e deny; to + verbo depois de offer, refuse e promise."
+    },
+    {
+      "t": "ex",
+      "c": "Mike suggested waiting two weeks, but they refused to change the date.\nO Mike sugeriu esperar duas semanas, mas eles se recusaram a mudar a data."
+    }
+  ],
+  "imagem": "📝🤝📢",
+  "visualizacao": "Fim do dia. Você abre um documento em branco com o título Ata da reunião e repassa, linha por linha, o que cada um disse na negociação com o cliente.",
+  "foto_busca": "meeting minutes notebook laptop",
+  "trechos": [
+    {
+      "id": "f-d5756b",
+      "quem": "voce",
+      "cod": "Our team apologized for missing the first deadline.",
+      "dica": "O nosso time pediu desculpas por ter perdido o primeiro prazo.",
+      "img": "🙏📆",
+      "alvo": "apologized for",
+      "alvo_pt": "pediu desculpas por",
+      "conceito": "perder um prazo = miss a deadline (não: lose).",
+      "var": [
+        {
+          "em": "missing",
+          "aceita": [
+            "having missed"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52",
+        "BR34"
+      ],
+      "armadilhas": [
+        "losing",
+        "to miss"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-df098f",
+      "quem": "voce",
+      "cod": "Their manager still denies asking for the extra screens.",
+      "dica": "O gerente deles ainda nega ter pedido as telas extras.",
+      "img": "🙅🖥️",
+      "alvo": "denies",
+      "alvo_pt": "nega",
+      "conceito": "denies: -s da 3ª pessoa; deny + -ing = negar ter feito.",
+      "var": [
+        {
+          "em": "asking for",
+          "aceita": [
+            "having asked for"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02",
+        "BR52"
+      ],
+      "armadilhas": [
+        "deny"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-122ec7",
+      "quem": "voce",
+      "cod": "However, he admitted changing the scope in March.",
+      "dica": "No entanto, ele admitiu ter mudado o escopo em março.",
+      "img": "📅🔀",
+      "alvo": "admitted",
+      "alvo_pt": "admitiu",
+      "conceito": "admit + -ing. in com mês: in March.",
+      "var": [
+        {
+          "em": "However",
+          "aceita": [
+            "But"
+          ]
+        },
+        {
+          "em": "admitted changing",
+          "aceita": [
+            "admitted to changing",
+            "admitted having changed"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5b1950",
+      "quem": "voce",
+      "cod": "He offered to pay for half of the extra work.",
+      "dica": "Ele se ofereceu para pagar metade do trabalho extra.",
+      "img": "🌗💵",
+      "alvo": "offered to",
+      "alvo_pt": "se ofereceu para",
+      "var": [
+        {
+          "em": "pay for half of",
+          "aceita": [
+            "pay for half",
+            "pay half of",
+            "pay half"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "himself"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-70cae4",
+      "quem": "voce",
+      "cod": "Mike suggested waiting two weeks, but they refused to change the date.",
+      "dica": "O Mike sugeriu esperar duas semanas, mas eles se recusaram a mudar a data.",
+      "img": "⏳🙅",
+      "alvo": "suggested waiting",
+      "alvo_pt": "sugeriu esperar",
+      "conceito": "suggested waiting (-ing) x refused to change (to + verbo), na mesma frase.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52",
+        "BR54"
+      ],
+      "armadilhas": [
+        "to wait"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-072a9a",
+      "quem": "voce",
+      "cod": "The client finally agreed to sign the contract.",
+      "dica": "O cliente finalmente concordou em assinar o contrato.",
+      "img": "✍️🎉",
+      "alvo": "agreed to",
+      "alvo_pt": "concordou em",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10457364,
+        "en_autor": "CK",
+        "pt_id": 10708147,
+        "pt_autor": "MrJuice",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → The client (original: \"Tom finally agreed to sign the contract.\"); PT: Tom → O cliente (original: \"Tom finalmente concordou em assinar o contrato.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-612482",
+      "quem": "voce",
+      "cod": "Sarah promised to send the final version by Friday.",
+      "dica": "A Sarah prometeu mandar a versão final até sexta.",
+      "img": "🤞📄",
+      "alvo": "promised to",
+      "alvo_pt": "prometeu",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "until"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4ea190",
+      "quem": "voce",
+      "cod": "Mike reminded everyone not to share the client's data.",
+      "dica": "O Mike lembrou todo mundo de não compartilhar os dados do cliente.",
+      "img": "🔔🔐",
+      "alvo": "reminded everyone not to",
+      "alvo_pt": "lembrou todo mundo de não",
+      "conceito": "remind alguém not to + verbo: o not vem antes do to.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "to not",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

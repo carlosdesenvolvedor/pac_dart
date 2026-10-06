@@ -1,0 +1,302 @@
+{
+  "id": "previsoes-futuro-continuo.provavelmente-vai-atrasar",
+  "trilha": "previsoes-futuro-continuo",
+  "nome": "Provavelmente vai atrasar",
+  "emoji": "🔮",
+  "cena": "Na copa do escritório de Austin, você e a Sarah tomam café e falam do futuro da tecnologia e do app do time.",
+  "resumo": "Prever com will e graduar a certeza: probably, definitely, I'm sure e I don't think... will.",
+  "fechamento": false,
+  "novos": [
+    "probably",
+    "definitely",
+    "go up",
+    "I'm sure",
+    "future"
+  ],
+  "apoio": [
+    "fail",
+    "price"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Previsão de opinião: will"
+    },
+    {
+      "t": "p",
+      "c": "Para dar a sua opinião sobre o futuro, use **will** + verbo. A certeza vem com **probably** (provavelmente) e **definitely** (com certeza): depois de *will*, mas antes de *won't*."
+    },
+    {
+      "t": "ex",
+      "c": "It'll probably rain tomorrow.\nProvavelmente vai chover amanhã."
+    },
+    {
+      "t": "warn",
+      "c": "Acho que não vai = **I don't think** ... will (não: I think it won't). Em inglês, a negação vai no think."
+    },
+    {
+      "t": "tip",
+      "c": "Tenho certeza de que vai... = I'm sure + will."
+    }
+  ],
+  "imagem": "☕🔮💻",
+  "visualizacao": "Você está na copa do escritório de Austin, com um café quente na mão. A Sarah encosta no balcão e pergunta o que você acha do futuro.",
+  "foto_busca": "office kitchen coffee chat",
+  "trechos": [
+    {
+      "id": "f-c2bdde",
+      "quem": "sarah",
+      "cod": "Do you think AI will write all our code in the future?",
+      "dica": "Você acha que a IA vai escrever todo o nosso código no futuro?",
+      "img": "🤖💻🔮",
+      "alvo": "future",
+      "alvo_pt": "futuro",
+      "conceito": "in the future = no futuro. Opinião sobre o futuro: will + verbo.",
+      "var": [
+        {
+          "em": "all our code",
+          "aceita": [
+            "all of our code"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-278a3c",
+      "quem": "voce",
+      "contexto": "f-c2bdde",
+      "cod": "Not all of it, but it'll definitely change the way we work.",
+      "dica": "Tudo não, mas com certeza vai mudar o jeito como a gente trabalha.",
+      "img": "🔄🧑‍💻",
+      "alvo": "definitely",
+      "alvo_pt": "com certeza",
+      "conceito": "definitely = com certeza; vem depois de will: it'll definitely change.",
+      "var": [
+        {
+          "em": "the way we work",
+          "aceita": [
+            "how we work"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3d2100",
+      "quem": "sarah",
+      "contexto": "f-278a3c",
+      "cod": "We don't know what'll happen in the future.",
+      "dica": "A gente não sabe o que vai acontecer no futuro.",
+      "img": "🤷‍♀️⏳",
+      "alvo": "future",
+      "alvo_pt": "futuro",
+      "conceito": "what'll = what will, contração comum na fala.",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 9732179,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Não sabemos o que acontecerá no futuro.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "what'll",
+          "aceita": [
+            "what's going to"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-dd934f",
+      "quem": "voce",
+      "contexto": "f-3d2100",
+      "cod": "But I'm sure people will still need good apps.",
+      "dica": "Mas tenho certeza de que as pessoas ainda vão precisar de bons apps.",
+      "img": "📱👍",
+      "alvo": "I'm sure",
+      "alvo_pt": "tenho certeza de que",
+      "conceito": "Tenho certeza de que vai... = I'm sure + will (o that é opcional).",
+      "registro": "informal",
+      "interferencias": [
+        "BR14"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-49a23b",
+      "quem": "sarah",
+      "cod": "Our app will probably need an AI feature next year.",
+      "dica": "O nosso app provavelmente vai precisar de uma feature de IA ano que vem.",
+      "img": "📱🤖🗓️",
+      "alvo": "probably",
+      "alvo_pt": "provavelmente",
+      "conceito": "probably = provavelmente; vem depois de will: will probably need.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c84d30",
+      "quem": "voce",
+      "contexto": "f-49a23b",
+      "cod": "It probably won't be as hard as you think.",
+      "dica": "Provavelmente não vai ser tão difícil quanto você pensa.",
+      "img": "🧩🙂",
+      "alvo": "probably",
+      "alvo_pt": "Provavelmente",
+      "conceito": "Com won't, probably vem antes: It probably won't be...",
+      "var": [
+        {
+          "em": "hard",
+          "aceita": [
+            "difficult"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "won't"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7078291,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'difficult' trocado por 'hard' e o 'it'll be' final cortado; PT reescrito (original: \"Isso provavelmente não será tão difícil quanto você pensa.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-956122",
+      "quem": "sarah",
+      "contexto": "f-c84d30",
+      "cod": "Maybe, but it'll definitely be late.",
+      "dica": "Talvez, mas com certeza vai atrasar.",
+      "img": "⏰🐢",
+      "alvo": "definitely",
+      "alvo_pt": "com certeza",
+      "conceito": "be late = atrasar (uma entrega, um voo). it obrigatório: it'll be late.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-586449",
+      "quem": "voce",
+      "contexto": "f-956122",
+      "cod": "I know. And our server costs will go up too.",
+      "dica": "Eu sei. E os nossos custos de servidor também vão subir.",
+      "img": "🖥️💸📈",
+      "alvo": "go up",
+      "alvo_pt": "subir",
+      "conceito": "go up = subir (preço, custo, número). O contrário: go down.",
+      "var": [
+        {
+          "em": "will go up too",
+          "aceita": [
+            "will also go up"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b7ce3c",
+      "quem": "sarah",
+      "contexto": "f-586449",
+      "cod": "I don't think the price of the app will go up.",
+      "dica": "Acho que o preço do app não vai subir.",
+      "img": "🏷️🚫📈",
+      "alvo": "go up",
+      "alvo_pt": "subir",
+      "conceito": "Acho que não vai = I don't think... will: a negação vai no think.",
+      "var": [
+        {
+          "em": "the price of the app",
+          "aceita": [
+            "the app's price"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "think"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f21384",
+      "quem": "voce",
+      "contexto": "f-b7ce3c",
+      "cod": "I'm sure our users in Europe will be happy about that.",
+      "dica": "Tenho certeza de que os nossos usuários na Europa vão ficar felizes com isso.",
+      "img": "🌍😊",
+      "alvo": "I'm sure",
+      "alvo_pt": "Tenho certeza de que",
+      "conceito": "be happy about = ficar feliz com.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "about that",
+          "aceita": [
+            "with that"
+          ]
+        }
+      ]
+    }
+  ]
+}

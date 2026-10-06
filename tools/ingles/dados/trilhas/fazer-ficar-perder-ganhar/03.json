@@ -1,0 +1,351 @@
+{
+  "id": "fazer-ficar-perder-ganhar.fiquei-nervoso-get-adjetivo",
+  "trilha": "fazer-ficar-perder-ganhar",
+  "nome": "Fiquei nervoso: get + adjetivo",
+  "emoji": "😬",
+  "cena": "Numa chamada, o Ben conta que tem entrevista amanhã, e você lembra o seu inverno em Chicago.",
+  "resumo": "Traduzir ficar + emoção ou estado por get + adjetivo: get nervous, get lost, get better, get dark.",
+  "fechamento": false,
+  "novos": [
+    "get better / worse",
+    "get lost (se perder)",
+    "get nervous / angry",
+    "get dark / cold"
+  ],
+  "apoio": [
+    "hope"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ficar + emoção ou estado = get"
+    },
+    {
+      "t": "p",
+      "c": "Quando 'ficar' é **mudar de estado**, o inglês usa **get** + adjetivo: get nervous, get angry, get better, get worse, get dark, get cold."
+    },
+    {
+      "t": "ex",
+      "c": "It gets dark early in the winter.\nNo inverno escurece cedo."
+    },
+    {
+      "t": "tip",
+      "c": "Se perder = **get lost**. Melhorar = get better; piorar = get worse."
+    },
+    {
+      "t": "warn",
+      "c": "Não: I stayed nervous. **stay** é ficar num lugar."
+    }
+  ],
+  "imagem": "😬❄️🌆",
+  "visualizacao": "Você está no sofá, com o Ben na tela do celular. Ele parece tenso, e você lembra da neve em Chicago e do céu escuro às quatro da tarde.",
+  "foto_busca": "snowy city street at dusk",
+  "trechos": [
+    {
+      "id": "f-784173",
+      "quem": "ben",
+      "cod": "I have an interview tomorrow, and I'm getting nervous.",
+      "dica": "Tenho uma entrevista amanhã e estou ficando nervoso.",
+      "img": "📄😬",
+      "alvo": "getting nervous",
+      "alvo_pt": "ficando nervoso",
+      "conceito": "ficar + emoção = get + adjetivo (não: stay nervous).",
+      "opcional": [
+        "and"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR33"
+      ],
+      "armadilhas": [
+        "staying",
+        "stay"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d75e1a",
+      "quem": "voce",
+      "contexto": "f-784173",
+      "cod": "Don't worry. I got really nervous before my interview too.",
+      "dica": "Não se preocupa. Eu também fiquei muito nervoso antes da minha entrevista.",
+      "pt_f": "Não se preocupa. Eu também fiquei muito nervosa antes da minha entrevista.",
+      "img": "😰💼",
+      "alvo": "got really nervous",
+      "alvo_pt": "fiquei muito nervoso",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        },
+        {
+          "em": "I got",
+          "aceita": [
+            "I also got"
+          ]
+        }
+      ],
+      "opcional": [
+        "too"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR33"
+      ],
+      "armadilhas": [
+        "stayed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fc9978",
+      "quem": "voce",
+      "contexto": "How was Chicago in the winter?",
+      "cod": "It was very cold, and it got dark at four.",
+      "dica": "Fazia muito frio, e escurecia às quatro.",
+      "img": "🥶🌆",
+      "alvo": "got dark",
+      "alvo_pt": "escurecia",
+      "lit": "[lit.: ficava escuro]",
+      "conceito": "escurecer = get dark, com it obrigatório: it got dark.",
+      "var": [
+        {
+          "em": "very",
+          "aceita": [
+            "really"
+          ]
+        },
+        {
+          "em": "got dark",
+          "aceita": [
+            "used to get dark"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR33",
+        "BR01"
+      ],
+      "armadilhas": [
+        "stayed",
+        "was"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-36ba15",
+      "quem": "ben",
+      "contexto": "f-fc9978",
+      "cod": "Yes, it gets dark early in the winter.",
+      "dica": "É, no inverno escurece cedo.",
+      "img": "❄️🌇",
+      "alvo": "gets dark",
+      "alvo_pt": "escurece",
+      "conceito": "Fato geral: it gets dark (presente com -s).",
+      "var": [
+        {
+          "em": "in the winter",
+          "aceita": [
+            "in winter"
+          ]
+        },
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yeah"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR33",
+        "BR01",
+        "BR02"
+      ],
+      "armadilhas": [
+        "get",
+        "stays"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3582249,
+        "en_autor": "catcher",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado Yes; adjunto para o fim e in the winter (original: \"In winter it gets dark early.\"); PT reescrito (original: \"No inverno escurece mais cedo.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1d3000",
+      "quem": "voce",
+      "cod": "And I got lost on my first day there.",
+      "dica": "E eu me perdi no meu primeiro dia lá.",
+      "img": "🗺️😵",
+      "alvo": "got lost",
+      "alvo_pt": "me perdi",
+      "lit": "[lit.: fiquei perdido]",
+      "conceito": "se perder = get lost (não: lose myself).",
+      "registro": "informal",
+      "interferencias": [
+        "BR33",
+        "BR62"
+      ],
+      "armadilhas": [
+        "myself",
+        "lose"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e027ec",
+      "quem": "ben",
+      "contexto": "f-1d3000",
+      "cod": "That's normal. Everyone gets lost in a new city.",
+      "dica": "É normal. Todo mundo se perde numa cidade nova.",
+      "img": "🏙️🧭",
+      "alvo": "gets lost",
+      "alvo_pt": "se perde",
+      "var": [
+        {
+          "em": "Everyone",
+          "aceita": [
+            "Everybody"
+          ]
+        },
+        {
+          "em": "That's",
+          "aceita": [
+            "It's"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR33",
+        "BR02"
+      ],
+      "armadilhas": [
+        "get",
+        "loses"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-94aaa9",
+      "quem": "voce",
+      "cod": "The weather got worse, and my flight was delayed.",
+      "dica": "O tempo piorou, e meu voo atrasou.",
+      "img": "🌨️✈️⏳",
+      "alvo": "got worse",
+      "alvo_pt": "piorou",
+      "conceito": "piorar = get worse; melhorar = get better.",
+      "var": [
+        {
+          "em": "was delayed",
+          "aceita": [
+            "got delayed",
+            "was late"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR33"
+      ],
+      "armadilhas": [
+        "stayed",
+        "worst"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-45dd26",
+      "quem": "ben",
+      "cod": "Your English is getting better!",
+      "dica": "Seu inglês está melhorando!",
+      "img": "🗣️📈",
+      "alvo": "getting better",
+      "alvo_pt": "melhorando",
+      "lit": "[lit.: está ficando melhor]",
+      "registro": "informal",
+      "interferencias": [
+        "BR33"
+      ],
+      "armadilhas": [
+        "improving"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3735634,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: French → English (original: \"Your French is getting better.\"); PT reescrito (original: \"Seu francês está melhorando.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-00a041",
+      "quem": "voce",
+      "contexto": "f-45dd26",
+      "cod": "Thanks! It's getting better every day.",
+      "dica": "Valeu! Está melhorando a cada dia.",
+      "img": "📈📅",
+      "alvo": "getting better",
+      "alvo_pt": "melhorando",
+      "conceito": "Está melhorando = It's getting better: o it é obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR33",
+        "BR01"
+      ],
+      "armadilhas": [
+        "stay"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3735630,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado Thanks! e every day (original: \"It's getting better.\"); PT reescrito (original: \"Está melhorando.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-45738f",
+      "quem": "voce",
+      "contexto": "f-784173",
+      "cod": "Good luck tomorrow! I hope you don't get nervous.",
+      "dica": "Boa sorte amanhã! Espero que você não fique nervoso.",
+      "img": "🍀😌",
+      "alvo": "get nervous",
+      "alvo_pt": "fique nervoso",
+      "conceito": "Espero que você não fique = I hope you don't get: presente simples depois de hope.",
+      "registro": "informal",
+      "interferencias": [
+        "BR33",
+        "BR07"
+      ],
+      "armadilhas": [
+        "stay",
+        "gets"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

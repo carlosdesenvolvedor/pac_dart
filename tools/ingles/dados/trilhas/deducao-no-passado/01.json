@@ -1,0 +1,226 @@
+{
+  "id": "deducao-no-passado.devo-ter-deixado-no-escritorio",
+  "trilha": "deducao-no-passado",
+  "nome": "Devo ter deixado no escritório",
+  "emoji": "🔑",
+  "cena": "Saindo para o aeroporto, você e a Julia procuram as suas chaves pela casa toda.",
+  "resumo": "Deduzir com quase certeza o que aconteceu: must have + particípio (devo ter / deve ter).",
+  "fechamento": false,
+  "novos": [
+    "coat pocket",
+    "by mistake",
+    "nightstand",
+    "laundry basket"
+  ],
+  "apoio": [
+    "fall out",
+    "spare key"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Devo ter deixado = must have left"
+    },
+    {
+      "t": "p",
+      "c": "**must have + particípio** = dedução forte sobre o passado (quase certeza). Não é obrigação: obrigação no passado é *had to*."
+    },
+    {
+      "t": "tip",
+      "c": "Presente x passado: You must be tired (deve estar). You must have left it (deve ter deixado)."
+    },
+    {
+      "t": "warn",
+      "c": "Depois de must have vem o particípio: must have fallen, must have taken (não: must have fell)."
+    },
+    {
+      "t": "ex",
+      "c": "I must have left my keys in my coat pocket.\nDevo ter deixado as minhas chaves no bolso do meu casaco."
+    }
+  ],
+  "imagem": "🔑🏠🧳",
+  "visualizacao": "Você está no corredor de casa com a mala pronta. A Julia vira as almofadas do sofá, o táxi espera lá fora e as chaves não aparecem.",
+  "foto_busca": "lost keys home hallway suitcase",
+  "trechos": [
+    {
+      "id": "f-9d6888",
+      "quem": "voce",
+      "cod": "I must have left my keys in my coat pocket.",
+      "dica": "Devo ter deixado as minhas chaves no bolso do meu casaco.",
+      "img": "🧥🔑",
+      "alvo": "coat pocket",
+      "alvo_pt": "bolso do meu casaco",
+      "conceito": "must have + particípio = devo ter (dedução). coat pocket = bolso do casaco.",
+      "registro": "informal",
+      "armadilhas": [
+        "should",
+        "had"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-464410",
+      "quem": "julia",
+      "contexto": "f-9d6888",
+      "cod": "There's a hole in your coat pocket. They must have fallen out.",
+      "dica": "Tem um furo no bolso do seu casaco. Elas devem ter caído.",
+      "img": "🧥🕳️",
+      "alvo": "coat pocket",
+      "alvo_pt": "bolso do seu casaco",
+      "lit": "[lit.: devem ter caído para fora]",
+      "conceito": "Tem (existir) = there's. fall out = cair (de dentro de algo); o particípio é fallen.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "fell",
+        "has a hole"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        7
+      ],
+      "opcional": [
+        "out"
+      ]
+    },
+    {
+      "id": "f-d86a23",
+      "quem": "voce",
+      "cod": "Wait, I think I left my keys on the nightstand.",
+      "dica": "Espera, acho que deixei as minhas chaves na mesinha de cabeceira.",
+      "img": "🛏️🔑",
+      "alvo": "nightstand",
+      "alvo_pt": "mesinha de cabeceira",
+      "conceito": "nightstand = mesinha de cabeceira (criado-mudo). Em cima de uma superfície: on.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3330164,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado 'Wait,'; on the kitchen table → on the nightstand (original: \"I think I left my keys on the kitchen table.\"); PT reescrito (original: \"Eu acho que deixei as chaves na mesa da cozinha.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-274343",
+      "quem": "julia",
+      "contexto": "f-d86a23",
+      "cod": "There's nothing on the nightstand except your glasses.",
+      "dica": "Não tem nada na mesinha de cabeceira além dos seus óculos.",
+      "img": "🛏️👓",
+      "alvo": "nightstand",
+      "alvo_pt": "mesinha de cabeceira",
+      "conceito": "Tem (existir) = there is; com nothing, a frase fica afirmativa: There's nothing.",
+      "var": [
+        {
+          "em": "except",
+          "aceita": [
+            "but",
+            "besides"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "there's not nothing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-42dd30",
+      "quem": "julia",
+      "cod": "They might have fallen into the laundry basket.",
+      "dica": "Elas podem ter caído no cesto de roupa suja.",
+      "img": "🧺❓",
+      "alvo": "laundry basket",
+      "alvo_pt": "cesto de roupa suja",
+      "conceito": "might have = pode ter (possibilidade); must have = deve ter (quase certeza).",
+      "var": [
+        {
+          "em": "into",
+          "aceita": [
+            "in"
+          ]
+        },
+        {
+          "em": "might have",
+          "aceita": [
+            "could have"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "can have",
+        "fell"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c18261",
+      "quem": "voce",
+      "contexto": "f-42dd30",
+      "cod": "I emptied the laundry basket this morning.",
+      "dica": "Eu esvaziei o cesto de roupa suja hoje de manhã.",
+      "img": "🧺🌅",
+      "alvo": "laundry basket",
+      "alvo_pt": "cesto de roupa suja",
+      "conceito": "hoje de manhã = this morning (sem preposição).",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in this morning"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1a91f1",
+      "quem": "julia",
+      "cod": "Oh no. I must have taken your keys by mistake!",
+      "dica": "Ai, não. Devo ter levado as suas chaves sem querer!",
+      "img": "👜🔑😳",
+      "alvo": "by mistake",
+      "alvo_pt": "sem querer",
+      "conceito": "by mistake = sem querer, por engano. Particípio de take: taken.",
+      "registro": "informal",
+      "armadilhas": [
+        "took",
+        "for mistake"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-16847d",
+      "quem": "voce",
+      "contexto": "f-1a91f1",
+      "cod": "Did you take the spare key by mistake too?",
+      "dica": "Você levou a chave reserva sem querer também?",
+      "img": "🗝️🤔",
+      "alvo": "by mistake",
+      "alvo_pt": "sem querer",
+      "conceito": "Pergunta no passado: Did + verbo na forma base (take, não took). spare key = chave reserva.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "took"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

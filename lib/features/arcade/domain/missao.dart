@@ -22,7 +22,8 @@ class Missao extends Equatable {
   /// A situação narrada ("a porta está a 6 passos…").
   final String historia;
 
-  /// O código Dart digitado no motor Pac-Man (sempre 100% digitável).
+  /// O código (Dart ou C#, conforme a vertente) digitado no motor Pac-Man
+  /// (sempre 100% digitável).
   final String codigo;
 
   /// Pergunta de previsão (o teste de lógica) + alternativas.

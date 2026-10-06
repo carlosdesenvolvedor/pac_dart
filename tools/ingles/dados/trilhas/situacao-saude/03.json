@@ -1,0 +1,245 @@
+{
+  "id": "situacao-saude.na-consulta-os-conselhos-da-dra-lee",
+  "trilha": "situacao-saude",
+  "nome": "Na consulta: os conselhos da Dra. Lee",
+  "emoji": "🩺",
+  "cena": "Numa clínica em Austin, a Dra. Lee examina você e explica como tomar o remédio.",
+  "resumo": "Entender e repetir as orientações da médica: Take one every eight hours, with food.",
+  "fechamento": false,
+  "novos": [
+    "pills",
+    "with food",
+    "prescription",
+    "after meals",
+    "every eight hours"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Como tomar o remédio"
+    },
+    {
+      "t": "p",
+      "c": "Na consulta, a médica usa o imperativo: **Take** one every eight hours. Para perguntar: **Should I** take them with food? / **How often** should I take the pills?"
+    },
+    {
+      "t": "warn",
+      "c": "Depois de should e have to, verbo sem to. Depois de avoid, verbo com -ing: avoid drinking."
+    },
+    {
+      "t": "ex",
+      "c": "Take one every eight hours.\nTome um a cada oito horas."
+    }
+  ],
+  "imagem": "🩺💊🕗",
+  "visualizacao": "Você está sentado na maca de uma clínica em Austin. A Dra. Lee digita no computador, separa uma cartela de comprimidos e explica tudo com calma.",
+  "foto_busca": "doctor talking to patient clinic",
+  "trechos": [
+    {
+      "id": "f-6716f7",
+      "quem": "dra-lee",
+      "cod": "I want you to take these pills.",
+      "dica": "Quero que você tome estes comprimidos.",
+      "img": "👩‍⚕️💊",
+      "alvo": "pills",
+      "alvo_pt": "comprimidos",
+      "conceito": "Quero que você... = I want you to... (não: I want that you).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR61"
+      ],
+      "armadilhas": [
+        "that"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2b939b",
+      "quem": "voce",
+      "contexto": "f-6716f7",
+      "cod": "How often should I take the pills?",
+      "dica": "Com que frequência eu devo tomar os comprimidos?",
+      "img": "💊🔁❓",
+      "alvo": "pills",
+      "alvo_pt": "comprimidos",
+      "conceito": "Should + verbo sem to: should I take (não: should I to take).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-92e073",
+      "quem": "dra-lee",
+      "contexto": "f-2b939b",
+      "cod": "Take one every eight hours.",
+      "dica": "Tome um a cada oito horas.",
+      "img": "💊🕗",
+      "alvo": "every eight hours",
+      "alvo_pt": "a cada oito horas",
+      "conceito": "A cada oito horas = every eight hours (sem artigo, hours no plural).",
+      "registro": "neutro",
+      "armadilhas": [
+        "each"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-66225c",
+      "quem": "voce",
+      "contexto": "f-92e073",
+      "cod": "Should I take them with food?",
+      "dica": "Devo tomar com comida?",
+      "img": "💊🍽️❓",
+      "alvo": "with food",
+      "alvo_pt": "com comida",
+      "conceito": "O inglês exige o objeto: take them (em português, só 'tomar').",
+      "registro": "neutro",
+      "interferencias": [
+        "BR18",
+        "BR30"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-37fe84",
+      "quem": "dra-lee",
+      "contexto": "f-66225c",
+      "cod": "Yes, always with food. Take the first one at noon.",
+      "dica": "Sim, sempre com comida. Tome o primeiro ao meio-dia.",
+      "img": "✅🍽️🕛",
+      "alvo": "with food",
+      "alvo_pt": "com comida",
+      "conceito": "Ao meio-dia = at noon (at para hora).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in",
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6aeec3",
+      "quem": "voce",
+      "contexto": "f-37fe84",
+      "cod": "So I should take them after meals?",
+      "dica": "Então eu devo tomar depois das refeições?",
+      "img": "🍽️➡️💊",
+      "alvo": "after meals",
+      "alvo_pt": "depois das refeições",
+      "var": [
+        {
+          "em": "So I should",
+          "aceita": [
+            "So should I"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-93ecef",
+      "quem": "dra-lee",
+      "contexto": "f-6aeec3",
+      "cod": "Yes, right after meals. And avoid drinking coffee.",
+      "dica": "Sim, logo depois das refeições. E evite tomar café.",
+      "img": "🍽️☕🚫",
+      "alvo": "after meals",
+      "alvo_pt": "depois das refeições",
+      "conceito": "avoid + -ing, sem preposição: avoid drinking (não: avoid to drink).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "to",
+        "drink"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c92c62",
+      "quem": "voce",
+      "cod": "Do I have to wake up every eight hours?",
+      "dica": "Eu tenho que acordar a cada oito horas?",
+      "img": "⏰🌙❓",
+      "alvo": "every eight hours",
+      "alvo_pt": "a cada oito horas",
+      "conceito": "Pergunta com have to pede do: Do I have to...?",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30",
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4924ec",
+      "quem": "voce",
+      "cod": "Will I need a prescription?",
+      "dica": "Vou precisar de receita?",
+      "img": "🧾❓",
+      "alvo": "prescription",
+      "alvo_pt": "receita",
+      "conceito": "prescription = receita do médico; recipe = receita de comida.",
+      "registro": "neutro",
+      "armadilhas": [
+        "recipe"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2715747,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito na fala ('Vou precisar' em vez de 'Eu precisarei')",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-241548",
+      "quem": "dra-lee",
+      "contexto": "f-4924ec",
+      "cod": "Yes. Here's your prescription.",
+      "dica": "Sim. Aqui está a sua receita.",
+      "img": "👩‍⚕️🧾",
+      "alvo": "prescription",
+      "alvo_pt": "receita",
+      "registro": "neutro",
+      "armadilhas": [
+        "recipe"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2163055,
+        "en_autor": "Hybrid",
+        "pt_id": 418131,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'change' trocado por 'prescription' e 'Yes.' acrescentado; no PT, 'troco' trocado por 'receita' e 'Sim.' acrescentado",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

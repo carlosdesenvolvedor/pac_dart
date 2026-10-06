@@ -1,0 +1,224 @@
+{
+  "id": "perguntas-com-be.onde-fica-quem-e",
+  "trilha": "perguntas-com-be",
+  "nome": "Onde fica? Quem é?",
+  "emoji": "📍",
+  "cena": "No escritório de Chicago, você pergunta onde ficam as salas e as pessoas e descobre quem é quem.",
+  "resumo": "Perguntar onde estão as coisas e as pessoas e quem é alguém: Where's...? / Who's...? / Who's that? / restroom.",
+  "fechamento": false,
+  "novos": [
+    "Where's...?",
+    "Who's...?",
+    "Who's that?",
+    "restroom"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Onde fica? Quem é?"
+    },
+    {
+      "t": "p",
+      "c": "**Where's** = where is: onde fica (lugar) / onde está (pessoa). Para mais de um: **Where are...?** **Who's** = who is: quem é / quem está. **restroom** = banheiro de lugar público (EUA); em casa, bathroom."
+    },
+    {
+      "t": "ex",
+      "c": "Excuse me, where's the restroom?\nCom licença, onde fica o banheiro?"
+    },
+    {
+      "t": "ex",
+      "c": "Who's that? Is she new here?\nQuem é aquela? Ela é nova aqui?"
+    },
+    {
+      "t": "warn",
+      "c": "Onde fica? é Where's...?, com be (não: Where stays...?). E nome de pessoa vai sem artigo: Who's Mike? (não: Who's the Mike?)"
+    }
+  ],
+  "imagem": "🏢🚪❓",
+  "visualizacao": "Você está no corredor do escritório de Chicago: portas numeradas, gente passando com café na mão e uma recepcionista que aponta para o fim do corredor.",
+  "foto_busca": "office hallway reception desk",
+  "trechos": [
+    {
+      "id": "f-e0ca38",
+      "quem": "voce",
+      "cod": "Hi! Where's Mike today?",
+      "dica": "Oi! Onde está o Mike hoje?",
+      "img": "🔎👨‍💼",
+      "alvo": "Where's",
+      "alvo_pt": "Onde está",
+      "conceito": "Where's = where is: onde está (pessoa) / onde fica (lugar).",
+      "registro": "neutro",
+      "armadilhas": [
+        "where mike",
+        "where is mike is"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3738869,
+        "en_autor": "CK",
+        "pt_id": 3752320,
+        "pt_autor": "Luciosp",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Mike, + Hi! (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-39eea7",
+      "quem": "voce",
+      "contexto": "He's in a meeting, in room twenty-five.",
+      "cod": "Where's room twenty-five?",
+      "dica": "Onde fica a sala vinte e cinco?",
+      "img": "🚪🧭",
+      "alvo": "Where's",
+      "alvo_pt": "Onde fica",
+      "conceito": "Lugar: Where's + lugar? = onde fica? Número composto com hífen: twenty-five.",
+      "registro": "neutro",
+      "armadilhas": [
+        "where is the room",
+        "twenty five",
+        "stays"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2254663,
+        "en_autor": "CK",
+        "pt_id": 2063700,
+        "pt_autor": "MarlonX19",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "the hospital → room twenty-five (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-eed1c5",
+      "quem": "voce",
+      "cod": "Who's in the meeting?",
+      "dica": "Quem está na reunião?",
+      "img": "👥🗓️❓",
+      "alvo": "Who's",
+      "alvo_pt": "Quem está",
+      "conceito": "Who's = who is: quem é / quem está.",
+      "registro": "neutro",
+      "armadilhas": [
+        "who are in",
+        "who is are"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3f4595",
+      "quem": "voce",
+      "cod": "Excuse me, where's the restroom?",
+      "dica": "Com licença, onde fica o banheiro?",
+      "img": "🚻❓",
+      "alvo": "restroom",
+      "alvo_pt": "banheiro",
+      "conceito": "restroom = banheiro em lugar público (EUA); em casa, bathroom.",
+      "registro": "neutro",
+      "armadilhas": [
+        "toilet",
+        "bathroom",
+        "stays"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-12de74",
+      "quem": "ana",
+      "cod": "Who's that? Is she new here?",
+      "dica": "Quem é aquela? Ela é nova aqui?",
+      "img": "👀👩",
+      "alvo": "Who's that?",
+      "alvo_pt": "Quem é aquela?",
+      "conceito": "Who's that? = quem é aquele / aquela? (alguém que você vê de longe).",
+      "registro": "informal",
+      "armadilhas": [
+        "who is she that",
+        "who that"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ef8f12",
+      "quem": "voce",
+      "contexto": "f-12de74",
+      "cod": "And who's that? A designer?",
+      "dica": "E quem é aquele? Um designer?",
+      "img": "🧑‍🎨❓",
+      "alvo": "who's that?",
+      "alvo_pt": "quem é aquele?",
+      "conceito": "O mesmo that serve para aquele e aquela.",
+      "registro": "informal",
+      "armadilhas": [
+        "who that"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2270555,
+        "en_autor": "_undertoad",
+        "pt_id": 1331074,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "- boy, + And e A designer? (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f6729d",
+      "quem": "voce",
+      "contexto": "Where's Ana?",
+      "cod": "She's in the restroom.",
+      "dica": "Ela está no banheiro.",
+      "img": "👩🚻",
+      "alvo": "restroom",
+      "alvo_pt": "banheiro",
+      "conceito": "no banheiro = in the restroom.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "is in the restroom",
+        "in the toilet"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 523175,
+        "en_autor": "CK",
+        "pt_id": 2029831,
+        "pt_autor": "Matheus",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4593f3",
+      "quem": "dev-novo",
+      "contexto": "Mike is in a meeting.",
+      "cod": "Sorry, who's Mike?",
+      "dica": "Desculpa, quem é o Mike?",
+      "img": "🤷‍♂️❓",
+      "alvo": "who's",
+      "alvo_pt": "quem é",
+      "conceito": "Sem artigo antes do nome em inglês: who's Mike? = quem é o Mike?",
+      "registro": "informal",
+      "armadilhas": [
+        "who is the mike",
+        "who mike"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

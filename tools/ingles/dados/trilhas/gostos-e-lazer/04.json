@@ -1,0 +1,233 @@
+{
+  "id": "gostos-e-lazer.cena-papo-sobre-o-fim-de-semana",
+  "trilha": "gostos-e-lazer",
+  "nome": "Cena: papo sobre o fim de semana",
+  "emoji": "🎬",
+  "cena": "Sexta à tarde, a Ana, o Mike e você contam o que gostam de fazer no fim de semana.",
+  "resumo": "Contar e perguntar o que cada um gosta de fazer, juntando watch, listen to, look at e hear.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ver, olhar, assistir, ouvir, escutar"
+    },
+    {
+      "t": "p",
+      "c": "**watch** (TV, filme), **look at** (foto), **listen to** (música, podcast) e **hear** (um som, com can) agora juntos."
+    },
+    {
+      "t": "ex",
+      "c": "What do you like to do on the weekend?\nO que você gosta de fazer no fim de semana?"
+    },
+    {
+      "t": "warn",
+      "c": "*usually*, *always* e *never* vêm antes do verbo: I usually watch movies (não: I watch usually movies)."
+    }
+  ],
+  "imagem": "🗓️🎬🎧",
+  "visualizacao": "Sexta à tarde, o escritório esvaziando. Você, a Ana e o Mike em pé perto da janela, celulares na mão, falando do fim de semana.",
+  "foto_busca": "office friday afternoon chat",
+  "trechos": [
+    {
+      "id": "f-f03011",
+      "quem": "mike",
+      "cod": "What do you like to do on the weekend?",
+      "dica": "O que você gosta de fazer no fim de semana?",
+      "img": "🗓️🤔",
+      "alvo": "like to do",
+      "alvo_pt": "gosta de fazer",
+      "conceito": "like to do = like doing: as duas formas valem.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4011977,
+        "en_autor": "CK",
+        "pt_id": 9725864,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"What do you like to do on weekends?\"; PT original: \"O que você gosta de fazer nos fins de semana?\"; on weekends → on the weekend; PT: nos fins de semana → no fim de semana",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-403d73",
+      "quem": "ana",
+      "contexto": "f-f03011",
+      "cod": "I usually watch movies and cook.",
+      "dica": "Normalmente eu assisto filme e cozinho.",
+      "img": "🍿🍳",
+      "alvo": "watch",
+      "alvo_pt": "assisto",
+      "conceito": "usually vem antes do verbo: I usually watch.",
+      "registro": "informal",
+      "interferencias": [
+        "BR19",
+        "BR20"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c10363",
+      "quem": "mike",
+      "contexto": "f-f03011",
+      "cod": "I enjoy walking my dog.",
+      "dica": "Eu curto passear com o meu cachorro.",
+      "img": "🐕🚶",
+      "alvo": "enjoy",
+      "alvo_pt": "curto",
+      "lit": "[lit.: eu curto caminhar meu cachorro]",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3be0f7",
+      "quem": "ana",
+      "cod": "Look at that view.",
+      "dica": "Olha essa vista.",
+      "img": "📱🏖️",
+      "alvo": "Look at",
+      "alvo_pt": "Olha",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "this"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 7892037,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Olhe aquela vista!\"; PT reescrito na forma falada",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e62ac9",
+      "quem": "mike",
+      "cod": "Listen to this podcast. It's really funny.",
+      "dica": "Escuta esse podcast. É muito engraçado.",
+      "img": "🎧😂",
+      "alvo": "Listen to",
+      "alvo_pt": "Escuta",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-df7abc",
+      "quem": "voce",
+      "contexto": "f-e62ac9",
+      "cod": "Sorry, I can't hear it. It's really noisy here.",
+      "dica": "Desculpa, não estou ouvindo. Está muito barulhento aqui.",
+      "img": "👂🚫🔊",
+      "alvo": "I can't hear it",
+      "alvo_pt": "não estou ouvindo",
+      "conceito": "hear = ouvir um som; listen to = escutar com atenção.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR20"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c23a76",
+      "quem": "ana",
+      "cod": "Do you watch TV a lot?",
+      "dica": "Você assiste muita TV?",
+      "img": "📺❓",
+      "alvo": "watch",
+      "alvo_pt": "assiste",
+      "var": [
+        {
+          "em": "TV a lot",
+          "aceita": [
+            "a lot of TV",
+            "much TV"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6767183,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Você assiste muita televisão?\" (pt_id 6769554, Ricardo14); PT reescrito: televisão → TV, como no resto do curso",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bcb018",
+      "quem": "mike",
+      "contexto": "f-c23a76",
+      "cod": "No, I hate watching TV.",
+      "dica": "Não, eu odeio assistir TV.",
+      "img": "📺😒",
+      "alvo": "hate watching",
+      "alvo_pt": "odeio assistir",
+      "conceito": "hate + -ing = odiar + verbo, como like e love: I hate watching TV.",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "armadilhas": [
+        "watch",
+        "assist"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2548865,
+        "en_autor": "CK",
+        "pt_id": 3967283,
+        "pt_autor": "muriloricci",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I hate watching TV.\"; PT original: \"Eu odeio assistir televisão.\"; acrescentado No; PT: televisão → TV, + Não",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

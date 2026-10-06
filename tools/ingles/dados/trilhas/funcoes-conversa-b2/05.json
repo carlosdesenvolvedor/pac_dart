@@ -1,0 +1,222 @@
+{
+  "id": "funcoes-conversa-b2.mentira-nao-acredito",
+  "trilha": "funcoes-conversa-b2",
+  "nome": "Mentira! Não acredito",
+  "emoji": "😮",
+  "cena": "Num happy hour online com amigos e colegas, todo mundo troca novidades.",
+  "resumo": "Reagir com surpresa, concordar e aceitar um argumento.",
+  "fechamento": false,
+  "novos": [
+    "no way",
+    "I don't believe it",
+    "that's just what I was thinking",
+    "fair enough"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Reagir com interesse"
+    },
+    {
+      "t": "p",
+      "c": "Surpresa: **No way!** (Mentira!) e **I don't believe it.** (Não acredito.) Concordar: **That's just what I was thinking.** Aceitar o argumento: **Fair enough.** (Justo.)"
+    },
+    {
+      "t": "warn",
+      "c": "Mentira! de surpresa = **No way!** (não: Lie!). Justo. = **Fair enough.** (não: Just.)"
+    },
+    {
+      "t": "ex",
+      "c": "No way! Lucas is moving to Boston? I don't believe it.\nMentira! O Lucas vai se mudar para Boston? Não acredito."
+    }
+  ],
+  "imagem": "🎉😮💬",
+  "visualizacao": "Sexta à noite, você está num happy hour online com amigos e colegas: a tela dividida em quadradinhos, risadas e novidades chegando uma atrás da outra.",
+  "foto_busca": "friends video call laughing",
+  "trechos": [
+    {
+      "id": "f-1534f9",
+      "quem": "ben",
+      "contexto": "My brother Lucas is moving to Boston next month.",
+      "cod": "No way! Lucas is moving to Boston?",
+      "dica": "Mentira! O Lucas vai se mudar pra Boston?",
+      "img": "😮🏙️📦",
+      "alvo": "No way",
+      "alvo_pt": "Mentira",
+      "conceito": "No way! = Mentira! / Não brinca! (surpresa; não: Lie!).",
+      "registro": "informal",
+      "armadilhas": [
+        "lie"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Lucas is moving",
+          "aceita": [
+            "Is Lucas moving"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a913d0",
+      "quem": "ben",
+      "contexto": "f-1534f9",
+      "cod": "I don't believe it. I've been telling him to move here for years!",
+      "dica": "Não acredito. Eu falo pra ele se mudar pra cá há anos!",
+      "img": "🤯🏙️🧳",
+      "alvo": "I don't believe it",
+      "alvo_pt": "Não acredito",
+      "conceito": "Não acredito = I don't believe it (o it é obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR47"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1841693,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I don't believe it.\" (acrescentado I've been telling him to move here for years); PT reescrito (original: \"Eu não acredito nisso.\")",
+        "export": "2026-10-03"
+      },
+      "blocos": [
+        4
+      ]
+    },
+    {
+      "id": "f-0abfb0",
+      "quem": "voce",
+      "contexto": "Guess what? I passed my driving test!",
+      "cod": "No way! That's great news, Ana.",
+      "dica": "Mentira! Que notícia boa, Ana.",
+      "img": "🚗🎉👏",
+      "alvo": "No way",
+      "alvo_pt": "Mentira",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "That's great news",
+          "aceita": [
+            "What great news",
+            "That's good news"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-623ee6",
+      "quem": "voce",
+      "contexto": "I have to log off early. I start at six tomorrow.",
+      "cod": "That's fair enough. See you tomorrow, Mike.",
+      "dica": "Justo. Até amanhã, Mike.",
+      "img": "👋🌙👍",
+      "alvo": "fair enough",
+      "alvo_pt": "Justo",
+      "conceito": "Fair enough. = Justo / Tá certo, aceitando o motivo do outro (não: Just).",
+      "opcional": [
+        "That's"
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "just"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1500306,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"That's fair enough.\" (acrescentado See you tomorrow, Mike); PT reescrito (original: \"Isso é justo.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8ee1c9",
+      "quem": "voce",
+      "contexto": "We should all meet in person this summer.",
+      "cod": "That's just what I was thinking.",
+      "dica": "Era exatamente isso que eu estava pensando.",
+      "img": "💡🤝☀️",
+      "alvo": "That's just what I was thinking",
+      "alvo_pt": "Era exatamente isso que eu estava pensando",
+      "conceito": "just aqui = exatamente.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "just",
+          "aceita": [
+            "exactly"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-337147",
+      "quem": "sarah",
+      "contexto": "Let's do this every Friday.",
+      "cod": "Funny, that's just what I was thinking.",
+      "dica": "Engraçado, era exatamente isso que eu estava pensando.",
+      "img": "😄🧠📅",
+      "alvo": "that's just what I was thinking",
+      "alvo_pt": "era exatamente isso que eu estava pensando",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "just",
+          "aceita": [
+            "exactly"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a8a9d8",
+      "quem": "ben",
+      "contexto": "I can't travel in June. It's our release month.",
+      "cod": "Fair enough. Let's meet in July, then.",
+      "dica": "Justo. Vamos nos encontrar em julho, então.",
+      "img": "✈️📆👌",
+      "alvo": "Fair enough",
+      "alvo_pt": "Justo",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-86616a",
+      "quem": "voce",
+      "contexto": "I finally got a job offer in Brazil.",
+      "cod": "I don't believe it! You're moving back to Brazil?",
+      "dica": "Não acredito! Você vai voltar a morar no Brasil?",
+      "img": "🇧🇷🏠😲",
+      "alvo": "I don't believe it",
+      "alvo_pt": "Não acredito",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "You're moving",
+          "aceita": [
+            "Are you moving"
+          ]
+        }
+      ]
+    }
+  ]
+}

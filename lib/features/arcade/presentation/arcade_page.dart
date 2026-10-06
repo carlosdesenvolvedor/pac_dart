@@ -5,6 +5,7 @@ import '../../../core/theme/mixart.dart';
 import '../../ranking/presentation/ranking_cubit.dart';
 import '../domain/personagem.dart';
 import 'widgets/avatares.dart';
+import 'banco_arcade.dart';
 import 'caca_bug_page.dart';
 import 'chuva_page.dart';
 import 'corrida_page.dart';
@@ -93,6 +94,17 @@ class _ArcadePageState extends State<ArcadePage> {
     ),
   ];
 
+  /// "Gol de Dart" vira "Gol de C#" na vertente C# (e o resto dos textos).
+  static String _naVertente(String texto) {
+    if (BancoArcade.linguagem == 'Dart') return texto;
+    if (BancoArcade.soDigitacao) {
+      texto = texto
+          .replaceAll('Chuva de Código', 'Chuva de Palavras')
+          .replaceAll('Palavras do Dart', 'Palavras em inglês');
+    }
+    return texto.replaceAll('Dart', BancoArcade.linguagem);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +116,9 @@ class _ArcadePageState extends State<ArcadePage> {
             child: ListView(
               padding: const EdgeInsets.fromLTRB(20, 16, 20, 48),
               children: [
-                const CabecalhoJogo(rotulo: 'PAC·DART', titulo: '🎮 Arcade Dart'),
+                CabecalhoJogo(
+                    rotulo: 'PAC·${BancoArcade.linguagem.toUpperCase()}',
+                    titulo: '🎮 Arcade ${BancoArcade.linguagem}'),
                 const SizedBox(height: 14),
                 Container(
                   padding: const EdgeInsets.all(16),
@@ -114,7 +128,11 @@ class _ArcadePageState extends State<ArcadePage> {
                     borderRadius: BorderRadius.circular(Mixart.radiusMd),
                   ),
                   child: Text(
-                    'Treine a lógica e a sintaxe do Dart jogando. Vença as fases, '
+                    BancoArcade.soDigitacao
+                        ? 'Treine as palavras mais usadas do inglês jogando: cada palavra digitada '
+                            'acelera, atira ou faz a curva. Vença as fases e acumule pontos no seu '
+                            'ranking 🏆 — o recorde de cada jogo fica guardado. Esc pausa qualquer jogo.'
+                        : 'Treine a lógica e a sintaxe do ${BancoArcade.linguagem} jogando. Vença as fases, '
                     'viaje pelos cenários e acumule pontos no seu ranking 🏆 — o '
                     'recorde pessoal de cada jogo fica guardado. Esc pausa qualquer '
                     'jogo (e sair da aba pausa sozinho).',
@@ -124,8 +142,10 @@ class _ArcadePageState extends State<ArcadePage> {
                 const SizedBox(height: 18),
                 _seletorPersonagem(),
                 const SizedBox(height: 18),
-                _cartaoMissoes(),
-                const SizedBox(height: 12),
+                if (!BancoArcade.soDigitacao) ...[
+                  _cartaoMissoes(),
+                  const SizedBox(height: 12),
+                ],
                 _cartoes(),
               ],
             ),
@@ -245,7 +265,8 @@ class _ArcadePageState extends State<ArcadePage> {
               : 1;
       final largura = (box.maxWidth - (colunas - 1) * 12) / colunas;
       return Wrap(spacing: 12, runSpacing: 12, children: [
-        for (final j in _jogos) SizedBox(width: largura, child: _cartao(j, cubit)),
+        for (final j in _jogos)
+          if (!BancoArcade.soDigitacao || j.tag == 'DIGITAÇÃO') SizedBox(width: largura, child: _cartao(j, cubit)),
       ]);
     });
   }
@@ -301,9 +322,9 @@ class _ArcadePageState extends State<ArcadePage> {
               ),
             ]),
             const SizedBox(height: 10),
-            Text(jogo.nome, style: Mixart.display(size: 18)),
+            Text(_naVertente(jogo.nome), style: Mixart.display(size: 18)),
             const SizedBox(height: 6),
-            Text(jogo.descricao,
+            Text(_naVertente(jogo.descricao),
                 style: Mixart.ui(size: 12.5, color: Mixart.textMuted).copyWith(height: 1.5)),
             const SizedBox(height: 12),
             Row(children: [

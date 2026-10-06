@@ -1,0 +1,318 @@
+{
+  "id": "present-perfect-experiencias.voce-ja-foi-have-you-ever-been-to",
+  "trilha": "present-perfect-experiencias",
+  "nome": "Você já foi? Have you ever been to",
+  "emoji": "🌍",
+  "cena": "No almoço do time em Chicago, o Mike, a Sarah e você trocam histórias de viagem.",
+  "resumo": "Perguntar e contar experiências de viagem sem data: Have you ever been to...? / I've been to... / I've never been to...",
+  "fechamento": false,
+  "novos": [
+    "Have you ever...?",
+    "been to",
+    "I've / you've / we've",
+    "Europe",
+    "Japan"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Você já foi...? = Have you ever been to...?"
+    },
+    {
+      "t": "p",
+      "c": "Para experiência **sem data**, o inglês usa **have + particípio**: *I've been to Japan.* Em português, a pista é **já** ou **nunca**."
+    },
+    {
+      "t": "ex",
+      "c": "Have you ever been to Japan?\nVocê já foi ao Japão?"
+    },
+    {
+      "t": "ex",
+      "c": "I've never been to Europe.\nNunca fui à Europa."
+    },
+    {
+      "t": "warn",
+      "c": "Com data (ontem, em 2019) é passado: *I went*. Sem data, *I've been* (BR27). Países e continentes sempre com maiúscula: *Japan, Europe*."
+    }
+  ],
+  "imagem": "🍽️🌍✈️",
+  "visualizacao": "Você está numa mesa de restaurante em Chicago, no almoço do time. Pratos quentes, conversa alta, e a Sarah mostra no celular fotos de uma viagem ao Japão.",
+  "foto_busca": "coworkers lunch restaurant table talking",
+  "trechos": [
+    {
+      "id": "f-0c029d",
+      "quem": "voce",
+      "cod": "Have you ever been to Japan?",
+      "dica": "Você já foi ao Japão?",
+      "img": "🇯🇵✈️❓",
+      "alvo": "Have you ever",
+      "alvo_pt": "Você já",
+      "lit": "[lit.: você tem alguma vez estado no Japão?]",
+      "conceito": "Experiência sem data: have + particípio. O já do português é a pista.",
+      "var": [
+        {
+          "em": "Have you ever been",
+          "aceita": [
+            "Did you ever go"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR15"
+      ],
+      "armadilhas": [
+        "did you went",
+        "you already"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2448104,
+        "en_autor": "CK",
+        "pt_id": 4881133,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Boston → Japan (no PT: a Boston → ao Japão)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b7b20e",
+      "quem": "sarah",
+      "contexto": "f-0c029d",
+      "cod": "Yes, I have. My husband loves Japan.",
+      "dica": "Já, sim. Meu marido adora o Japão.",
+      "img": "👍❤️🗾",
+      "alvo": "Japan",
+      "alvo_pt": "Japão",
+      "conceito": "A resposta curta repete o auxiliar: Yes, I have. / No, I haven't.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR15"
+      ],
+      "armadilhas": [
+        "yes, i do",
+        "japan"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-529013",
+      "quem": "sarah",
+      "contexto": "f-b7b20e",
+      "cod": "We've been there three times.",
+      "dica": "A gente já foi lá três vezes.",
+      "img": "👫🗻🔁",
+      "alvo": "We've been",
+      "alvo_pt": "A gente já foi",
+      "conceito": "We've = we have. Número de vezes no fim: once, twice, three times.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "we went"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2241662,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado three times; PT reescrito (a gente)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7faae8",
+      "quem": "voce",
+      "cod": "I'd like to go to Japan one day.",
+      "dica": "Eu gostaria de ir ao Japão um dia.",
+      "img": "💭🗾🎌",
+      "alvo": "Japan",
+      "alvo_pt": "Japão",
+      "conceito": "I'd like to + verbo = eu gostaria de + verbo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "one day",
+          "aceita": [
+            "someday",
+            "some day"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a8bc46",
+      "quem": "voce",
+      "cod": "Mike, have you ever been to Europe?",
+      "dica": "Mike, você já foi à Europa?",
+      "img": "🌍🏰❓",
+      "alvo": "Europe",
+      "alvo_pt": "Europa",
+      "conceito": "Europe com maiúscula, como todo continente e país.",
+      "var": [
+        {
+          "em": "have you ever been",
+          "aceita": [
+            "did you ever go"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR15"
+      ],
+      "armadilhas": [
+        "europa",
+        "did you go"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "ever"
+      ]
+    },
+    {
+      "id": "f-5daa66",
+      "quem": "mike",
+      "contexto": "f-a8bc46",
+      "cod": "No, I've never been to Europe.",
+      "dica": "Não, nunca fui à Europa.",
+      "img": "🙅‍♂️🏰",
+      "alvo": "been to",
+      "alvo_pt": "fui à",
+      "conceito": "been to = ir e voltar (experiência). Nunca fui = I've never been.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "never went",
+        "gone"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2360022,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Boston → Europe; acrescentado No,; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c6e77f",
+      "quem": "sarah",
+      "contexto": "f-5daa66",
+      "cod": "You've never been to Europe? Really?",
+      "dica": "Você nunca foi à Europa? Sério?",
+      "img": "😮🌍",
+      "alvo": "Europe",
+      "alvo_pt": "Europa",
+      "conceito": "You've = you have. A surpresa vem no fim: Really? = Sério?",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR15"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-21280d",
+      "quem": "mike",
+      "contexto": "f-c6e77f",
+      "cod": "No, but I've been to Mexico twice.",
+      "dica": "Não, mas já fui ao México duas vezes.",
+      "img": "🇲🇽🌮✌️",
+      "alvo": "I've been",
+      "alvo_pt": "já fui",
+      "conceito": "twice = duas vezes; once = uma vez; three times = três vezes.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "i went",
+        "two times"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-13d7d8",
+      "quem": "voce",
+      "cod": "Have you ever been to Texas, Mike?",
+      "dica": "Você já foi ao Texas, Mike?",
+      "img": "🤠🌵❓",
+      "alvo": "Have you ever",
+      "alvo_pt": "Você já",
+      "conceito": "Estado vai sem artigo em inglês: ao Texas = to Texas (não: to the Texas).",
+      "var": [
+        {
+          "em": "Have you ever been",
+          "aceita": [
+            "Did you ever go"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR15"
+      ],
+      "armadilhas": [
+        "did you went",
+        "the texas"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6c4154",
+      "quem": "mike",
+      "contexto": "f-13d7d8",
+      "cod": "Yes, I've been to Austin many times.",
+      "dica": "Sim, já fui a Austin muitas vezes.",
+      "img": "✅🏙️🔁",
+      "alvo": "been to",
+      "alvo_pt": "fui a",
+      "conceito": "Experiência repetida sem data: I've been to... many times.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "i went",
+        "gone to"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4798744,
+        "en_autor": "cairnhead",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Boston → Austin; several → many; acrescentado Yes,; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

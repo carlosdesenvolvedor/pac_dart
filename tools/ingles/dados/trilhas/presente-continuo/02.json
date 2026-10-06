@@ -1,0 +1,213 @@
+{
+  "id": "presente-continuo.o-que-voce-esta-fazendo",
+  "trilha": "presente-continuo",
+  "nome": "O que você está fazendo?",
+  "emoji": "❓",
+  "cena": "À noite, numa chamada de vídeo com a sua irmã Julia, enquanto você faz o jantar.",
+  "resumo": "Perguntar e negar o que está acontecendo: What are you doing? Are you still working? It isn't working.",
+  "fechamento": false,
+  "novos": [
+    "What are you doing?",
+    "doing",
+    "still",
+    "Are you still working?"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Perguntas no contínuo"
+    },
+    {
+      "t": "p",
+      "c": "Na pergunta, o **be** vem antes da pessoa: **Are you** working? **What are you** doing? Na negativa, o **not** vem depois do be: I'm **not** working. It **isn't** working."
+    },
+    {
+      "t": "ex",
+      "c": "What are you doing?\nO que você está fazendo?"
+    },
+    {
+      "t": "tip",
+      "c": "**still** = ainda (continua): I'm still at work. Vem depois do be."
+    },
+    {
+      "t": "warn",
+      "c": "Não: What you are doing? O are vem antes do you."
+    }
+  ],
+  "imagem": "📱🌙👫",
+  "visualizacao": "É noite e você está na cozinha fazendo o jantar. O celular toca: é a Julia numa chamada de vídeo, ainda no escritório, com a luz da tela no rosto.",
+  "foto_busca": "video call phone kitchen evening",
+  "trechos": [
+    {
+      "id": "f-0f0906",
+      "quem": "julia",
+      "cod": "Hey, what are you doing?",
+      "dica": "Ei, o que você está fazendo?",
+      "img": "📱❓",
+      "alvo": "what are you doing?",
+      "alvo_pt": "o que você está fazendo?",
+      "conceito": "Na pergunta, are vem antes de you: What are you doing?",
+      "registro": "informal",
+      "armadilhas": [
+        "you"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5781627,
+        "en_autor": "CK",
+        "pt_id": 6781943,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a4d1d8",
+      "quem": "voce",
+      "contexto": "f-0f0906",
+      "cod": "I'm making dinner. Are you still working?",
+      "dica": "Estou fazendo o jantar. Você ainda está trabalhando?",
+      "img": "🍝💻",
+      "alvo": "Are you still working?",
+      "alvo_pt": "Você ainda está trabalhando?",
+      "conceito": "still = ainda; na pergunta, vem depois do sujeito: Are you still...?",
+      "registro": "informal",
+      "armadilhas": [
+        "you",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-56a3ec",
+      "quem": "julia",
+      "contexto": "f-a4d1d8",
+      "cod": "Yes, I'm still at the office.",
+      "dica": "Sim, ainda estou no escritório.",
+      "img": "🏢🕘",
+      "alvo": "still",
+      "alvo_pt": "ainda",
+      "conceito": "still vem depois do be: I'm still at the office.",
+      "var": [
+        {
+          "em": "at the office",
+          "aceita": [
+            "in the office"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7d5194",
+      "quem": "voce",
+      "cod": "What's Lucas doing?",
+      "dica": "O que o Lucas está fazendo?",
+      "img": "👦❓",
+      "alvo": "doing",
+      "alvo_pt": "fazendo",
+      "conceito": "What's = What is. O que ele está fazendo? = What's he doing?",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 637333,
+        "en_autor": "shekitten",
+        "pt_id": 5122408,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"What's Tony doing?\"; PT original: \"O que o Tony está fazendo?\"; nome trocado: Tony → Lucas (elenco fixo), no EN e no PT",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b9d551",
+      "quem": "julia",
+      "contexto": "f-7d5194",
+      "cod": "He's still at the gym.",
+      "dica": "Ele ainda está na academia.",
+      "img": "🏋️🕗",
+      "alvo": "still",
+      "alvo_pt": "ainda",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ff9991",
+      "quem": "voce",
+      "cod": "And what's Mom doing?",
+      "dica": "E o que a mãe está fazendo?",
+      "img": "👵❓",
+      "alvo": "doing",
+      "alvo_pt": "fazendo",
+      "conceito": "Mom com maiúscula quando é usado como nome (a nossa mãe).",
+      "var": [
+        {
+          "em": "Mom",
+          "aceita": [
+            "our mom"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "variacao_de": "f-7d5194",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3b2c87",
+      "quem": "julia",
+      "contexto": "f-ff9991",
+      "cod": "Hello? Are you still there?",
+      "dica": "Alô? Você ainda está aí?",
+      "img": "📞🔇",
+      "alvo": "Are you still",
+      "alvo_pt": "Você ainda está",
+      "conceito": "Na ligação: Are you still there? = Você ainda está aí?",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1601588,
+        "en_autor": "kerbear407",
+        "pt_id": 406566,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-81bf6c",
+      "quem": "voce",
+      "contexto": "f-3b2c87",
+      "cod": "Yes! Sorry, my camera isn't working.",
+      "dica": "Sim! Desculpa, minha câmera não está funcionando.",
+      "img": "📹❌",
+      "alvo": "isn't working",
+      "alvo_pt": "não está funcionando",
+      "conceito": "Negativa: isn't + -ing. Work também é funcionar: My camera isn't working.",
+      "var": [
+        {
+          "em": "camera isn't",
+          "aceita": [
+            "camera's not"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [],
+      "armadilhas": [
+        "doesn't"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

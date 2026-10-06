@@ -1,0 +1,284 @@
+{
+  "id": "opinar-conduzir-conversa.faz-sentido",
+  "trilha": "opinar-conduzir-conversa",
+  "nome": "Faz sentido?",
+  "emoji": "💡",
+  "cena": "Numa salinha com quadro branco, você explica para a Sarah a ordem de trabalho de uma funcionalidade nova e confere se ela entendeu.",
+  "resumo": "Checar se o outro entendeu e esclarecer: Does that make sense?, So you're saying...?, What I mean is...",
+  "fechamento": false,
+  "novos": [
+    "Does that make sense?",
+    "make sense",
+    "So you're saying",
+    "Actually (na verdade)",
+    "meant"
+  ],
+  "apoio": [
+    "clear"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Checar se o outro entendeu"
+    },
+    {
+      "t": "p",
+      "c": "**Does that make sense?** = Faz sentido? Para conferir o que o outro disse: **So you're saying...?** Para corrigir: **That's not what I meant. What I mean is...** (o que eu quero dizer é...)."
+    },
+    {
+      "t": "warn",
+      "c": "Actually = na verdade (corrigindo ou contrariando). Atualmente = currently."
+    },
+    {
+      "t": "ex",
+      "c": "That isn't quite what I meant.\nNão foi bem isso que eu quis dizer."
+    }
+  ],
+  "imagem": "💡🧑‍💻📋",
+  "visualizacao": "Sala pequena com quadro branco. Você desenha caixinhas do app e setas para o backend, e a Sarah, de braços cruzados, tenta acompanhar o plano.",
+  "foto_busca": "whiteboard planning meeting office",
+  "trechos": [
+    {
+      "id": "f-9c8fe2",
+      "quem": "voce",
+      "cod": "I'll do the backend first. Does that make sense?",
+      "dica": "Vou fazer o backend primeiro. Faz sentido?",
+      "img": "🖥️🥇",
+      "alvo": "Does that make sense?",
+      "alvo_pt": "Faz sentido?",
+      "conceito": "fazer sentido = make sense; a pergunta usa does.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-19b864",
+      "quem": "sarah",
+      "contexto": "f-9c8fe2",
+      "cod": "I guess that makes sense.",
+      "dica": "(sem muita certeza) Acho que faz sentido.",
+      "img": "🤔👌",
+      "alvo": "makes sense",
+      "alvo_pt": "faz sentido",
+      "conceito": "I guess = acho que, sem muita certeza. That makes, com -s.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "make"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2330077,
+        "en_autor": "CK",
+        "pt_id": 4938059,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN sem mudança; PT: acrescentada a pista \"(sem muita certeza)\" antes do texto do tradutor",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "that makes",
+          "aceita": [
+            "it makes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-326b81",
+      "quem": "sarah",
+      "contexto": "f-9c8fe2",
+      "cod": "So you're saying the login screen can wait?",
+      "dica": "Então você está dizendo que a tela de login pode esperar?",
+      "img": "📱⏳",
+      "alvo": "So you're saying",
+      "alvo_pt": "Então você está dizendo",
+      "conceito": "Para conferir o que entendeu: So you're saying (that)...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1329f6",
+      "quem": "voce",
+      "contexto": "f-326b81",
+      "cod": "That isn't quite what I meant.",
+      "dica": "Não foi bem isso que eu quis dizer.",
+      "img": "🙅💬",
+      "alvo": "meant",
+      "alvo_pt": "quis dizer",
+      "conceito": "quis dizer = meant (passado de mean).",
+      "var": [
+        {
+          "em": "That isn't",
+          "aceita": [
+            "That wasn't",
+            "That's not"
+          ]
+        },
+        {
+          "em": "quite",
+          "aceita": [
+            "exactly"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 9009230,
+        "en_autor": "CK",
+        "pt_id": 9036309,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9a4d30",
+      "quem": "voce",
+      "cod": "Actually, what I mean is that the login screen depends on the backend.",
+      "dica": "Na verdade, o que eu quero dizer é que a tela de login depende do backend.",
+      "img": "💬🔗🖥️",
+      "alvo": "Actually",
+      "alvo_pt": "Na verdade",
+      "conceito": "Actually = na verdade (atualmente = currently). O que eu quero dizer é que = what I mean is (that).",
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR42"
+      ],
+      "armadilhas": [
+        "currently",
+        "of"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "that"
+      ],
+      "blocos": [
+        6
+      ]
+    },
+    {
+      "id": "f-8dd2ff",
+      "quem": "voce",
+      "cod": "It takes time, but it's safer. Does that make sense?",
+      "dica": "Leva tempo, mas é mais seguro. Faz sentido?",
+      "img": "⏳🛡️",
+      "alvo": "Does that make sense?",
+      "alvo_pt": "Faz sentido?",
+      "conceito": "Leva tempo = It takes time; é mais seguro = it's safer (it obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "takes",
+        "is"
+      ],
+      "variacao_de": "f-9c8fe2",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2dee57",
+      "quem": "sarah",
+      "contexto": "f-8dd2ff",
+      "cod": "That makes sense, but the client wants a demo soon.",
+      "dica": "Faz sentido, mas o cliente quer uma demo logo.",
+      "img": "🤝⏰",
+      "alvo": "makes sense",
+      "alvo_pt": "Faz sentido",
+      "conceito": "Faz sentido = That makes sense (aceita It makes); o cliente quer = the client wants.",
+      "var": [
+        {
+          "em": "That makes",
+          "aceita": [
+            "It makes"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR02"
+      ],
+      "armadilhas": [
+        "want"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f9f82d",
+      "quem": "voce",
+      "contexto": "f-2dee57",
+      "cod": "So you're saying we need something to show in March?",
+      "dica": "Então você está dizendo que a gente precisa de algo pra mostrar em março?",
+      "img": "🗓️🖥️",
+      "alvo": "So you're saying",
+      "alvo_pt": "Então você está dizendo",
+      "conceito": "Meses com maiúscula: in March.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "march",
+        "on"
+      ],
+      "variacao_de": "f-326b81",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-201cb8",
+      "quem": "sarah",
+      "contexto": "f-f9f82d",
+      "cod": "Actually, a short video would be enough.",
+      "dica": "Na verdade, um vídeo curto seria suficiente.",
+      "img": "📹✅",
+      "alvo": "Actually",
+      "alvo_pt": "Na verdade",
+      "conceito": "enough = suficiente; seria = would be.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-886720",
+      "quem": "voce",
+      "contexto": "f-201cb8",
+      "cod": "Got it. I thought you meant a full demo.",
+      "dica": "Entendi. Achei que você quis dizer uma demo completa.",
+      "img": "💡👌",
+      "alvo": "meant",
+      "alvo_pt": "quis dizer",
+      "conceito": "achei que = I thought; quis dizer = meant: dois passados.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "full",
+          "aceita": [
+            "complete"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "id": "passado-simples-afirmativo.trabalhei-ate-tarde-o-ed",
+  "trilha": "passado-simples-afirmativo",
+  "nome": "Trabalhei até tarde: o -ed",
+  "emoji": "✅",
+  "cena": "Segunda de manhã no escritório de Chicago: você, o Mike e, por vídeo, a Sarah e a Ana contam como foi o fim de semana.",
+  "resumo": "Contar o que você fez com o passado regular: verbo + -ed (worked, stayed, watched, fixed).",
+  "fechamento": false,
+  "novos": [
+    "worked",
+    "stayed",
+    "watched",
+    "fixed"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Passado regular = verbo + -ed"
+    },
+    {
+      "t": "p",
+      "c": "Para contar o que fez, acrescente **-ed** ao verbo: work → **worked**, stay → **stayed**. A forma é a mesma para todas as pessoas: I worked, she worked, we worked."
+    },
+    {
+      "t": "tip",
+      "c": "Grafia: stop → **stopped** (dobra a consoante), study → **studied** (y vira ied), like → **liked** (só d)."
+    },
+    {
+      "t": "ex",
+      "c": "I stayed home yesterday.\nFiquei em casa ontem."
+    },
+    {
+      "t": "warn",
+      "c": "Ontem eu trabalhei = I **worked** yesterday. O -ed não pode faltar (não: I work yesterday)."
+    }
+  ],
+  "imagem": "🏢☕💬",
+  "visualizacao": "Você está numa sala de reunião em Chicago, segunda cedo. Sente o cheiro de café, vê a Sarah e a Ana na tela e o Mike sorrindo, perguntando do seu fim de semana.",
+  "foto_busca": "office meeting room monday coffee",
+  "trechos": [
+    {
+      "id": "f-e8be4c",
+      "quem": "ana",
+      "contexto": "How was your weekend?",
+      "cod": "I stayed home yesterday.",
+      "dica": "Fiquei em casa ontem.",
+      "img": "🏠🛋️",
+      "alvo": "stayed",
+      "alvo_pt": "Fiquei",
+      "conceito": "stay → stayed (ficar). Ficar em casa = stay home (sem to).",
+      "var": [
+        {
+          "em": "home",
+          "aceita": [
+            "at home"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR16"
+      ],
+      "armadilhas": [
+        "stay"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8597971,
+        "en_autor": "CK",
+        "pt_id": 8634226,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7fc79b",
+      "quem": "mike",
+      "cod": "My wife and I watched a movie.",
+      "dica": "Eu e a minha esposa assistimos a um filme.",
+      "img": "🍿🎬",
+      "alvo": "watched",
+      "alvo_pt": "assistimos",
+      "conceito": "watch → watched. Assistir a um filme = watch a movie.",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "armadilhas": [
+        "watch"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9051115,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom and I watched a movie together.\"; PT original: \"Tom e eu assistimos a um filme juntos.\"; Tom → my wife; together removido; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6cf2ed",
+      "quem": "voce",
+      "cod": "I stayed at the hotel and studied English.",
+      "dica": "Fiquei no hotel e estudei inglês.",
+      "img": "🏨📖",
+      "alvo": "stayed",
+      "alvo_pt": "Fiquei",
+      "conceito": "study → studied: depois de consoante, o y vira ied.",
+      "var": [
+        {
+          "em": "at the hotel",
+          "aceita": [
+            "in the hotel"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "studyed",
+        "english"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-891a40",
+      "quem": "sarah",
+      "cod": "Oh, I worked all weekend.",
+      "dica": "Ah, eu trabalhei o fim de semana inteiro.",
+      "img": "💻😩",
+      "alvo": "worked",
+      "alvo_pt": "trabalhei",
+      "conceito": "work → worked. all weekend = o fim de semana inteiro.",
+      "var": [
+        {
+          "em": "all weekend",
+          "aceita": [
+            "the whole weekend",
+            "all weekend long"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "work"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-59163a",
+      "quem": "sarah",
+      "contexto": "f-891a40",
+      "cod": "But we watched a comedy last night.",
+      "dica": "Mas a gente assistiu a uma comédia ontem à noite.",
+      "img": "😂📺",
+      "alvo": "watched",
+      "alvo_pt": "assistiu",
+      "conceito": "last night = ontem à noite.",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "armadilhas": [
+        "watch"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b19de4",
+      "quem": "mike",
+      "cod": "Yesterday, I fixed my car.",
+      "dica": "Ontem eu consertei meu carro.",
+      "img": "🚗🔧",
+      "alvo": "fixed",
+      "alvo_pt": "consertei",
+      "conceito": "fix → fixed: consertar (carro) ou corrigir (bug).",
+      "registro": "informal",
+      "armadilhas": [
+        "fix"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10282374,
+        "en_autor": "ddnktr",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I fixed my bicycle yesterday.\"; PT original: \"Consertei minha bicicleta ontem.\"; bicycle → car; yesterday no começo; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3be3e5",
+      "quem": "voce",
+      "cod": "Mike and I worked late on Friday.",
+      "dica": "Eu e o Mike trabalhamos até tarde na sexta.",
+      "img": "🌙💻",
+      "alvo": "worked",
+      "alvo_pt": "trabalhamos",
+      "conceito": "Trabalhar até tarde = work late.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "work",
+        "friday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e2faaa",
+      "quem": "mike",
+      "contexto": "f-3be3e5",
+      "cod": "And {nome} fixed the bug.",
+      "dica": "E o {nome} corrigiu o bug.",
+      "img": "🐛✅",
+      "alvo": "fixed",
+      "alvo_pt": "corrigiu",
+      "pt_f": "E a {nome} corrigiu o bug.",
+      "registro": "informal",
+      "armadilhas": [
+        "fix"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

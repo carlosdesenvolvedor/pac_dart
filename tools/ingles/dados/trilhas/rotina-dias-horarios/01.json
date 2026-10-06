@@ -1,0 +1,224 @@
+{
+  "id": "rotina-dias-horarios.sempre-levanto-as-sete",
+  "trilha": "rotina-dias-horarios",
+  "nome": "Sempre levanto às sete",
+  "emoji": "⏰",
+  "cena": "Antes da reunião do time, você e a Ana comparam como são as manhãs de cada um.",
+  "resumo": "Dizer com que frequência algo acontece: always e usually antes do verbo, mais get up e check.",
+  "fechamento": false,
+  "novos": [
+    "always",
+    "usually",
+    "get up",
+    "check"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Sempre, normalmente: antes do verbo"
+    },
+    {
+      "t": "p",
+      "c": "**always** (sempre) e **usually** (normalmente) vão **antes do verbo** (I always get up) e **depois de be** (The meeting is usually at nine)."
+    },
+    {
+      "t": "ex",
+      "c": "I always get up at 6:30.\nEu sempre levanto às 6h30."
+    },
+    {
+      "t": "warn",
+      "c": "Não: I get up always. / I like very much it. O certo: I **always** get up. / I like it **very much**."
+    },
+    {
+      "t": "tip",
+      "c": "get up = levantar (da cama); wake up = acordar."
+    }
+  ],
+  "imagem": "⏰☕💬",
+  "visualizacao": "Faltam dez minutos para a reunião. Você e a Ana conversam com uma caneca de café na mão, e a luz da manhã entra pela janela.",
+  "foto_busca": "morning coffee mug desk",
+  "trechos": [
+    {
+      "id": "f-fb0149",
+      "quem": "voce",
+      "cod": "What time do you get up?",
+      "dica": "Que horas você levanta?",
+      "img": "⏰❓",
+      "alvo": "get up",
+      "alvo_pt": "levanta",
+      "conceito": "get up = levantar (da cama); wake up = acordar.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "what time you get up",
+        "wake up"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d21614",
+      "quem": "ana",
+      "contexto": "f-fb0149",
+      "cod": "I always get up at 6:30.",
+      "dica": "Eu sempre levanto às 6h30.",
+      "img": "⏰🌄",
+      "alvo": "always",
+      "alvo_pt": "sempre",
+      "conceito": "always vem antes do verbo: I always get up (não: I get up always).",
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "armadilhas": [
+        "i get up always",
+        "always i get"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5850711,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT autoral: get up = levantar (o PT do Tatoeba dizia 'acordo')",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-aa2a93",
+      "quem": "voce",
+      "contexto": "f-d21614",
+      "cod": "Wow! Do you check your messages in bed?",
+      "dica": "Nossa! Você checa suas mensagens na cama?",
+      "img": "🛏️📱💬",
+      "alvo": "check",
+      "alvo_pt": "checa",
+      "conceito": "checar = check. Na cama = in bed (sem the).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you check",
+        "in the bed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1cd9b2",
+      "quem": "ana",
+      "contexto": "f-aa2a93",
+      "cod": "Yes, and I check my email too.",
+      "dica": "Sim, e eu checo meu e-mail também.",
+      "img": "📧✅",
+      "alvo": "check",
+      "alvo_pt": "checo",
+      "registro": "informal",
+      "armadilhas": [
+        "i check too"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d97c8b",
+      "quem": "ana",
+      "cod": "How much coffee do you usually drink?",
+      "dica": "Quanto café você normalmente toma?",
+      "img": "☕☕❓",
+      "alvo": "usually",
+      "alvo_pt": "normalmente",
+      "conceito": "usually vem antes do verbo principal: do you usually drink.",
+      "registro": "informal",
+      "interferencias": [
+        "BR19",
+        "BR06"
+      ],
+      "armadilhas": [
+        "how much coffee you",
+        "drink usually"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6345899,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT autoral: 'toma' (café) no lugar de 'bebe'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-546da6",
+      "quem": "voce",
+      "contexto": "f-d97c8b",
+      "cod": "A lot. I always drink coffee before meetings.",
+      "dica": "Muito. Eu sempre tomo café antes de reunião.",
+      "img": "☕🗓️",
+      "alvo": "always",
+      "alvo_pt": "sempre",
+      "conceito": "tomar café = drink coffee. always antes do verbo.",
+      "var": [
+        {
+          "em": "before meetings",
+          "aceita": [
+            "before a meeting"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "armadilhas": [
+        "i drink always",
+        "take coffee"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f88d1b",
+      "quem": "ana",
+      "cod": "The meeting is usually at nine.",
+      "dica": "A reunião normalmente é às nove.",
+      "img": "🗓️🕘",
+      "alvo": "usually",
+      "alvo_pt": "normalmente",
+      "conceito": "Com be, o advérbio vem depois: is usually.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR19",
+        "BR17"
+      ],
+      "armadilhas": [
+        "usually is",
+        "in nine"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-94e1a6",
+      "quem": "ana",
+      "cod": "Mike gets up at five!",
+      "dica": "O Mike levanta às cinco!",
+      "img": "😲🌑⏰",
+      "alvo": "gets up",
+      "alvo_pt": "levanta",
+      "conceito": "Com he, she e nomes: gets up (o -s vai no get).",
+      "registro": "informal",
+      "armadilhas": [
+        "get ups",
+        "get up at five"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

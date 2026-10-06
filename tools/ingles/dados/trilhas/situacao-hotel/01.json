@@ -1,0 +1,204 @@
+{
+  "id": "situacao-hotel.na-imigracao-o-passaporte",
+  "trilha": "situacao-hotel",
+  "nome": "Na imigração: o passaporte",
+  "emoji": "🛂",
+  "cena": "No aeroporto de Chicago, o oficial da imigração e depois o da alfândega fazem perguntas rápidas; você responde curto e com calma.",
+  "resumo": "Respostas curtas na imigração: motivo da viagem, quanto tempo, onde fica e nada a declarar.",
+  "fechamento": false,
+  "novos": [
+    "I'm here on business.",
+    "For five days.",
+    "At a hotel downtown.",
+    "Nothing to declare."
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Respostas curtas na imigração"
+    },
+    {
+      "t": "p",
+      "c": "O oficial pergunta rápido e espera resposta **curta**. As perguntas dele aparecem em cinza (você não digita): motivo, quanto tempo, onde vai ficar e se tem algo a declarar."
+    },
+    {
+      "t": "ex",
+      "c": "I'm here on business.\nEstou aqui a negócios."
+    },
+    {
+      "t": "warn",
+      "c": "Estar aqui = **be** here. O I'm não pode sumir: I'm here on business (não: I here on business)."
+    },
+    {
+      "t": "tip",
+      "c": "**downtown** = no centro da cidade, sem preposição antes: a hotel downtown."
+    }
+  ],
+  "imagem": "🛂✈️🧳",
+  "visualizacao": "Você está na fila da imigração em Chicago, passaporte na mão. O oficial levanta os olhos da tela e pergunta rápido; você respira e responde curto.",
+  "foto_busca": "airport passport control booth",
+  "trechos": [
+    {
+      "id": "f-ef3e78",
+      "quem": "voce",
+      "contexto": "What's the purpose of your visit?",
+      "cod": "I'm here on business.",
+      "dica": "Estou aqui a negócios.",
+      "img": "💼✈️",
+      "alvo": "here on business",
+      "alvo_pt": "aqui a negócios",
+      "lit": "[lit.: eu estou aqui em negócios]",
+      "conceito": "Estar aqui = be here; a negócios = on business.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "i",
+        "for"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2547741,
+        "en_autor": "CK",
+        "pt_id": 4853103,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-231af0",
+      "quem": "voce",
+      "contexto": "How long are you staying?",
+      "cod": "For five days.",
+      "dica": "Por cinco dias.",
+      "img": "🗓️⏳",
+      "alvo": "For five days",
+      "alvo_pt": "Por cinco dias",
+      "conceito": "Duração = for + tempo: for five days.",
+      "registro": "neutro",
+      "armadilhas": [
+        "during"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6026e8",
+      "quem": "voce",
+      "contexto": "Where are you staying?",
+      "cod": "At a hotel downtown.",
+      "dica": "Num hotel no centro.",
+      "img": "🏨🏙️",
+      "alvo": "At a hotel downtown",
+      "alvo_pt": "Num hotel no centro",
+      "conceito": "downtown = no centro (da cidade); vem depois do lugar, sem preposição.",
+      "var": [
+        {
+          "em": "At a hotel",
+          "aceita": [
+            "In a hotel"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a1b920",
+      "quem": "voce",
+      "contexto": "Anything to declare?",
+      "cod": "Nothing to declare.",
+      "dica": "Nada a declarar.",
+      "img": "🧳🚫",
+      "alvo": "Nothing to declare",
+      "alvo_pt": "Nada a declarar",
+      "conceito": "declare = declarar (na alfândega).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a472ef",
+      "quem": "voce",
+      "contexto": "Are you here on vacation?",
+      "cod": "No, on business. I work for an American company.",
+      "dica": "Não, a negócios. Trabalho para uma empresa americana.",
+      "img": "💼🇺🇸",
+      "alvo": "on business",
+      "alvo_pt": "a negócios",
+      "conceito": "I work for... = trabalho para... (o presente simples abre na próxima trilha).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "variacao_de": "f-ef3e78",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-13a8d6",
+      "quem": "voce",
+      "contexto": "Are you staying with friends?",
+      "cod": "No, at a hotel downtown. Here's the address.",
+      "dica": "Não, num hotel no centro. Aqui está o endereço.",
+      "img": "🏨📍",
+      "alvo": "at a hotel downtown",
+      "alvo_pt": "num hotel no centro",
+      "conceito": "Here's = aqui está (ao mostrar ou entregar algo). address = endereço.",
+      "var": [
+        {
+          "em": "at a hotel",
+          "aceita": [
+            "in a hotel"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "variacao_de": "f-6026e8",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-81edb3",
+      "quem": "voce",
+      "contexto": "How long is your stay?",
+      "cod": "I'm here for five days.",
+      "dica": "Estou aqui por cinco dias.",
+      "img": "📅🧳",
+      "alvo": "for five days",
+      "alvo_pt": "por cinco dias",
+      "conceito": "Por + tempo = for + tempo (nunca during five days).",
+      "registro": "neutro",
+      "armadilhas": [
+        "during"
+      ],
+      "variacao_de": "f-231af0",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e770b0",
+      "quem": "voce",
+      "contexto": "What's in your bag?",
+      "cod": "Just my laptop. Nothing to declare.",
+      "dica": "Só o meu notebook. Nada a declarar.",
+      "img": "🎒💻",
+      "alvo": "Nothing to declare",
+      "alvo_pt": "Nada a declarar",
+      "conceito": "just = só. notebook (o computador) = laptop; em inglês, notebook é caderno.",
+      "var": [
+        {
+          "em": "Just",
+          "aceita": [
+            "Only"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "variacao_de": "f-a1b920",
+      "origem": "autoral_ia"
+    }
+  ]
+}

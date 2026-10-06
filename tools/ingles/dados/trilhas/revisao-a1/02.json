@@ -1,0 +1,224 @@
+{
+  "id": "revisao-a1.minha-rotina-e-o-meu-ontem",
+  "trilha": "revisao-a1",
+  "nome": "Minha rotina e o meu ontem",
+  "emoji": "🔁",
+  "cena": "Uma semana de trabalho presencial em Chicago contada à Emma, que pergunta como foi cada dia.",
+  "resumo": "Contar a rotina, a semana e o dia de ontem: How was your day? / a normal day / day off.",
+  "fechamento": false,
+  "novos": [
+    "How was your day?",
+    "day off",
+    "a normal day"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Rotina, esta semana e ontem"
+    },
+    {
+      "t": "p",
+      "c": "Rotina: presente simples (**I work from home**). Esta semana: contínuo (**I'm working at the office**). Ontem: passado (**It was a normal day**)."
+    },
+    {
+      "t": "tip",
+      "c": "**Good evening** = boa noite ao chegar. **Good night** = boa noite ao se despedir."
+    },
+    {
+      "t": "warn",
+      "c": "No passado, pergunta e negativa com **did** + verbo base: Did you have...? / No, I didn't (não: Did you had...?)."
+    },
+    {
+      "t": "ex",
+      "c": "How was your day?\nComo foi seu dia?"
+    }
+  ],
+  "imagem": "🏢🌆🏠",
+  "visualizacao": "Fim de tarde em Chicago, você volta do escritório com a mochila nas costas. A Emma está na porta de casa e pergunta do seu dia, como faz toda noite.",
+  "foto_busca": "neighbors talking front porch evening",
+  "trechos": [
+    {
+      "id": "f-4ce4ea",
+      "quem": "emma",
+      "cod": "How was your day?",
+      "dica": "Como foi seu dia?",
+      "img": "🌆❓",
+      "alvo": "How was your day",
+      "alvo_pt": "Como foi seu dia",
+      "registro": "informal",
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 953356,
+        "en_autor": "CK",
+        "pt_id": 8959654,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f437c7",
+      "quem": "voce",
+      "contexto": "f-4ce4ea",
+      "cod": "It was a normal day.",
+      "dica": "Foi um dia normal.",
+      "img": "😐📅",
+      "alvo": "a normal day",
+      "alvo_pt": "um dia normal",
+      "conceito": "Foi um dia... = It was a day... (com it).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "was"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-16759e",
+      "quem": "voce",
+      "cod": "On a normal day, I work from home.",
+      "dica": "Num dia normal, eu trabalho de casa.",
+      "img": "🏠💻",
+      "alvo": "a normal day",
+      "alvo_pt": "dia normal",
+      "conceito": "Num dia normal = On a normal day.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8b5e62",
+      "quem": "voce",
+      "cod": "But this week I'm working at the office.",
+      "dica": "Mas esta semana estou trabalhando no escritório.",
+      "img": "🏢🗓️",
+      "alvo": "I'm working",
+      "alvo_pt": "estou trabalhando",
+      "conceito": "Rotina = presente simples; esta semana = contínuo (am + -ing).",
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR05",
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "at the office",
+          "aceita": [
+            "in the office"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6f1857",
+      "quem": "emma",
+      "cod": "Did you have a day off this week?",
+      "dica": "Você teve folga esta semana?",
+      "img": "🛋️❓",
+      "alvo": "day off",
+      "alvo_pt": "folga",
+      "conceito": "folga = day off.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR05"
+      ],
+      "armadilhas": [
+        "you",
+        "had"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-86ca5b",
+      "quem": "voce",
+      "contexto": "f-6f1857",
+      "cod": "No, I didn't. My day off is on Friday.",
+      "dica": "Não, não tive. A minha folga é na sexta.",
+      "img": "📅🛋️",
+      "alvo": "day off",
+      "alvo_pt": "folga",
+      "conceito": "Resposta curta: No, I didn't. Dia da semana: on e maiúscula (on Friday).",
+      "registro": "informal",
+      "interferencias": [
+        "BR07",
+        "BR17",
+        "BR15"
+      ],
+      "armadilhas": [
+        "friday",
+        "in"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "on"
+      ]
+    },
+    {
+      "id": "f-897b03",
+      "quem": "voce",
+      "cod": "Good evening, Emma! How was your day?",
+      "dica": "(ao chegar) Boa noite, Emma! Como foi seu dia?",
+      "img": "🚪🌆👋",
+      "alvo": "How was your day",
+      "alvo_pt": "Como foi seu dia",
+      "registro": "informal",
+      "armadilhas": [
+        "night"
+      ],
+      "variacao_de": "f-4ce4ea",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0c8df6",
+      "quem": "voce",
+      "cod": "Good night, Emma! I'm going to bed.",
+      "dica": "(ao se despedir) Boa noite, Emma! Vou dormir.",
+      "img": "🌙🛏️",
+      "alvo": "Good night",
+      "alvo_pt": "Boa noite",
+      "conceito": "Boa noite ao se despedir = Good night; ao chegar = Good evening.",
+      "var": [
+        {
+          "em": "going to bed",
+          "aceita": [
+            "going to sleep"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR16"
+      ],
+      "armadilhas": [
+        "evening"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 139763,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm going to bed.\"; acrescentado Good night, Emma!; PT original: \"Estou indo dormir!\"; PT reescrito: (ao se despedir) Boa noite, Emma! Vou dormir.",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

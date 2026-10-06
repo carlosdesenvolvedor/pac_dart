@@ -1,0 +1,193 @@
+{
+  "id": "presente-simples.gosto-de-cafe-amo-pizza",
+  "trilha": "presente-simples",
+  "nome": "Amo café, odeio café frio",
+  "emoji": "☕",
+  "cena": "No café da manhã do hotel em Chicago, a Ana, o Mike e você falam do que amam e do que odeiam comer e beber.",
+  "resumo": "Dizer do que gosta, o que ama e o que odeia: like, love e hate + coisa, sem preposição.",
+  "fechamento": false,
+  "novos": [
+    "love",
+    "hate",
+    "coffee",
+    "rice"
+  ],
+  "apoio": [
+    "water"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Gostar, amar, odiar"
+    },
+    {
+      "t": "p",
+      "c": "**like** (gostar de), **love** (amar, adorar) e **hate** (odiar) vêm direto antes da coisa, sem preposição: I like rice (não: I like of rice)."
+    },
+    {
+      "t": "ex",
+      "c": "I love coffee.\nEu amo café."
+    },
+    {
+      "t": "warn",
+      "c": "O adjetivo vem antes: **cold coffee** = café frio."
+    },
+    {
+      "t": "tip",
+      "c": "coffee = café (a bebida); café da manhã = breakfast."
+    }
+  ],
+  "imagem": "☕🥐🍚",
+  "visualizacao": "Você está no café da manhã do hotel, com uma xícara fumegante na mão. A Ana prova o café, o Mike chega com um prato cheio, e a conversa vira comida brasileira.",
+  "foto_busca": "hotel breakfast buffet coffee",
+  "trechos": [
+    {
+      "id": "f-45f349",
+      "quem": "voce",
+      "contexto": "Coffee or tea?",
+      "cod": "Coffee, please. I love coffee.",
+      "dica": "Café, por favor. Amo café.",
+      "img": "☕😍",
+      "alvo": "love",
+      "alvo_pt": "Amo",
+      "conceito": "Amar, adorar (uma coisa) = love + coisa, sem preposição.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2c7f2b",
+      "quem": "mike",
+      "cod": "This coffee is really good.",
+      "dica": "Este café está bem bom.",
+      "img": "☕👍",
+      "alvo": "coffee",
+      "alvo_pt": "café",
+      "conceito": "really good = bem bom (really = bem, como em really cold = bem frio).",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3824344,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (muito bom → bem bom: really = bem, como no resto do curso)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e0f4c5",
+      "quem": "ana",
+      "contexto": "Brazilian food is really good.",
+      "cod": "Yes! We love rice and beans.",
+      "dica": "Sim! Adoramos arroz e feijão.",
+      "img": "🍚😋",
+      "alvo": "rice",
+      "alvo_pt": "arroz",
+      "conceito": "arroz e feijão = rice and beans, na mesma ordem.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8595228,
+        "en_autor": "CK",
+        "pt_id": 8649075,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "pizza → rice and beans; + Yes! (PT: pizza → arroz e feijão; + Sim!)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7c922c",
+      "quem": "mike",
+      "contexto": "f-e0f4c5",
+      "cod": "Rice and beans? Every day?",
+      "dica": "Arroz e feijão? Todo dia?",
+      "img": "🍚📅",
+      "alvo": "Rice",
+      "alvo_pt": "Arroz",
+      "conceito": "every day = todo dia.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-987102",
+      "quem": "mike",
+      "cod": "I like rice, but I hate beans.",
+      "dica": "Eu gosto de arroz, mas odeio feijão.",
+      "img": "🍚👍👎",
+      "alvo": "hate",
+      "alvo_pt": "odeio",
+      "conceito": "gostar de = like; odiar = hate. Nenhum dos dois leva preposição.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2700254,
+        "en_autor": "CK",
+        "pt_id": 5663504,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "broccoli → rice, cauliflower → beans (PT: brócolis → arroz, couve-flor → feijão, detesto → odeio, como no glossário)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c42dbf",
+      "quem": "ana",
+      "contexto": "f-987102",
+      "cod": "Really? I love beans!",
+      "dica": "Sério? Eu amo feijão!",
+      "img": "😮❤️",
+      "alvo": "love",
+      "alvo_pt": "amo",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-72f161",
+      "quem": "ana",
+      "cod": "{nome}, more coffee?",
+      "dica": "{nome}, mais café?",
+      "img": "☕🔁",
+      "alvo": "coffee",
+      "alvo_pt": "café",
+      "conceito": "More coffee? = mais café? (oferecendo).",
+      "registro": "neutro",
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1af636",
+      "quem": "voce",
+      "contexto": "f-72f161",
+      "cod": "Yes, please. I hate cold coffee.",
+      "dica": "Sim, por favor. Odeio café frio.",
+      "img": "☕😖",
+      "alvo": "hate",
+      "alvo_pt": "Odeio",
+      "conceito": "café frio = cold coffee: o adjetivo vem antes.",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

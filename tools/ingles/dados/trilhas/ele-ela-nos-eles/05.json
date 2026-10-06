@@ -1,0 +1,216 @@
+{
+  "id": "ele-ela-nos-eles.cena-apresentando-o-time",
+  "trilha": "ele-ela-nos-eles",
+  "nome": "Cena: apresentando o time",
+  "emoji": "🧑‍🤝‍🧑",
+  "cena": "Por vídeo, você e a Ana apresentam o time de Chicago ao Ben e comparam o frio de lá com o calor de Recife.",
+  "resumo": "Fechamento: apresentar o time e comentar o tempo com o be completo (he's, she's, we're, isn't, It's).",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Cena: apresentando o time"
+    },
+    {
+      "t": "p",
+      "c": "Tudo da trilha numa cena: This is..., he's / she's, we're, a negativa com isn't e o it obrigatório do tempo."
+    },
+    {
+      "t": "ex",
+      "c": "No, it isn't. It's really hot.\nNão, não está. Está bem quente."
+    },
+    {
+      "t": "warn",
+      "c": "O sujeito nunca some: **It's** cold, **She's** from Austin (não: Is cold, Is from Austin). E a profissão leva a/an: He's an engineer."
+    }
+  ],
+  "imagem": "📹👥🌡️",
+  "visualizacao": "Na sala de reunião em Chicago, a janela mostra a neve. Na tela do notebook, o Ben acena de Boston enquanto você e a Ana chamam o Mike para a câmera.",
+  "foto_busca": "office video call snow window",
+  "trechos": [
+    {
+      "id": "f-3626e7",
+      "quem": "voce",
+      "cod": "Hi, Ben! This is Mike.",
+      "dica": "Oi, Ben! Esse é o Mike.",
+      "img": "📹👋",
+      "alvo": "This is",
+      "alvo_pt": "Esse é",
+      "registro": "informal",
+      "armadilhas": [
+        "he is mike"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-902776",
+      "quem": "voce",
+      "contexto": "f-3626e7",
+      "cod": "He's an engineer in Chicago.",
+      "dica": "Ele é engenheiro em Chicago.",
+      "img": "⚙️🏙️",
+      "alvo": "He's",
+      "alvo_pt": "Ele é",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR13"
+      ],
+      "armadilhas": [
+        "is an engineer",
+        "he's engineer"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-da8dea",
+      "quem": "ana",
+      "cod": "And this is Sarah. She's from Austin.",
+      "dica": "E essa é a Sarah. Ela é de Austin.",
+      "img": "👩‍💼🖥️",
+      "alvo": "She's",
+      "alvo_pt": "Ela é",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "is from austin"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0ffd73",
+      "quem": "ben",
+      "cod": "Is it cold in Chicago today?",
+      "dica": "Está frio em Chicago hoje?",
+      "img": "🌨️❓",
+      "alvo": "Is it",
+      "alvo_pt": "Está",
+      "conceito": "O it aparece também na pergunta: Is it cold?",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is cold"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9389044,
+        "en_autor": "CK",
+        "pt_id": 9524486,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Boston → Chicago, + today (EN); PT: É frio → Está frio",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c33d0b",
+      "quem": "voce",
+      "contexto": "f-0ffd73",
+      "cod": "Yes, it is. It's really cold.",
+      "dica": "Está, sim. Está bem frio.",
+      "img": "🥶❄️",
+      "alvo": "Yes, it is.",
+      "alvo_pt": "Está, sim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "yes, it's.",
+        "is really cold"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7076af",
+      "quem": "ana",
+      "contexto": "And Recife? Is it cold, too?",
+      "cod": "No, it isn't. It's really hot.",
+      "dica": "Não, não está. Está bem quente.",
+      "img": "☀️🏖️",
+      "alvo": "isn't",
+      "alvo_pt": "não está",
+      "conceito": "hot = quente.",
+      "var": [
+        {
+          "em": "it isn't",
+          "aceita": [
+            "it's not"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is hot",
+        "no is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ef6b7e",
+      "quem": "ben",
+      "contexto": "f-7076af",
+      "cod": "It's cold in Boston, too.",
+      "dica": "Também está frio em Boston.",
+      "img": "🌨️🏙️",
+      "alvo": "It's cold",
+      "alvo_pt": "está frio",
+      "var": [
+        {
+          "em": "It's cold in Boston, too",
+          "aceita": [
+            "It's also cold in Boston"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is cold",
+        "too is"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2915041,
+        "en_autor": "AlanF_US",
+        "pt_id": 4647096,
+        "pt_autor": "ToinhoAlam",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "here → in Boston, + too (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9d5e95",
+      "quem": "voce",
+      "cod": "Sorry, Ben! We're busy today. Bye!",
+      "dica": "Desculpa, Ben! Estamos ocupados hoje. Tchau!",
+      "img": "⏰👋",
+      "alvo": "We're",
+      "alvo_pt": "Estamos",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "are busy"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

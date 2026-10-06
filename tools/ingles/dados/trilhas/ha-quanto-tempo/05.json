@@ -1,0 +1,322 @@
+{
+  "id": "ha-quanto-tempo.saiu-ha-vinte-minutos",
+  "trilha": "ha-quanto-tempo",
+  "nome": "Saiu há vinte minutos",
+  "emoji": "🚏",
+  "cena": "Você chega atrasado ao encontro com o Ben em Boston e explica o que aconteceu com o ônibus e o trânsito.",
+  "resumo": "Os dois há: o que acabou = ago; o que continua = for + present perfect. E não... mais = not... anymore.",
+  "fechamento": false,
+  "novos": [
+    "traffic jam",
+    "not anymore",
+    "schedule",
+    "cancel",
+    "apologize"
+  ],
+  "apoio": [
+    "delay",
+    "stuck",
+    "platform",
+    "on time",
+    "excuse",
+    "the last train"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Os dois \"há\""
+    },
+    {
+      "t": "p",
+      "c": "**Já acabou → ago**, no fim, com passado: The schedule changed two weeks ago (mudou há duas semanas). **Ainda continua → for**, com present perfect: I've been stuck in this traffic jam for forty minutes (estou há quarenta minutos)."
+    },
+    {
+      "t": "p",
+      "c": "Duração que já acabou: **for + passado simples**: Ben lived in Brazil for two years (morou lá por dois anos e não mora mais)."
+    },
+    {
+      "t": "warn",
+      "c": "há 20 minutos = 20 minutes ago (não: before 20 minutes / there are 20 minutes). não... mais = not... anymore, no fim: I don't drive downtown anymore."
+    }
+  ],
+  "imagem": "🚌🚦⏰",
+  "visualizacao": "Você está no ônibus parado, buzinas lá fora, o celular na mão e o relógio correndo. Do outro lado da cidade, o Ben espera na porta do cinema.",
+  "foto_busca": "bus stuck in city traffic",
+  "trechos": [
+    {
+      "id": "f-940c0c",
+      "quem": "voce",
+      "cod": "Sorry, Ben! I'm stuck in a traffic jam.",
+      "dica": "Desculpa, Ben! Estou preso num engarrafamento.",
+      "img": "🚗🚦",
+      "alvo": "traffic jam",
+      "alvo_pt": "engarrafamento",
+      "conceito": "preso num engarrafamento = stuck in a traffic jam (o trânsito em geral = traffic).",
+      "registro": "informal",
+      "armadilhas": [
+        "transit"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8926335,
+        "en_autor": "CK",
+        "pt_id": 8937676,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Sorry, Ben! acrescentado; I'm in → I'm stuck in; PT adaptado (Estou preso num...)",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "stuck in",
+          "aceita": [
+            "in"
+          ]
+        }
+      ],
+      "pt_f": "Desculpa, Ben! Estou presa num engarrafamento."
+    },
+    {
+      "id": "f-d6c3b0",
+      "quem": "ben",
+      "contexto": "f-940c0c",
+      "cod": "There's no need to apologize.",
+      "dica": "Não precisa se desculpar.",
+      "img": "😊🙌",
+      "alvo": "apologize",
+      "alvo_pt": "se desculpar",
+      "conceito": "se desculpar / pedir desculpas = apologize (Sorry é a fala; apologize é o verbo).",
+      "var": [
+        {
+          "em": "There's no need to apologize",
+          "aceita": [
+            "You don't need to apologize",
+            "You don't have to apologize"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "excuse",
+        "sorry"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 448957,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "inglês igual; PT reescrito (Não precisa se desculpar)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-436cb3",
+      "quem": "voce",
+      "cod": "They canceled my bus, so I had to take the next one.",
+      "dica": "Cancelaram o meu ônibus, então tive que pegar o próximo.",
+      "img": "🚌❌",
+      "alvo": "canceled",
+      "alvo_pt": "Cancelaram",
+      "conceito": "Cancelaram (sem dizer quem) = They canceled. Grafia americana: canceled, com um l só.",
+      "var": [
+        {
+          "em": "canceled",
+          "aceita": [
+            "cancelled"
+          ]
+        },
+        {
+          "em": "take",
+          "aceita": [
+            "catch",
+            "get"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "catched"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-876423",
+      "quem": "voce",
+      "cod": "And I've been stuck in this traffic jam for forty minutes.",
+      "dica": "E estou preso nesse engarrafamento há quarenta minutos.",
+      "img": "⏳🚙",
+      "alvo": "traffic jam",
+      "alvo_pt": "engarrafamento",
+      "conceito": "Estou há quarenta minutos (e continuo) = I've been... for forty minutes (não: I'm... for).",
+      "var": [
+        {
+          "em": "stuck in",
+          "aceita": [
+            "in",
+            "sitting in"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR47",
+        "BR26"
+      ],
+      "armadilhas": [
+        "i'm",
+        "ago"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "blocos": [
+        8
+      ],
+      "pt_f": "E estou presa nesse engarrafamento há quarenta minutos."
+    },
+    {
+      "id": "f-9ba36a",
+      "quem": "ben",
+      "contexto": "f-876423",
+      "cod": "That's normal around here. I don't drive downtown anymore.",
+      "dica": "Isso é normal por aqui. Não dirijo mais no centro.",
+      "img": "🙅🚘",
+      "alvo": "anymore",
+      "alvo_pt": "mais",
+      "lit": "[lit.: não dirijo no centro mais]",
+      "conceito": "não... mais = not... anymore (o anymore vai no fim da frase).",
+      "registro": "informal",
+      "armadilhas": [
+        "more"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-99339f",
+      "quem": "voce",
+      "cod": "I checked the bus schedule an hour ago.",
+      "dica": "Conferi o horário do ônibus há uma hora.",
+      "img": "📋🕐",
+      "alvo": "schedule",
+      "alvo_pt": "horário",
+      "conceito": "horário (a tabela) = schedule. há uma hora (acabou) = an hour ago.",
+      "var": [
+        {
+          "em": "checked",
+          "aceita": [
+            "looked at"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR26"
+      ],
+      "armadilhas": [
+        "before",
+        "timetable"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5fcb5d",
+      "quem": "ben",
+      "contexto": "f-99339f",
+      "cod": "The schedule changed two weeks ago.",
+      "dica": "O horário mudou há duas semanas.",
+      "img": "🔄📅",
+      "alvo": "schedule",
+      "alvo_pt": "horário",
+      "conceito": "mudou há duas semanas = changed two weeks ago (passado + ago).",
+      "registro": "informal",
+      "interferencias": [
+        "BR26"
+      ],
+      "armadilhas": [
+        "has",
+        "before"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0876e9",
+      "quem": "voce",
+      "cod": "I'm here! The driver apologized for the delay.",
+      "dica": "Cheguei! O motorista pediu desculpas pelo atraso.",
+      "img": "🚏🙏",
+      "alvo": "apologized",
+      "alvo_pt": "pediu desculpas",
+      "conceito": "pedir desculpas por = apologize for. Cheguei! = I'm here!",
+      "registro": "informal",
+      "armadilhas": [
+        "excused",
+        "by"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a4e2be",
+      "quem": "ben",
+      "contexto": "f-0876e9",
+      "cod": "Do you want to cancel the movie and just get dinner?",
+      "dica": "Quer cancelar o cinema e só jantar?",
+      "img": "🎬🍔",
+      "alvo": "cancel",
+      "alvo_pt": "cancelar",
+      "conceito": "Quer...? (convite) = Do you want to...?",
+      "var": [
+        {
+          "em": "get dinner",
+          "aceita": [
+            "have dinner"
+          ]
+        },
+        {
+          "em": "the movie",
+          "aceita": [
+            "the movies"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "wanna"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a2d22a",
+      "quem": "ben",
+      "cod": "I lived in Brazil for two years, but I don't speak Portuguese well anymore.",
+      "dica": "Morei no Brasil por dois anos, mas não falo mais português direito.",
+      "img": "🇧🇷🗣️",
+      "alvo": "anymore",
+      "alvo_pt": "mais",
+      "conceito": "Morei por dois anos (acabou) = lived for two years. não falo mais = don't speak anymore.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR63",
+        "BR47"
+      ],
+      "armadilhas": [
+        "during",
+        "more"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "id": "se-e-quando.se-precisar-me-avisa",
+  "trilha": "se-e-quando",
+  "nome": "Se precisar, me avisa",
+  "emoji": "🆘",
+  "cena": "A Ana acabou de se mudar para Chicago; você está na cidade a trabalho e se oferece para ajudar no que ela precisar.",
+  "resumo": "Oferecer ajuda e dar instruções: if + presente, depois imperativo ou can.",
+  "fechamento": false,
+  "novos": [
+    "let me know",
+    "text me",
+    "running late",
+    "if you want",
+    "if you have time"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Se precisar, me avisa"
+    },
+    {
+      "t": "p",
+      "c": "Para oferecer ajuda e dar instruções: **if + presente**, depois **imperativo** ou **can**: If you need help, let me know. / If you want, I can pick you up."
+    },
+    {
+      "t": "warn",
+      "c": "Se você precisar = **if you need** (não: if you will need). Me liga, me manda mensagem = **call me, text me** (sem to)."
+    },
+    {
+      "t": "tip",
+      "c": "me avisa = let me know. se você quiser = if you want. se você tiver tempo = if you have time. estou atrasado (a caminho) = I'm running late."
+    },
+    {
+      "t": "ex",
+      "c": "If you're running late, text me.\nSe você estiver atrasado, me manda mensagem."
+    }
+  ],
+  "imagem": "📦🏠📱",
+  "visualizacao": "Apartamento novo da Ana em Chicago: caixas de mudança pelo chão, paredes vazias e cheiro de tinta fresca. Você está ali para ajudar, com o celular na mão.",
+  "foto_busca": "moving boxes new apartment",
+  "trechos": [
+    {
+      "id": "f-c00e6d",
+      "quem": "voce",
+      "cod": "If you need any help, let me know.",
+      "dica": "Se você precisar de ajuda, me avisa.",
+      "img": "🤝🙋",
+      "alvo": "let me know",
+      "alvo_pt": "me avisa",
+      "conceito": "Se você precisar = if you need (presente). Me avisa = let me know.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2051812,
+        "en_autor": "AlanF_US",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Se você precisar de alguma ajuda, me fale.\")",
+        "export": "2026-10-03"
+      },
+      "opcional": [
+        "any"
+      ]
+    },
+    {
+      "id": "f-760c4d",
+      "quem": "ana",
+      "contexto": "f-c00e6d",
+      "cod": "If you have time, let's go shopping.",
+      "dica": "Se você tiver tempo, vamos fazer compras.",
+      "img": "🛍️⏰",
+      "alvo": "If you have time",
+      "alvo_pt": "Se você tiver tempo",
+      "conceito": "se você tiver tempo = if you have time. Fazer compras = go shopping.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 400597,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Se tiver tempo, vamos às compras.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0fef75",
+      "quem": "voce",
+      "contexto": "f-760c4d",
+      "cod": "Sure. We can go on Saturday if you want.",
+      "dica": "Claro. A gente pode ir no sábado, se você quiser.",
+      "img": "📅👍",
+      "alvo": "if you want",
+      "alvo_pt": "se você quiser",
+      "conceito": "se você quiser = if you want (presente). No sábado = on Saturday.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR17"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-abd6fb",
+      "quem": "ana",
+      "contexto": "f-0fef75",
+      "cod": "Great. I'll call you if I'm running late.",
+      "dica": "Ótimo. Te ligo se eu estiver atrasada.",
+      "img": "📞⏰",
+      "alvo": "running late",
+      "alvo_pt": "atrasada",
+      "lit": "[lit.: correndo atrasada]",
+      "conceito": "running late = estar atrasado, ainda a caminho. Te ligo = I'll call you (sem to).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR42"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3cfc7a",
+      "quem": "voce",
+      "contexto": "f-abd6fb",
+      "cod": "No problem. Just text me.",
+      "dica": "Sem problema. É só me mandar mensagem.",
+      "img": "💬📱",
+      "alvo": "text me",
+      "alvo_pt": "me mandar mensagem",
+      "conceito": "text me = me manda mensagem (text virou verbo; sem to).",
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7c6258",
+      "quem": "voce",
+      "cod": "Come to lunch with us tomorrow if you have time.",
+      "dica": "Vem almoçar com a gente amanhã, se você tiver tempo.",
+      "img": "🍝👥",
+      "alvo": "if you have time",
+      "alvo_pt": "se você tiver tempo",
+      "conceito": "Imperativo + if: convite com condição. Vem (para onde eu vou estar) = come.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR37"
+      ],
+      "armadilhas": [
+        "go"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Come to lunch",
+          "aceita": [
+            "Come have lunch",
+            "Come and have lunch"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-bdc444",
+      "quem": "ana",
+      "contexto": "f-7c6258",
+      "cod": "I can pick you up if you want.",
+      "dica": "Posso te buscar, se você quiser.",
+      "img": "🚗👋",
+      "alvo": "if you want",
+      "alvo_pt": "se você quiser",
+      "conceito": "pick you up = te buscar (o pronome fica no meio). can + verbo sem to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR30"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9210045,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'do that' → 'pick you up' (original: \"I can do that if you want.\"); PT reescrito (original: \"Posso fazer isso se você quiser.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2f9d79",
+      "quem": "voce",
+      "contexto": "f-bdc444",
+      "cod": "Thanks! Let me know if anything changes.",
+      "dica": "Valeu! Me avisa se alguma coisa mudar.",
+      "img": "🙏🔄",
+      "alvo": "Let me know",
+      "alvo_pt": "Me avisa",
+      "conceito": "se alguma coisa mudar = if anything changes (presente, com -s).",
+      "var": [
+        {
+          "em": "anything",
+          "aceita": [
+            "something"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-97016d",
+      "quem": "ana",
+      "cod": "Sorry, I'm running late.",
+      "dica": "Desculpa, estou atrasada.",
+      "img": "🚦⏰😅",
+      "alvo": "running late",
+      "alvo_pt": "atrasada",
+      "conceito": "I'm running late = estou atrasado e ainda a caminho (aceita I am).",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2248237,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Sorry,' acrescentado (original: \"I'm running late.\"); PT reescrito (original: \"Estou atrasado.\")",
+        "export": "2026-10-03"
+      },
+      "lit": "[lit.: estou correndo atrasada]"
+    },
+    {
+      "id": "f-e7fd2f",
+      "quem": "voce",
+      "contexto": "f-97016d",
+      "cod": "OK. Text me if you can't find the hotel.",
+      "dica": "Tá bom. Me manda mensagem se não conseguir achar o hotel.",
+      "img": "🗺️🏨❓",
+      "alvo": "Text me",
+      "alvo_pt": "Me manda mensagem",
+      "conceito": "não conseguir achar = can't find. Depois do if, presente (não: if you won't find).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR42"
+      ],
+      "armadilhas": [
+        "won't"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

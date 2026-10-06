@@ -1,0 +1,229 @@
+{
+  "id": "habitos-costume.ele-fica-me-interrompendo",
+  "trilha": "habitos-costume",
+  "nome": "Ele fica me interrompendo",
+  "emoji": "😤",
+  "cena": "Depois de uma semana cansativa, você desabafa com o Ben sobre um colega de outro time, o seu notebook e o seu irmão.",
+  "resumo": "Reclamar de hábitos irritantes com keep (on) + -ing e com will para hábito típico.",
+  "fechamento": false,
+  "novos": [
+    "talk over",
+    "keep on + -ing",
+    "drop the call",
+    "dirty dishes"
+  ],
+  "apoio": [
+    "interrupt"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ele fica me interrompendo"
+    },
+    {
+      "t": "p",
+      "c": "**keep (on) + -ing** = ficar fazendo, viver fazendo: He keeps talking over me. **will** também marca hábito típico e irritante: Lucas will always leave his dishes in the sink."
+    },
+    {
+      "t": "warn",
+      "c": "Não: stays interrupting / keeps to interrupt. Depois de keep, sempre -ing."
+    },
+    {
+      "t": "ex",
+      "c": "My laptop keeps on freezing when I join a video call.\nO meu notebook fica travando quando eu entro numa chamada de vídeo."
+    }
+  ],
+  "imagem": "😤💻🍽️",
+  "visualizacao": "Sexta à noite, áudio longo para o Ben. Você anda pela cozinha, olha a pia cheia da louça que o Lucas deixou e desabafa sobre a semana inteira.",
+  "foto_busca": "dirty dishes kitchen sink",
+  "trechos": [
+    {
+      "id": "f-97edbf",
+      "quem": "voce",
+      "cod": "A guy from another team keeps talking over me in meetings.",
+      "dica": "Um cara de outro time fica falando por cima de mim nas reuniões.",
+      "img": "🗣️🙉",
+      "alvo": "talking over",
+      "alvo_pt": "falando por cima",
+      "conceito": "keep + -ing = ficar fazendo (repetição irritante). talk over = falar por cima.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "stays",
+        "to talk"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "in meetings",
+          "aceita": [
+            "in the meetings",
+            "during meetings"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-abdbd3",
+      "quem": "ben",
+      "contexto": "f-97edbf",
+      "cod": "That's annoying. Does he talk over everyone?",
+      "dica": "Que chato. Ele fala por cima de todo mundo?",
+      "img": "😒👥",
+      "alvo": "talk over",
+      "alvo_pt": "fala por cima",
+      "conceito": "Com does, o verbo fica na forma base: Does he talk...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "talks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-39078a",
+      "quem": "voce",
+      "cod": "My laptop keeps on freezing when I join a video call.",
+      "dica": "O meu notebook fica travando quando eu entro numa chamada de vídeo.",
+      "img": "💻🧊",
+      "alvo": "keeps on freezing",
+      "alvo_pt": "fica travando",
+      "conceito": "keep on + -ing = keep + -ing, com um tom mais irritado.",
+      "opcional": [
+        "on"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "stays",
+        "to freeze"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        5
+      ]
+    },
+    {
+      "id": "f-692298",
+      "quem": "voce",
+      "cod": "Yesterday I dropped the call twice during the demo.",
+      "dica": "Ontem eu caí da chamada duas vezes durante a demo.",
+      "img": "📉📞",
+      "alvo": "dropped the call",
+      "alvo_pt": "caí da chamada",
+      "conceito": "drop the call = cair da chamada. during + evento: during the demo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "fell"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7bf718",
+      "quem": "ben",
+      "contexto": "f-692298",
+      "cod": "Did you drop the call in front of the client?",
+      "dica": "Você caiu da chamada na frente do cliente?",
+      "img": "😬👔",
+      "alvo": "drop the call",
+      "alvo_pt": "caiu da chamada",
+      "conceito": "Com did, drop na forma base: Did you drop...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "dropped",
+        "fall"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2a1b2b",
+      "quem": "voce",
+      "cod": "When he visits, Lucas will always leave his dirty dishes in the sink.",
+      "dica": "(reclamando) Quando vem aqui, o Lucas sempre deixa a louça suja dele na pia.",
+      "img": "🍽️🚰",
+      "alvo": "dirty dishes",
+      "alvo_pt": "louça suja",
+      "conceito": "will para hábito típico e irritante; em PT, sempre + presente.",
+      "var": [
+        {
+          "em": "will always leave",
+          "aceita": [
+            "always leaves"
+          ]
+        },
+        {
+          "em": "When he visits",
+          "aceita": [
+            "When he comes over",
+            "When he comes here"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1910a2",
+      "quem": "ben",
+      "contexto": "f-2a1b2b",
+      "cod": "Just tell him to wash his dirty dishes.",
+      "dica": "É só falar pra ele lavar a louça suja dele.",
+      "img": "🧽💧",
+      "alvo": "dirty dishes",
+      "alvo_pt": "louça suja",
+      "conceito": "falar pra alguém fazer = tell sb to (não: say him to).",
+      "registro": "informal",
+      "armadilhas": [
+        "say"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bb2162",
+      "quem": "voce",
+      "contexto": "f-1910a2",
+      "cod": "I did, but he keeps on forgetting.",
+      "dica": "Eu falei, mas ele vive esquecendo.",
+      "img": "🤦🔁",
+      "alvo": "keeps on forgetting",
+      "alvo_pt": "vive esquecendo",
+      "conceito": "vive esquecendo = keeps (on) forgetting. keeps: -s da 3ª pessoa.",
+      "opcional": [
+        "on"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "to forget"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "id": "perguntas-com-be.quantos-anos-voce-tem",
+  "trilha": "perguntas-com-be",
+  "nome": "Quantos anos você tem?",
+  "emoji": "🪪",
+  "cena": "Na recepção, para o crachá de visitante, pedem seu sobrenome; depois, num almoço com a Emma e o Ben, vocês falam de idade.",
+  "resumo": "Dar o sobrenome e falar de idade com be: last name / How old are you? / I'm thirty-two. / years old.",
+  "fechamento": false,
+  "novos": [
+    "years old",
+    "last name",
+    "How old are you?",
+    "I'm thirty-two."
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Quantos anos você tem?"
+    },
+    {
+      "t": "p",
+      "c": "Idade em inglês é com **be**, não com have: **I'm** thirty-two. = Tenho trinta e dois. Pode acrescentar **years old** no fim."
+    },
+    {
+      "t": "ex",
+      "c": "How old are you?\nQuantos anos você tem?"
+    },
+    {
+      "t": "ex",
+      "c": "Ben is thirty-four years old.\nO Ben tem trinta e quatro anos."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca I have 32 years. O certo é I'm thirty-two ou I'm thirty-two years old."
+    }
+  ],
+  "imagem": "🛎️📛🍽️",
+  "visualizacao": "Na recepção, a moça digita seu sobrenome e imprime o crachá de visitante. Mais tarde, num restaurante antigo, a Emma ri e pergunta a sua idade e a do Ben.",
+  "foto_busca": "visitor badge office reception",
+  "trechos": [
+    {
+      "id": "f-d43ef0",
+      "quem": "recepcionista",
+      "cod": "Hi! What's your last name?",
+      "dica": "Oi! Qual é o seu sobrenome?",
+      "img": "📛✍️",
+      "alvo": "last name",
+      "alvo_pt": "sobrenome",
+      "conceito": "last name = sobrenome; first name = primeiro nome.",
+      "registro": "neutro",
+      "armadilhas": [
+        "surname"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2072325,
+        "en_autor": "CK",
+        "pt_id": 1651163,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Hi! (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-da6a90",
+      "quem": "voce",
+      "contexto": "f-d43ef0",
+      "cod": "My last name is {sobrenome}.",
+      "dica": "Meu sobrenome é {sobrenome}.",
+      "img": "🙋📛",
+      "alvo": "last name",
+      "alvo_pt": "sobrenome",
+      "conceito": "my last name = o meu sobrenome.",
+      "registro": "neutro",
+      "armadilhas": [
+        "my surname"
+      ],
+      "bio": [
+        "sobrenome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b296ae",
+      "quem": "emma",
+      "cod": "This restaurant is a hundred years old!",
+      "dica": "Esse restaurante tem cem anos!",
+      "img": "🍽️🏛️",
+      "alvo": "years old",
+      "alvo_pt": "anos",
+      "lit": "[lit.: esse restaurante é cem anos velho]",
+      "conceito": "years old também serve para coisas: a hundred years old = cem anos (não: has a hundred years).",
+      "var": [
+        {
+          "em": "a hundred",
+          "aceita": [
+            "one hundred"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "has a hundred",
+        "have a hundred"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1024810,
+        "en_autor": "CK",
+        "pt_id": 4866816,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → This restaurant, thirty → a hundred, . → ! (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f0b4ef",
+      "quem": "emma",
+      "cod": "How old are you, {nome}?",
+      "dica": "Quantos anos você tem, {nome}?",
+      "img": "🎂❓",
+      "alvo": "How old are you",
+      "alvo_pt": "Quantos anos você tem",
+      "lit": "[lit.: quão velho você é?]",
+      "conceito": "Idade se pergunta com be: How old are you? (não: How many years do you have?)",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "how many years"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3819280,
+        "en_autor": "CK",
+        "pt_id": 5143940,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → perfil (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8915e1",
+      "quem": "voce",
+      "contexto": "f-f0b4ef",
+      "cod": "I'm {idade}.",
+      "dica": "Tenho {idade}.",
+      "img": "🧑🎂",
+      "alvo": "I'm {idade}",
+      "alvo_pt": "Tenho {idade}",
+      "lit": "[lit.: eu sou trinta e dois]",
+      "conceito": "Idade é com be: I'm thirty-two (não: I have 32 years).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "i have"
+      ],
+      "teste": true,
+      "bio": [
+        "idade"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2c9097",
+      "quem": "emma",
+      "contexto": "f-8915e1",
+      "cod": "And you, Ben? How old are you?",
+      "dica": "E você, Ben? Quantos anos você tem?",
+      "img": "👩❓🧔",
+      "alvo": "How old are you",
+      "alvo_pt": "Quantos anos você tem",
+      "conceito": "And you, Ben? muda a pergunta para outra pessoa; a idade continua com be: How old are you?",
+      "var": [
+        {
+          "em": "And you, Ben?",
+          "aceita": [
+            "How about you, Ben?"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "how many years"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9014394,
+        "en_autor": "liztrigger",
+        "pt_id": 8986331,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Michele → Ben, + And you, (EN e PT)",
+        "export": "2026-10-03"
+      },
+      "variacao_de": "f-f0b4ef"
+    },
+    {
+      "id": "f-a0cc17",
+      "quem": "ben",
+      "contexto": "f-2c9097",
+      "cod": "Me? I'm thirty-four.",
+      "dica": "Eu? Tenho trinta e quatro.",
+      "img": "🧔🎂",
+      "alvo": "I'm thirty-four",
+      "alvo_pt": "Tenho trinta e quatro",
+      "conceito": "I'm + número = tenho + número (anos). Número composto com hífen.",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "i have",
+        "thirty four"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-8915e1"
+    },
+    {
+      "id": "f-a4b781",
+      "quem": "emma",
+      "contexto": "f-a0cc17",
+      "cod": "And I'm forty-two years old!",
+      "dica": "E eu tenho quarenta e dois anos!",
+      "img": "👩🎂😄",
+      "alvo": "years old",
+      "alvo_pt": "anos",
+      "conceito": "Tenho quarenta e dois anos = I'm forty-two years old (não: I have).",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "i have forty"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5668052,
+        "en_autor": "protondonor",
+        "pt_id": 6813432,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I am fourteen → And I'm forty-two (EN e PT)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

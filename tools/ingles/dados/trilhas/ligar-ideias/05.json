@@ -1,0 +1,268 @@
+{
+  "id": "ligar-ideias.depois-do-lancamento",
+  "trilha": "ligar-ideias",
+  "nome": "Depois do lançamento",
+  "emoji": "🥂",
+  "cena": "Num jantar em Austin depois do lançamento, o time relaxa e conversa sobre a semana e a próxima sprint.",
+  "resumo": "Fechamento: contraste, condição, finalidade, intensidade, tags e ecos na mesma conversa.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão da trilha"
+    },
+    {
+      "t": "tip",
+      "c": "embora = although · a não ser que = unless · pra que = so that · né? = tag que espelha o verbo."
+    },
+    {
+      "t": "tip",
+      "c": "Eu também (adoro) = So do I · Eu também não (quero) = Neither do I · Nem eu. = Me neither."
+    },
+    {
+      "t": "warn",
+      "c": "Não: Me too depois de uma negação (I don't want to... → Neither do I / Me neither), nem isn't it? para tudo (it went well, didn't it?)."
+    }
+  ],
+  "imagem": "🍽️🥂🎉",
+  "visualizacao": "Você está numa mesa comprida num restaurante em Austin, pratos chegando e muita risada. A Sarah levanta o copo, o Mike sorri aliviado e a Ana já fala da próxima sprint.",
+  "foto_busca": "team dinner restaurant celebration",
+  "trechos": [
+    {
+      "id": "f-2dfe0f",
+      "quem": "sarah",
+      "cod": "Although the launch was stressful, it went well, didn't it?",
+      "dica": "Embora o lançamento tenha sido estressante, foi bem, né?",
+      "img": "🚀😅✅",
+      "alvo": "Although",
+      "alvo_pt": "Embora",
+      "conceito": "Although + indicativo; went (passado) → didn't it?",
+      "registro": "informal",
+      "interferencias": [
+        "BR59"
+      ],
+      "armadilhas": [
+        "but",
+        "no"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1fe178",
+      "quem": "mike",
+      "contexto": "f-2dfe0f",
+      "cod": "It did. I'm really proud of our team.",
+      "dica": "Foi, sim. Tenho muito orgulho do nosso time.",
+      "img": "🏆👥",
+      "alvo": "proud of",
+      "alvo_pt": "orgulho do",
+      "conceito": "It did. = Foi, sim. (resposta curta com o auxiliar); ter orgulho de = be proud of.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        },
+        {
+          "em": "It did",
+          "aceita": [
+            "Yes, it did"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4963976,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm proud of our team.\"; + It did.; + really; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5621db",
+      "quem": "sarah",
+      "cod": "It's been such a long week. Let's order dessert!",
+      "dica": "Foi uma semana tão longa. Vamos pedir sobremesa!",
+      "img": "🍰📅",
+      "alvo": "such a long week",
+      "alvo_pt": "uma semana tão longa",
+      "conceito": "uma semana tão longa = such a long week; It's been: a semana ainda está acontecendo.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "It's been",
+          "aceita": [
+            "It was"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-958c2e",
+      "quem": "ana",
+      "cod": "I don't want to work this weekend.",
+      "dica": "Não quero trabalhar neste fim de semana.",
+      "img": "🛋️🙅",
+      "conceito": "neste fim de semana = this weekend, sem preposição.",
+      "registro": "informal",
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6664953,
+        "en_autor": "CK",
+        "pt_id": 8714264,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I don't want to work tomorrow.\"; PT original: \"Não quero trabalhar amanhã.\"; tomorrow → this weekend; PT adaptado (Não quero trabalhar neste fim de semana.)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e3ccfd",
+      "quem": "voce",
+      "contexto": "f-958c2e",
+      "cod": "Neither do I. I'm too tired.",
+      "dica": "Eu também não quero. Estou cansado demais.",
+      "pt_f": "Eu também não quero. Estou cansada demais.",
+      "img": "😴🛏️",
+      "alvo": "Neither do I",
+      "alvo_pt": "Eu também não quero",
+      "conceito": "don't want → Neither do I; cansado demais = too tired.",
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "armadilhas": [
+        "me",
+        "so"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d02b36",
+      "quem": "mike",
+      "cod": "We almost delayed the launch because of the API.",
+      "dica": "A gente quase atrasou o lançamento por causa da API.",
+      "img": "🔌⏳🚀",
+      "alvo": "because of",
+      "alvo_pt": "por causa da",
+      "conceito": "por causa de + substantivo = because of.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bc962b",
+      "quem": "ana",
+      "cod": "I love working with all of you.",
+      "dica": "Eu adoro trabalhar com todos vocês.",
+      "img": "🤗👥",
+      "alvo": "all of you",
+      "alvo_pt": "todos vocês",
+      "conceito": "Eu adoro + verbo = I love + -ing; todos vocês = all of you.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8186a1",
+      "quem": "sarah",
+      "contexto": "f-bc962b",
+      "cod": "So do I. Even though we had problems, nobody gave up.",
+      "dica": "Eu também adoro. Mesmo a gente tendo problemas, ninguém desistiu.",
+      "img": "💪❤️",
+      "alvo": "So do I",
+      "alvo_pt": "Eu também adoro",
+      "conceito": "I love → So do I (afirmativo); I don't → Neither do I (negativo).",
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "armadilhas": [
+        "me",
+        "too"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "nobody",
+          "aceita": [
+            "no one"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-da5ba8",
+      "quem": "voce",
+      "cod": "Let's start earlier next sprint so that we aren't so tired.",
+      "dica": "Vamos começar mais cedo na próxima sprint pra que a gente não fique tão cansado.",
+      "img": "⏰🏃",
+      "alvo": "so that",
+      "alvo_pt": "pra que",
+      "conceito": "pra que a gente não fique = so that we aren't; a sprint, sempre no feminino.",
+      "var": [
+        {
+          "em": "aren't so tired",
+          "aceita": [
+            "don't get so tired",
+            "won't be so tired"
+          ]
+        },
+        {
+          "em": "next sprint",
+          "aceita": [
+            "in the next sprint"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e11650",
+      "quem": "mike",
+      "contexto": "f-da5ba8",
+      "cod": "Good idea, unless the client changes everything again.",
+      "dica": "Boa ideia, a não ser que o cliente mude tudo de novo.",
+      "img": "🔄😬",
+      "alvo": "unless",
+      "alvo_pt": "a não ser que",
+      "conceito": "unless + presente: unless the client changes (não: will change).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR02"
+      ],
+      "armadilhas": [
+        "will",
+        "change"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

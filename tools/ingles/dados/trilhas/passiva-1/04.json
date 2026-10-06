@@ -1,0 +1,245 @@
+{
+  "id": "passiva-1.os-testes-rodam-a-cada-commit",
+  "trilha": "passiva-1",
+  "nome": "Os testes rodam a cada commit",
+  "emoji": "⚙️",
+  "cena": "Numa chamada de onboarding, você explica a um dev recém-contratado como funciona o pipeline do time.",
+  "resumo": "Explicar um processo de software com a passiva: are run, is reviewed, is merged, were deleted.",
+  "fechamento": false,
+  "novos": [
+    "are run",
+    "is reviewed",
+    "were deleted",
+    "every commit",
+    "is merged"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Os testes são rodados = The tests are run"
+    },
+    {
+      "t": "p",
+      "c": "Para descrever um processo, o inglês usa a passiva no presente: importa o que acontece com o código, não quem faz. Every pull request is reviewed by two developers."
+    },
+    {
+      "t": "warn",
+      "c": "run, ran, **run**: o particípio é igual ao verbo (are run, não: are ran). E code é incontável: the code (não: the codes)."
+    },
+    {
+      "t": "ex",
+      "c": "The old files were deleted last week.\nOs arquivos antigos foram apagados semana passada."
+    },
+    {
+      "t": "tip",
+      "c": "Como o dev fala: são rodados = are run; é mergeado = is merged; foi apagado = was deleted."
+    }
+  ],
+  "imagem": "💻⚙️✅",
+  "visualizacao": "Na tela compartilhada, o pipeline todo em verde, passo a passo. O dev novo anota tudo de câmera ligada, e você vai mostrando cada etapa com o mouse.",
+  "foto_busca": "developer screen sharing code pipeline",
+  "trechos": [
+    {
+      "id": "f-ae4869",
+      "quem": "voce",
+      "cod": "Every pull request is reviewed by two developers.",
+      "dica": "Todo pull request é revisado por dois desenvolvedores.",
+      "img": "🔍👥",
+      "alvo": "is reviewed",
+      "alvo_pt": "é revisado",
+      "conceito": "is reviewed by = é revisado por (passiva + by).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "reviews"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-980b8e",
+      "quem": "voce",
+      "cod": "In our pipeline, the tests are run automatically.",
+      "dica": "No nosso pipeline, os testes são rodados automaticamente.",
+      "img": "🧪🤖",
+      "alvo": "are run",
+      "alvo_pt": "são rodados",
+      "conceito": "Os testes são rodados = the tests are run: passiva (run, ran, run).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "run",
+        "ran"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fd18bc",
+      "quem": "dev-novo",
+      "contexto": "f-980b8e",
+      "cod": "On every commit?",
+      "dica": "Em todo commit?",
+      "img": "💾🔁",
+      "alvo": "every commit",
+      "alvo_pt": "todo commit",
+      "conceito": "em todo commit = on every commit (on, não in).",
+      "registro": "informal",
+      "armadilhas": [
+        "in",
+        "all"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a9451d",
+      "quem": "voce",
+      "contexto": "f-fd18bc",
+      "cod": "Yes, the tests are run on every commit.",
+      "dica": "Sim, os testes são rodados em todo commit.",
+      "img": "🧪🔁✅",
+      "alvo": "are run",
+      "alvo_pt": "são rodados",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "run",
+        "ran"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3855e5",
+      "quem": "dev-novo",
+      "cod": "Do we deploy on every commit, too?",
+      "dica": "A gente faz deploy em todo commit também?",
+      "img": "🚀❓",
+      "alvo": "every commit",
+      "alvo_pt": "todo commit",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "make",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9329ec",
+      "quem": "voce",
+      "contexto": "f-3855e5",
+      "cod": "No. First, the code is reviewed by the team.",
+      "dica": "Não. Primeiro, o código é revisado pelo time.",
+      "img": "👀🧑‍💻",
+      "alvo": "is reviewed",
+      "alvo_pt": "é revisado",
+      "conceito": "code é incontável: the code (não: the codes).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "codes",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c655c7",
+      "quem": "voce",
+      "cod": "Then the branch is merged after two approvals.",
+      "dica": "Depois, a branch é mergeada após duas aprovações.",
+      "img": "🔀✅",
+      "alvo": "is merged",
+      "alvo_pt": "é mergeada",
+      "conceito": "é mergeada (como o dev fala) = is merged.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Then",
+          "aceita": [
+            "After that",
+            "Afterwards"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-80ad1e",
+      "quem": "voce",
+      "cod": "And nothing is merged on Fridays.",
+      "dica": "E nada é mergeado às sextas.",
+      "img": "📅🚫🔀",
+      "alvo": "is merged",
+      "alvo_pt": "é mergeado",
+      "conceito": "às sextas = on Fridays (on + dia da semana, com maiúscula).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17",
+        "BR15"
+      ],
+      "armadilhas": [
+        "in",
+        "at",
+        "fridays"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-709be5",
+      "quem": "voce",
+      "contexto": "Where are the old test branches?",
+      "cod": "They were deleted last week.",
+      "dica": "Foram apagadas na semana passada.",
+      "img": "🗑️🌿",
+      "alvo": "were deleted",
+      "alvo_pt": "Foram apagadas",
+      "conceito": "were + particípio = foram + particípio. E o sujeito é obrigatório: They were.",
+      "registro": "neutro",
+      "armadilhas": [
+        "was",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-950efc",
+      "quem": "voce",
+      "contexto": "I can't find the old log files.",
+      "cod": "Sorry, those files were deleted on Monday.",
+      "dica": "Desculpa, esses arquivos foram apagados na segunda.",
+      "img": "📁🗑️",
+      "alvo": "were deleted",
+      "alvo_pt": "foram apagados",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "was",
+        "monday"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "those",
+          "aceita": [
+            "these"
+          ]
+        }
+      ]
+    }
+  ]
+}

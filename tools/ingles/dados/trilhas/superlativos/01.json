@@ -1,0 +1,316 @@
+{
+  "id": "superlativos.o-voo-mais-barato-est",
+  "trilha": "superlativos",
+  "nome": "O voo mais barato: -est",
+  "emoji": "🛫",
+  "cena": "Você e a Sarah escolhem, no site da companhia aérea, o voo para a conferência em Boston.",
+  "resumo": "Dizer o mais barato, o mais rápido e o mais cedo com the + -est e escolher uma opção.",
+  "fechamento": false,
+  "novos": [
+    "the cheapest",
+    "the fastest",
+    "the earliest",
+    "option",
+    "the cheapest one"
+  ],
+  "apoio": [
+    "price"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O mais barato = the cheapest"
+    },
+    {
+      "t": "p",
+      "c": "Adjetivo curto: **the + adjetivo + -est**. Grafia: big → biggest, early → earliest, nice → nicest."
+    },
+    {
+      "t": "ex",
+      "c": "What's the cheapest flight to Boston?\nQual é o voo mais barato para Boston?"
+    },
+    {
+      "t": "warn",
+      "c": "Adjetivo curto não usa most (não: the most cheap)."
+    },
+    {
+      "t": "tip",
+      "c": "o mais barato (de vários) = **the cheapest one**: one fica no lugar do substantivo."
+    }
+  ],
+  "imagem": "🛫💻💵",
+  "visualizacao": "Você e a Sarah olham o site da companhia aérea, cada um na sua tela. Três voos para Boston aparecem em fila, com horário e preço, e o cursor passa de um para o outro.",
+  "foto_busca": "flight booking website laptop",
+  "trechos": [
+    {
+      "id": "f-ae40c4",
+      "quem": "sarah",
+      "cod": "We only have three options.",
+      "dica": "Só temos três opções.",
+      "img": "✈️✈️✈️",
+      "alvo": "options",
+      "alvo_pt": "opções",
+      "conceito": "option = opção (plural: options).",
+      "var": [
+        {
+          "em": "only have",
+          "aceita": [
+            "have only"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4013947,
+        "en_autor": "CK",
+        "pt_id": 5093771,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1afaa8",
+      "quem": "voce",
+      "cod": "What's the cheapest flight to Boston?",
+      "dica": "Qual é o voo mais barato para Boston?",
+      "img": "💵✈️❓",
+      "alvo": "the cheapest",
+      "alvo_pt": "mais barato",
+      "conceito": "o voo mais barato = the cheapest flight: the + -est antes do substantivo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "most",
+        "more"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8613142,
+        "en_autor": "shekitten",
+        "pt_id": 11136995,
+        "pt_autor": "MrJuice",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'from Los Angeles to Tokyo' trocado por 'to Boston'; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0001a7",
+      "quem": "sarah",
+      "contexto": "f-1afaa8",
+      "cod": "The cheapest one takes six hours.",
+      "dica": "O mais barato demora seis horas.",
+      "img": "🐢⏳",
+      "alvo": "The cheapest one",
+      "alvo_pt": "O mais barato",
+      "lit": "[lit.: o mais barato um]",
+      "conceito": "one fica no lugar de flight: the cheapest one. It takes = demora.",
+      "registro": "neutro",
+      "interferencias": [],
+      "armadilhas": [
+        "cheapest"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1ae23d",
+      "quem": "voce",
+      "contexto": "f-0001a7",
+      "cod": "Which option is the fastest?",
+      "dica": "Qual opção é a mais rápida?",
+      "img": "⚡✈️",
+      "alvo": "the fastest",
+      "alvo_pt": "a mais rápida",
+      "conceito": "fast → the fastest (o mais rápido).",
+      "var": [
+        {
+          "em": "Which",
+          "aceita": [
+            "What"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "most",
+        "faster"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3f2b90",
+      "quem": "sarah",
+      "contexto": "f-1ae23d",
+      "cod": "The direct flight is the fastest, but it's expensive.",
+      "dica": "O voo direto é o mais rápido, mas é caro.",
+      "img": "✈️💰",
+      "alvo": "the fastest",
+      "alvo_pt": "o mais rápido",
+      "conceito": "direct flight = voo direto (adjetivo antes do substantivo).",
+      "var": [
+        {
+          "em": "the fastest",
+          "aceita": [
+            "the fastest one"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cf64f8",
+      "quem": "voce",
+      "cod": "What time is the earliest flight?",
+      "dica": "Que horas é o voo mais cedo?",
+      "img": "🌅✈️",
+      "alvo": "the earliest",
+      "alvo_pt": "mais cedo",
+      "conceito": "early → earliest (o y vira i).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "earlyest",
+        "most"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-66d599",
+      "quem": "sarah",
+      "contexto": "f-cf64f8",
+      "cod": "The earliest one leaves at six in the morning.",
+      "dica": "O mais cedo sai às seis da manhã.",
+      "img": "🕕🌄",
+      "alvo": "The earliest",
+      "alvo_pt": "O mais cedo",
+      "conceito": "one no lugar de flight: the earliest one. at six in the morning = às seis da manhã.",
+      "var": [
+        {
+          "em": "one",
+          "aceita": [
+            "flight"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR17",
+        "BR02"
+      ],
+      "armadilhas": [
+        "leave"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a9cb34",
+      "quem": "voce",
+      "contexto": "f-66d599",
+      "cod": "That's too early. Let's take option two.",
+      "dica": "É cedo demais. Vamos pegar a opção dois.",
+      "img": "🥱✌️",
+      "alvo": "option",
+      "alvo_pt": "opção",
+      "conceito": "too early = cedo demais. option two = a opção dois (sem the).",
+      "var": [
+        {
+          "em": "That's",
+          "aceita": [
+            "It's"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-17d4d8",
+      "quem": "sarah",
+      "contexto": "f-a9cb34",
+      "cod": "It isn't the cheapest, but it's the fastest.",
+      "dica": "Não é o mais barato, mas é o mais rápido.",
+      "img": "💸⚡",
+      "alvo": "the cheapest",
+      "alvo_pt": "o mais barato",
+      "conceito": "Sujeito obrigatório nas duas partes: It isn't..., but it's...",
+      "var": [
+        {
+          "em": "It isn't",
+          "aceita": [
+            "It's not"
+          ]
+        },
+        {
+          "em": "the cheapest",
+          "aceita": [
+            "the cheapest one"
+          ]
+        },
+        {
+          "em": "the fastest",
+          "aceita": [
+            "the fastest one"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8b7395",
+      "quem": "voce",
+      "contexto": "And the flight back?",
+      "cod": "I think I'll buy the cheapest one.",
+      "dica": "Eu acho que vou comprar o mais barato.",
+      "img": "🛒💵",
+      "alvo": "the cheapest one",
+      "alvo_pt": "o mais barato",
+      "conceito": "o mais barato (de vários voos) = the cheapest one.",
+      "registro": "neutro",
+      "interferencias": [],
+      "armadilhas": [
+        "cheaper"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8282047,
+        "en_autor": "CK",
+        "pt_id": 8288564,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

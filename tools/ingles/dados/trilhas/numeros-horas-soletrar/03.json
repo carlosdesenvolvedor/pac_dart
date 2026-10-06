@@ -1,0 +1,165 @@
+{
+  "id": "numeros-horas-soletrar.vinte-a-noventa-e-nove-o-hifen",
+  "trilha": "numeros-horas-soletrar",
+  "nome": "Vinte a noventa e nove: o hífen",
+  "emoji": "➖",
+  "cena": "Na mesma loja, você vê o preço de um teclado e de um fone de ouvido e vai ao caixa.",
+  "resumo": "Dezenas de 20 a 90 e números com hífen: It's forty-five dollars. / That's seventy-five dollars.",
+  "fechamento": false,
+  "novos": [
+    "OK.",
+    "twenty a ninety (-ty)",
+    "números compostos com hífen (twenty-five)",
+    "That's ... dollars."
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "20 a 99: o -ty e o hífen"
+    },
+    {
+      "t": "p",
+      "c": "twenty, thirty, forty, fifty, sixty, seventy, eighty, ninety. A força vai no começo: THIRty, FORty."
+    },
+    {
+      "t": "ex",
+      "c": "It's forty-five dollars.\nCusta quarenta e cinco dólares."
+    },
+    {
+      "t": "tip",
+      "c": "No total, o americano diz That's: That's seventy-five dollars. = São setenta e cinco dólares."
+    },
+    {
+      "t": "warn",
+      "c": "forty se escreve sem u (não: fourty). E os números compostos levam hífen: twenty-one."
+    }
+  ],
+  "imagem": "⌨️🎧💳",
+  "visualizacao": "Você segura a caixa de um teclado numa mão e um fone de ouvido na outra. No caixa, a tela mostra o total e o atendente espera você pagar.",
+  "foto_busca": "store checkout counter cashier",
+  "trechos": [
+    {
+      "id": "f-0b5fe8",
+      "quem": "atendente",
+      "contexto": "How much is it?",
+      "cod": "It's thirty dollars.",
+      "dica": "(o teclado) Custa trinta dólares.",
+      "img": "⌨️💵",
+      "alvo": "thirty",
+      "alvo_pt": "trinta",
+      "conceito": "-ty: a força vai no começo, THIRty.",
+      "registro": "neutro",
+      "armadilhas": [
+        "costs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-99a54e",
+      "quem": "voce",
+      "contexto": "f-0b5fe8",
+      "cod": "Thirty dollars? OK.",
+      "dica": "Trinta dólares? Tá bom.",
+      "img": "👌⌨️",
+      "alvo": "OK",
+      "alvo_pt": "Tá bom",
+      "conceito": "OK = tá bom, beleza. Também se escreve okay.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c4ca3e",
+      "quem": "atendente",
+      "contexto": "And the headphones?",
+      "cod": "It's forty-five dollars.",
+      "dica": "(o fone) Custa quarenta e cinco dólares.",
+      "img": "🎧💵",
+      "alvo": "forty-five",
+      "alvo_pt": "quarenta e cinco",
+      "conceito": "Número composto leva hífen: forty-five. E forty é sem u.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR46"
+      ],
+      "armadilhas": [
+        "fourty",
+        "costs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c61244",
+      "quem": "voce",
+      "contexto": "f-c4ca3e",
+      "cod": "Forty-five? OK, thanks!",
+      "dica": "Quarenta e cinco? Tá bom, obrigado!",
+      "pt_f": "Quarenta e cinco? Tá bom, obrigada!",
+      "img": "🙂👌",
+      "alvo": "OK",
+      "alvo_pt": "Tá bom",
+      "var": [
+        {
+          "em": "thanks",
+          "aceita": [
+            "thank you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "fourty"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ed59a3",
+      "quem": "atendente",
+      "cod": "That's seventy-five dollars.",
+      "dica": "(no caixa) São setenta e cinco dólares.",
+      "img": "🧾💳",
+      "alvo": "That's seventy-five dollars",
+      "alvo_pt": "São setenta e cinco dólares",
+      "lit": "[lit.: isso é setenta e cinco dólares]",
+      "conceito": "That's para o total: That's ... dollars. = São ... dólares.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7d4531",
+      "quem": "voce",
+      "contexto": "f-ed59a3",
+      "cod": "Sorry, sixty or seventy?",
+      "dica": "Desculpa, sessenta ou setenta?",
+      "img": "🤔💵",
+      "alvo": "sixty or seventy",
+      "alvo_pt": "sessenta ou setenta",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ab9427",
+      "quem": "atendente",
+      "contexto": "f-7d4531",
+      "cod": "Seventy. Seventy-five.",
+      "dica": "Setenta. Setenta e cinco.",
+      "img": "☝️🧾",
+      "alvo": "Seventy-five",
+      "alvo_pt": "Setenta e cinco",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d9a025",
+      "quem": "atendente",
+      "contexto": "Just the keyboard, please.",
+      "cod": "OK. That's thirty dollars.",
+      "dica": "Tá bom. São trinta dólares.",
+      "img": "⌨️🧾",
+      "alvo": "That's thirty dollars",
+      "alvo_pt": "São trinta dólares",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

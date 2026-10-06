@@ -1,0 +1,285 @@
+{
+  "id": "relativas-gerundio.obrigado-por-me-ajudar",
+  "trilha": "relativas-gerundio",
+  "nome": "Obrigado por me ajudar",
+  "emoji": "🤝",
+  "cena": "Você explica um procedimento técnico a um dev novo e agradece a ajuda dele no deploy.",
+  "resumo": "Usar -ing depois de preposição: thanks for helping, after restarting, interested in learning, instead of guessing.",
+  "fechamento": false,
+  "novos": [
+    "logs",
+    "thanks for + -ing",
+    "after + -ing",
+    "interested in + -ing",
+    "instead of + -ing"
+  ],
+  "apoio": [
+    "clear the cache",
+    "Spanish",
+    "checking"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Preposição + -ing"
+    },
+    {
+      "t": "p",
+      "c": "Depois de preposição (for, before, after, in, instead of), o verbo vai com **-ing**, onde o português usa o infinitivo: Obrigado por ajudar = Thanks for helping."
+    },
+    {
+      "t": "warn",
+      "c": "não: Thanks for help me / before to restart."
+    },
+    {
+      "t": "ex",
+      "c": "Check the logs before restarting the server.\nVerifica os logs antes de reiniciar o servidor."
+    }
+  ],
+  "imagem": "🖥️📜🤝",
+  "visualizacao": "Duas cadeiras na frente de um monitor com logs rolando. Você explica o passo a passo ao dev novo; depois do deploy, vocês dois respiram aliviados.",
+  "foto_busca": "two developers looking at monitor",
+  "trechos": [
+    {
+      "id": "f-58993c",
+      "quem": "voce",
+      "cod": "Check the logs before restarting the server.",
+      "dica": "Verifica os logs antes de reiniciar o servidor.",
+      "img": "📜🔍🔄",
+      "alvo": "logs",
+      "alvo_pt": "logs",
+      "lit": "[lit.: antes de reiniciando o servidor]",
+      "conceito": "logs = registros do que o sistema fez. Antes de + verbo = before + -ing.",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "restart",
+        "to"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eae5ce",
+      "quem": "dev-novo",
+      "contexto": "f-58993c",
+      "cod": "Sure. Which folder are the logs in?",
+      "dica": "Claro. Em que pasta ficam os logs?",
+      "img": "📁📜❓",
+      "alvo": "logs",
+      "alvo_pt": "logs",
+      "conceito": "Em que pasta...? = Which folder... in? A preposição vai para o fim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b56a17",
+      "quem": "voce",
+      "cod": "After restarting the server, clear the cache.",
+      "dica": "Depois de reiniciar o servidor, limpa o cache.",
+      "img": "🔄🧹💾",
+      "alvo": "After restarting",
+      "alvo_pt": "Depois de reiniciar",
+      "conceito": "Depois de + verbo = after + -ing (não: after restart).",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "restart",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-20ace3",
+      "quem": "dev-novo",
+      "contexto": "f-b56a17",
+      "cod": "Should I run the tests after clearing the cache?",
+      "dica": "Devo rodar os testes depois de limpar o cache?",
+      "img": "🧪🧹❓",
+      "alvo": "after clearing",
+      "alvo_pt": "depois de limpar",
+      "conceito": "Devo...? = Should I...? after + -ing: after clearing.",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "clear"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cfde41",
+      "quem": "voce",
+      "contexto": "f-20ace3",
+      "cod": "Yes, and use the script instead of doing it by hand.",
+      "dica": "Sim, e usa o script em vez de fazer isso na mão.",
+      "img": "📜🤖✋",
+      "alvo": "instead of doing",
+      "alvo_pt": "em vez de fazer",
+      "conceito": "Em vez de + verbo = instead of + -ing. Na mão = by hand.",
+      "var": [
+        {
+          "em": "doing it",
+          "aceita": [
+            "doing that",
+            "doing this"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "do",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-760c49",
+      "quem": "voce",
+      "cod": "If you get stuck, ask Mike instead of guessing.",
+      "dica": "Se você travar, pergunta pro Mike em vez de chutar.",
+      "img": "🚧🙋🎯",
+      "alvo": "instead of guessing",
+      "alvo_pt": "em vez de chutar",
+      "conceito": "chutar (uma resposta) = guess. Travar = get stuck.",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "guess"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e7ef2d",
+      "quem": "voce",
+      "cod": "Thanks for helping me with the deploy.",
+      "dica": "Obrigado por me ajudar com o deploy.",
+      "img": "🙏🚀",
+      "alvo": "Thanks for helping me",
+      "alvo_pt": "Obrigado por me ajudar",
+      "conceito": "Obrigado por + verbo = Thanks for + -ing (não: Thanks for help me).",
+      "pt_f": "Obrigada por me ajudar com o deploy.",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "help"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3162041,
+        "en_autor": "CK",
+        "pt_id": 6624123,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado 'me'; dinner → the deploy (original: \"Thanks for helping with dinner.\"); PT: o jantar → o deploy (original: \"Obrigado por me ajudar com o jantar.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-89b518",
+      "quem": "voce",
+      "contexto": "Hey, the team meeting starts in five minutes.",
+      "cod": "Oh, thanks for reminding me!",
+      "dica": "Ah, obrigado por me lembrar!",
+      "img": "⏰📅🙏",
+      "alvo": "thanks for reminding me",
+      "alvo_pt": "obrigado por me lembrar",
+      "conceito": "remind me = me lembrar (alguém te lembra); remember = você se lembra.",
+      "pt_f": "Ah, obrigada por me lembrar!",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "remind",
+        "remembering"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6240126,
+        "en_autor": "CK",
+        "pt_id": 8439215,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "export": "2026-10-03",
+        "nota_modificacao": "EN: acrescentado 'Oh,'; cortado 'about the meeting', redundante depois do contexto (original: \"Thanks for reminding me about the meeting.\"); PT: idem (original: \"Obrigado por me lembrar da reunião.\")"
+      }
+    },
+    {
+      "id": "f-61ae58",
+      "quem": "voce",
+      "cod": "Are you interested in learning Flutter?",
+      "dica": "Você tem interesse em aprender Flutter?",
+      "img": "🦋📱❓",
+      "alvo": "interested in learning",
+      "alvo_pt": "interesse em aprender",
+      "conceito": "Ter interesse em + verbo = be interested in + -ing (in, não on).",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "learn",
+        "on"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2677022,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: English → Flutter (original: \"Are you interested in learning English?\"); PT reescrito (original: \"Você está interessado em aprender inglês?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ac6d9c",
+      "quem": "dev-novo",
+      "contexto": "f-61ae58",
+      "cod": "Not really. I'm more interested in working on the backend.",
+      "dica": "Não muito. Tenho mais interesse em trabalhar no backend.",
+      "img": "🗄️⚙️👍",
+      "alvo": "interested in working",
+      "alvo_pt": "interesse em trabalhar",
+      "conceito": "interested in + -ing: in working. Trabalhar no backend = work on the backend.",
+      "registro": "informal",
+      "interferencias": [
+        "BR52",
+        "BR17"
+      ],
+      "armadilhas": [
+        "work",
+        "on"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

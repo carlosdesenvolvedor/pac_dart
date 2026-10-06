@@ -1,0 +1,219 @@
+{
+  "id": "dev-code-review.detalhe-tem-um-typo-aqui",
+  "trilha": "dev-code-review",
+  "nome": "Detalhe: tem um typo aqui",
+  "emoji": "🪶",
+  "cena": "Você revisa o pull request de um dev novo do time e deixa comentários educados.",
+  "resumo": "Sugerir sem impor num PR: Nit:, Consider + -ing e Could we...?",
+  "fechamento": false,
+  "novos": [
+    "nit",
+    "variable name",
+    "separate function",
+    "hardcoded"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Comentário educado de code review"
+    },
+    {
+      "t": "p",
+      "c": "**Nit:** (de nitpick) marca um detalhe pequeno, que não bloqueia. Para sugerir sem mandar: **Could we...?** e **Consider + -ing**."
+    },
+    {
+      "t": "warn",
+      "c": "Consider extracting (não: consider to extract). Feedback é incontável: thanks for the feedback (não: feedbacks)."
+    },
+    {
+      "t": "ex",
+      "c": "Consider extracting this logic into a separate function.\nConsidere extrair essa lógica para uma função separada."
+    }
+  ],
+  "imagem": "💻🔍💬",
+  "visualizacao": "O PR do dev novo está aberto na sua tela, diff verde e vermelho. Você rola devagar, para numa linha e clica em comentar, escolhendo as palavras com cuidado.",
+  "foto_busca": "code review laptop screen",
+  "trechos": [
+    {
+      "id": "f-42cf27",
+      "quem": "voce",
+      "cod": "Nit: there's a typo in this variable name.",
+      "dica": "Detalhe: tem um erro de digitação no nome desta variável.",
+      "img": "⌨️❌🔍",
+      "alvo": "Nit",
+      "alvo_pt": "Detalhe",
+      "conceito": "Nit (de nitpick) = detalhe pequeno, que não bloqueia o PR.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "has"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-94b80a",
+      "quem": "voce",
+      "cod": "Nit: we usually leave a blank line before the return.",
+      "dica": "Detalhe: a gente costuma deixar uma linha em branco antes do return.",
+      "img": "📄↩️",
+      "alvo": "Nit",
+      "alvo_pt": "Detalhe",
+      "conceito": "usually vem antes do verbo: we usually leave.",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-82892c",
+      "quem": "voce",
+      "cod": "Could we use a clearer variable name here, like userCount?",
+      "dica": "Dá para a gente usar um nome de variável mais claro aqui, tipo userCount?",
+      "img": "🏷️✨",
+      "alvo": "variable name",
+      "alvo_pt": "nome de variável",
+      "lit": "[lit.: um mais claro variável nome]",
+      "conceito": "Substantivo + substantivo: o principal vem por último (variable name).",
+      "var": [
+        {
+          "em": "Could we",
+          "aceita": [
+            "Can we"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "name variable"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-19c94b",
+      "quem": "dev-novo",
+      "contexto": "f-82892c",
+      "cod": "Thanks for the feedback! I'll fix the variable names today.",
+      "dica": "Obrigado pelo feedback! Vou corrigir os nomes das variáveis hoje.",
+      "img": "🙏🛠️",
+      "alvo": "variable names",
+      "alvo_pt": "nomes das variáveis",
+      "conceito": "feedback é incontável: the feedback (não: the feedbacks).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "feedbacks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9ef5da",
+      "quem": "voce",
+      "cod": "Consider extracting this logic into a separate function.",
+      "dica": "Considere extrair essa lógica para uma função separada.",
+      "img": "✂️📦",
+      "alvo": "separate function",
+      "alvo_pt": "função separada",
+      "conceito": "consider + -ing: Consider extracting (não: consider to extract).",
+      "var": [
+        {
+          "em": "into",
+          "aceita": [
+            "to"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to",
+        "extract"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7fdac9",
+      "quem": "voce",
+      "cod": "It would be easier to test this as a separate function.",
+      "dica": "Ficaria mais fácil testar isso como uma função separada.",
+      "img": "🧪👍",
+      "alvo": "separate function",
+      "alvo_pt": "função separada",
+      "conceito": "O it é obrigatório: It would be easier (ficaria mais fácil).",
+      "var": [
+        {
+          "em": "It would",
+          "aceita": [
+            "It'd"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2ba09e",
+      "quem": "voce",
+      "cod": "Could we move this hardcoded value into a constant?",
+      "dica": "Dá para a gente mover esse valor hardcoded para uma constante?",
+      "img": "🔒🔢",
+      "alvo": "hardcoded",
+      "alvo_pt": "hardcoded",
+      "conceito": "hardcoded = valor fixo escrito direto no código.",
+      "var": [
+        {
+          "em": "Could we",
+          "aceita": [
+            "Can we"
+          ]
+        },
+        {
+          "em": "into",
+          "aceita": [
+            "to"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6eef72",
+      "quem": "dev-novo",
+      "contexto": "f-2ba09e",
+      "cod": "Good idea. I didn't notice the URL was hardcoded in two places.",
+      "dica": "Boa ideia. Não percebi que a URL estava hardcoded em dois lugares.",
+      "img": "💡📍📍",
+      "alvo": "hardcoded",
+      "alvo_pt": "hardcoded",
+      "conceito": "didn't notice = não percebi (en-US prefere o passado simples aqui).",
+      "var": [
+        {
+          "em": "didn't notice",
+          "aceita": [
+            "hadn't noticed"
+          ]
+        }
+      ],
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

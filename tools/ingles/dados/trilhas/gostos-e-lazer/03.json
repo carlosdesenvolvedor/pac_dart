@@ -1,0 +1,219 @@
+{
+  "id": "gostos-e-lazer.escutar-e-listen-to",
+  "trilha": "gostos-e-lazer",
+  "nome": "Escutar é listen to",
+  "emoji": "🎧",
+  "cena": "No carro do Ben, em Boston, vocês escolhem o que ouvir no caminho.",
+  "resumo": "Falar de música e podcast com listen to, sem esquecer o to.",
+  "fechamento": false,
+  "novos": [
+    "listen to",
+    "Listen!",
+    "music",
+    "song"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Escutar = listen to"
+    },
+    {
+      "t": "p",
+      "c": "Escutar alguma coisa: **listen to** + coisa. Sem objeto, só **Listen!** (Escuta!)."
+    },
+    {
+      "t": "ex",
+      "c": "Listen to this song!\nEscuta essa música!"
+    },
+    {
+      "t": "tip",
+      "c": "Uma música (a faixa) = **song**; música em geral, o som = **music**."
+    },
+    {
+      "t": "warn",
+      "c": "Com objeto, o *to* é obrigatório: Listen **to** this song! (não: Listen this song!)"
+    }
+  ],
+  "imagem": "🚗🎧🎵",
+  "visualizacao": "Você está no banco do passageiro do carro do Ben, em Boston. O rádio toca alto, o trânsito anda devagar e o celular vibra no painel.",
+  "foto_busca": "car radio music friends",
+  "trechos": [
+    {
+      "id": "f-38d4c7",
+      "quem": "voce",
+      "cod": "Ben, listen to this song!",
+      "dica": "Ben, escuta essa música!",
+      "img": "🚗🎵",
+      "alvo": "listen to",
+      "alvo_pt": "escuta",
+      "conceito": "Escutar algo = listen to + coisa (não: listen this song).",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "armadilhas": [
+        "this"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e187a5",
+      "quem": "ben",
+      "contexto": "f-38d4c7",
+      "cod": "I love this song!",
+      "dica": "Eu adoro essa música!",
+      "img": "❤️🎶",
+      "alvo": "song",
+      "alvo_pt": "música",
+      "conceito": "A música (a faixa) = song.",
+      "var": [
+        {
+          "em": "this",
+          "aceita": [
+            "that"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "music"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1887554,
+        "en_autor": "CK",
+        "pt_id": 6207298,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I love that song.\"; PT original: \"Eu adoro essa música.\"; that → this e ponto de exclamação (revisão nativa: a música está tocando); PT: + exclamação",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a90bd6",
+      "quem": "voce",
+      "contexto": "f-e187a5",
+      "cod": "Really? What's your favorite song?",
+      "dica": "Sério? Qual é a sua música favorita?",
+      "img": "⭐🎵❓",
+      "alvo": "song",
+      "alvo_pt": "música",
+      "conceito": "favorite: grafia americana, sem u.",
+      "registro": "informal",
+      "armadilhas": [
+        "music"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6371f8",
+      "quem": "ben",
+      "contexto": "f-a90bd6",
+      "cod": "Listen! This is my favorite song.",
+      "dica": "Escuta! Essa é a minha música favorita.",
+      "img": "📻⭐",
+      "alvo": "Listen!",
+      "alvo_pt": "Escuta!",
+      "conceito": "Sem objeto, só Listen! (Escuta!).",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3820675,
+        "en_autor": "CK",
+        "pt_id": 6146141,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"This is my favorite song.\"; PT original: \"Esta é a minha música favorita.\"; acrescentado Listen! (Escuta!); PT: Esta → Essa",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0652f8",
+      "quem": "voce",
+      "cod": "Do you listen to podcasts in the car?",
+      "dica": "Você escuta podcast no carro?",
+      "img": "🎧🚗❓",
+      "alvo": "listen to",
+      "alvo_pt": "escuta",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "armadilhas": [
+        "podcast"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9309cd",
+      "quem": "ben",
+      "contexto": "f-0652f8",
+      "cod": "No, I don't. I listen to music.",
+      "dica": "Não, não escuto. Eu escuto música.",
+      "img": "🎶🙂",
+      "alvo": "music",
+      "alvo_pt": "música",
+      "conceito": "Música em geral = music; uma música (a faixa) = song.",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "armadilhas": [
+        "songs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-27d78b",
+      "quem": "voce",
+      "cod": "The music is really loud.",
+      "dica": "O som está muito alto.",
+      "img": "🔊😖",
+      "alvo": "music",
+      "alvo_pt": "O som",
+      "conceito": "O som (a música tocando) = the music. Alto (volume) = loud.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-07aeda",
+      "quem": "ben",
+      "cod": "Listen! Is that your phone?",
+      "dica": "Escuta! É o seu celular?",
+      "img": "📱🔔",
+      "alvo": "Listen!",
+      "alvo_pt": "Escuta!",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "it",
+            "this"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

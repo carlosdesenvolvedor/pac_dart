@@ -205,7 +205,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
       const SizedBox(height: 4),
       Text(
-        'Aprenda Dart & Flutter digitando código',
+        'Aprenda Dart, Flutter, C# e inglês digitando',
         style: Mixart.ui(size: 13, color: Mixart.textMuted),
       ),
     ],

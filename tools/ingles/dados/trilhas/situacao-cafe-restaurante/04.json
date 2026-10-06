@@ -1,0 +1,192 @@
+{
+  "id": "situacao-cafe-restaurante.a-conta-por-favor",
+  "trilha": "situacao-cafe-restaurante",
+  "nome": "A conta, por favor",
+  "emoji": "🧾",
+  "cena": "Fim do jantar com o time e, no dia seguinte, um almoço com a Ana: pedir a conta, dividir e pôr gorjeta.",
+  "resumo": "Pedir a conta, dividir e pagar com gorjeta.",
+  "fechamento": false,
+  "novos": [
+    "Can I have the check, please?",
+    "Can we split the check?",
+    "Is the tip included?",
+    "add a tip"
+  ],
+  "apoio": [
+    "check"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A conta"
+    },
+    {
+      "t": "p",
+      "c": "Conta de restaurante nos EUA = **check**. Dividir = **split**. Gorjeta = **tip**."
+    },
+    {
+      "t": "ex",
+      "c": "Can we split the check?\nA gente pode dividir a conta?"
+    },
+    {
+      "t": "tip",
+      "c": "Nos EUA a gorjeta quase nunca vem incluída: a maquininha sugere 18, 20 ou 22 por cento."
+    },
+    {
+      "t": "warn",
+      "c": "Nos EUA, a conta do restaurante é **check** (*bill* soa mais britânico)."
+    }
+  ],
+  "imagem": "🧾💳➗",
+  "visualizacao": "Pratos vazios, conversa animada. A conta chega numa pastinha preta, e na maquininha você vê as opções de gorjeta: 18, 20 ou 22 por cento.",
+  "foto_busca": "restaurant check card payment",
+  "trechos": [
+    {
+      "id": "f-990cd4",
+      "quem": "mike",
+      "cod": "Can I have the check, please?",
+      "dica": "Pode me trazer a conta, por favor?",
+      "img": "🧾🙋",
+      "alvo": "Can I have the check",
+      "alvo_pt": "Pode me trazer a conta",
+      "lit": "[lit.: posso ter a conta?]",
+      "conceito": "Conta de restaurante (EUA) = check.",
+      "var": [
+        {
+          "em": "Can I have",
+          "aceita": [
+            "Can I get"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "you",
+        "bill"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5e9aa7",
+      "quem": "sarah",
+      "cod": "So, can we split the check?",
+      "dica": "Então, a gente pode dividir a conta?",
+      "img": "🧾➗",
+      "alvo": "can we split the check",
+      "alvo_pt": "a gente pode dividir a conta",
+      "conceito": "Dividir a conta = split the check.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7b7c41",
+      "quem": "voce",
+      "contexto": "f-5e9aa7",
+      "cod": "Sure. Is the tip included?",
+      "dica": "Claro. A gorjeta está incluída?",
+      "img": "💵❓",
+      "alvo": "Is the tip included",
+      "alvo_pt": "A gorjeta está incluída",
+      "conceito": "Gorjeta = tip. Nos EUA, quase nunca vem incluída.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e27f65",
+      "quem": "mike",
+      "contexto": "f-7b7c41",
+      "cod": "No, it isn't. Let's add a tip.",
+      "dica": "Não, não está. Vamos pôr gorjeta.",
+      "img": "🙅➕💵",
+      "alvo": "add a tip",
+      "alvo_pt": "pôr gorjeta",
+      "conceito": "Pôr gorjeta (na maquininha) = add a tip.",
+      "var": [
+        {
+          "em": "it isn't",
+          "aceita": [
+            "it's not"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-595220",
+      "quem": "voce",
+      "contexto": "f-e27f65",
+      "cod": "OK. Can I add a tip on the card?",
+      "dica": "Tá bom. Posso pôr gorjeta no cartão?",
+      "img": "💳➕",
+      "alvo": "add a tip",
+      "alvo_pt": "pôr gorjeta",
+      "var": [
+        {
+          "em": "on the card",
+          "aceita": [
+            "to the card"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-666fa6",
+      "quem": "voce",
+      "cod": "Excuse me, can I have the check?",
+      "dica": "Com licença, pode me trazer a conta?",
+      "img": "✋🧾",
+      "alvo": "can I have the check",
+      "alvo_pt": "pode me trazer a conta",
+      "var": [
+        {
+          "em": "can I have",
+          "aceita": [
+            "can I get"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3327508,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Can I have a coffee?\"; PT original: \"Posso beber um café?\"; a coffee → the check, acrescentado Excuse me; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-533a6a",
+      "quem": "voce",
+      "contexto": "Anything else?",
+      "cod": "No, thanks. Can we split the check?",
+      "dica": "Não, obrigado. Podemos dividir a conta?",
+      "pt_f": "Não, obrigada. Podemos dividir a conta?",
+      "img": "👥➗💳",
+      "alvo": "Can we split the check",
+      "alvo_pt": "Podemos dividir a conta",
+      "conceito": "Dividir a conta = split the check. O garçom pode perguntar: Together or separate? (junto ou separado?)",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5390f3",
+      "quem": "ana",
+      "cod": "And is the tip included?",
+      "dica": "E a gorjeta está incluída?",
+      "img": "🤔💵",
+      "alvo": "is the tip included",
+      "alvo_pt": "a gorjeta está incluída",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

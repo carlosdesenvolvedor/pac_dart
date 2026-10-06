@@ -1,0 +1,262 @@
+{
+  "id": "discurso-indireto.ela-me-perguntou-onde-eu-morava",
+  "trilha": "discurso-indireto",
+  "nome": "Ela me perguntou onde eu morava",
+  "emoji": "🗂️",
+  "cena": "Depois da entrevista para a vaga sênior, você conta à Ana tudo o que a recrutadora perguntou e pediu.",
+  "resumo": "Relatar perguntas e pedidos: wanted to know where I lived, asked whether..., asked me to + verbo.",
+  "fechamento": false,
+  "novos": [
+    "recruiter",
+    "references",
+    "wanted to know",
+    "whether",
+    "start date"
+  ],
+  "apoio": [
+    "asked me",
+    "notice"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ela me perguntou...: pergunta relatada"
+    },
+    {
+      "t": "p",
+      "c": "Pergunta relatada vira frase comum: sem inversão e sem do/does/did. **wanted to know where I lived**, **asked whether / if I needed...**"
+    },
+    {
+      "t": "warn",
+      "c": "Não: She asked me where did I live / where do I live."
+    },
+    {
+      "t": "tip",
+      "c": "Pedido relatado: asked me **to** + verbo (ela me pediu para...). whether = if, um pouco mais formal."
+    },
+    {
+      "t": "ex",
+      "c": "She asked me where I lived.\nEla me perguntou onde eu morava."
+    }
+  ],
+  "imagem": "💼🗣️📋",
+  "visualizacao": "Você acabou de sair da entrevista por vídeo. Ainda de camisa social, liga para a Ana e repassa cada pergunta da recrutadora, com o coração ainda acelerado.",
+  "foto_busca": "job interview video call",
+  "trechos": [
+    {
+      "id": "f-110ac0",
+      "quem": "voce",
+      "contexto": "So, how was the interview?",
+      "cod": "Good! The recruiter was really nice.",
+      "dica": "Foi boa! A recrutadora foi muito simpática.",
+      "img": "🙂💼",
+      "alvo": "recruiter",
+      "alvo_pt": "recrutadora",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        },
+        {
+          "em": "Good",
+          "aceita": [
+            "It was good"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eaac49",
+      "quem": "voce",
+      "cod": "She wanted to know where I lived.",
+      "dica": "Ela queria saber onde eu morava.",
+      "img": "🏠❓",
+      "alvo": "wanted to know",
+      "alvo_pt": "queria saber",
+      "conceito": "Pergunta relatada sem did e sem inversão: where I lived (não: where did I live).",
+      "registro": "informal",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "did",
+        "do"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3732515,
+        "en_autor": "CK",
+        "pt_id": 5258342,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → She (original: \"Tom wanted to know where I lived.\"); PT: Tom → Ela (original: \"Tom queria saber onde eu morava.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d36cbf",
+      "quem": "voce",
+      "cod": "Then she wanted to know if I could move to Austin.",
+      "dica": "Depois ela queria saber se eu podia me mudar para Austin.",
+      "img": "🧳🏙️",
+      "alvo": "wanted to know",
+      "alvo_pt": "queria saber",
+      "conceito": "Me mudar = move (sem myself). can vira could no relato.",
+      "registro": "informal",
+      "interferencias": [
+        "BR62",
+        "BR50"
+      ],
+      "armadilhas": [
+        "myself"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f91a82",
+      "quem": "ana",
+      "contexto": "f-d36cbf",
+      "cod": "Did the recruiter ask about your salary expectations?",
+      "dica": "A recrutadora perguntou sobre a sua pretensão salarial?",
+      "img": "💰❓",
+      "alvo": "recruiter",
+      "alvo_pt": "recrutadora",
+      "conceito": "Pretensão salarial = salary expectations.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-005e5a",
+      "quem": "voce",
+      "contexto": "f-f91a82",
+      "cod": "Yes. She also asked whether I needed a visa.",
+      "dica": "Perguntou. Ela também perguntou se eu precisava de visto.",
+      "img": "🛂📄",
+      "alvo": "whether",
+      "alvo_pt": "se",
+      "conceito": "whether = if (se) na pergunta relatada; um pouco mais formal.",
+      "var": [
+        {
+          "em": "whether",
+          "aceita": [
+            "if"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "did"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b9a894",
+      "quem": "voce",
+      "cod": "And she asked me to send two references.",
+      "dica": "E ela me pediu para mandar duas referências.",
+      "img": "📨👥",
+      "alvo": "references",
+      "alvo_pt": "referências",
+      "conceito": "Me pediu para + verbo = asked me to + verbo (não: asked that I).",
+      "registro": "informal",
+      "interferencias": [
+        "BR61"
+      ],
+      "armadilhas": [
+        "that",
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-76864d",
+      "quem": "ana",
+      "contexto": "f-b9a894",
+      "cod": "You could ask Mike to be one of your references.",
+      "dica": "Você podia pedir para o Mike ser uma das suas referências.",
+      "img": "🙋‍♂️📝",
+      "alvo": "references",
+      "alvo_pt": "referências",
+      "conceito": "Sugestão = You could... Pedir para alguém + verbo = ask + pessoa + to + verbo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR61"
+      ],
+      "armadilhas": [
+        "that"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-18a2d9",
+      "quem": "voce",
+      "cod": "Then she asked about my start date.",
+      "dica": "Depois ela perguntou sobre a minha data de início.",
+      "img": "📅▶️",
+      "alvo": "start date",
+      "alvo_pt": "data de início",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3b87c4",
+      "quem": "ana",
+      "contexto": "f-18a2d9",
+      "cod": "What start date did you give her?",
+      "dica": "Que data de início você deu pra ela?",
+      "img": "🗓️❔",
+      "alvo": "start date",
+      "alvo_pt": "data de início",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "What",
+          "aceita": [
+            "Which"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-de0ef4",
+      "quem": "voce",
+      "cod": "I still don't know whether to take the job.",
+      "dica": "Ainda não sei se aceito a vaga.",
+      "img": "🤔💼",
+      "alvo": "whether",
+      "alvo_pt": "se",
+      "conceito": "whether to + verbo = se devo... (aqui if não serve: não: if to take).",
+      "var": [
+        {
+          "em": "whether to take",
+          "aceita": [
+            "if I should take",
+            "whether I should take",
+            "whether to accept",
+            "if I should accept",
+            "whether I should accept"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "id": "perguntas-com-do.cena-conhecendo-um-colega",
+  "trilha": "perguntas-com-do",
+  "nome": "Cena: conhecendo um colega",
+  "emoji": "🤝",
+  "cena": "No fim da tarde, no café do escritório, você conversa com um colega novo que veio de Austin.",
+  "resumo": "Juntar perguntas com be e com do sem misturar: Are you...? / Do you...? / Where do you...?",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Be ou do?"
+    },
+    {
+      "t": "p",
+      "c": "Com o **be** (ser, estar), a pergunta começa com o próprio be: **Are you** from Austin? Com os outros verbos, entra o **do**: **Do you** like your job?"
+    },
+    {
+      "t": "ex",
+      "c": "Are you a developer?\nVocê é desenvolvedor?"
+    },
+    {
+      "t": "ex",
+      "c": "Where do you live?\nOnde você mora?"
+    },
+    {
+      "t": "warn",
+      "c": "Não: Do you are...? nem Are you live...?"
+    }
+  ],
+  "imagem": "☕🤝🌇",
+  "visualizacao": "Fim de tarde, e o sol entra laranja pelas janelas do café do escritório. Um colega novo, de mochila e crachá, pega um café ao seu lado e puxa assunto.",
+  "foto_busca": "office cafe coworkers chatting evening",
+  "trechos": [
+    {
+      "id": "f-9f40f0",
+      "quem": "voce",
+      "cod": "Are you from Austin?",
+      "dica": "Você é de Austin?",
+      "img": "✈️❓",
+      "alvo": "Are you",
+      "alvo_pt": "Você é",
+      "conceito": "Ser de = be from: Are you from...? Com be, sem do.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2646109,
+        "en_autor": "CK",
+        "pt_id": 5655540,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Australia → Austin (PT: da Austrália → de Austin)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8578c3",
+      "quem": "colega",
+      "contexto": "f-9f40f0",
+      "cod": "Yes, I am. Where do you live?",
+      "dica": "Sou, sim. Onde você mora?",
+      "img": "👍📍",
+      "alvo": "Where do you live",
+      "alvo_pt": "Onde você mora",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3d61cd",
+      "quem": "voce",
+      "contexto": "f-8578c3",
+      "cod": "In {cidade}, Brazil. I work from home.",
+      "dica": "Em {cidade}, no Brasil. Trabalho de casa.",
+      "img": "🇧🇷💻",
+      "alvo": "work from home",
+      "alvo_pt": "Trabalho de casa",
+      "var": [
+        {
+          "em": "Brazil",
+          "aceita": [
+            "in Brazil"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "bio": [
+        "cidade"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0bc098",
+      "quem": "colega",
+      "contexto": "f-3d61cd",
+      "cod": "Nice! Do you like your job?",
+      "dica": "Que legal! Você gosta do seu trabalho?",
+      "img": "💼🙂",
+      "alvo": "Do you like",
+      "alvo_pt": "Você gosta",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2800768,
+        "en_autor": "CM",
+        "pt_id": 5993421,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Nice! (PT: + Que legal!; de seu emprego → do seu trabalho)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-87fca4",
+      "quem": "voce",
+      "contexto": "f-0bc098",
+      "cod": "Yes, I like it a lot.",
+      "dica": "Sim, gosto muito.",
+      "img": "😊💻",
+      "alvo": "like it",
+      "alvo_pt": "gosto",
+      "conceito": "Gosto muito = I like it a lot: o it não pode faltar.",
+      "var": [
+        {
+          "em": "a lot",
+          "aceita": [
+            "very much"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR18",
+        "BR19"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4ebc94",
+      "quem": "voce",
+      "cod": "What do you do? Are you a developer?",
+      "dica": "Com o que você trabalha? Você é desenvolvedor?",
+      "img": "👨‍💻❓",
+      "alvo": "What do you do",
+      "alvo_pt": "Com o que você trabalha",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b95176",
+      "quem": "colega",
+      "contexto": "f-4ebc94",
+      "cod": "No, I'm not. I'm a designer.",
+      "dica": "Não, não sou. Sou designer.",
+      "img": "🙅🎨",
+      "alvo": "No, I'm not",
+      "alvo_pt": "Não, não sou",
+      "conceito": "Com be, a resposta curta usa o be: No, I'm not (não: No, I don't).",
+      "registro": "neutro",
+      "armadilhas": [
+        "don't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-af3ed0",
+      "quem": "colega",
+      "cod": "Are these your books? Do you need them today?",
+      "dica": "Esses livros são seus? Você precisa deles hoje?",
+      "img": "📚🤲",
+      "alvo": "Do you need them",
+      "alvo_pt": "Você precisa deles",
+      "conceito": "Precisa deles? = Do you need them? O objeto (them) é obrigatório.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR18"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3820033,
+        "en_autor": "CK",
+        "pt_id": 6984559,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Are these your books? e + today (PT: + Esses livros são seus? e + hoje)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

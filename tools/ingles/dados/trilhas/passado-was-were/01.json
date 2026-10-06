@@ -1,0 +1,221 @@
+{
+  "id": "passado-was-were.ontem-eu-estava-em-casa",
+  "trilha": "passado-was-were",
+  "nome": "Ontem eu estava em casa",
+  "emoji": "🕰️",
+  "cena": "Segunda de manhã no escritório de Chicago, com a Sarah na chamada de vídeo: cada um conta onde estava.",
+  "resumo": "Dizer onde você e os outros estavam com was e were, yesterday e last week.",
+  "fechamento": false,
+  "novos": [
+    "was",
+    "were",
+    "yesterday",
+    "last week"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Estava: was e were"
+    },
+    {
+      "t": "p",
+      "c": "**was** com *I, he, she, it*; **were** com *you, we, they*. **yesterday** = ontem; **last week** = semana passada; *last night* = ontem à noite."
+    },
+    {
+      "t": "ex",
+      "c": "I was at home yesterday.\nEu estava em casa ontem."
+    },
+    {
+      "t": "warn",
+      "c": "*last week* vai sem *the* e sem *in* (não: *in the last week*)."
+    },
+    {
+      "t": "warn",
+      "c": "Com **you** é sempre **were**, mesmo falando com uma pessoa só: *You were at the hotel* (não: *you was*)."
+    }
+  ],
+  "imagem": "🏢☕📅",
+  "visualizacao": "Você chega ao escritório de Chicago na segunda de manhã: cheiro de café, o Mike tirando o casaco, a Sarah sorrindo no telão da sala de reunião.",
+  "foto_busca": "office team morning video call",
+  "trechos": [
+    {
+      "id": "f-a6fda6",
+      "quem": "sarah",
+      "cod": "Sorry, I was in a meeting.",
+      "dica": "Desculpa, eu estava numa reunião.",
+      "img": "🙏💻",
+      "alvo": "was",
+      "alvo_pt": "estava",
+      "conceito": "estava = was com I, he, she, it; were com you, we, they.",
+      "registro": "informal",
+      "armadilhas": [
+        "were"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b0b22d",
+      "quem": "mike",
+      "cod": "I was at home yesterday.",
+      "dica": "Eu estava em casa ontem.",
+      "img": "🏠📆",
+      "alvo": "yesterday",
+      "alvo_pt": "ontem",
+      "var": [
+        {
+          "em": "at home",
+          "aceita": [
+            "home"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR16"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2611763,
+        "en_autor": "CK",
+        "pt_id": 5022053,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8a7621",
+      "quem": "ana",
+      "cod": "Mike and I were at the office on Friday.",
+      "dica": "O Mike e eu estávamos no escritório na sexta.",
+      "img": "🏢👫",
+      "alvo": "were",
+      "alvo_pt": "estávamos",
+      "conceito": "Mike and I = we, então were.",
+      "var": [
+        {
+          "em": "at the office",
+          "aceita": [
+            "in the office"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "was"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5fdc0b",
+      "quem": "voce",
+      "cod": "I was at the park yesterday.",
+      "dica": "Eu estava no parque ontem.",
+      "img": "🌳📆",
+      "alvo": "yesterday",
+      "alvo_pt": "ontem",
+      "var": [
+        {
+          "em": "at the park",
+          "aceita": [
+            "in the park"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "variacao_de": "f-b0b22d",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c0f8a8",
+      "quem": "mike",
+      "cod": "Sarah was in Boston last week.",
+      "dica": "A Sarah estava em Boston semana passada.",
+      "img": "👩🧳📆",
+      "alvo": "last week",
+      "alvo_pt": "semana passada",
+      "conceito": "last week = semana passada, sem the e sem in.",
+      "registro": "informal",
+      "armadilhas": [
+        "the",
+        "in"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3023297,
+        "en_autor": "CK",
+        "pt_id": 4912245,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom was in Boston last week.\"; Tom → Sarah; PT original: \"Tom estava em Boston na semana passada.\"; PT: Tom → A Sarah, sem o na",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5cf7bc",
+      "quem": "sarah",
+      "cod": "We were very busy last week.",
+      "dica": "Nós estávamos muito ocupados semana passada.",
+      "img": "📆😓",
+      "alvo": "last week",
+      "alvo_pt": "semana passada",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2641712,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom and I were very busy last week.\"; Tom and I → We; PT reescrito (original: \"Tom e eu estávamos ocupadíssimos na semana passada.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b0d095",
+      "quem": "ana",
+      "cod": "You were at the hotel last night, right?",
+      "dica": "Você estava no hotel ontem à noite, né?",
+      "img": "🏨🌙❓",
+      "alvo": "were",
+      "alvo_pt": "estava",
+      "conceito": "Com you é sempre were, mesmo para uma pessoa só.",
+      "registro": "informal",
+      "armadilhas": [
+        "was"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fd6732",
+      "quem": "voce",
+      "contexto": "f-b0d095",
+      "cod": "No, I was at Emma's house.",
+      "dica": "Não, eu estava na casa da Emma.",
+      "img": "🏡🐈",
+      "alvo": "was",
+      "alvo_pt": "estava",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "armadilhas": [
+        "were"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

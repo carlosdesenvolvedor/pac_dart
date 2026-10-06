@@ -1,0 +1,275 @@
+{
+  "id": "situacao-viagem.perdi-a-conexao-miss",
+  "trilha": "situacao-viagem",
+  "nome": "Perdi a conexão: miss",
+  "emoji": "🏃",
+  "cena": "Em Chicago, o atraso faz você perder a conexão; à noite, você e o Mike correm para pegar o último trem.",
+  "resumo": "Dizer que perdeu o voo, a conexão ou o trem e pedir outra opção: I missed my connection. / I can rebook you.",
+  "fechamento": false,
+  "novos": [
+    "I missed my connection.",
+    "the last train",
+    "Hurry up!",
+    "rebook"
+  ],
+  "apoio": [
+    "miss (perder voo, trem, ônibus)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Perder o voo: miss"
+    },
+    {
+      "t": "p",
+      "c": "Perder transporte, conexão ou horário é **miss**: I missed my connection. We missed the last train. Perder um objeto é outro verbo, que vem mais adiante."
+    },
+    {
+      "t": "ex",
+      "c": "I missed my connection. What can I do?\nPerdi minha conexão. O que eu posso fazer?"
+    },
+    {
+      "t": "warn",
+      "c": "Não: I lost my flight. Voo, trem e ônibus a gente perde com miss."
+    }
+  ],
+  "imagem": "🏃✈️🚆",
+  "visualizacao": "Você corre pelo corredor do aeroporto com a mala batendo na perna. O portão já está fechado e, pela janela, o avião se afasta devagar.",
+  "foto_busca": "person running through airport",
+  "trechos": [
+    {
+      "id": "f-2a0077",
+      "quem": "voce",
+      "cod": "I missed my connection.",
+      "dica": "Perdi a minha conexão.",
+      "img": "✈️🏃💨",
+      "alvo": "missed my connection",
+      "alvo_pt": "Perdi a minha conexão",
+      "conceito": "Perder voo, trem ou conexão = miss (não: lose).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR34",
+        "BR02"
+      ],
+      "armadilhas": [
+        "lost",
+        "lose"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2387244,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'flight' trocado por 'connection'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bf36ec",
+      "quem": "atendente",
+      "contexto": "f-2a0077",
+      "cod": "Don't worry. I can rebook you on the next flight.",
+      "dica": "Não se preocupa. Posso remarcar você no próximo voo.",
+      "img": "🔄🎫",
+      "alvo": "rebook",
+      "alvo_pt": "remarcar",
+      "conceito": "rebook = remarcar (voo, hotel); re- = de novo.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-295173",
+      "quem": "voce",
+      "cod": "Julia, I missed my connection in Chicago.",
+      "dica": "Julia, perdi minha conexão em Chicago.",
+      "img": "📱😩",
+      "alvo": "missed my connection",
+      "alvo_pt": "perdi minha conexão",
+      "registro": "informal",
+      "interferencias": [
+        "BR34",
+        "BR12"
+      ],
+      "armadilhas": [
+        "lost"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-75b494",
+      "quem": "julia",
+      "contexto": "f-295173",
+      "cod": "Oh no! Did they rebook you?",
+      "dica": "Ah, não! Eles te remarcaram?",
+      "img": "😟🔄",
+      "alvo": "rebook",
+      "alvo_pt": "remarcaram",
+      "conceito": "Pergunta no passado: Did + verbo na forma base (rebook).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "rebooked"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bee993",
+      "quem": "voce",
+      "cod": "What time is the last train?",
+      "dica": "Que horas é o último trem?",
+      "img": "🚆🌙❓",
+      "alvo": "the last train",
+      "alvo_pt": "o último trem",
+      "var": [
+        {
+          "em": "What time is",
+          "aceita": [
+            "What time's"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2869239,
+        "en_autor": "CK",
+        "pt_id": 10351712,
+        "pt_autor": "heo598",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a81de9",
+      "quem": "mike",
+      "contexto": "f-bee993",
+      "cod": "It's at 11:30. Hurry up!",
+      "dica": "É às 11h30. Anda logo!",
+      "img": "⏰🏃",
+      "alvo": "Hurry up",
+      "alvo_pt": "Anda logo",
+      "conceito": "Hurry up! = Anda logo! E o it não some: It's at 11:30.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1e77e8",
+      "quem": "voce",
+      "cod": "Listen! That's our train. Hurry up!",
+      "dica": "Escuta! É o nosso trem. Anda logo!",
+      "img": "👂🚆💨",
+      "alvo": "Hurry up",
+      "alvo_pt": "Anda logo",
+      "var": [
+        {
+          "em": "That's",
+          "aceita": [
+            "It's"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2251187,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentados 'Listen!' antes e 'Hurry up!' depois",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-58133a",
+      "quem": "mike",
+      "contexto": "f-1e77e8",
+      "cod": "Oh no. We missed the last train.",
+      "dica": "Ah, não. A gente perdeu o último trem.",
+      "img": "🚆👋😩",
+      "alvo": "the last train",
+      "alvo_pt": "o último trem",
+      "registro": "informal",
+      "interferencias": [
+        "BR34"
+      ],
+      "armadilhas": [
+        "lost"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 411317,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'I' trocado por 'We'; acrescentado 'Oh no.'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-18a88e",
+      "quem": "voce",
+      "contexto": "f-58133a",
+      "cod": "Great. First my connection, now the last train!",
+      "dica": "Ótimo. Primeiro a minha conexão, agora o último trem!",
+      "img": "🙄✈️🚆",
+      "alvo": "the last train",
+      "alvo_pt": "o último trem",
+      "conceito": "Great, com ironia, = Ótimo... (que maravilha).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9ce075",
+      "quem": "voce",
+      "contexto": "How did you get back to the hotel?",
+      "cod": "We took a taxi because we missed the last train.",
+      "dica": "A gente pegou um táxi porque perdeu o último trem.",
+      "img": "🚕🌙",
+      "alvo": "the last train",
+      "alvo_pt": "o último trem",
+      "registro": "informal",
+      "interferencias": [
+        "BR34",
+        "BR02"
+      ],
+      "armadilhas": [
+        "lost"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 11020618,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'I took' trocado por 'We took'; 'I missed the bus' trocado por 'we missed the last train'",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

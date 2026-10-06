@@ -1,0 +1,215 @@
+{
+  "id": "funcoes-conversa-b2.meu-palpite-e-que",
+  "trilha": "funcoes-conversa-b2",
+  "nome": "Meu palpite é que...",
+  "emoji": "🔮",
+  "cena": "No happy hour online de sexta, o time especula sobre o futuro de um projeto.",
+  "resumo": "Especular com graus de certeza sem afirmar nada: it's hard to say, my guess is, chances are.",
+  "fechamento": false,
+  "novos": [
+    "it's hard to say",
+    "my guess is",
+    "chances are",
+    "I wouldn't be surprised if"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Especular com cuidado"
+    },
+    {
+      "t": "p",
+      "c": "**It's hard to say** = é difícil dizer. **My guess is that...** = meu palpite é que. **Chances are...** = o mais provável é que. **I wouldn't be surprised if...** = eu não me surpreenderia se."
+    },
+    {
+      "t": "warn",
+      "c": "Depois de I wouldn't be surprised if, use o passado: if the client **asked** (não: if the client would ask)."
+    },
+    {
+      "t": "ex",
+      "c": "Chances are the client hasn't even read the proposal.\nO mais provável é que o cliente nem tenha lido a proposta."
+    }
+  ],
+  "imagem": "🍕🔮💬",
+  "visualizacao": "Fim de sexta, você está no happy hour online: cada um com um lanche na frente da câmera, risadas e conversa solta, até alguém perguntar o que vai acontecer com o projeto.",
+  "foto_busca": "online happy hour video call",
+  "trechos": [
+    {
+      "id": "f-1278c7",
+      "quem": "voce",
+      "contexto": "So, do you think they'll cancel the project?",
+      "cod": "It's hard to say, but my guess is that they'll put it on hold.",
+      "dica": "É difícil dizer, mas o meu palpite é que eles vão colocar em espera.",
+      "img": "🤷🔮⏸️",
+      "alvo": "It's hard to say",
+      "alvo_pt": "É difícil dizer",
+      "conceito": "É difícil dizer = It's hard to say; colocar em espera = put it on hold (o it é obrigatório).",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4f7692",
+      "quem": "ana",
+      "contexto": "f-1278c7",
+      "cod": "My guess is that the client wants a cheaper version.",
+      "dica": "Meu palpite é que o cliente quer uma versão mais barata.",
+      "img": "💰📉🤔",
+      "alvo": "My guess is",
+      "alvo_pt": "Meu palpite é",
+      "conceito": "meu palpite é que = my guess is (that).",
+      "opcional": [
+        "that"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ba3d54",
+      "quem": "mike",
+      "contexto": "f-4f7692",
+      "cod": "It's hard to say. Sarah hasn't told us anything yet.",
+      "dica": "É difícil dizer. A Sarah ainda não contou nada pra gente.",
+      "img": "🤐📭⏳",
+      "alvo": "It's hard to say",
+      "alvo_pt": "É difícil dizer",
+      "conceito": "ainda não = not yet, com present perfect.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-919c7b",
+      "quem": "voce",
+      "cod": "Chances are the client hasn't even read the proposal.",
+      "dica": "O mais provável é que o cliente nem tenha lido a proposta.",
+      "img": "📄🙈🎲",
+      "alvo": "Chances are",
+      "alvo_pt": "O mais provável é que",
+      "conceito": "o mais provável é que = chances are (não: the most probable is).",
+      "var": [
+        {
+          "em": "Chances are",
+          "aceita": [
+            "Chances are that"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "probable"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d8afc9",
+      "quem": "ana",
+      "contexto": "f-919c7b",
+      "cod": "I wouldn't be surprised.",
+      "dica": "Eu não me surpreenderia.",
+      "img": "😏👍",
+      "alvo": "I wouldn't be surprised",
+      "alvo_pt": "Eu não me surpreenderia",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2546126,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Eu não ficaria surpreso.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b259c2",
+      "quem": "mike",
+      "cod": "Chances are we'll know more after the meeting on Friday.",
+      "dica": "O mais provável é que a gente saiba mais depois da reunião de sexta.",
+      "img": "📅🗓️💡",
+      "alvo": "Chances are",
+      "alvo_pt": "O mais provável é que",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the meeting on Friday",
+          "aceita": [
+            "Friday's meeting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e97d71",
+      "quem": "voce",
+      "cod": "I wouldn't be surprised if the client asked for more changes.",
+      "dica": "Eu não me surpreenderia se o cliente pedisse mais mudanças.",
+      "img": "📝🔁😅",
+      "alvo": "I wouldn't be surprised if",
+      "alvo_pt": "Eu não me surpreenderia se",
+      "conceito": "Depois de I wouldn't be surprised if, passado: if he asked (não: if he would ask).",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f3bc91",
+      "quem": "mike",
+      "contexto": "Sarah wants to show the client the beta version.",
+      "cod": "My guess is that the client isn't going to want that.",
+      "dica": "Meu palpite é que o cliente não vai querer isso.",
+      "img": "🧪🙅🤔",
+      "alvo": "My guess is",
+      "alvo_pt": "Meu palpite é",
+      "opcional": [
+        "that"
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3873841,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"My guess is that Tom isn't going to want that.\" (Tom trocado por the client); PT reescrito (original: \"Meu palpite é que Tom não vai querer isso.\")",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

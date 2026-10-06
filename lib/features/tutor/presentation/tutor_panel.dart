@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../core/linguagem/linguagem.dart';
 import '../../../core/theme/mixart.dart';
 import '../../arcade/domain/personagem.dart';
 import '../../arcade/presentation/widgets/arcade_ui.dart';
@@ -60,12 +61,22 @@ class _TutorPanelState extends State<TutorPanel> {
     if (falavel.isNotEmpty) _voz()?.falarSempre(falavel);
   }
 
-  static const _sugestoes = [
+  static const _sugestoesCodigo = [
     'O que esse trecho faz?',
     'Explica como se eu tivesse 10 anos',
     'Me dá outro exemplo disso',
     'Onde eu usaria isso num app de verdade?',
   ];
+
+  static const _sugestoesIngles = [
+    'Explica a estrutura dessa frase',
+    'Como se pronuncia essa frase?',
+    'Me dá mais 3 exemplos parecidos',
+    'Quando eu usaria isso numa conversa?',
+  ];
+
+  static List<String> get _sugestoes =>
+      Linguagem.atual == Linguagem.ingles ? _sugestoesIngles : _sugestoesCodigo;
 
   @override
   void dispose() {
@@ -135,7 +146,13 @@ class _TutorPanelState extends State<TutorPanel> {
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Text('Prof. Dash', style: Mixart.display(size: 16)),
               Text(
-                chat.digitando ? 'pensando…' : 'tutor de Dart · vê o seu estudo',
+                chat.digitando
+                    ? 'pensando…'
+                    : '${switch (Linguagem.atual) {
+                        Linguagem.csharp => 'tutor de C#',
+                        Linguagem.ingles => 'professor de inglês',
+                        Linguagem.dart => 'tutor de Dart',
+                      }} · vê o seu estudo',
                 style: Mixart.ui(
                     size: 10.5,
                     color: chat.digitando ? Mixart.brand : Mixart.textMuted),
@@ -265,7 +282,7 @@ class _TutorPanelState extends State<TutorPanel> {
       if (partes[i].trim().isEmpty) continue;
       if (i.isOdd) {
         var cod = partes[i].trim();
-        for (final ling in ['dart', 'Dart']) {
+        for (final ling in ['dart', 'Dart', 'csharp', 'cs', 'c#', 'C#']) {
           if (cod.startsWith('$ling\n')) cod = cod.substring(ling.length + 1);
         }
         blocos.add(Padding(

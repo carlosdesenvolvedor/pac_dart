@@ -1,0 +1,188 @@
+{
+  "id": "colocacoes-expressoes.antes-de-mais-nada",
+  "trilha": "colocacoes-expressoes",
+  "nome": "Antes de mais nada",
+  "emoji": "🗣️",
+  "cena": "Numa apresentação online, você mostra para a empresa os resultados do trimestre do seu time.",
+  "resumo": "Abrir e organizar uma apresentação com first of all, in terms of e take advantage of.",
+  "fechamento": false,
+  "novos": [
+    "first of all",
+    "in terms of",
+    "take advantage of",
+    "quiet week"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Organizar a fala"
+    },
+    {
+      "t": "p",
+      "c": "**First of all** = antes de mais nada. **In terms of** + substantivo = em termos de. **take advantage of** + substantivo = aproveitar algo. **quiet week** = semana tranquila."
+    },
+    {
+      "t": "warn",
+      "c": "Aproveitar a semana = **take advantage of** the week (não: take profit of). Em termos de = **in terms of** (não: in terms to)."
+    },
+    {
+      "t": "ex",
+      "c": "In terms of performance, the new version is much faster.\nEm termos de desempenho, a nova versão é muito mais rápida."
+    }
+  ],
+  "imagem": "🎤📊👥",
+  "visualizacao": "Você está diante da empresa toda numa apresentação online. O primeiro slide mostra um gráfico subindo; você ajeita o microfone e respira antes de começar.",
+  "foto_busca": "business presentation quarterly results",
+  "trechos": [
+    {
+      "id": "f-f9c317",
+      "quem": "voce",
+      "cod": "First of all, thank you all for coming.",
+      "dica": "Antes de mais nada, obrigado a todos por virem.",
+      "pt_f": "Antes de mais nada, obrigada a todos por virem.",
+      "img": "🎤👋🙏",
+      "alvo": "First of all",
+      "alvo_pt": "Antes de mais nada",
+      "conceito": "First of all = antes de mais nada, para abrir a fala.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2870234,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Thank you all for coming.\" (acrescentado First of all); PT reescrito (original: \"Obrigado a todos por virem.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1d4fea",
+      "quem": "voce",
+      "cod": "In terms of performance, the new version is much faster.",
+      "dica": "Em termos de desempenho, a nova versão é muito mais rápida.",
+      "img": "⚡📱📈",
+      "alvo": "In terms of",
+      "alvo_pt": "Em termos de",
+      "conceito": "em termos de = in terms of (não: in terms to).",
+      "registro": "neutro",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1e649a",
+      "quem": "voce",
+      "cod": "In terms of users, we grew twenty percent this quarter.",
+      "dica": "Em termos de usuários, a gente cresceu vinte por cento neste trimestre.",
+      "img": "👥📈🗓️",
+      "alvo": "In terms of",
+      "alvo_pt": "Em termos de",
+      "conceito": "por cento = percent (nunca o símbolo).",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "grew",
+          "aceita": [
+            "grew by"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-647961",
+      "quem": "voce",
+      "cod": "We had a quiet week in May, so we finally fixed some old bugs.",
+      "dica": "Tivemos uma semana tranquila em maio, então finalmente corrigimos uns bugs antigos.",
+      "img": "🌤️🐞🧹",
+      "alvo": "quiet week",
+      "alvo_pt": "semana tranquila",
+      "conceito": "quiet week = semana tranquila, com pouco movimento; em maio = in May.",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ec86b3",
+      "quem": "voce",
+      "cod": "We also took advantage of a discount from our hardware supplier.",
+      "dica": "A gente também aproveitou um desconto do nosso fornecedor de hardware.",
+      "img": "💻🏷️💰",
+      "alvo": "took advantage of",
+      "alvo_pt": "aproveitou",
+      "conceito": "aproveitar algo = take advantage of + substantivo (não: take profit of).",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "profit"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9d1e17",
+      "quem": "voce",
+      "cod": "Next week should be a quiet week for most of us.",
+      "dica": "A semana que vem deve ser uma semana tranquila para a maioria de nós.",
+      "img": "📅😌🏖️",
+      "alvo": "quiet week",
+      "alvo_pt": "semana tranquila",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d06182",
+      "quem": "sarah",
+      "contexto": "f-9d1e17",
+      "cod": "Great. Let's take advantage of the quiet week to clean up the code.",
+      "dica": "Ótimo. Vamos aproveitar a semana tranquila para limpar o código.",
+      "img": "🧹💻✨",
+      "alvo": "take advantage of",
+      "alvo_pt": "aproveitar",
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-68fb44",
+      "quem": "voce",
+      "contexto": "Your team did an amazing job this quarter.",
+      "cod": "First of all, it wasn't just my team.",
+      "dica": "Antes de mais nada, não foi só o meu time.",
+      "img": "👥🤝🏆",
+      "alvo": "First of all",
+      "alvo_pt": "Antes de mais nada",
+      "conceito": "Não foi = it wasn't: o it é obrigatório.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "just",
+          "aceita": [
+            "only"
+          ]
+        }
+      ]
+    }
+  ]
+}

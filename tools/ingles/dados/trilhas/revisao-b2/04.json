@@ -1,0 +1,254 @@
+{
+  "id": "revisao-b2.checkpoint-resumo-e-decisao",
+  "trilha": "revisao-b2",
+  "nome": "Checkpoint: resumo e decisão",
+  "emoji": "🏁",
+  "cena": "No fim do dia, você resume as decisões da reunião para quem não estava lá.",
+  "resumo": "Checkpoint do B2: resumir com to sum up, take on, will have been fixed, should have been e it's time we.",
+  "fechamento": false,
+  "novos": [],
+  "apoio": [
+    "to sum up",
+    "take on",
+    "by the time",
+    "future perfect passivo",
+    "should have been",
+    "it's time we + passado",
+    "move on"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Checkpoint do B2"
+    },
+    {
+      "t": "p",
+      "c": "Resumir: **To sum up,...** Assumir: **take on**. Antes do lançamento: **By the time we launch, ... will have been fixed.** Hora de agir: **it's time we** + passado."
+    },
+    {
+      "t": "warn",
+      "c": "Depois de by the time, when e if, presente para o futuro: by the time we launch (não: will launch)."
+    },
+    {
+      "t": "ex",
+      "c": "By the time we launch, all the critical bugs will have been fixed.\nQuando a gente lançar, todos os bugs críticos vão ter sido corrigidos."
+    }
+  ],
+  "imagem": "🏁📝✅",
+  "visualizacao": "É fim do dia. Você abre o documento da reunião e escreve o resumo para quem não estava lá: decisões, datas e quem assumiu o quê. O café esfria ao lado do teclado.",
+  "foto_busca": "meeting notes laptop evening",
+  "trechos": [
+    {
+      "id": "f-5dc218",
+      "quem": "voce",
+      "cod": "To sum up, the launch has slipped to June.",
+      "dica": "Resumindo, o lançamento escorregou para junho.",
+      "img": "📝📅➡️",
+      "alvo": "To sum up",
+      "alvo_pt": "Resumindo",
+      "conceito": "To sum up = resumindo, para fechar a reunião.",
+      "var": [
+        {
+          "em": "has slipped",
+          "aceita": [
+            "slipped"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4e9e1c",
+      "quem": "voce",
+      "cod": "Ana has agreed to take on the onboarding screens.",
+      "dica": "A Ana concordou em assumir as telas de onboarding.",
+      "img": "🙋‍♀️📱✅",
+      "alvo": "take on",
+      "alvo_pt": "assumir",
+      "conceito": "assumir uma tarefa = take on (não: assume).",
+      "var": [
+        {
+          "em": "has agreed",
+          "aceita": [
+            "agreed"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR60"
+      ],
+      "armadilhas": [
+        "assume"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2955b0",
+      "quem": "voce",
+      "cod": "By the time we launch, all the critical bugs will have been fixed.",
+      "dica": "Quando a gente lançar, todos os bugs críticos vão ter sido corrigidos.",
+      "img": "🐞🔧🚀",
+      "alvo": "will have been fixed",
+      "alvo_pt": "vão ter sido corrigidos",
+      "conceito": "Futuro perfeito na passiva: will have been + particípio. By the time + presente.",
+      "var": [
+        {
+          "em": "By the time",
+          "aceita": [
+            "Before",
+            "When"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28",
+        "BR58"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-499ff0",
+      "quem": "voce",
+      "cod": "I'm aware that the delay will frustrate some people.",
+      "dica": "Estou ciente de que o atraso vai frustrar algumas pessoas.",
+      "img": "⏳😞👥",
+      "alvo": "frustrate",
+      "alvo_pt": "frustrar",
+      "conceito": "be aware that = estar ciente de que. frustrate = frustrar.",
+      "opcional": [
+        "that"
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 9009605,
+        "en_autor": "CK",
+        "pt_id": 9035853,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-64bf85",
+      "quem": "voce",
+      "cod": "Sarah thinks the client should have been told much earlier.",
+      "dica": "A Sarah acha que o cliente deveria ter sido avisado muito antes.",
+      "img": "👩‍💼📢⏰",
+      "alvo": "should have been told",
+      "alvo_pt": "deveria ter sido avisado",
+      "conceito": "Passiva com modal no passado: should have been told. Sarah thinks, com -s.",
+      "var": [
+        {
+          "em": "much earlier",
+          "aceita": [
+            "a lot earlier"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR58",
+        "BR02"
+      ],
+      "armadilhas": [
+        "think"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-44284f",
+      "quem": "voce",
+      "cod": "If we had trimmed the scope sooner, we wouldn't be this far behind.",
+      "dica": "Se a gente tivesse enxugado o escopo antes, não estaria tão atrasado.",
+      "img": "✂️⏪🐢",
+      "alvo": "If we had trimmed",
+      "alvo_pt": "Se a gente tivesse enxugado",
+      "conceito": "Mista: If + had + particípio (passado), wouldn't + verbo (agora). Não: If we would have.",
+      "var": [
+        {
+          "em": "sooner",
+          "aceita": [
+            "earlier"
+          ]
+        },
+        {
+          "em": "this far behind",
+          "aceita": [
+            "so far behind"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-722195",
+      "quem": "voce",
+      "cod": "The team is used to working under pressure, but not like this.",
+      "dica": "O time está acostumado a trabalhar sob pressão, mas não desse jeito.",
+      "img": "👥😓⏱️",
+      "alvo": "is used to working",
+      "alvo_pt": "está acostumado a trabalhar",
+      "conceito": "be used to + -ing = estar acostumado a (não: is used to work).",
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR49"
+      ],
+      "armadilhas": [
+        "work"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-de6ae7",
+      "quem": "voce",
+      "cod": "Nobody wanted this delay, but it's time we accepted it and moved on.",
+      "dica": "Ninguém queria esse atraso, mas está na hora de a gente aceitar isso e seguir em frente.",
+      "img": "🤝➡️🌅",
+      "alvo": "it's time we accepted",
+      "alvo_pt": "está na hora de a gente aceitar",
+      "conceito": "It's time we + passado = está na hora de a gente... move on = seguir em frente.",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR60"
+      ],
+      "armadilhas": [
+        "accept"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

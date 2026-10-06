@@ -1,0 +1,246 @@
+{
+  "id": "dev-docs-email.nova-versao-e-e-mail-ao-cliente",
+  "trilha": "dev-docs-email",
+  "nome": "Nova versão e e-mail ao cliente",
+  "emoji": "🚀",
+  "cena": "Sexta-feira: você atualiza o README da versão nova e escreve ao cliente sobre a entrega.",
+  "resumo": "README, documentação e e-mail ao cliente, cada texto no seu registro.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "README e e-mail no mesmo dia"
+    },
+    {
+      "t": "p",
+      "c": "No README, imperativo e passiva: **Install..., Make sure that..., was removed.** No e-mail: **I hope you're doing well. I've attached... Could you please confirm...?**"
+    },
+    {
+      "t": "tip",
+      "c": "O mesmo assunto muda de tom: Certifique-se (README) x dá uma olhada (chat) x Você poderia confirmar? (e-mail ao cliente)."
+    },
+    {
+      "t": "warn",
+      "c": "Code é incontável: your code doesn't use... (não: your codes don't use)."
+    },
+    {
+      "t": "ex",
+      "c": "Could you please confirm that the login issue was fixed?\nVocê poderia confirmar que o problema do login foi corrigido?"
+    }
+  ],
+  "imagem": "🚀📄✉️",
+  "visualizacao": "Sexta à tarde, a versão nova acabou de ir pro ar. Você fecha o README atualizado, abre um e-mail em branco para o cliente e respira fundo antes do fim de semana.",
+  "foto_busca": "developer laptop office afternoon",
+  "trechos": [
+    {
+      "id": "f-4f3199",
+      "quem": "voce",
+      "cod": "Install the latest version and run the tests again.",
+      "dica": "Instale a versão mais recente e rode os testes de novo.",
+      "img": "📦🧪",
+      "alvo": "Install",
+      "alvo_pt": "Instale",
+      "conceito": "Passos de README no imperativo: Install..., run...",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7b1ef3",
+      "quem": "voce",
+      "cod": "Make sure that your code doesn't use the deprecated method.",
+      "dica": "Certifique-se de que seu código não usa o método obsoleto.",
+      "img": "✅⚠️",
+      "alvo": "Make sure that",
+      "alvo_pt": "Certifique-se de que",
+      "conceito": "your code doesn't (code é incontável e pede does).",
+      "opcional": [
+        "that"
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22",
+        "BR07"
+      ],
+      "armadilhas": [
+        "codes",
+        "don't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8c6f27",
+      "quem": "voce",
+      "cod": "The old login method was removed in version 3.",
+      "dica": "O método de login antigo foi removido na versão 3.",
+      "img": "🗑️🔐",
+      "alvo": "was removed",
+      "alvo_pt": "foi removido",
+      "conceito": "foi removido = was removed (passiva no passado).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58",
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-852fb2",
+      "quem": "voce",
+      "cod": "This version has no breaking changes.",
+      "dica": "Esta versão não tem nenhuma mudança incompatível.",
+      "img": "😌🧩",
+      "alvo": "breaking changes",
+      "alvo_pt": "mudança incompatível",
+      "conceito": "não tem nenhuma = has no / doesn't have any (uma negação só).",
+      "var": [
+        {
+          "em": "has no",
+          "aceita": [
+            "doesn't have any"
+          ]
+        },
+        {
+          "em": "changes",
+          "aceita": [
+            "change"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR25"
+      ],
+      "armadilhas": [
+        "nothing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2d32bc",
+      "quem": "voce",
+      "cod": "Returns false if the user is not logged in.",
+      "dica": "Retorna false se o usuário não estiver logado.",
+      "img": "🔒❌",
+      "alvo": "Returns",
+      "alvo_pt": "Retorna",
+      "conceito": "se não estiver = if... is not (presente depois do if).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f40476",
+      "quem": "voce",
+      "cod": "I hope you're doing well. I've attached the new version of the proposal.",
+      "dica": "Espero que você esteja bem. Anexei a nova versão da proposta.",
+      "img": "📎📑",
+      "alvo": "I hope you're doing well",
+      "alvo_pt": "Espero que você esteja bem",
+      "conceito": "Anexei = I've attached (aceita também I attached).",
+      "var": [
+        {
+          "em": "I've attached",
+          "aceita": [
+            "I attached"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c964a8",
+      "quem": "voce",
+      "cod": "By the way, the new version is much faster.",
+      "dica": "Aliás, a versão nova é muito mais rápida.",
+      "img": "⚡🚀",
+      "alvo": "By the way",
+      "alvo_pt": "Aliás",
+      "conceito": "muito mais rápida = much faster (não: very faster).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR23"
+      ],
+      "armadilhas": [
+        "very"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-35555b",
+      "quem": "voce",
+      "cod": "Could you please confirm that the login issue was fixed?",
+      "dica": "Você poderia confirmar que o problema do login foi corrigido?",
+      "img": "🔐🔧",
+      "alvo": "confirm",
+      "alvo_pt": "confirmar",
+      "conceito": "foi corrigido = was fixed (passiva no passado).",
+      "opcional": [
+        "that",
+        "please"
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58",
+        "BR24"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "issue",
+          "aceita": [
+            "problem"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8eea21",
+      "quem": "cliente",
+      "contexto": "f-35555b",
+      "cod": "Yes, it was fixed yesterday. Thanks for checking!",
+      "dica": "Sim, foi corrigido ontem. Obrigado por verificar!",
+      "img": "✅🙌",
+      "alvo": "Thanks for checking",
+      "alvo_pt": "Obrigado por verificar",
+      "conceito": "Obrigado por + verbo = Thanks for + -ing.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR52"
+      ],
+      "armadilhas": [
+        "check",
+        "was"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2dc369",
+      "quem": "voce",
+      "contexto": "f-8eea21",
+      "cod": "Perfect, thanks! Have a great weekend.",
+      "dica": "Perfeito, obrigado! Tenha um ótimo fim de semana.",
+      "pt_f": "Perfeito, obrigada! Tenha um ótimo fim de semana.",
+      "img": "🎉🌅",
+      "alvo": "Have a great weekend",
+      "alvo_pt": "Tenha um ótimo fim de semana",
+      "conceito": "Despedida de sexta: Have a great weekend.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

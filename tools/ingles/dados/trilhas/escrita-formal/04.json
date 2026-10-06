@@ -1,0 +1,239 @@
+{
+  "id": "escrita-formal.obrigado-pela-paciencia",
+  "trilha": "escrita-formal",
+  "nome": "Obrigado pela paciência",
+  "emoji": "🙏",
+  "cena": "Você encerra a troca de e-mails com o fornecedor depois que tudo foi resolvido.",
+  "resumo": "Fechar e-mails formais: further information, prompt reply, I look forward to your reply, Sincerely.",
+  "fechamento": false,
+  "novos": [
+    "further information",
+    "I look forward to your reply",
+    "sincerely",
+    "prompt reply"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fechar deixando o canal aberto"
+    },
+    {
+      "t": "p",
+      "c": "Agradeça (**Thank you for your prompt reply**), ofereça ajuda (**Please let me know if you need any further information**) e feche: **I look forward to your reply. Sincerely,**"
+    },
+    {
+      "t": "warn",
+      "c": "Aguardo a sua resposta = I look forward to your reply / to hearing from you (não: I look forward to hear)."
+    },
+    {
+      "t": "ex",
+      "c": "I look forward to your reply.\nAguardo a sua resposta."
+    }
+  ],
+  "imagem": "🙏📧✅",
+  "visualizacao": "O problema foi resolvido e a fatura corrigida chegou. Você relê o último e-mail do fornecedor com alívio e escreve uma resposta curta e cordial.",
+  "foto_busca": "relieved person reading email laptop",
+  "trechos": [
+    {
+      "id": "f-a5032a",
+      "quem": "atendente",
+      "cod": "We sincerely apologize for our error.",
+      "dica": "Pedimos sinceras desculpas pelo nosso erro.",
+      "img": "🙇🧾",
+      "alvo": "sincerely",
+      "alvo_pt": "sinceras",
+      "conceito": "apologize for = pedir desculpas por (não: apologize by).",
+      "registro": "formal",
+      "armadilhas": [
+        "sincere",
+        "by"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2953800,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT do Tatoeba (Nós sinceramente pedimos desculpas...) literal demais; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "error",
+          "aceita": [
+            "mistake"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-160dd9",
+      "quem": "atendente",
+      "cod": "For further information, please contact our billing team.",
+      "dica": "Para mais informações, entre em contato com a nossa equipe de faturamento.",
+      "img": "📚📞",
+      "alvo": "further information",
+      "alvo_pt": "mais informações",
+      "conceito": "information é incontável: further information (não: informations).",
+      "registro": "formal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "informations",
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-582158",
+      "quem": "voce",
+      "contexto": "f-a5032a",
+      "cod": "Thank you for your prompt reply and for fixing the invoice.",
+      "dica": "Obrigado pela sua pronta resposta e por corrigir a fatura.",
+      "pt_f": "Obrigada pela sua pronta resposta e por corrigir a fatura.",
+      "img": "⚡📩",
+      "alvo": "prompt reply",
+      "alvo_pt": "pronta resposta",
+      "conceito": "Depois de preposição, -ing: for fixing (não: for fix).",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "fix",
+        "quick"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ae791b",
+      "quem": "voce",
+      "cod": "Please let me know if you need any further information.",
+      "dica": "Por favor, me avise se precisar de mais alguma informação.",
+      "img": "📋🙋",
+      "alvo": "further information",
+      "alvo_pt": "mais alguma informação",
+      "conceito": "any further information = mais alguma informação (incontável, sem -s).",
+      "registro": "formal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "informations",
+        "advise"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1860622,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Let me know if you need anything.\"; anything → any further information; + Please (registro formal); PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-86a37a",
+      "quem": "voce",
+      "cod": "I look forward to your reply regarding the new due date.",
+      "dica": "Aguardo a sua resposta em relação à nova data de vencimento.",
+      "img": "⏳📅",
+      "alvo": "I look forward to your reply",
+      "alvo_pt": "Aguardo a sua resposta",
+      "conceito": "look forward to + substantivo ou -ing (não: look forward to hear).",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "hear",
+        "wait"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0dc0d1",
+      "quem": "voce",
+      "cod": "Sincerely, {nome} {sobrenome}.",
+      "dica": "Cordialmente, {nome} {sobrenome}.",
+      "img": "✍️🤝",
+      "alvo": "Sincerely",
+      "alvo_pt": "Cordialmente",
+      "conceito": "Sincerely, = Cordialmente, (fecho formal). Best regards, = Atenciosamente,.",
+      "registro": "formal",
+      "armadilhas": [
+        "regards",
+        "cordially"
+      ],
+      "bio": [
+        "nome",
+        "sobrenome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-815c53",
+      "quem": "atendente",
+      "cod": "Thank you for your kind words and your prompt reply.",
+      "dica": "Obrigado pelas suas palavras gentis e pela sua pronta resposta.",
+      "img": "💬💐",
+      "alvo": "prompt reply",
+      "alvo_pt": "pronta resposta",
+      "conceito": "kind words = palavras gentis.",
+      "registro": "formal",
+      "armadilhas": [
+        "quick",
+        "gentle"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2239665,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Thank you for your kind words.\"; + and your prompt reply; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e69ae5",
+      "quem": "atendente",
+      "cod": "Please review the attached contract. I look forward to your reply.",
+      "dica": "Por favor, revise o contrato em anexo. Aguardo a sua resposta.",
+      "img": "📎📄",
+      "alvo": "I look forward to your reply",
+      "alvo_pt": "Aguardo a sua resposta",
+      "conceito": "attached = em anexo; vem antes do substantivo: the attached contract.",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "hear",
+        "annex"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

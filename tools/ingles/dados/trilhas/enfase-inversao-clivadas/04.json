@@ -1,0 +1,255 @@
+{
+  "id": "enfase-inversao-clivadas.o-motivo-pelo-qual-escrevo",
+  "trilha": "enfase-inversao-clivadas",
+  "nome": "O motivo pelo qual escrevo",
+  "emoji": "✍️",
+  "cena": "Você escreve à Sarah e a outro departamento pedindo prorrogação e acesso temporário a um sistema.",
+  "resumo": "Fazer pedidos formais e destacar o essencial com The reason I'm writing is... e All I want / All we need is...",
+  "fechamento": false,
+  "novos": [
+    "the reason I'm writing",
+    "all we need",
+    "all I want",
+    "straight answer"
+  ],
+  "apoio": [
+    "extension",
+    "temporary",
+    "stable"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O motivo pelo qual escrevo"
+    },
+    {
+      "t": "p",
+      "c": "**The reason I'm writing is** + to + verbo abre um pedido formal. **All I want / All we need is** + substantivo = tudo o que eu quero / precisamos é..."
+    },
+    {
+      "t": "warn",
+      "c": "Não: The reason because I'm writing / The motive. E tudo o que precisamos = All we need (não: All that we need of)."
+    },
+    {
+      "t": "ex",
+      "c": "The reason I'm writing is to ask for an extension.\nO motivo pelo qual estou escrevendo é pedir uma prorrogação."
+    }
+  ],
+  "imagem": "✉️⏳🔑",
+  "visualizacao": "Você está com dois e-mails abertos lado a lado: um para a Sarah, outro para um departamento que não responde. O relógio marca quase seis da tarde e você escolhe cada palavra.",
+  "foto_busca": "formal email request office desk",
+  "trechos": [
+    {
+      "id": "f-b1b7d2",
+      "quem": "voce",
+      "cod": "The reason I'm writing is to ask for an extension.",
+      "dica": "O motivo pelo qual estou escrevendo é pedir uma prorrogação.",
+      "img": "✉️🗓️➕",
+      "alvo": "The reason I'm writing",
+      "alvo_pt": "O motivo pelo qual estou escrevendo",
+      "conceito": "The reason (why) I'm writing is + to + verbo (não: The reason because...).",
+      "var": [
+        {
+          "em": "The reason I'm",
+          "aceita": [
+            "The reason why I'm"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "because",
+        "motive"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9ab8b0",
+      "quem": "voce",
+      "cod": "The reason I'm writing is to request temporary access to the billing system.",
+      "dica": "O motivo pelo qual estou escrevendo é solicitar acesso temporário ao sistema de cobrança.",
+      "img": "🔑⏳🧾",
+      "alvo": "The reason I'm writing",
+      "alvo_pt": "O motivo pelo qual estou escrevendo",
+      "conceito": "solicitar = request (formal); acesso, sem artigo, como em português.",
+      "var": [
+        {
+          "em": "The reason I'm",
+          "aceita": [
+            "The reason why I'm"
+          ]
+        },
+        {
+          "em": "request",
+          "aceita": [
+            "ask for"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "because",
+        "an"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3de9ed",
+      "quem": "voce",
+      "cod": "All we need is a little more time.",
+      "dica": "Tudo o que precisamos é de um pouco mais de tempo.",
+      "img": "⏳🙏",
+      "alvo": "All we need",
+      "alvo_pt": "Tudo o que precisamos",
+      "conceito": "tudo o que precisamos = All we need (sem that e sem of).",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "that",
+        "of"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2641983,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e92aac",
+      "quem": "voce",
+      "cod": "All we need is read access. We won't change any data.",
+      "dica": "Tudo o que precisamos é de acesso de leitura. Não vamos alterar nenhum dado.",
+      "img": "👀🔒",
+      "alvo": "All we need",
+      "alvo_pt": "Tudo o que precisamos",
+      "conceito": "data é incontável: any data (não: any datas).",
+      "var": [
+        {
+          "em": "won't",
+          "aceita": [
+            "aren't going to"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "of",
+        "datas"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8d2d4d",
+      "quem": "sarah",
+      "contexto": "f-b1b7d2",
+      "cod": "All I want is a realistic date. Does Friday work for you?",
+      "dica": "Tudo o que eu quero é uma data realista. Sexta funciona pra você?",
+      "img": "📅🤔",
+      "alvo": "All I want",
+      "alvo_pt": "Tudo o que eu quero",
+      "conceito": "Pergunta com does: Does Friday work? (dia da semana com maiúscula).",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR15"
+      ],
+      "armadilhas": [
+        "works",
+        "friday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aedaf2",
+      "quem": "voce",
+      "contexto": "f-8d2d4d",
+      "cod": "Friday works. All I want is a stable release.",
+      "dica": "Sexta funciona. Tudo o que eu quero é uma versão estável.",
+      "img": "📦✅",
+      "alvo": "All I want",
+      "alvo_pt": "Tudo o que eu quero",
+      "conceito": "Friday works: 3ª pessoa com -s.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "work",
+        "that"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "release",
+          "aceita": [
+            "version"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-00f242",
+      "quem": "voce",
+      "cod": "Could you give me a straight answer by Thursday?",
+      "dica": "Você poderia me dar uma resposta direta até quinta?",
+      "img": "❓➡️✅",
+      "alvo": "straight answer",
+      "alvo_pt": "resposta direta",
+      "conceito": "resposta direta = straight answer; até quinta (prazo) = by Thursday.",
+      "registro": "formal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "direct",
+        "until"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf8385",
+      "quem": "voce",
+      "cod": "I've asked them twice. All I want is a straight answer.",
+      "dica": "Perguntei pra eles duas vezes. Tudo o que eu quero é uma resposta direta.",
+      "img": "🔁😤",
+      "alvo": "straight answer",
+      "alvo_pt": "resposta direta",
+      "conceito": "straight answer: sem rodeios, sim ou não. I've asked: a frustração continua.",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "direct"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I've asked",
+          "aceita": [
+            "I asked"
+          ]
+        }
+      ]
+    }
+  ]
+}

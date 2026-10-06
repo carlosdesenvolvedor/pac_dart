@@ -1,0 +1,279 @@
+{
+  "id": "phrasal-verbs-b2.cena-planejar-a-migracao",
+  "trilha": "phrasal-verbs-b2",
+  "nome": "Cena: planejar a migração",
+  "emoji": "🪝",
+  "cena": "Na reunião final antes da migração, o time divide as tarefas e combina o plano B.",
+  "resumo": "Fechamento: phrasal verbs de investigação, resultado e tarefas na mesma reunião, com roll out e roll back juntos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão da trilha"
+    },
+    {
+      "t": "tip",
+      "c": "aguentar = put up with · investigar = look into · revisar = go through · descartar = rule out · assumir = take on · substituir = fill in for · dar certo = work out · compensar = pay off."
+    },
+    {
+      "t": "tip",
+      "c": "roll out = lançar aos poucos · roll back = reverter. Com pronome: roll it back."
+    },
+    {
+      "t": "warn",
+      "c": "BR60: na reunião, prefira o phrasal verb ao cognato latino: rule out (não: discard), look into (não: investigate), put up with (não: support)."
+    }
+  ],
+  "imagem": "🗺️🔀🚀",
+  "visualizacao": "Última reunião antes da migração. O quadro do projeto está cheio de cartões coloridos; a Sarah lê os riscos em voz alta e o Mike vai distribuindo os nomes.",
+  "foto_busca": "team planning meeting kanban board",
+  "trechos": [
+    {
+      "id": "f-6dde8f",
+      "quem": "mike",
+      "cod": "We ruled out a full rewrite, so we'll roll out the changes gradually.",
+      "dica": "Descartamos reescrever tudo, então vamos lançar as mudanças aos poucos.",
+      "img": "🗑️📝🪜",
+      "alvo": "ruled out",
+      "alvo_pt": "Descartamos",
+      "conceito": "roll out = lançar aos poucos, por etapas.",
+      "var": [
+        {
+          "em": "we'll roll out",
+          "aceita": [
+            "we're going to roll out"
+          ]
+        },
+        {
+          "em": "a full rewrite",
+          "aceita": [
+            "rewriting everything"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "armadilhas": [
+        "discarded"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3bc75e",
+      "quem": "sarah",
+      "contexto": "f-6dde8f",
+      "cod": "If anything goes wrong, can we roll it back quickly?",
+      "dica": "Se der algum problema, a gente consegue reverter rápido?",
+      "img": "⚠️⏪",
+      "alvo": "roll it back",
+      "alvo_pt": "reverter",
+      "conceito": "roll back = reverter (o contrário de roll out); com pronome: roll it back.",
+      "var": [
+        {
+          "em": "anything",
+          "aceita": [
+            "something"
+          ]
+        },
+        {
+          "em": "quickly",
+          "aceita": [
+            "fast"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR28"
+      ],
+      "armadilhas": [
+        "go",
+        "revert"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9afa73",
+      "quem": "voce",
+      "contexto": "f-3bc75e",
+      "cod": "Yes, and I'll go through the rollback plan again today.",
+      "dica": "Sim, e vou revisar o plano de rollback de novo hoje.",
+      "img": "📋🔍",
+      "alvo": "go through",
+      "alvo_pt": "revisar",
+      "conceito": "go through = revisar com cuidado, item por item.",
+      "var": [
+        {
+          "em": "I'll",
+          "aceita": [
+            "I'm going to"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "armadilhas": [
+        "review",
+        "revise"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bdd470",
+      "quem": "voce",
+      "cod": "Who's going to take on the database part?",
+      "dica": "Quem vai assumir a parte do banco de dados?",
+      "img": "🗄️🙋",
+      "alvo": "take on",
+      "alvo_pt": "assumir",
+      "conceito": "assumir uma tarefa = take on (não: assume, que é supor).",
+      "var": [
+        {
+          "em": "Who's going to",
+          "aceita": [
+            "Who will"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "assume"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bc79d2",
+      "quem": "ana",
+      "contexto": "f-bdd470",
+      "cod": "I'll take it on if someone fills in for me on Friday.",
+      "dica": "Eu assumo, se alguém me substituir na sexta.",
+      "img": "🙋🔄📅",
+      "alvo": "take it on",
+      "alvo_pt": "assumo",
+      "conceito": "if + presente para o futuro (someone fills); com pronome: take it on.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR28"
+      ],
+      "armadilhas": [
+        "will",
+        "fill"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0178a9",
+      "quem": "sarah",
+      "cod": "We've put up with the vendor's delays for three months.",
+      "dica": "Faz três meses que a gente aguenta os atrasos do fornecedor.",
+      "img": "⏳😤📦",
+      "alvo": "put up with",
+      "alvo_pt": "aguenta",
+      "conceito": "Faz X que + presente = present perfect + for (não: since three months).",
+      "var": [
+        {
+          "em": "We've put up",
+          "aceita": [
+            "We've been putting up"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR63"
+      ],
+      "armadilhas": [
+        "support",
+        "since",
+        "during"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8075265,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"We've put up with this for three years.\"; this for three years → the vendor's delays for three months; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b1d743",
+      "quem": "mike",
+      "contexto": "f-0178a9",
+      "cod": "Don't worry, we'll look into other options after the migration.",
+      "dica": "Fica tranquila, vamos investigar outras opções depois da migração.",
+      "img": "🔍🧭",
+      "alvo": "look into",
+      "alvo_pt": "investigar",
+      "conceito": "investigar opções = look into options (mais natural que investigate).",
+      "var": [
+        {
+          "em": "we'll",
+          "aceita": [
+            "we're going to"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "armadilhas": [
+        "investigate"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5b0127",
+      "quem": "voce",
+      "cod": "If the plan works out, all those late nights will pay off.",
+      "dica": "Se o plano der certo, todas aquelas noites até tarde vão compensar.",
+      "img": "🌙✅🏆",
+      "alvo": "works out",
+      "alvo_pt": "der certo",
+      "conceito": "work out = dar certo; pay off = compensar; if + presente (não: if the plan will work out).",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR28",
+        "BR60"
+      ],
+      "armadilhas": [
+        "will",
+        "work"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,351 @@
+{
+  "id": "present-perfect-just-yet.acabei-de-terminar-just",
+  "trilha": "present-perfect-just-yet",
+  "nome": "Acabei de terminar: just",
+  "emoji": "⏱️",
+  "cena": "No chat do time, você e os colegas dão notícias rápidas do que acabaram de fazer.",
+  "resumo": "Dar uma notícia fresca com have/has just + particípio (acabei de, acabou de).",
+  "fechamento": false,
+  "novos": [
+    "report",
+    "finished",
+    "landed",
+    "sent",
+    "arrived"
+  ],
+  "apoio": [
+    "just (acabar de)",
+    "left (particípio)",
+    "started"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Acabei de = I've just + particípio"
+    },
+    {
+      "t": "p",
+      "c": "Para dar uma notícia fresca: **have/has + just + particípio**. O *just* fica entre o auxiliar e o particípio."
+    },
+    {
+      "t": "ex",
+      "c": "I've just finished the report.\nAcabei de terminar o relatório."
+    },
+    {
+      "t": "ex",
+      "c": "Mike has just left the office.\nO Mike acabou de sair do escritório."
+    },
+    {
+      "t": "warn",
+      "c": "Nada de *ago* com present perfect (não: I've finished two minutes ago). O en-US também aceita *I just finished*. E 'tem' de existir é *there's* (BR03)."
+    }
+  ],
+  "imagem": "💬💻⏱️",
+  "visualizacao": "Você está no home office, com o chat do time aberto. As notificações pipocam sem parar: relatório pronto, avião pousando, notebook novo chegando.",
+  "foto_busca": "team chat laptop home office",
+  "trechos": [
+    {
+      "id": "f-9a7bde",
+      "quem": "voce",
+      "cod": "I've just finished the report.",
+      "dica": "Acabei de terminar o relatório.",
+      "img": "📄✅",
+      "alvo": "report",
+      "alvo_pt": "relatório",
+      "lit": "[lit.: eu tenho agorinha terminado o relatório]",
+      "conceito": "Acabei de = I've just + particípio. O just fica entre have e o particípio.",
+      "var": [
+        {
+          "em": "I've just finished",
+          "aceita": [
+            "I just finished"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "finished just",
+        "ago"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ee53dd",
+      "quem": "voce",
+      "contexto": "f-9a7bde",
+      "cod": "And I've just sent it to Mike.",
+      "dica": "E acabei de mandar pro Mike.",
+      "img": "📤👨‍💻",
+      "alvo": "sent",
+      "alvo_pt": "mandar",
+      "conceito": "send → sent. Mandei pro Mike = sent it to Mike: o it não some.",
+      "var": [
+        {
+          "em": "I've just sent",
+          "aceita": [
+            "I just sent"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "armadilhas": [
+        "sended",
+        "sent to mike"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4323fa",
+      "quem": "mike",
+      "contexto": "f-ee53dd",
+      "cod": "Thanks! There's a problem with the report.",
+      "dica": "Valeu! Tem um problema no relatório.",
+      "img": "🙏⚠️📄",
+      "alvo": "report",
+      "alvo_pt": "relatório",
+      "conceito": "Tem, no sentido de existir, é there's (não: has a problem).",
+      "var": [
+        {
+          "em": "with",
+          "aceita": [
+            "in"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have a",
+        "has a"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6a6d30",
+      "quem": "mike",
+      "cod": "We've just finished the meeting with the client.",
+      "dica": "A gente acabou de terminar a reunião com o cliente.",
+      "img": "🤝🏁",
+      "alvo": "finished",
+      "alvo_pt": "terminar",
+      "conceito": "finish → finished (regular). A gente acabou de = We've just.",
+      "var": [
+        {
+          "em": "We've just finished",
+          "aceita": [
+            "We just finished"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "we finished just"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fcce4d",
+      "quem": "sarah",
+      "cod": "Hi, everyone! I've just landed in Chicago. It's really cold!",
+      "dica": "Oi, pessoal! Acabei de pousar em Chicago. Está muito frio!",
+      "img": "🛬🥶",
+      "alvo": "landed",
+      "alvo_pt": "pousar",
+      "conceito": "land = pousar (avião). Está frio = It's cold: o it é obrigatório.",
+      "var": [
+        {
+          "em": "I've just landed",
+          "aceita": [
+            "I just landed"
+          ]
+        },
+        {
+          "em": "really",
+          "aceita": [
+            "very",
+            "so"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR01"
+      ],
+      "armadilhas": [
+        "is really cold",
+        "is very cold",
+        "arrived the plane"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b528fb",
+      "quem": "ana",
+      "contexto": "f-fcce4d",
+      "cod": "Sarah, I've just landed too! See you at the hotel.",
+      "dica": "Sarah, eu também acabei de pousar! Te vejo no hotel.",
+      "img": "✈️🏨👋",
+      "alvo": "landed",
+      "alvo_pt": "pousar",
+      "conceito": "too = também, no fim. See you at = te vejo no (lugar).",
+      "var": [
+        {
+          "em": "I've just landed",
+          "aceita": [
+            "I just landed"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR17"
+      ],
+      "armadilhas": [
+        "also landed",
+        "in the hotel"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d5398a",
+      "quem": "mike",
+      "cod": "My new laptop has just arrived!",
+      "dica": "Meu notebook novo acabou de chegar!",
+      "img": "💻📦🎉",
+      "alvo": "arrived",
+      "alvo_pt": "chegar",
+      "conceito": "laptop (EUA) = notebook (BR). Com he, she, it: has just.",
+      "var": [
+        {
+          "em": "has just arrived",
+          "aceita": [
+            "just arrived"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR08"
+      ],
+      "armadilhas": [
+        "have just",
+        "laptop new"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-268ef4",
+      "quem": "mike",
+      "cod": "The build has just finished.",
+      "dica": "O build acabou de terminar.",
+      "img": "🏗️✅",
+      "alvo": "finished",
+      "alvo_pt": "terminar",
+      "var": [
+        {
+          "em": "has just finished",
+          "aceita": [
+            "just finished"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have just"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-65761a",
+      "quem": "sarah",
+      "cod": "I've just arrived at the hotel.",
+      "dica": "Acabei de chegar no hotel.",
+      "img": "🏨🧳",
+      "alvo": "arrived",
+      "alvo_pt": "chegar",
+      "conceito": "arrive at + lugar (hotel, estação); arrive in + cidade (in Chicago).",
+      "var": [
+        {
+          "em": "I've just arrived",
+          "aceita": [
+            "I just arrived"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR17"
+      ],
+      "armadilhas": [
+        "arrived in the hotel",
+        "arrived to"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3012875,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "the station → the hotel; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-de18d6",
+      "quem": "ana",
+      "cod": "I've just sent you the new screens.",
+      "dica": "Acabei de te mandar as telas novas.",
+      "img": "🖼️📲",
+      "alvo": "sent",
+      "alvo_pt": "mandar",
+      "conceito": "send you X = te mandar X (sem to depois de send).",
+      "var": [
+        {
+          "em": "I've just sent",
+          "aceita": [
+            "I just sent"
+          ]
+        },
+        {
+          "em": "you the new screens",
+          "aceita": [
+            "the new screens to you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR08"
+      ],
+      "armadilhas": [
+        "sent to you the",
+        "screens new"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

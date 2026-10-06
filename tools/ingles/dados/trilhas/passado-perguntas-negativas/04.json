@@ -1,0 +1,249 @@
+{
+  "id": "passado-perguntas-negativas.cena-segunda-feira-de-novo",
+  "trilha": "passado-perguntas-negativas",
+  "nome": "Cena: segunda-feira de novo",
+  "emoji": "🔁",
+  "cena": "Mais uma segunda de manhã: numa chamada, você e o Mike comparam os fins de semana.",
+  "resumo": "Conversar sobre o fim de semana com Did...?, didn't e What did...?",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Afirmar, negar e perguntar no passado"
+    },
+    {
+      "t": "p",
+      "c": "Afirmativa: We **stayed** home. Negativa: We **didn't go** out. Pergunta: **Did** you **go**...?"
+    },
+    {
+      "t": "ex",
+      "c": "We didn't go out. We stayed home.\nA gente não saiu. Ficou em casa."
+    },
+    {
+      "t": "warn",
+      "c": "Com did e didn't, o verbo fica puro: Did you **go**? / I didn't **go**. (não: Did you went? / I didn't went)"
+    }
+  ],
+  "imagem": "📅🏟️🛋️",
+  "visualizacao": "Segunda de novo. O Mike entra na chamada de boné do time, ainda com sono, e você ri antes mesmo de ele falar do jogo.",
+  "foto_busca": "monday morning video call",
+  "trechos": [
+    {
+      "id": "f-05fd57",
+      "quem": "mike",
+      "cod": "Did you watch the game yesterday?",
+      "dica": "Você assistiu ao jogo ontem?",
+      "img": "📺🏟️",
+      "alvo": "Did you",
+      "alvo_pt": "Você assistiu",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR20"
+      ],
+      "armadilhas": [
+        "watched",
+        "you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aaf848",
+      "quem": "voce",
+      "contexto": "f-05fd57",
+      "cod": "No, I forgot to watch it.",
+      "dica": "Não, esqueci de assistir.",
+      "img": "🤦‍♂️📺",
+      "alvo": "forgot",
+      "alvo_pt": "esqueci",
+      "conceito": "O objeto é obrigatório: watch it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "forget",
+        "watch"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3823442,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I forgot to watch it.\"; PT original: \"Eu me esqueci de assistir.\"; No, acrescentado; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-eea94a",
+      "quem": "mike",
+      "contexto": "f-aaf848",
+      "cod": "So what did you do?",
+      "dica": "Então, o que você fez?",
+      "img": "🤔🗓️",
+      "alvo": "what did you do",
+      "alvo_pt": "o que você fez",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did",
+        "you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6329a5",
+      "quem": "voce",
+      "contexto": "f-eea94a",
+      "cod": "I didn't go out. I stayed home.",
+      "dica": "Não saí. Fiquei em casa.",
+      "img": "🏠🛋️",
+      "alvo": "didn't go out",
+      "alvo_pt": "Não saí",
+      "conceito": "Sair (de casa, para passear) = go out; didn't go out.",
+      "var": [
+        {
+          "em": "home",
+          "aceita": [
+            "at home"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "went",
+        "no"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4665606,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"We didn't go out last night.\"; PT original: \"Nós não saímos ontem à noite.\"; We → I; last night removido; acrescentado I stayed home; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f1926f",
+      "quem": "voce",
+      "cod": "How about you? Did you go to the game?",
+      "dica": "E você? Foi ao jogo?",
+      "img": "🏟️❓",
+      "alvo": "Did you go",
+      "alvo_pt": "Foi",
+      "conceito": "E você? = How about you? Foi...? = Did you go...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "went"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c8a04c",
+      "quem": "mike",
+      "contexto": "f-f1926f",
+      "cod": "Yes, but I didn't sleep well.",
+      "dica": "Sim, mas não dormi bem.",
+      "img": "🥱🛏️",
+      "alvo": "didn't sleep well",
+      "alvo_pt": "não dormi bem",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "slept",
+        "no"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1887202,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I didn't sleep well.\"; PT original: \"Não dormi bem.\"; Yes, but acrescentado; PT adaptado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-daadce",
+      "quem": "mike",
+      "cod": "Hey, did you see Sarah's email?",
+      "dica": "Ei, você viu o e-mail da Sarah?",
+      "img": "📧👀",
+      "alvo": "did you see",
+      "alvo_pt": "você viu",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR10"
+      ],
+      "armadilhas": [
+        "saw",
+        "you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0efc6c",
+      "quem": "voce",
+      "contexto": "f-daadce",
+      "cod": "No, I didn't. What did she say?",
+      "dica": "Não vi. O que ela disse?",
+      "img": "🙅‍♂️💬",
+      "alvo": "What did she say",
+      "alvo_pt": "O que ela disse",
+      "conceito": "Resposta curta: No, I didn't. Disse = say (puro depois de did).",
+      "var": [
+        {
+          "em": "No, I didn't.",
+          "aceita": [
+            "I didn't see it.",
+            "No, I didn't see it."
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR07"
+      ],
+      "armadilhas": [
+        "said"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 461204,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"What did she say?\"; PT original: \"O que ela disse?\"; No, I didn't. acrescentado; PT adaptado",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

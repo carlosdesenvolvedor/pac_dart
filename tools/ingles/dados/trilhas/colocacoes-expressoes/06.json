@@ -1,0 +1,193 @@
+{
+  "id": "colocacoes-expressoes.cena-noticia-ruim-com-educacao",
+  "trilha": "colocacoes-expressoes",
+  "nome": "Cena: notícia ruim com educação",
+  "emoji": "🔤",
+  "cena": "A Sarah precisa dar uma notícia ruim ao time, e você ajuda a conduzir a conversa.",
+  "resumo": "Conduzir uma conversa difícil com as colocações e expressões da trilha, sem itens novos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "first of all",
+    "I'm afraid",
+    "make a decision",
+    "no matter what",
+    "take a break",
+    "had better",
+    "in writing",
+    "pay attention to",
+    "no matter how",
+    "make a difference"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Notícia ruim com educação"
+    },
+    {
+      "t": "p",
+      "c": "Para dar a notícia: **I'm afraid...** Para avisar: **We'd better...** Para organizar: **First of all,...** Para tranquilizar: **No matter what happens,...**"
+    },
+    {
+      "t": "warn",
+      "c": "make x do: **make** a decision, an effort, a difference; **do** the review, the work, the dishes."
+    },
+    {
+      "t": "ex",
+      "c": "I'm afraid we need to make a tough decision about the project.\nInfelizmente a gente precisa tomar uma decisão difícil sobre o projeto."
+    }
+  ],
+  "imagem": "📉🗣️🤝",
+  "visualizacao": "A Sarah abre a câmera com a cara séria e o time fica em silêncio. Você vê a Ana franzir a testa e o Mike pegar o caderno, esperando a notícia.",
+  "foto_busca": "serious team meeting office",
+  "trechos": [
+    {
+      "id": "f-593ae1",
+      "quem": "sarah",
+      "cod": "First of all, thank you for making time for this meeting.",
+      "dica": "Antes de mais nada, obrigada por arrumarem um tempo para esta reunião.",
+      "img": "🙏⏰👥",
+      "alvo": "First of all",
+      "alvo_pt": "Antes de mais nada",
+      "conceito": "arrumar um tempo = make time.",
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0c0cce",
+      "quem": "sarah",
+      "cod": "I'm afraid we have to make a tough decision about the project.",
+      "dica": "Infelizmente a gente tem que tomar uma decisão difícil sobre o projeto.",
+      "img": "😟🧠📁",
+      "alvo": "make a tough decision",
+      "alvo_pt": "tomar uma decisão difícil",
+      "conceito": "tomar uma decisão (difícil) = make a (tough) decision.",
+      "blocos": [
+        9
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR32"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2269090,
+        "en_autor": "_undertoad",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"We have to make a decision.\" (acrescentado I'm afraid, tough e about the project); PT reescrito (original: \"Temos que tomar uma decisão.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a835ba",
+      "quem": "ana",
+      "contexto": "f-0c0cce",
+      "cod": "Can you give us a straight answer? Are we canceling it?",
+      "dica": "Você pode dar uma resposta direta pra gente? A gente vai cancelar?",
+      "img": "❓🎯📁",
+      "alvo": "straight answer",
+      "alvo_pt": "resposta direta",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eed06c",
+      "quem": "sarah",
+      "contexto": "f-a835ba",
+      "cod": "No matter what happens, nobody on this team will lose their job.",
+      "dica": "Aconteça o que acontecer, ninguém deste time vai perder o emprego.",
+      "img": "🛡️👥💼",
+      "alvo": "No matter what happens",
+      "alvo_pt": "Aconteça o que acontecer",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-08e69a",
+      "quem": "voce",
+      "cod": "Let's take a short break. Then we can do the review together.",
+      "dica": "Vamos fazer uma pausa curta. Depois a gente pode fazer a revisão junto.",
+      "img": "☕⏸️📋",
+      "alvo": "do the review",
+      "alvo_pt": "fazer a revisão",
+      "conceito": "do para tarefas (do the review); make para decisão, esforço e diferença.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR32"
+      ],
+      "armadilhas": [
+        "make"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6029d7",
+      "quem": "mike",
+      "cod": "We'd better send the client a summary in writing today.",
+      "dica": "É melhor a gente mandar um resumo por escrito pro cliente hoje.",
+      "img": "📧📝⚠️",
+      "alvo": "We'd better",
+      "alvo_pt": "É melhor a gente",
+      "conceito": "É melhor + verbo (aviso) = 'd better + verbo, sem to.",
+      "var": [
+        {
+          "em": "send the client a summary",
+          "aceita": [
+            "send a summary to the client"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-76e319",
+      "quem": "voce",
+      "cod": "Pay attention to the details, no matter how small they are.",
+      "dica": "Prestem atenção nos detalhes, por menores que sejam.",
+      "img": "🔍🧩👀",
+      "alvo": "no matter how small they are",
+      "alvo_pt": "por menores que sejam",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f6b4cd",
+      "quem": "sarah",
+      "cod": "Thanks, everyone. Your effort really makes a difference.",
+      "dica": "Obrigada, pessoal. O esforço de vocês realmente faz diferença.",
+      "img": "💖👥🙌",
+      "alvo": "makes a difference",
+      "alvo_pt": "faz diferença",
+      "conceito": "Your effort = it: makes com -s.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

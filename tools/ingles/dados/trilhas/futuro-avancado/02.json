@@ -1,0 +1,220 @@
+{
+  "id": "futuro-avancado.quando-voce-acordar-ja-mandei",
+  "trilha": "futuro-avancado",
+  "nome": "Quando você acordar, já vou ter mandado",
+  "emoji": "🌎",
+  "cena": "Você combina com o Mike, em Chicago, como passar o trabalho de um fuso para o outro sem ninguém ficar esperando.",
+  "resumo": "Combinar trabalho entre fusos com by then, won't have e before / by the time + presente.",
+  "fechamento": false,
+  "novos": [
+    "two hours behind",
+    "by then",
+    "two hours ahead",
+    "asynchronous"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fuso horário e prazos"
+    },
+    {
+      "t": "p",
+      "c": "Fuso: **two hours behind** (duas horas atrás) e **two hours ahead** (duas horas à frente). Prazo no futuro: **by then** (até lá) + **will / won't have + particípio**."
+    },
+    {
+      "t": "ex",
+      "c": "I won't have finished it by then, but I'll send you my notes.\nNão vou ter terminado até lá, mas te mando minhas anotações."
+    },
+    {
+      "t": "warn",
+      "c": "Antes de você acordar = before you **wake** up (nunca will depois de when, before, by the time). Duas horas atrás, de fuso = behind (não: ago)."
+    }
+  ],
+  "imagem": "🌎🕑💬",
+  "visualizacao": "No canto da sua tela, dois relógios: o da sua cidade e o de Chicago. Você está no segundo café do dia enquanto o Mike, ainda de cabelo molhado, entra na chamada.",
+  "foto_busca": "two clocks time zones desk",
+  "trechos": [
+    {
+      "id": "f-cf0147",
+      "quem": "mike",
+      "cod": "Remember, I'm two hours behind you.",
+      "dica": "Lembra, eu estou duas horas atrás de você.",
+      "img": "🕗⬅️",
+      "alvo": "two hours behind",
+      "alvo_pt": "duas horas atrás",
+      "lit": "[lit.: duas horas atrás de você]",
+      "conceito": "Fuso: duas horas atrás = two hours behind (não: two hours ago, que é passado).",
+      "registro": "informal",
+      "interferencias": [
+        "BR26"
+      ],
+      "armadilhas": [
+        "ago",
+        "late"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-27a474",
+      "quem": "voce",
+      "contexto": "f-cf0147",
+      "cod": "I know. I'm two hours ahead, so I start earlier.",
+      "dica": "Eu sei. Estou duas horas à frente, então começo mais cedo.",
+      "img": "🕙➡️🌅",
+      "alvo": "two hours ahead",
+      "alvo_pt": "duas horas à frente",
+      "conceito": "À frente (fuso) = ahead. Mais cedo = earlier.",
+      "registro": "informal",
+      "interferencias": [
+        "BR26"
+      ],
+      "armadilhas": [
+        "in front",
+        "before"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c06dce",
+      "quem": "mike",
+      "cod": "My call is at nine my time. Can you finish the review by then?",
+      "dica": "A minha call é às nove no meu horário. Você consegue terminar a revisão até lá?",
+      "img": "📞🕘❓",
+      "alvo": "by then",
+      "alvo_pt": "até lá",
+      "conceito": "by then = até lá (prazo). my time = no meu horário.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "until there",
+        "until then"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3327768,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: + 'My call is at nine my time.' e 'the review'; PT autoral",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-993ca6",
+      "quem": "voce",
+      "contexto": "f-c06dce",
+      "cod": "I won't have finished it by then, but I'll send you my notes.",
+      "dica": "Não vou ter terminado até lá, mas te mando minhas anotações.",
+      "img": "📝📤",
+      "alvo": "by then",
+      "alvo_pt": "até lá",
+      "conceito": "Negativo do future perfect: won't have + particípio.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "until then",
+        "won't finish"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "it"
+      ]
+    },
+    {
+      "id": "f-6d6d8a",
+      "quem": "mike",
+      "cod": "Let's keep most of our work asynchronous.",
+      "dica": "Vamos deixar a maior parte do nosso trabalho assíncrona.",
+      "img": "🔁📨",
+      "alvo": "asynchronous",
+      "alvo_pt": "assíncrona",
+      "conceito": "asynchronous = assíncrono: cada um responde no seu horário.",
+      "registro": "informal",
+      "armadilhas": [
+        "async",
+        "assincronous"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f30085",
+      "quem": "voce",
+      "contexto": "f-6d6d8a",
+      "cod": "Good idea. Asynchronous updates work better than long calls.",
+      "dica": "Boa ideia. Atualizações assíncronas funcionam melhor do que calls longas.",
+      "img": "💡📝📵",
+      "alvo": "Asynchronous",
+      "alvo_pt": "assíncronas",
+      "conceito": "Adjetivo antes do substantivo: asynchronous updates.",
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "the long calls",
+        "updates asynchronous"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0f009c",
+      "quem": "voce",
+      "cod": "You're two hours behind, so I'll have sent the summary by the time you wake up.",
+      "dica": "Você está duas horas atrás, então eu já vou ter mandado o resumo quando você acordar.",
+      "img": "😴📩☀️",
+      "alvo": "two hours behind",
+      "alvo_pt": "duas horas atrás",
+      "conceito": "Quando você acordar = by the time you wake up (presente, nunca will). I'll have sent = vou ter mandado.",
+      "blocos": [
+        5,
+        10
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will wake",
+        "ago"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "by the time",
+          "aceita": [
+            "when"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1ee454",
+      "quem": "mike",
+      "contexto": "f-0f009c",
+      "cod": "Thanks! Having you two hours ahead helps the whole team.",
+      "dica": "Valeu! Ter você duas horas à frente ajuda o time todo.",
+      "img": "🙌🌎",
+      "alvo": "two hours ahead",
+      "alvo_pt": "duas horas à frente",
+      "conceito": "Verbo como sujeito = -ing (Having you...). Helps com -s.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "help",
+        "to have"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "id": "ele-ela-nos-eles.nos-e-eles-nao-e-nao-esta",
+  "trilha": "ele-ela-nos-eles",
+  "nome": "Nós e eles; não é, não está",
+  "emoji": "👥",
+  "cena": "Primeiro dia no escritório de Chicago: na recepção, o Mike está em reunião; depois, um café rápido na copa com a Ana.",
+  "resumo": "Falar de nós e deles e negar: We're... / They're... / isn't / aren't.",
+  "fechamento": false,
+  "novos": [
+    "we're",
+    "they",
+    "isn't",
+    "aren't"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Nós e eles; não é, não está"
+    },
+    {
+      "t": "p",
+      "c": "**We're** = nós somos / estamos. **They're** = eles são / estão. A negativa é **isn't** (is not) e **aren't** (are not); It's not e We're not também valem."
+    },
+    {
+      "t": "ex",
+      "c": "Mike isn't here. He's in a meeting.\nO Mike não está aqui. Ele está em reunião."
+    },
+    {
+      "t": "ex",
+      "c": "We aren't late, right?\nNão estamos atrasados, né?"
+    },
+    {
+      "t": "warn",
+      "c": "O pronome não some: They're from Brazil. Em português, \"São do Brasil\" basta."
+    }
+  ],
+  "imagem": "🏢🛎️👥",
+  "visualizacao": "Você e a Ana entram no prédio do escritório de Chicago. A recepcionista sorri atrás do balcão; ao fundo, uma sala de vidro cheia de gente em reunião.",
+  "foto_busca": "office reception glass meeting room",
+  "trechos": [
+    {
+      "id": "f-f281a7",
+      "quem": "voce",
+      "cod": "Hi! We're {nome} and Ana.",
+      "dica": "Oi! Somos o {nome} e a Ana.",
+      "pt_f": "Oi! Somos a {nome} e a Ana.",
+      "img": "👋🛎️👥",
+      "alvo": "We're",
+      "alvo_pt": "Somos",
+      "conceito": "We're = we are. O we não some, mesmo que o português diga só \"Somos\".",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "are",
+        "we're the"
+      ],
+      "teste": true,
+      "bio": [
+        "nome"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4494665,
+        "en_autor": "CK",
+        "pt_id": 6397196,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "from Australia → {nome} and Ana, + Hi! (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7aa406",
+      "quem": "recepcionista",
+      "contexto": "f-f281a7",
+      "cod": "Mike isn't here. He's in a meeting.",
+      "dica": "O Mike não está aqui. Ele está em reunião.",
+      "img": "🙅‍♂️🗓️",
+      "alvo": "isn't",
+      "alvo_pt": "não está",
+      "conceito": "isn't = is not. O not vem depois do is.",
+      "var": [
+        {
+          "em": "Mike isn't",
+          "aceita": [
+            "Mike's not"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "not is",
+        "no is"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1024693,
+        "en_autor": "CK",
+        "pt_id": 3316644,
+        "pt_autor": "MarlonX19",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Mike, + He's in a meeting. (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d97ec7",
+      "quem": "voce",
+      "contexto": "f-7aa406",
+      "cod": "Oh! We aren't late, right?",
+      "dica": "Ah! Não estamos atrasados, né?",
+      "pt_f": "Ah! Não estamos atrasadas, né?",
+      "img": "⏰😬",
+      "alvo": "aren't",
+      "alvo_pt": "Não estamos",
+      "conceito": "aren't = are not: we, you e they usam aren't.",
+      "var": [
+        {
+          "em": "We aren't",
+          "aceita": [
+            "We're not"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "we not",
+        "we isn't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4ad793",
+      "quem": "recepcionista",
+      "contexto": "f-d97ec7",
+      "cod": "No, you aren't. It's nine o'clock.",
+      "dica": "Não, não estão. São nove horas.",
+      "img": "🕘👍",
+      "alvo": "aren't",
+      "alvo_pt": "não estão",
+      "conceito": "you também é vocês: you aren't = vocês não estão.",
+      "var": [
+        {
+          "em": "you aren't",
+          "aceita": [
+            "you're not"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "you isn't",
+        "are nine"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5204f4",
+      "quem": "mike",
+      "cod": "Hi! Sorry, we're in a meeting.",
+      "dica": "Oi! Desculpa, estamos em reunião.",
+      "img": "👨‍💼🗣️👥",
+      "alvo": "we're",
+      "alvo_pt": "estamos",
+      "conceito": "em reunião = in a meeting (com o a).",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "are in",
+        "in meeting"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2548109,
+        "en_autor": "CK",
+        "pt_id": 3490156,
+        "pt_autor": "piterkeo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom is → we're, + Hi! Sorry (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3f1c34",
+      "quem": "mike",
+      "contexto": "Who are they?",
+      "cod": "{nome} and Ana? They're from Brazil.",
+      "dica": "O {nome} e a Ana? São do Brasil.",
+      "pt_f": "A {nome} e a Ana? São do Brasil.",
+      "img": "🧑‍🤝‍🧑🇧🇷",
+      "alvo": "They're",
+      "alvo_pt": "São",
+      "lit": "[lit.: eles são do Brasil]",
+      "conceito": "They're = they are. Em português, \"São do Brasil\"; em inglês, o they fica.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR15"
+      ],
+      "armadilhas": [
+        "are from",
+        "is from"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7100a0",
+      "quem": "ana",
+      "contexto": "How much is the coffee?",
+      "cod": "It's two dollars. It isn't expensive.",
+      "dica": "Custa dois dólares. Não é caro.",
+      "img": "☕💵👍",
+      "alvo": "isn't",
+      "alvo_pt": "Não é",
+      "conceito": "O it continua na negativa: It isn't expensive = não é caro (não: Isn't expensive).",
+      "var": [
+        {
+          "em": "It isn't",
+          "aceita": [
+            "It's not"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is not expensive",
+        "no is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e02b40",
+      "quem": "ana",
+      "contexto": "Where are Mike and the team?",
+      "cod": "They're really busy today.",
+      "dica": "Eles estão bem ocupados hoje.",
+      "img": "💼⏳",
+      "alvo": "They're",
+      "alvo_pt": "Eles estão",
+      "conceito": "They're busy = eles estão ocupados.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "are really busy",
+        "very"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4079236,
+        "en_autor": "CK",
+        "pt_id": 4765945,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "very → really, + today (EN e PT)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

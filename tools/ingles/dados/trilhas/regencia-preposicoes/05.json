@@ -1,0 +1,260 @@
+{
+  "id": "regencia-preposicoes.todos-nos-nenhum-deles-all-of",
+  "trilha": "regencia-preposicoes",
+  "nome": "Todos nós, nenhum deles: all of",
+  "emoji": "👥",
+  "cena": "Na reunião de time, a Sarah dá boas-vindas a um dev novo e fala dos notebooks novos e dos clientes que não responderam.",
+  "resumo": "Partes de um grupo: all of us, most of the..., each of you, none of them.",
+  "fechamento": false,
+  "novos": [
+    "all of us / all of them",
+    "none of them",
+    "most of the...",
+    "each of you"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Todos nós = all of us"
+    },
+    {
+      "t": "p",
+      "c": "Com pronome, use **of**: **all of us**, **all of them**, **each of you**, **none of them**. Com um grupo definido, **most of the** + substantivo: most of the team."
+    },
+    {
+      "t": "tip",
+      "c": "A maioria das pessoas (em geral) = most people, sem of. A maioria dos desenvolvedores do time = most of the developers."
+    },
+    {
+      "t": "warn",
+      "c": "None of them já é negativo: None of them answered (não: None of them didn't answer)."
+    },
+    {
+      "t": "ex",
+      "c": "Each of you will get a new laptop.\nCada um de vocês vai receber um notebook novo."
+    }
+  ],
+  "imagem": "👥💻📧",
+  "visualizacao": "Você vê a grade da chamada cheia: o Mike em Chicago, a Sarah em Austin, a Ana e um rosto novo, meio tímido. A Sarah sorri e abre a pauta na tela.",
+  "foto_busca": "team video call grid laptop",
+  "trechos": [
+    {
+      "id": "f-625d98",
+      "quem": "sarah",
+      "cod": "Welcome! All of us work remotely.",
+      "dica": "Bem-vindo! Todos nós trabalhamos remoto.",
+      "img": "👋🏠💻",
+      "alvo": "All of us",
+      "alvo_pt": "Todos nós",
+      "conceito": "todos nós = all of us; trabalhar remoto = work remotely.",
+      "var": [
+        {
+          "em": "remotely",
+          "aceita": [
+            "remote"
+          ]
+        },
+        {
+          "em": "All of us work",
+          "aceita": [
+            "We all work"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2451653,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"All of us speak French.\"; + Welcome!; speak French → work remotely; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ba9e8b",
+      "quem": "dev-novo",
+      "contexto": "f-625d98",
+      "cod": "Cool. Where's most of the team based?",
+      "dica": "Legal. Onde a maior parte do time está baseada?",
+      "img": "🗺️👥❓",
+      "alvo": "most of the team",
+      "alvo_pt": "a maior parte do time",
+      "conceito": "a maior parte do time (grupo definido) = most of the team, com of the; based = baseado (onde mora e trabalha).",
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "based"
+      ]
+    },
+    {
+      "id": "f-4aa7fb",
+      "quem": "mike",
+      "contexto": "f-ba9e8b",
+      "cod": "Most of the developers are in Chicago.",
+      "dica": "A maioria dos desenvolvedores está em Chicago.",
+      "img": "👨‍💻🏙️",
+      "alvo": "Most of the developers",
+      "alvo_pt": "A maioria dos desenvolvedores",
+      "conceito": "a maioria dos (do time) = most of the; a maioria das pessoas (em geral) = most people.",
+      "registro": "informal",
+      "interferencias": [
+        "BR55",
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-54c145",
+      "quem": "sarah",
+      "cod": "Each of you will get a new laptop next month.",
+      "dica": "Cada um de vocês vai receber um notebook novo no mês que vem.",
+      "img": "🎁💻",
+      "alvo": "Each of you",
+      "alvo_pt": "Cada um de vocês",
+      "conceito": "cada um de vocês = each of you; notebook (BR) = laptop.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bc6623",
+      "quem": "mike",
+      "contexto": "f-54c145",
+      "cod": "Great. Most of the old laptops are really slow.",
+      "dica": "Ótimo. A maioria dos notebooks antigos está muito lenta.",
+      "img": "🐢💻",
+      "alvo": "Most of the old laptops",
+      "alvo_pt": "A maioria dos notebooks antigos",
+      "conceito": "most of the + plural (grupo definido): most of the old laptops.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-23ee6b",
+      "quem": "sarah",
+      "cod": "And each of you can choose the model.",
+      "dica": "E cada um de vocês pode escolher o modelo.",
+      "img": "🛒💻",
+      "alvo": "each of you",
+      "alvo_pt": "cada um de vocês",
+      "conceito": "each of you + verbo no singular: each of you gets, each of you can.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-71e037",
+      "quem": "voce",
+      "contexto": "f-23ee6b",
+      "cod": "I checked the three models. None of them has a Brazilian keyboard.",
+      "dica": "Conferi os três modelos. Nenhum deles tem teclado brasileiro.",
+      "img": "⌨️🇧🇷🚫",
+      "alvo": "None of them",
+      "alvo_pt": "Nenhum deles",
+      "conceito": "nenhum deles = none of them, com o verbo afirmativo (não: none of them doesn't have).",
+      "var": [
+        {
+          "em": "has",
+          "aceita": [
+            "have"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR25",
+        "BR15"
+      ],
+      "armadilhas": [
+        "doesn't",
+        "don't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-94bc46",
+      "quem": "sarah",
+      "contexto": "f-71e037",
+      "cod": "Don't worry. You can change the keyboard layout on all of them.",
+      "dica": "Não se preocupa. Dá pra mudar o layout do teclado em todos eles.",
+      "img": "⌨️⚙️💻",
+      "alvo": "all of them",
+      "alvo_pt": "todos eles",
+      "conceito": "em todos eles = on all of them (on + aparelho); layout do teclado = keyboard layout.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a94190",
+      "quem": "voce",
+      "contexto": "Last thing. Did the three clients answer our email?",
+      "cod": "No, none of them answered.",
+      "dica": "Não, nenhum deles respondeu.",
+      "img": "📧🔕",
+      "alvo": "none of them",
+      "alvo_pt": "nenhum deles",
+      "conceito": "uma negação só: none of them answered (não: none of them didn't answer).",
+      "registro": "informal",
+      "interferencias": [
+        "BR25",
+        "BR42"
+      ],
+      "armadilhas": [
+        "didn't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-100655",
+      "quem": "sarah",
+      "contexto": "f-a94190",
+      "cod": "OK. I'll call all of them tomorrow.",
+      "dica": "Tá. Eu ligo pra todos eles amanhã.",
+      "img": "📞👥",
+      "alvo": "all of them",
+      "alvo_pt": "todos eles",
+      "conceito": "ligar para alguém = call, sem to: call all of them.",
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "call all of them",
+          "aceita": [
+            "call them all"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import '../../../core/theme/mixart.dart';
 import '../domain/corrida_engine.dart';
 import '../domain/dicas_dart.dart';
 import '../domain/digitar_palavra.dart';
-import '../domain/palavras_dart.dart';
+import '../domain/palavras_csharp.dart';
 import '../domain/personagem.dart';
 import 'widgets/arcade_ui.dart';
 import 'widgets/campanha.dart';
@@ -115,7 +115,7 @@ class _RaliPageState extends State<RaliPage>
     setState(() {
       _engine = CorridaEngine(pista: 12, dificuldade: _dificuldade!);
       // fase 3 em diante entram as palavras compridas (StatelessWidget…)
-      _fila = baralhoRali(_rnd, comLongas: fase >= 3);
+      _fila = baralhoRaliDe(_rnd, comLongas: fase >= 3);
       _idx = 0;
       _palavra.carregar(_fila[0]);
       _ultimoErrou = false;

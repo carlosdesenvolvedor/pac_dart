@@ -1,0 +1,327 @@
+{
+  "id": "previsoes-futuro-continuo.olha-o-grafico-vamos-atrasar",
+  "trilha": "previsoes-futuro-continuo",
+  "nome": "Olha o gráfico: vamos atrasar",
+  "emoji": "📊",
+  "cena": "Numa chamada de vídeo, você compartilha a tela com o Mike para ver se a entrega da sprint vai sair no prazo.",
+  "resumo": "Prever com evidência (going to) e com opinião (will) olhando gráficos, prazos e vendas.",
+  "fechamento": false,
+  "novos": [
+    "chart",
+    "behind schedule",
+    "on track",
+    "sales",
+    "drop"
+  ],
+  "apoio": [
+    "deadline",
+    "storm"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Evidência = going to · Opinião = will"
+    },
+    {
+      "t": "p",
+      "c": "Quando você **vê** a prova agora (um gráfico, a lista de bugs, as nuvens), use **going to**. Quando é só a sua opinião (acho que, provavelmente), use **will**."
+    },
+    {
+      "t": "ex",
+      "c": "Look at this chart. We're going to miss the deadline.\nOlha esse gráfico. A gente vai perder o prazo."
+    },
+    {
+      "t": "tip",
+      "c": "Parece que vai... = It looks like + going to."
+    },
+    {
+      "t": "warn",
+      "c": "Futuro não vai no presente simples (não: We miss the deadline)."
+    }
+  ],
+  "imagem": "📊📉⏰",
+  "visualizacao": "Você divide a tela com o Mike numa chamada. No gráfico da sprint, a linha das tarefas abertas desce devagar demais, e o prazo está logo ali.",
+  "foto_busca": "video call chart laptop screen",
+  "trechos": [
+    {
+      "id": "f-3b8e4f",
+      "quem": "mike",
+      "cod": "What's this chart?",
+      "dica": "O que é esse gráfico?",
+      "img": "📊❓",
+      "alvo": "chart",
+      "alvo_pt": "gráfico",
+      "conceito": "chart = gráfico.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2234138,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Que gráfico é esse?\"; PT reescrito: o que é (What's this...?), não qual",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "this chart",
+          "aceita": [
+            "that chart"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-5ba965",
+      "quem": "voce",
+      "contexto": "f-3b8e4f",
+      "cod": "It's our sprint progress. We're only three days behind schedule.",
+      "dica": "É o andamento da nossa sprint. Estamos só três dias atrasados no cronograma.",
+      "img": "📅🐢",
+      "alvo": "behind schedule",
+      "alvo_pt": "atrasados no cronograma",
+      "lit": "[lit.: atrás do cronograma]",
+      "conceito": "behind schedule = atrasado em relação ao plano.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2640582,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'It's our sprint progress.' acrescentado (responde à pergunta) e 'thirty minutes' trocado por 'three days'; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "blocos": [
+        4
+      ],
+      "var": [
+        {
+          "em": "our sprint progress",
+          "aceita": [
+            "the progress of our sprint",
+            "our sprint's progress"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-828de2",
+      "quem": "mike",
+      "contexto": "f-5ba965",
+      "cod": "Look at this chart. We're going to miss the deadline.",
+      "dica": "Olha esse gráfico. A gente vai perder o prazo.",
+      "img": "👀📉",
+      "alvo": "chart",
+      "alvo_pt": "gráfico",
+      "conceito": "A prova está à vista agora (o gráfico): going to.",
+      "var": [
+        {
+          "em": "this chart",
+          "aceita": [
+            "that chart",
+            "the chart"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR29",
+        "BR34"
+      ],
+      "armadilhas": [
+        "we",
+        "we'll"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f04b57",
+      "quem": "voce",
+      "contexto": "f-828de2",
+      "cod": "Don't worry. I think we'll get back on track next week.",
+      "dica": "Fica tranquilo. Acho que a gente vai voltar aos trilhos semana que vem.",
+      "img": "🛤️🔙",
+      "alvo": "on track",
+      "alvo_pt": "aos trilhos",
+      "lit": "[lit.: voltar para o trilho]",
+      "conceito": "on track = nos trilhos, no ritmo certo. Opinião (acho que): will.",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR29"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "get back",
+          "aceita": [
+            "be back"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-05c07b",
+      "quem": "mike",
+      "contexto": "f-f04b57",
+      "cod": "I don't think so. The payments team is behind schedule too.",
+      "dica": "Acho que não. O time de pagamentos também está atrasado no cronograma.",
+      "img": "💳⏳",
+      "alvo": "behind schedule",
+      "alvo_pt": "atrasado no cronograma",
+      "conceito": "I don't think so = acho que não (resposta curta).",
+      "var": [
+        {
+          "em": "is behind schedule too",
+          "aceita": [
+            "is also behind schedule"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR43",
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d6e2e7",
+      "quem": "voce",
+      "contexto": "f-05c07b",
+      "cod": "But the mobile app is still on track.",
+      "dica": "Mas o app mobile ainda está nos trilhos.",
+      "img": "📱✅",
+      "alvo": "on track",
+      "alvo_pt": "nos trilhos",
+      "conceito": "still = ainda (continua assim).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-785e6d",
+      "quem": "mike",
+      "cod": "Have you seen the sales numbers for this week?",
+      "dica": "Você já viu os números de vendas desta semana?",
+      "img": "💰👀",
+      "alvo": "sales",
+      "alvo_pt": "vendas",
+      "conceito": "sales = vendas. Have you seen...? = Você já viu...? (sem tempo marcado).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR24"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the sales numbers for this week",
+          "aceita": [
+            "this week's sales numbers",
+            "the sales numbers for this week yet",
+            "this week's sales numbers yet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f1b062",
+      "quem": "voce",
+      "contexto": "f-785e6d",
+      "cod": "Yes, sales have dropped a lot.",
+      "dica": "Vi. As vendas caíram bastante.",
+      "img": "📉🛒",
+      "alvo": "dropped",
+      "alvo_pt": "caíram",
+      "conceito": "drop = cair (vendas, preço, número). Resultado que se vê agora: have + particípio.",
+      "var": [
+        {
+          "em": "have dropped",
+          "aceita": [
+            "dropped"
+          ]
+        },
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yes, I have"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 435636,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Yes,' acrescentado, 'Prices' trocado por 'Sales' e 'recently' por 'a lot'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e680ee",
+      "quem": "mike",
+      "contexto": "f-f1b062",
+      "cod": "It looks like they're going to drop again next month.",
+      "dica": "Parece que vão cair de novo mês que vem.",
+      "img": "📆⬇️",
+      "alvo": "drop",
+      "alvo_pt": "cair",
+      "conceito": "It looks like + going to = Parece que vai... (há sinais agora).",
+      "var": [
+        {
+          "em": "again next month",
+          "aceita": [
+            "next month again"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-92cf5b",
+      "quem": "voce",
+      "contexto": "f-e680ee",
+      "cod": "I'll give Sarah a heads-up about the drop in sales.",
+      "dica": "(decidi agora) Vou dar um aviso pra Sarah sobre a queda nas vendas.",
+      "img": "📣👩‍💼",
+      "alvo": "sales",
+      "alvo_pt": "vendas",
+      "conceito": "give someone a heads-up = dar um aviso antes. a drop in sales = uma queda nas vendas.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "give Sarah a heads-up",
+          "aceita": [
+            "give a heads-up to Sarah"
+          ]
+        }
+      ]
+    }
+  ]
+}

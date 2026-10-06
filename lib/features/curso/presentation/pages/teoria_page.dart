@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/syntax/tokenizer.dart';
 import '../../../../core/theme/mixart.dart';
+import '../../../ingles/data/voz_ingles.dart';
 import '../../domain/curriculo.dart';
 import '../widgets/fundo_fase.dart';
 
@@ -12,14 +13,23 @@ class TeoriaPage extends StatelessWidget {
   final Licao licao;
   final VoidCallback onPraticar;
 
-  const TeoriaPage({super.key, required this.nivel, required this.licao, required this.onPraticar});
+  /// Foto de fundo escolhida pela trilha (currículo C#).
+  final String fundo;
+
+  const TeoriaPage({
+    super.key,
+    required this.nivel,
+    required this.licao,
+    required this.onPraticar,
+    this.fundo = '',
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Mixart.bg,
       body: Stack(children: [
-        FundoFase(nivel: nivel),
+        FundoFase(nivel: nivel, fundo: fundo),
         SafeArea(
           child: Center(
             child: ConstrainedBox(
@@ -76,7 +86,14 @@ class TeoriaPage extends StatelessWidget {
       case 'code':
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 8),
-          child: _BlocoCodigo(cod: b.conteudo),
+          child: _BlocoCodigo(cod: b.conteudo, variante: b.linguagem),
+        );
+      case 'ex':
+        // inglês: "frase em inglês\ntradução" (com botão de ouvir)
+        final partes = b.conteudo.split('\n');
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6),
+          child: _BlocoExemplo(en: partes.first, pt: partes.skip(1).join(' ')),
         );
       case 'tip':
         return _caixa(b.conteudo, Icons.lightbulb_outline, Mixart.brand);
@@ -159,13 +176,49 @@ class TeoriaPage extends StatelessWidget {
   }
 }
 
+/// Exemplo do curso de inglês: a frase, a tradução embaixo e 🔊.
+class _BlocoExemplo extends StatelessWidget {
+  final String en, pt;
+  const _BlocoExemplo({required this.en, required this.pt});
+
+  static final _voz = VozIngles();
+
+  @override
+  Widget build(BuildContext context) => Container(
+        width: double.infinity,
+        padding: const EdgeInsets.fromLTRB(14, 10, 8, 10),
+        decoration: BoxDecoration(
+          color: Mixart.bg,
+          border: Border(left: BorderSide(color: Mixart.brand, width: 3)),
+          borderRadius: BorderRadius.circular(Mixart.radiusMd),
+        ),
+        child: Row(children: [
+          Expanded(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text(en, style: Mixart.mono(size: 15, weight: FontWeight.w600, color: Mixart.text).copyWith(height: 1.5)),
+              if (pt.isNotEmpty)
+                Text(pt, style: Mixart.ui(size: 12.5, color: Mixart.textMuted).copyWith(height: 1.45)),
+            ]),
+          ),
+          IconButton(
+            tooltip: 'Ouvir',
+            onPressed: () => _voz.falar(en),
+            icon: Icon(Icons.volume_up_rounded, size: 18, color: Mixart.brand),
+          ),
+        ]),
+      );
+}
+
 class _BlocoCodigo extends StatelessWidget {
   final String cod;
-  const _BlocoCodigo({required this.cod});
+
+  /// bash, json, xml… quando o exemplo não é da linguagem do curso.
+  final String variante;
+  const _BlocoCodigo({required this.cod, this.variante = ''});
 
   @override
   Widget build(BuildContext context) {
-    final tipos = tokenizar(cod);
+    final tipos = tokenizar(cod, variante: variante);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(14),

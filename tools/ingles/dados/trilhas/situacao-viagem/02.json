@@ -1,0 +1,232 @@
+{
+  "id": "situacao-viagem.no-aeroporto-check-in-e-portao",
+  "trilha": "situacao-viagem",
+  "nome": "No aeroporto: check-in e portão",
+  "emoji": "🛂",
+  "cena": "Na volta para casa, o Ben te leva ao aeroporto de Boston; você faz o check-in e procura o portão.",
+  "resumo": "Fazer o check-in, escolher assento e saber a hora do embarque: I'd like a window seat. / What time do we board?",
+  "fechamento": false,
+  "novos": [
+    "check in",
+    "window seat",
+    "board (embarcar)",
+    "boarding pass",
+    "aisle seat"
+  ],
+  "apoio": [
+    "gate",
+    "on time"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Check-in e embarque"
+    },
+    {
+      "t": "p",
+      "c": "O verbo é **check in**, separado: I'm going to check in. O substantivo leva hífen: the check-in desk. **board** = embarcar; **boarding pass** = cartão de embarque."
+    },
+    {
+      "t": "ex",
+      "c": "I'd like a window seat, please.\nEu queria um assento na janela, por favor."
+    },
+    {
+      "t": "tip",
+      "c": "aisle seat = assento no corredor (o s de aisle é mudo). Portão por extenso nos dois lados: gate twenty-two = portão vinte e dois."
+    },
+    {
+      "t": "warn",
+      "c": "Ver um documento = see: Can I see your boarding pass? (look at = olhar para; watch = assistir). Cidade sem artigo: the flight to Chicago."
+    }
+  ],
+  "imagem": "✈️🧳🎫",
+  "visualizacao": "Você entra no aeroporto puxando a mala. A fila anda devagar no balcão, a tela de voos brilha lá no alto e a atendente pede o seu passaporte com um sorriso.",
+  "foto_busca": "airport check in counter",
+  "trechos": [
+    {
+      "id": "f-0fbede",
+      "quem": "ben",
+      "cod": "Did you check in online?",
+      "dica": "Você fez o check-in online?",
+      "img": "📱✅✈️",
+      "alvo": "check in",
+      "alvo_pt": "fez o check-in",
+      "conceito": "check in (verbo, separado) = fazer o check-in; o substantivo é check-in.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-844fb9",
+      "quem": "voce",
+      "contexto": "f-0fbede",
+      "cod": "No. I'm going to check in at the airport.",
+      "dica": "Não. Vou fazer o check-in no aeroporto.",
+      "img": "🧳🏢",
+      "alvo": "check in",
+      "alvo_pt": "fazer o check-in",
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-105898",
+      "quem": "atendente",
+      "contexto": "Here's my passport.",
+      "cod": "Window or aisle?",
+      "dica": "Janela ou corredor?",
+      "img": "🪟💺❓",
+      "alvo": "aisle",
+      "alvo_pt": "corredor",
+      "conceito": "aisle = corredor (o s é mudo).",
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 516633,
+        "en_autor": "kebukebu",
+        "pt_id": 2385200,
+        "pt_autor": "Matheus",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3791cb",
+      "quem": "voce",
+      "contexto": "f-105898",
+      "cod": "I'd like a window seat, please.",
+      "dica": "Eu queria um assento na janela, por favor.",
+      "img": "🪟💺",
+      "alvo": "window seat",
+      "alvo_pt": "assento na janela",
+      "lit": "[lit.: assento de janela]",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e43b00",
+      "quem": "atendente",
+      "contexto": "f-3791cb",
+      "cod": "Sorry, there aren't any window seats left.",
+      "dica": "Desculpa, não sobrou nenhum assento na janela.",
+      "img": "🪟🚫",
+      "alvo": "window seats",
+      "alvo_pt": "assento na janela",
+      "conceito": "Uma negação só: there aren't any (não: there aren't no). left = que sobrou.",
+      "var": [
+        {
+          "em": "there aren't any window seats left",
+          "aceita": [
+            "there are no window seats left"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03",
+        "BR25"
+      ],
+      "armadilhas": [
+        "have",
+        "no"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4f21e4",
+      "quem": "atendente",
+      "cod": "Is an aisle seat OK?",
+      "dica": "Tudo bem um assento no corredor?",
+      "img": "💺🚶",
+      "alvo": "aisle seat",
+      "alvo_pt": "assento no corredor",
+      "var": [
+        {
+          "em": "OK",
+          "aceita": [
+            "okay",
+            "fine",
+            "all right"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0d418d",
+      "quem": "atendente",
+      "cod": "Here's your boarding pass. The flight to Chicago leaves at ten.",
+      "dica": "Aqui está o seu cartão de embarque. O voo para Chicago sai às dez.",
+      "img": "🎫✈️🕙",
+      "alvo": "boarding pass",
+      "alvo_pt": "cartão de embarque",
+      "lit": "[lit.: passe de embarque]",
+      "registro": "neutro",
+      "interferencias": [
+        "BR12",
+        "BR17"
+      ],
+      "armadilhas": [
+        "leave"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a4867e",
+      "quem": "voce",
+      "contexto": "f-0d418d",
+      "cod": "What time do we board?",
+      "dica": "A que horas a gente embarca?",
+      "img": "🚶✈️❓",
+      "alvo": "board",
+      "alvo_pt": "embarca",
+      "conceito": "board = embarcar (avião, trem, ônibus).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-78078d",
+      "quem": "atendente",
+      "contexto": "f-a4867e",
+      "cod": "You board at 9:30, at gate twenty-two.",
+      "dica": "Você embarca às 9h30, no portão vinte e dois.",
+      "img": "🚪🕤",
+      "alvo": "board",
+      "alvo_pt": "embarca",
+      "conceito": "Número por extenso espelhado: gate twenty-two = portão vinte e dois.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-19ba58",
+      "quem": "atendente",
+      "contexto": "Is the flight to Chicago on time?",
+      "cod": "Yes, it is. Can I see your boarding pass, please?",
+      "dica": "Está, sim. Posso ver o seu cartão de embarque, por favor?",
+      "img": "👀🎫",
+      "alvo": "boarding pass",
+      "alvo_pt": "cartão de embarque",
+      "registro": "neutro",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

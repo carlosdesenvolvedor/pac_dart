@@ -1,0 +1,328 @@
+{
+  "id": "ja-fui-x-fui.almoco-de-despedida",
+  "trilha": "ja-fui-x-fui",
+  "nome": "Almoço de despedida",
+  "emoji": "🍽️",
+  "cena": "Última sexta em Chicago: no almoço de despedida, o time conta novidades e viagens.",
+  "resumo": "Tudo junto e de memória: I've never been / he went there, Have you finished...? / I finished last night, the best... I've ever.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: present perfect x passado"
+    },
+    {
+      "t": "p",
+      "c": "Sem quando (experiência, notícia, status): **present perfect**: I've never been to Boston / Have you finished packing? Com quando (last month, last night, two years ago): **passado simples**: Mike went there last month."
+    },
+    {
+      "t": "warn",
+      "c": "Com quando (last night, last month, ago), sempre passado simples (não: I've finished last night)."
+    },
+    {
+      "t": "ex",
+      "c": "I've been busy lately, but I saw the game last night.\nAndo ocupado ultimamente, mas vi o jogo ontem à noite."
+    }
+  ],
+  "imagem": "🍽️👋🎉",
+  "visualizacao": "Mesa comprida num restaurante perto do escritório, sexta-feira. O time todo fala ao mesmo tempo, alguém levanta o copo e você já sente saudade daquilo.",
+  "foto_busca": "team farewell lunch restaurant",
+  "trechos": [
+    {
+      "id": "f-74f861",
+      "quem": "ana",
+      "cod": "I've never been to Boston, but Mike went there last month.",
+      "dica": "Nunca fui a Boston, mas o Mike foi lá mês passado.",
+      "img": "🗺️🙅",
+      "alvo": "went there last month",
+      "alvo_pt": "foi lá mês passado",
+      "conceito": "Nunca fui (sem data) = I've never been. Foi lá mês passado (com data) = went there last month.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "gone",
+        "has"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2360022,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I've never been to Boston. + but Mike went there last month.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-437a35",
+      "quem": "mike",
+      "contexto": "f-74f861",
+      "cod": "Yes, I went to a music festival there. I loved it!",
+      "dica": "Sim, fui a um festival de música lá. Adorei!",
+      "img": "🎶😍",
+      "alvo": "festival",
+      "alvo_pt": "festival",
+      "conceito": "Detalhe de algo que já passou: passado simples (went, loved). Adorei = I loved it, com o objeto it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have",
+        "been"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        8
+      ]
+    },
+    {
+      "id": "f-e4a47b",
+      "quem": "mike",
+      "cod": "Have you finished packing?",
+      "dica": "Você já terminou de arrumar as malas?",
+      "img": "🧳❓",
+      "alvo": "Have you finished",
+      "alvo_pt": "já terminou",
+      "conceito": "terminar de + verbo = finish + -ing. Já (status) = present perfect.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "to",
+        "did"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3738013,
+        "en_autor": "CK",
+        "pt_id": 1966108,
+        "pt_autor": "Matheus",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "packing",
+          "aceita": [
+            "packing yet",
+            "packing your bags"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0692c0",
+      "quem": "voce",
+      "contexto": "f-e4a47b",
+      "cod": "Yes, I finished last night.",
+      "dica": "Sim, terminei ontem à noite.",
+      "img": "🌙✅",
+      "alvo": "last night",
+      "alvo_pt": "ontem à noite",
+      "conceito": "Com ontem à noite, passado: I finished (não: I've finished last night).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have",
+        "yesterday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-47dede",
+      "quem": "ana",
+      "cod": "Mike, what's the best trip you've ever taken?",
+      "dica": "Mike, qual é a melhor viagem que você já fez?",
+      "img": "🏆✈️",
+      "alvo": "you've ever taken",
+      "alvo_pt": "você já fez",
+      "conceito": "a melhor... que você já fez = the best... you've ever taken (fazer uma viagem = take a trip).",
+      "var": [
+        {
+          "em": "taken",
+          "aceita": [
+            "had",
+            "been on"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR40"
+      ],
+      "armadilhas": [
+        "made",
+        "did",
+        "travel"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-db0a1b",
+      "quem": "mike",
+      "contexto": "f-47dede",
+      "cod": "My trip to Mexico two years ago. The food was so good!",
+      "dica": "A minha viagem pro México, há dois anos. A comida era muito boa!",
+      "img": "🇲🇽🌮",
+      "alvo": "two years ago",
+      "alvo_pt": "há dois anos",
+      "conceito": "há dois anos (passado terminado) = two years ago.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR26"
+      ],
+      "armadilhas": [
+        "before",
+        "travel"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "so good",
+          "aceita": [
+            "very good",
+            "really good"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ee6159",
+      "quem": "voce",
+      "cod": "Have you heard? Sarah's coming to Brazil in May!",
+      "dica": "Vocês ficaram sabendo? A Sarah vem pro Brasil em maio!",
+      "img": "📣🇧🇷",
+      "alvo": "Have you heard?",
+      "alvo_pt": "ficaram sabendo?",
+      "conceito": "Plano marcado = presente contínuo (Sarah's coming). em maio = in May.",
+      "var": [
+        {
+          "em": "Have you heard?",
+          "aceita": [
+            "Did you hear?"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17",
+        "BR15"
+      ],
+      "armadilhas": [
+        "on",
+        "may"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2e747d",
+      "quem": "ana",
+      "contexto": "f-ee6159",
+      "cod": "Really? She's never been to South America!",
+      "dica": "Sério? Ela nunca foi à América do Sul!",
+      "img": "😮🌎",
+      "alvo": "She's never been to",
+      "alvo_pt": "Ela nunca foi à",
+      "conceito": "Experiência sem data: She's never been to (she's = she has).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "went",
+        "gone"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0d2a68",
+      "quem": "mike",
+      "contexto": "Did you see the game last night?",
+      "cod": "That was the best game I've ever seen!",
+      "dica": "Esse foi o melhor jogo que já vi!",
+      "img": "🏟️🤩",
+      "alvo": "I've ever seen",
+      "alvo_pt": "já vi",
+      "conceito": "o melhor... que eu já vi = the best... I've ever seen.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "saw"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 9406634,
+        "en_autor": "Nylez",
+        "pt_id": 8564383,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-953c18",
+      "quem": "voce",
+      "cod": "I've had a great week here. Thanks for everything!",
+      "dica": "Tive uma semana ótima aqui. Obrigado por tudo!",
+      "img": "🙏💛",
+      "alvo": "I've had a great week",
+      "alvo_pt": "Tive uma semana ótima",
+      "conceito": "Semana que ainda não acabou: I've had a great week (o en-US também aceita I had).",
+      "var": [
+        {
+          "em": "I've had",
+          "aceita": [
+            "I had"
+          ]
+        }
+      ],
+      "pt_f": "Tive uma semana ótima aqui. Obrigada por tudo!",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have",
+        "for all"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8400320,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I've had a great week. + here. Thanks for everything!; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

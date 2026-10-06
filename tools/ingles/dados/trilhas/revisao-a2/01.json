@@ -1,0 +1,307 @@
+{
+  "id": "revisao-a2.as-ferias-o-que-a-gente-fez",
+  "trilha": "revisao-a2",
+  "nome": "As férias: o que a gente fez",
+  "emoji": "🏖️",
+  "cena": "Segunda depois das férias: na chamada, o time pergunta e você conta a viagem a uma ilha perto de Salvador.",
+  "resumo": "Contar as férias em ordem: ago, for, first, passado contínuo e o vocabulário da praia.",
+  "fechamento": false,
+  "novos": [
+    "island",
+    "boat tour",
+    "seafood",
+    "sunburn",
+    "souvenirs"
+  ],
+  "apoio": [
+    "vacation",
+    "rent a car"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Contar a viagem em ordem"
+    },
+    {
+      "t": "p",
+      "c": "Quando foi: **two weeks ago** (há duas semanas), com ago no fim. Quanto durou: **for a week** (por uma semana). Em ordem: **First**, then, after that, finally."
+    },
+    {
+      "t": "p",
+      "c": "Pano de fundo com **was/were + -ing**; o que interrompe, no passado simples: We were buying souvenirs **when it started** to rain."
+    },
+    {
+      "t": "warn",
+      "c": "há duas semanas ≠ there are two weeks: é **two weeks ago**. Ficar num lugar = **stay**; comer = **have** (We had seafood); me senti = **I felt** (sem myself)."
+    },
+    {
+      "t": "ex",
+      "c": "How long did you stay on the island?\nQuanto tempo vocês ficaram na ilha?"
+    }
+  ],
+  "imagem": "🏝️🚤🦐",
+  "visualizacao": "Segunda de manhã, câmera ligada. O Mike, a Sarah e a Ana sorriem na tela e pedem para você contar as férias na ilha: barco, praia, sol forte e frutos do mar.",
+  "foto_busca": "tropical island boat tour beach",
+  "trechos": [
+    {
+      "id": "f-d9a064",
+      "quem": "voce",
+      "contexto": "Welcome back! Tell us about your vacation.",
+      "cod": "Two weeks ago, we went to an island near Salvador.",
+      "dica": "Há duas semanas, fomos para uma ilha perto de Salvador.",
+      "img": "🏝️✈️",
+      "alvo": "island",
+      "alvo_pt": "ilha",
+      "conceito": "há + passado terminado = ago, depois do tempo: two weeks ago.",
+      "registro": "informal",
+      "interferencias": [
+        "BR26",
+        "BR15",
+        "BR13"
+      ],
+      "armadilhas": [
+        "before",
+        "there"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-01de8f",
+      "quem": "sarah",
+      "contexto": "f-d9a064",
+      "cod": "How long did you stay on the island?",
+      "dica": "Quanto tempo vocês ficaram na ilha?",
+      "img": "⏳🏝️",
+      "alvo": "island",
+      "alvo_pt": "ilha",
+      "conceito": "ficar num lugar = stay; na ilha = on the island.",
+      "registro": "informal",
+      "interferencias": [
+        "BR33",
+        "BR06",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in",
+        "stayed"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2221137,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "in Boston → on the island; PT reescrito (vocês, na ilha)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bb0f90",
+      "quem": "voce",
+      "contexto": "f-01de8f",
+      "cod": "For a week. First, we took a boat tour.",
+      "dica": "Por uma semana. Primeiro, fizemos um passeio de barco.",
+      "img": "🚤🗺️",
+      "alvo": "boat tour",
+      "alvo_pt": "passeio de barco",
+      "lit": "[lit.: pegamos um passeio de barco]",
+      "conceito": "fazer um passeio = take a tour (não: make a tour).",
+      "var": [
+        {
+          "em": "took",
+          "aceita": [
+            "went on",
+            "did"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR26",
+        "BR32"
+      ],
+      "armadilhas": [
+        "during",
+        "made"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-891a83",
+      "quem": "mike",
+      "contexto": "f-bb0f90",
+      "cod": "How was the boat tour?",
+      "dica": "Como foi o passeio de barco?",
+      "img": "🚤❓",
+      "alvo": "boat tour",
+      "alvo_pt": "passeio de barco",
+      "registro": "informal",
+      "armadilhas": [
+        "did"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3819088,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "the trip → the boat tour; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0dc52b",
+      "quem": "voce",
+      "contexto": "f-891a83",
+      "cod": "It was fun, but I got a sunburn and felt sick.",
+      "dica": "Foi divertido, mas peguei uma queimadura de sol e me senti mal.",
+      "img": "☀️🥵🤢",
+      "alvo": "sunburn",
+      "alvo_pt": "queimadura de sol",
+      "conceito": "me senti mal (no corpo) = I felt sick, sem myself (I felt bad costuma ser culpa); queimadura = get a sunburn.",
+      "registro": "informal",
+      "interferencias": [
+        "BR62",
+        "BR01"
+      ],
+      "armadilhas": [
+        "myself",
+        "took",
+        "caught"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-30d8b9",
+      "quem": "sarah",
+      "contexto": "f-0dc52b",
+      "cod": "Oh no! Sunburn is the worst.",
+      "dica": "Ah, não! Queimadura de sol é a pior coisa.",
+      "img": "😣☀️",
+      "alvo": "Sunburn",
+      "alvo_pt": "Queimadura de sol",
+      "conceito": "Falando em geral, sem artigo: Sunburn is... (não: The sunburn is...).",
+      "var": [
+        {
+          "em": "the worst",
+          "aceita": [
+            "the worst thing"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b70b7e",
+      "quem": "mike",
+      "cod": "Do you like seafood?",
+      "dica": "Você gosta de frutos do mar?",
+      "img": "🦐🦀❓",
+      "alvo": "seafood",
+      "alvo_pt": "frutos do mar",
+      "conceito": "seafood = frutos do mar; incontável, sem -s.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR22"
+      ],
+      "armadilhas": [
+        "seafoods",
+        "of"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5970878,
+        "en_autor": "Hybrid",
+        "pt_id": 5973129,
+        "pt_autor": "sergiomelo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9f8edd",
+      "quem": "voce",
+      "contexto": "f-b70b7e",
+      "cod": "I love it! We had seafood every day.",
+      "dica": "Adoro! A gente comeu frutos do mar todo dia.",
+      "img": "😋🦐📅",
+      "alvo": "seafood",
+      "alvo_pt": "frutos do mar",
+      "lit": "[lit.: tivemos frutos do mar todo dia]",
+      "conceito": "comer uma refeição ou um prato = have (We had seafood).",
+      "var": [
+        {
+          "em": "had",
+          "aceita": [
+            "ate"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR39"
+      ],
+      "armadilhas": [
+        "took",
+        "eated"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a58e01",
+      "quem": "voce",
+      "cod": "We were buying souvenirs when it started to rain.",
+      "dica": "A gente estava comprando lembrancinhas quando começou a chover.",
+      "img": "🛍️🌧️",
+      "alvo": "souvenirs",
+      "alvo_pt": "lembrancinhas",
+      "conceito": "Pano de fundo = were + -ing; o que interrompe = passado simples.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "bought",
+        "rained"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dae770",
+      "quem": "ana",
+      "contexto": "f-a58e01",
+      "cod": "So, where are our souvenirs?",
+      "dica": "E aí, cadê as nossas lembrancinhas?",
+      "img": "🎁😄❓",
+      "alvo": "souvenirs",
+      "alvo_pt": "lembrancinhas",
+      "conceito": "cadê...? = where is / where are...?",
+      "opcional": [
+        "So"
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

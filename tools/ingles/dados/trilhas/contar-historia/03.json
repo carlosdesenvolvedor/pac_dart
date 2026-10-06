@@ -1,0 +1,312 @@
+{
+  "id": "contar-historia.quando-eu-era-crianca-when-passado",
+  "trilha": "contar-historia",
+  "nome": "Quando eu era criança: when + passado",
+  "emoji": "🧒",
+  "cena": "No happy hour virtual do time, cada um conta como começou com computadores; a Sarah chega no meio da conversa.",
+  "resumo": "Ligar dois fatos do passado com when e contar lembranças com wrote, thought e told.",
+  "fechamento": false,
+  "novos": [
+    "when (quando)",
+    "kid",
+    "think / thought",
+    "write / wrote",
+    "tell / told"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Quando eu era criança: when + passado"
+    },
+    {
+      "t": "p",
+      "c": "**When** + passado liga dois fatos: When I was a kid, I wanted to be a designer. Se o when abre a frase, vírgula no meio."
+    },
+    {
+      "t": "ex",
+      "c": "I wrote my first game when I was twelve.\nEscrevi meu primeiro jogo quando eu tinha doze anos."
+    },
+    {
+      "t": "tip",
+      "c": "Idade com be: when I was twelve = quando eu tinha doze anos. Irregulares: write → wrote, think → thought, tell → told."
+    },
+    {
+      "t": "warn",
+      "c": "tell + pessoa, sem to: He told us (não: told to us)."
+    }
+  ],
+  "imagem": "🧒💾🎮",
+  "visualizacao": "Sexta à noite, você está no happy hour do time, na chamada de vídeo, com uma bebida na mão. O Mike mostra uma foto antiga e todo mundo ri das histórias de infância.",
+  "foto_busca": "old computer kid video game",
+  "trechos": [
+    {
+      "id": "f-76b877",
+      "quem": "mike",
+      "cod": "I wrote my first game when I was twelve.",
+      "dica": "Escrevi meu primeiro jogo quando eu tinha doze anos.",
+      "img": "🎮💾",
+      "alvo": "wrote",
+      "alvo_pt": "Escrevi",
+      "conceito": "write → wrote. Idade com be: when I was twelve (não: when I had twelve).",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "writed",
+        "had"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "twelve",
+          "aceita": [
+            "twelve years old"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7d9058",
+      "quem": "voce",
+      "contexto": "f-76b877",
+      "cod": "Nice! What kind of game did you write?",
+      "dica": "Que legal! Que tipo de jogo você escreveu?",
+      "img": "🕹️❓",
+      "alvo": "write",
+      "alvo_pt": "escreveu",
+      "conceito": "Com did, o verbo fica puro: did you write (não: did you wrote).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR07"
+      ],
+      "armadilhas": [
+        "wrote"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1dd236",
+      "quem": "mike",
+      "contexto": "f-7d9058",
+      "cod": "A car game. I thought it was easy, but it wasn't.",
+      "dica": "Um jogo de carro. Achei que era fácil, mas não era.",
+      "img": "🏎️😅",
+      "alvo": "thought",
+      "alvo_pt": "Achei",
+      "conceito": "think → thought = achei, pensei. it obrigatório: it was easy, it wasn't.",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "thinked"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-26d009",
+      "quem": "ana",
+      "cod": "When I was a kid, I wanted to be a designer.",
+      "dica": "Quando eu era criança, queria ser designer.",
+      "img": "🧒🎨",
+      "alvo": "kid",
+      "alvo_pt": "criança",
+      "conceito": "kid = criança (informal). Profissão leva a/an: a designer.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "be designer"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5216193,
+        "en_autor": "AlanF_US",
+        "pt_id": 6145992,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'When I was a kid,' acrescentado e 'teacher' → 'designer'; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e370ac",
+      "quem": "voce",
+      "contexto": "f-26d009",
+      "cod": "Did you have a computer when you were a kid?",
+      "dica": "Você tinha computador quando era criança?",
+      "img": "🖥️❓",
+      "alvo": "kid",
+      "alvo_pt": "criança",
+      "conceito": "Com did, have fica puro. when you were a kid = quando você era criança.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "had"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-455608",
+      "quem": "ana",
+      "contexto": "f-e370ac",
+      "cod": "No. When I was fifteen, my uncle gave me one.",
+      "dica": "Não. Quando eu tinha quinze anos, meu tio me deu um.",
+      "img": "🎁🖥️",
+      "alvo": "When",
+      "alvo_pt": "Quando",
+      "conceito": "When abre a frase: vírgula no meio. gave me one = me deu um.",
+      "registro": "informal",
+      "interferencias": [
+        "BR04",
+        "BR18"
+      ],
+      "armadilhas": [
+        "had"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2079993,
+        "en_autor": "CK",
+        "pt_id": 2309611,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'No. When I was fifteen,' acrescentado e 'this watch' → 'one'; PT ajustado",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "fifteen",
+          "aceita": [
+            "fifteen years old"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e5a3c9",
+      "quem": "ana",
+      "contexto": "f-455608",
+      "cod": "I thought it was magic!",
+      "dica": "Achei que era mágica!",
+      "img": "✨🖥️",
+      "alvo": "thought",
+      "alvo_pt": "Achei",
+      "conceito": "I thought it was... = achei que era... (it obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "thinked"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3825070,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'a dream' → 'magic'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bdce16",
+      "quem": "voce",
+      "cod": "Sarah, Mike told us about his first game.",
+      "dica": "Sarah, o Mike contou pra gente do primeiro jogo dele.",
+      "img": "👂🎮",
+      "alvo": "told",
+      "alvo_pt": "contou",
+      "conceito": "tell + pessoa, sem to: told us (não: told to us).",
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "to",
+        "said"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0863c9",
+      "quem": "sarah",
+      "contexto": "f-bdce16",
+      "cod": "Really? What did he tell you?",
+      "dica": "Sério? O que ele contou pra vocês?",
+      "img": "🤔❓",
+      "alvo": "tell",
+      "alvo_pt": "contou",
+      "conceito": "Com did, tell fica puro. tell you, sem to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR07",
+        "BR42"
+      ],
+      "armadilhas": [
+        "told",
+        "to"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5794075,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'she' → 'he', 'Really?' acrescentado; PT reescrito (vocês)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bd6942",
+      "quem": "voce",
+      "contexto": "f-0863c9",
+      "cod": "He wrote a car game when he was twelve!",
+      "dica": "Ele escreveu um jogo de carro quando tinha doze anos!",
+      "img": "🏎️🧒",
+      "alvo": "when",
+      "alvo_pt": "quando",
+      "conceito": "when + passado: when he was twelve. Idade com be.",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "had"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "twelve",
+          "aceita": [
+            "twelve years old"
+          ]
+        }
+      ]
+    }
+  ]
+}

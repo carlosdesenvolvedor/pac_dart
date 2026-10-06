@@ -1,0 +1,265 @@
+{
+  "id": "talvez-might.acho-que-sim-respostas-curtas",
+  "trilha": "talvez-might",
+  "nome": "Acho que sim: respostas curtas",
+  "emoji": "💬",
+  "cena": "Minutos antes da demo para o cliente, a Sarah faz perguntas rápidas e você responde curto.",
+  "resumo": "Responder com I think so, I hope so, I guess so e Not really, sem decalque do português.",
+  "fechamento": false,
+  "novos": [
+    "I think so.",
+    "I hope so.",
+    "Not really.",
+    "Fingers crossed!",
+    "I guess so."
+  ],
+  "apoio": [
+    "Do you think...?"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Respostas curtas: I think so"
+    },
+    {
+      "t": "p",
+      "c": "Para responder sem repetir a frase: **I think so** (acho que sim), **I hope so** (espero que sim), **I guess so** (é, acho que sim), **Not really** (não muito)."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca I think that yes ou I hope that yes: o so faz o papel do \"que sim\"."
+    },
+    {
+      "t": "tip",
+      "c": "Fingers crossed! = dedos cruzados (vamos torcer)."
+    },
+    {
+      "t": "ex",
+      "c": "I think so, but let me check.\nAcho que sim, mas deixa eu ver."
+    }
+  ],
+  "imagem": "💬📊🤞",
+  "visualizacao": "Dez minutos antes da demo. Na chamada, a Sarah fala rápido e confere a lista; você vê a sua tela compartilhada e o relógio no canto.",
+  "foto_busca": "video call meeting presentation",
+  "trechos": [
+    {
+      "id": "f-010f4b",
+      "quem": "voce",
+      "contexto": "Is the demo ready?",
+      "cod": "I think so, but let me check.",
+      "dica": "Acho que sim, mas deixa eu conferir.",
+      "img": "🤔✅",
+      "alvo": "I think so",
+      "alvo_pt": "Acho que sim",
+      "conceito": "Acho que sim = I think so (não: I think that yes).",
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "armadilhas": [
+        "that",
+        "yes"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "lit": "[lit.: acho assim]"
+    },
+    {
+      "id": "f-a5c10b",
+      "quem": "sarah",
+      "contexto": "f-010f4b",
+      "cod": "Sounds good. Fingers crossed!",
+      "dica": "Beleza. Dedos cruzados!",
+      "img": "🤞🙂",
+      "alvo": "Fingers crossed",
+      "alvo_pt": "Dedos cruzados",
+      "conceito": "Sounds good = beleza (aceitando a ideia). Fingers crossed! = dedos cruzados, vamos torcer.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "lit": "[lit.: soa bem]"
+    },
+    {
+      "id": "f-d85c55",
+      "quem": "voce",
+      "contexto": "Will the new login page work?",
+      "cod": "I hope so. Mike tested it this morning.",
+      "dica": "Espero que sim. O Mike testou hoje de manhã.",
+      "img": "🙏🧪",
+      "alvo": "I hope so",
+      "alvo_pt": "Espero que sim",
+      "conceito": "Espero que sim = I hope so. Objeto obrigatório: tested it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR43",
+        "BR18",
+        "BR12"
+      ],
+      "armadilhas": [
+        "that",
+        "yes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2b3641",
+      "quem": "voce",
+      "contexto": "Is everything OK for the demo?",
+      "cod": "Not really. The internet is so slow today.",
+      "dica": "Não muito. A internet está tão lenta hoje.",
+      "img": "🐢🌐",
+      "alvo": "Not really",
+      "alvo_pt": "Não muito",
+      "conceito": "Not really = não muito, um não suave (na verdade = actually).",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4764878,
+        "en_autor": "Stalwartlover",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Not really.' acrescentado; 'Internet' → 'internet' (grafia en-US atual) (original: \"The Internet is so slow today.\"); PT reescrito (original: \"A Internet está tão lenta hoje.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2cb968",
+      "quem": "voce",
+      "contexto": "So can we still show it to the client?",
+      "cod": "Yeah, I guess so.",
+      "dica": "É, acho que sim.",
+      "img": "🤷‍♂️👍",
+      "alvo": "I guess so",
+      "alvo_pt": "É, acho que sim",
+      "conceito": "I guess so = é, acho que sim (com menos certeza que I think so).",
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3820733,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Yeah,' acrescentado (original: \"I guess so.\"); PT reescrito (original: \"Eu acho que sim.\")",
+        "export": "2026-10-03"
+      },
+      "opcional": [
+        "Yeah"
+      ]
+    },
+    {
+      "id": "f-2ae8c3",
+      "quem": "sarah",
+      "contexto": "Is the client happy with the new design?",
+      "cod": "Yes, I think so. Ana did a great job.",
+      "dica": "Sim, acho que sim. A Ana fez um ótimo trabalho.",
+      "img": "😊🎨",
+      "alvo": "I think so",
+      "alvo_pt": "acho que sim",
+      "conceito": "fazer um ótimo trabalho = do a great job (do, não make).",
+      "registro": "informal",
+      "interferencias": [
+        "BR43",
+        "BR12"
+      ],
+      "armadilhas": [
+        "made"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bb6e64",
+      "quem": "sarah",
+      "contexto": "Are you nervous?",
+      "cod": "Not really. I know the client well.",
+      "dica": "Não muito. Conheço bem o cliente.",
+      "img": "😌🤝",
+      "alvo": "Not really",
+      "alvo_pt": "Não muito",
+      "conceito": "conhecer bem = know well (o well vai no fim).",
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0ad1b3",
+      "quem": "voce",
+      "contexto": "Do you think they'll like it?",
+      "cod": "Well, I hope so. We worked hard on it.",
+      "dica": "Bom, espero que sim. A gente trabalhou muito nisso.",
+      "img": "💪💻",
+      "alvo": "I hope so",
+      "alvo_pt": "espero que sim",
+      "conceito": "trabalhar muito em algo = work hard on it.",
+      "var": [
+        {
+          "em": "hard",
+          "aceita": [
+            "a lot"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-70679c",
+      "quem": "sarah",
+      "contexto": "Should we start now?",
+      "cod": "I guess so. Everyone's here.",
+      "dica": "É, acho que sim. Todo mundo está aqui.",
+      "img": "👥🕒",
+      "alvo": "I guess so",
+      "alvo_pt": "É, acho que sim",
+      "conceito": "Todo mundo = everyone, com verbo no singular: everyone's (everyone is).",
+      "var": [
+        {
+          "em": "Everyone's",
+          "aceita": [
+            "Everyone is"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-05726c",
+      "quem": "voce",
+      "contexto": "f-70679c",
+      "cod": "Let's keep our fingers crossed.",
+      "dica": "Vamos ficar de dedos cruzados.",
+      "img": "🤞🍀",
+      "alvo": "fingers crossed",
+      "alvo_pt": "dedos cruzados",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2007360,
+        "en_autor": "CK",
+        "pt_id": 5540125,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

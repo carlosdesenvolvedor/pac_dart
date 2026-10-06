@@ -1,0 +1,253 @@
+{
+  "id": "argumentar-conectores.cena-remoto-ou-presencial",
+  "trilha": "argumentar-conectores",
+  "nome": "Cena: remoto ou presencial?",
+  "emoji": "🏛️",
+  "cena": "No fim do debate, você escreve um resumo com a decisão do time sobre o modelo de trabalho.",
+  "resumo": "Fechamento: despite / in spite of, whereas, os conectores de texto e a conclusão no mesmo resumo.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão da trilha"
+    },
+    {
+      "t": "tip",
+      "c": "apesar de = despite / in spite of · enquanto (contraste) = whereas · ainda assim = nevertheless · como resultado = as a result · resumindo = to sum up · no geral = overall."
+    },
+    {
+      "t": "warn",
+      "c": "despite sem of; in spite of com of. Não: despite of the delays."
+    }
+  ],
+  "imagem": "📝🏠🏢",
+  "visualizacao": "O debate acabou e a sala ficou quieta. Você abre um documento em branco, olha suas anotações cheias de setas e começa a escrever o resumo da decisão.",
+  "foto_busca": "notes summary document hybrid work",
+  "trechos": [
+    {
+      "id": "f-d3233e",
+      "quem": "voce",
+      "cod": "In spite of the bad weather, most of the team came to the office.",
+      "dica": "Apesar do mau tempo, a maior parte do time veio ao escritório.",
+      "img": "🌧️🏢👥",
+      "conceito": "in spite of = despite, mas com of. Aqui as duas formas valem.",
+      "var": [
+        {
+          "em": "In spite of",
+          "aceita": [
+            "Despite"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4772587,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"In spite of the bad weather, they decided to go by car.\"; they decided to go by car → most of the team came to the office; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3e1e1c",
+      "quem": "voce",
+      "cod": "Ana focuses better at home, whereas Mike needs the energy of the office.",
+      "dica": "(no resumo) A Ana se concentra melhor em casa, enquanto o Mike precisa da energia do escritório.",
+      "img": "🏠🎧🏢",
+      "alvo": "whereas",
+      "alvo_pt": "enquanto",
+      "conceito": "focuses / needs: -s da 3ª pessoa nas duas orações.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02",
+        "BR12"
+      ],
+      "armadilhas": [
+        "focus",
+        "need",
+        "while"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-af5951",
+      "quem": "voce",
+      "cod": "On the one hand, working from home saves time.",
+      "dica": "Por um lado, trabalhar de casa economiza tempo.",
+      "img": "🏠⏳",
+      "alvo": "On the one hand",
+      "alvo_pt": "Por um lado",
+      "conceito": "trabalhar de casa como sujeito = working from home (-ing).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "work",
+        "save"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d6cd4a",
+      "quem": "voce",
+      "contexto": "f-af5951",
+      "cod": "On the other hand, new developers learn faster in the office.",
+      "dica": "Por outro lado, os devs novos aprendem mais rápido no escritório.",
+      "img": "🧑‍💻📚🏢",
+      "alvo": "On the other hand",
+      "alvo_pt": "Por outro lado",
+      "conceito": "devs novos em geral: new developers, sem the.",
+      "var": [
+        {
+          "em": "developers",
+          "aceita": [
+            "devs"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the",
+        "more"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0124d4",
+      "quem": "voce",
+      "cod": "As a result, we decided to try a hybrid model.",
+      "dica": "Como resultado, decidimos testar um modelo híbrido.",
+      "img": "🔀🏠🏢",
+      "alvo": "As a result",
+      "alvo_pt": "Como resultado",
+      "conceito": "decide to + verbo: decided to try.",
+      "var": [
+        {
+          "em": "try",
+          "aceita": [
+            "test"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "trying"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-887ac4",
+      "quem": "voce",
+      "cod": "The team will meet at the office on Tuesdays and Thursdays.",
+      "dica": "O time vai se encontrar no escritório às terças e quintas.",
+      "img": "🗓️🏢🤝",
+      "alvo": "on Tuesdays and Thursdays",
+      "alvo_pt": "às terças e quintas",
+      "conceito": "dias da semana com on e maiúscula: on Tuesdays.",
+      "var": [
+        {
+          "em": "will meet",
+          "aceita": [
+            "is going to meet",
+            "'ll meet"
+          ]
+        },
+        {
+          "em": "at the office",
+          "aceita": [
+            "in the office"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17",
+        "BR15"
+      ],
+      "armadilhas": [
+        "in",
+        "at",
+        "tuesdays"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b059ed",
+      "quem": "voce",
+      "cod": "Some people disagreed. Nevertheless, everyone will try it for three months.",
+      "dica": "Algumas pessoas discordaram. Ainda assim, todo mundo vai testar por três meses.",
+      "img": "🙅🤝🧪",
+      "alvo": "Nevertheless",
+      "alvo_pt": "Ainda assim",
+      "conceito": "por três meses = for three months (não: during three months).",
+      "var": [
+        {
+          "em": "try it",
+          "aceita": [
+            "test it"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "during",
+        "still"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6f0d9f",
+      "quem": "voce",
+      "cod": "To sum up, the benefits outweigh the drawbacks, at least for now.",
+      "dica": "Resumindo, os benefícios superam as desvantagens, pelo menos por enquanto.",
+      "img": "⚖️👍⏳",
+      "alvo": "To sum up",
+      "alvo_pt": "Resumindo",
+      "conceito": "drawback = desvantagem; for now = por enquanto.",
+      "blocos": [
+        8
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "resuming",
+        "outweighs"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "id": "situacao-viagem.voo-atrasado-e-conexao",
+  "trilha": "situacao-viagem",
+  "nome": "Voo atrasado e conexão",
+  "emoji": "⏰",
+  "cena": "Na volta, em Chicago, o seu voo para casa atrasa, depois é cancelado, e você precisa ir para outro terminal.",
+  "resumo": "Entender e explicar atraso e cancelamento e descer no lugar certo: My flight is delayed. / Get off at terminal five.",
+  "fechamento": false,
+  "novos": [
+    "delayed",
+    "canceled",
+    "delay (substantivo)",
+    "get off",
+    "terminal"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Atraso e cancelamento"
+    },
+    {
+      "t": "p",
+      "c": "**delayed** = atrasado (voo, trem); **the delay** = o atraso; **canceled** = cancelado (en-US, com um l só). **get off** = descer do trem, do ônibus ou do avião."
+    },
+    {
+      "t": "ex",
+      "c": "My flight is delayed. How long is the delay?\nMeu voo está atrasado. Quanto tempo de atraso?"
+    },
+    {
+      "t": "tip",
+      "c": "Com evidência, going to: I'm going to be late. Plano já decidido, presente contínuo: I'm getting off at the next stop."
+    },
+    {
+      "t": "warn",
+      "c": "Duração com for: I waited for three hours (não: during three hours). During vai com evento: during the flight."
+    }
+  ],
+  "imagem": "🛫⏰❌",
+  "visualizacao": "Você olha o painel do aeroporto: ao lado do seu voo, a palavra DELAYED em vermelho. Gente suspirando, fila no balcão e um anúncio atrás do outro.",
+  "foto_busca": "airport departures board delayed",
+  "trechos": [
+    {
+      "id": "f-b19c7f",
+      "quem": "voce",
+      "cod": "My flight is delayed.",
+      "dica": "Meu voo está atrasado.",
+      "img": "✈️⏰",
+      "alvo": "delayed",
+      "alvo_pt": "atrasado",
+      "conceito": "delayed = atrasado (voo, trem); late = atrasado (pessoa).",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1073136,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'Our train' trocado por 'My flight'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2f10d7",
+      "quem": "voce",
+      "cod": "Excuse me, how long is the delay?",
+      "dica": "Com licença, quanto tempo de atraso?",
+      "img": "⏳❓",
+      "alvo": "the delay",
+      "alvo_pt": "atraso",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ca6460",
+      "quem": "voce",
+      "cod": "Julia, my flight home is delayed. I'm going to be late.",
+      "dica": "Julia, meu voo pra casa está atrasado. Vou chegar atrasado.",
+      "img": "📱✈️😩",
+      "alvo": "delayed",
+      "alvo_pt": "atrasado",
+      "conceito": "flight home = voo pra casa, sem to; com evidência, going to: I'm going to be late.",
+      "var": [
+        {
+          "em": "be late",
+          "aceita": [
+            "arrive late",
+            "get home late"
+          ]
+        }
+      ],
+      "pt_f": "Julia, meu voo pra casa está atrasado. Vou chegar atrasada.",
+      "registro": "informal",
+      "interferencias": [
+        "BR16",
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d27acc",
+      "quem": "atendente",
+      "contexto": "Excuse me, any news about my flight?",
+      "cod": "Your flight's canceled.",
+      "dica": "O seu voo está cancelado.",
+      "img": "✈️❌",
+      "alvo": "canceled",
+      "alvo_pt": "cancelado",
+      "conceito": "canceled, com um l só (en-US); cancelled é britânico.",
+      "var": [
+        {
+          "em": "flight's",
+          "aceita": [
+            "flight is"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "cancelled"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2255465,
+        "en_autor": "CK",
+        "pt_id": 6397021,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1dd583",
+      "quem": "atendente",
+      "contexto": "f-d27acc",
+      "cod": "A lot of flights were canceled because of the storm.",
+      "dica": "Muitos voos foram cancelados por causa da tempestade.",
+      "img": "⛈️✈️❌",
+      "alvo": "canceled",
+      "alvo_pt": "cancelados",
+      "var": [
+        {
+          "em": "A lot of",
+          "aceita": [
+            "Many"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "cancelled"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9773649,
+        "en_autor": "CK",
+        "pt_id": 9775320,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'Many' trocado por 'A lot of' (afirmativa falada)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2ac0bb",
+      "quem": "atendente",
+      "contexto": "Is there another flight today?",
+      "cod": "There's a flight at ten. It leaves from terminal five.",
+      "dica": "Tem um voo às dez. Sai do terminal cinco.",
+      "img": "🛫🏢",
+      "alvo": "terminal",
+      "alvo_pt": "terminal",
+      "conceito": "Sai do terminal cinco: o sujeito it não some (It leaves from...).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03",
+        "BR01",
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7a3206",
+      "quem": "voce",
+      "contexto": "f-2ac0bb",
+      "cod": "Terminal five? How do I get there?",
+      "dica": "Terminal cinco? Como eu chego lá?",
+      "img": "🗺️❓",
+      "alvo": "Terminal",
+      "alvo_pt": "Terminal",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fb7b44",
+      "quem": "atendente",
+      "contexto": "f-7a3206",
+      "cod": "Take the airport train and get off at terminal five.",
+      "dica": "Pega o trem do aeroporto e desce no terminal cinco.",
+      "img": "🚈⬇️",
+      "alvo": "get off",
+      "alvo_pt": "desce",
+      "lit": "[lit.: off = para fora (do trem, do ônibus)]",
+      "conceito": "get off = descer (do trem, ônibus, avião); get on = subir, embarcar.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-400b37",
+      "quem": "voce",
+      "contexto": "Are you getting off here?",
+      "cod": "No, I'm getting off at the next stop.",
+      "dica": "Não, vou descer na próxima parada.",
+      "img": "🚈➡️",
+      "alvo": "getting off",
+      "alvo_pt": "descer",
+      "conceito": "Plano já certo: presente contínuo (I'm getting off...).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR29",
+        "BR02"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3311008,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'We're' trocado por 'No, I'm'; 'station' por 'stop' (trem do aeroporto)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-494090",
+      "quem": "voce",
+      "contexto": "How was your trip home?",
+      "cod": "I waited for three hours because of the delay.",
+      "dica": "Esperei três horas por causa do atraso.",
+      "img": "🪑⏳😴",
+      "alvo": "the delay",
+      "alvo_pt": "atraso",
+      "conceito": "Duração = for (não: during three hours).",
+      "opcional": [
+        "for"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR63",
+        "BR02"
+      ],
+      "armadilhas": [
+        "during"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

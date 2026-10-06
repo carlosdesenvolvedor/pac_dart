@@ -1,0 +1,219 @@
+{
+  "id": "coisas-e-descricoes.plurais-caixas-pessoas",
+  "trilha": "coisas-e-descricoes",
+  "nome": "Plurais: caixas, pessoas",
+  "emoji": "📦",
+  "cena": "A Julia está de mudança e você ajuda por vídeo, enquanto o Lucas carrega as caixas e as crianças correm no meio.",
+  "resumo": "Falar de mais de uma coisa ou pessoa: books, boxes, people, children.",
+  "fechamento": false,
+  "novos": [
+    "boxes",
+    "books",
+    "people",
+    "children"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Plural: -s, -es e os irregulares"
+    },
+    {
+      "t": "p",
+      "c": "Quase tudo leva **-s** (books); depois de s, x, ch e sh, **-es** (boxes). Alguns mudam: person → **people**, child → **children**, man → **men**."
+    },
+    {
+      "t": "warn",
+      "c": "people já é plural: people are (não: people is)."
+    },
+    {
+      "t": "ex",
+      "c": "The children are hungry.\nAs crianças estão com fome."
+    }
+  ],
+  "imagem": "📦📚🚚",
+  "visualizacao": "Na tela do celular você vê a sala da Julia cheia de caixas. Barulho de fita adesiva, o Lucas carregando livros e as crianças rindo no meio da bagunça.",
+  "foto_busca": "moving boxes books living room",
+  "trechos": [
+    {
+      "id": "f-cc084a",
+      "quem": "julia",
+      "cod": "Where are my books?",
+      "dica": "Onde estão os meus livros?",
+      "img": "📚❓",
+      "alvo": "books",
+      "alvo_pt": "livros",
+      "registro": "informal",
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1495883,
+        "en_autor": "CK",
+        "pt_id": 6960187,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e89a8a",
+      "quem": "lucas",
+      "contexto": "f-cc084a",
+      "cod": "Your books are in two boxes.",
+      "dica": "Os seus livros estão em duas caixas.",
+      "img": "📚📦📦",
+      "alvo": "boxes",
+      "alvo_pt": "caixas",
+      "conceito": "box → boxes: depois de x, o plural é -es.",
+      "registro": "informal",
+      "armadilhas": [
+        "boxs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-61b189",
+      "quem": "lucas",
+      "cod": "Here are the books.",
+      "dica": "Aqui estão os livros.",
+      "img": "🙌📚",
+      "alvo": "books",
+      "alvo_pt": "livros",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5247796,
+        "en_autor": "CarpeLanam",
+        "pt_id": 6170144,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5dc50f",
+      "quem": "voce",
+      "cod": "Wow, the boxes are really big!",
+      "dica": "Nossa, as caixas são bem grandes!",
+      "img": "📦😮",
+      "alvo": "boxes",
+      "alvo_pt": "caixas",
+      "conceito": "O adjetivo não vai para o plural: big boxes, boxes are big.",
+      "registro": "informal",
+      "armadilhas": [
+        "bigs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e90a5a",
+      "quem": "voce",
+      "cod": "Who are the people with Lucas?",
+      "dica": "Quem são as pessoas com o Lucas?",
+      "img": "👥❓",
+      "alvo": "people",
+      "alvo_pt": "pessoas",
+      "conceito": "people = pessoas (já é plural); person = pessoa.",
+      "registro": "informal",
+      "armadilhas": [
+        "peoples",
+        "persons"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2637b0",
+      "quem": "julia",
+      "cod": "People here are really nice.",
+      "dica": "As pessoas aqui são bem legais.",
+      "img": "😊🏘️",
+      "alvo": "People",
+      "alvo_pt": "pessoas",
+      "conceito": "people pede are: people are (não: people is).",
+      "var": [
+        {
+          "em": "People here",
+          "aceita": [
+            "The people here"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5088444,
+        "en_autor": "CK",
+        "pt_id": 7331594,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT: 'muito legais' → 'bem legais' (really = bem, no glossário do curso)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-24be26",
+      "quem": "voce",
+      "cod": "Where are the children?",
+      "dica": "Onde estão as crianças?",
+      "img": "👧👦❓",
+      "alvo": "children",
+      "alvo_pt": "crianças",
+      "conceito": "child = criança; children = crianças (sem -s).",
+      "registro": "informal",
+      "armadilhas": [
+        "childrens",
+        "childs"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 620990,
+        "en_autor": "CM",
+        "pt_id": 2715231,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b5f253",
+      "quem": "julia",
+      "contexto": "f-24be26",
+      "cod": "The children are in the car.",
+      "dica": "As crianças estão no carro.",
+      "img": "👧👦🚗",
+      "alvo": "children",
+      "alvo_pt": "crianças",
+      "registro": "informal",
+      "interferencias": [],
+      "armadilhas": [
+        "childrens"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4494347,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "hungry → in the car (passa a responder Where are the children?); PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

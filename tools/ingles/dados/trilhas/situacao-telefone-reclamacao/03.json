@@ -1,0 +1,240 @@
+{
+  "id": "situacao-telefone-reclamacao.a-internet-caiu-de-novo",
+  "trilha": "situacao-telefone-reclamacao",
+  "nome": "A internet caiu de novo",
+  "emoji": "📶",
+  "cena": "Você trabalha de casa, a internet do apartamento cai toda hora e você liga para a operadora.",
+  "resumo": "Descrever um problema que se repete e cobrar a visita e o retorno prometidos.",
+  "fechamento": false,
+  "novos": [
+    "keep dropping (ficar caindo)",
+    "outage"
+  ],
+  "apoio": [
+    "show up (aparecer)",
+    "call back"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Um problema que não para"
+    },
+    {
+      "t": "p",
+      "c": "**keep + -ing** = ficar fazendo, de novo e de novo: My internet keeps dropping. **outage** = queda do serviço (internet, luz)."
+    },
+    {
+      "t": "tip",
+      "c": "Na fala, phrasal verbs são o normal: **show up** (aparecer), **call back** (ligar de volta), **look into** (investigar)."
+    },
+    {
+      "t": "warn",
+      "c": "Fica caindo = **keeps dropping**: keep + -ing (não: keeps to drop)."
+    },
+    {
+      "t": "ex",
+      "c": "Can you look into it and call me back?\nVocê pode investigar isso e me ligar de volta?"
+    }
+  ],
+  "imagem": "📶🏠💻",
+  "visualizacao": "Você está numa call com o time e a tela congela de novo. O roteador pisca laranja, você suspira e liga para a operadora com o notebook no colo.",
+  "foto_busca": "wifi router home office",
+  "trechos": [
+    {
+      "id": "f-1f1b28",
+      "quem": "voce",
+      "cod": "My internet keeps dropping, and I work from home.",
+      "dica": "Minha internet fica caindo, e eu trabalho de casa.",
+      "img": "📶❌🏠",
+      "alvo": "keeps dropping",
+      "alvo_pt": "fica caindo",
+      "conceito": "keep + -ing = ficar + gerúndio, algo que se repete (não: keeps to drop).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to",
+        "drop"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c76e02",
+      "quem": "atendente",
+      "contexto": "f-1f1b28",
+      "cod": "There's an internet outage in your area right now.",
+      "dica": "Tem uma queda de internet na sua região agora.",
+      "img": "🗺️📶⚠️",
+      "alvo": "internet outage",
+      "alvo_pt": "queda de internet",
+      "conceito": "outage = queda, interrupção do serviço (internet, luz, sistema).",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "opcional": [
+        "right"
+      ]
+    },
+    {
+      "id": "f-a7e3de",
+      "quem": "voce",
+      "contexto": "f-c76e02",
+      "cod": "But it keeps dropping every evening, not just today.",
+      "dica": "Mas ela fica caindo toda noite, não só hoje.",
+      "img": "🌙📶🔁",
+      "alvo": "keeps dropping",
+      "alvo_pt": "fica caindo",
+      "conceito": "A internet = it: o sujeito é obrigatório em inglês.",
+      "var": [
+        {
+          "em": "every evening",
+          "aceita": [
+            "every night"
+          ]
+        },
+        {
+          "em": "not just",
+          "aceita": [
+            "not only"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR52"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2cf72a",
+      "quem": "voce",
+      "cod": "Last week, you promised to send a technician, but nobody showed up.",
+      "dica": "Semana passada, vocês prometeram mandar um técnico, mas ninguém apareceu.",
+      "img": "🧑‍🔧🚪❌",
+      "alvo": "showed up",
+      "alvo_pt": "apareceu",
+      "conceito": "show up = aparecer, comparecer; promise to + verbo.",
+      "var": [
+        {
+          "em": "nobody",
+          "aceita": [
+            "no one"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        7
+      ]
+    },
+    {
+      "id": "f-6bd428",
+      "quem": "voce",
+      "contexto": "Did anyone from our team call you about the visit?",
+      "cod": "No, they never called me back.",
+      "dica": "Não, eles nunca me ligaram de volta.",
+      "img": "📵😒",
+      "alvo": "called me back",
+      "alvo_pt": "me ligaram de volta",
+      "conceito": "call back = ligar de volta, retornar a ligação.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR60",
+        "BR07"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9055003,
+        "en_autor": "CK",
+        "pt_id": 9092681,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"They didn't call me back.\" (No e never no lugar de didn't, resposta à pergunta da atendente); PT reescrito.",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-28547d",
+      "quem": "atendente",
+      "cod": "I'm sorry. Last week's outage delayed a lot of visits.",
+      "dica": "Sinto muito. A queda da semana passada atrasou muitas visitas.",
+      "img": "📅⚠️🚐",
+      "alvo": "outage",
+      "alvo_pt": "queda",
+      "conceito": "Last week's outage = a queda da semana passada ('s com tempo).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-30a0b1",
+      "quem": "voce",
+      "contexto": "f-28547d",
+      "cod": "I understand, but can you look into this and call me back?",
+      "dica": "Entendo, mas você pode investigar isso e me ligar de volta?",
+      "img": "🔍📞↩️",
+      "alvo": "call me back",
+      "alvo_pt": "me ligar de volta",
+      "conceito": "look into = investigar (na fala, mais natural que investigate).",
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "armadilhas": [
+        "investigate"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "this",
+          "aceita": [
+            "it",
+            "that"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-48d906",
+      "quem": "atendente",
+      "contexto": "f-30a0b1",
+      "cod": "Sure. We'll call you back before five.",
+      "dica": "Claro. Vamos te ligar de volta antes das cinco.",
+      "img": "🕔📞✅",
+      "alvo": "call you back",
+      "alvo_pt": "te ligar de volta",
+      "var": [
+        {
+          "em": "We'll",
+          "aceita": [
+            "We will",
+            "We're going to"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4017078,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"We'll call you back.\" (acrescentado Sure e before five); PT reescrito (original: \"Vamos retornar sua ligação.\")",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

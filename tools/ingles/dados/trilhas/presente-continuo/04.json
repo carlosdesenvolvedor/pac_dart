@@ -1,0 +1,237 @@
+{
+  "id": "presente-continuo.hoje-eu-preciso-verbos-sem-ing",
+  "trilha": "presente-continuo",
+  "nome": "Hoje eu preciso: verbos sem -ing",
+  "emoji": "🧠",
+  "cena": "Manhã de trabalho remoto: numa chamada, você conta para o Mike o que muda hoje e do que precisa.",
+  "resumo": "Contrastar o normal (usually) com o hoje (but today) e manter need, know, understand e think no simples.",
+  "fechamento": false,
+  "novos": [
+    "but today",
+    "I know / I understand",
+    "I think (acho) x I'm thinking about"
+  ],
+  "apoio": [
+    "I need (não: I'm needing)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Rotina x hoje; verbos sem -ing"
+    },
+    {
+      "t": "p",
+      "c": "Rotina no simples, exceção no contínuo: I **usually** fix bugs, **but today** I'm testing."
+    },
+    {
+      "t": "ex",
+      "c": "I usually fix bugs, but today I'm testing.\nNormalmente eu corrijo bugs, mas hoje estou testando."
+    },
+    {
+      "t": "tip",
+      "c": "**I think** = eu acho (opinião). **I'm thinking about** = estou pensando em (agora)."
+    },
+    {
+      "t": "warn",
+      "c": "**need, know, understand, want, like** ficam no simples, mesmo quando o português usa -ndo: Não estou entendendo = I don't understand (não: I'm not understanding)."
+    }
+  ],
+  "imagem": "💻🗓️🧠",
+  "visualizacao": "Segunda de manhã, câmera ligada. Do outro lado da tela, o Mike toma café em Chicago enquanto você conta o que muda no seu dia.",
+  "foto_busca": "video call remote work desk",
+  "trechos": [
+    {
+      "id": "f-370332",
+      "quem": "voce",
+      "cod": "I usually fix bugs, but today I'm testing.",
+      "dica": "Normalmente eu corrijo bugs, mas hoje estou testando.",
+      "img": "🐛🧪",
+      "alvo": "but today",
+      "alvo_pt": "mas hoje",
+      "conceito": "Rotina = simples (I fix); hoje = contínuo (I'm testing).",
+      "var": [
+        {
+          "em": "I usually",
+          "aceita": [
+            "Usually I",
+            "Usually, I"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-446bd7",
+      "quem": "voce",
+      "cod": "Mike, I think I need help.",
+      "dica": "Mike, acho que preciso de ajuda.",
+      "img": "🤔🙋",
+      "alvo": "I think",
+      "alvo_pt": "acho",
+      "conceito": "Acho que = I think (opinião, sem -ing). Need também fica no simples (não: I'm needing).",
+      "registro": "neutro",
+      "armadilhas": [
+        "needing"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2407817,
+        "en_autor": "CK",
+        "pt_id": 5018365,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I think I need help.\"; PT original: \"Eu acho que preciso de ajuda.\"; acrescentado o vocativo \"Mike,\" no EN e no PT",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-69ccf3",
+      "quem": "mike",
+      "contexto": "f-446bd7",
+      "cod": "Sarah usually helps, but today she's traveling.",
+      "dica": "Normalmente a Sarah ajuda, mas hoje ela está viajando.",
+      "img": "👩‍💼✈️",
+      "alvo": "but today",
+      "alvo_pt": "mas hoje",
+      "conceito": "Rotina = simples (Sarah helps); hoje = contínuo (she's traveling).",
+      "var": [
+        {
+          "em": "Sarah usually",
+          "aceita": [
+            "Usually Sarah",
+            "Usually, Sarah"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "help",
+        "travels"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-137c97",
+      "quem": "voce",
+      "cod": "I don't understand this bug.",
+      "dica": "Não estou entendendo esse bug.",
+      "img": "🐛😵",
+      "alvo": "understand",
+      "alvo_pt": "entendendo",
+      "conceito": "Não estou entendendo = I don't understand: understand fica no simples (não: I'm not understanding).",
+      "var": [
+        {
+          "em": "this",
+          "aceita": [
+            "that"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "understanding",
+        "i'm"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a03fd8",
+      "quem": "mike",
+      "contexto": "f-137c97",
+      "cod": "Yes, I know. It's an old bug.",
+      "dica": "É, eu sei. É um bug antigo.",
+      "img": "🐛🕰️",
+      "alvo": "I know",
+      "alvo_pt": "eu sei",
+      "conceito": "know fica no simples: I know (não: I'm knowing).",
+      "var": [
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yeah"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "knowing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-27bc19",
+      "quem": "voce",
+      "contexto": "Look, the problem is here.",
+      "cod": "OK, I understand now.",
+      "dica": "Tá bom, agora eu entendo.",
+      "img": "💡🙂",
+      "alvo": "I understand",
+      "alvo_pt": "eu entendo",
+      "registro": "neutro",
+      "armadilhas": [
+        "understanding"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 808685,
+        "en_autor": "Zifre",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I understand now.\"; PT original: \"Eu entendo agora.\"; acrescentado \"OK,\"; PT reescrito: \"Tá bom, agora eu entendo.\"",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-dc3cc5",
+      "quem": "mike",
+      "cod": "What are you thinking about?",
+      "dica": "No que você está pensando?",
+      "img": "💭❓",
+      "alvo": "thinking about",
+      "alvo_pt": "está pensando",
+      "conceito": "Pensar em = think about. Na pergunta, o about vai para o fim.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2543902,
+        "en_autor": "CK",
+        "pt_id": 770594,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"What're you thinking about?\"; What're → What are (forma plena, que o curso ensina primeiro)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bf065d",
+      "quem": "voce",
+      "contexto": "f-dc3cc5",
+      "cod": "I'm thinking about the trip.",
+      "dica": "Estou pensando na viagem.",
+      "img": "✈️💭",
+      "alvo": "I'm thinking about",
+      "alvo_pt": "Estou pensando na",
+      "conceito": "Agora, pensando em algo = contínuo. Opinião (acho) = I think.",
+      "registro": "informal",
+      "armadilhas": [
+        "think"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

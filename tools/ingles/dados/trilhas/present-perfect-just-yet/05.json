@@ -1,0 +1,339 @@
+{
+  "id": "present-perfect-just-yet.status-no-fim-do-dia",
+  "trilha": "present-perfect-just-yet",
+  "nome": "Status no fim do dia",
+  "emoji": "📋",
+  "cena": "Fim do dia: o Mike pede status no chat e você responde tarefa por tarefa.",
+  "resumo": "Fechamento: pedir e dar status com just, already e yet, e voltar ao passado quando há hora ou ago.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "just (acabar de)",
+    "already",
+    "yet",
+    "Not yet.",
+    "fixed (particípio)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Status: just, already, yet"
+    },
+    {
+      "t": "p",
+      "c": "**just** = acabei de (notícia fresca). **already** = já (feito). **yet** no fim: *já?* na pergunta e *ainda não* na negativa. Os três vêm com **have/has + particípio**."
+    },
+    {
+      "t": "ex",
+      "c": "Yes, I've just sent it to you.\nSim, acabei de te mandar."
+    },
+    {
+      "t": "ex",
+      "c": "Have you pushed the fix yet?\nVocê já deu push na correção?"
+    },
+    {
+      "t": "warn",
+      "c": "Com *ago* ou hora marcada, volta o passado: *I pushed it ten minutes ago.* (não: I've pushed it ten minutes ago). E o objeto não some: *sent it, fixed it* (BR18)."
+    }
+  ],
+  "imagem": "💻📋✅",
+  "visualizacao": "Fim de tarde no seu home office, o sol baixo entrando pela janela. O chat do Mike apita com uma pergunta atrás da outra, e você vai riscando as tarefas da lista.",
+  "foto_busca": "home office laptop evening checklist",
+  "trechos": [
+    {
+      "id": "f-62a33a",
+      "quem": "mike",
+      "cod": "Have you finished the report yet?",
+      "dica": "Você já terminou o relatório?",
+      "img": "📄⏳❓",
+      "alvo": "yet",
+      "alvo_pt": "já",
+      "conceito": "Na pergunta, o já vira yet, no fim da frase.",
+      "var": [
+        {
+          "em": "Have you finished",
+          "aceita": [
+            "Did you finish"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did you finished",
+        "already finished"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-28ba00",
+      "quem": "voce",
+      "contexto": "f-62a33a",
+      "cod": "Yes, I've just sent it to you.",
+      "dica": "Sim, acabei de te mandar.",
+      "img": "📤📄✅",
+      "alvo": "I've just",
+      "alvo_pt": "acabei de",
+      "conceito": "Acabei de = I've just + particípio. E o it não some: sent it to you.",
+      "var": [
+        {
+          "em": "I've just sent",
+          "aceita": [
+            "I just sent"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "armadilhas": [
+        "sent to you",
+        "i've sent just"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a3ad91",
+      "quem": "mike",
+      "contexto": "f-28ba00",
+      "cod": "Thanks! Have you fixed the login bug yet?",
+      "dica": "Valeu! Você já corrigiu o bug do login?",
+      "img": "🐛🔧❓",
+      "alvo": "fixed",
+      "alvo_pt": "corrigiu",
+      "conceito": "fix = corrigir (bug). fix → fixed: particípio regular, igual ao passado.",
+      "var": [
+        {
+          "em": "Have you fixed",
+          "aceita": [
+            "Did you fix"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did you fixed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c334a7",
+      "quem": "voce",
+      "contexto": "f-a3ad91",
+      "cod": "I've already fixed it.",
+      "dica": "Já corrigi.",
+      "img": "🐛✅",
+      "alvo": "already",
+      "alvo_pt": "Já",
+      "conceito": "Já corrigi = I've already fixed it: already no meio e o it no fim (BR18).",
+      "var": [
+        {
+          "em": "I've already fixed",
+          "aceita": [
+            "I already fixed"
+          ]
+        },
+        {
+          "em": "already fixed it",
+          "aceita": [
+            "fixed it already"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "armadilhas": [
+        "already fixed."
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8400314,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "inglês igual; PT reescrito (corrigir, no sentido de bug; sem o Eu redundante)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-59a196",
+      "quem": "mike",
+      "contexto": "f-c334a7",
+      "cod": "Great! Have you pushed the fix yet?",
+      "dica": "Ótimo! Você já deu push na correção?",
+      "img": "⬆️💻❓",
+      "alvo": "pushed",
+      "alvo_pt": "deu push",
+      "conceito": "push = dar push (mandar o código pro repositório). Na pergunta, o já vira yet, no fim.",
+      "var": [
+        {
+          "em": "Have you pushed",
+          "aceita": [
+            "Did you push"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did you pushed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a928db",
+      "quem": "voce",
+      "contexto": "f-59a196",
+      "cod": "Yes, I pushed it ten minutes ago.",
+      "dica": "Sim, dei push há dez minutos.",
+      "img": "⬆️⏱️✅",
+      "alvo": "ten minutes ago",
+      "alvo_pt": "há dez minutos",
+      "conceito": "Com ago (há), é passado simples: I pushed it... ago (não: I've pushed it ten minutes ago).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "armadilhas": [
+        "i've pushed",
+        "before ten minutes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e31a88",
+      "quem": "mike",
+      "cod": "Has Ana finished the blog post yet?",
+      "dica": "A Ana já terminou o post do blog?",
+      "img": "👩‍🎨📝❓",
+      "alvo": "blog post",
+      "alvo_pt": "post do blog",
+      "conceito": "Com a Ana (she), a pergunta usa has: Has Ana finished...? O yet vai no fim.",
+      "var": [
+        {
+          "em": "Has Ana finished",
+          "aceita": [
+            "Did Ana finish"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR02"
+      ],
+      "armadilhas": [
+        "have ana",
+        "does ana"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-977f4f",
+      "quem": "ana",
+      "contexto": "f-e31a88",
+      "cod": "Not yet. I need a little more time.",
+      "dica": "Ainda não. Preciso de um pouco mais de tempo.",
+      "img": "⏳🤏",
+      "alvo": "a little more",
+      "alvo_pt": "um pouco mais",
+      "conceito": "Ainda não. = Not yet. (não: Still not.) a little more time = um pouco mais de tempo, sem of.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "still not",
+        "a little more of"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2387450,
+        "en_autor": "CK",
+        "pt_id": 5541793,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado Not yet. no começo (no PT: Ainda não.)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-458968",
+      "quem": "voce",
+      "cod": "Has Sarah already left for her road trip?",
+      "dica": "(surpresa) A Sarah já saiu pra viagem de carro dela?",
+      "img": "😮🚗💨",
+      "alvo": "already left",
+      "alvo_pt": "já saiu",
+      "conceito": "Pergunta com already mostra surpresa (já saiu?!). Sem surpresa: Has she left yet?",
+      "var": [
+        {
+          "em": "Has Sarah already left",
+          "aceita": [
+            "Did Sarah already leave"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "has sarah already leave",
+        "did sarah already left"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6249515,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Sarah; for Boston → for her road trip; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-38252f",
+      "quem": "mike",
+      "contexto": "f-458968",
+      "cod": "Yes. She usually works late, but today she left at four.",
+      "dica": "Sim. Ela normalmente trabalha até tarde, mas hoje saiu às quatro.",
+      "img": "🕓🚗👋",
+      "alvo": "but today",
+      "alvo_pt": "mas hoje",
+      "conceito": "Com hora marcada (at four), passado simples: she left. Sem hora: she's already left.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR02"
+      ],
+      "armadilhas": [
+        "she has left at four",
+        "she work"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

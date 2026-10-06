@@ -1,0 +1,236 @@
+{
+  "id": "deducao-no-passado.cena-o-misterio-do-e-mail",
+  "trilha": "deducao-no-passado",
+  "nome": "Cena: o mistério do e-mail",
+  "emoji": "🕵️",
+  "cena": "A Sarah diz que nunca recebeu um e-mail importante, e você e a Ana tentam entender o que aconteceu.",
+  "resumo": "Reconstruir um mal-entendido com must have, couldn't have, might have e should have, sem itens novos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "spam folder",
+    "the wrong address"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Deve ter x devia ter"
+    },
+    {
+      "t": "p",
+      "c": "**must have** = deve ter (dedução: acho que aconteceu). **should have** = devia ter (crítica: era o certo, e não aconteceu)."
+    },
+    {
+      "t": "tip",
+      "c": "Na mesma conversa: It must have gone to spam (dedução). I should have told you (arrependimento)."
+    },
+    {
+      "t": "warn",
+      "c": "Devia ter (crítica) = should have, nunca must have. E não pode ter (impossível) = couldn't have (não: mustn't have)."
+    },
+    {
+      "t": "ex",
+      "c": "The email must have gone to your old address.\nO e-mail deve ter ido para o seu endereço antigo."
+    }
+  ],
+  "imagem": "📧🕵️❓",
+  "visualizacao": "Três janelas de chamada na sua tela. A Sarah rola a caixa de entrada com a testa franzida, a Ana abre a pasta de spam e você relê o e-mail que mandou.",
+  "foto_busca": "email inbox laptop team call",
+  "trechos": [
+    {
+      "id": "f-58b0c0",
+      "quem": "sarah",
+      "cod": "I never got your email about the release date.",
+      "dica": "Eu nunca recebi o seu e-mail sobre a data da release.",
+      "img": "📭📅",
+      "alvo": "",
+      "conceito": "receber (e-mail) = get; received também é aceito.",
+      "var": [
+        {
+          "em": "got",
+          "aceita": [
+            "received"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "never get",
+        "didn't never"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0f2042",
+      "quem": "ana",
+      "contexto": "f-58b0c0",
+      "cod": "It must have gone to your spam folder.",
+      "dica": "Deve ter caído na sua pasta de spam.",
+      "img": "🗑️📧",
+      "alvo": "must have",
+      "alvo_pt": "Deve ter",
+      "conceito": "Deve ter caído (dedução) = It must have gone: sujeito it obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "should",
+        "must have went"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bce3ae",
+      "quem": "voce",
+      "contexto": "f-0f2042",
+      "cod": "Then you couldn't have read it before the meeting.",
+      "dica": "Então você não pode ter lido antes da reunião.",
+      "img": "📖🚫",
+      "alvo": "couldn't have",
+      "alvo_pt": "não pode ter",
+      "conceito": "Lido (o quê?): em inglês o objeto aparece, read it.",
+      "var": [
+        {
+          "em": "couldn't have",
+          "aceita": [
+            "can't have"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "mustn't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4177b6",
+      "quem": "sarah",
+      "contexto": "f-0f2042",
+      "cod": "I've already checked my spam folder.",
+      "dica": "Eu já olhei a minha pasta de spam.",
+      "img": "🔍🗑️",
+      "alvo": "",
+      "conceito": "já + algo feito há pouco: present perfect com already (em en-US, I already checked também vale).",
+      "var": [
+        {
+          "em": "I've already checked",
+          "aceita": [
+            "I already checked",
+            "I've already looked in",
+            "I already looked in"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "already checked"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-00ff76",
+      "quem": "ana",
+      "cod": "So you might have sent it to the wrong address.",
+      "dica": "Então você pode ter mandado para o endereço errado.",
+      "img": "📨❌",
+      "alvo": "might have",
+      "alvo_pt": "pode ter",
+      "conceito": "pode ter (possibilidade) = might have; may have também é aceito.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "can have",
+        "sent to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dd5bac",
+      "quem": "sarah",
+      "contexto": "f-00ff76",
+      "cod": "Oh, wait. My email address changed last month.",
+      "dica": "Ah, espera. O meu endereço de e-mail mudou no mês passado.",
+      "img": "📧🔄📅",
+      "alvo": "",
+      "conceito": "Com tempo terminado (last month), passado simples: changed (não: has changed).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "has changed",
+        "is changed"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7780323,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado 'Oh, wait.' e 'last month', has changed → changed (original: \"My email address has changed.\"); PT reescrito (original: \"Meu endereço de e-mail foi alterado.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8f9845",
+      "quem": "voce",
+      "contexto": "f-dd5bac",
+      "cod": "That's it! The email must have gone to your old address.",
+      "dica": "É isso! O e-mail deve ter ido para o seu endereço antigo.",
+      "img": "💡📬",
+      "alvo": "must have",
+      "alvo_pt": "deve ter",
+      "conceito": "must have gone = deve ter ido (dedução). Particípio de go: gone.",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "should",
+        "went"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-618b57",
+      "quem": "sarah",
+      "contexto": "f-8f9845",
+      "cod": "Sorry, I should have told you about my new address.",
+      "dica": "Desculpa, eu devia ter falado pra vocês do meu endereço novo.",
+      "img": "🙏📧",
+      "alvo": "should have",
+      "alvo_pt": "devia ter",
+      "conceito": "devia ter (crítica) = should have; deve ter (dedução) = must have.",
+      "var": [
+        {
+          "em": "told you about",
+          "aceita": [
+            "let you know about"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "must have",
+        "said you"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

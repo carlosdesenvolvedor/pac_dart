@@ -1,0 +1,232 @@
+{
+  "id": "rotina-dias-horarios.cena-combinando-uma-reuniao",
+  "trilha": "rotina-dias-horarios",
+  "nome": "Cena: combinando uma reunião",
+  "emoji": "🗓️",
+  "cena": "Você e a Sarah procuram um horário para a próxima reunião e comparam as rotinas.",
+  "resumo": "Marcar dia e hora com in, on e at e comparar rotinas com always, usually e never.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: in, on, at"
+    },
+    {
+      "t": "p",
+      "c": "**in** + mês e parte do dia (in May, in the morning); **on** + dia e data (on Friday, on October fourth); **at** + hora (at nine). Hoje à noite: **tonight**."
+    },
+    {
+      "t": "ex",
+      "c": "Let's talk on Friday at nine.\nVamos conversar na sexta, às nove."
+    },
+    {
+      "t": "warn",
+      "c": "Não: today at night / in Friday / I get up always. O certo: **tonight**, **on** Friday, I **always** get up."
+    }
+  ],
+  "imagem": "🗓️⏰🤝",
+  "visualizacao": "Você e a Sarah procuram um horário na agenda cheia. Cliques no calendário, risadas sobre quem acorda mais cedo e, enfim, um horário marcado.",
+  "foto_busca": "scheduling meeting online calendar",
+  "trechos": [
+    {
+      "id": "f-4265ea",
+      "quem": "voce",
+      "cod": "Are you free on Monday afternoon?",
+      "dica": "Você está livre na segunda-feira à tarde?",
+      "img": "🗓️🌇❓",
+      "alvo": "on Monday afternoon",
+      "alvo_pt": "na segunda-feira à tarde",
+      "conceito": "na segunda-feira à tarde = on Monday afternoon (on por causa do dia).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in monday",
+        "monday in the afternoon"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8244182,
+        "en_autor": "CK",
+        "pt_id": 8245611,
+        "pt_autor": "josivangoncalves",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9a0a48",
+      "quem": "sarah",
+      "contexto": "f-4265ea",
+      "cod": "No, we usually have a meeting on Mondays.",
+      "dica": "Não, a gente normalmente tem reunião às segundas.",
+      "img": "👥🗓️🔁",
+      "alvo": "usually",
+      "alvo_pt": "normalmente",
+      "var": [
+        {
+          "em": "have a meeting",
+          "aceita": [
+            "have meetings"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17",
+        "BR19"
+      ],
+      "armadilhas": [
+        "we have usually",
+        "in mondays"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a2a80",
+      "quem": "sarah",
+      "cod": "Are you free tonight?",
+      "dica": "Você está livre hoje à noite?",
+      "img": "🌙❓",
+      "alvo": "tonight",
+      "alvo_pt": "hoje à noite",
+      "registro": "informal",
+      "interferencias": [
+        "BR05"
+      ],
+      "armadilhas": [
+        "today at night"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5989791,
+        "en_autor": "thomsmells",
+        "pt_id": 6958580,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "today → tonight; PT: hoje → hoje à noite",
+        "export": "2026-10-03"
+      },
+      "variacao_de": "f-4265ea"
+    },
+    {
+      "id": "f-61a0e4",
+      "quem": "voce",
+      "contexto": "f-4a2a80",
+      "cod": "Sorry, I'm busy tonight.",
+      "dica": "Desculpa, estou ocupado hoje à noite.",
+      "img": "😓🌙",
+      "alvo": "tonight",
+      "alvo_pt": "hoje à noite",
+      "pt_f": "Desculpa, estou ocupada hoje à noite.",
+      "registro": "informal",
+      "interferencias": [
+        "BR05"
+      ],
+      "armadilhas": [
+        "today at night"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5e655b",
+      "quem": "sarah",
+      "contexto": "f-61a0e4",
+      "cod": "OK. Let's talk on Friday at nine.",
+      "dica": "Tá bom. Vamos conversar na sexta, às nove.",
+      "img": "📞🕘",
+      "alvo": "on Friday at nine",
+      "alvo_pt": "na sexta, às nove",
+      "conceito": "on + dia, at + hora: on Friday at nine.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in friday",
+        "on nine"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b63454",
+      "quem": "sarah",
+      "cod": "I usually get up at eight o'clock.",
+      "dica": "Eu normalmente levanto às oito.",
+      "img": "⏰🌞",
+      "alvo": "usually",
+      "alvo_pt": "normalmente",
+      "opcional": [
+        "o'clock"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "armadilhas": [
+        "i get up usually"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 477193,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT autoral: get up = levantar (o PT do Tatoeba dizia 'me acordo'); normalmente antes do verbo, como no inglês",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ee06d3",
+      "quem": "voce",
+      "contexto": "f-b63454",
+      "cod": "Really? Mike always gets up at five.",
+      "dica": "Sério? O Mike sempre levanta às cinco.",
+      "img": "😮👨⏰",
+      "alvo": "always",
+      "alvo_pt": "sempre",
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "armadilhas": [
+        "gets up always",
+        "get up at five"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-977b1b",
+      "quem": "sarah",
+      "contexto": "f-ee06d3",
+      "cod": "Wow. I never get up before seven.",
+      "dica": "Nossa. Eu nunca levanto antes das sete.",
+      "img": "😅🛏️",
+      "alvo": "never",
+      "alvo_pt": "nunca",
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "armadilhas": [
+        "i don't never",
+        "i get up never"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

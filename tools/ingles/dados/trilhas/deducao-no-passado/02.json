@@ -1,0 +1,301 @@
+{
+  "id": "deducao-no-passado.nao-pode-ter-sido-ele",
+  "trilha": "deducao-no-passado",
+  "nome": "Não pode ter sido ele",
+  "emoji": "🙅",
+  "cena": "Um dev novo do time jura que viu o Mike no escritório ontem, mas o Mike estava fora da cidade.",
+  "resumo": "Dizer que algo é impossível no passado com couldn't have + particípio, apoiado numa evidência.",
+  "fechamento": false,
+  "novos": [
+    "out of town",
+    "airplane mode",
+    "mistaken",
+    "I could swear"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Não pode ter sido = couldn't have been"
+    },
+    {
+      "t": "p",
+      "c": "**couldn't have + particípio** = impossível no passado (dedução negativa). Quase sempre vem com a prova logo depois: He was out of town."
+    },
+    {
+      "t": "tip",
+      "c": "can't have também se ouve e é aceito, mas no inglês americano o mais comum é couldn't have."
+    },
+    {
+      "t": "warn",
+      "c": "mustn't não serve para dedução: não pode ter visto = couldn't have seen (não: mustn't have seen / can't saw)."
+    },
+    {
+      "t": "ex",
+      "c": "Mike couldn't have been here yesterday. He was out of town.\nO Mike não pode ter estado aqui ontem. Ele estava fora da cidade."
+    }
+  ],
+  "imagem": "🏢👀✈️",
+  "visualizacao": "Você está no escritório, perto da mesa vazia do Mike. O dev novo aponta para a cadeira, cheio de certeza, e o seu celular mostra o Mike num aeroporto.",
+  "foto_busca": "empty office desk coworkers talking",
+  "trechos": [
+    {
+      "id": "f-6d79e9",
+      "quem": "dev-novo",
+      "cod": "Wait, I could swear I saw Mike at the office yesterday.",
+      "dica": "Espera, eu podia jurar que vi o Mike no escritório ontem.",
+      "img": "🤞👀",
+      "alvo": "I could swear",
+      "alvo_pt": "eu podia jurar",
+      "conceito": "I could swear = eu podia jurar (tenho certeza, mas posso estar errado).",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in the office"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "blocos": [
+        4
+      ],
+      "var": [
+        {
+          "em": "could swear",
+          "aceita": [
+            "could have sworn"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-bb7270",
+      "quem": "voce",
+      "contexto": "f-6d79e9",
+      "cod": "Mike couldn't have been here yesterday. He was out of town.",
+      "dica": "O Mike não pode ter estado aqui ontem. Ele estava fora da cidade.",
+      "img": "🙅✈️",
+      "alvo": "out of town",
+      "alvo_pt": "fora da cidade",
+      "conceito": "couldn't have + particípio = não pode ter (impossível). out of town = fora da cidade, viajando.",
+      "var": [
+        {
+          "em": "couldn't have",
+          "aceita": [
+            "can't have"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "mustn't",
+        "can't was",
+        "the mike"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7131070,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → Mike; can't have → couldn't have (en-US); there → here; acrescentado 'He was out of town.' (original: \"Tom can't have been there yesterday.\"); PT reescrito (original: \"Tom não pode ter estado aqui ontem.\")",
+        "export": "2026-10-03"
+      },
+      "blocos": [
+        6
+      ]
+    },
+    {
+      "id": "f-b77305",
+      "quem": "dev-novo",
+      "contexto": "f-bb7270",
+      "cod": "Are you sure? I could swear it was him.",
+      "dica": "Tem certeza? Eu podia jurar que era ele.",
+      "img": "🤔🤞",
+      "alvo": "I could swear",
+      "alvo_pt": "Eu podia jurar",
+      "conceito": "era ele = it was him: sujeito it obrigatório e pronome objeto him.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "was he"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "could swear",
+          "aceita": [
+            "could have sworn"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8bec2a",
+      "quem": "voce",
+      "contexto": "f-b77305",
+      "cod": "I think you must be mistaken.",
+      "dica": "Eu acho que você deve estar enganado.",
+      "img": "🧐❌",
+      "alvo": "mistaken",
+      "alvo_pt": "enganado",
+      "conceito": "be mistaken = estar enganado. must be = deve estar (dedução no presente).",
+      "registro": "neutro",
+      "armadilhas": [
+        "wrong",
+        "mistake"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2408623,
+        "en_autor": "CK",
+        "pt_id": 2466539,
+        "pt_autor": "arnxy20",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d67f82",
+      "quem": "dev-novo",
+      "contexto": "f-8bec2a",
+      "cod": "I guess I was mistaken.",
+      "dica": "Acho que estava enganado.",
+      "img": "😅🤷",
+      "alvo": "mistaken",
+      "alvo_pt": "enganado",
+      "conceito": "Eu estava enganado = I was mistaken (sem o verbo enganar).",
+      "var": [
+        {
+          "em": "guess",
+          "aceita": [
+            "think"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "mistook",
+        "was wrong"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2330047,
+        "en_autor": "CK",
+        "pt_id": 6955226,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9683e4",
+      "quem": "voce",
+      "cod": "Mike's out of town until Monday.",
+      "dica": "O Mike está fora da cidade até segunda.",
+      "img": "🧳📅",
+      "alvo": "out of town",
+      "alvo_pt": "fora da cidade",
+      "conceito": "estar fora da cidade (viajando) = be out of town. Monday sempre com maiúscula.",
+      "var": [
+        {
+          "em": "Mike's",
+          "aceita": [
+            "Mike is"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "monday",
+        "stay out"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6657501,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: I'm going to be → Mike's; next Monday → Monday (original: \"I'm going to be out of town until next Monday.\"); PT reescrito (original: \"Estarei fora da cidade até a próxima segunda.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e84aeb",
+      "quem": "mike",
+      "cod": "Sorry, I missed your calls. My phone was in airplane mode.",
+      "dica": "Desculpa, perdi as suas ligações. Meu celular estava em modo avião.",
+      "img": "📵✈️",
+      "alvo": "airplane mode",
+      "alvo_pt": "modo avião",
+      "conceito": "airplane mode = modo avião. Perder uma ligação = miss a call.",
+      "registro": "informal",
+      "interferencias": [
+        "BR34"
+      ],
+      "armadilhas": [
+        "lost",
+        "plane mode"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        5
+      ]
+    },
+    {
+      "id": "f-9d384c",
+      "quem": "voce",
+      "contexto": "f-e84aeb",
+      "cod": "Oh, that's why. You couldn't have gotten my messages in airplane mode.",
+      "dica": "Ah, é por isso. Você não pode ter recebido as minhas mensagens em modo avião.",
+      "img": "💡📵",
+      "alvo": "airplane mode",
+      "alvo_pt": "modo avião",
+      "conceito": "receber (mensagem) = get; particípio americano gotten.",
+      "var": [
+        {
+          "em": "couldn't have",
+          "aceita": [
+            "can't have"
+          ]
+        },
+        {
+          "em": "gotten",
+          "aceita": [
+            "received"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "mustn't",
+        "got"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        3
+      ]
+    }
+  ]
+}

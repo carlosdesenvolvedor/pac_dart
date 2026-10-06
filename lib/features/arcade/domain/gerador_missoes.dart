@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import '../../../core/linguagem/linguagem.dart';
 import 'missao.dart';
 
 /// Gerador do LÓGICA ANIMADA.
@@ -9,16 +10,20 @@ import 'missao.dart';
 /// trilha 2 é sempre a mesma, mas o estoque de combinações passa fácil dos
 /// milhares. A resposta certa e o roteiro da animação são COMPUTADOS dos
 /// mesmos parâmetros do código: nunca desmentem um ao outro.
-Missao missaoPara(int trilha, int indice) {
+///
+/// No C# sai a MESMA missão (mesmo sorteio → mesma resposta, mesmas opções,
+/// mesma animação); só o código e os textos que citam sintaxe mudam.
+Missao missaoPara(int trilha, int indice, {Linguagem linguagem = Linguagem.dart}) {
   final rnd = math.Random(trilha * 1000003 + indice * 7919 + 13);
   final gabaritos = _gabaritosDa(trilha);
   final nivel = trilha <= 7
       ? (1 + indice ~/ 6).clamp(1, 3)
       : (2 + indice ~/ 10).clamp(2, 3);
-  return gabaritos[indice % gabaritos.length](rnd, nivel);
+  return gabaritos[indice % gabaritos.length](rnd, nivel, linguagem == Linguagem.csharp);
 }
 
-typedef _Gabarito = Missao Function(math.Random rnd, int nivel);
+/// [cs] escreve em C#; a ordem dos sorteios do [rnd] é a mesma nas duas.
+typedef _Gabarito = Missao Function(math.Random rnd, int nivel, bool cs);
 
 /// Quais gabaritos servem cada trilha do mapa (as 8 base têm cardápio
 /// próprio; as avançadas rotacionam 6 conjuntos em nível alto).
@@ -67,27 +72,62 @@ T _sorteia<T>(math.Random rnd, List<T> pool) => pool[rnd.nextInt(pool.length)];
 
 int _pontosBase(int nivel) => 25 + nivel * 5;
 
+/// Método dos objetos da cena: `anda` no Dart, `Anda` no C#.
+String _metodo(String nome, bool cs) =>
+    cs ? nome[0].toUpperCase() + nome.substring(1) : nome;
+
+/// Texto entre aspas citado fora do código: 'uva' no Dart, "uva" no C#.
+String _lit(String texto, bool cs) => cs ? '"$texto"' : "'$texto'";
+
+/// O comando que imprime, citado nas legendas.
+String _imprime(bool cs) => cs ? 'Console.WriteLine' : 'print';
+
+/// Coleção do C# (`int[] xs = [1, 2];`); passando de 60 colunas, os itens
+/// descem para a linha de baixo.
+String _colecaoCs(String declaracao, Iterable<Object> itens, {bool aspas = false}) {
+  final lista = [for (final i in itens) aspas ? '"$i"' : '$i'].join(', ');
+  final linha = '$declaracao = [$lista];';
+  return linha.length <= 60 ? linha : '$declaracao =\n    [$lista];';
+}
+
+/// Os preços da feira num `Dictionary` do C#, uma chave por linha.
+String _precosCs(List<(String, String)> itens, List<int> precos) =>
+    'var precos = new Dictionary<string, int>\n'
+    '{\n'
+    '${[for (final (i, p) in itens.indexed) '    ["${p.$1}"] = ${precos[i]}'].join(',\n')}\n'
+    '};';
+
 // ------------------------------------------------------------------- 🚪 porta
 
-Missao _mCracha(math.Random rnd, int nivel) {
+Missao _mCracha(math.Random rnd, int nivel, bool cs) {
   final nome = _sorteia(rnd, _nomes);
   final idade = 7 + rnd.nextInt(70);
   final frase = '$nome, $idade anos';
-  final opcoes = [frase, r'$nome, $idade anos', 'nome, idade anos']..shuffle(rnd);
+  // como cada variável aparece dentro da string interpolada
+  final (vNome, vIdade) = cs ? ('{nome}', '{idade}') : (r'$nome', r'$idade');
+  final opcoes = [frase, '$vNome, $vIdade anos', 'nome, idade anos']..shuffle(rnd);
   return Missao(
     cena: Cena.porta,
     titulo: 'O Crachá Mágico',
     historia: 'A porta só abre para quem apresenta o crachá certo. As variáveis '
         'guardam os dados — e a interpolação monta a frase. Preveja o crachá!',
-    codigo: "var nome = '$nome';\nvar idade = $idade;\nprint('\$nome, \$idade anos');",
+    codigo: cs
+        ? 'var nome = "$nome";\nvar idade = $idade;\n'
+            'Console.WriteLine(\$"{nome}, {idade} anos");'
+        : "var nome = '$nome';\nvar idade = $idade;\nprint('\$nome, \$idade anos');",
     pergunta: 'O que o crachá vai mostrar?',
     opcoes: opcoes,
     certa: opcoes.indexOf(frase),
-    explica: r'Dentro de aspas, $variavel é trocado pelo VALOR: '
-        '\$nome vira $nome e \$idade vira $idade.',
+    explica: cs
+        ? r'Com o $ antes das aspas, cada {variavel} é trocada pelo VALOR: '
+            '{nome} vira $nome e {idade} vira $idade.'
+        : r'Dentro de aspas, $variavel é trocado pelo VALOR: '
+            '\$nome vira $nome e \$idade vira $idade.',
     dicas: [
-      '🔮 O símbolo \$ dentro de uma string puxa o VALOR da variável, não o nome dela…',
-      '🔮 Onde está \$nome entra "$nome"; onde está \$idade entra $idade…',
+      cs
+          ? r'🔮 O $ antes das aspas liga a interpolação: {variavel} puxa o VALOR dela, não o nome…'
+          : '🔮 O símbolo \$ dentro de uma string puxa o VALOR da variável, não o nome dela…',
+      '🔮 Onde está $vNome entra "$nome"; onde está $vIdade entra $idade…',
       '🔮 O crachá mostra exatamente: $frase',
     ],
     passos: [
@@ -101,10 +141,10 @@ Missao _mCracha(math.Random rnd, int nivel) {
   );
 }
 
-Missao _mChave(math.Random rnd, int nivel) {
+Missao _mChave(math.Random rnd, int nivel, bool cs) {
   final tem = rnd.nextBool();
   final variavel = _sorteia(rnd, ['temChave', 'achouChave', 'temCartao']);
-  final metodo = _sorteia(rnd, ['abrir', 'destravar']);
+  final metodo = _metodo(_sorteia(rnd, ['abrir', 'destravar']), cs);
   final msg = _sorteia(rnd, ['preciso da chave!', 'cadê a chave?', 'porta trancada!']);
   final opcoes = ['Sim, abre', 'Não abre', 'Dá erro']..shuffle(rnd);
   final certaTexto = tem ? 'Sim, abre' : 'Não abre';
@@ -113,12 +153,22 @@ Missao _mChave(math.Random rnd, int nivel) {
     titulo: 'A Chave Booleana',
     historia: 'O herói ${tem ? 'achou' : 'NÃO achou'} a chave no caminho. '
         'O if decide o destino da porta usando um bool.',
-    codigo: 'var $variavel = $tem;\n'
-        'if ($variavel) {\n'
-        '  porta.$metodo();\n'
-        '} else {\n'
-        "  print('$msg');\n"
-        '}',
+    codigo: cs
+        ? 'var $variavel = $tem;\n'
+            'if ($variavel)\n'
+            '{\n'
+            '    porta.$metodo();\n'
+            '}\n'
+            'else\n'
+            '{\n'
+            '    Console.WriteLine("$msg");\n'
+            '}'
+        : 'var $variavel = $tem;\n'
+            'if ($variavel) {\n'
+            '  porta.$metodo();\n'
+            '} else {\n'
+            "  print('$msg');\n"
+            '}',
     pergunta: 'A porta abre?',
     opcoes: opcoes,
     certa: opcoes.indexOf(certaTexto),
@@ -145,33 +195,40 @@ Missao _mChave(math.Random rnd, int nivel) {
   );
 }
 
-Missao _mPortaFor(math.Random rnd, int nivel) {
+Missao _mPortaFor(math.Random rnd, int nivel, bool cs) {
   final n = 3 + rnd.nextInt(3 + nivel); // 3..5+nivel
   final cont = _sorteia(rnd, ['passo', 'i', 'volta']);
   final quem = _sorteia(rnd, ['heroi', 'jogador', 'explorador']);
-  final acao = _sorteia(rnd, ['abrir', 'destrancar']);
+  final acao = _metodo(_sorteia(rnd, ['abrir', 'destrancar']), cs);
+  final anda = _metodo('anda', cs);
   final (opcoes, certa) = _opcoesNum(rnd, n, minimo: 1);
   return Missao(
     cena: Cena.porta,
     titulo: 'Passos até a Porta',
     historia: 'A porta está a $n passos e o herói só anda dentro do laço. '
         'Faça o for levar ele até lá!',
-    codigo: 'for (var $cont = 1; $cont <= $n; $cont++) {\n'
-        '  $quem.anda();\n'
-        '}\n'
-        'porta.$acao();',
+    codigo: cs
+        ? 'for (int $cont = 1; $cont <= $n; $cont++)\n'
+            '{\n'
+            '    $quem.$anda();\n'
+            '}\n'
+            'porta.$acao();'
+        : 'for (var $cont = 1; $cont <= $n; $cont++) {\n'
+            '  $quem.anda();\n'
+            '}\n'
+            'porta.$acao();',
     pergunta: 'Quantos passos o laço faz o herói andar?',
     opcoes: opcoes,
     certa: certa,
     explica: 'O contador vai de 1 até $n (o <= inclui o $n): são $n voltas, $n passos.',
     dicas: [
       '🔮 Conte de quanto até quanto o contador anda — o <= INCLUI o limite…',
-      '🔮 $cont = 1, 2, …, $n — cada volta é um anda()…',
+      '🔮 $cont = 1, 2, …, $n — cada volta é um $anda()…',
       '🔮 São exatamente $n passos.',
     ],
     passos: [
       for (var k = 1; k <= n; k++)
-        PassoCena('$cont = $k → $quem.anda()  ($k de $n)', {'avanco': k}),
+        PassoCena('$cont = $k → $quem.$anda()  ($k de $n)', {'avanco': k}),
       PassoCena('Laço encerrado → porta.$acao() ✅', const {'aberta': true}),
     ],
     dados: {'total': n, 'avanco': 0, 'aberta': false, 'placa': ''},
@@ -179,7 +236,7 @@ Missao _mPortaFor(math.Random rnd, int nivel) {
   );
 }
 
-Missao _mPortaWhileEnergia(math.Random rnd, int nivel) {
+Missao _mPortaWhileEnergia(math.Random rnd, int nivel, bool cs) {
   final custo = 1 + rnd.nextInt(3); // 1..3
   final voltas = 2 + rnd.nextInt(3 + nivel); // 2..4+nivel
   final energia = custo * voltas - rnd.nextInt(custo); // ceil(e/c) == voltas
@@ -200,11 +257,18 @@ Missao _mPortaWhileEnergia(math.Random rnd, int nivel) {
     titulo: 'Energia Contada',
     historia: 'O herói tem $energia de energia e cada passo gasta $custo. '
         'O while anda enquanto a energia durar.',
-    codigo: 'var $varE = $energia;\n'
-        'while ($varE > 0) {\n'
-        '  $quem.anda();\n'
-        '  $varE -= $custo;\n'
-        '}',
+    codigo: cs
+        ? 'var $varE = $energia;\n'
+            'while ($varE > 0)\n'
+            '{\n'
+            '    $quem.Anda();\n'
+            '    $varE -= $custo;\n'
+            '}'
+        : 'var $varE = $energia;\n'
+            'while ($varE > 0) {\n'
+            '  $quem.anda();\n'
+            '  $varE -= $custo;\n'
+            '}',
     pergunta: 'Quantos passos ele dá antes de a energia acabar?',
     opcoes: opcoes,
     certa: certa,
@@ -221,39 +285,48 @@ Missao _mPortaWhileEnergia(math.Random rnd, int nivel) {
   );
 }
 
-Missao _mPortaTurbo(math.Random rnd, int nivel) {
+Missao _mPortaTurbo(math.Random rnd, int nivel, bool cs) {
   final p = 2 + rnd.nextInt(4); // 2..5
   final turbo = rnd.nextBool();
   final mult = 2 + rnd.nextInt(2); // x2 ou x3
   final varP = _sorteia(rnd, ['passos', 'pulos']);
   final total = turbo ? p * mult : p;
+  final anda = _metodo('anda', cs);
   final (opcoes, certa) = _opcoesNum(rnd, total, minimo: 1);
   return Missao(
     cena: Cena.porta,
     titulo: 'Botas de Turbo',
     historia: 'As botas ${turbo ? 'ESTÃO' : 'não estão'} carregadas (turbo = $turbo). '
         'Se o if ligar, os passos dobram.',
-    codigo: 'var $varP = $p;\n'
-        'var turbo = $turbo;\n'
-        'if (turbo) {\n'
-        '  $varP = $varP * $mult;\n'
-        '}\n'
-        'heroi.anda($varP);',
+    codigo: cs
+        ? 'var $varP = $p;\n'
+            'var turbo = $turbo;\n'
+            'if (turbo)\n'
+            '{\n'
+            '    $varP = $varP * $mult;\n'
+            '}\n'
+            'heroi.Anda($varP);'
+        : 'var $varP = $p;\n'
+            'var turbo = $turbo;\n'
+            'if (turbo) {\n'
+            '  $varP = $varP * $mult;\n'
+            '}\n'
+            'heroi.anda($varP);',
     pergunta: 'Com quantos passos ele chega na porta?',
     opcoes: opcoes,
     certa: certa,
     explica: turbo
-        ? 'turbo é true → passos vira $p × $mult = $total antes do anda().'
+        ? 'turbo é true → passos vira $p × $mult = $total antes do $anda().'
         : 'turbo é false → o if não roda e ficam os $p passos originais.',
     dicas: [
       '🔮 O if só mexe nos passos se turbo for true…',
       '🔮 turbo = $turbo, então passos ${turbo ? 'dobra' : 'fica igual'}…',
-      '🔮 anda($total) — são $total passos.',
+      '🔮 $anda($total) — são $total passos.',
     ],
     passos: [
       PassoCena('$varP começa em $p'),
       PassoCena(turbo ? 'turbo true → $varP = $p × $mult = $total 🔥' : 'turbo false → segue $p'),
-      PassoCena('heroi.anda($total) → chegou! ✅', {'avanco': total, 'aberta': true}),
+      PassoCena('heroi.$anda($total) → chegou! ✅', {'avanco': total, 'aberta': true}),
     ],
     dados: {'total': total, 'avanco': 0, 'aberta': false, 'placa': ''},
     pontos: _pontosBase(nivel),
@@ -262,7 +335,7 @@ Missao _mPortaTurbo(math.Random rnd, int nivel) {
 
 // ------------------------------------------------------------------- 🚓 blitz
 
-Missao _mBlitzIdade(math.Random rnd, int nivel) {
+Missao _mBlitzIdade(math.Random rnd, int nivel, bool cs) {
   final qtd = 3 + (nivel > 1 ? rnd.nextInt(2) : 0);
   final idades = <int>[];
   while (idades.length < qtd) {
@@ -277,14 +350,25 @@ Missao _mBlitzIdade(math.Random rnd, int nivel) {
     titulo: 'Blitz da Maioridade',
     historia: 'O guarda parou ${idades.length} motoristas com idades $idades. '
         'Só passa quem tem 18 ou mais — o if decide.',
-    codigo: 'final idades = $idades;\n'
-        'var $varL = 0;\n'
-        'for (final idade in idades) {\n'
-        '  if (idade >= 18) {\n'
-        '    $varL++;\n'
-        '  }\n'
-        '}\n'
-        "print('\$$varL liberados');",
+    codigo: cs
+        ? '${_colecaoCs('int[] idades', idades)}\n'
+            'var $varL = 0;\n'
+            'foreach (var idade in idades)\n'
+            '{\n'
+            '    if (idade >= 18)\n'
+            '    {\n'
+            '        $varL++;\n'
+            '    }\n'
+            '}\n'
+            'Console.WriteLine(\$"{$varL} liberados");'
+        : 'final idades = $idades;\n'
+            'var $varL = 0;\n'
+            'for (final idade in idades) {\n'
+            '  if (idade >= 18) {\n'
+            '    $varL++;\n'
+            '  }\n'
+            '}\n'
+            "print('\$$varL liberados');",
     pergunta: 'Quantos motoristas a blitz libera?',
     opcoes: opcoes,
     certa: certa,
@@ -301,14 +385,14 @@ Missao _mBlitzIdade(math.Random rnd, int nivel) {
             '🚗 motorista de $idade anos: $idade >= 18? '
             '${idade >= 18 ? 'SIM → liberado ✅' : 'NÃO → barrado ⛔'}',
             {'atual': i, 'v$i': idade >= 18}),
-      PassoCena('print → "$liberados liberados"', const {'atual': -1}),
+      PassoCena('${_imprime(cs)} → "$liberados liberados"', const {'atual': -1}),
     ],
     dados: {'rotulos': [for (final i in idades) '$i anos'], 'atual': -1},
     pontos: _pontosBase(nivel),
   );
 }
 
-Missao _mBlitzVelocidade(math.Random rnd, int nivel) {
+Missao _mBlitzVelocidade(math.Random rnd, int nivel, bool cs) {
   final limite = _sorteia(rnd, [40, 50, 60, 70, 80]);
   final qtd = 3 + (nivel > 1 ? rnd.nextInt(2) : 0);
   final vels = <int>[];
@@ -323,14 +407,25 @@ Missao _mBlitzVelocidade(math.Random rnd, int nivel) {
     titulo: 'Radar Esperto',
     historia: 'O radar marca limite de $limite km/h e mediu $vels. '
         'Multa só ACIMA do limite — repare que é > , não >=.',
-    codigo: 'final velocidades = $vels;\n'
-        'var multas = 0;\n'
-        'for (final v in velocidades) {\n'
-        '  if (v > $limite) {\n'
-        '    multas++;\n'
-        '  }\n'
-        '}\n'
-        "print('\$multas multas');",
+    codigo: cs
+        ? '${_colecaoCs('int[] velocidades', vels)}\n'
+            'var multas = 0;\n'
+            'foreach (var v in velocidades)\n'
+            '{\n'
+            '    if (v > $limite)\n'
+            '    {\n'
+            '        multas++;\n'
+            '    }\n'
+            '}\n'
+            'Console.WriteLine(\$"{multas} multas");'
+        : 'final velocidades = $vels;\n'
+            'var multas = 0;\n'
+            'for (final v in velocidades) {\n'
+            '  if (v > $limite) {\n'
+            '    multas++;\n'
+            '  }\n'
+            '}\n'
+            "print('\$multas multas');",
     pergunta: 'Quantas multas o radar emite?',
     opcoes: opcoes,
     certa: certa,
@@ -348,14 +443,14 @@ Missao _mBlitzVelocidade(math.Random rnd, int nivel) {
             '🚗 a $v km/h: $v > $limite? '
             '${v > limite ? 'SIM → multado ⛔' : 'NÃO → segue ✅'}',
             {'atual': i, 'v$i': v <= limite}),
-      PassoCena('print → "$multas multas"', const {'atual': -1}),
+      PassoCena('${_imprime(cs)} → "$multas multas"', const {'atual': -1}),
     ],
     dados: {'rotulos': [for (final v in vels) '$v km/h'], 'atual': -1},
     pontos: _pontosBase(nivel),
   );
 }
 
-Missao _mBlitzCinto(math.Random rnd, int nivel) {
+Missao _mBlitzCinto(math.Random rnd, int nivel, bool cs) {
   final pares = [for (var i = 0; i < 3; i++) (rnd.nextBool(), rnd.nextBool())];
   final liberados = pares.where((p) => p.$1 && p.$2).length;
   final (opcoes, certa) = _opcoesNum(rnd, liberados);
@@ -365,16 +460,30 @@ Missao _mBlitzCinto(math.Random rnd, int nivel) {
     titulo: 'Cinto E Documento',
     historia: 'Nesta blitz só passa quem está de cinto E com documento. '
         'O && exige os DOIS ao mesmo tempo.',
-    codigo: 'final motoristas = [\n'
-        '${[for (final p in pares) '  [${b(p.$1)}, ${b(p.$2)}],'].join('\n')}\n'
-        '];\n'
-        'var liberados = 0;\n'
-        'for (final m in motoristas) {\n'
-        '  if (m[0] && m[1]) {\n'
-        '    liberados++;\n'
-        '  }\n'
-        '}\n'
-        'print(liberados);',
+    codigo: cs
+        ? 'bool[][] motoristas =\n'
+            '[\n'
+            '${[for (final p in pares) '    [${b(p.$1)}, ${b(p.$2)}]'].join(',\n')}\n'
+            '];\n'
+            'var liberados = 0;\n'
+            'foreach (var m in motoristas)\n'
+            '{\n'
+            '    if (m[0] && m[1])\n'
+            '    {\n'
+            '        liberados++;\n'
+            '    }\n'
+            '}\n'
+            'Console.WriteLine(liberados);'
+        : 'final motoristas = [\n'
+            '${[for (final p in pares) '  [${b(p.$1)}, ${b(p.$2)}],'].join('\n')}\n'
+            '];\n'
+            'var liberados = 0;\n'
+            'for (final m in motoristas) {\n'
+            '  if (m[0] && m[1]) {\n'
+            '    liberados++;\n'
+            '  }\n'
+            '}\n'
+            'print(liberados);',
     pergunta: 'Quantos motoristas passam na blitz?',
     opcoes: opcoes,
     certa: certa,
@@ -391,7 +500,7 @@ Missao _mBlitzCinto(math.Random rnd, int nivel) {
             '🚗 cinto ${p.$1 ? '✔' : '✘'} · documento ${p.$2 ? '✔' : '✘'} → '
             '${p.$1 && p.$2 ? 'liberado ✅' : 'barrado ⛔'}',
             {'atual': i, 'v$i': p.$1 && p.$2}),
-      PassoCena('print → $liberados', const {'atual': -1}),
+      PassoCena('${_imprime(cs)} → $liberados', const {'atual': -1}),
     ],
     dados: {
       'rotulos': [
@@ -405,36 +514,43 @@ Missao _mBlitzCinto(math.Random rnd, int nivel) {
 
 // ---------------------------------------------------------------- 🍇 colheita
 
-Missao _mColheitaAdd(math.Random rnd, int nivel) {
+Missao _mColheitaAdd(math.Random rnd, int nivel, bool cs) {
   final pool = [..._frutas]..shuffle(rnd);
   final base = pool.take(1 + rnd.nextInt(2)).toList();
   final novas = pool.skip(base.length).take(2 + rnd.nextInt(2)).toList();
   final total = base.length + novas.length;
   final varC = _sorteia(rnd, ['cesta', 'sacola', 'caixa']);
   final (opcoes, certa) = _opcoesNum(rnd, total, minimo: 1);
+  final (add, length) = cs ? ('Add', 'Count') : ('add', 'length');
   return Missao(
     cena: Cena.colheita,
     titulo: 'Cesta Crescente',
     historia: 'A cesta começa com $base e o pomar ainda dá ${novas.length} '
-        'fruta(s). Cada add() aumenta o length.',
-    codigo: "final $varC = [${base.map((f) => "'$f'").join(', ')}];\n"
-        '${[for (final f in novas) "$varC.add('$f');"].join('\n')}\n'
-        'print($varC.length);',
+        'fruta(s). Cada $add() aumenta o $length.',
+    codigo: cs
+        ? '${_colecaoCs('List<string> $varC', base, aspas: true)}\n'
+            '${[for (final f in novas) '$varC.Add("$f");'].join('\n')}\n'
+            'Console.WriteLine($varC.Count);'
+        : "final $varC = [${base.map((f) => "'$f'").join(', ')}];\n"
+            '${[for (final f in novas) "$varC.add('$f');"].join('\n')}\n'
+            'print($varC.length);',
     pergunta: 'Quantas frutas terminam na cesta?',
     opcoes: opcoes,
     certa: certa,
-    explica: '${base.length} inicial(is) + ${novas.length} add(s) = $total — '
-        'length conta os elementos.',
+    explica: '${base.length} inicial(is) + ${novas.length} $add(s) = $total — '
+        '$length conta os elementos.',
     dicas: [
-      '🔮 Some o que a cesta já tinha com cada add()…',
+      '🔮 Some o que a cesta já tinha com cada $add()…',
       '🔮 Começou com ${base.length}, entraram mais ${novas.length}…',
-      '🔮 length = $total.',
+      '🔮 $length = $total.',
     ],
     passos: [
       for (final (i, f) in novas.indexed)
-        PassoCena("$varC.add('$f') → ${base.length + i + 1} na cesta",
+        PassoCena('$varC.$add(${_lit(f, cs)}) → ${base.length + i + 1} na cesta',
             {'colhidas': base.length + i + 1}),
-      PassoCena('print(cesta.length) → $total 🧺'),
+      PassoCena(cs
+          ? 'Console.WriteLine($varC.Count) → $total 🧺'
+          : 'print(cesta.length) → $total 🧺'),
     ],
     dados: {
       'total': total,
@@ -445,7 +561,7 @@ Missao _mColheitaAdd(math.Random rnd, int nivel) {
   );
 }
 
-Missao _mColheitaWhere(math.Random rnd, int nivel) {
+Missao _mColheitaWhere(math.Random rnd, int nivel, bool cs) {
   final pool = [..._frutas]..shuffle(rnd);
   final frutas = pool.take(4 + (nivel > 1 ? 1 : 0)).toList();
   final corte = 3 + rnd.nextInt(2); // 3..4
@@ -457,10 +573,14 @@ Missao _mColheitaWhere(math.Random rnd, int nivel) {
     cena: Cena.colheita,
     titulo: 'Filtro do Pomar',
     historia: 'Só entram na cesta frutas com nome de MAIS de $corte letras. '
-        'O where filtra a lista inteira de uma vez.',
-    codigo: "final $varF = [${frutas.map((f) => "'$f'").join(', ')}];\n"
-        'final $varG = $varF.where((f) => f.length > $corte).toList();\n'
-        'print($varG.length);',
+        'O ${cs ? 'Where' : 'where'} filtra a lista inteira de uma vez.',
+    codigo: cs
+        ? '${_colecaoCs('string[] $varF', frutas, aspas: true)}\n'
+            'var $varG = $varF.Where(f => f.Length > $corte).ToList();\n'
+            'Console.WriteLine($varG.Count);'
+        : "final $varF = [${frutas.map((f) => "'$f'").join(', ')}];\n"
+            'final $varG = $varF.where((f) => f.length > $corte).toList();\n'
+            'print($varG.length);',
     pergunta: 'Quantas frutas passam no filtro?',
     opcoes: opcoes,
     certa: certa,
@@ -478,7 +598,7 @@ Missao _mColheitaWhere(math.Random rnd, int nivel) {
             '"$f" tem ${f.length} letras > $corte? '
             '${f.length > corte ? 'SIM → colhe ✅' : 'NÃO → fica 🍂'}',
             {'colhidas': frutas.take(i + 1).where((x) => x.length > corte).length}),
-      PassoCena('print → ${grandes.length} na cesta 🧺'),
+      PassoCena('${_imprime(cs)} → ${grandes.length} na cesta 🧺'),
     ],
     dados: {
       'total': grandes.length,
@@ -489,7 +609,7 @@ Missao _mColheitaWhere(math.Random rnd, int nivel) {
   );
 }
 
-Missao _mColheitaSoma(math.Random rnd, int nivel) {
+Missao _mColheitaSoma(math.Random rnd, int nivel, bool cs) {
   final cestos = [for (var i = 0; i < 3 + (nivel > 1 ? 1 : 0); i++) 1 + rnd.nextInt(5 + nivel)];
   final total = cestos.fold<int>(0, (a, b) => a + b);
   final varT = _sorteia(rnd, ['total', 'soma']);
@@ -499,13 +619,21 @@ Missao _mColheitaSoma(math.Random rnd, int nivel) {
     cena: Cena.colheita,
     titulo: 'Soma da Colheita',
     historia: 'Cada cesto do pomar tem uma quantidade: $cestos. '
-        'O for-in soma tudo num total só.',
-    codigo: 'final $varCe = $cestos;\n'
-        'var $varT = 0;\n'
-        'for (final c in $varCe) {\n'
-        '  $varT += c;\n'
-        '}\n'
-        "print('\$$varT frutas');",
+        'O ${cs ? 'foreach' : 'for-in'} soma tudo num total só.',
+    codigo: cs
+        ? '${_colecaoCs('int[] $varCe', cestos)}\n'
+            'var $varT = 0;\n'
+            'foreach (var c in $varCe)\n'
+            '{\n'
+            '    $varT += c;\n'
+            '}\n'
+            'Console.WriteLine(\$"{$varT} frutas");'
+        : 'final $varCe = $cestos;\n'
+            'var $varT = 0;\n'
+            'for (final c in $varCe) {\n'
+            '  $varT += c;\n'
+            '}\n'
+            "print('\$$varT frutas');",
     pergunta: 'Quantas frutas no total?',
     opcoes: opcoes,
     certa: certa,
@@ -520,7 +648,7 @@ Missao _mColheitaSoma(math.Random rnd, int nivel) {
         PassoCena(
             '$varT += ${cestos[i]} → ${cestos.take(i + 1).fold<int>(0, (a, b) => a + b)}',
             {'colhidas': cestos.take(i + 1).fold<int>(0, (a, b) => a + b)}),
-      PassoCena('print → "$total frutas" 🧺'),
+      PassoCena('${_imprime(cs)} → "$total frutas" 🧺'),
     ],
     dados: {'total': total, 'colhidas': 0, 'emoji': '🍎'},
     pontos: _pontosBase(nivel),
@@ -529,7 +657,7 @@ Missao _mColheitaSoma(math.Random rnd, int nivel) {
 
 // ---------------------------------------------------------------- 🚦 semáforo
 
-Missao _mSemaforoSwitch(math.Random rnd, int nivel) {
+Missao _mSemaforoSwitch(math.Random rnd, int nivel, bool cs) {
   final cor = _sorteia(rnd, ['verde', 'amarelo', 'vermelho']);
   final acao = switch (cor) { 'verde' => 'siga', 'amarelo' => 'atencao', _ => 'pare' };
   final rotulo = switch (cor) { 'verde' => 'Segue viagem', 'amarelo' => 'Fica atento', _ => 'Para tudo' };
@@ -537,36 +665,54 @@ Missao _mSemaforoSwitch(math.Random rnd, int nivel) {
   final veic = _sorteia(rnd, ['carro', 'onibus', 'trem']);
   final comDefault = rnd.nextBool();
   final opcoes = ['Segue viagem', 'Fica atento', 'Para tudo']..shuffle(rnd);
+  final metodo = _metodo(acao, cs); // a cena segue lendo a ação em minúsculas
+  final caso = cor != 'vermelho'
+      ? 'case ${_lit(cor, cs)}'
+      : (comDefault ? 'o default' : 'case ${_lit('vermelho', cs)}');
   return Missao(
     cena: Cena.semaforo,
     titulo: 'O Cruzamento',
     historia: 'O semáforo acendeu $cor. O switch escolhe UM caso — '
         'qual comando o carro recebe?',
-    codigo: "var $varCor = '$cor';\n"
-        'switch ($varCor) {\n'
-        "  case 'verde':\n"
-        '    $veic.siga();\n'
-        "  case 'amarelo':\n"
-        '    $veic.atencao();\n'
-        '${comDefault ? '  default:' : "  case 'vermelho':"}\n'
-        '    $veic.pare();\n'
-        '}',
+    codigo: cs
+        ? 'var $varCor = "$cor";\n'
+            'switch ($varCor)\n'
+            '{\n'
+            '    case "verde":\n'
+            '        $veic.Siga();\n'
+            '        break;\n'
+            '    case "amarelo":\n'
+            '        $veic.Atencao();\n'
+            '        break;\n'
+            '    ${comDefault ? 'default:' : 'case "vermelho":'}\n'
+            '        $veic.Pare();\n'
+            '        break;\n'
+            '}'
+        : "var $varCor = '$cor';\n"
+            'switch ($varCor) {\n'
+            "  case 'verde':\n"
+            '    $veic.siga();\n'
+            "  case 'amarelo':\n"
+            '    $veic.atencao();\n'
+            '${comDefault ? '  default:' : "  case 'vermelho':"}\n'
+            '    $veic.pare();\n'
+            '}',
     pergunta: 'O que o carro faz?',
     opcoes: opcoes,
     certa: opcoes.indexOf(rotulo),
-    explica: "cor é '$cor' → o switch casa com "
-        "${cor != 'vermelho' ? "case '$cor'" : (comDefault ? 'o default' : "case 'vermelho'")} e chama $veic.$acao().",
+    explica: '${cs ? varCor : 'cor'} é ${_lit(cor, cs)} → o switch casa com '
+        '$caso e chama $veic.$metodo().',
     dicas: [
       '🔮 O switch compara a cor com cada case, na ordem…',
-      "🔮 A variável guarda '$cor'…",
-      '🔮 Cai em $veic.$acao() → $rotulo.',
+      '🔮 A variável guarda ${_lit(cor, cs)}…',
+      '🔮 Cai em $veic.$metodo() → $rotulo.',
     ],
     passos: [
-      PassoCena("$varCor = '$cor' — o semáforo acende", {'cor': cor}),
-      PassoCena(cor != 'vermelho'
-          ? "switch casa com case '$cor'"
-          : (comDefault ? 'Nenhum case casou → vai pro default' : "switch casa com case 'vermelho'")),
-      PassoCena('$veic.$acao() → $rotulo ${cor == 'verde' ? '✅' : ''}',
+      PassoCena('$varCor = ${_lit(cor, cs)} — o semáforo acende', {'cor': cor}),
+      PassoCena(cor != 'vermelho' || !comDefault
+          ? 'switch casa com $caso'
+          : 'Nenhum case casou → vai pro default'),
+      PassoCena('$veic.$metodo() → $rotulo ${cor == 'verde' ? '✅' : ''}',
           {'acao': acao}),
     ],
     dados: const {'cor': 'apagado', 'acao': ''},
@@ -574,7 +720,7 @@ Missao _mSemaforoSwitch(math.Random rnd, int nivel) {
   );
 }
 
-Missao _mSemaforoTernario(math.Random rnd, int nivel) {
+Missao _mSemaforoTernario(math.Random rnd, int nivel, bool cs) {
   final fila = 2 + rnd.nextInt(9);
   final corte = 4 + rnd.nextInt(4);
   final (longo, curto) = _sorteia(rnd, [(30, 10), (25, 10), (40, 15), (30, 12)]);
@@ -585,9 +731,13 @@ Missao _mSemaforoTernario(math.Random rnd, int nivel) {
     titulo: 'Verde Sob Medida',
     historia: 'Há $fila carro(s) na fila. Se passar de $corte, o verde dura ${longo}s; '
         'senão, ${curto}s. Tudo numa linha: o ternário.',
-    codigo: 'var fila = $fila;\n'
-        'var verde = fila > $corte ? $longo : $curto;\n'
-        "print('verde por \$verde s');",
+    codigo: cs
+        ? 'var fila = $fila;\n'
+            'var verde = fila > $corte ? $longo : $curto;\n'
+            'Console.WriteLine(\$"verde por {verde} s");'
+        : 'var fila = $fila;\n'
+            'var verde = fila > $corte ? $longo : $curto;\n'
+            "print('verde por \$verde s');",
     pergunta: 'Quantos segundos de verde?',
     opcoes: opcoes,
     certa: opcoes.indexOf('$tempo segundos'),
@@ -610,7 +760,7 @@ Missao _mSemaforoTernario(math.Random rnd, int nivel) {
 
 // ------------------------------------------------------------------ 🚀 foguete
 
-Missao _mFogueteContagem(math.Random rnd, int nivel) {
+Missao _mFogueteContagem(math.Random rnd, int nivel, bool cs) {
   final n = 3 + rnd.nextInt(2 + nivel);
   final cont = _sorteia(rnd, ['i', 't', 'n']);
   final grito = _sorteia(rnd, ['DECOLAR!', 'PARTIU!', 'VOAR!', 'IGNICAO!', 'JA!']);
@@ -620,10 +770,16 @@ Missao _mFogueteContagem(math.Random rnd, int nivel) {
     titulo: 'Contagem Regressiva',
     historia: 'A torre grita a contagem de $n até 1 e o foguete parte. '
         'É um for de trás pra frente (i--).',
-    codigo: 'for (var $cont = $n; $cont >= 1; $cont--) {\n'
-        '  print($cont);\n'
-        '}\n'
-        "print('$grito');",
+    codigo: cs
+        ? 'for (int $cont = $n; $cont >= 1; $cont--)\n'
+            '{\n'
+            '    Console.WriteLine($cont);\n'
+            '}\n'
+            'Console.WriteLine("$grito");'
+        : 'for (var $cont = $n; $cont >= 1; $cont--) {\n'
+            '  print($cont);\n'
+            '}\n'
+            "print('$grito');",
     pergunta: 'Quantos números a torre grita antes do voo?',
     opcoes: opcoes,
     certa: certa,
@@ -634,7 +790,7 @@ Missao _mFogueteContagem(math.Random rnd, int nivel) {
       '🔮 $n números: $n, ${n - 1}, …, 1.',
     ],
     passos: [
-      for (var i = n; i >= 1; i--) PassoCena('print($i)  📢', {'contagem': i}),
+      for (var i = n; i >= 1; i--) PassoCena('${_imprime(cs)}($i)  📢', {'contagem': i}),
       PassoCena('$grito 🚀', const {'contagem': 0, 'altura': 1.0}),
     ],
     dados: {'contagem': n, 'altura': 0.0},
@@ -642,7 +798,7 @@ Missao _mFogueteContagem(math.Random rnd, int nivel) {
   );
 }
 
-Missao _mFogueteCombustivel(math.Random rnd, int nivel) {
+Missao _mFogueteCombustivel(math.Random rnd, int nivel, bool cs) {
   final custo = 2 + rnd.nextInt(3); // 2..4
   final estagios = 2 + rnd.nextInt(2 + nivel);
   final tanque = custo * estagios + rnd.nextInt(custo); // e ~/ c == estagios
@@ -662,13 +818,22 @@ Missao _mFogueteCombustivel(math.Random rnd, int nivel) {
     titulo: 'Tanque Calculado',
     historia: 'O foguete tem $tanque de combustível e cada estágio queima $custo. '
         'O while sobe enquanto der.',
-    codigo: 'var $varComb = $tanque;\n'
-        'var estagios = 0;\n'
-        'while ($varComb >= $custo) {\n'
-        '  estagios++;\n'
-        '  $varComb -= $custo;\n'
-        '}\n'
-        'print(estagios);',
+    codigo: cs
+        ? 'var $varComb = $tanque;\n'
+            'var estagios = 0;\n'
+            'while ($varComb >= $custo)\n'
+            '{\n'
+            '    estagios++;\n'
+            '    $varComb -= $custo;\n'
+            '}\n'
+            'Console.WriteLine(estagios);'
+        : 'var $varComb = $tanque;\n'
+            'var estagios = 0;\n'
+            'while ($varComb >= $custo) {\n'
+            '  estagios++;\n'
+            '  $varComb -= $custo;\n'
+            '}\n'
+            'print(estagios);',
     pergunta: 'Quantos estágios ele sobe?',
     opcoes: opcoes,
     certa: certa,
@@ -687,7 +852,7 @@ Missao _mFogueteCombustivel(math.Random rnd, int nivel) {
 
 // -------------------------------------------------------------------- 🌉 ponte
 
-Missao _mPontePranchas(math.Random rnd, int nivel) {
+Missao _mPontePranchas(math.Random rnd, int nivel, bool cs) {
   final prancha = 2 + rnd.nextInt(3); // 2..4
   final pranchas = 2 + rnd.nextInt(2 + nivel);
   final vao = prancha * pranchas - rnd.nextInt(prancha); // ceil == pranchas
@@ -708,13 +873,22 @@ Missao _mPontePranchas(math.Random rnd, int nivel) {
     titulo: 'Ponte Sob Medida',
     historia: 'O abismo tem $vao m e cada prancha cobre $prancha m. '
         'O while coloca pranchas até dar pra atravessar.',
-    codigo: 'var $varCob = 0;\n'
-        'var $varPr = 0;\n'
-        'while ($varCob < $vao) {\n'
-        '  $varPr++;\n'
-        '  $varCob += $prancha;\n'
-        '}\n'
-        'print($varPr);',
+    codigo: cs
+        ? 'var $varCob = 0;\n'
+            'var $varPr = 0;\n'
+            'while ($varCob < $vao)\n'
+            '{\n'
+            '    $varPr++;\n'
+            '    $varCob += $prancha;\n'
+            '}\n'
+            'Console.WriteLine($varPr);'
+        : 'var $varCob = 0;\n'
+            'var $varPr = 0;\n'
+            'while ($varCob < $vao) {\n'
+            '  $varPr++;\n'
+            '  $varCob += $prancha;\n'
+            '}\n'
+            'print($varPr);',
     pergunta: 'Quantas pranchas a ponte precisa?',
     opcoes: opcoes,
     certa: certa,
@@ -742,7 +916,7 @@ const _mercadorias = [
   ('mel', '🍯'),
 ];
 
-Missao _mMercadoPreco(math.Random rnd, int nivel) {
+Missao _mMercadoPreco(math.Random rnd, int nivel, bool cs) {
   final itens = ([..._mercadorias]..shuffle(rnd)).take(4).toList();
   final naLista = itens.take(3).toList();
   final precos = [for (final _ in naLista) 2 + rnd.nextInt(8)];
@@ -754,31 +928,49 @@ Missao _mMercadoPreco(math.Random rnd, int nivel) {
       '{${[for (final (i, p) in naLista.indexed) "'${p.$1}': ${precos[i]}"].join(', ')}}';
   final opcoes = <String>{'$valor', 'null', acha ? '0' : '${precos[0]}'}.toList()
     ..shuffle(rnd);
+  // no C# a chave que falta não vira null: o GetValueOrDefault entrega o
+  // valor de reserva (o 0) — o papel do ?? no Dart
+  final chave = _lit(consulta, cs);
+  final colecao = cs ? 'Dictionary' : 'Map';
   return Missao(
     cena: Cena.mercado,
     titulo: 'Visor do Caixa',
-    historia: 'O caixa consulta o preço de "$consulta" no Map. Se a chave não '
-        'existir, o ?? salva o visor com um 0.',
-    codigo: 'final precos = $mapa;\n'
-        "print(precos['$consulta'] ?? 0);",
+    historia: cs
+        ? 'O caixa consulta o preço de "$consulta" no Dictionary. Se a chave não '
+            'existir, o GetValueOrDefault salva o visor com o 0 de reserva.'
+        : 'O caixa consulta o preço de "$consulta" no Map. Se a chave não '
+            'existir, o ?? salva o visor com um 0.',
+    codigo: cs
+        ? '${_precosCs(naLista, precos)}\n'
+            'Console.WriteLine(precos.GetValueOrDefault("$consulta", 0));'
+        : 'final precos = $mapa;\n'
+            "print(precos['$consulta'] ?? 0);",
     pergunta: 'O que aparece no visor do caixa?',
     opcoes: opcoes,
     certa: opcoes.indexOf('$valor'),
-    explica: acha
-        ? "A chave '$consulta' existe no Map e vale $valor — o ?? nem é usado."
-        : "'$consulta' NÃO está no Map → precos['$consulta'] é null → o ?? entrega o 0.",
+    explica: switch ((acha, cs)) {
+      (true, false) => "A chave '$consulta' existe no Map e vale $valor — o ?? nem é usado.",
+      (false, false) =>
+        "'$consulta' NÃO está no Map → precos['$consulta'] é null → o ?? entrega o 0.",
+      (true, true) =>
+        'A chave $chave existe no Dictionary e vale $valor — o 0 de reserva nem é usado.',
+      (false, true) => '$chave NÃO está no Dictionary → o GetValueOrDefault entrega o 0 de '
+          'reserva. (Um int nunca é null, e precos[$chave] direto daria erro.)',
+    },
     dicas: [
-      '🔮 Procure a chave entre as chaves do Map, letra por letra…',
-      "🔮 '$consulta' ${acha ? 'ESTÁ' : 'NÃO está'} na lista…",
+      '🔮 Procure a chave entre as chaves do $colecao, letra por letra…',
+      '🔮 $chave ${acha ? 'ESTÁ' : 'NÃO está'} na lista…',
       '🔮 O visor mostra $valor.',
     ],
     passos: [
-      PassoCena("procura a chave '$consulta' no Map…",
+      PassoCena('procura a chave $chave no $colecao…',
           {'atual': acha ? consultaIdx : -1, 'display': '?'}),
       PassoCena(
           acha
-              ? "achou! precos['$consulta'] = $valor"
-              : "não achou → null… mas o ?? segura: 0",
+              ? 'achou! precos[$chave] = $valor'
+              : cs
+                  ? 'não achou → GetValueOrDefault entrega o 0 de reserva'
+                  : "não achou → null… mas o ?? segura: 0",
           {'display': '$valor'}),
       PassoCena('visor: $valor ✅'),
     ],
@@ -794,7 +986,7 @@ Missao _mMercadoPreco(math.Random rnd, int nivel) {
   );
 }
 
-Missao _mMercadoTotal(math.Random rnd, int nivel) {
+Missao _mMercadoTotal(math.Random rnd, int nivel, bool cs) {
   final itens = ([..._mercadorias]..shuffle(rnd)).take(3).toList();
   final precos = [for (final _ in itens) 2 + rnd.nextInt(7 + nivel)];
   final total = precos.fold<int>(0, (a, b) => a + b);
@@ -802,24 +994,34 @@ Missao _mMercadoTotal(math.Random rnd, int nivel) {
   final mapa =
       '{${[for (final (i, p) in itens.indexed) "'${p.$1}': ${precos[i]}"].join(', ')}}';
   final (opcoes, certa) = _opcoesNum(rnd, total, minimo: 1);
+  final (laco, colecao, values) =
+      cs ? ('foreach', 'Dictionary', 'Values') : ('for-in', 'Map', 'values');
   return Missao(
     cena: Cena.mercado,
     titulo: 'Conta da Feira',
-    historia: 'Hora de fechar a compra: o for-in percorre os VALORES do Map '
+    historia: 'Hora de fechar a compra: o $laco percorre os VALORES do $colecao '
         'e soma tudo no caixa.',
-    codigo: 'final precos = $mapa;\n'
-        'var $varT = 0;\n'
-        'for (final p in precos.values) {\n'
-        '  $varT += p;\n'
-        '}\n'
-        'print($varT);',
+    codigo: cs
+        ? '${_precosCs(itens, precos)}\n'
+            'var $varT = 0;\n'
+            'foreach (var p in precos.Values)\n'
+            '{\n'
+            '    $varT += p;\n'
+            '}\n'
+            'Console.WriteLine($varT);'
+        : 'final precos = $mapa;\n'
+            'var $varT = 0;\n'
+            'for (final p in precos.values) {\n'
+            '  $varT += p;\n'
+            '}\n'
+            'print($varT);',
     pergunta: 'Qual o total da compra?',
     opcoes: opcoes,
     certa: certa,
-    explica: '${precos.join(' + ')} = $total — .values entrega só os preços, '
+    explica: '${precos.join(' + ')} = $total — .$values entrega só os preços, '
         'sem as chaves.',
     dicas: [
-      '🔮 Ignore os nomes: some só os números do Map…',
+      '🔮 Ignore os nomes: some só os números do $colecao…',
       '🔮 ${precos.join(', ')} — vá acumulando…',
       '🔮 Dá $total.',
     ],
@@ -842,7 +1044,7 @@ Missao _mMercadoTotal(math.Random rnd, int nivel) {
   );
 }
 
-Missao _mMercadoEstoque(math.Random rnd, int nivel) {
+Missao _mMercadoEstoque(math.Random rnd, int nivel, bool cs) {
   final itens = ([..._mercadorias]..shuffle(rnd)).take(3).toList();
   final naLista = itens.take(2).toList();
   final precos = [for (final _ in naLista) 2 + rnd.nextInt(8)];
@@ -852,30 +1054,44 @@ Missao _mMercadoEstoque(math.Random rnd, int nivel) {
       '{${[for (final (i, p) in naLista.indexed) "'${p.$1}': ${precos[i]}"].join(', ')}}';
   final opcoes = ['tem $alvo!', 'em falta', 'dá erro']..shuffle(rnd);
   final certaTexto = tem ? 'tem $alvo!' : 'em falta';
+  final containsKey = _metodo('containsKey', cs);
   return Missao(
     cena: Cena.mercado,
     titulo: 'Tem no Estoque?',
-    historia: 'O freguês quer "$alvo". O containsKey pergunta ao Map se a '
-        'chave existe — sem risco de null.',
-    codigo: 'final precos = $mapa;\n'
-        "if (precos.containsKey('$alvo')) {\n"
-        "  print('tem $alvo!');\n"
-        '} else {\n'
-        "  print('em falta');\n"
-        '}',
+    historia: cs
+        ? 'O freguês quer "$alvo". O ContainsKey pergunta ao Dictionary se a '
+            'chave existe — sem risco de erro.'
+        : 'O freguês quer "$alvo". O containsKey pergunta ao Map se a '
+            'chave existe — sem risco de null.',
+    codigo: cs
+        ? '${_precosCs(naLista, precos)}\n'
+            'if (precos.ContainsKey("$alvo"))\n'
+            '{\n'
+            '    Console.WriteLine("tem $alvo!");\n'
+            '}\n'
+            'else\n'
+            '{\n'
+            '    Console.WriteLine("em falta");\n'
+            '}'
+        : 'final precos = $mapa;\n'
+            "if (precos.containsKey('$alvo')) {\n"
+            "  print('tem $alvo!');\n"
+            '} else {\n'
+            "  print('em falta');\n"
+            '}',
     pergunta: 'O que o caixa responde?',
     opcoes: opcoes,
     certa: opcoes.indexOf(certaTexto),
     explica: tem
-        ? "'$alvo' é uma das chaves → containsKey devolve true → primeiro ramo."
-        : "'$alvo' não está entre as chaves → false → cai no else.",
+        ? '${_lit(alvo, cs)} é uma das chaves → $containsKey devolve true → primeiro ramo.'
+        : '${_lit(alvo, cs)} não está entre as chaves → false → cai no else.',
     dicas: [
-      '🔮 containsKey só olha as CHAVES, não os valores…',
+      '🔮 $containsKey só olha as CHAVES, não os valores…',
       "🔮 As chaves são: ${naLista.map((p) => p.$1).join(' e ')}…",
       '🔮 Resposta: $certaTexto',
     ],
     passos: [
-      PassoCena("containsKey('$alvo') vasculha as chaves…", const {'display': '?'}),
+      PassoCena('$containsKey(${_lit(alvo, cs)}) vasculha as chaves…', const {'display': '?'}),
       PassoCena(tem ? 'true → primeiro ramo' : 'false → else'),
       PassoCena('visor: "$certaTexto" ${tem ? '✅' : '🍂'}', {'display': certaTexto}),
     ],
@@ -894,22 +1110,26 @@ Missao _mMercadoEstoque(math.Random rnd, int nivel) {
 
 const _senhas = ['manga', 'kiwi', 'tesouro', 'segredo', 'pacman', 'widget', 'dardo', 'amora', 'futuro', 'codigo', 'pixel', 'cometa'];
 
-Missao _mCofreSenha(math.Random rnd, int nivel) {
+Missao _mCofreSenha(math.Random rnd, int nivel, bool cs) {
   final senha = _sorteia(rnd, _senhas);
   final varS = _sorteia(rnd, ['senha', 'codigo', 'chave']);
   final (opcoes, certa) = _opcoesNum(rnd, senha.length, minimo: 1);
+  final (length, tipoTexto) = cs ? ('Length', 'string') : ('length', 'String');
   return Missao(
     cena: Cena.cofre,
     titulo: 'Senha do Cofre',
     historia: 'O painel do cofre pede um dígito para CADA letra da senha '
-        '"$senha". O length conta por você.',
-    codigo: "final $varS = '$senha';\n"
-        'print($varS.length);',
+        '"$senha". O $length conta por você.',
+    codigo: cs
+        ? 'var $varS = "$senha";\n'
+            'Console.WriteLine($varS.Length);'
+        : "final $varS = '$senha';\n"
+            'print($varS.length);',
     pergunta: 'Quantos dígitos o painel vai pedir?',
     opcoes: opcoes,
     certa: certa,
-    explica: '"$senha" tem ${senha.length} letras — length conta os '
-        'caracteres da String.',
+    explica: '"$senha" tem ${senha.length} letras — $length conta os '
+        'caracteres da $tipoTexto.',
     dicas: [
       '🔮 Conte as letras da palavra entre aspas…',
       '🔮 ${senha.split('').join(' · ')} …',
@@ -918,7 +1138,7 @@ Missao _mCofreSenha(math.Random rnd, int nivel) {
     passos: [
       for (var k = 1; k <= senha.length; k++)
         PassoCena('conta "${senha[k - 1]}" → $k', {'display': '*' * k}),
-      PassoCena('length = ${senha.length} — o cofre ABRE! 💎',
+      PassoCena('$length = ${senha.length} — o cofre ABRE! 💎',
           {'display': '${senha.length}', 'aberto': true}),
     ],
     dados: {'display': '···', 'aberto': false, 'senha': senha},
@@ -926,32 +1146,36 @@ Missao _mCofreSenha(math.Random rnd, int nivel) {
   );
 }
 
-Missao _mCofreUpper(math.Random rnd, int nivel) {
+Missao _mCofreUpper(math.Random rnd, int nivel, bool cs) {
   final senha = _sorteia(rnd, _senhas);
   final varS = _sorteia(rnd, ['senha', 'palavra']);
   final grito = senha.toUpperCase();
   final capitalizada = senha[0].toUpperCase() + senha.substring(1);
   final opcoes = [grito, senha, capitalizada]..shuffle(rnd);
+  final upper = cs ? 'ToUpper' : 'toUpperCase';
   return Missao(
     cena: Cena.cofre,
     titulo: 'Cofre aos Gritos',
-    historia: 'Este cofre só entende a senha GRITADA. O toUpperCase '
+    historia: 'Este cofre só entende a senha GRITADA. O $upper '
         'transforma o texto inteiro.',
-    codigo: "final $varS = '$senha';\n"
-        'print($varS.toUpperCase());',
+    codigo: cs
+        ? 'var $varS = "$senha";\n'
+            'Console.WriteLine($varS.ToUpper());'
+        : "final $varS = '$senha';\n"
+            'print($varS.toUpperCase());',
     pergunta: 'O que aparece no painel?',
     opcoes: opcoes,
     certa: opcoes.indexOf(grito),
-    explica: 'toUpperCase() põe TODAS as letras em maiúsculas: "$grito". '
+    explica: '$upper() põe TODAS as letras em maiúsculas: "$grito". '
         '(Só a primeira seria outra função.)',
     dicas: [
-      '🔮 toUpperCase não escolhe letra: pega TODAS…',
+      '🔮 $upper não escolhe letra: pega TODAS…',
       '🔮 "$senha" vira tudo maiúsculo…',
       '🔮 Painel: $grito',
     ],
     passos: [
       PassoCena('lê "$senha"…', {'display': senha}),
-      PassoCena('toUpperCase() grita cada letra', {'display': grito}),
+      PassoCena('$upper() grita cada letra', {'display': grito}),
       PassoCena('"$grito" aceito — ABRE! 💎', const {'aberto': true}),
     ],
     dados: const {'display': '···', 'aberto': false},
@@ -959,7 +1183,7 @@ Missao _mCofreUpper(math.Random rnd, int nivel) {
   );
 }
 
-Missao _mCofreNull(math.Random rnd, int nivel) {
+Missao _mCofreNull(math.Random rnd, int nivel, bool cs) {
   final temBilhete = rnd.nextBool();
   final escrita = _sorteia(rnd, ['sesamo', 'abracadabra', 'plimplim', 'alakazan', 'shazam', 'bibidi']);
   final reserva = _sorteia(rnd, ['chave mestra', 'plano B', 'senha reserva']);
@@ -972,13 +1196,18 @@ Missao _mCofreNull(math.Random rnd, int nivel) {
         ? 'O bilhete com a senha FOI encontrado. O ?? só age quando o valor é null.'
         : 'O bilhete com a senha se perdeu (a variável ficou null). Sorte que '
             'o ?? tem um plano B.',
-    codigo: temBilhete
-        ? "String? bilhete = '$escrita';\n"
-            "final senha = bilhete ?? '$reserva';\n"
-            'print(senha);'
-        : 'String? bilhete;\n'
-            "final senha = bilhete ?? '$reserva';\n"
-            'print(senha);',
+    codigo: switch ((temBilhete, cs)) {
+      (true, false) => "String? bilhete = '$escrita';\n"
+          "final senha = bilhete ?? '$reserva';\n"
+          'print(senha);',
+      (false, false) => 'String? bilhete;\n'
+          "final senha = bilhete ?? '$reserva';\n"
+          'print(senha);',
+      // o C# não deixa ler variável local sem valor: o null é explícito
+      (_, true) => 'string? bilhete = ${temBilhete ? '"$escrita"' : 'null'};\n'
+          'var senha = bilhete ?? "$reserva";\n'
+          'Console.WriteLine(senha);',
+    },
     pergunta: 'Qual senha vai pro painel?',
     opcoes: opcoes,
     certa: opcoes.indexOf(resultado),

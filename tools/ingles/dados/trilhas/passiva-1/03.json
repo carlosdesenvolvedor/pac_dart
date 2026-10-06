@@ -1,0 +1,299 @@
+{
+  "id": "passiva-1.escrita-por-quem",
+  "trilha": "passiva-1",
+  "nome": "Escrita por quem?",
+  "emoji": "🖌️",
+  "cena": "Num museu de arte e ciência em Chicago, você e a Emma leem as placas das obras e das invenções.",
+  "resumo": "Passiva com by para dizer quem fez: written by, invented by, translated into.",
+  "fechamento": false,
+  "novos": [
+    "written by",
+    "invented by",
+    "translated into",
+    "light bulb",
+    "musician"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Por quem? = by"
+    },
+    {
+      "t": "p",
+      "c": "Na passiva, quem fez a ação vem depois de **by**, e só quando essa informação importa: This book was written by two people."
+    },
+    {
+      "t": "warn",
+      "c": "Línguas e nacionalidades levam maiúscula: Portuguese, Brazilian. E nome de pessoa vem sem artigo: by Santos-Dumont (não: by the Santos-Dumont)."
+    },
+    {
+      "t": "tip",
+      "c": "traduzido para o português = translated into Portuguese (into, não to)."
+    },
+    {
+      "t": "ex",
+      "c": "The light bulb wasn't invented by just one person.\nA lâmpada não foi inventada por uma pessoa só."
+    }
+  ],
+  "imagem": "🖼️💡🎷",
+  "visualizacao": "Salas silenciosas, piso de madeira que range e placas pequenas ao lado de cada obra. A Emma se inclina para ler, e você traduz baixinho as palavras que ela não conhece.",
+  "foto_busca": "museum gallery visitors reading labels",
+  "trechos": [
+    {
+      "id": "f-b77034",
+      "quem": "emma",
+      "cod": "This book was written by two people.",
+      "dica": "Este livro foi escrito por duas pessoas.",
+      "img": "📖✍️👥",
+      "alvo": "written by",
+      "alvo_pt": "escrito por",
+      "conceito": "by = por (quem fez a ação). write, wrote, written.",
+      "registro": "informal",
+      "armadilhas": [
+        "wrote",
+        "for"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 7806109,
+        "en_autor": "CarpeLanam",
+        "pt_id": 8591800,
+        "pt_autor": "arademaker",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-62264f",
+      "quem": "voce",
+      "cod": "Was this book translated into Portuguese?",
+      "dica": "Este livro foi traduzido para o português?",
+      "img": "📖🔄🗣️",
+      "alvo": "translated into",
+      "alvo_pt": "traduzido para",
+      "conceito": "traduzir para = translate into. Portuguese, sempre com maiúscula.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "to",
+        "portuguese",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c10fbc",
+      "quem": "emma",
+      "contexto": "f-62264f",
+      "cod": "Yes. The sign says it was translated into twenty languages.",
+      "dica": "Foi, sim. A placa diz que foi traduzido para vinte idiomas.",
+      "img": "🪧🌍",
+      "alvo": "translated into",
+      "alvo_pt": "traduzido para",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yes, it was"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ec0efc",
+      "quem": "emma",
+      "cod": "Look, this is one of the first light bulbs.",
+      "dica": "Olha, esta é uma das primeiras lâmpadas.",
+      "img": "💡🕰️",
+      "alvo": "light bulbs",
+      "alvo_pt": "lâmpadas",
+      "conceito": "lâmpada = light bulb (lamp é o abajur).",
+      "registro": "informal",
+      "armadilhas": [
+        "lamps"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-222dde",
+      "quem": "emma",
+      "cod": "The light bulb wasn't invented by just one person.",
+      "dica": "A lâmpada não foi inventada por uma pessoa só.",
+      "img": "💡👥",
+      "alvo": "invented by",
+      "alvo_pt": "inventada por",
+      "conceito": "wasn't + particípio: passiva negativa.",
+      "registro": "informal",
+      "armadilhas": [
+        "didn't"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "just",
+          "aceita": [
+            "only"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-54b1f2",
+      "quem": "voce",
+      "cod": "In Brazil, we say the airplane was invented by Santos-Dumont.",
+      "dica": "No Brasil, a gente diz que o avião foi inventado pelo Santos-Dumont.",
+      "img": "✈️🇧🇷",
+      "alvo": "invented by",
+      "alvo_pt": "inventado pelo",
+      "conceito": "pelo = by (by + nome, sem artigo).",
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "the",
+        "for"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "airplane",
+          "aceita": [
+            "plane"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-fc2c2c",
+      "quem": "voce",
+      "cod": "Wow, this light bulb is over a hundred years old!",
+      "dica": "Nossa, esta lâmpada tem mais de cem anos!",
+      "img": "💡⏳",
+      "alvo": "light bulb",
+      "alvo_pt": "lâmpada",
+      "lit": "[lit.: esta lâmpada é mais de cem anos velha]",
+      "conceito": "Idade com be: is ... years old (não: has a hundred years).",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "has"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "over",
+          "aceita": [
+            "more than"
+          ]
+        },
+        {
+          "em": "a hundred",
+          "aceita": [
+            "one hundred"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-54af21",
+      "quem": "emma",
+      "cod": "Who's your favorite jazz musician?",
+      "dica": "Qual é o seu músico de jazz favorito?",
+      "img": "🎷🎶❓",
+      "alvo": "musician",
+      "alvo_pt": "músico",
+      "conceito": "Pessoa favorita: Who's your favorite...? E o tipo vem antes: jazz musician (músico de jazz).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 9754804,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (o original diz 'cantor')",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fe0028",
+      "quem": "voce",
+      "contexto": "f-54af21",
+      "cod": "I don't really have one, but this song was written by a Brazilian musician.",
+      "dica": "Não tenho um favorito, mas esta música foi escrita por um músico brasileiro.",
+      "img": "🎵🇧🇷",
+      "alvo": "musician",
+      "alvo_pt": "músico",
+      "conceito": "música (a faixa) = song. Brazilian com maiúscula.",
+      "var": [
+        {
+          "em": "have one",
+          "aceita": [
+            "have a favorite"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "music",
+        "brazilian"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "really"
+      ]
+    },
+    {
+      "id": "f-9ecd1b",
+      "quem": "emma",
+      "cod": "This poem was written by a ten-year-old girl.",
+      "dica": "Este poema foi escrito por uma menina de dez anos.",
+      "img": "📝👧",
+      "alvo": "written by",
+      "alvo_pt": "escrito por",
+      "conceito": "ten-year-old: idade como adjetivo, com hífens e sem s.",
+      "registro": "informal",
+      "armadilhas": [
+        "years"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1207534,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "The poem → This poem; acrescentado 'ten-year-old'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

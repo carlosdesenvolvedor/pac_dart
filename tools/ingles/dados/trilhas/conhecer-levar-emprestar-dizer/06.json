@@ -1,0 +1,302 @@
+{
+  "id": "conhecer-levar-emprestar-dizer.que-reuniao-chata-ing-e-job",
+  "trilha": "conhecer-levar-emprestar-dizer",
+  "nome": "Que reunião chata! -ing e job",
+  "emoji": "🥱",
+  "cena": "Depois de uma reunião longa, você e a Ana conversam sobre o emprego novo do Lucas, e o Mike pede para falar com você.",
+  "resumo": "Descrever o que causa um sentimento com -ing (boring, tiring, exciting), conversar com talk e usar a job (emprego).",
+  "fechamento": false,
+  "novos": [
+    "boring",
+    "Can we talk for a minute?",
+    "a new job",
+    "exciting",
+    "tiring"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Chato = boring; entediado = bored"
+    },
+    {
+      "t": "p",
+      "c": "**-ing** descreve o que causa o sentimento: **boring** (chato), **tiring** (cansativo), **exciting** (empolgante). **-ed** é como a pessoa se sente."
+    },
+    {
+      "t": "ex",
+      "c": "This meeting is really boring.\nEssa reunião está muito chata."
+    },
+    {
+      "t": "tip",
+      "c": "conversar = **talk**: Can we talk for a minute? (speak é mais para idioma)."
+    },
+    {
+      "t": "warn",
+      "c": "Um emprego = **a job** (contável). Não: a new work."
+    }
+  ],
+  "imagem": "🥱💼🗣️",
+  "visualizacao": "Você sai de uma reunião de duas horas, se espreguiça na cadeira e abre o chat. A Ana manda um emoji de sono, e o café ao lado já esfriou.",
+  "foto_busca": "tired employee after long meeting",
+  "trechos": [
+    {
+      "id": "f-eae9e6",
+      "quem": "ana",
+      "cod": "This meeting is really boring.",
+      "dica": "Essa reunião está muito chata.",
+      "img": "😴📊",
+      "alvo": "boring",
+      "alvo_pt": "chata",
+      "conceito": "-ing = o que causa: boring (chato). Quem sente fica bored.",
+      "registro": "informal",
+      "interferencias": [
+        "BR41"
+      ],
+      "armadilhas": [
+        "bored"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5853379,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: game → meeting (original: \"This game is really boring.\"); PT reescrito (original: \"Este jogo é muito chato.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very",
+            "so"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cf2d4c",
+      "quem": "voce",
+      "contexto": "f-eae9e6",
+      "cod": "I know. Long meetings are so tiring.",
+      "dica": "Eu sei. Reuniões longas são muito cansativas.",
+      "img": "😩⏳",
+      "alvo": "tiring",
+      "alvo_pt": "cansativas",
+      "conceito": "tiring = cansativo (o que cansa); tired = cansado. Generalização sem the.",
+      "registro": "informal",
+      "interferencias": [
+        "BR41",
+        "BR21"
+      ],
+      "armadilhas": [
+        "tired",
+        "the"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "so",
+          "aceita": [
+            "really",
+            "very"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-2dd14d",
+      "quem": "voce",
+      "cod": "Can we talk for a minute after this?",
+      "dica": "A gente pode conversar um minuto depois disso?",
+      "img": "🗣️⏱️",
+      "alvo": "Can we talk for a minute",
+      "alvo_pt": "A gente pode conversar um minuto",
+      "conceito": "conversar = talk; speak fica para idioma (Do you speak English?).",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "speak"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "this",
+          "aceita": [
+            "that"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-3623ac",
+      "quem": "voce",
+      "cod": "My brother got a new job!",
+      "dica": "Meu irmão arrumou um emprego novo!",
+      "img": "🎉💼",
+      "alvo": "a new job",
+      "alvo_pt": "um emprego novo",
+      "conceito": "um emprego = a job (contável); work é o trabalho em geral (não: a new work).",
+      "registro": "informal",
+      "interferencias": [
+        "BR40"
+      ],
+      "armadilhas": [
+        "work"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6667132,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: I → My brother; ponto final → exclamação (original: \"I got a new job.\"); PT reescrito (original: \"Tenho um novo emprego.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bb0663",
+      "quem": "ana",
+      "contexto": "f-3623ac",
+      "cod": "That's exciting! Does he like it?",
+      "dica": "Que empolgante! Ele gosta?",
+      "img": "🤩👍❓",
+      "alvo": "exciting",
+      "alvo_pt": "empolgante",
+      "conceito": "exciting = empolgante: a notícia causa o sentimento.",
+      "registro": "informal",
+      "interferencias": [
+        "BR41",
+        "BR01"
+      ],
+      "armadilhas": [
+        "excited"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "That's",
+          "aceita": [
+            "How"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-703487",
+      "quem": "voce",
+      "contexto": "f-bb0663",
+      "cod": "Yes, but it's tiring. He works ten hours a day.",
+      "dica": "Sim, mas é cansativo. Ele trabalha dez horas por dia.",
+      "img": "🕙💪😓",
+      "alvo": "tiring",
+      "alvo_pt": "cansativo",
+      "registro": "informal",
+      "interferencias": [
+        "BR41",
+        "BR02",
+        "BR01"
+      ],
+      "armadilhas": [
+        "tired",
+        "work"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-edd65e",
+      "quem": "ana",
+      "cod": "Was his old job boring?",
+      "dica": "O emprego antigo dele era chato?",
+      "img": "🥱🏢",
+      "alvo": "boring",
+      "alvo_pt": "chato",
+      "registro": "informal",
+      "interferencias": [
+        "BR41"
+      ],
+      "armadilhas": [
+        "bored"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5757c9",
+      "quem": "voce",
+      "contexto": "f-edd65e",
+      "cod": "Yes, so he started looking for a new job.",
+      "dica": "Sim, então ele começou a procurar um emprego novo.",
+      "img": "🔍💼",
+      "alvo": "a new job",
+      "alvo_pt": "um emprego novo",
+      "conceito": "começou a procurar = started looking (aceita started to look). a new job (não: a new work).",
+      "registro": "informal",
+      "interferencias": [
+        "BR40"
+      ],
+      "armadilhas": [
+        "work"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-601f70",
+      "quem": "mike",
+      "cod": "Hey, can we talk for a minute about the new project?",
+      "dica": "Ei, a gente pode conversar um minuto sobre o projeto novo?",
+      "img": "🗂️💬",
+      "alvo": "can we talk for a minute",
+      "alvo_pt": "a gente pode conversar um minuto",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "speak"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-2dd14d"
+    },
+    {
+      "id": "f-2d849d",
+      "quem": "voce",
+      "contexto": "f-601f70",
+      "cod": "Sure! It's a really exciting project.",
+      "dica": "Claro! É um projeto muito empolgante.",
+      "img": "🚀🤩",
+      "alvo": "exciting",
+      "alvo_pt": "empolgante",
+      "registro": "informal",
+      "interferencias": [
+        "BR41",
+        "BR02"
+      ],
+      "armadilhas": [
+        "excited"
+      ],
+      "origem": "autoral_ia",
+      "conceito": "exciting = empolgante: o projeto causa o sentimento. O it é obrigatório: It's a...",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very",
+            "so"
+          ]
+        }
+      ]
+    }
+  ]
+}

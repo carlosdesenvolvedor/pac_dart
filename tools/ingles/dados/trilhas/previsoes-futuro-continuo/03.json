@@ -1,0 +1,277 @@
+{
+  "id": "previsoes-futuro-continuo.a-esta-hora-amanha",
+  "trilha": "previsoes-futuro-continuo",
+  "nome": "A esta hora amanhã",
+  "emoji": "✈️",
+  "cena": "No chat do time, você avisa que vai viajar para uma conferência em Boston e explica quando vai estar disponível.",
+  "resumo": "Dizer o que vai estar acontecendo num momento do futuro: I'll be flying, Will you be using...?",
+  "fechamento": false,
+  "novos": [
+    "this time tomorrow",
+    "meeting room",
+    "this time next week",
+    "available",
+    "offline"
+  ],
+  "apoio": [
+    "conference",
+    "presentation"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Vou estar + gerúndio = will be + -ing"
+    },
+    {
+      "t": "p",
+      "c": "Para uma ação **em andamento** num momento do futuro, use **will be + -ing**. É o nosso \"vou estar fazendo\"."
+    },
+    {
+      "t": "ex",
+      "c": "This time tomorrow, I'll be flying to Boston.\nA esta hora amanhã, vou estar voando para Boston."
+    },
+    {
+      "t": "tip",
+      "c": "Will you be + -ing...? pergunta os planos de alguém sem soar como pedido."
+    },
+    {
+      "t": "p",
+      "c": "Sem ação, basta **will be**: I'll be offline, I'll be available."
+    }
+  ],
+  "imagem": "✈️🗓️💬",
+  "visualizacao": "Você está no escritório de Austin, com a mala no canto da mesa. No chat do time, você conta que amanhã cedo pega um voo para Boston.",
+  "foto_busca": "airport departure laptop chat",
+  "trechos": [
+    {
+      "id": "f-257e46",
+      "quem": "voce",
+      "cod": "This time tomorrow, I'll be flying to Boston.",
+      "dica": "A esta hora amanhã, vou estar voando para Boston.",
+      "img": "✈️⏰",
+      "alvo": "This time tomorrow",
+      "alvo_pt": "A esta hora amanhã",
+      "conceito": "will be + -ing: ação em andamento num momento do futuro.",
+      "var": [
+        {
+          "em": "This time tomorrow",
+          "aceita": [
+            "At this time tomorrow"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "fly"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a4edd0",
+      "quem": "mike",
+      "contexto": "f-257e46",
+      "cod": "Nice! At this time tomorrow, I'll be in a workshop.",
+      "dica": "Que legal! A esta hora amanhã, vou estar num workshop.",
+      "img": "🛠️👥",
+      "alvo": "this time tomorrow",
+      "alvo_pt": "A esta hora amanhã",
+      "conceito": "workshop = oficina, treinamento prático. At this time tomorrow = This time tomorrow.",
+      "var": [
+        {
+          "em": "At this time tomorrow",
+          "aceita": [
+            "This time tomorrow"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10764092,
+        "en_autor": "sundown",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Nice!' e vírgula acrescentados, 'in London' trocado por 'in a workshop'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2ba27c",
+      "quem": "sarah",
+      "cod": "Will you be available for the presentation on Friday?",
+      "dica": "Você vai estar disponível para a apresentação na sexta?",
+      "img": "📽️🗓️",
+      "alvo": "available",
+      "alvo_pt": "disponível",
+      "conceito": "available = disponível.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-91d8b5",
+      "quem": "voce",
+      "contexto": "f-2ba27c",
+      "cod": "Sorry, I'll be offline until four.",
+      "dica": "Desculpa, vou estar offline até as quatro.",
+      "img": "📴🕓",
+      "alvo": "offline",
+      "alvo_pt": "offline",
+      "conceito": "until four = até as quatro.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4061413,
+        "en_autor": "AlanF_US",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Sorry,' acrescentado e 'busy' trocado por 'offline'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-48f51e",
+      "quem": "sarah",
+      "contexto": "f-91d8b5",
+      "cod": "OK. Will you be using the meeting room this afternoon?",
+      "dica": "Ok. Você vai estar usando a sala de reunião hoje à tarde?",
+      "img": "🚪🪑",
+      "alvo": "meeting room",
+      "alvo_pt": "sala de reunião",
+      "conceito": "Will you be using...? pergunta o plano sem soar como pedido.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR05"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-159b16",
+      "quem": "voce",
+      "contexto": "f-48f51e",
+      "cod": "No, I'll be working from home. The meeting room is all yours.",
+      "dica": "Não, vou estar trabalhando de casa. A sala de reunião é toda sua.",
+      "img": "🏠💻",
+      "alvo": "meeting room",
+      "alvo_pt": "sala de reunião",
+      "conceito": "all yours = todo seu (pode usar à vontade). will be + -ing: o que você vai estar fazendo.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0a230e",
+      "quem": "mike",
+      "cod": "This time next week, we'll be testing the new version.",
+      "dica": "A esta hora semana que vem, a gente vai estar testando a versão nova.",
+      "img": "🧪📱",
+      "alvo": "This time next week",
+      "alvo_pt": "A esta hora semana que vem",
+      "conceito": "this time next week = a esta hora semana que vem.",
+      "var": [
+        {
+          "em": "This time next week",
+          "aceita": [
+            "At this time next week"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-90bc3c",
+      "quem": "voce",
+      "contexto": "f-0a230e",
+      "cod": "Not me. This time next week, I'll be giving a talk in Boston.",
+      "dica": "Eu não. A esta hora semana que vem, vou estar dando uma palestra em Boston.",
+      "img": "🎤🏙️",
+      "alvo": "This time next week",
+      "alvo_pt": "A esta hora semana que vem",
+      "conceito": "Not me = eu não (corrige o we). give a talk = dar uma palestra.",
+      "var": [
+        {
+          "em": "This time next week",
+          "aceita": [
+            "At this time next week"
+          ]
+        }
+      ],
+      "blocos": [
+        2,
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-583bba",
+      "quem": "mike",
+      "contexto": "f-90bc3c",
+      "cod": "Will you be offline during the conference?",
+      "dica": "Você vai estar offline durante a conferência?",
+      "img": "🔕👥",
+      "alvo": "offline",
+      "alvo_pt": "offline",
+      "conceito": "during + evento = durante (during the conference).",
+      "registro": "informal",
+      "interferencias": [
+        "BR63"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-499053",
+      "quem": "voce",
+      "contexto": "f-583bba",
+      "cod": "Only during my talk. I'll be available again when it's done.",
+      "dica": "Só durante a minha palestra. Vou estar disponível de novo quando acabar.",
+      "img": "✅📲",
+      "alvo": "available",
+      "alvo_pt": "disponível",
+      "conceito": "when it's done = quando acabar (when + presente, it obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR01",
+        "BR63"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        4
+      ],
+      "var": [
+        {
+          "em": "when it's done",
+          "aceita": [
+            "when it's over",
+            "when it ends"
+          ]
+        }
+      ]
+    }
+  ]
+}

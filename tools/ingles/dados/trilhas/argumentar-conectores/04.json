@@ -1,0 +1,225 @@
+{
+  "id": "argumentar-conectores.por-um-lado-por-outro",
+  "trilha": "argumentar-conectores",
+  "nome": "Por um lado, por outro",
+  "emoji": "🪙",
+  "cena": "No debate sobre remoto x presencial, você apresenta os dois lados antes de opinar.",
+  "resumo": "Pesar prós e contras com on the one hand... on the other hand.",
+  "fechamento": false,
+  "novos": [
+    "on the one hand",
+    "on the other hand",
+    "pros and cons",
+    "four-day week"
+  ],
+  "apoio": [
+    "save time",
+    "commute",
+    "miss"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Por um lado... por outro"
+    },
+    {
+      "t": "p",
+      "c": "**On the one hand,** abre o primeiro lado; **On the other hand,** abre o segundo. Na fala, cada lado costuma ser uma frase própria."
+    },
+    {
+      "t": "warn",
+      "c": "Não: in the other hand / by other side. E economizar tempo = save time (não: economize time)."
+    },
+    {
+      "t": "ex",
+      "c": "What are the pros and cons of a four-day week?\nQuais são os prós e contras de uma semana de quatro dias?"
+    }
+  ],
+  "imagem": "⚖️🏠🏢",
+  "visualizacao": "Na sala de reunião de Austin, a Sarah escreve \"prós\" e \"contras\" no quadro branco. Você segura a caneta, olha as duas colunas e respira antes de falar.",
+  "foto_busca": "whiteboard meeting room team discussion",
+  "trechos": [
+    {
+      "id": "f-7a7759",
+      "quem": "sarah",
+      "cod": "Let's talk about the pros and cons of remote work.",
+      "dica": "Vamos falar dos prós e contras do trabalho remoto.",
+      "img": "👍👎🏠",
+      "alvo": "pros and cons",
+      "alvo_pt": "prós e contras",
+      "conceito": "remote work em geral, sem the (artigo zero).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b7f4e2",
+      "quem": "voce",
+      "cod": "On the one hand, remote work saves time.",
+      "dica": "Por um lado, o trabalho remoto economiza tempo.",
+      "img": "🏠⏳👍",
+      "alvo": "On the one hand",
+      "alvo_pt": "Por um lado",
+      "conceito": "economiza tempo = saves time (não: economizes time).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR21",
+        "BR02"
+      ],
+      "armadilhas": [
+        "the",
+        "save",
+        "economizes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3f8401",
+      "quem": "voce",
+      "contexto": "f-b7f4e2",
+      "cod": "On the other hand, it can feel lonely.",
+      "dica": "Por outro lado, pode ser solitário.",
+      "img": "🧍💭",
+      "alvo": "On the other hand",
+      "alvo_pt": "Por outro lado",
+      "conceito": "can para possibilidade geral; o sujeito it é obrigatório.",
+      "var": [
+        {
+          "em": "feel",
+          "aceita": [
+            "be"
+          ]
+        },
+        {
+          "em": "can",
+          "aceita": [
+            "could"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "in",
+        "side"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3012c9",
+      "quem": "mike",
+      "cod": "On the one hand, I miss seeing people face-to-face.",
+      "dica": "Por um lado, sinto falta de ver as pessoas pessoalmente.",
+      "img": "👥🤝",
+      "alvo": "On the one hand",
+      "alvo_pt": "Por um lado",
+      "conceito": "sentir falta de + verbo = miss + -ing; face-to-face = pessoalmente.",
+      "var": [
+        {
+          "em": "face-to-face",
+          "aceita": [
+            "in person"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8ac07e",
+      "quem": "mike",
+      "contexto": "f-3012c9",
+      "cod": "On the other hand, I don't miss the commute at all.",
+      "dica": "Por outro lado, não sinto nenhuma falta do trajeto.",
+      "img": "🚗🚫",
+      "alvo": "On the other hand",
+      "alvo_pt": "Por outro lado",
+      "conceito": "not... at all = nem um pouco, nenhuma falta.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cda193",
+      "quem": "ana",
+      "cod": "Some companies are trying a four-day week.",
+      "dica": "Algumas empresas estão testando a semana de quatro dias.",
+      "img": "🗓️🏖️😎",
+      "alvo": "four-day week",
+      "alvo_pt": "semana de quatro dias",
+      "conceito": "four-day week: o número vira adjetivo com hífen e sem -s (não: four-days week).",
+      "var": [
+        {
+          "em": "trying",
+          "aceita": [
+            "testing"
+          ]
+        },
+        {
+          "em": "a four-day week",
+          "aceita": [
+            "the four-day week"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "four-days"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8b716b",
+      "quem": "sarah",
+      "contexto": "f-cda193",
+      "cod": "What are the pros and cons of a four-day week?",
+      "dica": "Quais são os prós e contras de uma semana de quatro dias?",
+      "img": "🤔⚖️",
+      "alvo": "pros and cons",
+      "alvo_pt": "prós e contras",
+      "conceito": "pros and cons of = prós e contras de.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-239d05",
+      "quem": "mike",
+      "contexto": "f-8b716b",
+      "cod": "A four-day week doesn't work for every team.",
+      "dica": "Semana de quatro dias não funciona para todo time.",
+      "img": "🗓️❌👥",
+      "alvo": "four-day week",
+      "alvo_pt": "Semana de quatro dias",
+      "conceito": "doesn't work: negativa com does na 3ª pessoa.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "not",
+        "works"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

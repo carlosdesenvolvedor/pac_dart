@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
+import 'banco_arcade.dart';
+
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
 import '../../ranking/presentation/ranking_cubit.dart';
@@ -498,7 +500,7 @@ class _TurismoPageState extends State<TurismoPage>
       children: [
         CabecalhoJogo(
           rotulo: 'ARCADE · DIGITAÇÃO',
-          titulo: '🏎️ Dart Turismo',
+          titulo: '🏎️ ${BancoArcade.linguagem} Turismo',
           chips: [
             ChipPlacar('MOEDAS', '🪙 ${_campeonato.moedas}', cor: Mixart.brand),
             ChipPlacar('MEDALHAS', '${_campeonato.totalMedalhas}/${pistasGt.length}'),

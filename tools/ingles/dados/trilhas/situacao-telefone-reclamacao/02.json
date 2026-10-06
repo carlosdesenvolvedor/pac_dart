@@ -1,0 +1,218 @@
+{
+  "id": "situacao-telefone-reclamacao.cobranca-errada",
+  "trilha": "situacao-telefone-reclamacao",
+  "nome": "Cobrança errada",
+  "emoji": "💳",
+  "cena": "Você liga para a loja online que cobrou o mesmo pedido duas vezes no seu cartão.",
+  "resumo": "Contestar uma cobrança em dobro e pedir o reembolso, não crédito na loja.",
+  "fechamento": false,
+  "novos": [
+    "store credit",
+    "be charged (ser cobrado)",
+    "billing"
+  ],
+  "apoio": [
+    "refund (reembolso)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Cobrança errada"
+    },
+    {
+      "t": "p",
+      "c": "**be charged** = ser cobrado: I was charged twice. **billing** = cobrança, o setor que cuida das contas. **store credit** = crédito na loja; **refund** = reembolso, o dinheiro de volta."
+    },
+    {
+      "t": "warn",
+      "c": "Fui cobrado = **I was charged** (passiva): quem paga vira o sujeito. Nada de \"I charged\"."
+    },
+    {
+      "t": "tip",
+      "c": "Estou acostumado a + verbo = **I'm used to** + -ing: I'm used to paying online."
+    },
+    {
+      "t": "ex",
+      "c": "I was charged twice for the same order.\nFui cobrado duas vezes pelo mesmo pedido."
+    }
+  ],
+  "imagem": "💳🧾📞",
+  "visualizacao": "Você abre o app do banco e vê duas cobranças iguais da mesma loja. Liga para o atendimento com a fatura do cartão aberta na tela do notebook.",
+  "foto_busca": "credit card bill phone call",
+  "trechos": [
+    {
+      "id": "f-f7d9ce",
+      "quem": "voce",
+      "cod": "Hi, I was charged twice for the same order.",
+      "dica": "Oi, fui cobrado duas vezes pelo mesmo pedido.",
+      "pt_f": "Oi, fui cobrada duas vezes pelo mesmo pedido.",
+      "img": "💳💳😠",
+      "alvo": "was charged",
+      "alvo_pt": "fui cobrado",
+      "conceito": "Fui cobrado = I was charged: passiva com be, como em português.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a01b41",
+      "quem": "atendente",
+      "contexto": "f-f7d9ce",
+      "cod": "I'm sorry about that. Let me transfer you to our billing department.",
+      "dica": "Sinto muito por isso. Vou transferir você para o nosso setor de cobrança.",
+      "img": "🔀🏢🧾",
+      "alvo": "billing department",
+      "alvo_pt": "setor de cobrança",
+      "conceito": "billing = cobrança, faturamento: o setor que cuida das contas.",
+      "var": [
+        {
+          "em": "Let me transfer you",
+          "aceita": [
+            "I'll transfer you",
+            "I will transfer you"
+          ]
+        },
+        {
+          "em": "about that",
+          "aceita": [
+            "for that"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-428c07",
+      "quem": "atendente",
+      "cod": "I can see that you were charged twice on Monday.",
+      "dica": "Estou vendo que você foi cobrado duas vezes na segunda-feira.",
+      "pt_f": "Estou vendo que você foi cobrada duas vezes na segunda-feira.",
+      "img": "🧾🔍📅",
+      "alvo": "were charged",
+      "alvo_pt": "foi cobrado",
+      "conceito": "Na segunda-feira = on Monday (dia da semana pede on).",
+      "registro": "formal",
+      "interferencias": [
+        "BR58",
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I can see",
+          "aceita": [
+            "I see"
+          ]
+        }
+      ],
+      "opcional": [
+        "that"
+      ]
+    },
+    {
+      "id": "f-936e9f",
+      "quem": "voce",
+      "contexto": "f-428c07",
+      "cod": "Right. I'm used to paying online, but I've never been charged twice.",
+      "dica": "Isso. Estou acostumado a pagar online, mas nunca fui cobrado duas vezes.",
+      "pt_f": "Isso. Estou acostumada a pagar online, mas nunca fui cobrada duas vezes.",
+      "img": "💻🛒🤔",
+      "alvo": "been charged",
+      "alvo_pt": "fui cobrado",
+      "conceito": "be used to + -ing = estar acostumado a (não: used to pay, que é costumava).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR49",
+        "BR27"
+      ],
+      "armadilhas": [
+        "pay"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-084fab",
+      "quem": "atendente",
+      "cod": "We can give you store credit for the second charge.",
+      "dica": "Podemos te dar crédito na loja pela segunda cobrança.",
+      "img": "🏬🎟️",
+      "alvo": "store credit",
+      "alvo_pt": "crédito na loja",
+      "conceito": "store credit = crédito para gastar na própria loja; refund = dinheiro de volta.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e8901e",
+      "quem": "voce",
+      "contexto": "f-084fab",
+      "cod": "I'd like a refund, not store credit.",
+      "dica": "Eu gostaria do reembolso, não de crédito na loja.",
+      "img": "💵↩️",
+      "alvo": "store credit",
+      "alvo_pt": "crédito na loja",
+      "conceito": "refund x store credit: o primeiro devolve o dinheiro, o segundo não.",
+      "var": [
+        {
+          "em": "a refund",
+          "aceita": [
+            "the refund",
+            "my refund"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b64bcf",
+      "quem": "atendente",
+      "contexto": "f-e8901e",
+      "cod": "No problem. Our billing team will process the refund today.",
+      "dica": "Sem problema. A nossa equipe de cobrança vai processar o reembolso hoje.",
+      "img": "👩‍💼💵📆",
+      "alvo": "billing team",
+      "alvo_pt": "equipe de cobrança",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-66d6d1",
+      "quem": "voce",
+      "contexto": "f-b64bcf",
+      "cod": "Great. I just don't want to get charged again next month.",
+      "dica": "Ótimo. Só não quero ser cobrado de novo no mês que vem.",
+      "pt_f": "Ótimo. Só não quero ser cobrada de novo no mês que vem.",
+      "img": "🗓️💳🚫",
+      "alvo": "get charged",
+      "alvo_pt": "ser cobrado",
+      "conceito": "get charged = ser cobrado (get + particípio é comum na fala).",
+      "var": [
+        {
+          "em": "get charged",
+          "aceita": [
+            "be charged"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

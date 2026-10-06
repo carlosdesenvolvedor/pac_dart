@@ -1,0 +1,281 @@
+{
+  "id": "discurso-indireto.ela-disse-que-estava-cansada",
+  "trilha": "discurso-indireto",
+  "nome": "Ela disse que estava cansada",
+  "emoji": "💬",
+  "cena": "No fim da manhã, numa chamada, você passa ao Mike os recados do que a Sarah, a Ana e um cliente disseram.",
+  "resumo": "Relatar o que alguém disse com said (that) e o recuo do presente para o passado (is → was, look → looked).",
+  "fechamento": false,
+  "novos": [
+    "said that",
+    "happy with",
+    "the colors",
+    "mention",
+    "upset"
+  ],
+  "apoio": [
+    "in a meeting"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ela disse que...: said (that)"
+    },
+    {
+      "t": "p",
+      "c": "Para contar o que alguém disse: **said (that)** + frase, e o tempo recua um passo: is → **was**, are → **were**, looks → **looked**. O that pode cair na fala."
+    },
+    {
+      "t": "warn",
+      "c": "said não leva pessoa logo depois: She said she was busy (não: She said me...)."
+    },
+    {
+      "t": "ex",
+      "c": "Sarah said she was tired.\nA Sarah disse que estava cansada."
+    }
+  ],
+  "imagem": "💬📝💻",
+  "visualizacao": "Fim da manhã, chamada de vídeo com o Mike. Do lado do teclado, um papel com os recados da Sarah, da Ana e do cliente; você lê um por um enquanto ele toma café.",
+  "foto_busca": "video call laptop notes",
+  "trechos": [
+    {
+      "id": "f-43606b",
+      "quem": "voce",
+      "cod": "Sarah said that she was busy.",
+      "dica": "A Sarah disse que estava ocupada.",
+      "img": "👩‍💼📆",
+      "alvo": "said that",
+      "alvo_pt": "disse que",
+      "conceito": "No relato, is vira was: She said (that) she was busy.",
+      "opcional": [
+        "that"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "me",
+        "is"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2644333,
+        "en_autor": "CK",
+        "pt_id": 5000705,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → Sarah; he → she (original: \"Tom said that he was busy.\"); PT: Tom → A Sarah; ocupado → ocupada (original: \"Tom disse que estava ocupado.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-182de0",
+      "quem": "voce",
+      "cod": "The client said that the new design looked great.",
+      "dica": "O cliente disse que o design novo estava ótimo.",
+      "img": "🎨👍",
+      "alvo": "said that",
+      "alvo_pt": "disse que",
+      "conceito": "looks vira looked: no relato, o tempo recua um passo.",
+      "var": [
+        {
+          "em": "looked",
+          "aceita": [
+            "was"
+          ]
+        }
+      ],
+      "opcional": [
+        "that"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "looks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f9f7b7",
+      "quem": "mike",
+      "contexto": "f-182de0",
+      "cod": "Great! Did he like the colors, too?",
+      "dica": "Ótimo! Ele gostou das cores também?",
+      "img": "🎨❓",
+      "alvo": "the colors",
+      "alvo_pt": "das cores",
+      "conceito": "color, sem u, é a grafia americana.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-39c4b5",
+      "quem": "voce",
+      "contexto": "f-f9f7b7",
+      "cod": "Not really. He said the colors were a little dark.",
+      "dica": "Não muito. Ele disse que as cores estavam um pouco escuras.",
+      "img": "🎨🌑",
+      "alvo": "the colors",
+      "alvo_pt": "as cores",
+      "conceito": "are vira were no relato: The colors are dark → he said the colors were dark.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "are"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8995bb",
+      "quem": "voce",
+      "cod": "And Ana said she wasn't happy with the logo.",
+      "dica": "E a Ana disse que não estava feliz com o logo.",
+      "img": "😕🖼️",
+      "alvo": "happy with",
+      "alvo_pt": "feliz com",
+      "conceito": "Feliz com = happy with. isn't vira wasn't no relato.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "me",
+        "isn't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9ff591",
+      "quem": "mike",
+      "contexto": "f-8995bb",
+      "cod": "Is she upset about it?",
+      "dica": "Ela está chateada com isso?",
+      "img": "😤❓",
+      "alvo": "upset",
+      "alvo_pt": "chateada",
+      "conceito": "Chateado = upset; com isso = about it (it obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "about it",
+          "aceita": [
+            "about that"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-36c00e",
+      "quem": "voce",
+      "contexto": "f-9ff591",
+      "cod": "Yes, she's pretty upset.",
+      "dica": "Está, sim. Ela está bem chateada.",
+      "img": "😞👩",
+      "alvo": "upset",
+      "alvo_pt": "chateada",
+      "var": [
+        {
+          "em": "pretty",
+          "aceita": [
+            "really",
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2273364,
+        "en_autor": "CK",
+        "pt_id": 3455527,
+        "pt_autor": "piterkeo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom is → Yes, she's (original: \"Tom is pretty upset.\"); PT: Tom está → Está, sim. Ela está; chateado → chateada (original: \"Tom está bem chateado.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-aee8e7",
+      "quem": "mike",
+      "cod": "Did Sarah mention the deadline?",
+      "dica": "A Sarah mencionou o prazo?",
+      "img": "⏰🗣️",
+      "alvo": "mention",
+      "alvo_pt": "mencionou",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e6ae37",
+      "quem": "voce",
+      "contexto": "f-aee8e7",
+      "cod": "No, she didn't mention it.",
+      "dica": "Não, ela não mencionou.",
+      "img": "🤐📅",
+      "alvo": "mention",
+      "alvo_pt": "mencionou",
+      "conceito": "Objeto obrigatório: didn't mention it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2272417,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → No, she (original: \"Tom didn't mention it.\"); PT reescrito (original: \"Tom não o mencionou.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e9b6a8",
+      "quem": "voce",
+      "cod": "Oh, and the client said he was happy with our work.",
+      "dica": "Ah, e o cliente disse que estava feliz com o nosso trabalho.",
+      "img": "😊🤝",
+      "alvo": "happy with",
+      "alvo_pt": "feliz com",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3434168,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom said that he was happy → Oh, and the client said he was happy with our work (original: \"Tom said that he was happy.\"); PT reescrito (original: \"Tom disse que estava feliz.\")",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "id": "deducao-perguntas-indiretas.cade-o-mike",
+  "trilha": "deducao-perguntas-indiretas",
+  "nome": "Cadê o Mike?",
+  "emoji": "🔍",
+  "cena": "O Mike não responde há duas horas: você deduz por quê e procura por ele no prédio novo.",
+  "resumo": "Juntar dedução (must, might, can't), perguntas indiretas e a preposição no fim numa busca pelo prédio.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Juntando tudo"
+    },
+    {
+      "t": "p",
+      "c": "Deduzir: **must be / might be / can't be**. Perguntar com educação: **Do you know... / Could you tell me...** com ordem normal. E a preposição no fim: Which floor are they **on**?"
+    },
+    {
+      "t": "warn",
+      "c": "Não: Do you know which room is Mike in? Sim: Do you know which room Mike is in? Ordem normal e o in no fim."
+    },
+    {
+      "t": "ex",
+      "c": "He can't be in a meeting. His calendar is empty.\nEle não pode estar numa reunião. A agenda dele está vazia."
+    }
+  ],
+  "imagem": "🔍🏢📵",
+  "visualizacao": "Duas da tarde no prédio novo. O chat do Mike está em silêncio há duas horas, a recepção está cheia e você sobe de andar em andar procurando por ele.",
+  "foto_busca": "modern office building hallway",
+  "trechos": [
+    {
+      "id": "f-ffd9c2",
+      "quem": "voce",
+      "cod": "Mike isn't answering. He must be in a meeting.",
+      "dica": "O Mike não está respondendo. Ele deve estar numa reunião.",
+      "img": "📵👥",
+      "alvo": "must be",
+      "alvo_pt": "deve estar",
+      "registro": "informal",
+      "armadilhas": [
+        "should"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Mike isn't",
+          "aceita": [
+            "Mike's not"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ed1a40",
+      "quem": "ana",
+      "contexto": "f-ffd9c2",
+      "cod": "He can't be in a meeting. His calendar is empty.",
+      "dica": "Ele não pode estar numa reunião. A agenda dele está vazia.",
+      "img": "📅🚫👥",
+      "alvo": "can't be",
+      "alvo_pt": "não pode estar",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "calendar",
+          "aceita": [
+            "schedule"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-30e521",
+      "quem": "voce",
+      "contexto": "f-ed1a40",
+      "cod": "Then he might be at lunch.",
+      "dica": "Então talvez ele esteja almoçando.",
+      "img": "🥪🤷",
+      "alvo": "might be",
+      "alvo_pt": "talvez ele esteja",
+      "var": [
+        {
+          "em": "at lunch",
+          "aceita": [
+            "having lunch",
+            "eating lunch"
+          ]
+        },
+        {
+          "em": "Then",
+          "aceita": [
+            "So"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6880f0",
+      "quem": "voce",
+      "cod": "Excuse me, do you know which room Mike is in?",
+      "dica": "Com licença, você sabe em que sala o Mike está?",
+      "img": "🚪🔎",
+      "alvo": "which room Mike is in",
+      "alvo_pt": "em que sala o Mike está",
+      "conceito": "Pergunta indireta com preposição no fim: which room Mike is in.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR50",
+        "BR51"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "which room",
+          "aceita": [
+            "what room"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-819622",
+      "quem": "recepcionista",
+      "contexto": "f-6880f0",
+      "cod": "Which team is he on?",
+      "dica": "Ele é de qual time?",
+      "img": "👥❔",
+      "alvo": "Which team is he on",
+      "alvo_pt": "Ele é de qual time",
+      "var": [
+        {
+          "em": "Which",
+          "aceita": [
+            "What"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR51"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1487059,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: are you → is he (original: \"Which team are you on?\"); PT reescrito (original: \"Em que time você está?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-77193d",
+      "quem": "voce",
+      "contexto": "f-819622",
+      "cod": "The mobile team. Could you tell me which floor they're on?",
+      "dica": "O time de mobile. Você poderia me dizer em que andar eles estão?",
+      "img": "📱🛗",
+      "alvo": "Could you tell me",
+      "alvo_pt": "Você poderia me dizer",
+      "registro": "neutro",
+      "interferencias": [
+        "BR50",
+        "BR51"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "which floor",
+          "aceita": [
+            "what floor"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b63ba8",
+      "quem": "recepcionista",
+      "contexto": "f-77193d",
+      "cod": "They're on the fourth floor, but I'm not sure if Mike is here today.",
+      "dica": "Eles estão no quarto andar, mas não tenho certeza se o Mike está aqui hoje.",
+      "img": "🏢🤔",
+      "alvo": "I'm not sure if",
+      "alvo_pt": "não tenho certeza se",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "if",
+          "aceita": [
+            "whether"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-282cec",
+      "quem": "voce",
+      "cod": "Hi! Do you know where Mike's desk is?",
+      "dica": "Oi! Você sabe onde fica a mesa do Mike?",
+      "img": "🖥️🪑",
+      "alvo": "Do you know where",
+      "alvo_pt": "Você sabe onde",
+      "registro": "informal",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5268a8",
+      "quem": "dev-novo",
+      "contexto": "f-282cec",
+      "cod": "Sorry, I'm new here. I don't know who Mike is.",
+      "dica": "Desculpa, sou novo aqui. Não sei quem é o Mike.",
+      "img": "🙋‍♂️❓",
+      "alvo": "who Mike is",
+      "alvo_pt": "quem é o Mike",
+      "registro": "informal",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia",
+      "conceito": "Não sei quem é = I don't know who + sujeito + is (não: who is Mike)."
+    },
+    {
+      "id": "f-84127c",
+      "quem": "mike",
+      "cod": "Sorry, my phone died. What did you want to talk about?",
+      "dica": "Desculpa, meu celular descarregou. Você queria falar sobre o quê?",
+      "img": "🔋🗣️",
+      "alvo": "talk about",
+      "alvo_pt": "falar sobre",
+      "conceito": "Sobre o quê? = What... about? com o about no fim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

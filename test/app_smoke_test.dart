@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pac_dart/core/linguagem/linguagem.dart';
 import 'package:pac_dart/core/theme/mixart.dart';
 import 'package:pac_dart/features/auth/data/auth_repository.dart';
 import 'package:pac_dart/features/auth/domain/app_user.dart';
@@ -38,6 +39,7 @@ void main() {
       await tester.pumpWidget(PacDartApp(
         authCubitOverride: AuthCubit(_FakeAuthRepo()),
         progressoBuilder: (_) => LocalProgressoRepository(),
+        linguagemInicial: Linguagem.dart,
       ));
       await Future<void>.delayed(const Duration(milliseconds: 100));
       await tester.pump(); // aplica o login → cria o CursoBloc

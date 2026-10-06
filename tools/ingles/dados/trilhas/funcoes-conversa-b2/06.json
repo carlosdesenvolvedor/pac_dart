@@ -1,0 +1,167 @@
+{
+  "id": "funcoes-conversa-b2.cena-negociar-e-reagir",
+  "trilha": "funcoes-conversa-b2",
+  "nome": "Cena: negociar e reagir",
+  "emoji": "🗯️",
+  "cena": "Numa reunião tensa sobre o prazo da migração, você especula, negocia e reage às propostas.",
+  "resumo": "Especular, ganhar tempo, dar a palavra, negociar e reagir numa reunião só, sem itens novos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "a difficult question to answer",
+    "chances are",
+    "let's hear what",
+    "off the top of my head",
+    "what makes you say that",
+    "meet halfway",
+    "fair enough",
+    "I could live with that",
+    "no way"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Reunião tensa, do começo ao fim"
+    },
+    {
+      "t": "p",
+      "c": "Ganhar tempo (**That's a difficult question to answer**), especular (**chances are**), dar a palavra (**Let's hear what...**), pedir o porquê (**What makes you say that?**), negociar (**meet halfway**) e aceitar (**Fair enough**)."
+    },
+    {
+      "t": "warn",
+      "c": "Dentro da frase, ordem normal: Let's hear what Mike **has** to say (não: what does Mike have to say)."
+    },
+    {
+      "t": "ex",
+      "c": "Fair enough. I could live with that if the scope stays the same.\nJusto. Isso eu consigo aceitar, se o escopo continuar o mesmo."
+    }
+  ],
+  "imagem": "⏳🤝🗯️",
+  "visualizacao": "A reunião sobre o prazo começa tensa: a Sarah olha o cronograma, o Mike cruza os braços e todo mundo espera você falar primeiro.",
+  "foto_busca": "tense business meeting deadline",
+  "trechos": [
+    {
+      "id": "f-b58ee1",
+      "quem": "sarah",
+      "cod": "How long do you think the migration will take?",
+      "dica": "Quanto tempo você acha que a migração vai levar?",
+      "img": "⏳🗄️❓",
+      "alvo": "How long do you think",
+      "alvo_pt": "Quanto tempo você acha",
+      "conceito": "do you think vem logo depois de How long; o resto fica em ordem normal.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR50",
+        "BR06"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cd1fd3",
+      "quem": "voce",
+      "contexto": "f-b58ee1",
+      "cod": "That's a difficult question to answer, but chances are we'll need more time.",
+      "dica": "Essa é uma pergunta difícil de responder, mas o mais provável é que a gente precise de mais tempo.",
+      "img": "🤔⏳➕",
+      "alvo": "chances are",
+      "alvo_pt": "o mais provável é que",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d42607",
+      "quem": "voce",
+      "cod": "Let's hear what Mike has to say before we decide.",
+      "dica": "Vamos ouvir o que o Mike tem a dizer antes de a gente decidir.",
+      "img": "👂🧑‍💻⚖️",
+      "alvo": "Let's hear what",
+      "alvo_pt": "Vamos ouvir o que",
+      "registro": "neutro",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "does"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-61d48b",
+      "quem": "mike",
+      "contexto": "f-d42607",
+      "cod": "Off the top of my head, I'd say six weeks, not four.",
+      "dica": "Assim de cabeça, eu diria seis semanas, não quatro.",
+      "img": "🧠📅✋",
+      "alvo": "Off the top of my head",
+      "alvo_pt": "Assim de cabeça",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-75dfd4",
+      "quem": "sarah",
+      "contexto": "f-61d48b",
+      "cod": "Six weeks? What makes you say that?",
+      "dica": "Seis semanas? O que te faz dizer isso?",
+      "img": "😳❓📆",
+      "alvo": "What makes you say that",
+      "alvo_pt": "O que te faz dizer isso",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c8bb64",
+      "quem": "voce",
+      "contexto": "The old database has a lot of hidden dependencies.",
+      "cod": "How about we meet halfway and ship the basic version in five weeks?",
+      "dica": "Que tal a gente chegar num meio-termo e entregar a versão básica em cinco semanas?",
+      "img": "🤝📦📅",
+      "alvo": "meet halfway",
+      "alvo_pt": "chegar num meio-termo",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2057d5",
+      "quem": "sarah",
+      "contexto": "f-c8bb64",
+      "cod": "Fair enough. I could live with that if the scope stays the same.",
+      "dica": "Justo. Isso eu consigo aceitar, se o escopo continuar o mesmo.",
+      "img": "⚖️👌📋",
+      "alvo": "I could live with that",
+      "alvo_pt": "Isso eu consigo aceitar",
+      "conceito": "the scope = it: stays com -s.",
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR28"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-66e6cc",
+      "quem": "mike",
+      "contexto": "And the client just agreed to five weeks.",
+      "cod": "No way! That was fast.",
+      "dica": "Mentira! Essa foi rápida.",
+      "img": "😲⚡🎉",
+      "alvo": "No way",
+      "alvo_pt": "Mentira",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

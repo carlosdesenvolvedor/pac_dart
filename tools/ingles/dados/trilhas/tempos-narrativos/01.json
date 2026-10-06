@@ -1,0 +1,291 @@
+{
+  "id": "tempos-narrativos.quando-cheguei-ja-tinha-saido",
+  "trilha": "tempos-narrativos",
+  "nome": "Quando cheguei, já tinha saído",
+  "emoji": "🛫",
+  "cena": "Na call de segunda, o Mike pergunta da sua viagem de volta, e você conta o atraso, a conexão perdida e a corrida no aeroporto.",
+  "resumo": "Contar que algo já tinha acontecido antes de outro fato do passado: had already + particípio.",
+  "fechamento": false,
+  "novos": [
+    "had already",
+    "connecting flight",
+    "security",
+    "boarding",
+    "land"
+  ],
+  "apoio": [
+    "take off (avião)",
+    "terminal"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Já tinha saído: had + particípio"
+    },
+    {
+      "t": "p",
+      "c": "Quando um fato do passado aconteceu **antes** de outro, use **had + particípio** (past perfect). O fato mais recente fica no passado simples."
+    },
+    {
+      "t": "ex",
+      "c": "It had already left when we landed.\nJá tinha saído quando a gente pousou."
+    },
+    {
+      "t": "tip",
+      "c": "**já tinha** + particípio = **had already** + particípio. O had é igual para todas as pessoas."
+    },
+    {
+      "t": "warn",
+      "c": "Não: When we landed, it already left. A ordem dos fatos pede had: it had already left."
+    }
+  ],
+  "imagem": "✈️🏃🧳",
+  "visualizacao": "Você está no aeroporto com a mala na mão, olhando o painel de voos. Anúncios no alto-falante, gente correndo, e o seu voo de conexão já sumiu da tela.",
+  "foto_busca": "airport departures board traveler",
+  "trechos": [
+    {
+      "id": "f-51f2e5",
+      "quem": "voce",
+      "contexto": "How was your trip back?",
+      "cod": "We landed a little behind schedule.",
+      "dica": "A gente pousou um pouco atrasado.",
+      "img": "🛬⏰",
+      "alvo": "landed",
+      "alvo_pt": "pousou",
+      "conceito": "land = pousar. behind schedule = atrasado, fora do horário previsto.",
+      "var": [
+        {
+          "em": "behind schedule",
+          "aceita": [
+            "late"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "landing",
+        "laned"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 9078036,
+        "en_autor": "CK",
+        "pt_id": 9119708,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN igual ao original; PT ajustado: Pousamos → A gente pousou (registro informal da cena)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-54ebed",
+      "quem": "mike",
+      "contexto": "f-51f2e5",
+      "cod": "Oh no! Did you miss your connecting flight?",
+      "dica": "Ah, não! Você perdeu o seu voo de conexão?",
+      "img": "✈️🔗❓",
+      "alvo": "connecting flight",
+      "alvo_pt": "voo de conexão",
+      "conceito": "connecting flight = voo de conexão. Perder (transporte) = miss.",
+      "registro": "informal",
+      "interferencias": [
+        "BR34",
+        "BR06"
+      ],
+      "armadilhas": [
+        "lose",
+        "lost",
+        "connection flight"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-deafe3",
+      "quem": "voce",
+      "contexto": "f-54ebed",
+      "cod": "Yes. It had already left when we landed.",
+      "dica": "Perdi. Já tinha saído quando a gente pousou.",
+      "img": "🛫👋⌛",
+      "alvo": "had already",
+      "alvo_pt": "Já tinha",
+      "lit": "[lit.: ele tinha já saído]",
+      "conceito": "Primeiro o voo saiu (had left), depois a gente pousou (landed).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "already left",
+        "has already"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-533e93",
+      "quem": "voce",
+      "cod": "But I got a seat on the next connecting flight.",
+      "dica": "Mas consegui um lugar no próximo voo de conexão.",
+      "img": "💺✈️🙂",
+      "alvo": "connecting flight",
+      "alvo_pt": "voo de conexão",
+      "conceito": "got a seat = consegui um lugar. next = próximo.",
+      "registro": "informal",
+      "armadilhas": [
+        "place",
+        "connection flight"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1bf3ed",
+      "quem": "voce",
+      "cod": "I had already checked in, and the line at security was short.",
+      "dica": "Eu já tinha feito o check-in, e a fila na segurança estava pequena.",
+      "img": "🧳🔍👍",
+      "alvo": "security",
+      "alvo_pt": "segurança",
+      "conceito": "security = a segurança, o raio-x do aeroporto. A fila (EUA) = the line.",
+      "var": [
+        {
+          "em": "short",
+          "aceita": [
+            "small"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "the security",
+        "queue",
+        "safety"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-118b62",
+      "quem": "mike",
+      "contexto": "f-1bf3ed",
+      "cod": "Really? I've never seen a short line at security!",
+      "dica": "Sério? Nunca vi fila pequena na segurança!",
+      "img": "😲🔍",
+      "alvo": "at security",
+      "alvo_pt": "na segurança",
+      "conceito": "Nunca vi (até hoje) = I've never seen: present perfect. at security = na segurança.",
+      "var": [
+        {
+          "em": "short",
+          "aceita": [
+            "small"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "in the security",
+        "never saw"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c2826f",
+      "quem": "voce",
+      "contexto": "f-118b62",
+      "cod": "I know! But the boarding gate had already changed.",
+      "dica": "Eu sei! Mas o portão de embarque já tinha mudado.",
+      "img": "🚪🔀✈️",
+      "alvo": "boarding",
+      "alvo_pt": "embarque",
+      "conceito": "boarding = embarque. boarding gate = portão de embarque.",
+      "registro": "informal",
+      "armadilhas": [
+        "has already",
+        "already changed",
+        "embark"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-60aa12",
+      "quem": "voce",
+      "cod": "When I got to the right gate, boarding had already started.",
+      "dica": "Quando cheguei no portão certo, o embarque já tinha começado.",
+      "img": "🏃🚪⏱️",
+      "alvo": "boarding",
+      "alvo_pt": "o embarque",
+      "conceito": "boarding vai sem artigo: boarding had started = o embarque tinha começado.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "the boarding",
+        "has started"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-37bb51",
+      "quem": "voce",
+      "cod": "We finally landed at midnight.",
+      "dica": "A gente finalmente pousou à meia-noite.",
+      "img": "🛬🌙",
+      "alvo": "landed",
+      "alvo_pt": "pousou",
+      "conceito": "at midnight = à meia-noite. finally vem antes do verbo.",
+      "var": [
+        {
+          "em": "We finally landed at midnight",
+          "aceita": [
+            "Finally, we landed at midnight",
+            "We landed at midnight finally"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "in the midnight",
+        "arrived"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-676326",
+      "quem": "voce",
+      "cod": "When I got to the bus stop, the last bus had already left.",
+      "dica": "Quando cheguei ao ponto de ônibus, o último ônibus já tinha saído.",
+      "img": "🚏🚌💨",
+      "alvo": "had already",
+      "alvo_pt": "já tinha",
+      "conceito": "Quando cheguei (got) o ônibus já tinha saído (had left): o had marca o que veio antes.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "already left",
+        "has left"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7818641,
+        "en_autor": "CK",
+        "pt_id": 8547160,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'the bus' → 'the last bus'; PT ajustado (último, saído)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

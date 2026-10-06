@@ -1,0 +1,272 @@
+{
+  "id": "situacao-viagem.na-estacao-passagem-e-horario",
+  "trilha": "situacao-viagem",
+  "nome": "Na estação: passagem e horário",
+  "emoji": "🚆",
+  "cena": "Na viagem a trabalho para conhecer o time de Boston, você compra a passagem de trem na estação.",
+  "resumo": "Comprar passagem e perguntar horário e plataforma: A one-way ticket to Boston, please. / What time does the next train leave?",
+  "fechamento": false,
+  "novos": [
+    "round-trip ticket",
+    "the next train",
+    "platform",
+    "the right platform",
+    "one-way ticket"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Na bilheteria"
+    },
+    {
+      "t": "p",
+      "c": "Só de ida = **one-way ticket**; ida e volta = **round-trip ticket**. Horário de trem vai no presente simples, com does na pergunta: What time **does** the next train **leave**?"
+    },
+    {
+      "t": "ex",
+      "c": "What time does the next train leave?\nA que horas sai o próximo trem?"
+    },
+    {
+      "t": "tip",
+      "c": "Nos anúncios você vai ouvir a quarter after nine (9:15) e a quarter of ten (9:45). Para digitar, use 9:15 e 9:45."
+    },
+    {
+      "t": "warn",
+      "c": "Hora com at: at 9:15. Sai de qual plataforma? = Which platform does it leave from? (o it não some)."
+    }
+  ],
+  "imagem": "🚆🎫🕘",
+  "visualizacao": "Você está na bilheteria de uma estação cheia. O painel de horários pisca, um anúncio ecoa no alto-falante e a atendente espera atrás do vidro.",
+  "foto_busca": "train station ticket counter",
+  "trechos": [
+    {
+      "id": "f-8b7a00",
+      "quem": "voce",
+      "contexto": "Hi! What can I do for you?",
+      "cod": "A one-way ticket to Boston, please.",
+      "dica": "Uma passagem só de ida para Boston, por favor.",
+      "img": "🎫➡️",
+      "alvo": "one-way ticket",
+      "alvo_pt": "passagem só de ida",
+      "conceito": "one-way = só de ida; round-trip = ida e volta (EUA).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR12"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e7786c",
+      "quem": "atendente",
+      "contexto": "f-8b7a00",
+      "cod": "One-way? A round-trip ticket is only $20 more.",
+      "dica": "Só de ida? A passagem de ida e volta custa só 20 dólares a mais.",
+      "img": "🎫🔁💵",
+      "alvo": "round-trip ticket",
+      "alvo_pt": "passagem de ida e volta",
+      "lit": "[lit.: passagem de viagem redonda]",
+      "var": [
+        {
+          "em": "ticket is only",
+          "aceita": [
+            "ticket costs only",
+            "ticket is just"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4ba406",
+      "quem": "voce",
+      "contexto": "f-e7786c",
+      "cod": "No, thanks. I don't need a round-trip ticket.",
+      "dica": "Não, obrigado. Não preciso de passagem de ida e volta.",
+      "img": "🙅🔁",
+      "alvo": "round-trip ticket",
+      "alvo_pt": "passagem de ida e volta",
+      "pt_f": "Não, obrigada. Não preciso de passagem de ida e volta.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07",
+        "BR02"
+      ],
+      "armadilhas": [
+        "not"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-afba74",
+      "quem": "voce",
+      "cod": "What time does the next train leave?",
+      "dica": "A que horas sai o próximo trem?",
+      "img": "🚆⏰❓",
+      "alvo": "the next train",
+      "alvo_pt": "o próximo trem",
+      "conceito": "Horário de transporte: presente simples, com does na pergunta.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "leaves",
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fbeb1e",
+      "quem": "atendente",
+      "contexto": "f-afba74",
+      "cod": "The next train leaves at 9:15.",
+      "dica": "O próximo trem sai às 9h15.",
+      "img": "🚆🕘",
+      "alvo": "The next train",
+      "alvo_pt": "O próximo trem",
+      "conceito": "Hora com at: at 9:15. No anúncio: a quarter after nine.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "leave",
+        "in"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1286887,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'The train' trocado por 'The next train'; 'six' trocado por '9:15'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f69d32",
+      "quem": "voce",
+      "contexto": "f-fbeb1e",
+      "cod": "Which platform does it leave from?",
+      "dica": "Sai de qual plataforma?",
+      "img": "🚉❓",
+      "alvo": "platform",
+      "alvo_pt": "plataforma",
+      "conceito": "O sujeito it não some: Which platform does it leave from?",
+      "var": [
+        {
+          "em": "Which",
+          "aceita": [
+            "What"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-21f5aa",
+      "quem": "atendente",
+      "contexto": "f-f69d32",
+      "cod": "Platform seven. Have a nice trip!",
+      "dica": "Plataforma sete. Boa viagem!",
+      "img": "🚉👋",
+      "alvo": "Platform",
+      "alvo_pt": "Plataforma",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "conceito": "Nos painéis de trem dos EUA, a plataforma às vezes aparece como track (linha).",
+      "var": [
+        {
+          "em": "nice",
+          "aceita": [
+            "good"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4c7c73",
+      "quem": "voce",
+      "cod": "Excuse me, is this the right platform for Boston?",
+      "dica": "Com licença, esta é a plataforma certa para Boston?",
+      "img": "🚉✅❓",
+      "alvo": "the right platform",
+      "alvo_pt": "a plataforma certa",
+      "conceito": "the right = o certo; the wrong = o errado.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-444eb2",
+      "quem": "passageira",
+      "contexto": "f-4c7c73",
+      "cod": "No, the right platform is over there.",
+      "dica": "Não, a plataforma certa é ali.",
+      "img": "👉🚉",
+      "alvo": "the right platform",
+      "alvo_pt": "a plataforma certa",
+      "var": [
+        {
+          "em": "over there",
+          "aceita": [
+            "there"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2249154,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'It's' trocado por 'No, the right platform is'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-862f67",
+      "quem": "voce",
+      "contexto": "What kind of ticket did you buy?",
+      "cod": "I bought a one-way ticket to Boston.",
+      "dica": "Comprei uma passagem só de ida para Boston.",
+      "img": "📱🎫",
+      "alvo": "one-way ticket",
+      "alvo_pt": "passagem só de ida",
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR12"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6529317,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

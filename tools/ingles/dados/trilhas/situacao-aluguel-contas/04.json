@@ -1,0 +1,274 @@
+{
+  "id": "situacao-aluguel-contas.no-banco-e-no-cartao",
+  "trilha": "situacao-aluguel-contas",
+  "nome": "No banco e no cartão",
+  "emoji": "🏦",
+  "cena": "Na agência do banco em Austin e depois no mercado com a Sarah, com o cartão recusado.",
+  "resumo": "Abrir uma conta corrente, perguntar pela taxa de transferência e resolver um cartão recusado.",
+  "fechamento": false,
+  "novos": [
+    "checking account",
+    "declined (recusado)",
+    "transfer"
+  ],
+  "apoio": [
+    "fee"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "No banco"
+    },
+    {
+      "t": "p",
+      "c": "**checking account** = conta corrente. **transfer** = transferência / transferir. **was declined** = foi recusado."
+    },
+    {
+      "t": "warn",
+      "c": "Foi recusado = was declined (passiva). Tem taxa? = Is there a fee? (não: Have a fee?)"
+    },
+    {
+      "t": "ex",
+      "c": "I used to pay everything in cash.\nEu pagava tudo em dinheiro."
+    }
+  ],
+  "imagem": "🏦💳❌",
+  "visualizacao": "Você está no balcão de um banco em Austin, com o passaporte na mão. Mais tarde, no caixa do mercado, a maquininha apita e mostra uma palavra: recusado.",
+  "foto_busca": "bank counter credit card terminal",
+  "trechos": [
+    {
+      "id": "f-84524e",
+      "quem": "voce",
+      "cod": "I need to open a checking account.",
+      "dica": "Preciso abrir uma conta corrente.",
+      "img": "🏦📝",
+      "alvo": "checking account",
+      "alvo_pt": "conta corrente",
+      "conceito": "checking account = conta corrente; savings account = poupança.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9836312,
+        "en_autor": "CK",
+        "pt_id": 11052174,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: bank account → checking account (original: \"I need to open a bank account.\"); PT: conta bancária → conta corrente (original: \"Preciso abrir uma conta bancária.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6ddea4",
+      "quem": "atendente",
+      "contexto": "f-84524e",
+      "cod": "Sure. Our checking account has no monthly fee.",
+      "dica": "Claro. A nossa conta corrente não tem taxa mensal.",
+      "img": "🏦🚫💲",
+      "alvo": "checking account",
+      "alvo_pt": "conta corrente",
+      "conceito": "has: -s da 3ª pessoa (our account = it).",
+      "var": [
+        {
+          "em": "has no monthly fee",
+          "aceita": [
+            "doesn't have a monthly fee"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-912255",
+      "quem": "voce",
+      "cod": "I'm here for work, so I'll need to transfer money from Brazil.",
+      "dica": "Estou aqui a trabalho, então vou precisar transferir dinheiro do Brasil.",
+      "img": "💼💸🇧🇷",
+      "alvo": "transfer",
+      "alvo_pt": "transferir",
+      "conceito": "A trabalho = for work (não: for job). transfer serve para verbo e substantivo.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR40"
+      ],
+      "armadilhas": [
+        "job"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1fed0f",
+      "quem": "voce",
+      "cod": "Is there a fee for international transfers?",
+      "dica": "Tem taxa para transferências internacionais?",
+      "img": "🌎💸❓",
+      "alvo": "transfers",
+      "alvo_pt": "transferências",
+      "conceito": "Tem (existe) = is there: Is there a fee...?",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f155ba",
+      "quem": "atendente",
+      "contexto": "f-1fed0f",
+      "cod": "Yes, it's $15 per transfer.",
+      "dica": "Sim, são 15 dólares por transferência.",
+      "img": "💵🔁",
+      "alvo": "transfer",
+      "alvo_pt": "transferência",
+      "conceito": "por transferência = per transfer.",
+      "var": [
+        {
+          "em": "per transfer",
+          "aceita": [
+            "a transfer",
+            "for each transfer"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e3ca1b",
+      "quem": "caixa",
+      "cod": "Sorry, your card was declined.",
+      "dica": "Desculpa, seu cartão foi recusado.",
+      "img": "💳❌",
+      "alvo": "declined",
+      "alvo_pt": "recusado",
+      "conceito": "Foi recusado = was declined (passiva com be). refused é recusar um pedido ou convite.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "refused"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cf108c",
+      "quem": "voce",
+      "cod": "Could you lend me $30? My card was declined.",
+      "dica": "Você poderia me emprestar 30 dólares? Meu cartão foi recusado.",
+      "img": "🙏💵💳",
+      "alvo": "declined",
+      "alvo_pt": "recusado",
+      "conceito": "me emprestar = lend me (quem dá); borrow é pegar emprestado.",
+      "registro": "informal",
+      "interferencias": [
+        "BR38",
+        "BR58"
+      ],
+      "armadilhas": [
+        "borrow"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6064903,
+        "en_autor": "CK",
+        "pt_id": 7372111,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: thirty dollars → $30; acrescentado 'My card was declined.' (original: \"Could you lend me thirty dollars?\"); PT: trinta → 30; acrescentado 'Meu cartão foi recusado.' (original: \"Você poderia me emprestar trinta dólares?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-88886b",
+      "quem": "sarah",
+      "contexto": "f-cf108c",
+      "cod": "Sure. My card used to get declined all the time when I traveled.",
+      "dica": "Claro. Meu cartão era recusado o tempo todo quando eu viajava.",
+      "img": "✈️💳🔁",
+      "alvo": "declined",
+      "alvo_pt": "recusado",
+      "conceito": "Imperfeito de hábito (era, viajava) = used to. get declined = ser recusado, na fala.",
+      "var": [
+        {
+          "em": "get",
+          "aceita": [
+            "be"
+          ]
+        },
+        {
+          "em": "traveled",
+          "aceita": [
+            "was traveling"
+          ]
+        }
+      ],
+      "blocos": [
+        10
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "use"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c59b4a",
+      "quem": "voce",
+      "cod": "Hi, my new card was declined, but I have money in my checking account.",
+      "dica": "Oi, meu cartão novo foi recusado, mas tenho dinheiro na minha conta corrente.",
+      "img": "📞💳💰",
+      "alvo": "checking account",
+      "alvo_pt": "conta corrente",
+      "conceito": "Dinheiro na conta = money in my account (in, não on).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c44ba9",
+      "quem": "atendente",
+      "contexto": "f-c59b4a",
+      "cod": "I'm sorry. New cards are sometimes declined for security reasons.",
+      "dica": "Sinto muito. Cartões novos às vezes são recusados por motivos de segurança.",
+      "img": "✨💳🔒",
+      "alvo": "declined",
+      "alvo_pt": "recusados",
+      "conceito": "São recusados = are declined: passiva no presente, para o que costuma acontecer.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

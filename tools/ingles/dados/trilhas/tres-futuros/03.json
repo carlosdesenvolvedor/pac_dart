@@ -1,0 +1,259 @@
+{
+  "id": "tres-futuros.te-ligo-mais-tarde-will",
+  "trilha": "tres-futuros",
+  "nome": "Te ligo mais tarde: will",
+  "emoji": "🤙",
+  "cena": "No chat do trabalho, o Mike e a Sarah pedem coisas e você responde na hora o que vai fazer.",
+  "resumo": "Decidir na hora e prometer com I'll, won't e I promise, como no chat do trabalho.",
+  "fechamento": false,
+  "novos": [
+    "won't",
+    "promise",
+    "forget",
+    "get back to you",
+    "remember"
+  ],
+  "apoio": [
+    "I'll",
+    "check (verificar)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Decidi agora / prometo = will"
+    },
+    {
+      "t": "p",
+      "c": "Para decidir na hora ou prometer, use **I'll + verbo**; no negativo, **won't** (= will not). Em português a gente usa o presente ou o \"vou\": \"Te dou um retorno\", \"Não vou me atrasar\"."
+    },
+    {
+      "t": "ex",
+      "c": "I'll check and get back to you.\n(decidi agora) Vou checar e te dou um retorno."
+    },
+    {
+      "t": "ex",
+      "c": "I won't be late.\n(promessa) Não vou me atrasar."
+    },
+    {
+      "t": "warn",
+      "c": "Depois de will e won't, verbo puro (não: I'll to call / I won't to forget)."
+    }
+  ],
+  "imagem": "💬💻🤙",
+  "visualizacao": "Você está no seu home office, fone no ouvido e café do lado. O chat apita sem parar: o Mike e a Sarah pedem coisas e você responde na hora.",
+  "foto_busca": "home office laptop chat",
+  "trechos": [
+    {
+      "id": "f-93a331",
+      "quem": "mike",
+      "cod": "Don't forget the call at nine.",
+      "dica": "Não esquece a chamada das nove.",
+      "img": "📞🕘",
+      "alvo": "forget",
+      "alvo_pt": "esquece",
+      "conceito": "forget = esquecer. Don't + verbo = não + verbo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f0c9c5",
+      "quem": "voce",
+      "contexto": "f-93a331",
+      "cod": "I won't be late.",
+      "dica": "(promessa) Não vou me atrasar.",
+      "img": "⏰👍",
+      "alvo": "won't",
+      "alvo_pt": "Não vou",
+      "conceito": "won't = will not: promessa no negativo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR29",
+        "BR30"
+      ],
+      "armadilhas": [
+        "don't",
+        "not"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2271948,
+        "en_autor": "CK",
+        "pt_id": 4992185,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT: pista (promessa) acrescentada",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8f261e",
+      "quem": "sarah",
+      "cod": "Do you remember the client's name?",
+      "dica": "Você lembra o nome do cliente?",
+      "img": "🤔🧑‍💼",
+      "alvo": "remember",
+      "alvo_pt": "lembra",
+      "conceito": "remember = lembrar (sem me: I remember).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR10"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-36e2db",
+      "quem": "voce",
+      "contexto": "f-8f261e",
+      "cod": "I'll check and get back to you.",
+      "dica": "(decidi agora) Vou checar e te dou um retorno.",
+      "img": "🔍📩",
+      "alvo": "get back to you",
+      "alvo_pt": "te dou um retorno",
+      "lit": "[lit.: volto a você]",
+      "conceito": "check = checar, verificar. get back to you = te dar um retorno depois de verificar.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR29",
+        "BR30"
+      ],
+      "armadilhas": [
+        "to check"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2ba495",
+      "quem": "sarah",
+      "cod": "Remember, Mike needs the file today.",
+      "dica": "Lembra: o Mike precisa do arquivo hoje.",
+      "img": "📁⏰",
+      "alvo": "Remember",
+      "alvo_pt": "Lembra",
+      "conceito": "needs: -s da 3ª pessoa (Mike needs).",
+      "registro": "neutro",
+      "interferencias": [],
+      "armadilhas": [
+        "need"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0d2d0a",
+      "quem": "voce",
+      "contexto": "f-2ba495",
+      "cod": "I'll send it tonight, I promise.",
+      "dica": "Mando hoje à noite, prometo.",
+      "img": "📤🌙🤞",
+      "alvo": "promise",
+      "alvo_pt": "prometo",
+      "conceito": "Promessa: I'll + verbo, I promise. tonight = hoje à noite.",
+      "registro": "informal",
+      "interferencias": [
+        "BR05",
+        "BR18",
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-255e51",
+      "quem": "voce",
+      "contexto": "Are the new icons ready?",
+      "cod": "Let me ask Ana. I'll get back to you later today.",
+      "dica": "(decidi agora) Deixa eu perguntar pra Ana. Te dou um retorno ainda hoje.",
+      "img": "👩‍🎨❓⏳",
+      "alvo": "get back to you",
+      "alvo_pt": "Te dou um retorno",
+      "conceito": "ask Ana = perguntar para a Ana (sem to). later today = ainda hoje.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR29",
+        "BR42"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-63d867",
+      "quem": "voce",
+      "contexto": "We missed you on the call this morning.",
+      "cod": "I promise it won't happen again.",
+      "dica": "Prometo que não vai acontecer de novo.",
+      "img": "🙏🔁🚫",
+      "alvo": "promise",
+      "alvo_pt": "Prometo",
+      "conceito": "I promise + frase com won't: promessa. Sujeito obrigatório: it won't happen.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2361670,
+        "en_autor": "CK",
+        "pt_id": 7854313,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT: 'novamente' trocado por 'de novo' (again = de novo no curso) e 'isso' tirado (it fica só no EN)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-41386c",
+      "quem": "mike",
+      "cod": "Please don't forget Ana's birthday on Friday.",
+      "dica": "Por favor, não esquece o aniversário da Ana na sexta.",
+      "img": "🎂🎉",
+      "alvo": "forget",
+      "alvo_pt": "esquece",
+      "conceito": "Ana's birthday = o aniversário da Ana. on + dia: on Friday.",
+      "registro": "informal",
+      "interferencias": [
+        "BR10",
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c59472",
+      "quem": "voce",
+      "contexto": "f-41386c",
+      "cod": "I won't forget.",
+      "dica": "(promessa) Não vou esquecer.",
+      "img": "🧠✅",
+      "alvo": "won't",
+      "alvo_pt": "Não vou",
+      "conceito": "won't + verbo puro: I won't forget.",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "don't"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2247628,
+        "en_autor": "CK",
+        "pt_id": 4992154,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT: pista (promessa) acrescentada",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

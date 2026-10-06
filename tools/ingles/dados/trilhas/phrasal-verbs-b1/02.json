@@ -1,0 +1,282 @@
+{
+  "id": "phrasal-verbs-b1.acabou-que-era-o-cache",
+  "trilha": "phrasal-verbs-b1",
+  "nome": "Acabou que era o cache",
+  "emoji": "🧩",
+  "cena": "Numa chamada rápida, você conta à Ana como terminou a investigação de um bug e como foi o seu fim de semana.",
+  "resumo": "Contar descobertas e resultados com turn out, end up, come up with e point out.",
+  "fechamento": false,
+  "novos": [
+    "It turned out that",
+    "end up",
+    "come up with",
+    "point out",
+    "turn out"
+  ],
+  "apoio": [
+    "the cache",
+    "the logs",
+    "a simple mistake"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Como terminou: turn out e end up"
+    },
+    {
+      "t": "p",
+      "c": "**It turned out that...** = acabou que, no fim era. **end up + -ing** = acabar fazendo. **turn out** sozinho = sair, dar (o resultado)."
+    },
+    {
+      "t": "p",
+      "c": "**come up with** = bolar, ter a ideia de. **point out** = apontar, chamar atenção para."
+    },
+    {
+      "t": "warn",
+      "c": "Acabou que = It turned out (não: It revealed). Acabei ficando = I ended up staying (não: I finished staying)."
+    },
+    {
+      "t": "ex",
+      "c": "We ended up ordering pizza at the office.\nA gente acabou pedindo pizza no escritório."
+    }
+  ],
+  "imagem": "🐞🔍🍕",
+  "visualizacao": "Sexta de manhã, chamada rápida com a Ana. O log do bug ainda está aberto na sua tela, e você conta, rindo, como tudo terminou.",
+  "foto_busca": "developer explaining laptop coffee",
+  "trechos": [
+    {
+      "id": "f-aed6a3",
+      "quem": "voce",
+      "contexto": "So, what was wrong with the login?",
+      "cod": "It turned out that the bug was in the cache.",
+      "dica": "Acabou que o bug estava no cache.",
+      "img": "🐞🗃️",
+      "alvo": "It turned out that",
+      "alvo_pt": "Acabou que",
+      "lit": "[lit.: resultou que]",
+      "conceito": "It turned out that = acabou que, no fim era (não: It revealed).",
+      "opcional": [
+        "that"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR60",
+        "BR01"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-27ad15",
+      "quem": "voce",
+      "cod": "Mike pointed out a small detail in the logs.",
+      "dica": "O Mike apontou um pequeno detalhe nos logs.",
+      "img": "👉🔎",
+      "alvo": "pointed out",
+      "alvo_pt": "apontou",
+      "conceito": "point out = apontar, chamar atenção para algo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR60",
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0036cd",
+      "quem": "voce",
+      "cod": "It turned out that it was a simple mistake.",
+      "dica": "Acabou que era um erro simples.",
+      "img": "🤦✏️",
+      "alvo": "It turned out that",
+      "alvo_pt": "Acabou que",
+      "conceito": "era = it was: o inglês não deixa o sujeito cair.",
+      "opcional": [
+        "that"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "variacao_de": "f-aed6a3",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a17bdb",
+      "quem": "ana",
+      "cod": "Mike always points out the details nobody else sees.",
+      "dica": "O Mike sempre aponta os detalhes que ninguém mais vê.",
+      "img": "🧐✨",
+      "alvo": "points out",
+      "alvo_pt": "aponta",
+      "conceito": "the details nobody else sees: o that da relativa pode cair.",
+      "registro": "informal",
+      "armadilhas": [
+        "point"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "nobody",
+          "aceita": [
+            "no one"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-162f79",
+      "quem": "voce",
+      "contexto": "How did you fix it?",
+      "cod": "We came up with a simple fix in ten minutes.",
+      "dica": "A gente bolou uma correção simples em dez minutos.",
+      "img": "💡⏱️",
+      "alvo": "came up with",
+      "alvo_pt": "bolou",
+      "conceito": "come up with = bolar, ter a ideia de (não: invent).",
+      "registro": "informal",
+      "interferencias": [
+        "BR60"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0d3da9",
+      "quem": "ana",
+      "cod": "Nice! And the weekend? What did you end up doing?",
+      "dica": "Legal! E o fim de semana? O que você acabou fazendo?",
+      "img": "📅🤷",
+      "alvo": "end up",
+      "alvo_pt": "acabou",
+      "conceito": "end up + -ing = acabar fazendo; a pergunta no passado pede did.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3825145,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → you; + Nice! And the weekend?; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1e84dd",
+      "quem": "voce",
+      "contexto": "f-0d3da9",
+      "cod": "It rained on Saturday, so I ended up staying home.",
+      "dica": "Choveu no sábado, então acabei ficando em casa.",
+      "img": "🌧️🏠",
+      "alvo": "ended up",
+      "alvo_pt": "acabei",
+      "conceito": "acabei ficando = I ended up staying (não: I finished staying). Choveu = it rained.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR60"
+      ],
+      "armadilhas": [
+        "finished"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "staying home",
+          "aceita": [
+            "staying at home"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c9f31b",
+      "quem": "voce",
+      "cod": "Things didn't turn out as I expected.",
+      "dica": "As coisas não saíram como eu esperava.",
+      "img": "📉😕",
+      "alvo": "turn out",
+      "alvo_pt": "saíram",
+      "conceito": "turn out = sair, dar (o resultado).",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6795371,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "did not → didn't; they → I; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "as I expected",
+          "aceita": [
+            "the way I expected"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-612b27",
+      "quem": "voce",
+      "contexto": "I tried a new cake recipe on Sunday.",
+      "cod": "Really? How did it turn out?",
+      "dica": "Sério? E como saiu?",
+      "img": "🎂❓",
+      "alvo": "turn out",
+      "alvo_pt": "saiu",
+      "conceito": "How did it turn out? = como saiu?, como ficou o resultado?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "How did",
+          "aceita": [
+            "And how did"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d03b0a",
+      "quem": "ana",
+      "cod": "We need to come up with a plan for next weekend, then.",
+      "dica": "A gente precisa bolar um plano pro próximo fim de semana, então.",
+      "img": "🗺️💡",
+      "alvo": "come up with",
+      "alvo_pt": "bolar",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3178482,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ for next weekend, then; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

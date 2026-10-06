@@ -1,0 +1,270 @@
+{
+  "id": "quantificadores-incontaveis.nada-na-geladeira-nothing-nobody",
+  "trilha": "quantificadores-incontaveis",
+  "nome": "Nada na geladeira: nothing, nobody",
+  "emoji": "🧊",
+  "cena": "Sábado de manhã, o Lucas, seu irmão, está no seu apartamento: a geladeira está vazia e ninguém foi ao mercado.",
+  "resumo": "Falar de nada, ninguém, alguma coisa e tudo com uma negação só: nothing, nobody, anything, something, everything.",
+  "fechamento": false,
+  "novos": [
+    "nobody",
+    "anything",
+    "fridge",
+    "something",
+    "everything"
+  ],
+  "apoio": [
+    "nothing",
+    "everyone"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Nada, ninguém: uma negação só"
+    },
+    {
+      "t": "p",
+      "c": "O inglês usa **uma** negação por frase: **nothing / nobody** com o verbo afirmativo, ou **don't ... anything**. Em pergunta, **anything**; em afirmação, **something**."
+    },
+    {
+      "t": "ex",
+      "c": "There's nothing in the fridge.\nNão tem nada na geladeira."
+    },
+    {
+      "t": "ex",
+      "c": "We don't have anything for breakfast.\nA gente não tem nada pro café da manhã."
+    },
+    {
+      "t": "warn",
+      "c": "Não: I don't have nothing. Nobody e everything pedem verbo no singular: Nobody drinks..., Everything is..."
+    }
+  ],
+  "imagem": "🧊🛒🍳",
+  "visualizacao": "Sábado de manhã, cozinha silenciosa. O Lucas abre a geladeira, olha para dentro e fecha de novo, decepcionado. Só o cheiro do seu café enche o apartamento.",
+  "foto_busca": "open empty fridge kitchen morning",
+  "trechos": [
+    {
+      "id": "f-828496",
+      "quem": "lucas",
+      "cod": "The fridge is empty.",
+      "dica": "A geladeira está vazia.",
+      "img": "🧊😮",
+      "alvo": "fridge",
+      "alvo_pt": "geladeira",
+      "conceito": "fridge = geladeira (refrigerator é a forma longa).",
+      "registro": "informal",
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3771363,
+        "en_autor": "Hybrid",
+        "pt_id": 5033574,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d8de0a",
+      "quem": "voce",
+      "contexto": "f-828496",
+      "cod": "Nobody went to the grocery store yesterday.",
+      "dica": "Ninguém foi ao mercado ontem.",
+      "img": "🛒🙅",
+      "alvo": "Nobody",
+      "alvo_pt": "Ninguém",
+      "conceito": "Nobody já é negativo: o verbo fica afirmativo (Nobody went).",
+      "registro": "informal",
+      "interferencias": [
+        "BR25"
+      ],
+      "armadilhas": [
+        "didn't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-af4f8c",
+      "quem": "lucas",
+      "contexto": "f-d8de0a",
+      "cod": "So we don't have anything for breakfast?",
+      "dica": "Então a gente não tem nada pro café da manhã?",
+      "img": "🍳❓",
+      "alvo": "anything",
+      "alvo_pt": "nada",
+      "lit": "[lit.: a gente não tem qualquer coisa]",
+      "conceito": "Com don't, nada = anything (uma negação só).",
+      "registro": "informal",
+      "interferencias": [
+        "BR25",
+        "BR07"
+      ],
+      "armadilhas": [
+        "nothing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e93b98",
+      "quem": "voce",
+      "contexto": "f-af4f8c",
+      "cod": "Just coffee. There's nothing in the fridge.",
+      "dica": "Só café. Não tem nada na geladeira.",
+      "img": "☕🧊",
+      "alvo": "fridge",
+      "alvo_pt": "geladeira",
+      "lit": "[lit.: há nada na geladeira]",
+      "conceito": "Tem (existe) = there's; com nothing, o verbo fica afirmativo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR25"
+      ],
+      "armadilhas": [
+        "has",
+        "not"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Just",
+          "aceita": [
+            "Only"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-81200e",
+      "quem": "lucas",
+      "cod": "I need something to eat, not just coffee!",
+      "dica": "Preciso de alguma coisa pra comer, não só de café!",
+      "img": "🍽️😫",
+      "alvo": "something",
+      "alvo_pt": "alguma coisa",
+      "conceito": "Em frase afirmativa, alguma coisa = something.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "just",
+          "aceita": [
+            "only"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-9e85a2",
+      "quem": "voce",
+      "contexto": "f-81200e",
+      "cod": "OK. Let's buy something at the grocery store.",
+      "dica": "Tá bom. Vamos comprar alguma coisa no mercado.",
+      "img": "🛒🛍️",
+      "alvo": "something",
+      "alvo_pt": "alguma coisa",
+      "var": [
+        {
+          "em": "buy",
+          "aceita": [
+            "get"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f0a540",
+      "quem": "lucas",
+      "cod": "Do we need anything else?",
+      "dica": "A gente precisa de mais alguma coisa?",
+      "img": "🧾❓",
+      "alvo": "anything",
+      "alvo_pt": "alguma coisa",
+      "conceito": "Em pergunta, alguma coisa = anything; mais alguma coisa = anything else.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2713055,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "'you guys' trocado por 'we'",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6c58d3",
+      "quem": "voce",
+      "contexto": "f-f0a540",
+      "cod": "We have everything.",
+      "dica": "A gente tem tudo.",
+      "img": "✅🛒",
+      "alvo": "everything",
+      "alvo_pt": "tudo",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2241106,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-dd1c4d",
+      "quem": "lucas",
+      "cod": "Nobody drinks as much coffee as you.",
+      "dica": "Ninguém toma tanto café quanto você.",
+      "img": "☕☕😂",
+      "alvo": "Nobody",
+      "alvo_pt": "Ninguém",
+      "conceito": "Nobody pede verbo de 3ª pessoa: Nobody drinks.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR25"
+      ],
+      "armadilhas": [
+        "drink"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f132ac",
+      "quem": "voce",
+      "cod": "OK, everything is in the fridge now.",
+      "dica": "Tá, agora está tudo na geladeira.",
+      "img": "🧊✅",
+      "alvo": "everything",
+      "alvo_pt": "tudo",
+      "conceito": "Everything é singular: everything is.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "are"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

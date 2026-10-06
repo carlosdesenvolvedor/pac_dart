@@ -1,0 +1,270 @@
+{
+  "id": "wish-condicionais-mistas.se-eu-tivesse-aceitado-estaria",
+  "trilha": "wish-condicionais-mistas",
+  "nome": "Se eu tivesse aceitado, estaria",
+  "emoji": "🔀",
+  "cena": "Num café com o Ben, vocês imaginam como estaria a vida de cada um se tivessem feito outras escolhas.",
+  "resumo": "Ligar uma escolha do passado a um presente diferente com a condicional mista: If I had..., I'd be... now.",
+  "fechamento": false,
+  "novos": [
+    "career path",
+    "early-stage company",
+    "stable",
+    "settle down"
+  ],
+  "apoio": [
+    "risky",
+    "income"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Se eu tivesse..., estaria... agora"
+    },
+    {
+      "t": "p",
+      "c": "Condicional mista: a escolha foi no passado, o resultado é agora. **If + had + particípio, would + verbo (now)**: If I had settled down in Brazil, I'd speak Portuguese better now."
+    },
+    {
+      "t": "tip",
+      "c": "agora/hoje/by now marcam o presente na 2ª metade. O contrário: If I were more organized, I wouldn't have missed it (se eu fosse..., não teria perdido)."
+    },
+    {
+      "t": "warn",
+      "c": "Nada de would no if: If I had accepted (não: If I would have accepted)."
+    },
+    {
+      "t": "ex",
+      "c": "If I hadn't changed jobs, my career path would be very different now.\nSe eu não tivesse mudado de emprego, a minha trajetória profissional seria bem diferente agora."
+    }
+  ],
+  "imagem": "☕🛤️🔀",
+  "visualizacao": "Mesa de canto num café, duas xícaras fumegando. O Ben gira a colher devagar enquanto vocês imaginam outros caminhos que a vida podia ter tomado.",
+  "foto_busca": "two friends talking coffee shop table",
+  "trechos": [
+    {
+      "id": "f-b40b53",
+      "quem": "ben",
+      "cod": "Have you ever thought about joining an early-stage company?",
+      "dica": "Você já pensou em entrar numa empresa em fase inicial?",
+      "img": "🚀🏢",
+      "alvo": "early-stage company",
+      "alvo_pt": "empresa em fase inicial",
+      "conceito": "early-stage company = empresa em fase inicial (startup recém-criada). Já pensou = Have you ever thought.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did you ever think",
+        "think in"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eff54e",
+      "quem": "voce",
+      "contexto": "f-b40b53",
+      "cod": "Yes, but joining an early-stage company felt too risky back then.",
+      "dica": "Já, mas entrar numa empresa em fase inicial parecia arriscado demais naquela época.",
+      "img": "🎲😬",
+      "alvo": "early-stage company",
+      "alvo_pt": "empresa em fase inicial",
+      "conceito": "entrar numa empresa = join a company; parecia (sensação) = felt; naquela época = back then.",
+      "var": [
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yeah"
+          ]
+        },
+        {
+          "em": "felt",
+          "aceita": [
+            "seemed"
+          ]
+        },
+        {
+          "em": "back then",
+          "aceita": [
+            "at the time"
+          ]
+        }
+      ],
+      "blocos": [
+        2,
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "very risky",
+        "in that time"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1a34c4",
+      "quem": "ben",
+      "contexto": "f-eff54e",
+      "cod": "Well, if you had taken that risk, you wouldn't have a stable job now.",
+      "dica": "Bom, se você tivesse corrido esse risco, não teria um emprego estável agora.",
+      "img": "⚖️💼",
+      "alvo": "stable",
+      "alvo_pt": "estável",
+      "conceito": "Mista: se você tivesse corrido (passado) + não teria (agora) = wouldn't have + now.",
+      "var": [
+        {
+          "em": "that risk",
+          "aceita": [
+            "the risk"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would have taken",
+        "wouldn't have had",
+        "run that risk"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c7db31",
+      "quem": "ben",
+      "cod": "Are you happy with your career path so far?",
+      "dica": "Você está feliz com a sua trajetória profissional até agora?",
+      "img": "🛤️🙂",
+      "alvo": "career path",
+      "alvo_pt": "trajetória profissional",
+      "conceito": "career path = trajetória profissional, o caminho da carreira. so far = até agora.",
+      "registro": "informal",
+      "armadilhas": [
+        "career way",
+        "until now"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0e8c6b",
+      "quem": "voce",
+      "contexto": "f-c7db31",
+      "cod": "If I hadn't changed jobs, my career path would be very different now.",
+      "dica": "Se eu não tivesse mudado de emprego, a minha trajetória profissional seria bem diferente agora.",
+      "img": "🔀🛤️",
+      "alvo": "career path",
+      "alvo_pt": "trajetória profissional",
+      "conceito": "mudar de emprego = change jobs (plural). Mista: hadn't changed + would be now.",
+      "var": [
+        {
+          "em": "very",
+          "aceita": [
+            "really",
+            "much"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR40",
+        "BR57"
+      ],
+      "armadilhas": [
+        "wouldn't have changed",
+        "change of job",
+        "would have been"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a2a622",
+      "quem": "ben",
+      "cod": "If I had settled down in Brazil, I'd speak Portuguese much better now.",
+      "dica": "Se eu tivesse me estabelecido no Brasil, falaria português muito melhor agora.",
+      "img": "🇧🇷🗣️",
+      "alvo": "settled down",
+      "alvo_pt": "me estabelecido",
+      "conceito": "settle down = se estabelecer, criar raízes num lugar. Portuguese com maiúscula.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR57"
+      ],
+      "armadilhas": [
+        "would have settled",
+        "portuguese",
+        "would have spoken"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9f0414",
+      "quem": "voce",
+      "contexto": "f-a2a622",
+      "cod": "Do you want to settle down somewhere someday?",
+      "dica": "Você quer se estabelecer em algum lugar um dia?",
+      "img": "🏡❓",
+      "alvo": "settle down",
+      "alvo_pt": "se estabelecer",
+      "conceito": "Pergunta com do; querer + verbo = want to + verbo.",
+      "var": [
+        {
+          "em": "someday",
+          "aceita": [
+            "one day"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you want",
+        "settle yourself"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-188012",
+      "quem": "ben",
+      "contexto": "f-9f0414",
+      "cod": "Yes, but first I need a more stable income.",
+      "dica": "Quero, mas antes preciso de uma renda mais estável.",
+      "img": "💵⚖️",
+      "alvo": "stable",
+      "alvo_pt": "estável",
+      "conceito": "precisar de algo = need + objeto, sem preposição (não: need of).",
+      "var": [
+        {
+          "em": "Yes",
+          "aceita": [
+            "Yeah",
+            "Sure"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "need of",
+        "stabler"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

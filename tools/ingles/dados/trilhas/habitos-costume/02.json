@@ -1,0 +1,242 @@
+{
+  "id": "habitos-costume.estou-acostumado-a",
+  "trilha": "habitos-costume",
+  "nome": "Estou acostumado a...",
+  "emoji": "🌙",
+  "cena": "O Mike pergunta como você lida com o fuso, e você fala da sua rotina e da do seu irmão, que está no turno da noite.",
+  "resumo": "Dizer a que você está (ou não está) acostumado: be used to + -ing ou + substantivo.",
+  "fechamento": false,
+  "novos": [
+    "time difference",
+    "be used to",
+    "night shift",
+    "sleep schedule"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Estou acostumado a: be used to"
+    },
+    {
+      "t": "p",
+      "c": "**be used to + -ing** ou **+ substantivo** = estar acostumado a / com: I'm used to staying up late. He isn't used to the night shift."
+    },
+    {
+      "t": "warn",
+      "c": "O to é preposição, por isso vem -ing: I'm used to working (não: I'm used to work)."
+    },
+    {
+      "t": "tip",
+      "c": "Não confunda: I used to work at night = eu trabalhava à noite (hábito que acabou)."
+    },
+    {
+      "t": "ex",
+      "c": "Are you used to working with people in other time zones?\nVocê está acostumado a trabalhar com pessoas de outros fusos?"
+    }
+  ],
+  "imagem": "🌙💻🕰️",
+  "visualizacao": "Oito da noite em Curitiba, e a chamada com o Mike ainda não acabou. Lá fora já está escuro; do seu lado, uma xícara de café e o relógio no canto da tela.",
+  "foto_busca": "home office at night laptop",
+  "trechos": [
+    {
+      "id": "f-c6ba8d",
+      "quem": "mike",
+      "cod": "Is the time difference a problem for you?",
+      "dica": "A diferença de fuso é um problema para você?",
+      "img": "🌎🕰️",
+      "alvo": "time difference",
+      "alvo_pt": "diferença de fuso",
+      "lit": "[lit.: diferença de tempo]",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia",
+      "conceito": "time difference = diferença de fuso; time zone = fuso horário."
+    },
+    {
+      "id": "f-ed7004",
+      "quem": "voce",
+      "contexto": "f-c6ba8d",
+      "cod": "Not really. I'm used to staying up late.",
+      "dica": "Não muito. Estou acostumado a ficar acordado até tarde.",
+      "img": "🦉☕",
+      "alvo": "I'm used to",
+      "alvo_pt": "Estou acostumado a",
+      "conceito": "be used to + -ing: o to é preposição (não: I'm used to stay).",
+      "pt_f": "Não muito. Estou acostumada a ficar acordada até tarde.",
+      "registro": "informal",
+      "interferencias": [
+        "BR49"
+      ],
+      "armadilhas": [
+        "stay"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1058983,
+        "en_autor": "CK",
+        "pt_id": 7310267,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: + Not really. (original: \"I'm used to staying up late.\"); PT: + Não muito. (original: \"Estou acostumado a ficar acordado até tarde.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-83213d",
+      "quem": "voce",
+      "cod": "The time difference is only two or three hours.",
+      "dica": "A diferença de fuso é de só duas ou três horas.",
+      "img": "⏱️✌️",
+      "alvo": "time difference",
+      "alvo_pt": "diferença de fuso",
+      "conceito": "only antes do número: only two or three hours = só duas ou três horas.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "only",
+          "aceita": [
+            "just"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ff0218",
+      "quem": "voce",
+      "cod": "Are you used to working with people in other time zones?",
+      "dica": "Você está acostumado a trabalhar com pessoas de outros fusos?",
+      "img": "🌐👥",
+      "alvo": "Are you used to",
+      "alvo_pt": "Você está acostumado a",
+      "conceito": "Pergunta com be: Are you used to + -ing? (não: Do you used to).",
+      "var": [
+        {
+          "em": "in other time zones",
+          "aceita": [
+            "from other time zones"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR49"
+      ],
+      "armadilhas": [
+        "do",
+        "work"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c241c7",
+      "quem": "voce",
+      "cod": "My brother Lucas is working the night shift this month.",
+      "dica": "O meu irmão Lucas está trabalhando no turno da noite este mês.",
+      "img": "🏨🌙",
+      "alvo": "night shift",
+      "alvo_pt": "turno da noite",
+      "conceito": "trabalhar no turno da noite = work the night shift (o mais comum, sem preposição).",
+      "registro": "informal",
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5853796,
+        "en_autor": "CK",
+        "pt_id": 6959235,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → My brother Lucas; + this month (original: \"Tom is working the night shift.\"); PT: Tom → O meu irmão Lucas; + este mês (original: \"Tom está trabalhando no turno da noite.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "working the night shift",
+          "aceita": [
+            "working on the night shift"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-5af423",
+      "quem": "mike",
+      "contexto": "f-c241c7",
+      "cod": "Does he have a normal sleep schedule?",
+      "dica": "Ele tem um horário de sono normal?",
+      "img": "😴🗓️",
+      "alvo": "sleep schedule",
+      "alvo_pt": "horário de sono",
+      "conceito": "Pergunta no presente com he: Does he have...? (não: Has he...?).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-45e713",
+      "quem": "voce",
+      "contexto": "f-5af423",
+      "cod": "Not at all. He isn't used to the night shift yet.",
+      "dica": "Nem um pouco. Ele ainda não está acostumado com o turno da noite.",
+      "img": "🥱🌃",
+      "alvo": "night shift",
+      "alvo_pt": "turno da noite",
+      "conceito": "be used to + substantivo: used to the night shift. ainda não = not... yet.",
+      "registro": "informal",
+      "interferencias": [
+        "BR49"
+      ],
+      "armadilhas": [
+        "with",
+        "still"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        3
+      ]
+    },
+    {
+      "id": "f-2c11a0",
+      "quem": "voce",
+      "cod": "I keep the same sleep schedule, even on weekends.",
+      "dica": "Eu mantenho o mesmo horário de sono, até nos fins de semana.",
+      "img": "⏰🛏️",
+      "alvo": "sleep schedule",
+      "alvo_pt": "horário de sono",
+      "conceito": "on weekends = nos fins de semana (EUA; não: at the weekend).",
+      "var": [
+        {
+          "em": "on weekends",
+          "aceita": [
+            "on the weekend",
+            "on the weekends"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "at",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

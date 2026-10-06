@@ -1,0 +1,182 @@
+{
+  "id": "primeiro-contato.cena-a-primeira-chamada",
+  "trilha": "primeiro-contato",
+  "nome": "Cena: a primeira chamada",
+  "emoji": "📞",
+  "cena": "Na sua primeira chamada com o Mike, a Ana e a Sarah, que entra atrasada, você vai do 'bom dia' ao 'até amanhã'.",
+  "resumo": "Juntar tudo da trilha: cumprimentar, apresentar-se, pedir para repetir, agradecer e se despedir.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "Good morning.",
+    "How's it going?",
+    "How about you?",
+    "I'm good, thanks.",
+    "Nice to meet you.",
+    "I'm sorry.",
+    "Can you repeat that, please?",
+    "Got it.",
+    "See you tomorrow."
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Cena de fechamento"
+    },
+    {
+      "t": "p",
+      "c": "Nenhuma fórmula nova: só o que você já treinou, agora numa chamada inteira, do começo ao fim."
+    },
+    {
+      "t": "warn",
+      "c": "I é sempre maiúsculo: I'm good, I'm sorry, I didn't catch that."
+    }
+  ],
+  "imagem": "📞👥✅",
+  "visualizacao": "Três janelas se abrem na tela: o Mike em Chicago, com a caneca na mão, a Ana no Brasil, sorrindo, e a da Sarah, ainda vazia. Você liga o microfone.",
+  "foto_busca": "remote team video conference screen",
+  "trechos": [
+    {
+      "id": "f-121741",
+      "quem": "voce",
+      "cod": "Good morning, Mike! How's it going?",
+      "dica": "Bom dia, Mike! Tudo bem?",
+      "img": "☀️💬",
+      "alvo": "Good morning",
+      "alvo_pt": "Bom dia",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7d2327",
+      "quem": "mike",
+      "contexto": "f-121741",
+      "cod": "Pretty good! How about you?",
+      "dica": "Tudo certo! E você?",
+      "img": "😄↩️",
+      "alvo": "How about you",
+      "alvo_pt": "E você",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-242211",
+      "quem": "voce",
+      "contexto": "f-7d2327",
+      "cod": "I'm good, thanks. Hi, Ana!",
+      "dica": "Tudo bem, obrigado. Oi, Ana!",
+      "pt_f": "Tudo bem, obrigada. Oi, Ana!",
+      "img": "🙂👩‍🎨",
+      "alvo": "I'm good, thanks",
+      "alvo_pt": "Tudo bem, obrigado",
+      "var": [
+        {
+          "em": "thanks",
+          "aceita": [
+            "thank you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1e12c2",
+      "quem": "ana",
+      "contexto": "f-242211",
+      "cod": "Hi, {nome}! Nice to meet you.",
+      "dica": "Oi, {nome}! Prazer em conhecer você.",
+      "img": "🤝😊",
+      "alvo": "Nice to meet you",
+      "alvo_pt": "Prazer em conhecer você",
+      "registro": "neutro",
+      "bio": [
+        "nome"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2732594,
+        "en_autor": "mackay",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Hi, {nome}!; ponto final; PT reescrito (prazer em conhecer você)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ae25e5",
+      "quem": "voce",
+      "contexto": "f-1e12c2",
+      "cod": "Nice to meet you too, Ana.",
+      "dica": "Prazer em conhecer você também, Ana.",
+      "img": "🤗🤝",
+      "alvo": "Nice to meet you too",
+      "alvo_pt": "Prazer em conhecer você também",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f3b8c0",
+      "quem": "sarah",
+      "cod": "Hi! Sorry I'm late.",
+      "dica": "Oi! Desculpa, estou atrasada.",
+      "img": "🏃‍♀️⏰",
+      "alvo": "Sorry",
+      "alvo_pt": "Desculpa",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4728682,
+        "en_autor": "paper1n0",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Hi!; Sorry, I'm late. → Sorry I'm late. (sem vírgula); PT reescrito no feminino (fala da Sarah) e com Desculpa (glossário)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0e0084",
+      "quem": "voce",
+      "contexto": "So, the new screens are ready for review.",
+      "cod": "I'm sorry. Can you repeat that?",
+      "dica": "Me desculpa. Você pode repetir?",
+      "img": "😕🔁",
+      "alvo": "Can you repeat that",
+      "alvo_pt": "Você pode repetir",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1595c9",
+      "quem": "voce",
+      "cod": "Got it. Thanks! See you tomorrow!",
+      "dica": "Entendi. Obrigado! Até amanhã!",
+      "pt_f": "Entendi. Obrigada! Até amanhã!",
+      "img": "👍👋📅",
+      "alvo": "See you tomorrow",
+      "alvo_pt": "Até amanhã",
+      "var": [
+        {
+          "em": "Thanks",
+          "aceita": [
+            "Thank you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "id": "resenhar-criticar.bem-bom-simplesmente-incrivel",
+  "trilha": "resenhar-criticar",
+  "nome": "Bem bom, simplesmente incrível",
+  "emoji": "✨",
+  "cena": "Você e a Ana trocam opiniões sobre livros, filmes e séries recentes.",
+  "resumo": "Graduar opiniões: fairly e pretty com adjetivo comum, absolutely com adjetivo extremo, extremely.",
+  "fechamento": false,
+  "novos": [
+    "absolutely",
+    "chapter",
+    "fairly",
+    "extremely"
+  ],
+  "apoio": [
+    "pretty",
+    "kind of (meio)",
+    "amazing"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Quanto bom? Intensificadores"
+    },
+    {
+      "t": "p",
+      "c": "Adjetivo comum: **fairly** (razoavelmente), **pretty** (bem), **extremely** (extremamente) good. Adjetivo extremo (amazing, awful): **absolutely** (simplesmente). **really** combina com os dois."
+    },
+    {
+      "t": "warn",
+      "c": "Bem bom = pretty good (não: well good). Não se diz very amazing nem absolutely good. Adjetivo não vai ao plural: extremely good effects."
+    },
+    {
+      "t": "ex",
+      "c": "Wait until the last chapter. It's absolutely amazing.\nEspera até o último capítulo. É simplesmente incrível."
+    }
+  ],
+  "imagem": "📚🎬✨",
+  "visualizacao": "Fim de tarde, você e a Ana numa call sem pauta. Ela mostra a capa do livro que está lendo, você conta da série nova, e os dois riem das opiniões diferentes.",
+  "foto_busca": "friends talking about books coffee",
+  "trechos": [
+    {
+      "id": "f-d88ab9",
+      "quem": "voce",
+      "contexto": "So, what do you think of the book so far?",
+      "cod": "I've only read the first three chapters, but it's pretty good.",
+      "dica": "Só li os três primeiros capítulos, mas está bem bom.",
+      "img": "📖👍",
+      "alvo": "chapters",
+      "alvo_pt": "capítulos",
+      "conceito": "pretty good = bem bom (não: well good). Os três primeiros = the first three.",
+      "var": [
+        {
+          "em": "I've only read",
+          "aceita": [
+            "I only read"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR01"
+      ],
+      "armadilhas": [
+        "three first",
+        "well"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2258902,
+        "en_autor": "_undertoad",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I've read only the first three chapters.\"; I've read only the first three chapters. → I've only read...; + but it's pretty good; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-544111",
+      "quem": "ana",
+      "contexto": "f-d88ab9",
+      "cod": "Wait until the last chapter. It's absolutely amazing.",
+      "dica": "Espera até o último capítulo. É simplesmente incrível.",
+      "img": "📖🤩",
+      "alvo": "absolutely",
+      "alvo_pt": "simplesmente",
+      "conceito": "Adjetivo extremo (amazing) pede absolutely ou really (não: very amazing).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "very",
+        "simply"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c5eb28",
+      "quem": "ana",
+      "cod": "Skip the boring chapters.",
+      "dica": "Pula os capítulos chatos.",
+      "img": "⏭️😴",
+      "alvo": "chapters",
+      "alvo_pt": "capítulos",
+      "conceito": "boring = chato (a coisa). Adjetivo antes do substantivo e sem plural.",
+      "registro": "informal",
+      "interferencias": [
+        "BR41",
+        "BR09"
+      ],
+      "armadilhas": [
+        "bored",
+        "borings"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2158046,
+        "en_autor": "AlanF_US",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT do Tatoeba (Pule...) trocado pelo imperativo falado; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ca18c8",
+      "quem": "voce",
+      "cod": "I thought the movie was fairly good, but kind of long.",
+      "dica": "Achei o filme razoavelmente bom, mas meio longo.",
+      "img": "🎬🙂⏳",
+      "alvo": "fairly",
+      "alvo_pt": "razoavelmente",
+      "conceito": "fairly = razoavelmente (um pouco abaixo de pretty). kind of = meio.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "reasonably",
+        "quite"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "thought the movie was",
+          "aceita": [
+            "found the movie"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-856cdf",
+      "quem": "voce",
+      "cod": "Have you seen the new season yet? It's fairly good, though kind of slow.",
+      "dica": "Você já viu a temporada nova? É razoavelmente boa, mas meio lenta.",
+      "img": "📺🙂🐢",
+      "alvo": "fairly",
+      "alvo_pt": "razoavelmente",
+      "conceito": "Você já viu? = Have you seen... yet? (yet no fim da pergunta).",
+      "var": [
+        {
+          "em": "though",
+          "aceita": [
+            "but"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "did",
+        "already"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-418d42",
+      "quem": "ana",
+      "contexto": "f-856cdf",
+      "cod": "Yes! The special effects are extremely good.",
+      "dica": "Já! Os efeitos especiais são extremamente bons.",
+      "img": "💥🎆",
+      "alvo": "extremely",
+      "alvo_pt": "extremamente",
+      "conceito": "O adjetivo não vai ao plural: extremely good effects (não: goods).",
+      "registro": "informal",
+      "interferencias": [
+        "BR09"
+      ],
+      "armadilhas": [
+        "goods",
+        "specials"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-351473",
+      "quem": "voce",
+      "cod": "Honestly, the last episode was absolutely awful.",
+      "dica": "Sinceramente, o último episódio foi simplesmente horrível.",
+      "img": "🤢📺",
+      "alvo": "absolutely",
+      "alvo_pt": "simplesmente",
+      "conceito": "awful (horrível) é extremo: absolutely awful (não: very awful).",
+      "registro": "informal",
+      "armadilhas": [
+        "very",
+        "horrible"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-82d0e3",
+      "quem": "ana",
+      "cod": "Both main characters are extremely funny.",
+      "dica": "Os dois personagens principais são extremamente engraçados.",
+      "img": "😂🎭",
+      "alvo": "extremely",
+      "alvo_pt": "extremamente",
+      "conceito": "Adjetivo sem plural em inglês: funny (não: funnies).",
+      "registro": "informal",
+      "interferencias": [
+        "BR09"
+      ],
+      "armadilhas": [
+        "funnies",
+        "mains"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Both main",
+          "aceita": [
+            "Both of the main",
+            "Both the main",
+            "The two main"
+          ]
+        }
+      ]
+    }
+  ]
+}

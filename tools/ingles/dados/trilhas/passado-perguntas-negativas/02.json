@@ -1,0 +1,235 @@
+{
+  "id": "passado-perguntas-negativas.nao-vi-sua-mensagem-didn-t",
+  "trilha": "passado-perguntas-negativas",
+  "nome": "Não vi sua mensagem: didn't",
+  "emoji": "📵",
+  "cena": "Troca de mensagens no fim do dia: você se desculpa com a Sarah, e depois a Ana se desculpa com você.",
+  "resumo": "Dizer o que você não fez com didn't + verbo puro e pedir desculpas.",
+  "fechamento": false,
+  "novos": [
+    "I didn't see your message.",
+    "forgot",
+    "I didn't have time.",
+    "Sorry about that."
+  ],
+  "apoio": [
+    "didn't"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Não fiz = didn't + verbo puro"
+    },
+    {
+      "t": "p",
+      "c": "Para negar no passado, use **didn't** + verbo **puro**: I didn't **see**, I didn't **have**. O verbo não muda."
+    },
+    {
+      "t": "ex",
+      "c": "Sorry, I didn't see your message.\nDesculpa, não vi sua mensagem."
+    },
+    {
+      "t": "tip",
+      "c": "**Foi mal.** = Sorry about that. Esquecer = forget → **forgot**."
+    },
+    {
+      "t": "warn",
+      "c": "I didn't see (não: I no saw nem I didn't saw)."
+    }
+  ],
+  "imagem": "📱💬🙏",
+  "visualizacao": "Fim de tarde, o celular vibra na mesa. Você vê três mensagens da Sarah sem resposta e começa a digitar um pedido de desculpas.",
+  "foto_busca": "phone messages evening desk",
+  "trechos": [
+    {
+      "id": "f-e8c665",
+      "quem": "voce",
+      "cod": "Sorry, I didn't see your message.",
+      "dica": "Desculpa, não vi sua mensagem.",
+      "img": "📱🙈",
+      "alvo": "I didn't see your message",
+      "alvo_pt": "não vi sua mensagem",
+      "lit": "[lit.: eu não-fiz ver sua mensagem]",
+      "conceito": "Negativa no passado: didn't + verbo puro (see, não saw).",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "saw",
+        "no"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8e55e3",
+      "quem": "voce",
+      "cod": "I didn't have time yesterday.",
+      "dica": "Não tive tempo ontem.",
+      "img": "⏳🏃",
+      "alvo": "I didn't have time",
+      "alvo_pt": "Não tive tempo",
+      "conceito": "Não tive = didn't have (have fica puro).",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "had",
+        "no"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2272404,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom didn't have time.\"; PT original: \"Tom não tinha tempo.\"; Tom → I; acrescentado yesterday; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e209ab",
+      "quem": "voce",
+      "cod": "And I forgot to call you back.",
+      "dica": "E esqueci de te ligar de volta.",
+      "img": "📞😔",
+      "alvo": "forgot",
+      "alvo_pt": "esqueci",
+      "conceito": "forget → forgot. Ligar de volta (retornar a ligação) = call back.",
+      "registro": "informal",
+      "armadilhas": [
+        "forget",
+        "forgetted"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8271989,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm sorry I forgot to call you.\"; PT original: \"Sinto muito, esqueci de te ligar.\"; I'm sorry → And (o pedido de desculpas fica no Sorry about that da frase seguinte); acrescentado back; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8e8020",
+      "quem": "voce",
+      "cod": "Sorry about that, Sarah.",
+      "dica": "Foi mal, Sarah.",
+      "img": "🙏😅",
+      "alvo": "Sorry about that",
+      "alvo_pt": "Foi mal",
+      "lit": "[lit.: desculpa sobre isso]",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8593417,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Sorry about that, Tom.\"; PT original: \"Lamento por isso, Tom.\"; Tom → Sarah; PT reescrito (Foi mal)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-92ae3a",
+      "quem": "sarah",
+      "contexto": "f-8e8020",
+      "cod": "It's OK. I forgot to call Mike too.",
+      "dica": "Tudo bem. Eu também esqueci de ligar para o Mike.",
+      "img": "🤷‍♀️📞",
+      "alvo": "forgot",
+      "alvo_pt": "esqueci",
+      "var": [
+        {
+          "em": "It's OK.",
+          "aceita": [
+            "That's OK."
+          ]
+        },
+        {
+          "em": "I forgot to call Mike too",
+          "aceita": [
+            "I also forgot to call Mike"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "forget"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2f16f1",
+      "quem": "ana",
+      "cod": "{nome}, I didn't see your message!",
+      "dica": "{nome}, não vi sua mensagem!",
+      "img": "💬😮",
+      "alvo": "I didn't see your message",
+      "alvo_pt": "não vi sua mensagem",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "saw",
+        "no"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-879d60",
+      "quem": "ana",
+      "cod": "I didn't have time to charge my phone.",
+      "dica": "Não tive tempo de carregar meu celular.",
+      "img": "🔋⏳",
+      "alvo": "I didn't have time",
+      "alvo_pt": "Não tive tempo",
+      "conceito": "Ter tempo de + verbo = have time to + verbo. Carregar (bateria) = charge.",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "had",
+        "load"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-97d11a",
+      "quem": "ana",
+      "cod": "My phone was off. Sorry about that.",
+      "dica": "Meu celular estava desligado. Foi mal.",
+      "img": "📴🙏",
+      "alvo": "Sorry about that",
+      "alvo_pt": "Foi mal",
+      "conceito": "Desligado = off. Foi mal = Sorry about that.",
+      "var": [
+        {
+          "em": "off",
+          "aceita": [
+            "turned off"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

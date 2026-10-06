@@ -1,0 +1,201 @@
+{
+  "id": "colocacoes-expressoes.transito-pesado-prazo-apertado",
+  "trilha": "colocacoes-expressoes",
+  "nome": "Trânsito pesado, prazo apertado",
+  "emoji": "🛣️",
+  "cena": "Numa manhã complicada, você manda mensagens ao time explicando o atraso e as prioridades.",
+  "resumo": "Combinar adjetivo e substantivo como um nativo: heavy traffic, tight deadline, minor bug, strong coffee.",
+  "fechamento": false,
+  "novos": [
+    "heavy traffic",
+    "tight deadline",
+    "minor",
+    "strong coffee"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Adjetivo + substantivo"
+    },
+    {
+      "t": "p",
+      "c": "Algumas combinações são fixas: **heavy traffic** (trânsito pesado), **tight deadline** (prazo apertado), **strong coffee** (café forte), **minor bug** (bug menor, sem gravidade)."
+    },
+    {
+      "t": "warn",
+      "c": "Trânsito pesado e chuva forte usam **heavy**: heavy traffic, heavy rain (não: strong traffic, strong rain)."
+    },
+    {
+      "t": "ex",
+      "c": "It's just a minor bug, but the client noticed it.\nÉ só um bug menor, mas o cliente percebeu."
+    }
+  ],
+  "imagem": "🚗⏰☕",
+  "visualizacao": "Você está parado num engarrafamento, a chuva bate no vidro e o celular vibra no suporte. Você grava um áudio rápido para o time, com a voz apressada.",
+  "foto_busca": "heavy traffic rainy morning",
+  "trechos": [
+    {
+      "id": "f-276bdb",
+      "quem": "voce",
+      "cod": "I'm stuck in heavy traffic, so I'll be ten minutes late.",
+      "dica": "Estou preso num trânsito pesado, então vou chegar dez minutos atrasado.",
+      "pt_f": "Estou presa num trânsito pesado, então vou chegar dez minutos atrasada.",
+      "img": "🚗🚗⏰",
+      "alvo": "heavy traffic",
+      "alvo_pt": "trânsito pesado",
+      "conceito": "trânsito pesado = heavy traffic (não: strong traffic).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "strong",
+        "big"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3732230,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"We're stuck in traffic.\" (We're trocado por I'm; acrescentado heavy e so I'll be ten minutes late); PT reescrito (original: \"Estamos presos no trânsito.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9256d2",
+      "quem": "ana",
+      "contexto": "f-276bdb",
+      "cod": "Same here. There's heavy traffic all over downtown.",
+      "dica": "Aqui também. Tem trânsito pesado no centro todo.",
+      "img": "🚦🚙🏙️",
+      "alvo": "heavy traffic",
+      "alvo_pt": "trânsito pesado",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5965352,
+        "en_autor": "thomsmells",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm late because of traffic.\" (reescrito: Same here e There's heavy traffic all over downtown); PT reescrito (original: \"Estou atrasado por causa do trânsito.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "Same here",
+          "aceita": [
+            "Here too",
+            "Me too"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-2c0b6c",
+      "quem": "voce",
+      "cod": "We have a tight deadline, so let's focus on the essentials.",
+      "dica": "A gente tem um prazo apertado, então vamos focar no essencial.",
+      "img": "📅⏳🎯",
+      "alvo": "tight deadline",
+      "alvo_pt": "prazo apertado",
+      "conceito": "prazo apertado = tight deadline.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b06fc6",
+      "quem": "sarah",
+      "contexto": "f-2c0b6c",
+      "cod": "It's a tight deadline, but we've done this before.",
+      "dica": "É um prazo apertado, mas a gente já fez isso antes.",
+      "img": "💪📅✅",
+      "alvo": "tight deadline",
+      "alvo_pt": "prazo apertado",
+      "conceito": "já fez antes, sem dizer quando = present perfect: we've done this before.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e70954",
+      "quem": "voce",
+      "cod": "It's just a minor bug, but the client noticed it.",
+      "dica": "É só um bug menor, mas o cliente percebeu.",
+      "img": "🐞🔎👀",
+      "alvo": "minor bug",
+      "alvo_pt": "bug menor",
+      "conceito": "minor = pequeno, sem gravidade; major = grave.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-356bf2",
+      "quem": "mike",
+      "contexto": "f-e70954",
+      "cod": "Let's fix the major issues first. The minor ones can wait.",
+      "dica": "Vamos corrigir os problemas graves primeiro. Os menores podem esperar.",
+      "img": "🔥🐞⏳",
+      "alvo": "minor ones",
+      "alvo_pt": "menores",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "issues",
+          "aceita": [
+            "problems"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ff4748",
+      "quem": "ana",
+      "cod": "I need a strong coffee before this meeting.",
+      "dica": "Preciso de um café forte antes dessa reunião.",
+      "img": "☕💪😵",
+      "alvo": "strong coffee",
+      "alvo_pt": "café forte",
+      "conceito": "café forte = strong coffee; café fraco = weak coffee.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5b669f",
+      "quem": "voce",
+      "contexto": "f-ff4748",
+      "cod": "Me too. I've already had three strong coffees today.",
+      "dica": "Eu também. Já tomei três cafés fortes hoje.",
+      "img": "☕☕☕",
+      "alvo": "strong coffees",
+      "alvo_pt": "cafés fortes",
+      "conceito": "tomar um café = have a coffee.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

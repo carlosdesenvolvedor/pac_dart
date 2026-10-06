@@ -1,0 +1,276 @@
+{
+  "id": "obrigacao-conselho.tenho-que-trabalhar-have-to",
+  "trilha": "obrigacao-conselho",
+  "nome": "Tenho que trabalhar: have to",
+  "emoji": "📌",
+  "cena": "O Ben te chama para a praia amanhã, mas o seu fim de semana está cheio de obrigações.",
+  "resumo": "Dizer o que você tem que fazer com have to, has to e had to, e perguntar Do you have to...?",
+  "fechamento": false,
+  "novos": [
+    "have to",
+    "had to",
+    "Do you have to...?",
+    "fill out",
+    "has to"
+  ],
+  "apoio": [
+    "rent"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ter que = have to"
+    },
+    {
+      "t": "p",
+      "c": "Para obrigação, use **have to** + verbo puro. Com he/she/it: **has to**. No passado, para todo mundo: **had to**."
+    },
+    {
+      "t": "ex",
+      "c": "I have to work tomorrow.\nTenho que trabalhar amanhã."
+    },
+    {
+      "t": "tip",
+      "c": "Pergunta com do/does/did: **Do you have to...? / Does she have to...? / Did you have to...?**"
+    },
+    {
+      "t": "warn",
+      "c": "Depois de have to vem o verbo sem -ing (não: have to working)."
+    }
+  ],
+  "imagem": "🏖️📋⏰",
+  "visualizacao": "Sexta à noite, o celular vibra: é o Ben chamando para a praia. Você olha a lista de tarefas presa na geladeira e suspira.",
+  "foto_busca": "to do list on fridge",
+  "trechos": [
+    {
+      "id": "f-e2ea5b",
+      "quem": "voce",
+      "contexto": "Do you want to go to the beach tomorrow?",
+      "cod": "I have to work tomorrow.",
+      "dica": "Tenho que trabalhar amanhã.",
+      "img": "💻📅",
+      "alvo": "have to",
+      "alvo_pt": "Tenho que",
+      "conceito": "Tenho que + verbo = have to + verbo puro.",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "working",
+        "must"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2185169,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Eu tenho de trabalhar amanhã.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ce5fc2",
+      "quem": "ben",
+      "contexto": "f-e2ea5b",
+      "cod": "Do you have to work on Saturdays?",
+      "dica": "Você tem que trabalhar aos sábados?",
+      "img": "📆❓",
+      "alvo": "Do you have to",
+      "alvo_pt": "Você tem que",
+      "conceito": "Pergunta com have to leva do: Do you have to...? (não: Have you to...?)",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR17"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4686335,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Sundays → Saturdays (original: \"Do you have to work on Sundays?\"); PT reescrito (original: \"Você tem de trabalhar aos domingos?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ad4d30",
+      "quem": "voce",
+      "contexto": "f-ce5fc2",
+      "cod": "Not usually, but I had to work last Saturday.",
+      "dica": "Normalmente não, mas tive que trabalhar no sábado passado.",
+      "img": "💼🗓️",
+      "alvo": "had to",
+      "alvo_pt": "tive que",
+      "conceito": "No passado, had to = tive que, para todas as pessoas.",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Not usually",
+          "aceita": [
+            "Usually not"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-043642",
+      "quem": "voce",
+      "cod": "I still have to pay my rent.",
+      "dica": "Eu ainda tenho que pagar meu aluguel.",
+      "img": "🏠💵",
+      "alvo": "have to",
+      "alvo_pt": "tenho que",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6808792,
+        "en_autor": "CK",
+        "pt_id": 6809254,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2fe3cb",
+      "quem": "voce",
+      "contexto": "What about Lucas? Can he come?",
+      "cod": "No, he has to work tomorrow too.",
+      "dica": "Não, ele tem que trabalhar amanhã também.",
+      "img": "👨‍💼⏰",
+      "alvo": "has to",
+      "alvo_pt": "tem que",
+      "conceito": "Com he, she e it: has to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3405273,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → he (o Lucas, do contexto); acrescentados No e too (original: \"Tom has to work tomorrow.\"); PT reescrito (original: \"Tom tem que trabalhar amanhã.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-61c2dc",
+      "quem": "voce",
+      "cod": "My sister Julia has to get a visa.",
+      "dica": "Minha irmã Julia tem que tirar visto.",
+      "img": "🛂📘",
+      "alvo": "has to",
+      "alvo_pt": "tem que",
+      "conceito": "visa = visto (de viagem). get a visa = tirar visto.",
+      "registro": "informal",
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4acf89",
+      "quem": "ben",
+      "contexto": "f-61c2dc",
+      "cod": "Do you have to help her?",
+      "dica": "Você tem que ajudar ela?",
+      "img": "🤝👩❓",
+      "alvo": "Do you have to",
+      "alvo_pt": "Você tem que",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR18"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3921757,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Do I → Do you; Tom → her (original: \"Do I have to help Tom?\"); PT reescrito (original: \"Eu tenho de ajudar o Tom?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b22a03",
+      "quem": "voce",
+      "contexto": "f-4acf89",
+      "cod": "Yes, she has to fill out a long form in English.",
+      "dica": "Tenho, ela tem que preencher um formulário longo em inglês.",
+      "img": "📄✍️",
+      "alvo": "fill out",
+      "alvo_pt": "preencher",
+      "conceito": "fill out = preencher (formulário). Só fill = encher.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9fbc94",
+      "quem": "voce",
+      "cod": "Lucas had to fill out the same form last year.",
+      "dica": "O Lucas teve que preencher o mesmo formulário no ano passado.",
+      "img": "🧔📋",
+      "alvo": "had to",
+      "alvo_pt": "teve que",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4fefd2",
+      "quem": "julia",
+      "cod": "Can you help me fill out this form?",
+      "dica": "Pode me ajudar a preencher este formulário?",
+      "img": "🙏📝",
+      "alvo": "fill out",
+      "alvo_pt": "preencher",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8216211,
+        "en_autor": "CK",
+        "pt_id": 8426463,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

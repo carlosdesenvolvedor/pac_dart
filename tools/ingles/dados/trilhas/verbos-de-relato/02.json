@@ -1,0 +1,293 @@
+{
+  "id": "verbos-de-relato.ele-admitiu-ter-errado",
+  "trilha": "verbos-de-relato",
+  "nome": "Ele admitiu ter errado",
+  "emoji": "🙇",
+  "cena": "Numa chamada rápida, você conta à Ana a confusão com o fornecedor dos celulares de teste e um erro admitido dentro do time.",
+  "resumo": "Relatar admissões, negações e pedidos de desculpa: admit / deny + -ing e apologize for + -ing.",
+  "fechamento": false,
+  "novos": [
+    "supplier",
+    "admit",
+    "deny",
+    "apologize for + -ing"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Admitiu, negou, pediu desculpas"
+    },
+    {
+      "t": "p",
+      "c": "**admit / deny + -ing** = admitir / negar ter feito. **apologize (to alguém) for + -ing** = pedir desculpas por."
+    },
+    {
+      "t": "warn",
+      "c": "Não: admitted to make / apologized to be late. Depois de admit, de deny e de preposição, vem -ing: admitted making, apologized for being late."
+    },
+    {
+      "t": "tip",
+      "c": "Erro no time se relata sem culpar: o foco é o processo, não a pessoa."
+    },
+    {
+      "t": "ex",
+      "c": "The supplier denied sending the wrong model.\nO fornecedor negou ter mandado o modelo errado."
+    }
+  ],
+  "imagem": "📦📱🙇",
+  "visualizacao": "Chamada rápida com a Ana. Do seu lado da tela, a caixa aberta com os celulares de teste errados; você conta a novela do fornecedor e a semana do time.",
+  "foto_busca": "cardboard box smartphones desk",
+  "trechos": [
+    {
+      "id": "f-8c53bf",
+      "quem": "voce",
+      "cod": "The supplier sent us the wrong test phones.",
+      "dica": "O fornecedor mandou os celulares de teste errados para a gente.",
+      "img": "📦📱",
+      "alvo": "supplier",
+      "alvo_pt": "fornecedor",
+      "conceito": "supplier = fornecedor. sent us the phones = sent the phones to us.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "sent us the wrong test phones",
+          "aceita": [
+            "sent the wrong test phones to us"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6f9170",
+      "quem": "ana",
+      "contexto": "f-8c53bf",
+      "cod": "Did they admit making a mistake?",
+      "dica": "Eles admitiram ter cometido um erro?",
+      "img": "🤔🙋",
+      "alvo": "admit",
+      "alvo_pt": "admitiram",
+      "conceito": "admit + -ing: admit making (não: admit to make). Com did, admit na forma base.",
+      "var": [
+        {
+          "em": "admit making",
+          "aceita": [
+            "admit to making",
+            "admit having made"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52",
+        "BR06"
+      ],
+      "armadilhas": [
+        "admitted",
+        "to make"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-31b604",
+      "quem": "voce",
+      "contexto": "f-6f9170",
+      "cod": "No. They denied sending the wrong model.",
+      "dica": "Não. Eles negaram ter mandado o modelo errado.",
+      "img": "🙅📦",
+      "alvo": "denied",
+      "alvo_pt": "negaram",
+      "conceito": "deny + -ing = negar ter feito (não: denied to send).",
+      "var": [
+        {
+          "em": "denied sending",
+          "aceita": [
+            "denied having sent"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7a3bcd",
+      "quem": "voce",
+      "cod": "Later, they apologized for not checking the order.",
+      "dica": "Depois, eles pediram desculpas por não terem conferido o pedido.",
+      "img": "🙏📋",
+      "alvo": "apologized for",
+      "alvo_pt": "pediram desculpas por",
+      "conceito": "apologize for + -ing; a negativa vem antes: for not checking.",
+      "var": [
+        {
+          "em": "Later",
+          "aceita": [
+            "Then",
+            "After that",
+            "Afterwards"
+          ]
+        },
+        {
+          "em": "not checking",
+          "aceita": [
+            "not having checked"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-856ac4",
+      "quem": "voce",
+      "cod": "This isn't the first time we've had problems with this supplier.",
+      "dica": "Não é a primeira vez que a gente tem problema com esse fornecedor.",
+      "img": "🔁😤",
+      "alvo": "supplier",
+      "alvo_pt": "fornecedor",
+      "conceito": "the first time + present perfect: we've had (não: we have). Em PT, presente.",
+      "var": [
+        {
+          "em": "problems",
+          "aceita": [
+            "a problem"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a5d2ad",
+      "quem": "voce",
+      "cod": "On our end, the new developer admitted forgetting a step in the deploy.",
+      "dica": "Do nosso lado, o dev novo admitiu ter esquecido um passo do deploy.",
+      "img": "👨‍💻🪜",
+      "alvo": "admitted",
+      "alvo_pt": "admitiu",
+      "conceito": "admit + -ing: admitted forgetting = admitiu ter esquecido.",
+      "var": [
+        {
+          "em": "On our end",
+          "aceita": [
+            "On our side"
+          ]
+        },
+        {
+          "em": "admitted forgetting",
+          "aceita": [
+            "admitted to forgetting",
+            "admitted having forgotten"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to forget"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-20c9aa",
+      "quem": "voce",
+      "contexto": "f-a5d2ad",
+      "cod": "He didn't try to deny it, and he fixed the problem in an hour.",
+      "dica": "Ele não tentou negar e corrigiu o problema em uma hora.",
+      "img": "🛠️⏰",
+      "alvo": "deny",
+      "alvo_pt": "negar",
+      "conceito": "negar (algo) = deny it: o objeto é obrigatório. Com didn't, try na forma base.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07",
+        "BR01"
+      ],
+      "armadilhas": [
+        "denied",
+        "denying"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "in an hour",
+          "aceita": [
+            "within an hour"
+          ]
+        }
+      ],
+      "opcional": [
+        "he"
+      ],
+      "blocos": [
+        6
+      ]
+    },
+    {
+      "id": "f-95ca57",
+      "quem": "voce",
+      "cod": "Sarah apologized to Mike for being late.",
+      "dica": "A Sarah pediu desculpas ao Mike por chegar atrasada.",
+      "img": "⏰🙏",
+      "alvo": "apologized to Mike for",
+      "alvo_pt": "pediu desculpas ao Mike por",
+      "conceito": "apologize to alguém for + -ing: for being late (não: to be late).",
+      "var": [
+        {
+          "em": "being late",
+          "aceita": [
+            "coming late",
+            "arriving late"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to be"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1029770,
+        "en_autor": "CK",
+        "pt_id": 4766996,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → Sarah; Mary → Mike (original: \"Tom apologized to Mary for being late.\"); PT: O Tom → A Sarah; à Mary → ao Mike; atrasado → atrasada (original: \"O Tom pediu desculpas à Mary por chegar atrasado.\")",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

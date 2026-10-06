@@ -1,0 +1,315 @@
+{
+  "id": "present-perfect-experiencias.papo-de-almoco-o-que-voce-ja-fez",
+  "trilha": "present-perfect-experiencias",
+  "nome": "Papo de almoço: o que você já fez?",
+  "emoji": "🥗",
+  "cena": "No happy hour, o Ben puxa um jogo de 'você já...?' com você, a Ana e o Mike.",
+  "resumo": "Fechamento: perguntar e contar experiências com ever, never, have e has, sem data.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "Have you ever...?",
+    "been to",
+    "has never",
+    "lots of times",
+    "met (particípio)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Have you ever...? em roda"
+    },
+    {
+      "t": "p",
+      "c": "Resposta curta com o auxiliar: *Yes, I have. / No, I haven't.* Falando de outra pessoa: *but Mike has*. O sujeito nunca some."
+    },
+    {
+      "t": "ex",
+      "c": "No, I haven't, but Mike has.\nEu não, mas o Mike já."
+    },
+    {
+      "t": "ex",
+      "c": "Who here has been to Japan?\nQuem aqui já foi ao Japão?"
+    },
+    {
+      "t": "warn",
+      "c": "Sem data: present perfect (*I've met...*). Com data, passado: o contraste fica para o B1 (BR27)."
+    }
+  ],
+  "imagem": "🥂🎲❓",
+  "visualizacao": "Você está numa mesa de bar depois do trabalho, com música ao fundo. O Ben bate na mesa, sorri e começa a rodada: Have you ever...?",
+  "foto_busca": "friends happy hour bar table laughing",
+  "trechos": [
+    {
+      "id": "f-6acd1b",
+      "quem": "ben",
+      "cod": "Have you ever met a famous person?",
+      "dica": "Vocês já conheceram uma pessoa famosa?",
+      "img": "🤩🤝❓",
+      "alvo": "Have you ever",
+      "alvo_pt": "Vocês já",
+      "conceito": "Conhecer alguém pela primeira vez = meet → met. Vocês também é you.",
+      "var": [
+        {
+          "em": "Have you ever met",
+          "aceita": [
+            "Did you ever meet"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "known",
+        "did you met"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aac212",
+      "quem": "ana",
+      "contexto": "f-6acd1b",
+      "cod": "No, I haven't, but Mike has.",
+      "dica": "Eu não, mas o Mike já.",
+      "img": "🙅‍♀️👉🧑‍💼",
+      "alvo": "but Mike has",
+      "alvo_pt": "mas o Mike já",
+      "lit": "[lit.: não, eu não tenho, mas o Mike tem]",
+      "conceito": "A resposta curta repete o auxiliar com sujeito: Mike has (não: Mike yes).",
+      "opcional": [
+        "No"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR27"
+      ],
+      "armadilhas": [
+        "mike yes",
+        "mike have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-108bf3",
+      "quem": "mike",
+      "contexto": "f-aac212",
+      "cod": "Yes, I've met a famous basketball player.",
+      "dica": "Sim, já conheci um jogador de basquete famoso.",
+      "img": "🏀⭐🤝",
+      "alvo": "I've met",
+      "alvo_pt": "já conheci",
+      "conceito": "met = particípio de meet. O adjetivo vem antes: a famous basketball player.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR08"
+      ],
+      "armadilhas": [
+        "i've known",
+        "player famous"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0ddec2",
+      "quem": "ben",
+      "cod": "Who here has been to Japan?",
+      "dica": "Quem aqui já foi ao Japão?",
+      "img": "🙋🗾",
+      "alvo": "has been to",
+      "alvo_pt": "já foi ao",
+      "conceito": "Quem como sujeito: Who has...? (sem do e sem inverter). Quem aqui = Who here.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR15"
+      ],
+      "armadilhas": [
+        "who have",
+        "who did"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d14f86",
+      "quem": "ana",
+      "contexto": "f-0ddec2",
+      "cod": "I have! Twice.",
+      "dica": "Eu já! Duas vezes.",
+      "img": "🙋‍♀️✌️",
+      "alvo": "I have",
+      "alvo_pt": "Eu já",
+      "conceito": "Eu já! = I have! O auxiliar responde sozinho, com o sujeito.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR27"
+      ],
+      "armadilhas": [
+        "me!",
+        "i yes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4d83d6",
+      "quem": "mike",
+      "cod": "Sarah has been to Japan too.",
+      "dica": "A Sarah também já foi ao Japão.",
+      "img": "👩🗻",
+      "alvo": "has been to",
+      "alvo_pt": "já foi ao",
+      "conceito": "too = também, no fim da frase.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "sarah have",
+        "also has"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "has been to Japan too",
+          "aceita": [
+            "has also been to Japan"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a78352",
+      "quem": "mike",
+      "cod": "Have you ever eaten feijoada, Ben?",
+      "dica": "Você já comeu feijoada, Ben?",
+      "img": "🍲🧔❓",
+      "alvo": "eaten",
+      "alvo_pt": "comeu",
+      "var": [
+        {
+          "em": "Have you ever eaten",
+          "aceita": [
+            "Did you ever eat"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "ate",
+        "eated"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3554348,
+        "en_autor": "CK",
+        "pt_id": 3806016,
+        "pt_autor": "muriloricci",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Turkish food → feijoada; acrescentado Ben (no PT: comida turca → feijoada, + Ben)",
+        "export": "2026-10-03"
+      },
+      "opcional": [
+        "ever"
+      ]
+    },
+    {
+      "id": "f-5453aa",
+      "quem": "ben",
+      "contexto": "f-a78352",
+      "cod": "Yes, lots of times! I love it.",
+      "dica": "Já, um monte de vezes! Adoro.",
+      "img": "😋🔁❤️",
+      "alvo": "lots of times",
+      "alvo_pt": "um monte de vezes",
+      "conceito": "Adoro = I love it: o it é obrigatório.",
+      "var": [
+        {
+          "em": "lots of times",
+          "aceita": [
+            "a lot of times"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR02"
+      ],
+      "armadilhas": [
+        "i love.",
+        "i adore"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e6d499",
+      "quem": "ben",
+      "cod": "Have you ever been on TV?",
+      "dica": "Você já saiu na TV?",
+      "img": "📺❓",
+      "alvo": "Have you ever",
+      "alvo_pt": "Você já",
+      "conceito": "sair na TV = be on TV: na TV pede on.",
+      "var": [
+        {
+          "em": "Have you ever been on",
+          "aceita": [
+            "Did you ever go on",
+            "Have you ever appeared on"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in tv",
+        "did you went"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 953288,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "inglês igual; PT reescrito (sair na TV)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6d553a",
+      "quem": "ana",
+      "contexto": "f-e6d499",
+      "cod": "Yes, once! On a cooking show.",
+      "dica": "Já, uma vez! Num programa de culinária.",
+      "img": "👩‍🍳📺",
+      "alvo": "once",
+      "alvo_pt": "uma vez",
+      "conceito": "once = uma vez. Programa de TV também pede on: on a show.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "one time",
+        "in a cooking"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

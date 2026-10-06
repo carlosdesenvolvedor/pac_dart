@@ -1,0 +1,250 @@
+{
+  "id": "tempos-narrativos-completos.fazia-tempo-que-voce-esperava",
+  "trilha": "tempos-narrativos-completos",
+  "nome": "Fazia tempo que você esperava?",
+  "emoji": "⏳",
+  "cena": "No aeroporto de Boston, o Ben finalmente encontra você depois de uma conexão atrasada, e vocês comparam a espera de cada um.",
+  "resumo": "Perguntar e responder há quanto tempo algo vinha acontecendo: Had you been waiting long? / How long had you been...?",
+  "fechamento": false,
+  "novos": [
+    "customs",
+    "not long",
+    "arrivals",
+    "passport control"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fazia tempo que você esperava?"
+    },
+    {
+      "t": "p",
+      "c": "Na pergunta, **had** vai antes do sujeito: **Had you been waiting long?** Para a duração: **How long had you been + -ing?** Resposta curta: **Not long.**"
+    },
+    {
+      "t": "ex",
+      "c": "How long had you been standing in line at passport control when you texted me?\nFazia quanto tempo que você estava na fila do controle de passaportes quando me mandou mensagem?"
+    },
+    {
+      "t": "tip",
+      "c": "No aeroporto dos EUA: **passport control** (passaportes), **customs** (alfândega) e **arrivals** (desembarque)."
+    },
+    {
+      "t": "warn",
+      "c": "Não: You had been waiting long? nem How much time...? Fazia quanto tempo = How long had you been..."
+    }
+  ],
+  "imagem": "✈️🛂🤝",
+  "visualizacao": "Você sai pela porta do desembarque em Boston, puxando a mala. Anúncios no alto-falante, gente com plaquinhas, e o Ben acenando com um café na mão.",
+  "foto_busca": "airport arrivals hall people waiting",
+  "trechos": [
+    {
+      "id": "f-08bedd",
+      "quem": "voce",
+      "cod": "Had you been waiting long at arrivals when my flight landed?",
+      "dica": "Fazia tempo que você estava esperando no desembarque quando meu voo pousou?",
+      "img": "⏳🛬❓",
+      "alvo": "arrivals",
+      "alvo_pt": "desembarque",
+      "conceito": "Na pergunta, had vem antes do sujeito. arrivals = área de desembarque do aeroporto.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "you had",
+        "did you"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "long",
+          "aceita": [
+            "for a long time"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ac36b5",
+      "quem": "ben",
+      "contexto": "f-08bedd",
+      "cod": "Not long. I got here twenty minutes before you landed.",
+      "dica": "Não muito. Cheguei aqui uns vinte minutos antes de você pousar.",
+      "img": "👍🕑",
+      "alvo": "Not long",
+      "alvo_pt": "Não muito",
+      "conceito": "Not long = não muito (tempo). Resposta curta e natural para Had you been waiting long?",
+      "var": [
+        {
+          "em": "twenty minutes",
+          "aceita": [
+            "about twenty minutes"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "not much",
+        "arrived here"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0b2ca7",
+      "quem": "ben",
+      "cod": "How long had you been standing in line at passport control when you texted me?",
+      "dica": "Fazia quanto tempo que você estava na fila do controle de passaportes quando me mandou mensagem?",
+      "img": "🛂🧍🧍",
+      "alvo": "passport control",
+      "alvo_pt": "controle de passaportes",
+      "conceito": "Fazia quanto tempo que = How long had you been + -ing, até um ponto do passado (when you texted me).",
+      "blocos": [
+        11
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "how much time",
+        "did you"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "texted me",
+          "aceita": [
+            "sent me a message"
+          ]
+        }
+      ],
+      "opcional": [
+        "standing"
+      ]
+    },
+    {
+      "id": "f-5f1819",
+      "quem": "voce",
+      "contexto": "f-0b2ca7",
+      "cod": "Almost an hour. The line at passport control was huge.",
+      "dica": "Quase uma hora. A fila do controle de passaportes estava enorme.",
+      "img": "🐌🛂",
+      "alvo": "passport control",
+      "alvo_pt": "controle de passaportes",
+      "conceito": "fila (EUA) = line. Na fila do = the line at.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "queue",
+        "of passport"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f677c3",
+      "quem": "ben",
+      "cod": "Did customs take long too?",
+      "dica": "A alfândega também demorou?",
+      "img": "🧳🔍",
+      "alvo": "customs",
+      "alvo_pt": "alfândega",
+      "conceito": "customs = alfândega (sempre com -s). Demorar = take long.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "custom",
+        "delayed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c8e779",
+      "quem": "voce",
+      "contexto": "f-f677c3",
+      "cod": "No, customs was fast. I had nothing to declare.",
+      "dica": "Não, a alfândega foi rápida. Não tinha nada para declarar.",
+      "img": "✅🧳",
+      "alvo": "customs",
+      "alvo_pt": "alfândega",
+      "conceito": "customs leva verbo no singular aqui (customs was). Nada para declarar = nothing to declare.",
+      "registro": "informal",
+      "armadilhas": [
+        "custom",
+        "anything to"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "had nothing",
+          "aceita": [
+            "didn't have anything"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c47fe5",
+      "quem": "ben",
+      "cod": "So I'd been standing at arrivals for over an hour when you came out!",
+      "dica": "Então fazia mais de uma hora que eu estava em pé no desembarque quando você saiu!",
+      "img": "🧍⏰😅",
+      "alvo": "arrivals",
+      "alvo_pt": "desembarque",
+      "conceito": "Fazia mais de uma hora que = for over an hour. I'd been = I had been.",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR47",
+        "BR26"
+      ],
+      "armadilhas": [
+        "was standing",
+        "since an hour"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "over",
+          "aceita": [
+            "more than"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-339a22",
+      "quem": "voce",
+      "contexto": "How long did you sleep on the plane?",
+      "cod": "Not long. I'd only been sleeping for an hour when the turbulence woke me up.",
+      "dica": "Não muito. Fazia só uma hora que eu estava dormindo quando a turbulência me acordou.",
+      "img": "😴✈️🌀",
+      "alvo": "Not long",
+      "alvo_pt": "Não muito",
+      "conceito": "only (só) vai entre had e been: I'd only been sleeping. Acordar alguém = wake someone up.",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "was sleeping",
+        "woke up me"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

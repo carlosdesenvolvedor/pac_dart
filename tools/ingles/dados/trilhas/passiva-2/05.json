@@ -1,0 +1,245 @@
+{
+  "id": "passiva-2.ouvi-dizer-que-e-a-previsao",
+  "trilha": "passiva-2",
+  "nome": "Ouvi dizer que... e a previsão",
+  "emoji": "🗞️",
+  "cena": "Na copa virtual, o time comenta as novidades da empresa; depois chega o comunicado oficial da Sarah.",
+  "resumo": "Passar adiante uma novidade como se faz na fala (I heard, apparently) e dar um anúncio oficial com is expected to.",
+  "fechamento": false,
+  "novos": [
+    "I heard (that)... (ouvi dizer)",
+    "apparently (pelo jeito)",
+    "is expected to (a previsão é que)",
+    "headquarters"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ouvi dizer / pelo jeito / a previsão é"
+    },
+    {
+      "t": "p",
+      "c": "Na conversa, boato e novidade: **I heard (that)...** (ouvi dizer) e **Apparently, ...** (pelo jeito). Em anúncio oficial: **sujeito + is expected to + verbo** (a previsão é que)."
+    },
+    {
+      "t": "ex",
+      "c": "The new office in Recife is expected to open in March.\nA previsão é que o escritório novo em Recife abra em março."
+    },
+    {
+      "t": "warn",
+      "c": "It is said that... soa como boato de jornal; fica para o texto escrito, no C1. Na fala: I heard."
+    }
+  ],
+  "imagem": "☕💬📰",
+  "visualizacao": "Você está na copa virtual, caneca na mão, câmeras abertas. Alguém baixa a voz como se fosse segredo, e todo mundo chega mais perto da tela.",
+  "foto_busca": "coworkers chatting coffee break video call",
+  "trechos": [
+    {
+      "id": "f-eb4f7f",
+      "quem": "ana",
+      "cod": "I heard the company is hiring twenty new developers.",
+      "dica": "Ouvi dizer que a empresa está contratando vinte desenvolvedores novos.",
+      "img": "👂🧑‍💻📈",
+      "alvo": "I heard",
+      "alvo_pt": "Ouvi dizer que",
+      "conceito": "Ouvi dizer que = I heard (that). Sem it is said na conversa.",
+      "var": [
+        {
+          "em": "I heard",
+          "aceita": [
+            "I heard that"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "it is said",
+        "heard say"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7249d2",
+      "quem": "voce",
+      "contexto": "f-eb4f7f",
+      "cod": "Really? I heard we're opening an office in Recife.",
+      "dica": "Sério? Ouvi dizer que a gente vai abrir um escritório em Recife.",
+      "img": "😮🏢🌴",
+      "alvo": "I heard",
+      "alvo_pt": "Ouvi dizer que",
+      "conceito": "Plano combinado = presente contínuo (we're opening).",
+      "var": [
+        {
+          "em": "I heard",
+          "aceita": [
+            "I heard that"
+          ]
+        },
+        {
+          "em": "we're opening",
+          "aceita": [
+            "we're going to open"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "it is said",
+        "heard say"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-59b23b",
+      "quem": "mike",
+      "cod": "Apparently, the new office will have a game room.",
+      "dica": "Pelo jeito, o escritório novo vai ter uma sala de jogos.",
+      "img": "🎮🛋️",
+      "alvo": "Apparently",
+      "alvo_pt": "Pelo jeito",
+      "conceito": "apparently = pelo jeito, ao que parece: passa adiante algo que você ouviu ou notou.",
+      "registro": "informal",
+      "armadilhas": [
+        "it seems",
+        "appearently"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-06a3c8",
+      "quem": "ana",
+      "cod": "Apparently, Sarah is stuck in traffic.",
+      "dica": "Pelo jeito, a Sarah está presa no trânsito.",
+      "img": "🚗🚗🕒",
+      "alvo": "Apparently",
+      "alvo_pt": "Pelo jeito",
+      "conceito": "Presa no trânsito = stuck in traffic.",
+      "registro": "informal",
+      "armadilhas": [
+        "arrested",
+        "on the traffic"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7131957,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → Sarah (elenco), was → is; PT reescrito (Aparentemente → Pelo jeito, glossário)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-03d228",
+      "quem": "mike",
+      "cod": "I heard we're moving our headquarters to Austin.",
+      "dica": "Ouvi dizer que a gente vai mudar a nossa sede para Austin.",
+      "img": "🏢➡️🤠",
+      "alvo": "headquarters",
+      "alvo_pt": "sede",
+      "conceito": "headquarters = sede (da empresa); termina em -s mesmo no singular.",
+      "var": [
+        {
+          "em": "we're moving",
+          "aceita": [
+            "we're going to move"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "headquarter",
+        "head office"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fca9bc",
+      "quem": "sarah",
+      "contexto": "f-03d228",
+      "cod": "No, our headquarters is staying in Chicago.",
+      "dica": "Não, a nossa sede vai continuar em Chicago.",
+      "img": "🏢📍",
+      "alvo": "headquarters",
+      "alvo_pt": "sede",
+      "conceito": "headquarters = sede (com -s mesmo no singular). Vai continuar (decidido) = is staying.",
+      "var": [
+        {
+          "em": "is staying",
+          "aceita": [
+            "are staying",
+            "will stay"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "headquarter",
+        "continue",
+        "remain"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4811736,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: + 'No,', Boston → Chicago, will remain → is staying (fala); PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-85488f",
+      "quem": "sarah",
+      "cod": "The new office in Recife is expected to open in March.",
+      "dica": "A previsão é que o escritório novo em Recife abra em março.",
+      "img": "📢🏢🗓️",
+      "alvo": "is expected to",
+      "alvo_pt": "A previsão é que",
+      "conceito": "A previsão é que + sujeito = sujeito + is expected to + verbo (anúncio oficial).",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "the prevision",
+        "march"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fd67cb",
+      "quem": "sarah",
+      "cod": "The hiring process is expected to take about two months.",
+      "dica": "A previsão é que o processo de contratação leve uns dois meses.",
+      "img": "📋⏳",
+      "alvo": "is expected to",
+      "alvo_pt": "A previsão é que",
+      "conceito": "Levar (tempo) = take. uns dois meses = about two months.",
+      "registro": "formal",
+      "armadilhas": [
+        "the prevision",
+        "it is expected that"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

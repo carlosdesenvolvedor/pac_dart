@@ -1,0 +1,242 @@
+{
+  "id": "wish-condicionais-mistas.queria-que-ele-parasse",
+  "trilha": "wish-condicionais-mistas",
+  "nome": "Queria que ele parasse",
+  "emoji": "🥁",
+  "cena": "Num dia cheio de chamadas, você desabafa com a Ana sobre o barulho do prédio e o cachorro do vizinho.",
+  "resumo": "Reclamar do que outra pessoa (ou coisa) faz com wish + would: I wish he would stop...",
+  "fechamento": false,
+  "novos": [
+    "drums",
+    "barking",
+    "honk",
+    "constantly"
+  ],
+  "apoio": [
+    "slam the door"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Queria que ele parasse = I wish he would stop"
+    },
+    {
+      "t": "p",
+      "c": "Para reclamar de algo que outra pessoa (ou o cachorro, a chuva, o sistema) faz e você quer que mude: **I wish + sujeito + would + verbo**."
+    },
+    {
+      "t": "tip",
+      "c": "Na tradução, a pista é (irritado): (irritado) Queria que você respondesse = I wish you would answer."
+    },
+    {
+      "t": "warn",
+      "c": "Sobre você mesmo, nada de would: I wish I had more patience (não: I wish I would have)."
+    },
+    {
+      "t": "ex",
+      "c": "I wish that dog would stop barking during my calls!\n(irritado) Queria que aquele cachorro parasse de latir durante as minhas chamadas!"
+    }
+  ],
+  "imagem": "🎧🥁🐕",
+  "visualizacao": "Você tira o fone entre duas chamadas. Do apartamento ao lado vem o som de bateria, o cachorro late no corredor e uma buzina insiste lá embaixo.",
+  "foto_busca": "noisy apartment home office headphones",
+  "trechos": [
+    {
+      "id": "f-512007",
+      "quem": "voce",
+      "cod": "I wish my neighbor would stop playing the drums at night.",
+      "dica": "(irritado) Queria que o meu vizinho parasse de tocar bateria à noite.",
+      "pt_f": "(irritada) Queria que o meu vizinho parasse de tocar bateria à noite.",
+      "img": "🥁🌙",
+      "alvo": "drums",
+      "alvo_pt": "bateria",
+      "conceito": "tocar bateria = play the drums (com the). Irritação com outra pessoa: wish + would.",
+      "registro": "informal",
+      "armadilhas": [
+        "stopped",
+        "battery",
+        "play drums"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "blocos": [
+        6
+      ]
+    },
+    {
+      "id": "f-611e6a",
+      "quem": "ana",
+      "contexto": "f-512007",
+      "cod": "Does he play the drums every night?",
+      "dica": "Ele toca bateria toda noite?",
+      "img": "🥁📅",
+      "alvo": "drums",
+      "alvo_pt": "bateria",
+      "conceito": "Pergunta no presente com he: Does he play...? (play sem -s depois de does).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "plays",
+        "he plays"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-be1631",
+      "quem": "voce",
+      "contexto": "f-611e6a",
+      "cod": "Not every night, but he practices constantly on weekends.",
+      "dica": "Toda noite não, mas ele ensaia sem parar nos fins de semana.",
+      "img": "🔁🎶",
+      "alvo": "constantly",
+      "alvo_pt": "sem parar",
+      "conceito": "constantly = sem parar, o tempo todo. he practices: -s da 3ª pessoa.",
+      "var": [
+        {
+          "em": "on weekends",
+          "aceita": [
+            "on the weekends",
+            "on the weekend"
+          ]
+        },
+        {
+          "em": "practices",
+          "aceita": [
+            "rehearses"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR07"
+      ],
+      "armadilhas": [
+        "practice"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a693c9",
+      "quem": "voce",
+      "cod": "Plus, his dog barks a lot.",
+      "dica": "Além disso, o cachorro dele late muito.",
+      "img": "🐕🔊",
+      "alvo": "barks",
+      "alvo_pt": "late",
+      "conceito": "bark = latir; barking = latido. The dog barks: -s da 3ª pessoa.",
+      "var": [
+        {
+          "em": "Plus",
+          "aceita": [
+            "Also"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR07"
+      ],
+      "armadilhas": [
+        "bark a lot",
+        "too much"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2546918,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado 'Plus,'; Tom's dog → his dog (original: \"Tom's dog barks a lot.\"); PT reescrito (original: \"O cachorro de Tom late demais.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-332917",
+      "quem": "voce",
+      "cod": "I wish that dog would stop barking during my calls!",
+      "dica": "(irritado) Queria que aquele cachorro parasse de latir nas minhas chamadas!",
+      "pt_f": "(irritada) Queria que aquele cachorro parasse de latir nas minhas chamadas!",
+      "img": "🐕📞😤",
+      "alvo": "barking",
+      "alvo_pt": "latir",
+      "conceito": "parar de + verbo = stop + -ing (stop barking).",
+      "registro": "informal",
+      "armadilhas": [
+        "stop to bark",
+        "stopped"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "during",
+          "aceita": [
+            "on"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e1caf9",
+      "quem": "ana",
+      "cod": "At least the drivers outside don't honk at night.",
+      "dica": "Pelo menos os motoristas lá fora não buzinam à noite.",
+      "img": "🚗📯🌙",
+      "alvo": "honk",
+      "alvo_pt": "buzinam",
+      "conceito": "honk = buzinar. Negativa no presente: don't + verbo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "not honk",
+        "doesn't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b589fc",
+      "quem": "voce",
+      "contexto": "f-e1caf9",
+      "cod": "Honestly, I wish people wouldn't honk for no reason.",
+      "dica": "(irritado) Sinceramente, queria que as pessoas não buzinassem à toa.",
+      "pt_f": "(irritada) Sinceramente, queria que as pessoas não buzinassem à toa.",
+      "img": "😤🚗",
+      "alvo": "honk",
+      "alvo_pt": "buzinassem",
+      "conceito": "Queria que não fizessem (irritado) = I wish they wouldn't. à toa = for no reason.",
+      "registro": "informal",
+      "armadilhas": [
+        "didn't honk",
+        "people is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4e60dc",
+      "quem": "ana",
+      "cod": "And I wish my upstairs neighbor wouldn't slam the door constantly.",
+      "dica": "(irritada) E eu queria que o meu vizinho de cima não batesse a porta sem parar.",
+      "img": "🚪💥",
+      "alvo": "constantly",
+      "alvo_pt": "sem parar",
+      "conceito": "slam the door = bater a porta com força. upstairs neighbor = vizinho de cima.",
+      "registro": "informal",
+      "armadilhas": [
+        "hit the door",
+        "didn't slam"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        6
+      ]
+    }
+  ]
+}

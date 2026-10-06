@@ -1,0 +1,234 @@
+{
+  "id": "gostos-e-lazer.assistir-e-watch",
+  "trilha": "gostos-e-lazer",
+  "nome": "Assistir é watch",
+  "emoji": "📺",
+  "cena": "Você recomenda uma série brasileira para o Mike e pergunta o que ele assiste.",
+  "resumo": "Falar de filmes e séries com watch (assistir), sem cair no falso amigo assist.",
+  "fechamento": false,
+  "novos": [
+    "watch",
+    "movies",
+    "series",
+    "comedy"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Assistir = watch"
+    },
+    {
+      "t": "p",
+      "c": "Para filme, série, TV e jogo, o verbo é **watch**."
+    },
+    {
+      "t": "ex",
+      "c": "We watch movies on Fridays.\nA gente assiste filme às sextas."
+    },
+    {
+      "t": "tip",
+      "c": "Série = **series**, igual no singular e no plural. Favorita = **favorite** (grafia americana)."
+    },
+    {
+      "t": "warn",
+      "c": "*Assist* não é assistir: é ajudar. Assistir TV = **watch TV** (não: assist TV)."
+    }
+  ],
+  "imagem": "📺🍿🎬",
+  "visualizacao": "Fim de tarde, chamada de vídeo com o Mike e a Ana. Você imagina o sofá, o cheiro de pipoca e a série brasileira passando na TV.",
+  "foto_busca": "watching movie couch popcorn",
+  "trechos": [
+    {
+      "id": "f-8c34b5",
+      "quem": "voce",
+      "cod": "Do you watch a lot of movies?",
+      "dica": "Você assiste muito filme?",
+      "img": "🎬❓",
+      "alvo": "watch",
+      "alvo_pt": "assiste",
+      "conceito": "Assistir = watch. Assist = ajudar.",
+      "var": [
+        {
+          "em": "a lot of movies",
+          "aceita": [
+            "many movies",
+            "movies a lot"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "armadilhas": [
+        "assist"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2795488,
+        "en_autor": "CM",
+        "pt_id": 5112171,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Do you watch movies?\"; PT original: \"Você assiste filmes?\"; + a lot of (revisão nativa: pergunta de papo, não de livro); PT: assiste muito filme",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-21ef7b",
+      "quem": "mike",
+      "contexto": "f-8c34b5",
+      "cod": "Yes, we watch movies on Fridays.",
+      "dica": "Sim, a gente assiste filme às sextas.",
+      "img": "🍿🗓️",
+      "alvo": "movies",
+      "alvo_pt": "filme",
+      "conceito": "Filme (EUA) = movie; no geral, no plural: we watch movies.",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e14438",
+      "quem": "mike",
+      "cod": "But I don't watch TV very much.",
+      "dica": "Mas eu não assisto muita TV.",
+      "img": "📺👎",
+      "alvo": "watch",
+      "alvo_pt": "assisto",
+      "conceito": "very much vai no fim: I don't watch TV very much.",
+      "var": [
+        {
+          "em": "TV very much",
+          "aceita": [
+            "much TV",
+            "a lot of TV",
+            "TV a lot"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR19",
+        "BR20"
+      ],
+      "armadilhas": [
+        "assist"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4923702,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I don't watch TV very much.\"; PT original: \"Não assisto TV muito.\"; acrescentado But; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c60f6a",
+      "quem": "voce",
+      "cod": "This series is really funny.",
+      "dica": "Essa série é muito engraçada.",
+      "img": "📺😂",
+      "alvo": "series",
+      "alvo_pt": "série",
+      "conceito": "series = série, igual no singular e no plural.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4494703,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"This is really funny.\"; PT original: \"Isto é muito engraçado.\"; This → This series; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cdeff3",
+      "quem": "mike",
+      "contexto": "f-c60f6a",
+      "cod": "Is it a comedy?",
+      "dica": "É uma comédia?",
+      "img": "🎭❓",
+      "alvo": "comedy",
+      "alvo_pt": "comédia",
+      "conceito": "O it não some: Is it a comedy?",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0294ad",
+      "quem": "voce",
+      "contexto": "f-cdeff3",
+      "cod": "Yes, it's a Brazilian comedy.",
+      "dica": "Sim, é uma comédia brasileira.",
+      "img": "🇧🇷🎭😂",
+      "alvo": "comedy",
+      "alvo_pt": "comédia",
+      "conceito": "Adjetivo antes do substantivo e com maiúscula: a Brazilian comedy.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8f2bd4",
+      "quem": "ana",
+      "cod": "I love that series!",
+      "dica": "Eu adoro essa série!",
+      "img": "❤️📺",
+      "alvo": "series",
+      "alvo_pt": "série",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "this"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-84e522",
+      "quem": "ana",
+      "cod": "Mike, do you like Brazilian movies?",
+      "dica": "Mike, você gosta de filme brasileiro?",
+      "img": "🎬🇧🇷❓",
+      "alvo": "movies",
+      "alvo_pt": "filme",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

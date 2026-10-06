@@ -1,0 +1,290 @@
+{
+  "id": "se-e-quando.quando-eu-chegar-when-as-soon-as",
+  "trilha": "se-e-quando",
+  "nome": "Quando eu chegar: when, as soon as",
+  "emoji": "🛬",
+  "cena": "A caminho do aeroporto, você combina com a Julia, sua irmã, de dar notícias; no trabalho, o time espera o deploy.",
+  "resumo": "Futuro com when, as soon as e before + presente: quando eu chegar = when I arrive.",
+  "fechamento": false,
+  "novos": [
+    "as soon as",
+    "when you arrive",
+    "before you leave",
+    "hear something",
+    "lock"
+  ],
+  "apoio": [
+    "after (depois que)",
+    "message (mandar mensagem)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Quando eu chegar = when I arrive"
+    },
+    {
+      "t": "p",
+      "c": "Depois de **when, as soon as, before** e **after**, o inglês usa o **presente**, mesmo falando do futuro: Call me when you arrive."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca will depois de when ou as soon as: as soon as I land (não: as soon as I will land)."
+    },
+    {
+      "t": "tip",
+      "c": "assim que = as soon as. antes de você sair = before you leave."
+    },
+    {
+      "t": "ex",
+      "c": "I'll let you know as soon as I hear something.\nTe aviso assim que eu souber de alguma coisa."
+    }
+  ],
+  "imagem": "✈️🔑📲",
+  "visualizacao": "Noite de viagem: a Julia te leva de carro ao aeroporto. A mala balança no banco de trás e o seu celular vibra com mensagens do time.",
+  "foto_busca": "airport departure car luggage night",
+  "trechos": [
+    {
+      "id": "f-3867f8",
+      "quem": "julia",
+      "cod": "Did you lock the door?",
+      "dica": "Você trancou a porta?",
+      "img": "🔑🚪❓",
+      "alvo": "lock",
+      "alvo_pt": "trancou",
+      "conceito": "lock = trancar. Pergunta no passado: did + verbo base.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1495858,
+        "en_autor": "CK",
+        "pt_id": 5891087,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e26781",
+      "quem": "voce",
+      "contexto": "f-3867f8",
+      "cod": "Yes. I always lock it when I leave.",
+      "dica": "Sim. Eu sempre tranco quando saio.",
+      "img": "🔒🚶",
+      "alvo": "lock",
+      "alvo_pt": "tranco",
+      "conceito": "Objeto obrigatório: lock it (em português ele some). when + presente = sempre que.",
+      "var": [
+        {
+          "em": "leave",
+          "aceita": [
+            "go out"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR19"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fa9722",
+      "quem": "julia",
+      "cod": "Do you want to eat something before you leave?",
+      "dica": "Quer comer alguma coisa antes de você sair?",
+      "img": "🥐☕✈️",
+      "alvo": "before you leave",
+      "alvo_pt": "antes de você sair",
+      "conceito": "antes de você sair = before you leave (presente, com sujeito).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR02"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6702284,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'before we leave' → 'before you leave' (original: \"Do you want to eat something before we leave?\"); PT reescrito (original: \"Você quer comer alguma coisa antes de sairmos?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cf3b32",
+      "quem": "julia",
+      "cod": "Call me when you arrive.",
+      "dica": "Me liga quando você chegar.",
+      "img": "📞🛬",
+      "alvo": "when you arrive",
+      "alvo_pt": "quando você chegar",
+      "conceito": "quando você chegar = when you arrive (presente, nunca will). call me, sem to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR42"
+      ],
+      "armadilhas": [
+        "will",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-160e81",
+      "quem": "voce",
+      "contexto": "f-cf3b32",
+      "cod": "I'll call you as soon as I land.",
+      "dica": "Te ligo assim que eu pousar.",
+      "img": "🛬✅📲",
+      "alvo": "as soon as",
+      "alvo_pt": "assim que",
+      "conceito": "assim que eu pousar = as soon as I land. Te ligo (promessa) = I'll call you.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5848558,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'get home' → 'land' (original: \"I'll call you as soon as I get home.\"); PT reescrito (original: \"Vou te ligar assim que chegar em casa.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5ccfe1",
+      "quem": "julia",
+      "contexto": "f-160e81",
+      "cod": "Send me a photo of the hotel when you arrive.",
+      "dica": "Me manda uma foto do hotel quando você chegar.",
+      "img": "📸🏨",
+      "alvo": "when you arrive",
+      "alvo_pt": "quando você chegar",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-20ecb1",
+      "quem": "sarah",
+      "cod": "Call me if you hear something from the client.",
+      "dica": "Me liga se você souber de alguma coisa do cliente.",
+      "img": "📞👂💼",
+      "alvo": "hear something",
+      "alvo_pt": "souber de alguma coisa",
+      "conceito": "hear something = ficar sabendo de algo. Me liga = call me (sem to).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR42"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "something",
+          "aceita": [
+            "anything"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-5c833b",
+      "quem": "voce",
+      "contexto": "f-20ecb1",
+      "cod": "I'll let you know as soon as I hear something.",
+      "dica": "Te aviso assim que eu souber de alguma coisa.",
+      "img": "👂📩",
+      "alvo": "hear something",
+      "alvo_pt": "souber de alguma coisa",
+      "lit": "[lit.: ouvir alguma coisa]",
+      "conceito": "hear something = ficar sabendo de algo. Te aviso = I'll let you know.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "something",
+          "aceita": [
+            "anything"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b12383",
+      "quem": "voce",
+      "cod": "I'll start the deploy as soon as the tests pass.",
+      "dica": "Vou começar o deploy assim que os testes passarem.",
+      "img": "🧪✅🚀",
+      "alvo": "as soon as",
+      "alvo_pt": "assim que",
+      "conceito": "assim que os testes passarem = as soon as the tests pass (presente).",
+      "var": [
+        {
+          "em": "I'll",
+          "aceita": [
+            "I'm going to"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-be9c8b",
+      "quem": "mike",
+      "contexto": "f-b12383",
+      "cod": "Great. Send me the test results before you leave.",
+      "dica": "Ótimo. Me manda os resultados dos testes antes de você sair.",
+      "img": "📊📨",
+      "alvo": "before you leave",
+      "alvo_pt": "antes de você sair",
+      "registro": "neutro",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

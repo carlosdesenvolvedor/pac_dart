@@ -1,0 +1,207 @@
+{
+  "id": "perguntas-com-be.cena-um-colega-novo",
+  "trilha": "perguntas-com-be",
+  "nome": "Cena: um colega novo",
+  "emoji": "🙌",
+  "cena": "Na copa do escritório de Chicago, um dev novo do time puxa conversa com você.",
+  "resumo": "Fechamento: puxar conversa com perguntas com be (What's...? Where's...? Who's...? How's...?).",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Cena: um colega novo"
+    },
+    {
+      "t": "p",
+      "c": "Perguntas com be numa conversa só: What's...? Where's...? Who's that? How's...? e Is it...? para pedir detalhe."
+    },
+    {
+      "t": "ex",
+      "c": "How's the hotel? Is it nice?\nQue tal o hotel? É legal?"
+    },
+    {
+      "t": "warn",
+      "c": "Idade e estados vão com be: I'm thirty-two, I'm in a hurry (não: I have). E o it não some na pergunta: Is it nice? (não: Is nice?)"
+    }
+  ],
+  "imagem": "☕🧑‍💻👋",
+  "visualizacao": "Você está na copa do escritório e a cafeteira apita. Um dev novo, de crachá recém-impresso, se aproxima com uma caneca e puxa conversa.",
+  "foto_busca": "office kitchen coffee coworkers",
+  "trechos": [
+    {
+      "id": "f-5e49d2",
+      "quem": "dev-novo",
+      "cod": "Hi! What's your name?",
+      "dica": "Oi! Qual é o seu nome?",
+      "img": "☕👋",
+      "alvo": "What's your name?",
+      "alvo_pt": "Qual é o seu nome?",
+      "registro": "informal",
+      "armadilhas": [
+        "how you call"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c9f4d5",
+      "quem": "voce",
+      "contexto": "f-5e49d2",
+      "cod": "I'm {nome}, from Brazil.",
+      "dica": "Eu sou {nome}, do Brasil.",
+      "img": "🙋🇧🇷",
+      "alvo": "from",
+      "alvo_pt": "do",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "brasil"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7dec91",
+      "quem": "dev-novo",
+      "contexto": "f-c9f4d5",
+      "cod": "How's the hotel? Is it nice?",
+      "dica": "Que tal o hotel? É legal?",
+      "img": "🏨🤔",
+      "alvo": "How's",
+      "alvo_pt": "Que tal",
+      "conceito": "How's + coisa? = que tal...? Na segunda pergunta, o it não some: Is it nice?",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is nice?",
+        "how is it the hotel"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1885867,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "the family → the hotel, + Is it nice?; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3f352d",
+      "quem": "voce",
+      "contexto": "f-7dec91",
+      "cod": "It's nice, and it isn't expensive.",
+      "dica": "É legal, e não é caro.",
+      "img": "🛏️👍💵",
+      "alvo": "isn't",
+      "alvo_pt": "não é",
+      "var": [
+        {
+          "em": "it isn't",
+          "aceita": [
+            "it's not"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is nice",
+        "no is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aac8f0",
+      "quem": "dev-novo",
+      "cod": "Who's that? Is she a designer?",
+      "dica": "Quem é aquela? Ela é designer?",
+      "img": "👀👩‍🎨",
+      "alvo": "Who's that?",
+      "alvo_pt": "Quem é aquela?",
+      "registro": "informal",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "is she designer"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-610f5c",
+      "quem": "voce",
+      "contexto": "f-aac8f0",
+      "cod": "That's Ana. She's from Recife.",
+      "dica": "É a Ana. Ela é de Recife.",
+      "img": "👩‍🎨🌴",
+      "alvo": "She's",
+      "alvo_pt": "Ela é",
+      "var": [
+        {
+          "em": "That's",
+          "aceita": [
+            "It's"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "is from recife"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-83e016",
+      "quem": "dev-novo",
+      "cod": "Where's Mike? Is he in a meeting?",
+      "dica": "Cadê o Mike? Ele está em reunião?",
+      "img": "🔎👨‍💼🗓️",
+      "alvo": "Where's",
+      "alvo_pt": "Cadê",
+      "conceito": "Cadê...? = Where's...? (where is), para pessoa ou coisa.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "where mike",
+        "he is in a meeting?"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5a1ca7",
+      "quem": "voce",
+      "contexto": "f-83e016",
+      "cod": "Yes. Sorry, I'm in a hurry!",
+      "dica": "Sim. Desculpa, estou com pressa!",
+      "img": "🏃⏱️👋",
+      "alvo": "in a hurry",
+      "alvo_pt": "com pressa",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "i have hurry"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

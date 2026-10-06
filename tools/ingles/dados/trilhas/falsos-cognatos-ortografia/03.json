@@ -1,0 +1,333 @@
+{
+  "id": "falsos-cognatos-ortografia.ortografia-que-engana-mm-ff-th",
+  "trilha": "falsos-cognatos-ortografia",
+  "nome": "Ortografia que engana: mm, ff, th",
+  "emoji": "✍️",
+  "cena": "Antes de enviar, você relê mensagens para o time, para a Ana, para a Sarah e para a Julia, caçando erros de grafia.",
+  "resumo": "Escrever sem errar community, opportunity e recommend (letras dobradas) e usar relatives (parentes) e bookstore (livraria).",
+  "fechamento": false,
+  "novos": [
+    "community",
+    "opportunity",
+    "recommend",
+    "relatives",
+    "bookstore"
+  ],
+  "apoio": [
+    "different",
+    "Wednesday",
+    "pull"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Letras dobradas e letras mudas"
+    },
+    {
+      "t": "p",
+      "c": "O português simplificou; o inglês não: co**mm**unity, o**pp**ortunity, reco**mm**end, di**ff**erent. Também enganam o **th** (theory), o **y** (system) e as letras mudas: **wh**ich, We**d**nesday."
+    },
+    {
+      "t": "ex",
+      "c": "Which books do you recommend?\nQuais livros você recomenda?"
+    },
+    {
+      "t": "tip",
+      "c": "parentes = **relatives**; livraria = **bookstore**."
+    },
+    {
+      "t": "warn",
+      "c": "Não: comunity, oportunity, recomend, wich, Wensday. Certo: community, opportunity, recommend, which, Wednesday."
+    }
+  ],
+  "imagem": "✍️📱🔍",
+  "visualizacao": "Você está no sofá com o celular na mão, relendo cada mensagem antes de enviar. O corretor sublinha uma palavra de vermelho e você corrige letra por letra.",
+  "foto_busca": "typing a message on phone",
+  "trechos": [
+    {
+      "id": "f-b48303",
+      "quem": "voce",
+      "cod": "I'm presenting at the community call on Wednesday.",
+      "dica": "Vou apresentar na chamada da comunidade na quarta.",
+      "img": "🎤👥📅",
+      "alvo": "community",
+      "alvo_pt": "comunidade",
+      "conceito": "community tem dois m (comm-). Wednesday tem um d mudo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR45",
+        "BR46",
+        "BR17"
+      ],
+      "armadilhas": [
+        "comunity",
+        "wensday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7c0ca5",
+      "quem": "mike",
+      "contexto": "f-b48303",
+      "cod": "It's a great opportunity.",
+      "dica": "É uma ótima oportunidade.",
+      "img": "🚀🌟",
+      "alvo": "opportunity",
+      "alvo_pt": "oportunidade",
+      "conceito": "opportunity tem dois p (opp-). O it é obrigatório: It's a great...",
+      "registro": "informal",
+      "interferencias": [
+        "BR45",
+        "BR01"
+      ],
+      "armadilhas": [
+        "oportunity"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3377128,
+        "en_autor": "CK",
+        "pt_id": 4493028,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2a0546",
+      "quem": "voce",
+      "cod": "Our community needs designers. Don't miss this opportunity!",
+      "dica": "Nossa comunidade precisa de designers. Não perca essa oportunidade!",
+      "img": "🎨📣",
+      "alvo": "opportunity",
+      "alvo_pt": "oportunidade",
+      "conceito": "perder uma chance = miss. opportunity com pp.",
+      "registro": "informal",
+      "interferencias": [
+        "BR45",
+        "BR42",
+        "BR02",
+        "BR34"
+      ],
+      "armadilhas": [
+        "oportunity",
+        "lose"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2805741,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado \"Our community needs designers.\"; ponto final → exclamação (original: \"Don't miss this opportunity.\"); PT reescrito (original: \"Não perca essa oportunidade.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4b6d56",
+      "quem": "ana",
+      "cod": "This is the biggest bookstore in town.",
+      "dica": "Esta é a maior livraria da cidade.",
+      "img": "🏬📚",
+      "alvo": "bookstore",
+      "alvo_pt": "livraria",
+      "conceito": "bookstore = livraria; library = biblioteca.",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "library"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3314990,
+        "en_autor": "CK",
+        "pt_id": 6567095,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "in town",
+          "aceita": [
+            "in the city"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-dccb1c",
+      "quem": "voce",
+      "contexto": "f-4b6d56",
+      "cod": "Wow! Which books do you recommend?",
+      "dica": "Nossa! Quais livros você recomenda?",
+      "img": "📚🤔",
+      "alvo": "recommend",
+      "alvo_pt": "recomenda",
+      "conceito": "recommend: um c e dois m. which tem h depois do w.",
+      "registro": "informal",
+      "interferencias": [
+        "BR45",
+        "BR46",
+        "BR06"
+      ],
+      "armadilhas": [
+        "recomend",
+        "wich"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-31d901",
+      "quem": "ana",
+      "contexto": "f-dccb1c",
+      "cod": "I recommend this one.",
+      "dica": "Recomendo este aqui.",
+      "img": "📕👍",
+      "alvo": "recommend",
+      "alvo_pt": "Recomendo",
+      "registro": "informal",
+      "interferencias": [
+        "BR45"
+      ],
+      "armadilhas": [
+        "recomend"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3826171,
+        "en_autor": "CK",
+        "pt_id": 4770455,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I recommend this book.\"; PT original: \"Recomendo este livro.\"; this book → this one (revisão nativa: responde a \"Which books do you recommend?\" sem repetir book); PT: este livro → este aqui",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-78cea6",
+      "quem": "voce",
+      "cod": "Do you have relatives in Boston?",
+      "dica": "Você tem parentes em Boston?",
+      "img": "👨‍👩‍👧‍👦🏙️❓",
+      "alvo": "relatives",
+      "alvo_pt": "parentes",
+      "conceito": "parentes = relatives (parents = pais).",
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR06"
+      ],
+      "armadilhas": [
+        "parents"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3826076,
+        "en_autor": "CK",
+        "pt_id": 4779309,
+        "pt_autor": "anthrax26",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-73508a",
+      "quem": "sarah",
+      "contexto": "f-78cea6",
+      "cod": "All of my relatives live in Boston.",
+      "dica": "Todos os meus parentes moram em Boston.",
+      "img": "🏘️👪",
+      "alvo": "relatives",
+      "alvo_pt": "parentes",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "parents"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9935783,
+        "en_autor": "ddnktr",
+        "pt_id": 10649547,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT original: \"Todos meus parentes moram em Boston.\"; PT adaptado (Todos os meus parentes moram em Boston.); EN original mantido",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "All of my",
+          "aceita": [
+            "All my"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7a77bc",
+      "quem": "voce",
+      "cod": "There's a new bookstore near Mom's house.",
+      "dica": "Tem uma livraria nova perto da casa da mamãe.",
+      "img": "📚🏠📍",
+      "alvo": "bookstore",
+      "alvo_pt": "livraria",
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR03"
+      ],
+      "armadilhas": [
+        "library",
+        "have"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Mom's",
+          "aceita": [
+            "our mom's",
+            "my mom's"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c1d210",
+      "quem": "voce",
+      "cod": "The Flutter community is very big in Brazil.",
+      "dica": "A comunidade Flutter é muito grande no Brasil.",
+      "img": "🌐👥🇧🇷",
+      "alvo": "community",
+      "alvo_pt": "comunidade",
+      "registro": "neutro",
+      "interferencias": [
+        "BR45"
+      ],
+      "armadilhas": [
+        "comunity"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -76,7 +76,7 @@ class _RankingPageState extends State<RankingPage> {
       const SizedBox(width: 14),
       Expanded(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text('PAC·DART',
+          Text('PAC·DART · PAC·C#',
               style: Mixart.ui(size: 10, weight: FontWeight.w700, color: Mixart.brand)
                   .copyWith(letterSpacing: 2)),
           const SizedBox(height: 2),

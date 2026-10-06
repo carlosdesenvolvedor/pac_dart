@@ -1,0 +1,257 @@
+{
+  "id": "dev-reunioes.so-para-esclarecer",
+  "trilha": "dev-reunioes",
+  "nome": "Só para esclarecer",
+  "emoji": "🔎",
+  "cena": "Na reunião de refinamento, a Sarah apresenta a nova busca do app, e você pede esclarecimentos.",
+  "resumo": "Abrir a reunião e pedir esclarecimentos: Let's get started, Just to clarify, I'm not sure I follow, Could you elaborate on that?",
+  "fechamento": false,
+  "novos": [
+    "Let's get started",
+    "Just to clarify",
+    "I'm not sure I follow",
+    "an example",
+    "elaborate on"
+  ],
+  "apoio": [
+    "Could you...?",
+    "Do you know if...?",
+    "without",
+    "already"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Reunião: abrir e esclarecer"
+    },
+    {
+      "t": "p",
+      "c": "Para abrir: **Let's get started.** Para conferir se entendeu: **Just to clarify,** + pergunta. Quando se perdeu: **I'm not sure I follow.** (não sei se acompanhei)."
+    },
+    {
+      "t": "tip",
+      "c": "Para pedir detalhes: **Could you elaborate on that?** (detalhar) ou **Could you give me an example?**"
+    },
+    {
+      "t": "warn",
+      "c": "Pergunta dentro de pergunta fica na ordem normal: Do you know if the designs are ready? (não: if are the designs ready)."
+    },
+    {
+      "t": "ex",
+      "c": "Just to clarify, are we talking about the mobile app?\nSó para esclarecer: estamos falando do app mobile?"
+    }
+  ],
+  "imagem": "💻🗓️🔎",
+  "visualizacao": "Você está na sua mesa, de fone, numa chamada de vídeo. A Sarah compartilha a tela com a nova busca do app, e o Mike espera todo mundo entrar.",
+  "foto_busca": "team video call meeting laptop",
+  "trechos": [
+    {
+      "id": "f-58e375",
+      "quem": "mike",
+      "cod": "Let's get started. Is everyone here?",
+      "dica": "(abrindo a reunião) Vamos começar. Está todo mundo aqui?",
+      "img": "🗓️👋",
+      "alvo": "Let's get started",
+      "alvo_pt": "Vamos começar",
+      "conceito": "Let's get started = vamos começar, para abrir a reunião.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "everyone",
+          "aceita": [
+            "everybody"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-251f4d",
+      "quem": "sarah",
+      "contexto": "f-58e375",
+      "cod": "Ana is late, so let's get started without her.",
+      "dica": "(abrindo a reunião) A Ana está atrasada, então vamos começar sem ela.",
+      "img": "⏰🏃",
+      "alvo": "let's get started",
+      "alvo_pt": "vamos começar",
+      "conceito": "without her = sem ela (her depois de preposição).",
+      "var": [
+        {
+          "em": "Ana is",
+          "aceita": [
+            "Ana's"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-41d5e1",
+      "quem": "voce",
+      "contexto": "Today we're looking at the new search feature.",
+      "cod": "Just to clarify, are we talking about the mobile app?",
+      "dica": "Só para esclarecer: estamos falando do app mobile?",
+      "img": "📱❓",
+      "alvo": "Just to clarify",
+      "alvo_pt": "Só para esclarecer",
+      "conceito": "Just to clarify, + pergunta = só para esclarecer: confere se você entendeu.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c18b78",
+      "quem": "mike",
+      "contexto": "Yes, and we want to start it this sprint.",
+      "cod": "Just to clarify, do we know if the designs are ready?",
+      "dica": "Só para esclarecer: a gente sabe se os designs estão prontos?",
+      "img": "🎨⏳❓",
+      "alvo": "Just to clarify",
+      "alvo_pt": "Só para esclarecer",
+      "conceito": "Dentro da pergunta, ordem normal: if the designs are ready (não: if are the designs).",
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "are"
+      ],
+      "variacao_de": "f-41d5e1",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "if the designs",
+          "aceita": [
+            "whether the designs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-66de97",
+      "quem": "ana",
+      "contexto": "The filters should stay at the top of the screen.",
+      "cod": "I'm not sure I follow. Do you mean the search bar?",
+      "dica": "Não sei se acompanhei. Você quer dizer a barra de busca?",
+      "img": "🤔🔍",
+      "alvo": "I'm not sure I follow",
+      "alvo_pt": "Não sei se acompanhei",
+      "lit": "[lit.: não tenho certeza de que acompanho]",
+      "conceito": "follow = acompanhar o raciocínio de alguém.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-268060",
+      "quem": "voce",
+      "cod": "I'm not sure I follow. Haven't we already built something like that?",
+      "dica": "Não sei se acompanhei. A gente já não fez algo assim?",
+      "img": "🔁🤨",
+      "alvo": "I'm not sure I follow",
+      "alvo_pt": "Não sei se acompanhei",
+      "conceito": "Já (sem quando) = present perfect: Haven't we already...? Em en-US, Didn't we already...? também vale.",
+      "var": [
+        {
+          "em": "Haven't we already built",
+          "aceita": [
+            "Haven't we already done",
+            "Haven't we already made",
+            "Didn't we already build",
+            "Didn't we already do",
+            "Didn't we already make"
+          ]
+        },
+        {
+          "em": "like that",
+          "aceita": [
+            "like this"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8a9e25",
+      "quem": "voce",
+      "contexto": "We want the results to feel more personal.",
+      "cod": "Could you give me an example?",
+      "dica": "Você poderia me dar um exemplo?",
+      "img": "💡🙏",
+      "alvo": "an example",
+      "alvo_pt": "um exemplo",
+      "conceito": "an example: an antes de som de vogal; o artigo não cai.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c640fa",
+      "quem": "sarah",
+      "contexto": "f-8a9e25",
+      "cod": "Sure. Let me give you an example from the old app.",
+      "dica": "Claro. Deixa eu te dar um exemplo do app antigo.",
+      "img": "📲🕰️",
+      "alvo": "an example",
+      "alvo_pt": "um exemplo",
+      "conceito": "Let me + verbo = deixa eu...",
+      "blocos": [
+        1
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-95f080",
+      "quem": "mike",
+      "cod": "Could you elaborate on that, Sarah?",
+      "dica": "Você poderia detalhar isso, Sarah?",
+      "img": "🔬📝",
+      "alvo": "elaborate on",
+      "alvo_pt": "detalhar",
+      "lit": "[lit.: elaborar sobre isso]",
+      "conceito": "elaborate on = detalhar, explicar melhor (não é elaborar um plano).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9f86ab",
+      "quem": "ana",
+      "cod": "Can you elaborate on the acceptance criteria a bit?",
+      "dica": "Você pode detalhar um pouco os critérios de aceitação?",
+      "img": "📋✅",
+      "alvo": "elaborate on",
+      "alvo_pt": "detalhar",
+      "conceito": "acceptance criteria = critérios de aceitação (de uma user story).",
+      "var": [
+        {
+          "em": "a bit",
+          "aceita": [
+            "a little"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "variacao_de": "f-95f080",
+      "origem": "autoral_ia"
+    }
+  ]
+}

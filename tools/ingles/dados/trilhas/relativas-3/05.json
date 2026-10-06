@@ -1,0 +1,222 @@
+{
+  "id": "relativas-3.cena-arquitetura-e-noticias",
+  "trilha": "relativas-3",
+  "nome": "Cena: arquitetura e notícias",
+  "emoji": "🧶",
+  "cena": "Você e o Mike escrevem o documento sobre a queda da semana: o sistema, o que aconteceu e o impacto para os stakeholders.",
+  "resumo": "Todas as relativas do B2 juntas: , which comentando, preposição no fim e relativas encurtadas.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    ", which",
+    "the people I work with",
+    "coming from / stored in"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão da trilha"
+    },
+    {
+      "t": "p",
+      "c": "**, which** comenta a frase inteira; a **preposição vai para o fim** na fala (the engineer I spoke with); **-ing** e **particípio** encurtam a relativa (requests coming from..., logs stored in...)."
+    },
+    {
+      "t": "warn",
+      "c": "O que, comentando a frase = which (não: what): ..., which nobody liked. Com quem, na fala = the engineer I spoke with (não: with who I spoke)."
+    },
+    {
+      "t": "ex",
+      "c": "The service we rely on went down, which delayed the whole release.\nO serviço em que a gente se apoia caiu, o que atrasou a release inteira."
+    }
+  ],
+  "imagem": "📄🔥📉",
+  "visualizacao": "Fim de tarde, você está na chamada com o Mike. O documento da queda está aberto, cheio de gráficos vermelhos, e vocês dois escrevem e revisam parágrafo por parágrafo.",
+  "foto_busca": "incident report document laptop",
+  "trechos": [
+    {
+      "id": "f-845331",
+      "quem": "voce",
+      "cod": "The service we rely on went down, which delayed the whole release.",
+      "dica": "O serviço em que a gente se apoia caiu, o que atrasou a release inteira.",
+      "img": "🔌⬇️⏳",
+      "alvo": "",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "what"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aa9fd9",
+      "quem": "voce",
+      "cod": "Requests coming from Europe failed for two hours, which affected thousands of users.",
+      "dica": "As requisições vindas da Europa falharam por duas horas, o que afetou milhares de usuários.",
+      "img": "🌍❌👥",
+      "alvo": "",
+      "blocos": [
+        8
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "during",
+        "what"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-52034b",
+      "quem": "mike",
+      "cod": "The logs stored in the old database were never checked.",
+      "dica": "Os logs armazenados no banco antigo nunca foram verificados.",
+      "img": "🗄️🕸️",
+      "alvo": "",
+      "registro": "neutro",
+      "armadilhas": [
+        "storing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf36ea",
+      "quem": "voce",
+      "contexto": "f-52034b",
+      "cod": "I found the error log you were looking for.",
+      "dica": "Achei o log de erro que você estava procurando.",
+      "img": "🔎📜",
+      "alvo": "",
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "looking"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2327226,
+        "en_autor": "CK",
+        "pt_id": 6299029,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'the picture' → 'the error log' (original: \"I found the picture you were looking for.\"); PT: 'a foto' → 'o log de erro' (original: \"Achei a foto que você estava procurando.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a5db7a",
+      "quem": "mike",
+      "contexto": "f-bf36ea",
+      "cod": "Thanks. Here are the metrics you asked for.",
+      "dica": "Valeu. Aqui estão as métricas que você pediu.",
+      "img": "📊🙏",
+      "alvo": "",
+      "registro": "informal",
+      "armadilhas": [
+        "asked"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6569121,
+        "en_autor": "CK",
+        "pt_id": 6633096,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado 'Thanks.' e 'the documents' → 'the metrics' (original: \"Here are the documents you asked for.\"); PT: acrescentado 'Valeu.', 'os documentos' → 'as métricas' e 'você' (original: \"Aqui estão os documentos que pediu.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d4b80b",
+      "quem": "voce",
+      "cod": "The vendor I spoke with confirmed the problem this morning.",
+      "dica": "O fornecedor com quem eu falei confirmou o problema hoje de manhã.",
+      "img": "📞✅",
+      "alvo": "",
+      "var": [
+        {
+          "em": "spoke with",
+          "aceita": [
+            "talked to",
+            "spoke to",
+            "talked with"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "with who",
+        "whom"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c1e0b8",
+      "quem": "mike",
+      "cod": "The engineer you want to talk to is in California, two hours behind us.",
+      "dica": "O engenheiro com quem você quer falar está na Califórnia, duas horas atrás da gente.",
+      "img": "👷🕑🌴",
+      "alvo": "",
+      "conceito": "two hours behind = duas horas atrás (no fuso); com quem você quer falar = you want to talk to.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "armadilhas": [
+        "with who"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2031975,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'The guy you want to talk to left two hours ago.' → 'The engineer you want to talk to is in California, two hours behind us.'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-37cc9b",
+      "quem": "voce",
+      "cod": "We had to cut the scope, which nobody liked.",
+      "dica": "A gente teve que cortar o escopo, o que ninguém curtiu.",
+      "img": "✂️😕",
+      "alvo": "",
+      "var": [
+        {
+          "em": "nobody",
+          "aceita": [
+            "no one"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "what"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

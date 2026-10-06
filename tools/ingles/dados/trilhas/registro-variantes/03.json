@@ -1,0 +1,226 @@
+{
+  "id": "registro-variantes.digitar-americano-reconhecer-britanico",
+  "trilha": "registro-variantes",
+  "nome": "Digitar americano, reconhecer britânico",
+  "emoji": "🗽",
+  "cena": "Numa chamada com o Mike e dois colegas de Londres que vão visitar Chicago, você entende o inglês britânico e responde em inglês americano.",
+  "resumo": "Entender pavement, chemist, aubergine e bin, e digitar sempre sidewalk, drugstore, eggplant e trash can.",
+  "fechamento": false,
+  "novos": [
+    "sidewalk",
+    "trash can",
+    "eggplant",
+    "drugstore"
+  ],
+  "apoio": [
+    "fall (season)",
+    "apartment",
+    "vacation"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ouvir britânico, digitar americano"
+    },
+    {
+      "t": "p",
+      "c": "No curso, você digita sempre o inglês americano. O britânico só se reconhece: **pavement** = sidewalk (calçada), **chemist** = drugstore (drogaria), **aubergine** = eggplant (berinjela), **bin** = trash can (lixeira), **flat** = apartment, **lift** = elevator."
+    },
+    {
+      "t": "tip",
+      "c": "Também só para reconhecer: *holiday* = vacation, *queue* = line, *autumn* = fall, *at the weekend* = on the weekend, *Have you got...?* = Do you have...?"
+    },
+    {
+      "t": "warn",
+      "c": "Térreo, nos EUA, é **first floor** (não: ground floor, que é britânico)."
+    },
+    {
+      "t": "ex",
+      "c": "The sidewalk is still a bit slippery.\nA calçada ainda está um pouco escorregadia."
+    }
+  ],
+  "imagem": "🎧🇬🇧🗽",
+  "visualizacao": "Você está de fone, numa chamada com o Mike e dois colegas de Londres. Eles falam pavement, chemist e bin; você entende, sorri e responde em inglês americano.",
+  "foto_busca": "video call headset colleagues",
+  "trechos": [
+    {
+      "id": "f-c0cc30",
+      "quem": "voce",
+      "contexto": "Sorry I'm late. I fell on the pavement outside my flat.",
+      "cod": "Are you OK? Was the sidewalk icy?",
+      "dica": "Você está bem? A calçada estava com gelo?",
+      "img": "🤕🧊❓",
+      "alvo": "sidewalk",
+      "alvo_pt": "calçada",
+      "conceito": "pavement (UK) = sidewalk (EUA) = calçada; flat (UK) = apartment.",
+      "registro": "informal",
+      "armadilhas": [
+        "pavement"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f48ae2",
+      "quem": "mike",
+      "contexto": "Is it still icy in Chicago?",
+      "cod": "The sidewalk is still a bit slippery.",
+      "dica": "A calçada ainda está um pouco escorregadia.",
+      "img": "🚶⚠️❄️",
+      "alvo": "sidewalk",
+      "alvo_pt": "calçada",
+      "conceito": "slippery = escorregadio. a bit = um pouco.",
+      "registro": "informal",
+      "armadilhas": [
+        "pavement"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8513264,
+        "en_autor": "CK",
+        "pt_id": 8513272,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b80b6e",
+      "quem": "mike",
+      "contexto": "Is there a chemist near your office? I always forget something.",
+      "cod": "Yeah, there's a drugstore across the street.",
+      "dica": "Tem, sim, uma drogaria do outro lado da rua.",
+      "img": "💊🏪↔️",
+      "alvo": "drugstore",
+      "alvo_pt": "drogaria",
+      "conceito": "chemist (UK) = drugstore (EUA) = drogaria. Tem (existe) = there's.",
+      "var": [
+        {
+          "em": "Yeah",
+          "aceita": [
+            "Yes"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "chemist",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f40ab9",
+      "quem": "voce",
+      "cod": "Drugstores in the US sell snacks and makeup too.",
+      "dica": "As drogarias nos EUA vendem lanchinhos e maquiagem também.",
+      "img": "🍫💄💊",
+      "alvo": "Drugstores",
+      "alvo_pt": "drogarias",
+      "conceito": "Sentido geral: plural sem artigo, Drugstores in the US sell... (não: The drugstores).",
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "the",
+        "sells"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1cc3c4",
+      "quem": "voce",
+      "contexto": "What's aubergine in American English?",
+      "cod": "It's eggplant. My sister makes a great eggplant lasagna.",
+      "dica": "É berinjela. A minha irmã faz uma lasanha de berinjela ótima.",
+      "img": "🍆🍝👩",
+      "alvo": "eggplant",
+      "alvo_pt": "berinjela",
+      "conceito": "aubergine (UK) = eggplant (EUA) = berinjela. O it é obrigatório: It's eggplant.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR02"
+      ],
+      "armadilhas": [
+        "aubergine"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-38582d",
+      "quem": "mike",
+      "contexto": "f-1cc3c4",
+      "cod": "I love eggplant.",
+      "dica": "Eu adoro berinjela.",
+      "img": "😋🍆❤️",
+      "alvo": "eggplant",
+      "alvo_pt": "berinjela",
+      "conceito": "Sem artigo: eggplant no sentido geral (não: I love the eggplant).",
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1815929,
+        "en_autor": "Chrikaru",
+        "pt_id": 5697445,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c6d697",
+      "quem": "mike",
+      "contexto": "Where do I put my coffee cup at your office? In the bin?",
+      "cod": "Coffee cups go in the trash can, not in the recycling.",
+      "dica": "Copos de café vão na lixeira, não na reciclagem.",
+      "img": "☕🗑️♻️",
+      "alvo": "trash can",
+      "alvo_pt": "lixeira",
+      "conceito": "bin (UK) = trash can (EUA) = lixeira.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "bin"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1faa45",
+      "quem": "voce",
+      "contexto": "What was that noise? Is everything OK?",
+      "cod": "Sorry, the wind just knocked over the trash can outside.",
+      "dica": "Desculpa, o vento acabou de derrubar a lixeira lá fora.",
+      "img": "💨🗑️🔊",
+      "alvo": "trash can",
+      "alvo_pt": "lixeira",
+      "conceito": "acabou de + verbo = just + passado (EUA). knock over = derrubar.",
+      "registro": "informal",
+      "armadilhas": [
+        "bin"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

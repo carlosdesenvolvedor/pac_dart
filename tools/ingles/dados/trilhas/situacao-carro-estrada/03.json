@@ -1,0 +1,244 @@
+{
+  "id": "situacao-carro-estrada.estacionamento-e-multa",
+  "trilha": "situacao-carro-estrada",
+  "nome": "Estacionamento e multa",
+  "emoji": "🅿️",
+  "cena": "No centro de San Antonio, à noite, você e a Sarah procuram onde estacionar e depois descobrem o carro guinchado.",
+  "resumo": "Perguntar onde pode estacionar, falar de uma multa e de um carro guinchado.",
+  "fechamento": false,
+  "novos": [
+    "parking ticket (multa)",
+    "overnight",
+    "tow (guinchar)"
+  ],
+  "apoio": [
+    "sign (placa)",
+    "parking lot"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Multa e guincho"
+    },
+    {
+      "t": "p",
+      "c": "**parking ticket** = multa de estacionamento; **overnight** = a noite toda (até o dia seguinte); **was towed** = foi guinchado."
+    },
+    {
+      "t": "tip",
+      "c": "O carro foi guinchado enquanto a gente jantava = The car was towed while we were having dinner (passiva + passado contínuo)."
+    },
+    {
+      "t": "warn",
+      "c": "Queria ter lido a placa = I wish I had read the sign (não: I wish I read)."
+    }
+  ],
+  "imagem": "🅿️🚫🚗",
+  "visualizacao": "Centro de San Antonio à noite, luzes refletindo no rio. Vocês voltam do jantar e encontram a vaga vazia, só a placa que ninguém leu.",
+  "foto_busca": "downtown street parking sign night",
+  "trechos": [
+    {
+      "id": "f-692011",
+      "quem": "voce",
+      "cod": "Where am I allowed to park overnight?",
+      "dica": "Onde eu posso estacionar a noite toda?",
+      "img": "🅿️🌙",
+      "alvo": "overnight",
+      "alvo_pt": "a noite toda",
+      "conceito": "overnight = a noite toda, até o dia seguinte. be allowed to = ter permissão para.",
+      "var": [
+        {
+          "em": "am I allowed to",
+          "aceita": [
+            "can I"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "at night",
+        "during the night"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8503b1",
+      "quem": "recepcionista",
+      "contexto": "f-692011",
+      "cod": "We don't have a parking lot, but you can park on the street.",
+      "dica": "Não temos estacionamento, mas você pode estacionar na rua.",
+      "img": "🛣️🚗",
+      "alvo": "park on the street",
+      "alvo_pt": "estacionar na rua",
+      "conceito": "estacionamento (o lugar) = parking lot; na rua = on the street.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR07",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in the street",
+        "parking"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 11043377,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN sem alteração; PT reescrito (original: \"Não temos estacionamento, mas pode estacionar na rua.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-76e763",
+      "quem": "sarah",
+      "cod": "You're not allowed to park here overnight.",
+      "dica": "Você não pode estacionar aqui a noite toda.",
+      "img": "🚫🌙",
+      "alvo": "overnight",
+      "alvo_pt": "a noite toda",
+      "conceito": "não pode (regra) = you're not allowed to (ou can't).",
+      "var": [
+        {
+          "em": "You're not allowed to",
+          "aceita": [
+            "You aren't allowed to",
+            "You can't"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "mustn't",
+        "at night"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6089153,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: You aren't → You're not; acrescentado 'overnight' (original: \"You aren't allowed to park here.\"); PT reescrito (original: \"Você não pode estacionar aqui.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fa44ce",
+      "quem": "voce",
+      "cod": "I got a parking ticket. I wish I had read the sign.",
+      "dica": "Levei uma multa de estacionamento. Queria ter lido a placa.",
+      "img": "🎫😩",
+      "alvo": "parking ticket",
+      "alvo_pt": "multa de estacionamento",
+      "conceito": "levar uma multa = get a ticket. Queria ter lido = I wish I had read (past perfect).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "took a",
+        "fine",
+        "I wish I read"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-823582",
+      "quem": "sarah",
+      "contexto": "f-fa44ce",
+      "cod": "How much was the parking ticket?",
+      "dica": "De quanto foi a multa de estacionamento?",
+      "img": "💲🎫",
+      "alvo": "parking ticket",
+      "alvo_pt": "multa de estacionamento",
+      "conceito": "De quanto foi? = How much was...?",
+      "registro": "informal",
+      "armadilhas": [
+        "how many",
+        "of how much"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-885b8f",
+      "quem": "voce",
+      "cod": "Wait, where's our car? It must have been towed!",
+      "dica": "Espera, cadê o nosso carro? Deve ter sido guinchado!",
+      "img": "🚗❓🚛",
+      "alvo": "towed",
+      "alvo_pt": "guinchado",
+      "conceito": "Deve ter sido guinchado = It must have been towed (dedução + passiva). Sujeito it obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR58"
+      ],
+      "armadilhas": [
+        "must have towed",
+        "should"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-80a810",
+      "quem": "voce",
+      "cod": "Our car was towed while we were having dinner.",
+      "dica": "O nosso carro foi guinchado enquanto a gente jantava.",
+      "img": "🚛🍽️",
+      "alvo": "towed",
+      "alvo_pt": "guinchado",
+      "conceito": "foi guinchado = was towed (passiva). enquanto a gente jantava = while we were having dinner.",
+      "var": [
+        {
+          "em": "having dinner",
+          "aceita": [
+            "eating dinner"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "towed our car",
+        "had dinner"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7ce88b",
+      "quem": "sarah",
+      "contexto": "f-80a810",
+      "cod": "I wish we had parked somewhere else.",
+      "dica": "Queria que a gente tivesse estacionado em outro lugar.",
+      "img": "🅿️🤦",
+      "alvo": "wish we had",
+      "alvo_pt": "Queria que a gente tivesse",
+      "conceito": "Arrependimento: wish + had + particípio (we had parked = a gente tivesse estacionado).",
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "wish we parked",
+        "would have parked"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

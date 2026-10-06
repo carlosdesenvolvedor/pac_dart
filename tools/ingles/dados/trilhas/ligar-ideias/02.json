@@ -1,0 +1,240 @@
+{
+  "id": "ligar-ideias.a-nao-ser-que-seja-urgente",
+  "trilha": "ligar-ideias",
+  "nome": "A não ser que seja urgente",
+  "emoji": "🚨",
+  "cena": "Na reunião de planejamento, o time decide como gravar a demo do cliente e o que fazer com os voos atrasados pela tempestade.",
+  "resumo": "Condição e finalidade: unless, so that, because of.",
+  "fechamento": false,
+  "novos": [
+    "unless",
+    "so that",
+    "because of",
+    "urgent",
+    "record (gravar)"
+  ],
+  "apoio": [
+    "the weather",
+    "later"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A não ser que = unless"
+    },
+    {
+      "t": "p",
+      "c": "**unless** + presente = a não ser que. **so that** + sujeito + can = para que. **because of** + substantivo = por causa de; **because** + frase."
+    },
+    {
+      "t": "tip",
+      "c": "Finalidade simples: to + verbo (I called to ask). in order to é a versão mais formal."
+    },
+    {
+      "t": "warn",
+      "c": "Não: unless it will be urgent; for to record."
+    },
+    {
+      "t": "ex",
+      "c": "Don't call me unless it's urgent.\nNão me liga, a não ser que seja urgente."
+    }
+  ],
+  "imagem": "🎥📅⛈️",
+  "visualizacao": "Quinta de manhã, você vê a pauta na tela: demo do cliente, gravação, voos. Pela janela do Mike, em Chicago, o céu está escuro e venta forte.",
+  "foto_busca": "planning meeting calendar storm window",
+  "trechos": [
+    {
+      "id": "f-dab7ce",
+      "quem": "sarah",
+      "cod": "Let's record the demo on Monday.",
+      "dica": "Vamos gravar a demo na segunda.",
+      "img": "🎥▶️",
+      "alvo": "record",
+      "alvo_pt": "gravar",
+      "conceito": "gravar (vídeo, reunião) = record.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1c3293",
+      "quem": "mike",
+      "contexto": "f-dab7ce",
+      "cod": "Good idea. We can share it so that everyone can watch it later.",
+      "dica": "Boa ideia. A gente pode compartilhar pra que todo mundo possa assistir depois.",
+      "img": "🔗👥📺",
+      "alvo": "so that",
+      "alvo_pt": "pra que",
+      "conceito": "pra que todo mundo possa = so that everyone can (não: for everyone can).",
+      "registro": "informal",
+      "interferencias": [
+        "BR30",
+        "BR01"
+      ],
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bcee5f",
+      "quem": "voce",
+      "cod": "Can we record the meeting with the client too?",
+      "dica": "A gente pode gravar a reunião com o cliente também?",
+      "img": "📹🤝",
+      "alvo": "record",
+      "alvo_pt": "gravar",
+      "conceito": "record the meeting = gravar a reunião.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-447c75",
+      "quem": "sarah",
+      "contexto": "f-bcee5f",
+      "cod": "We can't, unless the client agrees.",
+      "dica": "Não dá, a não ser que o cliente concorde.",
+      "img": "🙅✋",
+      "alvo": "unless",
+      "alvo_pt": "a não ser que",
+      "conceito": "unless + presente: unless the client agrees (não: unless the client will agree).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR02"
+      ],
+      "armadilhas": [
+        "will",
+        "agree"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7b588a",
+      "quem": "mike",
+      "cod": "I'll send you my notes so that you can prepare.",
+      "dica": "Vou te mandar as minhas anotações pra que você possa se preparar.",
+      "img": "📝📤",
+      "alvo": "so that",
+      "alvo_pt": "pra que",
+      "conceito": "anotações = notes; se preparar = prepare, sem yourself.",
+      "registro": "informal",
+      "interferencias": [
+        "BR62"
+      ],
+      "armadilhas": [
+        "yourself",
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0be0a0",
+      "quem": "sarah",
+      "cod": "Oh, and the client's bug is urgent. Can you fix it today?",
+      "dica": "Ah, e o bug do cliente é urgente. Você consegue corrigir hoje?",
+      "img": "🐛🚨",
+      "alvo": "urgent",
+      "alvo_pt": "urgente",
+      "conceito": "o bug do cliente = the client's bug; corrigir isso = fix it (o it é obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-933644",
+      "quem": "voce",
+      "contexto": "f-0be0a0",
+      "cod": "Sure, unless the API goes down again.",
+      "dica": "Claro, a não ser que a API caia de novo.",
+      "img": "🔌⬇️",
+      "alvo": "unless",
+      "alvo_pt": "a não ser que",
+      "conceito": "a não ser que caia = unless it goes down: presente com sentido de futuro.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8a0c57",
+      "quem": "mike",
+      "cod": "A lot of flights to Austin were canceled because of the storm.",
+      "dica": "Muitos voos pra Austin foram cancelados por causa da tempestade.",
+      "img": "✈️⛈️❌",
+      "alvo": "because of",
+      "alvo_pt": "por causa da",
+      "conceito": "por causa de + substantivo = because of; because + frase inteira.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9773649,
+        "en_autor": "CK",
+        "pt_id": 9775320,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Many flights were canceled because of the storm.\"; PT original: \"Muitos voos foram cancelados por causa da tempestade.\"; Many → A lot of (fala); + to Austin; PT adaptado (+ pra Austin)",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "A lot of",
+          "aceita": [
+            "Many",
+            "Lots of"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-dec97b",
+      "quem": "sarah",
+      "contexto": "f-8a0c57",
+      "cod": "I know. My flight was delayed because of the weather too.",
+      "dica": "Eu sei. O meu voo também atrasou por causa do tempo.",
+      "img": "🛫⏳🌧️",
+      "alvo": "because of",
+      "alvo_pt": "por causa do",
+      "conceito": "o voo atrasou = the flight was delayed (passiva em inglês); o tempo (clima) = the weather.",
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5dccc5",
+      "quem": "mike",
+      "cod": "If anything is urgent, send me a message.",
+      "dica": "Se alguma coisa for urgente, me manda mensagem.",
+      "img": "📱🚨",
+      "alvo": "urgent",
+      "alvo_pt": "urgente",
+      "conceito": "Se alguma coisa for urgente = If anything is urgent: presente depois de if (não: will be).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "anything",
+          "aceita": [
+            "something"
+          ]
+        }
+      ]
+    }
+  ]
+}

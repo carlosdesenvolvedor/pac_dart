@@ -1,0 +1,178 @@
+{
+  "id": "funcoes-conversa-b2.boa-pergunta-deixa-eu-pensar",
+  "trilha": "funcoes-conversa-b2",
+  "nome": "Boa pergunta, deixa eu pensar",
+  "emoji": "🤔",
+  "cena": "Numa reunião com um cliente novo, você recebe perguntas que não esperava.",
+  "resumo": "Ganhar tempo antes de responder sem parecer perdido.",
+  "fechamento": false,
+  "novos": [
+    "a difficult question to answer",
+    "off the top of my head",
+    "how can I put this",
+    "let me see"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ganhar tempo"
+    },
+    {
+      "t": "p",
+      "c": "**Let me see.** = deixa eu ver. **Off the top of my head,...** = assim de cabeça. **How can I put this?** = como eu posso colocar isso? **That's a difficult question to answer.** = essa é uma pergunta difícil de responder."
+    },
+    {
+      "t": "warn",
+      "c": "O **né?** do fim vira question tag, com o auxiliar invertido: It wasn't our best meeting, **was it?**"
+    },
+    {
+      "t": "ex",
+      "c": "Off the top of my head, it'll take about three weeks.\nAssim de cabeça, vai levar umas três semanas."
+    }
+  ],
+  "imagem": "🤔💻🗨️",
+  "visualizacao": "Você está numa call com um cliente novo, o Mike num quadradinho ao lado. As perguntas chegam uma atrás da outra e você toma um gole de café para pensar.",
+  "foto_busca": "client video meeting thinking",
+  "trechos": [
+    {
+      "id": "f-5656ba",
+      "quem": "voce",
+      "contexto": "Why does the app use so much battery on older phones?",
+      "cod": "That's a difficult question to answer.",
+      "dica": "Essa é uma pergunta difícil de responder.",
+      "img": "🔋📱❓",
+      "alvo": "a difficult question to answer",
+      "alvo_pt": "uma pergunta difícil de responder",
+      "conceito": "difícil de responder = difficult to answer (não: difficult of answering).",
+      "registro": "neutro",
+      "armadilhas": [
+        "of",
+        "answering"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5132189,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"That's a very difficult question.\" (very removido; acrescentado to answer); PT reescrito (original: \"Essa é uma pergunta muito difícil.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8fb806",
+      "quem": "cliente",
+      "cod": "Can you give me a rough estimate off the top of your head?",
+      "dica": "Você consegue me dar uma estimativa aproximada assim de cabeça?",
+      "img": "🔢🧠❓",
+      "alvo": "off the top of your head",
+      "alvo_pt": "assim de cabeça",
+      "conceito": "assim de cabeça = off the top of my head (não: from my head).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "from"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2b95fa",
+      "quem": "voce",
+      "contexto": "f-8fb806",
+      "cod": "Off the top of my head, I'd say roughly three weeks.",
+      "dica": "Assim de cabeça, eu diria mais ou menos três semanas.",
+      "img": "🧠📅⏳",
+      "alvo": "Off the top of my head",
+      "alvo_pt": "Assim de cabeça",
+      "conceito": "roughly = mais ou menos, aproximadamente.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "blocos": [
+        6
+      ]
+    },
+    {
+      "id": "f-c74e49",
+      "quem": "voce",
+      "contexto": "And is the new design ready?",
+      "cod": "How can I put this? The design isn't quite ready yet.",
+      "dica": "Como eu posso colocar isso? O design ainda não está bem pronto.",
+      "img": "🎨🚧😬",
+      "alvo": "How can I put this",
+      "alvo_pt": "Como eu posso colocar isso",
+      "conceito": "put aqui = colocar em palavras, dizer; not quite ready = não está bem pronto.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-32d60d",
+      "quem": "voce",
+      "contexto": "Does the app work offline?",
+      "cod": "Let me see. It works offline, but it doesn't sync.",
+      "dica": "Deixa eu ver. Funciona offline, mas não sincroniza.",
+      "img": "✈️📱🔄",
+      "alvo": "Let me see",
+      "alvo_pt": "Deixa eu ver",
+      "conceito": "Funciona = It works: o it é obrigatório.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR07"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a02af",
+      "quem": "voce",
+      "contexto": "How many users does the app have right now?",
+      "cod": "Let me see. I'd have to check the numbers.",
+      "dica": "Deixa eu ver. Eu teria que verificar os números.",
+      "img": "📊🔍🤔",
+      "alvo": "Let me see",
+      "alvo_pt": "Deixa eu ver",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3de4ad",
+      "quem": "voce",
+      "contexto": "Why did the app crash on Monday?",
+      "cod": "That's a difficult question to answer without the logs.",
+      "dica": "Essa é uma pergunta difícil de responder sem os logs.",
+      "img": "💥📜❓",
+      "alvo": "a difficult question to answer",
+      "alvo_pt": "uma pergunta difícil de responder",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bb4694",
+      "quem": "mike",
+      "cod": "How can I put this? It wasn't our best meeting, was it?",
+      "dica": "Como eu posso colocar isso? Não foi a nossa melhor reunião, né?",
+      "img": "😅📉🤝",
+      "alvo": "How can I put this",
+      "alvo_pt": "Como eu posso colocar isso",
+      "conceito": "né? depois de frase negativa = tag positiva: It wasn't..., was it?",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR59",
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

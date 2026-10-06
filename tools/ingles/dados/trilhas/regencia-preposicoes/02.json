@@ -1,0 +1,351 @@
+{
+  "id": "regencia-preposicoes.casada-com-um-medico",
+  "trilha": "regencia-preposicoes",
+  "nome": "Casada com um médico",
+  "emoji": "💍",
+  "cena": "No intervalo, a Ana mostra fotos da família e do antigo time dela em Recife.",
+  "resumo": "Adjetivo + preposição: married to, good at, bad at, proud of.",
+  "fechamento": false,
+  "novos": [
+    "married to",
+    "good at",
+    "proud of",
+    "remembering names",
+    "bad at"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Casado com = married to"
+    },
+    {
+      "t": "p",
+      "c": "O adjetivo escolhe a preposição: **married to** (casado com), **good at / bad at** (bom / ruim em), **proud of** (orgulho de). Depois de at, o verbo vai com -ing: good at remembering names."
+    },
+    {
+      "t": "warn",
+      "c": "Não: married with, good in, bad in, proud with."
+    },
+    {
+      "t": "ex",
+      "c": "My sister is married to a doctor.\nA minha irmã é casada com um médico."
+    }
+  ],
+  "imagem": "📸👨‍👩‍👧💍",
+  "visualizacao": "Você e a Ana tomam café na copa. Ela desliza o dedo no celular e mostra fotos: a irmã num casamento na praia, o irmão no escritório, o antigo time sorrindo em Recife.",
+  "foto_busca": "friends looking at phone photos",
+  "trechos": [
+    {
+      "id": "f-d7415d",
+      "quem": "ana",
+      "cod": "My sister is married to a doctor from Boston.",
+      "dica": "A minha irmã é casada com um médico de Boston.",
+      "img": "👰🩺",
+      "alvo": "married to",
+      "alvo_pt": "casada com",
+      "conceito": "casado com = married to (não: married with).",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6439437,
+        "en_autor": "CK",
+        "pt_id": 7826448,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom is married to a doctor.\"; PT original: \"Tom é casado com uma médica.\"; Tom → My sister; + from Boston; PT adaptado (A minha irmã é casada com um médico de Boston)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-15abaa",
+      "quem": "ana",
+      "cod": "And my brother is married to his job.",
+      "dica": "E o meu irmão é casado com o trabalho.",
+      "img": "👨‍💼💼",
+      "alvo": "married to",
+      "alvo_pt": "casado com",
+      "conceito": "married to his job = casado com o trabalho (vive pra trabalhar).",
+      "var": [
+        {
+          "em": "his job",
+          "aceita": [
+            "the job",
+            "his work"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a981a1",
+      "quem": "voce",
+      "contexto": "f-15abaa",
+      "cod": "Ha! Is he good at it, at least?",
+      "dica": "Haha! Pelo menos ele é bom nisso?",
+      "img": "😄👍❓",
+      "alvo": "good at it",
+      "alvo_pt": "bom nisso",
+      "conceito": "bom em = good at (não: good in); nisso = at it.",
+      "var": [
+        {
+          "em": "Ha!",
+          "aceita": [
+            "Haha!"
+          ]
+        },
+        {
+          "em": "Is he good at it, at least",
+          "aceita": [
+            "Is he at least good at it"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-24d494",
+      "quem": "ana",
+      "contexto": "f-a981a1",
+      "cod": "Yeah, he's great. My parents are really proud of him.",
+      "dica": "É, ele é ótimo. Os meus pais têm muito orgulho dele.",
+      "img": "👨‍👩‍👦🏅",
+      "alvo": "proud of him",
+      "alvo_pt": "orgulho dele",
+      "lit": "[lit.: estão muito orgulhosos dele]",
+      "conceito": "ter orgulho de = be proud of (não: have pride of).",
+      "var": [
+        {
+          "em": "Yeah",
+          "aceita": [
+            "Yes"
+          ]
+        },
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f0ca0d",
+      "quem": "voce",
+      "contexto": "f-24d494",
+      "cod": "Your parents must be proud of you too.",
+      "dica": "Seus pais também devem ter orgulho de você.",
+      "img": "👨‍👩‍👧💖",
+      "alvo": "proud of",
+      "alvo_pt": "orgulho de",
+      "conceito": "devem ter orgulho (dedução) = must be proud; ter orgulho de = be proud of.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6252222,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Your parents must be proud of you.\"; + too; PT reescrito (original: \"Seus pais devem estar orgulhosos de você.\" → também devem ter orgulho de você, como no resto do curso)",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "must be proud of you too",
+          "aceita": [
+            "must also be proud of you"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-29ac42",
+      "quem": "ana",
+      "contexto": "f-f0ca0d",
+      "cod": "I hope so! But I'm really bad at calling them.",
+      "dica": "Espero que sim! Mas eu sou muito ruim em ligar pra eles.",
+      "img": "📞😅",
+      "alvo": "bad at",
+      "alvo_pt": "ruim em",
+      "conceito": "ruim em + verbo = bad at + -ing; ligar pra eles = call them, sem to.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53",
+        "BR42",
+        "BR43"
+      ],
+      "armadilhas": [
+        "in",
+        "call",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c721e",
+      "quem": "voce",
+      "contexto": "You met my old team on a call last year. Do you remember their names?",
+      "cod": "Sorry, I'm not very good at remembering names.",
+      "dica": "Desculpa, eu não sou muito bom em lembrar nomes.",
+      "pt_f": "Desculpa, eu não sou muito boa em lembrar nomes.",
+      "img": "🧠🏷️❓",
+      "alvo": "remembering names",
+      "alvo_pt": "lembrar nomes",
+      "conceito": "Depois de at vem -ing: good at remembering names; nomes em geral, sem the.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21",
+        "BR53"
+      ],
+      "armadilhas": [
+        "remember",
+        "the"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3444684,
+        "en_autor": "CK",
+        "pt_id": 3446563,
+        "pt_autor": "piterkeo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom isn't good at remembering names.\"; PT original: \"Tom não é bom em lembrar nomes.\"; Tom isn't → Sorry, I'm not very; PT adaptado (Desculpa, eu não sou muito bom...)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8e4b6d",
+      "quem": "ana",
+      "contexto": "f-4c721e",
+      "cod": "Don't worry. I'm bad at it too.",
+      "dica": "Não se preocupa. Eu também sou ruim nisso.",
+      "img": "🙈🤝",
+      "alvo": "bad at it",
+      "alvo_pt": "ruim nisso",
+      "conceito": "nisso = at it: bad at it, good at it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I'm bad at it too",
+          "aceita": [
+            "I'm also bad at it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cdb673",
+      "quem": "ana",
+      "cod": "But our editor was great at remembering names.",
+      "dica": "Mas o nosso editor era ótimo em lembrar nomes.",
+      "img": "📝🧠✨",
+      "alvo": "remembering names",
+      "alvo_pt": "lembrar nomes",
+      "conceito": "great at / good at / bad at + -ing: great at remembering names.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "remember",
+        "in"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-4c721e"
+    },
+    {
+      "id": "f-359851",
+      "quem": "voce",
+      "contexto": "Sometimes I'm not sure I'm a good designer.",
+      "cod": "Are you kidding? You're really good at what you do.",
+      "dica": "Tá brincando? Você é muito boa no que faz.",
+      "img": "🎨👏",
+      "alvo": "good at what you do",
+      "alvo_pt": "boa no que faz",
+      "conceito": "bom no que faz = good at what you do.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3330576,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm good at what I do.\"; + Are you kidding?; I'm → You're really; what I do → what you do; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

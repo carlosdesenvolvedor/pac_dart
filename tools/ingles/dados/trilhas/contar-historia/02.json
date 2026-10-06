@@ -1,0 +1,280 @@
+{
+  "id": "contar-historia.primeiro-depois-por-fim",
+  "trilha": "contar-historia",
+  "nome": "Primeiro, depois, por fim",
+  "emoji": "🧳",
+  "cena": "No jantar na casa do Ben, em Boston, você conta como foi o seu dia, do aeroporto até lá.",
+  "resumo": "Contar em ordem com first, then, after that e finally, usando found e lost.",
+  "fechamento": false,
+  "novos": [
+    "then (depois)",
+    "after that",
+    "finally",
+    "find / found",
+    "lose / lost"
+  ],
+  "apoio": [
+    "first (primeiro, na sequência)",
+    "bag (mala)",
+    "passport"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Primeiro, depois, por fim"
+    },
+    {
+      "t": "p",
+      "c": "Para contar em ordem: **First** (primeiro), **then** (depois), **After that** (depois disso), **Finally** (por fim). No começo da frase, After that e Finally levam vírgula."
+    },
+    {
+      "t": "ex",
+      "c": "After that, I called the taxi company.\nDepois disso, liguei para a empresa de táxi."
+    },
+    {
+      "t": "tip",
+      "c": "Irregulares novos: find → **found** (achei), lose → **lost** (perdi), bring → brought (trouxe)."
+    },
+    {
+      "t": "warn",
+      "c": "finally tem dois l (não: finaly)."
+    }
+  ],
+  "imagem": "✈️🚕👛",
+  "visualizacao": "Você está jantando na casa do Ben, em Boston, depois de um dia longo. Você conta o caminho do aeroporto até lá e ele ri de cada parte.",
+  "foto_busca": "airport taxi city night",
+  "trechos": [
+    {
+      "id": "f-d52df6",
+      "quem": "voce",
+      "contexto": "So, how was your trip from the airport?",
+      "cod": "First I had lunch, then I took a taxi.",
+      "dica": "Primeiro almocei, depois peguei um táxi.",
+      "img": "🍔🚕",
+      "alvo": "then",
+      "alvo_pt": "depois",
+      "conceito": "then = depois, na sequência: First..., then...",
+      "registro": "informal",
+      "armadilhas": [
+        "after",
+        "later"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c98473",
+      "quem": "ben",
+      "contexto": "f-d52df6",
+      "cod": "And then what happened?",
+      "dica": "E depois, o que aconteceu?",
+      "img": "🤔➡️",
+      "alvo": "then",
+      "alvo_pt": "depois",
+      "conceito": "And then what happened? = e depois, o que aconteceu? (sem did)",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did",
+        "after"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5ae4b2",
+      "quem": "voce",
+      "contexto": "f-c98473",
+      "cod": "I lost my wallet in the taxi!",
+      "dica": "Perdi minha carteira no táxi!",
+      "img": "👛😱🚕",
+      "alvo": "lost",
+      "alvo_pt": "Perdi",
+      "conceito": "lose → lost (passado irregular): perder um objeto.",
+      "registro": "informal",
+      "armadilhas": [
+        "losed",
+        "lose",
+        "missed"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9207561,
+        "en_autor": "CK",
+        "pt_id": 10789828,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'phone in Boston' → 'wallet in the taxi'; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c2d487",
+      "quem": "ben",
+      "contexto": "f-5ae4b2",
+      "cod": "Oh no! Did you lose your passport too?",
+      "dica": "Ah, não! Você perdeu o seu passaporte também?",
+      "img": "🛂❓",
+      "alvo": "lose",
+      "alvo_pt": "perdeu",
+      "conceito": "Com did, o verbo fica puro: Did you lose...? (não: Did you lost...?)",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "lost"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3439720,
+        "en_autor": "CK",
+        "pt_id": 6389697,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'car keys' → 'passport', 'Oh no!' e 'too' acrescentados; PT ajustado",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "Did you lose your passport too",
+          "aceita": [
+            "Did you also lose your passport"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-470be5",
+      "quem": "voce",
+      "contexto": "f-c2d487",
+      "cod": "No, I didn't. After that, I called the taxi company.",
+      "dica": "Não, não perdi. Depois disso, liguei para a empresa de táxi.",
+      "img": "☎️🚕",
+      "alvo": "After that",
+      "alvo_pt": "Depois disso",
+      "conceito": "After that, = depois disso (com vírgula). call alguém, sem to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-898cde",
+      "quem": "ben",
+      "contexto": "f-470be5",
+      "cod": "That happens a lot here. Did they find it?",
+      "dica": "Isso acontece muito aqui. Eles acharam?",
+      "img": "🔍👛",
+      "alvo": "find",
+      "alvo_pt": "acharam",
+      "conceito": "Com did, find fica puro. That happens = isso acontece (com -s).",
+      "registro": "informal",
+      "interferencias": [
+        "BR07",
+        "BR18"
+      ],
+      "armadilhas": [
+        "found",
+        "happen"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1886214,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'anything' → 'it' e 'That happens a lot here.' acrescentado antes; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4b931e",
+      "quem": "voce",
+      "contexto": "f-898cde",
+      "cod": "Yes! The taxi driver found it an hour later.",
+      "dica": "Sim! O taxista achou uma hora depois.",
+      "img": "🚕👛✅",
+      "alvo": "found",
+      "alvo_pt": "achou",
+      "conceito": "find → found (passado irregular). an hour later = uma hora depois.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "finded"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4513ff",
+      "quem": "voce",
+      "cod": "After that, he brought it to my hotel.",
+      "dica": "Depois disso, ele trouxe até o meu hotel.",
+      "img": "🏨👛",
+      "alvo": "After that",
+      "alvo_pt": "Depois disso",
+      "conceito": "bring → brought = trazer. Em inglês o objeto é obrigatório: brought it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "brang",
+        "bringed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0b77d5",
+      "quem": "voce",
+      "cod": "Finally, I got here at nine.",
+      "dica": "Por fim, cheguei aqui às nove.",
+      "img": "🏠🕘",
+      "alvo": "Finally",
+      "alvo_pt": "Por fim",
+      "conceito": "Finally, = por fim (com ll e vírgula). get here = chegar aqui (sem to).",
+      "registro": "informal",
+      "interferencias": [
+        "BR46"
+      ],
+      "armadilhas": [
+        "finaly",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-641deb",
+      "quem": "ben",
+      "contexto": "f-0b77d5",
+      "cod": "And now we're finally having dinner!",
+      "dica": "E agora a gente finalmente está jantando!",
+      "img": "🍽️😄",
+      "alvo": "finally",
+      "alvo_pt": "finalmente",
+      "conceito": "finally no meio da frase = finalmente, até que enfim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR46"
+      ],
+      "armadilhas": [
+        "finaly"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

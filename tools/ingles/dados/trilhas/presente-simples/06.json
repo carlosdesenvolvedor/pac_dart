@@ -1,0 +1,182 @@
+{
+  "id": "presente-simples.cena-meu-dia-de-trabalho-remoto",
+  "trilha": "presente-simples",
+  "nome": "Cena: meu dia de trabalho remoto",
+  "emoji": "💻",
+  "cena": "Noutra videochamada, o Ben, ainda no escritório em Boston, pergunta como é trabalhar de casa, e você conta o seu dia até o jantar.",
+  "resumo": "Juntar tudo da trilha: verbo puro, don't e as expressões sem artigo (at home, go home, have dinner).",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Meu dia, do café ao jantar"
+    },
+    {
+      "t": "p",
+      "c": "Tudo junto: o verbo puro (I work, we have lunch), **don't** na negativa e as expressões sem artigo: at home, go home, have dinner."
+    },
+    {
+      "t": "ex",
+      "c": "I don't drink soda, but I love coffee.\nNão tomo refrigerante, mas amo café."
+    },
+    {
+      "t": "warn",
+      "c": "Não: I no drink soda / go to home / go to the bed. Sim: I **don't** drink soda, go **home**, go **to bed**."
+    },
+    {
+      "t": "tip",
+      "c": "jantar = **have dinner**; refrigerante = **soda**."
+    }
+  ],
+  "imagem": "💻☕🍽️",
+  "visualizacao": "Fim de tarde: você fecha o código e abre a chamada. O Ben aparece num escritório quase vazio em Boston, com uma lata de refrigerante na mesa.",
+  "foto_busca": "home office desk coffee cup",
+  "trechos": [
+    {
+      "id": "f-3623ca",
+      "quem": "ben",
+      "cod": "You work from home, right?",
+      "dica": "Você trabalha de casa, né?",
+      "img": "💻🏠",
+      "alvo": "work from home",
+      "alvo_pt": "trabalha de casa",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b3bb1a",
+      "quem": "voce",
+      "contexto": "f-3623ca",
+      "cod": "Yes. I don't go to the office.",
+      "dica": "Sim. Eu não vou pro escritório.",
+      "img": "🙅🏢",
+      "alvo": "don't go",
+      "alvo_pt": "não vou",
+      "conceito": "go to work, sem artigo; go to the office, com the.",
+      "var": [
+        {
+          "em": "the office",
+          "aceita": [
+            "an office"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR07",
+        "BR16"
+      ],
+      "armadilhas": [
+        "the",
+        "no",
+        "not"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7ddbe5",
+      "quem": "ben",
+      "contexto": "f-b3bb1a",
+      "cod": "Nice! I want to work from home too.",
+      "dica": "Que legal! Eu também quero trabalhar de casa.",
+      "img": "🙋🏠",
+      "alvo": "I want to",
+      "alvo_pt": "quero",
+      "var": [
+        {
+          "em": "I want to work from home too",
+          "aceita": [
+            "I also want to work from home"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ec9f45",
+      "quem": "voce",
+      "contexto": "What's that? Soda?",
+      "cod": "No. I don't drink soda, but I love coffee.",
+      "dica": "Não. Eu não tomo refrigerante, mas amo café.",
+      "img": "🥤🚫☕",
+      "alvo": "don't drink",
+      "alvo_pt": "não tomo",
+      "conceito": "soda = refrigerante (EUA).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "no",
+        "not"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3f7a82",
+      "quem": "ben",
+      "cod": "I have dinner at seven. How about you?",
+      "dica": "Eu janto às sete. E você?",
+      "img": "🍽️🕖",
+      "alvo": "have dinner",
+      "alvo_pt": "janto",
+      "lit": "[lit.: eu tenho jantar às sete]",
+      "conceito": "Jantar = have dinner, como have lunch.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-729221",
+      "quem": "voce",
+      "contexto": "f-3f7a82",
+      "cod": "At eight, at home.",
+      "dica": "Às oito, em casa.",
+      "img": "🍲🏠",
+      "alvo": "at home",
+      "alvo_pt": "em casa",
+      "registro": "neutro",
+      "interferencias": [
+        "BR16"
+      ],
+      "armadilhas": [
+        "in",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a4065e",
+      "quem": "ben",
+      "cod": "OK, I need to go home now. Bye!",
+      "dica": "Tá bom, preciso ir pra casa agora. Tchau!",
+      "img": "🚶🏠👋",
+      "alvo": "go home",
+      "alvo_pt": "ir pra casa",
+      "conceito": "Ir para casa = go home, sem to (não: go to home).",
+      "registro": "informal",
+      "interferencias": [
+        "BR16"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8b4126",
+      "quem": "voce",
+      "contexto": "f-a4065e",
+      "cod": "Bye, Ben! I need to have dinner.",
+      "dica": "Tchau, Ben! Preciso jantar.",
+      "img": "🍽️👋",
+      "alvo": "have dinner",
+      "alvo_pt": "jantar",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

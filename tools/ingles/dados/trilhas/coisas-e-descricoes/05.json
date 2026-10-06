@@ -1,0 +1,161 @@
+{
+  "id": "coisas-e-descricoes.cena-descrevendo-o-apartamento",
+  "trilha": "coisas-e-descricoes",
+  "nome": "Cena: descrevendo o apartamento",
+  "emoji": "🏠",
+  "cena": "O Ben liga e pergunta como é o apartamento em Chicago; você mostra tudo pela câmera.",
+  "resumo": "Descrever um lugar e as coisas dele com a/an, plurais, this/that e adjetivos no lugar certo.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: descrever"
+    },
+    {
+      "t": "p",
+      "c": "a/an + adjetivo + coisa (an old apartment); this/these perto, that/those longe; very antes do adjetivo, que nunca vai para o plural."
+    },
+    {
+      "t": "ex",
+      "c": "Those two big boxes are Julia's.\nAquelas duas caixas grandes são da Julia."
+    },
+    {
+      "t": "warn",
+      "c": "O adjetivo vem antes e não vai para o plural: two big boxes, black chairs (não: boxes bigs, blacks chairs)."
+    }
+  ],
+  "imagem": "📞🏢🪑",
+  "visualizacao": "O Ben aparece na tela, de boné, comendo pipoca em Boston. Você gira o celular devagar pela sala: as cadeiras pretas, as caixas no canto, a janela clara.",
+  "foto_busca": "video call apartment tour living room",
+  "trechos": [
+    {
+      "id": "f-566724",
+      "quem": "ben",
+      "cod": "How's the apartment?",
+      "dica": "Que tal o apartamento?",
+      "img": "🏢❓",
+      "alvo": "",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0408a4",
+      "quem": "voce",
+      "contexto": "f-566724",
+      "cod": "It's a very big apartment.",
+      "dica": "É um apartamento muito grande.",
+      "img": "🏢😀",
+      "alvo": "a very big apartment",
+      "alvo_pt": "um apartamento muito grande",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bd1563",
+      "quem": "ben",
+      "contexto": "f-0408a4",
+      "cod": "Is it an old apartment?",
+      "dica": "É um apartamento antigo?",
+      "img": "🏛️❓",
+      "alvo": "an old apartment",
+      "alvo_pt": "um apartamento antigo",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "a"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-184c47",
+      "quem": "voce",
+      "contexto": "f-bd1563",
+      "cod": "No, it's new and very comfortable.",
+      "dica": "Não, é novo e muito confortável.",
+      "img": "✨🛋️",
+      "alvo": "very comfortable",
+      "alvo_pt": "muito confortável",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7108cf",
+      "quem": "voce",
+      "cod": "These black chairs are Emma's.",
+      "dica": "Essas cadeiras pretas são da Emma.",
+      "img": "🪑⚫👩",
+      "alvo": "These black chairs",
+      "alvo_pt": "Essas cadeiras pretas",
+      "registro": "informal",
+      "interferencias": [
+        "BR08",
+        "BR09",
+        "BR10"
+      ],
+      "armadilhas": [
+        "blacks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-244857",
+      "quem": "ben",
+      "contexto": "f-7108cf",
+      "cod": "Are those boxes Emma's too?",
+      "dica": "Aquelas caixas também são da Emma?",
+      "img": "📦👉❓",
+      "alvo": "those boxes",
+      "alvo_pt": "Aquelas caixas",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a2b0b5",
+      "quem": "voce",
+      "contexto": "f-244857",
+      "cod": "No, those are my things.",
+      "dica": "Não, aquelas são as minhas coisas.",
+      "img": "📦🙋",
+      "alvo": "those are",
+      "alvo_pt": "aquelas são",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a5deee",
+      "quem": "voce",
+      "cod": "People in Chicago are very nice.",
+      "dica": "As pessoas em Chicago são muito legais.",
+      "img": "😊👥🏙️",
+      "alvo": "People",
+      "alvo_pt": "pessoas",
+      "conceito": "people já é plural: people are (não: people is).",
+      "var": [
+        {
+          "em": "People in Chicago",
+          "aceita": [
+            "The people in Chicago"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR14"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

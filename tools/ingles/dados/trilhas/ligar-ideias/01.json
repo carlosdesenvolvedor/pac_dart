@@ -1,0 +1,263 @@
+{
+  "id": "ligar-ideias.embora-fosse-tarde",
+  "trilha": "ligar-ideias",
+  "nome": "Embora fosse tarde...",
+  "emoji": "🪢",
+  "cena": "Na sexta, depois de uma semana difícil, você e o time revisam o que deu certo e o plano para a próxima.",
+  "resumo": "Contrastar ideias: although, even though e However, no começo da frase.",
+  "fechamento": false,
+  "novos": [
+    "although",
+    "even though",
+    "however",
+    "kept working",
+    "the plan"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Embora = although"
+    },
+    {
+      "t": "p",
+      "c": "**Although** e **even though** (mais forte) ligam duas ideias na mesma frase. **However,** começa uma frase nova, com vírgula: porém, no entanto."
+    },
+    {
+      "t": "tip",
+      "c": "Embora fosse tarde → Although it was late: o português usa subjuntivo, o inglês não."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca although e but juntos: Although it was late, we kept working (não: ..., but we kept working)."
+    },
+    {
+      "t": "ex",
+      "c": "Although it was a hard week, we finished everything.\nEmbora tenha sido uma semana difícil, a gente terminou tudo."
+    }
+  ],
+  "imagem": "📅😓✅",
+  "visualizacao": "Sexta no fim da tarde, você vê todo mundo na chamada com cara de cansado. A Sarah abre o quadro da sprint, e quase todos os cartões já estão na coluna de feito.",
+  "foto_busca": "tired team video call friday",
+  "trechos": [
+    {
+      "id": "f-02d4aa",
+      "quem": "sarah",
+      "cod": "Good news, everyone. The plan is working.",
+      "dica": "Boa notícia, pessoal. O plano está funcionando.",
+      "img": "📈🙂",
+      "alvo": "The plan",
+      "alvo_pt": "O plano",
+      "conceito": "the plan is working = o plano está funcionando (dando certo).",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3402584,
+        "en_autor": "CK",
+        "pt_id": 5163875,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"The plan is working.\"; PT original: \"O plano está funcionando.\"; + Good news, everyone.; PT adaptado (+ Boa notícia, pessoal.)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9f4cb4",
+      "quem": "mike",
+      "cod": "Although it was a hard week, we finished everything.",
+      "dica": "Embora tenha sido uma semana difícil, a gente terminou tudo.",
+      "img": "🏁💪",
+      "alvo": "Although",
+      "alvo_pt": "Embora",
+      "conceito": "Embora tenha sido = Although it was: em inglês o verbo fica no indicativo.",
+      "registro": "informal",
+      "armadilhas": [
+        "but"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "hard",
+          "aceita": [
+            "difficult",
+            "tough"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c646fa",
+      "quem": "sarah",
+      "cod": "Thanks, Ana. I know you were tired, but you kept working.",
+      "dica": "Valeu, Ana. Eu sei que você estava cansada, mas continuou trabalhando.",
+      "img": "😴💻👏",
+      "alvo": "kept working",
+      "alvo_pt": "continuou trabalhando",
+      "conceito": "continuar + gerúndio = keep + -ing: kept working.",
+      "registro": "informal",
+      "armadilhas": [
+        "keep"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 388557,
+        "en_autor": "CK",
+        "pt_id": 4849895,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"She was tired, but she kept working.\"; PT original: \"Ela estava cansada mas continuou trabalhando.\"; + Thanks, Ana. I know; she → you; PT adaptado (Valeu, Ana. Eu sei que você estava cansada, mas...)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8eed5f",
+      "quem": "ana",
+      "contexto": "f-c646fa",
+      "cod": "Even though it was late, nobody gave up.",
+      "dica": "Mesmo sendo tarde, ninguém desistiu.",
+      "img": "🌙💪",
+      "alvo": "Even though",
+      "alvo_pt": "Mesmo sendo",
+      "conceito": "even though = mesmo (que), mais forte que although; give up = desistir.",
+      "registro": "informal",
+      "armadilhas": [
+        "but"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "nobody",
+          "aceita": [
+            "no one"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4943af",
+      "quem": "mike",
+      "cod": "The results are good. However, the app is still slow.",
+      "dica": "Os resultados estão bons. Porém, o app ainda está lento.",
+      "img": "📊🐢",
+      "alvo": "However",
+      "alvo_pt": "Porém",
+      "conceito": "However, começa uma frase nova, com vírgula = porém, no entanto.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0352aa",
+      "quem": "ana",
+      "contexto": "f-4943af",
+      "cod": "Even though the app is slow, users love it.",
+      "dica": "Mesmo o app sendo lento, os usuários adoram.",
+      "img": "🐢❤️",
+      "alvo": "Even though",
+      "alvo_pt": "Mesmo",
+      "conceito": "users love it: o objeto it é obrigatório; usuários em geral, sem the.",
+      "var": [
+        {
+          "em": "users love",
+          "aceita": [
+            "the users love",
+            "our users love"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR21"
+      ],
+      "armadilhas": [
+        "but"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a5b1a9",
+      "quem": "sarah",
+      "contexto": "f-0352aa",
+      "cod": "True. However, we still have a lot of bugs.",
+      "dica": "É verdade. Porém, a gente ainda tem muitos bugs.",
+      "img": "🐛🐛",
+      "alvo": "However",
+      "alvo_pt": "Porém",
+      "conceito": "However, + vírgula no começo da frase; but liga dentro da mesma frase.",
+      "var": [
+        {
+          "em": "a lot of",
+          "aceita": [
+            "many",
+            "lots of"
+          ]
+        },
+        {
+          "em": "True",
+          "aceita": [
+            "That's true"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-57a2ef",
+      "quem": "voce",
+      "contexto": "f-a5b1a9",
+      "cod": "I know. I kept working on the login bug until midnight.",
+      "dica": "Eu sei. Continuei trabalhando no bug do login até a meia-noite.",
+      "img": "🐛🌙💻",
+      "alvo": "kept working",
+      "alvo_pt": "Continuei trabalhando",
+      "conceito": "keep working on + algo = continuar trabalhando em algo.",
+      "registro": "informal",
+      "armadilhas": [
+        "keep",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9d8cd7",
+      "quem": "voce",
+      "cod": "So what's the plan for next week?",
+      "dica": "Então, qual é o plano pra semana que vem?",
+      "img": "🗓️❓",
+      "alvo": "the plan",
+      "alvo_pt": "o plano",
+      "conceito": "a semana que vem = next week, sem the.",
+      "registro": "informal",
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ee5266",
+      "quem": "sarah",
+      "contexto": "f-9d8cd7",
+      "cod": "We'll fix the bugs first, although the client wants new features.",
+      "dica": "A gente vai corrigir os bugs primeiro, embora o cliente queira features novas.",
+      "img": "🛠️🐛",
+      "alvo": "although",
+      "alvo_pt": "embora",
+      "conceito": "embora o cliente queira = although the client wants: indicativo e -s da 3ª pessoa.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "want",
+        "but"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

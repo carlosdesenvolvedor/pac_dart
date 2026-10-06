@@ -6,9 +6,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/mixart.dart';
 import '../../../../core/util/codigo_executavel.dart';
+import '../../../../core/util/sharplab.dart';
 import '../../../ranking/presentation/ranking_cubit.dart';
 import '../../../tutor/presentation/tutor_cubit.dart';
 import '../../../tutor/presentation/tutor_panel.dart';
+import '../../../ingles/presentation/palco_ingles.dart';
 import '../../domain/curriculo.dart';
 import '../bloc/curso_bloc.dart';
 import '../bloc/typing_bloc.dart';
@@ -24,10 +26,20 @@ import 'teoria_page.dart';
 import '../widgets/preview_panel.dart';
 import '../widgets/victory_overlay.dart';
 
-/// Tela única do PAC·DART: HUD, menus, palco (dica + código + console +
-/// prévia) e overlay de vitória.
-class HomePage extends StatelessWidget {
+/// Tela única do PAC·DART / PAC·C# / PAC·ENGLISH: HUD, menus, palco (dica +
+/// código + console + prévia; no inglês, tradução + frase) e overlay de vitória.
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  /// O conteúdo muda de pai quando a janela cruza 1240 px (painel do tutor
+  /// à esquerda ↔ botão flutuante): com a chave ele é MOVIDO, não recriado —
+  /// a fila da lição de inglês, o foco e os timers sobrevivem.
+  final _chaveConteudo = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +54,8 @@ class HomePage extends StatelessWidget {
                 a.licaoIdx != b.licaoIdx ||
                 a.trechoIdx != b.trechoIdx,
             listener: (context, st) {
-              if (st.status != CursoStatus.pronto) return;
+              // o inglês tem o próprio roteiro (PalcoIngles carrega as frases)
+              if (st.status != CursoStatus.pronto || st.ehIngles) return;
               context.read<TypingBloc>().add(TrechoCarregado(st.trecho.cod));
               context.read<VozCubit>().falar(st.trecho.dicaPlana);
             },
@@ -64,8 +77,8 @@ class HomePage extends StatelessWidget {
                   child: Text('Não consegui carregar o currículo 😢',
                       style: Mixart.ui(size: 14, color: Mixart.textMuted)));
             }
-            final conteudo = Stack(children: [
-              FundoFase(nivel: curso.trilha.nivel),
+            final conteudo = Stack(key: _chaveConteudo, children: [
+              FundoFase(nivel: curso.trilha.nivel, fundo: curso.trilha.fundo),
               Center(
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 980),
@@ -76,10 +89,13 @@ class HomePage extends StatelessWidget {
                       const SizedBox(height: 18),
                       const MenuTrilhas(),
                       const SizedBox(height: 16),
-                      _Palco(curso: curso),
+                      if (curso.ehIngles) PalcoIngles(curso: curso) else _Palco(curso: curso),
                       const SizedBox(height: 24),
                       Text(
-                        'Enter pula linha · a indentação é comida sozinha · Backspace corrige · clique no código pra focar',
+                        curso.ehIngles
+                            ? 'A tradução fica em cima, você digita em inglês · Enter ouve (Shift+Enter devagar) · '
+                                'Tab = uma letra, Tab Tab = a palavra · Esc = não sei · clique na frase pra focar'
+                            : 'Enter pula linha · a indentação é comida sozinha · Backspace corrige · clique no código pra focar',
                         textAlign: TextAlign.center,
                         style: Mixart.ui(size: 11.5, color: Mixart.textFaint).copyWith(height: 1.7),
                       ),
@@ -225,17 +241,22 @@ class _PalcoState extends State<_Palco> {
       child: Stack(children: [
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           if (curso.trechoIdx == 0 && (curso.licao.resumo.isNotEmpty || curso.licao.temTeoria)) ...[
-            _IntroLicao(licao: curso.licao, nivel: curso.trilha.nivel),
+            _IntroLicao(licao: curso.licao, nivel: curso.trilha.nivel, fundo: curso.trilha.fundo),
             const SizedBox(height: 12),
           ],
           DicaBanner(trecho: curso.trecho),
           const SizedBox(height: 16),
           CodeView(
             focusNode: _focoDigitacao,
-            ehFlutter: ehTrilhaFlutter(curso.trilha.nivel) || curso.ehFlutter,
+            ehFlutter: (!curso.ehCSharp && ehTrilhaFlutter(curso.trilha.nivel)) || curso.ehFlutter,
             titulo: curso.licao.nome,
-            podeRodar: curso.trechoRodavel,
+            podeRodar: curso.ehCSharp
+                ? curso.trecho.ehCodigoDoCurso &&
+                    trechoRodaNoSharpLab([...curso.contextoDoTrecho, curso.trecho.cod], curso.trilha.perfil)
+                : curso.trechoRodavel,
             contexto: curso.contextoDoTrecho,
+            variante: curso.trecho.linguagem,
+            perfil: curso.trilha.perfil,
             onAvancar: () => context.read<CursoBloc>().add(const TrechoAvancado()),
             vitoria: curso.vitoria,
             // Enter na vitória: já começa o quiz (ou segue o fluxo sem ele);
@@ -277,7 +298,8 @@ class _PalcoState extends State<_Palco> {
 class _IntroLicao extends StatelessWidget {
   final Licao licao;
   final String nivel;
-  const _IntroLicao({required this.licao, required this.nivel});
+  final String fundo;
+  const _IntroLicao({required this.licao, required this.nivel, this.fundo = ''});
 
   @override
   Widget build(BuildContext context) {
@@ -314,7 +336,7 @@ class _IntroLicao extends StatelessWidget {
               const SizedBox(height: 8),
               InkWell(
                 onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(
-                  builder: (_) => TeoriaPage(nivel: nivel, licao: licao, onPraticar: () {}),
+                  builder: (_) => TeoriaPage(nivel: nivel, fundo: fundo, licao: licao, onPraticar: () {}),
                 )),
                 borderRadius: BorderRadius.circular(8),
                 child: Padding(

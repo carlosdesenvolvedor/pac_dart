@@ -1,0 +1,207 @@
+{
+  "id": "can-pedidos-habilidades.cena-na-loja-e-no-escritorio",
+  "trilha": "can-pedidos-habilidades",
+  "nome": "Cena: na loja e no escritório",
+  "emoji": "🛍️",
+  "cena": "Um dia corrido em Chicago: compras na hora do almoço e pedidos de ajuda no escritório.",
+  "resumo": "Pedir, oferecer ajuda, pedir permissão e falar do que você sabe fazer com can.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Can em tudo"
+    },
+    {
+      "t": "p",
+      "c": "**Can I...?** pede permissão ou oferece ajuda; **Can you...?** pede ajuda; **I can / I can't** diz o que você sabe ou consegue."
+    },
+    {
+      "t": "ex",
+      "c": "I can hear you, but I can't see you.\nEstou te ouvindo, mas não estou te vendo."
+    },
+    {
+      "t": "warn",
+      "c": "Depois de *can* e *could*, o verbo vem direto: Can I call you later? (não: Can I to call you later?)"
+    }
+  ],
+  "imagem": "🛍️💻📱",
+  "visualizacao": "Hora do almoço: você entra numa loja barulhenta. Depois, de volta ao escritório, telas acesas, colegas chamando e o celular vibrando.",
+  "foto_busca": "busy office lunch break",
+  "trechos": [
+    {
+      "id": "f-e5a8f3",
+      "quem": "atendente",
+      "cod": "Hi! Can I help you?",
+      "dica": "Oi! Posso te ajudar?",
+      "img": "🏪🙋",
+      "alvo": "Can I help you",
+      "alvo_pt": "Posso te ajudar",
+      "conceito": "Can I help you? é a oferta de ajuda do atendente.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e62749",
+      "quem": "voce",
+      "contexto": "f-e5a8f3",
+      "cod": "Yes, please. Can I see that black phone?",
+      "dica": "Sim, por favor. Posso ver aquele celular preto?",
+      "img": "📱🖤👀",
+      "alvo": "Can I see",
+      "alvo_pt": "Posso ver",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4f0afd",
+      "quem": "mike",
+      "cod": "Could you help me here?",
+      "dica": "Você poderia me ajudar aqui?",
+      "img": "💻🐞🙏",
+      "alvo": "Could you",
+      "alvo_pt": "Você poderia",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3823920,
+        "en_autor": "CK",
+        "pt_id": 3311843,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fdcd76",
+      "quem": "voce",
+      "contexto": "f-4f0afd",
+      "cod": "Sure, I can help you with that.",
+      "dica": "Claro, posso te ajudar com isso.",
+      "img": "🤝💻",
+      "alvo": "I can",
+      "alvo_pt": "posso",
+      "var": [
+        {
+          "em": "Sure",
+          "aceita": [
+            "Of course"
+          ]
+        },
+        {
+          "em": "that",
+          "aceita": [
+            "this"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2301257,
+        "en_autor": "CK",
+        "pt_id": 7534172,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I can help you with this.\"; PT original: \"Eu posso te ajudar com isso.\"; + Sure, this → that (revisão nativa: resposta ao pedido do Mike); PT: + Claro, sem o Eu",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-66cc47",
+      "quem": "sarah",
+      "cod": "I can hear you, but I can't see you.",
+      "dica": "Estou te ouvindo, mas não estou te vendo.",
+      "img": "👂🙈",
+      "alvo": "I can't see you",
+      "alvo_pt": "não estou te vendo",
+      "conceito": "hear = ouvir (som); see = ver. Os dois com can.",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-050f99",
+      "quem": "voce",
+      "contexto": "f-66cc47",
+      "cod": "Sorry! Can you see me now?",
+      "dica": "Desculpa! Agora você está me vendo?",
+      "img": "📷👀❓",
+      "alvo": "Can you see me",
+      "alvo_pt": "está me vendo",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "armadilhas": [
+        "seeing"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3737810,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Can you see me?\"; PT original: \"Tá me vendo?\"; acrescentados Sorry e now; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-12b94a",
+      "quem": "ana",
+      "cod": "Can I call you later?",
+      "dica": "Posso te ligar mais tarde?",
+      "img": "📞⏰",
+      "alvo": "Can I",
+      "alvo_pt": "Posso",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3327467,
+        "en_autor": "CK",
+        "pt_id": 6804794,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-188719",
+      "quem": "ana",
+      "contexto": "Ana, can you speak Spanish?",
+      "cod": "No, but I can speak Portuguese.",
+      "dica": "Não, mas sei falar português.",
+      "img": "🗣️💬",
+      "alvo": "I can speak",
+      "alvo_pt": "sei falar",
+      "conceito": "Línguas sempre com maiúscula: Portuguese, Spanish.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

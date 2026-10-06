@@ -1,0 +1,215 @@
+{
+  "id": "dev-planning-retro.o-que-foi-bem-nesta-sprint",
+  "trilha": "dev-planning-retro",
+  "nome": "O que foi bem nesta sprint?",
+  "emoji": "🔁",
+  "cena": "Depois de uma sprint ruim, o Mike conduz a retrospectiva e cada um fala com franqueza, sem culpar ninguém.",
+  "resumo": "Retrospectiva: o que foi bem, o que fazer diferente, agradecer e apontar gargalos.",
+  "fechamento": false,
+  "novos": [
+    "differently",
+    "shout-out",
+    "bottleneck",
+    "context switching"
+  ],
+  "apoio": [
+    "went well"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A retro: foi bem, mudar, agradecer"
+    },
+    {
+      "t": "p",
+      "c": "Abra com **What went well?** e **What should we do differently?**. Agradeça com **a shout-out to...** e aponte o problema, não a pessoa: **bottleneck** (gargalo), **context switching** (troca de contexto)."
+    },
+    {
+      "t": "warn",
+      "c": "fazer diferente = do differently, com -ly (não: do different)."
+    },
+    {
+      "t": "tip",
+      "c": "Para lamentar o que passou: I wish we'd had... / We should have... (queria que a gente tivesse... / a gente devia ter...)."
+    },
+    {
+      "t": "ex",
+      "c": "Code review was our biggest bottleneck.\nO code review foi o nosso maior gargalo."
+    }
+  ],
+  "imagem": "🔁📝🙌",
+  "visualizacao": "Sexta, fim da sprint. Você olha o quadro da retro: colunas de post-its coloridos, foi bem, mudar, agradecer. O Mike sorri, mas todo mundo sabe que a sprint foi difícil.",
+  "foto_busca": "sticky notes retrospective board",
+  "trechos": [
+    {
+      "id": "f-fddca8",
+      "quem": "mike",
+      "cod": "What went well, and what should we do differently?",
+      "dica": "O que foi bem, e o que a gente deveria fazer diferente?",
+      "img": "✅🔄",
+      "alvo": "differently",
+      "alvo_pt": "diferente",
+      "conceito": "fazer diferente = do differently: depois de verbo, advérbio com -ly (não: do different).",
+      "registro": "informal",
+      "armadilhas": [
+        "different"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-40ae38",
+      "quem": "voce",
+      "contexto": "f-fddca8",
+      "cod": "A big shout-out to Ana for the new onboarding screens.",
+      "dica": "Um agradecimento especial para a Ana pelas novas telas de onboarding.",
+      "img": "📣🎨",
+      "alvo": "shout-out",
+      "alvo_pt": "agradecimento especial",
+      "conceito": "shout-out = elogio público a alguém. Ana sem artigo em inglês.",
+      "registro": "informal",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3cb46a",
+      "quem": "sarah",
+      "cod": "And a shout-out to the whole team for staying calm.",
+      "dica": "E um agradecimento especial ao time todo por manter a calma.",
+      "img": "🙌😌",
+      "alvo": "shout-out",
+      "alvo_pt": "agradecimento especial",
+      "conceito": "Depois de preposição, -ing: for staying calm (não: for stay).",
+      "var": [
+        {
+          "em": "staying",
+          "aceita": [
+            "keeping"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "stay"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f17b28",
+      "quem": "voce",
+      "cod": "Code review was our biggest bottleneck.",
+      "dica": "O code review foi o nosso maior gargalo.",
+      "img": "🍾🚧",
+      "alvo": "bottleneck",
+      "alvo_pt": "gargalo",
+      "lit": "[lit.: pescoço de garrafa]",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "conceito": "bottleneck = gargalo: a etapa que segura o fluxo do time todo.",
+      "var": [
+        {
+          "em": "Code review",
+          "aceita": [
+            "The code review"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cdb6c1",
+      "quem": "mike",
+      "contexto": "f-f17b28",
+      "cod": "The bottleneck is that each pull request waits two days for a review.",
+      "dica": "O gargalo é que cada pull request espera dois dias por um review.",
+      "img": "⏳🔀",
+      "alvo": "bottleneck",
+      "alvo_pt": "gargalo",
+      "conceito": "each pull request waits: -s da 3ª pessoa. wait for = esperar por.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR53"
+      ],
+      "armadilhas": [
+        "wait"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ff4b4a",
+      "quem": "ana",
+      "cod": "I wish we'd had less context switching this sprint.",
+      "dica": "Queria que a gente tivesse tido menos troca de contexto nesta sprint.",
+      "img": "🔀😵",
+      "alvo": "context switching",
+      "alvo_pt": "troca de contexto",
+      "conceito": "Queria que a gente tivesse tido = I wish we'd had (past perfect para o passado).",
+      "var": [
+        {
+          "em": "we'd had",
+          "aceita": [
+            "we had had"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "have",
+        "fewer"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-98a468",
+      "quem": "voce",
+      "contexto": "f-ff4b4a",
+      "cod": "Constant context switching makes it hard to focus.",
+      "dica": "A troca de contexto constante deixa difícil manter o foco.",
+      "img": "🎯💥",
+      "alvo": "context switching",
+      "alvo_pt": "troca de contexto",
+      "conceito": "makes it hard: -s da 3ª pessoa e it obrigatório.",
+      "var": [
+        {
+          "em": "focus",
+          "aceita": [
+            "stay focused"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d0f886",
+      "quem": "mike",
+      "cod": "We should have split that big story differently.",
+      "dica": "A gente devia ter dividido diferente aquela história grande.",
+      "img": "✂️📖",
+      "alvo": "differently",
+      "alvo_pt": "diferente",
+      "conceito": "devia ter + particípio = should have + particípio (split, split, split).",
+      "registro": "informal",
+      "armadilhas": [
+        "different",
+        "splitted"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

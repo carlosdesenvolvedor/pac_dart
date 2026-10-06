@@ -1,0 +1,246 @@
+{
+  "id": "dev-docs-email.este-metodo-esta-obsoleto",
+  "trilha": "dev-docs-email",
+  "nome": "Este método está obsoleto",
+  "emoji": "⚠️",
+  "cena": "Você documenta a API da biblioteca e avisa sobre as mudanças da próxima versão.",
+  "resumo": "Documentar uma API com passiva, avisos de mudança e o estilo curto (Returns...).",
+  "fechamento": false,
+  "novos": [
+    "deprecated",
+    "will be removed",
+    "breaking change",
+    "returns",
+    "null"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Documentação de API"
+    },
+    {
+      "t": "p",
+      "c": "Documentação usa a passiva e frases sem sujeito: **This method is deprecated.** / **Returns null if...** (Retorna null se...)."
+    },
+    {
+      "t": "warn",
+      "c": "deprecated (obsoleto), não depreciated (desvalorizado)."
+    },
+    {
+      "t": "tip",
+      "c": "will be removed = será removido. No português da documentação, a passiva também fica."
+    },
+    {
+      "t": "ex",
+      "c": "This is a breaking change, so please update your code.\nEsta é uma mudança incompatível, então atualize seu código, por favor."
+    }
+  ],
+  "imagem": "📄⚠️🗑️",
+  "visualizacao": "Você está no editor, com a página de documentação da API aberta ao lado. Um aviso amarelo de método obsoleto aparece no código, e a versão 3 já tem data marcada.",
+  "foto_busca": "code editor documentation screen",
+  "trechos": [
+    {
+      "id": "f-24edb7",
+      "quem": "voce",
+      "cod": "This method is deprecated. Use the new one instead.",
+      "dica": "Este método está obsoleto. Use o novo.",
+      "img": "⚠️🕰️",
+      "alvo": "deprecated",
+      "alvo_pt": "obsoleto",
+      "conceito": "deprecated = obsoleto (ainda funciona, mas vai sair). Não: depreciated. Use X instead = use X no lugar.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "depreciated"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "opcional": [
+        "instead"
+      ]
+    },
+    {
+      "id": "f-f1cf97",
+      "quem": "voce",
+      "cod": "The old API will be removed in version 3.",
+      "dica": "A API antiga será removida na versão 3.",
+      "img": "🗑️📅",
+      "alvo": "will be removed",
+      "alvo_pt": "será removida",
+      "conceito": "será removido = will be removed (passiva no futuro).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-582d0e",
+      "quem": "voce",
+      "cod": "Returns null if the user is not found.",
+      "dica": "Retorna null se o usuário não for encontrado.",
+      "img": "🔍👤",
+      "alvo": "Returns",
+      "alvo_pt": "Retorna",
+      "conceito": "Na documentação, Returns vem sem sujeito: Retorna... Se não for encontrado = if... is not found.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58",
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2c2743",
+      "quem": "voce",
+      "cod": "Returns an empty list if there are no results.",
+      "dica": "Retorna uma lista vazia se não houver resultados.",
+      "img": "📭📋",
+      "alvo": "Returns",
+      "alvo_pt": "Retorna",
+      "conceito": "se não houver = if there are no (there are, não have).",
+      "var": [
+        {
+          "em": "there are no results",
+          "aceita": [
+            "there aren't any results"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has"
+      ],
+      "variacao_de": "f-582d0e",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-828b20",
+      "quem": "voce",
+      "cod": "The default value is null.",
+      "dica": "O valor padrão é null.",
+      "img": "⚙️🚫",
+      "alvo": "null",
+      "alvo_pt": "null",
+      "conceito": "null fica em inglês (é palavra do código). Valor padrão = default value.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "value"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-945fc1",
+      "quem": "voce",
+      "cod": "The email field can be null.",
+      "dica": "O campo de e-mail pode ser null.",
+      "img": "📧⬜",
+      "alvo": "null",
+      "alvo_pt": "null",
+      "conceito": "o campo de e-mail = the email field (substantivo + substantivo).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "field"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8a3dcd",
+      "quem": "voce",
+      "cod": "This is a breaking change, so please update your code.",
+      "dica": "Esta é uma mudança incompatível, então, por favor, atualize seu código.",
+      "img": "💥🔧",
+      "alvo": "breaking change",
+      "alvo_pt": "mudança incompatível",
+      "conceito": "breaking change = mudança que quebra o código de quem usa a biblioteca.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "codes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8268b3",
+      "quem": "voce",
+      "cod": "Version 3 has two breaking changes.",
+      "dica": "A versão 3 tem duas mudanças incompatíveis.",
+      "img": "💥📦",
+      "alvo": "breaking changes",
+      "alvo_pt": "mudanças incompatíveis",
+      "conceito": "Version 3, sem artigo antes do número da versão.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR12",
+        "BR02"
+      ],
+      "armadilhas": [
+        "the",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c548b1",
+      "quem": "mike",
+      "cod": "Sorry to interrupt, but is the login method deprecated too?",
+      "dica": "Desculpa interromper, mas o método de login também está obsoleto?",
+      "img": "🙋🔐",
+      "alvo": "deprecated",
+      "alvo_pt": "obsoleto",
+      "conceito": "o método de login = the login method (substantivo + substantivo).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "method deprecated too",
+          "aceita": [
+            "method also deprecated"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8b2d2b",
+      "quem": "voce",
+      "contexto": "f-c548b1",
+      "cod": "Yes. It will be removed in the next major version.",
+      "dica": "Sim. Será removido na próxima versão major.",
+      "img": "⏭️🗑️",
+      "alvo": "will be removed",
+      "alvo_pt": "Será removido",
+      "conceito": "major version = versão principal (da 2 para a 3). Será removido = It will be removed.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR58"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "variacao_de": "f-f1cf97",
+      "origem": "autoral_ia"
+    }
+  ]
+}

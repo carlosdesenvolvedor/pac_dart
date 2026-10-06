@@ -1,0 +1,302 @@
+{
+  "id": "passiva-1.fala-se-ingles-aqui",
+  "trilha": "passiva-1",
+  "nome": "Fala-se inglês aqui",
+  "emoji": "🌎",
+  "cena": "Numa feira de produtores em Boston, você e a Emma conversam sobre de onde vêm os produtos e do que são feitos.",
+  "resumo": "Passiva no presente para o \"se\" impessoal e para materiais: is spoken, is grown, made of.",
+  "fechamento": false,
+  "novos": [
+    "is spoken",
+    "is grown",
+    "made of",
+    "glass",
+    "plastic"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fala-se = is spoken"
+    },
+    {
+      "t": "p",
+      "c": "Quando não importa quem faz, o inglês usa a passiva: **is / are + particípio**. É o jeito de dizer o \"se\" impessoal: Fala-se português no Brasil = Portuguese is spoken in Brazil."
+    },
+    {
+      "t": "warn",
+      "c": "Verbo sem sujeito não existe em inglês: Speaks Portuguese here está errado. Use a passiva (Portuguese is spoken here) ou um sujeito (They speak Portuguese here)."
+    },
+    {
+      "t": "ex",
+      "c": "This coffee is grown in Minas Gerais.\nEste café é plantado em Minas Gerais."
+    },
+    {
+      "t": "tip",
+      "c": "Material = made of: made of glass (de vidro), made of plastic (de plástico), made of wood (de madeira)."
+    }
+  ],
+  "imagem": "🧺☕🏷️",
+  "visualizacao": "Sábado de manhã, você anda entre barracas de madeira numa feira em Boston. Cheiro de café e pão, e a Emma pega cada coisa para ver de onde vem.",
+  "foto_busca": "farmers market stalls outdoor",
+  "trechos": [
+    {
+      "id": "f-06b180",
+      "quem": "vendedor",
+      "cod": "What language is spoken in Brazil?",
+      "dica": "Que língua se fala no Brasil?",
+      "img": "🗣️🌎❓",
+      "alvo": "is spoken",
+      "alvo_pt": "se fala",
+      "lit": "[lit.: que língua é falada no Brasil?]",
+      "conceito": "se fala = is spoken: a passiva faz o papel do \"se\" impessoal.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "speaks",
+        "speak"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 10125345,
+        "en_autor": "tsp_2",
+        "pt_id": 2683444,
+        "pt_autor": "vitoreiji",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f3e370",
+      "quem": "voce",
+      "contexto": "f-06b180",
+      "cod": "Portuguese is spoken in Brazil, Portugal, and a few other countries.",
+      "dica": "Fala-se português no Brasil, em Portugal e em alguns outros países.",
+      "img": "🇧🇷🇵🇹🌍",
+      "alvo": "is spoken",
+      "alvo_pt": "Fala-se",
+      "conceito": "Portuguese sempre com maiúscula.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58",
+        "BR15"
+      ],
+      "armadilhas": [
+        "speaks",
+        "portuguese"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a few",
+          "aceita": [
+            "some"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8a2fc1",
+      "quem": "vendedor",
+      "cod": "This coffee is grown in Minas Gerais.",
+      "dica": "Este café é plantado em Minas Gerais.",
+      "img": "☕🌱⛰️",
+      "alvo": "is grown",
+      "alvo_pt": "é plantado",
+      "conceito": "grow, grew, grown = plantar, cultivar. Café plantado = coffee is grown (planted é só o ato de plantar).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "grows",
+        "growed",
+        "planted"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0af686",
+      "quem": "vendedor",
+      "cod": "Most of our coffee is grown on small family farms.",
+      "dica": "A maior parte do nosso café é plantada em pequenas fazendas de família.",
+      "img": "🏡🌱☕",
+      "alvo": "is grown",
+      "alvo_pt": "é plantada",
+      "conceito": "a maior parte do = most of (sem the). Na fazenda = on a farm.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "planted",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6e2f99",
+      "quem": "emma",
+      "cod": "All the toys are made of wood.",
+      "dica": "Todos os brinquedos são feitos de madeira.",
+      "img": "🧸🪵",
+      "alvo": "made of",
+      "alvo_pt": "feitos de",
+      "conceito": "made of + material: made of wood (de madeira).",
+      "registro": "informal",
+      "armadilhas": [
+        "from",
+        "by"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3455427,
+        "en_autor": "AlanF_US",
+        "pt_id": 3455443,
+        "pt_autor": "piterkeo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "All the",
+          "aceita": [
+            "All of the"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7e17a7",
+      "quem": "emma",
+      "cod": "Glass bottles aren't used much anymore.",
+      "dica": "Garrafas de vidro não são mais tão usadas.",
+      "img": "🥛♻️",
+      "alvo": "Glass",
+      "alvo_pt": "vidro",
+      "conceito": "glass = vidro (e também copo). Material antes do substantivo: glass bottles.",
+      "registro": "informal",
+      "armadilhas": [
+        "bottles"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1207528,
+        "en_autor": "CK",
+        "pt_id": 1207565,
+        "pt_autor": "alicup",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "used much",
+          "aceita": [
+            "used as much",
+            "used that much",
+            "used so much"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-3563c2",
+      "quem": "vendedor",
+      "contexto": "f-7e17a7",
+      "cod": "Ours are still made of glass. You can bring them back.",
+      "dica": "As nossas ainda são feitas de vidro. Vocês podem trazer de volta.",
+      "img": "🔁🥛",
+      "alvo": "made of",
+      "alvo_pt": "feitas de",
+      "conceito": "Ours = as nossas (sem substantivo). E o objeto é obrigatório: bring them back.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "our"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b19991",
+      "quem": "emma",
+      "cod": "This fork is made of plastic.",
+      "dica": "Este garfo é feito de plástico.",
+      "img": "🍴😕",
+      "alvo": "plastic",
+      "alvo_pt": "plástico",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8977835,
+        "en_autor": "mccarras",
+        "pt_id": 9307522,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0e92d0",
+      "quem": "vendedor",
+      "contexto": "f-b19991",
+      "cod": "Actually, it's made of corn, not plastic.",
+      "dica": "Na verdade, é feito de milho, não de plástico.",
+      "img": "🌽🍴",
+      "alvo": "plastic",
+      "alvo_pt": "plástico",
+      "conceito": "it obrigatório: it's made of. Actually = na verdade (não: atualmente).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR56"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "not plastic",
+          "aceita": [
+            "not of plastic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-687f7b",
+      "quem": "emma",
+      "cod": "I'll take the milk in the glass bottle, please.",
+      "dica": "Vou levar o leite na garrafa de vidro, por favor.",
+      "img": "🛒🥛",
+      "alvo": "glass",
+      "alvo_pt": "vidro",
+      "conceito": "garrafa de vidro = glass bottle (o material vem antes do substantivo).",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

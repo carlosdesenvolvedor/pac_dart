@@ -1,0 +1,242 @@
+{
+  "id": "rotina-dias-horarios.janeiro-a-junho-in-may",
+  "trilha": "rotina-dias-horarios",
+  "nome": "Janeiro a junho: in May",
+  "emoji": "🎂",
+  "cena": "Na sala da Emma, vocês falam de aniversários e de quantos dias você ainda fica em Chicago.",
+  "resumo": "Meses de janeiro a junho com maiúscula e in, When's your birthday? e three more days.",
+  "fechamento": false,
+  "novos": [
+    "When's your birthday?",
+    "three more days",
+    "January, February, March",
+    "April, May, June"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Meses: in May"
+    },
+    {
+      "t": "p",
+      "c": "Meses têm **maiúscula** e usam **in**: in May (em maio). Mais três dias = **three more days**: o número vem antes de more."
+    },
+    {
+      "t": "ex",
+      "c": "When's your birthday?\nQuando é seu aniversário?"
+    },
+    {
+      "t": "warn",
+      "c": "Não: in may / more three days. E aniversário (de nascimento) = birthday; anniversary é de casamento."
+    }
+  ],
+  "imagem": "🎂🗓️❄️",
+  "visualizacao": "Na sala da Emma, um calendário na parede e um bolo na mesa. Você conta os dias que faltam em Chicago enquanto ela fala de aniversários.",
+  "foto_busca": "wall calendar birthday cake",
+  "trechos": [
+    {
+      "id": "f-85cfbc",
+      "quem": "voce",
+      "cod": "When's your birthday?",
+      "dica": "Quando é seu aniversário?",
+      "img": "🎂❓",
+      "alvo": "When's your birthday?",
+      "alvo_pt": "Quando é seu aniversário?",
+      "conceito": "aniversário (de nascimento) = birthday; anniversary é aniversário de casamento.",
+      "var": [
+        {
+          "em": "When's",
+          "aceita": [
+            "When is"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "when is your anniversary",
+        "anniversary"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2254571,
+        "en_autor": "CK",
+        "pt_id": 4882748,
+        "pt_autor": "ianna",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bafc35",
+      "quem": "emma",
+      "contexto": "f-85cfbc",
+      "cod": "My birthday is in May.",
+      "dica": "O meu aniversário é em maio.",
+      "img": "🎂🌸",
+      "alvo": "May",
+      "alvo_pt": "maio",
+      "conceito": "Meses com maiúscula e com in: in May.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "on may"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3821846,
+        "en_autor": "CK",
+        "pt_id": 5085208,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "October → May; PT: outubro → maio",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cf4747",
+      "quem": "emma",
+      "cod": "When's your sister's birthday?",
+      "dica": "Quando é o aniversário da sua irmã?",
+      "img": "👩🎁❓",
+      "alvo": "When's",
+      "alvo_pt": "Quando é",
+      "conceito": "o aniversário da sua irmã = your sister's birthday ('s de posse).",
+      "var": [
+        {
+          "em": "When's",
+          "aceita": [
+            "When is"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "armadilhas": [
+        "the birthday of your sister"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-06858b",
+      "quem": "voce",
+      "contexto": "f-cf4747",
+      "cod": "It's in March.",
+      "dica": "É em março.",
+      "img": "🎁📆",
+      "alvo": "March",
+      "alvo_pt": "março",
+      "conceito": "O it é obrigatório: It's in March.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "is in march",
+        "on march"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6a22b4",
+      "quem": "voce",
+      "cod": "My brother's birthday is in January.",
+      "dica": "O aniversário do meu irmão é em janeiro.",
+      "img": "👨🎂❄️",
+      "alvo": "January",
+      "alvo_pt": "janeiro",
+      "conceito": "o aniversário do meu irmão = my brother's birthday.",
+      "registro": "informal",
+      "interferencias": [
+        "BR10",
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "the birthday of my brother",
+        "on january"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-39f539",
+      "quem": "voce",
+      "cod": "I'm in Chicago for three more days.",
+      "dica": "Estou em Chicago por mais três dias.",
+      "img": "🏙️⏳",
+      "alvo": "three more days",
+      "alvo_pt": "mais três dias",
+      "lit": "[lit.: três mais dias]",
+      "conceito": "mais três dias = three more days: o número vem antes de more.",
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "armadilhas": [
+        "more three days",
+        "for more three"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-34c35f",
+      "quem": "emma",
+      "contexto": "f-39f539",
+      "cod": "Only three more days?",
+      "dica": "Só mais três dias?",
+      "img": "😮⏳",
+      "alvo": "three more days",
+      "alvo_pt": "mais três dias",
+      "var": [
+        {
+          "em": "Only",
+          "aceita": [
+            "Just"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "armadilhas": [
+        "only more three"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7d48da",
+      "quem": "emma",
+      "contexto": "f-34c35f",
+      "cod": "Come back in June!",
+      "dica": "Volta em junho!",
+      "img": "☀️✈️",
+      "alvo": "June",
+      "alvo_pt": "junho",
+      "conceito": "voltar = come back.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "return in june",
+        "on june"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

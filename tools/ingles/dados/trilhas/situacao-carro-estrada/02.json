@@ -1,0 +1,246 @@
+{
+  "id": "situacao-carro-estrada.na-estrada-e-no-posto",
+  "trilha": "situacao-carro-estrada",
+  "nome": "Na estrada e no posto",
+  "emoji": "⛽",
+  "cena": "Na viagem de carro de Austin a San Antonio, você e a Sarah procuram a saída certa e param para abastecer.",
+  "resumo": "Pedir a saída certa, deduzir onde errou o caminho e abastecer no posto.",
+  "fechamento": false,
+  "novos": [
+    "pump (bomba)",
+    "gas station",
+    "toll (pedágio)"
+  ],
+  "apoio": [
+    "exit (saída da estrada)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Na estrada"
+    },
+    {
+      "t": "p",
+      "c": "**gas station** = posto de gasolina; **pump** = bomba; **toll** = pedágio; **exit** = saída da estrada."
+    },
+    {
+      "t": "tip",
+      "c": "Devo ter passado da saída = I must have missed the exit (dedução no passado + miss = perder, passar)."
+    },
+    {
+      "t": "warn",
+      "c": "Tem um posto aqui perto? = Is there a gas station near here? (não: Have a gas station?)"
+    },
+    {
+      "t": "warn",
+      "c": "Uma viagem = a trip: on this trip (não: on this travel). travel é o verbo viajar."
+    }
+  ],
+  "imagem": "🛣️⛽🚗",
+  "visualizacao": "Estrada reta entre Austin e San Antonio, sol forte no para-brisa. A Sarah segura o celular com o mapa, e o ponteiro da gasolina desce devagar.",
+  "foto_busca": "texas highway road trip gas station",
+  "trechos": [
+    {
+      "id": "f-f4842b",
+      "quem": "voce",
+      "cod": "Which exit should I take for San Antonio?",
+      "dica": "Qual saída eu pego para San Antonio?",
+      "img": "🛣️❓",
+      "alvo": "Which exit should I take",
+      "alvo_pt": "Qual saída eu pego",
+      "conceito": "pegar a saída = take the exit. Pedido de orientação: should I.",
+      "registro": "informal",
+      "armadilhas": [
+        "catch",
+        "get out"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ea3d9f",
+      "quem": "sarah",
+      "contexto": "f-f4842b",
+      "cod": "The exit is on the right, after the toll booth.",
+      "dica": "A saída fica à direita, depois do pedágio.",
+      "img": "➡️🚧",
+      "alvo": "toll",
+      "alvo_pt": "pedágio",
+      "conceito": "toll = pedágio (a taxa); toll booth = a cabine do pedágio. à direita = on the right.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "at the right",
+        "in the right"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8739343,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado ', after the toll booth' (original: \"The exit is on the right.\"); PT reescrito (original: \"A saída está à direita.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-42ae79",
+      "quem": "voce",
+      "cod": "Oh no, I must have missed the exit. The GPS is recalculating.",
+      "dica": "Ah, não, devo ter passado da saída. O GPS está recalculando.",
+      "img": "🗺️🔄",
+      "alvo": "missed the exit",
+      "alvo_pt": "passado da saída",
+      "conceito": "passar da saída = miss the exit. Devo ter (dedução) = must have + particípio.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR34"
+      ],
+      "armadilhas": [
+        "passed",
+        "lost the exit",
+        "should have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7e8ef4",
+      "quem": "sarah",
+      "cod": "We've paid three tolls on this trip already.",
+      "dica": "A gente já pagou três pedágios nessa viagem.",
+      "img": "💵🚧",
+      "alvo": "tolls",
+      "alvo_pt": "pedágios",
+      "conceito": "uma viagem = a trip (travel é viajar, em geral). já pagou = have paid already.",
+      "var": [
+        {
+          "em": "We've paid three tolls on this trip already",
+          "aceita": [
+            "We've already paid three tolls on this trip"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR40"
+      ],
+      "armadilhas": [
+        "travel",
+        "paid already"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9d60df",
+      "quem": "voce",
+      "cod": "We're almost out of gas. Is there a gas station near here?",
+      "dica": "A gente está quase sem gasolina. Tem um posto de gasolina aqui perto?",
+      "img": "⛽🔻",
+      "alvo": "gas station",
+      "alvo_pt": "posto de gasolina",
+      "conceito": "gas (EUA) = gasolina. Tem (existe) = Is there...?",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have a gas",
+        "gasoline station"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-66244d",
+      "quem": "sarah",
+      "contexto": "f-9d60df",
+      "cod": "There's a gas station about a mile ahead.",
+      "dica": "Tem um posto de gasolina mais ou menos uma milha à frente.",
+      "img": "📍⛽",
+      "alvo": "gas station",
+      "alvo_pt": "posto de gasolina",
+      "conceito": "Nos EUA, distância em milhas: about a mile ahead = mais ou menos uma milha à frente.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "has a",
+        "have a"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1222698,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: There is → There's; one kilometer → about a mile (original: \"There is a gas station one kilometer ahead.\"); PT reescrito (original: \"Há um posto de gasolina a um quilômetro daqui.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-47f68a",
+      "quem": "voce",
+      "cod": "Do I pay inside or at the pump?",
+      "dica": "Eu pago lá dentro ou na bomba?",
+      "img": "⛽💳",
+      "alvo": "pump",
+      "alvo_pt": "bomba",
+      "conceito": "pump = bomba de gasolina. Na bomba = at the pump.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR17"
+      ],
+      "armadilhas": [
+        "I pay",
+        "in the pump"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-78211d",
+      "quem": "sarah",
+      "contexto": "f-47f68a",
+      "cod": "Just pay at the pump. It takes cards.",
+      "dica": "É só pagar na bomba. Aceita cartão.",
+      "img": "💳✅",
+      "alvo": "pump",
+      "alvo_pt": "bomba",
+      "conceito": "Aceita cartão: sujeito it obrigatório e -s da 3ª pessoa (It takes).",
+      "var": [
+        {
+          "em": "takes cards",
+          "aceita": [
+            "accepts cards"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR02",
+        "BR07"
+      ],
+      "armadilhas": [
+        "accept card",
+        "take cards"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

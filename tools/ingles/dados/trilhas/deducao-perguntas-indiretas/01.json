@@ -1,0 +1,334 @@
+{
+  "id": "deducao-perguntas-indiretas.deve-estar-nao-pode-ser",
+  "trilha": "deducao-perguntas-indiretas",
+  "nome": "Deve estar / não pode ser",
+  "emoji": "🕵️",
+  "cena": "Sábado: você e o Ben vão buscar o Lucas, que não atende; à noite, um boato no trabalho não faz sentido.",
+  "resumo": "Deduzir no presente: must be (deve estar), can't be (não pode ser) e I'm starving (estou morrendo de fome).",
+  "fechamento": false,
+  "novos": [
+    "must be (dedução)",
+    "can't be",
+    "the lights are on",
+    "That can't be right",
+    "starving"
+  ],
+  "apoio": [
+    "asleep",
+    "receipt"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Dedução: must be / can't be"
+    },
+    {
+      "t": "p",
+      "c": "Quase certeza: **must be** (deve estar, deve ser). Talvez: **might be**. Certeza de que não: **can't be** (não pode ser). Depois deles, o verbo vem sem to."
+    },
+    {
+      "t": "warn",
+      "c": "Deve estar (dedução) = must be (não: should be). Estado vem com be: I'm starving = estou morrendo de fome."
+    },
+    {
+      "t": "ex",
+      "c": "He must be asleep. It's Saturday.\nEle deve estar dormindo. É sábado."
+    },
+    {
+      "t": "ex",
+      "c": "That can't be true.\nIsso não pode ser verdade."
+    }
+  ],
+  "imagem": "🕵️🚪💡",
+  "visualizacao": "Sábado, quase meio-dia. Você e o Ben estão na porta do Lucas. A luz da sala está acesa, o celular chama e ninguém atende; o Ben bate de novo e reclama de fome.",
+  "foto_busca": "front door house daylight",
+  "trechos": [
+    {
+      "id": "f-9bd16b",
+      "quem": "ben",
+      "cod": "I'm starving. Where's Lucas?",
+      "dica": "Estou morrendo de fome. Cadê o Lucas?",
+      "img": "🤤🍽️",
+      "alvo": "starving",
+      "alvo_pt": "morrendo de fome",
+      "conceito": "Estou morrendo de fome = I'm starving: estado com be, não com have.",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-feac77",
+      "quem": "voce",
+      "contexto": "f-9bd16b",
+      "cod": "The lights are on, but he isn't answering.",
+      "dica": "As luzes estão acesas, mas ele não está atendendo.",
+      "img": "💡📵",
+      "alvo": "The lights are on",
+      "alvo_pt": "As luzes estão acesas",
+      "lit": "[lit.: as luzes estão ligadas]",
+      "conceito": "Luz acesa = the light is on; apagada = off.",
+      "var": [
+        {
+          "em": "he isn't",
+          "aceita": [
+            "he's not"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3565076,
+        "en_autor": "CK",
+        "pt_id": 5829591,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado ', but he isn't answering' (original: \"The lights are on.\"); PT: acrescentado ', mas ele não está atendendo' (original: \"As luzes estão acesas.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a93a1c",
+      "quem": "ben",
+      "contexto": "f-feac77",
+      "cod": "He must be asleep. It's Saturday.",
+      "dica": "Ele deve estar dormindo. É sábado.",
+      "img": "😴🛏️",
+      "alvo": "must be",
+      "alvo_pt": "deve estar",
+      "conceito": "Deve estar (dedução, quase certeza) = must be. Não: should be.",
+      "var": [
+        {
+          "em": "asleep",
+          "aceita": [
+            "sleeping"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR04",
+        "BR01"
+      ],
+      "armadilhas": [
+        "should"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5103512,
+        "en_autor": "CK",
+        "pt_id": 5112502,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → He; acrescentado 'It's Saturday.' (original: \"Tom must be asleep.\"); PT: Tom → Ele; acrescentado 'É sábado.' (original: \"Tom deve estar dormindo.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1ab1e6",
+      "quem": "voce",
+      "contexto": "f-a93a1c",
+      "cod": "He can't be asleep. It's almost noon.",
+      "dica": "Ele não pode estar dormindo. É quase meio-dia.",
+      "img": "🚫😴🕛",
+      "alvo": "can't be",
+      "alvo_pt": "não pode estar",
+      "conceito": "Certeza de que não = can't be. É o contrário de must be.",
+      "var": [
+        {
+          "em": "asleep",
+          "aceita": [
+            "sleeping"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "mustn't",
+        "shouldn't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6af723",
+      "quem": "ben",
+      "contexto": "f-1ab1e6",
+      "cod": "Then he must be in the shower.",
+      "dica": "Então ele deve estar no banho.",
+      "img": "🚿🤔",
+      "alvo": "must be",
+      "alvo_pt": "deve estar",
+      "var": [
+        {
+          "em": "Then",
+          "aceita": [
+            "So"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "should"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6b5158",
+      "quem": "lucas",
+      "cod": "Sorry, I was in the shower. You guys must be starving.",
+      "dica": "Desculpa, eu estava no banho. Vocês devem estar morrendo de fome.",
+      "img": "🚪🙋‍♂️🍔",
+      "alvo": "starving",
+      "alvo_pt": "morrendo de fome",
+      "conceito": "You must be starving = vocês devem estar morrendo de fome (dedução + estado com be).",
+      "var": [
+        {
+          "em": "You guys",
+          "aceita": [
+            "You"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2134203,
+        "en_autor": "Hybrid",
+        "pt_id": 5876721,
+        "pt_autor": "sergiomelo",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado 'Sorry, I was in the shower.'; You → You guys (original: \"You must be starving.\"); PT: acrescentado 'Desculpa, eu estava no banho.'; Você deve → Vocês devem (original: \"Você deve estar morrendo de fome.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1954c6",
+      "quem": "voce",
+      "contexto": "Lunch was two hundred reais.",
+      "cod": "That can't be right. Let me see the receipt.",
+      "dica": "Isso não pode estar certo. Deixa eu ver o recibo.",
+      "img": "🧾❌",
+      "alvo": "That can't be right",
+      "alvo_pt": "Isso não pode estar certo",
+      "conceito": "That can't be right = tem algo errado aí (sobre um número ou uma informação).",
+      "var": [
+        {
+          "em": "That",
+          "aceita": [
+            "This"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-785682",
+      "quem": "voce",
+      "cod": "The lights are on in the kitchen. Julia must be home.",
+      "dica": "As luzes estão acesas na cozinha. A Julia deve estar em casa.",
+      "img": "💡🍳🏠",
+      "alvo": "The lights are on",
+      "alvo_pt": "As luzes estão acesas",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9044780,
+        "en_autor": "CK",
+        "pt_id": 9073195,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado 'Julia must be home.' (original: \"The lights are on in the kitchen.\"); PT: acrescentado 'A Julia deve estar em casa.' (original: \"As luzes estão acesas na cozinha.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "must be home",
+          "aceita": [
+            "must be at home"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-63b559",
+      "quem": "voce",
+      "contexto": "There's a rumor that we're all working next Saturday.",
+      "cod": "That can't be true. Mike never works on weekends.",
+      "dica": "Isso não pode ser verdade. O Mike nunca trabalha no fim de semana.",
+      "img": "📅🙅‍♂️",
+      "alvo": "can't be",
+      "alvo_pt": "não pode ser",
+      "conceito": "Não pode ser verdade = can't be true. No fim de semana (EUA) = on weekends.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4499490,
+        "en_autor": "CK",
+        "pt_id": 5985486,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'You're kidding me, right?' removido; acrescentado 'Mike never works on weekends.' (original: \"You're kidding me, right? That can't be true.\"); PT: 'Você está brincando comigo, não é?' removido; acrescentado 'O Mike nunca trabalha no fim de semana.' (original: \"Você está brincando comigo, não é? Isso não pode ser verdade.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "That",
+          "aceita": [
+            "This"
+          ]
+        },
+        {
+          "em": "on weekends",
+          "aceita": [
+            "on the weekend",
+            "on the weekends"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f50857",
+      "quem": "ana",
+      "contexto": "I heard we're all getting a fifty percent raise.",
+      "cod": "Fifty percent? That can't be right.",
+      "dica": "Cinquenta por cento? Isso não pode estar certo.",
+      "img": "💰📈🤨",
+      "alvo": "That can't be right",
+      "alvo_pt": "Isso não pode estar certo",
+      "var": [
+        {
+          "em": "That",
+          "aceita": [
+            "This"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "conceito": "That can't be right = esse número/essa informação não fecha."
+    }
+  ]
+}

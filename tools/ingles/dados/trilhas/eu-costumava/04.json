@@ -1,0 +1,285 @@
+{
+  "id": "eu-costumava.fotos-antigas",
+  "trilha": "eu-costumava",
+  "nome": "Fotos antigas",
+  "emoji": "🖼️",
+  "cena": "Na casa dos seus pais, você e o Ben folheiam um álbum de fotos antigas e comparam o passado com hoje.",
+  "resumo": "Misturar used to, didn't use to e Did you use to...? com o passado simples, o contínuo e o present perfect.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Antes, agora e desde então"
+    },
+    {
+      "t": "p",
+      "c": "Antes (acabou): **used to**. Agora: **presente**. Desde então até hoje: **present perfect** (she's lived here since 2020). Numa foto, o que estava acontecendo: **was/were + -ing**."
+    },
+    {
+      "t": "ex",
+      "c": "She used to live in Recife, but she's lived here since 2020.\nEla morava em Recife, mas mora aqui desde 2020."
+    },
+    {
+      "t": "tip",
+      "c": "Relativa com where: the house where I used to live = a casa onde eu morava."
+    },
+    {
+      "t": "warn",
+      "c": "Cada imperfeito no seu inglês: morava (acabou) = used to live; estavam dançando (na foto) = were dancing. Mora aqui desde = has lived (não: lives here since)."
+    }
+  ],
+  "imagem": "📖🖼️🏠",
+  "visualizacao": "Você está na sala dos seus pais, com o Ben no sofá. Um álbum de fotos antigas aberto no colo dele, cheiro de café vindo da cozinha e muitas risadas.",
+  "foto_busca": "old photo album living room",
+  "trechos": [
+    {
+      "id": "f-f77059",
+      "quem": "ben",
+      "cod": "Is this your sister Julia?",
+      "dica": "Essa é a sua irmã Julia?",
+      "img": "📷👩❓",
+      "conceito": "Essa é a sua...? = Is this your...? (this para o que está perto, na mão).",
+      "registro": "informal",
+      "armadilhas": [
+        "this is your",
+        "that is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9f849f",
+      "quem": "voce",
+      "contexto": "f-f77059",
+      "cod": "Yes! She used to have really long hair.",
+      "dica": "É! Ela tinha o cabelo bem comprido.",
+      "img": "👧💇",
+      "alvo": "used to have",
+      "alvo_pt": "tinha",
+      "conceito": "tinha (e não tem mais) = used to have. hair é incontável: long hair, sem a.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very",
+            "pretty"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48",
+        "BR21"
+      ],
+      "armadilhas": [
+        "a long hair",
+        "hairs"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8599806,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: You → She, sem a pergunta final e com 'Yes!'; PT reescrito no imperfeito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-180e00",
+      "quem": "ben",
+      "contexto": "f-9f849f",
+      "cod": "Where does she live these days?",
+      "dica": "Onde ela mora hoje em dia?",
+      "img": "📍🏙️❓",
+      "alvo": "these days",
+      "alvo_pt": "hoje em dia",
+      "conceito": "Pergunta no presente com she: does + live (o -s fica no does).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR07"
+      ],
+      "armadilhas": [
+        "lives",
+        "does she lives"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bd6c0b",
+      "quem": "voce",
+      "contexto": "f-180e00",
+      "cod": "She used to live in Recife, but she's lived here since 2020.",
+      "dica": "Ela morava em Recife, mas mora aqui desde 2020.",
+      "img": "🏖️➡️🏠",
+      "alvo": "she's lived here since 2020",
+      "alvo_pt": "mora aqui desde 2020",
+      "conceito": "morava (acabou) = used to live; mora aqui desde (continua) = has lived here since.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR48"
+      ],
+      "armadilhas": [
+        "lives here since",
+        "is living here"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-215bd0",
+      "quem": "voce",
+      "cod": "In this one, my parents were dancing at a wedding.",
+      "dica": "Nessa aqui, meus pais estavam dançando num casamento.",
+      "img": "💃🕺💒",
+      "alvo": "were dancing",
+      "alvo_pt": "estavam dançando",
+      "conceito": "Na foto, o que estava acontecendo naquele momento: were + -ing.",
+      "var": [
+        {
+          "em": "In this one",
+          "aceita": [
+            "In this photo",
+            "In this picture"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "was dancing",
+        "used to dance"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a9a515",
+      "quem": "ben",
+      "cod": "And this is the house where I used to live in Brazil.",
+      "dica": "E essa é a casa onde eu morava no Brasil.",
+      "img": "📱🏡🌴",
+      "alvo": "where I used to live",
+      "alvo_pt": "onde eu morava",
+      "conceito": "the house where... = a casa onde... (relativa com where).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "where i was living",
+        "where i lived"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-77114b",
+      "quem": "voce",
+      "contexto": "f-a9a515",
+      "cod": "Did you use to live near the beach?",
+      "dica": "Você morava perto da praia?",
+      "img": "🏖️🏠❓",
+      "alvo": "Did you use to live",
+      "alvo_pt": "Você morava",
+      "conceito": "Você morava...? = Did you use to live...? (use sem -d depois de did).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR48"
+      ],
+      "armadilhas": [
+        "used",
+        "did you lived"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f822c5",
+      "quem": "ben",
+      "contexto": "f-77114b",
+      "cod": "Yes, I did. I used to swim every morning.",
+      "dica": "Morava, sim. Eu nadava toda manhã.",
+      "img": "🏊🌅",
+      "alvo": "Yes, I did",
+      "alvo_pt": "Morava, sim",
+      "conceito": "Resposta curta com did: Yes, I did. / No, I didn't.",
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "yes, i used",
+        "was swimming"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-553f30",
+      "quem": "ben",
+      "cod": "I didn't use to like coffee, but now I love it.",
+      "dica": "Eu não gostava de café, mas agora adoro.",
+      "img": "☕😖😍",
+      "alvo": "didn't use to like",
+      "alvo_pt": "não gostava",
+      "conceito": "não gostava (e agora adora) = didn't use to like. Adoro (café) = I love it: o it é obrigatório.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48",
+        "BR18"
+      ],
+      "armadilhas": [
+        "didn't used",
+        "adore"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1035183,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: wine → coffee; like it a lot → love it; PT reescrito no imperfeito (o original usava costumava)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7661e6",
+      "quem": "voce",
+      "contexto": "f-553f30",
+      "cod": "Now you drink more coffee than me!",
+      "dica": "Agora você toma mais café do que eu!",
+      "img": "☕☕😂",
+      "alvo": "more coffee than me",
+      "alvo_pt": "mais café do que eu",
+      "conceito": "tomar café = drink coffee. mais... do que = more... than.",
+      "var": [
+        {
+          "em": "than me",
+          "aceita": [
+            "than I do"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "take",
+        "more coffee that"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

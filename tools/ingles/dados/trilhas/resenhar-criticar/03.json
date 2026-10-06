@@ -1,0 +1,265 @@
+{
+  "id": "resenhar-criticar.de-longe-o-melhor",
+  "trilha": "resenhar-criticar",
+  "nome": "De longe o melhor",
+  "emoji": "🏆",
+  "cena": "Um dev novo pede indicação de livro técnico, e você recomenda os seus favoritos.",
+  "resumo": "Comparar e recomendar com força: by far the best, far better than, well worth reading.",
+  "fechamento": false,
+  "novos": [
+    "by far",
+    "far better",
+    "well worth",
+    "edition"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Comparar com força"
+    },
+    {
+      "t": "p",
+      "c": "**by far + superlativo** = de longe o melhor. **far / much + comparativo** = bem melhor (far better than). **well worth + -ing** = vale muito a pena."
+    },
+    {
+      "t": "warn",
+      "c": "Vale a pena ler = It's worth reading (não: worth to read). Bem melhor do que = far better than (não: more better than)."
+    },
+    {
+      "t": "ex",
+      "c": "It's well worth reading if you work with Flutter.\nVale muito a pena ler se você trabalha com Flutter."
+    }
+  ],
+  "imagem": "📚🏆👍",
+  "visualizacao": "Você vira a câmera para a estante atrás de você. O dev novo vê as lombadas coloridas, e você puxa o livro mais gasto, cheio de marcadores.",
+  "foto_busca": "bookshelf programming books home office",
+  "trechos": [
+    {
+      "id": "f-b86c92",
+      "quem": "voce",
+      "contexto": "Which of these books should I start with?",
+      "cod": "This one is by far the best.",
+      "dica": "Este é de longe o melhor.",
+      "img": "🥇📚",
+      "alvo": "by far",
+      "alvo_pt": "de longe",
+      "conceito": "de longe + superlativo = by far the best (não: from far).",
+      "registro": "informal",
+      "armadilhas": [
+        "from",
+        "far away"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 417730,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"This is by far the best of all of these.\"; This → This one; - of all of these (resposta mais natural); PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "This one",
+          "aceita": [
+            "This"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-da8865",
+      "quem": "voce",
+      "cod": "It's well worth reading if you work with Flutter.",
+      "dica": "Vale muito a pena ler se você trabalha com Flutter.",
+      "img": "📖💙",
+      "alvo": "well worth",
+      "alvo_pt": "Vale muito a pena",
+      "conceito": "worth + -ing: well worth reading (não: worth to read).",
+      "registro": "informal",
+      "interferencias": [
+        "BR52",
+        "BR01"
+      ],
+      "armadilhas": [
+        "to",
+        "read"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5ec552",
+      "quem": "dev-novo",
+      "contexto": "f-da8865",
+      "cod": "Does the second edition cover the new features?",
+      "dica": "A segunda edição cobre os recursos novos?",
+      "img": "📘✨❓",
+      "alvo": "edition",
+      "alvo_pt": "edição",
+      "conceito": "Pergunta no presente com does: Does the edition cover...?",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "covers",
+        "version"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2736fd",
+      "quem": "voce",
+      "contexto": "f-5ec552",
+      "cod": "Yes, the second edition is far better than the first.",
+      "dica": "Sim, a segunda edição é bem melhor do que a primeira.",
+      "img": "📘⬆️",
+      "alvo": "far better",
+      "alvo_pt": "bem melhor",
+      "conceito": "far better than = bem melhor do que (não: more better / better then).",
+      "var": [
+        {
+          "em": "far better",
+          "aceita": [
+            "much better"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "more",
+        "then"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-be51f7",
+      "quem": "voce",
+      "cod": "The paperback edition is cheaper, and it's just as good.",
+      "dica": "A edição em brochura é mais barata, e é tão boa quanto.",
+      "img": "📕💲",
+      "alvo": "edition",
+      "alvo_pt": "edição",
+      "conceito": "paperback = brochura (capa mole); hardcover = capa dura.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "more cheap",
+        "version"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7826207,
+        "en_autor": "AlanF_US",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"The pocket edition is cheaper.\"; The pocket edition is cheaper. → paperback (en-US); + and it's just as good; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8949c4",
+      "quem": "voce",
+      "cod": "For beginners, though, this other book is far better.",
+      "dica": "Para iniciantes, porém, este outro livro é bem melhor.",
+      "img": "🐣📗",
+      "alvo": "far better",
+      "alvo_pt": "bem melhor",
+      "conceito": "far reforça o comparativo: far better, far easier.",
+      "var": [
+        {
+          "em": "far better",
+          "aceita": [
+            "much better"
+          ]
+        },
+        {
+          "em": "though",
+          "aceita": [
+            "however"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "more",
+        "very"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-043109",
+      "quem": "voce",
+      "cod": "This book is well worth reading more than once.",
+      "dica": "Vale muito a pena ler este livro mais de uma vez.",
+      "img": "📖🔁",
+      "alvo": "well worth",
+      "alvo_pt": "Vale muito a pena",
+      "conceito": "Em inglês, o livro é o sujeito: This book is worth reading.",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to",
+        "it"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4811722,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"This book is worth reading more than once.\"; worth → well worth; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5d04d0",
+      "quem": "voce",
+      "cod": "Honestly, it's by far the most useful book I've read this year.",
+      "dica": "Sinceramente, é de longe o livro mais útil que eu li este ano.",
+      "img": "🏆📘",
+      "alvo": "by far",
+      "alvo_pt": "de longe",
+      "conceito": "this year (ainda não acabou) pede present perfect: I have read.",
+      "var": [
+        {
+          "em": "I've read",
+          "aceita": [
+            "I read"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR01"
+      ],
+      "armadilhas": [
+        "more",
+        "useful"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "id": "dev-slack-commits.no-chat-pergunta-rapida-e-novidades",
+  "trilha": "dev-slack-commits",
+  "nome": "No chat: pergunta rápida e novidades",
+  "emoji": "💬",
+  "cena": "Numa thread do chat do time, você pergunta onde ficam as chaves da API e o Mike responde com atraso.",
+  "resumo": "Mensagens curtas e educadas no chat: Quick question:, Any updates on this?, Thanks for the heads-up! e Sorry for the late reply.",
+  "fechamento": false,
+  "novos": [
+    "Quick question:",
+    "heads-up",
+    "Thanks for the heads-up!",
+    "Sorry for the late reply.",
+    "Any updates on this?"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Chat do time: curto e educado"
+    },
+    {
+      "t": "p",
+      "c": "No chat de trabalho, mensagem curta: **Quick question:** + pergunta, **Any updates on this?** para cobrar e **Thanks for the heads-up!** para agradecer o aviso."
+    },
+    {
+      "t": "ex",
+      "c": "Sorry for the late reply.\nDesculpa a demora para responder."
+    },
+    {
+      "t": "tip",
+      "c": "Resposta curta e simpática: **No worries.** = Sem problema."
+    },
+    {
+      "t": "warn",
+      "c": "updates vai no plural, mas feedback e information não: Thanks for the feedback."
+    }
+  ],
+  "imagem": "💬💻⏰",
+  "visualizacao": "Você olha o chat do time no notebook: sua pergunta está sem resposta há horas. De repente, aparecem os três pontinhos do Mike digitando.",
+  "foto_busca": "laptop team chat messages",
+  "trechos": [
+    {
+      "id": "f-3dba67",
+      "quem": "voce",
+      "cod": "Quick question: where are the API keys?",
+      "dica": "Pergunta rápida: onde ficam as chaves da API?",
+      "img": "❓🔑",
+      "alvo": "Quick question:",
+      "alvo_pt": "Pergunta rápida:",
+      "conceito": "Quick question: abre uma pergunta curta no chat, sem rodeio.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c22876",
+      "quem": "voce",
+      "contexto": "f-3dba67",
+      "cod": "Any updates on this?",
+      "dica": "Alguma novidade sobre isso?",
+      "img": "⏳💬",
+      "alvo": "Any updates on this",
+      "alvo_pt": "Alguma novidade sobre isso",
+      "conceito": "updates aceita plural; feedback e information não (Thanks for the feedback).",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a12ca",
+      "quem": "mike",
+      "contexto": "f-c22876",
+      "cod": "Sorry for the late reply. They're in the password manager.",
+      "dica": "Desculpa a demora para responder. Estão no gerenciador de senhas.",
+      "img": "🙏🔐",
+      "alvo": "Sorry for the late reply",
+      "alvo_pt": "Desculpa a demora para responder",
+      "lit": "[lit.: desculpa pela resposta atrasada]",
+      "conceito": "Sorry for + substantivo: Sorry for the late reply.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b73630",
+      "quem": "voce",
+      "contexto": "f-4a12ca",
+      "cod": "Thanks! Quick question: do I need a new key for testing?",
+      "dica": "Valeu! Pergunta rápida: preciso de uma chave nova para testar?",
+      "img": "🔑🧪",
+      "alvo": "Quick question:",
+      "alvo_pt": "Pergunta rápida:",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-38adfe",
+      "quem": "mike",
+      "cod": "Just a heads-up: the old keys stop working on Friday.",
+      "dica": "Só um aviso: as chaves antigas param de funcionar na sexta.",
+      "img": "⚠️🗓️",
+      "alvo": "heads-up",
+      "alvo_pt": "aviso",
+      "conceito": "heads-up = aviso prévio (informal, de chat).",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "stop working",
+          "aceita": [
+            "will stop working"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a0b259",
+      "quem": "voce",
+      "contexto": "f-38adfe",
+      "cod": "Thanks for the heads-up!",
+      "dica": "Valeu pelo aviso!",
+      "img": "🙌⚠️",
+      "alvo": "Thanks for the heads-up",
+      "alvo_pt": "Valeu pelo aviso",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4e5970",
+      "quem": "sarah",
+      "cod": "Heads-up: standup is at 10:00 tomorrow, not 9:00.",
+      "dica": "Aviso: a daily amanhã é às 10h00, não às 9h00.",
+      "img": "⏰📅",
+      "alvo": "Heads-up",
+      "alvo_pt": "Aviso",
+      "conceito": "daily (como o dev brasileiro fala) = standup (como o time americano fala).",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "standup is at 10:00 tomorrow",
+          "aceita": [
+            "tomorrow standup is at 10:00",
+            "tomorrow's standup is at 10:00"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-560c3d",
+      "quem": "ana",
+      "contexto": "f-4e5970",
+      "cod": "Thanks for the heads-up! I have a dentist appointment at 9:00.",
+      "dica": "Valeu pelo aviso! Tenho consulta no dentista às 9h00.",
+      "img": "🦷🗓️",
+      "alvo": "Thanks for the heads-up",
+      "alvo_pt": "Valeu pelo aviso",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a dentist appointment",
+          "aceita": [
+            "a dentist's appointment"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f286ee",
+      "quem": "sarah",
+      "cod": "Mike, any updates on the login bug?",
+      "dica": "Mike, alguma novidade sobre o bug do login?",
+      "img": "🐞💬",
+      "alvo": "any updates on",
+      "alvo_pt": "alguma novidade sobre",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-26d80b",
+      "quem": "mike",
+      "contexto": "f-f286ee",
+      "cod": "Sorry for the late reply. I'm still working on it.",
+      "dica": "Desculpa a demora para responder. Ainda estou trabalhando nisso.",
+      "img": "🙏💻",
+      "alvo": "Sorry for the late reply",
+      "alvo_pt": "Desculpa a demora para responder",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

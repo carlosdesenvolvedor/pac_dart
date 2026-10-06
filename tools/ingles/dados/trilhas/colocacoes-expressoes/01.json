@@ -1,0 +1,233 @@
+{
+  "id": "colocacoes-expressoes.tomar-uma-decisao",
+  "trilha": "colocacoes-expressoes",
+  "nome": "Tomar uma decisão",
+  "emoji": "🧠",
+  "cena": "Numa reunião com a Sarah, o time decide o futuro de um projeto parado há meses.",
+  "resumo": "Usar as colocações com make que o português diz com outros verbos: avançar, se esforçar, fazer diferença.",
+  "fechamento": false,
+  "novos": [
+    "make progress",
+    "make an effort",
+    "make a difference",
+    "make an exception"
+  ],
+  "apoio": [
+    "make a decision"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Make: avançar, se esforçar, abrir exceção"
+    },
+    {
+      "t": "p",
+      "c": "Várias expressões com **make** viram outros verbos em português: **make progress** (avançar), **make an effort** (se esforçar), **make a difference** (fazer diferença), **make an exception** (abrir uma exceção)."
+    },
+    {
+      "t": "warn",
+      "c": "Tomar uma decisão = **make a decision** (take a decision é raro nos EUA). Avançar = make progress, nunca do progress."
+    },
+    {
+      "t": "ex",
+      "c": "We need to make a decision by the end of the day.\nA gente precisa tomar uma decisão até o fim do dia."
+    }
+  ],
+  "imagem": "🧠📊🤝",
+  "visualizacao": "Você está numa call com a Sarah, o Mike e a Ana. Na tela, o quadro de um projeto parado há meses; a Sarah cruza os braços e pede uma decisão.",
+  "foto_busca": "team video call meeting laptop",
+  "trechos": [
+    {
+      "id": "f-974722",
+      "quem": "sarah",
+      "cod": "Are we making progress on the new dashboard?",
+      "dica": "A gente está avançando no novo dashboard?",
+      "img": "📊➡️❓",
+      "alvo": "making progress",
+      "alvo_pt": "avançando",
+      "conceito": "avançar, progredir = make progress (não: do progress).",
+      "registro": "informal",
+      "interferencias": [
+        "BR32"
+      ],
+      "armadilhas": [
+        "doing"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4500943,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Are we making progress?\" (acrescentado on the new dashboard); PT reescrito (original: \"Nós estamos progredindo?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6f6e49",
+      "quem": "mike",
+      "contexto": "f-974722",
+      "cod": "Not really. We haven't made much progress since March.",
+      "dica": "Não muito. A gente não avançou muito desde março.",
+      "img": "🐢📉📅",
+      "alvo": "made much progress",
+      "alvo_pt": "avançou muito",
+      "conceito": "desde março (até agora) = since March + present perfect.",
+      "registro": "informal",
+      "interferencias": [
+        "BR47",
+        "BR32"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2359939,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I haven't made much progress.\" (I trocado por We; acrescentado Not really e since March); PT reescrito (original: \"Eu não progredi muito.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "Not really",
+          "aceita": [
+            "Not much"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-17a2eb",
+      "quem": "ana",
+      "cod": "If everyone makes an effort, we can finish it in a month.",
+      "dica": "Se todo mundo se esforçar, a gente consegue terminar em um mês.",
+      "img": "💪👥📅",
+      "alvo": "makes an effort",
+      "alvo_pt": "se esforçar",
+      "conceito": "esforçar-se = make an effort (não: do an effort); everyone pede o -s.",
+      "opcional": [
+        "it"
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR32",
+        "BR28",
+        "BR02"
+      ],
+      "armadilhas": [
+        "does",
+        "do"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-64465d",
+      "quem": "voce",
+      "contexto": "f-17a2eb",
+      "cod": "I'll make an effort, but I can't work on weekends again.",
+      "dica": "Eu vou me esforçar, mas não posso trabalhar no fim de semana de novo.",
+      "img": "🙋💪🛑",
+      "alvo": "make an effort",
+      "alvo_pt": "me esforçar",
+      "var": [
+        {
+          "em": "on weekends",
+          "aceita": [
+            "weekends",
+            "on the weekend"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-61397b",
+      "quem": "sarah",
+      "cod": "Your feedback really made a difference last month.",
+      "dica": "O seu feedback realmente fez diferença no mês passado.",
+      "img": "🗣️✨📈",
+      "alvo": "made a difference",
+      "alvo_pt": "fez diferença",
+      "conceito": "fazer diferença = make a difference.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-32700d",
+      "quem": "mike",
+      "cod": "Do you think one more developer would make a difference?",
+      "dica": "Você acha que mais um desenvolvedor faria diferença?",
+      "img": "👩‍💻➕❓",
+      "alvo": "make a difference",
+      "alvo_pt": "faria diferença",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2883168,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Do you think it makes a difference?\" (it makes trocado por one more developer would make); PT reescrito (original: \"Você acha que faz diferença?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b23698",
+      "quem": "sarah",
+      "cod": "We don't usually hire mid-project, but I'll make an exception.",
+      "dica": "A gente não costuma contratar no meio do projeto, mas vou abrir uma exceção.",
+      "img": "🚪🔓☝️",
+      "alvo": "make an exception",
+      "alvo_pt": "abrir uma exceção",
+      "conceito": "abrir uma exceção = make an exception.",
+      "var": [
+        {
+          "em": "mid-project",
+          "aceita": [
+            "in the middle of a project",
+            "in the middle of the project"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f80832",
+      "quem": "voce",
+      "contexto": "f-b23698",
+      "cod": "Thanks for making an exception for us, Sarah.",
+      "dica": "Obrigado por abrir uma exceção pra gente, Sarah.",
+      "pt_f": "Obrigada por abrir uma exceção pra gente, Sarah.",
+      "img": "🙏🤝😊",
+      "alvo": "making an exception",
+      "alvo_pt": "abrir uma exceção",
+      "conceito": "Depois de preposição, -ing: Thanks for making...",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

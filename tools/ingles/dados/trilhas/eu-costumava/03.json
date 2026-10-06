@@ -1,0 +1,321 @@
+{
+  "id": "eu-costumava.morava-morei-ou-estava-morando",
+  "trilha": "eu-costumava",
+  "nome": "Morava, morei ou estava morando?",
+  "emoji": "🔀",
+  "cena": "Num café, a Ana conta como a vida dela mudou desde que passou a trabalhar remoto, e você compara com a sua.",
+  "resumo": "Escolher entre used to (hábito que acabou), passado simples (um fato, uma mudança) e passado contínuo (o pano de fundo).",
+  "fechamento": false,
+  "novos": [
+    "commute",
+    "habit",
+    "healthy",
+    "junk food",
+    "stay up late"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Um imperfeito, três ingleses"
+    },
+    {
+      "t": "p",
+      "c": "Hábito ou estado que acabou: **used to** (eu comia, eu ficava). Fato ou mudança: **passado simples** (decidi, parei). Ação em andamento quando algo aconteceu: **was/were + -ing** (eu estava parada no trânsito quando...)."
+    },
+    {
+      "t": "ex",
+      "c": "I was sitting in traffic when I decided to change my habits.\nEu estava parada no trânsito quando decidi mudar meus hábitos."
+    },
+    {
+      "t": "tip",
+      "c": "**costumo** (hoje) = usually: I don't usually stay up late. **costumava** (acabou) = used to."
+    },
+    {
+      "t": "warn",
+      "c": "Hábito que acabou não vai no contínuo (não: I was eating junk food every day)."
+    }
+  ],
+  "imagem": "☕🍔🥗",
+  "visualizacao": "Você está numa mesa de café com a Ana. Ela mexe o café, ri do tempo em que vivia no trânsito e mostra no celular a foto de uma salada.",
+  "foto_busca": "two friends talking coffee shop",
+  "trechos": [
+    {
+      "id": "f-7fb95f",
+      "quem": "ana",
+      "cod": "Before 2020, I used to commute every day.",
+      "dica": "Antes de 2020, eu ia e voltava do trabalho todo dia.",
+      "img": "🚌🏢🔁",
+      "alvo": "commute",
+      "alvo_pt": "ia e voltava do trabalho",
+      "lit": "[lit.: eu costumava me deslocar todo dia]",
+      "conceito": "commute = ir e voltar do trabalho (o trajeto de casa até o trabalho).",
+      "var": [
+        {
+          "em": "Before 2020, I used to commute every day",
+          "aceita": [
+            "I used to commute every day before 2020"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "was commuting",
+        "use to"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bd69bf",
+      "quem": "voce",
+      "contexto": "f-7fb95f",
+      "cod": "Me too. Now my commute is from the bedroom to the kitchen!",
+      "dica": "Eu também. Agora meu trajeto é do quarto pra cozinha!",
+      "img": "🛏️➡️🍳",
+      "alvo": "my commute",
+      "alvo_pt": "meu trajeto",
+      "conceito": "commute (substantivo) = o trajeto até o trabalho.",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "my way",
+        "my route"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-20b3a6",
+      "quem": "ana",
+      "contexto": "f-bd69bf",
+      "cod": "And I used to eat junk food every day.",
+      "dica": "E eu comia porcaria todo dia.",
+      "img": "🍔🍟",
+      "alvo": "junk food",
+      "alvo_pt": "porcaria",
+      "conceito": "junk food = porcaria, besteira (comida pouco saudável). Incontável: sem a.",
+      "registro": "informal",
+      "interferencias": [
+        "BR48",
+        "BR21"
+      ],
+      "armadilhas": [
+        "a junk food",
+        "junk foods",
+        "was eating"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e7642f",
+      "quem": "ana",
+      "cod": "I wasn't healthy back then.",
+      "dica": "Eu não estava saudável naquela época.",
+      "img": "😩🍔",
+      "alvo": "healthy",
+      "alvo_pt": "saudável",
+      "conceito": "naquela época = back then. Estado naquele período: wasn't healthy (I didn't use to be também vale).",
+      "var": [
+        {
+          "em": "I wasn't healthy",
+          "aceita": [
+            "I didn't use to be healthy"
+          ]
+        },
+        {
+          "em": "back then",
+          "aceita": [
+            "at that time",
+            "at the time"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "health",
+        "was healthy"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5858829,
+        "en_autor": "CK",
+        "pt_id": 7445415,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bd13fd",
+      "quem": "ana",
+      "cod": "I was sitting in traffic when I decided to change my habits.",
+      "dica": "Eu estava parada no trânsito quando decidi mudar meus hábitos.",
+      "img": "🚗🚦💡",
+      "alvo": "my habits",
+      "alvo_pt": "meus hábitos",
+      "conceito": "Pano de fundo (was sitting, em andamento) + fato (decided). sit in traffic = ficar parado no trânsito.",
+      "var": [
+        {
+          "em": "sitting",
+          "aceita": [
+            "stuck"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "used to sit",
+        "was deciding",
+        "stopped"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-79efe8",
+      "quem": "ana",
+      "cod": "I used to stay up late at night.",
+      "dica": "Eu ficava acordada até tarde da noite.",
+      "img": "🌙💻🥱",
+      "alvo": "stay up late",
+      "alvo_pt": "ficava acordada até tarde",
+      "lit": "[lit.: eu costumava ficar de pé até tarde]",
+      "conceito": "stay up late = ficar acordado até tarde. ficava (hábito que acabou) = used to stay.",
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "was staying",
+        "stay awake"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8282153,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN igual ao original; PT reescrito no imperfeito e no feminino (fala da Ana)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-93d8e1",
+      "quem": "voce",
+      "contexto": "f-79efe8",
+      "cod": "It's a bad habit.",
+      "dica": "É um hábito ruim.",
+      "img": "👎🌙",
+      "alvo": "habit",
+      "alvo_pt": "hábito",
+      "conceito": "É um hábito ruim = It's a bad habit: o it é obrigatório e o adjetivo vem antes.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR13"
+      ],
+      "armadilhas": [
+        "is a bad",
+        "habit bad"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2648792,
+        "en_autor": "CK",
+        "pt_id": 6474072,
+        "pt_autor": "heo598",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-704f7e",
+      "quem": "ana",
+      "contexto": "f-93d8e1",
+      "cod": "Yes, but now I don't usually stay up late.",
+      "dica": "É, mas agora eu não costumo ficar acordada até tarde.",
+      "img": "🛌⏰🙂",
+      "alvo": "stay up late",
+      "alvo_pt": "ficar acordada até tarde",
+      "conceito": "costumo (hoje) = usually; costumava (acabou) = used to.",
+      "registro": "informal",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "don't use to",
+        "use to"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9482131,
+        "en_autor": "CK",
+        "pt_id": 9694149,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'Yes, but now' acrescentado; PT ajustado (É, mas agora; acordada)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5df2f1",
+      "quem": "voce",
+      "cod": "Do you still eat junk food?",
+      "dica": "Você ainda come porcaria?",
+      "img": "🍕❓",
+      "alvo": "junk food",
+      "alvo_pt": "porcaria",
+      "conceito": "Pergunta no presente: Do you + verbo. still = ainda.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "eats",
+        "a junk food"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-18857b",
+      "quem": "ana",
+      "contexto": "f-5df2f1",
+      "cod": "Not anymore. Now my lunch is always healthy.",
+      "dica": "Não como mais. Agora meu almoço é sempre saudável.",
+      "img": "🥗🙂",
+      "alvo": "healthy",
+      "alvo_pt": "saudável",
+      "conceito": "Not anymore = não mais. always vem depois do be: is always.",
+      "registro": "informal",
+      "armadilhas": [
+        "always is",
+        "health"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

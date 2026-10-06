@@ -1,0 +1,297 @@
+{
+  "id": "discurso-indireto.recado-para-o-time",
+  "trilha": "discurso-indireto",
+  "nome": "Recado para o time",
+  "emoji": "📣",
+  "cena": "Na daily, você conta ao time o que a cliente disse, perguntou e pediu na reunião de ontem.",
+  "resumo": "Passar ao time o que a cliente disse, perguntou e pediu, juntando say e tell e o recuo de tempo.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Recado para o time"
+    },
+    {
+      "t": "p",
+      "c": "**say** + o que foi dito; **tell** + pessoa. Pergunta relatada sem inversão (asked if we could...). Pedido: asked me to + verbo. Os tempos recuam: will → would, is going to → was going to."
+    },
+    {
+      "t": "warn",
+      "c": "say não leva pessoa logo depois; tell leva: She said (that)... / She told us (that)... (não: She said us / She told that)."
+    },
+    {
+      "t": "ex",
+      "c": "I told her we would try.\nEu disse pra ela que a gente ia tentar."
+    }
+  ],
+  "imagem": "📣👥💻",
+  "visualizacao": "Nove da manhã, daily por vídeo. Seis rostos na tela, o Mike com uma caneca de café e você com as anotações da reunião de ontem com a cliente abertas do lado.",
+  "foto_busca": "team video meeting morning",
+  "trechos": [
+    {
+      "id": "f-f64a54",
+      "quem": "voce",
+      "cod": "The client said she liked the demo, but she didn't tell us why.",
+      "dica": "A cliente disse que gostou da demo, mas não disse pra gente por quê.",
+      "img": "👩‍💼👍",
+      "alvo": "didn't tell us",
+      "alvo_pt": "não disse pra gente",
+      "conceito": "say + o que foi dito; tell + pessoa (tell us).",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "say",
+        "said"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cf3c52",
+      "quem": "voce",
+      "cod": "She asked if we could finish the login page by Friday.",
+      "dica": "Ela perguntou se a gente conseguia terminar a tela de login até sexta.",
+      "img": "📅🔐",
+      "alvo": "asked if we could",
+      "alvo_pt": "perguntou se a gente conseguia",
+      "var": [
+        {
+          "em": "if",
+          "aceita": [
+            "whether"
+          ]
+        },
+        {
+          "em": "login page",
+          "aceita": [
+            "login screen"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "until",
+        "can"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-69da28",
+      "quem": "mike",
+      "contexto": "f-cf3c52",
+      "cod": "What did you tell her?",
+      "dica": "O que você disse pra ela?",
+      "img": "🗨️❓",
+      "alvo": "tell her",
+      "alvo_pt": "disse pra ela",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "say"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "tell her",
+          "aceita": [
+            "say to her"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4225bb",
+      "quem": "voce",
+      "contexto": "f-69da28",
+      "cod": "I told her we would try.",
+      "dica": "Eu disse pra ela que a gente ia tentar.",
+      "img": "💪🙂",
+      "alvo": "told her",
+      "alvo_pt": "disse pra ela",
+      "var": [
+        {
+          "em": "would",
+          "aceita": [
+            "were going to"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "said",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-39bddd",
+      "quem": "sarah",
+      "cod": "Did she say anything about the budget?",
+      "dica": "Ela disse alguma coisa sobre o orçamento?",
+      "img": "💰🗨️",
+      "alvo": "say anything about",
+      "alvo_pt": "disse alguma coisa sobre",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "tell"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 460865,
+        "en_autor": "CK",
+        "pt_id": 1825758,
+        "pt_autor": "gleydin",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: he → she; it → the budget (original: \"Did he say anything about it?\"); PT: Ele → Ela; isso → o orçamento (original: \"Ele disse alguma coisa sobre isso?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a062a7",
+      "quem": "voce",
+      "contexto": "f-39bddd",
+      "cod": "She said she was going to send us a new budget.",
+      "dica": "Ela disse que ia mandar um orçamento novo pra gente.",
+      "img": "📧💰",
+      "alvo": "was going to",
+      "alvo_pt": "ia mandar",
+      "registro": "informal",
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "was going to",
+          "aceita": [
+            "would"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-99b7d3",
+      "quem": "voce",
+      "cod": "She also asked me to send her the slides.",
+      "dica": "Ela também me pediu para mandar os slides para ela.",
+      "img": "📊📤",
+      "alvo": "asked me to",
+      "alvo_pt": "me pediu para",
+      "registro": "informal",
+      "interferencias": [
+        "BR61"
+      ],
+      "armadilhas": [
+        "that",
+        "for"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "send her the slides",
+          "aceita": [
+            "send the slides to her"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f26c4b",
+      "quem": "ana",
+      "cod": "Have you sent the slides yet?",
+      "dica": "Você já mandou os slides?",
+      "img": "📊❓",
+      "alvo": "Have you sent",
+      "alvo_pt": "já mandou",
+      "var": [
+        {
+          "em": "Have you sent",
+          "aceita": [
+            "Did you send"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "yet"
+      ]
+    },
+    {
+      "id": "f-2d58c5",
+      "quem": "voce",
+      "contexto": "f-f26c4b",
+      "cod": "Yes, I sent them last night.",
+      "dica": "Mandei, sim, ontem à noite.",
+      "img": "🌙📤",
+      "alvo": "I sent them",
+      "alvo_pt": "Mandei",
+      "conceito": "Com ontem à noite, passado simples: I sent (não: I've sent).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have",
+        "i've"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8ea02d",
+      "quem": "mike",
+      "cod": "Good. Tell her I'll call her tomorrow.",
+      "dica": "Ótimo. Fala pra ela que eu ligo pra ela amanhã.",
+      "img": "📞📅",
+      "alvo": "Tell her",
+      "alvo_pt": "Fala pra ela",
+      "conceito": "tell + pessoa: Tell her (que)... E call her: objeto obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "say"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1877604,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: Tom → her; him back → her tomorrow; acrescentado 'Good.' (original: \"Tell Tom I'll call him back.\"); PT reescrito (original: \"Diga a Tom que eu retornarei a ligação.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "Good",
+          "aceita": [
+            "Great"
+          ]
+        }
+      ]
+    }
+  ]
+}

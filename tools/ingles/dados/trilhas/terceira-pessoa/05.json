@@ -1,0 +1,231 @@
+{
+  "id": "terceira-pessoa.cena-o-time-e-a-familia",
+  "trilha": "terceira-pessoa",
+  "nome": "Cena: o time e a família",
+  "emoji": "👪",
+  "cena": "Fim de tarde na casa da Emma, em Chicago: ela pergunta da sua família e do seu time.",
+  "resumo": "Juntar -s, has, doesn't, Does...? e people numa conversa sobre família e trabalho.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão: o -s aparece uma vez só"
+    },
+    {
+      "t": "p",
+      "c": "Afirmativa: she **works**. Negativa: she **doesn't work**. Pergunta: **Does** she **work**? Quando entra does ou doesn't, o verbo perde o -s."
+    },
+    {
+      "t": "ex",
+      "c": "Mike doesn't have a car.\nO Mike não tem carro."
+    },
+    {
+      "t": "warn",
+      "c": "people é plural: A lot of people **don't** have a car."
+    }
+  ],
+  "imagem": "🏡👪☕",
+  "visualizacao": "Você está na cozinha da Emma, em Chicago, no fim da tarde. Chá quente na mesa, o gato dormindo numa cadeira, e ela quer saber tudo da sua família e do seu time.",
+  "foto_busca": "cozy kitchen tea conversation",
+  "trechos": [
+    {
+      "id": "f-529b2c",
+      "quem": "voce",
+      "cod": "My sister lives in Curitiba.",
+      "dica": "Minha irmã mora em Curitiba.",
+      "img": "👩🏘️",
+      "alvo": "lives",
+      "alvo_pt": "mora",
+      "registro": "neutro",
+      "armadilhas": [
+        "live in"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5082da",
+      "quem": "emma",
+      "contexto": "f-529b2c",
+      "cod": "What does she do?",
+      "dica": "Com o que ela trabalha?",
+      "img": "🤔💼",
+      "alvo": "What does she do",
+      "alvo_pt": "Com o que ela trabalha",
+      "conceito": "Com o que ela trabalha? = What does she do? (does + do).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "what she does",
+        "what does she does"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4598e6",
+      "quem": "voce",
+      "contexto": "f-5082da",
+      "cod": "She works at a bank.",
+      "dica": "Trabalha num banco.",
+      "img": "🏦👩‍💼",
+      "alvo": "works",
+      "alvo_pt": "Trabalha",
+      "conceito": "O pronome she é obrigatório, mesmo quando o português dispensa.",
+      "var": [
+        {
+          "em": "at a bank",
+          "aceita": [
+            "in a bank"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "works at",
+        "she work at"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8d3e6a",
+      "quem": "voce",
+      "cod": "My mom doesn't speak English very well.",
+      "dica": "Minha mãe não fala inglês muito bem.",
+      "img": "👩‍🦳💬🤏",
+      "alvo": "doesn't speak",
+      "alvo_pt": "não fala",
+      "conceito": "very well vai no fim: speak English very well.",
+      "var": [
+        {
+          "em": "mom",
+          "aceita": [
+            "mother"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR07",
+        "BR15",
+        "BR19"
+      ],
+      "armadilhas": [
+        "doesn't speaks",
+        "speak very well"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1462,
+        "en_autor": "CK",
+        "pt_id": 2583073,
+        "pt_autor": "marcospcruz",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6a8e47",
+      "quem": "emma",
+      "contexto": "f-8d3e6a",
+      "cod": "Does your brother speak English?",
+      "dica": "Seu irmão fala inglês?",
+      "img": "👨🗣️❓",
+      "alvo": "Does your brother speak",
+      "alvo_pt": "Seu irmão fala",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR15"
+      ],
+      "armadilhas": [
+        "your brother speaks",
+        "does your brother speaks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a2d461",
+      "quem": "voce",
+      "contexto": "f-6a8e47",
+      "cod": "Yes, he does. He has American friends.",
+      "dica": "Fala, sim. Ele tem amigos americanos.",
+      "img": "👨🧑‍🤝‍🧑🇺🇸",
+      "alvo": "has",
+      "alvo_pt": "tem",
+      "conceito": "Resposta curta: Yes, he does. E o adjetivo vem antes, sem plural: American friends.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07",
+        "BR08",
+        "BR15"
+      ],
+      "armadilhas": [
+        "friends americans",
+        "yes, he speaks",
+        "he have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-86affc",
+      "quem": "voce",
+      "cod": "Mike doesn't have a car.",
+      "dica": "O Mike não tem carro.",
+      "img": "👨🚗🚫",
+      "alvo": "doesn't have",
+      "alvo_pt": "não tem",
+      "conceito": "Na negativa, has volta a ser have: doesn't have.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "hasn't",
+        "doesn't has"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1026172,
+        "en_autor": "CK",
+        "pt_id": 1456068,
+        "pt_autor": "roger_rf",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Mike (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-2a4254",
+      "quem": "emma",
+      "contexto": "f-86affc",
+      "cod": "A lot of people here don't have a car.",
+      "dica": "Muita gente aqui não tem carro.",
+      "img": "👥🚇",
+      "alvo": "don't have",
+      "alvo_pt": "não tem",
+      "conceito": "people é plural: don't have (não: doesn't).",
+      "registro": "informal",
+      "interferencias": [
+        "BR14",
+        "BR07"
+      ],
+      "armadilhas": [
+        "doesn't have",
+        "people here doesn't"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

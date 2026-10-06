@@ -1,0 +1,251 @@
+{
+  "id": "relativas-3.o-que-surpreendeu-todo-mundo",
+  "trilha": "relativas-3",
+  "nome": "O que surpreendeu todo mundo",
+  "emoji": "😲",
+  "cena": "Na abertura da reunião mensal, o time comenta as notícias da empresa e de cada um.",
+  "resumo": "Comentar um fato inteiro com vírgula + which: ..., which surprised everyone.",
+  "fechamento": false,
+  "novos": [
+    "award",
+    "impressive",
+    "headline",
+    "quarterly results"
+  ],
+  "apoio": [
+    ", which (comment clause)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O que (comentando a frase toda) = , which"
+    },
+    {
+      "t": "p",
+      "c": "Quando o **o que** comenta tudo o que veio antes, o inglês usa **vírgula + which**. A vírgula é obrigatória: sem ela, which passa a falar só do substantivo anterior."
+    },
+    {
+      "t": "warn",
+      "c": "Nesse uso, nunca what: ..., which surprised everyone (não: what surprised everyone)."
+    },
+    {
+      "t": "ex",
+      "c": "Our team won an award for the app, which nobody expected.\nNosso time ganhou um prêmio pelo app, o que ninguém esperava."
+    }
+  ],
+  "imagem": "📅💬📰",
+  "visualizacao": "Você entra na chamada da primeira segunda-feira do mês com o café na mão. A Sarah abre os slides de notícias e o time comenta as novidades, rindo.",
+  "foto_busca": "team video call monthly meeting",
+  "trechos": [
+    {
+      "id": "f-4c7008",
+      "quem": "sarah",
+      "cod": "Our team won an award for the app, which nobody expected.",
+      "dica": "Nosso time ganhou um prêmio pelo app, o que ninguém esperava.",
+      "img": "🏆😮",
+      "alvo": "award",
+      "alvo_pt": "prêmio",
+      "conceito": "o que, comentando a frase toda = , which (não: what).",
+      "var": [
+        {
+          "em": "nobody",
+          "aceita": [
+            "no one"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "what",
+        "prize"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5924741,
+        "en_autor": "mailohilohi",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'They won an award for it.' → sujeito 'Our team', 'for the app' e acrescentado ', which nobody expected'; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b142e3",
+      "quem": "ana",
+      "contexto": "f-4c7008",
+      "cod": "The award was for the new checkout screen, which made me really happy.",
+      "dica": "O prêmio foi pela tela nova de checkout, o que me deixou muito feliz.",
+      "img": "🖥️🥇😊",
+      "alvo": "award",
+      "alvo_pt": "prêmio",
+      "conceito": "which made me happy = o que me deixou feliz: o which comenta a notícia inteira.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "what"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2f609d",
+      "quem": "mike",
+      "cod": "We had record quarterly results, which surprised everyone.",
+      "dica": "Tivemos resultados trimestrais recordes, o que surpreendeu todo mundo.",
+      "img": "📈🎉",
+      "alvo": "quarterly results",
+      "alvo_pt": "resultados trimestrais",
+      "lit": "[lit.: tivemos recordes resultados trimestrais]",
+      "conceito": "quarterly results = resultados do trimestre; record antes do substantivo = recorde.",
+      "registro": "neutro",
+      "armadilhas": [
+        "what",
+        "trimestral"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0ae09d",
+      "quem": "sarah",
+      "cod": "The quarterly results come out on Friday, which gives us time to prepare.",
+      "dica": "Os resultados trimestrais saem na sexta, o que dá tempo para a gente se preparar.",
+      "img": "🗓️📊⏳",
+      "alvo": "quarterly results",
+      "alvo_pt": "resultados trimestrais",
+      "conceito": "come out = sair (ser divulgado); the results come out, com -s só no singular.",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "comes",
+        "what"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-98efaf",
+      "quem": "ana",
+      "cod": "Our app made headlines, which was a nice surprise.",
+      "dica": "Nosso app saiu nas manchetes, o que foi uma surpresa boa.",
+      "img": "📰📱✨",
+      "alvo": "headlines",
+      "alvo_pt": "manchetes",
+      "lit": "[lit.: fez manchetes]",
+      "conceito": "make headlines = sair nas manchetes, virar notícia (sem the).",
+      "var": [
+        {
+          "em": "made headlines",
+          "aceita": [
+            "made the headlines"
+          ]
+        },
+        {
+          "em": "nice",
+          "aceita": [
+            "good"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "what"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-63e233",
+      "quem": "mike",
+      "contexto": "f-98efaf",
+      "cod": "The headline said the app has a million users, which isn't true.",
+      "dica": "A manchete dizia que o app tem um milhão de usuários, o que não é verdade.",
+      "img": "📰🤨",
+      "alvo": "headline",
+      "alvo_pt": "manchete",
+      "conceito": "which isn't true comenta a afirmação inteira, não só users.",
+      "var": [
+        {
+          "em": "a million",
+          "aceita": [
+            "one million"
+          ]
+        }
+      ],
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "what"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e0bccc",
+      "quem": "mike",
+      "cod": "Ana finished the redesign in two weeks, which is really impressive.",
+      "dica": "A Ana terminou o redesign em duas semanas, o que é muito impressionante.",
+      "img": "🎨⏱️👏",
+      "alvo": "impressive",
+      "alvo_pt": "impressionante",
+      "conceito": "impressive = impressionante; impressed = impressionado (a pessoa).",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "what",
+        "impressing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0611cf",
+      "quem": "voce",
+      "cod": "My brother Lucas ran his first marathon, which is pretty impressive.",
+      "dica": "Meu irmão, o Lucas, correu a primeira maratona dele, o que é bem impressionante.",
+      "img": "🏃‍♂️🏅",
+      "alvo": "impressive",
+      "alvo_pt": "impressionante",
+      "conceito": "pretty + adjetivo = bem: pretty impressive = bem impressionante.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "what"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

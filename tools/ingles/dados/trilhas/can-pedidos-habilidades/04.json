@@ -1,0 +1,221 @@
+{
+  "id": "can-pedidos-habilidades.da-pra-ver-see-e-could",
+  "trilha": "can-pedidos-habilidades",
+  "nome": "Dá pra ver? see e could",
+  "emoji": "👀",
+  "cena": "Numa chamada você compartilha a tela com a Sarah; depois, mostra para a Ana a vista do hotel.",
+  "resumo": "Perguntar se a pessoa está vendo, dizer o que dá para ver e pedir com could.",
+  "fechamento": false,
+  "novos": [
+    "Can you see my screen?",
+    "I can see...",
+    "Could you...?",
+    "Could you speak more slowly, please?"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ver = see; pedido educado = could"
+    },
+    {
+      "t": "p",
+      "c": "Está vendo? = **Can you see...?** Dá pra ver = **I can see...** E **Could you...?** (Você poderia...?) é o pedido mais educado."
+    },
+    {
+      "t": "ex",
+      "c": "Can you see my screen?\nVocê está vendo a minha tela?"
+    },
+    {
+      "t": "ex",
+      "c": "Could you speak more slowly, please?\nVocê poderia falar mais devagar, por favor?"
+    },
+    {
+      "t": "warn",
+      "c": "Com *see*, o inglês usa *can*, não o -ing: Can you see my screen? (não: Are you seeing my screen?)"
+    }
+  ],
+  "imagem": "💻👀🏞️",
+  "visualizacao": "Você está no quarto do hotel, notebook aberto numa chamada. Pela janela, um lago azul enorme; a voz da Sarah chega rápida pelo fone.",
+  "foto_busca": "video call laptop screen",
+  "trechos": [
+    {
+      "id": "f-4ecf54",
+      "quem": "voce",
+      "cod": "Can you see my screen?",
+      "dica": "Você está vendo a minha tela?",
+      "img": "💻👀❓",
+      "alvo": "Can you see my screen",
+      "alvo_pt": "Você está vendo a minha tela",
+      "lit": "[lit.: você consegue ver minha tela?]",
+      "conceito": "Com see, o inglês usa can, não -ing: Can you see...? = Está vendo?",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "armadilhas": [
+        "seeing"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2d5c35",
+      "quem": "sarah",
+      "contexto": "f-4ecf54",
+      "cod": "Yes, I can see it.",
+      "dica": "Estou vendo, sim.",
+      "img": "👍👀",
+      "alvo": "I can see",
+      "alvo_pt": "Estou vendo",
+      "conceito": "O it não some: I can see it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR20"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3eb8db",
+      "quem": "voce",
+      "cod": "Sorry, could you please repeat that?",
+      "dica": "Desculpa, você poderia repetir, por favor?",
+      "img": "🔁🙏",
+      "alvo": "could you",
+      "alvo_pt": "você poderia",
+      "conceito": "Could you...? = Você poderia...? (mais educado que Can you...?).",
+      "var": [
+        {
+          "em": "please repeat that",
+          "aceita": [
+            "repeat that, please"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2242,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Could you please repeat that?\"; PT original: \"Você poderia, por favor, repetir isso?\"; acrescentado Sorry; PT reescrito mais natural",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-58554a",
+      "quem": "sarah",
+      "cod": "Could you please wait a minute?",
+      "dica": "Você poderia esperar um minuto, por favor?",
+      "img": "⏳✋",
+      "alvo": "Could you",
+      "alvo_pt": "Você poderia",
+      "var": [
+        {
+          "em": "please wait a minute",
+          "aceita": [
+            "wait a minute, please"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 681489,
+        "en_autor": "Source_VOA",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Você poderia esperar um minuto?\"; PT reescrito: incluído o por favor do original",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e334e4",
+      "quem": "sarah",
+      "cod": "OK, can you see my screen now?",
+      "dica": "Tá, agora você está vendo a minha tela?",
+      "img": "🖥️👀✅",
+      "alvo": "can you see my screen",
+      "alvo_pt": "você está vendo a minha tela",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-260a69",
+      "quem": "voce",
+      "cod": "Could you please speak a little more slowly?",
+      "dica": "Você poderia falar um pouco mais devagar, por favor?",
+      "img": "🗣️🐢",
+      "alvo": "more slowly",
+      "alvo_pt": "mais devagar",
+      "conceito": "Mais devagar = more slowly.",
+      "var": [
+        {
+          "em": "please speak a little more slowly",
+          "aceita": [
+            "speak a little more slowly, please"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 10646820,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT original: \"Você poderia falar um pouco mais devagar?\"; PT reescrito: incluído o por favor do original",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6b9406",
+      "quem": "voce",
+      "cod": "I can see the lake from my room.",
+      "dica": "Dá pra ver o lago do meu quarto.",
+      "img": "🏨🏞️👀",
+      "alvo": "I can see",
+      "alvo_pt": "Dá pra ver",
+      "lit": "[lit.: eu consigo ver o lago do meu quarto]",
+      "conceito": "Dá pra ver = I can see (see = ver).",
+      "var": [
+        {
+          "em": "I can see",
+          "aceita": [
+            "You can see"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-24c427",
+      "quem": "voce",
+      "cod": "Excuse me, could you speak more slowly, please?",
+      "dica": "Com licença, você poderia falar mais devagar, por favor?",
+      "img": "🛎️🐢🙏",
+      "alvo": "more slowly",
+      "alvo_pt": "mais devagar",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

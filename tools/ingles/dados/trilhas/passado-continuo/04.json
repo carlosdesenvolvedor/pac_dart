@@ -1,0 +1,305 @@
+{
+  "id": "passado-continuo.que-dia-contando-um-imprevisto",
+  "trilha": "passado-continuo",
+  "nome": "Que dia! Contando um imprevisto",
+  "emoji": "🌀",
+  "cena": "No dia seguinte, a Ana pergunta por que você sumiu ontem à tarde e você conta a sequência de imprevistos.",
+  "resumo": "Contar um dia de imprevistos misturando passado simples, passado contínuo, when, while e so.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pano de fundo x ação curta"
+    },
+    {
+      "t": "p",
+      "c": "O que **estava acontecendo**: was/were + -ing. O que **aconteceu** (curto): passado simples. **when** e **while** ligam os dois; **so** dá a consequência."
+    },
+    {
+      "t": "ex",
+      "c": "I was walking home when the storm started.\nEu estava indo a pé para casa quando a tempestade começou."
+    },
+    {
+      "t": "warn",
+      "c": "Pergunta com be, sem did: What were you doing? (não: What did you doing?). Chover pede it: It was raining."
+    }
+  ],
+  "imagem": "⛈️☂️🚌",
+  "visualizacao": "Manhã seguinte, chamada com a Ana. Ela cruza os braços e pergunta onde você estava; lá fora ainda tem poças, e o guarda-chuva quebrado está no canto.",
+  "foto_busca": "broken umbrella rain street",
+  "trechos": [
+    {
+      "id": "f-95b7aa",
+      "quem": "ana",
+      "cod": "Where were you yesterday afternoon?",
+      "dica": "Onde você estava ontem à tarde?",
+      "img": "🤨❓",
+      "alvo": "Where were you",
+      "alvo_pt": "Onde você estava",
+      "conceito": "Pergunta com be no passado: Where were you? (sem did)",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did",
+        "was"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8238966,
+        "en_autor": "CK",
+        "pt_id": 8329878,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'last Monday afternoon' → 'yesterday afternoon'; PT ajustado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5f1c70",
+      "quem": "voce",
+      "contexto": "f-95b7aa",
+      "cod": "I was walking home when the storm started.",
+      "dica": "Eu estava indo a pé para casa quando a tempestade começou.",
+      "img": "🚶⛈️",
+      "alvo": "was walking",
+      "alvo_pt": "estava indo a pé",
+      "conceito": "walk home = ir a pé para casa (sem to). Pano de fundo + when + ação curta.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "walked",
+        "to home"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "started",
+          "aceita": [
+            "began"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-9b2561",
+      "quem": "ana",
+      "contexto": "f-5f1c70",
+      "cod": "Oh no! What happened?",
+      "dica": "Ah, não! O que aconteceu?",
+      "img": "😟❓",
+      "alvo": "What happened",
+      "alvo_pt": "O que aconteceu",
+      "conceito": "What happened? sem did: what é o sujeito.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "did",
+        "happen"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0722d8",
+      "quem": "voce",
+      "contexto": "f-9b2561",
+      "cod": "My umbrella broke, so I got really wet.",
+      "dica": "Meu guarda-chuva quebrou, então me molhei todo.",
+      "img": "☂️💥💦",
+      "alvo": "so",
+      "alvo_pt": "então",
+      "conceito": "broke = quebrou. so = então (consequência).",
+      "pt_f": "Meu guarda-chuva quebrou, então me molhei toda.",
+      "registro": "informal",
+      "armadilhas": [
+        "breaked",
+        "then",
+        "myself"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "really wet",
+          "aceita": [
+            "all wet",
+            "very wet"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-415cd9",
+      "quem": "voce",
+      "cod": "It was still raining when I got on the bus.",
+      "dica": "Ainda estava chovendo quando eu peguei o ônibus.",
+      "img": "🌧️🚌",
+      "alvo": "It was still raining",
+      "alvo_pt": "Ainda estava chovendo",
+      "conceito": "Chover pede it: It was raining. still = ainda, entre was e o -ing.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "was raining",
+        "rained"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4703143,
+        "en_autor": "CK",
+        "pt_id": 4810629,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'still' acrescentado ao original; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "got on",
+          "aceita": [
+            "took",
+            "caught"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a21953",
+      "quem": "voce",
+      "cod": "Then the bus was stuck in traffic for an hour.",
+      "dica": "Depois o ônibus ficou preso no trânsito por uma hora.",
+      "img": "🚌⏳",
+      "alvo": "Then",
+      "alvo_pt": "Depois",
+      "conceito": "Then = depois, na sequência. for an hour = por uma hora (duração).",
+      "var": [
+        {
+          "em": "was stuck",
+          "aceita": [
+            "got stuck"
+          ]
+        },
+        {
+          "em": "for an hour",
+          "aceita": [
+            "for one hour"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "during",
+        "after"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-44c591",
+      "quem": "ana",
+      "cod": "I called you at four. What were you doing?",
+      "dica": "Te liguei às quatro. O que você estava fazendo?",
+      "img": "📞🕓❓",
+      "alvo": "What were you doing",
+      "alvo_pt": "O que você estava fazendo",
+      "conceito": "Pergunta no passado contínuo: were + you + -ing (sem did).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR42"
+      ],
+      "armadilhas": [
+        "did",
+        "to you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ef045c",
+      "quem": "voce",
+      "contexto": "f-44c591",
+      "cod": "My phone was on silent, so I didn't hear it.",
+      "dica": "Meu celular estava no silencioso, então não ouvi.",
+      "img": "🔕🙉",
+      "alvo": "didn't hear it",
+      "alvo_pt": "não ouvi",
+      "conceito": "didn't + verbo puro. Em inglês o objeto é obrigatório: hear it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR07",
+        "BR18"
+      ],
+      "armadilhas": [
+        "heard",
+        "listen"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf0398",
+      "quem": "ana",
+      "contexto": "f-ef045c",
+      "cod": "While you were on the bus, Mike was calling you too!",
+      "dica": "Enquanto você estava no ônibus, o Mike também estava te ligando!",
+      "img": "📞📞",
+      "alvo": "While",
+      "alvo_pt": "Enquanto",
+      "conceito": "While + were/was: duas coisas acontecendo ao mesmo tempo.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "when",
+        "to you"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Mike was calling you too",
+          "aceita": [
+            "Mike was also calling you"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ff30b2",
+      "quem": "voce",
+      "contexto": "f-bf0398",
+      "cod": "I know! I called him when I got home.",
+      "dica": "Eu sei! Liguei pra ele quando cheguei em casa.",
+      "img": "🏠📞",
+      "alvo": "when I got home",
+      "alvo_pt": "quando cheguei em casa",
+      "conceito": "call + pessoa, sem to: called him. get home = chegar em casa (sem to).",
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "to him",
+        "to home"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

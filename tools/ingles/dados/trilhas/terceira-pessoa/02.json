@@ -1,0 +1,223 @@
+{
+  "id": "terceira-pessoa.ele-tem-ela-estuda-has-es-ies",
+  "trilha": "terceira-pessoa",
+  "nome": "Ele tem, ela estuda: has, -es, -ies",
+  "emoji": "📚",
+  "cena": "Numa pausa da chamada, a Sarah conta da família dela e da rotina dos colegas.",
+  "resumo": "has, goes, teaches, studies: a 3ª pessoa com has, -es e -ies.",
+  "fechamento": false,
+  "novos": [
+    "has",
+    "studies",
+    "teaches",
+    "goes"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "has, goes, teaches, studies"
+    },
+    {
+      "t": "p",
+      "c": "**have** vira **has**. Verbo terminado em ch, sh, x ou o ganha **-es** (teach → teaches, go → goes). Consoante + y vira **-ies** (study → studies)."
+    },
+    {
+      "t": "ex",
+      "c": "Mike has a son and a daughter.\nO Mike tem um filho e uma filha."
+    },
+    {
+      "t": "ex",
+      "c": "My husband teaches music.\nMeu marido dá aula de música."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca \"haves\", \"gos\" nem \"studys\". E o sujeito não some: **He** has two kids (não: Has two kids)."
+    }
+  ],
+  "imagem": "📞👨‍👩‍👧📚",
+  "visualizacao": "Você ouve a Sarah na chamada, com a cozinha dela ao fundo. Ela sorri ao falar do marido, dos colegas e da filha do Mike.",
+  "foto_busca": "woman video call kitchen",
+  "trechos": [
+    {
+      "id": "f-35385a",
+      "quem": "sarah",
+      "cod": "Mike has a son and a daughter.",
+      "dica": "O Mike tem um filho e uma filha.",
+      "img": "👨👦👧",
+      "alvo": "has",
+      "alvo_pt": "tem",
+      "conceito": "have vira has com he, she, it e nomes.",
+      "registro": "neutro",
+      "armadilhas": [
+        "have a son",
+        "haves"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5272446,
+        "en_autor": "CK",
+        "pt_id": 6624141,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Mike (EN e PT)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ef4665",
+      "quem": "sarah",
+      "contexto": "f-35385a",
+      "cod": "His daughter goes to school by bus.",
+      "dica": "A filha dele vai à escola de ônibus.",
+      "img": "👧🚌🏫",
+      "alvo": "goes",
+      "alvo_pt": "vai",
+      "conceito": "go → goes (-es depois de o). A filha dele = his daughter.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11"
+      ],
+      "armadilhas": [
+        "her daughter",
+        "go to school",
+        "gos"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2835739,
+        "en_autor": "CK",
+        "pt_id": 5163900,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → His daughter; PT: Tom → A filha dele",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-839200",
+      "quem": "sarah",
+      "cod": "My husband teaches music.",
+      "dica": "Meu marido dá aula de música.",
+      "img": "👨‍🏫🎵",
+      "alvo": "teaches",
+      "alvo_pt": "dá aula",
+      "conceito": "dar aula = teach; teach → teaches (-es depois de ch).",
+      "registro": "neutro",
+      "armadilhas": [
+        "teachs",
+        "gives class"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7c5ebd",
+      "quem": "voce",
+      "contexto": "f-839200",
+      "cod": "Really? My brother teaches guitar.",
+      "dica": "Sério? Meu irmão dá aula de violão.",
+      "img": "😮🎸",
+      "alvo": "teaches",
+      "alvo_pt": "dá aula",
+      "conceito": "violão = guitar.",
+      "registro": "informal",
+      "armadilhas": [
+        "teachs",
+        "teach guitar"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8f1a42",
+      "quem": "sarah",
+      "cod": "Ana studies English every day.",
+      "dica": "A Ana estuda inglês todo dia.",
+      "img": "👩📖📅",
+      "alvo": "studies",
+      "alvo_pt": "estuda",
+      "conceito": "study → studies: consoante + y vira -ies.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "studys",
+        "study english"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7ebfde",
+      "quem": "voce",
+      "contexto": "f-8f1a42",
+      "cod": "My sister studies English too.",
+      "dica": "Minha irmã também estuda inglês.",
+      "img": "👭📚",
+      "alvo": "studies",
+      "alvo_pt": "estuda",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "studys",
+        "study english"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-be07e5",
+      "quem": "sarah",
+      "cod": "Ana has a new laptop.",
+      "dica": "A Ana tem um notebook novo.",
+      "img": "👩💻✨",
+      "alvo": "has",
+      "alvo_pt": "tem",
+      "conceito": "notebook (o computador) = laptop. O adjetivo vem antes: a new laptop.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "laptop new",
+        "have a new"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a8ae34",
+      "quem": "sarah",
+      "cod": "Mike goes to work by train.",
+      "dica": "O Mike vai pro trabalho de trem.",
+      "img": "👨‍💼🚆",
+      "alvo": "goes",
+      "alvo_pt": "vai",
+      "conceito": "de trem = by train; go to work, sem the.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR16"
+      ],
+      "armadilhas": [
+        "go to work",
+        "by the train"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2544590,
+        "en_autor": "CK",
+        "pt_id": 5540016,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom → Mike (EN e PT); PT: ao trabalho → pro trabalho (go to work = ir pro trabalho no curso)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

@@ -1,0 +1,292 @@
+{
+  "id": "fazer-ficar-perder-ganhar.lavar-a-louca-do",
+  "trilha": "fazer-ficar-perder-ganhar",
+  "nome": "Lavar a louça: do",
+  "emoji": "🧽",
+  "cena": "Domingo, depois do almoço na sua casa, você, o Lucas e a Julia dividem as tarefas.",
+  "resumo": "Usar do em tarefas e atividades: lavar a louça, lavar a roupa, dever de casa, exercício e bom trabalho.",
+  "fechamento": false,
+  "novos": [
+    "do the dishes",
+    "do the laundry",
+    "do homework",
+    "do exercise",
+    "do a good job"
+  ],
+  "apoio": [
+    "have a meeting"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fazer (tarefa, atividade) = do"
+    },
+    {
+      "t": "p",
+      "c": "Para tarefas e atividades, o inglês usa **do**: do the dishes (lavar a louça), do the laundry (lavar a roupa), do homework, do exercise, do a good job."
+    },
+    {
+      "t": "ex",
+      "c": "I have to do the laundry.\nTenho que lavar a roupa."
+    },
+    {
+      "t": "tip",
+      "c": "Fazer festa ou reunião = **have**: have a party, have a meeting. Fazer prova = **take** a test."
+    },
+    {
+      "t": "warn",
+      "c": "Não: make the dishes / make my homework / make a party."
+    }
+  ],
+  "imagem": "🍽️🧺🧽",
+  "visualizacao": "Domingo depois do almoço. Pratos empilhados na pia, o cesto de roupa no corredor e seus irmãos discutindo quem vai lavar a louça.",
+  "foto_busca": "dirty dishes kitchen sink",
+  "trechos": [
+    {
+      "id": "f-3505cb",
+      "quem": "julia",
+      "cod": "Lucas, can you do the dishes, please?",
+      "dica": "Lucas, você pode lavar a louça, por favor?",
+      "img": "🍽️🙏",
+      "alvo": "do the dishes",
+      "alvo_pt": "lavar a louça",
+      "lit": "[lit.: fazer os pratos]",
+      "conceito": "lavar a louça = do the dishes: tarefa leva do (não: make the dishes).",
+      "registro": "informal",
+      "interferencias": [
+        "BR32"
+      ],
+      "armadilhas": [
+        "make"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c65f41",
+      "quem": "lucas",
+      "contexto": "f-3505cb",
+      "cod": "Again? I did the dishes last Sunday!",
+      "dica": "De novo? Eu lavei a louça no domingo passado!",
+      "img": "🍽️😤",
+      "alvo": "did the dishes",
+      "alvo_pt": "lavei a louça",
+      "conceito": "last Sunday = no domingo passado, sem on.",
+      "registro": "informal",
+      "interferencias": [
+        "BR32",
+        "BR17"
+      ],
+      "armadilhas": [
+        "made",
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a13f91",
+      "quem": "voce",
+      "cod": "I can't help right now. I have to do the laundry.",
+      "dica": "Agora não posso ajudar. Tenho que lavar a roupa.",
+      "img": "🧺👕",
+      "alvo": "do the laundry",
+      "alvo_pt": "lavar a roupa",
+      "conceito": "lavar a roupa = do the laundry.",
+      "var": [
+        {
+          "em": "right now",
+          "aceita": [
+            "now"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR32"
+      ],
+      "armadilhas": [
+        "make"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-453c03",
+      "quem": "julia",
+      "contexto": "f-a13f91",
+      "cod": "Really? You always do the laundry when we come here!",
+      "dica": "Sério? Você sempre lava a roupa quando a gente vem aqui!",
+      "img": "🧺😏",
+      "alvo": "do the laundry",
+      "alvo_pt": "lava a roupa",
+      "conceito": "vir até onde você está = come (não: go).",
+      "registro": "informal",
+      "interferencias": [
+        "BR32",
+        "BR37"
+      ],
+      "armadilhas": [
+        "go",
+        "make"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ff5da9",
+      "quem": "julia",
+      "cod": "Sorry, I have to do my English homework.",
+      "dica": "Desculpa, tenho que fazer o meu dever de casa de inglês.",
+      "img": "📚✏️",
+      "alvo": "do my English homework",
+      "alvo_pt": "fazer o meu dever de casa de inglês",
+      "conceito": "fazer o dever de casa = do homework (não: make). Homework não tem plural.",
+      "registro": "informal",
+      "interferencias": [
+        "BR32",
+        "BR22"
+      ],
+      "armadilhas": [
+        "make",
+        "homeworks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2a79c6",
+      "quem": "voce",
+      "contexto": "f-ff5da9",
+      "cod": "Do your homework in my office. It's quiet.",
+      "dica": "Faz o seu dever de casa no meu escritório. É tranquilo.",
+      "img": "📚🤫",
+      "alvo": "Do your homework",
+      "alvo_pt": "Faz o seu dever de casa",
+      "registro": "informal",
+      "interferencias": [
+        "BR32",
+        "BR01"
+      ],
+      "armadilhas": [
+        "make"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 570180,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: now → in my office; acrescentado It's quiet. (original: \"Do your homework now.\"); PT reescrito (original: \"Agora faça a sua lição de casa.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-801fbb",
+      "quem": "lucas",
+      "cod": "I ate too much. I need to do some exercise.",
+      "dica": "Comi demais. Preciso fazer exercício.",
+      "img": "🍽️🏃",
+      "alvo": "do some exercise",
+      "alvo_pt": "fazer exercício",
+      "conceito": "fazer exercício = do (some) exercise.",
+      "registro": "informal",
+      "interferencias": [
+        "BR32"
+      ],
+      "armadilhas": [
+        "make"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eb2a41",
+      "quem": "julia",
+      "contexto": "f-801fbb",
+      "cod": "Lucas never does any exercise!",
+      "dica": "O Lucas nunca faz exercício!",
+      "img": "🛋️🚫",
+      "alvo": "does any exercise",
+      "alvo_pt": "faz exercício",
+      "conceito": "never já é a negação: never does any (não: never doesn't).",
+      "registro": "informal",
+      "interferencias": [
+        "BR32",
+        "BR02",
+        "BR25"
+      ],
+      "armadilhas": [
+        "do",
+        "make",
+        "makes"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 742042,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: I never do → Lucas never does (original: \"I never do any exercise.\"); PT reescrito (original: \"Eu nunca me exercito.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0d0cb6",
+      "quem": "julia",
+      "cod": "Wow, Lucas! You did a good job on the dishes.",
+      "dica": "Nossa, Lucas! Você fez um bom trabalho com a louça.",
+      "img": "✨🍽️👏",
+      "alvo": "did a good job",
+      "alvo_pt": "fez um bom trabalho",
+      "conceito": "fazer um bom trabalho em algo = do a good job on something.",
+      "registro": "informal",
+      "interferencias": [
+        "BR32"
+      ],
+      "armadilhas": [
+        "made"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3373019,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: acrescentado Wow, Lucas!; today → on the dishes (original: \"You did a good job today.\"); PT reescrito (original: \"Você fez um bom trabalho hoje.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "on the dishes",
+          "aceita": [
+            "with the dishes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a399a8",
+      "quem": "lucas",
+      "contexto": "f-0d0cb6",
+      "cod": "Thanks! I always do a good job.",
+      "dica": "Valeu! Eu sempre faço um bom trabalho.",
+      "img": "😎👍",
+      "alvo": "do a good job",
+      "alvo_pt": "faço um bom trabalho",
+      "registro": "informal",
+      "interferencias": [
+        "BR32",
+        "BR19"
+      ],
+      "armadilhas": [
+        "make"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

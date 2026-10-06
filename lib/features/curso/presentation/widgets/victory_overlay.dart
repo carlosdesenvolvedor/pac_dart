@@ -17,10 +17,16 @@ class VictoryOverlay extends StatelessWidget {
 
   final VoidCallback onQuiz, onPularQuiz, onRepetir;
 
+  /// Nome da etapa depois da lição ("quiz"; no inglês, "fixação") e com
+  /// artigo ("o quiz", "a fixação").
+  final String quiz, oQuiz;
+
   const VictoryOverlay({
     super.key,
     required this.esperaAuto,
     required this.projetosDepois,
+    this.quiz = 'quiz',
+    this.oQuiz = 'o quiz',
     required this.onQuiz,
     required this.onPularQuiz,
     required this.onRepetir,
@@ -68,7 +74,7 @@ class VictoryOverlay extends StatelessWidget {
       ]),
       if (_temQuiz) ...[
         const SizedBox(height: 18),
-        _Contagem(espera: esperaAuto!),
+        _Contagem(espera: esperaAuto!, oQuiz: oQuiz),
       ],
       const SizedBox(height: 16),
       Wrap(spacing: 10, runSpacing: 10, alignment: WrapAlignment.center, children: [
@@ -81,10 +87,10 @@ class VictoryOverlay extends StatelessWidget {
             textStyle: Mixart.ui(size: 13, weight: FontWeight.w700),
           ),
           onPressed: _temQuiz ? onQuiz : onPularQuiz,
-          child: Text(_temQuiz ? 'Fazer o quiz agora →' : 'Continuar →'),
+          child: Text(_temQuiz ? 'Fazer $oQuiz agora →' : 'Continuar →'),
         ),
         if (_temQuiz)
-          OutlinedButton(style: _contorno(), onPressed: onPularQuiz, child: const Text('Pular quiz')),
+          OutlinedButton(style: _contorno(), onPressed: onPularQuiz, child: Text('Pular $quiz')),
         OutlinedButton(style: _contorno(), onPressed: onRepetir, child: const Text('Repetir')),
       ]),
       if (projetosDepois > 0) ...[
@@ -111,12 +117,12 @@ class VictoryOverlay extends StatelessWidget {
           crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             _tecla('↵ Enter'),
-            Text(_temQuiz ? 'quiz' : 'próxima lição',
+            Text(_temQuiz ? quiz : 'próxima lição',
                 style: Mixart.ui(size: 12, weight: FontWeight.w600, color: Mixart.textMuted)),
             if (_temQuiz) ...[
               Text('·', style: Mixart.ui(size: 12, color: Mixart.textFaint)),
               _tecla('Esc'),
-              Text('próxima lição, sem quiz',
+              Text('próxima lição, sem $quiz',
                   style: Mixart.ui(size: 12, weight: FontWeight.w600, color: Mixart.textMuted)),
             ],
           ]),
@@ -144,13 +150,14 @@ class VictoryOverlay extends StatelessWidget {
 /// Barrinha que esvazia até o quiz abrir sozinho.
 class _Contagem extends StatelessWidget {
   final Duration espera;
-  const _Contagem({required this.espera});
+  final String oQuiz;
+  const _Contagem({required this.espera, this.oQuiz = 'o quiz'});
 
   @override
   Widget build(BuildContext context) => ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 300),
         child: Column(children: [
-          Text('O quiz da lição começa em seguida…',
+          Text('${oQuiz[0].toUpperCase()}${oQuiz.substring(1)} da lição começa em seguida…',
               style: Mixart.ui(size: 12, color: Mixart.textMuted)),
           const SizedBox(height: 8),
           ClipRRect(

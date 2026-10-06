@@ -1,0 +1,244 @@
+{
+  "id": "situacao-telefone-reclamacao.esperando-na-linha",
+  "trilha": "situacao-telefone-reclamacao",
+  "nome": "Esperando na linha",
+  "emoji": "⏳",
+  "cena": "Você liga para a companhia aérea por causa de uma taxa de bagagem estranha no seu cartão.",
+  "resumo": "Reclamar da espera, dar o número de protocolo e pedir alguém que resolva de verdade.",
+  "fechamento": false,
+  "novos": [
+    "reference number"
+  ],
+  "apoio": [
+    "on hold (esperando na linha)",
+    "transfer (transferir a ligação)",
+    "supervisor"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ligando para o atendimento"
+    },
+    {
+      "t": "p",
+      "c": "**on hold** = esperando na linha. **reference number** = número de protocolo. **someone in charge** = o responsável, quem decide."
+    },
+    {
+      "t": "tip",
+      "c": "Há quanto tempo, com a espera continuando: **I've been waiting for** + tempo (não: I'm waiting since...)."
+    },
+    {
+      "t": "warn",
+      "c": "**actually** = de fato, na verdade. Atualmente = currently."
+    },
+    {
+      "t": "ex",
+      "c": "I've been on hold for forty minutes.\nEstou esperando na linha há quarenta minutos."
+    }
+  ],
+  "imagem": "☎️⏳🎧",
+  "visualizacao": "Você está no sofá com o celular no viva-voz. A mesma musiquinha repete sem parar, você olha o relógio e o extrato com a taxa de bagagem estranha.",
+  "foto_busca": "man waiting on phone call",
+  "trechos": [
+    {
+      "id": "f-8d6ca3",
+      "quem": "atendente",
+      "cod": "Your call is important to us. Please stay on hold.",
+      "dica": "(gravação) Sua ligação é importante pra nós. Por favor, continue na espera.",
+      "img": "☎️🎵⏳",
+      "alvo": "stay on hold",
+      "alvo_pt": "continue na espera",
+      "conceito": "on hold = na espera, esperando na linha (ao telefone).",
+      "registro": "formal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "stay",
+          "aceita": [
+            "remain"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-26a63f",
+      "quem": "voce",
+      "contexto": "Thanks for holding. How can I help you?",
+      "cod": "I've been waiting for almost half an hour.",
+      "dica": "Estou esperando há quase meia hora.",
+      "img": "⏳😤📞",
+      "alvo": "I've been waiting for",
+      "alvo_pt": "Estou esperando há",
+      "conceito": "Espera que continua até agora: I've been waiting for + tempo (não: I'm waiting since).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "i'm",
+        "since"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2894659,
+        "en_autor": "CK",
+        "pt_id": 11136580,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-564cea",
+      "quem": "atendente",
+      "contexto": "f-26a63f",
+      "cod": "I'm sorry about the wait. Do you have a reference number?",
+      "dica": "Sinto muito pela espera. Você tem um número de protocolo?",
+      "img": "🙏🔢❓",
+      "alvo": "reference number",
+      "alvo_pt": "número de protocolo",
+      "conceito": "reference number = o número de protocolo do atendimento.",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "about the wait",
+          "aceita": [
+            "for the wait"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d46443",
+      "quem": "voce",
+      "contexto": "f-564cea",
+      "cod": "Sure. The reference number is in the email you sent me.",
+      "dica": "Claro. O número de protocolo está no e-mail que vocês me mandaram.",
+      "img": "📧🔢✅",
+      "alvo": "reference number",
+      "alvo_pt": "número de protocolo",
+      "conceito": "the email you sent me: relativa sem that (o that é opcional).",
+      "var": [
+        {
+          "em": "in the email",
+          "aceita": [
+            "on the email"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-94eecb",
+      "quem": "atendente",
+      "cod": "I can't change baggage fees. Would you like me to transfer your call?",
+      "dica": "Não consigo alterar taxas de bagagem. Gostaria que eu transferisse a sua ligação?",
+      "img": "🧳💲🔀",
+      "alvo": "transfer your call",
+      "alvo_pt": "transferisse a sua ligação",
+      "conceito": "Gostaria que eu...? = Would you like me to...? (não: like that I...).",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR61"
+      ],
+      "armadilhas": [
+        "that"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7817e9",
+      "quem": "voce",
+      "contexto": "f-94eecb",
+      "cod": "Yes, please, to someone who can actually help.",
+      "dica": "Sim, por favor, para alguém que possa de fato ajudar.",
+      "img": "🙋🤝✅",
+      "alvo": "actually help",
+      "alvo_pt": "de fato ajudar",
+      "conceito": "actually = de fato, na verdade (não: atualmente, que é currently).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "currently"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1dfe79",
+      "quem": "voce",
+      "contexto": "I'm sorry, but even my supervisor can't remove that fee.",
+      "cod": "I'd like to speak with someone in charge.",
+      "dica": "Eu gostaria de falar com o responsável.",
+      "img": "👔📞☝️",
+      "alvo": "someone in charge",
+      "alvo_pt": "o responsável",
+      "conceito": "someone in charge = alguém responsável, que pode decidir.",
+      "var": [
+        {
+          "em": "someone in charge",
+          "aceita": [
+            "the person in charge"
+          ]
+        },
+        {
+          "em": "speak with",
+          "aceita": [
+            "speak to",
+            "talk to"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2033759,
+        "en_autor": "CK",
+        "pt_id": 2427246,
+        "pt_autor": "marcospcruz",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-69624e",
+      "quem": "voce",
+      "cod": "Thanks. What's the reference number for this call?",
+      "dica": "Obrigado. Qual é o número de protocolo desta ligação?",
+      "pt_f": "Obrigada. Qual é o número de protocolo desta ligação?",
+      "img": "📞🔢✍️",
+      "alvo": "reference number",
+      "alvo_pt": "número de protocolo",
+      "conceito": "Peça sempre o protocolo no fim: What's the reference number for this call?",
+      "var": [
+        {
+          "em": "for this call",
+          "aceita": [
+            "of this call"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

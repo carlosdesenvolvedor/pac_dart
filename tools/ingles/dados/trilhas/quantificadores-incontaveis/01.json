@@ -1,0 +1,298 @@
+{
+  "id": "quantificadores-incontaveis.nao-tenho-muito-tempo-much-e-many",
+  "trilha": "quantificadores-incontaveis",
+  "nome": "Não tenho muito tempo: much e many",
+  "emoji": "⌛",
+  "cena": "Fim de tarde, numa chamada rápida, você desabafa com a Ana sobre a agenda cheia da semana.",
+  "resumo": "Falar de quantidade com much (o que não se conta), many (o que se conta) e a lot of: How much time...? / How many tasks...?",
+  "fechamento": false,
+  "novos": [
+    "unread messages",
+    "How much time...?",
+    "task",
+    "deadline",
+    "inbox"
+  ],
+  "apoio": [
+    "much",
+    "many",
+    "a lot of",
+    "work (incontável)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Muito: much, many ou a lot of"
+    },
+    {
+      "t": "p",
+      "c": "**much** vai com o que não se conta (time, work, money); **many**, com o que se conta no plural (tasks, messages, people). Na frase afirmativa, o mais natural é **a lot of** para os dois."
+    },
+    {
+      "t": "ex",
+      "c": "I don't have much time today.\nNão tenho muito tempo hoje."
+    },
+    {
+      "t": "ex",
+      "c": "How many tasks do you have?\nQuantas tarefas você tem?"
+    },
+    {
+      "t": "warn",
+      "c": "Muito tempo = much time (não: many time, very time). People é plural: many people."
+    }
+  ],
+  "imagem": "🗓️⌛📥",
+  "visualizacao": "Fim de tarde, você está na frente do notebook. A caixa de entrada não para de piscar e a Ana aparece na chamada, de fone, perguntando se você tem um tempinho.",
+  "foto_busca": "busy laptop email inbox desk",
+  "trechos": [
+    {
+      "id": "f-8de45b",
+      "quem": "ana",
+      "cod": "How much time do you have?",
+      "dica": "Quanto tempo você tem?",
+      "img": "⏳❓",
+      "alvo": "How much time",
+      "alvo_pt": "Quanto tempo",
+      "conceito": "Tempo não se conta: How much time (não: How many time).",
+      "registro": "informal",
+      "interferencias": [
+        "BR23"
+      ],
+      "armadilhas": [
+        "many"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2912645,
+        "en_autor": "CK",
+        "pt_id": 4815017,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-980070",
+      "quem": "voce",
+      "contexto": "f-8de45b",
+      "cod": "Not much. I have a lot of unread messages.",
+      "dica": "Não muito. Tenho muitas mensagens não lidas.",
+      "img": "📩🔴",
+      "alvo": "unread messages",
+      "alvo_pt": "mensagens não lidas",
+      "lit": "[lit.: não-lidas mensagens]",
+      "conceito": "unread = não lido; o adjetivo vem antes do substantivo.",
+      "var": [
+        {
+          "em": "a lot of",
+          "aceita": [
+            "many"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR23"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6b62c5",
+      "quem": "ana",
+      "contexto": "f-980070",
+      "cod": "Wow. How many unread messages do you have?",
+      "dica": "Nossa. Quantas mensagens não lidas você tem?",
+      "img": "📬😮",
+      "alvo": "unread messages",
+      "alvo_pt": "mensagens não lidas",
+      "conceito": "Quantas, com o que se conta = How many.",
+      "registro": "informal",
+      "interferencias": [
+        "BR23",
+        "BR06"
+      ],
+      "armadilhas": [
+        "much"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8ba777",
+      "quem": "voce",
+      "contexto": "f-6b62c5",
+      "cod": "I don't know. My inbox is full.",
+      "dica": "Não sei. Minha caixa de entrada está cheia.",
+      "img": "📥😵",
+      "alvo": "inbox",
+      "alvo_pt": "caixa de entrada",
+      "conceito": "inbox = caixa de entrada (do e-mail ou do chat).",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c58a05",
+      "quem": "ana",
+      "cod": "I only check my inbox twice a day.",
+      "dica": "Só checo minha caixa de entrada duas vezes por dia.",
+      "img": "📥✌️",
+      "alvo": "inbox",
+      "alvo_pt": "caixa de entrada",
+      "var": [
+        {
+          "em": "only check my inbox twice a day",
+          "aceita": [
+            "check my inbox only twice a day"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bcc109",
+      "quem": "voce",
+      "cod": "How about you? How many tasks do you have this week?",
+      "dica": "E você? Quantas tarefas você tem esta semana?",
+      "img": "📋❓",
+      "alvo": "tasks",
+      "alvo_pt": "tarefas",
+      "conceito": "task = tarefa; se conta, então How many tasks.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "much"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "How about",
+          "aceita": [
+            "What about"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-19e71c",
+      "quem": "ana",
+      "contexto": "f-bcc109",
+      "cod": "Only three, but the deadline is Monday.",
+      "dica": "Só três, mas o prazo é segunda.",
+      "img": "📅⏰",
+      "alvo": "deadline",
+      "alvo_pt": "prazo",
+      "conceito": "deadline = prazo (a data-limite de uma entrega).",
+      "var": [
+        {
+          "em": "Only",
+          "aceita": [
+            "Just"
+          ]
+        },
+        {
+          "em": "is Monday",
+          "aceita": [
+            "is on Monday"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4494473,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado 'Only three, but' antes da frase original",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9e60cc",
+      "quem": "voce",
+      "cod": "I have a lot of small tasks on my to-do list.",
+      "dica": "Tenho muitas tarefas pequenas na minha lista de pendências.",
+      "img": "📝✅",
+      "alvo": "tasks",
+      "alvo_pt": "tarefas",
+      "conceito": "to-do list = lista de pendências (do que falta fazer).",
+      "var": [
+        {
+          "em": "a lot of",
+          "aceita": [
+            "many"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR23"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-db230e",
+      "quem": "voce",
+      "cod": "My deadline is next Tuesday, so I don't have much time.",
+      "dica": "Meu prazo é na terça que vem, então não tenho muito tempo.",
+      "img": "📅😰",
+      "alvo": "deadline",
+      "alvo_pt": "prazo",
+      "conceito": "Na negativa, muito tempo = not much time.",
+      "registro": "informal",
+      "interferencias": [
+        "BR23",
+        "BR07"
+      ],
+      "armadilhas": [
+        "many",
+        "very"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-de7a95",
+      "quem": "ana",
+      "contexto": "f-db230e",
+      "cod": "How much time do you need?",
+      "dica": "Quanto tempo você precisa?",
+      "img": "⏳🤔",
+      "alvo": "How much time",
+      "alvo_pt": "Quanto tempo",
+      "registro": "informal",
+      "interferencias": [
+        "BR23"
+      ],
+      "armadilhas": [
+        "many"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2912646,
+        "en_autor": "CK",
+        "pt_id": 3812254,
+        "pt_autor": "Balamax",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

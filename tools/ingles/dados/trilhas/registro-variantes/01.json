@@ -1,0 +1,222 @@
+{
+  "id": "registro-variantes.eu-entendo-sim",
+  "trilha": "registro-variantes",
+  "nome": "Eu entendo, sim",
+  "emoji": "💯",
+  "cena": "Um cliente irritado acha que o time não testou nada, e você responde com calma e firmeza.",
+  "resumo": "Dar ênfase com do/did + verbo e com a forma plena: I do understand, we did test, I am sure.",
+  "fechamento": false,
+  "novos": [
+    "I do understand",
+    "we did test",
+    "reassure",
+    "frustration"
+  ],
+  "apoio": [
+    "actually (na verdade)",
+    "be used to + -ing"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ênfase: I do understand"
+    },
+    {
+      "t": "p",
+      "c": "Para insistir ou tranquilizar, o inglês põe **do / does / did** antes do verbo, dito com força: **I do understand** = eu entendo, sim. **We did test** = nós testamos, sim."
+    },
+    {
+      "t": "tip",
+      "c": "Sem contração também é ênfase: **I am sure**, com força no *am*, soa mais firme que *I'm sure*."
+    },
+    {
+      "t": "warn",
+      "c": "Não: *I understand, yes* nem *did tested*: depois de do/did, verbo base. E acostumado a = **be used to** + -ing (não: used to get)."
+    },
+    {
+      "t": "ex",
+      "c": "Actually, we did test the new version before the release.\nNa verdade, nós testamos, sim, a versão nova antes do lançamento."
+    }
+  ],
+  "imagem": "📞😠🛡️",
+  "visualizacao": "Você está no notebook, em videochamada com um cliente irritado. Ele fala alto, você respira fundo, mantém a voz calma e mostra na tela os testes que o time fez.",
+  "foto_busca": "customer video call laptop",
+  "trechos": [
+    {
+      "id": "f-00b6ca",
+      "quem": "voce",
+      "contexto": "Your app crashed again, and my team lost a whole morning of work.",
+      "cod": "I understand your frustration.",
+      "dica": "Entendo a sua frustração.",
+      "img": "😤🤝💬",
+      "alvo": "frustration",
+      "alvo_pt": "frustração",
+      "conceito": "frustration = frustração. Com o cliente: I understand your frustration.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1839513,
+        "en_autor": "CK",
+        "pt_id": 6970268,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4a4d22",
+      "quem": "voce",
+      "contexto": "I don't think you understand how serious this is.",
+      "cod": "Believe me, I do understand your concern, and we're working on it.",
+      "dica": "Pode acreditar, eu entendo, sim, a sua preocupação, e estamos trabalhando nisso.",
+      "img": "🙏💬🛠️",
+      "alvo": "I do understand",
+      "alvo_pt": "eu entendo, sim",
+      "conceito": "Eu entendo, sim = I do understand: o do antes do verbo dá a ênfase (não: I understand, yes).",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "yes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-db38ff",
+      "quem": "voce",
+      "contexto": "Honestly, it looks like nobody tested the new version.",
+      "cod": "Actually, we did test the new version before the release.",
+      "dica": "Na verdade, nós testamos, sim, a versão nova antes do lançamento.",
+      "img": "🧪✅📦",
+      "alvo": "we did test",
+      "alvo_pt": "nós testamos, sim",
+      "conceito": "Nós testamos, sim = we did test: did + verbo base (não: did tested). actually = na verdade.",
+      "var": [
+        {
+          "em": "release",
+          "aceita": [
+            "launch"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "tested",
+        "currently"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-06cc8b",
+      "quem": "voce",
+      "contexto": "Are you sure about that?",
+      "cod": "Yes, I am sure. We did test it on older phones.",
+      "dica": "(ênfase) Sim, tenho certeza. Testamos isso, sim, em celulares antigos.",
+      "img": "💯📱📱",
+      "alvo": "We did test it",
+      "alvo_pt": "Testamos isso, sim",
+      "conceito": "Com ênfase, a contração some: I am sure, com força no am.",
+      "var": [
+        {
+          "em": "older phones",
+          "aceita": [
+            "old phones"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "tested"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f13e3b",
+      "quem": "voce",
+      "cod": "I want to reassure you that it won't happen again.",
+      "dica": "Quero tranquilizar você: não vai acontecer de novo.",
+      "img": "🤝🛡️🙂",
+      "alvo": "reassure",
+      "alvo_pt": "tranquilizar",
+      "conceito": "reassure = tranquilizar alguém. E o it é obrigatório: it won't happen again.",
+      "opcional": [
+        "that"
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-543af1",
+      "quem": "mike",
+      "contexto": "f-f13e3b",
+      "cod": "Good job. You managed to reassure the client without promising anything.",
+      "dica": "Bom trabalho. Você conseguiu tranquilizar o cliente sem prometer nada.",
+      "img": "👏🙂🤐",
+      "alvo": "reassure",
+      "alvo_pt": "tranquilizar",
+      "conceito": "without + -ing = sem + infinitivo: without promising.",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a6f25",
+      "quem": "voce",
+      "contexto": "f-543af1",
+      "cod": "Honestly, I do understand why the client was upset.",
+      "dica": "Sinceramente, eu entendo, sim, por que o cliente ficou chateado.",
+      "img": "🤷💭😟",
+      "alvo": "I do understand",
+      "alvo_pt": "eu entendo, sim",
+      "conceito": "Ênfase na concordância: I do understand = eu entendo, sim.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f7f329",
+      "quem": "mike",
+      "cod": "The client's frustration makes sense. They're used to getting updates every week.",
+      "dica": "A frustração do cliente faz sentido. Eles estão acostumados a receber atualizações toda semana.",
+      "img": "😠📅🔔",
+      "alvo": "frustration",
+      "alvo_pt": "frustração",
+      "conceito": "be used to + -ing = estar acostumado a (não: they're used to get).",
+      "var": [
+        {
+          "em": "getting",
+          "aceita": [
+            "receiving"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR49"
+      ],
+      "armadilhas": [
+        "get"
+      ],
+      "origem": "autoral_ia",
+      "contexto": "f-4a6f25"
+    }
+  ]
+}

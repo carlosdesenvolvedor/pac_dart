@@ -1,0 +1,234 @@
+{
+  "id": "modais-no-passado.era-pra-ter-saido-ontem-supposed-to",
+  "trilha": "modais-no-passado",
+  "nome": "Era pra ter saído ontem: supposed to",
+  "emoji": "📋",
+  "cena": "No seu primeiro dia na equipe nova, o Mike explica as regras de merge, a Sarah comenta a release atrasada e você acha um botão misterioso no app.",
+  "resumo": "Dizer o que é pra fazer (regra) e o que era pra ter acontecido (plano) com be supposed to.",
+  "fechamento": false,
+  "novos": [
+    "was supposed to (era pra)",
+    "be supposed to (é pra)",
+    "What's this supposed to do?",
+    "approval"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "É pra / era pra: be supposed to"
+    },
+    {
+      "t": "p",
+      "c": "**be supposed to** + verbo = é pra (regra ou combinado): You're supposed to get two approvals. No passado, **was supposed to** = era pra, e não aconteceu."
+    },
+    {
+      "t": "tip",
+      "c": "Era pra ter saído = was supposed to go out: depois de supposed to, o verbo fica na forma base."
+    },
+    {
+      "t": "warn",
+      "c": "Não troque por should: should é conselho (você devia); supposed to é regra ou plano."
+    },
+    {
+      "t": "ex",
+      "c": "The release was supposed to go out yesterday.\nA release era pra ter saído ontem."
+    }
+  ],
+  "imagem": "💻📋🔘",
+  "visualizacao": "Seu primeiro dia na equipe nova. O Mike compartilha a tela com as regras do repositório, a Sarah suspira olhando o calendário da release e você vê um botão cinza piscando no app.",
+  "foto_busca": "developer team meeting laptop screen",
+  "trechos": [
+    {
+      "id": "f-fee2a8",
+      "quem": "voce",
+      "cod": "Do I need approval to merge this?",
+      "dica": "Preciso de aprovação pra fazer merge disso?",
+      "img": "✅❓",
+      "alvo": "approval",
+      "alvo_pt": "aprovação",
+      "conceito": "approval = aprovação (de um pull request); na pergunta, sem artigo. merge = fazer merge.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0c059f",
+      "quem": "mike",
+      "contexto": "f-fee2a8",
+      "cod": "Yes, you're supposed to get two approvals before you merge.",
+      "dica": "Sim, é pra você ter duas aprovações antes de fazer merge.",
+      "img": "✌️✅",
+      "alvo": "you're supposed to",
+      "alvo_pt": "é pra você",
+      "lit": "[lit.: você é suposto a ter]",
+      "conceito": "é pra (regra, combinado) = be supposed to + verbo na forma base.",
+      "var": [
+        {
+          "em": "get",
+          "aceita": [
+            "have"
+          ]
+        },
+        {
+          "em": "before you merge",
+          "aceita": [
+            "before merging"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "should",
+        "must"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4417c5",
+      "quem": "mike",
+      "cod": "And you're not supposed to push directly to main.",
+      "dica": "E não é pra você fazer push direto na main.",
+      "img": "🚫⬆️",
+      "alvo": "not supposed to",
+      "alvo_pt": "não é pra",
+      "conceito": "não é pra = not supposed to: regra do time.",
+      "var": [
+        {
+          "em": "directly",
+          "aceita": [
+            "straight"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "should"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bd3d59",
+      "quem": "voce",
+      "cod": "Mike, can you give me the second approval?",
+      "dica": "Mike, você pode me dar a segunda aprovação?",
+      "img": "🙏✅",
+      "alvo": "approval",
+      "alvo_pt": "aprovação",
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2861e3",
+      "quem": "sarah",
+      "cod": "The release was supposed to go out yesterday.",
+      "dica": "A release era pra ter saído ontem.",
+      "img": "🚀📅❌",
+      "alvo": "was supposed to",
+      "alvo_pt": "era pra",
+      "conceito": "Era pra ter saído = was supposed to go out: o plano não se cumpriu.",
+      "var": [
+        {
+          "em": "go out",
+          "aceita": [
+            "come out"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "should"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-530074",
+      "quem": "mike",
+      "contexto": "f-2861e3",
+      "cod": "I know. It wasn't supposed to take this long.",
+      "dica": "Eu sei. Não era pra demorar tanto.",
+      "img": "⏳😕",
+      "alvo": "wasn't supposed to",
+      "alvo_pt": "Não era pra",
+      "conceito": "Não era pra demorar: em inglês, a frase precisa do sujeito it.",
+      "var": [
+        {
+          "em": "this",
+          "aceita": [
+            "so"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6fd7ee",
+      "quem": "sarah",
+      "cod": "And I was supposed to call the client back this morning.",
+      "dica": "E era pra eu ter ligado de volta pro cliente hoje de manhã.",
+      "img": "📞🔙",
+      "alvo": "was supposed to",
+      "alvo_pt": "era pra",
+      "conceito": "call back = ligar de volta; com substantivo, call the client back ou call back the client.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR05"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9f8472",
+      "quem": "voce",
+      "cod": "What's this supposed to do?",
+      "dica": "Isso aqui é pra fazer o quê?",
+      "img": "🔘🤔",
+      "alvo": "What's this supposed to do",
+      "alvo_pt": "é pra fazer o quê",
+      "lit": "[lit.: o que isto é suposto a fazer?]",
+      "conceito": "Pergunta comum para um botão ou uma função: pra que serve isso?",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-385c2f",
+      "quem": "mike",
+      "contexto": "f-9f8472",
+      "cod": "It's supposed to go back to the home screen.",
+      "dica": "É pra voltar pra tela inicial.",
+      "img": "🔙🏠",
+      "alvo": "It's supposed to",
+      "alvo_pt": "É pra",
+      "conceito": "É pra voltar: sujeito it obrigatório. go back to = voltar para.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8edad3",
+      "quem": "voce",
+      "contexto": "f-385c2f",
+      "cod": "So what's this other button supposed to do?",
+      "dica": "Então esse outro botão é pra fazer o quê?",
+      "img": "🔘🔘❓",
+      "alvo": "supposed to do",
+      "alvo_pt": "é pra fazer o quê",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

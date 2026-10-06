@@ -1,0 +1,271 @@
+{
+  "id": "situacao-entrevista.sua-vez-de-perguntar-remoto-do-brasil",
+  "trilha": "situacao-entrevista",
+  "nome": "Sua vez de perguntar: remoto do Brasil",
+  "emoji": "❓",
+  "cena": "No fim da entrevista, o tech lead pergunta se você tem dúvidas, e é a sua vez de perguntar.",
+  "resumo": "Fazer perguntas ao entrevistador e combinar o trabalho remoto do Brasil: typical day, next steps, based in, overlap.",
+  "fechamento": false,
+  "novos": [
+    "What does a typical day look like?",
+    "next steps",
+    "I'm based in...",
+    "overlap (ter horário em comum)",
+    "Could you rephrase the question?"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Sua vez de perguntar"
+    },
+    {
+      "t": "p",
+      "c": "No fim, quase sempre vem: Do you have any questions for me? Tenha duas ou três prontas: What does a typical day look like? / What are the next steps in the process?"
+    },
+    {
+      "t": "warn",
+      "c": "Como é...? (rotina, aparência) = What does... look like? Com does, e look like no fim."
+    },
+    {
+      "t": "tip",
+      "c": "Remoto do Brasil: I'm based in Brazil (estou baseado no Brasil). I can overlap with the team for six hours a day (ter horário em comum)."
+    },
+    {
+      "t": "ex",
+      "c": "Sorry, could you rephrase the question?\nDesculpa, você poderia reformular a pergunta?"
+    }
+  ],
+  "imagem": "💻❓🌎",
+  "visualizacao": "A entrevista está acabando. O tech lead sorri, olha o relógio e diz que agora é a sua vez. Você pega a lista de perguntas que deixou ao lado do teclado.",
+  "foto_busca": "candidate asking questions video interview",
+  "trechos": [
+    {
+      "id": "f-a707b9",
+      "quem": "voce",
+      "contexto": "So, how do you feel about being on call?",
+      "cod": "Sorry, could you rephrase the question?",
+      "dica": "Desculpa, você poderia reformular a pergunta?",
+      "img": "🔄❓",
+      "alvo": "could you rephrase the question",
+      "alvo_pt": "você poderia reformular a pergunta",
+      "conceito": "rephrase = dizer de outro jeito (reformular).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b9d2da",
+      "quem": "voce",
+      "contexto": "Do you have any questions for me?",
+      "cod": "Yes. What does a typical day look like on this team?",
+      "dica": "Tenho. Como é um dia típico neste time?",
+      "img": "📅☀️👥",
+      "alvo": "What does a typical day look like",
+      "alvo_pt": "Como é um dia típico",
+      "lit": "[lit.: com o que um dia típico se parece?]",
+      "conceito": "Como é...? = What does... look like? (com does).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "how",
+        "is"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Yes",
+          "aceita": [
+            "I do",
+            "Yes, I do"
+          ]
+        },
+        {
+          "em": "on this team",
+          "aceita": [
+            "for this team",
+            "in this team"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e624ba",
+      "quem": "voce",
+      "contexto": "We start with standup at 10:00, and then we code most of the day.",
+      "cod": "And what does a typical day look like for you?",
+      "dica": "E como é um dia típico para você?",
+      "img": "📅🙂❓",
+      "alvo": "what does a typical day look like",
+      "alvo_pt": "como é um dia típico",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "how",
+        "looks"
+      ],
+      "variacao_de": "f-b9d2da",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6a9e48",
+      "quem": "entrevistador",
+      "cod": "Most of our team is based in Austin, but some people work remotely.",
+      "dica": "A maior parte do nosso time está baseada em Austin, mas algumas pessoas trabalham remoto.",
+      "img": "🏙️🏠",
+      "alvo": "based in",
+      "alvo_pt": "baseada em",
+      "conceito": "be based in = estar baseado em (onde a pessoa ou a empresa fica).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5cd67e",
+      "quem": "voce",
+      "contexto": "f-6a9e48",
+      "cod": "That's great. I'm based in {cidade}, Brazil.",
+      "dica": "Que ótimo. Estou baseado em {cidade}, no Brasil.",
+      "img": "📍🇧🇷",
+      "alvo": "I'm based in",
+      "alvo_pt": "Estou baseado em",
+      "pt_f": "Que ótimo. Estou baseada em {cidade}, no Brasil.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "on",
+        "at"
+      ],
+      "bio": [
+        "cidade"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ec1171",
+      "quem": "entrevistador",
+      "contexto": "f-5cd67e",
+      "cod": "We need someone who can overlap with Austin for four hours a day.",
+      "dica": "Precisamos de alguém que consiga ter horário em comum com Austin quatro horas por dia.",
+      "img": "🕓🤝",
+      "alvo": "overlap",
+      "alvo_pt": "ter horário em comum",
+      "conceito": "overlap = ter horário em comum (fusos diferentes).",
+      "opcional": [
+        "for"
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a day",
+          "aceita": [
+            "per day"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ac7a9a",
+      "quem": "voce",
+      "contexto": "f-ec1171",
+      "cod": "No problem. I can overlap with the team for six hours a day.",
+      "dica": "Sem problema. Consigo ter horário em comum com o time seis horas por dia.",
+      "img": "🕕👍",
+      "alvo": "overlap",
+      "alvo_pt": "ter horário em comum",
+      "opcional": [
+        "for"
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "during"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a day",
+          "aceita": [
+            "per day"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a069b5",
+      "quem": "voce",
+      "contexto": "And how do you feel about core hours versus a flexible schedule?",
+      "cod": "I'm not sure I understand. Could you rephrase the question?",
+      "dica": "Não sei se entendi. Você poderia reformular a pergunta?",
+      "img": "😕🔄",
+      "alvo": "Could you rephrase the question",
+      "alvo_pt": "Você poderia reformular a pergunta",
+      "var": [
+        {
+          "em": "understand",
+          "aceita": [
+            "understood"
+          ]
+        },
+        {
+          "em": "I'm not sure",
+          "aceita": [
+            "I'm not sure if",
+            "I don't know if"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "variacao_de": "f-a707b9",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bb78b0",
+      "quem": "voce",
+      "cod": "What are the next steps in the process?",
+      "dica": "Quais são os próximos passos do processo?",
+      "img": "👣➡️",
+      "alvo": "next steps",
+      "alvo_pt": "próximos passos",
+      "conceito": "do processo = in the process (in, não of).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2138f3",
+      "quem": "entrevistador",
+      "contexto": "f-bb78b0",
+      "cod": "I'll send you the next steps by email tomorrow.",
+      "dica": "Amanhã eu te mando os próximos passos por e-mail.",
+      "img": "📧👣",
+      "alvo": "next steps",
+      "alvo_pt": "próximos passos",
+      "conceito": "por e-mail = by email.",
+      "registro": "neutro",
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

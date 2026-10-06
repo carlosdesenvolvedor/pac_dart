@@ -1,0 +1,284 @@
+{
+  "id": "se-e-quando.se-eu-tomo-cafe-nao-durmo",
+  "trilha": "se-e-quando",
+  "nome": "Se eu tomo café, não durmo",
+  "emoji": "☕",
+  "cena": "Numa chamada de vídeo, você conta para a Ana como é a sua rotina e mostra como funciona o app novo do time.",
+  "resumo": "O que sempre acontece numa condição: if + presente, presente (condicional zero).",
+  "fechamento": false,
+  "novos": [
+    "if",
+    "click",
+    "button",
+    "skip (pular)",
+    "in a bad mood"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Se + presente: o que sempre acontece"
+    },
+    {
+      "t": "p",
+      "c": "Para falar do que **sempre** acontece numa condição, use **if + presente** nas duas partes: If I drink coffee at night, I can't sleep."
+    },
+    {
+      "t": "tip",
+      "c": "Com o if no começo, vírgula entre as partes. Com o if no meio, sem vírgula: I can't work well if I skip breakfast."
+    },
+    {
+      "t": "warn",
+      "c": "Tempo e coisas sempre com sujeito: when it rains, it closes (não: when rains, closes)."
+    },
+    {
+      "t": "ex",
+      "c": "If you click this button, the page loads again.\nSe você clicar neste botão, a página carrega de novo."
+    }
+  ],
+  "imagem": "💻☕🖱️",
+  "visualizacao": "Fim de tarde, você está numa chamada de vídeo com a Ana. Ela segura uma caneca de café e compartilha a tela do app novo; o cursor pisca em cima de um botão azul.",
+  "foto_busca": "video call laptop coffee mug",
+  "trechos": [
+    {
+      "id": "f-4ca5ed",
+      "quem": "voce",
+      "contexto": "I always drink coffee after dinner.",
+      "cod": "If I drink coffee at night, I can't sleep.",
+      "dica": "Se eu tomo café à noite, não consigo dormir.",
+      "img": "☕🌙👀",
+      "alvo": "If",
+      "alvo_pt": "Se",
+      "conceito": "If + presente nas duas partes = algo que sempre acontece (condicional zero).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5a596a",
+      "quem": "ana",
+      "contexto": "f-4ca5ed",
+      "cod": "Really? If I don't drink coffee, I get a headache.",
+      "dica": "Sério? Se eu não tomo café, fico com dor de cabeça.",
+      "img": "🚫☕🤕",
+      "alvo": "If",
+      "alvo_pt": "Se",
+      "conceito": "fico com dor de cabeça = I get a headache. Negativa no presente com don't.",
+      "var": [
+        {
+          "em": "get",
+          "aceita": [
+            "have"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR07",
+        "BR28"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3ff6ef",
+      "quem": "voce",
+      "cod": "I can't work well if I skip breakfast.",
+      "dica": "Não consigo trabalhar bem se eu pulo o café da manhã.",
+      "img": "⏭️🍳💻",
+      "alvo": "skip",
+      "alvo_pt": "pulo",
+      "conceito": "skip = pular (uma refeição, uma etapa). Com o if no meio, sem vírgula.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fe0000",
+      "quem": "ana",
+      "contexto": "f-3ff6ef",
+      "cod": "Do you skip lunch when you're busy?",
+      "dica": "Você pula o almoço quando está ocupado?",
+      "pt_f": "Você pula o almoço quando está ocupada?",
+      "img": "⏭️🍽️⏳",
+      "alvo": "skip",
+      "alvo_pt": "pula",
+      "conceito": "Pergunta no presente pede do: Do you skip...? when + presente = sempre que.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-573a9d",
+      "quem": "voce",
+      "contexto": "f-fe0000",
+      "cod": "Sometimes, but if I skip lunch, I'm in a bad mood.",
+      "dica": "Às vezes, mas se eu pulo o almoço, fico de mau humor.",
+      "img": "😤🍽️",
+      "alvo": "in a bad mood",
+      "alvo_pt": "de mau humor",
+      "conceito": "estar ou ficar de mau humor = be in a bad mood.",
+      "var": [
+        {
+          "em": "I'm in",
+          "aceita": [
+            "I get in"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b42399",
+      "quem": "ana",
+      "cod": "I'm always in a bad mood when it rains.",
+      "dica": "Eu sempre fico de mau humor quando chove.",
+      "img": "🌧️😒",
+      "alvo": "in a bad mood",
+      "alvo_pt": "de mau humor",
+      "conceito": "always vem depois de be: I'm always... Quando chove = when it rains (it obrigatório).",
+      "var": [
+        {
+          "em": "I'm always in",
+          "aceita": [
+            "I always get in"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR19"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dc3dae",
+      "quem": "ana",
+      "cod": "What happens if I click here?",
+      "dica": "O que acontece se eu clicar aqui?",
+      "img": "🖱️❓",
+      "alvo": "click",
+      "alvo_pt": "clicar",
+      "conceito": "Pergunta de sujeito, sem do: What happens...? (não: What does happen).",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "does"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "What happens",
+          "aceita": [
+            "What will happen"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-9657e2",
+      "quem": "voce",
+      "contexto": "f-dc3dae",
+      "cod": "If you click this button, the page loads again.",
+      "dica": "Se você clicar neste botão, a página carrega de novo.",
+      "img": "🔘🔄📄",
+      "alvo": "button",
+      "alvo_pt": "botão",
+      "conceito": "click this button (o on é opcional). -s da 3ª pessoa: the page loads.",
+      "var": [
+        {
+          "em": "click this",
+          "aceita": [
+            "click on this"
+          ]
+        },
+        {
+          "em": "loads again",
+          "aceita": [
+            "reloads"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-60a45b",
+      "quem": "ana",
+      "cod": "Oops, I clicked the wrong button.",
+      "dica": "Ops, cliquei no botão errado.",
+      "img": "🙈🔘",
+      "alvo": "button",
+      "alvo_pt": "botão",
+      "conceito": "Na tela, clicar em = click (o on é opcional); press é para botão físico. Passado regular: clicked.",
+      "var": [
+        {
+          "em": "clicked the",
+          "aceita": [
+            "clicked on the"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5916219,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN: 'pushed' → 'clicked' (botão de app, não físico) e 'Oops,' acrescentado (original: \"I pushed the wrong button.\"); PT reescrito (original: \"Eu apertei o botão errado.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f26a4c",
+      "quem": "voce",
+      "contexto": "f-60a45b",
+      "cod": "It's OK. If you click outside the window, it closes.",
+      "dica": "Tudo bem. Se você clicar fora da janela, ela fecha.",
+      "img": "🖱️🪟✖️",
+      "alvo": "click",
+      "alvo_pt": "clicar",
+      "conceito": "A janela = it: it closes (não: she closes).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR28"
+      ],
+      "armadilhas": [
+        "she"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "It's OK",
+          "aceita": [
+            "That's OK"
+          ]
+        }
+      ]
+    }
+  ]
+}

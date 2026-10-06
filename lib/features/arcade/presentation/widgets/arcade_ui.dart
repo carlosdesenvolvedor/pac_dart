@@ -3,6 +3,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import '../banco_arcade.dart';
+
 import '../../../../core/som/sons.dart';
 import '../../../../core/syntax/tokenizer.dart';
 import '../../../../core/theme/mixart.dart';
@@ -380,7 +382,7 @@ class FaseVencida extends StatelessWidget {
                       const Text('💡', style: TextStyle(fontSize: 16)),
                       const SizedBox(width: 10),
                       Expanded(
-                        child: Text('Dica Dart: $dica',
+                        child: Text('Dica ${BancoArcade.linguagem}: $dica',
                             style: Mixart.ui(size: 12.5, color: Mixart.text)
                                 .copyWith(height: 1.45)),
                       ),

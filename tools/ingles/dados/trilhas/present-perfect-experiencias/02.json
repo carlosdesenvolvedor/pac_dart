@@ -1,0 +1,323 @@
+{
+  "id": "present-perfect-experiencias.nunca-comi-sushi-eaten-tried-seen",
+  "trilha": "present-perfect-experiencias",
+  "nome": "Nunca comi sushi: eaten, tried, seen",
+  "emoji": "🍣",
+  "cena": "Num restaurante tailandês lotado em Chicago, a Sarah sugere pratos que você nunca provou, e o Mike conta o que ele nunca comeu.",
+  "resumo": "Falar de comidas que já provou ou viu com os particípios eaten, tried e seen.",
+  "fechamento": false,
+  "novos": [
+    "eaten",
+    "tried",
+    "seen",
+    "sushi",
+    "Thai food"
+  ],
+  "apoio": [
+    "had (particípio)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Particípios: eaten, seen, tried"
+    },
+    {
+      "t": "p",
+      "c": "Depois de **have/has** vem o particípio. Irregulares mudam: *eat → eaten*, *see → seen*. Regulares são iguais ao passado: *try → tried*."
+    },
+    {
+      "t": "ex",
+      "c": "I've never eaten sushi.\nNunca comi sushi."
+    },
+    {
+      "t": "ex",
+      "c": "Have you ever tried Thai food?\nVocê já provou comida tailandesa?"
+    },
+    {
+      "t": "warn",
+      "c": "O objeto não some: *I've tried it.* (não: I've tried.) (BR18). A resposta a *Have you ever...?* fica no present perfect (não: Yes, I ate.) (BR27)."
+    }
+  ],
+  "imagem": "🍜🌶️🍣",
+  "visualizacao": "Você está num restaurante tailandês cheio em Chicago. Cheiro de alho e pimenta, pratos coloridos passando, e a Sarah aponta o cardápio sorrindo.",
+  "foto_busca": "busy thai restaurant table dishes",
+  "trechos": [
+    {
+      "id": "f-751938",
+      "quem": "mike",
+      "cod": "Wow, I've never seen so many people here.",
+      "dica": "Nossa, nunca vi tanta gente aqui.",
+      "img": "😲👥🍜",
+      "alvo": "seen",
+      "alvo_pt": "vi",
+      "conceito": "see → saw → seen. Depois de have, sempre o particípio: seen.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR14"
+      ],
+      "armadilhas": [
+        "saw",
+        "so many people is"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5934902,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "in one place → here; acrescentado Wow,; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9bb39d",
+      "quem": "sarah",
+      "cod": "Have you ever tried Thai food?",
+      "dica": "Você já provou comida tailandesa?",
+      "img": "🍛🇹🇭❓",
+      "alvo": "Thai food",
+      "alvo_pt": "comida tailandesa",
+      "conceito": "Thai = tailandês, com maiúscula como toda nacionalidade. Provar comida = try.",
+      "var": [
+        {
+          "em": "Have you ever tried",
+          "aceita": [
+            "Did you ever try"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR15"
+      ],
+      "armadilhas": [
+        "thai",
+        "did you try",
+        "proved"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3554360,
+        "en_autor": "CK",
+        "pt_id": 3806013,
+        "pt_autor": "muriloricci",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "eaten Mexican food → tried Thai food (no PT: comeu comida mexicana → provou comida tailandesa)",
+        "export": "2026-10-03"
+      },
+      "opcional": [
+        "ever"
+      ]
+    },
+    {
+      "id": "f-9b53e3",
+      "quem": "voce",
+      "contexto": "f-9bb39d",
+      "cod": "No, I've never eaten it. Is it spicy?",
+      "dica": "Não, nunca comi. É apimentada?",
+      "img": "🙅🌶️❓",
+      "alvo": "eaten",
+      "alvo_pt": "comi",
+      "conceito": "eat → ate → eaten. E o it é obrigatório: I've never eaten it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "armadilhas": [
+        "ate",
+        "eated"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dd9e65",
+      "quem": "sarah",
+      "contexto": "f-9b53e3",
+      "cod": "A little. I've tried every dish here.",
+      "dica": "Um pouco. Já provei todos os pratos daqui.",
+      "img": "🤏🍽️😋",
+      "alvo": "tried",
+      "alvo_pt": "provei",
+      "conceito": "Provar comida = try. try → tried: o particípio regular é igual ao passado.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "proved",
+        "tryed"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "every dish",
+          "aceita": [
+            "all the dishes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8f504a",
+      "quem": "voce",
+      "cod": "I've never seen this dish before. What is it?",
+      "dica": "Nunca vi esse prato antes. O que é?",
+      "img": "🧐🍲",
+      "alvo": "seen",
+      "alvo_pt": "vi",
+      "conceito": "Nunca vi = I've never seen: experiência sem data.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "saw",
+        "never see"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2360088,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "this → this dish; acrescentado What is it?; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "this dish",
+          "aceita": [
+            "that dish"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-3cf90f",
+      "quem": "mike",
+      "contexto": "f-8f504a",
+      "cod": "It's green curry. I've tried it. It's really good.",
+      "dica": "É curry verde. Já provei. É muito bom.",
+      "img": "🍛🥢👍",
+      "alvo": "tried",
+      "alvo_pt": "provei",
+      "conceito": "Já provei = I've tried it: em inglês o objeto it não some.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "armadilhas": [
+        "i've tried."
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-279e95",
+      "quem": "mike",
+      "cod": "I've never eaten sushi.",
+      "dica": "Nunca comi sushi.",
+      "img": "🍣🚫",
+      "alvo": "sushi",
+      "alvo_pt": "sushi",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "never ate"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5119689,
+        "en_autor": "CK",
+        "pt_id": 9681697,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Chinese food → sushi (no PT: comida chinesa → sushi)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e7f191",
+      "quem": "sarah",
+      "contexto": "f-279e95",
+      "cod": "Really? Sushi is my favorite food.",
+      "dica": "Sério? Sushi é a minha comida favorita.",
+      "img": "😮🍣❤️",
+      "alvo": "Sushi",
+      "alvo_pt": "Sushi",
+      "conceito": "Falando de comida em geral, sem artigo: Sushi is... (não: The sushi is...).",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the sushi",
+        "favourite"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4fd3c7",
+      "quem": "mike",
+      "contexto": "f-e7f191",
+      "cod": "But I love Thai food. I've eaten here three times.",
+      "dica": "Mas eu adoro comida tailandesa. Já comi aqui três vezes.",
+      "img": "🍽️❤️🔁",
+      "alvo": "eaten",
+      "alvo_pt": "comi",
+      "conceito": "Sem data, com número de vezes: present perfect. eat here = comer aqui (no restaurante).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "ate",
+        "eated"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-33ded1",
+      "quem": "sarah",
+      "cod": "You're going to love Thai food, {nome}.",
+      "dica": "Você vai adorar comida tailandesa, {nome}.",
+      "img": "😍🍛",
+      "alvo": "Thai food",
+      "alvo_pt": "comida tailandesa",
+      "conceito": "Comida de um país, em geral, vai sem artigo: Thai food.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21",
+        "BR15"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

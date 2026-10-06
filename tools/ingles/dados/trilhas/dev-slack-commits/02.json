@@ -1,0 +1,251 @@
+{
+  "id": "dev-slack-commits.commits-e-status-fix-add-i-ve-pushed",
+  "trilha": "dev-slack-commits",
+  "nome": "Commits e status: Fix, Add, I've pushed",
+  "emoji": "🌿",
+  "cena": "Você termina uma correção, escreve o commit e combina com o Mike, no chat, o próximo passo.",
+  "resumo": "Commit no imperativo (Fix...), status com o present perfect (I've pushed) e aviso com when + presente.",
+  "fechamento": false,
+  "novos": [
+    "branch",
+    "crash",
+    "ping",
+    "when it's done",
+    "commit"
+  ],
+  "apoio": [
+    "the fix"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Commit no imperativo, status no present perfect"
+    },
+    {
+      "t": "p",
+      "c": "Mensagem de commit vai no **imperativo**: Fix crash..., Add tests for..., Remove unused code. Status do que já foi feito: **I've pushed**, **I've merged**."
+    },
+    {
+      "t": "ex",
+      "c": "Fix crash when the user has no photo.\nCorrige crash quando o usuário não tem foto."
+    },
+    {
+      "t": "warn",
+      "c": "Não: Fixed crash / Fixes crash. E depois de when vem o presente: when it's done (não: when it will be done)."
+    },
+    {
+      "t": "tip",
+      "c": "ping = dar um toque: Ping me if you need help."
+    }
+  ],
+  "imagem": "🌿💻🔔",
+  "visualizacao": "Fim de tarde, o terminal aberto ao lado do chat. Você digita a mensagem do commit, aperta Enter e o Mike responde com um joinha.",
+  "foto_busca": "developer terminal laptop code",
+  "trechos": [
+    {
+      "id": "f-f2dd91",
+      "quem": "mike",
+      "cod": "How was your day? Did you fix the crash?",
+      "dica": "Como foi o seu dia? Você corrigiu o crash?",
+      "img": "🐞🔧❓",
+      "alvo": "crash",
+      "alvo_pt": "crash",
+      "conceito": "crash = o app fechar sozinho; o dev brasileiro também fala crash.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5ec5b5",
+      "quem": "voce",
+      "contexto": "f-f2dd91",
+      "cod": "Almost! I'm fixing it on my branch now.",
+      "dica": "Quase! Estou corrigindo na minha branch agora.",
+      "img": "🌿🔧",
+      "alvo": "branch",
+      "alvo_pt": "branch",
+      "conceito": "on my branch = na minha branch. O inglês exige o objeto: fixing it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-333719",
+      "quem": "mike",
+      "contexto": "f-5ec5b5",
+      "cod": "Great. Ping me if you need help.",
+      "dica": "Ótimo. Me dá um toque se precisar de ajuda.",
+      "img": "🔔🙋",
+      "alvo": "Ping me",
+      "alvo_pt": "Me dá um toque",
+      "conceito": "ping = dar um toque, mandar uma mensagem rápida.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f010f2",
+      "quem": "voce",
+      "cod": "Fix crash when the user has no photo.",
+      "dica": "(commit) Corrige crash quando o usuário não tem foto.",
+      "img": "🔧👤",
+      "alvo": "crash",
+      "alvo_pt": "crash",
+      "conceito": "Commit em inglês vai no imperativo: Fix, Add, Remove (não: Fixed, Fixes).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "fixed",
+        "fixes"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "has no photo",
+          "aceita": [
+            "doesn't have a photo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4834e9",
+      "quem": "voce",
+      "cod": "I've pushed the fix to my branch.",
+      "dica": "Já dei push da correção pra minha branch.",
+      "img": "⬆️🌿",
+      "alvo": "branch",
+      "alvo_pt": "branch",
+      "conceito": "push (git) = dar push, mandar os commits pro repositório. Status do que já foi feito: present perfect.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I've pushed",
+          "aceita": [
+            "I already pushed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-35e624",
+      "quem": "voce",
+      "contexto": "f-4834e9",
+      "cod": "Can you check my last commit?",
+      "dica": "Você pode olhar meu último commit?",
+      "img": "👀📝",
+      "alvo": "commit",
+      "alvo_pt": "commit",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "check",
+          "aceita": [
+            "look at",
+            "take a look at"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ca7021",
+      "quem": "mike",
+      "contexto": "f-35e624",
+      "cod": "It looks good! Nice commit message.",
+      "dica": "Ficou bom! Boa mensagem de commit.",
+      "img": "👍📝",
+      "alvo": "commit",
+      "alvo_pt": "commit",
+      "conceito": "O inglês exige o sujeito: It looks good.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-47a06c",
+      "quem": "voce",
+      "contexto": "f-ca7021",
+      "cod": "Thanks! The build is running. I'll ping you when it's done.",
+      "dica": "Valeu! O build está rodando. Te dou um toque quando ficar pronto.",
+      "img": "⚙️⏳",
+      "alvo": "when it's done",
+      "alvo_pt": "quando ficar pronto",
+      "conceito": "when + presente: when it's done (não: when it will be done).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "it's done",
+          "aceita": [
+            "it's ready",
+            "it's finished"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-eab4b6",
+      "quem": "mike",
+      "contexto": "f-47a06c",
+      "cod": "Perfect. I'll ping Sarah after the merge.",
+      "dica": "Perfeito. Vou dar um toque na Sarah depois do merge.",
+      "img": "🔔👩",
+      "alvo": "ping",
+      "alvo_pt": "dar um toque",
+      "conceito": "merge = juntar a branch na principal; o dev brasileiro também diz merge.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-07371b",
+      "quem": "sarah",
+      "cod": "Is the fix live yet? Let me know when it's done.",
+      "dica": "A correção já está no ar? Me avisa quando ficar pronto.",
+      "img": "🚀❓",
+      "alvo": "when it's done",
+      "alvo_pt": "quando ficar pronto",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "it's done",
+          "aceita": [
+            "it's ready",
+            "it's finished"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "id": "terceira-pessoa.nao-funciona-doesn-t",
+  "trilha": "terceira-pessoa",
+  "nome": "Não funciona: doesn't",
+  "emoji": "🚫",
+  "cena": "Manhã no escritório de Chicago: a impressora, o app de teste e a máquina de café dão problema.",
+  "resumo": "Negar na 3ª pessoa: doesn't + verbo sem -s (It doesn't work.).",
+  "fechamento": false,
+  "novos": [
+    "doesn't",
+    "It doesn't work.",
+    "app",
+    "on my phone"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Não funciona = It doesn't work."
+    },
+    {
+      "t": "p",
+      "c": "Na negativa com he, she e it entra **doesn't**, e o verbo volta sem -s: Ana **doesn't have**... O -s já está no does."
+    },
+    {
+      "t": "ex",
+      "c": "The printer doesn't work.\nA impressora não funciona."
+    },
+    {
+      "t": "warn",
+      "c": "Não: It not works. / It doesn't works. E o it é obrigatório: It doesn't work."
+    }
+  ],
+  "imagem": "🖨️☕📱",
+  "visualizacao": "Você chega ao escritório de Chicago de manhã. A impressora pisca, a máquina de café não liga e o app de teste trava no seu celular. O Mike chega rindo.",
+  "foto_busca": "office printer coffee machine",
+  "trechos": [
+    {
+      "id": "f-fda745",
+      "quem": "voce",
+      "cod": "The printer doesn't work.",
+      "dica": "A impressora não funciona.",
+      "img": "🖨️🚫",
+      "alvo": "doesn't",
+      "alvo_pt": "não",
+      "conceito": "doesn't + verbo sem -s: doesn't work (não: doesn't works).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "not works",
+        "doesn't works",
+        "don't work"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4061552,
+        "en_autor": "CK",
+        "pt_id": 4062718,
+        "pt_autor": "Antoniocjf",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f1fbf3",
+      "quem": "mike",
+      "contexto": "f-fda745",
+      "cod": "I know. It doesn't work very well.",
+      "dica": "Eu sei. Não funciona muito bem.",
+      "img": "🖨️👎",
+      "alvo": "It doesn't work",
+      "alvo_pt": "Não funciona",
+      "conceito": "Não funciona = It doesn't work: o it é obrigatório. very well vai no fim.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR07",
+        "BR19"
+      ],
+      "armadilhas": [
+        "doesn't work very",
+        "not works",
+        "i know. doesn't"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2276526,
+        "en_autor": "CK",
+        "pt_id": 8575388,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado I know. para a frase funcionar como resposta; PT: Eu sei.",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bb5c61",
+      "quem": "voce",
+      "cod": "The app doesn't work on my phone.",
+      "dica": "O app não funciona no meu celular.",
+      "img": "📱❌",
+      "alvo": "app",
+      "alvo_pt": "app",
+      "conceito": "app (aplicativo) também é a palavra do dia a dia em inglês.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "the application",
+        "in my phone"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e2dcaf",
+      "quem": "mike",
+      "contexto": "f-bb5c61",
+      "cod": "Really? It works on my phone.",
+      "dica": "Sério? Funciona no meu celular.",
+      "img": "📱✅",
+      "alvo": "on my phone",
+      "alvo_pt": "no meu celular",
+      "conceito": "no celular = on my phone (on, não in). E o it aparece: It works.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in my phone",
+        "works on my"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bdd38b",
+      "quem": "voce",
+      "contexto": "f-e2dcaf",
+      "cod": "It doesn't work on old phones.",
+      "dica": "Não funciona em celulares antigos.",
+      "img": "📱🕰️",
+      "alvo": "It doesn't work",
+      "alvo_pt": "Não funciona",
+      "conceito": "celulares antigos = old phones: o adjetivo vem antes e sem plural.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR07",
+        "BR08"
+      ],
+      "armadilhas": [
+        "doesn't work on",
+        "phones olds"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-debffa",
+      "quem": "mike",
+      "cod": "Ana doesn't have the app.",
+      "dica": "A Ana não tem o app.",
+      "img": "👩🚫📲",
+      "alvo": "app",
+      "alvo_pt": "app",
+      "conceito": "Na negativa, has volta a ser have: doesn't have (não: hasn't).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "hasn't",
+        "doesn't has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-181eaf",
+      "quem": "ana",
+      "contexto": "f-debffa",
+      "cod": "Yes, I do. It's on my phone.",
+      "dica": "Tenho, sim. Está no meu celular.",
+      "img": "🙋‍♀️📱",
+      "alvo": "on my phone",
+      "alvo_pt": "no meu celular",
+      "conceito": "Yes, I do desmente uma negativa: Tenho, sim. Está (o app) = It's.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR17"
+      ],
+      "armadilhas": [
+        "yes, i have",
+        "is on my"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e57843",
+      "quem": "voce",
+      "cod": "Oh no! The coffee machine doesn't work!",
+      "dica": "Ah, não! A máquina de café não funciona!",
+      "img": "☕🔌❌",
+      "alvo": "doesn't work",
+      "alvo_pt": "não funciona",
+      "conceito": "Ah, não! = Oh no! E o -s fica no does: doesn't work.",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "not works",
+        "doesn't works"
+      ],
+      "origem": "autoral_ia",
+      "variacao_de": "f-fda745"
+    }
+  ]
+}

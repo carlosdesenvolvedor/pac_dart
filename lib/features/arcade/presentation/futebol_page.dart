@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
-import '../domain/banco_desafios.dart';
+import 'banco_arcade.dart';
 import '../domain/baralho.dart';
 import '../domain/desafio.dart';
 import '../domain/dicas_dart.dart';
@@ -88,7 +88,7 @@ class _FutebolPageState extends State<FutebolPage>
 
   void _comecarRun() {
     _rnd = math.Random(widget.semente);
-    _baralho = BaralhoDesafios(rnd: _rnd, tipo: TipoDesafio.sintaxe, banco: bancoDesafios);
+    _baralho = BaralhoDesafios(rnd: _rnd, tipo: TipoDesafio.sintaxe, banco: BancoArcade.desafios(context, TipoDesafio.sintaxe));
     setState(() {
       zerarCampanha();
       _golsRun = 0;
@@ -219,7 +219,7 @@ class _FutebolPageState extends State<FutebolPage>
                   children: [
                     CabecalhoJogo(
                       rotulo: 'ARCADE · SINTAXE',
-                      titulo: '⚽ Gol de Dart',
+                      titulo: '⚽ Gol de ${BancoArcade.linguagem}',
                       chips: [
                         ChipPlacar('FASE', '$fase'),
                         ChipPlacar('TOTAL', '$pontosParciais', cor: Mixart.brand),

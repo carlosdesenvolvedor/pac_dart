@@ -1,0 +1,328 @@
+{
+  "id": "revisao-a2.ferias-o-melhor-e-as-primeiras-vezes",
+  "trilha": "revisao-a2",
+  "nome": "Férias: o melhor e as primeiras vezes",
+  "emoji": "🌅",
+  "cena": "Você mostra as fotos da viagem para a Ana e compara Salvador com outras cidades.",
+  "resumo": "Avaliar a viagem: the most, hotter than, as humid as, lots of e a experiência com I've never.",
+  "fechamento": false,
+  "novos": [
+    "sunset",
+    "local food",
+    "humid",
+    "tourists",
+    "lighthouse"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Comparar e avaliar a viagem"
+    },
+    {
+      "t": "p",
+      "c": "O mais: **the most beautiful**, the best. Mais que: **hotter than**, **more humid than**. Tão... quanto: **as humid as**."
+    },
+    {
+      "t": "p",
+      "c": "Experiência, sem data: **I've never seen...** Viagem que já acabou, com quando: passado (**We saw the lighthouse**)."
+    },
+    {
+      "t": "warn",
+      "c": "muito turista = **lots of tourists** (não: very tourists). durante + evento = **during** the boat tour; durante + duração = **for** a week."
+    },
+    {
+      "t": "ex",
+      "c": "Salvador is hotter and more humid than Curitiba.\nSalvador é mais quente e mais úmida que Curitiba."
+    }
+  ],
+  "imagem": "🌅📸🏖️",
+  "visualizacao": "Você e a Ana olham as fotos no celular: um pôr do sol laranja atrás do farol, a praia cheia de gente. Ela comenta cada foto e compara com Recife.",
+  "foto_busca": "lighthouse sunset beach tourists",
+  "trechos": [
+    {
+      "id": "f-5c5839",
+      "quem": "voce",
+      "cod": "Look! This was the most beautiful sunset of the trip.",
+      "dica": "Olha! Esse foi o pôr do sol mais bonito da viagem.",
+      "img": "📸🌅",
+      "alvo": "sunset",
+      "alvo_pt": "pôr do sol",
+      "conceito": "o mais + adjetivo longo = the most...; da viagem = of the trip (uma viagem = a trip).",
+      "var": [
+        {
+          "em": "This",
+          "aceita": [
+            "That",
+            "It"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR40"
+      ],
+      "armadilhas": [
+        "travel",
+        "in"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-81cdb6",
+      "quem": "ana",
+      "contexto": "f-5c5839",
+      "cod": "I've never seen a more beautiful sunset.",
+      "dica": "Nunca vi um pôr do sol mais bonito.",
+      "img": "😍🌅",
+      "alvo": "sunset",
+      "alvo_pt": "pôr do sol",
+      "conceito": "Experiência sem data: I've never + particípio. mais bonito (adjetivo longo) = more beautiful.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "saw",
+        "most"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 645177,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "such a beautiful sunset → a more beautiful sunset (such a só no B1); PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-656a51",
+      "quem": "voce",
+      "contexto": "f-81cdb6",
+      "cod": "We watched it from the lighthouse.",
+      "dica": "A gente assistiu lá do farol.",
+      "img": "🗼👀🌇",
+      "alvo": "lighthouse",
+      "alvo_pt": "farol",
+      "conceito": "lighthouse = farol (a casa da luz). Assistir (ao pôr do sol) = watch.",
+      "var": [
+        {
+          "em": "watched",
+          "aceita": [
+            "saw"
+          ]
+        }
+      ],
+      "opcional": [
+        "it"
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "assisted"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ce1101",
+      "quem": "voce",
+      "cod": "We saw the lighthouse during the boat tour.",
+      "dica": "Vimos o farol durante o passeio de barco.",
+      "img": "🚤🗼",
+      "alvo": "lighthouse",
+      "alvo_pt": "farol",
+      "conceito": "durante + evento = during (durante + duração = for).",
+      "registro": "informal",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "for",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a81116",
+      "quem": "voce",
+      "cod": "Salvador is hotter and more humid than Curitiba.",
+      "dica": "Salvador é mais quente e mais úmida que Curitiba.",
+      "img": "🥵💧",
+      "alvo": "humid",
+      "alvo_pt": "úmida",
+      "conceito": "Adjetivo curto + -er (hotter); longo com more (more humid). que = than.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "more",
+        "then"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-09e779",
+      "quem": "ana",
+      "contexto": "f-a81116",
+      "cod": "Recife is as humid as Salvador.",
+      "dica": "Recife é tão úmida quanto Salvador.",
+      "img": "🌴💦⚖️",
+      "alvo": "humid",
+      "alvo_pt": "úmida",
+      "conceito": "tão... quanto = as... as.",
+      "registro": "informal",
+      "armadilhas": [
+        "so",
+        "than"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bcab93",
+      "quem": "voce",
+      "cod": "In Salvador, there are always lots of tourists.",
+      "dica": "Em Salvador, sempre tem muito turista.",
+      "img": "👥📸🏖️",
+      "alvo": "tourists",
+      "alvo_pt": "turista",
+      "conceito": "muito turista = lots of tourists (não: very tourists); tem (existe) = there are.",
+      "var": [
+        {
+          "em": "lots of",
+          "aceita": [
+            "a lot of",
+            "many"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR23",
+        "BR03"
+      ],
+      "armadilhas": [
+        "very",
+        "have",
+        "tourist"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 378289,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "In Venice → In Salvador; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c43f31",
+      "quem": "ana",
+      "contexto": "f-bcab93",
+      "cod": "A lot of people there earn money from tourists.",
+      "dica": "Muita gente lá ganha dinheiro com os turistas.",
+      "img": "💵👥",
+      "alvo": "tourists",
+      "alvo_pt": "turistas",
+      "conceito": "ganhar dinheiro = earn money (não: win); people é plural: people earn.",
+      "var": [
+        {
+          "em": "A lot of",
+          "aceita": [
+            "Lots of",
+            "Many"
+          ]
+        },
+        {
+          "em": "earn",
+          "aceita": [
+            "make"
+          ]
+        },
+        {
+          "em": "from tourists",
+          "aceita": [
+            "from the tourists"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR35"
+      ],
+      "armadilhas": [
+        "win",
+        "earns",
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4ad998",
+      "quem": "ana",
+      "cod": "Did you try the local food?",
+      "dica": "Vocês provaram a comida típica?",
+      "img": "🍲❓",
+      "alvo": "local food",
+      "alvo_pt": "comida típica",
+      "conceito": "comida típica (da região) = local food; provar = try.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "tried",
+        "proved",
+        "typical"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1886133,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "it → the local food; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4797e1",
+      "quem": "voce",
+      "contexto": "f-4ad998",
+      "cod": "Yes! I loved the local food, but it was very spicy.",
+      "dica": "Provamos! Adorei a comida típica, mas era muito apimentada.",
+      "img": "🌶️😋",
+      "alvo": "local food",
+      "alvo_pt": "comida típica",
+      "conceito": "muito + adjetivo = very (muito apimentada = very spicy).",
+      "var": [
+        {
+          "em": "Yes!",
+          "aceita": [
+            "We did!",
+            "Yes, we did!"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR23"
+      ],
+      "armadilhas": [
+        "much"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

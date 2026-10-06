@@ -1,0 +1,199 @@
+{
+  "id": "numeros-horas-soletrar.cem-mil-e-os-precos",
+  "trilha": "numeros-horas-soletrar",
+  "nome": "Cem, mil e os preços",
+  "emoji": "💰",
+  "cena": "Por mensagem, a Ana pede para você ver preços de monitores e notebooks numa loja de Chicago.",
+  "resumo": "Cem e mil nos preços e a reação ao preço: a hundred, a thousand, That's expensive. e Wow!",
+  "fechamento": false,
+  "novos": [
+    "a hundred",
+    "a thousand",
+    "expensive",
+    "Wow!"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Cem e mil"
+    },
+    {
+      "t": "p",
+      "c": "a hundred = cem; two hundred = duzentos. a thousand = mil; two thousand = dois mil."
+    },
+    {
+      "t": "warn",
+      "c": "Depois de número, hundred e thousand não vão para o plural: two hundred dollars (não: two hundreds)."
+    },
+    {
+      "t": "ex",
+      "c": "That's expensive.\nIsso é caro."
+    }
+  ],
+  "imagem": "💻🖥️💬",
+  "visualizacao": "Você anda pela seção de notebooks de uma loja em Chicago, celular na mão. A cada etiqueta, você manda uma mensagem para a Ana, que responde rapidinho.",
+  "foto_busca": "laptops on display store",
+  "trechos": [
+    {
+      "id": "f-8c4f01",
+      "quem": "voce",
+      "contexto": "How much is the monitor?",
+      "cod": "A hundred dollars.",
+      "dica": "Cem dólares.",
+      "img": "🖥️💵",
+      "alvo": "A hundred",
+      "alvo_pt": "Cem",
+      "lit": "[lit.: uma centena de dólares]",
+      "conceito": "Cem = a hundred (ou one hundred).",
+      "var": [
+        {
+          "em": "A hundred",
+          "aceita": [
+            "One hundred"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-21268e",
+      "quem": "ana",
+      "contexto": "f-8c4f01",
+      "cod": "A hundred? Wow!",
+      "dica": "Cem? Nossa!",
+      "img": "😮🖥️",
+      "alvo": "Wow",
+      "alvo_pt": "Nossa",
+      "conceito": "Wow! = Nossa! / Uau!",
+      "var": [
+        {
+          "em": "A hundred",
+          "aceita": [
+            "One hundred"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f307e9",
+      "quem": "voce",
+      "cod": "It's two hundred dollars.",
+      "dica": "(o monitor maior) Custa duzentos dólares.",
+      "img": "🖥️⬆️",
+      "alvo": "two hundred",
+      "alvo_pt": "duzentos",
+      "conceito": "two hundred, sem -s: hundred não vai para o plural depois de número.",
+      "registro": "neutro",
+      "armadilhas": [
+        "hundreds",
+        "costs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-52c0fe",
+      "quem": "ana",
+      "contexto": "f-f307e9",
+      "cod": "That's expensive.",
+      "dica": "Isso é caro.",
+      "img": "💸😬",
+      "alvo": "expensive",
+      "alvo_pt": "caro",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2713591,
+        "en_autor": "CK",
+        "pt_id": 4938129,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "sem very (no PT, sem muito)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9a1fcf",
+      "quem": "voce",
+      "contexto": "And the laptop?",
+      "cod": "That's a thousand dollars.",
+      "dica": "(o notebook) São mil dólares.",
+      "img": "💻💵",
+      "alvo": "a thousand",
+      "alvo_pt": "mil",
+      "var": [
+        {
+          "em": "a thousand",
+          "aceita": [
+            "one thousand"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aefcd4",
+      "quem": "ana",
+      "contexto": "f-9a1fcf",
+      "cod": "Wow! A thousand dollars?",
+      "dica": "Nossa! Mil dólares?",
+      "img": "🤯💻",
+      "alvo": "Wow",
+      "alvo_pt": "Nossa",
+      "var": [
+        {
+          "em": "A thousand",
+          "aceita": [
+            "One thousand"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4558ab",
+      "quem": "voce",
+      "cod": "It's two thousand dollars.",
+      "dica": "(o outro notebook) Custa dois mil dólares.",
+      "img": "💻💰",
+      "alvo": "two thousand",
+      "alvo_pt": "dois mil",
+      "registro": "neutro",
+      "armadilhas": [
+        "thousands",
+        "costs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c73db6",
+      "quem": "ana",
+      "contexto": "f-4558ab",
+      "cod": "Two thousand? That's expensive!",
+      "dica": "Dois mil? Isso é caro!",
+      "img": "😱💸",
+      "alvo": "expensive",
+      "alvo_pt": "caro",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2713591,
+        "en_autor": "CK",
+        "pt_id": 4938129,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "+ Two thousand? (no PT, + Dois mil?); sem very; exclamação",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}
