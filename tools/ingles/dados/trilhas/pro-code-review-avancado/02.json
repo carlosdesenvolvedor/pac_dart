@@ -1,0 +1,268 @@
+{
+  "id": "pro-code-review-avancado.discordar-com-tato",
+  "trilha": "pro-code-review-avancado",
+  "nome": "Discordar com tato",
+  "emoji": "🤝",
+  "cena": "No PR polêmico, o autor trocou o tratamento de erros por um bloco que engole exceções e adicionou uma dependência nova.",
+  "resumo": "Discordar por escrito sem atrito: I'd push back on..., What I'm worried about is... e I see where you're coming from.",
+  "fechamento": false,
+  "novos": [
+    "push back on",
+    "tightly coupled",
+    "error handling",
+    "fail silently"
+  ],
+  "apoio": [
+    "I see where you're coming from",
+    "What I'm worried about is",
+    "happy to discuss"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Discordar sem atrito"
+    },
+    {
+      "t": "p",
+      "c": "Suavize e explique: **I'd push back on X a little** (eu questionaria X um pouco), **What I'm worried about is...** (o que me preocupa é...), **I see where you're coming from, but...** (entendo o seu lado, mas...)."
+    },
+    {
+      "t": "warn",
+      "c": "explain to me (não: explain me). discuss it (não: discuss about it)."
+    },
+    {
+      "t": "ex",
+      "c": "What I'm worried about is the error handling.\nO que me preocupa é o tratamento de erros."
+    }
+  ],
+  "imagem": "💬🤝⚖️",
+  "visualizacao": "Você lê de novo o comentário antes de enviar. Café ao lado, a mão parada no teclado, você troca uma palavra dura por outra mais gentil.",
+  "foto_busca": "developer typing thoughtful desk",
+  "trechos": [
+    {
+      "id": "f-363c95",
+      "quem": "voce",
+      "cod": "I'd push back on the new dependency a little.",
+      "dica": "Eu questionaria um pouco a dependência nova.",
+      "img": "📦🤨",
+      "alvo": "push back on",
+      "alvo_pt": "questionaria",
+      "lit": "[lit.: eu empurraria de volta contra...]",
+      "conceito": "push back on = questionar, resistir a uma proposta, com educação.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "question"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "push back on the new dependency a little",
+          "aceita": [
+            "push back a little on the new dependency"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a10bfc",
+      "quem": "voce",
+      "cod": "Also, this new dependency makes the two modules tightly coupled.",
+      "dica": "Além disso, essa dependência nova deixa os dois módulos muito acoplados.",
+      "img": "🔗🔗",
+      "alvo": "tightly coupled",
+      "alvo_pt": "muito acoplados",
+      "lit": "[lit.: apertadamente acoplados]",
+      "conceito": "tightly coupled = muito acoplado: mexer num quebra o outro. O contrário é loosely coupled.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "make",
+        "very"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Also",
+          "aceita": [
+            "Plus",
+            "In addition",
+            "Besides"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cd2870",
+      "quem": "colega",
+      "contexto": "f-a10bfc",
+      "cod": "Could you explain to me why tightly coupled modules are a problem here?",
+      "dica": "Você poderia me explicar por que módulos muito acoplados são um problema aqui?",
+      "img": "❓🔗",
+      "alvo": "tightly coupled",
+      "alvo_pt": "muito acoplados",
+      "conceito": "explain to me (não: explain me). O me do português vira to me depois do verbo.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "me"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "to me"
+      ],
+      "var": [
+        {
+          "em": "Could you",
+          "aceita": [
+            "Can you"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c67dd2",
+      "quem": "voce",
+      "cod": "What I'm worried about is the error handling in this function.",
+      "dica": "O que me preocupa é o tratamento de erros nesta função.",
+      "img": "😟⚠️",
+      "alvo": "error handling",
+      "alvo_pt": "tratamento de erros",
+      "conceito": "error handling = tratamento de erros; handling é incontável (não: error handlings).",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "What I'm worried about is",
+          "aceita": [
+            "What worries me is",
+            "What I'm concerned about is"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-eaf771",
+      "quem": "colega",
+      "contexto": "f-c67dd2",
+      "cod": "The old error handling was hard to read, so I simplified it.",
+      "dica": "O tratamento de erros antigo era difícil de ler, então eu simplifiquei.",
+      "img": "🧹📜",
+      "alvo": "error handling",
+      "alvo_pt": "tratamento de erros",
+      "conceito": "simplified it: o objeto it é obrigatório em inglês.",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-de38a8",
+      "quem": "voce",
+      "contexto": "f-eaf771",
+      "cod": "I see where you're coming from, but now this call can fail silently.",
+      "dica": "Entendo o seu lado, mas agora essa chamada pode falhar em silêncio.",
+      "img": "🤫💥",
+      "alvo": "fail silently",
+      "alvo_pt": "falhar em silêncio",
+      "conceito": "fail silently = falhar sem log nem aviso; ninguém fica sabendo.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "can fail",
+          "aceita": [
+            "could fail",
+            "might fail",
+            "may fail"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-38ff58",
+      "quem": "mike",
+      "contexto": "f-de38a8",
+      "cod": "Agreed. If one shard goes down, this sync will fail silently.",
+      "dica": "Concordo. Se um shard cair, essa sincronização vai falhar em silêncio.",
+      "img": "🧩🔇",
+      "alvo": "fail silently",
+      "alvo_pt": "falhar em silêncio",
+      "conceito": "Se um shard cair = if one shard goes down (presente depois de if).",
+      "var": [
+        {
+          "em": "Agreed",
+          "aceita": [
+            "I agree"
+          ]
+        }
+      ],
+      "blocos": [
+        1
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "falls"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1e3f62",
+      "quem": "colega",
+      "cod": "Happy to discuss it on a call. Feel free to push back on anything.",
+      "dica": "Topo discutir isso numa chamada. Fique à vontade para questionar qualquer coisa.",
+      "img": "📞🙂",
+      "alvo": "push back on",
+      "alvo_pt": "questionar",
+      "conceito": "discuss it, sem about (não: discuss about it). Happy to... = topo...",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "about"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Happy to",
+          "aceita": [
+            "I'm happy to"
+          ]
+        },
+        {
+          "em": "discuss it",
+          "aceita": [
+            "discuss this"
+          ]
+        }
+      ]
+    }
+  ]
+}

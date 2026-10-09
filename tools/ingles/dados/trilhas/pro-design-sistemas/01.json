@@ -1,0 +1,297 @@
+{
+  "id": "pro-design-sistemas.requisitos-e-estimativas",
+  "trilha": "pro-design-sistemas",
+  "nome": "Requisitos e estimativas",
+  "emoji": "📋",
+  "cena": "Numa entrevista de system design, pedem o backend de um app de delivery de comida, e você pergunta pela escala antes de desenhar.",
+  "resumo": "Levantar escala e perfil do sistema: requests per second, at peak, read-heavy e write-heavy.",
+  "fechamento": false,
+  "novos": [
+    "requests per second",
+    "at peak",
+    "read-heavy",
+    "write-heavy"
+  ],
+  "apoio": [
+    "requirements",
+    "traffic"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Requisitos antes das caixas"
+    },
+    {
+      "t": "p",
+      "c": "Antes de desenhar, pergunte a escala (**How many requests per second do we expect at peak?**) e diga o perfil do sistema: **read-heavy** (muita leitura) ou **write-heavy** (muita escrita)."
+    },
+    {
+      "t": "warn",
+      "c": "Requisito = requirement (requerimento = request). Supor = assume: Can we assume most users are in one country?"
+    },
+    {
+      "t": "ex",
+      "c": "At peak, it's about ten times that.\nNo pico, são umas dez vezes isso."
+    }
+  ],
+  "imagem": "📋🍔🛵",
+  "visualizacao": "O quadro virtual está vazio e o entrevistador espera. Antes de desenhar a primeira caixa, você pega a caneta e pergunta pelos números.",
+  "foto_busca": "whiteboard system design interview",
+  "trechos": [
+    {
+      "id": "f-cea9e5",
+      "quem": "voce",
+      "cod": "Before we draw any boxes, how many requests per second do we expect?",
+      "dica": "Antes de desenhar qualquer caixa, quantas requisições por segundo esperamos?",
+      "img": "📦❓📈",
+      "alvo": "requests per second",
+      "alvo_pt": "requisições por segundo",
+      "conceito": "requisição = request; requisito = requirement.",
+      "var": [
+        {
+          "em": "do we expect",
+          "aceita": [
+            "should we expect"
+          ]
+        },
+        {
+          "em": "Before we draw",
+          "aceita": [
+            "Before drawing"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR06"
+      ],
+      "armadilhas": [
+        "requisitions",
+        "we expect"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3ce095",
+      "quem": "entrevistador",
+      "contexto": "f-cea9e5",
+      "cod": "Around five thousand requests per second on a normal day.",
+      "dica": "Umas cinco mil requisições por segundo num dia normal.",
+      "img": "📊☀️",
+      "alvo": "requests per second",
+      "alvo_pt": "requisições por segundo",
+      "conceito": "umas = around / about (aproximação).",
+      "var": [
+        {
+          "em": "Around",
+          "aceita": [
+            "About"
+          ]
+        },
+        {
+          "em": "on a normal day",
+          "aceita": [
+            "on a regular day"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "in a normal day",
+        "thousands"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0884fa",
+      "quem": "voce",
+      "contexto": "f-3ce095",
+      "cod": "And at peak? Lunch and dinner must be much busier.",
+      "dica": "E no pico? O almoço e o jantar devem ser bem mais movimentados.",
+      "img": "🍽️⛰️",
+      "alvo": "at peak",
+      "alvo_pt": "no pico",
+      "conceito": "no pico = at peak (sem the); must be = dedução (devem ser).",
+      "var": [
+        {
+          "em": "much busier",
+          "aceita": [
+            "a lot busier"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "in the peak",
+        "more busy"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c3f153",
+      "quem": "entrevistador",
+      "contexto": "f-0884fa",
+      "cod": "At peak, it's about ten times that.",
+      "dica": "No pico, são umas dez vezes isso.",
+      "img": "📈🔥",
+      "alvo": "At peak",
+      "alvo_pt": "No pico",
+      "conceito": "O it é obrigatório: it's about ten times that (BR01).",
+      "var": [
+        {
+          "em": "about",
+          "aceita": [
+            "around"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "are",
+        "in peak"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4dcd8c",
+      "quem": "voce",
+      "cod": "So it's read-heavy. Most of the traffic is people browsing menus.",
+      "dica": "Então o sistema é de muita leitura. A maior parte do tráfego é gente vendo cardápios.",
+      "img": "👀📖",
+      "alvo": "read-heavy",
+      "alvo_pt": "de muita leitura",
+      "conceito": "read-heavy = muito mais leitura do que escrita.",
+      "var": [
+        {
+          "em": "it's",
+          "aceita": [
+            "the system is",
+            "it is"
+          ]
+        },
+        {
+          "em": "Most of the traffic",
+          "aceita": [
+            "Most traffic"
+          ]
+        },
+        {
+          "em": "browsing",
+          "aceita": [
+            "looking at"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "heavy read",
+        "peoples"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        3
+      ]
+    },
+    {
+      "id": "f-fbd7b5",
+      "quem": "voce",
+      "cod": "For the read-heavy part, a few seconds of delay should be fine.",
+      "dica": "Na parte de muita leitura, alguns segundos de atraso devem ser aceitáveis.",
+      "img": "⏳🙂",
+      "alvo": "read-heavy",
+      "alvo_pt": "de muita leitura",
+      "conceito": "should be fine = deve ser aceitável, não deve dar problema.",
+      "var": [
+        {
+          "em": "For the",
+          "aceita": [
+            "In the",
+            "On the"
+          ]
+        },
+        {
+          "em": "fine",
+          "aceita": [
+            "okay",
+            "OK",
+            "acceptable"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "some seconds",
+        "delays"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2aba47",
+      "quem": "voce",
+      "cod": "Order tracking is write-heavy, since drivers send their location every few seconds.",
+      "dica": "O rastreamento de pedidos é de muita escrita, já que os entregadores mandam a localização a cada poucos segundos.",
+      "img": "🛵📍✍️",
+      "alvo": "write-heavy",
+      "alvo_pt": "de muita escrita",
+      "conceito": "já que = since; order tracking: o substantivo que qualifica vem antes (BR24).",
+      "var": [
+        {
+          "em": "since",
+          "aceita": [
+            "because"
+          ]
+        },
+        {
+          "em": "their location",
+          "aceita": [
+            "the location",
+            "their locations"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "tracking of orders",
+        "localization"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b93aa1",
+      "quem": "entrevistador",
+      "contexto": "f-2aba47",
+      "cod": "Exactly. The write-heavy part is where it gets interesting.",
+      "dica": "Exatamente. A parte de muita escrita é onde a coisa fica interessante.",
+      "img": "✍️🤓",
+      "alvo": "write-heavy",
+      "alvo_pt": "de muita escrita",
+      "conceito": "it gets interesting = a coisa fica interessante (get + adjetivo = ficar).",
+      "registro": "neutro",
+      "armadilhas": [
+        "stays interesting",
+        "interested"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

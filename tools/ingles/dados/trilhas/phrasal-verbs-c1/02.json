@@ -1,0 +1,254 @@
+{
+  "id": "phrasal-verbs-c1.por-se-a-fazer-e-dar-conta",
+  "trilha": "phrasal-verbs-c1",
+  "nome": "Pôr-se a fazer e dar conta",
+  "emoji": "🏃",
+  "cena": "Você conta para o Mike a semana em que metade do time ficou doente e, mesmo assim, a entrega saiu.",
+  "resumo": "Contar como algo começou e terminou com set about, wind up, out sick e exceptions.",
+  "fechamento": false,
+  "novos": [
+    "set about",
+    "wind up",
+    "out sick",
+    "exceptions"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Começar com afinco e acabar mal"
+    },
+    {
+      "t": "p",
+      "c": "**out sick** = faltando por doença · **set about** + -ing = pôr-se a fazer · **wind up** = acabar indo parar (em geral num resultado ruim) · **exceptions** = exceções."
+    },
+    {
+      "t": "warn",
+      "c": "set about + -ing: set about fixing (não: set about to fix). wind up e end up têm o mesmo sentido; wind up carrega o tom de resultado ruim."
+    },
+    {
+      "t": "tip",
+      "c": "come through = dar conta do recado: Ana really came through."
+    },
+    {
+      "t": "ex",
+      "c": "We set about fixing it.\nNos pusemos a consertar."
+    }
+  ],
+  "imagem": "🤒💻🚀",
+  "visualizacao": "Você está numa chamada com o Mike. Atrás de você, o quadro da sprint cheio de cartões; você conta, ainda cansado, como a entrega saiu com o time pela metade.",
+  "foto_busca": "tired developer video call evening",
+  "trechos": [
+    {
+      "id": "f-ee75be",
+      "quem": "voce",
+      "cod": "Half the team was out sick last week.",
+      "dica": "Metade do time faltou por doença na semana passada.",
+      "img": "🤒🤧🗓️",
+      "alvo": "out sick",
+      "alvo_pt": "faltou por doença",
+      "lit": "[lit.: estava fora doente]",
+      "conceito": "out sick = faltando por doença. team, aqui, vai com was.",
+      "registro": "informal",
+      "armadilhas": [
+        "sick out",
+        "were"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1b4e55",
+      "quem": "mike",
+      "contexto": "f-ee75be",
+      "cod": "Did you have to delay the release with so many people out sick?",
+      "dica": "Vocês tiveram que adiar a release com tanta gente faltando por doença?",
+      "img": "📦⏸️❓",
+      "alvo": "out sick",
+      "alvo_pt": "faltando por doença",
+      "conceito": "Pergunta no passado: Did you have to (não: Had you to). tanta gente = so many people.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR14"
+      ],
+      "armadilhas": [
+        "had",
+        "much"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aed7f6",
+      "quem": "voce",
+      "contexto": "f-1b4e55",
+      "cod": "No. Ana set about fixing the bugs on her own.",
+      "dica": "Não. A Ana se pôs a corrigir os bugs sozinha.",
+      "img": "👩‍💻🐞🔧",
+      "alvo": "set about",
+      "alvo_pt": "se pôs a",
+      "conceito": "set about + -ing = pôr-se a fazer. sozinha = on her own.",
+      "registro": "informal",
+      "interferencias": [
+        "BR52",
+        "BR62"
+      ],
+      "armadilhas": [
+        "to",
+        "herself"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-713344",
+      "quem": "voce",
+      "cod": "As soon as the alerts started, we set about finding the root cause.",
+      "dica": "Assim que os alertas começaram, nos pusemos a procurar a causa raiz.",
+      "img": "🚨🔍",
+      "alvo": "set about",
+      "alvo_pt": "nos pusemos a",
+      "conceito": "set about + -ing (não: set about to find). root cause = causa raiz.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52",
+        "BR60"
+      ],
+      "armadilhas": [
+        "to",
+        "initiated"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "finding",
+          "aceita": [
+            "looking for"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-17e740",
+      "quem": "voce",
+      "cod": "To ship on time, we made a few exceptions to the review process.",
+      "dica": "Para entregar no prazo, abrimos algumas exceções no processo de review.",
+      "img": "✅🚧📋",
+      "alvo": "exceptions",
+      "alvo_pt": "exceções",
+      "conceito": "abrir uma exceção = make an exception. Para entregar = To ship (não: For to ship).",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "for",
+        "exception"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a few",
+          "aceita": [
+            "some"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8891bb",
+      "quem": "mike",
+      "contexto": "f-17e740",
+      "cod": "If we keep making exceptions, we'll wind up with a process nobody follows.",
+      "dica": "Se a gente continuar abrindo exceções, vamos acabar indo parar num processo que ninguém segue.",
+      "img": "🌀📉",
+      "alvo": "wind up",
+      "alvo_pt": "acabar indo parar",
+      "lit": "[lit.: enrolar até o fim]",
+      "conceito": "wind up = acabar indo parar, num resultado ruim. Rima com find, não com wind (vento).",
+      "var": [
+        {
+          "em": "we'll",
+          "aceita": [
+            "we're going to"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR60"
+      ],
+      "armadilhas": [
+        "will",
+        "end"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-50d0c2",
+      "quem": "mike",
+      "cod": "From now on, this rule has no exceptions.",
+      "dica": "A partir de agora, essa regra não tem exceções.",
+      "img": "📏🚫",
+      "alvo": "exceptions",
+      "alvo_pt": "exceções",
+      "conceito": "has no exceptions = não tem exceções (no + substantivo, sem outro not).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR25"
+      ],
+      "armadilhas": [
+        "doesn't",
+        "exception"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1230859,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"This rule has no exceptions.\" (acrescentado \"From now on,\"); PT reescrito (original: \"Essa regra não tem exceções.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1dd049",
+      "quem": "voce",
+      "contexto": "f-50d0c2",
+      "cod": "Fair enough. Last time we skipped reviews, we wound up in a two-day incident.",
+      "dica": "Justo. Da última vez que pulamos os reviews, acabamos indo parar num incidente de dois dias.",
+      "img": "🔥⏱️",
+      "alvo": "wound up",
+      "alvo_pt": "acabamos indo parar",
+      "conceito": "wind, wound, wound. two-day = de dois dias, sem -s quando vem antes do substantivo.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR09",
+        "BR60"
+      ],
+      "armadilhas": [
+        "winded",
+        "days"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

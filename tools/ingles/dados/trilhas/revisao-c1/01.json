@@ -1,0 +1,216 @@
+{
+  "id": "revisao-c1.apresentacao-para-a-diretoria",
+  "trilha": "revisao-c1",
+  "nome": "Apresentação para a diretoria",
+  "emoji": "📣",
+  "cena": "No fim do seu primeiro ano como tech lead, você apresenta os resultados do time e o plano do próximo ano para a diretoria.",
+  "resumo": "Apresentar resultados com inversão, nominalização, hedging e concessão, sem gramática nova.",
+  "fechamento": false,
+  "novos": [
+    "reliability",
+    "board presentation",
+    "annual results",
+    "keynote"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Falar para a diretoria"
+    },
+    {
+      "t": "p",
+      "c": "Abrir com força: **Not only did we..., but we also...** Números com nominalização: **a reduction in**, **an increase in**. Conceder antes de rebater: **Admittedly...** Opinar com cautela: **I'd say...**"
+    },
+    {
+      "t": "warn",
+      "c": "agenda = pauta; actually = na verdade (atualmente = currently)."
+    },
+    {
+      "t": "ex",
+      "c": "Not only did we cut costs, but we also improved reliability.\nNão só cortamos custos, como também melhoramos a confiabilidade."
+    }
+  ],
+  "imagem": "📊🏛️🎤",
+  "visualizacao": "Você está de pé numa sala de reunião envidraçada. O primeiro slide brilha na tela, a diretoria se acomoda nas cadeiras e o seu coração acelera um pouco.",
+  "foto_busca": "business presentation boardroom screen",
+  "trechos": [
+    {
+      "id": "f-b20cd4",
+      "quem": "sarah",
+      "cod": "Your board presentation is the first item on the agenda.",
+      "dica": "A sua apresentação para a diretoria é o primeiro item da pauta.",
+      "img": "📋🔝👔",
+      "alvo": "board presentation",
+      "alvo_pt": "apresentação para a diretoria",
+      "conceito": "agenda (reunião) = pauta; a agenda pessoal é calendar ou schedule.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-127a66",
+      "quem": "voce",
+      "contexto": "f-b20cd4",
+      "cod": "I know. I've practiced the board presentation three times. Actually, four.",
+      "dica": "Eu sei. Treinei a apresentação para a diretoria três vezes. Na verdade, quatro.",
+      "img": "🔁🎤😅",
+      "alvo": "board presentation",
+      "alvo_pt": "apresentação para a diretoria",
+      "conceito": "Actually = Na verdade (corrige o que acabou de dizer); atualmente = currently.",
+      "var": [
+        {
+          "em": "I've practiced",
+          "aceita": [
+            "I practiced",
+            "I have practiced",
+            "I rehearsed",
+            "I've rehearsed"
+          ]
+        }
+      ],
+      "blocos": [
+        2,
+        9
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR27"
+      ],
+      "armadilhas": [
+        "currently"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3b5810",
+      "quem": "voce",
+      "cod": "Not only did we cut costs, but we also improved reliability.",
+      "dica": "(no discurso) Não só cortamos custos, como também melhoramos a confiabilidade.",
+      "img": "✂️💵🛡️",
+      "alvo": "reliability",
+      "alvo_pt": "confiabilidade",
+      "conceito": "Not only + inversão (did we cut) abre o discurso; a segunda parte segue em ordem normal.",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9221d8",
+      "quem": "voce",
+      "cod": "The annual results show a forty percent reduction in incidents.",
+      "dica": "Os resultados anuais mostram uma redução de quarenta por cento nos incidentes.",
+      "img": "📉🚨🗓️",
+      "alvo": "annual results",
+      "alvo_pt": "resultados anuais",
+      "conceito": "Nominalização: a reduction in + coisa = uma redução em/de; percent por extenso.",
+      "registro": "formal",
+      "armadilhas": [
+        "shows",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e446e7",
+      "quem": "voce",
+      "contexto": "What exactly has changed this year?",
+      "cod": "In a word, reliability. The app hasn't gone down once since March.",
+      "dica": "Em uma palavra: confiabilidade. O app não caiu nenhuma vez desde março.",
+      "img": "📱✅📆",
+      "alvo": "reliability",
+      "alvo_pt": "confiabilidade",
+      "conceito": "desde + período até agora = present perfect: hasn't gone down since March.",
+      "var": [
+        {
+          "em": "gone down",
+          "aceita": [
+            "been down"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR47",
+        "BR27"
+      ],
+      "armadilhas": [
+        "didn't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7ce285",
+      "quem": "voce",
+      "cod": "Admittedly, the annual results don't include the migration costs.",
+      "dica": "É verdade que os resultados anuais não incluem os custos da migração.",
+      "img": "🧾🔄🤔",
+      "alvo": "annual results",
+      "alvo_pt": "resultados anuais",
+      "conceito": "Admittedly = É verdade que: concede um ponto antes de rebater.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-14407c",
+      "quem": "mike",
+      "cod": "It went really well. You should give the keynote at our next tech summit.",
+      "dica": "Foi muito bem. Você devia fazer a palestra principal no nosso próximo evento de tecnologia.",
+      "img": "🎤🏟️🌟",
+      "alvo": "keynote",
+      "alvo_pt": "palestra principal",
+      "conceito": "give the keynote = fazer a palestra principal. Foi muito bem = It went really well: it obrigatório.",
+      "var": [
+        {
+          "em": "tech summit",
+          "aceita": [
+            "tech event",
+            "technology event"
+          ]
+        },
+        {
+          "em": "really well",
+          "aceita": [
+            "very well"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1b3ec0",
+      "quem": "voce",
+      "contexto": "f-14407c",
+      "cod": "I'd say a keynote is a bit much. Maybe a short talk?",
+      "dica": "Eu diria que palestra principal é meio exagerado. Talvez uma palestra curta?",
+      "img": "🤏🎙️🙂",
+      "alvo": "keynote",
+      "alvo_pt": "palestra principal",
+      "conceito": "I'd say = Eu diria que (opinião com cautela). a bit much = meio exagerado.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

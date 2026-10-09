@@ -1,0 +1,221 @@
+{
+  "id": "pro-carreira-networking.trocar-contatos-e-manter-contato",
+  "trilha": "pro-carreira-networking",
+  "nome": "Trocar contatos e manter contato",
+  "emoji": "🤝",
+  "cena": "No fim da conferência e na semana seguinte, você se despede das pessoas que conheceu e manda mensagens, inclusive para uma recrutadora.",
+  "resumo": "Fechar a conversa e manter contato: It was great talking to you, Let's keep in touch, I'd love to learn more about, refer.",
+  "fechamento": false,
+  "novos": [
+    "it was great talking to you",
+    "keep in touch",
+    "I'd love to learn more about",
+    "refer"
+  ],
+  "apoio": [
+    "connect",
+    "come across",
+    "post",
+    "recruiter"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Despedir-se e manter a porta aberta"
+    },
+    {
+      "t": "p",
+      "c": "Para fechar a conversa: **It was great talking to you. Let's keep in touch!** Por mensagem, retome o assunto: **I came across your post about...** (vi por acaso) e **I'd love to learn more about it.**"
+    },
+    {
+      "t": "tip",
+      "c": "refer = indicar alguém para uma vaga; referral = a indicação."
+    },
+    {
+      "t": "warn",
+      "c": "Conhecer alguém pela primeira vez = meet: Great meeting you yesterday! (know = já conhecer)."
+    }
+  ],
+  "imagem": "🤝📱💼",
+  "visualizacao": "As pessoas se despedem na saída do salão, celulares na mão para trocar contato. Dias depois, em casa, você escreve as mensagens com calma.",
+  "foto_busca": "people exchanging contacts smartphones",
+  "trechos": [
+    {
+      "id": "f-3b7fe3",
+      "quem": "voce",
+      "cod": "It was great talking to you. Let's keep in touch!",
+      "dica": "Foi ótimo conversar com você. Vamos manter contato!",
+      "img": "😊🗨️",
+      "alvo": "It was great talking to you",
+      "alvo_pt": "Foi ótimo conversar com você",
+      "conceito": "talking to you, com to. Para quem você acabou de conhecer: Great meeting you!",
+      "var": [
+        {
+          "em": "talking to",
+          "aceita": [
+            "talking with"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-76cd49",
+      "quem": "engenheira",
+      "contexto": "f-3b7fe3",
+      "cod": "You too! Let's connect online and keep in touch.",
+      "dica": "Igualmente! Vamos nos conectar online e manter contato.",
+      "img": "🔗📱",
+      "alvo": "keep in touch",
+      "alvo_pt": "manter contato",
+      "conceito": "keep in touch = manter contato. connect = se adicionar numa rede profissional.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e284ef",
+      "quem": "voce",
+      "cod": "Hi! It was great talking to you at the conference last week.",
+      "dica": "Oi! Foi ótimo conversar com você na conferência semana passada.",
+      "img": "📧🎤",
+      "alvo": "It was great talking to you",
+      "alvo_pt": "Foi ótimo conversar com você",
+      "conceito": "at the conference (evento com at); last week, sem preposição.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "in the conference",
+        "on the conference"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dbeb98",
+      "quem": "voce",
+      "cod": "Let me know if you're ever in Brazil. Let's keep in touch!",
+      "dica": "Me avisa se um dia você vier ao Brasil. Vamos manter contato!",
+      "img": "🇧🇷✈️",
+      "alvo": "keep in touch",
+      "alvo_pt": "manter contato",
+      "conceito": "if you're ever in = se um dia você estiver em (convite aberto).",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a49224",
+      "quem": "voce",
+      "cod": "I came across your post about the Flutter role, and I'd love to learn more about it.",
+      "dica": "Vi por acaso o seu post sobre a vaga de Flutter, e adoraria saber mais sobre ela.",
+      "img": "📰💼",
+      "alvo": "I'd love to learn more about",
+      "alvo_pt": "adoraria saber mais sobre",
+      "conceito": "come across = encontrar por acaso. saber mais = learn more, como no botão Saiba mais.",
+      "var": [
+        {
+          "em": "I'd love",
+          "aceita": [
+            "I would love"
+          ]
+        }
+      ],
+      "blocos": [
+        9
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4531b1",
+      "quem": "recrutadora",
+      "contexto": "f-a49224",
+      "cod": "Thanks for reaching out! I'd love to learn more about your experience.",
+      "dica": "Obrigada por entrar em contato! Adoraria saber mais sobre a sua experiência.",
+      "img": "🗂️⭐",
+      "alvo": "I'd love to learn more about",
+      "alvo_pt": "Adoraria saber mais sobre",
+      "var": [
+        {
+          "em": "I'd love",
+          "aceita": [
+            "I would love"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-183ceb",
+      "quem": "voce",
+      "cod": "Great meeting you yesterday! I'd be happy to refer you for the opening on our team.",
+      "dica": "Foi ótimo te conhecer ontem! Teria prazer em te indicar para a vaga em aberto no nosso time.",
+      "img": "🤝📝",
+      "alvo": "refer",
+      "alvo_pt": "indicar",
+      "conceito": "Conhecer alguém pela primeira vez = meet. refer someone for an opening = indicar alguém para uma vaga em aberto.",
+      "var": [
+        {
+          "em": "Great meeting you",
+          "aceita": [
+            "It was great meeting you"
+          ]
+        },
+        {
+          "em": "I'd be",
+          "aceita": [
+            "I would be"
+          ]
+        }
+      ],
+      "blocos": [
+        4,
+        10
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR36"
+      ],
+      "armadilhas": [
+        "knowing",
+        "indicate"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d3022b",
+      "quem": "participante",
+      "contexto": "f-183ceb",
+      "cod": "Thanks! Should I send you my resume before you refer me?",
+      "dica": "Valeu! Te mando o meu currículo antes de você me indicar?",
+      "img": "📄📨",
+      "alvo": "refer",
+      "alvo_pt": "indicar",
+      "conceito": "resume (EUA) = currículo. Te mando...? (oferta) = Should I send...?",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "curriculum",
+        "indicate"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

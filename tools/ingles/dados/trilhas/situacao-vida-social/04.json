@@ -1,0 +1,187 @@
+{
+  "id": "situacao-vida-social.saindo-com-o-time-a-rodada-e-a-conta",
+  "trilha": "situacao-vida-social",
+  "nome": "Saindo com o time: a rodada e a conta",
+  "emoji": "🍻",
+  "cena": "Happy hour com o time em Chicago, na última noite da viagem: você paga uma rodada, divide a conta e se despede.",
+  "resumo": "Pagar uma rodada, dividir a conta e sair sem parecer grosseiro: This round's on me. / split it evenly / I'd better head out.",
+  "fechamento": false,
+  "novos": [
+    "This round's on me.",
+    "split it evenly",
+    "head out (ir embora)",
+    "an early flight"
+  ],
+  "apoio": [
+    "had better (B1)",
+    "that said (C1)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "No bar com o time"
+    },
+    {
+      "t": "p",
+      "c": "**This round's on me.** = essa rodada é por minha conta. Na hora da conta: **Should we just split it evenly?** = a gente divide igualmente?"
+    },
+    {
+      "t": "warn",
+      "c": "É melhor eu ir indo = **I'd better head out** (não: It's better I go)."
+    },
+    {
+      "t": "ex",
+      "c": "I'd love to stay. That said, I have an early flight tomorrow.\nEu adoraria ficar. Dito isso, tenho um voo cedo amanhã."
+    }
+  ],
+  "imagem": "🍻🧾👋",
+  "visualizacao": "Você está num bar barulhento de Chicago com o time, copos na mesa e música ao fundo. É a última noite da viagem e a mala já está pronta no hotel.",
+  "foto_busca": "friends bar table drinks evening",
+  "trechos": [
+    {
+      "id": "f-89b0ad",
+      "quem": "voce",
+      "cod": "This round's on me.",
+      "dica": "Essa rodada é por minha conta.",
+      "img": "🍻🙋💵",
+      "alvo": "This round's on me",
+      "alvo_pt": "Essa rodada é por minha conta",
+      "lit": "[lit.: essa rodada está em mim]",
+      "conceito": "round = rodada (para a mesa toda). on me = por minha conta.",
+      "var": [
+        {
+          "em": "round's",
+          "aceita": [
+            "round is"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c7ad79",
+      "quem": "mike",
+      "contexto": "f-89b0ad",
+      "cod": "Thanks! The next round's on me, then.",
+      "dica": "Valeu! A próxima rodada é por minha conta, então.",
+      "img": "🙏🔁🍻",
+      "alvo": "round's on me",
+      "alvo_pt": "rodada é por minha conta",
+      "conceito": "then no fim = então.",
+      "var": [
+        {
+          "em": "round's",
+          "aceita": [
+            "round is"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-57d806",
+      "quem": "ana",
+      "contexto": "Come on, stay for one more round!",
+      "cod": "I'd love to stay. That said, I have an early flight tomorrow.",
+      "dica": "Eu adoraria ficar. Dito isso, tenho um voo cedo amanhã.",
+      "img": "✈️⏰🌅",
+      "alvo": "an early flight",
+      "alvo_pt": "um voo cedo",
+      "conceito": "an early flight = um voo cedo, de manhãzinha.",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8310aa",
+      "quem": "voce",
+      "contexto": "f-57d806",
+      "cod": "Me too. I have an early flight to catch.",
+      "dica": "Eu também. Tenho um voo cedo para pegar.",
+      "img": "🧳✈️⏰",
+      "alvo": "an early flight",
+      "alvo_pt": "um voo cedo",
+      "conceito": "catch a flight = pegar um voo.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3e0fba",
+      "quem": "voce",
+      "cod": "Should we just split it evenly?",
+      "dica": "(a conta chegou) A gente divide igualmente?",
+      "img": "🧾➗👥",
+      "alvo": "split it evenly",
+      "alvo_pt": "divide igualmente",
+      "conceito": "split it evenly = dividir igualmente (it = a conta).",
+      "opcional": [
+        "just"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c5bf4d",
+      "quem": "mike",
+      "contexto": "f-3e0fba",
+      "cod": "Sure, that's easier. Let's split it evenly.",
+      "dica": "Claro, assim é mais fácil. Vamos dividir igualmente.",
+      "img": "👍➗💳",
+      "alvo": "split it evenly",
+      "alvo_pt": "dividir igualmente",
+      "conceito": "Let's + verbo = vamos... (sugestão). that's easier = é mais fácil.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-932091",
+      "quem": "voce",
+      "cod": "It's getting late. I'd better head out.",
+      "dica": "Está ficando tarde. É melhor eu ir indo.",
+      "img": "🌙🕚👋",
+      "alvo": "head out",
+      "alvo_pt": "ir indo",
+      "conceito": "É melhor eu ir indo = I'd better head out (não: It's better I go).",
+      "var": [
+        {
+          "em": "I'd",
+          "aceita": [
+            "I had"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "better i go"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-023c37",
+      "quem": "ana",
+      "contexto": "f-932091",
+      "cod": "Wait, I'll head out with you. The last train leaves at 11:30.",
+      "dica": "Espera, vou indo com você. O último trem sai às 11h30.",
+      "img": "🚶🚆🌃",
+      "alvo": "head out",
+      "alvo_pt": "vou indo",
+      "conceito": "The train leaves: -s da 3ª pessoa. at 11:30 = às 11h30.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

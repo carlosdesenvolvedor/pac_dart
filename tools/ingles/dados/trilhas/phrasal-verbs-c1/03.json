@@ -1,0 +1,244 @@
+{
+  "id": "phrasal-verbs-c1.escalar-e-passar-o-bastao",
+  "trilha": "phrasal-verbs-c1",
+  "nome": "Escalar e passar o bastão",
+  "emoji": "📈",
+  "cena": "Você planeja com o Mike como o sistema e o time vão crescer no próximo semestre.",
+  "resumo": "Planejar o crescimento com ramp up, scale up, scale out e hand off.",
+  "fechamento": false,
+  "novos": [
+    "ramp up",
+    "scale up",
+    "hand off",
+    "scale out"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Crescer: sistema e time"
+    },
+    {
+      "t": "p",
+      "c": "**ramp up** = acelerar, aumentar aos poucos · **scale up** = escalar verticalmente (máquina maior) · **scale out** = escalar horizontalmente (mais máquinas) · **hand off** = passar (um trabalho) para alguém."
+    },
+    {
+      "t": "warn",
+      "c": "Com pronome, ele fica no meio: hand it off (não: hand off it)."
+    },
+    {
+      "t": "tip",
+      "c": "iron out = acertar, aparar as arestas: iron out a few details."
+    },
+    {
+      "t": "ex",
+      "c": "I'll hand off the project to Ana.\nVou passar o projeto para a Ana."
+    }
+  ],
+  "imagem": "📈🖥️👥",
+  "visualizacao": "Você e o Mike dividem a tela com um diagrama de servidores e um gráfico de tráfego subindo. Ele desenha caixinhas novas enquanto vocês contam quantas pessoas vão entrar.",
+  "foto_busca": "engineers whiteboard architecture diagram",
+  "trechos": [
+    {
+      "id": "f-5c201e",
+      "quem": "mike",
+      "cod": "We need to ramp up hiring before the holiday season.",
+      "dica": "Precisamos acelerar as contratações antes das festas de fim de ano.",
+      "img": "🧑‍💼➕🎄",
+      "alvo": "ramp up",
+      "alvo_pt": "acelerar",
+      "lit": "[lit.: subir a rampa]",
+      "conceito": "ramp up = acelerar, aumentar aos poucos (mais natural que accelerate).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "armadilhas": [
+        "accelerate"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c9e64e",
+      "quem": "voce",
+      "contexto": "f-5c201e",
+      "cod": "Let's ramp up testing too, not just hiring.",
+      "dica": "Vamos acelerar os testes também, não só as contratações.",
+      "img": "🧪⏫",
+      "alvo": "ramp up",
+      "alvo_pt": "acelerar",
+      "conceito": "testing = os testes, como atividade (sem artigo).",
+      "registro": "informal",
+      "interferencias": [
+        "BR60"
+      ],
+      "armadilhas": [
+        "accelerate",
+        "tests"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-99e481",
+      "quem": "mike",
+      "cod": "If traffic keeps growing, we'll have to scale up the database next quarter.",
+      "dica": "Se o tráfego continuar crescendo, vamos ter que escalar o banco verticalmente no próximo trimestre.",
+      "img": "🗄️⬆️📊",
+      "alvo": "scale up",
+      "alvo_pt": "escalar o banco verticalmente",
+      "conceito": "scale up = escalar verticalmente, com uma máquina maior. if + presente: if traffic keeps.",
+      "var": [
+        {
+          "em": "we'll have to",
+          "aceita": [
+            "we're going to have to"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR28"
+      ],
+      "armadilhas": [
+        "will",
+        "escalate"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ae07f7",
+      "quem": "voce",
+      "contexto": "f-99e481",
+      "cod": "Scaling up is quick, but bigger servers get expensive fast.",
+      "dica": "Escalar verticalmente é rápido, mas servidores maiores ficam caros rápido.",
+      "img": "💰🖥️",
+      "alvo": "Scaling up",
+      "alvo_pt": "Escalar verticalmente",
+      "conceito": "Verbo como sujeito vai em -ing: Scaling up is (não: Scale up is). ficar caro = get expensive.",
+      "registro": "informal",
+      "interferencias": [
+        "BR33",
+        "BR52"
+      ],
+      "armadilhas": [
+        "scale",
+        "stay"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0f7992",
+      "quem": "voce",
+      "cod": "Honestly, I'd rather scale out and add a few read replicas.",
+      "dica": "Sinceramente, prefiro escalar horizontalmente e adicionar umas réplicas de leitura.",
+      "img": "🖥️🖥️🖥️",
+      "alvo": "scale out",
+      "alvo_pt": "escalar horizontalmente",
+      "conceito": "scale out = escalar horizontalmente, com mais máquinas. I'd rather + verbo sem to.",
+      "var": [
+        {
+          "em": "I'd rather",
+          "aceita": [
+            "I would rather",
+            "I prefer to"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c8744",
+      "quem": "mike",
+      "contexto": "f-0f7992",
+      "cod": "We scaled out the API last year, and it worked well.",
+      "dica": "A gente escalou a API horizontalmente no ano passado, e funcionou bem.",
+      "img": "🔌📅👍",
+      "alvo": "scaled out",
+      "alvo_pt": "escalou a API horizontalmente",
+      "conceito": "last year pede o passado simples: scaled (não: have scaled). funcionou = it worked.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR27"
+      ],
+      "armadilhas": [
+        "have",
+        "worked"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-137f5a",
+      "quem": "voce",
+      "cod": "Before I go on vacation, I'll hand off the project to Ana.",
+      "dica": "Antes de sair de férias, vou passar o projeto para a Ana.",
+      "img": "🏖️📁➡️",
+      "alvo": "hand off",
+      "alvo_pt": "passar",
+      "conceito": "hand off = passar um trabalho para alguém. Before I go: presente, não will.",
+      "var": [
+        {
+          "em": "I'll",
+          "aceita": [
+            "I'm going to"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR60"
+      ],
+      "armadilhas": [
+        "transfer",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-57b990",
+      "quem": "mike",
+      "contexto": "f-137f5a",
+      "cod": "Good. Hand it off to her early so she has time to ask questions.",
+      "dica": "Boa. Passa pra ela cedo, assim ela tem tempo de tirar dúvidas.",
+      "img": "🤲⏰❔",
+      "alvo": "Hand it off",
+      "alvo_pt": "Passa",
+      "conceito": "Com pronome, ele fica no meio: hand it off (não: hand off it). tirar dúvidas = ask questions.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR60"
+      ],
+      "armadilhas": [
+        "doubts",
+        "off"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

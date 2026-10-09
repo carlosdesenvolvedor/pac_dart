@@ -1,0 +1,197 @@
+{
+  "id": "pro-carreira-networking.apresentar-o-que-voce-faz",
+  "trilha": "pro-carreira-networking",
+  "nome": "Apresentar o que você faz",
+  "emoji": "💼",
+  "cena": "No almoço da conferência, você conversa com uma engenheira de outra empresa sobre o que cada um faz.",
+  "resumo": "Falar do próprio trabalho e do dos outros: What are you working on these days?, It's a bit like X, but for Y.",
+  "fechamento": false,
+  "novos": [
+    "what are you working on these days",
+    "I'd love to hear more about it",
+    "it's a bit like... but for...",
+    "side project"
+  ],
+  "apoio": [
+    "in a nutshell",
+    "open source",
+    "maintain",
+    "maintainer"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O que você faz, em uma frase"
+    },
+    {
+      "t": "p",
+      "c": "Pergunte **What are you working on these days?** e mostre interesse com **I'd love to hear more about it.** Para explicar um produto, compare: **It's a bit like X, but for Y.**"
+    },
+    {
+      "t": "tip",
+      "c": "In a nutshell = em poucas palavras. side project = projeto paralelo."
+    },
+    {
+      "t": "warn",
+      "c": "library = biblioteca (livraria = bookstore). open source library: o qualificador vem antes."
+    }
+  ],
+  "imagem": "🍽️💬💼",
+  "visualizacao": "Mesa comprida no almoço do evento, bandejas e crachás. A engenheira ao seu lado pergunta do seu trabalho, e você sente vontade de explicar em uma frase só.",
+  "foto_busca": "conference lunch table conversation",
+  "trechos": [
+    {
+      "id": "f-0bf00e",
+      "quem": "voce",
+      "cod": "So, what are you working on these days?",
+      "dica": "E aí, em que você está trabalhando hoje em dia?",
+      "img": "💻❓",
+      "alvo": "what are you working on these days",
+      "alvo_pt": "em que você está trabalhando hoje em dia",
+      "conceito": "these days = hoje em dia. A preposição on vai para o fim da pergunta.",
+      "registro": "informal",
+      "armadilhas": [
+        "in what"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b318a2",
+      "quem": "engenheira",
+      "contexto": "f-0bf00e",
+      "cod": "We're building a pharmacy app. It's a bit like food delivery, but for medicine.",
+      "dica": "Estamos criando um app de farmácia. É um pouco como delivery de comida, mas para remédios.",
+      "img": "💊🛵",
+      "alvo": "a bit like",
+      "alvo_pt": "um pouco como",
+      "conceito": "It's a bit like X, but for Y: explica um produto pela comparação. medicine = remédio.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e02060",
+      "quem": "voce",
+      "contexto": "f-b318a2",
+      "cod": "Interesting! I'd love to hear more about it.",
+      "dica": "Interessante! Adoraria ouvir mais sobre isso.",
+      "img": "👂✨",
+      "alvo": "I'd love to hear more about",
+      "alvo_pt": "Adoraria ouvir mais sobre",
+      "conceito": "I'd love to = adoraria. about it: o inglês pede o it.",
+      "var": [
+        {
+          "em": "I'd love",
+          "aceita": [
+            "I would love"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-75e66a",
+      "quem": "engenheira",
+      "cod": "Sure! But first, what are you working on these days?",
+      "dica": "Claro! Mas antes, em que você está trabalhando hoje em dia?",
+      "img": "🔄💬",
+      "alvo": "what are you working on these days",
+      "alvo_pt": "em que você está trabalhando hoje em dia",
+      "registro": "informal",
+      "variacao_de": "f-0bf00e",
+      "origem": "autoral_ia",
+      "contexto": "f-e02060"
+    },
+    {
+      "id": "f-8150f8",
+      "quem": "voce",
+      "contexto": "f-75e66a",
+      "cod": "In a nutshell, our app is a bit like a bank, but for freelancers.",
+      "dica": "Em poucas palavras, o nosso app é um pouco como um banco, mas para freelancers.",
+      "img": "🏦💼",
+      "alvo": "a bit like",
+      "alvo_pt": "um pouco como",
+      "conceito": "In a nutshell = em poucas palavras (resumindo).",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3fbf41",
+      "quem": "engenheira",
+      "contexto": "f-8150f8",
+      "cod": "Cool! I'd love to hear more about your team, too.",
+      "dica": "Legal! Adoraria ouvir mais sobre o seu time também.",
+      "img": "👥👂",
+      "alvo": "I'd love to hear more about",
+      "alvo_pt": "Adoraria ouvir mais sobre",
+      "var": [
+        {
+          "em": "I'd love",
+          "aceita": [
+            "I would love"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0214a1",
+      "quem": "engenheira",
+      "cod": "I also maintain an open source library as a side project.",
+      "dica": "Também mantenho uma biblioteca open source como projeto paralelo.",
+      "img": "📚🧩",
+      "alvo": "side project",
+      "alvo_pt": "projeto paralelo",
+      "conceito": "library = biblioteca (livraria = bookstore). maintain = manter (uma biblioteca).",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR24"
+      ],
+      "armadilhas": [
+        "bookstore"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-114aba",
+      "quem": "voce",
+      "contexto": "f-0214a1",
+      "cod": "Wow! How do you find time for a side project?",
+      "dica": "Nossa! Como você arranja tempo para um projeto paralelo?",
+      "img": "⏰🧩",
+      "alvo": "side project",
+      "alvo_pt": "projeto paralelo",
+      "conceito": "find time for = arranjar tempo para. do na pergunta do presente.",
+      "blocos": [
+        1
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "dedicate",
+        "how you find"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

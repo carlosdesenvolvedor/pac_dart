@@ -1,0 +1,301 @@
+{
+  "id": "pro-entrevista-senior.fale-de-voce-versao-senior",
+  "trilha": "pro-entrevista-senior",
+  "nome": "Fale de você, versão sênior",
+  "emoji": "🎙️",
+  "cena": "Numa entrevista por vídeo para uma vaga de staff engineer remoto, a gestora da vaga pede que você se apresente.",
+  "resumo": "O pitch sênior: Over the past X years, My background is in..., What drew me to this role was...",
+  "fechamento": false,
+  "novos": [
+    "hiring manager",
+    "over the past",
+    "my background is in",
+    "what drew me to"
+  ],
+  "apoio": [
+    "background",
+    "Tell me about yourself",
+    "currently"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O pitch sênior em 30 segundos"
+    },
+    {
+      "t": "p",
+      "c": "Anos de estrada com **Over the past X years, I've been...**, a área com **My background is in...**, o que você faz hoje com **currently** e a motivação com **What drew me to this role was...**"
+    },
+    {
+      "t": "warn",
+      "c": "Atualmente = currently (actually = na verdade). Sou dev há oito anos = I've been a developer for eight years (não: I am a developer since...)."
+    },
+    {
+      "t": "ex",
+      "c": "My background is in mobile, and I currently lead a team of five.\nMinha experiência é em mobile, e atualmente lidero um time de cinco pessoas."
+    }
+  ],
+  "imagem": "💻🎧🙋",
+  "visualizacao": "Você está na frente da câmera, fone no ouvido e um copo de café ao lado. A chamada abre, a gestora da vaga sorri e espera você começar.",
+  "foto_busca": "video call job interview home office",
+  "trechos": [
+    {
+      "id": "f-3d7e22",
+      "quem": "recrutadora",
+      "cod": "The hiring manager will join us in a minute.",
+      "dica": "A gestora da vaga vai entrar na chamada em um minuto.",
+      "img": "👩‍💼⏳",
+      "alvo": "hiring manager",
+      "alvo_pt": "gestora da vaga",
+      "conceito": "hiring manager = gestor(a) da vaga, quem vai ser seu chefe; recruiter = recrutador(a).",
+      "var": [
+        {
+          "em": "join us",
+          "aceita": [
+            "join the call",
+            "be joining us"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "recruiter",
+        "manager of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dc26a6",
+      "quem": "gestora",
+      "cod": "Hi, I'm the hiring manager for this role. Tell me a little about yourself.",
+      "dica": "Oi, sou a gestora desta vaga. Me fale um pouco sobre você.",
+      "img": "👋👩‍💼",
+      "alvo": "hiring manager",
+      "alvo_pt": "gestora",
+      "conceito": "role = vaga, função (position também existe). Tell me about yourself abre quase toda entrevista.",
+      "var": [
+        {
+          "em": "role",
+          "aceita": [
+            "position"
+          ]
+        },
+        {
+          "em": "Hi",
+          "aceita": [
+            "Hello"
+          ]
+        },
+        {
+          "em": "a little",
+          "aceita": [
+            "a bit"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "of this role"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-da35a5",
+      "quem": "voce",
+      "cod": "Over the past {anos_dev} years, I've been building mobile apps.",
+      "dica": "Nos últimos {anos_dev} anos, venho desenvolvendo apps mobile.",
+      "img": "📱🛠️📅",
+      "alvo": "Over the past",
+      "alvo_pt": "Nos últimos",
+      "lit": "[lit.: ao longo dos últimos oito anos]",
+      "conceito": "over the past + período = nos últimos...; pede present perfect (I've been building), não presente.",
+      "var": [
+        {
+          "em": "building",
+          "aceita": [
+            "developing",
+            "making"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "build",
+        "i'm"
+      ],
+      "bio": [
+        "anos_dev"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-817410",
+      "quem": "voce",
+      "cod": "My background is in mobile, and I currently lead a team of five.",
+      "dica": "Minha experiência é em mobile, e atualmente lidero um time de cinco pessoas.",
+      "img": "📱👥🧭",
+      "alvo": "My background is in",
+      "alvo_pt": "Minha experiência é em",
+      "conceito": "background = formação e experiência. Atualmente = currently (não: actually).",
+      "var": [
+        {
+          "em": "I currently lead",
+          "aceita": [
+            "currently I lead",
+            "I'm currently leading"
+          ]
+        },
+        {
+          "em": "a team of five",
+          "aceita": [
+            "a team of five people"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "actually",
+        "experience"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d3440e",
+      "quem": "voce",
+      "cod": "Over the past year, I've been mentoring two junior developers.",
+      "dica": "No último ano, venho mentorando dois devs júnior.",
+      "img": "🧑‍🏫🌱",
+      "alvo": "Over the past year",
+      "alvo_pt": "No último ano",
+      "conceito": "Algo que começou há um ano e continua: present perfect continuous (BR47).",
+      "var": [
+        {
+          "em": "developers",
+          "aceita": [
+            "devs"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR47",
+        "BR27"
+      ],
+      "armadilhas": [
+        "mentor",
+        "last year"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3f8e33",
+      "quem": "voce",
+      "contexto": "Why are you interested in this role?",
+      "cod": "What drew me to this role was the scale: millions of users.",
+      "dica": "O que me atraiu nesta vaga foi a escala: milhões de usuários.",
+      "img": "🧲🌍👥",
+      "alvo": "What drew me to",
+      "alvo_pt": "O que me atraiu",
+      "lit": "[lit.: o que me puxou para esta vaga foi...]",
+      "conceito": "draw (drew, drawn) = atrair. A clivada What... was... põe o motivo em destaque.",
+      "var": [
+        {
+          "em": "role",
+          "aceita": [
+            "position"
+          ]
+        }
+      ],
+      "blocos": [
+        9
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "attracted",
+        "in this role"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-37ab57",
+      "quem": "voce",
+      "cod": "And what drew me to your team was the focus on quality.",
+      "dica": "E o que me atraiu no time de vocês foi o foco em qualidade.",
+      "img": "🎯✅",
+      "alvo": "what drew me to",
+      "alvo_pt": "o que me atraiu",
+      "conceito": "Atraiu no time = drew me to your team (to, não in).",
+      "var": [
+        {
+          "em": "the focus",
+          "aceita": [
+            "your focus"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "in",
+        "attracted"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2013a4",
+      "quem": "voce",
+      "contexto": "Have you done much backend work?",
+      "cod": "Not much. My background is in mobile, but I've also built a few APIs.",
+      "dica": "Não muito. Minha experiência é em mobile, mas também já fiz algumas APIs.",
+      "img": "🖥️🔌",
+      "alvo": "My background is in",
+      "alvo_pt": "Minha experiência é em",
+      "conceito": "Experiência sem data = present perfect (I've built); com data, passado (I built them in 2022).",
+      "var": [
+        {
+          "em": "built",
+          "aceita": [
+            "made",
+            "created"
+          ]
+        },
+        {
+          "em": "a few",
+          "aceita": [
+            "some"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "experience",
+        "did"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

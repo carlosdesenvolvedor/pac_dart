@@ -1,0 +1,219 @@
+{
+  "id": "revisao-c1.post-mortem-de-um-incidente",
+  "trilha": "revisao-c1",
+  "nome": "Post-mortem de um incidente",
+  "emoji": "🧯",
+  "cena": "Uma queda de duas horas afetou os pagamentos, e você conduz o post-mortem com o time, sem procurar culpados.",
+  "resumo": "Reconstruir a linha do tempo e as causas com passiva impessoal, It wasn't until... e Had we..., sem culpar ninguém.",
+  "fechamento": false,
+  "novos": [
+    "expired certificate",
+    "detection",
+    "time to recovery",
+    "customer impact"
+  ],
+  "apoio": [
+    "blameless",
+    "timeline"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Post-mortem sem culpados"
+    },
+    {
+      "t": "p",
+      "c": "O sujeito é o processo ou **we**, nunca um colega. Causa provável: **is thought to have been caused by** (não: thinks that was caused). Linha do tempo: **It wasn't until... that...**"
+    },
+    {
+      "t": "warn",
+      "c": "Condição no passado: **Had we monitored...** ou **If we had monitored...**, nunca would na condição (não: If we would have monitored)."
+    },
+    {
+      "t": "ex",
+      "c": "The outage is thought to have been caused by an expired certificate.\nAcredita-se que a queda tenha sido causada por um certificado expirado."
+    }
+  ],
+  "imagem": "🧯📉💳",
+  "visualizacao": "Você está numa chamada de vídeo com o time. Na tela compartilhada, a linha do tempo da queda; os rostos estão cansados, mas ninguém aponta o dedo.",
+  "foto_busca": "team video call timeline review",
+  "trechos": [
+    {
+      "id": "f-3f3bd6",
+      "quem": "voce",
+      "cod": "This is a blameless review. Let's start with the customer impact.",
+      "dica": "Esta é uma revisão sem culpados. Vamos começar pelo impacto nos clientes.",
+      "img": "👥💳📉",
+      "alvo": "customer impact",
+      "alvo_pt": "impacto nos clientes",
+      "conceito": "blameless = sem culpados: o foco é o processo, não a pessoa.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-05836b",
+      "quem": "sarah",
+      "contexto": "f-3f3bd6",
+      "cod": "Payments were down for two hours. How long did detection take?",
+      "dica": "Os pagamentos ficaram fora do ar por duas horas. Quanto tempo levou a detecção?",
+      "img": "⏱️🔍💳",
+      "alvo": "detection",
+      "alvo_pt": "detecção",
+      "conceito": "por + duração = for (não: during). Quanto tempo levou? = How long did... take?",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR63",
+        "BR06"
+      ],
+      "armadilhas": [
+        "during"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3a5925",
+      "quem": "mike",
+      "cod": "The outage is thought to have been caused by an expired certificate.",
+      "dica": "(no relatório) Acredita-se que a queda tenha sido causada por um certificado expirado.",
+      "img": "📜⏰❌",
+      "alvo": "expired certificate",
+      "alvo_pt": "certificado expirado",
+      "conceito": "Acredita-se que... tenha sido = is thought to have been + particípio (não: thinks that was caused).",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "thinks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-07de9d",
+      "quem": "ana",
+      "contexto": "f-3a5925",
+      "cod": "Come to think of it, this isn't our first expired certificate.",
+      "dica": "Pensando bem, este não é o nosso primeiro certificado expirado.",
+      "img": "🤔📜🔁",
+      "alvo": "expired certificate",
+      "alvo_pt": "certificado expirado",
+      "conceito": "Adjetivo antes do substantivo: expired certificate = certificado expirado.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2e4115",
+      "quem": "voce",
+      "cod": "Our time to recovery was two hours, which means we missed our goal.",
+      "dica": "O nosso tempo de recuperação foi de duas horas, o que significa que não batemos a nossa meta.",
+      "img": "⏳🛠️🎯",
+      "alvo": "time to recovery",
+      "alvo_pt": "tempo de recuperação",
+      "conceito": "which means = o que significa que (-s da 3ª pessoa). miss a goal = não bater a meta.",
+      "var": [
+        {
+          "em": "we missed",
+          "aceita": [
+            "we didn't hit",
+            "we didn't meet"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "mean"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0ca35f",
+      "quem": "ana",
+      "cod": "It wasn't until support reported customer impact that anyone got paged.",
+      "dica": "Foi só quando o suporte relatou impacto nos clientes que alguém foi acionado.",
+      "img": "🎧🚨📟",
+      "alvo": "customer impact",
+      "alvo_pt": "impacto nos clientes",
+      "conceito": "Foi só quando... que = It wasn't until... that. get paged = ser acionado (no plantão).",
+      "var": [
+        {
+          "em": "anyone got paged",
+          "aceita": [
+            "someone got paged",
+            "anyone was paged",
+            "someone was paged"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ab4ecd",
+      "quem": "voce",
+      "cod": "Had we monitored expiration dates, detection would have taken minutes, not hours.",
+      "dica": "(no relatório) Se tivéssemos monitorado as datas de expiração, a detecção teria levado minutos, não horas.",
+      "img": "📅👁️⚡",
+      "alvo": "detection",
+      "alvo_pt": "detecção",
+      "conceito": "Had we + particípio = If we had + particípio (escrito formal). Nunca would na condição.",
+      "var": [
+        {
+          "em": "Had we monitored expiration dates",
+          "aceita": [
+            "If we had monitored expiration dates",
+            "Had we monitored the expiration dates",
+            "If we had monitored the expiration dates"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        5
+      ]
+    },
+    {
+      "id": "f-c333b2",
+      "quem": "mike",
+      "cod": "With a good runbook, our time to recovery would be under ten minutes.",
+      "dica": "Com um bom runbook, o nosso tempo de recuperação ficaria abaixo de dez minutos.",
+      "img": "📘⏱️✅",
+      "alvo": "time to recovery",
+      "alvo_pt": "tempo de recuperação",
+      "conceito": "runbook = roteiro de resposta a incidente. ficaria = would be (hipótese).",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,219 @@
+{
+  "id": "modalidade-avancada.pode-muito-bem-ser",
+  "trilha": "modalidade-avancada",
+  "nome": "Pode muito bem ser",
+  "emoji": "🌦️",
+  "cena": "Você e a Sarah revisam a previsão do trimestre e os riscos de mercado antes de apresentar à diretoria.",
+  "resumo": "Dizer que algo é bem provável com may well, could well e may well have + particípio.",
+  "fechamento": false,
+  "novos": [
+    "may well",
+    "could well",
+    "may well have",
+    "competitor"
+  ],
+  "apoio": [
+    "slip (a date)",
+    "holiday weekend",
+    "demand"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pode muito bem ser"
+    },
+    {
+      "t": "p",
+      "c": "**may well** + verbo = pode muito bem (bem provável). **could well** = poderia muito bem (um pouco menos certo). Para o passado: **may well have** + particípio = pode muito bem ter..."
+    },
+    {
+      "t": "warn",
+      "c": "Sem to: may well launch (não: may well to launch). Passado: may well have been (não: may well had)."
+    },
+    {
+      "t": "tip",
+      "c": "might well também existe; aqui treinamos may well e could well."
+    }
+  ],
+  "imagem": "🌦️📊🏢",
+  "visualizacao": "Você e a Sarah estão numa sala pequena, a planilha da previsão aberta e café na mão. No canto da tela, a notícia do concorrente que acabou de levantar dinheiro.",
+  "foto_busca": "business forecast spreadsheet meeting",
+  "trechos": [
+    {
+      "id": "f-954c2d",
+      "quem": "sarah",
+      "cod": "Our biggest competitor just raised a lot of money.",
+      "dica": "O nosso maior concorrente acabou de levantar muito dinheiro.",
+      "img": "🏢💰",
+      "alvo": "competitor",
+      "alvo_pt": "concorrente",
+      "conceito": "competitor = concorrente (empresa rival); raise money = levantar dinheiro.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b5e441",
+      "quem": "voce",
+      "contexto": "f-954c2d",
+      "cod": "They may well launch a similar feature before we do.",
+      "dica": "Eles podem muito bem lançar um recurso parecido antes de nós.",
+      "img": "🏃‍♂️🏁",
+      "alvo": "may well",
+      "alvo_pt": "podem muito bem",
+      "conceito": "may well + verbo base = pode muito bem (bem provável); sem to (não: may well to launch).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "before we do",
+          "aceita": [
+            "before us"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-27d821",
+      "quem": "sarah",
+      "contexto": "f-b5e441",
+      "cod": "That could well be the biggest risk this quarter.",
+      "dica": "Isso poderia muito bem ser o maior risco deste trimestre.",
+      "img": "⚠️📆",
+      "alvo": "could well",
+      "alvo_pt": "poderia muito bem",
+      "conceito": "could well = poderia muito bem: provável, um pouco menos que may well.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "risk this quarter",
+          "aceita": [
+            "risk of this quarter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-dfdf6d",
+      "quem": "voce",
+      "cod": "If the date slips again, the board may well get angry.",
+      "dica": "Se a data escorregar de novo, a diretoria pode muito bem ficar brava.",
+      "img": "📅😠",
+      "alvo": "may well",
+      "alvo_pt": "pode muito bem",
+      "conceito": "if + presente: If the date slips (não: will slip). get angry = ficar bravo.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28",
+        "BR02",
+        "BR33"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8357819,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom may well get angry.\" (Tom → the board; + If the date slips again); PT reescrito (original: \"Tom pode muito bem ficar bravo.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-27543a",
+      "quem": "sarah",
+      "cod": "The numbers may well have been affected by the holiday weekend.",
+      "dica": "Os números podem muito bem ter sido afetados pelo feriado prolongado.",
+      "img": "🔢🏖️",
+      "alvo": "may well have",
+      "alvo_pt": "podem muito bem ter",
+      "conceito": "may well have + particípio = pode muito bem ter... (não: may well had).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "had"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7d4ef4",
+      "quem": "voce",
+      "cod": "We may well have underestimated demand from small businesses.",
+      "dica": "A gente pode muito bem ter subestimado a demanda das pequenas empresas.",
+      "img": "🏪📈",
+      "alvo": "may well have",
+      "alvo_pt": "pode muito bem ter",
+      "conceito": "underestimate = subestimar.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "demand from small businesses",
+          "aceita": [
+            "the demand from small businesses",
+            "the demand of small businesses"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f2b2f0",
+      "quem": "voce",
+      "cod": "Sarah, which competitor worries you the most?",
+      "dica": "Sarah, qual concorrente te preocupa mais?",
+      "img": "😟🏢",
+      "alvo": "competitor",
+      "alvo_pt": "concorrente",
+      "conceito": "O concorrente preocupa = worries, com -s (sujeito na 3ª pessoa).",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the most",
+          "aceita": [
+            "most"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ebf793",
+      "quem": "sarah",
+      "contexto": "f-f2b2f0",
+      "cod": "The new one in Austin. It could well take some of our users.",
+      "dica": "O novo, de Austin. Ele poderia muito bem levar parte dos nossos usuários.",
+      "img": "🧲👥",
+      "alvo": "could well",
+      "alvo_pt": "poderia muito bem",
+      "conceito": "Para uma empresa, o pronome é it (não: he).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

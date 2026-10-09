@@ -1,0 +1,244 @@
+{
+  "id": "phrasal-verbs-c1.cena-final-a-origem-e-a-escala",
+  "trilha": "phrasal-verbs-c1",
+  "nome": "Cena final: a origem e a escala",
+  "emoji": "🎬",
+  "cena": "No review pós-incidente, você explica como a falha surgiu e apresenta o plano para o sistema aguentar o dobro de tráfego.",
+  "resumo": "Fechamento: causas, processo e escala com os phrasal verbs da trilha no lugar dos cognatos latinos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão da trilha"
+    },
+    {
+      "t": "tip",
+      "c": "surgir = come about · provocar = bring about · resumir-se a = boil down to · pôr-se a = set about + -ing · acertar = iron out."
+    },
+    {
+      "t": "tip",
+      "c": "escalar horizontalmente = scale out · deixar bem claro = spell out · estabelecer = lay down."
+    },
+    {
+      "t": "warn",
+      "c": "Com pronome no meio: hand it off, spell it out (não: hand off it, spell out it)."
+    }
+  ],
+  "imagem": "🧯📋📈",
+  "visualizacao": "A sala do review pós-incidente está em silêncio. Na tela, a linha do tempo da falha em vermelho; ao lado, o gráfico de tráfego que vocês precisam aguentar no próximo pico.",
+  "foto_busca": "postmortem meeting timeline screen",
+  "trechos": [
+    {
+      "id": "f-f0bf8a",
+      "quem": "voce",
+      "cod": "The failure came about because of a bug in the retry logic.",
+      "dica": "A falha surgiu por causa de um bug na lógica de retry.",
+      "img": "🐞🔁",
+      "alvo": "came about",
+      "alvo_pt": "surgiu",
+      "conceito": "surgir = come about, sem objeto.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "armadilhas": [
+        "occurred"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb3ff7",
+      "quem": "sarah",
+      "contexto": "f-f0bf8a",
+      "cod": "And what brought about this situation in the first place?",
+      "dica": "E o que provocou essa situação, para começo de conversa?",
+      "img": "❓🧨",
+      "alvo": "brought about",
+      "alvo_pt": "provocou",
+      "conceito": "bring about + situação, mudança = provocar. in the first place = para começo de conversa.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "armadilhas": [
+        "caused",
+        "provoked"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7a6370",
+      "quem": "voce",
+      "contexto": "f-cb3ff7",
+      "cod": "It all boils down to one thing: we never planned for this much traffic.",
+      "dica": "Tudo se resume a uma coisa: nunca planejamos para tanto tráfego.",
+      "img": "☝️🌊",
+      "alvo": "boils down to",
+      "alvo_pt": "se resume a",
+      "conceito": "Tudo se resume a = It all boils down to: o it é obrigatório.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR60"
+      ],
+      "armadilhas": [
+        "resumes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-de2e00",
+      "quem": "mike",
+      "cod": "As soon as we saw the alerts, we set about rolling back the deploy.",
+      "dica": "Assim que vimos os alertas, nos pusemos a reverter o deploy.",
+      "img": "🚨⏪",
+      "alvo": "set about",
+      "alvo_pt": "nos pusemos a",
+      "conceito": "set about + -ing = pôr-se a fazer.",
+      "var": [
+        {
+          "em": "rolling back the deploy",
+          "aceita": [
+            "rolling the deploy back"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52",
+        "BR60"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fb999e",
+      "quem": "voce",
+      "cod": "Once we iron out the retry issues, we can hand off the service to the platform team.",
+      "dica": "Depois que a gente acertar os problemas de retry, podemos passar o serviço para o time de plataforma.",
+      "img": "🧺🔧➡️",
+      "alvo": "iron out",
+      "alvo_pt": "acertar",
+      "lit": "[lit.: passar a ferro]",
+      "conceito": "iron out = acertar, aparar as arestas. Depois que + futuro do subjuntivo = Once + presente.",
+      "var": [
+        {
+          "em": "hand off the service",
+          "aceita": [
+            "hand the service off"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28",
+        "BR60"
+      ],
+      "armadilhas": [
+        "resolve",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0c866b",
+      "quem": "voce",
+      "cod": "Our plan is to scale out the API before the next traffic peak.",
+      "dica": "O nosso plano é escalar a API horizontalmente antes do próximo pico de tráfego.",
+      "img": "🌱🖥️🖥️",
+      "alvo": "scale out",
+      "alvo_pt": "escalar a API horizontalmente",
+      "conceito": "scale out = escalar horizontalmente, com mais máquinas.",
+      "var": [
+        {
+          "em": "scale out the API",
+          "aceita": [
+            "scale the API out"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR60"
+      ],
+      "armadilhas": [
+        "up"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-01d953",
+      "quem": "sarah",
+      "cod": "Could you spell it out for the whole company in an email?",
+      "dica": "Você poderia deixar isso bem claro para a empresa toda num e-mail?",
+      "img": "🏢📧",
+      "alvo": "spell it out",
+      "alvo_pt": "deixar isso bem claro",
+      "conceito": "spell it out: pronome no meio.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR18",
+        "BR60"
+      ],
+      "armadilhas": [
+        "out"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f9a9bc",
+      "quem": "voce",
+      "contexto": "f-01d953",
+      "cod": "Sure. I'll also lay down a new rule: no deploys during peak traffic.",
+      "dica": "Claro. Também vou estabelecer uma regra nova: nada de deploy durante o pico de tráfego.",
+      "img": "📏🚫🚀",
+      "alvo": "lay down",
+      "alvo_pt": "estabelecer",
+      "conceito": "lay down a rule = estabelecer uma regra. during + evento: during peak traffic.",
+      "var": [
+        {
+          "em": "I'll also",
+          "aceita": [
+            "I'm also going to"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR60",
+        "BR63"
+      ],
+      "armadilhas": [
+        "establish"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

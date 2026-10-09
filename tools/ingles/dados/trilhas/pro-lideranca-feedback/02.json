@@ -1,0 +1,220 @@
+{
+  "id": "pro-lideranca-feedback.dar-feedback-construtivo",
+  "trilha": "pro-lideranca-feedback",
+  "nome": "Dar feedback construtivo",
+  "emoji": "💬",
+  "cena": "No 1:1 seguinte, você elogia o dev júnior pelo último incidente e aponta um ponto de melhoria nos comentários de code review.",
+  "resumo": "Elogiar de forma específica e apontar uma melhoria sem soar agressivo.",
+  "fechamento": false,
+  "novos": [
+    "I really appreciate how",
+    "one thing I'd love to see more of",
+    "come across as",
+    "harsh"
+  ],
+  "apoio": [
+    "behavior",
+    "shout-out"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Elogio específico, melhoria gentil"
+    },
+    {
+      "t": "p",
+      "c": "Elogie o que a pessoa fez (**I really appreciate how you...**) e peça mais de algo em vez de apontar defeito: **One thing I'd love to see more of is...**"
+    },
+    {
+      "t": "warn",
+      "c": "feedback é incontável: some feedback, a piece of feedback (não: feedbacks). E behavior, sem u, no inglês americano."
+    },
+    {
+      "t": "ex",
+      "c": "Some of your comments come across as a bit harsh.\nAlguns dos seus comentários soam um pouco duros."
+    }
+  ],
+  "imagem": "💬👍📝",
+  "visualizacao": "Você está de novo na chamada com o dev júnior. Ao lado do teclado, duas anotações: um elogio sobre o incidente e um comentário de review que soou duro demais.",
+  "foto_busca": "manager giving feedback video call",
+  "trechos": [
+    {
+      "id": "f-9a9769",
+      "quem": "voce",
+      "cod": "I really appreciate how you handled last week's outage.",
+      "dica": "Agradeço muito o jeito como você lidou com a queda da semana passada.",
+      "img": "🙏🚨",
+      "alvo": "I really appreciate how",
+      "alvo_pt": "Agradeço muito o jeito como",
+      "conceito": "Elogio específico: diga exatamente o que a pessoa fez. outage = queda do sistema.",
+      "var": [
+        {
+          "em": "how you",
+          "aceita": [
+            "the way you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a3f0d",
+      "quem": "voce",
+      "cod": "I really appreciate how you kept everyone updated during the incident.",
+      "dica": "Agradeço muito o jeito como você manteve todo mundo atualizado durante o incidente.",
+      "img": "📢✅",
+      "alvo": "I really appreciate how",
+      "alvo_pt": "Agradeço muito o jeito como",
+      "conceito": "durante + evento = during (during the incident).",
+      "var": [
+        {
+          "em": "how you",
+          "aceita": [
+            "the way you"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR63"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-96ed71",
+      "quem": "voce",
+      "cod": "One thing I'd love to see more of is you speaking up in meetings.",
+      "dica": "Uma coisa que eu adoraria ver mais é você se posicionando nas reuniões.",
+      "img": "🙋🗣️",
+      "alvo": "One thing I'd love to see more of",
+      "alvo_pt": "Uma coisa que eu adoraria ver mais",
+      "conceito": "speak up = falar, se posicionar (em reunião). A preposição of fica no fim.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR51"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5ad72c",
+      "quem": "voce",
+      "cod": "Honestly, one thing I'd love to see more of is your input in planning.",
+      "dica": "Sinceramente, uma coisa que eu adoraria ver mais é a sua opinião no planning.",
+      "img": "💡📋",
+      "alvo": "one thing I'd love to see more of",
+      "alvo_pt": "uma coisa que eu adoraria ver mais",
+      "conceito": "input = contribuição, opinião (incontável: your input).",
+      "blocos": [
+        1
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "inputs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-959082",
+      "quem": "voce",
+      "cod": "I've noticed that some of your review comments come across as a bit blunt.",
+      "dica": "Percebi que alguns dos seus comentários de review soam um pouco secos.",
+      "img": "💬🧊",
+      "alvo": "come across as",
+      "alvo_pt": "soam",
+      "conceito": "come across as = soar, passar a impressão de. blunt = seco, direto demais.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "lit": "[lit.: chegam como um pouco secos]",
+      "var": [
+        {
+          "em": "I've noticed",
+          "aceita": [
+            "I noticed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7ebaa2",
+      "quem": "dev-junior",
+      "contexto": "f-959082",
+      "cod": "Really? I didn't mean to come across as rude.",
+      "dica": "Sério? Eu não queria soar grosseiro.",
+      "img": "😳💬",
+      "alvo": "come across as",
+      "alvo_pt": "soar",
+      "conceito": "didn't mean to = não era a intenção. Depois de didn't, verbo base: mean.",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "meant"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1cbe42",
+      "quem": "voce",
+      "contexto": "f-7ebaa2",
+      "cod": "I know, but a one-word comment often feels harsh to someone new.",
+      "dica": "Eu sei, mas um comentário de uma palavra só muitas vezes parece duro para quem é novo.",
+      "img": "☝️😣",
+      "alvo": "harsh",
+      "alvo_pt": "duro",
+      "conceito": "harsh = duro, áspero. A comment feels (com -s).",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "feel",
+        "hard"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fcabcd",
+      "quem": "voce",
+      "cod": "Your feedback is usually right. It's just the tone that's a little harsh sometimes.",
+      "dica": "O seu feedback costuma estar certo. É só o tom que é um pouco duro às vezes.",
+      "img": "🎯🔊",
+      "alvo": "harsh",
+      "alvo_pt": "duro",
+      "conceito": "feedback é incontável: Your feedback is (não: feedbacks are).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "feedbacks",
+        "are",
+        "hard"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

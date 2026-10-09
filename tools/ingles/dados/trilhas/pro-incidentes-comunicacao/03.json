@@ -1,0 +1,227 @@
+{
+  "id": "pro-incidentes-comunicacao.linha-do-tempo-e-causa-raiz",
+  "trilha": "pro-incidentes-comunicacao",
+  "nome": "Linha do tempo e causa raiz",
+  "emoji": "⏱️",
+  "cena": "Na segunda-feira, na reunião de postmortem, você conduz a reconstrução minuto a minuto com quem estava de plantão.",
+  "resumo": "Reconstruir o incidente: the alert fired at..., time to detect, misconfigured e automatic renewal.",
+  "fechamento": false,
+  "novos": [
+    "fire (alerta disparar)",
+    "time to detect",
+    "misconfigured",
+    "automatic renewal"
+  ],
+  "apoio": [
+    "walk through",
+    "timeline",
+    "it turned out that",
+    "config change",
+    "certificate"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Minuto a minuto"
+    },
+    {
+      "t": "p",
+      "c": "Conduza: **Let's walk through the timeline.** Dê os horários: **The first alert fired at 2:14.** Chegue à causa: **It turned out that...** (acabou que...)."
+    },
+    {
+      "t": "warn",
+      "c": "realize = perceber (não: realizar, que é carry out). Levamos 19 minutos para perceber = It took us 19 minutes to realize."
+    },
+    {
+      "t": "ex",
+      "c": "The alert was misconfigured.\nO alerta estava mal configurado."
+    }
+  ],
+  "imagem": "⏱️📜🔐",
+  "visualizacao": "Segunda de manhã, sala de reunião virtual. Você compartilha a tela com a linha do tempo, minuto a minuto, e todos olham para o mesmo horário.",
+  "foto_busca": "timeline meeting screen share",
+  "trechos": [
+    {
+      "id": "f-079273",
+      "quem": "voce",
+      "cod": "Let's walk through the timeline. The first alert fired at 2:14.",
+      "dica": "Vamos repassar a linha do tempo. O primeiro alerta disparou às 2h14.",
+      "img": "🔔🕑",
+      "alvo": "fired",
+      "alvo_pt": "disparou",
+      "conceito": "An alert fires = um alerta dispara. 2:14 = 2h14, at para hora.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "on",
+        "in"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1d3e40",
+      "quem": "mike",
+      "contexto": "f-079273",
+      "cod": "So why did it take us 19 minutes to realize the alert had fired?",
+      "dica": "Então por que levamos 19 minutos para perceber que o alerta tinha disparado?",
+      "img": "🤔⏳",
+      "alvo": "fired",
+      "alvo_pt": "disparado",
+      "conceito": "realize = perceber (não: realizar). It took us X to... = levamos X para...",
+      "var": [
+        {
+          "em": "did it take us",
+          "aceita": [
+            "did we take"
+          ]
+        },
+        {
+          "em": "realize",
+          "aceita": [
+            "notice"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR01"
+      ],
+      "armadilhas": [
+        "perceive"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-179bea",
+      "quem": "voce",
+      "contexto": "f-1d3e40",
+      "cod": "The alert was misconfigured, so it went to an old channel.",
+      "dica": "O alerta estava mal configurado, então foi para um canal antigo.",
+      "img": "🔧📭",
+      "alvo": "misconfigured",
+      "alvo_pt": "mal configurado",
+      "conceito": "misconfigured = mal configurado (mis- = errado).",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a4b18a",
+      "quem": "voce",
+      "cod": "That's why our time to detect was 19 minutes.",
+      "dica": "É por isso que o nosso tempo de detecção foi de 19 minutos.",
+      "img": "🕵️⏱️",
+      "alvo": "time to detect",
+      "alvo_pt": "tempo de detecção",
+      "conceito": "time to detect = quanto tempo levou para perceber o problema.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a8bda9",
+      "quem": "voce",
+      "cod": "It turned out that the certificate's automatic renewal had been disabled.",
+      "dica": "Acabou que a renovação automática do certificado tinha sido desativada.",
+      "img": "🔐🔄",
+      "alvo": "automatic renewal",
+      "alvo_pt": "renovação automática",
+      "conceito": "the certificate's automatic renewal = a renovação automática do certificado.",
+      "opcional": [
+        "that"
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR10"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        4
+      ]
+    },
+    {
+      "id": "f-ce19d9",
+      "quem": "mike",
+      "contexto": "f-a8bda9",
+      "cod": "Disabled? Was the renewal job misconfigured too?",
+      "dica": "Desativada? O job de renovação também estava mal configurado?",
+      "img": "⚙️❓",
+      "alvo": "misconfigured",
+      "alvo_pt": "mal configurado",
+      "var": [
+        {
+          "em": "too",
+          "aceita": [
+            "as well"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1920b7",
+      "quem": "voce",
+      "contexto": "f-ce19d9",
+      "cod": "No. A config change had turned off the automatic renewal in March.",
+      "dica": "Não. Uma mudança de configuração tinha desligado a renovação automática em março.",
+      "img": "📅🔌",
+      "alvo": "automatic renewal",
+      "alvo_pt": "renovação automática",
+      "conceito": "had turned off: past perfect, algo que aconteceu antes do incidente. March com maiúscula.",
+      "var": [
+        {
+          "em": "turned off",
+          "aceita": [
+            "disabled"
+          ]
+        }
+      ],
+      "blocos": [
+        1
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "armadilhas": [
+        "march",
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d405e7",
+      "quem": "voce",
+      "cod": "An alert on certificate errors would cut our time to detect to under a minute.",
+      "dica": "Um alerta para erros de certificado reduziria o nosso tempo de detecção para menos de um minuto.",
+      "img": "⚡🔔",
+      "alvo": "time to detect",
+      "alvo_pt": "tempo de detecção",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

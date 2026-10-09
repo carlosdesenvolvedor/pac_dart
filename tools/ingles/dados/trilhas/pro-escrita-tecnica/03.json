@@ -1,0 +1,193 @@
+{
+  "id": "pro-escrita-tecnica.escopo-compatibilidade-e-rollout",
+  "trilha": "pro-escrita-tecnica",
+  "nome": "Escopo, compatibilidade e rollout",
+  "emoji": "🧭",
+  "cena": "Nas seções de escopo e rollout da RFC, você deixa claro para a Sarah quem é afetado e quando a mudança chega a todos.",
+  "resumo": "Escopo e compatibilidade: backward compatible, existing clients, out of scope e at a later stage.",
+  "fechamento": false,
+  "novos": [
+    "backward compatible",
+    "existing clients",
+    "out of scope",
+    "at a later stage"
+  ],
+  "apoio": [
+    "address (tratar um ponto)",
+    "feature flag",
+    "rollout plan"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O que muda e o que não muda"
+    },
+    {
+      "t": "p",
+      "c": "**This change is backward compatible.** (é retrocompatível) e **Existing clients will not be affected.** (os clientes existentes não serão afetados). O que fica para depois: **out of scope**, **at a later stage**."
+    },
+    {
+      "t": "warn",
+      "c": "No texto técnico, a passiva: existing clients will not be affected (não: will not affect). Grafia: address (dd, ss), gradually (ll)."
+    },
+    {
+      "t": "ex",
+      "c": "This change is backward compatible.\nEsta mudança é retrocompatível."
+    }
+  ],
+  "imagem": "🧭🚦🔌",
+  "visualizacao": "Você desenha no papel o caminho da mudança: quem é afetado, o que fica de fora e a chave da feature flag ligando aos poucos.",
+  "foto_busca": "planning roadmap whiteboard notes",
+  "trechos": [
+    {
+      "id": "f-2d53d2",
+      "quem": "voce",
+      "cod": "This change is backward compatible.",
+      "dica": "Esta mudança é retrocompatível.",
+      "img": "🔙✅",
+      "alvo": "backward compatible",
+      "alvo_pt": "retrocompatível",
+      "conceito": "backward compatible = funciona com o que já existe; nada quebra para quem já usa.",
+      "registro": "escrito-trabalho",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-870e5d",
+      "quem": "voce",
+      "cod": "Existing clients will not be affected, since the endpoint is behind a feature flag.",
+      "dica": "Os clientes existentes não serão afetados, já que o endpoint está atrás de uma feature flag.",
+      "img": "👥🚩",
+      "alvo": "Existing clients",
+      "alvo_pt": "clientes existentes",
+      "conceito": "will not be affected: passiva no futuro, forma plena no texto escrito.",
+      "var": [
+        {
+          "em": "will not",
+          "aceita": [
+            "won't"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58",
+        "BR12"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d155d6",
+      "quem": "sarah",
+      "cod": "Is the new response format backward compatible too?",
+      "dica": "O novo formato de resposta também é retrocompatível?",
+      "img": "📦❓",
+      "alvo": "backward compatible",
+      "alvo_pt": "retrocompatível",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-770966",
+      "quem": "voce",
+      "contexto": "f-d155d6",
+      "cod": "Not yet, so existing clients will stay on the old format for now.",
+      "dica": "Ainda não, então os clientes existentes vão continuar no formato antigo por enquanto.",
+      "img": "⏳📦",
+      "alvo": "existing clients",
+      "alvo_pt": "clientes existentes",
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f761d5",
+      "quem": "voce",
+      "cod": "Mobile support is out of scope for this proposal.",
+      "dica": "O suporte a mobile está fora do escopo desta proposta.",
+      "img": "📱🚫",
+      "alvo": "out of scope",
+      "alvo_pt": "fora do escopo",
+      "conceito": "out of scope for this proposal: a preposição é for (não: of this proposal).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-643a4c",
+      "quem": "sarah",
+      "cod": "Is offline mode out of scope as well?",
+      "dica": "O modo offline também está fora do escopo?",
+      "img": "📴🤔",
+      "alvo": "out of scope",
+      "alvo_pt": "fora do escopo",
+      "var": [
+        {
+          "em": "as well",
+          "aceita": [
+            "too"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3007db",
+      "quem": "voce",
+      "contexto": "f-643a4c",
+      "cod": "Yes. It will be addressed at a later stage.",
+      "dica": "Sim. Vai ser tratado numa etapa posterior.",
+      "img": "🗓️➡️",
+      "alvo": "at a later stage",
+      "alvo_pt": "numa etapa posterior",
+      "conceito": "Vai ser tratado = It will be addressed: o it é obrigatório; address com dd e ss.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01",
+        "BR45",
+        "BR58"
+      ],
+      "armadilhas": [
+        "adress"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9c381a",
+      "quem": "voce",
+      "cod": "The rollout plan is simple: internal users first, everyone else at a later stage.",
+      "dica": "O plano de rollout é simples: primeiro os usuários internos, todo o resto numa etapa posterior.",
+      "img": "🏢🌍",
+      "alvo": "at a later stage",
+      "alvo_pt": "numa etapa posterior",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR45"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

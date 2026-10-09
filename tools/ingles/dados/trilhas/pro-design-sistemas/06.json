@@ -1,0 +1,295 @@
+{
+  "id": "pro-design-sistemas.cena-a-sessao-de-system-design",
+  "trilha": "pro-design-sistemas",
+  "nome": "Cena: a sessão de system design",
+  "emoji": "🎬",
+  "cena": "Do começo ao fim de uma entrevista de system design, o entrevistador testa cada escolha com perguntas de seguimento.",
+  "resumo": "A sessão inteira, sem itens novos: hipóteses com if, ponto único de falha, consistência eventual, Granted... Even so e overkill.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A sessão inteira"
+    },
+    {
+      "t": "p",
+      "c": "Responda às hipóteses com **If X goes down, ...**, conceda e rebata (**Granted... Even so, ...**) e feche com a escolha mais simples que resolve o problema."
+    },
+    {
+      "t": "warn",
+      "c": "Eventually = no fim, acaba + gerúndio (Every replica catches up eventually). Eventualmente, no sentido de às vezes = occasionally."
+    }
+  ],
+  "imagem": "🎬🗺️🧠",
+  "visualizacao": "O quadro já está cheio de caixas, setas e números. O entrevistador aponta para o cache e pergunta o que acontece se ele cair; você respira e responde sem pressa.",
+  "foto_busca": "engineer explaining diagram interview",
+  "trechos": [
+    {
+      "id": "f-5c5e0d",
+      "quem": "entrevistador",
+      "cod": "Let's stress-test your design. What happens if the cache goes down?",
+      "dica": "Vamos pôr o seu design à prova. O que acontece se o cache cair?",
+      "img": "🧪⚡❓",
+      "alvo": "What happens if",
+      "alvo_pt": "O que acontece se",
+      "conceito": "stress-test = pôr à prova; se + futuro do subjuntivo (cair) = if + presente (goes down).",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will go",
+        "falls"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6bbbe1",
+      "quem": "voce",
+      "contexto": "f-5c5e0d",
+      "cod": "If the cache goes down, every request will hit the database directly.",
+      "dica": "Se o cache cair, todas as requisições vão bater direto no banco.",
+      "img": "🌊🗄️",
+      "alvo": "goes down",
+      "alvo_pt": "cair",
+      "conceito": "hit the database = bater no banco; every + singular (every request).",
+      "var": [
+        {
+          "em": "every request",
+          "aceita": [
+            "all requests",
+            "all the requests"
+          ]
+        },
+        {
+          "em": "directly",
+          "aceita": [
+            "straight"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "every requests",
+        "will go down"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dcdb45",
+      "quem": "voce",
+      "cod": "So I'd run two cache nodes. Just one would be a single point of failure.",
+      "dica": "Então eu rodaria dois nós de cache. Um só seria um ponto único de falha.",
+      "img": "🖥️🖥️🛡️",
+      "alvo": "single point of failure",
+      "alvo_pt": "ponto único de falha",
+      "conceito": "cache nodes: o qualificador vem antes (BR24).",
+      "var": [
+        {
+          "em": "Just one",
+          "aceita": [
+            "One",
+            "Only one",
+            "A single one"
+          ]
+        },
+        {
+          "em": "I'd",
+          "aceita": [
+            "I would"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "nodes of cache",
+        "unique"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1bde9b",
+      "quem": "entrevistador",
+      "cod": "Your replicas are eventually consistent. Won't that confuse users?",
+      "dica": "Suas réplicas têm consistência eventual. Isso não vai confundir os usuários?",
+      "img": "😕🔄",
+      "alvo": "eventually consistent",
+      "alvo_pt": "consistência eventual",
+      "var": [
+        {
+          "em": "users",
+          "aceita": [
+            "the users"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "occasionally"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fecee8",
+      "quem": "voce",
+      "contexto": "f-1bde9b",
+      "cod": "Granted, some users might see old data for a moment. Even so, they rarely notice.",
+      "dica": "Tudo bem que alguns usuários talvez vejam dados antigos por um instante. Mesmo assim, eles raramente percebem.",
+      "img": "🤝⏳👀",
+      "alvo": "Granted",
+      "alvo_pt": "Tudo bem que",
+      "conceito": "Granted... Even so, ... = tudo bem que..., mesmo assim: concedo o ponto e mantenho a escolha.",
+      "var": [
+        {
+          "em": "old data",
+          "aceita": [
+            "stale data"
+          ]
+        },
+        {
+          "em": "for a moment",
+          "aceita": [
+            "for a second"
+          ]
+        }
+      ],
+      "blocos": [
+        10
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "makes the testing",
+        "make"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0f6ebc",
+      "quem": "voce",
+      "cod": "Every replica catches up eventually, usually within a second.",
+      "dica": "Toda réplica acaba se atualizando, normalmente em até um segundo.",
+      "img": "🏃🔄",
+      "alvo": "catches up eventually",
+      "alvo_pt": "acaba se atualizando",
+      "conceito": "eventually = no fim, acaba + gerúndio (não: eventualmente).",
+      "var": [
+        {
+          "em": "catches up eventually",
+          "aceita": [
+            "eventually catches up"
+          ]
+        },
+        {
+          "em": "usually",
+          "aceita": [
+            "normally"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR02"
+      ],
+      "armadilhas": [
+        "occasionally",
+        "catch"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-17499c",
+      "quem": "entrevistador",
+      "cod": "Why didn't you use microservices from the start?",
+      "dica": "Por que você não usou microsserviços desde o começo?",
+      "img": "🧱❓",
+      "alvo": "didn't you use",
+      "alvo_pt": "você não usou",
+      "conceito": "Pergunta negativa no passado: Why didn't you + verbo base (não: added).",
+      "var": [
+        {
+          "em": "use",
+          "aceita": [
+            "go with",
+            "start with"
+          ]
+        },
+        {
+          "em": "from the start",
+          "aceita": [
+            "from the beginning"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "used",
+        "since the start"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1ccd05",
+      "quem": "voce",
+      "contexto": "f-17499c",
+      "cod": "For a small team, they'd be overkill. We can always split things up later.",
+      "dica": "Para um time pequeno, seria exagero. Sempre dá para dividir as coisas depois.",
+      "img": "👥✂️⏳",
+      "alvo": "overkill",
+      "alvo_pt": "exagero",
+      "conceito": "overkill = exagero; split up = dividir em partes menores.",
+      "var": [
+        {
+          "em": "they'd",
+          "aceita": [
+            "they would",
+            "it'd",
+            "it would"
+          ]
+        },
+        {
+          "em": "split things up",
+          "aceita": [
+            "split them up",
+            "break things up"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "an overkill",
+        "divide"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "up"
+      ]
+    }
+  ]
+}

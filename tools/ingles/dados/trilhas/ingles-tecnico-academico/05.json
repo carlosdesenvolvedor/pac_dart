@@ -1,0 +1,218 @@
+{
+  "id": "ingles-tecnico-academico.por-meio-de-a-secao-de-resultados",
+  "trilha": "ingles-tecnico-academico",
+  "nome": "Por meio de: a seção de resultados",
+  "emoji": "📊",
+  "cena": "Você escreve a seção de resultados do relatório técnico sobre o novo banco de dados para a diretoria e o time.",
+  "resumo": "Escrever resultados com by means of, in the absence of, at the expense of e synthetic load tests.",
+  "fechamento": false,
+  "novos": [
+    "by means of",
+    "in the absence of",
+    "at the expense of",
+    "synthetic load tests"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A seção de resultados"
+    },
+    {
+      "t": "p",
+      "c": "**by means of** = por meio de · **in the absence of** = na ausência de · **at the expense of** = à custa de · **synthetic load tests** = testes de carga sintéticos."
+    },
+    {
+      "t": "warn",
+      "c": "on the basis of = com base em (não: in the basis of, based in). data = dados: the data shows."
+    },
+    {
+      "t": "tip",
+      "c": "Na seção de resultados, a passiva tira o foco de quem fez: Performance was measured."
+    },
+    {
+      "t": "ex",
+      "c": "Performance was measured by means of synthetic load tests.\nO desempenho foi medido por meio de testes de carga sintéticos."
+    }
+  ],
+  "imagem": "📊📝🗄️",
+  "visualizacao": "Você está sozinho, de fone, com o relatório aberto e três gráficos colados ao lado do texto. Lá fora já escureceu; você relê cada frase antes de mandar.",
+  "foto_busca": "writing technical report charts",
+  "trechos": [
+    {
+      "id": "f-310bfc",
+      "quem": "voce",
+      "cod": "We ran synthetic load tests for two weeks.",
+      "dica": "Rodamos testes de carga sintéticos por duas semanas.",
+      "img": "🤖🏋️📅",
+      "alvo": "synthetic load tests",
+      "alvo_pt": "testes de carga sintéticos",
+      "conceito": "O substantivo principal vem no fim: synthetic load tests. por duas semanas = for two weeks.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR63"
+      ],
+      "armadilhas": [
+        "during",
+        "tests of load"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2a6a90",
+      "quem": "voce",
+      "cod": "Performance was measured by means of synthetic load tests.",
+      "dica": "O desempenho foi medido por meio de testes de carga sintéticos.",
+      "img": "📏⚙️",
+      "alvo": "by means of",
+      "alvo_pt": "por meio de",
+      "conceito": "by means of = por meio de. foi medido = was measured (passiva).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR21",
+        "BR58"
+      ],
+      "armadilhas": [
+        "through",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b907d8",
+      "quem": "voce",
+      "cod": "Latency was tracked by means of a custom dashboard.",
+      "dica": "A latência foi acompanhada por meio de um dashboard customizado.",
+      "img": "📟📉",
+      "alvo": "by means of",
+      "alvo_pt": "por meio de",
+      "conceito": "track = acompanhar, monitorar. custom = customizado, feito sob medida.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR21",
+        "BR58"
+      ],
+      "armadilhas": [
+        "the",
+        "through"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-42c4f7",
+      "quem": "mike",
+      "contexto": "f-2a6a90",
+      "cod": "Synthetic load tests don't always reflect real user behavior, though.",
+      "dica": "Só que testes de carga sintéticos nem sempre refletem o comportamento real dos usuários.",
+      "img": "🤖🧍❓",
+      "alvo": "Synthetic load tests",
+      "alvo_pt": "testes de carga sintéticos",
+      "conceito": "Só que (no começo, em PT) = though (no fim, em EN). behavior: grafia americana.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07",
+        "BR24"
+      ],
+      "armadilhas": [
+        "behaviour",
+        "reflects"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-151aca",
+      "quem": "voce",
+      "cod": "In the absence of reliable data, we based our estimates on last year's traffic.",
+      "dica": "Na ausência de dados confiáveis, baseamos as nossas estimativas no tráfego do ano passado.",
+      "img": "🕳️📊",
+      "alvo": "In the absence of",
+      "alvo_pt": "Na ausência de",
+      "conceito": "base on = basear em (não: base in). last year's = do ano passado.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR10",
+        "BR53"
+      ],
+      "armadilhas": [
+        "in",
+        "datas"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-66250a",
+      "quem": "voce",
+      "cod": "In the absence of a clear winner, we recommend keeping the current database.",
+      "dica": "Na ausência de um vencedor claro, recomendamos manter o banco de dados atual.",
+      "img": "🤝🏁",
+      "alvo": "In the absence of",
+      "alvo_pt": "Na ausência de",
+      "conceito": "recommend + -ing: recommend keeping. atual = current (não: actual).",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52",
+        "BR56"
+      ],
+      "armadilhas": [
+        "to",
+        "actual"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-862762",
+      "quem": "voce",
+      "cod": "The new version improved speed at the expense of memory usage.",
+      "dica": "A nova versão melhorou a velocidade à custa do uso de memória.",
+      "img": "🏎️🧠",
+      "alvo": "at the expense of",
+      "alvo_pt": "à custa",
+      "conceito": "at the expense of = à custa de: ganhou uma coisa, perdeu outra.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR21",
+        "BR24"
+      ],
+      "armadilhas": [
+        "cost",
+        "the speed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0fa3db",
+      "quem": "mike",
+      "contexto": "f-862762",
+      "cod": "When it comes to databases, we don't want speed at the expense of reliability.",
+      "dica": "Quando o assunto é banco de dados, a gente não quer velocidade à custa de confiabilidade.",
+      "img": "🗄️🛡️",
+      "alvo": "at the expense of",
+      "alvo_pt": "à custa de",
+      "conceito": "when it comes to = quando o assunto é. Ideias gerais sem artigo: speed, reliability.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR07",
+        "BR21"
+      ],
+      "armadilhas": [
+        "the",
+        "cost"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

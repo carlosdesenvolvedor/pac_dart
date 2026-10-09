@@ -1,0 +1,204 @@
+{
+  "id": "hedging-registro.mesmo-recado-dois-registros",
+  "trilha": "hedging-registro",
+  "nome": "Mesmo recado, dois registros",
+  "emoji": "🎚️",
+  "cena": "O projeto atrasou. Você conta para a Ana no chat do time e depois escreve o mesmo aviso, formal, para a diretora do cliente.",
+  "resumo": "Trocar de registro: a bunch of e contrações no chat; slightly, updated figures e at your earliest convenience no e-mail.",
+  "fechamento": false,
+  "novos": [
+    "slightly",
+    "at your earliest convenience",
+    "updated figures",
+    "a bunch of"
+  ],
+  "apoio": [
+    "behind schedule",
+    "regarding",
+    "request (verbo)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Chat x e-mail formal"
+    },
+    {
+      "t": "p",
+      "c": "No chat: contração e palavras leves (**we're a bit behind**, **a bunch of bugs**). No e-mail: forma plena e vocabulário formal (**We are currently slightly behind schedule**, **updated figures**, **at your earliest convenience**)."
+    },
+    {
+      "t": "warn",
+      "c": "Atualmente = currently (não: actually, que é na verdade). Forma plena só no e-mail formal: We are currently..."
+    },
+    {
+      "t": "ex",
+      "c": "Please confirm the new date at your earliest convenience.\nPor gentileza, confirme a nova data assim que lhe for conveniente."
+    }
+  ],
+  "imagem": "💬📧⏰",
+  "visualizacao": "Duas janelas lado a lado: o chat do time, cheio de emoji, e um e-mail em branco para a diretora do cliente. Você respira e muda o tom.",
+  "foto_busca": "writing formal email laptop",
+  "trechos": [
+    {
+      "id": "f-cbf61e",
+      "quem": "voce",
+      "cod": "We found a bunch of bugs, so we're a bit behind.",
+      "dica": "A gente achou um monte de bugs, então estamos um pouco atrasados.",
+      "img": "🐞🐞⏰",
+      "alvo": "a bunch of",
+      "alvo_pt": "um monte de",
+      "conceito": "a bunch of = um monte de (informal); a bit behind = um pouco atrasado.",
+      "var": [
+        {
+          "em": "found",
+          "aceita": [
+            "hit"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-689f4d",
+      "quem": "ana",
+      "contexto": "f-cbf61e",
+      "cod": "No worries. A bunch of people asked me about the release date.",
+      "dica": "Tranquilo. Um monte de gente me perguntou sobre a data de lançamento.",
+      "img": "👥❓📅",
+      "alvo": "A bunch of",
+      "alvo_pt": "Um monte de",
+      "conceito": "perguntar sobre = ask about (não: ask of).",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b5d973",
+      "quem": "voce",
+      "cod": "We are currently slightly behind schedule and expect to finish by Friday.",
+      "dica": "Atualmente, estamos ligeiramente atrasados em relação ao cronograma e prevemos terminar até sexta.",
+      "img": "📧📉📅",
+      "alvo": "slightly",
+      "alvo_pt": "ligeiramente",
+      "conceito": "slightly = ligeiramente (formal); a bit = um pouco (informal). currently = atualmente (não: actually).",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "actually"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b23099",
+      "quem": "voce",
+      "cod": "The delay was slightly longer than we expected, due to a power failure.",
+      "dica": "O atraso foi ligeiramente maior do que esperávamos, devido a uma falha de energia.",
+      "img": "⚡⏳📏",
+      "alvo": "slightly",
+      "alvo_pt": "ligeiramente",
+      "conceito": "delay longer = atraso maior (atraso se mede em tempo: longer, não bigger).",
+      "blocos": [
+        8
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "bigger"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "we"
+      ]
+    },
+    {
+      "id": "f-d151ba",
+      "quem": "voce",
+      "cod": "Please find the updated figures attached.",
+      "dica": "Seguem em anexo os números atualizados.",
+      "img": "📎📊",
+      "alvo": "updated figures",
+      "alvo_pt": "números atualizados",
+      "conceito": "figures = números, valores (em relatório); Please find attached = segue em anexo.",
+      "var": [
+        {
+          "em": "the updated figures attached",
+          "aceita": [
+            "attached the updated figures"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-283d0e",
+      "quem": "voce",
+      "cod": "Updated figures for the budget will be sent next week.",
+      "dica": "Os números atualizados do orçamento serão enviados na semana que vem.",
+      "img": "💰📊📨",
+      "alvo": "Updated figures",
+      "alvo_pt": "números atualizados",
+      "conceito": "No e-mail formal, a passiva: will be sent = serão enviados.",
+      "registro": "formal",
+      "armadilhas": [
+        "send"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Updated figures",
+          "aceita": [
+            "The updated figures"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4aa4a8",
+      "quem": "voce",
+      "cod": "Please confirm the new date at your earliest convenience.",
+      "dica": "Por gentileza, confirme a nova data assim que lhe for conveniente.",
+      "img": "✅📅🙏",
+      "alvo": "at your earliest convenience",
+      "alvo_pt": "assim que lhe for conveniente",
+      "conceito": "at your earliest convenience = assim que puder, em tom formal de e-mail.",
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5ca8ac",
+      "quem": "voce",
+      "cod": "I would appreciate it if you could reply at your earliest convenience.",
+      "dica": "Eu agradeceria se você pudesse responder assim que lhe for conveniente.",
+      "img": "🙏📧⏳",
+      "alvo": "at your earliest convenience",
+      "alvo_pt": "assim que lhe for conveniente",
+      "conceito": "I would appreciate it if: o it é obrigatório (não: I would appreciate if).",
+      "blocos": [
+        4
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

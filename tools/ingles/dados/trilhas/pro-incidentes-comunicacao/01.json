@@ -1,0 +1,195 @@
+{
+  "id": "pro-incidentes-comunicacao.declarar-e-coordenar-o-incidente",
+  "trilha": "pro-incidentes-comunicacao",
+  "nome": "Declarar e coordenar o incidente",
+  "emoji": "🚨",
+  "cena": "Sexta à tarde os pagamentos começam a falhar, e você, tech lead de plantão, assume o comando num canal de emergência.",
+  "resumo": "Abrir e coordenar um incidente: I'll be the incident commander, escalate, until further notice e updates only.",
+  "fechamento": false,
+  "novos": [
+    "incident commander",
+    "until further notice",
+    "escalate",
+    "updates only"
+  ],
+  "apoio": [
+    "page (acionar alguém)",
+    "spike",
+    "next update"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Assumir o comando"
+    },
+    {
+      "t": "p",
+      "c": "Declare e assuma: **I'm declaring a SEV1 incident, and I'll be the incident commander.** Organize: **Let's keep this channel for updates only.** Acione: **Can someone escalate this to...?**"
+    },
+    {
+      "t": "warn",
+      "c": "há dez minutos = ten minutes ago (não: for ten minutes)."
+    },
+    {
+      "t": "ex",
+      "c": "Deploys are frozen until further notice.\nOs deploys estão congelados até segunda ordem."
+    }
+  ],
+  "imagem": "🚨💳📟",
+  "visualizacao": "Sexta à tarde, o painel fica vermelho e o celular vibra sem parar. Você respira fundo, abre o canal de emergência e assume o comando.",
+  "foto_busca": "alert dashboard red screen",
+  "trechos": [
+    {
+      "id": "f-d3f2d4",
+      "quem": "voce",
+      "cod": "I'm declaring a SEV1 incident, and I'll be the incident commander.",
+      "dica": "Estou declarando um incidente SEV1, e vou ser o comandante do incidente.",
+      "img": "🚨🧑‍✈️",
+      "alvo": "incident commander",
+      "alvo_pt": "comandante do incidente",
+      "conceito": "incident commander = quem coordena o incidente; não precisa ser quem corrige.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "teste": true,
+      "fala": "I'm declaring a sev one incident, and I'll be the incident commander.",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a5183f",
+      "quem": "voce",
+      "cod": "Deploys are frozen until further notice.",
+      "dica": "Os deploys estão congelados até segunda ordem.",
+      "img": "🧊🚫",
+      "alvo": "until further notice",
+      "alvo_pt": "até segunda ordem",
+      "conceito": "until further notice = até segunda ordem, até novo aviso.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b1dc4c",
+      "quem": "voce",
+      "cod": "Errors spiked ten minutes ago. Can someone escalate this to the database team?",
+      "dica": "Os erros deram um pico há dez minutos. Alguém pode escalar isso para o time de banco de dados?",
+      "img": "📈⬆️",
+      "alvo": "escalate",
+      "alvo_pt": "escalar",
+      "conceito": "escalate = escalar: levar o problema para quem tem mais acesso ou autoridade.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR26"
+      ],
+      "armadilhas": [
+        "for",
+        "there"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7577d8",
+      "quem": "mike",
+      "contexto": "f-b1dc4c",
+      "cod": "I'll escalate it to their manager if nobody answers in five minutes.",
+      "dica": "Eu escalo para o gerente deles se ninguém responder em cinco minutos.",
+      "img": "📞⏱️",
+      "alvo": "escalate",
+      "alvo_pt": "escalo",
+      "conceito": "se ninguém responder = if nobody answers (presente com -s depois de if).",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR28",
+        "BR02"
+      ],
+      "armadilhas": [
+        "will",
+        "answer"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "nobody",
+          "aceita": [
+            "no one"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-faa70f",
+      "quem": "voce",
+      "cod": "Let's keep this channel for updates only and debug on a separate call.",
+      "dica": "Vamos deixar este canal só para atualizações e fazer o debug numa chamada separada.",
+      "img": "📢🔇",
+      "alvo": "updates only",
+      "alvo_pt": "só para atualizações",
+      "conceito": "for updates only = só para atualizações (o only vem depois).",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-521619",
+      "quem": "sarah",
+      "cod": "Sorry I'm late. Who's the incident commander, and do we know the cause?",
+      "dica": "Desculpa o atraso. Quem é o comandante do incidente, e sabemos a causa?",
+      "img": "🏃❓",
+      "alvo": "incident commander",
+      "alvo_pt": "comandante do incidente",
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "we"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-96d088",
+      "quem": "voce",
+      "cod": "The checkout will stay in read-only mode until further notice.",
+      "dica": "O checkout vai ficar em modo somente leitura até segunda ordem.",
+      "img": "🛒👁️",
+      "alvo": "until further notice",
+      "alvo_pt": "até segunda ordem",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8211b5",
+      "quem": "voce",
+      "cod": "Reminder: this channel is for updates only. Next update in fifteen minutes.",
+      "dica": "Lembrete: este canal é só para atualizações. Próxima atualização em quinze minutos.",
+      "img": "📌⏰",
+      "alvo": "updates only",
+      "alvo_pt": "só para atualizações",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    }
+  ]
+}

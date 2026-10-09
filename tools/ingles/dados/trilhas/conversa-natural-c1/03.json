@@ -1,0 +1,236 @@
+{
+  "id": "conversa-natural-c1.justica-seja-feita",
+  "trilha": "conversa-natural-c1",
+  "nome": "Justiça seja feita",
+  "emoji": "🧠",
+  "cena": "Num café com a Ana, a conversa vai do restaurante novo da esquina ao prazo que o time perdeu.",
+  "resumo": "Equilibrar a conversa com To be fair, Then again, Come to think of it e Now that you mention it.",
+  "fechamento": false,
+  "novos": [
+    "to be fair",
+    "then again (se bem que)",
+    "come to think of it",
+    "now that you mention it"
+  ],
+  "apoio": [
+    "service (atendimento)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Marcadores que equilibram"
+    },
+    {
+      "t": "p",
+      "c": "**To be fair,** = Justiça seja feita, **Then again,** = Se bem que... **Come to think of it,** = Pensando bem, **Now that you mention it,** = Agora que você falou,"
+    },
+    {
+      "t": "tip",
+      "c": "Ênfase com did + verbo base: he did warn us = ele avisou, sim (não: did warned)."
+    },
+    {
+      "t": "warn",
+      "c": "O né? do fim vira question tag com o auxiliar da frase: was... wasn't it? Mind you (= se bem que) é britânico; nos EUA, then again."
+    },
+    {
+      "t": "ex",
+      "c": "To be fair, the service was really fast.\nJustiça seja feita, o atendimento foi bem rápido."
+    }
+  ],
+  "imagem": "☕🍝💬",
+  "visualizacao": "Você e a Ana dividem uma mesa perto da janela, cafés na mão. Do outro lado da rua, o restaurante novo tem fila na porta.",
+  "foto_busca": "two friends talking coffee shop",
+  "trechos": [
+    {
+      "id": "f-a954bc",
+      "quem": "ana",
+      "cod": "The food was great. Then again, it wasn't cheap.",
+      "dica": "A comida estava ótima. Se bem que não foi barata.",
+      "img": "🍝😋💸",
+      "alvo": "Then again",
+      "alvo_pt": "Se bem que",
+      "conceito": "Then again, = Se bem que...: acrescenta um contraponto ao que você mesmo disse.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6697cd",
+      "quem": "voce",
+      "contexto": "f-a954bc",
+      "cod": "To be fair, the service was really fast, wasn't it?",
+      "dica": "Justiça seja feita, o atendimento foi bem rápido, né?",
+      "img": "🍽️⚡👍",
+      "alvo": "To be fair",
+      "alvo_pt": "Justiça seja feita",
+      "conceito": "né? vira question tag com o auxiliar da frase: was... wasn't it?",
+      "var": [
+        {
+          "em": "wasn't it",
+          "aceita": [
+            "right"
+          ]
+        },
+        {
+          "em": "really fast",
+          "aceita": [
+            "pretty fast",
+            "very fast"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR59"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9a7a1c",
+      "quem": "ana",
+      "cod": "Come to think of it, didn't we have lunch there last year?",
+      "dica": "Pensando bem, a gente não almoçou lá no ano passado?",
+      "img": "🤔🍴📅",
+      "alvo": "Come to think of it",
+      "alvo_pt": "Pensando bem",
+      "lit": "[lit.: vindo a pensar nisso]",
+      "conceito": "Pergunta negativa no passado com did: didn't we have lunch...?",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-63ebfb",
+      "quem": "voce",
+      "contexto": "f-9a7a1c",
+      "cod": "Now that you mention it, we did. It was a pizza place back then.",
+      "dica": "Agora que você falou, almoçamos, sim. Era uma pizzaria naquela época.",
+      "img": "🍕🏪🕰️",
+      "alvo": "Now that you mention it",
+      "alvo_pt": "Agora que você falou",
+      "conceito": "Resposta curta com o auxiliar: we did = almoçamos, sim (sem repetir o verbo).",
+      "var": [
+        {
+          "em": "a pizza place",
+          "aceita": [
+            "a pizzeria"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7614fb",
+      "quem": "voce",
+      "contexto": "Nobody told us the deadline was Friday.",
+      "cod": "To be fair, Mike did warn us about the deadline.",
+      "dica": "Justiça seja feita, o Mike avisou a gente, sim, sobre o prazo.",
+      "img": "⚠️📅🗣️",
+      "alvo": "To be fair",
+      "alvo_pt": "Justiça seja feita",
+      "conceito": "did + verbo base dá ênfase: did warn = avisou, sim (não: did warned).",
+      "registro": "informal",
+      "armadilhas": [
+        "warned"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2858411,
+        "en_autor": "Amastan",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"She did warn you.\" (She trocado por Mike, you por us; acrescentados To be fair e about the deadline); PT reescrito (original: \"Ela te avisou sim.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-347026",
+      "quem": "ana",
+      "contexto": "Does the new screen feel slow to you?",
+      "cod": "Now that you mention it, it does. Especially on older phones.",
+      "dica": "Agora que você falou, parece, sim. Principalmente nos celulares mais antigos.",
+      "img": "📱🐢👀",
+      "alvo": "Now that you mention it",
+      "alvo_pt": "Agora que você falou",
+      "conceito": "Resposta curta com does: it does = parece, sim.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2a2959",
+      "quem": "voce",
+      "contexto": "f-347026",
+      "cod": "Come to think of it, we never tested it on tablets.",
+      "dica": "Pensando bem, a gente nunca testou isso em tablets.",
+      "img": "💡📲🧪",
+      "alvo": "Come to think of it",
+      "alvo_pt": "Pensando bem",
+      "conceito": "testar isso = test it: o objeto it é obrigatório.",
+      "var": [
+        {
+          "em": "we never tested",
+          "aceita": [
+            "we've never tested",
+            "we have never tested"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-670d78",
+      "quem": "ana",
+      "cod": "We could deploy on Friday. Then again, nobody wants a weekend incident.",
+      "dica": "A gente podia fazer deploy na sexta. Se bem que ninguém quer um incidente no fim de semana.",
+      "img": "🚀📅🔥",
+      "alvo": "Then again",
+      "alvo_pt": "Se bem que",
+      "conceito": "fazer deploy = deploy; a weekend incident = um incidente no fim de semana.",
+      "var": [
+        {
+          "em": "a weekend incident",
+          "aceita": [
+            "an incident on the weekend"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

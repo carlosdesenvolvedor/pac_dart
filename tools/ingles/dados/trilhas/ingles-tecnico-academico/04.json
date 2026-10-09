@@ -1,0 +1,220 @@
+{
+  "id": "ingles-tecnico-academico.em-conformidade-com-a-especificacao",
+  "trilha": "ingles-tecnico-academico",
+  "nome": "Em conformidade com a especificação",
+  "emoji": "🧾",
+  "cena": "Você revisa a documentação de uma API e a seção de um RFC interno que define como as requisições devem ser tratadas.",
+  "resumo": "Escrever documentação técnica com in accordance with, consistent with, contrary to e specification.",
+  "fechamento": false,
+  "novos": [
+    "in accordance with",
+    "consistent with",
+    "contrary to",
+    "specification"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A linguagem da especificação"
+    },
+    {
+      "t": "p",
+      "c": "**specification** = especificação · **in accordance with** = em conformidade com · **consistent with** = condizente com · **contrary to** = ao contrário de."
+    },
+    {
+      "t": "warn",
+      "c": "consistent with, compliant with (não: consistent to). Ao contrário do que = contrary to what."
+    },
+    {
+      "t": "tip",
+      "c": "prior to + -ing = antes de, no registro formal: prior to deploying."
+    },
+    {
+      "t": "ex",
+      "c": "All requests must be handled in accordance with the specification.\nTodas as requisições devem ser tratadas em conformidade com a especificação."
+    }
+  ],
+  "imagem": "📘🔌✅",
+  "visualizacao": "Dois documentos abertos lado a lado: a especificação da API à esquerda e o RFC interno à direita. Você passa linha por linha, comparando, e deixa comentários na margem.",
+  "foto_busca": "technical documentation review screen",
+  "trechos": [
+    {
+      "id": "f-6f81fa",
+      "quem": "voce",
+      "cod": "Have you read the specification for the new API?",
+      "dica": "Você já leu a especificação da nova API?",
+      "img": "📘👀",
+      "alvo": "specification",
+      "alvo_pt": "especificação",
+      "conceito": "já leu? = Have you read? A grafia é specification, sem e no começo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR46"
+      ],
+      "armadilhas": [
+        "especification",
+        "did"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-707ca3",
+      "quem": "dev-novo",
+      "contexto": "f-6f81fa",
+      "cod": "Yes, but the specification doesn't say what happens when a request times out.",
+      "dica": "Sim, mas a especificação não diz o que acontece quando uma requisição dá timeout.",
+      "img": "⏳🚫",
+      "alvo": "specification",
+      "alvo_pt": "especificação",
+      "conceito": "dá timeout = times out. doesn't say: negativa com does.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR07",
+        "BR46"
+      ],
+      "armadilhas": [
+        "especification",
+        "says"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-528cc9",
+      "quem": "voce",
+      "cod": "All requests must be handled in accordance with the specification.",
+      "dica": "Todas as requisições devem ser tratadas em conformidade com a especificação.",
+      "img": "📥📏",
+      "alvo": "in accordance with",
+      "alvo_pt": "em conformidade com",
+      "conceito": "in accordance with = em conformidade com (regra escrita). devem ser tratadas = must be handled.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "according",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1d6f0f",
+      "quem": "voce",
+      "cod": "Error codes are returned in accordance with the HTTP standard.",
+      "dica": "Os códigos de erro são retornados em conformidade com o padrão HTTP.",
+      "img": "🔢🌐",
+      "alvo": "in accordance with",
+      "alvo_pt": "em conformidade com",
+      "conceito": "Generalização sem artigo: Error codes are returned.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR21",
+        "BR58"
+      ],
+      "armadilhas": [
+        "according",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-df2ba5",
+      "quem": "mike",
+      "cod": "The new endpoint isn't consistent with the rest of the API.",
+      "dica": "O novo endpoint não é condizente com o resto da API.",
+      "img": "🧩❌",
+      "alvo": "consistent with",
+      "alvo_pt": "condizente com",
+      "conceito": "consistent with = condizente com (não: consistent to).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-329b0c",
+      "quem": "voce",
+      "cod": "Our test results are consistent with what the RFC describes.",
+      "dica": "Os resultados dos nossos testes são condizentes com o que o RFC descreve.",
+      "img": "🧪🧩✅",
+      "alvo": "consistent with",
+      "alvo_pt": "condizentes com",
+      "conceito": "test results = resultados dos testes. describes: -s da 3ª pessoa.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02",
+        "BR24",
+        "BR53"
+      ],
+      "armadilhas": [
+        "to",
+        "describe"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-22db99",
+      "quem": "voce",
+      "cod": "Contrary to what we expected, the old version already supports the new format.",
+      "dica": "Ao contrário do que esperávamos, a versão antiga já suporta o novo formato.",
+      "img": "😲📦",
+      "alvo": "Contrary to",
+      "alvo_pt": "Ao contrário",
+      "conceito": "Ao contrário do que = Contrary to what. supports: -s da 3ª pessoa.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9c9736",
+      "quem": "dev-novo",
+      "cod": "Contrary to what the old docs say, the endpoint returns a list.",
+      "dica": "Ao contrário do que diz a documentação antiga, o endpoint retorna uma lista.",
+      "img": "📜🔄📋",
+      "alvo": "Contrary to",
+      "alvo_pt": "Ao contrário",
+      "conceito": "docs = a documentação (plural em inglês: the docs say).",
+      "var": [
+        {
+          "em": "docs say",
+          "aceita": [
+            "documentation says"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "says",
+        "on"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

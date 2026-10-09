@@ -1,0 +1,218 @@
+{
+  "id": "pro-escrita-tecnica.cena-a-rfc-da-nova-api",
+  "trilha": "pro-escrita-tecnica",
+  "nome": "Cena: a RFC da nova API",
+  "emoji": "🎬",
+  "cena": "Você escreve a RFC de uma nova API pública para parceiros, do resumo ao rollout, e o PR que começa a implementá-la.",
+  "resumo": "Uma RFC inteira de memória: proposta, situação atual, alternativas, escopo, compatibilidade, decisão e PR.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "proposes",
+    "currently",
+    "we considered",
+    "drawback",
+    "out of scope",
+    "backward compatible",
+    "locally"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A RFC inteira"
+    },
+    {
+      "t": "p",
+      "c": "Proposta, situação atual (**Currently,...**), alternativas (**We considered...**), desvantagem (**drawback**), escopo (**out of scope**), compatibilidade e, no fim, o PR."
+    },
+    {
+      "t": "warn",
+      "c": "currently (não: actually); policy, particular, address: grafia e sentido."
+    }
+  ],
+  "imagem": "🎬📄🔌",
+  "visualizacao": "Uma RFC inteira na tela, do resumo ao rollout. Você revisa cada seção em voz baixa antes de compartilhar com o time e os parceiros.",
+  "foto_busca": "technical document review laptop",
+  "trechos": [
+    {
+      "id": "f-d78cca",
+      "quem": "voce",
+      "cod": "This RFC proposes a versioned public API, so partners can integrate safely.",
+      "dica": "Esta RFC propõe uma API pública versionada, para que parceiros possam integrar com segurança.",
+      "img": "🔌🔐",
+      "alvo": "proposes",
+      "alvo_pt": "propõe",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02",
+        "BR12"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "so partners",
+          "aceita": [
+            "so that partners"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-305659",
+      "quem": "voce",
+      "cod": "Currently, partners call our internal endpoints, which keeps us tightly coupled to them.",
+      "dica": "Atualmente, os parceiros chamam os nossos endpoints internos, o que nos deixa muito acoplados a eles.",
+      "img": "🔗🏢",
+      "alvo": "Currently",
+      "alvo_pt": "Atualmente",
+      "conceito": "Currently = atualmente (não: actually).",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56",
+        "BR13"
+      ],
+      "armadilhas": [
+        "actually"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bfa778",
+      "quem": "voce",
+      "cod": "We considered a single version, but every change would affect all clients.",
+      "dica": "Consideramos uma versão única, mas toda mudança afetaria todos os clientes.",
+      "img": "☝️💥",
+      "alvo": "We considered",
+      "alvo_pt": "Consideramos",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-634a55",
+      "quem": "voce",
+      "cod": "The main drawback of versioning is the extra maintenance.",
+      "dica": "A principal desvantagem do versionamento é a manutenção extra.",
+      "img": "🧰➕",
+      "alvo": "drawback",
+      "alvo_pt": "desvantagem",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d77f43",
+      "quem": "voce",
+      "cod": "Billing changes are out of scope and will be addressed in a separate RFC.",
+      "dica": "As mudanças de cobrança estão fora do escopo e serão tratadas numa RFC separada.",
+      "img": "💳✂️",
+      "alvo": "out of scope",
+      "alvo_pt": "fora do escopo",
+      "var": [
+        {
+          "em": "addressed",
+          "aceita": [
+            "covered"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR45",
+        "BR58",
+        "BR12"
+      ],
+      "armadilhas": [
+        "adressed",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fc5a66",
+      "quem": "voce",
+      "cod": "Version 1 will remain backward compatible for at least a year.",
+      "dica": "A versão 1 vai continuar retrocompatível por pelo menos um ano.",
+      "img": "🛡️📆",
+      "alvo": "backward compatible",
+      "alvo_pt": "retrocompatível",
+      "var": [
+        {
+          "em": "remain",
+          "aceita": [
+            "stay"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "during"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1f778e",
+      "quem": "voce",
+      "cod": "We decided on URL versioning, since it is easier for partners to test.",
+      "dica": "Decidimos pelo versionamento na URL, já que é mais fácil para os parceiros testarem.",
+      "img": "🔗🧪",
+      "alvo": "We decided on",
+      "alvo_pt": "Decidimos pelo",
+      "var": [
+        {
+          "em": "it is",
+          "aceita": [
+            "it's"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c9e40",
+      "quem": "voce",
+      "cod": "This PR introduces version 1 of the public API. Please test it locally first.",
+      "dica": "Este PR introduz a versão 1 da API pública. Por favor, testem localmente primeiro.",
+      "img": "🚀💻",
+      "alvo": "locally",
+      "alvo_pt": "localmente",
+      "blocos": [
+        9
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

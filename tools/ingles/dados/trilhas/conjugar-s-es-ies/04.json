@@ -1,0 +1,240 @@
+{
+  "id": "conjugar-s-es-ies.consoante-y-vira-ies",
+  "trilha": "conjugar-s-es-ies",
+  "nome": "Consoante + y → -ies",
+  "emoji": "🔁",
+  "cena": "No caminho para casa, você conta para a Julia o que cada amigo anda fazendo.",
+  "resumo": "Verbo terminado em consoante + y troca o y por -ies: study → studies, try → tries, carry → carries.",
+  "fechamento": false,
+  "novos": [
+    "studies",
+    "tries",
+    "cries",
+    "flies",
+    "carries",
+    "worries",
+    "copies"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Consoante + y → -ies"
+    },
+    {
+      "t": "p",
+      "c": "Se o verbo termina em **y** e a letra antes é **consoante** (d, r, l, p, f…), troque o y por **-ies**: study → **studies**, try → **tries**, carry → **carries**."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca studys, trys ou carrys."
+    },
+    {
+      "t": "ex",
+      "c": "Ana studies English at night.\nA Ana estuda inglês à noite."
+    }
+  ],
+  "imagem": "📚🔁✈️",
+  "visualizacao": "Você caminha com a sua irmã Julia depois do trabalho. Ela pergunta dos amigos, e você conta, um por um, o que cada um anda fazendo.",
+  "foto_busca": "siblings walking city evening",
+  "trechos": [
+    {
+      "id": "f-5368e1",
+      "quem": "voce",
+      "cod": "Ana studies English at night.",
+      "dica": "A Ana estuda inglês à noite.",
+      "img": "📚🌙",
+      "alvo": "studies",
+      "alvo_pt": "estuda",
+      "conceito": "study: d + y → studies.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "studys"
+      ],
+      "teste": true
+    },
+    {
+      "id": "f-0eed79",
+      "quem": "voce",
+      "cod": "Mike tries a new restaurant every week.",
+      "dica": "O Mike experimenta um restaurante novo toda semana.",
+      "img": "🍜🆕",
+      "alvo": "tries",
+      "alvo_pt": "experimenta",
+      "conceito": "try: r + y → tries.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "trys"
+      ]
+    },
+    {
+      "id": "f-ded2a8",
+      "quem": "voce",
+      "cod": "Sarah's baby cries at night.",
+      "dica": "O bebê da Sarah chora à noite.",
+      "img": "👶😢",
+      "alvo": "cries",
+      "alvo_pt": "chora",
+      "conceito": "cry: r + y → cries.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "crys"
+      ]
+    },
+    {
+      "id": "f-4c02c3",
+      "quem": "voce",
+      "cod": "Sarah flies to New York every month.",
+      "dica": "A Sarah voa para Nova York todo mês.",
+      "img": "✈️🗽",
+      "alvo": "flies",
+      "alvo_pt": "voa",
+      "conceito": "fly: l + y → flies.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "flys"
+      ]
+    },
+    {
+      "id": "f-755cff",
+      "quem": "voce",
+      "cod": "Ben carries his laptop everywhere.",
+      "dica": "O Ben carrega o notebook dele para todo lado.",
+      "img": "💻🎒",
+      "alvo": "carries",
+      "alvo_pt": "carrega",
+      "conceito": "carry: r + y → carries.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "carrys"
+      ]
+    },
+    {
+      "id": "f-e71320",
+      "quem": "voce",
+      "cod": "Emma worries about everything.",
+      "dica": "A Emma se preocupa com tudo.",
+      "img": "😟🌀",
+      "alvo": "worries",
+      "alvo_pt": "se preocupa",
+      "conceito": "worry: r + y → worries. preocupar-se com = worry about.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "worrys",
+        "worries with"
+      ]
+    },
+    {
+      "id": "f-31a371",
+      "quem": "voce",
+      "cod": "He copies the file to the server.",
+      "dica": "Ele copia o arquivo para o servidor.",
+      "img": "📄➡️🖥️",
+      "alvo": "copies",
+      "alvo_pt": "copia",
+      "conceito": "copy: p + y → copies.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "copys"
+      ]
+    },
+    {
+      "id": "f-706fe6",
+      "quem": "voce",
+      "cod": "Lucas replies to emails fast.",
+      "dica": "O Lucas responde aos e-mails rápido.",
+      "img": "📧⚡",
+      "alvo": "replies",
+      "alvo_pt": "responde",
+      "conceito": "reply: l + y → replies. reply to = responder a.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "replies to",
+          "aceita": [
+            "answers"
+          ]
+        },
+        {
+          "em": "fast",
+          "aceita": [
+            "quickly"
+          ]
+        }
+      ],
+      "armadilhas": [
+        "replys"
+      ]
+    },
+    {
+      "id": "f-c13a09",
+      "quem": "voce",
+      "cod": "This rule applies to everyone.",
+      "dica": "Essa regra se aplica a todo mundo.",
+      "img": "📜👥",
+      "alvo": "applies",
+      "alvo_pt": "se aplica",
+      "conceito": "apply: l + y → applies. aplicar-se a = apply to.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "applys",
+        "applies for"
+      ]
+    },
+    {
+      "id": "f-0c26ee",
+      "quem": "voce",
+      "cod": "Emma fries eggs for breakfast.",
+      "dica": "A Emma frita ovos no café da manhã.",
+      "img": "🍳🌅",
+      "alvo": "fries",
+      "alvo_pt": "frita",
+      "conceito": "fry: r + y → fries.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "frys"
+      ]
+    },
+    {
+      "id": "f-0de01a",
+      "quem": "voce",
+      "cod": "Ana dries her hair before work.",
+      "dica": "A Ana seca o cabelo antes do trabalho.",
+      "img": "💇‍♀️💨",
+      "alvo": "dries",
+      "alvo_pt": "seca",
+      "conceito": "dry: r + y → dries. E o cabelo dela = her hair.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "drys",
+        "the hair"
+      ]
+    },
+    {
+      "id": "f-a93400",
+      "quem": "voce",
+      "cod": "Mike relies on his team.",
+      "dica": "O Mike conta com o time dele.",
+      "img": "🤝👥",
+      "alvo": "relies on",
+      "alvo_pt": "conta com",
+      "conceito": "rely on: l + y → relies on (contar com).",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "relys"
+      ]
+    }
+  ]
+}

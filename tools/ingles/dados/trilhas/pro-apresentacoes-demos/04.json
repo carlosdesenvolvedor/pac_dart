@@ -1,0 +1,258 @@
+{
+  "id": "pro-apresentacoes-demos.perguntas-dificeis-e-encerramento",
+  "trilha": "pro-apresentacoes-demos",
+  "nome": "Perguntas difíceis e encerramento",
+  "emoji": "❓",
+  "cena": "No fim da palestra, a plateia faz perguntas difíceis, e uma delas pede um número que você não sabe de cabeça.",
+  "resumo": "Abrir para perguntas, confirmar o que entendeu, responder com calma e prometer retorno quando não souber.",
+  "fechamento": false,
+  "novos": [
+    "that's a great question",
+    "I'm glad you asked",
+    "if I understand you correctly",
+    "I'll be happy to take any questions"
+  ],
+  "apoio": [
+    "off the top of my head",
+    "get back to you",
+    "double-check",
+    "rephrase"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Hora das perguntas"
+    },
+    {
+      "t": "p",
+      "c": "Ganhe tempo com elegância (**That's a great question.**), confirme o que entendeu (**If I understand you correctly, you're asking whether...**) e, se não souber, prometa retorno (**I'll get back to you.**)."
+    },
+    {
+      "t": "warn",
+      "c": "Pergunta indireta fica na ordem direta: whether it works (não: whether does it work). Explicar para alguém = explain to (não: explain me)."
+    },
+    {
+      "t": "ex",
+      "c": "I don't have that number off the top of my head.\nNão tenho esse número de cabeça."
+    }
+  ],
+  "imagem": "🎤❓🙋",
+  "visualizacao": "As luzes da plateia acendem e várias mãos sobem. Alguém no fundo pega o microfone e faz justamente a pergunta que você mais temia.",
+  "foto_busca": "conference audience question microphone",
+  "trechos": [
+    {
+      "id": "f-84a6d2",
+      "quem": "voce",
+      "cod": "Thanks, everyone. I'll be happy to take any questions.",
+      "dica": "Obrigado, pessoal. Fico feliz em responder qualquer pergunta.",
+      "img": "🎤🙋",
+      "alvo": "I'll be happy to take any questions",
+      "alvo_pt": "Fico feliz em responder qualquer pergunta",
+      "conceito": "take questions = responder perguntas numa palestra.",
+      "var": [
+        {
+          "em": "I'll be happy",
+          "aceita": [
+            "I'm happy",
+            "I'd be happy"
+          ]
+        }
+      ],
+      "pt_f": "Obrigada, pessoal. Fico feliz em responder qualquer pergunta.",
+      "registro": "neutro",
+      "armadilhas": [
+        "answer"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9e61e3",
+      "quem": "voce",
+      "contexto": "Does this approach work for a team of fifty developers?",
+      "cod": "That's a great question. We struggled with that too at first.",
+      "dica": "Essa é uma ótima pergunta. A gente também sofreu com isso no começo.",
+      "img": "👏😓",
+      "alvo": "That's a great question",
+      "alvo_pt": "Essa é uma ótima pergunta",
+      "conceito": "struggle with = sofrer com, ter dificuldade com.",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "with that",
+          "aceita": [
+            "with it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ebf53c",
+      "quem": "voce",
+      "contexto": "What about a monorepo with ten apps? Would it still be fast?",
+      "cod": "If I understand you correctly, you're asking whether the cache works across apps.",
+      "dica": "Se entendi bem, você está perguntando se o cache funciona entre os apps.",
+      "img": "🤔🔁",
+      "alvo": "If I understand you correctly",
+      "alvo_pt": "Se entendi bem",
+      "conceito": "Pergunta indireta: whether + ordem direta (não: whether does the cache work).",
+      "var": [
+        {
+          "em": "If I understand you correctly",
+          "aceita": [
+            "If I understand correctly",
+            "If I understood you correctly",
+            "If I understood correctly"
+          ]
+        },
+        {
+          "em": "whether",
+          "aceita": [
+            "if"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "does"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6a4fcf",
+      "quem": "voce",
+      "contexto": "How does the cache know when something has changed?",
+      "cod": "I'm glad you asked. Let me explain to everyone how the cache works.",
+      "dica": "Que bom que você perguntou. Deixa eu explicar para todo mundo como o cache funciona.",
+      "img": "😊🧩",
+      "alvo": "I'm glad you asked",
+      "alvo_pt": "Que bom que você perguntou",
+      "conceito": "explain to + pessoa (não: explain everyone). E how the cache works, sem inversão.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR54",
+        "BR50"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2cf6a2",
+      "quem": "voce",
+      "contexto": "We tried caching too, but our disk filled up in a few days.",
+      "cod": "So, if I understand you correctly, you never cleared the old cache?",
+      "dica": "Então, se entendi bem, vocês nunca limparam o cache antigo?",
+      "img": "🗑️❓",
+      "alvo": "if I understand you correctly",
+      "alvo_pt": "se entendi bem",
+      "conceito": "clear the cache = limpar o cache. Confirmar entendimento pode ser pergunta só na entonação.",
+      "var": [
+        {
+          "em": "if I understand you correctly",
+          "aceita": [
+            "if I understand correctly",
+            "if I understood you correctly",
+            "if I understood correctly"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fbb73c",
+      "quem": "voce",
+      "contexto": "Did all of this actually save you any money?",
+      "cod": "I'm glad you asked. It cut our cloud bill in half.",
+      "dica": "Que bom que você perguntou. Cortou a nossa conta de nuvem pela metade.",
+      "img": "💵✂️",
+      "alvo": "I'm glad you asked",
+      "alvo_pt": "Que bom que você perguntou",
+      "conceito": "Cortou... = It cut...: o inglês não deixa o verbo sem sujeito.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1a2134",
+      "quem": "voce",
+      "contexto": "What's your cache hit rate right now?",
+      "cod": "That's a great question. I'll double-check and get back to you.",
+      "dica": "Essa é uma ótima pergunta. Vou conferir e te dou um retorno.",
+      "img": "🔍📬",
+      "alvo": "That's a great question",
+      "alvo_pt": "Essa é uma ótima pergunta",
+      "conceito": "get back to you = te dar um retorno depois. double-check = conferir.",
+      "var": [
+        {
+          "em": "I'll double-check",
+          "aceita": [
+            "Let me double-check"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c627a0",
+      "quem": "voce",
+      "cod": "We're out of time, but I'll be happy to take any questions afterward.",
+      "dica": "O tempo acabou, mas fico feliz em responder qualquer pergunta depois.",
+      "img": "⌛🙋",
+      "alvo": "I'll be happy to take any questions",
+      "alvo_pt": "fico feliz em responder qualquer pergunta",
+      "conceito": "O tempo acabou = We're out of time (o sujeito é we).",
+      "var": [
+        {
+          "em": "I'll be happy",
+          "aceita": [
+            "I'm happy",
+            "I'd be happy"
+          ]
+        },
+        {
+          "em": "afterward",
+          "aceita": [
+            "afterwards",
+            "after"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

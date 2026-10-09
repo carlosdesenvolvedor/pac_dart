@@ -1,0 +1,234 @@
+{
+  "id": "hedging-registro.meio-que-pisca",
+  "trilha": "hedging-registro",
+  "nome": "Meio que pisca",
+  "emoji": "🌀",
+  "cena": "Você descreve para a Ana um bug esquisito que só acontece às vezes, antes de ter qualquer prova.",
+  "resumo": "Descrever o que você ainda não sabe explicar: sort of, or something, something like that, a hunch.",
+  "fechamento": false,
+  "novos": [
+    "sort of",
+    "or something",
+    "something like that",
+    "hunch"
+  ],
+  "apoio": [
+    "scroll"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Meio que, coisa do tipo, algo assim"
+    },
+    {
+      "t": "p",
+      "c": "**sort of** + verbo = meio que (it **sort of** flickers). No fim da frase, **or something** = ou coisa do tipo, e **or something like that** = ou algo assim. **I have a hunch** = tenho um palpite."
+    },
+    {
+      "t": "tip",
+      "c": "kind of + adjetivo continua sendo meio + adjetivo (kind of slow = meio lento)."
+    },
+    {
+      "t": "warn",
+      "c": "sort of + verbo direto: it sort of flickers (não: sort of to flicker)."
+    },
+    {
+      "t": "ex",
+      "c": "The screen sort of flickers when you scroll fast.\nA tela meio que pisca quando você rola rápido."
+    }
+  ],
+  "imagem": "📱🌀🐞",
+  "visualizacao": "Você rola a tela do app no celular, rápido, e a imagem treme por um instante. Chama a Ana na chamada e tenta mostrar antes que pare de acontecer.",
+  "foto_busca": "smartphone screen glitch close up",
+  "trechos": [
+    {
+      "id": "f-cf553f",
+      "quem": "voce",
+      "cod": "Ana, the home screen sort of flickers when you scroll fast.",
+      "dica": "Ana, a tela inicial meio que pisca quando você rola rápido.",
+      "img": "📱💡〰️",
+      "alvo": "sort of",
+      "alvo_pt": "meio que",
+      "conceito": "sort of + verbo = meio que + verbo; flicker = piscar (tela, luz).",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "flicker"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1df7ed",
+      "quem": "ana",
+      "contexto": "f-cf553f",
+      "cod": "Weird. Is it a scrolling bug or something?",
+      "dica": "Estranho. É um bug de rolagem ou coisa do tipo?",
+      "img": "🤨🐞📜",
+      "alvo": "or something",
+      "alvo_pt": "ou coisa do tipo",
+      "conceito": "or something no fim = ou coisa do tipo. É um bug? = Is it a bug? (it obrigatório).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-df1dc2",
+      "quem": "voce",
+      "contexto": "f-1df7ed",
+      "cod": "I'm not sure yet. I have a hunch it's a caching issue.",
+      "dica": "Ainda não tenho certeza. Tenho um palpite de que é um problema de cache.",
+      "img": "🤔💡🗄️",
+      "alvo": "hunch",
+      "alvo_pt": "palpite",
+      "conceito": "Tenho um palpite = I have a hunch (Meu palpite é que = My guess is that).",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "caching issue",
+          "aceita": [
+            "cache issue",
+            "caching problem",
+            "cache problem"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d59855",
+      "quem": "ana",
+      "contexto": "f-df1dc2",
+      "cod": "A hunch? Do you have any logs?",
+      "dica": "Um palpite? Você tem algum log?",
+      "img": "🧐📄❓",
+      "alvo": "hunch",
+      "alvo_pt": "palpite",
+      "conceito": "Pergunta com have: Do you have...? (não: Have you...?).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a64a92",
+      "quem": "voce",
+      "contexto": "f-d59855",
+      "cod": "Not yet. The animation sort of freezes for a second.",
+      "dica": "Ainda não. A animação meio que trava por um segundo.",
+      "img": "🎞️🧊⏱️",
+      "alvo": "sort of",
+      "alvo_pt": "meio que",
+      "conceito": "travar (tela, animação) = freeze; for a second = por um segundo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "freeze"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cda3cc",
+      "quem": "ana",
+      "cod": "Mike said it started after the last update, or something like that.",
+      "dica": "O Mike disse que começou depois da última atualização, ou algo assim.",
+      "img": "🗣️📲🔄",
+      "alvo": "something like that",
+      "alvo_pt": "algo assim",
+      "conceito": "or something like that = ou algo assim: quem fala não tem certeza do detalhe.",
+      "var": [
+        {
+          "em": "last",
+          "aceita": [
+            "latest"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3af797",
+      "quem": "voce",
+      "contexto": "f-cda3cc",
+      "cod": "I thought it was something like that.",
+      "dica": "Achei que era algo assim.",
+      "img": "💭✅",
+      "alvo": "something like that",
+      "alvo_pt": "algo assim",
+      "conceito": "Achei que = I thought (that): o that é opcional.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1961367,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Eu pensei que era algo do tipo.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a7eabf",
+      "quem": "ana",
+      "cod": "Let's go grab a burger or something and look at it after lunch.",
+      "dica": "Vamos comer um hambúrguer ou coisa do tipo e ver isso depois do almoço.",
+      "img": "🍔🕐💻",
+      "alvo": "or something",
+      "alvo_pt": "ou coisa do tipo",
+      "conceito": "look at it after lunch: look at + objeto, after + refeição sem artigo.",
+      "var": [
+        {
+          "em": "grab",
+          "aceita": [
+            "get"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2007288,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Let's go grab a burger or something.\" (oração acrescentada para a cena); PT reescrito (original: \"Vamos pegar um hambúrguer ou algo assim.\")",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

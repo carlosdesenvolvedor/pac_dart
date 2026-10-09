@@ -1,0 +1,262 @@
+{
+  "id": "passivas-impessoais.ele-teria-saido-da-empresa",
+  "trilha": "passivas-impessoais",
+  "nome": "Ele teria saído da empresa",
+  "emoji": "🕵️",
+  "cena": "Na newsletter, você comenta a fusão de duas empresas de nuvem e o que se sabe sobre uma grande queda.",
+  "resumo": "Relatar o que se diz ou se pensa sobre alguém: is thought to have, is said to have, is believed to be.",
+  "fechamento": false,
+  "novos": [
+    "is thought to have",
+    "is said to have",
+    "is believed to be",
+    "merger"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ele teria saído: He is said to have left"
+    },
+    {
+      "t": "p",
+      "c": "Em notícia, o sujeito vem na frente: **sujeito + is said / thought / believed + to**. Para o passado, **to have + particípio**; para o que está em andamento, **to be + -ing**."
+    },
+    {
+      "t": "tip",
+      "c": "Âncoras: **teria saído** = is said to have left; **pensa-se que tenha** = is thought to have; **acredita-se que esteja** = is believed to be."
+    },
+    {
+      "t": "warn",
+      "c": "Depois de to, o verbo fica na base: to have left (não: to had left / to left)."
+    },
+    {
+      "t": "ex",
+      "c": "The startup is believed to be working on its own AI model.\nAcredita-se que a startup esteja trabalhando no próprio modelo de IA."
+    }
+  ],
+  "imagem": "🏢🤝☁️",
+  "visualizacao": "Duas abas abertas: o anúncio da fusão e um mapa de servidores fora do ar. Você escolhe as palavras com cuidado, porque ainda nada foi confirmado.",
+  "foto_busca": "business merger news headline",
+  "trechos": [
+    {
+      "id": "f-d036d0",
+      "quem": "voce",
+      "cod": "On Monday, two cloud companies announced a merger.",
+      "dica": "Na segunda, duas empresas de nuvem anunciaram uma fusão.",
+      "img": "☁️🤝🏢",
+      "alvo": "merger",
+      "alvo_pt": "fusão",
+      "conceito": "merger = fusão de empresas.",
+      "registro": "escrito-trabalho",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eee3e4",
+      "quem": "voce",
+      "cod": "After the merger, the CTO is thought to have left the company.",
+      "dica": "Depois da fusão, pensa-se que o CTO tenha saído da empresa.",
+      "img": "👔🚪🏢",
+      "alvo": "is thought to have",
+      "alvo_pt": "pensa-se que",
+      "lit": "[lit.: o CTO é pensado ter saído]",
+      "conceito": "Pensa-se que ele tenha saído = He is thought to have left (It is thought that he left também vale).",
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "had",
+        "left"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the CTO is thought to have left",
+          "aceita": [
+            "it is thought that the CTO left",
+            "it is thought that the CTO has left"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7413d6",
+      "quem": "voce",
+      "cod": "The deal is believed to be worth around $2 billion.",
+      "dica": "Acredita-se que o acordo valha cerca de US$ 2 bilhões.",
+      "img": "🤝💵📈",
+      "alvo": "is believed to be",
+      "alvo_pt": "Acredita-se que",
+      "conceito": "be worth = valer: is believed to be worth $2 billion.",
+      "var": [
+        {
+          "em": "around",
+          "aceita": [
+            "about"
+          ]
+        },
+        {
+          "em": "The deal is believed to be worth",
+          "aceita": [
+            "It is believed that the deal is worth"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-82191c",
+      "quem": "voce",
+      "cod": "The larger company is believed to be working on its own AI model.",
+      "dica": "Acredita-se que a empresa maior esteja trabalhando no próprio modelo de IA.",
+      "img": "🏢🤖🛠️",
+      "alvo": "is believed to be",
+      "alvo_pt": "Acredita-se que",
+      "conceito": "Acredita-se que esteja + gerúndio = is believed to be + -ing.",
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "believes"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "The larger company is believed to be working",
+          "aceita": [
+            "It is believed that the larger company is working"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-dc02af",
+      "quem": "voce",
+      "cod": "One of the founders is said to have turned down a huge offer.",
+      "dica": "Um dos fundadores teria recusado uma oferta enorme.",
+      "img": "🙅💰📄",
+      "alvo": "is said to have",
+      "alvo_pt": "teria",
+      "conceito": "turn down = recusar (uma oferta, um convite).",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-04861c",
+      "quem": "voce",
+      "cod": "The outage is said to have started overnight in a single data center.",
+      "dica": "A queda teria começado de madrugada num único data center.",
+      "img": "🌙🖥️⚡",
+      "alvo": "is said to have",
+      "alvo_pt": "teria",
+      "conceito": "O teria jornalístico (= dizem que) vira is said to have + particípio.",
+      "var": [
+        {
+          "em": "overnight",
+          "aceita": [
+            "during the night",
+            "in the middle of the night"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6710c1",
+      "quem": "voce",
+      "cod": "Since the outage, the provider is thought to have lost many customers.",
+      "dica": "Desde a queda, pensa-se que o provedor tenha perdido muitos clientes.",
+      "img": "📉👥☁️",
+      "alvo": "is thought to have",
+      "alvo_pt": "pensa-se que",
+      "conceito": "lose customers = perder clientes; to have + particípio olha para o passado.",
+      "var": [
+        {
+          "em": "many",
+          "aceita": [
+            "a lot of"
+          ]
+        },
+        {
+          "em": "the provider is thought to have lost",
+          "aceita": [
+            "it is thought that the provider has lost"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "lose"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-030096",
+      "quem": "mike",
+      "contexto": "f-d036d0",
+      "cod": "Do you think the merger will make it harder to switch providers?",
+      "dica": "Você acha que a fusão vai deixar mais difícil trocar de provedor?",
+      "img": "🤔🔀☁️",
+      "alvo": "merger",
+      "alvo_pt": "fusão",
+      "conceito": "make it harder to = deixar mais difícil: o it é obrigatório.",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "more"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "switch providers",
+          "aceita": [
+            "change providers"
+          ]
+        }
+      ]
+    }
+  ]
+}

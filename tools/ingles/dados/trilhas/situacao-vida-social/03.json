@@ -1,0 +1,199 @@
+{
+  "id": "situacao-vida-social.o-ben-em-curitiba",
+  "trilha": "situacao-vida-social",
+  "nome": "O Ben em Curitiba",
+  "emoji": "🏡",
+  "cena": "O Ben, seu amigo de Boston, vem ao Brasil e você o recebe em casa.",
+  "resumo": "Convidar e receber alguém em casa: you're welcome to... / Make yourself at home. / It's no trouble at all.",
+  "fechamento": false,
+  "novos": [
+    "you're welcome to...",
+    "Make yourself at home.",
+    "It's no trouble at all.",
+    "have someone over"
+  ],
+  "apoio": [
+    "help yourself (BR62)",
+    "stay at my place (ficar lá em casa)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Receber em casa"
+    },
+    {
+      "t": "p",
+      "c": "**You're welcome to + verbo** = pode... (convite aberto): you're welcome to stay at my place. Não é o *you're welcome* de 'de nada'."
+    },
+    {
+      "t": "warn",
+      "c": "Fica à vontade = **Make yourself at home**: aqui o -self existe. Mas me sinto = I feel (não: I feel myself) (BR62)."
+    },
+    {
+      "t": "tip",
+      "c": "have someone over = receber alguém em casa: She loves having people over."
+    },
+    {
+      "t": "ex",
+      "c": "It's no trouble at all. I'd love to have you.\nNão é incômodo nenhum. Eu adoraria te receber."
+    }
+  ],
+  "imagem": "🏡🧳☕",
+  "visualizacao": "Você abre a porta do apartamento e o Ben está ali, de mochila e mala, sorrindo depois do voo longo. Da cozinha vem o cheiro de café passado.",
+  "foto_busca": "friend arriving apartment door suitcase",
+  "trechos": [
+    {
+      "id": "f-2fb97c",
+      "quem": "voce",
+      "cod": "If you're ever in {cidade}, you're welcome to stay at my place.",
+      "dica": "Se um dia você estiver em {cidade}, pode ficar lá em casa.",
+      "img": "🗺️🏠🛏️",
+      "alvo": "you're welcome to stay",
+      "alvo_pt": "pode ficar",
+      "conceito": "you're welcome to + verbo = pode... (convite aberto); não é o 'de nada'.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "teste": true,
+      "bio": [
+        "cidade"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f5d95c",
+      "quem": "ben",
+      "contexto": "f-2fb97c",
+      "cod": "Are you sure it's no trouble?",
+      "dica": "Tem certeza de que não é incômodo?",
+      "img": "🤔🙏🏠",
+      "alvo": "it's no trouble",
+      "alvo_pt": "não é incômodo",
+      "conceito": "no trouble = nenhum incômodo. O it é obrigatório (BR01).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 869474,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5effe2",
+      "quem": "voce",
+      "contexto": "f-f5d95c",
+      "cod": "It's no trouble at all. I'd love to have you.",
+      "dica": "Não é incômodo nenhum. Eu adoraria te receber.",
+      "img": "😊🏠🤗",
+      "alvo": "It's no trouble at all",
+      "alvo_pt": "Não é incômodo nenhum",
+      "conceito": "at all reforça a negação: no trouble at all = incômodo nenhum. have you = te receber.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-db3587",
+      "quem": "voce",
+      "contexto": "Wow, nice place!",
+      "cod": "Make yourself at home.",
+      "dica": "Fica à vontade.",
+      "img": "🛋️🏠😌",
+      "alvo": "Make yourself at home",
+      "alvo_pt": "Fica à vontade",
+      "lit": "[lit.: faça-se em casa]",
+      "conceito": "Fica à vontade = Make yourself at home: aqui o -self existe (BR62).",
+      "registro": "informal",
+      "interferencias": [
+        "BR62"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2378,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1bd7b7",
+      "quem": "voce",
+      "contexto": "f-db3587",
+      "cod": "Seriously, make yourself at home. Help yourself to anything in the fridge.",
+      "dica": "Sério, fica à vontade. Pode se servir de qualquer coisa na geladeira.",
+      "img": "🍎🧀😋",
+      "alvo": "make yourself at home",
+      "alvo_pt": "fica à vontade",
+      "conceito": "Help yourself to = pode se servir de: outro -self que existe (BR62).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR62"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-604ff7",
+      "quem": "ben",
+      "contexto": "f-1bd7b7",
+      "cod": "Thanks, man. You're welcome to stay at my place in Boston anytime, too.",
+      "dica": "Valeu, cara. Você também pode ficar lá em casa, em Boston, quando quiser.",
+      "img": "🤝🏙️🛏️",
+      "alvo": "You're welcome to stay",
+      "alvo_pt": "pode ficar",
+      "conceito": "anytime = quando quiser. too no fim = também.",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9dba9c",
+      "quem": "voce",
+      "cod": "My sister Julia wants to have us over for dinner on Saturday.",
+      "dica": "A minha irmã, a Julia, quer receber a gente para jantar no sábado.",
+      "img": "👩🍝📅",
+      "alvo": "have us over",
+      "alvo_pt": "receber a gente",
+      "conceito": "have someone over = receber alguém em casa. on Saturday: on com dia da semana.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-34e12d",
+      "quem": "voce",
+      "contexto": "Are you sure that's not too much work for her?",
+      "cod": "Don't worry. She loves having people over.",
+      "dica": "Não se preocupa. Ela adora receber gente em casa.",
+      "img": "🥳👥🏠",
+      "alvo": "having people over",
+      "alvo_pt": "receber gente em casa",
+      "conceito": "Ela adora + verbo = She loves + -ing. loves com -s (3ª pessoa).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

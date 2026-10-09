@@ -129,11 +129,14 @@ class _CreditosIngles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final autores = <String, int>{};
+    // gravações de nativo: "CK · CC BY-NC-ND 3.0" → quantas frases
+    final vozes = <String, int>{};
     var tatoeba = 0, total = 0;
     for (final t in st.trilhas) {
       for (final l in t.licoes) {
         for (final f in l.trechos) {
           total++;
+          if (f.audioCredito.isNotEmpty) vozes[f.audioCredito] = (vozes[f.audioCredito] ?? 0) + 1;
           final fonte = FonteFrase.ler(f.fonte);
           if (fonte == null) continue;
           tatoeba++;
@@ -143,6 +146,9 @@ class _CreditosIngles extends StatelessWidget {
       }
     }
     final lista = autores.entries.toList()..sort((a, b) => b.value.compareTo(a.value));
+    final listaVozes = vozes.entries.toList()..sort((a, b) => b.value.compareTo(a.value));
+    final gravadas = vozes.values.fold<int>(0, (s, n) => s + n);
+    final link = Mixart.ui(size: 11.5, weight: FontWeight.w700, color: Mixart.brand);
     final estilo = Mixart.ui(size: 11.5, color: Mixart.textMuted).copyWith(height: 1.5);
     return Padding(
       padding: const EdgeInsets.fromLTRB(18, 26, 18, 0),
@@ -180,12 +186,48 @@ class _CreditosIngles extends StatelessWidget {
           ] else
             Text('As frases foram escritas para o curso.', style: estilo),
           const SizedBox(height: 6),
-          Text('O áudio é a voz em inglês do seu navegador (Web Speech) — no Edge e no Chrome ela soa mais natural.',
+          if (gravadas > 0) ...[
+            Text(
+                'Vozes nativas: $gravadas frases tocam a gravação de um falante nativo feita para o Tatoeba '
+                '(tatoeba.org/audio), no lugar da voz sintética. Cada frase mostra quem gravou e a licença; '
+                'os arquivos são usados sem nenhuma alteração e só para fins não comerciais — o curso é '
+                'gratuito. Gravações: ${listaVozes.map((e) => '${e.key} (${e.value})').join(', ')}.',
+                style: estilo),
+            const SizedBox(height: 6),
+            Wrap(spacing: 12, children: [
+              InkWell(
+                onTap: () => abrirUrl('https://tatoeba.org/pt-br/audio/index'),
+                child: Text('gravações do Tatoeba', style: link),
+              ),
+              for (final lic in {for (final v in vozes.keys) v.split(' · ').last})
+                if (_urlLicencaCc(lic) case final url?)
+                  InkWell(onTap: () => abrirUrl(url), child: Text('licença $lic', style: link)),
+              if (vozes.keys.any((v) => v.startsWith('CK ')))
+                InkWell(
+                  onTap: () => abrirUrl('https://www.manythings.org/tatoeba'),
+                  child: Text('CK (manythings.org)', style: link),
+                ),
+            ]),
+            const SizedBox(height: 6),
+          ],
+          Text(
+              gravadas > 0
+                  ? 'As demais frases usam a voz em inglês do seu navegador (Web Speech) — no Edge e no Chrome '
+                      'ela soa mais natural.'
+                  : 'O áudio é a voz em inglês do seu navegador (Web Speech) — no Edge e no Chrome ela soa mais natural.',
               style: estilo),
         ]),
       ),
     );
   }
+}
+
+/// "CC BY-NC-ND 3.0" → a página da licença; null = não é Creative Commons.
+String? _urlLicencaCc(String licenca) {
+  final m = RegExp(r'^CC\s*(0|[A-Z-]+)\s+(\d\.\d)$').firstMatch(licenca.trim());
+  if (m == null) return null;
+  if (m.group(1) == '0') return 'https://creativecommons.org/publicdomain/zero/${m.group(2)}/';
+  return 'https://creativecommons.org/licenses/${m.group(1)!.toLowerCase()}/${m.group(2)}/';
 }
 
 /// Remove acentos e caixa para busca tolerante.

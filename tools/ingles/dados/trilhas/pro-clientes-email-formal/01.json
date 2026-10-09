@@ -1,0 +1,242 @@
+{
+  "id": "pro-clientes-email-formal.abrir-e-fechar-e-mails-formais",
+  "trilha": "pro-clientes-email-formal",
+  "nome": "Abrir e fechar e-mails formais",
+  "emoji": "✉️",
+  "cena": "Depois de uma chamada sobre a integração, você escreve para a equipe de TI de um cliente corporativo.",
+  "resumo": "Abrir e fechar e-mail formal: Dear..., As discussed..., any further questions, Kind regards.",
+  "fechamento": false,
+  "novos": [
+    "as discussed",
+    "further questions",
+    "kind regards",
+    "Dear"
+  ],
+  "apoio": [
+    "reach out",
+    "regarding",
+    "do not hesitate to",
+    "at your earliest convenience"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "E-mail formal: abrir, retomar, fechar"
+    },
+    {
+      "t": "p",
+      "c": "Abra com **Dear** + nome ou equipe e agradeça o contato (**thank you for reaching out regarding...**). Retome a conversa com **As discussed**. No e-mail formal, use as formas plenas: *I am writing*, *do not hesitate*."
+    },
+    {
+      "t": "tip",
+      "c": "Should you have any further questions = If you have any further questions, só que mais formal. Feche com **Kind regards,** e o seu nome."
+    },
+    {
+      "t": "warn",
+      "c": "contact us, sem with (não: contact with us). explain it to us (não: explain us). dúvida = question."
+    },
+    {
+      "t": "ex",
+      "c": "As discussed, I am writing to confirm the timeline.\nConforme conversamos, escrevo para confirmar o cronograma."
+    }
+  ],
+  "imagem": "💻✉️🤝",
+  "visualizacao": "Você acabou de sair da chamada com o cliente. O e-mail em branco está aberto, o cursor pisca depois do Dear e as anotações da reunião estão ao lado do teclado.",
+  "foto_busca": "writing business email laptop",
+  "trechos": [
+    {
+      "id": "f-d3cacf",
+      "quem": "voce",
+      "cod": "Dear IT Team, thank you for reaching out regarding the API errors.",
+      "dica": "Prezada equipe de TI, obrigado por entrar em contato a respeito dos erros da API.",
+      "pt_f": "Prezada equipe de TI, obrigada por entrar em contato a respeito dos erros da API.",
+      "img": "✉️🙏",
+      "alvo": "Dear",
+      "alvo_pt": "Prezada",
+      "conceito": "Dear abre o e-mail formal, até para quem você não conhece. regarding = a respeito de.",
+      "blocos": [
+        3
+      ],
+      "registro": "formal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e7fb74",
+      "quem": "voce",
+      "cod": "As discussed on our call, I am writing to confirm the timeline.",
+      "dica": "Conforme conversamos na nossa chamada, escrevo para confirmar o cronograma.",
+      "img": "📞🗓️",
+      "alvo": "As discussed",
+      "alvo_pt": "Conforme conversamos",
+      "lit": "[lit.: como discutido na nossa chamada]",
+      "conceito": "As discussed = conforme conversamos. I am writing to = escrevo para (forma plena no e-mail formal).",
+      "var": [
+        {
+          "em": "I am",
+          "aceita": [
+            "I'm"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "as we talked",
+        "discussed about"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-01757d",
+      "quem": "voce",
+      "cod": "As discussed, the new API keys will be sent to you on Monday.",
+      "dica": "Conforme conversamos, as novas chaves da API serão enviadas a vocês na segunda.",
+      "img": "🔑📤",
+      "alvo": "As discussed",
+      "alvo_pt": "Conforme conversamos",
+      "conceito": "will be sent: passiva formal, sem dizer quem envia. Dia da semana com on.",
+      "blocos": [
+        2
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "in monday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cda589",
+      "quem": "voce",
+      "cod": "Should you have any further questions, please do not hesitate to contact us.",
+      "dica": "Caso tenha mais alguma dúvida, por favor, não hesite em nos contatar.",
+      "img": "❓📩",
+      "alvo": "further questions",
+      "alvo_pt": "mais alguma dúvida",
+      "lit": "[lit.: caso você tenha quaisquer perguntas adicionais]",
+      "conceito": "Should you have... = If you have..., mais formal. contact us, sem with (não: contact with us).",
+      "var": [
+        {
+          "em": "Should you have",
+          "aceita": [
+            "If you have"
+          ]
+        },
+        {
+          "em": "do not",
+          "aceita": [
+            "don't"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "with",
+        "doubts"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4ba116",
+      "quem": "voce",
+      "cod": "Thank you again for your time. Kind regards, {nome}.",
+      "dica": "Obrigado mais uma vez pelo seu tempo. Atenciosamente, {nome}.",
+      "pt_f": "Obrigada mais uma vez pelo seu tempo. Atenciosamente, {nome}.",
+      "img": "🤝✍️",
+      "alvo": "Kind regards",
+      "alvo_pt": "Atenciosamente",
+      "conceito": "Kind regards ou Best regards fecham e-mail de trabalho; Sincerely é mais cerimonioso.",
+      "registro": "formal",
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e90233",
+      "quem": "cliente",
+      "cod": "Dear {nome}, thank you for explaining the new process to us.",
+      "dica": "Prezado {nome}, obrigada por nos explicar o novo processo.",
+      "img": "📧😊",
+      "alvo": "Dear",
+      "alvo_pt": "Prezado",
+      "conceito": "explain the process to us: quem recebe a explicação vem com to (não: explain us the process).",
+      "blocos": [
+        2
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "explaining us"
+      ],
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia",
+      "pt_f": "Prezada {nome}, obrigada por nos explicar o novo processo."
+    },
+    {
+      "id": "f-66af07",
+      "quem": "voce",
+      "contexto": "f-e90233",
+      "cod": "Happy to help. If you have any further questions, just reply to this email.",
+      "dica": "Fico feliz em ajudar. Se tiver mais alguma dúvida, é só responder a este e-mail.",
+      "img": "🙂↩️",
+      "alvo": "further questions",
+      "alvo_pt": "mais alguma dúvida",
+      "conceito": "dúvida = question (doubt é desconfiança). further = adicional, comum no registro formal.",
+      "var": [
+        {
+          "em": "Happy to help",
+          "aceita": [
+            "I'm happy to help"
+          ]
+        },
+        {
+          "em": "If you have",
+          "aceita": [
+            "Should you have"
+          ]
+        }
+      ],
+      "blocos": [
+        9
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "doubts",
+        "doubt"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a464c0",
+      "quem": "voce",
+      "cod": "Have a great weekend. Kind regards, {nome}.",
+      "dica": "Tenha um ótimo fim de semana. Atenciosamente, {nome}.",
+      "img": "🏖️✉️",
+      "alvo": "Kind regards",
+      "alvo_pt": "Atenciosamente",
+      "conceito": "Kind regards, com vírgula, e o nome logo depois.",
+      "registro": "formal",
+      "bio": [
+        "nome"
+      ],
+      "variacao_de": "f-4ba116",
+      "origem": "autoral_ia"
+    }
+  ]
+}

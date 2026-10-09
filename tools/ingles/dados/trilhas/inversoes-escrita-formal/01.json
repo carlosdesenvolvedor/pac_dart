@@ -1,0 +1,251 @@
+{
+  "id": "inversoes-escrita-formal.nao-so-como-tambem-relatorio",
+  "trilha": "inversoes-escrita-formal",
+  "nome": "Não só..., como também (relatório)",
+  "emoji": "📈",
+  "cena": "Você escreve o relatório anual do time para a diretoria e repassa os destaques com o Mike.",
+  "resumo": "Dar ênfase a resultados por escrito com Not only did we..., but we also... e Only after / Only when... did we...",
+  "fechamento": false,
+  "novos": [
+    "Not only... but also",
+    "Only after... did we",
+    "Only when... did we",
+    "milestone"
+  ],
+  "apoio": [
+    "slip (a date)",
+    "far better",
+    "keep + -ing (ficar + gerúndio)",
+    "outage"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ênfase no relatório: Not only / Only after"
+    },
+    {
+      "t": "p",
+      "c": "Em texto formal, **Not only** e **Only after / Only when** no começo da frase invertem a oração principal: auxiliar + sujeito + verbo base. Not only **did we ship**... / Only after X **did we invest**..."
+    },
+    {
+      "t": "warn",
+      "c": "Não: Not only we shipped. Na conversa, use a ordem normal: We only invested after the third outage."
+    },
+    {
+      "t": "ex",
+      "c": "Only after the beta did we hire a second designer.\n(no relatório) Só depois do beta contratamos uma segunda designer."
+    }
+  ],
+  "imagem": "📈📄🏆",
+  "visualizacao": "Você está no seu escritório em casa, com o relatório anual aberto na tela. Gráficos subindo, café esfriando e o cursor piscando no parágrafo dos resultados.",
+  "foto_busca": "annual report charts laptop desk",
+  "trechos": [
+    {
+      "id": "f-35bae5",
+      "quem": "voce",
+      "cod": "We hit every major milestone this year.",
+      "dica": "(no relatório) Batemos todos os marcos importantes este ano.",
+      "img": "🏁📅",
+      "alvo": "milestone",
+      "alvo_pt": "marcos",
+      "conceito": "milestone = marco (etapa importante de um projeto); hit a milestone = bater um marco.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "marks"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "every major milestone",
+          "aceita": [
+            "all our major milestones",
+            "all the major milestones",
+            "all major milestones"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7b8874",
+      "quem": "mike",
+      "contexto": "f-35bae5",
+      "cod": "Don't forget the beta launch. That was our biggest milestone.",
+      "dica": "Não esquece o lançamento do beta. Foi o nosso maior marco.",
+      "img": "🧪🚀🏆",
+      "alvo": "milestone",
+      "alvo_pt": "marco",
+      "conceito": "Foi o nosso maior marco = That was our biggest milestone (o sujeito aparece em inglês).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "That was",
+          "aceita": [
+            "It was"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c06e76",
+      "quem": "voce",
+      "cod": "Not only did we ship the app, but we also halved our response time.",
+      "dica": "(no relatório) Não só lançamos o app, como também reduzimos o tempo de resposta pela metade.",
+      "img": "🚀⏱️✂️",
+      "alvo": "Not only did we",
+      "alvo_pt": "Não só",
+      "lit": "[lit.: não só fizemos nós lançar o app]",
+      "conceito": "Not only no começo puxa o auxiliar: did we ship (não: Not only we shipped). halve = reduzir à metade.",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "shipped"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "ship",
+          "aceita": [
+            "launch",
+            "release"
+          ]
+        },
+        {
+          "em": "halved our response time",
+          "aceita": [
+            "cut our response time in half"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-88aabd",
+      "quem": "voce",
+      "cod": "Not only did revenue grow, but our app reviews were also far better.",
+      "dica": "(no relatório) Não só a receita cresceu, como também as avaliações do app foram bem melhores.",
+      "img": "💰⭐📈",
+      "alvo": "Not only did",
+      "alvo_pt": "Não só",
+      "conceito": "Depois de did, o verbo volta à forma base: did revenue grow (não: grew). far better = bem melhor.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "grew"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "our app reviews",
+          "aceita": [
+            "the app reviews",
+            "the app's reviews"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f6a252",
+      "quem": "voce",
+      "cod": "Admittedly, only after the third outage did we invest in better monitoring.",
+      "dica": "(no relatório) É verdade que só depois da terceira queda investimos num monitoramento melhor.",
+      "img": "💥🔁📊",
+      "alvo": "only after",
+      "alvo_pt": "só depois",
+      "conceito": "admittedly = é verdade que (admitindo). Only after + tempo: a inversão vem na oração principal (did we invest).",
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "invested"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Admittedly,",
+          "aceita": [
+            "It's true that"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c097c6",
+      "quem": "voce",
+      "cod": "Only after the launch date slipped twice did we rethink our planning.",
+      "dica": "(no relatório) Só depois que a data de lançamento escorregou duas vezes repensamos o planejamento.",
+      "img": "📅⬇️🔄",
+      "alvo": "Only after",
+      "alvo_pt": "Só depois",
+      "conceito": "A 1ª oração fica normal (the date slipped); só a principal inverte (did we rethink).",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "rethought"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "our planning",
+          "aceita": [
+            "the planning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cac834",
+      "quem": "voce",
+      "cod": "Only when we traced every request did we find the bottleneck.",
+      "dica": "(no relatório) Só quando rastreamos cada requisição achamos o gargalo.",
+      "img": "🔍🚦🐢",
+      "alvo": "Only when",
+      "alvo_pt": "Só quando",
+      "conceito": "Na conversa, ordem normal: We only found the bottleneck when we traced every request.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "found"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "every request",
+          "aceita": [
+            "each request"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-9d8973",
+      "quem": "voce",
+      "cod": "And only when customer calls kept dropping did we replace the old phone system.",
+      "dica": "(no relatório) E só quando as ligações dos clientes ficaram caindo trocamos o sistema de telefonia antigo.",
+      "img": "📞❌☎️",
+      "alvo": "only when",
+      "alvo_pt": "só quando",
+      "conceito": "keep + -ing = ficar + gerúndio: kept dropping = ficaram caindo.",
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "replaced"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

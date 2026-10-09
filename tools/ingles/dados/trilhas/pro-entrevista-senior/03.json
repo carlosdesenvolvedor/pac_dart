@@ -1,0 +1,282 @@
+{
+  "id": "pro-entrevista-senior.contar-um-caso-acao-e-resultado",
+  "trilha": "pro-entrevista-senior",
+  "nome": "Contar um caso: ação e resultado",
+  "emoji": "📈",
+  "cena": "Ainda na entrevista comportamental, você conta o que fez contra os crashes, mostra o resultado em números e diz o que faria diferente.",
+  "resumo": "Fechar o caso: took the initiative to, crash reporting, crash rate e Looking back, I would have...",
+  "fechamento": false,
+  "novos": [
+    "take the initiative to",
+    "crash reporting",
+    "crash rate",
+    "looking back"
+  ],
+  "apoio": [
+    "in hindsight",
+    "as a result",
+    "realize"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Ação, resultado com número e reflexão"
+    },
+    {
+      "t": "p",
+      "c": "A ação na 1ª pessoa (**I took the initiative to...**), o resultado com número (**As a result, our crash rate went down by 80 percent.**) e o que você faria diferente (**Looking back, I would have...**)."
+    },
+    {
+      "t": "warn",
+      "c": "Percebi = I realized (realize não é realizar). Eu teria envolvido = I would have involved (não: I would involve)."
+    },
+    {
+      "t": "ex",
+      "c": "I took the initiative to set up crash reporting.\nTomei a iniciativa de configurar o monitoramento de crashes."
+    }
+  ],
+  "imagem": "📊📉✅",
+  "visualizacao": "Você abre na memória o gráfico de crashes: a linha vermelha alta, depois caindo semana após semana. A gestora anota tudo e acena com a cabeça.",
+  "foto_busca": "analytics dashboard line chart decreasing",
+  "trechos": [
+    {
+      "id": "f-668885",
+      "quem": "voce",
+      "cod": "I took the initiative to set up crash reporting.",
+      "dica": "Tomei a iniciativa de configurar o monitoramento de crashes.",
+      "img": "🙋‍♂️🛠️",
+      "alvo": "took the initiative to",
+      "alvo_pt": "Tomei a iniciativa de",
+      "conceito": "tomar a iniciativa de + verbo = take the initiative to + verbo.",
+      "var": [
+        {
+          "em": "set up",
+          "aceita": [
+            "configure"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "took initiative",
+        "of"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9a7c15",
+      "quem": "voce",
+      "cod": "Within a week, crash reporting showed us exactly what was failing.",
+      "dica": "Em uma semana, o monitoramento de crashes nos mostrou exatamente o que estava falhando.",
+      "img": "🔎📊",
+      "alvo": "crash reporting",
+      "alvo_pt": "monitoramento de crashes",
+      "conceito": "crash reporting = ferramenta que registra cada crash. Pergunta encaixada sem inversão: what was failing.",
+      "var": [
+        {
+          "em": "Within",
+          "aceita": [
+            "In"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "what was it",
+        "the crash reporting"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-311fff",
+      "quem": "voce",
+      "cod": "Thanks to crash reporting, I realized most crashes came from one library.",
+      "dica": "Graças ao monitoramento de crashes, percebi que a maioria dos crashes vinha de uma biblioteca só.",
+      "img": "💡📚",
+      "alvo": "crash reporting",
+      "alvo_pt": "monitoramento de crashes",
+      "conceito": "perceber = realize (realizar = carry out, achieve).",
+      "var": [
+        {
+          "em": "one library",
+          "aceita": [
+            "a single library",
+            "just one library"
+          ]
+        },
+        {
+          "em": "most crashes",
+          "aceita": [
+            "most of the crashes"
+          ]
+        },
+        {
+          "em": "came",
+          "aceita": [
+            "were coming"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "perceived",
+        "noticed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-525730",
+      "quem": "voce",
+      "cod": "I took the initiative to replace that library with a lighter one.",
+      "dica": "Tomei a iniciativa de trocar essa biblioteca por uma mais leve.",
+      "img": "🔄🪶",
+      "alvo": "took the initiative to",
+      "alvo_pt": "Tomei a iniciativa de",
+      "conceito": "trocar X por Y = replace X with Y; one evita repetir library.",
+      "var": [
+        {
+          "em": "that library",
+          "aceita": [
+            "the library"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "for a lighter",
+        "change"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-425923",
+      "quem": "voce",
+      "cod": "As a result, our crash rate went down by 80 percent in two months.",
+      "dica": "Como resultado, nossa taxa de crashes caiu 80 por cento em dois meses.",
+      "img": "📉🎉",
+      "alvo": "crash rate",
+      "alvo_pt": "taxa de crashes",
+      "conceito": "cair X por cento = go down by X percent; by marca o tamanho da queda.",
+      "var": [
+        {
+          "em": "went down",
+          "aceita": [
+            "dropped",
+            "fell"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "%",
+        "in 80"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1cc361",
+      "quem": "voce",
+      "cod": "By the end of the year, our crash rate was under one percent.",
+      "dica": "No fim do ano, nossa taxa de crashes estava abaixo de um por cento.",
+      "img": "📅🟢",
+      "alvo": "crash rate",
+      "alvo_pt": "taxa de crashes",
+      "conceito": "Número por extenso até dez: one percent, mas 80 percent em dígitos.",
+      "var": [
+        {
+          "em": "By the end",
+          "aceita": [
+            "At the end"
+          ]
+        },
+        {
+          "em": "under",
+          "aceita": [
+            "below"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "in the end",
+        "down of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0a062b",
+      "quem": "voce",
+      "cod": "Looking back, I would have involved the product team much earlier.",
+      "dica": "Olhando pra trás, eu teria envolvido o time de produto bem mais cedo.",
+      "img": "🔙🤝",
+      "alvo": "Looking back",
+      "alvo_pt": "Olhando pra trás",
+      "conceito": "eu teria + particípio = I would have + particípio (BR57).",
+      "var": [
+        {
+          "em": "much earlier",
+          "aceita": [
+            "a lot earlier",
+            "way earlier"
+          ]
+        }
+      ],
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would involve",
+        "had involved"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1c026b",
+      "quem": "voce",
+      "cod": "Looking back, I should have shared the numbers with the team every week.",
+      "dica": "Olhando pra trás, eu devia ter compartilhado os números com o time toda semana.",
+      "img": "🗓️📤👥",
+      "alvo": "Looking back",
+      "alvo_pt": "Olhando pra trás",
+      "conceito": "devia ter + particípio = should have + particípio.",
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "should shared",
+        "must have"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "id": "pro-incidentes-comunicacao.pagina-de-status-para-clientes",
+  "trilha": "pro-incidentes-comunicacao",
+  "nome": "Página de status para clientes",
+  "emoji": "📢",
+  "cena": "Enquanto o time investiga, você escreve as atualizações da página de status: investigando, identificado, monitorando, resolvido.",
+  "resumo": "Atualizações públicas em tom formal: elevated error rates, may experience, intermittent e status page.",
+  "fechamento": false,
+  "novos": [
+    "elevated error rates",
+    "may experience",
+    "status page",
+    "intermittent"
+  ],
+  "apoio": [
+    "restored",
+    "has been identified",
+    "has been implemented"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Falar com o cliente"
+    },
+    {
+      "t": "p",
+      "c": "Tom formal e sem jargão: **We are investigating...**, **Some users may experience...** (alguns usuários podem enfrentar...), **The issue has been identified.**, **Resolved:**"
+    },
+    {
+      "t": "warn",
+      "c": "Uma correção foi implementada = A fix has been implemented (passiva). currently = no momento (não: actually)."
+    },
+    {
+      "t": "ex",
+      "c": "Some users may experience failed or delayed payments.\nAlguns usuários podem enfrentar pagamentos com falha ou atrasados."
+    }
+  ],
+  "imagem": "📢🌐⏳",
+  "visualizacao": "Você escreve a atualização pública com cuidado, sabendo que milhares de clientes vão ler. O relógio na tela marca a hora da próxima atualização.",
+  "foto_busca": "status page website laptop",
+  "trechos": [
+    {
+      "id": "f-fc6d15",
+      "quem": "voce",
+      "cod": "We are investigating elevated error rates affecting payments.",
+      "dica": "Estamos investigando taxas de erro elevadas que afetam os pagamentos.",
+      "img": "🔍📈",
+      "alvo": "elevated error rates",
+      "alvo_pt": "taxas de erro elevadas",
+      "conceito": "elevated error rates = taxas de erro elevadas; o tom de página de status.",
+      "var": [
+        {
+          "em": "We are",
+          "aceita": [
+            "We're"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f25262",
+      "quem": "voce",
+      "cod": "Some users may experience failed or delayed payments.",
+      "dica": "Alguns usuários podem enfrentar pagamentos com falha ou atrasados.",
+      "img": "💳⏳",
+      "alvo": "may experience",
+      "alvo_pt": "podem enfrentar",
+      "conceito": "may experience = podem enfrentar, podem ter (tom formal, sem prometer nada).",
+      "var": [
+        {
+          "em": "may",
+          "aceita": [
+            "might"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dd965c",
+      "quem": "sarah",
+      "cod": "Can you post an update on the status page? Customers are asking.",
+      "dica": "Você pode publicar uma atualização na página de status? Os clientes estão perguntando.",
+      "img": "📝🌐",
+      "alvo": "status page",
+      "alvo_pt": "página de status",
+      "conceito": "post on the status page = publicar na página de status (preposição on).",
+      "blocos": [
+        8
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-de2f7f",
+      "quem": "voce",
+      "contexto": "f-dd965c",
+      "cod": "Done. We'll post updates on the status page every thirty minutes.",
+      "dica": "Feito. Vamos publicar atualizações na página de status a cada trinta minutos.",
+      "img": "🔄🌐",
+      "alvo": "status page",
+      "alvo_pt": "página de status",
+      "blocos": [
+        1
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "conceito": "post on the status page = publicar na página de status (preposição on)."
+    },
+    {
+      "id": "f-e7bcba",
+      "quem": "voce",
+      "cod": "Currently, some customers are seeing intermittent errors at checkout.",
+      "dica": "No momento, alguns clientes estão vendo erros intermitentes no checkout.",
+      "img": "💡〰️",
+      "alvo": "intermittent",
+      "alvo_pt": "intermitentes",
+      "conceito": "intermittent = que vai e volta; currently = no momento (não: actually).",
+      "var": [
+        {
+          "em": "Currently",
+          "aceita": [
+            "At the moment",
+            "Right now"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR56",
+        "BR45"
+      ],
+      "armadilhas": [
+        "actually",
+        "intermitent"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f0e194",
+      "quem": "voce",
+      "cod": "The issue has been identified, and errors are now only intermittent.",
+      "dica": "O problema foi identificado, e agora os erros são só intermitentes.",
+      "img": "🎯〰️",
+      "alvo": "intermittent",
+      "alvo_pt": "intermitentes",
+      "conceito": "has been identified: passiva no present perfect, típica de página de status.",
+      "registro": "formal",
+      "interferencias": [
+        "BR58",
+        "BR27"
+      ],
+      "armadilhas": [
+        "was"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        5
+      ]
+    },
+    {
+      "id": "f-b4ee0b",
+      "quem": "voce",
+      "cod": "A fix has been implemented, but some users may experience delays.",
+      "dica": "Uma correção foi implementada, mas alguns usuários podem enfrentar atrasos.",
+      "img": "🔧🐢",
+      "alvo": "may experience",
+      "alvo_pt": "podem enfrentar",
+      "var": [
+        {
+          "em": "may",
+          "aceita": [
+            "might"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e8053b",
+      "quem": "voce",
+      "cod": "Resolved: we are no longer seeing elevated error rates, and payments have been restored.",
+      "dica": "Resolvido: não estamos mais vendo taxas de erro elevadas, e os pagamentos foram restabelecidos.",
+      "img": "✅💳",
+      "alvo": "elevated error rates",
+      "alvo_pt": "taxas de erro elevadas",
+      "conceito": "no longer = não... mais.",
+      "blocos": [
+        9
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR58",
+        "BR27"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "we are",
+          "aceita": [
+            "we're"
+          ]
+        }
+      ]
+    }
+  ]
+}

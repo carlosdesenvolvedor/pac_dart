@@ -1,0 +1,233 @@
+{
+  "id": "pro-clientes-email-formal.recusar-pedidos-com-elegancia",
+  "trilha": "pro-clientes-email-formal",
+  "nome": "Recusar pedidos com elegância",
+  "emoji": "🚫",
+  "cena": "O cliente pede relatórios personalizados sem custo, dizendo que estavam no contrato, e você responde com firmeza e educação.",
+  "resumo": "Recusar sem perder o cliente: fall outside the scope of our agreement, As an alternative..., a quote.",
+  "fechamento": false,
+  "novos": [
+    "fall outside",
+    "agreement",
+    "as an alternative",
+    "quote"
+  ],
+  "apoio": [
+    "at this time",
+    "terms"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Dizer não sem fechar a porta"
+    },
+    {
+      "t": "p",
+      "c": "Mostre o limite com **fall outside the scope of our agreement** (estar fora do escopo do acordo), ofereça uma saída com **As an alternative** e feche com um **quote** (orçamento)."
+    },
+    {
+      "t": "warn",
+      "c": "recommend that you use (não: recommend you to use). fee = taxa; tax = imposto."
+    },
+    {
+      "t": "ex",
+      "c": "Unfortunately, this falls outside our agreement.\nInfelizmente, isso está fora do nosso acordo."
+    }
+  ],
+  "imagem": "📜🚫💼",
+  "visualizacao": "O contrato está aberto numa janela e o e-mail do cliente na outra. Você confere a cláusula de escopo, linha por linha, antes de responder.",
+  "foto_busca": "reading contract business document",
+  "trechos": [
+    {
+      "id": "f-d829d9",
+      "quem": "cliente",
+      "cod": "According to our agreement, custom reports are included at no extra cost.",
+      "dica": "Segundo o nosso acordo, relatórios personalizados estão incluídos sem custo adicional.",
+      "img": "📜💰",
+      "alvo": "agreement",
+      "alvo_pt": "acordo",
+      "conceito": "agreement = acordo (o contrato fechado). according to = segundo, de acordo com.",
+      "var": [
+        {
+          "em": "extra",
+          "aceita": [
+            "additional"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1b0ac5",
+      "quem": "voce",
+      "contexto": "f-d829d9",
+      "cod": "Unfortunately, custom reports fall outside the scope of our current agreement.",
+      "dica": "Infelizmente, relatórios personalizados estão fora do escopo do nosso acordo atual.",
+      "img": "📏🚫",
+      "alvo": "fall outside",
+      "alvo_pt": "estão fora",
+      "conceito": "estar fora do escopo = fall outside the scope, a fórmula do e-mail formal para recusar.",
+      "var": [
+        {
+          "em": "Unfortunately,",
+          "aceita": [
+            "I'm afraid"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "are out",
+        "are outside"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c5e17c",
+      "quem": "voce",
+      "cod": "This request also falls outside the terms of your plan.",
+      "dica": "Este pedido também está fora dos termos do seu plano.",
+      "img": "📋❌",
+      "alvo": "falls outside",
+      "alvo_pt": "está fora",
+      "conceito": "This request falls: -s da 3ª pessoa no verbo.",
+      "registro": "formal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "fall outside",
+        "is out"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-69220d",
+      "quem": "voce",
+      "cod": "Our service level agreement covers bug fixes, not new features.",
+      "dica": "O nosso acordo de nível de serviço cobre correções de bugs, não novas funcionalidades.",
+      "img": "🐞🛠️",
+      "alvo": "agreement",
+      "alvo_pt": "acordo",
+      "conceito": "service level agreement (SLA) = acordo de nível de serviço. covers, com -s.",
+      "registro": "formal",
+      "interferencias": [
+        "BR02",
+        "BR24"
+      ],
+      "armadilhas": [
+        "cover"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c6bd99",
+      "quem": "voce",
+      "cod": "As an alternative, we would recommend the export feature included in your plan.",
+      "dica": "Como alternativa, recomendaríamos o recurso de exportação incluído no seu plano.",
+      "img": "🔀📤",
+      "alvo": "As an alternative",
+      "alvo_pt": "Como alternativa",
+      "conceito": "we would recommend = recomendaríamos, mais suave que we recommend.",
+      "var": [
+        {
+          "em": "we would",
+          "aceita": [
+            "we'd"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5f731a",
+      "quem": "voce",
+      "cod": "We would recommend that you use the dashboard filters as an alternative.",
+      "dica": "Recomendaríamos que vocês usassem os filtros do painel como alternativa.",
+      "img": "🎛️📊",
+      "alvo": "as an alternative",
+      "alvo_pt": "como alternativa",
+      "conceito": "recommend that you use (não: recommend you to use).",
+      "var": [
+        {
+          "em": "We would",
+          "aceita": [
+            "We'd"
+          ]
+        }
+      ],
+      "opcional": [
+        "that"
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "to use"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3dc442",
+      "quem": "voce",
+      "cod": "We would be happy to send you a quote for this change.",
+      "dica": "Teríamos prazer em enviar a vocês um orçamento para essa mudança.",
+      "img": "🧾✉️",
+      "alvo": "quote",
+      "alvo_pt": "orçamento",
+      "conceito": "quote = orçamento (o preço proposto). budget = verba disponível.",
+      "var": [
+        {
+          "em": "We would",
+          "aceita": [
+            "We'd"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "budget"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1552c3",
+      "quem": "cliente",
+      "contexto": "f-3dc442",
+      "cod": "Please send us a quote, including any additional fees.",
+      "dica": "Por favor, nos envie um orçamento, incluindo eventuais taxas adicionais.",
+      "img": "💵➕",
+      "alvo": "quote",
+      "alvo_pt": "orçamento",
+      "conceito": "fee = taxa (cobrança por um serviço); tax = imposto.",
+      "registro": "formal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "taxes",
+        "budget"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

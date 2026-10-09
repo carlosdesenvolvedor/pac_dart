@@ -1,0 +1,276 @@
+{
+  "id": "pro-entrevista-senior.contar-um-caso-o-contexto",
+  "trilha": "pro-entrevista-senior",
+  "nome": "Contar um caso: o contexto",
+  "emoji": "📖",
+  "cena": "Na entrevista comportamental, a gestora pede um caso real e você conta o contexto e qual era a sua parte.",
+  "resumo": "Começar a resposta STAR sem rótulo: Tell me about a time when..., At my last company, kept + -ing, it was on me to.",
+  "fechamento": false,
+  "novos": [
+    "Tell me about a time when...",
+    "At my last company,",
+    "it was on me to",
+    "kept + -ing"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Contar o contexto sem recitar o método"
+    },
+    {
+      "t": "p",
+      "c": "A pergunta vem como **Tell me about a time when...** A resposta entra direto na história (**At my last company, our app kept crashing...**) e diz qual era a sua parte: **it was on me to...**"
+    },
+    {
+      "t": "warn",
+      "c": "Não abra com The situation was that... nem My task was to...: soa decorado. Na empresa = at the company (não: in my last company)."
+    },
+    {
+      "t": "ex",
+      "c": "At my last company, our app kept crashing on older phones.\nNa minha última empresa, nosso app vivia dando crash em celulares antigos."
+    }
+  ],
+  "imagem": "🗣️📱💥",
+  "visualizacao": "A gestora se inclina para a câmera e pede um caso real. Você lembra do app que vivia caindo, das avaliações ruins e da semana em que tudo dependia de você.",
+  "foto_busca": "woman interviewing candidate video call",
+  "trechos": [
+    {
+      "id": "f-eb302c",
+      "quem": "gestora",
+      "cod": "Tell me about a time when you had to solve a difficult problem.",
+      "dica": "Me conte de uma vez em que você teve que resolver um problema difícil.",
+      "img": "🧩😰❓",
+      "alvo": "Tell me about a time when",
+      "alvo_pt": "Me conte de uma vez em que",
+      "lit": "[lit.: me conte sobre uma vez quando...]",
+      "conceito": "A pergunta comportamental clássica: pede uma história real, não uma opinião.",
+      "var": [
+        {
+          "em": "solve",
+          "aceita": [
+            "fix"
+          ]
+        },
+        {
+          "em": "difficult",
+          "aceita": [
+            "hard",
+            "tough"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "one time",
+        "that you"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-62dc47",
+      "quem": "voce",
+      "cod": "At my last company, our app kept crashing on older phones.",
+      "dica": "Na minha última empresa, nosso app vivia dando crash em celulares antigos.",
+      "img": "🏢📱💥",
+      "alvo": "At my last company",
+      "alvo_pt": "Na minha última empresa",
+      "conceito": "Entre direto no caso (não: The situation was that...). Na empresa = at the company.",
+      "var": [
+        {
+          "em": "older",
+          "aceita": [
+            "old"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in",
+        "situation"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "contexto": "f-eb302c"
+    },
+    {
+      "id": "f-c4b373",
+      "quem": "voce",
+      "cod": "Users kept leaving one-star reviews.",
+      "dica": "Os usuários viviam deixando avaliações de uma estrela.",
+      "img": "⭐👎",
+      "alvo": "kept leaving",
+      "alvo_pt": "viviam deixando",
+      "conceito": "kept + -ing = vivia/continuava fazendo, de novo e de novo.",
+      "var": [
+        {
+          "em": "Users",
+          "aceita": [
+            "The users"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "kept leave",
+        "kept to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b968dc",
+      "quem": "voce",
+      "cod": "I was the only senior engineer, so it was on me to find the cause.",
+      "dica": "Eu era o único engenheiro sênior, então era comigo achar a causa.",
+      "img": "🙋🔍",
+      "alvo": "it was on me to",
+      "alvo_pt": "era comigo",
+      "lit": "[lit.: estava em mim]",
+      "conceito": "it was on me to + verbo = era comigo (responsabilidade minha).",
+      "var": [
+        {
+          "em": "it was on me to find the cause",
+          "aceita": [
+            "finding the cause was on me"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "pt_f": "Eu era a única engenheira sênior, então era comigo achar a causa.",
+      "registro": "neutro",
+      "armadilhas": [
+        "with me"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ac5d78",
+      "quem": "voce",
+      "cod": "It was also on me to keep our CEO updated.",
+      "dica": "Também era comigo manter o nosso CEO informado.",
+      "img": "📢👔🔄",
+      "alvo": "on me to",
+      "alvo_pt": "era comigo",
+      "conceito": "keep someone updated = manter alguém informado; o it é obrigatório (BR01).",
+      "var": [
+        {
+          "em": "keep our CEO updated",
+          "aceita": [
+            "keep the CEO updated"
+          ]
+        },
+        {
+          "em": "updated",
+          "aceita": [
+            "informed"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "was with me",
+        "maintain"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-784047",
+      "quem": "voce",
+      "cod": "Meanwhile, we kept losing users every week.",
+      "dica": "Enquanto isso, continuávamos perdendo usuários toda semana.",
+      "img": "📉👋",
+      "alvo": "kept losing",
+      "alvo_pt": "continuávamos perdendo",
+      "conceito": "continuar + gerúndio = keep + -ing (kept losing; não: kept to lose).",
+      "registro": "neutro",
+      "armadilhas": [
+        "kept lose",
+        "kept to",
+        "missing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-97c98d",
+      "quem": "gestora",
+      "cod": "Tell me about a time when you disagreed with your manager.",
+      "dica": "Me conte de uma vez em que você discordou do seu gestor.",
+      "img": "🙅‍♂️💬",
+      "alvo": "Tell me about a time when",
+      "alvo_pt": "Me conte de uma vez em que",
+      "conceito": "discordar de alguém = disagree with someone.",
+      "var": [
+        {
+          "em": "manager",
+          "aceita": [
+            "boss"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "disagreed of",
+        "disagreed from"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3bd9de",
+      "quem": "voce",
+      "contexto": "f-97c98d",
+      "cod": "At my last company, my manager wanted to skip code reviews to ship faster.",
+      "dica": "Na minha última empresa, meu gestor queria pular os code reviews para entregar mais rápido.",
+      "img": "⏭️👀🚀",
+      "alvo": "At my last company",
+      "alvo_pt": "Na minha última empresa",
+      "conceito": "para + verbo (finalidade) = to + verbo (não: for to ship).",
+      "var": [
+        {
+          "em": "manager",
+          "aceita": [
+            "boss"
+          ]
+        },
+        {
+          "em": "code reviews",
+          "aceita": [
+            "code review",
+            "the code reviews"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in",
+        "for"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

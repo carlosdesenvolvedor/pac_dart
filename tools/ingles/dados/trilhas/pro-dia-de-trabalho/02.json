@@ -1,0 +1,204 @@
+{
+  "id": "pro-dia-de-trabalho.meio-do-dia-design-e-code-review",
+  "trilha": "pro-dia-de-trabalho",
+  "nome": "Meio do dia: design e code review",
+  "emoji": "🧠",
+  "cena": "Depois do almoço: revisão de design da nova fila de notificações com Mike e, em seguida, dois PRs esperando o seu review.",
+  "resumo": "O miolo técnico do dia: design review, moving parts, second pair of eyes e sanity check.",
+  "fechamento": false,
+  "novos": [
+    "second pair of eyes",
+    "design review",
+    "sanity check",
+    "moving part"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Design e review com tato"
+    },
+    {
+      "t": "p",
+      "c": "Na **design review**, aponte o custo de cada **moving part** e conceda antes de rebater (*Admittedly... That said...*). No PR, peça **a second pair of eyes** e faça um **sanity check** antes de aprovar."
+    },
+    {
+      "t": "warn",
+      "c": "explain to us how... (não: explain us). suggest that we add (não: suggest us to add)."
+    },
+    {
+      "t": "ex",
+      "c": "Non-blocking: I suggest that we add a test here.\nNão bloqueante: sugiro que a gente adicione um teste aqui."
+    }
+  ],
+  "imagem": "🧠📐🔍",
+  "visualizacao": "Diagrama da fila compartilhado na tela, setas e caixas coloridas. O Mike aponta uma caixa, e na outra aba dois PRs esperam o seu review.",
+  "foto_busca": "software architecture diagram whiteboard",
+  "trechos": [
+    {
+      "id": "f-5ca2d1",
+      "quem": "voce",
+      "cod": "Thanks for joining the design review, Mike.",
+      "dica": "Obrigado por participar da revisão de design, Mike.",
+      "pt_f": "Obrigada por participar da revisão de design, Mike.",
+      "img": "🧠📐",
+      "alvo": "design review",
+      "alvo_pt": "revisão de design",
+      "conceito": "design review = revisão de design (de arquitetura, antes de codar).",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ef2dec",
+      "quem": "mike",
+      "cod": "Can you explain to us how the retries work? There are a lot of moving parts.",
+      "dica": "Você pode explicar para a gente como funcionam as retentativas? Tem muitas partes móveis.",
+      "img": "⚙️🔄",
+      "alvo": "moving parts",
+      "alvo_pt": "partes móveis",
+      "conceito": "explain to us how... (não: explain us). moving parts = peças que podem mudar ou falhar.",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "explain us"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-85b575",
+      "quem": "voce",
+      "contexto": "f-ef2dec",
+      "cod": "Admittedly, a queue adds another moving part. That said, it removes a single point of failure.",
+      "dica": "É verdade que uma fila adiciona mais uma parte móvel. Dito isso, ela elimina um ponto único de falha.",
+      "img": "📬⚖️",
+      "alvo": "moving part",
+      "alvo_pt": "parte móvel",
+      "conceito": "Admittedly... That said... = concede e rebate. adds e removes com -s.",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1c7ced",
+      "quem": "mike",
+      "cod": "Great design review! Let's loop in Ana before we decide.",
+      "dica": "Ótima revisão de design! Vamos incluir a Ana antes de decidir.",
+      "img": "🔁👩‍🎨",
+      "alvo": "design review",
+      "alvo_pt": "revisão de design",
+      "conceito": "loop in = incluir alguém na conversa.",
+      "var": [
+        {
+          "em": "before we decide",
+          "aceita": [
+            "before deciding"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-23ba35",
+      "quem": "voce",
+      "cod": "Before I approve this, can I get a second pair of eyes on it?",
+      "dica": "Antes de eu aprovar, consigo um segundo par de olhos nisso?",
+      "img": "👀🔍",
+      "alvo": "second pair of eyes",
+      "alvo_pt": "segundo par de olhos",
+      "conceito": "a second pair of eyes = mais alguém revisando. on it: o objeto é obrigatório.",
+      "var": [
+        {
+          "em": "can I get",
+          "aceita": [
+            "could I get",
+            "can I have"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "this"
+      ]
+    },
+    {
+      "id": "f-bf166e",
+      "quem": "mike",
+      "contexto": "f-23ba35",
+      "cod": "Sure, I can be your second pair of eyes. Send me the link.",
+      "dica": "Claro, posso ser o seu segundo par de olhos. Me manda o link.",
+      "img": "🔗👁️",
+      "alvo": "second pair of eyes",
+      "alvo_pt": "segundo par de olhos",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ddadaf",
+      "quem": "voce",
+      "cod": "Sanity check: does this migration run before or after the deploy?",
+      "dica": "Checagem de sanidade: essa migration roda antes ou depois do deploy?",
+      "img": "🧐🗄️",
+      "alvo": "Sanity check",
+      "alvo_pt": "Checagem de sanidade",
+      "conceito": "sanity check = checagem rápida de bom senso (o teste de sanidade do QA). does + verbo base na pergunta.",
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "runs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aad81f",
+      "quem": "voce",
+      "cod": "Non-blocking: I suggest that we add a test here, just as a sanity check.",
+      "dica": "Não bloqueante: sugiro que a gente adicione um teste aqui, só como checagem de sanidade.",
+      "img": "🧪💡",
+      "alvo": "sanity check",
+      "alvo_pt": "checagem de sanidade",
+      "conceito": "suggest that we add (não: suggest us to add).",
+      "opcional": [
+        "that"
+      ],
+      "blocos": [
+        9
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "suggest us",
+        "to add"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

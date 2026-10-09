@@ -1,0 +1,197 @@
+{
+  "id": "pro-lideranca-feedback.conduzir-um-1-1",
+  "trilha": "pro-lideranca-feedback",
+  "nome": "Conduzir um 1:1",
+  "emoji": "☕",
+  "cena": "No 1:1 quinzenal, por vídeo, você conversa com um dev júnior do seu time que anda mais quieto nas reuniões.",
+  "resumo": "Abrir o 1:1, ouvir, checar a carga de trabalho e oferecer apoio.",
+  "fechamento": false,
+  "novos": [
+    "on your mind",
+    "workload",
+    "manageable",
+    "how are things going"
+  ],
+  "apoio": [
+    "lately",
+    "check in"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O 1:1 é da outra pessoa"
+    },
+    {
+      "t": "p",
+      "c": "Abra espaço e escute: **This is your time. What's been on your mind lately?** Depois cheque a carga: **Is your workload still manageable?**"
+    },
+    {
+      "t": "warn",
+      "c": "support = apoiar (suportar alguém = put up with): How can I support you?"
+    },
+    {
+      "t": "ex",
+      "c": "How are things going with the new team?\nComo estão as coisas com o time novo?"
+    }
+  ],
+  "imagem": "☕💻🗣️",
+  "visualizacao": "Você está na chamada com o dev júnior, café ao lado do teclado. Ele demora a ligar a câmera e responde baixinho; você espera com calma.",
+  "foto_busca": "one on one video call manager",
+  "trechos": [
+    {
+      "id": "f-9b06d3",
+      "quem": "voce",
+      "cod": "This is your time. What's been on your mind lately?",
+      "dica": "Esse tempo é seu. O que tem passado pela sua cabeça ultimamente?",
+      "img": "🧠💭",
+      "alvo": "on your mind",
+      "alvo_pt": "passado pela sua cabeça",
+      "lit": "[lit.: o que tem estado na sua mente]",
+      "conceito": "What's been on your mind? abre a conversa sem pressa. lately = ultimamente.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-447c76",
+      "quem": "voce",
+      "cod": "How are things going with the payments team?",
+      "dica": "Como estão as coisas com o time de pagamentos?",
+      "img": "💳👥",
+      "alvo": "How are things going",
+      "alvo_pt": "Como estão as coisas",
+      "conceito": "How are things going? = Como estão as coisas? (things é plural: are).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c6445a",
+      "quem": "dev-junior",
+      "contexto": "f-447c76",
+      "cod": "Things are going OK, but my workload is pretty heavy right now.",
+      "dica": "As coisas estão indo bem, mas a minha carga de trabalho está bem pesada agora.",
+      "img": "🏋️📚",
+      "alvo": "workload",
+      "alvo_pt": "carga de trabalho",
+      "conceito": "workload = carga de trabalho; heavy = pesada.",
+      "var": [
+        {
+          "em": "OK",
+          "aceita": [
+            "well",
+            "fine"
+          ]
+        },
+        {
+          "em": "right now",
+          "aceita": [
+            "now"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf1091",
+      "quem": "voce",
+      "contexto": "f-c6445a",
+      "cod": "Is your workload still manageable?",
+      "dica": "A sua carga de trabalho ainda está administrável?",
+      "img": "⚖️🙂",
+      "alvo": "manageable",
+      "alvo_pt": "administrável",
+      "conceito": "manageable = dá para administrar, dá conta.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1e5092",
+      "quem": "dev-junior",
+      "contexto": "f-bf1091",
+      "cod": "Mostly, but some weeks it doesn't feel manageable at all.",
+      "dica": "Na maior parte do tempo, sim, mas tem semana que não parece nada administrável.",
+      "img": "📅😵",
+      "alvo": "manageable",
+      "alvo_pt": "administrável",
+      "conceito": "não parece = it doesn't feel: o it é obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR07"
+      ],
+      "armadilhas": [
+        "don't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4275d7",
+      "quem": "voce",
+      "cod": "How can I support you better with your workload?",
+      "dica": "Como eu posso te apoiar melhor com a sua carga de trabalho?",
+      "img": "🤝📋",
+      "alvo": "workload",
+      "alvo_pt": "carga de trabalho",
+      "conceito": "support = apoiar (suportar alguém = put up with).",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-328a46",
+      "quem": "voce",
+      "cod": "And how are things going outside of work?",
+      "dica": "E como estão as coisas fora do trabalho?",
+      "img": "🏡🌳",
+      "alvo": "how are things going",
+      "alvo_pt": "como estão as coisas",
+      "conceito": "outside of work = fora do trabalho (work sem artigo).",
+      "var": [
+        {
+          "em": "outside of work",
+          "aceita": [
+            "outside work"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR16"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9b1c43",
+      "quem": "voce",
+      "cod": "Is there anything else on your mind?",
+      "dica": "Tem mais alguma coisa passando pela sua cabeça?",
+      "img": "💭❓",
+      "alvo": "on your mind",
+      "alvo_pt": "passando pela sua cabeça",
+      "conceito": "Tem (existir) = Is there...? (não: Have).",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

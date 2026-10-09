@@ -1,0 +1,222 @@
+{
+  "id": "precisao-lexical.cena-final-e-mail-e-apresentacao",
+  "trilha": "precisao-lexical",
+  "nome": "Cena final: e-mail e apresentação",
+  "emoji": "🎬",
+  "cena": "Na véspera da apresentação para o cliente, você e a Ana fazem a revisão final do e-mail e dos slides.",
+  "resumo": "Fechamento: os pares que confundem juntos (sensible x sensitive, comprehensive x understanding, anticipate x move up).",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão da trilha"
+    },
+    {
+      "t": "tip",
+      "c": "sensato = sensible · sensível = sensitive · abrangente = comprehensive · compreensivo = understanding · prever = anticipate · antecipar = move up."
+    },
+    {
+      "t": "tip",
+      "c": "instruído = educated · educado = polite · na verdade = actually · atualmente = currently."
+    },
+    {
+      "t": "warn",
+      "c": "alegar = claim (pode não ser verdade) · afirmar por escrito = state."
+    }
+  ],
+  "imagem": "🌙💻📑",
+  "visualizacao": "É noite, véspera da apresentação. Você e a Ana estão numa chamada, o e-mail num lado da tela e os slides no outro; vocês leem tudo uma última vez, devagar.",
+  "foto_busca": "late night final review laptop",
+  "trechos": [
+    {
+      "id": "f-a0288b",
+      "quem": "ana",
+      "cod": "It would be sensible to warn the client early.",
+      "dica": "Seria sensato avisar o cliente cedo.",
+      "img": "📣⏰",
+      "alvo": "sensible",
+      "alvo_pt": "sensato",
+      "conceito": "Seria sensato = It would be sensible: o it é obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR56"
+      ],
+      "armadilhas": [
+        "sensitive"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3a13ab",
+      "quem": "voce",
+      "contexto": "f-a0288b",
+      "cod": "Yes, they're really sensitive to delays.",
+      "dica": "Sim, eles são muito sensíveis a atrasos.",
+      "img": "😟⌛",
+      "alvo": "sensitive to",
+      "alvo_pt": "sensíveis a",
+      "conceito": "sensível a = sensitive to; sensato = sensible.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "sensible"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-89d153",
+      "quem": "voce",
+      "cod": "We anticipate a busy quarter, so we moved the planning meeting up.",
+      "dica": "Prevemos um trimestre movimentado, então antecipamos a reunião de planejamento.",
+      "img": "📈📅⏩",
+      "alvo": "moved the planning meeting up",
+      "alvo_pt": "antecipamos",
+      "conceito": "prever = anticipate; antecipar uma reunião = move up.",
+      "var": [
+        {
+          "em": "moved the planning meeting up",
+          "aceita": [
+            "moved up the planning meeting",
+            "have moved the planning meeting up",
+            "have moved up the planning meeting"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR60"
+      ],
+      "armadilhas": [
+        "anticipated"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9f6a98",
+      "quem": "ana",
+      "cod": "Your report is comprehensive, but the client deck is too long.",
+      "dica": "O seu relatório está abrangente, mas o deck do cliente está longo demais.",
+      "img": "📚📏",
+      "alvo": "comprehensive",
+      "alvo_pt": "abrangente",
+      "conceito": "abrangente = comprehensive. deck = o arquivo de slides.",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "understanding"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bc28e2",
+      "quem": "voce",
+      "cod": "The client has been very understanding about the big refactor.",
+      "dica": "O cliente tem sido muito compreensivo com a grande refatoração.",
+      "img": "🤝🏗️",
+      "alvo": "understanding",
+      "alvo_pt": "compreensivo",
+      "conceito": "compreensivo = understanding; abrangente = comprehensive.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR56"
+      ],
+      "armadilhas": [
+        "comprehensive",
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fb363a",
+      "quem": "ana",
+      "cod": "Actually, the client currently uses an older version of the app.",
+      "dica": "Na verdade, o cliente atualmente usa uma versão mais antiga do app.",
+      "img": "📱🕰️",
+      "alvo": "currently",
+      "alvo_pt": "atualmente",
+      "conceito": "actually = na verdade; atualmente = currently. uses: -s da 3ª pessoa.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR56"
+      ],
+      "armadilhas": [
+        "actually",
+        "use"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0e0553",
+      "quem": "voce",
+      "cod": "Their new CTO is always very polite, even when she disagrees with us.",
+      "dica": "A nova CTO deles é sempre muito educada, mesmo quando discorda de nós.",
+      "img": "🙂🤝",
+      "alvo": "polite",
+      "alvo_pt": "educada",
+      "conceito": "educado (gentil) = polite; instruído (com estudo) = educated.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "educated",
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-58668d",
+      "quem": "ana",
+      "cod": "The vendor claims a huge improvement, but our tests don't show it.",
+      "dica": "O fornecedor alega uma melhoria enorme, mas os nossos testes não mostram isso.",
+      "img": "📢🧪❌",
+      "alvo": "claims",
+      "alvo_pt": "alega",
+      "conceito": "alegar = claim; huge = enorme, na conversa.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR07"
+      ],
+      "armadilhas": [
+        "claim",
+        "shows"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

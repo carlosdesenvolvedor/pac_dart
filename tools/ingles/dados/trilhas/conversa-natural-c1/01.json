@@ -1,0 +1,249 @@
+{
+  "id": "conversa-natural-c1.nem-me-fale",
+  "trilha": "conversa-natural-c1",
+  "nome": "Nem me fale",
+  "emoji": "🍻",
+  "cena": "No happy hour com o time, depois de uma semana pesada de planejamento, todo mundo desabafa.",
+  "resumo": "Concordar com força e empatia: Tell me about it, You can say that again e I hear you.",
+  "fechamento": false,
+  "novos": [
+    "tell me about it",
+    "you can say that again",
+    "I hear you",
+    "could have been an email"
+  ],
+  "apoio": [
+    "in a row",
+    "crazy (corrido)",
+    "around here",
+    "drained"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Reagir concordando"
+    },
+    {
+      "t": "p",
+      "c": "**Tell me about it.** = Nem me fale. **You can say that again.** = Falou tudo. **I hear you.** = Te entendo. Os três concordam com quem reclama; depois vem uma frase curta de complemento, como na conversa real."
+    },
+    {
+      "t": "warn",
+      "c": "Como reação, Tell me about it não é pedido (não: Me conta): o contexto mostra que você concorda."
+    },
+    {
+      "t": "warn",
+      "c": "Nem eu, depois de frase negativa, é Me neither (não: Me too)."
+    },
+    {
+      "t": "ex",
+      "c": "That meeting could have been an email.\nAquela reunião podia ter sido um e-mail."
+    }
+  ],
+  "imagem": "🍻🗓️😩",
+  "visualizacao": "Você está num bar barulhento com o time depois do expediente. Copos batendo, risadas cansadas e todo mundo reclamando da semana de planejamento.",
+  "foto_busca": "coworkers happy hour bar",
+  "trechos": [
+    {
+      "id": "f-1f8dc7",
+      "quem": "voce",
+      "contexto": "This week was brutal, wasn't it?",
+      "cod": "Tell me about it. I was on call three nights in a row.",
+      "dica": "Nem me fale. Fiquei de plantão três noites seguidas.",
+      "img": "📟🌙😩",
+      "alvo": "Tell me about it",
+      "alvo_pt": "Nem me fale",
+      "lit": "[lit.: me conte sobre isso]",
+      "conceito": "Como reação, Tell me about it é concordância (Nem me fale), não pedido para contar.",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "three nights in a row",
+          "aceita": [
+            "three nights straight"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-9e925f",
+      "quem": "ana",
+      "contexto": "I can't believe how many meetings we had this week.",
+      "cod": "Tell me about it. Every meeting runs over.",
+      "dica": "Nem me fale. Toda reunião passa do horário.",
+      "img": "⏰📈🗓️",
+      "alvo": "Tell me about it",
+      "alvo_pt": "Nem me fale",
+      "conceito": "run over = passar do horário. -s da 3ª pessoa: every meeting runs.",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "run"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "runs over",
+          "aceita": [
+            "runs late",
+            "goes over"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a00519",
+      "quem": "voce",
+      "contexto": "These planning meetings go on forever.",
+      "cod": "You can say that again. We spent two hours on one slide.",
+      "dica": "Falou tudo. A gente passou duas horas num slide só.",
+      "img": "🖥️⏳😵",
+      "alvo": "You can say that again",
+      "alvo_pt": "Falou tudo",
+      "lit": "[lit.: você pode dizer isso de novo]",
+      "conceito": "You can say that again = Falou tudo: concordância forte, com humor.",
+      "var": [
+        {
+          "em": "on one slide",
+          "aceita": [
+            "on a single slide"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d091bd",
+      "quem": "mike",
+      "cod": "Honestly, that meeting this morning could have been an email.",
+      "dica": "Sinceramente, aquela reunião de hoje de manhã podia ter sido um e-mail.",
+      "img": "📧🙄🕘",
+      "alvo": "could have been an email",
+      "alvo_pt": "podia ter sido um e-mail",
+      "conceito": "could have been = podia ter sido: a piada clássica de escritório sobre reunião inútil.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3eefe9",
+      "quem": "sarah",
+      "contexto": "f-d091bd",
+      "cod": "You can say that again. I almost fell asleep on camera.",
+      "dica": "Falou tudo. Quase peguei no sono na frente da câmera.",
+      "img": "😴📹💤",
+      "alvo": "You can say that again",
+      "alvo_pt": "Falou tudo",
+      "conceito": "fall asleep = pegar no sono; on camera = na frente da câmera (com ela ligada).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "on camera",
+          "aceita": [
+            "in front of the camera"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-9494ed",
+      "quem": "ana",
+      "cod": "Half my week could have been an email, to be honest.",
+      "dica": "Metade da minha semana podia ter sido um e-mail, para ser sincera.",
+      "img": "📅✂️📧",
+      "alvo": "could have been an email",
+      "alvo_pt": "podia ter sido um e-mail",
+      "conceito": "O exagero faz parte da piada: a semana inteira cabia num e-mail.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Half my week",
+          "aceita": [
+            "Half of my week"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-eb9bb3",
+      "quem": "voce",
+      "contexto": "I haven't slept well all week.",
+      "cod": "I hear you. Me neither.",
+      "dica": "Te entendo. Nem eu.",
+      "img": "🛌👀🤝",
+      "alvo": "I hear you",
+      "alvo_pt": "Te entendo",
+      "lit": "[lit.: eu ouço você]",
+      "conceito": "I hear you = Te entendo (empatia). Nem eu, depois de frase negativa, é Me neither (não: Me too).",
+      "var": [
+        {
+          "em": "Me neither",
+          "aceita": [
+            "Neither have I"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR43"
+      ],
+      "armadilhas": [
+        "too"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-791671",
+      "quem": "mike",
+      "contexto": "I didn't expect planning season to be this brutal.",
+      "cod": "I hear you. It's the same every year around here.",
+      "dica": "Te entendo. É a mesma coisa todo ano por aqui.",
+      "img": "🔁📆🏢",
+      "alvo": "I hear you",
+      "alvo_pt": "Te entendo",
+      "conceito": "É a mesma coisa = It's the same: o it é obrigatório.",
+      "var": [
+        {
+          "em": "It's the same",
+          "aceita": [
+            "It's the same thing"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6029150,
+        "en_autor": "Huskion",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"It's the same every year.\" (acrescentados I hear you e around here); PT reescrito (original: \"É a mesma coisa todos os anos.\")",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

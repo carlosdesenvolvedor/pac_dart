@@ -1,0 +1,199 @@
+{
+  "id": "pro-escrita-tecnica.adr-registrar-a-decisao",
+  "trilha": "pro-escrita-tecnica",
+  "nome": "ADR: registrar a decisão",
+  "emoji": "🗂️",
+  "cena": "Depois de semanas de discussão, o time decide não trocar de banco de dados agora, e você registra a decisão num ADR.",
+  "resumo": "Um ADR curto: a decisão, a restrição, At the time of writing... e superseded by.",
+  "fechamento": false,
+  "novos": [
+    "architecture decision record",
+    "constraint",
+    "at the time of writing",
+    "superseded by"
+  ],
+  "apoio": [
+    "quarter (trimestre)",
+    "we decided to",
+    "revisit"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "ADR: a decisão por escrito"
+    },
+    {
+      "t": "p",
+      "c": "Um **architecture decision record** (registro de decisão de arquitetura) diz o que foi decidido (**We decided to...**), a restrição principal (**constraint**) e quando ele deixa de valer (**superseded by...**)."
+    },
+    {
+      "t": "warn",
+      "c": "record = registro (recordar = remember). At the time of writing = no momento em que escrevemos."
+    },
+    {
+      "t": "ex",
+      "c": "The main constraint is team size, not technology.\nA principal restrição é o tamanho do time, e não a tecnologia."
+    }
+  ],
+  "imagem": "🗂️📌🗄️",
+  "visualizacao": "Fim de semanas de discussão. Você abre a pasta de decisões do repositório e escreve com calma, pensando em quem vai ler daqui a um ano.",
+  "foto_busca": "folder archive documents desk",
+  "trechos": [
+    {
+      "id": "f-fbd253",
+      "quem": "voce",
+      "cod": "This architecture decision record explains why we kept the current database.",
+      "dica": "Este registro de decisão de arquitetura explica por que mantivemos o banco de dados atual.",
+      "img": "🗂️🗄️",
+      "alvo": "architecture decision record",
+      "alvo_pt": "registro de decisão de arquitetura",
+      "conceito": "record = registro (não: lembrança). ADR é a sigla.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56",
+        "BR02"
+      ],
+      "armadilhas": [
+        "explain"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-778402",
+      "quem": "voce",
+      "cod": "We decided to keep the current database. The main constraint is team size.",
+      "dica": "Decidimos manter o banco de dados atual. A principal restrição é o tamanho do time.",
+      "img": "👥📏",
+      "alvo": "constraint",
+      "alvo_pt": "restrição",
+      "conceito": "constraint = restrição, limite que pesa na decisão.",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c43116",
+      "quem": "voce",
+      "cod": "Another constraint is time: a migration would take two quarters.",
+      "dica": "Outra restrição é o tempo: uma migração levaria dois trimestres.",
+      "img": "⏳📆",
+      "alvo": "constraint",
+      "alvo_pt": "restrição",
+      "conceito": "quarter = trimestre (no trabalho).",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-353dac",
+      "quem": "voce",
+      "cod": "At the time of writing, the database handles our traffic without problems.",
+      "dica": "No momento em que escrevemos, o banco de dados aguenta o nosso tráfego sem problemas.",
+      "img": "🗄️💪",
+      "alvo": "At the time of writing",
+      "alvo_pt": "No momento em que escrevemos",
+      "conceito": "At the time of writing: avisa que o fato pode mudar depois.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "handle"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-538a77",
+      "quem": "voce",
+      "cod": "At the time of writing, cloud costs are not a concern.",
+      "dica": "No momento em que escrevemos, os custos de nuvem não são uma preocupação.",
+      "img": "☁️😌",
+      "alvo": "At the time of writing",
+      "alvo_pt": "No momento em que escrevemos",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-798fa3",
+      "quem": "voce",
+      "cod": "ADR 9 has been superseded by this record.",
+      "dica": "O ADR 9 foi substituído por este registro.",
+      "img": "🔄🗂️",
+      "alvo": "superseded by",
+      "alvo_pt": "substituído por",
+      "conceito": "superseded by = substituído por uma decisão mais nova.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "has been superseded",
+          "aceita": [
+            "was superseded"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-3e311a",
+      "quem": "voce",
+      "cod": "If our traffic doubles, this decision may be superseded by a new ADR.",
+      "dica": "Se o nosso tráfego dobrar, esta decisão pode ser substituída por um novo ADR.",
+      "img": "📈🔄",
+      "alvo": "superseded by",
+      "alvo_pt": "substituída por",
+      "conceito": "Se dobrar = if it doubles: presente depois de if, com -s.",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR28",
+        "BR02"
+      ],
+      "armadilhas": [
+        "will",
+        "double"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "may",
+          "aceita": [
+            "might"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d55cdf",
+      "quem": "dev-novo",
+      "cod": "Where can I find the architecture decision records for the database?",
+      "dica": "Onde eu posso encontrar os registros de decisão de arquitetura do banco de dados?",
+      "img": "🔎🗂️",
+      "alvo": "architecture decision records",
+      "alvo_pt": "registros de decisão de arquitetura",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    }
+  ]
+}

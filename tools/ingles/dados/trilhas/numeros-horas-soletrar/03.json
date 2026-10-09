@@ -113,6 +113,22 @@
       "origem": "autoral_ia"
     },
     {
+      "id": "f-fc00a4",
+      "quem": "voce",
+      "contexto": "The monitor is ninety dollars.",
+      "cod": "Sorry, nineteen or ninety?",
+      "dica": "(o monitor) Desculpa, dezenove ou noventa?",
+      "img": "🖥️👂❓",
+      "alvo": "nineteen or ninety",
+      "alvo_pt": "dezenove ou noventa",
+      "conceito": "-teen × -ty: nineTEEN tem a força no fim; NINEty, no começo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR46"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
       "id": "f-ed59a3",
       "quem": "atendente",
       "cod": "That's seventy-five dollars.",
@@ -150,14 +166,45 @@
       "origem": "autoral_ia"
     },
     {
-      "id": "f-d9a025",
+      "id": "f-03a9e2",
+      "quem": "voce",
+      "contexto": "f-ab9427",
+      "cod": "Here's fifty, twenty, and ten.",
+      "dica": "(as notas) Aqui: cinquenta, vinte e dez.",
+      "img": "💵💵💵",
+      "alvo": "fifty, twenty, and ten",
+      "alvo_pt": "cinquenta, vinte e dez",
+      "conceito": "Here's = aqui está, para entregar algo. Em lista, o americano põe vírgula antes do and.",
+      "var": [
+        {
+          "em": "Here's",
+          "aceita": [
+            "Here is",
+            "Here are"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-334afb",
       "quem": "atendente",
-      "contexto": "Just the keyboard, please.",
-      "cod": "OK. That's thirty dollars.",
-      "dica": "Tá bom. São trinta dólares.",
-      "img": "⌨️🧾",
-      "alvo": "That's thirty dollars",
-      "alvo_pt": "São trinta dólares",
+      "contexto": "f-03a9e2",
+      "cod": "Eighty dollars. Here's your change.",
+      "dica": "Oitenta dólares. Aqui está o seu troco.",
+      "img": "🪙🧾",
+      "alvo": "Eighty",
+      "alvo_pt": "Oitenta",
+      "conceito": "troco = change. EIGHTy: a força no começo.",
+      "var": [
+        {
+          "em": "Here's",
+          "aceita": [
+            "Here is"
+          ]
+        }
+      ],
       "registro": "neutro",
       "origem": "autoral_ia"
     }

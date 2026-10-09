@@ -1,0 +1,189 @@
+{
+  "id": "modalidade-avancada.o-certo-era-ter-avisado",
+  "trilha": "modalidade-avancada",
+  "nome": "O certo era ter avisado",
+  "emoji": "⚠️",
+  "cena": "Na retrospectiva de uma migração que deu errado, você e o Mike discutem o que deveria ter sido feito e o que fazer agora.",
+  "resumo": "Dizer o que é o correto com ought to e criticar o passado com ought to have + particípio.",
+  "fechamento": false,
+  "novos": [
+    "ought to",
+    "ought to have",
+    "foresee",
+    "warning signs"
+  ],
+  "apoio": [
+    "postmortem",
+    "load test",
+    "blockers"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O certo é... / O certo era ter..."
+    },
+    {
+      "t": "p",
+      "c": "**ought to** + verbo = o certo é (mais firme e formal que should). **ought to have** + particípio = o certo era ter... (crítica ao passado)."
+    },
+    {
+      "t": "warn",
+      "c": "ought pede to: ought to tell (não: ought tell). Passado: ought to have done (não: ought to had)."
+    },
+    {
+      "t": "tip",
+      "c": "Na fala americana do dia a dia, should have é mais comum; a negativa usual é shouldn't have."
+    }
+  ],
+  "imagem": "⚠️🔍📝",
+  "visualizacao": "Você e o Mike estão na retrospectiva, a linha do tempo da migração na tela, cheia de marcas vermelhas. Ninguém aponta o dedo; a pergunta é o que o processo deixou passar.",
+  "foto_busca": "team retrospective sticky notes board",
+  "trechos": [
+    {
+      "id": "f-dd4d82",
+      "quem": "voce",
+      "cod": "We ought to tell the client before they hear it from someone else.",
+      "dica": "O certo é a gente contar pro cliente antes que ele fique sabendo por outra pessoa.",
+      "img": "📞🤝⏰",
+      "alvo": "ought to",
+      "alvo_pt": "O certo é",
+      "conceito": "ought to + verbo, com to (não: ought tell): o correto, mais firme que should.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "tell"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e45a2c",
+      "quem": "mike",
+      "contexto": "f-dd4d82",
+      "cod": "Agreed. We ought to have done that earlier.",
+      "dica": "Concordo. O certo era a gente ter feito isso antes.",
+      "img": "👍⏪",
+      "alvo": "ought to have",
+      "alvo_pt": "O certo era",
+      "conceito": "ought to have + particípio = o certo era ter... (crítica ao passado).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "had"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6249042,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"You ought to have done that earlier.\" (You → We; + Agreed.); PT reescrito (original: \"Você deveria ter feito isso antes.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-659aae",
+      "quem": "voce",
+      "cod": "Our process ought to have caught this much earlier.",
+      "dica": "O certo era o nosso processo ter pegado isso muito antes.",
+      "img": "🧰🔍⏮️",
+      "alvo": "ought to have",
+      "alvo_pt": "O certo era",
+      "conceito": "Postmortem sem culpados: o sujeito é o processo, não um colega.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e26861",
+      "quem": "mike",
+      "cod": "Honestly, nobody could have foreseen the network issue.",
+      "dica": "Sinceramente, ninguém poderia ter previsto o problema de rede.",
+      "img": "🔮🌐",
+      "alvo": "foreseen",
+      "alvo_pt": "previsto",
+      "conceito": "foresee, foresaw, foreseen = prever (antecipar um problema).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c14e89",
+      "quem": "voce",
+      "contexto": "f-e26861",
+      "cod": "Maybe not, but there were warning signs in the test runs.",
+      "dica": "Talvez não, mas havia sinais de alerta nas execuções de teste.",
+      "img": "🚩🧪",
+      "alvo": "warning signs",
+      "alvo_pt": "sinais de alerta",
+      "conceito": "havia (existir) = there were, no plural.",
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5c23ff",
+      "quem": "mike",
+      "cod": "From now on, we ought to treat warning signs as blockers.",
+      "dica": "Daqui pra frente, o certo é a gente tratar sinais de alerta como impeditivos.",
+      "img": "🚩🛑",
+      "alvo": "warning signs",
+      "alvo_pt": "sinais de alerta",
+      "conceito": "blocker = impeditivo (algo que impede a release).",
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-070a60",
+      "quem": "voce",
+      "cod": "With these new checks, I don't foresee any problems with the next migration.",
+      "dica": "Com essas verificações novas, não prevejo nenhum problema na próxima migração.",
+      "img": "✅🔮🙂",
+      "alvo": "foresee",
+      "alvo_pt": "prevejo",
+      "conceito": "I don't foresee any problems = não prevejo nenhum problema (do na negativa, verbo base).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "foresaw",
+        "foresees"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        4
+      ]
+    },
+    {
+      "id": "f-b44a63",
+      "quem": "voce",
+      "cod": "We ought to share these notes with the whole team.",
+      "dica": "O certo é a gente compartilhar essas anotações com o time todo.",
+      "img": "📝👥📤",
+      "alvo": "ought to",
+      "alvo_pt": "O certo é",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

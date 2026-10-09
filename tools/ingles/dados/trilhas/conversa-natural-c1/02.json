@@ -1,0 +1,225 @@
+{
+  "id": "conversa-natural-c1.nem-ai-e-nao-e-a-toa",
+  "trilha": "conversa-natural-c1",
+  "nome": "Nem aí e não é à toa",
+  "emoji": "🙄",
+  "cena": "Na copa do escritório de Chicago, na semana em que você está lá, o papo é sobre as novidades da empresa.",
+  "resumo": "Reagir com indiferença, conclusão óbvia e ironia: I couldn't care less, No wonder e That figures.",
+  "fechamento": false,
+  "novos": [
+    "I couldn't care less",
+    "no wonder",
+    "that figures",
+    "office chairs"
+  ],
+  "apoio": [
+    "running late",
+    "honestly"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Nem aí, não é à toa, típico"
+    },
+    {
+      "t": "p",
+      "c": "**I couldn't care less (about...)** = Não estou nem aí (para...). **No wonder** + oração = Não é à toa que... **That figures.** = Típico. (era de se esperar)"
+    },
+    {
+      "t": "warn",
+      "c": "Nos EUA também se ouve I could care less com o mesmo sentido, mas o alvo é a forma lógica, com couldn't."
+    },
+    {
+      "t": "warn",
+      "c": "Desde + ação que continua até agora: You've been working since six (não: You are working since six)."
+    },
+    {
+      "t": "ex",
+      "c": "No wonder you're tired.\nNão é à toa que você está cansado."
+    }
+  ],
+  "imagem": "☕🪑🏢",
+  "visualizacao": "Você está na copa do escritório em Chicago, com um café na mão. A máquina faz barulho, alguém abre um pacote de biscoito e a Ana comenta as novidades.",
+  "foto_busca": "office kitchen coffee break",
+  "trechos": [
+    {
+      "id": "f-600395",
+      "quem": "ana",
+      "cod": "They finally replaced the office chairs.",
+      "dica": "Finalmente trocaram as cadeiras do escritório.",
+      "img": "🪑✨🔄",
+      "alvo": "office chairs",
+      "alvo_pt": "cadeiras do escritório",
+      "conceito": "Trocaram (sem dizer quem) = They replaced: o inglês põe um sujeito.",
+      "var": [
+        {
+          "em": "They finally replaced",
+          "aceita": [
+            "They've finally replaced",
+            "They have finally replaced",
+            "They finally changed",
+            "They've finally changed"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b11d17",
+      "quem": "voce",
+      "contexto": "f-600395",
+      "cod": "Honestly, I couldn't care less. I'm only here this week.",
+      "dica": "Sinceramente, não estou nem aí. Só estou aqui esta semana.",
+      "img": "🤷📅🧳",
+      "alvo": "I couldn't care less",
+      "alvo_pt": "não estou nem aí",
+      "lit": "[lit.: eu não conseguiria me importar menos]",
+      "conceito": "I couldn't care less = não estou nem aí: o less é obrigatório.",
+      "registro": "informal",
+      "armadilhas": [
+        "could"
+      ],
+      "origem": "autoral_ia",
+      "teste": true
+    },
+    {
+      "id": "f-bcc11f",
+      "quem": "mike",
+      "cod": "Apparently, the office chairs cost a fortune.",
+      "dica": "Pelo jeito, as cadeiras do escritório custaram uma fortuna.",
+      "img": "🪑💰😲",
+      "alvo": "office chairs",
+      "alvo_pt": "cadeiras do escritório",
+      "conceito": "Pelo jeito = Apparently. cost no passado é igual: cost, cost.",
+      "registro": "informal",
+      "armadilhas": [
+        "costed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-282207",
+      "quem": "mike",
+      "contexto": "And they're changing the dress code next month.",
+      "cod": "I couldn't care less about the dress code.",
+      "dica": "Não estou nem aí para o dress code.",
+      "img": "👔🙄",
+      "alvo": "I couldn't care less",
+      "alvo_pt": "Não estou nem aí",
+      "conceito": "nem aí para + coisa = couldn't care less about + coisa.",
+      "registro": "informal",
+      "armadilhas": [
+        "could"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4496288,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I couldn't care less about what Tom thinks.\" (what Tom thinks trocado por the dress code); PT reescrito (original: \"Eu não poderia me importar menos com o que o Tom pensa.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8a3fb7",
+      "quem": "voce",
+      "contexto": "I'm so tired today.",
+      "cod": "No wonder you're tired. You've been working since six this morning.",
+      "dica": "Não é à toa que você está cansada. Está trabalhando desde as seis da manhã.",
+      "img": "🥱⏰☕",
+      "alvo": "No wonder",
+      "alvo_pt": "Não é à toa que",
+      "lit": "[lit.: nenhuma surpresa]",
+      "conceito": "desde + ação que continua = present perfect continuous: You've been working (não: You are working).",
+      "var": [
+        {
+          "em": "since six this morning",
+          "aceita": [
+            "since six in the morning"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "are"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7715218,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I've been working since six this morning.\" (I trocado por You; acrescentado No wonder you're tired); PT reescrito (original: \"Eu estive trabalhando desde às seis essa manhã.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-487737",
+      "quem": "voce",
+      "contexto": "The coffee machine on this floor is broken again.",
+      "cod": "That figures. It always breaks on Mondays.",
+      "dica": "Típico. Sempre quebra nas segundas.",
+      "img": "☕🔧😑",
+      "alvo": "That figures",
+      "alvo_pt": "Típico",
+      "conceito": "That figures = Típico, era de se esperar. Em PT o sujeito some; em inglês, It always breaks.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9637e7",
+      "quem": "ana",
+      "contexto": "f-487737",
+      "cod": "No wonder there's a line at the other machine.",
+      "dica": "Não é à toa que tem fila na outra máquina.",
+      "img": "👥⏳☕",
+      "alvo": "No wonder",
+      "alvo_pt": "Não é à toa que",
+      "conceito": "Tem (existir) = there's; a line = uma fila: o artigo é obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-920e6c",
+      "quem": "mike",
+      "contexto": "The free snacks are gone already.",
+      "cod": "That figures. They never last more than a day.",
+      "dica": "Típico. Nunca duram mais de um dia.",
+      "img": "🍪💨📉",
+      "alvo": "That figures",
+      "alvo_pt": "Típico",
+      "conceito": "Sujeito obrigatório: They never last (em PT, Nunca duram).",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

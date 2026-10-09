@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -106,7 +104,6 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
   ResultadoFrase? _aRegistrar;
   bool _desistiuAgora = false;
   bool _contestou = false;
-  Timer? _proximo;
 
   _Item get _item => _fila[_i];
 
@@ -122,7 +119,6 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
 
   @override
   void dispose() {
-    _proximo?.cancel();
     _voz.parar();
     _typing.close();
     _foco.dispose();
@@ -143,6 +139,7 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
     _aguardando = false;
   }
 
+  /// Terminou a frase: a voz repete e ela fica na tela até o Enter.
   void _concluiu(TypingState st) {
     final item = _item;
     _voz.falar(item.trecho.cod); // depois de tentar, ouvir confirma
@@ -166,8 +163,6 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
     } else {
       setState(() => _aguardando = true);
     }
-    _proximo?.cancel();
-    _proximo = Timer(Duration(milliseconds: item.modo.deMemoria ? 2500 : 700), _avancar);
   }
 
   /// Errou de memória: cópia corrigida agora (se não foi "não sei", que já
@@ -202,19 +197,16 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
 
   void _contestar() {
     if (_contestou || _ultimo == null || _ultimo == ResultadoRevisao.acertou) return;
-    _proximo?.cancel();
     setState(() {
       _contestou = true;
       _ultimo = contestar(_ultimo!);
       final res = _aRegistrar;
       if (res != null) _aRegistrar = ResultadoFrase(res.trecho, _ultimo!);
     });
-    _proximo = Timer(const Duration(milliseconds: 700), _avancar);
     _foco.requestFocus();
   }
 
   void _avancar() {
-    _proximo?.cancel();
     if (!mounted || _fim || !_aguardando) return;
     _registrarPendente();
     if (_i < _fila.length - 1) {
@@ -333,11 +325,14 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
         const SizedBox(height: 12),
         SizedBox(
           height: 28,
-          child: _aguardando && _ultimo != null
-              ? _Selo(_ultimo!, onContestar: _contestou || _ultimo == ResultadoRevisao.acertou ? null : _contestar)
+          child: _aguardando
+              ? _Selo(_ultimo,
+                  onSeguir: _avancar,
+                  onContestar:
+                      _contestou || _ultimo == null || _ultimo == ResultadoRevisao.acertou ? null : _contestar)
               : null,
         ),
-        Text('Tab = uma letra · Tab Tab = a palavra · Esc = não sei · Enter ouve (conta dica) e segue no fim',
+        Text('Tab = uma letra · Tab Tab = a palavra · Esc = não sei · Enter ouve (conta dica); no fim, Enter segue',
             textAlign: TextAlign.center, style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
       ]),
     );
@@ -398,20 +393,32 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
 }
 
 class _Selo extends StatelessWidget {
-  final ResultadoRevisao r;
+  /// null = cópia (de correção): não gera nota.
+  final ResultadoRevisao? r;
+  final VoidCallback onSeguir;
   final VoidCallback? onContestar;
-  const _Selo(this.r, {this.onContestar});
+  const _Selo(this.r, {required this.onSeguir, this.onContestar});
 
   @override
   Widget build(BuildContext context) {
     final (texto, cor) = switch (r) {
+      null => ('✓ Copiada', Mixart.textMuted),
       ResultadoRevisao.acertou => ('✅ De memória, sem erro!', Mixart.brand),
       ResultadoRevisao.hesitou => ('🟡 Quase — as palavras em vermelho tropeçaram', Mixart.textMuted),
       ResultadoRevisao.errou => ('🔁 Essa volta daqui a pouco', Mixart.danger),
     };
     return Center(
       child: Wrap(alignment: WrapAlignment.center, crossAxisAlignment: WrapCrossAlignment.center, spacing: 10, children: [
-        Text('$texto   ·   Enter segue', style: Mixart.ui(size: 13, weight: FontWeight.w800, color: cor)),
+        Text(texto, style: Mixart.ui(size: 13, weight: FontWeight.w800, color: cor)),
+        // não avança sozinho: dá para ouvir a frase que acabou de digitar
+        InkWell(
+          onTap: onSeguir,
+          borderRadius: BorderRadius.circular(6),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+            child: Text('Enter segue →', style: Mixart.ui(size: 13, weight: FontWeight.w800, color: Mixart.brand)),
+          ),
+        ),
         if (onContestar != null)
           InkWell(
             onTap: onContestar,

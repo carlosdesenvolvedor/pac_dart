@@ -1,0 +1,205 @@
+{
+  "id": "modalidade-avancada.cena-final-o-go-no-go",
+  "trilha": "modalidade-avancada",
+  "nome": "Cena final: o go/no-go",
+  "emoji": "🎬",
+  "cena": "Véspera do lançamento: você conduz a decisão final com a Sarah e o Mike, lançar amanhã ou adiar.",
+  "resumo": "Pesar riscos, regras e erros com supposed to, must have, bound to, may well, ought to have e might as well, sem itens novos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "staged rollout",
+    "dry run",
+    "QA"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Go/no-go"
+    },
+    {
+      "t": "p",
+      "c": "Cada modal com a sua âncora: **was supposed to** = era para; **bound to** = na certa; **may well** = pode muito bem; **might as well** = bem que a gente podia; **ought to have** = o certo era ter."
+    },
+    {
+      "t": "warn",
+      "c": "ought to leva to; may well e might as well, não."
+    }
+  ],
+  "imagem": "🎬🚦🚀",
+  "visualizacao": "É véspera do lançamento, fim de tarde. Na chamada, a Sarah segura a lista de riscos, o quadradinho do Mike ainda está vazio e todo mundo espera a sua decisão.",
+  "foto_busca": "video call team decision evening",
+  "trechos": [
+    {
+      "id": "f-b1c1b4",
+      "quem": "voce",
+      "contexto": "Should we start without Mike?",
+      "cod": "We might as well wait until Mike gets here.",
+      "dica": "Bem que a gente podia esperar o Mike chegar.",
+      "img": "⌛🚪",
+      "alvo": "might as well",
+      "alvo_pt": "Bem que a gente podia",
+      "conceito": "until + presente: until Mike gets here (não: will get).",
+      "var": [
+        {
+          "em": "wait until Mike gets here",
+          "aceita": [
+            "wait for Mike to get here"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR30"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1898045,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"We might as well wait until Tom gets here.\" (Tom → Mike); PT reescrito (original: \"Nós deveríamos, também, esperar até que o Tom chegue aqui.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b54dda",
+      "quem": "sarah",
+      "cod": "The payment flow was supposed to be tested yesterday, and it still hasn't been.",
+      "dica": "Era para o fluxo de pagamento ter sido testado ontem, e ainda não foi.",
+      "img": "💳🧪❌",
+      "alvo": "was supposed to",
+      "alvo_pt": "Era para",
+      "conceito": "still hasn't been: present perfect com still na negativa = ainda não foi.",
+      "blocos": [
+        9
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-51a6b6",
+      "quem": "mike",
+      "cod": "QA must have run out of time. They had three releases this week.",
+      "dica": "O QA deve ter ficado sem tempo. Eles tiveram três releases esta semana.",
+      "img": "⏱️😓",
+      "alvo": "must have",
+      "alvo_pt": "deve ter",
+      "conceito": "must have + particípio = deve ter (dedução sobre o passado).",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-52490c",
+      "quem": "voce",
+      "cod": "Even with a staged rollout, there are bound to be some complaints.",
+      "dica": "Mesmo com um lançamento gradual, na certa vai ter algumas reclamações.",
+      "img": "🪜📣",
+      "alvo": "there are bound to be",
+      "alvo_pt": "na certa vai ter",
+      "conceito": "staged rollout = lançamento gradual, por etapas.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4dc731",
+      "quem": "sarah",
+      "cod": "If we delay, the client may well lose patience.",
+      "dica": "Se a gente adiar, o cliente pode muito bem perder a paciência.",
+      "img": "⏳😤",
+      "alvo": "may well",
+      "alvo_pt": "pode muito bem",
+      "registro": "neutro",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "delay",
+          "aceita": [
+            "postpone"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f4ddbf",
+      "quem": "mike",
+      "cod": "We ought to have scheduled QA earlier in the week.",
+      "dica": "O certo era a gente ter marcado o QA mais cedo na semana.",
+      "img": "📆🔙",
+      "alvo": "ought to have",
+      "alvo_pt": "O certo era",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a6a637",
+      "quem": "voce",
+      "cod": "Since everything else is ready, we might as well do a dry run tonight.",
+      "dica": "Como todo o resto está pronto, bem que a gente podia fazer um ensaio hoje à noite.",
+      "img": "🌙🧪🎭",
+      "alvo": "might as well",
+      "alvo_pt": "bem que a gente podia",
+      "conceito": "dry run = ensaio, um teste completo sem consequência real.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-381ef1",
+      "quem": "voce",
+      "cod": "If the dry run goes well, we launch tomorrow. Otherwise, we wait a week.",
+      "dica": "Se o ensaio der certo, a gente lança amanhã. Caso contrário, esperamos uma semana.",
+      "img": "✅🚀⏸️",
+      "alvo": "Otherwise",
+      "alvo_pt": "Caso contrário",
+      "conceito": "if + presente: If the dry run goes well (não: will go).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "we launch",
+          "aceita": [
+            "we'll launch"
+          ]
+        },
+        {
+          "em": "we wait",
+          "aceita": [
+            "we'll wait"
+          ]
+        }
+      ]
+    }
+  ]
+}

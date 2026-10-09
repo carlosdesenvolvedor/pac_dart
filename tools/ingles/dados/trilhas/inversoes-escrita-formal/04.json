@@ -1,0 +1,234 @@
+{
+  "id": "inversoes-escrita-formal.contanto-que-caso-contrario",
+  "trilha": "inversoes-escrita-formal",
+  "nome": "Contanto que, caso contrário",
+  "emoji": "🤝",
+  "cena": "Você negocia um contrato com um cliente e, no fim do projeto, faz um brinde à Sarah.",
+  "resumo": "Negociar condições com provided that, as long as e otherwise, e reconhecer Were it not for... num discurso.",
+  "fechamento": false,
+  "novos": [
+    "provided that",
+    "as long as",
+    "otherwise",
+    "Were it not for"
+  ],
+  "apoio": [
+    "in writing",
+    "outage",
+    "agree to"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Negociar condições"
+    },
+    {
+      "t": "p",
+      "c": "**provided that** e **as long as** = contanto que / desde que. **Otherwise** = caso contrário, no começo da frase seguinte, com vírgula."
+    },
+    {
+      "t": "warn",
+      "c": "BR28: contanto que vocês assinem = provided that you sign, com o presente (não: you will sign). O mesmo com as long as."
+    },
+    {
+      "t": "tip",
+      "c": "No discurso formal: **Were it not for** X = If it weren't for X = Se não fosse X."
+    },
+    {
+      "t": "ex",
+      "c": "You can work from home, as long as you join the standup.\nVocê pode trabalhar de casa, desde que participe do standup."
+    }
+  ],
+  "imagem": "🤝📜🥂",
+  "visualizacao": "Você está numa sala de reunião com o cliente, as páginas do contrato espalhadas na mesa. Semanas depois, na festa do projeto, você levanta a taça para a Sarah.",
+  "foto_busca": "contract negotiation meeting table",
+  "trechos": [
+    {
+      "id": "f-6cb33f",
+      "quem": "voce",
+      "contexto": "Do you have a preferred framework for the admin panel?",
+      "cod": "I'm fine with any framework, as long as it's well documented.",
+      "dica": "Pra mim qualquer framework serve, desde que seja bem documentado.",
+      "img": "📚✅",
+      "alvo": "as long as",
+      "alvo_pt": "desde que",
+      "conceito": "desde que + subjuntivo = as long as + presente: as long as it's (não: it will be).",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I'm fine with any framework",
+          "aceita": [
+            "Any framework is fine with me",
+            "Any framework works for me"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6d0a42",
+      "quem": "cliente",
+      "contexto": "f-6cb33f",
+      "cod": "Then we can start in May, as long as the price stays the same.",
+      "dica": "Então podemos começar em maio, desde que o preço continue o mesmo.",
+      "img": "📅💲",
+      "alvo": "as long as",
+      "alvo_pt": "desde que",
+      "conceito": "the price stays: -s da 3ª pessoa, no presente, mesmo falando do futuro.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28",
+        "BR02"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9b45ab",
+      "quem": "voce",
+      "cod": "We can lower the price, provided that you sign for two years.",
+      "dica": "Podemos baixar o preço, contanto que vocês assinem por dois anos.",
+      "img": "📉✍️",
+      "alvo": "provided that",
+      "alvo_pt": "contanto que",
+      "conceito": "contanto que + subjuntivo = provided that + presente: you sign (não: you will sign).",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e875b2",
+      "quem": "cliente",
+      "contexto": "f-9b45ab",
+      "cod": "We can agree to that, provided that all bug fixes are included.",
+      "dica": "Podemos concordar com isso, contanto que todas as correções de bugs estejam incluídas.",
+      "img": "🐞🔧📦",
+      "alvo": "provided that",
+      "alvo_pt": "contanto que",
+      "conceito": "agree to + proposta (agree to that); agree with + pessoa ou opinião.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28",
+        "BR53"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "all bug fixes",
+          "aceita": [
+            "all the bug fixes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cdb4e1",
+      "quem": "voce",
+      "cod": "Please send your feedback by Thursday. Otherwise, we'll miss the deadline.",
+      "dica": "Por favor, mandem o feedback de vocês até quinta. Caso contrário, vamos perder o prazo.",
+      "img": "📝⏰",
+      "alvo": "Otherwise",
+      "alvo_pt": "Caso contrário",
+      "conceito": "otherwise = caso contrário, senão; costuma abrir a frase seguinte, com vírgula.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR34"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8504b8",
+      "quem": "voce",
+      "cod": "The new terms need to be in writing. Otherwise, the old ones still apply.",
+      "dica": "Os novos termos precisam estar por escrito. Caso contrário, os antigos continuam valendo.",
+      "img": "📜✒️",
+      "alvo": "Otherwise",
+      "alvo_pt": "Caso contrário",
+      "conceito": "in writing = por escrito; apply = valer (regra, termo, condição).",
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c283b7",
+      "quem": "voce",
+      "cod": "Were it not for Sarah's patience, this deal would have fallen through.",
+      "dica": "(no discurso) Se não fosse a paciência da Sarah, esse negócio teria ido por água abaixo.",
+      "img": "🥂🙏⏳",
+      "alvo": "Were it not for",
+      "alvo_pt": "Se não fosse",
+      "lit": "[lit.: fosse isso não pela paciência da Sarah]",
+      "conceito": "Were it not for = If it weren't for, só em discurso e texto formal. fall through = ir por água abaixo.",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR57",
+        "BR01"
+      ],
+      "armadilhas": [
+        "if"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "this deal",
+          "aceita": [
+            "the deal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0d7dd8",
+      "quem": "voce",
+      "cod": "Were it not for Mike's quick fix, the outage would have lasted all night.",
+      "dica": "(no discurso) Se não fosse a correção rápida do Mike, a queda teria durado a noite toda.",
+      "img": "⚡🔧🌙",
+      "alvo": "Were it not for",
+      "alvo_pt": "Se não fosse",
+      "conceito": "O it é obrigatório: Were it not for (não: Were not for).",
+      "blocos": [
+        7
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR57",
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

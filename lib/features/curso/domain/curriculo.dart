@@ -232,6 +232,14 @@ class Trecho extends Equatable {
   /// Inglês: frase que representa a lição no teste de nivelamento.
   final bool teste;
 
+  /// Inglês: gravação de um falante nativo das MESMAS palavras (Tatoeba),
+  /// asset mp3 tocado no lugar da voz sintética. Vazio = voz do navegador.
+  final String audio;
+
+  /// Inglês: autor e licença da [audio] ("CK · CC BY-NC-ND 3.0") — a
+  /// licença exige atribuição.
+  final String audioCredito;
+
   /// Inglês: quem fala ("voce", "mike", "atendente"…). Vazio = narrador.
   final String quem;
 
@@ -266,6 +274,8 @@ class Trecho extends Equatable {
     this.contextoDe = -1,
     this.id = '',
     this.teste = false,
+    this.audio = '',
+    this.audioCredito = '',
   });
 
   factory Trecho.fromJson(Map<String, dynamic> j) => Trecho(
@@ -286,6 +296,8 @@ class Trecho extends Equatable {
         contextoDe: (j['contexto_de'] ?? -1) as int,
         id: (j['id'] ?? '') as String,
         teste: (j['teste'] ?? false) as bool,
+        audio: (j['au'] ?? '') as String,
+        audioCredito: (j['au_cred'] ?? '') as String,
       );
 
   /// É código da linguagem do curso (entra no programa do botão "copiar")?
@@ -303,7 +315,7 @@ class Trecho extends Equatable {
   @override
   List<Object?> get props =>
       [cod, dica, out, conceito, linguagem, literal, alvo, fonte, alvoPt, contexto, quem, alternativas, imagem,
-        contextoPt, contextoDe, id, teste];
+        contextoPt, contextoDe, id, teste, audio, audioCredito];
 }
 
 /// Tipos de desafio de lógica (não são de digitação).

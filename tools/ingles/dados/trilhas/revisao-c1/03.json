@@ -1,0 +1,232 @@
+{
+  "id": "revisao-c1.negociacao-de-prazo-e-escopo",
+  "trilha": "revisao-c1",
+  "nome": "Negociação de prazo e escopo",
+  "emoji": "🗓️",
+  "cena": "O cliente quer mais um recurso sem mudar a data, e você e a Sarah negociam o que cabe no prazo.",
+  "resumo": "Negociar com condições (provided that, as long as), concessões (Granted..., Even so...) e might as well, sem gramática nova.",
+  "fechamento": false,
+  "novos": [
+    "go-live date",
+    "scope cut",
+    "phase two",
+    "fixed price"
+  ],
+  "apoio": [
+    "tight"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Negociar prazo e escopo"
+    },
+    {
+      "t": "p",
+      "c": "Condição: **provided that / as long as** + presente (não: provided that the scope will stay). Conceder e rebater: **Granted, ... Even so, ...** (Tudo bem que... Mesmo assim...) Propor: **We might as well...** = Bem que a gente podia..."
+    },
+    {
+      "t": "warn",
+      "c": "Nunca would na condição: Were we to add... = Se fôssemos acrescentar... (não: If we would add). Só por escrito e bem formal."
+    },
+    {
+      "t": "ex",
+      "c": "We can keep the go-live date, provided that the scope stays the same.\nPodemos manter a data do go-live, contanto que o escopo continue o mesmo."
+    }
+  ],
+  "imagem": "🗓️🤝📦",
+  "visualizacao": "Você está numa chamada com o cliente e a Sarah. Na tela, o cronograma apertado; o cliente insiste em mais um recurso e todos olham para a data em vermelho.",
+  "foto_busca": "business negotiation video call laptop",
+  "trechos": [
+    {
+      "id": "f-377eae",
+      "quem": "sarah",
+      "cod": "Our contract has a fixed price, so every extra feature costs us money.",
+      "dica": "O nosso contrato tem preço fechado, então cada recurso extra custa dinheiro para a gente.",
+      "img": "💲🔒➕",
+      "alvo": "fixed price",
+      "alvo_pt": "preço fechado",
+      "conceito": "fixed price = preço fechado. -s da 3ª pessoa: has, costs.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-80ed21",
+      "quem": "cliente",
+      "cod": "We need one more feature, but the go-live date can't change.",
+      "dica": "Precisamos de mais um recurso, mas a data do go-live não pode mudar.",
+      "img": "➕📅🚫",
+      "alvo": "go-live date",
+      "alvo_pt": "data do go-live",
+      "conceito": "go-live date = a data em que o sistema entra no ar.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c8b03c",
+      "quem": "voce",
+      "contexto": "f-80ed21",
+      "cod": "We can keep the go-live date, provided that the scope stays the same.",
+      "dica": "Podemos manter a data do go-live, contanto que o escopo continue o mesmo.",
+      "img": "📅🤝📦",
+      "alvo": "go-live date",
+      "alvo_pt": "data do go-live",
+      "conceito": "contanto que + subjuntivo = provided that + presente: stays (não: will stay).",
+      "var": [
+        {
+          "em": "provided that",
+          "aceita": [
+            "provided"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-976596",
+      "quem": "cliente",
+      "contexto": "f-c8b03c",
+      "cod": "What kind of scope cut are we talking about?",
+      "dica": "De que tipo de corte de escopo estamos falando?",
+      "img": "✂️📦❓",
+      "alvo": "scope cut",
+      "alvo_pt": "corte de escopo",
+      "conceito": "A preposição vai para o fim da pergunta: What... are we talking about?",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1c2a87",
+      "quem": "voce",
+      "contexto": "Cutting features feels like a step backward.",
+      "cod": "Granted, a scope cut isn't ideal. Even so, it protects the date.",
+      "dica": "Tudo bem que um corte de escopo não é o ideal. Mesmo assim, protege a data.",
+      "img": "✂️🛡️📅",
+      "alvo": "scope cut",
+      "alvo_pt": "corte de escopo",
+      "conceito": "Granted... Even so = Tudo bem que... Mesmo assim: concede e rebate. it obrigatório: it protects.",
+      "var": [
+        {
+          "em": "isn't",
+          "aceita": [
+            "is not"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR21"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f286a8",
+      "quem": "sarah",
+      "cod": "At this point, we might as well move the reports to phase two.",
+      "dica": "A essa altura, bem que a gente podia passar os relatórios para a fase dois.",
+      "img": "📊➡️🗂️",
+      "alvo": "phase two",
+      "alvo_pt": "fase dois",
+      "conceito": "might as well = bem que a gente podia: proposta do tipo por que não?",
+      "var": [
+        {
+          "em": "move",
+          "aceita": [
+            "push"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6ebe41",
+      "quem": "cliente",
+      "contexto": "f-f286a8",
+      "cod": "As long as phase two starts in April, we're fine with that.",
+      "dica": "Desde que a fase dois comece em abril, por nós tudo bem.",
+      "img": "🌷📆👌",
+      "alvo": "phase two",
+      "alvo_pt": "fase dois",
+      "conceito": "Desde que (condição) = as long as + presente: starts (não: will start).",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28",
+        "BR17"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "we're fine with that",
+          "aceita": [
+            "that's fine with us",
+            "that's fine by us",
+            "we're OK with that"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-12fbf5",
+      "quem": "voce",
+      "cod": "Were we to add another feature, the fixed price would have to change.",
+      "dica": "(no e-mail) Se fôssemos acrescentar outro recurso, o preço fechado teria que mudar.",
+      "img": "📧➕💲",
+      "alvo": "fixed price",
+      "alvo_pt": "preço fechado",
+      "conceito": "Were we to + verbo = If we were to + verbo (escrito formal). Nunca would na condição.",
+      "var": [
+        {
+          "em": "Were we to add",
+          "aceita": [
+            "If we were to add",
+            "If we added"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

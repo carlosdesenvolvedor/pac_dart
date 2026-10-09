@@ -1,0 +1,171 @@
+{
+  "id": "situacao-vida-social.conversa-que-nao-e-de-trabalho",
+  "trilha": "situacao-vida-social",
+  "nome": "Conversa que não é de trabalho",
+  "emoji": "💬",
+  "cena": "Jantar na casa da Sarah, em Austin, com o marido dela: como eles foram parar ali, saudade de casa e algumas surpresas.",
+  "resumo": "Conversar sobre a vida: end up (ir parar), back home (lá na minha terra) e I had no idea... (eu não fazia ideia).",
+  "fechamento": false,
+  "novos": [
+    "back home",
+    "I had no idea..."
+  ],
+  "apoio": [
+    "end up (ir parar)",
+    "No way! (Mentira!)",
+    "do enfático: I do",
+    "miss (sentir falta)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Conversa sobre a vida"
+    },
+    {
+      "t": "p",
+      "c": "**back home** = lá na minha terra, de onde você vem: I miss the food back home. Para a surpresa: **No way! I had no idea...** = Mentira! Eu não fazia ideia..."
+    },
+    {
+      "t": "tip",
+      "c": "Saudade de = **miss**: I miss my family. Resposta curta com ênfase: I do. = sinto, sim."
+    },
+    {
+      "t": "warn",
+      "c": "end up = ir parar, acabar: How did you end up in Austin? (não: How did you finish in Austin?)"
+    },
+    {
+      "t": "ex",
+      "c": "I love traveling. That said, I do miss the food back home.\nAdoro viajar. Dito isso, sinto muita falta da comida da minha terra."
+    }
+  ],
+  "imagem": "🍝🕯️💬",
+  "visualizacao": "Você está à mesa na casa da Sarah, em Austin, com ela e o marido. Luz baixa, massa caseira no prato e uma conversa que, pela primeira vez, não tem nada de trabalho.",
+  "foto_busca": "dinner party friends home table",
+  "trechos": [
+    {
+      "id": "f-3c0dfd",
+      "quem": "voce",
+      "cod": "So how did you two end up in Austin?",
+      "dica": "E aí, como vocês dois foram parar em Austin?",
+      "img": "🧭🏙️❓",
+      "alvo": "end up",
+      "alvo_pt": "foram parar",
+      "conceito": "end up = ir parar, acabar (em algum lugar). did na pergunta, end sem -ed.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-130020",
+      "quem": "marido",
+      "contexto": "f-3c0dfd",
+      "cod": "We met in college and ended up here because of Sarah's job.",
+      "dica": "A gente se conheceu na faculdade e veio parar aqui por causa do trabalho da Sarah.",
+      "img": "🎓💑💼",
+      "alvo": "ended up",
+      "alvo_pt": "veio parar",
+      "conceito": "in college = na faculdade, sem artigo. ended up here = veio parar aqui.",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f14ba1",
+      "quem": "marido",
+      "cod": "Do you miss your family back home?",
+      "dica": "Você sente falta da sua família lá na sua terra?",
+      "img": "👪💭🌎",
+      "alvo": "back home",
+      "alvo_pt": "lá na sua terra",
+      "conceito": "back home = lá na sua terra, de onde a pessoa vem. Sentir falta = miss.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ffc441",
+      "quem": "voce",
+      "contexto": "f-f14ba1",
+      "cod": "I do. And I really miss the food back home.",
+      "dica": "Sinto, sim. E sinto muita falta da comida da minha terra.",
+      "img": "🍲🏠💭",
+      "alvo": "back home",
+      "alvo_pt": "da minha terra",
+      "conceito": "I do. = sinto, sim: a resposta curta repete o do. Saudade de = miss.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f239d6",
+      "quem": "voce",
+      "cod": "Back home, people usually have dinner much later, around nine.",
+      "dica": "Lá na minha terra, as pessoas costumam jantar bem mais tarde, por volta das nove.",
+      "img": "🌙🍽️🕘",
+      "alvo": "Back home",
+      "alvo_pt": "Lá na minha terra",
+      "conceito": "have dinner, sem artigo (não: have the dinner). around nine = por volta das nove.",
+      "registro": "informal",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fe0da6",
+      "quem": "marido",
+      "contexto": "f-f239d6",
+      "cod": "Really? I had no idea people had dinner that late.",
+      "dica": "Sério? Eu não fazia ideia de que as pessoas jantavam tão tarde.",
+      "img": "😮🍽️🌙",
+      "alvo": "I had no idea",
+      "alvo_pt": "Eu não fazia ideia",
+      "conceito": "I had no idea = eu não fazia ideia: o verbo seguinte também vai para o passado (had dinner).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f0ae06",
+      "quem": "voce",
+      "contexto": "Obrigado! I've been taking Portuguese lessons for a year.",
+      "cod": "I had no idea you could speak Portuguese so well!",
+      "dica": "Eu não fazia ideia de que você falava português tão bem!",
+      "img": "😲🗣️👏",
+      "alvo": "I had no idea",
+      "alvo_pt": "Eu não fazia ideia",
+      "conceito": "could speak = falava, sabia falar (habilidade no passado).",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2640391,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "French -> Portuguese; ponto final -> exclamação; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7a2139",
+      "quem": "voce",
+      "contexto": "He also played drums in a band for ten years.",
+      "cod": "No way! I had no idea you played in a band.",
+      "dica": "Mentira! Eu não fazia ideia de que você tocava numa banda.",
+      "img": "🥁🎸😮",
+      "alvo": "I had no idea",
+      "alvo_pt": "Eu não fazia ideia",
+      "conceito": "No way! = Mentira! (surpresa boa). in a band = numa banda.",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

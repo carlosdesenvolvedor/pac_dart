@@ -1,0 +1,222 @@
+{
+  "id": "idioms-colocacoes-fortes.colocacoes-fortes-de-trabalho",
+  "trilha": "idioms-colocacoes-fortes",
+  "nome": "Colocações fortes de trabalho",
+  "emoji": "🔗",
+  "cena": "Na reunião de alinhamento sobre a nova escala de plantão, cada um dá a sua opinião e você conduz a decisão.",
+  "resumo": "Usar colocações fortes do trabalho: on-call schedule, reach a consensus, when it comes to e older phones.",
+  "fechamento": false,
+  "novos": [
+    "reach a consensus",
+    "when it comes to",
+    "on-call schedule",
+    "older phones"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Colocações que soam nativas"
+    },
+    {
+      "t": "p",
+      "c": "Algumas palavras andam juntas: **reach a consensus** (chegar a um consenso), raise concerns (levantar preocupações), make the final call (bater o martelo). **When it comes to** + substantivo = quando o assunto é."
+    },
+    {
+      "t": "warn",
+      "c": "reach a consensus (não: make a consensus); make the final call (não: take the final call)."
+    },
+    {
+      "t": "tip",
+      "c": "a maioria dos nossos usuários = most of our users (não: the most of our users)."
+    }
+  ],
+  "imagem": "📅📟👥",
+  "visualizacao": "Você está na chamada de alinhamento, com a planilha da escala de plantão compartilhada na tela. Cada um fala na sua vez e você anota as objeções antes de decidir.",
+  "foto_busca": "team meeting schedule discussion",
+  "trechos": [
+    {
+      "id": "f-8d6e91",
+      "quem": "voce",
+      "cod": "Several people raised concerns about the new on-call schedule.",
+      "dica": "Várias pessoas levantaram preocupações sobre a nova escala de plantão.",
+      "img": "📟📅😟",
+      "alvo": "on-call schedule",
+      "alvo_pt": "escala de plantão",
+      "conceito": "on-call = de plantão; on-call schedule = escala de plantão. raise concerns = levantar preocupações.",
+      "registro": "neutro",
+      "armadilhas": [
+        "scale",
+        "shift"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ba1eb1",
+      "quem": "mike",
+      "contexto": "f-8d6e91",
+      "cod": "I still think the on-call schedule is unfair to the team in Brazil.",
+      "dica": "Ainda acho que a escala de plantão é injusta com o time do Brasil.",
+      "img": "⚖️🌎🌙",
+      "alvo": "on-call schedule",
+      "alvo_pt": "escala de plantão",
+      "conceito": "I still think = ainda acho (reciclado); unfair to = injusto com.",
+      "var": [
+        {
+          "em": "the team in Brazil",
+          "aceita": [
+            "the Brazil team"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "scale",
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8dbe91",
+      "quem": "voce",
+      "contexto": "f-ba1eb1",
+      "cod": "Let's try to reach a consensus by Friday.",
+      "dica": "Vamos tentar chegar a um consenso até sexta.",
+      "img": "🤝👥✅",
+      "alvo": "reach a consensus",
+      "alvo_pt": "chegar a um consenso",
+      "conceito": "chegar a um consenso = reach a consensus (não: make a consensus); prazo = by Friday.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR32"
+      ],
+      "armadilhas": [
+        "make",
+        "arrive"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8d3e0f",
+      "quem": "ana",
+      "cod": "When it comes to on-call, nobody likes working weekends.",
+      "dica": "Quando o assunto é plantão, ninguém gosta de trabalhar no fim de semana.",
+      "img": "📟🛌😩",
+      "alvo": "When it comes to",
+      "alvo_pt": "Quando o assunto é",
+      "conceito": "when it comes to + substantivo = quando o assunto é; nobody likes, com -s.",
+      "var": [
+        {
+          "em": "working weekends",
+          "aceita": [
+            "working on weekends",
+            "to work on weekends",
+            "to work weekends"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "like",
+        "subject"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-267e19",
+      "quem": "mike",
+      "cod": "Most of the overnight alerts come from crashes on older phones.",
+      "dica": "A maioria dos alertas de madrugada vem de travamentos em celulares mais antigos.",
+      "img": "🌙🚨📱",
+      "alvo": "older phones",
+      "alvo_pt": "celulares mais antigos",
+      "conceito": "older phones = celulares mais antigos; most of the alerts (não: the most of the alerts).",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "the",
+        "more"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b60ffe",
+      "quem": "voce",
+      "contexto": "f-267e19",
+      "cod": "When it comes to performance, the codebase still needs a lot of work.",
+      "dica": "Quando o assunto é desempenho, a base de código ainda precisa de muito trabalho.",
+      "img": "⚙️🐌🛠️",
+      "alvo": "When it comes to",
+      "alvo_pt": "Quando o assunto é",
+      "conceito": "When it comes to performance = quando o assunto é desempenho; needs com -s.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "need",
+        "subject"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-49f00b",
+      "quem": "sarah",
+      "cod": "Don't forget that most of our users are on older phones.",
+      "dica": "Não esqueçam que a maioria dos nossos usuários está em celulares mais antigos.",
+      "img": "👥📱🧠",
+      "alvo": "older phones",
+      "alvo_pt": "celulares mais antigos",
+      "conceito": "be on older phones = usar celulares mais antigos; most of our users (não: the most of).",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "the",
+        "more"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-156e05",
+      "quem": "voce",
+      "cod": "We couldn't reach a consensus, so Mike made the final call.",
+      "dica": "Não conseguimos chegar a um consenso, então o Mike bateu o martelo.",
+      "img": "🔨✅",
+      "alvo": "reach a consensus",
+      "alvo_pt": "chegar a um consenso",
+      "conceito": "make the final call = bater o martelo (não: take the final call).",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR32"
+      ],
+      "armadilhas": [
+        "make",
+        "took"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

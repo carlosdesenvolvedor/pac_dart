@@ -1,0 +1,278 @@
+{
+  "id": "pro-design-sistemas.trade-offs-e-defender-escolhas",
+  "trilha": "pro-design-sistemas",
+  "nome": "Trade-offs e defender escolhas",
+  "emoji": "⚖️",
+  "cena": "Na reunião de arquitetura, Mike defende microsserviços e um segundo banco, e você pesa custo e complexidade para começar simples.",
+  "resumo": "Pesar e defender: versus, lean toward, operational overhead e overkill.",
+  "fechamento": false,
+  "novos": [
+    "versus",
+    "lean toward",
+    "operational overhead",
+    "overkill"
+  ],
+  "apoio": [
+    "trade-off",
+    "bottleneck",
+    "Admittedly",
+    "That said"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pesar e defender uma escolha"
+    },
+    {
+      "t": "p",
+      "c": "Nomeie o trade-off (**latency versus consistency**), diga para que lado você vai (**I'd lean toward...**) e conceda antes de rebater: **Admittedly... That said, ...**"
+    },
+    {
+      "t": "warn",
+      "c": "Depende de = depends on (não: depends of)."
+    },
+    {
+      "t": "ex",
+      "c": "Microservices would be overkill for four people.\nMicrosserviços seriam exagero para quatro pessoas."
+    }
+  ],
+  "imagem": "⚖️🧱💸",
+  "visualizacao": "Mike compartilha um diagrama cheio de caixas e setas. Você olha para o time de quatro pessoas nas câmeras e pesa, em silêncio, quanto custa manter tudo aquilo.",
+  "foto_busca": "balance scale decision meeting",
+  "trechos": [
+    {
+      "id": "f-97defa",
+      "quem": "voce",
+      "cod": "The main trade-off here is latency versus consistency.",
+      "dica": "O principal trade-off aqui é latência versus consistência.",
+      "img": "⚡⚖️",
+      "alvo": "versus",
+      "alvo_pt": "versus",
+      "conceito": "versus (vs.) = contra, um de cada lado da balança.",
+      "registro": "neutro",
+      "armadilhas": [
+        "against",
+        "x"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9731d0",
+      "quem": "mike",
+      "contexto": "f-97defa",
+      "cod": "It depends on the traffic, but for me it's speed versus cost.",
+      "dica": "Depende do tráfego, mas para mim é velocidade versus custo.",
+      "img": "🏎️💸",
+      "alvo": "versus",
+      "alvo_pt": "versus",
+      "conceito": "depende de = depends on (não: depends of); o it é obrigatório (BR01).",
+      "var": [
+        {
+          "em": "for me",
+          "aceita": [
+            "to me"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR53",
+        "BR01"
+      ],
+      "armadilhas": [
+        "depends of",
+        "is speed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b5f182",
+      "quem": "voce",
+      "cod": "For the menu, I'd lean toward low latency.",
+      "dica": "Para o cardápio, eu tenderia para a baixa latência.",
+      "img": "📋⚡",
+      "alvo": "lean toward",
+      "alvo_pt": "tenderia para",
+      "lit": "[lit.: eu me inclinaria para]",
+      "conceito": "lean toward = tender para uma opção; toward sem -s é o padrão nos EUA.",
+      "var": [
+        {
+          "em": "I'd",
+          "aceita": [
+            "I would"
+          ]
+        },
+        {
+          "em": "toward",
+          "aceita": [
+            "towards"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "tend to",
+        "lean to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0e21e1",
+      "quem": "voce",
+      "cod": "Overall, I'd lean toward one database for now.",
+      "dica": "No geral, eu tenderia para um banco só, por enquanto.",
+      "img": "🗄️☝️",
+      "alvo": "lean toward",
+      "alvo_pt": "tenderia para",
+      "conceito": "por enquanto = for now; um banco só = one database / a single database.",
+      "var": [
+        {
+          "em": "I'd",
+          "aceita": [
+            "I would"
+          ]
+        },
+        {
+          "em": "toward",
+          "aceita": [
+            "towards"
+          ]
+        },
+        {
+          "em": "one database",
+          "aceita": [
+            "a single database"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "by now",
+        "tend to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-939883",
+      "quem": "voce",
+      "cod": "A second database means more operational overhead for a team of four.",
+      "dica": "Um segundo banco significa mais custo operacional para um time de quatro pessoas.",
+      "img": "🗄️🗄️😩",
+      "alvo": "operational overhead",
+      "alvo_pt": "custo operacional",
+      "conceito": "operational overhead = o trabalho extra de manter algo rodando; 3ª pessoa: means.",
+      "var": [
+        {
+          "em": "a team of four",
+          "aceita": [
+            "a team of four people"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR12"
+      ],
+      "armadilhas": [
+        "mean",
+        "operational cost"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-711bad",
+      "quem": "mike",
+      "contexto": "f-939883",
+      "cod": "Admittedly, there's more operational overhead. That said, it removes our biggest bottleneck.",
+      "dica": "É verdade que tem mais custo operacional. Dito isso, ele elimina o nosso maior gargalo.",
+      "img": "🤝🚧",
+      "alvo": "operational overhead",
+      "alvo_pt": "custo operacional",
+      "conceito": "Admittedly... That said, ... = conceder e rebater. Tem (existir) = there is.",
+      "var": [
+        {
+          "em": "removes",
+          "aceita": [
+            "eliminates"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "has more",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-740534",
+      "quem": "voce",
+      "cod": "Microservices would be overkill for four people.",
+      "dica": "Microsserviços seriam exagero para quatro pessoas.",
+      "img": "🔨🥜",
+      "alvo": "overkill",
+      "alvo_pt": "exagero",
+      "conceito": "overkill = exagero, solução grande demais para o problema (sem artigo).",
+      "var": [
+        {
+          "em": "four people",
+          "aceita": [
+            "a team of four"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "an overkill",
+        "exaggeration"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6935e5",
+      "quem": "mike",
+      "contexto": "f-740534",
+      "cod": "Fair enough. That might be overkill for now. Let's revisit this next quarter.",
+      "dica": "Justo. Talvez seja exagero por enquanto. Vamos rever isso no próximo trimestre.",
+      "img": "👌📆",
+      "alvo": "overkill",
+      "alvo_pt": "exagero",
+      "conceito": "Talvez = might; no próximo trimestre = next quarter (sem in the).",
+      "var": [
+        {
+          "em": "revisit this",
+          "aceita": [
+            "come back to this",
+            "revisit it"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "in the next",
+        "maybe"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

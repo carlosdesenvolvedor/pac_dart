@@ -1,0 +1,256 @@
+{
+  "id": "pro-entrevista-senior.cena-a-entrevista-completa",
+  "trilha": "pro-entrevista-senior",
+  "nome": "Cena: a entrevista completa",
+  "emoji": "🎬",
+  "cena": "Na entrevista final, com a gestora e um engenheiro na mesma chamada, você passa por tudo: pitch, caso, live coding e próximos passos.",
+  "resumo": "A entrevista inteira, sem itens novos: since, actually, Tell me about a time when, kept + -ing, walk through e next steps.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A entrevista inteira"
+    },
+    {
+      "t": "p",
+      "c": "Pitch com **since** e **actually**, caso com **At my last company... kept...**, live coding com **let me walk through an example** e a pergunta final sobre os **next steps**."
+    },
+    {
+      "t": "warn",
+      "c": "Actually = na verdade; currently = atualmente. Sou tech lead desde... = I've been a tech lead since... (não: I am a tech lead since)."
+    }
+  ],
+  "imagem": "🎬👥💻",
+  "visualizacao": "Duas janelas na tela: a gestora à esquerda, o engenheiro à direita. Você ajeita a câmera, sente a mão firme no teclado e responde com calma, uma etapa de cada vez.",
+  "foto_busca": "panel video interview laptop",
+  "trechos": [
+    {
+      "id": "f-c2bfe3",
+      "quem": "voce",
+      "contexto": "Can you give us a quick summary of your career?",
+      "cod": "Sure. I've been a tech lead since last year, mostly on mobile.",
+      "dica": "Claro. Sou tech lead desde o ano passado, principalmente em mobile.",
+      "img": "🧭📱",
+      "alvo": "since last year",
+      "alvo_pt": "desde o ano passado",
+      "conceito": "Sou X desde... = I've been X since... (não: I am X since).",
+      "blocos": [
+        9
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "i'm",
+        "am"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "mostly on",
+          "aceita": [
+            "mostly in",
+            "mainly on",
+            "mainly in"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-84362a",
+      "quem": "voce",
+      "contexto": "So you mostly manage people now?",
+      "cod": "Actually, I still write code every day. I don't just manage.",
+      "dica": "Na verdade, eu ainda programo todo dia. Não fico só gerenciando.",
+      "img": "⌨️🗓️",
+      "alvo": "Actually",
+      "alvo_pt": "Na verdade",
+      "conceito": "actually = na verdade (corrige o outro); atualmente = currently.",
+      "var": [
+        {
+          "em": "I don't just manage",
+          "aceita": [
+            "I don't only manage",
+            "I'm not just managing"
+          ]
+        },
+        {
+          "em": "write code",
+          "aceita": [
+            "code"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR06"
+      ],
+      "armadilhas": [
+        "currently",
+        "not just"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-adabc2",
+      "quem": "gestora",
+      "cod": "Tell me about a time when you had to fix something under pressure.",
+      "dica": "Me conte de uma vez em que você teve que consertar algo sob pressão.",
+      "img": "🔧😓",
+      "alvo": "Tell me about a time when",
+      "alvo_pt": "Me conte de uma vez em que",
+      "var": [
+        {
+          "em": "fix",
+          "aceita": [
+            "solve"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "one time"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb8b86",
+      "quem": "voce",
+      "contexto": "f-adabc2",
+      "cod": "At my last company, a bug kept charging some customers twice.",
+      "dica": "Na minha última empresa, um bug vivia cobrando alguns clientes duas vezes.",
+      "img": "🐛💳💳",
+      "alvo": "kept charging",
+      "alvo_pt": "vivia cobrando",
+      "conceito": "kept + -ing = vivia + gerúndio; at (não in) my last company.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in",
+        "kept charge"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2c5c82",
+      "quem": "voce",
+      "cod": "What I'm most proud of is how fast the team recovered.",
+      "dica": "O que mais me orgulha é a rapidez com que o time se recuperou.",
+      "img": "🏅👥",
+      "alvo": "What I'm most proud of",
+      "alvo_pt": "O que mais me orgulha",
+      "conceito": "Clivada com What: põe em destaque; se recuperou = recovered (sem itself).",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR62"
+      ],
+      "armadilhas": [
+        "recovered itself",
+        "how fast recovered"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "fast",
+          "aceita": [
+            "quickly"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d4a131",
+      "quem": "voce",
+      "cod": "Before I write any code, let me walk through an example.",
+      "dica": "Antes de escrever qualquer código, deixa eu mostrar um exemplo passo a passo.",
+      "img": "📝🚶",
+      "alvo": "walk through an example",
+      "alvo_pt": "mostrar um exemplo passo a passo",
+      "conceito": "Antes de + verbo = Before I + verbo (ou before writing).",
+      "var": [
+        {
+          "em": "Before I write",
+          "aceita": [
+            "Before writing"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "before to write"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb77a0",
+      "quem": "voce",
+      "cod": "One last question: is there any flexibility on the start date?",
+      "dica": "Uma última pergunta: existe alguma flexibilidade na data de início?",
+      "img": "📅↔️",
+      "alvo": "flexibility on",
+      "alvo_pt": "flexibilidade na",
+      "conceito": "start date = data de início; existe = there is.",
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have any",
+        "beginning date"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-af4d18",
+      "quem": "voce",
+      "cod": "Thank you both. What are the next steps in the process?",
+      "dica": "Obrigado aos dois. Quais são os próximos passos do processo?",
+      "img": "🙏➡️",
+      "alvo": "next steps",
+      "alvo_pt": "próximos passos",
+      "conceito": "Fechar a entrevista perguntando os próximos passos é esperado.",
+      "blocos": [
+        3
+      ],
+      "pt_f": "Obrigada aos dois. Quais são os próximos passos do processo?",
+      "registro": "neutro",
+      "armadilhas": [
+        "of the process",
+        "next passes"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Thank you",
+          "aceita": [
+            "Thanks"
+          ]
+        }
+      ]
+    }
+  ]
+}

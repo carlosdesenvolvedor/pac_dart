@@ -1,0 +1,288 @@
+{
+  "id": "pro-code-review-avancado.defender-a-sua-decisao",
+  "trilha": "pro-code-review-avancado",
+  "nome": "Defender a sua decisão",
+  "emoji": "🛡️",
+  "cena": "Agora o PR é seu: Mike e Ana deixaram comentários, e você responde a cada um, aceitando alguns e defendendo outros.",
+  "resumo": "Como autor do PR: I went with this because..., It's intentional e Good call, I'll...",
+  "fechamento": false,
+  "novos": [
+    "verbose",
+    "duplication",
+    "intentional",
+    "good call"
+  ],
+  "apoio": [
+    "go with (escolher)",
+    "on purpose",
+    "helper",
+    "lean toward"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Defender sem brigar"
+    },
+    {
+      "t": "p",
+      "c": "Explique a escolha: **I went with this because...** (escolhi isso porque...), **It's intentional.** (é intencional). Aceite com **Good call, I'll...** (boa sacada, vou...)."
+    },
+    {
+      "t": "warn",
+      "c": "Let me explain why... (não: let me explain you). verbose = verboso, prolixo."
+    },
+    {
+      "t": "ex",
+      "c": "Yes, it's intentional.\nSim, é intencional."
+    }
+  ],
+  "imagem": "🛡️💻💬",
+  "visualizacao": "O PR agora é seu. As notificações pipocam na tela, você lê cada comentário com calma e responde um por um, firme e tranquilo.",
+  "foto_busca": "programmer reading comments monitor",
+  "trechos": [
+    {
+      "id": "f-f919f2",
+      "quem": "mike",
+      "cod": "This function feels a bit verbose. Could we simplify it?",
+      "dica": "Essa função parece um pouco verbosa. Dá para simplificar?",
+      "img": "📜📏",
+      "alvo": "verbose",
+      "alvo_pt": "verbosa",
+      "conceito": "verbose = verboso, comprido demais para o que faz.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02",
+        "BR01"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "feels",
+          "aceita": [
+            "seems",
+            "looks"
+          ]
+        },
+        {
+          "em": "a bit",
+          "aceita": [
+            "a little"
+          ]
+        },
+        {
+          "em": "Could we",
+          "aceita": [
+            "Can we"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-fe25bc",
+      "quem": "voce",
+      "contexto": "f-f919f2",
+      "cod": "I went with this because it's easier to test, even if it's more verbose.",
+      "dica": "Escolhi isso porque é mais fácil de testar, mesmo sendo mais verboso.",
+      "img": "🧪👍",
+      "alvo": "verbose",
+      "alvo_pt": "verboso",
+      "conceito": "go with = escolher uma opção. O it de it is easier é obrigatório.",
+      "var": [
+        {
+          "em": "went with",
+          "aceita": [
+            "chose"
+          ]
+        },
+        {
+          "em": "even if",
+          "aceita": [
+            "even though"
+          ]
+        }
+      ],
+      "blocos": [
+        9
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ecac09",
+      "quem": "ana",
+      "cod": "There's some duplication between these two files. Is that on purpose?",
+      "dica": "Tem uma certa duplicação entre esses dois arquivos. Isso é de propósito?",
+      "img": "📄📄",
+      "alvo": "duplication",
+      "alvo_pt": "duplicação",
+      "conceito": "duplication é incontável aqui: some duplication (não: a duplication).",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "these two files",
+          "aceita": [
+            "those two files"
+          ]
+        },
+        {
+          "em": "Is that",
+          "aceita": [
+            "Is this",
+            "Is it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-129709",
+      "quem": "voce",
+      "contexto": "f-ecac09",
+      "cod": "Yes, it's intentional. The two flows will probably change for different reasons.",
+      "dica": "Sim, é intencional. Os dois fluxos provavelmente vão mudar por motivos diferentes.",
+      "img": "🎯🔀",
+      "alvo": "intentional",
+      "alvo_pt": "intencional",
+      "conceito": "intentional = de propósito, pensado; o it é obrigatório: it is intentional.",
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01",
+        "BR45"
+      ],
+      "armadilhas": [
+        "diferent"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "The two flows",
+          "aceita": [
+            "Both flows"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ead451",
+      "quem": "mike",
+      "contexto": "f-129709",
+      "cod": "I'd still lean toward removing the duplication, but it's your call.",
+      "dica": "Eu ainda tenderia a remover a duplicação, mas a decisão é sua.",
+      "img": "🤷⚖️",
+      "alvo": "duplication",
+      "alvo_pt": "duplicação",
+      "conceito": "lean toward + -ing = tender a...; it's your call = a decisão é sua.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "remove"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "your call",
+          "aceita": [
+            "your decision"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b8f5c8",
+      "quem": "ana",
+      "cod": "Is this empty catch block intentional too, or should it log the error?",
+      "dica": "Esse bloco catch vazio também é intencional, ou deveria logar o erro?",
+      "img": "🕳️📝",
+      "alvo": "intentional",
+      "alvo_pt": "intencional",
+      "var": [
+        {
+          "em": "Is this",
+          "aceita": [
+            "Is that"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "blocos": [
+        7
+      ]
+    },
+    {
+      "id": "f-192dfc",
+      "quem": "voce",
+      "contexto": "f-b8f5c8",
+      "cod": "No, that one isn't. Good call, I'll add proper error handling.",
+      "dica": "Não, esse não. Boa sacada, vou adicionar um tratamento de erros adequado.",
+      "img": "💡✅",
+      "alvo": "Good call",
+      "alvo_pt": "Boa sacada",
+      "conceito": "Good call = boa sacada (a sugestão é boa); good catch = bem observado (a pessoa achou um erro).",
+      "var": [
+        {
+          "em": "that one isn't",
+          "aceita": [
+            "that one's not",
+            "it isn't",
+            "it's not"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        4
+      ]
+    },
+    {
+      "id": "f-edb8e0",
+      "quem": "voce",
+      "contexto": "Maybe add a comment on why we retry three times?",
+      "cod": "Good call. I'll explain the retry logic in a comment.",
+      "dica": "Boa sacada. Vou explicar a lógica de retry num comentário.",
+      "img": "🔁📝",
+      "alvo": "Good call",
+      "alvo_pt": "Boa sacada",
+      "conceito": "explain the logic (não: explain you the logic): a pessoa não vem logo depois de explain.",
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "you"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

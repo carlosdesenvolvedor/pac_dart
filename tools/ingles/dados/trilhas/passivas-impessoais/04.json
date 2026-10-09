@@ -1,0 +1,252 @@
+{
+  "id": "passivas-impessoais.teria-sido-to-have-been-participio",
+  "trilha": "passivas-impessoais",
+  "nome": "Teria sido: to have been + particípio",
+  "emoji": "🕵️",
+  "cena": "Você resume para a newsletter interna dois incidentes do setor: uma queda de serviço e um vazamento de dados.",
+  "resumo": "Relatar por escrito o que se acredita ter acontecido: is believed / reported to have been + particípio.",
+  "fechamento": false,
+  "novos": [
+    "is believed to have been...",
+    "is reported to have been...",
+    "exposed (exposto)",
+    "power failure"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Acredita-se que tenha sido..."
+    },
+    {
+      "t": "p",
+      "c": "Para um fato passado e passivo, o inglês escrito usa **is believed / reported to have been + particípio**: The data is believed to have been exposed."
+    },
+    {
+      "t": "tip",
+      "c": "**Segundo os relatos**, a queda foi causada... = The outage **is reported to have been** caused..."
+    },
+    {
+      "t": "warn",
+      "c": "Não: *It believes that was exposed*. O sujeito é a coisa: the data is believed to have been..."
+    },
+    {
+      "t": "ex",
+      "c": "The data is believed to have been exposed for two days.\nAcredita-se que os dados tenham ficado expostos por dois dias."
+    }
+  ],
+  "imagem": "⚡🖥️🔓",
+  "visualizacao": "No canal do time, a Ana pergunta das notícias. Você tem dois incidentes para resumir: um data center sem energia e uma lista de e-mails que vazou.",
+  "foto_busca": "dark server room power outage",
+  "trechos": [
+    {
+      "id": "f-3e0210",
+      "quem": "ana",
+      "cod": "What caused the power failure?",
+      "dica": "O que causou a falha de energia?",
+      "img": "⚡❓",
+      "alvo": "power failure",
+      "alvo_pt": "falha de energia",
+      "conceito": "power failure (ou power outage) = falha de energia.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4665387,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"What caused the power outage?\" (outage → failure, o item da lição); PT reescrito (original: \"O que causou a falta de energia?\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-589c99",
+      "quem": "voce",
+      "contexto": "f-3e0210",
+      "cod": "The outage is reported to have been caused by a storm.",
+      "dica": "Segundo os relatos, a queda foi causada por uma tempestade.",
+      "img": "⛈️🖥️📰",
+      "alvo": "is reported to have been",
+      "alvo_pt": "Segundo os relatos",
+      "conceito": "Segundo os relatos, foi causada = is reported to have been caused.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "The outage is reported to have been caused",
+          "aceita": [
+            "According to reports, the outage was caused",
+            "It is reported that the outage was caused"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f8ffc1",
+      "quem": "voce",
+      "cod": "The service is reported to have been degraded for six hours.",
+      "dica": "Segundo os relatos, o serviço ficou degradado por seis horas.",
+      "img": "🐢🖥️⏱️",
+      "alvo": "is reported to have been",
+      "alvo_pt": "Segundo os relatos",
+      "conceito": "por seis horas = for six hours (duração; não: during six hours).",
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58",
+        "BR63"
+      ],
+      "armadilhas": [
+        "during"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "The service is reported to have been degraded",
+          "aceita": [
+            "According to reports, the service was degraded",
+            "It is reported that the service was degraded"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ae82f1",
+      "quem": "voce",
+      "cod": "After the power failure, the backup generator didn't start.",
+      "dica": "Depois da falha de energia, o gerador de backup não ligou.",
+      "img": "🔋❌⚡",
+      "alvo": "power failure",
+      "alvo_pt": "falha de energia",
+      "conceito": "ligar (máquina) = start; a negativa no passado leva didn't + verbo base.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "started"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "start",
+          "aceita": [
+            "turn on",
+            "kick in"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-173fcd",
+      "quem": "voce",
+      "cod": "In the second incident, customer email addresses were exposed.",
+      "dica": "No segundo incidente, endereços de e-mail de clientes ficaram expostos.",
+      "img": "📧🔓👥",
+      "alvo": "exposed",
+      "alvo_pt": "expostos",
+      "conceito": "ficar exposto = be exposed (passiva com be, não com stay).",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "stayed"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "customer email addresses",
+          "aceita": [
+            "customers' email addresses"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6a0e2c",
+      "quem": "mike",
+      "contexto": "f-173fcd",
+      "cod": "How long were they exposed?",
+      "dica": "Por quanto tempo ficaram expostos?",
+      "img": "⏳🔓",
+      "alvo": "exposed",
+      "alvo_pt": "expostos",
+      "conceito": "How long = por quanto tempo; were concorda com they.",
+      "registro": "informal",
+      "armadilhas": [
+        "was"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d5a8f8",
+      "quem": "voce",
+      "contexto": "f-6a0e2c",
+      "cod": "The data is believed to have been exposed for two days.",
+      "dica": "Acredita-se que os dados tenham ficado expostos por dois dias.",
+      "img": "🗂️🔓📆",
+      "alvo": "is believed to have been",
+      "alvo_pt": "Acredita-se que",
+      "lit": "[lit.: os dados são acreditados ter sido expostos]",
+      "conceito": "Acredita-se que tenha sido = is believed to have been + particípio.",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "believes"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "The data is believed to have been exposed",
+          "aceita": [
+            "It is believed that the data was exposed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b863bd",
+      "quem": "voce",
+      "cod": "This bug is believed to have been introduced in last week's release.",
+      "dica": "Acredita-se que este bug tenha sido introduzido na versão da semana passada.",
+      "img": "🐞📦📅",
+      "alvo": "is believed to have been",
+      "alvo_pt": "Acredita-se que",
+      "conceito": "last week's release = a versão da semana passada (possessivo com tempo).",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "believes"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "This bug is believed to have been introduced",
+          "aceita": [
+            "It is believed that this bug was introduced"
+          ]
+        }
+      ]
+    }
+  ]
+}

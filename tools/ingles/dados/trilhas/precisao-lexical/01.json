@@ -1,0 +1,252 @@
+{
+  "id": "precisao-lexical.sensato-e-abrangente",
+  "trilha": "precisao-lexical",
+  "nome": "Sensato e abrangente",
+  "emoji": "🧐",
+  "cena": "Antes de mandar um e-mail importante para o cliente, você relê o texto com a Ana e troca as palavras que enganam.",
+  "resumo": "Revisar um e-mail com sensible, comprehensive, anticipate e accordingly, sem cair no falso cognato.",
+  "fechamento": false,
+  "novos": [
+    "sensible",
+    "comprehensive",
+    "anticipate",
+    "accordingly"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Falsos cognatos do e-mail"
+    },
+    {
+      "t": "p",
+      "c": "**sensible** = sensato · **comprehensive** = abrangente, completo · **anticipate** = prever, esperar · **accordingly** = de acordo, em função disso."
+    },
+    {
+      "t": "warn",
+      "c": "Sensível é sensitive, compreensivo é understanding e antecipar uma data é move up: os três ficam para a próxima lição."
+    },
+    {
+      "t": "tip",
+      "c": "convenient = prático, que cai bem: a convenient time = um horário bom para você."
+    },
+    {
+      "t": "ex",
+      "c": "We anticipate some delays.\nPrevemos alguns atrasos."
+    }
+  ],
+  "imagem": "📧🔍✏️",
+  "visualizacao": "Você e a Ana estão lado a lado diante do e-mail aberto na tela. O cursor pisca em cima de uma palavra; ela aponta, você apaga e escreve a certa.",
+  "foto_busca": "two colleagues reviewing email laptop",
+  "trechos": [
+    {
+      "id": "f-6a6e7c",
+      "quem": "ana",
+      "contexto": "I'll call the client first and send the email after the call.",
+      "cod": "That sounds like a sensible plan.",
+      "dica": "Parece um plano sensato.",
+      "img": "🙂📋👍",
+      "alvo": "sensible",
+      "alvo_pt": "sensato",
+      "lit": "[lit.: isso soa como um plano sensato]",
+      "conceito": "sensible = sensato (não: sensível, que é sensitive).",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "sensitive"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "That sounds like",
+          "aceita": [
+            "It sounds like"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d31780",
+      "quem": "voce",
+      "cod": "The most sensible option would be to delay the launch by a week.",
+      "dica": "A opção mais sensata seria adiar o lançamento em uma semana.",
+      "img": "⏸️🚀📅",
+      "alvo": "sensible",
+      "alvo_pt": "sensata",
+      "conceito": "the most sensible option = a opção mais sensata; delay by = adiar em.",
+      "var": [
+        {
+          "em": "a week",
+          "aceita": [
+            "one week"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "sensitive"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-33c59e",
+      "quem": "voce",
+      "cod": "We'll send a comprehensive report on what went wrong last month.",
+      "dica": "Vamos enviar um relatório abrangente sobre o que deu errado no mês passado.",
+      "img": "📑🔎❌",
+      "alvo": "comprehensive",
+      "alvo_pt": "abrangente",
+      "conceito": "comprehensive = abrangente, completo (não: compreensivo, que é understanding).",
+      "var": [
+        {
+          "em": "We'll",
+          "aceita": [
+            "We will",
+            "We're going to"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "understanding"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e32382",
+      "quem": "ana",
+      "contexto": "f-33c59e",
+      "cod": "Does the report really need to be that comprehensive?",
+      "dica": "O relatório precisa mesmo ser tão abrangente assim?",
+      "img": "📚🤔",
+      "alvo": "comprehensive",
+      "alvo_pt": "abrangente",
+      "conceito": "that + adjetivo = tão... assim. Pergunta com does: the report needs.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR56"
+      ],
+      "armadilhas": [
+        "needs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6b95f4",
+      "quem": "voce",
+      "cod": "Despite our efforts, we anticipate some delays during the holiday season.",
+      "dica": "Apesar dos nossos esforços, prevemos alguns atrasos durante as festas de fim de ano.",
+      "img": "🎄🐢📦",
+      "alvo": "anticipate",
+      "alvo_pt": "prevemos",
+      "conceito": "anticipate = prever, esperar (não: antecipar). holiday season = as festas de fim de ano.",
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56",
+        "BR63"
+      ],
+      "armadilhas": [
+        "predict"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-03b70f",
+      "quem": "voce",
+      "contexto": "f-6b95f4",
+      "cod": "Please plan your work accordingly.",
+      "dica": "Por favor, planejem o trabalho de vocês de acordo.",
+      "img": "🗓️✅",
+      "alvo": "accordingly",
+      "alvo_pt": "de acordo",
+      "conceito": "accordingly = de acordo com isso, em função do que foi dito. Vai no fim da frase.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "according"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e68f67",
+      "quem": "voce",
+      "contexto": "You always check everything twice, right?",
+      "cod": "My job is to anticipate problems.",
+      "dica": "O meu trabalho é prever problemas.",
+      "img": "🔮⚠️",
+      "alvo": "anticipate",
+      "alvo_pt": "prever",
+      "conceito": "prever um problema = anticipate a problem. Antecipar uma reunião é outra coisa: move up.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "predict",
+        "antecipate"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2663228,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"O meu trabalho é antecipar problemas.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b27e25",
+      "quem": "voce",
+      "cod": "If the client changes the date, we'll adjust the plan accordingly.",
+      "dica": "Se o cliente mudar a data, vamos ajustar o plano de acordo.",
+      "img": "📆🔧",
+      "alvo": "accordingly",
+      "alvo_pt": "de acordo",
+      "conceito": "if + presente para o futuro: if the client changes (não: will change).",
+      "var": [
+        {
+          "em": "we'll",
+          "aceita": [
+            "we will",
+            "we're going to"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02",
+        "BR28"
+      ],
+      "armadilhas": [
+        "according",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

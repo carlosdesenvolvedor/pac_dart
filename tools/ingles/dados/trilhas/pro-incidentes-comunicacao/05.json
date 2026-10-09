@@ -1,0 +1,183 @@
+{
+  "id": "pro-incidentes-comunicacao.cena-postmortem-com-a-diretoria",
+  "trilha": "pro-incidentes-comunicacao",
+  "nome": "Cena: postmortem com a diretoria",
+  "emoji": "🎬",
+  "cena": "Você apresenta o postmortem para a diretora de engenharia e para a Sarah, que vai explicar o ocorrido aos clientes maiores.",
+  "resumo": "O incidente inteiro de memória: resumo, impacto, o que faltou, a condicional invertida e as ações.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "in short",
+    "be down",
+    "could have done",
+    "should have had",
+    "has been implemented",
+    "fire"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O resumo para a diretoria"
+    },
+    {
+      "t": "p",
+      "c": "Impacto com números (**Payments were down for 42 minutes.**), o que faltou (**We should have had...**), no relatório a condicional invertida (**Had the alert reached...**) e o que já mudou."
+    },
+    {
+      "t": "warn",
+      "c": "por 42 minutos = for 42 minutes (não: during). Passiva: the fix has been implemented."
+    }
+  ],
+  "imagem": "🎬📊👔",
+  "visualizacao": "Sala da diretoria, slides prontos. A diretora e a Sarah olham para você, e você conta o incidente com números claros e voz firme.",
+  "foto_busca": "executive meeting presentation slides",
+  "trechos": [
+    {
+      "id": "f-fb17da",
+      "quem": "voce",
+      "cod": "In short, a config change disabled the certificate renewal.",
+      "dica": "Em resumo, uma mudança de configuração desativou a renovação do certificado.",
+      "img": "📝🔐",
+      "alvo": "In short",
+      "alvo_pt": "Em resumo",
+      "registro": "neutro",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-04d0f7",
+      "quem": "voce",
+      "cod": "Payments were down for 42 minutes.",
+      "dica": "Os pagamentos ficaram fora do ar por 42 minutos.",
+      "img": "💳⏱️",
+      "alvo": "were down",
+      "alvo_pt": "ficaram fora do ar",
+      "conceito": "por 42 minutos = for 42 minutes (não: during).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "during"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-00fb5a",
+      "quem": "diretora",
+      "cod": "What could we have done differently?",
+      "dica": "O que poderíamos ter feito diferente?",
+      "img": "🤔🔁",
+      "alvo": "could we have done",
+      "alvo_pt": "poderíamos ter feito",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-711ba7",
+      "quem": "voce",
+      "contexto": "f-00fb5a",
+      "cod": "We should have had an alert before the certificate expired.",
+      "dica": "Devíamos ter tido um alerta antes de o certificado vencer.",
+      "img": "🔔📜",
+      "alvo": "should have had",
+      "alvo_pt": "Devíamos ter tido",
+      "registro": "neutro",
+      "armadilhas": [
+        "expires"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7899c1",
+      "quem": "voce",
+      "cod": "Had the alert reached the right channel, the outage would have been much shorter.",
+      "dica": "(no relatório) Se o alerta tivesse chegado ao canal certo, a queda teria sido bem mais curta.",
+      "img": "📬✂️",
+      "alvo": "Had the alert reached",
+      "alvo_pt": "Se o alerta tivesse chegado",
+      "var": [
+        {
+          "em": "Had the alert reached",
+          "aceita": [
+            "If the alert had reached"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d8c655",
+      "quem": "sarah",
+      "cod": "What should I tell our biggest customers?",
+      "dica": "O que eu devo dizer aos nossos maiores clientes?",
+      "img": "🗣️🏢",
+      "alvo": "tell",
+      "alvo_pt": "dizer",
+      "registro": "neutro",
+      "armadilhas": [
+        "say",
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-59d9ab",
+      "quem": "voce",
+      "contexto": "f-d8c655",
+      "cod": "Tell them the fix has been implemented and payments are fully restored.",
+      "dica": "Fala pra eles que a correção foi implementada e que os pagamentos estão totalmente restabelecidos.",
+      "img": "🔧✅",
+      "alvo": "has been implemented",
+      "alvo_pt": "foi implementada",
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "and payments",
+          "aceita": [
+            "and that payments"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b7c3d3",
+      "quem": "voce",
+      "cod": "Now an alert fires two weeks before any certificate expires.",
+      "dica": "Agora um alerta dispara duas semanas antes de qualquer certificado vencer.",
+      "img": "🔔📆",
+      "alvo": "fires",
+      "alvo_pt": "dispara",
+      "conceito": "fires e expires: -s da 3ª pessoa; antes de vencer = before it expires.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "fire",
+        "expire"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

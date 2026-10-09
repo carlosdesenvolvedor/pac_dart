@@ -1,0 +1,227 @@
+{
+  "id": "ingles-tecnico-academico.dar-origem-a-e-responder-por",
+  "trilha": "ingles-tecnico-academico",
+  "nome": "Dar origem a e responder por",
+  "emoji": "🔁",
+  "cena": "Num grupo de leitura com o time, vocês discutem um artigo sobre falhas em sistemas distribuídos.",
+  "resumo": "Causas e efeitos num texto técnico com give rise to, account for, network delays e human factors.",
+  "fechamento": false,
+  "novos": [
+    "give rise to",
+    "account for",
+    "network delays",
+    "human factors"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Causa e efeito"
+    },
+    {
+      "t": "p",
+      "c": "**give rise to** = dar origem a · **account for** = responder por (uma parcela) · **network delays** = atrasos de rede · **human factors** = fatores humanos."
+    },
+    {
+      "t": "warn",
+      "c": "account for e contribute to têm preposição fixa (não: account of, contribute for). research é incontável (não: researches)."
+    },
+    {
+      "t": "tip",
+      "c": "play a role in = ter um papel em: Human factors play a role in most incidents."
+    },
+    {
+      "t": "ex",
+      "c": "This may give rise to new problems.\nIsso pode dar origem a novos problemas."
+    }
+  ],
+  "imagem": "📚🔗💥",
+  "visualizacao": "Fim de tarde, o time reunido numa chamada com o artigo aberto. Cada um traz um trecho grifado; num gráfico de pizza, a fatia dos atrasos de rede é a maior.",
+  "foto_busca": "team reading group discussion",
+  "trechos": [
+    {
+      "id": "f-cb7495",
+      "quem": "ana",
+      "cod": "The paper says network delays are the most common problem.",
+      "dica": "O artigo diz que os atrasos de rede são o problema mais comum.",
+      "img": "🐢🌐",
+      "alvo": "network delays",
+      "alvo_pt": "atrasos de rede",
+      "conceito": "atrasos de rede = network delays: o substantivo que qualifica vem antes.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR21",
+        "BR24"
+      ],
+      "armadilhas": [
+        "delays of network",
+        "the"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1fd365",
+      "quem": "voce",
+      "contexto": "f-cb7495",
+      "cod": "Network delays account for most of the errors we observed.",
+      "dica": "Os atrasos de rede respondem pela maior parte dos erros que observamos.",
+      "img": "🥧📶",
+      "alvo": "account for",
+      "alvo_pt": "respondem pela",
+      "conceito": "account for = responder por uma parcela. Generalização sem artigo: Network delays.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR21",
+        "BR53"
+      ],
+      "armadilhas": [
+        "of",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c94db",
+      "quem": "mike",
+      "cod": "Small network delays can give rise to much bigger failures.",
+      "dica": "Pequenos atrasos de rede podem dar origem a falhas muito maiores.",
+      "img": "🌱➡️💥",
+      "alvo": "give rise to",
+      "alvo_pt": "dar origem a",
+      "lit": "[lit.: dar subida a]",
+      "conceito": "give rise to + substantivo = dar origem a (registro escrito e técnico).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "origin"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "can",
+          "aceita": [
+            "may"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cae6b9",
+      "quem": "voce",
+      "contexto": "f-4c94db",
+      "cod": "Aggressive retries may give rise to even more traffic.",
+      "dica": "Retentativas agressivas podem dar origem a ainda mais tráfego.",
+      "img": "🔁🔁📈",
+      "alvo": "give rise to",
+      "alvo_pt": "dar origem a",
+      "conceito": "may = pode (possibilidade). give rise to: to é preposição, segue substantivo.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "origin",
+        "gives"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "may",
+          "aceita": [
+            "can"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4cbb9c",
+      "quem": "ana",
+      "cod": "What about human factors? They play a role in most incidents.",
+      "dica": "E os fatores humanos? Eles têm um papel na maioria dos incidentes.",
+      "img": "🧑‍💻🧠",
+      "alvo": "human factors",
+      "alvo_pt": "fatores humanos",
+      "conceito": "E os...? = What about...? play a role in = ter um papel em.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR21"
+      ],
+      "armadilhas": [
+        "factors human",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf1485",
+      "quem": "voce",
+      "contexto": "f-4cbb9c",
+      "cod": "Human factors also played a role in last year's power outage.",
+      "dica": "Fatores humanos também tiveram um papel na queda de energia do ano passado.",
+      "img": "🔌⚡🌑",
+      "alvo": "Human factors",
+      "alvo_pt": "Fatores humanos",
+      "conceito": "Fato encerrado: played (não: have played). last year's power outage = a queda de energia do ano passado.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "have",
+        "factors human"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b7f69d",
+      "quem": "voce",
+      "cod": "According to this research, these two factors account for half of all outages.",
+      "dica": "Segundo essa pesquisa, esses dois fatores respondem por metade de todas as quedas.",
+      "img": "🔬🥧",
+      "alvo": "account for",
+      "alvo_pt": "respondem por",
+      "conceito": "research é incontável: this research (não: these researches).",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22",
+        "BR53"
+      ],
+      "armadilhas": [
+        "researches",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4149f2",
+      "quem": "mike",
+      "cod": "Should we simulate network delays in our own tests?",
+      "dica": "A gente devia simular atrasos de rede nos nossos próprios testes?",
+      "img": "🎛️🐌",
+      "alvo": "network delays",
+      "alvo_pt": "atrasos de rede",
+      "conceito": "A gente devia...? = Should we...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "delays of network"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

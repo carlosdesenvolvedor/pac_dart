@@ -147,7 +147,9 @@ class FilaLicao {
   }
 
   /// Registra como foi o passo atual ([r] = null para cópia) e avança.
-  void registrar(ResultadoRevisao? r, {bool semCorrecao = false}) {
+  /// [vista]: digitada com o 👁 ligado (a frase à vista) — sobe a escada como
+  /// cópia, mas na prova vale só meio ponto (não foi de memória).
+  void registrar(ResultadoRevisao? r, {bool semCorrecao = false, bool vista = false}) {
     final p = _atual;
     if (p == null) return;
     final e = _f[p.frase];
@@ -158,6 +160,9 @@ class FilaLicao {
 
     if (p.correcao) {
       _correcao = null;
+    } else if (vista) {
+      if (p.degrau == Degrau.prova) primeiraProva.putIfAbsent(p.frase, () => ResultadoRevisao.hesitou);
+      _agendar(p, e, ResultadoRevisao.acertou, agora, semCorrecao: true);
     } else {
       if (r != null) e.ultimo = r;
       _agendar(p, e, r ?? ResultadoRevisao.acertou, agora, semCorrecao: semCorrecao);

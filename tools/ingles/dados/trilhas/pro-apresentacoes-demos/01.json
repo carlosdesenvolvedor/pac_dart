@@ -1,0 +1,217 @@
+{
+  "id": "pro-apresentacoes-demos.abrir-e-mostrar-o-roteiro",
+  "trilha": "pro-apresentacoes-demos",
+  "nome": "Abrir e mostrar o roteiro",
+  "emoji": "🎤",
+  "cena": "Você abre uma palestra de vinte minutos num meetup de Flutter sobre como o time reduziu o tempo de build.",
+  "resumo": "Abrir a palestra: agradecer, mostrar o roteiro, envolver a plateia e combinar as perguntas.",
+  "fechamento": false,
+  "novos": [
+    "show of hands",
+    "by the end of this talk",
+    "feel free to interrupt",
+    "outline"
+  ],
+  "apoio": [
+    "thanks for having me",
+    "talk (palestra)",
+    "meetup"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Abrir a palestra"
+    },
+    {
+      "t": "p",
+      "c": "Três passos: agradeça (**Thanks for having me.**), mostre o roteiro (**Let me start with a quick outline.**) e diga como vão ser as perguntas (**Feel free to interrupt me.**)."
+    },
+    {
+      "t": "warn",
+      "c": "palestra = talk (lecture é aula expositiva); roteiro da fala = outline (agenda é a pauta de uma reunião)."
+    },
+    {
+      "t": "ex",
+      "c": "Quick show of hands: how many of you use Flutter?\nLevantem a mão rapidinho: quantos de vocês usam Flutter?"
+    }
+  ],
+  "imagem": "🎤📽️🙋",
+  "visualizacao": "Você está no palco de um meetup de Flutter, microfone na mão. O primeiro slide está no telão, e umas cinquenta pessoas esperam você começar.",
+  "foto_busca": "tech meetup speaker stage audience",
+  "trechos": [
+    {
+      "id": "f-2aa071",
+      "quem": "voce",
+      "cod": "Thanks for having me. Let me start with a quick outline.",
+      "dica": "Obrigado pelo convite. Vou começar com um roteiro rápido.",
+      "img": "🎤🗒️",
+      "alvo": "outline",
+      "alvo_pt": "roteiro",
+      "conceito": "outline = roteiro, a estrutura da fala; agenda é a pauta de uma reunião.",
+      "var": [
+        {
+          "em": "Let me start",
+          "aceita": [
+            "I'll start",
+            "I will start"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "pt_f": "Obrigada pelo convite. Vou começar com um roteiro rápido.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "agenda",
+        "script"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eff194",
+      "quem": "voce",
+      "cod": "The outline is simple: the problem, our fix, and the results.",
+      "dica": "O roteiro é simples: o problema, a nossa solução e os resultados.",
+      "img": "📋➡️📈",
+      "alvo": "outline",
+      "alvo_pt": "roteiro",
+      "conceito": "Vírgula serial no inglês americano: the problem, our fix, and the results.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-283096",
+      "quem": "voce",
+      "cod": "Quick show of hands: how many of you use Flutter in production?",
+      "dica": "Levantem a mão rapidinho: quantos de vocês usam Flutter em produção?",
+      "img": "🙋❓",
+      "alvo": "show of hands",
+      "alvo_pt": "Levantem a mão",
+      "lit": "[lit.: rápida mostra de mãos]",
+      "conceito": "show of hands = votação de mão levantada.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-894b1a",
+      "quem": "voce",
+      "cod": "Another show of hands: who's ever waited ten minutes for a build?",
+      "dica": "Levantem a mão de novo: quem já esperou dez minutos por um build?",
+      "img": "🙋⏳",
+      "alvo": "show of hands",
+      "alvo_pt": "Levantem a mão",
+      "conceito": "quem já...? (experiência) = who's ever...? (who has ever)",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "who's",
+          "aceita": [
+            "who has"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a8ff73",
+      "quem": "voce",
+      "cod": "By the end of this talk, you'll have three tricks for faster builds.",
+      "dica": "Até o fim desta palestra, vocês vão ter três truques para builds mais rápidos.",
+      "img": "🏁💡",
+      "alvo": "By the end of this talk",
+      "alvo_pt": "Até o fim desta palestra",
+      "conceito": "by the end of = até o fim de (prazo). talk = palestra; lecture é aula.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "lecture",
+        "until"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6eefc2",
+      "quem": "voce",
+      "cod": "By the end of this talk, you'll also know where your build time goes.",
+      "dica": "Até o fim desta palestra, vocês também vão saber para onde vai o tempo de build de vocês.",
+      "img": "🔎⏱️",
+      "alvo": "By the end of this talk",
+      "alvo_pt": "Até o fim desta palestra",
+      "conceito": "Depois de by the end of..., o inglês usa will: you'll know (não: you know).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "until"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cf1551",
+      "quem": "voce",
+      "cod": "Feel free to interrupt me, or save your questions for the end.",
+      "dica": "Fiquem à vontade para me interromper, ou guardem suas perguntas para o final.",
+      "img": "✋💬",
+      "alvo": "Feel free to interrupt",
+      "alvo_pt": "Fiquem à vontade para me interromper",
+      "conceito": "feel free to = fique à vontade para (convite educado).",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b6bf53",
+      "quem": "voce",
+      "cod": "It's a short talk, so feel free to interrupt at any point.",
+      "dica": "É uma palestra curta, então fiquem à vontade para interromper a qualquer momento.",
+      "img": "⏱️✋",
+      "alvo": "feel free to interrupt",
+      "alvo_pt": "fiquem à vontade para interromper",
+      "conceito": "É uma palestra curta = It's a short talk: o sujeito it não some.",
+      "var": [
+        {
+          "em": "at any point",
+          "aceita": [
+            "at any time"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

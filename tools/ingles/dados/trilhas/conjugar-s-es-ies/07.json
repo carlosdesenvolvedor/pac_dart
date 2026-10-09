@@ -1,0 +1,243 @@
+{
+  "id": "conjugar-s-es-ies.revisao-um-dia-do-mike",
+  "trilha": "conjugar-s-es-ies",
+  "nome": "Revisão: um dia do Mike",
+  "emoji": "🗓️",
+  "cena": "Você conta para a Julia como é um dia normal do Mike.",
+  "resumo": "Todas as regras juntas num dia inteiro: -s, -es, -ies, vogal + y e has.",
+  "fechamento": false,
+  "novos": [
+    "gets up",
+    "has breakfast",
+    "goes",
+    "fixes",
+    "has lunch",
+    "studies",
+    "finishes"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Todas as regras"
+    },
+    {
+      "t": "p",
+      "c": "**-s** na maioria (works); **-es** depois de s, sh, ch, x, z e o (watches, goes); consoante + y → **-ies** (studies); vogal + y → **-s** (plays); e **has**."
+    },
+    {
+      "t": "ex",
+      "c": "He goes to the office by train.\nEle vai para o escritório de trem."
+    }
+  ],
+  "imagem": "🌅💼🌙",
+  "visualizacao": "Você e a sua irmã Julia tomam um café no fim da tarde, e você conta, rindo, como é um dia normal do Mike, da hora em que ele acorda até dormir.",
+  "foto_busca": "siblings coffee afternoon talk",
+  "trechos": [
+    {
+      "id": "f-7cc1ad",
+      "quem": "voce",
+      "cod": "Mike gets up at seven.",
+      "dica": "O Mike se levanta às sete.",
+      "img": "⏰🌅",
+      "alvo": "gets up",
+      "alvo_pt": "se levanta",
+      "conceito": "get → gets (regra geral).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-69243f",
+      "quem": "voce",
+      "cod": "Then he has breakfast at home.",
+      "dica": "Depois, ele toma café da manhã em casa.",
+      "img": "🥞🏠",
+      "alvo": "has breakfast",
+      "alvo_pt": "toma café da manhã",
+      "conceito": "tomar café da manhã = have breakfast → has.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "takes breakfast",
+        "haves"
+      ],
+      "teste": true,
+      "var": [
+        {
+          "em": "has",
+          "aceita": [
+            "eats"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-872f51",
+      "quem": "voce",
+      "cod": "He goes to the office by train.",
+      "dica": "Ele vai para o escritório de trem.",
+      "img": "🚆🏢",
+      "alvo": "goes",
+      "alvo_pt": "vai",
+      "conceito": "go → goes (termina em o).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-46f636",
+      "quem": "voce",
+      "cod": "In the morning, he fixes bugs.",
+      "dica": "De manhã, ele corrige bugs.",
+      "img": "🐞🌅",
+      "alvo": "fixes",
+      "alvo_pt": "corrige",
+      "conceito": "fix → fixes (termina em x).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-487f46",
+      "quem": "voce",
+      "cod": "Mike has lunch with his team.",
+      "dica": "O Mike almoça com o time dele.",
+      "img": "🍽️👥",
+      "alvo": "has lunch",
+      "alvo_pt": "almoça",
+      "conceito": "almoçar = have lunch → has lunch.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "has",
+          "aceita": [
+            "eats"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d897c7",
+      "quem": "voce",
+      "cod": "After lunch, he studies Spanish.",
+      "dica": "Depois do almoço, ele estuda espanhol.",
+      "img": "📚🇪🇸",
+      "alvo": "studies",
+      "alvo_pt": "estuda",
+      "conceito": "study → studies (d + y).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-77f2d4",
+      "quem": "voce",
+      "cod": "He finishes work at six.",
+      "dica": "Ele termina o trabalho às seis.",
+      "img": "🕕✅",
+      "alvo": "finishes",
+      "alvo_pt": "termina",
+      "conceito": "finish → finishes (termina em sh).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-25da7b",
+      "quem": "voce",
+      "cod": "Mike plays basketball with his son.",
+      "dica": "O Mike joga basquete com o filho dele.",
+      "img": "🏀👦",
+      "alvo": "plays",
+      "alvo_pt": "joga",
+      "conceito": "play → plays (a + y).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3eac61",
+      "quem": "voce",
+      "cod": "He buys pizza for dinner.",
+      "dica": "Ele compra pizza para o jantar.",
+      "img": "🍕🛒",
+      "alvo": "buys",
+      "alvo_pt": "compra",
+      "conceito": "buy → buys (u + y).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5f00d0",
+      "quem": "voce",
+      "cod": "At night, he watches a movie.",
+      "dica": "À noite, ele assiste a um filme.",
+      "img": "🎬🏠",
+      "alvo": "watches",
+      "alvo_pt": "assiste",
+      "conceito": "watch → watches (termina em ch).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-548483",
+      "quem": "voce",
+      "cod": "He replies to emails before bed.",
+      "dica": "Ele responde e-mails antes de dormir.",
+      "img": "📧🛏️",
+      "alvo": "replies",
+      "alvo_pt": "responde",
+      "conceito": "reply → replies (l + y).",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "replies to",
+          "aceita": [
+            "answers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-2fb6f2",
+      "quem": "voce",
+      "cod": "He does the dishes after dinner.",
+      "dica": "Ele lava a louça depois do jantar.",
+      "img": "🍽️🧽",
+      "alvo": "does the dishes",
+      "alvo_pt": "lava a louça",
+      "conceito": "lavar a louça = do the dishes (ou wash the dishes).",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "does",
+          "aceita": [
+            "washes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d04056",
+      "quem": "voce",
+      "cod": "He says good night to everyone.",
+      "dica": "Ele dá boa-noite para todo mundo.",
+      "img": "🌙👋",
+      "alvo": "says good night",
+      "alvo_pt": "dá boa-noite",
+      "conceito": "dar boa-noite = say good night → says.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-915813",
+      "quem": "voce",
+      "cod": "He misses his old team.",
+      "dica": "Ele sente falta do antigo time dele.",
+      "img": "💭👥",
+      "alvo": "misses",
+      "alvo_pt": "sente falta",
+      "conceito": "miss → misses (termina em ss).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

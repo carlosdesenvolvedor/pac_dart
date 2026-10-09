@@ -1,0 +1,203 @@
+{
+  "id": "pro-carreira-networking.cena-um-dia-de-conferencia",
+  "trilha": "pro-carreira-networking",
+  "nome": "Cena: um dia de conferência",
+  "emoji": "🎬",
+  "cena": "Segundo dia da conferência: você reencontra pessoas, conhece outras e fecha o dia no happy hour do evento.",
+  "resumo": "Networking de memória do começo ao fim: abordar, conversar sobre trabalho, reagir e se despedir.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Cena: o segundo dia"
+    },
+    {
+      "t": "p",
+      "c": "Junte tudo: pergunte se é a primeira vez da pessoa (**have you been coming for years?**), retome a sessão de ontem, reaja com **No wonder...** e se despeça com **Let's keep in touch!**"
+    },
+    {
+      "t": "warn",
+      "c": "Hábito que vem de antes e continua: have been coming for years = vem há anos (não: I come here for years). Desde as 8h00 = I've been here since 8:00."
+    },
+    {
+      "t": "ex",
+      "c": "I've been coming for a few years.\nVenho há alguns anos."
+    }
+  ],
+  "imagem": "🎤🍻👋",
+  "visualizacao": "Fim de tarde no salão da conferência, luz baixa e música de fundo. Você reconhece rostos de ontem, cumprimenta, conversa e olha o relógio antes da última palestra.",
+  "foto_busca": "conference happy hour networking evening",
+  "trechos": [
+    {
+      "id": "f-ae5a0f",
+      "quem": "voce",
+      "cod": "Is this your first time here, or have you been coming for years?",
+      "dica": "É a sua primeira vez aqui, ou você vem há anos?",
+      "img": "🆕🔁",
+      "alvo": "have you been coming",
+      "alvo_pt": "você vem há",
+      "conceito": "Hábito que continua até hoje: have been coming for years = vem há anos.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "do you come"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-28ea3c",
+      "quem": "participante",
+      "contexto": "f-ae5a0f",
+      "cod": "I've been coming for a few years. It gets better every year.",
+      "dica": "Venho há alguns anos. Fica melhor a cada ano.",
+      "img": "📈🎉",
+      "alvo": "I've been coming",
+      "alvo_pt": "Venho há",
+      "conceito": "It gets: -s da 3ª pessoa, com o it obrigatório.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR47",
+        "BR02"
+      ],
+      "armadilhas": [
+        "i come"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c275f4",
+      "quem": "voce",
+      "cod": "Hey, good to see you again! How did your breakout session go?",
+      "dica": "Oi, que bom te ver de novo! Como foi a sua sessão paralela?",
+      "img": "🔁👋",
+      "alvo": "breakout session",
+      "alvo_pt": "sessão paralela",
+      "conceito": "How did X go? = como foi X (como correu); How was X? também vale.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "how was went"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Hey,",
+          "aceita": [
+            "Hi,"
+          ]
+        },
+        {
+          "em": "How did your breakout session go?",
+          "aceita": [
+            "How was your breakout session?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-02e20d",
+      "quem": "engenheira",
+      "contexto": "f-c275f4",
+      "cod": "It went really well, thanks. The room was packed!",
+      "dica": "Foi muito bem, obrigada. A sala estava lotada!",
+      "img": "🙌🪑",
+      "alvo": "It went really well",
+      "alvo_pt": "Foi muito bem",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "conceito": "packed = lotado (sala, evento, restaurante)."
+    },
+    {
+      "id": "f-9e8aad",
+      "quem": "voce",
+      "contexto": "I built a small app for my running club.",
+      "cod": "That sounds like a great side project. How did you get started?",
+      "dica": "Parece um ótimo projeto paralelo. Como você começou?",
+      "img": "🧩🌱",
+      "alvo": "side project",
+      "alvo_pt": "projeto paralelo",
+      "conceito": "That sounds like + substantivo = parece (um/uma)...",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "That sounds",
+          "aceita": [
+            "It sounds",
+            "Sounds"
+          ]
+        },
+        {
+          "em": "get started",
+          "aceita": [
+            "start"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d7878d",
+      "quem": "participante",
+      "cod": "I'm exhausted. I've been at the booth since 8:00.",
+      "dica": "Estou exausta. Estou no estande desde as 8h00.",
+      "img": "😩🕗",
+      "alvo": "I've been at the booth since",
+      "alvo_pt": "Estou no estande desde",
+      "conceito": "Presente + desde em PT = present perfect + since em inglês.",
+      "registro": "informal",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "i'm at the booth since"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c165d5",
+      "quem": "voce",
+      "contexto": "f-d7878d",
+      "cod": "No wonder you're tired! Let me get you a coffee.",
+      "dica": "Não é à toa que você está cansada! Deixa eu pegar um café para você.",
+      "img": "☕😅",
+      "alvo": "No wonder",
+      "alvo_pt": "Não é à toa",
+      "conceito": "No wonder = não é à toa (que).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2691b0",
+      "quem": "voce",
+      "cod": "I have to run to the next talk. Let's keep in touch!",
+      "dica": "Tenho que correr para a próxima palestra. Vamos manter contato!",
+      "img": "🏃🎤",
+      "alvo": "keep in touch",
+      "alvo_pt": "manter contato",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

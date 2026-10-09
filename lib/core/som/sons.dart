@@ -50,6 +50,11 @@ enum Som {
 
   /// "VAI!" da largada 3-2-1 (tom cheio e curto).
   largada,
+
+  /// 👌 Âncora do PAC·ENGLISH: sino suave em acorde (dó maior com sétima,
+  /// dedilhado). Toca no pico do ensaio mental e de novo na vitória da
+  /// lição — o MESMO som ligado ao mesmo estado de confiança.
+  ancora,
 }
 
 /// Liga/desliga global (persistido por dispositivo) + disparo dos efeitos.
@@ -72,6 +77,17 @@ abstract final class Sons {
       final p = await SharedPreferences.getInstance();
       await p.setBool(_chave, ligado);
     } catch (_) {}
+  }
+
+  /// A página já teve um gesto do usuário (tecla/clique)? Antes disso o
+  /// navegador deixa tudo mudo — som, `<audio>` e voz sintética. Quem toca
+  /// sozinho (sem nascer de uma tecla) confere aqui antes.
+  static bool get liberado {
+    try {
+      return motor.liberado;
+    } catch (_) {
+      return true;
+    }
   }
 
   static void toca(Som som) {

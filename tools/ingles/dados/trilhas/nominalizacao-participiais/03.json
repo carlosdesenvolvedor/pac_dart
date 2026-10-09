@@ -1,0 +1,267 @@
+{
+  "id": "nominalizacao-participiais.tendo-terminado-o-relatorio",
+  "trilha": "nominalizacao-participiais",
+  "nome": "Tendo terminado o relatório",
+  "emoji": "✅",
+  "cena": "No relatório de encerramento do projeto, você narra em tom formal o que o time fez em cada etapa.",
+  "resumo": "Encadear ações num texto formal com Having finished..., Having spoken with... e Not knowing...",
+  "fechamento": false,
+  "novos": [
+    "having finished",
+    "having spoken with",
+    "not knowing",
+    "codebase"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Tendo feito isso, ..."
+    },
+    {
+      "t": "p",
+      "c": "No texto formal, **Having + particípio** abre a frase com uma ação anterior: Having finished the report, Ana sent it... **Not knowing** dá a causa: Not knowing the codebase, we asked Mike..."
+    },
+    {
+      "t": "warn",
+      "c": "O sujeito das duas partes é o mesmo: Having finished the report, Ana sent it (não: ..., it was sent by Ana). E feedback fica no singular: for feedback (não: feedbacks)."
+    },
+    {
+      "t": "tip",
+      "c": "Na conversa, o natural é After I finished... ou Because I didn't know...; o particípio fica para relatórios e e-mails."
+    },
+    {
+      "t": "ex",
+      "c": "Having reviewed the code, Mike approved the PR.\nTendo revisado o código, o Mike aprovou o PR."
+    }
+  ],
+  "imagem": "📝✅📤",
+  "visualizacao": "Você está no escritório de casa, revisando o relatório final do projeto. Na tela, as etapas em ordem; lá fora começa a escurecer e o documento está quase pronto.",
+  "foto_busca": "writing final report laptop",
+  "trechos": [
+    {
+      "id": "f-79bd84",
+      "quem": "voce",
+      "cod": "Having finished the report, Ana sent it to the whole team for feedback.",
+      "dica": "Tendo terminado o relatório, a Ana o enviou ao time inteiro para receber feedback.",
+      "img": "📄📤👥",
+      "alvo": "Having finished",
+      "alvo_pt": "Tendo terminado",
+      "conceito": "Having + particípio = tendo + particípio: a ação veio antes da oração principal.",
+      "var": [
+        {
+          "em": "whole team",
+          "aceita": [
+            "entire team"
+          ]
+        },
+        {
+          "em": "for feedback",
+          "aceita": [
+            "to get feedback"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "feedbacks",
+        "finishing"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e55ccf",
+      "quem": "voce",
+      "cod": "Mike, having worked here since 2015, knows the codebase well.",
+      "dica": "O Mike, tendo trabalhado aqui desde 2015, conhece bem a base de código.",
+      "img": "👨‍💻🗂️🧠",
+      "alvo": "codebase",
+      "alvo_pt": "base de código",
+      "conceito": "codebase = a base de código (o projeto inteiro). O particípio pode vir no meio, entre vírgulas.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "code",
+        "know"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10324476,
+        "en_autor": "sundown",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Having worked for several years as a taxi driver, he knows the city well.\"; oração de particípio levada para depois do sujeito; for several years as a taxi driver → here since 2015; he → Mike; the city → the codebase; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-83302a",
+      "quem": "voce",
+      "cod": "Not knowing the old codebase, we asked Mike to review every change.",
+      "dica": "Não conhecendo a base de código antiga, pedimos ao Mike que revisasse cada alteração.",
+      "img": "🤷🗂️🔍",
+      "alvo": "Not knowing",
+      "alvo_pt": "Não conhecendo",
+      "conceito": "Not + -ing no começo dá a causa: Not knowing = como não conhecíamos.",
+      "var": [
+        {
+          "em": "every change",
+          "aceita": [
+            "each change"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "don't",
+        "knowing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0658e8",
+      "quem": "voce",
+      "cod": "Having spoken with the client, we decided to move the launch to March.",
+      "dica": "Tendo conversado com o cliente, decidimos passar o lançamento para março.",
+      "img": "🗣️🤝📅",
+      "alvo": "Having spoken with",
+      "alvo_pt": "Tendo conversado com",
+      "conceito": "speak, spoke, spoken: Having spoken with = tendo conversado com.",
+      "var": [
+        {
+          "em": "spoken with",
+          "aceita": [
+            "spoken to"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "spoke",
+        "talked"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f75509",
+      "quem": "voce",
+      "cod": "Sarah, having spoken with the stakeholders, approved a smaller first release.",
+      "dica": "A Sarah, tendo conversado com os stakeholders, aprovou uma primeira versão menor.",
+      "img": "👥🗣️👍",
+      "alvo": "having spoken with",
+      "alvo_pt": "tendo conversado com",
+      "conceito": "O particípio entre vírgulas descreve o sujeito: Sarah, having spoken with..., approved...",
+      "var": [
+        {
+          "em": "spoken with",
+          "aceita": [
+            "spoken to"
+          ]
+        },
+        {
+          "em": "release",
+          "aceita": [
+            "version"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "spoke",
+        "talked"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-55cc50",
+      "quem": "voce",
+      "cod": "Not knowing how long the migration would take, we added an extra week.",
+      "dica": "Não sabendo quanto tempo a migração levaria, acrescentamos uma semana extra.",
+      "img": "❓⏳➕",
+      "alvo": "Not knowing",
+      "alvo_pt": "Não sabendo",
+      "conceito": "Not knowing = não sabendo (como não sabíamos); would take = levaria (futuro visto do passado).",
+      "blocos": [
+        8
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "without",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a676dc",
+      "quem": "voce",
+      "cod": "Having finished the migration, we shut down the old servers.",
+      "dica": "Tendo terminado a migração, desligamos os servidores antigos.",
+      "img": "🖥️🔌📴",
+      "alvo": "Having finished",
+      "alvo_pt": "Tendo terminado",
+      "conceito": "Having finished = tendo terminado; o sujeito das duas partes é we. Servidor se desliga com shut down.",
+      "var": [
+        {
+          "em": "shut down",
+          "aceita": [
+            "turned off"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "finished",
+        "finishing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5c4195",
+      "quem": "voce",
+      "cod": "Looking back, we should have cleaned up the codebase before the go-live.",
+      "dica": "Olhando para trás, deveríamos ter limpado a base de código antes do go-live.",
+      "img": "🔙🧹🗂️",
+      "alvo": "codebase",
+      "alvo_pt": "base de código",
+      "conceito": "Looking back = olhando para trás (em retrospecto); deveríamos ter = should have.",
+      "var": [
+        {
+          "em": "cleaned up",
+          "aceita": [
+            "cleaned"
+          ]
+        }
+      ],
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "code",
+        "cleaned"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

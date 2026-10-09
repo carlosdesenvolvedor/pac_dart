@@ -1,0 +1,180 @@
+{
+  "id": "conceder-rebater.embora-eu-concorde",
+  "trilha": "conceder-rebater",
+  "nome": "Embora eu concorde...",
+  "emoji": "🧭",
+  "cena": "A Sarah quer cortar os testes para cumprir o prazo; você discorda com cuidado e propõe um meio-termo.",
+  "resumo": "Discordar com tato: While I agree that..., I still think... / I see where you're coming from, but...",
+  "fechamento": false,
+  "novos": [
+    "while I agree that",
+    "I still think",
+    "I see where you're coming from",
+    "skip the tests"
+  ],
+  "apoio": [
+    "test coverage",
+    "meet halfway (chegar num meio-termo)",
+    "although (B1)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Embora eu concorde que..., ainda acho que..."
+    },
+    {
+      "t": "p",
+      "c": "Para discordar sem bater de frente: **While I agree that X, I still think Y.** O *still* mantém a sua posição. **I see where you're coming from** = entendo o seu lado."
+    },
+    {
+      "t": "warn",
+      "c": "agree é verbo: I agree (não: I am agree). E While I agree that the deadline matters (não: agree with that the deadline...)."
+    },
+    {
+      "t": "tip",
+      "c": "Although I agree... também está certo (B1); aqui o alvo é While."
+    }
+  ],
+  "imagem": "🧪⏰🤝",
+  "visualizacao": "Você está numa call a sós com a Sarah, o calendário da sprint na tela e o prazo marcado em vermelho. Ela parece cansada; você fala devagar e com calma.",
+  "foto_busca": "two colleagues video call laptop",
+  "trechos": [
+    {
+      "id": "f-418aa2",
+      "quem": "sarah",
+      "cod": "We could skip the tests this time and fix things later.",
+      "dica": "A gente podia pular os testes dessa vez e corrigir as coisas depois.",
+      "img": "⏭️🧪⏰",
+      "alvo": "skip the tests",
+      "alvo_pt": "pular os testes",
+      "conceito": "skip = pular, deixar de fazer: skip the tests = pular os testes.",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d39426",
+      "quem": "voce",
+      "contexto": "f-418aa2",
+      "cod": "I see where you're coming from, but that could cost us more later.",
+      "dica": "Entendo o seu lado, mas isso poderia sair mais caro para a gente depois.",
+      "img": "👀🤝💸",
+      "alvo": "I see where you're coming from",
+      "alvo_pt": "Entendo o seu lado",
+      "lit": "[lit.: vejo de onde você está vindo]",
+      "conceito": "Entendo o seu lado = I see where you're coming from: reconhece o outro antes do but.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-95edc7",
+      "quem": "sarah",
+      "contexto": "f-d39426",
+      "cod": "Honestly, I still think the deadline is more important right now.",
+      "dica": "Sinceramente, ainda acho que o prazo é mais importante agora.",
+      "img": "📅❗🤔",
+      "alvo": "I still think",
+      "alvo_pt": "ainda acho",
+      "conceito": "still antes de think: I still think = ainda acho (mantém a posição).",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-654713",
+      "quem": "voce",
+      "contexto": "f-95edc7",
+      "cod": "While I agree that the deadline matters, I still think skipping the tests is a mistake.",
+      "dica": "Embora eu concorde que o prazo importa, ainda acho que pular os testes é um erro.",
+      "img": "🤝📅🧪",
+      "alvo": "While I agree that",
+      "alvo_pt": "Embora eu concorde que",
+      "conceito": "agree é verbo: I agree (não: I am agree). While aqui = embora.",
+      "blocos": [
+        7,
+        10
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "am",
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-317797",
+      "quem": "sarah",
+      "contexto": "f-654713",
+      "cod": "I see where you're coming from. So what do you suggest?",
+      "dica": "Entendo o seu lado. Então, o que você sugere?",
+      "img": "🤔💡❓",
+      "alvo": "I see where you're coming from",
+      "alvo_pt": "Entendo o seu lado",
+      "conceito": "So what do you suggest? = então, o que você sugere? (do na pergunta).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-75a6d3",
+      "quem": "voce",
+      "contexto": "f-317797",
+      "cod": "Let's skip the tests for the admin screens, but not for payments.",
+      "dica": "Vamos pular os testes das telas de admin, mas não os de pagamento.",
+      "img": "🖥️⏭️💳",
+      "alvo": "skip the tests",
+      "alvo_pt": "pular os testes",
+      "conceito": "Meio-termo: pular só o que tem menos risco. payments, sem artigo: pagamentos em geral.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dc87d4",
+      "quem": "voce",
+      "cod": "While I agree that speed matters, I still think quality is what keeps users coming back.",
+      "dica": "Embora eu concorde que a velocidade importa, ainda acho que é a qualidade que faz os usuários voltarem.",
+      "img": "⚡💎🙂",
+      "alvo": "While I agree that",
+      "alvo_pt": "Embora eu concorde que",
+      "conceito": "speed, quality, users: sem artigo quando é em geral (não: the quality... the users).",
+      "blocos": [
+        6,
+        9
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f256ee",
+      "quem": "sarah",
+      "contexto": "f-dc87d4",
+      "cod": "OK, you win. I still think it's tight, but let's meet halfway.",
+      "dica": "Tá bom, você ganhou. Ainda acho que está apertado, mas vamos chegar num meio-termo.",
+      "img": "🏳️⏳🤝",
+      "alvo": "I still think",
+      "alvo_pt": "Ainda acho",
+      "conceito": "meet halfway = chegar num meio-termo. it's tight = está apertado (o prazo).",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

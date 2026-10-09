@@ -1,0 +1,205 @@
+{
+  "id": "pro-negociar-prazo-escopo.cena-o-cliente-impaciente",
+  "trilha": "pro-negociar-prazo-escopo",
+  "nome": "Cena: o cliente impaciente",
+  "emoji": "🎬",
+  "cena": "Numa chamada com a Sarah, você explica a um cliente impaciente o que dá para entregar em duas semanas.",
+  "resumo": "Fechamento: prazo com condição, não com tato, alternativa e alinhamento na mesma conversa.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Negociação completa"
+    },
+    {
+      "t": "p",
+      "c": "Reconheça a pressão, recuse o irreal e ofereça o possível com condição: **as long as** (contanto que) e **provided that** (desde que)."
+    },
+    {
+      "t": "tip",
+      "c": "Granted, ... Even so, ... = Tudo bem que... Mesmo assim, ...: conceda e rebata em duas frases curtas."
+    },
+    {
+      "t": "warn",
+      "c": "perder o prazo = miss the deadline; meio-termo = compromise; assumir uma tarefa = take on."
+    }
+  ],
+  "imagem": "📞⏰🤝",
+  "visualizacao": "O cliente aparece na chamada com a câmera ligada e o tom impaciente. A Sarah está quieta no canto da tela; agora a palavra é sua.",
+  "foto_busca": "tense video call business client",
+  "trechos": [
+    {
+      "id": "f-2f823d",
+      "quem": "cliente",
+      "cod": "We really need the whole module in two weeks.",
+      "dica": "A gente precisa muito do módulo inteiro em duas semanas.",
+      "img": "📦⏰",
+      "conceito": "really antes do verbo = muito (reforço): We really need.",
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b0ae89",
+      "quem": "voce",
+      "contexto": "f-2f823d",
+      "cod": "I understand the pressure, but a full launch in two weeks isn't realistic.",
+      "dica": "Entendo a pressão, mas um lançamento completo em duas semanas não é realista.",
+      "img": "🗜️🚫",
+      "alvo": "isn't realistic",
+      "alvo_pt": "não é realista",
+      "conceito": "Reconheça antes de recusar: I understand the pressure, but...",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-08a979",
+      "quem": "cliente",
+      "contexto": "f-b0ae89",
+      "cod": "Is there any compromise you can offer us?",
+      "dica": "Existe algum meio-termo que vocês possam nos oferecer?",
+      "img": "⚖️❓",
+      "alvo": "compromise",
+      "alvo_pt": "meio-termo",
+      "conceito": "compromise = meio-termo (não é compromisso).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "commitment"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8009f0",
+      "quem": "voce",
+      "contexto": "f-08a979",
+      "cod": "We could ship the main flow this month, as long as reports can wait.",
+      "dica": "Poderíamos entregar o fluxo principal este mês, contanto que os relatórios possam esperar.",
+      "img": "🚚⏸️",
+      "alvo": "as long as",
+      "alvo_pt": "contanto que",
+      "conceito": "as long as = contanto que; provided that = desde que (as duas são condição).",
+      "var": [
+        {
+          "em": "reports",
+          "aceita": [
+            "the reports"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8fcfa8",
+      "quem": "voce",
+      "contexto": "Can't your team just do all of it now?",
+      "cod": "The team is already stretched thin, so we can't take on everything at once.",
+      "dica": "O time já está no limite, então não dá para assumir tudo de uma vez.",
+      "img": "😓📚",
+      "alvo": "stretched thin",
+      "alvo_pt": "no limite",
+      "conceito": "assumir tudo = take on everything (assume = supor).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "assume"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2d26d5",
+      "quem": "voce",
+      "cod": "Granted, it's less than you asked for. Even so, your users get it sooner.",
+      "dica": "Tudo bem que é menos do que vocês pediram. Mesmo assim, os seus usuários recebem antes.",
+      "img": "🎁⏩",
+      "alvo": "Even so",
+      "alvo_pt": "Mesmo assim",
+      "conceito": "Granted, ... Even so, ... = Tudo bem que... Mesmo assim: concede e rebate. asked for: preposição no fim.",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR51"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-629ceb",
+      "quem": "sarah",
+      "cod": "We'd rather under-promise now than miss another deadline.",
+      "dica": "A gente prefere prometer menos agora do que perder outro prazo.",
+      "img": "🤏📅",
+      "alvo": "under-promise",
+      "alvo_pt": "prometer menos",
+      "conceito": "perder um prazo = miss a deadline (não: lose).",
+      "var": [
+        {
+          "em": "We'd rather",
+          "aceita": [
+            "We would rather"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR34"
+      ],
+      "armadilhas": [
+        "lose"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ffd999",
+      "quem": "voce",
+      "cod": "Let's align on scope today. I'll send you an update every Friday.",
+      "dica": "Vamos alinhar o escopo hoje. Te mando uma atualização toda sexta.",
+      "img": "📨🗓️",
+      "alvo": "align on",
+      "alvo_pt": "alinhar",
+      "conceito": "toda sexta = every Friday (sem on, com maiúscula).",
+      "var": [
+        {
+          "em": "align on scope",
+          "aceita": [
+            "align on the scope",
+            "align the scope"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17",
+        "BR15"
+      ],
+      "armadilhas": [
+        "friday",
+        "all"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

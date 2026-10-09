@@ -1,0 +1,282 @@
+{
+  "id": "nominalizacao-participiais.se-for-se-nao-substituicao",
+  "trilha": "nominalizacao-participiais",
+  "nome": "Se for, se não: substituição",
+  "emoji": "🔁",
+  "cena": "Você troca mensagens com a Sarah sobre orçamento e testes e depois escreve e-mails formais aos clientes.",
+  "resumo": "Evitar repetição com If so, If not, do so e as respostas curtas I hope so e I'm afraid not.",
+  "fechamento": false,
+  "novos": [
+    "If so, ...",
+    "do so (formal)",
+    "I'm afraid not / I hope so",
+    "If not, ..."
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Se for, se não, fazê-lo"
+    },
+    {
+      "t": "p",
+      "c": "Para não repetir a pergunta inteira: **If so** = se for (se foi, se ficar...); **If not** = se não. Em resposta curta: **I hope so** = espero que sim; **I'm afraid not** = infelizmente não."
+    },
+    {
+      "t": "tip",
+      "c": "No texto formal, **do so** substitui a ação já dita: Customers who wish to cancel may do so at any time. (= podem fazê-lo)"
+    },
+    {
+      "t": "warn",
+      "c": "se for = if so (não: if it is so); espero que sim = I hope so (não: I hope yes)."
+    }
+  ],
+  "imagem": "💬📧🔁",
+  "visualizacao": "Você está no sofá com o notebook no colo, trocando mensagens rápidas com a Sarah. O celular vibra e o rascunho do e-mail aos clientes espera aberto na outra aba.",
+  "foto_busca": "laptop messaging couch evening",
+  "trechos": [
+    {
+      "id": "f-fd6ff2",
+      "quem": "voce",
+      "cod": "Is the budget approved? If so, we can start hiring in May.",
+      "dica": "O orçamento foi aprovado? Se foi, podemos começar a contratar em maio.",
+      "img": "💰✅🧑‍💼",
+      "alvo": "If so",
+      "alvo_pt": "Se foi",
+      "conceito": "If so = se for / se foi: retoma a pergunta sem repeti-la (não: if it is so).",
+      "var": [
+        {
+          "em": "Is the budget approved",
+          "aceita": [
+            "Has the budget been approved",
+            "Was the budget approved"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "it",
+        "yes"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-625feb",
+      "quem": "sarah",
+      "contexto": "f-fd6ff2",
+      "cod": "I hope so. The finance team will let us know by Friday.",
+      "dica": "Espero que sim. O financeiro vai avisar a gente até sexta.",
+      "img": "🤞📅",
+      "alvo": "I hope so",
+      "alvo_pt": "Espero que sim",
+      "conceito": "Espero que sim = I hope so (não: I hope yes). Até sexta (prazo) = by Friday.",
+      "var": [
+        {
+          "em": "The finance team",
+          "aceita": [
+            "Finance"
+          ]
+        },
+        {
+          "em": "let us know",
+          "aceita": [
+            "tell us"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "yes",
+        "that",
+        "until"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-030f41",
+      "quem": "sarah",
+      "cod": "Can you fix the login tests today? If not, we'll push back the release.",
+      "dica": "Você consegue consertar os testes de login hoje? Se não, a gente adia a release.",
+      "img": "🔧🧪❓",
+      "alvo": "If not",
+      "alvo_pt": "Se não",
+      "conceito": "If not = se não (der, for...): a condição negativa sem repetir a frase.",
+      "var": [
+        {
+          "em": "push back the release",
+          "aceita": [
+            "push the release back",
+            "postpone the release"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "no"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eec7d5",
+      "quem": "voce",
+      "contexto": "f-030f41",
+      "cod": "I'm afraid not. One of the login tests is still failing on older devices.",
+      "dica": "Infelizmente não. Um dos testes de login ainda está falhando nos aparelhos mais antigos.",
+      "img": "😕📱❌",
+      "alvo": "I'm afraid not",
+      "alvo_pt": "Infelizmente não",
+      "conceito": "I'm afraid not = infelizmente não (educado); one of the tests + is, no singular.",
+      "var": [
+        {
+          "em": "is still failing",
+          "aceita": [
+            "still fails"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "unfortunately",
+        "fail"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a12c15",
+      "quem": "voce",
+      "cod": "Does Mike know about the delay? If not, I'll let him know.",
+      "dica": "O Mike sabe do atraso? Se não souber, eu aviso ele.",
+      "img": "🧑‍💻⏰📣",
+      "alvo": "If not",
+      "alvo_pt": "Se não souber",
+      "conceito": "If not = se não (souber, for...): o inglês não repete o verbo.",
+      "var": [
+        {
+          "em": "let him know",
+          "aceita": [
+            "tell him"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "knows",
+        "no"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b93c92",
+      "quem": "sarah",
+      "cod": "Will the fix be ready by Thursday? If so, let's email the customers.",
+      "dica": "A correção fica pronta até quinta? Se ficar, vamos mandar e-mail para os clientes.",
+      "img": "🛠️📆📧",
+      "alvo": "If so",
+      "alvo_pt": "Se ficar",
+      "conceito": "If so = se ficar / se for: o so retoma a pergunta inteira.",
+      "var": [
+        {
+          "em": "email the customers",
+          "aceita": [
+            "send the customers an email",
+            "send an email to the customers"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "it",
+        "yes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-57c810",
+      "quem": "voce",
+      "cod": "Customers who wish to cancel may do so at any time.",
+      "dica": "(e-mail) Clientes que desejarem cancelar podem fazê-lo a qualquer momento.",
+      "img": "📧🚪🕐",
+      "alvo": "do so",
+      "alvo_pt": "fazê-lo",
+      "conceito": "do so = fazê-lo: substitui a ação já dita (cancel), no registro formal.",
+      "var": [
+        {
+          "em": "may",
+          "aceita": [
+            "can"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "it",
+        "this"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dba175",
+      "quem": "voce",
+      "contexto": "Could you present the results to our board next week?",
+      "cod": "I would be happy to do so.",
+      "dica": "(e-mail) Ficaria feliz em fazê-lo.",
+      "img": "😊📧🤝",
+      "alvo": "do so",
+      "alvo_pt": "fazê-lo",
+      "conceito": "do so = fazê-lo (apresentar os resultados); I would por extenso combina com o e-mail formal.",
+      "var": [
+        {
+          "em": "I would",
+          "aceita": [
+            "I'd"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "it",
+        "this"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2044604,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (o PT do Tatoeba não segue a regra 5.3)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

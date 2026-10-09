@@ -6,6 +6,8 @@
 <pasta_trilhas>/<id-da-trilha>/NN.json = uma lição. As trilhas entram na ORDEM do esboço (as que faltam são
 puladas com aviso). Cada frase vira um Trecho do app: cod, dica, lit (sem o "[lit.: ...]"), conceito, alvo,
 alvo_pt, contexto, quem, alt e src (atribuição do Tatoeba). A lição leva nome, emoji, cena, resumo e teoria.
+Frase com gravação de nativo (tools/ingles/dados/audio_nativo.json, gerado pelo audio_nativo.py) ganha "au"
+(o mp3 em assets/ingles/audio/<sentence_id>-<audio_id>.mp3) e "au_cred" ("CK · CC BY-NC-ND 3.0" — a licença exige atribuição).
 """
 import json, os, re, sys
 
@@ -14,6 +16,12 @@ FOTOS = 'assets/ingles/fotos'
 CREDITOS = {}
 if os.path.exists(os.path.join(FOTOS, 'creditos.json')):
     CREDITOS = json.load(open(os.path.join(FOTOS, 'creditos.json'), encoding='utf-8'))
+
+
+# voz nativa do Tatoeba: {cod: {id, autor, licenca, ...}} (gerado pelo audio_nativo.py)
+AUDIO = 'assets/ingles/audio'
+_arq_audio = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'dados', 'audio_nativo.json')
+AUDIO_NATIVO = json.load(open(_arq_audio, encoding='utf-8')) if os.path.exists(_arq_audio) else {}
 
 
 def limpa_lit(lit):
@@ -90,6 +98,12 @@ def trecho(f, por_id):
         tr['src'] = ':'.join(['tatoeba', str(fo['en_id']), str(fo['en_autor']),
                               str(pt_id) if pt_id else '-', str(fo.get('pt_autor') or '-'),
                               '1' if fo.get('modificada') else '0'])
+    # gravação de nativo das MESMAS palavras (frase da ficha muda por aluno: nunca)
+    # o nome leva o audio_id: o arquivo existir prova que é a gravação creditada em au_cred
+    au = AUDIO_NATIVO.get(cod) if '{' not in f['cod'] else None
+    if au and os.path.exists(os.path.join(AUDIO, f"{au['id']}-{au['audio']}.mp3")):
+        tr['au'] = f"{AUDIO}/{au['id']}-{au['audio']}.mp3"
+        tr['au_cred'] = f"{au['autor']} · {au['licenca']}"
     return tr
 
 
@@ -158,7 +172,8 @@ def main():
     nl = sum(len(t['licoes']) for t in trilhas)
     nf = sum(len(l['trechos']) for t in trilhas for l in t['licoes'])
     nt = sum(1 for t in trilhas for l in t['licoes'] for f in l['trechos'] if 'src' in f)
-    print(f'{len(trilhas)} trilhas · {nl} lições · {nf} frases ({nt} do Tatoeba) → {saida}')
+    na = sum(1 for t in trilhas for l in t['licoes'] for f in l['trechos'] if 'au' in f)
+    print(f'{len(trilhas)} trilhas · {nl} lições · {nf} frases ({nt} do Tatoeba, {na} com voz nativa) → {saida}')
     if faltam:
         print(f'faltam {len(faltam)} trilhas: {", ".join(faltam)}')
     if incompletas:

@@ -1,0 +1,204 @@
+{
+  "id": "inversoes-escrita-formal.em-hipotese-alguma-politica",
+  "trilha": "inversoes-escrita-formal",
+  "nome": "Em hipótese alguma (política)",
+  "emoji": "🔒",
+  "cena": "Você redige a política de segurança do time e o relatório de um incidente de login.",
+  "resumo": "Escrever regras e relatos formais com Under no circumstances should..., At no time was... e Never before had...",
+  "fechamento": false,
+  "novos": [
+    "Under no circumstances should",
+    "At no time",
+    "Never before had",
+    "credentials"
+  ],
+  "apoio": [
+    "notify",
+    "personal devices",
+    "reset"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Regras e relatos: Under no circumstances"
+    },
+    {
+      "t": "p",
+      "c": "Na política e no relatório, uma expressão negativa no começo inverte a frase: **Under no circumstances should** you..., **At no time was** the data..., **Never before had** we... Na fala, a ordem normal: You should never share..."
+    },
+    {
+      "t": "warn",
+      "c": "Em hipótese alguma = under no circumstances (não: in no hypothesis)."
+    },
+    {
+      "t": "ex",
+      "c": "Under no circumstances should you share a password.\n(na política) Em hipótese alguma você deve compartilhar uma senha."
+    }
+  ],
+  "imagem": "🔒📋🛡️",
+  "visualizacao": "Você está numa sala silenciosa, com a política de segurança aberta de um lado e o relatório do incidente do outro. Um alerta de login ainda pisca no canto da tela.",
+  "foto_busca": "cybersecurity policy document laptop",
+  "trechos": [
+    {
+      "id": "f-5c928c",
+      "quem": "voce",
+      "cod": "Every new developer gets their own credentials on day one.",
+      "dica": "(na política) Todo dev novo recebe as próprias credenciais no primeiro dia.",
+      "img": "🧑‍💻🔑",
+      "alvo": "credentials",
+      "alvo_pt": "credenciais",
+      "conceito": "credentials = credenciais (login, senha, chaves de acesso). Every + singular: gets, com -s.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "developer",
+          "aceita": [
+            "dev"
+          ]
+        },
+        {
+          "em": "on day one",
+          "aceita": [
+            "on the first day",
+            "on their first day"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-39a783",
+      "quem": "mike",
+      "cod": "Do we need to reset everyone's credentials after the incident?",
+      "dica": "A gente precisa resetar as credenciais de todo mundo depois do incidente?",
+      "img": "🔄🔑❓",
+      "alvo": "credentials",
+      "alvo_pt": "credenciais",
+      "conceito": "Pergunta com do: Do we need...? (não: We need...?).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "everyone's",
+          "aceita": [
+            "everybody's"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-429308",
+      "quem": "voce",
+      "cod": "Under no circumstances should you share your credentials.",
+      "dica": "(na política) Em hipótese alguma você deve compartilhar suas credenciais.",
+      "img": "🚫🔑🤝",
+      "alvo": "Under no circumstances should",
+      "alvo_pt": "Em hipótese alguma",
+      "lit": "[lit.: sob nenhuma circunstância deve você]",
+      "conceito": "Em hipótese alguma = under no circumstances (não: in no hypothesis); depois, should + sujeito.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "hypothesis"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2441db",
+      "quem": "voce",
+      "cod": "Under no circumstances should production data be copied to a laptop.",
+      "dica": "(na política) Em hipótese alguma dados de produção devem ser copiados para um notebook.",
+      "img": "💾💻⛔",
+      "alvo": "Under no circumstances should",
+      "alvo_pt": "Em hipótese alguma",
+      "conceito": "Com passiva: should + sujeito + be + particípio.",
+      "blocos": [
+        8
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9b5fd9",
+      "quem": "voce",
+      "cod": "At no time was any customer data stored on personal devices.",
+      "dica": "(no relatório) Em nenhum momento dados de clientes foram guardados em aparelhos pessoais.",
+      "img": "📱🗄️✅",
+      "alvo": "At no time",
+      "alvo_pt": "Em nenhum momento",
+      "conceito": "At no time + was/were + sujeito: o auxiliar vem antes do sujeito.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "opcional": [
+        "any"
+      ],
+      "var": [
+        {
+          "em": "stored",
+          "aceita": [
+            "kept",
+            "saved"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e1ba21",
+      "quem": "voce",
+      "cod": "At no time were our payment systems at risk.",
+      "dica": "(no relatório) Em nenhum momento os nossos sistemas de pagamento estiveram em risco.",
+      "img": "💳🛡️",
+      "alvo": "At no time",
+      "alvo_pt": "Em nenhum momento",
+      "conceito": "Sujeito no plural: At no time were our systems...",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-459503",
+      "quem": "voce",
+      "cod": "Never before had we seen so many failed login attempts.",
+      "dica": "(no relatório) Nunca antes tínhamos visto tantas tentativas de login com falha.",
+      "img": "🔐❌📈",
+      "alvo": "Never before had",
+      "alvo_pt": "Nunca antes",
+      "conceito": "Never before + had + sujeito + particípio: o past perfect invertido.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "saw"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6f7043",
+      "quem": "voce",
+      "cod": "Never before had we notified every user within an hour.",
+      "dica": "(no relatório) Nunca antes tínhamos notificado todos os usuários em até uma hora.",
+      "img": "📣👥⏰",
+      "alvo": "Never before had",
+      "alvo_pt": "Nunca antes",
+      "conceito": "notify = notificar, avisar formalmente; within an hour = em até uma hora.",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "every user",
+          "aceita": [
+            "all users",
+            "all our users",
+            "all the users"
+          ]
+        }
+      ]
+    }
+  ]
+}

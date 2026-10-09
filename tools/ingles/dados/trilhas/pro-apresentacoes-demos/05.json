@@ -1,0 +1,183 @@
+{
+  "id": "pro-apresentacoes-demos.cena-demo-na-sprint-review",
+  "trilha": "pro-apresentacoes-demos",
+  "nome": "Cena: demo na sprint review",
+  "emoji": "🎬",
+  "cena": "Na sprint review do fim do trimestre, você apresenta o novo checkout ao time de produto e à diretoria, com demo ao vivo e perguntas.",
+  "resumo": "Fechamento: abertura, demo, transições, números e perguntas numa apresentação só.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A apresentação inteira"
+    },
+    {
+      "t": "p",
+      "c": "Roteiro (**outline**), demo (**As you can see**, **Behind the scenes**), mensagem (**What this means for you**), resumo (**To sum up**) e perguntas (**I'll be happy to take any questions**)."
+    },
+    {
+      "t": "tip",
+      "c": "Está demorando = It's taking a while: o inglês não deixa a frase sem sujeito."
+    }
+  ],
+  "imagem": "🎬🛒📊",
+  "visualizacao": "Você olha a sala de reunião cheia e mais gente na chamada: o time de produto, a diretoria e a Sarah na primeira fila. No telão, o checkout novo pronto para a demo.",
+  "foto_busca": "meeting room presentation screen team",
+  "trechos": [
+    {
+      "id": "f-9e041c",
+      "quem": "voce",
+      "cod": "Good morning, everyone. Here's a quick outline of today's demo.",
+      "dica": "Bom dia, pessoal. Aqui vai um roteiro rápido da demo de hoje.",
+      "img": "☀️🗒️",
+      "alvo": "outline",
+      "alvo_pt": "roteiro",
+      "conceito": "today's demo = a demo de hoje ('s de tempo).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR10"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aeae56",
+      "quem": "voce",
+      "cod": "As you can see, the new checkout is already live for all users.",
+      "dica": "Como vocês podem ver, o novo checkout já está no ar para todos os usuários.",
+      "img": "🛒✅",
+      "alvo": "As you can see",
+      "alvo_pt": "Como vocês podem ver",
+      "conceito": "estar no ar = be live.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eb4c02",
+      "quem": "voce",
+      "cod": "Bear with me. It's taking a moment to load.",
+      "dica": "Tenham paciência comigo. Está demorando um pouco para carregar.",
+      "img": "⏳🔄",
+      "alvo": "Bear with me",
+      "alvo_pt": "Tenham paciência comigo",
+      "conceito": "Está demorando = It's taking a moment: o it é obrigatório.",
+      "var": [
+        {
+          "em": "a moment",
+          "aceita": [
+            "a while",
+            "a little while"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6f65c3",
+      "quem": "voce",
+      "cod": "Behind the scenes, we added a guardrail so payments can't fail silently.",
+      "dica": "Nos bastidores, adicionamos uma trava de segurança para os pagamentos não falharem em silêncio.",
+      "img": "🛡️💳",
+      "alvo": "Behind the scenes",
+      "alvo_pt": "Nos bastidores",
+      "conceito": "guardrail = trava de segurança; fail silently = falhar sem avisar ninguém.",
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6308f2",
+      "quem": "voce",
+      "cod": "What this means for you is fewer abandoned carts and fewer support tickets.",
+      "dica": "O que isso significa para vocês é menos carrinhos abandonados e menos chamados no suporte.",
+      "img": "📉🎫",
+      "alvo": "What this means for you",
+      "alvo_pt": "O que isso significa para vocês",
+      "conceito": "fewer com contáveis no plural (carts, tickets); less com incontáveis.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR23"
+      ],
+      "armadilhas": [
+        "less"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e66c66",
+      "quem": "voce",
+      "cod": "That brings me to my last point: next quarter, the web app.",
+      "dica": "Isso me leva ao meu último ponto: no próximo trimestre, o app web.",
+      "img": "🌐📅",
+      "alvo": "That brings me to",
+      "alvo_pt": "Isso me leva",
+      "conceito": "web app = app web: o substantivo que qualifica vem antes.",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b19b80",
+      "quem": "voce",
+      "cod": "To sum up, we've cut load time in half this quarter.",
+      "dica": "Resumindo, cortamos o tempo de carregamento pela metade neste trimestre.",
+      "img": "✂️⚡",
+      "alvo": "To sum up",
+      "alvo_pt": "Resumindo",
+      "conceito": "this quarter (ainda não acabou) pede present perfect: we've cut.",
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-af2656",
+      "quem": "voce",
+      "cod": "We have ten minutes left, so I'll be happy to take any questions.",
+      "dica": "Ainda temos dez minutos, então fico feliz em responder qualquer pergunta.",
+      "img": "⏰🙋",
+      "alvo": "I'll be happy to take any questions",
+      "alvo_pt": "fico feliz em responder qualquer pergunta",
+      "conceito": "have ten minutes left = ainda ter dez minutos (sobrando).",
+      "var": [
+        {
+          "em": "I'll be happy",
+          "aceita": [
+            "I'm happy",
+            "I'd be happy"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

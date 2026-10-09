@@ -1,0 +1,252 @@
+{
+  "id": "pro-entrevista-senior.live-coding-pensar-em-voz-alta",
+  "trilha": "pro-entrevista-senior",
+  "nome": "Live coding: pensar em voz alta",
+  "emoji": "💻",
+  "cena": "No live coding com um engenheiro da empresa, você narra o raciocínio para achar pares de números que somam um valor.",
+  "resumo": "Narrar o live coding: think out loud, Can I assume...?, brute-force e optimize.",
+  "fechamento": false,
+  "novos": [
+    "think out loud",
+    "can I assume",
+    "brute-force",
+    "optimize"
+  ],
+  "apoio": [
+    "walk through",
+    "hash map",
+    "time complexity"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pensar em voz alta no live coding"
+    },
+    {
+      "t": "p",
+      "c": "Narre o raciocínio (**I'll think out loud**), confirme as premissas com **Can I assume...?**, proponha **a brute-force solution** e só depois **optimize**."
+    },
+    {
+      "t": "warn",
+      "c": "Supor = assume (assumir uma tarefa = take on). Complexidade em palavras: quadratic, linear time (nada de O(n) digitado)."
+    },
+    {
+      "t": "ex",
+      "c": "Can I assume the input is always sorted?\nPosso supor que a entrada está sempre ordenada?"
+    }
+  ],
+  "imagem": "💻🧠🗣️",
+  "visualizacao": "A tela está compartilhada, o editor em branco e o cronômetro marca 45 minutos. Você ouve o próprio teclado e fala cada passo em voz alta.",
+  "foto_busca": "developer coding laptop screen share",
+  "trechos": [
+    {
+      "id": "f-82585f",
+      "quem": "engenheiro",
+      "cod": "Feel free to think out loud while you code.",
+      "dica": "Fique à vontade para pensar em voz alta enquanto programa.",
+      "img": "🗣️⌨️",
+      "alvo": "think out loud",
+      "alvo_pt": "pensar em voz alta",
+      "lit": "[lit.: pensar alto, para fora]",
+      "conceito": "think out loud = falar o raciocínio enquanto pensa.",
+      "var": [
+        {
+          "em": "while you code",
+          "aceita": [
+            "while you're coding",
+            "while you program"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "in loud voice",
+        "high"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2a0c59",
+      "quem": "voce",
+      "contexto": "f-82585f",
+      "cod": "Sure. I'll think out loud so you can follow along.",
+      "dica": "Claro. Vou pensar em voz alta para você ir acompanhando.",
+      "img": "🧠👂",
+      "alvo": "think out loud",
+      "alvo_pt": "pensar em voz alta",
+      "conceito": "follow along = ir acompanhando; so you can = para você poder.",
+      "registro": "neutro",
+      "armadilhas": [
+        "accompany",
+        "for you"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "opcional": [
+        "along"
+      ]
+    },
+    {
+      "id": "f-bd456f",
+      "quem": "voce",
+      "cod": "Can I assume the input is always sorted?",
+      "dica": "Posso supor que a entrada está sempre ordenada?",
+      "img": "🔢❓",
+      "alvo": "Can I assume",
+      "alvo_pt": "Posso supor",
+      "conceito": "supor = assume; assumir (uma tarefa) = take on.",
+      "var": [
+        {
+          "em": "assume the",
+          "aceita": [
+            "assume that the"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "suppose",
+        "is sorted always"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-61cf48",
+      "quem": "voce",
+      "contexto": "No, the numbers can come in any order.",
+      "cod": "Okay. And can I assume there's always exactly one valid pair?",
+      "dica": "Certo. E posso supor que sempre existe exatamente um par válido?",
+      "img": "👯✔️",
+      "alvo": "can I assume",
+      "alvo_pt": "posso supor",
+      "conceito": "existe = there is (não: have). always vem depois de is/there's.",
+      "var": [
+        {
+          "em": "assume there's",
+          "aceita": [
+            "assume that there's",
+            "assume there is",
+            "assume that there is"
+          ]
+        },
+        {
+          "em": "Okay",
+          "aceita": [
+            "Right"
+          ]
+        }
+      ],
+      "blocos": [
+        1
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03",
+        "BR56"
+      ],
+      "armadilhas": [
+        "have",
+        "exists"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4b2dfc",
+      "quem": "voce",
+      "cod": "I'd start with a brute-force solution: two nested loops.",
+      "dica": "Eu começaria com uma solução de força bruta: dois loops aninhados.",
+      "img": "🔁🔁💪",
+      "alvo": "brute-force",
+      "alvo_pt": "força bruta",
+      "conceito": "brute-force (adjetivo, com hífen) = testar todas as combinações.",
+      "var": [
+        {
+          "em": "I'd start",
+          "aceita": [
+            "I would start"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "brute force",
+        "of brute"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-083739",
+      "quem": "voce",
+      "cod": "Before I optimize anything, let me walk through an example.",
+      "dica": "Antes de otimizar qualquer coisa, deixa eu mostrar um exemplo passo a passo.",
+      "img": "🚶📝",
+      "alvo": "optimize",
+      "alvo_pt": "otimizar",
+      "conceito": "walk through = mostrar passo a passo. optimize com z (en-US).",
+      "var": [
+        {
+          "em": "Before I optimize",
+          "aceita": [
+            "Before optimizing"
+          ]
+        },
+        {
+          "em": "walk through",
+          "aceita": [
+            "go through"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "optimise",
+        "to optimize"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c4d352",
+      "quem": "engenheiro",
+      "cod": "The brute-force version works. What's the time complexity?",
+      "dica": "A versão de força bruta funciona. Qual é a complexidade de tempo?",
+      "img": "⏱️🤔",
+      "alvo": "brute-force",
+      "alvo_pt": "força bruta",
+      "conceito": "time complexity = complexidade de tempo; diga em palavras: linear, quadratic.",
+      "registro": "neutro",
+      "armadilhas": [
+        "complexity of time",
+        "which is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-59b50f",
+      "quem": "voce",
+      "contexto": "f-c4d352",
+      "cod": "It's quadratic, so let me optimize it with a hash map.",
+      "dica": "É quadrática, então deixa eu otimizar com um hash map.",
+      "img": "🗺️⚡",
+      "alvo": "optimize",
+      "alvo_pt": "otimizar",
+      "conceito": "Complexidade em palavras: quadratic (n ao quadrado), linear time, constant time.",
+      "opcional": [
+        "it"
+      ],
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is quadratic"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

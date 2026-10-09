@@ -1,0 +1,206 @@
+{
+  "id": "modalidade-avancada.bem-que-a-gente-podia",
+  "trilha": "modalidade-avancada",
+  "nome": "Bem que a gente podia",
+  "emoji": "🤷",
+  "cena": "A chamada com o cliente foi cancelada em cima da hora, e você e a Ana decidem como aproveitar a tarde.",
+  "resumo": "Sugerir a saída sensata com might as well + verbo e while we're at it.",
+  "fechamento": false,
+  "novos": [
+    "might as well",
+    "while we're at it",
+    "get a head start",
+    "time slot"
+  ],
+  "apoio": [
+    "discuss (sem about)",
+    "shut down",
+    "branches"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Bem que a gente podia..."
+    },
+    {
+      "t": "p",
+      "c": "**might as well** + verbo = bem que a gente podia: a saída sensata quando não há nada melhor a fazer. **while we're at it** = já que estamos com a mão na massa."
+    },
+    {
+      "t": "warn",
+      "c": "Sem to e sem -ing: might as well start (não: might as well to start / starting)."
+    },
+    {
+      "t": "tip",
+      "c": "might as well é sugestão sem pressão; 'd better é aviso: You'd better save your work."
+    },
+    {
+      "t": "warn",
+      "c": "BR42: discuss sem preposição: discuss the release (não: discuss about the release)."
+    }
+  ],
+  "imagem": "🤷📅💻",
+  "visualizacao": "Você e a Ana olham a agenda: a chamada das duas da tarde sumiu. O escritório está calmo, o café ainda quente e a tarde inteira está livre.",
+  "foto_busca": "two coworkers laptop calendar",
+  "trechos": [
+    {
+      "id": "f-780778",
+      "quem": "ana",
+      "cod": "The client canceled, so now we have a free time slot this afternoon.",
+      "dica": "O cliente cancelou, então agora a gente tem um horário livre hoje à tarde.",
+      "img": "📅🕑🎉",
+      "alvo": "time slot",
+      "alvo_pt": "horário",
+      "conceito": "time slot = horário (um espaço na agenda). canceled: grafia americana, com um l.",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c4d8af",
+      "quem": "voce",
+      "contexto": "f-780778",
+      "cod": "We might as well get a head start on the next sprint.",
+      "dica": "Bem que a gente podia adiantar a próxima sprint.",
+      "img": "🏃‍♂️🏁",
+      "alvo": "might as well",
+      "alvo_pt": "Bem que a gente podia",
+      "conceito": "might as well + verbo base = bem que a gente podia (não há nada melhor a fazer).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "to",
+        "getting"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb33dd",
+      "quem": "ana",
+      "contexto": "f-c4d8af",
+      "cod": "Good idea. If we get a head start now, next week will be easier.",
+      "dica": "Boa ideia. Se a gente adiantar agora, a semana que vem vai ser mais fácil.",
+      "img": "💡📆😌",
+      "alvo": "get a head start",
+      "alvo_pt": "adiantar",
+      "conceito": "get a head start = sair na frente, adiantar o trabalho. if + presente: If we get.",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e5dfa9",
+      "quem": "voce",
+      "cod": "We might as well fix the other bug while we're at it.",
+      "dica": "Bem que a gente podia corrigir o outro bug, já que estamos com a mão na massa.",
+      "img": "🐞🔧🙌",
+      "alvo": "while we're at it",
+      "alvo_pt": "já que estamos com a mão na massa",
+      "lit": "[lit.: enquanto estamos nisso]",
+      "conceito": "while we're at it = já que estamos com a mão na massa (aproveitando o embalo).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-115ec4",
+      "quem": "ana",
+      "cod": "Nobody's using that test server, so we might as well shut it down.",
+      "dica": "Ninguém está usando aquele servidor de testes, então bem que a gente podia desligar.",
+      "img": "🖥️💤🔌",
+      "alvo": "might as well",
+      "alvo_pt": "bem que a gente podia",
+      "conceito": "shut down = desligar; com pronome, it fica no meio: shut it down.",
+      "var": [
+        {
+          "em": "Nobody's",
+          "aceita": [
+            "Nobody is"
+          ]
+        },
+        {
+          "em": "shut it down",
+          "aceita": [
+            "turn it off"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR30",
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ea9f6f",
+      "quem": "voce",
+      "cod": "And while we're at it, let's delete the old branches.",
+      "dica": "E já que estamos com a mão na massa, vamos apagar as branches antigas.",
+      "img": "🌿🗑️",
+      "alvo": "while we're at it",
+      "alvo_pt": "já que estamos com a mão na massa",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8c90ed",
+      "quem": "voce",
+      "cod": "I'll book a time slot with Mike to discuss the release.",
+      "dica": "Vou marcar um horário com o Mike pra discutir a release.",
+      "img": "📆🤝",
+      "alvo": "time slot",
+      "alvo_pt": "horário",
+      "conceito": "discuss sem about: discuss the release (não: discuss about the release).",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "about"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "book",
+          "aceita": [
+            "schedule"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-544109",
+      "quem": "ana",
+      "cod": "Let's get a head start on the design review too.",
+      "dica": "Vamos adiantar a revisão de design também.",
+      "img": "🎨📝⏩",
+      "alvo": "get a head start",
+      "alvo_pt": "adiantar",
+      "conceito": "get a head start on + tarefa = adiantar a tarefa.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

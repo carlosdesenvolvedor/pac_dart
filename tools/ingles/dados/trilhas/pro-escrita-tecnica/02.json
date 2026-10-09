@@ -1,0 +1,190 @@
+{
+  "id": "pro-escrita-tecnica.alternativas-e-desvantagens",
+  "trilha": "pro-escrita-tecnica",
+  "nome": "Alternativas e desvantagens",
+  "emoji": "🔀",
+  "cena": "Na seção de alternativas da mesma RFC, você compara um cache gerenciado por um provedor com um cache auto-hospedado.",
+  "resumo": "Comparar alternativas: We considered..., The main drawback is..., vendor lock-in e a conta mensal.",
+  "fechamento": false,
+  "novos": [
+    "self-hosted",
+    "drawback",
+    "monthly bill",
+    "vendor lock-in"
+  ],
+  "apoio": [
+    "outweigh",
+    "approach",
+    "managed (gerenciado)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Alternativas consideradas"
+    },
+    {
+      "t": "p",
+      "c": "Liste as opções (**We considered two alternatives: ...**), dê a principal desvantagem de cada uma (**The main drawback of X is...**) e diga por que uma foi rejeitada (**X was rejected because of...**)."
+    },
+    {
+      "t": "warn",
+      "c": "Grafia: approach (pp), different (ff), efficient (ff). drawback = desvantagem."
+    },
+    {
+      "t": "ex",
+      "c": "The main drawback of a managed cache is the cost.\nA principal desvantagem de um cache gerenciado é o custo."
+    }
+  ],
+  "imagem": "🔀⚖️💸",
+  "visualizacao": "Duas colunas no documento: cache gerenciado de um lado, auto-hospedado do outro. Você olha a planilha de custos e pesa cada opção.",
+  "foto_busca": "comparing options spreadsheet laptop",
+  "trechos": [
+    {
+      "id": "f-8f0d46",
+      "quem": "voce",
+      "cod": "We considered two alternatives: a managed cache and a self-hosted one.",
+      "dica": "Consideramos duas alternativas: um cache gerenciado e um auto-hospedado.",
+      "img": "☁️🏠",
+      "alvo": "self-hosted",
+      "alvo_pt": "auto-hospedado",
+      "conceito": "self-hosted = rodando nos nossos próprios servidores; managed = o provedor cuida.",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5c7655",
+      "quem": "voce",
+      "cod": "The main drawback of a managed cache is the cost.",
+      "dica": "A principal desvantagem de um cache gerenciado é o custo.",
+      "img": "👎💰",
+      "alvo": "drawback",
+      "alvo_pt": "desvantagem",
+      "conceito": "drawback = desvantagem, ponto fraco de uma opção.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-357579",
+      "quem": "voce",
+      "cod": "A managed cache would almost double our monthly bill.",
+      "dica": "Um cache gerenciado quase dobraria a nossa conta mensal.",
+      "img": "🧾✖️",
+      "alvo": "monthly bill",
+      "alvo_pt": "conta mensal",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4f6aed",
+      "quem": "voce",
+      "cod": "Vendor lock-in is another risk with the managed option.",
+      "dica": "Ficar preso a um fornecedor é outro risco da opção gerenciada.",
+      "img": "🔒🏢",
+      "alvo": "Vendor lock-in",
+      "alvo_pt": "Ficar preso a um fornecedor",
+      "lit": "[lit.: aprisionamento ao fornecedor]",
+      "conceito": "vendor lock-in = depender tanto de um fornecedor que sair dele fica caro.",
+      "var": [
+        {
+          "em": "with the",
+          "aceita": [
+            "of the"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3b5436",
+      "quem": "voce",
+      "cod": "A self-hosted cache is cheaper, and the savings outweigh the extra work.",
+      "dica": "Um cache auto-hospedado é mais barato, e a economia supera o trabalho extra.",
+      "img": "🏠💵",
+      "alvo": "self-hosted",
+      "alvo_pt": "auto-hospedado",
+      "conceito": "outweigh = superar, pesar mais que; savings (economia) fica no plural em inglês.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "economy"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e830d5",
+      "quem": "voce",
+      "cod": "The main drawback of self-hosting is that we have never run a cache in production.",
+      "dica": "A principal desvantagem de hospedar por conta própria é que nunca rodamos um cache em produção.",
+      "img": "🆕⚠️",
+      "alvo": "drawback",
+      "alvo_pt": "desvantagem",
+      "conceito": "nunca até agora = present perfect: we have never run (não: we never ran).",
+      "var": [
+        {
+          "em": "we have never",
+          "aceita": [
+            "we've never"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "ran"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1b9ab2",
+      "quem": "voce",
+      "cod": "The managed option was rejected because of the risk of vendor lock-in.",
+      "dica": "A opção gerenciada foi rejeitada por causa do risco de ficar preso a um fornecedor.",
+      "img": "❌🔒",
+      "alvo": "vendor lock-in",
+      "alvo_pt": "ficar preso a um fornecedor",
+      "conceito": "Passiva no texto técnico: was rejected (o agente não importa).",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb9dcf",
+      "quem": "sarah",
+      "cod": "How much would the self-hosted option add to our monthly bill?",
+      "dica": "Quanto a opção auto-hospedada acrescentaria à nossa conta mensal?",
+      "img": "🧾❓",
+      "alvo": "monthly bill",
+      "alvo_pt": "conta mensal",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

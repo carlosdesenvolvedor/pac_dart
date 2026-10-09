@@ -1,0 +1,223 @@
+{
+  "id": "pro-negociar-prazo-escopo.prazos-realistas",
+  "trilha": "pro-negociar-prazo-escopo",
+  "nome": "Prazos realistas",
+  "emoji": "📅",
+  "cena": "Numa reunião com a Sarah, você descobre que a diretoria quer o novo módulo de relatórios em três semanas e negocia o que cabe nesse prazo.",
+  "resumo": "Dizer sob que condição o prazo é viável, avisar o risco e defender uma folga para testes.",
+  "fechamento": false,
+  "novos": [
+    "hit the deadline",
+    "realistically",
+    "commit to",
+    "under-promise"
+  ],
+  "apoio": [
+    "miss the deadline",
+    "launch date",
+    "buffer",
+    "slip"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Prazo com condição"
+    },
+    {
+      "t": "p",
+      "c": "Em vez de um sim ou um não seco, diga a condição: **We can hit the deadline, provided that...** / **Realistically, we'll miss the date unless...**"
+    },
+    {
+      "t": "warn",
+      "c": "perder o prazo = miss the deadline (lose é perder objeto ou jogo). Depois de if e unless vem presente: unless we add (não: unless we will add)."
+    },
+    {
+      "t": "ex",
+      "c": "I'd rather under-promise and over-deliver.\nPrefiro prometer menos e entregar mais."
+    }
+  ],
+  "imagem": "📅🤝⏳",
+  "visualizacao": "Você e a Sarah estão numa chamada com o cronograma aberto na tela. A data que a diretoria quer está marcada em vermelho, só três semanas à frente.",
+  "foto_busca": "project timeline calendar meeting laptop",
+  "trechos": [
+    {
+      "id": "f-73c252",
+      "quem": "sarah",
+      "cod": "Leadership wants the reports module in three weeks. Can we hit the deadline?",
+      "dica": "A diretoria quer o módulo de relatórios em três semanas. Dá para cumprir o prazo?",
+      "img": "📅🎯",
+      "alvo": "hit the deadline",
+      "alvo_pt": "cumprir o prazo",
+      "lit": "[lit.: acertar o prazo]",
+      "conceito": "hit the deadline = cumprir o prazo (meet também existe; aqui o alvo é hit). Perder o prazo = miss.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "want",
+        "meet"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-76f2ed",
+      "quem": "voce",
+      "contexto": "f-73c252",
+      "cod": "We can hit the deadline, provided that we cut PDF export from the first release.",
+      "dica": "Dá para cumprir o prazo, desde que a gente corte a exportação para PDF da primeira release.",
+      "img": "✂️📦",
+      "alvo": "hit the deadline",
+      "alvo_pt": "cumprir o prazo",
+      "conceito": "provided that = desde que (condição), seguido de presente: we cut.",
+      "var": [
+        {
+          "em": "provided that",
+          "aceita": [
+            "provided"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ed9150",
+      "quem": "voce",
+      "cod": "Realistically, we'll miss the date unless we add a buffer for testing.",
+      "dica": "Sendo realista, vamos perder a data se não colocarmos uma folga para testes.",
+      "img": "📆⚠️",
+      "alvo": "Realistically",
+      "alvo_pt": "Sendo realista",
+      "conceito": "perder a data = miss the date (não: lose). unless = a não ser que, se não.",
+      "var": [
+        {
+          "em": "unless we add",
+          "aceita": [
+            "if we don't add"
+          ]
+        }
+      ],
+      "blocos": [
+        1
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR34",
+        "BR28"
+      ],
+      "armadilhas": [
+        "lose",
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8e5061",
+      "quem": "sarah",
+      "contexto": "f-ed9150",
+      "cod": "Realistically, how much buffer do we need?",
+      "dica": "Sendo realista, de quanta folga a gente precisa?",
+      "img": "🧮❓",
+      "alvo": "Realistically",
+      "alvo_pt": "Sendo realista",
+      "conceito": "buffer = folga no cronograma. Pergunta com do: do we need?",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8dc114",
+      "quem": "voce",
+      "contexto": "f-8e5061",
+      "cod": "At least a week. I'd rather under-promise and over-deliver.",
+      "dica": "Pelo menos uma semana. Prefiro prometer menos e entregar mais.",
+      "img": "🤏🎁",
+      "alvo": "under-promise",
+      "alvo_pt": "prometer menos",
+      "conceito": "under-promise and over-deliver = prometer menos e entregar mais.",
+      "var": [
+        {
+          "em": "I'd rather",
+          "aceita": [
+            "I would rather"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4b3ce8",
+      "quem": "voce",
+      "cod": "I don't want to commit to a date we can't keep.",
+      "dica": "Não quero me comprometer com uma data que a gente não consegue manter.",
+      "img": "🤝📅",
+      "alvo": "commit to",
+      "alvo_pt": "me comprometer com",
+      "conceito": "commit to = se comprometer com (compromise é meio-termo). keep a date = manter.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR07"
+      ],
+      "armadilhas": [
+        "compromise"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-40c3b9",
+      "quem": "sarah",
+      "contexto": "f-4b3ce8",
+      "cod": "Fair enough. Can you commit to a date by Friday?",
+      "dica": "Justo. Você consegue se comprometer com uma data até sexta?",
+      "img": "📌🗓️",
+      "alvo": "commit to",
+      "alvo_pt": "se comprometer com",
+      "conceito": "até sexta (prazo) = by Friday. Friday com maiúscula.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "until",
+        "friday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d92b6e",
+      "quem": "voce",
+      "cod": "When we under-promise, the launch date rarely slips.",
+      "dica": "Quando a gente promete menos, a data de lançamento raramente escorrega.",
+      "img": "🗓️👍",
+      "alvo": "under-promise",
+      "alvo_pt": "promete menos",
+      "conceito": "date é it: the date slips (com -s). slip = a data escorregar, atrasar.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "slip"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

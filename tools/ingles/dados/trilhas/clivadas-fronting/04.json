@@ -1,0 +1,209 @@
+{
+  "id": "clivadas-fronting.por-mais-estranho-que-pareca",
+  "trilha": "clivadas-fronting",
+  "nome": "Por mais estranho que pareça",
+  "emoji": "🎢",
+  "cena": "Numa reunião com a diretoria, você explica um resultado inesperado e por que o time não vai reescrever o sistema agora.",
+  "resumo": "Antecipar um contraste com Strange as it may seem, Much as I'd like to e Try as we might.",
+  "fechamento": false,
+  "novos": [
+    "strange as it may seem",
+    "much as I'd like to",
+    "try as we might",
+    "counterintuitive"
+  ],
+  "apoio": [
+    "rewrite",
+    "test devices",
+    "quarter"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Por mais estranho que pareça"
+    },
+    {
+      "t": "p",
+      "c": "Para antecipar um contraste, o trecho vai para o começo: **Strange as it may seem**, ... / **Much as I'd like to** + verbo, ... / **Try as we might**, ... A vírgula separa o trecho da oração principal."
+    },
+    {
+      "t": "tip",
+      "c": "Try as we might pede a oração principal no passado: Try as we might, we couldn't..."
+    },
+    {
+      "t": "ex",
+      "c": "Strange as it may seem, nobody complained.\nPor mais estranho que pareça, ninguém reclamou."
+    }
+  ],
+  "imagem": "🎢📊🤔",
+  "visualizacao": "Você está diante da diretoria, com dois gráficos lado a lado no telão. A linha da versão antiga ganha da nova, e alguém levanta a sobrancelha.",
+  "foto_busca": "executive meeting charts screen",
+  "trechos": [
+    {
+      "id": "f-0fdf81",
+      "quem": "voce",
+      "cod": "The results are a bit counterintuitive.",
+      "dica": "Os resultados são meio contraintuitivos.",
+      "img": "📊🙃",
+      "alvo": "counterintuitive",
+      "alvo_pt": "contraintuitivos",
+      "conceito": "counterintuitive = contraintuitivo (o contrário do que se esperava).",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a bit",
+          "aceita": [
+            "a little"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1d65d3",
+      "quem": "voce",
+      "cod": "Strange as it may seem, the old version was faster than the new one.",
+      "dica": "Por mais estranho que pareça, a versão antiga era mais rápida que a nova.",
+      "img": "🐇🕰️",
+      "alvo": "Strange as it may seem",
+      "alvo_pt": "Por mais estranho que pareça",
+      "conceito": "adjetivo + as + it may seem = por mais... que pareça (As strange as... também é certo).",
+      "var": [
+        {
+          "em": "Strange as",
+          "aceita": [
+            "As strange as"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3cfe08",
+      "quem": "diretora",
+      "contexto": "f-1d65d3",
+      "cod": "That's counterintuitive. Didn't we rewrite it to make it faster?",
+      "dica": "Isso é contraintuitivo. A gente não reescreveu pra deixar mais rápido?",
+      "img": "🤨⚡",
+      "alvo": "counterintuitive",
+      "alvo_pt": "contraintuitivo",
+      "conceito": "Fato terminado: Didn't we rewrite...? (passado simples, não present perfect).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4ea0d7",
+      "quem": "voce",
+      "contexto": "f-3cfe08",
+      "cod": "Try as we might, we couldn't make the new version any faster.",
+      "dica": "Por mais que tentássemos, não conseguimos deixar a versão nova mais rápida.",
+      "img": "🏃‍♂️💦🧱",
+      "alvo": "Try as we might",
+      "alvo_pt": "Por mais que tentássemos",
+      "conceito": "Try as we might = por mais que tentássemos (try sem -ing e sem to).",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "trying"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-03fb87",
+      "quem": "voce",
+      "cod": "Strange as it may seem, the crash only happens on newer phones.",
+      "dica": "Por mais estranho que pareça, o crash só acontece nos celulares mais novos.",
+      "img": "📱💥✨",
+      "alvo": "Strange as it may seem",
+      "alvo_pt": "Por mais estranho que pareça",
+      "var": [
+        {
+          "em": "Strange as",
+          "aceita": [
+            "As strange as"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f107e1",
+      "quem": "voce",
+      "contexto": "f-03fb87",
+      "cod": "Try as we might, we couldn't reproduce it on our test devices.",
+      "dica": "Por mais que tentássemos, não conseguimos reproduzir nos nossos aparelhos de teste.",
+      "img": "🧪📲❓",
+      "alvo": "Try as we might",
+      "alvo_pt": "Por mais que tentássemos",
+      "var": [
+        {
+          "em": "reproduce it",
+          "aceita": [
+            "reproduce the crash"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-975c1a",
+      "quem": "voce",
+      "cod": "Much as I'd like to rewrite the whole system, we don't have the time.",
+      "dica": "Por mais que eu quisesse reescrever o sistema inteiro, não temos tempo.",
+      "img": "🏗️⏳🚫",
+      "alvo": "Much as I'd like to",
+      "alvo_pt": "Por mais que eu quisesse",
+      "conceito": "Much as I'd like to = por mais que eu quisesse: jeito educado de dizer não.",
+      "blocos": [
+        9
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "have the time",
+          "aceita": [
+            "have time"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-bd75b9",
+      "quem": "voce",
+      "contexto": "Can we add offline mode before the summer?",
+      "cod": "Much as I'd like to say yes, we can't add that this quarter.",
+      "dica": "Por mais que eu quisesse dizer sim, não dá pra adicionar isso neste trimestre.",
+      "img": "🙅‍♂️📅",
+      "alvo": "Much as I'd like to",
+      "alvo_pt": "Por mais que eu quisesse",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

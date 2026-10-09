@@ -1,0 +1,247 @@
+{
+  "id": "ingles-tecnico-academico.ate-que-ponto-ler-um-artigo",
+  "trilha": "ingles-tecnico-academico",
+  "nome": "Até que ponto: ler um artigo",
+  "emoji": "📄",
+  "cena": "O time vai escolher um banco de dados distribuído; você lê o resumo de um artigo técnico e explica para todos.",
+  "resumo": "Objetivo e escopo de um texto técnico com the extent to which, with respect to, aim to e determine whether.",
+  "fechamento": false,
+  "novos": [
+    "the extent to which",
+    "with respect to",
+    "aim to",
+    "determine whether"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O resumo de um artigo"
+    },
+    {
+      "t": "p",
+      "c": "**the extent to which** + oração = até que ponto · **with respect to** = com relação a · **aim to** + verbo = ter como objetivo · **determine whether** = determinar se."
+    },
+    {
+      "t": "warn",
+      "c": "pretender = plan to (pretend = fingir). Até que ponto = the extent to which (não: until which point)."
+    },
+    {
+      "t": "tip",
+      "c": "determine whether e determine if são aceitos; no texto acadêmico, whether é o mais comum."
+    },
+    {
+      "t": "ex",
+      "c": "This paper examines the extent to which caching improves read performance.\nEste artigo examina até que ponto o cache melhora o desempenho de leitura."
+    }
+  ],
+  "imagem": "📄🗄️🔎",
+  "visualizacao": "Você compartilha a tela com o PDF de um artigo aberto no resumo. O time está em silêncio; você grifa uma frase em amarelo e começa a explicar.",
+  "foto_busca": "reading research paper laptop",
+  "trechos": [
+    {
+      "id": "f-fe0bff",
+      "quem": "voce",
+      "cod": "This paper examines the extent to which caching improves read performance.",
+      "dica": "Este artigo examina até que ponto o cache melhora o desempenho de leitura.",
+      "img": "📄⚡",
+      "alvo": "the extent to which",
+      "alvo_pt": "até que ponto",
+      "conceito": "até que ponto + oração = the extent to which. paper = artigo científico.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "until",
+        "point"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7c292d",
+      "quem": "mike",
+      "cod": "We still don't know the extent to which our app depends on the cache.",
+      "dica": "Ainda não sabemos até que ponto o nosso app depende do cache.",
+      "img": "🤷📱",
+      "alvo": "the extent to which",
+      "alvo_pt": "até que ponto",
+      "conceito": "depend on = depender de (não: depend of). depends: -s da 3ª pessoa.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR07",
+        "BR53"
+      ],
+      "armadilhas": [
+        "of",
+        "depend"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-031351",
+      "quem": "voce",
+      "contexto": "f-7c292d",
+      "cod": "I aim to change that.",
+      "dica": "Tenho como objetivo mudar isso.",
+      "img": "🎯🔧",
+      "alvo": "aim to",
+      "alvo_pt": "como objetivo",
+      "conceito": "aim to + verbo = ter como objetivo. pretend = fingir (não use para pretender).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "pretend"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4667055,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Eu pretendo mudar isso.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c92029",
+      "quem": "voce",
+      "cod": "With respect to latency, the new design performs much better under heavy load.",
+      "dica": "Com relação à latência, o novo design tem um desempenho muito melhor sob carga pesada.",
+      "img": "⏱️🏋️",
+      "alvo": "With respect to",
+      "alvo_pt": "Com relação à",
+      "conceito": "with respect to = com relação a, no texto técnico. performs better = tem um desempenho melhor.",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "relation",
+        "respect of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a612b",
+      "quem": "ana",
+      "contexto": "f-c92029",
+      "cod": "And with respect to cost, how does it compare?",
+      "dica": "E com relação ao custo, como ele se compara?",
+      "img": "💲⚖️",
+      "alvo": "with respect to",
+      "alvo_pt": "com relação ao",
+      "conceito": "Pergunta com does: how does it compare (não: how it compares).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR06"
+      ],
+      "armadilhas": [
+        "compares"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-80d403",
+      "quem": "voce",
+      "cod": "The authors aim to compare three distributed databases.",
+      "dica": "Os autores têm como objetivo comparar três bancos de dados distribuídos.",
+      "img": "🗄️🗄️🗄️",
+      "alvo": "aim to",
+      "alvo_pt": "como objetivo",
+      "conceito": "aim to + verbo base. pretender = plan to; pretend = fingir.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "pretend",
+        "aims"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9edefd",
+      "quem": "voce",
+      "contexto": "f-80d403",
+      "cod": "They also try to determine whether the design works across regions.",
+      "dica": "Eles também tentam determinar se o design funciona em várias regiões.",
+      "img": "🌎🧭",
+      "alvo": "determine whether",
+      "alvo_pt": "determinar se",
+      "conceito": "determine whether = determinar se (whether = se, quando há duas possibilidades).",
+      "var": [
+        {
+          "em": "whether",
+          "aceita": [
+            "if"
+          ]
+        },
+        {
+          "em": "across regions",
+          "aceita": [
+            "across multiple regions",
+            "in multiple regions"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "work"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ef7bc5",
+      "quem": "mike",
+      "cod": "Our own tests should determine whether the migration is worth it.",
+      "dica": "Os nossos próprios testes deveriam determinar se a migração vale a pena.",
+      "img": "🧪🚚❓",
+      "alvo": "determine whether",
+      "alvo_pt": "determinar se",
+      "conceito": "should = deveria(m). vale a pena = is worth it. own = próprio.",
+      "var": [
+        {
+          "em": "whether",
+          "aceita": [
+            "if"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "worth"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

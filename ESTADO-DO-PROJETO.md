@@ -116,7 +116,7 @@ Cópia durável em **`tools/csharp_lab/`** (fonte do lab + stub Unity + guias + 
 
 ---
 
-## 🗽 PAC·ENGLISH — o curso de inglês (out/2026, EM ANDAMENTO)
+## 🗽 PAC·ENGLISH — o curso de inglês (out/2026, COMPLETO: A1→C1 + dev)
 
 Pedido do usuário (4/out/2026): "terceiro curso, de inglês — frases em inglês para eu escrever com a tradução em
 cima, escrever várias vezes para decorar o contexto, de forma progressiva; sempre escrevo em inglês". Ultracode
@@ -139,6 +139,38 @@ frase desce um degrau. Teto 8 digitações/frase/dia. Revisão espaçada **Leitn
 sobe, tropeço fica, errou desce 2 caixas) na "Revisão do dia" (HUD "Revisão · N" e aviso no começo da lição).
 Teste de nivelamento por trilha no mapa ("Já sei esta trilha": 10 frases de memória, 8 limpas = trilha concluída e
 frases na caixa 3). Treino de memória por lição no mapa (nota = melhor).
+Pedido do dono (6/out): a voz é **devagar por padrão** (caixinha "voz devagar", pref `en_voz_lenta`; Enter ouve na
+velocidade padrão, Shift+Enter na outra); terminada a frase a voz a **repete e ela fica na tela até o Enter** (nada de
+avançar sozinho — palco e Revisão/Treino; "Enter segue →" também é tocável); o **👁 é uma chave** (pref
+`en_ver_frases`): ligado, o inglês fica à vista em todas as frases — sobe a escada como cópia, sem correção, e a prova
+vale meio ponto (`FilaLicao.registrar(vista:)`). Esc continua sendo o "não sei" só da frase atual.
+
+**Ensaio mental (8/out, "âncora" da PNL, opcional):** `widgets/ensaio_mental.dart`, num OverlayPortal do palco (sem
+LayoutBuilder dentro dele — dispara "mutated in performLayout" quando a HomePage move o conteúdo pela GlobalKey; usar
+MediaQuery). Antes da lição: respiração 4/4 s + "junte o polegar e o indicador" + `Som.ancora` (sino) → foto da cena em
+tela cheia com a `visualizacao` → "Daqui a pouco, nessa cena, você vai dizer:" (até 3 frases com alvo, PT depois EN com
+voz; o tempo de cada uma acompanha o fim da fala) → espera o Enter. Esc pula; "não mostrar mais" = pref `en_ensaio`
+(padrão ligado), link "🎬 rever o ensaio mental" no começo da lição. Sem gesto na página (autoplay) abre parado em
+"▶ Começar o ensaio". Na vitória, se o ensaio chegou ao sino: `Som.ancora` + linha da âncora (VictoryOverlay ganhou
+`extra`). Respeita "áudio automático".
+
+**Voz nativa (8/out):** 410 frases (A1 157 · A2 140 · B1 62 · B2 37 · C1 14 · DEV 0) tocam a gravação de nativo do
+Tatoeba (409 de CK, CC BY-NC-ND 3.0; 1 de Susan1430, CC BY-NC 4.0 — o curso é gratuito). Casamento por PALAVRAS iguais
+(pergunta só com pergunta), frases da ficha fora, só licença declarada. mp3 sem alteração em
+`assets/ingles/audio/<sentence_id>-<audio_id>.mp3` (7 MB); `tools/ingles/audio_nativo.py --cache <pasta fora do projeto>`
+(baixa exports, casa, baixa, escreve `tools/ingles/dados/audio_nativo.json`) ANTES do `integrar.py` (campos `au`,
+`au_cred` no trecho). App: `data/audio_nativo.dart` (registro cod → mp3, preenchido no CurriculoLoader); `VozIngles.falar`
+toca o mp3 (lenta = playbackRate .8) e cai na sintética se falhar; completa no fim da fala. Crédito "🎙️ voz nativa" no
+TraducaoCard e parágrafo em "Créditos e fontes".
+
+**Voz gerada por personagem (8/out):** todas as outras frases (4.796) e os exemplos da teoria têm voz do Google Cloud
+TTS (Chirp 3 HD, en-US), sempre a mesma voz por personagem: você = Orus, Mike = Puck, Ana = Kore, Sarah = Aoede,
+Ben = Fenrir, Emma = Leda, Julia = Zephyr, Lucas = Iapetus, Dra. Lee = Sulafat, narrador/teoria = Charon; papéis menores
+por gênero (mapa em `tools/ingles/dados/vozes_google.json`). 5.029 mp3 (55,6 MB) em `assets/ingles/voz/<hash>.mp3` +
+índice `assets/ingles/vozes.json` {texto: asset}. Gerar/atualizar DEPOIS do integrar.py:
+`python3 -I tools/ingles/vozes_google.py --gcp music-system-421ee` (API Text-to-Speech ativa nesse projeto, que tem
+faturamento; ~3 arquivos/s; só gera o que falta e apaga órfãos). Ordem no app (`AudioNativo.paraTocar`): gravação de
+nativo > voz gerada > voz sintética do navegador.
 
 **No app:**
 - `Linguagem.ingles` (marca ENGLISH, `assets/ingles/`, prefixo `en_`, `ehProgramacao=false`), 3º cartão na escolha
@@ -159,6 +191,14 @@ frases na caixa 3). Treino de memória por lição no mapa (nota = melhor).
   strings do Dart/C#).
 - Arcade no inglês: só Turismo/Chuva/Rali com `palavras_ingles.dart` (+ `dicasIngles`); Prof. Dash vira professor
   de inglês (`_personaIngles`, sugestões próprias); mapa com faixas A1…C1, "Créditos e fontes" (Tatoeba CC BY 2.0 FR).
+- 🎬 Ensaio mental (`widgets/ensaio_mental.dart`) e voz nativa (8/out, correções): cada frase do ensaio do futuro
+  fica o tempo de ser dita inteira (`EnsaioMental.segDaFrase`, por palavras e velocidade) e o relógio ainda espera a
+  fala acabar (`VozIngles.falar` só completa no fim) — uma frase não corta a outra; respeita "áudio automático";
+  sem gesto na página (app recém-aberto) espera parado no "▶ Começar o ensaio" (`Sons.liberado` =
+  `navigator.userActivation`; o `som_web` também não agenda nota antes do 1º gesto). A âncora da vitória (sino +
+  "👌 Junte o polegar…", agora DENTRO do VictoryOverlay via `extra`) só aparece se o ensaio desta lição chegou ao
+  sino; ao repetir, sem "novas". Gravações do Tatoeba: `assets/ingles/audio/<sentence_id>-<audio_id>.mp3` (o nome
+  prova qual gravação é; `audio_nativo.py --sem-baixar` nunca grava crédito de mp3 que não está na pasta).
 - Testes: `test/ingles_dominio_test.dart` (fila, máscara, nota, Leitner) e `test/ingles_ui_test.dart` (escolha,
   lição inteira, correção, Revisão, redimensionar, nivelamento). ⚠️ App montado dentro de `tester.runAsync`: os
   listeners dos blocs só andam com tempo REAL entre os pumps; páginas abertas por toque nascem na zona falsa.
@@ -169,10 +209,16 @@ nível, alvo ⊂ frase, fonte Tatoeba) e `integrar.py` (trilhas → `assets/ingl
 Dados duráveis em `tools/ingles/dados/` (esboço final 120 trilhas / 595 lições, DESIGN.md, IMAGENS.md, pacotes.json,
 trilhas prontas); roteiro para continuar em `tools/ingles/PROMPT-CONTINUAR.md`.
 
-**No ar (6/out/2026):** A1 + A2 + B1 + B2 = **95 trilhas · 465 lições · 4.166 frases** (1.035 do Tatoeba). O B2 (22
-trilhas, 8 pacotes) passou pelo autor e pelos 2 revisores, e o validador deu OK em todas. Falta **C1 + dev** (6 + 4
-pacotes), integrado com `--etapas a1,a2,b1,b2,c1,dev`. Até lá, só o teste de volume (≥ 100 trilhas) de
-`test/ingles_curriculo_test.dart` falha.
+**CURSO COMPLETO no ar (6/out/2026):** **121 trilhas · 602 lições · 5.308 frases** (1.072 do Tatoeba) — A1 28 ·
+A2 23 · B1 22 · B2 22 · C1 14 · DEV 11. Toda trilha passou por autor + revisor nativo EN + revisor PT/progressão e
+pelo validador. Integração: `integrar.py tools/ingles/dados/trilhas tools/ingles/dados/esboco.json --etapas
+a1,a2,b1,b2,c1,dev`. `test/ingles_*_test.dart` 28/28 verdes.
+8/out: lições de LISTA fechada auditadas (o validador não pega): 0–12, 13–19, dezenas, jan–jun, jul–dez agora cobrem
+todos os itens (nFrases 10 no esboço) e a "carro vermelho" ganhou o red. Ao mexer numa lição de lista, conferir a
+cobertura item a item.
+9/out: trilha EXTRA a pedido do dono, `conjugar-s-es-ies` (A1, ordem 12.5 = 13ª, logo depois de terceira-pessoa):
+7 lições / 88 frases de treino da 3ª pessoa (+s; -es em s/ss/sh/ch/x/z/o; consoante+y → -ies; vogal+y → -s; has),
+escrita à mão + revisor independente; esboço ganhou a trilha (ordem fracionária é aceita pelo integrar.py).
 
 ---
 

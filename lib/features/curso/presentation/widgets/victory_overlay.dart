@@ -21,6 +21,10 @@ class VictoryOverlay extends StatelessWidget {
   /// artigo ("o quiz", "a fixação").
   final String quiz, oQuiz;
 
+  /// Uma linha a mais logo abaixo do título (no inglês, a âncora do ensaio
+  /// mental) — no fluxo do conteúdo, que rola junto.
+  final Widget? extra;
+
   const VictoryOverlay({
     super.key,
     required this.esperaAuto,
@@ -30,6 +34,7 @@ class VictoryOverlay extends StatelessWidget {
     required this.onQuiz,
     required this.onPularQuiz,
     required this.onRepetir,
+    this.extra,
   });
 
   bool get _temQuiz => esperaAuto != null;
@@ -66,6 +71,10 @@ class VictoryOverlay extends StatelessWidget {
       const SizedBox(height: 8),
       Text('${curso.licao.emoji}  ${curso.licao.nome} — ${curso.trilha.nivel}',
           style: Mixart.ui(size: 13, color: Mixart.textMuted)),
+      if (extra != null) ...[
+        const SizedBox(height: 14),
+        extra!,
+      ],
       const SizedBox(height: 20),
       Wrap(spacing: 12, runSpacing: 12, alignment: WrapAlignment.center, children: [
         _Placar('PPM', '${typing.ppm(DateTime.now())}'),

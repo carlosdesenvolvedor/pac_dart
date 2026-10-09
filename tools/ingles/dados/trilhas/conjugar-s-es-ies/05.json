@@ -1,0 +1,243 @@
+{
+  "id": "conjugar-s-es-ies.vogal-y-so-s",
+  "trilha": "conjugar-s-es-ies",
+  "nome": "Vogal + y → só -s",
+  "emoji": "🎮",
+  "cena": "Num churrasco de domingo, a Emma te conta o que cada convidado gosta de fazer.",
+  "resumo": "Se antes do y vem vogal, o y fica e entra só o -s: play → plays, pay → pays, buy → buys.",
+  "fechamento": false,
+  "novos": [
+    "plays",
+    "says",
+    "pays",
+    "buys",
+    "stays home",
+    "stays open",
+    "enjoys"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Vogal + y → só -s"
+    },
+    {
+      "t": "p",
+      "c": "Se antes do **y** vem **vogal** (a, e, o, u), o y fica e entra só o **-s**: play → **plays**, pay → **pays**, buy → **buys**, enjoy → **enjoys**."
+    },
+    {
+      "t": "tip",
+      "c": "Teste rápido: olhe a letra antes do y. Vogal: -s. Consoante: -ies."
+    },
+    {
+      "t": "warn",
+      "c": "says se pronuncia \"séz\", não \"seis\"."
+    },
+    {
+      "t": "ex",
+      "c": "Ben plays the guitar.\nO Ben toca violão."
+    }
+  ],
+  "imagem": "🎸⚽🛒",
+  "visualizacao": "É domingo no quintal da Emma. Cheiro de churrasco, música alta, e ela vai apontando cada convidado e contando o que ele faz.",
+  "foto_busca": "backyard barbecue friends sunday",
+  "trechos": [
+    {
+      "id": "f-e73555",
+      "quem": "emma",
+      "cod": "Ben plays the guitar.",
+      "dica": "O Ben toca violão.",
+      "img": "🎸🎶",
+      "alvo": "plays",
+      "alvo_pt": "toca",
+      "conceito": "play: a + y → plays (o y fica).",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "plaies"
+      ],
+      "teste": true
+    },
+    {
+      "id": "f-5166bd",
+      "quem": "emma",
+      "cod": "Mike plays soccer on Sundays.",
+      "dica": "O Mike joga futebol aos domingos.",
+      "img": "⚽☀️",
+      "alvo": "plays",
+      "alvo_pt": "joga",
+      "conceito": "play → plays. Nos EUA, futebol = soccer.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "plaies",
+        "football"
+      ]
+    },
+    {
+      "id": "f-84b383",
+      "quem": "emma",
+      "cod": "Sarah always says thank you.",
+      "dica": "A Sarah sempre diz obrigada.",
+      "img": "🙏😊",
+      "alvo": "says",
+      "alvo_pt": "diz",
+      "conceito": "say: a + y → says (soa \"séz\").",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "saies"
+      ]
+    },
+    {
+      "id": "f-03ba70",
+      "quem": "emma",
+      "cod": "Ana pays the rent on the fifth.",
+      "dica": "A Ana paga o aluguel no dia cinco.",
+      "img": "🏠💵",
+      "alvo": "pays",
+      "alvo_pt": "paga",
+      "conceito": "pay: a + y → pays.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "paies"
+      ]
+    },
+    {
+      "id": "f-3ec0de",
+      "quem": "emma",
+      "cod": "Lucas buys coffee every morning.",
+      "dica": "O Lucas compra café toda manhã.",
+      "img": "☕🛒",
+      "alvo": "buys",
+      "alvo_pt": "compra",
+      "conceito": "buy: u + y → buys.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "buies"
+      ]
+    },
+    {
+      "id": "f-f4afd3",
+      "quem": "emma",
+      "cod": "Julia stays home on rainy days.",
+      "dica": "A Julia fica em casa nos dias de chuva.",
+      "img": "🏠🌧️",
+      "alvo": "stays home",
+      "alvo_pt": "fica em casa",
+      "conceito": "stay: a + y → stays. ficar em casa = stay home.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "staies",
+        "stays in house"
+      ],
+      "var": [
+        {
+          "em": "stays home",
+          "aceita": [
+            "stays at home"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-567c27",
+      "quem": "emma",
+      "cod": "The store stays open late.",
+      "dica": "A loja fica aberta até tarde.",
+      "img": "🏪🌙",
+      "alvo": "stays open",
+      "alvo_pt": "fica aberta",
+      "conceito": "stay → stays: ficar (aberto) = stay open.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2871ff",
+      "quem": "emma",
+      "cod": "Mike really enjoys his vacation.",
+      "dica": "O Mike aproveita muito as férias dele.",
+      "img": "🏖️😎",
+      "alvo": "enjoys",
+      "alvo_pt": "aproveita",
+      "conceito": "enjoy: o + y → enjoys.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "enjoies"
+      ]
+    },
+    {
+      "id": "f-e58e43",
+      "quem": "emma",
+      "cod": "He prays before dinner.",
+      "dica": "Ele reza antes do jantar.",
+      "img": "🙏🍽️",
+      "alvo": "prays",
+      "alvo_pt": "reza",
+      "conceito": "pray: a + y → prays.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "praies"
+      ]
+    },
+    {
+      "id": "f-b35957",
+      "quem": "emma",
+      "cod": "Ben's dog obeys him.",
+      "dica": "O cachorro do Ben obedece a ele.",
+      "img": "🐕✅",
+      "alvo": "obeys",
+      "alvo_pt": "obedece",
+      "conceito": "obey: e + y → obeys.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "obeies"
+      ]
+    },
+    {
+      "id": "f-5980f4",
+      "quem": "emma",
+      "cod": "Mike annoys his sister.",
+      "dica": "O Mike irrita a irmã dele.",
+      "img": "😤👧",
+      "alvo": "annoys",
+      "alvo_pt": "irrita",
+      "conceito": "annoy: o + y → annoys.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "annoies"
+      ],
+      "var": [
+        {
+          "em": "annoys",
+          "aceita": [
+            "irritates",
+            "bugs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d97619",
+      "quem": "emma",
+      "cod": "Ben's company employs ten people.",
+      "dica": "A empresa do Ben emprega dez pessoas.",
+      "img": "🏢👥",
+      "alvo": "employs",
+      "alvo_pt": "emprega",
+      "conceito": "employ: o + y → employs.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "employes"
+      ]
+    }
+  ]
+}

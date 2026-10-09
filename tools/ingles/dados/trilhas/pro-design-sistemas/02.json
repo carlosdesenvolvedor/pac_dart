@@ -1,0 +1,280 @@
+{
+  "id": "pro-design-sistemas.propor-a-arquitetura",
+  "trilha": "pro-design-sistemas",
+  "nome": "Propor a arquitetura",
+  "emoji": "🧱",
+  "cena": "Ainda na entrevista de system design, você desenha a primeira versão da arquitetura e explica onde fica cada caixa.",
+  "resumo": "Descrever a arquitetura: at a high level, load balancer, in front of the database e take load off.",
+  "fechamento": false,
+  "novos": [
+    "at a high level",
+    "load balancer",
+    "in front of the database",
+    "take load off"
+  ],
+  "apoio": [
+    "API gateway",
+    "latency",
+    "instance"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Descrever a arquitetura"
+    },
+    {
+      "t": "p",
+      "c": "Comece pelo panorama (**At a high level, the app talks to...**), diga onde cada peça fica (**behind a load balancer**, **in front of the database**) e o que ela resolve: **take load off the database**."
+    },
+    {
+      "t": "warn",
+      "c": "Substantivo + substantivo na ordem inglesa: load balancer, API gateway, cache layer (o que qualifica vem antes)."
+    },
+    {
+      "t": "ex",
+      "c": "We could add a cache in front of the database.\nPoderíamos colocar um cache na frente do banco."
+    }
+  ],
+  "imagem": "🧱➡️🗄️",
+  "visualizacao": "Você arrasta caixas no quadro virtual: o app, o gateway, o banco. A cada seta que desenha, explica em voz alta quem fala com quem.",
+  "foto_busca": "architecture diagram whiteboard boxes arrows",
+  "trechos": [
+    {
+      "id": "f-2bfa9a",
+      "quem": "entrevistador",
+      "cod": "Great. Now can you walk me through the design at a high level?",
+      "dica": "Ótimo. Agora você pode me guiar pelo design, em alto nível?",
+      "img": "🔭🗺️",
+      "alvo": "at a high level",
+      "alvo_pt": "em alto nível",
+      "conceito": "at a high level = em alto nível, visão geral; walk me through = me guiar por, passo a passo.",
+      "var": [
+        {
+          "em": "walk me through",
+          "aceita": [
+            "take me through",
+            "guide me through"
+          ]
+        }
+      ],
+      "blocos": [
+        1
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "in a high level",
+        "in high level"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cea53d",
+      "quem": "voce",
+      "contexto": "f-2bfa9a",
+      "cod": "Sure. At a high level, the app talks to an API gateway.",
+      "dica": "Claro. Em alto nível, o app fala com um API gateway.",
+      "img": "📱➡️🚪",
+      "alvo": "At a high level",
+      "alvo_pt": "Em alto nível",
+      "conceito": "talk to = falar com (um serviço chama o outro). API gateway: o qualificador vem antes (BR24).",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR17"
+      ],
+      "armadilhas": [
+        "in a high level",
+        "talks with",
+        "gateway API"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ea92ec",
+      "quem": "voce",
+      "cod": "The gateway sits behind a load balancer that spreads traffic across instances.",
+      "dica": "O gateway fica atrás de um load balancer, que distribui o tráfego entre as instâncias.",
+      "img": "⚖️🔀",
+      "alvo": "load balancer",
+      "alvo_pt": "load balancer",
+      "conceito": "sit behind = ficar atrás (na arquitetura); load balancer = balanceador de carga.",
+      "var": [
+        {
+          "em": "sits",
+          "aceita": [
+            "is"
+          ]
+        },
+        {
+          "em": "that",
+          "aceita": [
+            "which"
+          ]
+        },
+        {
+          "em": "spreads",
+          "aceita": [
+            "distributes"
+          ]
+        },
+        {
+          "em": "across instances",
+          "aceita": [
+            "across the instances"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "balancer load",
+        "stays"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9826e1",
+      "quem": "voce",
+      "cod": "If one instance goes down, the load balancer stops sending it traffic.",
+      "dica": "Se uma instância cair, o load balancer para de mandar tráfego para ela.",
+      "img": "💥🚦",
+      "alvo": "load balancer",
+      "alvo_pt": "load balancer",
+      "conceito": "Se + futuro do subjuntivo = if + presente (goes down; não: will go down).",
+      "var": [
+        {
+          "em": "stops sending it traffic",
+          "aceita": [
+            "stops sending traffic to it"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28",
+        "BR02"
+      ],
+      "armadilhas": [
+        "will go",
+        "stops to send"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1fbf89",
+      "quem": "voce",
+      "cod": "We could add a cache in front of the database.",
+      "dica": "Poderíamos colocar um cache na frente do banco.",
+      "img": "⚡🗄️",
+      "alvo": "in front of the database",
+      "alvo_pt": "na frente do banco",
+      "conceito": "could de proposta = poderíamos. Banco (de dados) = database.",
+      "var": [
+        {
+          "em": "add",
+          "aceita": [
+            "put"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "in the front",
+        "bank"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-74126c",
+      "quem": "voce",
+      "cod": "That would take a lot of load off the database.",
+      "dica": "Isso tiraria muita carga do banco.",
+      "img": "🏋️⬇️",
+      "alvo": "take a lot of load off",
+      "alvo_pt": "tiraria muita carga",
+      "lit": "[lit.: tiraria muita carga de cima do banco]",
+      "conceito": "take load off X = tirar carga de X; off fica antes do que é aliviado.",
+      "registro": "neutro",
+      "armadilhas": [
+        "take off a lot",
+        "remove"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-82c613",
+      "quem": "entrevistador",
+      "cod": "Do all requests go through the cache in front of the database?",
+      "dica": "Todas as requisições passam pelo cache na frente do banco?",
+      "img": "🚦❓",
+      "alvo": "in front of the database",
+      "alvo_pt": "na frente do banco",
+      "conceito": "Pergunta com do no presente: Do all requests go...? (não: All requests go...?).",
+      "var": [
+        {
+          "em": "all requests",
+          "aceita": [
+            "all the requests"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "pass by",
+        "all requests go"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3333e1",
+      "quem": "voce",
+      "contexto": "f-82c613",
+      "cod": "Only reads, but that alone takes most of the load off.",
+      "dica": "Só as leituras, mas isso por si só tira a maior parte da carga.",
+      "img": "📖⬇️",
+      "alvo": "takes most of the load off",
+      "alvo_pt": "tira a maior parte da carga",
+      "conceito": "3ª pessoa: that takes (BR02). that alone = isso por si só.",
+      "var": [
+        {
+          "em": "Only reads",
+          "aceita": [
+            "Only the reads",
+            "Just the reads",
+            "Just reads"
+          ]
+        }
+      ],
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "take",
+        "the most"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "id": "hedging-registro.ao-que-parece-ate-certo-ponto",
+  "trilha": "hedging-registro",
+  "nome": "Ao que parece, até certo ponto",
+  "emoji": "📑",
+  "cena": "Você escreve a conclusão do relatório sobre um experimento com o app, sem afirmar mais do que os dados mostram.",
+  "resumo": "Concluir com cautela no texto: It would seem that, arguably, to some extent, given.",
+  "fechamento": false,
+  "novos": [
+    "it would seem that",
+    "arguably",
+    "to some extent",
+    "given (preposição)"
+  ],
+  "apoio": [
+    "suggest (indicar)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Concluir sem exagerar"
+    },
+    {
+      "t": "p",
+      "c": "**It would seem that** = ao que parece; **arguably** = dá para dizer que; **to some extent** = até certo ponto; **given** + substantivo = dado / dada / considerando. Nada de afirmar o que os dados não mostram."
+    },
+    {
+      "t": "warn",
+      "c": "It would seem that (não: It would seems). evidence é incontável: the evidence (não: evidences)."
+    },
+    {
+      "t": "ex",
+      "c": "To some extent, the delays were caused by unclear requirements.\nAté certo ponto, os atrasos foram causados por requisitos pouco claros."
+    }
+  ],
+  "imagem": "📊📝🔬",
+  "visualizacao": "Os gráficos do teste A/B estão abertos ao lado do documento. Você apaga um \"com certeza\", troca por \"ao que parece\" e relê a conclusão em voz baixa.",
+  "foto_busca": "analyst writing report charts",
+  "trechos": [
+    {
+      "id": "f-ff52f0",
+      "quem": "voce",
+      "cod": "It would seem that the data supports this view.",
+      "dica": "Ao que parece, os dados sustentam essa visão.",
+      "img": "📊🤝👀",
+      "alvo": "It would seem that",
+      "alvo_pt": "Ao que parece",
+      "conceito": "It would seem that = ao que parece (formal); the data supports ou support: os dois estão certos.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "seems"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "supports",
+          "aceita": [
+            "support"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b0d8da",
+      "quem": "voce",
+      "cod": "It would seem that users prefer the shorter checkout flow.",
+      "dica": "Ao que parece, os usuários preferem o fluxo de checkout mais curto.",
+      "img": "🛒✂️🙂",
+      "alvo": "It would seem that",
+      "alvo_pt": "Ao que parece",
+      "conceito": "would seem, sem -s: o would leva o verbo na base.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "seems"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ae9607",
+      "quem": "voce",
+      "cod": "The new flow is arguably the most important change this year.",
+      "dica": "Dá para dizer que o fluxo novo é a mudança mais importante deste ano.",
+      "img": "🥇🔄📆",
+      "alvo": "arguably",
+      "alvo_pt": "Dá para dizer que",
+      "conceito": "arguably vem antes do que se afirma: is arguably the most important.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "this year",
+          "aceita": [
+            "of the year",
+            "of this year"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ccf1c0",
+      "quem": "voce",
+      "cod": "Given the small sample, these results are not conclusive.",
+      "dica": "Dada a amostra pequena, esses resultados não são conclusivos.",
+      "img": "🔬🤏❔",
+      "alvo": "Given",
+      "alvo_pt": "Dada",
+      "conceito": "given + substantivo = dado / dada / considerando; conclusive = conclusivo.",
+      "var": [
+        {
+          "em": "these",
+          "aceita": [
+            "the"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ac0592",
+      "quem": "voce",
+      "cod": "To some extent, the delays were caused by unclear requirements.",
+      "dica": "Até certo ponto, os atrasos foram causados por requisitos pouco claros.",
+      "img": "⏳📋❓",
+      "alvo": "To some extent",
+      "alvo_pt": "Até certo ponto",
+      "conceito": "To some extent = até certo ponto (não: until certain point).",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "until",
+        "point"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-61db44",
+      "quem": "voce",
+      "cod": "Overall, the results suggest that the new design helps, at least to some extent.",
+      "dica": "No geral, os resultados indicam que o design novo ajuda, pelo menos até certo ponto.",
+      "img": "📈🎨👍",
+      "alvo": "to some extent",
+      "alvo_pt": "até certo ponto",
+      "conceito": "suggest = indicar (os dados indicam); helps: -s da 3ª pessoa.",
+      "var": [
+        {
+          "em": "suggest",
+          "aceita": [
+            "indicate"
+          ]
+        }
+      ],
+      "opcional": [
+        "that"
+      ],
+      "blocos": [
+        9
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "help"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-feced5",
+      "quem": "voce",
+      "cod": "Given the evidence, we recommend releasing the new flow to all users.",
+      "dica": "Dadas as evidências, recomendamos liberar o fluxo novo para todos os usuários.",
+      "img": "🔎✅👥",
+      "alvo": "Given",
+      "alvo_pt": "Dadas",
+      "conceito": "evidence é incontável: the evidence (não: evidences); recommend + -ing.",
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22",
+        "BR52"
+      ],
+      "armadilhas": [
+        "evidences",
+        "release"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d51f28",
+      "quem": "voce",
+      "cod": "The biggest risk is arguably the lack of time for testing.",
+      "dica": "Dá para dizer que o maior risco é a falta de tempo para testes.",
+      "img": "⚠️⌛🧪",
+      "alvo": "arguably",
+      "alvo_pt": "Dá para dizer que",
+      "conceito": "lack of = falta de; arguably fica depois do is.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    }
+  ]
+}

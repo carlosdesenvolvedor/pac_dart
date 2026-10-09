@@ -1,0 +1,232 @@
+{
+  "id": "precisao-lexical.alegar-afirmar-enorme",
+  "trilha": "precisao-lexical",
+  "nome": "Alegar, afirmar, enorme",
+  "emoji": "📏",
+  "cena": "Você revisa com a Ana o texto dos slides de uma apresentação para clientes, escolhendo a palavra exata em cada frase.",
+  "resumo": "Escolher o sinônimo pela nuance: claim (alegar), state (afirmar), a large number of e cloud costs.",
+  "fechamento": false,
+  "novos": [
+    "a large number of",
+    "cloud costs",
+    "claim",
+    "state"
+  ],
+  "apoio": [
+    "browser"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Alegar, afirmar, enorme"
+    },
+    {
+      "t": "p",
+      "c": "**claim** = alegar (pode não ser verdade) · **state** = afirmar, declarar (formal, por escrito) · **a large number of** = um grande número de (escrito) · **cloud costs** = custos de nuvem."
+    },
+    {
+      "t": "tip",
+      "c": "Na conversa, huge (enorme) e a lot of. No slide e no relatório, a large number of."
+    },
+    {
+      "t": "warn",
+      "c": "claim that + oração ou claim to + verbo (não: claim of). data = dados."
+    },
+    {
+      "t": "ex",
+      "c": "The contract clearly states that the data belongs to the client.\nO contrato afirma claramente que os dados pertencem ao cliente."
+    }
+  ],
+  "imagem": "📊🖥️✍️",
+  "visualizacao": "Os slides estão projetados na parede da sala. A Ana lê cada título em voz alta, você risca uma palavra no rascunho impresso e escreve outra por cima.",
+  "foto_busca": "presentation slides review office",
+  "trechos": [
+    {
+      "id": "f-e251ae",
+      "quem": "voce",
+      "cod": "A large number of users still access the site from older browsers.",
+      "dica": "Um grande número de usuários ainda acessa o site de navegadores antigos.",
+      "img": "👥🌐🕰️",
+      "alvo": "A large number of",
+      "alvo_pt": "Um grande número de",
+      "conceito": "a large number of + plural: tom de relatório. Na conversa: a lot of.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "big",
+        "great"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4e023e",
+      "quem": "ana",
+      "cod": "We've received a large number of requests for dark mode.",
+      "dica": "Recebemos um grande número de pedidos de modo escuro.",
+      "img": "📬🌙",
+      "alvo": "a large number of",
+      "alvo_pt": "um grande número de",
+      "conceito": "number vai com contáveis; com incontáveis, a large amount of.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "big",
+        "amount"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "We've received",
+          "aceita": [
+            "We received"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-df3d6c",
+      "quem": "ana",
+      "cod": "The vendor claims their tool can cut our cloud costs in half.",
+      "dica": "O fornecedor alega que a ferramenta deles pode cortar nossos custos de nuvem pela metade.",
+      "img": "🗣️✂️☁️",
+      "alvo": "claims",
+      "alvo_pt": "alega",
+      "conceito": "claim = alegar: a afirmação pode não ser verdade (não: reclamar, que é complain).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR56"
+      ],
+      "armadilhas": [
+        "claim",
+        "complains"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2fdb50",
+      "quem": "voce",
+      "contexto": "f-df3d6c",
+      "cod": "They claim it's a piece of cake to set up, but I doubt it.",
+      "dica": "Eles alegam que é moleza de configurar, mas eu duvido.",
+      "img": "🍰🤨",
+      "alvo": "claim",
+      "alvo_pt": "alegam",
+      "conceito": "alegar que é = claim it is: o it é obrigatório.",
+      "blocos": [
+        10
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR56"
+      ],
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-abbb74",
+      "quem": "voce",
+      "cod": "Our cloud costs went up thirty percent this year.",
+      "dica": "Os nossos custos de nuvem subiram trinta por cento este ano.",
+      "img": "☁️💸📈",
+      "alvo": "cloud costs",
+      "alvo_pt": "custos de nuvem",
+      "conceito": "custos de nuvem = cloud costs: o substantivo que qualifica vem antes.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "costs of cloud"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "went up",
+          "aceita": [
+            "have gone up"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-34a379",
+      "quem": "ana",
+      "contexto": "f-abbb74",
+      "cod": "Should we put the cloud costs on a separate slide?",
+      "dica": "A gente coloca os custos de nuvem num slide separado?",
+      "img": "🗂️☁️",
+      "alvo": "cloud costs",
+      "alvo_pt": "custos de nuvem",
+      "conceito": "A gente + verbo? (sugestão) = Should we...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4df91d",
+      "quem": "voce",
+      "cod": "The contract clearly states that the data belongs to the client.",
+      "dica": "O contrato afirma claramente que os dados pertencem ao cliente.",
+      "img": "📜🔒",
+      "alvo": "states",
+      "alvo_pt": "afirma",
+      "conceito": "state = afirmar, declarar por escrito. data = dados.",
+      "opcional": [
+        "that"
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02",
+        "BR44"
+      ],
+      "armadilhas": [
+        "state",
+        "says"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0d0749",
+      "quem": "ana",
+      "cod": "Our privacy policy states that we never sell user data.",
+      "dica": "A nossa política de privacidade afirma que nunca vendemos dados de usuários.",
+      "img": "🛡️🚫💰",
+      "alvo": "states",
+      "alvo_pt": "afirma",
+      "conceito": "policy = política, diretriz. state = afirmar em documento.",
+      "opcional": [
+        "that"
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02",
+        "BR56"
+      ],
+      "armadilhas": [
+        "politics",
+        "state"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

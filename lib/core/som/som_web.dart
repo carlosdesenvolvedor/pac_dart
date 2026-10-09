@@ -15,6 +15,18 @@ AudioContext get _audio {
   return ctx;
 }
 
+/// A página já recebeu um gesto do usuário (tecla, clique, toque)? Antes
+/// disso o navegador não deixa tocar nada: o AudioContext nasce suspenso, o
+/// `<audio>.play()` é recusado e o `speechSynthesis` fica mudo. Navegador
+/// sem a API (Safari < 16.4): supõe que sim, como antes.
+bool get liberado {
+  try {
+    return window.navigator.userActivation.hasBeenActive;
+  } catch (_) {
+    return true;
+  }
+}
+
 /// Uma "nota": oscilador [tipo] indo de [de] a [ate] Hz em [dur] segundos,
 /// com ataque instantâneo e decaimento exponencial. [atraso] agenda no futuro.
 void _nota(
@@ -39,7 +51,32 @@ void _nota(
   osc.stop(t0 + dur + .02);
 }
 
+/// Um sino: senoide com ataque macio (sem o "clique" do ataque instantâneo)
+/// e cauda longa, mais um parcial agudo e curto que dá o brilho de metal.
+void _sino(double freq, double dur, {double atraso = 0, double volume = .05}) {
+  final ctx = _audio;
+  final t0 = ctx.currentTime + atraso;
+  void parcial(double f, double d, double v) {
+    final osc = ctx.createOscillator()..type = 'sine';
+    osc.frequency.setValueAtTime(f, t0);
+    final ganho = ctx.createGain();
+    ganho.gain.setValueAtTime(0.0001, t0);
+    ganho.gain.linearRampToValueAtTime(v, t0 + .018);
+    ganho.gain.exponentialRampToValueAtTime(0.0001, t0 + d);
+    osc.connect(ganho);
+    ganho.connect(ctx.destination);
+    osc.start(t0);
+    osc.stop(t0 + d + .05);
+  }
+
+  parcial(freq, dur, volume);
+  parcial(freq * 2.76, dur * .35, volume * .22); // parcial inarmônico de sino
+}
+
 void tocar(Som som) {
+  // sem gesto ainda: as notas ficariam agendadas no relógio parado do
+  // contexto suspenso e sairiam todas juntas na primeira tecla
+  if (!liberado) return;
   switch (som) {
     case Som.waka:
       _wakaAlterna = !_wakaAlterna;
@@ -85,6 +122,12 @@ void tocar(Som som) {
     case Som.largada:
       _nota('square', 880, 880, .28, volume: .13);
       _nota('triangle', 1760, 1760, .28, volume: .06);
+    case Som.ancora:
+      // dó–mi–sol–si dedilhado e deixado soar: calmo, nada de fliperama
+      _sino(523.25, 1.9, volume: .055);
+      _sino(659.25, 1.8, atraso: .07, volume: .045);
+      _sino(783.99, 1.7, atraso: .14, volume: .04);
+      _sino(987.77, 1.6, atraso: .21, volume: .03);
   }
 }
 

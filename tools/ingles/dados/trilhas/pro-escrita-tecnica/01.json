@@ -1,0 +1,254 @@
+{
+  "id": "pro-escrita-tecnica.rfc-contexto-e-motivacao",
+  "trilha": "pro-escrita-tecnica",
+  "nome": "RFC: contexto e motivação",
+  "emoji": "📄",
+  "cena": "Você escreve a RFC de uma camada de cache para o catálogo de produtos, que Mike, Sarah e o time de infraestrutura vão ler.",
+  "resumo": "Abrir uma RFC: This document proposes..., Motivation: Currently..., Non-goals: ...",
+  "fechamento": false,
+  "novos": [
+    "this document proposes",
+    "motivation",
+    "non-goals",
+    "request for comments"
+  ],
+  "apoio": [
+    "proposal",
+    "caching layer",
+    "summary"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O começo de uma RFC"
+    },
+    {
+      "t": "p",
+      "c": "Resumo (**Summary:**), o que se propõe (**This document proposes...**), por quê (**Motivation:**) e o que fica de fora (**Non-goals:**). No texto escrito, formas plenas: **does not**, **will not**."
+    },
+    {
+      "t": "warn",
+      "c": "currently = atualmente; actually = na verdade. Grafia: summary, recommend, necessary (consoantes duplas)."
+    },
+    {
+      "t": "ex",
+      "c": "Non-goals: this proposal does not cover the search service.\nNão objetivos: esta proposta não cobre o serviço de busca."
+    }
+  ],
+  "imagem": "📄✍️🗄️",
+  "visualizacao": "Documento em branco na tela, silêncio na casa. Você digita o título da RFC e imagina o Mike e a Sarah lendo cada linha.",
+  "foto_busca": "writing document laptop desk",
+  "trechos": [
+    {
+      "id": "f-e8a2f5",
+      "quem": "voce",
+      "cod": "Summary: this document proposes a caching layer for the product catalog.",
+      "dica": "Resumo: este documento propõe uma camada de cache para o catálogo de produtos.",
+      "img": "📄🗄️",
+      "alvo": "this document proposes",
+      "alvo_pt": "este documento propõe",
+      "conceito": "This document proposes... = a abertura clássica de uma RFC.",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR45",
+        "BR02"
+      ],
+      "armadilhas": [
+        "sumary",
+        "propose"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ae94bb",
+      "quem": "voce",
+      "cod": "Motivation: currently, each product page requires six database queries.",
+      "dica": "Motivação: atualmente, cada página de produto exige seis consultas ao banco de dados.",
+      "img": "🐢🗃️",
+      "alvo": "Motivation",
+      "alvo_pt": "Motivação",
+      "conceito": "currently = atualmente (não: actually, que é na verdade).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56",
+        "BR02"
+      ],
+      "armadilhas": [
+        "actually",
+        "require"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "each product page",
+          "aceita": [
+            "every product page"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b947aa",
+      "quem": "voce",
+      "cod": "The main motivation is cost, since peak traffic has become very expensive.",
+      "dica": "A principal motivação é o custo, já que o tráfego de pico ficou muito caro.",
+      "img": "💸📈",
+      "alvo": "motivation",
+      "alvo_pt": "motivação",
+      "conceito": "since = já que (causa); has become = ficou (mudou até agora).",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "is cost",
+          "aceita": [
+            "is the cost"
+          ]
+        },
+        {
+          "em": "has become",
+          "aceita": [
+            "has gotten",
+            "became",
+            "got"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0f3a99",
+      "quem": "voce",
+      "cod": "Non-goals: this proposal does not cover the search service.",
+      "dica": "Não objetivos: esta proposta não cobre o serviço de busca.",
+      "img": "🚫🔍",
+      "alvo": "Non-goals",
+      "alvo_pt": "Não objetivos",
+      "conceito": "Non-goals = o que a proposta deixa de fora de propósito; does not no texto escrito.",
+      "var": [
+        {
+          "em": "does not",
+          "aceita": [
+            "doesn't"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "don't",
+        "not"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b51693",
+      "quem": "voce",
+      "cod": "This request for comments will stay open until next Friday.",
+      "dica": "Este pedido de comentários vai ficar aberto até a próxima sexta.",
+      "img": "📬📅",
+      "alvo": "request for comments",
+      "alvo_pt": "pedido de comentários",
+      "conceito": "RFC = request for comments: uma proposta aberta para o time comentar.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR15"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "stay open",
+          "aceita": [
+            "remain open"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-84b7a1",
+      "quem": "sarah",
+      "cod": "Just to confirm: this document proposes caching product pages only, right?",
+      "dica": "Só para confirmar: este documento propõe fazer cache só das páginas de produto, certo?",
+      "img": "🛒❓",
+      "alvo": "this document proposes",
+      "alvo_pt": "este documento propõe",
+      "conceito": "propose + -ing: proposes caching (não: proposes to cache, aqui).",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "product pages only",
+          "aceita": [
+            "only product pages"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ]
+    },
+    {
+      "id": "f-581a15",
+      "quem": "voce",
+      "contexto": "f-84b7a1",
+      "cod": "Yes. Search and category pages are listed under non-goals for now.",
+      "dica": "Sim. As páginas de busca e de categoria estão listadas nos não objetivos por enquanto.",
+      "img": "🔍⏸️",
+      "alvo": "non-goals",
+      "alvo_pt": "não objetivos",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia",
+      "conceito": "listed under non-goals: under para a seção de um documento.",
+      "blocos": [
+        1
+      ],
+      "var": [
+        {
+          "em": "Search and category pages",
+          "aceita": [
+            "The search and category pages"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d321da",
+      "quem": "mike",
+      "cod": "Nice doc! I'll share this request for comments with the infra team too.",
+      "dica": "Bom documento! Vou compartilhar este pedido de comentários com o time de infra também.",
+      "img": "📤📄",
+      "alvo": "request for comments",
+      "alvo_pt": "pedido de comentários",
+      "conceito": "RFC = request for comments; share with = compartilhar com.",
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Nice doc",
+          "aceita": [
+            "Good doc",
+            "Great doc"
+          ]
+        }
+      ]
+    }
+  ]
+}

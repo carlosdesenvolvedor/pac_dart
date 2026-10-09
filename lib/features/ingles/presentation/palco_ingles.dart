@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -20,6 +18,7 @@ import 'fixacao.dart';
 import 'revisao_cubit.dart';
 import '../../../core/som/sons.dart';
 import 'widgets/cena_visual.dart';
+import 'widgets/ensaio_mental.dart';
 import 'widgets/frase_view.dart';
 import 'widgets/traducao_card.dart';
 
@@ -32,10 +31,6 @@ class PalcoIngles extends StatefulWidget {
   /// Voz injetável (testes).
   final VozIngles? voz;
 
-  /// Quanto o feedback de uma digitação de memória fica na tela.
-  static Duration esperaFeedback = const Duration(milliseconds: 2500);
-  static Duration esperaCopia = const Duration(milliseconds: 700);
-
   const PalcoIngles({super.key, required this.curso, this.voz});
 
   @override
@@ -47,13 +42,20 @@ class _PalcoInglesState extends State<PalcoIngles> {
   final _frase = GlobalKey<FraseViewState>();
   late final VozIngles _voz = widget.voz ?? VozIngles();
 
-  /// Pref: tocar o áudio sozinho (antes da cópia, depois da memória).
+  /// Pref: tocar o áudio sozinho (antes da cópia e ao terminar a frase).
   static const prefAudio = 'en_audio_auto';
+
+  /// Pref: o 👁 ligado — o inglês à vista em todas as frases.
+  static const prefVerFrases = 'en_ver_frases';
 
   late FilaLicao _fila;
   bool _audioAuto = true;
-  Timer? _proximo;
+  bool _vozLenta = VozIngles.lentaPorPadrao;
+  bool _verFrases = false;
   bool _emSequencia = false;
+
+  /// O 👁 esteve ligado em algum momento desta digitação de memória.
+  bool _viuNestePasso = false;
 
   /// Resultado da digitação de memória que acabou (registrado ao avançar).
   ResultadoRevisao? _pendente;
@@ -67,6 +69,40 @@ class _PalcoInglesState extends State<PalcoIngles> {
   /// "Foi erro de digitação" já usado nesta lição (vale uma vez).
   bool _contestou = false;
 
+  /// 🎬 Ensaio mental antes da lição, em tela cheia por cima de tudo (um
+  /// OverlayPortal: continua sendo deste palco e sobrevive ao redimensionar).
+  final _portal = OverlayPortalController();
+  final _focoEnsaio = FocusNode(debugLabel: 'ensaio mental');
+
+  /// A rota do palco está no topo (sem mapa/revisão por cima).
+  bool _noTopo = true;
+
+  /// Pref "ensaio antes da lição" (null = ainda lendo).
+  bool? _ensaioLigado;
+
+  /// O ensaio está na tela.
+  bool _ensaioAberto = false;
+
+  /// O palco abriu no começo de uma lição: o ensaio é decidido quando a pref
+  /// chegar (até lá a frase não recebe tecla nem fala).
+  bool _ensaioEsperando = false;
+
+  /// Cada abertura recomeça o roteiro do ensaio.
+  int _ensaioVez = 0;
+
+  /// A fala da 1ª frase (estreia) ficou para depois do ensaio.
+  bool _vozSegurada = false;
+
+  /// O ensaio desta lição chegou ao sino (passo 1 feito): só então a vitória
+  /// repete o som e o gesto — para quem não fez o ensaio, a âncora não é nada.
+  bool _ancoraNestaLicao = false;
+
+  /// A lição está sendo repetida (as frases já não são novas).
+  bool _repetindo = false;
+
+  /// Com o ensaio na frente, nenhuma tecla chega à frase e ela não fala.
+  bool get _segurandoFrase => _ensaioAberto || _ensaioEsperando;
+
   CursoState get curso => widget.curso;
   PassoFila? get _atual => _fila.atual;
   Trecho get _trecho => curso.licao.trechos[_atual!.frase];
@@ -75,10 +111,38 @@ class _PalcoInglesState extends State<PalcoIngles> {
   void initState() {
     super.initState();
     _montarFila();
+    _ensaioEsperando = !curso.vitoria;
+    _portal.show();
     WidgetsBinding.instance.addPostFrameCallback((_) => _carregarPasso());
     SharedPreferences.getInstance().then((p) {
-      if (mounted) setState(() => _audioAuto = p.getBool(prefAudio) ?? true);
-    }).catchError((_) {});
+      if (!mounted) return;
+      setState(() {
+        _audioAuto = p.getBool(prefAudio) ?? true;
+        _verFrases = p.getBool(prefVerFrases) ?? false;
+        final passo = _atual;
+        if (_verFrases && passo != null && passo.modo.deMemoria && !_aguardando) _viuNestePasso = true;
+      });
+      _decidirEnsaio(p.getBool(EnsaioMental.prefLigado) ?? true);
+    }).catchError((_) {
+      if (mounted) _decidirEnsaio(true);
+    });
+    VozIngles.carregarPreferencia().then((lenta) {
+      if (mounted) setState(() => _vozLenta = lenta);
+    });
+  }
+
+  /// A rota do palco voltou ao topo (fechou o mapa, a revisão…) com o
+  /// ensaio aberto: o teclado volta para ele, não para a frase.
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final noTopo = ModalRoute.of(context)?.isCurrent ?? true;
+    if (noTopo && !_noTopo) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted && _ensaioAberto) _focoEnsaio.requestFocus();
+      });
+    }
+    _noTopo = noTopo;
   }
 
   @override
@@ -87,18 +151,28 @@ class _PalcoInglesState extends State<PalcoIngles> {
     final trocouLicao =
         oldWidget.curso.trilhaIdx != curso.trilhaIdx || oldWidget.curso.licaoIdx != curso.licaoIdx;
     final repetiu = oldWidget.curso.vitoria && !curso.vitoria;
+    if (trocouLicao) {
+      _ancoraNestaLicao = false;
+      _repetindo = false;
+    } else if (repetiu) {
+      _repetindo = true;
+    }
     if (trocouLicao || repetiu) {
-      _proximo?.cancel();
       _montarFila();
+      // lição nova começa com o ensaio; ao repetir ele pula (o link fica no palco)
+      if (trocouLicao && _ensaioLigado == true && !curso.vitoria) _abrirEnsaio(rebuild: false);
       _carregarPasso();
     }
+    // a âncora de novo, no pico: o mesmo sino do ensaio (e o gesto, na linha
+    // logo abaixo do título da vitória) — só se o ensaio desta lição a armou
+    if (!oldWidget.curso.vitoria && curso.vitoria && _ancoraNestaLicao) Sons.toca(Som.ancora);
   }
 
   @override
   void dispose() {
-    _proximo?.cancel();
     _voz.parar();
     _foco.dispose();
+    _focoEnsaio.dispose();
     super.dispose();
   }
 
@@ -129,18 +203,88 @@ class _PalcoInglesState extends State<PalcoIngles> {
       _aguardando = false;
       _erradas = const {};
       _ouviuAntes = 0;
+      _viuNestePasso = _verFrases && p.modo.deMemoria;
     });
+    if (_segurandoFrase) {
+      // o ensaio está na frente: a fala e o foco esperam ele fechar
+      _vozSegurada = _audioAuto && p.estreia;
+      return;
+    }
     // ouvir ANTES só na estreia (copiar); de memória o áudio entregaria a resposta
     if (_audioAuto && p.estreia) _voz.falar(_trecho.cod);
     _foco.requestFocus();
   }
 
-  /// A frase do passo foi digitada até o fim.
+  /// A pref chegou: no começo da lição abre o ensaio (ou libera a frase).
+  void _decidirEnsaio(bool ligado) {
+    final abre = ligado && _ensaioEsperando && _fila.feitos == 0 && !curso.vitoria;
+    setState(() {
+      _ensaioLigado = ligado;
+      _ensaioEsperando = false;
+    });
+    if (abre) {
+      _abrirEnsaio();
+    } else {
+      _liberarFrase();
+    }
+  }
+
+  void _abrirEnsaio({bool rebuild = true}) {
+    void abre() {
+      _ensaioAberto = true;
+      _ensaioVez++;
+    }
+
+    rebuild ? setState(abre) : abre();
+  }
+
+  /// Enter / Esc / botões do ensaio: a lição começa, com o foco na frase.
+  void _fecharEnsaio() {
+    if (!_ensaioAberto) return;
+    setState(() => _ensaioAberto = false);
+    _voz.parar();
+    _liberarFrase();
+  }
+
+  /// Devolve teclado e voz à frase — depois do frame que tira o ExcludeFocus.
+  void _liberarFrase() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || _segurandoFrase) return;
+      _foco.requestFocus();
+      if (_vozSegurada && _atual != null && !_aguardando) _voz.falar(_trecho.cod);
+      _vozSegurada = false;
+    });
+    WidgetsBinding.instance.ensureVisualUpdate();
+  }
+
+  /// "Não mostrar mais" no próprio ensaio (desmarcar religa).
+  void _naoMostrarEnsaio(bool naoMostrar) {
+    setState(() => _ensaioLigado = !naoMostrar);
+    EnsaioMental.salvarPreferencia(!naoMostrar);
+  }
+
+  Widget _ensaio(BuildContext context) => _ensaioAberto
+      ? EnsaioMental(
+          key: ValueKey('ensaio-${curso.trilhaIdx}:${curso.licaoIdx}-$_ensaioVez'),
+          licao: curso.licao,
+          voz: _voz,
+          onComecar: _fecharEnsaio,
+          onPular: _fecharEnsaio,
+          naoMostrarMais: _ensaioLigado == false,
+          onNaoMostrarMais: _naoMostrarEnsaio,
+          focusNode: _focoEnsaio,
+          // "áudio automático" desligado: o ensaio também não fala sozinho
+          audioAuto: _audioAuto,
+          onAncora: () => _ancoraNestaLicao = true,
+        )
+      : const SizedBox.shrink();
+
+  /// A frase do passo foi digitada até o fim: a voz repete a frase e ela
+  /// fica na tela até o Enter (dá para ouvir o que digitou).
   void _concluiu(TypingState st) {
     final p = _atual;
     if (p == null) return;
-    _proximo?.cancel();
-    if (p.modo.deMemoria) {
+    if (p.modo.deMemoria && !_viuNestePasso) {
       final fv = _frase.currentState;
       final d = avaliarDigitacao(
         st.chars.join(),
@@ -156,22 +300,19 @@ class _PalcoInglesState extends State<PalcoIngles> {
         _erradas = d.palavrasErradas;
         _aguardando = true;
       });
-      if (_audioAuto) _voz.falar(_trecho.cod);
       // âncora de acerto: o mesmo som e o mesmo brilho toda vez que a frase
       // sai de memória, limpa
       if (d.resultado == ResultadoRevisao.acertou) Sons.toca(Som.gol);
-      _proximo = Timer(PalcoIngles.esperaFeedback, _avancar);
     } else {
+      // cópia (ou de memória com o 👁 ligado): não gera nota
       setState(() => _aguardando = true);
-      if (_audioAuto && p.estreia) _voz.falar(_trecho.cod);
-      _proximo = Timer(PalcoIngles.esperaCopia, _avancar);
     }
+    if (_audioAuto) _voz.falar(_trecho.cod);
   }
 
   void _avancar() {
-    _proximo?.cancel();
     if (!mounted || curso.vitoria || _atual == null || !_aguardando) return;
-    _fila.registrar(_pendente, semCorrecao: _pendenteSemCorrecao);
+    _fila.registrar(_pendente, semCorrecao: _pendenteSemCorrecao, vista: _viuNestePasso);
     if (!_fila.terminou) {
       _carregarPasso();
       return;
@@ -209,13 +350,11 @@ class _PalcoInglesState extends State<PalcoIngles> {
   void _contestar() {
     final p = _pendente;
     if (p == null || _contestou) return;
-    _proximo?.cancel();
     setState(() {
       _contestou = true;
       _pendente = contestar(p);
       if (_pendente != ResultadoRevisao.errou) _pendenteSemCorrecao = true;
     });
-    _proximo = Timer(PalcoIngles.esperaCopia, _avancar);
     _foco.requestFocus();
   }
 
@@ -236,6 +375,27 @@ class _PalcoInglesState extends State<PalcoIngles> {
     } catch (_) {}
   }
 
+  Future<void> _alternarVozLenta() async {
+    setState(() => _vozLenta = !_vozLenta);
+    await VozIngles.salvarPreferencia(_vozLenta);
+    _foco.requestFocus();
+  }
+
+  /// 👁: liga/desliga o inglês à vista em todas as frases (fica salvo).
+  Future<void> _alternarVerFrases() async {
+    final p = _atual;
+    setState(() {
+      _verFrases = !_verFrases;
+      // viu a frase desta digitação de memória: ela já não vale como memória
+      if (_verFrases && p != null && p.modo.deMemoria && !_aguardando) _viuNestePasso = true;
+    });
+    _foco.requestFocus();
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setBool(prefVerFrases, _verFrases);
+    } catch (_) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     final passo = _atual;
@@ -243,7 +403,7 @@ class _PalcoInglesState extends State<PalcoIngles> {
     return BlocListener<TypingBloc, TypingState>(
       listenWhen: (a, b) => !a.concluido && b.concluido,
       listener: (_, st) => _concluiu(st),
-      child: Container(
+      child: OverlayPortal(controller: _portal, overlayChildBuilder: _ensaio, child: Container(
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: Mixart.surface,
@@ -251,9 +411,12 @@ class _PalcoInglesState extends State<PalcoIngles> {
           borderRadius: BorderRadius.circular(Mixart.radiusLg),
           boxShadow: const [BoxShadow(color: Colors.black87, blurRadius: 60, offset: Offset(0, 24), spreadRadius: -30)],
         ),
-        child: Stack(children: [
+        // ensaio aberto: o palco inteiro fica fora do foco (nenhuma tecla chega à frase)
+        child: ExcludeFocus(excluding: _segurandoFrase, child: Stack(children: [
           if (passo == null)
-            const SizedBox(height: 200)
+            // a vitória cobre o palco: alto o bastante para o placar e os
+            // botões caberem sem rolar
+            SizedBox(height: curso.vitoria ? 380 : 200)
           else
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               if (_fila.feitos == 0) ...[
@@ -272,10 +435,16 @@ class _PalcoInglesState extends State<PalcoIngles> {
                 ],
                 if (CenaVisual(licao: curso.licao).temAlgo) ...[
                   CenaVisual(licao: curso.licao),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 8),
                 ],
+                _LinkEnsaio(ligado: _ensaioLigado != false, onAbrir: _abrirEnsaio),
+                const SizedBox(height: 12),
               ],
-              _CabecalhoPasso(passo: passo, frase: _trecho.cod, frases: curso.licao.trechos.length),
+              _CabecalhoPasso(
+                  passo: passo,
+                  frase: _trecho.cod,
+                  frases: curso.licao.trechos.length,
+                  vista: _verFrases && passo.modo.deMemoria),
               const SizedBox(height: 12),
               TraducaoCard(
                 trecho: _trecho,
@@ -287,6 +456,10 @@ class _PalcoInglesState extends State<PalcoIngles> {
                 onDica: passo.modo.deMemoria ? () => _frase.currentState?.revelarPalavra() : null,
                 onNaoSei: passo.modo.deMemoria ? () => _frase.currentState?.naoSei() : null,
                 onAlternarAudio: _alternarAudio,
+                vozLenta: _vozLenta,
+                onAlternarVozLenta: _alternarVozLenta,
+                verFrases: _verFrases,
+                onAlternarVerFrases: _alternarVerFrases,
                 quemDoContexto: _trecho.contextoDe >= 0 && _trecho.contextoDe < curso.licao.trechos.length
                     ? curso.licao.trechos[_trecho.contextoDe].quem
                     : _quemDisse(_trecho.contexto),
@@ -306,6 +479,7 @@ class _PalcoInglesState extends State<PalcoIngles> {
                 vitoria: curso.vitoria,
                 onProximaLicao: _seguir,
                 onPularQuiz: _seguir,
+                mostrarTudo: _verFrases,
               ),
               const SizedBox(height: 10),
               SizedBox(
@@ -314,6 +488,7 @@ class _PalcoInglesState extends State<PalcoIngles> {
                     ? _Selo(
                         resultado: _pendente,
                         modo: passo.modo,
+                        onSeguir: _avancar,
                         onContestar: _contestou || _pendente == null || _pendente == ResultadoRevisao.acertou
                             ? null
                             : _contestar,
@@ -329,11 +504,76 @@ class _PalcoInglesState extends State<PalcoIngles> {
               onQuiz: _seguir,
               onPularQuiz: _seguir,
               onRepetir: _repetir,
+              // no fluxo do placar (nada por cima do título)
+              extra: _ancoraNestaLicao
+                  ? _LinhaAncora(frases: curso.licao.trechos.length, novas: !_repetindo)
+                  : null,
             ),
-        ]),
-      ),
+        ])),
+      )),
     );
   }
+}
+
+/// No começo da lição: rever o ensaio mental sob demanda (e religá-lo, se
+/// foi desligado no "não mostrar mais").
+class _LinkEnsaio extends StatelessWidget {
+  final bool ligado;
+  final VoidCallback onAbrir;
+  const _LinkEnsaio({required this.ligado, required this.onAbrir});
+
+  @override
+  Widget build(BuildContext context) => InkWell(
+        onTap: onAbrir,
+        borderRadius: BorderRadius.circular(8),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+          child: Text.rich(TextSpan(children: [
+            TextSpan(
+                text: ligado ? '🎬 rever o ensaio mental' : '🎬 ensaio mental',
+                style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.brand)),
+            TextSpan(
+                text: ligado ? ' · 20 s de cena e frases antes de digitar' : ' · desligado — toque para ver (e religar)',
+                style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
+          ])),
+        ),
+      );
+}
+
+/// A âncora de volta na vitória: o mesmo gesto do ensaio, ligado ao que a
+/// pessoa acabou de conseguir.
+class _LinhaAncora extends StatelessWidget {
+  final int frases;
+
+  /// false = lição repetida: as frases já não são novas.
+  final bool novas;
+  const _LinhaAncora({required this.frases, this.novas = true});
+
+  @override
+  Widget build(BuildContext context) => IgnorePointer(
+        child: TweenAnimationBuilder<double>(
+          tween: Tween(begin: 0, end: 1),
+          duration: const Duration(milliseconds: 600),
+          curve: Mixart.spring,
+          builder: (_, v, filho) => Opacity(opacity: v, child: filho),
+          child: Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 9),
+              decoration: BoxDecoration(
+                color: Mixart.brandSub,
+                border: Border.all(color: Mixart.brandDim),
+                borderRadius: BorderRadius.circular(999),
+              ),
+              child: Text(
+                '👌 Junte o polegar e o indicador: você acabou de usar '
+                '$frases ${frases == 1 ? 'frase' : 'frases'}${novas ? (frases == 1 ? ' nova' : ' novas') : ''} em inglês.',
+                textAlign: TextAlign.center,
+                style: Mixart.ui(size: 12.5, weight: FontWeight.w700, color: Mixart.text).copyWith(height: 1.4),
+              ),
+            ),
+          ),
+        ),
+      );
 }
 
 /// "🧠 De memória · 6 palavras" + o que fazer neste degrau.
@@ -341,13 +581,18 @@ class _CabecalhoPasso extends StatelessWidget {
   final PassoFila passo;
   final String frase;
   final int frases;
-  const _CabecalhoPasso({required this.passo, required this.frase, required this.frases});
+
+  /// 👁 ligado num degrau de memória: a frase está à vista.
+  final bool vista;
+  const _CabecalhoPasso({required this.passo, required this.frase, required this.frases, this.vista = false});
 
   @override
   Widget build(BuildContext context) {
     final explicacao = passo.correcao
         ? 'Corrija copiando a frase certa'
-        : switch (passo.degrau) {
+        : vista
+            ? '👁 Frase à vista — desligue o olho para treinar de memória'
+            : switch (passo.degrau) {
             Degrau.conhecer => 'Ouça e copie com atenção',
             Degrau.iniciais => 'Complete a partir das iniciais',
             Degrau.esqueleto => 'Só o tamanho das palavras',
@@ -382,21 +627,30 @@ class _CabecalhoPasso extends StatelessWidget {
 class _Selo extends StatelessWidget {
   final ResultadoRevisao? resultado;
   final ModoFrase modo;
+  final VoidCallback onSeguir;
   final VoidCallback? onContestar;
-  const _Selo({required this.resultado, required this.modo, this.onContestar});
+  const _Selo({required this.resultado, required this.modo, required this.onSeguir, this.onContestar});
 
   @override
   Widget build(BuildContext context) {
     final (texto, cor) = switch (resultado) {
-      null => ('✓ Copiada — ela volta daqui a pouco com menos ajuda', Mixart.textMuted),
+      null => ('✓ Feita — ela volta daqui a pouco com menos ajuda', Mixart.textMuted),
       ResultadoRevisao.acertou => ('✅ De memória, sem erro!', Mixart.brand),
       ResultadoRevisao.hesitou => ('🟡 Quase — as palavras em vermelho tropeçaram', Mixart.textMuted),
       ResultadoRevisao.errou => ('🔁 Vamos corrigir: copie a frase certa', Mixart.danger),
     };
     return Center(
       child: Wrap(alignment: WrapAlignment.center, crossAxisAlignment: WrapCrossAlignment.center, spacing: 10, children: [
-        Text('$texto   ·   Enter segue',
-            style: Mixart.ui(size: 12.5, weight: FontWeight.w700, color: cor), textAlign: TextAlign.center),
+        Text(texto, style: Mixart.ui(size: 12.5, weight: FontWeight.w700, color: cor), textAlign: TextAlign.center),
+        // não avança sozinho: dá para ouvir a frase que acabou de digitar
+        InkWell(
+          onTap: onSeguir,
+          borderRadius: BorderRadius.circular(6),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+            child: Text('Enter segue →', style: Mixart.ui(size: 12.5, weight: FontWeight.w800, color: Mixart.brand)),
+          ),
+        ),
         if (onContestar != null)
           InkWell(
             onTap: onContestar,

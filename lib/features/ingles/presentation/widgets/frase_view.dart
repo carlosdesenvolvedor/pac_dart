@@ -8,6 +8,7 @@ import '../../../../core/som/sons.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../../curso/presentation/bloc/typing_bloc.dart';
 import '../../../curso/presentation/widgets/pacman.dart';
+import '../../data/voz_ingles.dart';
 import '../../domain/avaliacao.dart';
 import '../../domain/roteiro.dart';
 
@@ -36,8 +37,13 @@ class FraseView extends StatefulWidget {
   /// Enter com a frase completa.
   final VoidCallback onAvancar;
 
-  /// Enter ANTES de terminar = ouvir; Shift+Enter = ouvir devagar.
+  /// Enter ANTES de terminar = ouvir na velocidade padrão (a lenta, se o
+  /// aluno não mudou); Shift+Enter = na outra velocidade.
   final void Function({required bool lenta})? onOuvir;
+
+  /// 👁 ligado: a frase inteira à vista em qualquer degrau (vale para
+  /// todas as frases até desligar).
+  final bool mostrarTudo;
 
   /// Pediu dica (Tab / 💡) ou desistiu (Esc): algo foi revelado.
   final VoidCallback? onRevelou;
@@ -66,6 +72,7 @@ class FraseView extends StatefulWidget {
     this.vitoria = false,
     this.onProximaLicao,
     this.onPularQuiz,
+    this.mostrarTudo = false,
   });
 
   @override
@@ -150,7 +157,8 @@ class FraseViewState extends State<FraseView> {
       } else if (bloc.state.concluido) {
         widget.onAvancar();
       } else if (e is KeyDownEvent) {
-        widget.onOuvir?.call(lenta: HardwareKeyboard.instance.isShiftPressed);
+        final shift = HardwareKeyboard.instance.isShiftPressed;
+        widget.onOuvir?.call(lenta: shift ? !VozIngles.lentaPorPadrao : VozIngles.lentaPorPadrao);
       }
       return KeyEventResult.handled;
     }
@@ -326,7 +334,7 @@ class FraseViewState extends State<FraseView> {
   Widget _frase(TypingState st, double maxWidth) {
     if (st.chars.isEmpty) return const SizedBox(height: 60);
     final frase = st.chars.join();
-    final mascara = mascaraDaFrase(frase, widget.modo);
+    final mascara = mascaraDaFrase(frase, widget.mostrarTudo ? ModoFrase.ver : widget.modo);
     final ini = widget.alvo.isEmpty ? -1 : frase.indexOf(widget.alvo);
     final fim = ini < 0 ? -1 : ini + widget.alvo.length;
     final erradas = <int>{};

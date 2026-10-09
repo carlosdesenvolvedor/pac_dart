@@ -1,0 +1,219 @@
+{
+  "id": "clivadas-fronting.o-que-a-gente-fez-foi-clivada-com-verbo",
+  "trilha": "clivadas-fronting",
+  "nome": "O que a gente fez foi...",
+  "emoji": "🛠️",
+  "cena": "Na reunião de incidentes, você explica ao Mike e à Sarah o que aconteceu e o que o time fez.",
+  "resumo": "Contar um incidente com What happened was that... e What we did was + verbo sem to.",
+  "fechamento": false,
+  "novos": [
+    "What happened was (that)",
+    "What we did was + verbo",
+    "run out of disk space"
+  ],
+  "apoio": [
+    "What I'd suggest is",
+    "call the client",
+    "restart"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O que a gente fez foi..."
+    },
+    {
+      "t": "p",
+      "c": "Para explicar um incidente: **What happened was (that)** + oração. Para contar a ação: **What we did was** + verbo sem to: What we did was roll back the deploy."
+    },
+    {
+      "t": "warn",
+      "c": "Não: What we did was to roll back / rolling back. Já visto no B2: What I need is... / All we did was..."
+    },
+    {
+      "t": "ex",
+      "c": "What I'd suggest is that we add more alerts.\nO que eu sugeriria é a gente adicionar mais alertas."
+    }
+  ],
+  "imagem": "🛠️🗄️📞",
+  "visualizacao": "Você está na chamada de incidentes, ainda com sono depois da madrugada. O gráfico do disco cheio está na tela, e o Mike espera você contar o que aconteceu.",
+  "foto_busca": "server room incident night",
+  "trechos": [
+    {
+      "id": "f-c8d80f",
+      "quem": "voce",
+      "contexto": "So what happened last night?",
+      "cod": "What happened was that the database ran out of disk space.",
+      "dica": "O que aconteceu foi que o banco de dados ficou sem espaço em disco.",
+      "img": "🗄️💾🚫",
+      "alvo": "What happened was",
+      "alvo_pt": "O que aconteceu foi",
+      "conceito": "What happened was (that) + oração: a clivada que abre a explicação.",
+      "opcional": [
+        "that"
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-46ded9",
+      "quem": "mike",
+      "contexto": "f-c8d80f",
+      "cod": "How did it run out of disk space so fast?",
+      "dica": "Como o banco ficou sem espaço em disco tão rápido?",
+      "img": "⏩💾❓",
+      "alvo": "run out of disk space",
+      "alvo_pt": "ficou sem espaço em disco",
+      "conceito": "run out of = ficar sem; did + verbo base: did it run (não: did it ran).",
+      "var": [
+        {
+          "em": "it",
+          "aceita": [
+            "the database"
+          ]
+        },
+        {
+          "em": "so fast",
+          "aceita": [
+            "so quickly"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR01"
+      ],
+      "armadilhas": [
+        "ran"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3f90dc",
+      "quem": "voce",
+      "contexto": "f-46ded9",
+      "cod": "Well, what happened was that the old logs weren't being deleted.",
+      "dica": "Bom, o que aconteceu foi que os logs antigos não estavam sendo apagados.",
+      "img": "📚🗑️❌",
+      "alvo": "what happened was",
+      "alvo_pt": "o que aconteceu foi",
+      "opcional": [
+        "that"
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a0de76",
+      "quem": "voce",
+      "cod": "First, what we did was delete the old logs by hand.",
+      "dica": "Primeiro, o que a gente fez foi apagar os logs antigos na mão.",
+      "img": "✋🗑️📄",
+      "alvo": "what we did was",
+      "alvo_pt": "o que a gente fez foi",
+      "conceito": "What we did was + verbo sem to e sem -ing: was delete (não: was to delete / deleting).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "deleted",
+        "deleting"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "by hand",
+          "aceita": [
+            "manually"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-9878dd",
+      "quem": "voce",
+      "cod": "Then what we did was restart the database and call the client.",
+      "dica": "Depois, o que a gente fez foi reiniciar o banco de dados e ligar para o cliente.",
+      "img": "🔄📞",
+      "alvo": "what we did was",
+      "alvo_pt": "o que a gente fez foi",
+      "conceito": "call + pessoa, sem to: call the client (não: call to the client).",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR42"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cf97ea",
+      "quem": "mike",
+      "cod": "Make sure our servers never run out of disk space again.",
+      "dica": "Garante que os nossos servidores nunca mais fiquem sem espaço em disco.",
+      "img": "🖥️✅💾",
+      "alvo": "run out of disk space",
+      "alvo_pt": "fiquem sem espaço em disco",
+      "conceito": "Make sure + oração no presente: never run out (não: will never run out).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-879e8e",
+      "quem": "voce",
+      "contexto": "Can you explain it without the technical details?",
+      "cod": "Basically, what happened was that the disk filled up and nobody got an alert.",
+      "dica": "Basicamente, o que aconteceu foi que o disco encheu e ninguém recebeu um alerta.",
+      "img": "💽🔕",
+      "alvo": "what happened was",
+      "alvo_pt": "o que aconteceu foi",
+      "opcional": [
+        "that"
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "blocos": [
+        5
+      ]
+    },
+    {
+      "id": "f-3c0e62",
+      "quem": "voce",
+      "contexto": "f-879e8e",
+      "cod": "So what we did was add an alert for disk usage.",
+      "dica": "Então o que a gente fez foi adicionar um alerta de uso de disco.",
+      "img": "🔔📈",
+      "alvo": "what we did was",
+      "alvo_pt": "o que a gente fez foi",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "added",
+        "adding"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "an alert for disk usage",
+          "aceita": [
+            "a disk usage alert"
+          ]
+        }
+      ]
+    }
+  ]
+}

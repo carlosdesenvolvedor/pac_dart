@@ -17,44 +17,17 @@ class CenaVisual extends StatelessWidget {
 
   bool get temAlgo => licao.foto.isNotEmpty || licao.imagem.isNotEmpty || licao.visualizacao.isNotEmpty;
 
-  Widget _foto(double largura, double altura) {
-    final emojis = Center(
-      child: Text(licao.imagem.isEmpty ? licao.emoji : licao.imagem,
-          style: TextStyle(fontSize: altura * (compacta ? .42 : .34)), textAlign: TextAlign.center),
-    );
-    final fundo = Container(
-      width: largura,
-      height: altura,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [Mixart.brandSub, Mixart.surfaceHi]),
-      ),
-      child: emojis,
-    );
-    if (licao.foto.isEmpty) return fundo;
-    final foto = Image.asset(
-      licao.foto,
-      width: largura,
-      height: altura,
-      fit: BoxFit.cover,
-      errorBuilder: (_, _, _) => fundo,
-    );
-    if (compacta) return foto;
-    // zoom lento enquanto a pessoa visualiza a cena (dá sensação de estar lá)
-    return SizedBox(
-      width: largura,
-      height: altura,
-      child: ClipRect(
-        child: TweenAnimationBuilder<double>(
-          key: ValueKey(licao.foto),
-          tween: Tween(begin: 1, end: 1.08),
-          duration: const Duration(seconds: 14),
-          curve: Curves.easeOut,
-          builder: (_, escala, filho) => Transform.scale(scale: escala, child: filho),
-          child: foto,
+  Widget _foto(double largura, double altura) => SizedBox(
+        width: largura,
+        height: altura,
+        // zoom lento enquanto a pessoa visualiza a cena (dá sensação de estar lá)
+        child: FotoCena(
+          licao: licao,
+          altura: altura,
+          zoom: compacta ? null : const Duration(seconds: 14),
+          emojiFator: compacta ? .42 : .34,
         ),
-      ),
-    );
-  }
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -102,5 +75,59 @@ class CenaVisual extends StatelessWidget {
             ])
           : Column(crossAxisAlignment: CrossAxisAlignment.start, children: [foto, const SizedBox(height: 12), texto]);
     });
+  }
+}
+
+/// A foto da cena preenchendo o espaço que receber (sem foto, os emojis da
+/// cena num degradê). Com [zoom], aproxima devagar até [escala] — usada no
+/// cartão do palco e em tela cheia no ensaio mental.
+///
+/// Sem LayoutBuilder de propósito: no ensaio ela vive num OverlayPortal que
+/// muda de lugar (GlobalKey) quando a janela cruza a largura do painel do
+/// tutor, e um LayoutBuilder ali dentro dispara a asserção de "mutated in
+/// performLayout".
+class FotoCena extends StatelessWidget {
+  final Licao licao;
+  final Duration? zoom;
+  final double escala;
+
+  /// Altura da caixa (o tamanho dos emojis, sem foto, sai dela).
+  final double altura;
+
+  /// Tamanho dos emojis (sem foto) em fração da [altura].
+  final double emojiFator;
+
+  const FotoCena(
+      {super.key, required this.licao, required this.altura, this.zoom, this.escala = 1.08, this.emojiFator = .34});
+
+  @override
+  Widget build(BuildContext context) {
+    final fundo = Container(
+      decoration: BoxDecoration(gradient: LinearGradient(colors: [Mixart.brandSub, Mixart.surfaceHi])),
+      alignment: Alignment.center,
+      padding: const EdgeInsets.all(4),
+      // emojis proporcionais à caixa; numa caixa estreita encolhem para caber
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(licao.imagem.isEmpty ? licao.emoji : licao.imagem,
+            style: TextStyle(fontSize: altura * emojiFator), textAlign: TextAlign.center),
+      ),
+    );
+    final foto = licao.foto.isEmpty
+        ? fundo
+        : Image.asset(licao.foto, fit: BoxFit.cover, errorBuilder: (_, _, _) => fundo);
+    final cheia = SizedBox.expand(child: foto);
+    final z = zoom;
+    if (z == null || licao.foto.isEmpty) return cheia;
+    return ClipRect(
+      child: TweenAnimationBuilder<double>(
+        key: ValueKey(licao.foto),
+        tween: Tween(begin: 1, end: escala),
+        duration: z,
+        curve: Curves.easeOut,
+        builder: (_, e, filho) => Transform.scale(scale: e, child: filho),
+        child: cheia,
+      ),
+    );
   }
 }

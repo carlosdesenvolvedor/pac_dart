@@ -1,0 +1,183 @@
+{
+  "id": "conceder-rebater.pode-se-argumentar-que",
+  "trilha": "conceder-rebater",
+  "nome": "Pode-se argumentar que...",
+  "emoji": "🏛️",
+  "cena": "Num debate com a diretoria sobre o plano do ano, você apresenta os argumentos dos dois lados antes de recomendar um caminho.",
+  "resumo": "Argumentar de forma impessoal e firmar pontos indiscutíveis: It could be argued that... / No one would dispute that... / It's fair to say that...",
+  "fechamento": false,
+  "novos": [
+    "it could be argued that",
+    "no one would dispute that",
+    "it's fair to say that",
+    "top priority"
+  ],
+  "apoio": [
+    "on the other hand (B2)",
+    "pilot (B2)",
+    "matter (importar)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pode-se argumentar que... = It could be argued that..."
+    },
+    {
+      "t": "p",
+      "c": "No debate formal, **It could be argued that...** traz o argumento do outro lado sem atacar ninguém. **No one would dispute that...** firma um ponto que todos aceitam e **It's fair to say that...** faz um balanço honesto."
+    },
+    {
+      "t": "warn",
+      "c": "O it é obrigatório: It could be argued (não: Could be argued). E dispute that, sem preposição (não: dispute about that)."
+    },
+    {
+      "t": "ex",
+      "c": "It could be argued that we're moving too fast.\nPode-se argumentar que estamos indo rápido demais."
+    }
+  ],
+  "imagem": "🏛️⚖️📊",
+  "visualizacao": "Você está de pé na sala da diretoria, com o plano do ano no telão. A mesa é comprida, todos escutam em silêncio e a diretora faz anotações.",
+  "foto_busca": "boardroom presentation executives table",
+  "trechos": [
+    {
+      "id": "f-b28ee8",
+      "quem": "voce",
+      "cod": "It could be argued that we're moving too fast.",
+      "dica": "Pode-se argumentar que estamos indo rápido demais.",
+      "img": "🏃💨⚖️",
+      "alvo": "It could be argued that",
+      "alvo_pt": "Pode-se argumentar que",
+      "conceito": "It could be argued that = pode-se argumentar que: o argumento do outro lado, sem dono.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9d139b",
+      "quem": "voce",
+      "cod": "On the other hand, it could be argued that being too risk-averse hurts our growth.",
+      "dica": "Por outro lado, pode-se argumentar que ser avesso demais a riscos prejudica o nosso crescimento.",
+      "img": "🛡️🐢📉",
+      "alvo": "it could be argued that",
+      "alvo_pt": "pode-se argumentar que",
+      "conceito": "being too risk-averse hurts: -s da 3ª pessoa. risk-averse = avesso a riscos.",
+      "blocos": [
+        4,
+        9
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5f5ba0",
+      "quem": "voce",
+      "cod": "No one would dispute that security has to be our top priority this year.",
+      "dica": "Ninguém discordaria de que a segurança tem que ser a nossa prioridade número um este ano.",
+      "img": "🔒🥇📅",
+      "alvo": "No one would dispute that",
+      "alvo_pt": "Ninguém discordaria de que",
+      "conceito": "dispute that, sem preposição (não: dispute about that).",
+      "var": [
+        {
+          "em": "No one",
+          "aceita": [
+            "Nobody"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "about"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-04cf36",
+      "quem": "diretora",
+      "contexto": "f-5f5ba0",
+      "cod": "Agreed, but growth is still our top priority.",
+      "dica": "Concordo, mas o crescimento ainda é a nossa prioridade número um.",
+      "img": "🌱🥇📈",
+      "alvo": "top priority",
+      "alvo_pt": "prioridade número um",
+      "conceito": "top priority = prioridade número um. growth, sem artigo: crescimento em geral.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0a3821",
+      "quem": "voce",
+      "contexto": "f-04cf36",
+      "cod": "It's fair to say that both matter. The question is how to balance them.",
+      "dica": "É justo dizer que as duas coisas importam. A questão é como equilibrar as duas.",
+      "img": "⚖️🤝🔒",
+      "alvo": "It's fair to say that",
+      "alvo_pt": "É justo dizer que",
+      "conceito": "It's fair to say that = é justo dizer que: um balanço honesto, sem exagero.",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f5f8b4",
+      "quem": "voce",
+      "cod": "Honestly, it's fair to say that the last two releases didn't go as planned.",
+      "dica": "Sinceramente, é justo dizer que as duas últimas releases não saíram como planejado.",
+      "img": "📦📦😬",
+      "alvo": "it's fair to say that",
+      "alvo_pt": "é justo dizer que",
+      "conceito": "didn't go as planned = não saíram como planejado (did + not + verbo base). A release, no feminino.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d93899",
+      "quem": "voce",
+      "cod": "No one would dispute that the pilot was a success.",
+      "dica": "Ninguém discordaria de que o piloto foi um sucesso.",
+      "img": "🧪🏆👏",
+      "alvo": "No one would dispute that",
+      "alvo_pt": "Ninguém discordaria de que",
+      "conceito": "No one would dispute = ninguém discordaria: would dá o tom hipotético e educado.",
+      "var": [
+        {
+          "em": "No one",
+          "aceita": [
+            "Nobody"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d56868",
+      "quem": "voce",
+      "cod": "So I'd make stability our top priority until June.",
+      "dica": "Então eu faria da estabilidade a nossa prioridade número um até junho.",
+      "img": "🛠️🥇🗓️",
+      "alvo": "top priority",
+      "alvo_pt": "prioridade número um",
+      "conceito": "make X our top priority = fazer de X a nossa prioridade número um.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

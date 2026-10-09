@@ -26,6 +26,15 @@ class TraducaoCard extends StatelessWidget {
   final VoidCallback? onNaoSei;
   final VoidCallback? onAlternarAudio;
 
+  /// A voz automática fala devagar (o padrão) — caixinha "voz devagar".
+  final bool vozLenta;
+  final VoidCallback? onAlternarVozLenta;
+
+  /// 👁 como chave: ligado, o inglês fica à vista em TODAS as frases (não
+  /// só nesta). Sem a chave, o 👁 é o "não sei" desta frase ([onNaoSei]).
+  final bool verFrases;
+  final VoidCallback? onAlternarVerFrases;
+
   /// Quem disse a fala do [Trecho.contexto] (achado na lição), se souber.
   final String quemDoContexto;
 
@@ -44,6 +53,10 @@ class TraducaoCard extends StatelessWidget {
     this.onDica,
     this.onNaoSei,
     this.onAlternarAudio,
+    this.vozLenta = true,
+    this.onAlternarVozLenta,
+    this.verFrases = false,
+    this.onAlternarVerFrases,
     this.quemDoContexto = '',
     this.contextoEmPt = false,
   });
@@ -59,7 +72,15 @@ class TraducaoCard extends StatelessWidget {
             icone: Icons.lightbulb_outline_rounded,
             dica: 'Dica: revela a palavra (Tab = uma letra, Tab Tab = a palavra)',
             onTap: onDica!),
-      if (onNaoSei != null)
+      if (onAlternarVerFrases != null)
+        _Botao(
+            icone: verFrases ? Icons.visibility_rounded : Icons.visibility_outlined,
+            dica: verFrases
+                ? 'Frases à vista em todas as frases — toque para esconder de novo'
+                : 'Mostrar o inglês em todas as frases (Esc = não sei só nesta)',
+            ativo: verFrases,
+            onTap: onAlternarVerFrases!)
+      else if (onNaoSei != null)
         _Botao(icone: Icons.visibility_outlined, dica: 'Não sei: mostra a frase (Esc)', onTap: onNaoSei!),
     ]);
     return Container(
@@ -152,25 +173,43 @@ class TraducaoCard extends StatelessWidget {
                 style: Mixart.ui(size: 10.5, color: Mixart.textFaint)),
           ),
         ],
-        if (onAlternarAudio != null) ...[
-          const SizedBox(height: 8),
+        // a gravação de nativo que o 🔊 toca (a licença exige o crédito)
+        if (_creditoDaVoz(trecho.audioCredito) case final voz?) ...[
+          const SizedBox(height: 4),
           InkWell(
-            onTap: onAlternarAudio,
+            onTap: () => abrirUrl(urlDaGravacao(trecho.audio)),
             borderRadius: BorderRadius.circular(6),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 2),
-              child: Row(mainAxisSize: MainAxisSize.min, children: [
-                Icon(audioAuto ? Icons.check_box_rounded : Icons.check_box_outline_blank_rounded,
-                    size: 15, color: Mixart.textMuted),
-                const SizedBox(width: 6),
-                Text('áudio automático', style: Mixart.ui(size: 11.5, color: Mixart.textMuted)),
-              ]),
-            ),
+            child: Text('🎙️ voz nativa: $voz', style: Mixart.ui(size: 10.5, color: Mixart.textFaint)),
           ),
+        ],
+        if (onAlternarAudio != null || onAlternarVozLenta != null) ...[
+          const SizedBox(height: 8),
+          Wrap(spacing: 16, runSpacing: 4, children: [
+            if (onAlternarAudio != null) _Caixinha(marcada: audioAuto, rotulo: 'áudio automático', onTap: onAlternarAudio!),
+            if (onAlternarVozLenta != null)
+              _Caixinha(marcada: vozLenta, rotulo: 'voz devagar', onTap: onAlternarVozLenta!),
+          ]),
         ],
       ]),
     );
   }
+}
+
+/// "CK · CC BY-NC-ND 3.0" → "CK (CC BY-NC-ND 3.0), Tatoeba"; null = sem gravação.
+String? _creditoDaVoz(String credito) {
+  if (credito.isEmpty) return null;
+  final i = credito.indexOf(' · ');
+  if (i < 0) return '$credito, Tatoeba';
+  return '${credito.substring(0, i)} (${credito.substring(i + 3)}), Tatoeba';
+}
+
+/// A página da frase gravada no Tatoeba (o mp3 se chama
+/// `<id da frase>-<id da gravação>.mp3`; o formato antigo, sem a gravação,
+/// também vale).
+@visibleForTesting
+String urlDaGravacao(String asset) {
+  final id = RegExp(r'(\d+)(?:-\d+)?\.mp3$').firstMatch(asset)?.group(1);
+  return id == null ? 'https://tatoeba.org' : 'https://tatoeba.org/pt-br/sentences/show/$id';
 }
 
 /// "Ana: " antes da fala anterior (vazio se não souber quem disse).
@@ -213,22 +252,50 @@ class _Botao extends StatelessWidget {
   final IconData icone;
   final String dica;
   final VoidCallback onTap;
-  const _Botao({required this.icone, required this.dica, required this.onTap});
+
+  /// Chave ligada (o 👁 das frases à vista): botão cheio.
+  final bool ativo;
+  const _Botao({required this.icone, required this.dica, required this.onTap, this.ativo = false});
 
   @override
   Widget build(BuildContext context) => Tooltip(
         message: dica,
         child: Material(
-          color: Mixart.surfaceHi,
+          color: ativo ? Mixart.brand : Mixart.surfaceHi,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(999),
-            side: BorderSide(color: Mixart.border),
+            side: BorderSide(color: ativo ? Mixart.brand : Mixart.border),
           ),
           child: InkWell(
             customBorder: const CircleBorder(),
             onTap: onTap,
-            child: Padding(padding: const EdgeInsets.all(8), child: Icon(icone, size: 18, color: Mixart.brand)),
+            child: Padding(
+                padding: const EdgeInsets.all(8),
+                child: Icon(icone, size: 18, color: ativo ? Mixart.onBrand : Mixart.brand)),
           ),
+        ),
+      );
+}
+
+/// "☑ áudio automático" / "☑ voz devagar".
+class _Caixinha extends StatelessWidget {
+  final bool marcada;
+  final String rotulo;
+  final VoidCallback onTap;
+  const _Caixinha({required this.marcada, required this.rotulo, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(6),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 2),
+          child: Row(mainAxisSize: MainAxisSize.min, children: [
+            Icon(marcada ? Icons.check_box_rounded : Icons.check_box_outline_blank_rounded,
+                size: 15, color: Mixart.textMuted),
+            const SizedBox(width: 6),
+            Text(rotulo, style: Mixart.ui(size: 11.5, color: Mixart.textMuted)),
+          ]),
         ),
       );
 }

@@ -1,0 +1,251 @@
+{
+  "id": "conceder-rebater.dito-isso",
+  "trilha": "conceder-rebater",
+  "nome": "Dito isso...",
+  "emoji": "↪️",
+  "cena": "Na reunião com a Sarah e a diretora de engenharia, você defende a nova arquitetura pesando custos e benefícios.",
+  "resumo": "Conceder e virar o jogo: That said, ... (ou Having said that, ...), pensando lá na frente: in the long run.",
+  "fechamento": false,
+  "novos": [
+    "that said",
+    "transition",
+    "having said that",
+    "in the long run"
+  ],
+  "apoio": [
+    "outweigh",
+    "best-case scenario (C1)",
+    "recommend + -ing (B2)",
+    "launch day (C1)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Dito isso, ... = That said, ..."
+    },
+    {
+      "t": "p",
+      "c": "Depois de conceder um custo, **That said,** vira o jogo e abre a frase que defende a sua posição. **Having said that,** é a forma longa, com o mesmo sentido: as duas são aceitas."
+    },
+    {
+      "t": "warn",
+      "c": "Vírgula depois e frase nova: That said, it'll pay off. (não: That said that...). E eventually = no fim, com o tempo (não: eventualmente)."
+    },
+    {
+      "t": "tip",
+      "c": "in the long run = lá na frente, com o tempo (fala). Em texto, in the long term = a longo prazo."
+    },
+    {
+      "t": "ex",
+      "c": "The migration will cost us a month. That said, it'll pay off.\nA migração vai nos custar um mês. Dito isso, vai compensar."
+    }
+  ],
+  "imagem": "📊⚖️💬",
+  "visualizacao": "Você está na sala de reunião com a Sarah e a diretora de engenharia. No telão, os custos de um lado e os benefícios do outro; você respira fundo e começa a defender a proposta.",
+  "foto_busca": "business meeting cost benefit presentation",
+  "trechos": [
+    {
+      "id": "f-37f9b3",
+      "quem": "voce",
+      "cod": "The migration will cost us a month. That said, it'll pay off.",
+      "dica": "A migração vai nos custar um mês. Dito isso, vai compensar.",
+      "img": "⏳💸📈",
+      "alvo": "That said",
+      "alvo_pt": "Dito isso",
+      "conceito": "That said, = dito isso: você concede o custo e, na frase seguinte, defende a ideia. pay off = compensar.",
+      "var": [
+        {
+          "em": "That said",
+          "aceita": [
+            "Having said that"
+          ]
+        },
+        {
+          "em": "it'll",
+          "aceita": [
+            "it will"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fbdd2c",
+      "quem": "sarah",
+      "contexto": "f-37f9b3",
+      "cod": "A month is a long time. What do we get out of it in the long run?",
+      "dica": "Um mês é muito tempo. O que a gente ganha com isso lá na frente?",
+      "img": "📅🤔🔭",
+      "alvo": "in the long run",
+      "alvo_pt": "lá na frente",
+      "conceito": "in the long run = lá na frente, com o tempo (fala); in the long term é mais de texto.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "term"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9d2504",
+      "quem": "voce",
+      "contexto": "f-fbdd2c",
+      "cod": "In the long run, we'll have a lot less technical debt.",
+      "dica": "Lá na frente, vamos ter muito menos dívida técnica.",
+      "img": "🔭📉🧾",
+      "alvo": "In the long run",
+      "alvo_pt": "Lá na frente",
+      "conceito": "technical debt = dívida técnica. a lot less = muito menos.",
+      "var": [
+        {
+          "em": "we'll",
+          "aceita": [
+            "we will"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a7db67",
+      "quem": "sarah",
+      "cod": "I like the idea. Having said that, I'm worried about launch day.",
+      "dica": "Gosto da ideia. Dito isso, estou preocupada com o dia do lançamento.",
+      "img": "👍😟🚀",
+      "alvo": "Having said that",
+      "alvo_pt": "Dito isso",
+      "conceito": "Having said that = that said, na forma longa. worried about: a preposição é about (BR53).",
+      "var": [
+        {
+          "em": "Having said that",
+          "aceita": [
+            "That said"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3fd819",
+      "quem": "voce",
+      "contexto": "f-a7db67",
+      "cod": "That's why I'd recommend making the transition in small steps.",
+      "dica": "Por isso eu recomendaria fazer a transição em pequenas etapas.",
+      "img": "🪜👣🔄",
+      "alvo": "transition",
+      "alvo_pt": "transição",
+      "conceito": "make the transition = fazer a transição. recommend + -ing: I'd recommend making (não: recommend to make).",
+      "var": [
+        {
+          "em": "making",
+          "aceita": [
+            "doing"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to make",
+        "to do"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4ff550",
+      "quem": "diretora",
+      "contexto": "f-3fd819",
+      "cod": "How long would the transition take, in the best-case scenario?",
+      "dica": "Quanto tempo a transição levaria, no melhor cenário?",
+      "img": "⏱️🔄🌤️",
+      "alvo": "transition",
+      "alvo_pt": "transição",
+      "conceito": "in the best-case scenario = no melhor cenário.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b259b5",
+      "quem": "voce",
+      "contexto": "f-4ff550",
+      "cod": "About three months. Having said that, things rarely go as planned.",
+      "dica": "Uns três meses. Dito isso, as coisas raramente saem como planejado.",
+      "img": "🗓️🤷📋",
+      "alvo": "Having said that",
+      "alvo_pt": "Dito isso",
+      "conceito": "go as planned = sair como planejado. rarely já é negativo: sem not.",
+      "var": [
+        {
+          "em": "Having said that",
+          "aceita": [
+            "That said"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d35ace",
+      "quem": "voce",
+      "cod": "Eventually, the new services will pay for themselves. That said, it won't happen overnight.",
+      "dica": "No fim, os serviços novos vão se pagar. Dito isso, não vai acontecer da noite para o dia.",
+      "img": "🏁💰🌙",
+      "alvo": "That said",
+      "alvo_pt": "Dito isso",
+      "conceito": "eventually = no fim, com o tempo (não: às vezes). overnight = da noite para o dia.",
+      "var": [
+        {
+          "em": "That said",
+          "aceita": [
+            "Having said that"
+          ]
+        },
+        {
+          "em": "won't",
+          "aceita": [
+            "will not"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "sometimes",
+        "occasionally"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

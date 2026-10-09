@@ -1,0 +1,213 @@
+{
+  "id": "pro-clientes-email-formal.comunicar-atrasos",
+  "trilha": "pro-clientes-email-formal",
+  "nome": "Comunicar atrasos",
+  "emoji": "⏳",
+  "cena": "A entrega do módulo de relatórios vai atrasar por causa de um fornecedor externo, e você escreve o aviso oficial ao cliente.",
+  "resumo": "Avisar um atraso por escrito: We regret to inform you..., due to..., the revised date, make every effort.",
+  "fechamento": false,
+  "novos": [
+    "we regret to inform you",
+    "third-party provider",
+    "revised",
+    "make every effort"
+  ],
+  "apoio": [
+    "due to",
+    "delivery date",
+    "behind schedule"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Dar a má notícia por escrito"
+    },
+    {
+      "t": "p",
+      "c": "**We regret to inform you that...** abre o aviso formal. Atraso sem culpado vira passiva: *the release has been delayed* (a release foi adiada). O motivo vem com **due to**, e a nova data com **revised**."
+    },
+    {
+      "t": "warn",
+      "c": "anticipate = prever (não: antecipar, que é bring forward). Prometa esforço sem prometer milagre: **We will make every effort to...**"
+    },
+    {
+      "t": "ex",
+      "c": "The revised delivery date is November 14.\nA data de entrega revisada é 14 de novembro."
+    }
+  ],
+  "imagem": "📦⏳📅",
+  "visualizacao": "O calendário na tela mostra a data de entrega riscada em vermelho. Você respira fundo, abre um e-mail novo e escolhe cada palavra com calma.",
+  "foto_busca": "calendar deadline office desk",
+  "trechos": [
+    {
+      "id": "f-f1e5bf",
+      "quem": "voce",
+      "cod": "We regret to inform you that the release has been delayed.",
+      "dica": "Lamentamos informar que a release foi adiada.",
+      "img": "📦⏳",
+      "alvo": "We regret to inform you",
+      "alvo_pt": "Lamentamos informar",
+      "lit": "[lit.: lamentamos informar a você que]",
+      "conceito": "Atraso sem culpado vira passiva: has been delayed (a release foi adiada).",
+      "var": [
+        {
+          "em": "has been delayed",
+          "aceita": [
+            "was delayed"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR58"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-efbe96",
+      "quem": "voce",
+      "cod": "We regret to inform you that the reports module will not be ready by Friday.",
+      "dica": "Lamentamos informar que o módulo de relatórios não vai ficar pronto até sexta.",
+      "img": "📊🚧",
+      "alvo": "We regret to inform you",
+      "alvo_pt": "Lamentamos informar",
+      "conceito": "ready by Friday = pronto até sexta (prazo). will not, por extenso no e-mail formal.",
+      "var": [
+        {
+          "em": "will not",
+          "aceita": [
+            "won't"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR24"
+      ],
+      "variacao_de": "f-f1e5bf",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c039f4",
+      "quem": "voce",
+      "cod": "The delay is due to an issue with a third-party provider.",
+      "dica": "O atraso se deve a um problema com um fornecedor terceirizado.",
+      "img": "🏢🔗",
+      "alvo": "third-party provider",
+      "alvo_pt": "fornecedor terceirizado",
+      "conceito": "third-party provider = fornecedor terceirizado. is due to = se deve a.",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "outsourced"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-64a12f",
+      "quem": "voce",
+      "cod": "Our third-party provider had an unforeseen outage last week.",
+      "dica": "O nosso fornecedor terceirizado teve uma queda imprevista na semana passada.",
+      "img": "🔌⚡",
+      "alvo": "third-party provider",
+      "alvo_pt": "fornecedor terceirizado",
+      "conceito": "unforeseen = imprevisto. last week pede o passado simples (had).",
+      "registro": "formal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "has had"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6531a3",
+      "quem": "voce",
+      "cod": "The revised delivery date is November 14.",
+      "dica": "A data de entrega revisada é 14 de novembro.",
+      "img": "📅✏️",
+      "alvo": "revised",
+      "alvo_pt": "revisada",
+      "conceito": "revised = revisado. Na escrita, a data vai com dígito: November 14.",
+      "registro": "formal",
+      "armadilhas": [
+        "new"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a0f8b5",
+      "quem": "voce",
+      "cod": "Based on the revised plan, we anticipate a two-week delay.",
+      "dica": "Com base no plano revisado, prevemos um atraso de duas semanas.",
+      "img": "🗺️⏱️",
+      "alvo": "revised",
+      "alvo_pt": "revisado",
+      "conceito": "anticipate = prever (antecipar = bring forward). two-week delay: o número vira adjetivo, sem s.",
+      "var": [
+        {
+          "em": "anticipate",
+          "aceita": [
+            "expect"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "two-weeks",
+        "predict"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ace4a5",
+      "quem": "voce",
+      "cod": "Our team will make every effort to deliver ahead of schedule.",
+      "dica": "A nossa equipe fará todo o possível para entregar antes do previsto.",
+      "img": "💪⏩",
+      "alvo": "make every effort",
+      "alvo_pt": "todo o possível",
+      "conceito": "make every effort = fazer todo o possível, no registro formal. ahead of schedule = antes do previsto.",
+      "registro": "formal",
+      "armadilhas": [
+        "do every",
+        "all the possible"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        7
+      ]
+    },
+    {
+      "id": "f-3ced6b",
+      "quem": "voce",
+      "cod": "In the meantime, we will make every effort to minimize the impact.",
+      "dica": "Enquanto isso, faremos todo o possível para minimizar o impacto.",
+      "img": "⏳🛡️",
+      "alvo": "make every effort",
+      "alvo_pt": "todo o possível",
+      "conceito": "In the meantime = enquanto isso. minimize the impact = minimizar o impacto.",
+      "blocos": [
+        3
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

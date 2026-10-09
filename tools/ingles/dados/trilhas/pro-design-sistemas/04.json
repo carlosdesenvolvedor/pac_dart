@@ -1,0 +1,276 @@
+{
+  "id": "pro-design-sistemas.filas-e-pontos-de-falha",
+  "trilha": "pro-design-sistemas",
+  "nome": "Filas e pontos de falha",
+  "emoji": "📬",
+  "cena": "Na reunião de arquitetura do time, Mike quer mandar os recibos direto da API de pedidos, e você sugere uma fila com um worker.",
+  "resumo": "Assíncrono e resiliente: worker, handler, idempotent e single point of failure.",
+  "fechamento": false,
+  "novos": [
+    "worker",
+    "handler",
+    "idempotent",
+    "single point of failure"
+  ],
+  "apoio": [
+    "queue",
+    "retry",
+    "go down"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fila, worker e ponto de falha"
+    },
+    {
+      "t": "p",
+      "c": "Trabalho lento sai da requisição: vai para uma **queue**, e um **worker** processa. O **handler** de cada mensagem precisa ser **idempotent**, porque a mesma mensagem pode chegar mais de uma vez."
+    },
+    {
+      "t": "warn",
+      "c": "Uma peça sem cópia é um single point of failure: se ela cai, tudo cai. Pergunte sempre: What happens if this service goes down?"
+    },
+    {
+      "t": "ex",
+      "c": "The handler needs to be idempotent.\nO handler precisa ser idempotente."
+    }
+  ],
+  "imagem": "📬⚙️🔁",
+  "visualizacao": "Sala de reunião virtual, cinco câmeras abertas. Mike desenha uma seta direta da API para o e-mail; você pede a palavra e desenha uma fila no meio.",
+  "foto_busca": "team architecture meeting video call",
+  "trechos": [
+    {
+      "id": "f-42f361",
+      "quem": "voce",
+      "contexto": "Let's just send the receipts straight from the orders API.",
+      "cod": "I'd rather put them on a queue and let a worker send them.",
+      "dica": "Eu preferiria colocar numa fila e deixar um worker mandar.",
+      "img": "📥⚙️",
+      "alvo": "worker",
+      "alvo_pt": "worker",
+      "conceito": "worker = processo que pega tarefas da fila e executa em segundo plano.",
+      "var": [
+        {
+          "em": "I'd rather put",
+          "aceita": [
+            "I'd prefer to put",
+            "I would rather put"
+          ]
+        },
+        {
+          "em": "on a queue",
+          "aceita": [
+            "in a queue"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "let a worker to"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c94a8",
+      "quem": "mike",
+      "contexto": "f-42f361",
+      "cod": "What does the worker do if the email server is down?",
+      "dica": "O que o worker faz se o servidor de e-mail estiver fora do ar?",
+      "img": "⚙️📧❌",
+      "alvo": "worker",
+      "alvo_pt": "worker",
+      "conceito": "Pergunta com does: What does the worker do? (não: What the worker does?).",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR06",
+        "BR28"
+      ],
+      "armadilhas": [
+        "does the worker does",
+        "will be"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-164b6f",
+      "quem": "voce",
+      "contexto": "f-4c94a8",
+      "cod": "The handler retries three times, then moves the message to a dead-letter queue.",
+      "dica": "O handler tenta de novo três vezes e depois manda a mensagem para uma dead-letter queue.",
+      "img": "🔁🪦",
+      "alvo": "handler",
+      "alvo_pt": "handler",
+      "conceito": "handler = a função que trata cada mensagem; 3ª pessoa: retries, moves (BR02).",
+      "var": [
+        {
+          "em": "then moves",
+          "aceita": [
+            "and then moves"
+          ]
+        },
+        {
+          "em": "moves",
+          "aceita": [
+            "sends"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "retry",
+        "move"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e8a1a6",
+      "quem": "mike",
+      "contexto": "f-164b6f",
+      "cod": "So the receipt handler is separate from the orders API?",
+      "dica": "Então o handler dos recibos fica separado da API de pedidos?",
+      "img": "🧾🔌",
+      "alvo": "handler",
+      "alvo_pt": "handler",
+      "conceito": "receipt handler, orders API: o qualificador vem antes (BR24).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "handler of receipts",
+        "separated of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d63f0a",
+      "quem": "voce",
+      "cod": "Messages can be delivered more than once, so the handler needs to be idempotent.",
+      "dica": "As mensagens podem ser entregues mais de uma vez, então o handler precisa ser idempotente.",
+      "img": "✉️✉️🛡️",
+      "alvo": "idempotent",
+      "alvo_pt": "idempotente",
+      "conceito": "idempotent = rodar duas vezes dá o mesmo resultado que rodar uma.",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "need",
+        "idempotente"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bd6d5a",
+      "quem": "mike",
+      "contexto": "f-d63f0a",
+      "cod": "So idempotent means a customer never gets two receipts, right?",
+      "dica": "Então idempotente quer dizer que o cliente nunca recebe dois recibos, certo?",
+      "img": "🧾🚫",
+      "alvo": "idempotent",
+      "alvo_pt": "idempotente",
+      "conceito": "quer dizer = means; 3ª pessoa: means, gets (BR02).",
+      "var": [
+        {
+          "em": "means a",
+          "aceita": [
+            "means that a"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "want to say",
+        "mean"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e4b89e",
+      "quem": "voce",
+      "cod": "Also, running just one worker would be a single point of failure.",
+      "dica": "Além disso, rodar um worker só seria um ponto único de falha.",
+      "img": "☝️💥",
+      "alvo": "single point of failure",
+      "alvo_pt": "ponto único de falha",
+      "conceito": "single point of failure = peça que, se cair, derruba tudo.",
+      "var": [
+        {
+          "em": "just one worker",
+          "aceita": [
+            "only one worker",
+            "one worker",
+            "a single worker"
+          ]
+        }
+      ],
+      "blocos": [
+        1
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "unique point",
+        "fail"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-419424",
+      "quem": "mike",
+      "contexto": "f-e4b89e",
+      "cod": "Then let's run two workers so there's no single point of failure.",
+      "dica": "Então vamos rodar dois workers para não ter um ponto único de falha.",
+      "img": "👯⚙️",
+      "alvo": "single point of failure",
+      "alvo_pt": "ponto único de falha",
+      "conceito": "so (that) there's no = para não ter (there is, não have).",
+      "var": [
+        {
+          "em": "so there's no",
+          "aceita": [
+            "so there is no",
+            "so that there's no"
+          ]
+        },
+        {
+          "em": "there's no",
+          "aceita": [
+            "we don't have a",
+            "there isn't a"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "unique"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

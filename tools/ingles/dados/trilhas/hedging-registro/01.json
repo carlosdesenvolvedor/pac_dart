@@ -1,0 +1,217 @@
+{
+  "id": "hedging-registro.umas-trinta-pessoas",
+  "trilha": "hedging-registro",
+  "nome": "Umas trinta pessoas",
+  "emoji": "🔢",
+  "cena": "Você organizou um meetup de devs em Chicago e combina números e horários com o Ben e a Sarah.",
+  "resumo": "Dar números, prazos e horários aproximados: thirty or so, give or take, six-ish.",
+  "fechamento": false,
+  "novos": [
+    "or so",
+    "give or take",
+    "meetup",
+    "-ish"
+  ],
+  "apoio": [
+    "roughly"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Números sem cravar"
+    },
+    {
+      "t": "p",
+      "c": "**thirty or so** = trinta, por aí (o or so vem depois do número). **forty minutes, give or take five** = cinco a mais ou a menos. **seven-ish** = tipo sete, bem informal. No texto formal, **roughly** (mais ou menos)."
+    },
+    {
+      "t": "warn",
+      "c": "There were thirty or so people (não: Had thirty or so people). O hífen faz parte de seven-ish."
+    },
+    {
+      "t": "ex",
+      "c": "There were thirty or so people at the meetup.\nTinha trinta pessoas, por aí, no meetup."
+    }
+  ],
+  "imagem": "🍕👥🎤",
+  "visualizacao": "Cadeiras ainda espalhadas, caixas de pizza vazias no canto. Você responde mensagens no celular enquanto ajuda a arrumar a sala do meetup.",
+  "foto_busca": "developer meetup audience talk",
+  "trechos": [
+    {
+      "id": "f-0f4a5b",
+      "quem": "ben",
+      "cod": "So, how was the meetup last night?",
+      "dica": "E aí, como foi o meetup ontem à noite?",
+      "img": "🌙🎤❓",
+      "alvo": "meetup",
+      "alvo_pt": "meetup",
+      "conceito": "meetup = encontro informal de uma comunidade (devs, por exemplo).",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-af2208",
+      "quem": "voce",
+      "contexto": "f-0f4a5b",
+      "cod": "Really good. There were thirty or so people, more than I expected.",
+      "dica": "Muito bom. Tinha trinta pessoas, por aí, mais do que eu esperava.",
+      "img": "👥😃📈",
+      "alvo": "or so",
+      "alvo_pt": "por aí",
+      "conceito": "número + or so = número, por aí. Tinha = there were (não: had).",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "had"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "thirty or so people",
+          "aceita": [
+            "thirty people or so"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-26e7c6",
+      "quem": "voce",
+      "cod": "My talk lasted forty minutes, give or take five.",
+      "dica": "Minha palestra durou quarenta minutos, cinco a mais ou a menos.",
+      "img": "🎤⏱️",
+      "alvo": "give or take",
+      "alvo_pt": "a mais ou a menos",
+      "conceito": "give or take + quantidade = tantos a mais ou a menos.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "lasted",
+          "aceita": [
+            "took",
+            "was"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e20a3d",
+      "quem": "sarah",
+      "cod": "I've heard great things about the meetup. Let's do another one.",
+      "dica": "Ouvi falar muito bem do meetup. Vamos fazer outro.",
+      "img": "👂👍🔁",
+      "alvo": "meetup",
+      "alvo_pt": "meetup",
+      "conceito": "hear great things about = ouvir falar muito bem de.",
+      "var": [
+        {
+          "em": "I've heard",
+          "aceita": [
+            "I heard"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eb21c6",
+      "quem": "voce",
+      "contexto": "f-e20a3d",
+      "cod": "Sure. This office fits forty or so people.",
+      "dica": "Claro. Este escritório comporta quarenta pessoas, por aí.",
+      "img": "🏢🪑👥",
+      "alvo": "or so",
+      "alvo_pt": "por aí",
+      "conceito": "fit = caber, comportar: the office fits forty people.",
+      "var": [
+        {
+          "em": "fits",
+          "aceita": [
+            "holds"
+          ]
+        },
+        {
+          "em": "forty or so people",
+          "aceita": [
+            "forty people or so"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "fit"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e50996",
+      "quem": "sarah",
+      "contexto": "f-eb21c6",
+      "cod": "Great. Let's aim for mid-May, give or take a week.",
+      "dica": "Ótimo. Vamos mirar em meados de maio, uma semana a mais ou a menos.",
+      "img": "🎯📅",
+      "alvo": "give or take",
+      "alvo_pt": "a mais ou a menos",
+      "conceito": "aim for = mirar em; mid-May = meados de maio.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6de9ce",
+      "quem": "ben",
+      "cod": "Want to grab dinner tonight? I'm free at seven-ish.",
+      "dica": "Quer jantar hoje à noite? Estou livre tipo sete.",
+      "img": "🍽️🕖🙂",
+      "alvo": "seven-ish",
+      "alvo_pt": "tipo sete",
+      "conceito": "-ish = tipo, mais ou menos: seven-ish = tipo sete (around seven = lá pelas sete).",
+      "var": [
+        {
+          "em": "grab",
+          "aceita": [
+            "have",
+            "get"
+          ]
+        },
+        {
+          "em": "Want to",
+          "aceita": [
+            "Do you want to"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fc34c4",
+      "quem": "voce",
+      "contexto": "f-6de9ce",
+      "cod": "Let's meet at eight-ish, after my last call.",
+      "dica": "Vamos nos ver tipo oito, depois da minha última chamada.",
+      "img": "🕗📞✅",
+      "alvo": "eight-ish",
+      "alvo_pt": "tipo oito",
+      "conceito": "O hífen faz parte da palavra: eight-ish.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

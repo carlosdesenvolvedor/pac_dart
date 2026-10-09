@@ -1,0 +1,187 @@
+{
+  "id": "hedging-registro.cena-final-estimativa-e-relatorio",
+  "trilha": "hedging-registro",
+  "nome": "Cena final: estimativa e relatório",
+  "emoji": "🎬",
+  "cena": "Você conversa com a Sarah sobre os números de uma pesquisa com usuários e depois escreve a conclusão formal do relatório.",
+  "resumo": "Fechamento: linguagem vaga na conversa e hedging no texto, na mesma cena.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Falar vago, escrever com cautela"
+    },
+    {
+      "t": "p",
+      "c": "Na conversa: **two hundred or so**, **Friday-ish**, **I'd say**. No relatório: **It would seem that**, **arguably**, forma plena e incontáveis no singular (**the feedback is**)."
+    },
+    {
+      "t": "warn",
+      "c": "feedback, evidence e information não levam -s. Atualmente = currently (não: actually)."
+    }
+  ],
+  "imagem": "📋🗣️📝",
+  "visualizacao": "A planilha com as respostas da pesquisa está aberta. Você conversa com a Sarah por vídeo e, quando a chamada acaba, abre o relatório e muda o tom.",
+  "foto_busca": "user survey results spreadsheet",
+  "trechos": [
+    {
+      "id": "f-db6b71",
+      "quem": "sarah",
+      "cod": "Did a lot of users answer the survey?",
+      "dica": "Muitos usuários responderam à pesquisa?",
+      "img": "📋👥❓",
+      "conceito": "Pergunta no passado: Did + verbo base (answer, não answered).",
+      "var": [
+        {
+          "em": "a lot of",
+          "aceita": [
+            "many",
+            "lots of"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "answered"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4e5226",
+      "quem": "voce",
+      "contexto": "f-db6b71",
+      "cod": "We got two hundred or so responses.",
+      "dica": "Recebemos duzentas respostas, por aí.",
+      "img": "📬👥",
+      "alvo": "or so",
+      "alvo_pt": "por aí",
+      "conceito": "or so depois do número: two hundred or so.",
+      "var": [
+        {
+          "em": "got",
+          "aceita": [
+            "received"
+          ]
+        },
+        {
+          "em": "two hundred or so responses",
+          "aceita": [
+            "two hundred responses or so"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5717a6",
+      "quem": "voce",
+      "contexto": "f-4e5226",
+      "cod": "That's arguably enough for a first study.",
+      "dica": "Dá para dizer que é suficiente para um primeiro estudo.",
+      "img": "👌🔬",
+      "alvo": "arguably",
+      "alvo_pt": "Dá para dizer que",
+      "conceito": "enough for = suficiente para.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "That's",
+          "aceita": [
+            "It's"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c396c1",
+      "quem": "sarah",
+      "cod": "Users tend to say what they think we want to hear, though.",
+      "dica": "Mas os usuários tendem a dizer o que acham que a gente quer ouvir.",
+      "img": "🗣️👂🎭",
+      "alvo": "tend to",
+      "alvo_pt": "tendem a",
+      "conceito": "though no fim da frase = mas, só que.",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "contexto": "f-5717a6"
+    },
+    {
+      "id": "f-25c72d",
+      "quem": "voce",
+      "contexto": "f-c396c1",
+      "cod": "True. I'd say that's the main caveat.",
+      "dica": "É verdade. Eu diria que essa é a principal ressalva.",
+      "img": "☝️⚠️",
+      "alvo": "I'd say",
+      "alvo_pt": "Eu diria",
+      "conceito": "caveat = ressalva, um porém.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fb3add",
+      "quem": "sarah",
+      "cod": "When do you want to send the final report? Friday-ish?",
+      "dica": "Quando você quer mandar o relatório final? Tipo sexta?",
+      "img": "📤📅🤷",
+      "alvo": "Friday-ish",
+      "alvo_pt": "Tipo sexta",
+      "conceito": "-ish também vale para dias: Friday-ish = tipo sexta.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c4bcc0",
+      "quem": "voce",
+      "cod": "It would seem that most users prefer the simpler version.",
+      "dica": "Ao que parece, a maioria dos usuários prefere a versão mais simples.",
+      "img": "📝🙂🔽",
+      "alvo": "It would seem that",
+      "alvo_pt": "Ao que parece",
+      "conceito": "most users = a maioria dos usuários (não: the most of the users).",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "the",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a2673a",
+      "quem": "voce",
+      "cod": "However, the feedback is limited, and we are currently planning a second study.",
+      "dica": "No entanto, o feedback é limitado, e atualmente estamos planejando um segundo estudo.",
+      "img": "📄🔍🔁",
+      "alvo": "currently",
+      "alvo_pt": "atualmente",
+      "conceito": "feedback é incontável (não: feedbacks); currently = atualmente (não: actually).",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22",
+        "BR56"
+      ],
+      "armadilhas": [
+        "feedbacks",
+        "actually"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

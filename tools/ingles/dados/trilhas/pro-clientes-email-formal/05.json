@@ -1,0 +1,200 @@
+{
+  "id": "pro-clientes-email-formal.cena-o-cliente-irritado",
+  "trilha": "pro-clientes-email-formal",
+  "nome": "Cena: o cliente irritado",
+  "emoji": "🎬",
+  "cena": "O mesmo cliente volta a escrever, ainda irritado, porque a correção prometida não chegou, e você manda a resposta final da semana.",
+  "resumo": "O e-mail difícil inteiro, de memória: agradecer, pedir desculpas, dar a notícia, explicar, propor data e fechar.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Cena: a resposta final da semana"
+    },
+    {
+      "t": "p",
+      "c": "Junte tudo: agradeça a paciência, peça desculpas, dê a notícia com **We regret to inform you**, explique com **due to**, proponha a data **revised**, ofereça uma alternativa e feche com **Should the issue happen again...** e **Kind regards**."
+    },
+    {
+      "t": "warn",
+      "c": "Atraso e correção sem culpado vão na passiva: the release has been delayed. Quem recebe a explicação vem com to: explain it to you (não: explain you)."
+    },
+    {
+      "t": "ex",
+      "c": "Should the issue happen again, please reply.\nCaso o problema volte a acontecer, por favor, responda."
+    }
+  ],
+  "imagem": "😠📨🎬",
+  "visualizacao": "Sexta à tarde, chega mais um e-mail irritado do cliente. Você abre a resposta, lembra cada fórmula da semana e escreve devagar, frase por frase.",
+  "foto_busca": "office worker replying email afternoon",
+  "trechos": [
+    {
+      "id": "f-c89092",
+      "quem": "cliente",
+      "cod": "The fix you promised last week still hasn't arrived.",
+      "dica": "A correção que vocês prometeram na semana passada ainda não chegou.",
+      "img": "📭😠",
+      "alvo": "still hasn't arrived",
+      "alvo_pt": "ainda não chegou",
+      "conceito": "ainda não chegou (até agora) = still hasn't arrived; last week fica com promised, no passado.",
+      "var": [
+        {
+          "em": "hasn't",
+          "aceita": [
+            "has not"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "didn't arrive yet",
+        "not arrived"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-86a392",
+      "quem": "voce",
+      "contexto": "f-c89092",
+      "cod": "Thank you for your patience, and we apologize for the delayed response.",
+      "dica": "Obrigado pela paciência, e pedimos desculpas pela demora na resposta.",
+      "pt_f": "Obrigada pela paciência, e pedimos desculpas pela demora na resposta.",
+      "img": "🙏⌛",
+      "alvo": "apologize for",
+      "alvo_pt": "pedimos desculpas",
+      "conceito": "the delayed response = a demora na resposta (o adjetivo vem antes).",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the delayed response",
+          "aceita": [
+            "our delayed response"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-225928",
+      "quem": "voce",
+      "cod": "We regret to inform you that the fix will not be ready this week.",
+      "dica": "Lamentamos informar que a correção não vai ficar pronta esta semana.",
+      "img": "🔧📆",
+      "alvo": "We regret to inform you",
+      "alvo_pt": "Lamentamos informar",
+      "var": [
+        {
+          "em": "will not",
+          "aceita": [
+            "won't"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-284dad",
+      "quem": "voce",
+      "cod": "This delay is due to an unexpected issue found during testing.",
+      "dica": "Esse atraso se deve a um problema inesperado encontrado durante os testes.",
+      "img": "🧪🐛",
+      "alvo": "due to",
+      "alvo_pt": "se deve a",
+      "conceito": "issue found during testing: passiva reduzida (= that was found).",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e29f48",
+      "quem": "voce",
+      "cod": "The revised delivery date is Wednesday, December 3.",
+      "dica": "A data de entrega revisada é quarta-feira, 3 de dezembro.",
+      "img": "📅✅",
+      "alvo": "revised",
+      "alvo_pt": "revisada",
+      "conceito": "Data americana na escrita: dia da semana, mês e número (December 3).",
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ee1929",
+      "quem": "voce",
+      "cod": "As an alternative, we can turn off the new export until then.",
+      "dica": "Como alternativa, podemos desligar a nova exportação até lá.",
+      "img": "🔀⏸️",
+      "alvo": "As an alternative",
+      "alvo_pt": "Como alternativa",
+      "conceito": "turn off = desligar (uma função); turn on = ligar. until then = até lá.",
+      "blocos": [
+        3
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-788a3f",
+      "quem": "voce",
+      "cod": "Should the issue happen again, please reply and I will escalate it.",
+      "dica": "Caso o problema volte a acontecer, por favor, responda e eu vou escalá-lo.",
+      "img": "🔁📞",
+      "alvo": "Should the issue happen again",
+      "alvo_pt": "Caso o problema volte a acontecer",
+      "conceito": "Should + sujeito + verbo = if, na escrita formal. escalate it: o inglês pede o objeto.",
+      "var": [
+        {
+          "em": "Should the issue happen",
+          "aceita": [
+            "If the issue happens"
+          ]
+        },
+        {
+          "em": "I will",
+          "aceita": [
+            "I'll"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-014e20",
+      "quem": "voce",
+      "cod": "We appreciate your understanding. Kind regards, {nome}.",
+      "dica": "Agradecemos a sua compreensão. Atenciosamente, {nome}.",
+      "img": "🤝✉️",
+      "alvo": "Kind regards",
+      "alvo_pt": "Atenciosamente",
+      "registro": "formal",
+      "bio": [
+        "nome"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

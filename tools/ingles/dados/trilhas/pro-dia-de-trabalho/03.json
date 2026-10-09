@@ -1,0 +1,191 @@
+{
+  "id": "pro-dia-de-trabalho.tarde-incidente-cliente-e-prazo",
+  "trilha": "pro-dia-de-trabalho",
+  "nome": "Tarde: incidente, cliente e prazo",
+  "emoji": "🔥",
+  "cena": "Fim de tarde: parte dos clientes não consegue fazer login por 20 minutos; depois de resolver, você avisa o cliente e conversa com Sarah sobre o prazo.",
+  "resumo": "Coordenar a queda, avisar por escrito e falar do prazo: partial outage, all clear, back to normal, customer success team.",
+  "fechamento": false,
+  "novos": [
+    "all clear",
+    "partial outage",
+    "back to normal",
+    "customer success team"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Da queda ao tudo resolvido"
+    },
+    {
+      "t": "p",
+      "c": "Durante: **We are investigating a partial outage.** Depois: **All clear! Logins are back to normal.** Para fora da empresa, use a passiva: *The issue has been resolved.*"
+    },
+    {
+      "t": "warn",
+      "c": "perder tempo = lose time; perder o prazo = miss the deadline."
+    }
+  ],
+  "imagem": "🔥📉✅",
+  "visualizacao": "O gráfico de logins despenca em vermelho no meio da tarde. Vinte minutos tensos depois, a linha volta a subir e você finalmente solta o ar.",
+  "foto_busca": "monitoring dashboard graphs screen",
+  "trechos": [
+    {
+      "id": "f-477cb9",
+      "quem": "mike",
+      "cod": "Is it a partial outage, or is everyone locked out?",
+      "dica": "É uma queda parcial, ou todo mundo está sem acesso?",
+      "img": "🌓🔒",
+      "alvo": "partial outage",
+      "alvo_pt": "queda parcial",
+      "conceito": "partial outage = queda parcial. locked out = sem conseguir entrar.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2019a6",
+      "quem": "voce",
+      "cod": "We are investigating a partial outage affecting logins.",
+      "dica": "Estamos investigando uma queda parcial que afeta os logins.",
+      "img": "🔎🔑",
+      "alvo": "partial outage",
+      "alvo_pt": "queda parcial",
+      "conceito": "Na página de status: formas plenas e frases curtas.",
+      "var": [
+        {
+          "em": "We are",
+          "aceita": [
+            "We're"
+          ]
+        },
+        {
+          "em": "affecting",
+          "aceita": [
+            "that is affecting",
+            "that affects"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c2c217",
+      "quem": "voce",
+      "cod": "All clear! The fix worked, and the error rate is dropping.",
+      "dica": "Tudo resolvido! A correção funcionou, e a taxa de erros está caindo.",
+      "img": "✅📉",
+      "alvo": "All clear",
+      "alvo_pt": "Tudo resolvido",
+      "conceito": "All clear = tudo resolvido, o perigo passou.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eb91aa",
+      "quem": "voce",
+      "cod": "Logins are back to normal. Details in tomorrow's postmortem.",
+      "dica": "Os logins voltaram ao normal. Detalhes no postmortem de amanhã.",
+      "img": "😌🔑",
+      "alvo": "back to normal",
+      "alvo_pt": "voltaram ao normal",
+      "conceito": "be back to normal = voltar ao normal (o estado agora, com be).",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c78743",
+      "quem": "voce",
+      "cod": "The issue has been resolved, and all services are back to normal.",
+      "dica": "O problema foi resolvido, e todos os serviços voltaram ao normal.",
+      "img": "📧✅",
+      "alvo": "back to normal",
+      "alvo_pt": "voltaram ao normal",
+      "conceito": "has been resolved: passiva na comunicação com o cliente.",
+      "var": [
+        {
+          "em": "has been resolved",
+          "aceita": [
+            "was resolved"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-793e5e",
+      "quem": "sarah",
+      "cod": "All clear on your end? Can we still hit Friday?",
+      "dica": "Tudo resolvido aí do seu lado? Ainda dá para cumprir o prazo de sexta?",
+      "img": "📆🎯",
+      "alvo": "All clear",
+      "alvo_pt": "Tudo resolvido",
+      "conceito": "on your end = aí do seu lado. hit Friday = cumprir o prazo de sexta.",
+      "var": [
+        {
+          "em": "hit Friday",
+          "aceita": [
+            "hit the Friday deadline"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b977ce",
+      "quem": "voce",
+      "contexto": "f-793e5e",
+      "cod": "We lost two hours today. Should we let the customer success team know?",
+      "dica": "Perdemos duas horas hoje. A gente avisa o time de customer success?",
+      "img": "⌛📣",
+      "alvo": "customer success team",
+      "alvo_pt": "time de customer success",
+      "conceito": "let someone know = avisar alguém. perder tempo = lose time; perder o prazo = miss the deadline.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR34"
+      ],
+      "armadilhas": [
+        "missed two hours",
+        "wasted",
+        "advise"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e7ae7e",
+      "quem": "sarah",
+      "contexto": "f-b977ce",
+      "cod": "Good idea. The customer success team can reach out to the client today.",
+      "dica": "Boa ideia. O time de customer success pode entrar em contato com o cliente hoje.",
+      "img": "💡📞",
+      "alvo": "customer success team",
+      "alvo_pt": "time de customer success",
+      "conceito": "reach out to = entrar em contato com. customer success = o time que cuida da relação com o cliente.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "contact with"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

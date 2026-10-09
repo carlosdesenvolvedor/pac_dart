@@ -1,0 +1,222 @@
+{
+  "id": "pro-clientes-email-formal.pedir-desculpas-e-escalar",
+  "trilha": "pro-clientes-email-formal",
+  "nome": "Pedir desculpas e escalar",
+  "emoji": "🆘",
+  "cena": "O cliente ficou duas horas sem conseguir emitir faturas e escreve furioso; você combina a resposta com Mike e responde no mesmo dia.",
+  "resumo": "Responder a uma reclamação séria: apologize for the inconvenience, understand your frustration, goodwill, business days.",
+  "fechamento": false,
+  "novos": [
+    "inconvenience",
+    "I completely understand your frustration",
+    "goodwill",
+    "business days"
+  ],
+  "apoio": [
+    "sincerely"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Desculpas formais que acalmam"
+    },
+    {
+      "t": "p",
+      "c": "Em nome da empresa: **We sincerely apologize for the inconvenience.** Reconheça o sentimento: **I completely understand your frustration.** Depois diga o que vai acontecer e quando: **within five business days** (em até cinco dias úteis)."
+    },
+    {
+      "t": "warn",
+      "c": "explain to them what happened (não: explain them). receive: e antes de i depois de c."
+    },
+    {
+      "t": "ex",
+      "c": "Please allow two to three business days.\nPor favor, aguarde de dois a três dias úteis."
+    }
+  ],
+  "imagem": "😤📧🙇",
+  "visualizacao": "O e-mail do cliente chega em letras maiúsculas. Você lê duas vezes, chama o Mike numa chamada rápida e só então começa a responder, sem pressa.",
+  "foto_busca": "customer support email apology",
+  "trechos": [
+    {
+      "id": "f-7ef6e7",
+      "quem": "cliente",
+      "cod": "This outage was a huge inconvenience for our finance team.",
+      "dica": "Essa queda foi um transtorno enorme para a nossa equipe financeira.",
+      "img": "😤🧾",
+      "alvo": "inconvenience",
+      "alvo_pt": "transtorno",
+      "conceito": "inconvenience = transtorno, incômodo; inconvenient é o adjetivo.",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aec738",
+      "quem": "mike",
+      "contexto": "f-7ef6e7",
+      "cod": "I completely understand why they're upset. Can you explain to them what happened?",
+      "dica": "Entendo perfeitamente por que eles estão chateados. Você pode explicar para eles o que aconteceu?",
+      "img": "😟🗣️",
+      "alvo": "I completely understand",
+      "alvo_pt": "Entendo perfeitamente",
+      "conceito": "I completely understand why... = entendo perfeitamente por que... explain to them (não: explain them).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "explain them"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "they're",
+          "aceita": [
+            "they are"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-07c763",
+      "quem": "mike",
+      "cod": "Let's also offer them a credit as a goodwill gesture.",
+      "dica": "Vamos oferecer também um crédito a eles como gesto de boa vontade.",
+      "img": "🎁🤝",
+      "alvo": "goodwill",
+      "alvo_pt": "boa vontade",
+      "conceito": "goodwill gesture = gesto de boa vontade, para manter o cliente.",
+      "var": [
+        {
+          "em": "as a goodwill gesture",
+          "aceita": [
+            "as a gesture of goodwill"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e3e5d6",
+      "quem": "voce",
+      "cod": "We sincerely apologize for the inconvenience.",
+      "dica": "Pedimos sinceras desculpas pelo transtorno.",
+      "img": "🙇📩",
+      "alvo": "inconvenience",
+      "alvo_pt": "transtorno",
+      "conceito": "Em nome da empresa: We apologize for... (com for). Sorry fica para a fala.",
+      "registro": "formal",
+      "armadilhas": [
+        "sorry"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-afeaab",
+      "quem": "voce",
+      "cod": "I completely understand your frustration, and we take this very seriously.",
+      "dica": "Entendo perfeitamente a sua frustração, e levamos isso muito a sério.",
+      "img": "💬🎯",
+      "alvo": "I completely understand",
+      "alvo_pt": "Entendo perfeitamente",
+      "conceito": "take something seriously = levar algo a sério.",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "perfectly"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aaf7f5",
+      "quem": "voce",
+      "cod": "This has been escalated to our engineers. Please allow two to three business days.",
+      "dica": "Isso foi escalado para os nossos engenheiros. Por favor, aguarde de dois a três dias úteis.",
+      "img": "📈🗓️",
+      "alvo": "business days",
+      "alvo_pt": "dias úteis",
+      "conceito": "business days = dias úteis. Please allow + prazo = por favor, aguarde.",
+      "var": [
+        {
+          "em": "has been escalated",
+          "aceita": [
+            "was escalated"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "useful days",
+        "work days"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dd3f36",
+      "quem": "voce",
+      "cod": "As a gesture of goodwill, we will apply a credit to your account.",
+      "dica": "Como gesto de boa vontade, aplicaremos um crédito na sua conta.",
+      "img": "💳🎁",
+      "alvo": "goodwill",
+      "alvo_pt": "boa vontade",
+      "conceito": "apply a credit to your account = aplicar um crédito na sua conta (to, não in).",
+      "var": [
+        {
+          "em": "As a gesture of goodwill",
+          "aceita": [
+            "As a goodwill gesture"
+          ]
+        },
+        {
+          "em": "we will",
+          "aceita": [
+            "we'll"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [],
+      "armadilhas": [
+        "apply a credit in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6fa996",
+      "quem": "voce",
+      "cod": "You should receive the credit within five business days.",
+      "dica": "Vocês devem receber o crédito em até cinco dias úteis.",
+      "img": "📥💰⏱️",
+      "alvo": "business days",
+      "alvo_pt": "dias úteis",
+      "conceito": "receive: e antes de i depois de c. within = em até (prazo máximo).",
+      "registro": "formal",
+      "armadilhas": [
+        "recieve",
+        "until five"
+      ],
+      "origem": "autoral_ia",
+      "interferencias": [
+        "BR46"
+      ]
+    }
+  ]
+}

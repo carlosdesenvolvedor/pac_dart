@@ -1,0 +1,273 @@
+{
+  "id": "pro-design-sistemas.dados-replicas-e-particoes",
+  "trilha": "pro-design-sistemas",
+  "nome": "Dados: réplicas e partições",
+  "emoji": "🗃️",
+  "cena": "O entrevistador pergunta o que acontece quando o banco não aguenta mais, e você propõe réplicas e, depois, sharding por restaurante.",
+  "resumo": "Distribuir os dados: primary, eventually consistent, shard e partition.",
+  "fechamento": false,
+  "novos": [
+    "primary",
+    "eventually consistent",
+    "shard",
+    "partition"
+  ],
+  "apoio": [
+    "replica",
+    "bottleneck"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Réplicas, primário e partições"
+    },
+    {
+      "t": "p",
+      "c": "Leituras vão para uma **replica**; escritas, para o **primary**. Réplicas são **eventually consistent**: a atualização chega, mas não na hora. Quando as escritas não cabem num banco só, você faz **shard** por uma chave, e cada parte é uma **partition**."
+    },
+    {
+      "t": "warn",
+      "c": "Eventually = no fim, acaba + gerúndio (eventualmente = occasionally). Eventual consistency é termo técnico: consistência eventual."
+    },
+    {
+      "t": "ex",
+      "c": "Replicas are eventually consistent.\nAs réplicas têm consistência eventual."
+    }
+  ],
+  "imagem": "🗄️🗄️🧩",
+  "visualizacao": "No quadro, o banco único ganha cópias ao lado e depois se parte em pedaços coloridos. O entrevistador franze a testa e aponta para um deles.",
+  "foto_busca": "server racks data center rows",
+  "trechos": [
+    {
+      "id": "f-a69436",
+      "quem": "voce",
+      "cod": "Reads can go to a replica, but writes have to go to the primary.",
+      "dica": "As leituras podem ir para uma réplica, mas as escritas têm que ir para o primário.",
+      "img": "📖➡️🗄️",
+      "alvo": "primary",
+      "alvo_pt": "primário",
+      "conceito": "primary = o banco primário, o único que aceita escrita; replica = cópia para leitura.",
+      "var": [
+        {
+          "em": "have to",
+          "aceita": [
+            "need to",
+            "must"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "primary database",
+        "master"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-96808c",
+      "quem": "entrevistador",
+      "contexto": "f-a69436",
+      "cod": "So the primary is still a bottleneck for writes?",
+      "dica": "Então o primário continua sendo um gargalo para as escritas?",
+      "img": "🚧🗄️",
+      "alvo": "primary",
+      "alvo_pt": "primário",
+      "conceito": "bottleneck = gargalo; still = continua, ainda.",
+      "var": [
+        {
+          "em": "for writes",
+          "aceita": [
+            "for the writes"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "continues being",
+        "neck"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-87eee2",
+      "quem": "voce",
+      "cod": "Replicas are eventually consistent, so users might not see their own update right away.",
+      "dica": "As réplicas têm consistência eventual, então os usuários talvez não vejam a própria atualização na hora.",
+      "img": "🔄⏳",
+      "alvo": "eventually consistent",
+      "alvo_pt": "consistência eventual",
+      "conceito": "eventually consistent = os dados ficam iguais com o tempo; eventually não é eventualmente.",
+      "var": [
+        {
+          "em": "right away",
+          "aceita": [
+            "immediately"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "occasionally",
+        "may not to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6a805e",
+      "quem": "voce",
+      "cod": "For menus, it's okay if the data is eventually consistent.",
+      "dica": "Para os cardápios, tudo bem se os dados tiverem consistência eventual.",
+      "img": "📋👌",
+      "alvo": "eventually consistent",
+      "alvo_pt": "consistência eventual",
+      "conceito": "it's okay if = tudo bem se; o it é obrigatório (BR01).",
+      "var": [
+        {
+          "em": "For menus",
+          "aceita": [
+            "For the menus"
+          ]
+        },
+        {
+          "em": "okay",
+          "aceita": [
+            "fine",
+            "OK"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR56"
+      ],
+      "armadilhas": [
+        "is fine",
+        "have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a8eb6e",
+      "quem": "voce",
+      "cod": "If writes keep growing, we can shard by restaurant ID.",
+      "dica": "Se as escritas seguirem crescendo, podemos fazer sharding por ID do restaurante.",
+      "img": "📈🔪",
+      "alvo": "shard",
+      "alvo_pt": "fazer sharding",
+      "conceito": "shard by X = dividir os dados entre bancos pela chave X; restaurant ID na ordem inglesa (BR24).",
+      "var": [
+        {
+          "em": "restaurant ID",
+          "aceita": [
+            "restaurant"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "ID of restaurant",
+        "make sharding"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-219989",
+      "quem": "entrevistador",
+      "contexto": "f-a8eb6e",
+      "cod": "Why shard by restaurant and not by customer?",
+      "dica": "Por que fazer sharding por restaurante e não por cliente?",
+      "img": "🍕👤❓",
+      "alvo": "shard",
+      "alvo_pt": "fazer sharding",
+      "conceito": "Why + verbo base = por que fazer...? (pergunta curta, sem sujeito).",
+      "var": [
+        {
+          "em": "and not by",
+          "aceita": [
+            "instead of by",
+            "and not"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "make sharding",
+        "client"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b7fb00",
+      "quem": "voce",
+      "contexto": "f-219989",
+      "cod": "Because all of a restaurant's orders would end up in the same partition.",
+      "dica": "Porque todos os pedidos de um restaurante iriam parar na mesma partição.",
+      "img": "🧩📦",
+      "alvo": "partition",
+      "alvo_pt": "partição",
+      "conceito": "end up = ir parar; restaurant's orders = os pedidos de um restaurante (posse com 's).",
+      "var": [
+        {
+          "em": "end up in the same partition",
+          "aceita": [
+            "be in the same partition",
+            "end up in one partition"
+          ]
+        },
+        {
+          "em": "all of a",
+          "aceita": [
+            "all a"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "orders of",
+        "stays"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8cf6e4",
+      "quem": "voce",
+      "cod": "But a very popular restaurant could create a hot partition.",
+      "dica": "Mas um restaurante muito popular poderia criar uma partição sobrecarregada.",
+      "img": "🔥🧩",
+      "alvo": "hot partition",
+      "alvo_pt": "partição sobrecarregada",
+      "conceito": "hot partition = partição que recebe tráfego demais.",
+      "var": [
+        {
+          "em": "could",
+          "aceita": [
+            "might"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "overloaded",
+        "popular partition"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

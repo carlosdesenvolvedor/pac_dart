@@ -4,6 +4,7 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import '../../../core/linguagem/linguagem.dart';
 import '../../dartpad/mapa_rodavel.dart';
+import '../../ingles/data/audio_nativo.dart';
 import '../domain/curriculo.dart';
 
 /// Lê o currículo da [linguagem] (assets/curriculo.json no Dart,
@@ -17,7 +18,17 @@ class CurriculoLoader {
   Future<List<Trilha>> carregar() async {
     final raw = await rootBundle.loadString(linguagem.curriculo);
     final lista = jsonDecode(raw) as List;
-    return lista.map((e) => Trilha.fromJson(e as Map<String, dynamic>)).toList();
+    final trilhas = lista.map((e) => Trilha.fromJson(e as Map<String, dynamic>)).toList();
+    // inglês: as frases com gravação de nativo (ou voz gerada do personagem)
+    // passam a tocar o mp3
+    AudioNativo.registrar(trilhas);
+    if (linguagem == Linguagem.ingles) {
+      try {
+        final indice = await rootBundle.loadString(AudioNativo.indiceGeradas);
+        AudioNativo.registrarGeradas(jsonDecode(indice) as Map<String, dynamic>);
+      } catch (_) {} // sem o índice: a voz sintética do navegador
+    }
+    return trilhas;
   }
 
   /// Sem o asset (ou com ele quebrado) ninguém roda — o botão só some.

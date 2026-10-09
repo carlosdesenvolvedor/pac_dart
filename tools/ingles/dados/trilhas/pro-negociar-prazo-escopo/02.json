@@ -1,0 +1,216 @@
+{
+  "id": "pro-negociar-prazo-escopo.dizer-nao-com-tato",
+  "trilha": "pro-negociar-prazo-escopo",
+  "nome": "Dizer não com tato",
+  "emoji": "🙅",
+  "cena": "No meio da sprint, a Sarah traz mais um pedido urgente de um cliente grande, e você precisa dizer não sem fechar a porta.",
+  "resumo": "Recusar com tato: reconhecer o pedido, explicar a falta de braço e mostrar o custo de dizer sim.",
+  "fechamento": false,
+  "novos": [
+    "not realistic",
+    "bandwidth",
+    "stretched thin",
+    "say yes to"
+  ],
+  "apoio": [
+    "I hear you",
+    "capacity"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Um não que não fecha a porta"
+    },
+    {
+      "t": "p",
+      "c": "Reconheça (**I hear you, but...**), explique a capacidade (**we don't have the bandwidth**) e mostre o custo: **If we say yes to this, we'll have to say no to something else.**"
+    },
+    {
+      "t": "warn",
+      "c": "compromisso de trabalho = commitment (compromise = meio-termo). Assumir uma tarefa = take on (assume = supor)."
+    },
+    {
+      "t": "ex",
+      "c": "I'm afraid that's not realistic this sprint.\nInfelizmente isso não é realista nesta sprint."
+    }
+  ],
+  "imagem": "🙅📥😓",
+  "visualizacao": "A Sarah chama você no meio da sprint. O quadro do time já está lotado de cartões, e ela chega com mais um pedido marcado como urgente.",
+  "foto_busca": "busy kanban board sticky notes",
+  "trechos": [
+    {
+      "id": "f-ab5ca0",
+      "quem": "voce",
+      "contexto": "A big client wants a new export feature by Monday. Can we fit it in?",
+      "cod": "I'm afraid that's not realistic this sprint.",
+      "dica": "Infelizmente isso não é realista nesta sprint.",
+      "img": "🙅📆",
+      "alvo": "not realistic",
+      "alvo_pt": "não é realista",
+      "conceito": "I'm afraid... = infelizmente (jeito educado de dar uma má notícia).",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c72f64",
+      "quem": "voce",
+      "cod": "The team is stretched thin with the migration.",
+      "dica": "O time está no limite com a migração.",
+      "img": "😓🏋️",
+      "alvo": "stretched thin",
+      "alvo_pt": "no limite",
+      "lit": "[lit.: esticado fino]",
+      "conceito": "stretched thin = sobrecarregado, no limite (gente demais fazendo coisa demais).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7650bd",
+      "quem": "sarah",
+      "contexto": "f-c72f64",
+      "cod": "I know the team is stretched thin, but this is a huge client.",
+      "dica": "Eu sei que o time está no limite, mas esse é um cliente enorme.",
+      "img": "🏢⭐",
+      "alvo": "stretched thin",
+      "alvo_pt": "no limite",
+      "conceito": "huge = enorme (aqui, muito importante para a empresa).",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a9af30",
+      "quem": "voce",
+      "contexto": "f-7650bd",
+      "cod": "I hear you, but we don't have the bandwidth for it right now.",
+      "dica": "Te entendo, mas a gente não tem braço para isso agora.",
+      "img": "🙌🚫",
+      "alvo": "bandwidth",
+      "alvo_pt": "braço",
+      "conceito": "bandwidth (no trabalho) = capacidade, braço para fazer algo.",
+      "var": [
+        {
+          "em": "for it",
+          "aceita": [
+            "for that"
+          ]
+        },
+        {
+          "em": "right now",
+          "aceita": [
+            "now"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-785829",
+      "quem": "voce",
+      "cod": "We'd need more bandwidth to take on a project this size.",
+      "dica": "A gente precisaria de mais braço para assumir um projeto desse tamanho.",
+      "img": "📦➕",
+      "alvo": "bandwidth",
+      "alvo_pt": "braço",
+      "conceito": "assumir (uma tarefa) = take on; assume = supor.",
+      "var": [
+        {
+          "em": "We'd",
+          "aceita": [
+            "We would"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "assume"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cd9e24",
+      "quem": "voce",
+      "cod": "If we say yes to this, we'll have to say no to something else.",
+      "dica": "Se a gente disser sim para isso, vamos ter que dizer não para outra coisa.",
+      "img": "✅❌",
+      "alvo": "say yes to",
+      "alvo_pt": "disser sim para",
+      "conceito": "Se a gente disser = If we say: depois de if, presente.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-837da1",
+      "quem": "voce",
+      "cod": "We can't say yes to every urgent request and still keep our commitments.",
+      "dica": "Não dá para dizer sim para todo pedido urgente e ainda manter os nossos compromissos.",
+      "img": "📥🔥",
+      "alvo": "say yes to",
+      "alvo_pt": "dizer sim para",
+      "conceito": "compromisso (de trabalho) = commitment; compromise = meio-termo.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "compromises"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-23c7ce",
+      "quem": "voce",
+      "contexto": "So when could you have it ready?",
+      "cod": "Monday is just not realistic, but Wednesday could work.",
+      "dica": "Segunda simplesmente não é realista, mas quarta pode dar certo.",
+      "img": "🗓️🤔",
+      "alvo": "not realistic",
+      "alvo_pt": "não é realista",
+      "conceito": "just not = simplesmente não (reforça o não sem ser rude).",
+      "var": [
+        {
+          "em": "could work",
+          "aceita": [
+            "might work"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "monday"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

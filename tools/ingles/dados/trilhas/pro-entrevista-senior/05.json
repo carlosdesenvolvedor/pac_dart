@@ -1,0 +1,253 @@
+{
+  "id": "pro-entrevista-senior.negociar-a-oferta-e-o-modelo-remoto",
+  "trilha": "pro-entrevista-senior",
+  "nome": "Negociar a oferta e o modelo remoto",
+  "emoji": "💰",
+  "cena": "Na ligação final, a recrutadora faz a oferta e você pede tempo e negocia salário, modelo de contrato e valor por hora.",
+  "resumo": "Negociar com educação: think it over, base salary, contractor, hourly rate e I was hoping for...",
+  "fechamento": false,
+  "novos": [
+    "contractor",
+    "hourly rate",
+    "base salary",
+    "think it over"
+  ],
+  "apoio": [
+    "invoice",
+    "flexibility",
+    "closer to"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Negociar com educação"
+    },
+    {
+      "t": "p",
+      "c": "Agradeça e peça tempo (**Can I take a few days to think it over?**), pergunte pela margem (**Is there any flexibility on the base salary?**) e faça a contraproposta com **I was hoping for...**, que soa educado."
+    },
+    {
+      "t": "tip",
+      "c": "contractor = prestador de serviço (PJ), que manda uma invoice todo mês; employee = funcionário."
+    },
+    {
+      "t": "warn",
+      "c": "Ganhar salário = earn / make (não: win). Pretender = plan to (pretend = fingir)."
+    }
+  ],
+  "imagem": "📞💰🤝",
+  "visualizacao": "O telefone toca e é a recrutadora, animada. Você ouve a oferta com o coração acelerado, respira fundo e anota os números antes de responder.",
+  "foto_busca": "person phone call job offer smiling",
+  "trechos": [
+    {
+      "id": "f-2bcbae",
+      "quem": "recrutadora",
+      "cod": "We'd like to make you an offer with a base salary of $150,000.",
+      "dica": "Gostaríamos de fazer uma oferta para você, com salário-base de US$ 150.000.",
+      "img": "📄💵",
+      "alvo": "base salary",
+      "alvo_pt": "salário-base",
+      "conceito": "base salary = salário-base, sem bônus nem benefícios.",
+      "var": [
+        {
+          "em": "We'd",
+          "aceita": [
+            "We would"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "basic salary"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-abd2a2",
+      "quem": "voce",
+      "contexto": "f-2bcbae",
+      "cod": "Thanks, I'm really excited. Can I take a few days to think it over?",
+      "dica": "Obrigado, estou muito animado. Posso tirar alguns dias para pensar com calma?",
+      "img": "🤔🗓️",
+      "alvo": "think it over",
+      "alvo_pt": "pensar com calma",
+      "conceito": "think it over = pensar com calma antes de decidir; o it fica no meio.",
+      "var": [
+        {
+          "em": "Can I take",
+          "aceita": [
+            "Could I take",
+            "Can I have",
+            "Could I have"
+          ]
+        },
+        {
+          "em": "Thanks",
+          "aceita": [
+            "Thank you"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "pt_f": "Obrigada, estou muito animada. Posso tirar alguns dias para pensar com calma?",
+      "registro": "neutro",
+      "armadilhas": [
+        "think over it",
+        "animated"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4379c0",
+      "quem": "recrutadora",
+      "contexto": "f-abd2a2",
+      "cod": "Of course. Take the weekend to think it over.",
+      "dica": "Claro. Tire o fim de semana para pensar com calma.",
+      "img": "🛋️💭",
+      "alvo": "think it over",
+      "alvo_pt": "pensar com calma",
+      "conceito": "on the weekend / the weekend (EUA); at the weekend é britânico.",
+      "registro": "neutro",
+      "armadilhas": [
+        "think over it",
+        "for think"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-604d65",
+      "quem": "voce",
+      "cod": "Is there any flexibility on the base salary, given my background in payments?",
+      "dica": "Existe alguma flexibilidade no salário-base, considerando minha experiência em pagamentos?",
+      "img": "↕️💵",
+      "alvo": "base salary",
+      "alvo_pt": "salário-base",
+      "conceito": "flexibility on (sobre um item); given = considerando; background in = experiência em.",
+      "var": [
+        {
+          "em": "given",
+          "aceita": [
+            "considering"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have any",
+        "flexibility in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-af4235",
+      "quem": "voce",
+      "cod": "Just to confirm, I'd be working as a contractor, right?",
+      "dica": "Só para confirmar: eu trabalharia como contractor, certo?",
+      "img": "🧑‍💻📝❓",
+      "alvo": "contractor",
+      "alvo_pt": "contractor",
+      "conceito": "contractor = prestador de serviço (PJ); employee = funcionário (CLT).",
+      "var": [
+        {
+          "em": "I'd be working",
+          "aceita": [
+            "I would be working",
+            "I'd work",
+            "I would work"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "contractant",
+        "like a"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1785ef",
+      "quem": "recrutadora",
+      "contexto": "f-af4235",
+      "cod": "Right. As a contractor, you'd send us an invoice every month.",
+      "dica": "Isso. Como contractor, você nos mandaria uma invoice todo mês.",
+      "img": "📨🗓️",
+      "alvo": "contractor",
+      "alvo_pt": "contractor",
+      "conceito": "invoice = a nota/fatura que o contractor manda para receber.",
+      "var": [
+        {
+          "em": "you'd",
+          "aceita": [
+            "you would"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "like a contractor",
+        "each"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e7e277",
+      "quem": "recrutadora",
+      "cod": "So what hourly rate did you have in mind?",
+      "dica": "Então, que valor por hora você tinha em mente?",
+      "img": "⏰💲",
+      "alvo": "hourly rate",
+      "alvo_pt": "valor por hora",
+      "conceito": "hourly rate = valor por hora; did you have in mind = você tinha em mente.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "rate per hour",
+        "you had"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-41df84",
+      "quem": "voce",
+      "contexto": "f-e7e277",
+      "cod": "I was hoping for an hourly rate closer to $85.",
+      "dica": "(educado) Eu esperava um valor por hora mais perto de US$ 85.",
+      "img": "🎯💵",
+      "alvo": "hourly rate",
+      "alvo_pt": "valor por hora",
+      "conceito": "I was hoping for... = eu esperava (contraproposta educada, no passado contínuo).",
+      "var": [
+        {
+          "em": "closer to",
+          "aceita": [
+            "nearer to",
+            "closer to around"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "waiting",
+        "expected"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

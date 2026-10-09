@@ -1,0 +1,227 @@
+{
+  "id": "pro-dia-de-trabalho.manha-standup-e-mensagens",
+  "trilha": "pro-dia-de-trabalho",
+  "nome": "Manhã: standup e mensagens",
+  "emoji": "🌅",
+  "cena": "Começo do dia: você conduz a daily do time distribuído e depois responde às mensagens que chegaram durante a noite.",
+  "resumo": "Conduzir a daily e destravar o time: unblock, quick sync, async update, first thing in the morning.",
+  "fechamento": false,
+  "novos": [
+    "unblock",
+    "quick sync",
+    "async update",
+    "first thing in the morning"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A daily do tech lead"
+    },
+    {
+      "t": "p",
+      "c": "Quem conduz a daily (*standup*) pergunta o que está travado e resolve depois: **What do we need to unblock?**, **Let's do a quick sync after standup.** Quem faltou manda um **async update** por escrito."
+    },
+    {
+      "t": "tip",
+      "c": "first thing in the morning = logo cedo pela manhã (a próxima); first thing this morning = hoje logo cedo (já passou)."
+    },
+    {
+      "t": "warn",
+      "c": "Ana needs, the build fails: -s da 3ª pessoa. Ação com hora marcada vai no passado: I fixed it last night (não: I've fixed it last night)."
+    }
+  ],
+  "imagem": "🌅💻🎧",
+  "visualizacao": "Café fumegando ao lado do teclado, fone no ouvido e os rostos do time em quadradinhos na tela. Você abre a daily com a lista de tarefas ao lado.",
+  "foto_busca": "morning video call home office",
+  "trechos": [
+    {
+      "id": "f-50ca32",
+      "quem": "voce",
+      "cod": "Morning, everyone! What do we need to unblock today?",
+      "dica": "Bom dia, pessoal! O que a gente precisa destravar hoje?",
+      "img": "🌅🔓",
+      "alvo": "unblock",
+      "alvo_pt": "destravar",
+      "conceito": "unblock = destravar uma pessoa ou tarefa; blocked = travado.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Morning,",
+          "aceita": [
+            "Good morning,"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-968384",
+      "quem": "voce",
+      "cod": "Ana needs the new API keys. Mike, can you unblock her after this?",
+      "dica": "A Ana precisa das novas chaves da API. Mike, você pode destravar a Ana depois disso?",
+      "img": "🔑🙋‍♀️",
+      "alvo": "unblock",
+      "alvo_pt": "destravar",
+      "conceito": "Ana needs: -s da 3ª pessoa. need, sem of (não: needs of).",
+      "var": [
+        {
+          "em": "her",
+          "aceita": [
+            "Ana"
+          ]
+        },
+        {
+          "em": "after this",
+          "aceita": [
+            "after that"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "need the",
+        "needs of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-062108",
+      "quem": "mike",
+      "contexto": "f-968384",
+      "cod": "Sure. Let's do a quick sync right after standup.",
+      "dica": "Claro. Vamos fazer um alinhamento rápido logo depois da daily.",
+      "img": "⚡🤝",
+      "alvo": "quick sync",
+      "alvo_pt": "alinhamento rápido",
+      "conceito": "quick sync = alinhamento rápido. daily (BR) = standup (EUA), sem the.",
+      "registro": "informal",
+      "armadilhas": [
+        "the daily",
+        "the standup"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-287951",
+      "quem": "voce",
+      "cod": "Sarah, can we do a quick sync on the export before planning?",
+      "dica": "Sarah, a gente pode fazer um alinhamento rápido sobre a exportação antes da planning?",
+      "img": "📤🗣️",
+      "alvo": "quick sync",
+      "alvo_pt": "alinhamento rápido",
+      "var": [
+        {
+          "em": "do a quick",
+          "aceita": [
+            "have a quick"
+          ]
+        },
+        {
+          "em": "on the export",
+          "aceita": [
+            "about the export"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "conceito": "do a quick sync on X = fazer um alinhamento rápido sobre X."
+    },
+    {
+      "id": "f-79d4ba",
+      "quem": "voce",
+      "cod": "If you missed standup, please post an async update in the channel.",
+      "dica": "Se você perdeu a daily, por favor, poste uma atualização assíncrona no canal.",
+      "img": "📝💬",
+      "alvo": "async update",
+      "alvo_pt": "atualização assíncrona",
+      "conceito": "async update = atualização por escrito, sem reunião. perder a daily = miss standup.",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR34"
+      ],
+      "armadilhas": [
+        "lost"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-76fe52",
+      "quem": "dev-novo",
+      "contexto": "f-79d4ba",
+      "cod": "Got it. I'll post my async update after lunch.",
+      "dica": "Entendi. Vou postar a minha atualização assíncrona depois do almoço.",
+      "img": "🍽️📝",
+      "alvo": "async update",
+      "alvo_pt": "atualização assíncrona",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bd31f3",
+      "quem": "mike",
+      "cod": "Heads-up: staging is down. Can you check it first thing in the morning?",
+      "dica": "Aviso: o staging caiu. Você pode verificar isso logo cedo pela manhã?",
+      "img": "🌙🖥️",
+      "alvo": "first thing in the morning",
+      "alvo_pt": "logo cedo pela manhã",
+      "conceito": "first thing in the morning = logo cedo, antes de qualquer outra coisa. check it: objeto obrigatório.",
+      "var": [
+        {
+          "em": "is down",
+          "aceita": [
+            "went down"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1cb60b",
+      "quem": "voce",
+      "contexto": "f-bd31f3",
+      "cod": "Thanks for the heads-up! I fixed it first thing this morning.",
+      "dica": "Valeu pelo aviso! Corrigi logo cedo hoje de manhã.",
+      "img": "☀️✅",
+      "alvo": "first thing",
+      "alvo_pt": "logo cedo",
+      "conceito": "first thing this morning = hoje logo cedo (já passou); first thing in the morning = amanhã logo cedo.",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR01"
+      ],
+      "armadilhas": [
+        "i've fixed"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

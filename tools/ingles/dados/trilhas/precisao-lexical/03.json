@@ -1,0 +1,246 @@
+{
+  "id": "precisao-lexical.palestra-romance-e-fantasia",
+  "trilha": "precisao-lexical",
+  "nome": "Palestra, romance e fantasia",
+  "emoji": "📚",
+  "cena": "No fim de semana em Boston, o Ben te leva a uma palestra na universidade e depois a uma festa à fantasia.",
+  "resumo": "Falar de educação e cultura sem falsos cognatos: lecture, novel, costume e prejudice.",
+  "fechamento": false,
+  "novos": [
+    "lecture",
+    "novel",
+    "costume",
+    "prejudice"
+  ],
+  "apoio": [
+    "translated into"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Palestra, romance e fantasia"
+    },
+    {
+      "t": "p",
+      "c": "**lecture** = palestra, aula expositiva · **novel** = romance (o livro) · **costume** = fantasia · **prejudice** = preconceito."
+    },
+    {
+      "t": "warn",
+      "c": "leitura = reading · novela = soap opera · costume (hábito) = habit ou custom · prejuízo = loss."
+    },
+    {
+      "t": "tip",
+      "c": "educated = instruído, com estudo. Educado (gentil) é polite."
+    },
+    {
+      "t": "ex",
+      "c": "I've already read that novel.\nEu já li esse romance."
+    }
+  ],
+  "imagem": "🎓📖🎭",
+  "visualizacao": "Você está num auditório antigo de madeira em Boston, ao lado do Ben. A palestrante fala do palco; à noite, a casa dele se enche de gente fantasiada e música alta.",
+  "foto_busca": "university lecture hall audience",
+  "trechos": [
+    {
+      "id": "f-5aac0b",
+      "quem": "ben",
+      "cod": "There's a great lecture at the university on Saturday.",
+      "dica": "Tem uma palestra ótima na universidade no sábado.",
+      "img": "🏛️🎤📅",
+      "alvo": "lecture",
+      "alvo_pt": "palestra",
+      "conceito": "lecture = palestra (não: leitura, que é reading).",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR17",
+        "BR44"
+      ],
+      "armadilhas": [
+        "reading"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-706567",
+      "quem": "ben",
+      "cod": "The speaker's first novel was translated into twelve languages.",
+      "dica": "O primeiro romance da palestrante foi traduzido para doze idiomas.",
+      "img": "📕🌍",
+      "alvo": "novel",
+      "alvo_pt": "romance",
+      "conceito": "novel = romance (o livro). Novela de TV = soap opera.",
+      "registro": "informal",
+      "interferencias": [
+        "BR44",
+        "BR58"
+      ],
+      "armadilhas": [
+        "romance"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b43a10",
+      "quem": "voce",
+      "contexto": "f-706567",
+      "cod": "I've already read that novel.",
+      "dica": "Eu já li esse romance.",
+      "img": "📖✅",
+      "alvo": "novel",
+      "alvo_pt": "romance",
+      "conceito": "já li = have already read: experiência sem data.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR44"
+      ],
+      "armadilhas": [
+        "romance"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2358901,
+        "en_autor": "CK",
+        "pt_id": 9838989,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": null,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e6d239",
+      "quem": "voce",
+      "cod": "That was the best lecture I've been to in years.",
+      "dica": "Foi a melhor palestra que eu vi em anos.",
+      "img": "🏆🎤",
+      "alvo": "lecture",
+      "alvo_pt": "palestra",
+      "conceito": "a melhor... em anos = the best... I have been to in years (present perfect).",
+      "var": [
+        {
+          "em": "I've been to",
+          "aceita": [
+            "I've attended",
+            "I've seen"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR44"
+      ],
+      "armadilhas": [
+        "reading"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3e36a9",
+      "quem": "voce",
+      "cod": "Prejudice against people with accents is still common in job interviews.",
+      "dica": "O preconceito contra pessoas com sotaque ainda é comum em entrevistas de emprego.",
+      "img": "🗣️🚫💼",
+      "alvo": "Prejudice",
+      "alvo_pt": "preconceito",
+      "conceito": "prejudice = preconceito (prejuízo = loss). Prejudice against + pessoas; sem artigo no sentido geral.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR21",
+        "BR44"
+      ],
+      "armadilhas": [
+        "the",
+        "preconception"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ad68a6",
+      "quem": "ben",
+      "contexto": "f-3e36a9",
+      "cod": "When it comes to prejudice, most people don't see their own.",
+      "dica": "Quando o assunto é preconceito, a maioria das pessoas não enxerga o próprio.",
+      "img": "🙈🪞",
+      "alvo": "prejudice",
+      "alvo_pt": "preconceito",
+      "conceito": "when it comes to = quando o assunto é. their own = o próprio.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-64bff2",
+      "quem": "voce",
+      "cod": "No one told me that it was a costume party.",
+      "dica": "Ninguém me disse que era uma festa à fantasia.",
+      "img": "😳🎉",
+      "alvo": "costume",
+      "alvo_pt": "fantasia",
+      "conceito": "costume = fantasia. Costume no sentido de hábito é habit ou custom.",
+      "var": [
+        {
+          "em": "No one",
+          "aceita": [
+            "Nobody"
+          ]
+        }
+      ],
+      "opcional": [
+        "that"
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR44"
+      ],
+      "armadilhas": [
+        "fantasy"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5565072,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original: \"Ninguém me disse que era uma festa a fantasia.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4ac63e",
+      "quem": "ben",
+      "contexto": "f-64bff2",
+      "cod": "Don't worry, I have an extra costume you can wear.",
+      "dica": "Não se preocupa, eu tenho uma fantasia sobrando que você pode usar.",
+      "img": "🦸🧥",
+      "alvo": "costume",
+      "alvo_pt": "fantasia",
+      "conceito": "uma fantasia sobrando = an extra costume. Não se preocupa = Don't worry.",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "fantasy"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

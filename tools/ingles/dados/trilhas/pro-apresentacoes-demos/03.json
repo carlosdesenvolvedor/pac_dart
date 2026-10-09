@@ -1,0 +1,200 @@
+{
+  "id": "pro-apresentacoes-demos.transicoes-e-mensagem-principal",
+  "trilha": "pro-apresentacoes-demos",
+  "nome": "Transições e mensagem principal",
+  "emoji": "➡️",
+  "cena": "No meio da palestra no meetup, você sai da parte técnica e passa para os resultados, os custos e o que muda para a plateia.",
+  "resumo": "Fazer transições, colocar números em perspectiva e destacar a mensagem principal.",
+  "fechamento": false,
+  "novos": [
+    "moving on to",
+    "what this means for you",
+    "put that in perspective",
+    "that brings me to"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Costurar a palestra"
+    },
+    {
+      "t": "p",
+      "c": "Transições curtas avisam que o assunto mudou: **Moving on to costs...**, **That brings me to...** Depois, traduza o número em benefício: **What this means for you is...**"
+    },
+    {
+      "t": "warn",
+      "c": "O que era e não é mais vira used to (não: past simple sozinho): **Our builds used to take ten minutes.** = Nossos builds levavam dez minutos."
+    },
+    {
+      "t": "ex",
+      "c": "To put that in perspective, a ten-minute build now takes three.\nPara colocar em perspectiva, um build de dez minutos agora leva três."
+    }
+  ],
+  "imagem": "📈➡️💡",
+  "visualizacao": "Você clica para o slide dos resultados. O gráfico de barras despenca de dez para três minutos, e alguém na primeira fila comenta baixinho com o vizinho.",
+  "foto_busca": "presentation slide bar chart audience",
+  "trechos": [
+    {
+      "id": "f-225bdc",
+      "quem": "voce",
+      "cod": "That brings me to the results. Our builds used to take ten minutes.",
+      "dica": "Isso me leva aos resultados. Nossos builds levavam dez minutos.",
+      "img": "📈🐢",
+      "alvo": "That brings me to",
+      "alvo_pt": "Isso me leva",
+      "conceito": "levavam (antes, não mais) = used to take. That brings me to = transição natural.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR48"
+      ],
+      "armadilhas": [
+        "took"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a6f922",
+      "quem": "voce",
+      "cod": "To put that in perspective, the same build now takes three minutes.",
+      "dica": "Para colocar em perspectiva, o mesmo build agora leva três minutos.",
+      "img": "⚖️⏱️",
+      "alvo": "To put that in perspective",
+      "alvo_pt": "Para colocar em perspectiva",
+      "conceito": "put in perspective = comparar para a plateia sentir o tamanho do número.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "take"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "put that",
+          "aceita": [
+            "put it",
+            "put this"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-810dd6",
+      "quem": "voce",
+      "cod": "What this means for you is faster builds and less waiting.",
+      "dica": "O que isso significa para vocês é build mais rápido e menos espera.",
+      "img": "🚀☕",
+      "alvo": "What this means for you",
+      "alvo_pt": "O que isso significa para vocês",
+      "conceito": "Clivada: What this means for you is... guarda a mensagem principal para o fim.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d5088f",
+      "quem": "voce",
+      "cod": "Moving on to costs, which is where things get interesting.",
+      "dica": "Passando para os custos, que é onde a coisa fica interessante.",
+      "img": "💰➡️",
+      "alvo": "Moving on to",
+      "alvo_pt": "Passando para",
+      "conceito": "Moving on to... = Passando para... (anuncia o próximo tópico).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR21"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d12393",
+      "quem": "voce",
+      "cod": "To put that in perspective, we've cut the cloud bill in half since March.",
+      "dica": "Para colocar em perspectiva, cortamos a conta da nuvem pela metade desde março.",
+      "img": "☁️✂️",
+      "alvo": "To put that in perspective",
+      "alvo_pt": "Para colocar em perspectiva",
+      "conceito": "desde março (até agora) = since March, com present perfect. cut in half = cortar pela metade.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR47"
+      ],
+      "armadilhas": [
+        "cutted"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "put that",
+          "aceita": [
+            "put it",
+            "put this"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-9bae9d",
+      "quem": "voce",
+      "cod": "What this means for you is a smaller cloud bill, too.",
+      "dica": "O que isso significa para vocês é uma conta de nuvem menor também.",
+      "img": "🧾📉",
+      "alvo": "What this means for you",
+      "alvo_pt": "O que isso significa para vocês",
+      "conceito": "too (também) vai no fim da frase.",
+      "blocos": [
+        10
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3cfcf2",
+      "quem": "voce",
+      "cod": "Moving on to the downsides: the cache takes up a lot of disk space.",
+      "dica": "Passando para os pontos negativos: o cache ocupa muito espaço em disco.",
+      "img": "💾⚠️",
+      "alvo": "Moving on to",
+      "alvo_pt": "Passando para",
+      "conceito": "take up space = ocupar espaço. downside = ponto negativo.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR23"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-19f37d",
+      "quem": "voce",
+      "cod": "That brings me to the key takeaway: the slow part was never the code.",
+      "dica": "Isso me leva à principal lição: a parte lenta nunca foi o código.",
+      "img": "🔑💡",
+      "alvo": "That brings me to",
+      "alvo_pt": "Isso me leva",
+      "conceito": "key takeaway = a principal lição, a mensagem para levar para casa.",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

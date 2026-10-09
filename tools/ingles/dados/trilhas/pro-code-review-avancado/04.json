@@ -1,0 +1,270 @@
+{
+  "id": "pro-code-review-avancado.revisar-o-codigo-de-um-junior",
+  "trilha": "pro-code-review-avancado",
+  "nome": "Revisar o código de um júnior",
+  "emoji": "🌱",
+  "cena": "Primeiro pull request de um dev júnior que entrou no time há duas semanas; você revisa para ensinar sem desanimar.",
+  "resumo": "Review que ensina: Nice work overall!, It might be worth + -ing, I'd suggest that you... e constantes com nome.",
+  "fechamento": false,
+  "novos": [
+    "it might be worth",
+    "nested",
+    "magic number",
+    "named constant"
+  ],
+  "apoio": [
+    "early return",
+    "happy path",
+    "I was wondering if",
+    "nice work"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Review que ensina"
+    },
+    {
+      "t": "p",
+      "c": "Comece pelo que está bom (**Nice work overall!**) e sugira com o porquê: **It might be worth + -ing** (talvez valha a pena...), **I'd suggest that you + verbo** (eu sugeriria que você...)."
+    },
+    {
+      "t": "warn",
+      "c": "I'd suggest that you use... (não: suggest you to use). feedback é incontável: some feedback (não: a feedback, feedbacks)."
+    },
+    {
+      "t": "ex",
+      "c": "It might be worth adding a test.\nTalvez valha a pena adicionar um teste."
+    }
+  ],
+  "imagem": "🌱💻📝",
+  "visualizacao": "Você abre o primeiro PR do dev novo. O código está quase lá; você sorri com o que está bom e anota com carinho o que dá para melhorar.",
+  "foto_busca": "mentor junior developer laptop",
+  "trechos": [
+    {
+      "id": "f-14d0e3",
+      "quem": "voce",
+      "cod": "Nice work overall! It might be worth splitting this function into two.",
+      "dica": "Bom trabalho no geral! Talvez valha a pena dividir esta função em duas.",
+      "img": "👏✂️",
+      "alvo": "It might be worth",
+      "alvo_pt": "Talvez valha a pena",
+      "conceito": "It might be worth + -ing = talvez valha a pena + verbo (sugestão leve).",
+      "var": [
+        {
+          "em": "might",
+          "aceita": [
+            "may"
+          ]
+        },
+        {
+          "em": "Nice work",
+          "aceita": [
+            "Good work"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "split",
+        "to"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1050df",
+      "quem": "voce",
+      "cod": "I'd suggest an early return here, so the happy path isn't so deeply nested.",
+      "dica": "Eu sugeriria um retorno antecipado aqui, para o caminho feliz não ficar tão aninhado.",
+      "img": "🪆↩️",
+      "alvo": "nested",
+      "alvo_pt": "aninhado",
+      "conceito": "nested = aninhado: um if dentro de outro, dentro de outro.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR54"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "isn't so deeply nested",
+          "aceita": [
+            "isn't nested so deeply"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-27c3cd",
+      "quem": "dev-novo",
+      "contexto": "f-1050df",
+      "cod": "Thanks! I was wondering if three levels of nested ifs are too much.",
+      "dica": "Valeu! Eu queria saber se três níveis de ifs aninhados são demais.",
+      "img": "🤔🪜",
+      "alvo": "nested",
+      "alvo_pt": "aninhados",
+      "conceito": "I was wondering if... = eu queria saber se... (pergunta educada, ordem direta).",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "are too much",
+          "aceita": [
+            "were too much",
+            "is too much"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e72ae8",
+      "quem": "voce",
+      "cod": "I left some feedback. It might be worth adding a test for empty lists.",
+      "dica": "Deixei um feedback. Talvez valha a pena adicionar um teste para listas vazias.",
+      "img": "🧪📋",
+      "alvo": "It might be worth",
+      "alvo_pt": "Talvez valha a pena",
+      "conceito": "um feedback = some feedback (feedback é incontável; não: a feedback).",
+      "var": [
+        {
+          "em": "might",
+          "aceita": [
+            "may"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "feedbacks",
+        "a"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5712b6",
+      "quem": "voce",
+      "cod": "The 3 in this loop looks like a magic number.",
+      "dica": "O 3 neste loop parece um número mágico.",
+      "img": "🎩🔢",
+      "alvo": "magic number",
+      "alvo_pt": "número mágico",
+      "conceito": "magic number = número solto no código, sem nome que explique o que ele é.",
+      "var": [
+        {
+          "em": "this loop",
+          "aceita": [
+            "the loop"
+          ]
+        },
+        {
+          "em": "looks like",
+          "aceita": [
+            "seems like"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "look"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fc0f4d",
+      "quem": "dev-novo",
+      "contexto": "f-5712b6",
+      "cod": "Sorry, what exactly is a magic number?",
+      "dica": "Desculpa, o que é exatamente um número mágico?",
+      "img": "🎩❓",
+      "alvo": "magic number",
+      "alvo_pt": "número mágico",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "what exactly is a magic number",
+          "aceita": [
+            "what is a magic number exactly",
+            "what's a magic number exactly"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7fa6a3",
+      "quem": "voce",
+      "contexto": "f-fc0f4d",
+      "cod": "It's a hardcoded value with no name. A named constant explains what it's for.",
+      "dica": "É um valor fixo no código, sem nome. Uma constante com nome explica para que ele serve.",
+      "img": "🏷️💡",
+      "alvo": "named constant",
+      "alvo_pt": "constante com nome",
+      "conceito": "A named constant explains: -s da 3ª pessoa (não: explain).",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01",
+        "BR02"
+      ],
+      "armadilhas": [
+        "explain"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "with no name",
+          "aceita": [
+            "without a name"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d43c97",
+      "quem": "voce",
+      "cod": "I'd suggest that you use a named constant here, something like maxRetries.",
+      "dica": "Eu sugeriria que você usasse uma constante com nome aqui, algo como maxRetries.",
+      "img": "📌🔁",
+      "alvo": "named constant",
+      "alvo_pt": "constante com nome",
+      "conceito": "suggest that you + verbo base (não: suggest you to use).",
+      "opcional": [
+        "that"
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR54"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,218 @@
+{
+  "id": "inversoes-escrita-formal.caso-precise-should-you-had-we-e-mail",
+  "trilha": "inversoes-escrita-formal",
+  "nome": "Caso precise: Should you, Had we",
+  "emoji": "✉️",
+  "cena": "Você escreve ao cliente sobre o novo ambiente de testes e depois comenta o contrato com a Ana.",
+  "resumo": "Escrever e-mails formais com Should you need... e Had we known..., e usar If I'd known... na conversa.",
+  "fechamento": false,
+  "novos": [
+    "Should you need",
+    "Had we known",
+    "do not hesitate to",
+    "point of contact"
+  ],
+  "apoio": [
+    "hard deadline",
+    "contact (entrar em contato)",
+    "setup"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "E-mail formal: Should you need / Had we known"
+    },
+    {
+      "t": "p",
+      "c": "No e-mail formal, a condição pode perder o **if** e inverter: **Should you need** help = If you need help; **Had we known** = If we had known. Na conversa, use o if: If I'd known, I would have called."
+    },
+    {
+      "t": "warn",
+      "c": "BR57: na conversa, nada de inversão: If I'd known, I would have called (não: Had I known...). Should you / Had we só no e-mail formal; a pista (e-mail) ou (na conversa) decide."
+    },
+    {
+      "t": "ex",
+      "c": "Should you have any questions, please contact me.\n(e-mail) Caso tenha alguma dúvida, entre em contato comigo."
+    }
+  ],
+  "imagem": "✉️💼📄",
+  "visualizacao": "Você está na mesa, revisando um e-mail formal para o cliente. A Ana entra na chamada de vídeo com uma cópia do contrato e cara de quem tem perguntas.",
+  "foto_busca": "formal business email laptop",
+  "trechos": [
+    {
+      "id": "f-14c812",
+      "quem": "voce",
+      "cod": "Mike will be your main point of contact during the setup.",
+      "dica": "(e-mail) O Mike vai ser o seu principal ponto de contato durante a configuração.",
+      "img": "🧑‍💼📞",
+      "alvo": "point of contact",
+      "alvo_pt": "ponto de contato",
+      "conceito": "point of contact = ponto de contato, a pessoa de referência.",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-299525",
+      "quem": "voce",
+      "cod": "Should you need any help with the setup, please contact our support team.",
+      "dica": "(e-mail) Caso precise de ajuda com a configuração, entre em contato com o nosso time de suporte.",
+      "img": "🛠️🙋‍♂️📧",
+      "alvo": "Should you need",
+      "alvo_pt": "Caso precise",
+      "lit": "[lit.: deveria você precisar]",
+      "conceito": "Should you need = If you need, só que formal. contact + pessoa, sem with: contact our team.",
+      "blocos": [
+        8
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR57",
+        "BR42"
+      ],
+      "armadilhas": [
+        "if"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "any",
+        "please"
+      ]
+    },
+    {
+      "id": "f-f0101d",
+      "quem": "voce",
+      "cod": "If anything is unclear, please do not hesitate to ask.",
+      "dica": "(e-mail) Se algo não estiver claro, por favor, não hesite em perguntar.",
+      "img": "❓🙂",
+      "alvo": "do not hesitate to",
+      "alvo_pt": "não hesite em",
+      "conceito": "Forma plena (do not) no e-mail formal; hesitate to + verbo (não: hesitate in).",
+      "registro": "formal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "anything is unclear",
+          "aceita": [
+            "something is unclear",
+            "anything isn't clear",
+            "something isn't clear"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-bd7ad1",
+      "quem": "voce",
+      "cod": "Should you need more time to review the contract, just let us know.",
+      "dica": "(e-mail) Caso precise de mais tempo para revisar o contrato, é só nos avisar.",
+      "img": "⏳📄",
+      "alvo": "Should you need",
+      "alvo_pt": "Caso precise",
+      "conceito": "Should + sujeito + verbo base: Should you need (não: Should you needs).",
+      "blocos": [
+        9
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR57"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-34df03",
+      "quem": "voce",
+      "cod": "For urgent issues, please do not hesitate to call Mike directly.",
+      "dica": "(e-mail) Para problemas urgentes, por favor, não hesite em ligar diretamente para o Mike.",
+      "img": "🚨📱",
+      "alvo": "do not hesitate to",
+      "alvo_pt": "não hesite em",
+      "conceito": "call + pessoa, sem preposição: call Mike (não: call to Mike).",
+      "blocos": [
+        3
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR42"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "issues",
+          "aceita": [
+            "problems"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-fcc900",
+      "quem": "voce",
+      "cod": "Had we known about the fees, we would have negotiated differently.",
+      "dica": "(e-mail formal) Se tivéssemos sabido das taxas, teríamos negociado de outra forma.",
+      "img": "💸📄🤔",
+      "alvo": "Had we known",
+      "alvo_pt": "Se tivéssemos sabido",
+      "lit": "[lit.: tivéssemos nós sabido]",
+      "conceito": "Had we known = If we had known, sem if (formal). Na conversa: If we'd known...",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "if"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1d3083",
+      "quem": "voce",
+      "cod": "Had we known it was a hard deadline, we would have started in January.",
+      "dica": "(e-mail formal) Se tivéssemos sabido que era um prazo fixo, teríamos começado em janeiro.",
+      "img": "📅🔒🏁",
+      "alvo": "Had we known",
+      "alvo_pt": "Se tivéssemos sabido",
+      "conceito": "hard deadline = prazo fixo. in January: mês com in e com maiúscula.",
+      "blocos": [
+        8
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR57",
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e4c59a",
+      "quem": "ana",
+      "contexto": "f-14c812",
+      "cod": "If I'd known Mike was the point of contact, I would have called him.",
+      "dica": "(na conversa) Se eu soubesse que o Mike era o ponto de contato, teria ligado pra ele.",
+      "img": "🤦‍♀️📞",
+      "alvo": "point of contact",
+      "alvo_pt": "ponto de contato",
+      "conceito": "Na conversa, sem inversão: If I'd known... ('d antes de particípio = had).",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

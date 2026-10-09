@@ -1,0 +1,236 @@
+{
+  "id": "ingles-tecnico-academico.cena-final-o-artigo-e-os-resultados",
+  "trilha": "ingles-tecnico-academico",
+  "nome": "Cena final: o artigo e os resultados",
+  "emoji": "🎬",
+  "cena": "Depois de semanas de testes, você escreve a conclusão do relatório que compara dois bancos de dados e cita o artigo que o time leu.",
+  "resumo": "Fechamento: as expressões acadêmicas da trilha com passiva, hedging e registro escrito, sem contrações.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Revisão da trilha"
+    },
+    {
+      "t": "tip",
+      "c": "até que ponto = the extent to which · à luz de = in light of · levar em conta = take into account · por meio de = by means of · na ausência de = in the absence of."
+    },
+    {
+      "t": "tip",
+      "c": "No texto escrito, forma plena (it is, does not) e passiva no lugar do se impessoal: mediu-se = was measured."
+    },
+    {
+      "t": "warn",
+      "c": "eventually consistent = consistente com o tempo (eventually = no fim, não: às vezes)."
+    }
+  ],
+  "imagem": "📝🗄️🏁",
+  "visualizacao": "O relatório está quase pronto, com dois gráficos lado a lado na tela. Você escreve a conclusão devagar, citando o artigo que o time leu, e o cursor para em cada palavra.",
+  "foto_busca": "final report conclusion writing desk",
+  "trechos": [
+    {
+      "id": "f-54854d",
+      "quem": "voce",
+      "cod": "Our results are consistent with the paper's findings, although write latency was higher.",
+      "dica": "Os nossos resultados são condizentes com as conclusões do artigo, embora a latência de escrita tenha sido maior.",
+      "img": "📄🤝📈",
+      "alvo": "consistent with",
+      "alvo_pt": "condizentes com",
+      "conceito": "consistent with = condizente com. embora + subjuntivo = although + indicativo.",
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "to",
+        "has"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-48012d",
+      "quem": "voce",
+      "cod": "Throughput was measured by means of the same benchmark the authors used.",
+      "dica": "O throughput foi medido por meio do mesmo benchmark que os autores usaram.",
+      "img": "📏🏁",
+      "alvo": "by means of",
+      "alvo_pt": "por meio do",
+      "conceito": "mediu-se, foi medido = was measured: passiva no lugar do se impessoal.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "measured",
+        "through"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7c0e55",
+      "quem": "voce",
+      "cod": "In light of these numbers, it would seem that option B is faster.",
+      "dica": "À luz desses números, ao que parece a opção B é mais rápida.",
+      "img": "💡⚡",
+      "alvo": "In light of",
+      "alvo_pt": "À luz",
+      "conceito": "it would seem that = ao que parece: hedging do texto escrito, com o it obrigatório.",
+      "opcional": [
+        "that"
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "seems"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1cbafa",
+      "quem": "voce",
+      "cod": "Option B is eventually consistent, so some reads may return stale data.",
+      "dica": "A opção B tem consistência eventual, então algumas leituras podem retornar dados desatualizados.",
+      "img": "⏳🔄",
+      "alvo": "eventually consistent",
+      "alvo_pt": "consistência eventual",
+      "conceito": "eventually consistent = fica consistente com o tempo (eventually = no fim, não: às vezes).",
+      "var": [
+        {
+          "em": "is eventually consistent",
+          "aceita": [
+            "has eventual consistency"
+          ]
+        },
+        {
+          "em": "may",
+          "aceita": [
+            "can"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "sometimes",
+        "datas"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-86fbfb",
+      "quem": "voce",
+      "cod": "Our recommendation takes into account the cost of hosting each option.",
+      "dica": "A nossa recomendação leva em conta o custo de hospedagem de cada opção.",
+      "img": "🧮🏷️",
+      "alvo": "takes into account",
+      "alvo_pt": "leva em conta",
+      "conceito": "takes: -s da 3ª pessoa. levar em conta = take into account.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "take",
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c24f97",
+      "quem": "voce",
+      "cod": "Contrary to what we expected, option B used less memory under heavy load.",
+      "dica": "Ao contrário do que esperávamos, a opção B usou menos memória sob carga pesada.",
+      "img": "🧠⬇️",
+      "alvo": "Contrary to",
+      "alvo_pt": "Ao contrário",
+      "conceito": "memória é incontável: less memory (não: fewer).",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "fewer",
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-13773f",
+      "quem": "voce",
+      "cod": "In the absence of production data, these results should be treated with caution.",
+      "dica": "Na ausência de dados de produção, esses resultados deveriam ser tratados com cautela.",
+      "img": "⚠️🔍",
+      "alvo": "In the absence of",
+      "alvo_pt": "Na ausência de",
+      "conceito": "should be treated = deveriam ser tratados: passiva com modal, hedging de conclusão.",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "treat"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e33596",
+      "quem": "voce",
+      "cod": "More testing is needed to determine the extent to which option B scales.",
+      "dica": "São necessários mais testes para determinar até que ponto a opção B escala.",
+      "img": "🧪➕📏",
+      "alvo": "the extent to which",
+      "alvo_pt": "até que ponto",
+      "conceito": "São necessários mais testes = More testing is needed (testing, incontável, com is).",
+      "var": [
+        {
+          "em": "More testing is",
+          "aceita": [
+            "More tests are",
+            "Further testing is"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22",
+        "BR58"
+      ],
+      "armadilhas": [
+        "are",
+        "until"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

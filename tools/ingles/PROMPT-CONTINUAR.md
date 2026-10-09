@@ -1,3 +1,6 @@
+CONCLUÍDO (6/out/2026): o curso inteiro (A1→C1 + dev, 120 trilhas, 5.206 frases) está no ar. Este roteiro fica só
+como referência para regerar um nível ou uma trilha.
+
 ultracode — Continuar a geração do curso de inglês (PAC·ENGLISH) do app pac_dart: falta o nível C1+dev (o B2 já está no ar desde 6/out/2026).
 
 CONTEXTO

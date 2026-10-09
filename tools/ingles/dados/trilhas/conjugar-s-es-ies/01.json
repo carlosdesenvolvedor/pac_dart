@@ -1,0 +1,232 @@
+{
+  "id": "conjugar-s-es-ies.regra-geral-mais-s",
+  "trilha": "conjugar-s-es-ies",
+  "nome": "Regra geral: + s",
+  "emoji": "➕",
+  "cena": "Por vídeo, você conta para o Ben como é a rotina das pessoas que você conhece.",
+  "resumo": "A regra da maioria dos verbos: com he, she, it ou um nome, o verbo ganha -s (works, drinks, reads, writes).",
+  "fechamento": false,
+  "novos": [
+    "works",
+    "drinks",
+    "reads",
+    "writes",
+    "speaks",
+    "makes",
+    "takes"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "He, she, it: o verbo ganha -s"
+    },
+    {
+      "t": "p",
+      "c": "No presente, com **he, she, it** ou um nome (Mike, Ana), o verbo ganha **-s**: work → works, drink → drinks, read → reads."
+    },
+    {
+      "t": "warn",
+      "c": "Com I, you, we e they, nada de -s: I work, they work."
+    },
+    {
+      "t": "tip",
+      "c": "É a regra da maioria dos verbos. As outras lições mostram quando vira -es, -ies e has."
+    },
+    {
+      "t": "ex",
+      "c": "Ana works from home.\nA Ana trabalha de casa."
+    }
+  ],
+  "imagem": "👥➕🗓️",
+  "visualizacao": "Você está numa videochamada com o Ben. Na tela, as fotos do time; você aponta cada rosto e conta o que cada um faz no dia a dia.",
+  "foto_busca": "team video call routine",
+  "trechos": [
+    {
+      "id": "f-26f4e6",
+      "quem": "voce",
+      "cod": "Ana works from home.",
+      "dica": "A Ana trabalha de casa.",
+      "img": "🏠💻",
+      "alvo": "works",
+      "alvo_pt": "trabalha",
+      "conceito": "work → works.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "teste": true
+    },
+    {
+      "id": "f-0e918e",
+      "quem": "voce",
+      "cod": "Mike drinks a lot of coffee.",
+      "dica": "O Mike bebe muito café.",
+      "img": "☕☕",
+      "alvo": "drinks",
+      "alvo_pt": "bebe",
+      "conceito": "drink → drinks.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6026c7",
+      "quem": "voce",
+      "cod": "Sarah reads the news every morning.",
+      "dica": "A Sarah lê as notícias toda manhã.",
+      "img": "📰🌅",
+      "alvo": "reads",
+      "alvo_pt": "lê",
+      "conceito": "read → reads.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c6ae98",
+      "quem": "voce",
+      "cod": "Lucas writes songs at night.",
+      "dica": "O Lucas escreve músicas à noite.",
+      "img": "🎵🌙",
+      "alvo": "writes",
+      "alvo_pt": "escreve",
+      "conceito": "write → writes: termina em e, só entra o -s.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-96526d",
+      "quem": "voce",
+      "cod": "Emma speaks three languages.",
+      "dica": "A Emma fala três idiomas.",
+      "img": "🗣️🌍",
+      "alvo": "speaks",
+      "alvo_pt": "fala",
+      "conceito": "speak → speaks.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ba0871",
+      "quem": "voce",
+      "cod": "Lucas makes a great pizza.",
+      "dica": "O Lucas faz uma pizza ótima.",
+      "img": "🍕👨‍🍳",
+      "alvo": "makes",
+      "alvo_pt": "faz",
+      "conceito": "fazer (preparar, produzir) = make → makes.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "does"
+      ]
+    },
+    {
+      "id": "f-d22dfe",
+      "quem": "voce",
+      "cod": "He takes the bus to work.",
+      "dica": "Ele pega o ônibus para o trabalho.",
+      "img": "🚌💼",
+      "alvo": "takes",
+      "alvo_pt": "pega",
+      "conceito": "pegar (ônibus, táxi) = take → takes.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "takes",
+          "aceita": [
+            "catches"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-be3c65",
+      "quem": "voce",
+      "cod": "She gets up at six.",
+      "dica": "Ela se levanta às seis.",
+      "img": "⏰🛏️",
+      "alvo": "gets up",
+      "alvo_pt": "se levanta",
+      "conceito": "get up → gets up: o -s vai no verbo, não no up.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "get ups"
+      ]
+    },
+    {
+      "id": "f-c66c5e",
+      "quem": "voce",
+      "cod": "Julia knows a lot about design.",
+      "dica": "A Julia sabe muito de design.",
+      "img": "🎨🧠",
+      "alvo": "knows",
+      "alvo_pt": "sabe",
+      "conceito": "know → knows (o k é mudo).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2bce10",
+      "quem": "voce",
+      "cod": "Mike runs every Saturday.",
+      "dica": "O Mike corre todo sábado.",
+      "img": "🏃‍♂️🗓️",
+      "alvo": "runs",
+      "alvo_pt": "corre",
+      "conceito": "run → runs.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-80749a",
+      "quem": "voce",
+      "cod": "Emma loves dogs.",
+      "dica": "A Emma ama cachorros.",
+      "img": "🐶❤️",
+      "alvo": "loves",
+      "alvo_pt": "ama",
+      "conceito": "love → loves.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9cca44",
+      "quem": "voce",
+      "cod": "Ana needs a new phone.",
+      "dica": "A Ana precisa de um celular novo.",
+      "img": "📱🆕",
+      "alvo": "needs",
+      "alvo_pt": "precisa",
+      "conceito": "need → needs (sem o de: need a phone).",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "armadilhas": [
+        "needs of"
+      ]
+    },
+    {
+      "id": "f-b87ed4",
+      "quem": "voce",
+      "cod": "The store opens at nine.",
+      "dica": "A loja abre às nove.",
+      "img": "🏪🕘",
+      "alvo": "opens",
+      "alvo_pt": "abre",
+      "conceito": "Uma coisa (the store) também é it: open → opens.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3c61cb",
+      "quem": "voce",
+      "cod": "It uses a lot of battery.",
+      "dica": "(o app) Usa muita bateria.",
+      "img": "🔋📉",
+      "alvo": "uses",
+      "alvo_pt": "Usa",
+      "conceito": "it = o app: use → uses.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

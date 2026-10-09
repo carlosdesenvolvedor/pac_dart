@@ -1,0 +1,200 @@
+{
+  "id": "conceder-rebater.e-verdade-que",
+  "trilha": "conceder-rebater",
+  "nome": "É verdade que...",
+  "emoji": "🙋",
+  "cena": "Numa call com o time, você propõe dividir o monólito do app em serviços menores e o Mike faz o papel de advogado do diabo.",
+  "resumo": "Admitir um ponto fraco da própria proposta antes de defendê-la: Admittedly, ... / I'll admit that...",
+  "fechamento": false,
+  "novos": [
+    "admittedly",
+    "I'll admit that",
+    "monolith",
+    "complexity"
+  ],
+  "apoio": [
+    "admit + that (verbos de relato, B2)",
+    "although (B1) e despite (B2)",
+    "by far (de longe)"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "É verdade que... = Admittedly,"
+    },
+    {
+      "t": "p",
+      "c": "Para **admitir um ponto fraco** da sua própria proposta antes de defendê-la, abra com **Admittedly,** (com vírgula) ou com **I'll admit that...** (confesso que...). Depois vem o *but*."
+    },
+    {
+      "t": "tip",
+      "c": "Concessão em camadas: *although* (B1) → *despite* (B2) → *admittedly* (C1)."
+    },
+    {
+      "t": "warn",
+      "c": "admit + that + oração ou admit + -ing: I'll admit that it's hard. (não: I admit to have...)"
+    },
+    {
+      "t": "ex",
+      "c": "Admittedly, the new architecture will be more expensive to run.\nÉ verdade que a nova arquitetura vai ser mais cara de rodar."
+    }
+  ],
+  "imagem": "💻🧱🤺",
+  "visualizacao": "Você está na call com o time, o diagrama do monólito aberto na tela. O Mike cruza os braços, sorri de canto e avisa que vai bancar o advogado do diabo.",
+  "foto_busca": "software architecture diagram video call",
+  "trechos": [
+    {
+      "id": "f-539489",
+      "quem": "voce",
+      "cod": "I think we should split the monolith into smaller services.",
+      "dica": "Acho que a gente devia dividir o monólito em serviços menores.",
+      "img": "🧱➡️🧩",
+      "alvo": "monolith",
+      "alvo_pt": "monólito",
+      "conceito": "monolith = monólito, o sistema inteiro num bloco só. split X into Y = dividir X em Y.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1356c7",
+      "quem": "mike",
+      "contexto": "f-539489",
+      "cod": "Our monolith has worked fine for years. Why change it now?",
+      "dica": "O nosso monólito funciona bem há anos. Por que mudar agora?",
+      "img": "🧱👍⏳",
+      "alvo": "monolith",
+      "alvo_pt": "monólito",
+      "conceito": "Funciona há anos = has worked for years: present perfect com for (BR27).",
+      "var": [
+        {
+          "em": "has worked",
+          "aceita": [
+            "has been working"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "works"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2d937f",
+      "quem": "voce",
+      "contexto": "f-1356c7",
+      "cod": "Admittedly, the new architecture will be more expensive to run in the first year.",
+      "dica": "É verdade que a nova arquitetura vai ser mais cara de rodar no primeiro ano.",
+      "img": "💸🏗️📅",
+      "alvo": "Admittedly",
+      "alvo_pt": "É verdade que",
+      "conceito": "Admittedly, com vírgula no começo, admite o ponto fraco antes de você defender a ideia.",
+      "blocos": [
+        8
+      ],
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eed6be",
+      "quem": "voce",
+      "cod": "I'll admit that splitting the monolith adds some complexity.",
+      "dica": "Confesso que dividir o monólito acrescenta certa complexidade.",
+      "img": "🙋🧩🌀",
+      "alvo": "I'll admit that",
+      "alvo_pt": "Confesso que",
+      "conceito": "I'll admit that = confesso que: admit + that + oração (não: I admit to have...).",
+      "var": [
+        {
+          "em": "I'll",
+          "aceita": [
+            "I will"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "confess"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e05fbf",
+      "quem": "mike",
+      "contexto": "f-eed6be",
+      "cod": "That's a lot of complexity for a team our size.",
+      "dica": "Isso é muita complexidade para um time do nosso tamanho.",
+      "img": "🌀👥⚖️",
+      "alvo": "complexity",
+      "alvo_pt": "complexidade",
+      "conceito": "a team our size = um time do nosso tamanho, sem of.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-77be74",
+      "quem": "voce",
+      "contexto": "f-e05fbf",
+      "cod": "We underestimated the effort last time, admittedly, but we learned a lot.",
+      "dica": "A gente subestimou o esforço da última vez, é verdade, mas aprendeu muito.",
+      "img": "📉💪📚",
+      "alvo": "admittedly",
+      "alvo_pt": "é verdade",
+      "conceito": "No meio da frase, admittedly fica entre vírgulas. Passado simples: last time é tempo terminado (BR27).",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2a0b4a",
+      "quem": "voce",
+      "cod": "I'll admit that the migration is by far the hardest part.",
+      "dica": "Confesso que a migração é de longe a parte mais difícil.",
+      "img": "🙋🏔️🔧",
+      "alvo": "I'll admit that",
+      "alvo_pt": "Confesso que",
+      "conceito": "by far + superlativo = de longe o/a mais...",
+      "var": [
+        {
+          "em": "I'll",
+          "aceita": [
+            "I will"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9704ac",
+      "quem": "mike",
+      "contexto": "f-2a0b4a",
+      "cod": "OK. Show me a plan to handle the extra complexity, and I'm in.",
+      "dica": "Tá bom. Me mostra um plano para lidar com a complexidade extra, e eu topo.",
+      "img": "📋🌀🤝",
+      "alvo": "complexity",
+      "alvo_pt": "complexidade",
+      "conceito": "I'm in = eu topo, pode contar comigo.",
+      "blocos": [
+        10
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

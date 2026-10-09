@@ -1,0 +1,235 @@
+{
+  "id": "passivas-impessoais.tendo-sido-avisados",
+  "trilha": "passivas-impessoais",
+  "nome": "Tendo sido avisados",
+  "emoji": "🚧",
+  "cena": "Você escreve para a diretoria o relatório que explica por que o lançamento foi adiado depois de uma auditoria de segurança.",
+  "resumo": "Passiva no gerúndio no relatório: Having been warned, ... / after being reviewed / being told.",
+  "fechamento": false,
+  "novos": [
+    "having been warned",
+    "being told",
+    "approved for release",
+    "vulnerability"
+  ],
+  "apoio": [
+    "postpone",
+    "findings",
+    "board",
+    "patch"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Tendo sido avisados = Having been warned"
+    },
+    {
+      "t": "p",
+      "c": "**Having been + particípio** abre a frase e fala de quem recebeu a ação. **being + particípio** vem depois de preposição (after being reviewed) e de verbos como like, hate, avoid (being told)."
+    },
+    {
+      "t": "warn",
+      "c": "O sujeito da oração principal é quem foi avisado: Having been warned, **we** postponed... (não: Having been warned, the release was postponed)."
+    },
+    {
+      "t": "ex",
+      "c": "After being reviewed again, the app was approved for release.\nDepois de ser revisado de novo, o app foi aprovado para lançamento."
+    }
+  ],
+  "imagem": "🔒🧾🚧",
+  "visualizacao": "O relatório da auditoria está aberto ao lado do seu rascunho. Você lê os achados em vermelho e escreve com calma, frase por frase, para a diretoria.",
+  "foto_busca": "security audit report office",
+  "trechos": [
+    {
+      "id": "f-a058d4",
+      "quem": "voce",
+      "cod": "The external audit found a vulnerability in our login flow.",
+      "dica": "A auditoria externa encontrou uma vulnerabilidade no nosso fluxo de login.",
+      "img": "🔍🔓🧾",
+      "alvo": "vulnerability",
+      "alvo_pt": "vulnerabilidade",
+      "conceito": "vulnerability = vulnerabilidade, a falha de segurança.",
+      "registro": "escrito-trabalho",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-812de0",
+      "quem": "voce",
+      "cod": "The vulnerability was first flagged during a penetration test last month.",
+      "dica": "A vulnerabilidade foi apontada pela primeira vez num teste de invasão no mês passado.",
+      "img": "🚩🛡️📅",
+      "alvo": "vulnerability",
+      "alvo_pt": "vulnerabilidade",
+      "conceito": "flag = apontar, sinalizar; penetration test = teste de invasão.",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "blocos": [
+        5
+      ]
+    },
+    {
+      "id": "f-2defac",
+      "quem": "voce",
+      "cod": "Having been warned about the vulnerability, we postponed the release.",
+      "dica": "Tendo sido avisados da vulnerabilidade, adiamos o lançamento.",
+      "img": "⚠️⏸️📦",
+      "alvo": "Having been warned",
+      "alvo_pt": "Tendo sido avisados",
+      "conceito": "Quem foi avisado é o sujeito depois da vírgula: we postponed.",
+      "var": [
+        {
+          "em": "release",
+          "aceita": [
+            "launch"
+          ]
+        },
+        {
+          "em": "about",
+          "aceita": [
+            "of"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "warning"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4b292c",
+      "quem": "voce",
+      "cod": "Having been warned twice, the team decided not to take any chances.",
+      "dica": "Tendo sido avisado duas vezes, o time decidiu não arriscar.",
+      "img": "✌️⚠️🛑",
+      "alvo": "Having been warned",
+      "alvo_pt": "Tendo sido avisado",
+      "conceito": "não arriscar = not take any chances (expressão fixa do inglês).",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "run"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "take any chances",
+          "aceita": [
+            "take any risks",
+            "take chances",
+            "take risks"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-373370",
+      "quem": "mike",
+      "cod": "I hate being told what to do, but the auditors were right.",
+      "dica": "Odeio que me digam o que fazer, mas os auditores tinham razão.",
+      "img": "😤👂✅",
+      "alvo": "being told",
+      "alvo_pt": "que me digam",
+      "conceito": "hate being told = odiar que digam (a você): passiva depois de hate (hate to be told também vale).",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9049974,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I hate being told what to do.\" (oração acrescentada para a cena); PT reescrito (original: \"Eu odeio ouvir o que fazer.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "hate being told",
+          "aceita": [
+            "hate to be told"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-03c517",
+      "quem": "voce",
+      "cod": "Nobody likes being told that their code isn't secure.",
+      "dica": "Ninguém gosta que digam que o próprio código não é seguro.",
+      "img": "🙅💻🔓",
+      "alvo": "being told",
+      "alvo_pt": "que digam",
+      "conceito": "Nobody likes: -s da 3ª pessoa; being told = que digam (a pessoa).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02",
+        "BR52"
+      ],
+      "armadilhas": [
+        "like"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "likes being told",
+          "aceita": [
+            "likes to be told"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-db3161",
+      "quem": "voce",
+      "cod": "After being reviewed again, the app was approved for release on Friday.",
+      "dica": "Depois de ser revisado de novo, o app foi aprovado para lançamento na sexta.",
+      "img": "🔁✅📱",
+      "alvo": "approved for release",
+      "alvo_pt": "aprovado para lançamento",
+      "conceito": "Depois de ser + particípio = after being + particípio (não: after be reviewed).",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "be"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a6e76b",
+      "quem": "voce",
+      "cod": "The board wants to know when the patch will be approved for release.",
+      "dica": "A diretoria quer saber quando o patch vai ser aprovado para lançamento.",
+      "img": "👔❓🩹",
+      "alvo": "approved for release",
+      "alvo_pt": "aprovado para lançamento",
+      "conceito": "board = diretoria (conselho); wants: -s da 3ª pessoa.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "want"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

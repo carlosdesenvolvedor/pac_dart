@@ -1,0 +1,281 @@
+{
+  "id": "passivas-impessoais.acredita-se-amplamente-que",
+  "trilha": "passivas-impessoais",
+  "nome": "Acredita-se amplamente que",
+  "emoji": "🗞️",
+  "cena": "Segunda de manhã: você escreve para o time o resumo das notícias de tecnologia da semana.",
+  "resumo": "Relatar com distância o que se acredita e o que se estima: It is widely believed / It is estimated that...",
+  "fechamento": false,
+  "novos": [
+    "widely",
+    "it is estimated",
+    "regulators",
+    "a third of"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Acredita-se que = It is believed that"
+    },
+    {
+      "t": "p",
+      "c": "O se impessoal do PT (**acredita-se, estima-se, espera-se**) vira passiva com **it** no inglês escrito: **It is believed / estimated / expected that...** No texto formal, sem contração."
+    },
+    {
+      "t": "warn",
+      "c": "O it é obrigatório: não *Believes that...* nem *Is believed that...*"
+    },
+    {
+      "t": "tip",
+      "c": "**widely** (amplamente) entra entre o is e o particípio: It is **widely** believed that..."
+    },
+    {
+      "t": "ex",
+      "c": "It is estimated that the bug affected around 50,000 users.\nEstima-se que o bug afetou cerca de 50.000 usuários."
+    }
+  ],
+  "imagem": "📰💻☕",
+  "visualizacao": "Segunda cedo, café do lado do notebook. Você passa os olhos pelas manchetes da semana e começa a escrever o resumo que o time lê toda segunda.",
+  "foto_busca": "reading tech news laptop morning",
+  "trechos": [
+    {
+      "id": "f-36492c",
+      "quem": "voce",
+      "cod": "It is widely believed that remote work is here to stay.",
+      "dica": "Acredita-se amplamente que o trabalho remoto veio para ficar.",
+      "img": "🏠💻📌",
+      "alvo": "widely",
+      "alvo_pt": "amplamente",
+      "lit": "[lit.: é amplamente acreditado que...]",
+      "conceito": "Acredita-se que = It is believed that: o it é obrigatório (não: Believes that).",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "believes"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8fbb33",
+      "quem": "voce",
+      "cod": "Among developers, it is widely believed that the new rules will hurt small apps.",
+      "dica": "Entre os desenvolvedores, acredita-se amplamente que as novas regras vão prejudicar os apps pequenos.",
+      "img": "📜📱😟",
+      "alvo": "widely",
+      "alvo_pt": "amplamente",
+      "conceito": "widely fica entre is e believed: it is widely believed.",
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "believes"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "hurt",
+          "aceita": [
+            "harm"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e223ba",
+      "quem": "voce",
+      "cod": "It is estimated that the bug affected around 50,000 users.",
+      "dica": "Estima-se que o bug afetou cerca de 50.000 usuários.",
+      "img": "🐞👥📊",
+      "alvo": "It is estimated",
+      "alvo_pt": "Estima-se",
+      "conceito": "Estima-se que = It is estimated that (não: Estimates that).",
+      "var": [
+        {
+          "em": "around",
+          "aceita": [
+            "about"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "estimates"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-41dc08",
+      "quem": "voce",
+      "cod": "Worldwide, it is estimated that developers lose six hours a week to meetings.",
+      "dica": "No mundo todo, estima-se que os desenvolvedores percam seis horas por semana com reuniões.",
+      "img": "🌍⏳📅",
+      "alvo": "it is estimated",
+      "alvo_pt": "estima-se",
+      "conceito": "lose time to = perder tempo com (não: lose time with).",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58",
+        "BR17"
+      ],
+      "armadilhas": [
+        "with",
+        "estimates"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Worldwide",
+          "aceita": [
+            "Around the world",
+            "Globally"
+          ]
+        },
+        {
+          "em": "a week",
+          "aceita": [
+            "per week"
+          ]
+        },
+        {
+          "em": "to meetings",
+          "aceita": [
+            "in meetings",
+            "on meetings"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8132d5",
+      "quem": "voce",
+      "cod": "In Europe, it is expected that regulators will publish the final guidelines next year.",
+      "dica": "Na Europa, espera-se que os órgãos reguladores publiquem as diretrizes finais no ano que vem.",
+      "img": "🏛️📜🗓️",
+      "alvo": "regulators",
+      "alvo_pt": "órgãos reguladores",
+      "conceito": "regulators = órgãos reguladores; Espera-se que = It is expected that.",
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "regulators",
+          "aceita": [
+            "the regulators"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-bdc0fe",
+      "quem": "voce",
+      "cod": "Regulators say the app collected more data than necessary.",
+      "dica": "Os órgãos reguladores dizem que o app coletou mais dados do que o necessário.",
+      "img": "🏛️📱🗂️",
+      "alvo": "Regulators",
+      "alvo_pt": "órgãos reguladores",
+      "conceito": "Em notícia, regulators sem the: fala-se do grupo em geral (artigo zero).",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Regulators",
+          "aceita": [
+            "The regulators"
+          ]
+        }
+      ],
+      "interferencias": [
+        "BR21"
+      ]
+    },
+    {
+      "id": "f-9f200a",
+      "quem": "voce",
+      "cod": "According to one survey, a third of companies still run unsupported software.",
+      "dica": "Segundo uma pesquisa, um terço das empresas ainda roda software sem suporte.",
+      "img": "🏢⚠️💾",
+      "alvo": "a third of",
+      "alvo_pt": "um terço das",
+      "conceito": "software é incontável: sem -s e sem a/an (não: softwares).",
+      "var": [
+        {
+          "em": "one survey",
+          "aceita": [
+            "a survey",
+            "one study",
+            "a study"
+          ]
+        },
+        {
+          "em": "a third of companies",
+          "aceita": [
+            "a third of the companies"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "softwares"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-093199",
+      "quem": "voce",
+      "cod": "A third of our users still haven't installed the latest update.",
+      "dica": "Um terço dos nossos usuários ainda não instalou a última atualização.",
+      "img": "👥📲⏳",
+      "alvo": "A third of",
+      "alvo_pt": "Um terço dos",
+      "conceito": "ainda não = haven't... yet / still haven't: present perfect, não o passado.",
+      "var": [
+        {
+          "em": "latest",
+          "aceita": [
+            "last"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "didn't"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "id": "pro-lideranca-feedback.delegar-e-mentorar",
+  "trilha": "pro-lideranca-feedback",
+  "nome": "Delegar e mentorar",
+  "emoji": "🧭",
+  "cena": "No fim do 1:1, você propõe a uma dev pleno do time, que nunca liderou um projeto, assumir a migração da busca.",
+  "resumo": "Delegar como oportunidade: convidar, dar visibilidade e autonomia, e se oferecer como apoio.",
+  "fechamento": false,
+  "novos": [
+    "be up for",
+    "visibility",
+    "micromanage",
+    "sounding board"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Delegar é convidar"
+    },
+    {
+      "t": "p",
+      "c": "Convide em vez de mandar: **Would you be up for taking on...?** Mostre o ganho (**visibility**) e deixe claro o seu papel: apoio, não controle."
+    },
+    {
+      "t": "warn",
+      "c": "assumir uma tarefa = take on (assume = supor). Gostaria que você liderasse = I'd like you to lead (não: I'd like that you lead)."
+    },
+    {
+      "t": "ex",
+      "c": "I won't micromanage, but I'm here if you get stuck.\nNão vou microgerenciar, mas estou aqui se você travar."
+    }
+  ],
+  "imagem": "🧭🤝🚀",
+  "visualizacao": "O 1:1 está quase no fim. Na tela, o diagrama da migração da busca; do outro lado, você vê a dev pleno ouvir a proposta e arregalar os olhos.",
+  "foto_busca": "mentor colleague laptop discussion",
+  "trechos": [
+    {
+      "id": "f-79bb04",
+      "quem": "voce",
+      "cod": "Would you be up for taking on the search migration?",
+      "dica": "Você toparia assumir a migração da busca?",
+      "img": "🔍🚚",
+      "alvo": "be up for",
+      "alvo_pt": "toparia",
+      "conceito": "be up for + -ing = topar fazer algo. assumir = take on (assume = supor).",
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR52"
+      ],
+      "armadilhas": [
+        "assuming",
+        "take"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1c7d09",
+      "quem": "dev-pleno",
+      "contexto": "f-79bb04",
+      "cod": "I'd be up for it, but I've never led a project before.",
+      "dica": "Eu toparia, mas nunca liderei um projeto antes.",
+      "img": "🙋🤔",
+      "alvo": "be up for",
+      "alvo_pt": "toparia",
+      "conceito": "nunca liderei (experiência) = I've never led. lead, led, led.",
+      "var": [
+        {
+          "em": "I'd",
+          "aceita": [
+            "I would"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27",
+        "BR18"
+      ],
+      "armadilhas": [
+        "leaded",
+        "lead"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf47ea",
+      "quem": "voce",
+      "contexto": "f-1c7d09",
+      "cod": "You'd own it end to end, and you'd get a lot of visibility.",
+      "dica": "Você seria responsável de ponta a ponta e ganharia bastante visibilidade.",
+      "img": "👁️⭐",
+      "alvo": "visibility",
+      "alvo_pt": "visibilidade",
+      "conceito": "ganhar visibilidade = get ou gain visibility (não: win). own = ser dono, responsável.",
+      "var": [
+        {
+          "em": "get",
+          "aceita": [
+            "gain"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR35"
+      ],
+      "armadilhas": [
+        "win"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c14c40",
+      "quem": "voce",
+      "cod": "It's a great opportunity to gain visibility with other teams.",
+      "dica": "É uma ótima oportunidade de ganhar visibilidade com outros times.",
+      "img": "🌟🤝",
+      "alvo": "visibility",
+      "alvo_pt": "visibilidade",
+      "conceito": "opportunity com pp. oportunidade de + verbo = opportunity to.",
+      "var": [
+        {
+          "em": "gain",
+          "aceita": [
+            "get"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR45",
+        "BR35",
+        "BR01"
+      ],
+      "armadilhas": [
+        "oportunity",
+        "win",
+        "of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7ac84f",
+      "quem": "voce",
+      "cod": "I won't micromanage, but I'm here if you get stuck.",
+      "dica": "Não vou microgerenciar, mas estou aqui se você travar.",
+      "img": "🔍🙅",
+      "alvo": "micromanage",
+      "alvo_pt": "microgerenciar",
+      "conceito": "Se você travar = if you get stuck: depois de if, presente.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c3c234",
+      "quem": "voce",
+      "contexto": "Should I send you updates every day?",
+      "cod": "No need. I don't want to micromanage you.",
+      "dica": "Não precisa. Não quero te microgerenciar.",
+      "img": "🙌📅",
+      "alvo": "micromanage",
+      "alvo_pt": "microgerenciar",
+      "conceito": "te = you, depois do verbo: micromanage you.",
+      "registro": "informal",
+      "interferencias": [
+        "BR07",
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8934ff",
+      "quem": "voce",
+      "cod": "I'm happy to be a sounding board whenever you need one.",
+      "dica": "Fico feliz em ser alguém para trocar ideias sempre que você precisar.",
+      "img": "🗣️🔁",
+      "alvo": "sounding board",
+      "alvo_pt": "alguém para trocar ideias",
+      "conceito": "sounding board = alguém com quem testar ideias antes de decidir.",
+      "var": [
+        {
+          "em": "I'm happy",
+          "aceita": [
+            "I'll be happy",
+            "I'd be happy"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "lit": "[lit.: uma caixa de ressonância]"
+    },
+    {
+      "id": "f-5188ce",
+      "quem": "voce",
+      "cod": "I'd like you to see me as a sounding board, not a boss.",
+      "dica": "Eu gostaria que você me visse como alguém para trocar ideias, não como chefe.",
+      "img": "🧭🤝",
+      "alvo": "sounding board",
+      "alvo_pt": "alguém para trocar ideias",
+      "conceito": "Gostaria que você... = I'd like you to... (não: I'd like that you...).",
+      "var": [
+        {
+          "em": "I'd like",
+          "aceita": [
+            "I would like"
+          ]
+        }
+      ],
+      "blocos": [
+        10
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR61"
+      ],
+      "armadilhas": [
+        "that"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "id": "nominalizacao-participiais.construido-em-2009",
+  "trilha": "nominalizacao-participiais",
+  "nome": "Construído em 2009",
+  "emoji": "🗂️",
+  "cena": "Na apresentação para os novos membros do time, você descreve os sistemas da empresa, do mais antigo ao mais novo.",
+  "resumo": "Abrir frases descritivas com particípio passado: Built in..., Written in..., Compared with...",
+  "fechamento": false,
+  "novos": [
+    "compared with",
+    "billing system",
+    "infrastructure costs",
+    "written in"
+  ],
+  "apoio": [
+    "built in",
+    "originally",
+    "outdated"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Construído em..., Escrito em..."
+    },
+    {
+      "t": "p",
+      "c": "Para descrever um sistema, abra a frase com o particípio passado: **Built in 2009**, the billing system... / **Written in Dart**, the new app... O particípio descreve o sujeito que vem logo depois da vírgula."
+    },
+    {
+      "t": "warn",
+      "c": "O sujeito tem de ser a coisa descrita: Built in 2009, the system is... (não: Built in 2009, we still use it). Grafia: written (tt), infrastructure, originally (ll)."
+    },
+    {
+      "t": "tip",
+      "c": "Compared with last year, ... = Em comparação com o ano passado, ... (compared to também vale)."
+    },
+    {
+      "t": "ex",
+      "c": "Designed for small teams, the tool is easy to set up.\nFeita para times pequenos, a ferramenta é fácil de configurar."
+    }
+  ],
+  "imagem": "🏛️💻📱",
+  "visualizacao": "Você está numa sala de reunião com três devs novos. No telão, um diagrama dos sistemas da empresa, do servidor antigo ao app novo, e todo mundo anota.",
+  "foto_busca": "team onboarding presentation screen",
+  "trechos": [
+    {
+      "id": "f-62ead0",
+      "quem": "voce",
+      "cod": "Built in 2009, the billing system is still running on a single server.",
+      "dica": "Construído em 2009, o sistema de cobrança ainda roda num único servidor.",
+      "img": "🏛️🧾🖥️",
+      "alvo": "billing system",
+      "alvo_pt": "sistema de cobrança",
+      "conceito": "billing system = sistema de cobrança; Built in 2009 descreve o sujeito (the billing system).",
+      "var": [
+        {
+          "em": "is still running",
+          "aceita": [
+            "still runs"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "charging",
+        "collection"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d5fda6",
+      "quem": "dev-novo",
+      "contexto": "f-62ead0",
+      "cod": "Why haven't we replaced the billing system yet?",
+      "dica": "Por que a gente ainda não substituiu o sistema de cobrança?",
+      "img": "🤔🔄🧾",
+      "alvo": "billing system",
+      "alvo_pt": "sistema de cobrança",
+      "conceito": "ainda não + pergunta = haven't... yet (present perfect).",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "didn't",
+        "still"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-38f51c",
+      "quem": "voce",
+      "contexto": "f-d5fda6",
+      "cod": "Originally written in Java, it has a lot of tech debt.",
+      "dica": "Escrito originalmente em Java, ele tem muita dívida técnica.",
+      "img": "📜🧱⚠️",
+      "alvo": "Originally written in",
+      "alvo_pt": "Escrito originalmente em",
+      "conceito": "O it é obrigatório: it has a lot of tech debt. written: w mudo e tt.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01",
+        "BR46"
+      ],
+      "armadilhas": [
+        "writen",
+        "has"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "tech debt",
+          "aceita": [
+            "technical debt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-66dadf",
+      "quem": "voce",
+      "cod": "Written in Dart, the new app shares most of its code across platforms.",
+      "dica": "Escrito em Dart, o app novo compartilha a maior parte do código entre as plataformas.",
+      "img": "📱💻🔗",
+      "alvo": "Written in",
+      "alvo_pt": "Escrito em",
+      "conceito": "Written in + linguagem = escrito em; shares com -s (the new app).",
+      "var": [
+        {
+          "em": "across platforms",
+          "aceita": [
+            "between platforms",
+            "across all platforms"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02",
+        "BR46"
+      ],
+      "armadilhas": [
+        "writen",
+        "share"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-589c1a",
+      "quem": "voce",
+      "cod": "Compared with the old app, the new one opens twice as fast.",
+      "dica": "Em comparação com o app antigo, o novo abre duas vezes mais rápido.",
+      "img": "🐢🐇📱",
+      "alvo": "Compared with",
+      "alvo_pt": "Em comparação com",
+      "conceito": "Compared with = em comparação com; twice as fast = duas vezes mais rápido.",
+      "var": [
+        {
+          "em": "Compared with",
+          "aceita": [
+            "Compared to"
+          ]
+        },
+        {
+          "em": "opens",
+          "aceita": [
+            "starts"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "comparing",
+        "faster"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6e63f0",
+      "quem": "dev-novo",
+      "cod": "Did the move to the cloud increase our infrastructure costs?",
+      "dica": "A mudança para a nuvem aumentou nossos custos de infraestrutura?",
+      "img": "☁️💰❓",
+      "alvo": "infrastructure costs",
+      "alvo_pt": "custos de infraestrutura",
+      "conceito": "infrastructure costs = custos de infraestrutura (substantivo + substantivo, sem of).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR45"
+      ],
+      "armadilhas": [
+        "infraestructure",
+        "increased"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-530581",
+      "quem": "voce",
+      "contexto": "f-6e63f0",
+      "cod": "Compared with last year, they've gone down by almost a third.",
+      "dica": "Em comparação com o ano passado, eles caíram quase um terço.",
+      "img": "📉💵🎉",
+      "alvo": "Compared with",
+      "alvo_pt": "Em comparação com",
+      "conceito": "go down by a third = cair um terço (by marca o tamanho da queda).",
+      "var": [
+        {
+          "em": "Compared with",
+          "aceita": [
+            "Compared to"
+          ]
+        },
+        {
+          "em": "they've gone down",
+          "aceita": [
+            "they have gone down",
+            "they've dropped",
+            "they've fallen",
+            "they've come down",
+            "they went down",
+            "they dropped",
+            "they fell",
+            "they came down"
+          ]
+        }
+      ],
+      "opcional": [
+        "by"
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "comparing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f731c2",
+      "quem": "voce",
+      "cod": "In the best-case scenario, the new setup will cut our infrastructure costs in half.",
+      "dica": "No melhor cenário, a nova estrutura vai cortar nossos custos de infraestrutura pela metade.",
+      "img": "🌟✂️💰",
+      "alvo": "infrastructure costs",
+      "alvo_pt": "custos de infraestrutura",
+      "conceito": "best-case scenario = melhor cenário (reciclado); cut in half = cortar pela metade.",
+      "var": [
+        {
+          "em": "setup",
+          "aceita": [
+            "structure"
+          ]
+        },
+        {
+          "em": "In the best-case scenario",
+          "aceita": [
+            "In a best-case scenario"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR45"
+      ],
+      "armadilhas": [
+        "infraestructure"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

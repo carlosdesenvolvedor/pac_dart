@@ -1,0 +1,215 @@
+{
+  "id": "pro-dia-de-trabalho.fim-do-dia-1-1-e-mail-e-papo",
+  "trilha": "pro-dia-de-trabalho",
+  "nome": "Fim do dia: 1:1, e-mail e papo",
+  "emoji": "🌙",
+  "cena": "Fim do expediente no Brasil: 1:1 rápido com o dev júnior, e-mail de resumo para Sarah e Mike e uma conversa com Ben antes de desligar.",
+  "resumo": "Fechar o dia: long day, end-of-day summary, recap email e sign off.",
+  "fechamento": false,
+  "novos": [
+    "long day",
+    "end-of-day summary",
+    "recap email",
+    "sign off"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fechar o dia em inglês"
+    },
+    {
+      "t": "p",
+      "c": "No 1:1: **It's been a long day, so let's keep this short.** No fim: o **end-of-day summary** ou **recap email** para quem não estava, e **sign off** (encerrar o expediente)."
+    },
+    {
+      "t": "warn",
+      "c": "actually = na verdade (atualmente = currently). tell + pessoa: tell Ana (say não leva a pessoa direto)."
+    }
+  ],
+  "imagem": "🌙💻👋",
+  "visualizacao": "A luz da janela já está alaranjada. Você termina o 1:1, escreve o resumo do dia, lê a mensagem do Ben e sente o alívio de fechar o notebook.",
+  "foto_busca": "evening home office laptop sunset",
+  "trechos": [
+    {
+      "id": "f-ffaaf1",
+      "quem": "voce",
+      "cod": "I know it's been a long day, so let's keep this short.",
+      "dica": "Sei que foi um dia longo, então vamos ser breves.",
+      "img": "🌙⏳",
+      "alvo": "long day",
+      "alvo_pt": "dia longo",
+      "conceito": "It's been a long day = foi um dia longo (e ainda não acabou).",
+      "var": [
+        {
+          "em": "it's been",
+          "aceita": [
+            "it has been",
+            "it was"
+          ]
+        },
+        {
+          "em": "keep this short",
+          "aceita": [
+            "keep it short"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aad5e4",
+      "quem": "dev-novo",
+      "contexto": "f-ffaaf1",
+      "cod": "It's been a long day, but I actually learned a lot.",
+      "dica": "Foi um dia longo, mas na verdade aprendi muito.",
+      "img": "📚😊",
+      "alvo": "long day",
+      "alvo_pt": "dia longo",
+      "conceito": "It's been a long day: o dia ainda não acabou. actually = na verdade (atualmente = currently).",
+      "var": [
+        {
+          "em": "It's been",
+          "aceita": [
+            "It has been",
+            "It was"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "currently"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-140b7e",
+      "quem": "voce",
+      "contexto": "f-aad5e4",
+      "cod": "Great. Could you write a short end-of-day summary for the team?",
+      "dica": "Ótimo. Você poderia escrever um breve resumo de fim de dia para o time?",
+      "img": "📝🌇",
+      "alvo": "end-of-day summary",
+      "alvo_pt": "resumo de fim de dia",
+      "conceito": "end-of-day summary: os hifens juntam o qualificador antes do substantivo.",
+      "blocos": [
+        1
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-138b79",
+      "quem": "voce",
+      "cod": "End-of-day summary: the login bug is fixed, and the export was moved to next sprint.",
+      "dica": "Resumo de fim de dia: o bug do login foi corrigido, e a exportação foi movida para a próxima sprint.",
+      "img": "🧾🌆",
+      "alvo": "End-of-day summary",
+      "alvo_pt": "Resumo de fim de dia",
+      "conceito": "next sprint, sem the. login bug: substantivo + substantivo.",
+      "var": [
+        {
+          "em": "is fixed",
+          "aceita": [
+            "has been fixed",
+            "was fixed"
+          ]
+        },
+        {
+          "em": "was moved",
+          "aceita": [
+            "has been moved",
+            "got moved"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "the next sprint"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1f3dee",
+      "quem": "sarah",
+      "contexto": "f-138b79",
+      "cod": "Thanks for the recap email. Super clear, as always.",
+      "dica": "Valeu pelo e-mail de resumo. Superclaro, como sempre.",
+      "img": "📨👍",
+      "alvo": "recap email",
+      "alvo_pt": "e-mail de resumo",
+      "conceito": "recap = resumo do que aconteceu (de recapitulate).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c1d8e2",
+      "quem": "mike",
+      "cod": "Great recap email. Can you tell Ana about the export?",
+      "dica": "Ótimo e-mail de resumo. Você pode contar para a Ana sobre a exportação?",
+      "img": "📧👩",
+      "alvo": "recap email",
+      "alvo_pt": "e-mail de resumo",
+      "conceito": "tell + pessoa: tell Ana (não: say Ana, say to Ana).",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "armadilhas": [
+        "say ana",
+        "say to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-54fecf",
+      "quem": "ben",
+      "cod": "Hey, are you still working? Time to sign off!",
+      "dica": "Ei, você ainda está trabalhando? Hora de encerrar o expediente!",
+      "img": "🕕💻",
+      "alvo": "sign off",
+      "alvo_pt": "encerrar o expediente",
+      "conceito": "sign off = encerrar o expediente, sair do chat do trabalho.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bad3d1",
+      "quem": "voce",
+      "contexto": "f-54fecf",
+      "cod": "Yeah, I'm about to sign off. Talk tomorrow!",
+      "dica": "É, estou prestes a encerrar o expediente. A gente se fala amanhã!",
+      "img": "👋🌙",
+      "alvo": "sign off",
+      "alvo_pt": "encerrar o expediente",
+      "conceito": "be about to = estar prestes a.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Talk tomorrow!",
+          "aceita": [
+            "Talk to you tomorrow!"
+          ]
+        }
+      ]
+    }
+  ]
+}

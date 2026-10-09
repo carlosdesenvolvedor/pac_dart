@@ -1,0 +1,204 @@
+{
+  "id": "pro-escrita-tecnica.descricao-de-pr-e-changelog",
+  "trilha": "pro-escrita-tecnica",
+  "nome": "Descrição de PR e changelog",
+  "emoji": "📝",
+  "cena": "Você abre o pull request que implementa a primeira parte da RFC e escreve a descrição e a entrada de changelog.",
+  "resumo": "Descrição de PR: This PR introduces..., To test this locally..., pay particular attention to e o changelog.",
+  "fechamento": false,
+  "novos": [
+    "retry policy",
+    "locally",
+    "pay particular attention to",
+    "changelog"
+  ],
+  "apoio": [
+    "billing",
+    "this PR introduces",
+    "named constant"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A descrição do PR"
+    },
+    {
+      "t": "p",
+      "c": "O que muda (**This PR introduces...**), como testar (**To test this locally, run...**) e onde olhar com cuidado (**Reviewers should pay particular attention to...**)."
+    },
+    {
+      "t": "warn",
+      "c": "particular = especial, específico (privado = private). policy = política, regra (não: polícia)."
+    },
+    {
+      "t": "ex",
+      "c": "This PR introduces a retry policy for failed payments.\nEste PR introduz uma política de retentativa para pagamentos que falharam."
+    }
+  ],
+  "imagem": "📝🔁✅",
+  "visualizacao": "O código está pronto. Você abre o formulário do pull request, a caixa de descrição vazia pisca, e você explica o que mudou e como testar.",
+  "foto_busca": "pull request code screen developer",
+  "trechos": [
+    {
+      "id": "f-443ca6",
+      "quem": "voce",
+      "cod": "This PR introduces a retry policy for failed payments.",
+      "dica": "Este PR introduz uma política de retentativa para pagamentos que falharam.",
+      "img": "🔁💳",
+      "alvo": "retry policy",
+      "alvo_pt": "política de retentativa",
+      "conceito": "policy = política, regra (não: polícia, que é police).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56",
+        "BR02"
+      ],
+      "armadilhas": [
+        "politic",
+        "police"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-31cd3e",
+      "quem": "voce",
+      "cod": "The retry policy uses named constants instead of magic numbers.",
+      "dica": "A política de retentativa usa constantes com nome em vez de números mágicos.",
+      "img": "🏷️🔢",
+      "alvo": "retry policy",
+      "alvo_pt": "política de retentativa",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "use"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-55ffbf",
+      "quem": "voce",
+      "cod": "To test this locally, run the migration and start the app.",
+      "dica": "Para testar isso localmente, rode a migração e inicie o app.",
+      "img": "💻🧪",
+      "alvo": "locally",
+      "alvo_pt": "localmente",
+      "conceito": "Instrução escrita no imperativo: run, start.",
+      "var": [
+        {
+          "em": "test this",
+          "aceita": [
+            "test it"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-558b06",
+      "quem": "mike",
+      "cod": "It works locally, but one of the billing tests is failing in the pipeline.",
+      "dica": "Funciona localmente, mas um dos testes de cobrança está falhando no pipeline.",
+      "img": "🏠❌",
+      "alvo": "locally",
+      "alvo_pt": "localmente",
+      "conceito": "It works: o it é obrigatório, e works leva -s.",
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01",
+        "BR02"
+      ],
+      "armadilhas": [
+        "work",
+        "fail"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb74b8",
+      "quem": "voce",
+      "cod": "Reviewers should pay particular attention to the billing module.",
+      "dica": "Os revisores devem prestar atenção especial ao módulo de cobrança.",
+      "img": "👀💳",
+      "alvo": "pay particular attention to",
+      "alvo_pt": "prestar atenção especial ao",
+      "conceito": "particular = especial aqui (não: particular, privado).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56",
+        "BR45"
+      ],
+      "armadilhas": [
+        "special"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-867a10",
+      "quem": "voce",
+      "cod": "Please pay particular attention to how errors are logged.",
+      "dica": "Por favor, prestem atenção especial em como os erros são registrados.",
+      "img": "📜🔍",
+      "alvo": "pay particular attention to",
+      "alvo_pt": "prestem atenção especial em",
+      "conceito": "are logged: passiva, sem agente, como no texto técnico.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-92741a",
+      "quem": "mike",
+      "cod": "Could you also add a changelog entry for this?",
+      "dica": "Você poderia adicionar também uma entrada no changelog para isso?",
+      "img": "📒➕",
+      "alvo": "changelog",
+      "alvo_pt": "changelog",
+      "conceito": "changelog = a lista do que mudou em cada versão.",
+      "var": [
+        {
+          "em": "Could you",
+          "aceita": [
+            "Can you"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-170e57",
+      "quem": "voce",
+      "contexto": "f-92741a",
+      "cod": "Done. The changelog now says failed payments are retried automatically.",
+      "dica": "Feito. O changelog agora diz que pagamentos que falharam são tentados de novo automaticamente.",
+      "img": "✅📒",
+      "alvo": "changelog",
+      "alvo_pt": "changelog",
+      "conceito": "are retried: passiva no presente; says leva -s.",
+      "opcional": [
+        "now"
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR02",
+        "BR58"
+      ],
+      "armadilhas": [
+        "say"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

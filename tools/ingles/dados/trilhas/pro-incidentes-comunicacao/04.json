@@ -1,0 +1,219 @@
+{
+  "id": "pro-incidentes-comunicacao.postmortem-sem-culpados",
+  "trilha": "pro-incidentes-comunicacao",
+  "nome": "Postmortem sem culpados",
+  "emoji": "🔍",
+  "cena": "No postmortem, alguém começa a culpar o colega que fez o deploy, e você leva a conversa de volta ao processo e às ações.",
+  "resumo": "Postmortem sem culpados: finger-pointing, safeguard, guardrail, Had we... e ações com data limite.",
+  "fechamento": false,
+  "novos": [
+    "finger-pointing",
+    "safeguard",
+    "guardrail",
+    "due date"
+  ],
+  "apoio": [
+    "blameless",
+    "runbook",
+    "action item",
+    "owner"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O processo, não a pessoa"
+    },
+    {
+      "t": "p",
+      "c": "Redirecione: **This isn't about finger-pointing.** (não se trata de apontar culpados). No documento, a condicional invertida: **Had we had a safeguard, we would have caught it.**"
+    },
+    {
+      "t": "warn",
+      "c": "Se tivéssemos... teríamos... = Had we... we would have... (sem would dentro da condição; não: if we would have)."
+    },
+    {
+      "t": "ex",
+      "c": "Each action item needs an owner and a due date.\nCada item de ação precisa de um responsável e de uma data limite."
+    }
+  ],
+  "imagem": "🔍🤝🛡️",
+  "visualizacao": "Alguém começa a culpar o colega do deploy, e o clima pesa. Você levanta a mão, fala com calma e traz a conversa de volta para o processo.",
+  "foto_busca": "team meeting discussion calm",
+  "trechos": [
+    {
+      "id": "f-76065a",
+      "quem": "voce",
+      "contexto": "Honestly, whoever deployed this should have tested it better.",
+      "cod": "This isn't about finger-pointing.",
+      "dica": "Não se trata de apontar culpados.",
+      "img": "👉🚫",
+      "alvo": "finger-pointing",
+      "alvo_pt": "apontar culpados",
+      "lit": "[lit.: apontar o dedo]",
+      "conceito": "finger-pointing = apontar culpados; o postmortem é sem culpados (blameless).",
+      "var": [
+        {
+          "em": "This isn't",
+          "aceita": [
+            "It isn't",
+            "It's not"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-16e1cb",
+      "quem": "mike",
+      "contexto": "f-76065a",
+      "cod": "Agreed, let's avoid finger-pointing. The process failed, not the person.",
+      "dica": "Concordo, vamos evitar apontar culpados. O processo falhou, não a pessoa.",
+      "img": "⚙️🙅",
+      "alvo": "finger-pointing",
+      "alvo_pt": "apontar culpados",
+      "conceito": "avoid + -ing: avoid finger-pointing (não: avoid to point).",
+      "var": [
+        {
+          "em": "Agreed",
+          "aceita": [
+            "I agree"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4dcd17",
+      "quem": "sarah",
+      "cod": "What safeguard would have stopped this from reaching production?",
+      "dica": "Que salvaguarda teria impedido isso de chegar à produção?",
+      "img": "🛡️❓",
+      "alvo": "safeguard",
+      "alvo_pt": "salvaguarda",
+      "conceito": "safeguard = salvaguarda, mecanismo que protege contra um erro.",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "What safeguard",
+          "aceita": [
+            "Which safeguard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-915c97",
+      "quem": "voce",
+      "contexto": "f-4dcd17",
+      "cod": "A safeguard on config changes would have stopped it.",
+      "dica": "Uma salvaguarda nas mudanças de configuração teria impedido isso.",
+      "img": "🛡️⚙️",
+      "alvo": "safeguard",
+      "alvo_pt": "salvaguarda",
+      "conceito": "would have + particípio = teria + particípio: hipótese sobre o passado.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f2e905",
+      "quem": "voce",
+      "cod": "A guardrail in the pipeline should block risky config changes.",
+      "dica": "Uma trava de segurança no pipeline deveria bloquear mudanças de configuração arriscadas.",
+      "img": "🚧🔁",
+      "alvo": "guardrail",
+      "alvo_pt": "trava de segurança",
+      "lit": "[lit.: grade de proteção da estrada]",
+      "conceito": "guardrail = trava automática que impede o erro antes de chegar à produção.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-23d875",
+      "quem": "voce",
+      "cod": "Had we added a guardrail like this last year, nobody would have been paged.",
+      "dica": "Se tivéssemos adicionado uma trava de segurança assim no ano passado, ninguém teria sido acionado.",
+      "img": "🚧📟",
+      "alvo": "guardrail",
+      "alvo_pt": "trava de segurança",
+      "var": [
+        {
+          "em": "Had we added",
+          "aceita": [
+            "If we had added"
+          ]
+        }
+      ],
+      "blocos": [
+        9
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR57"
+      ],
+      "armadilhas": [
+        "would"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d2f8eb",
+      "quem": "voce",
+      "cod": "Each action item needs an owner and a due date.",
+      "dica": "Cada item de ação precisa de um responsável e de uma data limite.",
+      "img": "📋📅",
+      "alvo": "due date",
+      "alvo_pt": "data limite",
+      "conceito": "needs: -s com each. due date = data limite de uma tarefa.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "need"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-14ff47",
+      "quem": "mike",
+      "contexto": "f-d2f8eb",
+      "cod": "I'll own the runbook item. Let's set the due date for next Friday.",
+      "dica": "Eu assumo o item do runbook. Vamos marcar a data limite para a próxima sexta.",
+      "img": "🙋📘",
+      "alvo": "due date",
+      "alvo_pt": "data limite",
+      "conceito": "own = assumir uma tarefa; set the due date for = marcar a data limite para.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "it's",
+        "friday"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        5
+      ]
+    }
+  ]
+}

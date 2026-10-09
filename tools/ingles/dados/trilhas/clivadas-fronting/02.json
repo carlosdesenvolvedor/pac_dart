@@ -1,0 +1,226 @@
+{
+  "id": "clivadas-fronting.foi-so-na-sexta-que",
+  "trilha": "clivadas-fronting",
+  "nome": "Foi só na sexta que...",
+  "emoji": "📅",
+  "cena": "No post-mortem de um bug intermitente, você reconstrói com o time quando cada pista apareceu.",
+  "resumo": "Marcar o momento exato com It wasn't until + tempo ou oração + that + passado.",
+  "fechamento": false,
+  "novos": [
+    "it wasn't until",
+    "pattern",
+    "complaint",
+    "trace back to"
+  ],
+  "apoio": [
+    "config change",
+    "time zone",
+    "not... until"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Foi só na sexta que..."
+    },
+    {
+      "t": "p",
+      "c": "Para marcar o momento exato: **It wasn't until** + tempo ou oração + **that** + passado, em ordem normal: It wasn't until Friday that we found it (não: that did we find)."
+    },
+    {
+      "t": "warn",
+      "c": "BR53: trace back to = rastrear até a origem (não: trace until). The errors were traced back to a config change."
+    },
+    {
+      "t": "tip",
+      "c": "Também existem It was only on Friday that... e Not until Friday did we... (escrita). Aqui treinamos It wasn't until."
+    },
+    {
+      "t": "ex",
+      "c": "It wasn't until Monday that the client called.\nFoi só na segunda que o cliente ligou."
+    }
+  ],
+  "imagem": "📅🐞🔍",
+  "visualizacao": "Você está diante de um quadro branco cheio de horários e setas. O Mike segura a caneta, a Ana aponta um gráfico com picos à meia-noite e a linha do tempo vai fechando.",
+  "foto_busca": "whiteboard timeline team discussion",
+  "trechos": [
+    {
+      "id": "f-791a69",
+      "quem": "sarah",
+      "cod": "The first complaint came in on a Monday morning.",
+      "dica": "A primeira reclamação chegou numa segunda de manhã.",
+      "img": "📩😠🌅",
+      "alvo": "complaint",
+      "alvo_pt": "reclamação",
+      "conceito": "complaint = reclamação (de cliente); come in = chegar.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "came in",
+          "aceita": [
+            "arrived"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a78be5",
+      "quem": "voce",
+      "contexto": "f-791a69",
+      "cod": "But it wasn't until Friday that we found the cause.",
+      "dica": "Mas foi só na sexta que encontramos a causa.",
+      "img": "🗓️🔍",
+      "alvo": "it wasn't until",
+      "alvo_pt": "foi só",
+      "lit": "[lit.: não foi até sexta que encontramos]",
+      "conceito": "Foi só + tempo + que = It wasn't until + tempo + that, sem inversão depois de that.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-49b1f2",
+      "quem": "mike",
+      "cod": "We didn't open a ticket until the third complaint.",
+      "dica": "A gente não abriu um chamado até a terceira reclamação.",
+      "img": "🎫📨📨",
+      "alvo": "complaint",
+      "alvo_pt": "reclamação",
+      "conceito": "não... até = not... until: We didn't open a ticket until... (ordem normal, sem inversão).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "opened"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-074ec3",
+      "quem": "ana",
+      "cod": "I noticed a pattern. The errors only happened after midnight.",
+      "dica": "Notei um padrão. Os erros só aconteciam depois da meia-noite.",
+      "img": "🌙📉🔁",
+      "alvo": "pattern",
+      "alvo_pt": "padrão",
+      "conceito": "pattern = padrão (algo que se repete).",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5958597,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I noticed a pattern.\" (+ segunda frase sobre os erros); PT reescrito (original: \"Notei um padrão.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-3b13a7",
+      "quem": "voce",
+      "cod": "It wasn't until we compared both logs that the pattern made sense.",
+      "dica": "Foi só quando comparamos os dois logs que o padrão fez sentido.",
+      "img": "📄📄💡",
+      "alvo": "pattern",
+      "alvo_pt": "padrão",
+      "conceito": "Foi só quando + oração + que = It wasn't until + oração + that.",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "both logs",
+          "aceita": [
+            "the two logs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-927226",
+      "quem": "voce",
+      "cod": "In the end, the errors were traced back to a config change.",
+      "dica": "No fim, os erros foram rastreados até uma mudança de configuração.",
+      "img": "🧭⚙️",
+      "alvo": "traced back to",
+      "alvo_pt": "rastreados até",
+      "conceito": "trace back to = rastrear até a origem (não: trace until).",
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "until"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "config change",
+          "aceita": [
+            "configuration change"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-264868",
+      "quem": "mike",
+      "contexto": "f-927226",
+      "cod": "It wasn't until we checked the time zone settings that we saw it.",
+      "dica": "Foi só quando checamos as configurações de fuso horário que vimos isso.",
+      "img": "🕐🌍👀",
+      "alvo": "It wasn't until",
+      "alvo_pt": "Foi só",
+      "conceito": "Depois de that, ordem normal: that we saw it (não: that did we see it).",
+      "blocos": [
+        9
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "saw it",
+          "aceita": [
+            "saw that"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b96bbd",
+      "quem": "sarah",
+      "cod": "Were the other errors also traced back to that change?",
+      "dica": "Os outros erros também foram rastreados até essa mudança?",
+      "img": "❓🧭🔗",
+      "alvo": "traced back to",
+      "alvo_pt": "rastreados até",
+      "conceito": "Pergunta na passiva: Were + sujeito + particípio?",
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

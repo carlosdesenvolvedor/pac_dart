@@ -1,0 +1,202 @@
+{
+  "id": "pro-lideranca-feedback.receber-criticas",
+  "trilha": "pro-lideranca-feedback",
+  "nome": "Receber críticas",
+  "emoji": "🙏",
+  "cena": "Agora é você quem recebe: no seu 1:1, a diretora de engenharia diz que você interrompe as pessoas e que seus comentários às vezes soam duros.",
+  "resumo": "Receber uma crítica sem ficar na defensiva: agradecer, pedir exemplo e se comprometer.",
+  "fechamento": false,
+  "novos": [
+    "I appreciate you telling me",
+    "that's fair",
+    "keep it in mind",
+    "blind spot"
+  ],
+  "apoio": [
+    "work on"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Receber crítica sem se defender"
+    },
+    {
+      "t": "p",
+      "c": "Agradeça (**I appreciate you telling me.**), reconheça (**That's fair.**), peça um exemplo e diga o que vai fazer (**I'll keep it in mind.**)."
+    },
+    {
+      "t": "warn",
+      "c": "perceber = realize (realizar uma tarefa = carry out). Ter em mente = keep in mind (take on board é britânico; levar em conta = take into account)."
+    },
+    {
+      "t": "ex",
+      "c": "Could you give me a specific example?\nVocê poderia me dar um exemplo específico?"
+    }
+  ],
+  "imagem": "🙏👂🪞",
+  "visualizacao": "Agora é a diretora de engenharia quem conduz o 1:1. Ela fala devagar e com cuidado, e você sente a vontade de se defender subindo; respira e escuta.",
+  "foto_busca": "manager employee one on one conversation",
+  "trechos": [
+    {
+      "id": "f-726146",
+      "quem": "voce",
+      "contexto": "In design reviews, you sometimes interrupt people.",
+      "cod": "I appreciate you telling me. I hadn't realized that.",
+      "dica": "Agradeço por você me falar. Eu não tinha percebido isso.",
+      "img": "🙏👂",
+      "alvo": "I appreciate you telling me",
+      "alvo_pt": "Agradeço por você me falar",
+      "conceito": "perceber = realize (realizar uma tarefa = carry out).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "noticed"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8808af",
+      "quem": "voce",
+      "contexto": "Your code review comments can also feel harsh.",
+      "cod": "That's fair. Could you give me a specific example?",
+      "dica": "É justo. Você poderia me dar um exemplo específico?",
+      "img": "⚖️🔎",
+      "alvo": "That's fair",
+      "alvo_pt": "É justo",
+      "conceito": "That's fair. = É justo. (reconhece sem se defender)",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-19233c",
+      "quem": "voce",
+      "contexto": "In yesterday's thread about the payments API, you came across as harsh.",
+      "cod": "That's fair. I was probably too blunt in that thread.",
+      "dica": "É justo. Eu provavelmente fui seco demais naquela thread.",
+      "img": "🧵😬",
+      "alvo": "That's fair",
+      "alvo_pt": "É justo",
+      "conceito": "seco demais = too blunt (too antes do adjetivo).",
+      "pt_f": "É justo. Eu provavelmente fui seca demais naquela thread.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR19"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7ff281",
+      "quem": "voce",
+      "cod": "I'll keep it in mind during the next design review.",
+      "dica": "Vou ter isso em mente na próxima revisão de design.",
+      "img": "🧠📌",
+      "alvo": "keep it in mind",
+      "alvo_pt": "ter isso em mente",
+      "conceito": "keep in mind = ter em mente (take on board é britânico; levar em conta = take into account).",
+      "var": [
+        {
+          "em": "during",
+          "aceita": [
+            "in",
+            "at"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR63"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb7b14",
+      "quem": "voce",
+      "cod": "I received similar feedback last year, so I really need to keep it in mind.",
+      "dica": "Recebi um feedback parecido no ano passado, então eu preciso mesmo ter isso em mente.",
+      "img": "📨🔁",
+      "alvo": "keep it in mind",
+      "alvo_pt": "ter isso em mente",
+      "conceito": "feedback é incontável: similar feedback (não: a similar feedback). receive: ei depois de c.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR22",
+        "BR46",
+        "BR27"
+      ],
+      "armadilhas": [
+        "a",
+        "recieved",
+        "feedbacks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-541e3b",
+      "quem": "voce",
+      "cod": "I appreciate you telling me now instead of waiting for my review.",
+      "dica": "Agradeço por você me falar agora em vez de esperar a minha avaliação.",
+      "img": "💬📅",
+      "alvo": "I appreciate you telling me",
+      "alvo_pt": "Agradeço por você me falar",
+      "conceito": "instead of + -ing = em vez de: instead of waiting (não: instead of wait).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "wait"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bc3c9e",
+      "quem": "voce",
+      "cod": "It's probably a blind spot of mine.",
+      "dica": "Provavelmente é um ponto cego meu.",
+      "img": "🙈🔦",
+      "alvo": "blind spot",
+      "alvo_pt": "ponto cego",
+      "conceito": "blind spot = ponto cego, algo que a gente não enxerga em si mesmo. O it é obrigatório.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-84a7dd",
+      "quem": "voce",
+      "cod": "Interrupting people is a blind spot I really want to work on.",
+      "dica": "Interromper as pessoas é um ponto cego em que eu quero muito trabalhar.",
+      "img": "✋🗣️",
+      "alvo": "blind spot",
+      "alvo_pt": "ponto cego",
+      "conceito": "Verbo como sujeito leva -ing: Interrupting people is... work on = trabalhar em, melhorar.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52",
+        "BR21"
+      ],
+      "armadilhas": [
+        "interrupt",
+        "the"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

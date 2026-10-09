@@ -1,0 +1,202 @@
+{
+  "id": "pro-negociar-prazo-escopo.propor-alternativas-e-cortar-escopo",
+  "trilha": "pro-negociar-prazo-escopo",
+  "nome": "Propor alternativas e cortar escopo",
+  "emoji": "✂️",
+  "cena": "Na mesma conversa, você e a Sarah procuram uma saída: o que entra na primeira versão e o que pode esperar.",
+  "resumo": "Transformar o não em proposta: versão menor, fases e meio-termo.",
+  "fechamento": false,
+  "novos": [
+    "what if we shipped",
+    "compromise",
+    "must-have",
+    "split into phases"
+  ],
+  "apoio": [
+    "smaller version",
+    "nice-to-have",
+    "trim"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Do não à proposta"
+    },
+    {
+      "t": "p",
+      "c": "**What if we shipped...?** usa o passado para sugerir com leveza, como o nosso E se a gente entregasse...?"
+    },
+    {
+      "t": "tip",
+      "c": "must-have = essencial; nice-to-have = desejável, mas pode esperar."
+    },
+    {
+      "t": "warn",
+      "c": "compromise = meio-termo (compromisso de trabalho = commitment)."
+    },
+    {
+      "t": "ex",
+      "c": "As a compromise, we could launch with card payments only.\nComo meio-termo, poderíamos lançar só com pagamento por cartão."
+    }
+  ],
+  "imagem": "✂️📦⚖️",
+  "visualizacao": "A lista de funcionalidades está no quadro compartilhado. Você e a Sarah arrastam cartões para duas colunas: agora e depois.",
+  "foto_busca": "product team planning whiteboard",
+  "trechos": [
+    {
+      "id": "f-1f5165",
+      "quem": "voce",
+      "cod": "What if we shipped a smaller version first?",
+      "dica": "E se a gente entregasse uma versão menor primeiro?",
+      "img": "🤏🚀",
+      "alvo": "What if we shipped",
+      "alvo_pt": "E se a gente entregasse",
+      "conceito": "What if + passado = sugestão leve. ship = entregar, colocar no ar (jargão de produto).",
+      "registro": "informal",
+      "armadilhas": [
+        "ship"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7dfa6b",
+      "quem": "voce",
+      "cod": "What if we shipped the main flow now and added reports later?",
+      "dica": "E se a gente entregasse o fluxo principal agora e adicionasse os relatórios depois?",
+      "img": "🧭➕",
+      "alvo": "What if we shipped",
+      "alvo_pt": "E se a gente entregasse",
+      "conceito": "Os dois verbos ficam no passado: shipped... and added.",
+      "var": [
+        {
+          "em": "added reports",
+          "aceita": [
+            "added the reports"
+          ]
+        }
+      ],
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "add"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7aab32",
+      "quem": "sarah",
+      "contexto": "f-7dfa6b",
+      "cod": "Which features are must-haves for the client?",
+      "dica": "Quais funcionalidades são essenciais para o cliente?",
+      "img": "⭐❓",
+      "alvo": "must-have",
+      "alvo_pt": "essenciais",
+      "conceito": "must-have = item essencial, que não pode faltar.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "lit": "[lit.: coisas que têm que ter]"
+    },
+    {
+      "id": "f-9b45da",
+      "quem": "voce",
+      "contexto": "f-7aab32",
+      "cod": "Login and payments are must-haves. PDF export is a nice-to-have.",
+      "dica": "Login e pagamentos são essenciais. Exportar para PDF é só desejável.",
+      "img": "🔐💳",
+      "alvo": "must-have",
+      "alvo_pt": "essenciais",
+      "conceito": "nice-to-have = desejável, mas pode esperar.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8ea7a1",
+      "quem": "voce",
+      "cod": "Could we split this into two phases?",
+      "dica": "A gente poderia dividir isso em duas fases?",
+      "img": "✂️🪜",
+      "alvo": "split this into two phases",
+      "alvo_pt": "dividir isso em duas fases",
+      "conceito": "split into = dividir em.",
+      "registro": "informal",
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2bf5eb",
+      "quem": "sarah",
+      "contexto": "f-8ea7a1",
+      "cod": "If we split it into phases, does the client get something this month?",
+      "dica": "Se a gente dividir isso em fases, o cliente recebe alguma coisa este mês?",
+      "img": "📦🗓️",
+      "alvo": "split it into phases",
+      "alvo_pt": "dividir isso em fases",
+      "conceito": "Pergunta com does: does the client get (não: gets).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR28"
+      ],
+      "armadilhas": [
+        "gets"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "split it",
+          "aceita": [
+            "split this"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-44571d",
+      "quem": "voce",
+      "cod": "As a compromise, we could launch with card payments only.",
+      "dica": "Como meio-termo, poderíamos lançar só com pagamento por cartão.",
+      "img": "⚖️💳",
+      "alvo": "As a compromise",
+      "alvo_pt": "Como meio-termo",
+      "conceito": "compromise = meio-termo, acordo (compromisso = commitment).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "commitment"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-61d3c4",
+      "quem": "sarah",
+      "contexto": "f-44571d",
+      "cod": "That sounds like a fair compromise. I'll check with the client.",
+      "dica": "Parece um meio-termo justo. Vou confirmar com o cliente.",
+      "img": "🤝📞",
+      "alvo": "compromise",
+      "alvo_pt": "meio-termo",
+      "conceito": "sound like + substantivo = parecer.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

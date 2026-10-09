@@ -1,0 +1,203 @@
+{
+  "id": "pro-lideranca-feedback.cena-avaliacao-de-desempenho",
+  "trilha": "pro-lideranca-feedback",
+  "nome": "Cena: avaliação de desempenho",
+  "emoji": "🎬",
+  "cena": "Na avaliação semestral do dev júnior, agora mais experiente, você fala do ano dele, ele responde e vocês combinam metas.",
+  "resumo": "Fechamento: elogio, ponto de crescimento, resposta aberta e próximos passos numa conversa só.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A conversa de avaliação"
+    },
+    {
+      "t": "p",
+      "c": "Elogio específico (**I really appreciate how...**), um ponto de crescimento (**One thing I'd love to see more of...**), escuta e plano (**Let's set clear expectations.**)."
+    },
+    {
+      "t": "warn",
+      "c": "feedback não tem plural (That's fair feedback). Apoiar = support; perceber = realize."
+    }
+  ],
+  "imagem": "📋🌱🤝",
+  "visualizacao": "Fim de semestre. Você abre na tela o resumo do ano do dev júnior, e ele aparece na chamada bem mais confiante do que naquele primeiro 1:1.",
+  "foto_busca": "performance review conversation office",
+  "trechos": [
+    {
+      "id": "f-80ae22",
+      "quem": "voce",
+      "cod": "You've grown a lot this year, and your work on the outage really stood out.",
+      "dica": "Você cresceu muito este ano, e o seu trabalho na queda se destacou de verdade.",
+      "img": "🌱📈",
+      "alvo": "stood out",
+      "alvo_pt": "se destacou",
+      "conceito": "this year (ainda não acabou) = you've grown; stand out = se destacar (stood no passado).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "grew",
+        "standed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b2c081",
+      "quem": "voce",
+      "cod": "I really appreciate how you've helped the new devs get started.",
+      "dica": "Agradeço muito o jeito como você ajudou os devs novos a começar.",
+      "img": "🧑‍🏫🤝",
+      "alvo": "I really appreciate how",
+      "alvo_pt": "Agradeço muito o jeito como",
+      "conceito": "help someone get started = ajudar alguém a começar (sem to).",
+      "var": [
+        {
+          "em": "you've helped",
+          "aceita": [
+            "you helped"
+          ]
+        },
+        {
+          "em": "how you",
+          "aceita": [
+            "the way you"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0e1631",
+      "quem": "voce",
+      "cod": "One thing I'd love to see more of is you leading design discussions.",
+      "dica": "Uma coisa que eu adoraria ver mais é você conduzindo as discussões de design.",
+      "img": "🎨🗣️",
+      "alvo": "One thing I'd love to see more of",
+      "alvo_pt": "Uma coisa que eu adoraria ver mais",
+      "conceito": "design discussions = discussões de design (substantivo que qualifica vem antes).",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-643ad4",
+      "quem": "dev-junior",
+      "contexto": "f-0e1631",
+      "cod": "That's fair feedback. I've been a bit defensive in those discussions.",
+      "dica": "É um feedback justo. Ando meio na defensiva nessas discussões.",
+      "img": "🛡️😅",
+      "alvo": "That's fair feedback",
+      "alvo_pt": "É um feedback justo",
+      "conceito": "feedback incontável: fair feedback (não: a fair feedback). Ando = I've been.",
+      "blocos": [
+        3
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR22",
+        "BR27"
+      ],
+      "armadilhas": [
+        "a",
+        "feedbacks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aa8c6d",
+      "quem": "dev-junior",
+      "cod": "I appreciate you telling me. I hadn't realized how I was coming across.",
+      "dica": "Agradeço por você me falar. Eu não tinha percebido como eu estava soando.",
+      "img": "🙏💡",
+      "alvo": "I appreciate you telling me",
+      "alvo_pt": "Agradeço por você me falar",
+      "conceito": "perceber = realize; como eu estava soando = how I was coming across.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR50"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-71e30c",
+      "quem": "voce",
+      "cod": "Let's set clear expectations for the next six months.",
+      "dica": "Vamos definir expectativas claras para os próximos seis meses.",
+      "img": "🎯🗓️",
+      "alvo": "set clear expectations",
+      "alvo_pt": "definir expectativas claras",
+      "conceito": "set expectations = definir expectativas (o que se espera de cada um).",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6cde6e",
+      "quem": "voce",
+      "cod": "What kind of support do you need from me?",
+      "dica": "De que tipo de apoio você precisa de mim?",
+      "img": "🤲❓",
+      "alvo": "support",
+      "alvo_pt": "apoio",
+      "conceito": "apoio = support (suportar alguém = put up with). Pergunta com do.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-613451",
+      "quem": "dev-junior",
+      "contexto": "f-6cde6e",
+      "cod": "I'd be up for owning a small migration end to end.",
+      "dica": "Eu toparia ser responsável por uma migração pequena de ponta a ponta.",
+      "img": "🚚🏁",
+      "alvo": "be up for",
+      "alvo_pt": "toparia",
+      "conceito": "be up for + -ing: up for owning (não: up for own).",
+      "var": [
+        {
+          "em": "I'd",
+          "aceita": [
+            "I would"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "own"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

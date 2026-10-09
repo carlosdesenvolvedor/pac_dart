@@ -1,0 +1,290 @@
+{
+  "id": "nominalizacao-participiais.a-implementacao-do-sistema",
+  "trilha": "nominalizacao-participiais",
+  "nome": "A implementação do sistema",
+  "emoji": "🏗️",
+  "cena": "Você escreve o resumo executivo do projeto de modernização do app para a diretoria, com comentários da Sarah e do Mike.",
+  "resumo": "Escrever relatórios densos com the implementation of, the introduction of, completion of e phase.",
+  "fechamento": false,
+  "novos": [
+    "implementation",
+    "introduction",
+    "completion",
+    "phase"
+  ],
+  "apoio": [
+    "delivery",
+    "rollout"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Verbo vira substantivo no relatório"
+    },
+    {
+      "t": "p",
+      "c": "No texto escrito, a ação vira substantivo: implement → **implementation**, introduce → **introduction**, complete → **completion**. O molde é the + substantivo + of + objeto, e ele vira o sujeito da frase."
+    },
+    {
+      "t": "tip",
+      "c": "Em resumos, o substantivo pode vir sem artigo: Completion of the second phase... Na fala, o verbo continua natural: We implemented it in two years."
+    },
+    {
+      "t": "warn",
+      "c": "depende de = depends on (não: depends of). Grafia: implementation, approval (pp)."
+    },
+    {
+      "t": "ex",
+      "c": "The adoption of the new tool took months.\nA adoção da nova ferramenta levou meses."
+    }
+  ],
+  "imagem": "📑📈🏢",
+  "visualizacao": "Você está no escritório de casa, com o resumo executivo aberto na tela. O cursor pisca no título, o café esfria ao lado e a reunião com a diretoria é amanhã cedo.",
+  "foto_busca": "executive report laptop desk",
+  "trechos": [
+    {
+      "id": "f-790dce",
+      "quem": "voce",
+      "cod": "The implementation of the new system took two years.",
+      "dica": "A implementação do novo sistema levou dois anos.",
+      "img": "🏗️💻📅",
+      "alvo": "implementation",
+      "alvo_pt": "implementação",
+      "conceito": "implementar → implementation: no relatório, a ação vira substantivo (the implementation of).",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR45"
+      ],
+      "armadilhas": [
+        "implementing",
+        "implantation"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aa69f9",
+      "quem": "sarah",
+      "contexto": "f-790dce",
+      "cod": "Did the implementation of the gateway cost more than planned?",
+      "dica": "A implementação do gateway custou mais do que o planejado?",
+      "img": "💳💰❓",
+      "alvo": "implementation",
+      "alvo_pt": "implementação",
+      "conceito": "Pergunta no passado com did: Did... cost? (cost é irregular: cost, cost, cost).",
+      "var": [
+        {
+          "em": "than planned",
+          "aceita": [
+            "than we planned"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "costed"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-93157e",
+      "quem": "voce",
+      "cod": "We split the rollout into three phases to reduce the risk.",
+      "dica": "Dividimos o rollout em três fases para reduzir o risco.",
+      "img": "🪜🚀🛡️",
+      "alvo": "phases",
+      "alvo_pt": "fases",
+      "conceito": "phase = fase (de um projeto); split into = dividir em.",
+      "var": [
+        {
+          "em": "split",
+          "aceita": [
+            "divided"
+          ]
+        },
+        {
+          "em": "the risk",
+          "aceita": [
+            "risk"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "fases",
+        "stages"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-917933",
+      "quem": "voce",
+      "cod": "The introduction of automated tests has reduced the number of production incidents.",
+      "dica": "A introdução de testes automatizados reduziu o número de incidentes em produção.",
+      "img": "🤖🧪📉",
+      "alvo": "introduction",
+      "alvo_pt": "introdução",
+      "conceito": "introduce → introduction: a chegada de algo novo num processo vira o sujeito da frase.",
+      "var": [
+        {
+          "em": "has reduced",
+          "aceita": [
+            "reduced"
+          ]
+        },
+        {
+          "em": "production incidents",
+          "aceita": [
+            "incidents in production"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "introducing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c8f591",
+      "quem": "mike",
+      "cod": "Since the introduction of feature flags, we've had far fewer rollbacks.",
+      "dica": "Desde a introdução das feature flags, tivemos bem menos rollbacks.",
+      "img": "🚩⏪📉",
+      "alvo": "introduction",
+      "alvo_pt": "introdução",
+      "conceito": "Since + marco no passado pede present perfect: we've had (não: we had).",
+      "var": [
+        {
+          "em": "far fewer",
+          "aceita": [
+            "a lot fewer",
+            "many fewer"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "had",
+        "less"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-07bc43",
+      "quem": "voce",
+      "cod": "Completion of the second phase depends on approval from the security team.",
+      "dica": "A conclusão da segunda fase depende da aprovação do time de segurança.",
+      "img": "✅🔐👥",
+      "alvo": "Completion",
+      "alvo_pt": "conclusão",
+      "conceito": "Em resumos, a nominalização pode vir sem artigo: Completion of... = A conclusão de...",
+      "var": [
+        {
+          "em": "Completion",
+          "aceita": [
+            "The completion"
+          ]
+        },
+        {
+          "em": "approval from the security team",
+          "aceita": [
+            "the security team's approval"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR53",
+        "BR45"
+      ],
+      "armadilhas": [
+        "of",
+        "conclusion"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7f3026",
+      "quem": "voce",
+      "cod": "Completion of the project is expected by the end of June.",
+      "dica": "A conclusão do projeto está prevista para o fim de junho.",
+      "img": "🏁📆",
+      "alvo": "Completion",
+      "alvo_pt": "conclusão",
+      "conceito": "is expected by = está prevista para: passiva típica de relatório.",
+      "var": [
+        {
+          "em": "Completion",
+          "aceita": [
+            "The completion"
+          ]
+        },
+        {
+          "em": "by the end",
+          "aceita": [
+            "at the end",
+            "for the end"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "conclusion",
+        "expects"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-31e15f",
+      "quem": "mike",
+      "cod": "For the final phase, we're looking at three months or so.",
+      "dica": "Para a fase final, estamos falando de uns três meses.",
+      "img": "⏳🔚🗓️",
+      "alvo": "phase",
+      "alvo_pt": "fase",
+      "conceito": "we're looking at + estimativa = estamos falando de; or so = uns, mais ou menos.",
+      "var": [
+        {
+          "em": "three months or so",
+          "aceita": [
+            "about three months",
+            "around three months"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "fase"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

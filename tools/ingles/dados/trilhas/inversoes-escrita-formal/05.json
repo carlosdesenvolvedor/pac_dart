@@ -1,0 +1,188 @@
+{
+  "id": "inversoes-escrita-formal.cena-discurso-de-fim-de-ano-e-e-mail",
+  "trilha": "inversoes-escrita-formal",
+  "nome": "Cena: discurso de fim de ano e e-mail",
+  "emoji": "🥂",
+  "cena": "Na festa de fim de ano você faz um discurso para o time e, na segunda, escreve ao cliente.",
+  "resumo": "Usar as inversões no discurso e no e-mail, e a forma direta na conversa (If I'd known...), sem itens novos.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "Little did I know",
+    "trim",
+    "be charged",
+    "uptime"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Discurso e e-mail"
+    },
+    {
+      "t": "p",
+      "c": "Discurso e e-mail formal aceitam a inversão: Little did I know..., Not only did we..., Should you accept... Na conversa depois da festa, volte à forma direta: If I'd known..."
+    },
+    {
+      "t": "warn",
+      "c": "BR57: na conversa depois da festa, If I'd known... (não: Had I known...). Hardly... when, No sooner... than, Scarcely, Were I to e But for: só para reconhecer, não para digitar."
+    }
+  ],
+  "imagem": "🥂🎤✉️",
+  "visualizacao": "Você está de pé no salão da festa, taça na mão, o time inteiro em silêncio esperando o discurso. Na segunda, a casa quieta e o e-mail ao cliente aberto na tela.",
+  "foto_busca": "office holiday party speech toast",
+  "trechos": [
+    {
+      "id": "f-34101e",
+      "quem": "voce",
+      "cod": "When I joined, little did I know that I'd be leading this team.",
+      "dica": "(no discurso) Quando entrei, mal sabia eu que ia liderar este time.",
+      "img": "🤷‍♂️👥🚀",
+      "alvo": "little did I know",
+      "alvo_pt": "mal sabia eu",
+      "conceito": "Little did I know = mal sabia eu: inversão de discurso e de narrativa.",
+      "blocos": [
+        3
+      ],
+      "registro": "formal",
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I'd be leading",
+          "aceita": [
+            "I would be leading",
+            "I was going to lead",
+            "I'd lead"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6c5ba4",
+      "quem": "voce",
+      "cod": "Not only did we hit every milestone, but we also kept uptime high.",
+      "dica": "(no discurso) Não só batemos todos os marcos, como também mantivemos a disponibilidade alta.",
+      "img": "🏆📈🟢",
+      "alvo": "Not only did we",
+      "alvo_pt": "Não só",
+      "conceito": "uptime = disponibilidade (tempo no ar).",
+      "blocos": [
+        7
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9a5a7a",
+      "quem": "voce",
+      "cod": "Never before had this team shipped so much in a single year.",
+      "dica": "(no discurso) Nunca antes este time tinha entregado tanto em um único ano.",
+      "img": "📦📦🗓️",
+      "alvo": "Never before had",
+      "alvo_pt": "Nunca antes",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-25a2a1",
+      "quem": "voce",
+      "cod": "Were it not for your hard work, none of this would have been possible.",
+      "dica": "(no discurso) Se não fosse o trabalho duro de vocês, nada disso teria sido possível.",
+      "img": "💪🙌",
+      "alvo": "Were it not for",
+      "alvo_pt": "Se não fosse",
+      "blocos": [
+        7
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR01",
+        "BR57"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6f7cc9",
+      "quem": "mike",
+      "contexto": "f-25a2a1",
+      "cod": "Great speech! If I'd known you were giving one, I would have recorded it.",
+      "dica": "(na conversa) Ótimo discurso! Se eu soubesse que você ia discursar, teria gravado.",
+      "img": "🎤📹",
+      "alvo": "If I'd known",
+      "alvo_pt": "Se eu soubesse",
+      "conceito": "Na conversa, sem inversão: If I'd known (não: Had I known). O objeto it é obrigatório.",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR57",
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "you were giving one",
+          "aceita": [
+            "you were going to give one",
+            "you were giving a speech",
+            "you were going to give a speech"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f0376b",
+      "quem": "voce",
+      "cod": "Should you accept these terms, we can start on May 1.",
+      "dica": "(e-mail) Caso vocês aceitem esses termos, podemos começar em 1º de maio.",
+      "img": "📩✅📅",
+      "alvo": "Should you",
+      "alvo_pt": "Caso vocês",
+      "conceito": "Data escrita em inglês americano: May 1 (dito: May first).",
+      "blocos": [
+        5
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR57"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-87e49c",
+      "quem": "voce",
+      "cod": "We can also trim the scope, provided that the launch date stays the same.",
+      "dica": "(e-mail) Também podemos enxugar o escopo, contanto que a data de lançamento continue a mesma.",
+      "img": "✂️📋📅",
+      "alvo": "provided that",
+      "alvo_pt": "contanto que",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4791db",
+      "quem": "voce",
+      "cod": "Under no circumstances will you be charged for the extra testing.",
+      "dica": "(e-mail) Em hipótese alguma vocês serão cobrados pelos testes extras.",
+      "img": "🧾🚫",
+      "alvo": "Under no circumstances",
+      "alvo_pt": "Em hipótese alguma",
+      "conceito": "Com will: Under no circumstances will you be charged (o auxiliar antes do sujeito).",
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,245 @@
+{
+  "id": "passivas-impessoais.cena-final-relatorio-a-diretoria",
+  "trilha": "passivas-impessoais",
+  "nome": "Cena final: relatório à diretoria",
+  "emoji": "🎬",
+  "cena": "Fim de trimestre: você apresenta à diretoria o relatório do seu time, com números, riscos e o que se espera do próximo trimestre.",
+  "resumo": "Fechamento: todas as passivas impessoais num relatório formal, com get + particípio só na conversa.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "on track",
+    "action items"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Duas formas de \"espera-se que\""
+    },
+    {
+      "t": "p",
+      "c": "**It is expected that** + oração completa, ou **sujeito + is expected to** + verbo. As duas estão certas; não misture (não: It is expected to that...)."
+    },
+    {
+      "t": "warn",
+      "c": "Espera-se, estima-se e acredita-se viram passiva com it ou com o sujeito na frente (não: Expects that... / Is expected that...)."
+    },
+    {
+      "t": "tip",
+      "c": "Na conversa, depois da reunião, o passivo fica informal com get: **Did you get asked about the budget?**"
+    },
+    {
+      "t": "ex",
+      "c": "The project is expected to be completed by the end of the second quarter.\nEspera-se que o projeto seja concluído até o fim do segundo trimestre."
+    }
+  ],
+  "imagem": "📊👔🎤",
+  "visualizacao": "Sala de reunião, o gráfico do trimestre projetado na parede. A diretoria escuta em silêncio, alguém anota, e você passa para o próximo slide.",
+  "foto_busca": "boardroom quarterly report presentation",
+  "trechos": [
+    {
+      "id": "f-38fe32",
+      "quem": "voce",
+      "cod": "The project is expected to be completed by the end of the second quarter.",
+      "dica": "Espera-se que o projeto seja concluído até o fim do segundo trimestre.",
+      "img": "📁✅🗓️",
+      "alvo": "is expected to",
+      "alvo_pt": "Espera-se que",
+      "conceito": "sujeito + is expected to + verbo = espera-se que o sujeito...",
+      "var": [
+        {
+          "em": "The project is expected to be completed",
+          "aceita": [
+            "It is expected that the project will be completed"
+          ]
+        }
+      ],
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-acfe26",
+      "quem": "voce",
+      "cod": "It is estimated that the new architecture will save us around $40,000 a year.",
+      "dica": "Estima-se que a nova arquitetura nos faça economizar cerca de US$ 40.000 por ano.",
+      "img": "🏗️💵📉",
+      "alvo": "It is estimated",
+      "alvo_pt": "Estima-se",
+      "conceito": "save us money = nos fazer economizar; $40,000 = US$ 40.000.",
+      "var": [
+        {
+          "em": "around",
+          "aceita": [
+            "about"
+          ]
+        },
+        {
+          "em": "a year",
+          "aceita": [
+            "per year"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-682a77",
+      "quem": "voce",
+      "cod": "Having been delayed twice, the migration is now on track for March.",
+      "dica": "Tendo sido adiada duas vezes, a migração agora está nos trilhos para março.",
+      "img": "🔁🛤️📅",
+      "alvo": "Having been",
+      "alvo_pt": "Tendo sido",
+      "conceito": "on track = nos trilhos, no caminho certo.",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-324915",
+      "quem": "voce",
+      "cod": "Attrition is expected to stay below five percent next quarter.",
+      "dica": "Espera-se que a rotatividade fique abaixo de cinco por cento no próximo trimestre.",
+      "img": "🚪👥📉",
+      "alvo": "is expected to",
+      "alvo_pt": "Espera-se que",
+      "conceito": "attrition = rotatividade (gente saindo da empresa).",
+      "var": [
+        {
+          "em": "Attrition is expected to stay",
+          "aceita": [
+            "It is expected that attrition will stay"
+          ]
+        }
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9dab31",
+      "quem": "diretora",
+      "cod": "Did the external audit find any serious problems?",
+      "dica": "A auditoria externa encontrou algum problema sério?",
+      "img": "🔍❓🧾",
+      "conceito": "Pergunta no passado: Did + verbo base (find, não found).",
+      "registro": "formal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "found"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "problems",
+          "aceita": [
+            "issues"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-457df0",
+      "quem": "voce",
+      "contexto": "f-9dab31",
+      "cod": "Just one, and no customer data is believed to have been exposed.",
+      "dica": "Só um, e acredita-se que nenhum dado de cliente tenha ficado exposto.",
+      "img": "☝️🔒👥",
+      "alvo": "is believed to have been",
+      "alvo_pt": "acredita-se que",
+      "conceito": "no + substantivo já nega: no customer data is believed (não: isn't).",
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "isn't"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "no customer data is believed to have been exposed",
+          "aceita": [
+            "it is believed that no customer data was exposed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1628b7",
+      "quem": "voce",
+      "cod": "To avoid being caught off guard again, we now run security tests every week.",
+      "dica": "Para evitar sermos pegos de surpresa de novo, agora fazemos testes de segurança toda semana.",
+      "img": "🛡️🔁📅",
+      "alvo": "avoid being",
+      "alvo_pt": "evitar sermos",
+      "conceito": "avoid + being + particípio; caught off guard = pego de surpresa.",
+      "var": [
+        {
+          "em": "run",
+          "aceita": [
+            "do"
+          ]
+        }
+      ],
+      "blocos": [
+        7
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-506fc2",
+      "quem": "mike",
+      "cod": "Nice job! Did you get asked about the budget?",
+      "dica": "Mandou bem! Te perguntaram sobre o orçamento?",
+      "img": "👏💬💰",
+      "alvo": "get asked",
+      "alvo_pt": "Te perguntaram",
+      "conceito": "Na conversa, get + particípio: Did you get asked? (no texto formal, were you asked).",
+      "var": [
+        {
+          "em": "Did you get asked",
+          "aceita": [
+            "Were you asked",
+            "Did they ask you"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

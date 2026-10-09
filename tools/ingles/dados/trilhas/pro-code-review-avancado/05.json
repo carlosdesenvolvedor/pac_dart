@@ -1,0 +1,238 @@
+{
+  "id": "pro-code-review-avancado.cena-o-pr-polemico",
+  "trilha": "pro-code-review-avancado",
+  "nome": "Cena: o PR polêmico",
+  "emoji": "🎬",
+  "cena": "Depois de vários comentários, você, o autor do PR e o Mike chegam a um acordo numa thread longa.",
+  "resumo": "Uma discussão inteira de PR de memória: rotular, discordar, explicar, ceder e fechar o acordo.",
+  "fechamento": true,
+  "novos": [],
+  "apoio": [
+    "blocking",
+    "explain to",
+    "follow-up PR",
+    "I see where you're coming from",
+    "in the end"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fechar o acordo"
+    },
+    {
+      "t": "p",
+      "c": "Para fechar: **Fair enough.** (justo), **Let's keep...** (vamos manter...), **I'll keep it as is** (vou deixar como está). Para contar o que pesou: **What convinced me in the end was...**"
+    },
+    {
+      "t": "warn",
+      "c": "in the end = no fim. eventually também é no fim, com o tempo (não: eventualmente)."
+    }
+  ],
+  "imagem": "🎬💬✅",
+  "visualizacao": "Você rola uma thread longa, com dezenas de comentários. Entra numa chamada rápida com o Mike, ouve vozes calmas e, no fim, clica no botão verde de aprovar.",
+  "foto_busca": "team video call agreement laptop",
+  "trechos": [
+    {
+      "id": "f-e5dae9",
+      "quem": "mike",
+      "cod": "Is this still blocking, or can we merge it today?",
+      "dica": "Isso ainda é bloqueante, ou dá para fazer o merge hoje?",
+      "img": "🛑❔",
+      "alvo": "blocking",
+      "alvo_pt": "bloqueante",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "it"
+      ]
+    },
+    {
+      "id": "f-d7a78e",
+      "quem": "voce",
+      "contexto": "f-e5dae9",
+      "cod": "I still think it's blocking, but I'm happy to jump on a call.",
+      "dica": "Ainda acho que é bloqueante, mas topo entrar numa chamada rápida.",
+      "img": "📞🛑",
+      "alvo": "I'm happy to",
+      "alvo_pt": "topo",
+      "conceito": "jump on a call = entrar rapidinho numa chamada.",
+      "blocos": [
+        5
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "jump on a call",
+          "aceita": [
+            "jump on a quick call"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b63ab1",
+      "quem": "colega",
+      "contexto": "f-d7a78e",
+      "cod": "Could you explain to us what breaks if we merge it as is?",
+      "dica": "Você poderia nos explicar o que quebra se fizermos o merge assim como está?",
+      "img": "💥❓",
+      "alvo": "explain to us",
+      "alvo_pt": "nos explicar",
+      "conceito": "explain to us (não: explain us); as is = assim como está.",
+      "blocos": [
+        4
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR54",
+        "BR28"
+      ],
+      "armadilhas": [
+        "us"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bc334d",
+      "quem": "voce",
+      "contexto": "f-b63ab1",
+      "cod": "Clients still on the old format would be unable to log in.",
+      "dica": "Os clientes que ainda estão no formato antigo não conseguiriam fazer login.",
+      "img": "🔒📱",
+      "alvo": "unable to",
+      "alvo_pt": "não conseguiriam",
+      "var": [
+        {
+          "em": "would be unable to",
+          "aceita": [
+            "wouldn't be able to"
+          ]
+        },
+        {
+          "em": "Clients still on",
+          "aceita": [
+            "Clients who are still on",
+            "Clients that are still on",
+            "The clients still on"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-203339",
+      "quem": "mike",
+      "cod": "I see where you're coming from. Let's keep both formats for one release.",
+      "dica": "Entendo o seu lado. Vamos manter os dois formatos por uma release.",
+      "img": "🤝🔀",
+      "alvo": "I see where you're coming from",
+      "alvo_pt": "Entendo o seu lado",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR63"
+      ],
+      "armadilhas": [
+        "during"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "both formats",
+          "aceita": [
+            "the two formats"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-339115",
+      "quem": "colega",
+      "contexto": "f-203339",
+      "cod": "Fair enough. I'll bring back the old format and remove it in a follow-up PR.",
+      "dica": "Justo. Vou trazer de volta o formato antigo e removê-lo num PR de acompanhamento.",
+      "img": "👌🔙",
+      "alvo": "follow-up PR",
+      "alvo_pt": "PR de acompanhamento",
+      "blocos": [
+        2
+      ],
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "bring back the old format",
+          "aceita": [
+            "bring the old format back"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d6b4db",
+      "quem": "voce",
+      "cod": "What convinced me in the end was how easy the new code is to test.",
+      "dica": "O que me convenceu no fim foi como o código novo é fácil de testar.",
+      "img": "🧪🏁",
+      "alvo": "in the end",
+      "alvo_pt": "no fim",
+      "conceito": "in the end = no fim (eventually também; não: eventualmente).",
+      "blocos": [
+        6
+      ],
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "eventually"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6e60c6",
+      "quem": "voce",
+      "cod": "Approved! Nice work, and thanks for being open to feedback.",
+      "dica": "Aprovado! Bom trabalho, e obrigado por estar aberto a feedback.",
+      "pt_f": "Aprovado! Bom trabalho, e obrigada por estar aberto a feedback.",
+      "img": "✅🙌",
+      "alvo": "open to feedback",
+      "alvo_pt": "aberto a feedback",
+      "conceito": "open to feedback: sem artigo, porque feedback é incontável.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR22",
+        "BR13"
+      ],
+      "armadilhas": [
+        "a",
+        "feedbacks"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Nice work",
+          "aceita": [
+            "Good work"
+          ]
+        }
+      ]
+    }
+  ]
+}

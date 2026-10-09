@@ -1,0 +1,189 @@
+{
+  "id": "pro-apresentacoes-demos.conduzir-a-demo",
+  "trilha": "pro-apresentacoes-demos",
+  "nome": "Conduzir a demo",
+  "emoji": "🖥️",
+  "cena": "Na sprint review, você mostra ao vivo, compartilhando a tela, o novo painel de pedidos em tempo real.",
+  "resumo": "Narrar uma demo ao vivo: guiar o olhar, explicar os bastidores e pedir paciência com bom humor.",
+  "fechamento": false,
+  "novos": [
+    "as you can see",
+    "behind the scenes",
+    "in real time",
+    "bear with me"
+  ],
+  "apoio": [
+    "fingers crossed",
+    "dashboard"
+  ],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Narrar a demo ao vivo"
+    },
+    {
+      "t": "p",
+      "c": "Guie o olhar (**As you can see**), explique o que não aparece na tela (**Behind the scenes**) e peça um instante com bom humor (**Bear with me**)."
+    },
+    {
+      "t": "tip",
+      "c": "Fingers crossed. = Torçam por mim. Dito logo antes do momento da verdade."
+    },
+    {
+      "t": "ex",
+      "c": "Every new order shows up in real time.\nCada pedido novo aparece em tempo real."
+    }
+  ],
+  "imagem": "🖥️📊🛒",
+  "visualizacao": "Você compartilha a tela na sprint review. No canto, os rostos da Sarah, do Mike e de outros times; no centro, o painel de pedidos esperando o primeiro pedido de teste.",
+  "foto_busca": "developer screen sharing video call",
+  "trechos": [
+    {
+      "id": "f-038eb2",
+      "quem": "voce",
+      "cod": "Bear with me for a second. I'm sharing my screen now.",
+      "dica": "Tenham paciência comigo um segundo. Estou compartilhando minha tela agora.",
+      "img": "🖥️⏳",
+      "alvo": "Bear with me",
+      "alvo_pt": "Tenham paciência comigo",
+      "lit": "[lit.: aguentem comigo]",
+      "conceito": "bear with me = tenham paciência comigo (pedido educado de um instante).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8eadc3",
+      "quem": "voce",
+      "cod": "As you can see, this is the new orders dashboard.",
+      "dica": "Como vocês podem ver, este é o novo painel de pedidos.",
+      "img": "👀📊",
+      "alvo": "As you can see",
+      "alvo_pt": "Como vocês podem ver",
+      "conceito": "dashboard = painel. orders dashboard: o substantivo que qualifica vem antes.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6c12c4",
+      "quem": "voce",
+      "cod": "Every new order shows up here in real time.",
+      "dica": "Cada pedido novo aparece aqui em tempo real.",
+      "img": "🛒⚡",
+      "alvo": "in real time",
+      "alvo_pt": "em tempo real",
+      "conceito": "show up = aparecer (na tela).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "armadilhas": [
+        "show"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5463ee",
+      "quem": "sarah",
+      "contexto": "f-6c12c4",
+      "cod": "Does the sales team get these updates in real time too?",
+      "dica": "O time de vendas também recebe essas atualizações em tempo real?",
+      "img": "👥🔔",
+      "alvo": "in real time",
+      "alvo_pt": "em tempo real",
+      "conceito": "Pergunta com does: Does the team get...? (não: gets).",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "gets"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7e1fe1",
+      "quem": "voce",
+      "contexto": "f-5463ee",
+      "cod": "Yes. Behind the scenes, the app sends an event to a queue.",
+      "dica": "Sim. Nos bastidores, o app manda um evento para uma fila.",
+      "img": "⚙️📨",
+      "alvo": "Behind the scenes",
+      "alvo_pt": "Nos bastidores",
+      "conceito": "behind the scenes = nos bastidores, o que acontece por trás da tela.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8dae00",
+      "quem": "voce",
+      "cod": "Behind the scenes, the dashboard doesn't ask the server for updates anymore.",
+      "dica": "Nos bastidores, o painel não pede mais atualizações ao servidor.",
+      "img": "🚫🔄",
+      "alvo": "Behind the scenes",
+      "alvo_pt": "Nos bastidores",
+      "conceito": "não... mais = not... anymore, no fim da frase. ask for = pedir.",
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "don't",
+        "more"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3fe9ca",
+      "quem": "voce",
+      "cod": "Fingers crossed. Bear with me while I place a test order.",
+      "dica": "Torçam por mim. Tenham paciência comigo enquanto eu faço um pedido de teste.",
+      "img": "🤞🧪",
+      "alvo": "Bear with me",
+      "alvo_pt": "Tenham paciência comigo",
+      "conceito": "Fingers crossed = torçam por mim (dedos cruzados). place an order = fazer um pedido.",
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "make",
+        "do"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-50421e",
+      "quem": "voce",
+      "cod": "There it is. As you can see, the order showed up in less than a second.",
+      "dica": "Aí está. Como vocês podem ver, o pedido apareceu em menos de um segundo.",
+      "img": "✅⏱️",
+      "alvo": "As you can see",
+      "alvo_pt": "Como vocês podem ver",
+      "conceito": "There it is! = Aí está! (quando a coisa finalmente aparece).",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}
