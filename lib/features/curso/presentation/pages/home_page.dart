@@ -63,8 +63,11 @@ class _HomePageState extends State<HomePage> {
           BlocListener<CursoBloc, CursoState>(
             // lição digitada até o fim → publica a conquista no ranking
             listenWhen: (a, b) => !a.vitoria && b.vitoria,
-            listener: (context, _) => RankingCubit.de(context)
-                ?.licaoConcluida(context.read<TypingBloc>().state),
+            listener: (context, st) {
+              // texto que a própria pessoa colou não vale no placar (o conteúdo é dela)
+              if (st.trilha.propria) return;
+              RankingCubit.de(context)?.licaoConcluida(context.read<TypingBloc>().state);
+            },
           ),
         ],
         child: BlocBuilder<CursoBloc, CursoState>(

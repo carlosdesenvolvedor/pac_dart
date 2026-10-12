@@ -2,13 +2,13 @@ import 'package:equatable/equatable.dart';
 
 /// Como foi a frase digitada DE MEMÓRIA numa revisão.
 enum ResultadoRevisao {
-  /// Muitas palavras erradas, muita dica ou "não sei": desce duas caixas.
+  /// Muitas palavras erradas, muita dica ou "não sei": nota "errei" (Again).
   errou,
 
-  /// Saiu com tropeços (poucos erros ou uma dica): fica na mesma caixa.
+  /// Saiu com tropeços (poucos erros ou uma dica): nota "difícil" (Hard).
   hesitou,
 
-  /// Saiu limpa: sobe de caixa e o intervalo cresce.
+  /// Saiu limpa: nota "bom" (Good) e o intervalo cresce.
   acertou,
 }
 
@@ -19,7 +19,8 @@ ResultadoRevisao contestar(ResultadoRevisao r) => switch (r) {
       _ => ResultadoRevisao.acertou,
     };
 
-/// Estado de uma frase na revisão espaçada (sistema de caixas de Leitner).
+/// O cartão ANTIGO da revisão (caixas de Leitner), mantido só para LER o que já
+/// estava gravado e convertê-lo em [CartaoSrs] (o motor agora é o FSRS).
 class CartaoRevisao extends Equatable {
   /// 1 = acabou de aprender … [Revisao.intervalos].length = dominada.
   final int caixa;
@@ -32,7 +33,7 @@ class CartaoRevisao extends Equatable {
 
   const CartaoRevisao({required this.caixa, required this.proximoDia, this.lapsos = 0});
 
-  /// "caixa|dia|lapsos" — compacto para caber milhares no documento.
+  /// "caixa|dia|lapsos".
   String codificar() => '$caixa|$proximoDia|$lapsos';
 
   static CartaoRevisao? decodificar(Object? bruto) {
@@ -48,17 +49,15 @@ class CartaoRevisao extends Equatable {
     );
   }
 
-  bool devidaEm(int hoje) => proximoDia <= hoje;
-  bool get dominada => caixa >= Revisao.intervalos.length;
-
   @override
   List<Object?> get props => [caixa, proximoDia, lapsos];
 }
 
-/// Regras da revisão espaçada do curso de inglês.
+/// Regras comuns da revisão espaçada do curso de inglês (o agendador, que é o
+/// FSRS, está em `srs.dart`).
 class Revisao {
-  /// Dias até a próxima revisão para cada caixa (caixa 1 = índice 0) —
-  /// expansivos, como no dossiê 01 §5.4 (alternativa ao FSRS).
+  /// Dias de cada caixa do formato ANTIGO (Leitner, caixa 1 = índice 0):
+  /// só serve para converter o que já estava gravado.
   static const intervalos = [1, 3, 7, 16, 35, 80, 180];
 
   /// Teto de frases por revisão do dia (o resto fica para amanhã) — a meta
@@ -68,41 +67,18 @@ class Revisao {
   /// Dia local de [d], contado desde 1970 (muda à meia-noite de quem estuda).
   static int dia(DateTime d) => DateTime.utc(d.year, d.month, d.day).millisecondsSinceEpoch ~/ 86400000;
 
-  /// Frase recém-aprendida numa lição: entra na caixa 1 e volta amanhã.
-  static CartaoRevisao novo(int hoje) => CartaoRevisao(caixa: 1, proximoDia: hoje + intervalos[0]);
+  /// Sufixo do cartão do sentido INVERTIDO (inglês na frente, tradução no verso):
+  /// é um cartão à parte, com a memória dele — como o "Basic and reversed" do Anki.
+  /// O `~` não aparece em chave de frase (base 36 ou id do conteúdo).
+  static const sufixoReversa = '~r';
 
-  /// Frase de uma trilha que a pessoa provou que já sabe (nivelamento):
-  /// caixa 3, volta em uma semana.
-  static CartaoRevisao testada(int hoje) => CartaoRevisao(caixa: 3, proximoDia: hoje + intervalos[2]);
+  /// A chave do cartão inglês → português da frase de chave [chave].
+  static String chaveReversa(String chave) => '$chave$sufixoReversa';
+  static bool ehReversa(String chave) => chave.endsWith(sufixoReversa);
 
-  /// Próximo estado depois de revisar [c] hoje.
-  static CartaoRevisao avaliar(CartaoRevisao c, ResultadoRevisao r, int hoje) {
-    switch (r) {
-      case ResultadoRevisao.acertou:
-        final caixa = (c.caixa + 1).clamp(1, intervalos.length);
-        return CartaoRevisao(caixa: caixa, proximoDia: hoje + intervalos[caixa - 1], lapsos: c.lapsos);
-      case ResultadoRevisao.hesitou:
-        return CartaoRevisao(caixa: c.caixa, proximoDia: hoje + intervalos[c.caixa - 1], lapsos: c.lapsos);
-      case ResultadoRevisao.errou:
-        // desce duas caixas (não zera) e volta amanhã
-        final caixa = (c.caixa - 2).clamp(1, intervalos.length);
-        return CartaoRevisao(caixa: caixa, proximoDia: hoje + intervalos[0], lapsos: c.lapsos + 1);
-    }
-  }
-
-
-  /// Chaves das frases que vencem até [hoje], as mais atrasadas primeiro
-  /// (empate: as de caixa menor, mais frágeis), no máximo [limite].
-  static List<String> devidas(Map<String, CartaoRevisao> cartoes, int hoje, {int limite = limiteDiario}) {
-    final lista = cartoes.entries.where((e) => e.value.devidaEm(hoje)).toList()
-      ..sort((a, b) {
-        final atraso = a.value.proximoDia.compareTo(b.value.proximoDia);
-        if (atraso != 0) return atraso;
-        final caixa = a.value.caixa.compareTo(b.value.caixa);
-        return caixa != 0 ? caixa : a.key.compareTo(b.key);
-      });
-    return lista.take(limite).map((e) => e.key).toList();
-  }
+  /// A chave da frase, sem o sufixo (a mesma para os dois sentidos).
+  static String baseDe(String chave) =>
+      ehReversa(chave) ? chave.substring(0, chave.length - sufixoReversa.length) : chave;
 
   /// Chave da frase na revisão: o id opaco do conteúdo (estável mesmo se o
   /// texto for corrigido) ou, sem id, o hash do texto.

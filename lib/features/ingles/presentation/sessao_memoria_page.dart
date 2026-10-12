@@ -11,6 +11,7 @@ import '../domain/avaliacao.dart';
 import '../domain/revisao.dart';
 import '../domain/roteiro.dart';
 import '../../../core/som/sons.dart';
+import 'widgets/audio_da_frase.dart';
 import 'widgets/cena_visual.dart';
 import 'widgets/frase_view.dart';
 import 'widgets/traducao_card.dart';
@@ -303,6 +304,7 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
           const SizedBox(height: 10),
         ],
         TraducaoCard(
+          acaoAudio: BotaoAudioDaFrase(frase: item.trecho.cod, voz: _voz, redondo: true),
           trecho: item.trecho,
           modo: item.modo,
           mostrarNota: item.correcao,

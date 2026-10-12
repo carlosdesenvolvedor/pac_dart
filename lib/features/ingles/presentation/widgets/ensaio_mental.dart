@@ -651,7 +651,7 @@ class _EnsaioMentalState extends State<EnsaioMental> with SingleTickerProviderSt
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'Daqui a pouco, nessa cena, você vai dizer:',
+          _temCena ? 'Daqui a pouco, nessa cena, você vai dizer:' : 'Daqui a pouco, você vai dizer:',
           style: Mixart.ui(size: estreito ? 14 : 16, weight: FontWeight.w600, color: Mixart.textMuted),
         ),
         const SizedBox(height: 16),

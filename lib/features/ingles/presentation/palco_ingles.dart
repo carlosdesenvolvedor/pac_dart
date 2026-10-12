@@ -17,6 +17,7 @@ import '../domain/roteiro.dart';
 import 'fixacao.dart';
 import 'revisao_cubit.dart';
 import '../../../core/som/sons.dart';
+import 'widgets/audio_da_frase.dart';
 import 'widgets/cena_visual.dart';
 import 'widgets/ensaio_mental.dart';
 import 'widgets/frase_view.dart';
@@ -319,7 +320,10 @@ class _PalcoInglesState extends State<PalcoIngles> {
     }
     // fim da lição: as frases entram na revisão espaçada (1ª revisão amanhã)
     // e a prova vira a nota da lição no mapa
-    RevisaoCubit.de(context)?.aprender(curso.licao.trechos);
+    final trechos = curso.licao.trechos;
+    RevisaoCubit.de(context)?.aprender(trechos, notas: {
+      for (final e in _fila.primeiraProva.entries) RevisaoCubit.chaveDe(trechos[e.key]): e.value,
+    });
     final bloc = context.read<CursoBloc>();
     bloc.add(QuizFinalizado(curso.trilhaIdx, curso.licaoIdx, _fila.nota));
     bloc.add(const LicaoFinalizada());
@@ -447,6 +451,7 @@ class _PalcoInglesState extends State<PalcoIngles> {
                   vista: _verFrases && passo.modo.deMemoria),
               const SizedBox(height: 12),
               TraducaoCard(
+                acaoAudio: BotaoAudioDaFrase(frase: _trecho.cod, voz: _voz, redondo: true),
                 trecho: _trecho,
                 modo: passo.modo,
                 mostrarNota: passo.estreia || passo.correcao,

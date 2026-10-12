@@ -4,8 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/util/abrir_url.dart';
+import '../../../ingles/data/tradutor.dart';
 import '../../../ingles/domain/fonte_frase.dart';
+import '../../../ingles/domain/texto_salvo.dart';
+import '../../../ingles/presentation/baralhos_page.dart';
 import '../../../ingles/presentation/fixacao.dart';
+import '../../../ingles/presentation/revisao_cubit.dart';
+import '../../../ingles/presentation/texto_para_licao_page.dart';
 
 import '../../../../core/theme/mixart.dart';
 import '../../domain/curriculo.dart';
@@ -62,14 +67,27 @@ class _MapaPageState extends State<MapaPage> {
                     _Resultados(st: st, query: _query)
                   else ...[
                     SliverToBoxAdapter(child: _HeroDashboard(st: st)),
-                    for (var t = 0; t < st.trilhas.length; t++) ...[
-                      // faixa da etapa (Iniciante → Sênior) quando ela muda
-                      if (st.trilhas[t].etapa.isNotEmpty &&
-                          (t == 0 || st.trilhas[t - 1].etapa != st.trilhas[t].etapa))
-                        SliverToBoxAdapter(child: _FaixaEtapa(st: st, t: t)),
-                      SliverToBoxAdapter(child: _SecaoTrilha(st: st, t: t)),
-                      const SliverToBoxAdapter(child: _Conector()),
+                    // inglês: o texto que a pessoa cola vira trilha própria, no topo
+                    if (st.ehIngles) ...[
+                      const SliverToBoxAdapter(child: _CartaoNovoTexto()),
+                      const SliverToBoxAdapter(child: _CartaoBaralhos()),
+                      for (var t = 0; t < st.trilhas.length; t++)
+                        if (st.trilhas[t].propria) ...[
+                          if (t == st.trilhas.indexWhere((x) => x.propria))
+                            SliverToBoxAdapter(child: _FaixaEtapa(st: st, t: t)),
+                          SliverToBoxAdapter(child: _SecaoTrilha(st: st, t: t)),
+                          const SliverToBoxAdapter(child: _Conector()),
+                        ],
                     ],
+                    for (var t = 0; t < st.trilhas.length; t++)
+                      if (!st.trilhas[t].propria) ...[
+                        // faixa da etapa (Iniciante → Sênior) quando ela muda
+                        if (st.trilhas[t].etapa.isNotEmpty &&
+                            (t == 0 || st.trilhas[t - 1].etapa != st.trilhas[t].etapa))
+                          SliverToBoxAdapter(child: _FaixaEtapa(st: st, t: t)),
+                        SliverToBoxAdapter(child: _SecaoTrilha(st: st, t: t)),
+                        const SliverToBoxAdapter(child: _Conector()),
+                      ],
                     if (st.masterApps.isNotEmpty)
                       SliverToBoxAdapter(child: _SecaoMaster(st: st)),
                     if (st.ehIngles) SliverToBoxAdapter(child: _CreditosIngles(st: st)),
@@ -250,8 +268,7 @@ class _BarraTopo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final total = st.trilhas.fold<int>(0, (s, t) => s + t.licoes.length);
-    final feitas = st.concluidas.length;
+    final (total, feitas) = st.progressoDoCurso;
     final pct = total == 0 ? 0 : (feitas * 100 / total).round();
     return SliverAppBar(
       pinned: true,
@@ -468,14 +485,16 @@ class _HeroDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final totalLicoes = st.trilhas.fold<int>(0, (s, t) => s + t.licoes.length);
-    final feitas = st.concluidas.length;
-    final totalEx = st.trilhas.fold<int>(0, (s, t) => s + t.licoes.fold<int>(0, (a, l) => a + l.trechos.length));
-    final estrelas = st.quizNotas.values.fold<int>(0, (s, v) => s + v);
-    final trilhasIniciadas =
-        List.generate(st.trilhas.length, (t) => List.generate(st.trilhas[t].licoes.length, (l) => st.licaoConcluida(t, l)).any((f) => f))
-            .where((v) => v)
-            .length;
+    final (totalLicoes, feitas) = st.progressoDoCurso;
+    final doCurso = [for (final t in st.trilhas) if (!t.propria) t];
+    final totalEx = doCurso.fold<int>(0, (s, t) => s + t.licoes.fold<int>(0, (a, l) => a + l.trechos.length));
+    final estrelas = st.quizNotas.entries
+        .where((e) => !e.key.startsWith(TextoSalvo.prefixoLicao))
+        .fold<int>(0, (s, e) => s + e.value);
+    final trilhasIniciadas = [
+      for (var t = 0; t < st.trilhas.length; t++)
+        if (!st.trilhas[t].propria && List.generate(st.trilhas[t].licoes.length, (l) => st.licaoConcluida(t, l)).any((f) => f)) t
+    ].length;
     final pct = totalLicoes == 0 ? 0.0 : feitas / totalLicoes;
 
     return Padding(
@@ -522,7 +541,7 @@ class _HeroDashboard extends StatelessWidget {
             const SizedBox(width: 10),
             _StatTile(emoji: '⭐', valor: '$estrelas', rotulo: 'estrelas'),
             const SizedBox(width: 10),
-            _StatTile(emoji: '🧩', valor: '$trilhasIniciadas/${st.trilhas.length}', rotulo: 'trilhas'),
+            _StatTile(emoji: '🧩', valor: '$trilhasIniciadas/${doCurso.length}', rotulo: 'trilhas'),
             const SizedBox(width: 10),
             _StatTile(emoji: '⌨️', valor: _compacto(totalEx), rotulo: st.ehIngles ? 'frases' : 'exercícios'),
           ]),
@@ -633,6 +652,12 @@ class _SecaoTrilha extends StatelessWidget {
                 ]),
               ),
               const SizedBox(width: 10),
+              if (trilha.propria)
+                IconButton(
+                  tooltip: 'Apagar este texto',
+                  onPressed: () => _apagarTexto(context),
+                  icon: Icon(Icons.delete_outline, size: 19, color: Mixart.textFaint),
+                ),
               _AnelProgresso(pct: pct, tamanho: 40),
             ]),
           ),
@@ -649,7 +674,7 @@ class _SecaoTrilha extends StatelessWidget {
               builder: (context, box) => _CaminhoLicoes(st: st, t: t, largura: box.maxWidth),
             ),
           ),
-          if (st.ehIngles && !completa) _TesteDaTrilha(t: t),
+          if (st.ehIngles && !completa && !trilha.propria) _TesteDaTrilha(t: t),
           if (trilha.temProjetos) _MaoNaMassa(st: st, t: t),
           if (trilha.temDesafios) _DesafiosDaTrilha(st: st, t: t),
         ]),
@@ -658,6 +683,136 @@ class _SecaoTrilha extends StatelessWidget {
   }
 
   int _ex(Trilha t) => t.licoes.fold<int>(0, (a, l) => a + l.trechos.length);
+
+  Future<void> _apagarTexto(BuildContext context) async {
+    final bloc = context.read<CursoBloc>();
+    final trilha = st.trilhas[t];
+    final apagar = await showDialog<bool>(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        backgroundColor: Mixart.surface,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          side: BorderSide(color: Mixart.border),
+        ),
+        title: Text('Apagar "${trilha.nivel}"?', style: Mixart.display(size: 18)),
+        content: Text(
+          'As ${_ex(trilha)} frases e as lições deste texto saem do app. Não dá para desfazer.',
+          style: Mixart.ui(size: 13.5, color: Mixart.textMuted).copyWith(height: 1.5),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(false),
+            child: Text('Cancelar', style: Mixart.ui(size: 13.5, weight: FontWeight.w600, color: Mixart.textMuted)),
+          ),
+          FilledButton(
+            onPressed: () => Navigator.of(ctx).pop(true),
+            style: FilledButton.styleFrom(backgroundColor: Mixart.danger, foregroundColor: Colors.white),
+            child: Text('Apagar', style: Mixart.ui(size: 13.5, weight: FontWeight.w700, color: Colors.white)),
+          ),
+        ],
+      ),
+    );
+    if (apagar == true && !bloc.isClosed) bloc.add(TextoApagado(trilha.textoId));
+  }
+}
+
+/// Inglês: o Anki do app — baralhos, previsão, cartões de virar e ajustes.
+class _CartaoBaralhos extends StatelessWidget {
+  const _CartaoBaralhos();
+
+  @override
+  Widget build(BuildContext context) {
+    final revisao = RevisaoCubit.de(context);
+    if (revisao == null) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 8, 18, 4),
+      child: InkWell(
+        key: const Key('baralhos'),
+        onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const BaralhosPage())),
+        borderRadius: BorderRadius.circular(Mixart.radiusLg),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Mixart.surface,
+            border: Border.all(color: Mixart.border),
+            borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          ),
+          child: Row(children: [
+            const Text('🧠', style: TextStyle(fontSize: 26)),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('Baralhos e cartões', style: Mixart.display(size: 16)),
+                const SizedBox(height: 3),
+                BlocBuilder<RevisaoCubit, RevisaoState>(builder: (context, st) {
+                  final n = st.quantasDevidas(revisao.hoje);
+                  return Text(
+                    n == 0
+                        ? 'Previsão, retenção, cartões de inglês → português e ajustes.'
+                        : '$n ${n == 1 ? 'cartão vence' : 'cartões vencem'} hoje · previsão, retenção e ajustes.',
+                    style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4),
+                  );
+                }),
+              ]),
+            ),
+            Icon(Icons.chevron_right, color: Mixart.textMuted),
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
+/// Inglês: "cole um texto e ele vira lição" — abre a tela de colar/traduzir/revisar.
+class _CartaoNovoTexto extends StatelessWidget {
+  const _CartaoNovoTexto();
+
+  Future<void> _abrir(BuildContext context) async {
+    final bloc = context.read<CursoBloc>();
+    final tradutor = context.read<Tradutor>();
+    final nav = Navigator.of(context);
+    final texto = await nav.push<TextoSalvo>(
+      MaterialPageRoute<TextoSalvo>(builder: (_) => TextoParaLicaoPage(tradutor: tradutor)),
+    );
+    if (texto == null || bloc.isClosed) return;
+    bloc.add(TextoCriado(texto));
+    // a lição nova já está selecionada: fecha o mapa e cai nela
+    if (nav.mounted) nav.pop();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 12, 18, 4),
+      child: InkWell(
+        key: const Key('novo-texto'),
+        onTap: () => _abrir(context),
+        borderRadius: BorderRadius.circular(Mixart.radiusLg),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Mixart.surface,
+            border: Border.all(color: Mixart.brandDim),
+            borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          ),
+          child: Row(children: [
+            const Text('✍️', style: TextStyle(fontSize: 26)),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('Transforme um texto em lição', style: Mixart.display(size: 16)),
+                const SizedBox(height: 3),
+                Text('Cole um texto em inglês: eu traduzo e monto as frases para você digitar.',
+                    style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4)),
+              ]),
+            ),
+            Icon(Icons.add_circle_outline, color: Mixart.brand),
+          ]),
+        ),
+      ),
+    );
+  }
 }
 
 /// Faixa que abre uma etapa da carreira no mapa do C# (Iniciante,
@@ -667,12 +822,19 @@ class _FaixaEtapa extends StatelessWidget {
   final int t;
   const _FaixaEtapa({required this.st, required this.t});
 
-  static const _emojis = {'Iniciante': '🌱', 'Intermediário': '🚀', 'Avançado': '⚙️', 'Sênior': '🏛️'};
+  static const _emojis = {
+    'Iniciante': '🌱',
+    'Intermediário': '🚀',
+    'Avançado': '⚙️',
+    'Sênior': '🏛️',
+    TextoSalvo.etapa: '📝',
+  };
   static const _frases = {
     'Iniciante': 'Lógica e a base da linguagem: do primeiro programa às coleções.',
     'Intermediário': 'Orientação a objetos, LINQ, async e o C# moderno.',
     'Avançado': '.NET de verdade: testes, web, banco de dados, desempenho e jogos.',
     'Sênior': 'Arquitetura, padrões, sistemas distribuídos e decisões de projeto.',
+    TextoSalvo.etapa: 'Textos que você colou: cada um virou uma trilha com tradução automática.',
   };
 
   /// Inglês: etapas pelo nível do Quadro Europeu ("A1", "B2 · …").

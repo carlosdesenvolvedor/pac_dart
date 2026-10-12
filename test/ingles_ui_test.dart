@@ -21,6 +21,13 @@ import 'package:pac_dart/features/curso/presentation/pages/home_page.dart';
 import 'package:pac_dart/features/curso/presentation/widgets/victory_overlay.dart';
 import 'package:pac_dart/features/dartpad/mapa_rodavel.dart';
 import 'package:pac_dart/features/ingles/data/revisao_repository.dart';
+import 'package:pac_dart/features/ingles/data/audio_usuario.dart';
+import 'package:pac_dart/features/ingles/data/audio_usuario_repository.dart';
+import 'package:pac_dart/features/ingles/data/tradutor.dart';
+import 'package:pac_dart/features/ingles/domain/audio_usuario.dart';
+import 'package:pac_dart/features/ingles/domain/config_srs.dart';
+import 'package:pac_dart/features/ingles/presentation/baralhos_page.dart';
+import 'package:pac_dart/features/ingles/presentation/sessao_cartoes_page.dart';
 import 'package:pac_dart/features/ingles/data/voz_ingles.dart';
 import 'package:pac_dart/features/ingles/domain/revisao.dart';
 import 'package:pac_dart/features/ingles/presentation/palco_ingles.dart';
@@ -56,6 +63,24 @@ class _RankingFake implements RankingRepository {
   Future<bool> salvarRecordeArcade(String uid, String apelido, String jogo, int pontos) async => true;
   @override
   Future<List<JogadorRanking>> top({int limite = 100}) async => const [];
+}
+
+/// Placar que só conta quantas vezes foi chamado.
+class _RankingContando extends _RankingFake {
+  int somas = 0;
+  @override
+  Future<void> somar(String uid, String apelido, Map<String, int> deltas) async => somas++;
+}
+
+/// Tradutor de mentira para o "transforme um texto em lição".
+class _TradutorApp implements Tradutor {
+  @override
+  Future<List<String>> traduzir(List<String> frases, {void Function(int feitas, int total)? aoProgredir}) async {
+    for (var i = 1; i <= frases.length; i++) {
+      aoProgredir?.call(i, frases.length);
+    }
+    return [for (final f in frases) 'Tradução de: $f'];
+  }
 }
 
 const _frases = [
@@ -160,7 +185,12 @@ Future<void> _esperar(WidgetTester tester, Finder alvo) async {
 /// [ensaio]: o ensaio mental antes da lição (desligado nos testes que não
 /// são dele — pref `en_ensaio`).
 Future<void> _abrirApp(WidgetTester tester,
-    {Linguagem? inicial, Map<String, Object> prefs = const {}, bool ensaio = false}) async {
+    {Linguagem? inicial,
+    Map<String, Object> prefs = const {},
+    bool ensaio = false,
+    Tradutor Function()? tradutor,
+    RankingRepository Function()? ranking,
+    AudioUsuarioRepository Function(AppUser user)? audio}) async {
   SharedPreferences.setMockInitialValues({EnsaioMental.prefLigado: ensaio, ...prefs});
   tester.view.physicalSize = const Size(1400, 2000);
   tester.view.devicePixelRatio = 1;
@@ -170,7 +200,9 @@ Future<void> _abrirApp(WidgetTester tester,
       authCubitOverride: AuthCubit(_AuthFake()),
       progressoPorLinguagem: (_, l) => LocalProgressoRepository(prefixo: l.prefixoProgresso),
       revisaoBuilder: (_) => LocalRevisaoRepository(),
-      rankingBuilder: () => _RankingFake(),
+      rankingBuilder: ranking ?? () => _RankingFake(),
+      tradutorBuilder: tradutor,
+      audioBuilder: audio,
       curriculoBuilder: (l) => l == Linguagem.ingles ? _LoaderEn() : CurriculoLoader(linguagem: l),
       linguagemInicial: inicial,
     ));
@@ -225,7 +257,10 @@ void main() {
   setUp(() {
     FraseView.carencia = Duration.zero;
   });
-  tearDown(() => Linguagem.atual = Linguagem.dart);
+  tearDown(() {
+    Linguagem.atual = Linguagem.dart;
+    AudioUsuario.limpar();
+  });
 
   testWidgets('a escolha mostra os 3 cursos e a tecla 3 entra no inglês', (tester) async {
     await _abrirApp(tester);
@@ -271,7 +306,11 @@ void main() {
     expect(curso.state.quizNotas['0:0'], 10);
     await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 50)));
     expect(revisao.state.cartoes.length, 3);
-    expect(revisao.state.cartoes.values.every((c) => c.caixa == 1 && c.proximoDia == revisao.hoje + 1), isTrue);
+    expect(revisao.state.cartoes.values.every((c) => c.revisoes == 1 && c.proximoDia == revisao.hoje + 1), isTrue);
+    // a prova de cada frase foi limpa: nota "bom" no histórico do Anki
+    final historico = await tester.runAsync(() => LocalRevisaoRepository().carregarHistorico());
+    expect(historico!.length, 3);
+    expect(historico.every((e) => e.nota == 3 && e.dia == revisao.hoje), isTrue);
     expect(find.text('LIÇÃO CONCLUÍDA!'), findsOneWidget);
     // sem o ensaio (desligado neste teste) a âncora não foi armada: nada do gesto
     expect(find.textContaining('Junte o polegar'), findsNothing);
@@ -348,8 +387,9 @@ void main() {
     expect(curso.state.quizNotas['0:0'], 5);
   });
 
-  testWidgets('Revisão do dia: só a tradução, acerto sobe de caixa', (tester) async {
+  testWidgets('Revisão do dia: só a tradução; acertar de memória alonga o intervalo (cartão do formato ANTIGO migra)', (tester) async {
     final hoje = Revisao.dia(DateTime.now());
+    // um cartão no formato antigo (caixa de Leitner), vencido, e um que só vence daqui a 5 dias
     final cartoes = {
       Revisao.chave('Nice to meet you.'): const CartaoRevisao(caixa: 2, proximoDia: 0).codificar(),
       Revisao.chave('How are you?'): CartaoRevisao(caixa: 1, proximoDia: hoje + 5).codificar(),
@@ -368,8 +408,15 @@ void main() {
     // o resultado vale ao avançar (dá tempo de "foi erro de digitação")
     await _enter(tester);
     final c = revisao.state.cartoes[Revisao.chave('Nice to meet you.')]!;
-    expect(c.caixa, 3);
-    expect(c.proximoDia, hoje + Revisao.intervalos[2]);
+    expect(c.revisoes, 3, reason: 'a caixa 2 antiga contava 2 revisões; esta é a 3ª');
+    expect(c.ultimoDia, hoje);
+    expect(c.estabilidade, greaterThan(3), reason: 'acertou: a memória ficou mais estável que os 3 dias da caixa 2');
+    expect(c.proximoDia, greaterThan(hoje + 3), reason: 'e volta bem mais tarde que antes');
+    expect(c.lapsos, 0);
+    // a outra frase não foi tocada
+    expect(revisao.state.cartoes[Revisao.chave('How are you?')]!.proximoDia, hoje + 5);
+    final historico = await tester.runAsync(() => LocalRevisaoRepository().carregarHistorico());
+    expect(historico!.map((e) => (e.dia, e.nota)), [(hoje, 3)]);
   });
 
   testWidgets('redimensionar a janela no meio da lição (painel do tutor entra/sai) não zera a fila', (tester) async {
@@ -431,7 +478,8 @@ void main() {
     expect(curso.state.licaoConcluida(0, 0), isTrue);
     expect(curso.state.licaoConcluida(0, 1), isTrue);
     expect(revisao.state.cartoes.length, 4);
-    expect(revisao.state.cartoes.values.every((c) => c.caixa == 3), isTrue);
+    expect(revisao.state.cartoes.values.every((c) => c.proximoDia == revisao.hoje + 7 && c.revisoes == 1), isTrue,
+        reason: 'frases de trilha testada voltam em 1 semana');
   });
 
   testWidgets('nivelamento: passou no portão do A2, o A1 inteiro fica testado e a lição atual vai para o A2', (tester) async {
@@ -723,6 +771,286 @@ void main() {
         expect(find.byType(EnsaioMental), findsNothing);
       }
       expect(_fraseComFoco(tester), isTrue);
+    });
+  });
+
+  group('lição feita de texto colado', () {
+    /// Digita o que o palco pedir até a vitória (a lição inteira).
+    Future<void> terminarLicao(WidgetTester tester) async {
+      final ctx = tester.element(find.byType(HomePage));
+      final typing = ctx.read<TypingBloc>();
+      final curso = ctx.read<CursoBloc>();
+      for (var i = 0; i < 60 && !curso.state.vitoria; i++) {
+        await _digita(tester, typing.state.chars.join());
+        await _anda(tester, 3);
+        await _enter(tester);
+      }
+    }
+
+    testWidgets('mapa → cola o texto → traduz → corrige → cria e já cai na lição, sem pontuar no ranking', (tester) async {
+      final placar = _RankingContando();
+      await _abrirApp(tester, inicial: Linguagem.ingles, tradutor: () => _TradutorApp(), ranking: () => placar);
+      await _esperar(tester, find.byType(PalcoIngles));
+      final home = tester.element(find.byType(HomePage));
+      final curso = home.read<CursoBloc>();
+      expect(curso.state.trilhas.length, 2);
+
+      await tester.tap(find.text('Mapa'));
+      await _anda(tester, 8);
+      expect(find.text('Meus textos'), findsNothing, reason: 'sem textos ainda, a faixa nem aparece');
+      await tester.ensureVisible(find.byKey(const Key('novo-texto')));
+      await tester.tap(find.byKey(const Key('novo-texto')));
+      await _anda(tester, 8);
+
+      await tester.enterText(find.byKey(const Key('titulo-texto')), 'Minha viagem');
+      await tester.enterText(find.byKey(const Key('texto-colado')), 'We went to Rome. It was great!');
+      await tester.pump();
+      expect(find.text('2 frases · 1 lição'), findsOneWidget);
+      await tester.tap(find.byKey(const Key('botao-traduzir')));
+      await _anda(tester, 6);
+      expect(find.text('Tradução de: We went to Rome.'), findsOneWidget);
+      await tester.enterText(find.byKey(const Key('pt-0')), 'Fomos a Roma.');
+      await tester.pump();
+      await tester.tap(find.byKey(const Key('botao-criar')));
+      await _esperar(tester, find.text('Fomos a Roma.'));
+      await _anda(tester, 6);
+
+      // fechou a tela e o mapa: está no palco, na 1ª parte do texto novo
+      expect(curso.state.trilha.propria, isTrue);
+      expect(curso.state.trilha.nivel, 'Minha viagem');
+      expect(curso.state.licao.id.startsWith('txt-'), isTrue);
+      expect(find.byType(PalcoIngles), findsOneWidget);
+      expect(find.text('Fomos a Roma.'), findsWidgets, reason: 'a tradução (corrigida) fica em cima');
+      final p = await tester.runAsync(SharedPreferences.getInstance);
+      expect(p!.getString('en_textos_teste-uid'), contains('Fomos a Roma.'));
+
+      // digita a lição inteira: 2 frases × 5 degraus
+      await terminarLicao(tester);
+      expect(curso.state.vitoria, isTrue);
+      expect(curso.state.concluidas, contains(curso.state.licao.id));
+      expect(curso.state.progressoDoCurso, (3, 0), reason: 'texto próprio não conta no curso');
+      expect(placar.somas, 0, reason: 'texto próprio não pontua no ranking');
+
+      // as frases entram na revisão espaçada como as do curso
+      final revisao = home.read<RevisaoCubit>();
+      await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 50)));
+      expect(revisao.state.cartoes.length, 2);
+
+      // no mapa: a faixa "Meus textos" no topo, a trilha dele e o botão de apagar
+      await tester.pump();
+      await tester.tap(find.text('Mapa'));
+      await _anda(tester, 8);
+      expect(find.text('MEUS TEXTOS'), findsOneWidget);
+      expect(find.text('Minha viagem'), findsWidgets);
+      expect(find.byTooltip('Apagar este texto'), findsOneWidget);
+    });
+
+    testWidgets('controle: a lição do curso pontua no ranking (o teste acima só vale se isto vale)', (tester) async {
+      final placar = _RankingContando();
+      await _abrirApp(tester, inicial: Linguagem.ingles, ranking: () => placar);
+      await _esperar(tester, find.byType(PalcoIngles));
+      await terminarLicao(tester);
+      await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 50)));
+      expect(placar.somas, 1);
+    });
+
+    testWidgets('texto salvo volta no próximo acesso e apagar tira a trilha (com confirmação)', (tester) async {
+      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {
+        'en_textos_teste-uid': jsonEncode([
+          {
+            'id': 'k1',
+            'titulo': 'Carta',
+            'criadoEm': 5000,
+            'frases': [
+              {'en': 'Dear John.', 'pt': 'Caro John.'},
+              {'en': 'I miss you.', 'pt': 'Sinto sua falta.'},
+            ],
+          }
+        ]),
+      });
+      await _esperar(tester, find.byType(PalcoIngles));
+      final home = tester.element(find.byType(HomePage));
+      final curso = home.read<CursoBloc>();
+      expect(curso.state.trilhas.map((t) => t.nivel), ['Primeiros Passos', 'Dia a dia', 'Carta']);
+      expect(curso.state.trilha.propria, isFalse, reason: 'abre no curso, não no texto');
+
+      await tester.tap(find.text('Mapa'));
+      await _anda(tester, 8);
+      await tester.ensureVisible(find.byTooltip('Apagar este texto'));
+      await tester.tap(find.byTooltip('Apagar este texto'));
+      await _anda(tester, 4);
+      expect(find.text('Apagar "Carta"?'), findsOneWidget);
+      await tester.tap(find.text('Cancelar'));
+      await _anda(tester, 4);
+      expect(curso.state.trilhas.length, 3);
+
+      await tester.tap(find.byTooltip('Apagar este texto'));
+      await _anda(tester, 4);
+      await tester.tap(find.text('Apagar'));
+      await _anda(tester, 6);
+      expect(curso.state.trilhas.length, 2);
+      final p = await tester.runAsync(SharedPreferences.getInstance);
+      expect(jsonDecode(p!.getString('en_textos_teste-uid')!), isEmpty);
+    });
+  });
+
+  group('Anki: cartões de inglês → português na revisão', () {
+    // o baralho de teste não tem id de lição: o id do baralho cai no nome da trilha
+    final reversos = ConfigSrs(reversos: {'tr:Primeiros Passos'}).codificar();
+
+    /// Vira o cartão da vez e dá a nota [chave] (Key do botão).
+    Future<void> avalia(WidgetTester tester, String chave) async {
+      await tester.tap(find.byKey(const Key('mostrar-resposta')));
+      await _anda(tester, 2);
+      await tester.tap(find.byKey(Key(chave)));
+      await _anda(tester, 3);
+    }
+
+    testWidgets('digita os que vencem e DEPOIS vira os cartões novos; a nota cria o cartão no motor e vai ao histórico',
+        (tester) async {
+      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {'en_cartao_escrita': false, 
+        'en_srs_cfg': reversos,
+        // um cartão digitado vencido (formato ANTIGO: migra) para abrir a 1ª sessão
+        'en_revisao': jsonEncode({Revisao.chave('Nice to meet you.'): const CartaoRevisao(caixa: 2, proximoDia: 0).codificar()}),
+      });
+      await _esperar(tester, find.text('Revisão · 1'));
+      final revisao = tester.element(find.byType(HomePage)).read<RevisaoCubit>();
+      expect(revisao.state.config.reversoLigado('tr:Primeiros Passos'), isTrue, reason: 'os ajustes voltaram');
+
+      await tester.tap(find.text('Revisão · 1'));
+      await _anda(tester, 8);
+      expect(find.byType(SessaoMemoriaPage), findsOneWidget);
+      expect(find.byType(SessaoCartoesPage), findsNothing, reason: 'primeiro os digitados');
+      await _digita(tester, 'Nice to meet you');
+      await _anda(tester, 3);
+      await _enter(tester);
+      expect(find.textContaining('Continuar'), findsOneWidget);
+      await tester.tap(find.textContaining('Continuar'));
+      await _anda(tester, 8);
+
+      // agora os cartões inglês → português: as 4 frases do baralho, todas novas
+      expect(find.byType(SessaoCartoesPage), findsOneWidget);
+      expect(find.text('Cartões · inglês → português'), findsOneWidget);
+      expect(find.text('4 cartões · 4 novos'), findsOneWidget);
+      expect(find.text('NOVO'), findsOneWidget);
+      expect(find.text('Prazer em te conhecer.'), findsNothing, reason: 'o verso começa escondido');
+      await avalia(tester, 'nota-facil'); // Hi, I'm Ana. (a 1ª)
+
+      final chave = Revisao.chaveReversa(Revisao.chave("Hi, I'm Ana."));
+      final c = revisao.state.cartoes[chave]!;
+      expect(c.revisoes, 1);
+      expect(c.proximoDia - revisao.hoje, greaterThan(10), reason: '"fácil" na 1ª vez já volta daqui a semanas');
+      final historico = await tester.runAsync(() => LocalRevisaoRepository().carregarHistorico());
+      expect(historico!.any((e) => e.chave == chave && e.nota == 4 && e.primeira), isTrue);
+      // o cartão digitado continuou no motor dele (3ª revisão, na caixa migrada)
+      expect(revisao.state.cartoes[Revisao.chave('Nice to meet you.')]!.revisoes, 3);
+    });
+
+    testWidgets('sem nada digitado vencendo, "Revisão" vai direto aos cartões de virar; a cota de novos por dia vale',
+        (tester) async {
+      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {'en_cartao_escrita': false, 'en_srs_cfg': ConfigSrs(novosPorDia: 2, reversos: {'tr:Primeiros Passos'}).codificar()});
+      await _esperar(tester, find.text('Revisão'));
+      final revisao = tester.element(find.byType(HomePage)).read<RevisaoCubit>();
+      await tester.tap(find.text('Revisão'));
+      await _anda(tester, 8);
+      expect(find.byType(SessaoMemoriaPage), findsNothing);
+      expect(find.byType(SessaoCartoesPage), findsOneWidget);
+      expect(find.text('2 cartões · 2 novos'), findsOneWidget, reason: 'só 2 novos por dia');
+      await avalia(tester, 'nota-bom');
+      expect(revisao.introduzidasHoje, 1);
+      await tester.tap(find.byTooltip('Voltar'));
+      await _anda(tester, 24); // a transição de saída leva ~500 ms no relógio do teste
+
+      // reabrir hoje: só falta 1 da cota
+      await tester.tap(find.text('Revisão'));
+      await _anda(tester, 8);
+      expect(find.text('1 cartão · 1 novo'), findsOneWidget);
+      await avalia(tester, 'nota-bom');
+      await _anda(tester, 3);
+      expect(find.text('Pronto!'), findsOneWidget);
+      expect(revisao.introduzidasHoje, 2);
+      await tester.tap(find.byKey(const Key('continuar-cartoes')));
+      await _anda(tester, 24);
+
+      // cota esgotada: não há mais nada
+      await tester.tap(find.text('Revisão'));
+      await _anda(tester, 12);
+      expect(find.text('nenhuma frase vence hoje'), findsOneWidget);
+    });
+
+    testWidgets('responder ESCREVENDO (o padrão): a tradução certa sugere Bom, o Espaço aceita e o cartão nasce no motor', (tester) async {
+      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {'en_srs_cfg': reversos}); // sem 'en_cartao_escrita': vale o padrão (ligado)
+      await _esperar(tester, find.text('Revisão'));
+      final revisao = tester.element(find.byType(HomePage)).read<RevisaoCubit>();
+      await tester.tap(find.text('Revisão'));
+      await _anda(tester, 10);
+      expect(find.byType(SessaoCartoesPage), findsOneWidget);
+      expect(find.byKey(const Key('resposta-escrita')), findsOneWidget);
+      expect(find.byKey(const Key('mostrar-resposta')), findsNothing);
+
+      // a 1ª frase do baralho: "Hi, I'm Ana." = "Oi, eu sou a Ana."
+      await tester.enterText(find.byKey(const Key('resposta-escrita')), 'oi eu sou a ANA');
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await _anda(tester, 3);
+      expect(find.text('Idêntica! ✅ 5 de 5 palavras.'), findsOneWidget);
+      await tester.sendKeyEvent(LogicalKeyboardKey.space);
+      await _anda(tester, 4);
+
+      final c = revisao.state.cartoes[Revisao.chaveReversa(Revisao.chave("Hi, I'm Ana."))]!;
+      expect(c.revisoes, 1);
+      expect(c.proximoDia - revisao.hoje, inInclusiveRange(2, 6), reason: '"Bom" na 1ª vez');
+      final historico = await tester.runAsync(() => LocalRevisaoRepository().carregarHistorico());
+      expect(historico!.any((e) => e.chave.endsWith('~r') && e.nota == 3 && e.primeira), isTrue);
+    });
+
+    testWidgets('Mapa → "Baralhos e cartões": baralhos por etapa e "Estudar" só do baralho escolhido', (tester) async {
+      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {'en_cartao_escrita': false, 
+        'en_srs_cfg': ConfigSrs(reversos: {'tr:Primeiros Passos', 'tr:Dia a dia'}).codificar(),
+      });
+      await _esperar(tester, find.byType(PalcoIngles));
+      await tester.tap(find.text('Mapa'));
+      await _anda(tester, 8);
+      await tester.ensureVisible(find.byKey(const Key('baralhos')));
+      await tester.tap(find.byKey(const Key('baralhos')));
+      await _anda(tester, 8);
+      expect(find.byType(BaralhosPage), findsOneWidget);
+      // o Mapa continua por baixo (tem as mesmas faixas): olha só a página dos baralhos
+      Finder nela(String t) => find.descendant(of: find.byType(BaralhosPage), matching: find.text(t));
+      expect(nela('A1 · FUNDAÇÃO'), findsOneWidget);
+      expect(nela('A2 · DIA A DIA'), findsOneWidget);
+      expect(nela('Primeiros Passos'), findsOneWidget);
+      expect(nela('Dia a dia'), findsOneWidget);
+
+      await tester.ensureVisible(find.byKey(const Key('estudar-tr:Dia a dia')));
+      await tester.tap(find.byKey(const Key('estudar-tr:Dia a dia')));
+      await _anda(tester, 8);
+      expect(find.byType(SessaoCartoesPage), findsOneWidget);
+      expect(find.text('Cartões · Dia a dia'), findsOneWidget);
+      expect(find.text('1 cartão · 1 novo'), findsOneWidget, reason: 'o baralho tem uma frase só');
+      expect(find.text('I was tired.'), findsOneWidget);
+    });
+  });
+
+  group('áudio do aluno nas telas do inglês', () {
+    testWidgets('sem nuvem nem repositório injetado o 🎧 nem aparece (nada muda para quem não usa)', (tester) async {
+      await _abrirApp(tester, inicial: Linguagem.ingles);
+      await _esperar(tester, find.byType(PalcoIngles));
+      expect(AudioUsuario.disponivel, isFalse);
+      expect(find.byKey(const Key('audio-da-frase')), findsNothing);
+    });
+
+    testWidgets('com áudio disponível: o 🎧 aparece no palco e abre a folha; frase com áudio vem realçada', (tester) async {
+      final repo = MemoriaAudioUsuarioRepository();
+      await repo.salvar(AudioUsuario.chaveDe("Hi, I'm Ana."), ClipeAudio(Uint8List.fromList([...'RIFF'.codeUnits, 0, 0, 0, 0, ...'WAVE'.codeUnits, ...List.filled(20, 0)]), 'audio/wav'));
+      await _abrirApp(tester, inicial: Linguagem.ingles, audio: (_) => repo);
+      await _esperar(tester, find.byType(PalcoIngles));
+      await _esperar(tester, find.byKey(const Key('audio-da-frase')));
+      expect(find.byKey(const Key('audio-da-frase')), findsOneWidget);
+      expect(find.byIcon(Icons.headphones_rounded), findsOneWidget, reason: 'a 1ª frase tem áudio do aluno');
+      await tester.tap(find.byKey(const Key('audio-da-frase')));
+      await _anda(tester, 8);
+      expect(find.text('Seu áudio desta frase'), findsOneWidget);
+      expect(find.byKey(const Key('info-audio')), findsOneWidget);
     });
   });
 }

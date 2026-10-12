@@ -131,28 +131,9 @@ void main() {
     });
   });
 
-  group('revisão espaçada (Leitner)', () {
-    test('acertou sobe de caixa, hesitou fica, errou desce duas', () {
-      const c = CartaoRevisao(caixa: 3, proximoDia: 100);
-      expect(Revisao.avaliar(c, ResultadoRevisao.acertou, 100), CartaoRevisao(caixa: 4, proximoDia: 100 + Revisao.intervalos[3]));
-      expect(Revisao.avaliar(c, ResultadoRevisao.hesitou, 100).caixa, 3);
-      final caiu = Revisao.avaliar(c, ResultadoRevisao.errou, 100);
-      expect(caiu.caixa, 1);
-      expect(caiu.lapsos, 1);
-      expect(caiu.proximoDia, 101);
-    });
-
-    test('frase nova volta amanhã; devidas vêm das mais atrasadas', () {
-      expect(Revisao.novo(50).proximoDia, 51);
-      final cartoes = {
-        'a': const CartaoRevisao(caixa: 2, proximoDia: 10),
-        'b': const CartaoRevisao(caixa: 1, proximoDia: 8),
-        'c': const CartaoRevisao(caixa: 1, proximoDia: 12),
-      };
-      expect(Revisao.devidas(cartoes, 10), ['b', 'a']);
-    });
-
-    test('cartão ida e volta pela string compacta', () {
+  // o agendador (FSRS) é testado em ingles_srs_test.dart; aqui ficam as chaves e o formato antigo
+  group('revisão espaçada: chaves e formato antigo', () {
+    test('cartão antigo (caixa de Leitner) ida e volta pela string compacta', () {
       const c = CartaoRevisao(caixa: 5, proximoDia: 20123, lapsos: 2);
       expect(CartaoRevisao.decodificar(c.codificar()), c);
       expect(CartaoRevisao.decodificar('lixo'), isNull);
@@ -161,6 +142,11 @@ void main() {
     test('chave da frase é estável e distingue frases', () {
       expect(Revisao.chave("I'm fine."), Revisao.chave("I'm fine."));
       expect(Revisao.chave("I'm fine."), isNot(Revisao.chave("I'm fine!")));
+    });
+
+    test('o dia da revisão é o do calendário local (muda à meia-noite)', () {
+      expect(Revisao.dia(DateTime(2026, 10, 12, 0, 0, 1)), Revisao.dia(DateTime(2026, 10, 12, 23, 59, 59)));
+      expect(Revisao.dia(DateTime(2026, 10, 13)), Revisao.dia(DateTime(2026, 10, 12)) + 1);
     });
   });
 

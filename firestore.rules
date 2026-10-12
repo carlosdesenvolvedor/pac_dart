@@ -6,6 +6,18 @@ service cloud.firestore {
     match /users/{uid} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
+    // Revisão espaçada do inglês: cartões em blocos (srs) e histórico por mês (srs_log).
+    // As regras de `users/{uid}` NÃO valem para subcoleções.
+    match /users/{uid}/srs/{bloco} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+    match /users/{uid}/srs_log/{mes} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
+    // Áudios que o aluno anexa às frases (bytes do arquivo + o índice `_idx`).
+    match /users/{uid}/audio/{doc} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
     // Ranking público: todo logado LÊ o placar; cada um só escreve o próprio.
     match /ranking/{uid} {
       allow read: if request.auth != null;

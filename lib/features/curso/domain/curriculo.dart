@@ -26,6 +26,10 @@ class Trilha extends Equatable {
   /// Desafios de lógica (não são de digitação) com o que foi visto até aqui.
   final List<DesafioLogica> desafios;
 
+  /// Inglês: id do texto que a pessoa colou e virou esta trilha ("Meus
+  /// textos"). Vazio = trilha do curso.
+  final String textoId;
+
   const Trilha({
     required this.nivel,
     required this.emoji,
@@ -36,7 +40,22 @@ class Trilha extends Equatable {
     this.fundo = '',
     this.perfil = '',
     this.desafios = const [],
+    this.textoId = '',
   });
+
+  /// Trilha feita pela pessoa a partir de um texto dela (não conta no curso:
+  /// nem nos totais, nem no nivelamento, nem no ranking).
+  bool get propria => textoId.isNotEmpty;
+
+  /// Inglês: id estável da trilha como BARALHO de cartões — `txt:<id>` nos textos
+  /// colados, `tr:<slug>` nas do curso (o slug é o começo do id das lições:
+  /// "primeiro-contato.oi-tudo-bem" → "tr:primeiro-contato").
+  String get baralhoId {
+    if (propria) return 'txt:$textoId';
+    final id = licoes.isEmpty ? '' : licoes.first.id;
+    final i = id.indexOf('.');
+    return 'tr:${i > 0 ? id.substring(0, i) : nivel}';
+  }
 
   bool get temDesafios => desafios.isNotEmpty;
 
@@ -63,7 +82,7 @@ class Trilha extends Equatable {
       );
 
   @override
-  List<Object?> get props => [nivel, emoji, descricao, licoes, projetos, etapa, fundo, perfil, desafios];
+  List<Object?> get props => [nivel, emoji, descricao, licoes, projetos, etapa, fundo, perfil, desafios, textoId];
 }
 
 /// Um projeto/app completo que a pessoa digita ("Mão na Massa" / Teste Master).

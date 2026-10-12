@@ -6,9 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../curso/domain/curriculo.dart';
 import '../../curso/presentation/bloc/curso_bloc.dart';
 import '../../ranking/presentation/ranking_cubit.dart';
+import '../domain/baralhos.dart';
 import '../domain/revisao.dart';
 import 'revisao_cubit.dart';
+import 'sessao_cartoes_page.dart';
 import 'sessao_memoria_page.dart';
+import 'widgets/audio_da_frase.dart';
 
 /// Nota da fixação (0..10): de primeira vale 1, com tropeço vale meio.
 int notaDaFixacao(List<ResultadoFrase> rs) {
@@ -46,39 +49,78 @@ Future<bool?> abrirFixacao(BuildContext context, int t, int l, {bool emSequencia
   ));
 }
 
-/// Abre a Revisão do dia: as frases que vencem hoje na repetição espaçada.
-Future<void> abrirRevisao(BuildContext context) async {
+/// Abre a Revisão do dia: as frases que vencem hoje na repetição espaçada. Dois
+/// sentidos, um depois do outro — primeiro as digitadas de memória (português →
+/// inglês) e, nos baralhos com o sentido invertido ligado, os cartões de virar e
+/// avaliar (inglês → português), com os novos que cabem na cota do dia. Com
+/// [baralho] (`Trilha.baralhoId`) só o que é daquele baralho.
+Future<void> abrirRevisao(BuildContext context, {String? baralho}) async {
   final revisao = RevisaoCubit.de(context);
   if (revisao == null) return;
   final st = context.read<CursoBloc>().state;
-  // chave (hash do inglês) → frase do currículo carregado (e a lição dela)
-  final porChave = {
-    for (final tr in st.trilhas)
-      for (final li in tr.licoes)
-        for (final f in li.trechos) RevisaoCubit.chaveDe(f): f,
-  };
+  final indice = IndiceBaralhos.de(st.trilhas);
+  // a lição de onde veio cada frase (a cena volta junto)
   final licaoDe = {
     for (final tr in st.trilhas)
       for (final li in tr.licoes)
         for (final f in li.trechos) f.cod: li,
   };
-  final itens = [
-    for (final k in revisao.state.devidas(revisao.hoje))
-      if (porChave[k] != null) porChave[k]!,
+  bool doBaralho(String chave) => baralho == null || indice.pertence(chave, baralho);
+
+  final devidas = revisao.devidas();
+  final diretas = [
+    for (final k in devidas)
+      if (!Revisao.ehReversa(k) && doBaralho(k) && indice.porChave[k] != null) indice.porChave[k]!,
   ];
+  final invertidasDevidas = [
+    for (final k in devidas)
+      if (Revisao.ehReversa(k) && doBaralho(k) && indice.porChave[Revisao.baseDe(k)] != null)
+        indice.porChave[Revisao.baseDe(k)]!,
+  ];
+  final novas = revisao.novasReversas([
+    for (final f in indice.frasesDosLigados(revisao.state.config.reversos))
+      if (doBaralho(chaveDaFrase(f))) f,
+  ]);
+  final invertidas = [...invertidasDevidas, ...novas];
+  final nome = baralho == null ? null : indice.baralho(baralho)?.nome;
+
   final ranking = RankingCubit.de(context);
-  await Navigator.of(context).push<bool>(MaterialPageRoute<bool>(
-    builder: (_) => SessaoMemoriaPage(
-      titulo: 'Revisão do dia',
-      subtitulo: itens.isEmpty
-          ? 'nenhuma frase vence hoje'
-          : '${itens.length} frase${itens.length == 1 ? '' : 's'} de lições anteriores, de memória',
-      emoji: '🔁',
-      itens: itens,
+  final nav = Navigator.of(context);
+  var seguir = true;
+  // sem nada nos dois sentidos, abre a sessão vazia mesmo assim ("nenhuma frase vence hoje")
+  if (diretas.isNotEmpty || invertidas.isEmpty) {
+    seguir = await nav.push<bool>(MaterialPageRoute<bool>(
+          builder: (_) => SessaoMemoriaPage(
+            titulo: nome == null ? 'Revisão do dia' : 'Revisão · $nome',
+            subtitulo: diretas.isEmpty
+                ? 'nenhuma frase vence hoje'
+                : '${diretas.length} frase${diretas.length == 1 ? '' : 's'} de lições anteriores, de memória',
+            emoji: '🔁',
+            itens: diretas,
+            emSequencia: invertidas.isNotEmpty,
+            cenaDe: (f) => licaoDe[f.cod],
+            onResultado: (r) => revisao.registrar(r.trecho, r.resultado),
+            onFim: (rs) => ranking?.quizRespondido(
+                rs.where((r) => r.resultado == ResultadoRevisao.acertou).length, rs.length),
+          ),
+        )) ??
+        false;
+  }
+  if (!seguir || invertidas.isEmpty || !nav.mounted) return;
+  final chavesNovas = {for (final f in novas) RevisaoCubit.chaveReversaDe(f)};
+  await nav.push<bool>(MaterialPageRoute<bool>(
+    builder: (_) => SessaoCartoesPage(
+      titulo: nome == null ? 'Cartões · inglês → português' : 'Cartões · $nome',
+      subtitulo: '${invertidas.length} ${invertidas.length == 1 ? 'cartão' : 'cartões'}'
+          '${novas.isEmpty ? '' : ' · ${novas.length} novo${novas.length == 1 ? '' : 's'}'}',
+      emoji: '🔄',
+      itens: invertidas,
+      novas: chavesNovas,
+      chaveDe: RevisaoCubit.chaveReversaDe,
+      previsao: (f) => revisao.previsao(RevisaoCubit.chaveReversaDe(f)),
+      onNota: revisao.registrarVirar,
       cenaDe: (f) => licaoDe[f.cod],
-      onResultado: (r) => revisao.registrar(r.trecho, r.resultado),
-      onFim: (rs) =>
-          ranking?.quizRespondido(rs.where((r) => r.resultado == ResultadoRevisao.acertou).length, rs.length),
+      acaoExtra: (context, f) => BotaoAudioDaFrase(frase: f.cod),
     ),
   ));
 }
@@ -155,7 +197,8 @@ const acertosDoPortao = 12;
 List<String> etapasDoCurso(List<Trilha> trilhas) {
   final r = <String>[];
   for (final t in trilhas) {
-    if (t.etapa.isNotEmpty && !r.contains(t.etapa)) r.add(t.etapa);
+    // "Meus textos" (trilhas que a pessoa criou) não é um nível do curso
+    if (!t.propria && t.etapa.isNotEmpty && !r.contains(t.etapa)) r.add(t.etapa);
   }
   return r;
 }

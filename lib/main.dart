@@ -19,7 +19,12 @@ import 'features/curso/presentation/bloc/typing_bloc.dart';
 import 'features/curso/presentation/bloc/voz_cubit.dart';
 import 'features/curso/presentation/pages/escolha_linguagem_page.dart';
 import 'features/curso/presentation/pages/home_page.dart';
+import 'features/ingles/data/audio_usuario.dart';
+import 'features/ingles/data/audio_usuario_repository.dart';
+import 'features/ingles/data/config_srs_repository.dart';
 import 'features/ingles/data/revisao_repository.dart';
+import 'features/ingles/data/textos_repository.dart';
+import 'features/ingles/data/tradutor.dart';
 import 'features/ingles/presentation/revisao_cubit.dart';
 import 'features/ranking/data/ranking_repository.dart';
 import 'features/ranking/presentation/ranking_cubit.dart';
@@ -92,6 +97,12 @@ class PacDartApp extends StatelessWidget {
   /// Revisão espaçada do inglês (testes/probe: `LocalRevisaoRepository()`).
   final RevisaoRepository Function(AppUser user)? revisaoBuilder;
 
+  /// Tradutor das lições feitas de texto colado (testes: um falso, sem rede).
+  final Tradutor Function()? tradutorBuilder;
+
+  /// Onde ficam os áudios que o aluno anexa às frases (testes/probe: `MemoriaAudioUsuarioRepository()`).
+  final AudioUsuarioRepository Function(AppUser user)? audioBuilder;
+
   const PacDartApp({
     super.key,
     this.authCubitOverride,
@@ -102,6 +113,8 @@ class PacDartApp extends StatelessWidget {
     this.curriculoBuilder,
     this.progressoPorLinguagem,
     this.revisaoBuilder,
+    this.tradutorBuilder,
+    this.audioBuilder,
   });
 
   @override
@@ -155,6 +168,8 @@ class PacDartApp extends StatelessWidget {
             create: (_) => CursoBloc(
               loader: curriculoBuilder?.call(linguagem) ?? CurriculoLoader(linguagem: linguagem),
               progresso: progresso,
+              // inglês: os textos que a pessoa colou e viraram lições
+              textos: linguagem == Linguagem.ingles ? LocalTextosRepository(user.uid) : null,
             )..add(const CursoIniciado()),
           ),
           BlocProvider(create: (_) => TypingBloc()),
@@ -175,11 +190,29 @@ class PacDartApp extends StatelessWidget {
               apelido: user.apelido,
             ),
           ),
+          // inglês: os áudios do aluno (o registro carrega o índice uma vez). Sem nuvem
+          // (Firebase não iniciado, como nos testes) e sem repositório injetado não há onde guardar:
+          // o botão 🎧 simplesmente não existe.
+          if (linguagem == Linguagem.ingles && (audioBuilder != null || Firebase.apps.isNotEmpty))
+            RepositoryProvider<AudioUsuarioRepository>(
+              // nada lê este repositório pelo contexto: sem `lazy: false` o registro nunca seria iniciado
+              lazy: false,
+              create: (_) {
+                final repo = audioBuilder?.call(user) ?? FirestoreAudioUsuarioRepository(user.uid);
+                AudioUsuario.iniciar(repo);
+                return repo;
+              },
+            ),
+          // inglês: o tradutor de "transforme um texto em lição"
+          if (linguagem == Linguagem.ingles)
+            RepositoryProvider<Tradutor>(create: (_) => tradutorBuilder?.call() ?? TradutorMyMemory()),
           // inglês: as frases aprendidas voltam na revisão espaçada
           if (linguagem == Linguagem.ingles)
             BlocProvider(
               create: (_) => RevisaoCubit(
                 repo: revisaoBuilder?.call(user) ?? FirestoreRevisaoRepository(user.uid),
+                // os ajustes seguem o mesmo lugar dos cartões: nuvem em produção, aparelho em teste/probe
+                configRepo: revisaoBuilder != null ? LocalConfigSrsRepository() : FirestoreConfigSrsRepository(user.uid),
               ),
             ),
         ],

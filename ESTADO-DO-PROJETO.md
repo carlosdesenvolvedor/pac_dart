@@ -135,8 +135,7 @@ intercalada** com as outras, com apoio que some: D1 cópia com áudio antes → 
 Digitação de memória: pontuação preenchida sozinha e 1ª maiúscula livre (apóstrofo, I, dias e nomes exigidos), nota
 POR PALAVRA (≤1 tecla errada por palavra > 3 letras), Tab = 1 letra, Tab Tab = palavra, Esc = "não sei", errar 2× a
 mesma letra a revela. Errou → frase completa com as palavras erradas sublinhadas + áudio + **cópia de correção** e a
-frase desce um degrau. Teto 8 digitações/frase/dia. Revisão espaçada **Leitner 1·3·7·16·35·80·180 dias** (acertou
-sobe, tropeço fica, errou desce 2 caixas) na "Revisão do dia" (HUD "Revisão · N" e aviso no começo da lição).
+frase desce um degrau. Teto 8 digitações/frase/dia. Revisão espaçada ~~Leitner 1·3·7·16·35·80·180 dias~~ **(desde 12/out/2026 é o FSRS — "Anki no app", seção abaixo)** na "Revisão do dia" (HUD "Revisão · N" e aviso no começo da lição).
 Teste de nivelamento por trilha no mapa ("Já sei esta trilha": 10 frases de memória, 8 limpas = trilha concluída e
 frases na caixa 3). Treino de memória por lição no mapa (nota = melhor).
 Pedido do dono (6/out): a voz é **devagar por padrão** (caixinha "voz devagar", pref `en_voz_lenta`; Enter ouve na
@@ -179,10 +178,10 @@ nativo > voz gerada > voz sintética do navegador.
   `TrilhaTestada`.
 - `lib/features/ingles/`: `domain/roteiro.dart` (`FilaLicao` determinística — o começo reproduz a simulação do
   dossiê; `ModoFrase`, `mascaraDaFrase`), `domain/avaliacao.dart` (nota por palavra), `domain/revisao.dart`
-  (Leitner, chave = hash do texto em inglês), `domain/fonte_frase.dart` (atribuição Tatoeba), `data/voz_ingles.dart`
+  (chave = hash do texto em inglês; o Leitner virou só o formato ANTIGO lido na migração — agora é `domain/srs.dart`, FSRS), `domain/fonte_frase.dart` (atribuição Tatoeba), `data/voz_ingles.dart`
   + `fala_web.dart` (Web Speech DIRETO: espera `voiceschanged`, `lang=en-US` sempre, ranking de vozes Edge Natural >
   Google > Apple; o flutter_tts deixava a 1ª frase sair em voz portuguesa), `data/revisao_repository.dart` (mapa
-  `en_revisao` no `users/{uid}`, cartão "caixa|dia|lapsos"), `presentation/palco_ingles.dart`,
+  cartões em blocos `users/{uid}/srs/b00…b15` + histórico `srs_log` — o mapa `en_revisao` ficou só como legado), `presentation/palco_ingles.dart`,
   `sessao_memoria_page.dart` (Revisão do dia / Treino / Teste, com reaprendizagem sucessiva), `fixacao.dart`,
   `widgets/frase_view.dart`, `widgets/traducao_card.dart` (PT grande, "ao pé da letra", nota, 🔊 🐢 💡 👁, fonte).
 - Frase = `Trecho(cod: en, dica: pt, lit, conceito: nota, alvo, src)`; teoria ganhou bloco `ex` ("inglês\ntradução"
@@ -199,7 +198,7 @@ nativo > voz gerada > voz sintética do navegador.
   "👌 Junte o polegar…", agora DENTRO do VictoryOverlay via `extra`) só aparece se o ensaio desta lição chegou ao
   sino; ao repetir, sem "novas". Gravações do Tatoeba: `assets/ingles/audio/<sentence_id>-<audio_id>.mp3` (o nome
   prova qual gravação é; `audio_nativo.py --sem-baixar` nunca grava crédito de mp3 que não está na pasta).
-- Testes: `test/ingles_dominio_test.dart` (fila, máscara, nota, Leitner) e `test/ingles_ui_test.dart` (escolha,
+- Testes: `test/ingles_dominio_test.dart` (fila, máscara, nota, chaves) e `test/ingles_ui_test.dart` (escolha,
   lição inteira, correção, Revisão, redimensionar, nivelamento). ⚠️ App montado dentro de `tester.runAsync`: os
   listeners dos blocs só andam com tempo REAL entre os pumps; páginas abertas por toque nascem na zona falsa.
 
@@ -219,6 +218,138 @@ cobertura item a item.
 9/out: trilha EXTRA a pedido do dono, `conjugar-s-es-ies` (A1, ordem 12.5 = 13ª, logo depois de terceira-pessoa):
 7 lições / 88 frases de treino da 3ª pessoa (+s; -es em s/ss/sh/ch/x/z/o; consoante+y → -ies; vogal+y → -s; has),
 escrita à mão + revisor independente; esboço ganhou a trilha (ordem fracionária é aceita pelo integrar.py).
+
+**📝 Lição a partir de um texto (12/out/2026):** pedido do dono: "colo um texto em inglês e ele vira lição, com tradução
+automática; a pronúncia pode ser a de antes, sem mudar para a nativa". Mapa do inglês → cartão "✍️ Transforme um texto em
+lição" → colar (título opcional) → **Traduzir e revisar** (a tradução é editável, a lixeira tira frase) → **Criar**: cai direto
+na 1ª lição. Nenhuma dependência nova (só `http`).
+- **Domínio puro** `ingles/domain/texto_para_frases.dart`: `simplificarParaDigitar` (aspas curvas → retas, travessão → " - ",
+  acento sai: café → cafe, emoji/link somem — o curso é todo ASCII digitável), `dividirEmFrases` (abreviações Mr./Dr./e.g./U.S.,
+  iniciais, decimais, fala entre aspas, linha quebrada de PDF é juntada, marcador de lista sai, repetidas saem; frase > 25
+  palavras é cortada em ; : , ou " - " mais equilibrado; teto 150 frases) e `repartirEmLicoes` (8 por lição, equilibrado:
+  17 → 6+6+5). Só quebra frase quando a seguinte começa em MAIÚSCULA/número (texto todo em minúscula vira uma frase só).
+- **Tradução** `ingles/data/tradutor.dart`: contrato `Tradutor` + `TradutorMyMemory` (api.mymemory.translated.net, grátis,
+  sem chave, **CORS aberto — provado no Chrome**; 3 em paralelo, 1 nova tentativa, frase > 400 car. vai em pedaços). Limite do
+  plano anônimo ≈ 5.000 caracteres/dia por IP: o aviso de cota ("MYMEMORY WARNING…", que vem como se fosse a tradução!) vira
+  `TraducaoFalhou(cota: true)` com "volta em N h M min" e nunca é gravado como tradução; o que já foi traduzido fica em cache
+  na instância e "Tentar de novo" continua de onde parou. Trocar de serviço (Gemini, DeepL…) = implementar `Tradutor`;
+  `PacDartApp(tradutorBuilder:)` injeta um falso nos testes (o app provê via `RepositoryProvider<Tradutor>` só no inglês).
+  O endpoint não oficial do Google Translate (`translate.googleapis.com/translate_a/single`, o do pacote `translator`) foi
+  descartado: respondeu 429 no teste e não tem CORS garantido.
+- **Modelo** `ingles/domain/texto_salvo.dart`: `TextoSalvo{id,titulo,criadoEm,frases[{en,pt}]}` → `comoTrilha()` (1 trilha por
+  texto, lições "Parte N" com id `txt-<id>-N`, etapa "Meus textos", `Trilha.textoId` / `Trilha.propria`). Salvo local por conta em
+  `ingles/data/textos_repository.dart` (`LocalTextosRepository`, prefs `en_textos_<uid>`; **não sincroniza entre aparelhos**).
+- **Integração**: `CursoBloc(textos:)` anexa as trilhas próprias DEPOIS do curso (o mais novo primeiro) — índices do curso não
+  mudam; eventos `TextoCriado` (salva, cria a trilha logo após o curso e seleciona a 1ª lição) e `TextoApagado`. As trilhas
+  próprias aparecem no mapa no TOPO, sob a faixa "MEUS TEXTOS", com 🗑 e confirmação. **Ficam FORA** do curso: totais/% do mapa
+  (`CursoState.progressoDoCurso`, estrelas), nivelamento (`etapasDoCurso`), "Já sei esta trilha" e **ranking** (HomePage não
+  chama `licaoConcluida` — senão colar "aaa aaa" seria atalho de pontos). Entram na Revisão do dia, no Treino de memória e no
+  ensaio mental (lição sem cena: 3 passos, "Daqui a pouco, você vai dizer:"). Ao terminar a última parte, "próxima lição" volta à
+  1ª pendente do curso.
+- **Voz**: a sintética do aparelho (Web Speech / TTS nativo) — texto próprio não tem mp3 de nativo nem Chirp, então
+  `AudioNativo.paraTocar` não acha e `VozIngles.falar` cai na sintética (provado no Chrome: `speechSynthesis` en-US, rate .72,
+  zero `<audio>`). Se a frase colada for IGUAL a uma do curso, toca a gravação dela (mesmas palavras).
+- **Testes**: `test/ingles_texto_test.dart` (41: divisão, simplificação, tradutor com `MockClient` incl. cota/429/sem rede/cache,
+  repositório, bloc, tela isolada) + grupo "lição feita de texto colado" no `ingles_ui_test.dart` (app inteiro: mapa → colar →
+  traduzir → corrigir → criar → digitar a lição; ranking = 0 chamadas, com teste-controle do curso = 1; apagar com confirmação).
+  Prova no Chrome (build do probe + Playwright): ⚠️ NÃO ligue a acessibilidade com clique sintético em `flt-semantics-placeholder`
+  — o texto vai pro DOM mas o Flutter não o lê; dirija por coordenadas (`page.mouse.click`) + `keyboard.type/insertText`.
+- **Não feito / ideias**: sincronizar os textos pelo Firestore (hoje só no aparelho); Gemini como tradutor (melhor qualidade, sem
+  limite diário — a chave já vive em `config/tutor`; web usa REST e o celular `firebase_ai`); editar o inglês depois de criado;
+  voz Chirp para textos próprios (pediria TTS em tempo real).
+
+
+**🧠 Anki dentro do app — Fases 1 e 2 (12/out/2026, SÓ o inglês; Dart e C# NÃO ganham este motor, decisão do dono):**
+pedido: "quero o anki dentro do app, somente para o inglês; subcoleção como recomendado". Plano em 6 fases (motor, armazenamento,
+tela de baralhos, cartão virar-e-avaliar, importar/exportar TSV, calibrar parâmetros); **feitas a 1 e a 2, sem mudar a tela**.
+- **Motor** `ingles/domain/srs.dart`: `AgendadorFsrs` (pacote `fsrs` ^2.0.1, FSRS-6, MIT, só depende de `meta`; web/Android/iOS) e
+  `CartaoSrs{estabilidade, dificuldade, ultimoDia, proximoDia, revisoes, lapsos}`. Retenção 0,90, SEM etapas de aprendizado (a lição já
+  repete a frase no mesmo dia), intervalo máx. 365, fuzz ligado (`fuzz:false` nos testes). **A 1ª revisão volta SEMPRE amanhã**;
+  nivelamento ("testada") entra como "fácil" e volta em 7 dias. Ritmo medido a 90%: 1 → ~6 → ~21 → ~67 → ~194 dias com "bom"; errar um
+  cartão maduro volta em ~5 dias. Frases a revisar vêm das de MENOR chance de lembrar (`devidas`, teto 80/dia = `Revisao.limiteDiario`).
+  ⚠️ O pacote conta dias por diferença TRUNCADA de datas-hora (revisar "amanhã de manhã" de algo revisado "hoje à tarde" daria 0 dias =
+  revisão do mesmo dia): por isso só recebe meia-noite UTC do dia local (`Revisao.dia`, inteiro desde 1970).
+- **Nota**: `notaDoResultado` — limpa = bom (3), tropeço/dica = difícil (2), errada/"não sei" = errei (1); "fácil" (4) só existe se
+  alguém medir velocidade/latência (`facil:`) ou no botão da Fase 4 (hoje não é gerado pela digitação). A prova de cada frase na lição
+  (`FilaLicao.primeiraProva`) vira a nota do 1º cartão (`RevisaoCubit.aprender(notas:)`). Só a 1ª tentativa do dia conta (como antes).
+- **Interface**: o plano falava em "duas implementações (Leitner e FSRS)"; NÃO fiz — manter um 2º motor só dobraria a manutenção. O
+  agendador é injetável (`RevisaoCubit(agendador:)`) e o Leitner sobrevive só como leitor do formato antigo (`CartaoRevisao`) para a
+  migração. Voltar ao antigo = voltar o código; o mapa `en_revisao` fica intacto no Firestore.
+- **Armazenamento** `ingles/data/revisao_repository.dart`: `FirestoreRevisaoRepository` grava em **16 blocos** `users/{uid}/srs/b00…b15`
+  (mapa `c` = chave→"f|próx|último|estab|dif|revisões|lapsos"; o bloco é função SÓ da chave: `idDoBloco`, NÃO mudar — mover cartões já
+  gravados; web e celular dão o mesmo bloco, há teste com valores fixos rodando na VM e no Chrome) e histórico em `users/{uid}/srs_log/AAAA-MM`
+  (array `r` de "dia|chave|nota", `arrayUnion`). Abrir o app = ~17 leituras; blocos ~45 KB com 12 mil cartões (o mapa único estouraria
+  1 MiB). **Migração automática** do `en_revisao`: sem o doc `_meta`, converte (Leitner → estabilidade = intervalo da caixa, agenda mantida)
+  e grava tudo num lote atômico junto do `_meta`; blocos criados offline antes da migração ganham do legado, nada se perde. O local
+  (`LocalRevisaoRepository`: `en_srs`, `en_srs_log` com teto 5.000) lê o legado igual.
+- **Regras** (`firestore.rules`): `match /users/{uid}/srs/{bloco}` e `/srs_log/{mes}` só para o dono — as regras de `users/{uid}` NÃO
+  valem para subcoleções. **PUBLICAR AS REGRAS ANTES DO HOSTING** (`firebase deploy --only firestore:rules --project=pac-dart`): com o app
+  novo e regras antigas a leitura é negada e a Revisão aparece vazia. As regras desta e de outras mudanças do working tree ainda NÃO foram
+  publicadas. **Exclusão de conta** agora apaga também `srs` e `srs_log` (`apagarDadosDoUsuario`; apagar o doc pai não apaga subcoleção).
+- **Testes**: `test/ingles_srs_test.dart` (41, rodam também com `flutter test --platform chrome`: agendador, codecs, migração, blocos,
+  histórico, exclusão, escala de 12 mil cartões) e `test/firestore_rules_test.dart` (o `firestore.rules` REAL no fake; só VM; o fake não
+  confere lotes nem listagens, e não entende `rules_version` nem `allow create, update, delete` — essas 2 linhas são trocadas no teste).
+  Testes antigos de Leitner foram reescritos (`ingles_dominio_test`, `ingles_ui_test`: o UI semeia o formato ANTIGO e exercita a migração).
+
+**🧠 Anki — Fases 3 a 5 + cartão frente/verso + áudio do aluno (12/out/2026, mesma sessão; NÃO commitado, NÃO publicado):**
+O dono pediu (mesmo dia): "cartão com frente em inglês e verso traduzido, como no Anki" e "opção de adicionar áudio também"
+(e, sobre onde guardar: "vai no recomendado; se eu não adicionar usa como está; se adicionar usa o que coloquei, no formato dele").
+- **Mapa → "🧠 Baralhos e cartões"** (`presentation/baralhos_page.dart`; acima das trilhas do inglês): a revisar hoje (+ novos de
+  inglês → português da cota do dia), revisados hoje/maduros/cartões, **previsão de 14 dias** (barras, hoje inclui atrasados),
+  **retenção real** dos 30 dias (só revisões de cartões já aprendidos — a 1ª vez de cada cartão fica de fora, `EntradaHistorico.primeira`)
+  + atividade dos 14 dias, baralhos por etapa ("Meus textos" primeiro; uma trilha = um baralho, id `tr:<slug>` / `txt:<id>` =
+  `Trilha.baralhoId`), interruptor **inglês → português** por baralho e por grupo, "Estudar" por baralho, "Cartões" (navegador) e
+  **ajustes** (revisões/dia 20–300, novos EN→PT/dia 0–40, retenção 85/90/95%; `domain/config_srs.dart`, em `users/{uid}.en_srs_cfg`
+  ou prefs). Domínio dos baralhos/estatísticas em `domain/baralhos.dart` (`IndiceBaralhos`, `previsaoDeCarga`, `retencaoReal`).
+- **Cartão frente EN / verso PT = "virar e avaliar"** (`presentation/sessao_cartoes_page.dart`): lê/ouve o inglês (voz sozinha se
+  "áudio automático"), "Mostrar resposta" (Espaço), 4 botões **Errei · Difícil · Bom · Fácil com o intervalo previsto** (1 dia, 3 dias,
+  2 sem…; teclas 1–4; `AgendadorFsrs.previsao`, SEM fuzz para o número não pular). Cada SENTIDO é um cartão à parte com memória própria
+  (chave `<chave>~r`, `Revisao.chaveReversa`; "Basic and reversed" do Anki). Cartão novo: a nota decide o intervalo (`novo(voltaAmanha:
+  false)`; o PT→EN da lição continua voltando amanhã). Errei volta na sessão até 2× SEM contar de novo; só a 1ª nota vai ao FSRS. Os
+  novos entram pela cota "novos/dia" (`RevisaoCubit.novasReversas`). `abrirRevisao` (HUD "Revisão") agora roda os dois sentidos: digitados
+  primeiro, depois os de virar; a nota de auto-avaliação NÃO vai para o ranking (daria para forjar).
+- **Responder ESCREVENDO no cartão de virar** (pedido do dono, 12/out: "aqui a forma de responder deve ser por escrita também"; o "digitar a
+  resposta" do Anki): no cartão inglês → português há um campo para ESCREVER a tradução em português (padrão LIGADO, lembrado em `en_cartao_escrita`;
+  a chave "✍️ Responder escrevendo" volta ao "Mostrar resposta"; "Não sei" também mostra sem escrever). Enter/Conferir compara palavra por palavra
+  (`domain/comparar_resposta.dart`): ignora maiúscula, acento e pontuação, perdoa 1 letra errada em palavra de 5+ (2 em 9+), NÃO liga para a ordem
+  (tradução é livre) e conta palavras repetidas uma vez cada. Mostra "SUA RESPOSTA" (certas em verde, sobra em vermelho), a resposta do cartão com
+  as palavras que FALTARAM sublinhadas e "acertou X de Y palavras"; **sugere** a nota — Bom (≥85% das palavras e ≥75% sem sobra, ou idêntica),
+  Difícil (≥60% e ≥50%), senão Errei; "Fácil" nunca é sugerido — e a nota sugerida vem marcada ("sugerida"); **Espaço/Enter aceita a sugestão**,
+  1–4 ou toque trocam (tradução livre pode estar certa mesmo diferente). Com o campo em foco as teclas são do campo (espaço, 1–4 e R não
+  avaliam nem ouvem). A repetição do "Errei" também pede a escrita. A nota continua sendo do aluno (não vai ao ranking).
+- **Navegador de cartões** (`navegador_cartoes_page.dart`): por baralho, busca, situação dos dois sentidos ("vence hoje", "em 3 sem ·
+  memória 30 d"), **suspender** (some até reativar) e **enterrar até amanhã** (`CartaoSrs.suspenso/enterradoAte`, 8º campo opcional do codec).
+- **Novo cartão à mão** (`novo_cartao_page.dart`): frente em inglês + verso em português (ou "Traduzir para mim"), áudio opcional, cria vários
+  seguidos. Vai para o baralho "Meus cartões" (`TextoSalvo` id `cartoes`, `sequencial: true` = lições 8,8,1… para o progresso das lições
+  anteriores nunca mudar), evento `CartaoAdicionado`; o 1º cartão liga o EN→PT do baralho. A frente passa pelo mesmo conserto de
+  caracteres do texto colado (é frase para DIGITAR). **Importar lista** (`importar_cartoes_page.dart`, `domain/cartoes_texto.dart`): TAB (arquivo
+  do Anki, com `#separator`, tags, HTML e aspas), `;` ou `|`; até 500; vira baralho novo SEM sair dos Baralhos (`TextoCriado(abrir:false)`).
+  **Exportar para o Anki** (`exportar_anki_dialog.dart`, `domain/exportar_anki.dart`): arquivo TAB (`#separator:tab #html:false #tags column:3`,
+  frente=inglês, verso=português ou invertido, tags `Paclingo::<etapa>::<baralho>`), copiar/baixar .txt (só web), e o **histórico em CSV**
+  (fase 6 só até aqui: a calibração dos parâmetros do FSRS continua sendo offline, ainda não feita).
+- **Áudio do aluno** (`data/audio_usuario*.dart`, `domain/audio_usuario.dart`, `widgets/audio_da_frase.dart`): 🎧 ao lado do 🔊 no cartão da
+  tradução (palco e Revisão), no cartão de virar e no menu do navegador; folha "Seu áudio desta frase" (enviar, ouvir, trocar, remover);
+  também no Novo cartão. Formatos mp3/m4a/mp4/aac/wav/ogg/opus/webm/flac conferidos pelo CONTEÚDO (não só pela extensão), máx. **800 KB**,
+  guardados **como vieram** (sem converter). **Prioridade ao tocar (`VozIngles.falar`)**: áudio do aluno > gravação do curso (Tatoeba) > voz
+  gerada (Chirp) > voz do aparelho; se o formato não toca naquele aparelho, cai na voz de antes sem ficar mudo. Chave = texto da frase
+  (`Revisao.chave`), então vale em todas as telas. Armazenamento (decisão "recomendado"): bytes no Firestore, `users/{uid}/audio/{chave}`
+  `{b: Blob, m, n}` + índice `_idx` (1 leitura abre o app; 1 por clipe na 1ª vez da sessão, depois cache em memória). Só existe com nuvem
+  (`Firebase.apps.isNotEmpty`) ou repositório injetado (`PacDartApp(audioBuilder:)`); sem isso o 🎧 some. **Gravar pelo microfone NÃO foi feito**:
+  o pacote `record` 7.1.2 exige Dart ≥ 3.12 e o projeto está no 3.11. Pacote novo: `file_picker` ^13.1.0 (plugin: no iOS rode `pod install`).
+- **Rotinas que mudaram de lugar**: `RevisaoCubit` agora tem config, cartão invertido, escondidos e previsão; `CursoBloc` serializa as operações de
+  texto numa fila (`_serializar`) — o bloc trata eventos em paralelo e o repositório lê-modifica-grava (várias adições seguidas perdiam cartões).
+  `main.dart`: `RepositoryProvider<AudioUsuarioRepository>(lazy: false …)` — sem `lazy: false` o registro NUNCA inicia (o 🎧 não aparece).
+- **Regras / exclusão de conta**: `firestore.rules` ganhou `users/{uid}/audio/{doc}` (junto de `srs` e `srs_log`) — **publicar as regras ANTES do
+  hosting**. `apagarDadosDoUsuario` apaga os áudios achados pelo índice (listar a coleção baixaria todos os arquivos) em lotes de até 498.
+- **Provas**: testes `ingles_baralhos_test` (domínio/cubit), `ingles_cartoes_ui_test` (sessão, baralhos, navegador), `ingles_cartoes_texto_test`
+  (importar/exportar/bloc), `ingles_novo_cartao_ui_test`, `ingles_audio_test` (30: formatos, repositórios, registro, prioridade, corrida entre duas
+  falas — com teste de mutação), mais grupos no `ingles_ui_test` (app inteiro) e `firestore_rules_test`; os puros também rodam com
+  `--platform chrome`. **Prova no Chrome real** (probe + Playwright): WAV enviado pelo seletor de arquivos, `<audio>` tocou o `blob:` a 0,8×
+  sem acionar a síntese de voz, novo cartão com tradução do MyMemory, cartão de virar com os 4 botões, previsão e atividade nos Baralhos.
+  Armadilhas: no Playwright o seletor de arquivo vira "modal" — use `browser_file_upload`; o arquivo precisa estar em `.playwright-mcp/` ou
+  no projeto. Nos testes de app a transição de saída de página leva ~17 passos de `_anda` (não 4).
+- **Não feito / ideias**: gravar áudio pelo microfone (ver acima); sincronizar suspensos/enterrados (já vão no cartão, sim) e os ajustes locais; áudio
+  também no PORTUGUÊS (hoje só no inglês); calibrar os parâmetros do FSRS com milhares de revisões; cloze; importar `.apkg` (só texto).
 
 ---
 
@@ -981,6 +1112,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 - Auth **Email/senha** habilitado (feito no console; Identity Platform pago exige billing, o grátis é só o toggle).
 - Firestore: doc por usuário `users/{uid}` (concluidas[], quizNotas{}, **projetos[]**, trilha, licao, recorde). Regras em `firestore.rules`: **só o dono acessa** (são por documento, não por campo — campo novo não precisa de deploy de regras).
 - **`ranking/{uid}`** (jul/2026): apelido, pontos, teclas, erros, licoes, projetos, quizAcertos, arcadePontos, arcade{jogo→recorde}, atualizadoEm. Regras: **todo logado lê, só o dono escreve** — regras JÁ DEPLOYADAS (`firebase deploy --only firestore:rules`). Query do top: orderBy pontos desc (índice single-field automático).
+- **Revisão do inglês (12/out/2026)**: subcoleções `users/{uid}/srs/{b00…b15,_meta}` (cartões FSRS) e `users/{uid}/srs_log/{AAAA-MM}` (histórico); regras próprias só do dono (as de `users/{uid}` não cobrem subcoleção). O mapa `users/{uid}.en_revisao` é LEGADO (lido uma vez na migração, nunca apagado).
 - `firebase.json` (hosting → build/web + SPA rewrite; firestore rules/indexes), `.firebaserc` (default: pac-dart).
 - Trocar `ProgressoRepository` local por Firestore já está feito (`FirestoreProgressoRepository`).
 
@@ -1070,7 +1202,7 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
-## 🧪 Testes (191, todos passando)
+## 🧪 Testes (621 em 12/out/2026: 616 passam; as 5 que falham são `csharp_curriculo_test` — conteúdo do C# incompleto, 4.147 de 4.708 exercícios e 0 desafios)
 
 `test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines, baralho progressivo por fase sem repetir, combo do TiroEngine) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, Esc pausando a Corrida (CPU congela frame a frame — no flutter_test um AnimationController gasta 2 frames por ciclo) e retomando, Caça-Bug esmagando a linha certa, largada 3-2-1 antes de qualquer interação, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). E **previa_viva** (regressão da "tela de criando junto": app Flutter do Mão na Massa TEM a PreviewAoVivo lado a lado/empilhada e ela sobrevive à digitação; projeto Dart console NÃO tem — é por design, não bug). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).

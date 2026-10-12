@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:js_interop';
+import 'dart:typed_data';
 import 'dart:ui_web' as ui_web;
 
 import 'package:web/web.dart' as web;
@@ -152,6 +153,45 @@ Future<bool> tocar(String asset, double velocidade) async {
     _srcAtual = null; // a próxima tentativa recarrega
     final outra = g != _geracao;
     if (!outra) _encerrarVez(fim); // a sintética abre outra vez
+    return outra;
+  }
+}
+
+/// O endereço (`blob:`) do áudio do aluno em uso — liberado ao trocar de áudio.
+String? _urlDoAluno;
+
+/// Toca o áudio que o ALUNO anexou ([bytes], no formato dele — [mime]) pelo mesmo
+/// `<audio>` das gravações. Mesmo contrato do [tocar]: false = não tocou (formato que
+/// este navegador não decodifica…) e a voz padrão assume; true só volta quando acaba.
+Future<bool> tocarBytes(Uint8List bytes, String mime, double velocidade) async {
+  final g = ++_geracao;
+  final fim = _novaVez();
+  try {
+    _s.cancel();
+  } catch (_) {}
+  _corrente = null;
+  try {
+    final a = _audio ??= web.HTMLAudioElement()..preload = 'auto';
+    a.pause();
+    final url = web.URL.createObjectURL(web.Blob([bytes.toJS].toJS, web.BlobPropertyBag(type: mime)));
+    final antigo = _urlDoAluno;
+    _urlDoAluno = url;
+    _srcAtual = url;
+    a
+      ..src = url
+      ..preservesPitch = true
+      ..defaultPlaybackRate = velocidade
+      ..playbackRate = velocidade
+      ..onended = ((web.Event _) => _encerrarVez(fim)).toJS
+      ..onerror = ((web.Event _) => _encerrarVez(fim)).toJS;
+    if (antigo != null) web.URL.revokeObjectURL(antigo);
+    await a.play().toDart;
+    await fim.future;
+    return true;
+  } catch (_) {
+    _srcAtual = null;
+    final outra = g != _geracao;
+    if (!outra) _encerrarVez(fim);
     return outra;
   }
 }

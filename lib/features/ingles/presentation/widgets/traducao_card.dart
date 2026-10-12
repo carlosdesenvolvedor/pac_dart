@@ -42,6 +42,9 @@ class TraducaoCard extends StatelessWidget {
   /// concluída nesta lição).
   final bool contextoEmPt;
 
+  /// Botão a mais ao lado dos de áudio (o 🎧 do áudio do aluno).
+  final Widget? acaoAudio;
+
   const TraducaoCard({
     super.key,
     required this.trecho,
@@ -59,6 +62,7 @@ class TraducaoCard extends StatelessWidget {
     this.onAlternarVerFrases,
     this.quemDoContexto = '',
     this.contextoEmPt = false,
+    this.acaoAudio,
   });
 
   @override
@@ -67,6 +71,7 @@ class TraducaoCard extends StatelessWidget {
     final botoes = Wrap(spacing: 6, runSpacing: 6, children: [
       _Botao(icone: Icons.volume_up_rounded, dica: 'Ouvir em inglês', onTap: onOuvir),
       _Botao(icone: Icons.slow_motion_video_rounded, dica: 'Ouvir devagar', onTap: onOuvirDevagar),
+      ?acaoAudio,
       if (onDica != null)
         _Botao(
             icone: Icons.lightbulb_outline_rounded,
