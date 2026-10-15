@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/theme/mixart.dart';
 import '../../curso/domain/curriculo.dart';
 import '../../curso/presentation/bloc/typing_bloc.dart';
+import '../../ia/domain/explicacao.dart';
+import '../../ia/presentation/widgets/botao_por_que.dart';
 import '../data/voz_ingles.dart';
 import '../domain/alternativas.dart';
 import '../domain/avaliacao.dart';
@@ -15,6 +17,7 @@ import 'widgets/audio_da_frase.dart';
 import 'widgets/cena_visual.dart';
 import 'widgets/frase_view.dart';
 import 'widgets/traducao_card.dart';
+import 'zona_visivel.dart';
 
 /// Uma frase digitada de memória e como saiu (só a 1ª tentativa conta).
 class ResultadoFrase {
@@ -81,13 +84,14 @@ class _Item {
   const _Item(this.trecho, this.modo, {this.vale = false, this.correcao = false});
 }
 
-class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
+class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindingObserver, VigiaDoTeclado {
   /// Quantas voltas de reaprendizagem uma frase pode ter na sessão.
   static const _maxVoltas = 2;
 
   final _typing = TypingBloc();
   final _foco = FocusNode();
   final _frase = GlobalKey<FraseViewState>();
+  final _zona = GlobalKey();
   late final VozIngles _voz = widget.voz ?? VozIngles();
 
   late final List<_Item> _fila = [for (final t in widget.itens) _Item(t, ModoFrase.memoria, vale: true)];
@@ -119,6 +123,9 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
   }
 
   @override
+  void aoSubirOTeclado() => manterZonaVisivel(_zona, aindaVale: () => mounted && !_fim);
+
+  @override
   void dispose() {
     _voz.parar();
     _typing.close();
@@ -148,7 +155,7 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
       final fv = _frase.currentState;
       final d = avaliarDigitacao(
         st.chars.join(),
-        errosPorPosicao: st.errosPorPosicao,
+        errosPorPosicao: somarErros(st.errosPorPosicao, fv?.errosDeFala),
         reveladas: fv?.reveladas ?? const {},
         desistiu: fv?.desistiu ?? false,
         dicasExtras: _ouviuAntes,
@@ -216,6 +223,7 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
         _carregar();
       });
       _foco.requestFocus();
+      manterZonaVisivel(_zona, aindaVale: () => mounted && !_fim);
       return;
     }
     setState(() => _fim = true);
@@ -303,40 +311,76 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> {
           CenaVisual(licao: licao, compacta: true),
           const SizedBox(height: 10),
         ],
-        TraducaoCard(
-          acaoAudio: BotaoAudioDaFrase(frase: item.trecho.cod, voz: _voz, redondo: true),
-          trecho: item.trecho,
-          modo: item.modo,
-          mostrarNota: item.correcao,
-          onOuvir: () => _ouvir(lenta: false),
-          onOuvirDevagar: () => _ouvir(lenta: true),
-          onDica: item.modo.deMemoria ? () => _frase.currentState?.revelarPalavra() : null,
-          onNaoSei: item.modo.deMemoria ? () => _frase.currentState?.naoSei() : null,
-        ),
-        const SizedBox(height: 14),
-        FraseView(
-          key: _frase,
-          focusNode: _foco,
-          modo: item.modo,
-          passo: _i,
-          alvo: item.trecho.alvo,
-          palavrasErradas: _erradas,
-          onAvancar: _avancar,
-          onOuvir: _ouvir,
-        ),
-        const SizedBox(height: 12),
-        SizedBox(
-          height: 28,
-          child: _aguardando
-              ? _Selo(_ultimo,
-                  onSeguir: _avancar,
-                  onContestar:
-                      _contestou || _ultimo == null || _ultimo == ResultadoRevisao.acertou ? null : _contestar)
-              : null,
-        ),
-        Text('Tab = uma letra · Tab Tab = a palavra · Esc = não sei · Enter ouve (conta dica); no fim, Enter segue',
-            textAlign: TextAlign.center, style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
+        Column(key: _zona, crossAxisAlignment: CrossAxisAlignment.start, children: [
+          TraducaoCard(
+            acaoAudio: BotaoAudioDaFrase(frase: item.trecho.cod, voz: _voz, redondo: true),
+            trecho: item.trecho,
+            modo: item.modo,
+            mostrarNota: item.correcao,
+            onOuvir: () => _ouvir(lenta: false),
+            onOuvirDevagar: () => _ouvir(lenta: true),
+            onDica: item.modo.deMemoria ? () => _frase.currentState?.revelarPalavra() : null,
+            onNaoSei: item.modo.deMemoria ? () => _frase.currentState?.naoSei() : null,
+            compacto: tecladoAberto,
+          ),
+          const SizedBox(height: 14),
+          FraseView(
+            key: _frase,
+            focusNode: _foco,
+            modo: item.modo,
+            passo: _i,
+            alvo: item.trecho.alvo,
+            alvoPt: item.trecho.alvoPt,
+            traducao: item.trecho.dicaPlana,
+            palavrasErradas: _erradas,
+            onAvancar: _avancar,
+            onOuvir: _ouvir,
+            alternativas: item.modo == ModoFrase.memoria
+                ? alternativasDe(item.trecho.cod, declaradas: item.trecho.alternativas)
+                : const [],
+            onMicrofone: (ouvindo) {
+              if (ouvindo) _voz.parar();
+            },
+          ),
+          const SizedBox(height: 12),
+          ConstrainedBox(
+            constraints: const BoxConstraints(minHeight: 28),
+            child: _aguardando
+                ? _Selo(_ultimo,
+                    onSeguir: _avancar,
+                    onContestar:
+                        _contestou || _ultimo == null || _ultimo == ResultadoRevisao.acertou ? null : _contestar)
+                : null,
+          ),
+          // errou ou tropeçou de memória: o Prof. Dash explica o porquê
+          if (_aguardando && _item.modo.deMemoria && (_ultimo == ResultadoRevisao.errou || _ultimo == ResultadoRevisao.hesitou)) ...[
+            const SizedBox(height: 6),
+            BotaoPorQue(key: ValueKey('por-que-$_i-${_fila.length}'), pedido: _pedidoPorQue(_item)),
+          ],
+        ]),
+        Text(
+            ehCelular
+                ? '🔊 ouve (conta dica) · 💡 dá a dica · 🎤 fale a frase em inglês · “não sei” mostra a frase'
+                : 'Tab = uma letra · Tab Tab = a palavra · Esc = não sei · Enter ouve (conta dica); no fim, Enter segue',
+            textAlign: TextAlign.center,
+            style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
       ]),
+    );
+  }
+
+  /// O que a pessoa errou nesta frase, em dados (as palavras que tropeçaram e se desistiu).
+  PedidoExplicacao _pedidoPorQue(_Item item) {
+    final cod = item.trecho.cod;
+    final palavras = palavrasDe(cod);
+    return PedidoExplicacao(
+      frase: cod,
+      traducao: item.trecho.dicaPlana,
+      palavrasErradas: [
+        for (final i in _erradas.toList()..sort())
+          if (i >= 0 && i < palavras.length) cod.substring(palavras[i].ini, palavras[i].fim),
+      ],
+      exercicio: 'digitar a frase de memória (revisão)',
+      desistiu: _desistiuAgora,
     );
   }
 
@@ -413,14 +457,7 @@ class _Selo extends StatelessWidget {
       child: Wrap(alignment: WrapAlignment.center, crossAxisAlignment: WrapCrossAlignment.center, spacing: 10, children: [
         Text(texto, style: Mixart.ui(size: 13, weight: FontWeight.w800, color: cor)),
         // não avança sozinho: dá para ouvir a frase que acabou de digitar
-        InkWell(
-          onTap: onSeguir,
-          borderRadius: BorderRadius.circular(6),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-            child: Text('Enter segue →', style: Mixart.ui(size: 13, weight: FontWeight.w800, color: Mixart.brand)),
-          ),
-        ),
+        BotaoSeguir(onTap: onSeguir, tamanho: 13),
         if (onContestar != null)
           InkWell(
             onTap: onContestar,

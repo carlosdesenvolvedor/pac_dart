@@ -344,7 +344,15 @@ class CursoBloc extends Bloc<CursoEvent, CursoState> {
     final chave = e.cartao.en.toLowerCase();
     final jaTem = base.frases.any((f) => f.en.toLowerCase() == chave);
     final novo = base.comFrases(jaTem
-        ? [for (final f in base.frases) f.en.toLowerCase() == chave ? FraseDoTexto(f.en, e.cartao.pt) : f]
+        // a mesma frente só troca o verso (e a palavra-alvo, se veio uma: o cartão de lacuna da leitura)
+        ? [
+            for (final f in base.frases)
+              f.en.toLowerCase() == chave
+                  ? FraseDoTexto(f.en, e.cartao.pt,
+                      alvo: e.cartao.alvo.isNotEmpty ? e.cartao.alvo : f.alvo,
+                      alvoPt: e.cartao.alvo.isNotEmpty ? e.cartao.alvoPt : f.alvoPt)
+                  : f
+          ]
         : [...base.frases, e.cartao.comoFrase]);
     await repo.salvar(novo);
     _aplicarTexto(novo, emit, abrir: false);

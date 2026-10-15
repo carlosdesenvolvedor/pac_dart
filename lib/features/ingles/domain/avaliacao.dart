@@ -95,3 +95,13 @@ DesempenhoFrase avaliarDigitacao(
     palavrasErradas: erradas,
   );
 }
+
+/// Soma os erros por tecla aos das tentativas FALADAS (palavra dita errada
+/// conta como tecla errada na 1ª letra dela) — [avaliarDigitacao] trata os
+/// dois do mesmo jeito.
+Map<int, int> somarErros(Map<int, int> teclas, Map<int, int>? falas) {
+  if (falas == null || falas.isEmpty) return teclas;
+  final r = Map<int, int>.of(teclas);
+  falas.forEach((pos, n) => r[pos] = (r[pos] ?? 0) + n);
+  return r;
+}

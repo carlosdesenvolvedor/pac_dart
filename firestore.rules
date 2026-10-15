@@ -18,10 +18,15 @@ service cloud.firestore {
     match /users/{uid}/audio/{doc} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
+    // Textos que o aluno cola ou escreve e viram lições (um documento por texto): seguem a conta em
+    // qualquer aparelho.
+    match /users/{uid}/textos/{id} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
     // Ranking público: todo logado LÊ o placar; cada um só escreve o próprio.
     match /ranking/{uid} {
       allow read: if request.auth != null;
-      allow create, update: if request.auth != null && request.auth.uid == uid;
+      allow create, update, delete: if request.auth != null && request.auth.uid == uid;
     }
     // Config do app (chave do Gemini etc.): logado LÊ; NINGUÉM escreve pelo
     // cliente — só pelo console/REST autenticado do dono do projeto.

@@ -1,25 +1,40 @@
 import 'package:equatable/equatable.dart';
 
 import '../../curso/domain/curriculo.dart';
+import 'limpar_traducao.dart';
 import 'texto_para_frases.dart';
 
 /// Uma frase do texto colado e a tradução (automática, corrigida ou não).
 class FraseDoTexto extends Equatable {
   final String en;
   final String pt;
-  const FraseDoTexto(this.en, this.pt);
 
-  Map<String, dynamic> toJson() => {'en': en, 'pt': pt};
+  /// Cartão de lacuna da leitura: a palavra (da frase em inglês) que a pessoa quis guardar e, se
+  /// achada na tradução, o pedaço dela que corresponde. Vazios = frase comum (o caso de sempre).
+  final String alvo, alvoPt;
+
+  const FraseDoTexto(this.en, this.pt, {this.alvo = '', this.alvoPt = ''});
+
+  Map<String, dynamic> toJson() => {
+        'en': en,
+        'pt': pt,
+        if (alvo.isNotEmpty) 'alvo': alvo,
+        if (alvoPt.isNotEmpty) 'alvoPt': alvoPt,
+      };
 
   static FraseDoTexto? fromJson(Object? j) {
     if (j is! Map) return null;
     final en = j['en'], pt = j['pt'];
     if (en is! String || pt is! String || en.isEmpty) return null;
-    return FraseDoTexto(en, pt);
+    // registros antigos não têm alvo: continuam valendo. A tradução passa pela limpeza de novo: textos salvos
+    // antes de o app tirar as marcas do MyMemory (`<g id="1">…</g>`) ficam certos sem a pessoa refazer a lição.
+    return FraseDoTexto(en, limparTraducao(pt),
+        alvo: j['alvo'] is String ? j['alvo'] as String : '',
+        alvoPt: j['alvoPt'] is String ? limparTraducao(j['alvoPt'] as String) : '');
   }
 
   @override
-  List<Object?> get props => [en, pt];
+  List<Object?> get props => [en, pt, alvo, alvoPt];
 }
 
 /// Um texto que a pessoa colou: guardamos só os pares inglês/português; as
@@ -69,7 +84,7 @@ class TextoSalvo extends Equatable {
             id: '$prefixoLicao$id-${i + 1}',
             nome: 'Parte ${i + 1}',
             emoji: '📝',
-            trechos: [for (final f in partes[i]) Trecho(cod: f.en, dica: f.pt, out: '')],
+            trechos: [for (final f in partes[i]) Trecho(cod: f.en, dica: f.pt, out: '', alvo: f.alvo, alvoPt: f.alvoPt)],
           ),
       ],
     );

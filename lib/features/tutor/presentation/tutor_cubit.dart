@@ -90,8 +90,8 @@ class TutorCubit extends Cubit<TutorState> {
   String _erroAmigavel(String erro) {
     final curto = erro.length > 180 ? '${erro.substring(0, 180)}…' : erro;
     if (erro.contains('PERMISSION_DENIED') || erro.contains('403')) {
-      return '🔒 A credencial do tutor recusou a chamada — a chave só funciona '
-          'no site oficial (pac-dart.web.app) e em localhost.\n\n`$curto`';
+      return '🔒 A credencial do tutor recusou a chamada — ela só vale para o app e para o '
+          'site oficial (pac-dart.web.app). Tente de novo daqui a pouco.\n\n`$curto`';
     }
     if (erro.contains('429') || erro.contains('RESOURCE_EXHAUSTED')) {
       return '😮‍💨 Muita gente perguntando ao mesmo tempo (cota do minuto '

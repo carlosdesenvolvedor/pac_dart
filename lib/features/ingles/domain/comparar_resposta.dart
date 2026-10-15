@@ -47,6 +47,16 @@ class ComparacaoResposta extends Equatable {
     required this.sugerida,
   });
 
+  /// A mesma conferência com outra nota sugerida (os níveis têm réguas diferentes).
+  ComparacaoResposta comSugestao(Rating nota) => ComparacaoResposta(
+        esperada: esperada,
+        digitada: digitada,
+        cobertura: cobertura,
+        precisao: precisao,
+        exata: exata,
+        sugerida: nota,
+      );
+
   /// Palavras da resposta que a pessoa acertou / total.
   int get acertadas => esperada.where((s) => s.acerto == true).length;
   int get totalEsperadas => esperada.where((s) => s.acerto != null).length;
@@ -107,15 +117,20 @@ class _Palavra {
   const _Palavra(this.ini, this.fim, this.norm);
 }
 
-final _unidade = RegExp(r'[\p{L}\p{N}]+', unicode: true);
+/// Uma palavra: letras e números, com apóstrofo no meio (don't, I'm, d'água) contando como uma só.
+final unidadeDePalavra = RegExp("[\\p{L}\\p{N}]+(?:['\u2019][\\p{L}\\p{N}]+)*", unicode: true);
 
 List<_Palavra> _palavras(String s) =>
-    [for (final m in _unidade.allMatches(s)) _Palavra(m.start, m.end, _sem(m[0]!))];
+    [for (final m in unidadeDePalavra.allMatches(s)) _Palavra(m.start, m.end, _sem(m[0]!))];
 
-/// Minúscula e sem acento (á→a, ç→c, ñ→n…).
+/// A palavra em minúscula, sem acento nem apóstrofo: a forma usada para comparar.
+String normalizarPalavra(String palavra) => _sem(palavra);
+
+/// Minúscula, sem acento (á→a, ç→c, ñ→n…) e sem apóstrofo (don't = dont).
 String _sem(String palavra) {
   final b = StringBuffer();
   for (final r in palavra.toLowerCase().runes) {
+    if (r == 0x27 || r == 0x2019) continue;
     b.write(_acentos[r] ?? String.fromCharCode(r));
   }
   return b.toString();
@@ -141,7 +156,11 @@ final _acentos = () {
   return m;
 }();
 
-/// Duas palavras contam como a mesma: iguais, ou com um errinho de digitação (1 letra em
+/// Duas palavras (como a pessoa as escreveu) contam como a mesma: sem ligar para maiúscula,
+/// acento e um errinho de digitação (ver [_iguais]).
+bool palavrasIguais(String a, String b) => _iguais(_sem(a.trim()), _sem(b.trim()));
+
+/// Duas palavras já normalizadas contam como a mesma: iguais, ou com um errinho de digitação (1 letra em
 /// palavra de 5+ letras; 2 em palavra de 9+).
 bool _iguais(String a, String b) {
   if (a == b) return true;

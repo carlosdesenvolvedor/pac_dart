@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/brand/logo_pacdart.dart';
+import '../../../core/brand/logo_paclingo.dart';
 import '../../../core/theme/mixart.dart';
 import '../../../core/theme/seletor_tema.dart';
 import 'auth_cubit.dart';
@@ -188,22 +188,8 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _cabecalho() => Column(
     children: [
-      const LogoPacDart(tamanho: 96),
-      const SizedBox(height: 18),
-      RichText(
-        text: TextSpan(
-          style: Mixart.display(size: 30),
-          children: [
-            TextSpan(text: 'PAC'),
-            TextSpan(
-              text: '·',
-              style: TextStyle(color: Mixart.brand),
-            ),
-            TextSpan(text: 'DART'),
-          ],
-        ),
-      ),
-      const SizedBox(height: 4),
+      const LogoPaclingo(tamanho: 150),
+      const SizedBox(height: 14),
       Text(
         'Aprenda Dart, Flutter, C# e inglês digitando',
         style: Mixart.ui(size: 13, color: Mixart.textMuted),

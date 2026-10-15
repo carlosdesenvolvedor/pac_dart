@@ -15,17 +15,38 @@ abstract interface class TutorService {
   });
 }
 
+/// Serviço que também aceita uma PERSONA própria (os cenários guiados: o Dash vira o atendente
+/// da cafeteria). Opcional e à parte do [TutorService], para os serviços falsos dos testes
+/// continuarem valendo; quem não o implementa recebe a persona como instrução no contexto.
+abstract interface class TutorComPersona {
+  Stream<String> perguntarComo({
+    required String persona,
+    required String contexto,
+    required String historico,
+    required String pergunta,
+  });
+}
+
 /// Prof. Dash falando direto com a API do Gemini.
 ///
 /// A chave vem do Firestore em runtime ([ChaveGemini]) — nunca do código —
 /// e é restrita por referer (só o site oficial) e por API (só o Gemini).
-class GeminiTutorService implements TutorService {
+class GeminiTutorService implements TutorService, TutorComPersona {
 
   /// Alias que acompanha SEMPRE o flash mais novo — imune a modelo aposentado
   /// (o gemini-2.5-flash morreu pra contas novas e quase nos pegou).
   static const _modelo = 'gemini-flash-latest';
 
-  /// A persona muda com a vertente em uso (PAC·DART, PAC·C# ou PAC·ENGLISH).
+  /// O modelo do tutor (o mesmo no site e no app).
+  static String get modelo => _modelo;
+
+  /// O que o modelo recebe: o contexto da lição aberta, a conversa recente e a pergunta.
+  static String montarPrompt({required String contexto, required String historico, required String pergunta}) =>
+      'CONTEXTO DO ALUNO AGORA:\n$contexto\n\n'
+      '${historico.isEmpty ? '' : 'CONVERSA RECENTE:\n$historico\n\n'}'
+      'PERGUNTA DO ALUNO: $pergunta';
+
+  /// A persona muda com a vertente em uso (Dart, C# ou Inglês).
   static String persona(Linguagem l) => switch (l) {
         Linguagem.csharp => _personaCSharp,
         Linguagem.ingles => _personaIngles,
@@ -33,7 +54,7 @@ class GeminiTutorService implements TutorService {
       };
 
   static const _personaIngles = '''
-Você é o Prof. Dash, o passarinho azul professor de inglês do app PAC·ENGLISH
+Você é o Prof. Dash, o passarinho azul professor de inglês do app Paclingo
 (um treinador de digitação em português do Brasil: o aluno vê a tradução em
 português em cima e digita a frase em inglês várias vezes até decorar, do zero
 ao avançado).
@@ -60,7 +81,7 @@ Regras de ouro:
 ''';
 
   static const _personaCSharp = '''
-Você é o Prof. Dash, o passarinho azul tutor do app PAC·C# (um treinador de
+Você é o Prof. Dash, o passarinho azul tutor do app Paclingo (um treinador de
 digitação de código em português do Brasil que ensina C# e .NET do iniciante ao
 sênior: a linguagem, LINQ, async, ASP.NET Core, EF Core, testes, arquitetura
 — SOLID, padrões, Clean Architecture, DDD, CQRS — e jogos com Unity, Godot e
@@ -81,7 +102,7 @@ Regras de ouro:
 ''';
 
   static const _persona = '''
-Você é o Prof. Dash, o passarinho azul tutor de Dart e Flutter do app PAC·DART
+Você é o Prof. Dash, o passarinho azul tutor de Dart e Flutter do app Paclingo
 (um treinador de digitação de código em português do Brasil).
 
 Regras de ouro:
@@ -104,10 +125,17 @@ Regras de ouro:
     required String contexto,
     required String historico,
     required String pergunta,
+  }) =>
+      perguntarComo(persona: persona(Linguagem.atual), contexto: contexto, historico: historico, pergunta: pergunta);
+
+  @override
+  Stream<String> perguntarComo({
+    required String persona,
+    required String contexto,
+    required String historico,
+    required String pergunta,
   }) async* {
-    final prompt = 'CONTEXTO DO ALUNO AGORA:\n$contexto\n\n'
-        '${historico.isEmpty ? '' : 'CONVERSA RECENTE:\n$historico\n\n'}'
-        'PERGUNTA DO ALUNO: $pergunta';
+    final prompt = montarPrompt(contexto: contexto, historico: historico, pergunta: pergunta);
 
     final chave = await ChaveGemini.obter();
     if (chave == null) {
@@ -120,7 +148,7 @@ Regras de ouro:
       body: jsonEncode({
         'systemInstruction': {
           'parts': [
-            {'text': persona(Linguagem.atual)}
+            {'text': persona}
           ]
         },
         'contents': [

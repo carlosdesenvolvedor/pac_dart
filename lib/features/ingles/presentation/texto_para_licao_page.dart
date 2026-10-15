@@ -202,6 +202,12 @@ class _TextoParaLicaoPageState extends State<TextoParaLicaoPage> {
       if (_dividido.cortado)
         _aviso('O texto tem ${_dividido.total} frases; vou usar só as primeiras $maxFrasesPorTexto. '
             'Para o resto, crie outra lição com o final do texto.'),
+      if (_dividido.partidas > 0)
+        _aviso(
+            '${_dividido.partidas} ${_dividido.partidas == 1 ? 'frase comprida foi dividida' : 'frases compridas foram divididas'} '
+            'em pedaços curtos, cada um com uma ideia inteira, para os exercícios ficarem rápidos. '
+            'Você confere os pedaços e as traduções na próxima tela.',
+            chave: const Key('aviso-divididas')),
       if (_dividido.simplificou)
         _aviso('Troquei aspas curvas, travessões e letras acentuadas por sinais simples (café → cafe) '
             'para dar para digitar no teclado.'),
@@ -241,7 +247,8 @@ class _TextoParaLicaoPageState extends State<TextoParaLicaoPage> {
     ]);
   }
 
-  Widget _aviso(String t) => Padding(
+  Widget _aviso(String t, {Key? chave}) => Padding(
+        key: chave,
         padding: const EdgeInsets.only(top: 8),
         child: Text('ℹ️ $t', style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.45)),
       );

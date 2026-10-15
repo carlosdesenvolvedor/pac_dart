@@ -6,7 +6,7 @@ import '../../../core/gemini/chave_gemini.dart';
 import '../../../core/linguagem/linguagem.dart';
 import '../domain/turismo.dart';
 
-/// 🎧 A engenheira de pista da equipe PAC·DART: depois da corrida, o Gemini
+/// 🎧 A engenheira de pista da equipe Paclingo: depois da corrida, o Gemini
 /// (a mesma chave do Prof. Dash, guardada no Firestore) lê a telemetria e
 /// manda pelo rádio um debrief curto — resultado, UMA dica prática e uma
 /// curiosidade de Dart/Flutter sobre uma ficha pega na pista. Sem chave, sem
@@ -20,18 +20,18 @@ class EngenheiroGt {
   /// de Dart ou de C#).
   static String get _persona => switch (Linguagem.atual) {
         Linguagem.csharp => _personaBase
-            .replaceAll('PAC·DART no Dart Turismo', 'PAC·C# no C# Turismo')
+            .replaceAll('Paclingo no Dart Turismo', 'Paclingo no C# Turismo')
             .replaceAll('ensina Dart e Flutter', 'ensina C# e .NET')
             .replaceAll('em Dart/Flutter', 'em C#/.NET'),
         Linguagem.ingles => _personaBase
-            .replaceAll('PAC·DART no Dart Turismo', 'PAC·ENGLISH no English Turismo')
+            .replaceAll('Paclingo no Dart Turismo', 'Paclingo no English Turismo')
             .replaceAll('ensina Dart e Flutter', 'ensina inglês')
             .replaceAll('em Dart/Flutter', 'em inglês'),
         Linguagem.dart => _personaBase,
       };
 
   static const _personaBase = '''
-Você é a engenheira de pista da equipe PAC·DART no Dart Turismo, um jogo de
+Você é a engenheira de pista da equipe Paclingo no Dart Turismo, um jogo de
 corrida que ensina Dart e Flutter. Você fala pelo rádio com o piloto logo
 depois da corrida, em português do Brasil.
 

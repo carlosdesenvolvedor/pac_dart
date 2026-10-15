@@ -117,7 +117,7 @@ class _ArcadePageState extends State<ArcadePage> {
               padding: const EdgeInsets.fromLTRB(20, 16, 20, 48),
               children: [
                 CabecalhoJogo(
-                    rotulo: 'PAC·${BancoArcade.linguagem.toUpperCase()}',
+                    rotulo: 'PACLINGO · ${BancoArcade.linguagem.toUpperCase()}',
                     titulo: '🎮 Arcade ${BancoArcade.linguagem}'),
                 const SizedBox(height: 14),
                 Container(

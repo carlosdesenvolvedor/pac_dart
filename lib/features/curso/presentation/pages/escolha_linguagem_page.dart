@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/brand/logo_pacdart.dart';
+import '../../../../core/brand/logo_paclingo.dart';
 import '../../../../core/linguagem/linguagem.dart';
 import '../../../../core/linguagem/linguagem_cubit.dart';
 import '../../../../core/theme/mixart.dart';
 
-/// Tela de entrada: escolher o curso (PAC·DART, PAC·C# ou PAC·ENGLISH). Aparece na
+/// Tela de entrada: escolher o curso (Dart, C# ou Inglês). Aparece na
 /// primeira vez e sempre que a pessoa toca em "trocar" no topo.
 class EscolhaLinguagemPage extends StatelessWidget {
   /// Aberta por cima do curso (botão ⇄ do topo): tem "voltar", e escolher a
@@ -90,7 +90,7 @@ class EscolhaLinguagemPage extends StatelessWidget {
                           backgroundColor: Mixart.surfaceHi, side: BorderSide(color: Mixart.border)),
                     ),
                   ),
-                const LogoPacDart(tamanho: 84),
+                const LogoPaclingo(tamanho: 120),
                 const SizedBox(height: 16),
                 Text('Escolha sua trilha', style: Mixart.display(size: 30), textAlign: TextAlign.center),
                 const SizedBox(height: 8),
@@ -227,11 +227,10 @@ class _CartaoLinguagemState extends State<_CartaoLinguagem> {
                   fit: BoxFit.scaleDown,
                   alignment: Alignment.centerLeft,
                   child: RichText(
-                    text: TextSpan(style: Mixart.display(size: 28), children: [
-                      const TextSpan(text: 'PAC'),
-                      TextSpan(text: '·', style: TextStyle(color: Mixart.brand)),
-                      TextSpan(text: l.marca),
-                    ]),
+                    text: TextSpan(
+                      style: Mixart.display(size: 28),
+                      text: l.marca,
+                    ),
                   ),
                 ),
               ),

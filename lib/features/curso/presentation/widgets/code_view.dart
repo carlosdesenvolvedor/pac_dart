@@ -313,6 +313,9 @@ class _CodeViewState extends State<CodeView> {
                 height: 1,
                 child: Opacity(
                   opacity: 0,
+                  // invisível, mas no leitor de tela: com a acessibilidade ligada o Flutter
+                  // web só digita em campo que está na árvore semântica
+                  alwaysIncludeSemantics: true,
                   child: TextField(
                     focusNode: _foco,
                     controller: _ctrl,

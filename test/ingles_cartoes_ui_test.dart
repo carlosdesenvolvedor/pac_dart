@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,6 +14,7 @@ import 'package:pac_dart/features/dartpad/mapa_rodavel.dart';
 import 'package:pac_dart/features/ingles/data/voz_ingles.dart';
 import 'package:pac_dart/features/ingles/domain/baralhos.dart';
 import 'package:pac_dart/features/ingles/domain/config_srs.dart';
+import 'package:pac_dart/features/ingles/domain/nivel_resposta.dart';
 import 'package:pac_dart/features/ingles/domain/revisao.dart';
 import 'package:pac_dart/features/ingles/domain/srs.dart';
 import 'package:pac_dart/features/ingles/presentation/baralhos_page.dart';
@@ -20,7 +23,7 @@ import 'package:pac_dart/features/ingles/presentation/revisao_cubit.dart';
 import 'package:pac_dart/features/ingles/presentation/sessao_cartoes_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'ingles_baralhos_test.dart' show ConfigMemoria, RepoMemoria, f1, f2, f3, trilhasDeTeste;
+import 'ingles_baralhos_test.dart' show ConfigMemoria, RepoMemoria, f1, f2, f3, f4, trilhasDeTeste;
 
 class VozFake extends VozIngles {
   bool liberado = true;
@@ -75,10 +78,19 @@ void main() {
         Set<String> novas = const {},
         VozFake? voz,
         Widget Function(BuildContext, Trecho)? extra,
-        bool escrita = false,
-        Map<String, Object> prefs = const {}}) async {
-      // os testes do "só virar" desligam a escrita (o padrão do app é ligada)
-      SharedPreferences.setMockInitialValues({SessaoCartoesPage.prefEscrita: escrita, ...prefs});
+        NivelResposta nivel = NivelResposta.livre,
+        SentidoCartao sentido = SentidoCartao.enPt,
+        Random? aleatorio,
+        List<Trecho> apoio = const [],
+        Map<String, Object> prefs = const {},
+        Map<String, Object>? prefsExatas}) async {
+      // por padrão: inglês na frente e "só virar" (o app abre no Avançado e misturando os lados)
+      SharedPreferences.setMockInitialValues(prefsExatas ??
+          {
+            SessaoCartoesPage.prefNivel: nivel.id,
+            SessaoCartoesPage.prefSentido: sentido.id,
+            ...prefs,
+          });
       notas.clear();
       fim = null;
       saiu = null;
@@ -102,6 +114,8 @@ void main() {
                   onNota: (f, n) => notas.add((f.cod, n)),
                   onFim: (r) => fim = r,
                   acaoExtra: extra,
+                  apoio: apoio,
+                  aleatorio: aleatorio ?? Random(7),
                 ),
               ));
             },
@@ -294,7 +308,10 @@ void main() {
       await tester.pump();
     }
 
-    String plano(WidgetTester tester, String chave) => tester.widget<Text>(find.byKey(Key(chave))).textSpan!.toPlainText();
+    String plano(WidgetTester tester, String chave) {
+      final t = tester.widget<Text>(find.byKey(Key(chave)));
+      return t.data ?? t.textSpan!.toPlainText();
+    }
 
     List<TextSpan> palavras(WidgetTester tester, String chave) =>
         (tester.widget<Text>(find.byKey(Key(chave))).textSpan! as TextSpan).children!.cast<TextSpan>();
@@ -302,22 +319,21 @@ void main() {
     bool sugerida(WidgetTester tester, String chave) =>
         find.descendant(of: find.byKey(Key(chave)), matching: find.textContaining('sugerida')).evaluate().isNotEmpty;
 
-    testWidgets('por padrão pede a resposta ESCRITA: campo, Conferir e Não sei no lugar de "Mostrar resposta"', (tester) async {
-      await abrir(tester, escrita: true);
+    testWidgets('no Avançado pede a resposta ESCRITA: campo, Conferir e Não sei no lugar de "Mostrar resposta"', (tester) async {
+      await abrir(tester, nivel: NivelResposta.avancado);
       await tester.pump();
       expect(find.byKey(const Key('resposta-escrita')), findsOneWidget);
       expect(find.byKey(const Key('conferir-resposta')), findsOneWidget);
       expect(find.byKey(const Key('nao-sei-cartao')), findsOneWidget);
       expect(find.byKey(const Key('mostrar-resposta')), findsNothing);
-      expect(tester.widget<Switch>(find.byKey(const Key('alternar-escrita'))).value, isTrue);
-      expect(find.text('Leia o inglês e escreva a tradução em português'), findsOneWidget);
+      expect(find.text('Leia o inglês e escreva em português'), findsOneWidget);
       expect(find.text('Prazer em te conhecer.'), findsNothing, reason: 'o verso fica escondido até conferir');
       expect(tester.widget<TextField>(find.byKey(const Key('resposta-escrita'))).focusNode!.hasFocus, isTrue,
           reason: 'o cursor já cai no campo');
     });
 
     testWidgets('resposta certa (sem maiúscula nem pontuação): "Idêntica!", sugere Bom e o Espaço aceita a sugestão', (tester) async {
-      await abrir(tester, escrita: true);
+      await abrir(tester, nivel: NivelResposta.avancado);
       await tester.pump();
       await escreve(tester, 'prazer em te CONHECER');
       expect(find.byKey(const Key('resposta-escrita')), findsNothing);
@@ -333,7 +349,7 @@ void main() {
     });
 
     testWidgets('resposta parcial: conta as palavras, sugere Difícil e o Espaço registra Difícil', (tester) async {
-      await abrir(tester, escrita: true);
+      await abrir(tester, nivel: NivelResposta.avancado);
       await tester.pump();
       await escreve(tester, 'prazer em conhecer');
       expect(find.text('Você acertou 3 de 4 palavras · sugestão: Difícil'), findsOneWidget);
@@ -345,7 +361,7 @@ void main() {
     });
 
     testWidgets('resposta errada sugere Errei, mas a pessoa manda: a tecla 3 vale "Bom" (tradução livre)', (tester) async {
-      await abrir(tester, escrita: true);
+      await abrir(tester, nivel: NivelResposta.avancado);
       await tester.pump();
       await escreve(tester, 'muito prazer em encontrar você');
       expect(find.textContaining('sugestão: Errei'), findsOneWidget);
@@ -356,7 +372,7 @@ void main() {
     });
 
     testWidgets('"Conferir" pelo botão; vazio e "Não sei" só mostram a resposta e sugerem Errei, sem comparação', (tester) async {
-      await abrir(tester, escrita: true, itens: const [f1, f2, f3]);
+      await abrir(tester, nivel: NivelResposta.avancado, itens: const [f1, f2, f3]);
       await tester.pump();
       await tester.enterText(find.byKey(const Key('resposta-escrita')), 'prazer em te conhecer');
       await tester.tap(find.byKey(const Key('conferir-resposta')));
@@ -381,7 +397,7 @@ void main() {
     });
 
     testWidgets('escrevendo, as teclas são do campo: espaço, números e R não avaliam, não viram o cartão nem ouvem', (tester) async {
-      final voz = await abrir(tester, escrita: true);
+      final voz = await abrir(tester, nivel: NivelResposta.avancado);
       await tester.pump();
       await tester.tap(find.byKey(const Key('resposta-escrita')));
       await tester.pump();
@@ -396,7 +412,7 @@ void main() {
     });
 
     testWidgets('as palavras ficam marcadas: certas em verde, a sobra em vermelho, as que faltaram sublinhadas', (tester) async {
-      await abrir(tester, escrita: true);
+      await abrir(tester, nivel: NivelResposta.avancado);
       await tester.pump();
       await escreve(tester, 'prazer te demais');
       final sua = palavras(tester, 'sua-resposta');
@@ -413,7 +429,7 @@ void main() {
     });
 
     testWidgets('o próximo cartão volta com o campo vazio e focado; a repetição do "Errei" também pede a escrita', (tester) async {
-      await abrir(tester, escrita: true);
+      await abrir(tester, nivel: NivelResposta.avancado);
       await tester.pump();
       await escreve(tester, 'banana');
       await tester.sendKeyEvent(LogicalKeyboardKey.space); // aceita a sugestão: Errei
@@ -430,7 +446,7 @@ void main() {
       await tester.pump();
       // a repetição de f1
       expect(find.text('DE NOVO'), findsOneWidget);
-      expect(find.text('Você errou: escreva de novo ou vire e confira'), findsOneWidget);
+      expect(find.text('Você errou: leia o inglês e escreva em português'), findsOneWidget);
       await escreve(tester, 'prazer em te conhecer');
       expect(find.byKey(const Key('nota-dificil')), findsNothing, reason: 'na repetição são 2 botões');
       expect(sugerida(tester, 'nota-bom'), isTrue, reason: 'acertou: "Lembrei" vem sugerido');
@@ -440,38 +456,389 @@ void main() {
       expect(notas.length, 2, reason: 'a repetição não conta de novo');
     });
 
-    testWidgets('a chave "Responder escrevendo" desliga (volta o "Mostrar resposta"), religa e FICA SALVA', (tester) async {
-      await abrir(tester, escrita: true);
+    testWidgets('o seletor de nível troca o cartão na hora (Só virar ↔ Avançado) e FICA SALVO', (tester) async {
+      await abrir(tester, nivel: NivelResposta.avancado);
       await tester.pump();
-      await tester.tap(find.byKey(const Key('alternar-escrita')));
+      await tester.tap(find.byKey(const Key('nivel-livre')));
       await tester.pump();
       expect(find.byKey(const Key('resposta-escrita')), findsNothing);
       expect(find.byKey(const Key('mostrar-resposta')), findsOneWidget);
-      expect(find.text('Leia o inglês e tente lembrar o sentido'), findsOneWidget);
+      expect(find.text('Leia o inglês e tente lembrar o português'), findsOneWidget);
       var p = await tester.runAsync(SharedPreferences.getInstance);
-      expect(p!.getBool(SessaoCartoesPage.prefEscrita), isFalse);
+      expect(p!.getString(SessaoCartoesPage.prefNivel), 'livre');
       // sem escrita, o Espaço volta a virar e a avaliar "Bom"
       await tester.sendKeyEvent(LogicalKeyboardKey.space);
       await tester.pump();
       expect(find.byKey(const Key('nota-bom')), findsOneWidget);
-      expect(sugerida(tester, 'nota-bom'), isFalse, reason: 'sem resposta escrita não há sugestão');
+      expect(sugerida(tester, 'nota-bom'), isFalse, reason: 'sem resposta não há sugestão');
 
-      await tester.tap(find.byKey(const Key('alternar-escrita')), warnIfMissed: false);
+      await tester.tap(find.byKey(const Key('nivel-avancado')), warnIfMissed: false);
       await tester.pump();
       p = await tester.runAsync(SharedPreferences.getInstance);
-      expect(p!.getBool(SessaoCartoesPage.prefEscrita), isTrue);
+      expect(p!.getString(SessaoCartoesPage.prefNivel), 'avancado');
     });
 
-    testWidgets('preferência salva desligada: abre direto no "Mostrar resposta"', (tester) async {
-      await abrir(tester, escrita: false);
+    testWidgets('nível salvo como Só virar abre direto no "Mostrar resposta"', (tester) async {
+      await abrir(tester, nivel: NivelResposta.livre);
       await tester.pump();
       expect(find.byKey(const Key('mostrar-resposta')), findsOneWidget);
       expect(find.byKey(const Key('resposta-escrita')), findsNothing);
-      expect(tester.widget<Switch>(find.byKey(const Key('alternar-escrita'))).value, isFalse);
+    });
+
+    testWidgets('preferência de antes dos níveis (escrever = não) vira Só virar; sem nada salvo abre no Avançado', (tester) async {
+      await abrir(tester, prefsExatas: {SessaoCartoesPage.prefSentido: 'en-pt', SessaoCartoesPage.prefEscrita: false});
+      expect(find.byKey(const Key('mostrar-resposta')), findsOneWidget);
+      await tester.tap(find.byTooltip('Voltar'));
+      await tester.pumpAndSettle();
+      await abrir(tester, prefsExatas: {SessaoCartoesPage.prefSentido: 'en-pt'});
+      expect(find.byKey(const Key('resposta-escrita')), findsOneWidget);
+    });
+
+    // ------------------------------------------------------------------ níveis (Fácil e Médio) e sentidos
+    const longa = Trecho(cod: 'I like coffee very much.', dica: 'Eu gosto muito de café.', out: '');
+    const contracao = Trecho(cod: "I don't know.", dica: 'Eu não sei.', out: '');
+
+    /// Os blocos do banco do nível Fácil: posição → palavra.
+    Map<int, String> banco(WidgetTester tester) {
+      final r = <int, String>{};
+      for (var i = 0; i < 40; i++) {
+        final f = find.byKey(Key('bloco-$i'));
+        if (f.evaluate().isEmpty) continue;
+        r[i] = tester.widget<Text>(find.descendant(of: f, matching: find.byType(Text))).data!;
+      }
+      return r;
+    }
+
+    /// Toca nos blocos [palavras], nessa ordem (cada bloco só uma vez).
+    Future<void> montar(WidgetTester tester, List<String> palavras) async {
+      final usados = <int>{};
+      for (final p in palavras) {
+        final id = banco(tester).entries.firstWhere((e) => e.value == p && !usados.contains(e.key)).key;
+        usados.add(id);
+        await tester.tap(find.byKey(Key('bloco-$id')));
+        await tester.pump();
+      }
+    }
+
+    int montados(WidgetTester tester) =>
+        find.byWidgetPredicate((w) => w.key is ValueKey<String> && (w.key! as ValueKey<String>).value.startsWith('escolhido-')).evaluate().length;
+
+    Finder lacunasDaTela() =>
+        find.byWidgetPredicate((w) => w is TextField && w.key is ValueKey<String> && (w.key! as ValueKey<String>).value.startsWith('lacuna-'));
+
+    /// As palavras à vista da frase do Médio (o resto são as lacunas).
+    List<String> aVista(WidgetTester tester) => [
+          for (final t in find.descendant(of: find.byKey(const Key('lacunas')), matching: find.byType(Text)).evaluate())
+            (t.widget as Text).data!,
+        ];
+
+    testWidgets('Fácil: monta a frase com blocos; os de enfeite vêm das outras frases e NÃO fazem parte da resposta', (tester) async {
+      await abrir(tester, nivel: NivelResposta.facil, itens: const [f1, f2]);
+      await tester.pump();
+      expect(find.byKey(const Key('montagem')), findsOneWidget);
+      expect(find.byKey(const Key('resposta-escrita')), findsNothing);
+      expect(find.byKey(const Key('mostrar-resposta')), findsNothing);
+      expect(find.text('Monte a frase em português com os blocos'), findsOneWidget);
+      expect(find.text('Nice to meet you.'), findsOneWidget, reason: 'a frente continua sendo o inglês');
+      expect(find.text('Prazer em te conhecer.'), findsNothing, reason: 'a resposta fica escondida');
+
+      final blocos = banco(tester).values.toList();
+      const certas = ['Prazer', 'em', 'te', 'conhecer'];
+      expect(blocos.length, certas.length + quantosDistratores(4));
+      final enfeites = [...blocos];
+      for (final c in certas) {
+        enfeites.remove(c);
+      }
+      expect(enfeites..sort(), ['Como', 'vai'], reason: 'o único apoio é a outra frase da sessão, em português');
+
+      expect(tester.widget<FilledButton>(find.byKey(const Key('conferir-resposta'))).onPressed, isNull, reason: 'nada montado: não confere');
+      await montar(tester, certas);
+      expect(montados(tester), 4);
+      expect(tester.widget<FilledButton>(find.byKey(const Key('conferir-resposta'))).onPressed, isNotNull);
+      await tester.tap(find.byKey(const Key('conferir-resposta')));
+      await tester.pump();
+      expect(find.text('Frase montada certinha! ✅'), findsOneWidget);
+      expect(plano(tester, 'sua-resposta'), 'Prazer em te conhecer');
+      expect(plano(tester, 'verso-cartao'), 'Prazer em te conhecer.');
+      expect(sugerida(tester, 'nota-bom'), isTrue);
+      expect(find.byKey(const Key('montagem')), findsNothing);
+    });
+
+    testWidgets('Fácil: tocar num bloco da frase o devolve ao banco; Backspace tira o último; Enter confere', (tester) async {
+      await abrir(tester, nivel: NivelResposta.facil, itens: const [f1, f2]);
+      await tester.pump();
+      await montar(tester, ['em', 'te']);
+      expect(montados(tester), 2);
+      await tester.sendKeyEvent(LogicalKeyboardKey.backspace);
+      await tester.pump();
+      expect(montados(tester), 1, reason: 'Backspace tirou o "te"');
+      final idEm = banco(tester).entries.firstWhere((e) => e.value == 'em').key;
+      await tester.tap(find.byKey(Key('escolhido-$idEm')));
+      await tester.pump();
+      expect(montados(tester), 0);
+      expect(find.text('Toque nos blocos abaixo para montar a frase'), findsOneWidget);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.pump();
+      expect(find.byKey(const Key('nota-bom')), findsNothing, reason: 'Enter sem nada montado não vira');
+      // o bloco devolvido pode ser pego de novo; o Espaço não vira (só os níveis sem resposta usam o Espaço)
+      await montar(tester, ['em']);
+      expect(montados(tester), 1);
+      await tester.sendKeyEvent(LogicalKeyboardKey.space);
+      await tester.pump();
+      expect(find.byKey(const Key('nota-bom')), findsNothing);
+      await tester.sendKeyEvent(LogicalKeyboardKey.enter);
+      await tester.pump();
+      expect(find.byKey(const Key('nota-bom')), findsOneWidget, reason: 'Enter conferiu');
+    });
+
+    testWidgets('Fácil: palavras certas em outra ordem → "outra ordem" e sugere Difícil; faltando palavra → Errei', (tester) async {
+      await abrir(tester, nivel: NivelResposta.facil, itens: const [f1, f2]);
+      await tester.pump();
+      await montar(tester, ['em', 'Prazer', 'te', 'conhecer']);
+      await tester.tap(find.byKey(const Key('conferir-resposta')));
+      await tester.pump();
+      expect(find.text('Todas as palavras, mas em outra ordem · sugestão: Difícil'), findsOneWidget);
+      expect(sugerida(tester, 'nota-dificil'), isTrue);
+      await tester.sendKeyEvent(LogicalKeyboardKey.digit2);
+      await tester.pump();
+      await tester.pump();
+      // 2º cartão: um bloco certo e um de enfeite
+      expect(find.text('How are you?'), findsOneWidget);
+      await montar(tester, ['Como', 'Eu'].where((p) => banco(tester).containsValue(p)).toList());
+      await tester.tap(find.byKey(const Key('conferir-resposta')));
+      await tester.pump();
+      expect(sugerida(tester, 'nota-errei'), isTrue);
+      expect(find.textContaining('· sugestão: Errei'), findsOneWidget);
+    });
+
+    testWidgets('Fácil: sem outras frases na sessão, os enfeites vêm do apoio do curso (e só depois da reserva)', (tester) async {
+      await abrir(tester, nivel: NivelResposta.facil, itens: const [f1], apoio: const [f2, f3, f4]);
+      await tester.pump();
+      const doApoio = {'Como', 'vai', 'Eu', 'estava', 'cansado', 'Até', 'amanhã'};
+      final enfeites = banco(tester).values.where((w) => !['Prazer', 'em', 'te', 'conhecer'].contains(w)).toList();
+      expect(enfeites.length, 2);
+      expect(enfeites.every(doApoio.contains), isTrue, reason: '$enfeites');
+    });
+
+    testWidgets('Fácil: "Não sei" mostra a resposta e sugere Errei', (tester) async {
+      await abrir(tester, nivel: NivelResposta.facil, itens: const [f1]);
+      await tester.pump();
+      await tester.tap(find.byKey(const Key('nao-sei-cartao')));
+      await tester.pump();
+      expect(find.text('Prazer em te conhecer.'), findsOneWidget);
+      expect(find.byKey(const Key('sua-resposta')), findsNothing);
+      expect(sugerida(tester, 'nota-errei'), isTrue);
+    });
+
+    testWidgets('Médio: palavras à vista + um campo para cada lacuna; preencher tudo certo sugere Bom', (tester) async {
+      await abrir(tester, nivel: NivelResposta.medio, itens: const [f1]);
+      await tester.pump();
+      expect(find.text('Complete a frase em português'), findsOneWidget);
+      expect(find.byKey(const Key('resposta-escrita')), findsNothing);
+      expect(lacunasDaTela(), findsNWidgets(quantasEscondidas(4)));
+      final visiveis = aVista(tester);
+      expect(visiveis.length, 4 - quantasEscondidas(4) + 1, reason: 'as palavras à vista + o ponto final');
+      expect(find.text('Prazer em te conhecer.'), findsNothing);
+      const frase = ['Prazer', 'em', 'te', 'conhecer'];
+      final faltam = frase.where((p) => !visiveis.any((v) => v.replaceAll(RegExp(r'[^\p{L}]', unicode: true), '') == p)).toList();
+      expect(faltam.length, quantasEscondidas(4));
+      for (var n = 0; n < faltam.length; n++) {
+        await tester.enterText(find.byKey(Key('lacuna-$n')), faltam[n]);
+      }
+      await tester.tap(find.byKey(const Key('conferir-resposta')));
+      await tester.pump();
+      expect(find.text('Todas as lacunas certas! ✅'), findsOneWidget);
+      expect(plano(tester, 'sua-resposta'), 'Prazer em te conhecer.');
+      expect(sugerida(tester, 'nota-bom'), isTrue);
+    });
+
+    testWidgets('Médio: 2 de 3 lacunas certas sugere Difícil e conta "lacunas"; espaço pula para a próxima lacuna', (tester) async {
+      await abrir(tester, nivel: NivelResposta.medio, itens: const [longa], sentido: SentidoCartao.ptEn);
+      await tester.pump();
+      expect(lacunasDaTela(), findsNWidgets(3));
+      final ocultas = ['I', 'like', 'coffee', 'very', 'much'].where((p) => !aVista(tester).any((v) => v.replaceAll(RegExp(r'[^\p{L}]', unicode: true), '') == p)).toList();
+      expect(ocultas.length, 3);
+      // espaço no fim do que digitou = "terminei": a palavra fica sem o espaço e o cursor vai para a próxima
+      await tester.enterText(find.byKey(const Key('lacuna-0')), '${ocultas[0]} ');
+      await tester.pump();
+      expect(tester.widget<TextField>(find.byKey(const Key('lacuna-0'))).controller!.text, ocultas[0]);
+      expect(tester.widget<TextField>(find.byKey(const Key('lacuna-1'))).focusNode!.hasFocus, isTrue);
+      await tester.enterText(find.byKey(const Key('lacuna-1')), ocultas[1]);
+      await tester.enterText(find.byKey(const Key('lacuna-2')), 'banana');
+      await tester.testTextInput.receiveAction(TextInputAction.done); // Enter na última lacuna confere
+      await tester.pump();
+      expect(find.text('Você acertou 2 de 3 lacunas · sugestão: Difícil'), findsOneWidget);
+      expect(sugerida(tester, 'nota-dificil'), isTrue);
+    });
+
+    testWidgets('Médio: Conferir sem escrever nada vira a resposta e sugere Errei', (tester) async {
+      await abrir(tester, nivel: NivelResposta.medio, itens: const [f1]);
+      await tester.pump();
+      await tester.tap(find.byKey(const Key('conferir-resposta')));
+      await tester.pump();
+      expect(find.text('Prazer em te conhecer.'), findsOneWidget);
+      expect(sugerida(tester, 'nota-errei'), isTrue);
+    });
+
+    testWidgets('português → inglês: a frente é o português, o inglês só aparece (e fala) depois de conferir; R não entrega antes', (tester) async {
+      final voz = await abrir(tester, nivel: NivelResposta.avancado, sentido: SentidoCartao.ptEn, itens: const [f1]);
+      await tester.pump();
+      expect(find.text('PORTUGUÊS'), findsOneWidget);
+      expect(plano(tester, 'frente-cartao'), 'Prazer em te conhecer.');
+      expect(find.text('Nice to meet you.'), findsNothing);
+      expect(find.text('Leia o português e escreva em inglês'), findsOneWidget);
+      expect(find.text('Escreva aqui a frase em inglês…'), findsOneWidget);
+      expect(find.byKey(const Key('ouvir-cartao')), findsNothing, reason: 'o áudio é em inglês: entregaria a resposta');
+      expect(voz.falas, isEmpty, reason: 'não fala sozinho antes de responder');
+      // R com o campo sem foco de texto não pode tocar o inglês antes da hora
+      await tester.sendKeyEvent(LogicalKeyboardKey.keyR);
+      expect(voz.falas, isEmpty);
+
+      await escreve(tester, 'nice to MEET you');
+      expect(find.text('Idêntica! ✅ 4 de 4 palavras.'), findsOneWidget);
+      expect(find.text('INGLÊS'), findsOneWidget);
+      expect(plano(tester, 'verso-cartao'), 'Nice to meet you.');
+      expect(find.byKey(const Key('ouvir-cartao')), findsOneWidget);
+      expect(voz.falas, ['Nice to meet you.'], reason: 'fala o inglês quando a resposta aparece');
+    });
+
+    testWidgets('português → inglês no Só virar: a tecla R não toca o inglês antes de virar (entregaria a resposta); depois toca', (tester) async {
+      final voz = await abrir(tester, nivel: NivelResposta.livre, sentido: SentidoCartao.ptEn, itens: const [f1]);
+      await tester.pump();
+      await tester.sendKeyEvent(LogicalKeyboardKey.keyR);
+      await tester.pump();
+      expect(voz.falas, isEmpty);
+      await tester.sendKeyEvent(LogicalKeyboardKey.space); // vira
+      await tester.pump();
+      expect(voz.falas, ['Nice to meet you.'], reason: 'ao virar, fala o inglês sozinho');
+      await tester.sendKeyEvent(LogicalKeyboardKey.keyR);
+      await tester.pump();
+      expect(voz.falas, ['Nice to meet you.', 'Nice to meet you.']);
+    });
+
+    testWidgets('português → inglês: don\'t e dont, I\'m e I’m são a mesma palavra', (tester) async {
+      await abrir(tester, nivel: NivelResposta.avancado, sentido: SentidoCartao.ptEn, itens: const [contracao]);
+      await tester.pump();
+      await escreve(tester, 'i dont know');
+      expect(find.text('Idêntica! ✅ 3 de 3 palavras.'), findsOneWidget);
+    });
+
+    testWidgets('português → inglês no Fácil: blocos em inglês, enfeites em inglês (reserva do idioma)', (tester) async {
+      await abrir(tester, nivel: NivelResposta.facil, sentido: SentidoCartao.ptEn, itens: const [f1]);
+      await tester.pump();
+      expect(find.text('Monte a frase em inglês com os blocos'), findsOneWidget);
+      final blocos = banco(tester).values.toList();
+      const certas = ['Nice', 'to', 'meet', 'you'];
+      final enfeites = [...blocos];
+      for (final c in certas) {
+        enfeites.remove(c);
+      }
+      expect(enfeites.length, 2);
+      expect(enfeites.every(palavrasDeReservaEn.contains), isTrue, reason: '$enfeites');
+      await montar(tester, certas);
+      await tester.tap(find.byKey(const Key('conferir-resposta')));
+      await tester.pump();
+      expect(find.text('Frase montada certinha! ✅'), findsOneWidget);
+      expect(plano(tester, 'verso-cartao'), 'Nice to meet you.');
+    });
+
+    testWidgets('o seletor de sentido muda a frente do cartão na hora, fica salvo e, depois de virar, só vale para o próximo', (tester) async {
+      final voz = await abrir(tester, itens: const [f1, f2]);
+      await tester.pump();
+      expect(find.text('INGLÊS'), findsOneWidget);
+      expect(plano(tester, 'frente-cartao'), 'Nice to meet you.');
+      expect(voz.falas, ['Nice to meet you.']);
+      await tester.tap(find.byKey(const Key('sentido-pt-en')));
+      await tester.pump();
+      expect(find.text('PORTUGUÊS'), findsOneWidget);
+      expect(plano(tester, 'frente-cartao'), 'Prazer em te conhecer.');
+      expect(find.byKey(const Key('ouvir-cartao')), findsNothing);
+      final p = await tester.runAsync(SharedPreferences.getInstance);
+      expect(p!.getString(SessaoCartoesPage.prefSentido), 'pt-en');
+
+      await tester.tap(find.byKey(const Key('mostrar-resposta')));
+      await tester.pump();
+      expect(plano(tester, 'verso-cartao'), 'Nice to meet you.');
+      await tester.tap(find.byKey(const Key('sentido-en-pt')));
+      await tester.pump();
+      expect(plano(tester, 'verso-cartao'), 'Nice to meet you.', reason: 'o cartão virado não troca de lado no meio da avaliação');
+      expect(plano(tester, 'frente-cartao'), 'Prazer em te conhecer.');
+      await tester.tap(find.byKey(const Key('nota-bom')));
+      await tester.pump();
+      await tester.pump();
+      expect(plano(tester, 'frente-cartao'), 'How are you?', reason: 'o próximo já vem inglês → português');
+    });
+
+    testWidgets('trocar o nível no meio do cartão refaz a resposta (descarta o que estava escrito)', (tester) async {
+      await abrir(tester, nivel: NivelResposta.avancado, itens: const [f1, f2]);
+      await tester.pump();
+      await tester.enterText(find.byKey(const Key('resposta-escrita')), 'prazer');
+      await tester.tap(find.byKey(const Key('nivel-facil')));
+      await tester.pump();
+      expect(find.byKey(const Key('montagem')), findsOneWidget);
+      expect(find.byKey(const Key('resposta-escrita')), findsNothing);
+      await tester.tap(find.byKey(const Key('nivel-medio')));
+      await tester.pump();
+      expect(lacunasDaTela(), findsNWidgets(quantasEscondidas(4)));
+      await tester.tap(find.byKey(const Key('nivel-avancado')));
+      await tester.pump();
+      expect(tester.widget<TextField>(find.byKey(const Key('resposta-escrita'))).controller!.text, isEmpty);
+      final p = await tester.runAsync(SharedPreferences.getInstance);
+      expect(p!.getString(SessaoCartoesPage.prefNivel), 'avancado');
+    });
+
+    testWidgets('misturado: os lados se alternam entre os cartões; o "Errei" volta do mesmo lado', (tester) async {
+      final itens = [for (var i = 1; i <= 14; i++) Trecho(cod: 'Phrase number $i', dica: 'Frase numero $i', out: '')];
+      await abrir(tester, itens: itens, sentido: SentidoCartao.misto);
+      await tester.pump();
+      final lados = <bool>[]; // true = português na frente
+      var errou = false;
+      for (var c = 0; c < 14; c++) {
+        final ptEn = plano(tester, 'frente-cartao').startsWith('Frase');
+        lados.add(ptEn);
+        await tester.tap(find.byKey(const Key('mostrar-resposta')));
+        await tester.pump();
+        if (c == 0) {
+          errou = true;
+          await tester.tap(find.byKey(const Key('nota-errei')));
+        } else {
+          await tester.tap(find.byKey(const Key('nota-bom')));
+        }
+        await tester.pump();
+        await tester.pump();
+        if (find.text('DE NOVO').evaluate().isNotEmpty) {
+          expect(plano(tester, 'frente-cartao').startsWith('Frase'), ptEn,
+              reason: 'o cartão que volta depois do Errei mantém o lado');
+        }
+      }
+      expect(errou, isTrue);
+      expect(lados.contains(true), isTrue, reason: '$lados');
+      expect(lados.contains(false), isTrue, reason: '$lados');
+    });
+
+    testWidgets('nível e sentido salvos: abre direto no Médio em português → inglês', (tester) async {
+      await abrir(tester, nivel: NivelResposta.medio, sentido: SentidoCartao.ptEn, itens: const [f1]);
+      await tester.pump();
+      expect(find.text('Complete a frase em inglês'), findsOneWidget);
+      expect(find.text('PORTUGUÊS'), findsOneWidget);
+      expect(find.byKey(const Key('lacunas')), findsOneWidget);
+    });
+
+    testWidgets('celular estreito no Fácil e no Médio: sem estourar', (tester) async {
+      for (final n in [NivelResposta.facil, NivelResposta.medio]) {
+        await abrir(tester, nivel: n, itens: const [longa], sentido: SentidoCartao.ptEn);
+        tester.view.physicalSize = const Size(360, 800);
+        await tester.pump();
+        final e = tester.takeException();
+        expect(e, isNull, reason: '$n: $e');
+        expect(tester.getRect(find.byKey(const Key('conferir-resposta'))).right, lessThanOrEqualTo(360));
+        await tester.tap(find.byTooltip('Voltar'));
+        await tester.pumpAndSettle();
+      }
     });
 
     testWidgets('celular estreito no modo de escrita: sem estourar', (tester) async {
-      await abrir(tester, escrita: true);
+      await abrir(tester, nivel: NivelResposta.avancado);
       tester.view.physicalSize = const Size(360, 800);
       await tester.pump();
       await escreve(tester, 'prazer em conhecer');

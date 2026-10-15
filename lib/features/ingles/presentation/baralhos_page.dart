@@ -4,9 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/theme/mixart.dart';
 import '../../curso/domain/curriculo.dart';
 import '../../curso/presentation/bloc/curso_bloc.dart';
+import '../../ia/presentation/ia_cubit.dart';
 import '../data/tradutor.dart';
 import '../domain/baralhos.dart';
 import '../domain/config_srs.dart';
+import '../domain/sanguessugas.dart';
 import '../domain/srs.dart';
 import '../domain/texto_salvo.dart';
 import 'exportar_anki_dialog.dart';
@@ -15,6 +17,7 @@ import 'importar_cartoes_page.dart';
 import 'navegador_cartoes_page.dart';
 import 'novo_cartao_page.dart';
 import 'revisao_cubit.dart';
+import 'sanguessugas_page.dart';
 
 /// "Baralhos", no jeito do Anki: o que vence hoje, a previsão dos próximos
 /// dias, a retenção real, os baralhos (uma trilha cada, agrupados por etapa, e
@@ -143,6 +146,11 @@ class _BaralhosPageState extends State<BaralhosPage> {
                 cartoes: st.cartoes.length,
                 onEstudar: () => _estudar(),
               ),
+              // cartões que a pessoa erra demais: a ajuda fica a um toque (só aparece havendo algum)
+              if (sanguessugasDe(st.cartoes, indice).length case final n when n > 0) ...[
+                const SizedBox(height: 10),
+                _CartaoSanguessugas(quantas: n),
+              ],
               const SizedBox(height: 10),
               Wrap(spacing: 8, runSpacing: 8, children: [
                 OutlinedButton.icon(
@@ -218,6 +226,48 @@ class _BaralhosPageState extends State<BaralhosPage> {
   /// "Meus textos" primeiro (é o que a pessoa mais mexe), depois o curso na ordem.
   List<String> _ordenar(List<String> grupos) =>
       [...grupos.where((g) => g == 'Meus textos'), ...grupos.where((g) => g != 'Meus textos')];
+}
+
+/// O aviso das sanguessugas (cartões com 8+ erros) e a porta para a tela de ajuda.
+class _CartaoSanguessugas extends StatelessWidget {
+  final int quantas;
+  const _CartaoSanguessugas({required this.quantas});
+
+  @override
+  Widget build(BuildContext context) => InkWell(
+        key: const Key('sanguessugas'),
+        borderRadius: BorderRadius.circular(Mixart.radiusLg),
+        onTap: () {
+          final curso = context.read<CursoBloc>(), revisao = context.read<RevisaoCubit>(), ia = IaCubit.de(context);
+          Navigator.of(context).push(MaterialPageRoute<void>(
+            builder: (_) => MultiBlocProvider(
+              providers: [BlocProvider.value(value: curso), BlocProvider.value(value: revisao), if (ia != null) BlocProvider.value(value: ia)],
+              child: const SanguessugasPage(),
+            ),
+          ));
+        },
+        child: Container(
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: Mixart.surface,
+            border: Border.all(color: Mixart.danger.withValues(alpha: .5)),
+            borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          ),
+          child: Row(children: [
+            const Text('🩸', style: TextStyle(fontSize: 24)),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(quantas == 1 ? '1 sanguessuga' : '$quantas sanguessugas', style: Mixart.display(size: 15)),
+                const SizedBox(height: 2),
+                Text('Cartões que você erra demais: veja outra frase com a mesma palavra, uma dica de memória ou suspenda.',
+                    style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4)),
+              ]),
+            ),
+            Icon(Icons.chevron_right, color: Mixart.textMuted),
+          ]),
+        ),
+      );
 }
 
 class _Hoje extends StatelessWidget {

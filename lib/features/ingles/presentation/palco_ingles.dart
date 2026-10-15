@@ -9,12 +9,17 @@ import '../../curso/presentation/bloc/typing_bloc.dart';
 import '../../curso/presentation/fluxo_licao.dart';
 import '../../curso/presentation/pages/teoria_page.dart';
 import '../../curso/presentation/widgets/victory_overlay.dart';
+import '../../habito/presentation/habito_cubit.dart';
+import '../../ia/domain/explicacao.dart';
+import '../../ia/presentation/widgets/botao_por_que.dart';
 import '../data/voz_ingles.dart';
 import '../domain/alternativas.dart';
 import '../domain/avaliacao.dart';
+import '../domain/entrada_resposta.dart';
 import '../domain/revisao.dart';
 import '../domain/roteiro.dart';
 import 'fixacao.dart';
+import 'zona_visivel.dart';
 import 'revisao_cubit.dart';
 import '../../../core/som/sons.dart';
 import 'widgets/audio_da_frase.dart';
@@ -38,9 +43,13 @@ class PalcoIngles extends StatefulWidget {
   State<PalcoIngles> createState() => _PalcoInglesState();
 }
 
-class _PalcoInglesState extends State<PalcoIngles> {
+class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, VigiaDoTeclado {
   final _foco = FocusNode();
   final _frase = GlobalKey<FraseViewState>();
+
+  /// A frase, o aviso e a barra da fila: a zona que o celular mantém à vista
+  /// quando o teclado sobe.
+  final _zonaDigitacao = GlobalKey();
   late final VozIngles _voz = widget.voz ?? VozIngles();
 
   /// Pref: tocar o áudio sozinho (antes da cópia e ao terminar a frase).
@@ -57,6 +66,15 @@ class _PalcoInglesState extends State<PalcoIngles> {
 
   /// O 👁 esteve ligado em algum momento desta digitação de memória.
   bool _viuNestePasso = false;
+
+  /// Como a pessoa responde os passos (⌨️ digitar, 🎤 falar, 🧩 montar). Fica salvo neste aparelho.
+  EntradaResposta _entrada = EntradaResposta.padrao;
+
+  /// O jeito como o passo que acabou foi respondido (a nota e o selo dependem dele, mesmo que a pessoa troque depois).
+  EntradaResposta _entradaDoPasso = EntradaResposta.padrao;
+
+  /// A nota deste passo caiu para meio ponto só porque foi montado na prova (não há palavra errada para mostrar).
+  bool _reduzidaPorMontagem = false;
 
   /// Resultado da digitação de memória que acabou (registrado ao avançar).
   ResultadoRevisao? _pendente;
@@ -120,6 +138,7 @@ class _PalcoInglesState extends State<PalcoIngles> {
       setState(() {
         _audioAuto = p.getBool(prefAudio) ?? true;
         _verFrases = p.getBool(prefVerFrases) ?? false;
+        _entrada = PrefsEntrada.ler(p);
         final passo = _atual;
         if (_verFrases && passo != null && passo.modo.deMemoria && !_aguardando) _viuNestePasso = true;
       });
@@ -184,6 +203,7 @@ class _PalcoInglesState extends State<PalcoIngles> {
     _aguardando = false;
     _erradas = const {};
     _contestou = false;
+    _reduzidaPorMontagem = false;
   }
 
   void _carregarPasso() {
@@ -203,6 +223,7 @@ class _PalcoInglesState extends State<PalcoIngles> {
       _pendente = null;
       _aguardando = false;
       _erradas = const {};
+      _reduzidaPorMontagem = false;
       _ouviuAntes = 0;
       _viuNestePasso = _verFrases && p.modo.deMemoria;
     });
@@ -213,8 +234,37 @@ class _PalcoInglesState extends State<PalcoIngles> {
     }
     // ouvir ANTES só na estreia (copiar); de memória o áudio entregaria a resposta
     if (_audioAuto && p.estreia) _voz.falar(_trecho.cod);
-    _foco.requestFocus();
+    _pedirFoco();
+    _manterAFraseVisivel();
   }
+
+  /// Pede o foco da frase (o teclado do celular junto) — só quando o jeito de responder usa o teclado: Falar e
+  /// Montar no celular não o abrem. No computador o foco segue valendo (Enter, Esc e Tab).
+  void _pedirFoco() {
+    final e = _frase.currentState?.entradaAtiva ?? _entrada;
+    if (abreTeclado(e, celular: ehCelular)) _foco.requestFocus();
+  }
+
+  /// A pessoa escolheu outro jeito de responder: vale já neste passo e fica salvo.
+  void _mudarEntrada(EntradaResposta e) {
+    if (e == _entrada) return;
+    setState(() => _entrada = e);
+    PrefsEntrada.salvar(e);
+    // celular: os blocos (ou o microfone) aparecem embaixo da frase — rola para a zona inteira ficar à vista
+    _manterAFraseVisivel();
+  }
+
+  /// As outras frases (em inglês) desta lição: dão os blocos de enfeite do Montar.
+  List<String> _apoioDoMontar() => [
+        for (final t in curso.licao.trechos)
+          if (_atual == null || t.cod != _trecho.cod) t.cod,
+      ];
+
+  /// Celular: a zona de digitação fica à vista com o teclado aberto.
+  @override
+  void aoSubirOTeclado() => _manterAFraseVisivel();
+
+  void _manterAFraseVisivel() => manterZonaVisivel(_zonaDigitacao, aindaVale: () => mounted && !_segurandoFrase);
 
   /// A pref chegou: no começo da lição abre o ensaio (ou libera a frase).
   void _decidirEnsaio(bool ligado) {
@@ -251,7 +301,7 @@ class _PalcoInglesState extends State<PalcoIngles> {
   void _liberarFrase() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (!mounted || _segurandoFrase) return;
-      _foco.requestFocus();
+      _pedirFoco();
       if (_vozSegurada && _atual != null && !_aguardando) _voz.falar(_trecho.cod);
       _vozSegurada = false;
     });
@@ -289,13 +339,18 @@ class _PalcoInglesState extends State<PalcoIngles> {
       final fv = _frase.currentState;
       final d = avaliarDigitacao(
         st.chars.join(),
-        errosPorPosicao: st.errosPorPosicao,
+        errosPorPosicao: somarErros(st.errosPorPosicao, fv?.errosDeFala),
         reveladas: fv?.reveladas ?? const {},
         desistiu: fv?.desistiu ?? false,
         dicasExtras: _ouviuAntes,
       );
+      // montar é reconhecer: na prova final um montar certo vale meio ponto (digitar e falar valem inteiro)
+      final entrada = fv?.entradaAtiva ?? _entrada;
+      final nota = notaDaEntrada(d.resultado, entrada: entrada, degrau: p.degrau);
       setState(() {
-        _pendente = d.resultado;
+        _entradaDoPasso = entrada;
+        _reduzidaPorMontagem = nota != d.resultado;
+        _pendente = nota;
         // "não sei" já virou a cópia: não precisa de outra
         _pendenteSemCorrecao = d.desistiu;
         _erradas = d.palavrasErradas;
@@ -303,16 +358,23 @@ class _PalcoInglesState extends State<PalcoIngles> {
       });
       // âncora de acerto: o mesmo som e o mesmo brilho toda vez que a frase
       // sai de memória, limpa
-      if (d.resultado == ResultadoRevisao.acertou) Sons.toca(Som.gol);
+      if (nota == ResultadoRevisao.acertou) Sons.toca(Som.gol);
     } else {
       // cópia (ou de memória com o 👁 ligado): não gera nota
-      setState(() => _aguardando = true);
+      setState(() {
+        _entradaDoPasso = _frase.currentState?.entradaAtiva ?? _entrada;
+        _reduzidaPorMontagem = false;
+        _aguardando = true;
+      });
     }
     if (_audioAuto) _voz.falar(_trecho.cod);
   }
 
   void _avancar() {
     if (!mounted || curso.vitoria || _atual == null || !_aguardando) return;
+    // cada frase digitada conta 1 exercício do dia; a cópia de correção depois de um
+    // erro é repetição do erro, não exercício novo
+    if (!_atual!.correcao) HabitoCubit.de(context)?.praticou();
     _fila.registrar(_pendente, semCorrecao: _pendenteSemCorrecao, vista: _viuNestePasso);
     if (!_fila.terminou) {
       _carregarPasso();
@@ -335,7 +397,7 @@ class _PalcoInglesState extends State<PalcoIngles> {
     _emSequencia = true;
     await seguirDepoisDaLicao(context, comQuiz: false);
     _emSequencia = false;
-    if (mounted) _foco.requestFocus();
+    if (mounted) _pedirFoco();
   }
 
   void _repetir() => context.read<CursoBloc>().add(const LicaoRepetida());
@@ -359,7 +421,7 @@ class _PalcoInglesState extends State<PalcoIngles> {
       _pendente = contestar(p);
       if (_pendente != ResultadoRevisao.errou) _pendenteSemCorrecao = true;
     });
-    _foco.requestFocus();
+    _pedirFoco();
   }
 
   /// Ouvir a frase (Enter / 🔊). Numa digitação de memória ainda em curso,
@@ -379,10 +441,25 @@ class _PalcoInglesState extends State<PalcoIngles> {
     } catch (_) {}
   }
 
+  /// O que a pessoa errou neste passo, em dados (as palavras que tropeçaram e se desistiu).
+  PedidoExplicacao _pedidoPorQue(PassoFila passo) {
+    final palavras = palavrasDe(_trecho.cod);
+    return PedidoExplicacao(
+      frase: _trecho.cod,
+      traducao: _trecho.dicaPlana,
+      palavrasErradas: [
+        for (final i in _erradas.toList()..sort())
+          if (i >= 0 && i < palavras.length) _trecho.cod.substring(palavras[i].ini, palavras[i].fim),
+      ],
+      exercicio: 'digitar a frase de memória (${passo.modo.name})',
+      desistiu: _frase.currentState?.desistiu ?? false,
+    );
+  }
+
   Future<void> _alternarVozLenta() async {
     setState(() => _vozLenta = !_vozLenta);
     await VozIngles.salvarPreferencia(_vozLenta);
-    _foco.requestFocus();
+    _pedirFoco();
   }
 
   /// 👁: liga/desliga o inglês à vista em todas as frases (fica salvo).
@@ -393,7 +470,7 @@ class _PalcoInglesState extends State<PalcoIngles> {
       // viu a frase desta digitação de memória: ela já não vale como memória
       if (_verFrases && p != null && p.modo.deMemoria && !_aguardando) _viuNestePasso = true;
     });
-    _foco.requestFocus();
+    _pedirFoco();
     try {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool(prefVerFrases, _verFrases);
@@ -450,57 +527,84 @@ class _PalcoInglesState extends State<PalcoIngles> {
                   frases: curso.licao.trechos.length,
                   vista: _verFrases && passo.modo.deMemoria),
               const SizedBox(height: 12),
-              TraducaoCard(
-                acaoAudio: BotaoAudioDaFrase(frase: _trecho.cod, voz: _voz, redondo: true),
-                trecho: _trecho,
-                modo: passo.modo,
-                mostrarNota: passo.estreia || passo.correcao,
-                audioAuto: _audioAuto,
-                onOuvir: () => _ouvir(lenta: false),
-                onOuvirDevagar: () => _ouvir(lenta: true),
-                onDica: passo.modo.deMemoria ? () => _frase.currentState?.revelarPalavra() : null,
-                onNaoSei: passo.modo.deMemoria ? () => _frase.currentState?.naoSei() : null,
-                onAlternarAudio: _alternarAudio,
-                vozLenta: _vozLenta,
-                onAlternarVozLenta: _alternarVozLenta,
-                verFrases: _verFrases,
-                onAlternarVerFrases: _alternarVerFrases,
-                quemDoContexto: _trecho.contextoDe >= 0 && _trecho.contextoDe < curso.licao.trechos.length
-                    ? curso.licao.trechos[_trecho.contextoDe].quem
-                    : _quemDisse(_trecho.contexto),
-                // a fala anterior em PT até ela ser concluída (o inglês dela ainda está sendo decorado)
-                contextoEmPt: _trecho.contextoDe >= 0 && !_fila.concluida(_trecho.contextoDe),
-              ),
-              const SizedBox(height: 14),
-              FraseView(
-                key: _frase,
-                focusNode: _foco,
-                modo: passo.modo,
-                passo: _fila.feitos,
-                alvo: _trecho.alvo,
-                palavrasErradas: _erradas,
-                onAvancar: _avancar,
-                onOuvir: _ouvir,
-                vitoria: curso.vitoria,
-                onProximaLicao: _seguir,
-                onPularQuiz: _seguir,
-                mostrarTudo: _verFrases,
-              ),
-              const SizedBox(height: 10),
-              SizedBox(
-                height: 26,
-                child: _aguardando
-                    ? _Selo(
-                        resultado: _pendente,
-                        modo: passo.modo,
-                        onSeguir: _avancar,
-                        onContestar: _contestou || _pendente == null || _pendente == ResultadoRevisao.acertou
-                            ? null
-                            : _contestar,
-                      )
-                    : null,
-              ),
-              _BarraFila(feitos: _fila.feitos, restantes: _fila.restantes),
+              Column(key: _zonaDigitacao, crossAxisAlignment: CrossAxisAlignment.start, children: [
+                TraducaoCard(
+                  acaoAudio: BotaoAudioDaFrase(frase: _trecho.cod, voz: _voz, redondo: true),
+                  trecho: _trecho,
+                  modo: passo.modo,
+                  mostrarNota: passo.estreia || passo.correcao,
+                  audioAuto: _audioAuto,
+                  onOuvir: () => _ouvir(lenta: false),
+                  onOuvirDevagar: () => _ouvir(lenta: true),
+                  onDica: passo.modo.deMemoria ? () => _frase.currentState?.revelarPalavra() : null,
+                  onNaoSei: passo.modo.deMemoria ? () => _frase.currentState?.naoSei() : null,
+                  onAlternarAudio: _alternarAudio,
+                  vozLenta: _vozLenta,
+                  onAlternarVozLenta: _alternarVozLenta,
+                  verFrases: _verFrases,
+                  onAlternarVerFrases: _alternarVerFrases,
+                  compacto: tecladoAberto,
+                  quemDoContexto: _trecho.contextoDe >= 0 && _trecho.contextoDe < curso.licao.trechos.length
+                      ? curso.licao.trechos[_trecho.contextoDe].quem
+                      : _quemDisse(_trecho.contexto),
+                  // a fala anterior em PT até ela ser concluída (o inglês dela ainda está sendo decorado)
+                  contextoEmPt: _trecho.contextoDe >= 0 && !_fila.concluida(_trecho.contextoDe),
+                ),
+                const SizedBox(height: 14),
+                FraseView(
+                  key: _frase,
+                  focusNode: _foco,
+                  modo: passo.modo,
+                  passo: _fila.feitos,
+                  alvo: _trecho.alvo,
+                  alvoPt: _trecho.alvoPt,
+                  traducao: _trecho.dicaPlana,
+                  palavrasErradas: _erradas,
+                  onAvancar: _avancar,
+                  onOuvir: _ouvir,
+                  vitoria: curso.vitoria,
+                  onProximaLicao: _seguir,
+                  onPularQuiz: _seguir,
+                  mostrarTudo: _verFrases,
+                  entrada: _entrada,
+                  onMudarEntrada: _mudarEntrada,
+                  apoioMontagem: _apoioDoMontar(),
+                  alternativas: passo.modo == ModoFrase.memoria
+                      ? alternativasDe(_trecho.cod, declaradas: _trecho.alternativas)
+                      : const [],
+                  // a voz do app cala enquanto a pessoa fala (senão o microfone a ouve)
+                  onMicrofone: (ouvindo) {
+                    if (ouvindo) _voz.parar();
+                  },
+                ),
+                const SizedBox(height: 10),
+                // altura mínima (nada pula ao aparecer), mas cresce: no celular o selo
+                // quebra em duas linhas e não pode atropelar a barra da lição
+                ConstrainedBox(
+                  constraints: const BoxConstraints(minHeight: 26),
+                  child: _aguardando
+                      ? _Selo(
+                          resultado: _pendente,
+                          modo: passo.modo,
+                          entrada: _entradaDoPasso,
+                          porMontagem: _reduzidaPorMontagem,
+                          onSeguir: _avancar,
+                          // meio ponto por montar na prova não é "erro de digitação": não há o que contestar
+                          onContestar: _contestou || _reduzidaPorMontagem || _pendente == null || _pendente == ResultadoRevisao.acertou
+                              ? null
+                              : _contestar,
+                        )
+                      : null,
+                ),
+                // errou ou tropeçou (a cópia não gera nota): o Prof. Dash explica o porquê
+                if (_aguardando &&
+                    !_reduzidaPorMontagem &&
+                    (_pendente == ResultadoRevisao.errou || _pendente == ResultadoRevisao.hesitou)) ...[
+                  const SizedBox(height: 6),
+                  BotaoPorQue(key: ValueKey('por-que-${_fila.feitos}'), pedido: _pedidoPorQue(passo)),
+                ],
+                _BarraFila(feitos: _fila.feitos, restantes: _fila.restantes),
+              ]),
             ]),
           if (curso.vitoria)
             VictoryOverlay(
@@ -632,15 +736,30 @@ class _CabecalhoPasso extends StatelessWidget {
 class _Selo extends StatelessWidget {
   final ResultadoRevisao? resultado;
   final ModoFrase modo;
+  final EntradaResposta entrada;
+
+  /// O resultado é meio ponto só porque foi montado na prova (nenhuma palavra errada).
+  final bool porMontagem;
   final VoidCallback onSeguir;
   final VoidCallback? onContestar;
-  const _Selo({required this.resultado, required this.modo, required this.onSeguir, this.onContestar});
+  const _Selo({
+    required this.resultado,
+    required this.modo,
+    required this.onSeguir,
+    this.entrada = EntradaResposta.digitar,
+    this.porMontagem = false,
+    this.onContestar,
+  });
 
   @override
   Widget build(BuildContext context) {
     final (texto, cor) = switch (resultado) {
       null => ('✓ Feita — ela volta daqui a pouco com menos ajuda', Mixart.textMuted),
+      ResultadoRevisao.acertou when entrada == EntradaResposta.montar => ('✅ Montou certinho, sem erro!', Mixart.brand),
+      ResultadoRevisao.acertou when entrada == EntradaResposta.falar => ('✅ Falou certinho, sem erro!', Mixart.brand),
       ResultadoRevisao.acertou => ('✅ De memória, sem erro!', Mixart.brand),
+      ResultadoRevisao.hesitou when porMontagem =>
+        ('🧩 Montou certo! Na prova, montar vale meio ponto — digite ou fale para valer inteiro', Mixart.textMuted),
       ResultadoRevisao.hesitou => ('🟡 Quase — as palavras em vermelho tropeçaram', Mixart.textMuted),
       ResultadoRevisao.errou => ('🔁 Vamos corrigir: copie a frase certa', Mixart.danger),
     };
@@ -648,14 +767,7 @@ class _Selo extends StatelessWidget {
       child: Wrap(alignment: WrapAlignment.center, crossAxisAlignment: WrapCrossAlignment.center, spacing: 10, children: [
         Text(texto, style: Mixart.ui(size: 12.5, weight: FontWeight.w700, color: cor), textAlign: TextAlign.center),
         // não avança sozinho: dá para ouvir a frase que acabou de digitar
-        InkWell(
-          onTap: onSeguir,
-          borderRadius: BorderRadius.circular(6),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-            child: Text('Enter segue →', style: Mixart.ui(size: 12.5, weight: FontWeight.w800, color: Mixart.brand)),
-          ),
-        ),
+        BotaoSeguir(onTap: onSeguir, tamanho: 12.5),
         if (onContestar != null)
           InkWell(
             onTap: onContestar,
@@ -825,8 +937,11 @@ class _IntroLicaoIngles extends StatelessWidget {
                   child: Row(mainAxisSize: MainAxisSize.min, children: [
                     Icon(Icons.menu_book_outlined, size: 14, color: Mixart.brand),
                     const SizedBox(width: 6),
-                    Text('Entenda a lição (explicação em português)',
-                        style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.brand)),
+                    // Flexible: em tela estreita (celular) o texto quebra de linha em vez de vazar do card
+                    Flexible(
+                      child: Text('Entenda a lição (explicação em português)',
+                          style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.brand)),
+                    ),
                   ]),
                 ),
               ),

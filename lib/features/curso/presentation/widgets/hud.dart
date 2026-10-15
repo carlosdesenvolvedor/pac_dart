@@ -10,6 +10,8 @@ import '../../../../core/theme/mixart.dart';
 import '../../../../core/theme/seletor_tema.dart';
 import '../../../arcade/presentation/arcade_page.dart';
 import '../../../auth/presentation/auth_cubit.dart';
+import '../../../auth/presentation/excluir_conta_dialog.dart';
+import '../../../habito/presentation/widgets/chip_sequencia.dart';
 import '../../../ingles/presentation/fixacao.dart';
 import '../../../ingles/presentation/revisao_cubit.dart';
 import '../../../ranking/presentation/ranking_page.dart';
@@ -81,6 +83,9 @@ class _HudState extends State<Hud> {
           ),
           // Wrap: no celular os botões quebram linha em vez de sumir pela borda
           Wrap(spacing: 8, runSpacing: 8, crossAxisAlignment: WrapCrossAlignment.center, children: [
+            // não é const de propósito: o relógio do Hud (1 s) redesenha o chip na virada do dia
+            // ignore: prefer_const_constructors
+            ChipSequencia(),
             _Toggle(
               rotulo: 'Mapa',
               icone: Icons.route_outlined,
@@ -146,7 +151,7 @@ class _HudState extends State<Hud> {
   }
 }
 
-/// PAC·DART / PAC·C# / PAC·ENGLISH + a linha da vertente, que também é o
+/// PACLINGO + a linha da vertente (DART & FLUTTER, C# & .NET, INGLÊS), que também é o
 /// botão de trocar de curso (volta para a tela "Escolha sua trilha").
 class _Marca extends StatelessWidget {
   const _Marca();
@@ -159,8 +164,7 @@ class _Marca extends StatelessWidget {
       RichText(
         text: TextSpan(style: Mixart.display(size: 26), children: [
           const TextSpan(text: 'PAC'),
-          TextSpan(text: '·', style: TextStyle(color: Mixart.brand)),
-          TextSpan(text: lg.marca),
+          TextSpan(text: 'LINGO', style: TextStyle(color: Mixart.brand)),
         ]),
       ),
       InkWell(
@@ -210,6 +214,7 @@ class _ContaBotao extends StatelessWidget {
       offset: const Offset(0, 46),
       onSelected: (v) {
         if (v == 'sair') context.read<AuthCubit>().sair();
+        if (v == 'excluir') mostrarExcluirConta(context);
       },
       itemBuilder: (context) => [
         PopupMenuItem<String>(
@@ -227,6 +232,14 @@ class _ContaBotao extends StatelessWidget {
             Icon(Icons.logout, size: 16, color: Mixart.danger),
             const SizedBox(width: 10),
             Text('Sair da conta', style: Mixart.ui(size: 13, weight: FontWeight.w600, color: Mixart.danger)),
+          ]),
+        ),
+        PopupMenuItem<String>(
+          value: 'excluir',
+          child: Row(children: [
+            Icon(Icons.delete_forever_outlined, size: 16, color: Mixart.textMuted),
+            const SizedBox(width: 10),
+            Text('Excluir minha conta', style: Mixart.ui(size: 13, weight: FontWeight.w600, color: Mixart.textMuted)),
           ]),
         ),
       ],

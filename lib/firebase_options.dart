@@ -21,15 +21,9 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
@@ -59,5 +53,25 @@ class DefaultFirebaseOptions {
     projectId: 'pac-dart',
     authDomain: 'pac-dart.firebaseapp.com',
     storageBucket: 'pac-dart.firebasestorage.app',
+  );
+
+  // Apps registrados no projeto `pac-dart` em 11/out/2026 (firebase apps:create), ID com.carlos.paclingo.
+  // Se o ID do app mudar (tool/trocar_id.py), crie os dois apps de novo no Firebase com o ID
+  // real e troque `appId` aqui — o resto (projeto, chaves de API) continua valendo.
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyCRrV46HVobV-HmdLQWkrEt18HgE6MglGY',
+    appId: '1:932071268596:android:973258f499eba20a8c3ea1',
+    messagingSenderId: '932071268596',
+    projectId: 'pac-dart',
+    storageBucket: 'pac-dart.firebasestorage.app',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyDOWKKChZYUJ26aUjg6HLHOmgDZfmA-QrQ',
+    appId: '1:932071268596:ios:e95e7372a1df930b8c3ea1',
+    messagingSenderId: '932071268596',
+    projectId: 'pac-dart',
+    storageBucket: 'pac-dart.firebasestorage.app',
+    iosBundleId: 'com.carlos.paclingo',
   );
 }

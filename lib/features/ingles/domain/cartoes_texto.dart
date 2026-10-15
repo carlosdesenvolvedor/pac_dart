@@ -14,12 +14,16 @@ const tituloCartoesAvulsos = 'Meus cartões';
 class CartaoEscrito extends Equatable {
   final String en;
   final String pt;
-  const CartaoEscrito(this.en, this.pt);
 
-  FraseDoTexto get comoFrase => FraseDoTexto(en, pt);
+  /// Cartão de lacuna da leitura: a palavra guardada (e o pedaço da tradução que corresponde).
+  final String alvo, alvoPt;
+
+  const CartaoEscrito(this.en, this.pt, {this.alvo = '', this.alvoPt = ''});
+
+  FraseDoTexto get comoFrase => FraseDoTexto(en, pt, alvo: alvo, alvoPt: alvoPt);
 
   @override
-  List<Object?> get props => [en, pt];
+  List<Object?> get props => [en, pt, alvo, alvoPt];
 }
 
 /// A frente (inglês) e o verso (português) que a pessoa digitou, prontos para virar

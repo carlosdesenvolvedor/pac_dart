@@ -20,6 +20,7 @@ import 'package:pac_dart/features/curso/presentation/pages/escolha_linguagem_pag
 import 'package:pac_dart/features/curso/presentation/pages/home_page.dart';
 import 'package:pac_dart/features/curso/presentation/widgets/victory_overlay.dart';
 import 'package:pac_dart/features/dartpad/mapa_rodavel.dart';
+import 'package:pac_dart/features/ingles/data/reconhecedor_fala.dart';
 import 'package:pac_dart/features/ingles/data/revisao_repository.dart';
 import 'package:pac_dart/features/ingles/data/audio_usuario.dart';
 import 'package:pac_dart/features/ingles/data/audio_usuario_repository.dart';
@@ -35,6 +36,7 @@ import 'package:pac_dart/features/ingles/presentation/revisao_cubit.dart';
 import 'package:pac_dart/features/ingles/presentation/sessao_memoria_page.dart';
 import 'package:pac_dart/features/ingles/presentation/widgets/ensaio_mental.dart';
 import 'package:pac_dart/features/ingles/presentation/widgets/frase_view.dart';
+import 'package:pac_dart/features/ingles/presentation/widgets/traducao_card.dart';
 import 'package:pac_dart/features/ranking/data/ranking_repository.dart';
 import 'package:pac_dart/features/ranking/domain/jogador_ranking.dart';
 import 'package:pac_dart/main.dart';
@@ -250,6 +252,62 @@ Future<void> _avancaEnsaio(WidgetTester tester, Duration quanto) async {
   }
 }
 
+/// O curso é testado como no COMPUTADOR (teclado físico: Enter, Tab, Esc; texto
+/// que chega junto vale tecla a tecla). O que é do celular — microfone, teclado
+/// virtual, botão "Seguir" — está nos testes `celular…` e em ingles_fala_test.
+void testWidgetsDesktop(String descricao, WidgetTesterCallback corpo) =>
+    testWidgets(descricao, corpo, variant: TargetPlatformVariant.only(TargetPlatform.macOS));
+
+/// Reconhecedor de voz de mentira para os testes de tela cheia.
+class _RecFake extends ReconhecedorFala {
+  int iniciadas = 0;
+  void Function(List<String>)? _final;
+  void Function()? _fim;
+
+  @override
+  bool get suportado => true;
+
+  @override
+  SessaoFala ouvir({
+    String idioma = 'en-US',
+    required void Function(String texto) aoParcial,
+    required void Function(List<String> hipoteses) aoFinal,
+    required void Function(ErroFala erro) aoErro,
+    required void Function() aoFim,
+  }) {
+    iniciadas++;
+    _final = aoFinal;
+    _fim = aoFim;
+    return _SessaoFake();
+  }
+
+  /// A pessoa disse [frase]: o reconhecedor entrega e fecha.
+  void dizer(String frase) {
+    _final?.call([frase]);
+    _fim?.call();
+  }
+}
+
+class _SessaoFake implements SessaoFala {
+  @override
+  void parar() {}
+  @override
+  void cancelar() {}
+}
+
+/// Digita [texto] como o Gboard: a palavra em composição, uma letra a mais por vez.
+Future<void> _compoe(WidgetTester tester, String palavra) async {
+  final campo = find.descendant(of: find.byType(FraseView), matching: find.byType(TextField)).last;
+  await tester.showKeyboard(campo);
+  for (var i = 1; i <= palavra.length; i++) {
+    final t = palavra.substring(0, i);
+    tester.testTextInput.updateEditingValue(TextEditingValue(
+        text: t, selection: TextSelection.collapsed(offset: t.length), composing: TextRange(start: 0, end: t.length)));
+    await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 5)));
+    await tester.pump();
+  }
+}
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   Mixart.usarGoogleFonts = false;
@@ -262,7 +320,7 @@ void main() {
     AudioUsuario.limpar();
   });
 
-  testWidgets('a escolha mostra os 3 cursos e a tecla 3 entra no inglês', (tester) async {
+  testWidgetsDesktop('a escolha mostra os 3 cursos e a tecla 3 entra no inglês', (tester) async {
     await _abrirApp(tester);
     expect(find.byType(EscolhaLinguagemPage), findsOneWidget);
     expect(find.text('Estudar Inglês'), findsOneWidget);
@@ -277,7 +335,7 @@ void main() {
     expect(p.getString(LinguagemCubit.chaveDe('teste-uid')), 'ingles');
   });
 
-  testWidgets('a lição inteira: escada intercalada, prova, nota no mapa e frases na revisão', (tester) async {
+  testWidgetsDesktop('a lição inteira: escada intercalada, prova, nota no mapa e frases na revisão', (tester) async {
     await _abrirApp(tester, inicial: Linguagem.ingles);
     await _esperar(tester, find.byType(PalcoIngles));
     final ctx = tester.element(find.byType(HomePage));
@@ -316,7 +374,7 @@ void main() {
     expect(find.textContaining('Junte o polegar'), findsNothing);
   });
 
-  testWidgets('de memória: errar duas vezes revela a letra e a frase errada ganha cópia de correção', (tester) async {
+  testWidgetsDesktop('de memória: errar duas vezes revela a letra e a frase errada ganha cópia de correção', (tester) async {
     await _abrirApp(tester, inicial: Linguagem.ingles);
     await _esperar(tester, find.byType(PalcoIngles));
     final ctx = tester.element(find.byType(HomePage));
@@ -340,7 +398,7 @@ void main() {
     expect(find.textContaining('Correção'), findsOneWidget);
   });
 
-  testWidgets('terminada a frase, ela fica na tela até o Enter (dá para ouvir)', (tester) async {
+  testWidgetsDesktop('terminada a frase, ela fica na tela até o Enter (dá para ouvir)', (tester) async {
     await _abrirApp(tester, inicial: Linguagem.ingles);
     await _esperar(tester, find.byType(PalcoIngles));
     final typing = tester.element(find.byType(HomePage)).read<TypingBloc>();
@@ -358,7 +416,7 @@ void main() {
     expect(typing.state.concluido, isFalse);
   });
 
-  testWidgets('👁 ligado: o inglês fica à vista em todas as frases, fica salvo e a lição termina', (tester) async {
+  testWidgetsDesktop('👁 ligado: o inglês fica à vista em todas as frases, fica salvo e a lição termina', (tester) async {
     await _abrirApp(tester, inicial: Linguagem.ingles);
     await _esperar(tester, find.byType(PalcoIngles));
     final ctx = tester.element(find.byType(HomePage));
@@ -387,7 +445,7 @@ void main() {
     expect(curso.state.quizNotas['0:0'], 5);
   });
 
-  testWidgets('Revisão do dia: só a tradução; acertar de memória alonga o intervalo (cartão do formato ANTIGO migra)', (tester) async {
+  testWidgetsDesktop('Revisão do dia: só a tradução; acertar de memória alonga o intervalo (cartão do formato ANTIGO migra)', (tester) async {
     final hoje = Revisao.dia(DateTime.now());
     // um cartão no formato antigo (caixa de Leitner), vencido, e um que só vence daqui a 5 dias
     final cartoes = {
@@ -419,7 +477,7 @@ void main() {
     expect(historico!.map((e) => (e.dia, e.nota)), [(hoje, 3)]);
   });
 
-  testWidgets('redimensionar a janela no meio da lição (painel do tutor entra/sai) não zera a fila', (tester) async {
+  testWidgetsDesktop('redimensionar a janela no meio da lição (painel do tutor entra/sai) não zera a fila', (tester) async {
     await _abrirApp(tester, inicial: Linguagem.ingles);
     await _esperar(tester, find.byType(PalcoIngles));
     final typing = tester.element(find.byType(HomePage)).read<TypingBloc>();
@@ -436,7 +494,7 @@ void main() {
     expect(typing.state.chars.join(), 'Where are you from?');
   });
 
-  testWidgets('teste de nivelamento: acertou de memória, a trilha fica concluída e as frases vão pra caixa 3', (tester) async {
+  testWidgetsDesktop('teste de nivelamento: acertou de memória, a trilha fica concluída e as frases vão pra caixa 3', (tester) async {
     await _abrirApp(tester, inicial: Linguagem.ingles);
     await _esperar(tester, find.byType(PalcoIngles));
     final home = tester.element(find.byType(HomePage));
@@ -482,7 +540,7 @@ void main() {
         reason: 'frases de trilha testada voltam em 1 semana');
   });
 
-  testWidgets('nivelamento: passou no portão do A2, o A1 inteiro fica testado e a lição atual vai para o A2', (tester) async {
+  testWidgetsDesktop('nivelamento: passou no portão do A2, o A1 inteiro fica testado e a lição atual vai para o A2', (tester) async {
     await _abrirApp(tester, inicial: Linguagem.ingles);
     await _esperar(tester, find.byType(PalcoIngles));
     final home = tester.element(find.byType(HomePage));
@@ -515,7 +573,7 @@ void main() {
   });
 
   group('ensaio mental antes da lição', () {
-    testWidgets('aparece no começo, segura o teclado, anda sozinho, espera o Enter e a 1ª frase recebe o foco',
+    testWidgetsDesktop('aparece no começo, segura o teclado, anda sozinho, espera o Enter e a 1ª frase recebe o foco',
         (tester) async {
       await _abrirApp(tester, inicial: Linguagem.ingles, ensaio: true);
       await _esperar(tester, find.byType(EnsaioMental));
@@ -552,7 +610,7 @@ void main() {
       expect(typing.state.concluido, isTrue);
     });
 
-    testWidgets('a âncora volta na vitória abaixo do título (sem cobri-lo) e, ao repetir, sem "novas"',
+    testWidgetsDesktop('a âncora volta na vitória abaixo do título (sem cobri-lo) e, ao repetir, sem "novas"',
         (tester) async {
       await _abrirApp(tester, inicial: Linguagem.ingles, ensaio: true);
       await _esperar(tester, find.byType(EnsaioMental));
@@ -591,7 +649,7 @@ void main() {
       expect(find.text('👌 Junte o polegar e o indicador: você acabou de usar 3 frases em inglês.'), findsOneWidget);
     });
 
-    testWidgets('frase longa: a voz da próxima frase espera a anterior acabar (nada é cortado)', (tester) async {
+    testWidgetsDesktop('frase longa: a voz da próxima frase espera a anterior acabar (nada é cortado)', (tester) async {
       const longa = "I got an offer from another company, but I haven't accepted it yet.";
       const licao = Licao(nome: 'Proposta', emoji: '💼', trechos: [
         Trecho(cod: longa, dica: 'Recebi uma proposta de outra empresa, mas ainda não aceitei.', out: '', alvo: 'yet'),
@@ -624,7 +682,7 @@ void main() {
       expect(find.text('Você já se viu dizendo isso.'), findsOneWidget);
     });
 
-    testWidgets('"áudio automático" desligado: o ensaio não fala sozinho, o 🔊 continua falando', (tester) async {
+    testWidgetsDesktop('"áudio automático" desligado: o ensaio não fala sozinho, o 🔊 continua falando', (tester) async {
       final voz = _VozFake();
       await _montarEnsaio(tester, _trilhaEn.licoes.first, voz, audioAuto: false);
       await _avancaEnsaio(tester, const Duration(seconds: 25));
@@ -635,7 +693,7 @@ void main() {
       expect(voz.falas, ["Hi, I'm Ana."]);
     });
 
-    testWidgets('página sem gesto ainda (app recém-aberto): espera o "Começar o ensaio" antes de tocar', (tester) async {
+    testWidgetsDesktop('página sem gesto ainda (app recém-aberto): espera o "Começar o ensaio" antes de tocar', (tester) async {
       final voz = _VozFake()..liberado = false;
       var comecou = 0;
       await _montarEnsaio(tester, _trilhaEn.licoes.first, voz, onComecar: () => comecou++);
@@ -660,7 +718,7 @@ void main() {
       expect(comecou, 1);
     });
 
-    testWidgets('Enter no meio do roteiro já começa a lição', (tester) async {
+    testWidgetsDesktop('Enter no meio do roteiro já começa a lição', (tester) async {
       await _abrirApp(tester, inicial: Linguagem.ingles, ensaio: true);
       await _esperar(tester, find.byType(EnsaioMental));
       await _avancaEnsaio(tester, const Duration(seconds: 2));
@@ -669,7 +727,7 @@ void main() {
       expect(_fraseComFoco(tester), isTrue);
     });
 
-    testWidgets('Esc pula o ensaio sem virar "não sei" na frase', (tester) async {
+    testWidgetsDesktop('Esc pula o ensaio sem virar "não sei" na frase', (tester) async {
       await _abrirApp(tester, inicial: Linguagem.ingles, ensaio: true);
       await _esperar(tester, find.byType(EnsaioMental));
       final typing = tester.element(find.byType(HomePage)).read<TypingBloc>();
@@ -682,7 +740,7 @@ void main() {
       expect(find.textContaining('0 / '), findsOneWidget);
     });
 
-    testWidgets('"não mostrar mais" grava a pref, a próxima lição começa sem ensaio e o link religa', (tester) async {
+    testWidgetsDesktop('"não mostrar mais" grava a pref, a próxima lição começa sem ensaio e o link religa', (tester) async {
       await _abrirApp(tester, inicial: Linguagem.ingles, ensaio: true);
       await _esperar(tester, find.byType(EnsaioMental));
       final curso = tester.element(find.byType(HomePage)).read<CursoBloc>();
@@ -712,7 +770,7 @@ void main() {
       expect(_fraseComFoco(tester), isTrue);
     });
 
-    testWidgets('a lição muda com outra tela por cima: o ensaio abre por baixo sem roubar o teclado dela',
+    testWidgetsDesktop('a lição muda com outra tela por cima: o ensaio abre por baixo sem roubar o teclado dela',
         (tester) async {
       final cartoes = {Revisao.chave('Nice to meet you.'): const CartaoRevisao(caixa: 2, proximoDia: 0).codificar()};
       await _abrirApp(tester, inicial: Linguagem.ingles, ensaio: true, prefs: {'en_revisao': jsonEncode(cartoes)});
@@ -747,7 +805,7 @@ void main() {
       expect(_fraseComFoco(tester), isTrue);
     });
 
-    testWidgets('celular estreito sem estouro e, fechado, não volta ao redimensionar', (tester) async {
+    testWidgetsDesktop('celular estreito sem estouro e, fechado, não volta ao redimensionar', (tester) async {
       await _abrirApp(tester, inicial: Linguagem.ingles, ensaio: true);
       await _esperar(tester, find.byType(EnsaioMental));
       // celular: 390 px
@@ -774,6 +832,99 @@ void main() {
     });
   });
 
+  group('no celular (Android)', () {
+    // o celular é a plataforma padrão do flutter_test: sem variante
+    setUp(() => FraseView.carencia = Duration.zero);
+
+    testWidgets('a palavra em composição já anda no Pac-Man, o botão é "Seguir" e nada estoura em 430 px',
+        (tester) async {
+      await _abrirApp(tester, inicial: Linguagem.ingles);
+      tester.view.physicalSize = const Size(430, 2000);
+      await _esperar(tester, find.byType(PalcoIngles));
+      await _anda(tester, 3);
+      final typing = tester.element(find.byType(HomePage)).read<TypingBloc>();
+      expect(find.byIcon(Icons.mic_rounded), findsOneWidget);
+      final primeira = typing.state.chars.join();
+
+      await _compoe(tester, primeira.substring(0, 2));
+      expect(typing.state.idx, 2, reason: 'as letras em composição já foram comidas');
+
+      // a pessoa apaga o que compôs e dita a frase inteira pelo 🎤 do teclado:
+      // vale como resposta falada
+      tester.testTextInput.updateEditingValue(const TextEditingValue());
+      await tester.pump();
+      await _digita(tester, primeira);
+      await _anda(tester, 3);
+      expect(typing.state.concluido, isTrue);
+      expect(find.text('Seguir'), findsOneWidget);
+      expect(find.text('Enter segue →'), findsNothing);
+      await tester.tap(find.text('Seguir'));
+      await _anda(tester, 3);
+      expect(typing.state.chars.join(), isNot(primeira));
+      expect(typing.state.concluido, isFalse);
+    });
+
+    testWidgets('de memória, falar errado conta como erro e a frase volta para correção', (tester) async {
+      final rec = _RecFake();
+      FraseView.fabricaReconhecedor = () => rec;
+      addTearDown(() => FraseView.fabricaReconhecedor = ReconhecedorFala.navegador);
+      await _abrirApp(tester, inicial: Linguagem.ingles);
+      tester.view.physicalSize = const Size(430, 2000);
+      await _esperar(tester, find.byType(PalcoIngles));
+      final typing = tester.element(find.byType(HomePage)).read<TypingBloc>();
+      // as 3 cópias da 1ª frase (D1) até o degrau das iniciais
+      for (var i = 0; i < 3; i++) {
+        await _digita(tester, typing.state.chars.join());
+        await _anda(tester, 3);
+        await tester.tap(find.text('Seguir'));
+        await _anda(tester, 3);
+      }
+      expect(find.textContaining('Iniciais'), findsOneWidget);
+      final alvo = typing.state.chars.join();
+
+      await tester.tap(find.byIcon(Icons.mic_rounded));
+      await _anda(tester, 2);
+      expect(rec.iniciadas, 1);
+      rec.dizer("hi I'm Mary"); // "Ana" não saiu (Anna valeria: o nome confere pelo som)
+      await _anda(tester, 3);
+      expect(typing.state.concluido, isFalse);
+      await tester.tap(find.byIcon(Icons.mic_rounded));
+      await _anda(tester, 2);
+      rec.dizer("hi I'm Ana");
+      await _anda(tester, 3);
+      expect(typing.state.concluido, isTrue);
+      expect(find.textContaining('Vamos corrigir'), findsOneWidget, reason: 'a tentativa errada pesa como tecla errada');
+      await tester.tap(find.text('Seguir'));
+      await _anda(tester, 3);
+      expect(typing.state.chars.join(), alvo);
+      expect(find.textContaining('Correção'), findsOneWidget);
+    });
+
+    testWidgets('o teclado sobe e a frase não fica escondida embaixo dele (a tela rola até ela)', (tester) async {
+      await _abrirApp(tester, inicial: Linguagem.ingles);
+      tester.view.physicalSize = const Size(430, 900);
+      await _esperar(tester, find.byType(PalcoIngles));
+      await _anda(tester, 3);
+      final frase = find.byType(FraseView);
+      // sem teclado a frase pode estar fora da janela (a página rola); leva até lá
+      await tester.ensureVisible(frase);
+      await _anda(tester, 3);
+      // o teclado ocupa a parte de baixo
+      tester.view.viewInsets = const FakeViewPadding(bottom: 480);
+      addTearDown(tester.view.resetViewInsets);
+      await _anda(tester, 12);
+      final base = tester.getRect(find.byType(FraseView)).bottom;
+      expect(base, lessThanOrEqualTo(900 - 480 + 1), reason: 'a frase fica acima do teclado');
+      // e a tradução, que é o que se lê para digitar, continua à vista (o cartão encolhe)
+      expect(tester.getRect(find.byType(TraducaoCard)).top, greaterThanOrEqualTo(0));
+      expect(find.byType(TraducaoCard), findsOneWidget);
+      expect(find.text('áudio automático'), findsNothing, reason: 'as caixinhas voltam quando o teclado fecha');
+      tester.view.resetViewInsets();
+      await _anda(tester, 4);
+      expect(find.text('áudio automático'), findsOneWidget);
+    });
+  });
+
   group('lição feita de texto colado', () {
     /// Digita o que o palco pedir até a vitória (a lição inteira).
     Future<void> terminarLicao(WidgetTester tester) async {
@@ -787,7 +938,7 @@ void main() {
       }
     }
 
-    testWidgets('mapa → cola o texto → traduz → corrige → cria e já cai na lição, sem pontuar no ranking', (tester) async {
+    testWidgetsDesktop('mapa → cola o texto → traduz → corrige → cria e já cai na lição, sem pontuar no ranking', (tester) async {
       final placar = _RankingContando();
       await _abrirApp(tester, inicial: Linguagem.ingles, tradutor: () => _TradutorApp(), ranking: () => placar);
       await _esperar(tester, find.byType(PalcoIngles));
@@ -845,7 +996,7 @@ void main() {
       expect(find.byTooltip('Apagar este texto'), findsOneWidget);
     });
 
-    testWidgets('controle: a lição do curso pontua no ranking (o teste acima só vale se isto vale)', (tester) async {
+    testWidgetsDesktop('controle: a lição do curso pontua no ranking (o teste acima só vale se isto vale)', (tester) async {
       final placar = _RankingContando();
       await _abrirApp(tester, inicial: Linguagem.ingles, ranking: () => placar);
       await _esperar(tester, find.byType(PalcoIngles));
@@ -854,7 +1005,7 @@ void main() {
       expect(placar.somas, 1);
     });
 
-    testWidgets('texto salvo volta no próximo acesso e apagar tira a trilha (com confirmação)', (tester) async {
+    testWidgetsDesktop('texto salvo volta no próximo acesso e apagar tira a trilha (com confirmação)', (tester) async {
       await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {
         'en_textos_teste-uid': jsonEncode([
           {
@@ -906,9 +1057,9 @@ void main() {
       await _anda(tester, 3);
     }
 
-    testWidgets('digita os que vencem e DEPOIS vira os cartões novos; a nota cria o cartão no motor e vai ao histórico',
+    testWidgetsDesktop('digita os que vencem e DEPOIS vira os cartões novos; a nota cria o cartão no motor e vai ao histórico',
         (tester) async {
-      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {'en_cartao_escrita': false, 
+      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {'en_cartao_escrita': false, 'en_cartao_sentido': 'en-pt', 
         'en_srs_cfg': reversos,
         // um cartão digitado vencido (formato ANTIGO: migra) para abrir a 1ª sessão
         'en_revisao': jsonEncode({Revisao.chave('Nice to meet you.'): const CartaoRevisao(caixa: 2, proximoDia: 0).codificar()}),
@@ -946,9 +1097,9 @@ void main() {
       expect(revisao.state.cartoes[Revisao.chave('Nice to meet you.')]!.revisoes, 3);
     });
 
-    testWidgets('sem nada digitado vencendo, "Revisão" vai direto aos cartões de virar; a cota de novos por dia vale',
+    testWidgetsDesktop('sem nada digitado vencendo, "Revisão" vai direto aos cartões de virar; a cota de novos por dia vale',
         (tester) async {
-      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {'en_cartao_escrita': false, 'en_srs_cfg': ConfigSrs(novosPorDia: 2, reversos: {'tr:Primeiros Passos'}).codificar()});
+      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {'en_cartao_escrita': false, 'en_cartao_sentido': 'en-pt', 'en_srs_cfg': ConfigSrs(novosPorDia: 2, reversos: {'tr:Primeiros Passos'}).codificar()});
       await _esperar(tester, find.text('Revisão'));
       final revisao = tester.element(find.byType(HomePage)).read<RevisaoCubit>();
       await tester.tap(find.text('Revisão'));
@@ -978,8 +1129,8 @@ void main() {
       expect(find.text('nenhuma frase vence hoje'), findsOneWidget);
     });
 
-    testWidgets('responder ESCREVENDO (o padrão): a tradução certa sugere Bom, o Espaço aceita e o cartão nasce no motor', (tester) async {
-      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {'en_srs_cfg': reversos}); // sem 'en_cartao_escrita': vale o padrão (ligado)
+    testWidgetsDesktop('responder ESCREVENDO (o padrão): a tradução certa sugere Bom, o Espaço aceita e o cartão nasce no motor', (tester) async {
+      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {'en_srs_cfg': reversos, 'en_cartao_sentido': 'en-pt'}); // sem nível salvo: vale o padrão (Avançado)
       await _esperar(tester, find.text('Revisão'));
       final revisao = tester.element(find.byType(HomePage)).read<RevisaoCubit>();
       await tester.tap(find.text('Revisão'));
@@ -1003,8 +1154,8 @@ void main() {
       expect(historico!.any((e) => e.chave.endsWith('~r') && e.nota == 3 && e.primeira), isTrue);
     });
 
-    testWidgets('Mapa → "Baralhos e cartões": baralhos por etapa e "Estudar" só do baralho escolhido', (tester) async {
-      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {'en_cartao_escrita': false, 
+    testWidgetsDesktop('Mapa → "Baralhos e cartões": baralhos por etapa e "Estudar" só do baralho escolhido', (tester) async {
+      await _abrirApp(tester, inicial: Linguagem.ingles, prefs: {'en_cartao_escrita': false, 'en_cartao_sentido': 'en-pt', 
         'en_srs_cfg': ConfigSrs(reversos: {'tr:Primeiros Passos', 'tr:Dia a dia'}).codificar(),
       });
       await _esperar(tester, find.byType(PalcoIngles));
@@ -1032,14 +1183,14 @@ void main() {
   });
 
   group('áudio do aluno nas telas do inglês', () {
-    testWidgets('sem nuvem nem repositório injetado o 🎧 nem aparece (nada muda para quem não usa)', (tester) async {
+    testWidgetsDesktop('sem nuvem nem repositório injetado o 🎧 nem aparece (nada muda para quem não usa)', (tester) async {
       await _abrirApp(tester, inicial: Linguagem.ingles);
       await _esperar(tester, find.byType(PalcoIngles));
       expect(AudioUsuario.disponivel, isFalse);
       expect(find.byKey(const Key('audio-da-frase')), findsNothing);
     });
 
-    testWidgets('com áudio disponível: o 🎧 aparece no palco e abre a folha; frase com áudio vem realçada', (tester) async {
+    testWidgetsDesktop('com áudio disponível: o 🎧 aparece no palco e abre a folha; frase com áudio vem realçada', (tester) async {
       final repo = MemoriaAudioUsuarioRepository();
       await repo.salvar(AudioUsuario.chaveDe("Hi, I'm Ana."), ClipeAudio(Uint8List.fromList([...'RIFF'.codeUnits, 0, 0, 0, 0, ...'WAVE'.codeUnits, ...List.filled(20, 0)]), 'audio/wav'));
       await _abrirApp(tester, inicial: Linguagem.ingles, audio: (_) => repo);

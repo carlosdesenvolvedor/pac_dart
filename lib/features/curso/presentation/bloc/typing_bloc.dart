@@ -45,6 +45,14 @@ class SessaoZerada extends TypingEvent {
   const SessaoZerada();
 }
 
+/// A frase foi RESPONDIDA FALANDO (ou ditada pelo teclado do celular) e a
+/// conferência por palavra já deu certo: o trecho inteiro vale como
+/// digitado, sem teclas contadas. Os erros por tecla de antes somem (a
+/// resposta é por voz); os da voz quem guarda é a tela.
+class TrechoFalado extends TypingEvent {
+  const TrechoFalado();
+}
+
 // ---------- Estado ----------
 class TypingState extends Equatable {
   final List<String> chars;
@@ -164,6 +172,7 @@ class TypingBloc extends Bloc<TypingEvent, TypingState> {
     on<TrechoCarregado>(_carregar);
     on<TeclaDigitada>(_digitar);
     on<BackspaceApertado>(_apagar);
+    on<TrechoFalado>(_falado);
     on<TrechoReiniciado>((e, emit) {
       _automaticas.clear();
       _sinalMorto = false;
@@ -397,6 +406,20 @@ class TypingBloc extends Bloc<TypingEvent, TypingState> {
       score: state.score + (25 - state.errosTrecho * 2).clamp(5, 25),
       concluido: true,
     ));
+  }
+
+  void _falado(TrechoFalado e, Emitter<TypingState> emit) {
+    if (state.concluido || _cod.isEmpty) return;
+    final chars = _cod.split('');
+    emit(state.copyWith(
+      chars: chars,
+      idx: chars.length,
+      ultimoErrou: false,
+      errosPorPosicao: const {},
+      errosDeCaixa: const {},
+      inicioSessao: state.inicioSessao ?? DateTime.now(),
+    ));
+    _verificaFim(emit);
   }
 
   void _apagar(BackspaceApertado e, Emitter<TypingState> emit) {

@@ -1,11 +1,26 @@
-# PAC·DART — Estado do Projeto (handoff)
+# Paclingo (ex-PAC·DART) — Estado do Projeto (handoff)
+
+> **Nome novo (11/out/2026): Paclingo.** Os três cursos seguem com os nomes de trabalho usados neste documento (PAC·DART,
+> PAC·C#, PAC·ENGLISH), mas na tela aparecem como Paclingo · Dart & Flutter / C# & .NET / Inglês. Ver a seção "📲 Lojas".
 
 > Treinador de digitação que ensina **Dart & Flutter**: você digita código real,
 > um Pac-Man "come" as letras, e ao concluir o trecho ele "compila" — mostrando a
 > saída no console e, nos exercícios Flutter, uma **prévia do widget renderizado**.
 > Feito em **Flutter (web)** com **flutter_bloc**. Tudo em português do Brasil.
 
-Última atualização: jul/2026.
+Última atualização: out/2026 (renome para Paclingo + projetos Android/iOS gerados).
+
+---
+
+## 🗺️ Planejamento das próximas fases (12/out/2026)
+
+Pesquisa de apps de inglês + lista do que acrescentar, em ordem de execução: `planejamento/MELHORIAS-PESQUISA.md`. A **Fase 1 (hábito diário:
+sequência, meta do dia, congelamento; lembrete como 1B)** tem plano detalhado em `planejamento/FASE-1-HABITO-DIARIO.md` e o prompt para um
+agente sem contexto em `planejamento/PROMPT-AGENTE-FASE-1.md`. **A Fase 1A (sequência, meta, congelamento, telas) está implementada** — ver "🔥 Hábito diário"
+abaixo; a **1B (lembrete diário no celular) está implementada** (13/out/2026, autorizada pelo dono) — plano em `planejamento/FASE-1B-LEMBRETE.md`, seção "🔔 Lembrete diário" abaixo; falta só a prova num aparelho físico.
+A **Fase 2 está implementada** (2A "💡 Por quê?" e 2B "💬 Cenários guiados"); o plano está em `planejamento/FASE-2-EXPLIQUE-E-CENARIOS.md` (prompt: `PROMPT-AGENTE-FASE-2.md`); a Fase 3 tem o ditado e o shadowing feitos (plano do shadowing: `planejamento/FASE-3B-SHADOWING.md`).
+A **Fase 7 (modos de resposta nas lições do Inglês — barra ⌨️ Digitar · 🎤 Falar · 🧩 Montar)** está **implementada** (13/out/2026, a pedido do dono: "não encontrei no celular a opção de digitar… quero mic, digitar e o de montar igual ao Duolingo"); plano em `planejamento/FASE-7-MODOS-DE-RESPOSTA.md`, seção "🧩 Modos de resposta" abaixo (decisões do dono: montar vale tudo mas conta meio ponto na prova; padrão Digitar; enfeites de 2 a 5).
+A **Fase 5 (escrita corrigida por IA, erros viram cartões) está implementada** — plano em `planejamento/FASE-5-ESCRITA-CORRIGIDA.md`, seção "📝 Escrita corrigida" abaixo.
 
 ---
 
@@ -219,14 +234,67 @@ cobertura item a item.
 7 lições / 88 frases de treino da 3ª pessoa (+s; -es em s/ss/sh/ch/x/z/o; consoante+y → -ies; vogal+y → -s; has),
 escrita à mão + revisor independente; esboço ganhou a trilha (ordem fracionária é aceita pelo integrar.py).
 
+**📱 Celular + áudio (11/out/2026, SÓ Android/iOS — o desktop não muda):** pedido do dono: "mandar áudio" no inglês e o
+teclado do celular funcionando perfeitamente. Testado no Chromium emulado como Pixel (UA/touch por CDP), NÃO em aparelho real.
+- **Bugs reais achados na emulação** (antes de mexer): (1) o Gboard mantém a palavra em *composição* até o espaço e o campo só
+  lia texto com a composição fechada → o Pac-Man andava palavra a palavra, erro só no espaço; (2) com o teclado aberto a frase
+  ficava escondida embaixo dele; (3) o selo "✓ Feita… Enter segue →" quebrava em 2 linhas e atropelava a barra da lição.
+- **`widgets/leitor_teclado.dart`** (`LeitorTeclado`): lê a composição ao vivo pela diferença para o que já foi lido (o que o
+  teclado apaga/reescreve não vira tecla). Só esperam o fim da composição a tecla morta sozinha (´ ~ ^ ` ' ") e o ditado em
+  andamento (várias palavras). No celular, texto com espaço que chega de uma vez (o 🎤 do Gboard/iOS, colar) = **resposta falada**,
+  não cem teclas (senão a 1ª palavra errada virava cascata de erros). `esquecer()` na troca de frase não mexe no DOM do campo.
+- **🎤 "Falar a frase"** (botão de 48 px no canto do FraseView; Revisão/Treino também): `data/reconhecedor_fala.dart` (+ `_web`
+  com `SpeechRecognition`/`webkit…`, en-US, `interimResults`, 5 hipóteses, guarda de 25 s; `_stub` na VM). ⚠️ Chromium novo tem o
+  nome SEM prefixo: o código prefere `SpeechRecognition`, então fakes de teste precisam trocar os DOIS nomes. Erros viram recado
+  em português (microfone bloqueado, sem rede, não ouviu, navegador sem suporte → manda usar o 🎤 do teclado). A voz do app cala
+  ao abrir o microfone (`onMicrofone`).
+- **`domain/avaliacao_fala.dart`** (`avaliarFala`): confere por PALAVRA (alinhamento DP) — ignora caixa/pontuação, aceita
+  contração↔forma plena (I'm = I am, can't = can not), homófonos (to/too/two), número por extenso (7:30 = seven thirty, 25 =
+  twenty five), ±1 letra em palavra de 5+ letras, palavra a mais não reprova, melhor das hipóteses vence, `alt:` do autor vale.
+  Tudo certo → `TrechoFalado` no TypingBloc (frase vale como digitada, erros por tecla de antes somem); senão mostra "Ouvi: …"
+  (palavra errada riscada) e cada palavra errada vira erro na 1ª letra (`somarErros` → `avaliarDigitacao`); errada 2× = revelada.
+  Falar completa a frase em qualquer degrau (cópia ou memória) e conta na nota como digitação limpa — decisão a revisar se a
+  grafia importar mais que a produção.
+- **Mais do celular:** `onEditingComplete` (o "ok" do teclado virtual não fecha o teclado e não duplica com a tecla Enter,
+  janela de 300 ms); toque na frase reabre o teclado (`TextInput.show`); `zona_visivel.dart` rola a zona de digitação
+  (tradução + frase + selo + barra) para ficar acima do teclado — o Scaffold CONSOME os `viewInsets`, então o aviso vem de
+  `WidgetsBindingObserver.didChangeMetrics` (`VigiaDoTeclado`), não do MediaQuery do body; com o teclado aberto o cartão da
+  tradução encolhe (`TraducaoCard(compacto:)`); botão "Seguir →" no lugar de "Enter segue →"; "não sei" na tela (não há Esc);
+  rodapé da HomePage sem Enter/Tab/Esc.
+- **Testes:** `test/ingles_fala_test.dart` (44: avaliação, `LeitorTeclado`, FraseView com composição estilo Gboard, ditado,
+  microfone falso, Enter) + grupo "no celular (Android)" no `ingles_ui_test.dart` (o resto dele agora roda como macOS via
+  `testWidgetsDesktop`; o padrão do flutter_test é Android). ⚠️ Plataforma em teste só por `variant:
+  TargetPlatformVariant.only(...)` — `debugDefaultTargetPlatformOverride` em setUp/tearDown reprova o teste.
+  `csharp_curriculo_test` falha por conteúdo (C# em 4.147 de 4.708), não por isto.
+- **Receita da prova no navegador** (sem celular): `flutter build web -t lib/main_portfolio_probe.dart --output=build/probe_voz`,
+  `python3 -m http.server`, MCP do Playwright em `browser_run_code_unsafe`: `context.newCDPSession` →
+  `Emulation.setUserAgentOverride` (UA Android + `platform: 'Linux armv81'`), `setDeviceMetricsOverride {mobile:true}`,
+  `setTouchEmulationEnabled`; composição do Gboard = `Input.imeSetComposition` (uma por letra) e commit = `Input.insertText`;
+  teclado aberto = `Object.defineProperty(visualViewport,'height',…)` + evento `resize` (o engine calcula `viewInsets`);
+  reconhecedor falso = `addInitScript` trocando `SpeechRecognition` E `webkitSpeechRecognition`. Desregistre o service worker
+  (`navigator.serviceWorker.getRegistrations`) a cada build, senão vem o JS velho.
+- **Não coberto / a fazer:** aparelho real (Gboard, Samsung Keyboard, iOS Safari; PWA do iOS não tem reconhecimento de voz);
+  `CodeView` e o quiz (Dart/C#) têm o MESMO campo que só lê a composição fechada — mesmo conserto (`LeitorTeclado`) se o dono
+  quiser; Backspace no teclado virtual não anda para trás (letra errada nunca entra, então não faz falta).
+
+
 **📝 Lição a partir de um texto (12/out/2026):** pedido do dono: "colo um texto em inglês e ele vira lição, com tradução
 automática; a pronúncia pode ser a de antes, sem mudar para a nativa". Mapa do inglês → cartão "✍️ Transforme um texto em
 lição" → colar (título opcional) → **Traduzir e revisar** (a tradução é editável, a lixeira tira frase) → **Criar**: cai direto
 na 1ª lição. Nenhuma dependência nova (só `http`).
 - **Domínio puro** `ingles/domain/texto_para_frases.dart`: `simplificarParaDigitar` (aspas curvas → retas, travessão → " - ",
   acento sai: café → cafe, emoji/link somem — o curso é todo ASCII digitável), `dividirEmFrases` (abreviações Mr./Dr./e.g./U.S.,
-  iniciais, decimais, fala entre aspas, linha quebrada de PDF é juntada, marcador de lista sai, repetidas saem; frase > 25
-  palavras é cortada em ; : , ou " - " mais equilibrado; teto 150 frases) e `repartirEmLicoes` (8 por lição, equilibrado:
+  iniciais, decimais, fala entre aspas, linha quebrada de PDF é juntada, marcador de lista sai, repetidas saem;
+  **frase > 12 palavras** (`maxPalavrasDoTextoColado`, 13/out/2026 — pedido do dono: exercícios mais rápidos, MAS cada pedaço com
+  sentido/contexto, não um caco de frase; antes o limite era 25) é cortada **nos trechos naturais**: depois de `,` `;` `:` ou
+  " - ", ou antes de and/but/because/when/which/who/if/or/then/after/before/until/since/although/though/where. O melhor conjunto
+  de cortes sai de uma **programação dinâmica** (`_quebrar`): pedaço ideal ≈ 7 palavras (custo ao quadrado), pedaço com < 5 palavras
+  ("quite astonished,") custa muito e gruda no vizinho, corte antes de conjunção sem vírgula custa um pouco mais que corte
+  na vírgula. Frase de até 12 fica inteira (mesmo com bom corte); sem corte natural bom ela fica inteira até 18 (1,5×); acima
+  disso `_partirNoMeio` corta entre palavras. **Golden:** o texto "Jack Hannaford" do dono (14 linhas) sai IDÊNTICO ao "texto
+  linha a linha" de um professor. A tela avisa "N frases compridas foram divididas em pedaços curtos…"
+  (`TextoDividido.partidas`). Teto 150 frases — **textos grandes batem nele mais cedo agora que há mais pedaços**; o limite de
+  25 do CURSO (`maxPalavrasPorFrase`) é outro e não mudou) e `repartirEmLicoes` (8 por lição, equilibrado:
   17 → 6+6+5). Só quebra frase quando a seguinte começa em MAIÚSCULA/número (texto todo em minúscula vira uma frase só).
 - **Tradução** `ingles/data/tradutor.dart`: contrato `Tradutor` + `TradutorMyMemory` (api.mymemory.translated.net, grátis,
   sem chave, **CORS aberto — provado no Chrome**; 3 em paralelo, 1 nova tentativa, frase > 400 car. vai em pedaços). Limite do
@@ -316,7 +384,27 @@ O dono pediu (mesmo dia): "cartão com frente em inglês e verso traduzido, como
   as palavras que FALTARAM sublinhadas e "acertou X de Y palavras"; **sugere** a nota — Bom (≥85% das palavras e ≥75% sem sobra, ou idêntica),
   Difícil (≥60% e ≥50%), senão Errei; "Fácil" nunca é sugerido — e a nota sugerida vem marcada ("sugerida"); **Espaço/Enter aceita a sugestão**,
   1–4 ou toque trocam (tradução livre pode estar certa mesmo diferente). Com o campo em foco as teclas são do campo (espaço, 1–4 e R não
-  avaliam nem ouvem). A repetição do "Errei" também pede a escrita. A nota continua sendo do aluno (não vai ao ranking).
+  avaliam nem ouvem). A repetição do "Errei" também pede a escrita. A nota continua sendo do aluno (não vai ao ranking). (A chave "Responder
+  escrevendo" virou o seletor de nível — ver o item seguinte; Avançado é este modo.)
+- **Níveis de resposta e sentido do cartão** (pedido do dono, 12/out: "tenha um nível… iniciante, médio e avançado… e nem sempre vai ser só a
+  frase em inglês, às vezes é ao contrário"; `domain/nivel_resposta.dart`, tela em `sessao_cartoes_page.dart`). Duas fileiras de opções em cima do
+  cartão, lembradas em `en_cartao_nivel` / `en_cartao_sentido` (a pref antiga `en_cartao_escrita=false` vira "Só virar"):
+  **Nível** — 🧩 **Fácil** (blocos de palavras para montar a frase, como no Duolingo, misturados com blocos de ENFEITE que não fazem parte da
+  resposta: `quantosDistratores` = ~metade, 2–5; vêm primeiro das outras frases da sessão, depois das frases do curso (`apoio`, passadas por
+  `abrirRevisao`) e por fim de uma lista de reserva por idioma; nunca repetem palavra da resposta; tocar no bloco da frase devolve ao banco;
+  Backspace tira o último, Enter confere), ✏️ **Médio** (a frase com ~55% das palavras como LACUNAS para escrever — as compridas têm mais chance
+  —, o resto à vista; Espaço/Enter pula para a próxima lacuna, Enter na última confere), ✍️ **Avançado** (escrever a frase inteira, o de antes)
+  e 👁 **Só virar**. **Sentido** — EN → PT, PT → EN ou 🔀 **Misturado** (padrão; cada cartão sorteia o lado e o "Errei" que volta mantém o lado).
+  Com o português na frente, o áudio (inglês) só toca/aparece DEPOIS de responder (nem a tecla R entrega antes) e a resposta é em INGLÊS (campo,
+  lacunas ou blocos em inglês; `don't`/`dont`/`I’m` contam como a mesma palavra — apóstrofo faz parte da palavra e não entra na comparação).
+  Nota sugerida por nível: Médio = todas as lacunas Bom, ≥60% Difícil; Fácil = só a frase certa NA ORDEM sugere Bom, palavras certas em outra
+  ordem ou quase = Difícil, senão Errei (montar é reconhecer, não lembrar); Avançado = como antes. "Fácil" (a nota) nunca é sugerido.
+  Os dois sentidos avaliam o MESMO cartão `~r` (uma memória só por frase/sentido de virar; o PT→EN digitado da lição segue sendo outro cartão).
+  Trocar o nível/sentido no meio do cartão ainda não respondido refaz o cartão; depois de virar só vale para o próximo.
+  Testes: `ingles_nivel_resposta_test` (23: partes, lacunas, blocos, conferências, apóstrofo) + 18 novos em `ingles_cartoes_ui_test`
+  (blocos, enfeites no idioma certo, Médio, PT→EN, R/áudio, sorteio do lado, 360 px) — validados com mutação (R antes de virar, áudio ao abrir,
+  lado na repetição, sentido no cartão virado). **PUBLICADO em pac-dart.web.app (12/out/2026, só hosting; regras não mudaram).** **Prova no Chrome real** (probe `main_portfolio_probe` + Playwright, 1027 e 390 px): Fácil montado e
+  conferido por Enter, Médio com Espaço pulando de lacuna, PT→EN com o 🔊 só depois de responder, sem erro no console.
 - **Navegador de cartões** (`navegador_cartoes_page.dart`): por baralho, busca, situação dos dois sentidos ("vence hoje", "em 3 sem ·
   memória 30 d"), **suspender** (some até reativar) e **enterrar até amanhã** (`CartaoSrs.suspenso/enterradoAte`, 8º campo opcional do codec).
 - **Novo cartão à mão** (`novo_cartao_page.dart`): frente em inglês + verso em português (ou "Traduzir para mim"), áudio opcional, cria vários
@@ -1065,6 +1153,70 @@ O dono pediu (mesmo dia): "cartão com frente em inglês e verso traduzido, como
 
 ---
 
+## 📲 Lojas (Google Play / App Store) — EM ANDAMENTO (11/out/2026)
+
+**Decisão do dono:** publicar nas duas lojas, sob o nome **Paclingo**, ID definitivo **`com.carlos.paclingo`** (escolhido pelo dono em 11/out/2026; Android
+`applicationId`/`namespace` e iOS `PRODUCT_BUNDLE_IDENTIFIER`). Para trocar de novo ANTES do 1º upload: `python3 tool/trocar_id.py <novo.id>` (depois de publicado o ID
+não muda). Apps registrados no Firebase `pac-dart`: `Paclingo (Android)` `1:932071268596:android:973258f499eba20a8c3ea1` e `Paclingo (iOS)`
+`1:932071268596:ios:e95e7372a1df930b8c3ea1` (os provisórios `com.seunome.*` foram removidos); os SHA-1/SHA-256 da chave de upload estão cadastrados no app Android.
+
+**Feito (passos 1 e 2):**
+- **Nome visível → Paclingo:** HUD (`PAC`+`LINGO` colorido, a linha de baixo é o curso), login, ranking, hub/arcade, título do
+  MaterialApp (`Linguagem.nomeApp` = "Paclingo · <curso>"), cartões da escolha de trilha (`Linguagem.marca`: DART / C# / INGLÊS),
+  personas do Prof. Dash e da engenheira de pista, `web/manifest.json`, `web/index.html`, `pubspec.yaml`. Comentários internos
+  continuam falando PAC·DART/PAC·C#/PAC·ENGLISH (são os nomes de trabalho das vertentes). **Não mudou:** projeto Firebase
+  `pac-dart`, URL `pac-dart.web.app`, nome do pacote `pac_dart`, chaves de progresso/Firestore, classe `LogoPacDart`.
+- **`android/` e `ios/` gerados** com `flutter create --platforms=android,ios --org com.seunome . (e o ID virou com.carlos.paclingo depois)` (nenhum arquivo existente foi
+  alterado, só `.metadata`) e depois ajustados: ID, rótulo "Paclingo" e `INTERNET` no manifesto principal (o gerador só põe nos de
+  debug/profile; sem isso o release não fala com Firebase/Gemini).
+
+- **Logo/ícones (11/out/2026, 4ª versão — a "limpa"):** o dono testou 3 logos geradas por IA e pediu uma versão mais limpa da 3ª
+  (a do Pac de boné + fantasma + labirinto, "paclingo — The Language Chase"). A atual foi redesenhada em vetor: fundo azul-marinho com moldura
+  neon turquesa→roxa, "pac" amarelo + "lingo" turquesa (fonte Fredoka 700, embutida no SVG), Pac de boné virado para trás, e um ponto + "A" + "文"
+  (o que ele "come"). SEM fantasma e SEM labirinto. Fonte editável: `branding/paclingo-limpo.svg` (autossuficiente; para rasterizar:
+  Chrome headless `--screenshot --window-size=1024,1024 --force-device-scale-factor=1 file://…/paclingo-limpo.svg`) → original dos ícones:
+  `branding/paclingo-logo.png` (1024×1024, quadrado cheio, sem transparência). As anteriores estão em `branding/outras-versoes/`
+  (v2 mascote azul-bolha, v3 boné+fantasma; a v1, pássaro turquesa, só existe no histórico da conversa). Para voltar a uma delas: copiar para
+  `branding/paclingo-logo.jpg`, apagar o `.png` (o script prefere o png) e rodar o gerador — ele preenche sozinho os cantos brancos arredondados
+  dessas versões.
+  `swift tool/gerar_icones.swift` (na raiz) gera TODOS os ícones: web (`favicon.png`, `icons/Icon-*.png`, maskable com margem de 20%), Android
+  (`mipmap-*/ic_launcher.png` + adaptativo: `ic_launcher_foreground.png` a 60%, `values/ic_launcher_background.xml` `#0D133C`,
+  `mipmap-anydpi-v26/ic_launcher.xml`), iOS (todo o `AppIcon.appiconset`, PNG sem transparência) e os de loja em `branding/`
+  (`play-store-512.png`, `app-store-1024.png`).
+  ⚠️ **Propriedade intelectual:** a v3 usava o Pac-Man e o fantasma vermelho (Blinky) da Bandai Namco; a atual tira o fantasma mas o Pac
+  continua sendo um círculo amarelo com boca em cunha. As lojas (Apple 5.2.1, Google Play "Intellectual Property") podem barrar ou
+  derrubar o app; os textos de loja não devem dizer "Pac-Man". Alternativa segura: a v2 (mascote próprio). Decisão do dono.
+  Dentro do app: o login e a escolha de trilha usam a imagem (`LogoPaclingo`, `assets/brand/paclingo-logo.png` 512 px); o HUD e a splash do `index.html` seguem com o Pac desenhado (`LogoPacDart`) + "PACLINGO".
+
+**Feito depois (11/out/2026, fases de publicação):**
+- **Firebase nativo:** apps `Paclingo (Android)` e `Paclingo (iOS)` registrados no projeto `pac-dart` (`firebase apps:create`); `lib/firebase_options.dart`
+  ganhou `android` e `ios`. O app abre no simulador do iPhone com o Firebase de verdade (testado).
+- **Som no celular:** `core/som/sintetizador.dart` (WAV em Dart puro, a mesma "partitura" da web; testado em `test/sintetizador_test.dart`) +
+  `som_nativo.dart` (audioplayers, `AudioPool`; motor do Dart Turismo em laço com `playbackRate`). Import condicional de 3 vias em `sons.dart`
+  (`stub` / `js_interop` → web / `io` → nativo); no desktop e na VM de teste o nativo fica inerte (`Platform.isAndroid || isIOS`).
+- **Inglês no celular:** `ingles/data/fala_nativo.dart` (gravações Tatoeba/voz Google via audioplayers + voz do sistema via flutter_tts, mesma escolha
+  de voz do navegador), `reconhecedor_nativo.dart` (speech_to_text), `core/util/abrir_url_nativo.dart` (url_launcher; créditos do Tatoeba).
+  Permissões: `RECORD_AUDIO` + `<queries>` (RecognitionService, TTS_SERVICE) no Android; `NSMicrophoneUsageDescription` e
+  `NSSpeechRecognitionUsageDescription` no iOS. DartPad embutido e Three.js seguem só na web (o celular usa o plano B / a vista em Canvas).
+- **Tutor no celular:** `tutor/data/tutor_firebase_ai.dart` (`firebase_ai` 2.3, Gemini Developer API **pelo Firebase AI Logic**, sem chave no app).
+  Configurado por REST: a chave "Gemini Developer API key (Firebase AI Logic)" (restrita a `generativelanguage`) foi criada com `gcloud` e gravada em
+  `projects/pac-dart/locations/global/config` (`generativeLanguageConfig.apiKey`). Testado com curl: HTTP 200 (`gemini-flash-latest`; o
+  `gemini-2.5-flash` não existe mais para projetos novos). Usa a cota GRATUITA (sem billing). O web segue no `GeminiTutorService`. Falta App Check.
+- **Excluir conta:** `auth/data/exclusao_de_conta.dart` + `presentation/excluir_conta_dialog.dart` (menu do avatar). Ordem: senha → apaga `users/{uid}` e
+  `ranking/{uid}` (lote) → apaga o login. `firestore.rules` ganhou `delete` no ranking (**só vale depois de `firebase deploy --only firestore:rules`**).
+  Testes em `test/auth_test.dart`.
+- **Privacidade:** `web/privacidade.html` e `web/excluir-conta.html` (placeholders `[SEU NOME OU EMPRESA]`/`[SEU E-MAIL DE CONTATO]` a preencher).
+- **Assinatura Android:** `android/key.properties` (fora do git) + `~/.paclingo/upload-keystore.jks` (alias `upload`); `build.gradle.kts` assina o release com ela
+  (sem o arquivo, cai na chave de debug). `flutter build appbundle --release` → 153,7 MB.
+- **Lojas:** `branding/lojas/` — `google-play.md`, `app-store.md`, `CHECKLIST.md` e capturas (`ios/` 1320×2868 e `android/` 1080×1920, tiradas do build
+  `main_portfolio_probe` com Playwright). `tool/trocar_id.py` troca o ID do app em todos os arquivos.
+- **Publicado em 11/out/2026:** `firebase deploy --only hosting,firestore:rules` (site Paclingo + regra de `delete` no ranking). As páginas `privacidade.html`/`excluir-conta.html` foram
+  RETIRADAS do `build/web` antes do deploy (placeholders de contato); gráfico do Play em `branding/lojas/grafico-play-1024x500.(svg|png)`.
+- **Ainda não feito / com o dono:** ver `branding/lojas/CHECKLIST.md` (ID real, contas, Team do Xcode, marcas de terceiros, deploy, teste em aparelho real,
+  gráfico de recursos 1024×500 do Play, App Check).
+
+---
+
 ## 🏗️ Arquitetura (arquivos-chave)
 
 ```
@@ -1090,6 +1242,8 @@ lib/
                                 # botao_pular
   features/dartpad/             # DartPadPage + iframe do dartpad.dev (embed_web / embed_stub)
                                 # + mapa_rodavel.dart (lê assets/roda.json)
+  features/habito/              # domain/habito (sequência, meta, congelamento — puro) · data/habito_repository (Local + Firestore) ·
+                                # presentation/habito_cubit + widgets/chip_sequencia + sequencia_sheet
   features/ranking/             # domain/jogador_ranking (critérios+ordenação) ·
                                 # data/ranking_repository (Firestore `ranking/{uid}`) ·
                                 # presentation/ranking_cubit (deltas+pendências) + ranking_page (pódio)
@@ -1107,12 +1261,325 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 
 ---
 
+## 🔥 Hábito diário — Fase 1A (12/out/2026, FEITA; sem commit/deploy)
+
+Sequência de dias (🔥), meta do dia em exercícios, congelamento (❄️) e as telas. Plano: `planejamento/FASE-1-HABITO-DIARIO.md`.
+
+**O que a pessoa vê:** chip no HUD (anel de progresso + 🔥 + dias; cinza com o convite "Comece hoje" quando não há sequência — nunca "0 dias";
+borda realçada quando a sequência está viva e hoje ainda sem meta); toque abre a folha "Sua sequência" (chama, dias seguidos, progresso de
+hoje, melhor, ❄️ n/2, últimos 14 dias feito/congelado/perdido, seletor Leve 10 · Normal 20 · Forte 40); aviso "Meta de hoje batida! 🔥 N dias"
+(SnackBar, 1× por dia, sem som).
+
+**Decisões D1–D8 (todas seguidas):** D1 uma sequência por conta (Dart+C#+Inglês; o `HabitoCubit` vive ACIMA de `_cursoDe`, em `main.dart`/`_comHabito`) ·
+D2 o dia conta ao bater a meta · D3 unidade = exercício concluído (ganchos abaixo) · D4 dia = dia local inteiro (`diaDe` == `Revisao.dia`), relógio que volta é ignorado ·
+D5 só no cliente, nunca no ranking (teste prova que nenhuma chave do hábito vai ao ranking) · D6 campo `habito` (mapa) em `users/{uid}` + cópia local
+(`habito_v1:{uid}`); **`firestore.rules` intacto** · D7 offline-first: emite na hora, grava sem bloquear (coalescendo), mescla aparelho × nuvem ·
+D8 +1 ❄️ a cada 7 dias (máx. 2); cobre os dias perdidos só se houver congelamentos para TODOS; recomeçar não gasta congelamento.
+Padrões das "perguntas em aberto": metas 10/20/40 com Normal=20, arcade não conta, hábito fora do ranking.
+
+**Ganchos de contagem (`HabitoCubit.de(context)?.praticou()`; no-op sem o cubit):** trecho de Dart/C# digitado até o fim (listener de `concluido` em `home_page.dart`,
+`_Palco`) · cada passo da escada do inglês (`PalcoIngles._avancar`, **sem** a cópia de correção) · Mão na Massa digitado (`projeto_page.dart`) · pergunta de quiz
+respondida (`quiz_page.dart`, clique ou digitando; 1× por pergunta) · revisão do inglês: frase digitada (1ª tentativa) e cartão (1ª nota) em `abrirRevisao`
+(`fixacao.dart`); o "DE NOVO" do Errei NÃO conta. Não contam: arcade, pular, voltar, nivelamento, treino de memória da lição, criar texto/cartão.
+
+**Arquivos novos:** `lib/features/habito/domain/habito.dart` (modelo puro, `RegrasHabito`, `diaDe`, `registrar`/`mudarMeta`/`mesclar`/JSON tolerante) ·
+`data/habito_repository.dart` (`LocalHabitoRepository`, `FirestoreHabitoRepository` — Firestore acessado só ao ler/gravar, então testes sem Firebase seguem no aparelho) ·
+`presentation/habito_cubit.dart` · `presentation/widgets/chip_sequencia.dart` (+ `AnelDaMeta`, `Chama`) · `widgets/sequencia_sheet.dart`.
+**Editados com cirurgia:** `lib/main.dart` (`habitoBuilder`, `habitoAgora`, `_comHabito`), `lib/main_portfolio_probe.dart` (`LocalHabitoRepository`), `hud.dart` (o chip, 1ª posição do Wrap
+de botões), `home_page.dart`, `palco_ingles.dart`, `fixacao.dart`, `quiz_page.dart`, `projeto_page.dart` (1 linha de gancho cada) e `test/app_smoke_test.dart` (2 pumps antes de tocar em "Mapa":
+o chip deixa o HUD uma linha mais alto na janela 800×600 e a rolagem automática do campo ignorava o toque).
+
+**Testes (+111):** `habito_test` (44: domínio em tabelas, `diaDe`, congelamento, relógio, mesclar comutativa/idempotente, JSON) · `habito_repository_test` (16: local, Firestore fake sem apagar outros campos,
+mescla, sem rede, exclusão de conta leva o hábito) · `habito_cubit_test` (13) · `habito_ui_test` (28: chip nos estados, aviso 1×, folha, 14 dias, meta, 360/390/1027 px, tema claro, ganchos Dart/quiz/projeto) ·
+`habito_app_test` (10: app inteiro — inglês, Dart, troca de curso mantém, reabrir, virada do dia, ranking sem hábito). Validado por 16 mutações (>=→>, relógio, congelamento no recomeço, "DE NOVO" contando, mescla sempre remota, etc.).
+Prova em Chrome real (probe, 1027 e 390 px, virada do dia com `page.clock`): sem erro no console.
+
+⚠️ Pendências: **1B (lembrete)** feita depois (ver "🔔 Lembrete diário"); o treino de memória da lição e o nivelamento não contam (decisão); `home_page.dart:380` (barra de progresso do Dart) estoura ~2 px a 390 px com a fonte de TESTE (problema antigo, fora do hábito).
+
+---
+
+## 🎧 Ditado — Fase 3 (parte 1: "Áudio → escrever", 13/out/2026, FEITA; sem commit/deploy)
+
+Novo sentido do cartão inglês → português: `SentidoCartao.audio` (id `audio`, rótulo "🎧 Áudio → escrever"), ao lado de EN → PT / PT → EN / Misturado.
+A frente do cartão é SÓ o áudio ("🎧 Ouça e escreva", sem nenhum texto da frase) e toca sozinho ao abrir; a pessoa escreve em inglês o que ouviu
+e vale em todos os níveis (Fácil = blocos em inglês, Médio = lacunas, Avançado = escrever, Só virar). Depois de virar aparecem o inglês, a tradução e as 4 notas
+(a nota sugerida vem da conferência por palavra, como sempre). Funciona com frase sem tradução. Tecla R ouve de novo; 🔊 e 🐢 na frente. "Misturado" NÃO sorteia o ditado.
+Usa os mesmos cartões `~r` e a mesma agenda FSRS (a nota do ditado é a nota do cartão — decisão: sem cartão novo por enquanto).
+Arquivos: `domain/nivel_resposta.dart` (enum) e `presentation/sessao_cartoes_page.dart` (`_audioAtual`, `soAudio`, instrução, autoplay, tecla R) — edições pontuais em arquivos já sujos.
+Testes: `test/ingles_ditado_test.dart` (12) + 5 mutações pegas (texto na frente, sem autoplay, responder em português, tecla R). Chrome real (probe 1027/390 px): ok, 0 erros.
+**Fase 3, parte 2 (shadowing): FEITA em 13/out/2026** — ver a seção "🗣 Shadowing" abaixo.
+
+---
+
+## 💡 "Por quê?" + cota/cache de IA — Fase 2A (13/out/2026, FEITA; sem commit/deploy)
+
+Plano: `planejamento/FASE-2-EXPLIQUE-E-CENARIOS.md` (a 2B, cenários guiados, veio depois).
+
+**O que a pessoa vê (só Inglês):** depois de errar ou tropeçar, um botão **"💡 Por quê?"** (com "restam N usos hoje") pede ao Prof. Dash uma explicação curta em português
+do erro daquela resposta; ela aparece num cartão "🐦 Prof. Dash" logo abaixo (mini-markdown: **negrito**, *itálico*, `código`). Onde aparece: palco (passo de memória que errou/hesitou — a cópia
+de correção não), revisão digitada (`SessaoMemoriaPage`) e cartões de virar (`SessaoCartoesPage`, só se respondeu e não foi idêntico; "Não sei" não). Cota esgotada ⇒ "Por hoje o Prof. Dash
+descansou — amanhã tem mais 🐦" e o estudo segue. Falha de rede ⇒ aviso + "Tentar de novo", **sem gastar**.
+
+**Decisões D1–D11 (seguidas):** só Inglês · reaproveita `TutorService.perguntar` (interface intacta; pedido começa com `PEDIDO: explicar um erro`) · cota por pessoa/dia em `users/{uid}.ia_cota` + cópia local
+(`ia_cota_v1:{uid}`), padrão do hábito, `firestore.rules` intacto · cota **macia/forjável** (a chave do Gemini viaja no cliente na web; a trava real é a cota do projeto no Google; cota dura = Cloud Functions, fora do escopo) ·
+dia = `diaDe` (relógio que volta é ignorado) · cache local (`ia_cache_v1:{uid}`, 100 entradas, a mais antiga sai; chave = hash de versão|frase|resposta|palavras erradas|exercício|desistiu) · erro/vazio não gasta nem guarda ·
+resposta cortada em 300 letras e marcada como DADO no prompt (anti-injeção) · IA nunca mexe em nota, agenda nem ranking (teste prova). Padrões das perguntas em aberto: limite 30/dia; "Por quê?" só em erro/hesitação.
+
+**Arquivos novos:** `lib/features/ia/domain/{cota_ia,explicacao}.dart` · `data/{cota_repository,cache_explicacoes}.dart` · `presentation/ia_cubit.dart` (cache → cota → serviço; dedup de pedidos iguais; reserva do uso antes de chamar,
+então pedidos simultâneos não passam do limite) · `presentation/widgets/botao_por_que.dart`.
+**Editados com cirurgia:** `main.dart` (`iaCotaBuilder`/`iaCacheBuilder`/`iaAgora`, `_comIa` ao lado do `HabitoCubit`, acima dos cursos) · `main_portfolio_probe.dart` (cota local + o `_TutorFake` reconhece o pedido) ·
+`palco_ingles.dart`, `sessao_memoria_page.dart`, `sessao_cartoes_page.dart` (o botão + `_pedidoPorQue`).
+Divergências do plano: na digitação não existe "resposta escrita" (o motor só aceita a tecla certa), então o pedido leva as PALAVRAS que tropeçaram e se desistiu; não criei atalho de teclado (o botão é focável).
+
+**Testes (+57):** `ia_cota_test` (11: cota em tabela, mesclar, JSON, pedido/chave/corte/anti-injeção) · `ia_repository_test` (13: local, Firestore fake sem apagar outros campos, mescla, sem rede, exclusão de conta leva `ia_cota`, cache de 100) ·
+`ia_cubit_test` (15) · `ia_ui_test` (12) · `ia_app_test` (6: app inteiro — palco, cache depois de reabrir o app, cota esgotada, falha, revisão digitada). 14 mutações pegas (cache gastando, falha gastando, não zerar na virada, mesclar menor,
+limite, sem corte, botão ao acertar, sem dedup, sem reserva, cache sem gravar, chave sem resposta, sem marca de dado, sem `_comIa`); a "botão na cópia" é equivalente (o widget já se esconde sem erro). Os testes pegaram um deadlock real
+(`whenComplete` devolvendo o próprio Future). Chrome real (probe, 1027 e 390 px): ok, 0 erros.
+⚠️ Pendências: a Fase 3 shadowing segue não feita (a 2B foi feita depois: seção "💬 Cenários guiados").
+
+---
+
+## 💬 Cenários guiados — Fase 2B (13/out/2026, FEITA; sem commit/deploy)
+
+Plano: `planejamento/FASE-2-EXPLIQUE-E-CENARIOS.md` (etapas 7–10). Só Inglês; por TEXTO (voz fica para depois — o reconhecedor do dono ainda não está commitado).
+
+**O que a pessoa vê:** no Mapa, o card **"💬 Conversar com o Prof. Dash"** (ao lado de "Baralhos e cartões"; some sem a IA) → lista de **8 cenários por etapa**
+(`assets/ingles/cenarios.json`: Pedir um café A1 · Check-in no hotel, Pedir direções, Na farmácia A2 · Entrevista, Reunião de equipe B1 · Chamada com cliente, Daily de desenvolvimento B2) →
+conversa: o Dash faz o outro papel só em inglês (abertura fixa com tradução, 1–2 frases por vez), **sem corrigir no meio**; 4–6 "frases úteis" que preenchem o campo; cada cenário tem 4–6 falas.
+"Terminar e ver feedback" → **o que foi bem, até 3 correções explicadas e 3 frases com "Salvar como cartão"** (entra em "Meus cartões" pelo caminho do "Novo cartão": a mesma frente só troca o verso, nunca duplica; o 1º cartão liga o inglês → português).
+
+**Regras:** cada fala da pessoa (resposta do Dash) e o feedback gastam **1 uso** da cota (`IaCubit.consultar`, mesma cota/limite do "Por quê?"; erro/vazio/sem saldo nunca gastam; reserva antes de chamar). Falha ⇒ a fala volta para o campo, sem gastar. Sem cota no meio ⇒ mensagem gentil, a conversa até ali fica e
+o "feedback" vira um resumo local ("volte amanhã"). Feedback é pedido como **JSON** (`FeedbackCenario.interpretar`: tolerante a ```json, texto em volta, truncado; ≤3 correções, ≤3 frases; frase recusada por `prepararCartao` ou repetida é descartada; JSON ruim ⇒ texto cru, nenhum cartão).
+A fala da pessoa vai como DADO (cortada em 300 letras; o prompt manda ignorar instruções dentro dela). Persona do cenário: serviços que implementam o novo `TutorComPersona` (Gemini web e `firebase_ai`) a recebem como persona; os outros (fakes) recebem como instrução no contexto — a interface `TutorService` NÃO mudou.
+
+**Arquivos novos:** `lib/features/ia/domain/{cenario,sessao_cenario}.dart` (modelo, máquina de turnos pura, persona, contexto do turno, pedido e parser do feedback) · `presentation/{cenario_cubit,cenarios_page,conversa_page,feedback_cenario}.dart` · `assets/ingles/cenarios.json` (já coberto pelo `assets/ingles/` do pubspec).
+**Editados com cirurgia:** `tutor/data/tutor_service.dart` e `tutor_firebase_ai.dart` (`TutorComPersona.perguntarComo`; `perguntar` só delega) · `ia_cubit.dart` (`consultar` + `_chamar` compartilhado com o "Por quê?") · `mapa_page.dart` (o card) · `main_portfolio_probe.dart` (o `_TutorFake` fala o cenário e devolve um feedback JSON).
+
+⚠️ **Armadilhas achadas na prova em Chrome (leia antes de mexer em `conversa_page.dart`):** o padrão do `TextInputAction.done` é TIRAR O FOCO do campo a cada Enter (e `readOnly`/`enabled`/`requestFocus` no meio do Enter, ou `autofocus` na abertura da tela, derrubam a conexão de teclado da web com um `Error` do motor, sem mensagem — aparece como `pageerror` em `a_0.mo`). Solução: `onEditingComplete: () {}`, campo sempre ligado e sem autofocus; o envio é que espera a resposta (o texto fica no campo). Testes de widget NÃO pegam esse erro: só o Chrome.
+
+**Testes (+56):** `ia_cenario_test` (25: conteúdo dos 8 cenários — ids, etapas, inglês digitável —, máquina de turnos, persona/contexto/pedido de feedback, parser em tabela) · `ia_cenario_cubit_test` (15: cota, falha, sem cota, persona própria × contexto, conversa inteira, feedback único, JSON ruim) ·
+`ia_cenario_ui_test` (15) · `ia_cenario_app_test` (1: app inteiro — Mapa → Conversar → café → 3 falas → feedback → salvar cartão → "Meus cartões", sem duplicar, cota 30→26, ranking intacto). 15 mutações pegas (persona que corrige, correções/frases sem limite, frase sem validar, feedback sem guarda, falha sem desfazer a fala, histórico com a fala atual, sem aviso de última fala, frases duplicadas, persona pelo caminho padrão, sem corte de 300, Mapa sem o card, contexto sem a regra de idioma, feedback local sumindo, 1º cartão sem ligar o sentido, campo sem foco).
+Chrome real (probe, 1027 e 390 px): conversa de 3 falas, feedback, 2 cartões salvos, 0 erros.
+⚠️ Pendências: voz nos cenários (D11), shadowing (Fase 3), cota dura no servidor (D4).
+
+---
+
+## 🩸 Sanguessugas e subida de nível — Fase 6 (13/out/2026, FEITA; sem commit/deploy)
+
+**Sanguessuga** (como o *leech* do Anki): cartão com **8+ lapsos** (`limiteSanguessuga`, padrão do Anki) e não suspenso. Inglês.
+- **Em Baralhos:** aparece o card "🩸 N sanguessugas" (só havendo alguma) → **tela Sanguessugas** (`sanguessugas_page.dart`): cada cartão com a frase, a tradução, o sentido (digitar de memória/cartão de virar), "errou N vezes", o "ao pé da letra" e a nota que a própria frase já tem, e as ajudas:
+  **📖 Outra frase** (até 2 frases do curso/dos textos com a palavra MAIS RARA da frase — `exemplosParecidos`), **🧠 Dica de memória** (Prof. Dash: 1 dica ≤ 4 linhas; mesma cota e mesmo cache do "Por quê?" via `PedidoMnemonico`/`PedidoIa`; some sem IA)
+  e **⏸ Suspender** (com "Desfazer"). Ordem: quem mais erra primeiro. Domínio puro em `domain/sanguessugas.dart`.
+- **Sugestão de nível** (`domain/subida_nivel.dart`, `SerieDeNivel`): na revisão de cartões, a 1ª nota de cada cartão (o "DE NOVO" não conta) entra numa série por degrau (Fácil → Médio → Avançado; "Só virar" fica fora; "Difícil" não conta nem quebra).
+  **Subir:** 10 acertos seguidos (Bom/Fácil) → "🚀 … que tal tentar o Avançado?". **Descer:** 4 erros nas últimas 8 → "🫶 Está pesado? … que tal voltar ao Médio por um tempo?". É só um **convite** (botões "Subir/Voltar para X" e "Agora não"; nunca troca sozinho); aceitar ou dispensar recomeça a contagem do degrau.
+  A série fica em `en_cartao_serie_v1` (aparelho). Padrões escolhidos por mim (o plano deixava em aberto): 8 lapsos, 10 acertos, 4/8 erros — constantes em `sanguessugas.dart`/`SerieDeNivel`, fáceis de ajustar.
+
+**Arquivos novos:** `lib/features/ingles/domain/{sanguessugas,subida_nivel}.dart` · `presentation/sanguessugas_page.dart`; em `ia/domain/explicacao.dart`: `PedidoIa` (interface: chave, temErro, montar) e `PedidoMnemonico`.
+**Editados com cirurgia:** `baralhos_page.dart` (o card; abre a tela com os providers) · `sessao_cartoes_page.dart` (a série, o banner e a persistência) · `ia_cubit.dart` (`explicar(PedidoIa)`) · `botao_por_que.dart` (rótulo/emoji/chave configuráveis) · `main_portfolio_probe.dart` (o `_TutorFake` dá uma dica de memória).
+
+**Testes (+41):** `ingles_sanguessugas_test` (18: limite exato, suspensos, ordem estável, palavras-chave, palavra mais rara, `SerieDeNivel` em tabela, JSON) · `ingles_sanguessugas_ui_test` (19: a tela, ações, dica de memória com cota, sem IA, 360 px/tema claro, o card nos Baralhos, o convite de subir/descer/aceitar/dispensar, "Só virar" fora, "DE NOVO" fora) · +4 `PedidoMnemonico` em `ia_cota_test`.
+16 mutações pegas (limite `>`, suspensos dentro, ordem invertida, exemplo com a própria frase, raridade invertida, subir com 9, "Difícil" contando, "Só virar" na escada, descer com 3, trocar de nível sozinho, repetição entrando na série, "Agora não" sem zerar, suspender sem suspender, card sempre visível). Chrome real (probe, 1027 e 390 px): card, tela, dica, outras frases, convite de descer e aceitar — 0 erros.
+⚠️ Pendências/ideias: aviso na hora em que o cartão vira sanguessuga (hoje só a lista); limite de lapsos configurável nos ajustes.
+
+---
+
+## 📖 Leitura com toque na palavra — Fase 4 (13/out/2026, FEITA; sem commit/deploy)
+
+**O que a pessoa vê (Inglês):** no Mapa, o card **"📖 Ler e guardar palavras"** → lista (`leituras_page.dart`): **"Seus textos"** (os "Meus textos" já traduzidos; "Meus cartões" não conta) e **6 textos graduados** A1→B2
+(`assets/ingles/leituras.json`: Minha manhã, No mercado, Um fim de semana na praia, Procurando um apartamento, Uma reunião adiada, Aprendendo a programar; cada frase com tradução).
+Na leitura (`leitura_page.dart`) cada palavra é tocável; tocar abre a **folha da palavra**: a palavra (🔊), a **tradução da palavra** (MyMemory, pelo `Tradutor` que já existe; em minúscula; "Traduzindo…"/falha amigável) com o aviso
+**"uma palavra sozinha pode mudar de sentido: confira na frase"**, a **FRASE INTEIRA com a palavra destacada + a tradução da frase** e **"Guardar cartão de lacuna"**. As palavras já guardadas ficam **sublinhadas** na leitura.
+Sem tradutor (cota/rede) ainda dá para guardar: a pista do cartão é a tradução da FRASE, não a da palavra. Frase sem tradução (texto próprio sem pt) não gera cartão (e a folha explica).
+
+**O cartão de lacuna:** entra em "Meus cartões" pelo mesmo caminho do "Novo cartão"/cenários (`CartaoAdicionado`; o 1º liga o inglês → português). Guarda a frase, a tradução, a palavra-alvo (`alvo`, como está na frase) e, se a tradução da palavra aparece INTEIRA e sozinha
+na frase em português, o pedaço (`alvoPt`). **Um cartão por frase**: guardar outra palavra da mesma frase TROCA a palavra do cartão (o botão diz "Trocar a palavra do cartão ('a' → 'b')"). Na revisão (`SessaoCartoesPage`) esse cartão é **sempre PT → EN com SÓ a palavra em lacuna**
+(`lacunaUnica`), em qualquer nível menos "Só virar" e no ditado, e **não entra na série de níveis** (Fase 6). Na lição de digitação a palavra aparece sublinhada (é o `Trecho.alvo` que já existia).
+Dados: `FraseDoTexto`/`CartaoEscrito` ganharam `alvo`/`alvoPt` opcionais (JSON antigo continua valendo; sem alvo o JSON não muda); `TextoSalvo.comoTrilha` e o `CursoBloc._cartaoAdicionado` os carregam.
+
+⚠️ **ARMADILHA (pega por um teste antigo):** as frases do CURSO também têm `alvo` (é o destaque da lição). Por isso o que decide se um cartão é "lacuna da leitura" NÃO é ter `alvo`: é quem abre a revisão dizer (`SessaoCartoesPage.lacunaDaLeitura`, que `abrirRevisao` preenche
+com "a frase está no baralho `txt:cartoes`"). Teste de regressão cobre. Outra: palavras repetidas na mesma frase geravam chave duplicada (assert na tela) — agora `palavra-x`, `palavra-x#2`…
+Obs.: com o cartão da leitura na tela, o seletor "Sentido" continua mostrando o que a pessoa escolheu (o cartão é PT → EN por regra; a instrução em cima explica).
+
+**Arquivos novos:** `lib/features/ingles/domain/leitura.dart` (`Leitura`, `leiturasDeJson`, `alvoNaTraducao`, `cartaoDeLacuna`) · `presentation/{leituras_page,leitura_page}.dart` · `assets/ingles/leituras.json`.
+**Editados com cirurgia:** `texto_salvo.dart`, `cartoes_texto.dart`, `nivel_resposta.dart` (`lacunaUnica`), `curso_bloc.dart` (merge do alvo), `sessao_cartoes_page.dart`, `fixacao.dart` (`lacunaDaLeitura`), `mapa_page.dart` (o card), `main_portfolio_probe.dart` (`_TradutorFake`). Sem pacote novo, sem `firestore.rules`.
+
+**Testes (+46):** `ingles_leitura_test` (19: os 6 textos, `deTrilha`, `alvoNaTraducao` (só palavra inteira), `cartaoDeLacuna`, JSON antigo/novo, `comoTrilha`, `lacunaUnica`) · `ingles_leitura_ui_test` (26: leitura, folha, tradutor com falha, guardar/trocar/sublinhado/sem tradução, palavra repetida, lista, o cartão na revisão em 3 níveis, regressão do `alvo` do curso, série, 360 px) · `ingles_leitura_app_test` (1: app inteiro Mapa → Ler → palavra → guardar → revisão com a lacuna).
+18 mutações pegas (substring em vez de palavra inteira, cartão sem tradução, lacuna só da 1ª ocorrência/sem caixa, sem forçar PT→EN, entrando na série, bloco perdendo o alvo, `comoTrilha`/JSON sem alvo, sem sublinhado, tradução com caixa, "Meus cartões" como texto, Mapa sem card, botão sempre ligado, folha sem a tradução da frase, chave repetida, ignorar o `lacunaDaLeitura`).
+Chrome real (probe, 1027 e 390 px): lista, leitura, folha, sublinhado e a lacuna "Then I have ___ with my sister." na revisão — 0 erros.
+⚠️ Pendências: um cartão por frase (várias palavras na mesma frase = só a última); texto colado direto na tela de leitura (hoje se cola pelo "Transforme um texto em lição" e ele aparece em "Seus textos"); tradução contextual da palavra pela IA (hoje MyMemory, palavra isolada).
+
+---
+
+## 📝 Escrita corrigida por IA — Fase 5 (13/out/2026, FEITA; sem commit/deploy)
+
+Plano: `planejamento/FASE-5-ESCRITA-CORRIGIDA.md` (decisões D1–D11). Só Inglês, por texto.
+
+**O que a pessoa vê:** no Mapa, o card **"📝 Escrever e ser corrigido"** (depois de "Conversar"; some sem a IA; 📝 porque o ✍️ já é do "Transforme um texto em lição") → tela com 6 temas sugeridos
+(preenchem o começo da frase em inglês), campo multilinha, contador "N de 3 frases" e **Corrigir** (1 uso da cota). Volta, em português: **texto corrigido**, **o que foi bem**, e **um bloco por frase com erro**
+(a frase riscada → a frase inteira corrigida → tradução → "por quê") com **"Salvar como cartão"** e **"Salvar todos (N)"**. O cartão entra em "Meus cartões" pelo caminho dos cenários (`salvarCartaoDoCenario`):
+frente = a frase corrigida, verso = a tradução; a mesma frente nunca duplica. **Nunca há nota/pontuação.** "Escrever outro texto" recomeça.
+
+**Regras (todas com teste):** texto da pessoa = DADO (≤ 3 frases × 300 letras, numerado e entre aspas, o prompt manda ignorar instruções dentro dele; abreviações `Mr.`/`Dr.`/`e.g.` não separam frase) · pedido pede SÓ um JSON
+(`em_ingles`, `corrigido`, `elogio`, `erros[{sua, melhor, pt, porque}]`, ≤ 5 erros, um por frase) · parser tolerante (```json, texto em volta; JSON ruim/truncado/vazio ⇒ texto cru e nenhum cartão; nunca lança) que
+**descarta** erro vazio, `melhor ≈ sua`, `sua` que a pessoa nunca escreveu (a IA inventou) e `melhor` repetido; campos fora do contrato (`nota`, `score`…) são ignorados · `melhor` que o `prepararCartao` recusa: o erro aparece, sem botão de salvar ·
+`em_ingles:false` ⇒ "Escreva em inglês" (gasta 1 uso: não adivinho idioma no cliente) · **o MESMO texto de novo mostra o resultado e não chama a IA** (sem cache em disco) · falha de rede/vazio/sem saldo não gastam e o texto fica no campo ·
+nada é salvo ao sair (só os cartões salvos) · **não conta no hábito** e não toca em ranking/agenda (teste prova) · salvar é ação da pessoa, nunca automático.
+Padrões das perguntas em aberto: salvar pelo botão; escrita fora do hábito; até 3 frases; português gasta 1 uso; 6 temas fixos no código; sem rascunho/histórico; cartão sem o "porquê".
+
+**Arquivos novos:** `lib/features/ia/domain/escrita.dart` (`TextoEscrito`, `pedidoDeCorrecao`, `ErroEscrito`, `ResultadoEscrita.interpretar`, `temasDeEscrita`) · `presentation/escrita_cubit.dart` (`EscritaCubit`, usa `IaCubit.consultar`) · `presentation/escrita_page.dart`.
+**Editados com cirurgia:** `mapa_page.dart` (import + `_CartaoEscrever` + 1 linha na lista) · `main_portfolio_probe.dart` (o `_TutorFake` devolve um JSON com 2 erros para `MODO CORREÇÃO DE ESCRITA`).
+**Intactos:** `IaCubit`, `TutorService`, `sessao_cenario.dart`/`FeedbackCenario`, `pubspec.*`, `firestore.rules`, `android/`, `ios/`.
+
+⚠️ **Armadilhas:** o campo é multilinha (Enter quebra linha; só o botão envia), **sempre ligado, sem `autofocus`/`requestFocus`** (mesma armadilha do teclado na web dos cenários; teste trava isso, mas só o Chrome prova) ·
+`CursoBloc` de teste precisa de `textos: LocalTextosRepository(..)` para salvar cartão e de ≥ 1 trilha para ficar "pronto" (lista vazia trava a montagem) · identificador com acento (`_lê`) não compila em Dart.
+
+**Testes (+65):** `ia_escrita_test` (32: `preparar` em tabela, prompt, parser em tabela, "sem nota", temas) · `ia_escrita_cubit_test` (11: cota, mesmo texto, falha, sem cota, toques repetidos, JSON ruim, injeção, fechar a tela) ·
+`ia_escrita_ui_test` (21: telas e estados, salvar um/todos sem duplicar, cartão recusado, sem erros/cru/não-inglês, falha/sem cota mantêm o texto, campo nunca desligado, card do Mapa com/sem IA, 360/390/1027 px com tema claro) · `ia_escrita_app_test` (1: app inteiro Mapa → Escrever → corrigir → salvar todos → "Meus cartões", 30→29, mesmo texto não gasta, ranking e hábito intactos).
+**20 mutações pegas** (corte 400, 4 frases, prompt sem a ordem de ignorar, 6 erros, `melhor==sua`, `sua` inventada, `melhor` repetido, JSON vazio virando "sem erros", campo `nota` lido, mesmo texto chamando a IA, campo limpo ao enviar,
+`salvaveis` com cartão nulo, cartão sem `prepararCartao`, card sem IA visível, `em_ingles:false` ignorado, escrita contando no hábito, `autofocus`, campo `readOnly` esperando, abreviação separando frase, texto vazio chamando a IA) — arquivos restaurados (hash igual).
+Chrome real (probe, 1027 e 390 px): card, tela, tema, 2 linhas com Enter, Corrigir, blocos, "Salvar todos", cartões no `localStorage` (`en_textos_*`), mesmo texto não gastou (cota 25→24 uma só vez), 0 erros de console/`pageerror`.
+⚠️ Pendências/ideias: histórico dos textos escritos e "erros mais comuns" por tipo; guardar o "porquê" no cartão (exige campo novo no baralho); escrita por voz; contar no hábito (decisão do dono).
+
+---
+
+## 🗣 Shadowing — Fase 3, parte 2 (13/out/2026, FEITA; sem commit/deploy)
+
+Plano: `planejamento/FASE-3B-SHADOWING.md` (D1–D11). Só Inglês. Feito **em cima do reconhecedor do dono sem editá-lo** (autorizado em 13/out): só importa a API pública
+(`ReconhecedorFala`, `SessaoFala`, `ErroFala`, `avaliarFala`, `AvaliacaoFala`); `reconhecedor_*.dart`, `fala_nativo.dart`, `avaliacao_fala.dart`, `voz_ingles.dart`, `frase_view.dart` e `ingles_fala_test.dart`
+seguem **byte a byte iguais** (conferido por `shasum` antes/depois) e **continuam sem commit**.
+
+**O que a pessoa vê:** novo sentido do cartão de virar **"🗣 Ouvir e repetir"** (ao lado de EN→PT, PT→EN, Misturado e 🎧 Áudio→escrever). A frente é **só o áudio** ("🗣 Ouça e repita"; toca sozinho; 🔊/🐢/R) com o painel do microfone:
+**🎤 Falar** (ou **Espaço**) → mostra o que está sendo ouvido → confere por palavra com o `avaliarFala` do dono. Entre uma tentativa e outra aparece **o que foi ouvido** (palavras que casaram em verde, as outras em vermelho)
+e "Faltaram N de M palavras · sobraram K" **sem revelar a frase** (ela só aparece ao virar). Até **3 tentativas** ("não entendi nenhuma palavra" não conta); **"Mostrar a frase"** desiste.
+Perfeita, ou na 3ª tentativa, ou desistindo: o cartão vira (inglês com as palavras certas/erradas marcadas, "O QUE EU OUVI", a tradução) com as 4 notas e **a sugerida marcada**:
+**Bom** só se a 1ª tentativa for perfeita · **Difícil** se perfeita na 2ª/3ª ou melhor tentativa com ≥ 70% das palavras · **Errei** abaixo disso ou "Mostrar a frase" · **Fácil nunca é sugerida**. A nota é a do cartão (mesma agenda FSRS, mesmo gancho de hábito).
+
+**Regras (todas com teste):** sem nível (o seletor de nível some; a frase INTEIRA mesmo no cartão de lacuna da leitura) · fora da série de subida/descida de nível · **"Misturado" nunca sorteia** · sem "Por quê?" na fala ·
+o app se cala (`_voz.parar()`) quando o microfone abre · sair da tela/trocar de cartão com o microfone aberto **cancela** a escuta · aviso de escuta velha (outra já começou) é ignorado ·
+**sem voz** (`!suportado`, permissão negada, sem microfone, `naoSuportado`) o cartão **vira ditado com o nível escolhido** ("Sem voz neste aparelho, hoje é ditado.") pelo resto da sessão e a revisão nunca trava (divergência do plano: o plano dizia "Avançado"; usei o nível que a pessoa escolheu, que o ditado já suporta) ·
+sem áudio gravado, sem IA, sem ranking; o painel diz uma vez que o reconhecimento é do navegador/sistema (no Chrome, num servidor: precisa de internet) e que confere PALAVRAS, não sotaque.
+Padrões das perguntas em aberto: 3 tentativas · limiar 70% · a frase some até virar · Espaço (falar/parar) e R (ouvir) · voz nos cenários fica FORA (outro plano).
+Divergência de redação do plano: entre tentativas o painel mostra só o que foi OUVIDO (e quantas palavras faltaram), porque marcar "as palavras da frase" revelaria a frase escondida; a frase marcada vem ao virar.
+
+**Arquivos novos:** `lib/features/ingles/domain/shadowing.dart` (`notaDoShadowing`, `SessaoShadowing`, `comparacaoDoShadowing`, `maxTentativasShadowing`, `limiarShadowing`) · `presentation/widgets/painel_shadowing.dart` (`PainelShadowing`, `PainelShadowingState.alternar()`).
+**Editados com cirurgia (já sujos):** `domain/nivel_resposta.dart` (`SentidoCartao.shadowing`) · `presentation/sessao_cartoes_page.dart` (`reconhecedor` + `fabricaReconhecedor` estático, `_shadowAtual`/`_shadow`/`_painel`/`_shadowSemVoz`, `_aoTentativa`/`_aoMostrarFrase`/`_aoSemVoz`, ramos em `_calcularPtEn`, `_prepararCartao`, `_tecla`, `_seletores`, `_instrucao`, `_cartao`, `_resumoDe`, `_dica`) ·
+`main_portfolio_probe.dart` (`_ReconhecedorFake`: devolve o que estiver em `window.__dito`). **Intactos:** os arquivos do dono acima, `IaCubit`, `pubspec.*`, `firestore.rules`, `android/`, `ios/`.
+
+⚠️ **Armadilhas:** o botão do painel usa `InkWell(canRequestFocus: false)` (o foco fica na tela do cartão: Espaço/R continuam valendo) e `Center(widthFactor: 1)` — um `Container` com `alignment` esticava os botões até a borda (achado no Chrome) ·
+no Chrome automatizado **não há microfone nem reconhecimento**: a prova usa o falso do probe; **a prova com voz de verdade é do dono** (roteiro abaixo) · o `SessaoCartoesPage.fabricaReconhecedor` é estático (como o `FraseView.fabricaReconhecedor`): testes de app que o trocam precisam restaurá-lo em `tearDown`.
+
+**Testes (+76):** `ingles_shadowing_test` (31: `notaDoShadowing` em tabela e limiar exato, `SessaoShadowing`, integração com `avaliarFala`, `comparacaoDoShadowing`, `SentidoCartao.shadowing`) · `ingles_shadowing_ui_test` (18: painel com reconhecedor falso — estados, erros por tipo, escuta velha, cancelar ao sair, 360/390/1027 px, tema claro) ·
+`ingles_shadowing_cartao_test` (24: a frente sem texto, nível some, Misturado, lacuna da leitura, Bom/Difícil/Errei, "Mostrar a frase", "DE NOVO", teclas, voz do app, sem voz vira ditado, série) · `ingles_shadowing_app_test` (3: app inteiro Revisão → 🗣 → agenda FSRS e hábito, "Mostrar a frase", sem reconhecimento).
+**22 mutações pegas** (Bom na 2ª perfeita, Fácil sugerido, limiar 60%, "nada" contando, 4 tentativas, frente mostrando o texto, app não se cala, sair sem cancelar, sem suporte não vira ditado, Misturado sorteando, série, escuta velha, "Mostrar a frase" pela tentativa, empate na última, nota da última, Enter virando o cartão,
+sem autoplay, seletor de nível visível, "nada" não tratado, Espaço sem falar, erro sem saída, lacuna da leitura) — arquivos restaurados (hash igual).
+Chrome real (probe, 1027 e 390 px, 0 erros de console/`pageerror`): sentido 🗣 → áudio na frente → **Espaço abre o microfone no navegador de verdade** → "o que eu ouvi" com 1 palavra faltando → 2ª perfeita pelo clique → vira com **Difícil · sugerida** → Espaço aceita → "não ouvi nada" (recado) → "Mostrar a frase" → **Errei · sugerida** → resultado totalmente errado a 390 px.
+
+🎙️ **Roteiro do dono (2 min, Chrome com internet ou celular):** Revisão → 🗣 Ouvir e repetir → permitir o microfone → ouvir → falar a frase certa (deve virar com **Bom**) → no cartão seguinte falar errado de propósito 3× (deve virar com **Errei**) → negar a permissão (deve cair no ditado com o aviso).
+⚠️ Pendências/ideias: "espiar a frase"; shadowing simultâneo (não dá: o reconhecedor ouviria o app); **voz nos cenários com o Prof. Dash** (plano próprio: conversa livre pede outra conferência que não o `avaliarFala`); limiar/tentativas configuráveis.
+
+---
+
+## 🔔 Lembrete diário — Fase 1B (13/out/2026, FEITA; falta provar num aparelho; sem commit/deploy)
+
+Plano: `planejamento/FASE-1B-LEMBRETE.md` (D1–D10). **Autorizada pelo dono** ("Pode seguir com 1B") a mexer em `pubspec.*`, `android/` e `ios/`. Só Android e iOS; web/desktop não recebem lembrete (push web = FCM + VAPID + service worker + servidor: fase própria).
+
+**O que a pessoa vê:** na folha "Sua sequência" (toque no chip), no fim, **"🔔 Lembrete diário"**: interruptor **"Lembrar de estudar"** (desligado de fábrica; ao LIGAR o aparelho pede a permissão de notificação) e, ligado, **"Horário: 20:00"** (seletor 24 h; padrão 20:00) com a regra: "Todo dia às 20:00 — só se a meta do dia ainda não foi batida."
+Permissão negada ⇒ continua desligado e um aviso diz como liberar nas configurações. No navegador/desktop a seção só diz "O lembrete diário funciona no app do celular (Android e iOS)." A notificação é acolhedora e sem culpa: 4 textos que giram por dia, **sem número de dias** (ex.: "Hora de uma pausa com o inglês 🐦 — Bastam alguns minutos. O Prof. Dash está esperando você!").
+
+**Como funciona (decisões):** **notificações únicas para os próximos 7 dias** (ids `7100…7106`), não "diária repetida" — porque a regra "só se a meta de hoje não foi batida" não existe numa notificação repetida: bater a meta reagenda SEM hoje; cada abertura do app renova os 7 dias ·
+horário de hoje que já passou não entra · reagenda quando: o app abre (lê a config), liga/desliga, muda o horário, **a meta de hoje é batida** (e quando o dia vira e a meta volta a valer); um exercício que não bate a meta NÃO reagenda ·
+cada lembrete é um **instante absoluto** (`DateTime` local → `TZDateTime.from(…, tz.UTC)`): não precisa do nome do fuso (nem de um 3º pacote) e o horário de verão já vem certo ·
+**Android: alarme NÃO exato** (`inexactAllowWhileIdle`), sem `SCHEDULE_EXACT_ALARM`/`USE_EXACT_ALARM` (a Play restringe; um lembrete de estudo não precisa de minuto exato) ·
+configuração **do aparelho e da conta** em `lembrete_v1:{uid}` (SharedPreferences) — **nada vai ao Firestore** (`firestore.rules` intacto) · o último `LembreteCubit` aberto cancela ao fechar (saiu da conta); na troca de conta o antigo NÃO apaga o que o novo agendou · o lembrete só LÊ o hábito.
+
+**Arquivos novos:** `lib/features/habito/domain/lembrete.dart` (`ConfigLembrete`, `LembreteAgendado`, `proximosLembretes` — a regra pura —, `textosDoLembrete`) · `data/lembrete_repository.dart` · `data/agendador_lembrete.dart` (interface `AgendadorDeLembrete` + `AgendadorNulo`) · `data/agendador_celular.dart` (`AgendadorDoCelular`, o plugin) · `presentation/lembrete_cubit.dart`.
+**Editados com cirurgia:** `sequencia_sheet.dart` (a seção + `seletorDeHorarioDoLembrete` injetável) · `lib/main.dart` (`lembreteBuilder`/`agendadorBuilder`, `_comLembrete` ao lado do hábito, **`lazy: false`**) · `main_portfolio_probe.dart` (`_AgendadorFake` "disponível": loga `LEMBRETE agendados N: …` no console e nega a permissão com `window.__negarLembrete`) ·
+`pubspec.yaml`/`pubspec.lock` (**`flutter_local_notifications` 22.3.2 + `timezone` 0.11.2**, só esses dois) · `android/app/src/main/AndroidManifest.xml` (`POST_NOTIFICATIONS`, `RECEIVE_BOOT_COMPLETED`, os 2 receivers do plugin) · `android/app/build.gradle.kts` (`isCoreLibraryDesugaringEnabled` + `desugar_jdk_libs:2.1.4`) ·
+`ios/Runner/AppDelegate.swift` (`UNUserNotificationCenter.current().delegate`) · **`ios/Podfile`, `ios/Runner.xcodeproj/project.pbxproj` (3×) e `ios/Flutter/AppFrameworkInfo.plist`: iOS mínimo 13 → 14** (ver abaixo) · `ios/Podfile.lock`/`ios/Pods` (pelo `pod install`). **Intactos:** `firestore.rules`, `HabitoCubit`, `IaCubit`, reconhecedor.
+
+⚠️ **Achado que NÃO era da 1B:** o `file_picker` (já no `pubspec`, 13.1.0) exige iOS 14, e o projeto estava em 13 — `flutter build ios` **já falhava** antes da 1B ("The plugin file_picker_darwin requires a higher minimum iOS deployment version"; o `Podfile.lock` antigo nem tinha o `file_picker`). Subi o mínimo para **14.0** (Podfile + Xcode + AppFrameworkInfo) para o build passar; iPhones com iOS 13 deixam de ser suportados (decisão do dono se quiser voltar: então trocar de `file_picker`).
+⚠️ **Armadilhas:** (1) **`BlocProvider` preguiçoso**: o `LembreteCubit` só nascia ao abrir a folha, então o app aberto sem abrir a folha nunca renovava os 7 dias — achado na prova no Chrome; hoje `lazy: false` + teste de app que NÃO toca no cubit ·
+(2) `late final int _minha = ++_geracao` é preguiçoso e só rodava dentro do `close()` (o cubit nunca cancelava ao fechar) — achado pelos testes; hoje campo comum ·
+(3) no **iOS sem permissão concedida NADA fica agendado** (nem `pendingNotificationRequests` mostra; testado no simulador): por isso o pedido de permissão vem antes do agendamento ·
+(4) a folha ancora embaixo: ao desligar o lembrete o botão de horário some e o interruptor DESCE (cuidado com coordenadas em prova no Chrome) · (5) `?` digitado pelo Playwright não passa no motor de digitação (limitação do driver; use o `localStorage` para ajustar o hábito na prova).
+
+**Testes (+74):** `lembrete_test` (a regra pura: horário passado, meta batida, 7 dias, virada de mês/ano/bissexto, madrugada, ids, textos sem número/culpa, JSON estragado) · `lembrete_repository_test` · `lembrete_cubit_test` (permissão, negada, horário, ordem/fila, hábito lento, meta batida, virou o dia, fechar/troca de conta) · `lembrete_ui_test` (a folha: sem cubit, web, ligar/negada/horário/desligar, 360/390/1027 px, tema claro) ·
+`lembrete_app_test` (3: app inteiro — folha → permissão → 7 dias → meta tira hoje → virou o dia; sem suporte; **abrir o app com o lembrete ligado renova sem abrir a folha**).
+**22 mutações pegas** (a de "não esperar o hábito" só foi pega depois de um teste com hábito lento) — arquivos restaurados (hash igual).
+**Builds:** `flutter build apk --debug` ✓ (Gradle, desugaring, manifest final com SÓ `POST_NOTIFICATIONS`/`RECEIVE_BOOT_COMPLETED`/os receivers) · `flutter build ios --simulator --no-codesign` ✓ (pod install; só depois do iOS 14) · `flutter build web` do probe E do app real ✓ — o app real abre na tela de login sem erro de console (nada de "tela branca" de registrante velho; **não precisei de `flutter clean`**).
+**Chrome real (probe, 1027 e 390 px, 0 erros):** a folha mostra a seção → ligar ⇒ "permissão concedida" + **7 lembretes às 20:00** → horário 07:30 pelo seletor ⇒ reagenda 7 às 07:30 → recarregar SEM abrir a folha ⇒ renovou sozinho → bater a meta (10/10) ⇒ **6 lembretes, sem hoje** → desligar ⇒ 0 → permissão negada ⇒ aviso vermelho e continua desligado.
+**Simulador do iOS (iPhone 17):** o código real abre o **diálogo do sistema "Paclingo deseja enviar notificações"** (visto na tela); `initialize` e `zonedSchedule` rodam sem exceção. **Não deu para conceder a permissão** (o macOS bloqueia clique/tecla sintéticos no Simulator) — logo o agendamento pendente de verdade NÃO foi observado.
+
+🔔 **Roteiro do dono (3 min, num Android e/ou iPhone reais):** abrir o app → chip da sequência → "Lembrar de estudar" → permitir → mudar o horário para daqui a ~2 min → fechar o app → a notificação aparece (Android: pode atrasar alguns minutos, é alarme não exato) → tocar nela abre o app → estudar até bater a meta → o lembrete de HOJE não vem → negar a permissão (configurações) e ligar de novo mostra o aviso.
+⚠️ Pendências/ideias: prova num aparelho físico; lembrete por dia da semana; ícone/ação na notificação; ao tocar na notificação abrir direto a lição; reagendar também ao voltar do segundo plano (hoje renova na abertura e a cada mudança do hábito); se for publicar na loja: `flutter clean && flutter pub get` antes do build de produção e conferir a política de notificações da Play/App Store.
+
+---
+
+## 🧩 Modos de resposta — Fase 7 (13/out/2026, FEITA; falta provar num celular de verdade; sem commit/deploy)
+
+Plano: `planejamento/FASE-7-MODOS-DE-RESPOSTA.md` (D1–D10). **Só as lições do Inglês** (a "Revisão do dia" e os cartões não mudaram; Dart e C# digitam código).
+
+**O que a pessoa vê:** uma barra **⌨️ Digitar · 🎤 Falar · 🧩 Montar** logo acima da frase de cada passo da lição (a escolha é lembrada neste aparelho, chave `en_entrada`; **padrão Digitar**).
+· **Digitar** = o de sempre, e no celular ganhou um botão **⌨ Teclado** (ao lado do 🎤 "Falar a frase") que abre o teclado — antes só se descobria tocando na frase.
+· **Falar** = o painel do microfone em destaque ("Toque em "Falar a frase" e diga…"), a mesma conferência por palavra (`avaliarFala`); a frase certa vale como digitada. Só aparece se o navegador/aparelho reconhece voz (senão a barra tem só Digitar e Montar; uma escolha guardada "falar" num aparelho sem voz vale Digitar sem apagar a preferência).
+· **Montar** = a tradução em cima e **blocos de palavras** (as da frase + 2 a 5 de enfeite, de `montarBlocos`) para tocar na ordem; **Conferir** (ou **Enter** no teclado físico) confere: certa conclui o passo; errada pinta as pastilhas (verde = no lugar, vermelho = fora) e soma 1 erro por palavra fora do lugar (tentativas ilimitadas); tocar numa pastilha da frase a solta; **"não sei"** (degraus de memória) revela a frase e os blocos recomeçam para ela ser copiada (nota: errou).
+· **Falar e Montar não abrem o teclado do celular** (o campo escondido sai do foco; Digitar o devolve). No computador nada muda (padrão Digitar; Enter/Tab/Esc iguais; o foco segue valendo para as teclas).
+
+**Nota (D2):** a conclusão do Montar entra pelo mesmo caminho da fala (`TrechoFalado` + erros por posição em `FraseViewState.errosDeFala` → `avaliarDigitacao`), então o palco só ganhou UMA linha de nota: **`notaDaEntrada`** — na **PROVA (D5)** um montar **certo** conta só "tropeçou" (meio ponto: 3 provas montadas certas = nota 5 de 10; digitadas = 10); nos outros degraus vale inteiro; digitar e falar valem inteiro; montar errado vale como errou; a nota nunca melhora. O selo diz "🧩 Montou certo! Na prova, montar vale meio ponto — digite ou fale para valer inteiro", **sem** "foi erro de digitação" (não há o que contestar) e **sem** "💡 Por quê?" (não há palavra errada). Selos novos: "✅ Montou certinho" / "✅ Falou certinho". Hábito/ranking contam como sempre (1 por passo, qualquer modo); nada vai ao Firestore.
+
+**Divergências do plano (todas deliberadas):** (1) a barra mora **dentro da `FraseView`** (parâmetro `onMudarEntrada`; sem ele a tela é idêntica à de antes — a Revisão do dia não a tem), não no palco entre o card e a frase: visualmente o mesmo lugar, e a `FraseView` já sabe se há voz (`_rec.suportado`) · (2) o Montar usa conferência PRÓPRIA (`conferirMontagem`: **ordem exata** pela maior subsequência comum, um enfeite no meio não estraga as outras palavras) em vez do `conferirBlocos` dos cartões (que perdoa ordem) — reaproveita só `Bloco`/`montarBlocos`/a pastilha · (3) Montar **não revela letras** após 2 erros na mesma palavra (a fala revela): as pastilhas vermelhas já guiam · (4) o campo escondido continua sem `readOnly`/`enabled`; ao trocar para Falar/Montar no celular o foco sai (`unfocus`), ao voltar para Digitar pede foco + `TextInput.show`; `autofocus` e `onTapOutside` só valem quando o modo pede teclado · (5) Enter no Montar confere (não "ouve"); letras e Backspace são ignorados em Falar/Montar.
+**Padrões das perguntas em aberto:** Falar aparece no computador se há voz (sim) · Montar fora da Revisão do dia (não entrou) · sem atalho de teclado para trocar de modo · frase à vista no Copie (sim).
+
+**Arquivos novos:** `lib/features/ingles/domain/entrada_resposta.dart` (`EntradaResposta`, `notaDaEntrada`, `abreTeclado`, `PrefsEntrada`) · `domain/montagem.dart` (`conferirMontagem`, `ConferenciaMontagem`) · `presentation/widgets/{pastilha,montagem_frase,seletor_entrada}.dart` · testes `ingles_entrada_test`, `ingles_montagem_test`, `ingles_montagem_ui_test`, `ingles_entrada_frase_test`, `ingles_entrada_app_test`.
+**Editados com cirurgia (arquivos já sujos, backup em scratchpad):** `widgets/frase_view.dart` (`entrada`, `onMudarEntrada`, `apoioMontagem`, `entradaAtiva`, `_pedeFoco`, `_trocouEntrada`, botão Teclado, painel do mic em Falar, `MontagemFrase`, `_montagemErrou/_montagemCerta`) · `palco_ingles.dart` (`_entrada` + pref, `_pedirFoco`, `_mudarEntrada`, `notaDaEntrada` em `_concluiu`, selo/"Por quê?"/contestar) · `sessao_cartoes_page.dart` (`_Pastilha` privada → `Pastilha` pública; visual idêntico) · `home_page.dart` (a dica do rodapé no celular fala dos 3 modos) · `main_portfolio_probe.dart` (`FraseView.fabricaReconhecedor` = o reconhecedor falso, para provar o Falar no Chrome). **Intactos:** `pubspec.*`, `firestore.rules`, `android/`, `ios/`, `typing_bloc.dart`, `roteiro.dart` (a escada), os reconhecedores.
+
+⚠️ **Armadilhas (todas pagas nesta fase):**
+· **`BlocBuilder` condicional SEM `key` reaproveita o estado do vizinho** quando o modo muda (o Flutter casa filhos de `Column` por posição+tipo): o do Montar herdava o `_state` do "aviso de caixa", criado com a frase ainda VAZIA, e os blocos nunca apareciam — só no app inteiro (a tela nasce antes da frase carregar); no teste de widget com a frase já carregada passava. Os três têm `ValueKey` agora e há teste "a tela nasceu ANTES da frase" ·
+· `tester.ensureVisible` **não faz pump**: sem `await tester.pump()` depois, a posição lida/tocada é a antiga (no celular de 400 px o toque errava) · widgets fora da tela de uma lista preguiçosa **não existem** no teste (rolar antes de procurar) · contar `TextInput.show` NÃO prova teclado aberto (o `EditableText` chama `show` ao ganhar foco, até no computador): prove por `hasFocus`/`TextInput.setClient` · no Chrome, `document.activeElement` = `INPUT.flt-text-editing` quando o teclado do celular estaria aberto e `FLUTTER-VIEW` quando não (bom detector na prova) · o botão "Conferir"/blocos DESCEM quando a frase montada quebra em 2 linhas (conferir coordenadas por screenshot).
+
+**Testes (+115):** `ingles_entrada_test` (19: modos, `porId`, tabela completa de `notaDaEntrada`, "nunca melhora", prefs ida e volta/estragada) · `ingles_montagem_test` (15: ordem exata, enfeite, repetidas, hífen, número, 25 palavras, chaves × `avaliarDigitacao`, `montarBlocos` 2–5 sem repetir) · `ingles_montagem_ui_test` (31: blocos, tocar/soltar, Conferir certo/errado/ordem/enfeite/falta, marcas, 3× o mesmo erro, "não sei", frase nova, sem palavras, 360/390/1027 px × 2 temas × fonte 1,3, seletor) · `ingles_entrada_frase_test` (38: Digitar idêntico, botão Teclado, Falar, Montar, teclado fechado, troca de modo, tela que nasce antes da frase, sem estouro) · `ingles_entrada_app_test` (12: app inteiro — Montar conclui e conta 1, escolha lembrada, pref estragada, **3 provas montadas = nota 5 / digitadas = 10**, montar certo fora da prova vale inteiro, montar errado 2× na prova → errou + cópia de correção, celular sem teclado no Montar e com teclado ao voltar).
+**33 mutações** (script no scratchpad, backup → UMA troca → testes da fase → restaura e confere por hash): 31 pegas direto (montar na prova inteiro, ordem errada valendo, enfeite sobrando valendo, enfeite repetindo palavra, erros não somando, Conferir vazio no domínio e na tela, pref com id errado/padrão trocado/não gravada, Falar sem suporte aparecendo/não virando Digitar, Montar/Falar pedindo teclado, Digitar sem digitar, toque na moldura, blocos sem zerar no passo novo, "não sei" sem recomeçar/sem desistir, prova de Digitar caindo, contestar e "Por quê?" no meio ponto, palco sem nota/sem pref/pedindo foco, Enter sem conferir, sem `unfocus`, certa sem concluir, erro sem aviso, pastilhas sem marca, Pac-Man em Falar) + 2 que **escaparam sozinhas** porque cada uma tem uma trava redundante — a `key` do Montar (os vizinhos também têm) e o `contains` do `_pegar` (o `onTap` também barra): pegas ao remover as travas juntas (`m2`, `w2`). Todos os arquivos restaurados (hash igual); `git status` igual ao do início + só os arquivos da fase.
+**Chrome (probe, 1027 e 390 px com iPhone emulado por `addInitScript`; 0 erros de console/`pageerror`):** barra de modos acima da frase · **Montar** errado (enfeite no lugar do Mike → pastilhas verde/verde/vermelha + "Ainda não: as palavras em vermelho…") → troca → **Conferir** → Pac-Man comemora, pastilhas verdes, "✓ Feita", Enter segue (1/40; `en_entrada = "montar"` gravada; a frase seguinte já vem em Montar com blocos novos) · **Falar** (reconhecedor falso): "hi carlos how is going" → "Ouvi: … faltaram 2 palavras" → "hi carlos how's it going" → conclui · **Digitar** digitando no Pac-Man · no celular (390 px): 3 pílulas + **Teclado** + **Falar a frase** cabem; `document.activeElement` = INPUT em Digitar → **FLUTTER-VIEW em Montar e em Falar** (sem teclado) → INPUT de novo ao voltar a Digitar · Montar com 2 linhas de blocos cabe em 390 px. Probe apagado (`build/probe`), servidor encerrado.
+🎙️ **Roteiro do dono (2 min, num celular de verdade):** abra uma lição de Inglês → toque **🧩 Montar** (o teclado NÃO deve abrir) → monte a frase e **Conferir** → toque **⌨️ Digitar** e depois **Teclado** (o teclado abre) → toque **🎤 Falar**, permita o microfone e diga a frase (o teclado não abre) → numa **Prova** (cabeçalho "Prova"), monte certo e veja "montar vale meio ponto" → feche e reabra o app: o último modo escolhido deve estar marcado.
+⚠️ Pendências/ideias: Montar/Falar na "Revisão do dia"; atalho de teclado para trocar de modo; montar o PORTUGUÊS (tradução inversa); pistas no Montar (dica de próxima palavra); **voz do Prof. Dash nos cenários** (plano próprio).
+
+---
+
+## 🎬 Vídeo de novidades (13/out/2026, FEITO; fora do repositório)
+
+**"Paclingo - Novidades.mp4"**: 1920×1080, 30 fps, 3:49, sem música (o dono põe no CapCut; `roteiro.txt` e `legendas.srt` acompanham). Entregue em `~/Downloads/paclingo-video/`. Mostra: escolha da trilha, a lição (cópia → iniciais → tamanho → de memória, erro e "💡 Por quê?"), os **3 modos de resposta** (Digitar/Falar/Montar), o celular, a prova (montar = meio ponto), hábito + lembrete, Mapa, baralhos/cartões/ditado/ouvir e repetir, conversa e escrita com o Prof. Dash, texto colado, leitura, Arcade (English Turismo em 3D), Dart e C#.
+**Como foi feito (e como refazer):** projeto em `~/development/paclingo-video/` (fora do iCloud) — Playwright grava cada cena do app de prova com o relógio da página congelado a 1/30 s por quadro e o Remotion compõe câmera, legendas, celular e acabamento de cinema. Passo a passo e armadilhas na memória `video-paclingo-novidades`.
+**Mudança no app:** só `lib/main_portfolio_probe.dart` (o `_TradutorFake` ganhou 4 frases traduzidas de verdade para a cena do texto colado); sem commit. `build/probe` ficou para apagar (`rm -rf build/probe`).
+
+---
+
+## ☁️ Textos na nuvem — correção (14/out/2026, FEITA; ⚠️ REGRAS AINDA NÃO PUBLICADAS; sem commit/deploy)
+
+**O bug (achado pelo dono):** os textos que a pessoa cola/escreve e viram lição ("Meus textos", "Meus cartões", frases guardadas da leitura/escrita) ficavam só no `shared_preferences` do aparelho (`en_textos_{uid}`): ao entrar com a mesma conta em outro aparelho, a trilha não existia. O progresso e os cartões da revisão já iam para a nuvem; só o TEXTO não ia.
+
+**A correção:** `FirestoreTextosRepository` (em `lib/features/ingles/data/textos_repository.dart`, junto do `LocalTextosRepository`): um documento por texto em **`users/{uid}/textos/{id}`**, com o espelho local de sempre ao lado. Ligado em `main.dart` (`textosBuilder` novo; sem ele vale a nuvem quando há Firebase, o aparelho no probe/testes). O `CursoBloc` não mudou (mesma interface `TextosRepository`).
+· **Salvar/apagar** valem no aparelho na hora e sobem em seguida, **sem travar a tela**; se a nuvem falhar (sem rede, regra ausente) a operação fica anotada como **pendente** (`en_textos_sync_{uid}`) e é refeita na próxima abertura: nenhum texto se perde.
+· **Carregar** lê a nuvem (espera 6 s; falhou → vale o aparelho), aplica as pendências, devolve a lista mesclada e a guarda no espelho (offline mostra o que veio de outro aparelho).
+· **Migração (1ª abertura em cada aparelho):** os textos que só existem no aparelho SOBEM; "Meus cartões" (id fixo `cartoes`) dos dois lados vira a união das frases. Depois disso **a nuvem manda**: texto apagado em outro aparelho sai do espelho e não ressuscita.
+· Texto > ~900 KB (limite de 1 MiB do documento) fica só no aparelho, sem sumir.
+
+**⚠️ Regras (aprovado pelo dono em 14/out/2026):** `firestore.rules` ganhou o bloco `match /users/{uid}/textos/{id}` (só o dono lê e escreve). **Falta publicar: `firebase deploy --only firestore:rules`** (e o site, para quem usa a web). Antes disso o app NÃO quebra — salva no aparelho e deixa pendente —, mas não sincroniza. Quem já tinha textos no aparelho os vê subir sozinhos na primeira abertura depois da publicação (as pendências também).
+
+**Testes (+20 novos, todos passam):** `ingles_textos_nuvem_test` (19: texto vai e aparece no outro aparelho inteiro, ordem, uma conta não vê a outra, regravar não duplica, apagar some dos outros, migração, união de "Meus cartões", apagado não ressuscita, sem rede/rede travada/pendência de salvar e de apagar, espelho offline, texto gigante, doc quebrado, leitura antiga não atropela texto novo, bloc nos dois aparelhos) · `ingles_textos_nuvem_app_test` (1: PacDartApp inteiro recebe o texto da nuvem e manda o criado) · `firestore_rules_test` (+ o caminho `users/u1/textos/…`: dono sim, outro/anônimo não).
+**20 mutações** (backup → UMA troca → testes → restaura, conferido por `cmp`): 19 pegas (envio de salvar/apagar, migração off/sempre, sem fallback, limite de tamanho, união, flag de migrado, espelho, pendências, salvar esperando a nuvem, leitura antiga atropelando o espelho, subcoleção errada, uid errado, `textosBuilder` ignorado, regra removida, regra aberta a todo logado) + 1 que escapou por ser **linha redundante** (o `continue` do apagado pendente; o laço seguinte já o tirava da lista) — a linha foi removida.
+**Chrome:** não foi possível provar a sincronia de verdade no navegador (exige conta real e as regras publicadas; o probe roda sem Firebase). A prova é a dos testes (dois "aparelhos" com armazenamentos separados e UMA nuvem falsa que confere as regras reais) + o roteiro abaixo.
+🎙️ **Roteiro do dono (3 min, depois de publicar as regras e o site):** no aparelho A (onde já tem textos) abra o app em Inglês e entre na conta → espere uns segundos no Mapa → no aparelho B entre com a MESMA conta → "Meus textos" deve mostrar os mesmos textos. Cole um texto novo no B → reabra o A: o texto novo aparece. Apague um no B → reabra o A: ele some. Para conferir no console do Firebase: `users/{uid}/textos`.
+⚠️ Outros dados que continuam SÓ no aparelho (por ora de propósito, não são "conteúdo"): ajustes dos cartões no teste (`LocalConfigSrsRepository` só no probe; em produção já vai para a nuvem), modo de resposta Digitar/Falar/Montar (`en_entrada`), preferências de voz/som/tema.
+
+---
+
 ## 🔥 Firebase
 
 - Auth **Email/senha** habilitado (feito no console; Identity Platform pago exige billing, o grátis é só o toggle).
 - Firestore: doc por usuário `users/{uid}` (concluidas[], quizNotas{}, **projetos[]**, trilha, licao, recorde). Regras em `firestore.rules`: **só o dono acessa** (são por documento, não por campo — campo novo não precisa de deploy de regras).
 - **`ranking/{uid}`** (jul/2026): apelido, pontos, teclas, erros, licoes, projetos, quizAcertos, arcadePontos, arcade{jogo→recorde}, atualizadoEm. Regras: **todo logado lê, só o dono escreve** — regras JÁ DEPLOYADAS (`firebase deploy --only firestore:rules`). Query do top: orderBy pontos desc (índice single-field automático).
 - **Revisão do inglês (12/out/2026)**: subcoleções `users/{uid}/srs/{b00…b15,_meta}` (cartões FSRS) e `users/{uid}/srs_log/{AAAA-MM}` (histórico); regras próprias só do dono (as de `users/{uid}` não cobrem subcoleção). O mapa `users/{uid}.en_revisao` é LEGADO (lido uma vez na migração, nunca apagado).
+- **Textos do aluno (14/out/2026)**: subcoleção `users/{uid}/textos/{id}` (um documento por texto colado/escrito; ver "☁️ Textos na nuvem"). Regra própria só do dono — **escrita no `firestore.rules`, ainda não publicada**.
 - `firebase.json` (hosting → build/web + SPA rewrite; firestore rules/indexes), `.firebaserc` (default: pac-dart).
 - Trocar `ProgressoRepository` local por Firestore já está feito (`FirestoreProgressoRepository`).
 
@@ -1199,10 +1666,18 @@ Estado: `flutter_bloc`. Cores via `Mixart.*` (getters que seguem `Mixart.atual`)
 - (opcional) Sincronizar o **tema por usuário** (hoje é por dispositivo, no shared_preferences).
 - (opcional) Sons de arcade (waka-waka), mais joguinhos (o hub em `arcade_page.dart` é uma lista — é só acrescentar o card + página), troféus/temporadas no ranking (hoje é all-time), avatar/apelido editável.
 - (opcional) Anti-farming leve no ranking (repetir quiz re-pontua; tudo bem enquanto for entre amigos).
+- 🐛 **Card da lição estourava no celular (corrigido e PUBLICADO em 13/out):** em `palco_ingles.dart` o link "📖 Entenda a lição (explicação em português)" era um `Text` solto num `Row` (`mainAxisSize.min`) e não quebrava de linha a ~390 px; agora é `Flexible`.
+- 🐛 **Tradução com `<g id="1">…</g>` (achado pelo dono no celular, corrigido e PUBLICADO em 13/out):** o MyMemory às vezes devolve a tradução com marcas de memória de tradução (`<g id="1">mas ninguém achava </g>que…`, `<x id="2"/>`), às vezes até escapadas (`&lt;g…&gt;`, ou escapadas 2×). Nova `limparTraducao` (`ingles/domain/limpar_traducao.dart`): decodifica entidades (2×), tira marcas (`<br>` vira espaço; `<` colado em letra e fechado por `>`; "3 < 5", "<3" e "a<b" ficam), junta espaços. Usada (1) pelo `TradutorMyMemory` (também nas traduções de palavra da Leitura) e (2) em `FraseDoTexto.fromJson` (`pt` e `alvoPt`): **textos já salvos com a marca voltam limpos sem refazer a lição** (a lição "Jack Hannaford" do dono ficou certa só de recarregar).
+- 🚀 **Publicado em 13/out/2026** (`flutter build web` + `firebase deploy --only hosting --project=pac-dart`, a pedido do dono para testar o texto colado): o site agora tem TUDO o que estava na árvore — hábito/sequência (1A), "Por quê?"+cota de IA (2A), cenários (2B), leitura (4), escrita corrigida (5), sanguessugas (6), ditado e shadowing (3), lembrete (1B; só no celular nativo, no site só a explicação) e o corte do texto colado em trechos com sentido. **Nada de `firestore.rules`** foi publicado (só hosting): os campos novos de `users/{uid}` (`habito`, `ia_cota`) dependem das regras que JÁ estão no ar. Depois de publicar: hard refresh (`Ctrl/Cmd+Shift+R`; no iPhone fechar e abrir a aba).
+- 🐛 **Microfone preso em "Ouvindo…" no iPhone/Chrome (relato do dono em 13/out) — CORRIGIDO e PUBLICADO (13/out 13:22 GMT):** o botão "Parar" só pedia `stop()` ao navegador e ESPERAVA o `onend`; no Chrome/Safari do iPhone o navegador nunca avisa, então a tela ficava presa ("Ouvindo… ■ Parar", sem conseguir digitar). Reproduzido no probe emulando iPhone (UA + Chromium sem áudio): ANTES, depois de "Falar" + 2 toques em "Parar" continuava "Ouvindo…"; DEPOIS, solta e volta a "Falar a frase".
+  Correção em 3 camadas, **todas com a mesma ideia: sempre dá para sair**: (1) `reconhecedor_web.dart` (`_Sessao`): `parar()` agora força o fim 1,5 s depois (`abort()` + `_fim()`) se o navegador não responder, o 2º `parar()` força na hora, teto da escuta 25 → 15 s, e se a escuta acabou sem nunca abrir o microfone (`onstart`/`onaudiostart`) depois de > 3 s o erro vira `naoSuportado` ("use o 🎤 do teclado") em vez de "não ouvi nada" ·
+  (2) `frase_view.dart` (digitação): 2º toque em "Parar" ou 2 s depois solta o microfone (`_soltarMicrofone`: "O microfone não respondeu. Toque no 🎤 para tentar de novo ou digite a frase."), e **tocar na frase ("quero digitar") fecha o microfone** · (3) `painel_shadowing.dart` (shadowing): o mesmo (2 s / 2º toque). Testes: `ingles_microfone_travado_test` (7, com um reconhecedor falso TEIMOSO que ignora o "parar") + 3 no `ingles_shadowing_ui_test`; 8 mutações pegas (as 2 que passaram são equivalentes: `_soltar*` já confere `_ouvindo`).
+  ⚠️ Armadilhas: (a) o botão "Parar" DESCE quando aparece a linha "Ouvindo…" (clique de prova em coordenadas errou por isso); (b) o Chromium do Playwright tem `SpeechRecognition` NATIVO e ele é usado antes do `webkitSpeechRecognition` falso — para simular o travamento basta o próprio Chromium sem áudio; (c) o service worker do Flutter segura o `main.dart.js` antigo: limpar `serviceWorker`/`caches` antes de reprovar um build novo no probe.
+  Se o microfone AINDA não reconhecer no iPhone (o Chrome do iOS pode simplesmente não reconhecer voz): o app agora diz "este navegador não reconhece voz" e o caminho é o 🎤 do teclado (ditado do iOS), que a digitação já aceita (`aoDitar`).
 
 ---
 
-## 🧪 Testes (621 em 12/out/2026: 616 passam; as 5 que falham são `csharp_curriculo_test` — conteúdo do C# incompleto, 4.147 de 4.708 exercícios e 0 desafios)
+## 🧪 Testes (1.383 em 14/out/2026: 1.378 passam, +20 dos textos na nuvem (ingles_textos_nuvem_test, ingles_textos_nuvem_app_test), +115 dos modos de resposta (ingles_entrada_*, ingles_montagem_*), +10 do microfone que não pode ficar preso (ingles_microfone_travado_test + painel), +19 da limpeza das traduções (ingles_texto_test), +19 do corte do texto colado em trechos com sentido (ingles_texto_test), +74 do lembrete diário (lembrete_*), +76 do shadowing (ingles_shadowing_*), +65 da escrita corrigida (ia_escrita_*), +46 da leitura (ingles_leitura_*), +41 das sanguessugas (ingles_sanguessugas_*), +56 dos cenários (ia_cenario_*), +57 do "Por quê?" (ia_*), +12 do ditado, +111 do hábito diário (habito_test/_repository/_cubit/_ui/_app); as 5 que falham são `csharp_curriculo_test` — conteúdo do C# incompleto, 4.147 de 4.708 exercícios e 0 desafios)
 
 `test/`: typing_bloc · preview_engine · preview_cobertura · quiz · teoria · projetos (30 apps) · auth · theme · app_smoke · **fluxo** (sequência quiz/projetos + progresso dos projetos) · **dartpad** (botão "rodar", gerador de programa rodável, plano B fora da web) · **ranking** (repo com fake_cloud_firestore, deltas/pendência do cubit, ordenação por critério, página com pódio) · **arcade** (banco jogável, embaralhado preserva a certa, escadinha de nível, 3 engines, baralho progressivo por fase sem repetir, combo do TiroEngine) · **arcade_ui** (hub, Gol de Dart determinístico com `semente` — 5 gols = 130 pts no ranking —, corrida com turbo, Chuva destruindo palavra por digitação, Rali com turbo, futebol passando de fase e guardando 130 pts, CampoTeclas retomando o foco sozinho, Esc pausando a Corrida (CPU congela frame a frame — no flutter_test um AnimationController gasta 2 frames por ciclo) e retomando, Caça-Bug esmagando a linha certa, largada 3-2-1 antes de qualquer interação, cenários/dicas ciclando, equivalências de teclado (˜/aspas curvas/travessão) a varredura de digitabilidade dos 2445 códigos, o gerador de missões (validade/diversidade/consistência) e a missão completa jogada de ponta a ponta (prever → 🔮 ajuda → digitar → animar → vencer → pontos e progresso salvos) — o TextField oculto retém o texto digitado: para "sumiu da arena" use finder de RichText, não find.text). Também **tutor** (contexto do estudo com trilha/lição/trecho, cubit em streaming com memória curta e erro amigável de setup, painel com chip 👀 e sugestões, layout largo/estreito — ⚠️ em testWidgets, `cursoPronto()` com Future.delayed precisa de tester.runAsync). E **previa_viva** (regressão da "tela de criando junto": app Flutter do Mão na Massa TEM a PreviewAoVivo lado a lado/empilhada e ela sobrevive à digitação; projeto Dart console NÃO tem — é por design, não bug). Rodar: `flutter test`.
 `test/tools/`: `preview_check.dart` e `rodavel_check.dart` (ferramentas, não rodam no CI).
@@ -1213,3 +1688,31 @@ preguiçoso e não constrói o veredito que fica fora da janela — parece bug e
 
 ⚠️ **Em `testWidgets`, `await bloc.close()` TRAVA o teste** (o relógio é falso e o close espera algo que
 nunca chega) — o teste só morre no timeout de 10 min. Use `await tester.runAsync(() => bloc.close())`.
+
+## 14/out/2026 — Inglês: toque na palavra = tradução (pé da letra + no contexto) · Montar/Falar cobrem a frase
+
+**Pedido do dono:** "clicando em qualquer palavra do exercício de inglês, ter a tradução ao pé da letra e no contexto" (escolheu
+**dicionário embutido + IA**) e, na sequência, "no Montar e no Falar a frase não pode estar à vista — se preciso adivinhar a sequência,
+não faz sentido o texto já estar ali".
+
+**Toque na palavra** (`FraseView`, vale na lição e na Revisão/Treino de memória): tocar/clicar numa palavra **inteira à vista**
+(digitada ou mostrada; coberta não abre — seria cola) abre um balão preso à palavra (`widgets/traducao_palavra.dart`, `BalaoPalavra`
+num Overlay, não toma o foco: dá para seguir digitando; fecha no ✕, tocando fora, com **Esc** — que nesse caso NÃO é "não sei" — e na
+próxima frase). Conteúdo:
+- **Ao pé da letra:** `assets/ingles/dicionario.json` (3.132 palavras do curso + leituras, gerado por 6 agentes; ~106 KB) via
+  `domain/dicionario.dart` (`Dicionario.literal`: exata, apóstrofo curvo, e cai na base para plural/-ed/-ing/'s dizendo "(de X)") e
+  `data/dicionario_ingles.dart` (carrega no 1º toque). Teste garante que TODA palavra do currículo tem entrada.
+- **No contexto:** se a palavra está no `alvo` da frase, mostra `alvo → alvoPt` (instantâneo, sem IA); senão o Prof. Dash
+  (`PedidoPalavra` em `ia/domain/explicacao.dart`, resposta de ≤2 linhas) pelo **`IaPalavrasCubit`** — cota PRÓPRIA (150/dia, só no
+  aparelho, pref `ia_cota_palavras_v1`) e cache próprio (`ia_palavras_v1`, 800 itens): não gasta os 30 do "Por quê?". Sem rede:
+  "Tentar de novo" (não gasta). Provido em `main.dart::_comIa` (agora `MultiBlocProvider`).
+- `FraseView` ganhou `traducao` e `alvoPt` (passados pelo `PalcoIngles` e pela `SessaoMemoriaPage`).
+
+**Montar/Falar cobertos:** com 🧩 Montar ou 🎤 Falar a frase vira tracinhos (pontuação fica) até ser respondida, em QUALQUER degrau
+(inclusive a cópia D1). O "não sei" agora existe também na cópia coberta (único jeito de ver; cópia não gera nota). O 👁 (`mostrarTudo`)
+continua mostrando tudo. O teste antigo "na cópia não há não sei" virou "na cópia a frase fica coberta e há não sei".
+
+**Prova:** `test/ingles_palavra_test.dart` (14) + suítes ingles_*/ia_*/smoke (946) verdes; Chrome real no probe (1027 e 390 px):
+balão abaixo/acima da palavra conforme o espaço, "morning" → "Good morning → Bom dia" sem IA, "Mike" → Dash (falso do probe),
+digitar com o balão aberto funciona, Montar/Falar cobertos. Probe apagado. NÃO commitado, NÃO publicado.
+Ideia não feita: o mesmo toque na palavra nos cartões (`SessaoCartoesPage`) e na leitura — o `BalaoPalavra` já é reaproveitável.

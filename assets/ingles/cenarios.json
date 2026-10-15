@@ -1,0 +1,143 @@
+[
+ {
+  "id": "cafe",
+  "titulo": "Pedir um café",
+  "emoji": "☕",
+  "etapa": "A1",
+  "papel": "atendente de uma cafeteria em Chicago",
+  "objetivo": "Peça uma bebida, diga o tamanho e pague.",
+  "abertura": "Hi! Welcome to Sunny Beans. What can I get for you?",
+  "aberturaPt": "Oi! Bem-vindo ao Sunny Beans. O que posso trazer para você?",
+  "dicas": [
+   "Can I have a coffee, please?",
+   "A small latte, please.",
+   "For here, please.",
+   "To go, please.",
+   "How much is it?",
+   "Here you go."
+  ],
+  "maxTurnos": 5
+ },
+ {
+  "id": "hotel",
+  "titulo": "Check-in no hotel",
+  "emoji": "🏨",
+  "etapa": "A2",
+  "papel": "recepcionista de um hotel em Miami",
+  "objetivo": "Faça o check-in: diga seu nome, quantas noites vai ficar e pergunte do café da manhã.",
+  "abertura": "Good evening! Welcome to the Palm Hotel. Do you have a reservation?",
+  "aberturaPt": "Boa noite! Bem-vindo ao Palm Hotel. Você tem reserva?",
+  "dicas": [
+   "I have a reservation under the name Silva.",
+   "I'm staying for three nights.",
+   "What time is breakfast?",
+   "Is there Wi-Fi in the room?",
+   "Could I have a late check-out?"
+  ]
+ },
+ {
+  "id": "direcoes",
+  "titulo": "Pedir direções",
+  "emoji": "🧭",
+  "etapa": "A2",
+  "papel": "um morador simpático de Nova York que ajuda um turista perdido",
+  "objetivo": "Descubra como chegar à estação de metrô mais próxima.",
+  "abertura": "Hey there! You look a little lost. Can I help you?",
+  "aberturaPt": "Oi! Você parece meio perdido. Posso ajudar?",
+  "dicas": [
+   "Excuse me, where is the subway station?",
+   "Is it far from here?",
+   "How do I get there?",
+   "Turn left at the corner.",
+   "Thank you so much!"
+  ]
+ },
+ {
+  "id": "farmacia",
+  "titulo": "Na farmácia",
+  "emoji": "💊",
+  "etapa": "A2",
+  "papel": "farmacêutico de uma farmácia nos Estados Unidos",
+  "objetivo": "Explique que está com dor de cabeça e pergunte como tomar o remédio.",
+  "abertura": "Hello! How can I help you today?",
+  "aberturaPt": "Olá! Como posso ajudar você hoje?",
+  "dicas": [
+   "I have a headache.",
+   "Do you have something for a cold?",
+   "How often should I take it?",
+   "Is it safe with other medicine?",
+   "How much is it?"
+  ]
+ },
+ {
+  "id": "entrevista",
+  "titulo": "Entrevista de emprego",
+  "emoji": "💼",
+  "etapa": "B1",
+  "papel": "recrutadora de uma empresa de tecnologia, conduzindo uma entrevista inicial",
+  "objetivo": "Apresente-se, fale da sua experiência e de um ponto forte.",
+  "abertura": "Hi, thanks for coming in today. Let's start with you. Can you tell me a little about yourself?",
+  "aberturaPt": "Oi, obrigada por vir hoje. Vamos começar por você: pode me contar um pouco sobre si?",
+  "dicas": [
+   "I have three years of experience in...",
+   "I'm good at working in a team.",
+   "One of my strengths is...",
+   "I'm looking for a new challenge.",
+   "I'd love to learn more about the role."
+  ],
+  "maxTurnos": 6
+ },
+ {
+  "id": "reuniao",
+  "titulo": "Reunião de equipe",
+  "emoji": "👥",
+  "etapa": "B1",
+  "papel": "colega de equipe numa reunião semanal de projeto",
+  "objetivo": "Conte o que você fez esta semana, o que vai fazer e se tem algum bloqueio.",
+  "abertura": "Morning, everyone. Let's do a quick update. What did you work on this week?",
+  "aberturaPt": "Bom dia, pessoal. Vamos a uma atualização rápida. Em que você trabalhou esta semana?",
+  "dicas": [
+   "This week I worked on...",
+   "I finished the...",
+   "Next, I'm going to...",
+   "I'm blocked by...",
+   "Could you help me with...?"
+  ]
+ },
+ {
+  "id": "cliente",
+  "titulo": "Chamada com cliente",
+  "emoji": "📞",
+  "etapa": "B2",
+  "papel": "cliente exigente numa chamada de vídeo sobre um prazo atrasado de um projeto",
+  "objetivo": "Peça desculpas pelo atraso, explique o motivo e proponha um novo prazo.",
+  "abertura": "Hi. Thanks for joining. I'll be honest, I'm a bit worried about the delay. What's going on with the project?",
+  "aberturaPt": "Oi. Obrigado por entrar. Vou ser sincero: estou preocupado com o atraso. O que está acontecendo com o projeto?",
+  "dicas": [
+   "I apologize for the delay.",
+   "The main reason was...",
+   "We can deliver it by...",
+   "Let me walk you through the plan.",
+   "I'll keep you updated every day."
+  ],
+  "maxTurnos": 6
+ },
+ {
+  "id": "daily",
+  "titulo": "Daily de desenvolvimento",
+  "emoji": "💻",
+  "etapa": "B2",
+  "papel": "tech lead conduzindo a daily de um time de desenvolvimento",
+  "objetivo": "Explique em que tarefa está trabalhando, um problema técnico e peça ajuda.",
+  "abertura": "Alright team, daily time. You're up next. What are you working on, and is anything in your way?",
+  "aberturaPt": "Certo, time, hora da daily. Sua vez: no que você está trabalhando e tem algo atrapalhando?",
+  "dicas": [
+   "I'm working on the login feature.",
+   "I found a bug in the API.",
+   "It only happens in production.",
+   "Could we pair on this later?",
+   "I should be done by tomorrow."
+  ],
+  "maxTurnos": 6
+ }
+]

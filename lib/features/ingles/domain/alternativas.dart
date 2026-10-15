@@ -60,6 +60,10 @@ const _plenaParaContraida = {
   'they will': "they'll",
 };
 
+/// As contrações automáticas (contraída → plena), para quem precisa
+/// reconhecer as duas formas — a avaliação da resposta falada.
+Map<String, String> get contracoesConhecidas => _contraidaParaPlena;
+
 /// Máximo de variantes geradas (2^3 = três contrações na mesma frase).
 const _maxTrocas = 3;
 

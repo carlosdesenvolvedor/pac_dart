@@ -5,8 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../curso/domain/curriculo.dart';
 import '../../curso/presentation/bloc/curso_bloc.dart';
+import '../../habito/presentation/habito_cubit.dart';
 import '../../ranking/presentation/ranking_cubit.dart';
 import '../domain/baralhos.dart';
+import '../domain/cartoes_texto.dart' show idCartoesAvulsos;
 import '../domain/revisao.dart';
 import 'revisao_cubit.dart';
 import 'sessao_cartoes_page.dart';
@@ -85,6 +87,7 @@ Future<void> abrirRevisao(BuildContext context, {String? baralho}) async {
   final nome = baralho == null ? null : indice.baralho(baralho)?.nome;
 
   final ranking = RankingCubit.de(context);
+  final habito = HabitoCubit.de(context);
   final nav = Navigator.of(context);
   var seguir = true;
   // sem nada nos dois sentidos, abre a sessão vazia mesmo assim ("nenhuma frase vence hoje")
@@ -99,7 +102,11 @@ Future<void> abrirRevisao(BuildContext context, {String? baralho}) async {
             itens: diretas,
             emSequencia: invertidas.isNotEmpty,
             cenaDe: (f) => licaoDe[f.cod],
-            onResultado: (r) => revisao.registrar(r.trecho, r.resultado),
+            // só a 1ª tentativa da frase chega aqui (a cópia e o esqueleto de reaprender não): 1 exercício
+            onResultado: (r) {
+              habito?.praticou();
+              revisao.registrar(r.trecho, r.resultado);
+            },
             onFim: (rs) => ranking?.quizRespondido(
                 rs.where((r) => r.resultado == ResultadoRevisao.acertou).length, rs.length),
           ),
@@ -118,9 +125,16 @@ Future<void> abrirRevisao(BuildContext context, {String? baralho}) async {
       novas: chavesNovas,
       chaveDe: RevisaoCubit.chaveReversaDe,
       previsao: (f) => revisao.previsao(RevisaoCubit.chaveReversaDe(f)),
-      onNota: revisao.registrarVirar,
+      // a nota do cartão (só a 1ª; o "DE NOVO" depois do Errei não chama isto) conta 1 exercício
+      onNota: (frase, nota) {
+        habito?.praticou();
+        return revisao.registrarVirar(frase, nota);
+      },
       cenaDe: (f) => licaoDe[f.cod],
       acaoExtra: (context, f) => BotaoAudioDaFrase(frase: f.cod),
+      // só as frases de "Meus cartões" com palavra-alvo são lacunas da leitura (as do curso também têm `alvo`)
+      lacunaDaLeitura: (f) => indice.baralhosDe[chaveDaFrase(f)]?.contains('txt:$idCartoesAvulsos') ?? false,
+      apoio: indice.porChave.values.toList(),
     ),
   ));
 }

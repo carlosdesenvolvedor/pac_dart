@@ -17,23 +17,97 @@
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
+  <!-- o mesmo que o Flutter cria sozinho ao iniciar; aqui para a tela de carregamento já sair no tamanho do celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Aprenda Dart &amp; Flutter digitando código de verdade: o Pac-Man come as letras, o código compila e roda.">
+  <meta name="description" content="Aprenda Dart, Flutter, C# e inglês digitando: o Pac-Man come as letras e o código (ou a frase) vira hábito.">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="PAC·DART">
+  <meta name="apple-mobile-web-app-title" content="Paclingo">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
   <meta name="theme-color" content="#010101">
 
-  <title>PAC·DART — treino de digitação Dart &amp; Flutter</title>
+  <title>Paclingo — treino de digitação: Dart, Flutter, C# e inglês</title>
   <link rel="manifest" href="manifest.json">
+  <!-- Tela de carregamento: sem ela a primeira visita (baixa ~10 MB no iPhone) é uma tela BRANCA muda. -->
+  <style>
+    html, body { margin: 0; background: #010101; }
+    #carregando {
+      position: fixed; inset: 0; z-index: 99999; box-sizing: border-box; padding: 24px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+      background: #010101; color: #e9e9ee; text-align: center;
+      font: 600 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      transition: opacity .3s ease;
+    }
+    #carregando .pac {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: conic-gradient(from 55deg, #010101 0 70deg, #ffc53a 70deg 360deg);
+      animation: pac-boca .6s ease-in-out infinite alternate;
+    }
+    @keyframes pac-boca {
+      from { background: conic-gradient(from 55deg, #010101 0 70deg, #ffc53a 70deg 360deg); }
+      to   { background: conic-gradient(from 55deg, #010101 0 12deg, #ffc53a 12deg 360deg); }
+    }
+    #carregando .marca { font-size: 22px; font-weight: 800; letter-spacing: .5px; }
+    #carregando .dica { color: #9a9aa8; font-weight: 500; font-size: 13.5px; max-width: 320px; }
+    #carregando pre {
+      display: none; max-width: 100%; max-height: 38vh; overflow: auto; margin: 0; padding: 10px 12px; text-align: left;
+      background: #16161a; border: 1px solid #2a2a31; border-radius: 10px;
+      color: #ff9a9a; font: 11.5px/1.4 ui-monospace, Menlo, monospace; white-space: pre-wrap; word-break: break-word;
+    }
+    #carregando button {
+      display: none; padding: 12px 22px; border: 0; border-radius: 999px;
+      background: #ffc53a; color: #010101; font: 800 15px/1 inherit; cursor: pointer;
+    }
+  </style>
 </head>
 <body>
+  <div id="carregando" role="status" aria-live="polite">
+    <div class="pac"></div>
+    <div class="marca">PACLINGO</div>
+    <div class="dica" id="carregando-msg">Carregando…</div>
+    <pre id="carregando-erros"></pre>
+    <button type="button" id="carregando-recarregar">Recarregar</button>
+  </div>
+  <script>
+    // Some no primeiro quadro do Flutter. Se o app não subir (rede lenta, versão velha em cache, erro de
+    // script no navegador), avisa na própria tela e mostra o erro em vez de deixar tudo branco.
+    (function () {
+      var tela = document.getElementById('carregando');
+      var msg = document.getElementById('carregando-msg');
+      var pre = document.getElementById('carregando-erros');
+      var botao = document.getElementById('carregando-recarregar');
+      var erros = [];
+      function guarda(t) { t = String(t).slice(0, 300); if (erros.indexOf(t) < 0 && erros.length < 8) erros.push(t); }
+      window.addEventListener('error', function (e) {
+        var alvo = e.target;
+        if (alvo && alvo !== window && (alvo.src || alvo.href)) { guarda('não carregou: ' + (alvo.src || alvo.href)); return; }
+        guarda((e.message || 'erro') + (e.filename ? ' (' + e.filename.split('/').pop() + ':' + e.lineno + ')' : ''));
+      }, true);
+      window.addEventListener('unhandledrejection', function (e) { guarda('promessa: ' + (e.reason && (e.reason.message || e.reason))); });
+      window.addEventListener('flutter-first-frame', function () {
+        tela.style.opacity = '0';
+        setTimeout(function () { if (tela.parentNode) tela.parentNode.removeChild(tela); }, 350);
+      });
+      botao.addEventListener('click', function () { location.reload(); });
+      setTimeout(function () {
+        if (tela.parentNode) msg.textContent = 'Está demorando… na primeira visita o app baixa uns 10 MB. Aguarde mais um pouco.';
+      }, 15000);
+      setTimeout(function () {
+        if (!tela.parentNode) return;
+        msg.textContent = 'O app não abriu. Toque em Recarregar; se repetir, mande um print desta tela.';
+        var info = [navigator.userAgent, 'sw: ' + ('serviceWorker' in navigator), 'webgl: ' + !!document.createElement('canvas').getContext('webgl')];
+        pre.textContent = info.concat(erros).join('\n');
+        pre.style.display = 'block';
+        botao.style.display = 'inline-block';
+      }, 40000);
+    })();
+  </script>
   <!--
     You can customize the "flutter_bootstrap.js" script.
     This is useful to provide a custom configuration to the Flutter loader

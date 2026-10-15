@@ -1,5 +1,5 @@
 /// As vertentes do app: cada uma tem o próprio currículo, o próprio
-/// progresso e a própria marca (PAC·DART, PAC·C#, PAC·ENGLISH).
+/// progresso e o próprio rótulo dentro do Paclingo (Dart, C#, Inglês).
 enum Linguagem {
   dart(
     id: 'dart',
@@ -25,7 +25,7 @@ enum Linguagem {
   /// copiar ou rodar.
   ingles(
     id: 'ingles',
-    marca: 'ENGLISH',
+    marca: 'INGLÊS',
     subtitulo: 'INGLÊS',
     nomeCurso: 'Inglês',
     pastaAssets: 'assets/ingles',
@@ -46,7 +46,7 @@ enum Linguagem {
   /// Chave estável (preferências, Firestore).
   final String id;
 
-  /// O que vem depois de "PAC·" no logo.
+  /// O nome curto do curso, em maiúsculas (título do cartão na escolha de trilha).
   final String marca;
 
   /// Linha pequena embaixo do logo.
@@ -68,8 +68,8 @@ enum Linguagem {
   /// Só o Dart tem o mapa do que roda no DartPad.
   String? get rodaveis => this == Linguagem.dart ? 'assets/roda.json' : null;
 
-  /// "PAC·DART", "PAC·C#", "PAC·ENGLISH".
-  String get nomeApp => 'PAC·$marca';
+  /// "Paclingo · Dart & Flutter", "Paclingo · C# & .NET", "Paclingo · Inglês".
+  String get nomeApp => 'Paclingo · $nomeCurso';
 
   /// É um curso de programação (código, sintaxe, copiar/rodar, arcade de
   /// lógica)? O inglês não é.

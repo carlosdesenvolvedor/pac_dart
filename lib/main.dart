@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -8,6 +9,7 @@ import 'core/linguagem/linguagem_cubit.dart';
 import 'core/theme/mixart.dart';
 import 'core/theme/theme_cubit.dart';
 import 'features/auth/data/auth_repository.dart';
+import 'features/auth/data/exclusao_de_conta.dart';
 import 'features/auth/domain/app_user.dart';
 import 'features/auth/presentation/auth_cubit.dart';
 import 'features/auth/presentation/login_page.dart';
@@ -19,6 +21,15 @@ import 'features/curso/presentation/bloc/typing_bloc.dart';
 import 'features/curso/presentation/bloc/voz_cubit.dart';
 import 'features/curso/presentation/pages/escolha_linguagem_page.dart';
 import 'features/curso/presentation/pages/home_page.dart';
+import 'features/habito/data/agendador_celular.dart';
+import 'features/habito/data/agendador_lembrete.dart';
+import 'features/habito/data/habito_repository.dart';
+import 'features/habito/data/lembrete_repository.dart';
+import 'features/habito/presentation/habito_cubit.dart';
+import 'features/habito/presentation/lembrete_cubit.dart';
+import 'features/ia/data/cache_explicacoes.dart';
+import 'features/ia/data/cota_repository.dart';
+import 'features/ia/presentation/ia_cubit.dart';
 import 'features/ingles/data/audio_usuario.dart';
 import 'features/ingles/data/audio_usuario_repository.dart';
 import 'features/ingles/data/config_srs_repository.dart';
@@ -28,6 +39,7 @@ import 'features/ingles/data/tradutor.dart';
 import 'features/ingles/presentation/revisao_cubit.dart';
 import 'features/ranking/data/ranking_repository.dart';
 import 'features/ranking/presentation/ranking_cubit.dart';
+import 'features/tutor/data/tutor_firebase_ai.dart';
 import 'features/tutor/data/tutor_service.dart';
 import 'features/tutor/presentation/tutor_cubit.dart';
 import 'firebase_options.dart';
@@ -103,6 +115,26 @@ class PacDartApp extends StatelessWidget {
   /// Onde ficam os áudios que o aluno anexa às frases (testes/probe: `MemoriaAudioUsuarioRepository()`).
   final AudioUsuarioRepository Function(AppUser user)? audioBuilder;
 
+  /// Os textos que o aluno cola ou escreve e viram lições (testes/probe: `LocalTextosRepository(uid)`). Sem isto vale a
+  /// nuvem (`users/{uid}/textos`), que leva os textos da conta para qualquer aparelho; sem Firebase iniciado, o aparelho.
+  final TextosRepository Function(AppUser user)? textosBuilder;
+
+  /// Hábito diário (sequência, meta, congelamentos) — testes/probe: `LocalHabitoRepository()`.
+  final HabitoRepository Function(AppUser user)? habitoBuilder;
+
+  /// Relógio do hábito (testes: para virar o dia sem esperar).
+  final DateTime Function()? habitoAgora;
+
+  /// Lembrete diário (Fase 1B): onde guarda a configuração e quem agenda no sistema
+  /// (testes/probe: `LocalLembreteRepository()` e um agendador falso; sem isto vale o do celular).
+  final LembreteRepository Function(AppUser user)? lembreteBuilder;
+  final AgendadorDeLembrete Function()? agendadorBuilder;
+
+  /// Cota de uso da IA (testes/probe: `LocalCotaRepository()`), seu cache e o relógio dela.
+  final CotaRepository Function(AppUser user)? iaCotaBuilder;
+  final CacheExplicacoes Function(AppUser user)? iaCacheBuilder;
+  final DateTime Function()? iaAgora;
+
   const PacDartApp({
     super.key,
     this.authCubitOverride,
@@ -115,6 +147,14 @@ class PacDartApp extends StatelessWidget {
     this.revisaoBuilder,
     this.tradutorBuilder,
     this.audioBuilder,
+    this.textosBuilder,
+    this.habitoBuilder,
+    this.habitoAgora,
+    this.lembreteBuilder,
+    this.agendadorBuilder,
+    this.iaCotaBuilder,
+    this.iaCacheBuilder,
+    this.iaAgora,
   });
 
   @override
@@ -129,7 +169,9 @@ class PacDartApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => ThemeCubit()),
         BlocProvider<AuthCubit>(
-          create: (_) => authCubitOverride ?? AuthCubit(AuthRepository(FirebaseAuth.instance)),
+          create: (_) =>
+              authCubitOverride ??
+              AuthCubit(AuthRepository(FirebaseAuth.instance), exclusao: FirebaseExclusaoDeConta(FirebaseAuth.instance)),
         ),
       ],
       // O gate fica ACIMA do MaterialApp: assim os blocs do curso (no ramo
@@ -139,7 +181,10 @@ class PacDartApp extends StatelessWidget {
         builder: (context, estado) => switch (estado.status) {
           AuthStatus.desconhecido => const _AppShell(home: _TelaCarregando()),
           AuthStatus.naoAutenticado => const _AppShell(home: LoginPage()),
-          AuthStatus.autenticado => BlocProvider(
+          // o hábito vale para a conta (Dart + C# + Inglês somam): fica ACIMA da escolha de curso
+          AuthStatus.autenticado => _comHabito(
+              estado.user!,
+              BlocProvider(
               key: ValueKey('lg:${estado.user!.uid}'),
               create: (_) => LinguagemCubit(uid: estado.user!.uid, inicial: linguagemInicial),
               child: BlocBuilder<LinguagemCubit, LinguagemState>(
@@ -152,11 +197,62 @@ class PacDartApp extends StatelessWidget {
                   return _cursoDe(estado.user!, linguagem, progressoDe(estado.user!, linguagem));
                 },
               ),
-            ),
+            )),
         },
       ),
     );
   }
+
+  /// O hábito diário da conta: sobrevive à troca de curso (só trocar de conta o recria).
+  Widget _comHabito(AppUser user, Widget filho) => BlocProvider<HabitoCubit>(
+        key: ValueKey('hb:${user.uid}'),
+        create: (_) => HabitoCubit(
+          repo: habitoBuilder?.call(user) ?? FirestoreHabitoRepository(user.uid),
+          agora: habitoAgora,
+        ),
+        child: _comLembrete(user, _comIa(user, filho)),
+      );
+
+  /// O lembrete diário da conta neste aparelho: ao lado do hábito (só LÊ se a meta de hoje foi batida).
+  Widget _comLembrete(AppUser user, Widget filho) => BlocProvider<LembreteCubit>(
+        key: ValueKey('lb:${user.uid}'),
+        // não é preguiçoso: precisa nascer na abertura do app para RENOVAR os 7 dias (senão só nasceria ao abrir a folha)
+        lazy: false,
+        create: (ctx) => LembreteCubit(
+          repo: lembreteBuilder?.call(user) ?? LocalLembreteRepository(uid: user.uid),
+          agendador: agendadorBuilder?.call() ?? AgendadorDoCelular(),
+          habito: ctx.read<HabitoCubit>(),
+        ),
+        child: filho,
+      );
+
+  /// A cota e o cache da IA também são da conta (valem nos 3 cursos): ficam ao lado do hábito.
+  /// O "toque na palavra" do inglês tem cota e cache próprios ([IaPalavrasCubit]).
+  Widget _comIa(AppUser user, Widget filho) => MultiBlocProvider(
+        key: ValueKey('ia:${user.uid}'),
+        providers: [
+          BlocProvider<IaCubit>(
+            create: (_) => IaCubit(
+              service: tutorBuilder != null
+                  ? tutorBuilder!()
+                  : (kIsWeb ? GeminiTutorService() : FirebaseAiTutorService()),
+              cotaRepo: iaCotaBuilder?.call(user) ?? FirestoreCotaRepository(user.uid),
+              cache: iaCacheBuilder?.call(user) ?? CacheExplicacoesLocal(uid: user.uid),
+              agora: iaAgora,
+            ),
+          ),
+          BlocProvider<IaPalavrasCubit>(
+            create: (_) => IaPalavrasCubit(
+              service: tutorBuilder != null
+                  ? tutorBuilder!()
+                  : (kIsWeb ? GeminiTutorService() : FirebaseAiTutorService()),
+              uid: user.uid,
+              agora: iaAgora,
+            ),
+          ),
+        ],
+        child: filho,
+      );
 
   /// Os blocs do curso de uma vertente. Trocar de conta OU de linguagem
   /// recria tudo (currículo, progresso, digitação).
@@ -169,7 +265,10 @@ class PacDartApp extends StatelessWidget {
               loader: curriculoBuilder?.call(linguagem) ?? CurriculoLoader(linguagem: linguagem),
               progresso: progresso,
               // inglês: os textos que a pessoa colou e viraram lições
-              textos: linguagem == Linguagem.ingles ? LocalTextosRepository(user.uid) : null,
+              textos: linguagem == Linguagem.ingles
+                  ? (textosBuilder?.call(user) ??
+                      (Firebase.apps.isNotEmpty ? FirestoreTextosRepository(user.uid) : LocalTextosRepository(user.uid)))
+                  : null,
             )..add(const CursoIniciado()),
           ),
           BlocProvider(create: (_) => TypingBloc()),
@@ -177,7 +276,9 @@ class PacDartApp extends StatelessWidget {
           // Prof. Dash — o modelo só é criado na primeira pergunta
           BlocProvider(
             create: (_) => TutorCubit(
-              service: tutorBuilder != null ? tutorBuilder!() : GeminiTutorService(),
+              service: tutorBuilder != null
+                  ? tutorBuilder!()
+                  : (kIsWeb ? GeminiTutorService() : FirebaseAiTutorService()),
             ),
           ),
           // placar público (lazy: só toca o Firestore quando usado)
@@ -230,8 +331,8 @@ class _AppShell extends StatelessWidget {
         // troca de tema reconstrói o MaterialApp inteiro → tudo recolore
         builder: (context, _) => MaterialApp(
           title: linguagem == null
-              ? 'PAC·DART — Treino de digitação: Dart, Flutter, C# e inglês'
-              : '${linguagem!.nomeApp} — Treino de digitação ${linguagem!.nomeCurso}',
+              ? 'Paclingo — Treino de digitação: Dart, Flutter, C# e inglês'
+              : '${linguagem!.nomeApp} — Treino de digitação',
           debugShowCheckedModeBanner: false,
           theme: Mixart.tema(),
           home: home,

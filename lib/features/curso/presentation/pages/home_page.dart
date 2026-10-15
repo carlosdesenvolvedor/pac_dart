@@ -25,6 +25,8 @@ import '../widgets/menu_trilhas.dart';
 import 'teoria_page.dart';
 import '../widgets/preview_panel.dart';
 import '../widgets/victory_overlay.dart';
+import '../../../ingles/presentation/zona_visivel.dart';
+import '../../../habito/presentation/habito_cubit.dart';
 
 /// Tela única do PAC·DART / PAC·C# / PAC·ENGLISH: HUD, menus, palco (dica +
 /// código + console + prévia; no inglês, tradução + frase) e overlay de vitória.
@@ -96,8 +98,11 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(height: 24),
                       Text(
                         curso.ehIngles
-                            ? 'A tradução fica em cima, você digita em inglês · Enter ouve (Shift+Enter devagar) · '
-                                'Tab = uma letra, Tab Tab = a palavra · Esc = não sei · clique na frase pra focar'
+                            ? (ehCelular
+                                ? 'A tradução fica em cima · escolha ⌨️ Digitar, 🎤 Falar ou 🧩 Montar com blocos · '
+                                    '🔊 ouve · 💡 dá a dica · em Digitar, o botão Teclado (ou um toque na frase) abre o teclado'
+                                : 'A tradução fica em cima, você digita em inglês · Enter ouve (Shift+Enter devagar) · '
+                                    'Tab = uma letra, Tab Tab = a palavra · Esc = não sei · clique na frase pra focar')
                             : 'Enter pula linha · a indentação é comida sozinha · Backspace corrige · clique no código pra focar',
                         textAlign: TextAlign.center,
                         style: Mixart.ui(size: 11.5, color: Mixart.textFaint).copyWith(height: 1.7),
@@ -273,6 +278,8 @@ class _PalcoState extends State<_Palco> {
           BlocConsumer<TypingBloc, TypingState>(
             listenWhen: (a, b) => !a.concluido && b.concluido,
             listener: (context, typing) {
+              // trecho digitado até o fim = 1 exercício do dia (pular e voltar não passam por aqui)
+              HabitoCubit.de(context)?.praticou();
               // prévia abre como popup na frente — sem precisar rolar
               if (curso.ehFlutter) _abrePreview(context);
             },

@@ -469,7 +469,7 @@ class _Monitor extends StatelessWidget {
           ),
           const SizedBox(height: 6),
           Row(mainAxisSize: MainAxisSize.min, children: [
-            Text('PAC·${BancoArcade.linguagem == 'C#' ? 'C#' : 'DART'} IDE',
+            Text('PACLINGO · ${BancoArcade.linguagem == 'C#' ? 'C#' : 'DART'} IDE',
                 style: Mixart.ui(size: 8, weight: FontWeight.w700, color: const Color(0xFF8A96A3))
                     .copyWith(letterSpacing: 1.5)),
             const SizedBox(width: 8),

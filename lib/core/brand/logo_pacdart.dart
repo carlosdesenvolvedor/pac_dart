@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../theme/mixart.dart';
 
-/// A marca do PAC·DART: o Pac comendo dois pontos — os mesmos pontos que
-/// viram o "·" do nome. Desenhada (não é imagem), então fica nítida em
+/// A marca do Paclingo: o Pac comendo dois pontos. Desenhada (não é imagem), então fica nítida em
 /// qualquer tamanho e acompanha a paleta.
 ///
 /// Geometria (caixa lógica de 100×100, a mesma dos ícones em `web/`):

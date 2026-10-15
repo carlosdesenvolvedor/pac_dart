@@ -1,6 +1,8 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'som_stub.dart' if (dart.library.js_interop) 'som_web.dart' as motor;
+import 'som_stub.dart'
+    if (dart.library.js_interop) 'som_web.dart'
+    if (dart.library.io) 'som_nativo.dart' as motor;
 
 /// Os efeitos sonoros do PAC·DART — todos SINTETIZADOS na hora com Web
 /// Audio (osciladores + envelopes): zero assets, zero dependências, cara

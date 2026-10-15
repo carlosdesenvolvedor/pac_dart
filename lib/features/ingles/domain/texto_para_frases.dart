@@ -8,6 +8,11 @@ import 'package:equatable/equatable.dart';
 /// Frases do curso passam de 25 palavras só no C1 (teto do validador).
 const maxPalavrasPorFrase = 25;
 
+/// No texto que a pessoa COLA, cada exercício é bem mais curto que isso: frase de 20 palavras cansa de
+/// digitar 5 vezes. Acima deste tanto a frase é cortada em pedaços (na vírgula, no ponto e vírgula ou
+/// antes de "and/but/because/when…"); sem lugar natural para cortar, frases só um pouco mais compridas ficam inteiras.
+const maxPalavrasDoTextoColado = 12;
+
 /// Um texto colado vira, no máximo, tantas frases (o resto é cortado e a
 /// tela avisa) — cada uma é traduzida e digitada 5 vezes.
 const maxFrasesPorTexto = 150;
@@ -25,22 +30,29 @@ class TextoDividido extends Equatable {
   /// Quantas frases o texto tinha antes do corte.
   final int total;
 
-  const TextoDividido({required this.frases, this.cortado = false, this.simplificou = false, this.total = 0});
+  /// Quantas frases do texto eram compridas demais e foram cortadas em pedaços.
+  final int partidas;
+
+  const TextoDividido(
+      {required this.frases, this.cortado = false, this.simplificou = false, this.total = 0, this.partidas = 0});
 
   @override
-  List<Object?> get props => [frases, cortado, simplificou, total];
+  List<Object?> get props => [frases, cortado, simplificou, total, partidas];
 }
 
 /// Separa [bruto] em frases prontas para digitar (ASCII, sem repetidas).
-TextoDividido dividirEmFrases(String bruto, {int maxFrases = maxFrasesPorTexto, int maxPalavras = maxPalavrasPorFrase}) {
+TextoDividido dividirEmFrases(String bruto, {int maxFrases = maxFrasesPorTexto, int maxPalavras = maxPalavrasDoTextoColado}) {
   final simplificou = bruto.runes.any((r) => r > 0x7E && !_ehEspacoOuInvisivel(r));
   final limpo = simplificarParaDigitar(bruto);
 
   final frases = <String>[];
   final vistas = <String>{};
+  var partidas = 0;
   for (final bloco in _blocos(limpo)) {
     for (final f in _frasesDoBloco(bloco)) {
-      for (final parte in _quebrar(f, maxPalavras)) {
+      final partes = _quebrar(f, maxPalavras);
+      if (partes.length > 1) partidas++;
+      for (final parte in partes) {
         final p = parte.trim();
         // sem nenhuma letra ("***", "12", "—") não é frase
         if (!RegExp(r'[A-Za-z]').hasMatch(p)) continue;
@@ -53,6 +65,7 @@ TextoDividido dividirEmFrases(String bruto, {int maxFrases = maxFrasesPorTexto, 
     cortado: frases.length > maxFrases,
     simplificou: simplificou,
     total: frases.length,
+    partidas: partidas,
   );
 }
 
@@ -224,28 +237,111 @@ List<String> _frasesDoBloco(String bloco) {
 
 int _palavras(String s) => RegExp(r"[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*").allMatches(s).length;
 
-/// Frase comprida demais: corta em ; : , ou " - " onde as duas metades ficam
-/// mais parecidas (ponto e vírgula e dois-pontos pesam mais que vírgula).
-/// Sem lugar bom para cortar, deixa inteira.
+/// Palavras que abrem uma oração nova: dá para cortar ANTES delas ("I went home and slept" → "I went home" / "and slept").
+const _conjuncoes = {
+  'and', 'but', 'because', 'when', 'while', 'which', 'who', 'if', 'or', 'then', 'after', 'before', 'until', 'since',
+  'although', 'though', 'where',
+};
+
+/// O tamanho "ideal" de um pedaço (palavras): as frases do curso e as linhas de um texto de estudo têm uns 5 a 9.
+const _idealPalavras = 7;
+
+/// Pedaço natural com menos que isto de palavras é "trecho solto" ("quite astonished,", "and a moment later,"): custa
+/// caro e o corte escolhido prefere juntá-lo ao vizinho.
+const _minimoPalavras = 5;
+
+/// Frase comprida demais ([max] palavras): corta nos trechos NATURAIS da frase — depois de vírgula, ponto e vírgula,
+/// dois-pontos ou " - ", ou antes de "and/but/because/when…" — de modo que cada pedaço seja uma ideia inteira, nem
+/// minúsculo nem comprido. Escolhe o MELHOR conjunto de cortes (programação dinâmica): pedaço com perto de
+/// [_idealPalavras] palavras é o melhor; o custo cresce com o quadrado da distância (e menos de [_minimoPalavras] custa
+/// muito caro); corte antes de
+/// conjunção sem vírgula custa um pouco mais que corte na vírgula. Ex.: "When he left the army, he walked all around
+/// the country, looking for ways to play his tricks." → 3 pedaços; "He knocked on the door of the house, and a moment
+/// later, the wife answered." → 2 (o "and a moment later," curto gruda no que vem depois).
+/// Frase de até [max] palavras fica inteira. Sem nenhum corte natural bom ela também fica inteira — a não ser que
+/// passe MUITO do limite (1,5×): aí corta entre palavras, perto do meio.
 List<String> _quebrar(String s, int max) {
-  if (_palavras(s) <= max) return [s];
-  int? melhor;
-  var melhorNota = 1 << 30;
-  late String esq, dir;
-  for (final m in RegExp(r'[;:,]\s+|\s-\s').allMatches(s)) {
-    final e = s.substring(0, m[0]!.trim() == '-' ? m.start : m.start + 1).trim();
-    final d = s.substring(m.end).trim();
-    final pe = _palavras(e), pd = _palavras(d);
-    if (pe < 4 || pd < 4) continue;
-    final forte = m[0]!.startsWith(';') || m[0]!.startsWith(':');
-    final nota = (pe - pd).abs() - (forte ? 6 : 0);
-    if (nota < melhorNota) {
-      melhorNota = nota;
-      melhor = m.start;
-      esq = e;
-      dir = d;
+  final n = _palavras(s);
+  if (n <= max) return [s];
+
+  // lugares naturais de cortar: (onde o pedaço da esquerda termina, onde o da direita começa, custo do corte)
+  final cortes = <({int fimEsq, int iniDir, int custo})>[];
+  void talvez(int fimEsq, int iniDir, int custo) {
+    final i = cortes.indexWhere((c) => c.iniDir == iniDir);
+    if (i >= 0) {
+      if (custo < cortes[i].custo) cortes[i] = (fimEsq: fimEsq, iniDir: iniDir, custo: custo);
+    } else {
+      cortes.add((fimEsq: fimEsq, iniDir: iniDir, custo: custo));
     }
   }
-  if (melhor == null) return [s];
-  return [..._quebrar(esq, max), ..._quebrar(dir, max)];
+
+  for (final m in RegExp(r'[;:,]\s+|\s-\s').allMatches(s)) {
+    final dash = m[0]!.trim() == '-';
+    talvez(dash ? m.start : m.start + 1, m.end, 0);
+  }
+  for (final m in RegExp(r'\s+([A-Za-z]+)(?=\s)').allMatches(s)) {
+    if (_conjuncoes.contains(m[1]!.toLowerCase())) talvez(m.start, m.start + (m[0]!.length - m[1]!.length), 6);
+  }
+  cortes.sort((a, b) => a.iniDir.compareTo(b.iniDir));
+
+  int custoDoPedaco(int palavras) {
+    var c = (palavras - _idealPalavras) * (palavras - _idealPalavras);
+    if (palavras < _minimoPalavras) c += 100 * (_minimoPalavras - palavras);
+    return c;
+  }
+
+  // dp[j] = melhor custo de cobrir o começo da frase até o corte j (j = 0 é o início); de[j] = de qual corte veio
+  final m = cortes.length;
+  final ini = [0, for (final c in cortes) c.iniDir]; // onde começa o pedaço que sai de cada corte
+  final dp = List<int>.filled(m + 1, 1 << 30);
+  final de = List<int>.filled(m + 1, -1);
+  dp[0] = 0;
+  for (var j = 1; j <= m; j++) {
+    for (var i = 0; i < j; i++) {
+      if (dp[i] >= 1 << 30 || cortes[j - 1].fimEsq <= ini[i]) continue;
+      final pedaco = s.substring(ini[i], cortes[j - 1].fimEsq);
+      final c = dp[i] + custoDoPedaco(_palavras(pedaco)) + cortes[j - 1].custo;
+      if (c < dp[j]) {
+        dp[j] = c;
+        de[j] = i;
+      }
+    }
+  }
+  // o último pedaço vai de um corte até o fim da frase
+  var melhorFim = 0;
+  var melhorCusto = custoDoPedaco(n); // não cortar
+  for (var i = 1; i <= m; i++) {
+    if (dp[i] >= 1 << 30) continue;
+    final c = dp[i] + custoDoPedaco(_palavras(s.substring(ini[i])));
+    if (c < melhorCusto) {
+      melhorCusto = c;
+      melhorFim = i;
+    }
+  }
+
+  final pedacos = <String>[];
+  if (melhorFim == 0) {
+    pedacos.add(s);
+  } else {
+    var j = melhorFim;
+    var fim = s.length;
+    while (j > 0) {
+      pedacos.insert(0, s.substring(ini[j], fim).trim());
+      fim = cortes[j - 1].fimEsq;
+      j = de[j];
+    }
+    pedacos.insert(0, s.substring(0, fim).trim());
+  }
+
+  // pedaço ainda MUITO comprido (sem corte natural): parte entre palavras, perto do meio
+  return [for (final p in pedacos) ..._partirNoMeio(p, max)];
+}
+
+/// Muito comprida (mais de 1,5× o limite) e sem onde cortar: corta entre palavras, perto do meio, até caber.
+List<String> _partirNoMeio(String s, int max) {
+  final n = _palavras(s);
+  if (n * 2 <= max * 3) return [s];
+  final inicios = [for (final m in RegExp(r"[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*").allMatches(s)) m.start];
+  final meio = inicios[inicios.length ~/ 2];
+  return [..._partirNoMeio(s.substring(0, meio).trim(), max), ..._partirNoMeio(s.substring(meio).trim(), max)];
 }

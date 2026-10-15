@@ -5,7 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/som/sons.dart';
 import 'audio_nativo.dart';
 import 'audio_usuario.dart';
-import 'fala_stub.dart' if (dart.library.js_interop) 'fala_web.dart' as fala;
+import 'fala_stub.dart'
+    if (dart.library.js_interop) 'fala_web.dart'
+    if (dart.library.io) 'fala_nativo.dart' as fala;
 
 /// Fala as frases do curso de inglês em inglês americano com a melhor voz
 /// que o navegador tiver. Grátis e sem cota (Web Speech API): as vozes de

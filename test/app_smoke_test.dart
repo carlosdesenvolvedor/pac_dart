@@ -62,7 +62,11 @@ void main() {
     expect(find.textContaining('Digite o código acima'), findsOneWidget);
     expect(tester.takeException(), isNull);
 
-    // abre o Mapa da Jornada
+    // abre o Mapa da Jornada (antes, deixa a rolagem automática do campo de digitação terminar:
+    // enquanto a lista rola ela ignora toques, e nesta janela de 800×600 o cabeçalho com o chip
+    // da sequência é uma linha mais alto)
+    await tester.pump(const Duration(milliseconds: 500));
+    await tester.pump(const Duration(milliseconds: 500));
     await tester.tap(find.text('Mapa'));
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 400));

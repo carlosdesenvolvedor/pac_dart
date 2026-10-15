@@ -1,5 +1,5 @@
 name: pac_dart
-description: "PAC·DART — treinador de digitação que ensina Dart & Flutter."
+description: "Paclingo — treinador de digitação que ensina Dart, Flutter, C# e inglês."
 publish_to: 'none'
 
 version: 1.0.0+1
@@ -17,13 +17,19 @@ dependencies:
   shared_preferences: ^2.5.3
   flutter_tts: ^4.2.2
   firebase_core: ^3.8.0
-  fsrs: ^2.0.1
-  file_picker: ^13.1.0
   firebase_auth: ^5.3.4
   cloud_firestore: ^5.6.0
   # iframe do DartPad (só usado no build web, via import condicional)
   web: ^1.1.0
   http: ^1.6.0
+  audioplayers: ^6.7.1
+  url_launcher: ^6.3.3
+  speech_to_text: ^7.4.0
+  firebase_ai: ^2.3.0
+  fsrs: ^2.0.1
+  file_picker: ^13.1.0
+  flutter_local_notifications: ^22.3.2
+  timezone: ^0.11.2
 
 dev_dependencies:
   flutter_test:
@@ -39,6 +45,7 @@ flutter:
     - assets/master.json
     - assets/roda.json
     - assets/backgrounds/
+    - assets/brand/
     - assets/csharp/
     - assets/ingles/
     - assets/ingles/fotos/

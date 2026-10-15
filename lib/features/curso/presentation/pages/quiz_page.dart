@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/som/sons.dart';
 import '../../../../core/syntax/tokenizer.dart';
 import '../../../../core/theme/mixart.dart';
+import '../../../habito/presentation/habito_cubit.dart';
 import '../../../ranking/presentation/ranking_cubit.dart';
 import '../../domain/curriculo.dart';
 import '../../domain/quiz.dart';
@@ -69,6 +70,7 @@ class _QuizPageState extends State<QuizPage> {
 
   void _responder(String digitado) {
     if (submetido) return;
+    HabitoCubit.de(context)?.praticou(); // pergunta respondida = 1 exercício do dia
     final p = perguntas[i];
     setState(() {
       submetido = true;
@@ -81,6 +83,7 @@ class _QuizPageState extends State<QuizPage> {
   /// Resposta pelo caminho curto: clicou na alternativa.
   void _responderClique(int a) {
     if (submetido) return;
+    HabitoCubit.de(context)?.praticou();
     setState(() {
       submetido = true;
       escolhida = a;

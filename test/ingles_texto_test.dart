@@ -13,6 +13,7 @@ import 'package:pac_dart/features/curso/presentation/bloc/curso_bloc.dart';
 import 'package:pac_dart/features/dartpad/mapa_rodavel.dart';
 import 'package:pac_dart/features/ingles/data/textos_repository.dart';
 import 'package:pac_dart/features/ingles/data/tradutor.dart';
+import 'package:pac_dart/features/ingles/domain/limpar_traducao.dart';
 import 'package:pac_dart/features/ingles/domain/texto_para_frases.dart';
 import 'package:pac_dart/features/ingles/domain/texto_salvo.dart';
 import 'package:pac_dart/features/ingles/presentation/fixacao.dart';
@@ -107,9 +108,180 @@ void main() {
       expect(r.join(' '), longa);
     });
 
-    test('frase comprida sem onde cortar fica inteira', () {
-      final sem = List.filled(40, 'word').join(' ');
+    int pal(String f) => RegExp(r"[A-Za-z0-9]+(?:['-][A-Za-z0-9]+)*").allMatches(f).length;
+
+    test('o limite do texto colado é 12 palavras por exercício (o do curso, 25, é outro)', () {
+      expect(maxPalavrasDoTextoColado, 12);
+      expect(maxPalavrasPorFrase, 25);
+    });
+
+    test('frase de até 12 palavras fica inteira, mesmo com vírgula', () {
+      expect(_frases('When I got home, I made some tea and read a book.'), ['When I got home, I made some tea and read a book.']);
+      expect(_frases('One two three four five six seven eight nine ten eleven twelve.').length, 1);
+    });
+
+    test('corta antes de "and": o texto de 16 palavras vira dois exercícios curtos', () {
+      expect(_frases('Yesterday I went to the big market near my house and bought some fresh cheese for dinner.'), [
+        'Yesterday I went to the big market near my house',
+        'and bought some fresh cheese for dinner.',
+      ]);
+    });
+
+    test('corta antes de because, but, when, which, who, if, after… (e sem ligar para maiúscula)', () {
+      for (final c in ['because', 'but', 'when', 'which', 'who', 'if', 'after', 'before', 'until', 'since', 'although', 'where', 'or', 'then']) {
+        final f = 'The little brown dog likes to run around the park $c the sun goes down every evening.';
+        final r = _frases(f);
+        expect(r.length, 2, reason: c);
+        expect(r.last.startsWith(c), isTrue, reason: '$c: ${r.last}');
+        expect(r.join(' '), f);
+      }
+    });
+
+    test('prefere a vírgula/ponto e vírgula a cortar antes de uma conjunção', () {
+      // o corte da vírgula (10 + 10) vale mais que o "and" (16 + 4), mesmo havendo os dois
+      final r = _frases('Every morning before school my brother walks to the park, he plays football with his friends and returns home late.');
+      expect(r, ['Every morning before school my brother walks to the park,', 'he plays football with his friends and returns home late.']);
+    });
+
+    test('nenhum pedaço fica com menos de 3 palavras ("However," sozinho não é exercício)', () {
+      // a única vírgula deixa "However," (1 palavra) sozinho: não corta (15 palavras cabem na folga de 1,5×)
+      const f = 'However, everybody remembers those wonderful sunny holidays spent near beautiful distant snowy mountains during childhood.';
+      expect(pal(f), 15);
+      expect(_frases(f), [f]);
+      // e quando corta, nenhum pedaço fica com menos de 3 palavras
+      for (final p in _frases('However, the old teacher who lived near the river decided to walk home after the long meeting ended.')) {
+        expect(pal(p), greaterThanOrEqualTo(3), reason: p);
+      }
+    });
+
+    test('frase um pouco acima de 12, sem onde cortar, fica inteira (até 1,5×)', () {
+      final f = 'Everybody remembers those wonderful sunny holidays spent near beautiful distant snowy mountains during childhood forever.';
+      expect(pal(f), greaterThan(12));
+      expect(_frases(f), [f]);
+      final sem = [for (var i = 0; i < 18; i++) 'w${String.fromCharCode(97 + i ~/ 26)}${String.fromCharCode(97 + i % 26)}'].join(' ');
       expect(_frases('$sem.'), ['$sem.']);
+    });
+
+    test('texto de estudo de verdade (Jack Hannaford): sai igual ao "texto linha a linha" de um professor', () {
+      const texto = 'In those days, there also lived an old soldier called Jack Hannaford. His coat was old and he was poor, '
+          'but nobody thought that Jack Hannaford was stupid. He was sly like a fox. When he left the army, he walked all '
+          'around the country, looking for ways to play his tricks. After he had traveled for some time, he came across '
+          'the farm belonging to the pair. He knocked on the door of the house, and a moment later, the wife answered. '
+          'She looked him up and down, quite astonished, because few strangers were able to make the difficult journey '
+          'to their home. “Where did you come from?” she asked.';
+      expect(_frases(texto), [
+        'In those days, there also lived an old soldier called Jack Hannaford.',
+        'His coat was old and he was poor,',
+        'but nobody thought that Jack Hannaford was stupid.',
+        'He was sly like a fox.',
+        'When he left the army,',
+        'he walked all around the country,',
+        'looking for ways to play his tricks.',
+        'After he had traveled for some time,',
+        'he came across the farm belonging to the pair.',
+        'He knocked on the door of the house,',
+        'and a moment later, the wife answered.',
+        'She looked him up and down, quite astonished,',
+        'because few strangers were able to make the difficult journey to their home.',
+        '"Where did you come from?" she asked.',
+      ]);
+    });
+
+    test('cada pedaço é um trecho com sentido: nunca começa no meio de uma ideia nem sobra "trecho solto" de 1–2 palavras', () {
+      const texto = 'When he left the army, he walked all around the country, looking for ways to play his tricks. '
+          'She looked him up and down, quite astonished, because few strangers were able to make the difficult journey to their home.';
+      for (final f in _frases(texto)) {
+        expect(pal(f), greaterThanOrEqualTo(5), reason: f);
+      }
+      // "quite astonished," (2 palavras) gruda na frase de antes em vez de virar exercício sozinho
+      expect(_frases(texto), contains('She looked him up and down, quite astonished,'));
+      expect(_frases(texto).any((f) => f.trim().toLowerCase() == 'quite astonished,'), isFalse);
+    });
+
+    test('frase de EXATAMENTE 12 palavras fica inteira, mesmo havendo um bom corte no meio (5 + 7)', () {
+      const f = 'My sister lives in London, and my brother lives in Paris now.';
+      expect(pal(f), 12);
+      expect(_frases(f), [f]);
+      // com 13 palavras já corta
+      const g = 'My sister lives in London, and my brother lives in Paris right now.';
+      expect(pal(g), 13);
+      expect(_frases(g), ['My sister lives in London,', 'and my brother lives in Paris right now.']);
+    });
+
+    test('quando vírgula e conjunção competem, a vírgula (corte natural) ganha mesmo que o "while" desse pedaços mais iguais', () {
+      expect(
+        _frases('Every evening my grandfather reads the newspaper, he drinks tea while my grandmother cooks dinner.'),
+        ['Every evening my grandfather reads the newspaper,', 'he drinks tea while my grandmother cooks dinner.'],
+      );
+    });
+
+    test('ponto e vírgula e dois-pontos também são cortes naturais (sem nenhuma vírgula na frase)', () {
+      expect(_frases('The storm was very strong that night; nobody in the small village slept at all until morning came.'), [
+        'The storm was very strong that night;',
+        'nobody in the small village slept at all until morning came.',
+      ]);
+      expect(_frases('He had only one rule for his students: always read the whole question before writing anything down.'), [
+        'He had only one rule for his students:',
+        'always read the whole question before writing anything down.',
+      ]);
+    });
+
+    test('frase pouco acima do limite não vira pedaço minúsculo: "Last summer my family" não existe', () {
+      // 14 e 15 palavras: o único corte possível deixaria 4 ou 3 palavras de um lado ⇒ fica inteira
+      const a = 'Last summer my family and I travelled to a small town on the coast.';
+      const b = 'While my mother and my sister set the table under the trees in the garden.';
+      expect(pal(a), 14);
+      expect(pal(b), 15);
+      expect(_frases(a), [a]);
+      expect(_frases(b), [b]);
+    });
+
+    test('mas se os dois lados ficam com 5 palavras ou mais, corta (14 palavras, "and" no meio)', () {
+      const f = 'Last summer my whole family travelled to a small town and rented an old house.';
+      expect(pal(f), 15);
+      expect(_frases(f), ['Last summer my whole family travelled to a small town', 'and rented an old house.']);
+    });
+
+    test('frase MUITO comprida (mais de 18 palavras) sem onde cortar é partida entre palavras, perto do meio', () {
+      // palavras diferentes (frases idênticas seriam deduplicadas)
+      final sem = [for (var i = 0; i < 40; i++) 'w${String.fromCharCode(97 + i ~/ 26)}${String.fromCharCode(97 + i % 26)}'].join(' ');
+      final r = _frases('$sem.');
+      expect(r.length, greaterThan(2));
+      for (final f in r) {
+        expect(pal(f), lessThanOrEqualTo(maxPalavrasDoTextoColado), reason: f);
+        expect(pal(f), greaterThanOrEqualTo(3), reason: f);
+      }
+      expect(r.join(' '), '$sem.');
+    });
+
+    test('depois de cortar, nenhum pedaço passa do limite quando há onde cortar, e nada se perde', () {
+      const t = 'Yesterday I went to the big market near my house and bought some fresh cheese for dinner. '
+          'When the storm finally reached the small village on the coast, the fishermen had already pulled their boats onto the beach; '
+          'the children, who had been playing near the harbor all afternoon, ran home. '
+          'My sister works in a hospital because she wants to help people who are sick.';
+      final r = dividirEmFrases(t);
+      expect(r.frases.length, greaterThan(4));
+      for (final f in r.frases) {
+        expect(pal(f), lessThanOrEqualTo(maxPalavrasDoTextoColado + 1), reason: f);
+        expect(RegExp(r'^[\x20-\x7E]+$').hasMatch(f), isTrue, reason: f);
+      }
+      expect(r.frases.join(' '), t);
+    });
+
+    test('conta quantas frases foram partidas (para a tela avisar)', () {
+      expect(dividirEmFrases('I like tea. She lives in London.').partidas, 0);
+      expect(
+          dividirEmFrases('Yesterday I went to the big market near my house and bought some fresh cheese for dinner. I like tea.').partidas,
+          1);
+      expect(dividirEmFrases('').partidas, 0);
+    });
+
+    test('o limite pode ser trocado (maxPalavras)', () {
+      const f = 'Yesterday I went to the big market near my house and bought some fresh cheese for dinner.';
+      expect(dividirEmFrases(f, maxPalavras: 25).frases, [f]);
+      // com 8: corta antes do "and" (10 + 7); o pedaço de 10 cabe na folga de 1,5× e fica inteiro
+      expect(dividirEmFrases(f, maxPalavras: 8).frases.length, 2);
+      expect(dividirEmFrases(f, maxPalavras: 5).frases.length, greaterThan(2));
     });
 
     test('corta no limite e conta o total', () {
@@ -123,6 +295,40 @@ void main() {
     test('texto vazio ou só símbolos não dá frase', () {
       expect(dividirEmFrases('   \n\n ').frases, isEmpty);
       expect(dividirEmFrases('🙂🙂 ... 123').frases, isEmpty);
+    });
+  });
+
+  group('limparTraducao', () {
+    final tabela = <String, String>{
+      '<g id="1">mas ninguém achava </g>que Jack Hannaford era estúpido.': 'mas ninguém achava que Jack Hannaford era estúpido.',
+      'Ele <x id="2"/>foi <bx id="3"/>embora<ex id="3"/>.': 'Ele foi embora.',
+      '<g id="1"><g id="2">Olá</g>, mundo</g>': 'Olá, mundo',
+      'um<br/>dois e <b>três</b>': 'um dois e três',
+      // as marcas também chegam ESCAPADAS (&lt;…&gt;), e até escapadas duas vezes
+      '&lt;g id=&quot;1&quot;&gt;mas&lt;/g&gt; sim': 'mas sim',
+      '&amp;lt;g id=&amp;quot;1&amp;quot;&amp;gt;mas&amp;lt;/g&amp;gt; sim': 'mas sim',
+      // entidades e espaços de sempre
+      'Ele disse &quot;n&#227;o&quot;  &amp; foi.': 'Ele disse "não" & foi.',
+      'a&nbsp;b': 'a b',
+      '  muitos    espaços\n e linha  ': 'muitos espaços e linha',
+      // o que NÃO é marca fica como está
+      '3 < 5 e 7 > 2': '3 < 5 e 7 > 2',
+      'eu <3 você': 'eu <3 você',
+      'eu <3 você e 7 > 2': 'eu <3 você e 7 > 2', // o `>` lá na frente não pode transformar "<3 …" em marca
+      'a<b': 'a<b',
+      'Frase normal, sem nada.': 'Frase normal, sem nada.',
+      '': '',
+      '<g id="1"></g>': '',
+    };
+    tabela.forEach((entrada, esperado) {
+      test('"${entrada.replaceAll('\n', '\\n')}"', () => expect(limparTraducao(entrada), esperado));
+    });
+
+    test('é idempotente (limpar de novo não muda nada)', () {
+      for (final e in tabela.keys) {
+        final uma = limparTraducao(e);
+        expect(limparTraducao(uma), uma, reason: e);
+      }
     });
   });
 
@@ -164,6 +370,24 @@ void main() {
       expect(t.licoes.first.trechos.first.audio, isEmpty); // sem gravação: voz sintética
     });
 
+    test('texto salvo ANTES da correção, com marca do MyMemory na tradução, volta limpo (sem refazer a lição)', () {
+      final t = TextoSalvo.fromJson({
+        'id': 'jack',
+        'titulo': 'Jack',
+        'criadoEm': 1000,
+        'frases': [
+          {'en': 'but nobody thought that Jack Hannaford was stupid.', 'pt': '<g id="1">mas ninguém achava </g>que Jack Hannaford era estúpido.'},
+          {'en': 'He was sly like a fox.', 'pt': 'Ele era astuto como uma raposa.'},
+          {'en': 'Then I have breakfast with my sister.', 'pt': 'Depois tomo <x id="3"/>café com minha irmã.', 'alvo': 'breakfast', 'alvoPt': '<g id="2">café</g>'},
+        ],
+      })!;
+      expect(t.frases[0].pt, 'mas ninguém achava que Jack Hannaford era estúpido.');
+      expect(t.frases[1].pt, 'Ele era astuto como uma raposa.');
+      expect(t.frases[2].pt, 'Depois tomo café com minha irmã.');
+      expect(t.frases[2].alvoPt, 'café');
+      expect(t.comoTrilha().licoes.first.trechos.first.dica, 'mas ninguém achava que Jack Hannaford era estúpido.');
+    });
+
     test('ida e volta em JSON; registro quebrado vira null', () {
       expect(TextoSalvo.fromJson(jsonDecode(jsonEncode(texto.toJson()))), texto);
       expect(TextoSalvo.fromJson({'id': 'x'}), isNull);
@@ -196,6 +420,13 @@ void main() {
     test('decodifica entidades HTML e arruma espaços', () async {
       final t = TradutorMyMemory(client: MockClient((_) async => _json(_ok('Ele disse &quot;n&#227;o&quot;  &amp; foi.'))));
       expect(await t.traduzir(['x']), ['Ele disse "não" & foi.']);
+    });
+
+    test('tira as marcas de formatação do MyMemory (<g id="1">…</g>): o caso real do "Jack Hannaford"', () async {
+      final t = TradutorMyMemory(
+          client: MockClient((_) async => _json(_ok('<g id="1">mas ninguém achava </g>que Jack Hannaford era estúpido.'))));
+      expect(await t.traduzir(['but nobody thought that Jack Hannaford was stupid.']),
+          ['mas ninguém achava que Jack Hannaford era estúpido.']);
     });
 
     test('o aviso de cota NUNCA vira tradução: falha com o tempo de espera e guarda o que já foi', () async {
@@ -494,6 +725,31 @@ void main() {
         FraseDoTexto('Then we came home.', 'PT: Then we came home.'),
       ]);
       expect(t.id, isNotEmpty);
+    });
+
+    testWidgets('frase comprida é dividida em pedaços curtos, a tela avisa e a tradução recebe os pedaços', (tester) async {
+      final fake = _TradutorFalso();
+      await abrir(tester, fake);
+      await tester.enterText(find.byKey(const Key('texto-colado')),
+          'Yesterday I went to the big market near my house and bought some fresh cheese for dinner. I like tea.');
+      await tester.pump();
+      expect(find.text('3 frases · 1 lição'), findsOneWidget, reason: 'a de 16 palavras virou 2 pedaços + "I like tea."');
+      expect(find.byKey(const Key('aviso-divididas')), findsOneWidget);
+      expect(find.textContaining('1 frase comprida foi dividida em pedaços curtos'), findsOneWidget);
+      await tester.tap(find.byKey(const Key('botao-traduzir')));
+      await tester.pumpAndSettle();
+      expect(fake.recebidas, [
+        'Yesterday I went to the big market near my house',
+        'and bought some fresh cheese for dinner.',
+        'I like tea.',
+      ]);
+    });
+
+    testWidgets('texto de frases curtas: nenhum aviso de divisão', (tester) async {
+      await abrir(tester, _TradutorFalso());
+      await tester.enterText(find.byKey(const Key('texto-colado')), 'I like tea. She lives in London.');
+      await tester.pump();
+      expect(find.byKey(const Key('aviso-divididas')), findsNothing);
     });
 
     testWidgets('sem título, usa o começo do texto', (tester) async {

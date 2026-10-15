@@ -13,6 +13,10 @@ import '../../../ingles/presentation/revisao_cubit.dart';
 import '../../../ingles/presentation/texto_para_licao_page.dart';
 
 import '../../../../core/theme/mixart.dart';
+import '../../../ia/presentation/cenarios_page.dart';
+import '../../../ia/presentation/escrita_page.dart';
+import '../../../ia/presentation/ia_cubit.dart';
+import '../../../ingles/presentation/leituras_page.dart';
 import '../../domain/curriculo.dart';
 import '../bloc/curso_bloc.dart';
 import '../fluxo_licao.dart';
@@ -71,6 +75,9 @@ class _MapaPageState extends State<MapaPage> {
                     if (st.ehIngles) ...[
                       const SliverToBoxAdapter(child: _CartaoNovoTexto()),
                       const SliverToBoxAdapter(child: _CartaoBaralhos()),
+                      const SliverToBoxAdapter(child: _CartaoLer()),
+                      const SliverToBoxAdapter(child: _CartaoConversar()),
+                      const SliverToBoxAdapter(child: _CartaoEscrever()),
                       for (var t = 0; t < st.trilhas.length; t++)
                         if (st.trilhas[t].propria) ...[
                           if (t == st.trilhas.indexWhere((x) => x.propria))
@@ -754,6 +761,131 @@ class _CartaoBaralhos extends StatelessWidget {
                     style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4),
                   );
                 }),
+              ]),
+            ),
+            Icon(Icons.chevron_right, color: Mixart.textMuted),
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
+/// Inglês: ler textos e guardar as palavras novas como cartões de lacuna.
+class _CartaoLer extends StatelessWidget {
+  const _CartaoLer();
+
+  @override
+  Widget build(BuildContext context) {
+    if (RevisaoCubit.de(context) == null) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 8, 18, 4),
+      child: InkWell(
+        key: const Key('ler'),
+        onTap: () {
+          final curso = context.read<CursoBloc>(), revisao = RevisaoCubit.de(context);
+          Navigator.of(context).push(MaterialPageRoute<void>(
+            builder: (_) => MultiBlocProvider(
+              providers: [BlocProvider.value(value: curso), if (revisao != null) BlocProvider.value(value: revisao)],
+              child: const LeiturasPage(),
+            ),
+          ));
+        },
+        borderRadius: BorderRadius.circular(Mixart.radiusLg),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Mixart.surface,
+            border: Border.all(color: Mixart.border),
+            borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          ),
+          child: Row(children: [
+            const Text('📖', style: TextStyle(fontSize: 26)),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('Ler e guardar palavras', style: Mixart.display(size: 16)),
+                const SizedBox(height: 3),
+                Text('Textos curtos e os seus: toque numa palavra e ela vira um cartão de lacuna com a frase inteira.',
+                    style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4)),
+              ]),
+            ),
+            Icon(Icons.chevron_right, color: Mixart.textMuted),
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
+/// Inglês: ensaiar conversas com o Prof. Dash (cenários guiados). Sem a IA na árvore, some.
+class _CartaoConversar extends StatelessWidget {
+  const _CartaoConversar();
+
+  @override
+  Widget build(BuildContext context) {
+    if (RevisaoCubit.de(context) == null || IaCubit.de(context) == null) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 8, 18, 4),
+      child: InkWell(
+        key: const Key('conversar'),
+        onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const CenariosPage())),
+        borderRadius: BorderRadius.circular(Mixart.radiusLg),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Mixart.surface,
+            border: Border.all(color: Mixart.border),
+            borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          ),
+          child: Row(children: [
+            const Text('💬', style: TextStyle(fontSize: 26)),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('Conversar com o Prof. Dash', style: Mixart.display(size: 16)),
+                const SizedBox(height: 3),
+                Text('Ensaie um café, um check-in, uma entrevista… ele só corrige no fim e dá 3 frases para virar cartão.',
+                    style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4)),
+              ]),
+            ),
+            Icon(Icons.chevron_right, color: Mixart.textMuted),
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
+/// Inglês: escrever 2–3 frases e ser corrigido pelo Prof. Dash (cada erro vira cartão). Sem a IA na árvore, some.
+class _CartaoEscrever extends StatelessWidget {
+  const _CartaoEscrever();
+
+  @override
+  Widget build(BuildContext context) {
+    if (RevisaoCubit.de(context) == null || IaCubit.de(context) == null) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 8, 18, 4),
+      child: InkWell(
+        key: const Key('escrever'),
+        onTap: () => Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const EscritaPage())),
+        borderRadius: BorderRadius.circular(Mixart.radiusLg),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Mixart.surface,
+            border: Border.all(color: Mixart.border),
+            borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          ),
+          child: Row(children: [
+            const Text('📝', style: TextStyle(fontSize: 26)),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('Escrever e ser corrigido', style: Mixart.display(size: 16)),
+                const SizedBox(height: 3),
+                Text('Escreva 2–3 frases sobre o seu dia: o Prof. Dash corrige, explica e cada erro vira um cartão.',
+                    style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4)),
               ]),
             ),
             Icon(Icons.chevron_right, color: Mixart.textMuted),

@@ -42,6 +42,11 @@ class TraducaoCard extends StatelessWidget {
   /// concluída nesta lição).
   final bool contextoEmPt;
 
+  /// Teclado virtual aberto no celular: sobra pouca tela, então só ficam a
+  /// tradução e os botões (a nota, a fonte e as caixinhas voltam quando o
+  /// teclado fecha).
+  final bool compacto;
+
   /// Botão a mais ao lado dos de áudio (o 🎧 do áudio do aluno).
   final Widget? acaoAudio;
 
@@ -62,6 +67,7 @@ class TraducaoCard extends StatelessWidget {
     this.onAlternarVerFrases,
     this.quemDoContexto = '',
     this.contextoEmPt = false,
+    this.compacto = false,
     this.acaoAudio,
   });
 
@@ -158,7 +164,7 @@ class TraducaoCard extends StatelessWidget {
         ]),
         // no celular os botões descem para não espremer a tradução
         if (estreito) ...[const SizedBox(height: 10), botoes],
-        if (mostrarNota && trecho.temConceito) ...[
+        if (!compacto && mostrarNota && trecho.temConceito) ...[
           const SizedBox(height: 10),
           Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Icon(Icons.info_outline_rounded, size: 15, color: Mixart.brand),
@@ -169,25 +175,27 @@ class TraducaoCard extends StatelessWidget {
             ),
           ]),
         ],
-        if (FonteFrase.ler(trecho.fonte) case final fonte?) ...[
-          const SizedBox(height: 6),
-          InkWell(
-            onTap: () => abrirUrl(fonte.url),
-            borderRadius: BorderRadius.circular(6),
-            child: Text('ⓘ frase do ${fonte.rotulo}',
-                style: Mixart.ui(size: 10.5, color: Mixart.textFaint)),
-          ),
-        ],
+        if (!compacto)
+          if (FonteFrase.ler(trecho.fonte) case final fonte?) ...[
+            const SizedBox(height: 6),
+            InkWell(
+              onTap: () => abrirUrl(fonte.url),
+              borderRadius: BorderRadius.circular(6),
+              child: Text('ⓘ frase do ${fonte.rotulo}',
+                  style: Mixart.ui(size: 10.5, color: Mixart.textFaint)),
+            ),
+          ],
         // a gravação de nativo que o 🔊 toca (a licença exige o crédito)
-        if (_creditoDaVoz(trecho.audioCredito) case final voz?) ...[
-          const SizedBox(height: 4),
-          InkWell(
-            onTap: () => abrirUrl(urlDaGravacao(trecho.audio)),
-            borderRadius: BorderRadius.circular(6),
-            child: Text('🎙️ voz nativa: $voz', style: Mixart.ui(size: 10.5, color: Mixart.textFaint)),
-          ),
-        ],
-        if (onAlternarAudio != null || onAlternarVozLenta != null) ...[
+        if (!compacto)
+          if (_creditoDaVoz(trecho.audioCredito) case final voz?) ...[
+            const SizedBox(height: 4),
+            InkWell(
+              onTap: () => abrirUrl(urlDaGravacao(trecho.audio)),
+              borderRadius: BorderRadius.circular(6),
+              child: Text('🎙️ voz nativa: $voz', style: Mixart.ui(size: 10.5, color: Mixart.textFaint)),
+            ),
+          ],
+        if (!compacto && (onAlternarAudio != null || onAlternarVozLenta != null)) ...[
           const SizedBox(height: 8),
           Wrap(spacing: 16, runSpacing: 4, children: [
             if (onAlternarAudio != null) _Caixinha(marcada: audioAuto, rotulo: 'áudio automático', onTap: onAlternarAudio!),

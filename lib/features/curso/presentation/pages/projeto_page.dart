@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/mixart.dart';
 import '../../../../core/util/sharplab.dart';
+import '../../../habito/presentation/habito_cubit.dart';
 import '../../../ranking/presentation/ranking_cubit.dart';
 import '../../domain/curriculo.dart';
 import '../bloc/curso_bloc.dart';
@@ -75,6 +76,7 @@ class _ProjetoPageState extends State<ProjetoPage> {
         listenWhen: (a, b) => !a.concluido && b.concluido,
         listener: (context, st) {
           context.read<CursoBloc>().add(ProjetoConcluido(widget.chaveProgresso));
+          HabitoCubit.de(context)?.praticou(); // o projeto digitado até o fim é 1 exercício do dia
           // o TypingBloc é desta tela (nasce zerado): os números vão inteiros
           RankingCubit.de(context)?.projetoConcluido(st);
         },

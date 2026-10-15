@@ -3,6 +3,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import '../domain/limpar_traducao.dart';
+
 /// A tradução não saiu; [mensagem] já vem em português para mostrar na tela.
 class TraducaoFalhou implements Exception {
   final String mensagem;
@@ -145,14 +147,7 @@ class TradutorMyMemory implements Tradutor {
         'O que já foi traduzido fica guardado: é só tentar de novo depois.';
   }
 
-  /// A API às vezes devolve entidades HTML (&#39; &quot;) no meio do texto.
-  static String _limpar(String s) => s
-      .replaceAllMapped(RegExp(r'&#(\d+);'), (m) => String.fromCharCode(int.parse(m[1]!)))
-      .replaceAll('&quot;', '"')
-      .replaceAll('&apos;', "'")
-      .replaceAll('&lt;', '<')
-      .replaceAll('&gt;', '>')
-      .replaceAll('&amp;', '&')
-      .replaceAll(RegExp(r'\s+'), ' ')
-      .trim();
+  /// A API às vezes devolve entidades HTML (&#39; &quot;) e marcas de formatação (`<g id="1">…</g>`) no meio do
+  /// texto: ver [limparTraducao].
+  static String _limpar(String s) => limparTraducao(s);
 }
