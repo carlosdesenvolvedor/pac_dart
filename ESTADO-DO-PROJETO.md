@@ -1714,5 +1714,5 @@ continua mostrando tudo. O teste antigo "na cópia não há não sei" virou "na 
 
 **Prova:** `test/ingles_palavra_test.dart` (14) + suítes ingles_*/ia_*/smoke (946) verdes; Chrome real no probe (1027 e 390 px):
 balão abaixo/acima da palavra conforme o espaço, "morning" → "Good morning → Bom dia" sem IA, "Mike" → Dash (falso do probe),
-digitar com o balão aberto funciona, Montar/Falar cobertos. Probe apagado. NÃO commitado, NÃO publicado.
+digitar com o balão aberto funciona, Montar/Falar cobertos. Probe apagado. **Publicado** (hosting, 14/out/2026) e **commitado + push** (2153671, junto com todo o trabalho pendente da árvore).
 Ideia não feita: o mesmo toque na palavra nos cartões (`SessaoCartoesPage`) e na leitura — o `BalaoPalavra` já é reaproveitável.
