@@ -1870,3 +1870,29 @@ da corrida e para quando a corrida começa".
 `csharp_curriculo_test`); 117 arquivos. Novos: `arcade_licoes_jogo` (codec/back-compat/merge, vocabulário com escolha,
 revezamento por dia, teto de 40, as suas com 1/3), `arcade_escolher_licoes_ui` (hub → tela → salvar; avisos; bloqueadas;
 diálogo de saída; teclado; ids fantasma), `arcade_rali_intervalo`. `flutter analyze lib test`: sem avisos.
+
+## 🔊 20/out/2026 (rodada 4) — Arcade (inglês) fala a palavra · chip "🔊 Voz" (FEITO; sem commit/deploy)
+
+- **O quê:** no modo inglês, Rali, Turismo e Chuva falam a palavra em voz alta (mesma voz das lições, `VozIngles`,
+  velocidade normal). Helper novo `lib/features/arcade/presentation/voz_jogo.dart` (`VozDoJogo` + `BotaoVozJogo`): não repete
+  a mesma palavra em 1,5 s (`forcar: true` pula a janela), palavra nova corta a anterior, cala na pausa/fim, com o chip
+  desligado, em Dart/C# e antes do 1º toque/tecla; para ao sair do jogo. Liga/desliga por aparelho em prefs
+  `arcade_falar_palavras` (ligado por padrão). Não segue o mudo global `Sons.ligado` (não aparece no arcade).
+- **Quando fala:** Rali → 1ª palavra logo depois do 3-2-1 e cada palavra nova; fim de fase não fala a próxima; memória só
+  fala depois de digitada; ao retomar da pausa repete a palavra (forçada) se ainda não começou. Turismo e Chuva → na 1ª
+  letra certa que trava a palavra (portal, gasolina ou gota), nunca só por aparecer.
+- **Turismo web:** ao falar, a música da fase desce ao volume de batida por 1,4 s via `api.abaixarMusica(ms)` novo no
+  `web/turismo3d/turismo3d.js` (não encurta um abaixamento maior em curso; JS velho em cache = só não abaixa). Canvas
+  (não web) ignora (`vista_3d_stub/controlador`).
+- **Chip** `Key('arcade-voz')` (semântica com toque, "voz das palavras ligada/desligada"): Rali/Chuva ao lado da pausa (Rali
+  também na tela inicial); Turismo nas opções ao lado do 🎸 Rock com rótulo longo ("🔊 Falar palavras ligado/desligado") e na
+  corrida no fim dos chips de placar (ao lado da câmera/pausa estourava 65 px em 360 px). Some em Dart/C#.
+- **Não provado em navegador real:** a voz de verdade e o abaixar da música no Turismo 3D.
+- **Bug antigo (já no HEAD, não corrigido):** fechar o Rali na tela inicial, antes de correr, dá em debug "Looking up a
+  deactivated widget's ancestor is unsafe" — o `dispose()` cria o `late final _cpuCtrl` pela 1ª vez no desmonte.
+
+**Testes:** suíte inteira em 20/out (rodada 4): **1.704 testes, 1.699 passam, 5 falham** (as 5 de sempre do
+`csharp_curriculo_test`); 119 arquivos. Novos: `voz_jogo_test` (unidade, falante falso via `VozDoJogo.falanteDeTeste`) e
+`arcade_voz_ui_test` (regras de cada jogo, chip salvo/religado, pausa corta, retomar repete, Dart mudo, semântica, 360 px).
+`flutter analyze lib test`: sem avisos. 1 `flutter build web` (`build/web`, `privacidade.html`/`excluir-conta.html`
+removidos); `build/web/turismo3d/turismo3d.js` idêntico ao `web/` (tem `abaixarMusica`).

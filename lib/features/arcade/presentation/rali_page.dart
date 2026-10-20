@@ -19,6 +19,7 @@ import '../domain/personagem.dart';
 import '../domain/tropecos.dart';
 import '../domain/vocabulario_jogo.dart';
 import 'banco_arcade.dart';
+import 'voz_jogo.dart';
 import 'widgets/arcade_ui.dart';
 import 'widgets/legenda_traducao.dart';
 import 'widgets/campanha.dart';
@@ -150,6 +151,18 @@ class _RaliPageState extends State<RaliPage>
   bool _contagem = false;
   bool _chama = false;
 
+  /// 🔊 Inglês: a palavra da vez falada quando entra (no modo memória, só DEPOIS de digitada — antes
+  /// entregaria a resposta).
+  final _voz = VozDoJogo();
+
+  void _falarPalavra(String w, {bool forcar = false}) =>
+      _voz.falar(w, pausado: pausado, acabou: acabou, forcar: forcar);
+
+  void _alternarVoz() {
+    _voz.alternar();
+    setState(() {});
+  }
+
   late final AnimationController _cpuCtrl = AnimationController(vsync: this)
     ..addStatusListener(_cpuCompletou);
   Timer? _relogio; // só pro PPM respirar
@@ -172,10 +185,16 @@ class _RaliPageState extends State<RaliPage>
     PersonagemStore.carregar().then((_) {
       if (mounted) setState(() {});
     });
+    if (BancoArcade.soDigitacao) {
+      VozDoJogo.carregarPreferencia().then((_) {
+        if (mounted) setState(() {});
+      });
+    }
   }
 
   @override
   void dispose() {
+    _voz.encerrar();
     _relogio?.cancel();
     _chamaTimer?.cancel();
     _cpuCtrl.dispose();
@@ -252,6 +271,8 @@ class _RaliPageState extends State<RaliPage>
       if (mounted && !acabou && !faseVencida && !pausado) setState(() {});
     });
     pausarSeEscondido();
+    // a 1ª palavra da fase, assim que a largada sai (na contagem, nada)
+    if (!(_memoria && _vocab != null)) _falarPalavra(_palavra.alvo);
   }
 
   void _cpuCompletou(AnimationStatus s) {
@@ -271,6 +292,7 @@ class _RaliPageState extends State<RaliPage>
   void aoPausar() {
     _cpuCtrl.stop();
     _pausaDesde = DateTime.now();
+    _voz.calar();
   }
 
   @override
@@ -280,6 +302,11 @@ class _RaliPageState extends State<RaliPage>
     _pausaDesde = null;
     if (_engine == null || acabou || faseVencida) return;
     _cpuCtrl.forward();
+    // a pausa cortou (ou impediu — aba escondida na largada) a palavra da vez: se ainda não começou,
+    // fala de novo (no modo memória, nunca antes de digitada)
+    if (!(_memoria && _vocab != null) && !_contagem && _palavra.idx == 0) {
+      _falarPalavra(_palavra.alvo, forcar: true);
+    }
   }
 
   void _acumula(CorridaEngine e) {
@@ -365,6 +392,7 @@ class _RaliPageState extends State<RaliPage>
     if (pontuado) return Future.value();
     _cpuCtrl.stop();
     _relogio?.cancel();
+    _voz.calar();
     _placar.enviar(_palavrasCubit, fonte: FonteErro.rali, tropecos: _tropecos);
     _enviarMemoria();
     _oferecerFim();
@@ -399,12 +427,14 @@ class _RaliPageState extends State<RaliPage>
       });
       return;
     }
+    String? completou;
     setState(() {
       _charsCertos++;
       _ultimoErrou = false;
       _errosLetra = 0;
       if (_feedback.isNotEmpty && _palavra.idx == 1 && !_feedbackFixo) _feedback = '';
       if (_palavra.completa) {
+        completou = _palavra.alvo;
         final perfeita = _palavra.errosPalavra == 0;
         if (_palavrasCubit != null && !_memoria) _placar.viu(_palavra.alvo);
         final aviso = _memoria ? null : _tropecouNaPalavra();
@@ -423,6 +453,15 @@ class _RaliPageState extends State<RaliPage>
       _chamaTimer = Timer(const Duration(milliseconds: 1100), () {
         if (mounted) setState(() => _chama = false);
       });
+    }
+    final dita = completou;
+    if (dita != null) {
+      // memória: a palavra recém-lembrada, de reforço; senão, a nova da vez (a fase acabou: nada)
+      if (_memoria && _vocab != null) {
+        _falarPalavra(dita);
+      } else if (!e.terminou) {
+        _falarPalavra(_palavra.alvo);
+      }
     }
     if (e.terminou) {
       e.venceu ? _venceuFase() : _fimDeJogo();
@@ -470,7 +509,15 @@ class _RaliPageState extends State<RaliPage>
                               ChipPlacar('ERROS', '$_errosTeclas',
                                   cor: _ultimoErrou ? Mixart.danger : null),
                             ],
-                      acao: e == null ? null : BotaoPausa(onTap: podePausar ? pausar : null),
+                      acao: !BancoArcade.soDigitacao
+                          ? (e == null ? null : BotaoPausa(onTap: podePausar ? pausar : null))
+                          : Row(mainAxisSize: MainAxisSize.min, children: [
+                              BotaoVozJogo(key: const Key('arcade-voz'), onTap: _alternarVoz),
+                              if (e != null) ...[
+                                const SizedBox(width: 8),
+                                BotaoPausa(onTap: podePausar ? pausar : null),
+                              ],
+                            ]),
                     ),
                     const SizedBox(height: 16),
                     if (e == null) ...[

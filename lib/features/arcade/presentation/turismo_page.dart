@@ -6,6 +6,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
 import 'banco_arcade.dart';
+import 'voz_jogo.dart';
 
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
@@ -139,6 +140,48 @@ class _TurismoPageState extends State<TurismoPage>
 
   static const _setas = ['⬅ ESQUERDA', '⬆ MEIO', '➡ DIREITA'];
 
+  /// 🔊 Inglês: a palavra falada quando a pessoa TRAVA nela — no portal (1ª letra certa) e na de
+  /// combustível (idem), nunca quando aparece: a de combustível entra no instante em que o portal é
+  /// completado e, falada ali, cortaria a do portal ainda soando. [_vozPortal]/[_vozTravada]/[_vozGas]:
+  /// o que já foi falado (só se compara). Na web a música abaixa enquanto a palavra soa.
+  final _voz = VozDoJogo();
+  Portal? _vozPortal;
+  int? _vozTravada;
+  String? _vozGas;
+  static const _duckVozMs = 1400;
+
+  void _falar(String w) {
+    if (_voz.falar(w, pausado: pausado, acabou: _acabou)) _vista.abaixarMusica(_duckVozMs);
+  }
+
+  /// Fala o alvo em que a pessoa travou (a palavra do portal ou a de combustível), se mudou desde a última vez.
+  void _falarAlvoNovo(TurismoEngine e) {
+    final p = e.portalParaDigitar;
+    final travada = p == null ? null : e.palavraTravada;
+    if (p != null && travada != null) {
+      if (identical(p, _vozPortal) && travada == _vozTravada) return;
+      _vozPortal = p;
+      _vozTravada = travada;
+      _falar(p.palavras[travada]);
+      return;
+    }
+    // a de combustível: falada na 1ª letra certa; enquanto não começou (ou saiu), a próxima é nova
+    final gas = p == null ? e.palavraGas : null;
+    if (gas == null || e.gasDigitadas == 0) {
+      _vozGas = null;
+      return;
+    }
+    if (identical(gas, _vozGas)) return;
+    _vozGas = gas;
+    _falar(gas);
+  }
+
+  void _alternarVoz() {
+    Sons.toca(Som.blip);
+    _voz.alternar();
+    setState(() {});
+  }
+
   @override
   bool get podePausar => _tela == _Tela.corrida && _engine != null && !_contagem && !_acabou && !_tutorial;
 
@@ -156,6 +199,11 @@ class _TurismoPageState extends State<TurismoPage>
       final inicial = widget.pistaInicial;
       if (inicial != null && mounted) _correr(pistasGt[(inicial - 1).clamp(0, pistasGt.length - 1)]);
     });
+    if (BancoArcade.soDigitacao) {
+      VozDoJogo.carregarPreferencia().then((_) {
+        if (mounted) setState(() {});
+      });
+    }
   }
 
   Future<void> _carregarCampeonato() async {
@@ -293,6 +341,7 @@ class _TurismoPageState extends State<TurismoPage>
 
   @override
   void dispose() {
+    _voz.encerrar();
     _ticker.dispose();
     _esperaCena?.cancel();
     _foco.dispose();
@@ -314,6 +363,7 @@ class _TurismoPageState extends State<TurismoPage>
   void aoPausar() {
     Sons.motorParar();
     _desligarTicker();
+    _voz.calar();
   }
 
   @override
@@ -375,6 +425,9 @@ class _TurismoPageState extends State<TurismoPage>
       _tropecos = _palavrasCubit != null && !_modoSetas ? TropecosDoJogo() : null;
       _avisoTropeco = null;
       _sug = null;
+      _vozPortal = null;
+      _vozTravada = null;
+      _vozGas = null;
     });
   }
 
@@ -396,6 +449,7 @@ class _TurismoPageState extends State<TurismoPage>
     _desligarTicker();
     _publicarParcial();
     Sons.motorParar();
+    _voz.calar();
     setState(() {
       _tela = _Tela.campeonato;
       _engine = null;
@@ -480,6 +534,7 @@ class _TurismoPageState extends State<TurismoPage>
       _tropecos?.vista(gasAntes);
     }
     if (r == TeclaGt.completou || r == TeclaGt.errou) _drenarPerdas(e);
+    if (_voz.ativa && (r == TeclaGt.avancou || r == TeclaGt.completou)) _falarAlvoNovo(e);
     setState(() {});
     switch (r) {
       case TeclaGt.avancou:
@@ -542,6 +597,7 @@ class _TurismoPageState extends State<TurismoPage>
     if (e == null || pista == null || _acabou) return;
     _desligarTicker();
     Sons.motorParar();
+    _voz.calar();
     // inglês: os tropeços vão para o banco já (antes das esperas) e a oferta entra na tela de fim
     _drenarPerdas(e);
     _placar.enviar(_palavrasCubit, fonte: FonteErro.turismo, tropecos: _tropecos);
@@ -727,6 +783,8 @@ class _TurismoPageState extends State<TurismoPage>
       const SizedBox(height: 10),
       Wrap(spacing: 8, runSpacing: 8, crossAxisAlignment: WrapCrossAlignment.center, children: [
         _botaoMusica(),
+        if (BancoArcade.soDigitacao)
+          BotaoVozJogo(key: const Key('arcade-voz'), onTap: _alternarVoz, compacto: false),
         _botaoPilula(
           '${_tremor ? '📳' : '🚫'} Tremor ${_tremor ? 'ligado' : 'desligado'}',
           ativo: _tremor,
@@ -1052,6 +1110,8 @@ class _TurismoPageState extends State<TurismoPage>
                 cor: e.multiplicador > 1 ? Mixart.brand : null),
             if (e.porSetas) ChipPlacar('PORTAIS', '${e.portaisLimpos}') else ChipPlacar('ERROS', '${e.erros}'),
             if (_fantasma != null) _chipFantasma(e),
+            // 🔊 junto dos chips (no celular, a linha do 🎥 e da pausa não tem espaço)
+            if (BancoArcade.soDigitacao && !e.porSetas) BotaoVozJogo(key: const Key('arcade-voz'), onTap: _alternarVoz),
           ],
           acao: Row(mainAxisSize: MainAxisSize.min, children: [
             _botaoCamera(),

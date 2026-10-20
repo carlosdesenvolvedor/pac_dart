@@ -115,6 +115,7 @@ class _Vista3DState extends State<Vista3D> {
   void initState() {
     super.initState();
     widget.controlador?.ligar(_enviarEstado);
+    widget.controlador?.ligarMusica(_abaixarMusica);
     _ligarRelogioDeCarga();
     final obj = _turismo3dObj;
     if (obj == null) {
@@ -216,7 +217,9 @@ class _Vista3DState extends State<Vista3D> {
     super.didUpdateWidget(old);
     if (old.controlador != widget.controlador) {
       old.controlador?.ligar(null);
+      old.controlador?.ligarMusica(null);
       widget.controlador?.ligar(_enviarEstado);
+      widget.controlador?.ligarMusica(_abaixarMusica);
     }
     // Durante a corrida a página já mandou o estado no tick DESTE frame
     // (_vista.enviar() logo antes do setState): reenviar era montar o mapa e
@@ -348,6 +351,16 @@ class _Vista3DState extends State<Vista3D> {
     }
   }
 
+  /// 🔊 A palavra falada por cima: a música abaixa por [ms] (`turismo3d.abaixarMusica`; o módulo velho
+  /// em cache, sem ela, só não abaixa).
+  void _abaixarMusica(int ms) {
+    final js = _js;
+    if (js == null || !_montado) return;
+    try {
+      if (js.has('abaixarMusica')) js.callMethod<JSAny?>('abaixarMusica'.toJS, ms.toJS);
+    } catch (_) {}
+  }
+
   bool _avisou = false;
   void _avisarPronto() {
     if (_avisou) return;
@@ -358,6 +371,7 @@ class _Vista3DState extends State<Vista3D> {
   @override
   void dispose() {
     widget.controlador?.ligar(null);
+    widget.controlador?.ligarMusica(null);
     _relogioCarga?.cancel();
     _js?.destruir();
     super.dispose();

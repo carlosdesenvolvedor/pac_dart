@@ -12,6 +12,7 @@ import '../../ingles/domain/teimosas.dart';
 import '../../ingles/presentation/acoes_teimosas.dart';
 import '../../ingles/presentation/palavras_cubit.dart';
 import 'banco_arcade.dart';
+import 'voz_jogo.dart';
 import '../domain/personagem.dart';
 import '../domain/tiro_engine.dart';
 import '../domain/tropecos.dart';
@@ -119,6 +120,14 @@ class _ChuvaPageState extends State<ChuvaPage>
   bool _novoRecorde = false;
   bool _pontuado = false;
 
+  /// 🔊 Inglês: a palavra falada quando a pessoa trava a mira nela (não a cada uma que cai).
+  final _voz = VozDoJogo();
+
+  void _alternarVoz() {
+    _voz.alternar();
+    setState(() {});
+  }
+
   @override
   bool get podePausar => !_contagem && !_acabou;
 
@@ -132,6 +141,11 @@ class _ChuvaPageState extends State<ChuvaPage>
     PersonagemStore.carregar().then((_) {
       if (mounted) setState(() {});
     });
+    if (BancoArcade.soDigitacao) {
+      VozDoJogo.carregarPreferencia().then((_) {
+        if (mounted) setState(() {});
+      });
+    }
   }
 
   void _ligarTicker({bool retomando = false}) {
@@ -146,7 +160,10 @@ class _ChuvaPageState extends State<ChuvaPage>
   }
 
   @override
-  void aoPausar() => _desligarTicker();
+  void aoPausar() {
+    _desligarTicker();
+    _voz.calar();
+  }
 
   @override
   void aoRetomar() {
@@ -155,6 +172,7 @@ class _ChuvaPageState extends State<ChuvaPage>
 
   @override
   void dispose() {
+    _voz.encerrar();
     _ticker.dispose();
     // fechou no meio: o que já foi destruído vale ponto mesmo assim
     if (!_pontuado && _engine.pontos > 0) _ranking?.arcadeJogado('chuva', _engine.pontos);
@@ -164,6 +182,7 @@ class _ChuvaPageState extends State<ChuvaPage>
 
   void _reiniciar() {
     _desligarTicker(); // volta para a largada 3-2-1
+    _voz.calar();
     setState(() {
       _engine = _novoEngine();
       _tiros.clear();
@@ -277,7 +296,12 @@ class _ChuvaPageState extends State<ChuvaPage>
   void _tecla(String ch) {
     if (_acabou || _contagem || pausado || ch.trim().isEmpty) return;
     final multAntes = _engine.multiplicador;
+    final semAlvo = _engine.alvoId == null;
     final (resultado, palavra) = _engine.teclar(ch);
+    // travou a mira agora: a palavra falada (o tiro e a voz saem juntos)
+    if (semAlvo && palavra != null && resultado != TiroResultado.errou && resultado != TiroResultado.nada) {
+      _voz.falar(palavra.texto, pausado: pausado, acabou: _acabou);
+    }
     setState(() {
       switch (resultado) {
         case TiroResultado.avancou:
@@ -313,6 +337,7 @@ class _ChuvaPageState extends State<ChuvaPage>
     if (_pontuado) return;
     _pontuado = true;
     _desligarTicker();
+    _voz.calar();
     setState(() {
       _acabou = true;
       _tiros.clear();
@@ -391,7 +416,13 @@ class _ChuvaPageState extends State<ChuvaPage>
                         ChipPlacar('ERROS', '${_engine.erros}',
                             cor: _flashErro > 0 ? Mixart.danger : null),
                       ],
-                      acao: BotaoPausa(onTap: podePausar ? pausar : null),
+                      acao: BancoArcade.soDigitacao
+                          ? Row(mainAxisSize: MainAxisSize.min, children: [
+                              BotaoVozJogo(key: const Key('arcade-voz'), onTap: _alternarVoz),
+                              const SizedBox(width: 8),
+                              BotaoPausa(onTap: podePausar ? pausar : null),
+                            ])
+                          : BotaoPausa(onTap: podePausar ? pausar : null),
                     ),
                     ),
                   ),

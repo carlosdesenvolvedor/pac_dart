@@ -2054,6 +2054,12 @@ api.composicao = () => {
   });
   return cat;
 };
+// 🔊 a palavra falada no inglês (o Dart chama ao falar): a música abaixa por `ms` pro volume da
+// batida (VOLUME_MUSICA_BATIDA) e volta sozinha; nunca encurta um ducking mais longo já em curso
+api.abaixarMusica = (ms) => {
+  const ate = performance.now() + Math.max(0, Math.min(5000, +ms || 0));
+  if (ate > duckAte) duckAte = ate;
+};
 // gancho de teste/diagnóstico: turismo3d.forcarQualidade('minima')
 api.forcarQualidade = (nivel) => { if (PERFIS[nivel]) aplicarQualidade(nivel); return nivelQualidade; };
 // o stub do index.html tinha carregar(); mantém o contrato depois da troca

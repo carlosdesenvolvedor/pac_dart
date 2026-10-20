@@ -4,7 +4,8 @@ import '../../domain/turismo.dart';
 import 'pista_gt.dart';
 import 'vista_3d_controlador.dart';
 
-/// Fora da web não há WebGL/Three.js: a vista em Canvas assume.
+/// Fora da web não há WebGL/Three.js: a vista em Canvas assume. Ela não toca música: o
+/// [Vista3DControlador.abaixarMusica] (a palavra falada no inglês) fica sem ninguém ligado — no-op.
 class Vista3D extends StatelessWidget {
   final TurismoEngine engine;
   final double relogio;
