@@ -16,6 +16,7 @@ import 'features/habito/data/habito_repository.dart';
 import 'features/habito/domain/lembrete.dart';
 import 'features/ia/data/cota_repository.dart';
 import 'features/ingles/data/audio_usuario_repository.dart';
+import 'features/ingles/data/palavras_repository.dart';
 import 'features/ingles/data/reconhecedor_fala.dart';
 import 'features/ingles/data/revisao_repository.dart';
 import 'features/ingles/data/tradutor.dart';
@@ -43,6 +44,7 @@ PacDartApp _app() => PacDartApp(
       agendadorBuilder: () => _AgendadorFake(),
       iaCotaBuilder: (_) => LocalCotaRepository(),
       audioBuilder: (_) => MemoriaAudioUsuarioRepository(),
+      palavrasBuilder: (u) => LocalPalavrasRepository(u.uid),
       rankingBuilder: () => _RankingFake(),
       tutorBuilder: () => _TutorFake(),
       tradutorBuilder: () => _TradutorFake(),

@@ -140,7 +140,7 @@ class _EstradaGtPainter extends CustomPainter {
     }
 
     // ---- adereços e portais (sprites), do mais longe pro mais perto
-    final portalPorIndice = {for (final p in engine.portais) p.indice: p};
+    final portalPorIndice = _portaisPorIndice(engine.portais);
     for (final sp in visiveis.reversed) {
       _adereco(c, sp, f);
       final portal = portalPorIndice[sp.seg.indice];
@@ -355,8 +355,17 @@ class _EstradaGtPainter extends CustomPainter {
             ..color = _neblina(digitada ? const Color(0xFF57C765) : (travada ? Mixart.brand : const Color(0xFF57C765).withValues(alpha: .8)), nb));
       if (boxW >= 26) {
         final texto = digitada ? '✓' : portal.palavras[i];
-        final tam = math.min(boxH * .6, boxW / (texto.length * .64 + .6));
-        pintarTexto(c, texto, r.center, tamanho: tam, cor: digitada ? const Color(0xFF9CE99C) : Colors.white, peso: FontWeight.w700, espaco: .5);
+        // inglês: placa grande o bastante ganha a tradução numa 2ª linha, menor
+        final traducao = digitada || boxH < 22 ? null : engine.traducao(texto);
+        if (traducao != null) {
+          final tam = math.min(boxH * .44, boxW / (texto.length * .64 + .6));
+          pintarTexto(c, texto, r.center - Offset(0, boxH * .16), tamanho: tam, cor: Colors.white, peso: FontWeight.w700, espaco: .5);
+          final tamT = math.min(math.min(tam * .62, boxH * .24), boxW / (traducao.length * .62 + .6));
+          pintarTexto(c, traducao, r.center + Offset(0, boxH * .26), tamanho: tamT, cor: const Color(0xFFB8C2CC), peso: FontWeight.w600, espaco: 0);
+        } else {
+          final tam = math.min(boxH * .6, boxW / (texto.length * .64 + .6));
+          pintarTexto(c, texto, r.center, tamanho: tam, cor: digitada ? const Color(0xFF9CE99C) : Colors.white, peso: FontWeight.w700, espaco: .5);
+        }
       }
     }
   }
@@ -524,7 +533,10 @@ class _EstradaGtPainter extends CustomPainter {
     if (larg >= 40) {
       final placa = Rect.fromCenter(center: Offset(0, -alt * .2), width: larg * .22, height: alt * .09);
       c.drawRRect(RRect.fromRectAndRadius(placa, Radius.circular(2)), Paint()..color = const Color(0xFFE8ECF0));
-      if (larg >= 90) pintarTexto(c, 'DART', placa.center, tamanho: alt * .07, cor: const Color(0xFF1B1F27), espaco: 1);
+      if (larg >= 90) {
+        pintarTexto(c, engine.traducoes.isNotEmpty ? 'ENG' : 'DART', placa.center,
+            tamanho: alt * .07, cor: const Color(0xFF1B1F27), espaco: 1);
+      }
     }
     // escapamentos
     for (final lado in [-1, 1]) {
@@ -536,6 +548,18 @@ class _EstradaGtPainter extends CustomPainter {
   /// Velocímetro de ponteiro no canto.
   void _velocimetro(Canvas c, Offset centro, double r) =>
       pintarVelocimetro(c, centro, r, engine.fracaoVel, (engine.velocidade * 3.6).round());
+
+  /// Índice do segmento → portal, montado uma vez por pista (a lista do
+  /// motor é fixa) em vez de um mapa novo a cada frame.
+  static List<Portal>? _portaisMapeados;
+  static Map<int, Portal> _porIndice = const {};
+  static Map<int, Portal> _portaisPorIndice(List<Portal> portais) {
+    if (!identical(portais, _portaisMapeados)) {
+      _portaisMapeados = portais;
+      _porIndice = {for (final p in portais) p.indice: p};
+    }
+    return _porIndice;
+  }
 
   @override
   bool shouldRepaint(_EstradaGtPainter old) => true;

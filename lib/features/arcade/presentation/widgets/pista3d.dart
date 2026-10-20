@@ -94,15 +94,20 @@ class PistaPro extends StatelessWidget {
               height: p.horizonte + 4,
               child: CenarioFase(fase: fase),
             ),
+            // camada própria: a estrada só é regravada quando muda a fase ou
+            // o tamanho (o Pac mastigando e a carga da CPU não a arrastam)
             Positioned.fill(
-              child: CustomPaint(painter: _EstradaPainter(p: p, tema: tema, fase: fase)),
+              child: RepaintBoundary(
+                child: CustomPaint(painter: _EstradaPainter(p: p, tema: tema, fase: fase)),
+              ),
             ),
             ...ordem,
             // crachá da fase
             Positioned(
               left: 10,
               top: 10,
-              child: Container(
+              child: RepaintBoundary(
+                child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 decoration: BoxDecoration(
                   color: const Color(0xCC10131A),
@@ -113,6 +118,7 @@ class PistaPro extends StatelessWidget {
                   style: const TextStyle(
                       color: Colors.white, fontSize: 10.5, fontWeight: FontWeight.w700),
                 ),
+              ),
               ),
             ),
           ]);
@@ -185,7 +191,7 @@ class _Corredor extends StatelessWidget {
               ),
             Positioned(
               bottom: cargaH + sombraH * .35,
-              child: avatar(tam),
+              child: RepaintBoundary(child: avatar(tam)),
             ),
             Positioned(
               bottom: cargaH + sombraH * .35 + tam + 3,
@@ -208,7 +214,7 @@ class _Corredor extends StatelessWidget {
                 ),
               ),
             ),
-            if (carga != null) Positioned(bottom: 0, child: CargaCpu(carga: carga!)),
+            if (carga != null) Positioned(bottom: 0, child: RepaintBoundary(child: CargaCpu(carga: carga!))),
           ]),
         );
       },

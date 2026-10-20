@@ -267,7 +267,11 @@ class _CorridaPageState extends State<CorridaPage>
             child: ConstrainedBox(
               constraints: const BoxConstraints(maxWidth: 860),
               child: Stack(children: [
-                ListView(
+                // atrás da pausa/fase vencida/fim, a pista congela (o Pac
+                // para de mastigar); os overlays ficam fora e seguem animando
+                TickerMode(
+                enabled: jogoAnimando,
+                child: ListView(
                   padding: const EdgeInsets.fromLTRB(20, 16, 20, 40),
                   children: [
                     CabecalhoJogo(
@@ -286,6 +290,7 @@ class _CorridaPageState extends State<CorridaPage>
                     const SizedBox(height: 16),
                     if (e == null) _escolheDificuldade() else ..._corrida(e),
                   ],
+                ),
                 ),
                 if (_contagem)
                   ContagemRegressiva(

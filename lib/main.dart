@@ -33,9 +33,11 @@ import 'features/ia/presentation/ia_cubit.dart';
 import 'features/ingles/data/audio_usuario.dart';
 import 'features/ingles/data/audio_usuario_repository.dart';
 import 'features/ingles/data/config_srs_repository.dart';
+import 'features/ingles/data/palavras_repository.dart';
 import 'features/ingles/data/revisao_repository.dart';
 import 'features/ingles/data/textos_repository.dart';
 import 'features/ingles/data/tradutor.dart';
+import 'features/ingles/presentation/palavras_cubit.dart';
 import 'features/ingles/presentation/revisao_cubit.dart';
 import 'features/ranking/data/ranking_repository.dart';
 import 'features/ranking/presentation/ranking_cubit.dart';
@@ -119,6 +121,10 @@ class PacDartApp extends StatelessWidget {
   /// nuvem (`users/{uid}/textos`), que leva os textos da conta para qualquer aparelho; sem Firebase iniciado, o aparelho.
   final TextosRepository Function(AppUser user)? textosBuilder;
 
+  /// O banco de palavras do aluno no inglês (testes/probe: `LocalPalavrasRepository(uid)` ou `MemoriaPalavrasRepository()`).
+  /// Sem isto vale a nuvem (`users/{uid}/palavras/v1`, com cópia no aparelho); sem Firebase iniciado, o aparelho.
+  final PalavrasRepository Function(AppUser user)? palavrasBuilder;
+
   /// Hábito diário (sequência, meta, congelamentos) — testes/probe: `LocalHabitoRepository()`.
   final HabitoRepository Function(AppUser user)? habitoBuilder;
 
@@ -148,6 +154,7 @@ class PacDartApp extends StatelessWidget {
     this.tradutorBuilder,
     this.audioBuilder,
     this.textosBuilder,
+    this.palavrasBuilder,
     this.habitoBuilder,
     this.habitoAgora,
     this.lembreteBuilder,
@@ -314,6 +321,14 @@ class PacDartApp extends StatelessWidget {
                 repo: revisaoBuilder?.call(user) ?? FirestoreRevisaoRepository(user.uid),
                 // os ajustes seguem o mesmo lugar dos cartões: nuvem em produção, aparelho em teste/probe
                 configRepo: revisaoBuilder != null ? LocalConfigSrsRepository() : FirestoreConfigSrsRepository(user.uid),
+              ),
+            ),
+          // inglês: as palavras novas das lições, "Minhas palavras" e o vocabulário dos jogos
+          if (linguagem == Linguagem.ingles)
+            BlocProvider(
+              create: (_) => PalavrasCubit(
+                repo: palavrasBuilder?.call(user) ??
+                    (Firebase.apps.isNotEmpty ? FirestorePalavrasRepository(user.uid) : LocalPalavrasRepository(user.uid)),
               ),
             ),
         ],

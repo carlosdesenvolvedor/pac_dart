@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+import 'dart:typed_data';
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -71,8 +72,12 @@ class Gol3D extends StatelessWidget {
               height: p.horizonte + 2,
               child: CenarioFase(fase: fase),
             ),
+            // camada própria: o campo (≈1.000 pontinhos da torcida) não é
+            // regravado a cada frame do voo da bola/mergulho do goleiro
             Positioned.fill(
-              child: CustomPaint(painter: _CampoPainter(p: p, tema: tema, noturno: escuro)),
+              child: RepaintBoundary(
+                child: CustomPaint(painter: _CampoPainter(p: p, tema: tema, noturno: escuro)),
+              ),
             ),
             _goleiro(p),
             _bola(p),
@@ -198,15 +203,32 @@ class _CampoPainter extends CustomPainter {
           colors: [Color(0xFF2B2F3A), Color(0xFF1C2028)],
         ).createShader(r),
     );
-    // a torcida: pontinhos coloridos em fileiras (estável entre frames)
+    // a torcida: pontinhos coloridos em fileiras (estável entre frames).
+    // Um drawRawPoints por cor (ponto redondo de 2,5 px = círculo de raio
+    // 1,25) em vez de ~1.000 drawCircle; os pontos não se tocam, então a
+    // ordem não muda nada no desenho.
     const cores = [Color(0xFFF2555A), Color(0xFF4FC3F7), Color(0xFFF4F1EA), Color(0xFFFFC73B), Color(0xFF9E9E9E)];
+    final porCor = List.generate(cores.length, (_) => <double>[]);
     var fila = 0;
     for (var y = topo + 3; y < p.horizonte - 6; y += 4.2, fila++) {
       for (var x = 2.0 + (fila.isEven ? 0 : 2); x < p.largura; x += 4.4) {
         final k = ((x * 7).round() + fila * 13) % 11;
         if (k == 0) continue; // cadeiras vazias
-        c.drawCircle(Offset(x, y), 1.25, Paint()..color = cores[k % cores.length].withValues(alpha: .85));
+        porCor[k % cores.length]
+          ..add(x)
+          ..add(y);
       }
+    }
+    for (var i = 0; i < cores.length; i++) {
+      if (porCor[i].isEmpty) continue;
+      c.drawRawPoints(
+        ui.PointMode.points,
+        Float32List.fromList(porCor[i]),
+        Paint()
+          ..color = cores[i].withValues(alpha: .85)
+          ..strokeWidth = 2.5
+          ..strokeCap = StrokeCap.round,
+      );
     }
     // placa de publicidade na beira do gramado
     final placa = Rect.fromLTRB(0, p.horizonte - 6, p.largura, p.horizonte + 1);

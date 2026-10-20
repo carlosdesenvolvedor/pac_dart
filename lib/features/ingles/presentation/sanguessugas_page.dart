@@ -11,7 +11,9 @@ import '../../ia/presentation/widgets/botao_por_que.dart';
 import '../data/voz_ingles.dart';
 import '../domain/baralhos.dart';
 import '../domain/sanguessugas.dart';
+import 'palavras_cubit.dart';
 import 'revisao_cubit.dart';
+import 'treino_palavras.dart';
 
 /// As sanguessugas: os cartões que a pessoa erra demais (8 lapsos ou mais). Cada uma vem com
 /// ajuda — a explicação que a própria frase já tem, outra frase com a mesma palavra, uma dica de
@@ -29,6 +31,20 @@ class _SanguessugasPageState extends State<SanguessugasPage> {
   late final VozIngles _voz = widget.voz ?? VozIngles();
   IndiceBaralhos? _indice;
   List<Trilha>? _trilhasDoIndice;
+
+  @override
+  void initState() {
+    super.initState();
+    // 🔥 o índice das palavras do curso (o "🎯 Treinar as palavras desta frase" precisa dele)
+    final palavras = PalavrasCubit.de(context);
+    if (palavras != null && palavras.state.indice == null) {
+      try {
+        palavras.prepararIndice(context.read<CursoBloc>().state.trilhas).then((_) {
+          if (mounted) setState(() {});
+        }, onError: (_) {});
+      } catch (_) {}
+    }
+  }
 
   @override
   void dispose() {
@@ -138,6 +154,29 @@ class _CartaoSanguessuga extends StatefulWidget {
 class _CartaoSanguessugaState extends State<_CartaoSanguessuga> {
   bool _exemplos = false;
 
+  /// 🔥 As palavras da frase que se treinam (as que pesam e o curso/dicionário conhece; vazio sem o cubit).
+  List<String> _palavrasDaFrase() {
+    final cubit = PalavrasCubit.de(context);
+    if (cubit == null) return const [];
+    final r = <String>[];
+    for (final w in palavrasChave(widget.s.frase.cod)) {
+      final k = cubit.chaveDeTreino(w);
+      if (k != null && !r.contains(k)) r.add(k);
+    }
+    return r;
+  }
+
+  /// A revanche só com as palavras desta frase (sem o "conhecer": a pessoa já as viu muitas vezes).
+  Future<void> _treinar(List<String> chaves) async {
+    final cubit = PalavrasCubit.de(context);
+    if (cubit == null) return;
+    final palavras = [
+      for (final k in chaves)
+        if (cubit.comoPalavraNova(k) case final p when p.pt.trim().isNotEmpty) p,
+    ];
+    await abrirTreinoPalavras(context, palavras, titulo: '🩸 As palavras desta frase', revanche: true, voz: widget.voz);
+  }
+
   @override
   Widget build(BuildContext context) {
     final s = widget.s;
@@ -217,6 +256,12 @@ class _CartaoSanguessugaState extends State<_CartaoSanguessuga> {
             onTap: () => setState(() => _exemplos = !_exemplos),
           ),
           _Acao(chave: const Key('suspender-sanguessuga'), texto: '⏸ Suspender', onTap: widget.onSuspender),
+          if (_palavrasDaFrase() case final chaves when chaves.isNotEmpty)
+            _Acao(
+              chave: const Key('treinar-palavras-frase'),
+              texto: '🎯 Treinar as palavras desta frase',
+              onTap: () => _treinar(chaves),
+            ),
         ]),
         // a dica de memória é da IA (cota e cache); sem IA na árvore ela simplesmente não existe
         Padding(

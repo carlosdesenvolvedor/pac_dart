@@ -5,6 +5,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import '../../../core/linguagem/linguagem.dart';
 import '../../dartpad/mapa_rodavel.dart';
 import '../../ingles/data/audio_nativo.dart';
+import '../../ingles/data/bocas_ingles.dart';
 import '../domain/curriculo.dart';
 
 /// Lê o currículo da [linguagem] (assets/curriculo.json no Dart,
@@ -27,6 +28,10 @@ class CurriculoLoader {
         final indice = await rootBundle.loadString(AudioNativo.indiceGeradas);
         AudioNativo.registrarGeradas(jsonDecode(indice) as Map<String, dynamic>);
       } catch (_) {} // sem o índice: a voz sintética do navegador
+      try {
+        final bocas = await rootBundle.loadString(BocasIngles.indice);
+        BocasIngles.registrar(jsonDecode(bocas) as Map<String, dynamic>);
+      } catch (_) {} // sem as bocas: o personagem mexe a boca pelo texto
     }
     return trilhas;
   }

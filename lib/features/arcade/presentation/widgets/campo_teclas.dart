@@ -72,6 +72,9 @@ class _CampoTeclasState extends State<CampoTeclas> {
           enableSuggestions: false,
           // sem composição/autocomplete: as palavras dos jogos são ASCII puro
           keyboardType: TextInputType.visiblePassword,
+          // o campo é invisível: o cursor piscando só pedia frame à toa
+          // (inclusive na pausa e no fim de jogo)
+          showCursor: false,
           onTapOutside: (_) => _foco.requestFocus(),
         ),
       ),

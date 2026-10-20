@@ -150,17 +150,47 @@ abstract final class Mixart {
   /// Desligado nos testes (sem rede para baixar fontes).
   static bool usarGoogleFonts = true;
 
+  // ---- cache dos estilos Google Fonts ----
+  // Cada GoogleFonts.*() monta um mapa de variantes, faz 2 copyWith e cria
+  // um Future (loadFontIfNecessary) — e os jogos chamam Mixart.* dentro do
+  // build a cada frame. O TextStyle resultante só depende de (família,
+  // tamanho, peso, cor), então ele é guardado. Só entra no cache depois que
+  // as fontes pendentes carregaram sem erro: enquanto isso (ou se a carga
+  // falhou, sem rede) cada chamada continua passando pelo GoogleFonts, que
+  // é quem tenta baixar de novo.
+  static final _estilos = <(int, double, FontWeight, int), TextStyle>{};
+  static final _fontesProntas = <(int, FontWeight)>{};
+  static final _fontesConferindo = <(int, FontWeight)>{};
+
+  static TextStyle _google(int familia, double size, FontWeight weight, Color c, TextStyle Function() criar) {
+    final chave = (familia, size, weight, c.toARGB32());
+    final guardado = _estilos[chave];
+    if (guardado != null) return guardado;
+    final estilo = criar();
+    final fonte = (familia, weight);
+    if (_fontesProntas.contains(fonte)) {
+      if (_estilos.length >= 512) _estilos.clear(); // cores animadas não crescem pra sempre
+      _estilos[chave] = estilo;
+    } else if (_fontesConferindo.add(fonte)) {
+      GoogleFonts.pendingFonts()
+          .then((_) => _fontesProntas.add(fonte), onError: (Object _) => false)
+          .whenComplete(() => _fontesConferindo.remove(fonte));
+    }
+    return estilo;
+  }
+
   static TextStyle display({double size = 24, FontWeight weight = FontWeight.w700, Color? color}) {
     final c = color ?? atual.text;
     return usarGoogleFonts
-        ? GoogleFonts.funnelDisplay(fontSize: size, fontWeight: weight, color: c, letterSpacing: -.5)
+        ? _google(0, size, weight, c,
+            () => GoogleFonts.funnelDisplay(fontSize: size, fontWeight: weight, color: c, letterSpacing: -.5))
         : TextStyle(fontSize: size, fontWeight: weight, color: c, letterSpacing: -.5);
   }
 
   static TextStyle ui({double size = 13, FontWeight weight = FontWeight.w500, Color? color}) {
     final c = color ?? atual.text;
     return usarGoogleFonts
-        ? GoogleFonts.archivo(fontSize: size, fontWeight: weight, color: c)
+        ? _google(1, size, weight, c, () => GoogleFonts.archivo(fontSize: size, fontWeight: weight, color: c))
         : TextStyle(fontSize: size, fontWeight: weight, color: c);
   }
 
@@ -177,8 +207,8 @@ abstract final class Mixart {
   static TextStyle mono({double size = 13, FontWeight weight = FontWeight.w400, Color? color}) {
     final c = color ?? atual.text;
     return usarGoogleFonts
-        ? GoogleFonts.jetBrainsMono(
-            fontSize: size, fontWeight: weight, color: c, fontFeatures: _semLigaduras)
+        ? _google(2, size, weight, c,
+            () => GoogleFonts.jetBrainsMono(fontSize: size, fontWeight: weight, color: c, fontFeatures: _semLigaduras))
         : TextStyle(
             fontSize: size,
             fontWeight: weight,

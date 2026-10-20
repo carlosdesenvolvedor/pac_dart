@@ -57,7 +57,7 @@ class FirebaseExclusaoDeConta implements ExclusaoDeConta {
 }
 
 /// Apagar `users/{uid}` NÃO apaga as subcoleções: os cartões (`srs`) e o histórico
-/// (`srs_log`) da revisão do inglês precisam sair junto — a Apple e o Google exigem
+/// (`srs_log`) da revisão do inglês, os textos (`textos`) e o banco de palavras (`palavras`) precisam sair junto — a Apple e o Google exigem
 /// que a exclusão leve tudo (inclusive os áudios que o aluno anexou, achados pelo índice).
 /// Em lotes de até 500 operações: no uso normal cabe um só (16 blocos + `_meta` + 1 doc por mês).
 Future<void> apagarDadosDoUsuario(FirebaseFirestore db, String uid) async {
@@ -65,6 +65,9 @@ Future<void> apagarDadosDoUsuario(FirebaseFirestore db, String uid) async {
   final subdocs = [
     ...(await doc.collection('srs').get()).docs.map((d) => d.reference),
     ...(await doc.collection('srs_log').get()).docs.map((d) => d.reference),
+    // os textos colados que viraram lições e o banco de palavras do inglês
+    ...(await doc.collection('textos').get()).docs.map((d) => d.reference),
+    ...(await doc.collection('palavras').get()).docs.map((d) => d.reference),
   ];
   // os áudios do aluno: lê só o ÍNDICE (listar a coleção baixaria todos os arquivos)
   final audios = doc.collection('audio');

@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:js_interop';
+import 'dart:js_interop_unsafe';
 import 'dart:ui_web' as ui_web;
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:web/web.dart' as web;
 
 import '../../../../core/theme/mixart.dart';
@@ -14,6 +16,13 @@ import 'velocimetro.dart';
 
 @JS('turismo3d')
 external JSObject? get _turismo3dObj;
+
+/// O index.html só deixa um "carregador" em `window.turismo3d`: o módulo
+/// (three.js, ~1 MB) é importado quando a corrida 3D abre, não no boot do
+/// app. Depois do import, `window.turismo3d` vira a API de verdade.
+extension type _Turismo3dCarregador(JSObject _) implements JSObject {
+  external JSPromise<JSAny?> carregar();
+}
 
 extension type _Turismo3d(JSObject _) implements JSObject {
   external JSPromise<JSAny?> montar(web.HTMLCanvasElement canvas, JSAny config);
@@ -111,7 +120,11 @@ class _Vista3DState extends State<Vista3D> {
       _falhou = true;
       return;
     }
-    _js = _Turismo3d(obj);
+    if (obj.has('montar')) {
+      _js = _Turismo3d(obj);
+    } else {
+      _carregarModulo(obj);
+    }
     if (!_registrado) {
       _registrado = true;
       ui_web.platformViewRegistry.registerViewFactory(_tipo, (int viewId, {Object? params}) {
@@ -125,6 +138,29 @@ class _Vista3DState extends State<Vista3D> {
         return canvas;
       });
     }
+  }
+
+  /// Importa o módulo 3D sob demanda (a tela de carga já está à vista com
+  /// 0%); se o import falhar (rede, arquivo velho), a vista em Canvas assume.
+  void _carregarModulo(JSObject carregador) {
+    void falhou() {
+      if (!mounted) return;
+      setState(() => _falhou = true);
+      _avisarPronto();
+    }
+
+    _Turismo3dCarregador(carregador).carregar().toDart.then((_) {
+      if (!mounted) return;
+      final obj = _turismo3dObj;
+      if (obj == null || !obj.has('montar')) {
+        falhou();
+        return;
+      }
+      _js = _Turismo3d(obj);
+      _montar(); // se o canvas ainda não entrou no DOM, o relógio de carga insiste
+    }).catchError((Object _) {
+      falhou();
+    });
   }
 
   void _montar() {
@@ -152,6 +188,8 @@ class _Vista3DState extends State<Vista3D> {
             'z': p.z,
             'faixas': p.faixas,
             'palavras': p.palavras,
+            // inglês: a tradução de cada palavra (2ª linha da placa); o Dart/C# não manda nada
+            if (e.traducoes.isNotEmpty) 'traducoes': [for (final w in p.palavras) e.traducao(w) ?? ''],
             'carros': [for (final c in p.carros) {'faixa': c.faixa, 'z': c.z}],
             'fichas': [for (final f in p.fichas) {'z': f.z, 'faixa': f.faixa, 'texto': f.texto}],
           },
@@ -175,7 +213,34 @@ class _Vista3DState extends State<Vista3D> {
       old.controlador?.ligar(null);
       widget.controlador?.ligar(_enviarEstado);
     }
+    // Durante a corrida a página já mandou o estado no tick DESTE frame
+    // (_vista.enviar() logo antes do setState): reenviar era montar o mapa e
+    // passar pelo jsify duas vezes no mesmo frame. Reenvia quando mudou uma
+    // opção, quando ainda não montou, ou quando não houve envio neste frame
+    // (contagem, pausa, fim — o tick não roda e o rebuild é o único envio).
+    final mudouOpcao = old.som != widget.som ||
+        old.pausado != widget.pausado ||
+        old.camera != widget.camera ||
+        old.musica != widget.musica ||
+        old.tremor != widget.tremor ||
+        old.qualidade != widget.qualidade ||
+        !identical(old.engine, widget.engine);
+    if (!mudouOpcao && _montado && _jaEnviouNesteQuadro()) return;
     _enviarEstado();
+  }
+
+  /// Carimbo do frame em que o estado foi enviado pela última vez (null =
+  /// enviado fora de um frame — timer, tecla).
+  Duration? _envioNoQuadro;
+
+  Duration? _quadroAtual() {
+    final b = SchedulerBinding.instance;
+    return b.schedulerPhase == SchedulerPhase.idle ? null : b.currentSystemFrameTimeStamp;
+  }
+
+  bool _jaEnviouNesteQuadro() {
+    final agora = _quadroAtual();
+    return agora != null && _envioNoQuadro == agora;
   }
 
   /// O estado do motor (e as opções) vai pro JS — chamado pela página a
@@ -206,6 +271,7 @@ class _Vista3DState extends State<Vista3D> {
             'rotulo': setasFaixa[p.faixas[i]],
             'tipo': 'seta',
             'ativa': true,
+            if (e.traducao(p.palavras[i]) != null) 'traducao': e.traducao(p.palavras[i])!,
           });
         }
       }
@@ -219,6 +285,7 @@ class _Vista3DState extends State<Vista3D> {
           'rotulo': setasFaixa[digitando.faixas[i]],
           'tipo': 'portal',
           'ativa': travada == null || travada == i,
+          if (e.traducao(digitando.palavras[i]) != null) 'traducao': e.traducao(digitando.palavras[i])!,
         });
       }
     } else if (e.palavraGas != null) {
@@ -229,6 +296,7 @@ class _Vista3DState extends State<Vista3D> {
         'rotulo': '⛽ COMBUSTÍVEL — acelere',
         'tipo': 'gas',
         'ativa': true,
+        if (e.traducao(e.palavraGas!) != null) 'traducao': e.traducao(e.palavraGas!)!,
       });
     }
     js.atualizar({
@@ -268,6 +336,7 @@ class _Vista3DState extends State<Vista3D> {
           },
       ],
     }.jsify()!);
+    _envioNoQuadro = _quadroAtual();
     if (!_pronto && js.pronto) {
       setState(() => _pronto = true);
       _avisarPronto();

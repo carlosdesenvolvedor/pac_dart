@@ -7,15 +7,22 @@ import 'package:flutter/scheduler.dart';
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
 import '../../ranking/presentation/ranking_cubit.dart';
-import '../domain/palavras_csharp.dart';
+import '../../ingles/domain/erros_palavra.dart';
+import '../../ingles/domain/teimosas.dart';
+import '../../ingles/presentation/acoes_teimosas.dart';
+import '../../ingles/presentation/palavras_cubit.dart';
 import 'banco_arcade.dart';
 import '../domain/personagem.dart';
 import '../domain/tiro_engine.dart';
+import '../domain/tropecos.dart';
+import '../domain/vocabulario_jogo.dart';
+import 'widgets/legenda_traducao.dart';
 import 'widgets/arcade_ui.dart';
 import 'widgets/avatares.dart';
 import 'widgets/campanha.dart';
 import 'widgets/campo_teclas.dart';
 import 'widgets/cenario.dart';
+import 'widgets/painel_tropecos.dart';
 import 'widgets/perspectiva.dart';
 
 /// ☄️ Chuva de Código — palavras do Dart caem do céu; digite a primeira
@@ -62,14 +69,38 @@ class _ChuvaPageState extends State<ChuvaPage>
     with WidgetsBindingObserver, PausaDeJogo<ChuvaPage>, SingleTickerProviderStateMixin {
   RankingCubit? _ranking;
   late TiroEngine _engine = _novoEngine();
-  late final Ticker _ticker = createTicker(_tick);
+  late final Ticker _ticker; // criado no initState, ligado só na partida
 
-  /// Motor com as palavras da vertente em uso (Dart ou C#).
+  /// Motor com as palavras da vertente em uso (Dart, C# ou as das lições de inglês).
   TiroEngine _novoEngine() {
-    final v = vocabularioDe();
+    final v = _vocab = BancoArcade.vocabulario(context);
     return TiroEngine(rnd: math.Random(widget.semente), curtas: v.curtas, medias: v.medias, longas: v.longas);
   }
+
+  /// O vocabulário da partida (a tradução embaixo da palavra no inglês).
+  VocabularioJogo? _vocab;
+
+  /// Inglês: o banco de palavras do aluno e o que aconteceu com cada palavra nesta partida.
+  PalavrasCubit? _palavrasCubit;
+  final _placar = PlacarPalavras();
   Duration _ultimo = Duration.zero;
+
+  /// O Ticker só roda com a chuva caindo (da largada até a pausa/o fim): parado, não pede frame (no
+  /// navegador cada frame redesenha a tela inteira). Ao religar, o 1º passo conta a partir do último
+  /// frame desenhado ([_religadoEm]) — como se ele nunca tivesse parado; na volta da pausa, no máximo
+  /// do tamanho do último passo jogado ([_ultimoDt]), sem o salto do tempo parado.
+  Duration? _religadoEm;
+  bool _retomando = false;
+  double _ultimoDt = 1 / 60;
+
+  /// O campo invisível é sempre o mesmo widget: o setState de cada frame não o reconstrói.
+  late final _campo = CampoTeclas(onChar: _tecla);
+
+  /// Inglês (teimosas): os tropeços da partida, as teclas erradas em cada palavra travada (por id) e a
+  /// oferta "treinar só elas" do fim de jogo. Null/vazio no Dart e no C#.
+  TropecosDoJogo? _tropecos;
+  final Map<int, int> _errosNoAlvo = {};
+  SugestaoTeimosas? _sug;
 
   final List<_Tiro> _tiros = [];
   final List<_Premio> _premios = [];
@@ -95,10 +126,31 @@ class _ChuvaPageState extends State<ChuvaPage>
   void initState() {
     super.initState();
     _ranking = RankingCubit.de(context);
+    _palavrasCubit = BancoArcade.palavras(context);
+    if (_palavrasCubit != null) _tropecos = TropecosDoJogo();
+    _ticker = createTicker(_tick);
     PersonagemStore.carregar().then((_) {
       if (mounted) setState(() {});
     });
+  }
+
+  void _ligarTicker({bool retomando = false}) {
+    if (_ticker.isActive) return;
+    _religadoEm = SchedulerBinding.instance.currentSystemFrameTimeStamp;
+    _retomando = retomando;
     _ticker.start();
+  }
+
+  void _desligarTicker() {
+    if (_ticker.isActive) _ticker.stop();
+  }
+
+  @override
+  void aoPausar() => _desligarTicker();
+
+  @override
+  void aoRetomar() {
+    if (!_acabou && !_contagem) _ligarTicker(retomando: true);
   }
 
   @override
@@ -106,10 +158,12 @@ class _ChuvaPageState extends State<ChuvaPage>
     _ticker.dispose();
     // fechou no meio: o que já foi destruído vale ponto mesmo assim
     if (!_pontuado && _engine.pontos > 0) _ranking?.arcadeJogado('chuva', _engine.pontos);
+    _placar.enviar(_palavrasCubit, fonte: FonteErro.chuva, tropecos: _tropecos);
     super.dispose();
   }
 
   void _reiniciar() {
+    _desligarTicker(); // volta para a largada 3-2-1
     setState(() {
       _engine = _novoEngine();
       _tiros.clear();
@@ -124,24 +178,46 @@ class _ChuvaPageState extends State<ChuvaPage>
       _novoRecorde = false;
       _pontuado = false;
       pausado = false;
+      _errosNoAlvo.clear();
+      _sug = null;
+      if (_tropecos != null) _tropecos = TropecosDoJogo();
     });
   }
 
   void _largada() {
     if (!mounted || _acabou) return;
     setState(() => _contagem = false);
+    _ligarTicker();
     pausarSeEscondido();
   }
 
   void _tick(Duration elapsed) {
     var dt = (elapsed - _ultimo).inMicroseconds / 1e6;
+    final religado = _religadoEm;
+    if (religado != null) {
+      // 1º frame depois de (re)ligar: o elapsed recomeçou do zero
+      dt = (SchedulerBinding.instance.currentSystemFrameTimeStamp - religado).inMicroseconds / 1e6;
+      if (_retomando) dt = math.min(dt, _ultimoDt);
+      _religadoEm = null;
+    }
     _ultimo = elapsed;
     if (_acabou || !mounted || _contagem || pausado) return;
     if (dt > 0.1) dt = 0.1; // aba dormiu: não deixa tudo despencar de uma vez
+    if (dt > 0) _ultimoDt = dt;
     final nivelAntes = _engine.nivel;
     final vidasAntes = _engine.vidas;
+    final noArAntes = _palavrasCubit == null ? null : [..._engine.ativas];
     setState(() {
       _engine.tick(dt);
+      // inglês: a palavra que chegou ao chão conta como erro nela
+      if (noArAntes != null) {
+        for (final p in noArAntes) {
+          if (!_engine.ativas.contains(p)) {
+            _placar.errou(p.texto);
+            _tropecou(p, 1); // caiu: errou de vez
+          }
+        }
+      }
       if (_engine.vidas < vidasAntes) {
         Sons.toca(Som.defesa);
         _tremor++;
@@ -178,6 +254,26 @@ class _ChuvaPageState extends State<ChuvaPage>
     _avisoTempo = segundos;
   }
 
+  /// Inglês: uma ocorrência de [p] terminou com falha [f] (caiu = 1; destruída com n teclas erradas =
+  /// n·0,34). Na 2ª escapada, o aviso leve no topo. Chame dentro de um setState.
+  void _tropecou(PalavraCaindo p, double f) {
+    final t = _tropecos;
+    final erradas = _errosNoAlvo.remove(p.id) ?? 0;
+    if (t == null) return;
+    final falha = f >= 1 ? 1.0 : math.min(1.0, erradas * .34);
+    if (falha <= 0) return;
+    t.falha(p.texto, falha);
+    final w = t.aviso(p.texto, pode: !_contagem && !pausado);
+    if (w != null) _mostraAviso(BancoArcade.textoAviso(w, t.vezes(w)), 3.2);
+  }
+
+  /// "⚡ Revanche no jogo": as palavras da oferta em foco e outra partida.
+  void _revanche() {
+    final s = _sug;
+    if (s != null) jogarComTeimosas(context, s.palavras, dentroDoJogo: true);
+    _reiniciar();
+  }
+
   void _tecla(String ch) {
     if (_acabou || _contagem || pausado || ch.trim().isEmpty) return;
     final multAntes = _engine.multiplicador;
@@ -188,6 +284,11 @@ class _ChuvaPageState extends State<ChuvaPage>
           _tiros.add(_Tiro(palavra!.x, palavra.y));
           Sons.toca(Som.tiro);
         case TiroResultado.destruiu:
+          if (_palavrasCubit != null) _placar.viu(palavra!.texto);
+          if (_tropecos != null) {
+            _tropecos!.vista(palavra!.texto);
+            _tropecou(palavra, 0);
+          }
           _tiros.add(_Tiro(palavra!.x, palavra.y));
           _premios.add(_Premio(palavra.x, palavra.y, '+${_engine.ultimoGanho}', palavra.ouro));
           _explosoes.add(_Explosao(palavra.x, palavra.y, palavra.ouro, palavra.id));
@@ -197,6 +298,8 @@ class _ChuvaPageState extends State<ChuvaPage>
             _mostraAviso('🔥 COMBO x${_engine.multiplicador} — pontos multiplicados!', 2.2);
           }
         case TiroResultado.errou:
+          // inglês: tecla errada na palavra travada conta para ela (sem alvo, não é de palavra nenhuma)
+          if (_tropecos != null && palavra != null) _errosNoAlvo[palavra.id] = (_errosNoAlvo[palavra.id] ?? 0) + 1;
           _flashErro = 10;
           Sons.toca(Som.erro);
           if (multAntes > 1) _mostraAviso('💔 Combo perdido', 1.4);
@@ -209,14 +312,46 @@ class _ChuvaPageState extends State<ChuvaPage>
   Future<void> _fim() async {
     if (_pontuado) return;
     _pontuado = true;
+    _desligarTicker();
     setState(() {
       _acabou = true;
       _tiros.clear();
       pausado = false;
     });
     Sons.toca(Som.defesa);
+    _placar.enviar(_palavrasCubit, fonte: FonteErro.chuva, tropecos: _tropecos);
+    _oferecerTeimosas();
     final recorde = await _ranking?.arcadeJogado('chuva', _engine.pontos);
     if (mounted && recorde == true) setState(() => _novoRecorde = true);
+  }
+
+  /// Inglês: a oferta "treinar só elas" do fim de jogo (uma por partida), se a política deixar.
+  void _oferecerTeimosas() {
+    final cubit = _palavrasCubit, t = _tropecos;
+    if (cubit == null || t == null || t.somas.isEmpty) return;
+    final sug = cubit.sugestao(LocalSugestao.fimDeJogo, daSessao: BancoArcade.daSessao(cubit, t));
+    if (sug == null) return;
+    cubit.marcarMostrada();
+    setState(() => _sug = sug);
+  }
+
+  Widget? _ofertaFim() {
+    final s = _sug;
+    if (s == null) return null;
+    return OfertaTeimosasFim(
+      sugestao: s,
+      onTreinar: () => treinarTeimosas(context, s.palavras, origem: 'chuva').then((_) {
+        if (mounted) setState(() => _sug = null);
+      }),
+      onRevanche: _revanche,
+      onAgoraNao: _palavrasCubit?.adiar,
+    );
+  }
+
+  /// Inglês: a linha das palavras anotadas na pausa (null sem nada).
+  Widget? _anotadas() {
+    final t = BancoArcade.linhaAnotadas(_tropecos);
+    return t == null ? null : LinhaAnotadas(t);
   }
 
   String get _comboTexto {
@@ -242,6 +377,8 @@ class _ChuvaPageState extends State<ChuvaPage>
                 Column(children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 16, 20, 10),
+                    // camadas próprias: a arena que mexe a cada frame não arrasta o cabeçalho
+                    child: RepaintBoundary(
                     child: CabecalhoJogo(
                       rotulo: 'ARCADE · DIGITAÇÃO',
                       titulo: BancoArcade.soDigitacao ? '☄️ Chuva de Palavras' : '☄️ Chuva de Código',
@@ -256,11 +393,16 @@ class _ChuvaPageState extends State<ChuvaPage>
                       ],
                       acao: BotaoPausa(onTap: podePausar ? pausar : null),
                     ),
+                    ),
                   ),
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
-                      child: Tremor(gatilho: _tremor, child: _arena()),
+                      // atrás da pausa a arena congela (o Pac para de mastigar); a pausa fica fora
+                      child: TickerMode(
+                        enabled: !pausado,
+                        child: RepaintBoundary(child: Tremor(gatilho: _tremor, child: _arena())),
+                      ),
                     ),
                   ),
                   Padding(
@@ -272,7 +414,7 @@ class _ChuvaPageState extends State<ChuvaPage>
                       style: Mixart.ui(size: 11.5, color: Mixart.textFaint),
                     ),
                   ),
-                  CampoTeclas(onChar: _tecla),
+                  _campo,
                 ]),
                 if (_contagem)
                   ContagemRegressiva(
@@ -281,7 +423,8 @@ class _ChuvaPageState extends State<ChuvaPage>
                     legenda: 'digite a 1ª letra pra travar a mira',
                   ),
                 if (pausado)
-                  PausaOverlay(onContinuar: retomar, onSair: () => Navigator.of(context).pop()),
+                  PausaOverlay(
+                      onContinuar: retomar, onSair: () => Navigator.of(context).pop(), extra: _anotadas()),
                 if (_acabou)
                   FimDeJogo(
                     emoji: _engine.destruidas >= 24 ? '🏆' : '☄️',
@@ -300,6 +443,7 @@ class _ChuvaPageState extends State<ChuvaPage>
                     ],
                     onDeNovo: _reiniciar,
                     onSair: () => Navigator.of(context).pop(),
+                    extra: _ofertaFim(),
                   ),
               ]),
             ),
@@ -323,7 +467,9 @@ class _ChuvaPageState extends State<ChuvaPage>
         final h = box.maxHeight;
         // 200 = folga pro chip mais largo (GestureDetector dourado) não vazar
         double px(double x) => x * (w - 200);
-        double py(double y) => y * (h - 116);
+        // no inglês a tradução embaixo do chip pede mais 16 px de folga no chão
+        final folgaChao = BancoArcade.soDigitacao ? 132.0 : 116.0;
+        double py(double y) => y * (h - folgaChao);
         final pacX = w / 2;
         final pacY = h - 62;
         final alvo = _engine.alvo;
@@ -399,11 +545,16 @@ class _ChuvaPageState extends State<ChuvaPage>
             Positioned(
               left: px(pr.x) + 20,
               top: py(pr.y) - pr.t * 34,
-              child: Opacity(
-                opacity: (1 - pr.t).clamp(0, 1),
-                child: Text('${pr.texto}${pr.ouro ? ' ✨' : ''}',
-                    style: Mixart.display(size: 16, color: Mixart.brand)),
-              ),
+              // o alfa vai na cor (sem camada por prêmio); o ✨ colorido do ouro fica no Opacity
+              child: pr.ouro
+                  ? Opacity(
+                      opacity: (1 - pr.t).clamp(0, 1),
+                      child: Text('${pr.texto} ✨', style: Mixart.display(size: 16, color: Mixart.brand)),
+                    )
+                  // o estilo-base fica no cache do Mixart; só a cor (com o alfa do quadro) muda
+                  : Text(pr.texto,
+                      style: Mixart.display(size: 16, color: Mixart.brand)
+                          .copyWith(color: Mixart.brand.withValues(alpha: (1 - pr.t).clamp(0.0, 1.0)))),
             ),
           // o atirador: seu personagem de boca (ou bico) pra cima, com sombra
           Positioned(
@@ -416,7 +567,8 @@ class _ChuvaPageState extends State<ChuvaPage>
             top: pacY - 23,
             child: Transform.rotate(
               angle: -math.pi / 2,
-              child: const IgnorePointer(child: AvatarPersonagem(tamanho: 46)),
+              // no fim (atrás do placar final) o Pac para de mastigar; o tremor da última vida segue
+              child: IgnorePointer(child: AvatarPersonagem(tamanho: 46, animado: !_acabou)),
             ),
           ),
           // aviso (nível novo, combo)
@@ -454,6 +606,28 @@ class _ChuvaPageState extends State<ChuvaPage>
     final prox = n < len ? p.texto[n] : '';
     final resto = n + 1 < len ? p.texto.substring(n + 1) : '';
 
+    final traducao = BancoArcade.soDigitacao ? _vocab?.traducao(p.texto) : null;
+    final chip = _chipPalavra(p, ehAlvo, perigo, corFundo, corTexto, corFeita, feitas, prox, resto);
+    if (traducao == null) return chip;
+    // inglês: a tradução embaixo (o chip fica em cima — a mira e os tiros continuam batendo nele)
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
+      chip,
+      Padding(
+        padding: const EdgeInsets.only(left: 8, top: 3),
+        child: LegendaTraducao(
+          traducao,
+          tamanho: 12,
+          maxLargura: 170,
+          textAlign: TextAlign.left,
+          cor: p.ouro ? Mixart.brand : const Color(0xFFE8ECF0),
+          fundo: const Color(0xB310131A),
+        ),
+      ),
+    ]);
+  }
+
+  Widget _chipPalavra(PalavraCaindo p, bool ehAlvo, bool perigo, Color corFundo, Color corTexto, Color corFeita,
+      String feitas, String prox, String resto) {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 120),
       padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 7),

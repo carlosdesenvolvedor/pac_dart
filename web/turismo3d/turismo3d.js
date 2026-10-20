@@ -121,6 +121,7 @@ function pixelRatioPara(nivel, w, h) {
 }
 function aplicarTamanho() {
   if (!renderer || !ultimoW || !ultimoH) return;
+  congelado = false; // setSize limpa o canvas: redesenha mesmo parado
   const dpr = pixelRatioPara(nivelQualidade, ultimoW, ultimoH);
   renderer.setPixelRatio(dpr);
   renderer.setSize(ultimoW, ultimoH, false);
@@ -495,7 +496,7 @@ function construirPista(tema) {
 }
 
 // ---------- pórticos ----------
-function pintarPlaca(ctx, w, h, texto, estilo) {
+function pintarPlaca(ctx, w, h, texto, estilo, sub) {
   const cores = {
     livre: ['#10131a', '#57c765', '#ffffff'],
     travada: ['#10131a', '#ffc73b', '#ffffff'],
@@ -510,10 +511,19 @@ function pintarPlaca(ctx, w, h, texto, estilo) {
   ctx.lineWidth = 12; ctx.strokeStyle = cores[1]; ctx.stroke();
   ctx.fillStyle = cores[2];
   ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  let tam = 96;
+  // inglês: a tradução vem numa 2ª linha menor (a palavra sobe e encolhe um pouco)
+  const comSub = !!sub && texto !== '✓';
+  let tam = comSub ? 78 : 96;
   ctx.font = `800 ${tam}px "JetBrains Mono", "Roboto Mono", monospace`;
   while (ctx.measureText(texto).width > w * 0.84 && tam > 28) { tam -= 6; ctx.font = `800 ${tam}px "JetBrains Mono", "Roboto Mono", monospace`; }
-  ctx.fillText(texto, w / 2, h / 2 + 6);
+  ctx.fillText(texto, w / 2, comSub ? h / 2 - 16 : h / 2 + 6);
+  if (comSub) {
+    let ts = 40;
+    ctx.font = `700 ${ts}px "Inter", "Roboto", sans-serif`;
+    while (ctx.measureText(sub).width > w * 0.84 && ts > 18) { ts -= 3; ctx.font = `700 ${ts}px "Inter", "Roboto", sans-serif`; }
+    ctx.fillStyle = estilo === 'bloqueada' || estilo === 'batida' ? cores[2] : '#b8c2cc';
+    ctx.fillText(sub, w / 2, h - 40);
+  }
 }
 
 // ---------- fichas (moedas de programação) ----------
@@ -651,12 +661,13 @@ function construirPortais() {
       const i = p.faixas.indexOf(faixa);
       const texto = i >= 0 ? p.palavras[i] : '✕';
       const estilo = i >= 0 ? 'livre' : 'bloqueada';
-      const ct = canvasTex(512, 176, (ctx, w, h) => pintarPlaca(ctx, w, h, texto, estilo));
+      const sub = (i >= 0 && p.traducoes && p.traducoes[i]) ? p.traducoes[i] : '';
+      const ct = canvasTex(512, 176, (ctx, w, h) => pintarPlaca(ctx, w, h, texto, estilo, sub));
       const mat = new THREE.MeshStandardMaterial({ map: ct.tex, transparent: true, roughness: .5, emissive: 0xffffff, emissiveMap: ct.tex, emissiveIntensity: cfg.tema.noturno ? 0.9 : 0.35 });
       const placa = new THREE.Mesh(placaGeo, mat);
       placa.position.set((faixa - 1) * LARGURA_FAIXA, 4.55, 0.22);
       grupo.add(placa);
-      placas.push({ ...ct, faixa, texto, estiloAtual: estilo, i });
+      placas.push({ ...ct, faixa, texto, sub, estiloAtual: estilo, i });
     }
     scene.add(grupo);
     const port = { grupo, placas, dados: p };
@@ -804,7 +815,7 @@ function atualizarPlacas() {
       else estilo = 'livre';
       if (estilo !== placa.estiloAtual) {
         placa.estiloAtual = estilo;
-        pintarPlaca(placa.ctx, placa.canvas.width, placa.canvas.height, texto, estilo);
+        pintarPlaca(placa.ctx, placa.canvas.width, placa.canvas.height, texto, estilo, placa.sub);
         placa.tex.needsUpdate = true;
       }
     }
@@ -1254,8 +1265,9 @@ function carregarCeu(tema) {
 }
 
 // ---------- API ----------
+const benchMemo = new Map(); // `${gpu}|${w}x${h}@${dpr}` → ms do benchmark (por sessão)
 async function montar(canvas, config) {
-  destruir();
+  destruir(true); // a corrida anterior sai, mas o contexto fica (pode ser o mesmo canvas)
   cfg = { ...config };
   cfg.tema = TEMAS[config.tema] || TEMAS[1];
   L = config.comprimentoSegmento || 8;
@@ -1274,7 +1286,12 @@ async function montar(canvas, config) {
   else if (gpu.software) nivelQualidade = 'minima';
   else {
     const dprAlta = pixelRatioPara('alta', medida.w, medida.h);
-    let ms = await benchmarkGpu(true, medida.w, medida.h, dprAlta);
+    // a mesma GPU no mesmo tamanho já foi medida nesta sessão: reaproveita
+    // (o teste de estresse custava 0,5–1,5 s de GPU a 100% em toda corrida)
+    const chaveBench = `${gpu.nome}|${medida.w}x${medida.h}@${dprAlta}`;
+    let ms = benchMemo.get(chaveBench) || 0;
+    if (!ms) {
+    ms = await benchmarkGpu(true, medida.w, medida.h, dprAlta);
     // resultado ruim pode ser só o momento (aba recém-visível, Flutter ainda
     // desenhando o carregamento): espera meio segundo e mede de novo, e vale
     // o melhor dos dois — um falso "mínima" custa mais que 0,5 s de espera
@@ -1283,6 +1300,10 @@ async function montar(canvas, config) {
       const ms2 = await benchmarkGpu(true, medida.w, medida.h, dprAlta);
       console.info('[turismo3d] benchmark repetido:', +ms.toFixed(1), '→', +ms2.toFixed(1), 'ms');
       if (ms2 > 0) ms = Math.min(ms, ms2);
+    }
+    // só guarda medida boa: uma ruim pode ter sido o momento — a próxima
+    // corrida mede de novo, como sempre
+    if (ms > 0 && ms <= 19) benchMemo.set(chaveBench, ms);
     }
     api.benchMs = +ms.toFixed(1);
     api.benchEm = { largura: medida.w, altura: medida.h, dpr: dprAlta };
@@ -1464,7 +1485,9 @@ function pintarPainel(painel, pal) {
   const palavra = pal.texto || '';
   const n = pal.digitadas || 0;
   const rotulo = pal.rotulo || '';
-  const chave = palavra + '|' + n + '|' + rotulo + '|' + (pal.tipo || '') + '|' + (pal.ativa ? 1 : 0);
+  // inglês: a tradução embaixo da palavra (vazio no Dart/C#)
+  const traducao = pal.traducao || '';
+  const chave = palavra + '|' + n + '|' + rotulo + '|' + (pal.tipo || '') + '|' + (pal.ativa ? 1 : 0) + '|' + traducao;
   if (chave === painel.chave) return;
   painel.chave = chave;
   const ctx = painel.ctx, w = 1024, h = 320;
@@ -1482,21 +1505,27 @@ function pintarPainel(painel, pal) {
   if (pal.tipo === 'seta') {
     // modo setas: a direção é o que importa; a palavra fica como legenda
     ctx.font = '900 190px "Inter", "Roboto", sans-serif';
-    ctx.fillText(rotulo.split(' ')[0], w / 2, 150);
-    ctx.font = '700 54px "JetBrains Mono", "Roboto Mono", monospace';
+    ctx.fillText(rotulo.split(' ')[0], w / 2, traducao ? 130 : 150);
+    ctx.font = traducao ? '700 48px "JetBrains Mono", "Roboto Mono", monospace' : '700 54px "JetBrains Mono", "Roboto Mono", monospace';
     ctx.fillStyle = '#c9d1d9';
-    ctx.fillText(palavra, w / 2, 262);
+    ctx.fillText(palavra, w / 2, traducao ? 240 : 262);
+    if (traducao) {
+      ctx.font = '600 36px "Inter", "Roboto", sans-serif';
+      ctx.fillStyle = '#9aa4ae';
+      ctx.fillText(traducao, w / 2, 286);
+    }
     ctx.globalAlpha = 1;
     painel.tex.needsUpdate = true;
     return;
   }
-  ctx.fillText(rotulo, w / 2, 64);
-  let tam = 150;
+  ctx.fillText(rotulo, w / 2, traducao ? 52 : 64);
+  const tamMax = traducao ? 120 : 150;
+  let tam = tamMax;
   ctx.font = `700 ${tam}px "JetBrains Mono", "Roboto Mono", monospace`;
   while (ctx.measureText(palavra).width > w * 0.86 && tam > 60) { tam -= 8; ctx.font = `700 ${tam}px "JetBrains Mono", "Roboto Mono", monospace`; }
   const total = ctx.measureText(palavra).width;
   let x = w / 2 - total / 2;
-  const y = 205;
+  const y = traducao ? 170 : 205;
   ctx.textAlign = 'left';
   for (let i = 0; i < palavra.length; i++) {
     const ch = palavra[i];
@@ -1510,6 +1539,14 @@ function pintarPainel(painel, pal) {
     }
     ctx.fillText(ch, x, y);
     x += larg;
+  }
+  if (traducao) {
+    ctx.textAlign = 'center';
+    let ts = 52;
+    ctx.font = `600 ${ts}px "Inter", "Roboto", sans-serif`;
+    while (ctx.measureText(traducao).width > w * 0.86 && ts > 28) { ts -= 4; ctx.font = `600 ${ts}px "Inter", "Roboto", sans-serif`; }
+    ctx.fillStyle = '#9aa4ae';
+    ctx.fillText(traducao, w / 2, 268);
   }
   ctx.globalAlpha = 1;
   painel.tex.needsUpdate = true;
@@ -1715,6 +1752,7 @@ function redimensionar(w, h) {
   aplicarTamanho();
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
+  congelado = false;
 }
 
 function atualizar(novo) {
@@ -1722,8 +1760,43 @@ function atualizar(novo) {
   if (novo && novo.largura && novo.altura) redimensionar(novo.largura, novo.altura);
 }
 
-function loop() {
+// ---------- economia de GPU ----------
+// (1) Teto de 60 fps em tela rápida (ProMotion 120 Hz, monitor gamer 144 Hz):
+//     a cena inteira era desenhada 2× mais vezes sem ganho visível. Só liga
+//     com a corrida pronta (a medição da carga continua igual) e quando o
+//     rAF mede acima de ~90 Hz — em 60/75 Hz nada muda. Os vsyncs pulados
+//     nem chamam quadro(): o vigia só vê os quadros desenhados.
+// (2) Quadro congelado quando não há nada a mostrar: pausa, fim (depois de
+//     1,5 s, pras faíscas assentarem) e carga (um quadro por etapa) — o
+//     overlay do Flutter cobre a cena e a última imagem fica igual.
+api.fpsMax = 60; // 0 = sem teto
+api.quadros = 0; // contador de renders (diagnóstico/medição)
+let proximoQuadroMs = 0, rafAnteriorMs = 0, rafMedioMs = 1000 / 60;
+let congelado = false, acabouDesde = 0, progressoDesenhado = -1;
+function deveCongelar(e) {
+  if (!api.pronto && api.progresso < 0.9) return api.progresso === progressoDesenhado; // aquecer/medição (≥ 0,9) desenham
+  if (e.pausado) return true;
+  if (e.acabou) {
+    const agora = performance.now();
+    if (!acabouDesde) acabouDesde = agora;
+    return agora - acabouDesde > 1500;
+  }
+  acabouDesde = 0;
+  return false;
+}
+function pularVsync(t) {
+  if (rafAnteriorMs && t > rafAnteriorMs) rafMedioMs += (Math.min(t - rafAnteriorMs, 50) - rafMedioMs) * 0.05;
+  rafAnteriorMs = t;
+  if (!api.fpsMax || !api.pronto || rafMedioMs > 1000 / 90) { proximoQuadroMs = 0; return false; }
+  const passo = 1000 / api.fpsMax;
+  if (t + 1 < proximoQuadroMs) return true; // 1 ms de folga pro jitter
+  proximoQuadroMs = (t - proximoQuadroMs > passo) ? t + passo : proximoQuadroMs + passo;
+  return false;
+}
+
+function loop(t) {
   animId = requestAnimationFrame(loop);
+  if (pularVsync(typeof t === 'number' ? t : performance.now())) return;
   try {
     quadro();
   } catch (e) {
@@ -1741,6 +1814,8 @@ function loop() {
 //         pra um ponto mais à frente, alternando os lados
 // alta: helicóptero, alta e atrás
 let cinemaPonto = null, cinemaLado = 1;
+// vetores de rascunho da câmera (antes: 2 Vector3 novos por quadro)
+const camAlvoPosRasc = new THREE.Vector3(), camOlharRasc = new THREE.Vector3();
 // a câmera segue a velocidade SUAVIZADA: cada palavra completada dá um
 // impulso e a instantânea sobe e desce o tempo todo — o zoom, a distância
 // e a altura mudavam a cada 2–3 s ("muita mudança de câmera")
@@ -1759,13 +1834,13 @@ function posicionarCamera(e, f, px, pz, fracao, dt) {
   const v = fracaoSuave;
   let alvoPos, alvoOlhar, fov, rigida = false, olharRapido = false;
   if (modo === 'capo') {
-    alvoPos = new THREE.Vector3(px + f.x * 2.2, 0.95, pz + f.z * 2.2);
-    alvoOlhar = new THREE.Vector3(px + f.x * 40, 0.7, pz + f.z * 40);
+    alvoPos = camAlvoPosRasc.set(px + f.x * 2.2, 0.95, pz + f.z * 2.2);
+    alvoOlhar = camOlharRasc.set(px + f.x * 40, 0.7, pz + f.z * 40);
     fov = fovVertical(88 + v * 14);
     rigida = true; olharRapido = true;
   } else if (modo === 'alta') {
-    alvoPos = new THREE.Vector3(px - f.x * 13, 8.5 + v * 1.5, pz - f.z * 13);
-    alvoOlhar = new THREE.Vector3(px + f.x * 12, 0.4, pz + f.z * 12);
+    alvoPos = camAlvoPosRasc.set(px - f.x * 13, 8.5 + v * 1.5, pz - f.z * 13);
+    alvoOlhar = camOlharRasc.set(px + f.x * 12, 0.4, pz + f.z * 12);
     fov = fovVertical(69 + v * 8);
   } else if (modo === 'cinema') {
     const zc = e.posicao || 0;
@@ -1780,15 +1855,15 @@ function posicionarCamera(e, f, px, pz, fracao, dt) {
       camAlvo.set(px, 0.8, pz);
     }
     alvoPos = cinemaPonto.pos;
-    alvoOlhar = new THREE.Vector3(px + f.x * 1.5, 0.8, pz + f.z * 1.5);
+    alvoOlhar = camOlharRasc.set(px + f.x * 1.5, 0.8, pz + f.z * 1.5);
     // teleobjetiva: fecha o zoom quando o carro está longe
     const dist = alvoPos.distanceTo(alvoOlhar);
     const fovAlvo = fovVertical(Math.max(26, Math.min(78, 2000 / (dist + 8))));
     fov = camera.fov + (fovAlvo - camera.fov) * (1 - Math.exp(-dt / 0.35));
     rigida = true; olharRapido = true;
   } else {
-    alvoPos = new THREE.Vector3(px - f.x * (7.4 + v * 1.4), 3.0 + v * 0.3, pz - f.z * (7.4 + v * 1.4));
-    alvoOlhar = new THREE.Vector3(px + f.x * 9, 1.1, pz + f.z * 9);
+    alvoPos = camAlvoPosRasc.set(px - f.x * (7.4 + v * 1.4), 3.0 + v * 0.3, pz - f.z * (7.4 + v * 1.4));
+    alvoOlhar = camOlharRasc.set(px + f.x * 9, 1.1, pz + f.z * 9);
     fov = fovVertical(84 + v * 12);
   }
   if (modo !== 'cinema') cinemaPonto = null;
@@ -1803,9 +1878,23 @@ function posicionarCamera(e, f, px, pz, fracao, dt) {
 }
 
 function quadro() {
+  const e = estado || { posicao: 0, velocidade: 0, velMax: 30, x: 0, xAlvo: 0, impacto: 0, boost: 0 };
+  const parar = deveCongelar(e);
+  if (parar && congelado) {
+    // nada a desenhar: só o áudio segue (o fade até o silêncio) e o tempo
+    // parado é descartado — nem a física nem o vigia o veem como quadro lento
+    const dtParado = Math.min(relogio.getDelta(), 0.1);
+    ultimoQuadroMs = 0;
+    const frParado = Math.max(0, Math.min(1, e.velocidade / (e.velMax || 1)));
+    atualizarMotorAudio(frParado, e);
+    atualizarMusica(e, dtParado);
+    atualizarVento(frParado, e);
+    return;
+  }
+  congelado = parar; // desenha 1 quadro completo e congela no próximo
+  progressoDesenhado = api.progresso;
   vigiarDesempenho();
   const dt = Math.min(relogio.getDelta(), 0.1);
-  const e = estado || { posicao: 0, velocidade: 0, velMax: 30, x: 0, xAlvo: 0, impacto: 0, boost: 0 };
   const q = pose(e.posicao);
   const f = frente(q.h), r = direita(q.h);
   const lat = e.x || 0;
@@ -1866,17 +1955,27 @@ function quadro() {
     o.visible = dz > -30 && dz < perfilAtual.trafego;
   }
   atualizarPlacas();
+  api.quadros++;
   renderer.render(scene, camera);
 }
 
-function destruir() {
+function destruir(manterContexto) {
   pararAudio();
   arremessos = []; faiscas = [];
   if (animId) cancelAnimationFrame(animId);
   animId = 0;
+  congelado = false; acabouDesde = 0; progressoDesenhado = -1; proximoQuadroMs = 0;
   if (resizeObs) resizeObs.disconnect();
   resizeObs = null;
-  if (renderer) { renderer.dispose(); renderer = null; }
+  // forceContextLoss: devolve o contexto WebGL na hora (corrida após
+  // corrida, o navegador chegava a "Too many active WebGL contexts"). Só
+  // quando a vista sai de vez (o Dart chama destruir() no dispose, e cada
+  // corrida nova ganha um canvas novo); montar() troca a cena e mantém.
+  if (renderer) {
+    renderer.dispose();
+    if (!manterContexto) { try { renderer.forceContextLoss(); } catch (e) {} }
+    renderer = null;
+  }
   scene = null; carro = null; luzCarro = null; portais = []; obstaculos = []; faroisLuz = []; estado = null;
   paineis = [];
   postesLuz = []; luzesPool = [];
@@ -1947,4 +2046,7 @@ api.composicao = () => {
 };
 // gancho de teste/diagnóstico: turismo3d.forcarQualidade('minima')
 api.forcarQualidade = (nivel) => { if (PERFIS[nivel]) aplicarQualidade(nivel); return nivelQualidade; };
+// o stub do index.html tinha carregar(); mantém o contrato depois da troca
+// (receitas externas fazem `await window.turismo3d.carregar()` sem saber se já carregou)
+api.carregar = () => Promise.resolve();
 window.turismo3d = api;

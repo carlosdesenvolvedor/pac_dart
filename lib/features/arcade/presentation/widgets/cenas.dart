@@ -14,7 +14,12 @@ class CenaMissao extends StatelessWidget {
   /// Trilha de origem — define o pano de fundo (cicla os 6 cenários).
   final int trilha;
 
-  const CenaMissao({super.key, required this.missao, required this.estado, required this.trilha});
+  /// O Pac mastiga só enquanto a cena roda (ato 3); prevendo/digitando ele
+  /// espera de boca semiaberta — sem pedir frame à toa.
+  final bool animado;
+
+  const CenaMissao(
+      {super.key, required this.missao, required this.estado, required this.trilha, this.animado = true});
 
   int _n(String k, [int d = 0]) => ((estado[k] as num?) ?? d).toInt();
   double _f(String k, [double d = 0]) => ((estado[k] as num?) ?? d).toDouble();
@@ -103,7 +108,7 @@ class CenaMissao extends StatelessWidget {
         curve: Curves.easeOut,
         left: 16 + frac * (xPorta - 62),
         bottom: 22,
-        child: const AvatarPersonagem(tamanho: 38),
+        child: AvatarPersonagem(tamanho: 38, animado: animado),
       ),
     ];
   }
@@ -122,7 +127,7 @@ class CenaMissao extends StatelessWidget {
         child: Column(children: [
           const Text('🚨', style: TextStyle(fontSize: 18)),
           const SizedBox(height: 2),
-          const AvatarPersonagem(tamanho: 34),
+          AvatarPersonagem(tamanho: 34, animado: animado),
           Container(
             margin: const EdgeInsets.only(top: 3),
             padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
@@ -197,7 +202,7 @@ class CenaMissao extends StatelessWidget {
       Positioned(
         left: box.maxWidth / 2 - 20,
         bottom: 22,
-        child: const AvatarPersonagem(tamanho: 36),
+        child: AvatarPersonagem(tamanho: 36, animado: animado),
       ),
     ];
   }
@@ -283,7 +288,7 @@ class CenaMissao extends StatelessWidget {
       Positioned(
         left: box.maxWidth / 2 - 74,
         bottom: 22,
-        child: const AvatarPersonagem(tamanho: 34),
+        child: AvatarPersonagem(tamanho: 34, animado: animado),
       ),
     ];
   }
@@ -298,7 +303,7 @@ class CenaMissao extends StatelessWidget {
       Positioned(
         left: 14,
         bottom: 22,
-        child: const AvatarPersonagem(tamanho: 36),
+        child: AvatarPersonagem(tamanho: 36, animado: animado),
       ),
       // prateleira de produtos
       for (var i = 0; i < rotulos.length; i++)
@@ -353,7 +358,7 @@ class CenaMissao extends StatelessWidget {
       Positioned(
         left: 22,
         bottom: 22,
-        child: const AvatarPersonagem(tamanho: 38),
+        child: AvatarPersonagem(tamanho: 38, animado: animado),
       ),
       // painel da senha
       Positioned(
@@ -427,7 +432,7 @@ class CenaMissao extends StatelessWidget {
         curve: Curves.easeInOut,
         left: (margem - 48) + travessia * (vaoLargura + 52),
         bottom: 66,
-        child: const AvatarPersonagem(tamanho: 34),
+        child: AvatarPersonagem(tamanho: 34, animado: animado),
       ),
     ];
   }

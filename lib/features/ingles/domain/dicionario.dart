@@ -33,6 +33,10 @@ class Dicionario {
 
   static String _capitalizada(String s) => s.isEmpty ? s : s[0].toUpperCase() + s.substring(1);
 
+  /// As bases prováveis de uma forma flexionada ("works" → work…), da mais provável para a menos.
+  /// Só candidatas: quem usa confere se a base existe de fato.
+  static List<String> bases(String w) => _bases(normalizar(w));
+
   /// Bases prováveis de uma forma flexionada, da mais provável para a menos.
   static List<String> _bases(String w) {
     final r = <String>[];

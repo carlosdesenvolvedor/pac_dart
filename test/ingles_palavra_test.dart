@@ -16,10 +16,12 @@ import 'package:pac_dart/features/ia/domain/explicacao.dart';
 import 'package:pac_dart/features/ia/presentation/ia_cubit.dart';
 import 'package:pac_dart/features/ingles/data/dicionario_ingles.dart';
 import 'package:pac_dart/features/ingles/data/reconhecedor_fala.dart';
+import 'package:pac_dart/features/ingles/data/voz_ingles.dart';
 import 'package:pac_dart/features/ingles/domain/dicionario.dart';
 import 'package:pac_dart/features/ingles/domain/entrada_resposta.dart';
 import 'package:pac_dart/features/ingles/domain/roteiro.dart';
 import 'package:pac_dart/features/ingles/presentation/widgets/frase_view.dart';
+import 'package:pac_dart/features/ingles/presentation/widgets/traducao_palavra.dart';
 import 'package:pac_dart/features/tutor/data/tutor_service.dart';
 
 const _frase = "He's an engineer in Chicago.";
@@ -151,6 +153,8 @@ void main() {
       bool mostrarTudo = false,
       String alvo = '',
       String alvoPt = '',
+      OuvirPalavra? onOuvirPalavra,
+      bool falarPalavraAoTocar = true,
     }) async {
       tester.view.physicalSize = const Size(700, 900);
       tester.view.devicePixelRatio = 1;
@@ -179,6 +183,8 @@ void main() {
               alvoPt: alvoPt,
               traducao: 'Ele é engenheiro em Chicago.',
               onAvancar: () {},
+              onOuvirPalavra: onOuvirPalavra,
+              falarPalavraAoTocar: falarPalavraAoTocar,
             ),
           ),
         ),
@@ -221,6 +227,36 @@ void main() {
       await tocarPalavra(t, 2);
       expect(find.byKey(const Key('sentido-palavra')), findsOneWidget);
       expect(tutor.perguntas, hasLength(1));
+    });
+
+    testWidgets('a pronúncia só da palavra: soa ao tocar, e o 🔊 normal e o 🐢 devagar repetem', (t) async {
+      final ouviu = <(String, bool)>[];
+      await abrir(t, onOuvirPalavra: (p, {required lenta}) => ouviu.add((p, lenta)));
+      await tocarPalavra(t, 2); // engineer
+      expect(ouviu, [('engineer', VozIngles.lentaPorPadrao)]);
+      await t.tap(find.byKey(const Key('ouvir-palavra')));
+      await t.pump();
+      await t.tap(find.byKey(const Key('ouvir-palavra-devagar')));
+      await t.pump();
+      expect(ouviu.skip(1), [('engineer', false), ('engineer', true)]);
+      // o balão segue aberto e o foco na frase (dá para continuar digitando)
+      expect(find.byKey(const Key('balao-palavra')), findsOneWidget);
+    });
+
+    testWidgets('"áudio automático" desligado: tocar não fala sozinho, os botões continuam', (t) async {
+      final ouviu = <String>[];
+      await abrir(t, falarPalavraAoTocar: false, onOuvirPalavra: (p, {required lenta}) => ouviu.add(p));
+      await tocarPalavra(t, 4); // Chicago
+      expect(ouviu, isEmpty);
+      await t.tap(find.byKey(const Key('ouvir-palavra-devagar')));
+      await t.pump();
+      expect(ouviu, ['Chicago']);
+    });
+
+    testWidgets('sem voz ligada ao FraseView, o balão não mostra os botões', (t) async {
+      await abrir(t);
+      await tocarPalavra(t, 2);
+      expect(find.byKey(const Key('ouvir-palavra')), findsNothing);
     });
 
     testWidgets('palavra do trecho da lição: o contexto é a tradução do trecho, sem gastar consulta', (t) async {

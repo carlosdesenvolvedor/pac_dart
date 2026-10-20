@@ -23,12 +23,20 @@
 - 👤 Criar o app no Play Console, subir o `.aab`, preencher a ficha (`google-play.md`), Data safety, classificação e público-alvo.
 - 👤 Conta pessoal nova: teste fechado (12+ testadores, 14 dias) antes da produção.
 - 👤 Depois do 1º upload: cadastrar os SHA do "App Signing" no Firebase e (recomendado) ligar o App Check com Play Integrity.
+- ⚠️ **Prender a chave de API do Android ao app** (o GitHub alertou em 14/out/2026: ela está no repositório público, commit 2153671,
+  `lib/firebase_options.dart` L62). No Google Cloud (projeto `pac-dart` > Credenciais > "Android key (auto created by Firebase)",
+  uid `ad11c6ee-…`): restrição "Apps Android" = `com.carlos.paclingo` com o SHA-1 de release `8F:0B:C3:DD:A6:21:05:56:EA:1E:D4:0F:A4:27:85:60:DA:26:12:88`,
+  o de debug `7B:F3:B5:07:EE:E9:D2:50:F2:C3:F8:13:AB:5A:92:1D:90:7A:39:DD` **e o SHA-1 do "App Signing" da Play Console** (sem ele,
+  login e Firestore param no app baixado da loja). Manter a lista de APIs como está. Depois fechar o alerta no GitHub como "won't fix"
+  (chave do Firebase restrita ao app).
 
 ## 4. iOS
 - ✅ Projeto `ios/`, ícones, permissões (microfone e reconhecimento de fala), Firebase configurado, compila no simulador e em dispositivo.
 - 👤 Xcode: abrir `ios/Runner.xcworkspace` > Signing & Capabilities > escolher o **Team**; registrar o Bundle ID no portal da Apple.
 - 👤 `flutter build ipa --release` e enviar pelo Transporter; preencher a ficha (`app-store.md`), App Privacy e a **conta de teste** para a revisão.
 - 👤 (recomendado) App Check com App Attest/DeviceCheck.
+- ⚠️ **Prender a chave de API do iOS ao app** (mesmo alerta do GitHub, `lib/firebase_options.dart` L70): Google Cloud > Credenciais >
+  "iOS key (auto created by Firebase)", uid `ec9bcfb7-…`: restrição "Apps iOS" = `com.carlos.paclingo`. Depois fechar o alerta no GitHub.
 
 ## 5. O que o app faz no celular (feito e verificado)
 - ✅ Login, progresso e ranking (Firebase) — o app abre no simulador do iPhone com o Firebase de verdade.

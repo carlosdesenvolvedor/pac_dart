@@ -52,3 +52,48 @@ const List<String> dicasIngles = [
   'Information e advice não vão para o plural: "some information", "a piece of advice".',
   'Say é dizer algo; tell é contar PARA alguém: "Tell me the truth."',
 ];
+
+/// Tradução curta (o que aparece EMBAIXO da palavra nos jogos) de cada palavra
+/// das três listas acima — a reserva quando a palavra não veio das lições.
+/// Chave em minúsculas.
+const Map<String, String> traducoesEn = {
+  'the': 'o', 'and': 'e', 'you': 'você', 'have': 'ter', 'that': 'que', 'with': 'com', 'this': 'este',
+  'from': 'de', 'they': 'eles', 'what': 'o que', 'know': 'saber', 'want': 'querer', 'like': 'gostar',
+  'time': 'tempo', 'good': 'bom', 'make': 'fazer', 'work': 'trabalhar', 'call': 'ligar', 'need': 'precisar',
+  'help': 'ajudar', 'home': 'casa', 'water': 'água', 'food': 'comida', 'today': 'hoje', 'night': 'noite',
+  'happy': 'feliz', 'thank': 'agradecer', 'sorry': 'desculpe', 'where': 'onde', 'when': 'quando',
+  'think': 'pensar', 'about': 'sobre', 'right': 'certo', 'there': 'lá', 'could': 'poderia', 'would': 'iria',
+  'every': 'cada', 'house': 'casa', 'money': 'dinheiro', 'later': 'mais tarde', 'early': 'cedo',
+  'again': 'de novo', 'small': 'pequeno', 'big': 'grande', 'fast': 'rápido', 'slow': 'lento',
+  'open': 'abrir', 'close': 'fechar', 'buy': 'comprar', 'sell': 'vender', 'eat': 'comer', 'drink': 'beber',
+  'sleep': 'dormir', 'walk': 'andar', 'talk': 'falar', 'read': 'ler', 'write': 'escrever',
+  'learn': 'aprender', 'teach': 'ensinar', 'monday': 'segunda-feira', 'because': 'porque',
+  'people': 'pessoas', 'little': 'pequeno', 'should': 'deveria', 'before': 'antes', 'after': 'depois de',
+  'always': 'sempre', 'never': 'nunca', 'really': 'realmente', 'thing': 'coisa', 'friend': 'amigo',
+  'family': 'família', 'mother': 'mãe', 'father': 'pai', 'brother': 'irmão', 'sister': 'irmã',
+  'morning': 'manhã', 'evening': 'fim de tarde', 'weekend': 'fim de semana', 'kitchen': 'cozinha',
+  'weather': 'tempo', 'travel': 'viajar', 'airport': 'aeroporto', 'ticket': 'passagem', 'coffee': 'café',
+  'dinner': 'jantar', 'breakfast': 'café da manhã', 'meeting': 'reunião', 'project': 'projeto',
+  'manager': 'gerente', 'company': 'empresa', 'office': 'escritório', 'problem': 'problema',
+  'answer': 'resposta', 'question': 'pergunta', 'change': 'mudar', 'better': 'melhor',
+  'enough': 'suficiente', 'without': 'sem', 'through': 'através de', 'already': 'já',
+  'usually': 'normalmente', 'tonight': 'hoje à noite', 'tomorrow': 'amanhã', 'remember': 'lembrar',
+  'believe': 'acreditar', 'explain': 'explicar', 'improve': 'melhorar', 'deliver': 'entregar',
+  'english': 'inglês', 'friday': 'sexta-feira', 'january': 'janeiro', 'beautiful': 'bonito',
+  'different': 'diferente', 'important': 'importante', 'something': 'algo', 'everybody': 'todo mundo',
+  'yesterday': 'ontem', 'interview': 'entrevista', 'available': 'disponível', 'excellent': 'excelente',
+  'necessary': 'necessário', 'restaurant': 'restaurante', 'experience': 'experiência',
+  'understand': 'entender', 'definitely': 'com certeza', 'afternoon': 'tarde', 'apartment': 'apartamento',
+  'neighborhood': 'bairro', 'environment': 'ambiente', 'opportunity': 'oportunidade',
+  'information': 'informação', 'comfortable': 'confortável', 'appointment': 'compromisso',
+  'development': 'desenvolvimento', 'requirement': 'requisito', 'unfortunately': 'infelizmente',
+  'immediately': 'imediatamente', 'responsibility': 'responsabilidade', 'communication': 'comunicação',
+  'september': 'setembro', 'wednesday': 'quarta-feira', 'deployment': 'implantação',
+  'documentation': 'documentação',
+};
+
+/// Fichas na pista do Dart Turismo no inglês (no lugar dos símbolos de código):
+/// o MESMO tamanho de `fichasDart` (12), para o sorteio da pista ser igual.
+const List<String> fichasIngles = [
+  'hi', 'yes', 'ok', 'wow', '?', '!', 'and', 'the', 'you', 'I am', 'go', 'cool',
+];

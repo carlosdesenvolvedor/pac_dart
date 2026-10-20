@@ -11,6 +11,19 @@ import '../../../ingles/presentation/baralhos_page.dart';
 import '../../../ingles/presentation/fixacao.dart';
 import '../../../ingles/presentation/revisao_cubit.dart';
 import '../../../ingles/presentation/texto_para_licao_page.dart';
+import '../../../ingles/domain/palavras_novas.dart';
+import '../../../ingles/presentation/minhas_palavras_page.dart';
+import '../../../ingles/presentation/palavras_cubit.dart';
+import '../../../ingles/presentation/treino_palavras.dart';
+import '../../../ingles/presentation/widgets/elenco_ingles.dart';
+import '../../../ingles/domain/banco_palavras.dart';
+import '../../../../core/ui/festa.dart';
+import '../../domain/mapa_regras.dart';
+import 'mapa/banner_unidade.dart';
+import 'mapa/bau_trilha.dart';
+import 'mapa/caminho_ingles.dart';
+import 'mapa/guia_trilha.dart';
+import 'mapa/no_3d.dart';
 
 import '../../../../core/theme/mixart.dart';
 import '../../../ia/presentation/cenarios_page.dart';
@@ -32,6 +45,13 @@ import 'teoria_page.dart';
 class MapaPage extends StatefulWidget {
   const MapaPage({super.key});
 
+  /// Inglês: rolar sozinho até a lição atual ao abrir (testes podem desligar).
+  static bool rolarAoAbrir = true;
+
+  /// Esquece as lições já vistas (a comemoração da volta compara com elas). Só para testes.
+  @visibleForTesting
+  static void esquecerVistas() => _MapaPageState._ultimasVistas = Expando<Set<String>>('mapa-vistas');
+
   @override
   State<MapaPage> createState() => _MapaPageState();
 }
@@ -40,14 +60,112 @@ class _MapaPageState extends State<MapaPage> {
   final _busca = TextEditingController();
   String _query = '';
 
+  // ── inglês: achar a lição atual, comemorar a volta, índice de palavras ──
+  final _chaveAtual = GlobalKey(debugLabel: 'mapa-no-atual');
+  final _rolagem = ScrollController();
+  bool _rolagemAgendada = false;
+  /// O "📍 Onde parei" aparece? (um notifier: mostrar/esconder não reconstrói o mapa inteiro)
+  final _ondeParei = ValueNotifier<bool>(false);
+  List<Trilha>? _trilhasIndexadas;
+
+  /// As lições concluídas da última vez que o mapa foi visto, POR CursoBloc (o bloc é recriado a cada
+  /// conta e curso, então outra conta na mesma sessão não herda a lista): o que entrou desde então ganha
+  /// a comemoração. A primeira abertura com um bloc não comemora.
+  static var _ultimasVistas = Expando<Set<String>>('mapa-vistas');
+  String? _celebrar;
+
+  @override
+  void initState() {
+    super.initState();
+    final bloc = context.read<CursoBloc>();
+    final st = bloc.state;
+    if (st.status == CursoStatus.pronto && st.ehIngles) {
+      final antes = _ultimasVistas[bloc];
+      if (antes != null) {
+        final novas = st.concluidas.difference(antes);
+        // a mais adiantada na ordem do curso
+        for (var t = st.trilhas.length - 1; t >= 0 && _celebrar == null; t--) {
+          for (var l = st.trilhas[t].licoes.length - 1; l >= 0; l--) {
+            if (novas.contains(st.chave(t, l))) {
+              _celebrar = st.chave(t, l);
+              break;
+            }
+          }
+        }
+      }
+      _ultimasVistas[bloc] = st.concluidas;
+    }
+  }
+
   @override
   void dispose() {
     _busca.dispose();
+    _rolagem.dispose();
+    _ondeParei.dispose();
     super.dispose();
   }
 
   @override
+  void deactivate() {
+    _ativo = false;
+    super.deactivate();
+  }
+
+  @override
+  void activate() {
+    super.activate();
+    _ativo = true;
+  }
+
+  bool _ativo = true;
+  double _alturaTela = 0;
+
+  /// O nó atual está fora da tela? (mostra o "📍 Onde parei")
+  bool _atualForaDaTela() {
+    final ro = _chaveAtual.currentContext?.findRenderObject();
+    if (ro is! RenderBox || !ro.attached || !ro.hasSize) return false;
+    final topo = ro.localToGlobal(Offset.zero).dy;
+    return topo + ro.size.height < 120 || topo > _alturaTela - 40;
+  }
+
+  void _atualizarOndeParei() {
+    if (!mounted || !_ativo) return;
+    final fora = _query.trim().isEmpty && _atualForaDaTela();
+    _ondeParei.value = fora; // o notifier ignora valor igual
+  }
+
+  void _irParaAtual() {
+    final ctx = _chaveAtual.currentContext;
+    if (ctx == null || !_ativo) return;
+    Scrollable.ensureVisible(ctx, alignment: .35, duration: const Duration(milliseconds: 450), curve: Curves.easeInOutCubic)
+        .then((_) => _atualizarOndeParei());
+  }
+
+  /// Uma vez por abertura: se a lição atual está bem abaixo da dobra, rola até ela.
+  void _agendarRolagem(CursoState st) {
+    if (_rolagemAgendada || !st.ehIngles) return;
+    _rolagemAgendada = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_ativo) return;
+      final ro = _chaveAtual.currentContext?.findRenderObject();
+      final rolar = MapaPage.rolarAoAbrir &&
+          st.concluidas.isNotEmpty &&
+          _query.trim().isEmpty &&
+          ro is RenderBox &&
+          ro.attached &&
+          ro.localToGlobal(Offset.zero).dy > _alturaTela * .9;
+      if (rolar) {
+        _irParaAtual();
+      } else {
+        _atualizarOndeParei();
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final palavras = PalavrasCubit.de(context);
+    _alturaTela = MediaQuery.sizeOf(context).height;
     return Scaffold(
       backgroundColor: Mixart.bg,
       body: BlocBuilder<CursoBloc, CursoState>(
@@ -55,13 +173,56 @@ class _MapaPageState extends State<MapaPage> {
           if (st.status != CursoStatus.pronto) {
             return Center(child: CircularProgressIndicator(color: Mixart.brand));
           }
+          if (st.ehIngles) {
+            _ultimasVistas[context.read<CursoBloc>()] = st.concluidas;
+            if (palavras != null && !identical(_trilhasIndexadas, st.trilhas)) {
+              _trilhasIndexadas = st.trilhas;
+              palavras.prepararIndice(st.trilhas);
+            }
+            _agendarRolagem(st);
+          }
+          if (palavras == null || !st.ehIngles) return _conteudo(context, st, null);
+          // o caminho só usa o índice; o banco (treinos, foco…) não reconstrói o mapa — o cartão
+          // "Minhas palavras" escuta o cubit sozinho
+          return BlocBuilder<PalavrasCubit, PalavrasState>(
+            bloc: palavras,
+            buildWhen: (a, b) => !identical(a.indice, b.indice),
+            builder: (context, ps) => _conteudo(context, st, ps),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _conteudo(BuildContext context, CursoState st, PalavrasState? ps) {
           final buscando = _query.trim().isNotEmpty;
+          final ingles = st.ehIngles
+              ? _MapaIngles(
+                  inicios: iniciosDoSeno(st.trilhas),
+                  alcance: alcanceDoMapa(st.trilhas, st.concluidas, (st.trilhaIdx, st.licaoIdx)),
+                  palavras: ps,
+                  celebrar: _celebrar,
+                  chaveAtual: _chaveAtual,
+                  bauBalanca: ps?.indice == null
+                      ? null
+                      : bauQueBalanca(_trilhasComBauPronto(st, ps!.indice!), st.trilhaIdx),
+                )
+              : null;
           return Stack(children: [
             const Positioned.fill(child: _FundoPontilhado()),
             Center(
               child: ConstrainedBox(
                 constraints: const BoxConstraints(maxWidth: 780),
-                child: CustomScrollView(slivers: [
+                child: NotificationListener<ScrollNotification>(
+                  onNotification: (n) {
+                    if (ingles != null && n is ScrollEndNotification) {
+                      // depois do próximo layout (a posição nova já valendo)
+                      WidgetsBinding.instance.addPostFrameCallback((_) => _atualizarOndeParei());
+                      WidgetsBinding.instance.scheduleFrame();
+                    }
+                    return false;
+                  },
+                  child: CustomScrollView(controller: _rolagem, slivers: [
                   _BarraTopo(
                     st: st,
                     controle: _busca,
@@ -78,11 +239,12 @@ class _MapaPageState extends State<MapaPage> {
                       const SliverToBoxAdapter(child: _CartaoLer()),
                       const SliverToBoxAdapter(child: _CartaoConversar()),
                       const SliverToBoxAdapter(child: _CartaoEscrever()),
+                      if (ps != null) SliverToBoxAdapter(child: _CartaoMinhasPalavras(st: st)),
                       for (var t = 0; t < st.trilhas.length; t++)
                         if (st.trilhas[t].propria) ...[
                           if (t == st.trilhas.indexWhere((x) => x.propria))
                             SliverToBoxAdapter(child: _FaixaEtapa(st: st, t: t)),
-                          SliverToBoxAdapter(child: _SecaoTrilha(st: st, t: t)),
+                          SliverToBoxAdapter(child: _SecaoTrilha(st: st, t: t, ingles: ingles)),
                           const SliverToBoxAdapter(child: _Conector()),
                         ],
                     ],
@@ -92,7 +254,7 @@ class _MapaPageState extends State<MapaPage> {
                         if (st.trilhas[t].etapa.isNotEmpty &&
                             (t == 0 || st.trilhas[t - 1].etapa != st.trilhas[t].etapa))
                           SliverToBoxAdapter(child: _FaixaEtapa(st: st, t: t)),
-                        SliverToBoxAdapter(child: _SecaoTrilha(st: st, t: t)),
+                        SliverToBoxAdapter(child: _SecaoTrilha(st: st, t: t, ingles: ingles)),
                         const SliverToBoxAdapter(child: _Conector()),
                       ],
                     if (st.masterApps.isNotEmpty)
@@ -101,13 +263,75 @@ class _MapaPageState extends State<MapaPage> {
                     const SliverToBoxAdapter(child: SizedBox(height: 56)),
                   ],
                 ]),
+                ),
               ),
             ),
+            // inglês: a lição atual saiu da tela → um toque volta para ela
+            if (ingles != null && !buscando)
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 22,
+                child: ValueListenableBuilder<bool>(
+                  valueListenable: _ondeParei,
+                  builder: (context, mostrar, _) => !mostrar
+                      ? const SizedBox.shrink()
+                      : Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                          Botao3D(
+                            key: const Key('mapa-onde-parei'),
+                            rotulo: '📍 Onde parei',
+                            expandir: false,
+                            altura: 42,
+                            tamanhoTexto: 13.5,
+                            cor: st.trilhaIdx < st.trilhas.length ? corDaEtapa(st.trilha.etapa) : null,
+                            onTap: _irParaAtual,
+                          ),
+                        ]),
+                ),
+              ),
           ]);
-        },
-      ),
-    );
   }
+}
+
+/// O que o caminho do inglês precisa saber além do estado do curso (calculado uma vez por build).
+class _MapaIngles {
+  final List<int> inicios;
+  final PosicaoMapa? alcance;
+  final PalavrasState? palavras;
+  final String? celebrar;
+  final GlobalKey chaveAtual;
+
+  /// A trilha cujo baú pronto balança (só uma no mapa); null = nenhuma.
+  final int? bauBalanca;
+  const _MapaIngles({
+    required this.inicios,
+    required this.alcance,
+    required this.palavras,
+    required this.celebrar,
+    required this.chaveAtual,
+    this.bauBalanca,
+  });
+}
+
+/// As trilhas do curso com o baú pronto (completas, ainda não abertas, com palavras para o baú).
+Iterable<int> _trilhasComBauPronto(CursoState st, IndicePalavras indice) sync* {
+  for (var t = 0; t < st.trilhas.length; t++) {
+    final trilha = st.trilhas[t];
+    if (trilha.propria || bauAberto(st.projetosFeitos, trilha.baralhoId)) continue;
+    var completa = true;
+    for (var l = 0; l < trilha.licoes.length && completa; l++) {
+      completa = st.licaoConcluida(t, l);
+    }
+    if (completa && temBau(trilha, indice.novasDaTrilha(trilha).length)) yield t;
+  }
+}
+
+/// Pratica a lição [l] da trilha [t]: seleciona e fecha o mapa (o palco abre nela).
+void _praticar(BuildContext context, int t, int l) {
+  final cursoBloc = context.read<CursoBloc>();
+  cursoBloc.add(TrilhaSelecionada(t));
+  cursoBloc.add(LicaoSelecionada(l));
+  Navigator.of(context).pop();
 }
 
 /// Rodapé da trilha no inglês: "já sei isso" → teste de nivelamento.
@@ -288,7 +512,7 @@ class _BarraTopo extends StatelessWidget {
         icon: Icon(Icons.arrow_back, color: Mixart.text, size: 20),
       ),
       title: Row(children: [
-        Text('Mapa da Jornada', style: Mixart.display(size: 17)),
+        Flexible(child: Text('Mapa da Jornada', maxLines: 1, overflow: TextOverflow.ellipsis, style: Mixart.display(size: 17))),
         const SizedBox(width: 10),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 3),
@@ -600,10 +824,14 @@ class _StatTile extends StatelessWidget {
 class _SecaoTrilha extends StatelessWidget {
   final CursoState st;
   final int t;
-  const _SecaoTrilha({required this.st, required this.t});
+
+  /// Inglês: o caminho estilo Duolingo (null = Dart/C#, o cartão de sempre).
+  final _MapaIngles? ingles;
+  const _SecaoTrilha({required this.st, required this.t, this.ingles});
 
   @override
   Widget build(BuildContext context) {
+    if (ingles != null) return _SecaoTrilhaIngles(st: st, t: t, ingles: ingles!, apagar: () => _apagarTexto(context));
     final trilha = st.trilhas[t];
     final feitas = List.generate(trilha.licoes.length, (l) => st.licaoConcluida(t, l));
     final concluidas = feitas.where((f) => f).length;
@@ -721,6 +949,219 @@ class _SecaoTrilha extends StatelessWidget {
       ),
     );
     if (apagar == true && !bloc.isClosed) bloc.add(TextoApagado(trilha.textoId));
+  }
+}
+
+/// O personagem principal de cada trilha (quem mais fala), guardado por trilha ('' = ninguém).
+final _personagens = Expando<String>('personagem');
+
+String? _personagemDe(Trilha t) {
+  final p = _personagens[t] ??= personagemDaTrilha(t) ?? '';
+  return p.isEmpty ? null : p;
+}
+
+/// Inglês: a unidade estilo Duolingo — a faixa na cor da etapa com o personagem, o caminho em seno com
+/// nós de apertar, o balão COMEÇAR, o baú no fim e o "Já sei esta trilha".
+class _SecaoTrilhaIngles extends StatelessWidget {
+  final CursoState st;
+  final int t;
+  final _MapaIngles ingles;
+  final VoidCallback apagar;
+  const _SecaoTrilhaIngles({required this.st, required this.t, required this.ingles, required this.apagar});
+
+  @override
+  Widget build(BuildContext context) {
+    final trilha = st.trilhas[t];
+    final feitas = List.generate(trilha.licoes.length, (l) => st.licaoConcluida(t, l));
+    final concluidas = feitas.where((f) => f).length;
+    final completa = concluidas == trilha.licoes.length;
+    final ehAtual = t == st.trilhaIdx;
+    final cor = corDaEtapa(trilha.propria ? '' : trilha.etapa);
+    final indice = ingles.palavras?.indice;
+    final palavras = indice == null ? const <PalavraNova>[] : indice.novasDaTrilha(trilha);
+    final comBau = temBau(trilha, palavras.length);
+    final numero = numeroDaUnidade(st.trilhas, t);
+    final nivelCurto = trilha.etapa.trim().split(RegExp(r'[ ·—-]')).first.toUpperCase();
+    final sobretitulo = trilha.propria
+        ? 'MEU TEXTO'
+        : 'UNIDADE $numero${nivelCurto.isNotEmpty ? ' · $nivelCurto' : ''}';
+    final frases = trilha.licoes.fold<int>(0, (a, l) => a + l.trechos.length);
+    final quem = _personagemDe(trilha);
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 14, 18, 0),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+        BannerUnidade(
+          sobretitulo: sobretitulo,
+          emoji: trilha.emoji,
+          nome: trilha.nivel,
+          detalhe: '$concluidas de ${trilha.licoes.length} lições · $frases frases',
+          progresso: trilha.licoes.isEmpty ? 0 : concluidas / trilha.licoes.length,
+          cor: cor,
+          atual: ehAtual,
+          completa: completa,
+          rosto: quem == null ? null : ElencoIngles.de(quem),
+          onGuia: () => abrirGuiaTrilha(
+            context,
+            trilha: trilha,
+            sobretitulo: sobretitulo,
+            cor: cor,
+            feitas: feitas,
+            palavras: palavras,
+            onTreinar: palavras.length < 2
+                ? null
+                : () => abrirTreinoPalavras(context, _paraTreinar(context, palavras), titulo: trilha.nivel),
+          ),
+          acao: trilha.propria
+              ? Material(
+                  color: Mixart.surface,
+                  shape: const CircleBorder(),
+                  child: IconButton(
+                    tooltip: 'Apagar este texto',
+                    visualDensity: VisualDensity.compact,
+                    onPressed: apagar,
+                    icon: Icon(Icons.delete_outline, size: 18, color: Mixart.textMuted),
+                  ),
+                )
+              : null,
+        ),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(0, 18, 0, 12),
+          child: LayoutBuilder(
+            builder: (context, box) => CaminhoIngles(
+              st: st,
+              t: t,
+              largura: box.maxWidth,
+              inicioSeno: ingles.inicios[t],
+              alcance: ingles.alcance,
+              cor: cor,
+              novasDe: indice == null ? null : (licao) => indice.novasPorLicao[licao.id]?.length ?? 0,
+              bau: comBau
+                  ? estadoDoBau(completa: completa, projetosFeitos: st.projetosFeitos, baralhoId: trilha.baralhoId)
+                  : null,
+              palavrasBau: palavras.length,
+              bauBalanca: ingles.bauBalanca == t,
+              celebrar: ingles.celebrar,
+              chaveAtual: ehAtual ? ingles.chaveAtual : null,
+              onAbrirLicao: (l) {
+                final estado = estadoDoNo(
+                  feita: feitas[l],
+                  atual: ehAtual && l == st.licaoIdx,
+                  pos: (t, l),
+                  alcance: ingles.alcance,
+                  propria: trilha.propria,
+                );
+                mostrarOpcoesLicao(context, st, t, l, st.quizNotas[st.chave(t, l)],
+                    trancada: estado == EstadoNo.trancada);
+              },
+              onComecar: (l) => _praticar(context, t, l),
+              onBau: () => _abrirBau(context, trilha, palavras, cor, completa, concluidas),
+            ),
+          ),
+        ),
+        if (!completa && !trilha.propria) _TesteDaTrilha(t: t),
+      ]),
+    );
+  }
+
+  /// Até 8 palavras para a sessão: primeiro as que ainda não estão firmes.
+  static List<PalavraNova> _paraTreinar(BuildContext context, List<PalavraNova> palavras) {
+    final cubit = PalavrasCubit.de(context);
+    if (cubit == null) return palavras.take(8).toList();
+    final fracas = [for (final p in palavras) if (cubit.forcaDe(p.en) != ForcaPalavra.firme) p];
+    final firmes = [for (final p in palavras) if (cubit.forcaDe(p.en) == ForcaPalavra.firme) p];
+    return [...fracas, ...firmes].take(8).toList();
+  }
+
+  Future<void> _abrirBau(
+      BuildContext context, Trilha trilha, List<PalavraNova> palavras, Color cor, bool completa, int feitas) async {
+    if (!completa) {
+      final faltam = trilha.licoes.length - feitas;
+      ScaffoldMessenger.maybeOf(context)
+        ?..hideCurrentSnackBar()
+        ..showSnackBar(SnackBar(
+          content: Text(faltam == 1
+              ? '🔒 Termine a última lição para abrir o baú.'
+              : '🔒 Termine as $faltam lições que faltam para abrir o baú.'),
+          duration: const Duration(seconds: 2),
+        ));
+      return;
+    }
+    final chave = chaveDoBau(trilha.baralhoId);
+    final treinar = await abrirBauTrilha(
+      context,
+      unidade: trilha.nivel,
+      palavras: palavras,
+      cor: cor,
+      jaAberto: st.projetoFeito(chave),
+    );
+    if (!treinar || !context.mounted) return;
+    await abrirTreinoPalavras(context, _paraTreinar(context, palavras),
+        titulo: 'Baú · ${trilha.nivel}', chaveConclusao: chave);
+  }
+}
+
+/// Inglês: o banco de palavras do aluno — "N palavras · M para revisar hoje". Sem o cubit, some.
+class _CartaoMinhasPalavras extends StatelessWidget {
+  final CursoState st;
+  const _CartaoMinhasPalavras({required this.st});
+
+  @override
+  Widget build(BuildContext context) {
+    final cubit = PalavrasCubit.de(context);
+    if (cubit == null) return const SizedBox.shrink();
+    // escuta o cubit sozinho: o mapa não se reconstrói quando o banco muda
+    return BlocBuilder<PalavrasCubit, PalavrasState>(
+      bloc: cubit,
+      builder: (context, _) => _cartao(context, cubit),
+    );
+  }
+
+  Widget _cartao(BuildContext context, PalavrasCubit cubit) {
+    final n = cubit.palavrasDoAluno(st).length;
+    final m = cubit.quantasDevidas;
+    final k = cubit.quantasTeimosas;
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 8, 18, 4),
+      child: InkWell(
+        key: const Key('palavras'),
+        onTap: () => abrirMinhasPalavras(context),
+        borderRadius: BorderRadius.circular(Mixart.radiusLg),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Mixart.surface,
+            border: Border.all(color: Mixart.border),
+            borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          ),
+          child: Row(children: [
+            const Text('📚', style: TextStyle(fontSize: 26)),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('Minhas palavras', style: Mixart.display(size: 16)),
+                const SizedBox(height: 3),
+                Text(
+                  n == 0
+                      ? 'As palavras novas das lições, as suas e as da leitura — elas vão para os jogos do Arcade 🎮'
+                      : '$n ${n == 1 ? 'palavra' : 'palavras'} · ${m == 0 ? 'nada para revisar hoje' : '$m para revisar hoje'}'
+                          '${k > 0 ? ' · $k ${k == 1 ? 'teimosa' : 'teimosas'}' : ''}',
+                  style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4),
+                ),
+              ]),
+            ),
+            if (m > 0)
+              Container(
+                margin: const EdgeInsets.only(right: 6),
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                decoration: BoxDecoration(color: Mixart.brand, borderRadius: BorderRadius.circular(99)),
+                child: Text('$m', style: Mixart.ui(size: 11, weight: FontWeight.w800, color: Mixart.onBrand)),
+              ),
+            Icon(Icons.chevron_right, color: Mixart.textMuted),
+          ]),
+        ),
+      ),
+    );
   }
 }
 
@@ -996,6 +1437,18 @@ class _FaixaEtapa extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(18, 22, 18, 4),
       child: Row(children: [
+        // inglês: a cor da etapa numa faixinha à esquerda (o texto fica igual)
+        if (st.ehIngles) ...[
+          Container(
+            width: 5,
+            height: 44,
+            decoration: BoxDecoration(
+              color: corDaEtapa(st.trilhas[t].propria ? '' : etapa),
+              borderRadius: BorderRadius.circular(99),
+            ),
+          ),
+          const SizedBox(width: 12),
+        ],
         Text(nivel?.$1 ?? _emojis[etapa] ?? '⭐', style: const TextStyle(fontSize: 26)),
         const SizedBox(width: 12),
         Expanded(
@@ -1396,11 +1849,14 @@ class _CaminhoLicoes extends StatelessWidget {
 }
 
 /// Abre a folha de opções de uma lição (Teoria / Praticar / Quiz). Reutilizada
-/// pelos nós do mapa e pelos resultados da busca.
-void mostrarOpcoesLicao(BuildContext context, CursoState st, int t, int l, int? nota) {
+/// pelos nós do mapa e pelos resultados da busca. [trancada] (inglês) = a lição
+/// está depois de onde a pessoa chegou: a folha avisa e oferece o teste da unidade.
+void mostrarOpcoesLicao(BuildContext context, CursoState st, int t, int l, int? nota, {bool trancada = false}) {
   final licao = st.trilhas[t].licoes[l];
   final cursoBloc = context.read<CursoBloc>();
   final feita = st.licaoConcluida(t, l);
+  // inglês: as palavras novas da lição (vazio até o índice ficar pronto)
+  final novas = st.ehIngles ? PalavrasCubit.de(context)?.novasDaLicao(st, licao) ?? const <PalavraNova>[] : const <PalavraNova>[];
   showModalBottomSheet<void>(
     context: context,
     backgroundColor: const Color(0xFF141414),
@@ -1412,6 +1868,20 @@ void mostrarOpcoesLicao(BuildContext context, CursoState st, int t, int l, int? 
       feita: feita,
       nota: nota,
       ingles: st.ehIngles,
+      trancada: st.ehIngles && trancada && !feita,
+      novas: novas,
+      onPalavras: novas.length < 2
+          ? null
+          : () {
+              Navigator.of(sheet).pop();
+              abrirTreinoPalavras(context, novas.take(8).toList(), titulo: licao.nome);
+            },
+      onTesteUnidade: st.ehIngles && trancada && !st.trilhas[t].propria
+          ? () {
+              Navigator.of(sheet).pop();
+              abrirTesteTrilha(context, t);
+            }
+          : null,
       onTeoria: () {
         Navigator.of(sheet).pop();
         Navigator.of(context).push(MaterialPageRoute<void>(
@@ -1689,11 +2159,23 @@ class _LicaoSheet extends StatelessWidget {
   /// Curso de inglês: frases, "Entenda a lição" e Fixação no lugar do quiz.
   final bool ingles;
   final VoidCallback onTeoria, onPraticar, onQuiz;
+
+  /// Inglês: a lição parece trancada (aviso + "Fazer o teste da unidade" em [onTesteUnidade]).
+  final bool trancada;
+  final VoidCallback? onTesteUnidade;
+
+  /// Inglês: as palavras novas da lição e o treino delas (null = menos de 2).
+  final List<PalavraNova> novas;
+  final VoidCallback? onPalavras;
   const _LicaoSheet(
       {required this.licao,
       required this.feita,
       this.nota,
       this.ingles = false,
+      this.trancada = false,
+      this.onTesteUnidade,
+      this.novas = const [],
+      this.onPalavras,
       required this.onTeoria,
       required this.onPraticar,
       required this.onQuiz});
@@ -1734,6 +2216,10 @@ class _LicaoSheet extends StatelessWidget {
                     style: Mixart.ui(size: 12, color: feita ? Mixart.brand : Mixart.textMuted)),
               ]),
             ),
+            if (ingles && nota != null) ...[
+              EstrelasArco(estrelas: estrelasDaNota(nota), tamanho: 13),
+              const SizedBox(width: 6),
+            ],
             if (nota != null)
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -1749,6 +2235,42 @@ class _LicaoSheet extends StatelessWidget {
                 ]),
               ),
           ]),
+          if (trancada) ...[
+            const SizedBox(height: 14),
+            Container(
+              key: const Key('sheet-trancada'),
+              padding: const EdgeInsets.all(13),
+              decoration: BoxDecoration(
+                color: Mixart.bg,
+                border: Border.all(color: Mixart.border),
+                borderRadius: BorderRadius.circular(Mixart.radiusMd),
+              ),
+              child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                const Text('🔒', style: TextStyle(fontSize: 18)),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text(
+                        onTesteUnidade != null
+                            ? 'Você ainda não chegou aqui — pode pular direto ou provar que já sabe:'
+                            : 'Você ainda não chegou aqui — mas pode pular, se quiser.',
+                        style: Mixart.ui(size: 12.5, color: Mixart.textMuted).copyWith(height: 1.4)),
+                    if (onTesteUnidade != null)
+                      TextButton(
+                        key: const Key('sheet-teste-unidade'),
+                        onPressed: onTesteUnidade,
+                        style: TextButton.styleFrom(
+                            padding: const EdgeInsets.only(top: 6),
+                            minimumSize: Size.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+                        child: Text('Fazer o teste da unidade ›',
+                            style: Mixart.ui(size: 13, weight: FontWeight.w800, color: Mixart.brand)),
+                      ),
+                  ]),
+                ),
+              ]),
+            ),
+          ],
           if (licao.resumo.isNotEmpty) ...[
             const SizedBox(height: 14),
             Container(
@@ -1800,6 +2322,18 @@ class _LicaoSheet extends StatelessWidget {
             feito: nota != null,
             onTap: onQuiz,
           ),
+          if (ingles && onPalavras != null) ...[
+            const SizedBox(height: 10),
+            KeyedSubtree(
+              key: const Key('sheet-palavras'),
+              child: _OpcaoSheet(
+                icone: Icons.style_outlined,
+                titulo: '🆕 Treinar as palavras novas (${novas.length})',
+                subtitulo: novas.take(5).map((p) => p.en).join(' · ') + (novas.length > 5 ? ' …' : ''),
+                onTap: onPalavras!,
+              ),
+            ),
+          ],
         ]),
       ),
     );

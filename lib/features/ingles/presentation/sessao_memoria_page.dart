@@ -12,12 +12,29 @@ import '../domain/alternativas.dart';
 import '../domain/avaliacao.dart';
 import '../domain/revisao.dart';
 import '../domain/roteiro.dart';
+import '../domain/entrada_resposta.dart' show EntradaResposta;
+import '../domain/erros_palavra.dart' show EvidenciaPalavra, FonteErro, evidenciasDaFrase;
+import '../domain/teimosas.dart' show LocalSugestao, SugestaoTeimosas;
 import '../../../core/som/sons.dart';
+import 'acoes_teimosas.dart';
+import 'palavras_cubit.dart';
+import 'widgets/cartao_teimosas.dart';
 import 'widgets/audio_da_frase.dart';
 import 'widgets/cena_visual.dart';
 import 'widgets/frase_view.dart';
 import 'widgets/traducao_card.dart';
+import 'widgets/elenco_ingles.dart';
 import 'zona_visivel.dart';
+
+/// 🔥 Uma resposta com ajuda (o áudio ouvido antes, ou as iniciais / o esqueleto à vista): as palavras que
+/// saíram limpas continuam contando como vistas, mas sem o crédito de "acertou limpo" — uma teimosa não vira
+/// DOMINADA com a resposta audível ou meio à mostra. (Uma falha mínima: a carga quase não muda.)
+List<EvidenciaPalavra> semCreditoDeAcerto(List<EvidenciaPalavra> evs) => [
+      for (final e in evs)
+        e.limpa
+            ? EvidenciaPalavra(chave: e.chave, peso: e.peso, falha: 0.01, fonte: e.fonte, vistas: e.vistas)
+            : e,
+    ];
 
 /// Uma frase digitada de memória e como saiu (só a 1ª tentativa conta).
 class ResultadoFrase {
@@ -110,11 +127,26 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
   bool _desistiuAgora = false;
   bool _contestou = false;
 
+  // ---- 🔥 palavras teimosas (só com o PalavrasCubit: o inglês; nunca no nivelamento) ----
+  PalavrasCubit? _palavras;
+
+  /// As evidências da frase que acabou (gravadas ao avançar; "foi erro de digitação" as descarta), as da
+  /// sessão (uma chamada ao cubit no fim) e a soma das falhas por palavra.
+  List<EvidenciaPalavra>? _evPasso;
+
+  /// A frase que acabou teve ajuda (ouviu antes, ou o esqueleto da reaprendizagem): sem crédito de acerto.
+  bool _evPassoSemCredito = false;
+  final _evSessao = <EvidenciaPalavra>[];
+  final _somaSessao = <String, double>{};
+  bool _gravouTeimosas = false;
+  SugestaoTeimosas? _sug;
+
   _Item get _item => _fila[_i];
 
   @override
   void initState() {
     super.initState();
+    _palavras = widget.reaprender ? PalavrasCubit.de(context) : null;
     if (_fila.isEmpty) {
       _fim = true;
     } else {
@@ -127,6 +159,8 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
 
   @override
   void dispose() {
+    // saiu no meio: o que já foi respondido conta
+    _gravarTeimosas();
     _voz.parar();
     _typing.close();
     _foco.dispose();
@@ -145,6 +179,46 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
     _ultimo = null;
     _erradas = const {};
     _aguardando = false;
+    _evPasso = null;
+  }
+
+  /// 🔥 As evidências desta frase de memória (null sem o cubit, sem o índice ou no nivelamento).
+  List<EvidenciaPalavra>? _evidenciasDe(TypingState st, FraseViewState? fv) {
+    final cubit = _palavras;
+    if (cubit == null || cubit.state.indice == null) return null;
+    final evs = evidenciasDaFrase(
+      st.chars.join(),
+      teclas: st.errosPorPosicao,
+      extras: fv?.errosDeFala ?? const {},
+      entrada: fv?.entradaAtiva ?? EntradaResposta.digitar,
+      reveladas: fv?.reveladas ?? const {},
+      desistiu: fv?.desistiu ?? false,
+      fonte: FonteErro.revisao,
+      chaveDe: cubit.chaveDeTreino,
+    );
+    return evs.isEmpty ? null : evs;
+  }
+
+  /// Grava as evidências da sessão (UMA vez: no fim, ou ao sair no meio) e, no fim, monta a oferta.
+  void _gravarTeimosas({bool fim = false}) {
+    final cubit = _palavras;
+    if (cubit == null || _gravouTeimosas) return;
+    _gravouTeimosas = true;
+    cubit.registrarErros(List.of(_evSessao));
+    if (!fim) return;
+    _sug = cubit.sugestao(LocalSugestao.fimDeRevisao, daSessao: Map.of(_somaSessao));
+    if (_sug != null) cubit.marcarMostrada();
+  }
+
+  /// As palavras que tropeçaram nesta sessão (como se escrevem; da que mais deu trabalho para a menos).
+  List<String> get _tropecos {
+    final ind = _palavras?.state.indice;
+    final lista = [for (final e in _somaSessao.entries) if (e.value >= 1) e]
+      ..sort((a, b) {
+        final s = b.value.compareTo(a.value);
+        return s != 0 ? s : a.key.compareTo(b.key);
+      });
+    return [for (final e in lista.take(8)) ind?.formaDe(e.key) ?? e.key];
   }
 
   /// Terminou a frase: a voz repete e ela fica na tela até o Enter.
@@ -163,6 +237,8 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
       if (item.vale) _aRegistrar = ResultadoFrase(item.trecho, d.resultado);
       if (d.resultado == ResultadoRevisao.acertou) Sons.toca(Som.gol); // âncora de acerto
       _desistiuAgora = d.desistiu;
+      _evPasso = _evidenciasDe(st, fv);
+      _evPassoSemCredito = _ouviuAntes > 0 || item.modo != ModoFrase.memoria;
       setState(() {
         _ultimo = d.resultado;
         _erradas = d.palavrasErradas;
@@ -198,6 +274,15 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
       _resultados.add(res);
       widget.onResultado?.call(res);
     }
+    // 🔥 as palavras desta frase entram na conta da sessão
+    final evs = _evPasso;
+    _evPasso = null;
+    if (evs != null) {
+      _evSessao.addAll(_evPassoSemCredito ? semCreditoDeAcerto(evs) : evs);
+      for (final e in evs) {
+        if (e.falha > 0) _somaSessao[e.chave] = (_somaSessao[e.chave] ?? 0) + e.peso * e.falha;
+      }
+    }
     if (item.modo.deMemoria && r == ResultadoRevisao.errou && widget.reaprender) {
       _reaprender(item, desistiu: _desistiuAgora);
     }
@@ -207,6 +292,7 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
     if (_contestou || _ultimo == null || _ultimo == ResultadoRevisao.acertou) return;
     setState(() {
       _contestou = true;
+      _evPasso = null; // foi erro de digitação: não conta para as teimosas
       _ultimo = contestar(_ultimo!);
       final res = _aRegistrar;
       if (res != null) _aRegistrar = ResultadoFrase(res.trecho, _ultimo!);
@@ -226,6 +312,7 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
       manterZonaVisivel(_zona, aindaVale: () => mounted && !_fim);
       return;
     }
+    _gravarTeimosas(fim: true);
     setState(() => _fim = true);
     widget.onFim?.call(List.unmodifiable(_resultados));
   }
@@ -314,6 +401,14 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
         Column(key: _zona, crossAxisAlignment: CrossAxisAlignment.start, children: [
           TraducaoCard(
             acaoAudio: BotaoAudioDaFrase(frase: item.trecho.cod, voz: _voz, redondo: true),
+            rosto: item.trecho.quem.isEmpty
+                ? null
+                : (tamanho) => PersonagemFalante(
+                    key: ValueKey('rosto-${item.trecho.quem}'),
+                    quem: item.trecho.quem,
+                    frase: item.trecho.cod,
+                    tamanho: tamanho,
+                  ),
             trecho: item.trecho,
             modo: item.modo,
             mostrarNota: item.correcao,
@@ -335,6 +430,7 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
             palavrasErradas: _erradas,
             onAvancar: _avancar,
             onOuvir: _ouvir,
+            onOuvirPalavra: (palavra, {required lenta}) => _voz.falar(palavra, lenta: lenta),
             alternativas: item.modo == ModoFrase.memoria
                 ? alternativasDe(item.trecho.cod, declaradas: item.trecho.alternativas)
                 : const [],
@@ -420,6 +516,20 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
             Text(widget.resumoExtra!(_resultados),
                 textAlign: TextAlign.center,
                 style: Mixart.ui(size: 13.5, weight: FontWeight.w700, color: Mixart.text).copyWith(height: 1.5)),
+          ],
+          // 🔥 as palavras em que tropeçou (os botões só quando a oferta pode aparecer agora)
+          if (_tropecos case final tropecos when tropecos.isNotEmpty) ...[
+            const SizedBox(height: 16),
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 520),
+              child: ListaTeimosas(
+                palavras: tropecos,
+                onTreinar: _sug == null
+                    ? null
+                    : () => treinarTeimosas(context, _sug!.palavras, origem: 'revisao', voz: widget.voz),
+                onJogar: _sug == null ? null : () => jogarComTeimosas(context, _sug!.palavras),
+              ),
+            ),
           ],
           const SizedBox(height: 18),
           FilledButton(

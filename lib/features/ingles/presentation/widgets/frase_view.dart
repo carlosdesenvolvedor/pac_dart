@@ -68,6 +68,12 @@ class FraseView extends StatefulWidget {
   /// aluno não mudou); Shift+Enter = na outra velocidade.
   final void Function({required bool lenta})? onOuvir;
 
+  /// Só a palavra tocada (o 🔊/🐢 do balão dela); null = o balão sem voz.
+  final OuvirPalavra? onOuvirPalavra;
+
+  /// A palavra tocada já soa ao abrir o balão (na velocidade padrão do aluno) — segue o "áudio automático".
+  final bool falarPalavraAoTocar;
+
   /// 👁 ligado: a frase inteira à vista em qualquer degrau (vale para
   /// todas as frases até desligar).
   final bool mostrarTudo;
@@ -116,6 +122,8 @@ class FraseView extends StatefulWidget {
     this.passo = 0,
     required this.onAvancar,
     this.onOuvir,
+    this.onOuvirPalavra,
+    this.falarPalavraAoTocar = true,
     this.alvo = '',
     this.traducao = '',
     this.alvoPt = '',
@@ -1040,11 +1048,13 @@ class FraseViewState extends State<FraseView> {
       if (p.indice == achada.indice) r = r.expandToInclude(p.caixa);
     }
     final ancora = Rect.fromPoints(caixa.localToGlobal(r.topLeft), caixa.localToGlobal(r.bottomRight));
+    final palavra = frase.substring(achada.ini, achada.fim);
     _balao.abrir(
       context,
       ancora: ancora,
+      onOuvir: widget.onOuvirPalavra,
       palavra: PalavraTocada(
-        palavra: frase.substring(achada.ini, achada.fim),
+        palavra: palavra,
         frase: frase,
         traducao: widget.traducao,
         indice: achada.indice,
@@ -1052,6 +1062,7 @@ class FraseViewState extends State<FraseView> {
         alvoPt: widget.alvoPt,
       ),
     );
+    if (widget.falarPalavraAoTocar) widget.onOuvirPalavra?.call(palavra, lenta: VozIngles.lentaPorPadrao);
     // o foco segue no campo escondido (no computador, dá para continuar digitando)
     if (_pedeFoco && !ehCelular) _foco.requestFocus();
   }

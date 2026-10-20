@@ -10,7 +10,7 @@ import '../../../curso/domain/curriculo.dart';
 import '../../data/voz_ingles.dart';
 import 'cena_visual.dart';
 
-/// 🎬 Ensaio mental antes da lição (~20–40 s, em tela cheia, nunca
+/// 🎬 Ensaio mental antes da lição (~1 min, em tela cheia, nunca
 /// obrigatório). Três passos que andam sozinhos e um que espera o Enter:
 ///
 /// 1. **Estado (âncora):** um ciclo de respiração (inspira 4 s, solta 4 s)
@@ -19,7 +19,7 @@ import 'cena_visual.dart';
 ///    som e o mesmo gesto: é isso que faz deles uma âncora.
 /// 2. **Cena:** a foto em tela cheia com zoom lento e a visualização guiada
 ///    (lembrar no mesmo contexto em que aprendeu ajuda a lembrar).
-/// 3. **Ensaio do futuro:** as frases-chave da lição — primeiro a tradução,
+/// 3. **Ensaio do futuro:** TODAS as frases da lição — primeiro a tradução,
 ///    depois o inglês aparece e a voz fala ("daqui a pouco você vai dizer").
 ///    Cada frase fica o tempo de ser dita INTEIRA ([segDaFrase]) e, se a voz
 ///    ainda estiver falando, o relógio espera ela acabar: uma frase nunca
@@ -87,14 +87,14 @@ class EnsaioMental extends StatefulWidget {
     } catch (_) {}
   }
 
-  /// As frases-chave: as que têm alvo (o trecho que a lição ensina), até 3
-  /// e na ordem da lição; lição sem alvo marcado usa as 3 primeiras.
-  static List<Trecho> frasesChave(Licao licao) {
-    final comAlvo = licao.trechos.where((t) => t.alvo.isNotEmpty).take(3).toList();
-    return comAlvo.isNotEmpty ? comAlvo : licao.trechos.take(3).toList();
-  }
+  /// As frases do ensaio: todas as da lição, na ordem em que vão ser
+  /// digitadas (o trecho que cada uma ensina, quando marcado, em destaque).
+  static List<Trecho> frasesDoEnsaio(Licao licao) => licao.trechos;
 
-  /// Duração de cada passo (segundos) — o roteiro inteiro dá ~20–40 s.
+  /// Quantas frases já ditas ficam visíveis (pequenas) acima da da vez.
+  static const anterioresVisiveis = 2;
+
+  /// Duração de cada passo (segundos) — com 8–14 frases o roteiro dá ~1 min.
   static const segEstado = 8.0;
   static const segCena = 6.0;
 
@@ -131,7 +131,7 @@ enum _Passo { estado, cena, futuro, pronto }
 
 class _EnsaioMentalState extends State<EnsaioMental> with SingleTickerProviderStateMixin {
   late final FocusNode _foco = widget.focusNode ?? FocusNode(debugLabel: 'ensaio mental');
-  late final List<Trecho> _frases = EnsaioMental.frasesChave(widget.licao);
+  late final List<Trecho> _frases = EnsaioMental.frasesDoEnsaio(widget.licao);
   late final bool _temCena =
       widget.licao.foto.isNotEmpty ||
       widget.licao.imagem.isNotEmpty ||
@@ -139,7 +139,7 @@ class _EnsaioMentalState extends State<EnsaioMental> with SingleTickerProviderSt
       widget.licao.cena.isNotEmpty;
   late final double _segCena = _temCena ? EnsaioMental.segCena : 0;
 
-  /// O tempo de cada frase-chave, na velocidade padrão do aluno.
+  /// O tempo de cada frase, na velocidade padrão do aluno.
   late final List<double> _segFrases = [
     for (final f in _frases) EnsaioMental.segDaFrase(f.cod, lenta: VozIngles.lentaPorPadrao),
   ];
@@ -485,13 +485,20 @@ class _EnsaioMentalState extends State<EnsaioMental> with SingleTickerProviderSt
     );
   }
 
+  /// A duração do roteiro para o convite ("30 segundos", "1 minuto"…).
+  String _duracaoTexto() {
+    if (_total < 50) return '${(_total / 10).round() * 10} segundos';
+    final min = (_total / 60).round();
+    return min <= 1 ? '1 minuto' : '$min minutos';
+  }
+
   /// Parado antes do roteiro, esperando o gesto que libera o som.
   Widget _convite(bool estreito) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'Um ensaio de 20 segundos, com som',
+          'Um ensaio de ${_duracaoTexto()}, com som',
           textAlign: TextAlign.center,
           style: Mixart.display(size: estreito ? 21 : 28),
         ),
@@ -654,16 +661,65 @@ class _EnsaioMentalState extends State<EnsaioMental> with SingleTickerProviderSt
           _temCena ? 'Daqui a pouco, nessa cena, você vai dizer:' : 'Daqui a pouco, você vai dizer:',
           style: Mixart.ui(size: estreito ? 14 : 16, weight: FontWeight.w600, color: Mixart.textMuted),
         ),
-        const SizedBox(height: 16),
-        for (var i = 0; i <= atual; i++)
+        const SizedBox(height: 6),
+        Text(
+          'frase ${atual + 1} de ${_frases.length}',
+          style: Mixart.mono(size: 12.5, weight: FontWeight.w700, color: Mixart.brand),
+        ),
+        const SizedBox(height: 14),
+        // a lição tem 8–14 frases: só as últimas ditas ficam (pequenas) acima
+        // da da vez, para ela nunca sair da tela
+        for (var i = math.max(0, atual - EnsaioMental.anterioresVisiveis); i <= atual; i++)
           Padding(
             padding: const EdgeInsets.only(bottom: 12),
             child: _CartaoFrase(
+              key: ValueKey('futuro-$i'),
               trecho: _frases[i],
               destaque: i == atual,
               ingles: i < atual || local >= EnsaioMental.segRevelaIngles,
+              compacto: i < atual,
+              esmaecido: i < atual,
               estreito: estreito,
               onOuvir: () => _ouvir(_frases[i]),
+            ),
+          ),
+      ],
+    );
+  }
+
+  /// Todas as frases em cartões compactos: em 2 colunas na tela larga
+  /// (linha a linha, na ordem da lição), uma embaixo da outra no celular.
+  Widget _listaPronto(bool estreito) {
+    Widget cartao(Trecho f) => _CartaoFrase(
+      trecho: f,
+      destaque: false,
+      ingles: true,
+      compacto: true,
+      estreito: estreito,
+      onOuvir: () => _ouvir(f),
+    );
+    final largura = math.min(760.0, MediaQuery.sizeOf(context).width - 64);
+    if (estreito || largura < 640 || _frases.length < 4) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [for (final f in _frases) Padding(padding: const EdgeInsets.only(bottom: 10), child: cartao(f))],
+      );
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        for (var i = 0; i < _frases.length; i += 2)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: IntrinsicHeight(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Expanded(child: cartao(_frases[i])),
+                  const SizedBox(width: 10),
+                  Expanded(child: i + 1 < _frases.length ? cartao(_frases[i + 1]) : const SizedBox()),
+                ],
+              ),
             ),
           ),
       ],
@@ -687,18 +743,7 @@ class _EnsaioMentalState extends State<EnsaioMental> with SingleTickerProviderSt
           style: Mixart.ui(size: 13.5, color: Mixart.textMuted).copyWith(height: 1.5),
         ),
         const SizedBox(height: 18),
-        for (final f in _frases)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 10),
-            child: _CartaoFrase(
-              trecho: f,
-              destaque: false,
-              ingles: true,
-              compacto: true,
-              estreito: estreito,
-              onOuvir: () => _ouvir(f),
-            ),
-          ),
+        _listaPronto(estreito),
         // no celular o botão logo abaixo já diz tudo
         if (!estreito) ...[
           const SizedBox(height: 12),
@@ -756,15 +801,20 @@ class _FundoCena extends StatelessWidget {
 class _CartaoFrase extends StatelessWidget {
   final Trecho trecho;
   final bool destaque, ingles, estreito, compacto;
+
+  /// Uma frase já dita no ensaio do futuro (fica para trás, mais apagada).
+  final bool esmaecido;
   final VoidCallback onOuvir;
 
   const _CartaoFrase({
+    super.key,
     required this.trecho,
     required this.destaque,
     required this.ingles,
     required this.estreito,
     required this.onOuvir,
     this.compacto = false,
+    this.esmaecido = false,
   });
 
   /// [texto] com o pedaço [alvo] em destaque.
@@ -792,7 +842,7 @@ class _CartaoFrase extends StatelessWidget {
     final en = Mixart.mono(size: tamEn, weight: FontWeight.w600, color: Mixart.text).copyWith(height: 1.45);
     return AnimatedOpacity(
       duration: const Duration(milliseconds: 300),
-      opacity: destaque || compacto ? 1 : .55,
+      opacity: !esmaecido && (destaque || compacto) ? 1 : .55,
       child: Container(
         padding: EdgeInsets.all(compacto ? 12 : (estreito ? 14 : 20)),
         decoration: BoxDecoration(

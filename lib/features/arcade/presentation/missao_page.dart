@@ -191,7 +191,11 @@ class _MissaoPageState extends State<MissaoPage> {
             child: _etapa == _Etapa.carregando
                 ? Center(child: CircularProgressIndicator(color: Mixart.brand))
                 : Stack(children: [
-                    ListView(
+                    // com a vitória por cima, a cena embaixo congela (o confete
+                    // do overlay fica de fora e continua caindo)
+                    TickerMode(
+                    enabled: _etapa != _Etapa.vitoria,
+                    child: ListView(
                       padding: const EdgeInsets.fromLTRB(20, 16, 20, 40),
                       children: [
                         CabecalhoJogo(
@@ -207,7 +211,10 @@ class _MissaoPageState extends State<MissaoPage> {
                         _historia(),
                         const SizedBox(height: 12),
                         CenaMissao(
-                            missao: _missao, estado: _estadoCena, trilha: widget.trilhaIdx),
+                            missao: _missao,
+                            estado: _estadoCena,
+                            trilha: widget.trilhaIdx,
+                            animado: _etapa == _Etapa.animando),
                         const SizedBox(height: 12),
                         ...switch (_etapa) {
                           _Etapa.previsao => _previsao(),
@@ -216,6 +223,7 @@ class _MissaoPageState extends State<MissaoPage> {
                           _ => const <Widget>[],
                         },
                       ],
+                    ),
                     ),
                     if (_etapa == _Etapa.vitoria) _vitoriaOverlay(),
                   ]),

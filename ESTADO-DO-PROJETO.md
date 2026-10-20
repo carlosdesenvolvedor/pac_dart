@@ -162,8 +162,23 @@ vale meio ponto (`FilaLicao.registrar(vista:)`). Esc continua sendo o "não sei"
 **Ensaio mental (8/out, "âncora" da PNL, opcional):** `widgets/ensaio_mental.dart`, num OverlayPortal do palco (sem
 LayoutBuilder dentro dele — dispara "mutated in performLayout" quando a HomePage move o conteúdo pela GlobalKey; usar
 MediaQuery). Antes da lição: respiração 4/4 s + "junte o polegar e o indicador" + `Som.ancora` (sino) → foto da cena em
-tela cheia com a `visualizacao` → "Daqui a pouco, nessa cena, você vai dizer:" (até 3 frases com alvo, PT depois EN com
-voz; o tempo de cada uma acompanha o fim da fala) → espera o Enter. Esc pula; "não mostrar mais" = pref `en_ensaio`
+tela cheia com a `visualizacao` → "Daqui a pouco, nessa cena, você vai dizer:" (TODAS as frases da lição desde 19/out —
+antes eram até 3 com alvo; PT depois EN com voz; o tempo de cada uma acompanha o fim da fala; na tela só a da vez grande
++ as 2 anteriores pequenas e "frase N de M"; o fim lista todas em 2 colunas no desktop; ~1 min com 10 frases)
+**Pronúncia da palavra (19/out):** o balão do toque na palavra (`traducao_palavra.dart`) tem 🔊 normal e 🐢 devagar só
+da palavra (`FraseView.onOuvirPalavra` → `VozIngles.falar(palavra)`, voz sintética: as gravações são por frase); ao
+tocar ela já soa na velocidade padrão se o "áudio automático" estiver ligado (`falarPalavraAoTocar`). Palco e revisão.
+**Personagens que falam (19/out, lip sync estilo Duolingo, feito do zero):** `widgets/elenco_ingles.dart` desenha o
+elenco em CustomPainter (chibi: cabeça grande, olhos com brilho, bochechas; nada de imagem): Mike, Sarah, Ana, Ben, Emma,
+Lucas, Julia, Dra. Lee, **Você** (o aluno, de fone) e dois genéricos (`ela`/`ele`, papéis por gênero como na voz). Cada
+um tem as 9 bocas do Rhubarb (`domain/boca.dart`: `Visema` X/A–H, `TrilhaBoca`) e pisca sozinho. `PersonagemFalante`
+ouve `VozIngles.falando` (`FalaEmCurso`: frase, trilha, início, velocidade) e só anima enquanto a fala é dele (ou uma
+palavra dela). A trilha vem de `assets/ingles/bocas.json` ({asset mp3: "0X 9B 15E…", centésimos + visema}), gerado
+OFFLINE pelo **Rhubarb Lip Sync 1.14 (MIT)** com o texto da frase (`--dialogFile`):
+`python3 -I tools/ingles/bocas_rhubarb.py` (binário em `~/development/rhubarb/`, ffmpeg; incremental; ~4 s/frase/núcleo,
+6 processos ≈ 1h30 para as 5.538). No web a boca segue o `currentTime` do `<audio>` (`fala.posicaoGravacao`); sem
+bocas (voz sintética, áudio do aluno) ela é estimada pelo texto (`TrilhaBoca.doTexto`). Aparece num círculo creme à
+esquerda da tradução (`TraducaoCard.rosto`), no palco e na revisão. Rodar o bocas_rhubarb.py DEPOIS do vozes_google.py. → espera o Enter. Esc pula; "não mostrar mais" = pref `en_ensaio`
 (padrão ligado), link "🎬 rever o ensaio mental" no começo da lição. Sem gesto na página (autoplay) abre parado em
 "▶ Começar o ensaio". Na vitória, se o ensaio chegou ao sino: `Som.ancora` + linha da âncora (VictoryOverlay ganhou
 `extra`). Respeita "áudio automático".
@@ -1580,6 +1595,7 @@ Plano: `planejamento/FASE-7-MODOS-DE-RESPOSTA.md` (D1–D10). **Só as lições 
 - **`ranking/{uid}`** (jul/2026): apelido, pontos, teclas, erros, licoes, projetos, quizAcertos, arcadePontos, arcade{jogo→recorde}, atualizadoEm. Regras: **todo logado lê, só o dono escreve** — regras JÁ DEPLOYADAS (`firebase deploy --only firestore:rules`). Query do top: orderBy pontos desc (índice single-field automático).
 - **Revisão do inglês (12/out/2026)**: subcoleções `users/{uid}/srs/{b00…b15,_meta}` (cartões FSRS) e `users/{uid}/srs_log/{AAAA-MM}` (histórico); regras próprias só do dono (as de `users/{uid}` não cobrem subcoleção). O mapa `users/{uid}.en_revisao` é LEGADO (lido uma vez na migração, nunca apagado).
 - **Textos do aluno (14/out/2026)**: subcoleção `users/{uid}/textos/{id}` (um documento por texto colado/escrito; ver "☁️ Textos na nuvem"). Regra própria só do dono — **escrita no `firestore.rules`, ainda não publicada**.
+- **Banco de palavras do inglês (20/out/2026)**: um doc `users/{uid}/palavras/v1` (campo `b`, JSON compacto; ver "🆕 Palavras novas"). Regra própria só do dono — **escrita no `firestore.rules`, ainda não publicada**; sem ela o app funciona só no aparelho (falha da nuvem é engolida). `apagarDadosDoUsuario` já apaga `palavras`.
 - `firebase.json` (hosting → build/web + SPA rewrite; firestore rules/indexes), `.firebaserc` (default: pac-dart).
 - Trocar `ProgressoRepository` local por Firestore já está feito (`FirestoreProgressoRepository`).
 
@@ -1654,6 +1670,7 @@ Plano: `planejamento/FASE-7-MODOS-DE-RESPOSTA.md` (D1–D10). **Só as lições 
 
 ## 📋 Pendências / próximos passos
 
+- ⚠️ **Palavras novas (20/out, sem commit/deploy):** publicar `firebase deploy --only firestore:rules` (bloco `users/{uid}/palavras`) **ANTES** do hosting; conferir as legendas do `web/turismo3d/turismo3d.js` com UM build de prova numa pasta reaproveitada (apagada depois) — ver "🆕 Palavras novas".
 - ⚠️ Código NÃO sincronizado com o GitHub desde o Arcade 2.0 (Turismo 3D inteiro só local + Firebase).
   Push só quando o usuário pedir.
 - **Fila do Dart Turismo (pedidos do usuário, set/2026)**: ✅ pistas 4×, ✅ rock por fase,
@@ -1716,3 +1733,98 @@ continua mostrando tudo. O teste antigo "na cópia não há não sei" virou "na 
 balão abaixo/acima da palavra conforme o espaço, "morning" → "Good morning → Bom dia" sem IA, "Mike" → Dash (falso do probe),
 digitar com o balão aberto funciona, Montar/Falar cobertos. Probe apagado. **Publicado** (hosting, 14/out/2026) e **commitado + push** (2153671, junto com todo o trabalho pendente da árvore).
 Ideia não feita: o mesmo toque na palavra nos cartões (`SessaoCartoesPage`) e na leitura — o `BalaoPalavra` já é reaproveitável.
+
+## 🆕 20/out/2026 — Inglês: palavras novas, treino, Minhas palavras, Arcade com as palavras das lições e mapa estilo Duolingo (FEITO; sem commit/deploy)
+
+Tudo **só no inglês** (gated em `st.ehIngles` / `Linguagem.atual == ingles` / `PalavrasCubit.de(context) != null`); Dart e C#
+ficam idênticos (vocabulário do arcade, RNG do Turismo, mapa antigo). Plano completo: scratchpad da sessão (`plano_final.json`).
+
+- **Palavras novas da lição** (`ingles/domain/palavras_novas.dart`, puro): tokens de `Trecho.cod` na ordem do curso; nova =
+  1ª vez no curso, base ainda não vista (lema "(de X)" ou `Dicionario.bases`), fora das ~90 palavras de função, ≥3 letras,
+  sem apóstrofo/número/soletrada, não é nome próprio nem personagem, existe no dicionário; até 8 por lição (as do `alvo`
+  primeiro). `IndicePalavras` (memoizado, montado preguiçoso pelo `PalavrasCubit.prepararIndice`, NÃO no curriculo_loader)
+  dá `novasPorLicao`, `poolPorLicao` (o que vai para os jogos: inclui palavras de função), `novasDaTrilha`, `traducao`.
+  `traducaoCurta` corta o verbete para caber embaixo da palavra. Hífen/apóstrofo: treina, mas não entra nos jogos.
+- **Banco de palavras** (`domain/banco_palavras.dart`, `data/palavras_repository.dart`, `presentation/palavras_cubit.dart`):
+  só guarda o que não se deriva (treinadas, adicionadas, editadas, escondidas, cartões FSRS, contadores do jogo, `emTreino`);
+  as palavras das lições vêm do currículo + `concluidas` (sem migração quando o curso cresce). **Separado da revisão das
+  frases** (não infla "para revisar hoje"). Repositórios: `Local` (`en_palavras_{uid}`), `Memoria` (testes), `Firestore`
+  (`users/{uid}/palavras/v1`, local primeiro, nuvem mescla e falha calada). DI em `main.dart` (`palavrasBuilder`).
+- **Fim da lição:** na vitória de lição nova (não repetida) com 2+ palavras novas, `CartaoPalavrasNovas`
+  (`Key('vitoria-palavras')`): "🆕 N palavras novas nesta lição" + "🎯 Treinar agora"; depois "✅ Treinadas · 🎮 já estão
+  no Arcade". Enter/Esc continuam sendo da vitória.
+- **Treino de palavras** (`domain/roteiro_treino.dart` + `treino_palavras.dart`/`treino_palavras_page.dart` + `widgets/treino/`):
+  até 8 por sessão (mais = lotes): conhecer → escolher o PT → pares → 🎧 ouvir e escolher → digitar; errar volta 3 passos
+  depois; nota = pior 1ª tentativa; resumo com baú + confete, "🎮 Jogar com essas palavras" (põe em foco e abre o Arcade).
+  Registra FSRS das palavras, o hábito do dia e, se veio, `ProjetoConcluido('bau:<baralhoId>')`.
+- **Minhas palavras** (`minhas_palavras_page.dart` + `widgets/adicionar_palavra_sheet.dart`): contagem, "Revisar agora",
+  "Jogar com elas", filtros (Para revisar / Das lições / Minhas / Da leitura / Fora dos jogos), busca, força em 4 pontos,
+  🎮 liga/desliga do jogo, editar tradução, remover (só as suas). Adicionar: só letras A–Z (2–14), PT do dicionário ou "✨
+  Traduzir" (MyMemory), modo "colar lista". Abre pelo card "📚 Minhas palavras" do mapa e pelo hub do Arcade.
+- **Arcade com as palavras das lições + tradução** (`arcade/domain/vocabulario_jogo.dart`, `ingles/domain/vocabulario_aluno.dart`,
+  `BancoArcade.vocabulario/baralhoRali/registrarJogo`): ordem = foco/emTreino → vencidas/fracas → lição atual + 5 últimas
+  concluídas → as suas + "Meus cartões" → amostra das antigas (as do teste de nivelamento entram aqui, limitadas) → listas
+  fixas para completar 12. Tradução embaixo (`LegendaTraducao`, sempre um Text separado) na Chuva, no Rali, no HUD do
+  Turismo, no Canvas (`pista_gt.dart`) e no 3D web (`vista_3d_web.dart` → `turismo3d.js pintarPainel/pintarPlaca`).
+  Vistas/erros por palavra vão para o banco (sem FSRS). Rali "modo memória" (`Key('rali-memoria')`: PT grande, EN em
+  esqueleto) alimenta o FSRS. Hub: cartão "Minhas palavras" (`Key('arcade-minhas-palavras')`) no lugar da Lógica Animada.
+- **Mapa estilo Duolingo** (só inglês; `curso/presentation/pages/mapa/*` + `curso/domain/mapa_regras.dart`): caminho em
+  seno, nó 3D que afunda (`No3D`: feita/atual/disponível/trancada só na aparência — ainda abre, a folha oferece o teste da
+  unidade), 3 estrelas pela nota, chip "🆕 N", balão COMEÇAR (`Key('mapa-comecar')`), faixa da unidade com cor por etapa e o
+  rosto do personagem principal (`RostoPersonagem`, estático), guia da unidade, estrada `TrilhoIngles`, baú no fim da
+  unidade, comemoração (pop + confete) ao voltar com lição nova, rolagem até a lição atual + "📍 Onde parei"
+  (`MapaPage.rolarAoAbrir` desliga nos testes), card "📚 Minhas palavras" e "🆕 Treinar as palavras novas" na folha da lição.
+  Sem Timer: só AnimationControllers de uma vez (o atual e o baú pronto repetem) — `pumpAndSettle` continua funcionando.
+
+**Testes:** suíte inteira em 20/out: **1.553 passam, 5 falham** (as 5 de sempre do `csharp_curriculo_test`); +151 desde
+o começo do trabalho. Novos: `ingles_palavras_novas`, `ingles_banco_palavras`, `ingles_palavras_repository`,
+`ingles_palavras_cubit`, `ingles_roteiro_treino`, `ingles_treino_palavras_ui`, `ingles_minhas_palavras_ui`,
+`ingles_vocabulario_aluno`, `arcade_ingles(_ui)`, `turismo_ingles`, `mapa_regras`, `ingles_mapa_ui`, `festa` e o ponta a
+ponta `ingles_palavras_app_test` (PacDartApp: lição → cartão → treino → "Jogar" → hub com as palavras em foco → Chuva com
+palavra da lição + PT → mapa comemora e a folha oferece as palavras → "mango" adicionada aparece no vocabulário dos jogos).
+`flutter analyze lib test`: sem avisos.
+
+**⚠️ Operação (nada publicado ainda):**
+1. **`firebase deploy --only firestore:rules` ANTES do hosting** (bloco `match /users/{uid}/palavras/{doc}`). Sem as regras o
+   app não quebra (fica só no aparelho), mas não sincroniza.
+2. As legendas do 3D (`turismo3d.js`) não têm teste automático: conferir com **UM** build de prova numa pasta reaproveitada
+   e apagá-la depois (nada de `flutter build web` em loop — regra de build). Conferir o mapa a 360/412/1440 e na paleta clara
+   e o Turismo a 2560×1080 (receita Playwright de sempre).
+
+## 🔥 20/out/2026 (rodada 2) — Palavras teimosas · treinar antes da lição · pacote de desempenho do Arcade (FEITO; sem commit/deploy)
+
+Tudo das teimosas é **só inglês** e null-safe (`PalavrasCubit.de(context)?.…`); Dart/C# e telas sem cubit não mudam (params
+novos default null/false, RNG do Turismo intocado). Sem Timer. Planos: scratchpad da sessão (`plano_teimosas.json`, `plano_desempenho.json`).
+
+- **Palavras teimosas** (`ingles/domain/erros_palavra.dart`, `teimosas.dart`, `licao_de_palavras.dart`; `widgets/cartao_teimosas.dart`):
+  erros por palavra capturados na lição (passos de memória; cópia, 👁 e "foi erro de digitação" não contam), na Revisão de memória,
+  nos cartões PT→EN e nos jogos (Chuva/Rali/Turismo via `arcade/domain/tropecos.dart` `TropecosDoJogo`); carga de erro que decai,
+  DOMINADA só num acerto limpo (jogo nunca domina). Oferta (`sugestao`: fim de lição/revisão/entre fases, adiar/recusas):
+  `CartaoTeimosas` na vitória (treinar só elas · jogar com elas · 📝 virar lição · agora não), `ChipAnotada` ("anotei", máx. 2
+  por lição), `ListaTeimosas` nos resumos, `SeloDominada` 🏆. Treino **revanche** (relembrar → ouvir e escolher → digitar sem a
+  1ª letra → 2ª rodada de digitar). Minhas palavras: seção/filtro "Teimosas (N)", medidor 🔥, "errou Nx · há D dias", "Já sei
+  essa" (some por 2 semanas), prateleira 🏆 Dominadas. Mapa: "· K teimosas" no card; Sanguessugas: "🎯 Treinar as palavras desta frase".
+  Arcade: `AvisoArcade` (toast), `PainelTropecos` entre fases do Rali, `OfertaTeimosasFim` com "⚡ Revanche no jogo", linha
+  `arcade-teimosas` no hub. JSON antigo do banco re-codifica byte a byte igual (testado).
+- **Treinar antes da lição** (`CartaoAntesDaLicao`, `Key('antes-palavras')`): lição nova com 2+ palavras ainda não treinadas mostra
+  "🆕 Esta lição tem N palavras novas" + "🎯 Conhecer antes" (atalho ⌘/Ctrl Enter) / "Começar direto"; a 1ª tecla o dispensa,
+  não toma foco; pulado 3 vezes seguidas vira uma linha só. Na vitória: "✅ Você já treinou essas palavras" + "🔁 Revisar de novo";
+  com teimosas o card das novas fica compacto ("🆕 +N palavras novas já entraram no Arcade 🎮").
+- **Desempenho do Arcade** (visual igual): Pac3D com `animado` (hub só mastiga no hover, Lógica Animada só no ato 3; Chuva/Rali
+  param atrás dos overlays) · `TickerMode` no jogo da Corrida/Rali/Chuva/Missão · Ticker da Chuva e do Turismo só ligado em
+  corrida (para em pausa/fim/menu) · HUD do Turismo ~30 Hz por tempo · `RepaintBoundary` em pista/avatares/campo/minimapa/cabeçalho ·
+  `BarraTempo` 180 ms · `CampoTeclas` sem cursor piscando · torcida do gol em `drawRawPoints` · minimapa com traçado em cache ·
+  estilos do `Mixart` em cache · 3D web: teto de 60 fps acima de ~90 Hz, imagem congela na pausa/1,5 s após o fim, `three.core.min.js`,
+  módulo 3D carregado sob demanda (`await window.turismo3d.carregar()` antes de `montar` em receitas externas!), `no-cache` em
+  `/turismo3d/**` no `firebase.json`. **Pulado:** build wasm, cache longo de /assets3d e /lib3d, teto de 60 Hz no `_tick` da
+  Chuva (mexeria na ordem do RNG), refatoração grande do HUD do Turismo, blur/MaskFilter, `deferred` no hud.
+- **Prova no build web (20/out, 1 build):** abre sem erro no console (só avisos de fonte Noto e RGBELoader); sem modo convidado,
+  então mapa/hub não foram abertos no navegador (cobertos pelos testes). Tela de login parada = **0 rAF em 3 s**. Turismo 3D
+  montado à mão no build: só carrega `turismo3d.js` + `three.core.min.js` sob demanda, placas e painéis mostram a tradução
+  (house/casa, water/água), 121 renders em 2 s correndo → **1 na pausa** → 120 ao retomar.
+
+**Testes:** suíte inteira em 20/out (rodada 2): **1.657 testes, 1.652 passam, 5 falham** (as 5 de sempre do `csharp_curriculo_test`);
+114 arquivos. Novos: `ingles_erros_palavra`, `ingles_teimosas`, `ingles_licao_de_palavras`, `ingles_teimosas_sessoes`,
+`arcade_tropecos`, `arcade_teimosas_ui`, `arcade_frames_ocioso`, `arcade_frames_jogos` (hub assenta no `pumpAndSettle`; jogos sem
+frames em pausa/fim). `flutter analyze lib test`: sem avisos. ⚠️ Com o hub ocioso, `tester.pump()` puro pode não entregar um
+update do cubit: use `pump(Duration.zero)`.

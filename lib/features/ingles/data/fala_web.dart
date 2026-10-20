@@ -198,3 +198,11 @@ Future<bool> tocarBytes(Uint8List bytes, String mime, double velocidade) async {
 
 /// Nome da voz escolhida (para mostrar/depurar).
 String? get vozAtual => _voz?.name;
+
+/// Onde está a gravação tocando (s, no tempo do arquivo), para a boca do personagem acompanhar o som de
+/// verdade (o `<audio>` pode demorar a começar); null = nenhuma gravação tocando.
+double? get posicaoGravacao {
+  final a = _audio;
+  if (a == null || a.paused || a.ended) return null;
+  return a.currentTime.toDouble();
+}

@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'palavras_csharp.dart';
+import 'palavras_ingles.dart';
+import 'vocabulario_jogo.dart';
 
 /// 🏎️ Dart Turismo — campeonato de digitação em 10 pistas.
 ///
@@ -68,14 +70,10 @@ class PistaGt {
   double get velMax => intervaloPortais / 2.8;
   double get velMaxKmh => velMax * 3.6;
 
-  List<String> get vocabulario {
-    final v = vocabularioDe();
-    return switch (nivelPalavras) {
-      1 => v.curtas,
-      2 => [...v.curtas, ...v.medias],
-      _ => [...v.medias, ...v.longas],
-    };
-  }
+  List<String> get vocabulario => vocabularioCom(VocabularioJogo.deListas(vocabularioDe()));
+
+  /// As palavras desta pista tiradas de [v]: 1 = curtas · 2 = curtas e médias · 3 = médias e longas.
+  List<String> vocabularioCom(VocabularioJogo v) => v.poolDoNivel(nivelPalavras);
 
   /// Medalha pra um tempo de chegada: 3 ouro · 2 prata · 1 bronze · 0 nada.
   int medalha(double tempo) {
@@ -333,9 +331,60 @@ class TurismoEngine {
   int gasDigitadas = 0;
   final List<String> _usadasGas = [];
 
-  TurismoEngine({required this.pista, required this.rnd, this.modo = ModoControle.digitacao}) {
+  /// As palavras desta corrida, quando vêm de fora (o inglês manda as das lições); null = o
+  /// vocabulário fixo da pista ([PistaGt.vocabulario]) — o Dart e o C# sempre.
+  final List<String>? vocabulario;
+
+  /// Palavra → tradução curta (o inglês mostra embaixo da palavra; vazio no Dart e no C#).
+  final Map<String, String> traducoes;
+
+  TurismoEngine({
+    required this.pista,
+    required this.rnd,
+    this.modo = ModoControle.digitacao,
+    List<String>? vocabulario,
+    this.traducoes = const {},
+  }) : vocabulario = vocabulario == null || vocabulario.isEmpty ? null : vocabulario {
     segmentos = _gerarPista();
     portais = _gerarPortais();
+  }
+
+  /// A tradução de [palavra] (pela forma exata ou em minúsculas), ou null.
+  String? traducao(String palavra) {
+    final t = traducoes[palavra] ?? traducoes[palavra.toLowerCase()];
+    return t == null || t.isEmpty ? null : t;
+  }
+
+  /// Tropeços (as teimosas do inglês): palavra → falha (0–1) das tentativas que TERMINARAM desde que a
+  /// tela esvaziou o mapa. Na palavra travada do portal (e na de combustível) cada tecla errada soma 0,34,
+  /// até 1 por tentativa; o portal que passou com a palavra travada pela metade vale 1. As outras palavras
+  /// de um portal perdido não contam. [ultimaPerdida]: a última que entrou. Só contabilidade — nenhum
+  /// sorteio (a pista e as palavras saem iguais).
+  final Map<String, double> perdas = {};
+  String? ultimaPerdida;
+  String? _perdaDe;
+  Portal? _perdaPortal;
+  double _perdaDaVez = 0;
+
+  /// Tecla errada na tentativa de [w] (do portal [p]; null = combustível).
+  void _somaPerda(String w, Portal? p, double f) {
+    if (_perdaDe != w || !identical(_perdaPortal, p)) {
+      _perdaDe = w;
+      _perdaPortal = p;
+      _perdaDaVez = 0;
+    }
+    _perdaDaVez = min(1.0, _perdaDaVez + f);
+  }
+
+  /// A tentativa de [w] terminou (completou, ou [perdeu] o portal): o que somou vai para [perdas].
+  void _fechaPerda(String w, Portal? p, {bool perdeu = false}) {
+    final f = perdeu ? 1.0 : (_perdaDe == w && identical(_perdaPortal, p) ? _perdaDaVez : 0.0);
+    _perdaDe = null;
+    _perdaPortal = null;
+    _perdaDaVez = 0;
+    if (f <= 0) return;
+    perdas[w] = min(1.0, (perdas[w] ?? 0) + f);
+    ultimaPerdida = w;
   }
 
   bool get porSetas => modo == ModoControle.setas;
@@ -505,6 +554,10 @@ class TurismoEngine {
       candidatas.shuffle(rnd);
       final faixas = pista.duasSaidas ? [candidatas[0], candidatas[1]] : [candidatas[0]];
       final palavras = [for (final _ in faixas) _sorteiaPalavra(usadas)];
+      // palavras de fora (inglês): as duas saídas nunca começam com a mesma letra — a 1ª tecla é
+      // que escolhe a faixa. (O vocabulário fixo do Dart segue o sorteio de sempre.)
+      if (vocabulario != null && palavras.length == 2) palavras[1] = _outraInicial(palavras[0], palavras[1], usadas);
+      final fichas = vocabulario != null ? fichasIngles : fichasDart;
       lista.add(Portal(
         indice: (z / comprimentoSegmento).floor(),
         z: z,
@@ -517,7 +570,7 @@ class TurismoEngine {
         // três fichas na faixa livre ANTES do pórtico: marcam o caminho certo
         fichas: [
           for (var k = 0; k < 3; k++)
-            Ficha(z: z - 34 + k * 10, faixa: faixas.first, texto: fichasDart[rnd.nextInt(fichasDart.length)]),
+            Ficha(z: z - 34 + k * 10, faixa: faixas.first, texto: fichas[rnd.nextInt(fichas.length)]),
         ],
       ));
       faixaAnterior = faixas.first;
@@ -525,8 +578,23 @@ class TurismoEngine {
     return lista;
   }
 
+  /// [segunda], ou outra sorteada (até 10 vezes; depois, a 1ª do vocabulário que serve) que não
+  /// comece com a mesma letra de [primeira].
+  String _outraInicial(String primeira, String segunda, List<String> usadas) {
+    String ini(String w) => w.isEmpty ? '' : w[0].toLowerCase();
+    final a = ini(primeira);
+    var w = segunda;
+    for (var t = 0; t < 10 && ini(w) == a; t++) {
+      w = _sorteiaPalavra(usadas);
+    }
+    if (ini(w) != a) return w;
+    final pool = vocabulario ?? pista.vocabulario;
+    final outras = [for (final p in pool) if (ini(p) != a) p];
+    return outras.isEmpty ? w : outras[rnd.nextInt(outras.length)];
+  }
+
   String _sorteiaPalavra(List<String> usadas) {
-    final pool = pista.vocabulario;
+    final pool = vocabulario ?? pista.vocabulario;
     for (var t = 0; t < 40; t++) {
       final p = pool[rnd.nextInt(pool.length)];
       if (!usadas.contains(p)) {
@@ -607,7 +675,9 @@ class TurismoEngine {
         boost = 1;
       }
       if (!p.livre) {
-        // o portal passou sem palavra: a digitação pela metade se perde
+        // o portal passou sem palavra: a digitação pela metade se perde (e a palavra travada, escapou)
+        final travada = palavraTravada;
+        if (travada != null) _fechaPerda(p.palavras[travada], p, perdeu: true);
         palavraTravada = null;
         digitadas = 0;
       }
@@ -642,6 +712,7 @@ class TurismoEngine {
       if (digitadas < w.length && w[digitadas] == ch) {
         digitadas++;
       } else {
+        _somaPerda(w, p, .34);
         return _errou();
       }
     }
@@ -656,6 +727,7 @@ class TurismoEngine {
         faixaPendente = p.faixas[idx]; // vale assim que passar a folga
       }
       _completou(w.length, boostExtra: .12, forca: 1);
+      _fechaPerda(w, p);
       palavraTravada = null;
       digitadas = 0;
       _atualizaAlvo();
@@ -671,12 +743,14 @@ class TurismoEngine {
     if (gasDigitadas < gas.length && gas[gasDigitadas] == ch) {
       gasDigitadas++;
     } else {
+      _somaPerda(gas, null, .34);
       return _errou();
     }
     teclasCertas++;
     velocidade = (velocidade + velMax * .075).clamp(0, velMax);
     if (gasDigitadas >= gas.length) {
       _completou(gas.length, boostExtra: .06, forca: .6);
+      _fechaPerda(gas, null);
       palavraGas = null;
       gasDigitadas = 0;
       _atualizaAlvo();

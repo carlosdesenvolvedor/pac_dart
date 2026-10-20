@@ -29,8 +29,11 @@ class PalavraTocada {
   });
 }
 
-/// O balão do "toque na palavra": o pé da letra (dicionário do app, na hora e sem internet) e o sentido
-/// NO CONTEXTO (o trecho da lição, se a palavra está nele, e o Prof. Dash, com cache e cota própria).
+/// Fala só a palavra tocada, na velocidade normal ou devagar (🐢).
+typedef OuvirPalavra = void Function(String palavra, {required bool lenta});
+
+/// O balão do "toque na palavra": a pronúncia dela (🔊 normal e 🐢 devagar), o pé da letra (dicionário do app, na
+/// hora e sem internet) e o sentido NO CONTEXTO (o trecho da lição, se a palavra está nele, e o Prof. Dash, com cache e cota própria).
 ///
 /// Fica numa camada por cima da tela, presa à palavra, e NÃO toma o foco: dá para seguir digitando.
 /// Fecha ao tocar fora, no ✕ ou quando o dono chamar [fechar] (Esc, próxima frase).
@@ -40,7 +43,7 @@ class BalaoPalavra {
   bool get aberto => _entrada != null;
 
   /// Abre (ou troca) o balão sob [ancora] — o retângulo da palavra, em coordenadas globais.
-  void abrir(BuildContext context, {required Rect ancora, required PalavraTocada palavra}) {
+  void abrir(BuildContext context, {required Rect ancora, required PalavraTocada palavra, OuvirPalavra? onOuvir}) {
     fechar();
     final overlay = Overlay.maybeOf(context, rootOverlay: true);
     if (overlay == null) return;
@@ -56,6 +59,7 @@ class BalaoPalavra {
         ancora: local,
         palavra: palavra,
         ia: ia,
+        onOuvir: onOuvir,
         onFechar: () {
           if (identical(_entrada, entrada)) fechar();
         },
@@ -77,9 +81,16 @@ class _CamadaBalao extends StatelessWidget {
   final Rect ancora;
   final PalavraTocada palavra;
   final IaPalavrasCubit? ia;
+  final OuvirPalavra? onOuvir;
   final VoidCallback onFechar;
 
-  const _CamadaBalao({required this.ancora, required this.palavra, required this.ia, required this.onFechar});
+  const _CamadaBalao({
+    required this.ancora,
+    required this.palavra,
+    required this.ia,
+    required this.onFechar,
+    this.onOuvir,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +103,7 @@ class _CamadaBalao extends StatelessWidget {
       ),
       child: TapRegion(
         onTapOutside: (_) => onFechar(),
-        child: ConteudoBalaoPalavra(palavra: palavra, ia: ia, onFechar: onFechar),
+        child: ConteudoBalaoPalavra(palavra: palavra, ia: ia, onOuvir: onOuvir, onFechar: onFechar),
       ),
     );
   }
@@ -129,7 +140,10 @@ class ConteudoBalaoPalavra extends StatefulWidget {
   final IaPalavrasCubit? ia;
   final VoidCallback? onFechar;
 
-  const ConteudoBalaoPalavra({super.key, required this.palavra, this.ia, this.onFechar});
+  /// 🔊/🐢 ao lado da palavra (null = sem voz, sem os botões).
+  final OuvirPalavra? onOuvir;
+
+  const ConteudoBalaoPalavra({super.key, required this.palavra, this.ia, this.onFechar, this.onOuvir});
 
   @override
   State<ConteudoBalaoPalavra> createState() => _ConteudoBalaoPalavraState();
@@ -230,6 +244,22 @@ class _ConteudoBalaoPalavraState extends State<ConteudoBalaoPalavra> {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
+                  if (widget.onOuvir case final ouvir?) ...[
+                    IconButton(
+                      key: const Key('ouvir-palavra'),
+                      tooltip: 'Ouvir a palavra',
+                      visualDensity: VisualDensity.compact,
+                      icon: Icon(Icons.volume_up_rounded, size: 20, color: Mixart.brand),
+                      onPressed: () => ouvir(p.palavra, lenta: false),
+                    ),
+                    IconButton(
+                      key: const Key('ouvir-palavra-devagar'),
+                      tooltip: 'Ouvir devagar',
+                      visualDensity: VisualDensity.compact,
+                      icon: Icon(Icons.slow_motion_video_rounded, size: 20, color: Mixart.brand),
+                      onPressed: () => ouvir(p.palavra, lenta: true),
+                    ),
+                  ],
                   IconButton(
                     key: const Key('fechar-balao-palavra'),
                     tooltip: 'Fechar',

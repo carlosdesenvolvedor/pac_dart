@@ -14,3 +14,6 @@ Future<bool> tocarBytes(Uint8List bytes, String mime, double velocidade) async =
 void parar() {}
 
 String? get vozAtual => null;
+
+/// Onde está a gravação tocando (s), para a boca do personagem; null = sem gravação tocando.
+double? get posicaoGravacao => null;

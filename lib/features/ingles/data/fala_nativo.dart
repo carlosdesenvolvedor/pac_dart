@@ -161,3 +161,6 @@ Future<bool> _tocarFonte(Source fonte, double velocidade) async {
 
 /// Nome da voz escolhida (para mostrar/depurar).
 String? get vozAtual => _vozNome;
+
+/// Onde está a gravação tocando (s): o player daqui só responde assíncrono — a boca segue o relógio.
+double? get posicaoGravacao => null;

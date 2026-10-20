@@ -104,6 +104,12 @@ mixin CampanhaDeFases<T extends StatefulWidget> on State<T>, PausaDeJogo<T> {
   @override
   bool get podePausar => emPartida && !acabou && !faseVencida;
 
+  /// A tela do jogo está à vista (sem pausa, fase vencida ou fim por cima)?
+  /// Use em `TickerMode(enabled: jogoAnimando, child: <só a tela do jogo>)`:
+  /// atrás de um overlay, o que anima embaixo (o Pac mastigando…) para de
+  /// pedir frame. Os overlays ficam FORA do TickerMode (o confete continua).
+  bool get jogoAnimando => !pausado && !faseVencida && !acabou;
+
   @override
   void initState() {
     super.initState();

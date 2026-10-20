@@ -116,11 +116,20 @@
     For more details:
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
-  <!-- Three.js (MIT) auto-hospedado: renderizador 3D do Dart Turismo -->
+  <!-- Three.js (MIT) auto-hospedado: renderizador 3D do Dart Turismo.
+       O three.module.min.js importa "./three.core.js" (a versão SEM minificar,
+       1,46 MB): o importmap troca pela three.core.min.js (mesma r186). -->
   <script type="importmap">
-    {"imports": {"three": "./lib3d/three.module.min.js", "three/addons/": "./lib3d/addons/"}}
+    {"imports": {"three": "./lib3d/three.module.min.js", "three/addons/": "./lib3d/addons/", "./lib3d/three.core.js": "./lib3d/three.core.min.js"}}
   </script>
-  <script type="module" src="turismo3d/turismo3d.js"></script>
+  <!-- Sob demanda: o módulo 3D (three.js + loaders) só é importado quando uma
+       corrida 3D abre (vista_3d_web.dart chama carregar()); quem só estuda não
+       baixa nada disso. Ao carregar, o módulo troca window.turismo3d pela API. -->
+  <script>
+    window.turismo3d = {
+      carregar: function () { return import('./turismo3d/turismo3d.js'); }
+    };
+  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

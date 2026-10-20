@@ -50,6 +50,9 @@ class TraducaoCard extends StatelessWidget {
   /// Botão a mais ao lado dos de áudio (o 🎧 do áudio do aluno).
   final Widget? acaoAudio;
 
+  /// O rosto de quem diz a frase (mexendo a boca com a voz), à esquerda da tradução; recebe o tamanho.
+  final Widget Function(double tamanho)? rosto;
+
   const TraducaoCard({
     super.key,
     required this.trecho,
@@ -69,6 +72,7 @@ class TraducaoCard extends StatelessWidget {
     this.contextoEmPt = false,
     this.compacto = false,
     this.acaoAudio,
+    this.rosto,
   });
 
   @override
@@ -104,7 +108,17 @@ class TraducaoCard extends StatelessWidget {
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          if (trecho.imagem.isNotEmpty)
+          if (rosto case final r?)
+            Padding(
+              key: const Key('rosto-da-frase'),
+              padding: const EdgeInsets.only(right: 12),
+              // num círculo, como avatar: o peito do personagem some na borda
+              child: ClipOval(
+                child: ColoredBox(color: const Color(0xFFFFF1DC), child: r(estreito ? (compacto ? 48 : 60) : 84)),
+              ),
+            ),
+          // no celular, com o rosto, a imagem da frase sai (não cabe tudo na linha)
+          if (trecho.imagem.isNotEmpty && !(rosto != null && estreito))
             // a imagem do sentido da frase: vê-la junto com a tradução fixa
             // mais (e, de memória, é pista sem entregar as palavras)
             Container(
@@ -124,7 +138,7 @@ class TraducaoCard extends StatelessWidget {
                 ),
               ),
             )
-          else ...[
+          else if (rosto == null) ...[
             Padding(
               padding: const EdgeInsets.only(top: 4),
               child: Text('PT', style: Mixart.mono(size: 11, weight: FontWeight.w700, color: Mixart.brand)),

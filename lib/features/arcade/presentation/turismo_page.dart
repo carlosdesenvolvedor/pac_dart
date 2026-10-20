@@ -9,16 +9,24 @@ import 'banco_arcade.dart';
 
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
+import '../../ingles/domain/erros_palavra.dart';
+import '../../ingles/domain/teimosas.dart';
+import '../../ingles/presentation/acoes_teimosas.dart';
+import '../../ingles/presentation/palavras_cubit.dart';
 import '../../ranking/presentation/ranking_cubit.dart';
 import '../domain/personagem.dart';
 import '../domain/progresso_turismo.dart';
+import '../domain/tropecos.dart';
 import '../domain/turismo.dart';
 import '../data/engenheiro_gt.dart';
 import 'widgets/arcade_ui.dart';
+import 'widgets/aviso_arcade.dart';
 import 'widgets/campanha.dart';
 import 'widgets/campo_teclas.dart';
 import 'widgets/cenario.dart';
+import 'widgets/legenda_traducao.dart';
 import 'widgets/minimapa.dart';
+import 'widgets/painel_tropecos.dart';
 import 'widgets/tutorial_turismo.dart';
 import 'widgets/vista_3d.dart';
 import 'widgets/vista_3d_controlador.dart';
@@ -77,10 +85,14 @@ class _TurismoPageState extends State<TurismoPage>
   bool _tutorial = false;
   List<Offset> _tracado = const [];
 
-  /// A cena 3D recebe o estado a cada tick por aqui; o HUD redesenha a cada
-  /// 2 frames (30 Hz) — metade do trabalho do Flutter.
+  /// A cena 3D recebe o estado a cada tick por aqui; o HUD redesenha a
+  /// ~30 Hz (por TEMPO, não por frame: num monitor de 120 Hz continua 30).
   final _vista = Vista3DControlador();
-  int _quadro = 0;
+  double _desdeHud = 0;
+
+  /// Sem 3D (nativo, ou web sem o módulo) a estrada em Canvas só anda no setState: redesenha a
+  /// cada 2 frames (60 fps em tela de 120 Hz). O limite de ~30 Hz por tempo é só pro HUD sobre o 3D.
+  bool _quadroPar = false;
 
   /// A cena 3D está pronta pra largar? (sem 3D, sempre; com 3D, quando o
   /// JS terminou de carregar tráfego, texturas e shaders — ou após 60 s)
@@ -96,8 +108,16 @@ class _TurismoPageState extends State<TurismoPage>
   _Tela _tela = _Tela.campeonato;
   PistaGt? _pista;
   TurismoEngine? _engine;
-  late final Ticker _ticker = createTicker(_tick);
+  late final Ticker _ticker; // criado no initState, ligado só na partida
   Duration _ultimo = Duration.zero;
+
+  /// O Ticker só roda com o carro na pista (da largada até a pausa/o fim): no campeonato, no tutorial,
+  /// na contagem, na pausa e no resultado ele não pede frame (no navegador cada frame redesenha a tela
+  /// inteira). Ao religar, o 1º passo conta a partir do último frame desenhado ([_religadoEm]); na volta
+  /// da pausa, no máximo do tamanho do último passo jogado ([_ultimoDt]) — o carro não "pula".
+  Duration? _religadoEm;
+  bool _retomando = false;
+  double _ultimoDt = 1 / 60;
   double _relogio = 0;
   double _ultimoRonco = -1;
 
@@ -106,6 +126,16 @@ class _TurismoPageState extends State<TurismoPage>
   bool _pontuado = false;
   bool _novoRecorde = false;
   bool _campeao = false;
+
+  /// Inglês: o banco de palavras do aluno e o que aconteceu com cada palavra (portal perdido = erro).
+  PalavrasCubit? _palavrasCubit;
+  final _placar = PlacarPalavras();
+
+  /// Inglês (teimosas, só digitando): os tropeços da corrida, o aviso "escapou 2x" na pista e a oferta
+  /// "treinar só elas" da tela de fim.
+  TropecosDoJogo? _tropecos;
+  String? _avisoTropeco;
+  SugestaoTeimosas? _sug;
 
   static const _setas = ['⬅ ESQUERDA', '⬆ MEIO', '➡ DIREITA'];
 
@@ -116,10 +146,11 @@ class _TurismoPageState extends State<TurismoPage>
   void initState() {
     super.initState();
     _ranking = RankingCubit.de(context);
+    _palavrasCubit = BancoArcade.palavras(context);
+    _ticker = createTicker(_tick);
     PersonagemStore.carregar().then((_) {
       if (mounted) setState(() {});
     });
-    _ticker.start();
     // o modo (⌨️/🎮), o carro e a câmera salvos entram ANTES da corrida direta
     _carregarCampeonato().then((_) {
       final inicial = widget.pistaInicial;
@@ -272,6 +303,7 @@ class _TurismoPageState extends State<TurismoPage>
 
   /// Saiu no meio: as palavras digitadas valem ponto mesmo assim.
   void _publicarParcial() {
+    _placar.enviar(_palavrasCubit, fonte: FonteErro.turismo, tropecos: _tropecos);
     final e = _engine;
     if (e == null || _pontuado || e.pontos <= 0) return;
     _pontuado = true;
@@ -279,21 +311,45 @@ class _TurismoPageState extends State<TurismoPage>
   }
 
   @override
-  void aoPausar() => Sons.motorParar();
+  void aoPausar() {
+    Sons.motorParar();
+    _desligarTicker();
+  }
+
+  @override
+  void aoRetomar() {
+    if (_tela == _Tela.corrida && _engine != null && !_acabou && !_contagem) _ligarTicker(retomando: true);
+  }
+
+  void _ligarTicker({bool retomando = false}) {
+    if (_ticker.isActive) return;
+    _religadoEm = SchedulerBinding.instance.currentSystemFrameTimeStamp;
+    _retomando = retomando;
+    _ticker.start();
+  }
+
+  void _desligarTicker() {
+    if (_ticker.isActive) _ticker.stop();
+  }
 
   // ---------- corrida ----------
 
   Future<void> _correr(PistaGt p) async {
+    _desligarTicker();
     Sons.motorParar();
     final tutorial = !await ProgressoTurismo.tutorialVisto(setas: _modoSetas);
     final fantasma = await ProgressoTurismo.fantasma(p.numero);
     if (!mounted) return;
+    // inglês: as palavras das lições (com a tradução); Dart/C#: o vocabulário fixo da pista
+    final vocab = BancoArcade.soDigitacao ? BancoArcade.vocabulario(context) : null;
     setState(() {
       _pista = p;
       _engine = TurismoEngine(
         pista: p,
         rnd: math.Random(widget.semente),
         modo: _modoSetas ? ModoControle.setas : ModoControle.digitacao,
+        vocabulario: vocab == null ? null : p.vocabularioCom(vocab),
+        traducoes: vocab?.traducoes ?? const {},
       );
       _tracado = tracadoDaPista([for (final s in _engine!.segmentos) s.curva],
           comprimento: TurismoEngine.comprimentoSegmento);
@@ -316,6 +372,9 @@ class _TurismoPageState extends State<TurismoPage>
       _novoRecorde = false;
       _campeao = false;
       pausado = false;
+      _tropecos = _palavrasCubit != null && !_modoSetas ? TropecosDoJogo() : null;
+      _avisoTropeco = null;
+      _sug = null;
     });
   }
 
@@ -328,11 +387,13 @@ class _TurismoPageState extends State<TurismoPage>
   void _largada() {
     if (!mounted || _engine == null) return;
     setState(() => _contagem = false);
+    _ligarTicker();
     pausarSeEscondido();
     if (_modoSetas) _foco.requestFocus();
   }
 
   void _voltarAoCampeonato() {
+    _desligarTicker();
     _publicarParcial();
     Sons.motorParar();
     setState(() {
@@ -348,10 +409,18 @@ class _TurismoPageState extends State<TurismoPage>
 
   void _tick(Duration elapsed) {
     var dt = (elapsed - _ultimo).inMicroseconds / 1e6;
+    final religado = _religadoEm;
+    if (religado != null) {
+      // 1º frame depois de (re)ligar: o elapsed recomeçou do zero
+      dt = (SchedulerBinding.instance.currentSystemFrameTimeStamp - religado).inMicroseconds / 1e6;
+      if (_retomando) dt = math.min(dt, _ultimoDt);
+      _religadoEm = null;
+    }
     _ultimo = elapsed;
     final e = _engine;
     if (e == null || _tela != _Tela.corrida || _contagem || pausado || _acabou || !mounted) return;
     if (dt > .1) dt = .1;
+    if (dt > 0) _ultimoDt = dt;
     final colisoesAntes = e.colisoes;
     final fichasAntes = e.fichasPegas;
     final limposAntes = e.portaisLimpos;
@@ -360,12 +429,20 @@ class _TurismoPageState extends State<TurismoPage>
       if (!_foco.hasFocus) _foco.requestFocus();
       e.pedais(dt, gas: _gas, freio: _freio);
     }
+    final contar = _palavrasCubit != null && !e.porSetas;
+    final ordAntes = contar ? e.ordinalDoPortalAtual : 0;
     e.tick(dt);
+    if (contar) _contarPortais(e, ordAntes);
+    _drenarPerdas(e);
     _relogio += dt;
     _vista.enviar();
-    _quadro++;
+    _desdeHud += dt;
+    _quadroPar = !_quadroPar;
     final aconteceu = e.colisoes > colisoesAntes || e.fichasPegas > fichasAntes || !e.correndo;
-    if (_quadro.isEven || aconteceu) setState(() {});
+    if ((Vista3D.disponivel ? _desdeHud >= .03 : _quadroPar) || aconteceu) {
+      _desdeHud = 0;
+      setState(() {});
+    }
     if (e.portaisLimpos > limposAntes) Sons.toca(Som.turbo);
     if (e.colisoes > colisoesAntes) Sons.toca(Som.explosao);
     if (e.fichasPegas > fichasAntes) Sons.toca(Som.blip);
@@ -377,11 +454,32 @@ class _TurismoPageState extends State<TurismoPage>
     if (!e.correndo) _fim();
   }
 
+  /// Inglês: os portais que o carro acabou de cruzar — palavra digitada = vista; portal perdido =
+  /// erro em cada palavra dele.
+  void _contarPortais(TurismoEngine e, int ordAntes) {
+    final ordDepois = e.ordinalDoPortalAtual;
+    for (var k = ordAntes; k < ordDepois && k < e.portais.length; k++) {
+      final p = e.portais[k];
+      if (p.livre) {
+        _placar.viu(p.palavras[p.digitado]);
+        _tropecos?.vista(p.palavras[p.digitado]);
+      } else {
+        p.palavras.forEach(_placar.errou);
+      }
+    }
+  }
+
   void _tecla(String ch) {
     final e = _engine;
     if (e == null || _contagem || pausado || _acabou || ch.trim().isEmpty) return;
     final multAntes = e.multiplicador;
+    final gasAntes = e.portalParaDigitar == null ? e.palavraGas : null;
     final r = e.teclar(ch);
+    if (r == TeclaGt.completou && gasAntes != null && _palavrasCubit != null) {
+      _placar.viu(gasAntes);
+      _tropecos?.vista(gasAntes);
+    }
+    if (r == TeclaGt.completou || r == TeclaGt.errou) _drenarPerdas(e);
     setState(() {});
     switch (r) {
       case TeclaGt.avancou:
@@ -396,11 +494,58 @@ class _TurismoPageState extends State<TurismoPage>
     }
   }
 
+  /// Inglês: o que o motor anotou de tropeço ([TurismoEngine.perdas]) vai para os tropeços da corrida; na
+  /// 2ª escapada de uma palavra, o aviso na pista.
+  void _drenarPerdas(TurismoEngine e) {
+    final t = _tropecos;
+    if (t == null || e.perdas.isEmpty) return;
+    for (final x in e.perdas.entries) {
+      t.falha(x.key, x.value);
+    }
+    e.perdas.clear();
+    final w = e.ultimaPerdida;
+    final a = w == null ? null : t.aviso(w, pode: !_contagem && !pausado);
+    if (a != null) setState(() => _avisoTropeco = BancoArcade.textoAviso(a, t.vezes(a)));
+  }
+
+  /// Inglês: a oferta "treinar só elas" da tela de fim (uma por corrida), se a política deixar.
+  void _oferecerTeimosas() {
+    final cubit = _palavrasCubit, t = _tropecos;
+    if (cubit == null || t == null || t.somas.isEmpty || _sug != null) return;
+    final sug = cubit.sugestao(LocalSugestao.fimDeJogo, daSessao: BancoArcade.daSessao(cubit, t));
+    if (sug == null) return;
+    cubit.marcarMostrada();
+    _sug = sug;
+  }
+
+  Widget _ofertaFim(SugestaoTeimosas s, PistaGt pista) => OfertaTeimosasFim(
+        sugestao: s,
+        onTreinar: () => treinarTeimosas(context, s.palavras, origem: 'turismo').then((_) {
+          if (mounted) setState(() => _sug = null);
+        }),
+        onRevanche: () {
+          jogarComTeimosas(context, s.palavras, dentroDoJogo: true);
+          _correr(pista);
+        },
+        onAgoraNao: _palavrasCubit?.adiar,
+      );
+
+  /// Inglês: a linha das palavras anotadas na pausa (null sem nada).
+  Widget? _anotadas() {
+    final t = BancoArcade.linhaAnotadas(_tropecos);
+    return t == null ? null : LinhaAnotadas(t);
+  }
+
   Future<void> _fim() async {
     final e = _engine;
     final pista = _pista;
     if (e == null || pista == null || _acabou) return;
+    _desligarTicker();
     Sons.motorParar();
+    // inglês: os tropeços vão para o banco já (antes das esperas) e a oferta entra na tela de fim
+    _drenarPerdas(e);
+    _placar.enviar(_palavrasCubit, fonte: FonteErro.turismo, tropecos: _tropecos);
+    _oferecerTeimosas();
     setState(() {
       _acabou = true;
       pausado = false;
@@ -484,7 +629,7 @@ class _TurismoPageState extends State<TurismoPage>
                     legenda: '${emojiDaFase(_pista!.tema)} ${_pista!.nome} — '
                         '${_modoSetas ? 'segure ↑ pra acelerar' : 'digite pra acelerar'}',
                   ),
-                if (pausado) PausaOverlay(onContinuar: retomar, onSair: _voltarAoCampeonato),
+                if (pausado) PausaOverlay(onContinuar: retomar, onSair: _voltarAoCampeonato, extra: _anotadas()),
                 if (_acabou && e != null && _pista != null) _fimDaCorrida(e, _pista!),
               ]),
             ),
@@ -516,6 +661,15 @@ class _TurismoPageState extends State<TurismoPage>
             borderRadius: BorderRadius.circular(Mixart.radiusMd),
           ),
           child: Text(
+            BancoArcade.soDigitacao
+                ? 'Campeonato de ${pistasGt.length} pistas em 3D com as palavras das SUAS lições — a '
+                    'tradução aparece embaixo. Cada portal marca a faixa LIVRE com uma palavra: digite-a '
+                    'pra entrar na faixa e passar limpo — o tráfego das outras faixas arranca quando você '
+                    'chega, e encostar nele é batida. Toda tecla certa acelera; parar de digitar é ir '
+                    'parando. Passe por cima das fichas (hi, yes, wow…) na faixa livre pra ganhar 🪙 '
+                    'moedas, que compram os carros da garagem. Feche a pista no tempo pra liberar a '
+                    'próxima: 🥇 ouro, 🥈 prata ou 🥉 bronze. Esc pausa.'
+                :
             'Campeonato de ${pistasGt.length} pistas em 3D. Cada portal marca a faixa LIVRE '
             'com uma palavra: digite-a pra entrar na faixa e passar limpo — o tráfego das '
             'outras faixas arranca quando você chega, e encostar nele é batida. Toda tecla '
@@ -928,7 +1082,9 @@ class _TurismoPageState extends State<TurismoPage>
                 controlador: _vista,
               ),
             ),
-            Positioned(left: 12, top: 12, right: 136, child: _barraProgresso(e)),
+            // os overlays sobre a vista 3D ficam juntos (uma camada só por cima do canvas do three);
+            // a barra tem camada própria: só repinta quando a bolinha anda um pixel ou o km muda
+            Positioned(left: 12, top: 12, right: 136, child: RepaintBoundary(child: _barraProgresso(e))),
             Positioned(
               right: 12,
               top: 12,
@@ -938,6 +1094,7 @@ class _TurismoPageState extends State<TurismoPage>
                 comprimentoSegmento: TurismoEngine.comprimentoSegmento,
               ),
             ),
+            if (_avisoTropeco != null) AvisoArcade(_avisoTropeco!, top: 56, direita: 136),
           ]),
         ),
       ),
@@ -1057,7 +1214,7 @@ class _TurismoPageState extends State<TurismoPage>
         Text(
           p == null
               ? 'segure ↑ até a bandeirada'
-              : '${p.palavras.first}  ·  portal em ${(p.z - e.posicao).clamp(0, 9999).round()} m'
+              : '${p.palavras.first}${_entreParenteses(e, p.palavras.first)}  ·  portal em ${(p.z - e.posicao).clamp(0, 9999).round()} m'
                   '${proximo == null ? '' : '  ·  a seguir: ${_setas[proximo.faixas.first].substring(0, 1)}'}',
           style: Mixart.mono(size: 14, color: Mixart.textMuted),
         ),
@@ -1081,7 +1238,18 @@ class _TurismoPageState extends State<TurismoPage>
             Text('  ·  a seguir: ', style: Mixart.ui(size: 11, color: Mixart.textFaint)),
             Text('${_setas[proximo.faixas.first].substring(0, 1)} ${proximo.palavras.first}',
                 style: Mixart.mono(size: 12, color: Mixart.textMuted)),
+            if (e.traducao(proximo.palavras.first) != null)
+              Text(_entreParenteses(e, proximo.palavras.first),
+                  style: Mixart.ui(size: 10, weight: FontWeight.w600, color: Mixart.textFaint)),
           ]);
+    // inglês: as linhas de baixo (com as traduções) encolhem em vez de vazar no celular
+    final ingles = e.traducoes.isNotEmpty;
+    Widget linha(List<Widget> filhos) => ingles
+        ? FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Row(mainAxisSize: MainAxisSize.min, children: filhos),
+          )
+        : Row(mainAxisAlignment: MainAxisAlignment.center, children: filhos);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
       decoration: BoxDecoration(
@@ -1095,11 +1263,15 @@ class _TurismoPageState extends State<TurismoPage>
               Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 for (var i = 0; i < p.faixas.length; i++) ...[
                   if (i > 0) const SizedBox(width: 28),
-                  _palavraDaFaixa(e, p, i),
+                  // inglês: duas palavras compridas + traduções encolhem juntas em vez de vazar
+                  if (ingles)
+                    Flexible(child: FittedBox(fit: BoxFit.scaleDown, child: _palavraDaFaixa(e, p, i)))
+                  else
+                    _palavraDaFaixa(e, p, i),
                 ],
               ]),
               const SizedBox(height: 8),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              linha([
                 Text('portal em ${(p.z - e.posicao).clamp(0, 9999).round()} m',
                     style: Mixart.ui(size: 11, color: Mixart.textFaint)),
                 aSeguir(),
@@ -1121,7 +1293,7 @@ class _TurismoPageState extends State<TurismoPage>
               const SizedBox(height: 6),
               if (gas != null) _palavraGas(e, gas),
               const SizedBox(height: 8),
-              Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              linha([
                 Text(
                     atual == null
                         ? 'digite pra manter a velocidade até a bandeirada'
@@ -1133,7 +1305,24 @@ class _TurismoPageState extends State<TurismoPage>
     );
   }
 
+  /// ' (tradução)' de [palavra] no inglês; '' sem tradução (Dart, C#).
+  String _entreParenteses(TurismoEngine e, String palavra) {
+    final t = e.traducao(palavra);
+    return t == null ? '' : ' ($t)';
+  }
+
   Widget _palavraGas(TurismoEngine e, String gas) {
+    final traducao = e.traducao(gas);
+    final palavra = _palavraGasTexto(e, gas);
+    if (traducao == null) return palavra;
+    return Column(mainAxisSize: MainAxisSize.min, children: [
+      palavra,
+      const SizedBox(height: 2),
+      LegendaTraducao(traducao, tamanho: 13, maxLargura: 260),
+    ]);
+  }
+
+  Widget _palavraGasTexto(TurismoEngine e, String gas) {
     final idx = e.gasDigitadas;
     return Semantics(
       label: 'digite: $gas',
@@ -1181,6 +1370,10 @@ class _TurismoPageState extends State<TurismoPage>
             style: Mixart.mono(size: 28).copyWith(letterSpacing: 1.5, height: 1.1),
           ),
         ),
+        if (e.traducao(palavra) != null) ...[
+          const SizedBox(height: 2),
+          LegendaTraducao(e.traducao(palavra), tamanho: 13, maxLargura: 220),
+        ],
       ]),
     );
   }
@@ -1189,7 +1382,9 @@ class _TurismoPageState extends State<TurismoPage>
     final chegou = e.terminou;
     final m = e.medalha;
     final titulo = _campeao
-        ? '🏆 CAMPEÃO DART TURISMO!'
+        ? (BancoArcade.soDigitacao
+            ? '🏆 CAMPEÃO ${BancoArcade.linguagem.toUpperCase()} TURISMO!'
+            : '🏆 CAMPEÃO DART TURISMO!')
         : chegou
             ? '${emojisMedalha[m]} ${nomesMedalha[m].toUpperCase()}!'
             : '⏱ TEMPO ESGOTADO';
@@ -1258,6 +1453,7 @@ class _TurismoPageState extends State<TurismoPage>
                         for (final t in _trofeusNovos) ChipPlacar('🏆 TROFÉU NOVO', '${t.emoji} ${t.nome}', cor: Mixart.brand),
                       ]),
                     ],
+                    if (_sug != null) ...[const SizedBox(height: 14), _ofertaFim(_sug!, pista)],
                     const SizedBox(height: 14),
                     _radioDaEquipe(),
                     const SizedBox(height: 18),

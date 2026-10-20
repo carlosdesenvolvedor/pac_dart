@@ -19,6 +19,11 @@ import '../domain/nivel_resposta.dart';
 import '../domain/shadowing.dart';
 import '../domain/srs.dart';
 import '../domain/subida_nivel.dart';
+import '../domain/erros_palavra.dart' show EvidenciaPalavra, FonteErro, evidenciasDaComparacao, pesoDaFonte;
+import '../domain/teimosas.dart' show LocalSugestao, SugestaoTeimosas;
+import 'acoes_teimosas.dart';
+import 'palavras_cubit.dart';
+import 'widgets/cartao_teimosas.dart';
 import 'widgets/cena_visual.dart';
 import 'widgets/painel_shadowing.dart';
 import 'widgets/pastilha.dart';
@@ -200,11 +205,29 @@ class _SessaoCartoesPageState extends State<SessaoCartoesPage> {
   List<Bloco> _blocos = const [];
   final List<int> _escolhidos = [];
 
+  // ---- 🔥 palavras teimosas (só com o PalavrasCubit: o inglês) ----
+  PalavrasCubit? _palavras;
+
+  /// As evidências da sessão (uma chamada ao cubit no fim) e a soma das falhas por palavra.
+  final _evSessao = <EvidenciaPalavra>[];
+  final _somaSessao = <String, double>{};
+  bool _gravouTeimosas = false;
+  SugestaoTeimosas? _sug;
+
+  /// A Revisão do dia emenda a sessão de memória e esta: as duas são UMA revisão. Se uma oferta acabou de
+  /// aparecer (há menos de [_janelaDaOferta] quando esta abriu), o fim desta não oferece de novo.
+  bool _ofertaRecente = false;
+  static const _janelaDaOferta = Duration(minutes: 5);
+
   _Item get _item => _fila[_i];
 
   @override
   void initState() {
     super.initState();
+    _palavras = PalavrasCubit.de(context);
+    final ultima = _palavras?.state.banco.sugestao.ultimaMs ?? 0;
+    _ofertaRecente = ultima != 0 &&
+        _palavras!.agora().millisecondsSinceEpoch - ultima < _janelaDaOferta.inMilliseconds;
     if (_fila.isEmpty) {
       _fim = true;
       _pronto = true;
@@ -233,6 +256,8 @@ class _SessaoCartoesPageState extends State<SessaoCartoesPage> {
 
   @override
   void dispose() {
+    // saiu no meio: o que já foi respondido conta
+    _gravarTeimosas();
     _voz.parar();
     _foco.dispose();
     _focoCampo.dispose();
@@ -483,6 +508,7 @@ class _SessaoCartoesPageState extends State<SessaoCartoesPage> {
     final item = _item;
     final k = widget.chaveDe(item.frase);
     if (!item.repeticao) {
+      _capturarTeimosas(item, nota);
       _resultados.add(ResultadoCartao(item.frase, nota));
       _acompanharNivel(nota);
       try {
@@ -499,6 +525,56 @@ class _SessaoCartoesPageState extends State<SessaoCartoesPage> {
       }
     }
     _proximo();
+  }
+
+  /// 🔥 A 1ª resposta de um cartão PT → EN (o inglês saiu da memória) vira evidência das palavras: conferida
+  /// palavra a palavra; na lacuna da leitura, só a palavra guardada (errou → falha 1). EN → PT, "Só virar",
+  /// "Não sei" e o shadowing (a voz erra nomes) não contam.
+  void _capturarTeimosas(_Item item, Rating nota) {
+    final cubit = _palavras;
+    if (cubit == null || cubit.state.indice == null || !_ptEnAtual || _shadowAtual) return;
+    final List<EvidenciaPalavra> evs;
+    if (_lacunaDeLeitura) {
+      final k = cubit.chaveDeTreino(item.frase.alvo);
+      if (k == null || _comparacao == null) return;
+      evs = [
+        EvidenciaPalavra(
+            chave: k,
+            peso: pesoDaFonte(FonteErro.cartao),
+            falha: nota == Rating.again ? 1 : 0,
+            fonte: FonteErro.cartao),
+      ];
+    } else {
+      final c = _comparacao;
+      if (c == null) return;
+      evs = evidenciasDaComparacao(c, fonte: FonteErro.cartao, chaveDe: cubit.chaveDeTreino);
+    }
+    _evSessao.addAll(evs);
+    for (final e in evs) {
+      if (e.falha > 0) _somaSessao[e.chave] = (_somaSessao[e.chave] ?? 0) + e.peso * e.falha;
+    }
+  }
+
+  /// Grava as evidências da sessão (UMA vez: no fim, ou ao sair no meio) e, no fim, monta a oferta.
+  void _gravarTeimosas({bool fim = false}) {
+    final cubit = _palavras;
+    if (cubit == null || _gravouTeimosas) return;
+    _gravouTeimosas = true;
+    cubit.registrarErros(List.of(_evSessao));
+    if (!fim || _ofertaRecente) return;
+    _sug = cubit.sugestao(LocalSugestao.fimDeRevisao, daSessao: Map.of(_somaSessao));
+    if (_sug != null) cubit.marcarMostrada();
+  }
+
+  /// As palavras que tropeçaram nesta sessão (como se escrevem; da que mais deu trabalho para a menos).
+  List<String> get _tropecos {
+    final ind = _palavras?.state.indice;
+    final lista = [for (final e in _somaSessao.entries) if (e.value >= 1) e]
+      ..sort((a, b) {
+        final s = b.value.compareTo(a.value);
+        return s != 0 ? s : a.key.compareTo(b.key);
+      });
+    return [for (final e in lista.take(8)) ind?.formaDe(e.key) ?? e.key];
   }
 
   /// A 1ª nota do cartão entra na série do degrau; se a série pede, o banner SUGERE (nunca troca sozinho).
@@ -586,6 +662,7 @@ class _SessaoCartoesPageState extends State<SessaoCartoesPage> {
       return;
     }
     _voz.parar();
+    _gravarTeimosas(fim: true);
     setState(() => _fim = true);
     widget.onFim?.call(List.unmodifiable(_resultados));
   }
@@ -1259,6 +1336,20 @@ class _SessaoCartoesPageState extends State<SessaoCartoesPage> {
             _Placar('✅ BOM', '${n(Rating.good)}'),
             _Placar('⚡ FÁCIL', '${n(Rating.easy)}'),
           ]),
+        // 🔥 as palavras em que tropeçou (os botões só quando a oferta pode aparecer agora)
+        if (_tropecos case final tropecos when tropecos.isNotEmpty) ...[
+          const SizedBox(height: 16),
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 520),
+            child: ListaTeimosas(
+              palavras: tropecos,
+              onTreinar: _sug == null
+                  ? null
+                  : () => treinarTeimosas(context, _sug!.palavras, origem: 'cartoes', voz: widget.voz),
+              onJogar: _sug == null ? null : () => jogarComTeimosas(context, _sug!.palavras),
+            ),
+          ),
+        ],
         const SizedBox(height: 18),
         FilledButton(
           key: const Key('continuar-cartoes'),

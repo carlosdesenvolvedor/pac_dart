@@ -322,6 +322,9 @@ class FaseVencida extends StatelessWidget {
   final VoidCallback onProxima;
   final VoidCallback onParar;
 
+  /// Algo a mais entre a dica e os botões (ex.: as palavras que escaparam no inglês); null = nada.
+  final Widget? extra;
+
   const FaseVencida({
     super.key,
     required this.fase,
@@ -331,6 +334,7 @@ class FaseVencida extends StatelessWidget {
     required this.aviso,
     required this.onProxima,
     required this.onParar,
+    this.extra,
   });
 
   @override
@@ -388,6 +392,7 @@ class FaseVencida extends StatelessWidget {
                       ),
                     ]),
                   ),
+                  if (extra != null) ...[const SizedBox(height: 14), extra!],
                   const SizedBox(height: 18),
                   Wrap(spacing: 10, runSpacing: 10, alignment: WrapAlignment.center, children: [
                     FilledButton(
@@ -547,6 +552,9 @@ class FimDeJogo extends StatelessWidget {
   /// Há ranking pra receber os pontos (jogador logado)?
   final bool noRanking;
 
+  /// Algo a mais entre os números e a linha do ranking (ex.: a oferta das teimosas no inglês); null = nada.
+  final Widget? extra;
+
   const FimDeJogo({
     super.key,
     required this.emoji,
@@ -559,6 +567,7 @@ class FimDeJogo extends StatelessWidget {
     required this.onSair,
     this.celebrar = false,
     this.noRanking = true,
+    this.extra,
   });
 
   @override
@@ -611,6 +620,7 @@ class FimDeJogo extends StatelessWidget {
                 Wrap(spacing: 10, runSpacing: 10, alignment: WrapAlignment.center, children: [
                   for (final (k, v) in stats) ChipPlacar(k, v),
                 ]),
+                if (extra != null) ...[const SizedBox(height: 14), extra!],
                 const SizedBox(height: 10),
                 Text(
                     noRanking
@@ -654,6 +664,8 @@ class FimDeJogo extends StatelessWidget {
 
 
 /// Barra de relógio das rodadas (escoa suave, fica vermelha na urgência).
+/// Desce em degraus curtos a cada segundo (180 ms de animação), não num deslize contínuo: o jogo de
+/// turno não fica pedindo frame ~90% do tempo enquanto a pessoa pensa.
 class BarraTempo extends StatelessWidget {
   final int restante;
   final int total;
@@ -674,8 +686,8 @@ class BarraTempo extends StatelessWidget {
           borderRadius: BorderRadius.circular(999),
           child: TweenAnimationBuilder<double>(
             tween: Tween(end: total <= 0 ? 0 : (restante / total).clamp(0, 1).toDouble()),
-            duration: const Duration(milliseconds: 900),
-            curve: Curves.linear,
+            duration: const Duration(milliseconds: 180),
+            curve: Curves.easeOut,
             builder: (_, v, _) => LinearProgressIndicator(
               value: v,
               minHeight: 7,
@@ -737,7 +749,10 @@ class BotaoPausa extends StatelessWidget {
 class PausaOverlay extends StatelessWidget {
   final VoidCallback onContinuar;
   final VoidCallback onSair;
-  const PausaOverlay({super.key, required this.onContinuar, required this.onSair});
+
+  /// Uma linha a mais embaixo do texto (ex.: as palavras anotadas na partida, no inglês); null = nada.
+  final Widget? extra;
+  const PausaOverlay({super.key, required this.onContinuar, required this.onSair, this.extra});
 
   @override
   Widget build(BuildContext context) {
@@ -754,6 +769,7 @@ class PausaOverlay extends StatelessWidget {
             Text('Relógios parados. Respire, tome uma água — a CPU também espera.',
                 textAlign: TextAlign.center,
                 style: Mixart.ui(size: 12.5, color: Mixart.textMuted).copyWith(height: 1.4)),
+            if (extra != null) ...[const SizedBox(height: 12), extra!],
             const SizedBox(height: 18),
             Wrap(spacing: 10, runSpacing: 10, alignment: WrapAlignment.center, children: [
               FilledButton.icon(
@@ -983,12 +999,17 @@ class _CartaoInclinavelState extends State<CartaoInclinavel> {
         final box = context.findRenderObject() as RenderBox?;
         if (box == null || !box.hasSize) return;
         final s = box.size;
-        setState(() => _alvo = Offset(
-              (e.localPosition.dx / s.width * 2 - 1).clamp(-1, 1),
-              (e.localPosition.dy / s.height * 2 - 1).clamp(-1, 1),
-            ));
+        final novo = Offset(
+          (e.localPosition.dx / s.width * 2 - 1).clamp(-1, 1),
+          (e.localPosition.dy / s.height * 2 - 1).clamp(-1, 1),
+        );
+        // mexida de menos de 1% (< 0,1° de inclinação) não reinicia a animação a cada pixel
+        if ((novo - _alvo).distance < .02) return;
+        setState(() => _alvo = novo);
       },
-      child: TweenAnimationBuilder<Offset>(
+      // camada própria: o hover de um cartão não regrava os outros
+      child: RepaintBoundary(
+        child: TweenAnimationBuilder<Offset>(
         tween: Tween(end: _alvo),
         duration: const Duration(milliseconds: 160),
         curve: Curves.easeOut,
@@ -1015,6 +1036,7 @@ class _CartaoInclinavelState extends State<CartaoInclinavel> {
           ),
         ),
         child: widget.child,
+      ),
       ),
     );
   }

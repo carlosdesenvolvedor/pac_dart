@@ -23,6 +23,11 @@ service cloud.firestore {
     match /users/{uid}/textos/{id} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
+    // Banco de palavras do aluno no inglês ("Minhas palavras": palavras treinadas, adicionadas, editadas;
+    // um documento só, `v1`).
+    match /users/{uid}/palavras/{doc} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
     // Ranking público: todo logado LÊ o placar; cada um só escreve o próprio.
     match /ranking/{uid} {
       allow read: if request.auth != null;

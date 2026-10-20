@@ -14,13 +14,17 @@ class AvatarPersonagem extends StatelessWidget {
   /// null = usa o escolhido em [PersonagemStore.atual].
   final Personagem? personagem;
 
-  const AvatarPersonagem({super.key, required this.tamanho, this.personagem});
+  /// O Pac mastiga? false = boca semiaberta parada (nenhum frame pedido —
+  /// menu, cena parada). O Dash não anima de qualquer jeito.
+  final bool animado;
+
+  const AvatarPersonagem({super.key, required this.tamanho, this.personagem, this.animado = true});
 
   @override
   Widget build(BuildContext context) {
     final p = personagem ?? PersonagemStore.atual;
     return switch (p) {
-      Personagem.pac => Pac3D(tamanho: tamanho),
+      Personagem.pac => Pac3D(tamanho: tamanho, animado: animado),
       Personagem.dash => CustomPaint(
           size: Size.square(tamanho),
           painter: _DashPainter(),
@@ -33,15 +37,40 @@ class AvatarPersonagem extends StatelessWidget {
 /// sombra, brilho especular e olho com reflexo — e mastigando, claro.
 class Pac3D extends StatefulWidget {
   final double tamanho;
-  const Pac3D({super.key, required this.tamanho});
+
+  /// false = boca semiaberta parada: o controlador não roda e a tela pode
+  /// ficar ociosa (no navegador, cada frame redesenha a página inteira).
+  final bool animado;
+  const Pac3D({super.key, required this.tamanho, this.animado = true});
 
   @override
   State<Pac3D> createState() => _Pac3DState();
 }
 
 class _Pac3DState extends State<Pac3D> with SingleTickerProviderStateMixin {
-  late final _boca = AnimationController(vsync: this, duration: const Duration(milliseconds: 280))
-    ..repeat(reverse: true);
+  late final _boca = AnimationController(vsync: this, duration: const Duration(milliseconds: 280));
+
+  @override
+  void initState() {
+    super.initState();
+    _aplicarAnimacao();
+  }
+
+  @override
+  void didUpdateWidget(covariant Pac3D old) {
+    super.didUpdateWidget(old);
+    if (old.animado != widget.animado) _aplicarAnimacao();
+  }
+
+  void _aplicarAnimacao() {
+    if (widget.animado) {
+      _boca.repeat(reverse: true);
+    } else {
+      _boca
+        ..stop()
+        ..value = .5; // abertura .37: boca semiaberta
+    }
+  }
 
   @override
   void dispose() {
@@ -49,14 +78,37 @@ class _Pac3DState extends State<Pac3D> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
+  // camada própria: a boca mastigando não regrava quem está em volta
   @override
-  Widget build(BuildContext context) => AnimatedBuilder(
-        animation: _boca,
-        builder: (_, _) => CustomPaint(
-          size: Size.square(widget.tamanho),
-          painter: _Pac3DPainter(abertura: .12 + _boca.value * .5),
+  Widget build(BuildContext context) => RepaintBoundary(
+        child: AnimatedBuilder(
+          animation: _boca,
+          builder: (_, _) => CustomPaint(
+            size: Size.square(widget.tamanho),
+            painter: _Pac3DPainter(abertura: .12 + _boca.value * .5),
+          ),
         ),
       );
+}
+
+/// Os tons da esfera saem da cor da marca — calculados uma vez por cor
+/// (antes eram 3 HSLColor a cada frame da mastigada).
+class _TonsPac {
+  final Color base, claro, escuro, maisEscuro;
+  _TonsPac(this.base, this.claro, this.escuro, this.maisEscuro);
+
+  static _TonsPac? _ultimo;
+  static _TonsPac de(Color base) {
+    final u = _ultimo;
+    if (u != null && u.base == base) return u;
+    final hsl = HSLColor.fromColor(base);
+    return _ultimo = _TonsPac(
+      base,
+      hsl.withLightness((hsl.lightness + .18).clamp(0, 1)).toColor(),
+      hsl.withLightness((hsl.lightness - .22).clamp(0, 1)).toColor(),
+      hsl.withLightness((hsl.lightness - .36).clamp(0, 1)).toColor(),
+    );
+  }
 }
 
 class _Pac3DPainter extends CustomPainter {
@@ -68,11 +120,11 @@ class _Pac3DPainter extends CustomPainter {
     final r = s.width / 2;
     final centro = Offset(r, r);
     final rect = Rect.fromCircle(center: centro, radius: r);
-    final base = Mixart.brand;
-    final hsl = HSLColor.fromColor(base);
-    final claro = hsl.withLightness((hsl.lightness + .18).clamp(0, 1)).toColor();
-    final escuro = hsl.withLightness((hsl.lightness - .22).clamp(0, 1)).toColor();
-    final maisEscuro = hsl.withLightness((hsl.lightness - .36).clamp(0, 1)).toColor();
+    final tons = _TonsPac.de(Mixart.brand);
+    final base = tons.base;
+    final claro = tons.claro;
+    final escuro = tons.escuro;
+    final maisEscuro = tons.maisEscuro;
 
     final corpo = Path()
       ..moveTo(r, r)

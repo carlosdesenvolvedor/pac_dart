@@ -1,10 +1,11 @@
-import 'dart:typed_data';
-
+import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/som/sons.dart';
+import '../domain/boca.dart';
 import 'audio_nativo.dart';
 import 'audio_usuario.dart';
+import 'bocas_ingles.dart';
 import 'fala_stub.dart'
     if (dart.library.js_interop) 'fala_web.dart'
     if (dart.library.io) 'fala_nativo.dart' as fala;
@@ -17,7 +18,48 @@ import 'fala_stub.dart'
 /// juntas; se o mp3 falhar, a sintética assume. O áudio que o ALUNO anexou à
 /// frase ([AudioUsuario]) vem na frente de tudo, no formato dele. Nunca lança:
 /// plataforma sem TTS (testes na VM) só fica muda.
+/// A fala que está soando agora — os personagens mexem a boca com ela ([VozIngles.falando]).
+class FalaEmCurso {
+  final String frase;
+  final TrilhaBoca boca;
+
+  /// Quando a fala começou e a velocidade do áudio (1 = como foi gravado).
+  final DateTime inicio;
+  final double velocidade;
+
+  /// Tocando um mp3 (a boca segue a posição dele quando a plataforma informa).
+  final bool gravacao;
+
+  FalaEmCurso({
+    required this.frase,
+    required this.boca,
+    required this.inicio,
+    this.velocidade = 1,
+    this.gravacao = false,
+  });
+
+  /// O segundo da fala (no tempo da [boca]) em [agora].
+  double segundo(DateTime agora) {
+    if (gravacao) {
+      final pos = fala.posicaoGravacao;
+      if (pos != null) return pos;
+    }
+    final dt = agora.difference(inicio).inMicroseconds / 1e6;
+    return gravacao ? dt * velocidade : dt;
+  }
+
+  /// A boca em [agora].
+  Visema visema(DateTime agora) => boca.em(segundo(agora));
+}
+
 class VozIngles {
+  /// O que está sendo falado agora (null = silêncio). Vale para todas as vozes do app.
+  static final falando = ValueNotifier<FalaEmCurso?>(null);
+
+  /// Quanto cada palavra dura na voz sintética (a boca dela é estimada pelo texto).
+  static const segPorPalavraLenta = .46;
+  static const segPorPalavra = .34;
+
   /// Toca o áudio do aluno (injetável nos testes; no app, o `<audio>`/player de cada plataforma).
   final Future<bool> Function(Uint8List bytes, String mime, double velocidade)? tocarClipe;
 
@@ -64,28 +106,58 @@ class VozIngles {
   /// dá `await`.
   Future<void> falar(String frase, {bool? lenta}) async {
     final minha = ++_vez;
+    final devagar = lenta ?? lentaPorPadrao;
     try {
-      final devagar = lenta ?? lentaPorPadrao;
+      await _falar(frase, devagar, minha);
+    } finally {
+      // acabou (ou foi cortada por outra, que já se anunciou): a boca fecha
+      if (minha == _vez) falando.value = null;
+    }
+  }
+
+  void _anuncia(String frase, TrilhaBoca boca, {double velocidade = 1, bool gravacao = false}) {
+    falando.value = FalaEmCurso(
+      frase: frase,
+      boca: boca,
+      inicio: DateTime.now(),
+      velocidade: velocidade,
+      gravacao: gravacao,
+    );
+  }
+
+  TrilhaBoca _bocaDoTexto(String frase, bool devagar, {double fator = 1}) =>
+      TrilhaBoca.doTexto(frase, segPorPalavra: (devagar ? segPorPalavraLenta : segPorPalavra) * fator);
+
+  Future<void> _falar(String frase, bool devagar, int minha) async {
+    try {
       // 1. o áudio que o aluno anexou à frase
       if (AudioUsuario.tem(frase)) {
         final meu = await AudioUsuario.clipeDe(frase);
         if (minha != _vez) return; // outra fala assumiu enquanto o áudio baixava
-        if (meu != null &&
-            await (tocarClipe ?? fala.tocarBytes)(meu.bytes, meu.mime, devagar ? velocidadeGravadaLenta : velocidadeGravada)) {
-          return;
+        if (meu != null) {
+          // o áudio do aluno não tem boca gerada: segue o texto
+          _anuncia(frase, _bocaDoTexto(frase, devagar, fator: .8));
+          if (await (tocarClipe ?? fala.tocarBytes)(meu.bytes, meu.mime, devagar ? velocidadeGravadaLenta : velocidadeGravada)) {
+            return;
+          }
         }
       }
       final gravacao = AudioNativo.paraTocar(frase);
-      if (gravacao != null &&
-          await fala.tocar(gravacao, devagar ? velocidadeGravadaLenta : velocidadeGravada)) {
-        return;
+      if (gravacao != null) {
+        final v = devagar ? velocidadeGravadaLenta : velocidadeGravada;
+        final boca = BocasIngles.de(gravacao);
+        _anuncia(frase, boca ?? _bocaDoTexto(frase, devagar, fator: .8), velocidade: v, gravacao: boca != null);
+        if (await fala.tocar(gravacao, v)) return;
+        if (minha != _vez) return;
       }
+      _anuncia(frase, _bocaDoTexto(frase, devagar));
       await fala.falar(frase, devagar ? velocidadeLenta : velocidadeNormal);
     } catch (_) {}
   }
 
   Future<void> parar() async {
     _vez++;
+    falando.value = null;
     try {
       fala.parar();
     } catch (_) {}
