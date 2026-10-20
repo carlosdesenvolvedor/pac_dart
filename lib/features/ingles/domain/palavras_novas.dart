@@ -35,6 +35,7 @@ final _reLema = RegExp(r"\((?:(?:passado|plural|comparativo|particípio|superlat
 final _reSoletrada = RegExp(r'^([a-z]-)+[a-z]$');
 final _reDigito = RegExp(r'[0-9]');
 final _reDeJogo = RegExp(r'^[A-Za-z]{3,14}$');
+final _rePontas = RegExp(r'^[^A-Za-z]+|[^A-Za-z]+$');
 
 /// O sentido principal de um verbete do dicionário, curto para caber embaixo de
 /// uma palavra: sem os marcadores "(de X)", "(passado de X)", "(+ 's…)" e
@@ -215,6 +216,52 @@ class IndicePalavras {
 
   /// As palavras novas da lição [licaoId] (vazio se não houver/for desconhecida).
   List<PalavraNova> novasDe(String licaoId) => novasPorLicao[licaoId] ?? const [];
+
+  /// As palavras que os jogos do Arcade usam quando a pessoa ESCOLHE a lição [l] (as "lições das palavras
+  /// dos jogos"): (como se escreve, tradução curta). Primeiro as novas dela (as do alvo antes); depois as
+  /// outras palavras de conteúdo das frases da lição que o dicionário traduz — com os filtros das novas
+  /// (sem palavras de função, nomes, números, apóstrofo nem menos de 3 letras), então lição com 0–2
+  /// novas também contribui. Nos cartões de UMA palavra (Meus cartões, textos colados), o alvo entra com
+  /// a tradução do cartão mesmo fora do dicionário. Só letras, 3–14. Vale também para as lições próprias;
+  /// memorizado por instância de lição.
+  List<(String, String)> palavrasDeJogo(Licao l) => _jogoPorLicao[l] ??= List.unmodifiable(_palavrasDeJogo(l));
+
+  final _jogoPorLicao = Expando<List<(String, String)>>('palavrasDeJogo');
+
+  List<(String, String)> _palavrasDeJogo(Licao l) {
+    final r = <(String, String)>[];
+    final vistas = <String>{};
+    void por(String forma, String pt) {
+      if (pt.isEmpty || !_reDeJogo.hasMatch(forma)) return;
+      if (vistas.add(forma.toLowerCase())) r.add((forma, pt));
+    }
+
+    for (final p in novasDe(l.id)) {
+      por(p.en, p.pt);
+    }
+    for (final tr in l.trechos) {
+      for (final m in _reToken.allMatches(tr.cod)) {
+        final k = Dicionario.normalizar(m.group(0)!);
+        if (k.isEmpty || vistas.contains(k)) continue;
+        final gloss = dic.literal(k);
+        if (!_treinavel(k, gloss, nomes)) continue;
+        por(_formas[k] ?? k, traducaoCurta(gloss));
+      }
+      // cartão de uma palavra só: o alvo (ou o próprio trecho) com a tradução do cartão
+      final alvo = (tr.alvo.isNotEmpty ? tr.alvo : tr.cod).trim().replaceAll(_rePontas, '');
+      final pt = (tr.alvo.isNotEmpty ? tr.alvoPt : tr.dicaPlana).trim();
+      final k = alvo.toLowerCase();
+      if (pt.isNotEmpty &&
+          _reDeJogo.hasMatch(alvo) &&
+          !vistas.contains(k) &&
+          !stopwordsEn.contains(k) &&
+          !nomes.contains(k) &&
+          !ehNomeProprio(dic.literal(k))) {
+        por(_formas[k] ?? alvo, traducaoCurta(pt));
+      }
+    }
+    return r;
+  }
 
   /// As palavras novas da trilha [t]: as das lições dela, sem repetir, revezando entre as lições
   /// (cada lição contribui), no máximo [max]. Trilha própria = vazio.

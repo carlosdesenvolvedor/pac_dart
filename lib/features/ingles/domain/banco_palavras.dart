@@ -255,12 +255,61 @@ class BancoPalavras extends Equatable {
   /// Quando e quantas vezes o app ofereceu treinar as teimosas (e os "Agora não").
   final EstadoSugestao sugestao;
 
+  // ---------- as lições das palavras dos jogos (Arcade) ----------
+
+  /// Os ids das lições de onde vêm as palavras dos jogos, escolhidas pela pessoa. Null = automático
+  /// (as em treino, as que vencem, as das últimas lições e uma amostra das antigas).
+  final List<String>? licoesJogo;
+
+  /// Com lições escolhidas: as palavras da pessoa (adicionadas, guardadas lendo, "Meus cartões") também
+  /// entram nos jogos. No automático elas sempre entram.
+  final bool minhasNoJogo;
+
+  /// Quando a escolha mudou (ms): na mescla, vale a escolha inteira do lado mais novo (inclusive a volta
+  /// para o automático).
+  final int licoesJogoEm;
+
   const BancoPalavras({
     this.palavras = const {},
     this.emTreino = const [],
     this.emTreinoEm = 0,
     this.sugestao = EstadoSugestao.vazio,
+    this.licoesJogo,
+    this.minhasNoJogo = true,
+    this.licoesJogoEm = 0,
   });
+
+  /// Uma cópia com o que mudou (o resto, igual).
+  BancoPalavras _copia({
+    Map<String, PalavraDoBanco>? palavras,
+    List<String>? emTreino,
+    int? emTreinoEm,
+    EstadoSugestao? sugestao,
+  }) =>
+      BancoPalavras(
+        palavras: palavras ?? this.palavras,
+        emTreino: emTreino ?? this.emTreino,
+        emTreinoEm: emTreinoEm ?? this.emTreinoEm,
+        sugestao: sugestao ?? this.sugestao,
+        licoesJogo: licoesJogo,
+        minhasNoJogo: minhasNoJogo,
+        licoesJogoEm: licoesJogoEm,
+      );
+
+  /// A escolha das lições dos jogos: [ids] (sem repetir, na ordem dada) ou null = automático; [minhas] =
+  /// as palavras da pessoa entram junto. [agora] (ms) marca quando mudou.
+  BancoPalavras comLicoesJogo(Iterable<String>? ids, {bool? minhas, required int agora}) {
+    final lista = ids == null ? null : List<String>.unmodifiable({for (final i in ids) if (i.isNotEmpty) i});
+    return BancoPalavras(
+      palavras: palavras,
+      emTreino: emTreino,
+      emTreinoEm: emTreinoEm,
+      sugestao: sugestao,
+      licoesJogo: lista,
+      minhasNoJogo: minhas ?? minhasNoJogo,
+      licoesJogoEm: agora,
+    );
+  }
 
   static const vazio = BancoPalavras();
 
@@ -275,12 +324,11 @@ class BancoPalavras extends Equatable {
   bool get vazioDeVerdade => ativas.isEmpty;
 
   /// Põe (ou troca) [p].
-  BancoPalavras com(PalavraDoBanco p) =>
-      BancoPalavras(palavras: {...palavras, p.chave: p}, emTreino: emTreino, emTreinoEm: emTreinoEm, sugestao: sugestao);
+  BancoPalavras com(PalavraDoBanco p) => _copia(palavras: {...palavras, p.chave: p});
 
   /// Troca o estado das sugestões de teimosas.
   BancoPalavras comSugestao(EstadoSugestao s) =>
-      s == sugestao ? this : BancoPalavras(palavras: palavras, emTreino: emTreino, emTreinoEm: emTreinoEm, sugestao: s);
+      s == sugestao ? this : _copia(sugestao: s);
 
   /// [ens] passam para a frente do "em treino" (no máximo [maxEmTreino]).
   BancoPalavras comEmTreino(Iterable<String> ens, int agora) {
@@ -290,7 +338,7 @@ class BancoPalavras extends Equatable {
       if (!lista.contains(k)) lista.add(k);
       if (lista.length >= maxEmTreino) break;
     }
-    return BancoPalavras(palavras: palavras, emTreino: lista, emTreinoEm: agora, sugestao: sugestao);
+    return _copia(emTreino: lista, emTreinoEm: agora);
   }
 
   /// Sem as entradas que só existiam por causa de erros antigos: de lição, sem cartão, nos jogos, nunca
@@ -322,7 +370,7 @@ class BancoPalavras extends Equatable {
     }
     if (fora == null) return this;
     final r = {...palavras}..removeWhere((k, _) => fora!.contains(k));
-    return BancoPalavras(palavras: r, emTreino: emTreino, emTreinoEm: emTreinoEm, sugestao: sugestao);
+    return _copia(palavras: r);
   }
 
   /// A força de [p] em [hoje]: sem cartão = nova; estabilidade < 2 dias = fraca, < 10 = boa, senão firme.
@@ -362,6 +410,9 @@ class BancoPalavras extends Equatable {
         if (emTreino.isNotEmpty) 't': emTreino,
         if (emTreinoEm != 0) 'te': emTreinoEm,
         if (sugestao != EstadoSugestao.vazio) 's': sugestao.toJson(),
+        if (licoesJogo != null) 'lj': licoesJogo,
+        if (!minhasNoJogo) 'lm': 0,
+        if (licoesJogoEm != 0) 'le': licoesJogoEm,
       };
 
   static BancoPalavras fromJson(Object? bruto) {
@@ -376,11 +427,16 @@ class BancoPalavras extends Equatable {
     }
     final t = bruto['t'];
     final te = bruto['te'];
+    final lj = bruto['lj'];
+    final le = bruto['le'];
     return BancoPalavras(
       palavras: palavras,
       emTreino: t is List ? [for (final e in t) if (e is String && e.isNotEmpty) e.toLowerCase()].take(maxEmTreino).toList() : const [],
       emTreinoEm: te is int ? te : (te is num ? te.toInt() : 0),
       sugestao: EstadoSugestao.fromJson(bruto['s']),
+      licoesJogo: lj is List ? List.unmodifiable({for (final e in lj) if (e is String && e.isNotEmpty) e}) : null,
+      minhasNoJogo: bruto['lm'] != 0,
+      licoesJogoEm: le is int ? le : (le is num ? le.toInt() : 0),
     );
   }
 
@@ -405,7 +461,8 @@ class BancoPalavras extends Equatable {
   /// - teimosas: a carga (E, N, dia) vem inteira do lado decaído por último (empate: o que dominou
   ///   naquele dia, depois a maior E) — nunca soma os dois lados; a sequência de acertos vem do lado com o evento
   ///   mais novo; a marca de teimosa só de um lado que errou depois de dominar; o resto, o maior;
-  /// - as sugestões vêm do lado que ofereceu por último.
+  /// - as sugestões vêm do lado que ofereceu por último;
+  /// - a escolha das lições dos jogos (lições + "minhas palavras") vem inteira do lado que mudou por último.
   static BancoPalavras mesclar(BancoPalavras local, BancoPalavras nuvem) {
     final r = <String, PalavraDoBanco>{};
     for (final k in {...local.palavras.keys, ...nuvem.palavras.keys}) {
@@ -458,7 +515,16 @@ class BancoPalavras extends Equatable {
     }
     final treino = nuvem.emTreinoEm > local.emTreinoEm ? nuvem : local;
     final sug = nuvem.sugestao.ultimaMs > local.sugestao.ultimaMs ? nuvem.sugestao : local.sugestao;
-    return BancoPalavras(palavras: r, emTreino: treino.emTreino, emTreinoEm: treino.emTreinoEm, sugestao: sug);
+    final escolha = nuvem.licoesJogoEm > local.licoesJogoEm ? nuvem : local;
+    return BancoPalavras(
+      palavras: r,
+      emTreino: treino.emTreino,
+      emTreinoEm: treino.emTreinoEm,
+      sugestao: sug,
+      licoesJogo: escolha.licoesJogo,
+      minhasNoJogo: escolha.minhasNoJogo,
+      licoesJogoEm: escolha.licoesJogoEm,
+    );
   }
 
   static CartaoSrs? _melhorCartao(CartaoSrs? a, CartaoSrs? b) {
@@ -468,7 +534,7 @@ class BancoPalavras extends Equatable {
   }
 
   @override
-  List<Object?> get props => [palavras, emTreino, emTreinoEm, sugestao];
+  List<Object?> get props => [palavras, emTreino, emTreinoEm, sugestao, licoesJogo, minhasNoJogo, licoesJogoEm];
 }
 
 /// A nota de uma palavra num treino: vale a PIOR 1ª tentativa entre os passos dela. Sem um passo de

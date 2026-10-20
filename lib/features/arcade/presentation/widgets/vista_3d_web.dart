@@ -50,7 +50,8 @@ class Vista3D extends StatefulWidget {
   final String carro;
   final List<String> trafego;
 
-  /// Som ligado e jogo pausado (o motor gravado obedece aos dois).
+  /// Som ligado e jogo pausado (o motor gravado obedece aos dois; a música
+  /// segue só o [musica] — o `som` global é o dos efeitos).
   final bool som;
   final bool pausado;
 
@@ -176,6 +177,10 @@ class _Vista3DState extends State<Vista3D> {
       'fantasma': widget.fantasma?.amostras,
       'fantasmaPasso': VoltaFantasma.passo,
       'musica': e.pista.musica.isEmpty ? null : 'assets3d/som/musica/${e.pista.musica}',
+      // o 1º estado só vai com a cena pronta: a carga já nasce sabendo se os
+      // efeitos (motor/vento) e o 🎸 estão ligados
+      'som': widget.som,
+      'musicaLigada': widget.musica,
       'segmentos': [for (final s in e.segmentos) s.curva],
       'comprimentoSegmento': TurismoEngine.comprimentoSegmento,
       'distancia': e.pista.distancia,

@@ -1828,3 +1828,45 @@ novos default null/false, RNG do Turismo intocado). Sem Timer. Planos: scratchpa
 `arcade_tropecos`, `arcade_teimosas_ui`, `arcade_frames_ocioso`, `arcade_frames_jogos` (hub assenta no `pumpAndSettle`; jogos sem
 frames em pausa/fim). `flutter analyze lib test`: sem avisos. ⚠️ Com o hub ocioso, `tester.pump()` puro pode não entregar um
 update do cubit: use `pump(Duration.zero)`.
+
+## 🎵📚 20/out/2026 (rodada 3) — Escolher as lições das palavras do Arcade · música do Turismo que parava na largada (FEITO; sem commit/deploy)
+
+Pedido do Carlos: "quero escolher referente a quais lições vão ter as palavras nos jogos" e "a música começa a tocar na carga
+da corrida e para quando a corrida começa".
+
+- **Lições das palavras (só inglês)** — `arcade/presentation/escolher_licoes_page.dart` (`abrirEscolherLicoes(context)`):
+  no hub, card "Minhas palavras", botão **"📚 Palavras: Automático / N lições"** (`Key('arcade-escolher-licoes')`). Tela cheia
+  com o curso agrupado por nível → unidade (card recolhível com "marcar tudo") → lição (status feita/atual/liberada/🔒, nº de
+  palavras e 3 exemplos EN/PT). Só dá pra marcar o que o mapa já liberou. Atalhos ✨ Automático · ✅ Todas as concluídas ·
+  Limpar; chave "Incluir minhas palavras"; barra fixa com o total ao vivo ("N lições · P palavras + K suas") e os avisos
+  (poucas palavras → completa com as mais usadas; poucas longas 9+ letras; >120 → cada jogo sorteia até 120); "Salvar a
+  escolha?" ao sair com mudança (Descartar / Continuar escolhendo / Salvar). Ids que sumiram do curso caem no próximo Salvar.
+  - Dados: `BancoPalavras` ganhou `licoesJogo` ('lj', null = Automático), `minhasNoJogo` ('lm':0 só quando desligado) e
+    `licoesJogoEm` ('le'; o mais novo vence no `mesclar`) — viaja no mesmo doc do Firestore (`users/{uid}/palavras/v1`),
+    sem mudar regras; JSON antigo re-codifica byte a byte igual.
+  - `IndicePalavras.palavrasDeJogo(licao)` (novas primeiro + demais palavras de conteúdo das frases traduzíveis + cartões de
+    uma palavra); `montarVocabularioIngles(..., licoesEscolhidas, incluirMinhas)`: foco/revanche primeiro, as suas até 1/3 de
+    cada faixa, depois as lições em revezamento (ordem das lições e palavras sorteadas por dia), enchimento só abaixo de 12
+    por faixa. `VocabularioJogo` ganhou `enchimento`, `enchimentoLongas` e `minhas`. Chuva/Rali/Turismo não mudaram: já leem
+    `BancoArcade.vocabulario(context)` no `initState`.
+  - Rali: o intervalo da CPU virou `intervaloCpuRali(...)` (puro, testado). Dart/C# igual ao HEAD; inglês com piso 2,4 s,
+    +140 ms por letra acima de 5 e ×1,25 (×1,4 de memória). **Confirmar se o rebalanceamento do inglês fica.**
+- **Música do Turismo — causa:** o 1º `atualizar()` do Dart só chega com a cena **pronta**; na carga o JS usava um estado
+  padrão sem `som`/`musica` (= tudo ligado). E `atualizarMusica` exigia `e.som !== false`, sendo `som` o liga/desliga GLOBAL dos
+  efeitos (`Sons.ligado`, prefs `som_ligado`, o alto-falante do HUD das lições, que não aparece no arcade). Quem desligou os
+  efeitos numa lição ouvia a música subir na carga e sumir em ~1,5 s quando a cena ficava pronta (bem na contagem/largada),
+  com o chip dizendo "🎸 Rock ligado". **Correção:** a música segue só o 🎸, a pausa e o fim (motor/vento/batida/pneu
+  continuam no `som`); `montar` recebe `som` e `musicaLigada` no config (`config.musica` já é a URL) e monta um `estadoCarga`
+  que vale até o 1º estado (`estado || estadoCarga || …`). Arquivos: `web/turismo3d/turismo3d.js`, `widgets/vista_3d_web.dart`.
+  Se um dia o mudo global tiver que calar a música também, é só voltar o `e.som` no `atualizarMusica` — mas aí a tela do
+  Turismo precisa mostrar isso.
+- **Prova no build web (20/out, 1 build, `build/web` = build de deploy; `privacidade.html`/`excluir-conta.html` removidos):**
+  `main.dart.js` leva `musicaLigada`; Turismo montado à mão (Playwright, `play/pause/volume` instrumentados): com efeitos
+  mudos e 🎸 ligado a música sobe na carga (0,4→0,53), segue na contagem e fica em **0,6 a corrida toda**; pausa → 0 → retoma
+  0,59; 🎸 desligado no meio → 0 → religado 0,59; tudo ligado igual; carga com 🎸 desligado fica em 0 do começo ao fim (o
+  `<audio>` dá `play()` mudo, volume 0). Troca de faixa entre corridas: pause do elemento velho + play do novo, sem erro.
+
+**Testes:** suíte inteira em 20/out (rodada 3): **1.684 testes, 1.679 passam, 5 falham** (as 5 de sempre do
+`csharp_curriculo_test`); 117 arquivos. Novos: `arcade_licoes_jogo` (codec/back-compat/merge, vocabulário com escolha,
+revezamento por dia, teto de 40, as suas com 1/3), `arcade_escolher_licoes_ui` (hub → tela → salvar; avisos; bloqueadas;
+diálogo de saída; teclado; ids fantasma), `arcade_rali_intervalo`. `flutter analyze lib test`: sem avisos.

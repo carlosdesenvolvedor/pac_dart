@@ -1266,9 +1266,15 @@ function carregarCeu(tema) {
 
 // ---------- API ----------
 const benchMemo = new Map(); // `${gpu}|${w}x${h}@${dpr}` → ms do benchmark (por sessão)
+// O 1º atualizar() do Dart só chega com a cena pronta: a carga inteira roda
+// com este estado, e o som/🎸 dele vêm do config (`som`, `musicaLigada`;
+// antes eram "ligados" por omissão — motor, vento e música tocavam na carga
+// mesmo desligados)
+let estadoCarga = null;
 async function montar(canvas, config) {
   destruir(true); // a corrida anterior sai, mas o contexto fica (pode ser o mesmo canvas)
   cfg = { ...config };
+  estadoCarga = { posicao: 0, velocidade: 0, velMax: 30, x: 0, xAlvo: 0, impacto: 0, boost: 0, som: config.som !== false, musica: config.musicaLigada !== false }; // config.musica é a URL da faixa
   cfg.tema = TEMAS[config.tema] || TEMAS[1];
   L = config.comprimentoSegmento || 8;
   api.pronto = false;
@@ -1629,7 +1635,11 @@ function tocarMusica() {
 }
 function atualizarMusica(e, dt) {
   if (!musicaEl) return;
-  const ligada = e.som !== false && e.musica !== false && !e.pausado && !e.acabou;
+  // a música obedece ao 🎸 da tela do Turismo (mais pausa e fim), não ao
+  // liga/desliga global dos EFEITOS (`som`, o alto-falante do HUD das
+  // lições, invisível no arcade): com os efeitos mudos ela tocava na carga
+  // e sumia na largada, com o chip dizendo "Rock ligado"
+  const ligada = e.musica !== false && !e.pausado && !e.acabou;
   const alvo = !ligada ? 0 : (performance.now() < duckAte ? VOLUME_MUSICA_BATIDA : VOLUME_MUSICA);
   musicaVol += (alvo - musicaVol) * Math.min(1, (dt || 0.016) * (alvo > musicaVol ? 1.6 : 4));
   const v = Math.max(0, Math.min(1, musicaVol));
@@ -1878,7 +1888,7 @@ function posicionarCamera(e, f, px, pz, fracao, dt) {
 }
 
 function quadro() {
-  const e = estado || { posicao: 0, velocidade: 0, velMax: 30, x: 0, xAlvo: 0, impacto: 0, boost: 0 };
+  const e = estado || estadoCarga || { posicao: 0, velocidade: 0, velMax: 30, x: 0, xAlvo: 0, impacto: 0, boost: 0 };
   const parar = deveCongelar(e);
   if (parar && congelado) {
     // nada a desenhar: só o áudio segue (o fade até o silêncio) e o tempo

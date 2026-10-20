@@ -144,8 +144,10 @@ class PalavrasCubit extends Cubit<PalavrasState> {
   }
 
   /// O vocabulário dos jogos do Arcade com o que o aluno estudou (null fora do inglês ou com o índice
-  /// ainda não pronto — aí os jogos usam as listas fixas).
-  VocabularioJogo? vocabularioJogo(CursoState st) {
+  /// ainda não pronto — aí os jogos usam as listas fixas). Usa a escolha gravada das lições dos jogos
+  /// ([licoesDoJogo]); [escolha] troca por outra só nesta conta (a prévia da tela de escolher:
+  /// `licoes` null = automático).
+  VocabularioJogo? vocabularioJogo(CursoState st, {({Set<String>? licoes, bool minhas})? escolha}) {
     final ind = state.indice;
     if (ind == null || !st.ehIngles || st.trilhas.isEmpty) return null;
     String? atual;
@@ -159,8 +161,53 @@ class PalavrasCubit extends Cubit<PalavrasState> {
       banco: state.banco,
       hoje: _hoje,
       licaoAtualId: atual,
+      licoesEscolhidas: escolha != null ? escolha.licoes : state.banco.licoesJogo,
+      incluirMinhas: escolha?.minhas ?? state.banco.minhasNoJogo,
     );
   }
+
+  // ---------- as lições das palavras dos jogos ----------
+
+  /// As lições escolhidas para as palavras dos jogos (null = automático).
+  Set<String>? get licoesDoJogo {
+    final l = state.banco.licoesJogo;
+    return l == null ? null : Set.unmodifiable(l);
+  }
+
+  /// Com lições escolhidas, as palavras da pessoa também entram nos jogos?
+  bool get minhasNoJogo => state.banco.minhasNoJogo;
+
+  /// Escolhe de quais lições vêm as palavras dos jogos ([ids] null = volta ao automático) e se as palavras
+  /// da pessoa entram junto ([incluirMinhas] null = como estava). Vai para a nuvem com o banco.
+  void escolherLicoesDoJogo(Iterable<String>? ids, {bool? incluirMinhas}) {
+    final ms = _ms;
+    final lista = ids?.toList();
+    _mudar((b) {
+      final minhas = incluirMinhas ?? b.minhasNoJogo;
+      final igual = minhas == b.minhasNoJogo &&
+          (lista == null
+              ? b.licoesJogo == null
+              : b.licoesJogo != null && b.licoesJogo!.length == lista.toSet().length && b.licoesJogo!.toSet().containsAll(lista));
+      return igual ? b : b.comLicoesJogo(lista, minhas: minhas, agora: ms);
+    });
+  }
+
+  /// As palavras que [licoes] dão aos jogos, (como se escreve, tradução), sem repetir e sem as tiradas dos
+  /// jogos — o total da tela de escolher. Vazio até o índice ficar pronto.
+  List<(String, String)> palavrasDasLicoes(CursoState st, Iterable<String> licoes) {
+    final ind = state.indice;
+    if (ind == null) return const [];
+    return palavrasDasLicoesEscolhidas(trilhas: st.trilhas, escolhidas: licoes, indice: ind, banco: state.banco, hoje: _hoje);
+  }
+
+  /// As palavras da pessoa que podem entrar nos jogos com "incluir minhas palavras" (as adicionadas e as
+  /// guardadas lendo, fora as tiradas dos jogos e as que o jogo não aceita: expressões, apóstrofo, mais de
+  /// 14 letras). Quantas entram de fato numa escolha sai de [VocabularioJogo.minhas].
+  int get quantasMinhasNoJogo => [
+        for (final p in state.banco.ativas)
+          if (p.origem != OrigemPalavra.licao && p.noJogo && _reMinhaNoJogo.hasMatch(p.en.trim())) p,
+      ].length;
+  static final _reMinhaNoJogo = RegExp(r'^[A-Za-z]{3,14}$');
 
   /// As palavras do banco que vencem hoje (as mais atrasadas primeiro).
   List<PalavraDoBanco> get devidasHoje => state.banco.devidas(_hoje);

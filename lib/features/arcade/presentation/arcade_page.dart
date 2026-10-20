@@ -18,6 +18,7 @@ import 'banco_arcade.dart';
 import 'caca_bug_page.dart';
 import 'chuva_page.dart';
 import 'corrida_page.dart';
+import 'escolher_licoes_page.dart';
 import 'futebol_page.dart';
 import 'missoes_page.dart';
 import 'rali_page.dart';
@@ -97,7 +98,20 @@ class _ArcadePageState extends State<ArcadePage> {
         final ind = ps.indice;
         final banco = ps.banco;
         final todas = v == null ? const <String>[] : {...v.todas}.toList();
+        // as lições escolhidas para os jogos (null = automático) — só as que existem no curso
+        final escolha = banco.licoesJogo;
+        final idsEscolhidos = escolha == null || st == null
+            ? const <String>{}
+            : {
+                for (final t in st.trilhas)
+                  for (final l in t.licoes)
+                    if (l.id.isNotEmpty && escolha.contains(l.id)) l.id,
+              };
+        final daEscolha = escolha == null || st == null
+            ? const <String>{}
+            : {for (final (w, _) in cubit.palavrasDasLicoes(st, idsEscolhidos)) w.toLowerCase()};
         bool daLicao(String w) {
+          if (escolha != null) return daEscolha.contains(w.toLowerCase());
           final l = ind?.primeiraLicao[w.toLowerCase()];
           return l != null && st != null && st.concluidas.contains(l);
         }
@@ -116,12 +130,19 @@ class _ArcadePageState extends State<ArcadePage> {
         ].where((w) => v!.traducao(w) != null).take(6).toList();
         final devidas = cubit.devidasHoje;
         final m = devidas.length;
+        final nl = idsEscolhidos.length;
+        final poucas = v == null || escolha == null ? null : avisoPoucasPalavras(v);
+        final suas = k > 0 ? ' + $k ${k == 1 ? 'palavra sua' : 'palavras suas'}' : '';
         final linha = v == null
             ? 'Preparando as palavras das suas lições…'
-            : n + k == 0
-                ? 'Jogando com as palavras mais usadas do inglês — cada lição concluída põe as palavras dela aqui 🎮'
-                : 'Jogando com $n palavra${n == 1 ? '' : 's'} das suas lições'
-                    '${k > 0 ? ' + $k ${k == 1 ? 'palavra sua' : 'palavras suas'}' : ''}';
+            : escolha != null
+                ? 'Jogando com $n palavra${n == 1 ? '' : 's'} de $nl ${nl == 1 ? 'lição escolhida' : 'lições escolhidas'}'
+                    '$suas${poucas == null ? '' : ' — ${poucas.alerta ? 'poucas palavras' : 'poucas longas (9+ letras)'}: '
+                        'completei com ${poucas.quantas} das mais usadas'}'
+                : n + k == 0
+                    ? 'Jogando com as palavras mais usadas do inglês — cada lição concluída põe as palavras dela aqui 🎮'
+                    : 'Jogando com $n palavra${n == 1 ? '' : 's'} das suas lições$suas';
+        final rotuloLicoes = escolha == null ? '📚 Palavras: Automático' : '📚 Palavras: $nl ${nl == 1 ? 'lição' : 'lições'}';
         final List<PalavraNova> paraTreinar = m > 0
             ? [for (final p in devidas.take(8)) p.comoPalavraNova]
             : st == null
@@ -162,6 +183,26 @@ class _ArcadePageState extends State<ArcadePage> {
             const SizedBox(height: 14),
             // IntrinsicWidth: o Botao3D sem expandir ainda ocupa a largura toda dentro de um Wrap
             Wrap(spacing: 10, runSpacing: 10, children: [
+              IntrinsicWidth(
+                child: Tooltip(
+                  message: 'Escolher de quais lições vêm as palavras dos jogos',
+                  child: Botao3D(
+                    key: const Key('arcade-escolher-licoes'),
+                    rotulo: rotuloLicoes,
+                    contorno: true,
+                    // expandir dentro do IntrinsicWidth: a largura do rótulo, mas encolhe (com "…") no
+                    // celular estreito em vez de estourar
+                    expandir: true,
+                    altura: 40,
+                    tamanhoTexto: 13,
+                    onTap: st == null
+                        ? null
+                        : () => abrirEscolherLicoes(context).then((_) {
+                              if (mounted) setState(() {});
+                            }),
+                  ),
+                ),
+              ),
               IntrinsicWidth(
                 child: Botao3D(
                   key: const Key('arcade-gerenciar-palavras'),

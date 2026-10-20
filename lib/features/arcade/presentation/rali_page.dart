@@ -26,6 +26,28 @@ import 'widgets/campo_teclas.dart';
 import 'widgets/cenario.dart';
 import 'widgets/painel_tropecos.dart';
 
+/// Passo da CPU no Rali. No Dart e no C# é o de sempre: acelera 8% por fase, com piso de 1,8 s. No inglês
+/// ([ingles]) acelera só 5% por fase (piso de 2,4 s) e dá folga para a [palavra] da vez — +140 ms por letra
+/// acima de 5 e +25% (ler a tradução) ou +40% de [memoria]. É recalculado a cada passo, então palavra
+/// comprida ganha tempo e a curta segue no ritmo.
+@visibleForTesting
+Duration intervaloCpuRali({
+  required int baseMs,
+  required int fase,
+  required String palavra,
+  bool ingles = false,
+  bool memoria = false,
+}) {
+  if (!ingles) {
+    final ms = (baseMs * math.pow(0.92, fase - 1)).round();
+    return Duration(milliseconds: math.max(1800, ms));
+  }
+  var ms = math.max(2400.0, baseMs * math.pow(0.95, fase - 1));
+  ms += 140 * math.min(9, math.max(0, palavra.length - 5));
+  ms *= memoria ? 1.4 : 1.25;
+  return Duration(milliseconds: ms.round());
+}
+
 /// 🏁 Rali de Digitação — campanha em FASES: cada palavra digitada faz seu
 /// personagem andar (perfeita = turbo, anda 2). Largada 3-2-1, medidor da
 /// CPU na pista, fila das próximas palavras à vista e pausa com Esc. Venceu
@@ -165,9 +187,14 @@ class _RaliPageState extends State<RaliPage>
   // ---------- campanha ----------
 
   Duration _intervaloCpu() {
-    final base = _dificuldade!.intervaloCpu.inMilliseconds;
-    final ms = (base * math.pow(0.92, fase - 1)).round();
-    return Duration(milliseconds: math.max(1800, ms));
+    final atual = _fila.isEmpty ? '' : _fila[_idx.clamp(0, _fila.length - 1)];
+    return intervaloCpuRali(
+      baseMs: _dificuldade!.intervaloCpu.inMilliseconds,
+      fase: fase,
+      palavra: atual,
+      ingles: _vocab != null,
+      memoria: _memoria,
+    );
   }
 
   void _comecarRun(Dificuldade d) {
@@ -236,6 +263,7 @@ class _RaliPageState extends State<RaliPage>
       _fimDeJogo();
       return;
     }
+    _cpuCtrl.duration = _intervaloCpu();
     _cpuCtrl.forward(from: 0);
   }
 

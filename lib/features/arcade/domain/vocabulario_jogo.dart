@@ -16,13 +16,31 @@ class VocabularioJogo {
   /// As palavras que a pessoa está treinando agora: vêm primeiro no Rali.
   final Set<String> foco;
 
+  /// Quantas palavras vieram das listas fixas só para completar uma faixa com poucas (inglês): com as
+  /// lições escolhidas pela pessoa, > 0 quer dizer "essas lições têm poucas palavras".
+  final int enchimento;
+
+  /// Quantas do [enchimento] foram para as longas (9+ letras) — as lições do começo do curso têm poucas
+  /// palavras longas, então faltar só lá não é "poucas palavras".
+  final int enchimentoLongas;
+
+  /// Quantas palavras da pessoa (as adicionadas, as guardadas lendo e as de "Meus cartões") entraram fora
+  /// das que as lições escolhidas já dão (inglês).
+  final int minhas;
+
   const VocabularioJogo({
     required this.curtas,
     required this.medias,
     required this.longas,
     this.traducoes = const {},
     this.foco = const {},
+    this.enchimento = 0,
+    this.enchimentoLongas = 0,
+    this.minhas = 0,
   });
+
+  /// O [enchimento] das curtas e médias: > 0 com lições escolhidas quer dizer que elas têm poucas palavras.
+  int get enchimentoCurtasMedias => enchimento - enchimentoLongas;
 
   /// As listas fixas de sempre ([vocabularioDe]) — as MESMAS instâncias, sem cópia.
   factory VocabularioJogo.deListas(
