@@ -44,6 +44,7 @@ VocabularioJogo montarVocabularioIngles({
   int minPorFaixa = 12,
   Iterable<String>? licoesEscolhidas,
   bool incluirMinhas = true,
+  int agoraMs = 0,
 }) {
   final escolhidas = licoesEscolhidas?.toSet();
   final curtas = <String>[], medias = <String>[], longas = <String>[];
@@ -71,14 +72,14 @@ VocabularioJogo montarVocabularioIngles({
     return null;
   }
 
-  /// Põe [w] na faixa dele (ou em [faixa], no enchimento). Devolve se entrou.
-  bool por(String w, {String? pt, List<String>? faixa}) {
+  /// Põe [w] na faixa dele (ou em [faixa], no enchimento), até [teto] por faixa. Devolve se entrou.
+  bool por(String w, {String? pt, List<String>? faixa, int? teto}) {
     final palavra = w.trim();
     if (!_reJogo.hasMatch(palavra)) return false;
     final k = palavra.toLowerCase();
     if (fora.contains(k) || usadas.contains(k)) return false;
     final destino = faixa ?? faixaDe(palavra.length);
-    if (destino.length >= maxPorFaixa) return false;
+    if (destino.length >= (teto ?? maxPorFaixa)) return false;
     final t = traducaoDe(palavra, pt);
     if (t == null) return false;
     usadas.add(k);
@@ -104,13 +105,14 @@ VocabularioJogo montarVocabularioIngles({
       return c != 0 ? c : a.chave.compareTo(b.chave);
     });
   var minhasPostas = 0;
-  void porMinhas({int? cota}) {
+  void porMinhas({int? cota, int? total}) {
     if (!comMinhas) return;
     final porFaixa = [0, 0, 0];
     void tenta(String w, String? pt) {
       final palavra = w.trim();
       final f = palavra.length <= 5 ? 0 : (palavra.length <= 8 ? 1 : 2);
       if (cota != null && porFaixa[f] >= cota) return;
+      if (total != null && minhasPostas >= total) return;
       if (!por(palavra, pt: pt)) return;
       porFaixa[f]++;
       if (!chavesEscolha.contains(palavra.toLowerCase())) minhasPostas++;
@@ -130,20 +132,34 @@ VocabularioJogo montarVocabularioIngles({
     }
   }
 
-  // 1. em treino
+  // 1. em treino. Com lições escolhidas, só as delas — ou todas, se o foco é de agora há pouco (o
+  // "jogar com elas" das teimosas): o treino de palavras novas de outra lição não invade a escolha.
+  final focoRecente = agoraMs > 0 && agoraMs - banco.emTreinoEm < focoRecenteMs;
   for (final k in banco.emTreino) {
+    if (daEscolha != null && !focoRecente && !chavesEscolha.contains(k)) continue;
     final w = formaDe(k);
     if (por(w)) foco.add(w);
   }
 
-  // 3'. as lições escolhidas pela pessoa (no lugar do 2, do 3 e do 5) — antes, a cota das da pessoa
+  // 3'. as lições escolhidas pela pessoa (no lugar do 2, do 3 e do 5): primeiro TODAS as palavras delas
+  // (as de conteúdo, depois as de função — how, you, about), e só então um punhado das da pessoa
+  var daLicao = 0;
   if (daEscolha != null) {
-    porMinhas(cota: maxPorFaixa ~/ 3);
-    for (final (w, pt) in daEscolha) {
-      // a tradução que a pessoa editou no banco vale mais que a do dicionário
-      final editada = banco[w]?.pt.trim() ?? '';
-      por(w, pt: editada.isNotEmpty ? null : pt);
+    // com muitas lições as faixas lotam: guarda [reservaMinhas] lugares por faixa para as da pessoa e
+    // depois completa com o que sobrou das lições
+    final reserva = comMinhas && minhas.isNotEmpty ? reservaMinhas : 0;
+    final daLista = [...daEscolha, ..._comunsDaEscolha(trilhas, escolhidas!, indice)];
+    void porDaLista(int teto) {
+      for (final (w, pt) in daLista) {
+        // a tradução que a pessoa editou no banco vale mais que a do dicionário
+        final editada = banco[w]?.pt.trim() ?? '';
+        if (por(w, pt: editada.isNotEmpty ? null : pt, teto: teto)) daLicao++;
+      }
     }
+
+    porDaLista(maxPorFaixa - reserva);
+    porMinhas(total: max(reservaMinhas, daLicao ~/ 4));
+    porDaLista(maxPorFaixa);
   }
 
   // 2. vencem hoje, depois as fracas
@@ -168,9 +184,9 @@ VocabularioJogo montarVocabularioIngles({
     }
   }
 
-  // 4. as da pessoa (mais novas primeiro) e as palavras soltas de "Meus cartões" (com a escolha, as que
-  // passaram da cota, se sobrou lugar)
-  porMinhas();
+  // 4. as da pessoa (mais novas primeiro) e as palavras soltas de "Meus cartões" (com a escolha, já
+  // entrou o punhado delas lá em cima)
+  if (daEscolha == null) porMinhas();
 
   // 5. amostra das lições antigas (sorteio fixo para o dia)
   final recentesSet = {...ultimas, ?licaoAtualId};
@@ -188,6 +204,20 @@ VocabularioJogo montarVocabularioIngles({
     por(w);
   }
 
+  // 6'. com a escolha, a faixa curta demais pega as palavras DA ESCOLHA das outras faixas (a pista de
+  // palavras curtas mostra também as médias da lição) em vez de palavras de fora; a lista fixa só entra se
+  // a escolha inteira tiver menos de [minDaEscolha] palavras
+  if (daEscolha != null && usadas.length >= minDaEscolha) {
+    final todas = [...curtas, ...medias, ...longas];
+    for (final faixa in [curtas, medias, longas]) {
+      final alvo = min(minPorFaixa, todas.length);
+      for (final w in todas) {
+        if (faixa.length >= alvo) break;
+        if (!faixa.contains(w)) faixa.add(w);
+      }
+    }
+  }
+
   // 6. enchimento com as listas fixas
   var enchimento = 0, enchimentoLongas = 0;
   for (final (faixa, reserva) in [
@@ -196,7 +226,7 @@ VocabularioJogo montarVocabularioIngles({
     (longas, palavrasLongasEn),
   ]) {
     for (final w in reserva) {
-      if (faixa.length >= minPorFaixa) break;
+      if (faixa.length >= minPorFaixa || (daEscolha != null && usadas.length >= minDaEscolha && faixa.isNotEmpty)) break;
       if (por(w, faixa: faixa)) {
         enchimento++;
         if (identical(faixa, longas)) enchimentoLongas++;
@@ -215,6 +245,21 @@ VocabularioJogo montarVocabularioIngles({
     minhas: minhasPostas,
   );
 }
+
+/// Foco "de agora há pouco": até quanto tempo depois do "jogar com elas" o em-treino vale mesmo com
+/// lições escolhidas. E o mínimo de palavras da escolha para os jogos não completarem com as listas fixas.
+const focoRecenteMs = 30 * 60 * 1000;
+const minDaEscolha = 4;
+
+/// Com lições escolhidas: lugares por faixa guardados para as palavras da pessoa (com "incluir minhas").
+const reservaMinhas = 4;
+
+/// As palavras de função das lições [escolhidas] ([IndicePalavras.comunsDeJogo]), na ordem do curso.
+List<(String, String)> _comunsDaEscolha(List<Trilha> trilhas, Set<String> escolhidas, IndicePalavras indice) => [
+      for (final t in trilhas)
+        for (final l in t.licoes)
+          if (l.id.isNotEmpty && escolhidas.contains(l.id)) ...indice.comunsDeJogo(l),
+    ];
 
 /// As palavras das lições [escolhidas] para os jogos, (como se escreve, tradução), sem repetir: uma de cada
 /// lição por rodada. A ordem das lições e as palavras de cada uma ([IndicePalavras.palavrasDeJogo]: as
@@ -263,8 +308,9 @@ List<(String, String)> palavrasDasLicoesEscolhidas({
     for (final p in banco.palavras.values)
       if (p.removida || !p.noJogo) p.chave,
   };
+  final vistas = <String>{};
   return [
-    for (final p in _revezadas(trilhas, escolhidas.toSet(), indice, hoje))
-      if (!fora.contains(p.$1.toLowerCase())) p,
+    for (final p in [..._revezadas(trilhas, escolhidas.toSet(), indice, hoje), ..._comunsDaEscolha(trilhas, escolhidas.toSet(), indice)])
+      if (!fora.contains(p.$1.toLowerCase()) && vistas.add(p.$1.toLowerCase())) p,
   ];
 }

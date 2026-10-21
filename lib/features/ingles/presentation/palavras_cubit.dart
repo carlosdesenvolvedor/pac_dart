@@ -163,6 +163,7 @@ class PalavrasCubit extends Cubit<PalavrasState> {
       licaoAtualId: atual,
       licoesEscolhidas: escolha != null ? escolha.licoes : state.banco.licoesJogo,
       incluirMinhas: escolha?.minhas ?? state.banco.minhasNoJogo,
+      agoraMs: _ms,
     );
   }
 

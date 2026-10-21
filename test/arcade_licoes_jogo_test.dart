@@ -153,7 +153,8 @@ void main() {
     final escolhidas = [ids[3], ids[8]];
     final daEscolha = {
       for (final id in escolhidas)
-        for (final p in ind.palavrasDeJogo(licoes[ids.indexOf(id)])) p.$1.toLowerCase(),
+        for (final p in [...ind.palavrasDeJogo(licoes[ids.indexOf(id)]), ...ind.comunsDeJogo(licoes[ids.indexOf(id)])])
+          p.$1.toLowerCase(),
     };
 
     BancoPalavras bancoDeTeste() => const BancoPalavras()
@@ -173,6 +174,7 @@ void main() {
         hoje: hoje,
         licaoAtualId: ids[60],
         licoesEscolhidas: escolhidas,
+        agoraMs: 5 + 60 * 1000, // o "jogar com elas" foi há 1 minuto
       );
       expect(v.foco, {'afternoon'});
       expect(v.longas.first, 'afternoon', reason: 'o foco continua na frente');
@@ -199,24 +201,38 @@ void main() {
         hoje: hoje,
         licoesEscolhidas: escolhidas,
         incluirMinhas: false,
+        agoraMs: 5 + 60 * 1000,
       );
       expect(v.todas, isNot(contains('umbrella')));
       expect(v.foco, {'afternoon'});
       expect(v.todas, contains('afternoon'));
     });
 
-    test('poucas palavras: o enchimento completa até 12 por faixa e é contado', () {
-      final pequena = licoes.firstWhere((l) => ind.palavrasDeJogo(l).length <= 6);
+    test('lição pequena: SÓ as palavras dela (as de função entram, as faixas pegam as das outras), sem enchimento', () {
+      // "Oi, tudo bem?": 6 de conteúdo + how/about/you — antes, 30 das 36 palavras do jogo vinham de fora
+      final pequena = licoes.first;
+      final dela = {
+        for (final p in [...ind.palavrasDeJogo(pequena), ...ind.comunsDeJogo(pequena)]) p.$1.toLowerCase(),
+      };
+      expect(dela, containsAll(['good', 'morning', 'afternoon', 'how', 'you']));
       final v = montarVocabularioIngles(
           trilhas: curso, concluidas: const {}, indice: ind, hoje: hoje, licoesEscolhidas: [pequena.id]);
-      expect(v.curtas.length, greaterThanOrEqualTo(12));
-      expect(v.medias.length, greaterThanOrEqualTo(12));
-      expect(v.longas.length, greaterThanOrEqualTo(12));
-      expect(v.enchimento, greaterThan(20));
-      // sem escolha e sem progresso também enche — mas a contagem só é aviso com escolha
-      final muitas = montarVocabularioIngles(
-          trilhas: curso, concluidas: const {}, indice: ind, hoje: hoje, licoesEscolhidas: ids.take(80));
-      expect(muitas.enchimento, lessThan(v.enchimento));
+      for (final faixa in [v.curtas, v.medias, v.longas]) {
+        expect(faixa, isNotEmpty);
+        expect(faixa.every((w) => dela.contains(w.toLowerCase())), isTrue, reason: '$faixa');
+      }
+      expect(v.curtas.length, dela.length.clamp(0, 12));
+      expect(v.enchimento, 0);
+      // o foco antigo de outra lição (treino de palavras novas de ontem) não invade a escolha
+      final comFocoVelho = montarVocabularioIngles(
+          trilhas: curso,
+          concluidas: const {},
+          indice: ind,
+          banco: const BancoPalavras().comEmTreino(['grandmother'], 5),
+          hoje: hoje,
+          licoesEscolhidas: [pequena.id],
+          agoraMs: 5 + 2 * 60 * 60 * 1000);
+      expect(comFocoVelho.todas, isNot(contains('grandmother')));
     });
 
     test('muitas lições: teto de 40 por faixa, e cada lição contribui (revezando)', () {
@@ -285,10 +301,6 @@ void main() {
       expect([v.curtas.length, v.medias.length], [40, 40]);
       expect(v.enchimentoCurtasMedias, 0);
       expect(v.enchimentoLongas, v.enchimento);
-      final pequena = licoes.firstWhere((l) => ind.palavrasDeJogo(l).length <= 6);
-      final p = montarVocabularioIngles(
-          trilhas: curso, concluidas: const {}, indice: ind, hoje: hoje, licoesEscolhidas: [pequena.id]);
-      expect(p.enchimentoCurtasMedias, greaterThan(0));
     });
 
     test('a escolha vazia joga só com o foco, as minhas e o enchimento', () {

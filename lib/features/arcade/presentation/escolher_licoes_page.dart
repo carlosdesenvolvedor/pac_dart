@@ -177,7 +177,7 @@ class _EscolherLicoesPageState extends State<EscolherLicoesPage> {
 
   /// As palavras de [l] que vão para os jogos (sem as que a pessoa tirou dos jogos ou apagou).
   List<(String, String)> _palavrasDe(IndicePalavras ind, Set<String> fora, Licao l) => [
-        for (final p in ind.palavrasDeJogo(l))
+        for (final p in [...ind.palavrasDeJogo(l), ...ind.comunsDeJogo(l)])
           if (!fora.contains(p.$1.toLowerCase())) p,
       ];
 

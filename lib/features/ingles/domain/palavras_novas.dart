@@ -228,6 +228,31 @@ class IndicePalavras {
 
   final _jogoPorLicao = Expando<List<(String, String)>>('palavrasDeJogo');
 
+  /// As palavras de FUNÇÃO da lição [l] que dá pra digitar (how, you, about, with…: só letras, 3–14, com
+  /// tradução no dicionário, sem nomes) — as que [palavrasDeJogo] deixa de fora. Com a lição escolhida
+  /// para os jogos elas entram depois das de conteúdo: uma lição de diálogo curto do A1 tem só 6–12
+  /// palavras de conteúdo, e sem estas o jogo enchia de palavras de fora.
+  List<(String, String)> comunsDeJogo(Licao l) => _comunsPorLicao[l] ??= List.unmodifiable(_comunsDeJogo(l));
+
+  final _comunsPorLicao = Expando<List<(String, String)>>('comunsDeJogo');
+
+  List<(String, String)> _comunsDeJogo(Licao l) {
+    final r = <(String, String)>[];
+    final vistas = {for (final (w, _) in palavrasDeJogo(l)) w.toLowerCase()};
+    for (final tr in l.trechos) {
+      for (final m in _reToken.allMatches(tr.cod)) {
+        final k = Dicionario.normalizar(m.group(0)!);
+        if (!stopwordsEn.contains(k) || !_reDeJogo.hasMatch(k) || nomes.contains(k)) continue;
+        if (vistas.contains(k)) continue;
+        final pt = traducaoCurta(dic.literal(k));
+        if (pt.isEmpty) continue;
+        vistas.add(k);
+        r.add((k, pt));
+      }
+    }
+    return r;
+  }
+
   List<(String, String)> _palavrasDeJogo(Licao l) {
     final r = <(String, String)>[];
     final vistas = <String>{};
