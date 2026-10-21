@@ -138,6 +138,16 @@ void main() {
     await tester.runAsync(cubit.close);
   });
 
+  testWidgets('Rali: sair da tela de início antes de correr não quebra o dispose', (tester) async {
+    final cubit = RankingCubit(repo: _RepoFake(), uid: 'u1', apelido: 'carlos');
+    await tester.pumpWidget(_app(cubit, const RaliPage(semente: 3)));
+    await tester.pump();
+    await tester.pumpWidget(_app(cubit, const SizedBox()));
+    await tester.pump();
+    expect(tester.takeException(), isNull);
+    await tester.runAsync(cubit.close);
+  });
+
   testWidgets('Rali: digitar a palavra sem erro dá turbo e chama a próxima',
       (tester) async {
     tester.view.physicalSize = const Size(900, 1400);

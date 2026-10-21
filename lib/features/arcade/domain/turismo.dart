@@ -338,12 +338,27 @@ class TurismoEngine {
   /// Palavra → tradução curta (o inglês mostra embaixo da palavra; vazio no Dart e no C#).
   final Map<String, String> traducoes;
 
+  /// O portal ESPERA a palavra (pedido do dono: "a palavra não some"): com a palavra do próximo pórtico
+  /// ainda por digitar, o carro freia sozinho e para [paradaAntes] metros antes dele — sem portal
+  /// perdido nem batida no tráfego; quem digita devagar só perde tempo. Desligado = o de antes
+  /// (passa sem palavra e bate), que os testes de batida usam. Nunca vale no modo setas.
+  final bool esperaPalavra;
+
+  /// Onde o carro para (m antes do pórtico; o tráfego fica 2,6 m DEPOIS dele, longe do alcance da
+  /// batida) e a desaceleração do freio automático (fração da velocidade máxima por segundo).
+  static const paradaAntes = 6.0;
+  static const freioAutomatico = 1.1;
+
+  /// O freio automático está segurando o carro (a tela avisa "digite para passar").
+  bool segurando = false;
+
   TurismoEngine({
     required this.pista,
     required this.rnd,
     this.modo = ModoControle.digitacao,
     List<String>? vocabulario,
     this.traducoes = const {},
+    this.esperaPalavra = false,
   }) : vocabulario = vocabulario == null || vocabulario.isEmpty ? null : vocabulario {
     segmentos = _gerarPista();
     portais = _gerarPortais();
@@ -621,7 +636,27 @@ class TurismoEngine {
     final r = velocidade / velMax;
     velocidade -= velMax * (0.02 + 0.13 * r * r) * dt;
     if (velocidade < 0) velocidade = 0;
+    segurando = false;
+    double? limite;
+    if (esperaPalavra && !porSetas) {
+      final p = portalAtual;
+      if (p != null && !p.livre) {
+        // freio que chega a zero exatamente no ponto de parada (v² = 2·a·d)
+        limite = p.z - paradaAntes;
+        final d = limite - posicao;
+        final teto = d <= 0 ? 0.0 : sqrt(2 * velMax * freioAutomatico * d);
+        if (velocidade > teto) {
+          velocidade = teto;
+          segurando = true;
+        }
+      }
+    }
     posicao += velocidade * dt;
+    if (limite != null && posicao >= limite) {
+      if (posicao > limite) posicao = max(limite, posicao - velocidade * dt);
+      velocidade = 0;
+      segurando = true;
+    }
     if (faixaPendente != null && posicao >= _zLiberaTroca) {
       faixa = faixaPendente!;
       faixaPendente = null;

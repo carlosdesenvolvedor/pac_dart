@@ -163,8 +163,11 @@ class _RaliPageState extends State<RaliPage>
     setState(() {});
   }
 
-  late final AnimationController _cpuCtrl = AnimationController(vsync: this)
-    ..addStatusListener(_cpuCompletou);
+  // criado na 1ª vez que alguém usa; o dispose só descarta se existiu (sair da tela de início antes de
+  // correr criava o controlador DENTRO do dispose — "deactivated widget's ancestor" no TickerMode)
+  AnimationController? _cpuCtrlCriado;
+  AnimationController get _cpuCtrl =>
+      _cpuCtrlCriado ??= AnimationController(vsync: this)..addStatusListener(_cpuCompletou);
   Timer? _relogio; // só pro PPM respirar
   Timer? _chamaTimer;
 
@@ -197,7 +200,7 @@ class _RaliPageState extends State<RaliPage>
     _voz.encerrar();
     _relogio?.cancel();
     _chamaTimer?.cancel();
-    _cpuCtrl.dispose();
+    _cpuCtrlCriado?.dispose();
     _placar.enviar(_palavrasCubit, fonte: FonteErro.rali, tropecos: _tropecos);
     _enviarMemoria();
     super.dispose();

@@ -400,6 +400,7 @@ class _TurismoPageState extends State<TurismoPage>
         modo: _modoSetas ? ModoControle.setas : ModoControle.digitacao,
         vocabulario: vocab == null ? null : p.vocabularioCom(vocab),
         traducoes: vocab?.traducoes ?? const {},
+        esperaPalavra: true,
       );
       _tracado = tracadoDaPista([for (final s in _engine!.segmentos) s.curva],
           comprimento: TurismoEngine.comprimentoSegmento);
@@ -1332,8 +1333,14 @@ class _TurismoPageState extends State<TurismoPage>
               ]),
               const SizedBox(height: 8),
               linha([
-                Text('portal em ${(p.z - e.posicao).clamp(0, 9999).round()} m',
-                    style: Mixart.ui(size: 11, color: Mixart.textFaint)),
+                // o carro freou sozinho e espera a palavra: o portal não passa sem ela
+                if (e.segurando)
+                  Text('⏸ esperando a palavra — digite para passar',
+                      key: const Key('turismo-esperando'),
+                      style: Mixart.ui(size: 11, weight: FontWeight.w700, color: Mixart.brand))
+                else
+                  Text('portal em ${(p.z - e.posicao).clamp(0, 9999).round()} m',
+                      style: Mixart.ui(size: 11, color: Mixart.textFaint)),
                 aSeguir(),
               ]),
             ])

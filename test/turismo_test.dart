@@ -330,6 +330,73 @@ void main() {
     });
   });
 
+  group('TurismoEngine — o portal espera a palavra', () {
+    test('sem digitar, o carro freia e para antes do pórtico: nada de portal perdido nem batida', () {
+      final e = TurismoEngine(pista: pistasGt[0], rnd: Random(4), esperaPalavra: true);
+      final p = e.portalAtual!;
+      e.velocidade = e.velMax;
+      var vAnterior = e.velocidade;
+      var freouAntes = false;
+      for (var i = 0; i < 600; i++) {
+        e.tick(1 / 60);
+        if (e.velocidade < vAnterior - 1e-9 && e.posicao < p.z - TurismoEngine.paradaAntes - .5) freouAntes = true;
+        vAnterior = e.velocidade;
+      }
+      expect(freouAntes, isTrue, reason: 'desacelera chegando, não para seco');
+      expect(e.posicao, lessThanOrEqualTo(p.z - TurismoEngine.paradaAntes + 1e-9));
+      expect(e.posicao, greaterThan(p.z - TurismoEngine.paradaAntes - .5));
+      expect(e.velocidade, 0);
+      expect(e.segurando, isTrue);
+      expect(p.passado, isFalse);
+      expect(e.colisoes, 0);
+      expect(e.portalParaDigitar, same(p), reason: 'a palavra continua na vez');
+    });
+
+    test('digitou parado: troca de faixa, passa o pórtico limpo e o freio solta', () {
+      final e = TurismoEngine(pista: pistasGt[0], rnd: Random(4), esperaPalavra: true);
+      final p = e.portalAtual!;
+      for (var i = 0; i < 900; i++) {
+        e.velocidade = max(e.velocidade, e.velMax * .5);
+        e.tick(1 / 60);
+      }
+      expect(e.velocidade, 0);
+      for (final ch in p.palavras.first.split('')) {
+        e.teclar(ch);
+      }
+      expect(p.livre, isTrue);
+      var guarda = 0;
+      while (!p.passado && guarda++ < 600) {
+        e.tick(1 / 60);
+      }
+      for (var i = 0; i < 120; i++) {
+        e.tick(1 / 60);
+      }
+      expect(p.passado, isTrue);
+      expect(e.colisoes, 0);
+      expect(e.faixa, p.faixas.first);
+    });
+
+    test('modo setas e o padrão (sem espera) seguem como antes', () {
+      final e = TurismoEngine(pista: pistasGt[0], rnd: Random(4));
+      final p = e.portalAtual!;
+      var guarda = 0;
+      while (!p.passado && guarda++ < 600) {
+        e.velocidade = e.velMax;
+        e.tick(.1);
+      }
+      expect(p.passado, isTrue);
+      expect(e.segurando, isFalse);
+      final s = TurismoEngine(pista: pistasGt[0], rnd: Random(4), modo: ModoControle.setas, esperaPalavra: true);
+      final ps = s.portalAtual!;
+      guarda = 0;
+      while (!ps.passado && guarda++ < 600) {
+        s.velocidade = s.velMax;
+        s.tick(.1);
+      }
+      expect(ps.passado, isTrue);
+    });
+  });
+
   group('TurismoEngine — modo SETAS', () {
     test('acelera com o pedal, freia, e nada de digitar', () {
       final e = TurismoEngine(pista: pistasGt[0], rnd: Random(4), modo: ModoControle.setas);
