@@ -93,7 +93,8 @@ const Map<String, String> traducoesEn = {
 };
 
 /// Fichas na pista do Dart Turismo no inglês (no lugar dos símbolos de código):
-/// o MESMO tamanho de `fichasDart` (12), para o sorteio da pista ser igual.
+/// o MESMO tamanho de `fichasDart` (12), para o sorteio da pista ser igual. SEM letras: com
+/// "yes"/"the"/"cool" a moeda parecia uma palavra para digitar — passava voando e "não dava tempo".
 const List<String> fichasIngles = [
-  'hi', 'yes', 'ok', 'wow', '?', '!', 'and', 'the', 'you', 'I am', 'go', 'cool',
+  '+3', '★', '+3', '\$', '+3', '★', '+3', '\$', '+3', '★', '+3', '\$',
 ];

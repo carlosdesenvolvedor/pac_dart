@@ -392,6 +392,38 @@ void main() {
       expect(pista.medalha(pista.tempoLimite + 1), 0);
     });
 
+    test('a palavra de combustível que apareceu não some ao cruzar o pórtico: vem antes da do próximo', () {
+      final e = TurismoEngine(pista: pistasGt[0], rnd: Random(4), esperaPalavra: true);
+      final p1 = e.portalAtual!;
+      for (var i = 0; i < 900; i++) {
+        e.tick(1 / 60);
+      }
+      for (final ch in p1.palavras.first.split('')) {
+        e.teclar(ch);
+      }
+      final gas = e.palavraGas;
+      expect(gas, isNotNull);
+      var guarda = 0;
+      while (!p1.passado && guarda++ < 900) {
+        e.tick(1 / 60);
+      }
+      expect(p1.passado, isTrue);
+      final p2 = e.portalAtual!;
+      expect(e.palavraGas, gas, reason: 'continua na tela');
+      expect(e.portalParaDigitar, isNull, reason: 'o combustível vem primeiro');
+      for (var i = 0; i < 1800; i++) {
+        e.tick(1 / 60);
+      }
+      expect(e.palavraGas, gas, reason: 'nem esperando muito ela some');
+      expect(p2.passado, isFalse, reason: 'o carro espera no próximo pórtico');
+      expect(e.colisoes, 0);
+      for (final ch in gas!.split('')) {
+        e.teclar(ch);
+      }
+      expect(e.palavraGas, isNull);
+      expect(e.portalParaDigitar, same(p2));
+    });
+
     test('modo setas e o padrão (sem espera) seguem como antes', () {
       final e = TurismoEngine(pista: pistasGt[0], rnd: Random(4));
       final p = e.portalAtual!;

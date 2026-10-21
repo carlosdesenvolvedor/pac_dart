@@ -118,6 +118,7 @@ void main() {
         }
         for (final f in portal.fichas) {
           expect(fichasIngles, contains(f.texto));
+          expect(RegExp('[A-Za-z]').hasMatch(f.texto), isFalse, reason: 'moeda não pode parecer palavra');
         }
       }
       // portal já digitado: entra a palavra de combustível — também da lista

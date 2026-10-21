@@ -499,7 +499,9 @@ class TurismoEngine {
     if (porSetas) return null;
     final p = portalAtual;
     if (p == null || p.livre) return null;
-    if (palavraGas != null && gasDigitadas > 0) return null;
+    // com o portal esperando, a palavra de combustível que já apareceu fica até ser digitada (antes
+    // ela sumia ao cruzar o pórtico — parado 6 m antes dele, sumia em meio segundo)
+    if (palavraGas != null && (gasDigitadas > 0 || esperaPalavra)) return null;
     return p;
   }
 
@@ -521,7 +523,7 @@ class TurismoEngine {
     final p = portalAtual;
     if (p == null || p.livre) {
       palavraGas ??= _sorteiaPalavra(_usadasGas);
-    } else if (palavraGas != null && gasDigitadas == 0) {
+    } else if (palavraGas != null && gasDigitadas == 0 && !esperaPalavra) {
       palavraGas = null;
     }
   }
