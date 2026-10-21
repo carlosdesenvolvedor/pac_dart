@@ -28,6 +28,17 @@ class QuizPage extends StatefulWidget {
   final List<String> poolTrilha;
   final bool emSequencia;
 
+  /// Semente das perguntas; null = `sementeQuiz(t, l)` (o "⚡ Treino do dia" muda a cada dia).
+  final int? semente;
+
+  /// Chamado UMA vez por página, no fim de verdade (a última pergunta respondida) — nunca no "Pular
+  /// quiz" nem ao voltar, e não de novo depois do "Repetir quiz".
+  final void Function(int acertos, int total)? onTerminou;
+
+  /// Troca o texto do botão principal do resultado ("Continuar →" / "Voltar ao mapa"); null = o de
+  /// sempre (o treino passa 'Continuar o treino →').
+  final String? rotuloFim;
+
   const QuizPage({
     super.key,
     required this.trilhaIdx,
@@ -35,6 +46,9 @@ class QuizPage extends StatefulWidget {
     required this.licao,
     required this.poolTrilha,
     this.emSequencia = false,
+    this.semente,
+    this.onTerminou,
+    this.rotuloFim,
   });
 
   @override
@@ -45,12 +59,15 @@ class _QuizPageState extends State<QuizPage> {
   late final List<PerguntaQuiz> perguntas = gerarQuiz(
     widget.licao,
     widget.poolTrilha,
-    seed: sementeQuiz(widget.trilhaIdx, widget.licaoIdx),
+    seed: widget.semente ?? sementeQuiz(widget.trilhaIdx, widget.licaoIdx),
   );
 
   int i = 0;
   int acertos = 0;
   bool terminou = false;
+
+  /// O [QuizPage.onTerminou] já foi chamado nesta página (o "Repetir quiz" não chama de novo).
+  bool _avisouFim = false;
 
   // resposta da pergunta atual
   bool submetido = false;
@@ -102,6 +119,10 @@ class _QuizPageState extends State<QuizPage> {
           .add(QuizFinalizado(widget.trilhaIdx, widget.licaoIdx, acertos));
       // cada acerto vale 10 pts no placar público
       RankingCubit.de(context)?.quizRespondido(acertos, perguntas.length);
+      if (!_avisouFim) {
+        _avisouFim = true;
+        widget.onTerminou?.call(acertos, perguntas.length);
+      }
       return;
     }
     setState(() {
@@ -377,7 +398,7 @@ class _QuizPageState extends State<QuizPage> {
                 textStyle: Mixart.ui(size: 13, weight: FontWeight.w700),
               ),
               onPressed: () => _fechar(seguir: true),
-              child: Text(widget.emSequencia ? 'Continuar →' : 'Voltar ao mapa'),
+              child: Text(widget.rotuloFim ?? (widget.emSequencia ? 'Continuar →' : 'Voltar ao mapa')),
             ),
             OutlinedButton(
               style: OutlinedButton.styleFrom(

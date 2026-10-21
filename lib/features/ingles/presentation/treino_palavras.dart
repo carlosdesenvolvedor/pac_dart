@@ -27,8 +27,14 @@ import 'treino_palavras_page.dart';
 /// [antesDaLicao]: o "🎯 Conhecer antes" de uma lição que ainda vai começar — o resumo não oferece "🎮
 /// Jogar" (tiraria a pessoa da lição que ela escolheu preparar) e o botão principal diz "COMEÇAR A LIÇÃO →".
 ///
+/// [modoTreino]: o "⚡ Treino do dia" — o resumo não oferece "🎮 Jogar" nem "📝 Virar lição", o botão
+/// principal diz "CONTINUAR O TREINO →" e, na volta, nada mais é aberto (quem chamou segue o treino).
+///
 /// [voz]: injetável (testes).
-Future<void> abrirTreinoPalavras(
+///
+/// Devolve o resultado da sessão (null: lista vazia ou saiu sem terminar). O registro, o hábito e a
+/// conclusão acontecem aqui de qualquer jeito.
+Future<ResultadoTreino?> abrirTreinoPalavras(
   BuildContext context,
   List<PalavraNova> palavras, {
   String? titulo,
@@ -37,8 +43,9 @@ Future<void> abrirTreinoPalavras(
   VozIngles? voz,
   bool revanche = false,
   bool antesDaLicao = false,
+  bool modoTreino = false,
 }) async {
-  if (palavras.isEmpty) return;
+  if (palavras.isEmpty) return null;
   // tudo capturado ANTES de empurrar a rota (o contexto pode sumir enquanto a sessão está aberta)
   final cubit = PalavrasCubit.de(context);
   final habito = HabitoCubit.de(context);
@@ -58,6 +65,8 @@ Future<void> abrirTreinoPalavras(
       voz: voz,
       revanche: revanche,
       antesDaLicao: antesDaLicao,
+      semSaidas: modoTreino,
+      rotuloContinuar: modoTreino ? 'CONTINUAR O TREINO →' : null,
       aoTerminarRodada: registraNaHora
           ? (rodada) {
               final dominadas = cubit.registrarTreino(rodada.paraRegistrar);
@@ -70,10 +79,12 @@ Future<void> abrirTreinoPalavras(
           : null,
     ),
   ));
-  if (r == null) return;
+  if (r == null) return null;
   if (!registraNaHora) cubit?.registrarTreino(r.paraRegistrar);
   if (r.passos > 0) habito?.praticou(r.passos);
   if (chaveConclusao != null && chaveConclusao.isNotEmpty) curso?.add(ProjetoConcluido(chaveConclusao));
+  // no treino do dia a sessão não tem saídas: quem chamou segue com o próximo bloco
+  if (modoTreino) return r;
   if (r.licao) {
     virarLicaoCom(
       cubit: cubit,
@@ -82,14 +93,15 @@ Future<void> abrirTreinoPalavras(
       mensageiro: mensageiro,
       chaves: [for (final p in r.palavras) p.chave],
     );
-    return;
+    return r;
   }
   if (r.jogar && !antesDaLicao) {
     cubit?.focar([for (final p in r.palavras) if (p.deJogo) p.en]);
-    if (jaNoArcade) return;
+    if (jaNoArcade) return r;
     await nav.push(MaterialPageRoute<void>(
         builder: (_) => const ArcadePage(), settings: const RouteSettings(name: rotaArcade)));
   }
+  return r;
 }
 
 /// As opções erradas extras: as palavras novas da mesma trilha (a da 1ª palavra) — parecidas com as

@@ -17,6 +17,19 @@ class PerguntaQuiz extends Equatable {
   List<Object?> get props => [enunciado, alternativas, correta];
 }
 
+/// Um código curto o bastante para virar alternativa.
+bool _cabeNaAlternativa(String c) => c.length <= 90 && '\n'.allMatches(c).length <= 2;
+
+/// Os candidatos a pergunta (antes de embaralhar): os trechos curtos e com dica; menos de 4, todos.
+List<Trecho> _candidatosDoQuiz(Licao licao) {
+  final c = licao.trechos.where((t) => _cabeNaAlternativa(t.cod) && t.dicaPlana.isNotEmpty).toList();
+  return c.length < 4 ? licao.trechos.toList() : c;
+}
+
+/// Quantas perguntas o quiz da lição tem, sem montar as alternativas (barato). O [gerarQuiz] só faz
+/// menos quando faltam distratores.
+int tamanhoDoQuiz(Licao licao, {int max = 10}) => min(max, _candidatosDoQuiz(licao).length);
+
 /// Gera até [max] perguntas a partir dos exercícios da lição.
 /// Enunciado = a dica (ou a saída) do trecho; alternativas = 4 códigos,
 /// sendo 3 distratores de outros exercícios da mesma lição/trilha.
@@ -25,14 +38,12 @@ List<PerguntaQuiz> gerarQuiz(Licao licao, List<String> poolTrilha, {int max = 10
   final rnd = Random(seed);
 
   // candidatos a pergunta: trechos curtos o bastante para virar alternativa
-  bool curto(String c) => c.length <= 90 && '\n'.allMatches(c).length <= 2;
-  var candidatos = licao.trechos.where((t) => curto(t.cod) && t.dicaPlana.isNotEmpty).toList();
-  if (candidatos.length < 4) candidatos = licao.trechos.toList();
+  final candidatos = _candidatosDoQuiz(licao);
   candidatos.shuffle(rnd);
 
   final distratoresBase = <String>{
     ...licao.trechos.map((t) => t.cod),
-    ...poolTrilha.where(curto),
+    ...poolTrilha.where(_cabeNaAlternativa),
   };
 
   final perguntas = <PerguntaQuiz>[];

@@ -555,6 +555,14 @@ class FimDeJogo extends StatelessWidget {
   /// Algo a mais entre os números e a linha do ranking (ex.: a oferta das teimosas no inglês); null = nada.
   final Widget? extra;
 
+  /// Mostra o "Jogar de novo"? Sem ele (o "⚡ Treino do dia"), o sair vira o botão principal (o
+  /// FilledButton da marca).
+  final bool mostrarDeNovo;
+
+  /// Os textos dos dois botões.
+  final String rotuloDeNovo;
+  final String rotuloSair;
+
   const FimDeJogo({
     super.key,
     required this.emoji,
@@ -568,7 +576,23 @@ class FimDeJogo extends StatelessWidget {
     this.celebrar = false,
     this.noRanking = true,
     this.extra,
+    this.mostrarDeNovo = true,
+    this.rotuloDeNovo = 'Jogar de novo',
+    this.rotuloSair = 'Voltar ao Arcade',
   });
+
+  /// O botão principal (cheio, na cor da marca).
+  Widget _principal(String rotulo, VoidCallback onPressed) => FilledButton(
+        style: FilledButton.styleFrom(
+          backgroundColor: Mixart.brand,
+          foregroundColor: Mixart.onBrand,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+          textStyle: Mixart.ui(size: 13, weight: FontWeight.w700),
+        ),
+        onPressed: onPressed,
+        child: Text(rotulo),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -629,28 +653,22 @@ class FimDeJogo extends StatelessWidget {
                     style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
                 const SizedBox(height: 18),
                 Wrap(spacing: 10, runSpacing: 10, alignment: WrapAlignment.center, children: [
-                  FilledButton(
-                    style: FilledButton.styleFrom(
-                      backgroundColor: Mixart.brand,
-                      foregroundColor: Mixart.onBrand,
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
-                      textStyle: Mixart.ui(size: 13, weight: FontWeight.w700),
+                  if (mostrarDeNovo) ...[
+                    _principal(rotuloDeNovo, onDeNovo),
+                    OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        foregroundColor: Mixart.text,
+                        side: BorderSide(color: Mixart.border),
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+                        textStyle: Mixart.ui(size: 13),
+                      ),
+                      onPressed: onSair,
+                      child: Text(rotuloSair),
                     ),
-                    onPressed: onDeNovo,
-                    child: const Text('Jogar de novo'),
-                  ),
-                  OutlinedButton(
-                    style: OutlinedButton.styleFrom(
-                      foregroundColor: Mixart.text,
-                      side: BorderSide(color: Mixart.border),
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
-                      textStyle: Mixart.ui(size: 13),
-                    ),
-                    onPressed: onSair,
-                    child: const Text('Voltar ao Arcade'),
-                  ),
+                  ] else
+                    // sem o "de novo" (⚡ Treino do dia), o sair é a ação principal: vira o botão da marca
+                    _principal(rotuloSair, onSair),
                 ]),
               ]),
             ),

@@ -107,6 +107,10 @@ class SessaoCartoesPage extends StatefulWidget {
   /// Pref de antes dos níveis (responder escrevendo sim/não): sem `prefNivel`, "não" vira Só virar.
   static const prefEscrita = 'en_cartao_escrita';
 
+  /// "⚡ Treino do dia": sem a oferta das teimosas no fim (os tropeços ainda aparecem, só para
+  /// informar, e a evidência é gravada; a cota de ofertas do dia não é gasta).
+  final bool semOferta;
+
   const SessaoCartoesPage({
     super.key,
     required this.titulo,
@@ -126,6 +130,7 @@ class SessaoCartoesPage extends StatefulWidget {
     this.lacunaDaLeitura,
     this.apoio = const [],
     this.aleatorio,
+    this.semOferta = false,
   });
 
   @override
@@ -561,7 +566,7 @@ class _SessaoCartoesPageState extends State<SessaoCartoesPage> {
     if (cubit == null || _gravouTeimosas) return;
     _gravouTeimosas = true;
     cubit.registrarErros(List.of(_evSessao));
-    if (!fim || _ofertaRecente) return;
+    if (!fim || _ofertaRecente || widget.semOferta) return;
     _sug = cubit.sugestao(LocalSugestao.fimDeRevisao, daSessao: Map.of(_somaSessao));
     if (_sug != null) cubit.marcarMostrada();
   }

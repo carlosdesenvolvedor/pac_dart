@@ -56,6 +56,13 @@ class TreinoPalavrasPage extends StatefulWidget {
   /// "COMEÇAR A LIÇÃO →" (a lição continua quando a página fecha).
   final bool antesDaLicao;
 
+  /// "⚡ Treino do dia": o resumo final não oferece "🎮 Jogar" nem "📝 Virar lição".
+  final bool semSaidas;
+
+  /// "⚡ Treino do dia": o texto do botão principal SÓ do resumo final (o botão de cada passo e a barra
+  /// de retorno continuam "CONTINUAR"); null = o de sempre.
+  final String? rotuloContinuar;
+
   const TreinoPalavrasPage({
     super.key,
     required this.palavras,
@@ -66,6 +73,8 @@ class TreinoPalavrasPage extends StatefulWidget {
     this.revanche = false,
     this.aoTerminarRodada,
     this.antesDaLicao = false,
+    this.semSaidas = false,
+    this.rotuloContinuar,
   });
 
   @override
@@ -416,12 +425,14 @@ class _TreinoPalavrasPageState extends State<TreinoPalavrasPage> {
         onProximas: _proximoLote,
         onContinuar: _concluir,
         onDeNovo: _deNovo,
-        onJogar: !widget.antesDaLicao && ac.palavras.any((p) => p.deJogo) ? () => _concluir(jogar: true) : null,
-        rotuloContinuar: widget.antesDaLicao ? 'COMEÇAR A LIÇÃO →' : 'CONTINUAR',
+        onJogar: !widget.antesDaLicao && !widget.semSaidas && ac.palavras.any((p) => p.deJogo)
+            ? () => _concluir(jogar: true)
+            : null,
+        rotuloContinuar: widget.rotuloContinuar ?? (widget.antesDaLicao ? 'COMEÇAR A LIÇÃO →' : 'CONTINUAR'),
         revanche: widget.revanche,
         dominadas: _retornoRevanche?.dominadas ?? const [],
         acertos: _retornoRevanche?.acertos ?? const {},
-        onLicao: widget.revanche ? () => _concluir(licao: true) : null,
+        onLicao: widget.revanche && !widget.semSaidas ? () => _concluir(licao: true) : null,
       );
     }
     final p = _passo;

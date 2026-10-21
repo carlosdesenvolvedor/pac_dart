@@ -24,6 +24,7 @@ import 'features/ingles/presentation/sessao_cartoes_page.dart';
 import 'features/ingles/presentation/widgets/frase_view.dart';
 import 'features/ranking/data/ranking_repository.dart';
 import 'features/ranking/domain/jogador_ranking.dart';
+import 'features/treino_dia/data/treino_dia_repository.dart';
 import 'features/tutor/data/tutor_service.dart';
 import 'main.dart';
 
@@ -48,6 +49,9 @@ PacDartApp _app() => PacDartApp(
       rankingBuilder: () => _RankingFake(),
       tutorBuilder: () => _TutorFake(),
       tradutorBuilder: () => _TradutorFake(),
+      // "⚡ Treino do dia": o plano de cada curso no aparelho (sem nuvem); as fontes são as do probe (revisão,
+      // palavras e progresso locais), então o plano sai com o que o aluno de mentira já estudou
+      treinoDiaBuilder: (u, l) => LocalTreinoDiaRepository(uid: u.uid, curso: l.id),
     );
 
 /// Agendador de mentira para a prova no Chrome: "disponível" (a folha mostra o interruptor), loga no console o que seria

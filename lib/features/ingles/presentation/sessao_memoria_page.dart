@@ -73,6 +73,10 @@ class SessaoMemoriaPage extends StatefulWidget {
 
   final VozIngles? voz;
 
+  /// "⚡ Treino do dia": sem a oferta das teimosas no fim (os tropeços ainda aparecem, só para
+  /// informar, e a evidência é gravada; a cota de ofertas do dia não é gasta).
+  final bool semOferta;
+
   const SessaoMemoriaPage({
     super.key,
     required this.titulo,
@@ -86,6 +90,7 @@ class SessaoMemoriaPage extends StatefulWidget {
     this.cenaDe,
     this.resumoExtra,
     this.voz,
+    this.semOferta = false,
   });
 
   @override
@@ -205,7 +210,7 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
     if (cubit == null || _gravouTeimosas) return;
     _gravouTeimosas = true;
     cubit.registrarErros(List.of(_evSessao));
-    if (!fim) return;
+    if (!fim || widget.semOferta) return;
     _sug = cubit.sugestao(LocalSugestao.fimDeRevisao, daSessao: Map.of(_somaSessao));
     if (_sug != null) cubit.marcarMostrada();
   }

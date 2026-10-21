@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -34,6 +35,9 @@ import '../../../ia/presentation/cenarios_page.dart';
 import '../../../ia/presentation/escrita_page.dart';
 import '../../../ia/presentation/ia_cubit.dart';
 import '../../../ingles/presentation/leituras_page.dart';
+import '../../../treino_dia/domain/plano_treino.dart';
+import '../../../treino_dia/presentation/treino_dia_acoes.dart';
+import '../../../treino_dia/presentation/treino_dia_cubit.dart';
 import '../../domain/curriculo.dart';
 import '../bloc/curso_bloc.dart';
 import '../fluxo_licao.dart';
@@ -236,6 +240,8 @@ class _MapaPageState extends State<MapaPage> {
                     _Resultados(st: st, query: _query)
                   else ...[
                     SliverToBoxAdapter(child: _HeroDashboard(st: st)),
+                    // "⚡ Treino do dia" (os 3 cursos): a segunda porta de entrada, logo depois do painel
+                    const SliverToBoxAdapter(child: _CartaoTreinoDia()),
                     // inglês: o texto que a pessoa cola vira trilha própria, no topo
                     if (st.ehIngles) ...[
                       const SliverToBoxAdapter(child: _CartaoNovoTexto()),
@@ -1167,6 +1173,91 @@ class _CartaoMinhasPalavras extends StatelessWidget {
                 decoration: BoxDecoration(color: Mixart.brand, borderRadius: BorderRadius.circular(99)),
                 child: Text('$m', style: Mixart.ui(size: 11, weight: FontWeight.w800, color: Mixart.onBrand)),
               ),
+            Icon(Icons.chevron_right, color: Mixart.textMuted),
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
+/// "⚡ Treino do dia" (Dart, C# e inglês): o mesmo botão do HUD, com o estado de hoje por extenso.
+/// Sem o [TreinoDiaCubit] na árvore (testes de tela antigos), some.
+///
+/// Olha o dia a cada segundo (o mesmo ritmo do HUD) e só redesenha quando ele vira: com o mapa aberto
+/// de madrugada, "Feito hoje ✓" volta a "~10 min…" junto com o botão do HUD.
+class _CartaoTreinoDia extends StatefulWidget {
+  const _CartaoTreinoDia();
+
+  @override
+  State<_CartaoTreinoDia> createState() => _CartaoTreinoDiaState();
+}
+
+class _CartaoTreinoDiaState extends State<_CartaoTreinoDia> {
+  Timer? _tick;
+  int? _dia;
+
+  @override
+  void initState() {
+    super.initState();
+    _dia = TreinoDiaCubit.de(context)?.hoje;
+    if (_dia == null) return;
+    _tick = Timer.periodic(const Duration(seconds: 1), (_) {
+      if (!mounted) return;
+      final d = TreinoDiaCubit.de(context)?.hoje;
+      if (d != _dia) setState(() => _dia = d);
+    });
+  }
+
+  @override
+  void dispose() {
+    _tick?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final treino = TreinoDiaCubit.de(context);
+    if (treino == null) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 8, 18, 4),
+      child: InkWell(
+        key: const Key('treino-dia-cartao-mapa'),
+        onTap: () => abrirTreinoDoDia(context),
+        borderRadius: BorderRadius.circular(Mixart.radiusLg),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Mixart.surface,
+            border: Border.all(color: Mixart.border),
+            borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          ),
+          child: Row(children: [
+            const Text('⚡', style: TextStyle(fontSize: 26)),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                // o ⚡ do título é o emoji ao lado (o cartão lê "⚡ Treino do dia" sem repetir o raio)
+                Text('Treino do dia', style: Mixart.display(size: 16)),
+                const SizedBox(height: 3),
+                BlocBuilder<TreinoDiaCubit, TreinoDiaState>(
+                  bloc: treino,
+                  builder: (context, _) {
+                    final p = treino.planoDeHoje;
+                    return Text(
+                      switch (p?.situacao ?? SituacaoTreino.pendente) {
+                        SituacaoTreino.pendente => '~10 min com o que você precisa revisar hoje',
+                        // "etapas" resolvidas (feitas ou puladas): o mesmo número do HUD ("Treino 2/4")
+                        SituacaoTreino.emAndamento => 'Continuar · ${p!.resolvidos} de ${p.blocos.length} etapas',
+                        SituacaoTreino.concluido => 'Feito hoje ✓ — volte amanhã',
+                      },
+                      key: const Key('treino-dia-cartao-mapa-sub'),
+                      style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4),
+                    );
+                  },
+                ),
+              ]),
+            ),
             Icon(Icons.chevron_right, color: Mixart.textMuted),
           ]),
         ),

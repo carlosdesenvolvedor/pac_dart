@@ -5,6 +5,7 @@ import '../../../core/theme/mixart.dart';
 import '../../arcade/presentation/arcade_page.dart';
 import '../../curso/presentation/bloc/curso_bloc.dart';
 import '../data/voz_ingles.dart';
+import '../domain/roteiro_treino.dart' show ResultadoTreino;
 import 'ouvir/ouvir_acoes.dart' show rotaArcade;
 import 'palavras_cubit.dart';
 import 'treino_palavras.dart';
@@ -14,17 +15,21 @@ import 'treino_palavras.dart';
 
 /// "🎯 Treinar só elas": aceita a oferta e abre a revanche (relembrar → ouvir → digitar sem dica → digitar
 /// de novo) com [chaves]. [origem]: de onde veio (fimDeLicao, rali…), só para registro/depuração.
-Future<void> treinarTeimosas(BuildContext context, List<String> chaves, {String origem = '', VozIngles? voz}) async {
+/// [modoTreino]: o "⚡ Treino do dia" — não é resposta a uma oferta (não chama `aceitar`) e a sessão não
+/// tem saídas (ver [abrirTreinoPalavras]). Devolve o resultado (null: nada treinável ou saiu no meio).
+Future<ResultadoTreino?> treinarTeimosas(BuildContext context, List<String> chaves,
+    {String origem = '', VozIngles? voz, bool modoTreino = false}) async {
   final cubit = PalavrasCubit.de(context);
-  if (cubit == null || chaves.isEmpty) return;
-  cubit.aceitar();
+  if (cubit == null || chaves.isEmpty) return null;
+  if (!modoTreino) cubit.aceitar();
   final vistas = <String>{};
   final palavras = [
     for (final k in chaves)
       if (vistas.add(k.toLowerCase())) cubit.comoPalavraNova(k.toLowerCase()),
   ].where((p) => p.en.trim().isNotEmpty && p.pt.trim().isNotEmpty).toList();
-  if (palavras.isEmpty) return;
-  await abrirTreinoPalavras(context, palavras, titulo: '🔥 Revanche das teimosas', revanche: true, voz: voz);
+  if (palavras.isEmpty) return null;
+  return abrirTreinoPalavras(context, palavras,
+      titulo: '🔥 Revanche das teimosas', revanche: true, voz: voz, modoTreino: modoTreino);
 }
 
 /// "🎮 Jogar com elas": aceita a oferta e põe [chaves] em foco nos jogos (vêm primeiro). Fora de um jogo,

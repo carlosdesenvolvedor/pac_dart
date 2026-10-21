@@ -64,6 +64,10 @@ class Habito extends Equatable {
   /// Dias cobertos por um congelamento (idem).
   final List<int> congelados;
 
+  /// Dia ([diaDe]) do último bônus do "⚡ Treino do dia" (null = nunca). Trava o bônus em 1× por
+  /// conta por dia, qualquer que seja o curso.
+  final int? bonusTreinoDia;
+
   const Habito({
     this.meta = RegrasHabito.metaPadrao,
     this.dia = 0,
@@ -74,6 +78,7 @@ class Habito extends Equatable {
     this.congelamentos = 0,
     this.historico = const [],
     this.congelados = const [],
+    this.bonusTreinoDia,
   });
 
   /// Quem nunca estudou (ou um documento sem hábito).
@@ -89,6 +94,7 @@ class Habito extends Equatable {
     int? congelamentos,
     List<int>? historico,
     List<int>? congelados,
+    int? bonusTreinoDia,
   }) =>
       Habito(
         meta: meta ?? this.meta,
@@ -100,6 +106,7 @@ class Habito extends Equatable {
         congelamentos: congelamentos ?? this.congelamentos,
         historico: historico ?? this.historico,
         congelados: congelados ?? this.congelados,
+        bonusTreinoDia: bonusTreinoDia ?? this.bonusTreinoDia,
       );
 
   /// O "hoje" que vale para as contas: o relógio que volta atrás é ignorado
@@ -208,13 +215,16 @@ class Habito extends Equatable {
   /// Junta o hábito deste aparelho com o da nuvem (cada um pode estar adiantado):
   /// vence quem bateu a meta mais recentemente (empate: o dia, depois os exercícios
   /// feitos); o melhor é o maior dos dois e os históricos se unem. Comutativa e
-  /// idempotente.
+  /// idempotente. O bônus do treino fica com o dia mais recente dos dois (um bônus ganho no
+  /// outro aparelho trava este depois de sincronizar).
   static Habito mesclar(Habito a, Habito b) {
     final v = _ordem(a, b) >= 0 ? a : b;
+    final ba = a.bonusTreinoDia, bb = b.bonusTreinoDia;
     return v.copyWith(
       melhor: [a.melhor, b.melhor, v.sequencia].reduce((x, y) => x > y ? x : y),
       historico: _aparar([...a.historico, ...b.historico]),
       congelados: _aparar([...a.congelados, ...b.congelados]),
+      bonusTreinoDia: ba == null ? bb : (bb == null || ba > bb ? ba : bb),
     );
   }
 
@@ -239,8 +249,8 @@ class Habito extends Equatable {
     return 0;
   }
 
-  /// `{v, meta, dia, un, seq, melhor, ult, frz, hist, gel}` — o mesmo formato no
-  /// aparelho e no Firestore.
+  /// `{v, meta, dia, un, seq, melhor, ult, frz, hist, gel}` (+ `bt` quando já houve bônus do
+  /// treino) — o mesmo formato no aparelho e no Firestore.
   Map<String, Object?> toJson() => {
         'v': 1,
         'meta': meta,
@@ -252,6 +262,7 @@ class Habito extends Equatable {
         'frz': congelamentos,
         'hist': historico,
         'gel': congelados,
+        if (bonusTreinoDia != null) 'bt': bonusTreinoDia,
       };
 
   /// Lê o que foi gravado. Nunca lança: campo ausente, de tipo errado ou fora do
@@ -278,6 +289,7 @@ class Habito extends Equatable {
     final seq = naoNegativo('seq');
     final frz = naoNegativo('frz');
     final dia = naoNegativo('dia');
+    final bt = inteiro('bt');
     return Habito(
       meta: meta != null && RegrasHabito.metas.contains(meta) ? meta : RegrasHabito.metaPadrao,
       // `dia` nunca fica antes da última meta (senão as contas de dias perdidos dariam negativo)
@@ -289,12 +301,13 @@ class Habito extends Equatable {
       congelamentos: frz > RegrasHabito.maxCongelamentos ? RegrasHabito.maxCongelamentos : frz,
       historico: dias('hist'),
       congelados: dias('gel'),
+      bonusTreinoDia: bt != null && bt >= 0 ? bt : null,
     );
   }
 
   @override
   List<Object?> get props =>
-      [meta, dia, unidadesHoje, sequencia, melhor, ultimoDiaMeta, congelamentos, historico, congelados];
+      [meta, dia, unidadesHoje, sequencia, melhor, ultimoDiaMeta, congelamentos, historico, congelados, bonusTreinoDia];
 }
 
 enum EstadoDoDia { feito, congelado, perdido }

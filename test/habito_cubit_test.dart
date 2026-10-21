@@ -4,6 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pac_dart/features/habito/data/habito_repository.dart';
 import 'package:pac_dart/features/habito/domain/habito.dart';
 import 'package:pac_dart/features/habito/presentation/habito_cubit.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Repositório em memória que anota o que foi gravado; pode atrasar a leitura e falhar ao gravar.
 class RepoFalso implements HabitoRepository {
@@ -210,6 +211,86 @@ void main() {
     expect(c.state.habito, Habito.vazio);
     expect(repo.gravacoes, isEmpty);
     await c.close();
+  });
+
+  group('ganharBonusTreino (⚡ Treino do dia)', () {
+    test('1× por dia: true e +3; de novo no mesmo dia → false e +0; no dia seguinte → true', () async {
+      final c = await criar();
+      c.praticou(2);
+      expect(c.ganharBonusTreino(3), isTrue);
+      expect(c.state.habito.unidadesHoje, 5);
+      expect(c.state.habito.bonusTreinoDia, diaDe(relogio.t));
+      relogio.t = DateTime(2026, 10, 12, 23, 59);
+      expect(c.ganharBonusTreino(3), isFalse);
+      expect(c.state.habito.unidadesHoje, 5);
+      relogio.dias(1);
+      expect(c.ganharBonusTreino(3), isTrue);
+      expect(c.state.habito.unidadesHoje, 3);
+      await pumpEventQueue();
+      expect(repo.guardado.bonusTreinoDia, diaDe(relogio.t), reason: 'gravado');
+      await c.close();
+    });
+
+    test('um só emit e uma só gravação; o bônus pode bater a meta (e avisa)', () async {
+      final c = await criar();
+      c.praticou(18);
+      await pumpEventQueue();
+      final gravadas = repo.gravacoes.length;
+      final estados = <HabitoState>[];
+      final sub = c.stream.listen(estados.add);
+      expect(c.ganharBonusTreino(3), isTrue);
+      await pumpEventQueue();
+      expect(estados, hasLength(1));
+      expect(repo.gravacoes.length, gravadas + 1);
+      expect(c.state.habito.sequencia, 1);
+      expect(c.state.metasBatidas, 1);
+      await sub.cancel();
+      await c.close();
+    });
+
+    test('sobrevive a recarregar (LocalHabitoRepository)', () async {
+      SharedPreferences.setMockInitialValues({});
+      final c = HabitoCubit(repo: LocalHabitoRepository(uid: 'u1'), agora: relogio.call);
+      await c.carregar();
+      expect(c.ganharBonusTreino(3), isTrue);
+      await pumpEventQueue();
+      await c.close();
+      final c2 = HabitoCubit(repo: LocalHabitoRepository(uid: 'u1'), agora: relogio.call);
+      await c2.carregar();
+      expect(c2.state.habito.unidadesHoje, 3);
+      expect(c2.ganharBonusTreino(3), isFalse, reason: 'o bônus de hoje já foi');
+      expect(c2.state.habito.unidadesHoje, 3);
+      await c2.close();
+    });
+
+    test('pedido ENQUANTO carregava: entra por cima do que veio, respeitando a trava', () async {
+      repo.guardado = Habito.vazio.registrar(4, relogio.t);
+      repo.seguraLeitura = Completer<void>();
+      final c = HabitoCubit(repo: repo, agora: relogio.call);
+      expect(c.ganharBonusTreino(3), isTrue);
+      expect(c.ganharBonusTreino(3), isFalse, reason: 'já há um pendente');
+      repo.seguraLeitura!.complete();
+      await c.carregar();
+      expect(c.state.habito.unidadesHoje, 7);
+      expect(c.state.habito.bonusTreinoDia, diaDe(relogio.t));
+      await c.close();
+
+      // o que veio gravado já tinha o bônus de hoje: o pendente não soma nada
+      final r = RepoFalso(Habito.vazio.registrar(4, relogio.t).copyWith(bonusTreinoDia: diaDe(relogio.t)))
+        ..seguraLeitura = Completer<void>();
+      final c2 = HabitoCubit(repo: r, agora: relogio.call);
+      c2.ganharBonusTreino(3);
+      r.seguraLeitura!.complete();
+      await c2.carregar();
+      expect(c2.state.habito.unidadesHoje, 4);
+      await c2.close();
+    });
+
+    test('depois de fechado → false, sem lançar', () async {
+      final c = await criar();
+      await c.close();
+      expect(c.ganharBonusTreino(3), isFalse);
+    });
   });
 
   test('praticou depois de fechado não lança', () async {

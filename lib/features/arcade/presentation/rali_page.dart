@@ -51,6 +51,15 @@ Duration intervaloCpuRali({
   return Duration(milliseconds: ms.round());
 }
 
+/// Como terminou a fase relâmpago do "⚡ Treino do dia" ([RaliPage.treino]): ganhou ou perdeu, a etapa
+/// está feita. Sair pela pausa devolve null (a etapa continua pendente).
+class ResultadoFaseTreino {
+  final bool venceu;
+  final int pontos;
+  final int palavras;
+  const ResultadoFaseTreino({required this.venceu, required this.pontos, required this.palavras});
+}
+
 /// 🏁 Rali de Digitação — campanha em FASES: cada palavra digitada faz seu
 /// personagem andar (perfeita = turbo, anda 2). Largada 3-2-1, medidor da
 /// CPU na pista, fila das próximas palavras à vista e pausa com Esc. Venceu
@@ -59,7 +68,13 @@ Duration intervaloCpuRali({
 class RaliPage extends StatefulWidget {
   /// Semente do sorteio (fixa nos testes; null = aleatório de verdade).
   final int? semente;
-  const RaliPage({super.key, this.semente});
+
+  /// "⚡ Treino do dia": pula a tela de início e começa sozinho no 🐢 Fácil, joga UMA fase, sem oferta
+  /// das teimosas, e devolve [ResultadoFaseTreino] no "Continuar o treino →" (a rota é uma
+  /// `MaterialPageRoute<ResultadoFaseTreino>`). A pausa → Sair devolve null, como sempre.
+  final bool treino;
+
+  const RaliPage({super.key, this.semente, this.treino = false});
 
   @override
   State<RaliPage> createState() => _RaliPageState();
@@ -204,6 +219,12 @@ class _RaliPageState extends State<RaliPage>
     if (BancoArcade.soDigitacao) {
       VozDoJogo.carregarPreferencia().then((_) {
         if (mounted) setState(() {});
+      });
+    }
+    // ⚡ treino: largada direto no Fácil (depois do 1º frame — o vocabulário do inglês lê o context)
+    if (widget.treino) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted && _engine == null) _comecarRun(Dificuldade.facil);
       });
     }
   }
@@ -366,8 +387,11 @@ class _RaliPageState extends State<RaliPage>
     _cpuCtrl.stop();
     _relogio?.cancel();
     _acumula(_engine!);
-    _oferecerEntreFases();
+    if (!widget.treino) _oferecerEntreFases();
     registrarFaseVencida();
+    // ⚡ treino: uma fase só — vencida, a partida acaba aqui (o encerrar fecha o overlay da fase; os
+    // pontos dela já somaram no registrarFaseVencida)
+    if (widget.treino) _fimDeJogo(somaFaseAtual: false);
   }
 
   /// Inglês: entre as fases, o painel das palavras que escaparam (se a política deixar; uma vez por
@@ -444,9 +468,19 @@ class _RaliPageState extends State<RaliPage>
     _crono.zerar();
     _enviarPlacar();
     _enviarMemoria();
-    _oferecerFim();
+    if (!widget.treino) _oferecerFim();
     if (somaFaseAtual) _acumula(_engine!);
     return encerrar(somaFaseAtual: somaFaseAtual);
+  }
+
+  /// ⚡ treino: "Continuar o treino →" devolve como foi a fase (uma vez só — dois toques não tiram a
+  /// tela do treino junto).
+  bool _devolveu = false;
+  void _devolverTreino() {
+    if (_devolveu) return;
+    _devolveu = true;
+    Navigator.of(context).pop(
+        ResultadoFaseTreino(venceu: fasesVencidas > 0, pontos: pontosTotal, palavras: _palavrasRun));
   }
 
   /// Palavras por minuto (5 toques = 1 palavra), descontando as pausas.
@@ -528,7 +562,15 @@ class _RaliPageState extends State<RaliPage>
   @override
   Widget build(BuildContext context) {
     final e = _engine;
-    return Scaffold(
+    // ⚡ treino: com a fase já encerrada, o voltar do sistema/navegador devolve o mesmo resultado do
+    // "Continuar o treino →" (senão a etapa ficaria pendente e o aluno jogaria de novo). No meio da
+    // corrida, voltar segue sendo "interrompido" (null).
+    return PopScope(
+      canPop: !(widget.treino && acabou && e != null),
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) _devolverTreino();
+      },
+      child: Scaffold(
       backgroundColor: Mixart.bg,
       body: Focus(
         onKeyEvent: (_, ev) {
@@ -575,7 +617,16 @@ class _RaliPageState extends State<RaliPage>
                             ]),
                     ),
                     const SizedBox(height: 16),
-                    if (e == null) ...[
+                    if (e == null && widget.treino)
+                      // ⚡ treino: sem tela de início — a fase monta sozinha no 1º frame
+                      Padding(
+                        key: const Key('rali-treino-preparando'),
+                        padding: const EdgeInsets.symmetric(vertical: 32),
+                        child: Text('Preparando a fase…',
+                            textAlign: TextAlign.center,
+                            style: Mixart.ui(size: 13, color: Mixart.textMuted)),
+                      )
+                    else if (e == null) ...[
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
@@ -657,7 +708,27 @@ class _RaliPageState extends State<RaliPage>
                     onParar: () => _fimDeJogo(somaFaseAtual: false),
                     extra: _painelFase(),
                   ),
-                if (acabou && e != null)
+                if (acabou && e != null && widget.treino)
+                  FimDeJogo(
+                    emoji: fasesVencidas > 0 ? '🏆' : '🤖',
+                    titulo: fasesVencidas > 0 ? 'FASE VENCIDA! ⚡' : 'A CPU VENCEU…',
+                    subtitulo: 'Fase relâmpago do treino: $_palavrasRun palavras.',
+                    pontos: pontosTotal,
+                    novoRecorde: novoRecorde,
+                    celebrar: fasesVencidas > 0,
+                    noRanking: ranking != null,
+                    stats: [
+                      ('PALAVRAS', '$_palavrasRun'),
+                      ('TURBOS', '$_turbosRun'),
+                      ('PPM', '$_ppm'),
+                      ('ERROS', '$_errosTeclas'),
+                    ],
+                    onDeNovo: () {},
+                    mostrarDeNovo: false,
+                    rotuloSair: 'Continuar o treino →',
+                    onSair: _devolverTreino,
+                  )
+                else if (acabou && e != null)
                   FimDeJogo(
                     emoji: fasesVencidas > 0 ? '🏆' : '🤖',
                     titulo: fasesVencidas > 0 ? 'FIM DA CAMPANHA!' : 'A CPU VENCEU…',
@@ -684,7 +755,7 @@ class _RaliPageState extends State<RaliPage>
           ),
         ),
       ),
-    );
+    ));
   }
 
   /// Inglês: a palavra do Rali saiu — vista, e falha de min(1, erros/2) se tropeçou. Devolve o texto do

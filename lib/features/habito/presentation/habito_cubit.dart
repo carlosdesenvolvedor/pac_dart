@@ -41,6 +41,9 @@ class HabitoCubit extends Cubit<HabitoState> {
 
   /// Exercícios feitos enquanto o hábito ainda carregava: entram por cima do que veio.
   final List<(int, DateTime)> _pendentes = [];
+
+  /// Bônus do treino pedido enquanto o hábito ainda carregava (ver [ganharBonusTreino]).
+  (int, DateTime)? _bonusPendente;
   Future<void>? _carregando;
 
   Habito? _aGravar;
@@ -80,8 +83,18 @@ class HabitoCubit extends Cubit<HabitoState> {
       if (novo.ultimoDiaMeta != h.ultimoDiaMeta) bateu++;
       h = novo;
     }
-    final tinha = _pendentes.isNotEmpty;
+    var tinha = _pendentes.isNotEmpty;
     _pendentes.clear();
+    final bonus = _bonusPendente;
+    _bonusPendente = null;
+    if (bonus != null) {
+      final novo = _comBonus(h, bonus.$1, bonus.$2);
+      if (novo != null) {
+        if (novo.ultimoDiaMeta != h.ultimoDiaMeta) bateu++;
+        h = novo;
+        tinha = true;
+      }
+    }
     emit(state.copyWith(habito: h, carregado: true, metasBatidas: state.metasBatidas + bateu));
     if (tinha) _salvar(h);
   }
@@ -95,6 +108,33 @@ class HabitoCubit extends Cubit<HabitoState> {
       return;
     }
     _mudar((h) => h.registrar(n, quando));
+  }
+
+  /// Bônus do "⚡ Treino do dia": no máximo 1× por conta por dia local. Devolve false (e não soma nada)
+  /// quando `bonusTreinoDia` já é hoje; senão marca o dia e soma [n] exercícios num só emit/gravação.
+  ///
+  /// Chamado antes de o hábito carregar (não esperado: a tela do treino só chega aqui bem depois),
+  /// o bônus fica guardado e é conferido contra o que vier gravado; a resposta é otimista.
+  bool ganharBonusTreino(int n) {
+    if (isClosed) return false;
+    final quando = agora();
+    if (!state.carregado) {
+      if (_bonusPendente != null) return false;
+      _bonusPendente = (n, quando);
+      return true;
+    }
+    final antes = state.habito;
+    final depois = _comBonus(antes, n, quando);
+    if (depois == null) return false;
+    _mudar((_) => depois);
+    return true;
+  }
+
+  /// O hábito com o bônus do treino de [quando], ou null se o daquele dia já foi ganho.
+  static Habito? _comBonus(Habito h, int n, DateTime quando) {
+    final d = h.hoje(quando);
+    if (h.bonusTreinoDia == d) return null;
+    return h.registrar(n, quando).copyWith(bonusTreinoDia: d);
   }
 
   /// Troca a meta do dia (10/20/40).

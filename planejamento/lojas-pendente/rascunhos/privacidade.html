@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paclingo — Política de Privacidade</title>
+  <meta name="robots" content="index,follow">
+  <style>
+    :root { color-scheme: dark; }
+    body { margin: 0; background: #0b1136; color: #e8ecff; font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 760px; margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: 28px; margin: 0 0 4px; }
+    h1 span:first-child { color: #ffd21f; } h1 span:last-child { color: #33d9f2; }
+    h2 { font-size: 19px; margin: 36px 0 8px; color: #33d9f2; }
+    p, li { color: #c9d1f5; }
+    a { color: #ffd21f; }
+    code { background: #151d52; padding: 1px 6px; border-radius: 6px; }
+    .quando { color: #8e99d6; font-size: 14px; }
+    table { border-collapse: collapse; width: 100%; font-size: 15px; }
+    th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid #232c6b; }
+    th { color: #ffd21f; font-weight: 600; }
+  </style>
+</head>
+<body>
+<main>
+  <h1><span>Pac</span><span>lingo</span> — Política de Privacidade</h1>
+  <p class="quando">Última atualização: [DATA DA EXECUÇÃO, ex.: 21 de outubro de 2026]</p>
+
+  <p>O Paclingo é um app de treino de digitação que ensina inglês, Dart &amp; Flutter e C# &amp; .NET. Esta página explica,
+  sem rodeios, quais dados o app guarda, para quê, com quem eles passam e como você apaga tudo.
+  O app <strong>não tem anúncios, não vende dados e não usa ferramentas de análise ou rastreamento</strong>.</p>
+
+  <h2>Quem é o responsável</h2>
+  <p>[SEU NOME OU EMPRESA] — contato para qualquer assunto de privacidade: <a href="mailto:[SEU E-MAIL DE CONTATO]">[SEU E-MAIL DE CONTATO]</a>.</p>
+
+  <h2>O que o app guarda na sua conta</h2>
+  <table>
+    <tr><th>Dado</th><th>Para quê</th><th>Onde fica</th></tr>
+    <tr><td>E-mail e senha da conta</td><td>Entrar no app. A senha é tratada pelo Firebase Authentication e <strong>nunca chega até nós</strong>.</td><td>Firebase Authentication (Google)</td></tr>
+    <tr><td>Progresso nos cursos: trechos feitos, acertos, erros, tempo de treino, sequência de dias e meta diária, fila e histórico da revisão do inglês, quantas perguntas à IA você usou no dia</td><td>Retomar de onde você parou, em qualquer aparelho.</td><td>Firestore (Google), região São Paulo</td></tr>
+    <tr><td>O que você cria no curso de inglês: textos que você cola ou escreve e viram lições, suas palavras ("Minhas palavras"), cartões e as setlists do 🎧 Ouvir</td><td>Mostrar e sincronizar o seu material entre aparelhos.</td><td>Firestore (Google), região São Paulo</td></tr>
+    <tr><td>Áudios que você escolhe anexar às suas frases (opcional)</td><td>Tocar o seu áudio na frase, em qualquer aparelho.</td><td>Firestore (Google), região São Paulo</td></tr>
+    <tr><td>Linha no ranking: apelido, pontos, teclas, erros, lições e recordes dos jogos. O apelido é a parte do seu e-mail antes do <code>@</code>.</td><td>Mostrar o ranking de jogadores. <strong>Todos os usuários logados veem essa linha.</strong></td><td>Firestore (Google), região São Paulo</td></tr>
+    <tr><td>Preferências do aparelho: tema, som, velocidade da voz, ajustes do player, lembrete diário, se você permitiu o uso da IA</td><td>Lembrar suas escolhas. O lembrete é uma notificação agendada <strong>no próprio aparelho</strong>.</td><td>Só no seu aparelho</td></tr>
+  </table>
+  <p>Arquivos de cartões que você importa (txt, tsv, csv) são lidos no aparelho; só os cartões resultantes vão para a sua conta.</p>
+
+  <h2>Com quem os dados passam</h2>
+  <ul>
+    <li><strong>Google (Firebase):</strong> guarda a conta e os dados da tabela acima.</li>
+    <li><strong>Google (IA Gemini) — só se você permitir:</strong> o app pergunta antes do primeiro uso, e você pode desligar no menu do seu avatar.
+    Quando você usa o tutor, o "Por quê?", a explicação de uma palavra, os cenários e a conversa com IA, ou pede a correção de um texto, o app envia à IA
+    o que você escreveu e o contexto da lição aberta (título, frase ou trecho do exercício). No Dart Turismo, a "engenheira de pista" recebe os números da corrida
+    (tempo, batidas, precisão) para comentar o resultado. <strong>Não enviamos seu e-mail nem seu nome.</strong>
+    O app usa a camada gratuita da API, e nela o Google pode guardar e usar o conteúdo enviado para melhorar os produtos dele; por isso,
+    <strong>não escreva dados pessoais para a IA</strong>. Na versão web, a narração por voz natural também envia à API o texto que será lido.</li>
+    <li><strong>MyMemory (Translated):</strong> quando você cola um texto em inglês para virar lição, ou pede a tradução de uma palavra na leitura,
+    as frases ou palavras são enviadas ao serviço de tradução MyMemory (<code>api.mymemory.translated.net</code>) para voltar em português.
+    Nada de conta, e-mail ou nome vai junto, mas não cole textos com dados pessoais.</li>
+    <li><strong>Reconhecimento de voz (opcional, só no curso de inglês):</strong> ao tocar no 🎤, o app pede permissão do microfone e usa o reconhecedor do próprio sistema
+    (Apple no iPhone; Google no Android; o navegador, na web). Dependendo do aparelho, o áudio é processado no aparelho ou enviado aos servidores da Apple/Google
+    segundo as políticas deles. O app recebe só o <strong>texto</strong> reconhecido, usa para conferir a frase e <strong>não grava nem guarda o áudio do microfone</strong>.</li>
+    <li><strong>Denúncias de respostas da IA:</strong> se você tocar em ⚑ numa resposta da IA, guardamos o motivo, o seu comentário, a pergunta e a resposta,
+    <strong>sem o seu e-mail nem o seu ID</strong>, para revisar e melhorar o app; elas são apagadas automaticamente em até 12 meses.</li>
+    <li><strong>Google Fonts:</strong> as fontes do app são baixadas dos servidores do Google na primeira vez que você abre o app, o que revela seu endereço IP a eles.</li>
+    <li><strong>Tatoeba:</strong> as frases e gravações do curso de inglês vêm do projeto Tatoeba (licenças CC BY); ao tocar nos créditos, o link abre o site deles.</li>
+  </ul>
+  <p>Não compartilhamos seus dados com mais ninguém, e não há anúncios nem SDKs de rastreamento no app.</p>
+
+  <h2>Por quanto tempo guardamos</h2>
+  <p>Enquanto a conta existir. Quando você exclui a conta, são apagados na hora: o login, o progresso, a fila e o histórico da revisão, os textos, as palavras,
+  os cartões, as setlists, os áudios anexados e a linha do ranking. As preferências que ficam só no aparelho somem quando você desinstala o app.
+  As denúncias (que não levam o seu e-mail nem o seu ID) são apagadas automaticamente em até 12 meses.</p>
+
+  <h2>Seus direitos (LGPD)</h2>
+  <p>Você pode pedir acesso, correção, portabilidade ou exclusão dos seus dados, e saber com quem eles foram compartilhados. A forma mais rápida de excluir
+  é dentro do app (veja <a href="excluir-conta.html">como excluir sua conta</a>). Para os demais pedidos, escreva para o contato acima; respondemos em até 15 dias.
+  Você também pode retirar a permissão de uso da IA a qualquer momento, no menu do seu avatar.</p>
+
+  <h2>Crianças</h2>
+  <p>O Paclingo não é voltado a menores de 13 anos e não coleta dados de crianças de propósito. Se você acredita que uma criança criou uma conta,
+  avise pelo contato acima e excluiremos.</p>
+
+  <h2>Segurança</h2>
+  <p>A comunicação com o Firebase, com a IA do Google e com o serviço de tradução usa HTTPS. As regras do banco permitem que cada pessoa leia e escreva apenas os próprios dados.</p>
+
+  <h2>Mudanças nesta política</h2>
+  <p>Se algo mudar de forma relevante, atualizamos esta página e a data no topo.</p>
+</main>
+</body>
+</html>

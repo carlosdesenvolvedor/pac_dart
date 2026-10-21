@@ -439,4 +439,36 @@ void main() {
       expect((h.meta, h.sequencia, h.melhor), (40, 2, 5));
     });
   });
+
+  group('bonusTreinoDia (⚡ Treino do dia)', () {
+    test('JSON `bt`: ida e volta; ausente → null (e a chave não aparece)', () {
+      final h = Habito.vazio.registrar(5, em(0)).copyWith(bonusTreinoDia: dia(0));
+      expect(h.toJson()['bt'], dia(0));
+      expect(Habito.fromJson(h.toJson()), h);
+      expect(Habito.fromJson(h.toJson()).bonusTreinoDia, dia(0));
+      expect(Habito.vazio.toJson().containsKey('bt'), isFalse);
+      expect(Habito.fromJson(Habito.vazio.toJson()).bonusTreinoDia, isNull);
+      for (final lixo in <Object?>['hoje', -3, null, double.nan]) {
+        expect(Habito.fromJson({'bt': lixo}).bonusTreinoDia, isNull, reason: '$lixo');
+      }
+    });
+
+    test('registrar e mudarMeta não perdem o dia do bônus', () {
+      final h = Habito.vazio.copyWith(bonusTreinoDia: dia(0));
+      expect(h.registrar(3, em(1)).bonusTreinoDia, dia(0));
+      expect(h.mudarMeta(10, em(1)).bonusTreinoDia, dia(0));
+    });
+
+    test('mesclar fica com o maior (comutativa); null dos dois lados continua null', () {
+      final a = comSequencia(3, ultima: 0).copyWith(bonusTreinoDia: dia(-2));
+      final b = comSequencia(1, ultima: -1).copyWith(bonusTreinoDia: dia(0));
+      expect(Habito.mesclar(a, b).bonusTreinoDia, dia(0));
+      expect(Habito.mesclar(b, a).bonusTreinoDia, dia(0));
+      expect(Habito.mesclar(a, b).sequencia, 3, reason: 'o resto segue a regra de sempre');
+      final semBonus = comSequencia(5, ultima: 0);
+      expect(Habito.mesclar(semBonus, b).bonusTreinoDia, dia(0));
+      expect(Habito.mesclar(b, semBonus).bonusTreinoDia, dia(0));
+      expect(Habito.mesclar(semBonus, comSequencia(2, ultima: -1)).bonusTreinoDia, isNull);
+    });
+  });
 }

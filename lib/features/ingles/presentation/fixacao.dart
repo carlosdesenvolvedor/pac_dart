@@ -51,23 +51,31 @@ Future<bool?> abrirFixacao(BuildContext context, int t, int l, {bool emSequencia
   ));
 }
 
-/// Abre a Revisão do dia: as frases que vencem hoje na repetição espaçada. Dois
-/// sentidos, um depois do outro — primeiro as digitadas de memória (português →
-/// inglês) e, nos baralhos com o sentido invertido ligado, os cartões de virar e
-/// avaliar (inglês → português), com os novos que cabem na cota do dia. Com
-/// [baralho] (`Trilha.baralhoId`) só o que é daquele baralho.
-Future<void> abrirRevisao(BuildContext context, {String? baralho}) async {
-  final revisao = RevisaoCubit.de(context);
-  if (revisao == null) return;
-  final st = context.read<CursoBloc>().state;
-  final indice = IndiceBaralhos.de(st.trilhas);
-  // a lição de onde veio cada frase (a cena volta junto)
-  final licaoDe = {
-    for (final tr in st.trilhas)
-      for (final li in tr.licoes)
-        for (final f in li.trechos) f.cod: li,
-  };
+/// O que a Revisão do dia vai mostrar: as [diretas] (de memória, português → inglês) e as
+/// [invertidas] (cartões inglês → português: as que vencem primeiro, depois as [novas] que cabem na
+/// cota do dia).
+class ItensRevisao {
+  final List<Trecho> diretas, invertidas, novas;
+  const ItensRevisao({this.diretas = const [], this.invertidas = const [], this.novas = const []});
+
+  bool get vazio => diretas.isEmpty && invertidas.isEmpty;
+  int get total => diretas.length + invertidas.length;
+}
+
+/// A seleção de [abrirRevisao], pura (fora ler o estado do cubit). [invertidas] = as que vencem
+/// primeiro, depois as novas que cabem na cota do dia. Com [limiteFrases] / [limiteCartoes] cada sentido
+/// fica cortado nesse tanto (o "⚡ Treino do dia"); com [limiteCartoes], [novas] são só as novas que
+/// couberam. Sem limites, a seleção de sempre.
+ItensRevisao itensDaRevisao(RevisaoCubit revisao, List<Trilha> trilhas,
+        {String? baralho, int? limiteFrases, int? limiteCartoes}) =>
+    _itensDaRevisao(revisao, IndiceBaralhos.de(trilhas),
+        baralho: baralho, limiteFrases: limiteFrases, limiteCartoes: limiteCartoes);
+
+ItensRevisao _itensDaRevisao(RevisaoCubit revisao, IndiceBaralhos indice,
+    {String? baralho, int? limiteFrases, int? limiteCartoes}) {
   bool doBaralho(String chave) => baralho == null || indice.pertence(chave, baralho);
+  List<Trecho> corta(List<Trecho> l, int? limite) =>
+      limite == null || l.length <= limite ? l : l.sublist(0, max(0, limite));
 
   final devidas = revisao.devidas();
   final diretas = [
@@ -79,16 +87,74 @@ Future<void> abrirRevisao(BuildContext context, {String? baralho}) async {
       if (Revisao.ehReversa(k) && doBaralho(k) && indice.porChave[Revisao.baseDe(k)] != null)
         indice.porChave[Revisao.baseDe(k)]!,
   ];
+  // novasReversas só lê a cota do dia (não grava nada): dá para chamar só para compor
   final novas = revisao.novasReversas([
     for (final f in indice.frasesDosLigados(revisao.state.config.reversos))
       if (doBaralho(chaveDaFrase(f))) f,
   ]);
-  final invertidas = [...invertidasDevidas, ...novas];
+  final invertidas = corta([...invertidasDevidas, ...novas], limiteCartoes);
+  final cabem = invertidas.length - invertidasDevidas.length;
+  return ItensRevisao(
+    diretas: corta(diretas, limiteFrases),
+    invertidas: invertidas,
+    novas: cabem >= novas.length ? novas : novas.sublist(0, max(0, cabem)),
+  );
+}
+
+/// Como a Revisão do dia terminou ("⚡ Treino do dia").
+class FimDaRevisao {
+  /// Frases e cartões respondidos (1ª tentativa).
+  final int respondidas;
+
+  /// Cada parte que tinha itens chegou ao fim (nada para revisar também conta como terminou).
+  final bool terminou;
+
+  /// As frases respondidas, na ordem (memória e depois cartões).
+  final List<Trecho> revisadas;
+
+  const FimDaRevisao({required this.respondidas, required this.terminou, this.revisadas = const []});
+}
+
+/// Abre a Revisão do dia: as frases que vencem hoje na repetição espaçada. Dois
+/// sentidos, um depois do outro — primeiro as digitadas de memória (português →
+/// inglês) e, nos baralhos com o sentido invertido ligado, os cartões de virar e
+/// avaliar (inglês → português), com os novos que cabem na cota do dia. Com
+/// [baralho] (`Trilha.baralhoId`) só o que é daquele baralho.
+///
+/// "⚡ Treino do dia": [limiteFrases] / [limiteCartoes] cortam cada sentido e [modoTreino] não abre nada
+/// quando não há o que revisar (sem ele, abre a sessão vazia: "nenhuma frase vence hoje") e tira a oferta
+/// das teimosas do fim das duas sessões. Devolve como terminou ([FimDaRevisao]).
+Future<FimDaRevisao> abrirRevisao(BuildContext context,
+    {String? baralho, int? limiteFrases, int? limiteCartoes, bool modoTreino = false}) async {
+  final revisao = RevisaoCubit.de(context);
+  if (revisao == null) return const FimDaRevisao(respondidas: 0, terminou: true);
+  final st = context.read<CursoBloc>().state;
+  final indice = IndiceBaralhos.de(st.trilhas);
+  // a lição de onde veio cada frase (a cena volta junto)
+  final licaoDe = {
+    for (final tr in st.trilhas)
+      for (final li in tr.licoes)
+        for (final f in li.trechos) f.cod: li,
+  };
+  final itens = _itensDaRevisao(revisao, indice,
+      baralho: baralho, limiteFrases: limiteFrases, limiteCartoes: limiteCartoes);
+  final diretas = itens.diretas;
+  final invertidas = itens.invertidas;
+  final novas = itens.novas;
+  if (modoTreino && itens.vazio) return const FimDaRevisao(respondidas: 0, terminou: true);
   final nome = baralho == null ? null : indice.baralho(baralho)?.nome;
 
   final ranking = RankingCubit.de(context);
   final habito = HabitoCubit.de(context);
   final nav = Navigator.of(context);
+  // o que foi respondido (1ª tentativa), na ordem, e que partes chegaram ao fim
+  final revisadas = <Trecho>[];
+  var fimMemoria = false, fimCartoes = false;
+  FimDaRevisao resultado() => FimDaRevisao(
+        respondidas: revisadas.length,
+        terminou: (diretas.isEmpty || fimMemoria) && (invertidas.isEmpty || fimCartoes),
+        revisadas: List.unmodifiable(revisadas),
+      );
   var seguir = true;
   // sem nada nos dois sentidos, abre a sessão vazia mesmo assim ("nenhuma frase vence hoje")
   if (diretas.isNotEmpty || invertidas.isEmpty) {
@@ -101,19 +167,23 @@ Future<void> abrirRevisao(BuildContext context, {String? baralho}) async {
             emoji: '🔁',
             itens: diretas,
             emSequencia: invertidas.isNotEmpty,
+            semOferta: modoTreino,
             cenaDe: (f) => licaoDe[f.cod],
             // só a 1ª tentativa da frase chega aqui (a cópia e o esqueleto de reaprender não): 1 exercício
             onResultado: (r) {
+              revisadas.add(r.trecho);
               habito?.praticou();
               revisao.registrar(r.trecho, r.resultado);
             },
-            onFim: (rs) => ranking?.quizRespondido(
-                rs.where((r) => r.resultado == ResultadoRevisao.acertou).length, rs.length),
+            onFim: (rs) {
+              fimMemoria = true;
+              ranking?.quizRespondido(rs.where((r) => r.resultado == ResultadoRevisao.acertou).length, rs.length);
+            },
           ),
         )) ??
         false;
   }
-  if (!seguir || invertidas.isEmpty || !nav.mounted) return;
+  if (!seguir || invertidas.isEmpty || !nav.mounted) return resultado();
   final chavesNovas = {for (final f in novas) RevisaoCubit.chaveReversaDe(f)};
   await nav.push<bool>(MaterialPageRoute<bool>(
     builder: (_) => SessaoCartoesPage(
@@ -127,9 +197,12 @@ Future<void> abrirRevisao(BuildContext context, {String? baralho}) async {
       previsao: (f) => revisao.previsao(RevisaoCubit.chaveReversaDe(f)),
       // a nota do cartão (só a 1ª; o "DE NOVO" depois do Errei não chama isto) conta 1 exercício
       onNota: (frase, nota) {
+        revisadas.add(frase);
         habito?.praticou();
         return revisao.registrarVirar(frase, nota);
       },
+      onFim: (_) => fimCartoes = true,
+      semOferta: modoTreino,
       cenaDe: (f) => licaoDe[f.cod],
       acaoExtra: (context, f) => BotaoAudioDaFrase(frase: f.cod),
       // só as frases de "Meus cartões" com palavra-alvo são lacunas da leitura (as do curso também têm `alvo`)
@@ -137,6 +210,7 @@ Future<void> abrirRevisao(BuildContext context, {String? baralho}) async {
       apoio: indice.porChave.values.toList(),
     ),
   ));
+  return resultado();
 }
 
 /// Quantas frases o teste de nivelamento da trilha usa e quantas precisa

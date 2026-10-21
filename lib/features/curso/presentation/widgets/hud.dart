@@ -18,6 +18,9 @@ import '../../../ingles/presentation/ouvir/ouvir_cubit.dart';
 import '../../../ingles/presentation/ouvir/ouvir_state.dart';
 import '../../../ingles/presentation/revisao_cubit.dart';
 import '../../../ranking/presentation/ranking_page.dart';
+import '../../../treino_dia/domain/plano_treino.dart';
+import '../../../treino_dia/presentation/treino_dia_acoes.dart';
+import '../../../treino_dia/presentation/treino_dia_cubit.dart';
 import '../bloc/typing_bloc.dart';
 import '../bloc/voz_cubit.dart';
 import '../pages/escolha_linguagem_page.dart';
@@ -89,6 +92,34 @@ class _HudState extends State<Hud> {
             // não é const de propósito: o relógio do Hud (1 s) redesenha o chip na virada do dia
             // ignore: prefer_const_constructors
             ChipSequencia(),
+            // "⚡ Treino do dia" ao lado da sequência (é ela que ele alimenta). O plano de hoje é relido a cada
+            // segundo do relógio do Hud: na meia-noite o botão volta a "Treino" sozinho
+            if (TreinoDiaCubit.de(context) != null)
+              BlocBuilder<TreinoDiaCubit, TreinoDiaState>(
+                builder: (context, _) {
+                  final p = context.read<TreinoDiaCubit>().planoDeHoje;
+                  // da mesma leitura (não de outra chamada ao relógio): p nunca some no meio
+                  final s = p?.situacao ?? SituacaoTreino.pendente;
+                  return Tooltip(
+                    message: switch (s) {
+                      SituacaoTreino.pendente => 'Treino do dia: ~10 min',
+                      SituacaoTreino.emAndamento => 'Treino do dia: continuar',
+                      SituacaoTreino.concluido => 'Treino do dia feito',
+                    },
+                    child: _Toggle(
+                      key: const Key('treino-dia-hud'),
+                      rotulo: switch (s) {
+                        SituacaoTreino.pendente => 'Treino',
+                        SituacaoTreino.emAndamento => 'Treino ${p!.resolvidos}/${p.blocos.length}',
+                        SituacaoTreino.concluido => 'Treino ✓',
+                      },
+                      icone: Icons.bolt_rounded,
+                      ligado: s != SituacaoTreino.concluido,
+                      onTap: () => abrirTreinoDoDia(context),
+                    ),
+                  );
+                },
+              ),
             _Toggle(
               rotulo: 'Mapa',
               icone: Icons.route_outlined,

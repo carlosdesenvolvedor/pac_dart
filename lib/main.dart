@@ -48,6 +48,8 @@ import 'features/ingles/presentation/palavras_cubit.dart';
 import 'features/ingles/presentation/revisao_cubit.dart';
 import 'features/ranking/data/ranking_repository.dart';
 import 'features/ranking/presentation/ranking_cubit.dart';
+import 'features/treino_dia/data/treino_dia_repository.dart';
+import 'features/treino_dia/presentation/treino_dia_cubit.dart';
 import 'features/tutor/data/tutor_firebase_ai.dart';
 import 'features/tutor/data/tutor_service.dart';
 import 'features/tutor/presentation/tutor_cubit.dart';
@@ -155,6 +157,10 @@ class PacDartApp extends StatelessWidget {
   final CacheExplicacoes Function(AppUser user)? iaCacheBuilder;
   final DateTime Function()? iaAgora;
 
+  /// O "⚡ Treino do dia" de cada curso (testes/probe: `LocalTreinoDiaRepository(uid:, curso:)`). Sem isto vale a
+  /// nuvem (campo `{prefixo}treino_dia` em `users/{uid}`, com cópia no aparelho); sem Firebase iniciado, o aparelho.
+  final TreinoDiaRepository Function(AppUser user, Linguagem linguagem)? treinoDiaBuilder;
+
   const PacDartApp({
     super.key,
     this.authCubitOverride,
@@ -178,6 +184,7 @@ class PacDartApp extends StatelessWidget {
     this.iaCotaBuilder,
     this.iaCacheBuilder,
     this.iaAgora,
+    this.treinoDiaBuilder,
   });
 
   @override
@@ -312,6 +319,17 @@ class PacDartApp extends StatelessWidget {
                   : FirestoreRankingRepository(),
               uid: user.uid,
               apelido: user.apelido,
+            ),
+          ),
+          // "⚡ Treino do dia": um plano por curso (cada vertente tem o seu), no mesmo relógio da sequência
+          BlocProvider(
+            create: (_) => TreinoDiaCubit(
+              repo: treinoDiaBuilder?.call(user, linguagem) ??
+                  (Firebase.apps.isNotEmpty
+                      ? FirestoreTreinoDiaRepository(user.uid, linguagem: linguagem)
+                      : LocalTreinoDiaRepository(uid: user.uid, curso: linguagem.id)),
+              curso: linguagem.id,
+              agora: habitoAgora,
             ),
           ),
           // inglês: os áudios do aluno (o registro carrega o índice uma vez). Sem nuvem

@@ -22,6 +22,7 @@ A **Fase 2 está implementada** (2A "💡 Por quê?" e 2B "💬 Cenários guiado
 A **Fase 7 (modos de resposta nas lições do Inglês — barra ⌨️ Digitar · 🎤 Falar · 🧩 Montar)** está **implementada** (13/out/2026, a pedido do dono: "não encontrei no celular a opção de digitar… quero mic, digitar e o de montar igual ao Duolingo"); plano em `planejamento/FASE-7-MODOS-DE-RESPOSTA.md`, seção "🧩 Modos de resposta" abaixo (decisões do dono: montar vale tudo mas conta meio ponto na prova; padrão Digitar; enfeites de 2 a 5).
 A **Fase 5 (escrita corrigida por IA, erros viram cartões) está implementada** — plano em `planejamento/FASE-5-ESCRITA-CORRIGIDA.md`, seção "📝 Escrita corrigida" abaixo.
 A **Fase 8 ("🎧 Ouvir": escutar as lições na ordem e setlists pessoais, com mini-player) está em implementação** (20/out/2026, a pedido do dono) — plano em `planejamento/FASE-8-OUVIR-PLAYLIST.md`, seção "🎧 Ouvir — Fase 8" abaixo.
+A **Fase 9 ("⚡ Treino do dia": uma sessão de ~10 min montada com o que o aluno já tem, nos 3 cursos) está implementada e validada pelo líder** (21/out/2026; sem commit/deploy) — plano em `planejamento/FASE-9-TREINO-DO-DIA.md`, seções "⚡ Treino do dia — Fase 9" e "⚡ 21/out/2026 (rodada 7): Treino do dia" abaixo.
 
 ---
 
@@ -1671,6 +1672,9 @@ Plano: `planejamento/FASE-7-MODOS-DE-RESPOSTA.md` (D1–D10). **Só as lições 
 
 ## 📋 Pendências / próximos passos
 
+- **"⚡ Treino do dia" (Fase 9, 21/out, sem commit/deploy):** validado pelo líder (suíte, analyze, probe + Playwright em 1027 e 390 px,
+  0 erros). Falta: commit, `flutter build web` + deploy **só de hosting** (**nenhum deploy de regras**) e as conferências à mão da
+  "rodada 7" — ver "⚡ 21/out/2026 (rodada 7): Treino do dia".
 - ⚠️ **"🎧 Ouvir" (Fase 8, 20/out, sem commit/deploy):** publicar `firebase deploy --only firestore:rules` (bloco `users/{uid}/setlists`) **ANTES** do hosting; fazer as 7 conferências em aparelho de verdade do plano (aba oculta, Android bloqueado, iOS, Web Speech oculto, 🔊 do palco pausando, 360 px com teclado, tema claro) — ver "🎧 Ouvir — Fase 8".
 - ⚠️ **Palavras novas (20/out, sem commit/deploy):** publicar `firebase deploy --only firestore:rules` (bloco `users/{uid}/palavras`) **ANTES** do hosting; conferir as legendas do `web/turismo3d/turismo3d.js` com UM build de prova numa pasta reaproveitada (apagada depois) — ver "🆕 Palavras novas".
 - ⚠️ Código NÃO sincronizado com o GitHub desde o Arcade 2.0 (Turismo 3D inteiro só local + Firebase).
@@ -2006,3 +2010,104 @@ removidos); `build/web/turismo3d/turismo3d.js` idêntico ao `web/` (tem `abaixar
   (4) setlist de texto próprio (Web Speech) com a aba oculta; (5) 🔊 do palco com a playlist tocando → pausa com o aviso; (6) 360 px com
   mini-player + teclado do palco; (7) tema claro.
 - ⚠️ **Antes do hosting:** `firebase deploy --only firestore:rules` (bloco `users/{uid}/setlists`).
+
+## ⚡ Treino do dia — Fase 9 (21/out/2026, FEITA e validada pelo líder — ver "rodada 7" logo abaixo; sem commit/deploy)
+
+- **O que é:** um botão **Treino** no HUD (logo depois do chip 🔥 da sequência, `treino-dia-hud`, ícone ⚡) e um cartão "⚡ Treino do dia"
+  no mapa (`treino-dia-cartao-mapa`, o 1º depois do painel, **nos 3 cursos**) que abrem o hub `TreinoDiaPage`: uma sessão de ~10 min que
+  reaproveita as sessões que já existem. **Inglês:** 🔁 Revisão (8 frases + 4 cartões) → 🔥 Palavras (até 6: teimosas > devidas > fracas) →
+  🎧 Ouvir (painel dentro do hub, fonte `⚡ Treino do dia`) → 🏁 Rali (1 fase no Fácil). **Dart/C#:** 2 quizzes de revisão (lições
+  concluídas com a pior nota, girando por dia) + 🏁 Rali. Plano completo: `planejamento/FASE-9-TREINO-DO-DIA.md`.
+- **Estados do botão:** "Treino" (aceso, nada resolvido hoje) → "Treino 2/4" (aceso, em andamento) → "Treino ✓" (apagado, concluído). O
+  relógio de 1 s do Hud relê o plano de hoje: na meia-noite volta a "Treino" sozinho. O cartão do mapa diz "~10 min com o que você precisa
+  revisar hoje" / "Continuar · N de M etapas" / "Feito hoje ✓ — volte amanhã".
+- **Retomável no mesmo dia, zera à meia-noite local** (`diaDe(habitoAgora())`, o mesmo relógio da sequência). Sair no meio guarda o
+  andamento; reabrir continua da próxima etapa pendente.
+- **Bônus:** +3 na meta (`bonusTreino`) ao concluir um plano com ≥ 2 etapas feitas, pelo menos uma ativa (revisão/palavras/quiz) com
+  resultado real, e plano nem `curto` nem `incompleto`. **1× por conta por dia** (`Habito.bonusTreinoDia`, chave `bt`), qualquer curso.
+  Ouvir e Rali continuam sem dar unidades. Nada vai ao ranking.
+- **Persistência:** aparelho `treino_dia_v1:{uid}:{curso}` + nuvem no campo `{prefixo}treino_dia` de `users/{uid}` (`treino_dia`,
+  `cs_treino_dia`, `en_treino_dia`). **Sem mudança em `firestore.rules`** (o `match /users/{uid}` já cobre; excluir a conta leva junto).
+  Divergência do plano §6.1: a gravação na nuvem usa `update({campo: json})` (com `set(merge: true)` se o doc não existe) em vez de
+  `SetOptions(mergeFields:)`, porque o `FakeFirebaseFirestore` ignora `mergeFields` e apagava o doc inteiro nos testes.
+- **Arquivos:** `lib/features/treino_dia/{domain,data,presentation}/` (`plano_treino.dart`, `montar_plano.dart`,
+  `treino_dia_repository.dart`, `treino_dia_cubit.dart`, `blocos_treino.dart`, `treino_dia_page.dart`, `treino_dia_acoes.dart`,
+  `widgets/painel_ouvir_treino.dart`, `widgets/cartao_bloco.dart`). Costuras opcionais (padrão = comportamento de antes): `abrirRevisao`
+  (limites, `modoTreino`, devolve `FimDaRevisao`), `semOferta` nas sessões de memória/cartões, `semSaidas`/`rotuloContinuar` no treino de
+  palavras, `abrirTreinoPalavras`/`treinarTeimosas` devolvem `ResultadoTreino?`, `RaliPage(treino: true)` (1 fase, devolve
+  `ResultadoFaseTreino`), `FimDeJogo(mostrarDeNovo:, rotuloDeNovo:, rotuloSair:)`, `QuizPage(semente:, onTerminou:, rotuloFim:)`,
+  `HabitoCubit.ganharBonusTreino`.
+- **Fiação (grupo E):** `main.dart` ganhou `PacDartApp(treinoDiaBuilder:)`; no `_cursoDe` (os 3 cursos, chave `uid:linguagem`) um
+  `TreinoDiaCubit` com a nuvem (sem Firebase iniciado, o aparelho) e `agora: habitoAgora`. `main_portfolio_probe.dart`:
+  `treinoDiaBuilder: (u, l) => LocalTreinoDiaRepository(uid: u.uid, curso: l.id)` (o plano sai das fontes locais do probe). Sem o cubit
+  na árvore (testes de tela antigos) não há botão nem cartão.
+- **Testes novos:** `treino_dia_test`, `treino_dia_repository_test`, `treino_dia_cubit_test` (A); `treino_dia_seams_ingles_test` (B);
+  `rali_treino_test`, `quiz_treino_test` (C); `treino_dia_blocos_test`, `treino_dia_ui_test` (D); `treino_dia_app_test` (E: o app inteiro —
+  inglês pula tudo → "Treino ✓" → meia-noite → "Treino"; Dart com 🏁 Rali e sem 🎧; cartão do mapa nos dois cursos; trocar de curso
+  guarda o plano de cada um; bônus +3 no inglês e +0 com "Bônus do treino já ganho hoje ✓" no Dart; Dart e C# com lições concluídas
+  montam 🧩 quiz + 🧩 quiz + 🏁 Rali (sem quiz primeiro, depois a pior nota; `proj:` ignorado) e o 1º quiz respondido de verdade
+  vira "Treino 1/3" com as respostas no hábito; 360 e 390 px sem estouro).
+  Passada de integração: suíte inteira +2109, só as 5 falhas antigas do `csharp_curriculo_test`.
+  Os 15 testes que montam o `PacDartApp` (`grep -l PacDartApp test/`) passaram com a pílula nova sem nenhum ajuste.
+- ⚠️ **Armadilha nova (testes de app no celular):** com o HUD rolando junto com o palco, o palco pede uma rolagem animada até a frase
+  (`zona_visivel.dart`) que no relógio falso não anda, e enquanto ela vive a lista ignora toques no HUD. O `treino_dia_app_test` encerra
+  essa rolagem com `position.jumpTo(position.pixels)` antes de tocar na pílula. O relógio de 1 s do Hud nasce dentro do `runAsync` da
+  abertura (é um Timer de verdade): para ver a virada do dia no HUD, espere ~1,2 s reais com `runAsync`.
+- **Conhecido, não mexido:** no Dart/C#, o Rali em 360 px estoura 18 px na fila "a seguir" (já acontecia fora do treino).
+
+## ⚡ 21/out/2026 (rodada 7): Treino do dia (FEITO e validado pelo líder; sem commit/deploy)
+
+- **O que existe:** botão **⚡ Treino** no HUD (logo depois do chip 🔥) e cartão **"Treino do dia"** no mapa, nos **3 cursos**. Abrem o hub
+  `TreinoDiaPage`: uma sessão de ~10 min com as sessões que já existem, em modo treino (sem ofertas de teimosas, sem "Jogar"/"Virar
+  lição", sem "Pular quiz"; o botão principal de cada sessão diz "Continuar o treino →").
+  - **Inglês (4 etapas):** 🔁 Revisão do dia (até 8 frases + 4 cartões) → 🔥 Palavras (até 6: teimosas > devidas > fracas) → 🎧 Ouvir
+    (painel dentro do hub, as frases que acabou de revisar; senão a última lição concluída; senão uma prévia da atual) → 🏁 Rali relâmpago
+    (1 fase no Fácil, começa sozinho, com as palavras do treino em foco).
+  - **Dart/C# (3 etapas):** 🧩 Quiz · lição A → 🧩 Quiz · lição B (lições concluídas: sem nota de quiz primeiro, depois a pior nota
+    relativa ao tamanho do quiz, desempate girando por dia; semente do quiz muda por dia) → 🏁 Rali (1 fase digitando código).
+  - Aluno novo: plano **curto** (inglês: Ouvir + Rali; Dart/C#: só Rali) com a dica "o treino de hoje é curto… siga para a sua lição".
+  - Cada etapa tem **"Pular esta etapa"**; não há lançamento automático entre etapas (um toque em "▶ Continuar · …" por vez).
+- **Padrões adotados (sem perguntar):** limites 8 frases + 4 cartões / 6 palavras / 6 frases ouvidas / 1 fase do Rali / 2 quizzes;
+  conteúdo de cada etapa escolhido na hora em que ela começa; retomável no mesmo dia, zera à meia-noite local (`habitoAgora`);
+  **bônus +3 na meta** ao concluir com ≥ 2 etapas feitas, ao menos uma ativa (revisão/palavras/quiz) com resultado > 0, plano nem curto
+  nem incompleto — **1× por conta por dia** (`Habito.bonusTreinoDia`), qualquer curso; Ouvir e Rali continuam sem dar unidades; nada vai
+  ao ranking. Após 8 s sem as fontes: "Tentar de novo" / "Começar assim mesmo" (plano `incompleto`, completado depois).
+- **Correções da revisão (rodada de fixes):** plano concluído (até o curto) não "revive" ao reabrir; JSON sem bloco utilizável → plano
+  novo; `FirestoreTreinoDiaRepository`: leitura com prazo de 10 s (cai na cópia do aparelho) e `salvar` espera **só o aparelho** (a nuvem
+  vai numa fila própria, a mais nova vence, erros engolidos — offline não trava mais as gravações); voltar (sistema/navegador) no fim do
+  Rali devolve o resultado; sessão de Ouvir de outro dia não é creditada; leitores de tela leem o cartão atual uma vez; "Começando…" e
+  avisos com `liveRegion`; cartão do mapa vira à meia-noite (relógio de 1 s).
+- **Validação do líder (21/out):**
+  - Suíte inteira: **2.128 testes, 2.123 passam, 5 falham** (as 5 de sempre do `csharp_curriculo_test`); 143 arquivos de teste.
+    `flutter analyze lib test`: sem avisos. Nenhum `test/_*_test.dart` sobrando.
+  - **1 build** do probe (`flutter build web -t lib/main_portfolio_probe.dart --release --output=build/probe --no-wasm-dry-run`, ~29 s),
+    servido em `python3 -m http.server`, **apagado depois** (`find build/probe -delete`). `build/web` não foi tocado; nada publicado.
+  - **Chrome (Playwright), 1027 e 390 px, 0 erros de console e 0 `pageerror`** (só o aviso de fontes Noto de sempre). Semente no
+    `localStorage`: `en_revisao` com 12 frases vencidas ontem, `en_concluidas` com 2 lições, `concluidas` 0:0–0:2 e `quiz_notas` 0:0=5.
+    - Inglês: HUD "⚡ Treino" aceso → hub com as **4 etapas** (~9 min) → Revisão aberta (8 frases) e **saí no meio pela ←: continuou
+      pendente** → reabri e digitei as 8 → "✓ Feito · 8 revisadas" + faixa "Próximo: 🔥 Palavras" → pulei Palavras → **Ouvir tocou as 6
+      frases revisadas sozinho** ("Frase 2 de 6" … "✓ Feito · 6 frases ouvidas") → Rali começou sozinho (sem tela de início), saí pela ←
+      (pendente) → pulei → "Treino do dia completo! ⚡", **"+3 na meta pelo treino completo ⚡"** (meta 13/20 = 10 respostas + 3) → HUD
+      **"Treino ✓"** apagado; cartão do mapa "Feito hoje ✓ — volte amanhã".
+    - Dart: HUD "Treino" aceso → **🧩 Quiz · Decimais → 🧩 Quiz · Inteiros → 🏁 Rali** (as sem nota primeiro; Variáveis com nota ficou de
+      fora) → quiz abriu sem "Pular quiz", voltei pela ← (pendente) → pulei → fechei → **390 px: HUD "Treino 1/3"** → reabri no mesmo
+      bloco → Rali de código a 390 px (sem estouro com as palavras sorteadas) → pulei tudo → "Hoje foi só uma passada", **sem linha de
+      bônus**, meta inalterada → HUD "Treino ✓".
+    - De volta ao inglês a 390 px: HUD "Treino ✓"; reabrir mostra "Volte amanhã para um treino novo 🌅" e "Bônus do treino já ganho hoje ✓"
+      (sem bônus de novo).
+    - Capturas em `/private/tmp/claude-501/-Users-fazplay-pac-dart/0331895d-de51-4964-875d-cf4d7eb2f778/scratchpad/smoke_treino/` (35 PNGs, temporárias).
+  - ⚠️ **Receita da prova:** a ferramenta de captura do MCP só grava dentro do projeto; para salvar no scratchpad use
+    `page.screenshot({path})` dentro de `browser_run_code_unsafe`. O plano com 4 etapas no inglês precisa de material: semear
+    `flutter.en_revisao` (formato antigo `"caixa|proximoDia|lapsos"`, `proximoDia = diaDe(ontem)`) e `flutter.en_concluidas` — sem isso o
+    aluno do probe é novo e o plano sai curto (Ouvir + Rali). No Playwright, `keyboard.press('Tab')` não preencheu letras na revisão; digite a frase com `keyboard.type`.
+- **Adiado (plano §14):** texto do lembrete falando do treino; contador "treinos seguidos" e calendário semanal; escolher a duração
+  (5/10/15 min) ou tirar/reordenar etapas; Chuva/Turismo como etapa de jogo; Dart/C# com SRS de verdade (precisa de datas no progresso),
+  Desafios como etapa, reescrever um trecho antigo; inglês com ditado/shadowing como etapa e sanguessugas nas teimosas; bônus sem
+  duplicar entre aparelhos offline (servidor) e sincronizar o Ouvir em andamento. Também não feito: `FirestoreHabitoRepository.salvar`
+  ainda espera a nuvem (mesmo travamento offline que foi corrigido no treino); o Rali do Dart/C# em 360 px ainda estoura 18 px na fila
+  "a seguir" com palavras longas.
+- **Falta conferir à mão (o dono):** (1) Rali jogado até o fim no treino → tela "FASE VENCIDA! ⚡" / "A CPU VENCEU…" com "Continuar o
+  treino →" (coberto por teste, não no Chrome); (2) etapa 🔥 Palavras feita de verdade e o Rali depois com essas palavras; (3) quiz do
+  Dart/C# respondido até o fim no navegador; (4) virada da meia-noite com o app aberto (HUD volta a "Treino"); (5) dois aparelhos no
+  mesmo dia (o plano mescla; bônus 1×); (6) celular de verdade (teclado + mini-player do Ouvir) e tema claro; (7) logado de verdade
+  (Firestore: campos `treino_dia`/`cs_treino_dia`/`en_treino_dia` em `users/{uid}`; **sem mudança de regras**).
