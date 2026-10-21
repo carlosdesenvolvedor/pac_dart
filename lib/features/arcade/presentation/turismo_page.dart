@@ -162,8 +162,10 @@ class _TurismoPageState extends State<TurismoPage>
 
   /// 🔊 Inglês: a palavra falada quando a pessoa TRAVA nela — no portal (1ª letra certa) e na de
   /// combustível (idem), nunca quando aparece: a de combustível entra no instante em que o portal é
-  /// completado e, falada ali, cortaria a do portal ainda soando. [_vozPortal]/[_vozTravada]/[_vozGas]:
-  /// o que já foi falado (só se compara). Na web a música abaixa enquanto a palavra soa.
+  /// completado e, falada ali, cortaria a do portal ainda soando. No modo SETAS (ninguém digita, nada
+  /// trava) a do portal é falada quando ele vira o alvo à frente do carro ([_falarPortalSetas]).
+  /// [_vozPortal]/[_vozTravada]/[_vozGas]: o que já foi falado (só se compara). Na web a música abaixa
+  /// enquanto a palavra soa.
   final _voz = VozDoJogo();
   Portal? _vozPortal;
   int? _vozTravada;
@@ -194,6 +196,19 @@ class _TurismoPageState extends State<TurismoPage>
     if (identical(gas, _vozGas)) return;
     _vozGas = gas;
     _falar(gas);
+  }
+
+  /// Modo setas: fala a palavra do portal que acabou de virar o alvo ([TurismoEngine.portalAtual]) —
+  /// o 1º na largada, cada seguinte no instante em que o carro cruza o anterior: um portal fica a ~2,8 s
+  /// do outro na velocidade máxima, tempo de ouvir antes de chegar. Uma vez por portal, nunca de novo
+  /// (nem ao voltar da pausa). É a palavra que o cartão mostra (a da 1ª faixa livre, com a tradução):
+  /// com duas saídas a 2ª fica muda — falada logo depois, cortaria a 1ª ainda soando. Nas setas não há
+  /// palavra de combustível. Com a voz desligada nada é marcado: religada no meio, o portal da vez fala.
+  void _falarPortalSetas(TurismoEngine e) {
+    final p = e.portalAtual;
+    if (p == null || p.palavras.isEmpty || identical(p, _vozPortal)) return;
+    _vozPortal = p;
+    _falar(p.palavras.first);
   }
 
   void _alternarVoz() {
@@ -536,6 +551,7 @@ class _TurismoPageState extends State<TurismoPage>
     final ordAntes = contar ? e.ordinalDoPortalAtual : 0;
     e.tick(dt);
     if (contar) _contarPortais(e, ordAntes);
+    if (e.porSetas && e.correndo && _voz.ativa) _falarPortalSetas(e);
     _drenarPerdas(e);
     _relogio += dt;
     _vista.enviar();
@@ -1205,7 +1221,8 @@ class _TurismoPageState extends State<TurismoPage>
             if (e.porSetas) ChipPlacar('PORTAIS', '${e.portaisLimpos}') else ChipPlacar('ERROS', '${e.erros}'),
             if (_fantasma != null) _chipFantasma(e),
             // 🔊 junto dos chips (no celular, a linha do 🎥 e da pausa não tem espaço)
-            if (BancoArcade.soDigitacao && !e.porSetas) BotaoVozJogo(key: const Key('arcade-voz'), onTap: _alternarVoz),
+            // (nas setas também: lá a palavra do portal é falada quando ele vira o alvo)
+            if (BancoArcade.soDigitacao) BotaoVozJogo(key: const Key('arcade-voz'), onTap: _alternarVoz),
           ],
           acao: Row(mainAxisSize: MainAxisSize.min, children: [
             _botaoCamera(),
@@ -1722,20 +1739,27 @@ class BotoesSetas extends StatelessWidget {
     required this.onFreio,
   });
 
+  /// Os quatro botões lado a lado (64 + 8 + 64 + 96 + 8 + 96) e uma folga mínima entre os pares.
+  static const _larguraCheia = 336.0 + 8;
+
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
-      _toque('◀', 'faixa da esquerda', () => onVirar(-1)),
-      const SizedBox(width: 8),
-      _toque('▶', 'faixa da direita', () => onVirar(1)),
-      const Spacer(),
-      _segura('▼ FREIO', 'freio', freio, onFreio, cor: Mixart.danger),
-      const SizedBox(width: 8),
-      _segura('▲ GÁS', 'acelerador', gas, onGas, cor: const Color(0xFF57C765)),
-    ]);
+    // celular 360: sobram 320 px — os botões encolhem juntos em vez de vazar 16 px pela direita
+    return LayoutBuilder(builder: (context, box) {
+      final k = box.maxWidth.isFinite ? math.min(1.0, box.maxWidth / _larguraCheia) : 1.0;
+      return Row(children: [
+        _toque('◀', 'faixa da esquerda', () => onVirar(-1), k),
+        const SizedBox(width: 8),
+        _toque('▶', 'faixa da direita', () => onVirar(1), k),
+        const Spacer(),
+        _segura('▼ FREIO', 'freio', freio, onFreio, k, cor: Mixart.danger),
+        const SizedBox(width: 8),
+        _segura('▲ GÁS', 'acelerador', gas, onGas, k, cor: const Color(0xFF57C765)),
+      ]);
+    });
   }
 
-  Widget _toque(String texto, String nome, VoidCallback onTap) {
+  Widget _toque(String texto, String nome, VoidCallback onTap, double k) {
     return Semantics(
       button: true,
       label: nome,
@@ -1743,7 +1767,7 @@ class BotoesSetas extends StatelessWidget {
         behavior: HitTestBehavior.opaque,
         onTapDown: (_) => onTap(),
         child: Container(
-          width: 64,
+          width: 64 * k,
           height: 52,
           alignment: Alignment.center,
           decoration: BoxDecoration(
@@ -1757,7 +1781,8 @@ class BotoesSetas extends StatelessWidget {
     );
   }
 
-  Widget _segura(String texto, String nome, bool ativo, ValueChanged<bool> onMudou, {required Color cor}) {
+  Widget _segura(String texto, String nome, bool ativo, ValueChanged<bool> onMudou, double k,
+      {required Color cor}) {
     return Semantics(
       button: true,
       label: nome,
@@ -1766,7 +1791,7 @@ class BotoesSetas extends StatelessWidget {
         onPointerUp: (_) => onMudou(false),
         onPointerCancel: (_) => onMudou(false),
         child: Container(
-          width: 96,
+          width: 96 * k,
           height: 52,
           alignment: Alignment.center,
           decoration: BoxDecoration(
