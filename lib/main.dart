@@ -29,6 +29,7 @@ import 'features/habito/presentation/habito_cubit.dart';
 import 'features/habito/presentation/lembrete_cubit.dart';
 import 'features/ia/data/cache_explicacoes.dart';
 import 'features/ia/data/cota_repository.dart';
+import 'features/ia/domain/conversa_resposta.dart' show formatoTurnoTexto;
 import 'features/ia/presentation/ia_cubit.dart';
 import 'features/ingles/data/audio_usuario.dart';
 import 'features/ingles/data/audio_usuario_repository.dart';
@@ -51,6 +52,7 @@ import 'features/ranking/presentation/ranking_cubit.dart';
 import 'features/treino_dia/data/treino_dia_repository.dart';
 import 'features/treino_dia/presentation/treino_dia_cubit.dart';
 import 'features/tutor/data/tutor_firebase_ai.dart';
+import 'features/tutor/data/tutor_roteador.dart';
 import 'features/tutor/data/tutor_service.dart';
 import 'features/tutor/presentation/tutor_cubit.dart';
 import 'firebase_options.dart';
@@ -267,9 +269,16 @@ class PacDartApp extends StatelessWidget {
       providers: [
         BlocProvider<IaCubit>(
           create: (_) => IaCubit(
+            // só os turnos em JSON da 💬 Conversa podem ir ao Claude (Worker), quando `config/tutor` liga
+            // (provedorConversa == 'claude' + urlConversa); desligado por padrão e com fallback ao Gemini.
+            // O resto do IaCubit ("Por quê?", Escrita, cenários) segue no Gemini pelo roteador.
             service: tutorBuilder != null
                 ? tutorBuilder!()
-                : (kIsWeb ? GeminiTutorService() : FirebaseAiTutorService()),
+                : TutorConversaRoteador(
+                    gemini: kIsWeb ? GeminiTutorService() : FirebaseAiTutorService(),
+                    // o Firebase AI (nativo) não é TutorJson: o roteador põe o contrato do turno no prompt
+                    formatoSemJson: formatoTurnoTexto,
+                  ),
             cotaRepo: iaCotaBuilder?.call(user) ?? FirestoreCotaRepository(user.uid),
             cache: iaCacheBuilder?.call(user) ?? CacheExplicacoesLocal(uid: user.uid),
             agora: iaAgora,

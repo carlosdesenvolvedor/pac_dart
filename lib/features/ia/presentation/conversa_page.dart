@@ -15,6 +15,7 @@ import '../domain/nivel_conversa.dart';
 import '../domain/sessao_cenario.dart';
 import 'cenario_cubit.dart';
 import 'ia_cubit.dart';
+import 'maos_livres.dart';
 import 'preferencias_conversa.dart';
 import 'resumo_conversa.dart';
 import 'widgets/bolha_conversa.dart';
@@ -23,6 +24,7 @@ import 'widgets/microfone_conversa.dart';
 /// A Conversa com IA de um cenário: um personagem do palco faz o outro papel (rosto, boca e voz), a
 /// pessoa responde em inglês (digitando ou pelo 🎤, que escreve no campo) e o Prof. Dash corrige cada
 /// fala na hora, num campo separado. O resumo do fim é local. Sem [IaCubit] na árvore não abre.
+/// Com o mãos-livres (⋮, pref do aparelho) segurar o 🎤 envia sozinho e a vez abre depois da voz do personagem.
 class ConversaPage extends StatelessWidget {
   final Cenario cenario;
 
@@ -135,10 +137,33 @@ class _ConversaState extends State<_Conversa> {
   /// O último erro que a tela viu (para saber quando chega um erro novo).
   ErroCenario _erroVisto = ErroCenario.nenhum;
 
+  /// O modo mãos-livres (desligado até a pref dizer o contrário).
+  late final ControladorMaosLivres _maos;
+
+  /// A aba escondida / o app em segundo plano: o mãos-livres fecha o microfone.
+  late final AppLifecycleListener _ciclo;
+
+  /// A rota desta página (um diálogo por cima = a vez não abre sozinha).
+  ModalRoute<Object?>? _rota;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _rota = ModalRoute.of(context);
+  }
+
   @override
   void initState() {
     super.initState();
     _campo.addListener(_aoEditarCampo);
+    _maos = ControladorMaosLivres(
+      reconhecedor: _reconhecedor,
+      enviar: _enviarFalado,
+      antesDeOuvir: _voz.calarTudo,
+      podeAbrirSozinho: _podeAbrirSozinho,
+      podeSegurar: () => mounted && _esperaParaFalar(_cubit.state) == null,
+    )..addListener(_aoMudarMaos);
+    _ciclo = AppLifecycleListener(onHide: _maos.pausar, onPause: _maos.pausar);
     _iniciar();
   }
 
@@ -146,13 +171,72 @@ class _ConversaState extends State<_Conversa> {
     if (_recado.isNotEmpty && _campo.text != _textoDoRecado) _mudar(() => _recado = '');
   }
 
+  /// O mãos-livres mudou: redesenha (no meio de um quadro, depois dele). O recado de quando ele se desliga
+  /// sozinho (microfone bloqueado) vira o recado do microfone de sempre.
+  void _aoMudarMaos() {
+    if (!_maos.ligado && _maos.recado.isNotEmpty) {
+      final r = _maos.recado;
+      _maos.limparRecado();
+      _recado = r;
+      _textoDoRecado = _campo.text;
+    }
+    if (SchedulerBinding.instance.schedulerPhase == SchedulerPhase.persistentCallbacks) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _mudar(() {}));
+    } else {
+      _mudar(() {});
+    }
+  }
+
+  /// A vez do aluno pode abrir sozinha: a conversa está livre, a tela à vista (sem diálogo por cima, app em
+  /// primeiro plano) e nenhuma voz soando.
+  bool _podeAbrirSozinho() {
+    if (!mounted || _saindo) return false;
+    final st = _cubit.state;
+    if (st.terminou || st.aguardando || !st.sessao.podeFalar || _cubit.emEspera) return false;
+    // sem registrar dependência (isto roda fora do build): a rota da página ainda é a de cima?
+    if (_rota?.isCurrent == false) return false;
+    final ciclo = SchedulerBinding.instance.lifecycleState;
+    if (ciclo == AppLifecycleState.hidden || ciclo == AppLifecycleState.paused || ciclo == AppLifecycleState.detached) {
+      return false;
+    }
+    return VozIngles.falando.value == null;
+  }
+
+  /// Mãos-livres: por que o 🎤 não grava agora (o rótulo dele, apagado); null = grava. A fala dita aqui se
+  /// perderia: a conversa não a receberia.
+  String? _esperaParaFalar(CenarioState st) {
+    if (st.terminou || !st.sessao.podeFalar) return 'A conversa acabou';
+    if (st.aguardando) return 'Espere a resposta';
+    if (_cubit.emEspera) return 'Espere a IA liberar';
+    return null;
+  }
+
+  /// O máximo a esperar a voz do personagem acabar (o Chrome às vezes nunca avisa o fim de uma fala longa):
+  /// a duração estimada na velocidade da voz, com folga.
+  static Duration _limiteDaFala(String frase, {bool? lenta}) {
+    try {
+      final v = (lenta ?? VozIngles.lentaPorPadrao) ? VozIngles.velocidadeLenta : VozIngles.velocidadeNormal;
+      final s = VozIngles.duracaoDe(frase) / v * 2 + 5;
+      return Duration(milliseconds: (s * 1000).round());
+    } catch (_) {
+      return const Duration(seconds: 30);
+    }
+  }
+
   /// A velocidade da voz do aluno (até hoje só o palco lia) e a pref da voz automática; depois, a abertura.
   Future<void> _iniciar() async {
     await VozIngles.carregarPreferencia();
     final auto = await PreferenciasConversa.vozAuto();
+    final maos = await PreferenciasConversa.maosLivres();
     if (!mounted) return;
     setState(() => _vozAuto = auto);
-    if (auto && !_ouvindo && _voz.somLiberado) unawaited(_voz.falar(widget.pagina.cenario.abertura));
+    if (maos) _maos.ligar();
+    if (auto && !_ouvindo && _voz.somLiberado) {
+      final abertura = widget.pagina.cenario.abertura;
+      final f = _voz.falar(abertura);
+      // mãos-livres: depois da abertura é a vez do aluno
+      unawaited(_maos.ligado ? _maos.personagemFala(f, limite: _limiteDaFala(abertura)) : f);
+    }
   }
 
   @override
@@ -170,6 +254,9 @@ class _ConversaState extends State<_Conversa> {
   @override
   void dispose() {
     _relogio?.cancel();
+    _ciclo.dispose();
+    _maos.removeListener(_aoMudarMaos);
+    _maos.dispose();
     unawaited(_voz.parar());
     _campo.dispose();
     _foco.dispose();
@@ -201,9 +288,30 @@ class _ConversaState extends State<_Conversa> {
     final t = _campo.text;
     // esperando a resposta, na janela de descanso ou sem falas: o texto fica no campo, nada é enviado nem apagado
     if (t.trim().isEmpty || st.aguardando || st.terminou || !st.sessao.podeFalar || c.emEspera) return;
+    // digitou e enviou com a vez aberta (mãos-livres): o microfone fecha
+    if (_maos.estado == EstadoMaosLivres.ouvindo) _maos.pausar();
     _campo.clear();
     setState(() => _recado = '');
     c.enviar(t);
+  }
+
+  /// Mãos-livres: o que o aluno disse vai direto (sem passar pelo campo). Sem poder enviar agora, vai para o
+  /// campo (como a fala que falhou).
+  void _enviarFalado(String t) {
+    if (!mounted) return;
+    final c = _cubit;
+    final st = c.state;
+    if (st.aguardando || st.terminou || !st.sessao.podeFalar || c.emEspera) {
+      // nada se perde: com o campo ocupado (a fala que falhou, um rascunho), a fala nova vem logo depois
+      final antes = _campo.text.trim();
+      _preencher(antes.isEmpty || antes == t.trim() ? t : '$antes $t');
+      _maos.turnoFalhou(recado: ControladorMaosLivres.recadoNoCampo);
+      return;
+    }
+    _mudar(() => _recado = '');
+    unawaited(c.enviar(t));
+    // a fala não entrou (vazia depois da limpeza): não há resposta a esperar
+    if (!c.state.aguardando) _maos.turnoFalhou();
   }
 
   void _preencher(String t) {
@@ -256,14 +364,30 @@ class _ConversaState extends State<_Conversa> {
     final volta = st.falaPendente;
     if (volta != null && _campo.text.isEmpty) _preencher(volta);
     final ts = st.sessao.turnos;
+    var falaNova = false;
     if (ts.length > _turnosVistos && !ts.last.doAluno) {
       // chegou a fala do personagem: o avatar do topo acompanha e, com a voz automática, ela é lida — mas
       // nunca com o microfone aberto (ele escreveria a fala do personagem no campo)
+      falaNova = true;
       final fala = ts.last.texto;
       setState(() => _noPalco = fala);
-      if (_vozAuto && !_ouvindo) unawaited(_voz.falar(fala));
+      if (_maos.ligado) {
+        // mãos-livres: quando a voz ACABA (ou já, sem voz automática) a vez do aluno abre sozinha
+        final aberto = _ouvindo || _maos.estado == EstadoMaosLivres.ouvindo;
+        unawaited(_maos.personagemFala(_vozAuto && !aberto ? _voz.falar(fala) : null, limite: _limiteDaFala(fala)));
+      } else if (_vozAuto && !_ouvindo) {
+        unawaited(_voz.falar(fala));
+      }
     }
     _turnosVistos = ts.length;
+    if (_maos.ligado) {
+      // o resumo abriu (ou a conversa acabou): nada de microfone; a fala falhou: volta ao ocioso
+      if (st.terminou) {
+        _maos.pausar();
+      } else if (!falaNova && !st.aguardando) {
+        _maos.turnoFalhou();
+      }
+    }
     // um erro novo (a fala que falhou) vale mais que o recado velho do microfone
     if (st.erro != ErroCenario.nenhum && st.erro != _erroVisto && _recado.isNotEmpty) setState(() => _recado = '');
     _erroVisto = st.erro;
@@ -274,6 +398,7 @@ class _ConversaState extends State<_Conversa> {
   Future<void> _voltar() => Navigator.of(context).maybePop();
 
   Future<void> _confirmarSaida() async {
+    _maos.pausar();
     final sair = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
@@ -303,6 +428,17 @@ class _ConversaState extends State<_Conversa> {
     setState(() => _vozAuto = v);
     if (!v) unawaited(_voz.parar());
     await PreferenciasConversa.salvarVozAuto(v);
+  }
+
+  /// Liga/desliga o mãos-livres (pref do aparelho). Ligar fecha o ditado aberto e some com o recado dele.
+  Future<void> _alternarMaosLivres() async {
+    if (_maos.ligado) {
+      _maos.desligar();
+    } else {
+      _maos.ligar();
+      if (_maos.ligado) setState(() => _recado = '');
+    }
+    await PreferenciasConversa.salvarMaosLivres(_maos.ligado);
   }
 
   void _deNovo() {
@@ -413,16 +549,34 @@ class _ConversaState extends State<_Conversa> {
         icon: Icon(Icons.more_vert_rounded, color: Mixart.text, size: 22),
         onSelected: (v) {
           if (v == 'voz') _alternarVoz();
+          if (v == 'maos') _alternarMaosLivres();
           if (v == 'terminar') _cubit.terminar();
         },
         itemBuilder: (_) {
           final podeTerminar = st.sessao.turnosDoAluno > 0 && !st.terminou && !st.aguardando;
+          final maosPode = _maos.ligado || _maos.disponivel;
           return [
             PopupMenuItem(
               key: const Key('alternar-voz'),
               value: 'voz',
               child: Text(_vozAuto ? 'Não ler as falas em voz alta' : 'Ler as falas em voz alta',
                   style: Mixart.ui(size: 13.5, color: Mixart.text)),
+            ),
+            PopupMenuItem(
+              key: const Key('alternar-maos-livres'),
+              value: 'maos',
+              enabled: maosPode,
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisSize: MainAxisSize.min, children: [
+                Text(_maos.ligado ? '🙌 Desligar o mãos-livres' : '🙌 Mãos-livres',
+                    style: Mixart.ui(size: 13.5, color: maosPode ? Mixart.text : Mixart.textFaint)),
+                if (!maosPode)
+                  Text(_maos.motivoIndisponivel,
+                      key: const Key('motivo-maos-livres'),
+                      style: Mixart.ui(size: 11.5, color: Mixart.textFaint).copyWith(height: 1.35))
+                else if (!_maos.ligado)
+                  Text('Segure o 🎤 e solte para enviar; ele abre sozinho na sua vez.',
+                      style: Mixart.ui(size: 11.5, color: Mixart.textMuted).copyWith(height: 1.35)),
+              ]),
             ),
             PopupMenuItem(
               key: const Key('terminar-conversa'),
@@ -463,7 +617,12 @@ class _ConversaState extends State<_Conversa> {
         indice: i,
         turno: t,
         // a versão certa na voz do app (o avatar do topo não mexe a boca: _noPalco é a fala do personagem)
-        onOuvirCorrecao: melhor.isEmpty ? null : () => unawaited(_voz.falar(melhor)),
+        onOuvirCorrecao: melhor.isEmpty
+            ? null
+            : () => _maos.ligado
+                ? _falarComVez(() => _voz.falar(melhor), _limiteDaFala(melhor))
+                : unawaited(_voz.falar(melhor)),
+        rotuloOuvirCorrecao: _maos.ligado,
       );
     }
     return BolhaPersonagem(
@@ -479,12 +638,27 @@ class _ConversaState extends State<_Conversa> {
 
   void _ouvirFala(String fala, {bool? lenta}) {
     setState(() => _noPalco = fala);
-    unawaited(_voz.falar(fala, lenta: lenta));
+    if (_maos.ligado) {
+      _falarComVez(() => _voz.falar(fala, lenta: lenta), _limiteDaFala(fala, lenta: lenta));
+    } else {
+      unawaited(_voz.falar(fala, lenta: lenta));
+    }
+  }
+
+  /// Mãos-livres: um 🔊 tocado fecha a vez aberta (o microfone ouviria a voz) e, com a conversa livre, a vez
+  /// abre de novo quando a voz acaba.
+  void _falarComVez(Future<void> Function() falar, Duration limite) {
+    final st = _cubit.state;
+    if (_maos.estado == EstadoMaosLivres.ouvindo) _maos.pausar();
+    final f = falar();
+    final livre = !st.aguardando && !st.terminou && _maos.estado != EstadoMaosLivres.enviando;
+    unawaited(livre ? _maos.personagemFala(f, limite: limite) : f);
   }
 
   /// A faixa logo acima do campo (uma linha, ~40 px): o painel do microfone, o recado dele, o aviso de erro ou
   /// as ideias de resposta — um de cada vez, nunca empilhados (cabe em 360×640 com o teclado aberto).
   Widget _faixa(CenarioState st, bool largo) {
+    if (_maos.ligado) return _faixaMaosLivres(st, largo);
     final pad = EdgeInsets.fromLTRB(largo ? 20 : 12, 6, largo ? 20 : 12, 6);
     if (_ouvindo) {
       return Container(
@@ -557,6 +731,13 @@ class _ConversaState extends State<_Conversa> {
               // sem nenhuma fala respondida não há resumo (o Terminar fica desligado)
               '${st.sessao.turnosDoAluno > 0 ? ' O resumo continua funcionando: toque em ⋮ › Terminar conversa.' : ''}'
         );
+      case ErroCenario.limitePessoal:
+        // o limite do Worker da Conversa (Claude) é desta pessoa, não de todo mundo; o resto da IA segue livre
+        return (
+          const Key('cenario-limite-pessoal'),
+          'Você usou suas falas de conversa de hoje. Volte amanhã — sua fala ficou no campo e não gastou nada.'
+              '${st.sessao.turnosDoAluno > 0 ? ' O resumo continua funcionando: toque em ⋮ › Terminar conversa.' : ''}'
+        );
       case ErroCenario.ocupado:
         return (const Key('cenario-ocupado'), 'A IA está sobrecarregada neste momento. Tente de novo em alguns segundos — não gastou nada.');
       case ErroCenario.semRede:
@@ -573,11 +754,113 @@ class _ConversaState extends State<_Conversa> {
     }
   }
 
-  /// As ideias de resposta numa linha que rola de lado: A1/A2 sempre à vista; B1+ atrás de "💡 Ideias de resposta".
-  Widget _ideiasDeResposta(CenarioState st, bool largo) {
+  /// A faixa do mãos-livres: o chip "🙌 Mãos-livres" sempre à vista e, ao lado, um de cada vez: a escuta (com o
+  /// parcial e o ⏹ da vez aberta sozinha), "fulano está falando…", o aviso de erro, o recado, ou as ideias.
+  Widget _faixaMaosLivres(CenarioState st, bool largo) {
+    final m = _maos;
     final s = st.sessao;
-    var ideias = s.sugestoesAtuais;
-    if (ideias.isEmpty && s.turnosDoAluno == 0) ideias = s.cenario.dicas.take(3).toList();
+    final nome = s.cenario.nomePersonagem;
+    final aviso = _aviso(st);
+    final muted = Mixart.ui(size: 12.5, weight: FontWeight.w700, color: Mixart.textMuted).copyWith(height: 1.35);
+    Widget conteudo;
+    Widget? fim;
+    var fundo = false;
+    if (m.estado == EstadoMaosLivres.ouvindo) {
+      fundo = true;
+      // as ideias (A1/A2, ou B1+ com elas abertas) ficam à vista enquanto nada foi dito: dá para ler uma em voz alta
+      final ideias = _ideias || nivelIniciante(_cubit.nivel) ? _ideiasDaVez(s) : const <String>[];
+      conteudo = Column(
+        key: const Key('ouvindo-maos-livres'),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(m.segurando ? '🎙️ Ouvindo… solte para enviar' : '🎙️ ${ControladorMaosLivres.recadoSuaVez}',
+              maxLines: 1, overflow: TextOverflow.ellipsis, style: Mixart.ui(size: 12.5, weight: FontWeight.w700, color: Mixart.danger)),
+          if (m.parcial.isNotEmpty)
+            Text(m.parcial,
+                key: const Key('parcial-conversa'),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Mixart.ui(size: 13, color: Mixart.text).copyWith(fontStyle: FontStyle.italic))
+          else if (ideias.isNotEmpty)
+            Text('💡 ${ideias.join('  ·  ')}',
+                key: const Key('ideias-maos-livres'),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: Mixart.ui(size: 12, color: Mixart.textMuted)),
+        ],
+      );
+      if (!m.segurando) {
+        fim = IconButton(
+          key: const Key('parar-maos-livres'),
+          tooltip: 'Parar de ouvir',
+          onPressed: m.parar,
+          visualDensity: VisualDensity.compact,
+          icon: Icon(Icons.stop_circle_outlined, size: 24, color: Mixart.danger),
+        );
+      }
+    } else if (m.estado == EstadoMaosLivres.personagemFalando) {
+      conteudo = Text('🔊 $nome está falando… depois é a sua vez',
+          key: const Key('personagem-falando'), maxLines: 2, overflow: TextOverflow.ellipsis, style: muted);
+    } else if (aviso != null && (_cubit.emEspera || m.recado.isEmpty)) {
+      conteudo = ConstrainedBox(
+        key: aviso.$1,
+        constraints: const BoxConstraints(maxHeight: 84),
+        child: SingleChildScrollView(
+          child: Text(aviso.$2, style: Mixart.ui(size: 12.5, color: Mixart.textMuted).copyWith(height: 1.4)),
+        ),
+      );
+    } else if (m.recado.isNotEmpty) {
+      conteudo = Text(m.recado, key: const Key('recado-maos-livres'), maxLines: 2, overflow: TextOverflow.ellipsis, style: muted);
+    } else if (st.aguardando || m.estado == EstadoMaosLivres.enviando) {
+      conteudo = Text('Enviado — $nome já responde', key: const Key('enviado-maos-livres'), maxLines: 1, overflow: TextOverflow.ellipsis, style: muted);
+    } else {
+      conteudo = _ideiasDaVez(s).isEmpty
+          ? Text('Segure o 🎤 para falar · solte para enviar',
+              key: const Key('dica-maos-livres'), maxLines: 1, overflow: TextOverflow.ellipsis, style: muted)
+          : _ideiasDeResposta(st, largo, padding: const EdgeInsets.symmetric(vertical: 4));
+    }
+    return Container(
+      key: const Key('faixa-maos-livres'),
+      width: double.infinity,
+      constraints: const BoxConstraints(minHeight: 44),
+      padding: EdgeInsets.fromLTRB(largo ? 20 : 12, 4, largo ? 16 : 6, 4),
+      decoration: BoxDecoration(
+        color: fundo ? Mixart.surfaceHi : null,
+        border: aviso != null && m.estado == EstadoMaosLivres.ocioso ? Border(top: BorderSide(color: Mixart.border)) : null,
+      ),
+      child: Row(children: [
+        Semantics(
+          label: 'Mãos-livres ligado',
+          excludeSemantics: true,
+          child: Container(
+            key: const Key('chip-maos-livres'),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            decoration: BoxDecoration(
+              color: Mixart.brandSub,
+              border: Border.all(color: Mixart.brandDim),
+              borderRadius: BorderRadius.circular(999),
+            ),
+            child: Text(largo ? '🙌 Mãos-livres' : '🙌', style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.brand)),
+          ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(child: conteudo),
+        ?fim,
+      ]),
+    );
+  }
+
+  /// As ideias da vez (as sugestões da última resposta; na 1ª fala, as dicas do cenário).
+  static List<String> _ideiasDaVez(SessaoCenario s) {
+    final ideias = s.sugestoesAtuais;
+    if (ideias.isEmpty && s.turnosDoAluno == 0) return s.cenario.dicas.take(3).toList();
+    return ideias;
+  }
+
+  /// As ideias de resposta numa linha que rola de lado: A1/A2 sempre à vista; B1+ atrás de "💡 Ideias de resposta".
+  Widget _ideiasDeResposta(CenarioState st, bool largo, {EdgeInsets? padding}) {
+    final ideias = _ideiasDaVez(st.sessao);
     if (ideias.isEmpty) return const SizedBox.shrink();
     final iniciante = nivelIniciante(_cubit.nivel);
     final abertas = iniciante || _ideias;
@@ -622,7 +905,7 @@ class _ConversaState extends State<_Conversa> {
       height: 44,
       child: ListView(
         scrollDirection: Axis.horizontal,
-        padding: EdgeInsets.fromLTRB(largo ? 20 : 12, 4, largo ? 20 : 12, 4),
+        padding: padding ?? EdgeInsets.fromLTRB(largo ? 20 : 12, 4, largo ? 20 : 12, 4),
         children: itens,
       ),
     );
@@ -683,6 +966,9 @@ class _ConversaState extends State<_Conversa> {
           }),
           // o ditado vai para o CAMPO: a pessoa confere e envia (nunca sozinho)
           aoOuvir: _preencher,
+          // mãos-livres: segurar e soltar envia sozinho
+          maosLivres: _maos.ligado ? _maos : null,
+          esperaMaosLivres: _maos.ligado ? _esperaParaFalar(st) : null,
         ),
         const SizedBox(width: 6),
         IconButton.filled(

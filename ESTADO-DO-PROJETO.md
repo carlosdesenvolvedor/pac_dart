@@ -24,6 +24,7 @@ A **Fase 5 (escrita corrigida por IA, erros viram cartões) está implementada**
 A **Fase 8 ("🎧 Ouvir": escutar as lições na ordem e setlists pessoais, com mini-player) está em implementação** (20/out/2026, a pedido do dono) — plano em `planejamento/FASE-8-OUVIR-PLAYLIST.md`, seção "🎧 Ouvir — Fase 8" abaixo.
 A **Fase 9 ("⚡ Treino do dia": uma sessão de ~10 min montada com o que o aluno já tem, nos 3 cursos) está implementada e validada pelo líder** (21/out/2026; sem commit/deploy) — plano em `planejamento/FASE-9-TREINO-DO-DIA.md`, seções "⚡ Treino do dia — Fase 9" e "⚡ 21/out/2026 (rodada 7): Treino do dia" abaixo.
 A **Fase 10 ("💬 Conversa com IA": role-play em inglês com os personagens do palco, o Prof. Dash corrigindo cada fala na hora, digitando ou pelo microfone, resumo local no fim) está feita e validada pelo líder** (21/out/2026, rodada 8; sem commit/deploy; evolui a 2B "💬 Cenários guiados") — plano em `planejamento/FASE-10-CONVERSA-IA.md` (escrito como FASE-9; renumerado porque o Treino do dia ficou com a 9), seção "💬 Conversa com IA — Fase 10" abaixo.
+A **Fase 11 (💬 Conversa pelo Claude Haiku via Worker da Cloudflare — DESLIGADA por padrão, liga pelo `config/tutor` — + modo 🙌 mãos-livres na Conversa)** está implementada (21/out/2026, rodada 9; sem commit/deploy; Worker ainda não publicado) — plano em `planejamento/FASE-11-CLAUDE-MAOS-LIVRES.md`, seção "🙌 21/out/2026 (rodada 9)" no fim.
 
 ---
 
@@ -1603,6 +1604,7 @@ Plano: `planejamento/FASE-7-MODOS-DE-RESPOSTA.md` (D1–D10). **Só as lições 
 - **Revisão do inglês (12/out/2026)**: subcoleções `users/{uid}/srs/{b00…b15,_meta}` (cartões FSRS) e `users/{uid}/srs_log/{AAAA-MM}` (histórico); regras próprias só do dono (as de `users/{uid}` não cobrem subcoleção). O mapa `users/{uid}.en_revisao` é LEGADO (lido uma vez na migração, nunca apagado).
 - **Textos do aluno (14/out/2026)**: subcoleção `users/{uid}/textos/{id}` (um documento por texto colado/escrito; ver "☁️ Textos na nuvem"). Regra própria só do dono — **escrita no `firestore.rules`, ainda não publicada**.
 - **Banco de palavras do inglês (20/out/2026)**: um doc `users/{uid}/palavras/v1` (campo `b`, JSON compacto; ver "🆕 Palavras novas"). Regra própria só do dono — **escrita no `firestore.rules`, ainda não publicada**; sem ela o app funciona só no aparelho (falha da nuvem é engolida). `apagarDadosDoUsuario` já apaga `palavras`.
+- **`config/tutor` (21/out/2026, rodada 9)**: além de `chaveGemini` e `modeloConversa`, dois campos opcionais ligam o Claude na Conversa: `provedorConversa = "claude"` + `urlConversa = "https://paclingo-conversa.<sub>.workers.dev"` (apagar `provedorConversa` = volta ao Gemini; o app relê em ~5 min). Mesmo doc, mesmas regras (sem deploy de regras). Passo a passo: `workers/conversa-claude/LEIA-ME.md` → "Ligar no app".
 - `firebase.json` (hosting → build/web + SPA rewrite; firestore rules/indexes), `.firebaserc` (default: pac-dart).
 - Trocar `ProgressoRepository` local por Firestore já está feito (`FirestoreProgressoRepository`).
 
@@ -2298,3 +2300,92 @@ no mapa); não é uma feature paralela.
   e a resposta que chega com o mic aberto não é falada; (3) celular de verdade com teclado aberto (campo e ideias visíveis); (4) voz
   com o ouvido: a Emma e as palavras do Turismo nas setas; (5) um 429 de verdade (contagem regressiva no aviso, ➤ volta sozinho);
   (6) Android/iOS: uma cena pelo "JSON no prompt" quando houver aparelho.
+
+## 🙌 21/out/2026 (rodada 9): Claude na Conversa (desligado até publicar o Worker) + modo mãos-livres (FEITO e validado no probe; sem commit/deploy)
+
+Plano: `planejamento/FASE-11-CLAUDE-MAOS-LIVRES.md` (com as divergências no topo). Worker: `workers/conversa-claude/` (**não publicado**).
+
+- **💬 Conversa pelo Claude Haiku (Worker da Cloudflare) — DESLIGADO por padrão:**
+  - Só os turnos em JSON da Conversa (`IaCubit.consultarJson`, que só o `CenarioCubit` usa) podem ir ao Claude. Prof. Dash, "Por
+    quê?", Escrita, toque na palavra e Turismo continuam no Gemini.
+  - Liga **sem deploy do app**: `config/tutor.provedorConversa = "claude"` + `urlConversa = "https://paclingo-conversa.<sub>.workers.dev"`
+    (só `https://`; `http://` só localhost/127.0.0.1). O app relê a config a cada ~5 min (`ChaveGemini.campoRecente`). Para voltar
+    ao Gemini: apagar `provedorConversa`. Passo a passo: `workers/conversa-claude/LEIA-ME.md` → "Ligar no app".
+  - `lib/main.dart`: o serviço do `IaCubit` virou `TutorConversaRoteador(gemini: GeminiTutorService() | FirebaseAiTutorService(),
+    formatoSemJson: formatoTurnoTexto)` quando `tutorBuilder == null` (testes e probe com `tutorBuilder` não mudam). O
+    `IaPalavrasCubit` e o `TutorCubit` seguem no Gemini direto.
+  - `lib/features/tutor/data/tutor_claude.dart` (`ClaudeTutorService` + `FalhaClaude`): `POST <url>/v1/turno` com o ID token do
+    Firebase (novo a cada turno), `{system: persona, mensagens: [{papel: 'aluno', texto: montarPrompt(...)}], esquema, maxTokens}`;
+    nunca loga, nunca põe o texto do aluno no erro. `lib/features/tutor/data/tutor_roteador.dart` (`TutorConversaRoteador`): decide
+    cada turno e faz o fallback.
+  - **Fallback:** `sem_chave`, `nao_autenticado`, `origem_negada`, 404/`nao_encontrado` ou rede/DNS/CORS → aquele turno vai ao
+    Gemini e o Claude fica de lado **10 min**; `pedido_invalido` → só aquele turno no Gemini; `limite_pessoal` → **não** cai: vira
+    `TipoFalhaIa.limitePessoal` (aviso próprio "Você usou suas falas de conversa de hoje", SEM a janela de descanso compartilhada —
+    "Por quê?"/Escrita/palavra seguem no Gemini) e o Worker não é chamado até o `Retry-After`; `limite_geral` com `Retry-After`
+    > 2 min (o teto do dia) → Gemini e o Claude de lado até o `Retry-After`; curto/sem (429 da Anthropic) → `limite` ("Muita gente
+    conversando", backoff 20 s…5 min); `ia_falhou`/`ia_demorou` (e o tempo esgotado do app, 35 s) → `ocupado` (a fala volta ao
+    campo, sem gastar uso); **3 panes seguidas** (`ia_falhou` menos a recusa, `ia_demorou`, `http_5xx`) → Gemini e o Claude de
+    lado 10 min. A config é relida do banco a cada 5 min (um cache só, o do roteador).
+  - A cota do app (30/dia, toda a IA) continua valendo também no Claude; o Worker tem a dele (60/aluno/dia) e o teto geral (450/dia
+    no `wrangler.toml`).
+- **🙌 Modo mãos-livres na Conversa** (preferência do aparelho `conversa_maos_livres`, padrão desligado; ⋮ → "🙌 Mãos-livres"):
+  - Segurar o 🎤 grava, soltar envia sozinho (vazio → "Não ouvi nada — tente de novo"); um toque curto abre a vez. Depois que o
+    personagem termina de falar (fim real da voz: `Future` do `VozIngles.falar`), o 🎤 abre sozinho ("Sua vez… fale em inglês", com
+    ⏹); envia depois de 1,5 s de silêncio; nada em 8 s → "Toque no 🎤 para falar". Nunca abre com a voz soando; fecha ao sair,
+    pausar, abrir o resumo, na janela de descanso, no fim da conversa e com diálogo/menu por cima.
+  - Faixa com o chip "🙌 Mãos-livres" (só 🙌 no celular), o que o mic ouve, "Emma está falando…", recados e ideias. A correção do
+    Prof. Dash ganha "🔊 Ouvir o jeito certo". Sem reconhecimento de voz (ou mic bloqueado): item desabilitado com o motivo.
+  - Fora do mãos-livres nada muda (o 🎤 escreve no campo, o aluno confere e envia).
+  - Código: `lib/features/ia/presentation/maos_livres.dart` (`ControladorMaosLivres`, máquina de estados testável) + `conversa_page.dart`,
+    `widgets/microfone_conversa.dart` (`maosLivres`: botão de segurar), `preferencias_conversa.dart`, `widgets/bolha_conversa.dart`.
+- **Probe (`lib/main_portfolio_probe.dart`):** o `_ReconhecedorFake` entrega UMA vez por escuta — sozinho depois de
+  `window.__ditoMs` (padrão 500 ms, igual a antes) ou ~50 ms depois de `parar()`. ⚠️ **Receita da prova:** para SEGURAR o 🎤 no
+  mãos-livres, `window.__ditoMs = 60000` antes do `mouse.down()` (com 500 ms a escuta fecharia sozinha, o app reabriria e o texto
+  somaria duas vezes); para a vez que abre sozinha, `__ditoMs = 500`. Chaves úteis: `alternar-maos-livres`, `chip-maos-livres`,
+  `faixa-maos-livres`, `ouvindo-maos-livres`, `parar-maos-livres`, `personagem-falando`, `recado-maos-livres`, `ideias-maos-livres`,
+  `motivo-maos-livres`, `microfone-conversa`. O probe usa `tutorBuilder` (tutor falso), então não passa pelo roteador.
+- **Testes novos:** `test/tutor_claude_test.dart`, `test/tutor_roteador_test.dart` (http/relógio/token falsos: cada código do Worker,
+  fallback e memória de 10 min, config desligada de 5 jeitos, cache de 5 min, nativo com o formato no prompt, nunca loga, roteador
+  com o `IaCubit` de verdade, `campoRecente`), `test/ia_maos_livres_test.dart` (39, máquina de estados com timers falsos),
+  `test/ia_maos_livres_ui_test.dart` (22, 360×640 e 1027×768, claro/escuro, teclado, clique direito, descanso). Prévias PNG (20) em
+  `/private/tmp/claude-501/-Users-fazplay-pac-dart/0331895d-de51-4964-875d-cf4d7eb2f778/scratchpad/previas_maoslivres/` (temporárias).
+- **Correções da revisão (depois dos grupos):** mãos-livres — pausa no meio da frase na vez aberta sozinha reabre o mic e soma
+  ("I would like" + "a coffee" = uma fala); toque curto com a vez aberta não fecha com "Não ouvi nada"; o limite de reaberturas
+  segurando só conta escutas vazias seguidas (e, se não der para reabrir, envia o que ouviu); voz que nunca termina tem teto
+  (duração estimada × 2 + 5 s, senão 30 s) e a vez abre assim mesmo; o 🎤 chega pelo Tab e Espaço/Enter seguram; clique direito
+  não grava; com a conversa ocupada/acabada/em descanso o 🎤 fica cinza com o motivo ("Espere a resposta", "Espere a IA liberar",
+  "A conversa acabou") e a fala que não puder ir vai para o campo com "Sua fala ficou no campo". Claude — tempo esgotado do app
+  (35 s) vira `ia_demorou` (não `rede`), as 3 panes seguidas, o `limite_geral` do dia → Gemini e o `limite_pessoal` com tipo e
+  aviso próprios (ver o Fallback acima).
+- **Validação do líder (21/out, rodada 9):**
+  - Suíte inteira: **2.489 testes, 2.484 passam, 5 falham** (as 5 de sempre do `csharp_curriculo_test`); 155 arquivos de teste.
+    `flutter analyze lib test`: sem avisos. Nenhum `test/_*_test.dart` sobrando.
+  - **1 build** do probe (`flutter build web -t lib/main_portfolio_probe.dart --release --output=build/probe --no-wasm-dry-run`,
+    ~29 s), servido em `python3 -m http.server`, **apagado depois** (`find build/probe -delete`). `build/web` não foi tocado; nada
+    publicado.
+  - **Chrome (Playwright), 1027 e 390 px, 0 erros de console e 0 `pageerror`** (só o aviso de fontes Noto de sempre). Espião em
+    `speechSynthesis.speak`/`HTMLMediaElement.play`. Nas duas larguras: Mapa → 💬 Conversa com IA → ☕ café com a Emma → ⋮ →
+    "🙌 Mãos-livres" (com o subtítulo "Segure o 🎤 e solte para enviar; ele abre sozinho na sua vez", habilitado — o probe tem
+    reconhecedor) → chip "🙌 Mãos-livres" (só 🙌 em 390) e `flutter.conversa_maos_livres = true` no `localStorage` → com
+    `__dito = 'I want a coffee'` e `__ditoMs = 60000`, `mouse.down()` no 🎤 → "🎙️ Ouvindo… solte para enviar" (🎤 vermelho) →
+    `mouse.up()` → **enviou sozinho** ("Enviado — Emma já responde", "Emma está digitando…") → cartão "✏️ Prof. Dash · jeito mais
+    natural: Can I have a coffee, please?" com **"🔊 Ouvir o jeito certo"** → a resposta "Sure! What size would you like?" **foi
+    falada** → **o 🎤 reabriu sozinho** ("🎙️ Sua vez… fale em inglês" + ideias + ⏹; "restam 29 usos") → "Ouvir o jeito certo"
+    fala "Can I have a coffee, please?" (a faixa mostra "Emma está falando… depois é a sua vez") e o 🎤 reabre de novo depois →
+    ⏹ → "Toque no 🎤 para falar" → ⋮ → "Desligar o mãos-livres" (`localStorage` = false) → o 🎤 de antes: `__dito = 'A small
+    latte, please.'` **preencheu o campo** com "Confira o texto e toque em Enviar." e **não enviou**; o 🔊 da correção volta a ser
+    só o ícone.
+  - Capturas em `/private/tmp/claude-501/-Users-fazplay-pac-dart/0331895d-de51-4964-875d-cf4d7eb2f778/scratchpad/smoke_maoslivres/` (22 PNGs, temporárias).
+  - Detalhes vistos (não bloqueiam): no "Ouvir o jeito certo" a faixa diz "Emma está falando…" (é a frase do Prof. Dash, na
+    mesma voz); em 390 px com o chip 🙌 a fila de ideias corta a 2ª ideia na borda direita (a fila rola de lado).
+- **Adiado:** a mensagem exata do Worker no `limite_pessoal` (hoje texto fixo do app, o `ResultadoIa` só leva o tipo); a checagem
+  dos 64 KB do corpo no app (o Worker responde `pedido_invalido` e o turno cai no Gemini); `http_500` HTML da Cloudflare sem
+  fallback (só conta como pane); voz própria para o Prof. Dash no "Ouvir o jeito certo".
+- **Falta conferir à mão (o dono):** (1) ⚠️ **Chrome de verdade com microfone:** o `SpeechRecognition.start()` sem toque novo (a vez
+  que abre sozinha depois da fala, a reabertura com o dedo no 🎤 e a reabertura na pausa do meio da frase) — o reconhecedor falso
+  do probe não mostra a regra de gesto do Chrome; se o Chrome recusar, o controlador volta a "ocioso" com o recado, nada quebra.
+  Também: o eco (a voz da Emma não pode virar fala do aluno) e o celular Android segurando o 🎤. (2) Publicar o Worker (LEIA-ME,
+  passos a–g), ligar no `config/tutor` e conferir um `POST …/v1/turno` 200 na aba Network; depois desligar e ver a volta ao
+  Gemini em ~5 min. (3) Android/iOS: uma cena com o Claude ligado (sem `Origin`, o Worker aceita) e o fallback no Firebase AI.
+- **Decidido na revisão:** o `limite_pessoal` ganhou mensagem própria (`TipoFalhaIa.limitePessoal`) e o `limite_geral` do dia cai
+  para o Gemini (ver o Fallback acima).

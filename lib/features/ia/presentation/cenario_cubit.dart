@@ -11,7 +11,8 @@ import '../domain/sessao_cenario.dart';
 import 'ia_cubit.dart';
 
 /// O que deu errado na última tentativa (a tela mostra a mensagem certa).
-enum ErroCenario { nenhum, semCota, limite, limiteDia, ocupado, semRede, indisponivel, recusada, falhou }
+/// [limitePessoal]: a pessoa usou as falas do dia no Worker da Conversa (Claude); não abre janela.
+enum ErroCenario { nenhum, semCota, limite, limiteDia, limitePessoal, ocupado, semRede, indisponivel, recusada, falhou }
 
 class CenarioState extends Equatable {
   final SessaoCenario sessao;
@@ -153,6 +154,7 @@ class CenarioCubit extends Cubit<CenarioState> {
   static ErroCenario erroDoMotivo(TipoFalhaIa? m) => switch (m) {
         TipoFalhaIa.limite => ErroCenario.limite,
         TipoFalhaIa.limiteDiario => ErroCenario.limiteDia,
+        TipoFalhaIa.limitePessoal => ErroCenario.limitePessoal,
         TipoFalhaIa.ocupado => ErroCenario.ocupado,
         TipoFalhaIa.semRede => ErroCenario.semRede,
         TipoFalhaIa.credencial => ErroCenario.indisponivel,

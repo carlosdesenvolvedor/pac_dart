@@ -119,7 +119,10 @@ class BolhaAluno extends StatelessWidget {
   final Turno turno;
   final VoidCallback? onOuvirCorrecao;
 
-  const BolhaAluno({super.key, required this.indice, required this.turno, this.onOuvirCorrecao});
+  /// Mãos-livres: o 🔊 da correção vira "🔊 Ouvir o jeito certo" (com texto, fácil de achar sem teclado).
+  final bool rotuloOuvirCorrecao;
+
+  const BolhaAluno({super.key, required this.indice, required this.turno, this.onOuvirCorrecao, this.rotuloOuvirCorrecao = false});
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +146,8 @@ class BolhaAluno extends StatelessWidget {
           ),
           child: SelectableText(turno.texto, style: Mixart.ui(size: 14.5, color: Mixart.text).copyWith(height: 1.45)),
         ),
-        if (c != null) CartaoCorrecao(indice: indice, sua: turno.texto, correcao: c, onOuvir: onOuvirCorrecao),
+        if (c != null)
+          CartaoCorrecao(indice: indice, sua: turno.texto, correcao: c, onOuvir: onOuvirCorrecao, comRotulo: rotuloOuvirCorrecao),
       ]),
     );
   }
@@ -157,7 +161,17 @@ class CartaoCorrecao extends StatefulWidget {
   final CorrecaoTurno correcao;
   final VoidCallback? onOuvir;
 
-  const CartaoCorrecao({super.key, required this.indice, required this.sua, required this.correcao, this.onOuvir});
+  /// O 🔊 com o texto "Ouvir o jeito certo" (mãos-livres); false = só o ícone.
+  final bool comRotulo;
+
+  const CartaoCorrecao({
+    super.key,
+    required this.indice,
+    required this.sua,
+    required this.correcao,
+    this.onOuvir,
+    this.comRotulo = false,
+  });
 
   @override
   State<CartaoCorrecao> createState() => _CartaoCorrecaoState();
@@ -229,7 +243,19 @@ class _CartaoCorrecaoState extends State<CartaoCorrecao> {
         ],
         const SizedBox(height: 4),
         Wrap(spacing: 4, runSpacing: 4, crossAxisAlignment: WrapCrossAlignment.center, children: [
-          if (widget.onOuvir != null)
+          if (widget.onOuvir != null && widget.comRotulo)
+            TextButton.icon(
+              key: Key('ouvir-correcao-$i'),
+              onPressed: widget.onOuvir,
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                minimumSize: const Size(0, 36),
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              icon: Icon(Icons.volume_up_rounded, size: 18, color: Mixart.brand),
+              label: Text('Ouvir o jeito certo', style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.brand)),
+            )
+          else if (widget.onOuvir != null)
             _BotaoPequeno(
               chave: Key('ouvir-correcao-$i'),
               dica: 'Ouvir a versão certa',

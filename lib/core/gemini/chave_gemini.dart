@@ -15,11 +15,26 @@ abstract final class ChaveGemini {
   /// LANÇA quando a leitura em si falha (offline, 'unavailable', …).
   static Future<Map<String, dynamic>?> _ler() async {
     if (_cache != null) return _cache;
+    return _lerDoBanco();
+  }
+
+  /// Quando o [_cache] foi lido do banco (o [campoRecente] decide por aqui se relê).
+  static DateTime? _lidoEm;
+
+  /// Relógio do [campoRecente] (injetável nos testes).
+  static DateTime Function() relogio = DateTime.now;
+
+  /// Sempre do banco: guarda no cache (e marca [_lidoEm]) quando a `chaveGemini` veio não vazia.
+  /// LANÇA quando a leitura falha.
+  static Future<Map<String, dynamic>?> _lerDoBanco() async {
     final db = dbParaTestes ?? FirebaseFirestore.instance;
     final doc = await db.collection('config').doc('tutor').get();
     final dados = doc.data();
     final chave = dados?['chaveGemini'];
-    if (chave is String && chave.isNotEmpty) _cache = dados;
+    if (chave is String && chave.isNotEmpty) {
+      _cache = dados;
+      _lidoEm = relogio();
+    }
     return dados;
   }
 
@@ -50,5 +65,27 @@ abstract final class ChaveGemini {
     return v is String && v.isNotEmpty ? v : null;
   }
 
-  static void limparCache() => _cache = null;
+  /// Como [campo], mas o doc guardado vale só [maxIdade]: mais velho que isso (ou sem cache), relê o
+  /// `config/tutor` — ligar/desligar algo no Firestore (ex.: `provedorConversa`) chega ao app aberto em
+  /// poucos minutos, sem recarregar. A releitura que FALHA fica com o que já estava no cache. Nunca lança.
+  static Future<String?> campoRecente(String nome, {Duration maxIdade = const Duration(minutes: 5)}) async {
+    final lido = _lidoEm;
+    Map<String, dynamic>? dados;
+    if (_cache != null && lido != null && relogio().difference(lido) < maxIdade) {
+      dados = _cache;
+    } else {
+      try {
+        dados = await _lerDoBanco();
+      } catch (_) {
+        dados = _cache;
+      }
+    }
+    final v = dados?[nome];
+    return v is String && v.isNotEmpty ? v : null;
+  }
+
+  static void limparCache() {
+    _cache = null;
+    _lidoEm = null;
+  }
 }

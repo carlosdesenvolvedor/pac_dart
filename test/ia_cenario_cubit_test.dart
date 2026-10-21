@@ -216,6 +216,7 @@ void main() {
 
   for (final (tipo, erro) in [
     (TipoFalhaIa.ocupado, ErroCenario.ocupado),
+    (TipoFalhaIa.limitePessoal, ErroCenario.limitePessoal),
     (TipoFalhaIa.semRede, ErroCenario.semRede),
     (TipoFalhaIa.credencial, ErroCenario.indisponivel),
     (TipoFalhaIa.recusada, ErroCenario.recusada),

@@ -53,7 +53,7 @@ class DescansoIa {
   bool ativo(DateTime agora) => ate != null && agora.isBefore(ate!);
 
   /// limite: passo 20 s → dobra até 5 min; limiteDiario: até as próximas 08:00 UTC (no máximo 12 h);
-  /// ocupado: 8 s; credencial: 60 s; semRede/recusada/outro: sem janela.
+  /// ocupado: 8 s; credencial: 60 s; semRede/recusada/outro/limitePessoal: sem janela.
   void registrar(TipoFalhaIa tipo, DateTime agora) {
     switch (tipo) {
       case TipoFalhaIa.limite:
@@ -68,6 +68,8 @@ class DescansoIa {
         ate = agora.add(IaCubit.descansoCredencial);
       case TipoFalhaIa.semRede || TipoFalhaIa.recusada || TipoFalhaIa.outro:
         return; // falha "local": não é o projeto pedindo descanso
+      case TipoFalhaIa.limitePessoal:
+        return; // só a Conversa (Claude) desta pessoa: o roteador segura até o Retry-After; o Gemini segue livre
     }
     motivo = tipo;
   }

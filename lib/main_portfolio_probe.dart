@@ -36,7 +36,8 @@ void main() {
   SessaoCartoesPage.fabricaReconhecedor = () => const _ReconhecedorFake();
   // lição de inglês (modo 🎤 Falar): o mesmo reconhecedor de mentira
   FraseView.fabricaReconhecedor = () => const _ReconhecedorFake();
-  // 💬 Conversa com IA (🎤 no campo): o mesmo reconhecedor de mentira
+  // 💬 Conversa com IA (🎤 no campo e o 🙌 mãos-livres: segurar/soltar e a vez que abre sozinha): o mesmo
+  // reconhecedor de mentira (ver a receita do `__ditoMs` nele)
   ConversaPage.fabricaReconhecedor = () => const _ReconhecedorFake();
   runApp(_app());
 }
@@ -83,6 +84,13 @@ class _AgendadorFake implements AgendadorDeLembrete {
 }
 
 /// Reconhecedor de mentira para a prova no Chrome: devolve o que estiver em `window.__dito` (vazio = "não ouvi").
+///
+/// Como o do navegador, cada escuta entrega UMA vez (parcial → final → fim): sozinha depois de
+/// `window.__ditoMs` (padrão 500 ms, o "fim da frase") ou logo (~50 ms) depois que o app chama `parar()`
+/// (soltar o 🎤 no 🙌 mãos-livres). `cancelar()` não entrega nada.
+/// Receita do mãos-livres na prova: para SEGURAR e falar, ponha `window.__ditoMs = 60000` (a escuta só acaba
+/// quando o dedo sai do 🎤; com 500 ms ela fecharia sozinha, o app reabriria e o mesmo texto somaria); para a
+/// vez que abre sozinha depois da fala do personagem, volte a `__ditoMs = 500` (final + 1,5 s de silêncio → envia).
 class _ReconhecedorFake extends ReconhecedorFala {
   const _ReconhecedorFake();
 
@@ -97,11 +105,10 @@ class _ReconhecedorFake extends ReconhecedorFala {
     required void Function(ErroFala erro) aoErro,
     required void Function() aoFim,
   }) {
-    final s = _EscutaFake();
-    Future<void>.delayed(const Duration(milliseconds: 500), () {
-      if (s.cancelada) return;
-      final v = globalContext['__dito'];
-      final dito = v.isA<JSString>() ? (v as JSString).toDart : '';
+    final ms = globalContext['__ditoMs'];
+    final espera = ms.isA<JSNumber>() ? (ms as JSNumber).toDartInt : 500;
+    final s = _EscutaFake(() {
+      final dito = _dito();
       if (dito.isEmpty) {
         aoErro(ErroFala.naoOuviu);
       } else {
@@ -110,16 +117,45 @@ class _ReconhecedorFake extends ReconhecedorFala {
       }
       aoFim();
     });
+    // segurando por mais tempo: o começo do que foi "dito" aparece enquanto ouve (como o parcial de verdade)
+    if (espera > 500) {
+      Future<void>.delayed(const Duration(milliseconds: 500), () {
+        final dito = _dito();
+        if (!s.encerrada && dito.isNotEmpty) aoParcial(dito.split(' ').first);
+      });
+    }
+    Future<void>.delayed(Duration(milliseconds: espera), s.entregar);
     return s;
+  }
+
+  /// O que a prova "disse" (lido na entrega, como antes: dá para trocar `__dito` com a escuta aberta).
+  static String _dito() {
+    final v = globalContext['__dito'];
+    return v.isA<JSString>() ? (v as JSString).toDart : '';
   }
 }
 
 class _EscutaFake implements SessaoFala {
-  bool cancelada = false;
+  _EscutaFake(this._entrega);
+
+  final void Function() _entrega;
+
+  /// Já entregou (ou foi cancelada): nada mais sai desta escuta.
+  bool encerrada = false;
+
+  void entregar() {
+    if (encerrada) return;
+    encerrada = true;
+    _entrega();
+  }
+
+  /// O app pediu o fim (soltou o 🎤): entrega o que "ouviu" logo depois (assíncrono, como o navegador:
+  /// nada volta de dentro do próprio `parar()`).
   @override
-  void parar() {}
+  void parar() => Future<void>.delayed(const Duration(milliseconds: 50), entregar);
+
   @override
-  void cancelar() => cancelada = true;
+  void cancelar() => encerrada = true;
 }
 
 class _AuthFake implements AuthRepository {

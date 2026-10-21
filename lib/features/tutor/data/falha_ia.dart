@@ -1,7 +1,10 @@
 import 'dart:async' show TimeoutException;
 
 /// Por que a chamada à IA falhou (a tela escolhe a mensagem e o [IaCubit] decide se descansa).
-enum TipoFalhaIa { limite, limiteDiario, ocupado, semRede, credencial, recusada, outro }
+/// [limitePessoal]: a PESSOA usou as falas do dia no Worker da Conversa (Claude) — não abre a janela
+/// de descanso compartilhada (o Gemini segue livre para o resto); o roteador segura sozinho até o
+/// `Retry-After`.
+enum TipoFalhaIa { limite, limiteDiario, limitePessoal, ocupado, semRede, credencial, recusada, outro }
 
 /// Erro tipado da IA. O `toString()` mantém `Gemini <status>: <detalhe>` (o
 /// `TutorCubit._erroAmigavel` procura '429'/'403' nesse texto). Dart puro: não importa firebase_ai.

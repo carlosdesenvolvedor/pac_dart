@@ -332,6 +332,7 @@ void main() {
 
     for (final (falha, chave, trecho) in [
       (const FalhaIa(TipoFalhaIa.limiteDiario, status: 429), 'cenario-limite-dia', 'Volte amanhã'),
+      (const FalhaIa(TipoFalhaIa.limitePessoal, status: 429), 'cenario-limite-pessoal', 'suas falas de conversa de hoje'),
       (const FalhaIa(TipoFalhaIa.semRede), 'cenario-sem-rede', 'Sem internet agora'),
       (const FalhaIa(TipoFalhaIa.ocupado, status: 503), 'cenario-ocupado', 'sobrecarregada'),
       (const FalhaIa(TipoFalhaIa.credencial, status: 403), 'cenario-indisponivel', 'indisponível'),
