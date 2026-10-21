@@ -260,20 +260,20 @@ void main() {
     expect(find.byKey(const Key('arcade-voz')), findsOneWidget, reason: 'o chip no HUD da corrida');
     expect(fala.ditas, isEmpty, reason: 'o portal à vista não é falado');
 
-    final p = pistasGt[0];
-    final v = _reserva;
-    final replica = TurismoEngine(pista: p, rnd: Random(3), vocabulario: p.vocabularioCom(v), traducoes: v.traducoes);
-    final palavra = replica.portais.first.palavras.first;
+    // as palavras saem do baralho da fase: lidas da tela (a do portal e a de combustível)
+    String naTela(Key k) => tester
+        .widget<RichText>(find.descendant(of: find.byKey(k), matching: find.byType(RichText)))
+        .text
+        .toPlainText();
+    final palavra = naTela(const Key('turismo-palavra-0'));
+    expect(_reserva.todas, contains(palavra));
     await _digitar(tester, palavra[0]);
     expect(fala.ditas, [palavra], reason: 'travou: a palavra é falada');
     final texto = await _digitar(tester, palavra.substring(1, palavra.length - 1), antes: palavra[0]);
     expect(fala.ditas, [palavra], reason: 'cada letra não repete');
     final completo = await _digitar(tester, palavra.substring(palavra.length - 1), antes: texto);
     // completou: entra a de combustível, mas NÃO é falada ainda (cortaria a do portal, ainda soando)
-    for (final ch in palavra.split('')) {
-      replica.teclar(ch);
-    }
-    final gas = replica.palavraGas!;
+    final gas = naTela(const Key('turismo-gas'));
     expect(_rich(gas), findsOneWidget, reason: 'a de combustível na tela');
     expect(fala.ditas, [palavra]);
     await tester.pump(const Duration(milliseconds: 40));
@@ -308,10 +308,14 @@ void main() {
     await tester.pump();
     await tester.pump(const Duration(milliseconds: 20));
     await _largada(tester);
-    final p = pistasGt[0];
-    final v = _reserva;
-    final replica = TurismoEngine(pista: p, rnd: Random(3), vocabulario: p.vocabularioCom(v), traducoes: v.traducoes);
-    await _digitar(tester, replica.portais.first.palavras.first);
+    // a palavra do portal sai do baralho da fase: lida da tela
+    final portal = tester
+        .widget<RichText>(
+            find.descendant(of: find.byKey(const Key('turismo-palavra-0')), matching: find.byType(RichText)))
+        .text
+        .toPlainText();
+    await _digitar(tester, portal);
+    expect(find.byKey(const Key('turismo-gas')), findsOneWidget, reason: 'digitou a do portal: vem a de combustível');
     expect(fala.ditas, isEmpty);
     await tester.pumpWidget(Container());
   });
@@ -326,9 +330,12 @@ void main() {
     expect(find.byKey(const Key('arcade-voz')), findsOneWidget);
     expect(fala.ditas, isEmpty, reason: 'cair não é falar');
 
-    final replica = TiroEngine(rnd: Random(5), curtas: palavrasCurtasEn, medias: palavrasMediasEn, longas: palavrasLongasEn)
-      ..tick(0.06);
-    final caindo = replica.ativas.first.texto;
+    // a palavra que caiu, lida da tela (no inglês ela sai do baralho do nível)
+    final reserva = _reserva.todas.toSet();
+    final caindo = [
+      for (final e in find.byWidgetPredicate((w) => w is RichText && reserva.contains(w.text.toPlainText())).evaluate())
+        (e.widget as RichText).text.toPlainText(),
+    ].single;
     await _digitar(tester, caindo.substring(0, min(2, caindo.length)));
     expect(fala.ditas, [caindo], reason: 'travou: falada uma vez');
     expect(tester.takeException(), isNull);

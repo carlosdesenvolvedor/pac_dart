@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'baralho_fases.dart';
 import 'palavras_dart.dart';
 
 /// Uma palavra caindo na Chuva de Código. Posições em fração da arena
@@ -10,6 +11,9 @@ class PalavraCaindo {
 
   /// Palavra dourada: vale 4x os pontos.
   final bool ouro;
+
+  /// Inglês: veio do baralho pra revisar 🔁 (errou, deixou cair, demorou, ou do banco).
+  final bool revisao;
   final double x;
   double y;
 
@@ -22,6 +26,7 @@ class PalavraCaindo {
     required this.x,
     this.y = 0,
     this.ouro = false,
+    this.revisao = false,
   });
 }
 
@@ -39,6 +44,12 @@ class TiroEngine {
   final List<String> curtas;
   final List<String> medias;
   final List<String> longas;
+
+  /// Inglês: de onde sai cada palavra que nasce (o baralho da fase). Null = sorteio nas listas, como sempre.
+  final FonteDePalavras? fonte;
+
+  /// Inglês: quantas destruir em cada nível pra subir (cresce com o nível). Null = a cada 8, como sempre.
+  final int Function(int nivel)? metaDoNivel;
 
   static const vidasIniciais = 3;
   static const nivelMaximo = 8;
@@ -60,7 +71,11 @@ class TiroEngine {
   final List<PalavraCaindo> ativas = [];
   int? alvoId;
 
+  /// As que tocaram o chão no último [tick] (a mesma lista, esvaziada a cada tick: nada alocado por quadro).
+  final List<PalavraCaindo> ultimasCaidas = [];
+
   int _proximoId = 0;
+  int _destruidasNoNivel = 0;
   double _relogioSpawn = 999; // primeira palavra nasce no primeiro tick
 
   TiroEngine({
@@ -68,6 +83,8 @@ class TiroEngine {
     this.curtas = palavrasCurtas,
     this.medias = palavrasMedias,
     this.longas = palavrasLongas,
+    this.fonte,
+    this.metaDoNivel,
   });
 
   bool get fim => vidas <= 0;
@@ -87,15 +104,20 @@ class TiroEngine {
     return null;
   }
 
+  /// O nível da VELOCIDADE: sobe a cada 8 destruídas, como sempre — com [metaDoNivel] (o inglês, níveis de
+  /// 8, 10, 12… palavras) o ritmo não fica pra trás do Dart: o baralho troca por nível, a pressa não.
+  int get nivelDoRitmo => metaDoNivel == null ? nivel : min(nivelMaximo, destruidas ~/ 8 + 1);
+
   /// Segundos entre uma palavra e a próxima (aperta com o nível).
-  double get intervaloSpawn => (3.4 - 0.22 * (nivel - 1)).clamp(1.6, 3.4);
+  double get intervaloSpawn => (3.4 - 0.22 * (nivelDoRitmo - 1)).clamp(1.6, 3.4);
 
   /// Fração da arena percorrida por segundo (queda ~18s → ~9s no nível 8).
-  double get velocidade => 0.055 + 0.011 * (nivel - 1);
+  double get velocidade => 0.055 + 0.011 * (nivelDoRitmo - 1);
 
   /// Avança o relógio do jogo em [dt] segundos: nasce palavra, tudo cai,
   /// e o que tocar o chão custa vida.
   void tick(double dt) {
+    ultimasCaidas.clear();
     if (fim) return;
     _relogioSpawn += dt;
     if (_relogioSpawn >= intervaloSpawn && ativas.length < maxNaTela) {
@@ -105,11 +127,10 @@ class TiroEngine {
     for (final p in ativas) {
       p.y += velocidade * dt;
     }
-    final caidas = [
-      for (final p in ativas)
-        if (p.y >= 1) p,
-    ];
-    for (final p in caidas) {
+    for (final p in ativas) {
+      if (p.y >= 1) ultimasCaidas.add(p);
+    }
+    for (final p in ultimasCaidas) {
       ativas.remove(p);
       if (alvoId == p.id) alvoId = null;
       vidas--;
@@ -118,6 +139,19 @@ class TiroEngine {
   }
 
   void _spawn() {
+    final f = fonte;
+    if (f != null) {
+      // o baralho da fase escolhe (nunca uma que já está na tela); ouro e x saem do rnd como sempre
+      final c = f.proxima(evitar: {for (final a in ativas) a.texto});
+      ativas.add(PalavraCaindo(
+        id: _proximoId++,
+        texto: c.palavra,
+        revisao: c.revisao,
+        ouro: rnd.nextDouble() < 0.15,
+        x: 0.04 + rnd.nextDouble() * 0.92,
+      ));
+      return;
+    }
     ativas.add(PalavraCaindo(
       id: _proximoId++,
       texto: _sorteiaTexto(),
@@ -177,7 +211,13 @@ class TiroEngine {
       destruidas++;
       ativas.remove(a);
       alvoId = null;
-      if (destruidas % 8 == 0 && nivel < nivelMaximo) nivel++;
+      final meta = metaDoNivel;
+      if (meta == null) {
+        if (destruidas % 8 == 0 && nivel < nivelMaximo) nivel++;
+      } else if (nivel < nivelMaximo && ++_destruidasNoNivel >= meta(nivel)) {
+        nivel++;
+        _destruidasNoNivel = 0;
+      }
       return (TiroResultado.destruiu, a);
     }
     return (TiroResultado.avancou, a);

@@ -13,11 +13,13 @@ import '../../ingles/presentation/acoes_teimosas.dart';
 import '../../ingles/presentation/palavras_cubit.dart';
 import 'banco_arcade.dart';
 import 'voz_jogo.dart';
+import '../domain/baralho_fases.dart';
 import '../domain/personagem.dart';
 import '../domain/tiro_engine.dart';
 import '../domain/tropecos.dart';
 import '../domain/vocabulario_jogo.dart';
 import 'widgets/legenda_traducao.dart';
+import 'widgets/linha_fase.dart';
 import 'widgets/arcade_ui.dart';
 import 'widgets/avatares.dart';
 import 'widgets/campanha.dart';
@@ -36,6 +38,10 @@ class ChuvaPage extends StatefulWidget {
   /// Semente do sorteio (fixa nos testes; null = aleatório de verdade).
   final int? semente;
   const ChuvaPage({super.key, this.semente});
+
+  /// Testes: o relógio (ms) do tempo de cada palavra no inglês (null = o relógio de verdade).
+  @visibleForTesting
+  static int Function()? relogioDeTeste;
 
   @override
   State<ChuvaPage> createState() => _ChuvaPageState();
@@ -72,14 +78,60 @@ class _ChuvaPageState extends State<ChuvaPage>
   late TiroEngine _engine = _novoEngine();
   late final Ticker _ticker; // criado no initState, ligado só na partida
 
-  /// Motor com as palavras da vertente em uso (Dart, C# ou as das lições de inglês).
+  /// Motor com as palavras da vertente em uso (Dart, C# ou as das lições de inglês). No inglês as palavras
+  /// saem do baralho por nível ([BaralhoFases]): cada nível traz palavras novas e mais delas, e as que a
+  /// pessoa errou, deixou cair ou demorou voltam pra revisar 🔁. Dart e C#: o sorteio de sempre.
   TiroEngine _novoEngine() {
     final v = _vocab = BancoArcade.vocabulario(context);
-    return TiroEngine(rnd: math.Random(widget.semente), curtas: v.curtas, medias: v.medias, longas: v.longas);
+    final rnd = math.Random(widget.semente);
+    final anterior = _baralho;
+    if (!BancoArcade.soDigitacao || (v.curtas.isEmpty && v.medias.isEmpty && v.longas.isEmpty)) {
+      _baralho = null;
+      _deckNivel = null;
+      return TiroEngine(rnd: rnd, curtas: v.curtas, medias: v.medias, longas: v.longas);
+    }
+    // "de novo": as que escaparam na partida anterior entram na frente das difíceis do banco
+    final b = _baralho = BaralhoFases(
+      rnd: rnd,
+      dificeis: [...?anterior?.pendentes(), ...BancoArcade.dificeisDoBanco(_palavrasCubit, v)],
+      reenfileirarNaFase: true,
+    );
+    _deckNivel = _abrirNivel(b, v, 1);
+    return TiroEngine(
+      rnd: rnd,
+      curtas: v.curtas,
+      medias: v.medias,
+      longas: v.longas,
+      fonte: b,
+      metaDoNivel: BaralhoFases.tamanhoChuva,
+    );
+  }
+
+  /// Inglês: o baralho do nível [nivel] (o pool do nível; tamanho = quantas destruir pra subir). [emJogo]:
+  /// as do nível anterior ainda caindo — já saíram, não voltam como "novas" do nível novo.
+  static DeckFase _abrirNivel(BaralhoFases b, VocabularioJogo v, int nivel, {Set<String> emJogo = const {}}) {
+    var pool = BaralhoFases.poolChuva(v, nivel);
+    if (pool.isEmpty) pool = v.todas; // faixa vazia (vocabulário mínimo): o que houver
+    return b.abrirFase(
+        fase: nivel, pool: pool, tamanho: BaralhoFases.tamanhoChuva(nivel), foco: v.foco, emJogo: emJogo);
   }
 
   /// O vocabulário da partida (a tradução embaixo da palavra no inglês).
   VocabularioJogo? _vocab;
+
+  /// Inglês: o baralho da partida (de onde nasce cada palavra) e o do nível atual (a linha da largada e o
+  /// aviso de nível). Null no Dart e no C#.
+  BaralhoFases? _baralho;
+  DeckFase? _deckNivel;
+
+  /// Inglês: o tempo da palavra travada (da 1ª tecla até explodir, sem as pausas) — a que demora volta.
+  final _crono = CronometroPalavra(agoraMs: ChuvaPage.relogioDeTeste);
+  int? _cronoId;
+
+  void _pararCrono() {
+    _crono.zerar();
+    _cronoId = null;
+  }
 
   /// Inglês: o banco de palavras do aluno e o que aconteceu com cada palavra nesta partida.
   PalavrasCubit? _palavrasCubit;
@@ -163,10 +215,12 @@ class _ChuvaPageState extends State<ChuvaPage>
   void aoPausar() {
     _desligarTicker();
     _voz.calar();
+    _crono.pausar();
   }
 
   @override
   void aoRetomar() {
+    _crono.retomar();
     if (!_acabou && !_contagem) _ligarTicker(retomando: true);
   }
 
@@ -176,7 +230,8 @@ class _ChuvaPageState extends State<ChuvaPage>
     _ticker.dispose();
     // fechou no meio: o que já foi destruído vale ponto mesmo assim
     if (!_pontuado && _engine.pontos > 0) _ranking?.arcadeJogado('chuva', _engine.pontos);
-    _placar.enviar(_palavrasCubit, fonte: FonteErro.chuva, tropecos: _tropecos);
+    _placar.enviar(_palavrasCubit,
+        fonte: FonteErro.chuva, tropecos: _tropecos, lentas: _baralho?.tirarLentasParaBanco() ?? const {});
     super.dispose();
   }
 
@@ -198,6 +253,7 @@ class _ChuvaPageState extends State<ChuvaPage>
       _pontuado = false;
       pausado = false;
       _errosNoAlvo.clear();
+      _pararCrono();
       _sug = null;
       if (_tropecos != null) _tropecos = TropecosDoJogo();
     });
@@ -225,16 +281,19 @@ class _ChuvaPageState extends State<ChuvaPage>
     if (dt > 0) _ultimoDt = dt;
     final nivelAntes = _engine.nivel;
     final vidasAntes = _engine.vidas;
-    final noArAntes = _palavrasCubit == null ? null : [..._engine.ativas];
     setState(() {
       _engine.tick(dt);
-      // inglês: a palavra que chegou ao chão conta como erro nela
-      if (noArAntes != null) {
-        for (final p in noArAntes) {
-          if (!_engine.ativas.contains(p)) {
-            _placar.errou(p.texto);
-            _tropecou(p, 1); // caiu: errou de vez
-          }
+      // inglês: a palavra que chegou ao chão conta como erro nela (banco) e volta pra revisar (baralho)
+      for (final p in _engine.ultimasCaidas) {
+        if (_palavrasCubit != null) {
+          _placar.errou(p.texto);
+          _tropecou(p, 1); // caiu: errou de vez
+        }
+        final b = _baralho;
+        if (b != null) {
+          b.registrar(p.texto, perdeu: true);
+          _errosNoAlvo.remove(p.id);
+          if (p.id == _cronoId) _pararCrono();
         }
       }
       if (_engine.vidas < vidasAntes) {
@@ -297,7 +356,15 @@ class _ChuvaPageState extends State<ChuvaPage>
     if (_acabou || _contagem || pausado || ch.trim().isEmpty) return;
     final multAntes = _engine.multiplicador;
     final semAlvo = _engine.alvoId == null;
+    final nivelAntes = _engine.nivel;
     final (resultado, palavra) = _engine.teclar(ch);
+    // inglês: o relógio da palavra começa na tecla que trava a mira
+    if (_baralho != null && semAlvo && palavra != null && resultado == TiroResultado.avancou) {
+      _crono
+        ..zerar()
+        ..iniciar();
+      _cronoId = palavra.id;
+    }
     // travou a mira agora: a palavra falada (o tiro e a voz saem juntos)
     if (semAlvo && palavra != null && resultado != TiroResultado.errou && resultado != TiroResultado.nada) {
       _voz.falar(palavra.texto, pausado: pausado, acabou: _acabou);
@@ -308,12 +375,21 @@ class _ChuvaPageState extends State<ChuvaPage>
           _tiros.add(_Tiro(palavra!.x, palavra.y));
           Sons.toca(Som.tiro);
         case TiroResultado.destruiu:
-          if (_palavrasCubit != null) _placar.viu(palavra!.texto);
+          // as teclas erradas nela (lidas antes do _tropecou, que as consome)
+          final erradas = _errosNoAlvo[palavra!.id] ?? 0;
+          if (_palavrasCubit != null) _placar.viu(palavra.texto);
           if (_tropecos != null) {
-            _tropecos!.vista(palavra!.texto);
+            _tropecos!.vista(palavra.texto);
             _tropecou(palavra, 0);
           }
-          _tiros.add(_Tiro(palavra!.x, palavra.y));
+          final b = _baralho;
+          if (b != null) {
+            final ms = _cronoId == palavra.id ? _crono.msPorLetra(palavra.texto) : null;
+            _pararCrono();
+            b.registrar(palavra.texto, erros: erradas, msPorLetra: ms);
+            _errosNoAlvo.remove(palavra.id);
+          }
+          _tiros.add(_Tiro(palavra.x, palavra.y));
           _premios.add(_Premio(palavra.x, palavra.y, '+${_engine.ultimoGanho}', palavra.ouro));
           _explosoes.add(_Explosao(palavra.x, palavra.y, palavra.ouro, palavra.id));
           Sons.toca(Som.explosao);
@@ -323,12 +399,22 @@ class _ChuvaPageState extends State<ChuvaPage>
           }
         case TiroResultado.errou:
           // inglês: tecla errada na palavra travada conta para ela (sem alvo, não é de palavra nenhuma)
-          if (_tropecos != null && palavra != null) _errosNoAlvo[palavra.id] = (_errosNoAlvo[palavra.id] ?? 0) + 1;
+          if ((_tropecos != null || _baralho != null) && palavra != null) {
+            _errosNoAlvo[palavra.id] = (_errosNoAlvo[palavra.id] ?? 0) + 1;
+          }
           _flashErro = 10;
           Sons.toca(Som.erro);
           if (multAntes > 1) _mostraAviso('💔 Combo perdido', 1.4);
         case TiroResultado.nada:
           break;
+      }
+      // inglês: subiu de nível — o baralho do nível novo (mais palavras, novas + as pra revisar)
+      final b = _baralho, v = _vocab;
+      if (b != null && v != null && _engine.nivel > nivelAntes) {
+        final n = _engine.nivel;
+        final d = _deckNivel = _abrirNivel(b, v, n, emJogo: {for (final a in _engine.ativas) a.texto});
+        Sons.toca(Som.fase);
+        _mostraAviso('${emojiDaFase(n)} NÍVEL $n · ${d.resumo()}', 3.2);
       }
     });
   }
@@ -338,13 +424,15 @@ class _ChuvaPageState extends State<ChuvaPage>
     _pontuado = true;
     _desligarTicker();
     _voz.calar();
+    _pararCrono();
     setState(() {
       _acabou = true;
       _tiros.clear();
       pausado = false;
     });
     Sons.toca(Som.defesa);
-    _placar.enviar(_palavrasCubit, fonte: FonteErro.chuva, tropecos: _tropecos);
+    _placar.enviar(_palavrasCubit,
+        fonte: FonteErro.chuva, tropecos: _tropecos, lentas: _baralho?.tirarLentasParaBanco() ?? const {});
     _oferecerTeimosas();
     final recorde = await _ranking?.arcadeJogado('chuva', _engine.pontos);
     if (mounted && recorde == true) setState(() => _novoRecorde = true);
@@ -439,8 +527,13 @@ class _ChuvaPageState extends State<ChuvaPage>
                   Padding(
                     padding: const EdgeInsets.fromLTRB(20, 0, 20, 12),
                     child: Text(
-                      '⌨️ digite a 1ª letra pra travar a mira — cada letra certa é um tiro. '
-                      'Douradas valem 4x · 5 palavras sem erro = COMBO x2 · Esc pausa',
+                      _baralho != null
+                          // inglês: o que o baralho por nível faz (a 🔁 nas gotas ganha explicação)
+                          ? '⌨️ digite a 1ª letra pra travar a mira — cada letra certa é um tiro. '
+                              'Cada nível traz palavras novas (e mais delas); as que você errar, deixar cair '
+                              'ou demorar voltam 🔁 · Douradas valem 4x · 5 sem erro = COMBO x2 · Esc pausa'
+                          : '⌨️ digite a 1ª letra pra travar a mira — cada letra certa é um tiro. '
+                              'Douradas valem 4x · 5 palavras sem erro = COMBO x2 · Esc pausa',
                       textAlign: TextAlign.center,
                       style: Mixart.ui(size: 11.5, color: Mixart.textFaint),
                     ),
@@ -453,6 +546,9 @@ class _ChuvaPageState extends State<ChuvaPage>
                     grito: 'VAI!',
                     legenda: 'digite a 1ª letra pra travar a mira',
                   ),
+                // inglês: o que vem no nível ('Nível 1 · 8 palavras · 6 novas · 2 pra revisar 🔁')
+                if (_contagem && _deckNivel != null)
+                  LinhaFase.naContagem('Nível ${_deckNivel!.fase} · ${_deckNivel!.resumo()}'),
                 if (pausado)
                   PausaOverlay(
                       onContinuar: retomar, onSair: () => Navigator.of(context).pop(), extra: _anotadas()),
@@ -616,7 +712,8 @@ class _ChuvaPageState extends State<ChuvaPage>
                     border: Border.all(color: Mixart.brandDim),
                     borderRadius: BorderRadius.circular(999),
                   ),
-                  child: Text(_aviso, style: Mixart.display(size: 14, color: Mixart.brand)),
+                  child: Text(_aviso,
+                      textAlign: TextAlign.center, style: Mixart.display(size: 14, color: Mixart.brand)),
                 ),
               ),
             ),
@@ -688,6 +785,8 @@ class _ChuvaPageState extends State<ChuvaPage>
                 style: Mixart.ui(size: 9, weight: FontWeight.w800, color: Mixart.onBrand)
                     .copyWith(letterSpacing: 1)),
           ),
+        // inglês: a que voltou pra revisar (fora do Text.rich: a palavra continua lida pelo texto)
+        if (p.revisao) const Padding(padding: EdgeInsets.only(right: 6), child: MarcaRevisao()),
         Text.rich(
           TextSpan(children: [
             // já atingidas: preenchem de amarelo (nada de riscar — atrapalha ler)

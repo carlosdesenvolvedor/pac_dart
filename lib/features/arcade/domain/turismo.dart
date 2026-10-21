@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'baralho_fases.dart';
 import 'palavras_csharp.dart';
 import 'palavras_ingles.dart';
 import 'vocabulario_jogo.dart';
@@ -157,6 +158,9 @@ class Portal {
   /// Índice (em [palavras]) da palavra digitada — -1 = nenhuma.
   int digitado = -1;
 
+  /// Inglês (baralho por fase): quais palavras vieram pra revisar 🔁 (vazio = nenhuma).
+  final List<bool> revisao;
+
   Portal({
     required this.indice,
     required this.z,
@@ -164,9 +168,13 @@ class Portal {
     required this.palavras,
     this.carros = const [],
     this.fichas = const [],
+    this.revisao = const [],
   });
 
   bool get livre => digitado >= 0;
+
+  /// A palavra [i] veio pra revisar 🔁.
+  bool ehRevisao(int i) => i < revisao.length && revisao[i];
 
   /// Algum carro deste portal já foi atingido.
   bool get batido => carros.any((c) => c.batido);
@@ -355,6 +363,15 @@ class TurismoEngine {
   /// Sem tempo esgotado (o inglês): a corrida só acaba na chegada; o tempo vale a medalha.
   final bool semLimiteDeTempo;
 
+  /// De onde saem as palavras (o inglês: o baralho da fase — [BaralhoFases]): as dos portais na ordem do
+  /// baralho (as que voltam pra revisar 🔁 logo no começo da corrida) e as de combustível são as seguintes
+  /// dele (a que você errou na corrida volta como combustível 3–5 palavras depois). null = o sorteio de
+  /// sempre ([vocabulario] ou o fixo da pista) — o Dart e o C#.
+  final FonteDePalavras? fonte;
+
+  /// A palavra de combustível na vez veio pra revisar 🔁 (só com [fonte]).
+  bool palavraGasRevisao = false;
+
   TurismoEngine({
     required this.pista,
     required this.rnd,
@@ -363,10 +380,26 @@ class TurismoEngine {
     this.traducoes = const {},
     this.esperaPalavra = false,
     this.semLimiteDeTempo = false,
+    this.fonte,
   }) : vocabulario = vocabulario == null || vocabulario.isEmpty ? null : vocabulario {
     segmentos = _gerarPista();
     portais = _gerarPortais();
   }
+
+  /// Quantos portais a pista [p] tem (o mesmo laço de [_gerarPortais]) — o tamanho do baralho da fase no
+  /// inglês: uma palavra digitada por portal (com duas saídas, a 2ª vem de fora do baralho:
+  /// [FonteDePalavras.proximaExtra]).
+  static int portaisDaPista(PistaGt p) {
+    var n = 0;
+    final intervalo = p.intervaloPortais;
+    for (var z = intervalo; z < p.distancia - 40; z += intervalo) {
+      n++;
+    }
+    return n;
+  }
+
+  /// Quantas palavras de portal a pista [p] mostra (duas por portal com [PistaGt.duasSaidas]).
+  static int vagasDePalavras(PistaGt p) => p.duasSaidas ? portaisDaPista(p) * 2 : portaisDaPista(p);
 
   /// A tradução de [palavra] (pela forma exata ou em minúsculas), ou null.
   String? traducao(String palavra) {
@@ -522,9 +555,21 @@ class TurismoEngine {
     if (porSetas) return;
     final p = portalAtual;
     if (p == null || p.livre) {
-      palavraGas ??= _sorteiaPalavra(_usadasGas);
+      if (palavraGas != null) return;
+      final f = fonte;
+      if (f == null) {
+        palavraGas = _sorteiaPalavra(_usadasGas);
+        return;
+      }
+      // a de combustível não adianta as do portal seguinte (a que acabou de sair só volta 3+ tiradas
+      // depois, pelo baralho)
+      final seguinte = p == null ? null : proximoPortal;
+      final c = f.proxima(evitar: seguinte == null ? const {} : seguinte.palavras.toSet());
+      palavraGas = c.palavra;
+      palavraGasRevisao = c.revisao;
     } else if (palavraGas != null && gasDigitadas == 0 && !esperaPalavra) {
       palavraGas = null;
+      palavraGasRevisao = false;
     }
   }
 
@@ -574,16 +619,29 @@ class TurismoEngine {
       final candidatas = [0, 1, 2]..remove(faixaAnterior);
       candidatas.shuffle(rnd);
       final faixas = pista.duasSaidas ? [candidatas[0], candidatas[1]] : [candidatas[0]];
-      final palavras = [for (final _ in faixas) _sorteiaPalavra(usadas)];
-      // palavras de fora (inglês): as duas saídas nunca começam com a mesma letra — a 1ª tecla é
-      // que escolhe a faixa. (O vocabulário fixo do Dart segue o sorteio de sempre.)
-      if (vocabulario != null && palavras.length == 2) palavras[1] = _outraInicial(palavras[0], palavras[1], usadas);
+      final List<String> palavras;
+      var revisao = const <bool>[];
+      final f = fonte;
+      if (f != null) {
+        // o baralho da fase, na ordem (uma carta por portal); a 2ª saída vem de fora dele (nova ou "de
+        // novo") e nunca começa com a mesma letra
+        final c1 = f.proxima();
+        final c2 = faixas.length == 2 ? f.proximaExtra(outraInicialQue: c1.palavra) : null;
+        palavras = [c1.palavra, if (c2 != null) c2.palavra];
+        if (c1.revisao || (c2?.revisao ?? false)) revisao = [c1.revisao, if (c2 != null) c2.revisao];
+      } else {
+        palavras = [for (final _ in faixas) _sorteiaPalavra(usadas)];
+        // palavras de fora (inglês): as duas saídas nunca começam com a mesma letra — a 1ª tecla é
+        // que escolhe a faixa. (O vocabulário fixo do Dart segue o sorteio de sempre.)
+        if (vocabulario != null && palavras.length == 2) palavras[1] = _outraInicial(palavras[0], palavras[1], usadas);
+      }
       final fichas = vocabulario != null ? fichasIngles : fichasDart;
       lista.add(Portal(
         indice: (z / comprimentoSegmento).floor(),
         z: z,
         faixas: faixas,
         palavras: palavras,
+        revisao: revisao,
         carros: [
           for (var f = 0; f < 3; f++)
             if (!faixas.contains(f)) CarroTrafego(faixa: f, z: z + 2.6),
@@ -793,6 +851,7 @@ class TurismoEngine {
       _completou(gas.length, boostExtra: .06, forca: .6);
       _fechaPerda(gas, null);
       palavraGas = null;
+      palavraGasRevisao = false;
       gasDigitadas = 0;
       _atualizaAlvo();
       return TeclaGt.completou;

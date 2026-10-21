@@ -122,12 +122,15 @@ class _Teclado {
 }
 
 /// Rali: cada palavra da fila com 2 teclas erradas antes, até a fase acabar (a CPU não anda sem o
-/// relógio correr). Devolve as palavras digitadas.
-Future<List<String>> _faseComTropecos(WidgetTester tester, List<String> fila) async {
+/// relógio correr). Sem [fila], lê a palavra da vez na tela (Key('rali-alvo') — no inglês o baralho da
+/// fase pode trazer as teimosas do banco). Devolve as palavras digitadas.
+Future<List<String>> _faseComTropecos(WidgetTester tester, [List<String>? fila]) async {
   final teclado = _Teclado();
   final feitas = <String>[];
   for (var i = 0; i < 24 && find.text('FASE 1 CONCLUÍDA!').evaluate().isEmpty; i++) {
-    final w = fila[i % fila.length];
+    final w = fila != null
+        ? fila[i % fila.length]
+        : tester.widget<Text>(find.byKey(const Key('rali-alvo'))).textSpan!.toPlainText();
     await teclado.digitar(tester, '##$w');
     feitas.add(w);
   }
@@ -149,7 +152,6 @@ void main() {
     final (curso, cubit) = await _providers(tester);
     _semearTeimosas(cubit);
     expect(cubit.quantasTeimosas, 3);
-    final v = cubit.vocabularioJogo(curso.state)!;
 
     await tester.pumpWidget(_app(const RaliPage(semente: 3), curso: curso, palavras: cubit));
     await tester.pump();
@@ -157,11 +159,12 @@ void main() {
     await tester.pump();
     await _largada(tester);
 
-    final feitas = await _faseComTropecos(tester, BancoArcade.baralhoDoVocabulario(v, Random(3)));
+    final feitas = await _faseComTropecos(tester);
     expect(find.text('FASE 1 CONCLUÍDA!'), findsOneWidget);
     expect(find.byKey(const Key('rali-teimosas')), findsOneWidget);
     expect(find.text('🔥 Essas palavras escaparam nesta partida'), findsOneWidget);
-    final treinavel = feitas.firstWhere((w) => cubit.chaveDeTreino(w) != null);
+    // todas escaparam igual (2 erros cada): o painel mostra as 6 primeiras em ordem alfabética
+    final treinavel = ([...feitas.where((w) => cubit.chaveDeTreino(w) != null)]..sort()).first;
     expect(find.descendant(of: find.byKey(const Key('rali-teimosas')), matching: find.text(treinavel)), findsOneWidget);
     expect(cubit.state.banco.sugestao.mostradasHoje, 1, reason: 'a oferta conta como mostrada');
     expect(tester.takeException(), isNull);

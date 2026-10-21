@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
 import '../../../core/ui/festa.dart';
+import '../domain/baralho_fases.dart';
 import '../domain/corrida_engine.dart';
 import '../domain/dicas_dart.dart';
 import '../domain/digitar_palavra.dart';
@@ -25,6 +26,7 @@ import 'widgets/legenda_traducao.dart';
 import 'widgets/campanha.dart';
 import 'widgets/campo_teclas.dart';
 import 'widgets/cenario.dart';
+import 'widgets/linha_fase.dart';
 import 'widgets/painel_tropecos.dart';
 
 /// Passo da CPU no Rali. No Dart e no C# é o de sempre: acelera 8% por fase, com piso de 1,8 s. No inglês
@@ -81,6 +83,16 @@ class _RaliPageState extends State<RaliPage>
   PalavrasCubit? _palavrasCubit;
   final _placar = PlacarPalavras();
 
+  /// Inglês: o baralho da partida (cada fase traz palavras novas, mais delas, e as que escaparam ou
+  /// demoraram voltam 🔁), o da partida anterior (o "de novo" começa pelas pendentes dela), o baralho da
+  /// fase aberta, a linha dele na largada e o cronômetro da palavra da vez (da 1ª tecla certa ao fim, sem
+  /// as pausas). No Dart e no C#, tudo null/parado.
+  BaralhoFases? _baralho;
+  BaralhoFases? _anterior;
+  DeckFase? _deck;
+  String _linhaFase = '';
+  final _crono = CronometroPalavra();
+
   /// Inglês (teimosas): os tropeços da partida (fora do modo memória, que já vira revisão), a oferta entre
   /// as fases (as palavras do painel) e a do fim de jogo — no máximo uma por partida. [_feedbackFixo]: o
   /// aviso "escapou 2x" fica na linha de feedback até a próxima palavra completa.
@@ -103,6 +115,7 @@ class _RaliPageState extends State<RaliPage>
 
   void _carregarPalavra(String w) {
     _palavra.carregar(w);
+    _crono.zerar();
     _errosLetra = 0;
     _reveladas.clear();
   }
@@ -201,10 +214,14 @@ class _RaliPageState extends State<RaliPage>
     _relogio?.cancel();
     _chamaTimer?.cancel();
     _cpuCtrlCriado?.dispose();
-    _placar.enviar(_palavrasCubit, fonte: FonteErro.rali, tropecos: _tropecos);
+    _enviarPlacar();
     _enviarMemoria();
     super.dispose();
   }
+
+  /// O placar da partida pro banco (com as MUITO lentas, no inglês — cada uma uma vez por partida).
+  void _enviarPlacar() => _placar.enviar(_palavrasCubit,
+      fonte: FonteErro.rali, tropecos: _tropecos, lentas: _baralho?.tirarLentasParaBanco() ?? const {});
 
   // ---------- campanha ----------
 
@@ -223,6 +240,11 @@ class _RaliPageState extends State<RaliPage>
     setState(() {
       _dificuldade = d;
       _rnd = math.Random(widget.semente);
+      // inglês: baralho novo a cada partida (o da anterior passa as pendentes dele pro novo)
+      _anterior = _baralho ?? _anterior;
+      _baralho = null;
+      _deck = null;
+      _crono.zerar();
       zerarCampanha();
       _palavrasRun = 0;
       _turbosRun = 0;
@@ -242,15 +264,36 @@ class _RaliPageState extends State<RaliPage>
     _cpuCtrl.stop();
     _relogio?.cancel();
     setState(() {
-      _engine = CorridaEngine(pista: 12, dificuldade: _dificuldade!);
       // fase 3 em diante entram as palavras compridas (StatelessWidget…)
       final vocab = _vocab = BancoArcade.soDigitacao ? BancoArcade.vocabulario(context) : null;
-      _fila = BancoArcade.baralhoRali(context, _rnd, comLongas: fase >= 3, vocab: vocab);
-      if (_memoria && vocab != null) {
-        // de memória só vale palavra que tem tradução para mostrar
-        final comTraducao = [for (final w in _fila) if (vocab.traducao(w) != null) w];
-        if (comTraducao.isNotEmpty) _fila = comTraducao;
+      if (vocab == null) {
+        _deck = null;
+        _fila = BancoArcade.baralhoRali(context, _rnd, comLongas: fase >= 3);
+      } else {
+        // inglês: o baralho da fase — palavras novas (e mais a cada fase) e as que escaparam ou demoraram
+        // voltando 🔁. O baralho da partida nasce aqui, antes de qualquer outro uso do _rnd (a fase 1 sai
+        // igual ao embaralhado de sempre). O vocabulário é relido a cada fase: o foco novo entra.
+        final b = _baralho ??= BaralhoFases(rnd: _rnd, dificeis: [
+          ...?_anterior?.pendentes(),
+          ...BancoArcade.dificeisDoBanco(_palavrasCubit, vocab),
+        ]);
+        _anterior = null;
+        final d = _deck = b.abrirFase(
+          fase: fase,
+          pool: BaralhoFases.poolRali(vocab, comLongas: fase >= 3),
+          tamanho: BaralhoFases.tamanhoRali(fase),
+          // turbo anda 2 casas: as revisões vêm no trecho que a pessoa digita mesmo ('até 14 palavras')
+          alcance: BaralhoFases.alcanceRali(fase),
+          foco: vocab.foco,
+          // de memória só vale palavra que tem tradução para mostrar
+          aceita: _memoria ? (w) => vocab.traducao(w) != null : null,
+        );
+        _fila = d.palavras;
+        _linhaFase = 'Fase $fase · ${d.resumo()}';
       }
+      // inglês: a pista tem o tamanho do baralho (nunca faltam palavras); Dart/C#: 12 de sempre
+      _engine = CorridaEngine(
+          pista: _deck != null ? BaralhoFases.tamanhoRali(fase) : 12, dificuldade: _dificuldade!);
       _idx = 0;
       _carregarPalavra(_fila[0]);
       _ultimoErrou = false;
@@ -294,6 +337,7 @@ class _RaliPageState extends State<RaliPage>
   @override
   void aoPausar() {
     _cpuCtrl.stop();
+    _crono.pausar();
     _pausaDesde = DateTime.now();
     _voz.calar();
   }
@@ -303,6 +347,7 @@ class _RaliPageState extends State<RaliPage>
     final desde = _pausaDesde;
     if (desde != null) _pausas += DateTime.now().difference(desde);
     _pausaDesde = null;
+    _crono.retomar();
     if (_engine == null || acabou || faseVencida) return;
     _cpuCtrl.forward();
     // a pausa cortou (ou impediu — aba escondida na largada) a palavra da vez: se ainda não começou,
@@ -396,7 +441,8 @@ class _RaliPageState extends State<RaliPage>
     _cpuCtrl.stop();
     _relogio?.cancel();
     _voz.calar();
-    _placar.enviar(_palavrasCubit, fonte: FonteErro.rali, tropecos: _tropecos);
+    _crono.zerar();
+    _enviarPlacar();
     _enviarMemoria();
     _oferecerFim();
     if (somaFaseAtual) _acumula(_engine!);
@@ -430,6 +476,9 @@ class _RaliPageState extends State<RaliPage>
       });
       return;
     }
+    // inglês: o relógio da palavra começa na 1ª tecla certa (a contagem e as pausas ficam de fora)
+    final b = _baralho;
+    if (b != null && _palavra.idx == 1) _crono.iniciar();
     String? completou;
     setState(() {
       _charsCertos++;
@@ -439,6 +488,9 @@ class _RaliPageState extends State<RaliPage>
       if (_palavra.completa) {
         completou = _palavra.alvo;
         final perfeita = _palavra.errosPalavra == 0;
+        // inglês: o que aconteceu com a palavra (erros — de memória, as letras reveladas contam — e o
+        // tempo por letra) monta as próximas fases
+        b?.registrar(_palavra.alvo, erros: _palavra.errosPalavra, msPorLetra: _crono.msPorLetra(_palavra.alvo));
         if (_palavrasCubit != null && !_memoria) _placar.viu(_palavra.alvo);
         final aviso = _memoria ? null : _tropecouNaPalavra();
         if (_memoria) _lembrou(_palavra.alvo, _palavra.errosPalavra, revelou: _reveladas.isNotEmpty);
@@ -536,7 +588,9 @@ class _RaliPageState extends State<RaliPage>
                           'sem nenhum erro é TURBO (anda 2). O medidor sob a CPU mostra '
                           'quando ela vai andar. Venceu? Vem outra fase com cenário novo e '
                           'CPU mais rápida — e os pontos vão somando até a CPU te pegar. '
-                          'Palavras compridas entram na fase 3! Esc pausa.',
+                          'Palavras compridas entram na fase 3! Esc pausa.'
+                          '${BancoArcade.soDigitacao ? '\n\nCada fase traz palavras novas e mais palavras; as que você '
+                              'errar ou demorar voltam pra revisão 🔁.' : ''}',
                           style: Mixart.ui(size: 13, color: Mixart.text).copyWith(height: 1.5),
                         ),
                       ),
@@ -581,6 +635,8 @@ class _RaliPageState extends State<RaliPage>
                     onFim: _largada,
                     legenda: '${emojiDaFase(fase)} FASE $fase · ${nomeDaFase(fase)} — dedos a postos',
                   ),
+                // inglês: o que a fase traz ('Fase 2 · 14 palavras · 9 novas · 5 pra revisar 🔁')
+                if (_contagem && _deck != null) LinhaFase.naContagem(_linhaFase),
                 if (pausado)
                   PausaOverlay(
                       onContinuar: retomar, onSair: () => Navigator.of(context).pop(), extra: _anotadas()),
@@ -590,9 +646,13 @@ class _RaliPageState extends State<RaliPage>
                     pontosFase: comFator(pontosDoMotor),
                     pontosTotal: pontosTotal,
                     dica: dicaDaFase(fase),
-                    aviso: fase + 1 == 3
-                        ? 'a CPU acelera e entram as palavras COMPRIDAS!'
-                        : 'a CPU fica ainda mais rápida!',
+                    aviso: _deck != null
+                        ? (fase + 1 == 3
+                            ? 'entram as palavras COMPRIDAS — e as que escaparam voltam 🔁'
+                            : 'vêm palavras novas (e mais delas) — as que escaparam voltam 🔁')
+                        : fase + 1 == 3
+                            ? 'a CPU acelera e entram as palavras COMPRIDAS!'
+                            : 'a CPU fica ainda mais rápida!',
                     onProxima: _proximaFase,
                     onParar: () => _fimDeJogo(somaFaseAtual: false),
                     extra: _painelFase(),
@@ -699,9 +759,7 @@ class _RaliPageState extends State<RaliPage>
     final alvo = _palavra.alvo;
     final idx = _palavra.idx;
     final ambar = escurecer(CoresFesta.ambar, quanto: .2, soNoClaro: true);
-    final proximas = [
-      for (var k = 1; k <= 2; k++) _fila[(_idx + k) % _fila.length],
-    ];
+    final proximas = _proximas();
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 22),
       alignment: Alignment.center,
@@ -712,9 +770,7 @@ class _RaliPageState extends State<RaliPage>
         borderRadius: BorderRadius.circular(Mixart.radiusLg),
       ),
       child: Column(children: [
-        Text('PALAVRA ${_idx + 1} · 🧠 DE MEMÓRIA',
-            style: Mixart.ui(size: 10, weight: FontWeight.w700, color: Mixart.textFaint)
-                .copyWith(letterSpacing: 2)),
+        _cabecalhoCartao('PALAVRA ${_idx + 1} · 🧠 DE MEMÓRIA'),
         const SizedBox(height: 10),
         Text(_traducao(alvo) ?? '',
             key: const Key('rali-memoria-pt'),
@@ -746,11 +802,22 @@ class _RaliPageState extends State<RaliPage>
             style: Mixart.mono(size: 26).copyWith(letterSpacing: 6, height: 1.2),
           ),
         ),
-        const SizedBox(height: 12),
-        Text('a seguir: ${proximas.map((p) => _traducao(p) ?? '…').join('  ·  ')}',
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: Mixart.ui(size: 11, color: Mixart.textFaint)),
+        if (proximas.isNotEmpty) ...[
+          const SizedBox(height: 12),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text('a seguir: ', style: Mixart.ui(size: 11, color: Mixart.textFaint)),
+            for (var k = 0; k < proximas.length; k++) ...[
+              if (k > 0) Text('  ·  ', style: Mixart.ui(size: 11, color: Mixart.textFaint)),
+              if (_ehRevisao(_idx + 1 + k)) const MarcaRevisao(tamanho: 10),
+              Flexible(
+                child: Text(_traducao(proximas[k]) ?? '…',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Mixart.ui(size: 11, color: Mixart.textFaint)),
+              ),
+            ],
+          ]),
+        ],
       ]),
     );
   }
@@ -759,9 +826,7 @@ class _RaliPageState extends State<RaliPage>
     if (_memoria && _vocab != null) return _cartaoMemoria();
     final alvo = _palavra.alvo;
     final idx = _palavra.idx;
-    final proximas = [
-      for (var k = 1; k <= 2; k++) _fila[(_idx + k) % _fila.length],
-    ];
+    final proximas = _proximas();
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 22),
       alignment: Alignment.center,
@@ -772,11 +837,10 @@ class _RaliPageState extends State<RaliPage>
         borderRadius: BorderRadius.circular(Mixart.radiusLg),
       ),
       child: Column(children: [
-        Text('PALAVRA ${_idx + 1}',
-            style: Mixart.ui(size: 10, weight: FontWeight.w700, color: Mixart.textFaint)
-                .copyWith(letterSpacing: 2)),
+        _cabecalhoCartao('PALAVRA ${_idx + 1}'),
         const SizedBox(height: 10),
         Text.rich(
+          key: const Key('rali-alvo'),
           TextSpan(children: [
             TextSpan(
               text: alvo.substring(0, idx),
@@ -810,12 +874,15 @@ class _RaliPageState extends State<RaliPage>
                 Text('  ·  ', style: Mixart.ui(size: 11, color: Mixart.textFaint)),
             ],
           ])
-        else
-          // inglês: cada próxima palavra com a tradução embaixo
+        else if (proximas.isNotEmpty)
+          // inglês: cada próxima palavra com a tradução embaixo (e o 🔁 na frente das que voltam pra revisar);
+          // só as que faltam no baralho da fase — no fim dele, nada
           Row(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text('a seguir: ', style: Mixart.ui(size: 11, color: Mixart.textFaint).copyWith(height: 1.45)),
             for (var k = 0; k < proximas.length; k++) ...[
               if (k > 0) Text('  ·  ', style: Mixart.ui(size: 11, color: Mixart.textFaint).copyWith(height: 1.45)),
+              if (_ehRevisao(_idx + 1 + k))
+                const Padding(padding: EdgeInsets.only(top: 2, right: 3), child: MarcaRevisao(tamanho: 10)),
               Flexible(
                 child: Column(mainAxisSize: MainAxisSize.min, children: [
                   Text(proximas[k],
@@ -829,6 +896,32 @@ class _RaliPageState extends State<RaliPage>
           ]),
       ]),
     );
+  }
+
+  /// As 2 próximas da fila. No Dart/C# dá a volta na fila (como sempre); no inglês, só as que faltam no
+  /// baralho da fase (sem voltar ao começo).
+  List<String> _proximas() {
+    final n = _fila.length;
+    if (_deck == null) return [for (var k = 1; k <= 2; k++) _fila[(_idx + k) % n]];
+    return [for (var k = 1; k <= 2; k++) if (_idx + k < n) _fila[_idx + k]];
+  }
+
+  /// A carta [i] do baralho da fase volta pra revisar 🔁 (só no inglês).
+  bool _ehRevisao(int i) {
+    final d = _deck;
+    return d != null && d.cartas[i % d.cartas.length].revisao;
+  }
+
+  /// 'PALAVRA 3' (e o '🔁 REVISÃO' ao lado quando a palavra da vez volta pra revisar).
+  Widget _cabecalhoCartao(String texto) {
+    final t = Text(texto,
+        style: Mixart.ui(size: 10, weight: FontWeight.w700, color: Mixart.textFaint).copyWith(letterSpacing: 2));
+    if (!_ehRevisao(_idx)) return t;
+    return Row(mainAxisSize: MainAxisSize.min, children: [
+      Flexible(child: t),
+      const SizedBox(width: 6),
+      const MarcaRevisao(key: Key('rali-revisao'), rotulo: 'REVISÃO'),
+    ]);
   }
 
   /// A tradução de [palavra] (só no inglês).

@@ -1896,3 +1896,39 @@ diálogo de saída; teclado; ids fantasma), `arcade_rali_intervalo`. `flutter an
 `arcade_voz_ui_test` (regras de cada jogo, chip salvo/religado, pausa corta, retomar repete, Dart mudo, semântica, 360 px).
 `flutter analyze lib test`: sem avisos. 1 `flutter build web` (`build/web`, `privacidade.html`/`excluir-conta.html`
 removidos); `build/web/turismo3d/turismo3d.js` idêntico ao `web/` (tem `abaixarMusica`).
+
+## 🔁 20/out/2026 (rodada 5): baralho por fase — palavras novas a cada fase, erradas/lentas voltam (FEITO; sem commit/deploy)
+
+- **Pedido:** cada fase com palavras diferentes, quantidade crescendo, e repetir de propósito as que o jogador errou ou
+  demorou. **Só no modo inglês** (`BancoArcade.soDigitacao`/`Linguagem.ingles`); Dart e C# idênticos ao HEAD 4b6b5fb.
+- **Núcleo novo** `lib/features/arcade/domain/baralho_fases.dart`: `BaralhoFases` (implementa `FonteDePalavras`),
+  `DeckFase`/`CartaFase`/`OrigemCarta` (nova, deNovo, foco, errou, lenta, dificil), `CronometroPalavra`.
+  - Rodízio: só palavra ainda não vista no jogo; repete (a menos recente primeiro) só depois de ver o pool todo.
+  - Revisão ≈35% da fase (mín. 1, máx. metade), nunca a 1ª carta, nunca duas seguidas. Ordem: perdeu > errou > lenta >
+    difícil do banco (teimosas, depois fracas; ≤2 por fase, via `BancoArcade.dificeisDoBanco`).
+  - Lenta = ms/letra > 1,6× a mediana do jogador (precisa de 8 amostras; pausa e 3-2-1 não contam). Muito lenta (>2×, 2 vezes)
+    vai pro banco no fim (`PlacarPalavras.enviar(lentas:)`, falha 0,2 — lentidão sozinha não vira teimosa).
+  - Palavra com ≥2 erros volta 3–5 palavras depois na mesma fase (máx. 2 por fase; não no Rali).
+  - Extras: `emJogo` (Chuva: o que ainda cai não volta como "nova"), `alcance` (Rali: revisões dentro das ~2/3 cartas que
+    o jogador digita de fato), `proximaExtra` (Turismo: 2ª saída fora do baralho), `devolver` (desviar do 🔁 não o libera).
+  - Bug web corrigido: o "deNovo" usava um valor inicial que vira 0 em JS e travava em 2 palavras; conferido com `dart compile js`.
+- **Rali:** fase N = `tamanhoRali` 12, 14, 16… até 20 (pista cresce junto); revisões espalhadas no alcance
+  (8, 10, 11… até 14). Linha no 3-2-1: "Fase 2 · até 14 palavras · 10 novas · 4 pra revisar 🔁"; "🔁 REVISÃO" ao lado de
+  PALAVRA n e no "a seguir" (que agora para no fim da fase). "Jogar de novo" traz as pendentes da partida anterior. Memória
+  usa o mesmo baralho (só palavras com tradução).
+- **Chuva:** nível N = `tamanhoChuva` 8, 10, 12… até 16 palavras; 🔁 no chip da gota. Volta quem caiu (em até ~6 palavras),
+  quem levou ≥2 erros ou foi lenta. Velocidade/spawn continuam subindo a cada 8 destruídas como no Dart
+  (`TiroEngine.nivelDoRitmo`). Rodapé em inglês explica o 🔁. Gancho de teste `ChuvaPage.relogioDeTeste`.
+- **Turismo:** cada corrida = 1 fase, 1 carta por portal (`TurismoEngine.portaisDaPista`); pistas maiores = mais palavras.
+  Erradas/lentas da corrida anterior voltam cedo (portal 2, depois alternado). Na corrida, ≥2 erros = volta como gasolina
+  3–5 depois, "🔁 REVISÃO". Linha: "Pista 2 · 49 palavras · 48 novas · 1 pra revisar 🔁". Correção à parte: card do carro na
+  garagem estourava em 360 px (`Flexible`).
+- **Widgets:** `widgets/linha_fase.dart` (`LinhaFase` `Key('fase-intro')`, `MarcaRevisao` 🔁 com semântica "revisão").
+  Keys novas: `rali-alvo`, `rali-revisao`, `turismo-palavra-0`, `turismo-gas`.
+- **Não provado em navegador real:** a progressão jogada de ponta a ponta (só testes de widget + check JS do núcleo).
+
+**Testes:** suíte inteira em 20/out (rodada 5): **1.781 testes, 1.776 passam, 5 falham** (as 5 de sempre do
+`csharp_curriculo_test`); 123 arquivos. Novos: `arcade_baralho_fases` (núcleo + glue do banco + widgets),
+`rali_fases_ingles`, `chuva_fases_ingles`, `turismo_fases_ingles`; ajustados blocos de inglês em `arcade_ingles_ui`,
+`arcade_voz_ui`, `arcade_teimosas_ui`. `flutter analyze lib test`: sem avisos. 1 `flutter build web` (`build/web`,
+`privacidade.html`/`excluir-conta.html` removidos).

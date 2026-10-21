@@ -10,6 +10,7 @@ import '../../ingles/domain/erros_palavra.dart';
 import '../../ingles/presentation/palavras_cubit.dart';
 import '../domain/banco_curriculo.dart';
 import '../domain/banco_desafios.dart';
+import '../domain/baralho_fases.dart';
 import '../domain/desafio.dart';
 import '../domain/palavras_csharp.dart';
 import '../domain/palavras_ingles.dart';
@@ -133,6 +134,35 @@ class BancoArcade {
     return r;
   }
 
+  /// As palavras do vocabulário [v] (como se escrevem nele) que o banco acha difíceis — as teimosas de
+  /// hoje primeiro, depois as fracas —, no máximo [max], sem duas da mesma chave. É o `dificeis` do
+  /// [BaralhoFases] (um par delas entra na 1ª fase pra revisar 🔁). Sem [cubit], nada. Chame uma vez por
+  /// partida/corrida (passa pelo vocabulário inteiro), nunca por quadro.
+  static List<String> dificeisDoBanco(PalavrasCubit? cubit, VocabularioJogo v, {int max = 6}) {
+    if (cubit == null || max <= 0) return const [];
+    final rank = <String, int>{};
+    for (final p in cubit.teimosas()) {
+      rank.putIfAbsent(p.chave.toLowerCase(), () => rank.length);
+    }
+    for (final p in cubit.state.banco.fracas(cubit.state.hoje)) {
+      rank.putIfAbsent(p.chave.toLowerCase(), () => rank.length);
+    }
+    if (rank.isEmpty) return const [];
+    final achadas = <(String, int)>[];
+    final chaves = <String>{};
+    final vistas = <String>{};
+    for (final w in v.todas) {
+      if (!vistas.add(w)) continue;
+      final baixa = w.toLowerCase();
+      final k = rank.containsKey(baixa) ? baixa : cubit.chaveDeTreino(w);
+      final r = k == null ? null : rank[k];
+      if (r == null || !chaves.add(k!)) continue;
+      achadas.add((w, r));
+    }
+    achadas.sort((a, b) => a.$2.compareTo(b.$2));
+    return [for (final a in achadas.take(max)) a.$1];
+  }
+
   /// '📝 Anotadas nesta partida: through ×2 · enough ×1' (até 5), ou null sem nada anotado.
   static String? linhaAnotadas(TropecosDoJogo? t) {
     if (t == null) return null;
@@ -170,15 +200,26 @@ class PlacarPalavras {
   }
 
   /// Entrega o que juntou ao [cubit] (nada quando vazio ou sem cubit). Com [tropecos], a falha de cada
-  /// palavra da partida vai junto (0 para as que não tropeçaram), com o peso de [fonte].
-  void enviar(PalavrasCubit? cubit, {FonteErro fonte = FonteErro.chuva, TropecosDoJogo? tropecos}) {
+  /// palavra da partida vai junto (0 para as que não tropeçaram), com o peso de [fonte]. [lentas] (as
+  /// MUITO lentas da partida, [BaralhoFases.tirarLentasParaBanco]): falha de pelo menos
+  /// [BaralhoFases.falhaLenta] — menos que um erro; sozinha nunca faz uma teimosa nem cria palavra no banco.
+  void enviar(PalavrasCubit? cubit,
+      {FonteErro fonte = FonteErro.chuva, TropecosDoJogo? tropecos, Set<String> lentas = const {}}) {
     if (cubit == null || _stats.isEmpty) return;
     final stats = tirar();
-    if (tropecos == null) {
+    if (tropecos == null && lentas.isEmpty) {
       cubit.registrarJogo(stats, fonte: fonte);
       return;
     }
-    final f = tropecos.falhas;
-    cubit.registrarJogo(stats, fonte: fonte, falhas: {for (final w in stats.keys) w: f[w] ?? 0});
+    final f = tropecos?.falhas;
+    double base(String w) {
+      if (f != null) return f[w] ?? 0;
+      final erros = stats[w]!.$2;
+      return min(1.0, (erros < 0 ? 0 : erros) / 2);
+    }
+
+    cubit.registrarJogo(stats, fonte: fonte, falhas: {
+      for (final w in stats.keys) w: max(base(w), lentas.contains(w) ? BaralhoFases.falhaLenta : 0.0),
+    });
   }
 }

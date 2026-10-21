@@ -126,8 +126,12 @@ void main() {
     await _largada(tester);
     await tester.pump(const Duration(milliseconds: 60));
 
-    final replica = TiroEngine(rnd: Random(5), curtas: v.curtas, medias: v.medias, longas: v.longas)..tick(0.06);
-    final caindo = replica.ativas.first.texto;
+    // a palavra que caiu, lida da tela (no inglês ela sai do baralho do nível, não do sorteio antigo)
+    final todas = v.todas.toSet();
+    final caindo = [
+      for (final e in find.byWidgetPredicate((w) => w is RichText && todas.contains(w.text.toPlainText())).evaluate())
+        (e.widget as RichText).text.toPlainText(),
+    ].single;
     expect(_lesson, contains(caindo));
     expect(_rich(caindo), findsOneWidget);
     expect(find.text(v.traducao(caindo)!), findsOneWidget);
@@ -344,9 +348,13 @@ void main() {
     await _largada(tester);
     await tester.pump(const Duration(milliseconds: 40));
 
-    final p = pistasGt[0];
-    final replica = TurismoEngine(pista: p, rnd: Random(3), vocabulario: p.vocabularioCom(v), traducoes: v.traducoes);
-    final palavra = replica.portais.first.palavras.first;
+    // a palavra sai do baralho da fase (as da pista, das lições): lida da tela
+    final palavra = tester
+        .widget<RichText>(
+            find.descendant(of: find.byKey(const Key('turismo-palavra-0')), matching: find.byType(RichText)))
+        .text
+        .toPlainText();
+    expect(pistasGt[0].vocabularioCom(v), contains(palavra));
     expect(_lesson, contains(palavra));
     expect(find.text(palavra, findRichText: true), findsWidgets);
     expect(find.text(v.traducao(palavra)!), findsOneWidget);
@@ -384,9 +392,13 @@ void main() {
     await tester.pump(const Duration(milliseconds: 2000));
     await _largada(tester);
     await tester.pump(const Duration(milliseconds: 60));
-    final replica = TiroEngine(rnd: Random(5), curtas: palavrasCurtasEn, medias: palavrasMediasEn, longas: palavrasLongasEn)
-      ..tick(0.06);
-    final caindo = replica.ativas.first.texto;
+    // a palavra que caiu, lida da tela (no inglês ela sai do baralho do nível)
+    final reserva = {...palavrasCurtasEn, ...palavrasMediasEn, ...palavrasLongasEn};
+    final caindo = [
+      for (final e in find.byWidgetPredicate((w) => w is RichText && reserva.contains(w.text.toPlainText())).evaluate())
+        (e.widget as RichText).text.toPlainText(),
+    ].single;
+    expect(palavrasCurtasEn, contains(caindo), reason: 'nível 1: as curtas');
     expect(_rich(caindo), findsOneWidget);
     expect(find.text(traducoesEn[caindo.toLowerCase()]!), findsOneWidget);
     await tester.pumpWidget(Container());

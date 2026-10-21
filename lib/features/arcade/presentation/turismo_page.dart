@@ -15,6 +15,7 @@ import '../../ingles/domain/teimosas.dart';
 import '../../ingles/presentation/acoes_teimosas.dart';
 import '../../ingles/presentation/palavras_cubit.dart';
 import '../../ranking/presentation/ranking_cubit.dart';
+import '../domain/baralho_fases.dart';
 import '../domain/personagem.dart';
 import '../domain/progresso_turismo.dart';
 import '../domain/tropecos.dart';
@@ -26,6 +27,7 @@ import 'widgets/campanha.dart';
 import 'widgets/campo_teclas.dart';
 import 'widgets/cenario.dart';
 import 'widgets/legenda_traducao.dart';
+import 'widgets/linha_fase.dart';
 import 'widgets/minimapa.dart';
 import 'widgets/painel_tropecos.dart';
 import 'widgets/tutorial_turismo.dart';
@@ -139,6 +141,24 @@ class _TurismoPageState extends State<TurismoPage>
   SugestaoTeimosas? _sug;
 
   static const _setas = ['⬅ ESQUERDA', '⬆ MEIO', '➡ DIREITA'];
+
+  /// As palavras na tela, pra quem precisa achá-las (testes): as dos portais e a de combustível.
+  static const _chavesPalavra = [Key('turismo-palavra-0'), Key('turismo-palavra-1')];
+  static const _chaveGas = Key('turismo-gas');
+
+  /// Inglês (digitando): o baralho por FASE do campeonato — cada corrida é uma fase, com palavras novas
+  /// (o vocabulário roda inteiro antes de alguma voltar) e as que você errou ou demorou mais voltando pra
+  /// revisar 🔁 logo no começo da próxima. Vive enquanto a página vive (corrida após corrida); null no Dart,
+  /// no C# e no modo setas. [_deck]: o da corrida na pista — a largada mostra o resumo dele
+  /// ('Pista 2 · 49 palavras · 32 novas · 17 pra revisar 🔁').
+  BaralhoFases? _baralho;
+  DeckFase? _deck;
+  int _corridasIngles = 0;
+
+  /// O tempo de cada palavra (da 1ª tecla certa à última, sem as pausas — a espera do freio automático e a
+  /// contagem ficam de fora sozinhas: ninguém digita nelas) e as teclas erradas até ela sair.
+  final _crono = CronometroPalavra();
+  int _errosNaPalavra = 0;
 
   /// 🔊 Inglês: a palavra falada quando a pessoa TRAVA nela — no portal (1ª letra certa) e na de
   /// combustível (idem), nunca quando aparece: a de combustível entra no instante em que o portal é
@@ -352,7 +372,8 @@ class _TurismoPageState extends State<TurismoPage>
 
   /// Saiu no meio: as palavras digitadas valem ponto mesmo assim.
   void _publicarParcial() {
-    _placar.enviar(_palavrasCubit, fonte: FonteErro.turismo, tropecos: _tropecos);
+    _placar.enviar(_palavrasCubit,
+        fonte: FonteErro.turismo, tropecos: _tropecos, lentas: _baralho?.tirarLentasParaBanco() ?? const {});
     final e = _engine;
     if (e == null || _pontuado || e.pontos <= 0) return;
     _pontuado = true;
@@ -364,10 +385,12 @@ class _TurismoPageState extends State<TurismoPage>
     Sons.motorParar();
     _desligarTicker();
     _voz.calar();
+    _crono.pausar();
   }
 
   @override
   void aoRetomar() {
+    _crono.retomar();
     if (_tela == _Tela.corrida && _engine != null && !_acabou && !_contagem) _ligarTicker(retomando: true);
   }
 
@@ -392,17 +415,38 @@ class _TurismoPageState extends State<TurismoPage>
     if (!mounted) return;
     // inglês: as palavras das lições (com a tradução); Dart/C#: o vocabulário fixo da pista
     final vocab = BancoArcade.soDigitacao ? BancoArcade.vocabulario(context) : null;
+    final pool = vocab == null ? null : p.vocabularioCom(vocab);
+    // inglês digitando: a corrida é a próxima fase do baralho (o tamanho = os portais da pista: uma palavra
+    // digitada por portal — com duas saídas, a 2ª vem de fora do baralho)
+    DeckFase? deck;
+    if (vocab != null && pool != null && pool.isNotEmpty && !_modoSetas) {
+      final b = _baralho ??= BaralhoFases(
+        rnd: math.Random(widget.semente),
+        dificeis: BancoArcade.dificeisDoBanco(_palavrasCubit, vocab),
+        reenfileirarNaFase: true,
+      );
+      deck = b.abrirFase(
+        fase: ++_corridasIngles,
+        pool: pool,
+        tamanho: math.max(1, TurismoEngine.portaisDaPista(p)),
+        foco: vocab.foco,
+      );
+    }
+    _crono.zerar();
+    _errosNaPalavra = 0;
     setState(() {
       _pista = p;
+      _deck = deck;
       _engine = TurismoEngine(
         pista: p,
         rnd: math.Random(widget.semente),
         modo: _modoSetas ? ModoControle.setas : ModoControle.digitacao,
-        vocabulario: vocab == null ? null : p.vocabularioCom(vocab),
+        vocabulario: pool,
         traducoes: vocab?.traducoes ?? const {},
         esperaPalavra: true,
         // inglês: sem "tempo esgotado" — quem está aprendendo termina a pista; o tempo vale a medalha
         semLimiteDeTempo: BancoArcade.soDigitacao,
+        fonte: deck == null ? null : _baralho,
       );
       _tracado = tracadoDaPista([for (final s in _engine!.segmentos) s.curva],
           comprimento: TurismoEngine.comprimentoSegmento);
@@ -453,6 +497,8 @@ class _TurismoPageState extends State<TurismoPage>
     _publicarParcial();
     Sons.motorParar();
     _voz.calar();
+    _crono.zerar();
+    _errosNaPalavra = 0;
     setState(() {
       _tela = _Tela.campeonato;
       _engine = null;
@@ -530,12 +576,14 @@ class _TurismoPageState extends State<TurismoPage>
     final e = _engine;
     if (e == null || _contagem || pausado || _acabou || ch.trim().isEmpty) return;
     final multAntes = e.multiplicador;
-    final gasAntes = e.portalParaDigitar == null ? e.palavraGas : null;
+    final portalAntes = e.portalParaDigitar;
+    final gasAntes = portalAntes == null ? e.palavraGas : null;
     final r = e.teclar(ch);
     if (r == TeclaGt.completou && gasAntes != null && _palavrasCubit != null) {
       _placar.viu(gasAntes);
       _tropecos?.vista(gasAntes);
     }
+    if (_baralho != null && e.fonte != null) _cronometrar(r, portalAntes, gasAntes);
     if (r == TeclaGt.completou || r == TeclaGt.errou) _drenarPerdas(e);
     if (_voz.ativa && (r == TeclaGt.avancou || r == TeclaGt.completou)) _falarAlvoNovo(e);
     setState(() {});
@@ -547,6 +595,33 @@ class _TurismoPageState extends State<TurismoPage>
         if (e.multiplicador > multAntes) Sons.toca(Som.combo);
       case TeclaGt.errou:
         Sons.toca(Som.erro);
+      case TeclaGt.nada:
+        break;
+    }
+  }
+
+  /// Inglês (baralho por fase): o relógio da palavra liga na 1ª tecla certa; cada tecla errada até ela sair
+  /// conta pra ela; ao completar, o baralho fica sabendo (erros e ms por letra) — a errada volta como
+  /// combustível ainda nesta corrida e, com a lenta, na frente da próxima. [portal]/[gas]: o alvo de antes
+  /// da tecla (a palavra completada é a de combustível, ou a que o portal marcou).
+  void _cronometrar(TeclaGt r, Portal? portal, String? gas) {
+    switch (r) {
+      case TeclaGt.avancou:
+        _crono.iniciar();
+      case TeclaGt.errou:
+        _errosNaPalavra++;
+      case TeclaGt.completou:
+        final w = gas ?? (portal != null && portal.digitado >= 0 ? portal.palavras[portal.digitado] : null);
+        // palavra de 1 letra: o relógio nem ligou (ms null)
+        final ms = _crono.msPorLetra(w ?? '');
+        if (w != null) _baralho?.registrar(w, erros: _errosNaPalavra, msPorLetra: ms);
+        _errosNaPalavra = 0;
+        // duas saídas: fugir da 🔁 pela outra faixa não livra a palavra — volta como combustível
+        if (gas == null && portal != null && portal.digitado >= 0) {
+          for (var i = 0; i < portal.palavras.length; i++) {
+            if (i != portal.digitado && portal.ehRevisao(i)) _baralho?.devolver(portal.palavras[i]);
+          }
+        }
       case TeclaGt.nada:
         break;
     }
@@ -601,9 +676,12 @@ class _TurismoPageState extends State<TurismoPage>
     _desligarTicker();
     Sons.motorParar();
     _voz.calar();
+    _crono.zerar();
+    _errosNaPalavra = 0;
     // inglês: os tropeços vão para o banco já (antes das esperas) e a oferta entra na tela de fim
     _drenarPerdas(e);
-    _placar.enviar(_palavrasCubit, fonte: FonteErro.turismo, tropecos: _tropecos);
+    _placar.enviar(_palavrasCubit,
+        fonte: FonteErro.turismo, tropecos: _tropecos, lentas: _baralho?.tirarLentasParaBanco() ?? const {});
     _oferecerTeimosas();
     setState(() {
       _acabou = true;
@@ -689,6 +767,9 @@ class _TurismoPageState extends State<TurismoPage>
                     legenda: '${emojiDaFase(_pista!.tema)} ${_pista!.nome} — '
                         '${_modoSetas ? 'segure ↑ pra acelerar' : 'digite pra acelerar'}',
                   ),
+                // inglês: o que esta fase traz (novas e as que voltam pra revisar 🔁)
+                if (!_tutorial && _contagem && _cenaPronta && _pista != null && _deck != null)
+                  LinhaFase.naContagem('Pista ${_pista!.numero} · ${_deck!.resumo()}'),
                 if (pausado) PausaOverlay(onContinuar: retomar, onSair: _voltarAoCampeonato, extra: _anotadas()),
                 if (_acabou && e != null && _pista != null) _fimDaCorrida(e, _pista!),
               ]),
@@ -728,7 +809,8 @@ class _TurismoPageState extends State<TurismoPage>
                     'chega, e encostar nele é batida. Toda tecla certa acelera; parar de digitar é ir '
                     'parando. Passe por cima das fichas (hi, yes, wow…) na faixa livre pra ganhar 🪙 '
                     'moedas, que compram os carros da garagem. Feche a pista no tempo pra liberar a '
-                    'próxima: 🥇 ouro, 🥈 prata ou 🥉 bronze. Esc pausa.'
+                    'próxima: 🥇 ouro, 🥈 prata ou 🥉 bronze. Cada corrida traz palavras novas (e mais '
+                    'delas a cada pista); as que você errar ou demorar voltam pra revisão 🔁. Esc pausa.'
                 :
             'Campeonato de ${pistasGt.length} pistas em 3D. Cada portal marca a faixa LIVRE '
             'com uma palavra: digite-a pra entrar na faixa e passar limpo — o tráfego das '
@@ -1002,13 +1084,16 @@ class _TurismoPageState extends State<TurismoPage>
             child: Row(mainAxisSize: MainAxisSize.min, children: [
               Text(escolhido ? '🏎️' : (meu ? '🚗' : '🔒'), style: const TextStyle(fontSize: 18)),
               const SizedBox(width: 8),
-              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text(c.nome, style: Mixart.display(size: 13)),
-                Text(
-                  meu ? c.apelido : '${c.apelido} · 🪙 ${c.preco} moedas${daPra ? ' — toque pra comprar' : ''}',
-                  style: Mixart.ui(size: 10.5, color: daPra && !meu ? Mixart.brand : Mixart.textMuted),
-                ),
-              ]),
+              // celular 360: o "🪙 420 moedas" quebra a linha em vez de vazar do cartão
+              Flexible(
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Text(c.nome, style: Mixart.display(size: 13)),
+                  Text(
+                    meu ? c.apelido : '${c.apelido} · 🪙 ${c.preco} moedas${daPra ? ' — toque pra comprar' : ''}',
+                    style: Mixart.ui(size: 10.5, color: daPra && !meu ? Mixart.brand : Mixart.textMuted),
+                  ),
+                ]),
+              ),
               if (escolhido) ...[
                 const SizedBox(width: 8),
                 Icon(Icons.check_circle, size: 16, color: Mixart.brand),
@@ -1305,6 +1390,7 @@ class _TurismoPageState extends State<TurismoPage>
         ? const SizedBox.shrink()
         : Row(mainAxisSize: MainAxisSize.min, children: [
             Text('  ·  a seguir: ', style: Mixart.ui(size: 11, color: Mixart.textFaint)),
+            if (proximo.ehRevisao(0)) ...[const MarcaRevisao(), const SizedBox(width: 4)],
             Text('${_setas[proximo.faixas.first].substring(0, 1)} ${proximo.palavras.first}',
                 style: Mixart.mono(size: 12, color: Mixart.textMuted)),
             if (e.traducao(proximo.palavras.first) != null)
@@ -1354,17 +1440,26 @@ class _TurismoPageState extends State<TurismoPage>
             ])
           // combustível: a faixa já está marcada, agora é só acelerar
           : Column(children: [
-              Text(
-                atual == null
-                    ? '🏁 RETA FINAL · ⛽ COMBUSTÍVEL'
-                    : atual.digitado >= 0
-                        ? '✓ ${_setas[atual.faixas[atual.digitado]]} marcada · ⛽ COMBUSTÍVEL'
-                        // combustível pela metade antes da palavra do portal: nada
-                        // marcado ainda (dart2js devolvia "undefined" no índice -1)
-                        : '⛽ COMBUSTÍVEL · termine a palavra, depois vem a do portal',
-                style: Mixart.ui(size: 10, weight: FontWeight.w800, color: const Color(0xFF57C765))
-                    .copyWith(letterSpacing: 2),
-              ),
+              Row(mainAxisSize: MainAxisSize.min, children: [
+                Flexible(
+                  child: Text(
+                    atual == null
+                        ? '🏁 RETA FINAL · ⛽ COMBUSTÍVEL'
+                        : atual.digitado >= 0
+                            ? '✓ ${_setas[atual.faixas[atual.digitado]]} marcada · ⛽ COMBUSTÍVEL'
+                            // combustível pela metade antes da palavra do portal: nada
+                            // marcado ainda (dart2js devolvia "undefined" no índice -1)
+                            : '⛽ COMBUSTÍVEL · termine a palavra, depois vem a do portal',
+                    style: Mixart.ui(size: 10, weight: FontWeight.w800, color: const Color(0xFF57C765))
+                        .copyWith(letterSpacing: 2),
+                  ),
+                ),
+                // inglês: a que você errou volta como combustível pra revisar
+                if (gas != null && e.palavraGasRevisao) ...[
+                  const SizedBox(width: 6),
+                  const MarcaRevisao(rotulo: 'REVISÃO'),
+                ],
+              ]),
               const SizedBox(height: 6),
               if (gas != null) _palavraGas(e, gas),
               const SizedBox(height: 8),
@@ -1403,6 +1498,7 @@ class _TurismoPageState extends State<TurismoPage>
       label: 'digite: $gas',
       excludeSemantics: true,
       child: Text.rich(
+        key: _chaveGas,
         TextSpan(children: [
           TextSpan(text: gas.substring(0, idx), style: TextStyle(color: Mixart.brand, fontWeight: FontWeight.w700)),
           if (idx < gas.length)
@@ -1423,13 +1519,18 @@ class _TurismoPageState extends State<TurismoPage>
     return Opacity(
       opacity: ativa ? 1 : .35,
       child: Column(children: [
-        Text(_setas[p.faixas[i]],
-            style: Mixart.ui(size: 10, weight: FontWeight.w800, color: Mixart.brand).copyWith(letterSpacing: 2)),
+        Row(mainAxisSize: MainAxisSize.min, children: [
+          Text(_setas[p.faixas[i]],
+              style: Mixart.ui(size: 10, weight: FontWeight.w800, color: Mixart.brand).copyWith(letterSpacing: 2)),
+          // inglês: voltou pra revisar (errou ou demorou na corrida anterior)
+          if (p.ehRevisao(i)) ...[const SizedBox(width: 6), const MarcaRevisao()],
+        ]),
         const SizedBox(height: 6),
         Semantics(
           label: 'digite: $palavra',
           excludeSemantics: true,
           child: Text.rich(
+            key: i < _chavesPalavra.length ? _chavesPalavra[i] : null,
             TextSpan(children: [
               TextSpan(
                   text: palavra.substring(0, idx),
