@@ -2,6 +2,7 @@
 // já logado, progresso local, ranking em memória e um Prof. Dash que responde
 // na hora. Serve pra fotografar as telas (portfólio) sem credenciais.
 //   flutter build web -t lib/main_portfolio_probe.dart --output=build/probe_app
+import 'dart:convert';
 import 'dart:js_interop';
 import 'dart:js_interop_unsafe';
 
@@ -15,6 +16,7 @@ import 'features/habito/data/agendador_lembrete.dart';
 import 'features/habito/data/habito_repository.dart';
 import 'features/habito/domain/lembrete.dart';
 import 'features/ia/data/cota_repository.dart';
+import 'features/ia/presentation/conversa_page.dart';
 import 'features/ingles/data/audio_usuario_repository.dart';
 import 'features/ingles/data/palavras_repository.dart';
 import 'features/ingles/data/reconhecedor_fala.dart';
@@ -34,6 +36,8 @@ void main() {
   SessaoCartoesPage.fabricaReconhecedor = () => const _ReconhecedorFake();
   // lição de inglês (modo 🎤 Falar): o mesmo reconhecedor de mentira
   FraseView.fabricaReconhecedor = () => const _ReconhecedorFake();
+  // 💬 Conversa com IA (🎤 no campo): o mesmo reconhecedor de mentira
+  ConversaPage.fabricaReconhecedor = () => const _ReconhecedorFake();
   runApp(_app());
 }
 
@@ -179,15 +183,6 @@ class _TutorFake implements TutorService {
       }
       return;
     }
-    // cenários guiados: o feedback (um JSON) e as falas do Dash (em inglês, sem corrigir)
-    if (contexto.contains('MODO FEEDBACK DE CENÁRIO')) {
-      await Future<void>.delayed(const Duration(milliseconds: 300));
-      yield '```json\n{"foi_bem":["Você pediu com educação (please).","Respondeu rápido e sem travar."],'
-          '"correcoes":[{"sua":"I want a coffee.","melhor":"Can I have a coffee, please?","porque":"**I want** soa seco; **Can I have…?** é o jeito educado de pedir."}],'
-          '"frases":[{"en":"Can I have a coffee, please?","pt":"Posso pedir um café, por favor?"},'
-          '{"en":"For here, please.","pt":"Para tomar aqui, por favor."},{"en":"How much is it?","pt":"Quanto custa?"}]}\n```';
-      return;
-    }
     // escrita corrigida: um JSON com dois erros (as frases da pessoa vêm numeradas no contexto)
     if (contexto.contains('MODO CORREÇÃO DE ESCRITA')) {
       await Future<void>.delayed(const Duration(milliseconds: 300));
@@ -199,14 +194,38 @@ class _TutorFake implements TutorService {
           '"porque":"Mesma ideia: *buy* no passado é **bought**."}]}\n```';
       return;
     }
-    if (contexto.contains('MODO CENÁRIO')) {
-      final n = RegExp(r'Fala do aluno número (\d+)').firstMatch(contexto)?.group(1);
-      await Future<void>.delayed(const Duration(milliseconds: 250));
-      yield switch (n) {
-        '1' => 'Sure! What size would you like?',
-        '2' => 'Great. Would you like anything to eat with that?',
-        _ => "Perfect. That's four dollars. Have a nice day!",
+    // 💬 Conversa com IA: um turno em JSON (fala do personagem + correção do Prof. Dash). Este tutor não tem
+    // TutorJson, então vai pelo caminho "JSON no prompt" (o mesmo do Android/iOS). Linha com "want" → correção;
+    // senão "✅ Certinho!". Da 3ª fala em diante, fim: true (o resumo aparece sozinho).
+    if (contexto.contains('MODO CONVERSA COM IA')) {
+      final n = int.tryParse(RegExp(r'Fala do aluno número (\d+)').firstMatch(contexto)?.group(1) ?? '') ?? 1;
+      final aluno = RegExp(r'<<<ALUNO>>>([\s\S]*?)<<<FIM>>>').firstMatch(pergunta)?.group(1) ?? pergunta;
+      final (fala, traducao) = switch (n) {
+        1 => ('Sure! What size would you like?', 'Claro! Qual tamanho você quer?'),
+        2 => ('Great. Would you like anything to eat with that?', 'Ótimo. Quer algo para comer junto?'),
+        _ => ("Perfect. That's four dollars. Have a nice day!", 'Perfeito. São quatro dólares. Tenha um bom dia!'),
       };
+      await Future<void>.delayed(const Duration(milliseconds: 300));
+      yield jsonEncode({
+        'correcao': aluno.toLowerCase().contains('want')
+            ? {
+                'precisa': true,
+                'melhor': 'Can I have a coffee, please?',
+                'pt': 'Posso pedir um café, por favor?',
+                'porque': '*I want* soa **seco** num pedido; *Can I have* é o jeito educado.',
+                'dica': "Em pedidos, prefira Can I have / I'd like.",
+              }
+            : {'precisa': false},
+        'fala': fala,
+        'traducao': traducao,
+        'sugestoes': n == 1 ? ['Small, please.', 'A large one, please.'] : ['No, thanks.', 'Can I pay by card?'],
+        'palavras': n == 1
+            ? [
+                {'en': 'size', 'pt': 'tamanho'}
+              ]
+            : const [],
+        'fim': n >= 3,
+      });
       return;
     }
     // "Por quê?": a explicação de um erro (um pedido que começa com PEDIDO:)

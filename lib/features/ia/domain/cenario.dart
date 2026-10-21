@@ -1,20 +1,22 @@
 import 'package:equatable/equatable.dart';
 
-/// Um cenário de conversa: o Prof. Dash faz o outro papel (atendente, recrutador…) e a pessoa
-/// conversa em inglês, por texto. Dart puro; os dados vêm de `assets/ingles/cenarios.json`.
+/// Um cenário da "💬 Conversa com IA": um personagem do palco ([quem]/[nome]) faz o outro papel
+/// (atendente, recrutadora…) e a pessoa conversa em inglês, digitando ou falando; o Prof. Dash corrige
+/// cada fala dela. Dart puro; os dados vêm de `assets/ingles/cenarios.json`.
 class Cenario extends Equatable {
   final String id, titulo, emoji;
 
-  /// A etapa do curso (A1, A2, B1, B2, C1): decide o nível do inglês do Dash.
+  /// A etapa do curso (A1, A2, B1, B2, C1): agrupa a lista e mostra "acima do seu nível" (o nível da
+  /// conversa é o do aluno, não este).
   final String etapa;
 
-  /// Quem o Dash faz, em português ("atendente de uma cafeteria em Chicago").
+  /// O papel do personagem, em português ("atendente de uma cafeteria em Chicago").
   final String papel;
 
   /// O que a pessoa precisa conseguir, em português ("peça um café e pague").
   final String objetivo;
 
-  /// A 1ª fala do Dash (em inglês) e a tradução dela.
+  /// A 1ª fala do personagem (em inglês) e a tradução dela.
   final String abertura, aberturaPt;
 
   /// Frases úteis (em inglês) para quem travar.
@@ -22,6 +24,13 @@ class Cenario extends Equatable {
 
   /// Quantas falas da pessoa a conversa tem.
   final int maxTurnos;
+
+  /// O personagem do palco que faz o papel: id do elenco ('emma', 'dra-lee') ou um papel genérico
+  /// ('agente'); '' = sem rosto (🐦 Prof. Dash).
+  final String quem;
+
+  /// O nome na tela ('Emma'); '' → [nomeDoPersonagem] de [quem].
+  final String nome;
 
   const Cenario({
     required this.id,
@@ -34,7 +43,16 @@ class Cenario extends Equatable {
     this.aberturaPt = '',
     this.dicas = const [],
     this.maxTurnos = 6,
+    this.quem = '',
+    this.nome = '',
   });
+
+  /// [nome], senão [nomeDoPersonagem] de [quem], senão 'Prof. Dash'.
+  String get nomePersonagem {
+    if (nome.isNotEmpty) return nome;
+    final n = nomeDoPersonagem(quem);
+    return n.isEmpty ? 'Prof. Dash' : n;
+  }
 
   /// Nunca lança: cenário sem os campos essenciais é descartado (null).
   static Cenario? fromJson(Object? j) {
@@ -58,11 +76,23 @@ class Cenario extends Equatable {
             if (d is String && d.trim().isNotEmpty) d.trim(),
       ],
       maxTurnos: turnos is int && turnos >= 2 && turnos <= 12 ? turnos : 6,
+      quem: s('quem'),
+      nome: s('nome'),
     );
   }
 
   @override
-  List<Object?> get props => [id, titulo, emoji, etapa, papel, objetivo, abertura, aberturaPt, dicas, maxTurnos];
+  List<Object?> get props => [id, titulo, emoji, etapa, papel, objetivo, abertura, aberturaPt, dicas, maxTurnos, quem, nome];
+}
+
+/// 'dra-lee' → 'Dra. Lee'; 'agente' → 'Agente'; 'emma' → 'Emma'; '' → ''. (Cópia da regra privada
+/// `_nomeDeQuem` de traducao_card.dart.)
+String nomeDoPersonagem(String quem) {
+  if (quem.isEmpty) return '';
+  if (quem == 'voce') return 'Você';
+  if (quem == 'dra-lee') return 'Dra. Lee';
+  final limpo = quem.replaceAll('-', ' ');
+  return limpo[0].toUpperCase() + limpo.substring(1);
 }
 
 /// A lista de cenários do JSON (itens inválidos e ids repetidos são ignorados).

@@ -258,31 +258,40 @@ class PacDartApp extends StatelessWidget {
 
   /// A cota e o cache da IA também são da conta (valem nos 3 cursos): ficam ao lado do hábito.
   /// O "toque na palavra" do inglês tem cota e cache próprios ([IaPalavrasCubit]).
-  Widget _comIa(AppUser user, Widget filho) => MultiBlocProvider(
-        key: ValueKey('ia:${user.uid}'),
-        providers: [
-          BlocProvider<IaCubit>(
-            create: (_) => IaCubit(
-              service: tutorBuilder != null
-                  ? tutorBuilder!()
-                  : (kIsWeb ? GeminiTutorService() : FirebaseAiTutorService()),
-              cotaRepo: iaCotaBuilder?.call(user) ?? FirestoreCotaRepository(user.uid),
-              cache: iaCacheBuilder?.call(user) ?? CacheExplicacoesLocal(uid: user.uid),
-              agora: iaAgora,
-            ),
+  /// A janela de descanso do projeto (depois de um 429/503/401) é UMA só ([DescansoIa]), dividida pelos
+  /// dois: depois de um 429 na conversa, o toque na palavra também espera em vez de bater de novo.
+  Widget _comIa(AppUser user, Widget filho) {
+    final descanso = DescansoIa();
+    return MultiBlocProvider(
+      key: ValueKey('ia:${user.uid}'),
+      providers: [
+        BlocProvider<IaCubit>(
+          create: (_) => IaCubit(
+            service: tutorBuilder != null
+                ? tutorBuilder!()
+                : (kIsWeb ? GeminiTutorService() : FirebaseAiTutorService()),
+            cotaRepo: iaCotaBuilder?.call(user) ?? FirestoreCotaRepository(user.uid),
+            cache: iaCacheBuilder?.call(user) ?? CacheExplicacoesLocal(uid: user.uid),
+            agora: iaAgora,
+            descanso: descanso,
+            // 3 s entre falas da conversa só na produção (nos testes o tutor é falso e responde na hora)
+            intervaloMinimo: tutorBuilder == null ? const Duration(seconds: 3) : Duration.zero,
           ),
-          BlocProvider<IaPalavrasCubit>(
-            create: (_) => IaPalavrasCubit(
-              service: tutorBuilder != null
-                  ? tutorBuilder!()
-                  : (kIsWeb ? GeminiTutorService() : FirebaseAiTutorService()),
-              uid: user.uid,
-              agora: iaAgora,
-            ),
+        ),
+        BlocProvider<IaPalavrasCubit>(
+          create: (_) => IaPalavrasCubit(
+            service: tutorBuilder != null
+                ? tutorBuilder!()
+                : (kIsWeb ? GeminiTutorService() : FirebaseAiTutorService()),
+            uid: user.uid,
+            agora: iaAgora,
+            descanso: descanso,
           ),
-        ],
-        child: filho,
-      );
+        ),
+      ],
+      child: filho,
+    );
+  }
 
   /// Os blocs do curso de uma vertente. Trocar de conta OU de linguagem
   /// recria tudo (currículo, progresso, digitação).

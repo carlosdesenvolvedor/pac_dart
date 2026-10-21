@@ -315,6 +315,8 @@ void main() {
     expect(find.byKey(const Key('ia-falhou')), findsOneWidget);
     expect(_ia(tester).state.restantes, 30);
     tutor.erro = null;
+    // o 429 abriu a janela de descanso do projeto (20 s): o relógio do app passa dela
+    relogio.t = relogio.t.add(const Duration(seconds: 21));
     await tester.tap(find.byKey(const Key('por-que')));
     await _anda(tester, 6);
     expect(find.byKey(const Key('explicacao-ia')), findsOneWidget);

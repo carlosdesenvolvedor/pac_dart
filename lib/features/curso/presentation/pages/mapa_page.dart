@@ -1409,7 +1409,7 @@ class _CartaoOuvir extends StatelessWidget {
   }
 }
 
-/// Inglês: ensaiar conversas com o Prof. Dash (cenários guiados). Sem a IA na árvore, some.
+/// Inglês: "💬 Conversa com IA" (role-play com um personagem do palco; o Prof. Dash corrige cada fala). Sem a IA na árvore, some.
 class _CartaoConversar extends StatelessWidget {
   const _CartaoConversar();
 
@@ -1434,9 +1434,11 @@ class _CartaoConversar extends StatelessWidget {
             const SizedBox(width: 14),
             Expanded(
               child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text('Conversar com o Prof. Dash', style: Mixart.display(size: 16)),
+                Text('Conversa com IA', style: Mixart.display(size: 16)),
                 const SizedBox(height: 3),
-                Text('Ensaie um café, um check-in, uma entrevista… ele só corrige no fim e dá 3 frases para virar cartão.',
+                Text(
+                    'Converse com a Emma, o Mike… num café, num check-in, numa entrevista. '
+                    'Cada fala sua é corrigida na hora — digitando ou pelo microfone.',
                     style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4)),
               ]),
             ),

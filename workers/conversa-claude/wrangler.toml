@@ -1,0 +1,19 @@
+# Worker da "Conversa com IA" do Paclingo — veja LEIA-ME.md.
+name = "paclingo-conversa"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+
+# Valores públicos (NÃO coloque segredo aqui). Depois de mudar, rode `npx wrangler deploy`.
+# A chave da Anthropic é um segredo: `npx wrangler secret put ANTHROPIC_API_KEY`.
+[vars]
+MODELO = "claude-haiku-5-5"
+LIMITE_PESSOAL = "60"   # turnos por aluno por dia (UTC)
+LIMITE_GERAL = "450"    # turnos somados de todos os alunos por dia (UTC); o plano grátis do KV aguenta ~500 (2 gravações por turno). No Workers Paid dá para subir.
+
+# Contadores dos limites diários.
+# Crie o namespace com:  npx wrangler kv namespace create LIMITES
+# e cole o "id" que o comando imprimir no lugar do texto abaixo.
+# Se este bloco for removido, o Worker funciona SEM limites (e avisa no log).
+[[kv_namespaces]]
+binding = "LIMITES"
+id = "COLE_AQUI_O_ID_DO_KV_LIMITES"

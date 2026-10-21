@@ -1,6 +1,7 @@
 import 'package:firebase_ai/firebase_ai.dart';
 
 import '../../../core/linguagem/linguagem.dart';
+import 'falha_ia.dart';
 import 'tutor_service.dart';
 
 /// O Prof. Dash no app (Android e iOS): fala com o Gemini pelo Firebase AI Logic.
@@ -10,6 +11,9 @@ import 'tutor_service.dart';
 ///
 /// A versão web continua no [GeminiTutorService], que usa a chave restrita ao site.
 class FirebaseAiTutorService implements TutorService, TutorComPersona {
+  /// O mesmo limite longo do [GeminiTutorService.timeoutLongo] (chat do Dash, "Por quê?", Escrita).
+  static const timeout = Duration(seconds: 90);
+
   @override
   Stream<String> perguntar({
     required String contexto,
@@ -32,8 +36,14 @@ class FirebaseAiTutorService implements TutorService, TutorComPersona {
       generationConfig: GenerationConfig(temperature: 0.4, maxOutputTokens: 2048),
     );
     final prompt = GeminiTutorService.montarPrompt(contexto: contexto, historico: historico, pergunta: pergunta);
-    final resposta = await modelo.generateContent([Content.text(prompt)]);
-    final texto = resposta.text;
+    String? texto;
+    try {
+      final resposta = await modelo.generateContent([Content.text(prompt)]).timeout(timeout);
+      texto = resposta.text; // lança FirebaseAIException('…blocked…') quando a segurança barrou
+    } catch (e) {
+      // QuotaExceeded ("quota") → limite (limiteDiario com "PerDay"); "blocked" → recusada; tempo → semRede
+      throw FalhaIa.de(e);
+    }
     if (texto != null && texto.isNotEmpty) yield texto;
   }
 }

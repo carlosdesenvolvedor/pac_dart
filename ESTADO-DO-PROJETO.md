@@ -23,6 +23,7 @@ A **Fase 7 (modos de resposta nas lições do Inglês — barra ⌨️ Digitar �
 A **Fase 5 (escrita corrigida por IA, erros viram cartões) está implementada** — plano em `planejamento/FASE-5-ESCRITA-CORRIGIDA.md`, seção "📝 Escrita corrigida" abaixo.
 A **Fase 8 ("🎧 Ouvir": escutar as lições na ordem e setlists pessoais, com mini-player) está em implementação** (20/out/2026, a pedido do dono) — plano em `planejamento/FASE-8-OUVIR-PLAYLIST.md`, seção "🎧 Ouvir — Fase 8" abaixo.
 A **Fase 9 ("⚡ Treino do dia": uma sessão de ~10 min montada com o que o aluno já tem, nos 3 cursos) está implementada e validada pelo líder** (21/out/2026; sem commit/deploy) — plano em `planejamento/FASE-9-TREINO-DO-DIA.md`, seções "⚡ Treino do dia — Fase 9" e "⚡ 21/out/2026 (rodada 7): Treino do dia" abaixo.
+A **Fase 10 ("💬 Conversa com IA": role-play em inglês com os personagens do palco, o Prof. Dash corrigindo cada fala na hora, digitando ou pelo microfone, resumo local no fim) está feita e validada pelo líder** (21/out/2026, rodada 8; sem commit/deploy; evolui a 2B "💬 Cenários guiados") — plano em `planejamento/FASE-10-CONVERSA-IA.md` (escrito como FASE-9; renumerado porque o Treino do dia ficou com a 9), seção "💬 Conversa com IA — Fase 10" abaixo.
 
 ---
 
@@ -1358,6 +1359,10 @@ limite, sem corte, botão ao acertar, sem dedup, sem reserva, cache sem gravar, 
 
 ## 💬 Cenários guiados — Fase 2B (13/out/2026, FEITA; sem commit/deploy)
 
+> ⚠️ **Evoluída na Fase 10 (21/out/2026):** virou "💬 Conversa com IA" — o feedback do fim (2ª chamada, `pedidoDeFeedback`,
+> `FeedbackCenario`, `FeedbackCenarioView`) e a persona "NÃO corrija" **não existem mais**. O texto abaixo é o histórico da 2B; o estado
+> atual está em "💬 Conversa com IA — Fase 10".
+
 Plano: `planejamento/FASE-2-EXPLIQUE-E-CENARIOS.md` (etapas 7–10). Só Inglês; por TEXTO (voz fica para depois — o reconhecedor do dono ainda não está commitado).
 
 **O que a pessoa vê:** no Mapa, o card **"💬 Conversar com o Prof. Dash"** (ao lado de "Baralhos e cartões"; some sem a IA) → lista de **8 cenários por etapa**
@@ -1377,7 +1382,7 @@ A fala da pessoa vai como DADO (cortada em 300 letras; o prompt manda ignorar in
 **Testes (+56):** `ia_cenario_test` (25: conteúdo dos 8 cenários — ids, etapas, inglês digitável —, máquina de turnos, persona/contexto/pedido de feedback, parser em tabela) · `ia_cenario_cubit_test` (15: cota, falha, sem cota, persona própria × contexto, conversa inteira, feedback único, JSON ruim) ·
 `ia_cenario_ui_test` (15) · `ia_cenario_app_test` (1: app inteiro — Mapa → Conversar → café → 3 falas → feedback → salvar cartão → "Meus cartões", sem duplicar, cota 30→26, ranking intacto). 15 mutações pegas (persona que corrige, correções/frases sem limite, frase sem validar, feedback sem guarda, falha sem desfazer a fala, histórico com a fala atual, sem aviso de última fala, frases duplicadas, persona pelo caminho padrão, sem corte de 300, Mapa sem o card, contexto sem a regra de idioma, feedback local sumindo, 1º cartão sem ligar o sentido, campo sem foco).
 Chrome real (probe, 1027 e 390 px): conversa de 3 falas, feedback, 2 cartões salvos, 0 erros.
-⚠️ Pendências: voz nos cenários (D11), shadowing (Fase 3), cota dura no servidor (D4).
+⚠️ Pendências: ~~voz nos cenários (D11)~~ ✅ feita na Fase 10 (voz, rosto e microfone — ver "💬 Conversa com IA — Fase 10", que substituiu o feedback do fim por correção a cada fala e um resumo local), shadowing (Fase 3), cota dura no servidor (D4).
 
 ---
 
@@ -1672,6 +1677,15 @@ Plano: `planejamento/FASE-7-MODOS-DE-RESPOSTA.md` (D1–D10). **Só as lições 
 
 ## 📋 Pendências / próximos passos
 
+- **"💬 Conversa com IA" (Fase 10, 21/out, sem commit/deploy):** ✅ validada pelo líder (rodada 8: suíte inteira, analyze, UM build
+  do probe + Playwright em 390 e 1027 px, 0 `pageerror`). Falta: commit, `flutter build web` + deploy **só de hosting** (**nenhum deploy de regras**) e
+  a conferência com o Gemini de verdade (JSON com esquema e `thinkingBudget: 0` aceitos, latência < 4 s, chat do Prof. Dash ainda
+  respondendo pergunta longa) — ver "💬 Conversa com IA — Fase 10". Se aparecer 429 com frequência: `config/tutor.modeloConversa =
+  "gemini-flash-lite-latest"` no console (sem deploy). ⚠️ A troca não solta uma janela de **limite diário** já aberta no aparelho (a
+  `DescansoIa` é uma só, sem saber o modelo): ela some só ao recarregar a página ou nas 08:00 UTC.
+- **🏎️ Turismo — voz no modo setas (21/out, commitado em `e804b90`; sem deploy):** testes verdes (`turismo_voz_setas_test` + os do
+  arcade); ✅ provado no Chrome do probe (rodada 8: chip 🔊 no HUD, 1 palavra por portal a ~3 s uma da outra); falta ouvir com o
+  ouvido de verdade num navegador com voz, e sobe no mesmo deploy da Fase 10. Ao revisar/commitar a Fase 10, comparar com `e804b90` (não `bdb12d8`): o Turismo já não faz parte dela.
 - **"⚡ Treino do dia" (Fase 9, 21/out, sem commit/deploy):** validado pelo líder (suíte, analyze, probe + Playwright em 1027 e 390 px,
   0 erros). Falta: commit, `flutter build web` + deploy **só de hosting** (**nenhum deploy de regras**) e as conferências à mão da
   "rodada 7" — ver "⚡ 21/out/2026 (rodada 7): Treino do dia".
@@ -2111,3 +2125,176 @@ removidos); `build/web/turismo3d/turismo3d.js` idêntico ao `web/` (tem `abaixar
   Dart/C# respondido até o fim no navegador; (4) virada da meia-noite com o app aberto (HUD volta a "Treino"); (5) dois aparelhos no
   mesmo dia (o plano mescla; bônus 1×); (6) celular de verdade (teclado + mini-player do Ouvir) e tema claro; (7) logado de verdade
   (Firestore: campos `treino_dia`/`cs_treino_dia`/`en_treino_dia` em `users/{uid}`; **sem mudança de regras**).
+
+## 💬 Conversa com IA — Fase 10 (21/out/2026, FEITA e validada pelo líder — ver "rodada 8" no fim; falta o Gemini de verdade; sem commit/deploy)
+
+Plano: `planejamento/FASE-10-CONVERSA-IA.md` (escrito como FASE-9 e renumerado: o Treino do dia ficou com a 9). **Só Inglês.** Evolui a
+2B "💬 Cenários guiados" (mesmas classes `Cenario`/`SessaoCenario`/`CenarioCubit`/`ConversaPage`/`CenariosPage`, mesma chave `conversar`
+no mapa); não é uma feature paralela.
+
+- **O que o aluno vê:** no Mapa, o cartão **"💬 Conversa com IA"** ("Converse com a Emma, o Mike… num café, num check-in, numa
+  entrevista. Cada fala sua é corrigida na hora — digitando ou pelo microfone."; some sem `RevisaoCubit`/`IaCubit`) → lista de **13
+  situações** por etapa (A1×2, A2×4, B1×3, B2×3, C1×1; 5 novas: Pedir comida, Imigração no aeroporto, Conversa num meetup, Code review,
+  Negociar uma proposta), cada uma com um **personagem do palco** (`quem`/`nome` no `cenarios.json`), a fila de nível "Seu nível nas
+  conversas:" (Automático (Xn) · A1…C1, guardada no aparelho), "Restam N usos hoje · cada fala usa 1" e o selo "⬆ acima do seu nível" →
+  a conversa: topo com voltar (pede "Sair da conversa?" se já falou), rosto com boca mexendo (`PersonagemFalante`), título, "com {Nome} ·
+  {nível} · restam N usos hoje", 🌐 tradução (ligada em A1/A2) e ⋮ (ler em voz alta / Terminar conversa); caixa do objetivo com "Não use
+  dados pessoais de verdade…"; bolhas do personagem com tradução, 🔊 e 🐢; embaixo de cada fala do aluno, **o cartão do Prof. Dash**
+  ("✅ Certinho!" ou "✏️ jeito mais natural" com a versão certa, a tradução, o porquê, 💡 dica, 🔊 e "Salvar como cartão"); "{Nome} está
+  digitando…"; ideias de resposta numa linha (sempre em A1/A2; atrás de "💡 Ideias de resposta" do B1 para cima) que só PREENCHEM o
+  campo; rodapé com campo + 🎤 + ➤. O 🎤 escreve no campo (nunca envia sozinho: "Confira o texto e toque em Enviar.").
+  No fim (o personagem encerra, acabam as falas ou ⋮ › Terminar), **o resumo aparece na própria lista**: números, "✏️ Para revisar"
+  (cartão + ➕ setlist por correção), "📚 Palavras novas" (até 8, "Adicionar N às Minhas palavras"), "Conversar de novo" / "Outras
+  situações". **O resumo não gasta nenhum uso.**
+- **Regras que mudaram em relação à 2B (R1–R7):** R1 corrige **cada fala**, num campo separado (`correcao`); o personagem nunca corrige
+  e nunca sai da cena · R2 sem 2ª chamada de feedback: **resumo local, 0 usos** · R3 cada turno é **UMA chamada com resposta em JSON**
+  (`esquemaTurno`, `correcao` primeiro no `propertyOrdering`) pelo novo `TutorJson` — só o `GeminiTutorService` (web) implementa; quem
+  não tem (o `FirebaseAiTutorService` do Android/iOS e os fakes) cai no "JSON no prompt" (`formatoTurnoTexto`) + parser tolerante · R4
+  **nível da conversa = o nível do aluno** (o MAIOR nível das unidades até a da fronteira, `fronteira()`, incluída — quem terminou o
+  C1 e entrou no DEV continua C1; DEV vindo direto do A2 conta B2; lição feita adiante da fronteira não sobe) ou o que ele escolher;
+  `Cenario.etapa` só agrupa e mostra "acima do seu nível" · R5 um **personagem do palco por cenário** (sem `quem` → 🐦 Prof. Dash) · R6
+  texto **e microfone** (fecha a D11 da 2B) · R7 histórico de **8** falas (era 12), sem as correções.
+- **Proteção da cota (camadas 1–7):** (1) fala de até 300 letras; (2) cota por pessoa de 30/dia, 1 por fala, reservada antes e **gasta
+  só quando a resposta é usável** (`aceitar` = `RespostaTurno.interpretar(...) != null`, checado ANTES de gastar); (3) **3 s** entre
+  falas (`IaCubit.intervaloMinimo`, só produção — espera em vez de recusar); (4) **janela de descanso do projeto, UMA (`DescansoIa`)
+  dividida por `IaCubit` e `IaPalavrasCubit` no `main.dart`**: 429 → 20 s, 40 s, 80 s… até 5 min; 429 diário (RPD) → até a próxima
+  08:00 UTC (≤ 12 h, só em memória); 503 → 8 s; 401/403/sem chave → 60 s; sem rede/recusa/outro → sem janela; sucesso zera; durante a
+  janela **nenhuma chamada** sai; (5) serviço: timeout **25 s** no `perguntarJson` e **90 s** no `perguntarComo`/`perguntar` (chat do
+  Dash, "Por quê?", Escrita), **no máximo 2 requisições HTTP por chamada** (1 retry só de compatibilidade: 400 de thinking/schema ou
+  200 vazio com MAX_TOKENS), **sem retry em 5xx/429**; (6) `thinkingBudget: 0`, `maxOutputTokens: 600`, temperatura 0,5, 1–2 frases;
+  (7) modelo trocável sem deploy: **`config/tutor.modeloConversa`** (opcional; só aceita `^[a-z0-9.\-]+$`, senão `gemini-flash-latest`).
+  ⚠️ Limitação conhecida: o RPM/RPD grátis do Gemini é contado **por modelo**, mas a `DescansoIa` é uma só e não sabe o modelo. Com um
+  `modeloConversa` diferente, um 429 diário do flash (no "Por quê?", na Escrita ou no toque na palavra) segura também a conversa (e
+  vice-versa) até recarregar a página ou as 08:00 UTC — trocar o `modeloConversa` não solta uma janela diária já aberta no aparelho.
+  Janela por modelo ficou para depois.
+  Cada falha tem o seu aviso (`cenario-sem-cota`, `-limite` com contagem regressiva no relógio do cubit, `-limite-dia`, `-ocupado`,
+  `-sem-rede`, `-indisponivel`, `-recusada`, `-falhou`) e **a fala sempre volta para o campo**; durante a janela só o ➤ fica desligado
+  (o campo nunca) e Enter não apaga nada.
+- **Erros tipados:** `FalhaIa` (`lib/features/tutor/data/falha_ia.dart`, `TipoFalhaIa` limite/limiteDiario/ocupado/semRede/credencial/
+  recusada/outro); o `toString()` continua "Gemini <status>: …" (o `TutorCubit._erroAmigavel` casa texto). `ResultadoIa.motivo` é um
+  campo novo opcional — **`StatusIa` NÃO ganhou valor** (quebraria os `switch` exaustivos).
+- **Segurança:** o aluno vira DADO entre `<<<ALUNO>>>`/`<<<FIM>>>` (marcadores forjados são tirados); regras "acima de qualquer outra
+  instrução"; **dados pessoais mascarados** antes de ir ao modelo (e-mail → `[email]`, link → `[link]`, CPF/telefone de 8+ dígitos →
+  `[número]`; valores com moeda, milhar, "120k", datas ISO e números curtos ficam). A correção compara com o texto mascarado (sem ✏️
+  falso) e devolve o dado original na tela; correção que tinha dado pessoal **não vira cartão nem item de setlist**. A fala do
+  personagem passa por `limparFala` (tira markdown/emoji sem inserir texto — a fala mostrada é a falada). Palavras novas seguem a regra
+  do `validarPalavraNova` (`^[a-z]{2,14}$`, sem stopwords): "Adicionar" nunca falha por formato.
+- **Voz:** a velocidade preferida é carregada na própria tela (`VozIngles.carregarPreferencia()` antes da abertura); a abertura só é
+  falada com voz automática ligada **e** som liberado; **resposta que chega com o microfone ouvindo NÃO é falada** (o reconhecedor
+  escreveria a fala do personagem no campo); o 🎤 chama `calarTudo()` antes de ouvir; o avatar do topo só mexe a boca com a fala do
+  personagem (o 🔊 da correção e o 🎧 não mexem).
+- ⚠️ **Mudança de comportamento intencional:** a janela de descanso depois de um 429/503/401 vale para **tudo que usa IA** — a conversa,
+  o toque na palavra, o "Por quê?" e a Escrita. Durante ela o "Por quê?" e a Escrita mostram a mensagem genérica de falha deles, sem
+  dizer o motivo (mensagens próprias ficaram para depois, plano §15).
+- **Nativo (Android/iOS) na v1:** a conversa usa **"JSON no prompt"** + o parser tolerante (o `FirebaseAiTutorService` não implementa
+  `TutorJson`; o esquema nativo ficou para depois, precisa de aparelho para validar). O Firebase AI ganhou só o timeout de 90 s e
+  `throw FalhaIa.de(e)`.
+- **Nota honesta sobre a cota:** o limite de verdade é o RPM/RPD grátis do projeto `pac-dart`, **dividido por todo mundo**. As camadas 3–4
+  diminuem as marteladas, mas não criam uma cota dura (isso pede Cloud Functions ou billing — fora do escopo, como a D4 da Fase 2). Uma
+  resposta que chega depois de o aluno sair ainda gasta 1 uso (documentado).
+- **Persistência:** **nada no Firestore** e nenhuma conversa salva (sair descarta, depois da confirmação). Ficam só o que o aluno escolhe
+  (cartões, Minhas palavras, setlists) e as prefs do aparelho `conversa_nivel` / `conversa_voz_auto`. **Sem mudança em
+  `firestore.rules`** (`config/tutor.modeloConversa` mora no doc que o app já lê).
+- **Arquivos novos:** `lib/features/tutor/data/falha_ia.dart` · `lib/features/ia/domain/{conversa_resposta,prompt_conversa,
+  nivel_conversa,seguranca_texto}.dart` · `lib/features/ia/presentation/{preferencias_conversa,resumo_conversa}.dart` ·
+  `lib/features/ia/presentation/widgets/{bolha_conversa,microfone_conversa}.dart` · `test/helpers/tutor_falso.dart` (os tutores falsos
+  compartilhados; o `ia_cenario_cubit_test.dart` reexporta `TutorCenarioFalso`/`TutorComPersonaFalso` para os 5 testes de fora da IA
+  que os importam por lá).
+  **Mexidos:** `tutor_service.dart` (`TutorJson`, `perguntarJson`, `modeloConversa`, timeouts, `FalhaIa`), `tutor_firebase_ai.dart`
+  (timeout + `FalhaIa.de`), `chave_gemini.dart` (`campo()`, cacheia o mapa inteiro), `ia_cubit.dart` (`DescansoIa`, `agora()`,
+  `consultarJson`, `aceitar`, `motivo`, `esperaAte`), `cenario.dart`, `sessao_cenario.dart` (saíram `personaCenario`,
+  `contextoDoTurno`, `pedidoDeFeedback`, `CorrecaoCenario`, `FeedbackCenario`), `assets/ingles/cenarios.json` (13 cenários; a farmácia
+  agora é a "farmacêutica" Dra. Lee), `cenario_cubit.dart` (`terminar()` síncrono e local), `conversa_page.dart` (reescrita),
+  `cenarios_page.dart`, `feedback_cenario.dart` (saiu o `FeedbackCenarioView`; ficou `salvarCartaoDoCenario`, que não espera mais 5 s quando o mesmo
+  cartão já está no baralho), `main.dart` (UMA
+  `DescansoIa` para `IaCubit` + `IaPalavrasCubit`; `intervaloMinimo` de 3 s só sem `tutorBuilder`), `mapa_page.dart` (o cartão) e
+  `main_portfolio_probe.dart` (o `_TutorFake` responde o turno da conversa em JSON — "want" na fala → correção "Can I have a coffee,
+  please?", senão ✅; da 3ª fala em diante `fim: true` — e `ConversaPage.fabricaReconhecedor` usa o reconhecedor de mentira
+  `window.__dito`; saíram os ramos `MODO FEEDBACK DE CENÁRIO` e `MODO CENÁRIO`).
+- **Testes:** novos `ia_falha_test`, `tutor_json_rest_test` (conta as requisições), `ia_cubit_json_test` (A); `ia_conversa_resposta_test`,
+  `ia_nivel_conversa_test`, `ia_seguranca_texto_test` (B); `ia_conversa_voz_ui_test` (C). Reescritos/adaptados: `ia_cenario_test` (B),
+  `ia_cenario_cubit_test`, `ia_cenario_ui_test` (C: 360/390/1400 px claro e escuro e 360×640 com teclado de 300 px), `chave_gemini_test`,
+  `ia_cubit_test`, `ia_app_test` (A: o relógio anda 21 s depois do 429), `ia_cenario_app_test` (D: o app inteiro — Mapa → "Conversa com
+  IA" → café com o rosto da Emma → 3 falas, a 1ª corrigida, a 2ª ✅, a 3ª fecha a cena → o resumo aparece sozinho, **cota 30 → 27 e
+  continua 27** → cartão em "Meus cartões" com o inglês → português ligado, sem duplicar pelo cartão da correção → "size" em Minhas
+  palavras → hábito +3, ranking intacto; e um 2º caso: `IaCubit` e `IaPalavrasCubit` do app dividem a MESMA `DescansoIa` e um 429 na
+  conversa abre a janela para os dois).
+- **Adiado (plano §15):** voz diferente por personagem na web; conversa livre sem cenário e cenário por unidade; nota de pronúncia do
+  que o microfone ouviu; salvar as últimas conversas e "✓ feita" por cenário; cota dura no servidor e App Check; streaming; repetir a
+  cena mais difícil; cenários escritos pelo aluno; JSON com esquema no Android/iOS; mensagens próprias de 429 no "Por quê?" e na
+  Escrita; guardar a janela do limite diário no aparelho; expressões (`check-in`, `go over`) em Minhas palavras.
+
+## 🏎️ Turismo — voz no modo SETAS (inglês) (21/out/2026, commitado em `e804b90`; sem deploy)
+
+- No inglês com **🎮 Setas** (ninguém digita, nada trava), o Turismo agora **fala a palavra de cada portal** quando ele vira o alvo
+  à frente do carro (`_falarPortalSetas`, chamado no `_tick` depois do `e.tick(dt)` só com `porSetas && correndo && _voz.ativa`): o
+  1º na largada (não na contagem), cada seguinte no instante em que o carro cruza o anterior (~2,8 s de antecedência na velocidade
+  máxima). **Uma vez por portal** (`_vozPortal` + `identical`), nem de novo ao voltar da pausa; é a `palavras.first`, a mesma do
+  cartão das setas (com duas saídas a 2ª fica muda — falada logo depois cortaria a 1ª). Nas setas não há palavra de combustível.
+  Voz desligada não marca nada: religada no meio, o portal da vez fala.
+- O chip **🔊 (`arcade-voz`)** aparece também nas setas (a condição agora é só `BancoArcade.soDigitacao`). Pausa/sair/fim/dispose já
+  calavam a voz — agora valem para as setas também. **Modo digitação: sem mudança** (fala ao TRAVAR, como antes).
+- De quebra: os `BotoesSetas` (◀ ▶ ▼ FREIO ▲ GÁS, 336 px) vazavam 16 px no celular de 360 — agora encolhem juntos (`LayoutBuilder`);
+  altura e fonte iguais, nada muda em telas normais.
+- Teste novo: `test/turismo_voz_setas_test.dart` (chip no HUD, 1º portal na largada, sem repetir, 2º com > 20 m de folga, pausa e
+  sair calam, dispose cala, pref desligada = mudo e religar fala o portal da vez, 360 px sem estouro, Dart nas setas sem chip nem voz).
+
+## 💬 21/out/2026 (rodada 8): Conversa com IA (Fase 10) + voz no modo setas do Turismo (FEITO e validado pelo líder; sem commit/deploy)
+
+- **O que existe:**
+  - **💬 Conversa com IA** (só Inglês): cartão no Mapa → 13 situações (A1×2, A2×4, B1×3, B2×3, C1×1) com um personagem do palco cada
+    → conversa com o rosto falando, o Prof. Dash corrigindo **cada fala** num cartão separado (✅ ou ✏️ + tradução + porquê + dica +
+    🔊 + "Salvar como cartão"), ideias de resposta, 🌐 tradução, ⋮ (voz automática / Terminar), digitação **e** 🎤 (o mic só escreve
+    no campo) → **resumo local** (números, correções com cartão e ➕ setlist, palavras novas para "Minhas palavras"), que não gasta uso.
+    Detalhes: seção "💬 Conversa com IA — Fase 10" acima e `planejamento/FASE-10-CONVERSA-IA.md`.
+  - **🏎️ Turismo (inglês, 🎮 Setas):** fala a palavra de cada portal quando ele vira o alvo; chip 🔊 no HUD também nas setas; os
+    botões das setas cabem em 360 px. Modo digitação sem mudança. (Já commitado em `e804b90`.)
+- **Padrões (plano §14):** 1 uso por fala dentro dos 30/dia, resumo grátis; nível = o maior até a fronteira (DEV = B2, mas quem
+  terminou o C1 continua C1), com escolha manual guardada no aparelho; tradução ligada em A1/A2; voz automática ligada; ideias sempre
+  em A1/A2 e atrás de "💡" do B1 para cima; `gemini-flash-latest` (trocável em `config/tutor.modeloConversa`), JSON com esquema só na
+  web, "JSON no prompt" no nativo; 25 s por turno, no máximo 2 requisições, sem retry de 5xx/429; janela de descanso **única**
+  (`DescansoIa`) para toda a IA (429 → 20 s…5 min; 429 diário → próxima 08:00 UTC; 503 → 8 s; credencial → 60 s); 3 s entre falas em
+  produção; dados pessoais mascarados; nada salvo no Firestore, sem mudança de regras.
+- **Correções da revisão (rodada de fixes, já na seção da Fase 10):** leitura da chave que falha = sem rede (não "sem chave");
+  `perguntarComo` com corpo ilegível = `outro`; JSON com quebra de linha crua, cerca ```` ```json ```` cortada, contrações ("dont" =
+  "don't") e marcadores traduzidos (`[number]`) tratados; exemplo da palavra só quando ela aparece na fala; marcadores forjados fora do
+  histórico; mic aberto + Terminar / `fim:true` sem `setState` travado; aviso do limite diário lembra que o resumo funciona; relógio de
+  1 s só no aviso com contagem; "Nenhuma palavra marcada" / "✓ Já estão nas suas palavras" no lugar de "Adicionar 0"; salvar um
+  cartão repetido não espera mais 5 s.
+- **Validação do líder (21/out):**
+  - Suíte inteira: **2.366 testes, 2.361 passam, 5 falham** (as 5 de sempre do `csharp_curriculo_test`); 151 arquivos de teste.
+    `flutter analyze lib test`: sem avisos. Nenhum `test/_*_test.dart` sobrando.
+  - **1 build** do probe (`flutter build web -t lib/main_portfolio_probe.dart --release --output=build/probe --no-wasm-dry-run`,
+    ~29 s), servido em `python3 -m http.server`, **apagado depois** (`find build/probe -delete`). `build/web` não foi tocado; nada
+    publicado.
+  - **Chrome (Playwright), 1027 e 390 px, 0 erros de console e 0 `pageerror`** (só o aviso de fontes Noto de sempre e o
+    `RGBELoader` deprecado do three.js no Turismo). Espião em `speechSynthesis.speak` e `HTMLMediaElement.play` por `addInitScript`.
+    - Conversa (nas duas larguras): Mapa → "💬 Conversa com IA" (subtítulo novo) → lista com a fila de nível "Automático (A1)", "Restam
+      30 usos hoje" e "⬆ acima do seu nível" a partir do A2 → ☕ café com a Emma (rosto no topo, "com Emma · A1 · restam N usos") → a
+      abertura **foi falada** (tts) → fala 1 digitada + **Enter** → "✅ Certinho!" e a Emma responde com tradução → 🎤 com
+      `window.__dito = 'I want a coffee'` → o campo mostra "I want a coffee" + "Confira o texto e toque em Enviar." (não enviou sozinho)
+      → Enviar → cartão "✏️ Prof. Dash · jeito mais natural: Can I have a coffee, please?" com tradução, porquê, 💡 e "Salvar como
+      cartão" → 🌐 desliga a tradução (as bolhas viram "Ver tradução") → "Ouvir de novo" fala a última fala da Emma → ideia "No,
+      thanks." preenche o campo → Enviar → a Emma encerra e **o resumo aparece na lista** ("Você falou 3 vezes em inglês · 2
+      certinhas de primeira · 1 correção", "Este resumo não gastou nenhum uso") → "Salvar como cartão" vira "✓ Salvo" (cartão em
+      "Meus cartões" no `localStorage`) → "Adicionar 1 às Minhas palavras" → SnackBar "1 palavra entrou em Minhas palavras", "size"
+      com o exemplo "Sure! What size would you like?" e o botão vira "✓ Já estão nas suas palavras". Cota 30 → 27 em cada conversa
+      (3 falas).
+    - Turismo (inglês, 🎮 Setas, qualidade Leve): chip **🔊 Voz** no HUD (1027 e 390 px) → a 1ª palavra ("lot") **falada na largada**,
+      depois do "1" da contagem → segurando ↑: "bye", "you", "good", "meet", "size", "see" — **uma por portal, ~3,3 s uma da outra**,
+      cada uma quando o portal vira o alvo (ex.: "good" com o portal ainda a 52 m). A 390 px os botões ◀ ▶ FREIO GÁS cabem.
+    - Capturas em `/private/tmp/claude-501/-Users-fazplay-pac-dart/0331895d-de51-4964-875d-cf4d7eb2f778/scratchpad/smoke_conversa/` (38 PNGs, temporárias).
+  - ⚠️ **Receita da prova (armadilha nova):** com a acessibilidade ligada, clicar no `<input>` da árvore de semântica
+    (`page.locator('input').click()`) e digitar na hora **perde as primeiras letras** (o motor ainda está trocando o elemento de
+    edição: "A small latte" virou "all latte"). Clicar pela posição (`page.mouse.click(x, y)`) ou esperar ~400 ms antes de digitar
+    resolve. Não é bug do app (uma pessoa não digita 7 letras em 60 ms depois do toque).
+- **Adiado (plano §15):** voz por personagem na web; conversa livre e cenário por unidade; nota de pronúncia do mic; salvar conversas
+  e "✓ feita"; cota dura no servidor e App Check; streaming; JSON com esquema no Android/iOS; mensagens próprias de 429 no "Por quê?"
+  e na Escrita; janela do limite diário guardada no aparelho e **janela por modelo**; expressões em Minhas palavras. Turismo: repetir
+  a palavra cortada pela pausa (hoje não repete; o Rali repete — 1 linha em `aoRetomar` se o dono quiser).
+- **Falta conferir à mão (o dono):** (1) **Gemini de verdade** depois do deploy: uma cena do café em pac-dart.web.app — o JSON com
+  esquema e `thinkingBudget: 0` são aceitos (ou o retry de compatibilidade entra; ver o console), latência < 4 s, e o chat do Prof.
+  Dash ainda responde pergunta longa com código (90 s); (2) microfone de verdade (Chrome no desktop e no Android) escrevendo no campo,
+  e a resposta que chega com o mic aberto não é falada; (3) celular de verdade com teclado aberto (campo e ideias visíveis); (4) voz
+  com o ouvido: a Emma e as palavras do Turismo nas setas; (5) um 429 de verdade (contagem regressiva no aviso, ➤ volta sozinho);
+  (6) Android/iOS: uma cena pelo "JSON no prompt" quando houver aparelho.

@@ -145,6 +145,8 @@ void main() {
     final c = await criar();
     tutor.erro = Exception('429 RESOURCE_EXHAUSTED');
     expect((await c.explicar(pedido())).status, StatusIa.falhou);
+    // o 429 abre a janela de descanso do projeto (20 s): passa dela para os próximos casos chegarem ao serviço
+    relogio.t = relogio.t.add(IaCubit.descansoInicial + const Duration(seconds: 1));
     tutor
       ..erro = null
       ..pedacos = [];

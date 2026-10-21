@@ -4,6 +4,8 @@
   "titulo": "Pedir um café",
   "emoji": "☕",
   "etapa": "A1",
+  "quem": "emma",
+  "nome": "Emma",
   "papel": "atendente de uma cafeteria em Chicago",
   "objetivo": "Peça uma bebida, diga o tamanho e pague.",
   "abertura": "Hi! Welcome to Sunny Beans. What can I get for you?",
@@ -19,10 +21,32 @@
   "maxTurnos": 5
  },
  {
+  "id": "restaurante",
+  "titulo": "Pedir comida",
+  "emoji": "🍔",
+  "etapa": "A1",
+  "quem": "ben",
+  "nome": "Ben",
+  "papel": "garçom de uma lanchonete em Austin",
+  "objetivo": "Peça um prato e uma bebida, diga se é para comer aqui e peça a conta.",
+  "abertura": "Hi there! Are you ready to order?",
+  "aberturaPt": "Oi! Você já quer pedir?",
+  "dicas": [
+   "I'd like a burger, please.",
+   "Can I have a soda?",
+   "No onions, please.",
+   "For here, please.",
+   "Can I have the check, please?"
+  ],
+  "maxTurnos": 5
+ },
+ {
   "id": "hotel",
   "titulo": "Check-in no hotel",
   "emoji": "🏨",
   "etapa": "A2",
+  "quem": "ana",
+  "nome": "Ana",
   "papel": "recepcionista de um hotel em Miami",
   "objetivo": "Faça o check-in: diga seu nome, quantas noites vai ficar e pergunte do café da manhã.",
   "abertura": "Good evening! Welcome to the Palm Hotel. Do you have a reservation?",
@@ -40,6 +64,8 @@
   "titulo": "Pedir direções",
   "emoji": "🧭",
   "etapa": "A2",
+  "quem": "mike",
+  "nome": "Mike",
   "papel": "um morador simpático de Nova York que ajuda um turista perdido",
   "objetivo": "Descubra como chegar à estação de metrô mais próxima.",
   "abertura": "Hey there! You look a little lost. Can I help you?",
@@ -57,7 +83,9 @@
   "titulo": "Na farmácia",
   "emoji": "💊",
   "etapa": "A2",
-  "papel": "farmacêutico de uma farmácia nos Estados Unidos",
+  "quem": "dra-lee",
+  "nome": "Dra. Lee",
+  "papel": "farmacêutica de uma farmácia nos Estados Unidos",
   "objetivo": "Explique que está com dor de cabeça e pergunte como tomar o remédio.",
   "abertura": "Hello! How can I help you today?",
   "aberturaPt": "Olá! Como posso ajudar você hoje?",
@@ -70,10 +98,32 @@
   ]
  },
  {
+  "id": "aeroporto",
+  "titulo": "Imigração no aeroporto",
+  "emoji": "🛂",
+  "etapa": "A2",
+  "quem": "agente",
+  "nome": "Agente",
+  "papel": "agente de imigração num aeroporto dos Estados Unidos",
+  "objetivo": "Diga o motivo da viagem, quanto tempo vai ficar e onde vai se hospedar.",
+  "abertura": "Good morning. Passport, please. What is the purpose of your visit?",
+  "aberturaPt": "Bom dia. Passaporte, por favor. Qual é o motivo da sua visita?",
+  "dicas": [
+   "I'm here on vacation.",
+   "I'm here for a conference.",
+   "I'm staying for two weeks.",
+   "I'm staying at a hotel downtown.",
+   "Here is my return ticket."
+  ],
+  "maxTurnos": 5
+ },
+ {
   "id": "entrevista",
   "titulo": "Entrevista de emprego",
   "emoji": "💼",
   "etapa": "B1",
+  "quem": "sarah",
+  "nome": "Sarah",
   "papel": "recrutadora de uma empresa de tecnologia, conduzindo uma entrevista inicial",
   "objetivo": "Apresente-se, fale da sua experiência e de um ponto forte.",
   "abertura": "Hi, thanks for coming in today. Let's start with you. Can you tell me a little about yourself?",
@@ -92,6 +142,8 @@
   "titulo": "Reunião de equipe",
   "emoji": "👥",
   "etapa": "B1",
+  "quem": "lucas",
+  "nome": "Lucas",
   "papel": "colega de equipe numa reunião semanal de projeto",
   "objetivo": "Conte o que você fez esta semana, o que vai fazer e se tem algum bloqueio.",
   "abertura": "Morning, everyone. Let's do a quick update. What did you work on this week?",
@@ -105,10 +157,32 @@
   ]
  },
  {
+  "id": "meetup",
+  "titulo": "Conversa num meetup",
+  "emoji": "🤝",
+  "etapa": "B1",
+  "quem": "julia",
+  "nome": "Julia",
+  "papel": "desenvolvedora que você acabou de conhecer num meetup de tecnologia em San Francisco",
+  "objetivo": "Apresente-se, conte com o que você trabalha e combine de manter contato.",
+  "abertura": "Hey! I don't think we've met. I'm Julia. What brings you here tonight?",
+  "aberturaPt": "Oi! Acho que a gente não se conhece. Eu sou a Julia. O que te traz aqui hoje?",
+  "dicas": [
+   "Nice to meet you, I'm a mobile developer.",
+   "I work mostly with Flutter.",
+   "I came to learn about AI tools.",
+   "What do you work on?",
+   "Let's connect on LinkedIn."
+  ],
+  "maxTurnos": 6
+ },
+ {
   "id": "cliente",
   "titulo": "Chamada com cliente",
   "emoji": "📞",
   "etapa": "B2",
+  "quem": "cliente",
+  "nome": "Cliente",
   "papel": "cliente exigente numa chamada de vídeo sobre um prazo atrasado de um projeto",
   "objetivo": "Peça desculpas pelo atraso, explique o motivo e proponha um novo prazo.",
   "abertura": "Hi. Thanks for joining. I'll be honest, I'm a bit worried about the delay. What's going on with the project?",
@@ -127,6 +201,8 @@
   "titulo": "Daily de desenvolvimento",
   "emoji": "💻",
   "etapa": "B2",
+  "quem": "mike",
+  "nome": "Mike",
   "papel": "tech lead conduzindo a daily de um time de desenvolvimento",
   "objetivo": "Explique em que tarefa está trabalhando, um problema técnico e peça ajuda.",
   "abertura": "Alright team, daily time. You're up next. What are you working on, and is anything in your way?",
@@ -139,5 +215,45 @@
    "I should be done by tomorrow."
   ],
   "maxTurnos": 6
+ },
+ {
+  "id": "code-review",
+  "titulo": "Code review",
+  "emoji": "🔍",
+  "etapa": "B2",
+  "quem": "ana",
+  "nome": "Ana",
+  "papel": "desenvolvedora sênior revisando o seu pull request",
+  "objetivo": "Explique sua mudança, responda a uma crítica e combine o que vai ajustar.",
+  "abertura": "Hi! I left a few comments on your pull request. Can you walk me through the main change?",
+  "aberturaPt": "Oi! Deixei alguns comentários no seu pull request. Você pode me explicar a mudança principal?",
+  "dicas": [
+   "Sure, I refactored the login flow.",
+   "I moved the logic into a separate class.",
+   "Good point, I'll add a test for that.",
+   "I chose this approach because it's simpler.",
+   "I'll push the fixes this afternoon."
+  ],
+  "maxTurnos": 6
+ },
+ {
+  "id": "negociacao",
+  "titulo": "Negociar uma proposta",
+  "emoji": "💼",
+  "etapa": "C1",
+  "quem": "sarah",
+  "nome": "Sarah",
+  "papel": "recrutadora apresentando uma proposta de emprego para uma vaga remota",
+  "objetivo": "Agradeça a proposta, negocie o salário ou os benefícios com educação e feche os próximos passos.",
+  "abertura": "Great news: the team loved you, and we'd like to make you an offer. Do you have a few minutes to go over the details?",
+  "aberturaPt": "Ótima notícia: o time adorou você e queremos fazer uma proposta. Você tem alguns minutos para vermos os detalhes?",
+  "dicas": [
+   "Thank you, I'm really excited about this role.",
+   "Is there any flexibility on the base salary?",
+   "Based on my experience, I was expecting a bit more.",
+   "Could we discuss the start date?",
+   "Could you send me the offer in writing?"
+  ],
+  "maxTurnos": 8
  }
 ]

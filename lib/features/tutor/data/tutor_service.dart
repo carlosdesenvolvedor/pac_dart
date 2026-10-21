@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:http/http.dart' as http;
 
 import '../../../core/gemini/chave_gemini.dart';
 import '../../../core/linguagem/linguagem.dart';
+import 'falha_ia.dart';
 
 /// Contrato do tutor — o Gemini de verdade em produção, um fake nos testes.
 abstract interface class TutorService {
@@ -27,11 +29,25 @@ abstract interface class TutorComPersona {
   });
 }
 
+/// Opcional (como o [TutorComPersona]): a resposta em JSON que segue [esquema] (o subconjunto
+/// OpenAPI da API do Gemini: type OBJECT/ARRAY/STRING/BOOLEAN, properties, required, items,
+/// propertyOrdering). Lança [FalhaIa]. Sem streaming.
+abstract interface class TutorJson {
+  Future<String> perguntarJson({
+    required String persona,
+    required String contexto,
+    required String historico,
+    required String pergunta,
+    required Map<String, Object?> esquema,
+    int maxTokens = 600,
+  });
+}
+
 /// Prof. Dash falando direto com a API do Gemini.
 ///
 /// A chave vem do Firestore em runtime ([ChaveGemini]) — nunca do código —
 /// e é restrita por referer (só o site oficial) e por API (só o Gemini).
-class GeminiTutorService implements TutorService, TutorComPersona {
+class GeminiTutorService implements TutorService, TutorComPersona, TutorJson {
 
   /// Alias que acompanha SEMPRE o flash mais novo — imune a modelo aposentado
   /// (o gemini-2.5-flash morreu pra contas novas e quase nos pegou).
@@ -118,7 +134,168 @@ Regras de ouro:
 ''';
 
   final http.Client _http;
-  GeminiTutorService({http.Client? client}) : _http = client ?? http.Client();
+
+  /// Só o [perguntarJson] (turno curto da conversa, sem thinking).
+  final Duration timeoutJson;
+
+  /// O [perguntarComo]/[perguntar] (chat do Prof. Dash, "Por quê?", Escrita: 2048 tokens com
+  /// thinking ligado; respostas longas com código).
+  final Duration timeoutLongo;
+
+  GeminiTutorService({
+    http.Client? client,
+    this.timeoutJson = const Duration(seconds: 25),
+    this.timeoutLongo = const Duration(seconds: 90),
+  }) : _http = client ?? http.Client();
+
+  // Compatibilidade aprendida na sessão (a 1ª recusa do modelo vale para as próximas chamadas).
+  static bool _semThinking = false;
+  static bool _semEsquema = false;
+  static double _fatorTokens = 1;
+
+  static final _modeloValido = RegExp(r'^[a-z0-9.\-]+$');
+
+  /// O modelo da conversa: `config/tutor.modeloConversa` se casar com `^[a-z0-9.\-]+$`; senão o [modelo].
+  /// Trocar o modelo (ex.: `gemini-flash-lite-latest` se o limite grátis do flash apertar) não pede deploy.
+  static Future<String> modeloConversa() async {
+    final m = (await ChaveGemini.campo('modeloConversa'))?.trim();
+    return m != null && _modeloValido.hasMatch(m) ? m : _modelo;
+  }
+
+  /// Zera o que a sessão aprendeu (`_semThinking`, `_semEsquema`, `_fatorTokens`).
+  @visibleForTesting
+  static void resetarCompatibilidade() {
+    _semThinking = false;
+    _semEsquema = false;
+    _fatorTokens = 1;
+  }
+
+  static const _semChave = 'config do tutor ausente (Firestore config/tutor)';
+
+  /// A chave do Gemini. Doc lido sem a chave → [TipoFalhaIa.credencial]; a LEITURA do doc que falhou
+  /// (offline, 'unavailable') → [TipoFalhaIa.semRede], que não abre janela de descanso.
+  static Future<String> _chave() async {
+    final String? chave;
+    try {
+      chave = await ChaveGemini.obterOuLancar();
+    } catch (e) {
+      throw FalhaIa(TipoFalhaIa.semRede, detalhe: 'leitura do config/tutor falhou: ${e.runtimeType}');
+    }
+    if (chave == null) throw const FalhaIa(TipoFalhaIa.credencial, detalhe: _semChave);
+    return chave;
+  }
+
+  /// Motivos de parada que querem dizer "o filtro de segurança barrou" (sem texto).
+  static const _bloqueios = {'SAFETY', 'PROHIBITED_CONTENT', 'BLOCKLIST', 'SPII'};
+
+  Uri _url(String modelo, String chave) =>
+      Uri.parse('https://generativelanguage.googleapis.com/v1beta/models/$modelo:generateContent?key=$chave');
+
+  /// Um POST com [limite] de tempo; erro de rede ou tempo esgotado → [FalhaIa] (semRede).
+  Future<http.Response> _post(Uri url, Map<String, Object?> corpo, Duration limite) async {
+    try {
+      return await _http
+          .post(url, headers: const {'Content-Type': 'application/json'}, body: jsonEncode(corpo))
+          .timeout(limite);
+    } catch (e) {
+      throw FalhaIa.de(e);
+    }
+  }
+
+  /// O texto da 1ª candidata (as partes juntas; pode ser '').
+  static String _textoDe(Map<String, dynamic> json) {
+    final candidatos = json['candidates'] as List?;
+    final partes = ((candidatos?.firstOrNull as Map?)?['content'] as Map?)?['parts'] as List?;
+    return [
+      for (final p in partes ?? const [])
+        if (p is Map && p['text'] is String) p['text'] as String,
+    ].join();
+  }
+
+  /// Um turno curto em JSON (a Conversa com IA): `responseMimeType`, `responseSchema` e
+  /// `thinkingConfig` DENTRO do `generationConfig`. No máximo 2 requisições por chamada — a 2ª só
+  /// por compatibilidade (o modelo recusou thinking/schema, ou parou no MAX_TOKENS sem texto).
+  /// Nada de nova tentativa em 5xx nem em 429: quem descansa é o [IaCubit].
+  @override
+  Future<String> perguntarJson({
+    required String persona,
+    required String contexto,
+    required String historico,
+    required String pergunta,
+    required Map<String, Object?> esquema,
+    int maxTokens = 600,
+  }) async {
+    final chave = await _chave();
+    final url = _url(await modeloConversa(), chave);
+    final prompt = montarPrompt(contexto: contexto, historico: historico, pergunta: pergunta);
+    var retentou = false;
+    while (true) {
+      final resp = await _post(
+        url,
+        {
+          'systemInstruction': {
+            'parts': [
+              {'text': persona}
+            ]
+          },
+          'contents': [
+            {
+              'role': 'user',
+              'parts': [
+                {'text': prompt}
+              ]
+            }
+          ],
+          'generationConfig': {
+            'temperature': 0.5,
+            'maxOutputTokens': (maxTokens * _fatorTokens).round(),
+            'responseMimeType': 'application/json',
+            if (!_semEsquema) 'responseSchema': esquema,
+            if (!_semThinking) 'thinkingConfig': {'thinkingBudget': 0},
+          },
+        },
+        timeoutJson,
+      );
+      final corpo = utf8.decode(resp.bodyBytes);
+
+      if (resp.statusCode == 400 && !retentou) {
+        // o modelo não aceita thinking e/ou schema: tira o que ele recusou (todos de uma vez) e tenta 1 vez
+        final baixo = corpo.toLowerCase();
+        final tirarThinking = !_semThinking && baixo.contains('thinking');
+        final tirarEsquema = !_semEsquema && baixo.contains('schema');
+        if (tirarThinking || tirarEsquema) {
+          if (tirarThinking) _semThinking = true;
+          if (tirarEsquema) _semEsquema = true;
+          retentou = true;
+          continue;
+        }
+      }
+      if (resp.statusCode != 200) {
+        throw FalhaIa(FalhaIa.tipoDoStatus(resp.statusCode, corpo), status: resp.statusCode, detalhe: corpo);
+      }
+
+      final Map<String, dynamic> json;
+      try {
+        json = jsonDecode(corpo) as Map<String, dynamic>;
+      } catch (_) {
+        throw FalhaIa(TipoFalhaIa.outro, status: 200, detalhe: 'resposta ilegível: $corpo');
+      }
+      final bloqueio = (json['promptFeedback'] as Map?)?['blockReason'];
+      if (bloqueio != null) throw FalhaIa(TipoFalhaIa.recusada, detalhe: 'blocked: $bloqueio');
+      final texto = _textoDe(json);
+      final motivo = ((json['candidates'] as List?)?.firstOrNull as Map?)?['finishReason'];
+      if (texto.isEmpty && _bloqueios.contains(motivo)) {
+        throw FalhaIa(TipoFalhaIa.recusada, detalhe: 'blocked: $motivo');
+      }
+      if (texto.isEmpty && motivo == 'MAX_TOKENS' && !retentou && _fatorTokens < 2.5) {
+        // a resposta não coube: mais espaço (vale para o resto da sessão) e 1 nova tentativa
+        _fatorTokens = 2.5;
+        retentou = true;
+        continue;
+      }
+      return texto;
+    }
+  }
 
   @override
   Stream<String> perguntar({
@@ -137,15 +314,10 @@ Regras de ouro:
   }) async* {
     final prompt = montarPrompt(contexto: contexto, historico: historico, pergunta: pergunta);
 
-    final chave = await ChaveGemini.obter();
-    if (chave == null) {
-      throw Exception('config do tutor ausente (Firestore config/tutor)');
-    }
-    final resp = await _http.post(
-      Uri.parse('https://generativelanguage.googleapis.com/v1beta/'
-          'models/$_modelo:generateContent?key=$chave'),
-      headers: const {'Content-Type': 'application/json'},
-      body: jsonEncode({
+    final chave = await _chave();
+    final resp = await _post(
+      _url(_modelo, chave),
+      {
         'systemInstruction': {
           'parts': [
             {'text': persona}
@@ -160,20 +332,24 @@ Regras de ouro:
           }
         ],
         'generationConfig': {'temperature': 0.4, 'maxOutputTokens': 2048},
-      }),
+      },
+      timeoutLongo,
     );
 
+    final corpo = utf8.decode(resp.bodyBytes);
     if (resp.statusCode != 200) {
-      throw Exception('Gemini ${resp.statusCode}: ${utf8.decode(resp.bodyBytes)}');
+      // o texto continua "Gemini <status>: <corpo>" (o TutorCubit procura '429'/'403' nele)
+      throw FalhaIa(FalhaIa.tipoDoStatus(resp.statusCode, corpo), status: resp.statusCode, detalhe: corpo);
     }
-    final json = jsonDecode(utf8.decode(resp.bodyBytes)) as Map<String, dynamic>;
-    final candidatos = json['candidates'] as List?;
-    final partes =
-        ((candidatos?.firstOrNull as Map?)?['content'] as Map?)?['parts'] as List?;
-    final texto = [
-      for (final p in partes ?? const [])
-        if ((p as Map)['text'] != null) p['text'] as String,
-    ].join();
+    // corpo ilegível (página de proxy, corpo cortado): falha local, tipada — nunca casada por padrão
+    // de texto no FalhaIa.de (um "429"/"quota" no trecho abriria descanso à toa)
+    final Map<String, dynamic> json;
+    try {
+      json = jsonDecode(corpo) as Map<String, dynamic>;
+    } catch (_) {
+      throw const FalhaIa(TipoFalhaIa.outro, status: 200, detalhe: 'resposta ilegível');
+    }
+    final texto = _textoDe(json);
     if (texto.isNotEmpty) yield texto;
   }
 }
