@@ -981,7 +981,7 @@ class _SessaoCartoesPageState extends State<SessaoCartoesPage> {
           onTentativa: _aoTentativa,
           onMicrofone: (ouvindo) {
             // o app se cala enquanto a pessoa fala (senão o reconhecedor ouve o próprio áudio)
-            if (ouvindo) _voz.parar();
+            if (ouvindo) _voz.calarTudo();
           },
           onMostrarFrase: _aoMostrarFrase,
           onSemVoz: _aoSemVoz,

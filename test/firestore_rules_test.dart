@@ -26,9 +26,10 @@ void main() {
     'users/u1/audio/_idx',
     'users/u1/textos/k3j9x2a',
     'users/u1/palavras/v1',
+    'users/u1/setlists/v1',
   ];
 
-  group('revisão espaçada, áudios, textos e palavras do aluno (users/{uid}/srs, srs_log, audio, textos e palavras)', () {
+  group('revisão espaçada, áudios, textos, palavras e setlists do aluno (users/{uid}/srs, srs_log, audio, textos, palavras e setlists)', () {
     test('o dono lê e escreve os blocos de cartões e o histórico', () async {
       final db = como('u1');
       for (final c in caminhos) {
@@ -48,7 +49,7 @@ void main() {
       }
     });
 
-    test('só essas cinco subcoleções foram abertas: qualquer outra de users/{uid} continua negada ao dono', () async {
+    test('só essas seis subcoleções foram abertas: qualquer outra de users/{uid} continua negada ao dono', () async {
       final db = como('u1');
       await expectLater(db.doc('users/u1/outra/x').set({'a': 1}), throwsException);
       await expectLater(db.doc('users/u1/srs/b01/fundo/x').set({'a': 1}), throwsException);

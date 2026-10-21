@@ -28,6 +28,10 @@ service cloud.firestore {
     match /users/{uid}/palavras/{doc} {
       allow read, write: if request.auth != null && request.auth.uid == uid;
     }
+    // Setlists do "Ouvir" (inglês): um documento `v1` com o banco inteiro.
+    match /users/{uid}/setlists/{doc} {
+      allow read, write: if request.auth != null && request.auth.uid == uid;
+    }
     // Ranking público: todo logado LÊ o placar; cada um só escreve o próprio.
     match /ranking/{uid} {
       allow read: if request.auth != null;

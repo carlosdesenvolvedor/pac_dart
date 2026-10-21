@@ -8,7 +8,10 @@ import '../data/audio_usuario.dart';
 import '../data/voz_ingles.dart';
 import '../domain/baralhos.dart';
 import '../domain/revisao.dart';
+import '../domain/setlist.dart';
 import '../domain/srs.dart';
+import 'ouvir/ouvir_acoes.dart';
+import 'ouvir/ouvir_cubit.dart';
 import 'revisao_cubit.dart';
 import 'widgets/audio_da_frase.dart';
 
@@ -45,6 +48,8 @@ class _NavegadorCartoesPageState extends State<NavegadorCartoesPage> {
     final st = revisao.state;
     final hoje = revisao.hoje;
     final f = _filtro.trim().toLowerCase();
+    // "🎧 Ouvir": ➕ pôr a frase na setlist (só com o player na árvore)
+    final comSetlist = OuvirCubit.de(context) != null;
     final frases = [
       for (final t in widget.baralho.frases)
         if (f.isEmpty || t.cod.toLowerCase().contains(f) || t.dicaPlana.toLowerCase().contains(f)) t,
@@ -118,6 +123,7 @@ class _NavegadorCartoesPageState extends State<NavegadorCartoesPage> {
                             hoje: hoje,
                             onOuvir: () => unawaited(_voz.falar(t.cod)),
                             onAudio: () => mostrarAudioDaFrase(context, t.cod, voz: _voz),
+                            onSetlist: comSetlist ? () => porNaSetlist(context, ItemSetlist.daFrase(t)) : null,
                             onSuspender: (rev, valor) =>
                                 revisao.suspender(rev ? Revisao.chaveReversa(k) : k, suspenso: valor),
                             onEnterrar: (rev) => revisao.enterrar(rev ? Revisao.chaveReversa(k) : k),
@@ -139,6 +145,9 @@ class _Linha extends StatelessWidget {
   final bool invertidoLigado;
   final int hoje;
   final VoidCallback onOuvir, onAudio;
+
+  /// ➕ "Pôr na setlist" (null = sem o "🎧 Ouvir").
+  final VoidCallback? onSetlist;
   final void Function(bool reverso, bool suspender) onSuspender;
   final void Function(bool reverso) onEnterrar;
 
@@ -152,6 +161,7 @@ class _Linha extends StatelessWidget {
     required this.hoje,
     required this.onOuvir,
     required this.onAudio,
+    this.onSetlist,
     required this.onSuspender,
     required this.onEnterrar,
   });
@@ -214,6 +224,8 @@ class _Linha extends StatelessWidget {
                 onOuvir();
               case 'audio':
                 onAudio();
+              case 'setlist':
+                onSetlist?.call();
               case 'susp-d':
                 onSuspender(false, !(direto?.suspenso ?? false));
               case 'susp-v':
@@ -229,6 +241,7 @@ class _Linha extends StatelessWidget {
             if (AudioUsuario.disponivel)
               PopupMenuItem(
                   value: 'audio', child: Text(AudioUsuario.tem(en) ? '🎧 Seu áudio…' : '🎧 Adicionar o seu áudio…')),
+            if (onSetlist != null) const PopupMenuItem(value: 'setlist', child: Text('➕ Pôr na setlist')),
             if (direto != null) ...[
               PopupMenuItem(value: 'susp-d', child: Text(direto!.suspenso ? '▶️ Reativar (digitar)' : '⏸ Suspender (digitar)')),
               if (!direto!.suspenso) const PopupMenuItem(value: 'ent-d', child: Text('🌙 Enterrar até amanhã (digitar)')),

@@ -21,6 +21,7 @@ abaixo; a **1B (lembrete diário no celular) está implementada** (13/out/2026, 
 A **Fase 2 está implementada** (2A "💡 Por quê?" e 2B "💬 Cenários guiados"); o plano está em `planejamento/FASE-2-EXPLIQUE-E-CENARIOS.md` (prompt: `PROMPT-AGENTE-FASE-2.md`); a Fase 3 tem o ditado e o shadowing feitos (plano do shadowing: `planejamento/FASE-3B-SHADOWING.md`).
 A **Fase 7 (modos de resposta nas lições do Inglês — barra ⌨️ Digitar · 🎤 Falar · 🧩 Montar)** está **implementada** (13/out/2026, a pedido do dono: "não encontrei no celular a opção de digitar… quero mic, digitar e o de montar igual ao Duolingo"); plano em `planejamento/FASE-7-MODOS-DE-RESPOSTA.md`, seção "🧩 Modos de resposta" abaixo (decisões do dono: montar vale tudo mas conta meio ponto na prova; padrão Digitar; enfeites de 2 a 5).
 A **Fase 5 (escrita corrigida por IA, erros viram cartões) está implementada** — plano em `planejamento/FASE-5-ESCRITA-CORRIGIDA.md`, seção "📝 Escrita corrigida" abaixo.
+A **Fase 8 ("🎧 Ouvir": escutar as lições na ordem e setlists pessoais, com mini-player) está em implementação** (20/out/2026, a pedido do dono) — plano em `planejamento/FASE-8-OUVIR-PLAYLIST.md`, seção "🎧 Ouvir — Fase 8" abaixo.
 
 ---
 
@@ -1670,6 +1671,7 @@ Plano: `planejamento/FASE-7-MODOS-DE-RESPOSTA.md` (D1–D10). **Só as lições 
 
 ## 📋 Pendências / próximos passos
 
+- ⚠️ **"🎧 Ouvir" (Fase 8, 20/out, sem commit/deploy):** publicar `firebase deploy --only firestore:rules` (bloco `users/{uid}/setlists`) **ANTES** do hosting; fazer as 7 conferências em aparelho de verdade do plano (aba oculta, Android bloqueado, iOS, Web Speech oculto, 🔊 do palco pausando, 360 px com teclado, tema claro) — ver "🎧 Ouvir — Fase 8".
 - ⚠️ **Palavras novas (20/out, sem commit/deploy):** publicar `firebase deploy --only firestore:rules` (bloco `users/{uid}/palavras`) **ANTES** do hosting; conferir as legendas do `web/turismo3d/turismo3d.js` com UM build de prova numa pasta reaproveitada (apagada depois) — ver "🆕 Palavras novas".
 - ⚠️ Código NÃO sincronizado com o GitHub desde o Arcade 2.0 (Turismo 3D inteiro só local + Firebase).
   Push só quando o usuário pedir.
@@ -1932,3 +1934,75 @@ removidos); `build/web/turismo3d/turismo3d.js` idêntico ao `web/` (tem `abaixar
 `rali_fases_ingles`, `chuva_fases_ingles`, `turismo_fases_ingles`; ajustados blocos de inglês em `arcade_ingles_ui`,
 `arcade_voz_ui`, `arcade_teimosas_ui`. `flutter analyze lib test`: sem avisos. 1 `flutter build web` (`build/web`,
 `privacidade.html`/`excluir-conta.html` removidos).
+
+## 🎧 Ouvir — Fase 8 (20/out/2026, EM IMPLEMENTAÇÃO; falta a validação do líder e a prova em aparelho; sem commit/deploy)
+
+- **Pedido do dono:** uma seção para só ESCUTAR as lições em sequência — o curso inteiro na ordem ou setlists pessoais montadas
+  "conforme for fazendo" (uma frase, parte da lição, a lição, a unidade, a etapa ou tudo) — com um player que continua tocando enquanto
+  navega. **Só no inglês**; Dart e C# não mudam. Plano completo (contrato, grupos, UI, textos, chaves, testes): `planejamento/FASE-8-OUVIR-PLAYLIST.md`.
+- **Decisões (padrões da v1):** lição trancada toca (🔒 "Lição à frente — pode ouvir à vontade"); ouvir **não** marca progresso nem conta na
+  sequência; português pela voz pt-BR do navegador (sem ela, silêncio do mesmo tamanho e o texto na tela); modo padrão **Só inglês**;
+  no nativo só com o app aberto.
+- **Feito em 4 grupos com arquivos separados** (Fase 0 = esqueletos com as assinaturas; depois A domínio/persistência/regras, B áudio e
+  motor, C telas, D fiação). Código novo em `lib/features/ingles/{domain,data,presentation/ouvir}/` (`setlist.dart`, `fila_ouvir.dart`,
+  `config_ouvir.dart`, `saida_audio.dart`, `setlists_repository.dart`, `preferencias_ouvir.dart`, `saida_voz_ingles.dart`,
+  `sessao_midia*.dart`, `ouvir_cubit.dart`, `setlists_cubit.dart`, `ouvir_acoes.dart`, telas do grupo C); `voz_ingles.dart` ganhou
+  `vezGlobal`/`falarNoPlayer`/`falarPt`/`silencio` (aditivo).
+- **Fiação (grupo D):**
+  - `main.dart`: `PacDartApp(setlistsBuilder:, saidaOuvirBuilder:)`; no `_cursoDe` do inglês `NavegadorOuvir` (um por `uid:linguagem`),
+    `SetlistsCubit` (nuvem `users/{uid}/setlists/v1` com cópia no aparelho; sem Firebase, o aparelho) e `OuvirCubit`; o `_AppShell` usa
+    `navigatorKey: NavegadorOuvir.de(context)?.chave` e `builder: OuvirShell.envolver` — **o mini-player fica acima do Navigator** e
+    sobrevive às rotas. Sem `OuvirCubit` (Dart/C#) o `builder` devolve o filho como veio.
+  - HUD: botão **Ouvir** (`ouvir-hud`, aceso enquanto toca). Mapa: cartão "🎧 Ouvir" (`ouvir-cartao-mapa`) depois do "Ler"; folha da lição com
+    "▶ Ouvir esta lição", "⏩ Ouvir daqui até o fim do curso" (some em texto próprio), "➕ Pôr na setlist" (toque longo = escolher frases) e
+    "Escolher frases…" — a folha fecha antes e agora **rola** em tela baixa. Guia da unidade: "🎧 Ouvir a unidade" + ➕. Palco: ➕
+    (`botao-setlist`) ao lado do 🎧 do cartão da frase. Navegador de cartões: "➕ Pôr na setlist" no menu ⋮.
+- **Regras:** `firestore.rules` ganhou `match /users/{uid}/setlists/{doc}` e a exclusão de conta apaga `users/{uid}/setlists`
+  (grupo A). ⚠️ Publicar as regras **antes** do hosting.
+- **Testes novos:** `ingles_setlist`, `ingles_fila_ouvir`, `ingles_setlists_repository`, `ingles_setlists_cubit` (A);
+  `ingles_voz_vez_global`, `ingles_config_ouvir`, `ingles_ouvir_cubit` (B); `ingles_ouvir_ui`, `ingles_tocando_ui`, `ingles_mini_player_ui` (C);
+  `ingles_ouvir_app_test` (D: ponta a ponta com uma saída de áudio falsa que deixa cada fala pendente — HUD → "Do começo" → mini-player
+  nas rotas → ➕ na folha e no palco → "cortada" pausa com aviso → ✕; mais 390 px e o curso de Dart sem nada disso).
+- ⚠️ **Armadilha nova:** a saída falsa do teste de app deixa o vigia do passo (`Future.delayed`) pendente; o teste fecha a sessão e dá um
+  `pump(30 min)` no fim para não sobrar Timer.
+- **Não provado:** áudio com a aba oculta / tela bloqueada, notificação de mídia no Android, Safari iOS, voz pt-BR real.
+
+## 🎧 20/out/2026 (rodada 6): Ouvir / playlist (FEITO e validado pelo líder; falta a prova em aparelho; sem commit/deploy)
+
+- **O que existe (só no curso de inglês; Dart e C# sem nada disso):**
+  - **Hub "🎧 Ouvir"** (botão **Ouvir** no HUD, `ouvir-hud`, e cartão "🎧 Ouvir" no mapa): "Curso na ordem" com ▶ Continuar ("Parou em: …"),
+    ▶ Da minha lição atual e ↺ Do começo; cartão "Tocando agora / Pausado / Acabou" enquanto o player está ativo; "Minhas setlists"
+    (▶, ⋯ Renomear/Apagar, "＋ Nova setlist"); "Explorar o curso" em árvore etapa → unidade → lição, cada linha com ▶ e ➕
+    (lição trancada mostra "🔒 à frente" e toca mesmo assim; "Meus textos" com a etiqueta "voz do sistema").
+  - **Setlists** com nome e emoji: itens frase, trecho (frases escolhidas de uma lição), lição, unidade/texto, etapa e curso inteiro;
+    reordenar arrastando, remover (✕ ou deslizar) com Desfazer, itens indisponíveis em cinza. Até 50 setlists × 300 itens.
+    Sincronizam em `users/{uid}/setlists/v1` (mescla por item, lápides de 90 dias, cópia no aparelho gravada na hora; a nuvem espera 600 ms).
+  - **➕ "Pôr na setlist"** em 5 lugares: palco (ao lado do 🎧 do cartão), folha da lição no mapa (+ "Escolher frases…"), guia da unidade,
+    árvore do hub e menu ⋮ do navegador de cartões. Toque = última setlist usada (snackbar Desfazer/Trocar); toque longo = escolher.
+  - **Player:** tela "Tocando agora" (personagem falando, trilha etapa › unidade › lição, EN grande e legenda PT, ⏮ ⏪ ⏯ ⏩ ⏭ ↺, "A seguir",
+    atalhos de teclado) e **mini-player persistente acima do Navigator** (some com teclado aberto e na tela cheia; escurece sob folhas/diálogos;
+    some e pausa no Arcade). Ajustes: velocidade, repetir 1–3×, pausa Curta/Média/Longa/Eco, modo, "2ª vez devagar", "Repetir tudo",
+    timer de desligar. Media Session no web (teclas de mídia / tela bloqueada, melhor esforço).
+  - O player **pausa sozinho** quando outra voz do app fala (aviso "outra fala"); uma página que fecha sem ter falado não corta mais o player
+    (`VozIngles.parar()` só cala o que é seu; `calarTudo()` fica para o microfone).
+- **Padrões da v1:** lição trancada toca; ouvir **não** marca progresso nem conta na sequência/meta; PT pela voz pt-BR do navegador (sem ela,
+  silêncio do mesmo tamanho + aviso "Seu navegador não tem voz em português — a tradução aparece só na tela."); modo padrão **Só inglês**;
+  no nativo só com o app aberto.
+- **Adiado (plano §11):** áudio em segundo plano/tela bloqueada no nativo (`audio_service`, permissões — precisa autorização e mexe na revisão
+  das lojas); mp3 pt-BR (~5,3 mil arquivos); receitas "Conversa" e "Pra dormir"; embaralhar, exemplos da teoria e leituras; faixa
+  silenciosa p/ notificação no Android (só se a conferência 2 falhar); Wake Lock; "Tocar em seguida"; refazer a fila quando a setlist
+  tocando é editada (v1 toca uma foto); posição na nuvem; ➕ na sessão de cartões, no `BannerUnidade` e na vitória do palco; "Só o que já
+  estudei"; "⭐ Frases difíceis"; minutos ouvidos no hábito.
+- **Validação do líder (21/out, madrugada):**
+  - Suíte inteira: **1.951 testes, 1.946 passam, 5 falham** (as 5 de sempre do `csharp_curriculo_test`); 134 arquivos.
+    `flutter analyze lib test`: sem avisos. Nenhum `test/_*_test.dart` sobrando.
+  - 1 `flutter build web` (`build/web`, main.dart.js 4,8 MB; `privacidade.html`/`excluir-conta.html` removidos). O aviso de wasm é só do
+    `flutter_tts` (pacote de fora, já existia).
+  - Navegador (Playwright, servidor local): o app abre na tela de login sem erro do app no console (só um 400 do `securetoken` = sessão velha
+    salva no perfil do Playwright, e o aviso de fontes Noto de sempre). O Ouvir fica atrás do login, então não foi clicado. Conferido no
+    mesmo Chrome: `navigator.mediaSession` existe, há 9 vozes pt-BR (Luciana etc.) e um WAV silencioso 8-bit tocou num `<audio>`.
+- **Falta provar em aparelho de verdade (plano §10):** (1) Chrome desktop com a aba oculta 20 min — a playlist avança e as pausas ficam do
+  tamanho certo? (2) Android Chrome com a tela bloqueada — continua e aparece notificação de mídia? (3) Safari do iPhone bloqueado 10 min;
+  (4) setlist de texto próprio (Web Speech) com a aba oculta; (5) 🔊 do palco com a playlist tocando → pausa com o aviso; (6) 360 px com
+  mini-player + teclado do palco; (7) tema claro.
+- ⚠️ **Antes do hosting:** `firebase deploy --only firestore:rules` (bloco `users/{uid}/setlists`).

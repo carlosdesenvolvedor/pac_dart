@@ -34,9 +34,16 @@ import 'features/ingles/data/audio_usuario.dart';
 import 'features/ingles/data/audio_usuario_repository.dart';
 import 'features/ingles/data/config_srs_repository.dart';
 import 'features/ingles/data/palavras_repository.dart';
+import 'features/ingles/data/preferencias_ouvir.dart';
 import 'features/ingles/data/revisao_repository.dart';
+import 'features/ingles/data/sessao_midia.dart';
+import 'features/ingles/data/setlists_repository.dart';
 import 'features/ingles/data/textos_repository.dart';
 import 'features/ingles/data/tradutor.dart';
+import 'features/ingles/domain/saida_audio.dart';
+import 'features/ingles/presentation/ouvir/ouvir_acoes.dart';
+import 'features/ingles/presentation/ouvir/ouvir_cubit.dart';
+import 'features/ingles/presentation/ouvir/setlists_cubit.dart';
 import 'features/ingles/presentation/palavras_cubit.dart';
 import 'features/ingles/presentation/revisao_cubit.dart';
 import 'features/ranking/data/ranking_repository.dart';
@@ -125,6 +132,13 @@ class PacDartApp extends StatelessWidget {
   /// Sem isto vale a nuvem (`users/{uid}/palavras/v1`, com cópia no aparelho); sem Firebase iniciado, o aparelho.
   final PalavrasRepository Function(AppUser user)? palavrasBuilder;
 
+  /// As setlists do "🎧 Ouvir" no inglês (testes/probe: `MemoriaSetlistsRepository()` ou `LocalSetlistsRepository(uid)`).
+  /// Sem isto vale a nuvem (`users/{uid}/setlists/v1`, com cópia no aparelho); sem Firebase iniciado, o aparelho.
+  final SetlistsRepository Function(AppUser user)? setlistsBuilder;
+
+  /// A saída de áudio do "🎧 Ouvir" (testes: uma falsa, sem som). Sem isto vale a voz do inglês ([saidaPadrao]).
+  final SaidaDeAudio Function()? saidaOuvirBuilder;
+
   /// Hábito diário (sequência, meta, congelamentos) — testes/probe: `LocalHabitoRepository()`.
   final HabitoRepository Function(AppUser user)? habitoBuilder;
 
@@ -155,6 +169,8 @@ class PacDartApp extends StatelessWidget {
     this.audioBuilder,
     this.textosBuilder,
     this.palavrasBuilder,
+    this.setlistsBuilder,
+    this.saidaOuvirBuilder,
     this.habitoBuilder,
     this.habitoAgora,
     this.lembreteBuilder,
@@ -331,6 +347,24 @@ class PacDartApp extends StatelessWidget {
                     (Firebase.apps.isNotEmpty ? FirestorePalavrasRepository(user.uid) : LocalPalavrasRepository(user.uid)),
               ),
             ),
+          // inglês: o "🎧 Ouvir" — o Navigator do app (o mini-player empurra o "Tocando agora" por ele; um por
+          // curso, para trocar de conta/linguagem não reaproveitar a pilha antiga), as setlists e o player
+          if (linguagem == Linguagem.ingles) RepositoryProvider(create: (_) => NavegadorOuvir()),
+          if (linguagem == Linguagem.ingles)
+            BlocProvider(
+              create: (_) => SetlistsCubit(
+                repo: setlistsBuilder?.call(user) ??
+                    (Firebase.apps.isNotEmpty ? FirestoreSetlistsRepository(user.uid) : LocalSetlistsRepository(user.uid)),
+              )..carregar(),
+            ),
+          if (linguagem == Linguagem.ingles)
+            BlocProvider(
+              create: (_) => OuvirCubit(
+                saida: saidaOuvirBuilder?.call() ?? saidaPadrao(),
+                prefs: PreferenciasOuvir(user.uid),
+                midia: SessaoMidia.criar(),
+              ),
+            ),
         ],
         child: _AppShell(home: const HomePage(), linguagem: linguagem),
       );
@@ -350,6 +384,11 @@ class _AppShell extends StatelessWidget {
               : '${linguagem!.nomeApp} — Treino de digitação',
           debugShowCheckedModeBanner: false,
           theme: Mixart.tema(),
+          // inglês: o Navigator é o do curso, e o mini-player do "🎧 Ouvir" fica embaixo de todas as rotas
+          // (no Dart/C# não há OuvirCubit: sem chave e o filho passa como veio)
+          navigatorKey: NavegadorOuvir.de(context)?.chave,
+          navigatorObservers: NavegadorOuvir.de(context)?.observadores ?? const <NavigatorObserver>[],
+          builder: (c, child) => OuvirShell.envolver(c, child!),
           home: home,
         ),
       );

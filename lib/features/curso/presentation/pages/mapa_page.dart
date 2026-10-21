@@ -13,6 +13,10 @@ import '../../../ingles/presentation/revisao_cubit.dart';
 import '../../../ingles/presentation/texto_para_licao_page.dart';
 import '../../../ingles/domain/palavras_novas.dart';
 import '../../../ingles/presentation/minhas_palavras_page.dart';
+import '../../../ingles/domain/setlist.dart';
+import '../../../ingles/presentation/ouvir/ouvir_acoes.dart';
+import '../../../ingles/presentation/ouvir/ouvir_cubit.dart';
+import '../../../ingles/presentation/ouvir/ouvir_state.dart';
 import '../../../ingles/presentation/palavras_cubit.dart';
 import '../../../ingles/presentation/treino_palavras.dart';
 import '../../../ingles/presentation/widgets/elenco_ingles.dart';
@@ -237,6 +241,7 @@ class _MapaPageState extends State<MapaPage> {
                       const SliverToBoxAdapter(child: _CartaoNovoTexto()),
                       const SliverToBoxAdapter(child: _CartaoBaralhos()),
                       const SliverToBoxAdapter(child: _CartaoLer()),
+                      const SliverToBoxAdapter(child: _CartaoOuvir()),
                       const SliverToBoxAdapter(child: _CartaoConversar()),
                       const SliverToBoxAdapter(child: _CartaoEscrever()),
                       if (ps != null) SliverToBoxAdapter(child: _CartaoMinhasPalavras(st: st)),
@@ -1011,6 +1016,11 @@ class _SecaoTrilhaIngles extends StatelessWidget {
             onTreinar: palavras.length < 2
                 ? null
                 : () => abrirTreinoPalavras(context, _paraTreinar(context, palavras), titulo: trilha.nivel),
+            // "🎧 Ouvir": a unidade inteira, na ordem, ou na setlist (só com o player na árvore)
+            onOuvir: OuvirCubit.de(context) == null
+                ? null
+                : () => tocarItens(context, [ItemSetlist.daTrilha(trilha)], titulo: 'Unidade: ${trilha.nivel}'),
+            onSetlist: OuvirCubit.de(context) == null ? null : () => porNaSetlist(context, ItemSetlist.daTrilha(trilha)),
           ),
           acao: trilha.propria
               ? Material(
@@ -1249,6 +1259,55 @@ class _CartaoLer extends StatelessWidget {
                 const SizedBox(height: 3),
                 Text('Textos curtos e os seus: toque numa palavra e ela vira um cartão de lacuna com a frase inteira.',
                     style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4)),
+              ]),
+            ),
+            Icon(Icons.chevron_right, color: Mixart.textMuted),
+          ]),
+        ),
+      ),
+    );
+  }
+}
+
+/// Inglês: o "🎧 Ouvir" — escutar as lições na ordem ou as setlists, sem digitar. Sem o player na árvore, some.
+class _CartaoOuvir extends StatelessWidget {
+  const _CartaoOuvir();
+
+  @override
+  Widget build(BuildContext context) {
+    final ouvir = OuvirCubit.de(context);
+    if (ouvir == null) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(18, 8, 18, 4),
+      child: InkWell(
+        key: const Key('ouvir-cartao-mapa'),
+        onTap: () => abrirOuvir(context),
+        borderRadius: BorderRadius.circular(Mixart.radiusLg),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: Mixart.surface,
+            border: Border.all(color: Mixart.border),
+            borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          ),
+          child: Row(children: [
+            const Text('🎧', style: TextStyle(fontSize: 26)),
+            const SizedBox(width: 14),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('Ouvir', style: Mixart.display(size: 16)),
+                const SizedBox(height: 3),
+                // escuta o player sozinho: enquanto toca, o cartão diz o quê
+                BlocBuilder<OuvirCubit, OuvirState>(
+                  bloc: ouvir,
+                  buildWhen: (a, b) => a.ativo != b.ativo || a.fonte != b.fonte,
+                  builder: (context, ov) => Text(
+                    ov.ativo && ov.fonte != null
+                        ? 'Tocando: «${ov.fonte!.titulo}» · toque para ver o player ou montar suas setlists.'
+                        : 'Escute as lições na ordem ou monte suas setlists, sem digitar.',
+                    style: Mixart.ui(size: 12, color: Mixart.textMuted).copyWith(height: 1.4),
+                  ),
+                ),
               ]),
             ),
             Icon(Icons.chevron_right, color: Mixart.textMuted),
@@ -1857,6 +1916,9 @@ void mostrarOpcoesLicao(BuildContext context, CursoState st, int t, int l, int? 
   final feita = st.licaoConcluida(t, l);
   // inglês: as palavras novas da lição (vazio até o índice ficar pronto)
   final novas = st.ehIngles ? PalavrasCubit.de(context)?.novasDaLicao(st, licao) ?? const <PalavraNova>[] : const <PalavraNova>[];
+  // inglês: o "🎧 Ouvir" (lição trancada também toca; ouvir não marca progresso)
+  final ouvir = st.ehIngles && OuvirCubit.de(context) != null;
+  final propria = st.trilhas[t].propria;
   showModalBottomSheet<void>(
     context: context,
     backgroundColor: const Color(0xFF141414),
@@ -1882,6 +1944,31 @@ void mostrarOpcoesLicao(BuildContext context, CursoState st, int t, int l, int? 
               abrirTesteTrilha(context, t);
             }
           : null,
+      // a folha fecha antes: o player e o snackbar aparecem no mapa, não atrás dela
+      onOuvir: !ouvir
+          ? null
+          : () {
+              Navigator.of(sheet).pop();
+              tocarItens(context, [ItemSetlist.daLicao(licao)], titulo: licao.nome);
+            },
+      onOuvirDaqui: !ouvir || propria
+          ? null
+          : () {
+              Navigator.of(sheet).pop();
+              tocarCursoDesde(context, licao.id);
+            },
+      onPorNaSetlist: !ouvir
+          ? null
+          : () {
+              Navigator.of(sheet).pop();
+              porNaSetlist(context, ItemSetlist.daLicao(licao));
+            },
+      onEscolherFrases: !ouvir
+          ? null
+          : () {
+              Navigator.of(sheet).pop();
+              escolherFrasesDaLicao(context, licao);
+            },
       onTeoria: () {
         Navigator.of(sheet).pop();
         Navigator.of(context).push(MaterialPageRoute<void>(
@@ -2167,6 +2254,10 @@ class _LicaoSheet extends StatelessWidget {
   /// Inglês: as palavras novas da lição e o treino delas (null = menos de 2).
   final List<PalavraNova> novas;
   final VoidCallback? onPalavras;
+
+  /// Inglês: o "🎧 Ouvir" — tocar a lição, tocar daqui até o fim do curso (null em texto próprio),
+  /// pôr na setlist e escolher frases (toque longo no ➕ também). null = sem player.
+  final VoidCallback? onOuvir, onOuvirDaqui, onPorNaSetlist, onEscolherFrases;
   const _LicaoSheet(
       {required this.licao,
       required this.feita,
@@ -2176,6 +2267,10 @@ class _LicaoSheet extends StatelessWidget {
       this.onTesteUnidade,
       this.novas = const [],
       this.onPalavras,
+      this.onOuvir,
+      this.onOuvirDaqui,
+      this.onPorNaSetlist,
+      this.onEscolherFrases,
       required this.onTeoria,
       required this.onPraticar,
       required this.onQuiz});
@@ -2183,7 +2278,8 @@ class _LicaoSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Padding(
+      // rola em tela baixa (no inglês a folha ganhou as linhas do "🎧 Ouvir")
+      child: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(20, 12, 20, 20),
         child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
           Center(
@@ -2334,6 +2430,60 @@ class _LicaoSheet extends StatelessWidget {
               ),
             ),
           ],
+          if (ingles && onOuvir != null) ...[
+            const SizedBox(height: 16),
+            Text('🎧 OUVIR — SEM DIGITAR',
+                style: Mixart.ui(size: 11, weight: FontWeight.w800, color: Mixart.textFaint).copyWith(letterSpacing: 1.4)),
+            const SizedBox(height: 8),
+            KeyedSubtree(
+              key: const Key('ouvir-licao-tocar'),
+              child: _OpcaoSheet(
+                icone: Icons.play_arrow_rounded,
+                titulo: '▶ Ouvir esta lição',
+                subtitulo: trancada
+                    ? 'Lição à frente — pode ouvir à vontade'
+                    : '${licao.trechos.length} frases na ordem do diálogo',
+                onTap: onOuvir!,
+              ),
+            ),
+            if (onOuvirDaqui != null) ...[
+              const SizedBox(height: 10),
+              KeyedSubtree(
+                key: const Key('ouvir-licao-daqui'),
+                child: _OpcaoSheet(
+                  icone: Icons.fast_forward_rounded,
+                  titulo: '⏩ Ouvir daqui até o fim do curso',
+                  subtitulo: 'esta lição e todas as seguintes, uma atrás da outra',
+                  onTap: onOuvirDaqui!,
+                ),
+              ),
+            ],
+            if (onPorNaSetlist != null) ...[
+              const SizedBox(height: 10),
+              KeyedSubtree(
+                key: const Key('ouvir-licao-add'),
+                child: _OpcaoSheet(
+                  icone: Icons.playlist_add_rounded,
+                  titulo: '➕ Pôr na setlist',
+                  subtitulo: 'a lição inteira · segure para escolher só algumas frases',
+                  onTap: onPorNaSetlist!,
+                  onLongPress: onEscolherFrases,
+                ),
+              ),
+            ],
+            if (onEscolherFrases != null) ...[
+              const SizedBox(height: 10),
+              KeyedSubtree(
+                key: const Key('ouvir-licao-frases'),
+                child: _OpcaoSheet(
+                  icone: Icons.checklist_rounded,
+                  titulo: 'Escolher frases…',
+                  subtitulo: 'marque as frases que quer ouvir ou pôr na setlist',
+                  onTap: onEscolherFrases!,
+                ),
+              ),
+            ],
+          ],
         ]),
       ),
     );
@@ -2346,17 +2496,20 @@ class _OpcaoSheet extends StatelessWidget {
   final bool destaque;
   final bool feito;
   final VoidCallback onTap;
+  final VoidCallback? onLongPress;
   const _OpcaoSheet(
       {required this.icone,
       required this.titulo,
       required this.subtitulo,
       this.destaque = false,
       this.feito = false,
-      required this.onTap});
+      required this.onTap,
+      this.onLongPress});
 
   @override
   Widget build(BuildContext context) => InkWell(
         onTap: onTap,
+        onLongPress: onLongPress,
         borderRadius: BorderRadius.circular(Mixart.radiusMd),
         child: Container(
           padding: const EdgeInsets.all(14),

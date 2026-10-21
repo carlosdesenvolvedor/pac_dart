@@ -26,6 +26,20 @@ class BocasIngles {
     return _prontas[asset] = TrilhaBoca.compacta(bruta);
   }
 
+  /// Quanto dura o áudio [asset] (s, a 1×) pela última marca da boca (`"… 222X"` = 2,22 s), sem montar
+  /// a trilha inteira; null = sem boca gerada para ele (ou [asset] null).
+  static double? duracaoDe(String? asset) {
+    if (asset == null) return null;
+    final pronta = _prontas[asset];
+    if (pronta != null) return pronta.duracao;
+    final bruta = _brutas[asset]?.trimRight();
+    if (bruta == null || bruta.length < 2) return null;
+    final ultima = bruta.substring(bruta.lastIndexOf(' ') + 1);
+    if (ultima.length < 2) return null;
+    final cs = int.tryParse(ultima.substring(0, ultima.length - 1));
+    return cs == null ? null : cs / 100;
+  }
+
   /// Só para testes.
   static void limpar() {
     _brutas.clear();

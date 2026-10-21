@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../core/som/sons.dart';
 import '../domain/boca.dart';
+import '../domain/saida_audio.dart';
 import 'audio_nativo.dart';
 import 'audio_usuario.dart';
 import 'bocas_ingles.dart';
@@ -66,6 +67,10 @@ class VozIngles {
   /// Cada fala nova invalida a anterior que ainda esperava o áudio baixar.
   int _vez = 0;
 
+  /// Falas DESTA instância ainda soando (ou esperando o áudio): com zero, o [parar] não corta as outras
+  /// vozes do app — a página que fecha sem ter falado nada não pausa o player do "🎧 Ouvir" (FASE-8).
+  int _emCurso = 0;
+
   VozIngles({this.tocarClipe});
 
   /// Velocidade normal e a lenta (🐢) no `rate` do Web Speech — abaixo de
@@ -106,17 +111,36 @@ class VozIngles {
   /// dá `await`.
   Future<void> falar(String frase, {bool? lenta}) async {
     final minha = ++_vez;
+    final g = ++_vezGlobal;
     final devagar = lenta ?? lentaPorPadrao;
+    _emCurso++;
     try {
-      await _falar(frase, devagar, minha);
+      await _falar(
+        frase,
+        minha,
+        vGravada: devagar ? velocidadeGravadaLenta : velocidadeGravada,
+        vSintetica: devagar ? velocidadeLenta : velocidadeNormal,
+        segPalavra: devagar ? segPorPalavraLenta : segPorPalavra,
+      );
     } finally {
-      // acabou (ou foi cortada por outra, que já se anunciou): a boca fecha
-      if (minha == _vez) falando.value = null;
+      _emCurso--;
+      _fecharBoca(minha, g);
     }
   }
 
+  /// Acabou (ou foi cortada por outra, que já se anunciou): a boca fecha — mas só se ninguém do app
+  /// falou depois ([vezGlobal]) ou se o que está anunciado ainda é a fala DESTA instância. Assim o player
+  /// cortado não fecha a boca de quem o cortou (FASE-8).
+  void _fecharBoca(int minha, int g) {
+    if (minha != _vez) return;
+    if (g == _vezGlobal || (falando.value != null && identical(falando.value, _meuAnuncio))) falando.value = null;
+  }
+
+  /// O último [FalaEmCurso] que esta instância anunciou.
+  FalaEmCurso? _meuAnuncio;
+
   void _anuncia(String frase, TrilhaBoca boca, {double velocidade = 1, bool gravacao = false}) {
-    falando.value = FalaEmCurso(
+    falando.value = _meuAnuncio = FalaEmCurso(
       frase: frase,
       boca: boca,
       inicio: DateTime.now(),
@@ -125,10 +149,15 @@ class VozIngles {
     );
   }
 
-  TrilhaBoca _bocaDoTexto(String frase, bool devagar, {double fator = 1}) =>
-      TrilhaBoca.doTexto(frase, segPorPalavra: (devagar ? segPorPalavraLenta : segPorPalavra) * fator);
-
-  Future<void> _falar(String frase, bool devagar, int minha) async {
+  /// [vGravada] = `rate` do mp3/áudio do aluno; [vSintetica] = `rate` do Web Speech; [segPalavra] = a boca
+  /// estimada pelo texto (o áudio do aluno e o mp3 sem boca gerada usam 80% dela).
+  Future<void> _falar(
+    String frase,
+    int minha, {
+    required double vGravada,
+    required double vSintetica,
+    required double segPalavra,
+  }) async {
     try {
       // 1. o áudio que o aluno anexou à frase
       if (AudioUsuario.tem(frase)) {
@@ -136,27 +165,46 @@ class VozIngles {
         if (minha != _vez) return; // outra fala assumiu enquanto o áudio baixava
         if (meu != null) {
           // o áudio do aluno não tem boca gerada: segue o texto
-          _anuncia(frase, _bocaDoTexto(frase, devagar, fator: .8));
-          if (await (tocarClipe ?? fala.tocarBytes)(meu.bytes, meu.mime, devagar ? velocidadeGravadaLenta : velocidadeGravada)) {
+          _anuncia(frase, TrilhaBoca.doTexto(frase, segPorPalavra: segPalavra * .8));
+          if (await (tocarClipe ?? fala.tocarBytes)(meu.bytes, meu.mime, vGravada)) {
             return;
           }
         }
       }
       final gravacao = AudioNativo.paraTocar(frase);
       if (gravacao != null) {
-        final v = devagar ? velocidadeGravadaLenta : velocidadeGravada;
         final boca = BocasIngles.de(gravacao);
-        _anuncia(frase, boca ?? _bocaDoTexto(frase, devagar, fator: .8), velocidade: v, gravacao: boca != null);
-        if (await fala.tocar(gravacao, v)) return;
+        _anuncia(
+          frase,
+          boca ?? TrilhaBoca.doTexto(frase, segPorPalavra: segPalavra * .8),
+          velocidade: vGravada,
+          gravacao: boca != null,
+        );
+        if (await fala.tocar(gravacao, vGravada)) return;
         if (minha != _vez) return;
       }
-      _anuncia(frase, _bocaDoTexto(frase, devagar));
-      await fala.falar(frase, devagar ? velocidadeLenta : velocidadeNormal);
+      _anuncia(frase, TrilhaBoca.doTexto(frase, segPorPalavra: segPalavra));
+      await fala.falar(frase, vSintetica);
     } catch (_) {}
   }
 
+  /// Cala o que ESTA instância está falando. Sem fala dela em curso não mexe em nada das outras vozes
+  /// (nem no player do "🎧 Ouvir"): fechar uma página que não falou nada não corta ninguém.
   Future<void> parar() async {
     _vez++;
+    if (_emCurso == 0) return;
+    _calarGlobal();
+  }
+
+  /// Cala QUALQUER voz do app, desta instância ou não (o player também) — o microfone abrindo: senão o
+  /// reconhecedor ouve o próprio app.
+  Future<void> calarTudo() async {
+    _calarGlobal();
+    await parar();
+  }
+
+  void _calarGlobal() {
+    _vezGlobal++;
     falando.value = null;
     try {
       fala.parar();
@@ -172,4 +220,122 @@ class VozIngles {
 
   /// A voz em uso (null fora do navegador ou antes da 1ª fala).
   String? get vozAtual => fala.vozAtual;
+
+  // ── "🎧 Ouvir" (FASE-8) ──────────────────────────────────────────────────
+
+  /// Contador de falas de TODAS as instâncias (a `_vez` é de cada uma): o player sabe se outra voz do
+  /// app o cortou. Sobe já no começo de [falar], [falarNoPlayer], [falarPt], [silencio] e no [parar] que
+  /// cala uma fala de verdade.
+  static int _vezGlobal = 0;
+  static int get vezGlobal => _vezGlobal;
+  /// O maior pedaço de silêncio tocado de uma vez no `<audio>` (os mais longos vão em pedaços).
+  static const _silencioMaxMs = 16000;
+
+  /// Fala do player: ignora [lentaPorPadrao]; mp3 e áudio do aluno a `rate = fator`, Web Speech a
+  /// `clamp(.95 * fator, .6, 1.2)`. [FimDaFala.cortada] = outra fala do app (ou um [parar]) entrou no meio.
+  Future<FimDaFala> falarNoPlayer(String frase, {required double fator}) async {
+    final minha = ++_vez;
+    final g = ++_vezGlobal;
+    final f = fator <= 0 ? 1.0 : fator;
+    _emCurso++;
+    try {
+      await _falar(
+        frase,
+        minha,
+        vGravada: f,
+        vSintetica: (velocidadeNormal * f).clamp(.6, 1.2).toDouble(),
+        segPalavra: segPorPalavra / f,
+      );
+    } finally {
+      _emCurso--;
+      _fecharBoca(minha, g);
+    }
+    return g == _vezGlobal ? FimDaFala.acabou : FimDaFala.cortada;
+  }
+
+  /// A tradução na voz pt-BR do sistema (sem boca); sem voz pt-BR → [FimDaFala.semVoz].
+  Future<FimDaFala> falarPt(String texto, {double fator = 1}) async {
+    final g = ++_vezGlobal;
+    _vez++; // uma fala desta instância que ainda esperava o áudio não toca mais por cima
+    falando.value = null; // a voz do sistema corta o que estiver soando: nenhuma boca segue mexendo
+    var falou = false;
+    _emCurso++;
+    try {
+      falou = await fala.falarEm(texto, (velocidadeNormal * fator).clamp(.6, 1.2).toDouble(), 'pt-BR');
+    } catch (_) {
+    } finally {
+      _emCurso--;
+    }
+    if (g != _vezGlobal) return FimDaFala.cortada;
+    return falou ? FimDaFala.acabou : FimDaFala.semVoz;
+  }
+
+  /// Silêncio de [d]. No navegador ele TOCA no mesmo `<audio>` (um WAV de zeros): a aba segue "tocando
+  /// som" e os intervalos não dependem de timer; fora dele é um `Future.delayed`. Nunca anuncia boca.
+  Future<FimDaFala> silencio(Duration d) async {
+    final g = ++_vezGlobal;
+    _emCurso++;
+    try {
+      if (kIsWeb) {
+        falando.value = null; // o silêncio toma o `<audio>`: quem falava parou de verdade
+        var resta = d.inMilliseconds;
+        while (resta > 0 && g == _vezGlobal) {
+          final ms = resta > _silencioMaxMs ? _silencioMaxMs : resta;
+          await fala.tocarSilencio(ms);
+          resta -= ms;
+        }
+      } else if (d > Duration.zero) {
+        await Future<void>.delayed(d);
+      }
+    } catch (_) {
+    } finally {
+      _emCurso--;
+    }
+    return g == _vezGlobal ? FimDaFala.acabou : FimDaFala.cortada;
+  }
+
+  /// Segundos da fala a 1× (a última marca da boca do mp3, ou palavras × [segPorPalavra]).
+  static double duracaoDe(String frase) {
+    final pelaBoca = BocasIngles.duracaoDe(AudioNativo.paraTocar(frase));
+    if (pelaBoca != null && pelaBoca > 0) return pelaBoca;
+    return _palavras(frase) * segPorPalavra;
+  }
+
+  static int _palavras(String s) => s.trim().split(RegExp(r'\s+')).where((p) => p.isNotEmpty).length;
+
+  /// Começa a baixar o mp3 da frase (sem tocar). Nunca lança.
+  static void preaquecer(String frase) {
+    try {
+      final asset = AudioNativo.paraTocar(frase);
+      if (asset != null) fala.preaquecer(asset);
+    } catch (_) {}
+  }
+
+  /// A página está escondida (aba em segundo plano / tela apagada)? Só o navegador sabe; fora dele, false.
+  static bool get paginaOculta {
+    try {
+      return fala.oculto;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  static Future<bool>? _temVozPt;
+  static DateTime? _semVozPtDesde;
+
+  /// O navegador tem voz pt-BR para a tradução do player? Fora do navegador assume que sim (o aviso é só
+  /// da web). O "sim" vale a sessão toda; o "não" é perguntado de novo depois de 10 s (as vozes podem
+  /// carregar tarde, como no Chrome do Android). Nunca lança.
+  static Future<bool> temVozPt() {
+    if (!kIsWeb) return Future.value(true);
+    final nao = _semVozPtDesde;
+    if (nao != null && DateTime.now().difference(nao) > const Duration(seconds: 10)) {
+      _temVozPt = null;
+      _semVozPtDesde = null;
+    }
+    return _temVozPt ??= fala.temVozEm('pt').catchError((_) => false).then((tem) {
+      if (!tem) _semVozPtDesde = DateTime.now();
+      return tem;
+    });
+  }
 }

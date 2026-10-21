@@ -5,6 +5,7 @@ import '../../../core/theme/mixart.dart';
 import '../../arcade/presentation/arcade_page.dart';
 import '../../curso/presentation/bloc/curso_bloc.dart';
 import '../data/voz_ingles.dart';
+import 'ouvir/ouvir_acoes.dart' show rotaArcade;
 import 'palavras_cubit.dart';
 import 'treino_palavras.dart';
 
@@ -37,7 +38,8 @@ void jogarComTeimosas(BuildContext context, List<String> chaves, {bool dentroDoJ
       if (cubit.comoPalavraNova(k.toLowerCase()) case final p when p.deJogo) p.en,
   ]);
   if (dentroDoJogo) return;
-  Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const ArcadePage()));
+  Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (_) => const ArcadePage(), settings: const RouteSettings(name: rotaArcade)));
 }
 
 /// "📝 Virar lição": uma lição de texto com frases do curso que têm [chaves] (fora de [evitar], as frases

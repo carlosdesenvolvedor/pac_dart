@@ -13,6 +13,9 @@ import '../../../auth/presentation/auth_cubit.dart';
 import '../../../auth/presentation/excluir_conta_dialog.dart';
 import '../../../habito/presentation/widgets/chip_sequencia.dart';
 import '../../../ingles/presentation/fixacao.dart';
+import '../../../ingles/presentation/ouvir/ouvir_acoes.dart';
+import '../../../ingles/presentation/ouvir/ouvir_cubit.dart';
+import '../../../ingles/presentation/ouvir/ouvir_state.dart';
 import '../../../ingles/presentation/revisao_cubit.dart';
 import '../../../ranking/presentation/ranking_page.dart';
 import '../bloc/typing_bloc.dart';
@@ -99,7 +102,8 @@ class _HudState extends State<Hud> {
               icone: Icons.sports_esports_outlined,
               ligado: false,
               onTap: () => Navigator.of(context).push(
-                MaterialPageRoute<void>(builder: (_) => const ArcadePage()),
+                // com o nome, o mini-player do "🎧 Ouvir" some (e pausa) enquanto o Arcade está aberto
+                MaterialPageRoute<void>(builder: (_) => const ArcadePage(), settings: const RouteSettings(name: rotaArcade)),
               ),
             ),
             _Toggle(
@@ -131,6 +135,19 @@ class _HudState extends State<Hud> {
                   icone: Icons.campaign_outlined,
                   ligado: vozOn,
                   onTap: () => context.read<VozCubit>().alternar(),
+                ),
+              ),
+            // inglês: escutar as lições na ordem ou as setlists, sem digitar (aceso enquanto toca)
+            if (OuvirCubit.de(context) != null)
+              BlocBuilder<OuvirCubit, OuvirState>(
+                buildWhen: (a, b) => a.ativo != b.ativo,
+                builder: (context, ov) => _Toggle(
+                  key: const Key('ouvir-hud'),
+                  rotulo: 'Ouvir',
+                  // headset, não headphones: o 🎧 (headphones) do palco é o "seu áudio" da frase
+                  icone: Icons.headset_rounded,
+                  ligado: ov.ativo,
+                  onTap: () => abrirOuvir(context),
                 ),
               ),
             _Toggle(
@@ -287,7 +304,7 @@ class _Toggle extends StatelessWidget {
   final IconData icone;
   final bool ligado;
   final VoidCallback onTap;
-  const _Toggle({required this.rotulo, required this.icone, required this.ligado, required this.onTap});
+  const _Toggle({super.key, required this.rotulo, required this.icone, required this.ligado, required this.onTap});
   @override
   Widget build(BuildContext context) => InkWell(
         onTap: onTap,

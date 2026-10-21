@@ -22,7 +22,9 @@ import '../domain/avaliacao.dart';
 import '../domain/entrada_resposta.dart';
 import '../domain/revisao.dart';
 import '../domain/roteiro.dart';
+import '../domain/setlist.dart';
 import 'fixacao.dart';
+import 'ouvir/ouvir_acoes.dart';
 import 'zona_visivel.dart';
 import 'revisao_cubit.dart';
 import '../../../core/som/sons.dart';
@@ -868,7 +870,13 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
               const SizedBox(height: 12),
               Column(key: _zonaDigitacao, crossAxisAlignment: CrossAxisAlignment.start, children: [
                 TraducaoCard(
-                  acaoAudio: BotaoAudioDaFrase(frase: _trecho.cod, voz: _voz, redondo: true),
+                  // 🎧 o áudio do aluno e ➕ "Pôr na setlist" do "🎧 Ouvir" (o ➕ some sem o player na árvore)
+                  acaoAudio: Row(mainAxisSize: MainAxisSize.min, children: [
+                    BotaoAudioDaFrase(frase: _trecho.cod, voz: _voz, redondo: true),
+                    const SizedBox(width: 6),
+                    BotaoPorNaSetlist(
+                        key: const Key('botao-setlist'), item: () => ItemSetlist.daFrase(_trecho, licao: curso.licao)),
+                  ]),
                   rosto: _trecho.quem.isEmpty
                       ? null
                       : (tamanho) => PersonagemFalante(
@@ -923,7 +931,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
                       : const [],
                   // a voz do app cala enquanto a pessoa fala (senão o microfone a ouve)
                   onMicrofone: (ouvindo) {
-                    if (ouvindo) _voz.parar();
+                    if (ouvindo) _voz.calarTudo();
                   },
                 ),
                 const SizedBox(height: 10),

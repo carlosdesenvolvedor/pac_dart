@@ -8,6 +8,7 @@ import '../data/voz_ingles.dart';
 import '../domain/palavras_novas.dart';
 import '../domain/roteiro_treino.dart';
 import 'acoes_teimosas.dart' show virarLicaoCom;
+import 'ouvir/ouvir_acoes.dart' show rotaArcade;
 import 'palavras_cubit.dart';
 import 'treino_palavras_page.dart';
 
@@ -86,7 +87,8 @@ Future<void> abrirTreinoPalavras(
   if (r.jogar && !antesDaLicao) {
     cubit?.focar([for (final p in r.palavras) if (p.deJogo) p.en]);
     if (jaNoArcade) return;
-    await nav.push(MaterialPageRoute<void>(builder: (_) => const ArcadePage()));
+    await nav.push(MaterialPageRoute<void>(
+        builder: (_) => const ArcadePage(), settings: const RouteSettings(name: rotaArcade)));
   }
 }
 

@@ -15,6 +15,7 @@ import '../domain/cartoes_texto.dart';
 import '../domain/palavras_novas.dart';
 import '../domain/teimosas.dart';
 import 'acoes_teimosas.dart';
+import 'ouvir/ouvir_acoes.dart' show rotaArcade;
 import 'palavras_cubit.dart';
 import 'treino_palavras.dart';
 import 'widgets/adicionar_palavra_sheet.dart';
@@ -225,7 +226,8 @@ class _MinhasPalavrasPageState extends State<MinhasPalavrasPage> {
       abrir();
       return;
     }
-    unawaited(Navigator.of(context).push(MaterialPageRoute<void>(builder: (_) => const ArcadePage())));
+    unawaited(Navigator.of(context).push(
+        MaterialPageRoute<void>(builder: (_) => const ArcadePage(), settings: const RouteSettings(name: rotaArcade))));
   }
 
   Future<void> _adicionar() async {

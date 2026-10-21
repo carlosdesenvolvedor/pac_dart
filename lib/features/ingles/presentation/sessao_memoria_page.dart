@@ -435,7 +435,7 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
                 ? alternativasDe(item.trecho.cod, declaradas: item.trecho.alternativas)
                 : const [],
             onMicrofone: (ouvindo) {
-              if (ouvindo) _voz.parar();
+              if (ouvindo) _voz.calarTudo();
             },
           ),
           const SizedBox(height: 12),

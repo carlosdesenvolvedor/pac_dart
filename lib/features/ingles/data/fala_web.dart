@@ -46,54 +46,116 @@ void _encerrarVez([Completer<void>? so]) {
 
 web.SpeechSynthesis get _s => web.window.speechSynthesis;
 
+/// Até quando não vale esperar as vozes de novo: a última espera de 3 s voltou sem nenhuma (navegador sem
+/// Web Speech, comum no Linux). Um `voiceschanged` solta antes. Sem isso cada frase (e cada tradução do
+/// player) esperaria 3 s em silêncio.
+DateTime? _semVozesAte;
+
 Future<List<web.SpeechSynthesisVoice>> _vozes() async {
   var lista = _s.getVoices().toDart;
   if (lista.isNotEmpty) return lista;
+  final ate = _semVozesAte;
+  if (ate != null && DateTime.now().isBefore(ate)) return lista;
   final pronto = Completer<void>();
   _s.onvoiceschanged = ((web.Event _) {
+    _semVozesAte = null;
     if (!pronto.isCompleted) pronto.complete();
   }).toJS;
   for (var i = 0; i < 12 && lista.isEmpty; i++) {
     await Future.any([pronto.future, Future<void>.delayed(const Duration(milliseconds: 250))]);
     lista = _s.getVoices().toDart;
   }
+  _semVozesAte = lista.isEmpty ? DateTime.now().add(const Duration(seconds: 30)) : null;
   return lista;
 }
 
 Future<void> falar(String texto, double velocidade) async {
+  await falarEm(texto, velocidade, 'en-US');
+}
+
+/// As vozes já escolhidas dos outros idiomas (o inglês fica em [_voz]); null = procurou e não há.
+final Map<String, web.SpeechSynthesisVoice?> _vozPorIdioma = {};
+
+/// `pt-BR` → `pt`.
+String _idiomaDe(String lang) => lang.toLowerCase().replaceAll('_', '-').split('-').first;
+
+/// Fala [texto] no Web Speech no idioma [lang] (`en-US`, `pt-BR`…), com a melhor voz dele ([notaDaVoz]).
+/// Mesmo contrato do [falar] (só completa quando acaba, é cortada ou falha). false = não há voz desse
+/// idioma no navegador (só para os idiomas que não são o inglês — o inglês sempre tenta).
+Future<bool> falarEm(String texto, double velocidade, String lang) async {
   final g = ++_geracao;
   final fim = _novaVez();
   _pararGravacao();
-  if (!_vozBuscada || _voz == null) {
-    final lista = await _vozes();
-    _vozBuscada = true;
-    web.SpeechSynthesisVoice? melhor;
-    var nota = -1;
-    for (final v in lista) {
-      final n = notaDaVoz(v.name, v.lang, local: v.localService);
-      if (n > nota) {
-        nota = n;
-        melhor = v;
-      }
+  final idioma = _idiomaDe(lang);
+  final ingles = idioma == 'en';
+  web.SpeechSynthesisVoice? voz;
+  if (ingles) {
+    if (!_vozBuscada || _voz == null) {
+      final lista = await _vozes();
+      _vozBuscada = true;
+      _voz = _melhorVoz(lista, 'en');
     }
-    _voz = melhor;
+    voz = _voz;
+  } else {
+    if (!_vozPorIdioma.containsKey(idioma)) {
+      final lista = await _vozes();
+      final melhor = _melhorVoz(lista, idioma);
+      // lista vazia = as vozes ainda não carregaram: procura de novo na próxima
+      if (lista.isNotEmpty) _vozPorIdioma[idioma] = melhor;
+      voz = melhor;
+    } else {
+      voz = _vozPorIdioma[idioma];
+    }
+    if (voz == null) {
+      if (g == _geracao) _encerrarVez(fim);
+      return false;
+    }
   }
-  if (g != _geracao) return; // outra fala já assumiu (e já encerrou esta vez)
+  if (g != _geracao) return true; // outra fala já assumiu (e já encerrou esta vez)
   _s.cancel();
   final u = web.SpeechSynthesisUtterance(texto)
-    ..lang = 'en-US'
+    ..lang = ingles ? 'en-US' : lang
     ..rate = velocidade;
-  final voz = _voz;
   if (voz != null) u.voice = voz;
   u.onerror = ((web.SpeechSynthesisErrorEvent e) {
     // voz de rede que falhou: tenta outra na próxima fala
-    if (e.error == 'network' || e.error == 'synthesis-failed') _voz = null;
+    if (e.error == 'network' || e.error == 'synthesis-failed') {
+      if (ingles) {
+        _voz = null;
+      } else {
+        _vozPorIdioma.remove(idioma);
+      }
+    }
     _encerrarVez(fim);
   }).toJS;
   u.onend = ((web.Event _) => _encerrarVez(fim)).toJS;
   _corrente = u;
   _s.speak(u);
   await fim.future;
+  return true;
+}
+
+web.SpeechSynthesisVoice? _melhorVoz(List<web.SpeechSynthesisVoice> lista, String idioma) {
+  web.SpeechSynthesisVoice? melhor;
+  var nota = -1;
+  for (final v in lista) {
+    final n = notaDaVoz(v.name, v.lang, local: v.localService, idioma: idioma);
+    if (n > nota) {
+      nota = n;
+      melhor = v;
+    }
+  }
+  return melhor;
+}
+
+/// Há voz no navegador cujo idioma começa com [prefixo] (ex. `pt`)?
+Future<bool> temVozEm(String prefixo) async {
+  try {
+    final p = prefixo.toLowerCase().replaceAll('_', '-');
+    return (await _vozes()).any((v) => v.lang.toLowerCase().replaceAll('_', '-').startsWith(p));
+  } catch (_) {
+    return false;
+  }
 }
 
 void parar() {
@@ -205,4 +267,124 @@ double? get posicaoGravacao {
   final a = _audio;
   if (a == null || a.paused || a.ended) return null;
   return a.currentTime.toDouble();
+}
+
+// ── "🎧 Ouvir" (FASE-8) ──────────────────────────────────────────────────
+
+/// O silêncio tocado no `<audio>` (WAV 8 bits, 8 kHz, mono: 16 s = 128 KB), por "balde" — de 100 ms até
+/// 2 s, de 500 ms acima disso (as pausas longas variam muito e ±250 ms não se nota). Guarda só os
+/// [_maxSilencios] usados mais recentemente (a ordem do mapa = do uso mais antigo ao mais novo); o que sai
+/// tem a URL (`blob:`) liberada — menos o que está no `<audio>` agora.
+final Map<int, String> _silencios = {};
+
+const _taxaSilencio = 8000;
+const _maxSilencios = 24;
+
+String _urlDoSilencio(int ms) {
+  final m = ms.clamp(100, 16000);
+  final balde = m <= 2000 ? (m + 50) ~/ 100 * 100 : ((m + 250) ~/ 500 * 500).clamp(2000, 16000);
+  final ja = _silencios.remove(balde);
+  if (ja != null) return _silencios[balde] = ja; // volta para o fim (o mais novo)
+  final url = _wavDeSilencio(balde);
+  _silencios[balde] = url;
+  while (_silencios.length > _maxSilencios) {
+    final velho = _silencios.entries.firstWhere((e) => e.value != _srcAtual, orElse: () => _silencios.entries.first);
+    if (velho.value == _srcAtual) break; // (só sobrou o que está tocando)
+    _silencios.remove(velho.key);
+    try {
+      web.URL.revokeObjectURL(velho.value);
+    } catch (_) {}
+  }
+  return url;
+}
+
+String _wavDeSilencio(int ms) {
+  final dados = ms * _taxaSilencio ~/ 1000; // 1 byte por amostra
+  final b = ByteData(44 + dados);
+  void texto(int o, String s) {
+    for (var i = 0; i < s.length; i++) {
+      b.setUint8(o + i, s.codeUnitAt(i));
+    }
+  }
+
+  texto(0, 'RIFF');
+  b.setUint32(4, 36 + dados, Endian.little);
+  texto(8, 'WAVE');
+  texto(12, 'fmt ');
+  b.setUint32(16, 16, Endian.little); // tamanho do bloco fmt
+  b.setUint16(20, 1, Endian.little); // PCM
+  b.setUint16(22, 1, Endian.little); // mono
+  b.setUint32(24, _taxaSilencio, Endian.little);
+  b.setUint32(28, _taxaSilencio, Endian.little); // bytes por segundo
+  b.setUint16(32, 1, Endian.little); // bytes por amostra
+  b.setUint16(34, 8, Endian.little); // bits
+  texto(36, 'data');
+  b.setUint32(40, dados, Endian.little);
+  final bytes = b.buffer.asUint8List();
+  bytes.fillRange(44, 44 + dados, 0x80); // PCM de 8 bits é sem sinal: o silêncio é o meio (128)
+  return web.URL.createObjectURL(web.Blob([bytes.toJS].toJS, web.BlobPropertyBag(type: 'audio/wav')));
+}
+
+/// Toca [ms] de silêncio (até 16 s) no mesmo `<audio>` das gravações — a aba continua "tocando som", e o
+/// próximo passo vem do `ended`, não de um timer que o navegador congela em segundo plano. Mesmo contrato
+/// do [tocar]: uma fala nova ou [parar] cortam; true quando acaba (ou foi cortado). Se o navegador recusar
+/// tocar, espera [ms] num timer (cortável do mesmo jeito) e devolve false.
+Future<bool> tocarSilencio(int ms) async {
+  if (ms <= 0) return true;
+  final g = ++_geracao;
+  final fim = _novaVez();
+  try {
+    _s.cancel();
+  } catch (_) {}
+  _corrente = null;
+  try {
+    final a = _audio ??= web.HTMLAudioElement()..preload = 'auto';
+    a.pause();
+    final url = _urlDoSilencio(ms);
+    if (_srcAtual == url) {
+      a.currentTime = 0;
+    } else {
+      _srcAtual = url;
+      a.src = url;
+    }
+    a
+      ..defaultPlaybackRate = 1
+      ..playbackRate = 1
+      ..onended = ((web.Event _) => _encerrarVez(fim)).toJS
+      ..onerror = ((web.Event _) => _encerrarVez(fim)).toJS;
+    await a.play().toDart;
+    await fim.future;
+    return true;
+  } catch (_) {
+    _srcAtual = null;
+    if (g != _geracao) return true;
+    await Future.any([fim.future, Future<void>.delayed(Duration(milliseconds: ms))]);
+    if (g == _geracao) _encerrarVez(fim);
+    return false;
+  }
+}
+
+/// Os assets que já pedimos ao servidor (não pede duas vezes).
+final Set<String> _preaquecidos = {};
+
+/// Começa a baixar o áudio [asset] sem tocar (o cache do navegador entrega rápido quando a vez dele
+/// chegar). Fogo e esquece; nunca lança.
+void preaquecer(String asset) {
+  if (!_preaquecidos.add(asset)) return;
+  if (_preaquecidos.length > 400) _preaquecidos.clear();
+  try {
+    final url = ui_web.assetManager.getAssetUrl(asset);
+    web.window.fetch(url.toJS).toDart.then((_) {}, onError: (Object _) {
+      _preaquecidos.remove(asset);
+    });
+  } catch (_) {}
+}
+
+/// A página está escondida (aba em segundo plano / tela apagada)?
+bool get oculto {
+  try {
+    return web.document.visibilityState == 'hidden';
+  } catch (_) {
+    return false;
+  }
 }

@@ -8,7 +8,8 @@ import '../../../../ingles/domain/palavras_novas.dart';
 import '../../../domain/curriculo.dart';
 
 /// Abre o guia da [trilha]. [feitas][l] marca as lições concluídas; [onTreinar] (null = sem palavras
-/// prontas) treina as [palavras].
+/// prontas) treina as [palavras]. [onOuvir] / [onSetlist] (inglês com o "🎧 Ouvir"; null = sem os botões)
+/// tocam a unidade inteira ou a põem na setlist — a folha fecha antes.
 Future<void> abrirGuiaTrilha(
   BuildContext context, {
   required Trilha trilha,
@@ -17,6 +18,8 @@ Future<void> abrirGuiaTrilha(
   required List<bool> feitas,
   List<PalavraNova> palavras = const [],
   VoidCallback? onTreinar,
+  VoidCallback? onOuvir,
+  VoidCallback? onSetlist,
 }) =>
     showModalBottomSheet<void>(
       context: context,
@@ -35,6 +38,18 @@ Future<void> abrirGuiaTrilha(
                 Navigator.of(sheet).pop();
                 onTreinar();
               },
+        onOuvir: onOuvir == null
+            ? null
+            : () {
+                Navigator.of(sheet).pop();
+                onOuvir();
+              },
+        onSetlist: onSetlist == null
+            ? null
+            : () {
+                Navigator.of(sheet).pop();
+                onSetlist();
+              },
       ),
     );
 
@@ -45,6 +60,7 @@ class _GuiaTrilha extends StatelessWidget {
   final List<bool> feitas;
   final List<PalavraNova> palavras;
   final VoidCallback? onTreinar;
+  final VoidCallback? onOuvir, onSetlist;
 
   const _GuiaTrilha({
     required this.trilha,
@@ -53,6 +69,8 @@ class _GuiaTrilha extends StatelessWidget {
     required this.feitas,
     required this.palavras,
     this.onTreinar,
+    this.onOuvir,
+    this.onSetlist,
   });
 
   @override
@@ -80,6 +98,19 @@ class _GuiaTrilha extends StatelessWidget {
             if (trilha.descricao.isNotEmpty) ...[
               const SizedBox(height: 6),
               Text(trilha.descricao, style: Mixart.ui(size: 13, color: Mixart.textMuted).copyWith(height: 1.5)),
+            ],
+            // inglês: "🎧 Ouvir" a unidade inteira, sem digitar, ou ➕ pôr na setlist
+            if (onOuvir != null || onSetlist != null) ...[
+              const SizedBox(height: 14),
+              Row(children: [
+                if (onOuvir != null)
+                  Expanded(
+                    child: Botao3D(
+                        key: const Key('ouvir-unidade-tocar'), rotulo: '🎧 Ouvir a unidade', cor: cor, onTap: onOuvir),
+                  ),
+                if (onOuvir != null && onSetlist != null) const SizedBox(width: 10),
+                if (onSetlist != null) _BotaoSetlist(cor: cor, onTap: onSetlist!),
+              ]),
             ],
             if (palavras.isNotEmpty) ...[
               const SizedBox(height: 18),
@@ -145,4 +176,34 @@ class _GuiaTrilha extends StatelessWidget {
       ),
     );
   }
+}
+
+/// ➕ redondo "Pôr na setlist" do guia (48 px de alvo).
+class _BotaoSetlist extends StatelessWidget {
+  final Color cor;
+  final VoidCallback onTap;
+  const _BotaoSetlist({required this.cor, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+        button: true,
+        label: 'Pôr na setlist',
+        child: Tooltip(
+          message: 'Pôr na setlist',
+          child: Material(
+            color: Mixart.bg,
+            shape: CircleBorder(side: BorderSide(color: cor, width: 1.5)),
+            child: InkWell(
+              key: const Key('ouvir-unidade-add'),
+              customBorder: const CircleBorder(),
+              onTap: onTap,
+              child: SizedBox(
+                width: 48,
+                height: 48,
+                child: Icon(Icons.playlist_add_rounded, size: 22, color: cor),
+              ),
+            ),
+          ),
+        ),
+      );
 }
