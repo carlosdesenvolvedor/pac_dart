@@ -401,6 +401,8 @@ class _TurismoPageState extends State<TurismoPage>
         vocabulario: vocab == null ? null : p.vocabularioCom(vocab),
         traducoes: vocab?.traducoes ?? const {},
         esperaPalavra: true,
+        // inglês: sem "tempo esgotado" — quem está aprendendo termina a pista; o tempo vale a medalha
+        semLimiteDeTempo: BancoArcade.soDigitacao,
       );
       _tracado = tracadoDaPista([for (final s in _engine!.segmentos) s.curva],
           comprimento: TurismoEngine.comprimentoSegmento);
@@ -618,6 +620,7 @@ class _TurismoPageState extends State<TurismoPage>
         medalha: e.medalha,
         tempo: e.tempoFinal!,
         totalPistas: pistasGt.length,
+        chegarLibera: e.semLimiteDeTempo,
       );
       // 👻 a melhor volta vira (ou continua sendo) o fantasma da pista
       final antes = _fantasma;
@@ -1055,7 +1058,8 @@ class _TurismoPageState extends State<TurismoPage>
                 const SizedBox(height: 3),
                 Text(
                   '${emojiDaFase(p.tema)} ${nomeDaFase(p.tema)} · ${p.dificuldade} · '
-                  '${(p.distancia / 1000).toStringAsFixed(1)} km · limite ${p.tempoLimite.round()}s',
+                  '${(p.distancia / 1000).toStringAsFixed(1)} km · '
+                  '${BancoArcade.soDigitacao ? 'bronze até' : 'limite'} ${p.tempoLimite.round()}s',
                   style: Mixart.ui(size: 11, color: Mixart.textMuted),
                 ),
                 if (p.tituloMusica.isNotEmpty)
@@ -1096,7 +1100,7 @@ class _TurismoPageState extends State<TurismoPage>
 
   Widget _telaCorrida(TurismoEngine e) {
     final pista = _pista!;
-    final urgente = e.tempoRestante <= 10;
+    final urgente = !e.semLimiteDeTempo && e.tempoRestante <= 10;
     return Column(children: [
       Padding(
         padding: const EdgeInsets.fromLTRB(20, 16, 20, 10),
@@ -1104,7 +1108,11 @@ class _TurismoPageState extends State<TurismoPage>
           rotulo: 'PISTA ${pista.numero}/${pistasGt.length} · ${pista.dificuldade.toUpperCase()}',
           titulo: '🏎️ ${pista.nome}',
           chips: [
-            ChipPlacar('TEMPO', _seg(e.tempoRestante), cor: urgente ? Mixart.danger : null),
+            // inglês: o tempo corre pra frente, com a melhor medalha que ainda dá
+            if (e.semLimiteDeTempo)
+              ChipPlacar('TEMPO', '${_seg(e.tempo)} ${emojisMedalha[pista.medalha(e.tempo)]}')
+            else
+              ChipPlacar('TEMPO', _seg(e.tempoRestante), cor: urgente ? Mixart.danger : null),
             _chipPulsante(e.moedas, ChipPlacar('MOEDAS', '🪙 ${e.moedas}', cor: Mixart.brand)),
             ChipPlacar('PALAVRAS', '${e.palavras}'),
             ChipPlacar('COMBO', e.multiplicador > 1 ? 'x${e.multiplicador}' : '${e.combo}/5',
@@ -1453,7 +1461,7 @@ class _TurismoPageState extends State<TurismoPage>
             ? '🏆 CAMPEÃO ${BancoArcade.linguagem.toUpperCase()} TURISMO!'
             : '🏆 CAMPEÃO DART TURISMO!')
         : chegou
-            ? '${emojisMedalha[m]} ${nomesMedalha[m].toUpperCase()}!'
+            ? (m == 0 ? '🏁 CHEGOU!' : '${emojisMedalha[m]} ${nomesMedalha[m].toUpperCase()}!')
             : '⏱ TEMPO ESGOTADO';
     final subtitulo = chegou
         ? 'Tempo ${_seg(e.tempoFinal!)} · ouro até ${_seg(pista.tempoOuro)} · prata até ${_seg(pista.tempoPrata)} · bronze até ${_seg(pista.tempoLimite)}'

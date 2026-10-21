@@ -383,12 +383,13 @@ abstract final class ProgressoTurismo {
   }
 
   /// Corrida concluída: guarda a medalha/tempo se forem melhores e libera a
-  /// próxima pista.
+  /// próxima pista (com medalha; [chegarLibera] = só chegar já libera — o inglês, sem tempo limite).
   static Future<void> registrar({
     required int pista,
     required int medalha,
     required double tempo,
     int totalPistas = 10,
+    bool chegarLibera = false,
   }) async {
     try {
       final p = await SharedPreferences.getInstance();
@@ -397,7 +398,7 @@ abstract final class ProgressoTurismo {
       }
       final antes = p.getDouble(_chaveTempo(pista));
       if (antes == null || tempo < antes) await p.setDouble(_chaveTempo(pista), tempo);
-      if (medalha > 0) {
+      if (medalha > 0 || chegarLibera) {
         final max = p.getInt(_chaveMax) ?? 1;
         final novo = (pista + 1).clamp(1, totalPistas);
         if (novo > max) await p.setInt(_chaveMax, novo);

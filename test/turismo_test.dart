@@ -376,6 +376,22 @@ void main() {
       expect(e.faixa, p.faixas.first);
     });
 
+    test('sem limite de tempo (inglês): passar do limite não acaba a corrida; chegar tarde = sem medalha', () {
+      final pista = pistasGt[0];
+      final e = TurismoEngine(pista: pista, rnd: Random(4), esperaPalavra: true, semLimiteDeTempo: true);
+      while (e.tempo < pista.tempoLimite + 5) {
+        e.tick(.1);
+      }
+      expect(e.tempoEsgotado, isFalse);
+      expect(e.correndo, isTrue);
+      final d = TurismoEngine(pista: pista, rnd: Random(4));
+      while (d.correndo && d.tempo < pista.tempoLimite + 5) {
+        d.tick(.1);
+      }
+      expect(d.tempoEsgotado, isTrue, reason: 'o padrão (Dart/C#) mantém o tempo esgotado');
+      expect(pista.medalha(pista.tempoLimite + 1), 0);
+    });
+
     test('modo setas e o padrão (sem espera) seguem como antes', () {
       final e = TurismoEngine(pista: pistasGt[0], rnd: Random(4));
       final p = e.portalAtual!;
@@ -568,6 +584,16 @@ void main() {
   });
 
   group('ProgressoTurismo', () {
+    test('inglês: chegar sem medalha também libera a próxima pista (o Dart/C# segue pedindo medalha)', () async {
+      SharedPreferences.setMockInitialValues({});
+      await ProgressoTurismo.registrar(pista: 1, medalha: 0, tempo: 500);
+      expect((await ProgressoTurismo.carregar()).pistaMax, 1);
+      await ProgressoTurismo.registrar(pista: 1, medalha: 0, tempo: 500, chegarLibera: true);
+      final e = await ProgressoTurismo.carregar();
+      expect(e.pistaMax, 2);
+      expect(e.medalhaDe(1), 0);
+    });
+
     test('guarda a melhor medalha/tempo e libera a próxima pista', () async {
       SharedPreferences.setMockInitialValues({});
       expect((await ProgressoTurismo.carregar()).pistaMax, 1);

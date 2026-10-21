@@ -352,6 +352,9 @@ class TurismoEngine {
   /// O freio automático está segurando o carro (a tela avisa "digite para passar").
   bool segurando = false;
 
+  /// Sem tempo esgotado (o inglês): a corrida só acaba na chegada; o tempo vale a medalha.
+  final bool semLimiteDeTempo;
+
   TurismoEngine({
     required this.pista,
     required this.rnd,
@@ -359,6 +362,7 @@ class TurismoEngine {
     List<String>? vocabulario,
     this.traducoes = const {},
     this.esperaPalavra = false,
+    this.semLimiteDeTempo = false,
   }) : vocabulario = vocabulario == null || vocabulario.isEmpty ? null : vocabulario {
     segmentos = _gerarPista();
     portais = _gerarPortais();
@@ -725,7 +729,7 @@ class TurismoEngine {
       velocidade = velocidade.clamp(0, velMax);
       gravacao.add(posicao);
       gravacao.add(xAtual);
-    } else if (tempo >= pista.tempoLimite) {
+    } else if (!semLimiteDeTempo && tempo >= pista.tempoLimite) {
       tempoEsgotado = true;
     }
   }
