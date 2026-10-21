@@ -27,6 +27,9 @@ class ConfigOuvir extends Equatable {
   final bool segundaDevagar;
   final PausaOuvir pausa;
   final bool mostrarTraducao;
+
+  /// A foto da cena e o emoji do sentido da frase no player e no "Tocando agora".
+  final bool mostrarImagens;
   final bool repetirTudo;
 
   const ConfigOuvir({
@@ -36,6 +39,7 @@ class ConfigOuvir extends Equatable {
     this.segundaDevagar = false,
     this.pausa = PausaOuvir.media,
     this.mostrarTraducao = true,
+    this.mostrarImagens = true,
     this.repetirTudo = false,
   });
 
@@ -46,6 +50,7 @@ class ConfigOuvir extends Equatable {
     bool? segundaDevagar,
     PausaOuvir? pausa,
     bool? mostrarTraducao,
+    bool? mostrarImagens,
     bool? repetirTudo,
   }) =>
       ConfigOuvir(
@@ -55,11 +60,12 @@ class ConfigOuvir extends Equatable {
         segundaDevagar: segundaDevagar ?? this.segundaDevagar,
         pausa: pausa ?? this.pausa,
         mostrarTraducao: mostrarTraducao ?? this.mostrarTraducao,
+        mostrarImagens: mostrarImagens ?? this.mostrarImagens,
         repetirTudo: repetirTudo ?? this.repetirTudo,
       );
 
   /// Chaves curtas: `mo` modo, `v` velocidade, `r` repetições, `d` 2ª devagar, `pa` pausa, `t` tradução,
-  /// `rt` repetir tudo.
+  /// `im` imagens, `rt` repetir tudo.
   Map<String, dynamic> toJson() => {
         'mo': modo.name,
         'v': velocidade,
@@ -67,6 +73,7 @@ class ConfigOuvir extends Equatable {
         'd': segundaDevagar,
         'pa': pausa.name,
         't': mostrarTraducao,
+        'im': mostrarImagens,
         'rt': repetirTudo,
       };
 
@@ -91,6 +98,7 @@ class ConfigOuvir extends Equatable {
       segundaDevagar: boolDe(j['d'], p.segundaDevagar),
       pausa: enumDe(PausaOuvir.values, j['pa']) ?? p.pausa,
       mostrarTraducao: boolDe(j['t'], p.mostrarTraducao),
+      mostrarImagens: boolDe(j['im'], p.mostrarImagens),
       repetirTudo: boolDe(j['rt'], p.repetirTudo),
     );
   }
@@ -105,7 +113,7 @@ class ConfigOuvir extends Equatable {
   }
 
   @override
-  List<Object?> get props => [modo, velocidade, repeticoes, segundaDevagar, pausa, mostrarTraducao, repetirTudo];
+  List<Object?> get props => [modo, velocidade, repeticoes, segundaDevagar, pausa, mostrarTraducao, mostrarImagens, repetirTudo];
 }
 
 /// Um passo do roteiro de uma faixa.

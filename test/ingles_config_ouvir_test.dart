@@ -114,6 +114,7 @@ void main() {
         segundaDevagar: true,
         pausa: PausaOuvir.eco,
         mostrarTraducao: false,
+        mostrarImagens: false,
         repetirTudo: true,
       );
       expect(ConfigOuvir.fromJson(jsonDecode(jsonEncode(c.toJson())) as Map), c);
@@ -133,6 +134,8 @@ void main() {
       expect(c.modo, ModoOuvir.inglesPortugues);
       expect(ConfigOuvir.fromJson({'r': 0}).repeticoes, 1);
       expect(ConfigOuvir.fromJson({'v': double.nan}).velocidade, 1.0);
+      expect(ConfigOuvir.fromJson({'im': 'não'}).mostrarImagens, isTrue, reason: 'pref antiga/estragada = imagens ligadas');
+      expect(ConfigOuvir.fromJson({'im': false}).mostrarImagens, isFalse);
     });
   });
 

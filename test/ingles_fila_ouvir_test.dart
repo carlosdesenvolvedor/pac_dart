@@ -184,4 +184,17 @@ void main() {
     expect(formatarDuracao(3600), '1 h');
     expect(formatarDuracao(14280), '3 h 58 min');
   });
+
+  test('a faixa leva a imagem da frase, os emojis e a foto da cena (o player mostra)', () {
+    const li = Licao(nome: 'Oi', emoji: '👋', id: 'img.oi', imagem: '💻👋☀️', foto: 'assets/x.jpg', fotoCredito: 'Fulano', trechos: [
+      Trecho(cod: 'Good morning!', dica: 'Bom dia!', out: '', id: 'g-1', imagem: '☀️👋'),
+    ]);
+    final f = resolverFila(IndiceOuvir.de([const Trilha(nivel: 'X', emoji: '🙂', licoes: [li])]), [_i(TipoItem.licao, 'img.oi')],
+            duracaoDe: (_) => 1, temGravacao: (_) => false)
+        .faixas
+        .single;
+    expect((f.imagem, f.cena, f.foto, f.fotoCredito), ('☀️👋', '💻👋☀️', 'assets/x.jpg', 'Fulano'));
+    expect(f.temImagem, isTrue);
+    expect(const Faixa(chave: 'k', en: 'Hi.').temImagem, isFalse, reason: 'frase órfã não tem imagem');
+  });
 }

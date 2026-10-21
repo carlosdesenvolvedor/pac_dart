@@ -17,6 +17,10 @@ class Faixa {
   /// Duração a 1×.
   final double segundos;
 
+  /// A imagem do sentido da frase (1–3 emojis, `Trecho.imagem`), os emojis da cena da lição
+  /// (`Licao.imagem`) e a foto real da cena (asset, `Licao.foto`). Vazios numa frase órfã.
+  final String imagem, cena, foto, fotoCredito;
+
   const Faixa({
     required this.chave,
     required this.en,
@@ -31,7 +35,14 @@ class Faixa {
     this.primeiraDaLicao = false,
     this.temGravacao = false,
     this.segundos = 0,
+    this.imagem = '',
+    this.cena = '',
+    this.foto = '',
+    this.fotoCredito = '',
   });
+
+  /// Tem alguma imagem para mostrar (foto ou emojis).
+  bool get temImagem => foto.isNotEmpty || imagem.trim().isNotEmpty || cena.trim().isNotEmpty;
 }
 
 /// Onde cada frase/lição/unidade mora nas trilhas (para resolver as refs dos itens).
@@ -214,6 +225,10 @@ FilaOuvir resolverFila(
       primeiraDaLicao: primeira,
       temGravacao: temGravacao(fr.cod),
       segundos: duracaoDe(fr.cod),
+      imagem: fr.imagem,
+      cena: li.imagem,
+      foto: li.foto,
+      fotoCredito: li.fotoCredito,
     ));
   }
 

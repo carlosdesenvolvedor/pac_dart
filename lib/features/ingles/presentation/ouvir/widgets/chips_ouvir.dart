@@ -127,6 +127,14 @@ class ChipsOuvir extends StatelessWidget {
           onTap: () => onConfig(c.copyWith(mostrarTraducao: !c.mostrarTraducao)),
         ),
         ChipOuvir(
+          key: const Key('chip-imagens'),
+          rotulo: 'Imagens',
+          icone: c.mostrarImagens ? Icons.image_rounded : Icons.hide_image_rounded,
+          ativo: c.mostrarImagens,
+          alternavel: true,
+          onTap: () => onConfig(c.copyWith(mostrarImagens: !c.mostrarImagens)),
+        ),
+        ChipOuvir(
           key: const Key('chip-repetir-tudo'),
           rotulo: '🔁 Repetir tudo',
           ativo: c.repetirTudo,

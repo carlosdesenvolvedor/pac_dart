@@ -275,17 +275,15 @@ class _TocandoPageState extends State<TocandoPage> {
     final trilha = [f.etapa.isEmpty ? '' : ItemSetlist.codigoEtapa(f.etapa), f.trilhaNome, f.licaoNome]
         .where((s) => s.isNotEmpty)
         .join(' › ');
-    // Português → inglês: o inglês fica escondido enquanto a pessoa pensa
-    final escondeEn = cfg.modo == ModoOuvir.portuguesIngles &&
-        st.status == StatusOuvir.tocando &&
-        (st.fase == FaseOuvir.traducao || st.fase == FaseOuvir.pense);
-    final mostraPt = f.pt.isNotEmpty && (cfg.mostrarTraducao || cfg.modo == ModoOuvir.portuguesIngles);
+    final escondeEn = escondeIngles(st);
+    final mostraPt = mostraTraducao(f, cfg);
+    final comImagem = cfg.mostrarImagens && f.temImagem;
     final aviso = textoDoAviso(st);
     final temLicao = f.licaoId.isNotEmpty && IndiceOuvir.de(trilhasDoCurso(context)).licao(f.licaoId) != null;
     final total = st.fila.length;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       const SizedBox(height: 8),
-      Center(child: RostoDaFaixa(faixa: f, tamanho: largo ? 140 : 96)),
+      Center(child: RostoDaFaixa(faixa: f, tamanho: comImagem ? (largo ? 96 : 72) : (largo ? 140 : 96))),
       if (nome != null) ...[
         const SizedBox(height: 6),
         Text(nome, textAlign: TextAlign.center, style: Mixart.ui(size: 13, weight: FontWeight.w700, color: Mixart.textMuted)),
@@ -298,6 +296,30 @@ class _TocandoPageState extends State<TocandoPage> {
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: Mixart.ui(size: 12, color: Mixart.textFaint)),
+      ],
+      if (comImagem) ...[
+        const SizedBox(height: 14),
+        LayoutBuilder(builder: (context, cons) {
+          final w = cons.maxWidth.clamp(0.0, 520.0);
+          return Center(
+            child: ImagemDaFaixa(
+              key: const Key('ouvir-imagem'),
+              faixa: f,
+              largura: w,
+              altura: (w * (largo ? .5 : .56)).clamp(150.0, 260.0),
+              raio: Mixart.radiusLg,
+              comRosto: false,
+            ),
+          );
+        }),
+        if (f.foto.isNotEmpty && f.fotoCredito.isNotEmpty) ...[
+          const SizedBox(height: 4),
+          Text('foto: ${f.fotoCredito}',
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: Mixart.ui(size: 10, color: Mixart.textFaint)),
+        ],
       ],
       const SizedBox(height: 14),
       Text(

@@ -9,6 +9,7 @@ import '../../../../core/theme/mixart.dart';
 import '../../../curso/domain/curriculo.dart';
 import '../../../curso/presentation/bloc/curso_bloc.dart';
 import '../../data/saida_voz_ingles.dart';
+import '../../domain/config_ouvir.dart';
 import '../../domain/fila_ouvir.dart';
 import '../../domain/saida_audio.dart';
 import '../../domain/setlist.dart';
@@ -425,18 +426,30 @@ class OuvirShell extends StatefulWidget {
 
   final Widget child;
 
-  /// Altura da barra (sem a área segura de baixo).
-  static const alturaBarra = 64.0;
-
-  /// A partir desta largura a barra vira um cartão centralizado de 720 px.
+  /// A partir desta largura a barra vira um cartão centralizado de até [larguraMaxCartao] px.
   static const larguraCartao = 900.0;
+  static const larguraMaxCartao = 860.0;
 
   /// Sem [OuvirCubit] (curso de Dart), devolve [child] como veio.
   static Widget envolver(BuildContext c, Widget child) => OuvirCubit.de(c) == null ? child : OuvirShell(child: child);
 
+  /// A barra cresce para caber a imagem e a tradução; com as duas desligadas fica mais baixa.
+  static bool barraRica(ConfigOuvir c) =>
+      c.mostrarImagens || c.mostrarTraducao || c.modo == ModoOuvir.portuguesIngles;
+
+  /// A linha de cima da barra (imagem + frase + tradução).
+  static double alturaConteudo(ConfigOuvir c, {required bool cartao}) =>
+      barraRica(c) ? (cartao ? 116 : 88) : (cartao ? 76 : 60);
+
+  /// Altura da barra (sem a área segura de baixo): progresso + linha de cima + linha dos botões.
+  static double alturaBarra(ConfigOuvir c, {required bool cartao}) =>
+      3 + alturaConteudo(c, cartao: cartao) + (cartao ? 52 : 48);
+
   /// Quanto a barra ocupa embaixo, com a área segura e a margem do cartão no computador.
-  static double alturaTotal(MediaQueryData mq) =>
-      alturaBarra + (mq.size.width >= larguraCartao ? 12 : 0) + mq.padding.bottom;
+  static double alturaTotal(MediaQueryData mq, ConfigOuvir c) {
+    final cartao = mq.size.width >= larguraCartao;
+    return alturaBarra(c, cartao: cartao) + (cartao ? 12 : 0) + mq.padding.bottom;
+  }
 
   @override
   State<OuvirShell> createState() => _OuvirShellState();
@@ -479,13 +492,16 @@ class _OuvirShellState extends State<OuvirShell> {
     final topo = _topo?.value ?? (modal: false, semBarra: false);
     return BlocBuilder<OuvirCubit, OuvirState>(
       bloc: cubit,
-      buildWhen: (a, b) => a.status != b.status || a.telaCheia != b.telaCheia,
+      buildWhen: (a, b) =>
+          a.status != b.status ||
+          a.telaCheia != b.telaCheia ||
+          OuvirShell.barraRica(a.config) != OuvirShell.barraRica(b.config),
       builder: (context, st) {
         final mq = MediaQuery.of(context);
         // some com o player parado, com o "Tocando agora" aberto, com o teclado aberto (o palco) e no Arcade
         final mostrar =
             st.status != StatusOuvir.parado && !st.telaCheia && mq.viewInsets.bottom <= 0 && !topo.semBarra;
-        final altura = mostrar ? OuvirShell.alturaTotal(mq) : 0.0;
+        final altura = mostrar ? OuvirShell.alturaTotal(mq, st.config) : 0.0;
         // a estrutura não muda ao mostrar/esconder: o Navigator (child) nunca é remontado
         return Material(
           color: Mixart.bg,

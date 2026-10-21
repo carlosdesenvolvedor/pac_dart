@@ -6,6 +6,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:pac_dart/core/theme/mixart.dart';
+import 'package:pac_dart/features/ingles/domain/config_ouvir.dart';
 import 'package:pac_dart/features/ingles/presentation/ouvir/mini_player.dart';
 import 'package:pac_dart/features/ingles/presentation/ouvir/ouvir_acoes.dart';
 import 'package:pac_dart/features/ingles/presentation/ouvir/ouvir_state.dart';
@@ -45,20 +46,21 @@ void main() {
     expect(_mini, findsOneWidget);
   });
 
-  testWidgets('o conteúdo encolhe para a barra caber (64 px no celular)', (tester) async {
+  testWidgets('o conteúdo encolhe para a barra caber (139 px no celular, com imagem e tradução)', (tester) async {
     final m = await montarOuvir(tester, tamanho: const Size(390, 844));
     final antes = tester.getSize(find.byType(Scaffold).first).height;
     expect(antes, 844);
     await mudar(tester, m, tocando());
-    expect(tester.getSize(find.byType(Scaffold).first).height, 844 - OuvirShell.alturaBarra);
+    expect(OuvirShell.alturaBarra(const ConfigOuvir(), cartao: false), 139);
+    expect(tester.getSize(find.byType(Scaffold).first).height, 844 - 139);
     expect(tester.getRect(_mini).bottom, 844);
   });
 
-  testWidgets('no computador vira um cartão de 720 px centralizado', (tester) async {
+  testWidgets('no computador vira um cartão de 860 px centralizado', (tester) async {
     final m = await montarOuvir(tester, tamanho: const Size(1400, 900));
     await mudar(tester, m, tocando());
     final r = tester.getRect(_mini);
-    expect(r.width, closeTo(720, 2), reason: "720 px menos a borda de 1 px");
+    expect(r.width, closeTo(860, 2), reason: "860 px menos a borda de 1 px");
     expect(r.center.dx, 700);
     expect(find.byKey(const Key('mini-player-anterior')), findsOneWidget);
   });
