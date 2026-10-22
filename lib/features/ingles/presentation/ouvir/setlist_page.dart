@@ -262,21 +262,37 @@ class _SetlistPageState extends State<SetlistPage> {
         const SizedBox(height: 8),
         Text(resumo, key: const Key('setlist-resumo'), style: Mixart.ui(size: 13, color: Mixart.textMuted)),
         const SizedBox(height: 12),
-        FilledButton.icon(
-          key: const Key('setlist-tocar'),
-          onPressed: fila.faixas.isEmpty ? null : () => unawaited(tocarSetlist(context, s)),
-          icon: Icon(Icons.play_arrow_rounded,
-              size: 22, color: fila.faixas.isEmpty ? Mixart.textFaint : Mixart.onBrand),
-          label: Text('Tocar',
-              style: Mixart.ui(
-                  size: 15, weight: FontWeight.w800, color: fila.faixas.isEmpty ? Mixart.textFaint : Mixart.onBrand)),
-          style: FilledButton.styleFrom(
-            minimumSize: const Size(140, 48),
-            backgroundColor: Mixart.brand,
-            disabledBackgroundColor: Mixart.surfaceHi,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Mixart.radiusChip)),
+        // ▶ Tocar e 📺 Assistir lado a lado; em 360 px o Wrap quebra a linha em vez de estourar
+        Wrap(spacing: 8, runSpacing: 8, children: [
+          FilledButton.icon(
+            key: const Key('setlist-tocar'),
+            onPressed: fila.faixas.isEmpty ? null : () => unawaited(tocarSetlist(context, s)),
+            icon: Icon(Icons.play_arrow_rounded,
+                size: 22, color: fila.faixas.isEmpty ? Mixart.textFaint : Mixart.onBrand),
+            label: Text('Tocar',
+                style: Mixart.ui(
+                    size: 15, weight: FontWeight.w800, color: fila.faixas.isEmpty ? Mixart.textFaint : Mixart.onBrand)),
+            style: FilledButton.styleFrom(
+              minimumSize: const Size(140, 48),
+              backgroundColor: Mixart.brand,
+              disabledBackgroundColor: Mixart.surfaceHi,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Mixart.radiusChip)),
+            ),
           ),
-        ),
+          OutlinedButton(
+            key: const Key('setlist-assistir'),
+            onPressed: fila.faixas.isEmpty ? null : () => unawaited(assistirSetlist(context, s)),
+            style: OutlinedButton.styleFrom(
+              minimumSize: const Size(140, 48),
+              side: BorderSide(color: Mixart.border),
+              backgroundColor: Mixart.surface,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Mixart.radiusChip)),
+            ),
+            child: Text('📺 Assistir',
+                style: Mixart.ui(
+                    size: 15, weight: FontWeight.w800, color: fila.faixas.isEmpty ? Mixart.textFaint : Mixart.text)),
+          ),
+        ]),
       ]),
     );
   }

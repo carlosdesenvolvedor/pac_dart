@@ -40,6 +40,8 @@ class BalaoFala extends StatelessWidget {
     this.via,
     this.alvoRabicho,
     this.escala = 1,
+    this.esconderEn = false,
+    this.icone,
   });
 
   final String nome, en, pt;
@@ -50,13 +52,30 @@ class BalaoFala extends StatelessWidget {
   final Offset? alvoRabicho;
   final double escala;
 
+  /// 📺 "Português → inglês": o EN vira "…" enquanto a pessoa pensa (e o PT já aparece).
+  final bool esconderEn;
+
+  /// 📺 O emoji da frase no chip do nome (null = sem; o Turismo não passa).
+  final String? icone;
+
+  /// O texto do inglês no balão ("…" com [esconderEn]).
+  static String _textoEn(String en, bool esconderEn) => esconderEn ? escondido : en;
+
+  /// O inglês escondido do "Português → inglês".
+  static const escondido = '…';
+
+  /// O chip: o ícone da via, o nome e, no 📺, o emoji da frase.
+  static String _textoChip(ViaRemota? via, String nome, String? icone) =>
+      '${_icone(via)}$nome${icone == null || icone.isEmpty ? '' : '  $icone'}';
+
   @override
   Widget build(BuildContext context) {
+    final en = _textoEn(this.en, esconderEn);
+    final letras = esconderEn ? en.length : this.letras;
     final completo = letras >= en.length;
     final visivel = en.substring(0, letras.clamp(0, en.length));
     final rabicho = 14.0 * escala;
     final corBorda = via == ViaRemota.radio ? const Color(0xFF5B6B7A) : _contorno;
-    final icone = _icone(via);
     final corpo = Padding(
       padding: EdgeInsets.fromLTRB(14 * escala, 10 * escala, 14 * escala, 12 * escala),
       child: SingleChildScrollView(
@@ -70,7 +89,7 @@ class BalaoFala extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 8 * escala, vertical: 2 * escala),
                 child: Text(
-                  '$icone$nome',
+                  _textoChip(via, nome, icone),
                   style: _estiloChip(escala, textoNoChip(cor)),
                 ),
               ),
@@ -160,6 +179,8 @@ class BalaoFala extends StatelessWidget {
     required double escala,
     required double maxLargura,
     TextScaler? textScaler,
+    bool esconderEn = false,
+    String? icone,
   }) {
     final base = DefaultTextStyle.of(context).style;
     final scaler = textScaler ?? MediaQuery.textScalerOf(context);
@@ -174,8 +195,8 @@ class BalaoFala extends StatelessWidget {
       return tp;
     }
 
-    final chip = medida('${_icone(via)}$nome', _estiloChip(escala, _corTexto), maxConteudo - 16 * escala);
-    final ingles = medida(en, _estiloEn(escala), maxConteudo);
+    final chip = medida(_textoChip(via, nome, icone), _estiloChip(escala, _corTexto), maxConteudo - 16 * escala);
+    final ingles = medida(_textoEn(en, esconderEn), _estiloEn(escala), maxConteudo);
     final temPt = mostrarPt && pt.isNotEmpty;
     final portugues = temPt ? medida(pt, _estiloPt(escala), maxConteudo) : null;
     final conteudo = math.min(
@@ -287,14 +308,30 @@ class _BalaoPainter extends CustomPainter {
 
 /// 🎙️ A fala do narrador: faixa escura translúcida embaixo do palco.
 class LegendaNarrador extends StatelessWidget {
-  const LegendaNarrador({super.key, required this.en, required this.pt, required this.letras, required this.mostrarPt});
+  const LegendaNarrador({
+    super.key,
+    required this.en,
+    required this.pt,
+    required this.letras,
+    required this.mostrarPt,
+    this.esconderEn = false,
+    this.icone,
+  });
 
   final String en, pt;
   final int letras;
   final bool mostrarPt;
 
+  /// 📺 "Português → inglês": o EN vira "…" (e o PT já aparece).
+  final bool esconderEn;
+
+  /// 📺 O emoji da frase antes do texto (a placa: 🪧); o Turismo não passa.
+  final String? icone;
+
   @override
   Widget build(BuildContext context) {
+    final en = BalaoFala._textoEn(this.en, esconderEn);
+    final letras = esconderEn ? en.length : this.letras;
     final completo = letras >= en.length;
     final visivel = en.substring(0, letras.clamp(0, en.length));
     final largura = MediaQuery.maybeSizeOf(context)?.width ?? 800;
@@ -320,7 +357,9 @@ class LegendaNarrador extends StatelessWidget {
             children: [
               Text.rich(
                 key: const Key('historia-legenda-en'),
-                _digitado(en, visivel.length, estiloEn),
+                icone == null || icone!.isEmpty
+                    ? _digitado(en, visivel.length, estiloEn)
+                    : TextSpan(children: [TextSpan(text: '${icone!}  ', style: estiloEn), _digitado(en, visivel.length, estiloEn)]),
                 textAlign: TextAlign.center,
               ),
               if (mostrarPt && pt.isNotEmpty)

@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/mixart.dart';
 import '../../../curso/presentation/bloc/curso_bloc.dart';
+import '../../data/preferencia_assistir.dart';
+import '../../domain/assistir/historias_licoes.dart';
 import '../../domain/fila_ouvir.dart';
 import '../../domain/setlist.dart';
 import 'escolher_setlist_sheet.dart';
@@ -14,10 +16,37 @@ import 'ouvir_state.dart';
 import 'setlists_cubit.dart';
 import 'widgets/arvore_curso.dart';
 
-/// "🎧 Ouvir": o curso na ordem (Continuar / Da minha lição atual / Do começo), as setlists do aluno e o
-/// curso para explorar (etapa → unidade → lição, com ▶ e ➕ em cada linha).
-class OuvirPage extends StatelessWidget {
+/// "🎧 Ouvir": o curso na ordem (Continuar / Da minha lição atual / Do começo), o "📺 Escutar assistindo",
+/// as setlists do aluno (▶ e 📺 em cada uma) e o curso para explorar (etapa → unidade → lição, com ▶ e ➕
+/// em cada linha).
+class OuvirPage extends StatefulWidget {
   const OuvirPage({super.key});
+
+  @override
+  State<OuvirPage> createState() => _OuvirPageState();
+}
+
+class _OuvirPageState extends State<OuvirPage> {
+  @override
+  void initState() {
+    super.initState();
+    // 📺: a pref lida de forma síncrona pelo "Tocando agora" (I9) e a história da lição atual do curso já
+    // a caminho (I6). Nada espera aqui.
+    unawaited(PreferenciaAssistir.carregar());
+    final curso = _cursoOuNull(context);
+    if (curso != null && curso.trilhas.isNotEmpty && curso.trilhaIdx < curso.trilhas.length) {
+      final id = curso.chave(curso.trilhaIdx, curso.licaoIdx);
+      if (id.isNotEmpty) unawaited(HistoriasLicoes.de(curso.trilhas).prepararLicao(id));
+    }
+  }
+
+  static CursoState? _cursoOuNull(BuildContext c) {
+    try {
+      return BlocProvider.of<CursoBloc>(c, listen: false).state;
+    } catch (_) {
+      return null;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +92,11 @@ class OuvirPage extends StatelessWidget {
                     buildWhen: (a, b) => a.status != b.status,
                     builder: (context, _) => _CartaoCurso(curso: curso, ouvir: ouvir),
                   ),
+                  BlocBuilder<OuvirCubit, OuvirState>(
+                    bloc: ouvir,
+                    buildWhen: (a, b) => a.status != b.status,
+                    builder: (context, _) => _CartaoAssistir(curso: curso, ouvir: ouvir),
+                  ),
                   const _Rotulo('MINHAS SETLISTS'),
                   BlocBuilder<SetlistsCubit, BancoSetlists>(
                     bloc: setlists,
@@ -95,6 +129,25 @@ class _Rotulo extends StatelessWidget {
       );
 }
 
+/// Onde o curso na ordem recomeça: [parou] (o "Continuar", com a faixa [fParou]; null sem posição salva)
+/// e [atual] (a 1ª faixa da lição atual do palco; -1 fora do curso). O cartão do curso e o do 📺 usam os
+/// mesmos índices.
+({FilaOuvir fila, int? parou, Faixa? fParou, int atual}) _pontosDoCurso(
+    BuildContext context, CursoState curso, OuvirCubit ouvir) {
+  final fila = filaDoCurso(context);
+  final faixas = fila.faixas;
+  final pos = ouvir.posicaoSalva('curso');
+  final parou = pos == null || faixas.isEmpty ? null : fila.indiceDaChave(pos.chave, dica: pos.i);
+  final fParou = parou == null ? null : faixas[parou.clamp(0, faixas.length - 1)];
+  // a lição atual do palco (fora do curso → o começo)
+  var atual = -1;
+  if (curso.trilhas.isNotEmpty && curso.trilhaIdx < curso.trilhas.length) {
+    final id = curso.chave(curso.trilhaIdx, curso.licaoIdx);
+    atual = faixas.indexWhere((f) => f.licaoId == id);
+  }
+  return (fila: fila, parou: parou, fParou: fParou, atual: atual);
+}
+
 /// "Curso na ordem": {n} frases · ~{t}, com Continuar (quando há onde parou), Da minha lição atual e Do começo.
 class _CartaoCurso extends StatelessWidget {
   final CursoState curso;
@@ -103,17 +156,8 @@ class _CartaoCurso extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fila = filaDoCurso(context);
+    final (:fila, :parou, :fParou, :atual) = _pontosDoCurso(context, curso, ouvir);
     final faixas = fila.faixas;
-    final pos = ouvir.posicaoSalva('curso');
-    final parou = pos == null || faixas.isEmpty ? null : fila.indiceDaChave(pos.chave, dica: pos.i);
-    final fParou = parou == null ? null : faixas[parou.clamp(0, faixas.length - 1)];
-    // a lição atual do palco (fora do curso → o começo)
-    var atual = -1;
-    if (curso.trilhas.isNotEmpty && curso.trilhaIdx < curso.trilhas.length) {
-      final id = curso.chave(curso.trilhaIdx, curso.licaoIdx);
-      atual = faixas.indexWhere((f) => f.licaoId == id);
-    }
     final total = faixas.isEmpty ? '' : '${plural(faixas.length, 'frase', 'frases')} · ~${formatarDuracao(fila.segundosTotal)}';
     return Container(
       padding: const EdgeInsets.all(16),
@@ -162,6 +206,61 @@ class _CartaoCurso extends StatelessWidget {
             icone: Icons.replay_rounded,
             rotulo: 'Do começo',
             onTap: () => tocarCurso(context),
+          ),
+        ]),
+      ]),
+    );
+  }
+}
+
+/// 📺 "Escutar assistindo": o curso na ordem como desenho animado (cada personagem fala a sua frase), com
+/// os mesmos pontos de partida do cartão do curso — Continuar (quando há onde parou) e Da minha lição atual.
+/// Some sem o curso carregado.
+class _CartaoAssistir extends StatelessWidget {
+  final CursoState curso;
+  final OuvirCubit ouvir;
+  const _CartaoAssistir({required this.curso, required this.ouvir});
+
+  @override
+  Widget build(BuildContext context) {
+    final (:fila, :parou, :fParou, :atual) = _pontosDoCurso(context, curso, ouvir);
+    if (fila.faixas.isEmpty) return const SizedBox.shrink();
+    return Container(
+      key: const Key('ouvir-assistir-cartao'),
+      margin: const EdgeInsets.only(top: 10),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Mixart.surface,
+        border: Border.all(color: Mixart.border),
+        borderRadius: BorderRadius.circular(Mixart.radiusLg),
+      ),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(children: [
+          const Text('📺', style: TextStyle(fontSize: 26)),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Text('Escutar assistindo', style: Mixart.display(size: 18)),
+              const SizedBox(height: 2),
+              Text('As frases da lição viram desenho animado: cada personagem fala a sua frase',
+                  style: Mixart.ui(size: 12.5, color: Mixart.textMuted).copyWith(height: 1.4)),
+            ]),
+          ),
+        ]),
+        const SizedBox(height: 12),
+        Wrap(spacing: 8, runSpacing: 8, children: [
+          if (fParou != null)
+            _BotaoCurso(
+              chave: 'ouvir-assistir-continuar',
+              icone: Icons.live_tv_rounded,
+              rotulo: 'Continuar',
+              onTap: () => unawaited(assistirCurso(context, inicio: parou!)),
+            ),
+          _BotaoCurso(
+            chave: 'ouvir-assistir-curso',
+            icone: Icons.live_tv_rounded,
+            rotulo: 'Da minha lição atual',
+            onTap: () => unawaited(assistirCurso(context, inicio: atual < 0 ? 0 : atual)),
           ),
         ]),
       ]),
@@ -344,6 +443,12 @@ class _CartaoSetlist extends StatelessWidget {
                   const SizedBox(height: 2),
                   Text(resumo, style: Mixart.ui(size: 12, color: Mixart.textMuted)),
                 ]),
+              ),
+              IconButton(
+                key: Key('setlist-assistir-${s.id}'),
+                tooltip: 'Escutar assistindo',
+                onPressed: s.itens.isEmpty ? null : () => unawaited(assistirSetlist(context, s)),
+                icon: Icon(Icons.live_tv_rounded, size: 24, color: s.itens.isEmpty ? Mixart.textFaint : Mixart.brand),
               ),
               IconButton(
                 key: Key('setlist-tocar-${s.id}'),

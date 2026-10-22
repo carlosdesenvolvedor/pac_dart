@@ -61,6 +61,10 @@ class PropPainter extends CustomPainter {
         PropHistoria.garrafa => (.09, .26),
         PropHistoria.carta => (.22, .15),
         PropHistoria.radio => (.14, .26),
+        PropHistoria.notebook => (.3, .22),
+        PropHistoria.prato => (.26, .12),
+        PropHistoria.sacola => (.2, .26),
+        PropHistoria.documento => (.17, .22),
       };
 
   static const _contorno = Color(0xFF3A2A33);
@@ -141,6 +145,14 @@ class PropPainter extends CustomPainter {
         _carta(aspecto);
       case PropHistoria.radio:
         _radio(aspecto);
+      case PropHistoria.notebook:
+        _notebook(aspecto);
+      case PropHistoria.prato:
+        _prato(aspecto);
+      case PropHistoria.sacola:
+        _sacola(aspecto);
+      case PropHistoria.documento:
+        _documento(aspecto);
     }
     canvas.restore();
   }
@@ -787,6 +799,184 @@ class PropPainter extends CustomPainter {
     _c.drawLine(Offset(w * .03, .94), Offset(w * .4, .5), _traco..strokeWidth = _lw * .6);
     _c.drawLine(Offset(w * .97, .94), Offset(w * .6, .5), _traco..strokeWidth = _lw * .6);
     _forma(coracao(Offset(w * .5, .56), .12), const Color(0xFFE84A5F));
+  }
+
+  // ── props das lições (📺) ──
+
+  /// Notebook aberto (de frente): tela azul com linhas de código coloridas, câmera, teclado e touchpad.
+  void _notebook(double w) {
+    final tampa = _rr(w * .12, .02, w * .88, .7, .05);
+    _forma(tampa, const Color(0xFF3A3F4B));
+    final tela = _rr(w * .17, .08, w * .83, .64, .02);
+    _forma(tela, const Color(0xFF2F6FD0), contorno: false);
+    const cores = [Color(0xFF8BE9FD), Color(0xFFFFD166), Color(0xFFFF9EC7), Color(0xFFA5E887)];
+    for (var i = 0; i < 4; i++) {
+      final recuo = (i % 3) * w * .05;
+      final y = .17 + i * .12;
+      _linha(Offset(w * .23 + recuo, y), Offset(w * (.5 + .07 * ((i * 5) % 4)), y), cores[i], .05);
+    }
+    // reflexo na tela
+    _c.save();
+    _c.clipPath(tela);
+    _c.drawPath(
+      Path()
+        ..moveTo(w * .55, .08)
+        ..lineTo(w * .7, .08)
+        ..lineTo(w * .48, .64)
+        ..lineTo(w * .33, .64)
+        ..close(),
+      _tinta(Colors.white.withValues(alpha: .14)),
+    );
+    _c.restore();
+    _c.drawCircle(Offset(w * .5, .05), .012, _tinta(const Color(0xFF8D99A8)));
+    // base com o teclado
+    final base = Path()
+      ..moveTo(w * .12, .7)
+      ..lineTo(w * .88, .7)
+      ..lineTo(w * .98, .9)
+      ..lineTo(w * .02, .9)
+      ..close();
+    _forma(base, const Color(0xFFC9D0D8));
+    for (var r = 0; r < 2; r++) {
+      final y = .75 + r * .055;
+      final l = w * (.18 - r * .03), d = w * (.82 + r * .03);
+      for (var k = 0; k < 9; k++) {
+        final x = l + (d - l) * k / 9;
+        _c.drawRRect(RRect.fromLTRBR(x + w * .006, y, x + (d - l) / 9 - w * .006, y + .035, const Radius.circular(.008)),
+            _tinta(const Color(0xFF8D99A8)));
+      }
+    }
+    _forma(_rr(w * .42, .85, w * .58, .89, .01), const Color(0xFFB2BBC6), contorno: false);
+    _forma(_rr(w * .02, .89, w * .98, .98, .03), const Color(0xFFAAB3BE));
+  }
+
+  /// Prato fundo com macarrão ao molho, manjericão e o vapor subindo.
+  void _prato(double w) {
+    final vapor = Paint()
+      ..color = Colors.white.withValues(alpha: .7)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = .045
+      ..strokeCap = StrokeCap.round;
+    for (var i = 0; i < 2; i++) {
+      final x = w * (.42 + i * .14);
+      final fase = t * 3 + i * 1.9;
+      final p = Path()..moveTo(x, .24);
+      for (var k = 1; k <= 3; k++) {
+        p.lineTo(x + math.sin(fase + k * 1.4) * .04, .24 - k * .075);
+      }
+      _c.drawPath(p, vapor);
+    }
+    _forma(Path()..addOval(Rect.fromLTRB(w * .02, .44, w * .98, .98)), Colors.white);
+    _c.drawOval(Rect.fromLTRB(w * .16, .52, w * .84, .9), _tinta(const Color(0xFFEFF2F5)));
+    // o macarrão: um montinho com os fios desenhados
+    final monte = Path()
+      ..moveTo(w * .24, .74)
+      ..quadraticBezierTo(w * .24, .3, w * .5, .3)
+      ..quadraticBezierTo(w * .76, .3, w * .76, .74)
+      ..quadraticBezierTo(w * .5, .82, w * .24, .74)
+      ..close();
+    _forma(monte, const Color(0xFFF2C14E));
+    _c.save();
+    _c.clipPath(monte);
+    final fio = Paint()
+      ..color = const Color(0xFFD9A23A)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = .03
+      ..strokeCap = StrokeCap.round;
+    for (var i = 0; i < 6; i++) {
+      _c.drawArc(Rect.fromCenter(center: Offset(w * (.3 + i * .08), .56 + (i % 2) * .08), width: w * .14, height: .22), .3,
+          math.pi * 1.3, false, fio);
+    }
+    _c.restore();
+    _c.drawPath(monte, _traco);
+    // molho e manjericão por cima
+    _forma(Path()..addOval(Rect.fromLTRB(w * .38, .32, w * .62, .52)), const Color(0xFFD94F3B));
+    _forma(Path()..addOval(Rect.fromLTRB(w * .52, .3, w * .64, .4)), const Color(0xFF4FA84A));
+    _forma(Path()..addOval(Rect.fromLTRB(w * .58, .36, w * .7, .46)), const Color(0xFF5FBA58));
+  }
+
+  /// Sacola de papel pardo com alça de corda, um pão e folhas saindo por cima e uma etiqueta de coração.
+  void _sacola(double w) {
+    // o que está dentro (aparece por cima)
+    _c.save();
+    _c.translate(w * .34, .3);
+    _c.rotate(-.35);
+    _forma(_rr(-w * .1, -.28, w * .1, .06, .08), const Color(0xFFE2A85A));
+    for (var i = 0; i < 3; i++) {
+      _linha(Offset(-w * .06, -.2 + i * .08), Offset(w * .06, -.24 + i * .08), const Color(0xFFB87A34), .025);
+    }
+    _c.restore();
+    _forma(Path()..addOval(Rect.fromLTRB(w * .5, .12, w * .78, .36)), const Color(0xFF58B562));
+    _forma(Path()..addOval(Rect.fromLTRB(w * .62, .18, w * .86, .38)), const Color(0xFF3E9A4A));
+    final alca = Paint()
+      ..color = const Color(0xFF6B4226)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = .045
+      ..strokeCap = StrokeCap.round;
+    _c.drawArc(Rect.fromLTRB(w * .3, .06, w * .74, .5), math.pi * 1.08, math.pi * .84, false, alca);
+    // o corpo, com a dobra de cima e a lateral na sombra
+    final corpo = Path()
+      ..moveTo(w * .1, .3)
+      ..lineTo(w * .9, .3)
+      ..lineTo(w * .96, .98)
+      ..lineTo(w * .04, .98)
+      ..close();
+    _forma(corpo, const Color(0xFFC89B6C));
+    _c.save();
+    _c.clipPath(corpo);
+    _c.drawRect(Rect.fromLTRB(w * .76, .3, w, 1), _tinta(const Color(0x22301A10)));
+    _c.drawRect(Rect.fromLTRB(0, .3, w, .4), _tinta(const Color(0xFFB4844F)));
+    _c.restore();
+    _c.drawPath(corpo, _traco);
+    _linha(Offset(w * .09, .4), Offset(w * .91, .4), _contorno, _lw * .7);
+    // etiqueta redonda com coração (sem marca)
+    _forma(_circ(w * .46, .66, .13), const Color(0xFFFFF4E0));
+    _forma(PropPainter.coracao(Offset(w * .46, .65), .07), const Color(0xFFE84A5F), contorno: false);
+    _c.drawArc(Rect.fromLTRB(w * .26, .1, w * .7, .52), math.pi * 1.1, math.pi * .8, false, alca..strokeWidth = .055);
+    _c.drawCircle(Offset(w * .29, .33), .025, _tinta(const Color(0xFF6B4226)));
+    _c.drawCircle(Offset(w * .67, .33), .025, _tinta(const Color(0xFF6B4226)));
+  }
+
+  /// Prancheta com a folha (título, linhas, dois itens marcados e a assinatura).
+  void _documento(double w) {
+    _forma(_rr(w * .04, .06, w * .96, .98, .05), const Color(0xFFB07C50));
+    _forma(_rr(w * .13, .14, w * .87, .93, .015), Colors.white);
+    _linha(Offset(w * .24, .25), Offset(w * .66, .25), const Color(0xFF3E8AE0), .05);
+    for (var i = 0; i < 3; i++) {
+      final y = .38 + i * .11;
+      _forma(_rr(w * .22, y - .035, w * .3, y + .035, .01), Colors.white);
+      if (i < 2) {
+        _c.drawPath(
+          Path()
+            ..moveTo(w * .225, y)
+            ..lineTo(w * .26, y + .03)
+            ..lineTo(w * .32, y - .05),
+          Paint()
+            ..color = const Color(0xFF2EAD5B)
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = .03
+            ..strokeCap = StrokeCap.round
+            ..strokeJoin = StrokeJoin.round,
+        );
+      }
+      _linha(Offset(w * .38, y), Offset(w * (.62 + .1 * ((i + 1) % 2)), y), const Color(0xFF8D99A8), .03);
+    }
+    // assinatura
+    final ass = Path()..moveTo(w * .3, .8);
+    for (var i = 1; i <= 5; i++) {
+      ass.quadraticBezierTo(w * (.3 + i * .08 - .04), i.isOdd ? .7 : .86, w * (.3 + i * .08), .79);
+    }
+    _c.drawPath(
+      ass,
+      Paint()
+        ..color = const Color(0xFF1F3B73)
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = .025
+        ..strokeCap = StrokeCap.round,
+    );
+    // o prendedor de metal
+    _forma(_rr(w * .3, .01, w * .7, .17, .04), const Color(0xFFB8C0CA));
+    _forma(_circ(w * .5, .07, .03), const Color(0xFF8D99A8));
   }
 
   void _radio(double w) {

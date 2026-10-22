@@ -68,8 +68,9 @@ void main() {
         }
       }
     }
-    // espaciais (espaco, lua, estacao) só têm noite: 22×4 + 3×1 = 91 pares cenário/hora
-    expect(quadros, 2 * 91 * 3 * 2 * 2);
+    // espaciais (espaco, lua, estacao) só têm noite: 27×4 + 3×1 = 111 pares cenário/hora
+    // (os 5 interiores das lições do 📺 entraram no fim do enum: 22×4 → 27×4)
+    expect(quadros, 2 * 111 * 3 * 2 * 2);
   });
 
   test('entradas estranhas não quebram: tamanho zero, paralaxe negativa/enorme/NaN, t infinito', () {

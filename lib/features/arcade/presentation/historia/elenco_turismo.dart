@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import '../../../ingles/data/voz_ingles.dart';
 import '../../../ingles/presentation/widgets/elenco_ingles.dart';
 import '../../domain/historia_turismo.dart';
+import 'figurantes_historia.dart';
 
 /// 🎭 O elenco da história do English Turismo: os 8 do curso + o aluno ([ElencoIngles]) e 2 extras só do
 /// jogo — [max] (o rival de preto, Team Thunder) e [kim] (a locutora do torneio). O `narrador` não tem corpo.
 ///
 /// Aparências, nomes, cores dos chips e vozes seguem o cânone do elenco da história (plano, tabela 5.6).
+/// 📺 Nas historinhas das lições, os figurantes (atendente, recepcionista, dev-novo…) vêm do
+/// [FigurantesHistoria] (aparência própria e rótulo bonito); os 11 do Turismo e o narrador não mudam.
 abstract final class ElencoTurismo {
   static const max = Aparencia(
     pele: Color(0xFFFFDCC4),
@@ -28,21 +31,24 @@ abstract final class ElencoTurismo {
 
   static const _corNarrador = Color(0xFF3A2A33);
 
-  /// max/kim → extras; narrador → null; senão [ElencoIngles.de].
+  /// max/kim → extras; narrador → null; figurante das lições → [FigurantesHistoria.de]; senão [ElencoIngles.de].
   static Aparencia? de(String quem) => switch (quem) {
         'max' => max,
         'kim' => kim,
         narrador => null,
-        _ => ElencoIngles.de(quem),
+        _ => FigurantesHistoria.ehFigurante(quem) ? FigurantesHistoria.de(quem) : ElencoIngles.de(quem),
       };
 
-  /// O rótulo do chip do balão ('Dra. Lee', 'Você', 'Max', 'Kim'…).
+  /// O rótulo do chip do balão ('Dra. Lee', 'Você', 'Max', 'Kim'…; a placa das lições, '🪧').
   static String nomeDe(String quem) => switch (quem) {
         'voce' => 'Você',
         'dra-lee' => 'Dra. Lee',
         narrador => 'Narrador',
+        'placa' => '🪧',
         '' => '',
-        _ => quem[0].toUpperCase() + quem.substring(1),
+        _ => FigurantesHistoria.ehFigurante(quem)
+            ? FigurantesHistoria.rotulo(quem)
+            : quem[0].toUpperCase() + quem.substring(1),
       };
 
   /// A cor do chip do balão = a roupa do personagem (narrador: 0xFF3A2A33).

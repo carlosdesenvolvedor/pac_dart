@@ -4,10 +4,18 @@
 //   flutter build web -t lib/main_arcade_probe.dart --output=build/probe
 // Rotas do English Turismo (prova visual do plano 8.3): /turismo-en, /turismo-en11 … /turismo-en30,
 // /historia-en (galeria), /historia-en1 (abertura 1) e /historia-en30 (final 30, créditos).
+// 📺 Escutar assistindo (plano das historinhas §11.3): /?licao=<Licao.id>&modo=so|ep|pe[&setlist=1]#/assistir-en
+// — o "▶ Assistir" é o gesto que libera o áudio na web; com setlist=1 toca uma setlist "Probe" de 2 lições.
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/linguagem/linguagem.dart';
 import 'core/theme/mixart.dart';
+import 'features/curso/data/curriculo_loader.dart';
+import 'features/curso/data/progresso_repository.dart';
+import 'features/curso/presentation/bloc/curso_bloc.dart';
 import 'features/arcade/data/historia_turismo_repo.dart';
 import 'features/arcade/domain/gerador_missoes.dart';
 import 'features/arcade/domain/historia_turismo.dart';
@@ -21,6 +29,14 @@ import 'features/arcade/presentation/widgets/arcade_ui.dart';
 import 'features/arcade/presentation/widgets/avatares.dart';
 import 'features/arcade/presentation/widgets/cenario.dart';
 import 'features/arcade/presentation/widgets/cenas.dart';
+import 'features/ingles/data/preferencia_assistir.dart';
+import 'features/ingles/data/setlists_repository.dart';
+import 'features/ingles/domain/config_ouvir.dart';
+import 'features/ingles/domain/fila_ouvir.dart';
+import 'features/ingles/domain/setlist.dart';
+import 'features/ingles/presentation/ouvir/ouvir_acoes.dart';
+import 'features/ingles/presentation/ouvir/ouvir_cubit.dart';
+import 'features/ingles/presentation/ouvir/setlists_cubit.dart';
 
 void main() => runApp(const _ProbeApp());
 
@@ -46,6 +62,7 @@ class _ProbeApp extends StatelessWidget {
         '/historia-en': (_) => _ingles(const _HistoriaProbe()),
         '/historia-en1': (_) => _ingles(const _HistoriaProbe(pista: 1, parte: ParteDoCapitulo.intro)),
         '/historia-en30': (_) => _ingles(const _HistoriaProbe(pista: 30, parte: ParteDoCapitulo.fim)),
+        '/assistir-en': (_) => _ingles(const _AssistirProbe()),
       },
       home: const ArcadePage(),
     );
@@ -96,6 +113,139 @@ class _HistoriaProbe extends StatelessWidget {
           onFim: (_) => Navigator.of(context).maybePop(),
         );
       },
+    );
+  }
+}
+
+/// 📺 Prova visual do "Escutar assistindo": os providers do 🎧 Ouvir (sem o `SetlistsCubit`, as portas do
+/// Ouvir voltam sem fazer nada) e, EMBAIXO deles, um Navigator próprio com a chave do [NavegadorOuvir] —
+/// o `abrirTocando` empurra o "Tocando agora" nele, então o player enxerga o `OuvirCubit`. Sem mini-player
+/// (ele mora no `OuvirShell` do app).
+class _AssistirProbe extends StatefulWidget {
+  const _AssistirProbe();
+
+  @override
+  State<_AssistirProbe> createState() => _AssistirProbeState();
+}
+
+class _AssistirProbeState extends State<_AssistirProbe> {
+  final _nav = NavegadorOuvir();
+  late final _setlists = SetlistsCubit(repo: LocalSetlistsRepository('probe'))..carregar();
+  late final _curso = CursoBloc(
+    loader: CurriculoLoader(linguagem: Linguagem.ingles),
+    progresso: LocalProgressoRepository(prefixo: 'en_'),
+  )..add(const CursoIniciado());
+  late final _ouvir = OuvirCubit(saida: saidaPadrao());
+
+  @override
+  void dispose() {
+    unawaited(_ouvir.close());
+    unawaited(_curso.close());
+    unawaited(_setlists.close());
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return RepositoryProvider<NavegadorOuvir>.value(
+      value: _nav,
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<CursoBloc>.value(value: _curso),
+          BlocProvider<SetlistsCubit>.value(value: _setlists),
+          BlocProvider<OuvirCubit>.value(value: _ouvir),
+        ],
+        child: Navigator(
+          key: _nav.chave,
+          observers: _nav.observadores,
+          onGenerateRoute: (_) => MaterialPageRoute<void>(builder: (_) => const _AssistirInicio()),
+        ),
+      ),
+    );
+  }
+}
+
+/// A tela de entrada da prova: espera o curso e mostra o "▶ Assistir" (o clique é o gesto do áudio).
+class _AssistirInicio extends StatelessWidget {
+  const _AssistirInicio();
+
+  static String get _licao => Uri.base.queryParameters['licao'] ?? 'primeiro-contato.oi-tudo-bem';
+
+  static ModoOuvir get _modo => switch (Uri.base.queryParameters['modo']) {
+        'ep' => ModoOuvir.inglesPortugues,
+        'pe' => ModoOuvir.portuguesIngles,
+        _ => ModoOuvir.soIngles,
+      };
+
+  static bool get _comSetlist => Uri.base.queryParameters['setlist'] == '1';
+
+  /// A setlist "Probe": a lição pedida e a seguinte da mesma trilha (só na memória, para o clique não
+  /// esperar nada antes do `tocar`).
+  static Setlist? _setlistProbe(BuildContext context) {
+    final trilhas = trilhasDoCurso(context);
+    final pos = IndiceOuvir.de(trilhas).licao(_licao);
+    if (pos == null) return null;
+    final licoes = trilhas[pos.t].licoes;
+    return Setlist(
+      id: 'probe',
+      nome: 'Probe',
+      emoji: '📺',
+      itens: [
+        for (var i = pos.l; i < licoes.length && i < pos.l + 2; i++) ItemSetlist.daLicao(licoes[i]),
+      ],
+      criadoEm: 0,
+      editadoEm: 0,
+    );
+  }
+
+  void _assistir(BuildContext context) {
+    final ouvir = OuvirCubit.de(context)!;
+    ouvir.configurar(ouvir.state.config.copyWith(modo: _modo));
+    if (_comSetlist) {
+      final s = _setlistProbe(context);
+      if (s != null) {
+        unawaited(assistirSetlist(context, s));
+        return;
+      }
+    }
+    unawaited(PreferenciaAssistir.salvar(true));
+    unawaited(tocarCursoDesde(context, _licao));
+    unawaited(abrirTocando(context, assistir: true));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Mixart.bg,
+      body: BlocBuilder<CursoBloc, CursoState>(
+        builder: (context, curso) {
+          if (curso.status != CursoStatus.pronto) {
+            return Center(
+              child: curso.status == CursoStatus.erro
+                  ? Text('currículo indisponível', style: Mixart.ui(size: 14))
+                  : const CircularProgressIndicator(),
+            );
+          }
+          return Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(mainAxisSize: MainAxisSize.min, children: [
+                Text('📺 $_licao · ${_modo.name}${_comSetlist ? ' · setlist' : ''}',
+                    key: const Key('probe-assistir-rotulo'),
+                    textAlign: TextAlign.center,
+                    style: Mixart.ui(size: 14, color: Mixart.textMuted)),
+                const SizedBox(height: 16),
+                FilledButton(
+                  key: const Key('probe-assistir'),
+                  onPressed: () => _assistir(context),
+                  style: FilledButton.styleFrom(minimumSize: const Size(240, 72), backgroundColor: Mixart.brand),
+                  child: Text('▶ Assistir', style: Mixart.display(size: 26, color: Mixart.onBrand)),
+                ),
+              ]),
+            ),
+          );
+        },
+      ),
     );
   }
 }

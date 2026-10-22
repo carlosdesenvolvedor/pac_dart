@@ -8,7 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../../curso/domain/curriculo.dart';
 import '../../../curso/presentation/bloc/curso_bloc.dart';
+import '../../data/preferencia_assistir.dart';
 import '../../data/saida_voz_ingles.dart';
+import '../../domain/assistir/historias_licoes.dart';
 import '../../domain/config_ouvir.dart';
 import '../../domain/fila_ouvir.dart';
 import '../../domain/saida_audio.dart';
@@ -37,8 +39,9 @@ Future<void> abrirOuvir(BuildContext c) async {
 }
 
 /// Abre o "Tocando agora". Funciona também de cima do Navigator (o mini-player), pela chave do
-/// [NavegadorOuvir]. Não abre de novo se já está aberto.
-Future<void> abrirTocando(BuildContext c) async {
+/// [NavegadorOuvir]. Não abre de novo se já está aberto. [assistir]: abre já no 📺 (true), na foto (false)
+/// ou como a pref manda (null, o de sempre).
+Future<void> abrirTocando(BuildContext c, {bool? assistir}) async {
   if (_semOuvir(c)) return;
   final cubit = OuvirCubit.de(c)!;
   if (cubit.state.telaCheia) return;
@@ -46,7 +49,39 @@ Future<void> abrirTocando(BuildContext c) async {
   if (NavegadorOuvir.de(c)?.observador.topo.value.modal ?? false) return;
   final nav = NavegadorOuvir.de(c)?.chave.currentState ?? Navigator.maybeOf(c);
   if (nav == null) return;
-  await nav.push(MaterialPageRoute<void>(builder: (_) => const TocandoPage()));
+  await nav.push(MaterialPageRoute<void>(builder: (_) => TocandoPage(assistir: assistir)));
+}
+
+/// 📺 "Escutar assistindo" a setlist [s]: liga a pref ANTES (o [abrirTocando] volta cedo se o "Tocando
+/// agora" já está aberto, e ele segue a pref), pré-carrega a história da 1ª faixa, toca DENTRO do gesto
+/// (autoplay da web) e abre o player já no desenho.
+Future<void> assistirSetlist(BuildContext c, Setlist s) async {
+  if (_semOuvir(c)) return;
+  final faixas = filaDosItens(c, s.itens).faixas;
+  // nada para tocar: só o aviso de sempre (a pref não muda)
+  if (faixas.isNotEmpty) _prepararAssistir(c, faixas.first);
+  await tocarSetlist(c, s);
+  if (!c.mounted || faixas.isEmpty) return;
+  await abrirTocando(c, assistir: true);
+}
+
+/// 📺 "Escutar assistindo" o curso na ordem a partir da faixa [inicio] (o "Continuar" passa onde parou; o
+/// "Da minha lição atual", a 1ª faixa da lição atual — os mesmos índices do cartão do curso).
+Future<void> assistirCurso(BuildContext c, {int inicio = 0}) async {
+  if (_semOuvir(c)) return;
+  final faixas = filaDoCurso(c).faixas;
+  if (faixas.isNotEmpty) _prepararAssistir(c, faixas[inicio.clamp(0, faixas.length - 1)]);
+  await tocarCurso(c, inicio: inicio);
+  if (!c.mounted || faixas.isEmpty) return;
+  await abrirTocando(c, assistir: true);
+}
+
+/// Liga a pref do 📺 (o `valor` muda na hora; a gravação segue sozinha) e pede a história da [faixa]
+/// (I6). Nada aqui espera: o `tocar` que vem depois tem de sair dentro do gesto.
+void _prepararAssistir(BuildContext c, Faixa faixa) {
+  unawaited(PreferenciaAssistir.salvar(true));
+  unawaited(PreferenciaAssistir.marcarNovidadeVista());
+  unawaited(HistoriasLicoes.de(trilhasDoCurso(c)).preparar(faixa));
 }
 
 /// Abre a página de uma setlist.
@@ -458,6 +493,13 @@ class OuvirShell extends StatefulWidget {
 class _OuvirShellState extends State<OuvirShell> {
   ValueNotifier<TopoOuvir>? _topo;
   bool _semBarra = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // o 📺 lido de forma síncrona pelo "Tocando agora" que o mini-player abre (I9)
+    unawaited(PreferenciaAssistir.carregar());
+  }
 
   @override
   void didChangeDependencies() {

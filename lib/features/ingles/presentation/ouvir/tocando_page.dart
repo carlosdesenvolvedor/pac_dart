@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
@@ -6,11 +7,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/mixart.dart';
+import '../../../curso/domain/curriculo.dart';
 import '../../../curso/presentation/bloc/curso_bloc.dart';
+import '../../data/preferencia_assistir.dart';
 import '../../data/voz_ingles.dart';
+import '../../domain/assistir/historias_licoes.dart';
 import '../../domain/config_ouvir.dart';
 import '../../domain/fila_ouvir.dart';
 import '../../domain/setlist.dart';
+import 'assistir/palco_assistir.dart';
 import 'mini_player.dart';
 import 'ouvir_acoes.dart';
 import 'ouvir_cubit.dart';
@@ -72,8 +77,15 @@ String? textoDoAviso(OuvirState st) {
 /// "Tocando agora": o rosto de quem fala, a frase grande, a tradução, a fase, o progresso, os controles
 /// (⏮ ⏪ ⏯ ⏩ ⏭ ↺), os ajustes e "A seguir". Teclado (só com a tela no topo): espaço toca/pausa, ←/→ frase
 /// anterior/próxima, R repete, Esc minimiza. A partir de 900 px, duas colunas.
+///
+/// 📺 "Escutar assistindo" (`ouvir-assistir`, na linha da fase): troca a foto da cena pelo desenho animado
+/// da lição ([PalcoAssistir]), que segue o player; ⛶ põe o desenho na tela inteira com uma barra compacta
+/// (Esc sai da tela cheia; o 2º Esc minimiza). Começa desligado e é lembrado ([PreferenciaAssistir]).
 class TocandoPage extends StatefulWidget {
-  const TocandoPage({super.key});
+  /// true = abre já no 📺; false = na foto; null = como a pref manda (lida de forma síncrona, sem piscar).
+  final bool? assistir;
+
+  const TocandoPage({super.key, this.assistir});
 
   @override
   State<TocandoPage> createState() => _TocandoPageState();
@@ -84,19 +96,96 @@ class _TocandoPageState extends State<TocandoPage> {
   final _foco = FocusNode(debugLabel: 'tocando-agora');
   bool _aSeguirAberto = false;
 
+  /// 📺 ligado (o palco no lugar da foto).
+  late bool _assistir;
+
+  /// ⛶ o desenho na tela inteira.
+  bool _palcoGrande = false;
+
+  /// O selo "novo" do botão 📺 (até o 1º uso).
+  bool _novidade = false;
+  bool _usouAssistir = false;
+
+  /// O palco sobrevive à troca de layout de 900 px e ao ⛶ (D17).
+  final _chavePalco = GlobalKey(debugLabel: 'palco-assistir');
+  ({Widget palco, bool grande, List<Trilha> trilhas})? _palcoMemo;
+
   @override
   void initState() {
     super.initState();
     _cubit = OuvirCubit.de(context);
     _cubit?.telaCheia(true);
+    _assistir = widget.assistir ?? PreferenciaAssistir.valor.value;
+    PreferenciaAssistir.valor.addListener(_mudouPref);
+    unawaited(_verNovidade());
+    final f = _cubit?.state.atual;
+    if (_assistir && f != null) unawaited(HistoriasLicoes.de(trilhasDoCurso(context)).preparar(f));
   }
 
   @override
   void dispose() {
+    PreferenciaAssistir.valor.removeListener(_mudouPref);
     final c = _cubit;
     if (c != null && !c.isClosed) c.telaCheia(false);
     _foco.dispose();
     super.dispose();
+  }
+
+  Future<void> _verNovidade() async {
+    final n = await PreferenciaAssistir.mostrarNovidade();
+    if (!mounted || _usouAssistir || n == _novidade) return;
+    setState(() => _novidade = n);
+  }
+
+  /// Um botão 📺 da playlist (ou outra tela) ligou a pref com este player já aberto: ele segue o pedido.
+  void _mudouPref() {
+    final v = PreferenciaAssistir.valor.value;
+    if (!mounted || v == _assistir) return;
+    setState(() {
+      _assistir = v;
+      if (!v) _palcoGrande = false;
+    });
+  }
+
+  void _alternarAssistir() {
+    final v = !_assistir;
+    setState(() {
+      _assistir = v;
+      if (!v) _palcoGrande = false;
+      _usouAssistir = true;
+      _novidade = false;
+    });
+    unawaited(PreferenciaAssistir.salvar(v));
+    unawaited(PreferenciaAssistir.marcarNovidadeVista());
+    final f = _cubit?.state.atual;
+    if (v && f != null) unawaited(HistoriasLicoes.de(trilhasDoCurso(context)).preparar(f));
+  }
+
+  void _alternarTelaCheia() {
+    if (!mounted) return;
+    setState(() => _palcoGrande = !_palcoGrande);
+  }
+
+  /// O ⛶ está na tela agora (com o player andando e o 📺 ligado).
+  bool _emTelaCheia(OuvirState st) =>
+      _palcoGrande && _assistir && st.fila.isNotEmpty && st.status != StatusOuvir.parado && st.atual != null;
+
+  /// O [PalcoAssistir] com a [GlobalKey] do State. O mesmo widget volta enquanto nada muda, então os
+  /// rebuilds do player (a cada emit) não reconstroem o palco.
+  Widget _palco(OuvirCubit c, {required bool grande}) {
+    final trilhas = trilhasDoCurso(context);
+    final m = _palcoMemo;
+    if (m != null && m.grande == grande && identical(m.trilhas, trilhas)) return m.palco;
+    final palco = PalcoAssistir(
+      key: _chavePalco,
+      cubit: c,
+      trilhas: trilhas,
+      grande: grande,
+      // no ⛶ a saída é o botão da barra compacta (um só "sair da tela cheia" na tela)
+      onTelaCheia: grande ? null : _alternarTelaCheia,
+    );
+    _palcoMemo = (palco: palco, grande: grande, trilhas: trilhas);
+    return palco;
   }
 
   void _alternar(OuvirCubit c) {
@@ -126,7 +215,12 @@ class _TocandoPageState extends State<TocandoPage> {
     } else if (k == LogicalKeyboardKey.keyR) {
       c.repetirAtual();
     } else if (k == LogicalKeyboardKey.escape) {
-      Navigator.of(context).maybePop();
+      // no ⛶, o Esc só sai da tela cheia; o 2º minimiza
+      if (_emTelaCheia(c.state)) {
+        setState(() => _palcoGrande = false);
+      } else {
+        Navigator.of(context).maybePop();
+      }
     } else {
       return KeyEventResult.ignored;
     }
@@ -167,6 +261,16 @@ class _TocandoPageState extends State<TocandoPage> {
             builder: (context, st) => LayoutBuilder(builder: (context, cons) {
               final largo = cons.maxWidth >= 900;
               if (st.fila.isEmpty || st.status == StatusOuvir.parado) return _nadaTocando(context);
+              if (_emTelaCheia(st)) {
+                // o voltar do sistema também só sai da tela cheia
+                return PopScope(
+                  canPop: false,
+                  onPopInvokedWithResult: (didPop, _) {
+                    if (!didPop && mounted) setState(() => _palcoGrande = false);
+                  },
+                  child: _palcoCheio(context, c, st),
+                );
+              }
               if (largo) {
                 return Padding(
                   padding: const EdgeInsets.fromLTRB(24, 12, 24, 0),
@@ -279,11 +383,18 @@ class _TocandoPageState extends State<TocandoPage> {
     final mostraPt = mostraTraducao(f, cfg);
     final comImagem = cfg.mostrarImagens && f.temImagem;
     final aviso = textoDoAviso(st);
-    final temLicao = f.licaoId.isNotEmpty && IndiceOuvir.de(trilhasDoCurso(context)).licao(f.licaoId) != null;
+    final trilhas = trilhasDoCurso(context);
+    final temLicao = f.licaoId.isNotEmpty && IndiceOuvir.de(trilhas).licao(f.licaoId) != null;
     final total = st.fila.length;
+    // 📺: o palco entra no lugar da foto (com "Imagens" desligado e sem foto também); faixa sem lição do
+    // curso mostra a foto de sempre com um aviso (D14)
+    final podeAssistir = PalcoAssistir.podeAssistir(f, trilhas);
+    final comPalco = _assistir && podeAssistir;
+    final semDesenho = _assistir && !podeAssistir;
     return Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
       const SizedBox(height: 8),
-      Center(child: RostoDaFaixa(faixa: f, tamanho: comImagem ? (largo ? 96 : 72) : (largo ? 140 : 96))),
+      if (!comPalco)
+        Center(child: RostoDaFaixa(faixa: f, tamanho: comImagem ? (largo ? 96 : 72) : (largo ? 140 : 96))),
       if (nome != null) ...[
         const SizedBox(height: 6),
         Text(nome, textAlign: TextAlign.center, style: Mixart.ui(size: 13, weight: FontWeight.w700, color: Mixart.textMuted)),
@@ -297,7 +408,26 @@ class _TocandoPageState extends State<TocandoPage> {
             overflow: TextOverflow.ellipsis,
             style: Mixart.ui(size: 12, color: Mixart.textFaint)),
       ],
-      if (comImagem) ...[
+      if (comPalco) ...[
+        const SizedBox(height: 14),
+        LayoutBuilder(builder: (context, cons) {
+          final w = math.min(cons.maxWidth, 720.0);
+          // no celular em pé o palco é mais alto (.78): com .56 sobravam ~165 px de desenho e o balão de 2
+          // linhas cobria todo mundo (a página rola, então há espaço)
+          final h0 = largo ? (w * .56).clamp(260.0, 520.0) : (w * .78).clamp(220.0, 380.0);
+          // tela baixa (celular deitado): o palco inteiro, com a faixa das bolinhas e o ⛶, na altura visível
+          // (o que vem acima dele, barra + nome + trilha, ocupa ~140 px + o texto ampliado)
+          final visivel = MediaQuery.sizeOf(context).height;
+          final escalaTexto = MediaQuery.textScalerOf(context).scale(1);
+          final h = math.min(h0, math.max(160.0, visivel - 140 - 40 * escalaTexto));
+          return Center(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(Mixart.radiusLg),
+              child: SizedBox(width: w, height: h, child: _palco(c, grande: false)),
+            ),
+          );
+        }),
+      ] else if (comImagem) ...[
         const SizedBox(height: 14),
         LayoutBuilder(builder: (context, cons) {
           final w = cons.maxWidth.clamp(0.0, 520.0);
@@ -321,13 +451,18 @@ class _TocandoPageState extends State<TocandoPage> {
               style: Mixart.ui(size: 10, color: Mixart.textFaint)),
         ],
       ],
+      if (semDesenho) ...[
+        const SizedBox(height: 10),
+        const Center(child: _SemDesenho()),
+      ],
       const SizedBox(height: 14),
       Text(
         escondeEn ? '…' : f.en,
         key: const Key('ouvir-en'),
         textAlign: TextAlign.center,
         semanticsLabel: escondeEn ? 'Pense: como se diz em inglês?' : null,
-        style: Mixart.display(size: largo ? 32 : 26).copyWith(height: 1.25),
+        // com o palco, o balão já mostra a frase: aqui ela fica menor (continua pela acessibilidade e pelo "…")
+        style: Mixart.display(size: comPalco ? (largo ? 26 : 22) : (largo ? 32 : 26)).copyWith(height: 1.25),
       ),
       if (mostraPt) ...[
         const SizedBox(height: 8),
@@ -337,7 +472,20 @@ class _TocandoPageState extends State<TocandoPage> {
             style: Mixart.ui(size: largo ? 17 : 15, color: Mixart.textMuted).copyWith(height: 1.35)),
       ],
       const SizedBox(height: 14),
-      Center(child: ChipFase(key: const Key('ouvir-fase'), fase: st.fase, vez: st.vez, de: st.de)),
+      // o 📺 fica sempre aqui (fora do bloco da foto): existe com "Imagens" desligado e sem foto (I8)
+      Center(
+        child: Wrap(
+          alignment: WrapAlignment.center,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          spacing: 10,
+          runSpacing: 6,
+          children: [
+            ChipFase(key: const Key('ouvir-fase'), fase: st.fase, vez: st.vez, de: st.de),
+            if (podeAssistir || _assistir)
+              _BotaoAssistir(ligado: _assistir, novidade: _novidade, onTap: _alternarAssistir),
+          ],
+        ),
+      ),
       const SizedBox(height: 16),
       Text('Frase ${milhar(st.indice + 1)} de ${milhar(total)} · faltam ~${formatarDuracao(st.restanteSeg)}',
           key: const Key('ouvir-progresso'),
@@ -407,6 +555,87 @@ class _TocandoPageState extends State<TocandoPage> {
           ),
       ]),
     ]);
+  }
+
+  /// ⛶ O desenho na tela inteira + a barra compacta (⏮ ⏯ ⏭, ⏭⏭ próxima lição, sair, os chips do Ouvir).
+  Widget _palcoCheio(BuildContext context, OuvirCubit c, OuvirState st) {
+    final f = st.atual!;
+    final pode = PalcoAssistir.podeAssistir(f, trilhasDoCurso(context));
+    return Column(key: const Key('assistir-tela-cheia-layout'), crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+      Expanded(
+        child: LayoutBuilder(builder: (context, cons) {
+          if (pode) {
+            return SizedBox(width: cons.maxWidth, height: cons.maxHeight, child: _palco(c, grande: true));
+          }
+          return Stack(fit: StackFit.expand, children: [
+            ImagemDaFaixa(faixa: f, largura: cons.maxWidth, altura: cons.maxHeight, raio: 0),
+            const Positioned(left: 12, right: 12, bottom: 12, child: Center(child: _SemDesenho())),
+          ]);
+        }),
+      ),
+      _barraCompacta(c, st),
+    ]);
+  }
+
+  Widget _barraCompacta(OuvirCubit c, OuvirState st) {
+    final tocando = st.status == StatusOuvir.tocando;
+    final p = posicaoNaFila(st.fila, st.indice);
+    final aviso = textoDoAviso(st);
+    final controles = <Widget>[
+      _Controle(chave: 'assistir-anterior', rotulo: 'Frase anterior', icone: Icons.skip_previous_rounded, onTap: c.anterior),
+      IconButton.filled(
+        key: const Key('assistir-play'),
+        tooltip: tocando ? 'Pausar' : 'Tocar',
+        onPressed: () => _alternar(c),
+        constraints: const BoxConstraints(minWidth: 48, minHeight: 48),
+        style: IconButton.styleFrom(backgroundColor: Mixart.brand, foregroundColor: Mixart.onBrand),
+        icon: Icon(tocando ? Icons.pause_rounded : Icons.play_arrow_rounded, size: 28, color: Mixart.onBrand),
+      ),
+      _Controle(chave: 'assistir-proxima', rotulo: 'Próxima frase', icone: Icons.skip_next_rounded, onTap: c.proxima),
+      _Controle(
+          chave: 'assistir-proxima-licao', rotulo: 'Próxima lição', icone: Icons.double_arrow_rounded, onTap: c.proximaLicao),
+      const SizedBox(width: 6),
+    ];
+    final posicao = Text(aviso ?? 'Lição ${p.licao} de ${p.licoes} · Frase ${p.frase} de ${p.frases}',
+        key: const Key('assistir-barra-posicao'),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: Mixart.ui(size: 12.5, weight: aviso == null ? FontWeight.w600 : FontWeight.w800, color: aviso == null ? Mixart.textMuted : Mixart.text));
+    final sair = _Controle(
+      chave: 'assistir-sair-tela-cheia',
+      rotulo: 'Sair da tela cheia (Esc)',
+      icone: Icons.fullscreen_exit_rounded,
+      onTap: () => setState(() => _palcoGrande = false),
+    );
+    final chips = SingleChildScrollView(
+      key: const Key('assistir-barra-chips'),
+      scrollDirection: Axis.horizontal,
+      child: ChipsOuvir(
+        config: st.config,
+        desligar: st.desligar,
+        onConfig: c.configurar,
+        onDesligar: c.desligarEm,
+      ),
+    );
+    // tela baixa (celular deitado): uma linha só, com os chips rolando ao lado, e sobram ~50 px de desenho
+    final baixa = MediaQuery.sizeOf(context).height < 500;
+    return Container(
+      key: const Key('assistir-barra'),
+      padding: const EdgeInsets.fromLTRB(6, 2, 6, 4),
+      decoration: BoxDecoration(color: Mixart.surface, border: Border(top: BorderSide(color: Mixart.border))),
+      child: baixa
+          ? Row(children: [
+              ...controles,
+              Flexible(flex: 2, child: posicao),
+              const SizedBox(width: 6),
+              Expanded(flex: 3, child: chips),
+              sair,
+            ])
+          : Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+              Row(children: [...controles, Expanded(child: posicao), sair]),
+              chips,
+            ]),
+    );
   }
 
   Widget _controles(OuvirCubit c, OuvirState st) {
@@ -582,5 +811,76 @@ class _Aviso extends StatelessWidget {
               child: Text(rotulo, style: Mixart.ui(size: 13.5, weight: FontWeight.w800, color: Mixart.brand)),
             ),
         ]),
+      );
+}
+
+/// 📺 Assistir / 🖼️ Foto: liga e desliga o desenho no lugar da foto (com o selo "novo" até o 1º uso).
+class _BotaoAssistir extends StatelessWidget {
+  final bool ligado, novidade;
+  final VoidCallback onTap;
+  const _BotaoAssistir({required this.ligado, required this.novidade, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: 'Ver as frases como desenho animado',
+      child: Semantics(
+        button: true,
+        toggled: ligado,
+        label: 'Assistir como desenho animado',
+        child: ExcludeSemantics(
+          child: InkWell(
+            key: const Key('ouvir-assistir'),
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(Mixart.radiusChip),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: Container(
+                constraints: const BoxConstraints(minHeight: 40),
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                decoration: BoxDecoration(
+                  color: ligado ? Mixart.brandSub : Mixart.surfaceHi,
+                  borderRadius: BorderRadius.circular(Mixart.radiusChip),
+                  border: Border.all(color: ligado ? Mixart.brandDim : Mixart.border),
+                ),
+                child: Row(mainAxisSize: MainAxisSize.min, children: [
+                  Flexible(
+                    child: Text(ligado ? '🖼️ Foto' : '📺 Assistir',
+                        style: Mixart.ui(size: 13, weight: FontWeight.w800, color: Mixart.text)),
+                  ),
+                  if (novidade) ...[
+                    const SizedBox(width: 6),
+                    Container(
+                      key: const Key('ouvir-assistir-novo'),
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                      decoration: BoxDecoration(color: Mixart.brand, borderRadius: BorderRadius.circular(999)),
+                      child: Text('novo', style: Mixart.ui(size: 10.5, weight: FontWeight.w800, color: Mixart.onBrand)),
+                    ),
+                  ],
+                ]),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// D14: a faixa não é de uma lição do curso (frase própria, texto colado): fica a foto, com este aviso.
+class _SemDesenho extends StatelessWidget {
+  const _SemDesenho();
+
+  @override
+  Widget build(BuildContext context) => Container(
+        key: const Key('assistir-sem-desenho'),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+        decoration: BoxDecoration(
+          color: Mixart.surfaceHi,
+          borderRadius: BorderRadius.circular(Mixart.radiusChip),
+          border: Border.all(color: Mixart.border),
+        ),
+        child: Text('Sem desenho para esta frase (ela não é de uma lição do curso)',
+            textAlign: TextAlign.center, style: Mixart.ui(size: 12, color: Mixart.textMuted)),
       );
 }

@@ -39,7 +39,8 @@ enum AcaoAtor { parado, acena, pula, comemora, aponta, entra, sai, anda, corre, 
   palmas, concorda, nega, mostra, dirige, desce, olha, arremessa, escreve, rodopia, senta, dorme }
 
 enum CenarioHistoria { aeroporto, garagem, boxes, hotel, cafe, clinica, plataforma, podio, campina, deserto, cidade,
-  neve, vulcao, espaco, praia, ponte, canion, oasis, floresta, vale, lago, lua, marte, estacao, autodromo }
+  neve, vulcao, espaco, praia, ponte, canion, oasis, floresta, vale, lago, lua, marte, estacao, autodromo,
+  videochamada, escritorio, casa, restaurante, loja }
 
 enum HoraHistoria { amanhecer, dia, tarde, noite }
 
@@ -49,7 +50,8 @@ enum EfeitoHistoria { confete, fogos, relampago, coracoes, brilho, fumaca, notas
   estalo, estrelaCadente }
 
 enum PropHistoria { nada, carro, carroRival, trofeu, rodaDeOuro, mapa, celular, bandeira, capacete, chave, mala,
-  passaporte, cafe, medalha, guardaChuva, microfone, foguete, presente, livro, pneu, cachecol, garrafa, carta, radio }
+  passaporte, cafe, medalha, guardaChuva, microfone, foguete, presente, livro, pneu, cachecol, garrafa, carta, radio,
+  notebook, prato, sacola, documento }
 
 enum AcaoObjeto { aparece, some, entra, sai, passa, voa, roda, treme }
 
@@ -60,7 +62,8 @@ const personagensHistoria = {'voce', 'mike', 'sarah', 'ana', 'ben', 'emma', 'luc
 const narrador = 'narrador';
 
 const interioresHistoria = {CenarioHistoria.aeroporto, CenarioHistoria.garagem, CenarioHistoria.hotel,
-  CenarioHistoria.cafe, CenarioHistoria.clinica, CenarioHistoria.estacao};
+  CenarioHistoria.cafe, CenarioHistoria.clinica, CenarioHistoria.estacao, CenarioHistoria.videochamada,
+  CenarioHistoria.escritorio, CenarioHistoria.casa, CenarioHistoria.restaurante, CenarioHistoria.loja};
 const espaciaisHistoria = {CenarioHistoria.espaco, CenarioHistoria.lua, CenarioHistoria.estacao};
 
 /// O mundo de cada pista (regra V-mundo: a 1ª ou a última fala da abertura acontece nele).
@@ -865,9 +868,29 @@ void _validarCapitulo(CapituloHistoria cap, List<String> erros) {
   }
 }
 
-/// Valida a cena e devolve a linha do tempo (estados antes de cada passo + o final).
+/// Valida a cena do capítulo e devolve a linha do tempo (estados antes de cada passo + o final).
 List<EstadoCena> _validarCena(String ctx, CenaHistoria cena, CapituloHistoria cap, NivelIngles nivel,
-    List<String> erros) {
+        List<String> erros) =>
+    validarCenaBase(ctx, cena, nivel, erros, personagens: personagensHistoria, porFala: (fc, f) {
+      if ((f.quem == 'lucas' || f.quem == 'julia') && cap.pista < 15) {
+        erros.add("$fc: '${f.quem}' só fala a partir do capítulo 15");
+      }
+    });
+
+/// Valida a cena e devolve a linha do tempo (estados antes de cada passo + o final).
+///
+/// O núcleo comum do Turismo e das historinhas das lições (📺 Escutar assistindo): hora/clima, elenco
+/// ([personagens] = quem pode estar no elenco; sem narrador, sem repetir, `pos` única, ≤ 5 presentes, ≤ 2
+/// remotos, ≤ 4 objetos), os textos das falas ([validarTextos]; as lições puxam o texto do currículo e não
+/// passam por aqui), ≤ 2 mudos seguidos, ≤ 3 mudos e toda a [SimulacaoCena.aplicar]. [porFala] roda em cada
+/// passo com texto, logo depois da checagem do texto (o Turismo põe ali a regra lucas/julia).
+/// Mensagens: "ctx rotuloPasso n: …" (o Turismo usa 'fala'; as lições, 'passo').
+List<EstadoCena> validarCenaBase(String ctx, CenaHistoria cena, NivelIngles nivel, List<String> erros, {
+  required Set<String> personagens,
+  bool validarTextos = true,
+  void Function(String ctxFala, FalaHistoria f)? porFala,
+  String rotuloPasso = 'fala',
+}) {
   // V-hora/clima
   if (!horasPermitidas(cena.cenario).contains(cena.hora)) {
     erros.add("$ctx: hora '${cena.hora.name}' não combina com '${cena.cenario.name}'");
@@ -885,7 +908,7 @@ List<EstadoCena> _validarCena(String ctx, CenaHistoria cena, CapituloHistoria ca
   for (final a in cena.elenco) {
     if (a.quem == narrador) {
       erros.add('$ctx: o narrador não entra no elenco');
-    } else if (!personagensHistoria.contains(a.quem)) {
+    } else if (!personagens.contains(a.quem)) {
       erros.add("$ctx: personagem '${a.quem}' desconhecido");
     }
     if (!ids.add(a.quem)) erros.add("$ctx: '${a.quem}' repetido no elenco");
@@ -920,19 +943,17 @@ List<EstadoCena> _validarCena(String ctx, CenaHistoria cena, CapituloHistoria ca
   final linha = <EstadoCena>[EstadoCena.inicial(cena)];
   for (var i = 0; i < cena.falas.length; i++) {
     final f = cena.falas[i];
-    final fc = '$ctx fala ${i + 1}';
+    final fc = '$ctx $rotuloPasso ${i + 1}';
     if (f.mudo) {
       mudas++;
       seguidas++;
       if (seguidas == 3) erros.add('$fc: mais de 2 passos mudos seguidos');
     } else {
       seguidas = 0;
-      if (f.en != null || f.pt != null) {
+      if (validarTextos && (f.en != null || f.pt != null)) {
         _validarTexto(fc, f.en, f.pt, f.ptF, erros, maxPalavras: nivel.maxPalavras);
       }
-      if ((f.quem == 'lucas' || f.quem == 'julia') && cap.pista < 15) {
-        erros.add("$fc: '${f.quem}' só fala a partir do capítulo 15");
-      }
+      porFala?.call(fc, f);
     }
     final (depois, errosDoPasso) = SimulacaoCena.aplicar(linha.last, f);
     for (final e in errosDoPasso) {

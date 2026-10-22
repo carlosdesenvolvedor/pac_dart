@@ -15,8 +15,10 @@ import 'clima_historia.dart';
 import 'efeitos_historia.dart';
 import 'elenco_turismo.dart';
 import 'fundo_historia.dart';
+import 'moldura_webcam.dart';
 import 'props_historia.dart';
 import 'roteiro_historia.dart';
+import 'roteiro_visivel.dart';
 
 /// 🎭 O palco do desenho: fundo, clima, objetos, atores, efeitos, balão e legenda, com a câmera.
 ///
@@ -29,16 +31,28 @@ class PalcoHistoria extends StatelessWidget {
     super.key,
     required this.roteiro,
     required this.relogio,
-    required this.capitulo,
+    this.capitulo,
+    this.cabecalho,
     this.reduzir = false,
-  });
+    this.balaoSemCorte = false,
+  }) : assert(capitulo != null || cabecalho != null);
 
-  final RoteiroHistoria roteiro;
+  /// O Turismo passa o [RoteiroHistoria]; o 📺 Assistir, o `RoteiroSeguidor`.
+  final RoteiroVisivel roteiro;
 
   /// Segundos do relógio do player (idle, clima, efeitos).
   final double relogio;
-  final CapituloHistoria capitulo;
+
+  /// O capítulo do Turismo (o cabeçalho sai dele quando não vem [cabecalho]).
+  final CapituloHistoria? capitulo;
+
+  /// O cartão de título e a Semantics; null = [CabecalhoPalco.doCapitulo] do [capitulo].
+  final CabecalhoPalco? cabecalho;
   final bool reduzir;
+
+  /// 📺 Palco baixo (a faixa do "Tocando agora" no celular): o balão que não cabe na faixa de cima cresce por
+  /// cima dos atores em vez de cortar o texto. O Turismo (palco alto) usa o padrão `false`, sem mudança.
+  final bool balaoSemCorte;
 
   /// As 5 posições do palco (fração da largura); na tela estreita (< 560 px), um pouco mais juntas.
   static const xsLargo = [.12, .31, .50, .69, .88];
@@ -88,6 +102,62 @@ class PalcoHistoria extends StatelessWidget {
     return melhor.isOdd ? 1 : 0;
   }
 
+  /// 📺 Na `videochamada` cada ator fica na sua moldura de webcam, recortado na cintura (spike, opção b): uma fila
+  /// só (sem [recuoFila]; no retrato com 4+ pessoas, 2 filas sem sobrepor) e atores do tamanho que faz as
+  /// molduras caberem lado a lado (`largura da moldura ≤ .92 × menor distância`) com a margem de
+  /// [margemDaMoldura] acima da cabeça.
+  static bool ehChamada(CenarioHistoria c) => c == CenarioHistoria.videochamada;
+
+  /// A folga da moldura acima da cabeça (em alturas de ator): a mão do `acena`/`aponta` não é cortada.
+  static const margemDaMoldura = .15;
+
+  /// A largura da moldura / a largura do corpo (o `MolduraWebcamPainter.molduraDe` de um corpo padrão).
+  static double _proporcaoDaMoldura() {
+    const corpo = Rect.fromLTWH(0, 0, 62, 100);
+    return MolduraWebcamPainter.molduraDe(corpo).width / corpo.width;
+  }
+
+  /// A moldura de um ator de altura 1 em pé no chão 0: (quanto sobe acima dos pés, a altura dela).
+  static (double topo, double altura) _molduraUnitaria() {
+    final m = molduraNaChamada(const Rect.fromLTWH(-31, -100, 62, 100), double.infinity);
+    return (-m.top / 100, m.height / 100);
+  }
+
+  /// No retrato com 4 ou mais lugares, a chamada usa 2 filas: a de trás sobe até a moldura dela ficar inteira
+  /// acima das da frente (spike, regra 3); com menos gente, uma fila só.
+  static bool duasFilasNaChamada(Size palco, int lugares) => retrato(palco) && lugares >= 4;
+
+  /// Quanto a fila de trás da chamada sobe (px): a altura da moldura + 8 px de vão.
+  static double recuoNaChamada(double alturaAtor) => _molduraUnitaria().$2 * alturaAtor + 8;
+
+  /// A altura dos atores na `videochamada`: a regra do palco, encolhida até as molduras vizinhas (da mesma
+  /// fila, [menorDistancia] em px) não se encostarem e a moldura mais alta (com a margem de cima e, com
+  /// [duasFilas], a fila de trás) caber acima do [chao]. Com [reservaTopo] (px, 📺 numa fila só) a moldura fica
+  /// abaixo dessa faixa do topo, onde o balão cabe sem cobrir a cabeça de quem fala.
+  static double alturaNaChamada(Size palco, double menorDistancia, double chao,
+      {bool duasFilas = false, double reservaTopo = 0}) {
+    var h = math.min(palco.height * .46, palco.width * .30).clamp(56.0, 420.0);
+    if (retrato(palco)) h = math.min(palco.height * .30, palco.width * .48).clamp(56.0, 420.0);
+    final k = _proporcaoDaMoldura();
+    if (menorDistancia.isFinite && AtorHistoria.largura(h) * k > .92 * menorDistancia) {
+      h = .92 * menorDistancia / k / .62;
+    }
+    final (topo, altura) = _molduraUnitaria();
+    // a moldura inteira dentro do palco, com um respiro de 4 px (com 2 filas, a de trás: + a moldura + 8 px)
+    final teto = duasFilas ? (chao - 12) / (topo + altura) : (chao - math.max(4.0, reservaTopo)) / topo;
+    h = math.min(h, math.max(24.0, teto));
+    return math.max(24.0, h);
+  }
+
+  /// A moldura de webcam de um ator cujo corpo ocupa [corpo] (palco), com as regras do 📺: no máximo [maxLargura]
+  /// de largura (centrada no ator) e pelo menos [margemDaMoldura] de folga acima da cabeça.
+  static Rect molduraNaChamada(Rect corpo, double maxLargura) {
+    final m = MolduraWebcamPainter.molduraDe(corpo);
+    final w = math.min(m.width, maxLargura);
+    final topo = math.min(m.top, corpo.top - corpo.height * margemDaMoldura);
+    return Rect.fromLTRB(corpo.center.dx - w / 2, topo, corpo.center.dx + w / 2, math.max(m.bottom, topo + 8));
+  }
+
   static double _alturaNoRetrato(Size palco, List<double> xsOcupados) {
     var h = math.min(palco.height * .30, palco.width * .48).clamp(84.0, 420.0);
     final xs = xsOcupados.toSet().toList()..sort();
@@ -110,18 +180,20 @@ class PalcoHistoria extends StatelessWidget {
         c.maxWidth.isFinite ? c.maxWidth : 800,
         c.maxHeight.isFinite ? c.maxHeight : 450,
       );
+      final cab = cabecalho ?? CabecalhoPalco.doCapitulo(capitulo!);
       final q = _Quadro(
         roteiro: roteiro,
-        capitulo: capitulo,
+        cabecalho: cab,
         size: size,
         relogio: relogio,
         reduzir: reduzir,
         agora: DateTime.now(),
         fala: VozIngles.falando.value,
+        balaoSemCorte: balaoSemCorte,
       );
       return Semantics(
         container: true,
-        label: 'Desenho animado: Chapter ${capitulo.pista}, ${capitulo.titulo.en}',
+        label: cab.rotuloSemantico,
         child: ClipRect(
           child: SizedBox.fromSize(
             size: size,
@@ -193,18 +265,21 @@ class _Enquadro {
 class _Quadro {
   _Quadro({
     required this.roteiro,
-    required this.capitulo,
+    required this.cabecalho,
     required this.size,
     required this.relogio,
     required this.reduzir,
     required this.agora,
     required this.fala,
+    this.balaoSemCorte = false,
   }) {
     _calcular();
   }
 
-  final RoteiroHistoria roteiro;
-  final CapituloHistoria capitulo;
+  final bool balaoSemCorte;
+
+  final RoteiroVisivel roteiro;
+  final CabecalhoPalco cabecalho;
   final Size size;
   final double relogio;
   final bool reduzir;
@@ -232,8 +307,20 @@ class _Quadro {
   late double alturaAtor;
   late double larguraAtor;
 
-  /// No retrato, quanto a 2ª fila sobe (px); 0 fora do retrato.
+  /// No retrato, quanto a 2ª fila sobe (px); 0 fora do retrato (na `videochamada`, só com 2 filas).
   double recuo = 0;
+
+  /// 📺 A `videochamada`: cada ator na sua moldura de webcam, recortado na cintura.
+  late final bool chamada = PalcoHistoria.ehChamada(depois.cenario);
+
+  /// A largura máxima de uma moldura (`.92 ×` a menor distância entre as posições ocupadas).
+  double maxMoldura = double.infinity;
+
+  /// 📺 A faixa do topo (px de tela) guardada para o balão na chamada de uma fila só; 0 = nenhuma.
+  double reservaBalao = 0;
+
+  /// As molduras da `videochamada`: quem, onde e o quanto está acesa (0 = ainda fora da chamada).
+  final molduras = <(String quem, Rect caixa, double acesa)>[];
   final atores = <_AtorQuadro>[];
   final objetos = <_ObjetoQuadro>[];
   final efeitos = <EfeitoAtivo>[];
@@ -252,7 +339,11 @@ class _Quadro {
 
   late final List<double> _xs = PalcoHistoria.xsDo(size);
 
-  double xDe(PosicaoPalco p) => size.width * _xs[p.index];
+  /// 📺 Na `videochamada` de uma fila só, os lugares do elenco espalhados por igual na largura (sem o vão do
+  /// lugar vazio no meio, as molduras crescem); null fora dela. Quem não está no mapa usa [_xs].
+  Map<PosicaoPalco, double>? _xsChamada;
+
+  double xDe(PosicaoPalco p) => _xsChamada?[p] ?? size.width * _xs[p.index];
 
   /// 0 = fila da frente, 1 = fila de trás (retrato), suave entre as posições (quem anda muda de fila aos poucos).
   double profundidade(double x) {
@@ -299,6 +390,50 @@ class _Quadro {
         for (final a in e.atores.values)
           if (a.noPalco && a.pos != null) xDe(a.pos!),
     ];
+    if (chamada) {
+      // todos os lugares do elenco (também quem ainda não entrou: a moldura apagada já está lá)
+      final posicoes = <PosicaoPalco>{
+        for (final e in [antes, depois])
+          for (final a in e.atores.values)
+            if (a.pos != null && (a.noPalco || !a.ehRemoto)) a.pos!,
+      };
+      final duas = PalcoHistoria.duasFilasNaChamada(size, posicoes.length);
+      if (!duas && posicoes.isNotEmpty) {
+        // uma fila: as molduras dividem a largura por igual, na ordem dos lugares
+        final ordem = posicoes.toList()..sort((a, b) => a.index.compareTo(b.index));
+        _xsChamada = {for (var i = 0; i < ordem.length; i++) ordem[i]: size.width * (i + .5) / ordem.length};
+      }
+      final lugares = <double>{for (final p in posicoes) xDe(p)}.toList()..sort();
+      var menor = double.infinity;
+      for (var i = 0; i < lugares.length; i++) {
+        for (var j = i + 1; j < lugares.length; j++) {
+          final mesmaFila = !duas ||
+              PalcoHistoria.filaNoRetrato(size, lugares[i]) == PalcoHistoria.filaNoRetrato(size, lugares[j]);
+          if (mesmaFila) menor = math.min(menor, (lugares[j] - lugares[i]).abs());
+        }
+      }
+      // as molduras das pontas também não encostam na borda do palco (4 px)
+      if (lugares.isNotEmpty) {
+        final borda = math.min(lugares.first, size.width - lugares.last) - 4;
+        if (borda > 0) menor = math.min(menor, 2 * borda / .92);
+      }
+      maxMoldura = menor.isFinite ? .92 * menor : size.width * .9;
+      // 📺 numa fila só: uma faixa no topo para o balão (o palco baixo do celular deitado não cobre a cabeça)
+      final reserva = balaoSemCorte && !duas
+          ? math.min(size.height * .36, 112 * (size.width / 1280).clamp(1.0, 1.4))
+          : 0.0;
+      reservaBalao = reserva;
+      alturaAtor = PalcoHistoria.alturaNaChamada(size, menor, chao, duasFilas: duas, reservaTopo: reserva);
+      larguraAtor = AtorHistoria.largura(alturaAtor);
+      if (duas) recuo = PalcoHistoria.recuoNaChamada(alturaAtor);
+      _calcularAtores();
+      _calcularMolduras();
+      _calcularObjetos();
+      _calcularRemotos();
+      _calcularEfeitos();
+      _calcularCamera();
+      return;
+    }
     alturaAtor = PalcoHistoria.alturaDosAtores(size, ocupados);
     larguraAtor = AtorHistoria.largura(alturaAtor);
     if (PalcoHistoria.retrato(size)) {
@@ -321,6 +456,21 @@ class _Quadro {
     final xa = a.pos == null ? null : xDe(a.pos!);
     final xd = d.pos == null ? null : xDe(d.pos!);
     final margem = larguraAtor * .8;
+    if (chamada) {
+      // na chamada ninguém anda pelo palco: entrar e sair acendem e apagam a câmera, no lugar
+      final dur = SimulacaoCena.duracaoDe(acao) ?? .9;
+      final p = reduzir ? 1.0 : (t / dur).clamp(0.0, 1.0);
+      if (!a.noPalco && d.noPalco && xd != null) {
+        return (xd, acao == AcaoAtor.entra ? p : 1, false, false);
+      }
+      if (a.noPalco && !d.noPalco) {
+        if (xa == null || acabou || (acao == AcaoAtor.sai && p >= 1) || acao != AcaoAtor.sai) return null;
+        return (xa, 1 - p, false, false);
+      }
+      if (!d.noPalco) return null;
+      final x1 = xd ?? xa;
+      return x1 == null ? null : (x1, 1, false, false);
+    }
     if (!a.noPalco && d.noPalco && acao == AcaoAtor.entra && xd != null) {
       final borda = xd < size.width / 2 ? -margem : size.width + margem;
       final p = reduzir ? 1.0 : (t / (SimulacaoCena.duracaoDe(acao) ?? .9)).clamp(0.0, 1.0);
@@ -407,7 +557,7 @@ class _Quadro {
     if (fc != null && fc.frase == en) return fc.visema(agora);
     final tf = roteiro.tFala;
     if (tf == null) return Visema.x;
-    if (roteiro.vozLigada && roteiro.voz != null && estado != EstadoRoteiro.falando) return Visema.x;
+    if (roteiro.falaComVoz && estado != EstadoRoteiro.falando) return Visema.x;
     return _bocaDoTexto(en, tf);
   }
 
@@ -503,6 +653,21 @@ class _Quadro {
         final bx = at.espelhado ? larguraAtor - boca.dx : boca.dx;
         ancoraBalao = Offset(at.x - larguraAtor / 2 + bx, topo + boca.dy * (at.pose.noCarro ? .78 : 1));
         topoFalante = topo;
+      }
+    }
+  }
+
+  /// 📺 As molduras de webcam da `videochamada`: uma por lugar do elenco (não remoto), atrás do ator; acesa com
+  /// quem está na chamada (o `entra` acende junto com o esmaecer do ator).
+  void _calcularMolduras() {
+    final vistos = <String>{};
+    for (final e in [depois, antes]) {
+      for (final a in e.atores.values) {
+        if (a.ehRemoto || a.pos == null || !vistos.add(a.quem)) continue;
+        final x = xDe(depois.atores[a.quem]?.pos ?? a.pos!);
+        final corpo = Rect.fromLTWH(x - larguraAtor / 2, pe(x) - alturaAtor, larguraAtor, alturaAtor);
+        final at = atores.where((q) => q.quem == a.quem).firstOrNull;
+        molduras.add((a.quem, PalcoHistoria.molduraNaChamada(corpo, maxMoldura), at?.alpha ?? 0));
       }
     }
   }
@@ -781,9 +946,25 @@ class _Quadro {
 
   _Enquadro _limitar(_Enquadro e) {
     final w = size.width, h = size.height;
-    final s = math.max(1.0, e.s);
+    var s = math.max(1.0, e.s);
+    var fx = e.foco.dx;
+    if (chamada && s > 1 && molduras.isNotEmpty) {
+      // 📺 o zoom na chamada nunca corta uma moldura de webcam na borda (o app de chamada não dá zoom):
+      // a câmera só se aproxima até caber todas as molduras na largura, e fica centrada nelas.
+      final esq = molduras.map((m) => m.$2.left).reduce(math.min) - 6;
+      final dir = molduras.map((m) => m.$2.right).reduce(math.max) + 6;
+      s = math.min(s, math.max(1.0, w / (dir - esq)));
+      final meia = w / (2 * s);
+      fx = dir - esq >= 2 * meia ? (esq + dir) / 2 : fx.clamp(dir - meia, esq + meia);
+    }
     final mx = w / (2 * s), my = h / (2 * s);
-    return _Enquadro(s, Offset(e.foco.dx.clamp(mx, w - mx), e.foco.dy.clamp(my, h - my)));
+    var fy = e.foco.dy;
+    if (reservaBalao > 0 && s > 1 && molduras.isNotEmpty) {
+      // 📺 o zoom na chamada não sobe as molduras para dentro da faixa do balão
+      final topo = molduras.map((m) => m.$2.top).reduce(math.min);
+      fy = math.min(fy, topo - (reservaBalao - h / 2) / s);
+    }
+    return _Enquadro(s, Offset(fx.clamp(mx, w - mx), fy.clamp(my, h - my)));
   }
 
   void _calcularCamera() {
@@ -865,6 +1046,7 @@ class _Quadro {
               ),
             ),
           // sombras + objetos, depois os atores; no retrato, a fila de trás (objetos e atores) vem antes da da frente
+          for (final m in molduras) ..._moldura(m),
           for (final o in objetos)
             if (_objetoAtras(o)) _objeto(o),
           for (final a in atores)
@@ -910,7 +1092,7 @@ class _Quadro {
     if (tam.isEmpty) return const SizedBox.shrink();
     Widget w = CustomPaint(
       size: tam,
-      painter: PropPainter(prop: o.prop, t: reduzir ? 0 : relogio, capitulo: capitulo.pista),
+      painter: PropPainter(prop: o.prop, t: reduzir ? 0 : relogio, capitulo: cabecalho.pinturaCarro),
     );
     if (o.giro != 0) w = Transform.rotate(angle: o.giro, child: w);
     if (o.escala != 1) w = Transform.scale(scale: o.escala, alignment: Alignment.bottomCenter, child: w);
@@ -925,6 +1107,7 @@ class _Quadro {
   }
 
   List<Widget> _ator(_AtorQuadro a, double h) {
+    if (chamada) return _atorNaChamada(a, h);
     final w = larguraAtor;
     final sombraW = a.pose.noCarro ? w * 1.5 : w * .8;
     final chao = pe(a.x);
@@ -957,9 +1140,104 @@ class _Quadro {
                 espelhado: a.espelhado,
                 segura: a.segura,
                 carro: a.carro,
-                capitulo: capitulo.pista,
+                capitulo: cabecalho.pinturaCarro,
                 reduzir: reduzir,
               ),
+            ),
+          ),
+        ),
+      ),
+    ];
+  }
+
+  /// A moldura de webcam (apagada embaixo; a acesa por cima, com o quanto a pessoa já entrou) e as iniciais de
+  /// quem ainda não entrou.
+  List<Widget> _moldura((String, Rect, double) m) {
+    final (quem, r, acesa) = m;
+    final indice = _hash(quem) % 4;
+    final nome = ElencoTurismo.nomeDe(quem);
+    final iniciais = nome.isEmpty ? '?' : nome.characters.first.toUpperCase();
+    // a borda verde de "quem está falando", como nos apps de chamada: acesa o passo inteiro da fala (com o
+    // balão na tela, também no vão e na "sua vez"), não só enquanto a boca mexe
+    final f = passo;
+    final falando = (atores.where((q) => q.quem == quem).firstOrNull?.pose.falando ?? false) ||
+        (f != null &&
+            f.quem == quem &&
+            !f.mudo &&
+            f.en != null &&
+            !acabou &&
+            (estado == EstadoRoteiro.falando || estado == EstadoRoteiro.lendo));
+    return [
+      Positioned.fromRect(
+        rect: r,
+        child: IgnorePointer(
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              if (acesa < 1)
+                CustomPaint(
+                  key: ValueKey('historia-moldura-$quem'),
+                  painter: MolduraWebcamPainter(indice: indice, acesa: false, hora: depois.hora, iniciais: iniciais),
+                ),
+              if (acesa > 0)
+                Opacity(
+                  opacity: acesa.clamp(0.0, 1.0),
+                  child: CustomPaint(
+                    key: acesa >= 1 ? ValueKey('historia-moldura-$quem') : null,
+                    painter: MolduraWebcamPainter(
+                        indice: indice, acesa: true, hora: depois.hora, falando: falando && acesa >= 1),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    ];
+  }
+
+  /// O ator dentro da moldura dele, recortado nela (a cintura para baixo some, D8 + spike b).
+  List<Widget> _atorNaChamada(_AtorQuadro a, double h) {
+    final w = larguraAtor;
+    final chao = pe(a.x);
+    final corpo = Rect.fromLTWH(a.x - w / 2, chao - h, w, h);
+    final m = molduras.where((x) => x.$1 == a.quem).firstOrNull?.$2 ??
+        PalcoHistoria.molduraNaChamada(corpo, maxMoldura);
+    return [
+      Positioned.fromRect(
+        rect: m,
+        child: IgnorePointer(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(MolduraWebcamPainter.raioDe(m.size)),
+            child: Stack(
+              clipBehavior: Clip.none,
+              children: [
+                Positioned(
+                  left: corpo.left - m.left,
+                  top: corpo.top - m.top,
+                  width: w,
+                  height: h,
+                  child: Opacity(
+                    opacity: a.alpha.clamp(0.0, 1.0),
+                    child: RepaintBoundary(
+                      child: AtorHistoria(
+                        key: ValueKey('historia-ator-${a.quem}'),
+                        aparencia: a.aparencia,
+                        altura: h,
+                        pose: a.pose,
+                        visema: a.visema,
+                        olhos: a.olhos,
+                        expressao: a.expressao,
+                        olhar: a.olhar,
+                        espelhado: a.espelhado,
+                        segura: a.segura,
+                        carro: a.carro,
+                        capitulo: cabecalho.pinturaCarro,
+                        reduzir: reduzir,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),
@@ -980,7 +1258,7 @@ class _Quadro {
             t: reduzir ? 0 : relogio,
             rosto: ElencoTurismo.de(quem),
             visema: visema,
-            capitulo: capitulo.pista,
+            capitulo: cabecalho.pinturaCarro,
           ),
         ),
       ),
@@ -990,7 +1268,7 @@ class _Quadro {
   /// O que fica por cima da câmera: fade da cena, título, balão/legenda.
   List<Widget> sobreposicoes(BuildContext context) {
     final r = <Widget>[];
-    final escuro = _escurecimento();
+    final escuro = parado || acabou ? 0.0 : roteiro.escurecimento;
     if (escuro > 0) {
       r.add(Positioned.fill(
         child: IgnorePointer(child: ColoredBox(color: Colors.black.withValues(alpha: escuro.clamp(0.0, 1.0)))),
@@ -1016,6 +1294,8 @@ class _Quadro {
             pt: pt,
             letras: roteiro.letrasVisiveis,
             mostrarPt: roteiro.mostrarPt,
+            esconderEn: roteiro.esconderEn,
+            icone: roteiro.iconeDaFala,
           ),
         ));
       } else {
@@ -1023,18 +1303,6 @@ class _Quadro {
       }
     }
     return r;
-  }
-
-  double _escurecimento() {
-    if (parado || acabou) return 0;
-    final tit = roteiro.duracaoTituloAtual;
-    if (roteiro.cena == 0 && roteiro.passo == 0) {
-      if (t < tit) return .55;
-      if (reduzir) return 0;
-      return .55 * (1 - (t - tit) / .45);
-    }
-    if (roteiro.passo == 0 && !reduzir) return 1 - t / .45;
-    return 0;
   }
 
   Widget _titulo() {
@@ -1051,15 +1319,15 @@ class _Quadro {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('CHAPTER ${capitulo.pista}',
+                  Text(cabecalho.sobretitulo,
                       style: Mixart.display(size: 14 * escala, color: const Color(0xFFFFC73B))
                           .copyWith(letterSpacing: 3)),
                   const SizedBox(height: 6),
-                  Text(capitulo.titulo.en,
+                  Text(cabecalho.titulo.en,
                       textAlign: TextAlign.center,
                       style: Mixart.display(size: 30 * escala, color: Colors.white, weight: FontWeight.w800)),
                   const SizedBox(height: 4),
-                  Text(capitulo.titulo.pt,
+                  Text(cabecalho.titulo.pt,
                       textAlign: TextAlign.center,
                       style: Mixart.ui(size: 15 * escala, color: Colors.white70).copyWith(fontStyle: FontStyle.italic)),
                 ],
@@ -1088,6 +1356,8 @@ class _Quadro {
           pt: f.pt ?? '',
           mostrarPt: roteiro.mostrarPt,
           via: via,
+          esconderEn: roteiro.esconderEn,
+          icone: roteiro.iconeDaFala,
           comRabicho: ancora != null,
           escala: escala,
           maxLargura: largura,
@@ -1097,7 +1367,7 @@ class _Quadro {
     // em cima da cabeça só se o balão inteiro couber ali; senão a faixa do topo, que pode descer até perto
     // da cabeça (cobre a cabeça só quando nem isso basta)
     final cabeEmCima = !estreito && topo != null && topo - 16 > 96 * escala && tam.height <= topo - 10;
-    final alturaMax = cabeEmCima
+    var alturaMax = cabeEmCima
         ? math.max(0.0, topo - 10)
         : math.max(size.height * (estreito ? .42 : .38), (topo ?? 0) - 16)
             .clamp(80.0, math.max(80.0, size.height - 16))
@@ -1109,10 +1379,30 @@ class _Quadro {
       scaler = TextScaler.linear(fator);
       tam = medir();
     }
+    // 📺 palco baixo: melhor cobrir as cabeças do que cortar a frase
+    if (balaoSemCorte && !cabeEmCima && tam.height > alturaMax) {
+      alturaMax = math.min(tam.height, math.max(alturaMax, size.height - 16));
+    }
     final bw = math.min(largura, tam.width.ceilToDouble() + 1);
     final left = ancora == null
         ? (w - bw) / 2
         : (ancora.dx - bw / 2).clamp(8.0, math.max(8.0, w - bw - 8)).toDouble();
+    // 📺 na chamada, o balão que não cabe em cima da cabeça desce até logo acima da moldura de quem fala (com
+    // 2 filas, a da frente ficava longe do balão do topo), se ali não cobrir a moldura de ninguém
+    var topoBalao = 8.0;
+    if (chamada && !cabeEmCima) {
+      final m = molduras.where((x) => x.$1 == f.quem).firstOrNull?.$2;
+      if (m != null) {
+        final dy = naTela(m.topLeft).dy - tam.height - 6;
+        final caixa = Rect.fromLTWH(left, dy, bw, tam.height);
+        final livre = molduras.every((o) =>
+            o.$1 == f.quem || !Rect.fromPoints(naTela(o.$2.topLeft), naTela(o.$2.bottomRight)).overlaps(caixa));
+        if (dy > 8 && livre) {
+          topoBalao = dy;
+          alturaMax = tam.height;
+        }
+      }
+    }
     final alvo = ancora == null ? null : Offset(ancora.dx - left, math.max(0, (topo ?? ancora.dy) - 8));
     Widget balao = BalaoFala(
       nome: nome,
@@ -1122,6 +1412,8 @@ class _Quadro {
       letras: roteiro.letrasVisiveis,
       mostrarPt: roteiro.mostrarPt,
       via: via,
+      esconderEn: roteiro.esconderEn,
+      icone: roteiro.iconeDaFala,
       alvoRabicho: alvo,
       escala: escala,
     );
@@ -1138,7 +1430,7 @@ class _Quadro {
     return Positioned(
       left: left,
       width: bw,
-      top: 8,
+      top: topoBalao,
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: alturaMax),
         child: Align(alignment: Alignment.topCenter, child: balao),

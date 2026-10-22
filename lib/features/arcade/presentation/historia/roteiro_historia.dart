@@ -8,6 +8,7 @@ import '../../domain/historia_turismo.dart';
 import '../../domain/progresso_historia.dart';
 import '../../domain/simulacao_historia.dart';
 import 'elenco_turismo.dart';
+import 'roteiro_visivel.dart';
 
 /// Em que ponto o roteiro está.
 enum EstadoRoteiro { aguardandoGesto, entrando, falando, lendo, cartaoFinal, terminado, pausado }
@@ -22,7 +23,7 @@ enum EstadoRoteiro { aguardandoGesto, entrando, falando, lendo, cartaoFinal, ter
 /// nenhum `Timer` aqui dentro — pausa, página oculta e testes com `pump(Duration)` ficam previsíveis.
 /// Avança sozinho quando a voz, a máquina de escrever E a leitura mínima acabaram; o toque completa o texto
 /// e, com o texto completo, corta a voz e vai ao próximo passo.
-class RoteiroHistoria extends ChangeNotifier {
+class RoteiroHistoria extends ChangeNotifier implements RoteiroVisivel {
   RoteiroHistoria({
     required List<CenaHistoria> cenas,
     required NivelIngles nivel,
@@ -88,14 +89,18 @@ class RoteiroHistoria extends ChangeNotifier {
   bool _vozPronta = true, _retomarVoz = false;
   double _limiteVoz = 0;
 
+  @override
   int get cena => _cena;
+  @override
   int get passo => _passo;
   EstadoRoteiro get estado => _estado;
 
   /// O estado que o palco desenha: em pausa, o de antes da pausa.
+  @override
   EstadoRoteiro get estadoVisivel => _estado == EstadoRoteiro.pausado ? _antesDaPausa : _estado;
 
   /// Segundos desde o início do passo.
+  @override
   double get tPasso => _tPasso;
 
   NivelIngles get nivel => _nivel;
@@ -103,6 +108,7 @@ class RoteiroHistoria extends ChangeNotifier {
   bool get vozLigada => _vozLigada;
   bool get lenta => _velocidade < 1;
   double get velocidade => _velocidade;
+  @override
   bool get mostrarPt => _mostrarPt;
   bool get reduzir => _reduzir;
   List<CenaHistoria> get cenas => _cenas;
@@ -111,6 +117,7 @@ class RoteiroHistoria extends ChangeNotifier {
   double get duracaoEntrada => _durEntrada;
 
   /// Segundos desde que o balão do passo atual apareceu (null = ainda não apareceu / passo mudo).
+  @override
   double? get tFala => _inicioFala == null ? null : math.max(0, _tPasso - _inicioFala!);
 
   /// Quanto dura a saída de quem fala e depois sai (s; a mesma andança do `sai` no palco).
@@ -121,11 +128,14 @@ class RoteiroHistoria extends ChangeNotifier {
       !f.mudo && !f.ehNarrador && f.acao == AcaoAtor.sai && (f.en?.isNotEmpty ?? false);
 
   /// Segundos desde que quem falou começou a sair (null = ainda falando/lendo, ou o passo não sai depois).
+  @override
   double? get tSaida => _inicioSaida == null ? null : math.max(0, _tPasso - _inicioSaida!);
 
   /// O cartão de título aparece no começo do 1º passo da 1ª cena.
+  @override
   bool get noTitulo =>
       _cena == 0 && _passo == 0 && estadoVisivel == EstadoRoteiro.entrando && _tPasso < duracaoTituloAtual;
+  @override
   double get duracaoTituloAtual => _reduzir ? tituloReduzido : duracaoTitulo;
 
   /// Caracteres por segundo da máquina de escrever (A1 22 · A2 26 · B1/B2 30).
@@ -153,6 +163,7 @@ class RoteiroHistoria extends ChangeNotifier {
   }
 
   /// A fala do passo atual (null depois da última).
+  @override
   FalaHistoria? get falaAtual {
     if (_cena >= _cenas.length) return null;
     final falas = _cenas[_cena].falas;
@@ -160,13 +171,16 @@ class RoteiroHistoria extends ChangeNotifier {
   }
 
   /// A fala do passo anterior na mesma cena (a câmera sai dela).
+  @override
   FalaHistoria? get falaAnterior {
     if (_cena >= _cenas.length || _passo == 0) return null;
     final falas = _cenas[_cena].falas;
     return _passo - 1 < falas.length ? falas[_passo - 1] : null;
   }
 
+  @override
   EstadoCena get antes => _linhas.isEmpty ? _vazio() : _linha[_passo.clamp(0, _linha.length - 1)];
+  @override
   EstadoCena get depois => _linhas.isEmpty ? _vazio() : _linha[(_passo + 1).clamp(0, _linha.length - 1)];
 
   List<EstadoCena> get _linha => _linhas[_cena.clamp(0, _linhas.length - 1)];
@@ -180,10 +194,39 @@ class RoteiroHistoria extends ChangeNotifier {
       );
 
   /// Letras do `en` já "digitadas" no balão.
+  @override
   int get letrasVisiveis => _letras;
 
   /// O texto do balão já terminou de aparecer?
   bool get textoCompleto => _letras >= (falaAtual?.en?.length ?? 0);
+
+  @override
+  bool get falaComVoz => _vozLigada && _voz != null;
+
+  @override
+  bool get esconderEn => false;
+
+  @override
+  String? get iconeDaFala => null;
+
+  /// O véu preto do palco: na abertura do capítulo, .55 durante o cartão de título e depois some em .45 s;
+  /// no passo 0 das cenas seguintes, a cena abre do preto em .45 s (com reduzir, sem fade).
+  @override
+  double get escurecimento {
+    final e = estadoVisivel;
+    if (e == EstadoRoteiro.aguardandoGesto || e == EstadoRoteiro.cartaoFinal || e == EstadoRoteiro.terminado) {
+      return 0;
+    }
+    final t = _tPasso;
+    final tit = duracaoTituloAtual;
+    if (_cena == 0 && _passo == 0) {
+      if (t < tit) return .55;
+      if (_reduzir) return 0;
+      return .55 * (1 - (t - tit) / .45);
+    }
+    if (_passo == 0 && !_reduzir) return 1 - t / .45;
+    return 0;
+  }
 
   // ───────────────────────── comandos
 
