@@ -1,0 +1,770 @@
+{
+  "versao": 1,
+  "trilha": "situacao-aluguel-contas",
+  "arco": "Três meses no escritório do time nos EUA: o aluno visita um apartamento mobiliado, assina o primeiro contrato de aluguel nos EUA, passa uma noite sem luz e destrava o cartão novo do banco. Cada susto termina num sorriso, e o café nunca fica longe.",
+  "licoes": {
+    "situacao-aluguel-contas.visitando-o-apartamento": {
+      "titulo": {
+        "en": "Visiting the apartment",
+        "pt": "Visitando o apartamento"
+      },
+      "cenas": [
+        {
+          "cenario": "cidade",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "proprietario",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-121f90",
+              "acao": "acena",
+              "emocao": "timido",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-9a8baa",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-d63644",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-9a25d8",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-0ff8ae",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "suor"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "corre",
+              "para": "direita",
+              "emocao": "radiante"
+            }
+          ]
+        },
+        {
+          "cenario": "casa",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "surpreso"
+            },
+            {
+              "quem": "proprietario",
+              "pos": "centroDireita",
+              "segura": "chave",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "proprietario",
+              "acao": "aponta",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-0c13fb",
+              "acao": "pensa",
+              "emocao": "nervoso",
+              "alvo": "proprietario",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-1c22fe",
+              "acao": "nega",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "determinado"
+                }
+              ]
+            },
+            {
+              "frase": "f-60a6d2",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "proprietario",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "pensa",
+              "emocao": "nervoso",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-fa3457",
+              "acao": "aponta",
+              "emocao": "pensativo",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-2e021d",
+              "acao": "mostra",
+              "segura": "documento",
+              "emocao": "determinado",
+              "alvo": "proprietario",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "proprietario",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "proprietario",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-aluguel-contas.o-contrato-e-o-deposito": {
+      "titulo": {
+        "en": "My first lease",
+        "pt": "Meu primeiro contrato de aluguel"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "corretora",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "documento",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "senta",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-aaca27",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "alvo": "documento",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-ff3f59",
+              "acao": "aponta",
+              "emocao": "pensativo",
+              "alvo": "documento",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-c29c2d",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-e13bb8",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-99b194",
+              "acao": "pensa",
+              "emocao": "feliz",
+              "alvo": "corretora"
+            },
+            {
+              "frase": "f-10d91d",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "olha",
+              "alvo": "documento",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-2a59dc",
+              "acao": "aponta",
+              "emocao": "surpreso",
+              "alvo": "documento",
+              "camera": "close"
+            },
+            {
+              "frase": "f-7f97c3",
+              "acao": "mostra",
+              "emocao": "neutro",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "nervoso",
+                  "efeito": "suor"
+                }
+              ]
+            },
+            {
+              "frase": "f-421ce9",
+              "acao": "nega",
+              "emocao": "timido",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "corretora",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-383229",
+              "acao": "escreve",
+              "alvo": "documento",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "corretora",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "corretora",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-aluguel-contas.internet-luz-e-o-tecnico": {
+      "titulo": {
+        "en": "A night without power",
+        "pt": "Uma noite sem luz"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "atendente",
+              "remoto": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "proprietario",
+              "remoto": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-5848af",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "feliz",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-a22179",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-5836ee",
+              "acao": "pensa",
+              "emocao": "feliz"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "hora": "noite",
+              "acao": "pensa",
+              "emocao": "surpreso",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-3bce62",
+              "acao": "mostra",
+              "emocao": "nervoso",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-b7e5a8",
+              "emocao": "surpreso",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-0012f5",
+              "acao": "concorda",
+              "emocao": "cansado"
+            },
+            {
+              "frase": "f-92a14b",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso",
+                  "efeito": "exclamacao"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "nega",
+              "emocao": "feliz",
+              "efeito": "suor"
+            }
+          ]
+        },
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-c4f8b0",
+              "acao": "nega",
+              "emocao": "bravo",
+              "alvo": "sarah",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-b11e5d",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-33761a",
+              "emocao": "cansado",
+              "efeito": "zzz",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-aluguel-contas.no-banco-e-no-cartao": {
+      "titulo": {
+        "en": "My card was declined",
+        "pt": "Meu cartão foi recusado"
+      },
+      "cenas": [
+        {
+          "cenario": "loja",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "passaporte",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "atendente",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-84524e",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-6ddea4",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-912255",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-1fed0f",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-f155ba",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "segura": "nada",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "documento",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "loja",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "sarah",
+              "pos": "esquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "caixa",
+              "pos": "centroDireita",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "atendente",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "sacola",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-e3ca1b",
+              "acao": "nega",
+              "emocao": "timido",
+              "alvo": "voce",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso",
+                  "efeito": "exclamacao"
+                }
+              ]
+            },
+            {
+              "frase": "f-cf108c",
+              "acao": "olha",
+              "alvo": "sarah",
+              "emocao": "timido",
+              "efeito": "suor",
+              "camera": "dupla"
+            },
+            {
+              "frase": "f-88886b",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "caixa",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "objetos": [
+                {
+                  "prop": "sacola",
+                  "acao": "some"
+                }
+              ],
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "sacola",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-c59b4a",
+              "segura": "celular",
+              "acao": "pensa",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-c44ba9",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "caixa",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

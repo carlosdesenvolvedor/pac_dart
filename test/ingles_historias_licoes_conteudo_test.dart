@@ -250,8 +250,9 @@ void main() {
       expect(s.temAutoral('primeiro-contato.oi-tudo-bem'), isTrue);
       expect(s.carregando('primeiro-contato.oi-tudo-bem'), isFalse);
 
-      // uma lição do B1 (o A1 e o A2 já têm histórias escritas; o B1 ainda usa só a automática)
-      const fora = 'ja-fui-x-fui.ja-foi-quando-foi';
+      // a 1ª lição de uma trilha ainda sem história escrita (os lotes vão cobrindo o curso aos poucos)
+      final comHistoria = (_json('indice.json')['trilhas'] as Map).keys.toSet();
+      final fora = _porSlug.entries.firstWhere((e) => !comHistoria.contains(e.key)).value.licoes.first.id;
       final f2 = faixaDe(fora, 0);
       await s.preparar(f2);
       final auto = s.para(f2);

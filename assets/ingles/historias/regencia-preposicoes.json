@@ -1,0 +1,914 @@
+{
+  "versao": 1,
+  "trilha": "regencia-preposicoes",
+  "arco": "Entre chamadas e a copa do escritório, a vaga sênior no outro escritório vai ficando mais perto: o Mike chega sem as malas, a Ana mostra a família e o teclado brasileiro, um diagrama é explicado de novo, um dev novo chega ao time e o 1:1 termina com plano. O café do aluno sempre por perto.",
+  "licoes": {
+    "regencia-preposicoes.depende-do-cliente": {
+      "titulo": {
+        "en": "Late bags and a new client",
+        "pt": "Malas atrasadas e um cliente novo"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "emocao": "cansado"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-430c92",
+              "acao": "nega",
+              "emocao": "cansado",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-6ce5a6",
+              "emocao": "surpreso",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-02798f",
+              "acao": "concorda",
+              "emocao": "cansado",
+              "efeito": "zzz",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "segura": "cafe",
+              "emocao": "feliz",
+              "objetos": [
+                {
+                  "prop": "mala",
+                  "acao": "aparece",
+                  "pos": "direita"
+                }
+              ]
+            },
+            {
+              "frase": "f-176e07",
+              "acao": "aponta",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-072f2f",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-0e9617",
+              "acao": "nega",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa",
+                  "emocao": "pensativo",
+                  "efeito": "interrogacao"
+                }
+              ]
+            },
+            {
+              "frase": "f-30f109",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-964d40",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "close"
+            },
+            {
+              "frase": "f-56885c",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-653d7e",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "regencia-preposicoes.casada-com-um-medico": {
+      "titulo": {
+        "en": "Married to his job",
+        "pt": "Casado com o trabalho"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroDireita",
+              "segura": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-d7415d",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-15abaa",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-a981a1",
+              "emocao": "radiante",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-24d494",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-f0ca0d",
+              "acao": "aponta",
+              "alvo": "ana",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-29ac42",
+              "emocao": "timido",
+              "efeito": "suor",
+              "camera": "close"
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "efeito": "interrogacao",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "nervoso"
+                }
+              ]
+            },
+            {
+              "frase": "f-4c721e",
+              "acao": "pensa",
+              "emocao": "timido",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-8e4b6d",
+              "acao": "nega",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-cdb673",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "efeito": "brilho"
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "segura": "nada",
+              "acao": "pensa",
+              "emocao": "timido"
+            },
+            {
+              "frase": "f-359851",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "camera": "dupla",
+              "alvo": "ana",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "regencia-preposicoes.me-explica-de-novo": {
+      "titulo": {
+        "en": "Explain it to me again",
+        "pt": "Me explica de novo"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "mostra",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-1f55ef",
+              "emocao": "timido",
+              "efeito": "suor",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-4b3419",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-5ceae4",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "camera": "close"
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "escreve",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-663175",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-996053",
+              "acao": "concorda",
+              "emocao": "pensativo",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-6f513f",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "documento",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-7369d2",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-4c2fdb",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-f8ccba",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-124453",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "regencia-preposicoes.igual-ao-seu": {
+      "titulo": {
+        "en": "Different from mine",
+        "pt": "Diferente do meu"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroDireita",
+              "segura": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-028ad9",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "geral"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-2660d7",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-a08f2b",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-701493",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-a44aa3",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-265cab",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-1524af",
+              "acao": "olha",
+              "alvo": "ana",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-bcf076",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "olha",
+              "alvo": "ana",
+              "emocao": "surpreso"
+            },
+            {
+              "frase": "f-d8590b",
+              "acao": "aponta",
+              "alvo": "ana",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "camera": "close"
+            },
+            {
+              "frase": "f-432e52",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "radiante",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "cafe",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "regencia-preposicoes.todos-nos-nenhum-deles-all-of": {
+      "titulo": {
+        "en": "Welcome to the team",
+        "pt": "Bem-vindo ao time"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centro",
+              "segura": "documento",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "dev-novo",
+              "pos": "direita",
+              "visivel": false
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "dev-novo",
+              "acao": "entra",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-625d98",
+              "acao": "acena",
+              "alvo": "dev-novo",
+              "emocao": "radiante",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "acena"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "acena"
+                }
+              ]
+            },
+            {
+              "frase": "f-ba9e8b",
+              "acao": "pensa",
+              "emocao": "feliz",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-4aa7fb",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-54c145",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "ana",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-bc6623",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-23ee6b",
+              "acao": "aponta",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-71e037",
+              "acao": "nega",
+              "emocao": "pensativo",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-94bc46",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-a94190",
+              "acao": "nega",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-100655",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "dev-novo",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "mike",
+                  "acao": "acena"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "acena"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "regencia-preposicoes.um-a-um-com-o-mike": {
+      "titulo": {
+        "en": "One on one with Mike",
+        "pt": "Um a um com o Mike"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "segura": "cafe",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-4e04be",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-7f5f3c",
+              "emocao": "nervoso",
+              "efeito": "suor",
+              "camera": "close"
+            },
+            {
+              "frase": "f-7ebd17",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "segura": "documento",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-86f969",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-04b609",
+              "acao": "mostra",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-83f1f3",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-28bf02",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-7f5aa0",
+              "acao": "escreve",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-512ef7",
+              "acao": "concorda",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-5c7653",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "camera": "dupla",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "acena",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

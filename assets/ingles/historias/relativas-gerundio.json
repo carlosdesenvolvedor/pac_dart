@@ -1,0 +1,194 @@
+{
+  "versao": 1,
+  "trilha": "relativas-gerundio",
+  "arco": "Dias em Chicago cheios de gente nova: o meetup com a dev da biblioteca que o time usa, a festa da Emma, um café com a Ana sobre estudar inglês, o deploy ensinado ao dev novo e a festa de boas-vindas dele. E o café do aluno sempre por perto.",
+  "licoes": {
+    "relativas-gerundio.a-dev-cuja-biblioteca-usamos": {
+      "titulo": { "en": "The developer whose library we use", "pt": "A dev cuja biblioteca a gente usa" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "mike", "pos": "esquerda", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "prato", "emocao": "timido" },
+            { "quem": "desenvolvedora", "pos": "direita", "segura": "notebook", "emocao": "neutro" }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-f91333", "acao": "aponta", "alvo": "desenvolvedora", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "acao": "anda", "para": "centroDireita", "emocao": "feliz" },
+            { "frase": "f-656d66", "acao": "acena", "alvo": "desenvolvedora", "emocao": "feliz", "camera": "dupla" },
+            { "frase": "f-c17cbe", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "frase": "f-79e761", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo", "efeito": "interrogacao", "camera": "medio" },
+            { "frase": "f-1ad5a0", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-26d705", "acao": "aponta", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "mike", "acao": "anda", "para": "centro", "emocao": "feliz" },
+            { "frase": "f-d62703", "acao": "pensa", "emocao": "feliz", "efeito": "coracoes" },
+            { "frase": "f-085ce0", "emocao": "timido", "efeito": "suor", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" }, { "quem": "desenvolvedora", "emocao": "surpreso" } ] },
+            { "frase": "f-36bfc9", "acao": "concorda", "alvo": "mike", "emocao": "radiante", "camera": "medio" },
+            { "frase": "f-dac0a8", "acao": "aponta", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "desenvolvedora", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" }, { "quem": "mike", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "relativas-gerundio.meu-vizinho-que-e-medico": {
+      "titulo": { "en": "Meeting people at Emma's party", "pt": "Conhecendo gente na festa da Emma" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "cafe", "emocao": "timido" },
+            { "quem": "emma", "pos": "centroEsquerda", "emocao": "radiante" },
+            { "quem": "convidado", "pos": "centroDireita", "emocao": "feliz" },
+            { "quem": "convidada", "pos": "direita", "visivel": false }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-d7e5c0", "acao": "aponta", "alvo": "convidado", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "convidado", "acao": "acena" } ] },
+            { "frase": "f-ea4fa8", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-599acd", "acao": "pensa", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-93a4f9", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "convidado", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "convidada", "acao": "entra", "emocao": "feliz",
+              "reacoes": [ { "quem": "emma", "acao": "acena" } ] },
+            { "frase": "f-95bcfc", "acao": "aponta", "alvo": "convidada", "emocao": "feliz" },
+            { "frase": "f-c5a3d9", "acao": "concorda", "emocao": "radiante", "efeito": "coracoes", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] }
+          ]
+        },
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "emma", "pos": "esquerda", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "convidado", "pos": "centroDireita", "segura": "prato", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "prato", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-15d401", "acao": "aponta", "alvo": "prato", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-078ba2", "acao": "mostra", "emocao": "radiante" },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante", "efeito": "brilho" },
+            { "frase": "f-993aff", "acao": "acena", "emocao": "radiante", "efeito": "coracoes",
+              "reacoes": [ { "quem": "convidado", "emocao": "feliz" } ] },
+            { "frase": "f-13c9af", "acao": "pensa", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "emma", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "convidado", "acao": "danca", "emocao": "radiante", "efeito": "notas",
+              "reacoes": [ { "quem": "voce", "acao": "palmas", "emocao": "radiante" }, { "quem": "emma", "acao": "danca", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "relativas-gerundio.aprender-ingles-leva-tempo": {
+      "titulo": { "en": "Learning English takes time", "pt": "Aprender inglês leva tempo" },
+      "cenas": [
+        {
+          "cenario": "restaurante", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "pensativo" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "livro", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-a3db1c", "acao": "pensa", "emocao": "pensativo", "camera": "geral" },
+            { "frase": "f-ccccbd", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-c02a7a", "acao": "nega", "emocao": "timido", "efeito": "suor",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-e416fd", "acao": "concorda", "alvo": "voce", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-cac752", "acao": "aponta", "alvo": "livro", "emocao": "feliz" },
+            { "frase": "f-78a07a", "acao": "escreve", "alvo": "livro", "emocao": "determinado" },
+            { "frase": "f-859494", "acao": "pensa", "emocao": "feliz" },
+            { "frase": "f-40555f", "acao": "concorda", "emocao": "cansado",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-41835d", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-8d17e9", "acao": "concorda", "emocao": "triste", "camera": "close" },
+            { "mudo": true, "quem": "ana", "acao": "aponta", "alvo": "voce", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "relativas-gerundio.obrigado-por-me-ajudar": {
+      "titulo": { "en": "Thanks for helping me", "pt": "Obrigado por me ajudar" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "determinado" },
+            { "quem": "dev-novo", "pos": "centroDireita", "emocao": "nervoso" },
+            { "quem": "mike", "pos": "direita", "segura": "celular", "visivel": false }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-58993c", "acao": "aponta", "alvo": "notebook", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-eae5ce", "acao": "concorda", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-b56a17", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-20ace3", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-cfde41", "acao": "concorda", "alvo": "dev-novo", "emocao": "feliz" },
+            { "frase": "f-760c49", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "dev-novo", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "dev-novo", "acao": "escreve", "alvo": "notebook", "emocao": "nervoso", "efeito": "suor" },
+            { "frase": "f-e7ef2d", "acao": "concorda", "alvo": "dev-novo", "emocao": "radiante", "camera": "dupla",
+              "reacoes": [ { "quem": "dev-novo", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "mike", "acao": "entra", "emocao": "feliz", "efeito": "exclamacao" },
+            { "frase": "f-89b518", "acao": "concorda", "alvo": "mike", "emocao": "surpreso",
+              "reacoes": [ { "quem": "mike", "acao": "mostra", "emocao": "feliz" } ] },
+            { "frase": "f-61ae58", "acao": "olha", "alvo": "dev-novo", "emocao": "feliz" },
+            { "frase": "f-ac6d9c", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "dev-novo", "emocao": "feliz" }, { "quem": "mike", "acao": "concorda" } ] }
+          ]
+        }
+      ]
+    },
+    "relativas-gerundio.boas-vindas-ao-time": {
+      "titulo": { "en": "Welcome to the team", "pt": "Boas-vindas ao time" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "dev-novo", "pos": "esquerda", "emocao": "timido" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "emocao": "feliz" },
+            { "quem": "mike", "pos": "direita", "segura": "documento", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "prato", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-b72a00", "acao": "concorda", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "frase": "f-d60995", "acao": "aponta", "alvo": "ana", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "acena" } ] },
+            { "frase": "f-40a757", "acao": "aponta", "alvo": "ana", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "ana", "emocao": "timido" } ] },
+            { "frase": "f-ee4d3f", "acao": "aponta", "alvo": "mike", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-d746da", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "acao": "concorda" } ] },
+            { "frase": "f-a74569", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "acao": "mostra", "emocao": "feliz" } ] },
+            { "frase": "f-8bd598", "acao": "olha", "alvo": "dev-novo", "emocao": "determinado",
+              "reacoes": [ { "quem": "dev-novo", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "dev-novo", "acao": "pensa", "emocao": "timido", "efeito": "interrogacao" },
+            { "frase": "f-a14cac", "acao": "aponta", "alvo": "dev-novo", "emocao": "feliz",
+              "reacoes": [ { "quem": "dev-novo", "emocao": "feliz" } ] },
+            { "frase": "f-ebb6d2", "acao": "aponta", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-6367f0", "acao": "concorda", "alvo": "voce", "emocao": "feliz", "camera": "dupla",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "dev-novo", "acao": "comemora", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "voce", "acao": "palmas" }, { "quem": "ana", "acao": "palmas" }, { "quem": "mike", "acao": "palmas" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

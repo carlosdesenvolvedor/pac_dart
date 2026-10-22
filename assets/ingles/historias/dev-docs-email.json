@@ -1,0 +1,166 @@
+{
+  "versao": 1,
+  "trilha": "dev-docs-email",
+  "arco": "No escritório americano, o aluno vira o dev que escreve bem: o README para o dev novo, o aviso do método obsoleto, o primeiro e-mail ao cliente, o follow-up que enfim tem resposta e a versão nova na sexta. O café só sai da mão quando o celular vibra.",
+  "licoes": {
+    "dev-docs-email.instale-as-dependencias": {
+      "titulo": { "en": "A README for the new dev", "pt": "Um README para o dev novo" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "pensativo" },
+            { "quem": "dev-novo", "remoto": "celular", "emocao": "nervoso" }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "centroDireita" } ],
+          "passos": [
+            { "frase": "f-6cdbad", "acao": "aponta", "alvo": "notebook", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-e75202", "acao": "escreve", "alvo": "notebook", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-5b0b60", "acao": "escreve", "alvo": "notebook", "emocao": "determinado" },
+            { "frase": "f-9c00a7", "acao": "aponta", "alvo": "notebook", "emocao": "determinado" },
+            { "frase": "f-6d920c", "acao": "concorda", "emocao": "pensativo" },
+            { "frase": "f-f0b65b", "acao": "escreve", "alvo": "notebook", "emocao": "feliz" },
+            { "frase": "f-7617e2", "acao": "concorda", "emocao": "feliz", "efeito": "brilho",
+              "objetos": [ { "prop": "cafe", "acao": "aparece", "pos": "centro", "de": "voce" } ] },
+            { "mudo": true, "quem": "voce", "segura": "celular", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-7df89a", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "feliz" },
+            { "frase": "f-e9739d", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-a41f4b", "acao": "escreve", "emocao": "feliz", "camera": "close" },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "emocao": "radiante", "efeito": "brilho",
+              "objetos": [ { "prop": "cafe", "acao": "some" } ] }
+          ]
+        }
+      ]
+    },
+    "dev-docs-email.este-metodo-esta-obsoleto": {
+      "titulo": { "en": "Goodbye, old method", "pt": "Adeus, método antigo" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "determinado" },
+            { "quem": "mike", "pos": "direita", "visivel": false }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-24edb7", "acao": "aponta", "alvo": "notebook", "emocao": "determinado", "efeito": "exclamacao", "camera": "geral" },
+            { "frase": "f-f1cf97", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-582d0e", "acao": "escreve", "alvo": "notebook", "emocao": "pensativo" },
+            { "frase": "f-2c2743", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-828b20", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-945fc1", "acao": "escreve", "alvo": "notebook", "emocao": "feliz" },
+            { "frase": "f-8a3dcd", "acao": "aponta", "alvo": "notebook", "emocao": "determinado", "efeito": "exclamacao", "camera": "close" },
+            { "frase": "f-8268b3", "acao": "pensa", "emocao": "nervoso", "efeito": "suor" },
+            { "mudo": true, "quem": "mike", "acao": "entra", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-c548b1", "acao": "aponta", "alvo": "notebook", "emocao": "timido", "camera": "medio" },
+            { "frase": "f-8b2d2b", "acao": "concorda", "alvo": "mike", "emocao": "feliz", "camera": "dupla",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "mike", "acao": "palmas", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "dev-docs-email.espero-que-esteja-bem": {
+      "titulo": { "en": "A good first email", "pt": "Um bom primeiro e-mail" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "amanhecer", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "nervoso" },
+            { "quem": "cliente", "remoto": "celular", "emocao": "neutro" }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "centroDireita" } ],
+          "passos": [
+            { "frase": "f-3313c9", "acao": "acena", "emocao": "timido", "camera": "geral" },
+            { "frase": "f-e26155", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-3b3c05", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo" },
+            { "frase": "f-5026f4", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-21a7f2", "acao": "escreve", "alvo": "notebook", "emocao": "feliz", "efeito": "brilho",
+              "objetos": [ { "prop": "cafe", "acao": "aparece", "pos": "centro", "de": "voce" } ] },
+            { "mudo": true, "quem": "voce", "segura": "celular", "emocao": "nervoso", "efeito": "exclamacao" },
+            { "frase": "f-f200f6", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "comemora", "emocao": "radiante" } ] },
+            { "frase": "f-f4b571", "acao": "escreve", "alvo": "notebook", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-446ab1", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-8d9468", "acao": "escreve", "alvo": "notebook", "emocao": "feliz" },
+            { "frase": "f-d0bd1c", "acao": "concorda", "emocao": "radiante", "camera": "close" },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "emocao": "radiante", "efeito": "brilho",
+              "objetos": [ { "prop": "cafe", "acao": "some" } ] }
+          ]
+        }
+      ]
+    },
+    "dev-docs-email.so-retomando-meu-ultimo-e-mail": {
+      "titulo": { "en": "Waiting for the client", "pt": "Esperando o cliente" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "triste" },
+            { "quem": "mike", "pos": "direita", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "cliente", "remoto": "celular", "emocao": "timido" }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-5c61c5", "acao": "aponta", "alvo": "notebook", "emocao": "triste", "camera": "geral",
+              "reacoes": [ { "quem": "mike", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "mike", "acao": "aponta", "alvo": "notebook", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "determinado" } ] },
+            { "frase": "f-4c0c96", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "medio",
+              "objetos": [ { "prop": "cafe", "acao": "aparece", "pos": "centroDireita", "de": "voce" } ] },
+            { "frase": "f-fe77bf", "segura": "documento", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-9c6391", "acao": "escreve", "alvo": "notebook", "emocao": "pensativo" },
+            { "frase": "f-d6dc52", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-c0f90f", "acao": "escreve", "alvo": "notebook", "emocao": "cansado", "efeito": "suor" },
+            { "frase": "f-9d19ef", "acao": "aponta", "alvo": "notebook", "emocao": "determinado" },
+            { "frase": "f-9e8f01", "acao": "mostra", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-2baa79", "acao": "acena", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "segura": "celular", "emocao": "surpreso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-40ebef", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "acao": "comemora", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "comemora", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "mike", "acao": "palmas", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "dev-docs-email.nova-versao-e-e-mail-ao-cliente": {
+      "titulo": { "en": "A new version on Friday", "pt": "Versão nova na sexta" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "determinado" },
+            { "quem": "sarah", "pos": "direita", "visivel": false },
+            { "quem": "cliente", "remoto": "celular", "emocao": "neutro" }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "centroDireita" } ],
+          "passos": [
+            { "frase": "f-4f3199", "acao": "aponta", "alvo": "notebook", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-7b1ef3", "acao": "nega", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-8c6f27", "acao": "escreve", "alvo": "notebook", "emocao": "pensativo" },
+            { "frase": "f-852fb2", "acao": "concorda", "emocao": "feliz", "efeito": "brilho" },
+            { "frase": "f-2d32bc", "acao": "escreve", "alvo": "notebook", "emocao": "pensativo",
+              "objetos": [ { "prop": "cafe", "acao": "aparece", "pos": "centro", "de": "voce" } ] },
+            { "mudo": true, "quem": "voce", "segura": "celular", "emocao": "feliz" },
+            { "frase": "f-f40476", "acao": "escreve", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-c964a8", "acao": "concorda", "emocao": "radiante", "efeito": "brilho" },
+            { "frase": "f-35555b", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-8eea21", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "comemora", "emocao": "radiante" } ] },
+            { "frase": "f-2dc369", "acao": "acena", "emocao": "radiante", "camera": "close" },
+            { "mudo": true, "quem": "sarah", "acao": "entra", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}
