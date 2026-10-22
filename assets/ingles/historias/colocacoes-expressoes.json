@@ -1,0 +1,947 @@
+{
+  "versao": 1,
+  "trilha": "colocacoes-expressoes",
+  "arco": "O time cresce e as palavras que andam juntas entram no dia a dia: decidir o futuro de um projeto parado, conduzir um workshop, um trânsito pesado de manhã, o bug teimoso à noite com o Ben, os resultados do trimestre e uma notícia ruim dada com cuidado.",
+  "licoes": {
+    "colocacoes-expressoes.tomar-uma-decisao": {
+      "titulo": {
+        "en": "Time to make a decision",
+        "pt": "Hora de tomar uma decisão"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "ana",
+              "pos": "direita",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-974722",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-6f6e49",
+              "acao": "nega",
+              "emocao": "cansado",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-17a2eb",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-64465d",
+              "acao": "nega",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-61397b",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-32700d",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "dupla",
+              "alvo": "sarah"
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-b23698",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "surpreso"
+                },
+                {
+                  "quem": "ana",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-f80832",
+              "acao": "concorda",
+              "alvo": "sarah",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "colocacoes-expressoes.fazer-uma-pausa-prestar-atencao": {
+      "titulo": {
+        "en": "Notes, breaks and turns",
+        "pt": "Anotações, pausas e revezamento"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "dev-novo",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "voce",
+              "pos": "centro",
+              "segura": "cafe",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroDireita",
+              "segura": "cafe",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "mike",
+              "pos": "direita",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-5df1db",
+              "acao": "aponta",
+              "alvo": "dev-novo",
+              "emocao": "determinado",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-568033",
+              "acao": "escreve",
+              "emocao": "nervoso",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-b0e2c4",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "acao": "escreve",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "dorme",
+              "emocao": "cansado",
+              "efeito": "zzz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-55a7e1",
+              "acao": "mostra",
+              "emocao": "timido",
+              "efeito": "suor",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-cb3858",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-5bca50",
+              "acao": "aponta",
+              "emocao": "determinado",
+              "efeito": "exclamacao",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-3f8070",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-c4a203",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "dev-novo",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "palmas",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "colocacoes-expressoes.transito-pesado-prazo-apertado": {
+      "titulo": {
+        "en": "Heavy traffic, tight deadline",
+        "pt": "Trânsito pesado, prazo apertado"
+      },
+      "cenas": [
+        {
+          "cenario": "cidade",
+          "hora": "amanhecer",
+          "clima": [
+            "chuva"
+          ],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "ana",
+              "remoto": "celular",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "sarah",
+              "remoto": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-276bdb",
+              "emocao": "nervoso",
+              "efeito": "suor",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-9256d2",
+              "emocao": "cansado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-2c0b6c",
+              "acao": "aponta",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-b06fc6",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "casa",
+          "hora": "amanhecer",
+          "clima": [
+            "chuva"
+          ],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "cansado",
+              "visivel": false
+            },
+            {
+              "quem": "mike",
+              "remoto": "celular",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "ana",
+              "remoto": "celular",
+              "emocao": "cansado"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            },
+            {
+              "prop": "cafe",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "entra",
+              "emocao": "timido",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-e70954",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "pensativo",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-356bf2",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-ff4748",
+              "emocao": "cansado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-5b669f",
+              "segura": "cafe",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "close",
+              "objetos": [
+                {
+                  "prop": "cafe",
+                  "acao": "some"
+                }
+              ],
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "treme",
+              "emocao": "feliz",
+              "efeito": "estalo",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "colocacoes-expressoes.aconteca-o-que-acontecer": {
+      "titulo": {
+        "en": "No matter what happens",
+        "pt": "Aconteça o que acontecer"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "ben",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-a3b7d4",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "cansado",
+              "efeito": "suor",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-eb68ed",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-b79afa",
+              "acao": "olha",
+              "alvo": "notebook",
+              "emocao": "nervoso",
+              "efeito": "estalo"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "senta",
+              "emocao": "cansado",
+              "reacoes": [
+                {
+                  "quem": "ben",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-320e1c",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-3bd16b",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "timido",
+                  "efeito": "suor"
+                }
+              ]
+            },
+            {
+              "frase": "f-b2ccda",
+              "acao": "nega",
+              "emocao": "cansado"
+            },
+            {
+              "frase": "f-bddbe5",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "timido",
+              "camera": "close"
+            },
+            {
+              "frase": "f-cf33f7",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "emocao": "feliz"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "emocao": "radiante",
+              "segura": "nada",
+              "objetos": [
+                {
+                  "prop": "notebook",
+                  "acao": "some"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "colocacoes-expressoes.antes-de-mais-nada": {
+      "titulo": {
+        "en": "First of all, thank you",
+        "pt": "Antes de mais nada, obrigado"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "sarah",
+              "pos": "esquerda",
+              "segura": "documento",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroEsquerda",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "voce",
+              "pos": "centro",
+              "segura": "microfone",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "cfo",
+              "pos": "direita",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-f9c317",
+              "acao": "acena",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "cfo",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-1d4fea",
+              "segura": "documento",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-1e649a",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-647961",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-ec86b3",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "cfo",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-9d1e17",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-d06182",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "cfo",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-68fb44",
+              "acao": "aponta",
+              "alvo": "sarah",
+              "emocao": "timido",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "palmas"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "palmas"
+                },
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "colocacoes-expressoes.cena-noticia-ruim-com-educacao": {
+      "titulo": {
+        "en": "Bad news, said kindly",
+        "pt": "Notícia ruim, dita com cuidado"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroEsquerda",
+              "visivel": false
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "ana",
+              "pos": "direita",
+              "emocao": "pensativo"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "entra",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-593ae1",
+              "acao": "concorda",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-0c0cce",
+              "emocao": "triste",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "surpreso"
+                },
+                {
+                  "quem": "mike",
+                  "emocao": "nervoso"
+                }
+              ]
+            },
+            {
+              "frase": "f-a835ba",
+              "acao": "aponta",
+              "alvo": "sarah",
+              "emocao": "nervoso",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-eed06c",
+              "acao": "nega",
+              "emocao": "determinado",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-08e69a",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-6029d7",
+              "acao": "escreve",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-76e319",
+              "acao": "aponta",
+              "alvo": "mike",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-f6b4cd",
+              "acao": "palmas",
+              "emocao": "feliz",
+              "efeito": "coracoes",
+              "camera": "geral"
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

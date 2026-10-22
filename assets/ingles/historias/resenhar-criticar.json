@@ -1,0 +1,171 @@
+{
+  "versao": 1,
+  "trilha": "resenhar-criticar",
+  "arco": "Um mês de opiniões sinceras: o time discute a série do fim de semana, o aluno troca dicas de livros e filmes com a Ana, indica o melhor livro ao dev novo, avalia com gentileza o curso da empresa e fecha o mês recomendando a ferramenta nova.",
+  "licoes": {
+    "resenhar-criticar.confuso-entediado-decepcionante": {
+      "titulo": { "en": "The series everyone watched", "pt": "A série que todo mundo viu" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "sarah", "pos": "direita", "segura": "cafe", "emocao": "neutro" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-84b1df", "acao": "concorda", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-b534dc", "acao": "comemora", "emocao": "radiante", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-6681bb", "acao": "nega", "emocao": "cansado", "efeito": "zzz", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-847446", "acao": "nega", "emocao": "triste",
+              "reacoes": [ { "quem": "mike", "acao": "concorda" } ] },
+            { "frase": "f-d7e5b1", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao", "camera": "medio" },
+            { "frase": "f-7ce6c8", "acao": "palmas", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "sarah", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-e04a4f", "acao": "concorda", "emocao": "pensativo",
+              "reacoes": [ { "quem": "mike", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-678a5a", "acao": "concorda", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "acao": "comemora", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [
+                { "quem": "ana", "acao": "palmas", "emocao": "feliz" },
+                { "quem": "mike", "acao": "mostra", "emocao": "feliz" },
+                { "quem": "sarah", "acao": "mostra", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "resenhar-criticar.bem-bom-simplesmente-incrivel": {
+      "titulo": { "en": "Good books, good shows", "pt": "Livros e séries entre amigos" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "livro", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "livro", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "ana", "acao": "mostra", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-d88ab9", "acao": "mostra", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-544111", "acao": "mostra", "emocao": "radiante", "efeito": "brilho", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-c5eb28", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "efeito": "zzz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-ca18c8", "acao": "concorda", "emocao": "pensativo" },
+            { "frase": "f-856cdf", "acao": "aponta", "alvo": "ana", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
+            { "frase": "f-418d42", "acao": "comemora", "emocao": "radiante", "efeito": "exclamacao", "camera": "medio" },
+            { "frase": "f-351473", "acao": "nega", "emocao": "triste", "camera": "close",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-82d0e3", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "acao": "acena", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "resenhar-criticar.de-longe-o-melhor": {
+      "titulo": { "en": "By far the best book", "pt": "De longe o melhor livro" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "livro", "emocao": "feliz" },
+            { "quem": "dev-novo", "pos": "centroDireita", "segura": "documento", "emocao": "pensativo" }
+          ],
+          "objetos": [ { "prop": "livro", "pos": "esquerda" } ],
+          "passos": [
+            { "mudo": true, "quem": "dev-novo", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-b86c92", "acao": "mostra", "emocao": "radiante", "efeito": "brilho", "camera": "geral",
+              "reacoes": [ { "quem": "dev-novo", "emocao": "surpreso" } ] },
+            { "frase": "f-da8865", "acao": "concorda", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "dev-novo", "acao": "escreve" } ] },
+            { "frase": "f-5ec552", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao", "camera": "medio" },
+            { "frase": "f-2736fd", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "dev-novo", "emocao": "feliz" } ] },
+            { "frase": "f-be51f7", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "dev-novo", "acao": "escreve", "emocao": "feliz" } ] },
+            { "frase": "f-8949c4", "acao": "aponta", "alvo": "livro", "emocao": "pensativo" },
+            { "frase": "f-043109", "acao": "mostra", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "dev-novo", "emocao": "surpreso" } ] },
+            { "frase": "f-5d04d0", "acao": "concorda", "emocao": "radiante", "efeito": "brilho", "camera": "close",
+              "reacoes": [ { "quem": "dev-novo", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "dev-novo", "acao": "escreve", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "resenhar-criticar.nao-correspondeu-as-expectativas": {
+      "titulo": { "en": "An honest review of the course", "pt": "Uma opinião sincera sobre o curso" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "ana", "pos": "esquerda", "emocao": "neutro" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "pensativo" },
+            { "quem": "sarah", "pos": "centroDireita", "segura": "documento", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-b4b69e", "acao": "mostra", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-ad3e15", "acao": "nega", "emocao": "timido", "camera": "medio",
+              "reacoes": [ { "quem": "sarah", "emocao": "surpreso" } ] },
+            { "frase": "f-da1c94", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-bd76d0", "acao": "nega", "emocao": "cansado",
+              "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
+            { "frase": "f-3a8ff6", "acao": "concorda", "emocao": "determinado", "efeito": "brilho",
+              "reacoes": [ { "quem": "sarah", "acao": "escreve", "emocao": "pensativo" } ] },
+            { "frase": "f-c1ff90", "acao": "concorda", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-6c202e", "acao": "nega", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "sarah", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "efeito": "interrogacao" },
+            { "frase": "f-70dc3c", "acao": "nega", "emocao": "timido", "efeito": "suor", "camera": "close",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [
+                { "quem": "sarah", "acao": "concorda", "emocao": "feliz" },
+                { "quem": "ana", "acao": "palmas", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "resenhar-criticar.cena-avaliar-a-ferramenta-nova": {
+      "titulo": { "en": "A month with the new tool", "pt": "Um mês com a ferramenta nova" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "documento", "emocao": "determinado" }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "centroDireita" } ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "senta", "emocao": "determinado" },
+            { "frase": "f-925354", "acao": "olha", "alvo": "notebook", "emocao": "pensativo", "camera": "geral" },
+            { "frase": "f-c54ef0", "acao": "aponta", "alvo": "notebook", "emocao": "radiante", "efeito": "brilho" },
+            { "frase": "f-bafd8f", "acao": "mostra", "emocao": "pensativo", "efeito": "interrogacao", "camera": "medio" },
+            { "frase": "f-ebf04a", "acao": "pensa", "emocao": "nervoso", "efeito": "suor" },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "determinado" },
+            { "frase": "f-e988ae", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-94827a", "acao": "aponta", "alvo": "notebook", "emocao": "radiante", "camera": "medio" },
+            { "frase": "f-967bc1", "acao": "nega", "emocao": "pensativo" },
+            { "frase": "f-9b598b", "acao": "concorda", "emocao": "radiante", "efeito": "brilho", "camera": "close" },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "acao": "comemora", "emocao": "radiante", "efeito": "confete" }
+          ]
+        }
+      ]
+    }
+  }
+}

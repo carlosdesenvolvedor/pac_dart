@@ -1,0 +1,176 @@
+{
+  "versao": 1,
+  "trilha": "phrasal-verbs-b2",
+  "arco": "O time cresce e a migração se aproxima: o café com o Ben sobre quem você admira, o lançamento que enfim deu certo, o bug caçado com o Mike, a conversa a sós sobre a carga de trabalho e a última reunião antes da migração.",
+  "licoes": {
+    "phrasal-verbs-b2.se-dar-bem-e-nao-decepcionar": {
+      "titulo": { "en": "Someone to look up to", "pt": "Alguém para admirar" },
+      "cenas": [
+        {
+          "cenario": "restaurante", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "garcom", "pos": "direita", "visivel": false, "segura": "prato" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-e5560c", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-941464", "acao": "concorda", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] },
+            { "frase": "f-7e95be", "acao": "nega", "emocao": "surpreso",
+              "reacoes": [ { "quem": "voce", "emocao": "cansado" } ] },
+            { "frase": "f-a05ebf", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "ben", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-efa3d0", "emocao": "radiante", "efeito": "brilho", "camera": "close" },
+            { "frase": "f-cf6cd0", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "ben", "emocao": "surpreso" } ] },
+            { "frase": "f-3e88eb", "acao": "nega", "emocao": "triste", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-4f9d1b", "acao": "aponta", "alvo": "ben", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "ben", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "garcom", "acao": "entra", "emocao": "feliz" },
+            { "mudo": true, "quem": "garcom", "emocao": "feliz",
+              "objetos": [ { "prop": "prato", "acao": "aparece", "pos": "centro", "de": "garcom" } ],
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" }, { "quem": "ben", "acao": "palmas", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "phrasal-verbs-b2.deu-certo-valeu-a-pena": {
+      "titulo": { "en": "It finally paid off", "pt": "Enfim valeu a pena" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "amanhecer", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "cansado" },
+            { "quem": "julia", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "cafe", "pos": "centro" },
+            { "prop": "notebook", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-be65af", "emocao": "timido", "camera": "medio" },
+            { "frase": "f-8da93a", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-dc93e9", "acao": "concorda", "emocao": "cansado", "efeito": "suor" },
+            { "frase": "f-43bf41", "acao": "aponta", "alvo": "notebook", "emocao": "nervoso",
+              "reacoes": [ { "quem": "julia", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "acao": "anda", "para": "centroDireita", "emocao": "feliz" },
+            { "frase": "f-b0235e", "acao": "aponta", "alvo": "notebook", "emocao": "radiante", "efeito": "brilho", "camera": "close" },
+            { "frase": "f-94ea68", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-afad63", "acao": "senta", "emocao": "cansado" },
+            { "frase": "f-16660e", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "acao": "dorme", "emocao": "feliz", "efeito": "zzz" }
+          ]
+        }
+      ]
+    },
+    "phrasal-verbs-b2.investigar-e-descartar": {
+      "titulo": { "en": "Tracking down the bug", "pt": "Atrás do bug" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "documento", "emocao": "determinado" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "cafe", "emocao": "pensativo" },
+            { "quem": "cliente", "pos": "direita", "emocao": "nervoso" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-a29fe0", "acao": "concorda", "alvo": "cliente", "emocao": "determinado", "camera": "geral",
+              "reacoes": [ { "quem": "cliente", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "cliente", "acao": "sai", "emocao": "feliz" },
+            { "frase": "f-994094", "acao": "aponta", "alvo": "voce", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-70535e", "acao": "escreve", "emocao": "determinado",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-c2e395", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-895468", "acao": "mostra", "emocao": "pensativo",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "frase": "f-543532", "acao": "concorda", "emocao": "determinado" },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "nervoso", "efeito": "suor" },
+            { "frase": "f-79ad5b", "acao": "comemora", "emocao": "radiante", "efeito": "exclamacao", "camera": "close",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-ed5036", "acao": "palmas", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "mike", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "phrasal-verbs-b2.assumir-e-levantar-um-assunto": {
+      "titulo": { "en": "Bringing up my workload", "pt": "Falando da carga de trabalho" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "documento", "emocao": "nervoso" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-a78f2c", "acao": "mostra", "emocao": "timido", "camera": "medio" },
+            { "frase": "f-bca26b", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "determinado" } ] },
+            { "frase": "f-ff75bc", "acao": "nega", "emocao": "cansado", "efeito": "suor",
+              "reacoes": [ { "quem": "mike", "emocao": "pensativo" } ] },
+            { "frase": "f-c3a724", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "escreve", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "timido" },
+            { "frase": "f-8f26d3", "acao": "aponta", "alvo": "mike", "emocao": "timido" },
+            { "frase": "f-d96219", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-10a890", "acao": "concorda", "emocao": "determinado", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-5962b4", "acao": "concorda", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "mike", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "mike", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "phrasal-verbs-b2.cena-planejar-a-migracao": {
+      "titulo": { "en": "Planning the migration", "pt": "Planejando a migração" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "cafe", "emocao": "determinado" },
+            { "quem": "mike", "pos": "centroEsquerda", "segura": "documento", "emocao": "determinado" },
+            { "quem": "sarah", "pos": "centroDireita", "segura": "documento", "emocao": "pensativo" },
+            { "quem": "ana", "pos": "direita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-6dde8f", "acao": "nega", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-3bc75e", "acao": "pensa", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-9afa73", "acao": "concorda", "emocao": "determinado", "camera": "medio",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" } ] },
+            { "frase": "f-bdd470", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "ana", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "ana", "acao": "acena", "emocao": "determinado" },
+            { "frase": "f-bc79d2", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "mike", "acao": "escreve", "emocao": "feliz" } ] },
+            { "frase": "f-0178a9", "acao": "nega", "emocao": "cansado", "efeito": "suor" },
+            { "frase": "f-b1d743", "acao": "concorda", "alvo": "sarah", "emocao": "feliz", "camera": "dupla",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" } ] },
+            { "frase": "f-5b0127", "emocao": "radiante", "efeito": "brilho", "camera": "close",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" }, { "quem": "mike", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "mike", "acao": "palmas", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "sarah", "acao": "palmas", "emocao": "radiante" }, { "quem": "ana", "acao": "comemora", "emocao": "radiante" }, { "quem": "voce", "acao": "comemora", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

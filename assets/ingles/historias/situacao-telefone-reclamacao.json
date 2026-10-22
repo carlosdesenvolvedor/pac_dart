@@ -1,0 +1,154 @@
+{
+  "versao": 1,
+  "trilha": "situacao-telefone-reclamacao",
+  "arco": "Uma semana de ligações de casa, com o celular no viva-voz e o café sempre por perto: a espera sem fim na linha, a cobrança em dobro, a internet que cai toda noite e, por fim, o plano cancelado com tudo confirmado por escrito.",
+  "licoes": {
+    "situacao-telefone-reclamacao.esperando-na-linha": {
+      "titulo": { "en": "Stuck on hold", "pt": "Preso na espera" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "cansado" },
+            { "quem": "atendente", "remoto": "celular", "emocao": "neutro" }
+          ],
+          "objetos": [
+            { "prop": "documento", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "senta", "emocao": "cansado" },
+            { "frase": "f-8d6ca3", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "acao": "dorme", "emocao": "cansado", "efeito": "zzz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pula", "emocao": "surpreso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "atendente", "emocao": "feliz" } ] },
+            { "frase": "f-26a63f", "emocao": "cansado", "efeito": "suor", "camera": "medio" },
+            { "frase": "f-564cea", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-d46443", "acao": "concorda", "emocao": "determinado" },
+            { "frase": "f-94eecb", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-7817e9", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "atendente", "emocao": "timido" } ] },
+            { "frase": "f-1dfe79", "acao": "aponta", "emocao": "determinado", "camera": "close" },
+            { "frase": "f-69624e", "acao": "escreve", "alvo": "documento", "emocao": "feliz",
+              "reacoes": [ { "quem": "atendente", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante", "efeito": "brilho" }
+          ]
+        }
+      ]
+    },
+    "situacao-telefone-reclamacao.cobranca-errada": {
+      "titulo": { "en": "Charged twice for one order", "pt": "Cobrado duas vezes" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "pensativo" },
+            { "quem": "atendente", "remoto": "celular", "emocao": "neutro" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "notebook", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-f7d9ce", "acao": "aponta", "alvo": "notebook", "emocao": "bravo", "camera": "geral" },
+            { "frase": "f-a01b41", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "emocao": "cansado" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "cansado", "efeito": "notas" },
+            { "frase": "f-428c07", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "neutro" } ] },
+            { "frase": "f-936e9f", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-084fab", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-e8901e", "acao": "nega", "emocao": "determinado", "camera": "close" },
+            { "frase": "f-b64bcf", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-66d6d1", "acao": "nega", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "acao": "comemora", "emocao": "radiante", "efeito": "brilho" }
+          ]
+        }
+      ]
+    },
+    "situacao-telefone-reclamacao.a-internet-caiu-de-novo": {
+      "titulo": { "en": "The internet is down again", "pt": "A internet caiu de novo" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "cansado" },
+            { "quem": "atendente", "remoto": "celular", "emocao": "neutro" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "notebook", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-1f1b28", "acao": "aponta", "alvo": "notebook", "emocao": "cansado", "camera": "geral" },
+            { "frase": "f-c76e02", "emocao": "neutro",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-a7e3de", "acao": "nega", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-2cf72a", "acao": "aponta", "emocao": "bravo",
+              "reacoes": [ { "quem": "atendente", "emocao": "pensativo" } ] },
+            { "frase": "f-6bd428", "acao": "nega", "emocao": "cansado", "camera": "close" },
+            { "frase": "f-28547d", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-30a0b1", "acao": "concorda", "emocao": "determinado" },
+            { "frase": "f-48d906", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "senta", "emocao": "feliz", "segura": "cafe",
+              "objetos": [ { "prop": "cafe", "acao": "some" } ] }
+          ]
+        }
+      ]
+    },
+    "situacao-telefone-reclamacao.cancelar-o-plano": {
+      "titulo": { "en": "Canceling the internet plan", "pt": "Cancelando o plano" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "determinado" },
+            { "quem": "atendente", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "documento", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "senta", "emocao": "determinado" },
+            { "frase": "f-bfb374", "acao": "aponta", "alvo": "documento", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-df7a59", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-77f077", "acao": "concorda", "emocao": "determinado", "camera": "medio" }
+          ]
+        },
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "cansado" },
+            { "quem": "atendente", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "cafe", "pos": "esquerda" },
+            { "prop": "documento", "pos": "centroDireita" },
+            { "prop": "notebook", "pos": "direita" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "notebook", "emocao": "cansado", "efeito": "suor" },
+            { "frase": "f-eb9552", "acao": "nega", "emocao": "determinado", "camera": "close" },
+            { "frase": "f-704e0c", "emocao": "neutro",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "neutro" } ] },
+            { "frase": "f-a8d9b9", "acao": "escreve", "alvo": "documento", "emocao": "feliz" },
+            { "frase": "f-492877", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-eaa678", "acao": "aponta", "alvo": "documento", "emocao": "feliz", "camera": "medio" },
+            { "mudo": true, "quem": "voce", "acao": "comemora", "emocao": "radiante", "efeito": "brilho" }
+          ]
+        }
+      ]
+    }
+  }
+}

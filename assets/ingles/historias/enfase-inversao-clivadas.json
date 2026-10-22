@@ -1,0 +1,629 @@
+{
+  "versao": 1,
+  "trilha": "enfase-inversao-clivadas",
+  "arco": "Uma semana de ênfases: a vista da cabana da Emma vira avaliação caprichada, o dia de azar (chuva, luz, internet) vira piada com o Ben, o papo com a Ana vira lista de prioridades e os e-mails à Sarah pedem prazo e agradecem. O café sempre por perto.",
+  "licoes": {
+    "enfase-inversao-clivadas.nunca-vi-um-lugar-tao-bonito": {
+      "titulo": {
+        "en": "A cabin with a view",
+        "pt": "Uma cabana com vista"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "surpreso"
+            },
+            {
+              "quem": "emma",
+              "pos": "centroDireita",
+              "segura": "mapa",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "mala",
+              "pos": "esquerda"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-db0f8e",
+              "acao": "aponta",
+              "emocao": "surpreso",
+              "efeito": "brilho",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-f2d261",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "alvo": "voce",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-01795c",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "camera": "medio",
+              "objetos": [
+                {
+                  "prop": "cafe",
+                  "acao": "aparece",
+                  "pos": "centro",
+                  "de": "voce"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-fdac9b",
+              "acao": "escreve",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "camera": "close"
+            },
+            {
+              "frase": "f-9edec7",
+              "acao": "escreve",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "palmas",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-381888",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-2c147a",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-95fd30",
+              "acao": "mostra",
+              "alvo": "emma",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "camera": "close"
+            },
+            {
+              "mudo": true,
+              "quem": "emma",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "enfase-inversao-clivadas.mal-sentei-o-celular-tocou": {
+      "titulo": {
+        "en": "A day of bad luck",
+        "pt": "Um dia de azar"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [
+            "chuva"
+          ],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ben",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-03a37c",
+              "acao": "senta",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-735e93",
+              "acao": "aponta",
+              "emocao": "nervoso",
+              "efeito": "suor",
+              "reacoes": [
+                {
+                  "quem": "ben",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-d0d837",
+              "emocao": "surpreso",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "cansado"
+                }
+              ]
+            },
+            {
+              "frase": "f-00ee5c",
+              "acao": "concorda",
+              "emocao": "cansado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-6dcad3",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "objetos": [
+                {
+                  "prop": "notebook",
+                  "acao": "treme"
+                }
+              ]
+            },
+            {
+              "frase": "f-df8af1",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-460d16",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-25a600",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "surpreso",
+              "efeito": "estalo",
+              "camera": "close"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "nega",
+              "emocao": "feliz",
+              "efeito": "suor"
+            }
+          ]
+        }
+      ]
+    },
+    "enfase-inversao-clivadas.o-que-eu-preciso-e-de-ferias": {
+      "titulo": {
+        "en": "What I really need",
+        "pt": "Do que eu preciso mesmo"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroDireita",
+              "segura": "cafe",
+              "emocao": "cansado"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-354519",
+              "acao": "pensa",
+              "emocao": "cansado",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-3ad759",
+              "acao": "concorda",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-1d69aa",
+              "emocao": "feliz",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-83c302",
+              "acao": "aponta",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-44cf07",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "determinado",
+              "efeito": "exclamacao",
+              "camera": "dupla"
+            },
+            {
+              "frase": "f-8adeb0",
+              "acao": "concorda",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-432ea8",
+              "acao": "palmas",
+              "emocao": "surpreso",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-558969",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "camera": "close"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "mostra",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "enfase-inversao-clivadas.o-motivo-pelo-qual-escrevo": {
+      "titulo": {
+        "en": "Two careful emails",
+        "pt": "Dois e-mails caprichados"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "sarah",
+              "remoto": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            },
+            {
+              "prop": "carta",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-b1b7d2",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-9ab8b0",
+              "acao": "escreve",
+              "alvo": "carta",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-3de9ed",
+              "acao": "concorda",
+              "emocao": "timido"
+            },
+            {
+              "frase": "f-e92aac",
+              "acao": "nega",
+              "emocao": "determinado",
+              "objetos": [
+                {
+                  "prop": "cafe",
+                  "acao": "aparece",
+                  "pos": "centro",
+                  "de": "voce"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "surpreso",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-8d2d4d",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-aedaf2",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "close"
+            },
+            {
+              "frase": "f-00f242",
+              "acao": "escreve",
+              "alvo": "carta",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-bf8385",
+              "acao": "aponta",
+              "alvo": "carta",
+              "emocao": "nervoso",
+              "efeito": "suor"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "cafe",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "objetos": [
+                {
+                  "prop": "cafe",
+                  "acao": "some"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "enfase-inversao-clivadas.cena-pedido-e-experiencia": {
+      "titulo": {
+        "en": "Thanks and one request",
+        "pt": "Um obrigado e um pedido"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            },
+            {
+              "prop": "prato",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-e6c0a6",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-7c6161",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "surpreso"
+            },
+            {
+              "frase": "f-502024",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "confete",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-b13b5c",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-5ec61e",
+              "acao": "pensa",
+              "emocao": "nervoso",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-ca6a09",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-96a363",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "close"
+            },
+            {
+              "frase": "f-8d3537",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "camera": "close",
+              "objetos": [
+                {
+                  "prop": "cafe",
+                  "acao": "aparece",
+                  "pos": "esquerda",
+                  "de": "voce"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "prato",
+              "emocao": "radiante",
+              "objetos": [
+                {
+                  "prop": "prato",
+                  "acao": "some"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "versao": 1,
+  "trilha": "escrita-formal",
+  "arco": "Uma semana de e-mails formais com o café do lado: o pedido do contrato ao fornecedor, a reclamação da fatura em dobro, um não educado em nome da empresa, o agradecimento depois do conserto e o pedido atrasado que chega bem no fim.",
+  "licoes": {
+    "escrita-formal.escrevo-para-solicitar": {
+      "titulo": { "en": "A formal request", "pt": "Um pedido formal" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "pensativo" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centro" },
+            { "prop": "documento", "pos": "centroDireita" }
+          ],
+          "passos": [
+            { "frase": "f-f08837", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-440a48", "acao": "aponta", "alvo": "documento", "emocao": "determinado" },
+            { "mudo": true, "quem": "voce", "segura": "documento", "emocao": "pensativo",
+              "objetos": [ { "prop": "documento", "acao": "some" } ] },
+            { "frase": "f-b29c4b", "acao": "mostra", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-393527", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-310b54", "acao": "escreve", "alvo": "notebook", "emocao": "timido" },
+            { "mudo": true, "quem": "voce", "emocao": "feliz",
+              "objetos": [ { "prop": "documento", "acao": "aparece", "pos": "centroDireita", "de": "voce" } ] },
+            { "frase": "f-f24494", "segura": "cafe", "acao": "escreve", "alvo": "notebook", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-003a45", "acao": "olha", "alvo": "notebook", "emocao": "pensativo" },
+            { "frase": "f-a12d7a", "acao": "concorda", "emocao": "feliz", "camera": "close" },
+            { "mudo": true, "quem": "voce", "acao": "palmas", "emocao": "radiante", "efeito": "brilho",
+              "objetos": [ { "prop": "carta", "acao": "passa" } ] }
+          ]
+        }
+      ]
+    },
+    "escrita-formal.escrevo-para-reclamar": {
+      "titulo": { "en": "A formal complaint", "pt": "Uma reclamação formal" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "bravo" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centro" },
+            { "prop": "documento", "pos": "centroDireita" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "determinado" },
+            { "frase": "f-0fc50c", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-161969", "acao": "aponta", "alvo": "documento", "emocao": "determinado", "efeito": "exclamacao" },
+            { "frase": "f-bdd438", "acao": "nega", "emocao": "cansado" },
+            { "frase": "f-7ffaee", "emocao": "triste", "camera": "close" },
+            { "frase": "f-662216", "acao": "olha", "alvo": "notebook", "emocao": "triste" },
+            { "mudo": true, "quem": "voce", "acao": "senta", "emocao": "determinado" },
+            { "frase": "f-11beb1", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-cda78f", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-9c1477", "acao": "concorda", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante", "efeito": "brilho",
+              "objetos": [ { "prop": "carta", "acao": "passa" } ] }
+          ]
+        }
+      ]
+    },
+    "escrita-formal.infelizmente-nao-podemos": {
+      "titulo": { "en": "Saying no politely", "pt": "Dizer não com educação" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "pensativo" },
+            { "quem": "sarah", "pos": "direita", "visivel": false, "segura": "documento", "emocao": "pensativo" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centro" },
+            { "prop": "documento", "pos": "centroDireita" }
+          ],
+          "passos": [
+            { "frase": "f-5980df", "acao": "nega", "emocao": "pensativo", "camera": "geral" },
+            { "frase": "f-07cc9b", "acao": "escreve", "alvo": "notebook", "emocao": "neutro" },
+            { "frase": "f-fb72b0", "acao": "aponta", "alvo": "documento", "emocao": "determinado" },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "feliz", "efeito": "brilho" },
+            { "frase": "f-a00304", "acao": "escreve", "alvo": "notebook", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-3c187a", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-fa47cb", "acao": "nega", "emocao": "timido" },
+            { "mudo": true, "quem": "sarah", "acao": "entra", "emocao": "pensativo" },
+            { "frase": "f-7ca4e1", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "geral",
+              "reacoes": [ { "quem": "sarah", "acao": "concorda" } ] },
+            { "frase": "f-080c8d", "acao": "olha", "alvo": "notebook", "emocao": "pensativo",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "feliz",
+              "objetos": [ { "prop": "carta", "acao": "passa" } ],
+              "reacoes": [ { "quem": "sarah", "acao": "palmas", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "escrita-formal.obrigado-pela-paciencia": {
+      "titulo": { "en": "Thanks for your patience", "pt": "Obrigado pela paciência" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "atendente", "remoto": "celular", "emocao": "timido" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centro" },
+            { "prop": "cafe", "pos": "centroDireita" }
+          ],
+          "passos": [
+            { "frase": "f-a5032a", "emocao": "timido", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-160dd9", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-582158", "acao": "escreve", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "atendente", "emocao": "feliz" } ] },
+            { "frase": "f-ae791b", "acao": "escreve", "emocao": "feliz" },
+            { "frase": "f-86a37a", "acao": "escreve", "emocao": "pensativo" },
+            { "frase": "f-0dc0d1", "acao": "escreve", "emocao": "radiante", "camera": "close" },
+            { "mudo": true, "quem": "voce", "acao": "senta", "emocao": "feliz", "efeito": "notas",
+              "objetos": [ { "prop": "carta", "acao": "passa" } ] },
+            { "frase": "f-815c53", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-e69ae5", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "comemora", "emocao": "radiante", "efeito": "brilho" }
+          ]
+        }
+      ]
+    },
+    "escrita-formal.cena-a-reclamacao-completa": {
+      "titulo": { "en": "The late order", "pt": "O pedido atrasado" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "determinado" },
+            { "quem": "emma", "pos": "direita", "visivel": false, "segura": "sacola", "emocao": "radiante" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centro" },
+            { "prop": "documento", "pos": "centroDireita" }
+          ],
+          "passos": [
+            { "frase": "f-e73439", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-2d0fb7", "acao": "aponta", "alvo": "documento", "emocao": "pensativo" },
+            { "frase": "f-005be4", "acao": "nega", "emocao": "nervoso", "efeito": "exclamacao" },
+            { "frase": "f-5dba26", "acao": "olha", "alvo": "notebook", "emocao": "cansado" },
+            { "frase": "f-bbe6d8", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-5a40f0", "acao": "escreve", "alvo": "notebook", "emocao": "determinado" },
+            { "mudo": true, "quem": "voce", "segura": "documento", "emocao": "determinado",
+              "objetos": [ { "prop": "documento", "acao": "some" } ] },
+            { "frase": "f-8cb2c6", "acao": "mostra", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-7a4a5c", "acao": "concorda", "emocao": "feliz",
+              "objetos": [ { "prop": "carta", "acao": "passa" } ] },
+            { "mudo": true, "quem": "emma", "acao": "entra", "para": "centroDireita", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "emma", "segura": "nada", "emocao": "feliz", "camera": "dupla", "alvo": "voce",
+              "reacoes": [ { "quem": "voce", "segura": "sacola", "emocao": "radiante", "efeito": "suor" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}
