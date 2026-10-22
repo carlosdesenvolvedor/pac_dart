@@ -1,0 +1,226 @@
+{
+  "versao": 1,
+  "trilha": "tres-futuros",
+  "arco": "Uma semana de futuros nos primeiros meses do emprego: a tempestade na saída do escritório de Chicago, a agenda combinada com a Sarah, as promessas no chat, a chegada da Ana cheia de malas e o planejamento de segunda. E o café do aluno quase sempre por perto.",
+  "licoes": {
+    "tres-futuros.vai-chover-going-to-com-evidencia": {
+      "titulo": { "en": "It's going to rain", "pt": "Vai chover!" },
+      "cenas": [
+        {
+          "cenario": "cidade", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "notebook", "emocao": "cansado" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "guardaChuva", "emocao": "pensativo" },
+            { "quem": "passageiro", "pos": "esquerda", "visivel": false },
+            { "quem": "passageira", "pos": "direita", "visivel": false }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-668aca", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao", "camera": "geral" },
+            { "frase": "f-fa4bf3", "acao": "aponta", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-69a6de", "acao": "aponta", "emocao": "surpreso", "efeito": "exclamacao", "clima": ["vento"],
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso" } ] },
+            { "frase": "f-472236", "acao": "mostra", "alvo": "mike", "emocao": "nervoso", "efeito": "suor", "camera": "close" },
+            { "frase": "f-93f788", "acao": "nega", "emocao": "cansado" },
+            { "frase": "f-b76876", "acao": "aponta", "alvo": "voce", "emocao": "surpreso", "camera": "medio" },
+            { "frase": "f-53c71c", "acao": "concorda", "emocao": "cansado", "efeito": "suor",
+              "reacoes": [ { "quem": "mike", "emocao": "triste" } ] },
+            { "frase": "f-e2509a", "acao": "aponta", "emocao": "determinado", "efeito": "exclamacao", "clima": ["chuva", "vento"],
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-039bf3", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "mudo": true, "quem": "passageiro", "acao": "entra", "emocao": "cansado" },
+            { "mudo": true, "quem": "passageira", "acao": "entra", "segura": "guardaChuva", "emocao": "neutro" },
+            { "frase": "f-e12029", "acao": "aponta", "alvo": "passageira", "emocao": "surpreso", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "mike", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [
+                { "quem": "voce", "acao": "concorda", "emocao": "feliz" },
+                { "quem": "passageiro", "emocao": "feliz" },
+                { "quem": "passageira", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "tres-futuros.sexta-eu-encontro-a-ana-combinados": {
+      "titulo": { "en": "A busy week", "pt": "Uma semana cheia" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "sarah", "pos": "centroDireita", "segura": "documento", "emocao": "feliz" },
+            { "quem": "ana", "pos": "direita", "visivel": false }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-b90f75", "acao": "mostra", "alvo": "voce", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-6ca385", "acao": "nega", "emocao": "timido", "camera": "medio",
+              "reacoes": [ { "quem": "sarah", "emocao": "pensativo" } ] },
+            { "frase": "f-a9e82d", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-2e2fe0", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" } ] },
+            { "frase": "f-640ffa", "acao": "escreve", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-b2a74d", "acao": "aponta", "alvo": "voce", "emocao": "pensativo" },
+            { "frase": "f-d0f140", "acao": "mostra", "segura": "celular", "alvo": "sarah", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "sarah", "emocao": "surpreso" } ] },
+            { "frase": "f-381d8b", "acao": "pensa", "emocao": "pensativo" },
+            { "mudo": true, "quem": "ana", "acao": "entra", "emocao": "feliz" },
+            { "frase": "f-a45993", "acao": "aponta", "alvo": "ana", "emocao": "feliz", "camera": "dupla",
+              "reacoes": [ { "quem": "ana", "acao": "acena", "emocao": "radiante" } ] },
+            { "frase": "f-edb70a", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso", "efeito": "suor" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "feliz",
+              "reacoes": [
+                { "quem": "sarah", "acao": "acena", "emocao": "feliz" },
+                { "quem": "ana", "acao": "acena", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "tres-futuros.te-ligo-mais-tarde-will": {
+      "titulo": { "en": "I won't forget", "pt": "Não vou esquecer" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "mike", "remoto": "celular", "emocao": "neutro" },
+            { "quem": "sarah", "remoto": "celular", "emocao": "neutro" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "senta", "emocao": "feliz" },
+            { "frase": "f-93a331", "emocao": "determinado", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-f0c9c5", "acao": "concorda", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-8f261e", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-36e2db", "acao": "escreve", "emocao": "feliz" },
+            { "frase": "f-2ba495", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso", "efeito": "suor" } ] },
+            { "frase": "f-0d2d0a", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "sarah", "emocao": "pensativo" } ] },
+            { "frase": "f-255e51", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "notebook", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-63d867", "acao": "concorda", "emocao": "timido", "efeito": "suor", "camera": "close" },
+            { "frase": "f-41386c", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-c59472", "acao": "concorda", "emocao": "radiante", "efeito": "brilho" },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "emocao": "radiante",
+              "objetos": [ { "prop": "cafe", "acao": "some" } ],
+              "reacoes": [
+                { "quem": "mike", "emocao": "feliz" },
+                { "quem": "sarah", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "tres-futuros.eu-abro-a-janela-ofertas": {
+      "titulo": { "en": "Ana arrives in Chicago", "pt": "A Ana chega a Chicago" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "mike", "pos": "centro", "emocao": "feliz" },
+            { "quem": "ana", "pos": "direita", "visivel": false, "segura": "mala", "emocao": "cansado" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "esquerda" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "ana", "acao": "entra", "para": "centroDireita", "emocao": "cansado", "efeito": "suor",
+              "objetos": [ { "prop": "sacola", "acao": "aparece", "pos": "direita" } ] },
+            { "frase": "f-220cb6", "acao": "mostra", "alvo": "voce", "emocao": "cansado", "efeito": "suor", "camera": "geral" },
+            { "frase": "f-c64cd5", "acao": "concorda", "emocao": "determinado", "segura": "mala",
+              "reacoes": [ { "quem": "ana", "segura": "nada", "emocao": "feliz" } ] },
+            { "frase": "f-0310ca", "acao": "aponta", "alvo": "sacola", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-4c5ad3", "acao": "nega", "emocao": "feliz", "segura": "sacola",
+              "objetos": [ { "prop": "sacola", "acao": "some" } ],
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-f6d5d5", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-cbe61c", "acao": "aponta", "emocao": "timido",
+              "reacoes": [ { "quem": "ana", "emocao": "cansado", "efeito": "suor" } ] },
+            { "frase": "f-8428df", "acao": "aponta", "emocao": "cansado", "efeito": "suor",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "emocao": "feliz",
+              "objetos": [ { "prop": "mala", "acao": "aparece", "pos": "centroEsquerda", "de": "voce" } ] },
+            { "frase": "f-fa9b5b", "acao": "aponta", "alvo": "notebook", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "feliz" } ] }
+          ]
+        },
+        {
+          "cenario": "escritorio", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "mike", "pos": "centro", "segura": "chave", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "sacola", "emocao": "cansado" }
+          ],
+          "objetos": [
+            { "prop": "mala", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-64060a", "acao": "mostra", "alvo": "ana", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "ana", "acao": "nega", "emocao": "timido" },
+            { "frase": "f-8276f4", "acao": "mostra", "alvo": "ana", "emocao": "determinado",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [
+                { "quem": "voce", "acao": "concorda", "emocao": "feliz" },
+                { "quem": "mike", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "tres-futuros.a-semana-da-sarah-tres-futuros": {
+      "titulo": { "en": "Monday plans", "pt": "Os planos de segunda" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "sarah", "pos": "centroDireita", "segura": "documento", "emocao": "feliz" },
+            { "quem": "mike", "pos": "direita", "visivel": false }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-16dd84", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-1e9361", "acao": "concorda", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-d229d6", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "sarah", "acao": "escreve" } ] },
+            { "frase": "f-12ebb7", "acao": "mostra", "alvo": "voce", "emocao": "feliz" },
+            { "frase": "f-51d6e3", "acao": "pensa", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "emocao": "pensativo" } ] },
+            { "frase": "f-963b06", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "sarah", "acao": "aponta", "alvo": "voce", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-1dcc27", "acao": "concorda", "emocao": "timido" },
+            { "frase": "f-f61e53", "segura": "celular", "emocao": "surpreso",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" } ] },
+            { "frase": "f-a85ae4", "acao": "aponta", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso", "efeito": "suor" } ] },
+            { "frase": "f-f06418", "acao": "concorda", "emocao": "determinado" },
+            { "mudo": true, "quem": "mike", "acao": "entra", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "acao": "acena", "alvo": "mike", "emocao": "radiante",
+              "reacoes": [
+                { "quem": "mike", "acao": "acena", "emocao": "feliz" },
+                { "quem": "sarah", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    }
+  }
+}

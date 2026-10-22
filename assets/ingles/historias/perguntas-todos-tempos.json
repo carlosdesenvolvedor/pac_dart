@@ -1,0 +1,158 @@
+{
+  "versao": 1,
+  "trilha": "perguntas-todos-tempos",
+  "arco": "Começo do A2, de volta em casa: o projeto novo vira desculpa para perguntas de todo tipo. O Mike quer conhecer o aluno, o Ben quer saber da viagem de carro com o Lucas, a Ana conta a reunião perdida e a Sarah faz uma entrevista para o boletim do time. O café nunca sai de perto.",
+  "licoes": {
+    "perguntas-todos-tempos.com-que-frequencia-be-do-e-does": {
+      "titulo": { "en": "Welcome to the new project", "pt": "Bem-vindo ao projeto novo" },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "mike", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-c9bf6a", "acao": "acena", "emocao": "radiante", "efeito": "confete", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "frase": "f-dfb97f", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "acao": "pensa" } ] },
+            { "frase": "f-5205c0", "acao": "aponta", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-3e2a2d", "acao": "aponta", "alvo": "voce", "emocao": "feliz" },
+            { "frase": "f-901aa4", "acao": "concorda", "emocao": "radiante", "efeito": "coracoes",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "frase": "f-3c9681", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "voce", "segura": "nada", "emocao": "determinado" },
+            { "frase": "f-907a4e", "acao": "pula", "emocao": "determinado",
+              "reacoes": [ { "quem": "mike", "acao": "palmas", "emocao": "surpreso" } ] },
+            { "frase": "f-d000d7", "acao": "aponta", "alvo": "mike", "emocao": "feliz", "camera": "dupla" },
+            { "frase": "f-8df9bb", "acao": "nega", "emocao": "timido", "efeito": "notas",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-854574", "acao": "danca", "emocao": "radiante", "efeito": "notas", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "acao": "palmas", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "mike", "acao": "danca", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "segura": "cafe", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "perguntas-todos-tempos.como-foi-perguntas-com-did-was-e-can": {
+      "titulo": { "en": "The road trip", "pt": "A viagem de carro" },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "amanhecer",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "cansado" },
+            { "quem": "ben", "remoto": "celular", "emocao": "feliz" },
+            { "quem": "lucas", "pos": "centroDireita", "visivel": false, "segura": "mapa", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "cafe", "pos": "esquerda" } ],
+          "passos": [
+            { "frase": "f-26b14b", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-11f36e", "acao": "concorda", "emocao": "radiante" },
+            { "mudo": true, "quem": "lucas", "acao": "entra", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-42f2fc", "emocao": "surpreso",
+              "reacoes": [ { "quem": "lucas", "acao": "mostra", "emocao": "radiante" } ] },
+            { "frase": "f-18d0d3", "acao": "aponta", "alvo": "lucas", "emocao": "radiante", "efeito": "brilho", "camera": "medio" },
+            { "frase": "f-80df99", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "pensa" } ] },
+            { "frase": "f-99d544", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "lucas", "acao": "concorda" } ] },
+            { "frase": "f-ad119a", "emocao": "pensativo" },
+            { "frase": "f-92918d", "acao": "pensa", "emocao": "cansado",
+              "reacoes": [ { "quem": "lucas", "acao": "dorme", "efeito": "zzz" } ] },
+            { "frase": "f-61fd60", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "lucas", "acao": "pula", "emocao": "surpreso" } ] },
+            { "frase": "f-bba4e8", "acao": "concorda", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "lucas", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "lucas", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "perguntas-todos-tempos.quem-ligou-perguntas-de-sujeito": {
+      "titulo": { "en": "Who invited the client?", "pt": "Quem convidou o cliente?" },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "visivel": false, "segura": "cafe", "emocao": "timido" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "documento", "emocao": "surpreso" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "entra", "emocao": "timido", "efeito": "suor" },
+            { "frase": "f-2a77fd", "acao": "acena", "emocao": "surpreso", "camera": "medio" },
+            { "frase": "f-117a5e", "acao": "mostra", "emocao": "timido",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-48c07c", "acao": "pula", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-f3c6a5", "acao": "pensa", "emocao": "surpreso", "efeito": "interrogacao" },
+            { "frase": "f-f878f8", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-c19a8e", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-3da6ce", "acao": "nega", "emocao": "triste", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "triste" } ] },
+            { "frase": "f-d1705d", "acao": "pensa", "emocao": "nervoso", "efeito": "suor" },
+            { "frase": "f-50b68f", "acao": "aponta", "alvo": "voce", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-4fcb2d", "acao": "pula", "emocao": "determinado",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "segura": "chave", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "acao": "palmas", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "perguntas-todos-tempos.entrevista-informal-com-o-time": {
+      "titulo": { "en": "An interview with Sarah", "pt": "Uma entrevista com a Sarah" },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "sarah", "pos": "centroDireita", "segura": "documento", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-941652", "acao": "acena", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-8feb70", "acao": "olha", "alvo": "voce", "emocao": "feliz" },
+            { "frase": "f-86035d", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "sarah", "acao": "escreve" } ] },
+            { "frase": "f-cbaeab", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-2df844", "acao": "concorda", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "sarah", "acao": "escreve", "emocao": "feliz" } ] },
+            { "frase": "f-2d7b4b", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "dupla" },
+            { "frase": "f-47fa01", "acao": "comemora", "emocao": "radiante", "efeito": "coracoes", "camera": "close",
+              "reacoes": [ { "quem": "sarah", "acao": "palmas", "emocao": "radiante" } ] },
+            { "frase": "f-f18750", "acao": "olha", "alvo": "voce", "emocao": "pensativo" },
+            { "frase": "f-92addd", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "sarah", "acao": "escreve" } ] },
+            { "frase": "f-3f76ab", "acao": "pensa", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "acao": "escreve", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "sarah", "acao": "mostra", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "acao": "palmas", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

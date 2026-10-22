@@ -1,0 +1,694 @@
+{
+  "versao": 1,
+  "trilha": "situacao-saude",
+  "arco": "Os primeiros meses também têm dias de molho: a farmácia de manhã cedo numa viagem a trabalho, a Julia cuidando de você em casa, a Dra. Lee explicando o remédio (e cortando o café) e o susto da Ana na escada do hotel. Tudo termina em sorriso.",
+  "licoes": {
+    "situacao-saude.na-farmacia-dor-de-cabeca-e-resfriado": {
+      "titulo": {
+        "en": "Something for a headache",
+        "pt": "Algo para dor de cabeça"
+      },
+      "cenas": [
+        {
+          "cenario": "loja",
+          "hora": "amanhecer",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "farmaceutica",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "garrafa",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-470924",
+              "acao": "acena",
+              "emocao": "cansado",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-cf46b7",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-fbfc2d",
+              "acao": "nega",
+              "emocao": "cansado"
+            },
+            {
+              "frase": "f-8e3e2f",
+              "acao": "aponta",
+              "emocao": "triste",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "farmaceutica",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-09fb5f",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-3bd9d1",
+              "acao": "concorda",
+              "emocao": "cansado",
+              "reacoes": [
+                {
+                  "quem": "farmaceutica",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-234fab",
+              "acao": "treme",
+              "emocao": "timido",
+              "efeito": "estalo",
+              "reacoes": [
+                {
+                  "quem": "farmaceutica",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-cfa406",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "farmaceutica",
+              "segura": "garrafa",
+              "emocao": "feliz",
+              "objetos": [
+                {
+                  "prop": "garrafa",
+                  "acao": "some"
+                }
+              ]
+            },
+            {
+              "frase": "f-3cb145",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-a8d679",
+              "acao": "aponta",
+              "alvo": "farmaceutica",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "farmaceutica",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "farmaceutica",
+              "segura": "nada",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "garrafa",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-saude.nao-estou-bem-onde-doi": {
+      "titulo": {
+        "en": "I don't feel well today",
+        "pt": "Hoje não estou bem"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "amanhecer",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "mike",
+              "remoto": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "julia",
+              "pos": "centroDireita",
+              "visivel": false,
+              "segura": "cafe",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "esquerda"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-3be797",
+              "acao": "escreve",
+              "emocao": "cansado",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-b0e16a",
+              "acao": "escreve",
+              "emocao": "triste",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-f552a9",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-633d4c",
+              "acao": "concorda",
+              "emocao": "cansado",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-16c79d",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "triste",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "julia",
+              "acao": "entra",
+              "emocao": "feliz"
+            },
+            {
+              "mudo": true,
+              "quem": "julia",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-f4dd2f",
+              "acao": "nega",
+              "emocao": "cansado",
+              "alvo": "julia",
+              "reacoes": [
+                {
+                  "quem": "julia",
+                  "emocao": "surpreso"
+                }
+              ],
+              "objetos": [
+                {
+                  "prop": "cafe",
+                  "acao": "aparece",
+                  "pos": "centro",
+                  "de": "julia"
+                }
+              ]
+            },
+            {
+              "frase": "f-a4d98f",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "pensativo",
+              "camera": "dupla"
+            },
+            {
+              "frase": "f-013313",
+              "acao": "aponta",
+              "emocao": "cansado",
+              "reacoes": [
+                {
+                  "quem": "julia",
+                  "acao": "aponta",
+                  "efeito": "interrogacao"
+                }
+              ]
+            },
+            {
+              "frase": "f-ee4778",
+              "acao": "nega",
+              "emocao": "cansado"
+            },
+            {
+              "frase": "f-959517",
+              "acao": "aponta",
+              "alvo": "julia",
+              "emocao": "cansado",
+              "reacoes": [
+                {
+                  "quem": "julia",
+                  "acao": "concorda",
+                  "emocao": "determinado"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "nada",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "julia",
+                  "segura": "celular",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-saude.na-consulta-os-conselhos-da-dra-lee": {
+      "titulo": {
+        "en": "Pills, food and no coffee",
+        "pt": "Remédio, comida e nada de café"
+      },
+      "cenas": [
+        {
+          "cenario": "clinica",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "dra-lee",
+              "pos": "centroDireita",
+              "segura": "garrafa",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-6716f7",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "senta",
+                  "emocao": "nervoso"
+                }
+              ]
+            },
+            {
+              "frase": "f-2b939b",
+              "acao": "aponta",
+              "alvo": "dra-lee",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-92e073",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-66225c",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-37fe84",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-6aeec3",
+              "acao": "concorda",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-93ecef",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso",
+                  "efeito": "exclamacao"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "emocao": "timido",
+              "objetos": [
+                {
+                  "prop": "cafe",
+                  "acao": "aparece",
+                  "pos": "esquerda",
+                  "de": "voce"
+                }
+              ],
+              "reacoes": [
+                {
+                  "quem": "dra-lee",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-c92c62",
+              "acao": "pensa",
+              "emocao": "nervoso",
+              "efeito": "interrogacao",
+              "reacoes": [
+                {
+                  "quem": "dra-lee",
+                  "acao": "nega",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-4924ec",
+              "acao": "olha",
+              "alvo": "dra-lee",
+              "emocao": "pensativo"
+            },
+            {
+              "mudo": true,
+              "quem": "dra-lee",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "segura": "nada",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "garrafa",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-241548",
+              "segura": "documento",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "dra-lee",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-saude.emergencia-e-seguro-viagem": {
+      "titulo": {
+        "en": "Help at the hotel",
+        "pt": "Uma ajuda no hotel"
+      },
+      "cenas": [
+        {
+          "cenario": "hotel",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "ana",
+              "pos": "esquerda",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "voce",
+              "pos": "centro",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "recepcionista",
+              "pos": "direita",
+              "segura": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "senta",
+              "emocao": "timido"
+            },
+            {
+              "frase": "f-811f73",
+              "acao": "acena",
+              "alvo": "recepcionista",
+              "emocao": "nervoso",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-216847",
+              "acao": "aponta",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-b22ec2",
+              "acao": "aponta",
+              "alvo": "ana",
+              "emocao": "nervoso",
+              "efeito": "suor",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-4896dc",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-e7a4e7",
+              "acao": "nega",
+              "emocao": "nervoso",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "anda",
+              "para": "centroEsquerda",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-00f6ce",
+              "acao": "pensa",
+              "alvo": "ana",
+              "emocao": "pensativo",
+              "camera": "dupla"
+            },
+            {
+              "frase": "f-543c28",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "clinica",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "atendente",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-9fffbb",
+              "acao": "aponta",
+              "alvo": "ana",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-6c1659",
+              "segura": "celular",
+              "acao": "mostra",
+              "emocao": "timido",
+              "efeito": "suor",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-be85e9",
+              "acao": "pensa",
+              "alvo": "atendente",
+              "emocao": "pensativo"
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "acena",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

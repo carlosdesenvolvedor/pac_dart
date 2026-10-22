@@ -1,0 +1,223 @@
+{
+  "versao": 1,
+  "trilha": "obrigacao-conselho",
+  "arco": "Os primeiros meses cheios de regras: o fim de semana de obrigações que adia a praia com o Ben, o jantar sem cerimônia na casa da Emma, as proibições do prédio de Chicago, o conselho ao Lucas tarde da noite e as dicas para a Ana na primeira semana.",
+  "licoes": {
+    "obrigacao-conselho.tenho-que-trabalhar-have-to": {
+      "titulo": { "en": "A busy weekend", "pt": "Um fim de semana cheio" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "cansado" },
+            { "quem": "ben", "remoto": "celular", "emocao": "radiante" },
+            { "quem": "julia", "pos": "direita", "visivel": false, "segura": "documento" }
+          ],
+          "objetos": [ { "prop": "documento", "pos": "esquerda" } ],
+          "passos": [
+            { "frase": "f-e2ea5b", "acao": "nega", "emocao": "cansado", "camera": "medio",
+              "reacoes": [ { "quem": "ben", "emocao": "triste" } ] },
+            { "frase": "f-ce5fc2", "emocao": "surpreso",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-ad4d30", "acao": "nega", "emocao": "cansado" },
+            { "frase": "f-043642", "acao": "aponta", "alvo": "documento", "emocao": "nervoso", "efeito": "suor",
+              "reacoes": [ { "quem": "ben", "emocao": "pensativo" } ] },
+            { "frase": "f-2fe3cb", "acao": "nega", "emocao": "triste" },
+            { "frase": "f-61c2dc", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-4acf89", "emocao": "pensativo" },
+            { "frase": "f-b22a03", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "ben", "emocao": "surpreso" } ] },
+            { "frase": "f-9fbc94", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "julia", "acao": "entra", "para": "centroDireita", "emocao": "timido" },
+            { "frase": "f-4fefd2", "acao": "mostra", "emocao": "timido", "alvo": "voce", "camera": "dupla",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "abraca", "alvo": "julia", "emocao": "radiante",
+              "reacoes": [ { "quem": "julia", "emocao": "radiante" }, { "quem": "ben", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "obrigacao-conselho.nao-precisa-don-t-have-to": {
+      "titulo": { "en": "Dinner at Emma's", "pt": "Jantar na casa da Emma" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "emma", "pos": "centroDireita", "emocao": "radiante" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-23c284", "acao": "pensa", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "emma", "emocao": "feliz" } ] },
+            { "frase": "f-b8de99", "acao": "nega", "emocao": "feliz" },
+            { "frase": "f-6b6ceb", "acao": "pensa", "emocao": "timido" },
+            { "frase": "f-20d690", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "nervoso" },
+            { "frase": "f-0d42ce", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-366066", "acao": "aponta", "emocao": "radiante", "efeito": "brilho" },
+            { "frase": "f-682263", "acao": "palmas", "emocao": "radiante", "camera": "close",
+              "reacoes": [ { "quem": "emma", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-5895be", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] }
+          ]
+        },
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "visivel": false, "emocao": "timido" },
+            { "quem": "emma", "pos": "centroDireita", "emocao": "radiante" }
+          ],
+          "objetos": [ { "prop": "prato", "pos": "centro" } ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "entra", "para": "centroEsquerda", "emocao": "timido" },
+            { "frase": "f-0d97e7", "acao": "acena", "emocao": "timido", "camera": "geral",
+              "reacoes": [ { "quem": "emma", "acao": "acena", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "aponta", "alvo": "prato", "efeito": "interrogacao" },
+            { "frase": "f-09896d", "acao": "nega", "emocao": "feliz", "alvo": "voce",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "obrigacao-conselho.e-proibido-can-t-e-not-allowed": {
+      "titulo": { "en": "Not allowed here", "pt": "Aqui não pode" },
+      "cenas": [
+        {
+          "cenario": "cidade", "hora": "dia", "clima": [ "vento" ],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "chave", "emocao": "feliz" },
+            { "quem": "seguranca", "pos": "centroDireita", "emocao": "neutro" }
+          ],
+          "objetos": [ { "prop": "documento", "pos": "direita" } ],
+          "passos": [
+            { "frase": "f-6c5b76", "acao": "nega", "emocao": "timido", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-ef1e80",
+              "reacoes": [ { "quem": "seguranca", "acao": "aponta" }, { "quem": "voce", "acao": "concorda", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "seguranca", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        },
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "recepcionista", "pos": "centroDireita", "emocao": "neutro" },
+            { "quem": "mike", "pos": "esquerda", "visivel": false }
+          ],
+          "objetos": [ { "prop": "documento", "pos": "direita" } ],
+          "passos": [
+            { "frase": "f-1cb6b6", "acao": "nega", "emocao": "neutro", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-379b9b", "acao": "concorda", "emocao": "pensativo",
+              "reacoes": [ { "quem": "recepcionista", "acao": "aponta", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "alvo": "documento", "emocao": "feliz" },
+            { "frase": "f-ce7e33",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "mike", "acao": "entra", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-4d168a", "acao": "aponta", "alvo": "mike", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-7c3273", "acao": "nega", "alvo": "voce", "emocao": "neutro",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-602f56", "acao": "nega", "emocao": "determinado", "alvo": "voce", "camera": "dupla",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-9e8c15",
+              "reacoes": [ { "quem": "mike", "acao": "aponta" }, { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "segura": "celular", "acao": "mostra", "emocao": "feliz", "efeito": "interrogacao",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-c7948d", "acao": "nega", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "segura": "nada", "emocao": "feliz", "efeito": "suor" }, { "quem": "recepcionista", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "obrigacao-conselho.voce-deveria-should": {
+      "titulo": { "en": "Late night advice", "pt": "Conselho tarde da noite" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "pensativo" },
+            { "quem": "lucas", "remoto": "celular", "emocao": "nervoso" }
+          ],
+          "objetos": [ { "prop": "cafe", "pos": "direita" } ],
+          "passos": [
+            { "frase": "f-2da57f", "acao": "escreve", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-8d5e95", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-237a53", "acao": "nega", "emocao": "pensativo" },
+            { "frase": "f-d13d72", "emocao": "cansado",
+              "reacoes": [ { "quem": "voce", "emocao": "triste" } ] },
+            { "frase": "f-d581a4", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "lucas", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "emocao": "surpreso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "lucas", "emocao": "radiante" } ] },
+            { "frase": "f-0bc644", "acao": "nega", "emocao": "determinado", "camera": "close" },
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "cafe", "emocao": "timido", "efeito": "suor" },
+            { "frase": "f-056056", "emocao": "pensativo" },
+            { "frase": "f-c296da", "acao": "aponta", "emocao": "determinado" },
+            { "frase": "f-894d4c", "emocao": "cansado",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-88034e", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "lucas", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "feliz", "efeito": "zzz",
+              "reacoes": [ { "quem": "lucas", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "obrigacao-conselho.regras-e-conselhos-no-escritorio": {
+      "titulo": { "en": "Tips for the first week", "pt": "Dicas para a primeira semana" },
+      "cenas": [
+        {
+          "cenario": "cidade", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-91f26d", "acao": "pensa", "emocao": "pensativo", "camera": "geral" },
+            { "frase": "f-4eece2", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-dd9da2", "acao": "aponta", "emocao": "determinado",
+              "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
+            { "frase": "f-945a16", "acao": "aponta", "emocao": "pensativo" },
+            { "frase": "f-247461", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "timido" } ] }
+          ]
+        },
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "emocao": "feliz" },
+            { "quem": "mike", "pos": "esquerda", "visivel": false }
+          ],
+          "objetos": [ { "prop": "documento", "pos": "direita" } ],
+          "passos": [
+            { "frase": "f-37adc8", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "acao": "mostra", "emocao": "timido" }, { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-700815", "acao": "nega", "emocao": "pensativo",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-b07b52", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "cansado" } ] },
+            { "frase": "f-db53ee", "acao": "concorda", "emocao": "cansado", "efeito": "suor",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "acao": "pensa", "efeito": "interrogacao" },
+            { "mudo": true, "quem": "mike", "acao": "entra", "emocao": "feliz" },
+            { "frase": "f-b6059e", "acao": "aponta", "alvo": "mike", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "mike", "acao": "acena", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "acao": "acena", "alvo": "mike", "emocao": "radiante",
+              "reacoes": [ { "quem": "mike", "emocao": "radiante" }, { "quem": "voce", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

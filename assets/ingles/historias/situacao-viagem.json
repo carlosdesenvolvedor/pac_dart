@@ -1,0 +1,1246 @@
+{
+  "versao": 1,
+  "trilha": "situacao-viagem",
+  "arco": "A primeira viagem a trabalho no emprego novo: a passagem de trem para conhecer outro time, o check-in com o Ben, o voo atrasado em Chicago, a corrida com o Mike atrás do último trem, o caminho até o escritório e o check-out no hotel. Tudo dá um pouco errado e tudo acaba num sorriso.",
+  "licoes": {
+    "situacao-viagem.na-estacao-passagem-e-horario": {
+      "titulo": {
+        "en": "One-way ticket, please",
+        "pt": "Só de ida, por favor"
+      },
+      "cenas": [
+        {
+          "cenario": "cidade",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "atendente",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "mala",
+              "pos": "esquerda"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-8b7a00",
+              "acao": "acena",
+              "emocao": "feliz",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-e7786c",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-4ba406",
+              "acao": "nega",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "segura": "nada",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "documento",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-afba74",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-fbeb1e",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-f69d32",
+              "acao": "olha",
+              "alvo": "atendente",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-21f5aa",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "cidade",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "mala",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "passageira",
+              "pos": "centroDireita",
+              "segura": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "emocao": "nervoso",
+              "efeito": "suor",
+              "objetos": [
+                {
+                  "prop": "mala",
+                  "acao": "aparece",
+                  "pos": "esquerda",
+                  "de": "voce"
+                }
+              ]
+            },
+            {
+              "frase": "f-4c7c73",
+              "acao": "mostra",
+              "segura": "documento",
+              "alvo": "passageira",
+              "emocao": "timido",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-444eb2",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso",
+                  "efeito": "exclamacao"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "passageira",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-862f67",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "passageira",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "passageira",
+              "acao": "acena",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-viagem.no-aeroporto-check-in-e-portao": {
+      "titulo": {
+        "en": "Check-in at the airport",
+        "pt": "Check-in no aeroporto"
+      },
+      "cenas": [
+        {
+          "cenario": "aeroporto",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "ben",
+              "pos": "esquerda",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "mala",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "atendente",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-0fbede",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-844fb9",
+              "acao": "nega",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "ben",
+                  "acao": "concorda"
+                }
+              ],
+              "objetos": [
+                {
+                  "prop": "mala",
+                  "acao": "aparece",
+                  "pos": "centro",
+                  "de": "voce"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "mostra",
+              "segura": "passaporte",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-105898",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-3791cb",
+              "acao": "concorda",
+              "emocao": "radiante"
+            },
+            {
+              "frase": "f-e43b00",
+              "acao": "nega",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "triste"
+                }
+              ]
+            },
+            {
+              "frase": "f-4f21e4",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-0d418d",
+              "acao": "mostra",
+              "segura": "documento",
+              "emocao": "feliz"
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "segura": "nada",
+              "emocao": "feliz",
+              "objetos": [
+                {
+                  "prop": "mala",
+                  "acao": "sai"
+                }
+              ],
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "documento",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "ben",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-a4867e",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-78078d",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "aeroporto",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "atendente",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-19ba58",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "mostra",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-viagem.voo-atrasado-e-conexao": {
+      "titulo": {
+        "en": "My flight is delayed",
+        "pt": "Meu voo atrasou"
+      },
+      "cenas": [
+        {
+          "cenario": "aeroporto",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "passageiro",
+              "pos": "esquerda",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "atendente",
+              "pos": "centroDireita",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "julia",
+              "remoto": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "mala",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-b19c7f",
+              "emocao": "triste",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "passageiro",
+                  "acao": "nega",
+                  "emocao": "cansado"
+                }
+              ]
+            },
+            {
+              "frase": "f-2f10d7",
+              "acao": "acena",
+              "alvo": "atendente",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-ca6460",
+              "emocao": "cansado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "julia",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "aponta",
+              "alvo": "atendente",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-d27acc",
+              "acao": "nega",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso",
+                  "efeito": "exclamacao"
+                }
+              ]
+            },
+            {
+              "frase": "f-1dd583",
+              "acao": "aponta",
+              "emocao": "timido",
+              "clima": [
+                "chuva"
+              ],
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                },
+                {
+                  "quem": "passageiro",
+                  "emocao": "triste"
+                }
+              ]
+            },
+            {
+              "frase": "f-2ac0bb",
+              "acao": "mostra",
+              "segura": "documento",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-7a3206",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-fb7b44",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "passageiro",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-400b37",
+              "acao": "nega",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "passageiro",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "casa",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "mala",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "julia",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "julia",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-494090",
+              "acao": "senta",
+              "emocao": "cansado",
+              "efeito": "zzz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "julia",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "julia",
+              "acao": "abraca",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-viagem.perdi-a-conexao-miss": {
+      "titulo": {
+        "en": "We missed the last train",
+        "pt": "Perdemos o último trem"
+      },
+      "cenas": [
+        {
+          "cenario": "aeroporto",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "mala",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "atendente",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "julia",
+              "remoto": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "corre",
+              "para": "centroEsquerda",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-2a0077",
+              "emocao": "triste",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "emocao": "pensativo"
+                }
+              ],
+              "objetos": [
+                {
+                  "prop": "mala",
+                  "acao": "aparece",
+                  "pos": "esquerda",
+                  "de": "voce"
+                }
+              ]
+            },
+            {
+              "frase": "f-bf36ec",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-295173",
+              "segura": "celular",
+              "emocao": "cansado"
+            },
+            {
+              "frase": "f-75b494",
+              "emocao": "surpreso",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "cidade",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "motorista",
+              "pos": "esquerda",
+              "visivel": false,
+              "emocao": "feliz"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "mala",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-bee993",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-a81de9",
+              "acao": "aponta",
+              "emocao": "determinado",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-1e77e8",
+              "acao": "aponta",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "determinado"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "corre",
+              "para": "direita",
+              "efeito": "suor"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "corre",
+              "para": "centro",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-58133a",
+              "emocao": "triste",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "cansado"
+                }
+              ]
+            },
+            {
+              "frase": "f-18a88e",
+              "acao": "nega",
+              "emocao": "cansado",
+              "efeito": "suor",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "motorista",
+              "acao": "entra",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-9ce075",
+              "acao": "aponta",
+              "alvo": "motorista",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "motorista",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-viagem.entra-passa-sai-movimento": {
+      "titulo": {
+        "en": "The way to the office",
+        "pt": "O caminho até o escritório"
+      },
+      "cenas": [
+        {
+          "cenario": "cidade",
+          "hora": "dia",
+          "clima": [
+            "vento"
+          ],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "mike",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "cafe",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-951c95",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "anda",
+              "para": "centro"
+            },
+            {
+              "frase": "f-a602d6",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante",
+                  "efeito": "coracoes"
+                }
+              ]
+            },
+            {
+              "frase": "f-2c16a0",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "recepcionista",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "direita",
+              "visivel": false,
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-bda8cf",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-5586b6",
+              "acao": "treme",
+              "emocao": "timido",
+              "efeito": "suor",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-723db9",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "recepcionista",
+              "acao": "sai",
+              "emocao": "feliz"
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "entra",
+              "para": "centroDireita",
+              "emocao": "radiante"
+            },
+            {
+              "frase": "f-60cc46",
+              "acao": "acena",
+              "emocao": "feliz",
+              "camera": "dupla",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-cef21d",
+              "acao": "aponta",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-46dc43",
+              "acao": "mostra",
+              "segura": "mapa",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "cenario": "cidade",
+              "clima": [
+                "chuva"
+              ]
+            },
+            {
+              "frase": "f-41aef1",
+              "acao": "aponta",
+              "segura": "guardaChuva",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-viagem.chegando-carona-hotel-e-check-out": {
+      "titulo": {
+        "en": "Checkout at the hotel",
+        "pt": "Check-out no hotel"
+      },
+      "cenas": [
+        {
+          "cenario": "hotel",
+          "hora": "amanhecer",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "chave",
+              "emocao": "timido"
+            },
+            {
+              "quem": "recepcionista",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "cafe",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-6d0e0c",
+              "acao": "mostra",
+              "emocao": "timido",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-89796e",
+              "acao": "mostra",
+              "segura": "chave",
+              "emocao": "timido"
+            },
+            {
+              "mudo": true,
+              "quem": "recepcionista",
+              "segura": "nada",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "chave",
+                  "emocao": "radiante",
+                  "efeito": "brilho"
+                }
+              ]
+            },
+            {
+              "frase": "f-fcde4c",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-4a69f7",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-f2f5f7",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "hotel",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "mala",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "recepcionista",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "emma",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "cafe",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-fc610d",
+              "acao": "acena",
+              "emocao": "feliz",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-007f76",
+              "acao": "mostra",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-7716f6",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "emocao": "feliz",
+              "objetos": [
+                {
+                  "prop": "mala",
+                  "acao": "aparece",
+                  "pos": "centro",
+                  "de": "voce"
+                }
+              ],
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-38536c",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "emocao": "radiante"
+                }
+              ],
+              "segura": "celular"
+            },
+            {
+              "frase": "f-d152de",
+              "acao": "pensa",
+              "emocao": "feliz"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "emma",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
