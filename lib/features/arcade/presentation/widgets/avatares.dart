@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import '../../../../core/linguagem/linguagem.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../domain/personagem.dart';
 
@@ -50,6 +51,11 @@ class Pac3D extends StatefulWidget {
 class _Pac3DState extends State<Pac3D> with SingleTickerProviderStateMixin {
   late final _boca = AnimationController(vsync: this, duration: const Duration(milliseconds: 280));
 
+  /// ⚡ desempenho (22/out, só no curso de inglês): as tintas da esfera (o gradiente radial e as Paint
+  /// que só dependem do tamanho e da cor) ficam guardadas — antes cada quadro da mastigada criava um
+  /// shader novo (no navegador, um objeto do CanvasKit por quadro). Dart e C#: como estava.
+  late final bool _guardarTintas = Linguagem.atual == Linguagem.ingles;
+
   @override
   void initState() {
     super.initState();
@@ -85,7 +91,7 @@ class _Pac3DState extends State<Pac3D> with SingleTickerProviderStateMixin {
           animation: _boca,
           builder: (_, _) => CustomPaint(
             size: Size.square(widget.tamanho),
-            painter: _Pac3DPainter(abertura: .12 + _boca.value * .5),
+            painter: _Pac3DPainter(abertura: .12 + _boca.value * .5, guardarTintas: _guardarTintas),
           ),
         ),
       );
@@ -111,64 +117,98 @@ class _TonsPac {
   }
 }
 
+/// Quantos gradientes da esfera do Pac já foram criados (medida do teste de desempenho).
+@visibleForTesting
+int debugShadersPac3D = 0;
+
+/// As tintas do Pac de um tamanho (raio [r]) e uma cor: tudo o que não depende da boca. Dart e C#
+/// criam a cada pintura (como antes); o inglês guarda as últimas em [de].
+class _TintasPac {
+  final double r;
+  final Color base;
+  final Paint esfera, contraluz, labio, brilho, olho, reflexo;
+
+  factory _TintasPac(double r, Color cor) {
+    final tons = _TonsPac.de(cor);
+    final rect = Rect.fromCircle(center: Offset(r, r), radius: r);
+    debugShadersPac3D++;
+    return _TintasPac._(
+      r,
+      cor,
+      // esfera: luz de cima-esquerda, sombra na borda de baixo-direita
+      Paint()
+        ..shader = RadialGradient(
+          center: const Alignment(-.38, -.42),
+          radius: .95,
+          colors: [tons.claro, tons.base, tons.escuro],
+          stops: const [0, .55, 1],
+        ).createShader(rect),
+      // contraluz fininho na borda (rim light)
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = r * .06
+        ..color = tons.maisEscuro.withValues(alpha: .55),
+      // lábios da boca em sombra (dá profundidade ao corte)
+      Paint()
+        ..color = tons.maisEscuro.withValues(alpha: .65)
+        ..strokeWidth = r * .09
+        ..strokeCap = StrokeCap.round,
+      Paint()..color = Colors.white.withValues(alpha: .38),
+      Paint()..color = const Color(0xFF1B1F27),
+      Paint()..color = Colors.white,
+    );
+  }
+
+  _TintasPac._(this.r, this.base, this.esfera, this.contraluz, this.labio, this.brilho, this.olho, this.reflexo);
+
+  /// ⚡ Inglês: as guardadas (poucos tamanhos na tela ao mesmo tempo; a lista não cresce sem fim).
+  static final _guardadas = <_TintasPac>[];
+  static _TintasPac de(double r, Color cor) {
+    for (final t in _guardadas) {
+      if (t.r == r && t.base == cor) return t;
+    }
+    if (_guardadas.length >= 8) _guardadas.removeAt(0);
+    final t = _TintasPac(r, cor);
+    _guardadas.add(t);
+    return t;
+  }
+}
+
 class _Pac3DPainter extends CustomPainter {
   final double abertura;
-  _Pac3DPainter({required this.abertura});
+
+  /// ⚡ Inglês: reaproveita as tintas guardadas ([_TintasPac.de]).
+  final bool guardarTintas;
+  _Pac3DPainter({required this.abertura, this.guardarTintas = false});
 
   @override
   void paint(Canvas c, Size s) {
     final r = s.width / 2;
     final centro = Offset(r, r);
     final rect = Rect.fromCircle(center: centro, radius: r);
-    final tons = _TonsPac.de(Mixart.brand);
-    final base = tons.base;
-    final claro = tons.claro;
-    final escuro = tons.escuro;
-    final maisEscuro = tons.maisEscuro;
+    final tintas = guardarTintas ? _TintasPac.de(r, Mixart.brand) : _TintasPac(r, Mixart.brand);
 
     final corpo = Path()
       ..moveTo(r, r)
       ..arcTo(rect, abertura, 2 * math.pi - abertura * 2, false)
       ..close();
 
-    // esfera: luz de cima-esquerda, sombra na borda de baixo-direita
-    c.drawPath(
-      corpo,
-      Paint()
-        ..shader = RadialGradient(
-          center: const Alignment(-.38, -.42),
-          radius: .95,
-          colors: [claro, base, escuro],
-          stops: const [0, .55, 1],
-        ).createShader(rect),
-    );
-    // contraluz fininho na borda (rim light)
-    c.drawPath(
-      corpo,
-      Paint()
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = r * .06
-        ..color = maisEscuro.withValues(alpha: .55),
-    );
-    // lábios da boca em sombra (dá profundidade ao corte)
-    final labio = Paint()
-      ..color = maisEscuro.withValues(alpha: .65)
-      ..strokeWidth = r * .09
-      ..strokeCap = StrokeCap.round;
-    c.drawLine(centro, centro + Offset(math.cos(abertura), math.sin(abertura)) * r * .96, labio);
-    c.drawLine(centro, centro + Offset(math.cos(-abertura), math.sin(-abertura)) * r * .96, labio);
+    c.drawPath(corpo, tintas.esfera);
+    c.drawPath(corpo, tintas.contraluz);
+    c.drawLine(centro, centro + Offset(math.cos(abertura), math.sin(abertura)) * r * .96, tintas.labio);
+    c.drawLine(centro, centro + Offset(math.cos(-abertura), math.sin(-abertura)) * r * .96, tintas.labio);
     // brilho especular
     c.drawOval(
       Rect.fromCenter(center: Offset(r * .62, r * .5), width: r * .5, height: r * .3),
-      Paint()..color = Colors.white.withValues(alpha: .38),
+      tintas.brilho,
     );
     // olho com reflexo
-    c.drawCircle(Offset(r * .95, r * .40), r * .15, Paint()..color = const Color(0xFF1B1F27));
-    c.drawCircle(Offset(r * .90, r * .35), r * .05, Paint()..color = Colors.white);
+    c.drawCircle(Offset(r * .95, r * .40), r * .15, tintas.olho);
+    c.drawCircle(Offset(r * .90, r * .35), r * .05, tintas.reflexo);
   }
 
   @override
-  bool shouldRepaint(_Pac3DPainter old) => old.abertura != abertura;
+  bool shouldRepaint(_Pac3DPainter old) => old.abertura != abertura || old.guardarTintas != guardarTintas;
 }
 
 /// Dash — homenagem ao mascote do Flutter: corpo azul redondo com luz,
