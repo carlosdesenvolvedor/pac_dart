@@ -127,19 +127,28 @@ def sintetizar(texto, voz, gcp, token):
 
 def universo_curso():
     """{texto: papel} do curso: toda frase (inclusive as que têm gravação do Tatoeba em "au", que agora ficam só de
-    reserva no app) e todo exemplo da teoria. A 1ª fala vale: o mesmo texto não muda de voz."""
+    reserva no app) e todo exemplo da teoria. A 1ª fala vale: o mesmo texto não muda de voz.
+    Exceção: o índice é só por texto, então frase com gravação do Tatoeba ("au") dita por personagens de vozes
+    DIFERENTES fica de fora — segue tocando o Tatoeba para todos (senão o Ben falaria com a voz da Ana)."""
     trilhas = json.load(open(CURRICULO, encoding='utf-8'))
-    pedidos = {}
+    pedidos, falantes, com_au = {}, {}, set()
     for t in trilhas:
         for l in t['licoes']:
             for f in l['trechos']:
-                pedidos.setdefault(f['cod'].strip(), f.get('quem') or 'narrador')
+                cod, quem = f['cod'].strip(), f.get('quem') or 'narrador'
+                pedidos.setdefault(cod, quem)
+                falantes.setdefault(cod, set()).add(quem)
+                if f.get('au'):
+                    com_au.add(cod)
+    fora = {c for c in com_au if len({voz_do_papel(q) for q in falantes[c]}) > 1}
+    for c in fora:
+        del pedidos[c]
     for t in trilhas:
         for l in t['licoes']:
             for b in l.get('teoria') or []:
                 if isinstance(b, dict) and b.get('t') == 'ex':
                     en = b['c'].split('\n')[0].strip()
-                    if en:
+                    if en and en not in fora:
                         pedidos.setdefault(en, 'narrador')
     return pedidos
 

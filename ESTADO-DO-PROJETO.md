@@ -235,12 +235,13 @@ por gênero (mapa em `tools/ingles/dados/vozes_google.json`). 5.029 mp3 (55,6 MB
 `python3 -I tools/ingles/vozes_google.py --gcp music-system-421ee` (API Text-to-Speech ativa nesse projeto, que tem
 faturamento; ~3 arquivos/s; só gera o que falta e apaga órfãos; `--seco` só conta). Ordem no app (`AudioNativo.paraTocar`): voz
 gerada do personagem > gravação de nativo (reserva) > voz sintética do navegador.
-**Lote "trocar as vozes" (22/out):** as 407 frases com `au` (Tatoeba) também ganharam a voz do personagem (5.538 mp3 em
+**Lote "trocar as vozes" (22/out):** as 407 frases com `au` (Tatoeba) também ganharam a voz do personagem (5.536 mp3 em
 `voz/`); o `au` ficou só de reserva e o crédito do Tatoeba só aparece quando ele toca de fato
 (`AudioNativo.tocaGravacaoDeNativo`). A história do Turismo (D15) tem 434 mp3 por (quem, texto) em `assets/ingles/voz_historia/`
 + índice `assets/ingles/vozes_historia.json` {"quem|texto": asset} (max = Achird, kim = Gacrux, narrador = Zubenelgenubi; os
 demais = a voz do curso), gerados pelo mesmo script; `VozIngles.falarNaHistoria` toca o mp3 a `rate = fator` com a boca do
-Rhubarb e cai na sintética com o perfil quando falta. `bocas.json` = 6.379 entradas.
+Rhubarb e cai na sintética com o perfil quando falta. `bocas.json` = 6.377 entradas. Exceção: frase com `au` dita por personagens de vozes diferentes fica fora do
+`vozes.json` e segue no Tatoeba (ver [🎙️ vozes por personagem](#️-vozes-por-personagem-22out2026-branch-lote-vozes-wip)).
 
 **No app:**
 - `Linguagem.ingles` (marca ENGLISH, `assets/ingles/`, prefixo `en_`, `ehProgramacao=false`), 3º cartão na escolha
@@ -2580,3 +2581,24 @@ inglês** (`Linguagem.atual == Linguagem.ingles`, lido uma vez por tela/painter)
 - **Conferir no aparelho (curso de INGLÊS, qualidade Leve):** uma Chuva longa (até o nível 3+) digitando rápido — fluidez, placar,
   vidas, aviso de nível/combo, tremor ao perder vida, fim de jogo; o Rali com várias palavras perfeitas (chama, carga da CPU,
   corredores andando). No Dart/C# nada deve mudar.
+
+## 🎙️ vozes por personagem (22/out/2026, branch `lote-vozes-wip`; NÃO está no main, sem deploy)
+
+- **Curso:** as frases que tocavam a gravação do Tatoeba (`au`) agora tocam a voz Chirp 3 HD do personagem que fala (`assets/ingles/voz/`,
+  índice `vozes.json` {texto: asset}); o `au` fica de reserva. Ordem no app: mp3 gerado > Tatoeba > voz sintética.
+- **História do Turismo ("The Golden Wheel"):** 434 mp3 por (quem, texto) em `assets/ingles/voz_historia/` + `vozes_historia.json`
+  (max = Achird, kim = Gacrux, narrador = Zubenelgenubi); a sintética com o perfil só entra se o mp3 falhar.
+- **Frase dita por personagens de vozes diferentes:** o índice do curso é só por texto, então `universo_curso()` deixa de fora a frase
+  com `au` cujos falantes têm vozes diferentes — ela segue no Tatoeba para todos. Hoje são 2: "Do you want to go out tonight?" (Ana/Ben)
+  e "How was your trip to Boston?" (Sarah/Ana); os 2 mp3 errados foram apagados. Para dar a voz certa a cada um seria preciso uma chave
+  `quem|texto` também no curso (e `AudioNativo.paraTocar(quem:)`) — não feito.
+- **Números:** 5.536 mp3 no curso (59,2 MB) + 434 na história (5,0 MB); `bocas.json` = 6.377 entradas (Rhubarb).
+- **Refazer:** `python3 tools/ingles/vozes_google.py --gcp music-system-421ee --seco` (órfãos têm de ser 0 ou só os obsoletos), depois sem
+  `--seco`, depois `python3 -I tools/ingles/bocas_rhubarb.py`.
+- **Testes:** `ingles_curriculo_test` e `vozes_historia_test` aceitam essa exceção (só frase com `au` + mais de um falante, no máx. 5/10).
+- **Provado no navegador (probe, 22/out):** 📺 Assistir de `primeiro-contato.obrigado-desculpa-com-licenca` toca `voz/3cea606dad13b3.mp3`
+  ("Excuse me.", antes Tatoeba) e `voz/898b7c13a638a9.mp3`; a abertura 1 da história toca 5 mp3 de `voz_historia/` (narrador, você,
+  Mike, Sarah×2), nenhuma fala sintética, 0 erros. ⚠️ Armadilhas da prova: (1) `#/historia-en1` aberto direto no probe fala com a
+  sintética porque o índice só carrega com o currículo (`CurriculoLoader`) — no app ele já está carregado; no probe abrir antes o
+  `#/assistir-en` e trocar o hash. (2) O navegador do Playwright guarda o `vozes.json` de um build antigo na mesma porta: limpar o
+  cache e recarregar de verdade (`about:blank` antes; `goto` para a mesma URL com `#` não recarrega).

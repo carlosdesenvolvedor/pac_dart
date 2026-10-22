@@ -67,12 +67,27 @@ void main() {
   test('toda frase do curso de inglês tem a voz do personagem (mp3 no disco, com boca)', () {
     final geradas = _json(AudioNativo.indiceGeradas);
     final trilhas = jsonDecode(File('assets/ingles/curriculo.json').readAsStringSync()) as List;
-    var n = 0;
+    final falantes = <String, Set<String>>{};
+    for (final t in trilhas) {
+      for (final l in (t as Map)['licoes'] as List) {
+        for (final f in (l as Map)['trechos'] as List) {
+          falantes.putIfAbsent(((f as Map)['cod'] as String).trim(), () => {}).add((f['quem'] ?? '') as String);
+        }
+      }
+    }
+    var n = 0, noTatoeba = 0;
     for (final t in trilhas) {
       for (final l in (t as Map)['licoes'] as List) {
         for (final f in (l as Map)['trechos'] as List) {
           final cod = ((f as Map)['cod'] as String).trim();
           final asset = geradas[cod];
+          final au = (f['au'] ?? '') as String;
+          // exceção: frase do Tatoeba dita por personagens de vozes diferentes segue no Tatoeba (com boca)
+          if (asset == null && au.isNotEmpty && falantes[cod]!.length > 1) {
+            expect(bocas.containsKey(au), isTrue, reason: '"$cod" ($au) sem boca');
+            noTatoeba++;
+            continue;
+          }
           expect(asset, isA<String>(), reason: '"$cod" sem voz do personagem');
           expect(File(asset as String).existsSync(), isTrue, reason: '"$cod" (falta $asset)');
           expect(bocas.containsKey(asset), isTrue, reason: '"$cod" ($asset) sem boca');
@@ -81,5 +96,6 @@ void main() {
       }
     }
     expect(n, greaterThanOrEqualTo(5000));
+    expect(noTatoeba, lessThanOrEqualTo(10));
   });
 }

@@ -149,13 +149,26 @@ void main() {
       expect(arq.lengthSync(), greaterThan(1000), reason: '"${e.key}" (${e.value} vazio)');
       usados.add(arq.path.split('/').last);
     }
+    // Exceção (vozes_google.universo_curso): frase do Tatoeba dita por mais de um personagem (vozes diferentes) fica
+    // fora do índice por texto e segue no Tatoeba para todos — senão o Ben falaria com a voz da Ana.
+    final falantes = <String, Set<String>>{};
     for (final x in frases) {
+      falantes.putIfAbsent(x.f.cod, () => {}).add(x.f.quem);
+    }
+    final noTatoeba = <String>{};
+    for (final x in frases) {
+      if (!indice.containsKey(x.f.cod) && x.f.audio.isNotEmpty && falantes[x.f.cod]!.length > 1) {
+        noTatoeba.add(x.f.cod);
+        continue;
+      }
       expect(indice.containsKey(x.f.cod), isTrue, reason: '${x.t.nivel} › ${x.l.nome}: "${x.f.cod}" sem voz do personagem');
     }
+    expect(noTatoeba.length, lessThanOrEqualTo(5), reason: '$noTatoeba');
     for (final t in trilhas) {
       for (final l in t.licoes) {
         for (final b in l.teoria.where((b) => b.tipo == 'ex')) {
           final en = b.conteudo.split('\n').first.trim();
+          if (noTatoeba.contains(en)) continue;
           expect(indice.containsKey(en), isTrue, reason: '${l.nome}: exemplo "$en" sem voz');
         }
       }
