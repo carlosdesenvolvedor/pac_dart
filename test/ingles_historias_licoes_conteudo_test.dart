@@ -250,7 +250,8 @@ void main() {
       expect(s.temAutoral('primeiro-contato.oi-tudo-bem'), isTrue);
       expect(s.carregando('primeiro-contato.oi-tudo-bem'), isFalse);
 
-      const fora = 'situacao-viagem.no-aeroporto-check-in-e-portao';
+      // uma lição do B1 (o A1 e o A2 já têm histórias escritas; o B1 ainda usa só a automática)
+      const fora = 'ja-fui-x-fui.ja-foi-quando-foi';
       final f2 = faixaDe(fora, 0);
       await s.preparar(f2);
       final auto = s.para(f2);
