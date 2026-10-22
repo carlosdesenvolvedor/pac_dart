@@ -7,13 +7,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/theme/mixart.dart';
 import '../../../../curso/domain/curriculo.dart';
 import '../../../domain/assistir/historias_licoes.dart';
+import '../../../domain/assistir/pergunta_compreensao.dart';
 import '../../../domain/config_ouvir.dart';
 import '../../../domain/fila_ouvir.dart';
 import '../../../domain/setlist.dart';
 import '../ouvir_acoes.dart';
 import '../ouvir_cubit.dart';
 import '../ouvir_state.dart';
+import '../tocando_page.dart' show nomeDeQuem;
 import 'palco_assistir.dart';
+import 'pergunta_assistir.dart';
 
 /// A fila da historinha da lição [l] (vazia fora do inglês ou numa lição sem desenho: texto próprio).
 List<Faixa> faixasParaAssistir(BuildContext c, Licao l) {
@@ -51,6 +54,9 @@ Future<void> assistirLicao(BuildContext c, Licao l) async {
 /// A tela do 📺 da lição: o [PalcoAssistir] em tela cheia e uma barra (⏮ ⏯ ⏭). Espaço toca/pausa, ←/→
 /// frase anterior/próxima, Esc volta para a lição. Quem fecha o [cubit] é quem abriu ([assistirLicao]).
 ///
+/// No fim da historinha, por cima do palco, uma pergunta OPCIONAL de compreensão ([PerguntaAssistir], de
+/// [perguntaDaLicao]): 1/2/3 escolhem, Esc pula. Não grava progresso. Lição sem pergunta possível: só o véu.
+///
 /// Keys: `assistir-licao-page`, `assistir-licao-fechar`, `assistir-licao-play`, `assistir-licao-anterior`,
 /// `assistir-licao-proxima`, `assistir-licao-posicao`.
 class AssistirLicaoPage extends StatefulWidget {
@@ -75,6 +81,14 @@ class AssistirLicaoPage extends StatefulWidget {
 
 class _AssistirLicaoPageState extends State<AssistirLicaoPage> {
   final _foco = FocusNode(debugLabel: 'assistir-licao');
+
+  /// A pergunta do fim (calculada uma vez, na 1ª vez que a historinha acaba; null = a lição não tem).
+  PerguntaCompreensao? _pergunta;
+  var _perguntaFeita = false;
+
+  /// A pergunta está por cima do palco; [_escolha] = a opção respondida (null = ainda não).
+  var _aberta = false;
+  int? _escolha;
 
   /// O palco é criado uma vez: os rebuilds da barra (a cada emit) não o reconstroem.
   late final Widget _palco = PalcoAssistir(
@@ -101,9 +115,66 @@ class _AssistirLicaoPageState extends State<AssistirLicaoPage> {
     }
   }
 
+  /// A historinha acabou (abre a pergunta, se a lição tiver) ou voltou a tocar (fecha).
+  void _aoStatus(OuvirState st) {
+    if (st.status == StatusOuvir.acabou) {
+      if (!_perguntaFeita) {
+        _perguntaFeita = true;
+        final id = st.fila.isEmpty || st.fila.first.licaoId.isEmpty ? widget.titulo : st.fila.first.licaoId;
+        _pergunta = perguntaDaLicao(id, st.fila, nomeDe: nomeDeQuem);
+      }
+      if (_pergunta != null) {
+        setState(() {
+          _aberta = true;
+          _escolha = null;
+        });
+      }
+    } else if (_aberta) {
+      setState(() => _aberta = false);
+    }
+  }
+
+  void _responder(int i) {
+    if (_escolha != null) return;
+    setState(() => _escolha = i);
+  }
+
+  /// "Pular" (ou Esc): fecha a pergunta e fica o véu "▶ de novo" do palco.
+  void _fecharPergunta() {
+    setState(() => _aberta = false);
+    _foco.requestFocus();
+  }
+
+  void _verDeNovo() {
+    _fecharPergunta();
+    _alternar();
+  }
+
+  /// 1/2/3 (em cima ou no teclado numérico) → a opção.
+  static final _teclasDaOpcao = {
+    LogicalKeyboardKey.digit1: 0,
+    LogicalKeyboardKey.digit2: 1,
+    LogicalKeyboardKey.digit3: 2,
+    LogicalKeyboardKey.numpad1: 0,
+    LogicalKeyboardKey.numpad2: 1,
+    LogicalKeyboardKey.numpad3: 2,
+  };
+
   KeyEventResult _tecla(FocusNode _, KeyEvent e) {
     if (e is! KeyDownEvent) return KeyEventResult.ignored;
     final k = e.logicalKey;
+    // com a pergunta aberta: 1/2/3 escolhem e Esc pula (mesmo com o foco num botão dela)
+    if (_aberta && _pergunta != null) {
+      final i = _teclasDaOpcao[k];
+      if (i != null && i < _pergunta!.opcoes.length) {
+        _responder(i);
+        return KeyEventResult.handled;
+      }
+      if (k == LogicalKeyboardKey.escape) {
+        _fecharPergunta();
+        return KeyEventResult.handled;
+      }
+    }
     if (!_foco.hasPrimaryFocus && k != LogicalKeyboardKey.escape) return KeyEventResult.ignored;
     if (k == LogicalKeyboardKey.space) {
       _alternar();
@@ -131,7 +202,27 @@ class _AssistirLicaoPageState extends State<AssistirLicaoPage> {
           onKeyEvent: _tecla,
           child: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
             _topo(context),
-            Expanded(child: _palco),
+            Expanded(
+              child: BlocListener<OuvirCubit, OuvirState>(
+                bloc: widget.cubit,
+                listenWhen: (a, b) => a.status != b.status,
+                listener: (_, st) => _aoStatus(st),
+                child: Stack(fit: StackFit.expand, children: [
+                  _palco,
+                  if (_aberta && _pergunta != null)
+                    PerguntaAssistir(
+                      pergunta: _pergunta!,
+                      escolha: _escolha,
+                      onEscolher: _responder,
+                      // a mesma saída do player da tela, a 1× (a historinha já acabou: nada a cortar)
+                      onOuvir: () => unawaited(widget.cubit.saida.en(_pergunta!.frase, fator: 1)),
+                      onPular: _fecharPergunta,
+                      onDeNovo: _verDeNovo,
+                      onVoltar: () => Navigator.of(context).maybePop(),
+                    ),
+                ]),
+              ),
+            ),
             BlocBuilder<OuvirCubit, OuvirState>(
               bloc: widget.cubit,
               builder: (context, st) => _barra(st),
