@@ -368,10 +368,32 @@ void main() {
     expect(_erros(cena), isEmpty);
     await _rodar(t, cena, tamanho: const Size(360, 560));
     await _rodar(t, cena, tamanho: const Size(2560, 1000));
-    // a fórmula de tamanho encolhe para caber entre os vizinhos
-    final h = PalcoHistoria.alturaDosAtores(const Size(360, 560), [for (final x in PalcoHistoria.xsEstreito) x * 360]);
-    expect(h * .62, lessThanOrEqualTo(.92 * (.18 * 360) + .001));
+    await _rodar(t, cena, tamanho: const Size(500, 360));
+    // a fórmula de tamanho encolhe para caber entre os vizinhos (paisagem estreita)
+    final h = PalcoHistoria.alturaDosAtores(const Size(500, 360), [for (final x in PalcoHistoria.xsEstreito) x * 500]);
+    expect(h * .62, lessThanOrEqualTo(.92 * (.18 * 500) + .001));
     expect(h, greaterThanOrEqualTo(84));
     expect(PalcoHistoria.alturaDosAtores(const Size(2560, 1000), const []), 420);
+  });
+
+  test('retrato: 2 filas (pares na frente, ímpares atrás) e atores bem maiores que na paisagem estreita', () {
+    for (final s in const [Size(390, 790), Size(360, 588), Size(360, 560)]) {
+      expect(PalcoHistoria.retrato(s), isTrue);
+      expect(PalcoHistoria.xsDo(s), PalcoHistoria.xsRetrato);
+      final xs = [for (final x in PalcoHistoria.xsRetrato) x * s.width];
+      expect([for (final x in xs) PalcoHistoria.filaNoRetrato(s, x)], [0, 1, 0, 1, 0]);
+      final h = PalcoHistoria.alturaDosAtores(s, xs);
+      final w = h * .62;
+      // mesma fila: cabem lado a lado; filas vizinhas: meia largura (o de trás fica mais alto)
+      expect(w, lessThanOrEqualTo(.92 * (xs[2] - xs[0]) + .001));
+      expect(w / 2, lessThanOrEqualTo(.92 * (xs[1] - xs[0]) + .001));
+      // nas pontas, o ator inteiro fica na tela
+      expect(xs.first - w / 2, greaterThanOrEqualTo(-.5));
+      expect(h, greaterThan(s.width * .45), reason: 'retrato ${s.width}×${s.height}: atores grandes');
+    }
+    // paisagem: as regras de sempre (sem filas)
+    expect(PalcoHistoria.retrato(const Size(1280, 720)), isFalse);
+    expect(PalcoHistoria.xsDo(const Size(1280, 720)), PalcoHistoria.xsLargo);
+    expect(PalcoHistoria.xsDo(const Size(500, 360)), PalcoHistoria.xsEstreito);
   });
 }

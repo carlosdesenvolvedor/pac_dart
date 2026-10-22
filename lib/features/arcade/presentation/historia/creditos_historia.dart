@@ -33,6 +33,9 @@ class CreditosHistoria extends StatefulWidget {
     ('kim', 'Tournament announcer', 'locutora do torneio'),
   ];
 
+  /// A largura da coluna do elenco (a coluna fica centrada; as linhas, alinhadas à esquerda dentro dela).
+  static const larguraElenco = 340.0;
+
   @override
   State<CreditosHistoria> createState() => _CreditosHistoriaState();
 }
@@ -152,7 +155,22 @@ class _CreditosHistoriaState extends State<CreditosHistoria> with SingleTickerPr
                       controller: _rolagem,
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
                       children: [
-                        for (final (id, papel, papelPt) in CreditosHistoria.elenco) _linhaElenco(id, papel, papelPt),
+                        // uma coluna só, alinhada à esquerda e centrada como bloco (os rostos em fila, sem zigue-zague)
+                        Center(
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(maxWidth: CreditosHistoria.larguraElenco),
+                            // a coluna tem a largura da linha mais larga (até o limite): o bloco fica no meio
+                            child: IntrinsicWidth(
+                              child: Column(
+                                key: const Key('historia-creditos-elenco'),
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  for (final (id, papel, papelPt) in CreditosHistoria.elenco) _linhaElenco(id, papel, papelPt),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
                         const SizedBox(height: 24),
                         _linhaTexto('Story and drawings', 'História e desenhos: originais do Paclingo'),
                         _linhaTexto('Voices', 'Vozes da história: voz do sistema'),
@@ -189,7 +207,6 @@ class _CreditosHistoriaState extends State<CreditosHistoria> with SingleTickerPr
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (ap != null)
             SizedBox(

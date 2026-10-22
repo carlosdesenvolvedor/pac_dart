@@ -44,12 +44,30 @@ class PalcoHistoria extends StatelessWidget {
   static const xsLargo = [.12, .31, .50, .69, .88];
   static const xsEstreito = [.14, .32, .50, .68, .86];
 
+  /// No retrato (celular em pé): as posições pares (esquerda, centro, direita) são a fila da frente e as
+  /// ímpares (centroEsquerda/centroDireita) ficam numa 2ª fila, um pouco atrás e mais alto ([recuoFila]); assim
+  /// os atores podem ser bem maiores sem um tampar o rosto do outro.
+  static const xsRetrato = [.16, .33, .50, .67, .84];
+
+  /// Quanto a 2ª fila do retrato sobe, em alturas de ator (limitado a 60% do chão visível, ver [_Quadro]).
+  static const recuoFila = .35;
+
   /// Largura abaixo da qual o balão vira faixa no topo e as posições se juntam.
   static const larguraEstreita = 560.0;
 
+  /// Retrato = mais alto que largo: palco em 2 filas e atores maiores ([alturaDosAtores]).
+  static bool retrato(Size palco) => palco.height > palco.width;
+
+  /// As 5 posições (fração da largura) para o tamanho do [palco].
+  static List<double> xsDo(Size palco) =>
+      retrato(palco) ? xsRetrato : (palco.width < larguraEstreita ? xsEstreito : xsLargo);
+
   /// A altura dos atores para o palco [palco] com as posições [xsOcupados] (px) ocupadas: `clamp(min(.46 alt,
   /// .30 larg), 84, 420)`, encolhida para caber entre os vizinhos (`w = .62 H ≤ .92 × menor distância`).
+  /// No [retrato]: `clamp(min(.30 alt, .48 larg), 84, 420)`; vizinhos da mesma fila seguem a regra acima e os de
+  /// filas diferentes só precisam de meia largura (`w/2 ≤ .92 × distância`), pois o de trás fica mais alto.
   static double alturaDosAtores(Size palco, List<double> xsOcupados) {
+    if (retrato(palco)) return _alturaNoRetrato(palco, xsOcupados);
     var h = math.min(palco.height * .46, palco.width * .30).clamp(84.0, 420.0);
     final xs = xsOcupados.toSet().toList()..sort();
     var menor = double.infinity;
@@ -58,6 +76,30 @@ class PalcoHistoria extends StatelessWidget {
     }
     final w = math.min(AtorHistoria.largura(h), .92 * menor);
     if (w < AtorHistoria.largura(h)) h = math.max(84.0, w / .62);
+    return h;
+  }
+
+  /// A fila (0 = frente, 1 = trás) da posição mais perto de [x] no retrato.
+  static int filaNoRetrato(Size palco, double x) {
+    var melhor = 0;
+    for (var i = 1; i < xsRetrato.length; i++) {
+      if ((xsRetrato[i] * palco.width - x).abs() < (xsRetrato[melhor] * palco.width - x).abs()) melhor = i;
+    }
+    return melhor.isOdd ? 1 : 0;
+  }
+
+  static double _alturaNoRetrato(Size palco, List<double> xsOcupados) {
+    var h = math.min(palco.height * .30, palco.width * .48).clamp(84.0, 420.0);
+    final xs = xsOcupados.toSet().toList()..sort();
+    var maxLargura = double.infinity;
+    for (var i = 0; i < xs.length; i++) {
+      for (var j = i + 1; j < xs.length; j++) {
+        final d = xs[j] - xs[i];
+        final mesmaFila = filaNoRetrato(palco, xs[i]) == filaNoRetrato(palco, xs[j]);
+        maxLargura = math.min(maxLargura, (mesmaFila ? .92 : 1.84) * d);
+      }
+    }
+    if (AtorHistoria.largura(h) > maxLargura) h = math.max(84.0, maxLargura / .62);
     return h;
   }
 
@@ -189,6 +231,9 @@ class _Quadro {
 
   late double alturaAtor;
   late double larguraAtor;
+
+  /// No retrato, quanto a 2ª fila sobe (px); 0 fora do retrato.
+  double recuo = 0;
   final atores = <_AtorQuadro>[];
   final objetos = <_ObjetoQuadro>[];
   final efeitos = <EfeitoAtivo>[];
@@ -205,7 +250,25 @@ class _Quadro {
   double? topoFalante;
   ViaRemota? via;
 
-  double xDe(PosicaoPalco p) => size.width * (estreito ? PalcoHistoria.xsEstreito : PalcoHistoria.xsLargo)[p.index];
+  late final List<double> _xs = PalcoHistoria.xsDo(size);
+
+  double xDe(PosicaoPalco p) => size.width * _xs[p.index];
+
+  /// 0 = fila da frente, 1 = fila de trás (retrato), suave entre as posições (quem anda muda de fila aos poucos).
+  double profundidade(double x) {
+    if (recuo == 0) return 0;
+    final w = size.width;
+    if (x <= _xs.first * w || x >= _xs.last * w) return 0;
+    var i = 0;
+    while (i < _xs.length - 2 && x > _xs[i + 1] * w) {
+      i++;
+    }
+    final u = i + (x - _xs[i] * w) / ((_xs[i + 1] - _xs[i]) * w);
+    return (1 - math.cos(math.pi * u)) / 2;
+  }
+
+  /// Onde pisam os pés de quem está em [x]: a [chao], ou mais alto na 2ª fila do retrato.
+  double pe(double x) => chao - recuo * profundidade(x);
 
   static double _ease(double v) => Curves.easeInOut.transform(v.clamp(0.0, 1.0));
 
@@ -238,6 +301,11 @@ class _Quadro {
     ];
     alturaAtor = PalcoHistoria.alturaDosAtores(size, ocupados);
     larguraAtor = AtorHistoria.largura(alturaAtor);
+    if (PalcoHistoria.retrato(size)) {
+      final cen = depois.cenario;
+      final chaoVisivel = size.height * (FundoHistoriaPainter.linhaDoChao(cen) - FundoHistoriaPainter.horizonte(cen));
+      recuo = math.max(0.0, math.min(alturaAtor * PalcoHistoria.recuoFila, chaoVisivel * .6));
+    }
     _calcularAtores();
     _calcularObjetos();
     _calcularRemotos();
@@ -297,12 +365,14 @@ class _Quadro {
     final a = depois.atores[alvo];
     if (a != null) {
       if (!a.noPalco || a.pos == null) return null;
-      return Offset(xDe(a.pos!), chao - alturaAtor * .55);
+      final x = xDe(a.pos!);
+      return Offset(x, pe(x) - alturaAtor * .55);
     }
     for (final o in depois.objetos) {
       if (o.visivel && o.prop.name == alvo && o.pos != null) {
         final tam = PropPainter.tamanho(o.prop, alturaAtor);
-        return Offset(xDe(o.pos!), chao - tam.height * .5);
+        final x = xDe(o.pos!);
+        return Offset(x, pe(x) - tam.height * .5);
       }
     }
     return null;
@@ -414,9 +484,11 @@ class _Quadro {
         falante: falante,
       ));
     }
-    // por posição (esquerda → direita); quem fala vem na frente
+    // a fila de trás primeiro (retrato), depois por posição (esquerda → direita); quem fala vem na frente
     lista.sort((p, q) {
       if (p.falante != q.falante) return p.falante ? 1 : -1;
+      final fila = profundidade(q.x).compareTo(profundidade(p.x));
+      if (fila != 0) return fila;
       return p.x.compareTo(q.x);
     });
     atores.addAll(lista);
@@ -426,7 +498,7 @@ class _Quadro {
     if (f != null && !f.ehNarrador) {
       final at = lista.where((x) => x.quem == f.quem).firstOrNull;
       if (at != null) {
-        final topo = chao - alturaAtor * (at.pose.noCarro ? .78 : (at.pose.sentado ? .82 : 1.0));
+        final topo = pe(at.x) - alturaAtor * (at.pose.noCarro ? .78 : (at.pose.sentado ? .82 : 1.0));
         final boca = AtorHistoria.boca(alturaAtor);
         final bx = at.espelhado ? larguraAtor - boca.dx : boca.dx;
         ancoraBalao = Offset(at.x - larguraAtor / 2 + bx, topo + boca.dy * (at.pose.noCarro ? .78 : 1));
@@ -440,7 +512,7 @@ class _Quadro {
     final f = passo;
     final movs = List<MovimentoObjeto?>.of(f?.objetos ?? const []);
     final h = alturaAtor;
-    Offset base(PosicaoPalco p) => Offset(xDe(p), chao + h * .03);
+    Offset base(PosicaoPalco p) => Offset(xDe(p), pe(xDe(p)) + h * .03);
     double bordaMaisPerto(double x, Size tam) => x < size.width / 2 ? -tam.width : size.width + tam.width;
 
     MovimentoObjeto? pegaMov(PropHistoria prop, bool Function(MovimentoObjeto) ok) {
@@ -563,7 +635,7 @@ class _Quadro {
     final x = xDe(a.pos!);
     final mao = AtorHistoria.mao(alturaAtor);
     final mx = a.olhaParaEsquerda ? larguraAtor - mao.dx : mao.dx;
-    return Offset(x - larguraAtor / 2 + mx, chao - alturaAtor + mao.dy);
+    return Offset(x - larguraAtor / 2 + mx, pe(x) - alturaAtor + mao.dy);
   }
 
   /// Rostinhos no celular (remotos `celular`) e a âncora das falas remotas.
@@ -589,7 +661,7 @@ class _Quadro {
         final lado = cel.x > size.width * .6 ? -1.0 : 1.0;
         var left = cel.x + lado * (larguraAtor * .45 + i * (tamTela.width + 6)) - (lado < 0 ? tamTela.width : 0);
         left = left.clamp(4.0, math.max(4.0, size.width - tamTela.width - 4));
-        final top = (chao - alturaAtor * 1.02).clamp(4.0, size.height);
+        final top = (pe(cel.x) - alturaAtor * 1.02).clamp(4.0, size.height);
         final fala = f != null && f.quem == faces[i].quem;
         celulares.add((faces[i].quem, Rect.fromLTWH(left, top, tamTela.width, tamTela.height),
             fala ? _visemaDoFalante() : Visema.x));
@@ -612,10 +684,11 @@ class _Quadro {
     if (at != null) {
       final mao = AtorHistoria.mao(alturaAtor);
       final mx = at.espelhado ? larguraAtor - mao.dx : mao.dx;
-      final topo = chao - alturaAtor * (at.pose.noCarro ? .78 : 1.0);
+      final chaoAt = pe(at.x);
+      final topo = chaoAt - alturaAtor * (at.pose.noCarro ? .78 : 1.0);
       ancoraBalao = at.pose.noCarro
-          ? Offset(at.x, chao - alturaAtor * .45)
-          : Offset(at.x - larguraAtor / 2 + mx, chao - alturaAtor + mao.dy);
+          ? Offset(at.x, chaoAt - alturaAtor * .45)
+          : Offset(at.x - larguraAtor / 2 + mx, chaoAt - alturaAtor + mao.dy);
       topoFalante = topo;
     }
   }
@@ -626,7 +699,7 @@ class _Quadro {
     Offset? cabeca(String quem) {
       final at = atores.where((a) => a.quem == quem).firstOrNull;
       if (at == null) return null;
-      return Offset(at.x, chao - alturaAtor * (at.pose.noCarro ? .85 : 1.06));
+      return Offset(at.x, pe(at.x) - alturaAtor * (at.pose.noCarro ? .85 : 1.06));
     }
 
     final centro = Offset(size.width / 2, size.height * .28);
@@ -641,12 +714,12 @@ class _Quadro {
           for (final o in objetos) {
             if (perto == null || (o.centro.dx - x0).abs() < (perto.centro.dx - x0).abs()) perto = o;
           }
-          if (at != null && at.pose.noCarro) return Offset(at.x, chao - alturaAtor * .2);
+          if (at != null && at.pose.noCarro) return Offset(at.x, pe(at.x) - alturaAtor * .2);
           if (perto != null) return perto.centro - Offset(0, alturaAtor * .15);
-          return at == null ? Offset(size.width / 2, chao - alturaAtor * .3) : Offset(at.x, chao - alturaAtor * .3);
+          return at == null ? Offset(size.width / 2, chao - alturaAtor * .3) : Offset(at.x, pe(at.x) - alturaAtor * .3);
         case EfeitoHistoria.estalo:
           final at = atores.where((a) => a.quem == quem).firstOrNull;
-          return at == null ? centro : Offset(at.x, chao - alturaAtor * .5);
+          return at == null ? centro : Offset(at.x, pe(at.x) - alturaAtor * .5);
         default:
           return cabeca(quem) ?? centro;
       }
@@ -671,7 +744,7 @@ class _Quadro {
   Offset? _focoDoFalante(FalaHistoria? f, {double altura = .6}) {
     if (f == null || f.ehNarrador) return null;
     final at = atores.where((a) => a.quem == f.quem).firstOrNull;
-    if (at != null) return Offset(at.x, chao - alturaAtor * altura);
+    if (at != null) return Offset(at.x, pe(at.x) - alturaAtor * altura);
     if (ancoraBalao != null && f == passo) return ancoraBalao;
     return null;
   }
@@ -694,7 +767,7 @@ class _Quadro {
         if (p == null || alvo == null) return _Enquadro(1, centro);
         final dx = (p.dx - alvo.dx).abs() + larguraAtor * 1.4;
         final s = (w * .9 / dx).clamp(1.0, 1.4);
-        return _Enquadro(s, Offset((p.dx + alvo.dx) / 2, chao - alturaAtor * .6));
+        return _Enquadro(s, Offset((p.dx + alvo.dx) / 2, (pe(p.dx) + pe(alvo.dx)) / 2 - alturaAtor * .6));
       case CameraHistoria.panoramica:
         if (reduzir) return _Enquadro(1, centro);
         final k = (tf / 7).clamp(0.0, 1.0);
@@ -791,10 +864,15 @@ class _Quadro {
                 child: _fundo(antes.cenario, antes.hora, comClimaTraseiro: false),
               ),
             ),
-          // sombras + objetos
-          for (final o in objetos) _objeto(o),
-          // atores
-          for (final a in atores) ..._ator(a, h),
+          // sombras + objetos, depois os atores; no retrato, a fila de trás (objetos e atores) vem antes da da frente
+          for (final o in objetos)
+            if (_objetoAtras(o)) _objeto(o),
+          for (final a in atores)
+            if (_atorAtras(a)) ..._ator(a, h),
+          for (final o in objetos)
+            if (!_objetoAtras(o)) _objeto(o),
+          for (final a in atores)
+            if (!_atorAtras(a)) ..._ator(a, h),
           // rostinhos no celular
           for (final c in celulares) _celular(c),
           Positioned.fill(
@@ -821,6 +899,12 @@ class _Quadro {
     );
   }
 
+  /// Na fila de trás do retrato (o que passa pelo chão da frente, não).
+  bool _objetoAtras(_ObjetoQuadro o) => recuo > 0 && o.centro.dy < chao && profundidade(o.centro.dx) >= .5;
+
+  /// Na fila de trás do retrato; quem fala fica sempre na frente.
+  bool _atorAtras(_AtorQuadro a) => recuo > 0 && !a.falante && profundidade(a.x) >= .5;
+
   Widget _objeto(_ObjetoQuadro o) {
     final tam = PropPainter.tamanho(o.prop, alturaAtor);
     if (tam.isEmpty) return const SizedBox.shrink();
@@ -843,6 +927,7 @@ class _Quadro {
   List<Widget> _ator(_AtorQuadro a, double h) {
     final w = larguraAtor;
     final sombraW = a.pose.noCarro ? w * 1.5 : w * .8;
+    final chao = pe(a.x);
     return [
       Positioned(
         left: a.x - sombraW / 2,

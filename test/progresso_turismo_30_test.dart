@@ -129,6 +129,14 @@ void main() {
       expect(ids.toSet(), hasLength(ids.length), reason: 'ids únicos');
     });
 
+    test('o 🏆 campeao tem o nome do curso: Dart Turismo no Dart/C#, English Turismo no inglês', () {
+      String nome(bool ingles) => trofeusDoTurismo(ingles: ingles).firstWhere((t) => t.id == 'campeao').nome;
+      expect(nome(false), 'Campeão Dart Turismo');
+      expect(nome(true), 'Campeão do English Turismo');
+      expect(trofeusDoTurismo(ingles: true).firstWhere((t) => t.id == 'campeao').como, contains('10 pistas clássicas'));
+      expect(trofeusDoTurismo(ingles: true).map((t) => t.nome), isNot(contains('Campeão Dart Turismo')));
+    });
+
     test('campeão/dourado só com as 10 clássicas (medalha nas extras não adianta)', () {
       final soExtras = EstadoCampeonato(totalPistas: 30, medalhas: {for (var n = 11; n <= 30; n++) n: 3});
       final g = _ganhos(soExtras, ingles: true);

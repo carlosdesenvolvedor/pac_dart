@@ -120,8 +120,14 @@ final trofeusExtrasIngles = <TrofeuGt>[
       (s, c) => c.historiaCompleta),
 ];
 
-/// Os troféus do curso atual: os 12 de sempre (+ os 3 do inglês).
-List<TrofeuGt> trofeusDoTurismo({required bool ingles}) => ingles ? [...trofeusGt, ...trofeusExtrasIngles] : trofeusGt;
+/// 🏆 O `campeao` com o nome do English Turismo (mesmo id e mesma condição: as 10 clássicas).
+final trofeuCampeaoIngles = TrofeuGt('campeao', '🏆', 'Campeão do English Turismo', 'medalha nas 10 pistas clássicas',
+    (s, c) => c.medalhasClassicas >= pistasClassicas);
+
+/// Os troféus do curso atual: os 12 de sempre (+ os 3 do inglês, com o `campeao` no nome do English Turismo).
+List<TrofeuGt> trofeusDoTurismo({required bool ingles}) => ingles
+    ? [for (final t in trofeusGt) t.id == 'campeao' ? trofeuCampeaoIngles : t, ...trofeusExtrasIngles]
+    : trofeusGt;
 
 class EstadoCampeonato {
   /// Maior pista liberada (1 = só a primeira).

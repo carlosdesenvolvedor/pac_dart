@@ -12,6 +12,7 @@ import 'package:pac_dart/features/arcade/domain/historia_turismo.dart';
 import 'package:pac_dart/features/arcade/domain/progresso_historia.dart';
 import 'package:pac_dart/features/arcade/presentation/historia/ator_historia.dart';
 import 'package:pac_dart/features/arcade/presentation/historia/balao_fala.dart';
+import 'package:pac_dart/features/arcade/presentation/historia/creditos_historia.dart';
 import 'package:pac_dart/features/arcade/presentation/historia/elenco_turismo.dart';
 import 'package:pac_dart/features/arcade/presentation/historia/player_historia.dart';
 import 'package:pac_dart/features/arcade/presentation/historia/props_historia.dart';
@@ -19,6 +20,7 @@ import 'package:pac_dart/features/arcade/presentation/historia/roteiro_historia.
 import 'package:pac_dart/features/ingles/data/voz_ingles.dart';
 import 'package:pac_dart/features/ingles/domain/boca.dart';
 import 'package:pac_dart/features/ingles/domain/saida_audio.dart';
+import 'package:pac_dart/features/ingles/presentation/widgets/elenco_ingles.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Voz de teste (o mesmo jeito do `VozFake` de `ingles_cartoes_ui_test.dart`): guarda o que o player
@@ -433,6 +435,28 @@ void main() {
     await avancar(t, .5);
     expect(r.fim, FimDoPlayer.assistido);
     expect(await vistos(), containsAll(['f1', 'c1']));
+  });
+
+  testWidgets('créditos: os rostos do elenco ficam numa coluna só (mesmo x), centrada como bloco', (t) async {
+    for (final (s, escala) in [(const Size(1280, 720), 1.0), (const Size(360, 640), 1.6)]) {
+      tela(t, s);
+      await t.pumpWidget(MaterialApp(
+        home: MediaQuery(
+          data: MediaQueryData(size: s, textScaler: TextScaler.linear(escala)),
+          child: Material(child: CreditosHistoria(onFim: () {}, reduzir: true)),
+        ),
+      ));
+      await t.pump();
+      expect(t.takeException(), isNull);
+      final coluna = find.byKey(const Key('historia-creditos-elenco'));
+      final rostos = find.descendant(of: coluna, matching: find.byType(RostoPersonagem));
+      final xs = {for (var i = 0; i < rostos.evaluate().length; i++) t.getTopLeft(rostos.at(i)).dx};
+      expect(rostos, findsWidgets);
+      expect(xs, hasLength(1), reason: 'sem zigue-zague em ${s.width}');
+      final r = t.getRect(coluna);
+      expect((r.center.dx - s.width / 2).abs(), lessThan(1), reason: 'o bloco fica no meio');
+      await t.pumpWidget(Container());
+    }
   });
 
   testWidgets('lip-sync: o falante segue a boca da voz; quem escuta fica com a boca parada', (t) async {
