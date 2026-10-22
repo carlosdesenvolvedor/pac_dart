@@ -2636,3 +2636,61 @@ pórticos (1 carro + 1 ficha cada; fichas pegas ao passar, 1 batida a cada 3 pó
 - **Validação:** `flutter analyze lib test` sem avisos; `assistir_*`, `ingles_assistir_*` e `ingles_tocando_ui_test`: 218/218; `historia_*`, `turismo_historia_*`, `historias_licoes_*` e `ingles_historias_licoes_conteudo` (sem edição): 434/434. Nenhum `test/_*`.
 - **Fica como estava:** no ⛶ 844×390 uma frase bem longa (150+ letras, fora do curso) ainda cobre cabeças com o PT (no ⛶ o PT é o único lugar dele); em 1280×720 o balão com PT cobre a borda de cima das molduras (de propósito); 2560×1080 com o palco de 720 px; avental/boné (arte nova).
 - **Conferir no aparelho:** celular deitado com texto ampliado na chamada (a letra do compacto a 12 px ainda lê bem?); o palco parando quando algo acima dele cresce (ex.: girar o celular com a página rolada) e voltando; a fluidez do "Tocando agora" com o desenho (agora sem repintar a página a cada quadro).
+
+## ⚡ 22/out/2026: 2ª passada de desempenho do Arcade — Chuva, Rali e o Pac (branch `claude/desempenho-2`; sem deploy)
+
+Pedido do dono: "ainda sente travadas, mesmo no Leve". Não repete a rodada 2 (20/out) nem a rodada 19 (Turismo 3D). **Só no curso de
+inglês** (`Linguagem.atual == Linguagem.ingles`, lido uma vez por tela/painter); no Dart e no C# o caminho é o de antes. Visual igual.
+- **Alcance:** no inglês o hub só mostra os jogos de DIGITAÇÃO (Turismo, Chuva, Rali). Corrida do Código, Gol de Dart e Caça-Bug só
+  existem no Dart/C#: qualquer mudança "só no inglês" neles seria código morto, então **não foram mexidos** (ver suspeitos).
+- **Medida** (testes de widget, contadores debug: `debugOnRebuildDirtyWidget` = builds, `debugOnProfilePaint` = paints; 120 quadros a
+  16 ms, Chuva 900×1000 semente 5 digitando uma letra a cada 8 quadros; Rali no Fácil sem digitar):
+
+  | 120 quadros | builds | cabeçalho | paints | gradientes do Pac | Paint dos tiros |
+  |---|---|---|---|---|---|
+  | Chuva Dart (= antes) | 18.973 | 129 | 18.724 | 120 | 388 |
+  | Chuva inglês antes | 22.094 | 129 | 21.540 | 120 | 388 |
+  | **Chuva inglês agora** | **4.427** | **9** | **5.589** | **0** | **100** |
+  | Rali inglês antes → agora | 1.019 → 1.019 | 1 | 5.816 → **3.416** | 120 → **0** | — |
+
+- **Achado nº 1 — a Chuva regravava a TELA INTEIRA a cada quadro.** O `setState` do Ticker refazia a página; o `CabecalhoJogo` tem
+  `LayoutBuilder`, então era medido e repintado de novo (com os botões Material); e o relayout da arena (as palavras andando) subia até
+  a raiz da rota (o `RepaintBoundary` da arena não era fronteira de layout: o `Expanded` da coluna dá largura frouxa). Agora
+  (`chuva_page.dart`): o quadro só avisa um `ValueNotifier` (`_quadro`) que reconstrói a arena; o `setState` da página fica para
+  quando o placar visível muda (`_placarVisivel`: vidas, nível, combo, pontos, erros, flash do erro). A arena ganhou `SizedBox.expand`
+  (a mesma medida de antes — ela já ocupava todo o espaço; teste confere em 3 telas) e o layout de cada quadro para nela. O
+  `PalcoFase` é o mesmo widget enquanto o nível não muda. Por quadro: ~184 → ~37 builds, ~180 → ~46 paints; a rota só é regravada
+  nos quadros com tecla/placar novo.
+- **Achado nº 2 — o `LayoutBuilder` da pista do Rali.** No Flutter 3.41 o `LayoutBuilder` tem escopo de build próprio: o Pac
+  mastigando e a barra de carga da CPU (lá dentro, animando a cada quadro) marcavam o layout da pista, e o relayout mandava
+  regravar a cena toda (sombras com blur, crachás, corredores). Agora (`pista3d.dart`) a cena fica num `RepaintBoundary` dentro do
+  `LayoutBuilder`: ~48 → ~28 paints por quadro. (A Corrida do Código usa a mesma pista, mas só existe no Dart/C#.)
+- **Pac (`avatares.dart`):** cada quadro da mastigada criava um `RadialGradient`/shader novo (no CanvasKit é um objeto nativo novo
+  por quadro, com finalizador) + 6 `Paint`. Agora as tintas que não dependem da boca (`_TintasPac`) ficam guardadas por tamanho/cor
+  (até 8). Vale em todo Pac do curso de inglês (Chuva, Rali, hub, cenas).
+- **Tiros da Chuva:** brilho borrado, núcleo e reflexo (`_TintasTiro`) guardados; o gradiente da cauda segue por tiro (depende da
+  posição). `shouldRepaint` deixou de ser sempre `true` (compara os tiros).
+- **Pixels idênticos (byte a byte, PNG):** Pac 46/64 px, a pista nas fases 3 e 6 e 8 instantâneos da Chuva inteira (com tiros, mira e
+  digitação), nos dois cursos: **main = branch** (conferido com `git stash` num teste temporário, apagado). No teste permanente:
+  inglês = Dart para Pac e pista; tintas guardadas = novas para os tiros.
+- **Testes:** novo `test/arcade_desempenho_jogos_test.dart` (6): Chuva no inglês (cabeçalho só com placar novo, rota parada, < 60
+  builds e < 70 paints por quadro, 0 gradientes do Pac); Chuva no Dart com o caminho de antes (cabeçalho e rota em todo quadro, 1
+  gradiente por quadro, 4 Paint por tiro); vidas e fim de jogo no inglês; a arena com a mesma medida; Rali (0 gradientes no inglês,
+  < 32 paints/quadro; Dart como antes); pixels. `arcade_*` + `turismo_*` + `chuva_*` + `rali_*` + `engenheiro_gt_test` +
+  `progresso_turismo_30` (29 arquivos): **339/339**; `ingles_palavras_app`, `treino_dia_seams_ingles`, `treino_dia_ui`: 50/50.
+  `flutter analyze lib test` sem avisos. Nenhum teste antigo editado.
+- **Suspeito, não mexido (motivo):**
+  - O que mais pesa na GPU continua: no CanvasKit cada quadro rasteriza a cena inteira, e o Pac mastiga sempre — então todo blur
+    (sombra dos chips das palavras `BoxShadow` 10–12, `Sombra` do Pac/corredores, brilho dos tiros, brilho do horizonte do palco,
+    adereços poste/cristal da pista) é refeito a cada quadro. Trocar blur por imagem pronta muda o desenho: decisão do dono.
+  - Gradiente da cauda de cada tiro por quadro (posição muda): desenhar girado com shader fixo mudaria o antialias.
+  - Chuva: a arena ainda reconstrói as palavras a cada quadro (Positioned muda); um `RepaintBoundary` por palavra pouparia regravar
+    cada chip, mas cria uma camada por palavra e o ganho no CanvasKit é incerto.
+  - Rali: `setState` da página inteira a cada tecla e 1×/s (PPM); `ChamaTurbo` (1,1 s por palavra perfeita) e a carga da CPU são
+    `AnimatedBuilder` por quadro (baratos e já em camada).
+  - Corrida do Código (barra do TURBO por quadro fora de `RepaintBoundary` → repinta a página durante a janela do turbo), Gol de Dart
+    e Caça-Bug: só Dart/C#, fora da regra "só o inglês muda".
+  - `CabecalhoJogo` com `LayoutBuilder` em todos os jogos: todo `setState` da página re-mede o cabeçalho (no Rali, a cada tecla).
+- **Conferir no aparelho (curso de INGLÊS, qualidade Leve):** uma Chuva longa (até o nível 3+) digitando rápido — fluidez, placar,
+  vidas, aviso de nível/combo, tremor ao perder vida, fim de jogo; o Rali com várias palavras perfeitas (chama, carga da CPU,
+  corredores andando). No Dart/C# nada deve mudar.
