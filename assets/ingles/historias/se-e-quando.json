@@ -85,7 +85,7 @@
             { "quem": "ana", "pos": "centroDireita", "emocao": "cansado" }
           ],
           "objetos": [
-            { "prop": "mala", "pos": "esquerda" },
+            { "prop": "caixa", "pos": "esquerda" },
             { "prop": "sacola", "pos": "direita" }
           ],
           "passos": [
@@ -96,8 +96,8 @@
             { "frase": "f-abd6fb", "acao": "aponta", "alvo": "voce", "emocao": "feliz" },
             { "frase": "f-3cfc7a", "acao": "mostra", "emocao": "feliz",
               "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
-            { "mudo": true, "quem": "voce", "segura": "mala", "emocao": "determinado",
-              "objetos": [ { "prop": "mala", "acao": "some" } ],
+            { "mudo": true, "quem": "voce", "segura": "caixa", "emocao": "determinado",
+              "objetos": [ { "prop": "caixa", "acao": "some" } ],
               "reacoes": [ { "quem": "ana", "acao": "palmas", "emocao": "feliz" } ] },
             { "frase": "f-7c6258", "acao": "aponta", "alvo": "ana", "emocao": "feliz" },
             { "frase": "f-bdc444", "acao": "acena", "emocao": "radiante", "camera": "dupla", "alvo": "voce" },

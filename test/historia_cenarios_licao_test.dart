@@ -81,7 +81,8 @@ void main() {
 
   group('cenários das lições', () {
     test('são os 5 do fim do enum, todos interiores, com as 4 horas e só chuva/neve (pela janela)', () {
-      expect(CenarioHistoria.values.sublist(CenarioHistoria.values.length - 5), _novos);
+      // a 2ª leva (copa, recepcaoHotel, salaDeEstar) entrou depois destes 5: confere a fatia 25..30
+      expect(CenarioHistoria.values.sublist(25, 30), _novos);
       for (final c in _novos) {
         expect(interioresHistoria, contains(c), reason: c.name);
         expect(horasPermitidas(c), HoraHistoria.values.toSet(), reason: c.name);
@@ -275,7 +276,8 @@ void main() {
 
   group('props das lições', () {
     test('os 4 são os do fim do enum e têm tamanho coerente (cabem na mão: ≤ .3 da altura)', () {
-      expect(PropHistoria.values.sublist(PropHistoria.values.length - 4), _propsNovos);
+      // a 2ª leva de props entrou depois destes 4: confere a fatia 24..28
+      expect(PropHistoria.values.sublist(24, 28), _propsNovos);
       for (final p in _propsNovos) {
         final s = PropPainter.tamanho(p, 200);
         expect(s.width, greaterThan(10), reason: p.name);

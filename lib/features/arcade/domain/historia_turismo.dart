@@ -40,7 +40,7 @@ enum AcaoAtor { parado, acena, pula, comemora, aponta, entra, sai, anda, corre, 
 
 enum CenarioHistoria { aeroporto, garagem, boxes, hotel, cafe, clinica, plataforma, podio, campina, deserto, cidade,
   neve, vulcao, espaco, praia, ponte, canion, oasis, floresta, vale, lago, lua, marte, estacao, autodromo,
-  videochamada, escritorio, casa, restaurante, loja }
+  videochamada, escritorio, casa, restaurante, loja, copa, recepcaoHotel, salaDeEstar }
 
 enum HoraHistoria { amanhecer, dia, tarde, noite }
 
@@ -51,7 +51,7 @@ enum EfeitoHistoria { confete, fogos, relampago, coracoes, brilho, fumaca, notas
 
 enum PropHistoria { nada, carro, carroRival, trofeu, rodaDeOuro, mapa, celular, bandeira, capacete, chave, mala,
   passaporte, cafe, medalha, guardaChuva, microfone, foguete, presente, livro, pneu, cachecol, garrafa, carta, radio,
-  notebook, prato, sacola, documento }
+  notebook, prato, sacola, documento, telao, quadroBranco, caixa, bolo, caderno, casaco, taca }
 
 enum AcaoObjeto { aparece, some, entra, sai, passa, voa, roda, treme }
 
@@ -63,7 +63,8 @@ const narrador = 'narrador';
 
 const interioresHistoria = {CenarioHistoria.aeroporto, CenarioHistoria.garagem, CenarioHistoria.hotel,
   CenarioHistoria.cafe, CenarioHistoria.clinica, CenarioHistoria.estacao, CenarioHistoria.videochamada,
-  CenarioHistoria.escritorio, CenarioHistoria.casa, CenarioHistoria.restaurante, CenarioHistoria.loja};
+  CenarioHistoria.escritorio, CenarioHistoria.casa, CenarioHistoria.restaurante, CenarioHistoria.loja,
+  CenarioHistoria.copa, CenarioHistoria.recepcaoHotel, CenarioHistoria.salaDeEstar};
 const espaciaisHistoria = {CenarioHistoria.espaco, CenarioHistoria.lua, CenarioHistoria.estacao};
 
 /// O mundo de cada pista (regra V-mundo: a 1ª ou a última fala da abertura acontece nele).

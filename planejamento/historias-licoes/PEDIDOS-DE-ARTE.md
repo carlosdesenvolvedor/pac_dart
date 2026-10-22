@@ -2,6 +2,8 @@
 
 Cada linha: lição, o que faltou, o que foi usado no lugar. Viram cenários/props novos em fundo_historia.dart / props_historia.dart (plano §12.2); depois, trocar o substituto na história.
 
+**Atendidos (2ª leva de arte, 22/out/2026):** agrupados por contagem (lições que pedem cada coisa, aprox.): telão / tela grande / tela compartilhada / gráfico ≈ 30 → prop `telao`; copa do escritório / máquina de café ≈ 14 → cenário `copa`; recepção do hotel / saguão ≈ 13 → cenário `recepcaoHotel`; quadro branco / post-its / kanban ≈ 13 → prop `quadroBranco`; sofá + TV da sala ≈ 12 → cenário `salaDeEstar`; caixa de papelão / mudança ≈ 12 → prop `caixa`; bolo / torta ≈ 11 → prop `bolo`; caderno / bloquinho ≈ 10 → prop `caderno`; casaco / jaqueta ≈ 9 → prop `casaco`; taça / copo do brinde ≈ 8 → prop `taca`. Os substitutos foram trocados nas histórias (100 trocas em 58 trilhas; só cenário/prop/segura/alvo do objeto). Ficaram de fora (contagem menor): carro por dentro / táxi / ônibus, foto / porta-retrato, cartão / crachá, cadeira, cozinha / geladeira, bar, quintal com churrasqueira, avião, museu, estação, relógio, mochila, gato. Na `videochamada` o notebook-como-quadro continuou (o quadro virtual da chamada fica para outra leva).
+
 ## historia_licoes
 # Pedidos de arte: numeros-horas-soletrar (lote piloto)
 

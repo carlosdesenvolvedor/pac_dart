@@ -9,7 +9,7 @@ enum CamadaFundo { ceu, distante, chao }
 
 /// 🖼️ O fundo pintado de um cenário da história, com a paleta da hora.
 ///
-/// Cada um dos 30 cenários é **uma** pintura em 3 camadas (não 100 quadros); a hora do dia entra como
+/// Cada um dos 33 cenários é **uma** pintura em 3 camadas (não 100 quadros); a hora do dia entra como
 /// paleta: o gradiente do céu, o astro (sol baixo no amanhecer e na tarde, alto no dia; lua e estrelas à
 /// noite), uma "luz" que tinge tudo o que não emite luz e as luzes que acendem à tarde/noite (janelas,
 /// postes, lanternas, holofotes, abajures). Nos interiores a hora muda a janela e a luz geral.
@@ -44,6 +44,9 @@ class FundoHistoriaPainter extends CustomPainter {
         CenarioHistoria.casa ||
         CenarioHistoria.restaurante ||
         CenarioHistoria.loja ||
+        CenarioHistoria.copa ||
+        CenarioHistoria.recepcaoHotel ||
+        CenarioHistoria.salaDeEstar ||
         CenarioHistoria.aeroporto ||
         CenarioHistoria.garagem ||
         CenarioHistoria.cafe ||
@@ -64,7 +67,10 @@ class FundoHistoriaPainter extends CustomPainter {
         CenarioHistoria.escritorio ||
         CenarioHistoria.casa ||
         CenarioHistoria.restaurante ||
-        CenarioHistoria.loja =>
+        CenarioHistoria.loja ||
+        CenarioHistoria.copa ||
+        CenarioHistoria.recepcaoHotel ||
+        CenarioHistoria.salaDeEstar =>
           .64,
         CenarioHistoria.boxes || CenarioHistoria.praia || CenarioHistoria.vale || CenarioHistoria.autodromo => .58,
         CenarioHistoria.plataforma ||
@@ -181,6 +187,12 @@ class FundoHistoriaPainter extends CustomPainter {
         _dRestaurante(p);
       case CenarioHistoria.loja:
         _dLoja(p);
+      case CenarioHistoria.copa:
+        _dCopa(p);
+      case CenarioHistoria.recepcaoHotel:
+        _dRecepcaoHotel(p);
+      case CenarioHistoria.salaDeEstar:
+        _dSalaDeEstar(p);
     }
   }
 
@@ -246,6 +258,12 @@ class FundoHistoriaPainter extends CustomPainter {
         _cRestaurante(p);
       case CenarioHistoria.loja:
         _cLoja(p);
+      case CenarioHistoria.copa:
+        _cCopa(p);
+      case CenarioHistoria.recepcaoHotel:
+        _cRecepcaoHotel(p);
+      case CenarioHistoria.salaDeEstar:
+        _cSalaDeEstar(p);
     }
   }
 
@@ -5164,4 +5182,1067 @@ void _bancaDeFrutas(_Pincel p, double x, double base, int semente) {
     p.c.drawLine(Offset(caixa.left, caixa.center.dy), Offset(caixa.right, caixa.center.dy), p.traco(.3));
   }
   _etiqueta(p, Offset(x, base - 3.4 * u), r'$' '${1 + semente % 3}', 1.6 * u);
+}
+
+// ─────────────────────────── 2ª leva das lições (pedidos de arte dos lotes) ───────────────────────────
+//
+// Como a `casa` e a `loja`: cada cenário é UM cômodo em qualquer largura. As peças principais (o balcão, o
+// telão, o sofá…) aparecem uma vez só; o que sobra de parede numa tela larga vira janela, quadro ou planta
+// ([_vaosDaParede]), nunca outra cópia do cômodo.
+
+/// Os vãos de parede (centro, meia largura) entre as peças [ocupadas] (centro, meia largura), dando a volta na
+/// largura (a pintura é periódica): só os de meia largura ≥ [minimo].
+List<(double, double)> _vaosDaParede(_Pincel p, List<(double, double)> ocupadas, {double minimo = 0}) {
+  if (ocupadas.isEmpty) return [(p.w / 2, p.w / 2)];
+  final ord = [...ocupadas]..sort((a, b) => (a.$1 - a.$2).compareTo(b.$1 - b.$2));
+  final vaos = <(double, double)>[];
+  for (var i = 0; i < ord.length; i++) {
+    final fim = ord[i].$1 + ord[i].$2;
+    final prox = i + 1 < ord.length ? ord[i + 1].$1 - ord[i + 1].$2 : ord[0].$1 - ord[0].$2 + p.w;
+    // o vão que passa pela borda vira dois (um de cada lado): nada fica cortado ao meio na tela parada
+    for (final (a, b) in fim < p.w && prox > p.w ? [(fim, p.w), (p.w, prox)] : [(fim, prox)]) {
+      final meia = (b - a) / 2;
+      if (meia >= minimo && meia > 0) vaos.add(((a + meia) % p.w, meia));
+    }
+  }
+  return vaos;
+}
+
+/// Quadro de paisagem com moldura dourada (enfeite de parede de hotel e de sala).
+void _quadroDePaisagem(_Pincel p, Rect r, int semente) {
+  final u = p.u;
+  p.ret(r.inflate(.9 * u), const Color(0xFFD9A441), contorno: .7, raio: .2 * u);
+  final dentro = r;
+  p.c.save();
+  p.c.clipRect(dentro);
+  const ceus = [Color(0xFF9FD3F5), Color(0xFFFFC9A0), Color(0xFFB9C9EC)];
+  p.c.drawRect(dentro, p.tinta(ceus[semente % 3]));
+  p.c.drawCircle(Offset(dentro.left + dentro.width * (.25 + .5 * _ruido(semente + 3)), dentro.top + dentro.height * .3),
+      dentro.height * .12, p.tinta(const Color(0xFFFFE08A)));
+  final morro = Path()
+    ..moveTo(dentro.left, dentro.bottom)
+    ..lineTo(dentro.left, dentro.top + dentro.height * .62)
+    ..quadraticBezierTo(dentro.left + dentro.width * .3, dentro.top + dentro.height * .38, dentro.left + dentro.width * .6,
+        dentro.top + dentro.height * .6)
+    ..quadraticBezierTo(dentro.left + dentro.width * .8, dentro.top + dentro.height * .72, dentro.right, dentro.top + dentro.height * .55)
+    ..lineTo(dentro.right, dentro.bottom)
+    ..close();
+  p.c.drawPath(morro, p.tinta(semente.isEven ? const Color(0xFF6DB36A) : const Color(0xFF4F9A8A)));
+  p.c.restore();
+  p.c.drawRect(dentro, p.traco(.35));
+}
+
+// ─────────────────────────── copa (a copa do escritório: café, micro-ondas e a vista de Chicago) ───────────────────────────
+
+/// A planta da copa: o balcão (geladeira, cafeteira, pia, micro-ondas) à esquerda, uma vez só; a janela grande
+/// com a mesa alta na frente; na tela larga, a parede de vidro da sala de reunião, o mural e o bebedouro.
+typedef _PlantaCopa = ({
+  double kl, // começo do balcão
+  double kw, // largura do balcão (com a geladeira)
+  double xj, // meio da janela (e da mesa alta)
+  double jMeia,
+  double? vidro, // a sala de reunião de vidro
+  double? mural,
+  double? galao, // o bebedouro
+});
+
+_PlantaCopa _plantaDaCopa(_Pincel p) {
+  final u = p.u, w = p.w;
+  if (w < 70 * u) {
+    final kw = math.min(40 * u, w * .55);
+    final kl = w * .03;
+    final livre = w - kl - kw;
+    return (
+      kl: kl,
+      kw: kw,
+      xj: kl + kw + livre / 2,
+      jMeia: math.max(3 * u, math.min(9 * u, livre / 2 - 2.5 * u)),
+      vidro: null,
+      mural: null,
+      galao: null,
+    );
+  }
+  final kl = math.min(w * .03, 4 * u);
+  final kw = math.min(46 * u, w * .4);
+  final vidro = w >= 125 * u ? w - 19 * u : null;
+  final livreL = kl + kw + 3 * u, livreR = (vidro != null ? vidro - 16 * u : w - 2 * u) - 2 * u;
+  final livre = livreR - livreL;
+  final jMeia = (livre * .32).clamp(9 * u, 34 * u).toDouble();
+  final xj = livreL + livre * .5;
+  final gapL = xj - jMeia - 1.5 * u - livreL, gapR = livreR - (xj + jMeia + 1.5 * u);
+  return (
+    kl: kl,
+    kw: kw,
+    xj: xj,
+    jMeia: jMeia,
+    vidro: vidro,
+    mural: gapL >= 12 * u ? livreL + gapL / 2 : null,
+    galao: gapR >= 8 * u ? livreR - gapR / 2 : null,
+  );
+}
+
+/// A vista pelas janelas da copa: os prédios de Chicago (as luzes acendem à noite).
+void _vistaDaCopa(_Pincel p, double fundoFora) {
+  final u = p.u;
+  const cores = [Color(0xFF8796B0), Color(0xFF9EA9BF), Color(0xFF75859F), Color(0xFFA19CB5)];
+  final m = p.vezes(8 * u);
+  for (var i = 0; i < m; i++) {
+    final passo = p.w / m;
+    final larg = passo * (.7 + .26 * _ruido(i * 7 + 811));
+    final alt = (10 + 26 * _ruido(i * 7 + 812)) * u;
+    _predio(p, Rect.fromLTWH(i * passo + (passo - larg) / 2, fundoFora - alt, larg, alt + 1 * u), cores[i % 4],
+        semente: i + 90);
+  }
+}
+
+/// O balcão da copa, de [l] até [l] + [larg]: geladeira de inox, azulejo de metrô, armários, a cafeteira
+/// (com a luzinha), a pia, as canecas penduradas e o micro-ondas com o relógio da hora.
+void _balcaoDaCopa(_Pincel p, double l, double larg) {
+  final u = p.u;
+  final r = l + larg;
+  final fw = math.min(9 * u, larg * .24);
+  final bancada = p.hz - 10 * u;
+  // azulejo de metrô atrás da bancada
+  final azulejo = Rect.fromLTRB(l + fw, 23 * u, r, bancada);
+  p.c.drawRect(azulejo, p.tinta(const Color(0xFFF4F6F7)));
+  final rejunte = Paint()
+    ..color = p.luz(const Color(0xFFCBD3D8))
+    ..strokeWidth = math.max(.6, .15 * u);
+  var linha = 0;
+  for (var y = azulejo.top; y < azulejo.bottom; y += 1.6 * u, linha++) {
+    p.c.drawLine(Offset(azulejo.left, y), Offset(azulejo.right, y), rejunte);
+    for (var x = azulejo.left + (linha.isOdd ? 1.8 * u : 0); x < azulejo.right; x += 3.6 * u) {
+      p.c.drawLine(Offset(x, y), Offset(x, math.min(y + 1.6 * u, azulejo.bottom)), rejunte);
+    }
+  }
+  // armários de cima (brancos, puxadores de madeira)
+  final arm = Rect.fromLTRB(l + fw + .6 * u, 9 * u, r, 21.5 * u);
+  p.ret(arm, const Color(0xFFE9EDF0), contorno: .8, raio: .3 * u);
+  final portas = math.max(1, (arm.width / (7 * u)).round());
+  for (var i = 0; i < portas; i++) {
+    final a = arm.left + arm.width * i / portas, b = arm.left + arm.width * (i + 1) / portas;
+    if (i > 0) p.c.drawLine(Offset(a, arm.top), Offset(a, arm.bottom), p.traco(.4));
+    p.ret(Rect.fromLTRB((a + b) / 2 - 1.2 * u, arm.bottom - 1.6 * u, (a + b) / 2 + 1.2 * u, arm.bottom - 1 * u),
+        const Color(0xFFB07C50), contorno: .25, raio: .2 * u);
+  }
+  // canecas penduradas embaixo do armário
+  final nCanecas = math.max(2, ((r - l - fw) / (4.2 * u)).floor() ~/ 2);
+  for (var i = 0; i < nCanecas; i++) {
+    final x = l + fw + 2.4 * u + i * 3.4 * u;
+    if (x > r - 14 * u) break;
+    p.c.drawLine(Offset(x + .8 * u, arm.bottom), Offset(x + .8 * u, arm.bottom + 1.2 * u), p.traco(.25));
+    p.ret(Rect.fromLTWH(x, arm.bottom + 1.2 * u, 1.7 * u, 2 * u), _publico[(i * 2 + 1) % 6], contorno: .4, raio: .3 * u);
+  }
+  // a cafeteira (a máquina de café do escritório)
+  final xc = l + fw + math.max(5 * u, (r - l - fw) * .26);
+  final maquina = Rect.fromLTRB(xc - 3.6 * u, bancada - 10 * u, xc + 3.6 * u, bancada);
+  p.ret(maquina, const Color(0xFF2E3238), contorno: .8, raio: .6 * u);
+  p.ret(Rect.fromLTRB(maquina.left, maquina.top, maquina.right, maquina.top + 2 * u), const Color(0xFFB8C0CA), contorno: .6,
+      raio: .6 * u);
+  p.ret(Rect.fromLTRB(xc - 2.4 * u, bancada - 5.6 * u, xc + 2.4 * u, bancada - .4 * u), const Color(0xFF17191D), contorno: .4);
+  p.ret(Rect.fromLTRB(xc - 1.8 * u, bancada - 7 * u, xc + 1.8 * u, bancada - 5.6 * u), const Color(0xFF8D99A8), contorno: .4);
+  p.ret(Rect.fromLTRB(xc - 1 * u, bancada - 2.6 * u, xc + 1 * u, bancada - .4 * u), _branco, contorno: .4, raio: .2 * u);
+  final pisca = (p.t * .8) % 2 < 1.4;
+  p.circ(Offset(xc + 2.4 * u, maquina.top + 3.4 * u), .45 * u, pisca ? const Color(0xFF4CD964) : const Color(0xFF2E7D32),
+      contorno: .2, emite: true);
+  p.circ(Offset(xc + .9 * u, maquina.top + 3.4 * u), .45 * u, const Color(0xFFE53935), contorno: .2);
+  // pia com a torneira
+  final xp = l + fw + (r - l - fw) * .55;
+  p.tubos([
+    Path()
+      ..moveTo(xp, bancada)
+      ..lineTo(xp, bancada - 4 * u)
+      ..quadraticBezierTo(xp, bancada - 5.2 * u, xp + 1.4 * u, bancada - 5.2 * u)
+      ..lineTo(xp + 2.6 * u, bancada - 4.4 * u),
+  ], .45 * u, const Color(0xFFB8C0CA), contorno: .4);
+  // micro-ondas com o relógio
+  final mw = math.min(10 * u, (r - l - fw) * .3);
+  final micro = Rect.fromLTRB(r - mw - .8 * u, bancada - 6 * u, r - .8 * u, bancada);
+  p.ret(micro, const Color(0xFFDCE3E6), contorno: .8, raio: .4 * u);
+  p.ret(Rect.fromLTRB(micro.left + .7 * u, micro.top + .8 * u, micro.right - mw * .32, micro.bottom - .8 * u),
+      const Color(0xFF3A4152), contorno: .5, raio: .3 * u);
+  final visor = Rect.fromLTRB(micro.right - mw * .28, micro.top + .9 * u, micro.right - .6 * u, micro.top + 2.4 * u);
+  p.ret(visor, const Color(0xFF17202E), contorno: .3, emite: true);
+  final (hh, mm) = _horaDoRelogio(p.hora);
+  final hora = '$hh:${mm.toString().padLeft(2, '0')}';
+  final alt = math.min(1 * u, (visor.width - .4 * u) / (_larguraDosDigitos(hora, 1) + .01));
+  if (alt > 0) _digitos(p, hora, Offset(visor.left + .2 * u, visor.center.dy - alt / 2), alt, const Color(0xFF7CF2D0));
+  // bancada e armários de baixo
+  p.ret(Rect.fromLTRB(l + fw, bancada, r + .6 * u, bancada + 1.2 * u), const Color(0xFF4A4F57), contorno: .7);
+  final baixo = Rect.fromLTRB(l + fw + .4 * u, bancada + 1.2 * u, r, p.hz);
+  p.ret(baixo, const Color(0xFFB98A5A), contorno: .7);
+  final nb = math.max(1, (baixo.width / (6 * u)).round());
+  for (var i = 0; i < nb; i++) {
+    final a = baixo.left + baixo.width * i / nb, b = baixo.left + baixo.width * (i + 1) / nb;
+    if (i > 0) p.c.drawLine(Offset(a, baixo.top), Offset(a, baixo.bottom), p.traco(.4));
+    p.ret(Rect.fromLTRB((a + b) / 2 - 1.2 * u, baixo.top + 1.2 * u, (a + b) / 2 + 1.2 * u, baixo.top + 1.8 * u),
+        const Color(0xFF59636E), contorno: .2, raio: .2 * u);
+  }
+  // geladeira de inox (com a garrafinha de água na porta e um ímã)
+  final gel = Rect.fromLTRB(l, 11 * u, l + fw, p.hz);
+  p.ret(gel, const Color(0xFFCDD5DD), contorno: 1, raio: .8 * u);
+  p.sombra(Path()..addRRect(RRect.fromRectAndRadius(gel, Radius.circular(.8 * u))),
+      Rect.fromLTRB(gel.right - fw * .25, gel.top, gel.right, gel.bottom), alfa: .14);
+  final corte = gel.top + gel.height * .38;
+  p.c.drawLine(Offset(gel.left, corte), Offset(gel.right, corte), p.traco(.5));
+  p.tubos([
+    Path()
+      ..moveTo(gel.left + 1.2 * u, corte - 5 * u)
+      ..lineTo(gel.left + 1.2 * u, corte - 1.4 * u),
+    Path()
+      ..moveTo(gel.left + 1.2 * u, corte + 1.4 * u)
+      ..lineTo(gel.left + 1.2 * u, corte + 8 * u),
+  ], .5 * u, const Color(0xFF8D99A8), contorno: .4);
+  final bilhete = Rect.fromLTWH(gel.left + fw * .35, corte + 2.2 * u, fw * .44, fw * .5);
+  p.ret(bilhete, const Color(0xFFFFE066), contorno: .3);
+  for (var i = 0; i < 2; i++) {
+    final y = bilhete.top + bilhete.height * (.35 + i * .3);
+    p.c.drawLine(Offset(bilhete.left + bilhete.width * .15, y), Offset(bilhete.right - bilhete.width * .2, y),
+        Paint()
+          ..color = const Color(0x553A2A33)
+          ..strokeWidth = math.max(.6, .15 * u));
+  }
+  p.circ(Offset(bilhete.center.dx, bilhete.top), .45 * u, const Color(0xFFE53935), contorno: .2);
+}
+
+/// O mural de cortiça com os avisos (papéis presos com tachinhas).
+void _muralDeAvisos(_Pincel p, double x, double meia) {
+  final u = p.u;
+  final r = Rect.fromLTRB(x - meia, 18 * u, x + meia, 31 * u);
+  p.ret(r.inflate(.8 * u), const Color(0xFF9A6B44), contorno: .7, raio: .3 * u);
+  p.ret(r, const Color(0xFFD2A26C), contorno: .3);
+  const papeis = [Color(0xFFFFFFFF), Color(0xFFFFE066), Color(0xFF8FD3FF), Color(0xFFFF9EC7), Color(0xFFB5E58C)];
+  final n = (r.width / (3.2 * u)).floor().clamp(2, 5);
+  for (var i = 0; i < n; i++) {
+    final w = math.min(3.4 + 1.6 * _ruido(i + 401), r.width / u / n * 1.25) * u, h = (3.6 + 2 * _ruido(i + 411)) * u;
+    final cx = r.left + r.width * (i + .5) / n, cy = r.top + r.height * (i.isEven ? .36 : .62);
+    final papel = Rect.fromCenter(center: Offset(cx, cy), width: w, height: h);
+    p.c.save();
+    p.c.translate(cx, cy);
+    p.c.rotate((_ruido(i + 421) - .5) * .25);
+    p.c.translate(-cx, -cy);
+    p.ret(papel, papeis[i], contorno: .3);
+    for (var k = 0; k < 2; k++) {
+      final y = papel.top + papel.height * (.4 + k * .25);
+      p.c.drawLine(Offset(papel.left + .5 * u, y), Offset(papel.right - .6 * u, y),
+          Paint()
+            ..color = const Color(0x553A2A33)
+            ..strokeWidth = math.max(.6, .14 * u));
+    }
+    p.c.restore();
+    p.circ(Offset(cx, papel.top + .4 * u), .4 * u, _publico[i % 6], contorno: .2);
+  }
+}
+
+/// O bebedouro de garrafão (a água azul no garrafão de cima, as torneiras e os copinhos).
+void _bebedouro(_Pincel p, double x, double base) {
+  final u = p.u;
+  final corpo = Rect.fromLTRB(x - 2.6 * u, base - 13 * u, x + 2.6 * u, base);
+  p.ret(corpo, const Color(0xFFE9EDF0), contorno: .8, raio: .5 * u);
+  p.ret(Rect.fromLTRB(x - 1.8 * u, base - 9.6 * u, x + 1.8 * u, base - 7 * u), const Color(0xFFB8C0CA), contorno: .4, raio: .3 * u);
+  p.circ(Offset(x - .8 * u, base - 10.2 * u), .45 * u, const Color(0xFF3E8AE0), contorno: .25);
+  p.circ(Offset(x + .8 * u, base - 10.2 * u), .45 * u, const Color(0xFFE53935), contorno: .25);
+  final garrafao = Path()
+    ..addRRect(RRect.fromLTRBR(x - 2.4 * u, base - 21 * u, x + 2.4 * u, base - 14 * u, Radius.circular(1.6 * u)))
+    ..addRect(Rect.fromLTRB(x - .9 * u, base - 14.2 * u, x + .9 * u, base - 13 * u));
+  p.forma(garrafao, const Color(0xFF9FD8F0), contorno: .6, alfa: .9);
+  p.c.drawRect(Rect.fromLTRB(x - 1.7 * u, base - 19.6 * u, x - 1.1 * u, base - 15 * u), Paint()..color = const Color(0x66FFFFFF));
+  // copinhos ao lado
+  p.ret(Rect.fromLTRB(x + 2.6 * u, base - 12 * u, x + 3.8 * u, base - 8 * u), _branco, contorno: .4);
+}
+
+/// A parede de vidro da sala de reunião ao lado: a faixa jateada, a porta, a mesa e o telão lá dentro.
+void _salaDeVidro(_Pincel p, double x) {
+  final u = p.u;
+  final r = Rect.fromLTRB(x - 15 * u, 11 * u, x + 15 * u, p.hz);
+  p.c.drawRect(r, p.tinta(const Color(0xFFC9D8DE)));
+  // lá dentro: o telão aceso, a mesa comprida e as cadeiras
+  final tela = Rect.fromLTRB(x - 7 * u, 17 * u, x + 5 * u, 26 * u);
+  p.ret(tela, const Color(0xFF2B2F3A), contorno: .5, raio: .3 * u);
+  p.ret(tela.deflate(.5 * u), const Color(0xFF2F6FD0), contorno: 0, emite: true, alfa: .9);
+  for (var i = 0; i < 3; i++) {
+    p.c.drawRect(Rect.fromLTWH(tela.left + (1.4 + i * 2.6) * u, tela.bottom - (2 + i * 1.6) * u, 1.8 * u, (1.4 + i * 1.6) * u),
+        Paint()..color = const Color(0xCCFFD166));
+  }
+  final mesa = p.hz - 9 * u;
+  for (var i = 0; i < 4; i++) {
+    final cx = x - 9 * u + i * 6 * u;
+    p.ret(Rect.fromLTRB(cx - 1.8 * u, mesa - 4.6 * u, cx + 1.8 * u, mesa), const Color(0xFF37404F), contorno: .4, raio: .8 * u);
+  }
+  p.ret(Rect.fromLTRB(x - 12 * u, mesa, x + 12 * u, mesa + 1.2 * u), const Color(0xFFF4F6F7), contorno: .5);
+  p.ret(Rect.fromLTRB(x - 1 * u, mesa + 1.2 * u, x + 1 * u, p.hz), const Color(0xFF8D99A8), contorno: .4);
+  // o vidro: reflexos, a faixa jateada e os montantes
+  p.c.save();
+  p.c.clipRect(r);
+  for (final f in [.15, .62]) {
+    p.c.drawPath(
+        Path()
+          ..moveTo(r.left + r.width * f, r.top)
+          ..lineTo(r.left + r.width * (f + .12), r.top)
+          ..lineTo(r.left + r.width * (f - .06), r.bottom)
+          ..lineTo(r.left + r.width * (f - .18), r.bottom)
+          ..close(),
+        Paint()..color = const Color(0x30FFFFFF));
+  }
+  p.c.restore();
+  p.c.drawRect(Rect.fromLTRB(r.left, 33 * u, r.right, 37 * u), Paint()..color = const Color(0xA6F4F8FA));
+  p.c.drawRect(r, p.traco(.9));
+  for (final f in [1 / 3, 2 / 3]) {
+    p.tubos([
+      Path()
+        ..moveTo(r.left + r.width * f, r.top)
+        ..lineTo(r.left + r.width * f, r.bottom)
+    ], .5 * u, const Color(0xFF8D99A8), contorno: .3);
+  }
+  // o puxador da porta (o terço da direita)
+  p.tubos([
+    Path()
+      ..moveTo(r.left + r.width * 2 / 3 + 1.6 * u, r.top + r.height * .45)
+      ..lineTo(r.left + r.width * 2 / 3 + 1.6 * u, r.top + r.height * .7)
+  ], .5 * u, const Color(0xFFB8C0CA), contorno: .35);
+}
+
+void _dCopa(_Pincel p) {
+  final u = p.u;
+  final s = _plantaDaCopa(p);
+  final fundoFora = p.hz - 14 * u;
+  _vistaDaCopa(p, fundoFora);
+  p.faixa(fundoFora, p.hz, const Color(0xFF9AA3AE), contorno: .4, baixo: false);
+  final janelas = <RRect>[];
+  p.laco(s.xj, s.jMeia + u,
+      (x) => janelas.add(RRect.fromLTRBR(x - s.jMeia, 9 * u, x + s.jMeia, p.hz - 15 * u, Radius.circular(.6 * u))));
+  _parede(p, const Color(0xFFD9E7E3), janelas);
+  for (final j in janelas) {
+    final r = j.outerRect;
+    _moldura(p, j, const Color(0xFF4F5B66), cruz: false);
+    final nv = math.max(1, (r.width / (14 * u)).round());
+    p.tubos([
+      for (var i = 1; i < nv; i++)
+        Path()
+          ..moveTo(r.left + r.width * i / nv, r.top)
+          ..lineTo(r.left + r.width * i / nv, r.bottom),
+    ], .7 * u, const Color(0xFF4F5B66), contorno: .4);
+    p.ret(Rect.fromLTRB(r.left - 1.2 * u, r.bottom + .6 * u, r.right + 1.2 * u, r.bottom + 1.8 * u), const Color(0xFFF3F5F7),
+        contorno: .6);
+    // vaso de ervas no peitoril
+    p.laco(r.left + 4 * u, 2 * u, (x) => _planta(p, x, r.bottom + .6 * u, 4.6 * u, vaso: const Color(0xFFF4F1EA), semente: 11));
+  }
+  // teto e as duas luminárias pendentes sobre a mesa alta
+  p.faixa(-2, 2.6 * u, const Color(0xFFF5F6F8), contorno: .5);
+  for (final dx in [-.45, .45]) {
+    p.laco(s.xj + dx * math.min(s.jMeia, 9 * u), 4 * u,
+        (x) => _pendente(p, x, math.max(10 * u, p.hz - 36 * u), const Color(0xFF2E3238), largura: 2.6));
+  }
+  p.laco(s.kl + s.kw / 2, s.kw / 2 + u, (c) => _balcaoDaCopa(p, c - s.kw / 2, s.kw));
+  final v = s.vidro;
+  if (v != null) p.laco(v, 16 * u, (x) => _salaDeVidro(p, x));
+  final m = s.mural;
+  if (m != null) {
+    p.laco(m, 9 * u, (x) {
+      _muralDeAvisos(p, x, math.min(8 * u, (m - s.kl - s.kw - 3 * u) - 1 * u));
+      _relogioDeParede(p, Offset(x, 11.5 * u), 2.6 * u);
+    });
+  } else if (s.galao == null) {
+    // tela estreita: o relógio fica em cima da janela
+    p.laco(s.xj, 3 * u, (x) => _relogioDeParede(p, Offset(x, 5.6 * u), 2.2 * u));
+  }
+  final g = s.galao;
+  if (g != null) p.laco(g, 4 * u, (x) => _bebedouro(p, x, p.hz));
+  p.faixa(p.hz - 1 * u, p.hz, const Color(0xFF6F7C8A), contorno: .5);
+}
+
+/// A mesa alta redonda da copa, com duas banquetas.
+void _mesaAlta(_Pincel p, double x, double base) {
+  final u = p.u;
+  for (final dx in [-7.5, 7.5]) {
+    _banqueta(p, x + dx * u, base + 1.4 * u);
+  }
+  p.tubos([
+    Path()
+      ..moveTo(x, base - 12 * u)
+      ..lineTo(x, base - .6 * u)
+  ], .7 * u, const Color(0xFF3A4152), contorno: .5);
+  p.ret(Rect.fromLTRB(x - 3.4 * u, base - .9 * u, x + 3.4 * u, base), const Color(0xFF3A4152), contorno: .5, raio: .4 * u);
+  p.ret(Rect.fromLTRB(x - 6.6 * u, base - 13.2 * u, x + 6.6 * u, base - 12 * u), const Color(0xFFF4F6F7), contorno: .8,
+      raio: .6 * u);
+  // duas canecas e um pratinho de biscoitos
+  for (final (dx, cor) in [(-4.0, const Color(0xFFE5533D)), (3.2, const Color(0xFF3E8AE0))]) {
+    p.c.drawArc(Rect.fromLTWH(x + (dx + 1.6) * u, base - 15.4 * u, 1.2 * u, 1.2 * u), -math.pi / 2, math.pi, false, p.traco(.35));
+    p.ret(Rect.fromLTWH(x + dx * u, base - 15.6 * u, 1.9 * u, 2.4 * u), cor, contorno: .45, raio: .35 * u);
+  }
+  p.c.drawOval(Rect.fromCenter(center: Offset(x - .4 * u, base - 13.4 * u), width: 3.6 * u, height: .8 * u), p.tinta(_branco));
+  p.c.drawOval(Rect.fromCenter(center: Offset(x - .4 * u, base - 13.4 * u), width: 3.6 * u, height: .8 * u), p.traco(.3));
+  for (final dx in [-1.2, .2]) {
+    p.circ(Offset(x + dx * u, base - 14.2 * u), .7 * u, const Color(0xFFC88A4A), contorno: .3);
+  }
+}
+
+/// Lixeiras de reciclagem (azul e verde) no canto do balcão.
+void _lixeiras(_Pincel p, double x, double base) {
+  final u = p.u;
+  for (final (dx, cor) in [(-1.6, const Color(0xFF3E8AE0)), (1.6, const Color(0xFF2EAD5B))]) {
+    final r = Rect.fromLTRB(x + (dx - 1.5) * u, base - 6 * u, x + (dx + 1.5) * u, base);
+    p.ret(r, cor, contorno: .6, raio: .3 * u);
+    p.ret(Rect.fromLTRB(r.left - .3 * u, r.top - .8 * u, r.right + .3 * u, r.top + .2 * u), Color.lerp(cor, _branco, .25)!,
+        contorno: .5, raio: .3 * u);
+  }
+}
+
+void _cCopa(_Pincel p) {
+  final u = p.u;
+  p.solo(const [Color(0xFFB9C2C9), Color(0xFF98A3AE)]);
+  // piso de placas quadradas
+  final junta = Paint()
+    ..strokeWidth = math.max(1.0, .2 * u)
+    ..color = const Color(0x2A3A2A33);
+  for (final f in [3.5, 8.5, 15.0, 23.5, 34.0]) {
+    p.c.drawLine(Offset(-2, p.hz + f * u), Offset(p.w + 2, p.hz + f * u), junta);
+  }
+  final k = p.vezes(10 * u);
+  for (var i = 0; i < k; i++) {
+    final x = i * p.w / k;
+    p.c.drawLine(Offset(x, p.hz), Offset(x + (x - p.w / 2) * .25, p.h), junta);
+  }
+  final s = _plantaDaCopa(p);
+  p.laco(s.xj, 16 * u, (x) => _mesaAlta(p, x, p.hz + 8 * u));
+  if (s.vidro != null || s.mural != null) {
+    p.laco(s.kl + s.kw + 4 * u, 4 * u, (x) => _lixeiras(p, x, p.hz + 6 * u));
+  }
+}
+
+// ─────────────────────────── recepção do hotel (o balcão do check-in, o elevador e a porta da rua) ───────────────────────────
+
+/// A planta da recepção: o balcão no meio (com o escaninho das chaves atrás), o elevador à direita; na tela
+/// larga, a porta de vidro da rua à esquerda e o resto da parede com quadros e plantas.
+typedef _PlantaRecepcao = ({
+  double xb, // meio do balcão
+  double bMeia,
+  double? xe, // o elevador
+  double? xp, // a porta de vidro da rua
+  List<(double, double)> vaos, // o que sobra de parede (quadros, arandelas)
+});
+
+_PlantaRecepcao _plantaDaRecepcao(_Pincel p) {
+  final u = p.u, w = p.w;
+  const eMeia = 6.0;
+  if (w < 70 * u) {
+    final bMeia = math.min(19 * u, w * .34);
+    final xb = math.max(bMeia + 1.5 * u, w * .4);
+    final xe = w - (eMeia + 1) * u;
+    final temElevador = xe - eMeia * u > xb + bMeia - 6 * u;
+    return (xb: xb, bMeia: bMeia, xe: temElevador ? xe : null, xp: null, vaos: const []);
+  }
+  final bMeia = math.min(24 * u, w * .2);
+  final xb = w * .5;
+  final xe = xb + bMeia + 15 * u;
+  final xp = xb - bMeia - 19 * u;
+  final ocupadas = <(double, double)>[(xb, bMeia + 2 * u)];
+  final comElevador = xe + (eMeia + 2) * u < w;
+  if (comElevador) ocupadas.add((xe, (eMeia + 2) * u));
+  final comPorta = xp - 12 * u > 0;
+  if (comPorta) ocupadas.add((xp, 12 * u));
+  return (
+    xb: xb,
+    bMeia: bMeia,
+    xe: comElevador ? xe : null,
+    xp: comPorta ? xp : null,
+    vaos: _vaosDaParede(p, ocupadas, minimo: 7 * u),
+  );
+}
+
+/// A rua lá fora, pela porta de vidro: o prédio da frente e a calçada.
+void _ruaDaRecepcao(_Pincel p, double x) {
+  final u = p.u;
+  _predio(p, Rect.fromLTRB(x - 12 * u, 30 * u, x + 2 * u, p.hz - 6 * u), const Color(0xFFB98A7A), semente: 7);
+  _predio(p, Rect.fromLTRB(x + 2 * u, 36 * u, x + 12 * u, p.hz - 6 * u), const Color(0xFF8FA3B8), semente: 8);
+  p.ret(Rect.fromLTRB(x - 14 * u, p.hz - 6 * u, x + 14 * u, p.hz), const Color(0xFFB9B9B4), contorno: .4);
+  _poste(p, x - 6 * u, p.hz - 3 * u, 22 * u, aceso: p.acesas);
+}
+
+/// O escaninho das chaves atrás do balcão: a grade de nichos com chaves e envelopes, e a placa das estrelas.
+void _escaninho(_Pincel p, double x, double meia) {
+  final u = p.u;
+  final r = Rect.fromLTRB(x - meia, 21 * u, x + meia, 36 * u);
+  p.ret(r.inflate(.8 * u), const Color(0xFF6B4A32), contorno: .8, raio: .3 * u);
+  p.c.drawRect(r, p.tinta(const Color(0xFF4E3424)));
+  final cols = math.max(3, (r.width / (3.2 * u)).floor()), lins = 4;
+  final cw = r.width / cols, ch = r.height / lins;
+  final grade = Paint()
+    ..color = p.luz(const Color(0xFF8A6446))
+    ..strokeWidth = math.max(1.0, .45 * u);
+  for (var i = 1; i < cols; i++) {
+    p.c.drawLine(Offset(r.left + i * cw, r.top), Offset(r.left + i * cw, r.bottom), grade);
+  }
+  for (var j = 1; j < lins; j++) {
+    p.c.drawLine(Offset(r.left, r.top + j * ch), Offset(r.right, r.top + j * ch), grade);
+  }
+  for (var i = 0; i < cols; i++) {
+    for (var j = 0; j < lins; j++) {
+      final o = Offset(r.left + (i + .5) * cw, r.top + (j + .5) * ch);
+      final q = _ruido(i * 13 + j * 7 + 501);
+      if (q > .62) {
+        // envelope
+        p.c.drawRect(Rect.fromCenter(center: o + Offset(0, ch * .12), width: cw * .6, height: ch * .38), p.tinta(_branco));
+      } else if (q > .2) {
+        // a chave com o chaveiro dourado pendurada
+        p.c.drawLine(o - Offset(0, ch * .3), o, p.traco(.25));
+        p.c.drawCircle(o + Offset(0, ch * .12), math.min(cw, ch) * .16, p.tinta(const Color(0xFFE9B949)));
+      }
+    }
+  }
+  // a placa com as estrelas do hotel (sem nome)
+  final placa = Rect.fromCenter(center: Offset(x, 15.5 * u), width: math.min(meia * 1.4, 22 * u), height: 6 * u);
+  p.ret(placa, const Color(0xFF2B2F3A), contorno: .7, raio: .5 * u);
+  final n = 4;
+  for (var i = 0; i < n; i++) {
+    final c = Offset(placa.left + placa.width * (i + .5) / n, placa.center.dy);
+    final e = Path();
+    for (var k = 0; k < 10; k++) {
+      final rr = k.isEven ? 1.6 * u : .7 * u;
+      final a = -math.pi / 2 + k * math.pi / 5;
+      final pt = c + Offset(math.cos(a) * rr, math.sin(a) * rr);
+      k == 0 ? e.moveTo(pt.dx, pt.dy) : e.lineTo(pt.dx, pt.dy);
+    }
+    p.c.drawPath(e..close(), p.tinta(const Color(0xFFFFC83D), emite: p.acesas));
+  }
+}
+
+/// A porta do elevador: as duas folhas de inox, o mostrador do andar e o botão de chamar.
+void _elevador(_Pincel p, double x) {
+  final u = p.u;
+  final batente = Rect.fromLTRB(x - 6 * u, 16 * u, x + 6 * u, p.hz);
+  p.ret(batente, const Color(0xFF6B4A32), contorno: .8);
+  final porta = Rect.fromLTRB(x - 4.8 * u, 18.5 * u, x + 4.8 * u, p.hz);
+  p.ret(porta, const Color(0xFFC9D1D9), contorno: .7);
+  p.c.drawLine(Offset(x, porta.top), Offset(x, porta.bottom), p.traco(.5));
+  for (final dx in [-2.4, 2.4]) {
+    p.c.drawLine(Offset(x + dx * u, porta.top + 2 * u), Offset(x + dx * u - 1 * u, porta.bottom - 2 * u),
+        Paint()
+          ..color = const Color(0x40FFFFFF)
+          ..strokeWidth = .6 * u);
+  }
+  final visor = Rect.fromCenter(center: Offset(x, 13.6 * u), width: 5 * u, height: 3 * u);
+  p.ret(visor, const Color(0xFF17202E), contorno: .5, raio: .3 * u, emite: true);
+  final andar = '${1 + (p.t / 3).floor() % 5}';
+  _digitos(p, andar, Offset(visor.center.dx - .6 * u, visor.top + .6 * u), 1.8 * u, const Color(0xFFFF9E40));
+  p.ret(Rect.fromLTRB(x - 8.6 * u, 34 * u, x - 7 * u, 37.6 * u), const Color(0xFFC9D1D9), contorno: .5, raio: .3 * u);
+  p.circ(Offset(x - 7.8 * u, 35.8 * u), .5 * u, p.acesas ? const Color(0xFFFFD866) : const Color(0xFFF4F6F7), contorno: .25);
+}
+
+/// A arandela dourada de parede (acesa à tarde e à noite).
+void _arandela(_Pincel p, double x, double y) {
+  final u = p.u;
+  if (p.acesas) _luzQuente(p, Offset(x, y), 12 * u, forca: .9);
+  p.ret(Rect.fromLTRB(x - .5 * u, y, x + .5 * u, y + 3 * u), const Color(0xFFD9A441), contorno: .4);
+  p.forma(
+      Path()
+        ..moveTo(x - 1.6 * u, y - 2.6 * u)
+        ..lineTo(x + 1.6 * u, y - 2.6 * u)
+        ..lineTo(x + 1 * u, y)
+        ..lineTo(x - 1 * u, y)
+        ..close(),
+      p.acesas ? const Color(0xFFFFE6A8) : const Color(0xFFF4ECD8),
+      contorno: .5,
+      emite: p.acesas);
+}
+
+void _dRecepcaoHotel(_Pincel p) {
+  final u = p.u;
+  final s = _plantaDaRecepcao(p);
+  final portas = <RRect>[];
+  final xp = s.xp;
+  if (xp != null) {
+    p.laco(xp, 12 * u, (x) => _ruaDaRecepcao(p, x));
+    p.laco(xp, 11 * u, (x) => portas.add(RRect.fromLTRBR(x - 10 * u, 13 * u, x + 10 * u, p.hz, Radius.circular(.4 * u))));
+  }
+  _parede(p, const Color(0xFFF1E4CC), portas);
+  // lambri de madeira na metade de baixo, com os painéis
+  final lambri = 40 * u;
+  final vaos = Path();
+  for (final j in portas) {
+    vaos.addRRect(j);
+  }
+  Path semPorta(Rect r) => Path.combine(PathOperation.difference, Path()..addRect(r), vaos);
+  p.c.drawPath(semPorta(Rect.fromLTRB(-2, lambri, p.w + 2, p.hz)), p.tinta(const Color(0xFFB98A5A)));
+  p.c.save();
+  p.c.clipPath(semPorta(Rect.fromLTRB(-2, lambri - 2 * u, p.w + 2, p.hz + 1)));
+  p.faixa(lambri - 1.2 * u, lambri, const Color(0xFF8A5F3C), contorno: .5);
+  final paineis = p.vezes(9 * u);
+  for (var i = 0; i < paineis; i++) {
+    final x = i * p.w / paineis;
+    p.ret(Rect.fromLTRB(x + 1.2 * u, lambri + 2 * u, x + p.w / paineis - 1.2 * u, p.hz - 2.6 * u), const Color(0xFFC89B6C),
+        contorno: .35, raio: .3 * u);
+  }
+  p.c.restore();
+  // sanca do teto e o lustre
+  p.faixa(-2, 3 * u, const Color(0xFFFAF3E6), contorno: .5);
+  p.faixa(3 * u, 4 * u, const Color(0xFFD9A441), contorno: .4);
+  p.laco(s.xb, 8 * u, (x) {
+    p.c.drawLine(Offset(x, 4 * u), Offset(x, 8 * u), p.traco(.4));
+    _luzQuente(p, Offset(x, 10 * u), 20 * u, forca: 1.1);
+    p.ret(Rect.fromLTRB(x - 5 * u, 8 * u, x + 5 * u, 9 * u), const Color(0xFFD9A441), contorno: .5, raio: .4 * u);
+    for (var i = 0; i < 5; i++) {
+      final cx = x - 4 * u + i * 2 * u;
+      p.forma(
+          Path()
+            ..moveTo(cx - .7 * u, 9 * u)
+            ..lineTo(cx + .7 * u, 9 * u)
+            ..lineTo(cx, 11.6 * u)
+            ..close(),
+          p.acesas ? const Color(0xFFFFF0C2) : const Color(0xFFE6F4FF),
+          contorno: .3,
+          emite: p.acesas);
+    }
+  });
+  for (final j in portas) {
+    final r = j.outerRect;
+    p.c.save();
+    p.c.clipRRect(j);
+    p.c.drawRect(r, Paint()..color = const Color(0x269FD8F0));
+    p.c.restore();
+    _moldura(p, j, const Color(0xFF3A3F4B), cruz: false);
+    p.c.drawLine(Offset(r.center.dx, r.top), Offset(r.center.dx, r.bottom), p.traco(.6));
+    for (final dx in [-1.4, 1.4]) {
+      p.tubos([
+        Path()
+          ..moveTo(r.center.dx + dx * u, r.top + r.height * .45)
+          ..lineTo(r.center.dx + dx * u, r.top + r.height * .7)
+      ], .5 * u, const Color(0xFFD9A441), contorno: .35);
+    }
+    // o toldo da entrada, por cima
+    p.ret(Rect.fromLTRB(r.left - 2 * u, r.top - 3 * u, r.right + 2 * u, r.top - .6 * u), const Color(0xFF7A1F2B), contorno: .7,
+        raio: .4 * u);
+  }
+  p.laco(s.xb, s.bMeia + u, (x) => _escaninho(p, x, s.bMeia * .78));
+  p.laco(s.xb + s.bMeia * .78 + 5 * u, 3 * u, (x) => _relogioDeParede(p, Offset(x, 16 * u), 2.6 * u));
+  final xe = s.xe;
+  if (xe != null) p.laco(xe, 9 * u, (x) => _elevador(p, x));
+  var k = 0;
+  for (final (x0, meia) in s.vaos) {
+    if (meia >= 11 * u) {
+      final w = math.min(meia * 1.2, 16 * u);
+      p.laco(x0, w / 2 + 2 * u, (x) {
+        _quadroDePaisagem(p, Rect.fromCenter(center: Offset(x, 25 * u), width: w, height: w * .7), k);
+        for (final d in [-1.0, 1.0]) {
+          if (meia >= w / 2 + 6 * u) _arandela(p, x + d * (w / 2 + 3.4 * u), 24 * u);
+        }
+      });
+    } else {
+      p.laco(x0, 3 * u, (x) => _arandela(p, x, 25 * u));
+    }
+    k++;
+  }
+  p.faixa(p.hz - 1.2 * u, p.hz, const Color(0xFF6B4A32), contorno: .5);
+}
+
+/// O balcão da recepção: tampo de mármore, frente de madeira com frisos, o monitor (de costas), o sino,
+/// o porta-folhetos e uma orquídea.
+void _balcaoDaRecepcao(_Pincel p, double x, double base, double meia) {
+  final u = p.u;
+  final topo = base - 11 * u;
+  // em cima: o monitor de costas, a orquídea, os folhetos e o sino
+  final mx = x - meia * .45;
+  p.ret(Rect.fromLTRB(mx - .6 * u, topo - 3 * u, mx + .6 * u, topo), const Color(0xFF3A3F4B), contorno: .4);
+  p.ret(Rect.fromLTRB(mx - 5 * u, topo - 9.6 * u, mx + 5 * u, topo - 2.8 * u), const Color(0xFF3A3F4B), contorno: .7, raio: .5 * u);
+  if (p.acesas) p.brilho(Offset(mx, topo - 6 * u), 6 * u, const Color(0xFF7FB6FF), alfa: .18);
+  final ox = x + meia * .62;
+  p.ret(Rect.fromLTRB(ox - 1.2 * u, topo - 2.4 * u, ox + 1.2 * u, topo), _branco, contorno: .45, raio: .4 * u);
+  p.c.drawPath(
+      Path()
+        ..moveTo(ox, topo - 2.4 * u)
+        ..quadraticBezierTo(ox + .4 * u, topo - 7 * u, ox + 2.2 * u, topo - 8 * u),
+      p.traco(.35));
+  for (final (dx, dy) in [(1.0, 6.4), (2.2, 7.8), (2.6, 5.8)]) {
+    p.circ(Offset(ox + dx * u, topo - dy * u), .75 * u, const Color(0xFFF2A3D0), contorno: .25);
+  }
+  final fx = x + meia * .2;
+  p.ret(Rect.fromLTRB(fx - 2 * u, topo - 3.6 * u, fx + 2 * u, topo), const Color(0xFFDCE3E6), contorno: .45);
+  for (var i = 0; i < 3; i++) {
+    p.ret(Rect.fromLTRB(fx - 1.7 * u + i * 1.2 * u, topo - 4.6 * u + i * .3 * u, fx - .7 * u + i * 1.2 * u, topo - 1.4 * u),
+        _publico[i * 2 % 6], contorno: .25);
+  }
+  // o sino
+  final sx = x - meia * .05;
+  p.forma(
+      Path()
+        ..moveTo(sx - 1.6 * u, topo - .4 * u)
+        ..quadraticBezierTo(sx - 1.6 * u, topo - 2.6 * u, sx, topo - 2.6 * u)
+        ..quadraticBezierTo(sx + 1.6 * u, topo - 2.6 * u, sx + 1.6 * u, topo - .4 * u)
+        ..close(),
+      const Color(0xFFE9B949),
+      contorno: .5);
+  p.circ(Offset(sx, topo - 2.9 * u), .35 * u, const Color(0xFFE9B949), contorno: .25);
+  p.ret(Rect.fromLTRB(sx - 2 * u, topo - .5 * u, sx + 2 * u, topo), const Color(0xFF3A3F4B), contorno: .3);
+  // o tampo e a frente
+  p.ret(Rect.fromLTRB(x - meia - .8 * u, topo, x + meia + .8 * u, topo + 1.6 * u), const Color(0xFFF2EEE6), contorno: .8,
+      raio: .3 * u);
+  final frente = Rect.fromLTRB(x - meia, topo + 1.6 * u, x + meia, base);
+  p.ret(frente, const Color(0xFF7A4E30), contorno: 1);
+  final n = math.max(2, (frente.width / (8 * u)).round());
+  for (var i = 0; i < n; i++) {
+    final a = frente.left + frente.width * i / n, b = frente.left + frente.width * (i + 1) / n;
+    p.ret(Rect.fromLTRB(a + .9 * u, frente.top + 1.4 * u, b - .9 * u, frente.bottom - 1.4 * u), const Color(0xFF8E5D3A),
+        contorno: .35, raio: .3 * u);
+  }
+  p.ret(Rect.fromLTRB(frente.left, frente.top + .2 * u, frente.right, frente.top + 1 * u), const Color(0xFFD9A441), contorno: .25);
+  p.sombra(Path()..addRect(frente), Rect.fromLTRB(frente.left, frente.bottom - 1.6 * u, frente.right, frente.bottom));
+}
+
+/// O carrinho de bagagem dourado com duas malas.
+void _carrinhoDeBagagem(_Pincel p, double x, double base) {
+  final u = p.u;
+  const ouro = Color(0xFFE0B341);
+  p.tubos([
+    for (final dx in [-4.4, 4.4])
+      Path()
+        ..moveTo(x + dx * u, base - 1.6 * u)
+        ..lineTo(x + dx * u, base - 17 * u),
+    Path()
+      ..moveTo(x - 4.4 * u, base - 17 * u)
+      ..quadraticBezierTo(x, base - 21 * u, x + 4.4 * u, base - 17 * u),
+  ], .55 * u, ouro, contorno: .4);
+  p.ret(Rect.fromLTRB(x - 5.6 * u, base - 2.4 * u, x + 5.6 * u, base - 1.4 * u), const Color(0xFF8A2432), contorno: .5);
+  p.ret(Rect.fromLTRB(x - 3.8 * u, base - 9.4 * u, x + 1.6 * u, base - 2.4 * u), const Color(0xFF3E8AE0), contorno: .6, raio: .6 * u);
+  p.ret(Rect.fromLTRB(x - 1 * u, base - 13.4 * u, x + 3.6 * u, base - 9.4 * u), const Color(0xFFE5533D), contorno: .6, raio: .6 * u);
+  p.c.drawLine(Offset(x - 2 * u, base - 9.4 * u), Offset(x - 2 * u, base - 10.6 * u), p.traco(.4));
+  for (final dx in [-4.6, 4.6]) {
+    p.circ(Offset(x + dx * u, base - .7 * u), .8 * u, const Color(0xFF2B2B2B), contorno: .3);
+  }
+}
+
+/// Poltrona de veludo com a mesinha e o abajur.
+void _poltrona(_Pincel p, double x, double base) {
+  final u = p.u;
+  const cor = Color(0xFF7A1F2B);
+  p.ret(Rect.fromLTRB(x - 5 * u, base - 13 * u, x + 5 * u, base - 4 * u), cor, contorno: .9, raio: 2 * u);
+  p.ret(Rect.fromLTRB(x - 4.4 * u, base - 6 * u, x + 4.4 * u, base - 2.4 * u), const Color(0xFF962A38), contorno: .8, raio: 1 * u);
+  for (final dx in [-5.6, 5.6]) {
+    p.ret(Rect.fromLTRB(x + dx * u - 1.4 * u, base - 8 * u, x + dx * u + 1.4 * u, base - 2 * u), cor, contorno: .8, raio: 1 * u);
+    p.ret(Rect.fromLTRB(x + dx * u - .4 * u, base - 2 * u, x + dx * u + .4 * u, base), const Color(0xFF5A3D2B), contorno: .3);
+  }
+  final mx = x + 10 * u;
+  p.ret(Rect.fromLTRB(mx - 2.4 * u, base - 7 * u, mx + 2.4 * u, base - 6 * u), const Color(0xFF6B4A32), contorno: .5);
+  p.ret(Rect.fromLTRB(mx - .4 * u, base - 6 * u, mx + .4 * u, base), const Color(0xFF6B4A32), contorno: .4);
+  p.ret(Rect.fromLTRB(mx - .3 * u, base - 11 * u, mx + .3 * u, base - 7 * u), const Color(0xFFD9A441), contorno: .3);
+  if (p.acesas) _luzQuente(p, Offset(mx, base - 12 * u), 12 * u, forca: 1.1);
+  p.forma(
+      Path()
+        ..moveTo(mx - 1.4 * u, base - 13.8 * u)
+        ..lineTo(mx + 1.4 * u, base - 13.8 * u)
+        ..lineTo(mx + 2.4 * u, base - 11 * u)
+        ..lineTo(mx - 2.4 * u, base - 11 * u)
+        ..close(),
+      p.acesas ? const Color(0xFFFFE6A8) : const Color(0xFFF4ECD8),
+      contorno: .5,
+      emite: p.acesas);
+}
+
+void _cRecepcaoHotel(_Pincel p) {
+  final u = p.u;
+  // piso de mármore em xadrez na diagonal, com o tapete vermelho até o balcão
+  p.solo(const [Color(0xFFEDE4D6), Color(0xFFD9CDBB)]);
+  final s = _plantaDaRecepcao(p);
+  final losango = Paint()..color = p.luz(const Color(0x1F6B4A32));
+  final n = p.vezes(8 * u);
+  final passo = p.w / n;
+  for (var i = 0; i < n; i++) {
+    for (var j = 0; j < 4; j++) {
+      if ((i + j).isOdd) continue;
+      final y0 = p.hz + j * 9 * u;
+      final cx = (i + .5) * passo;
+      p.c.drawPath(
+          Path()
+            ..moveTo(cx, y0)
+            ..lineTo(cx + passo / 2, y0 + 4.5 * u)
+            ..lineTo(cx, y0 + 9 * u)
+            ..lineTo(cx - passo / 2, y0 + 4.5 * u)
+            ..close(),
+          losango);
+    }
+  }
+  p.laco(s.xb, s.bMeia + 2 * u, (x) {
+    p.forma(
+        Path()
+          ..moveTo(x - s.bMeia * .55, p.hz + 9 * u)
+          ..lineTo(x + s.bMeia * .55, p.hz + 9 * u)
+          ..lineTo(x + s.bMeia * .8, p.h + 2)
+          ..lineTo(x - s.bMeia * .8, p.h + 2)
+          ..close(),
+        const Color(0xFFA8323F),
+        contorno: .5);
+    _balcaoDaRecepcao(p, x, p.hz + 9 * u, s.bMeia);
+  });
+  final xp = s.xp;
+  if (xp != null) {
+    p.laco(xp + 14 * u, 7 * u, (x) => _carrinhoDeBagagem(p, x, p.hz + 10 * u));
+    if (xp - 22 * u > 0) p.laco(xp - 18 * u, 14 * u, (x) => _poltrona(p, x, p.hz + 8 * u));
+  }
+  final xe = s.xe;
+  if (xe != null && s.xp != null) p.laco(xe + 11 * u, 4 * u, (x) => _planta(p, x, p.hz + 5 * u, 16 * u, semente: 4));
+}
+
+// ─────────────────────────── sala de estar (o sofá grande e a TV, para o filme e o jogo) ───────────────────────────
+
+/// A planta da sala: a TV (com o painel e o rack) à esquerda do meio e o sofá embaixo da janela à direita,
+/// uma vez só; o que sobra de parede ganha a estante, a luminária de pé, quadros e plantas.
+typedef _PlantaSala = ({
+  double xt, // a TV
+  double tMeia,
+  double xs, // o sofá (e a janela)
+  double sMeia,
+  List<(double, double)> vaos,
+});
+
+_PlantaSala _plantaDaSala(_Pincel p) {
+  final u = p.u, w = p.w;
+  if (w < 70 * u) {
+    final tMeia = math.min(13 * u, w * .27);
+    final sMeia = math.min(12 * u, w * .2);
+    return (xt: w * .29, tMeia: tMeia, xs: w * .76, sMeia: sMeia, vaos: const []);
+  }
+  final tMeia = math.min(17 * u, w * .17);
+  final sMeia = math.min(15 * u, w * .14);
+  // a TV no meio (acima das cabeças; quase nunca há alguém no `centro`) e o sofá perto da borda direita, entre
+  // o `centroDireita` e a `direita`, onde os atores de uma cena a dois não o tampam
+  final xt = w * .5;
+  final xs = math.max(xt + tMeia + sMeia + 6 * u, math.min(w - sMeia - 3 * u, w * .86));
+  return (
+    xt: xt,
+    tMeia: tMeia,
+    xs: xs,
+    sMeia: sMeia,
+    vaos: _vaosDaParede(p, [(xt, tMeia + 1 * u), (xs, sMeia + 6 * u)], minimo: 5 * u),
+  );
+}
+
+/// A TV grande na parede (passando o jogo: o gramado, as linhas e o placar), o painel de ripas atrás e o rack.
+void _tvDaSala(_Pincel p, double x, double meia) {
+  final u = p.u;
+  // painel de ripas de madeira
+  final painel = Rect.fromLTRB(x - meia, 8 * u, x + meia, p.hz);
+  p.ret(painel, const Color(0xFF6B4F3A), contorno: .8);
+  final ripas = math.max(4, (painel.width / (2.2 * u)).round());
+  for (var i = 1; i < ripas; i++) {
+    final rx = painel.left + painel.width * i / ripas;
+    p.c.drawLine(Offset(rx, painel.top), Offset(rx, painel.bottom), p.traco(.25));
+  }
+  // a TV
+  final tw = meia * .82;
+  final tela = Rect.fromLTRB(x - tw, 15 * u, x + tw, 15 * u + tw * 1.1);
+  p.ret(tela.inflate(.7 * u), const Color(0xFF1C1E24), contorno: .8, raio: .4 * u);
+  if (p.acesas) p.brilho(tela.center, tw * 1.8, const Color(0xFF7FD0FF), alfa: p.noite ? .2 : .14);
+  p.c.save();
+  p.c.clipRect(tela);
+  p.c.drawRect(tela, Paint()..color = const Color(0xFF3FAE4F));
+  final faixas = 6;
+  for (var i = 0; i < faixas; i += 2) {
+    p.c.drawRect(Rect.fromLTRB(tela.left + tela.width * i / faixas, tela.top, tela.left + tela.width * (i + 1) / faixas, tela.bottom),
+        Paint()..color = const Color(0xFF4CBB5C));
+  }
+  final giz = Paint()
+    ..color = const Color(0xE6FFFFFF)
+    ..style = PaintingStyle.stroke
+    ..strokeWidth = math.max(1.0, .3 * u);
+  p.c.drawLine(Offset(tela.center.dx, tela.top), Offset(tela.center.dx, tela.bottom), giz);
+  p.c.drawCircle(tela.center, tela.height * .2, giz);
+  p.c.drawRect(Rect.fromLTRB(tela.left - 1, tela.center.dy - tela.height * .25, tela.left + tela.width * .1, tela.center.dy + tela.height * .25), giz);
+  p.c.drawRect(Rect.fromLTRB(tela.right - tela.width * .1, tela.center.dy - tela.height * .25, tela.right + 1, tela.center.dy + tela.height * .25), giz);
+  // os jogadores (dois times) e a bola, mexendo devagar
+  for (var i = 0; i < 6; i++) {
+    final fx = .2 + .6 * _ruido(i + 601) + math.sin(p.t * .7 + i) * .03;
+    final fy = .25 + .55 * _ruido(i + 611);
+    p.c.drawCircle(Offset(tela.left + tela.width * fx, tela.top + tela.height * fy), math.max(1.0, .6 * u),
+        Paint()..color = i.isEven ? const Color(0xFFE53935) : const Color(0xFF1E6FD9));
+  }
+  p.c.drawCircle(Offset(tela.left + tela.width * (.5 + math.sin(p.t * .9) * .12), tela.top + tela.height * .55),
+      math.max(.8, .4 * u), Paint()..color = _branco);
+  // placar
+  p.c.drawRRect(RRect.fromLTRBR(tela.left + .6 * u, tela.top + .6 * u, tela.left + 7.6 * u, tela.top + 2.6 * u, Radius.circular(.3 * u)),
+      Paint()..color = const Color(0xE617202E));
+  p.c.drawRect(Rect.fromLTWH(tela.left + 1 * u, tela.top + 1 * u, 1.2 * u, 1.2 * u), Paint()..color = const Color(0xFFE53935));
+  p.c.drawRect(Rect.fromLTWH(tela.left + 5.8 * u, tela.top + 1 * u, 1.2 * u, 1.2 * u), Paint()..color = const Color(0xFF1E6FD9));
+  _digitos(p, '1:0', Offset(tela.left + 2.7 * u, tela.top + .95 * u), 1.2 * u, _branco);
+  p.c.restore();
+  // o rack baixo com as gavetas, a caixinha de som e um vaso
+  final rack = Rect.fromLTRB(x - meia * .92, p.hz - 8.6 * u, x + meia * .92, p.hz - 2 * u);
+  for (final dx in [-.82, .82]) {
+    p.ret(Rect.fromLTRB(x + dx * meia - .4 * u, rack.bottom, x + dx * meia + .4 * u, p.hz), const Color(0xFF3A2A22), contorno: .3);
+  }
+  p.ret(rack, const Color(0xFFC89B6C), contorno: .8, raio: .3 * u);
+  final gav = 3;
+  for (var i = 0; i < gav; i++) {
+    final a = rack.left + rack.width * i / gav, b = rack.left + rack.width * (i + 1) / gav;
+    if (i > 0) p.c.drawLine(Offset(a, rack.top), Offset(a, rack.bottom), p.traco(.35));
+    p.ret(Rect.fromLTRB((a + b) / 2 - 1.4 * u, rack.center.dy - .3 * u, (a + b) / 2 + 1.4 * u, rack.center.dy + .3 * u),
+        const Color(0xFF3A2A22), contorno: 0);
+  }
+  p.ret(Rect.fromLTRB(x - meia * .4, rack.top - 1.6 * u, x + meia * .4, rack.top), const Color(0xFF2B2F3A), contorno: .5, raio: .5 * u);
+  _planta(p, x + meia * .72, rack.top, 6 * u, vaso: const Color(0xFFF4F1EA), semente: 21);
+  p.ret(Rect.fromLTRB(x - meia * .8, rack.top - 3 * u, x - meia * .55, rack.top), const Color(0xFF3E8AE0), contorno: .4, raio: .3 * u);
+}
+
+/// A luminária de pé em arco (acesa à tarde e à noite).
+void _luminariaDePe(_Pincel p, double x, double base) {
+  final u = p.u;
+  p.ret(Rect.fromLTRB(x - 2.4 * u, base - .9 * u, x + 2.4 * u, base), const Color(0xFF3A4152), contorno: .5, raio: .4 * u);
+  p.tubos([
+    Path()
+      ..moveTo(x, base - .9 * u)
+      ..lineTo(x, base - 22 * u)
+      ..quadraticBezierTo(x, base - 27 * u, x + 5 * u, base - 26 * u),
+  ], .45 * u, const Color(0xFF3A4152), contorno: .4);
+  final cx = x + 6 * u, cy = base - 25 * u;
+  if (p.acesas) _luzQuente(p, Offset(cx, cy + 3 * u), 13 * u, forca: .9);
+  p.forma(
+      Path()
+        ..moveTo(cx - 1.6 * u, cy - 1.6 * u)
+        ..lineTo(cx + 1.6 * u, cy - 1.6 * u)
+        ..lineTo(cx + 3 * u, cy + 1.6 * u)
+        ..lineTo(cx - 3 * u, cy + 1.6 * u)
+        ..close(),
+      p.acesas ? const Color(0xFFFFE08A) : const Color(0xFFF2EEE2),
+      contorno: .6,
+      emite: p.acesas);
+}
+
+void _dSalaDeEstar(_Pincel p) {
+  final u = p.u;
+  final s = _plantaDaSala(p);
+  final jMeia = math.max(4 * u, s.sMeia * .78);
+  // lá fora: os prédios baixos do outro lado da rua e uma árvore
+  for (var i = 0; i < 3; i++) {
+    p.laco(s.xs - jMeia + (i + .5) * jMeia * 2 / 3, jMeia / 2, (x) {
+      final alt = (10 + 6 * _ruido(i + 701)) * u;
+      _predio(p, Rect.fromLTRB(x - jMeia / 3, p.hz - 22 * u - alt, x + jMeia / 3, p.hz - 21 * u),
+          [const Color(0xFFD9A08A), const Color(0xFFB9C4D6), const Color(0xFFE6CFA0)][i], semente: i + 70);
+    });
+  }
+  p.laco(s.xs + jMeia * .6, 5 * u, (x) => _arvore(p, x, p.hz - 21 * u, 12 * u, copa: _verdePinheiro));
+  final janelas = <RRect>[];
+  p.laco(s.xs, jMeia + u, (x) => janelas.add(RRect.fromLTRBR(x - jMeia, 11 * u, x + jMeia, p.hz - 22 * u, Radius.circular(.6 * u))));
+  _parede(p, const Color(0xFFD3DEE8), janelas);
+  for (final j in janelas) {
+    _moldura(p, j, _branco);
+    _cortinas(p, j, const Color(0xFF8E6BBF));
+  }
+  // rodameio de madeira e o teto
+  p.faixa(-2, 2.4 * u, const Color(0xFFF4F6F8), contorno: .5);
+  p.laco(s.xt, s.tMeia + u, (x) => _tvDaSala(p, x, s.tMeia));
+  var k = 0;
+  for (final (x0, meia) in s.vaos) {
+    if (k == 0 && meia >= 8 * u) {
+      p.laco(x0, 7 * u, (x) => _estante(p, x, 22 * u, p.hz, math.min(6 * u, meia - 1.5 * u)));
+    } else if (meia >= 9 * u) {
+      p.laco(x0, 7 * u, (x) => _quadrinhos(p, x));
+    } else {
+      p.laco(x0, 3 * u, (x) => _quadroDePaisagem(p, Rect.fromCenter(center: Offset(x, 22 * u), width: 5 * u, height: 4 * u), k));
+    }
+    k++;
+  }
+  p.faixa(p.hz - 1.2 * u, p.hz, const Color(0xFFFAF6EE), contorno: .5);
+}
+
+/// O sofá grande de 3 lugares (mostarda), com almofadas e a manta dobrada no braço.
+void _sofaGrande(_Pincel p, double x, double base, double meia) {
+  final u = p.u;
+  const cor = Color(0xFFD99A2B), claro = Color(0xFFE8AE45);
+  final costas = Rect.fromLTRB(x - meia + 1.6 * u, base - 13 * u, x + meia - 1.6 * u, base - 4 * u);
+  p.ret(costas, cor, contorno: .9, raio: 2 * u);
+  final assento = Rect.fromLTRB(x - meia + 2 * u, base - 6.4 * u, x + meia - 2 * u, base - 2 * u);
+  p.ret(assento, claro, contorno: .8, raio: 1 * u);
+  for (final f in [1 / 3, 2 / 3]) {
+    final dx = assento.left + assento.width * f;
+    p.c.drawLine(Offset(dx, assento.top), Offset(dx, assento.bottom), p.traco(.4));
+  }
+  for (final lado in [-1.0, 1.0]) {
+    final braco = Rect.fromLTRB(lado < 0 ? x - meia : x + meia - 3.6 * u, base - 8.6 * u, lado < 0 ? x - meia + 3.6 * u : x + meia,
+        base - 1.6 * u);
+    p.ret(braco, cor, contorno: .9, raio: 1.6 * u);
+    p.ret(Rect.fromLTRB(braco.center.dx - .4 * u, base - 1.6 * u, braco.center.dx + .4 * u, base), const Color(0xFF3A2A22), contorno: .3);
+  }
+  // almofadas e a manta
+  for (final (f, c2) in [(-.55, const Color(0xFF3F8F8A)), (0.0, const Color(0xFFF2EEE2)), (.5, const Color(0xFFE5533D))]) {
+    final c = Offset(x + f * meia, base - 8.6 * u);
+    p.forma(
+        Path()..addRRect(RRect.fromRectAndRadius(Rect.fromCenter(center: c, width: 4.6 * u, height: 4 * u), Radius.circular(1.3 * u))),
+        c2,
+        contorno: .6);
+  }
+  final mx = x + meia - 1.8 * u;
+  p.ret(Rect.fromLTRB(mx - 2.2 * u, base - 9.4 * u, mx + 2.2 * u, base - 4.6 * u), const Color(0xFF6FC3C9), contorno: .5, raio: .4 * u);
+  for (var i = 0; i < 2; i++) {
+    p.c.drawLine(Offset(mx - 2.2 * u, base - (8 - i * 1.8) * u), Offset(mx + 2.2 * u, base - (8 - i * 1.8) * u),
+        Paint()
+          ..color = p.luz(_branco)
+          ..strokeWidth = .4 * u);
+  }
+}
+
+/// A mesinha de centro com o balde de pipoca e o controle remoto.
+void _mesinhaDeCentro(_Pincel p, double x, double base) {
+  final u = p.u;
+  p.ret(Rect.fromLTRB(x - 7 * u, base - 5 * u, x + 7 * u, base - 4 * u), const Color(0xFF8A5F3C), contorno: .7, raio: .4 * u);
+  for (final dx in [-6.0, 6.0]) {
+    p.ret(Rect.fromLTRB(x + dx * u - .4 * u, base - 4 * u, x + dx * u + .4 * u, base), const Color(0xFF6B4A32), contorno: .3);
+  }
+  // balde de pipoca listrado
+  final bx = x - 2 * u;
+  final balde = Path()
+    ..moveTo(bx - 2.2 * u, base - 9.6 * u)
+    ..lineTo(bx + 2.2 * u, base - 9.6 * u)
+    ..lineTo(bx + 1.6 * u, base - 5 * u)
+    ..lineTo(bx - 1.6 * u, base - 5 * u)
+    ..close();
+  for (var i = 0; i < 5; i++) {
+    p.circ(Offset(bx - 1.8 * u + i * .9 * u, base - 10 * u - (i.isOdd ? .6 * u : 0)), .8 * u, const Color(0xFFFFF4D6), contorno: .25);
+  }
+  p.forma(balde, _branco, contorno: .6);
+  p.c.save();
+  p.c.clipPath(balde);
+  for (var i = 0; i < 3; i++) {
+    p.c.drawRect(Rect.fromLTWH(bx - 2.2 * u + i * 1.6 * u, base - 9.6 * u, .8 * u, 4.6 * u), p.tinta(const Color(0xFFE53935)));
+  }
+  p.c.restore();
+  p.c.drawPath(balde, p.traco(.6));
+  p.ret(Rect.fromLTRB(x + 2 * u, base - 5.6 * u, x + 5 * u, base - 5 * u), const Color(0xFF2B2B2B), contorno: .3, raio: .2 * u);
+}
+
+void _cSalaDeEstar(_Pincel p) {
+  final u = p.u;
+  // assoalho escuro em tábuas compridas
+  p.solo(const [Color(0xFFA0704A), Color(0xFF83593A)]);
+  final tabua = p.traco(.2);
+  var y0 = p.hz;
+  for (var i = 1; i < 8; i++) {
+    final y = p.hz + i * i * .62 * u;
+    p.c.drawLine(Offset(-2, y), Offset(p.w + 2, y), tabua);
+    final juntas = p.vezes(18 * u);
+    for (var k = 0; k < juntas; k++) {
+      final x = (k + .37 * i % 1 + .5 * _ruido(i * 11 + k + 50)) * p.w / juntas;
+      p.c.drawLine(Offset(x, y0), Offset(x, y), tabua);
+    }
+    y0 = y;
+  }
+  final s = _plantaDaSala(p);
+  // tapete, sofá e a mesinha de centro na frente
+  p.laco(s.xs, s.sMeia + 8 * u, (x) {
+    p.forma(Path()..addRRect(RRect.fromLTRBR(x - s.sMeia - 5 * u, p.hz + 9 * u, x + s.sMeia + 5 * u, p.hz + 17 * u, Radius.circular(.6 * u))),
+        const Color(0xFF5B6FA8),
+        contorno: .6);
+    p.c.drawRRect(
+        RRect.fromLTRBR(x - s.sMeia - 3.6 * u, p.hz + 10.2 * u, x + s.sMeia + 3.6 * u, p.hz + 15.8 * u, Radius.circular(.4 * u)),
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = .45 * u
+          ..color = p.luz(const Color(0xFFF2C95C)));
+    _sofaGrande(p, x, p.hz + 8 * u, s.sMeia);
+  });
+  p.laco(s.xs - s.sMeia * .45, 8 * u, (x) => _mesinhaDeCentro(p, x, p.hz + 14 * u));
+  p.laco(s.xs - s.sMeia - 2.6 * u, 10 * u, (x) => _luminariaDePe(p, x, p.hz + 8 * u));
+  // tela larga: um pufe perto da TV
+  if (s.vaos.isNotEmpty) {
+    p.laco(s.xt + s.tMeia + 4 * u, 3 * u, (x) {
+      p.ret(Rect.fromLTRB(x - 3 * u, p.hz + 6 * u, x + 3 * u, p.hz + 11 * u), const Color(0xFF8E6BBF), contorno: .7, raio: 1.6 * u);
+    });
+  }
 }

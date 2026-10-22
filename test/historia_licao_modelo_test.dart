@@ -147,9 +147,11 @@ void main() {
     });
 
     test('os 5 cenários e as 4 props novas entraram no fim dos enums e os cenários são interiores', () {
-      expect(CenarioHistoria.values.sublist(25).map((c) => c.name),
+      // a 2ª leva (pedidos de arte dos lotes) entrou DEPOIS destes: o teste confere a fatia de cada leva, sem
+      // mexer na ordem de antes (o Turismo depende dos índices)
+      expect(CenarioHistoria.values.sublist(25, 30).map((c) => c.name),
           ['videochamada', 'escritorio', 'casa', 'restaurante', 'loja']);
-      expect(PropHistoria.values.sublist(24).map((p) => p.name), ['notebook', 'prato', 'sacola', 'documento']);
+      expect(PropHistoria.values.sublist(24, 28).map((p) => p.name), ['notebook', 'prato', 'sacola', 'documento']);
       for (final c in CenarioHistoria.values.sublist(25)) {
         expect(interioresHistoria.contains(c), isTrue, reason: c.name);
         expect(horasPermitidas(c), HoraHistoria.values.toSet(), reason: c.name);
