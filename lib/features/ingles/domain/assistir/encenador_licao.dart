@@ -390,9 +390,12 @@ List<String> _grafemas(String s) {
   return r;
 }
 
-/// A chave de busca do grafema: sem U+FE0F e sem tom de pele (`👋🏽` → `👋`, `☝️` → `☝`).
-String _chaveDoEmoji(String g) =>
-    String.fromCharCodes(g.runes.where((c) => c != 0xFE0F && c != 0xFE0E && !_ehTomDePele(c)));
+/// A chave de busca do grafema: sem U+FE0F, sem tom de pele e sem a variante de gênero (`👋🏽` → `👋`,
+/// `☝️` → `☝`, `🙋‍♀️` → `🙋`, `🙅🏽‍♂️` → `🙅`: a pessoa + ZWJ + ♀/♂ faz o mesmo gesto da pessoa).
+String _chaveDoEmoji(String g) {
+  final k = String.fromCharCodes(g.runes.where((c) => c != 0xFE0F && c != 0xFE0E && !_ehTomDePele(c)));
+  return k.length > 2 && (k.endsWith('‍♀') || k.endsWith('‍♂')) ? k.substring(0, k.length - 2) : k;
+}
 
 // ───────────────────────────── o encenador ─────────────────────────────
 
