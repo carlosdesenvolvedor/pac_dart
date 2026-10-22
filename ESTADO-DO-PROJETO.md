@@ -2532,6 +2532,18 @@ Medida com um **harness em node** (scratchpad, fora do repo): roda o `turismo3d.
 WebGL falso que só **conta** chamadas (`compileShader`, `linkProgram`, uploads de textura), qualidade Leve, pista de 3,2 km com 26
 pórticos (1 carro + 1 ficha cada; fichas pegas ao passar, 1 batida a cada 3 pórticos), 30 m/s, 6.280 quadros.
 
+- **Só no curso de inglês (pedido do dono: Dart e C# EXATAMENTE como estavam).** O `vista_3d_web.dart` manda `ingles:
+  Linguagem.atual == Linguagem.ingles` no config do `montar` (mesma chave da branch `claude/turismo-mundos`); o JS guarda
+  `ingles = !!config.ingles` (variável do módulo, posta no começo do `montar`) e cada bloco "⚡ desempenho (22/out)" só liga com ela:
+  pool de luzes por intensidade (senão 5 luzes, intensidade 18, `visible` como antes), guardião das faíscas e 1º "+3 🪙" no
+  `aquecer()`, texturas adiantadas, índice do tráfego e `vigiarProgramas`. Com `ingles` false nada é criado a mais. O que sobra
+  fora da chave é só refatoração equivalente (`materialFaisca` com os mesmos parâmetros, `novoPopup` com o mesmo pool) e os
+  campos novos do `debug()`.
+- **Medida com a chave (simulador, Leve):** `ingles: false` = **idêntico ao main** — tema 3: 72 programas / 144 compileShader em 34
+  quadros, 129 uploads na corrida; tema 26: 71 / 142; tema 1: 26 / 52; no tema 3 o traço quadro a quadro (compiles, uploads, draws)
+  tem o mesmo sha1 do main (nos temas 26 e 1 o traço varia de uma execução para outra até no próprio main: faíscas, batidas e fogos usam
+  `Math.random`). `ingles: true` = **0 programas na corrida** nos três temas e 94 uploads.
+
 - **Causa nº 1 — shader compilado no meio da corrida (o engasgo "em algumas partes").** Antes / depois, durante a corrida:
   tema 3 (cidade) **72 programas / 144 compileShader em 34 quadros → 0**; tema 26 (estádio) **71 → 0**; tema 1 (campina, sem postes)
   **26 → 0**. `renderer.info.programs` no fim: 64 → 19. Duas fontes:
@@ -2575,7 +2587,8 @@ pórticos (1 carro + 1 ficha cada; fichas pegas ao passar, 1 batida a cada 3 pó
     ar; o blur já fora pulado em 20/out). `pista_gt` (vista 2D sem 3D) repinta todo quadro por natureza.
   - `destruir()` não descarta geometrias/texturas da pista, placas e carros (só os extras dos mundos): o Dart chama `destruir()` com
     `forceContextLoss` ao sair, o que libera a GPU; só um `montar` repetido no mesmo canvas acumularia.
-- **Testes:** novo `test/arcade_desempenho_test.dart` (3: velocímetro sem relayout de texto repetido; cache limitado; fora do inglês sem cache). `arcade_*` + `turismo_*` + `progresso_turismo_30` + `engenheiro_gt` (23 arquivos): **286/286 passam**, nenhum teste antigo editado. `flutter analyze lib test`: sem avisos. `node --check` do JS numa cópia: ok.
-- **Conferir no aparelho (a máquina onde trava, no Leve):** uma corrida num mundo com postes (cidade, pista 3/17/18/25/26) e pegando
+- **Testes:** novo `test/arcade_desempenho_test.dart` (3: velocímetro sem relayout de texto repetido; cache limitado; fora do inglês sem cache). `arcade_*` + `turismo_*` + `progresso_turismo_30` + `engenheiro_gt` (23 arquivos): **287/287 passam** (com a chave `ingles`), nenhum teste antigo editado. `flutter analyze lib test`: sem avisos. `node --check` do JS numa cópia: ok.
+- **Conferir no aparelho (a máquina onde trava, no Leve, no curso de INGLÊS):** uma corrida num mundo com postes (cidade, pista 3/17/18/25/26) e pegando
   várias fichas; no console `turismo3d.debug().programasNovosNaCorrida` deve ficar **0** (antes subia a cada ficha) e
   `luzesPostes` = {pool: 4, visíveis: 4, acesas: 3–4}; conferir que os postes iluminam o asfalto como antes e que o "+3 🪙" aparece.
+  No Dart/C#, `programasNovosNaCorrida` fica `null` (diagnóstico desligado) e `luzesPostes.pool` = 5, como antes.

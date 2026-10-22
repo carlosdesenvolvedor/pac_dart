@@ -272,7 +272,8 @@ function aplicarQualidade(nivel) {
   for (const m of lampadasMalhas) m.castShadow = false;
   if (luzCarro) luzCarro.visible = perfilAtual.luzes;
   for (const l of faroisLuz) l.visible = perfilAtual.luzes;
-  for (const l of luzesPool) l.visible = perfilAtual.luzes; // contagem fixa: ver construirLampadas
+  if (ingles) { for (const l of luzesPool) l.visible = perfilAtual.luzes; } // contagem fixa: ver construirLampadas
+  else if (!perfilAtual.luzes) for (const l of luzesPool) l.visible = false;
   if (!renderer) return;
   aplicarTamanho();
   const sombras = nivel !== 'minima';
@@ -351,9 +352,10 @@ async function aquecer() {
   // o que só nascia na 1ª ficha/batida (e compilava shader no meio da
   // corrida): o guardião das faíscas e o 1º sprite "+3 🪙" (invisível; o
   // pool de coletarFicha o reaproveita)
-  if (!renderer || !scene) return;
-  guardarProgramaFaiscas();
-  if (portais.some((pt) => pt.fichas && pt.fichas.length) && !popups.length) novoPopup();
+  if (ingles && renderer && scene) {
+    guardarProgramaFaiscas();
+    if (portais.some((pt) => pt.fichas && pt.fichas.length) && !popups.length) novoPopup();
+  }
   try {
     if (renderer.compileAsync) await renderer.compileAsync(scene, camera); else renderer.compile(scene, camera);
   } catch (e) { console.warn('[turismo3d] compile', e); }
@@ -368,8 +370,10 @@ async function aquecer() {
   try { for (let i = 0; i < 3; i++) renderer.render(scene, camera); } catch (e) { console.warn('[turismo3d] aquecer', e); }
   obstaculos.forEach((o, i) => { o.visible = salvo[i]; });
   // texturas que só apareceriam depois: placas/fichas do começo e o "+3 🪙"
-  subirTexturasAdiante(0, Infinity);
-  if (popupTex) { try { renderer.initTexture(popupTex); } catch (e) {} }
+  if (ingles) {
+    subirTexturasAdiante(0, Infinity);
+    if (popupTex) { try { renderer.initTexture(popupTex); } catch (e) {} }
+  }
 }
 let camPos = new THREE.Vector3(), camAlvo = new THREE.Vector3();
 let tremor = 0;
@@ -637,7 +641,7 @@ function construirFichas(port, p) {
   if (!p.fichas) return;
   for (const f of p.fichas) {
     const tex = texturaFicha(f.texto);
-    texturasAdiante.push({ z: f.z, tex });
+    if (ingles) texturasAdiante.push({ z: f.z, tex });
     const mat = new THREE.MeshStandardMaterial({ map: tex, emissive: 0xffc73b, emissiveMap: tex, emissiveIntensity: .35, metalness: .6, roughness: .35, side: THREE.DoubleSide, transparent: true });
     const moeda = new THREE.Mesh(new THREE.CircleGeometry(0.62, 32), mat);
     const q = pose(f.z);
@@ -776,14 +780,14 @@ function construirPortais() {
       placa.position.set((faixa - 1) * LARGURA_FAIXA, 4.55, 0.22);
       grupo.add(placa);
       placas.push({ ...ct, faixa, texto, sub, estiloAtual: estilo, i });
-      texturasAdiante.push({ z: p.z, tex: ct.tex });
+      if (ingles) texturasAdiante.push({ z: p.z, tex: ct.tex });
     }
     scene.add(grupo);
     const port = { grupo, placas, dados: p };
     construirFichas(port, p);
     portais.push(port);
   }
-  texturasAdiante.sort((a, b) => a.z - b.z);
+  if (ingles) texturasAdiante.sort((a, b) => a.z - b.z);
   if (postesGeos.length) {
     const postes = new THREE.Mesh(fundir(postesGeos), posteMat);
     postes.castShadow = true;
@@ -913,7 +917,7 @@ function atualizarPlacas() {
     if (flags.carros) {
       for (let i = 0; i < flags.carros.length; i++) {
         const fc = flags.carros[i];
-        const o = obstaculoDoCarro.get(k * 8 + i);
+        const o = ingles ? obstaculoDoCarro.get(k * 8 + i) : obstaculos.find((ob) => ob.userData.portalK === k && ob.userData.carroI === i);
         if (!o) continue;
         if (fc.batido && !o.userData.arremessado) {
           bater(port, o.userData.faixa, fc.z);
@@ -1090,7 +1094,7 @@ async function construirObstaculos() {
       obstaculos.push(modelo);
       // o 1º que casa ganha, como o find() de antes
       const chave = modelo.userData.portalK * 8 + modelo.userData.carroI;
-      if (modelo.userData.carroI >= 0 && !obstaculoDoCarro.has(chave)) obstaculoDoCarro.set(chave, modelo);
+      if (ingles && modelo.userData.carroI >= 0 && !obstaculoDoCarro.has(chave)) obstaculoDoCarro.set(chave, modelo);
     }
   }
 }
@@ -1316,6 +1320,10 @@ async function construirCenario() {
 let postesLuz = [];
 let luzesPool = [];
 const LUZES_POOL = 4, INTENSIDADE_POSTE = 18;
+// ⚡ desempenho (22/out) só no curso de inglês (`config.ingles` do Dart): com
+// `ingles` false (Dart e C#) TODOS os blocos marcados assim ficam desligados e
+// o motor se comporta exatamente como antes deles
+let ingles = false;
 function construirLampadas() {
   const tema = cfg.tema;
   if (!tema.lampadas) return;
@@ -1329,10 +1337,11 @@ function construirLampadas() {
   // meio da corrida (o engasgo dos mundos com postes, mesmo no Leve). São 4
   // (não 5): com um poste a cada 60 m e a janela de 200 m de atualizarLuzes
   // nunca cabem 5 — a 5ª luz nunca acendia.
-  for (let i = 0; i < LUZES_POOL; i++) {
+  // (Dart/C#: o pool de antes — 5 luzes, intensidade 18, ligadas por `visible`)
+  for (let i = 0; i < (ingles ? LUZES_POOL : 5); i++) {
     const cor = tema.luzes && tema.luzes.cor != null ? tema.luzes.cor : (coresNeon ? coresNeon[i % 2] : 0xffe0a0);
-    const luz = new THREE.PointLight(cor, 0, 24, 2);
-    luz.visible = perfilAtual.luzes;
+    const luz = new THREE.PointLight(cor, ingles ? 0 : INTENSIDADE_POSTE, 24, 2);
+    luz.visible = ingles ? perfilAtual.luzes : false;
     scene.add(luz);
     luzesPool.push(luz);
   }
@@ -1411,6 +1420,17 @@ function construirLampadas() {
 }
 function atualizarLuzes(posicao) {
   if (!luzesPool.length || !postesLuz.length || !perfilAtual.luzes) return;
+  if (!ingles) {
+    // Dart/C#: como antes — os 5 postes mais próximos à frente/atrás ganham luz de verdade
+    const perto = postesLuz.filter((p) => p.d > posicao - 40 && p.d < posicao + 160).slice(0, luzesPool.length);
+    luzesPool.forEach((luz, i) => {
+      const p = perto[i];
+      luz.visible = !!p;
+      if (p) luz.position.copy(p.pos);
+      if (p && p.cor != null) luz.color.setHex(p.cor);
+    });
+    return;
+  }
   // os postes mais próximos à frente/atrás do carro ganham luz de verdade (os
   // primeiros da janela, na ordem da pista); a luz que sobra fica visível com
   // intensidade 0 — ver construirLampadas. Sem filter/slice: nada alocado por quadro.
@@ -2366,6 +2386,7 @@ let estadoCarga = null;
 async function montar(canvas, config) {
   destruir(true); // a corrida anterior sai, mas o contexto fica (pode ser o mesmo canvas)
   cfg = { ...config };
+  ingles = !!config.ingles; // liga os blocos "⚡ desempenho (22/out)" (Dart/C#: tudo como antes)
   estadoCarga = { posicao: 0, velocidade: 0, velMax: 30, x: 0, xAlvo: 0, impacto: 0, boost: 0, som: config.som !== false, musica: config.musicaLigada !== false }; // config.musica é a URL da faixa
   // tema que não existe (Dart mais novo que este módulo): cai no mundo base que o Dart mandou
   const temaPedido = TEMAS[config.tema];
@@ -2566,8 +2587,10 @@ async function montar(canvas, config) {
   vigiaAte = performance.now() + 3000;
   // medida pro debug(): programas de shader compilados DEPOIS da largada
   // (cada um é um engasgo; o ideal é 0 — só a troca de nível do vigia cria)
-  maiorIdPrograma = -1; nProgramasVisto = -1; vigiarProgramas();
-  api.programasNaLargada = maiorIdPrograma;
+  if (ingles) {
+    maiorIdPrograma = -1; nProgramasVisto = -1; vigiarProgramas();
+    api.programasNaLargada = maiorIdPrograma;
+  }
   api.progresso = 1;
   api.pronto = true;
 }
@@ -3077,10 +3100,10 @@ function quadro() {
     o.visible = dz > -30 && dz < perfilAtual.trafego;
   }
   atualizarPlacas();
-  if (api.pronto) subirTexturasAdiante(e.posicao || 0, 1);
+  if (ingles && api.pronto) subirTexturasAdiante(e.posicao || 0, 1);
   api.quadros++;
   renderer.render(scene, camera);
-  vigiarProgramas();
+  if (ingles) vigiarProgramas();
 }
 // diagnóstico (debug().programasNovosNaCorrida): o id dos programas do
 // three.js só cresce; guarda o maior visto (varre a lista só quando o

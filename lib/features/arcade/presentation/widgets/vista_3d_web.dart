@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:web/web.dart' as web;
 
+import '../../../../core/linguagem/linguagem.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../domain/turismo.dart';
 import 'ambiente_turismo.dart';
@@ -214,6 +215,8 @@ class _Vista3DState extends State<Vista3D> {
       // efeitos (motor/vento) e o 🎸 estão ligados
       'som': widget.som,
       'musicaLigada': widget.musica,
+      // ⚡ os ajustes de desempenho do 3D (22/out) valem só no curso de inglês; Dart/C# como antes
+      'ingles': Linguagem.atual == Linguagem.ingles,
       'segmentos': [for (final s in e.segmentos) s.curva],
       'comprimentoSegmento': TurismoEngine.comprimentoSegmento,
       'distancia': e.pista.distancia,
