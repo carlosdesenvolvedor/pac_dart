@@ -1,0 +1,841 @@
+{
+  "versao": 1,
+  "trilha": "passiva-2",
+  "arco": "Uma semana de obras e consertos: o caminho até o coworking de Chicago em reforma, as correções contadas à Sarah, o relatório de despesas refeito, os freios consertados, os boatos da copa virtual e o status de um incidente escrito com calma. E o café sempre por perto.",
+  "licoes": {
+    "passiva-2.esta-sendo-consertado": {
+      "titulo": {
+        "en": "Everything is being repaired",
+        "pt": "Tudo em obras"
+      },
+      "cenas": [
+        {
+          "cenario": "cidade",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "ana",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "mapa",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-858bb8",
+              "acao": "escreve",
+              "emocao": "pensativo",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-ff91af",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-0fe3b3",
+              "acao": "aponta",
+              "alvo": "mapa",
+              "emocao": "cansado"
+            }
+          ]
+        },
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "celular",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "ana",
+              "remoto": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "engenheiro",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "documento",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "anda",
+              "para": "centroEsquerda",
+              "emocao": "cansado",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-0d504a",
+              "acao": "aponta",
+              "alvo": "documento",
+              "emocao": "cansado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-a117fd",
+              "acao": "escreve",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "engenheiro",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-095902",
+              "emocao": "cansado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-7ac590",
+              "acao": "aponta",
+              "alvo": "engenheiro",
+              "emocao": "surpreso",
+              "reacoes": [
+                {
+                  "quem": "engenheiro",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-0d6ff9",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "escreve",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "engenheiro",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "passiva-2.ja-foi-feito": {
+      "titulo": {
+        "en": "It has already been done",
+        "pt": "Já está feito"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "sarah",
+              "remoto": "celular",
+              "emocao": "nervoso"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "cafe",
+              "pos": "centro"
+            },
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-cd138b",
+              "emocao": "nervoso",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-dccf38",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-b56bac",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-6d3311",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "nervoso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "olha",
+              "alvo": "notebook",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-1ebabe",
+              "acao": "nega",
+              "emocao": "timido"
+            },
+            {
+              "frase": "f-4fbae5",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa"
+                }
+              ]
+            },
+            {
+              "frase": "f-b0c9ad",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-4d21f3",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "escreve"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "passiva-2.deveria-ter-sido-enviado": {
+      "titulo": {
+        "en": "The expense report mess",
+        "pt": "A novela do relatório de despesas"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroDireita",
+              "segura": "carta",
+              "emocao": "pensativo"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-1ef65e",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-428122",
+              "acao": "mostra",
+              "emocao": "nervoso",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-4c6db0",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "escreve",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-41421f",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-9f387d",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "escreve"
+                }
+              ]
+            },
+            {
+              "frase": "f-442ec1",
+              "acao": "nega",
+              "emocao": "cansado",
+              "camera": "close"
+            },
+            {
+              "frase": "f-884c68",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "dupla",
+              "alvo": "sarah",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-e8209b",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "passiva-2.mandei-consertar": {
+      "titulo": {
+        "en": "I had my brakes fixed",
+        "pt": "Mandei consertar os freios"
+      },
+      "cenas": [
+        {
+          "cenario": "cidade",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "visivel": false,
+              "segura": "documento",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "emma",
+              "pos": "centroDireita",
+              "segura": "sacola",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "entra",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-cc3777",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "emma",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-bc3c8e",
+              "emocao": "surpreso",
+              "efeito": "estalo",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-bd0f42",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-9330f2",
+              "acao": "aponta",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-aac11a",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-e499c4",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-1b52e8",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-0808e5",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "dupla",
+              "alvo": "voce"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "acao": "escreve",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "passiva-2.ouvi-dizer-que-e-a-previsao": {
+      "titulo": {
+        "en": "Rumors in the virtual kitchen",
+        "pt": "Boatos na copa virtual"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "ana",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "segura": "cafe",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "visivel": false,
+              "segura": "documento"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-eb4f7f",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                },
+                {
+                  "quem": "mike",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-7249d2",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-59b23b",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-06a3c8",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-03d228",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "entra",
+              "emocao": "timido",
+              "efeito": "suor",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "acena"
+                }
+              ]
+            },
+            {
+              "frase": "f-fca9bc",
+              "acao": "nega",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-85488f",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-fd67cb",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "palmas"
+                },
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "passiva-2.cena-status-de-um-incidente": {
+      "titulo": {
+        "en": "Writing the incident update",
+        "pt": "O status do incidente"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "mike",
+              "remoto": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            },
+            {
+              "prop": "celular",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "emocao": "nervoso",
+              "efeito": "suor",
+              "objetos": [
+                {
+                  "prop": "celular",
+                  "acao": "treme"
+                }
+              ]
+            },
+            {
+              "frase": "f-1291d2",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-e3c256",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-081fe9",
+              "acao": "concorda",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-a65519",
+              "acao": "nega",
+              "emocao": "cansado"
+            },
+            {
+              "frase": "f-6d0435",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-d567f0",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "close"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "surpreso",
+              "objetos": [
+                {
+                  "prop": "celular",
+                  "acao": "some"
+                },
+                {
+                  "prop": "cafe",
+                  "acao": "aparece",
+                  "pos": "centro"
+                }
+              ]
+            },
+            {
+              "frase": "f-06b2d6",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-02b474",
+              "acao": "nega",
+              "emocao": "determinado"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

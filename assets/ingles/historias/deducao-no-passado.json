@@ -1,0 +1,179 @@
+{
+  "versao": 1,
+  "trilha": "deducao-no-passado",
+  "arco": "Uma semana de pequenos mistérios: as chaves somem antes do voo, um dev novo jura ter visto o Mike, o build da noite quebra, o jantar na casa da Emma vira uma chuva de 'não precisava' e um e-mail some no caminho. Cada pista leva a um sorriso.",
+  "licoes": {
+    "deducao-no-passado.devo-ter-deixado-no-escritorio": {
+      "titulo": { "en": "The missing keys", "pt": "As chaves sumidas" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "nervoso" },
+            { "quem": "julia", "pos": "centroDireita", "segura": "sacola", "emocao": "pensativo" }
+          ],
+          "objetos": [ { "prop": "mala", "pos": "esquerda" } ],
+          "passos": [
+            { "frase": "f-9d6888", "acao": "pensa", "emocao": "pensativo", "camera": "geral",
+              "reacoes": [ { "quem": "julia", "emocao": "pensativo" } ] },
+            { "frase": "f-464410", "acao": "aponta", "alvo": "voce", "emocao": "surpreso",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso", "efeito": "suor" } ] },
+            { "frase": "f-d86a23", "acao": "aponta", "emocao": "determinado", "efeito": "exclamacao", "camera": "medio" },
+            { "mudo": true, "quem": "julia", "acao": "anda", "para": "direita", "emocao": "pensativo" },
+            { "frase": "f-274343", "acao": "nega", "alvo": "voce", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso" } ] },
+            { "frase": "f-42dd30", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-c18261", "acao": "nega", "alvo": "julia", "emocao": "cansado" },
+            { "frase": "f-1a91f1", "acao": "mostra", "segura": "chave", "alvo": "voce", "emocao": "timido", "efeito": "suor", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "julia", "acao": "anda", "para": "centroDireita", "emocao": "timido" },
+            { "frase": "f-16847d", "acao": "pensa", "alvo": "julia", "emocao": "pensativo", "camera": "dupla",
+              "reacoes": [ { "quem": "julia", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "julia", "segura": "nada", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "segura": "chave", "acao": "comemora", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "deducao-no-passado.nao-pode-ter-sido-ele": {
+      "titulo": { "en": "It couldn't have been Mike", "pt": "Não pode ter sido o Mike" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "neutro" },
+            { "quem": "dev-novo", "pos": "centroDireita", "emocao": "determinado" },
+            { "quem": "mike", "remoto": "celular", "emocao": "neutro" }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "direita" } ],
+          "passos": [
+            { "frase": "f-6d79e9", "acao": "aponta", "alvo": "notebook", "emocao": "determinado", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-bb7270", "acao": "nega", "alvo": "dev-novo", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-b77305", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-8bec2a", "acao": "nega", "alvo": "dev-novo", "emocao": "feliz" },
+            { "frase": "f-d67f82", "emocao": "timido", "efeito": "suor",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-9683e4", "acao": "mostra", "alvo": "dev-novo", "emocao": "feliz",
+              "reacoes": [ { "quem": "dev-novo", "acao": "olha", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "emocao": "surpreso", "efeito": "notas" },
+            { "frase": "f-e84aeb", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-9d384c", "acao": "concorda", "emocao": "feliz", "efeito": "brilho", "camera": "close",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" }, { "quem": "dev-novo", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" }, { "quem": "dev-novo", "acao": "acena", "emocao": "feliz", "efeito": "suor" } ] }
+          ]
+        }
+      ]
+    },
+    "deducao-no-passado.por-que-o-build-quebrou": {
+      "titulo": { "en": "The broken nightly build", "pt": "O build da noite quebrou" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "amanhecer", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "cansado" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "cafe", "emocao": "pensativo" }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-cdf9a8", "acao": "pensa", "emocao": "pensativo", "camera": "geral" },
+            { "frase": "f-727b5e", "acao": "nega", "alvo": "voce", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-fd5c84", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-6320a0", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo", "efeito": "interrogacao",
+              "reacoes": [ { "quem": "mike", "acao": "nega", "emocao": "pensativo" } ] },
+            { "frase": "f-b40c16", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-e9352a", "acao": "concorda", "alvo": "voce", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "alvo": "notebook", "emocao": "determinado" },
+            { "frase": "f-845c85", "acao": "aponta", "alvo": "notebook", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close" },
+            { "frase": "f-609646", "acao": "concorda", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "comemora", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "mike", "acao": "palmas", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "deducao-no-passado.nao-precisava-didn-t-have-to": {
+      "titulo": { "en": "You didn't have to", "pt": "Não precisava" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "presente", "emocao": "feliz", "visivel": false },
+            { "quem": "emma", "pos": "centroDireita", "emocao": "neutro" }
+          ],
+          "objetos": [ { "prop": "prato", "pos": "direita" } ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "entra", "emocao": "feliz" },
+            { "frase": "f-d3399f", "acao": "acena", "alvo": "voce", "emocao": "surpreso", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-06284e", "acao": "concorda", "alvo": "emma", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-4c2ccc", "acao": "aponta", "alvo": "voce", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "mostra", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "voce", "segura": "nada", "emocao": "feliz",
+              "reacoes": [ { "quem": "emma", "segura": "presente", "emocao": "radiante", "efeito": "coracoes" } ] },
+            { "frase": "f-f82c75", "acao": "aponta", "alvo": "prato", "emocao": "radiante",
+              "reacoes": [ { "quem": "emma", "emocao": "timido" } ] }
+          ]
+        },
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "cansado" },
+            { "quem": "mike", "pos": "centro", "emocao": "feliz" },
+            { "quem": "sarah", "pos": "centroDireita", "segura": "documento", "visivel": false }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-230d80", "acao": "nega", "emocao": "cansado", "efeito": "suor", "camera": "geral" },
+            { "frase": "f-96c2df", "acao": "concorda", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "sarah", "acao": "entra", "emocao": "nervoso", "efeito": "suor" },
+            { "frase": "f-41b530", "acao": "acena", "emocao": "timido", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-5b41ad", "acao": "mostra", "alvo": "voce", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "mike", "acao": "palmas", "emocao": "feliz" }, { "quem": "sarah", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "deducao-no-passado.cena-o-misterio-do-e-mail": {
+      "titulo": { "en": "The mystery of the email", "pt": "O mistério do e-mail" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "carta", "emocao": "pensativo" },
+            { "quem": "ana", "pos": "centro", "emocao": "pensativo" },
+            { "quem": "sarah", "pos": "centroDireita", "segura": "documento", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-58b0c0", "acao": "nega", "emocao": "pensativo", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-0f2042", "acao": "aponta", "alvo": "sarah", "emocao": "pensativo" },
+            { "frase": "f-bce3ae", "acao": "pensa", "alvo": "sarah", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-4177b6", "acao": "nega", "emocao": "determinado",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "ana", "acao": "pensa", "efeito": "interrogacao" },
+            { "frase": "f-00ff76", "acao": "aponta", "alvo": "voce", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "mostra", "emocao": "timido", "efeito": "suor" } ] },
+            { "frase": "f-dd5bac", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close" },
+            { "frase": "f-8f9845", "acao": "aponta", "alvo": "sarah", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "ana", "acao": "comemora", "emocao": "radiante" } ] },
+            { "frase": "f-618b57", "acao": "concorda", "alvo": "voce", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "acao": "concorda", "emocao": "radiante" }, { "quem": "ana", "acao": "palmas", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

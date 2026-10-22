@@ -1,0 +1,662 @@
+{
+  "versao": 1,
+  "trilha": "situacao-carro-estrada",
+  "arco": "A vida prática nos EUA: num fim de semana de viagem com a Sarah, o aluno aluga um carro no aeroporto, se perde na estrada, leva multa e tem o carro guinchado no centro, fura um pneu na volta e depois conta tudo ao Mike, rindo.",
+  "licoes": {
+    "situacao-carro-estrada.alugando-o-carro": {
+      "titulo": {
+        "en": "Picking up the rental car",
+        "pt": "Retirando o carro alugado"
+      },
+      "cenas": [
+        {
+          "cenario": "aeroporto",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "atendente",
+              "pos": "centroDireita",
+              "segura": "chave",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "mala",
+              "pos": "esquerda"
+            },
+            {
+              "prop": "documento",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-8cf988",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-23250c",
+              "acao": "olha",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "mostra",
+              "segura": "documento",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-2bad45",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-e7feed",
+              "acao": "aponta",
+              "alvo": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-f873fc",
+              "emocao": "nervoso",
+              "efeito": "suor",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-99a8e2",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "dupla",
+              "alvo": "atendente"
+            },
+            {
+              "frase": "f-dad1fb",
+              "acao": "nega",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "segura": "nada",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "chave",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-3beca1",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-carro-estrada.na-estrada-e-no-posto": {
+      "titulo": {
+        "en": "Missed exit, almost out of gas",
+        "pt": "Saída perdida e tanque na reserva"
+      },
+      "cenas": [
+        {
+          "cenario": "cidade",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroDireita",
+              "segura": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "mapa",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-f4842b",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "mostra"
+                }
+              ]
+            },
+            {
+              "frase": "f-ea3d9f",
+              "acao": "aponta",
+              "alvo": "mapa",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-42ae79",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-7e8ef4",
+              "acao": "mostra",
+              "emocao": "cansado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "pensa",
+              "emocao": "nervoso",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-9d60df",
+              "acao": "aponta",
+              "alvo": "mapa",
+              "emocao": "nervoso",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-66244d",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "anda",
+              "para": "centro",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-47f68a",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "dupla",
+              "alvo": "sarah"
+            },
+            {
+              "frase": "f-78211d",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-carro-estrada.estacionamento-e-multa": {
+      "titulo": {
+        "en": "The car got towed",
+        "pt": "O carro foi guinchado"
+      },
+      "cenas": [
+        {
+          "cenario": "hotel",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "chave",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "recepcionista",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "esquerda",
+              "segura": "mala",
+              "emocao": "cansado"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-692011",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-8503b1",
+              "acao": "nega",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "cidade",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "chave",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "documento",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-76e763",
+              "acao": "aponta",
+              "alvo": "documento",
+              "emocao": "surpreso",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "documento",
+              "emocao": "cansado",
+              "objetos": [
+                {
+                  "prop": "documento",
+                  "acao": "some"
+                }
+              ]
+            },
+            {
+              "frase": "f-fa44ce",
+              "acao": "mostra",
+              "emocao": "cansado",
+              "camera": "close"
+            },
+            {
+              "frase": "f-823582",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-885b8f",
+              "acao": "aponta",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-80a810",
+              "acao": "nega",
+              "emocao": "cansado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "triste"
+                }
+              ]
+            },
+            {
+              "frase": "f-7ce88b",
+              "acao": "pensa",
+              "emocao": "timido",
+              "efeito": "suor",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "nega",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-carro-estrada.o-carro-deu-problema": {
+      "titulo": {
+        "en": "A flat tire on the highway",
+        "pt": "Pneu furado na rodovia"
+      },
+      "cenas": [
+        {
+          "cenario": "cidade",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroDireita",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "atendente",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "mala",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-a31347",
+              "acao": "aponta",
+              "emocao": "nervoso",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-b6e0fc",
+              "acao": "aponta",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "nervoso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-4b4898",
+              "emocao": "nervoso",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "nervoso"
+                }
+              ]
+            },
+            {
+              "frase": "f-48bddb",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-661af6",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "close"
+            },
+            {
+              "frase": "f-577cc7",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-834880",
+              "acao": "nega",
+              "emocao": "cansado",
+              "efeito": "zzz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-96409d",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "mostra",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

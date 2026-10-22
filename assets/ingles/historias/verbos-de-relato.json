@@ -1,0 +1,177 @@
+{
+  "versao": 1,
+  "trilha": "verbos-de-relato",
+  "arco": "Com o time maior, o aluno vira quem conta o que cada um disse: põe a Ana em dia sobre a demo, narra a novela do fornecedor, anota os avisos antes do feriado, relata a negociação ao Mike e fecha a semana com a ata. O café nunca sai de perto.",
+  "licoes": {
+    "verbos-de-relato.ela-sugeriu-adiar-a-demo": {
+      "titulo": { "en": "Catching Ana up", "pt": "Pondo a Ana em dia" },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "documento", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "cafe", "visivel": false }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "ana", "acao": "entra", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-6061cf", "acao": "mostra", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "emocao": "pensativo" } ] },
+            { "frase": "f-74d1be", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-13ca70", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
+            { "frase": "f-877c86", "acao": "mostra", "emocao": "determinado" },
+            { "frase": "f-3f435a", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-09869e", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-e9b83b", "emocao": "radiante", "efeito": "estalo", "camera": "close",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-ea44b1", "acao": "escreve", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "verbos-de-relato.ele-admitiu-ter-errado": {
+      "titulo": { "en": "The wrong test phones", "pt": "Os celulares de teste errados" },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "cansado" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-8c53bf", "acao": "mostra", "emocao": "cansado", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-6f9170", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-31b604", "acao": "nega", "emocao": "cansado",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-7a3bcd", "acao": "concorda", "emocao": "neutro",
+              "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
+            { "frase": "f-856ac4", "acao": "nega", "emocao": "bravo", "efeito": "suor", "camera": "close",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "cansado" } ] },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "emocao": "neutro" },
+            { "frase": "f-a5d2ad", "acao": "concorda", "emocao": "timido",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-20c9aa", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "palmas", "emocao": "feliz" } ] },
+            { "frase": "f-95ca57", "acao": "pensa", "emocao": "timido",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "verbos-de-relato.avisaram-esperam-nao-permitem": {
+      "titulo": { "en": "Warnings before the holiday", "pt": "Os avisos antes do feriado" },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            { "quem": "sarah", "pos": "esquerda", "segura": "documento", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "documento", "emocao": "neutro" },
+            { "quem": "ana", "pos": "centroDireita", "emocao": "nervoso" },
+            { "quem": "mike", "pos": "direita", "emocao": "neutro" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-adb6cc", "acao": "aponta", "alvo": "voce", "emocao": "nervoso", "efeito": "exclamacao", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-199f4a", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "mike", "acao": "concorda" } ] },
+            { "frase": "f-db72c3", "acao": "aponta", "alvo": "sarah", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "acao": "mostra", "emocao": "feliz" } ] },
+            { "frase": "f-d36b2e", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "acao": "escreve" } ] },
+            { "frase": "f-d735bc", "acao": "nega", "emocao": "determinado" },
+            { "frase": "f-a08742", "acao": "nega", "emocao": "timido", "efeito": "suor", "camera": "close",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "emocao": "cansado", "efeito": "zzz" },
+            { "frase": "f-900583", "acao": "aponta", "alvo": "ana", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "segura": "cafe", "emocao": "feliz" }, { "quem": "mike", "acao": "concorda" } ] },
+            { "frase": "f-244d61", "acao": "escreve", "emocao": "determinado" },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "sarah", "acao": "acena", "emocao": "feliz" }, { "quem": "ana", "acao": "acena", "emocao": "feliz" }, { "quem": "mike", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "verbos-de-relato.ofereceu-recusou-prometeu": {
+      "titulo": { "en": "How the negotiation went", "pt": "Como foi a negociação" },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "mike", "remoto": "celular", "emocao": "neutro" }
+          ],
+          "objetos": [
+            { "prop": "cafe", "pos": "esquerda" },
+            { "prop": "documento", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-be815f", "acao": "aponta", "alvo": "documento", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "frase": "f-274c0a", "emocao": "feliz" },
+            { "frase": "f-e0d544", "acao": "nega", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-7fb332", "acao": "nega", "emocao": "cansado", "efeito": "suor" },
+            { "mudo": true, "quem": "voce", "acao": "anda", "para": "centroDireita", "emocao": "determinado" },
+            { "frase": "f-eb6c29", "acao": "aponta", "alvo": "documento", "emocao": "determinado",
+              "reacoes": [ { "quem": "mike", "emocao": "pensativo" } ] },
+            { "frase": "f-a945fb", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-8fa9e4", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "timido" } ] },
+            { "frase": "f-3bc750", "acao": "nega", "emocao": "feliz", "camera": "close",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "alvo": "documento", "emocao": "radiante",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "verbos-de-relato.cena-a-ata-da-reuniao": {
+      "titulo": { "en": "Writing the meeting minutes", "pt": "Escrevendo a ata da reunião" },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "documento", "emocao": "pensativo" }
+          ],
+          "objetos": [
+            { "prop": "cafe", "pos": "centro" },
+            { "prop": "notebook", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-d5756b", "acao": "escreve", "emocao": "timido", "camera": "geral" },
+            { "frase": "f-df098f", "acao": "nega", "emocao": "pensativo" },
+            { "frase": "f-122ec7", "acao": "aponta", "alvo": "notebook", "emocao": "determinado", "efeito": "exclamacao" },
+            { "frase": "f-5b1950", "acao": "mostra", "emocao": "feliz", "camera": "medio" },
+            { "mudo": true, "quem": "voce", "acao": "anda", "para": "centroDireita", "emocao": "determinado" },
+            { "frase": "f-70cae4", "acao": "nega", "emocao": "cansado", "efeito": "suor" },
+            { "frase": "f-072a9a", "acao": "comemora", "emocao": "radiante", "efeito": "confete", "camera": "close" },
+            { "frase": "f-612482", "acao": "escreve", "alvo": "notebook", "emocao": "feliz" },
+            { "frase": "f-4ea190", "acao": "concorda", "emocao": "determinado" },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "emocao": "radiante", "efeito": "brilho",
+              "objetos": [ { "prop": "cafe", "acao": "some" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,754 @@
+{
+  "versao": 1,
+  "trilha": "dev-code-review",
+  "arco": "O aluno vira revisor: de casa, com o café de sempre, comenta o PR do dev novo com gentileza (detalhes, riscos, testes, o que bloqueia), depois responde aos comentários do Mike no próprio PR e fecha com uma revisão a dois na véspera da release.",
+  "licoes": {
+    "dev-code-review.detalhe-tem-um-typo-aqui": {
+      "titulo": {
+        "en": "Just a small typo",
+        "pt": "Só um errinho de digitação"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "dev-novo",
+              "remoto": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-42cf27",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "pensativo",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-94b80a",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-82892c",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "surpreso",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-19c94b",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-9ef5da",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-7fdac9",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-2ba09e",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-6eef72",
+              "emocao": "surpreso",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "cafe",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "brilho"
+            }
+          ]
+        }
+      ]
+    },
+    "dev-code-review.isso-pode-causar-problema": {
+      "titulo": {
+        "en": "This might break things",
+        "pt": "Isso pode dar problema"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "dev-novo",
+              "remoto": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-566f08",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "nervoso",
+              "efeito": "exclamacao",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-f09ccd",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-8e8f72",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "surpreso",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-4c4ab5",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-e686b8",
+              "acao": "nega",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-11ced6",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-e040fa",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "close"
+            },
+            {
+              "frase": "f-17c8ec",
+              "emocao": "surpreso",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "cafe",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "brilho"
+            }
+          ]
+        }
+      ]
+    },
+    "dev-code-review.voce-poderia-adicionar-um-teste": {
+      "titulo": {
+        "en": "Asking for one more test",
+        "pt": "Pedindo mais um teste"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "dev-novo",
+              "remoto": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            },
+            {
+              "prop": "documento",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-442310",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "feliz",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-377c49",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-2f103a",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-f93b91",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "determinado"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "olha",
+              "alvo": "documento",
+              "emocao": "surpreso"
+            },
+            {
+              "frase": "f-d23d96",
+              "acao": "aponta",
+              "alvo": "documento",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-ccb0c8",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-6332f4",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-aad9db",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "cafe",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "brilho"
+            }
+          ]
+        }
+      ]
+    },
+    "dev-code-review.bloqueante-ou-nao": {
+      "titulo": {
+        "en": "Blocking or not?",
+        "pt": "Bloqueante ou não?"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "dev-novo",
+              "remoto": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "documento",
+              "pos": "centroDireita"
+            },
+            {
+              "prop": "notebook",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-836d88",
+              "acao": "escreve",
+              "alvo": "documento",
+              "emocao": "feliz",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-68e987",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-c088b9",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "surpreso",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-5338a0",
+              "emocao": "nervoso",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-708868",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-87e131",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "radiante",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-cf76f5",
+              "acao": "escreve",
+              "alvo": "documento",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-5e99d5",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "nega",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "cafe",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho"
+            }
+          ]
+        }
+      ]
+    },
+    "dev-code-review.bem-observado-resolvido": {
+      "titulo": {
+        "en": "Now it's my PR",
+        "pt": "Agora o PR é meu"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "mike",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "cafe",
+              "pos": "esquerda"
+            },
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            }
+          ],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "cafe",
+              "emocao": "feliz",
+              "objetos": [
+                {
+                  "prop": "cafe",
+                  "acao": "some"
+                }
+              ]
+            },
+            {
+              "frase": "f-a665ea",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "feliz",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-c23041",
+              "acao": "concorda",
+              "emocao": "timido"
+            },
+            {
+              "frase": "f-81f051",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "feliz"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "surpreso",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-63df90",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-528373",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-a3d6b3",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "nervoso",
+              "efeito": "suor",
+              "camera": "close"
+            },
+            {
+              "frase": "f-650c51",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-228f02",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "cafe",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "brilho"
+            }
+          ]
+        }
+      ]
+    },
+    "dev-code-review.cena-uma-revisao-completa": {
+      "titulo": {
+        "en": "A big review before release",
+        "pt": "Revisão completa na véspera da release"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "segura": "notebook",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "dev-novo",
+              "pos": "direita",
+              "visivel": false,
+              "segura": "documento",
+              "emocao": "nervoso"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-009e0a",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-7ae26b",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "alvo": "mike",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-678ffc",
+              "acao": "mostra",
+              "emocao": "pensativo"
+            },
+            {
+              "mudo": true,
+              "quem": "dev-novo",
+              "acao": "entra",
+              "emocao": "timido",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-38aa0d",
+              "acao": "aponta",
+              "emocao": "pensativo",
+              "camera": "medio",
+              "alvo": "dev-novo",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "acao": "concorda",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-fee4f5",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-ed8ed6",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-ce9354",
+              "acao": "mostra",
+              "emocao": "timido"
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "escreve",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "emocao": "nervoso",
+                  "efeito": "suor"
+                }
+              ]
+            },
+            {
+              "frase": "f-c087e0",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "efeito": "confete",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "voce",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "dev-novo",
+                  "acao": "acena",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

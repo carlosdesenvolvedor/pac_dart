@@ -1,0 +1,196 @@
+{
+  "versao": 1,
+  "trilha": "wish-condicionais-mistas",
+  "arco": "Com o time crescendo e a rotina apertada, o aluno desabafa: com o Ben, sonha com mais tempo, revê fotos da faculdade, imagina outros caminhos num café e planeja o ano que vem; com a Ana, reclama do vizinho barulhento e pede headsets novos. Cada 'quem dera' acaba num plano e num sorriso.",
+  "licoes": {
+    "wish-condicionais-mistas.queria-ter-mais-tempo": {
+      "titulo": { "en": "Wishing for more time", "pt": "Quem dera ter mais tempo" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "cansado" },
+            { "quem": "ben", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "esquerda" } ],
+          "passos": [
+            { "frase": "f-bf13c6", "acao": "pensa", "emocao": "cansado", "camera": "medio",
+              "reacoes": [ { "quem": "ben", "emocao": "pensativo" } ] },
+            { "frase": "f-29a130", "acao": "aponta", "alvo": "voce", "emocao": "surpreso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-ce3f1a", "acao": "nega", "emocao": "cansado", "efeito": "suor" },
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "notebook", "emocao": "cansado" },
+            { "frase": "f-9501b8", "acao": "pensa", "emocao": "feliz", "efeito": "brilho" },
+            { "frase": "f-317f16", "acao": "comemora", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-af0568", "emocao": "radiante", "efeito": "brilho", "camera": "close" },
+            { "frase": "f-52a337", "acao": "pensa", "emocao": "cansado",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-cf63a9", "acao": "mostra", "segura": "livro", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ben", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "wish-condicionais-mistas.queria-ter-estudado-mais": {
+      "titulo": { "en": "Old photos, old choices", "pt": "Fotos antigas, velhas escolhas" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "livro", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-6336b4", "acao": "mostra", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-5018f5", "acao": "aponta", "alvo": "ben", "emocao": "surpreso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "ben", "emocao": "timido" } ] },
+            { "frase": "f-393844", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-e4517e", "acao": "nega", "emocao": "cansado", "efeito": "suor" },
+            { "frase": "f-890479", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "ben", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "ben", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-16f2ec", "acao": "concorda", "emocao": "radiante", "efeito": "brilho", "camera": "close" },
+            { "frase": "f-fcfe7b", "acao": "aponta", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-91981a", "acao": "nega", "emocao": "timido", "camera": "dupla", "alvo": "ben",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ben", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "wish-condicionais-mistas.queria-que-ele-parasse": {
+      "titulo": { "en": "The noisy neighbors", "pt": "Os vizinhos barulhentos" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "cansado" },
+            { "quem": "ana", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-512007", "acao": "nega", "emocao": "bravo", "efeito": "notas", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-611e6a", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-be1631", "acao": "nega", "emocao": "cansado" },
+            { "mudo": true, "quem": "voce", "emocao": "surpreso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-a693c9", "acao": "aponta", "emocao": "cansado" },
+            { "frase": "f-332917", "acao": "nega", "emocao": "bravo", "efeito": "suor", "camera": "close",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "triste" } ] },
+            { "frase": "f-e1caf9", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-b589fc", "acao": "nega", "emocao": "nervoso" },
+            { "frase": "f-4e60dc", "acao": "aponta", "emocao": "bravo", "efeito": "estalo",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "acena", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "wish-condicionais-mistas.prefiro-ja-esta-na-hora": {
+      "titulo": { "en": "Time for new headsets", "pt": "Hora de trocar os headsets" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "documento", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "ana", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "efeito": "interrogacao" },
+            { "frase": "f-254ab7", "acao": "nega", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "emocao": "pensativo" } ] },
+            { "frase": "f-101406", "acao": "mostra", "emocao": "neutro",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-b8ed19", "acao": "nega", "emocao": "nervoso", "efeito": "suor" },
+            { "frase": "f-339b11", "acao": "escreve", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-dbc181", "acao": "pensa", "emocao": "pensativo" },
+            { "mudo": true, "quem": "voce", "acao": "treme", "emocao": "surpreso", "efeito": "estalo",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-3c7bfb", "acao": "aponta", "alvo": "voce", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-c917ea", "acao": "concorda", "emocao": "determinado", "efeito": "brilho" },
+            { "frase": "f-e4cbcc", "acao": "nega", "emocao": "timido", "camera": "close",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "wish-condicionais-mistas.se-eu-tivesse-aceitado-estaria": {
+      "titulo": { "en": "The paths we didn't take", "pt": "Os caminhos que a gente não seguiu" },
+      "cenas": [
+        {
+          "cenario": "restaurante", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "cafe", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-b40b53", "acao": "pensa", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-eff54e", "acao": "concorda", "emocao": "nervoso", "efeito": "suor" },
+            { "frase": "f-1a34c4", "acao": "aponta", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-c7db31", "emocao": "pensativo", "camera": "dupla", "alvo": "voce" },
+            { "frase": "f-0e8c6b", "acao": "pensa", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "ben", "acao": "concorda" } ] },
+            { "frase": "f-a2a622", "acao": "pensa", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "frase": "f-9f0414", "acao": "aponta", "alvo": "ben", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-188012", "acao": "concorda", "emocao": "determinado", "camera": "close" },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "ben", "acao": "mostra", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "wish-condicionais-mistas.cena-escolhas-de-carreira": {
+      "titulo": { "en": "Career plans for next year", "pt": "Planos de carreira para o ano que vem" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "documento", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "documento", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-c27311", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-302a17", "acao": "concorda", "emocao": "timido" },
+            { "frase": "f-383525", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "ben", "emocao": "pensativo" } ] },
+            { "frase": "f-a41d0a", "acao": "escreve", "emocao": "determinado", "efeito": "brilho",
+              "reacoes": [ { "quem": "ben", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-d6eed4", "acao": "aponta", "alvo": "voce", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-f7e043", "acao": "nega", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "acao": "aponta", "alvo": "ben", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-1ddd59", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-8f8945", "acao": "pensa", "emocao": "pensativo", "camera": "close" },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "ben", "acao": "escreve", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "ben", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

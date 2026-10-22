@@ -1,0 +1,201 @@
+{
+  "versao": 1,
+  "trilha": "tempos-narrativos-completos",
+  "arco": "Começo do B2: o aluno conta histórias com todos os tempos. O dia de release que deixou todo mundo acabado, a longa espera no desembarque com o Ben, a goteira no escritório de Chicago, a viagem de carro com o Lucas e, na daily, a semana que o Mike perdeu nas férias.",
+  "licoes": {
+    "tempos-narrativos-completos.fazia-horas-que-eu-estava-trabalhando": {
+      "titulo": { "en": "Working nonstop since six", "pt": "Trabalhando sem parar desde as seis" },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "cansado" },
+            { "quem": "ben", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "cafe", "pos": "centro" },
+            { "prop": "notebook", "pos": "direita" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "senta", "emocao": "cansado", "efeito": "zzz" },
+            { "frase": "f-0833d2", "emocao": "cansado", "camera": "geral" },
+            { "frase": "f-4b5eda", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "cansado" } ] },
+            { "frase": "f-7e2ffa", "acao": "aponta", "alvo": "notebook", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "ben", "emocao": "surpreso" } ] },
+            { "frase": "f-ab7dba", "acao": "olha", "alvo": "notebook", "emocao": "cansado" },
+            { "frase": "f-cdc42e", "acao": "pensa", "emocao": "pensativo", "efeito": "exclamacao", "camera": "close",
+              "reacoes": [ { "quem": "ben", "emocao": "surpreso" } ] },
+            { "frase": "f-dffc0a", "acao": "nega", "emocao": "cansado",
+              "reacoes": [ { "quem": "ben", "emocao": "triste" } ] },
+            { "frase": "f-22d0ba", "acao": "escreve", "emocao": "pensativo",
+              "reacoes": [ { "quem": "ben", "emocao": "pensativo" } ] },
+            { "frase": "f-5a7986", "emocao": "cansado", "camera": "medio" },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "tempos-narrativos-completos.fazia-tempo-que-voce-esperava": {
+      "titulo": { "en": "Waiting at arrivals", "pt": "Esperando no desembarque" },
+      "cenas": [
+        {
+          "cenario": "aeroporto",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "visivel": false, "segura": "mala", "emocao": "cansado" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "motorista", "pos": "direita", "segura": "documento", "emocao": "neutro" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "entra", "para": "centroEsquerda", "emocao": "feliz",
+              "reacoes": [ { "quem": "ben", "acao": "acena", "emocao": "radiante" } ] },
+            { "frase": "f-08bedd", "emocao": "feliz", "camera": "dupla", "alvo": "ben" },
+            { "frase": "f-ac36b5", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-0b2ca7", "acao": "aponta", "alvo": "voce", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-5f1819", "emocao": "cansado", "efeito": "suor",
+              "objetos": [ { "prop": "mala", "acao": "aparece", "pos": "esquerda", "de": "voce" } ],
+              "reacoes": [ { "quem": "ben", "emocao": "surpreso" } ] },
+            { "frase": "f-f677c3", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-c8e779", "segura": "passaporte", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "ben", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-c47fe5", "acao": "mostra", "emocao": "timido", "efeito": "suor", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" }, { "quem": "motorista", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "ben", "acao": "pensa", "efeito": "interrogacao" },
+            { "frase": "f-339a22", "acao": "treme", "emocao": "timido",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ben", "segura": "nada", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "segura": "cafe", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "tempos-narrativos-completos.tinha-feito-x-vinha-fazendo": {
+      "titulo": { "en": "The leak in the roof", "pt": "A goteira no telhado" },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": ["chuva"],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "visivel": false, "segura": "guardaChuva", "emocao": "cansado" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "ana", "pos": "direita", "emocao": "cansado" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "entra", "para": "centroEsquerda", "emocao": "timido", "efeito": "suor" },
+            { "frase": "f-302a88", "acao": "treme", "emocao": "timido", "camera": "geral",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "frase": "f-664550", "acao": "nega", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-7ff475", "acao": "aponta", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-5655a6", "emocao": "timido", "efeito": "suor",
+              "objetos": [ { "prop": "guardaChuva", "acao": "aparece", "pos": "esquerda", "de": "voce" } ],
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "surpreso", "efeito": "interrogacao" },
+            { "frase": "f-decc84", "acao": "aponta", "emocao": "nervoso", "efeito": "exclamacao", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-c77eab", "acao": "nega", "emocao": "pensativo",
+              "reacoes": [ { "quem": "mike", "emocao": "timido" } ] },
+            { "frase": "f-370c80", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-105d88", "acao": "aponta", "alvo": "ana", "emocao": "feliz", "camera": "dupla",
+              "reacoes": [ { "quem": "ana", "emocao": "cansado", "efeito": "zzz" } ] },
+            { "mudo": true, "quem": "mike", "segura": "nada", "emocao": "feliz",
+              "reacoes": [
+                { "quem": "ana", "segura": "cafe", "emocao": "radiante" },
+                { "quem": "voce", "acao": "palmas", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "tempos-narrativos-completos.os-quatro-tempos-numa-historia": {
+      "titulo": { "en": "A road trip gone wrong", "pt": "A viagem de carro que deu errado" },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "noite",
+          "clima": ["neve"],
+          "elenco": [
+            { "quem": "lucas", "pos": "esquerda", "segura": "chave", "emocao": "timido" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "ben", "pos": "direita", "visivel": false, "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "mapa", "pos": "centro" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "ben", "acao": "entra", "para": "centroDireita", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-40e5cd", "acao": "aponta", "alvo": "lucas", "emocao": "surpreso", "camera": "geral",
+              "reacoes": [ { "quem": "lucas", "emocao": "timido" } ] },
+            { "frase": "f-a4f067", "acao": "concorda", "emocao": "cansado", "camera": "medio" },
+            { "frase": "f-519b9f", "acao": "mostra", "emocao": "nervoso", "efeito": "estalo",
+              "reacoes": [ { "quem": "ben", "emocao": "surpreso" } ] },
+            { "frase": "f-494d4f", "acao": "aponta", "alvo": "lucas", "emocao": "feliz",
+              "reacoes": [ { "quem": "lucas", "acao": "mostra", "emocao": "determinado" } ] },
+            { "frase": "f-13d78f", "acao": "aponta", "alvo": "mapa", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close",
+              "reacoes": [ { "quem": "ben", "emocao": "surpreso" } ] },
+            { "frase": "f-a8a7e4", "emocao": "timido",
+              "reacoes": [ { "quem": "lucas", "acao": "concorda", "emocao": "cansado" } ] },
+            { "frase": "f-c7a42f", "acao": "treme", "emocao": "cansado",
+              "reacoes": [ { "quem": "lucas", "emocao": "cansado" } ] },
+            { "frase": "f-cb1d6c", "acao": "pensa", "emocao": "surpreso", "efeito": "interrogacao", "camera": "dupla", "alvo": "voce",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" }, { "quem": "lucas", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "voce", "acao": "nega", "emocao": "feliz", "efeito": "suor",
+              "reacoes": [ { "quem": "ben", "acao": "palmas", "emocao": "feliz" }, { "quem": "lucas", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "tempos-narrativos-completos.cena-a-semana-da-release": {
+      "titulo": { "en": "The release week", "pt": "A semana da release" },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            { "quem": "ana", "pos": "esquerda", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "cansado" },
+            { "quem": "mike", "pos": "centroDireita", "visivel": false, "segura": "cafe", "emocao": "radiante" },
+            { "quem": "sarah", "pos": "direita", "segura": "documento", "emocao": "neutro" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "mike", "acao": "entra", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-959ca0", "acao": "acena", "alvo": "mike", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "mike", "acao": "acena", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "determinado" },
+            { "frase": "f-86d9f1", "acao": "aponta", "alvo": "ana", "emocao": "cansado",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "cansado" } ] },
+            { "frase": "f-b1b655", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-81084c", "emocao": "nervoso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-372dd4", "segura": "prato", "emocao": "timido", "efeito": "suor",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-b26b16", "segura": "celular", "acao": "escreve", "emocao": "cansado", "camera": "close" },
+            { "frase": "f-54f3b0", "acao": "nega", "emocao": "timido", "efeito": "zzz",
+              "reacoes": [ { "quem": "sarah", "emocao": "pensativo" } ] },
+            { "frase": "f-2b53ae", "acao": "aponta", "alvo": "sarah", "emocao": "pensativo", "camera": "geral",
+              "reacoes": [ { "quem": "sarah", "acao": "concorda", "emocao": "feliz" }, { "quem": "voce", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "mike", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [
+                { "quem": "voce", "acao": "comemora", "emocao": "radiante" },
+                { "quem": "sarah", "acao": "palmas", "emocao": "feliz" },
+                { "quem": "ana", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    }
+  }
+}
