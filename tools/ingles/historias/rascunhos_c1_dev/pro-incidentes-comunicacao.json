@@ -1,0 +1,184 @@
+{
+  "versao": 1,
+  "trilha": "pro-incidentes-comunicacao",
+  "arco": "Sexta à tarde os pagamentos caem: de plantão em casa, o aluno assume o comando, acalma o canal e escreve a página de status até a noite. Na segunda, refaz a linha do tempo, conduz um postmortem sem culpados e conta tudo à diretora com voz firme. O café sempre por perto.",
+  "licoes": {
+    "pro-incidentes-comunicacao.declarar-e-coordenar-o-incidente": {
+      "titulo": { "en": "Taking command", "pt": "Assumindo o comando" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "nervoso" },
+            { "quem": "mike", "remoto": "celular", "emocao": "pensativo" },
+            { "quem": "sarah", "remoto": "celular", "emocao": "nervoso" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "esquerda" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "notebook", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-d3f2d4", "acao": "escreve", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-a5183f", "acao": "nega", "emocao": "determinado" },
+            { "frase": "f-b1dc4c", "acao": "aponta", "alvo": "notebook", "emocao": "nervoso", "efeito": "suor" },
+            { "frase": "f-7577d8", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "determinado" } ] },
+            { "frase": "f-faa70f", "acao": "escreve", "emocao": "determinado", "camera": "close" },
+            { "frase": "f-521619", "emocao": "timido", "efeito": "suor",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "pensativo" } ] },
+            { "frase": "f-96d088", "acao": "aponta", "alvo": "notebook", "emocao": "determinado" },
+            { "frase": "f-8211b5", "acao": "escreve", "emocao": "feliz", "camera": "medio" },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" }, { "quem": "sarah", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "pro-incidentes-comunicacao.pagina-de-status-para-clientes": {
+      "titulo": { "en": "The status page", "pt": "A página de status" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "pensativo" },
+            { "quem": "sarah", "remoto": "celular", "emocao": "nervoso" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "esquerda" }
+          ],
+          "passos": [
+            { "frase": "f-fc6d15", "acao": "escreve", "alvo": "notebook", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-f25262", "acao": "escreve", "alvo": "notebook", "emocao": "nervoso" },
+            { "mudo": true, "quem": "voce", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-dd965c", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "determinado" } ] },
+            { "frase": "f-de2f7f", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" } ] },
+            { "frase": "f-e7bcba", "acao": "escreve", "alvo": "notebook", "emocao": "pensativo" }
+          ]
+        },
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "cansado" },
+            { "quem": "sarah", "remoto": "celular", "emocao": "pensativo" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" }
+          ],
+          "passos": [
+            { "frase": "f-f0e194", "acao": "aponta", "alvo": "notebook", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-b4ee0b", "acao": "escreve", "alvo": "notebook", "emocao": "pensativo" },
+            { "frase": "f-e8053b", "acao": "comemora", "emocao": "radiante", "efeito": "confete", "camera": "close",
+              "reacoes": [ { "quem": "sarah", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "pro-incidentes-comunicacao.linha-do-tempo-e-causa-raiz": {
+      "titulo": { "en": "Minute by minute", "pt": "Minuto a minuto" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "documento", "emocao": "determinado" },
+            { "quem": "mike", "pos": "centroDireita", "emocao": "pensativo" },
+            { "quem": "sarah", "pos": "direita", "segura": "documento", "emocao": "neutro" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-079273", "acao": "mostra", "emocao": "determinado", "camera": "geral",
+              "reacoes": [ { "quem": "sarah", "acao": "concorda" } ] },
+            { "frase": "f-1d3e40", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-179bea", "acao": "mostra", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-a4b18a", "acao": "concorda", "emocao": "pensativo",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "determinado" },
+            { "frase": "f-a8bda9", "emocao": "surpreso", "camera": "close",
+              "reacoes": [ { "quem": "sarah", "emocao": "surpreso", "efeito": "exclamacao" } ] },
+            { "frase": "f-ce19d9", "acao": "pensa", "emocao": "surpreso", "efeito": "interrogacao" },
+            { "frase": "f-1920b7", "acao": "nega", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-d405e7", "acao": "mostra", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" }, { "quem": "sarah", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "acao": "palmas", "emocao": "feliz" }, { "quem": "sarah", "acao": "concorda", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "pro-incidentes-comunicacao.postmortem-sem-culpados": {
+      "titulo": { "en": "Process, not people", "pt": "O processo, não a pessoa" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "dev-pleno", "pos": "esquerda", "emocao": "triste" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "documento", "emocao": "pensativo" },
+            { "quem": "mike", "pos": "centro", "emocao": "pensativo" },
+            { "quem": "sarah", "pos": "centroDireita", "emocao": "nervoso" },
+            { "quem": "engenheiro", "pos": "direita", "emocao": "bravo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "engenheiro", "acao": "aponta", "alvo": "dev-pleno", "emocao": "bravo",
+              "reacoes": [ { "quem": "dev-pleno", "emocao": "triste", "efeito": "suor" } ] },
+            { "frase": "f-76065a", "acao": "nega", "emocao": "determinado", "camera": "medio",
+              "reacoes": [ { "quem": "engenheiro", "emocao": "surpreso" } ] },
+            { "frase": "f-16e1cb", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "dev-pleno", "emocao": "timido" } ] },
+            { "frase": "f-4dcd17", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-915c97", "acao": "concorda", "emocao": "pensativo" },
+            { "frase": "f-f2e905", "acao": "mostra", "emocao": "determinado",
+              "reacoes": [ { "quem": "sarah", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "engenheiro", "acao": "concorda", "emocao": "pensativo" },
+            { "frase": "f-23d875", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "dev-pleno", "acao": "concorda", "emocao": "neutro" } ] },
+            { "frase": "f-d2f8eb", "acao": "escreve", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-14ff47", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "dev-pleno", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "engenheiro", "acao": "acena", "emocao": "feliz" }, { "quem": "sarah", "acao": "palmas", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "pro-incidentes-comunicacao.cena-postmortem-com-a-diretoria": {
+      "titulo": { "en": "Postmortem for the director", "pt": "O postmortem para a diretora" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "documento", "emocao": "nervoso" },
+            { "quem": "diretora", "pos": "centroDireita", "emocao": "neutro" },
+            { "quem": "sarah", "pos": "direita", "segura": "documento", "emocao": "pensativo" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroEsquerda" },
+            { "prop": "cafe", "pos": "centro" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "determinado" },
+            { "frase": "f-fb17da", "acao": "aponta", "alvo": "notebook", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-04d0f7", "acao": "mostra", "emocao": "determinado",
+              "reacoes": [ { "quem": "diretora", "emocao": "surpreso" } ] },
+            { "frase": "f-00fb5a", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-711ba7", "acao": "concorda", "emocao": "pensativo" },
+            { "frase": "f-7899c1", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo",
+              "reacoes": [ { "quem": "diretora", "acao": "concorda", "emocao": "pensativo" } ] },
+            { "frase": "f-d8c655", "acao": "pensa", "emocao": "nervoso" },
+            { "frase": "f-59d9ab", "acao": "concorda", "alvo": "sarah", "emocao": "feliz", "camera": "dupla",
+              "reacoes": [ { "quem": "sarah", "acao": "escreve", "emocao": "feliz" } ] },
+            { "frase": "f-b7c3d3", "acao": "mostra", "emocao": "radiante", "efeito": "brilho", "camera": "close",
+              "reacoes": [ { "quem": "diretora", "acao": "palmas", "emocao": "feliz" }, { "quem": "sarah", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "diretora", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" }, { "quem": "sarah", "acao": "palmas", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

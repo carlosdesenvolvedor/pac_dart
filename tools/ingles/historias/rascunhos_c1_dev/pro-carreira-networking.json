@@ -1,0 +1,677 @@
+{
+  "versao": 1,
+  "trilha": "pro-carreira-networking",
+  "arco": "Numa conferência de tecnologia, o aluno puxa papo no intervalo do café, conta o que faz no almoço, troca contatos na saída e escreve com calma de casa. No segundo dia, reencontra rostos conhecidos e ainda dá o próprio café para quem está exausta.",
+  "licoes": {
+    "pro-carreira-networking.puxar-conversa-num-evento": {
+      "titulo": {
+        "en": "Small talk at the coffee break",
+        "pt": "Papo no intervalo do café"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "timido"
+            },
+            {
+              "quem": "participante",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ana",
+              "pos": "centro",
+              "visivel": false
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "microfone",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "anda",
+              "para": "centroEsquerda",
+              "emocao": "timido"
+            },
+            {
+              "frase": "f-428db1",
+              "acao": "acena",
+              "emocao": "timido",
+              "alvo": "participante",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "participante",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-d36b45",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-dcca17",
+              "acao": "aponta",
+              "alvo": "microfone",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-e0defc",
+              "acao": "aponta",
+              "alvo": "participante",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "participante",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-0c7201",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-98a339",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "alvo": "participante",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "participante",
+                  "acao": "aponta"
+                }
+              ]
+            },
+            {
+              "frase": "f-dce467",
+              "acao": "olha",
+              "alvo": "microfone",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "participante",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "entra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-fdae17",
+              "acao": "acena",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "participante",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "participante",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "ana",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-carreira-networking.apresentar-o-que-voce-faz": {
+      "titulo": {
+        "en": "Explaining my work at lunch",
+        "pt": "Contando o que eu faço no almoço"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "engenheira",
+              "pos": "centroDireita",
+              "segura": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "prato",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-0bf00e",
+              "acao": "aponta",
+              "alvo": "engenheira",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "engenheira",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-b318a2",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "alvo": "voce",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-e02060",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "engenheira",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-75e66a",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "segura": "celular"
+            },
+            {
+              "frase": "f-8150f8",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "engenheira",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-3fbf41",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-0214a1",
+              "acao": "mostra",
+              "segura": "livro",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-114aba",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "engenheira",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "engenheira",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-carreira-networking.trocar-contatos-e-manter-contato": {
+      "titulo": {
+        "en": "Keeping in touch after the event",
+        "pt": "Mantendo contato depois do evento"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "engenheira",
+              "pos": "centroDireita",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "participante",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-3b7fe3",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "engenheira",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-76cd49",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "alvo": "voce",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "engenheira",
+              "acao": "acena",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "participante",
+                  "acao": "acena"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "casa",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "recrutadora",
+              "remoto": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "participante",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            },
+            {
+              "prop": "cafe",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-e284ef",
+              "acao": "escreve",
+              "emocao": "feliz",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-dbeb98",
+              "acao": "escreve",
+              "emocao": "radiante"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "olha",
+              "alvo": "notebook",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-a49224",
+              "acao": "escreve",
+              "emocao": "determinado",
+              "camera": "close"
+            },
+            {
+              "frase": "f-4531b1",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-183ceb",
+              "acao": "escreve",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-d3022b",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho"
+            }
+          ]
+        }
+      ]
+    },
+    "pro-carreira-networking.cena-um-dia-de-conferencia": {
+      "titulo": {
+        "en": "A full day at the conference",
+        "pt": "Um dia inteiro de conferência"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "participante",
+              "pos": "centroDireita",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "engenheira",
+              "pos": "direita",
+              "segura": "celular",
+              "visivel": false
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "microfone",
+              "pos": "esquerda"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-ae5a0f",
+              "acao": "aponta",
+              "alvo": "participante",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "participante",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-28ea3c",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "engenheira",
+              "acao": "entra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-c275f4",
+              "acao": "acena",
+              "alvo": "engenheira",
+              "emocao": "radiante",
+              "camera": "dupla"
+            },
+            {
+              "frase": "f-02e20d",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "engenheira",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-9e8aad",
+              "acao": "concorda",
+              "alvo": "engenheira",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "engenheira",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-d7878d",
+              "acao": "senta",
+              "emocao": "cansado",
+              "efeito": "suor",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-c165d5",
+              "acao": "mostra",
+              "alvo": "participante",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "participante",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "nada",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "participante",
+                  "segura": "cafe",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-2691b0",
+              "acao": "acena",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "participante",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "engenheira",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

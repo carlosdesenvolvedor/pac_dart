@@ -1,0 +1,908 @@
+{
+  "versao": 1,
+  "trilha": "situacao-vida-social",
+  "arco": "Fora do trabalho, o tech lead vira amigo: o papo do jogo na copa de Chicago, o primeiro Dia de Ação de Graças na casa da Emma, o Ben hospedado no Brasil, a última rodada com o time e um jantar sem nenhum assunto de trabalho na casa da Sarah.",
+  "licoes": {
+    "situacao-vida-social.small-talk-o-jogo-e-o-fim-de-semana": {
+      "titulo": {
+        "en": "Small talk before the meeting",
+        "pt": "Papo antes da reunião"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "visivel": false,
+              "segura": "documento"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "esquerda"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-34c794",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "olha",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-ca042a",
+              "acao": "nega",
+              "emocao": "timido",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-4ae974",
+              "acao": "nega",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-09b7d1",
+              "acao": "concorda",
+              "alvo": "mike",
+              "emocao": "feliz",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "entra",
+              "emocao": "radiante"
+            },
+            {
+              "frase": "f-d67434",
+              "acao": "acena",
+              "emocao": "radiante",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "mike",
+                  "acao": "acena"
+                }
+              ]
+            },
+            {
+              "frase": "f-a3ed16",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-7c9818",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-78c9c0",
+              "acao": "concorda",
+              "emocao": "timido",
+              "efeito": "suor",
+              "alvo": "mike"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-vida-social.thanksgiving-na-casa-da-emma": {
+      "titulo": {
+        "en": "My first Thanksgiving",
+        "pt": "Meu primeiro Dia de Ação de Graças"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "emma",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-5408e5",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-78dba2",
+              "acao": "pensa",
+              "emocao": "nervoso",
+              "efeito": "interrogacao",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-959722",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "casa",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "prato",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "emma",
+              "pos": "centroDireita",
+              "visivel": false
+            },
+            {
+              "quem": "convidado",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "emma",
+              "acao": "entra",
+              "emocao": "radiante"
+            },
+            {
+              "frase": "f-1389d4",
+              "acao": "acena",
+              "alvo": "emma",
+              "emocao": "radiante",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "nada",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "segura": "prato",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-e47e48",
+              "acao": "aponta",
+              "alvo": "convidado",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "emma",
+              "acao": "mostra",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-3073aa",
+              "acao": "nega",
+              "emocao": "feliz",
+              "efeito": "suor",
+              "reacoes": [
+                {
+                  "quem": "convidado",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-978e81",
+              "acao": "concorda",
+              "alvo": "emma",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "acena",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-6f2aaa",
+              "acao": "senta",
+              "emocao": "feliz",
+              "efeito": "suor",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "convidado",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "emma",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-vida-social.o-ben-em-curitiba": {
+      "titulo": {
+        "en": "Make yourself at home",
+        "pt": "Fica à vontade"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ben",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "mapa",
+              "pos": "centroDireita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-2fb97c",
+              "acao": "aponta",
+              "alvo": "mapa",
+              "emocao": "radiante",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-f5d95c",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa"
+                }
+              ]
+            },
+            {
+              "frase": "f-5effe2",
+              "acao": "nega",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "ben",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "casa",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ben",
+              "pos": "centroDireita",
+              "visivel": false,
+              "segura": "mala",
+              "emocao": "cansado"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "garrafa",
+              "pos": "esquerda"
+            }
+          ],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "ben",
+              "acao": "entra",
+              "emocao": "surpreso",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-db3587",
+              "acao": "abraca",
+              "alvo": "ben",
+              "emocao": "radiante",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "ben",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "ben",
+              "emocao": "feliz",
+              "objetos": [
+                {
+                  "prop": "mala",
+                  "acao": "aparece",
+                  "pos": "direita",
+                  "de": "ben"
+                }
+              ],
+              "acao": "senta"
+            },
+            {
+              "frase": "f-1bd7b7",
+              "acao": "aponta",
+              "alvo": "garrafa",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ben",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-604ff7",
+              "acao": "concorda",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-9dba9c",
+              "acao": "mostra",
+              "segura": "celular",
+              "alvo": "ben",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "ben",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "ben",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-34e12d",
+              "acao": "concorda",
+              "alvo": "ben",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "ben",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-vida-social.saindo-com-o-time-a-rodada-e-a-conta": {
+      "titulo": {
+        "en": "This round is on me",
+        "pt": "Essa rodada é por minha conta"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centro",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "garcom",
+              "pos": "direita",
+              "segura": "garrafa"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "prato",
+              "pos": "esquerda"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-89b0ad",
+              "acao": "acena",
+              "alvo": "garcom",
+              "emocao": "radiante",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "garcom",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "mike",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "garcom",
+              "emocao": "feliz",
+              "objetos": [
+                {
+                  "prop": "garrafa",
+                  "acao": "aparece",
+                  "pos": "centro",
+                  "de": "garcom"
+                }
+              ]
+            },
+            {
+              "frase": "f-c7ad79",
+              "acao": "concorda",
+              "alvo": "voce",
+              "emocao": "radiante",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-57d806",
+              "acao": "nega",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-8310aa",
+              "acao": "concorda",
+              "alvo": "ana",
+              "emocao": "cansado",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "garcom",
+              "acao": "mostra",
+              "segura": "documento",
+              "alvo": "voce"
+            },
+            {
+              "frase": "f-3e0fba",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "alvo": "garcom",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-c5bf4d",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "garcom",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-932091",
+              "acao": "acena",
+              "emocao": "cansado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-023c37",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "garcom",
+                  "acao": "acena"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-vida-social.conversa-que-nao-e-de-trabalho": {
+      "titulo": {
+        "en": "Dinner with no work talk",
+        "pt": "Um jantar sem falar de trabalho"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "marido",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "prato",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-3c0dfd",
+              "acao": "aponta",
+              "alvo": "marido",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "olha",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-130020",
+              "acao": "aponta",
+              "alvo": "sarah",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-f14ba1",
+              "acao": "pensa",
+              "alvo": "voce",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-ffc441",
+              "acao": "concorda",
+              "emocao": "triste",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-f239d6",
+              "acao": "aponta",
+              "alvo": "prato",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "marido",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-fe0da6",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "marido",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-f0ae06",
+              "acao": "palmas",
+              "emocao": "surpreso",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "marido",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "aponta",
+              "alvo": "marido",
+              "emocao": "radiante",
+              "efeito": "notas"
+            },
+            {
+              "frase": "f-7a2139",
+              "acao": "aponta",
+              "alvo": "marido",
+              "emocao": "radiante",
+              "efeito": "exclamacao",
+              "reacoes": [
+                {
+                  "quem": "marido",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "marido",
+              "acao": "danca",
+              "emocao": "radiante",
+              "efeito": "notas",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,826 @@
+{
+  "versao": 1,
+  "trilha": "conceder-rebater",
+  "arco": "Já tech lead, o aluno aprende a conceder e rebater: convence o Mike a dividir o monólito, defende a nova arquitetura diante da Sarah e da diretora, ganha um piloto com o time, pesa os dois lados do plano do ano, acha um meio-termo com a Sarah e, por fim, convence o CFO.",
+  "licoes": {
+    "conceder-rebater.e-verdade-que": {
+      "titulo": {
+        "en": "The devil's advocate",
+        "pt": "O advogado do diabo"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ana",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-539489",
+              "acao": "aponta",
+              "emocao": "determinado",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-1356c7",
+              "acao": "nega",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-2d937f",
+              "acao": "concorda",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-eed6be",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-e05fbf",
+              "acao": "nega",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "nervoso"
+                }
+              ]
+            },
+            {
+              "frase": "f-77be74",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "close"
+            },
+            {
+              "frase": "f-2a0b4a",
+              "emocao": "nervoso",
+              "efeito": "suor",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "pensa"
+                }
+              ]
+            },
+            {
+              "frase": "f-9704ac",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "documento",
+              "emocao": "radiante"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "conceder-rebater.dito-isso": {
+      "titulo": {
+        "en": "Costs and benefits",
+        "pt": "Custos e benefícios"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "diretora",
+              "pos": "direita",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "esquerda"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-37f9b3",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-fbdd2c",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-9d2504",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-a7db67",
+              "acao": "concorda",
+              "emocao": "nervoso"
+            },
+            {
+              "frase": "f-3fd819",
+              "acao": "escreve",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "diretora",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-4ff550",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-b259b5",
+              "emocao": "timido",
+              "efeito": "suor",
+              "reacoes": [
+                {
+                  "quem": "diretora",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-d35ace",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "close"
+            },
+            {
+              "mudo": true,
+              "quem": "diretora",
+              "acao": "palmas",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "conceder-rebater.tudo-bem-mesmo-assim": {
+      "titulo": {
+        "en": "A small pilot project",
+        "pt": "Um pequeno projeto-piloto"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "dev-nova",
+              "pos": "esquerda",
+              "segura": "documento",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "ana",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-e3c3d5",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "dev-nova",
+                  "emocao": "nervoso"
+                }
+              ]
+            },
+            {
+              "frase": "f-938086",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-e7919f",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-bd978c",
+              "acao": "nega",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-ea6529",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-40c4e8",
+              "acao": "aponta",
+              "alvo": "dev-nova",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "dev-nova",
+                  "acao": "escreve",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-3b1466",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "camera": "close"
+            },
+            {
+              "frase": "f-3c8423",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "dev-nova",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "conceder-rebater.pode-se-argumentar-que": {
+      "titulo": {
+        "en": "Both sides of the plan",
+        "pt": "Os dois lados do plano"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "mike",
+              "pos": "esquerda",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "diretora",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "cfo",
+              "pos": "direita",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-b28ee8",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "pensativo",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-9d139b",
+              "acao": "nega",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "diretora",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-5f5ba0",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "cfo",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-04cf36",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-0a3821",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "mudo": true,
+              "quem": "diretora",
+              "acao": "escreve",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-f5f8b4",
+              "emocao": "timido",
+              "efeito": "suor",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-d93899",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-d56868",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "feliz",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "diretora",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "cfo",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "mike",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "conceder-rebater.embora-eu-concorde": {
+      "titulo": {
+        "en": "Let's meet halfway",
+        "pt": "Vamos chegar num meio-termo"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "cansado"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-418aa2",
+              "acao": "mostra",
+              "emocao": "cansado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-d39426",
+              "acao": "concorda",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-95edc7",
+              "acao": "mostra",
+              "emocao": "nervoso",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-654713",
+              "acao": "nega",
+              "emocao": "determinado",
+              "camera": "close"
+            },
+            {
+              "frase": "f-317797",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-75a6d3",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-dc87d4",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "camera": "close"
+            },
+            {
+              "frase": "f-f256ee",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "conceder-rebater.cena-final-debate-com-a-diretoria": {
+      "titulo": {
+        "en": "Build it ourselves",
+        "pt": "Nós mesmos vamos construir"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "cfo",
+              "pos": "centroDireita",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "diretora",
+              "pos": "direita",
+              "segura": "documento",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-75cc2e",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-90668b",
+              "acao": "nega",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-cce5b5",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "diretora",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-ef234b",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-1cbf14",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "cfo",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-1b33e8",
+              "acao": "mostra",
+              "alvo": "cfo",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "diretora",
+                  "acao": "escreve",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-9b5376",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "diretora",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "emocao": "nervoso",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-6cbcbc",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "close"
+            },
+            {
+              "mudo": true,
+              "quem": "cfo",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "confete",
+              "reacoes": [
+                {
+                  "quem": "diretora",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "voce",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

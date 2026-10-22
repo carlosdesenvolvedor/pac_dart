@@ -1,0 +1,200 @@
+{
+  "versao": 1,
+  "trilha": "pro-code-review-avancado",
+  "arco": "Um dia de tech lead em casa, mergulhado em code review: rótulos em PR grande, discordar com tato, defender as próprias escolhas, ensinar o dev novo com carinho e, à tarde, a chamada rápida que destrava o PR polêmico com um \"aprovado!\".",
+  "licoes": {
+    "pro-code-review-avancado.rotulos-de-severidade": {
+      "titulo": { "en": "Labels on a big PR", "pt": "Rótulos num PR enorme" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "pensativo" },
+            { "quem": "colega", "remoto": "celular", "emocao": "neutro" },
+            { "quem": "mike", "remoto": "celular", "emocao": "neutro" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-509775", "acao": "palmas", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "colega", "emocao": "feliz" } ] },
+            { "frase": "f-890d98", "acao": "nega", "emocao": "determinado", "efeito": "exclamacao", "camera": "medio",
+              "reacoes": [ { "quem": "colega", "emocao": "surpreso" } ] },
+            { "frase": "f-6264b1", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-d95ea9", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "colega", "emocao": "feliz" } ] },
+            { "frase": "f-ccd6d7", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "determinado" } ] },
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "notebook", "emocao": "pensativo" },
+            { "frase": "f-bf9bc1", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo", "efeito": "brilho" },
+            { "frase": "f-84e312", "acao": "escreve", "alvo": "notebook", "emocao": "timido", "camera": "close" },
+            { "frase": "f-e2d946", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "emocao": "feliz", "efeito": "brilho",
+              "objetos": [ { "prop": "cafe", "acao": "some" } ] }
+          ]
+        }
+      ]
+    },
+    "pro-code-review-avancado.discordar-com-tato": {
+      "titulo": { "en": "Disagreeing with care", "pt": "Discordar com jeitinho" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "pensativo" },
+            { "quem": "colega", "remoto": "celular", "emocao": "neutro" },
+            { "quem": "mike", "remoto": "celular", "emocao": "neutro" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-363c95", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-a10bfc", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo",
+              "reacoes": [ { "quem": "colega", "emocao": "pensativo" } ] },
+            { "frase": "f-cd2870", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "neutro" } ] },
+            { "frase": "f-c67dd2", "acao": "olha", "alvo": "notebook", "emocao": "nervoso", "camera": "close" },
+            { "frase": "f-eaf771", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "alvo": "notebook", "emocao": "timido", "efeito": "estalo" },
+            { "frase": "f-de38a8", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "colega", "emocao": "surpreso" } ] },
+            { "frase": "f-38ff58", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-1e3f62", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "acao": "acena", "emocao": "feliz",
+              "objetos": [ { "prop": "cafe", "acao": "some" } ] }
+          ]
+        }
+      ]
+    },
+    "pro-code-review-avancado.defender-a-sua-decisao": {
+      "titulo": { "en": "Defending my choices", "pt": "Defendendo as minhas escolhas" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "determinado" },
+            { "quem": "mike", "remoto": "celular", "emocao": "neutro" },
+            { "quem": "ana", "remoto": "celular", "emocao": "neutro" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-f919f2", "emocao": "pensativo", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo", "efeito": "exclamacao" } ] },
+            { "frase": "f-fe25bc", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "emocao": "pensativo" } ] },
+            { "frase": "f-ecac09", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-129709", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-ead451", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "notebook", "emocao": "pensativo" },
+            { "frase": "f-b8f5c8", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso", "efeito": "exclamacao" } ] },
+            { "frase": "f-192dfc", "acao": "concorda", "emocao": "timido", "efeito": "brilho", "camera": "close",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" }, { "quem": "mike", "emocao": "pensativo" } ] },
+            { "frase": "f-edb8e0", "acao": "escreve", "alvo": "notebook", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "comemora", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "pro-code-review-avancado.revisar-o-codigo-de-um-junior": {
+      "titulo": { "en": "The new dev's first PR", "pt": "O primeiro PR do dev novo" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "dev-novo", "remoto": "celular", "emocao": "nervoso" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-14d0e3", "acao": "palmas", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "dev-novo", "emocao": "radiante" } ] },
+            { "frase": "f-1050df", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo",
+              "reacoes": [ { "quem": "dev-novo", "emocao": "pensativo" } ] },
+            { "frase": "f-27c3cd", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-e72ae8", "acao": "escreve", "alvo": "notebook", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-5712b6", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo", "efeito": "brilho" },
+            { "frase": "f-fc0f4d", "emocao": "timido", "efeito": "interrogacao",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-7fa6a3", "acao": "aponta", "alvo": "notebook", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "dev-novo", "emocao": "surpreso" } ] },
+            { "frase": "f-d43c97", "acao": "escreve", "alvo": "notebook", "emocao": "feliz",
+              "reacoes": [ { "quem": "dev-novo", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante", "efeito": "coracoes",
+              "reacoes": [ { "quem": "dev-novo", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "pro-code-review-avancado.cena-o-pr-polemico": {
+      "titulo": { "en": "The tricky pull request", "pt": "O PR polêmico" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "cansado" },
+            { "quem": "mike", "remoto": "celular", "emocao": "pensativo" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-e5dae9", "emocao": "pensativo", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-d7a78e", "acao": "mostra", "emocao": "determinado", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] }
+          ]
+        },
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "determinado" },
+            { "quem": "mike", "pos": "centro", "emocao": "feliz" },
+            { "quem": "colega", "pos": "centroDireita", "visivel": false, "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "colega", "acao": "entra", "emocao": "pensativo" },
+            { "frase": "f-b63ab1", "acao": "pensa", "emocao": "pensativo", "camera": "geral",
+              "reacoes": [ { "quem": "mike", "emocao": "pensativo" } ] },
+            { "frase": "f-bc334d", "acao": "nega", "emocao": "determinado", "camera": "close",
+              "reacoes": [ { "quem": "colega", "emocao": "surpreso", "efeito": "exclamacao" } ] },
+            { "frase": "f-203339", "acao": "concorda", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-339115", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-d6b4db", "acao": "aponta", "alvo": "colega", "emocao": "feliz", "camera": "dupla",
+              "reacoes": [ { "quem": "colega", "emocao": "timido" } ] },
+            { "frase": "f-6e60c6", "acao": "comemora", "emocao": "radiante", "efeito": "confete", "camera": "close",
+              "reacoes": [ { "quem": "mike", "acao": "palmas", "emocao": "feliz" }, { "quem": "colega", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "mike", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "radiante" }, { "quem": "colega", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

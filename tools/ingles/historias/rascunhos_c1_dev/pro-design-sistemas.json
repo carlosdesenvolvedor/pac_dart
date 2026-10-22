@@ -1,0 +1,920 @@
+{
+  "versao": 1,
+  "trilha": "pro-design-sistemas",
+  "arco": "Um dia de design de sistemas: na entrevista, o aluno pergunta a escala antes de desenhar, monta as caixas no quadro e defende réplicas e partições; na reunião de arquitetura, convence o Mike a usar uma fila e a começar simples. E o café volta à mão a cada vitória.",
+  "licoes": {
+    "pro-design-sistemas.requisitos-e-estimativas": {
+      "titulo": {
+        "en": "Numbers before boxes",
+        "pt": "Os números antes das caixas"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "entrevistador",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "documento",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-cea9e5",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-3ce095",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "escreve",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-0884fa",
+              "acao": "aponta",
+              "alvo": "entrevistador",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-c3f153",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "efeito": "exclamacao",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "escreve",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-4dcd8c",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-fbd7b5",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-2aba47",
+              "acao": "escreve",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-b93aa1",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "camera": "dupla",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "segura": "cafe",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-design-sistemas.propor-a-arquitetura": {
+      "titulo": {
+        "en": "Boxes and arrows",
+        "pt": "Caixas e setas"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "entrevistador",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-2bfa9a",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "determinado"
+                }
+              ]
+            },
+            {
+              "frase": "f-cea53d",
+              "acao": "escreve",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-ea92ec",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-9826e1",
+              "acao": "nega",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "escreve",
+              "emocao": "feliz",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-1fbf89",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-74126c",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-82c613",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-3333e1",
+              "acao": "nega",
+              "emocao": "determinado",
+              "camera": "dupla",
+              "alvo": "entrevistador",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "entrevistador",
+              "acao": "escreve",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "cafe",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-design-sistemas.dados-replicas-e-particoes": {
+      "titulo": {
+        "en": "Replicas and shards",
+        "pt": "Réplicas e partições"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "entrevistador",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "pensativo"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-a69436",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-96808c",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-87eee2",
+              "acao": "concorda",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-6a805e",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "escreve",
+              "emocao": "determinado",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-a8eb6e",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "entrevistador",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-219989",
+              "acao": "olha",
+              "alvo": "voce",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-b7fb00",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-8cf6e4",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "exclamacao",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "entrevistador",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "cafe",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-design-sistemas.filas-e-pontos-de-falha": {
+      "titulo": {
+        "en": "A queue in the middle",
+        "pt": "Uma fila no meio do caminho"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "ana",
+              "pos": "centro",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "dev-pleno",
+              "pos": "centroDireita",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "segura": "notebook",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "escreve",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "segura": "documento",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-42f361",
+              "acao": "escreve",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-4c94a8",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-164b6f",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "dev-pleno",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-e8a1a6",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-d63f0a",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-bd6d5a",
+              "acao": "nega",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-e4b89e",
+              "acao": "aponta",
+              "emocao": "determinado",
+              "efeito": "exclamacao",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "dev-pleno",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-419424",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "camera": "dupla",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "cafe",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "dev-pleno",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-design-sistemas.trade-offs-e-defender-escolhas": {
+      "titulo": {
+        "en": "Keep it simple for now",
+        "pt": "Simples, por enquanto"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "radiante"
+            },
+            {
+              "quem": "ana",
+              "pos": "centro",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "dev-pleno",
+              "pos": "centroDireita",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "segura": "notebook",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                },
+                {
+                  "quem": "ana",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-97defa",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-9731d0",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-b5f182",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-0e21e1",
+              "acao": "aponta",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "olha",
+              "alvo": "dev-pleno",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "dev-pleno",
+                  "emocao": "cansado"
+                }
+              ]
+            },
+            {
+              "frase": "f-939883",
+              "acao": "nega",
+              "emocao": "cansado",
+              "efeito": "suor",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "dev-pleno",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-711bad",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-740534",
+              "acao": "nega",
+              "emocao": "feliz",
+              "camera": "dupla",
+              "alvo": "mike",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-6935e5",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "escreve",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "mostra",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "dev-pleno",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-design-sistemas.cena-a-sessao-de-system-design": {
+      "titulo": {
+        "en": "Testing the design",
+        "pt": "O design posto à prova"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "entrevistador",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "pensativo"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-5c5e0d",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "nervoso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "pensa",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-6bbbe1",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-dcdb45",
+              "acao": "escreve",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-1bde9b",
+              "acao": "olha",
+              "alvo": "voce",
+              "emocao": "pensativo",
+              "camera": "dupla"
+            },
+            {
+              "frase": "f-fecee8",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-0f6ebc",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-17499c",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-1ccd05",
+              "acao": "nega",
+              "emocao": "feliz",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "entrevistador",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "entrevistador",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "cafe",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

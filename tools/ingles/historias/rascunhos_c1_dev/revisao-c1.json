@@ -1,0 +1,755 @@
+{
+  "versao": 1,
+  "trilha": "revisao-c1",
+  "arco": "Um ano como tech lead: o aluno apresenta os resultados para a diretoria, conduz por vídeo um post-mortem sem culpados, negocia com a Sarah o escopo que cabe no prazo do cliente e, no jantar de um ano, ergue a caneca de café para agradecer ao time.",
+  "licoes": {
+    "revisao-c1.apresentacao-para-a-diretoria": {
+      "titulo": {
+        "en": "Presenting to the board",
+        "pt": "Apresentando para a diretoria"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centro",
+              "segura": "documento",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "diretora",
+              "pos": "direita",
+              "emocao": "pensativo"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroEsquerda"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-b20cd4",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "nervoso",
+                  "efeito": "suor"
+                }
+              ]
+            },
+            {
+              "frase": "f-127a66",
+              "acao": "concorda",
+              "emocao": "timido",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "microfone",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "diretora",
+                  "acao": "senta"
+                }
+              ]
+            },
+            {
+              "frase": "f-3b5810",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "diretora",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-9221d8",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "diretora",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "diretora",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-e446e7",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "alvo": "diretora",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "diretora",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-7ce285",
+              "acao": "pensa",
+              "emocao": "timido",
+              "alvo": "diretora",
+              "reacoes": [
+                {
+                  "quem": "diretora",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-14407c",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "radiante",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "palmas"
+                }
+              ]
+            },
+            {
+              "frase": "f-1b3ec0",
+              "acao": "nega",
+              "emocao": "timido",
+              "alvo": "mike",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "diretora",
+              "acao": "palmas",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "revisao-c1.post-mortem-de-um-incidente": {
+      "titulo": {
+        "en": "Two hours without payments",
+        "pt": "Duas horas sem pagamentos"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroEsquerda",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "ana",
+              "pos": "direita",
+              "emocao": "cansado"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-3f3bd6",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-05836b",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-3a5925",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-07de9d",
+              "acao": "pensa",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-2e4115",
+              "acao": "nega",
+              "emocao": "triste",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-0ca35f",
+              "acao": "nega",
+              "emocao": "cansado",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "documento",
+              "emocao": "determinado",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-ab4ecd",
+              "acao": "escreve",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-c333b2",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "revisao-c1.negociacao-de-prazo-e-escopo": {
+      "titulo": {
+        "en": "Protecting the go-live date",
+        "pt": "Protegendo a data do go-live"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centro",
+              "segura": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "cliente",
+              "pos": "direita",
+              "emocao": "determinado"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-377eae",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-80ed21",
+              "acao": "nega",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "nervoso",
+                  "efeito": "suor"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-c8b03c",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "alvo": "cliente",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-976596",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "cliente",
+              "acao": "nega",
+              "emocao": "triste"
+            },
+            {
+              "frase": "f-1c2a87",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "cliente",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-f286a8",
+              "acao": "escreve",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-6ebe41",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "determinado"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-12fbf5",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho"
+            }
+          ]
+        }
+      ]
+    },
+    "revisao-c1.checkpoint-c1-um-ano-de-tech-lead": {
+      "titulo": {
+        "en": "One year as tech lead",
+        "pt": "Um ano como tech lead"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "ana",
+              "pos": "esquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "dev-novo",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "voce",
+              "pos": "centro",
+              "segura": "cafe",
+              "emocao": "timido"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "prato",
+              "pos": "centroEsquerda"
+            },
+            {
+              "prop": "prato",
+              "pos": "centroDireita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-84693d",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "palmas"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "palmas"
+                }
+              ]
+            },
+            {
+              "frase": "f-f01924",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-830dd4",
+              "acao": "aponta",
+              "alvo": "ana",
+              "emocao": "radiante",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "timido",
+                  "efeito": "brilho"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-8392cf",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "senta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "palmas"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "palmas"
+                },
+                {
+                  "quem": "dev-novo",
+                  "acao": "palmas"
+                }
+              ]
+            },
+            {
+              "frase": "f-6085e8",
+              "acao": "concorda",
+              "emocao": "pensativo",
+              "alvo": "voce",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-c3bdda",
+              "acao": "aponta",
+              "alvo": "dev-novo",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-61adaf",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "alvo": "dev-novo",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-b89430",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "pensa",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

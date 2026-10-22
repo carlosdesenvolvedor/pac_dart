@@ -1,0 +1,922 @@
+{
+  "versao": 1,
+  "trilha": "conversa-natural-c1",
+  "arco": "Já tech lead, o aluno curte a vida social com o time: o desabafo depois do planejamento, o papo na copa de Chicago, um café com a Ana, as risadas com o código velho e a despedida da Ana, que vai passar seis meses fora. O café dele vai junto, e tudo acaba em brinde.",
+  "licoes": {
+    "conversa-natural-c1.nem-me-fale": {
+      "titulo": {
+        "en": "After a long planning week",
+        "pt": "Depois de uma semana pesada"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroEsquerda",
+              "segura": "prato",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "segura": "celular",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "emocao": "cansado"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "nega",
+              "emocao": "cansado",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-1f8dc7",
+              "acao": "concorda",
+              "emocao": "cansado",
+              "efeito": "zzz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-9e925f",
+              "acao": "nega",
+              "emocao": "cansado",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-a00519",
+              "acao": "nega",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "cansado"
+                }
+              ]
+            },
+            {
+              "frase": "f-d091bd",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-3eefe9",
+              "acao": "concorda",
+              "emocao": "cansado",
+              "efeito": "zzz",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-9494ed",
+              "acao": "aponta",
+              "alvo": "mike",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "nega",
+              "emocao": "cansado"
+            },
+            {
+              "frase": "f-eb9bb3",
+              "acao": "concorda",
+              "alvo": "sarah",
+              "emocao": "cansado",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-791671",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "notas",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "conversa-natural-c1.nem-ai-e-nao-e-a-toa": {
+      "titulo": {
+        "en": "New chairs, no coffee",
+        "pt": "Cadeira nova, café nenhum"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "ana",
+              "pos": "esquerda",
+              "emocao": "radiante"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "colega",
+              "pos": "centroDireita",
+              "segura": "prato",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "direita",
+              "visivel": false
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-600395",
+              "acao": "aponta",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "colega",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-b11d17",
+              "acao": "nega",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "entra",
+              "emocao": "surpreso"
+            },
+            {
+              "frase": "f-bcc11f",
+              "acao": "pensa",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-282207",
+              "acao": "nega",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "cansado",
+                  "efeito": "zzz"
+                }
+              ]
+            },
+            {
+              "frase": "f-8a3fb7",
+              "acao": "aponta",
+              "alvo": "ana",
+              "emocao": "pensativo",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda",
+                  "emocao": "cansado"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "colega",
+              "acao": "aponta",
+              "emocao": "surpreso",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-487737",
+              "acao": "mostra",
+              "emocao": "cansado",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "colega",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-9637e7",
+              "acao": "aponta",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-920e6c",
+              "acao": "aponta",
+              "alvo": "colega",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "colega",
+                  "emocao": "timido",
+                  "efeito": "suor"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "colega",
+              "segura": "nada",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "segura": "prato",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "conversa-natural-c1.justica-seja-feita": {
+      "titulo": {
+        "en": "Coffee talk with Ana",
+        "pt": "Papo de café com a Ana"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroDireita",
+              "segura": "cafe",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "prato",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-a954bc",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-6697cd",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-9a7a1c",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-63ebfb",
+              "acao": "concorda",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "nega",
+              "emocao": "nervoso",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-7614fb",
+              "acao": "concorda",
+              "emocao": "timido",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "aponta",
+              "alvo": "ana",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "segura": "celular"
+                }
+              ]
+            },
+            {
+              "frase": "f-347026",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-2a2959",
+              "acao": "pensa",
+              "emocao": "surpreso",
+              "efeito": "brilho",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-670d78",
+              "acao": "nega",
+              "emocao": "timido",
+              "efeito": "suor",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "nega",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "segura": "cafe",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "conversa-natural-c1.falar-e-facil": {
+      "titulo": {
+        "en": "Old code and karaoke",
+        "pt": "Código velho e karaokê"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "segura": "celular",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "microfone",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-008797",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-508b14",
+              "acao": "nega",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-2ca1ca",
+              "acao": "nega",
+              "alvo": "mike",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-312b48",
+              "acao": "aponta",
+              "alvo": "mike",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-383782",
+              "acao": "pensa",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "aponta",
+              "alvo": "mike",
+              "emocao": "radiante",
+              "efeito": "notas",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "segura": "microfone",
+                  "emocao": "timido"
+                }
+              ],
+              "objetos": [
+                {
+                  "prop": "microfone",
+                  "acao": "some"
+                }
+              ]
+            },
+            {
+              "frase": "f-a2bf7f",
+              "acao": "mostra",
+              "emocao": "timido",
+              "efeito": "notas",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "nega",
+              "emocao": "cansado"
+            },
+            {
+              "frase": "f-26545d",
+              "acao": "pula",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-642630",
+              "acao": "nega",
+              "emocao": "cansado",
+              "efeito": "zzz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "danca",
+              "emocao": "radiante",
+              "efeito": "notas",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "voce",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "conversa-natural-c1.cena-final-happy-hour-com-o-time": {
+      "titulo": {
+        "en": "Goodbye party for Ana",
+        "pt": "A despedida da Ana"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroEsquerda",
+              "emocao": "radiante"
+            },
+            {
+              "quem": "ana",
+              "pos": "centro",
+              "emocao": "radiante"
+            },
+            {
+              "quem": "colega",
+              "pos": "centroDireita",
+              "segura": "presente",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "remoto": "celular",
+              "emocao": "radiante"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-14d814",
+              "acao": "aponta",
+              "alvo": "ana",
+              "emocao": "radiante",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-2b9df3",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "colega",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-b93799",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "timido",
+                  "efeito": "suor"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "segura": "celular",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-17d4fc",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "pula",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "segura": "cafe",
+              "acao": "aponta",
+              "alvo": "voce",
+              "efeito": "notas"
+            },
+            {
+              "frase": "f-f41909",
+              "acao": "nega",
+              "emocao": "timido",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-9b399f",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "notas",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "cansado"
+                },
+                {
+                  "quem": "colega",
+                  "emocao": "triste"
+                }
+              ]
+            },
+            {
+              "frase": "f-36dc51",
+              "acao": "nega",
+              "alvo": "colega",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "colega",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-203bc2",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "confete",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "ana",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "colega",
+              "segura": "nada",
+              "acao": "acena",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "segura": "presente",
+                  "emocao": "radiante",
+                  "efeito": "brilho"
+                },
+                {
+                  "quem": "voce",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "mike",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,652 @@
+{
+  "versao": 1,
+  "trilha": "pro-escrita-tecnica",
+  "arco": "Um dia de tech lead escrevendo em casa, sempre com café: de manhã, a RFC do cache que a Sarah e o Mike vão ler; à tarde, o ADR e o PR com changelog; à noite, a RFC da API pública, revisada em voz baixa. Cada texto sai claro, e o dia termina com um sorriso.",
+  "licoes": {
+    "pro-escrita-tecnica.rfc-contexto-e-motivacao": {
+      "titulo": {
+        "en": "Why we need a cache",
+        "pt": "Por que precisamos de cache"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "amanhecer",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "sarah",
+              "remoto": "celular",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "mike",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-e8a2f5",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-ae94bb",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-b947aa",
+              "acao": "pensa",
+              "emocao": "nervoso",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-0f3a99",
+              "acao": "nega",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-b51693",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "feliz"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "surpreso",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-84b7a1",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-581a15",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-d321da",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "cafe",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho"
+            }
+          ]
+        }
+      ]
+    },
+    "pro-escrita-tecnica.alternativas-e-desvantagens": {
+      "titulo": {
+        "en": "Weighing the two options",
+        "pt": "Pesando as duas opções"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "sarah",
+              "remoto": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            },
+            {
+              "prop": "cafe",
+              "pos": "esquerda"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-8f0d46",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-5c7655",
+              "acao": "nega",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-357579",
+              "acao": "mostra",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "camera": "close"
+            },
+            {
+              "frase": "f-4f6aed",
+              "acao": "nega",
+              "emocao": "nervoso"
+            },
+            {
+              "frase": "f-3b5436",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "feliz",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-e830d5",
+              "acao": "pensa",
+              "emocao": "timido",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-1b9ab2",
+              "acao": "escreve",
+              "emocao": "determinado"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "feliz",
+              "efeito": "notas"
+            },
+            {
+              "frase": "f-cb9dcf",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-escrita-tecnica.escopo-compatibilidade-e-rollout": {
+      "titulo": {
+        "en": "Who is affected and when",
+        "pt": "Quem é afetado e quando"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-2d53d2",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-870e5d",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-d155d6",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-770966",
+              "acao": "nega",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-f761d5",
+              "acao": "escreve",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-643a4c",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-3007db",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-9c381a",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "camera": "dupla",
+              "alvo": "sarah"
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-escrita-tecnica.adr-registrar-a-decisao": {
+      "titulo": {
+        "en": "Writing down the decision",
+        "pt": "Registrando a decisão"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "dev-novo",
+              "remoto": "celular",
+              "emocao": "timido"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            },
+            {
+              "prop": "documento",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-fbd253",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "cansado",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-778402",
+              "acao": "concorda",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-c43116",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-353dac",
+              "acao": "concorda",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-538a77",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-798fa3",
+              "acao": "aponta",
+              "alvo": "documento",
+              "emocao": "neutro"
+            },
+            {
+              "frase": "f-3e311a",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "surpreso",
+              "efeito": "notas"
+            },
+            {
+              "frase": "f-d55cdf",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "aponta",
+              "alvo": "documento",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-escrita-tecnica.descricao-de-pr-e-changelog": {
+      "titulo": {
+        "en": "A clear pull request",
+        "pt": "Um pull request bem explicado"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "remoto": "celular",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-443ca6",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "feliz",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-31cd3e",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-55ffbf",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "celular",
+              "emocao": "feliz",
+              "efeito": "notas"
+            },
+            {
+              "frase": "f-558b06",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "nervoso",
+                  "efeito": "suor"
+                }
+              ]
+            },
+            {
+              "frase": "f-cb74b8",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-867a10",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-92741a",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-170e57",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "confete"
+            }
+          ]
+        }
+      ]
+    },
+    "pro-escrita-tecnica.cena-a-rfc-da-nova-api": {
+      "titulo": {
+        "en": "The new API, start to finish",
+        "pt": "A nova API, do começo ao fim"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "documento",
+              "emocao": "determinado"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centroDireita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-d78cca",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-305659",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-bfa778",
+              "acao": "aponta",
+              "emocao": "surpreso",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-634a55",
+              "acao": "nega",
+              "emocao": "pensativo"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "cafe",
+              "emocao": "feliz",
+              "efeito": "notas"
+            },
+            {
+              "frase": "f-d77f43",
+              "acao": "nega",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-fc5a66",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "close"
+            },
+            {
+              "frase": "f-1f778e",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-4c9e40",
+              "acao": "escreve",
+              "alvo": "notebook",
+              "emocao": "radiante",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "brilho"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

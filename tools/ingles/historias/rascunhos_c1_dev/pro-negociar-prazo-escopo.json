@@ -1,0 +1,759 @@
+{
+  "versao": 1,
+  "trilha": "pro-negociar-prazo-escopo",
+  "arco": "No dia de tech lead, a hora de negociar: com a Sarah, o aluno troca um prazo apertado por um escopo enxuto, diz não com jeito a um pedido urgente, alinha prioridades com vendas e acalma um cliente impaciente. E o café segue firme na mão.",
+  "licoes": {
+    "pro-negociar-prazo-escopo.prazos-realistas": {
+      "titulo": {
+        "en": "Three weeks is tight",
+        "pt": "Três semanas é apertado"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "determinado"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-73c252",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso",
+                  "efeito": "exclamacao"
+                }
+              ]
+            },
+            {
+              "frase": "f-76f2ed",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-ed9150",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "nervoso",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-8e5061",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-8dc114",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "escreve",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-4b3ce8",
+              "acao": "nega",
+              "emocao": "determinado",
+              "camera": "close"
+            },
+            {
+              "frase": "f-40c3b9",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-d92b6e",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-negociar-prazo-escopo.dizer-nao-com-tato": {
+      "titulo": {
+        "en": "A kind no",
+        "pt": "Um não com jeito"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "nervoso",
+              "visivel": false
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "entra",
+              "emocao": "nervoso",
+              "efeito": "exclamacao"
+            },
+            {
+              "frase": "f-ab5ca0",
+              "acao": "nega",
+              "emocao": "timido",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "mostra",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-c72f64",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "cansado",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-7650bd",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-a9af30",
+              "acao": "concorda",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-785829",
+              "acao": "nega",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-cd9e24",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-837da1",
+              "acao": "nega",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-23c7ce",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-negociar-prazo-escopo.propor-alternativas-e-cortar-escopo": {
+      "titulo": {
+        "en": "Now and later",
+        "pt": "Agora e depois"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "pensativo"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-1f5165",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-7dfa6b",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-7aab32",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-9b45da",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "escreve"
+                }
+              ]
+            },
+            {
+              "frase": "f-8ea7a1",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-2bf5eb",
+              "acao": "olha",
+              "alvo": "notebook",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-44571d",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "camera": "close"
+            },
+            {
+              "frase": "f-61d3c4",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "dupla",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "segura": "celular",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-negociar-prazo-escopo.alinhar-prioridades-e-expectativas": {
+      "titulo": {
+        "en": "Everything is urgent",
+        "pt": "Tudo é urgente"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "sarah",
+              "pos": "esquerda",
+              "segura": "documento",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "stakeholder",
+              "pos": "centroDireita",
+              "segura": "documento",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "vendedora",
+              "pos": "direita",
+              "emocao": "determinado"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-a0668c",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "determinado",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "stakeholder",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-4edee9",
+              "acao": "aponta",
+              "alvo": "stakeholder",
+              "emocao": "nervoso",
+              "efeito": "suor",
+              "reacoes": [
+                {
+                  "quem": "stakeholder",
+                  "acao": "nega"
+                },
+                {
+                  "quem": "vendedora",
+                  "acao": "nega"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "stakeholder",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "efeito": "exclamacao",
+              "reacoes": [
+                {
+                  "quem": "vendedora",
+                  "acao": "nega",
+                  "emocao": "determinado"
+                }
+              ]
+            },
+            {
+              "frase": "f-7dd46c",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-60a60a",
+              "acao": "olha",
+              "alvo": "notebook",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-8a42ee",
+              "acao": "nega",
+              "emocao": "determinado",
+              "efeito": "exclamacao",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "stakeholder",
+                  "emocao": "surpreso"
+                },
+                {
+                  "quem": "vendedora",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-945723",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-468506",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "stakeholder",
+                  "acao": "concorda"
+                },
+                {
+                  "quem": "vendedora",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-00b746",
+              "acao": "aponta",
+              "alvo": "vendedora",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "vendedora",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "stakeholder",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "vendedora",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "pro-negociar-prazo-escopo.cena-o-cliente-impaciente": {
+      "titulo": {
+        "en": "The impatient client",
+        "pt": "O cliente impaciente"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "determinado"
+            },
+            {
+              "quem": "cliente",
+              "pos": "centroDireita",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "segura": "documento",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-2f823d",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "nervoso",
+              "efeito": "exclamacao",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-b0ae89",
+              "acao": "nega",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "cliente",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-08a979",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-8009f0",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "cliente",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "cliente",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "nervoso",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-8fcfa8",
+              "acao": "nega",
+              "emocao": "cansado",
+              "efeito": "suor",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-2d26d5",
+              "acao": "aponta",
+              "alvo": "cliente",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "cliente",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-629ceb",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "cliente",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-ffd999",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "cliente",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "cliente",
+              "acao": "acena",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
