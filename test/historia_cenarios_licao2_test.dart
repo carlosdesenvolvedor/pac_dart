@@ -88,7 +88,8 @@ void main() {
 
   group('cenários da 2ª leva', () {
     test('são os 3 do fim do enum (depois dos 5 do 📺), interiores, com as 4 horas e só chuva/neve (pela janela)', () {
-      expect(CenarioHistoria.values.sublist(30), _novos);
+      // a 3ª leva (dentroDoCarro, cozinha, quintal, bar) entrou depois destes 3: confere a fatia 30..33
+      expect(CenarioHistoria.values.sublist(30, 33), _novos);
       expect(CenarioHistoria.values.indexOf(CenarioHistoria.loja), 29, reason: 'a ordem de antes não muda');
       for (final c in _novos) {
         expect(interioresHistoria, contains(c), reason: c.name);
@@ -242,7 +243,8 @@ void main() {
 
   group('props da 2ª leva', () {
     test('os 7 são os do fim do enum (depois dos 4 do 📺) e cabem na mão (≤ .3 da altura)', () {
-      expect(PropHistoria.values.sublist(28), _propsNovos);
+      // a 3ª leva de props entrou depois destes 7: confere a fatia 28..35
+      expect(PropHistoria.values.sublist(28, 35), _propsNovos);
       expect(PropHistoria.values.indexOf(PropHistoria.documento), 27, reason: 'a ordem de antes não muda');
       for (final p in _propsNovos) {
         final s = PropPainter.tamanho(p, 200);

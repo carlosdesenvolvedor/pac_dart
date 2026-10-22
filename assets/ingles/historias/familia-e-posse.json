@@ -43,8 +43,8 @@
           "cenario": "videochamada", "hora": "dia", "clima": [],
           "elenco": [
             { "quem": "voce", "pos": "esquerda", "segura": "documento", "emocao": "feliz" },
-            { "quem": "mike", "pos": "centro", "segura": "carta", "emocao": "feliz" },
-            { "quem": "sarah", "pos": "direita", "segura": "carta", "emocao": "feliz" }
+            { "quem": "mike", "pos": "centro", "segura": "portaRetrato", "emocao": "feliz" },
+            { "quem": "sarah", "pos": "direita", "segura": "portaRetrato", "emocao": "feliz" }
           ],
           "objetos": [],
           "passos": [
@@ -126,16 +126,16 @@
             { "quem": "dev-novo", "pos": "direita", "visivel": false }
           ],
           "objetos": [
-            { "prop": "carta", "pos": "centro" },
+            { "prop": "carteira", "pos": "centro" },
             { "prop": "celular", "pos": "centroDireita" },
             { "prop": "chave", "pos": "direita" }
           ],
           "passos": [
             { "frase": "f-812544", "acao": "pensa", "emocao": "nervoso", "efeito": "interrogacao", "camera": "geral" },
-            { "mudo": true, "quem": "voce", "segura": "carta", "emocao": "surpreso",
-              "objetos": [ { "prop": "carta", "acao": "some" } ] },
+            { "mudo": true, "quem": "voce", "segura": "carteira", "emocao": "surpreso",
+              "objetos": [ { "prop": "carteira", "acao": "some" } ] },
             { "frase": "f-4f5dca", "acao": "mostra", "emocao": "feliz", "alvo": "mike", "camera": "dupla" },
-            { "frase": "f-981360", "acao": "concorda", "emocao": "radiante", "segura": "carta",
+            { "frase": "f-981360", "acao": "concorda", "emocao": "radiante", "segura": "carteira",
               "reacoes": [ { "quem": "voce", "segura": "nada", "emocao": "feliz" } ] },
             { "mudo": true, "quem": "dev-nova", "acao": "entra", "emocao": "timido" },
             { "mudo": true, "quem": "dev-novo", "acao": "entra", "emocao": "timido" },

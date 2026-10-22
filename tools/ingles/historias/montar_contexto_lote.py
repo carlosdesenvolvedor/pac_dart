@@ -35,7 +35,7 @@ FIO_POR_ETAPA = {
     'DEV': 'um dia inteiro de tech lead (entrevista sênior, design, review, incidentes, clientes)',
 }
 CENARIOS_BONS = ['videochamada', 'escritorio', 'casa', 'restaurante', 'loja', 'copa', 'recepcaoHotel', 'salaDeEstar',
-                 'aeroporto', 'hotel', 'clinica',
+                 'dentroDoCarro', 'cozinha', 'quintal', 'bar', 'aeroporto', 'hotel', 'clinica',
                  'cidade', 'praia', 'lago', 'ponte']
 
 
