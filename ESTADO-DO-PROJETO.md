@@ -2602,3 +2602,28 @@ inglês** (`Linguagem.atual == Linguagem.ingles`, lido uma vez por tela/painter)
   sintética porque o índice só carrega com o currículo (`CurriculoLoader`) — no app ele já está carregado; no probe abrir antes o
   `#/assistir-en` e trocar o hash. (2) O navegador do Playwright guarda o `vozes.json` de um build antigo na mesma porta: limpar o
   cache e recarregar de verdade (`about:blank` antes; `goto` para a mesma URL com `#` não recarrega).
+
+## 🎬 cena na lição (22/out/2026, commits `42df2fc` + `0757677` no main; sem push, sem deploy)
+
+- **Pedido do dono:** "nos exercícios, conforme passo as lições, no lugar do personagem falando, eu ver a cena". No `TraducaoCard` da
+  lição de inglês (`PalcoIngles`), o rosto de quem fala (`PersonagemFalante`) deu lugar à **cena do desenho da lição** — o mesmo palco do
+  📺 Escutar assistindo (histórias escritas das 121 trilhas + encenação automática), parada no passo da história ancorado na frase atual
+  (quem fala, cenário, posições, ação/emoção). A boca de quem fala mexe só enquanto a voz da lição diz aquela frase (texto exato). A
+  escada (D1..D5 fora de ordem) pula direto para o estado da âncora (timeline da `SimulacaoCena`, sem repetir tudo). Sem balão na cena.
+- **Arquivos:** `widgets/cena_da_frase.dart`, `widgets/roteiro_da_frase.dart` (âncora + `rotuloDaCena` para leitor de tela),
+  `data/preferencia_cena_licao.dart`, `traducao_card.dart` (`TamanhoCena { cheia, baixa, mini }`), `palco_ingles.dart`
+  (`didChangeMetrics` → `_conferirTamanhoCena`, `_medirTamanhoCena` mede a zona de digitação contra a viewport).
+- **Chave "🎬 Cena / 🙂 Rosto":** pref local, cena LIGADA por padrão; no celular fica na fileira dos 🔊 e não abre o teclado.
+- **Volta ao rosto (nunca em branco):** lição sem história (texto colado), frase sem âncora, falha na encenação, ou história escrita que
+  não chegou em 400 ms (aí entra a automática e troca para a escrita na frase seguinte).
+- **Tamanhos:** celular = faixa cheia no topo do card (274×137 em 390, 244×122 em 360), ou faixa baixa de 96 px, ou miniatura 16:9 no
+  lugar do rosto (86×48 com teclado) — escolhe o que deixa a digitação visível; computador = caixa 16:9 à esquerda da tradução (288×162
+  em 1280×720). Na 1ª frase a foto da lição encolhe. Movimento reduzido, foco, Enter/Tab/Esc, áudio automático, ensaio mental, nota e
+  fluxo da lição iguais; Dart/C# e Turismo intactos.
+- **Testes:** `ingles_cena_{frase_widget,historias,licao_app,roteiro}_test.dart`; `test/flutter_test_config.dart` faz os testes antigos
+  rodarem com o rosto. Suíte 22/out: 3.311 ok, só as 5 falhas conhecidas do `csharp_curriculo_test`; analyze limpo.
+- **Prova no navegador (probe `lib/main_arcade_probe.dart`, rota `/?licao=<id>&cena=1|0&ensaio=0|1#/licao-en`):** em 1280×720 e 390×844,
+  `primeiro-contato.oi-tudo-bem` mostra a videochamada no card; digitando as frases o destaque passa de "você" para o Mike e volta;
+  a chave troca para o rosto e de volta mantendo o foco da digitação; 0 erros no console.
+- **Limites conhecidos:** em 360×640 a página rola para manter a digitação e a faixa pode sair do topo (escolhe a miniatura quando não
+  cabe); ao trocar de lição em 390×844, a 1ª frase pode cortar ~40 px do topo da cena. Falta conferir num celular de verdade.
