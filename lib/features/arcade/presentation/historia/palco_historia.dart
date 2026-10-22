@@ -36,6 +36,7 @@ class PalcoHistoria extends StatelessWidget {
     this.reduzir = false,
     this.balaoSemCorte = false,
     this.ptNaPagina = false,
+    this.semBalao = false,
   }) : assert(capitulo != null || cabecalho != null);
 
   /// O Turismo passa o [RoteiroHistoria]; o 📺 Assistir, o `RoteiroSeguidor`.
@@ -59,6 +60,10 @@ class PalcoHistoria extends StatelessWidget {
   /// o balão que cobriria rostos perde o PT e, se ainda cobrir, vira o [BalaoFala.compacto] (nome e inglês numa
   /// linha); no palco estreito, o mesmo vale para não cobrir as molduras. Só com [balaoSemCorte].
   final bool ptNaPagina;
+
+  /// 🎬 Sem balão nem legenda do narrador (a cena da frase na lição de inglês: o EN não pode aparecer e o PT já
+  /// está no cartão). A boca, a pose e o resto não mudam. O Turismo e o 📺 usam o padrão `false`.
+  final bool semBalao;
 
   /// As 5 posições do palco (fração da largura); na tela estreita (< 560 px), um pouco mais juntas.
   static const xsLargo = [.12, .31, .50, .69, .88];
@@ -197,6 +202,7 @@ class PalcoHistoria extends StatelessWidget {
         fala: VozIngles.falando.value,
         balaoSemCorte: balaoSemCorte,
         ptNaPagina: ptNaPagina,
+        semBalao: semBalao,
         escalaDoTexto: MediaQuery.textScalerOf(context).scale(1),
       );
       return Semantics(
@@ -281,12 +287,13 @@ class _Quadro {
     required this.fala,
     this.balaoSemCorte = false,
     this.ptNaPagina = false,
+    this.semBalao = false,
     this.escalaDoTexto = 1,
   }) {
     _calcular();
   }
 
-  final bool balaoSemCorte, ptNaPagina;
+  final bool balaoSemCorte, ptNaPagina, semBalao;
 
   /// O `textScaler` da tela (a faixa do balão do 📺 cresce com ele).
   final double escalaDoTexto;
@@ -1310,6 +1317,7 @@ class _Quadro {
     if (roteiro.noTitulo) r.add(_titulo());
     final f = passo;
     final mostraTexto = f != null &&
+        !semBalao &&
         !f.mudo &&
         f.en != null &&
         roteiro.tSaida == null && // falou, leu e agora sai: o balão já fechou

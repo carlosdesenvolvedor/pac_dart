@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart' show defaultTargetPlatform;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -16,7 +18,12 @@ import '../../curso/presentation/widgets/victory_overlay.dart';
 import '../../habito/presentation/habito_cubit.dart';
 import '../../ia/domain/explicacao.dart';
 import '../../ia/presentation/widgets/botao_por_que.dart';
+import '../data/preferencia_cena_licao.dart';
 import '../data/voz_ingles.dart';
+import '../domain/assistir/historia_licao.dart';
+import '../domain/assistir/historias_licoes.dart';
+import '../domain/baralhos.dart' show chaveDaFrase;
+import '../domain/fila_ouvir.dart' show IndiceOuvir;
 import '../domain/alternativas.dart';
 import '../domain/avaliacao.dart';
 import '../domain/entrada_resposta.dart';
@@ -30,6 +37,7 @@ import 'zona_visivel.dart';
 import 'revisao_cubit.dart';
 import '../../../core/som/sons.dart';
 import 'widgets/audio_da_frase.dart';
+import 'widgets/cena_da_frase.dart';
 import 'widgets/cena_visual.dart';
 import 'widgets/ensaio_mental.dart';
 import 'widgets/frase_view.dart';
@@ -54,7 +62,18 @@ class PalcoIngles extends StatefulWidget {
   /// Voz injetável (testes).
   final VozIngles? voz;
 
-  const PalcoIngles({super.key, required this.curso, this.voz});
+  /// As historinhas das lições (a 🎬 cena da frase); injetável nos testes. Padrão: `HistoriasLicoes.de(trilhas)`
+  /// (o mesmo serviço do 📺 Escutar assistindo).
+  final HistoriasLicoes? historias;
+
+  const PalcoIngles({super.key, required this.curso, this.voz, this.historias});
+
+  /// 🎬 Quanto a cena espera pela história autoral da trilha que está chegando (mostrando o rosto).
+  static const esperaDaCena = Duration(milliseconds: 400);
+
+  /// 🎬 Com o teclado do celular aberto, abaixo desta altura visível (px) o cartão volta ao rosto pequeno: a zona
+  /// de digitação (o cartão com a faixa da cena, a frase, o selo e a barra) não caberia acima do teclado.
+  static const alturaMinimaComCena = 620.0;
 
   /// Pref: quantas vezes SEGUIDAS o cartão "🆕 palavras novas" do começo foi pulado (Começar direto ou a 1ª
   /// tecla); "Conhecer antes" zera.
@@ -188,6 +207,24 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
   /// A altura medida do conteúdo da vitória com os cartões (null = ainda não medida: vale a estimativa).
   double? _alturaConteudoVitoria;
 
+  // ---- 🎬 a cena da historinha no lugar do rosto ----
+
+  late HistoriasLicoes _historias = widget.historias ?? HistoriasLicoes.de(curso.trilhas);
+
+  /// A chave "🎬 Cena / 🙂 Rosto" ([PreferenciaCenaLicao]); null = ainda lendo (vale o rosto).
+  bool? _cenaLigada;
+
+  /// A história desta visita à lição (a cena não troca de história no meio de uma frase): se era a automática
+  /// e a autoral chegou depois, troca na próxima fronteira de passo, uma vez.
+  HistoriaLicao? _historiaFixada;
+
+  /// A autoral da trilha está chegando: o rosto fica até ela chegar ou [PalcoIngles.esperaDaCena] passar.
+  bool _esperandoCena = false;
+  Timer? _esperaCena;
+
+  /// A lição cuja cena falhou (o encenador lançou): o rosto, sem tentar de novo a cada quadro.
+  String? _cenaFalhou;
+
   /// Com o ensaio na frente, nenhuma tecla chega à frase e ela não fala.
   bool get _segurandoFrase => _ensaioAberto || _ensaioEsperando;
 
@@ -209,6 +246,8 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
         _verFrases = p.getBool(prefVerFrases) ?? false;
         _entrada = PrefsEntrada.ler(p);
         _pulosAntes = p.getInt(PalcoIngles.prefPulosAntes) ?? 0;
+        _cenaLigada = PreferenciaCenaLicao.de(p);
+        _prepararCena();
         final passo = _atual;
         if (_verFrases && passo != null && passo.modo.deMemoria && !_aguardando) _viuNestePasso = true;
       });
@@ -251,9 +290,14 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     final trocouLicao =
         oldWidget.curso.trilhaIdx != curso.trilhaIdx || oldWidget.curso.licaoIdx != curso.licaoIdx;
     final repetiu = oldWidget.curso.vitoria && !curso.vitoria;
+    if (!identical(oldWidget.historias, widget.historias) || !identical(oldWidget.curso.trilhas, curso.trilhas)) {
+      _historias = widget.historias ?? HistoriasLicoes.de(curso.trilhas);
+      if (!trocouLicao) _prepararCena();
+    }
     if (trocouLicao) {
       _ancoraNestaLicao = false;
       _repetindo = false;
+      _prepararCena();
     } else if (repetiu) {
       _repetindo = true;
     }
@@ -271,6 +315,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
   @override
   void dispose() {
     FocusManager.instance.removeEarlyKeyEventHandler(_atalhoAntes);
+    _esperaCena?.cancel();
     // saiu no meio da lição: o que já foi respondido conta
     _gravarLicaoInterrompida();
     _voz.parar();
@@ -326,6 +371,9 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
         ));
     final bloc = context.read<CursoBloc>();
     if (bloc.state.trechoIdx != p.frase) bloc.add(TrechoMostrado(p.frase));
+    // 🎬 a automática estava na tela e a autoral da trilha chegou: troca agora, na fronteira do passo
+    final fixada = _historiaFixada;
+    if (fixada != null && !fixada.autoral && _historias.temAutoral(curso.licao.id)) _historiaFixada = null;
     setState(() {
       _pendente = null;
       _aguardando = false;
@@ -773,6 +821,83 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     } catch (_) {}
   }
 
+  /// 🎬 Começo de uma visita à lição (ou a chave ligada): solta a história fixada e pede a da lição (a pré-carga
+  /// também serve ao 📺). Com a autoral a caminho, o rosto fica até ela chegar ou [PalcoIngles.esperaDaCena].
+  void _prepararCena() {
+    _historiaFixada = null;
+    _esperaCena?.cancel();
+    _esperaCena = null;
+    _esperandoCena = false;
+    final id = curso.licao.id;
+    if (_cenaLigada != true || id.isEmpty) return;
+    unawaited(_historias.prepararLicao(id).then((_) => _cenaChegou(id)));
+    if (_historias.carregando(id)) {
+      _esperandoCena = true;
+      _esperaCena = Timer(PalcoIngles.esperaDaCena, () => _cenaChegou(id));
+    }
+  }
+
+  /// A autoral chegou (ou a espera venceu): a cena entra no lugar do rosto, na mesma frase.
+  void _cenaChegou(String id) {
+    if (!mounted || !_esperandoCena || curso.licao.id != id) return;
+    _esperaCena?.cancel();
+    _esperaCena = null;
+    setState(() => _esperandoCena = false);
+  }
+
+  /// 🎬 A história e a âncora da frase atual; null = o rosto (chave desligada, lição sem historinha, autoral a
+  /// caminho, frase sem âncora ou o encenador falhou). Nunca uma cena vazia.
+  ({HistoriaLicao historia, (int, int) ancora})? _cenaDaFrase() {
+    if (_cenaLigada != true || _esperandoCena || _atual == null) return null;
+    final id = curso.licao.id;
+    if (id.isEmpty || id == _cenaFalhou) return null;
+    final chave = chaveDaFrase(_trecho);
+    var h = _historiaFixada;
+    if (h == null || h.licaoId != id) {
+      try {
+        h = _historias.daLicao(id, chave: chave);
+      } catch (e) {
+        _cenaFalhou = id;
+        debugPrint('🎬 cena da lição $id indisponível: $e');
+        return null;
+      }
+      if (h == null) return null;
+      _historiaFixada = h;
+    }
+    final a = h.ancoras[chave];
+    if (a == null || a.$1 < 0 || a.$1 >= h.cenas.length || a.$2 < 0 || a.$2 >= h.cenas[a.$1].falas.length) {
+      return null;
+    }
+    return (historia: h, ancora: a);
+  }
+
+  /// A lição é do curso (não de texto colado) e a cena dela não falhou: tem historinha (a autoral ou a
+  /// automática). A mesma conta do `PalcoAssistir.podeAssistir`, sem precisar do 🎧 Ouvir.
+  bool get _licaoTemCena {
+    final id = curso.licao.id;
+    if (id.isEmpty || id == _cenaFalhou) return false;
+    final onde = IndiceOuvir.de(curso.trilhas).licao(id);
+    return onde != null && onde.t < curso.trilhas.length && !curso.trilhas[onde.t].propria;
+  }
+
+  /// "🎬 Cena / 🙂 Rosto": troca e salva; o teclado continua na frase.
+  void _alternarCena() {
+    final liga = _cenaLigada != true;
+    setState(() {
+      _cenaLigada = liga;
+      _prepararCena();
+    });
+    PreferenciaCenaLicao.salvar(liga);
+    _pedirFoco();
+  }
+
+  /// A altura da janela que sobra acima do teclado virtual (px lógicos).
+  double _alturaVisivel(BuildContext context) {
+    final janela = View.maybeOf(context);
+    if (janela == null) return double.infinity;
+    return (janela.physicalSize.height - janela.viewInsets.bottom) / janela.devicePixelRatio;
+  }
+
   /// A lição tem historinha para o 📺? (resolvida uma vez por lição)
   ({String id, bool pode})? _assistirMemo;
   bool get _podeAssistir {
@@ -809,6 +934,12 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     // uma linha só: pulado 3+ vezes seguidas, ou na 1ª lição no celular (o nivelamento já está em cima)
     final antesCompacto = _pulosAntes >= _pulosParaCompacto ||
         (curso.concluidas.isEmpty && MediaQuery.sizeOf(context).width < 600);
+    // 🎬 a cena da frase no lugar do rosto (com o teclado do celular aberto numa tela baixa, o rosto pequeno)
+    final cena = passo == null || curso.vitoria ? null : _cenaDaFrase();
+    final usaCena =
+        cena != null && !(tecladoAberto && _alturaVisivel(context) < PalcoIngles.alturaMinimaComCena);
+    // a chave só aparece em lição do curso (que tem historinha), depois de a pref chegar
+    final mostraChaveCena = _cenaLigada != null && _licaoTemCena;
     return BlocListener<TypingBloc, TypingState>(
       listenWhen: (a, b) => !a.concluido && b.concluido,
       listener: (_, st) => _concluiu(st),
@@ -868,7 +999,8 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
                   const SizedBox(height: 14),
                 ],
                 if (CenaVisual(licao: curso.licao).temAlgo) ...[
-                  CenaVisual(licao: curso.licao),
+                  // com a cena no cartão, a foto vira uma faixa: o desenho já mostra o lugar
+                  CenaVisual(licao: curso.licao, compacta: usaCena),
                   const SizedBox(height: 8),
                 ],
                 _LinkEnsaio(ligado: _ensaioLigado != false, onAbrir: _abrirEnsaio),
@@ -910,6 +1042,17 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
                     BotaoPorNaSetlist(
                         key: const Key('botao-setlist'), item: () => ItemSetlist.daFrase(_trecho, licao: curso.licao)),
                   ]),
+                  cena: usaCena
+                      ? (tamanho) => CenaDaFrase(
+                            historia: cena.historia,
+                            ancora: cena.ancora,
+                            tamanho: tamanho,
+                            ativo: !_segurandoFrase,
+                            titulo: curso.licao.nome,
+                          )
+                      : null,
+                  cenaLigada: _cenaLigada == true,
+                  onAlternarCena: mostraChaveCena ? _alternarCena : null,
                   rosto: _trecho.quem.isEmpty
                       ? null
                       : (tamanho) => PersonagemFalante(

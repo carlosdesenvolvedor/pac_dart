@@ -120,6 +120,22 @@ class HistoriasLicoes {
     return _fixadas[k] = h;
   }
 
+  /// 🎬 A cena da LIÇÃO (o palco da lição, não o Ouvir): a autoral se a trilha já chegou e tem a âncora
+  /// [chave] (sem [chave], basta ter a lição); senão a automática (memo por lição). Só leitura: não fixa faixa
+  /// nenhuma, então não empurra para fora as faixas que o palco do 📺 fixou. null = lição fora do curso ou
+  /// trilha própria.
+  HistoriaLicao? daLicao(String licaoId, {String? chave}) {
+    if (licaoId.isEmpty) return null;
+    final achou = _licao(licaoId);
+    if (achou == null) return null;
+    final (trilha, licao) = achou;
+    final slug = slugDaLicao(licao.id);
+    _aoFundo(slug);
+    final autoral = _autorais[slug]?.licoes[licao.id];
+    if (autoral != null && (chave == null || autoral.ancoras.containsKey(chave))) return autoral;
+    return _automaticas[licao.id] ??= EncenadorLicao.encenar(licao, etapa: trilha.etapa, manual: _tabela?[licao.id]);
+  }
+
   /// Carrega índice, tabela e a trilha da faixa (e a próxima trilha). Nunca lança. Chamado ao abrir o
   /// OuvirPage (com a lição atual do curso) e em todo botão 📺 (I6). Uma trilha que falhou é tentada de novo.
   Future<void> preparar(Faixa f) => f.licaoId.isEmpty ? _prepararBase() : prepararLicao(f.licaoId);

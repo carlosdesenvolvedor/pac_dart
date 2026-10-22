@@ -6,6 +6,8 @@
 // /historia-en (galeria), /historia-en1 (abertura 1) e /historia-en30 (final 30, créditos).
 // 📺 Escutar assistindo (plano das historinhas §11.3): /?licao=<Licao.id>&modo=so|ep|pe[&setlist=1]#/assistir-en
 // — o "▶ Assistir" é o gesto que libera o áudio na web; com setlist=1 toca uma setlist "Probe" de 2 lições.
+// 🎬 A cena da frase na lição de inglês: /?licao=<Licao.id>&cena=1|0&ensaio=0|1#/licao-en — a lição de verdade
+// (PalcoIngles) no enquadramento do HomePage; cena=0 mostra o rosto (a pref "🎬 Cena / 🙂 Rosto").
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -16,6 +18,7 @@ import 'core/theme/mixart.dart';
 import 'features/curso/data/curriculo_loader.dart';
 import 'features/curso/data/progresso_repository.dart';
 import 'features/curso/presentation/bloc/curso_bloc.dart';
+import 'features/curso/presentation/bloc/typing_bloc.dart';
 import 'features/arcade/data/historia_turismo_repo.dart';
 import 'features/arcade/domain/gerador_missoes.dart';
 import 'features/arcade/domain/historia_turismo.dart';
@@ -30,6 +33,7 @@ import 'features/arcade/presentation/widgets/avatares.dart';
 import 'features/arcade/presentation/widgets/cenario.dart';
 import 'features/arcade/presentation/widgets/cenas.dart';
 import 'features/ingles/data/preferencia_assistir.dart';
+import 'features/ingles/data/preferencia_cena_licao.dart';
 import 'features/ingles/data/setlists_repository.dart';
 import 'features/ingles/domain/config_ouvir.dart';
 import 'features/ingles/domain/fila_ouvir.dart';
@@ -38,6 +42,9 @@ import 'features/ingles/presentation/ouvir/ouvir_acoes.dart';
 import 'features/ingles/presentation/ouvir/ouvir_cubit.dart';
 import 'features/ingles/presentation/ouvir/setlists_cubit.dart';
 import 'features/ingles/presentation/ouvir/widgets/chips_ouvir.dart' show rotuloModo;
+import 'features/ingles/presentation/palco_ingles.dart';
+import 'features/ingles/presentation/widgets/ensaio_mental.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(const _ProbeApp());
 
@@ -64,6 +71,7 @@ class _ProbeApp extends StatelessWidget {
         '/historia-en1': (_) => _ingles(const _HistoriaProbe(pista: 1, parte: ParteDoCapitulo.intro)),
         '/historia-en30': (_) => _ingles(const _HistoriaProbe(pista: 30, parte: ParteDoCapitulo.fim)),
         '/assistir-en': (_) => _ingles(const _AssistirProbe()),
+        '/licao-en': (_) => _ingles(const _LicaoProbe()),
       },
       home: const ArcadePage(),
     );
@@ -246,6 +254,111 @@ class _AssistirInicio extends StatelessWidget {
             ),
           );
         },
+      ),
+    );
+  }
+}
+
+/// 🎬 Prova visual da cena da frase: a lição `?licao=` no PalcoIngles de verdade, com as prefs `cena`/`ensaio`
+/// gravadas antes de montar, os providers que o palco usa (curso, digitação e o 🎧 Ouvir para o ➕ e o 📺) e o
+/// mesmo enquadramento do HomePage (ListView com respiro de 20, no máximo 980 de largura).
+class _LicaoProbe extends StatefulWidget {
+  const _LicaoProbe();
+
+  @override
+  State<_LicaoProbe> createState() => _LicaoProbeState();
+}
+
+class _LicaoProbeState extends State<_LicaoProbe> {
+  final _nav = NavegadorOuvir();
+  late final _setlists = SetlistsCubit(repo: LocalSetlistsRepository('probe'))..carregar();
+  late final _curso = CursoBloc(
+    loader: CurriculoLoader(linguagem: Linguagem.ingles),
+    progresso: LocalProgressoRepository(prefixo: 'en_probe_'),
+  );
+  late final _ouvir = OuvirCubit(saida: saidaPadrao());
+  final _typing = TypingBloc();
+  bool _prefsProntas = false, _escolheu = false;
+
+  static String get _licao => Uri.base.queryParameters['licao'] ?? 'primeiro-contato.oi-tudo-bem';
+
+  @override
+  void initState() {
+    super.initState();
+    final q = Uri.base.queryParameters;
+    unawaited(() async {
+      try {
+        final p = await SharedPreferences.getInstance();
+        await p.setBool(PreferenciaCenaLicao.chave, q['cena'] != '0');
+        await p.setBool(EnsaioMental.prefLigado, q['ensaio'] == '1');
+      } catch (_) {}
+      if (!mounted) return;
+      setState(() => _prefsProntas = true);
+      _curso.add(const CursoIniciado());
+    }());
+  }
+
+  @override
+  void dispose() {
+    unawaited(_ouvir.close());
+    unawaited(_curso.close());
+    unawaited(_setlists.close());
+    unawaited(_typing.close());
+    super.dispose();
+  }
+
+  /// O curso chegou: vai para a lição pedida (uma vez).
+  void _escolher(CursoState st) {
+    if (_escolheu || st.status != CursoStatus.pronto) return;
+    _escolheu = true;
+    final pos = IndiceOuvir.de(st.trilhas).licao(_licao);
+    if (pos == null) return;
+    _curso
+      ..add(TrilhaSelecionada(pos.t))
+      ..add(LicaoSelecionada(pos.l));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return RepositoryProvider<NavegadorOuvir>.value(
+      value: _nav,
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<CursoBloc>.value(value: _curso),
+          BlocProvider<TypingBloc>.value(value: _typing),
+          BlocProvider<SetlistsCubit>.value(value: _setlists),
+          BlocProvider<OuvirCubit>.value(value: _ouvir),
+        ],
+        child: Navigator(
+          key: _nav.chave,
+          observers: _nav.observadores,
+          onGenerateRoute: (_) => MaterialPageRoute<void>(
+            builder: (_) => Scaffold(
+              backgroundColor: Mixart.bg,
+              body: BlocConsumer<CursoBloc, CursoState>(
+                listener: (_, st) => _escolher(st),
+                builder: (context, st) {
+                  if (!_prefsProntas || st.status != CursoStatus.pronto || !_escolheu) {
+                    return Center(
+                      child: st.status == CursoStatus.erro
+                          ? Text('currículo indisponível', style: Mixart.ui(size: 14))
+                          : const CircularProgressIndicator(),
+                    );
+                  }
+                  return Center(
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 980),
+                      child: ListView(
+                        padding: const EdgeInsets.fromLTRB(20, 24, 20, 48),
+                        children: [PalcoIngles(curso: st)],
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

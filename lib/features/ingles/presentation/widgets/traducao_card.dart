@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/mixart.dart';
@@ -54,6 +56,18 @@ class TraducaoCard extends StatelessWidget {
   /// O rosto de quem diz a frase (mexendo a boca com a voz), à esquerda da tradução; recebe o tamanho.
   final Widget Function(double tamanho)? rosto;
 
+  /// 🎬 A cena da historinha no lugar do rosto (com ela, o [rosto] é ignorado); recebe o tamanho da caixa. No
+  /// celular (ou num cartão estreito) é uma faixa de largura total no topo do cartão; no computador, uma caixa
+  /// 16:9 à esquerda da tradução. Com o teclado aberto ([compacto]), uma faixa baixa.
+  final Widget Function(Size tamanho)? cena;
+
+  /// A chave "🎬 Cena / 🙂 Rosto" (na linha das caixinhas); null = sem a chave (lição sem historinha).
+  final VoidCallback? onAlternarCena;
+  final bool cenaLigada;
+
+  /// Abaixo desta largura (do interior do cartão) a cena vira faixa no topo, em vez de caixa ao lado.
+  static const larguraCenaAoLado = 680.0;
+
   const TraducaoCard({
     super.key,
     required this.trecho,
@@ -74,12 +88,24 @@ class TraducaoCard extends StatelessWidget {
     this.compacto = false,
     this.acaoAudio,
     this.rosto,
+    this.cena,
+    this.onAlternarCena,
+    this.cenaLigada = true,
   });
+
+  /// O tamanho da cena: a faixa de cima ([faixa]) ou a caixa ao lado da tradução, para o [interior] do cartão.
+  static Size tamanhoDaCena({required double interior, required bool faixa, required bool compacto, required double alturaTela}) {
+    if (faixa) return Size(interior, compacto ? 96 : (interior * .5).clamp(112.0, 150.0));
+    final w = compacto ? 171.0 : math.min(alturaTela >= 900 ? 320.0 : 288.0, interior * .36);
+    return Size(w, w * 9 / 16);
+  }
 
   @override
   Widget build(BuildContext context) {
     final estreito = MediaQuery.sizeOf(context).width < 560;
-    final botoes = Wrap(spacing: 6, runSpacing: 6, children: [
+    // a chave da cena: no celular, na linha dos botões (as caixinhas já ocupam a linha delas inteira)
+    final chaveNosBotoes = estreito && !compacto && onAlternarCena != null;
+    final botoes = Wrap(spacing: 6, runSpacing: 6, crossAxisAlignment: WrapCrossAlignment.center, children: [
       _Botao(icone: Icons.volume_up_rounded, dica: 'Ouvir em inglês', onTap: onOuvir),
       _Botao(icone: Icons.slow_motion_video_rounded, dica: 'Ouvir devagar', onTap: onOuvirDevagar),
       ?acaoAudio,
@@ -98,7 +124,30 @@ class TraducaoCard extends StatelessWidget {
             onTap: onAlternarVerFrases!)
       else if (onNaoSei != null)
         _Botao(icone: Icons.visibility_outlined, dica: 'Não sei: mostra a frase (Esc)', onTap: onNaoSei!),
+      if (chaveNosBotoes) ...[
+        const SizedBox(width: 4),
+        _ChaveCena(ligada: cenaLigada, onTap: onAlternarCena!),
+      ],
     ]);
+    final c = cena;
+    if (c == null) return _cartao(context, estreito: estreito, botoes: botoes);
+    // a decisão faixa/caixa sai da largura do próprio cartão (uma janela média também vira faixa)
+    return LayoutBuilder(builder: (context, box) {
+      final interior = (box.maxWidth.isFinite ? box.maxWidth : MediaQuery.sizeOf(context).width) - 34;
+      final faixa = estreito || interior < larguraCenaAoLado;
+      final tam = tamanhoDaCena(
+          interior: interior, faixa: faixa, compacto: compacto, alturaTela: MediaQuery.sizeOf(context).height);
+      return _cartao(context, estreito: estreito, botoes: botoes, cenaFaixa: faixa, cenaTamanho: tam);
+    });
+  }
+
+  Widget _cartao(BuildContext context,
+      {required bool estreito, required Widget botoes, bool cenaFaixa = false, Size? cenaTamanho}) {
+    final c = cena;
+    final comCena = c != null && cenaTamanho != null;
+    // a imagem-emoji e o rótulo "PT" saem quando há rosto no celular ou a cena (ela já mostra a frase)
+    final semImagem = comCena || (rosto != null && estreito);
+    final semRotulo = comCena || rosto != null;
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.fromLTRB(18, 14, 14, 14),
@@ -108,18 +157,28 @@ class TraducaoCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(Mixart.radiusMd),
       ),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        if (comCena && cenaFaixa) ...[
+          KeyedSubtree(key: const Key('caixa-da-cena'), child: c(cenaTamanho)),
+          const SizedBox(height: 10),
+        ],
         Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          if (rosto case final r?)
+          if (comCena && !cenaFaixa)
+            Padding(
+              key: const Key('caixa-da-cena'),
+              padding: const EdgeInsets.only(right: 14),
+              child: c(cenaTamanho),
+            )
+          else if (!comCena && rosto != null)
             Padding(
               key: const Key('rosto-da-frase'),
               padding: const EdgeInsets.only(right: 12),
               // num círculo, como avatar: o peito do personagem some na borda
               child: ClipOval(
-                child: ColoredBox(color: const Color(0xFFFFF1DC), child: r(estreito ? (compacto ? 48 : 60) : 84)),
+                child: ColoredBox(color: const Color(0xFFFFF1DC), child: rosto!(estreito ? (compacto ? 48 : 60) : 84)),
               ),
             ),
           // no celular, com o rosto, a imagem da frase sai (não cabe tudo na linha)
-          if (trecho.imagem.isNotEmpty && !(rosto != null && estreito))
+          if (trecho.imagem.isNotEmpty && !semImagem)
             // a imagem do sentido da frase: vê-la junto com a tradução fixa
             // mais (e, de memória, é pista sem entregar as palavras)
             Container(
@@ -139,7 +198,7 @@ class TraducaoCard extends StatelessWidget {
                 ),
               ),
             )
-          else if (rosto == null) ...[
+          else if (!semRotulo) ...[
             Padding(
               padding: const EdgeInsets.only(top: 4),
               child: Text('PT', style: Mixart.mono(size: 11, weight: FontWeight.w700, color: Mixart.brand)),
@@ -211,12 +270,13 @@ class TraducaoCard extends StatelessWidget {
               child: Text('🎙️ voz nativa: $voz', style: Mixart.ui(size: 10.5, color: Mixart.textFaint)),
             ),
           ],
-        if (!compacto && (onAlternarAudio != null || onAlternarVozLenta != null)) ...[
+        if (!compacto && (onAlternarAudio != null || onAlternarVozLenta != null || (onAlternarCena != null && !estreito))) ...[
           const SizedBox(height: 8),
-          Wrap(spacing: 16, runSpacing: 4, children: [
+          Wrap(spacing: 16, runSpacing: 4, crossAxisAlignment: WrapCrossAlignment.center, children: [
             if (onAlternarAudio != null) _Caixinha(marcada: audioAuto, rotulo: 'áudio automático', onTap: onAlternarAudio!),
             if (onAlternarVozLenta != null)
               _Caixinha(marcada: vozLenta, rotulo: 'voz devagar', onTap: onAlternarVozLenta!),
+            if (onAlternarCena != null && !estreito) _ChaveCena(ligada: cenaLigada, onTap: onAlternarCena!),
           ]),
         ],
       ]),
@@ -301,6 +361,31 @@ class _Botao extends StatelessWidget {
             child: Padding(
                 padding: const EdgeInsets.all(8),
                 child: Icon(icone, size: 18, color: ativo ? Mixart.onBrand : Mixart.brand)),
+          ),
+        ),
+      );
+}
+
+/// 🎬 "🎬 Cena" / "🙂 Rosto": o que o cartão mostra em cima da tradução (fica salvo).
+class _ChaveCena extends StatelessWidget {
+  final bool ligada;
+  final VoidCallback onTap;
+  const _ChaveCena({required this.ligada, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Tooltip(
+        message: ligada ? 'Mostrando a cena da historinha — toque para ver o rosto de quem fala' : 'Mostrando o rosto — toque para ver a cena da historinha',
+        child: InkWell(
+          key: const Key('alternar-cena'),
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(999),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+            decoration: BoxDecoration(
+              border: Border.all(color: Mixart.border),
+              borderRadius: BorderRadius.circular(999),
+            ),
+            child: Text(ligada ? '🎬 Cena' : '🙂 Rosto', style: Mixart.ui(size: 11.5, color: Mixart.textMuted)),
           ),
         ),
       );
