@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/util/abrir_url.dart';
+import '../../../ingles/data/audio_nativo.dart';
 import '../../../ingles/data/tradutor.dart';
 import '../../../ingles/domain/fonte_frase.dart';
 import '../../../ingles/domain/texto_salvo.dart';
@@ -389,14 +390,16 @@ class _CreditosIngles extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final autores = <String, int>{};
-    // gravações de nativo: "CK · CC BY-NC-ND 3.0" → quantas frases
+    // gravações de nativo que TOCAM (sem voz do personagem gerada): "CK · CC BY-NC-ND 3.0" → quantas frases
     final vozes = <String, int>{};
     var tatoeba = 0, total = 0;
     for (final t in st.trilhas) {
       for (final l in t.licoes) {
         for (final f in l.trechos) {
           total++;
-          if (f.audioCredito.isNotEmpty) vozes[f.audioCredito] = (vozes[f.audioCredito] ?? 0) + 1;
+          if (f.audioCredito.isNotEmpty && AudioNativo.tocaGravacaoDeNativo(f.cod)) {
+            vozes[f.audioCredito] = (vozes[f.audioCredito] ?? 0) + 1;
+          }
           final fonte = FonteFrase.ler(f.fonte);
           if (fonte == null) continue;
           tatoeba++;
@@ -471,10 +474,9 @@ class _CreditosIngles extends StatelessWidget {
             const SizedBox(height: 6),
           ],
           Text(
-              gravadas > 0
-                  ? 'As demais frases usam a voz em inglês do seu navegador (Web Speech) — no Edge e no Chrome '
-                      'ela soa mais natural.'
-                  : 'O áudio é a voz em inglês do seu navegador (Web Speech) — no Edge e no Chrome ela soa mais natural.',
+              '${gravadas > 0 ? 'As demais falas' : 'As falas'} dos personagens usam vozes geradas pelo Google Cloud '
+              'Text-to-Speech (Chirp 3 HD), sempre a mesma voz para cada personagem; sem o áudio, toca a voz em '
+              'inglês do seu navegador.',
               style: estilo),
         ]),
       ),

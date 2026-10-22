@@ -2,12 +2,19 @@
 """Gera a voz de cada frase do PAC·ENGLISH com o Google Cloud Text-to-Speech (vozes Chirp 3 HD, inglês americano).
 
 Cada personagem tem SEMPRE a mesma voz (o aluno, Mike, Ana, Sarah…), e os exemplos da teoria têm a voz do narrador.
-Frase com gravação de nativo do Tatoeba (campo "au") não é gerada: a gravação humana continua valendo.
+Toda frase do curso tem a voz do personagem, inclusive as que têm gravação de nativo do Tatoeba (campo "au"): no app
+a voz do personagem vence e o Tatoeba fica só de reserva. As falas da história do Turismo ("The Golden Wheel") também
+ganham a voz de quem fala (Max, Kim e o narrador da história com vozes próprias).
 
 Saída:
   assets/ingles/voz/<hash>.mp3     um arquivo por (voz, texto); rodar de novo só gera o que falta e apaga os órfãos
-  assets/ingles/vozes.json         {texto em inglês: asset} — o app consulta depois da gravação de nativo
+  assets/ingles/vozes.json         {texto em inglês: asset} — o app toca isto (o Tatoeba só se faltar)
+  assets/ingles/voz_historia/<hash>.mp3   as falas da história (pasta própria: os órfãos de uma pasta não tocam a outra)
+  assets/ingles/vozes_historia.json       {"quem|texto": asset}
   tools/ingles/dados/vozes_google.json   quem fala com qual voz (para conferir/regerar)
+
+ATENÇÃO: cada execução apaga os mp3 que não estão no universo dela (curso inteiro + história inteira). Conferir antes:
+  python3 tools/ingles/vozes_google.py --gcp music-system-421ee --seco     (só conta; órfãos têm de ser 0)
 
 Uso (rodar DEPOIS do integrar.py, na raiz do projeto; precisa do gcloud logado):
   python3 tools/ingles/vozes_google.py --gcp music-system-421ee
@@ -29,6 +36,9 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 CURRICULO = os.path.join(RAIZ, 'assets/ingles/curriculo.json')
 PASTA = os.path.join(RAIZ, 'assets/ingles/voz')
 INDICE = os.path.join(RAIZ, 'assets/ingles/vozes.json')
+PASTA_HISTORIA = os.path.join(RAIZ, 'assets/ingles/voz_historia')
+INDICE_HISTORIA = os.path.join(RAIZ, 'assets/ingles/vozes_historia.json')
+HISTORIA = [os.path.join(RAIZ, f'assets/ingles/turismo_historia_{p}.json') for p in 'abc']
 ELENCO_JSON = os.path.join(RAIZ, 'tools/ingles/dados/vozes_google.json')
 API = 'https://texttospeech.googleapis.com/v1/text:synthesize'
 PREFIXO = 'en-US-Chirp3-HD-'
@@ -47,6 +57,10 @@ ELENCO = {
     'narrador': 'Charon',  # exemplos da teoria e placas
     'placa': 'Charon',
 }
+# a história do Turismo ("The Golden Wheel"): os do curso com a MESMA voz; Max, Kim e o narrador da história com as
+# três vozes Chirp 3 HD que ninguém usa (o narrador da história é outro, não o dos exemplos da teoria)
+ELENCO_HISTORIA = {**{p: v for p, v in ELENCO.items() if p not in ('narrador', 'placa')},
+                   'max': 'Achird', 'kim': 'Gacrux', 'narrador': 'Zubenelgenubi'}
 MASCULINAS = ['Achird', 'Algenib', 'Algieba', 'Alnilam', 'Enceladus', 'Rasalgethi', 'Sadachbia', 'Sadaltager',
               'Schedar', 'Umbriel', 'Zubenelgenubi']
 FEMININAS = ['Achernar', 'Autonoe', 'Callirrhoe', 'Despina', 'Erinome', 'Gacrux', 'Laomedeia', 'Pulcherrima',
@@ -111,80 +125,153 @@ def sintetizar(texto, voz, gcp, token):
     raise RuntimeError(f'sem resposta para {texto!r}')
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument('--gcp', required=True, help='projeto do Google Cloud com a API Text-to-Speech ativa')
-    ap.add_argument('--paralelo', type=int, default=6)
-    ap.add_argument('--limite', type=int, default=0, help='gera só N arquivos (teste)')
-    a = ap.parse_args()
-
+def universo_curso():
+    """{texto: papel} do curso: toda frase (inclusive as que têm gravação do Tatoeba em "au", que agora ficam só de
+    reserva no app) e todo exemplo da teoria. A 1ª fala vale: o mesmo texto não muda de voz."""
     trilhas = json.load(open(CURRICULO, encoding='utf-8'))
-    pedidos = {}  # texto → papel (a 1ª fala vale; o mesmo texto não muda de voz)
-    papeis = {}
+    pedidos = {}
     for t in trilhas:
         for l in t['licoes']:
             for f in l['trechos']:
-                papel = f.get('quem') or 'narrador'
-                papeis.setdefault(papel, voz_do_papel(papel))
-                if not f.get('au'):
-                    pedidos.setdefault(f['cod'].strip(), papel)
-    nativas = {f['cod'].strip() for t in trilhas for l in t['licoes'] for f in l['trechos'] if f.get('au')}
+                pedidos.setdefault(f['cod'].strip(), f.get('quem') or 'narrador')
     for t in trilhas:
         for l in t['licoes']:
             for b in l.get('teoria') or []:
                 if isinstance(b, dict) and b.get('t') == 'ex':
                     en = b['c'].split('\n')[0].strip()
-                    if en and en not in nativas:
+                    if en:
                         pedidos.setdefault(en, 'narrador')
-    papeis.setdefault('narrador', ELENCO['narrador'])
+    return pedidos
 
-    os.makedirs(PASTA, exist_ok=True)
-    indice, faltam = {}, []
-    for texto, papel in sorted(pedidos.items()):
-        voz = voz_do_papel(papel)
-        nome = hashlib.sha1(f'{voz}|{texto}'.encode()).hexdigest()[:14] + '.mp3'
-        indice[texto] = f'assets/ingles/voz/{nome}'
-        if not os.path.exists(os.path.join(PASTA, nome)):
-            faltam.append((texto, voz, nome))
+
+def voz_da_historia(quem):
+    return ELENCO_HISTORIA.get(quem) or voz_do_papel(quem)
+
+
+def universo_historia():
+    """{"quem|texto": (quem, texto)} de toda fala com texto em inglês da história do Turismo (as 3 partes).
+    A chave tem quem fala: na história o mesmo texto pode sair da boca de personagens diferentes ("Copy that!")."""
+    pedidos = {}
+    for caminho in HISTORIA:
+        d = json.load(open(caminho, encoding='utf-8'))
+        for cap in d['capitulos']:
+            for parte in ('intro', 'fim'):
+                cenas = cap.get(parte) or []
+                if isinstance(cenas, dict):
+                    cenas = [cenas]
+                for cena in cenas:
+                    for fala in cena.get('falas') or []:
+                        en = (fala.get('en') or '').strip()
+                        if not en:
+                            continue
+                        quem = fala.get('quem') or 'narrador'
+                        pedidos.setdefault(f'{quem}|{en}', (quem, en))
+    return pedidos
+
+
+def nome_mp3(voz, texto):
+    return hashlib.sha1(f'{voz}|{texto}'.encode()).hexdigest()[:14] + '.mp3'
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--gcp', required=True, help='projeto do Google Cloud com a API Text-to-Speech ativa')
+    ap.add_argument('--paralelo', type=int, default=6)
+    ap.add_argument('--limite', type=int, default=0, help='gera só N arquivos (teste; não apaga órfãos)')
+    ap.add_argument('--seco', '--dry-run', dest='seco', action='store_true',
+                    help='só conta (textos, o que falta, letras, órfãos); não chama a API nem escreve/apaga nada')
+    a = ap.parse_args()
+
+    # (pasta, prefixo do asset, índice, {chave: (texto, voz)}) — cada pasta só apaga os órfãos do SEU universo
+    try:
+        curso = universo_curso()
+    except (OSError, ValueError, KeyError) as e:
+        print(f'currículo ilegível ({e}): nada a fazer')
+        return 1
+    try:
+        hist = universo_historia()
+    except (OSError, ValueError, KeyError) as e:
+        print(f'história ilegível ({e}): nada a fazer')
+        return 1
+    if not curso or not hist:
+        print(f'universo vazio (curso {len(curso)}, história {len(hist)}): nada é gerado nem apagado')
+        return 1
+    papeis = {p: voz_do_papel(p) for p in set(curso.values())}
+    papeis.setdefault('narrador', ELENCO['narrador'])
+    lotes = [
+        ('curso', PASTA, 'assets/ingles/voz/', INDICE,
+         {texto: (texto, voz_do_papel(papel)) for texto, papel in curso.items()}),
+        ('história', PASTA_HISTORIA, 'assets/ingles/voz_historia/', INDICE_HISTORIA,
+         {chave: (texto, voz_da_historia(quem)) for chave, (quem, texto) in hist.items()}),
+    ]
+
+    faltam, indices = [], []
+    for rotulo, pasta, prefixo, arq, pedidos in lotes:
+        indice, falta_aqui = {}, {}
+        for chave, (texto, voz) in sorted(pedidos.items()):
+            nome = nome_mp3(voz, texto)
+            indice[chave] = prefixo + nome
+            if not os.path.exists(os.path.join(pasta, nome)):
+                falta_aqui[nome] = (texto, voz, pasta, nome)  # 2 chaves com a mesma voz e texto = 1 arquivo
+        falta_aqui = list(falta_aqui.values())
+        usados = {os.path.basename(p) for p in indice.values()}
+        existentes = [n for n in os.listdir(pasta) if n.endswith('.mp3')] if os.path.isdir(pasta) else []
+        orfaos = sorted(n for n in existentes if n not in usados)
+        letras = sum(len(t) for t, _, _, _ in falta_aqui)
+        print(f'{rotulo}: {len(pedidos)} textos · faltam {len(falta_aqui)} ({letras} letras) · {len(orfaos)} órfão(s)')
+        if a.seco:
+            for n in orfaos[:50]:
+                print(f'  órfão {prefixo}{n}')
+        faltam += falta_aqui
+        indices.append((rotulo, pasta, arq, indice, orfaos))
+    if a.seco:
+        print(f'total: {len(faltam)} mp3 para gerar, {sum(len(t) for t, _, _, _ in faltam)} letras (nada foi gerado)')
+        return 0
+
     if a.limite:
         faltam = faltam[:a.limite]
-    letras = sum(len(t) for t, _, _ in faltam)
-    print(f'{len(pedidos)} textos · {len(faltam)} para gerar ({letras} letras) · {len(papeis)} papéis')
+    print(f'gerando {len(faltam)} mp3 ({sum(len(t) for t, _, _, _ in faltam)} letras) · {len(papeis)} papéis no curso')
 
     token, feitos, erros = Token(), [0], []
     lock = threading.Lock()
 
     def gera(item):
-        texto, voz, nome = item
+        texto, voz, pasta, nome = item
         try:
             mp3 = sintetizar(texto, voz, a.gcp, token)
-            tmp = os.path.join(PASTA, nome + '.tmp')
+            os.makedirs(pasta, exist_ok=True)
+            tmp = os.path.join(pasta, nome + '.tmp')
             open(tmp, 'wb').write(mp3)
-            os.replace(tmp, os.path.join(PASTA, nome))
+            os.replace(tmp, os.path.join(pasta, nome))
         except Exception as e:  # noqa: BLE001 — registra e segue; rodar de novo completa
             with lock:
                 erros.append(str(e))
         with lock:
             feitos[0] += 1
-            if feitos[0] % 200 == 0:
+            if feitos[0] % 100 == 0:
                 print(f'  {feitos[0]}/{len(faltam)}', flush=True)
 
     with cf.ThreadPoolExecutor(a.paralelo) as ex:
         list(ex.map(gera, faltam))
 
-    # só entra no índice o que existe em disco; órfãos (texto que saiu do curso) saem
-    indice = {t: p for t, p in indice.items() if os.path.exists(os.path.join(RAIZ, p))}
-    usados = {os.path.basename(p) for p in indice.values()}
-    orfaos = [n for n in os.listdir(PASTA) if n.endswith('.mp3') and n not in usados]
-    if not a.limite:
-        for n in orfaos:
-            os.remove(os.path.join(PASTA, n))
-    json.dump(dict(sorted(indice.items())), open(INDICE, 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
-    json.dump({'vozes': {p: PREFIXO + v for p, v in sorted(papeis.items())}, 'gcp_api': 'texttospeech v1',
-               'total': len(indice)}, open(ELENCO_JSON, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
-    tam = sum(os.path.getsize(os.path.join(PASTA, n)) for n in usados if os.path.exists(os.path.join(PASTA, n)))
-    print(f'índice: {len(indice)} textos · {tam / 1e6:.1f} MB · {len(erros)} erro(s)'
-          + ('' if a.limite else f' · {len(orfaos)} órfão(s) apagado(s)'))
+    total = {}
+    for rotulo, pasta, arq, indice, orfaos in indices:
+        # só entra no índice o que existe em disco; órfãos (texto que saiu do curso/da história) saem
+        indice = {k: p for k, p in indice.items() if os.path.exists(os.path.join(RAIZ, p))}
+        if not a.limite:
+            for n in orfaos:
+                os.remove(os.path.join(pasta, n))
+        json.dump(dict(sorted(indice.items())), open(arq, 'w', encoding='utf-8'), ensure_ascii=False, indent=0)
+        usados = {os.path.basename(p) for p in indice.values()}
+        tam = sum(os.path.getsize(os.path.join(pasta, n)) for n in usados)
+        total[rotulo] = len(indice)
+        print(f'{rotulo}: índice {len(indice)} · {tam / 1e6:.1f} MB'
+              + ('' if a.limite else f' · {len(orfaos)} órfão(s) apagado(s)'))
+    historia_vozes = {q: PREFIXO + voz_da_historia(q) for q in sorted({q for q, _ in hist.values()})}
+    json.dump({'vozes': {p: PREFIXO + v for p, v in sorted(papeis.items())}, 'historia': historia_vozes,
+               'gcp_api': 'texttospeech v1', 'total': total['curso'], 'total_historia': total['história']},
+              open(ELENCO_JSON, 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    print(f'{len(erros)} erro(s)')
     for e in erros[:10]:
         print('  ERRO', e)
     return 1 if erros else 0

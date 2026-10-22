@@ -8,8 +8,8 @@ import 'package:web/web.dart' as web;
 import 'escolha_voz.dart';
 import 'voz_ingles.dart' show ordemVozesEnUs;
 
-/// Fala em inglês: a gravação de nativo quando houver ([tocar], um
-/// `<audio>` só), senão direto no Web Speech (`speechSynthesis`), sem o
+/// Fala em inglês: o mp3 da frase quando houver (voz do personagem ou gravação
+/// de nativo — [tocar], um `<audio>` só), senão direto no Web Speech (`speechSynthesis`), sem o
 /// flutter_tts: espera a lista de vozes (no Chrome a 1ª chamada vem
 /// vazia), SEMPRE marca `lang = en-US` (senão a 1ª frase pode sair na voz
 /// portuguesa do sistema) e cancela antes de falar sem depender de evento
@@ -211,7 +211,7 @@ void _pararGravacao() {
   } catch (_) {}
 }
 
-/// Toca a gravação [asset] (mp3 do Tatoeba) na [velocidade] (1 = como foi
+/// Toca o mp3 [asset] (voz do personagem ou gravação do Tatoeba) na [velocidade] (1 = como foi
 /// gravada; a lenta estica sem engrossar a voz — `preservesPitch`). Cancela
 /// a voz sintética e a gravação anterior; a mesma frase de novo recomeça do
 /// zero. false = não tocou (arquivo faltando, navegador bloqueou) e a voz

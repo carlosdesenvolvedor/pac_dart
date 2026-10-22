@@ -252,7 +252,8 @@ class Trecho extends Equatable {
   final bool teste;
 
   /// Inglês: gravação de um falante nativo das MESMAS palavras (Tatoeba),
-  /// asset mp3 tocado no lugar da voz sintética. Vazio = voz do navegador.
+  /// asset mp3 de RESERVA: toca só quando falta a voz gerada do personagem
+  /// (`assets/ingles/vozes.json`). Vazio = sem gravação.
   final String audio;
 
   /// Inglês: autor e licença da [audio] ("CK · CC BY-NC-ND 3.0") — a

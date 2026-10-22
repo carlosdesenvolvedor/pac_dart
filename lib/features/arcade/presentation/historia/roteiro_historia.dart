@@ -484,18 +484,32 @@ class RoteiroHistoria extends ChangeNotifier implements RoteiroVisivel {
     }
     final g = ++_gerVoz;
     _vozPronta = false;
-    _limiteVoz = (tFala ?? 0) + VozIngles.duracaoDe(en) / _velocidade * 2 + 5;
+    _limiteVoz = (tFala ?? 0) + VozIngles.duracaoNaHistoria(f.quem, en) / _velocidade * 2 + 5;
     void pronto(Object? _) {
       if (g != _gerVoz) return;
       _vozPronta = true;
     }
 
     try {
+      // o mp3 do personagem (voz Chirp + boca do Rhubarb); sem ele, a sintética com o perfil dele
       voz
-          .falarNoPlayer(en, fator: _velocidade, perfil: ElencoTurismo.perfilDeVoz(f.quem))
+          .falarNaHistoria(en, fator: _velocidade, quem: f.quem, perfil: ElencoTurismo.perfilDeVoz(f.quem))
           .then(pronto, onError: pronto);
     } catch (_) {
       _vozPronta = true;
+    }
+    _preaquecerProxima();
+  }
+
+  /// Começa a baixar o mp3 da próxima fala da cena (na web o 1º toque de um mp3 espera a rede).
+  void _preaquecerProxima() {
+    if (_cena >= _cenas.length) return;
+    final falas = _cenas[_cena].falas;
+    for (var i = _passo + 1; i < falas.length; i++) {
+      final en = falas[i].en;
+      if (en == null || en.isEmpty) continue;
+      VozIngles.preaquecerHistoria(falas[i].quem, en);
+      return;
     }
   }
 

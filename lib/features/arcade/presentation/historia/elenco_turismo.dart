@@ -54,7 +54,8 @@ abstract final class ElencoTurismo {
   /// A cor do chip do balão = a roupa do personagem (narrador: 0xFF3A2A33).
   static Color corDe(String quem) => de(quem)?.roupa ?? _corNarrador;
 
-  /// A voz de cada um (tom + variante da voz en-US do sistema): ninguém soa igual a ninguém.
+  /// A voz de cada um (tom + variante da voz en-US do sistema): ninguém soa igual a ninguém. É a RESERVA:
+  /// a fala que tem mp3 (`assets/ingles/vozes_historia.json`, voz Chirp por personagem) toca o mp3.
   static const _vozes = {
     'voce': PerfilVoz(),
     'mike': PerfilVoz(tom: .88),

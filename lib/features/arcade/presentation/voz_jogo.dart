@@ -7,8 +7,8 @@ import '../../../core/theme/mixart.dart';
 import '../../ingles/data/voz_ingles.dart';
 import 'banco_arcade.dart';
 
-/// Quem fala a palavra no jogo: a [VozIngles] de verdade (o áudio do aluno, a gravação de nativo ou a
-/// voz do navegador); os testes trocam por um falso.
+/// Quem fala a palavra no jogo: a [VozIngles] de verdade (o áudio do aluno, o mp3 da frase — voz do
+/// personagem ou, de reserva, gravação de nativo — ou a voz do navegador); os testes trocam por um falso.
 abstract interface class FalanteDoJogo {
   /// O navegador já deixa tocar sozinho (a página teve tecla/clique)?
   bool get liberado;

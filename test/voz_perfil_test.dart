@@ -288,6 +288,101 @@ void main() {
     });
   });
 
+  // Lote "trocar as vozes" (D15): a fala da história toca o mp3 do personagem (voz Chirp) com a boca do Rhubarb;
+  // sem mp3 dela, a sintética com o perfil (o caminho do grupo acima).
+  group('falarNaHistoria', () {
+    const mp3h = 'assets/ingles/voz_historia/hello.mp3';
+    const bocaH = '0X 12B 40E 90C 180X';
+
+    test('sem mp3 da história (mesmo com mp3 do CURSO para o texto) → a sintética com o perfil', () async {
+      final sint = <(String, double, PerfilVoz)>[];
+      final voz = VozIngles(falarComPerfil: (f, v, p) async => sint.add((f, v, p)));
+      final anuncios = _ouvirAnuncios(addTearDown);
+      expect(await voz.falarNaHistoria('Hello.', fator: 1, quem: 'sarah', perfil: _sarah), FimDaFala.acabou);
+      expect(sint, [('Hello.', VozIngles.velocidadeNormal, _sarah)]);
+      expect(anuncios.map((a) => a.gravacao), [false], reason: 'o mp3 do curso (de outro personagem) não toca');
+      expect(VozIngles.falando.value, isNull);
+    });
+
+    test('com mp3: anuncia a boca do Rhubarb (gravação, velocidade = fator); na VM o mp3 não toca → perfil de reserva',
+        () async {
+      AudioNativo.registrarHistoria({'sarah|Hello.': mp3h});
+      BocasIngles.registrar({mp3h: bocaH});
+      var clipes = 0;
+      final sint = <(String, double, PerfilVoz)>[];
+      final voz = VozIngles(
+        tocarClipe: (_, _, _) async {
+          clipes++;
+          return true;
+        },
+        falarComPerfil: (f, v, p) async => sint.add((f, v, p)),
+      );
+      final anuncios = _ouvirAnuncios(addTearDown);
+      expect(await voz.falarNaHistoria('Hello.', fator: 1, quem: 'sarah', perfil: _sarah), FimDaFala.acabou);
+      expect(clipes, 0, reason: 'o áudio que o aluno anexou nunca toca na história');
+      expect(anuncios.map((a) => a.gravacao), [true, false]);
+      expect(anuncios.first.frase, 'Hello.');
+      expect(anuncios.first.velocidade, 1);
+      expect(anuncios.first.boca.duracao, TrilhaBoca.compacta(bocaH).duracao);
+      expect(sint, [('Hello.', VozIngles.velocidadeNormal, _sarah)]);
+      expect(VozIngles.falando.value, isNull, reason: 'acabou: a boca fecha');
+    });
+
+    test('a chave tem quem fala: o mp3 do Max não toca para o aluno', () async {
+      AudioNativo.registrarHistoria({'max|Copy that!': mp3h});
+      BocasIngles.registrar({mp3h: bocaH});
+      final voz = VozIngles(falarComPerfil: (_, _, _) async {});
+      final anuncios = _ouvirAnuncios(addTearDown);
+      await voz.falarNaHistoria('Copy that!', fator: 1, quem: 'voce', perfil: PerfilVoz.padrao);
+      expect(anuncios.map((a) => a.gravacao), [false]);
+      anuncios.clear();
+      await voz.falarNaHistoria('Copy that!', fator: 1, quem: 'max', perfil: const PerfilVoz(tom: .76));
+      expect(anuncios.map((a) => a.gravacao), [true, false]);
+    });
+
+    test('a velocidade da história vale para o mp3 (fator .5); duracaoNaHistoria = a boca do mp3', () async {
+      AudioNativo.registrarHistoria({'sarah|Hello.': mp3h});
+      BocasIngles.registrar({mp3h: bocaH});
+      final velocidades = <double>[];
+      final voz = VozIngles(falarComPerfil: (_, v, _) async => velocidades.add(v));
+      final anuncios = _ouvirAnuncios(addTearDown);
+      await voz.falarNaHistoria('Hello.', fator: .5, quem: 'sarah', perfil: _sarah);
+      expect(anuncios.first.gravacao, isTrue);
+      expect(anuncios.first.velocidade, .5);
+      expect(velocidades, [closeTo(.475, 1e-9)], reason: 'a reserva sintética também desce');
+      expect(VozIngles.duracaoNaHistoria('sarah', 'Hello.'), TrilhaBoca.compacta(bocaH).duracao);
+      // sem mp3 da história: a duração de sempre (aqui, a boca do mp3 do curso)
+      expect(VozIngles.duracaoNaHistoria('ben', 'Hello.'), VozIngles.duracaoDe('Hello.'));
+      expect(VozIngles.duracaoNaHistoria('ben', 'Hello.'), TrilhaBoca.compacta(_bocaMp3).duracao);
+    });
+
+    test('mp3 sem boca gerada: a boca segue o texto (não "gravação")', () async {
+      AudioNativo.registrarHistoria({'sarah|Hello.': mp3h});
+      final voz = VozIngles(falarComPerfil: (_, _, _) async {});
+      final anuncios = _ouvirAnuncios(addTearDown);
+      await voz.falarNaHistoria('Hello.', fator: 1, quem: 'sarah', perfil: _sarah);
+      expect(anuncios.first.gravacao, isFalse);
+    });
+
+    test('cortada por outra VozIngles no meio da reserva = cortada; não fecha a boca de quem cortou', () async {
+      AudioNativo.registrarHistoria({'sarah|Hello.': mp3h});
+      BocasIngles.registrar({mp3h: bocaH});
+      final sint = _Sintetica();
+      final historia = VozIngles(falarComPerfil: sint.falar);
+      final f = historia.falarNaHistoria('Hello.', fator: 1, quem: 'sarah', perfil: _sarah);
+      await pumpEventQueue();
+      final fimPalco = Completer<bool>();
+      final palco = VozIngles(tocarClipe: (_, _, _) => fimPalco.future);
+      final q = palco.falar('Hello.');
+      await pumpEventQueue();
+      sint.acabar();
+      expect(await f, FimDaFala.cortada);
+      expect(VozIngles.falando.value?.frase, 'Hello.');
+      fimPalco.complete(true);
+      await q;
+    });
+  });
+
   group('ordemVozesEnUs (a variante do perfil)', () {
     test('só en-US que servem, da melhor para a pior; empate = a ordem da lista', () {
       final vozes = [

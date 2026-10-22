@@ -8,8 +8,8 @@ import 'package:flutter_tts/flutter_tts.dart';
 import 'escolha_voz.dart';
 import 'voz_ingles.dart' show ordemVozesEnUs;
 
-/// Fala em inglês no Android e no iOS: a gravação de nativo quando houver
-/// ([tocar], mp3 do pacote de assets) e, senão, a voz do sistema (`flutter_tts`,
+/// Fala em inglês no Android e no iOS: o mp3 da frase quando houver (voz do
+/// personagem ou gravação de nativo — [tocar], mp3 do pacote de assets) e, senão, a voz do sistema (`flutter_tts`,
 /// a melhor en-US instalada — mesma escolha de voz do navegador, [notaDaVoz]).
 /// Mesmo contrato do `fala_web.dart`: [falar] e [tocar] só completam quando a fala
 /// ACABA (ou outra a corta, ou falha). No desktop e nos testes da VM ficam

@@ -15,9 +15,9 @@ import 'fala_stub.dart'
 /// Fala as frases do curso de inglês em inglês americano com a melhor voz
 /// que o navegador tiver. Grátis e sem cota (Web Speech API): as vozes de
 /// rede ("Microsoft … Online (Natural)" no Edge, "Google US English" no
-/// Chrome) soam bem melhor que as locais. Frase com gravação de nativo
-/// (Tatoeba, [AudioNativo]) toca o mp3 no lugar — nunca as duas vozes
-/// juntas; se o mp3 falhar, a sintética assume. O áudio que o ALUNO anexou à
+/// Chrome) soam bem melhor que as locais. Frase com mp3 ([AudioNativo]: a voz
+/// gerada do personagem, ou de reserva a gravação de nativo do Tatoeba) toca o
+/// mp3 no lugar — nunca as duas vozes juntas; se o mp3 falhar, a sintética assume. O áudio que o ALUNO anexou à
 /// frase ([AudioUsuario]) vem na frente de tudo, no formato dele. Nunca lança:
 /// plataforma sem TTS (testes na VM) só fica muda.
 /// A fala que está soando agora — os personagens mexem a boca com ela ([VozIngles.falando]).
@@ -115,7 +115,7 @@ class VozIngles {
   static const velocidadeNormal = .95;
   static const velocidadeLenta = .72;
 
-  /// A gravação de nativo: 1 = como foi gravada; a lenta estica ~20%
+  /// O mp3 (voz do personagem ou gravação de nativo): 1 = como foi gravado; a lenta estica ~20%
   /// (abaixo disso a fala natural começa a soar arrastada).
   static const velocidadeGravada = 1.0;
   static const velocidadeGravadaLenta = .8;
@@ -252,7 +252,8 @@ class VozIngles {
   /// do 1º gesto o `<audio>` e a voz sintética ficam mudos.
   bool get somLiberado => Sons.liberado;
 
-  /// A frase tem gravação de nativo (toca o mp3, não a voz sintética)?
+  /// A frase tem gravação de nativo registrada? (Hoje ela só toca de reserva: a voz do personagem vence —
+  /// [AudioNativo.tocaGravacaoDeNativo].)
   static bool temVozNativa(String frase) => AudioNativo.daFrase(frase) != null;
 
   /// A voz em uso (null fora do navegador ou antes da 1ª fala).
@@ -271,8 +272,9 @@ class VozIngles {
   /// Fala do player: ignora [lentaPorPadrao]; mp3 e áudio do aluno a `rate = fator`, Web Speech a
   /// `clamp(.95 * fator, .6, 1.2)` (com [perfil], piso .4). [FimDaFala.cortada] = outra fala do app (ou um [parar]) entrou no meio.
   /// [perfil] (história do English Turismo): a voz do personagem — SEMPRE a sintética (pula o áudio do
-  /// aluno e o mp3: a fala da história nunca toca a gravação de outro personagem do curso), com
+  /// aluno e o mp3 do curso: a fala da história nunca toca a gravação de outro personagem do curso), com
   /// `pitch = tom` e a `variante`-ésima melhor voz en-US; a boca segue o texto. null = o caminho de sempre.
+  /// O mp3 do personagem da história fica em [falarNaHistoria] (que cai aqui quando não há mp3).
   Future<FimDaFala> falarNoPlayer(String frase, {required double fator, PerfilVoz? perfil}) async {
     final minha = ++_vez;
     final g = ++_vezGlobal;
@@ -291,6 +293,53 @@ class VozIngles {
           vSintetica: vSintetica,
           segPalavra: segPorPalavra / f,
         );
+      }
+    } finally {
+      _emCurso--;
+      _fecharBoca(minha, g);
+    }
+    return g == _vezGlobal ? FimDaFala.acabou : FimDaFala.cortada;
+  }
+
+  /// A fala de [quem] na história do Turismo: o mp3 dele ([AudioNativo.daHistoria], voz Chirp do
+  /// personagem) a `rate = fator`, com a boca do Rhubarb; sem mp3 (ou se ele não tocar) → a sintética com
+  /// o [perfil] (o caminho de [falarNoPlayer] com perfil). Mesmo contrato do [falarNoPlayer].
+  Future<FimDaFala> falarNaHistoria(
+    String frase, {
+    required double fator,
+    required String quem,
+    required PerfilVoz perfil,
+  }) {
+    final audio = AudioNativo.daHistoria(quem, frase);
+    if (audio == null) return falarNoPlayer(frase, fator: fator, perfil: perfil);
+    return _falarMp3DaHistoria(frase, audio, fator: fator, perfil: perfil);
+  }
+
+  Future<FimDaFala> _falarMp3DaHistoria(
+    String frase,
+    String audio, {
+    required double fator,
+    required PerfilVoz perfil,
+  }) async {
+    final minha = ++_vez;
+    final g = ++_vezGlobal;
+    final f = fator <= 0 ? 1.0 : fator;
+    final vSintetica = (velocidadeNormal * f).clamp(.4, 1.2).toDouble();
+    _emCurso++;
+    try {
+      try {
+        final boca = BocasIngles.de(audio);
+        _anuncia(
+          frase,
+          boca ?? TrilhaBoca.doTexto(frase, segPorPalavra: segPorPalavra / f * .8),
+          velocidade: f,
+          gravacao: boca != null,
+        );
+        if (await fala.tocar(audio, f)) return g == _vezGlobal ? FimDaFala.acabou : FimDaFala.cortada;
+      } catch (_) {}
+      if (minha == _vez && g == _vezGlobal) {
+        // o mp3 não tocou: a voz sintética com o perfil do personagem assume
+        await _falarComPerfil(frase, perfil, vSintetica: vSintetica, segPalavra: segPorPalavra / f);
       }
     } finally {
       _emCurso--;
@@ -363,6 +412,21 @@ class VozIngles {
     final pelaBoca = BocasIngles.duracaoDe(AudioNativo.paraTocar(frase));
     if (pelaBoca != null && pelaBoca > 0) return pelaBoca;
     return _palavras(frase) * segPorPalavra;
+  }
+
+  /// Segundos da fala de [quem] na história a 1×: a boca do mp3 dela, senão [duracaoDe].
+  static double duracaoNaHistoria(String quem, String frase) {
+    final pelaBoca = BocasIngles.duracaoDe(AudioNativo.daHistoria(quem, frase));
+    if (pelaBoca != null && pelaBoca > 0) return pelaBoca;
+    return duracaoDe(frase);
+  }
+
+  /// Começa a baixar o mp3 da fala de [quem] na história (sem tocar). Nunca lança.
+  static void preaquecerHistoria(String quem, String frase) {
+    try {
+      final asset = AudioNativo.daHistoria(quem, frase);
+      if (asset != null) fala.preaquecer(asset);
+    } catch (_) {}
   }
 
   static int _palavras(String s) => s.trim().split(RegExp(r'\s+')).where((p) => p.isNotEmpty).length;
