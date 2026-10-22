@@ -215,13 +215,13 @@ class _Vista3DState extends State<Vista3D> {
       // efeitos (motor/vento) e o 🎸 estão ligados
       'som': widget.som,
       'musicaLigada': widget.musica,
+      // o motor 3D é o mesmo nos 3 cursos: os ajustes de desempenho e os retoques dos mundos (22/out) só ligam no inglês
+      'ingles': Linguagem.atual == Linguagem.ingles,
       'segmentos': [for (final s in e.segmentos) s.curva],
       'comprimentoSegmento': TurismoEngine.comprimentoSegmento,
       'distancia': e.pista.distancia,
       'carro': widget.carro,
       'trafego': widget.trafego,
-      // o motor 3D é o mesmo nos 3 cursos: os retoques só do inglês ligam com esta chave
-      'ingles': Linguagem.atual == Linguagem.ingles,
       'portais': [
         for (final p in e.portais)
           {
