@@ -177,6 +177,25 @@ void main() {
       expect(j, isNull);
     });
 
+    test('índice e tabela travados (a rede não responde nem falha): a trilha estoura e o próximo pedido tenta de novo', () async {
+      final b = _Bundle({HistoriasLicoesRepo.indice: _indice, HistoriasLicoesRepo.encenacao: _tabela});
+      b.travar.addAll({HistoriasLicoesRepo.indice, HistoriasLicoesRepo.encenacao});
+      const curto = Duration(milliseconds: 30);
+      expect(await HistoriasLicoesRepo.trilha('primeiro-contato', bundle: b, timeout: curto), isNull,
+          reason: 'o índice travado não segura a trilha além do timeout');
+      unawaited(HistoriasLicoesRepo.encenacaoAuto(bundle: b, timeout: curto));
+      await Future<void>.delayed(const Duration(milliseconds: 60));
+      expect(HistoriasLicoesRepo.emVooTravado(timeout: curto), isTrue);
+      // a rede volta: o pedido travado é abandonado (não ficou preso no cache)
+      b.travar.clear();
+      b.arquivos['${HistoriasLicoesRepo.pasta}primeiro-contato.json'] = _trilha;
+      expect(await HistoriasLicoesRepo.trilha('primeiro-contato', bundle: b, timeout: curto), isNotNull);
+      expect(await HistoriasLicoesRepo.encenacaoAuto(bundle: b, timeout: curto), hasLength(4));
+      expect(b.pedidos.where((p) => p == HistoriasLicoesRepo.indice), hasLength(2));
+      expect(b.pedidos.where((p) => p == HistoriasLicoesRepo.encenacao), hasLength(2));
+      expect(HistoriasLicoesRepo.emVooTravado(timeout: curto), isFalse);
+    });
+
     test('encenacaoAuto: lê a tabela (tolerante nos enums); ausente → {} e tenta de novo', () async {
       final b = _Bundle({});
       expect(await HistoriasLicoesRepo.encenacaoAuto(bundle: b), isEmpty);
@@ -201,7 +220,15 @@ void main() {
     test('os assets do projeto existem: o piloto no índice e a tabela com as 602 lições (integração)', () async {
       // o bundle de verdade dos testes lê do disco
       final idx = await HistoriasLicoesRepo.trilhasComHistoria();
-      expect(idx, {'primeiro-contato': 1, 'numeros-horas-soletrar': 1});
+      // o índice cresce a cada lote escrito (A1 inteiro já está lá): só o
+      // piloto é fixo, e toda trilha listada tem versão ≥ 1 e um arquivo
+      expect(idx, containsPair('primeiro-contato', 1));
+      expect(idx, containsPair('numeros-horas-soletrar', 1));
+      for (final e in idx.entries) {
+        expect(e.value, greaterThanOrEqualTo(1), reason: e.key);
+        final t = await HistoriasLicoesRepo.trilha(e.key);
+        expect(t, isNotNull, reason: 'assets/ingles/historias/${e.key}.json');
+      }
       expect(await HistoriasLicoesRepo.encenacaoAuto(), hasLength(602));
     });
   });

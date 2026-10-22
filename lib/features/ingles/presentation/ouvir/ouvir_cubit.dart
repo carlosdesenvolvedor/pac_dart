@@ -78,6 +78,11 @@ class OuvirCubit extends Cubit<OuvirState> {
 
   int _token = 0;
   DateTime? _inicioFaixa;
+  ({int indice, ConfigOuvir config})? _configDaFaixa;
+
+  /// A config com que os passos da faixa [indice] foram fixados (a que está tocando "termina como começou",
+  /// ver [configurar]). O 📺 usa para planejar o silêncio que toca de verdade, não o do chip trocado no meio.
+  ({int indice, ConfigOuvir config})? get configDaFaixa => _configDaFaixa;
   int _instantaneas = 0;
   int _inicioInstantaneas = 0;
   int _desdeSalvo = 0;
@@ -317,7 +322,9 @@ class OuvirCubit extends Cubit<OuvirState> {
         saida.preaquecer(fila[j].en);
       } catch (_) {}
     }
-    final passos = passosDa(f, state.config, fimDeLicao: fimDeLicao);
+    final cfg = state.config;
+    _configDaFaixa = (indice: i, config: cfg);
+    final passos = passosDa(f, cfg, fimDeLicao: fimDeLicao);
     for (final p in passos) {
       if (!_vivo(t)) return _FimPasso.saiu;
       final r = await _passo(t, p, f, i);

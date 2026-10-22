@@ -18,12 +18,13 @@ import 'assistir_compasso_test.dart';
 
 /// Um seguidor com a fixture (lição A autoral, lição B) e um relógio controlável.
 class _Montagem {
-  _Montagem({HistoriaLicao? Function(Faixa f)? historiaDe, bool reduzir = false}) {
+  _Montagem({HistoriaLicao? Function(Faixa f)? historiaDe, bool reduzir = false, ConfigOuvir? Function(int)? configDaFaixa}) {
     seguidor = RoteiroSeguidor(
       historiaDe: historiaDe ?? (f) => f.licaoId == licaoA.id ? a : (f.licaoId == licaoB.id ? b : null),
       memoria: memoria,
       reduzir: reduzir,
       agora: () => agora,
+      configDaFaixa: configDaFaixa,
     );
   }
 
@@ -490,6 +491,117 @@ void main() {
       expect(s.escurecimento, 0);
       m.emitir(tocandoEm(indice: 5));
       expect(s.escurecimento, 0);
+    });
+  });
+
+  group('polimento da revisão (rodada 16)', () {
+    test('o tique só notifica quando algo visível muda: parado no respiro, nenhuma notificação', () {
+      final m = _Montagem();
+      final s = m.seguidor;
+      final estados = estadosDaFaixa(tocandoEm(config: const ConfigOuvir(repeticoes: 3)), 0);
+      var avisos = 0;
+      s.addListener(() => avisos++);
+      m.emitir(estados[0]); // ouvindo, vez 1: digita
+      avisos = 0;
+      m.andar(1);
+      expect(avisos, greaterThan(20), reason: 'a ação e as letras andam a cada tique');
+      m.andar(3); // texto completo e a ação acabou
+      m.emitir(estados[1]); // respiro, vez 1 de 3: não é o vão final
+      m.andar(4);
+      avisos = 0;
+      m.andar(1);
+      expect(avisos, 0, reason: 'o idle anda pelo relógio de 30 fps do palco, não pelo seguidor');
+      expect(s.tPasso, greaterThan(4), reason: 'o tempo do passo continua contando');
+    });
+
+    test('o "Desligar em" que vence no MEIO do vão: não abre a próxima lição (P8)', () {
+      final m = _Montagem();
+      final s = m.seguidor;
+      final base = tocandoEm(indice: 4, config: const ConfigOuvir(pausa: PausaOuvir.longa));
+      final estados = estadosDaFaixa(base, 4);
+      for (final e in estados.take(estados.length - 1)) {
+        m.emitir(e);
+      }
+      // o vão começa com o timer vencendo .5 s depois (o cubit só confere na virada, depois do silêncio)
+      final ultimo = estados.last.copyWith(desligar: DesligarEm.min15, desligaAs: m.agora.add(const Duration(milliseconds: 500)));
+      m.emitir(ultimo);
+      m.andar(3.5);
+      expect(s.historiaNaTela, same(m.a), reason: 'a lição B não abre no vão');
+      final virada = ultimo.copyWith(indice: 5);
+      m.emitir(virada);
+      m.emitir(virada.copyWith(desligar: DesligarEm.nunca, semDesligaAs: true));
+      m.emitir(virada.copyWith(desligar: DesligarEm.nunca, semDesligaAs: true, status: StatusOuvir.pausado, motivo: MotivoPausa.timer));
+      expect(s.historiaNaTela, same(m.a));
+      expect(s.falaAtual?.en, 'Hi, Ana!');
+    });
+
+    test('"fim da lição" escolhido com a próxima já aberta no vão: volta ao fim desta lição', () {
+      final m = _Montagem();
+      final s = m.seguidor;
+      final estados = estadosDaFaixa(tocandoEm(indice: 4, config: const ConfigOuvir(pausa: PausaOuvir.longa)), 4);
+      for (final e in estados) {
+        m.emitir(e);
+      }
+      m.andar(.5);
+      expect(s.historiaNaTela, same(m.b), reason: 'sem timer, o vão abre a lição B');
+      final fim = estados.last.copyWith(desligar: DesligarEm.fimDaLicao);
+      m.emitir(fim);
+      expect(s.historiaNaTela, same(m.a));
+      expect(s.falaAtual?.en, 'Hi, Ana!');
+      m.andar(2);
+      expect(s.historiaNaTela, same(m.a));
+      // e se o timer pausa na virada mesmo assim (o seguidor não soube a tempo), também volta
+      final m2 = _Montagem();
+      final e2 = estadosDaFaixa(tocandoEm(indice: 4, config: const ConfigOuvir(pausa: PausaOuvir.longa)), 4);
+      for (final e in e2) {
+        m2.emitir(e);
+      }
+      m2.andar(.5);
+      expect(m2.seguidor.historiaNaTela, same(m2.b));
+      final virada = e2.last.copyWith(indice: 5);
+      m2.emitir(virada);
+      m2.emitir(virada.copyWith(status: StatusOuvir.pausado, motivo: MotivoPausa.timer));
+      expect(m2.seguidor.historiaNaTela, same(m2.a));
+      expect(m2.seguidor.falaAtual?.en, 'Hi, Ana!');
+    });
+
+    test('pausar no meio de um corte e continuar: o véu não volta', () {
+      final m = _Montagem();
+      final s = m.seguidor;
+      m.emitir(tocandoEm());
+      final corte = tocandoEm(indice: 3);
+      m.emitir(corte); // outra cena: véu
+      m.andar(.1);
+      expect(s.escurecimento, greaterThan(.5));
+      m.emitir(corte.copyWith(status: StatusOuvir.pausado, motivo: MotivoPausa.usuario));
+      expect(s.escurecimento, 0);
+      m.andar(3);
+      m.emitir(corte.copyWith(status: StatusOuvir.tocando, semMotivo: true));
+      expect(s.escurecimento, 0, reason: 'mesmo passo, mesma cena: sem corte novo');
+      m.andar(.1);
+      expect(s.escurecimento, 0);
+    });
+
+    test('o chip trocado no meio da faixa não muda o vão: vale a config com que a faixa começou', () {
+      const curta = ConfigOuvir(pausa: PausaOuvir.curta);
+      const longa = ConfigOuvir(pausa: PausaOuvir.longa);
+      final estados = estadosDaFaixa(tocandoEm(config: curta), 0); // a0 → (mudo) → a1, pausa curta de verdade
+      for (final comRetrato in [false, true]) {
+        final m = _Montagem(configDaFaixa: comRetrato ? (i) => i == 0 ? curta : null : null);
+        final s = m.seguidor;
+        m.emitir(estados[0]);
+        // o aluno troca para "longa" durante a fala: o emit do silêncio já leva a config nova
+        m.emitir(estados[0].copyWith(config: longa));
+        m.emitir(estados[1].copyWith(config: longa));
+        expect(s.noVao, isTrue);
+        m.andar(.5); // o silêncio curto real acabou
+        if (comRetrato) {
+          expect(s.estatico, isTrue, reason: 'vão de .5 s: o mudo salta para o estado final a tempo');
+          expect(s.passo, 2);
+        } else {
+          expect(s.estatico, isFalse, reason: 'sem o retrato, planeja o vão longo (o comportamento antigo)');
+        }
+      }
     });
   });
 }

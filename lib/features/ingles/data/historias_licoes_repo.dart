@@ -16,23 +16,34 @@ abstract final class HistoriasLicoesRepo {
   static const indice = '${pasta}indice.json';
   static const encenacao = '${pasta}encenacao_auto.json';
 
-  /// O tempo máximo para baixar o arquivo de uma trilha.
+  /// O tempo máximo para baixar um arquivo (índice, tabela ou trilha). Uma conexão que trava sem falhar
+  /// (portal cativo, dados móveis ruins) não pode deixar um Future pendente preso no cache: o índice e a tabela
+  /// em voo há mais que isto são abandonados e o próximo pedido tenta de novo ([emVooTravado]); a trilha (e o
+  /// índice que ela espera) estoura no `timeout`. Sem `Timer` no Future compartilhado: o índice e a tabela
+  /// podem ficar em voo para sempre num teste de widget (o `compute` do loadString grande não anda no relógio
+  /// falso), e um Timer pendurado quebraria esses testes.
   static const timeoutPadrao = Duration(seconds: 8);
 
-  static Future<Map<String, int>>? _indice;
-  static Future<Map<String, EncenacaoManual>>? _encenacao;
+  static _EmVoo<Map<String, int>>? _indice;
+  static _EmVoo<Map<String, EncenacaoManual>>? _encenacao;
 
-  /// slug → versão. Future em cache só no sucesso; falha → {} e tenta de novo no próximo chamado.
-  static Future<Map<String, int>> trilhasComHistoria({AssetBundle? bundle}) {
+  /// O índice ou a tabela está em voo há mais que [timeout] (a conexão travou).
+  static bool emVooTravado({Duration timeout = timeoutPadrao}) =>
+      (_indice?.travado(timeout) ?? false) || (_encenacao?.travado(timeout) ?? false);
+
+  /// slug → versão. Future em cache só no sucesso; falha → {} e tenta de novo no próximo chamado (também se o
+  /// pedido anterior travou por mais que [timeout]).
+  static Future<Map<String, int>> trilhasComHistoria({AssetBundle? bundle, Duration timeout = timeoutPadrao}) {
     final emCache = _indice;
-    if (emCache != null) return emCache;
+    if (emCache != null && !emCache.travado(timeout)) return emCache.futuro;
     final ok = <bool>[false];
-    final futuro = _lerIndice(bundle ?? rootBundle, ok);
-    _indice = futuro;
-    futuro.then((_) {
-      if (!ok.first && identical(_indice, futuro)) _indice = null;
+    final voo = _EmVoo(_lerIndice(bundle ?? rootBundle, ok));
+    _indice = voo;
+    voo.futuro.then((_) {
+      voo.pronto = true;
+      if (!ok.first && identical(_indice, voo)) _indice = null;
     });
-    return futuro;
+    return voo.futuro;
   }
 
   static Future<Map<String, int>> _lerIndice(AssetBundle bundle, List<bool> ok) async {
@@ -59,7 +70,7 @@ abstract final class HistoriasLicoesRepo {
   static Future<Map<String, dynamic>?> trilha(String slug, {AssetBundle? bundle, Duration timeout = timeoutPadrao}) async {
     final b = bundle ?? rootBundle;
     try {
-      final idx = await trilhasComHistoria(bundle: b);
+      final idx = await trilhasComHistoria(bundle: b, timeout: timeout).timeout(timeout);
       if (!idx.containsKey(slug)) return null;
       final texto = await b.loadString('$pasta$slug.json', cache: false).timeout(timeout);
       final j = jsonDecode(texto);
@@ -72,17 +83,19 @@ abstract final class HistoriasLicoesRepo {
     }
   }
 
-  /// A tabela `encenacao_auto.json` (Licao.id → correção da automática). Cache só no sucesso; falha → {}.
-  static Future<Map<String, EncenacaoManual>> encenacaoAuto({AssetBundle? bundle}) {
+  /// A tabela `encenacao_auto.json` (Licao.id → correção da automática). Cache só no sucesso; falha → {} (e o
+  /// pedido travado por mais que [timeout] é abandonado, como o do índice).
+  static Future<Map<String, EncenacaoManual>> encenacaoAuto({AssetBundle? bundle, Duration timeout = timeoutPadrao}) {
     final emCache = _encenacao;
-    if (emCache != null) return emCache;
+    if (emCache != null && !emCache.travado(timeout)) return emCache.futuro;
     final ok = <bool>[false];
-    final futuro = _lerEncenacao(bundle ?? rootBundle, ok);
-    _encenacao = futuro;
-    futuro.then((_) {
-      if (!ok.first && identical(_encenacao, futuro)) _encenacao = null;
+    final voo = _EmVoo(_lerEncenacao(bundle ?? rootBundle, ok));
+    _encenacao = voo;
+    voo.futuro.then((_) {
+      voo.pronto = true;
+      if (!ok.first && identical(_encenacao, voo)) _encenacao = null;
     });
-    return futuro;
+    return voo.futuro;
   }
 
   static Future<Map<String, EncenacaoManual>> _lerEncenacao(AssetBundle bundle, List<bool> ok) async {
@@ -111,4 +124,15 @@ abstract final class HistoriasLicoesRepo {
     _indice = null;
     _encenacao = null;
   }
+}
+
+/// Um Future do cache e quando ele saiu (para abandonar o que travou sem Timer).
+class _EmVoo<T> {
+  _EmVoo(this.futuro);
+
+  final Future<T> futuro;
+  final _relogio = Stopwatch()..start();
+  bool pronto = false;
+
+  bool travado(Duration timeout) => !pronto && _relogio.elapsed > timeout;
 }

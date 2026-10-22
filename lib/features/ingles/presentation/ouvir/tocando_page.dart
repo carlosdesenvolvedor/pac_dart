@@ -412,9 +412,10 @@ class _TocandoPageState extends State<TocandoPage> {
         const SizedBox(height: 14),
         LayoutBuilder(builder: (context, cons) {
           final w = math.min(cons.maxWidth, 720.0);
-          // no celular em pé o palco é mais alto (.78): com .56 sobravam ~165 px de desenho e o balão de 2
-          // linhas cobria todo mundo (a página rola, então há espaço)
-          final h0 = largo ? (w * .56).clamp(260.0, 520.0) : (w * .78).clamp(220.0, 380.0);
+          // no celular em pé o palco é quase quadrado (.95): com .56 sobravam ~165 px de desenho e o balão de 2
+          // linhas cobria todo mundo; com .78 o balão ainda tampava a cabeça de quem fala (a página rola, então
+          // há espaço). O que ainda faltar, o palco resolve encolhendo os atores (`balaoSemCorte`).
+          final h0 = largo ? (w * .56).clamp(260.0, 520.0) : (w * .95).clamp(240.0, 380.0);
           // tela baixa (celular deitado): o palco inteiro, com a faixa das bolinhas e o ⛶, na altura visível
           // (o que vem acima dele, barra + nome + trilha, ocupa ~140 px + o texto ampliado)
           final visivel = MediaQuery.sizeOf(context).height;

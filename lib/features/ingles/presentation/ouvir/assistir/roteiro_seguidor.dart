@@ -37,6 +37,7 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
     required this.memoria,
     bool reduzir = false,
     DateTime Function()? agora,
+    this.configDaFaixa,
   })  : _reduzir = reduzir,
         agora = agora ?? DateTime.now;
 
@@ -49,6 +50,15 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
 
   /// O relógio da voz (as letras pela posição da `FalaEmCurso`); trocável nos testes.
   final DateTime Function() agora;
+
+  /// A config com que o cubit fixou os passos da faixa [indice] (`OuvirCubit.configDaFaixa`): o chip trocado
+  /// no meio da faixa só vale a partir da próxima, e o vão, o `ehVaoFinal` e a velocidade das letras seguem os
+  /// passos que tocam de verdade. null (ou sem retrato desta faixa) = a config do estado.
+  final ConfigOuvir? Function(int indice)? configDaFaixa;
+
+  /// Depois de um passo novo, quanto tempo além da ação dele ainda se repinta a cada tique (s): a fala que
+  /// abre, o efeito e a câmera (o resto anda no relógio de 30 fps do palco).
+  static const margemDeAnimacao = .4;
 
   /// Quanto o balão espera antes de os mudos começarem num vão comum (o balão "fecha").
   static const fechaBalao = .25;
@@ -88,6 +98,12 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
   double _tPasso = 0;
   double? _tCorte;
   bool _mostrouAlgo = false;
+
+  /// Até que `tPasso` o passo na tela ainda anima a cada tique (a ação, as reações, o balão abrindo).
+  double _animacao = 0;
+
+  /// Muda a cada [_mostrar] (o [tick] só notifica quando algo visível mudou).
+  int _trocas = 0;
 
   // ── o texto da âncora
   bool _digitando = false;
@@ -137,6 +153,7 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
         if (faixaNova && !_mostrouAlgo) _aceitarFaixa(st);
         _completarPlano();
         _fecharTexto();
+        _tCorte = null;
       case StatusOuvir.pausado || StatusOuvir.parado:
         if (faixaNova && !_mostrouAlgo) {
           // nasceu já pausado: a âncora (no timer, o estado de logo antes dela: a frase ainda não foi dita)
@@ -145,13 +162,17 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
           _fecharTexto();
         } else if (faixaNova) {
           // o índice andou e o Ouvir pausou (timer, "fim da lição", sem som): segura o estado final da faixa
-          // anterior, sem abrir o balão de uma frase que ainda não foi dita (P8)
-          _completarPlano();
+          // anterior, sem abrir o balão de uma frase que ainda não foi dita (P8). Se o vão já abriu a próxima
+          // (o timer venceu no meio do silêncio, ou o "fim da lição" foi escolhido depois do vão começar),
+          // volta ao fim desta faixa.
+          _segurarFimDaFaixa();
           _fecharTexto();
         } else {
           _flagsDeTexto(st);
           if (_digitando) _fecharTexto();
         }
+        // o esmaecer de um corte não sobrevive à pausa: no ⏯ (mesmo passo, sem corte novo) não volta a piscar
+        _tCorte = null;
       case StatusOuvir.tocando:
         if (faixaNova) {
           // a virada natural de faixa emite o índice novo ainda com a fase do silêncio anterior (e o `vez`
@@ -174,7 +195,13 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
             anterior.de != st.de ||
             !identical(anterior.fila, st.fila);
         _flagsDeTexto(st);
-        if (mudouPasso) _aplicarFase(st, primeiro: primeiro);
+        if (mudouPasso) {
+          _aplicarFase(st, primeiro: primeiro);
+        } else if (anterior.desligar != st.desligar || anterior.desligaAs != st.desligaAs) {
+          // o "Desligar em" mudou no meio do vão: se agora pausa nesta virada, não abre a próxima lição
+          final p = _plano;
+          if (p != null && _timerVaiPausar(st, p.fimDoVao, fimDeLicao: p.fimDeLicao)) _segurarFimDaFaixa(manterRabo: true);
+        }
     }
     notifyListeners();
   }
@@ -206,18 +233,33 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
   FalaEmCurso? get ultimaFala => _ultimaFc;
 
   /// O relógio do PalcoAssistir. Pausado (ou no fim), nada anda.
+  ///
+  /// Só notifica quando algo visível muda: o esmaecer, um passo novo, as letras, ou o passo ainda animando
+  /// ([_animacao]). Parado (o balão lido, o eco "Sua vez"), o idle anda só pelo relógio de 30 fps do palco.
   void tick(double dt) {
     if (_descartado || dt <= 0 || _h == null || _status != StatusOuvir.tocando) return;
+    var mudou = false;
     final c = _tCorte;
-    if (c != null) _tCorte = c + dt >= duracaoCorte ? null : c + dt;
+    if (c != null) {
+      _tCorte = c + dt >= duracaoCorte ? null : c + dt;
+      mudou = true;
+    }
+    final trocas = _trocas;
+    final tAntes = _tPasso;
     final p = _plano;
     if (p != null) {
       _andarPlano(p, dt);
     } else {
       _tPasso += dt;
     }
-    if (_digitando) _atualizarLetras();
-    notifyListeners();
+    if (_digitando) {
+      final letras = _letras;
+      _atualizarLetras();
+      if (_letras != letras || !_digitando) mudou = true;
+    }
+    // o passo ainda anima (também o 1º quadro depois de a ação acabar, para fechar na pose final)
+    if (trocas != _trocas || (tAntes < _animacao && tAntes != _tPasso)) mudou = true;
+    if (mudou) notifyListeners();
   }
 
   /// A história da faixa atual (aceita); null = a faixa não tem desenho (D14). No vão, o palco já pode estar
@@ -342,6 +384,11 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
     _tPasso = 0;
     if ((mudou || corte) && !_reduzir) _tCorte = 0;
     _mostrouAlgo = true;
+    _trocas++;
+    final falas = h.cenas.isEmpty ? const <FalaHistoria>[] : h.cenas[_cena].falas;
+    final f = estatico || passo < 0 || passo >= falas.length ? null : falas[passo];
+    // o efeito some em 2,6 s (palco_historia); a ação/reação/objeto, pela conta dos mudos
+    _animacao = (f == null ? 0.0 : math.max(CompassoAssistir.duracaoMuda(f), 2.6)) + margemDeAnimacao;
   }
 
   /// O EN do balão, o PT e o "…" (português → inglês) pelo estado do Ouvir.
@@ -359,17 +406,21 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
             ((tocando && st.fase == FaseOuvir.traducao) || memoria.viuTraducao(st.indice)));
   }
 
+  /// A config dos passos que tocam nesta faixa ([configDaFaixa]); sem ela, a do estado.
+  ConfigOuvir _configDe(OuvirState st) => configDaFaixa?.call(st.indice) ?? st.config;
+
   /// O que a fase do Ouvir pede (a faixa já aceita).
   void _aplicarFase(OuvirState st, {required bool primeiro}) {
     if (_historiaDaFaixa == null) return;
     final f = st.atual!;
     final temPt = f.pt.trim().isNotEmpty;
-    final modo = temPt ? st.config.modo : ModoOuvir.soIngles;
+    final cfg = _configDe(st);
+    final modo = temPt ? cfg.modo : ModoOuvir.soIngles;
     switch (st.fase) {
       case FaseOuvir.ouvindo:
         _frio = false;
-        final v = st.config.velocidade > 0 ? st.config.velocidade : 1.0;
-        _fatorFala = st.vez >= 2 && st.config.segundaDevagar ? v * fatorDevagar : v;
+        final v = cfg.velocidade > 0 ? cfg.velocidade : 1.0;
+        _fatorFala = st.vez >= 2 && cfg.segundaDevagar ? v * fatorDevagar : v;
         _reancorar(digitar: st.vez <= 1);
       case FaseOuvir.traducao:
         if (modo == ModoOuvir.portuguesIngles) {
@@ -389,7 +440,7 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
               fase: st.fase,
               vez: st.vez,
               de: st.de,
-              modo: st.config.modo,
+              modo: cfg.modo,
               viuTraducao: memoria.viuTraducao(st.indice),
               temPt: temPt,
             );
@@ -484,11 +535,12 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
     final fila = st.fila;
     final i = st.indice;
     final fimDeLicao = i + 1 >= fila.length || fila[i + 1].primeiraDaLicao;
-    final vao = CompassoAssistir.vaoFinal(f, st.config, fimDeLicao: fimDeLicao);
+    final cfg = _configDe(st);
+    final vao = CompassoAssistir.vaoFinal(f, cfg, fimDeLicao: fimDeLicao);
+    // o cubit confere o timer na virada, DEPOIS do silêncio: conta o fim do vão
+    final fimDoVao = agora().add(Duration(microseconds: (vao * 1e6).round()));
     // o "Desligar em" vai pausar nesta virada: o palco fica no estado final desta lição (P8), sem abrir a próxima
-    final desligaAs = st.desligaAs;
-    final timerVaiPausar = (st.desligar == DesligarEm.fimDaLicao && fimDeLicao) ||
-        (st.desligar != DesligarEm.nunca && desligaAs != null && !agora().isBefore(desligaAs));
+    final timerVaiPausar = _timerVaiPausar(st, fimDoVao, fimDeLicao: fimDeLicao);
     final j = timerVaiPausar
         ? null
         : (i + 1 < fila.length ? i + 1 : (st.config.repetirTudo && fila.isNotEmpty ? 0 : null));
@@ -515,7 +567,7 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
       if (t.passos.isEmpty) {
         final d = t.destino;
         if (t.abreCena && d != null) {
-          passos.add(_PassoDoVao(t.historia, d.$1, d.$2, corte: true, estatico: true, duracao: 0));
+          passos.add(_PassoDoVao(t.historia, d.$1, d.$2, corte: true, estatico: true, duracao: 0, abertura: true));
         }
         continue;
       }
@@ -528,6 +580,7 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
           corte: t.abreCena && k == 0,
           estatico: false,
           duracao: CompassoAssistir.duracaoMuda(t.historia.cenas[c].falas[p]),
+          abertura: t.destino != null,
         ));
       }
     }
@@ -536,7 +589,51 @@ class RoteiroSeguidor extends ChangeNotifier implements RoteiroVisivel {
       return;
     }
     final duracoes = [for (final p in passos) if (!p.estatico) p.duracao];
-    _plano = _PlanoDoVao(passos, inicio, CompassoAssistir.fatorDeTempo(duracoes, util));
+    _plano = _PlanoDoVao(passos, inicio, CompassoAssistir.fatorDeTempo(duracoes, util),
+        fimDoVao: fimDoVao, fimDeLicao: fimDeLicao);
+  }
+
+  /// O Ouvir vai pausar na virada que acontece em [fimDoVao]? (a mesma conta do `_timerVenceu` do cubit)
+  static bool _timerVaiPausar(OuvirState st, DateTime fimDoVao, {required bool fimDeLicao}) {
+    final desligaAs = st.desligaAs;
+    return (st.desligar == DesligarEm.fimDaLicao && fimDeLicao) ||
+        (st.desligar != DesligarEm.nunca &&
+            st.desligar != DesligarEm.fimDaLicao &&
+            desligaAs != null &&
+            !fimDoVao.isBefore(desligaAs));
+  }
+
+  /// Segura o fim DESTA faixa (P8): o plano perde a abertura do que vem depois (a próxima âncora, outra cena ou
+  /// outra lição). Se ela já está na tela, volta ao estado depois do rabo (ou à âncora, com o balão de uma frase
+  /// que já foi dita). [manterRabo] = ainda tocando: o rabo que falta continua animando.
+  void _segurarFimDaFaixa({bool manterRabo = false}) {
+    final p = _plano;
+    if (p == null) return;
+    final rabo = [for (final x in p.passos) if (!x.abertura) x];
+    if (rabo.length == p.passos.length) {
+      if (!manterRabo) _completarPlano();
+      return;
+    }
+    final jaAbriu = p.atual >= rabo.length;
+    if (manterRabo && !jaAbriu) {
+      if (rabo.isEmpty) {
+        _plano = null; // nada a animar: o balão fica até a virada
+        return;
+      }
+      _plano = _PlanoDoVao(rabo, p.inicio, p.fator, fimDoVao: p.fimDoVao, fimDeLicao: p.fimDeLicao)
+        ..t = p.t
+        ..atual = p.atual
+        ..saltou = p.saltou && p.atual >= rabo.length - 1;
+      return;
+    }
+    _plano = null;
+    if (rabo.isEmpty) {
+      _garantirAncora();
+    } else {
+      final x = rabo.last;
+      _mostrar(x.historia, x.cena, x.estatico ? x.passo : x.passo + 1, estatico: true);
+      _digitando = false;
+    }
   }
 
   void _andarPlano(_PlanoDoVao p, double dt) {
@@ -731,13 +828,22 @@ class _PassoDoVao {
   /// Segundos a 1× (0 no estático).
   final double duracao;
 
+  /// Leva à próxima âncora (abertura de cena/lição), não é o rabo desta faixa.
+  final bool abertura;
+
   const _PassoDoVao(this.historia, this.cena, this.passo,
-      {required this.corte, required this.estatico, required this.duracao});
+      {required this.corte, required this.estatico, required this.duracao, this.abertura = false});
 }
 
 /// O plano de um vão em curso.
 class _PlanoDoVao {
-  _PlanoDoVao(this.passos, this.inicio, this.fator);
+  _PlanoDoVao(this.passos, this.inicio, this.fator, {required this.fimDoVao, required this.fimDeLicao});
+
+  /// Quando o silêncio acaba (a virada em que o cubit confere o "Desligar em").
+  final DateTime fimDoVao;
+
+  /// O vão é o do fim de uma lição.
+  final bool fimDeLicao;
 
   final List<_PassoDoVao> passos;
 
@@ -771,6 +877,7 @@ class _Retrato {
         passo = s._passo,
         estatico = s._estatico,
         tPasso = s._tPasso,
+        animacao = s._animacao,
         mostrouAlgo = s._mostrouAlgo,
         letras = s._letras,
         fatorFala = s._fatorFala,
@@ -790,7 +897,7 @@ class _Retrato {
   final List<List<EstadoCena>> linhas;
   final int cena, passo, letras;
   final bool estatico, mostrouAlgo, mostrarPt, esconderEn, pense, frio;
-  final double tPasso, fatorFala;
+  final double tPasso, fatorFala, animacao;
   final _PlanoDoVao? plano;
 
   void aplicar(RoteiroSeguidor s) {
@@ -808,6 +915,7 @@ class _Retrato {
     s._passo = passo;
     s._estatico = estatico;
     s._tPasso = tPasso;
+    s._animacao = animacao;
     s._mostrouAlgo = mostrouAlgo;
     // o texto que digitava completa (a voz seguiu enquanto o palco estava fechado)
     s._digitando = false;

@@ -270,6 +270,21 @@ void main() {
     expect(h.carregando(eu.licoes.first.id), isFalse);
   });
 
+  test('o índice que trava (nem chega nem falha): depois do timeout o palco não espera mais e o preparar seguinte tenta de novo', () async {
+    final b = _bundle();
+    b.portoes[HistoriasLicoesRepo.indice] = Completer<void>(); // nunca solta
+    final h = HistoriasLicoes(_trilhas, bundle: b, timeout: const Duration(milliseconds: 40));
+    unawaited(h.prepararLicao(_oi));
+    expect(h.carregando(_oi), isTrue, reason: 'o índice está a caminho');
+    await Future<void>.delayed(const Duration(milliseconds: 80));
+    expect(h.carregando(_oi), isFalse, reason: 'travou: o palco vai direto para a automática');
+    // a rede volta
+    b.portoes.remove(HistoriasLicoesRepo.indice);
+    await h.prepararLicao(_oi);
+    expect(h.temAutoral(_oi), isTrue);
+    expect(b.pedidos.where((p) => p == HistoriasLicoesRepo.indice), hasLength(2));
+  });
+
   test('falha (arquivo ausente) não lança: fica a automática; o próximo preparar tenta de novo', () async {
     final b = _bundle()..arquivos.remove(_arq('primeiro-contato'));
     final h = HistoriasLicoes(_trilhas, bundle: b);

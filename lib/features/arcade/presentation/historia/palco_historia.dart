@@ -190,6 +190,7 @@ class PalcoHistoria extends StatelessWidget {
         agora: DateTime.now(),
         fala: VozIngles.falando.value,
         balaoSemCorte: balaoSemCorte,
+        escalaDoTexto: MediaQuery.textScalerOf(context).scale(1),
       );
       return Semantics(
         container: true,
@@ -272,11 +273,15 @@ class _Quadro {
     required this.agora,
     required this.fala,
     this.balaoSemCorte = false,
+    this.escalaDoTexto = 1,
   }) {
     _calcular();
   }
 
   final bool balaoSemCorte;
+
+  /// O `textScaler` da tela (a faixa do balão do 📺 cresce com ele).
+  final double escalaDoTexto;
 
   final RoteiroVisivel roteiro;
   final CabecalhoPalco cabecalho;
@@ -316,8 +321,19 @@ class _Quadro {
   /// A largura máxima de uma moldura (`.92 ×` a menor distância entre as posições ocupadas).
   double maxMoldura = double.infinity;
 
-  /// 📺 A faixa do topo (px de tela) guardada para o balão na chamada de uma fila só; 0 = nenhuma.
+  /// 📺 A faixa do topo (px de tela) guardada para o balão (na chamada de uma fila só e, fora dela, no palco
+  /// baixo do "Tocando agora"); 0 = nenhuma.
   double reservaBalao = 0;
+
+  /// 📺 O balão típico (nome + 1 linha de inglês + a tradução, sem o rabicho) com a margem de cima: a faixa
+  /// que fica livre acima das cabeças no palco baixo. No máximo metade do palco.
+  double get _reservaDoBalaoTipico {
+    final escala = (size.width / 1280).clamp(1.0, 1.4);
+    return math.min(size.height * .5, 8 + 94 * escala * escalaDoTexto.clamp(1.0, 1.6));
+  }
+
+  /// O menor tamanho a que os atores encolhem para o balão do 📺 não cobrir as cabeças.
+  static const alturaMinimaComBalao = 56.0;
 
   /// As molduras da `videochamada`: quem, onde e o quanto está acesa (0 = ainda fora da chamada).
   final molduras = <(String quem, Rect caixa, double acesa)>[];
@@ -435,6 +451,15 @@ class _Quadro {
       return;
     }
     alturaAtor = PalcoHistoria.alturaDosAtores(size, ocupados);
+    if (balaoSemCorte) {
+      // 📺 palco baixo (celular): os atores encolhem até a cabeça (também a da 2ª fila do retrato) ficar abaixo
+      // da faixa do balão; o falante não some atrás da própria fala
+      final reserva = _reservaDoBalaoTipico;
+      final fator = PalcoHistoria.retrato(size) ? 1 + PalcoHistoria.recuoFila : 1.0;
+      final teto = (chao - reserva - 4) / fator;
+      if (alturaAtor > teto) alturaAtor = math.max(alturaMinimaComBalao, teto);
+      reservaBalao = reserva;
+    }
     larguraAtor = AtorHistoria.largura(alturaAtor);
     if (PalcoHistoria.retrato(size)) {
       final cen = depois.cenario;
@@ -959,9 +984,9 @@ class _Quadro {
     }
     final mx = w / (2 * s), my = h / (2 * s);
     var fy = e.foco.dy;
-    if (reservaBalao > 0 && s > 1 && molduras.isNotEmpty) {
-      // 📺 o zoom na chamada não sobe as molduras para dentro da faixa do balão
-      final topo = molduras.map((m) => m.$2.top).reduce(math.min);
+    if (reservaBalao > 0 && s > 1 && (molduras.isNotEmpty || !chamada)) {
+      // 📺 o zoom (na chamada e no palco baixo) não sobe as molduras/cabeças para dentro da faixa do balão
+      final topo = chamada ? molduras.map((m) => m.$2.top).reduce(math.min) : chao - recuo - alturaAtor;
       fy = math.min(fy, topo - (reservaBalao - h / 2) / s);
     }
     return _Enquadro(s, Offset(fx.clamp(mx, w - mx), fy.clamp(my, h - my)));
@@ -1339,6 +1364,20 @@ class _Quadro {
     );
   }
 
+  /// 📺 A caixa (na tela) da cabeça de cada ator no palco: a metade de cima do corpo.
+  Map<String, Rect> _cabecasNaTela() {
+    final r = <String, Rect>{};
+    for (final a in atores) {
+      if (a.alpha <= .05) continue;
+      final altura = alturaAtor * (a.pose.noCarro ? .78 : (a.pose.sentado ? .82 : 1.0));
+      final topo = pe(a.x) - altura;
+      final p0 = naTela(Offset(a.x - larguraAtor * .42, topo));
+      final p1 = naTela(Offset(a.x + larguraAtor * .42, topo + altura * .5));
+      r[a.quem] = Rect.fromPoints(p0, p1);
+    }
+    return r;
+  }
+
   Widget _balao(BuildContext context, FalaHistoria f) {
     final w = size.width;
     final escala = (w / 1280).clamp(1.0, 1.4);
@@ -1349,7 +1388,7 @@ class _Quadro {
     final nome = ElencoTurismo.nomeDe(f.quem);
     final mq = MediaQuery.of(context);
     var scaler = mq.textScaler;
-    Size medir() => BalaoFala.medir(
+    Size medir({double? maxLargura}) => BalaoFala.medir(
           context,
           nome: nome,
           en: f.en!,
@@ -1360,7 +1399,7 @@ class _Quadro {
           icone: roteiro.iconeDaFala,
           comRabicho: ancora != null,
           escala: escala,
-          maxLargura: largura,
+          maxLargura: maxLargura ?? largura,
           textScaler: scaler,
         );
     var tam = medir();
@@ -1403,7 +1442,47 @@ class _Quadro {
         }
       }
     }
-    final alvo = ancora == null ? null : Offset(ancora.dx - left, math.max(0, (topo ?? ancora.dy) - 8));
+    // 📺 palco baixo e largo (celular deitado): se a faixa do topo cobre alguma cabeça, o balão vai para o LADO de
+    // quem fala, no vão até a próxima cabeça (sem cobrir rosto nenhum), com o rabicho apontando para a boca
+    var lado = false;
+    var leftFinal = left, bwFinal = bw;
+    if (balaoSemCorte && !chamada && !cabeEmCima && ancora != null && topoBalao == 8) {
+      final cabecas = _cabecasNaTela();
+      final faixa = Rect.fromLTWH(left, topoBalao, bw, math.min(tam.height, alturaMax));
+      final falante = cabecas[f.quem];
+      if (falante != null && cabecas.values.any((c) => c.overlaps(faixa))) {
+        final outras = [for (final e in cabecas.entries) if (e.key != f.quem) e.value];
+        final espacos = <(double, double)>[];
+        // à direita: até a cabeça seguinte (ou a borda); à esquerda: idem
+        var dir = w - 8;
+        var esq = 8.0;
+        for (final c in outras) {
+          if (c.center.dx > falante.center.dx) dir = math.min(dir, c.left - 6);
+          if (c.center.dx < falante.center.dx) esq = math.max(esq, c.right + 6);
+        }
+        espacos.add((falante.right + 6, dir));
+        espacos.add((esq, falante.left - 6));
+        espacos.sort((a, b) => (b.$2 - b.$1).compareTo(a.$2 - a.$1));
+        for (final (x0, x1) in espacos) {
+          final cabe = x1 - x0;
+          if (cabe < 110) continue;
+          final t2 = medir(maxLargura: math.min(largura, cabe));
+          if (t2.width > cabe + .5 || t2.height > size.height - 16) continue;
+          final bw2 = math.min(cabe, t2.width.ceilToDouble() + 1);
+          leftFinal = x0 >= falante.right ? x0 : x1 - bw2;
+          bwFinal = bw2;
+          // a ponta do rabicho na altura da boca
+          topoBalao = (ancora.dy - t2.height).clamp(8.0, math.max(8.0, size.height - 8 - t2.height)).toDouble();
+          alturaMax = t2.height;
+          tam = t2;
+          lado = true;
+          break;
+        }
+      }
+    }
+    final alvo = ancora == null
+        ? null
+        : Offset(ancora.dx - leftFinal, lado ? tam.height : math.max(0, (topo ?? ancora.dy) - 8));
     Widget balao = BalaoFala(
       nome: nome,
       cor: ElencoTurismo.corDe(f.quem),
@@ -1428,8 +1507,8 @@ class _Quadro {
       );
     }
     return Positioned(
-      left: left,
-      width: bw,
+      left: leftFinal,
+      width: bwFinal,
       top: topoBalao,
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: alturaMax),

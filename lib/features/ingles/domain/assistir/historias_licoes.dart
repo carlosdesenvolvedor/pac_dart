@@ -51,6 +51,11 @@ class HistoriasLicoes {
   Map<String, int>? _indice;
   Map<String, EncenacaoManual>? _tabela;
   Future<void>? _base;
+  Stopwatch? _desdeBase;
+
+  /// O índice/tabela em voo há mais que [timeout] (a rede travou sem falhar): o palco não espera mais por ele
+  /// e o próximo [preparar] tenta de novo.
+  bool get _baseTravada => _base != null && (_desdeBase?.elapsed ?? Duration.zero) > timeout;
   final _autorais = <String, HistoriasDaTrilha>{};
   final _pedidos = <String, Future<void>>{};
   final _falhas = <String>{};
@@ -145,7 +150,7 @@ class HistoriasLicoes {
     final achou = _licao(licaoId);
     if (achou == null) return false;
     final idx = _indice;
-    if (idx == null) return _base != null;
+    if (idx == null) return _base != null && !_baseTravada;
     final slug = slugDaLicao(achou.$2.id);
     if (!idx.containsKey(slug) || _autorais.containsKey(slug) || _falhas.contains(slug)) return false;
     _aoFundo(slug);
@@ -155,12 +160,13 @@ class HistoriasLicoes {
   /// Índice + tabela (uma vez por vez; o repo guarda o que deu certo e tenta de novo o que falhou).
   Future<void> _prepararBase() {
     final emVoo = _base;
-    if (emVoo != null) return emVoo;
-    final futuro = () async {
+    if (emVoo != null && !_baseTravada) return emVoo;
+    late final Future<void> futuro;
+    futuro = () async {
       try {
         final r = await Future.wait([
-          HistoriasLicoesRepo.trilhasComHistoria(bundle: bundle),
-          HistoriasLicoesRepo.encenacaoAuto(bundle: bundle),
+          HistoriasLicoesRepo.trilhasComHistoria(bundle: bundle, timeout: timeout),
+          HistoriasLicoesRepo.encenacaoAuto(bundle: bundle, timeout: timeout),
         ]);
         _indice = r[0] as Map<String, int>;
         final tabela = r[1] as Map<String, EncenacaoManual>;
@@ -171,10 +177,12 @@ class HistoriasLicoes {
       } catch (e) {
         debugPrint('📺 historinhas: índice/tabela indisponíveis: $e');
       } finally {
-        _base = null;
+        // um pedido travado que chega tarde não apaga o que o substituiu
+        if (identical(_base, futuro)) _base = null;
       }
     }();
     // o corpo para no 1º `await`, então o `finally` só roda depois desta linha
+    _desdeBase = Stopwatch()..start();
     return _base = futuro;
   }
 

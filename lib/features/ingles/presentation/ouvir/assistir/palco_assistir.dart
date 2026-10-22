@@ -83,8 +83,13 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
   bool _esperando = false;
   double _espera = 0;
 
-  /// Relógio do palco (s) e o mesmo em degraus de 1/30 s (o idle repinta a 30 fps); o acumulado do "reduzir".
-  double _relogio = 0, _relogioQuadro = 0, _acumulado = 0;
+  /// Relógio do palco (s) e o acumulado do "reduzir".
+  double _relogio = 0, _acumulado = 0;
+
+  /// O relógio em degraus de 1/30 s (no "reduzir", um degrau a cada passo de 100 ms): o idle e a boca repintam
+  /// só quando ele vira; o resto (ação, letras, corte) vem das notificações do seguidor.
+  final _quadro = ValueNotifier<double>(0);
+  late final Listenable _redesenho = Listenable.merge([_seguidor, _quadro]);
 
   /// O que a moldura de fora mostra (sem desenho, título): muda pouco, rebuild só quando muda.
   HistoriaLicao? _historiaVista;
@@ -95,7 +100,14 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     _ticker = createTicker(_aoTique);
-    _seguidor = RoteiroSeguidor(historiaDe: (f) => _historias.para(f), memoria: _memoria)..addListener(_aoMudar);
+    _seguidor = RoteiroSeguidor(
+      historiaDe: (f) => _historias.para(f),
+      memoria: _memoria,
+      configDaFaixa: (i) {
+        final c = widget.cubit.configDaFaixa;
+        return c != null && c.indice == i ? c.config : null;
+      },
+    )..addListener(_aoMudar);
     final f = widget.cubit.state.atual;
     _esperando = f != null && f.licaoId.isNotEmpty && _historias.carregando(f.licaoId);
     if (!_esperando) _nascer();
@@ -135,6 +147,7 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
     WidgetsBinding.instance.removeObserver(this);
     VozIngles.falando.removeListener(_aoFalar);
     _ticker.dispose();
+    _quadro.dispose();
     _seguidor
       ..removeListener(_aoMudar)
       ..dispose();
@@ -209,11 +222,12 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
       while (_acumulado >= .1) {
         _acumulado -= .1;
         _seguidor.tick(.1);
+        _quadro.value += .1; // a boca da voz em degraus de 100 ms (o palco recebe relógio 0)
       }
     } else {
       _relogio += dt;
-      _relogioQuadro = (_relogio * 30).floor() / 30;
       _seguidor.tick(dt);
+      _quadro.value = (_relogio * 30).floor() / 30;
     }
     _sincronizar();
   }
@@ -336,10 +350,10 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
             excludeFromSemantics: true,
             child: RepaintBoundary(
               child: ListenableBuilder(
-                listenable: _seguidor,
+                listenable: _redesenho,
                 builder: (context, _) => PalcoHistoria(
                   roteiro: _seguidor,
-                  relogio: _reduzir ? 0 : _relogioQuadro,
+                  relogio: _reduzir ? 0 : _quadro.value,
                   cabecalho: cab,
                   reduzir: _reduzir,
                   balaoSemCorte: true,

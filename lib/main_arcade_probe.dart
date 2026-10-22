@@ -37,6 +37,7 @@ import 'features/ingles/domain/setlist.dart';
 import 'features/ingles/presentation/ouvir/ouvir_acoes.dart';
 import 'features/ingles/presentation/ouvir/ouvir_cubit.dart';
 import 'features/ingles/presentation/ouvir/setlists_cubit.dart';
+import 'features/ingles/presentation/ouvir/widgets/chips_ouvir.dart' show rotuloModo;
 
 void main() => runApp(const _ProbeApp());
 
@@ -230,7 +231,7 @@ class _AssistirInicio extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16),
               child: Column(mainAxisSize: MainAxisSize.min, children: [
-                Text('📺 $_licao · ${_modo.name}${_comSetlist ? ' · setlist' : ''}',
+                Text('📺 $_licao · ${rotuloModo(_modo)}${_comSetlist ? ' · setlist' : ''}',
                     key: const Key('probe-assistir-rotulo'),
                     textAlign: TextAlign.center,
                     style: Mixart.ui(size: 14, color: Mixart.textMuted)),

@@ -4232,55 +4232,166 @@ void _cortinas(_Pincel p, RRect j, Color cor) {
       contorno: .4);
 }
 
-/// O módulo da casa que se repete na largura (n ≥ 1 por tela): cozinha, janela, estante.
-(int, double) _modulosDaCasa(_Pincel p) {
-  final n = p.vezes(96 * p.u);
-  return (n, p.w / n);
+/// A planta da sala (UMA sala em qualquer largura; a casa não se repete): onde fica cada coisa, em px.
+///
+/// - estreita (< 70u, o celular em pé no ⛶): cozinha à esquerda, janela com o sofá, a mesa do notebook na frente da
+///   cozinha e um porta-retrato no canto;
+/// - larga: cozinha à esquerda · (mesa de jantar) · janela com o sofá · (planta, porta) · estante com a mesa do
+///   notebook à direita. O que sobra de parede ganha a mesa de jantar e a porta, não outra cozinha.
+typedef _SalaCasa = ({
+  bool larga,
+  double kl, // começo da cozinha
+  double kw, // largura da cozinha
+  double xj, // meio da janela (e do sofá)
+  double jMeia, // meia largura da janela
+  double xr, // estante + mesa do notebook (larga) / porta-retrato (estreita)
+  double? quadros, // os dois quadrinhos
+  double? jantar, // mesa de jantar com pendente
+  double? planta, // planta no chão
+  double? porta, // porta da sala
+});
+
+_SalaCasa _salaDaCasa(_Pincel p) {
+  final u = p.u, w = p.w;
+  final kw = math.min(34 * u, w * .44);
+  if (w < 70 * u) {
+    return (
+      larga: false,
+      kl: w * .03,
+      kw: kw,
+      xj: w * .62,
+      jMeia: math.min(10 * u, w * .14),
+      xr: w * .9,
+      quadros: null,
+      jantar: null,
+      planta: null,
+      porta: null,
+    );
+  }
+  final kl = math.min(w * .03, 4 * u);
+  final kr = kl + kw;
+  final xr = w - math.min(w * .12, 22 * u);
+  final livreL = kr, livreR = xr - 13 * u; // a parede entre a cozinha e a estante
+  final meio = livreR - livreL;
+  final jMeia = (meio * .1).clamp(math.min(10 * u, w * .14), 14 * u).toDouble();
+  // a janela vai para a direita do meio quando sobra parede para a mesa de jantar
+  final comJantar = meio >= 110 * u;
+  final xj = comJantar ? livreL + meio * .56 : livreL + meio * .5;
+  final borda = 5 * u; // as cortinas
+  final gapL = (xj - jMeia - borda) - livreL, gapR = livreR - (xj + jMeia + borda);
+  double? jantar, quadros, planta, porta;
+  if (comJantar && gapL >= 30 * u) {
+    jantar = livreL + gapL * .5;
+  } else if (gapL >= 10 * u) {
+    quadros = livreL + gapL * .5;
+  }
+  if (gapR >= 34 * u) {
+    porta = livreR - gapR * .42;
+    planta = xj + jMeia + borda + 6 * u;
+  } else if (gapR >= 12 * u) {
+    planta = livreR - gapR * .5;
+  }
+  return (
+    larga: true,
+    kl: kl,
+    kw: kw,
+    xj: xj,
+    jMeia: jMeia,
+    xr: xr,
+    quadros: quadros,
+    jantar: jantar,
+    planta: planta,
+    porta: porta,
+  );
+}
+
+/// Dois quadrinhos na parede, em volta de [x].
+void _quadrinhos(_Pincel p, double x) {
+  final u = p.u;
+  for (final (dx, dy, w, cor) in [(-3.2, 18.0, 4.6, const Color(0xFFF2A541)), (2.6, 21.0, 3.8, const Color(0xFF6FC3C9))]) {
+    final q = Rect.fromLTWH(x + dx * u - w * u / 2, dy * u, w * u, w * 1.2 * u);
+    p.ret(q, const Color(0xFF3A2A33), contorno: .4);
+    p.c.drawRect(q.deflate(.5 * u), p.tinta(cor));
+    p.c.drawCircle(q.center, q.width * .18, p.tinta(_branco));
+  }
+}
+
+/// A porta da sala (de madeira, com dois painéis, a maçaneta e o batente).
+void _portaDaSala(_Pincel p, double x) {
+  final u = p.u;
+  final batente = Rect.fromLTRB(x - 7 * u, 15 * u, x + 7 * u, p.hz);
+  p.ret(batente, const Color(0xFFFAF6EE), contorno: .8);
+  final folha = Rect.fromLTRB(x - 5.8 * u, 16.4 * u, x + 5.8 * u, p.hz);
+  p.ret(folha, const Color(0xFFC08A5B), contorno: .8);
+  p.sombra(Path()..addRect(folha), Rect.fromLTRB(folha.right - 2 * u, folha.top, folha.right, folha.bottom), alfa: .1);
+  final alto = folha.height;
+  for (final (a, b) in [(.06, .42), (.5, .94)]) {
+    p.ret(Rect.fromLTRB(folha.left + 1.4 * u, folha.top + alto * a, folha.right - 1.4 * u, folha.top + alto * b),
+        const Color(0xFFB07C50), contorno: .45, raio: .3 * u);
+  }
+  p.circ(Offset(folha.right - 1.6 * u, folha.top + alto * .48), .6 * u, const Color(0xFFE9B949), contorno: .3);
+}
+
+/// A mesa de jantar redondinha (de lado) com duas cadeiras e um vaso de flor.
+void _mesaDeJantar(_Pincel p, double x, double base) {
+  final u = p.u;
+  for (final lado in [-1.0, 1.0]) {
+    final cx = x + lado * 8.2 * u;
+    final encosto = lado < 0 ? cx - 2.2 * u : cx + 1.4 * u;
+    p.ret(Rect.fromLTRB(encosto, base - 12.4 * u, encosto + .8 * u, base), const Color(0xFF9A6B44), contorno: .5);
+    p.ret(Rect.fromLTRB(cx - 2.4 * u, base - 6.2 * u, cx + 2.4 * u, base - 5.2 * u), const Color(0xFFB07C50), contorno: .5);
+    final pe = lado < 0 ? cx + 1.6 * u : cx - 2.4 * u;
+    p.ret(Rect.fromLTRB(pe, base - 5.2 * u, pe + .8 * u, base), const Color(0xFF9A6B44), contorno: .4);
+  }
+  p.ret(Rect.fromLTRB(x - .6 * u, base - 7 * u, x + .6 * u, base - .8 * u), const Color(0xFF7A5232), contorno: .4);
+  p.ret(Rect.fromLTRB(x - 3 * u, base - 1 * u, x + 3 * u, base), const Color(0xFF7A5232), contorno: .4, raio: .4 * u);
+  p.ret(Rect.fromLTRB(x - 6.4 * u, base - 8 * u, x + 6.4 * u, base - 6.8 * u), const Color(0xFFC89B6C), contorno: .8, raio: .5 * u);
+  // vaso com flor e dois pratos
+  p.ret(Rect.fromLTRB(x - .8 * u, base - 10.6 * u, x + .8 * u, base - 8 * u), const Color(0xFF6FC3C9), contorno: .4, raio: .5 * u);
+  p.c.drawLine(Offset(x, base - 10.6 * u), Offset(x, base - 12.4 * u), p.traco(.35));
+  p.circ(Offset(x, base - 12.8 * u), .8 * u, const Color(0xFFFF8FB1), contorno: .3);
+  for (final dx in [-4.0, 4.0]) {
+    p.c.drawOval(Rect.fromCenter(center: Offset(x + dx * u, base - 8.2 * u), width: 3.6 * u, height: .8 * u), p.tinta(_branco));
+    p.c.drawOval(Rect.fromCenter(center: Offset(x + dx * u, base - 8.2 * u), width: 3.6 * u, height: .8 * u), p.traco(.3));
+  }
 }
 
 void _dCasa(_Pincel p) {
   final u = p.u;
-  final (n, mw) = _modulosDaCasa(p);
-  final jMeia = math.min(10 * u, mw * .14);
-  // lá fora: o quintal, um morrinho e as árvores do vizinho
+  final s = _salaDaCasa(p);
+  final jMeia = s.jMeia;
+  // lá fora: o quintal, um morrinho e a árvore do vizinho
   _Onda(p, p.hz - 22 * u, 4 * u, const [(1.3, 1.0, .7), (3.1, .4, .2)]).pinta(const Color(0xFF8CC47A), fundo: p.hz, contorno: .3);
-  for (var i = 0; i < n; i++) {
-    p.laco(i * mw + mw * .62 + jMeia * .4, 6 * u, (x) => _arvore(p, x, p.hz - 19 * u, 15 * u));
-  }
+  p.laco(s.xj + jMeia * .4, 6 * u, (x) => _arvore(p, x, p.hz - 19 * u, 15 * u));
   final janelas = <RRect>[];
-  for (var i = 0; i < n; i++) {
-    p.laco(i * mw + mw * .62, jMeia + u,
-        (x) => janelas.add(RRect.fromLTRBR(x - jMeia, 12 * u, x + jMeia, p.hz - 22 * u, Radius.circular(.8 * u))));
-  }
+  p.laco(s.xj, jMeia + u,
+      (x) => janelas.add(RRect.fromLTRBR(x - jMeia, 12 * u, x + jMeia, p.hz - 22 * u, Radius.circular(.8 * u))));
   _parede(p, const Color(0xFFF3E6D0), janelas);
   for (final j in janelas) {
     _moldura(p, j, _branco);
     _cortinas(p, j, const Color(0xFFE9B949));
   }
-  for (var i = 0; i < n; i++) {
-    final x0 = i * mw;
-    final kw = math.min(34 * u, mw * .44);
-    p.laco(x0 + mw * .03 + kw / 2, kw / 2 + u, (c) => _cozinha(p, c - kw / 2, kw));
-    p.laco(x0 + mw * .03 + kw * .45, 3 * u, (x) => _pendente(p, x, 6 * u, const Color(0xFF3F7A5A)));
-    if (mw >= 70 * u) {
-      p.laco(x0 + mw * .88, 7 * u, (x) => _estante(p, x, 20 * u, p.hz, 6 * u));
-      // dois quadrinhos entre a cozinha e a janela
-      p.laco(x0 + mw * .44, 6 * u, (x) {
-        for (final (dx, dy, w, cor) in [(-3.2, 18.0, 4.6, const Color(0xFFF2A541)), (2.6, 21.0, 3.8, const Color(0xFF6FC3C9))]) {
-          final q = Rect.fromLTWH(x + dx * u - w * u / 2, dy * u, w * u, w * 1.2 * u);
-          p.ret(q, const Color(0xFF3A2A33), contorno: .4);
-          p.c.drawRect(q.deflate(.5 * u), p.tinta(cor));
-          p.c.drawCircle(q.center, q.width * .18, p.tinta(_branco));
-        }
-      });
-    } else {
-      // tela estreita: um porta-retrato e a luminária de pé no canto
-      p.laco(x0 + mw * .9, 3 * u, (x) {
-        final q = Rect.fromLTWH(x - 2 * u, 18 * u, 4 * u, 5 * u);
-        p.ret(q, const Color(0xFF3A2A33), contorno: .4);
-        p.c.drawRect(q.deflate(.5 * u), p.tinta(const Color(0xFF6FC3C9)));
-      });
+  final kw = s.kw;
+  p.laco(s.kl + kw / 2, kw / 2 + u, (c) => _cozinha(p, c - kw / 2, kw));
+  p.laco(s.kl + kw * .45, 3 * u, (x) => _pendente(p, x, 6 * u, const Color(0xFF3F7A5A)));
+  if (s.larga) {
+    p.laco(s.xr, 7 * u, (x) => _estante(p, x, 20 * u, p.hz, 6 * u));
+    final q = s.quadros;
+    if (q != null) p.laco(q, 6 * u, (x) => _quadrinhos(p, x));
+    final jantar = s.jantar;
+    if (jantar != null) {
+      p.laco(jantar, 4 * u, (x) => _pendente(p, x, math.max(14 * u, p.hz - 34 * u), const Color(0xFFE9B949), largura: 3.6));
+      p.laco(jantar - 9 * u, 6 * u, (x) => _quadrinhos(p, x));
     }
+    final porta = s.porta;
+    if (porta != null) p.laco(porta, 8 * u, (x) => _portaDaSala(p, x));
+  } else {
+    // tela estreita: um porta-retrato e a luminária de pé no canto
+    p.laco(s.xr, 3 * u, (x) {
+      final q = Rect.fromLTWH(x - 2 * u, 18 * u, 4 * u, 5 * u);
+      p.ret(q, const Color(0xFF3A2A33), contorno: .4);
+      p.c.drawRect(q.deflate(.5 * u), p.tinta(const Color(0xFF6FC3C9)));
+    });
   }
   p.faixa(p.hz - 1.2 * u, p.hz, const Color(0xFFFAF6EE), contorno: .5);
 }
@@ -4391,31 +4502,32 @@ void _cCasa(_Pincel p) {
     }
     y0 = y;
   }
-  final (n, mw) = _modulosDaCasa(p);
-  for (var i = 0; i < n; i++) {
-    final x0 = i * mw;
-    final kw = math.min(34 * u, mw * .44);
-    final sofaMeia = math.min(12 * u, mw * .17);
-    // tapete e sofá embaixo da janela
-    p.laco(x0 + mw * .62, sofaMeia + 6 * u, (x) {
-      final tapete = Path()..addOval(Rect.fromCenter(center: Offset(x, p.hz + 13 * u), width: sofaMeia * 2 + 10 * u, height: 7 * u));
-      p.forma(tapete, const Color(0xFFD9674F), contorno: .6);
-      p.c.drawOval(Rect.fromCenter(center: Offset(x, p.hz + 13 * u), width: sofaMeia * 2 + 6 * u, height: 4.6 * u),
-          Paint()
-            ..style = PaintingStyle.stroke
-            ..strokeWidth = .45 * u
-            ..color = p.luz(const Color(0xFFF2C95C)));
-      _sofa(p, x, p.hz + 8 * u, sofaMeia);
-    });
-    if (mw >= 70 * u) {
-      for (final f in [.45, .8]) {
-        p.laco(x0 + mw * .03 + kw * f, 3 * u, (x) => _banqueta(p, x, p.hz + 5 * u));
-      }
-      p.laco(x0 + mw * .88, 12 * u, (x) => _mesaComNotebook(p, x, p.hz + 9 * u));
-    } else {
-      // celular em pé: a mesa do notebook fica na frente da cozinha
-      p.laco(x0 + mw * .03 + kw * .55, 12 * u, (x) => _mesaComNotebook(p, x, p.hz + 9 * u));
+  final s = _salaDaCasa(p);
+  final kw = s.kw;
+  final sofaMeia = math.min(12 * u, p.w * .17);
+  // tapete e sofá embaixo da janela
+  p.laco(s.xj, sofaMeia + 6 * u, (x) {
+    final tapete = Path()..addOval(Rect.fromCenter(center: Offset(x, p.hz + 13 * u), width: sofaMeia * 2 + 10 * u, height: 7 * u));
+    p.forma(tapete, const Color(0xFFD9674F), contorno: .6);
+    p.c.drawOval(Rect.fromCenter(center: Offset(x, p.hz + 13 * u), width: sofaMeia * 2 + 6 * u, height: 4.6 * u),
+        Paint()
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = .45 * u
+          ..color = p.luz(const Color(0xFFF2C95C)));
+    _sofa(p, x, p.hz + 8 * u, sofaMeia);
+  });
+  if (s.larga) {
+    for (final f in [.45, .8]) {
+      p.laco(s.kl + kw * f, 3 * u, (x) => _banqueta(p, x, p.hz + 5 * u));
     }
+    p.laco(s.xr, 12 * u, (x) => _mesaComNotebook(p, x, p.hz + 9 * u));
+    final jantar = s.jantar;
+    if (jantar != null) p.laco(jantar, 11 * u, (x) => _mesaDeJantar(p, x, p.hz + 6 * u));
+    final planta = s.planta;
+    if (planta != null) p.laco(planta, 5 * u, (x) => _planta(p, x, p.hz + 4 * u, 14 * u, semente: 5));
+  } else {
+    // celular em pé: a mesa do notebook fica na frente da cozinha
+    p.laco(s.kl + kw * .55, 12 * u, (x) => _mesaComNotebook(p, x, p.hz + 9 * u));
   }
 }
 
@@ -4758,6 +4870,10 @@ void _cRestaurante(_Pincel p) {
   return (n, p.w / n);
 }
 
+/// O módulo da entrada (a porta de vidro, o cartaz "$5" e o caixa): UM por tela, no meio. Os outros módulos
+/// trocam a porta por mais uma gôndola e o caixa por uma banca de frutas (a loja não repete a entrada inteira).
+int _entradaDaLoja(int n) => n ~/ 2;
+
 /// Etiqueta de preço amarela com "$" e algarismos genéricos.
 void _etiqueta(_Pincel p, Offset o, String preco, double alt) {
   final u = p.u;
@@ -4857,10 +4973,9 @@ void _dLoja(_Pincel p) {
   // a porta de vidro de cada módulo (vazada na parede)
   final dMeia = math.min(6.5 * u, mw * .14);
   final portas = <RRect>[];
-  for (var i = 0; i < n; i++) {
-    p.laco(i * mw + mw * .56, dMeia + u,
-        (x) => portas.add(RRect.fromLTRBR(x - dMeia, 18 * u, x + dMeia, p.hz, Radius.circular(.4 * u))));
-  }
+  final entrada = _entradaDaLoja(n);
+  p.laco(entrada * mw + mw * .56, dMeia + u,
+      (x) => portas.add(RRect.fromLTRBR(x - dMeia, 18 * u, x + dMeia, p.hz, Radius.circular(.4 * u))));
   _parede(p, const Color(0xFFE6F3EF), portas);
   // faixa colorida no alto e as bandeirinhas
   p.faixa(3 * u, 6.4 * u, const Color(0xFF2BB3A3), contorno: .6);
@@ -4923,7 +5038,10 @@ void _dLoja(_Pincel p) {
     } else {
       p.laco(x0 + mw * .86, 5 * u, (x) => _cartazDePreco(p, Rect.fromLTWH(x - 4.4 * u, 16 * u, 8.8 * u, 12 * u), r'$9.99'));
     }
-    if (mw >= 64 * u) {
+    if (i != entrada) {
+      final m = math.min(gMeia, mw * .13);
+      p.laco(x0 + mw * .56, m + u, (x) => _gondola(p, x, m, 16 * u, p.hz, i * 2 + 7));
+    } else if (mw >= 64 * u) {
       p.laco(x0 + mw * .56, 6 * u, (x) => _cartazDePreco(p, Rect.fromLTWH(x - 5 * u, 10.5 * u, 10 * u, 6.6 * u), r'$5'));
     }
   }
@@ -5016,10 +5134,34 @@ void _cLoja(_Pincel p) {
     p.c.drawLine(Offset(x, p.hz), Offset(x + 3 * u, p.h), junta);
   }
   final (n, mw) = _modulosDaLoja(p);
+  final entrada = _entradaDaLoja(n);
   for (var i = 0; i < n; i++) {
     final x0 = i * mw;
-    final cMeia = math.min(15 * u, mw * .3);
-    p.laco(x0 + mw * .3, cMeia + 2 * u, (x) => _caixaDaLoja(p, x, p.hz + 9 * u, cMeia));
-    p.laco(x0 + mw * .78, 4 * u, (x) => _cestas(p, x, p.hz + 11 * u));
+    if (i == entrada) {
+      final cMeia = math.min(15 * u, mw * .3);
+      p.laco(x0 + mw * .3, cMeia + 2 * u, (x) => _caixaDaLoja(p, x, p.hz + 9 * u, cMeia));
+      p.laco(x0 + mw * .78, 4 * u, (x) => _cestas(p, x, p.hz + 11 * u));
+    } else {
+      p.laco(x0 + mw * .45, 9 * u, (x) => _bancaDeFrutas(p, x, p.hz + 10 * u, i));
+    }
   }
+}
+
+/// Banca de frutas (caixotes de madeira com laranjas, maçãs e limões) e a plaquinha de preço.
+void _bancaDeFrutas(_Pincel p, double x, double base, int semente) {
+  final u = p.u;
+  const frutas = [Color(0xFFF2A541), Color(0xFFE5533D), Color(0xFF7CC160)];
+  for (var k = 0; k < 3; k++) {
+    final cx = x + (k - 1) * 5.4 * u;
+    final caixa = Rect.fromLTRB(cx - 2.6 * u, base - 5.4 * u, cx + 2.6 * u, base);
+    final cor = frutas[(k + semente) % 3];
+    for (var a = 0; a < 3; a++) {
+      p.circ(Offset(cx - 1.6 * u + a * 1.6 * u, base - 5.6 * u), .9 * u, cor, contorno: .3);
+    }
+    p.circ(Offset(cx - .8 * u, base - 6.9 * u), .9 * u, cor, contorno: .3);
+    p.circ(Offset(cx + .8 * u, base - 6.9 * u), .9 * u, cor, contorno: .3);
+    p.ret(caixa, const Color(0xFFC89B6C), contorno: .6);
+    p.c.drawLine(Offset(caixa.left, caixa.center.dy), Offset(caixa.right, caixa.center.dy), p.traco(.3));
+  }
+  _etiqueta(p, Offset(x, base - 3.4 * u), r'$' '${1 + semente % 3}', 1.6 * u);
 }
