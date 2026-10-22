@@ -1,0 +1,113 @@
+{
+  "versao": 1,
+  "trilha": "situacao-caminho-compras",
+  "arco": "Um dia sozinho no centro de Chicago, com vento frio: o aluno pergunta o caminho da estação e do museu, procura um casaco que caiba no bolso e acha na farmácia o carregador que esqueceu no Brasil. Cada pergunta ganha uma resposta gentil, e o dia termina com a sacola na mão e um sorriso.",
+  "licoes": {
+    "situacao-caminho-compras.como-chego-a-estacao": {
+      "titulo": { "en": "How do I get there?", "pt": "Como eu chego lá?" },
+      "cenas": [
+        {
+          "cenario": "cidade", "hora": "dia", "clima": ["vento"],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "mapa", "emocao": "pensativo" },
+            { "quem": "moradora", "pos": "direita", "visivel": false, "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "moradora", "acao": "entra", "para": "centroDireita", "emocao": "feliz" },
+            { "frase": "f-51b77e", "acao": "acena", "emocao": "timido", "camera": "geral",
+              "reacoes": [ { "quem": "moradora", "emocao": "feliz" } ] },
+            { "frase": "f-b15c94", "acao": "aponta", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-5fd5fb", "acao": "mostra", "emocao": "pensativo",
+              "reacoes": [ { "quem": "moradora", "acao": "pensa" } ] },
+            { "frase": "f-3e8d03", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-f20248", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "moradora", "emocao": "pensativo" } ] },
+            { "frase": "f-9139ad", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-038297", "acao": "mostra", "emocao": "determinado",
+              "reacoes": [ { "quem": "moradora", "acao": "pensa" } ] },
+            { "frase": "f-95a0f9", "acao": "concorda", "emocao": "radiante", "camera": "dupla", "alvo": "voce",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "moradora", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "situacao-caminho-compras.na-loja-de-roupas": {
+      "titulo": { "en": "Too big, too small", "pt": "Grande demais, pequeno demais" },
+      "cenas": [
+        {
+          "cenario": "loja", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "atendente", "pos": "centroDireita", "segura": "cachecol", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "cachecol", "pos": "direita" } ],
+          "passos": [
+            { "mudo": true, "quem": "atendente", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-4a7391", "acao": "aponta", "alvo": "atendente", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "atendente", "acao": "concorda" } ] },
+            { "frase": "f-23a892", "acao": "nega", "segura": "cachecol", "emocao": "cansado", "efeito": "suor",
+              "reacoes": [ { "quem": "atendente", "segura": "nada", "emocao": "surpreso" } ] },
+            { "frase": "f-b60c8a", "acao": "mostra", "segura": "cachecol", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "segura": "nada", "emocao": "feliz" } ] },
+            { "frase": "f-003bc6", "acao": "nega", "segura": "cachecol", "emocao": "timido",
+              "reacoes": [ { "quem": "atendente", "segura": "nada", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "atendente", "acao": "mostra", "segura": "documento", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "segura": "nada", "emocao": "pensativo" } ] },
+            { "frase": "f-1d21a2", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close",
+              "reacoes": [ { "quem": "atendente", "emocao": "timido" } ] },
+            { "frase": "f-c140a4", "acao": "concorda", "emocao": "pensativo",
+              "reacoes": [ { "quem": "atendente", "segura": "cachecol", "emocao": "feliz" } ] },
+            { "frase": "f-4671c6", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "atendente", "acao": "palmas", "emocao": "radiante" } ] },
+            { "frase": "f-146225", "acao": "mostra", "segura": "documento", "alvo": "atendente", "emocao": "feliz", "camera": "dupla",
+              "reacoes": [ { "quem": "atendente", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "atendente", "segura": "nada", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "segura": "sacola", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "situacao-caminho-compras.na-farmacia-o-carregador": {
+      "titulo": { "en": "Looking for a charger", "pt": "Procurando um carregador" },
+      "cenas": [
+        {
+          "cenario": "loja", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "cansado" },
+            { "quem": "atendente", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "garrafa", "pos": "direita" } ],
+          "passos": [
+            { "frase": "f-d240fe", "acao": "mostra", "emocao": "timido", "camera": "geral",
+              "reacoes": [ { "quem": "atendente", "emocao": "feliz" } ] },
+            { "frase": "f-315ac3", "acao": "aponta", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-cd2974", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "atendente", "acao": "pensa" } ] },
+            { "frase": "f-c1f2fd", "acao": "olha", "alvo": "atendente", "emocao": "feliz" },
+            { "frase": "f-4d20e9", "acao": "aponta", "alvo": "garrafa", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-c36a07", "acao": "mostra", "segura": "notebook", "emocao": "pensativo",
+              "reacoes": [ { "quem": "atendente", "acao": "concorda" } ] },
+            { "frase": "f-800c5e", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "atendente", "acao": "aponta", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "atendente", "acao": "mostra", "segura": "sacola", "emocao": "feliz", "efeito": "interrogacao" },
+            { "frase": "f-ba4241", "acao": "concorda", "emocao": "feliz", "camera": "dupla", "alvo": "atendente",
+              "reacoes": [ { "quem": "atendente", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "atendente", "segura": "nada", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "segura": "sacola", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "atendente", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

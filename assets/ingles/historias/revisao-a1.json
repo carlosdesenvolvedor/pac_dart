@@ -1,0 +1,532 @@
+{
+  "versao": 1,
+  "trilha": "revisao-a1",
+  "arco": "O checkpoint do A1 em Chicago: o primeiro dia no escritório e a visita à Emma, a semana contada na porta de casa e o jantar de despedida com o time, quando o aluno já explica o caminho em inglês. O café dele vai junto.",
+  "licoes": {
+    "revisao-a1.quem-sou-eu": {
+      "titulo": {
+        "en": "My first day",
+        "pt": "O meu primeiro dia"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "recepcionista",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "documento",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-eba17b",
+              "acao": "acena",
+              "emocao": "timido",
+              "alvo": "recepcionista",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "recepcionista",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-4f01d1",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "casa",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "presente",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "emma",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "vizinha",
+              "pos": "direita",
+              "visivel": false,
+              "segura": "chave"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "prato",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-c1b4bf",
+              "acao": "acena",
+              "emocao": "feliz",
+              "alvo": "emma",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "acena",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-338c10",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "surpreso",
+              "efeito": "brilho"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "segura": "nada",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "segura": "presente",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-9c557a",
+              "emocao": "feliz",
+              "camera": "dupla",
+              "alvo": "voce"
+            },
+            {
+              "frase": "f-96ae42",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "vizinha",
+              "acao": "entra",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-837749",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-9c1939",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "emma",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "vizinha",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "revisao-a1.minha-rotina-e-o-meu-ontem": {
+      "titulo": {
+        "en": "How was your day",
+        "pt": "Como foi o seu dia?"
+      },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "notebook",
+              "emocao": "cansado",
+              "visivel": false
+            },
+            {
+              "quem": "emma",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "entra",
+              "emocao": "cansado"
+            },
+            {
+              "frase": "f-4ce4ea",
+              "acao": "acena",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-f437c7",
+              "acao": "pensa",
+              "emocao": "neutro"
+            },
+            {
+              "frase": "f-16759e",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-8b5e62",
+              "acao": "aponta",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-6f1857",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "alvo": "voce"
+            },
+            {
+              "frase": "f-86ca5b",
+              "acao": "nega",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "casa",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz",
+              "visivel": false
+            },
+            {
+              "quem": "emma",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "entra",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-897b03",
+              "acao": "acena",
+              "emocao": "feliz",
+              "alvo": "emma",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "acena",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-0c8df6",
+              "acao": "acena",
+              "emocao": "cansado",
+              "efeito": "zzz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "sai",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "acena",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "revisao-a1.meus-planos-checkpoint-do-a1": {
+      "titulo": {
+        "en": "See you next year",
+        "pt": "Até o ano que vem"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "mike",
+              "pos": "esquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "triste"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "prato",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-25bec7",
+              "acao": "pensa",
+              "emocao": "triste",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "triste"
+                }
+              ]
+            },
+            {
+              "frase": "f-283467",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "alvo": "voce",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-f4935c",
+              "emocao": "radiante",
+              "efeito": "coracoes",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-34852f",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "alvo": "voce",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-be05d0",
+              "acao": "nega",
+              "emocao": "feliz",
+              "alvo": "ana",
+              "segura": "mapa"
+            },
+            {
+              "frase": "f-d55834",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-ada859",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-c066a5",
+              "acao": "acena",
+              "emocao": "radiante",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "abraca",
+              "alvo": "voce",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

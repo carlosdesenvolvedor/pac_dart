@@ -1,0 +1,787 @@
+{
+  "versao": 1,
+  "trilha": "situacao-cafe-restaurante",
+  "arco": "Primeira semana em Chicago, comendo fora com o time: o café no balcão antes da reunião, o jantar com cardápio, alergia e gorjeta e, no almoço do dia seguinte, o aluno já pede a conta sozinho e divide com a Ana.",
+  "licoes": {
+    "situacao-cafe-restaurante.no-cafe-eu-queria": {
+      "titulo": {
+        "en": "A small coffee, please",
+        "pt": "Um café pequeno, por favor"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "ana",
+              "pos": "esquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "voce",
+              "pos": "centro",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "atendente",
+              "pos": "direita",
+              "segura": "cafe",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-d9775a",
+              "acao": "acena",
+              "emocao": "feliz",
+              "alvo": "atendente",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-b4c0a5",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "camera": "dupla"
+            },
+            {
+              "frase": "f-4f69f0",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "alvo": "atendente"
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "segura": "nada",
+              "efeito": "interrogacao",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "cafe",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-9f39a5",
+              "acao": "nega",
+              "emocao": "feliz",
+              "alvo": "atendente",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-755288",
+              "acao": "acena",
+              "emocao": "feliz",
+              "alvo": "atendente",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "acao": "concorda",
+              "efeito": "interrogacao",
+              "objetos": [
+                {
+                  "prop": "prato",
+                  "acao": "aparece",
+                  "pos": "centroDireita"
+                }
+              ]
+            },
+            {
+              "frase": "f-8e6885",
+              "acao": "concorda",
+              "emocao": "pensativo",
+              "alvo": "atendente",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-9c4e38",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "alvo": "atendente",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-6da83f",
+              "acao": "aponta",
+              "emocao": "pensativo",
+              "alvo": "prato",
+              "efeito": "interrogacao",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "segura": "prato",
+              "emocao": "radiante",
+              "objetos": [
+                {
+                  "prop": "prato",
+                  "acao": "some"
+                }
+              ],
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz",
+                  "segura": "cafe"
+                },
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "atendente",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-cafe-restaurante.mesa-para-dois-e-o-cardapio": {
+      "titulo": {
+        "en": "A table for four",
+        "pt": "Uma mesa para quatro"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "ana",
+              "pos": "esquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centro",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "atendente",
+              "pos": "direita",
+              "segura": "livro",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-265498",
+              "acao": "acena",
+              "emocao": "feliz",
+              "alvo": "atendente",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-74080f",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "senta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "senta",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "mike",
+                  "acao": "senta"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "senta"
+                }
+              ]
+            },
+            {
+              "frase": "f-c7dcf9",
+              "acao": "acena",
+              "emocao": "timido",
+              "alvo": "atendente",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-1b2711",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "camera": "dupla"
+            },
+            {
+              "frase": "f-4d37aa",
+              "acao": "acena",
+              "emocao": "feliz",
+              "alvo": "atendente"
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "segura": "documento",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "livro",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "segura": "livro",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "mike",
+                  "segura": "livro"
+                },
+                {
+                  "quem": "ana",
+                  "segura": "livro"
+                }
+              ]
+            },
+            {
+              "frase": "f-826c68",
+              "acao": "mostra",
+              "emocao": "nervoso",
+              "efeito": "suor",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-ee3efd",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "alvo": "atendente",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "escreve"
+                }
+              ]
+            },
+            {
+              "frase": "f-fd09b8",
+              "acao": "nega",
+              "emocao": "feliz",
+              "alvo": "atendente",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "escreve",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "ana",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-cafe-restaurante.sem-cebola-alergias": {
+      "titulo": {
+        "en": "Without peanuts, please",
+        "pt": "Sem amendoim, por favor"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "sarah",
+              "pos": "esquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ana",
+              "pos": "centro",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "atendente",
+              "pos": "direita",
+              "segura": "documento",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "prato",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "senta",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "senta"
+                },
+                {
+                  "quem": "mike",
+                  "acao": "senta"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "senta"
+                }
+              ]
+            },
+            {
+              "frase": "f-1bf1ae",
+              "acao": "nega",
+              "emocao": "pensativo",
+              "alvo": "prato",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-d928db",
+              "acao": "nega",
+              "emocao": "surpreso",
+              "alvo": "ana",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-2c0af2",
+              "acao": "aponta",
+              "emocao": "surpreso",
+              "alvo": "prato",
+              "efeito": "exclamacao",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-f7775f",
+              "acao": "aponta",
+              "emocao": "timido",
+              "alvo": "prato",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-7e9307",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "alvo": "ana"
+            },
+            {
+              "frase": "f-86dce0",
+              "acao": "concorda",
+              "emocao": "determinado",
+              "alvo": "atendente",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-3ef1ca",
+              "acao": "escreve",
+              "emocao": "feliz",
+              "alvo": "ana",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-1e7fae",
+              "acao": "nega",
+              "emocao": "feliz",
+              "alvo": "atendente",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "escreve",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "segura": "prato",
+              "emocao": "radiante",
+              "objetos": [
+                {
+                  "prop": "prato",
+                  "acao": "some"
+                }
+              ],
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-cafe-restaurante.a-conta-por-favor": {
+      "titulo": {
+        "en": "The check, please",
+        "pt": "A conta, por favor"
+      },
+      "cenas": [
+        {
+          "cenario": "restaurante",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "ana",
+              "pos": "esquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "voce",
+              "pos": "centro",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "atendente",
+              "pos": "direita",
+              "visivel": false,
+              "segura": "documento"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "prato",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-990cd4",
+              "acao": "acena",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "senta"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "senta"
+                },
+                {
+                  "quem": "voce",
+                  "acao": "senta"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "acao": "entra",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-5e9aa7",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-7b7c41",
+              "acao": "concorda",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "alvo": "mike"
+            },
+            {
+              "frase": "f-e27f65",
+              "acao": "nega",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "segura": "nada",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "documento",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-595220",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "alvo": "atendente",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "restaurante",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "atendente",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "prato",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-666fa6",
+              "acao": "acena",
+              "emocao": "timido",
+              "alvo": "atendente",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "senta"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "acao": "concorda",
+              "segura": "documento",
+              "efeito": "interrogacao",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "senta"
+                }
+              ]
+            },
+            {
+              "frase": "f-533a6a",
+              "acao": "nega",
+              "emocao": "feliz",
+              "alvo": "atendente",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-5390f3",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "alvo": "atendente",
+              "reacoes": [
+                {
+                  "quem": "atendente",
+                  "acao": "nega",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "atendente",
+              "acao": "acena",
+              "emocao": "radiante",
+              "segura": "nada",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "documento",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "ana",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

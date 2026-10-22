@@ -1,0 +1,249 @@
+{
+  "versao": 1,
+  "trilha": "there-is-lugares",
+  "arco": "Primeiros dias em Chicago: o que tem no hotel e na rua, onde comer segundo a Emma e, em casa, o sofá novo e as chaves sumidas. No fim, o aluno mostra ao Ben, pelo celular, o bairro da Emma e o apartamento onde ele vai ficar. E quase sempre tem um café por perto.",
+  "licoes": {
+    "there-is-lugares.tem-academia-no-hotel-there-s": {
+      "titulo": { "en": "Welcome to the hotel", "pt": "Bem-vindo ao hotel" },
+      "cenas": [
+        {
+          "cenario": "hotel",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "cansado" },
+            { "quem": "recepcionista", "pos": "centroDireita", "segura": "chave", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "mala", "pos": "esquerda" }
+          ],
+          "passos": [
+            { "frase": "f-6b12a1", "acao": "acena", "emocao": "feliz", "alvo": "voce", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-8e36e2", "acao": "palmas", "emocao": "radiante", "alvo": "recepcionista", "camera": "medio",
+              "reacoes": [ { "quem": "recepcionista", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-202dbf", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "pula", "emocao": "radiante" } ] },
+            { "frase": "f-149a83", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-0ac9c1", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "recepcionista", "segura": "nada", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "segura": "chave", "emocao": "radiante" } ] }
+          ]
+        },
+        {
+          "cenario": "restaurante",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "garcom", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "mike", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "garcom", "emocao": "feliz",
+              "objetos": [ { "prop": "cafe", "acao": "aparece", "pos": "centro", "de": "garcom" } ],
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" }, { "quem": "mike", "emocao": "pensativo" } ] },
+            { "frase": "f-fbf4db", "acao": "aponta", "alvo": "cafe", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-1e0c91", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-e14602", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" }, { "quem": "garcom", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "there-is-lugares.tem-farmacia-aqui-perto": {
+      "titulo": { "en": "A bank near here", "pt": "Um banco aqui perto" },
+      "cenas": [
+        {
+          "cenario": "cidade",
+          "hora": "dia",
+          "clima": ["vento"],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "mapa", "emocao": "pensativo" },
+            { "quem": "moradora", "pos": "centroDireita", "segura": "sacola", "emocao": "neutro" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-b78acf", "acao": "acena", "emocao": "timido", "alvo": "moradora", "camera": "geral",
+              "reacoes": [ { "quem": "moradora", "emocao": "feliz" } ] },
+            { "frase": "f-9d53e2", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-fc73ef", "acao": "mostra", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "moradora", "acao": "concorda" } ] },
+            { "frase": "f-b4744e", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-a073f1", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-5c5726", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "feliz", "alvo": "moradora",
+              "reacoes": [ { "quem": "moradora", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        },
+        {
+          "cenario": "restaurante",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "mapa", "emocao": "timido" },
+            { "quem": "garcom", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-dc066d", "emocao": "timido", "efeito": "suor", "alvo": "garcom", "camera": "medio" },
+            { "mudo": true, "quem": "garcom", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-626fa4", "acao": "concorda", "emocao": "feliz", "alvo": "garcom",
+              "reacoes": [ { "quem": "garcom", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "garcom", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "pula", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "there-is-lugares.tem-restaurantes-some-e-any": {
+      "titulo": { "en": "Restaurants and bugs", "pt": "Restaurantes e bugs" },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "emma", "pos": "centroDireita", "segura": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-d5b282", "acao": "pensa", "emocao": "pensativo", "alvo": "emma", "camera": "geral" },
+            { "frase": "f-06d573", "acao": "nega", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "triste" } ] },
+            { "frase": "f-68298c", "emocao": "surpreso", "efeito": "exclamacao", "camera": "medio" },
+            { "frase": "f-c55568", "acao": "mostra", "emocao": "radiante", "alvo": "voce",
+              "reacoes": [ { "quem": "voce", "acao": "comemora", "emocao": "radiante" } ] }
+          ]
+        },
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            { "quem": "sarah", "pos": "esquerda", "segura": "documento", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "notebook", "emocao": "nervoso" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ana", "pos": "direita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-83a8aa", "acao": "mostra", "emocao": "nervoso", "efeito": "suor", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-f95026", "acao": "pensa", "emocao": "pensativo", "alvo": "voce" },
+            { "frase": "f-defb50", "acao": "nega", "emocao": "timido",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-8fe3a4", "acao": "aponta", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "sarah", "acao": "nega", "emocao": "feliz" }, { "quem": "ana", "acao": "nega", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "determinado",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" }, { "quem": "ana", "acao": "palmas", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "mike", "acao": "acena", "emocao": "feliz" }, { "quem": "sarah", "acao": "acena", "emocao": "feliz" }, { "quem": "ana", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "there-is-lugares.em-cima-da-mesa-embaixo-do-sofa": {
+      "titulo": { "en": "Where are my keys", "pt": "Cadê as minhas chaves?" },
+      "cenas": [
+        {
+          "cenario": "casa",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "radiante" },
+            { "quem": "ben", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-c5bb38", "acao": "aponta", "emocao": "radiante", "efeito": "brilho", "camera": "geral" },
+            { "frase": "f-7cccfd", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "senta", "emocao": "radiante" } ] },
+            { "frase": "f-dc81bc", "acao": "aponta", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "acao": "anda", "para": "centroDireita", "emocao": "feliz" },
+            { "frase": "f-88a1cc", "acao": "aponta", "alvo": "notebook", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] }
+          ]
+        },
+        {
+          "cenario": "casa",
+          "hora": "amanhecer",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "emocao": "nervoso" },
+            { "quem": "lucas", "pos": "direita", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroEsquerda" },
+            { "prop": "chave", "pos": "centro" },
+            { "prop": "celular", "pos": "centroDireita" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "nervoso", "efeito": "suor",
+              "reacoes": [ { "quem": "lucas", "emocao": "radiante" } ] },
+            { "frase": "f-4eea31", "acao": "pensa", "emocao": "nervoso", "alvo": "lucas", "camera": "geral" },
+            { "frase": "f-f06a15", "acao": "aponta", "alvo": "chave", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "segura": "chave", "emocao": "feliz",
+              "objetos": [ { "prop": "chave", "acao": "some" } ] },
+            { "frase": "f-10b51b", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-967e23", "acao": "aponta", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "lucas", "acao": "palmas", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "there-is-lugares.cena-o-bairro-e-o-apartamento": {
+      "titulo": { "en": "An apartment for Ben", "pt": "Um apartamento para o Ben" },
+      "cenas": [
+        {
+          "cenario": "cidade",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "emma", "pos": "direita", "visivel": false, "segura": "chave", "emocao": "feliz" },
+            { "quem": "ben", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-410243", "emocao": "pensativo", "camera": "geral" },
+            { "frase": "f-6ccaaf", "acao": "aponta", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "anda", "para": "centro", "emocao": "feliz" },
+            { "frase": "f-070659", "emocao": "pensativo" },
+            { "frase": "f-978f64", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "ben", "emocao": "radiante" } ] },
+            { "frase": "f-ecafbb", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-d2112e", "acao": "nega", "emocao": "timido" },
+            { "frase": "f-ec2235", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "emma", "acao": "entra", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-c1f870", "acao": "concorda", "emocao": "feliz", "alvo": "emma",
+              "reacoes": [ { "quem": "emma", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "emma", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "radiante" }, { "quem": "ben", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "versao": 1,
+  "trilha": "comparar",
+  "arco": "Na viagem a Chicago, você compara tudo: o frio e a casa da Emma com a sua cidade, os notebooks da loja com a Ana e com a Julia no celular, até sair com o novo na sacola e ouvir da Sarah, ao telefone, que a cidade dela é bem diferente.",
+  "licoes": {
+    "comparar.mais-alto-mais-barato-er": {
+      "titulo": { "en": "Bigger and colder", "pt": "Maior e mais frio" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": ["neve"],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "emma", "pos": "centroDireita", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-c84ea3", "acao": "concorda", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "emma", "emocao": "surpreso" } ] },
+            { "frase": "f-e400ce", "acao": "treme", "emocao": "surpreso",
+              "reacoes": [ { "quem": "emma", "emocao": "feliz" } ] },
+            { "frase": "f-ca32f3", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-9062dd", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-a22a83", "acao": "aponta", "emocao": "radiante",
+              "reacoes": [ { "quem": "emma", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "segura": "celular", "emocao": "feliz" },
+            { "frase": "f-7af26e", "acao": "aponta", "alvo": "voce", "emocao": "pensativo", "camera": "dupla" },
+            { "frase": "f-dca0fa", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "emma", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "segura": "mapa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-d521a7", "acao": "aponta", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "emma", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "comparar.mais-caro-mais-confortavel": {
+      "titulo": { "en": "A more expensive laptop", "pt": "Um notebook mais caro" },
+      "cenas": [
+        {
+          "cenario": "loja", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "atendente", "pos": "centroDireita", "visivel": false, "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centro" },
+            { "prop": "notebook", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-fc0152", "acao": "aponta", "alvo": "notebook", "emocao": "surpreso", "camera": "geral" },
+            { "frase": "f-cc7fed", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo",
+              "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "atendente", "acao": "entra", "emocao": "feliz" },
+            { "frase": "f-725b3f", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-5cde1f", "acao": "concorda", "emocao": "timido", "efeito": "suor",
+              "reacoes": [ { "quem": "atendente", "emocao": "feliz" } ] },
+            { "frase": "f-b8f067", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "ana", "emocao": "pensativo" } ] },
+            { "frase": "f-e0dcbb", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "atendente", "emocao": "surpreso" } ] },
+            { "frase": "f-8fff04", "acao": "aponta", "alvo": "notebook", "emocao": "surpreso",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "surpreso" } ] },
+            { "frase": "f-3fba9e", "acao": "pensa", "emocao": "timido" },
+            { "mudo": true, "quem": "ana", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" }, { "quem": "atendente", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "comparar.melhor-que-better": {
+      "titulo": { "en": "The blue one is better", "pt": "O azul é melhor" },
+      "cenas": [
+        {
+          "cenario": "loja", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "ana", "pos": "esquerda", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "pensativo" },
+            { "quem": "atendente", "pos": "direita", "segura": "sacola", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centro" },
+            { "prop": "notebook", "pos": "centroDireita" }
+          ],
+          "passos": [
+            { "frase": "f-b38f9e", "acao": "pensa", "emocao": "pensativo", "camera": "geral",
+              "reacoes": [ { "quem": "atendente", "emocao": "feliz" } ] },
+            { "frase": "f-302e8f", "acao": "aponta", "alvo": "notebook", "emocao": "feliz" },
+            { "frase": "f-e9ba0f", "acao": "aponta", "alvo": "notebook", "emocao": "determinado" },
+            { "frase": "f-ba7bee", "acao": "olha", "alvo": "ana", "emocao": "surpreso", "camera": "dupla" },
+            { "frase": "f-4dd277", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-081dcf", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo",
+              "reacoes": [ { "quem": "ana", "acao": "nega", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-33b3e4", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-574fa1", "acao": "aponta", "alvo": "notebook", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "acao": "palmas", "emocao": "radiante" }, { "quem": "atendente", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "atendente", "segura": "nada", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "segura": "sacola", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "comparar.igual-ou-diferente-the-same": {
+      "titulo": { "en": "The same laptop", "pt": "O mesmo notebook" },
+      "cenas": [
+        {
+          "cenario": "loja", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "atendente", "pos": "centroDireita", "segura": "documento", "emocao": "feliz" },
+            { "quem": "julia", "remoto": "celular", "emocao": "radiante" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centro" }
+          ],
+          "passos": [
+            { "frase": "f-3f9458", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-902463", "acao": "aponta", "alvo": "notebook", "emocao": "feliz" },
+            { "frase": "f-e73504", "emocao": "pensativo" },
+            { "mudo": true, "quem": "atendente", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-d94383", "acao": "concorda", "emocao": "feliz" },
+            { "mudo": true, "quem": "atendente", "emocao": "radiante",
+              "objetos": [ { "prop": "notebook", "acao": "aparece", "pos": "direita" } ] },
+            { "frase": "f-c2d727", "acao": "aponta", "alvo": "notebook", "emocao": "radiante", "efeito": "brilho", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-9884e1", "emocao": "surpreso" },
+            { "frase": "f-941c96", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-df69e6", "acao": "concorda", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "atendente", "acao": "palmas", "emocao": "feliz" }, { "quem": "julia", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante", "efeito": "coracoes",
+              "reacoes": [ { "quem": "julia", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "comparar.cena-escolhendo-um-notebook": {
+      "titulo": { "en": "Choosing a new laptop", "pt": "Escolhendo um notebook novo" },
+      "cenas": [
+        {
+          "cenario": "loja", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "pensativo" },
+            { "quem": "atendente", "pos": "direita", "segura": "sacola", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centro" },
+            { "prop": "notebook", "pos": "centroDireita" }
+          ],
+          "passos": [
+            { "frase": "f-ed880c", "acao": "pensa", "emocao": "pensativo", "camera": "geral" },
+            { "frase": "f-337d36", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo" },
+            { "frase": "f-424f0b", "acao": "aponta", "alvo": "notebook", "emocao": "surpreso",
+              "reacoes": [ { "quem": "atendente", "acao": "concorda" } ] },
+            { "frase": "f-a6d6c9", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-d26a00", "acao": "concorda", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "atendente", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "atendente", "segura": "nada", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "segura": "sacola", "emocao": "feliz" } ] }
+          ]
+        },
+        {
+          "cenario": "cidade", "hora": "tarde", "clima": ["neve"],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "sarah", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "sacola", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-ebbcad", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-bea52f", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "treme", "emocao": "feliz" } ] },
+            { "frase": "f-193622", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}
