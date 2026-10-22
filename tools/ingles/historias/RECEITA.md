@@ -114,7 +114,7 @@ Chaves aceitas: arquivo `versao, trilha, arco, licoes`; lição `titulo, cenas`;
 
 ### 5.4 Listas permitidas nas lições
 
-**Cenários** (os 5 primeiros são da fase 1 do 📺, desenhados para as lições):
+**Cenários** (os 8 primeiros foram desenhados para as lições: os 5 da fase 1 do 📺 e os 3 da 2ª leva, que veio dos pedidos de arte dos lotes):
 
 | cenário | use para | cuidado |
 |---|---|---|
@@ -123,8 +123,11 @@ Chaves aceitas: arquivo `versao, trilha, arco, licoes`; lição `titulo, cenas`;
 | `casa` | casa do aluno (ele trabalha de casa), vizinhos, família, festa, mensagem ou telefone de casa | |
 | `restaurante` | restaurante, **café**, padaria, lanchonete, almoço | o `cafe` do Turismo tem uma pista de corrida na janela: **não use `cafe`** |
 | `loja` | loja, mercado, farmácia, caixa, compras | |
+| `copa` | copa/cozinha do escritório: café, intervalo, fila da cafeteira, papo de corredor, micro-ondas | tem a cafeteira, o bebedouro e, na tela larga, a parede de vidro da sala de reunião; reunião de verdade continua no `escritorio` |
+| `recepcaoHotel` | recepção/saguão do hotel: check-in, check-out, pedir algo no balcão, recepcionista | o balcão (com o sino), o escaninho das chaves e o elevador; o quarto continua sendo o `hotel` |
+| `salaDeEstar` | sala com sofá e TV: ver série/filme/jogo, "no sofá", festa em casa, chegar cansado e se jogar no sofá | a TV fica no meio da parede (acima das cabeças) e o sofá perto da borda direita; cozinha e mesa de trabalho continuam na `casa` |
 | `aeroporto` | aeroporto, imigração, embarque, bagagem | |
-| `hotel` | hotel | é um **quarto**, não a recepção. Para o check-in, use `hotel` e peça `recepcaoHotel` em `pedidos_de_arte.md` |
+| `hotel` | quarto de hotel | é um **quarto**; o check-in e o balcão são a `recepcaoHotel` |
 | `clinica` | médico, dentista, consulta | provisório (é uma tenda), até chegar o "consultório" |
 | `cidade` | rua, caminho, táxi, ônibus, esquina, passeio | |
 | `praia`, `lago`, `ponte` | férias, parque, passeio na água | |
@@ -133,9 +136,9 @@ Chaves aceitas: arquivo `versao, trilha, arco, licoes`; lição `titulo, cenas`;
 
 **Hora:** `amanhecer`, `dia`, `tarde`, `noite` (as 4 valem em todos os cenários acima). Siga a `cena` ("à noite", "de manhã") e as frases ("Good evening" → `noite`). Na dúvida, `dia`.
 
-**Clima:** quase sempre `[]`. Interiores (`videochamada`, `escritorio`, `casa`, `restaurante`, `loja`, `aeroporto`, `hotel`, `clinica`): só `chuva` ou `neve` (pela janela). Exteriores: `chuva`, `neve`, `neblina`, `folhas`, `vento`; `arcoIris` só de `dia`/`tarde`; `estrelas` só à `noite`; `neon` só na `cidade`. Só use se a `cena` pedir.
+**Clima:** quase sempre `[]`. Interiores (`videochamada`, `escritorio`, `casa`, `restaurante`, `loja`, `copa`, `recepcaoHotel`, `salaDeEstar`, `aeroporto`, `hotel`, `clinica`): só `chuva` ou `neve` (pela janela). Exteriores: `chuva`, `neve`, `neblina`, `folhas`, `vento`; `arcoIris` só de `dia`/`tarde`; `estrelas` só à `noite`; `neon` só na `cidade`. Só use se a `cena` pedir.
 
-**Props:** `notebook`, `prato`, `sacola`, `documento` (novos), `celular`, `cafe` (a caneca), `mala`, `passaporte`, `mapa`, `chave`, `presente`, `livro`, `carta`, `garrafa`, `guardaChuva`, `cachecol`, `microfone`. Em `segura`, `"nada"` esvazia a mão (só em passo ou reação, nunca no `elenco`). **Proibidos:** `carro`, `carroRival`, `rodaDeOuro`, `foguete`, `capacete`, `pneu`, `trofeu`, `medalha`, `bandeira`. Evite `radio` (remoto por rádio exige carro).
+**Props:** `notebook`, `prato`, `sacola`, `documento` (fase 1), `telao` (tela grande de reunião num pedestal, com gráfico: slides, tela compartilhada na sala, TV do bar), `quadroBranco` (quadro de rodinhas com caixas, setas e post-its: retro, kanban, prós e contras), `caixa` (de papelão: mudança, pedido, coisas antigas), `bolo` (com velinhas: aniversário, sobremesa, torta), `caderno` (de espiral: anotações, bloquinho, metas), `casaco` (casaco/jaqueta), `taca` (o brinde) (2ª leva; `telao` e `quadroBranco` são móveis: ponha como `objetos`, na mão eles encolhem), `celular`, `cafe` (a caneca), `mala`, `passaporte`, `mapa`, `chave`, `presente`, `livro`, `carta`, `garrafa`, `guardaChuva`, `cachecol`, `microfone`. Em `segura`, `"nada"` esvazia a mão (só em passo ou reação, nunca no `elenco`). **Proibidos:** `carro`, `carroRival`, `rodaDeOuro`, `foguete`, `capacete`, `pneu`, `trofeu`, `medalha`, `bandeira`. Evite `radio` (remoto por rádio exige carro).
 
 **Posições** (`pos`, `para`), da esquerda para a direita: `esquerda`, `centroEsquerda`, `centro`, `centroDireita`, `direita`. Quem está à direita do centro começa olhando para a esquerda, e vice-versa. Para duas pessoas frente a frente, use `centroEsquerda` e `centroDireita`.
 

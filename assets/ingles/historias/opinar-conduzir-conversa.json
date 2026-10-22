@@ -129,15 +129,15 @@
             { "quem": "voce", "pos": "centroEsquerda", "emocao": "determinado" },
             { "quem": "sarah", "pos": "centroDireita", "emocao": "pensativo" }
           ],
-          "objetos": [ { "prop": "documento", "pos": "esquerda" }, { "prop": "cafe", "pos": "centro" } ],
+          "objetos": [ { "prop": "quadroBranco", "pos": "esquerda" }, { "prop": "cafe", "pos": "centro" } ],
           "passos": [
-            { "frase": "f-9c8fe2", "acao": "escreve", "alvo": "documento", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-9c8fe2", "acao": "escreve", "alvo": "quadroBranco", "emocao": "determinado", "camera": "geral" },
             { "frase": "f-19b864", "acao": "concorda", "emocao": "pensativo" },
-            { "frase": "f-326b81", "acao": "aponta", "alvo": "documento", "emocao": "surpreso" },
+            { "frase": "f-326b81", "acao": "aponta", "alvo": "quadroBranco", "emocao": "surpreso" },
             { "frase": "f-1329f6", "acao": "nega", "emocao": "timido", "camera": "medio" },
-            { "frase": "f-9a4d30", "acao": "aponta", "alvo": "documento", "emocao": "determinado",
+            { "frase": "f-9a4d30", "acao": "aponta", "alvo": "quadroBranco", "emocao": "determinado",
               "reacoes": [ { "quem": "sarah", "emocao": "pensativo" } ] },
-            { "mudo": true, "quem": "voce", "acao": "escreve", "alvo": "documento", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "alvo": "quadroBranco", "emocao": "feliz" },
             { "frase": "f-8dd2ff", "acao": "olha", "alvo": "sarah", "emocao": "feliz" },
             { "frase": "f-2dee57", "acao": "concorda", "emocao": "nervoso", "efeito": "suor" },
             { "frase": "f-f9f82d", "acao": "pensa", "emocao": "surpreso", "camera": "close" },
@@ -155,7 +155,7 @@
       "titulo": { "en": "The new season", "pt": "A temporada nova" },
       "cenas": [
         {
-          "cenario": "casa", "hora": "noite", "clima": [],
+          "cenario": "salaDeEstar", "hora": "noite", "clima": [],
           "elenco": [
             { "quem": "ana", "pos": "centroEsquerda", "emocao": "feliz" },
             { "quem": "voce", "pos": "centro", "emocao": "feliz" },

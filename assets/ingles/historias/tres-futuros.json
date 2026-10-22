@@ -139,13 +139,13 @@
           ],
           "passos": [
             { "mudo": true, "quem": "ana", "acao": "entra", "para": "centroDireita", "emocao": "cansado", "efeito": "suor",
-              "objetos": [ { "prop": "sacola", "acao": "aparece", "pos": "direita" } ] },
+              "objetos": [ { "prop": "caixa", "acao": "aparece", "pos": "direita" } ] },
             { "frase": "f-220cb6", "acao": "mostra", "alvo": "voce", "emocao": "cansado", "efeito": "suor", "camera": "geral" },
             { "frase": "f-c64cd5", "acao": "concorda", "emocao": "determinado", "segura": "mala",
               "reacoes": [ { "quem": "ana", "segura": "nada", "emocao": "feliz" } ] },
-            { "frase": "f-0310ca", "acao": "aponta", "alvo": "sacola", "emocao": "feliz", "camera": "medio" },
-            { "frase": "f-4c5ad3", "acao": "nega", "emocao": "feliz", "segura": "sacola",
-              "objetos": [ { "prop": "sacola", "acao": "some" } ],
+            { "frase": "f-0310ca", "acao": "aponta", "alvo": "caixa", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-4c5ad3", "acao": "nega", "emocao": "feliz", "segura": "caixa",
+              "objetos": [ { "prop": "caixa", "acao": "some" } ],
               "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
             { "frase": "f-f6d5d5", "acao": "pensa", "emocao": "pensativo",
               "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "feliz" } ] },
@@ -164,7 +164,7 @@
           "elenco": [
             { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
             { "quem": "mike", "pos": "centro", "segura": "chave", "emocao": "feliz" },
-            { "quem": "ana", "pos": "centroDireita", "segura": "sacola", "emocao": "cansado" }
+            { "quem": "ana", "pos": "centroDireita", "segura": "caixa", "emocao": "cansado" }
           ],
           "objetos": [
             { "prop": "mala", "pos": "direita" }

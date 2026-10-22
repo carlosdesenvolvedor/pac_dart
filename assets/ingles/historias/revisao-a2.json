@@ -128,7 +128,7 @@
             { "quem": "emma", "remoto": "celular", "emocao": "feliz" },
             { "quem": "ana", "remoto": "celular", "emocao": "feliz" }
           ],
-          "objetos": [ { "prop": "prato", "pos": "esquerda" } ],
+          "objetos": [ { "prop": "bolo", "pos": "esquerda" } ],
           "passos": [
             { "frase": "f-b8e739", "acao": "escreve", "emocao": "pensativo", "camera": "geral" },
             { "frase": "f-f20e43", "emocao": "feliz",
@@ -136,8 +136,8 @@
             { "frase": "f-48db43", "emocao": "pensativo",
               "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
             { "mudo": true, "quem": "ben", "acao": "entra", "emocao": "feliz",
-              "objetos": [ { "prop": "prato", "acao": "some" } ],
-              "reacoes": [ { "quem": "voce", "segura": "prato", "emocao": "determinado" } ] },
+              "objetos": [ { "prop": "bolo", "acao": "some" } ],
+              "reacoes": [ { "quem": "voce", "segura": "bolo", "emocao": "determinado" } ] },
             { "frase": "f-3861c0", "acao": "aponta", "alvo": "ben", "emocao": "determinado", "camera": "dupla" },
             { "frase": "f-f7f47f", "acao": "mostra", "emocao": "feliz",
               "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
@@ -150,7 +150,7 @@
           "cenario": "casa", "hora": "noite", "clima": [],
           "elenco": [
             { "quem": "ben", "pos": "esquerda", "emocao": "feliz" },
-            { "quem": "voce", "pos": "centroEsquerda", "segura": "prato", "emocao": "timido" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "bolo", "emocao": "timido" },
             { "quem": "emma", "pos": "centroDireita", "emocao": "feliz" },
             { "quem": "ana", "pos": "direita", "visivel": false, "segura": "presente", "emocao": "timido" }
           ],
