@@ -34,7 +34,8 @@ FIO_POR_ETAPA = {
     'C1': 'o aluno vira tech lead e tem vida social com os americanos',
     'DEV': 'um dia inteiro de tech lead (entrevista sênior, design, review, incidentes, clientes)',
 }
-CENARIOS_BONS = ['videochamada', 'escritorio', 'casa', 'restaurante', 'loja', 'aeroporto', 'hotel', 'clinica',
+CENARIOS_BONS = ['videochamada', 'escritorio', 'casa', 'restaurante', 'loja', 'copa', 'recepcaoHotel', 'salaDeEstar',
+                 'dentroDoCarro', 'cozinha', 'quintal', 'bar', 'aeroporto', 'hotel', 'clinica',
                  'cidade', 'praia', 'lago', 'ponte']
 
 

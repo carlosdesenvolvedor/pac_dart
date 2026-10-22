@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,7 +33,8 @@ import 'roteiro_seguidor.dart';
 /// Sem voz e sem `Timer`: o seguidor recebe cada emit do cubit (o 1º no initState), cada `VozIngles.falando` e
 /// o relógio de UM `Ticker` (do `TickerProviderStateMixin`: o `TickerMode` do Navigator o cala só quando a rota
 /// fica coberta por uma rota opaca). O Ticker só anda tocando, com o app visível e com o palco dentro da área
-/// visível da página que rola (rolado para fora, ele para; ver [_PalcoAssistirState._conferirVisivel]); "reduzir animações" = passos
+/// visível da página que rola (rolado para fora, ou empurrado para fora por uma mudança de layout, ele para; ver
+/// [_PalcoAssistirState._conferirVisivel]); "reduzir animações" = passos
 /// de 100 ms, sem andar nem esmaecer. Tocar no palco = ⏯ (no fim, ▶ de novo). O palco não pega o foco
 /// (`ExcludeFocus`); o ⛶ e as bolinhas entram no Tab.
 class PalcoAssistir extends StatefulWidget {
@@ -59,6 +61,10 @@ class PalcoAssistir extends StatefulWidget {
 
   /// Quanto o palco espera pela história autoral da trilha que está chegando (I6), mostrando a foto.
   static const esperaDaAutoral = .4;
+
+  /// Quantas vezes algum palco conferiu se ainda aparece na página (os testes provam que não é a cada quadro).
+  @visibleForTesting
+  static int debugConferencias = 0;
 
   /// A faixa tem desenho (lição do curso, não própria)?
   static bool podeAssistir(Faixa f, List<Trilha> trilhas) {
@@ -174,8 +180,8 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
     _sincronizar();
   }
 
-  /// Confere a visibilidade depois do quadro (o layout já com a rolagem nova); várias rolagens no mesmo quadro
-  /// viram uma conferência só.
+  /// Confere a visibilidade depois do quadro (o layout já com a rolagem nova); várias rolagens (e pinturas do
+  /// [_AoPintar]) no mesmo quadro viram uma conferência só.
   void _agendarConferencia() {
     if (_conferenciaAgendada) return;
     _conferenciaAgendada = true;
@@ -190,6 +196,7 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
   /// O palco está fora da área visível do `Scrollable` em volta? (sem `Scrollable`, ou sem layout ainda: visível)
   void _conferirVisivel() {
     if (!mounted) return;
+    PalcoAssistir.debugConferencias++;
     var fora = false;
     final eu = context.findRenderObject();
     final vp = _rolagem == null ? null : Scrollable.maybeOf(context)?.context.findRenderObject();
@@ -294,24 +301,35 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
   Widget build(BuildContext context) {
     return KeyedSubtree(
       key: const Key('assistir-palco'),
-      child: BlocListener<OuvirCubit, OuvirState>(
+      // a página repinta o palco por fora quando o layout o move ou muda (sem rolagem): confere de novo
+      child: _AoPintar(
+        aoPintar: _rolagem == null ? null : _agendarConferencia,
+        // o desenho que anda reconstrói dentro do escopo do LayoutBuilder de baixo, que refaz o layout a cada
+        // quadro e repintava a página inteira junto: o RepaintBoundary segura a pintura aqui (e o vigia acima
+        // não é chamado a cada quadro)
+        child: RepaintBoundary(child: _conteudoComPlayer()),
+      ),
+    );
+  }
+
+  Widget _conteudoComPlayer() {
+    return BlocListener<OuvirCubit, OuvirState>(
+      bloc: widget.cubit,
+      listener: (_, st) => _aoEstado(st),
+      child: BlocBuilder<OuvirCubit, OuvirState>(
         bloc: widget.cubit,
-        listener: (_, st) => _aoEstado(st),
-        child: BlocBuilder<OuvirCubit, OuvirState>(
-          bloc: widget.cubit,
-          buildWhen: (a, b) =>
-              a.status != b.status ||
-              a.motivo != b.motivo ||
-              a.indice != b.indice ||
-              !identical(a.fila, b.fila) ||
-              a.fase != b.fase ||
-              a.fonte != b.fonte,
-          builder: (context, st) => LayoutBuilder(builder: (context, c) {
-            final w = c.maxWidth.isFinite ? c.maxWidth : 640.0;
-            final h = c.maxHeight.isFinite ? c.maxHeight : w * .56;
-            return SizedBox(width: w, height: h, child: _conteudo(st, w, h));
-          }),
-        ),
+        buildWhen: (a, b) =>
+            a.status != b.status ||
+            a.motivo != b.motivo ||
+            a.indice != b.indice ||
+            !identical(a.fila, b.fila) ||
+            a.fase != b.fase ||
+            a.fonte != b.fonte,
+        builder: (context, st) => LayoutBuilder(builder: (context, c) {
+          final w = c.maxWidth.isFinite ? c.maxWidth : 640.0;
+          final h = c.maxHeight.isFinite ? c.maxHeight : w * .56;
+          return SizedBox(width: w, height: h, child: _conteudo(st, w, h));
+        }),
       ),
     );
   }
@@ -652,5 +670,32 @@ class _Selo extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+/// 📺 Avisa [aoPintar] cada vez que a página pinta este pedaço (o layout moveu ou mudou o palco, a janela mudou de
+/// tamanho, a página rolou): o palco confere depois do quadro se ainda aparece. Sem custo por quadro: o desenho
+/// animado tem o próprio `RepaintBoundary` lá dentro e não repinta isto.
+class _AoPintar extends SingleChildRenderObjectWidget {
+  const _AoPintar({required this.aoPintar, super.child});
+
+  final VoidCallback? aoPintar;
+
+  @override
+  RenderObject createRenderObject(BuildContext context) => _RenderAoPintar(aoPintar);
+
+  @override
+  void updateRenderObject(BuildContext context, _RenderAoPintar renderObject) => renderObject.aoPintar = aoPintar;
+}
+
+class _RenderAoPintar extends RenderProxyBox {
+  _RenderAoPintar(this.aoPintar);
+
+  VoidCallback? aoPintar;
+
+  @override
+  void paint(PaintingContext context, Offset offset) {
+    aoPintar?.call();
+    super.paint(context, offset);
   }
 }

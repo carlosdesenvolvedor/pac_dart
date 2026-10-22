@@ -1,9 +1,11 @@
 import 'dart:math' as math;
 import 'dart:ui' as ui;
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
+import '../../../core/linguagem/linguagem.dart';
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
 import '../../ranking/presentation/ranking_cubit.dart';
@@ -42,6 +44,12 @@ class ChuvaPage extends StatefulWidget {
   /// Testes: o relógio (ms) do tempo de cada palavra no inglês (null = o relógio de verdade).
   @visibleForTesting
   static int Function()? relogioDeTeste;
+
+  /// Testes: o pintor dos tiros — com as tintas guardadas (inglês) ou criando a cada tiro (Dart/C#) —
+  /// para comparar os pixels dos dois caminhos.
+  @visibleForTesting
+  static CustomPainter pintorDeTiros(List<(Offset, Offset, double)> tiros, Color cor, {required bool guardarTintas}) =>
+      _TirosPainter(tiros: tiros, cor: cor, tintas: guardarTintas ? _TintasTiro.de(cor) : null);
 
   @override
   State<ChuvaPage> createState() => _ChuvaPageState();
@@ -149,6 +157,16 @@ class _ChuvaPageState extends State<ChuvaPage>
   /// O campo invisível é sempre o mesmo widget: o setState de cada frame não o reconstrói.
   late final _campo = CampoTeclas(onChar: _tecla);
 
+  /// ⚡ desempenho (22/out, só no curso de inglês; Dart e C# como estavam): o quadro da chuva reconstrói
+  /// só a ARENA ([_quadro]) — o setState da página inteira fica para quando o placar muda. Antes, todo
+  /// quadro refazia a página toda: o cabecalho (com LayoutBuilder) era medido e repintado de novo e o
+  /// relayout da arena subia até a raiz da rota (a tela inteira regravada 60 vezes por segundo).
+  late final bool _soArena = Linguagem.atual == Linguagem.ingles;
+  final _quadro = ValueNotifier<int>(0);
+
+  /// ⚡ inglês: o palco da fase é o mesmo widget enquanto o nível não muda (o quadro não o reconstrói).
+  PalcoFase? _palco;
+
   /// Inglês (teimosas): os tropeços da partida, as teclas erradas em cada palavra travada (por id) e a
   /// oferta "treinar só elas" do fim de jogo. Null/vazio no Dart e no C#.
   TropecosDoJogo? _tropecos;
@@ -228,6 +246,7 @@ class _ChuvaPageState extends State<ChuvaPage>
   void dispose() {
     _voz.encerrar();
     _ticker.dispose();
+    _quadro.dispose();
     // fechou no meio: o que já foi destruído vale ponto mesmo assim
     if (!_pontuado && _engine.pontos > 0) _ranking?.arcadeJogado('chuva', _engine.pontos);
     _placar.enviar(_palavrasCubit,
@@ -281,7 +300,7 @@ class _ChuvaPageState extends State<ChuvaPage>
     if (dt > 0) _ultimoDt = dt;
     final nivelAntes = _engine.nivel;
     final vidasAntes = _engine.vidas;
-    setState(() {
+    void passo() {
       _engine.tick(dt);
       // inglês: a palavra que chegou ao chão conta como erro nela (banco) e volta pra revisar (baralho)
       for (final p in _engine.ultimasCaidas) {
@@ -323,7 +342,20 @@ class _ChuvaPageState extends State<ChuvaPage>
       }
       _explosoes.removeWhere((x) => x.t >= 1);
       if (_flashErro > 0) _flashErro--;
-    });
+    }
+
+    if (!_soArena) {
+      setState(passo);
+    } else {
+      // ⚡ inglês: placar igual = só a arena anda
+      final placar = _placarVisivel;
+      passo();
+      if (_placarVisivel == placar) {
+        _quadro.value++;
+      } else {
+        setState(() {});
+      }
+    }
     if (_engine.fim) _fim();
   }
 
@@ -467,6 +499,17 @@ class _ChuvaPageState extends State<ChuvaPage>
     return t == null ? null : LinhaAnotadas(t);
   }
 
+  /// Tudo o que o quadro mexe FORA da arena (os chips do cabeçalho).
+  Object get _placarVisivel => (
+        _engine.vidas,
+        _engine.nivel,
+        _comboTexto,
+        _engine.multiplicador,
+        _engine.pontos,
+        _engine.erros,
+        _flashErro > 0,
+      );
+
   String get _comboTexto {
     final e = _engine;
     return switch (e.multiplicador) {
@@ -520,7 +563,7 @@ class _ChuvaPageState extends State<ChuvaPage>
                       // atrás da pausa a arena congela (o Pac para de mastigar); a pausa fica fora
                       child: TickerMode(
                         enabled: !pausado,
-                        child: RepaintBoundary(child: Tremor(gatilho: _tremor, child: _arena())),
+                        child: _camadaArena(),
                       ),
                     ),
                   ),
@@ -580,6 +623,27 @@ class _ChuvaPageState extends State<ChuvaPage>
     );
   }
 
+  /// A arena na camada própria. ⚡ Inglês: reconstruída pelo [_quadro] e com o tamanho fixado (a mesma
+  /// medida de antes — a arena já ocupava todo o espaço): o relayout de cada quadro para nela.
+  Widget _camadaArena() {
+    if (!_soArena) return RepaintBoundary(child: Tremor(gatilho: _tremor, child: _arena()));
+    return SizedBox.expand(
+      child: RepaintBoundary(
+        child: ValueListenableBuilder<int>(
+          valueListenable: _quadro,
+          builder: (_, _, _) => Tremor(gatilho: _tremor, child: _arena()),
+        ),
+      ),
+    );
+  }
+
+  Widget _palcoDaFase(int nivel) {
+    if (!_soArena) return PalcoFase(fase: nivel, horizonte: .58);
+    final p = _palco;
+    if (p != null && p.fase == nivel) return p;
+    return _palco = PalcoFase(fase: nivel, horizonte: .58);
+  }
+
   Widget _arena() {
     return Container(
       decoration: BoxDecoration(
@@ -604,7 +668,7 @@ class _ChuvaPageState extends State<ChuvaPage>
 
         return Stack(children: [
           // palco 3D da fase (muda a cada nível): céu + chão em perspectiva
-          Positioned.fill(child: PalcoFase(fase: _engine.nivel, horizonte: .58)),
+          Positioned.fill(child: _palcoDaFase(_engine.nivel)),
           Positioned.fill(child: Container(color: const Color(0x3806070B))),
           // linha do chão (esquenta quando uma palavra cai)
           Positioned(
@@ -640,6 +704,7 @@ class _ChuvaPageState extends State<ChuvaPage>
               child: IgnorePointer(
                 child: CustomPaint(
                   painter: _TirosPainter(
+                    tintas: _soArena ? _TintasTiro.de(Mixart.brand) : null,
                     tiros: [
                       for (final t in _tiros)
                         (
@@ -813,17 +878,46 @@ class _ChuvaPageState extends State<ChuvaPage>
   }
 }
 
+/// Quantas [Paint] os tiros da Chuva já criaram (medida do teste de desempenho).
+@visibleForTesting
+int debugTintasTirosChuva = 0;
+
+/// As tintas fixas de um tiro (brilho borrado, núcleo e reflexo) de uma cor. ⚡ No inglês ficam guardadas
+/// ([de]) e servem a todo tiro de todo quadro; no Dart e no C# nascem a cada tiro, como antes.
+class _TintasTiro {
+  final Color cor;
+  final Paint brilho, nucleo, reflexo;
+  _TintasTiro(this.cor)
+      : brilho = Paint()
+          ..color = cor.withValues(alpha: .35)
+          ..maskFilter = const ui.MaskFilter.blur(ui.BlurStyle.normal, 5),
+        nucleo = Paint()..color = cor,
+        reflexo = Paint()..color = Colors.white.withValues(alpha: .9) {
+    debugTintasTirosChuva += 3;
+  }
+
+  static _TintasTiro? _guardada;
+  static _TintasTiro de(Color cor) {
+    final g = _guardada;
+    return g != null && g.cor == cor ? g : _guardada = _TintasTiro(cor);
+  }
+}
+
 /// Tiros com rastro: cabeça brilhante e cauda que esmaece.
 class _TirosPainter extends CustomPainter {
   final List<(Offset, Offset, double)> tiros;
   final Color cor;
-  _TirosPainter({required this.tiros, required this.cor});
+
+  /// ⚡ Inglês: as tintas guardadas (e só repinta se algum tiro mudou). Null = Dart/C#, como antes.
+  final _TintasTiro? tintas;
+  _TirosPainter({required this.tiros, required this.cor, this.tintas});
 
   @override
   void paint(Canvas c, Size s) {
     for (final (de, ate, t) in tiros) {
       final pos = Offset.lerp(de, ate, t)!;
       final cauda = Offset.lerp(de, ate, (t - .14).clamp(0, 1))!;
+      debugTintasTirosChuva++;
       c.drawLine(
         cauda,
         pos,
@@ -832,14 +926,16 @@ class _TirosPainter extends CustomPainter {
           ..strokeWidth = 4
           ..strokeCap = StrokeCap.round,
       );
-      c.drawCircle(pos, 7, Paint()..color = cor.withValues(alpha: .35)..maskFilter = const ui.MaskFilter.blur(ui.BlurStyle.normal, 5));
-      c.drawCircle(pos, 4.2, Paint()..color = cor);
-      c.drawCircle(pos - const Offset(1.2, 1.2), 1.6, Paint()..color = Colors.white.withValues(alpha: .9));
+      final k = tintas ?? _TintasTiro(cor);
+      c.drawCircle(pos, 7, k.brilho);
+      c.drawCircle(pos, 4.2, k.nucleo);
+      c.drawCircle(pos - const Offset(1.2, 1.2), 1.6, k.reflexo);
     }
   }
 
   @override
-  bool shouldRepaint(_TirosPainter old) => true;
+  bool shouldRepaint(_TirosPainter old) =>
+      tintas == null || old.tintas != tintas || old.cor != cor || !listEquals(old.tiros, tiros);
 }
 
 /// Linha tracejada e discreta do atirador até a palavra travada.

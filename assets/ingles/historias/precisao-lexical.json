@@ -10,7 +10,7 @@
       },
       "cenas": [
         {
-          "cenario": "videochamada",
+          "cenario": "escritorio",
           "hora": "dia",
           "clima": [],
           "elenco": [
@@ -26,7 +26,12 @@
               "emocao": "feliz"
             }
           ],
-          "objetos": [],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
           "passos": [
             {
               "frase": "f-6a6e7c",
@@ -59,7 +64,7 @@
             },
             {
               "frase": "f-e32382",
-              "acao": "pensa",
+              "acao": "aponta",
               "emocao": "pensativo",
               "efeito": "interrogacao",
               "reacoes": [
@@ -67,7 +72,8 @@
                   "quem": "voce",
                   "emocao": "pensativo"
                 }
-              ]
+              ],
+              "alvo": "notebook"
             },
             {
               "mudo": true,
@@ -522,7 +528,7 @@
           ],
           "objetos": [
             {
-              "prop": "notebook",
+              "prop": "telao",
               "pos": "centro"
             }
           ],
@@ -536,7 +542,7 @@
             {
               "frase": "f-4e023e",
               "acao": "aponta",
-              "alvo": "notebook",
+              "alvo": "telao",
               "emocao": "feliz",
               "reacoes": [
                 {
@@ -577,7 +583,7 @@
             {
               "frase": "f-abbb74",
               "acao": "aponta",
-              "alvo": "notebook",
+              "alvo": "telao",
               "emocao": "surpreso",
               "efeito": "exclamacao",
               "reacoes": [

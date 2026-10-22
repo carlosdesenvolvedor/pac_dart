@@ -45,9 +45,9 @@
             { "quem": "dev-novo", "pos": "centroDireita", "emocao": "determinado" },
             { "quem": "mike", "remoto": "celular", "emocao": "neutro" }
           ],
-          "objetos": [ { "prop": "notebook", "pos": "direita" } ],
+          "objetos": [ { "prop": "cadeira", "pos": "direita" } ],
           "passos": [
-            { "frase": "f-6d79e9", "acao": "aponta", "alvo": "notebook", "emocao": "determinado", "camera": "geral",
+            { "frase": "f-6d79e9", "acao": "aponta", "alvo": "cadeira", "emocao": "determinado", "camera": "geral",
               "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
             { "frase": "f-bb7270", "acao": "nega", "alvo": "dev-novo", "emocao": "pensativo", "camera": "medio" },
             { "frase": "f-b77305", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
@@ -103,7 +103,7 @@
         {
           "cenario": "casa", "hora": "noite", "clima": [],
           "elenco": [
-            { "quem": "voce", "pos": "centroEsquerda", "segura": "presente", "emocao": "feliz", "visivel": false },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "bolo", "emocao": "feliz", "visivel": false },
             { "quem": "emma", "pos": "centroDireita", "emocao": "neutro" }
           ],
           "objetos": [ { "prop": "prato", "pos": "direita" } ],
@@ -115,7 +115,7 @@
             { "frase": "f-4c2ccc", "acao": "aponta", "alvo": "voce", "emocao": "radiante",
               "reacoes": [ { "quem": "voce", "acao": "mostra", "emocao": "timido" } ] },
             { "mudo": true, "quem": "voce", "segura": "nada", "emocao": "feliz",
-              "reacoes": [ { "quem": "emma", "segura": "presente", "emocao": "radiante", "efeito": "coracoes" } ] },
+              "reacoes": [ { "quem": "emma", "segura": "bolo", "emocao": "radiante", "efeito": "coracoes" } ] },
             { "frase": "f-f82c75", "acao": "aponta", "alvo": "prato", "emocao": "radiante",
               "reacoes": [ { "quem": "emma", "emocao": "timido" } ] }
           ]

@@ -54,7 +54,7 @@
             { "quem": "supervisora", "remoto": "celular", "emocao": "neutro" }
           ],
           "objetos": [
-            { "prop": "documento", "pos": "centro" },
+            { "prop": "caderno", "pos": "centro" },
             { "prop": "notebook", "pos": "direita" }
           ],
           "passos": [
@@ -62,7 +62,7 @@
             { "frase": "f-7736f0", "emocao": "cansado", "camera": "geral" },
             { "frase": "f-8e087c", "emocao": "timido",
               "reacoes": [ { "quem": "voce", "emocao": "surpreso", "efeito": "exclamacao" } ] },
-            { "frase": "f-28bdb3", "acao": "aponta", "alvo": "documento", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-28bdb3", "acao": "aponta", "alvo": "caderno", "emocao": "determinado", "camera": "medio" },
             { "frase": "f-ee3d31", "emocao": "pensativo",
               "reacoes": [ { "quem": "voce", "acao": "pensa", "efeito": "interrogacao" } ] },
             { "frase": "f-6adb42", "acao": "nega", "emocao": "nervoso" },
@@ -71,7 +71,7 @@
             { "frase": "f-c7a721", "acao": "nega", "emocao": "determinado", "camera": "close" },
             { "frase": "f-996ca2", "emocao": "feliz",
               "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
-            { "mudo": true, "quem": "voce", "acao": "escreve", "alvo": "documento", "emocao": "determinado" },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "alvo": "caderno", "emocao": "determinado" },
             { "frase": "f-dcd068", "emocao": "feliz",
               "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
             { "frase": "f-bb2faa", "acao": "concorda", "emocao": "determinado", "camera": "medio" },
@@ -136,7 +136,7 @@
       "titulo": { "en": "What a crazy week", "pt": "Que semana louca" },
       "cenas": [
         {
-          "cenario": "casa",
+          "cenario": "salaDeEstar",
           "hora": "noite",
           "clima": [],
           "elenco": [

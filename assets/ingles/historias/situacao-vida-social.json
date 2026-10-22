@@ -10,7 +10,7 @@
       },
       "cenas": [
         {
-          "cenario": "escritorio",
+          "cenario": "copa",
           "hora": "dia",
           "clima": [],
           "elenco": [
@@ -35,7 +35,7 @@
           ],
           "objetos": [
             {
-              "prop": "notebook",
+              "prop": "telao",
               "pos": "esquerda"
             }
           ],
@@ -43,7 +43,7 @@
             {
               "frase": "f-34c794",
               "acao": "aponta",
-              "alvo": "notebook",
+              "alvo": "telao",
               "emocao": "feliz",
               "camera": "geral",
               "reacoes": [
@@ -236,7 +236,7 @@
             {
               "quem": "voce",
               "pos": "centroEsquerda",
-              "segura": "prato",
+              "segura": "bolo",
               "emocao": "feliz"
             },
             {
@@ -280,7 +280,7 @@
               "reacoes": [
                 {
                   "quem": "emma",
-                  "segura": "prato",
+                  "segura": "bolo",
                   "emocao": "radiante"
                 }
               ]
@@ -288,7 +288,7 @@
             {
               "frase": "f-e47e48",
               "acao": "aponta",
-              "alvo": "convidado",
+              "alvo": "emma",
               "emocao": "feliz",
               "camera": "medio",
               "reacoes": [
@@ -315,8 +315,8 @@
               "reacoes": [
                 {
                   "quem": "convidado",
-                  "acao": "palmas",
-                  "emocao": "radiante"
+                  "acao": "concorda",
+                  "emocao": "feliz"
                 }
               ]
             },
@@ -419,7 +419,7 @@
           ]
         },
         {
-          "cenario": "casa",
+          "cenario": "cozinha",
           "hora": "dia",
           "clima": [],
           "elenco": [
@@ -548,7 +548,7 @@
       },
       "cenas": [
         {
-          "cenario": "restaurante",
+          "cenario": "bar",
           "hora": "noite",
           "clima": [],
           "elenco": [
@@ -573,12 +573,7 @@
               "segura": "garrafa"
             }
           ],
-          "objetos": [
-            {
-              "prop": "prato",
-              "pos": "esquerda"
-            }
-          ],
+          "objetos": [],
           "passos": [
             {
               "frase": "f-89b0ad",
@@ -606,7 +601,7 @@
                 {
                   "prop": "garrafa",
                   "acao": "aparece",
-                  "pos": "centro",
+                  "pos": "esquerda",
                   "de": "garcom"
                 }
               ]

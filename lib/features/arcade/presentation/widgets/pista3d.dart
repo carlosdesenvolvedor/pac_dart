@@ -3,6 +3,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
+import '../../../../core/linguagem/linguagem.dart';
 import '../../../../core/theme/mixart.dart';
 import 'arcade_ui.dart';
 import 'avatares.dart';
@@ -50,6 +51,11 @@ class PistaPro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ⚡ desempenho (22/out, só no curso de inglês): a cena numa camada própria. A cada quadro o Pac
+    // mastigando e a carga da CPU (lá dentro) marcam o LayoutBuilder da pista, e o relayout dele mandava
+    // regravar a pista inteira (sombras com blur, crachás, corredores). Agora só a camada é recolocada.
+    // Dart e C#: como estava.
+    final camada = Linguagem.atual == Linguagem.ingles;
     return ClipRRect(
       borderRadius: BorderRadius.circular(Mixart.radiusLg),
       child: SizedBox(
@@ -85,7 +91,7 @@ class PistaPro extends StatelessWidget {
           );
           final ordem = posCpu >= posJogador ? [cpu, jogador] : [jogador, cpu];
 
-          return Stack(children: [
+          final cena = Stack(children: [
             // céu e morros do mundo da fase, até o horizonte
             Positioned(
               left: 0,
@@ -122,6 +128,7 @@ class PistaPro extends StatelessWidget {
               ),
             ),
           ]);
+          return camada ? RepaintBoundary(child: cena) : cena;
         }),
       ),
     );

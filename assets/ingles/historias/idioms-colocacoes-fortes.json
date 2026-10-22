@@ -23,7 +23,7 @@
             {
               "quem": "ana",
               "pos": "centroEsquerda",
-              "segura": "sacola",
+              "segura": "mochila",
               "emocao": "cansado"
             },
             {
@@ -255,10 +255,10 @@
             },
             {
               "mudo": true,
-              "quem": "dev-novo",
-              "acao": "comemora",
-              "emocao": "radiante",
-              "efeito": "brilho"
+              "quem": "voce",
+              "acao": "olha",
+              "alvo": "dev-novo",
+              "emocao": "nervoso"
             },
             {
               "frase": "f-142851",
@@ -275,14 +275,18 @@
             },
             {
               "mudo": true,
-              "quem": "voce",
-              "acao": "acena",
-              "alvo": "dev-novo",
+              "quem": "dev-novo",
+              "acao": "comemora",
               "emocao": "radiante",
+              "efeito": "brilho",
               "reacoes": [
                 {
-                  "quem": "dev-novo",
-                  "acao": "acena",
+                  "quem": "voce",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "ana",
                   "emocao": "feliz"
                 }
               ]
@@ -317,7 +321,7 @@
           ],
           "objetos": [
             {
-              "prop": "notebook",
+              "prop": "quadroBranco",
               "pos": "direita"
             }
           ],
@@ -337,13 +341,13 @@
             {
               "frase": "f-84d091",
               "acao": "aponta",
-              "alvo": "notebook",
+              "alvo": "quadroBranco",
               "emocao": "determinado"
             },
             {
               "frase": "f-031086",
               "acao": "aponta",
-              "alvo": "notebook",
+              "alvo": "quadroBranco",
               "emocao": "pensativo"
             },
             {
@@ -362,7 +366,7 @@
               "mudo": true,
               "quem": "sarah",
               "acao": "escreve",
-              "alvo": "notebook",
+              "alvo": "quadroBranco",
               "emocao": "feliz"
             },
             {
@@ -447,7 +451,7 @@
           ],
           "objetos": [
             {
-              "prop": "notebook",
+              "prop": "telao",
               "pos": "direita"
             }
           ],
@@ -455,7 +459,7 @@
             {
               "frase": "f-b0c364",
               "acao": "aponta",
-              "alvo": "notebook",
+              "alvo": "telao",
               "emocao": "triste",
               "camera": "geral",
               "reacoes": [
@@ -715,7 +719,7 @@
       },
       "cenas": [
         {
-          "cenario": "escritorio",
+          "cenario": "copa",
           "hora": "dia",
           "clima": [],
           "elenco": [

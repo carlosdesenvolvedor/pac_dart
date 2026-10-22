@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:web/web.dart' as web;
 
+import '../../../../core/linguagem/linguagem.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../domain/turismo.dart';
 import 'ambiente_turismo.dart';
@@ -214,6 +215,8 @@ class _Vista3DState extends State<Vista3D> {
       // efeitos (motor/vento) e o 🎸 estão ligados
       'som': widget.som,
       'musicaLigada': widget.musica,
+      // o motor 3D é o mesmo nos 3 cursos: os ajustes de desempenho e os retoques dos mundos (22/out) só ligam no inglês
+      'ingles': Linguagem.atual == Linguagem.ingles,
       'segmentos': [for (final s in e.segmentos) s.curva],
       'comprimentoSegmento': TurismoEngine.comprimentoSegmento,
       'distancia': e.pista.distancia,

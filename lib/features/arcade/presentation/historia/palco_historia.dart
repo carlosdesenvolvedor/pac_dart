@@ -1372,6 +1372,10 @@ class _Quadro {
     );
   }
 
+  /// 📺 O menor fator da letra do [BalaoFala.compacto] na chamada de uma fila (15 px → 12 px): a frase longa
+  /// encolhe até aqui antes de cobrir uma cabeça.
+  static const fatorMinimoCompacto = .8;
+
   /// 📺 A caixa (na tela) da cabeça de cada ator no palco: a metade de cima do corpo.
   Map<String, Rect> _cabecasNaTela() {
     final r = <String, Rect>{};
@@ -1392,7 +1396,7 @@ class _Quadro {
     final ancora = ancoraBalao == null ? null : naTela(ancoraBalao!);
     final topo = topoFalante == null ? null : naTela(Offset(0, topoFalante!)).dy;
     // a largura MÁXIMA; o balão tem a largura do texto (medida) e fica centrado em quem fala
-    final largura = estreito ? w - 16 : math.min(w * .86, 560 * escala);
+    var largura = estreito ? w - 16 : math.min(w * .86, 560 * escala);
     final nome = ElencoTurismo.nomeDe(f.quem);
     final mq = MediaQuery.of(context);
     var scaler = mq.textScaler;
@@ -1455,6 +1459,18 @@ class _Quadro {
           fator = math.max(1.0, fator * .88);
           scaler = TextScaler.linear(fator);
           tam = medir();
+        }
+        // frase longa (3+ linhas no compacto): o compacto usa a largura toda do palco e a letra encolhe abaixo do
+        // normal (até [fatorMinimoCompacto]) até caber em 2 linhas acima das cabeças. Só ESTA fala muda: as
+        // molduras não pulam de tamanho a cada frase
+        if (compacto && cobre(tam)) {
+          largura = w - 16;
+          tam = medir();
+          while (cobre(tam) && fator > fatorMinimoCompacto) {
+            fator = math.max(fatorMinimoCompacto, fator * .94);
+            scaler = TextScaler.linear(fator);
+            tam = medir();
+          }
         }
       }
     }

@@ -137,7 +137,7 @@
           "cenario": "casa", "hora": "dia", "clima": [],
           "elenco": [
             { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "determinado" },
-            { "quem": "emma", "pos": "direita", "visivel": false, "segura": "sacola", "emocao": "radiante" }
+            { "quem": "emma", "pos": "direita", "visivel": false, "segura": "caixa", "emocao": "radiante" }
           ],
           "objetos": [
             { "prop": "notebook", "pos": "centro" },
@@ -158,7 +158,7 @@
             { "mudo": true, "quem": "emma", "acao": "entra", "para": "centroDireita", "emocao": "radiante",
               "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
             { "mudo": true, "quem": "emma", "segura": "nada", "emocao": "feliz", "camera": "dupla", "alvo": "voce",
-              "reacoes": [ { "quem": "voce", "segura": "sacola", "emocao": "radiante", "efeito": "suor" } ] }
+              "reacoes": [ { "quem": "voce", "segura": "caixa", "emocao": "radiante", "efeito": "suor" } ] }
           ]
         }
       ]

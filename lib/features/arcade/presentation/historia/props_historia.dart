@@ -65,6 +65,19 @@ class PropPainter extends CustomPainter {
         PropHistoria.prato => (.26, .12),
         PropHistoria.sacola => (.2, .26),
         PropHistoria.documento => (.17, .22),
+        PropHistoria.telao => (.8, .8),
+        PropHistoria.quadroBranco => (.7, .72),
+        PropHistoria.caixa => (.3, .24),
+        PropHistoria.bolo => (.26, .22),
+        PropHistoria.caderno => (.18, .23),
+        PropHistoria.casaco => (.3, .32),
+        PropHistoria.taca => (.1, .25),
+        PropHistoria.portaRetrato => (.2, .24),
+        PropHistoria.cracha => (.15, .3),
+        PropHistoria.cadeira => (.34, .52),
+        PropHistoria.cartao => (.18, .115),
+        PropHistoria.carteira => (.2, .15),
+        PropHistoria.mochila => (.24, .3),
       };
 
   static const _contorno = Color(0xFF3A2A33);
@@ -153,6 +166,32 @@ class PropPainter extends CustomPainter {
         _sacola(aspecto);
       case PropHistoria.documento:
         _documento(aspecto);
+      case PropHistoria.telao:
+        _telao(aspecto);
+      case PropHistoria.quadroBranco:
+        _quadroBranco(aspecto);
+      case PropHistoria.caixa:
+        _caixa(aspecto);
+      case PropHistoria.bolo:
+        _bolo(aspecto);
+      case PropHistoria.caderno:
+        _caderno(aspecto);
+      case PropHistoria.casaco:
+        _casaco(aspecto);
+      case PropHistoria.taca:
+        _taca(aspecto);
+      case PropHistoria.portaRetrato:
+        _portaRetrato(aspecto);
+      case PropHistoria.cracha:
+        _cracha(aspecto);
+      case PropHistoria.cadeira:
+        _cadeira(aspecto);
+      case PropHistoria.cartao:
+        _cartao(aspecto);
+      case PropHistoria.carteira:
+        _carteira(aspecto);
+      case PropHistoria.mochila:
+        _mochila(aspecto);
     }
     canvas.restore();
   }
@@ -977,6 +1016,546 @@ class PropPainter extends CustomPainter {
     // o prendedor de metal
     _forma(_rr(w * .3, .01, w * .7, .17, .04), const Color(0xFFB8C0CA));
     _forma(_circ(w * .5, .07, .03), const Color(0xFF8D99A8));
+  }
+
+  // ── props das lições, 2ª leva (os pedidos de arte dos lotes) ──
+
+  /// Telão de reunião num pedestal de rodinhas: a tela escura com um gráfico de barras e uma linha subindo.
+  void _telao(double w) {
+    // pedestal: coluna, base em H e as rodinhas
+    _forma(_rr(w * .47, .6, w * .53, .92, .01), const Color(0xFF59636E));
+    _forma(_rr(w * .16, .89, w * .84, .94, .02), const Color(0xFF3F4652));
+    for (final x in [.2, .8]) {
+      _forma(_circ(w * x, .955, .035), const Color(0xFF2B2B2B));
+    }
+    // a tela
+    _forma(_rr(w * .01, .02, w * .99, .65, .03), const Color(0xFF2B2F3A));
+    final tela = _rr(w * .04, .05, w * .96, .61, .015);
+    _forma(tela, const Color(0xFF1D3B5C), contorno: false);
+    _c.save();
+    _c.clipPath(tela);
+    // título do slide (sem letras) e os eixos
+    _forma(_rr(w * .1, .1, w * .44, .135, .01), Colors.white.withValues(alpha: .85), contorno: false);
+    _forma(_rr(w * .1, .155, w * .3, .175, .008), Colors.white.withValues(alpha: .45), contorno: false);
+    final eixo = Colors.white.withValues(alpha: .75);
+    _linha(Offset(w * .1, .25), Offset(w * .1, .53), eixo, .012);
+    _linha(Offset(w * .1, .53), Offset(w * .9, .53), eixo, .012);
+    const cores = [Color(0xFF4DD0E1), Color(0xFFFFD166), Color(0xFFFF8FB1), Color(0xFF81C784)];
+    const alturas = [.12, .2, .16, .26];
+    for (var i = 0; i < 4; i++) {
+      final x = w * (.15 + i * .09);
+      _forma(_rr(x, .53 - alturas[i], x + w * .06, .53, .006), cores[i], contorno: false);
+    }
+    final linha = Path()
+      ..moveTo(w * .54, .47)
+      ..lineTo(w * .63, .4)
+      ..lineTo(w * .72, .43)
+      ..lineTo(w * .86, .24);
+    _c.drawPath(
+        linha,
+        Paint()
+          ..color = const Color(0xFFFFD166)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = .025
+          ..strokeCap = StrokeCap.round
+          ..strokeJoin = StrokeJoin.round);
+    for (final o in [Offset(w * .54, .47), Offset(w * .63, .4), Offset(w * .72, .43), Offset(w * .86, .24)]) {
+      _c.drawCircle(o, .02, _tinta(Colors.white));
+    }
+    // reflexo
+    _c.drawPath(
+        Path()
+          ..moveTo(w * .62, .05)
+          ..lineTo(w * .74, .05)
+          ..lineTo(w * .56, .61)
+          ..lineTo(w * .44, .61)
+          ..close(),
+        _tinta(Colors.white.withValues(alpha: .07)));
+    _c.restore();
+    // a luzinha de ligado
+    _c.drawCircle(Offset(w * .5, .632), .01, _tinta(const Color(0xFF4CD964)));
+  }
+
+  /// Quadro branco de rodinhas: caixas ligadas por setas (o diagrama), post-its e os marcadores na bandeja.
+  void _quadroBranco(double w) {
+    // as duas colunas com os pés e as rodinhas
+    for (final x in [.06, .94]) {
+      _forma(_rr(w * x - .018, .03, w * x + .018, .93, .01), const Color(0xFF8D99A8));
+      _forma(_rr(w * x - w * .06, .91, w * x + w * .06, .945, .01), const Color(0xFF59636E));
+      _forma(_circ(w * (x - .045), .965, .025), const Color(0xFF2B2B2B));
+      _forma(_circ(w * (x + .045), .965, .025), const Color(0xFF2B2B2B));
+    }
+    _forma(_rr(w * .08, .04, w * .92, .7, .015), const Color(0xFFB8C0CA));
+    _forma(_rr(w * .1, .06, w * .9, .68, .008), const Color(0xFFFBFCFD), contorno: false);
+    // o diagrama: 3 caixas e as setas
+    Paint caneta(Color c) => Paint()
+      ..color = c
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = .018
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round;
+    final azul = caneta(const Color(0xFF1E6FD9)), vermelho = caneta(const Color(0xFFE53935));
+    final verde = caneta(const Color(0xFF2E9D4A));
+    _c.drawRRect(RRect.fromLTRBR(w * .15, .12, w * .37, .25, const Radius.circular(.015)), azul);
+    _c.drawRRect(RRect.fromLTRBR(w * .5, .12, w * .72, .25, const Radius.circular(.015)), azul);
+    _c.drawRRect(RRect.fromLTRBR(w * .32, .42, w * .56, .56, const Radius.circular(.015)), verde);
+    void seta(Offset a, Offset b, Paint p) {
+      _c.drawLine(a, b, p);
+      final d = (b - a) / (b - a).distance;
+      final n = Offset(-d.dy, d.dx);
+      _c.drawLine(b, b - d * .04 + n * .025, p);
+      _c.drawLine(b, b - d * .04 - n * .025, p);
+    }
+
+    seta(Offset(w * .38, .185), Offset(w * .49, .185), vermelho);
+    seta(Offset(w * .26, .26), Offset(w * .38, .41), vermelho);
+    seta(Offset(w * .61, .26), Offset(w * .5, .41), vermelho);
+    for (final (x, y) in [(.2, .185), (.55, .185), (.38, .49)]) {
+      _linha(Offset(w * x, y), Offset(w * (x + .1), y), const Color(0xFF8D99A8), .014);
+    }
+    // post-its
+    const notas = [Color(0xFFFFE066), Color(0xFFFF9EC7), Color(0xFF8FD3FF)];
+    for (var i = 0; i < 3; i++) {
+      final x = w * .74, y = .3 + i * .12;
+      _forma(_rr(x, y, x + w * .11, y + .1, .006), notas[i]);
+      _linha(Offset(x + w * .02, y + .05), Offset(x + w * .09, y + .05), const Color(0x663A2A33), .01);
+    }
+    // bandeja com os marcadores
+    _forma(_rr(w * .2, .7, w * .8, .74, .01), const Color(0xFF8D99A8));
+    for (final (i, cor) in [(0, const Color(0xFFE53935)), (1, const Color(0xFF1E6FD9)), (2, const Color(0xFF2E9D4A))]) {
+      _forma(_rr(w * (.3 + i * .14), .675, w * (.41 + i * .14), .705, .012), cor);
+    }
+  }
+
+  /// Caixa de papelão fechada com fita (a de mudança), vista um pouco de cima, com a etiqueta e as setas "↑↑".
+  void _caixa(double w) {
+    const frente = Color(0xFFC8955A), lado = Color(0xFFA9773F), topo = Color(0xFFDDB27A);
+    _forma(_rr(w * .03, .3, w * .8, .98, .01), frente);
+    _forma(
+        Path()
+          ..moveTo(w * .8, .3)
+          ..lineTo(w * .97, .1)
+          ..lineTo(w * .97, .8)
+          ..lineTo(w * .8, .98)
+          ..close(),
+        lado);
+    _forma(
+        Path()
+          ..moveTo(w * .03, .3)
+          ..lineTo(w * .2, .1)
+          ..lineTo(w * .97, .1)
+          ..lineTo(w * .8, .3)
+          ..close(),
+        topo);
+    // a fita no meio do topo, descendo pela frente
+    const fita = Color(0xFFEAD7A6);
+    _forma(
+        Path()
+          ..moveTo(w * .36, .3)
+          ..lineTo(w * .53, .1)
+          ..lineTo(w * .61, .1)
+          ..lineTo(w * .44, .3)
+          ..close(),
+        fita);
+    _forma(_rr(w * .36, .3, w * .44, .5, 0), fita);
+    // etiqueta e as setas de "este lado para cima"
+    _forma(_rr(w * .1, .58, w * .34, .8, .015), Colors.white);
+    _linha(Offset(w * .14, .65), Offset(w * .29, .65), const Color(0xFF8D99A8), .025);
+    _linha(Offset(w * .14, .73), Offset(w * .24, .73), const Color(0xFF8D99A8), .025);
+    final seta = Paint()
+      ..color = _contorno
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = .03
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round;
+    for (final x in [.54, .66]) {
+      _c.drawLine(Offset(w * x, .86), Offset(w * x, .62), seta);
+      _c.drawPath(
+          Path()
+            ..moveTo(w * x - .05, .68)
+            ..lineTo(w * x, .61)
+            ..lineTo(w * x + .05, .68),
+          seta);
+    }
+  }
+
+  /// Bolo redondo no prato: massa, recheio vermelho, cobertura cor-de-rosa escorrendo, cerejas e 3 velinhas.
+  void _bolo(double w) {
+    _forma(Path()..addOval(Rect.fromLTRB(w * .02, .86, w * .98, .99)), Colors.white);
+    final massa = _rr(w * .12, .44, w * .88, .92, .05);
+    _forma(massa, const Color(0xFFF2CE96));
+    _c.save();
+    _c.clipPath(massa);
+    _c.drawRect(Rect.fromLTRB(0, .66, w, .72), _tinta(const Color(0xFFE84A5F)));
+    _c.drawRect(Rect.fromLTRB(w * .72, 0, w, 1), _tinta(const Color(0x1A301A10)));
+    _c.restore();
+    _c.drawPath(massa, _traco);
+    // cobertura com pingos
+    final cob = Path()..moveTo(w * .1, .5);
+    cob.quadraticBezierTo(w * .1, .4, w * .2, .4);
+    cob.lineTo(w * .8, .4);
+    cob.quadraticBezierTo(w * .9, .4, w * .9, .5);
+    const pingos = [.56, .6, .54, .63, .57];
+    for (var i = pingos.length - 1; i >= 0; i--) {
+      final x0 = w * (.9 - (pingos.length - 1 - i) * .16), x1 = x0 - w * .16;
+      cob.quadraticBezierTo((x0 + x1) / 2, pingos[i] + .06, x1, .52);
+    }
+    cob.close();
+    _forma(cob, const Color(0xFFFF9EC7));
+    _linha(Offset(w * .22, .44), Offset(w * .4, .44), Colors.white.withValues(alpha: .7), .025);
+    // velinhas com a chama (balança com o relógio)
+    for (var i = 0; i < 3; i++) {
+      final x = w * (.32 + i * .18);
+      _forma(_rr(x - w * .025, .2, x + w * .025, .41, .01), [const Color(0xFF8FD3FF), const Color(0xFFFFE066), const Color(0xFFB5E58C)][i]);
+      _c.drawLine(Offset(x, .2), Offset(x, .16), _traco..strokeWidth = _lw * .6);
+      final osc = math.sin(t * 9 + i * 2.1) * .012;
+      _forma(
+          Path()
+            ..moveTo(x + osc, .03)
+            ..quadraticBezierTo(x + w * .05, .12, x, .16)
+            ..quadraticBezierTo(x - w * .05, .12, x + osc, .03)
+            ..close(),
+          const Color(0xFFFFB238));
+      _c.drawOval(Rect.fromCenter(center: Offset(x, .125), width: w * .03, height: .045), _tinta(const Color(0xFFFFF3C4)));
+    }
+    // cerejas entre as velas
+    for (final x in [.23, .41, .59, .77]) {
+      _forma(_circ(w * x, .4, .035), const Color(0xFFD62839));
+    }
+  }
+
+  /// Caderno de espiral fechado: capa azul com a etiqueta, o elástico e as folhas aparecendo na borda.
+  void _caderno(double w) {
+    _forma(_rr(w * .16, .04, w * .98, .99, .03), Colors.white);
+    for (var i = 1; i < 3; i++) {
+      _linha(Offset(w * .2, .99 - i * .012), Offset(w * .97, .99 - i * .012), const Color(0xFFCFD6DE), .006);
+    }
+    final capa = _rr(w * .1, .01, w * .93, .96, .035);
+    _forma(capa, const Color(0xFF3E8AE0));
+    _c.save();
+    _c.clipPath(capa);
+    _c.drawRect(Rect.fromLTRB(w * .74, 0, w, 1), _tinta(const Color(0x22102040)));
+    _c.restore();
+    _forma(_rr(w * .3, .14, w * .78, .32, .02), Colors.white);
+    _linha(Offset(w * .36, .2), Offset(w * .7, .2), const Color(0xFF8D99A8), .02);
+    _linha(Offset(w * .36, .26), Offset(w * .58, .26), const Color(0xFF8D99A8), .02);
+    // elástico
+    _forma(_rr(w * .8, .01, w * .86, .96, .0), const Color(0xFF2B2B2B), contorno: false);
+    // a espiral
+    final aro = Paint()
+      ..color = const Color(0xFF5A6270)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = .018;
+    for (var y = .07; y < .93; y += .07) {
+      _c.drawOval(Rect.fromCenter(center: Offset(w * .1, y), width: w * .14, height: .035), aro);
+    }
+  }
+
+  /// Casaco azul-marinho aberto no peito: gola, zíper, dois bolsos e os punhos.
+  void _casaco(double w) {
+    const cor = Color(0xFF34507A), escura = Color(0xFF263D5E), gola = Color(0xFFD9C7A3);
+    for (final lado in [-1.0, 1.0]) {
+      double x(double f) => w * (.5 + lado * f);
+      _forma(
+          Path()
+            ..moveTo(x(.34), .14)
+            ..lineTo(x(.48), .24)
+            ..lineTo(x(.46), .86)
+            ..lineTo(x(.28), .86)
+            ..lineTo(x(.27), .3)
+            ..close(),
+          cor);
+      _forma(
+          Path()
+            ..moveTo(x(.46), .78)
+            ..lineTo(x(.46), .88)
+            ..lineTo(x(.28), .88)
+            ..lineTo(x(.28), .78)
+            ..close(),
+          escura);
+    }
+    final corpo = Path()
+      ..moveTo(w * .14, .14)
+      ..lineTo(w * .38, .05)
+      ..lineTo(w * .62, .05)
+      ..lineTo(w * .86, .14)
+      ..lineTo(w * .8, .97)
+      ..lineTo(w * .2, .97)
+      ..close();
+    _forma(corpo, cor);
+    _c.save();
+    _c.clipPath(corpo);
+    _c.drawRect(Rect.fromLTRB(w * .66, 0, w, 1), _tinta(const Color(0x22101830)));
+    _c.drawRect(Rect.fromLTRB(0, .9, w, 1), _tinta(escura));
+    _c.restore();
+    _c.drawPath(corpo, _traco);
+    // a camiseta aparecendo e a gola (lapelas)
+    _forma(
+        Path()
+          ..moveTo(w * .4, .05)
+          ..lineTo(w * .6, .05)
+          ..lineTo(w * .5, .3)
+          ..close(),
+        const Color(0xFFF2EEE2));
+    for (final lado in [-1.0, 1.0]) {
+      _forma(
+          Path()
+            ..moveTo(w * (.5 - lado * .12), .04)
+            ..lineTo(w * (.5 - lado * .02), .32)
+            ..lineTo(w * (.5 - lado * .22), .2)
+            ..close(),
+          gola);
+    }
+    // zíper e os bolsos
+    _linha(Offset(w * .5, .32), Offset(w * .5, .96), _contorno, _lw);
+    _forma(_rr(w * .52, .42, w * .56, .5, .01), const Color(0xFFC9CED6));
+    for (final x in [.26, .58]) {
+      _forma(_rr(w * x, .6, w * (x + .16), .66, .01), escura);
+    }
+  }
+
+  /// Taça de espumante (o brinde): bojo de vidro, a bebida dourada com bolhinhas, haste e pé.
+  void _taca(double w) {
+    final bojo = Path()
+      ..moveTo(w * .1, .03)
+      ..lineTo(w * .9, .03)
+      ..cubicTo(w * .95, .3, w * .72, .5, w * .5, .52)
+      ..cubicTo(w * .28, .5, w * .05, .3, w * .1, .03)
+      ..close();
+    _c.drawPath(bojo, _tinta(const Color(0x55DDF2FF)));
+    _c.save();
+    _c.clipPath(bojo);
+    _c.drawRect(Rect.fromLTRB(0, .16, w, 1), _tinta(const Color(0xFFF7D66B)));
+    _c.drawRect(Rect.fromLTRB(0, .16, w, .19), _tinta(const Color(0xFFFFF3C4)));
+    for (var i = 0; i < 5; i++) {
+      final y = .45 - ((t * .25 + i * .2) % 1) * .26;
+      _c.drawCircle(Offset(w * (.38 + (i % 3) * .12), y), .014, _tinta(Colors.white.withValues(alpha: .85)));
+    }
+    _c.restore();
+    _c.drawPath(bojo, _traco);
+    _linha(Offset(w * .24, .1), Offset(w * .3, .34), Colors.white.withValues(alpha: .8), .03);
+    _forma(_rr(w * .44, .51, w * .56, .9, .01), const Color(0xFFE6F4FF));
+    _forma(Path()..addOval(Rect.fromLTRB(w * .08, .87, w * .92, .98)), const Color(0xFFE6F4FF));
+  }
+
+  // ── props das lições, 3ª leva (os pedidos que sobraram) ──
+
+  /// Porta-retrato de madeira com a foto da família (duas pessoas e uma criança na praia) e o pezinho atrás.
+  void _portaRetrato(double w) {
+    _forma(
+        Path()
+          ..moveTo(w * .62, .7)
+          ..lineTo(w * .82, .99)
+          ..lineTo(w * .72, .99)
+          ..lineTo(w * .55, .75)
+          ..close(),
+        const Color(0xFF8A5A3A));
+    _forma(_rr(w * .02, .02, w * .98, .92, .03), const Color(0xFFC8955A));
+    _c.drawRect(Rect.fromLTRB(w * .02, .02, w * .98, .1), _tinta(const Color(0x22FFFFFF)));
+    final foto = _rr(w * .14, .12, w * .86, .8, .01);
+    _forma(foto, const Color(0xFF8FD3FF));
+    _c.save();
+    _c.clipPath(foto);
+    _c.drawRect(Rect.fromLTRB(0, .56, w, 1), _tinta(const Color(0xFFF2D49B)));
+    _c.drawCircle(Offset(w * .74, .26), .07, _tinta(const Color(0xFFFFE066)));
+    // as três pessoas (cabeça e corpo)
+    for (final (x, alt, roupa, pele) in [
+      (.34, .0, const Color(0xFFE5533D), const Color(0xFFE8B48A)),
+      (.62, .02, const Color(0xFF3E8AE0), const Color(0xFFB07C50)),
+      (.48, .14, const Color(0xFF2EAD5B), const Color(0xFFF2C9A0)),
+    ]) {
+      final cx = w * x, topo = .34 + alt;
+      _c.drawCircle(Offset(cx, topo), .065, _tinta(pele));
+      _c.drawRRect(RRect.fromLTRBR(cx - w * .1, topo + .07, cx + w * .1, .82, const Radius.circular(.05)), _tinta(roupa));
+      _c.drawCircle(Offset(cx - .02, topo - .005), .009, _tinta(_contorno));
+      _c.drawCircle(Offset(cx + .02, topo - .005), .009, _tinta(_contorno));
+    }
+    _c.restore();
+    _c.drawPath(foto, _traco);
+    _linha(Offset(w * .2, .16), Offset(w * .36, .16), Colors.white.withValues(alpha: .6), .02);
+  }
+
+  /// Crachá no cordão: a cordinha azul, o prendedor, a foto 3×4, a faixa da empresa e o código de barras.
+  void _cracha(double w) {
+    final cordao = Paint()
+      ..color = const Color(0xFF1E6FD9)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = .05
+      ..strokeCap = StrokeCap.round;
+    _c.drawPath(
+        Path()
+          ..moveTo(w * .5, .4)
+          ..lineTo(w * .12, .02)
+          ..moveTo(w * .5, .4)
+          ..lineTo(w * .88, .02),
+        cordao);
+    _forma(_rr(w * .42, .36, w * .58, .45, .01), const Color(0xFF8D99A8));
+    final cartao = _rr(w * .08, .44, w * .92, .99, .04);
+    _forma(cartao, Colors.white);
+    _c.save();
+    _c.clipPath(cartao);
+    _c.drawRect(Rect.fromLTRB(0, .44, w, .53), _tinta(const Color(0xFF1E6FD9)));
+    _c.restore();
+    _c.drawPath(cartao, _traco);
+    _forma(_rr(w * .4, .465, w * .6, .49, .01), Colors.white, contorno: false);
+    // a foto 3×4 e as linhas do nome
+    _forma(_rr(w * .16, .57, w * .48, .79, .01), const Color(0xFFDDEFF7));
+    _c.drawCircle(Offset(w * .32, .65), .035, _tinta(const Color(0xFFE8B48A)));
+    _c.drawRRect(RRect.fromLTRBR(w * .2, .7, w * .44, .79, const Radius.circular(.03)), _tinta(const Color(0xFF34507A)));
+    _linha(Offset(w * .55, .61), Offset(w * .84, .61), const Color(0xFF3A2A33), .02);
+    _linha(Offset(w * .55, .67), Offset(w * .76, .67), const Color(0xFF8D99A8), .018);
+    _linha(Offset(w * .55, .72), Offset(w * .8, .72), const Color(0xFF8D99A8), .018);
+    for (var i = 0; i < 9; i++) {
+      final x = w * (.18 + i * .072);
+      _c.drawRect(Rect.fromLTRB(x, .85, x + w * (i.isEven ? .035 : .02), .94), _tinta(_contorno));
+    }
+  }
+
+  /// Cadeira de madeira com assento de palhinha, encosto de ripas, vista de lado em 3/4.
+  void _cadeira(double w) {
+    const madeira = Color(0xFFA0683F), escura = Color(0xFF7A4E2E), palha = Color(0xFFE6C98A);
+    // pés de trás (atrás do assento)
+    _forma(_rr(w * .7, .55, w * .78, .99, .02), escura);
+    _forma(_rr(w * .26, .55, w * .33, .93, .02), escura);
+    // o encosto: as duas colunas e as ripas
+    for (final x in [.14, .5]) {
+      _forma(_rr(w * x, .02, w * (x + .09), .6, .025), madeira);
+    }
+    for (final y in [.08, .22, .36]) {
+      _forma(_rr(w * .16, y, w * .57, y + .07, .02), madeira);
+    }
+    // o assento (losango achatado de palhinha)
+    final assento = Path()
+      ..moveTo(w * .08, .56)
+      ..lineTo(w * .52, .5)
+      ..lineTo(w * .96, .56)
+      ..lineTo(w * .56, .64)
+      ..close();
+    _forma(assento, palha);
+    _c.save();
+    _c.clipPath(assento);
+    for (var i = 0; i < 8; i++) {
+      final x = w * (.1 + i * .12);
+      _c.drawLine(Offset(x, .48), Offset(x + w * .08, .66), _tinta(const Color(0x40A0683F))..strokeWidth = .01);
+    }
+    _c.restore();
+    _forma(
+        Path()
+          ..moveTo(w * .08, .56)
+          ..lineTo(w * .56, .64)
+          ..lineTo(w * .96, .56)
+          ..lineTo(w * .96, .6)
+          ..lineTo(w * .56, .69)
+          ..lineTo(w * .08, .6)
+          ..close(),
+        madeira);
+    // pés da frente e a travessa
+    _forma(_rr(w * .08, .58, w * .16, .99, .02), madeira);
+    _forma(_rr(w * .52, .65, w * .6, .99, .02), madeira);
+    _forma(_rr(w * .9, .58, w * .97, .95, .02), madeira);
+    _forma(_rr(w * .14, .84, w * .55, .87, .01), escura);
+  }
+
+  /// Cartão de crédito: azul com o degradê, o chip dourado, o número em pontinhos e o logo de dois círculos.
+  void _cartao(double w) {
+    final cartao = _rr(w * .02, .04, w * .98, .96, .08);
+    _forma(cartao, const Color(0xFF2F4B9A));
+    _c.save();
+    _c.clipPath(cartao);
+    _c.drawPath(
+        Path()
+          ..moveTo(w * .55, 0)
+          ..lineTo(w, 0)
+          ..lineTo(w, 1)
+          ..lineTo(w * .3, 1)
+          ..close(),
+        _tinta(const Color(0xFF4A6CD0)));
+    _c.restore();
+    _c.drawPath(cartao, _traco);
+    _forma(_rr(w * .12, .3, w * .3, .55, .04), const Color(0xFFFFC83D));
+    _linha(Offset(w * .12, .425), Offset(w * .3, .425), const Color(0xFFB8860B), .015);
+    _linha(Offset(w * .21, .3), Offset(w * .21, .55), const Color(0xFFB8860B), .015);
+    for (var g = 0; g < 4; g++) {
+      for (var i = 0; i < 4; i++) {
+        _c.drawCircle(Offset(w * (.12 + g * .2 + i * .035), .72), .022, _tinta(Colors.white.withValues(alpha: .9)));
+      }
+    }
+    _c.drawCircle(Offset(w * .78, .3), .11, _tinta(const Color(0xFFE53935)));
+    _c.drawCircle(Offset(w * .86, .3), .11, _tinta(const Color(0xCCFFB300)));
+  }
+
+  /// Carteira de couro marrom (dobrada), com a costura, a aba e um cartão e uma nota aparecendo.
+  void _carteira(double w) {
+    // a nota verde e o cartão saindo de dentro
+    _forma(_rr(w * .52, .04, w * .9, .4, .02), const Color(0xFF8BC34A));
+    _c.drawCircle(Offset(w * .71, .2), .07, _tinta(const Color(0xFF689F38)));
+    _forma(_rr(w * .14, .1, w * .5, .38, .03), const Color(0xFF3E8AE0));
+    _forma(_rr(w * .2, .16, w * .3, .24, .01), const Color(0xFFFFC83D));
+    // o corpo
+    final corpo = _rr(w * .03, .26, w * .97, .97, .08);
+    _forma(corpo, const Color(0xFF8A5A3A));
+    _c.save();
+    _c.clipPath(corpo);
+    _c.drawRect(Rect.fromLTRB(w * .78, 0, w, 1), _tinta(const Color(0x22000000)));
+    _c.restore();
+    _c.drawPath(corpo, _traco);
+    final costura = Paint()
+      ..color = const Color(0xFFE6C98A)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = .018;
+    for (var x = w * .1; x < w * .9; x += w * .06) {
+      _c.drawLine(Offset(x, .34), Offset(x + w * .03, .34), costura);
+      _c.drawLine(Offset(x, .89), Offset(x + w * .03, .89), costura);
+    }
+    // a aba com o botão de pressão
+    _forma(_rr(w * .6, .45, w * .99, .72, .06), const Color(0xFF6B4329));
+    _forma(_circ(w * .86, .585, .045), const Color(0xFFC9CED6));
+  }
+
+  /// Mochila vermelha: as alças por cima, o bolso da frente com o zíper e o chaveirinho.
+  void _mochila(double w) {
+    const cor = Color(0xFFD9473F), escura = Color(0xFFB0352E);
+    final alca = Paint()
+      ..color = _contorno
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = .07
+      ..strokeCap = StrokeCap.round;
+    _c.drawPath(
+        Path()
+          ..moveTo(w * .36, .16)
+          ..quadraticBezierTo(w * .5, -.02, w * .64, .16),
+        alca);
+    _c.drawPath(
+        Path()
+          ..moveTo(w * .36, .16)
+          ..quadraticBezierTo(w * .5, -.02, w * .64, .16),
+        Paint()
+          ..color = const Color(0xFF3A3F4B)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = .045
+          ..strokeCap = StrokeCap.round);
+    final corpo = _rr(w * .1, .12, w * .9, .98, .14);
+    _forma(corpo, cor);
+    _c.save();
+    _c.clipPath(corpo);
+    _c.drawRect(Rect.fromLTRB(w * .72, 0, w, 1), _tinta(const Color(0x22000000)));
+    _c.restore();
+    _c.drawPath(corpo, _traco);
+    // a tampa de cima com o zíper
+    _c.drawPath(
+        Path()
+          ..moveTo(w * .14, .34)
+          ..quadraticBezierTo(w * .5, .4, w * .86, .34),
+        _traco);
+    _forma(_rr(w * .7, .33, w * .76, .42, .01), const Color(0xFFC9CED6));
+    // o bolso da frente
+    final bolso = _rr(w * .22, .55, w * .78, .9, .07);
+    _forma(bolso, escura);
+    _linha(Offset(w * .28, .62), Offset(w * .72, .62), const Color(0xFF3A2A33), .02);
+    _forma(_rr(w * .62, .6, w * .67, .68, .01), const Color(0xFFC9CED6));
+    // o chaveirinho (uma estrelinha amarela) pendurado no zíper
+    _c.drawLine(Offset(w * .645, .68), Offset(w * .645, .75), _traco);
+    _forma(_estrela(Offset(w * .645, .8), .055, .025), const Color(0xFFFFD166));
   }
 
   void _radio(double w) {

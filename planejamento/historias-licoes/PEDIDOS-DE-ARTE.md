@@ -1,0 +1,381 @@
+# Pedidos de arte das histórias do 📺 (juntados dos lotes de 22/out/2026)
+
+Cada linha: lição, o que faltou, o que foi usado no lugar. Viram cenários/props novos em fundo_historia.dart / props_historia.dart (plano §12.2); depois, trocar o substituto na história.
+
+**Atendidos (2ª leva de arte, 22/out/2026):** agrupados por contagem (lições que pedem cada coisa, aprox.): telão / tela grande / tela compartilhada / gráfico ≈ 30 → prop `telao`; copa do escritório / máquina de café ≈ 14 → cenário `copa`; recepção do hotel / saguão ≈ 13 → cenário `recepcaoHotel`; quadro branco / post-its / kanban ≈ 13 → prop `quadroBranco`; sofá + TV da sala ≈ 12 → cenário `salaDeEstar`; caixa de papelão / mudança ≈ 12 → prop `caixa`; bolo / torta ≈ 11 → prop `bolo`; caderno / bloquinho ≈ 10 → prop `caderno`; casaco / jaqueta ≈ 9 → prop `casaco`; taça / copo do brinde ≈ 8 → prop `taca`. Os substitutos foram trocados nas histórias (100 trocas em 58 trilhas; só cenário/prop/segura/alvo do objeto). Ficaram de fora (contagem menor): carro por dentro / táxi / ônibus, foto / porta-retrato, cartão / crachá, cadeira, cozinha / geladeira, bar, quintal com churrasqueira, avião, museu, estação, relógio, mochila, gato. Na `videochamada` o notebook-como-quadro continuou (o quadro virtual da chamada fica para outra leva).
+
+**Atendidos (3ª leva de arte, 22/out/2026):** a contagem do que sobrou (lições que pedem, aprox.): carro por dentro / táxi / carona ≈ 11 (+ ônibus/ponto de ônibus ≈ 7) → cenário `dentroDoCarro` ✅; cozinha / geladeira / pia ≈ 10 → cenário `cozinha` ✅; foto / porta-retrato / álbum ≈ 8 → prop `portaRetrato` ✅; cartão (crédito, quarto, seguro, embarque) ≈ 8 → prop `cartao` ✅; cadeira ≈ 7 → prop `cadeira` ✅; bar / happy hour ≈ 5 → cenário `bar` ✅; crachá ≈ 5 → prop `cracha` ✅; quintal com churrasqueira / churrasco ≈ 4 → cenário `quintal` ✅ (exterior); carteira ≈ 4 → prop `carteira` ✅; mochila ≈ 4 → prop `mochila` ✅. Trocados nas histórias: 47 trocas em 30 trilhas (só cenário/prop/segura/alvo). Ficaram de fora (próxima leva): ônibus por dentro / ponto de ônibus ≈ 7, estação de trem/metrô ≈ 4, relógio ≈ 4, gato ≈ 4, avião ≈ 3, museu ≈ 2, cardápio ≈ 3, pizza ≈ 4, calendário ≈ 3; e os pedidos sem prop no lugar (onde a história só aponta "fora de cena": cadeiras de `coisas-e-descricoes`, carteira de `contar-historia.primeiro-depois-por-fim` e `present-perfect-just-yet`, mochila de `perguntas-com-do`, crachá de `falsos-cognatos-trabalho`), que pedem um objeto novo na cena e não só a troca.
+
+## historia_licoes
+# Pedidos de arte: numeros-horas-soletrar (lote piloto)
+
+- `treze-a-dezenove-o-teen`: faltou um prop de produto pequeno (`cabo`/`adaptador`). Usei: o atendente `aponta` para a prateleira e a capinha virou `celular` na mão do aluno.
+- `vinte-a-noventa-e-nove-o-hifen`: faltaram os props `teclado`, `fone` e `dinheiro`/`cartao`. Usei: o `notebook` em `direita` como monitor (na cena 1) e como tela do caixa (na cena 2). "Here's fifty, twenty, and ten." ficou como `aponta` para o atendente, e o troco foi junto com a `sacola` (`mostra`).
+- `cem-mil-e-os-precos`: o `notebook` faz o papel de monitor e de notebook (sem prop `monitor`).
+
+## lote_a1_1
+- perguntas-com-be.cena-um-colega-novo: faltou cenário "copa do escritório" (com cafeteira que apita); usei `escritorio` (dia), com o `cafe` (caneca) na mão do voce e do dev-novo.
+- perguntas-com-be.quantos-anos-voce-tem: faltou prop "crachá de visitante"; usei `documento` (a recepcionista entrega no mudo). Faltou também "recepção do escritório" (balcão); usei `escritorio`.
+- perguntas-com-be.estou-com-fome-be-adjetivo: faltou prop "casaco" (a Ana já pegou o casaco); usei `cachecol`.
+- perguntas-com-be.onde-fica-quem-e: faltou "portas numeradas" no corredor do `escritorio` (sala vinte e cinco); a recepcionista só aponta para fora de cena.
+- eu-e-voce-be.brasileiro-americano (cena 1): faltou cenário `aviao` (cabine com poltronas, janela) → usei `aeroporto`, com o `notebook` no centro como mesinha da poltrona.
+- eu-e-voce-be.voce-e-sou-sim (cena 2): faltou cenário `aviao` (a passageira da janela) → usei `aeroporto`.
+- eu-e-voce-be.cena-conversa-no-aviao: faltou cenário `aviao` (poltrona do meio × janela, notebook aberto na mesinha) → usei `aeroporto` com `notebook` no centro.
+- eu-e-voce-be.sou-desenvolvedor-a-an: faltou prop `mesaDigitalizadora` (a mesa de desenho da Ana na webcam) → usei `documento` na mão dela.
+- eu-e-voce-be.sou-desenvolvedor-a-an: faltou prop/fundo `quadroBranco` (o quadro branco atrás do Mike na webcam) → sem substituto; o Mike segura o `cafe`.
+- familia-e-posse.dele-e-dela-his-e-her: faltou prop "foto" (porta-retrato / foto impressa da família) que o Mike e a Sarah seguram; usei `carta` no lugar.
+- familia-e-posse.nosso-e-deles-achados-no-escritorio: faltou prop "carteira" (a carteira esquecida do Mike); usei `carta` no lugar.
+- ele-ela-nos-eles.esta-tarde-esta-frio-o-it: faltou cenário `recepcaoHotel` (balcão da recepção do hotel, à noite); usei `hotel` (quarto) com a recepcionista entregando a `chave`.
+- ele-ela-nos-eles.esta-tarde-esta-frio-o-it: faltou um táxi parado na saída do aeroporto (cenário/prop de fundo, sem corrida); usei `cidade` à noite com vento e a `mala` passando para o motorista.
+- ele-ela-nos-eles.nos-e-eles-nao-e-nao-esta: faltou a copa do escritório (máquina de café) e a sala de reunião de vidro ao fundo; usei `escritorio` nas duas cenas.
+- ele-ela-nos-eles.cena-apresentando-o-time: faltou a sala de reunião com o notebook na mesa mostrando o Ben e a janela com neve; usei `videochamada` com `clima: ["neve"]`.
+- instrucoes-e-lets.entra-e-senta: faltou prop "caderno" (o caderno de anotações que o Mike empresta); usei `livro`.
+- instrucoes-e-lets.entra-e-senta: faltou "tela grande / TV da sala de reunião" (a chamada que ainda não começou); usei o `notebook` em `direita` como alvo.
+- instrucoes-e-lets.segue-em-frente-vira-a-esquerda (cena 1): faltou cenário/prop "táxi" (sem carro do Turismo); usei `cidade` com o `motorista` como figurante mudo de pé ao lado do voce.
+- instrucoes-e-lets.segue-em-frente-vira-a-esquerda (cena 2): faltou "saguão/recepção do escritório" com balcão e "elevador" à esquerda; usei `escritorio` com `documento` em `direita` como balcão, e o voce anda para `esquerda` no rabo.
+- instrucoes-e-lets.nao-se-preocupa-vamos: faltou prop "crachá" (o crachá em cima da mesa, à direita do voce); usei `documento`.
+- instrucoes-e-lets.cena-indo-para-a-reuniao: faltou "elevador/corredor com porta da sala de reunião"; usei `escritorio` (o voce e a Ana andam para a direita e o Mike entra pela `direita`).
+- coisas-e-descricoes.um-teclado-uma-ideia-a-an: prop novo `caderno` (caderno aberto ao lado do laptop) — usei `livro` (aparece à direita e o voce aponta para ele).
+- coisas-e-descricoes.plurais-caixas-pessoas: prop novo `caixa` (caixas de mudança) — usei `mala` na mão da Julia.
+- coisas-e-descricoes.plurais-caixas-pessoas: figurante mudo novo `criancas` (as crianças correndo na mudança) — ficaram fora do palco ("estão no carro"); entrou só a `vizinha` como "as pessoas com o Lucas".
+- coisas-e-descricoes.este-estes-carro-vermelho: cenário `recepcaoHotel` (passar na recepção) — usei `hotel` (quarto) com a `recepcionista` entrando no quarto com o caderno e os livros.
+- coisas-e-descricoes.este-estes-carro-vermelho: prop novo `carteira` (a carteira preta) — sem prop: o voce `pensa` com `interrogacao`.
+- coisas-e-descricoes.este-estes-carro-vermelho: carro azul do Mike sem prop permitido (`carro` é do Turismo) — 2ª cena na `cidade` só com o voce e o Mike na calçada, e o Mike aponta para o carro fora de cena.
+- coisas-e-descricoes.aquele-aqueles-muito: prop novo `cadeira` (as duas cadeiras novas) — o voce aponta para elas sem alvo e depois `senta`.
+- coisas-e-descricoes.cena-descrevendo-o-apartamento: prop novo `cadeira` (as cadeiras pretas da Emma) — o voce aponta sem alvo.
+- coisas-e-descricoes.cena-descrevendo-o-apartamento: prop novo `caixa` (as caixas no canto) — usei `mala` à direita como alvo de "those are my things".
+- situacao-hotel.na-imigracao-o-passaporte: faltou cenário "guichê da imigração" (cabine com tela e fila) → usei `aeroporto` (dia), com o `oficial` em pé no lugar do guichê.
+- situacao-hotel.na-imigracao-o-passaporte: faltou figurante "oficial da alfândega" (a cena tem dois oficiais) → o mesmo `oficial` faz também as perguntas da bagagem (aponta para a `mala`).
+- situacao-hotel.check-in-tenho-uma-reserva: faltou cenário `recepcaoHotel` (balcão com computador e sino) → usei `hotel` (noite), com o `notebook` em `direita` como o computador do balcão.
+- situacao-hotel.o-quarto-o-cafe-e-o-wi-fi (cena 1): faltou cenário `recepcaoHotel` e prop "placa do café da manhã" (horário atrás do balcão) → usei `hotel` (noite) e um `documento` em `direita` como a placa.
+- situacao-hotel.o-quarto-o-cafe-e-o-wi-fi (cena 2): faltou cenário "salão do café da manhã do hotel" → usei `hotel` (amanhecer), com o `cafe` na mão do voce.
+- situacao-hotel.probleminhas-no-quarto (cena 1): faltou cenário `recepcaoHotel` (saguão vazio à noite) → usei `hotel` (noite); faltou também o "chinelo" do voce (sem substituto).
+- situacao-hotel.probleminhas-no-quarto (cena 2): faltou prop "telefone do quarto" → usei `celular` com a recepcionista `remoto`; faltou prop "toalha" → sem substituto (só o gesto).
+- perguntas-com-do.voce-fala-ingles-do-you: faltou decoração de festa no escritório (balões, mesa de salgadinhos) → usei `escritorio` (tarde) com `prato` no centro como a mesa de salgadinhos, e confete no rabo.
+- perguntas-com-do.onde-voce-mora-com-o-que-trabalha: faltou prop/cenário "máquina de café" (a fila do intervalo) → usei uma caneca `cafe` como objeto em `direita`, que o dev-novo pega num mudo.
+- perguntas-com-do.voce-gosta-adoro-o-objeto: faltou "telão da sala de reunião" (e o controle na mão da Ana) e a sala meio escura → usei o `notebook` no `centro` como telão; a Ana aponta para ele de mãos vazias.
+- perguntas-com-do.cena-conhecendo-um-colega: faltou "café do escritório com janelas de pôr do sol" e prop "mochila" do colega → usei `escritorio` (tarde), sem mochila; os livros do voce são um `livro` em `esquerda`.
+- terceira-pessoa.ela-trabalha-de-casa-o-s: faltou "tela compartilhada com as fotos do time" na videochamada; usei o `celular` na mão do voce (`mostra` a cada colega).
+- terceira-pessoa.nao-funciona-doesn-t: faltou prop "impressora" (piscando); usei `documento` em `esquerda` como alvo.
+- terceira-pessoa.nao-funciona-doesn-t: faltou prop "máquina de café" (desligada); usei uma caneca `cafe` em `centro` como alvo.
+- terceira-pessoa.cena-o-time-e-a-familia: faltou figurante/prop "gato dormindo na cadeira" (cozinha da Emma); sem substituto.
+- terceira-pessoa.cena-o-time-e-a-familia: faltou prop "bule de chá" na mesa; usei `garrafa` em `centro` (e a caneca `cafe` como a xícara de chá que a Emma entrega).
+- terceira-pessoa.cena-o-time-e-a-familia: faltou cenário "cozinha da vizinha" (Chicago, fim de tarde); usei `casa` (tarde).
+- presente-simples.trabalho-de-casa-moro-em-curitiba: faltou cenário "copa do escritório" (balcão onde o Mike encosta) → usei `escritorio` (dia), com o `cafe` na mão do voce e do Mike.
+- presente-simples.gosto-de-cafe-amo-pizza: faltou cenário "salão de café da manhã do hotel" → usei `restaurante` (amanhecer), com o `garcom` mudo e o `prato` na mesa.
+- presente-simples.gosto-de-cafe-amo-pizza: faltou prop "bule/jarra de café" (o garçom serve e completa a xícara) → usei `garrafa` na mão do garcom.
+- presente-simples.quero-aprender-want-to-need-to: faltou cenário "copa do escritório com janela para os prédios de Chicago" → usei `escritorio` (dia, passando para tarde na última frase), com `notebook` na mesa.
+- presente-simples.nao-como-carne-don-t: faltou prop "cardápio" (a Ana olha o cardápio) → usei `livro` na mão da Ana.
+- presente-simples.nao-como-carne-don-t: faltou prop "bloquinho de pedidos" do garçom → usei `documento` (ele `escreve` nas reações).
+- presente-simples.cena-meu-dia-de-trabalho-remoto: faltou prop "lata de refrigerante" (na mesa do Ben) → usei `garrafa` na mão do Ben.
+- conjugar-s-es-ies.regra-geral-mais-s: faltou prop "fotos do time na tela" (o voce aponta cada rosto na chamada com o Ben); sem substituto, o voce só aponta e depois mostra o `celular`.
+- conjugar-s-es-ies.es-depois-de-s-sh-ch-x: faltou cenário "copa do escritório" com porta de vidro (os colegas passando); usei `escritorio` (dia) com `prato` no centro, e o Mike entra pela direita no fim.
+- conjugar-s-es-ies.goes-does-e-has: faltou prop/fundo "quadro com a agenda da semana" na sala de reunião; usei `documento` na mão da Sarah (ela mostra e escreve nele).
+- conjugar-s-es-ies.vogal-y-so-s: faltou cenário "quintal com churrasqueira" (churrasco de domingo na casa da Emma); usei `casa` (dia), com a Emma servindo o `prato`.
+- conjugar-s-es-ies.treino-do-y-ies-ou-s: faltou cenário "estrada / van do time" (sem carro de corrida, que é proibido); usei `cidade` (dia) como uma parada na estrada, com o Mike segurando a `sacola` dos lanches e o `dev-novo` mudo no lugar do Ben (que não é do time).
+- rotina-dias-horarios.segunda-a-sexta-on-monday: faltou "tela grande com o calendário da semana" (onde o Mike aponta os dias); usei `notebook` no `centro` como alvo.
+- rotina-dias-horarios.segunda-a-sexta-on-monday: faltou prop "caneta/marcador" (o Mike marca as reuniões em cores); usei `documento` na mão dele com `escreve`.
+- rotina-dias-horarios.janeiro-a-junho-in-may: faltou prop "bolo" (o bolo na mesa da Emma); usei `prato` no `centro`.
+- rotina-dias-horarios.janeiro-a-junho-in-may: faltou prop "calendário de parede" (onde a Emma aponta os meses); usei `documento` em `direita` como alvo.
+- rotina-dias-horarios.de-manha-e-hoje-de-manha: faltou prop "convite" (o convite que a Ana traz); usei `carta` na mão dela.
+- can-pedidos-habilidades.sei-nadar-can-e-can-t: faltou prop `violao` (o Mike toca no fim de semana; o marido da Sarah também) → sem violão: o Mike comemora e a Sarah mostra o `celular` (a foto do marido); `notas` na fala do Mike.
+- can-pedidos-habilidades.posso-pagar-com-cartao: faltou prop `cartao` (cartão de crédito) → usei `documento` (o cartão vai do voce para o atendente e volta).
+- can-pedidos-habilidades.posso-pagar-com-cartao (cena 2): faltou cenário `museu` (quadros enormes, silêncio, lojinha no fim) → usei `loja` (tarde), com o `seguranca` mudo autorizando a foto e o atendente no balcão da lojinha.
+- can-pedidos-habilidades.voce-pode-me-ajudar-hear-e-socorro: faltou a ambulância/pessoas na calçada a quem o voce grita → só o gesto (o voce aponta, `determinado`); a moradora reage.
+- can-pedidos-habilidades.da-pra-ver-see-e-could (cena 2): faltou "janela do quarto com vista para o lago" no `hotel` → o voce mostra a vista pelo `celular` para a Ana (remota), com `brilho`.
+
+## lote_a1_2
+- gostos-e-lazer.escutar-e-listen-to: faltou cenário de interior de carro (banco do passageiro, painel, trânsito lento); usei `cidade` (dia) com os dois em pé na rua.
+- gostos-e-lazer.escutar-e-listen-to: faltou o rádio/som do carro no painel; usei o prop `celular` como objeto em `centro` (toca a música e depois vibra).
+- gostos-e-lazer.assistir-e-watch: faltou prop TV/pipoca (série no sofá); usei o `voce` mostrando o `celular` na chamada.
+- gostos-e-lazer.cena-papo-sobre-o-fim-de-semana: faltou prop/figurante cachorro ("I enjoy walking my dog"); usei o Mike mostrando a foto no `celular` com efeito `coracoes`.
+- pronomes-objeto.cena-deixando-recado: faltou prop telefone de mesa tocando na mesa vazia do Mike; usei o `voce` atendendo pelo `celular` (efeito `notas` = toque) e o `notebook` em `esquerda` como a mesa do Mike.
+- quantidades-compras.quanto-how-much: faltou prop `carrinho` (carrinho de compras) e `pao`; usei o voce de mãos livres e a `garrafa` na prateleira (esquerda).
+- quantidades-compras.quantos-how-many: faltaram props de hortifrúti (`ovos`/caixa de ovos, `maca`, `tomate`) e `leite`; usei a `sacola` na mão do voce como cesta e a `garrafa` (esquerda) como o leite ao lado dos ovos.
+- quantidades-compras.muito-algum-no-mercado: faltou prop/cenário `geladeira` (cozinha da Emma); usei `casa` com a `garrafa` (direita) como o pouco leite que sobrou.
+- quantidades-compras.muito-algum-no-mercado: faltou cenário `lanchonete do mercado` (balcão dentro do mercado); usei `restaurante` com a `atendente` muda e o `prato` (arroz) entregue ao voce.
+- quantidades-compras.cena-a-lista-de-compras: faltou prop `pacote de arroz`; usei a `sacola` na mão do `vendedor` (mudo `mostra`).
+- quantidades-compras (trilha): faltou figurante mudo de multidão (`clientes` em grupo) para "mercado cheio"; usei 1 `cliente` que entra antes do "There are a lot of people here today."
+- presente-continuo.esta-chovendo-o-tempo: faltou prop `casaco` (vestir o casaco antes de sair); usei `cachecol`.
+- presente-continuo.esta-de-casaco-wear-e-take-off: faltou prop `casaco` (tirar o casaco na porta) e `sapatos`/tapete da porta; usei `cachecol` largado em `esquerda` e nada para os sapatos.
+- presente-continuo.cena-status-para-o-time: faltou prop `casaco` (o aluno empresta o casaco para a Ana); usei `cachecol`.
+- presente-continuo.o-que-voce-esta-fazendo: faltou cenário `cozinha` (fazendo o jantar, à noite); usei `casa` + prop `prato`.
+- there-is-lugares.tem-academia-no-hotel-there-s: faltou cenário `recepcaoHotel` (balcão do hotel com elevador e janela para a rua); usei `hotel` (quarto) com a `mala` no chão e a `recepcionista` falando.
+- there-is-lugares.em-cima-da-mesa-embaixo-do-sofa: faltaram props `sofa` e `tv` na sala da `casa` (as frases falam do sofá novo, da TV na frente dele, das chaves embaixo do sofá); usei `notebook` como a mesa de trabalho e as chaves entre `notebook` e `celular` no chão da cena.
+- there-is-lugares.cena-o-bairro-e-o-apartamento: faltou cenário de bairro residencial com `parque` e pizzaria de esquina; usei `cidade` (dia).
+- situacao-cafe-restaurante.mesa-para-dois-e-o-cardapio: faltou prop `cardapio` (menu do restaurante); usei `livro` (atendente entrega o cardápio, Mike "não consegue ler").
+- situacao-cafe-restaurante.a-conta-por-favor: faltou prop `cartao`/`maquininha` (pagar e pôr gorjeta no cartão) e a pastinha da conta; usei `documento` (a conta) nas duas cenas.
+- situacao-cafe-restaurante.no-cafe-eu-queria: faltou prop `muffin` (e um balcão de café no `restaurante`); usei `prato` aparecendo no balcão (centroDireita).
+- situacao-caminho-compras.como-chego-a-estacao: faltou o trem elevado / entrada de metrô na rua (cenário `cidade` com estação ao fundo); usei `cidade` (dia, vento) só com o `mapa` na mão do voce.
+- situacao-caminho-compras.na-loja-de-roupas: faltaram props `casaco`/`jaqueta`, `etiqueta de preço` e `cartão`, e o espelho/arara de roupas na `loja`; usei `cachecol` como casaco e jaqueta (um na mão, outro em `direita` como arara), `documento` como etiqueta de preço e, na mão do voce, como o cartão.
+- situacao-caminho-compras.na-farmacia-o-carregador: faltaram props `carregador`/`cabo`/`adaptador`, `pasta de dente`, `protetor solar`/`xampu` e o cenário farmácia com corredores numerados; usei `loja`, o `celular` (sem bateria) e o `notebook` na mão do voce, e a `garrafa` em `direita` como o protetor solar.
+- planos-going-to.cena-o-fim-de-semana-que-vem: faltaram props `bola` (o Ben com a bola na mão, como na foto) e `oculosEscuros` (a Ana já de óculos escuros); usei o Ben de mãos livres comemorando e a Ana `radiante`.
+- planos-going-to.planos-de-viagem: faltaram props `bicicleta` e chave de carro alugado (o prop `carro` é proibido); usei o `mapa` na mesa (o voce aponta e risca a rota) e o `voce` comemorando.
+- planos-going-to.vou-estudar-hoje-a-noite: faltou prop `tv`/sofá ("We're going to stay home and watch TV", do Mike); usei o Mike só concordando, feliz.
+- passado-perguntas-negativas.cena-segunda-feira-de-novo: faltou prop `bone` (o boné do time que o Mike usa na chamada depois do jogo); usei `cachecol` na mão do Mike (mostra no "Did you watch the game yesterday?").
+- passado-perguntas-negativas.nao-vi-sua-mensagem-didn-t: faltou uma mesa/criado-mudo no quarto do `hotel` para o celular vibrar em cima; usei o `celular` como objeto solto em `centro` (treme e some quando o voce pega).
+- passado-was-were.ontem-eu-estava-em-casa: faltou prop/objeto `telao` (TV da sala de reunião com a Sarah na chamada); usei a Sarah como remoto pelo `celular` na mão do Mike.
+- passado-was-were.como-foi-a-viagem: faltou prop `telao` (a Sarah acenando na tela do escritório); usei a Sarah como remoto pelo `celular` na mão do Mike.
+- passado-was-were.tinha-muita-gente-there-was: faltou prop `casaco` com neve (tirar o casaco ao chegar); usei `cachecol` na mão do voce.
+- comparar.mais-alto-mais-barato-er: faltou cenário `cozinha` (cozinha da Emma, com a neve na janela); usei `casa` (dia) com `clima: ["neve"]`.
+- comparar.mais-alto-mais-barato-er: faltou prop `foto no celular` (foto do Lucas e da Julia na tela); usei o `voce` com `acao: mostra` segurando o `celular`.
+- comparar.mais-caro-mais-confortavel / melhor-que-better / cena-escolhendo-um-notebook: faltou variante de cor do prop `notebook` (preto e azul lado a lado no balcão); usei dois `notebook` iguais em posições diferentes.
+- comparar.igual-ou-diferente-the-same: faltou prop `etiqueta de preço`; usei `documento` na mão do atendente (`mostra`).
+- passado-simples-afirmativo.trabalhei-ate-tarde-o-ed: faltou prop TV/tela de reunião na sala do escritório (Sarah e Ana "na tela"); usei o `notebook` no `centro` e as duas remotas pelo `celular` do Mike.
+- passado-simples-afirmativo.trabalhei-ate-tarde-o-ed: faltou prop carro/caixa de ferramentas ("Yesterday, I fixed my car"); usei o Mike mostrando a foto no `celular` com `brilho`.
+- passado-simples-afirmativo.fui-tive-cheguei-fiz: faltou janela com vista da praia do lago no quarto do `hotel`; usei o `mapa` (esquerda) como alvo do "there's a beach near my hotel".
+- passado-simples-afirmativo.vi-comprei-conheci-comi: faltaram props `camiseta`, `bola de basquete` e `cachorro-quente`; usei o `presente` (direita) como a camiseta do Lucas e o `celular` mostrando as fotos.
+- passado-simples-afirmativo.fiz-peguei-vim-disse: faltou ônibus/ponto de ônibus no cenário `cidade` ("desce do ônibus"); usei o voce entrando pela esquerda na `cidade` com `vento` (manhã fria).
+- passado-simples-afirmativo.cena-o-que-eu-fiz-no-domingo: faltou prop cadeira (o Mike puxa uma cadeira) e táxi ("Ben took a taxi"); usei a ação `senta` do Mike e o voce acenando (triste) como a despedida do Ben.
+- revisao-a1.minha-rotina-e-o-meu-ontem: faltou prop `mochila` (o aluno volta do escritório com a mochila nas costas); usei o `notebook` na mão do voce.
+
+## lote_a2_1
+- passado-continuo.que-dia-contando-um-imprevisto: faltou prop "guarda-chuva quebrado" (no canto, como na foto); usei `guardaChuva` comum em `esquerda`.
+- passado-continuo.enquanto-chovia-while-e-so: faltou efeito "molhado / pingando" para o aluno que chega da chuva; usei `suor` (+ `treme`).
+- passado-continuo.eu-estava-almocando-quando-voce-ligou: faltou prop "celular de tela trincada" (foto); usei `celular` comum.
+- contar-historia.primeiro-depois-por-fim: prop novo "carteira" (wallet perdida no táxi); usei só gesto/emoção (surpreso + exclamacao, comemora quando acham) e o `passaporte` na resposta "No, I didn't".
+- contar-historia.quando-eu-era-crianca-when-passado: prop novo "foto antiga / porta-retrato" (o Mike mostra uma foto antiga); usei `documento` com `mostra`.
+- contar-historia.como-eu-conheci-o-ben: prop novo "violão" (played guitar); usei `danca` + efeito `notas`.
+- tres-futuros.vai-chover-going-to-com-evidencia: faltou ônibus lotado / ponto de ônibus na `cidade`; usei os figurantes mudos `passageiro` e `passageira` entrando ao lado do Mike e do aluno.
+- tres-futuros.eu-abro-a-janela-ofertas: faltou prop `caixa` (caixas de mudança da Ana); usei a `sacola` como a "outra mala/caixa" e o `notebook` na esquerda como a mesa.
+- tres-futuros.eu-abro-a-janela-ofertas: faltaram `porta` e `janela` no `escritorio` (Mike fecha a porta, aluno abre a janela); usei só gestos (`pensa`, `aponta`) sem alvo.
+- quantificadores-incontaveis.so-um-pouquinho-a-little: faltou prop "açucareiro" (a Emma segura o açucareiro na foto); usei a `garrafa` (lida como garrafa térmica de café) na mão da Emma e só gesto (`aponta` para o aluno) na pergunta do açúcar.
+- quantificadores-incontaveis.nada-na-geladeira-nothing-nobody: faltou prop/objeto de cena "geladeira" (o Lucas abre e fecha a geladeira vazia); usei um `prato` vazio em `direita` como alvo do "The fridge is empty" e, na 2ª cena, as `sacola`s esvaziadas no mudo de guardar as compras.
+- present-perfect-experiencias.nunca-comi-sushi-eaten-tried-seen: faltou prop "cardápio" (a Sarah aponta o cardápio, como na foto); usei `documento` na mão da Sarah.
+- present-perfect-experiencias.ele-ja-foi-ao-brasil-has-participio: faltou prop "panela de feijoada fumegando" (foto); usei `prato` em `centro` na mesa.
+- present-perfect-experiencias.papo-de-almoco-o-que-voce-ja-fez: faltou cenário "bar / happy hour" (mesa de bar com música ao fundo); usei `restaurante` à `noite` com efeito `notas`.
+- present-perfect-just-yet.alguem-viu-resultado-agora: faltou cenário "corredor do prédio" com a porta do apartamento da Emma (foto); usei `casa` (amanhecer) com a Emma entrando por um mudo `entra`.
+- present-perfect-just-yet.alguem-viu-resultado-agora: faltou prop "carteira" (frase #3, My wallet!); sem prop no lugar, o aluno só `treme` + `suor` com a chave na mão.
+- present-perfect-just-yet.alguem-viu-resultado-agora: faltou prop "óculos" e "sofá" (frases #5–#7); usei `aponta` sem alvo para o sofá e a Emma com `livro` em "I can't read without my glasses".
+- obrigacao-conselho.tenho-que-trabalhar-have-to: faltou prop "geladeira com lista de tarefas presa" (foto); usei `documento` em `esquerda` e o aluno aponta para ele em "I still have to pay my rent".
+- obrigacao-conselho.nao-precisa-don-t-have-to: faltou figurante/prop "gato da Emma" (passa entre as pernas, na foto) e o "corredor do prédio / porta da vizinha"; usei `casa` (tarde) sem o gato.
+- obrigacao-conselho.e-proibido-can-t-e-not-allowed: faltou prop "carro comum estacionado" (não de corrida; `carro` é proibido) e cenário "estacionamento / fachada de prédio"; usei `cidade` com vento e o aluno segurando a `chave`.
+- obrigacao-conselho.e-proibido-can-t-e-not-allowed / regras-e-conselhos-no-escritorio: faltou prop "placa / aviso na parede" para as frases de narrador (🪧); usei `documento` em `direita` (o mesmo serve de folha de registro na recepção).
+- obrigacao-conselho.e-proibido-can-t-e-not-allowed: faltou cenário `recepcaoPredio` (balcão com crachás); usei `escritorio` com a recepcionista no lado direito.
+- obrigacao-conselho.voce-deveria-should: faltou "quarto escuro / cama" (o aluno manda o Lucas dormir); usei `casa` à noite com efeito `zzz` no aceno final.
+- verbo-to-ing.vim-para-te-ver-to-de-finalidade: faltou prop "pacote de café do Brasil" (o presente que o aluno leva ao Mike); usei `presente`.
+- verbo-to-ing.quero-aprender-verbo-to: faltou prop "caderno de metas" aberto no sofá (foto); usei `livro` como objeto ao lado do aluno.
+- verbo-to-ing.metas-habitos-e-motivos: faltou prop "caderno" (os dois cadernos de metas na mesa do café); usei `livro` na mão da Ana.
+- situacao-viagem.na-estacao-passagem-e-horario: faltou cenário "estação de trem" (bilheteria com vidro, painel de horários, plataforma); usei `cidade` (dia) nas 2 cenas e `documento` como passagem.
+- situacao-viagem.no-aeroporto-check-in-e-portao: faltou prop "cartão de embarque" e o "portão de embarque"; usei `documento` e uma 2ª cena `aeroporto`.
+- situacao-viagem.voo-atrasado-e-conexao: faltou prop "painel de voos com DELAYED" e o "trem do aeroporto"; usei `aeroporto` com chuva na janela e o `passageiro` mudo perguntando no trem.
+- situacao-viagem.perdi-a-conexao-miss: faltou cenário "estação/plataforma à noite" e prop "táxi"; usei `cidade` (noite) e o `motorista` mudo que entra no fim.
+- situacao-viagem.entra-passa-sai-movimento: faltou cenário "saguão com catraca e elevador" e "parque"; usei `escritorio` (a catraca vira o `treme` do aluno) e chuva na janela no fim; a cafeteria da esquina virou o prop `cafe` na `cidade`.
+- situacao-viagem.chegando-carona-hotel-e-check-out: faltou `recepcaoHotel` (o `hotel` é um quarto) e prop "cartão do quarto"; usei `hotel` com `cafe` no balcão e `chave` como cartão.
+- situacao-saude.na-farmacia-dor-de-cabeca-e-resfriado: faltou prop "caixa de remédio / frasco de xarope" (o "Try this" da farmacêutica) e um cenário "farmácia" com balcão e prateleiras; usei `loja` e a `garrafa` (na prateleira em `direita`, depois na mão dela e entregue ao aluno).
+- situacao-saude.na-consulta-os-conselhos-da-dra-lee: faltou prop "cartela de comprimidos" (foto); usei a `garrafa` (frasco de remédio) na mão da Dra. Lee, depois entregue ao aluno; a receita é o `documento`. Faltou também a "maca" (o aluno sentado nela): usei só `senta`.
+- situacao-saude.emergencia-e-seguro-viagem: faltou `recepcaoHotel` (saguão com balcão e escada; a Ana sentada no último degrau); usei `hotel` (quarto) com a `recepcionista` em `direita` e a Ana com `senta` em `esquerda`.
+- situacao-saude.emergencia-e-seguro-viagem: faltou prop "cartão do seguro" (insurance card); usei o `documento` na mão da `atendente`.
+
+## lote_a2_2
+- relativas-definidoras.a-mulher-que-mora-ao-lado-who: faltou cenário "salão de festas do prédio" (churrasco de sábado à tarde, grelha, vizinhos em grupinhos); usei `casa` à `tarde` com `prato` na mão da Emma.
+- relativas-definidoras.o-app-que-eu-uso-that-e-which: faltaram props `teclado` e `mouse` (o aluno mostra o setup da mesa); usei `notebook` como objeto e `aponta`/`mostra` no lugar.
+- relativas-definidoras.onde-a-gente-se-conheceu-compostos: faltou prop "foto" (foto antiga de um café no celular) e uma tela de login travada; usei `celular` (`mostra`) e `notebook` (`aponta`/`escreve`).
+- se-e-quando.se-chover-a-gente-fica-em-casa: prop "cestaPiquenique" (cesta de piquenique em cima da mesa) → usei `sacola`
+- se-e-quando.se-chover-a-gente-fica-em-casa: prop "jogoDeTabuleiro" (caixa de jogo de tabuleiro, o plano B da chuva) → usei `presente`
+- se-e-quando.se-precisar-me-avisa: prop "caixaDeMudanca" (caixas de mudança no apartamento novo da Ana) → usei `mala` (o voce carrega no mudo)
+- se-e-quando.quando-eu-chegar-when-as-soon-as: a foto é a Julia levando o voce de carro ao aeroporto (carro é proibido) → encenei a despedida na área de embarque do `aeroporto`, à noite
+- convites-pedidos.quer-vir-jantar-would-you-like-to: faltou cenário "quintal com churrasqueira" (o quintal da Emma); usei `casa` (dia e noite) com a Emma segurando `prato`.
+- convites-pedidos.por-que-a-gente-nao-sugestoes: faltou prop "TV/sofá" (para o filme e o jogo); usei `notebook` no `centro` como a tela que o Ben e o aluno apontam.
+- convites-pedidos.voce-poderia-pedidos-e-favores: faltou prop "vaso de planta/regador" (e a porta da Emma no corredor); usei `garrafa` no `centro` como o regador, `mala` no chão e a Emma entrando (`entra`) como quem abre a porta.
+- fazer-ficar-perder-ganhar.lavar-a-louca-do: prop "cestoDeRoupa" (o cesto de roupa suja do voce) → usei `sacola`; a pia com a louça empilhada → usei `prato` como objeto em `direita`
+- fazer-ficar-perder-ganhar.perdi-a-chave-lose: cenário "portaDoPredio" (o voce revirando os bolsos na porta do prédio) → usei `cidade` de dia
+- fazer-ficar-perder-ganhar.quanto-voce-ganha-earn: cenário "varanda" (café de sábado à tarde na varanda) → usei `casa` à `tarde`
+- dev-slack-commits.no-chat-pergunta-rapida-e-novidades: faltou cenário "chat do time" (thread com balões e os três pontinhos de "digitando"); usei `videochamada` com o Mike e a Sarah acendendo a moldura (`entra`) quando respondem, e o voce digitando no `notebook` na mão, dentro da moldura dele.
+- dev-slack-commits.commits-e-status-fix-add-i-ve-pushed: faltou prop "terminal/tela de commit" ao lado do chat; usei o `notebook` na mesa (`escreve`/`aponta`) e o `celular` na mão para o chat com o Mike e a Sarah.
+- dev-slack-commits.bug-report-esperado-x-real: faltou prop "celular do cliente com o app congelado" (tela travada na página de pagamento); usei o `celular` do aluno com `mostra`.
+- adverbios-phrasal-possessivos.com-cuidado-e-devagar-adverbios-ly: faltou cenário "interior de carro de passeio" (banco do motorista e do carona, volante, para-brisa com chuva; sem pista e sem carro do Turismo); usei `cidade` (dia, `chuva`) com o Lucas segurando a `chave` e o voce com o `mapa`, lado a lado.
+- adverbios-phrasal-possessivos.liga-a-luz-phrasal-verbs-da-casa: faltou "interruptor / luz apagada" num interior de dia; usei a troca de `hora` (`noite` = sala escura, `dia` = luz acesa) no escritorio.
+- adverbios-phrasal-possessivos.liga-a-luz-phrasal-verbs-da-casa: faltou prop "roteador" (piscando no canto) e "caixas e cabos pelo chão"; sem substituto (o voce só aponta); a cafeteira virou a caneca `cafe` em `esquerda` e o computador da Ana, o `notebook`.
+- adverbios-phrasal-possessivos.procurando-look-for-find-out: faltou prop "mochila" (o voce revira atrás das chaves); usei `sacola`. A cafeteira vazia virou a caneca `cafe` em `direita`.
+- adverbios-phrasal-possessivos.e-seu-mine-yours-hers: faltaram props "jaqueta na cadeira" (usei `cachecol`), "copo" da Ana (usei `garrafa`), "óculos de sol" da Sarah achados embaixo da mesa (usei `livro`), "mouse" e "cadeiras" (sem substituto, só `aponta`).
+- adverbios-phrasal-possessivos.me-sinto-bem-sem-self: faltaram props "caixas vazias" (usei `mala` em `esquerda`), "mesa/escrivaninha" (usei o `notebook` como alvo) e "curativo no dedo" (sem substituto: o voce `acena` mostrando a mão).
+- adverbios-phrasal-possessivos.arrumando-a-casa-depois-da-festa: faltaram props "caixa de som" (a música alta; usei o efeito `notas` no Lucas dançando), "copos espalhados" (usei `garrafa`), "jaqueta" (usei `cachecol`), "saco de lixo" e "sofá" (o celular da Julia fica em `direita` como se estivesse no sofá).
+- falsos-cognatos-ortografia.empurre-a-porta-push-attend-notice: faltaram a "porta pesada" do escritório de Chicago, a mesa que a Ana empurra e o pote de biscoitos; o voce começa em `esquerda` (na porta) e treme suando enquanto o Mike fala, depois anda para dentro (`anda` até `centroEsquerda`); usei `notebook` no `centro` como a mesa/telão da planilha (treme quando empurram) e `prato` em `direita` como o pote de biscoitos.
+- falsos-cognatos-ortografia.ortografia-que-engana-mm-ff-th: faltou prop/móvel "sofá" (o voce relendo mensagens no sofá); usei `casa` com o voce sentado (`senta`) segurando `celular`.
+- falsos-cognatos-ortografia.pais-parentes-e-outras-armadilhas: faltaram a fachada da "livraria com café" e a "biblioteca antiga com porta pesada" no centro da cidade; usei `cidade` com `cafe` em `esquerda` (o café da livraria) e `livro` em `esquerda` (a porta da biblioteca: a Sarah anda até ela e o livro treme quando ela empurra).
+- conhecer-levar-emprestar-dizer.como-voces-se-conheceram-meet: faltou cenário "bar/happy hour" (balcão, copos, música baixa) → usei `restaurante` à `noite`, com o `garcom` mudo trazendo um `prato` de petiscos.
+- conhecer-levar-emprestar-dizer.voce-conhece-a-ana-know: faltou "copa do escritório com cafeteira" → usei `escritorio` com todos de `cafe` na mão.
+- conhecer-levar-emprestar-dizer.quero-conhecer-o-japao-visit-e-trip: faltou "mapa-múndi na parede" atrás da Sarah na videochamada → usei o prop `mapa` como objeto em `direita` (alvo dos `aponta`).
+- conhecer-levar-emprestar-dizer.ja-vou-come-bring-e-lend: faltou prop "carregador" (cabo/carregador de celular) → usei `celular` (na mesa, emprestado para a Ana; o "carregador antigo" do voce para o Mike).
+- conhecer-levar-emprestar-dizer.posso-pegar-emprestado-borrow-e-say: faltou prop "escada" (a escada da Emma) → sem prop: o voce pede e a Emma concorda; registro o pedido.
+- conhecer-levar-emprestar-dizer.posso-pegar-emprestado-borrow-e-say: faltou prop "bicicleta" (a bike emprestada) → usei `chave` (a chave do cadeado), que a Emma entrega no fim; faltou "xícara de açúcar" → usei `cafe` (a caneca).
+- conhecer-levar-emprestar-dizer.emprestar-trazer-contar-tudo-junto: faltaram props "caixa de bolo" → usei `presente`; e "carregador" → a Julia `mostra` o `celular` com bateria baixa.
+- revisao-a2.as-ferias-o-que-a-gente-fez: faltou prop "lembrancinhas" (souvenirs da ilha que o voce mostra no fim) → usei `sacola` (compras na chuva) e `presente` no rabo
+- revisao-a2.ferias-o-melhor-e-as-primeiras-vezes: faltou prop "foto/álbum" (o pôr do sol atrás do farol) → usei `celular` (`mostra`) e um `mapa` na mesa para comparar Salvador, Curitiba e Recife
+- revisao-a2.no-dia-do-jantar-imprevistos-e-favores: faltou prop "bolo" (a sobremesa, e a faca para cortar) → usei `prato`
+- revisao-a2.no-dia-do-jantar-imprevistos-e-favores: faltou prop "flores" (buquê da Ana para a Emma) → usei `presente`
+- revisao-a2.no-dia-do-jantar-imprevistos-e-favores: a foto põe o voce no carro, no trânsito (carro é proibido) → a 1ª cena é a casa do voce à noite, saindo com a sobremesa, e o Ben chega com a Emma no celular; a 2ª cena é a casa da Emma
+
+## lote_b1_1
+- previsoes-futuro-continuo.olha-o-grafico-vamos-atrasar: faltou prop `grafico` (tela compartilhada com o gráfico da sprint); usei `documento` na mão do voce (e do Mike, para os números de vendas).
+- previsoes-futuro-continuo.planejando-a-entrega: faltou prop `calendario`/`passagem` (a Sarah com o calendário e a passagem para a viagem); usei `documento` na mão da Sarah e `mala` no canto.
+- previsoes-futuro-continuo.provavelmente-vai-atrasar: faltou cenário `copa` (copa/cozinha do escritório com balcão); usei `escritorio` com as canecas de `cafe`.
+- eu-costumava.eu-jogava-bola-todo-fim-de-semana: faltou cenário "quintal com árvore grande e churrasqueira" (e crianças correndo ao fundo) → usei `casa` (dia), o voce com `prato` e uma `garrafa` na mesa; o Ben aponta para a árvore sem alvo.
+- eu-costumava.a-gente-nao-tinha-internet: faltou prop "caixa de papelão (caixa de coisas antigas)" → usei `sacola` no chão, no `centro`.
+- eu-costumava.a-gente-nao-tinha-internet: faltou prop "videogame/jogo antigo" → sem prop; o voce aponta para a `sacola` (a caixa) na frase dos jogos.
+- eu-costumava.fotos-antigas: faltou prop "álbum de fotos" → usei `livro`.
+- tempos-narrativos.quando-cheguei-ja-tinha-saido: faltou o painel de voos / portão de embarque no `aeroporto` (a foto mostra o voo sumindo do painel); usei o `aeroporto` comum com a `atendente` apontando.
+- tempos-narrativos.quando-cheguei-ja-tinha-saido: faltou cenário de ponto de ônibus à noite (frase do último ônibus); usei o mesmo `aeroporto` à `noite`, com o `voce` andando para a saída.
+- tempos-narrativos.nunca-tinha-visto-neve: faltou cenário de parque com lago congelado (`lago` desenha água); usei `cidade` com `clima: ["neve"]`.
+- tempos-narrativos.quando-chegamos-estava-fechado: faltou prop de ingresso (o Ben chega com os ingressos do próximo show); usei `documento`.
+- segunda-condicional.se-eu-tivesse-mais-tempo: faltou cenário "parque com banco" (praça de outono); usei `lago` à tarde com clima `folhas` e os dois fazendo `senta`.
+- segunda-condicional.o-que-voce-faria-se: faltou prop "copo" (o Mike levanta o copo no brinde); usei `cafe` (caneca) na mão do Mike, com `mostra`.
+- segunda-condicional.planos-reais-e-sonhos: faltou cenário "varanda à noite" (com a rua e os carros lá embaixo) e prop "pizza"; usei `casa` à noite (a casa do Ben) e `prato` no centro.
+- ja-fui-x-fui.almoco-de-despedida: faltou prop copo/taça para o brinde do almoço de despedida; usei a caneca `cafe` do aluno (`mostra` no rabo).
+- ha-quanto-tempo.moro-aqui-ha-cinco-anos: faltou cenário "corredor de prédio" (portas de apartamento lado a lado); usei `casa` (dia), com a Emma "entrando" pela porta do lado.
+- ha-quanto-tempo.moro-aqui-ha-cinco-anos / ha-quanto-tempo.ha-quanto-tempo: faltou o gato da Emma (prop ou figurante animal, espiando na porta / dormindo no sofá); ficou de fora do palco (a Emma reage com `coracoes` quando fala dele).
+- ha-quanto-tempo.ha-quanto-tempo: faltou "mesa de jantar posta" (cenário ou prop); usei `casa` (noite), a Emma segurando `prato` e uma `garrafa` no centro.
+- ha-quanto-tempo.saiu-ha-vinte-minutos: faltou "interior do ônibus" / ponto de ônibus (prop ou cenário); usei `cidade` (tarde) com o `motorista` como figurante mudo ao lado do aluno.
+- ha-quanto-tempo.saiu-ha-vinte-minutos: faltou "fachada de cinema" (cena 2, o Ben esperando na porta); usei `cidade` (tarde).
+- situacao-entrevista.e-se-acontecesse: faltou fundo de `quadro branco` atrás do tech lead na moldura da videochamada (e o moletom dele); usei a `videochamada` padrão com o `entrevistador`.
+- situacao-entrevista.sua-vez-de-perguntar-remoto-do-brasil: faltou prop `relogio` (o tech lead olha o relógio); usei um gesto `pensa`; a lista de perguntas do voce virou `documento`.
+- discurso-indireto.ela-me-perguntou-onde-eu-morava: faltou figurino "camisa social" do voce (ele acabou de sair da entrevista por vídeo); ficou o visual fixo, com o `notebook` da entrevista na mesa e o voce `nervoso` + `suor` na abertura.
+- passiva-1.fala-se-ingles-aqui: faltou cenário "feira de produtores ao ar livre (barracas de madeira)" → usei `loja` (dia).
+- passiva-1.fala-se-ingles-aqui: faltou prop "brinquedo de madeira" → usei `presente` na mão da Emma.
+- passiva-1.fala-se-ingles-aqui: faltou prop "garfo (de milho)" → usei `prato` na mão da Emma.
+- passiva-1.foi-construida-em-1920: faltou prop "plaquinha do guia (placa do grupo)" → usei `mapa` na mão do guia.
+- passiva-1.escrita-por-quem: faltou cenário `museu` (salas com obras e placas) → usei `cidade` (dia), com `livro`, `documento` (a placa) e `carta` (o poema) expostos.
+- passiva-1.escrita-por-quem: faltou prop "lâmpada antiga" → sem prop; a Emma aponta com `efeito: brilho`.
+- modais-no-passado.voce-devia-ter-me-falado: faltou prop "caixa de pizza / fatia de pizza" (a segunda fatia); usei `prato` na mesa (centro), que o voce pega antes da fala da fatia.
+- modais-no-passado.podiamos-ter-pegado-um-taxi: faltou "ônibus / ponto de ônibus" (os dois descem do ônibus correndo); usei `cidade` (dia) sem veículo.
+- modais-no-passado.podiamos-ter-pegado-um-taxi: faltou cenário "auditório de meetup com palco e telão"; usei `escritorio` com o `microfone` no centroDireita e a `participante` como figurante mudo.
+- modais-no-passado.podem-ter-perdido-o-onibus: faltou prop "bolo de aniversário com velas"; usei `presente` no centro da sala.
+- modais-no-passado.podem-ter-perdido-o-onibus: faltou prop "convite" impresso; usei `carta` na mão do voce.
+- modais-no-passado.devia-podia-era-pra-o-contraste: faltou cenário "terraço do escritório (palco vazio, cadeiras molhadas)"; usei `escritorio` (dia) com o `microfone` sozinho na direita e um `guardaChuva` na esquerda.
+- modais-no-passado.depois-do-deploy: faltou prop `grafico` (a Sarah compartilha o gráfico de login com o buraco na sexta); usei `documento` na mão da Sarah.
+- deducao-perguntas-indiretas.deve-estar-nao-pode-ser: faltou cenário "porta/fachada da casa do Lucas" (luz da sala acesa, campainha); usei `cidade` (dia), com o Lucas "entrando" pela porta em `centroDireita`.
+- deducao-perguntas-indiretas.deve-estar-nao-pode-ser: faltou prop "recibo/nota fiscal" (o recibo do almoço); usei `documento`.
+- deducao-perguntas-indiretas.voce-poderia-me-dizer: faltou cenário `metro` (estação com máquina de bilhete e ponto de ônibus); usei `cidade` (dia) com a `atendente`; a máquina de bilhete ficou sem prop (o voce aponta para o lado da atendente).
+- deducao-perguntas-indiretas.com-quem-voce-esta-falando: faltou prop "cabo/carregador estranho" em cima da mesa; usei o `notebook` (a mesa) como alvo do "Is this yours?"; o bolo virou `prato`.
+
+## lote_b1_2
+- relativas-gerundio.meu-vizinho-que-e-medico: figurante novo: vizinho (um 2º convidado, com outro corpo). No currículo, o papel `convidado` é o marido advogado da Emma (#2–#3) e também o vizinho mexicano (#8). Usei o mesmo `convidado` nas 2 cenas (sala / mesa dos tacos), e a troca de cena sugere outra pessoa.
+- regencia-preposicoes.depende-do-cliente: faltou prop 'quadroBranco' (quadro branco com números atrás do Mike na videochamada, sala de vidro); usei só a 'mala' aparecendo na moldura dele
+- opinar-conduzir-conversa.na-minha-opiniao: faltou cenário `cinema` (saída da sala/corredor com luzes acesas); usei `cidade` à noite (a calçada na saída).
+- opinar-conduzir-conversa.na-minha-opiniao: faltou prop `pipoca`; o `voce` sai de mãos vazias e depois tira o `livro` do filme (a `garrafa` saiu na revisão: lia como bebida e sumia quando o livro aparecia).
+- opinar-conduzir-conversa.faz-sentido: faltou prop/objeto `quadroBranco`; usei `documento` em `esquerda` como o quadro (o `voce` escreve e aponta nele).
+- opinar-conduzir-conversa.discussao-sobre-a-serie: faltaram props `pipoca` (balde) e `tv`; usei `prato` como o balde que passa de mão em mão e deixei a TV fora de cena.
+- opinar-conduzir-conversa.desculpa-interromper: faltou objeto `maquinaDeCafe` no corredor do escritório; o `voce` só segura `cafe`.
+- terceira-condicional.se-eu-soubesse-teria-ligado: faltou prop "fotos da festa" (álbum/porta-retrato) e "bolo"; usei `celular` na mão do Mike (mostra as fotos) e `prato` na mão da Ana (a fatia de bolo).
+- terceira-condicional.nao-teriamos-perdido-o-voo: faltou prop "chocolate quente" e "cartões de embarque"; usei `cafe` (a caneca) e `documento` na mesa.
+- terceira-condicional.retrospectiva-do-projeto: faltou "parede de post-its" e "caneta"; usei `documento` como objeto no centro (a parede) e `documento` na mão do Mike (escreve nele).
+- situacao-aluguel-contas.no-banco-e-no-cartao: faltou cenário `banco` (agência com balcão de atendimento) → usei `loja` (cena 1, de dia); o mercado da cena 2 também é `loja` (tarde).
+- situacao-aluguel-contas.o-contrato-e-o-deposito: faltou cenário `imobiliaria` (mesa de atendimento com contrato) → usei `escritorio`.
+- situacao-aluguel-contas.internet-luz-e-o-tecnico: faltou um jeito de mostrar "acabou a luz" (casa escura + lanterna do celular) → usei um mudo que troca a `hora` de `tarde` para `noite` e o `voce` com `mostra` no `celular`.
+- ligar-ideias.tao-pesado-eu-tambem: faltou prop `caixa` (caixa de mudança) → usei `mala` e `sacola` como caixas espalhadas e na mão
+- ligar-ideias.tao-pesado-eu-tambem: faltou prop/objeto `sofa` (o sofá entalado na porta) → o `voce` carrega uma `mala` e treme com o peso
+- ligar-ideias.tao-pesado-eu-tambem: faltou cenário `apartamentoVazio` (apartamento vazio, chão de madeira, janela grande) → usei `casa`
+- ligar-ideias.voce-e-brasileiro-ne: faltou cenário `bar` com telões (playoffs) → usei `restaurante` à noite
+- ligar-ideias.voce-e-brasileiro-ne: faltou prop `tv`/telão → usei `notebook` no centro como a TV (alvo do "The game starts at eight")
+- ligar-ideias.depois-do-lancamento: faltou prop `copo` (brinde da Sarah) → usei `cafe` (a caneca) no brinde
+- revisao-b1.reclamacao-por-e-mail: faltou um estado "notebook apagado/quebrado" (tela preta, fumacinha leve); usei o `notebook` normal em `centroDireita` como o aparelho morto (alvo do "It got very hot") e o `voce` escreve o e-mail no `celular`.
+- revisao-b1.reclamacao-por-telefone: faltou prop `papel`/bloquinho de anotação; usei `documento` na mesa (`centro`), em que o `voce` anota o nome da supervisora (mudo `escreve` com alvo).
+- revisao-b1.voo-cancelado: faltou objeto `painelDeVoos` (painel vermelho "cancelado") e prop `voucher`; o cancelamento ficou só na emoção/`exclamacao` e o voucher é o `documento` que a atendente entrega.
+- revisao-b1.a-semana-caotica: faltou objeto `sofa` (o voce "se joga no sofá"); usei `senta` em `casa` à noite, com a `mala` e o `notebook` espalhados.
+- falsos-cognatos-trabalho.atualmente-pretendo: faltou cenário `eventoTech` (salão de evento de tecnologia com palco/estandes) → usei `escritorio`; o figurante mudo `participante` segura `microfone` à esquerda como o palestrante ao fundo.
+- falsos-cognatos-trabalho.atualmente-pretendo: faltou prop `cracha` (crachá do evento no peito do aluno) → deixei sem; e o cartão de visita da recrutadora no rabo virou `documento`.
+- falsos-cognatos-trabalho.curriculo-pauta-e-politica: faltou objeto `pilhaDePapeis` (pilha de currículos na mesa do RH) → usei `documento` em `direita`; faltou `telaProjetor` (pauta projetada na parede) → usei `notebook` no `centro` (todos apontam para ele).
+- phrasal-verbs-b1.cuidar-continuar-chamar: faltou prop `planta` (vasos na janela, o centro do pedido à Emma); o `voce` só `aponta` para fora de cena, sem alvo, e a `mala` aberta fica em `esquerda`.
+- phrasal-verbs-b1.cuidar-continuar-chamar: faltou prop `regador` (Emma promete regar as plantas); a Emma `mostra` a `chave` que acabou de receber.
+- phrasal-verbs-b1.acabou-que-era-o-cache: faltou prop `bolo` (a receita nova de domingo, fala fora do texto); usei `prato` na mão da Ana, que ela mostra na câmera.
+
+## lote_b2_1
+- deducao-no-passado.devo-ter-deixado-no-escritorio: prop `casaco` (o bolso furado da frase #1/#2) e móvel `mesinhaDeCabeceira`/`cestoDeRoupa` — usei só gestos (`pensa`/`aponta`) e a `mala` no chão como corredor.
+- deducao-no-passado.nao-pode-ter-sido-ele: prop `cadeira`/mesa vazia do Mike — usei `notebook` em `direita` como a mesa dele (o dev novo aponta para ela).
+- deducao-no-passado.nao-precisava-didn-t-have-to: prop `torta` (a sobremesa) — usei `presente`; o gato da Emma (foto) não existe — ficou de fora.
+- situacao-carro-estrada.alugando-o-carro: faltou cenário "balcão de locadora no aeroporto" (com chaves penduradas na parede); usei `aeroporto` + `chave` na mão do atendente.
+- situacao-carro-estrada.na-estrada-e-no-posto: faltou cenário "estrada/rodovia com posto de gasolina" e prop "carro de passeio" (não de corrida); usei `cidade` com os dois a pé e o `mapa` no lugar da placa da saída.
+- situacao-carro-estrada.estacionamento-e-multa: faltou cenário `recepcaoHotel` (o recepcionista no balcão); usei `hotel`.
+- situacao-carro-estrada.estacionamento-e-multa: faltou prop "placa de proibido estacionar" e "multa no para-brisa"; usei `documento` (some do chão e vai para a mão do aluno).
+- situacao-carro-estrada.o-carro-deu-problema: faltou cenário "acostamento da rodovia" e props "pneu furado"/"luz do motor no painel"; usei `cidade` com a `mala` ao lado e gestos de apontar.
+- wish-condicionais-mistas.queria-ter-estudado-mais: faltou prop "álbum de fotos" (e o sofá do Ben, em Boston); usei `livro` na mão do Ben e o cenário `casa`.
+- wish-condicionais-mistas.queria-que-ele-parasse: faltou som/prop de bateria, cachorro latindo e buzina; usei efeitos `notas`, `exclamacao` e `estalo` com reações de susto.
+- wish-condicionais-mistas.prefiro-ja-esta-na-hora: faltou prop "headset velho chiando" e "calendário na tela"; usei mudo do `voce` com `treme` + `estalo` (o chiado) e `documento` na mão da Ana como calendário.
+- wish-condicionais-mistas.cena-escolhas-de-carreira: faltou prop "caderno"; usei `documento` com `escreve` nos dois.
+- futuro-avancado.vai-fazer-dez-anos-que: faltou prop `bolo` (o bolo de aniversário virtual que alguém põe na tela da chamada); usei `presente` na mão da Sarah.
+- passiva-2.esta-sendo-consertado: faltou cenário "dentro do ônibus" / obras na rua (cones, britadeira); usei `cidade` com o `mapa` (o desvio da rota).
+- passiva-2.esta-sendo-consertado: faltou prop "placa de elevador em manutenção" (e lata de tinta); usei `documento` no centro como a placa.
+- passiva-2.esta-sendo-consertado: faltou figurante "pintor/operário de obra"; usei `engenheiro` (figurante mudo).
+- passiva-2.mandei-consertar: faltou cenário "oficina mecânica" (carro no elevador); usei `cidade` (a calçada da foto) com o `documento` como o recibo.
+- passiva-2.mandei-consertar: faltou figurante "mecânico"; ficou fora de cena (só citado nas falas).
+- tempos-narrativos-completos.os-quatro-tempos-numa-historia: faltou cenário "estrada" (rodovia escura à noite, com acostamento) para a foto do pneu furado; usei `casa` à noite com neve na janela (o aluno conta a viagem ao Ben, com o Lucas presente e o `mapa`).
+- tempos-narrativos-completos.os-quatro-tempos-numa-historia: faltou prop "estepe"/"lanterna" (o `pneu` é só do Turismo); usei o `celular` na mão do aluno (`mostra` as fotos) e a `chave` do carro com o Lucas.
+- tempos-narrativos-completos.tinha-feito-x-vinha-fazendo: faltou prop "balde/goteira pingando" e "caixa de papelão" (as caixas do porão); usei o efeito `notas` (o ping-ping) e gestos de `aponta`, sem objeto.
+- verbos-de-relato.ele-admitiu-ter-errado: faltou prop "caixa de papelão aberta" (com os celulares de teste errados, na foto); usei `celular` na mão do aluno, que ele mostra na chamada.
+- verbos-de-relato.ofereceu-recusou-prometeu: faltou prop "mesa" com o "contrato impresso cheio de anotações em vermelho"; usei `documento` no chão em `direita` (o aluno aponta e rabisca nele).
+- dev-planning-retro.quantos-pontos-isso-vale: faltou prop "cartas de planning poker" e "gráfico de velocidade da sprint" (tela compartilhada); usei `documento` na mão do Mike e da Sarah.
+- dev-planning-retro.entendo-seu-ponto-mas: faltou prop "slides/tela compartilhada" na videochamada; usei `notebook` na mão do Mike (ele mostra os slides do framework novo).
+- dev-planning-retro.o-que-foi-bem-nesta-sprint / cena-a-retro-do-sprint-ruim: faltou prop "quadro da retro com post-its coloridos" (colunas foi bem / mudar / agradecer); usei `documento` na mão do Mike (mostra e escreve os action items).
+- habitos-costume.ele-fica-me-interrompendo: faltou prop "pia de cozinha com louça suja" (a louça que o Lucas deixou); usei `prato` em `direita` (o aluno anda até ele e aponta).
+- relativas-3.os-arquivos-guardados-no-servidor: faltou prop "monitor grande com diagrama" (e a máquina de café ao fundo); usei `notebook` em `esquerda` como o monitor (o aluno aponta para ele).
+- relativas-3.o-time-com-quem-falamos: faltou prop "quadro branco com caixinhas e setas" na tela compartilhada; usei `notebook` na mão do aluno (`mostra`/`escreve`).
+- dev-code-review.voce-poderia-adicionar-um-teste: faltou prop "relatório de cobertura" (barra amarela na tela do PR); usei `documento` em `direita`, que o aluno olha e aponta.
+- dev-code-review.cena-uma-revisao-completa: faltou prop "relógio" (o relógio corre na véspera da release); usei `suor` no dev novo quando ele entra na chamada.
+
+## lote_b2_2
+- argumentar-conectores.por-um-lado-por-outro: faltou prop "quadroBranco" (quadro de prós e contras na sala de reunião) e "caneta"; usei `documento` na mão da Sarah (mostra/escreve) e o voce sem prop.
+- situacao-telefone-reclamacao.a-internet-caiu-de-novo: faltou prop `roteador` (piscando laranja, como na foto); usei o `notebook` (o voce olha/aponta para ele quando a tela congela).
+- situacao-telefone-reclamacao.esperando-na-linha: faltou prop `relogio` (o voce olha o relógio esperando na linha); usei o `documento` (o extrato com a taxa) e o efeito `zzz` para marcar a espera.
+- phrasal-verbs-b2.cena-planejar-a-migracao: faltou prop "quadro de projeto com cartões" (kanban); usei `documento` na mão da Sarah (lendo os riscos) e `notebook` na mão do Mike (distribuindo os nomes).
+- phrasal-verbs-b2.deu-certo-valeu-a-pena: faltou figurino "pijama" do `voce` (sábado de manhã); usei a roupa de sempre, em `casa`/`amanhecer`.
+- phrasal-verbs-b2.investigar-e-descartar: faltou prop "caderno" (riscar hipóteses); usei `documento` com `escreve`.
+- enfase-inversao-clivadas.nunca-vi-um-lugar-tao-bonito: faltou cenário "varanda de cabana com vista do cânion ao entardecer"; usei `casa` (tarde) com `mala` no chão e a Emma com `mapa`.
+- enfase-inversao-clivadas.mal-sentei-o-celular-tocou: faltou prop "roteador piscando vermelho"; usei o `notebook` (que treme quando começa a atualizar).
+- enfase-inversao-clivadas.cena-pedido-e-experiencia: faltou prop "fatia de bolo" (o bolo da comemoração do projeto); usei `prato`.
+- colocacoes-expressoes.transito-pesado-prazo-apertado: faltou cenário de interior de carro parado no trânsito (chuva no vidro, celular no suporte); usei `cidade` de amanhecer com `clima: ["chuva"]` e o voce em pé com o `celular` (2ª cena já em `casa`, quando ele chega e continua nas mensagens).
+- dev-incidentes.o-servidor-caiu: faltou prop "tela/monitor com gráfico de erros vermelho" (o alerta do incidente, como na foto); usei o `notebook` em cima da mesa (o voce aponta e olha para ele).
+- dev-incidentes.ainda-estamos-investigando: faltou prop `relogio` (o relógio no canto da tela marcando a meia hora do próximo status); usei um passo mudo do voce olhando o `notebook`.
+- resenhar-criticar.de-longe-o-melhor: faltou prop "estante de livros" (a estante atrás do voce na câmera, com o livro gasto cheio de marcadores); usei um `livro` solto em `esquerda` (o "outro livro" para o qual ele aponta) e o `livro` na mão do voce.
+- resenhar-criticar.cena-avaliar-a-ferramenta-nova: faltou prop "bloco de anotações" (prós de um lado, contras do outro); usei `documento` na mão do voce (mostra/escreve) e o `notebook` como a ferramenta.
+- escrita-formal.cena-a-reclamacao-completa: faltou prop `caixa` (a caixa de papelão do pedido atrasado que a Emma traz no fim); usei a `sacola`.
+- registro-variantes.digitar-americano-reconhecer-britanico: faltou prop `lixeira` (a lata de lixo que o vento derruba e onde vai o copo de café); usei o `cafe` na mão do Mike (mostra) e o efeito `estalo` no barulho lá fora.
+- registro-variantes.digitar-americano-reconhecer-britanico: faltou figurante "colega de Londres" (2 colegas britânicos); usei `colega` (o que chega atrasado) e `desenvolvedora`.
+- revisao-b2.negociar-prazo-e-escopo: faltou prop "quadro com post-its / colunas da sprint" (a foto mostra os dois diante de um quadro); usei `documento` na mão da Sarah e do voce (`escreve` = riscar cartões), na `videochamada`.
+- revisao-b2.lancamento-adiado-propor-e-objetar: faltou prop "tela compartilhada com a data do lançamento riscada em vermelho"; usei o `documento` na mão da Sarah (`mostra` no "slip by two weeks").
+
+## lote_c1_1
+- conceder-rebater.dito-isso / tudo-bem-mesmo-assim / pode-se-argumentar-que / cena-final-debate-com-a-diretoria: faltou prop `telao` (tela de projeção da sala de reunião); usei `notebook` como objeto no palco, alvo dos `aponta`.
+- modalidade-avancada.na-certa-vai-dar-problema: faltou prop "telão" (tela grande na parede com a lista de riscos, sala de guerra do lançamento); usei `notebook` em `centro` como alvo dos `aponta`.
+- inversoes-escrita-formal.contanto-que-caso-contrario: faltou prop `taca` (taça para o brinde à Sarah na festa do projeto); usei `cafe` (a caneca do aluno) no lugar.
+- inversoes-escrita-formal.cena-discurso-de-fim-de-ano-e-e-mail: faltou prop `taca` (a foto mostra o aluno de taça na mão no discurso); usei `microfone`.
+- inversoes-escrita-formal.cena-discurso-de-fim-de-ano-e-e-mail: faltou cenário `salaoDeFesta` (festa de fim de ano do time); usei `escritorio` à noite.
+- clivadas-fronting.foi-so-na-sexta-que: faltou prop "quadro branco" (linha do tempo com horários e setas) e "caneta"; usei `documento` na mão do Mike (escreve) e `notebook` em `direita` como o gráfico dos picos.
+- clivadas-fronting.por-mais-estranho-que-pareca / cena-final-pingos-nos-is: faltou prop "telão/projetor" (gráficos projetados na sala de reunião); usei `notebook` em `centro` como a tela.
+- passivas-impessoais.cena-final-relatorio-a-diretoria: faltou sala de reunião com telão/projetor de slides (o gráfico do trimestre na parede); usei `escritorio` com `notebook` no centro como a tela apontada.
+- hedging-registro.umas-trinta-pessoas: faltou prop "caixa de pizza" (e cadeiras da sala do meetup); usei `prato` no chão, que o `colega` (figurante mudo) recolhe num mudo.
+- hedging-registro.mesmo-recado-dois-registros: faltou prop "e-mail/envelope de envio"; usei `carta` ao lado do `notebook`, que `voa` no rabo (e-mail enviado).
+- precisao-lexical.palestra-romance-e-fantasia: faltou cenário "auditório/universidade" (a palestra em Boston); usei `cidade` de dia com `"clima": ["folhas"]` (a conversa na saída da universidade), o `voce` com o `livro` (o romance).
+- precisao-lexical.palestra-romance-e-fantasia: faltou prop/figurino "fantasia" (a fantasia sobrando do Ben e os convidados fantasiados); usei `sacola` que o Ben entrega ao `voce` num mudo, e `convidado`/`convidada` sem fantasia.
+- precisao-lexical.alegar-afirmar-enorme: faltou prop "telão/projetor" (slides projetados na parede da sala); usei `notebook` em `centro` como a tela apontada, o `voce` com o `documento` (o rascunho impresso).
+- phrasal-verbs-c1.o-que-provocou-isso: faltou prop "quadro branco" (as duas colunas de prioridades que se cruzam, na sala envidraçada da diretoria); usei `notebook` em `esquerda` como o quadro, alvo dos `aponta`.
+- phrasal-verbs-c1.cena-final-a-origem-e-a-escala: faltou prop "telão" (a linha do tempo da falha em vermelho e o gráfico de tráfego na sala do review); usei `notebook` em `esquerda` como a tela, alvo dos `aponta`.
+- nominalizacao-participiais.construido-em-2009 / cena-final-atualizacao-executiva: faltou prop `telao` (diagrama dos sistemas / destaques do trimestre no telão da sala de reunião); usei `notebook` em `centroEsquerda` como a tela, alvo dos `aponta`.
+- idioms-colocacoes-fortes.vamos-encerrar-por-hoje: faltou prop `mochila` (alguém já pegou a mochila no fim da sexta); usei `sacola` na mão da Ana no aceno final.
+- idioms-colocacoes-fortes.vitorias-faceis-e-numeros-por-alto: faltou prop "quadro branco com post-its" e "caneta"; usei `notebook` em `direita` como o quadro (alvo do `aponta` e do `escreve`) e `documento` na mão da Sarah.
+- idioms-colocacoes-fortes.voltamos-a-estaca-zero: faltou prop "telão" (gráfico vermelho do teste na sala de reunião); usei `notebook` em `direita` como a tela apontada.
+- idioms-colocacoes-fortes.cena-final-papo-de-corredor: faltou cenário/prop "copa com balcão e cafeteira"; usei `escritorio` com uma caneca `cafe` em `direita` que o Mike pega num mudo.
+- ingles-tecnico-academico.ate-que-ponto-ler-um-artigo: faltou "tela compartilhada" na videochamada (o PDF do artigo aberto no resumo, com a frase grifada em amarelo); usei `documento` na mão do aluno (mostra/escreve).
+- ingles-tecnico-academico.dar-origem-a-e-responder-por: faltou prop "gráfico de pizza" (a fatia dos atrasos de rede); usei `documento` na mão da Ana e do Mike (os trechos grifados).
+- ingles-tecnico-academico.levar-em-conta-e-a-luz-de: faltou prop "planilha" (custos por mês, tráfego de dezembro, margem em verde) na tela compartilhada; usei `documento` na mão do aluno e da Sarah.
+- situacao-vida-social.small-talk-o-jogo-e-o-fim-de-semana: faltou prop `tv` (TV no canto da copa com os melhores momentos do jogo) e cenário "copa do escritório"; usei `escritorio` com `notebook` em `esquerda` como a TV, alvo do `aponta` do Mike.
+- situacao-vida-social.thanksgiving-na-casa-da-emma: faltou prop `torta` (a torta que o aluno leva) e mesa posta de Thanksgiving; usei `prato` na mão do `voce` (entregue à Emma num mudo).
+- situacao-vida-social.o-ben-em-curitiba: faltou prop `geladeira` ("pode se servir de qualquer coisa na geladeira"); usei `garrafa` em `esquerda` como alvo do `aponta`.
+- situacao-vida-social.saindo-com-o-time-a-rodada-e-a-conta: faltou cenário `bar` (bar barulhento de Chicago) e props `copo` (a rodada) e `conta` (a notinha); usei `restaurante` à noite, `garrafa` posta na mesa pelo `garcom` e `documento` como a conta.
+- situacao-vida-social.conversa-que-nao-e-de-trabalho: faltou prop `vela` (luz baixa no jantar); usei só `prato` no `centro`, sem vela.
+
+## lote_c1_2
+- pro-design-sistemas (requisitos-e-estimativas, propor-a-arquitetura, dados-replicas-e-particoes, cena-a-sessao-de-system-design): faltou um prop "quadroVirtual" (quadro branco compartilhado na videochamada, com caixas e setas); usei `notebook` em `centro` como o quadro (alvo dos `aponta`) e `documento` na mão de quem desenha/anota.
+- revisao-c1.apresentacao-para-a-diretoria: faltou cenário "sala de reunião envidraçada" com tela de projeção para os slides; usei `escritorio` + `notebook` em `centroEsquerda` como a tela (o voce aponta para ele).
+- revisao-c1.checkpoint-c1-um-ano-de-tech-lead: faltou prop "taça" (o brinde e o tlim no copo da foto) e uma "mesa comprida" no `restaurante`; usei a caneca `cafe` do voce erguida num brinde (`mostra`) e dois `prato` sobre a mesa.
+- conversa-natural-c1.nem-ai-e-nao-e-a-toa: faltou prop "maquinaDeCafe" (a máquina quebrada da copa); usei o colega apontando (exclamacao) e o voce mostrando a caneca vazia.
+- conversa-natural-c1.cena-final-happy-hour-com-o-time: faltou cenário "terraco" (bar no terraço com luzinhas); usei restaurante à noite.
+- pro-negociar-prazo-escopo.alinhar-prioridades-e-expectativas: a cena tem dois stakeholders de vendas, mas só existe um corpo de `stakeholder` (ele fala); faltou um 2º figurante "stakeholder" com outro visual; usei a `vendedora` (muda) como a 2ª stakeholder de vendas.
+- pro-lideranca-feedback.delegar-e-mentorar: faltou o prop "quadroVirtual" (diagrama da migração da busca compartilhado na tela da videochamada); usei `notebook` em `centro` como a tela (alvo do `aponta`).
+- pro-apresentacoes-demos (abrir-e-mostrar-o-roteiro, transicoes-e-mensagem-principal, perguntas-dificeis-e-encerramento): faltou um cenário "auditorio" (palco de meetup com telão e plateia); usei `escritorio` à noite, o `voce` com `microfone`, um `notebook` em `esquerda` como o telão dos slides e `participante`/`convidada`/`convidado` como a plateia.
+- pro-clientes-email-formal.pedir-desculpas-e-escalar: faltou um prop "credito"/"cartao" (o crédito na conta como gesto de boa vontade, 💳🎁); usei `presente` aparecendo em `centro` (o voce aponta para ele na frase do crédito).
+- pro-clientes-email-formal.comunicar-atrasos: faltou um prop "calendario" (a data de entrega riscada em vermelho da foto); usei `documento` em `centro`, que o voce pega e mostra na frase da data revisada.
+- pro-carreira-networking (puxar-conversa-num-evento, trocar-contatos-e-manter-contato, cena-um-dia-de-conferencia): faltou cenário "salaoDeEventos" (salão de conferência com estandes, crachás e palco); usei `restaurante` (intervalo do café) e `escritorio` (saída do salão / segundo dia), com `microfone` no chão como o estande/palco.
+- pro-carreira-networking.apresentar-o-que-voce-faz: faltou uma "mesa comprida com bandejas" no `restaurante` (almoço do evento); usei um `prato` em `centro` entre o voce e a engenheira.
+- pro-dia-de-trabalho.meio-do-dia-design-e-code-review: faltou o prop "quadroVirtual" (o diagrama da fila de notificações compartilhado na tela da videochamada, com a aba dos PRs); usei `notebook` em `centro` como a tela (alvo dos `aponta`) e `documento` na mão do voce como o PR.
+- pro-dia-de-trabalho.tarde-incidente-cliente-e-prazo: faltou um prop "grafico" (o gráfico de logins que despenca em vermelho e volta a subir, compartilhado na videochamada); usei `notebook` em `centro` como a tela (alvo do `aponta` e do `escreve`).

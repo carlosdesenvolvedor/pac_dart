@@ -46,12 +46,12 @@
             { "quem": "mike", "pos": "centroDireita", "segura": "documento", "emocao": "neutro" },
             { "quem": "ana", "pos": "direita", "visivel": false }
           ],
-          "objetos": [ { "prop": "notebook", "pos": "centro" } ],
+          "objetos": [ { "prop": "telao", "pos": "centro" } ],
           "passos": [
-            { "frase": "f-1c8feb", "acao": "aponta", "alvo": "notebook", "emocao": "feliz", "camera": "geral" },
-            { "frase": "f-e98a7f", "acao": "aponta", "alvo": "notebook", "emocao": "cansado" },
+            { "frase": "f-1c8feb", "acao": "aponta", "alvo": "telao", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-e98a7f", "acao": "aponta", "alvo": "telao", "emocao": "cansado" },
             { "frase": "f-9e26eb", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
-            { "frase": "f-457781", "acao": "aponta", "alvo": "notebook", "emocao": "feliz",
+            { "frase": "f-457781", "acao": "aponta", "alvo": "telao", "emocao": "feliz",
               "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
             { "mudo": true, "quem": "mike", "acao": "escreve", "emocao": "feliz" },
             { "frase": "f-dc3f76", "acao": "nega", "emocao": "cansado", "efeito": "suor", "camera": "close",
@@ -140,9 +140,9 @@
             { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
             { "quem": "emma", "pos": "centroDireita", "emocao": "feliz" }
           ],
-          "objetos": [ { "prop": "prato", "pos": "centro" }, { "prop": "documento", "pos": "direita" } ],
+          "objetos": [ { "prop": "bolo", "pos": "centro" }, { "prop": "documento", "pos": "direita" } ],
           "passos": [
-            { "frase": "f-85cfbc", "acao": "aponta", "alvo": "prato", "emocao": "feliz", "camera": "geral",
+            { "frase": "f-85cfbc", "acao": "aponta", "alvo": "bolo", "emocao": "feliz", "camera": "geral",
               "reacoes": [ { "quem": "emma", "emocao": "feliz" } ] },
             { "frase": "f-bafc35", "acao": "aponta", "alvo": "documento", "emocao": "radiante" },
             { "frase": "f-cf4747", "acao": "aponta", "alvo": "voce", "emocao": "feliz",
@@ -158,8 +158,8 @@
             { "frase": "f-d342ef", "acao": "escreve", "alvo": "documento", "emocao": "feliz", "camera": "medio" },
             { "frase": "f-7b6099", "acao": "aponta", "alvo": "documento", "emocao": "feliz",
               "reacoes": [ { "quem": "emma", "acao": "concorda" } ] },
-            { "mudo": true, "quem": "emma", "segura": "prato", "acao": "mostra", "emocao": "radiante", "efeito": "brilho",
-              "objetos": [ { "prop": "prato", "acao": "some" } ],
+            { "mudo": true, "quem": "emma", "segura": "bolo", "acao": "mostra", "emocao": "radiante", "efeito": "brilho",
+              "objetos": [ { "prop": "bolo", "acao": "some" } ],
               "reacoes": [ { "quem": "voce", "acao": "palmas", "emocao": "radiante" } ] }
           ]
         }

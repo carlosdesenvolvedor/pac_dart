@@ -45,7 +45,7 @@
       "titulo": { "en": "Dinner time with Julia", "pt": "Hora do jantar com a Julia" },
       "cenas": [
         {
-          "cenario": "casa", "hora": "noite", "clima": [],
+          "cenario": "cozinha", "hora": "noite", "clima": [],
           "elenco": [
             { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
             { "quem": "julia", "remoto": "celular", "emocao": "feliz" }
@@ -84,26 +84,26 @@
           ],
           "objetos": [
             { "prop": "guardaChuva", "pos": "direita" },
-            { "prop": "cachecol", "pos": "esquerda" }
+            { "prop": "casaco", "pos": "esquerda" }
           ],
           "passos": [
             { "frase": "f-f597f4", "acao": "pensa", "emocao": "pensativo", "camera": "geral" },
             { "frase": "f-c47347", "acao": "aponta", "emocao": "surpreso",
               "reacoes": [ { "quem": "voce", "emocao": "triste" } ] },
             { "mudo": true, "quem": "emma", "acao": "aponta", "alvo": "guardaChuva", "emocao": "determinado", "efeito": "exclamacao" },
-            { "frase": "f-e0fc58", "segura": "cachecol", "acao": "mostra", "emocao": "nervoso", "camera": "medio",
-              "objetos": [ { "prop": "cachecol", "acao": "some" } ] },
+            { "frase": "f-e0fc58", "segura": "casaco", "acao": "mostra", "emocao": "nervoso", "camera": "medio",
+              "objetos": [ { "prop": "casaco", "acao": "some" } ] },
             { "frase": "f-54ebe8", "emocao": "nervoso", "efeito": "suor",
               "reacoes": [ { "quem": "emma", "acao": "concorda" } ] },
             { "frase": "f-3222a6", "acao": "aponta", "emocao": "radiante", "efeito": "exclamacao", "clima": ["neve"], "camera": "geral",
               "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ],
-              "objetos": [ { "prop": "cachecol", "acao": "aparece", "pos": "centro", "de": "voce" } ] },
+              "objetos": [ { "prop": "casaco", "acao": "aparece", "pos": "centro", "de": "voce" } ] },
             { "frase": "f-9ae546", "segura": "celular", "acao": "escreve", "emocao": "feliz" },
-            { "frase": "f-d7585f", "segura": "cachecol", "acao": "mostra", "emocao": "feliz", "alvo": "voce",
-              "objetos": [ { "prop": "cachecol", "acao": "some" } ] },
+            { "frase": "f-d7585f", "segura": "casaco", "acao": "mostra", "emocao": "feliz", "alvo": "voce",
+              "objetos": [ { "prop": "casaco", "acao": "some" } ] },
             { "frase": "f-a344d2", "acao": "escreve", "emocao": "timido", "efeito": "suor", "camera": "close" },
             { "mudo": true, "quem": "emma", "segura": "nada", "acao": "acena", "emocao": "feliz",
-              "reacoes": [ { "quem": "voce", "segura": "cachecol", "emocao": "radiante" } ] }
+              "reacoes": [ { "quem": "voce", "segura": "casaco", "emocao": "radiante" } ] }
           ]
         }
       ]
@@ -145,7 +145,7 @@
         {
           "cenario": "casa", "hora": "dia", "clima": [],
           "elenco": [
-            { "quem": "voce", "pos": "esquerda", "visivel": false, "segura": "cachecol", "emocao": "feliz" },
+            { "quem": "voce", "pos": "esquerda", "visivel": false, "segura": "casaco", "emocao": "feliz" },
             { "quem": "emma", "pos": "centroDireita", "emocao": "feliz" }
           ],
           "objetos": [],
@@ -153,7 +153,7 @@
             { "mudo": true, "quem": "voce", "acao": "entra", "para": "centroEsquerda", "emocao": "feliz" },
             { "frase": "f-e7eecd", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "geral" },
             { "frase": "f-65a96c", "acao": "pensa", "emocao": "timido", "efeito": "interrogacao",
-              "objetos": [ { "prop": "cachecol", "acao": "aparece", "pos": "esquerda", "de": "voce" } ] },
+              "objetos": [ { "prop": "casaco", "acao": "aparece", "pos": "esquerda", "de": "voce" } ] },
             { "frase": "f-3593d2", "acao": "concorda", "emocao": "feliz",
               "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
             { "mudo": true, "quem": "emma", "acao": "senta", "segura": "celular", "emocao": "feliz",
@@ -199,11 +199,11 @@
             { "mudo": true, "quem": "ana", "acao": "entra", "para": "centroDireita", "emocao": "feliz" },
             { "frase": "f-e0b8a1", "acao": "aponta", "alvo": "ana", "emocao": "surpreso", "efeito": "exclamacao",
               "reacoes": [ { "quem": "ana", "acao": "treme", "emocao": "timido" } ] },
-            { "frase": "f-3b0181", "segura": "cachecol", "acao": "mostra", "emocao": "determinado", "camera": "dupla", "alvo": "ana" },
+            { "frase": "f-3b0181", "segura": "casaco", "acao": "mostra", "emocao": "determinado", "camera": "dupla", "alvo": "ana" },
             { "frase": "f-ee77be", "acao": "acena", "alvo": "ana", "emocao": "feliz",
               "reacoes": [
                 { "quem": "voce", "segura": "nada", "emocao": "feliz" },
-                { "quem": "ana", "segura": "cachecol", "emocao": "radiante" }
+                { "quem": "ana", "segura": "casaco", "emocao": "radiante" }
               ] },
             { "mudo": true, "quem": "ana", "acao": "concorda", "emocao": "radiante", "efeito": "brilho",
               "reacoes": [ { "quem": "voce", "acao": "palmas", "emocao": "feliz" }, { "quem": "emma", "emocao": "radiante" } ] }
