@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:web/web.dart' as web;
 
+import '../../../../core/linguagem/linguagem.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../domain/turismo.dart';
 import 'ambiente_turismo.dart';
@@ -219,6 +220,8 @@ class _Vista3DState extends State<Vista3D> {
       'distancia': e.pista.distancia,
       'carro': widget.carro,
       'trafego': widget.trafego,
+      // o motor 3D é o mesmo nos 3 cursos: os retoques só do inglês ligam com esta chave
+      'ingles': Linguagem.atual == Linguagem.ingles,
       'portais': [
         for (final p in e.portais)
           {
