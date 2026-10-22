@@ -2551,9 +2551,7 @@ pórticos (1 carro + 1 ficha cada; fichas pegas ao passar, 1 batida a cada 3 pó
 - **Tráfego sem `find` por quadro:** `obstaculoDoCarro` (Map `k·8+i`) no lugar de `obstaculos.find(...)` por carro por quadro.
 - **Diagnóstico novo no `debug()`:** `programasNovosNaCorrida` (programas de shader criados depois da largada, mesmo os já mortos —
   o ideal é **0**; só a troca de nível do vigia cria), `luzesPostes` {pool, visíveis, acesas} e `texturasAdiantadas`.
-- **Flutter:** `pintarTexto` (`widgets/perspectiva.dart`) reaproveita o `TextPainter` já medido (cache dos últimos 64; limpa quando
-  chega fonte nova via `systemFonts`): o velocímetro por cima do 3D refazia 2 layouts ("km/h" + número) a cada km/h. Medida no teste
-  novo: 5 repinturas com km/h já vistos = **3 layouts** (antes 10).
+- **Flutter: nada.** O cache de `TextPainter` no `pintarTexto` (`widgets/perspectiva.dart`, código do Arcade compartilhado pelos 3 cursos) foi desfeito a pedido do dono: só o Turismo 3D do inglês mexe.
 - **Para a próxima tarefa no `turismo3d.js` (retoques visuais):** as mudanças estão em blocos marcados "⚡ desempenho (22/out)":
   `LUZES_POOL`/`INTENSIDADE_POSTE` + `construirLampadas`/`atualizarLuzes`/`aplicarQualidade` (não voltar a mexer em `visible` de
   luz durante a corrida — mude `intensity`); `materialFaisca`/`guardarProgramaFaiscas` (faísca nova tem de usar `materialFaisca`);
@@ -2575,7 +2573,7 @@ pórticos (1 carro + 1 ficha cada; fichas pegas ao passar, 1 batida a cada 3 pó
     ar; o blur já fora pulado em 20/out). `pista_gt` (vista 2D sem 3D) repinta todo quadro por natureza.
   - `destruir()` não descarta geometrias/texturas da pista, placas e carros (só os extras dos mundos): o Dart chama `destruir()` com
     `forceContextLoss` ao sair, o que libera a GPU; só um `montar` repetido no mesmo canvas acumularia.
-- **Testes:** novo `test/arcade_desempenho_test.dart` (2: velocímetro sem relayout de texto repetido; cache limitado). `arcade_*` + `turismo_*` + `progresso_turismo_30` + `engenheiro_gt` (23 arquivos): **286/286 passam**, nenhum teste antigo editado. `flutter analyze lib test`: sem avisos. `node --check` do JS numa cópia: ok.
+- **Testes:** `arcade_*` + `turismo_*` + `progresso_turismo_30` + `engenheiro_gt` (23 arquivos): **286/286 passam**, nenhum teste antigo editado. `flutter analyze lib test`: sem avisos. `node --check` do JS numa cópia: ok.
 - **Conferir no aparelho (a máquina onde trava, no Leve):** uma corrida num mundo com postes (cidade, pista 3/17/18/25/26) e pegando
   várias fichas; no console `turismo3d.debug().programasNovosNaCorrida` deve ficar **0** (antes subia a cada ficha) e
   `luzesPostes` = {pool: 4, visíveis: 4, acesas: 3–4}; conferir que os postes iluminam o asfalto como antes e que o "+3 🪙" aparece.
