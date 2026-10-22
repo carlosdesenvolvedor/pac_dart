@@ -215,7 +215,7 @@ class _Vista3DState extends State<Vista3D> {
       // efeitos (motor/vento) e o 🎸 estão ligados
       'som': widget.som,
       'musicaLigada': widget.musica,
-      // ⚡ os ajustes de desempenho do 3D (22/out) valem só no curso de inglês; Dart/C# como antes
+      // o motor 3D é o mesmo nos 3 cursos: os ajustes de desempenho e os retoques dos mundos (22/out) só ligam no inglês
       'ingles': Linguagem.atual == Linguagem.ingles,
       'segmentos': [for (final s in e.segmentos) s.curva],
       'comprimentoSegmento': TurismoEngine.comprimentoSegmento,
