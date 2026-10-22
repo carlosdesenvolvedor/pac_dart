@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import '../../../../core/som/sons.dart';
 import '../../../ingles/data/voz_ingles.dart';
 import '../../domain/historia_turismo.dart';
+import '../../domain/progresso_historia.dart';
 import '../../domain/simulacao_historia.dart';
 import 'elenco_turismo.dart';
 
@@ -30,14 +31,20 @@ class RoteiroHistoria extends ChangeNotifier {
     required bool lenta,
     required bool mostrarPt,
     required bool reduzir,
+    double? velocidade,
   })  : _cenas = cenas,
         _nivel = nivel,
         _voz = voz,
         _vozLigada = vozLigada,
-        _lenta = lenta,
+        _velocidade = ProgressoHistoria.velocidadeMaisPerto(velocidade ?? (lenta ? .85 : 1.0)),
         _mostrarPt = mostrarPt,
         _reduzir = reduzir,
-        _linhas = [for (final c in cenas) SimulacaoCena.linhaDoTempo(c)];
+        _linhas = [for (final c in cenas) SimulacaoCena.linhaDoTempo(c)],
+        _comTexto = [
+          for (var i = 0; i < cenas.length; i++)
+            for (var j = 0; j < cenas[i].falas.length; j++)
+              if (!cenas[i].falas[j].mudo) (i, j),
+        ];
 
   /// Quem toca os efeitos sonoros (D19). Trocável nos testes.
   static void Function(Som som) tocarSom = Sons.toca;
@@ -53,7 +60,13 @@ class RoteiroHistoria extends ChangeNotifier {
   final NivelIngles _nivel;
   final VozIngles? _voz;
   final List<List<EstadoCena>> _linhas;
-  bool _vozLigada, _lenta, _mostrarPt;
+  bool _vozLigada, _mostrarPt;
+
+  /// Velocidade da voz (uma de [ProgressoHistoria.velocidades]); a máquina de escrever e a leitura acompanham.
+  double _velocidade;
+
+  /// (cena, passo) de cada fala com texto, na ordem (as bolinhas e o ⏮/⏭).
+  final List<(int, int)> _comTexto;
   final bool _reduzir;
 
   int _cena = 0, _passo = 0;
@@ -88,7 +101,8 @@ class RoteiroHistoria extends ChangeNotifier {
   NivelIngles get nivel => _nivel;
   VozIngles? get voz => _voz;
   bool get vozLigada => _vozLigada;
-  bool get lenta => _lenta;
+  bool get lenta => _velocidade < 1;
+  double get velocidade => _velocidade;
   bool get mostrarPt => _mostrarPt;
   bool get reduzir => _reduzir;
   List<CenaHistoria> get cenas => _cenas;
@@ -115,14 +129,16 @@ class RoteiroHistoria extends ChangeNotifier {
   double get duracaoTituloAtual => _reduzir ? tituloReduzido : duracaoTitulo;
 
   /// Caracteres por segundo da máquina de escrever (A1 22 · A2 26 · B1/B2 30).
-  double get letrasPorSegundo => switch (_nivel) {
+  double get letrasPorSegundo =>
+      _velocidade *
+      switch (_nivel) {
         NivelIngles.a1 => 22,
         NivelIngles.a2 => 26,
         NivelIngles.b1 || NivelIngles.b2 => 30,
       };
 
   /// Quantas falas com texto o roteiro tem e quantas já passaram (bolinhas da barra).
-  int get totalFalas => _cenas.fold(0, (s, c) => s + c.falas.where((f) => !f.mudo).length);
+  int get totalFalas => _comTexto.length;
   int get falasPassadas {
     var n = 0;
     for (var i = 0; i < _cenas.length && i <= _cena; i++) {
@@ -268,9 +284,72 @@ class RoteiroHistoria extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// 🐢: a próxima velocidade da lista (1 → .85 → .7 → .5 → 1). Vale a partir da próxima fala (ou do 🔁).
   void alternarLenta() {
-    _lenta = !_lenta;
+    final vs = ProgressoHistoria.velocidades;
+    _velocidade = vs[(vs.indexOf(_velocidade) + 1) % vs.length];
     notifyListeners();
+  }
+
+  /// ⏮ Volta para a fala com texto anterior (dá para voltar quantas quiser). No cartão final, volta para a
+  /// última fala; na 1ª fala, recomeça do começo.
+  void voltar() {
+    if (_cenas.isEmpty || _estado == EstadoRoteiro.terminado || _estado == EstadoRoteiro.aguardandoGesto) return;
+    _cortarVoz();
+    _retomarVoz = false;
+    if (_estado == EstadoRoteiro.cartaoFinal) {
+      if (_comTexto.isEmpty) return;
+      final (c, p) = _comTexto.last;
+      _irPara(c, p);
+      return;
+    }
+    final i = _indiceAntes(_cena, _passo) - 1;
+    if (i < 0) {
+      _irPara(0, 0);
+    } else {
+      final (c, p) = _comTexto[i];
+      _irPara(c, p);
+    }
+  }
+
+  /// ⏭ Vai direto para a próxima fala com texto (sem ela, o cartão final).
+  void proximaFala() {
+    if (_cenas.isEmpty ||
+        _estado == EstadoRoteiro.terminado ||
+        _estado == EstadoRoteiro.aguardandoGesto ||
+        _estado == EstadoRoteiro.cartaoFinal) {
+      return;
+    }
+    _cortarVoz();
+    _voz?.parar();
+    _retomarVoz = false;
+    final i = _indiceAntes(_cena, _passo + 1);
+    if (i >= _comTexto.length) {
+      _gerVoz++;
+      _irParaCartao();
+    } else {
+      final (c, p) = _comTexto[i];
+      _irPara(c, p);
+    }
+  }
+
+  /// Vai para a fala com texto de número [i] (0 = a primeira) — o toque nas bolinhas.
+  void irParaFala(int i) {
+    if (_comTexto.isEmpty || _estado == EstadoRoteiro.terminado || _estado == EstadoRoteiro.aguardandoGesto) return;
+    _cortarVoz();
+    _voz?.parar();
+    _retomarVoz = false;
+    final (c, p) = _comTexto[i.clamp(0, _comTexto.length - 1)];
+    _irPara(c, p);
+  }
+
+  /// Quantas falas com texto vêm antes do passo ([cena], [passo]).
+  int _indiceAntes(int cena, int passo) {
+    var n = 0;
+    for (final (c, p) in _comTexto) {
+      if (c < cena || (c == cena && p < passo)) n++;
+    }
+    return n;
   }
 
   /// O relógio do player: [dt] segundos se passaram.
@@ -362,7 +441,7 @@ class RoteiroHistoria extends ChangeNotifier {
     }
     final g = ++_gerVoz;
     _vozPronta = false;
-    _limiteVoz = (tFala ?? 0) + VozIngles.duracaoDe(en) * 2 + 5;
+    _limiteVoz = (tFala ?? 0) + VozIngles.duracaoDe(en) / _velocidade * 2 + 5;
     void pronto(Object? _) {
       if (g != _gerVoz) return;
       _vozPronta = true;
@@ -370,7 +449,7 @@ class RoteiroHistoria extends ChangeNotifier {
 
     try {
       voz
-          .falarNoPlayer(en, fator: _lenta ? .8 : 1.0, perfil: ElencoTurismo.perfilDeVoz(f.quem))
+          .falarNoPlayer(en, fator: _velocidade, perfil: ElencoTurismo.perfilDeVoz(f.quem))
           .then(pronto, onError: pronto);
     } catch (_) {
       _vozPronta = true;
@@ -484,11 +563,11 @@ class RoteiroHistoria extends ChangeNotifier {
       };
 
   /// Leitura mínima depois do texto completo: 600 ms + 30 ms por letra do PT (ou 45 ms por letra do EN sem
-  /// o PT), teto 4 s.
+  /// o PT), teto 4 s; com a voz mais lenta, estica junto (teto 6 s).
   double _leituraDe(FalaHistoria f) {
     final pt = f.pt;
     final porLetra = _mostrarPt && pt != null ? .03 * pt.length : .045 * (f.en?.length ?? 0);
-    return math.min(4, .6 + porLetra);
+    return math.min(6, math.min(4, .6 + porLetra) / _velocidade);
   }
 
   void _sonsDoPasso(FalaHistoria f) {

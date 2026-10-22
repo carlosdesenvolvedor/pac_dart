@@ -101,7 +101,7 @@ class _PlayerHistoriaState extends State<PlayerHistoria> with SingleTickerProvid
   Future<void> _carregar() async {
     final pt = await ProgressoHistoria.traducao();
     final voz = await ProgressoHistoria.voz();
-    final lenta = await ProgressoHistoria.lenta();
+    final velocidade = await ProgressoHistoria.velocidade();
     final tremor = await ProgressoTurismo.tremorLigado();
     if (!mounted) return;
     _tremor = tremor;
@@ -110,7 +110,8 @@ class _PlayerHistoriaState extends State<PlayerHistoria> with SingleTickerProvid
       nivel: widget.capitulo.nivel,
       voz: _voz,
       vozLigada: voz,
-      lenta: lenta,
+      lenta: velocidade < 1,
+      velocidade: velocidade,
       mostrarPt: pt,
       reduzir: _reduzir,
     )..addListener(_aoMudar);
@@ -286,13 +287,13 @@ class _PlayerHistoriaState extends State<PlayerHistoria> with SingleTickerProvid
     final r = _roteiro;
     if (r == null) return;
     r.alternarLenta();
-    ProgressoHistoria.salvarLenta(r.lenta);
+    ProgressoHistoria.salvarVelocidade(r.velocidade);
   }
 
   void _ouvir(String en) {
     final r = _roteiro;
     try {
-      _voz.falarNoPlayer(en, fator: (r?.lenta ?? false) ? .8 : 1.0).catchError((_) => FimDaFala.semVoz);
+      _voz.falarNoPlayer(en, fator: r?.velocidade ?? 1.0).catchError((_) => FimDaFala.semVoz);
     } catch (_) {}
   }
 
@@ -313,6 +314,10 @@ class _PlayerHistoriaState extends State<PlayerHistoria> with SingleTickerProvid
       _alternarPausa();
     } else if (k == LogicalKeyboardKey.keyR) {
       _roteiro?.repetir();
+    } else if (k == LogicalKeyboardKey.arrowLeft || k == LogicalKeyboardKey.keyB) {
+      _roteiro?.voltar();
+    } else if (k == LogicalKeyboardKey.arrowRight || k == LogicalKeyboardKey.keyN) {
+      _roteiro?.proximaFala();
     } else {
       return KeyEventResult.ignored;
     }
@@ -354,6 +359,9 @@ class _PlayerHistoriaState extends State<PlayerHistoria> with SingleTickerProvid
                             onVoz: _alternarVoz,
                             onLenta: _alternarLenta,
                             onRepetir: r.repetir,
+                            onVoltar: r.voltar,
+                            onProxima: r.proximaFala,
+                            onIrPara: r.irParaFala,
                             onPular: _pular,
                           ),
                         ],
@@ -587,7 +595,8 @@ class _PlayerHistoriaState extends State<PlayerHistoria> with SingleTickerProvid
   }
 }
 
-/// A barra de controles: ⏸/▶ · PT · 🔊 · 🐢 · ⏪ · bolinhas de progresso · Pular ⏭.
+/// A barra de controles: as bolinhas de progresso (uma por fala; toque para ir até ela) em cima e
+/// ⏸/▶ · PT · 🔊 · 🐢 velocidade · ⏮ fala anterior · 🔁 repetir · ⏭ próxima fala · Pular embaixo.
 class _Barra extends StatelessWidget {
   const _Barra({
     required this.roteiro,
@@ -596,11 +605,17 @@ class _Barra extends StatelessWidget {
     required this.onVoz,
     required this.onLenta,
     required this.onRepetir,
+    required this.onVoltar,
+    required this.onProxima,
+    required this.onIrPara,
     required this.onPular,
   });
 
   final RoteiroHistoria roteiro;
-  final VoidCallback onPausa, onPt, onVoz, onLenta, onRepetir, onPular;
+  final VoidCallback onPausa, onPt, onVoz, onLenta, onRepetir, onVoltar, onProxima, onPular;
+  final ValueChanged<int> onIrPara;
+
+  static String _vel(double v) => v == 1 ? '1×' : '${v.toString().replaceFirst(RegExp(r'^0'), '')}×';
 
   @override
   Widget build(BuildContext context) {
@@ -608,45 +623,24 @@ class _Barra extends StatelessWidget {
     final pausado = r.estado == EstadoRoteiro.pausado;
     return Material(
       color: Mixart.surface,
-      child: SizedBox(
-        height: 52,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
-          child: Row(
+      child: LayoutBuilder(
+        builder: (context, c) {
+          final estreita = c.maxWidth < 420;
+          return Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              _BotaoBarra(
-                chave: 'historia-pausa',
-                rotulo: pausado ? '▶' : '⏸',
-                dica: pausado ? 'Continuar (P)' : 'Pausar (P)',
-                onTap: onPausa,
-              ),
-              _BotaoBarra(
-                chave: 'historia-pt',
-                rotulo: 'PT',
-                dica: r.mostrarPt ? 'Esconder a tradução (T)' : 'Mostrar a tradução (T)',
-                ligado: r.mostrarPt,
-                onTap: onPt,
-              ),
-              _BotaoBarra(
-                chave: 'historia-voz',
-                rotulo: r.vozLigada ? '🔊' : '🔇',
-                dica: r.vozLigada ? 'Desligar a voz (V)' : 'Ligar a voz (V)',
-                ligado: r.vozLigada,
-                onTap: onVoz,
-              ),
-              _BotaoBarra(
-                chave: 'historia-lenta',
-                rotulo: '🐢',
-                dica: r.lenta ? 'Voz normal (L)' : 'Voz devagar (L)',
-                ligado: r.lenta,
-                onTap: onLenta,
-              ),
-              _BotaoBarra(chave: 'historia-repetir', rotulo: '⏪', dica: 'Repetir a fala (R)', onTap: onRepetir),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 6),
-                  child: Semantics(
-                    label: 'Fala ${r.falasPassadas} de ${r.totalFalas}',
+              Semantics(
+                label: 'Fala ${r.falasPassadas} de ${r.totalFalas}. Toque numa bolinha para ir até a fala.',
+                child: GestureDetector(
+                  key: const Key('historia-bolinhas'),
+                  behavior: HitTestBehavior.opaque,
+                  onTapUp: (d) {
+                    final w = c.maxWidth - 16;
+                    if (r.totalFalas <= 0 || w <= 0) return;
+                    onIrPara(((d.localPosition.dx - 8) / w * r.totalFalas).floor().clamp(0, r.totalFalas - 1));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 6, 8, 2),
                     child: CustomPaint(
                       size: const Size(double.infinity, 12),
                       painter: _BolinhasPainter(
@@ -659,27 +653,80 @@ class _Barra extends StatelessWidget {
                   ),
                 ),
               ),
-              Tooltip(
-                message: 'Pular (Esc)',
-                child: TextButton(
-                  key: const Key('historia-pular'),
-                  onPressed: onPular,
-                  style: TextButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    minimumSize: const Size(44, 44),
-                  ),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(maxWidth: 96),
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text('Pular ⏭', style: Mixart.ui(size: 14, weight: FontWeight.w800, color: Mixart.brand)),
-                    ),
+              SizedBox(
+                height: 48,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: Row(
+                    children: [
+                      _BotaoBarra(
+                        chave: 'historia-pausa',
+                        rotulo: pausado ? '▶' : '⏸',
+                        dica: pausado ? 'Continuar (P)' : 'Pausar (P)',
+                        onTap: onPausa,
+                      ),
+                      _BotaoBarra(
+                        chave: 'historia-pt',
+                        rotulo: 'PT',
+                        dica: r.mostrarPt ? 'Esconder a tradução (T)' : 'Mostrar a tradução (T)',
+                        ligado: r.mostrarPt,
+                        onTap: onPt,
+                      ),
+                      _BotaoBarra(
+                        chave: 'historia-voz',
+                        rotulo: r.vozLigada ? '🔊' : '🔇',
+                        dica: r.vozLigada ? 'Desligar a voz (V)' : 'Ligar a voz (V)',
+                        ligado: r.vozLigada,
+                        onTap: onVoz,
+                      ),
+                      _BotaoBarra(
+                        chave: 'historia-lenta',
+                        rotulo: '🐢${_vel(r.velocidade)}',
+                        largura: 64,
+                        dica: 'Velocidade da voz: ${_vel(r.velocidade)} — toque para mudar (L)',
+                        onTap: onLenta,
+                      ),
+                      _BotaoBarra(
+                        chave: 'historia-voltar',
+                        rotulo: '⏮',
+                        dica: 'Fala anterior (←)',
+                        onTap: onVoltar,
+                      ),
+                      _BotaoBarra(chave: 'historia-repetir', rotulo: '🔁', dica: 'Repetir a fala (R)', onTap: onRepetir),
+                      if (!estreita)
+                        _BotaoBarra(
+                          chave: 'historia-proxima',
+                          rotulo: '⏭',
+                          dica: 'Próxima fala (→)',
+                          onTap: onProxima,
+                        ),
+                      const Spacer(),
+                      Tooltip(
+                        message: 'Pular o capítulo (Esc)',
+                        child: TextButton(
+                          key: const Key('historia-pular'),
+                          onPressed: onPular,
+                          style: TextButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(horizontal: 8),
+                            minimumSize: const Size(44, 44),
+                          ),
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(maxWidth: estreita ? 64 : 96),
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              child: Text('Pular ⏩',
+                                  style: Mixart.ui(size: 14, weight: FontWeight.w800, color: Mixart.brand)),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ],
-          ),
-        ),
+          );
+        },
       ),
     );
   }
@@ -692,10 +739,12 @@ class _BotaoBarra extends StatelessWidget {
     required this.dica,
     required this.onTap,
     this.ligado,
+    this.largura = 40,
   });
 
   final String chave, rotulo, dica;
   final VoidCallback onTap;
+  final double largura;
 
   /// Liga/desliga (PT, voz, 🐢); null = botão comum (pausa, repetir), sem estado de alternância.
   final bool? ligado;
@@ -714,7 +763,7 @@ class _BotaoBarra extends StatelessWidget {
             onTap: onTap,
             radius: 22,
             child: SizedBox(
-              width: 40,
+              width: largura,
               height: 44,
               child: Center(
                 child: FittedBox(

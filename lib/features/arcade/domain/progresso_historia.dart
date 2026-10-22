@@ -77,6 +77,38 @@ abstract final class ProgressoHistoria {
   static Future<bool> lenta() => _lerBool(chaveLenta, false);
   static Future<void> salvarLenta(bool v) => _gravarBool(chaveLenta, v);
 
+  /// As velocidades da voz da história que o 🐢 percorre (1 = normal).
+  static const velocidades = [1.0, .85, .7, .5];
+  static const chaveVelocidade = 'en_turismo_historia_vel'; // double ∈ [velocidades], default 1
+
+  /// Velocidade da voz da história. Sem a pref nova, quem tinha a 🐢 antiga ligada fica em .85
+  /// (a 🐢 antiga era ~.8); valor fora da lista → o mais perto.
+  static Future<double> velocidade() async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      final v = p.getDouble(chaveVelocidade);
+      if (v != null && v.isFinite) return velocidadeMaisPerto(v);
+      return (p.getBool(chaveLenta) ?? false) ? .85 : 1.0;
+    } catch (_) {
+      return 1.0;
+    }
+  }
+
+  static Future<void> salvarVelocidade(double v) async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      await p.setDouble(chaveVelocidade, velocidadeMaisPerto(v));
+    } catch (_) {}
+  }
+
+  static double velocidadeMaisPerto(double v) {
+    var melhor = velocidades.first;
+    for (final x in velocidades) {
+      if ((x - v).abs() < (melhor - v).abs()) melhor = x;
+    }
+    return melhor;
+  }
+
   /// O aviso "capítulos perdidos" já apareceu? (mostra uma vez só)
   static Future<bool> perdidosAvisado() => _lerBool(chavePerdidos, false);
   static Future<void> marcarPerdidosAvisado() => _gravarBool(chavePerdidos, true);

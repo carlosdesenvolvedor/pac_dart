@@ -269,7 +269,7 @@ class VozIngles {
   static const _silencioMaxMs = 16000;
 
   /// Fala do player: ignora [lentaPorPadrao]; mp3 e áudio do aluno a `rate = fator`, Web Speech a
-  /// `clamp(.95 * fator, .6, 1.2)`. [FimDaFala.cortada] = outra fala do app (ou um [parar]) entrou no meio.
+  /// `clamp(.95 * fator, .6, 1.2)` (com [perfil], piso .4). [FimDaFala.cortada] = outra fala do app (ou um [parar]) entrou no meio.
   /// [perfil] (história do English Turismo): a voz do personagem — SEMPRE a sintética (pula o áudio do
   /// aluno e o mp3: a fala da história nunca toca a gravação de outro personagem do curso), com
   /// `pitch = tom` e a `variante`-ésima melhor voz en-US; a boca segue o texto. null = o caminho de sempre.
@@ -277,7 +277,8 @@ class VozIngles {
     final minha = ++_vez;
     final g = ++_vezGlobal;
     final f = fator <= 0 ? 1.0 : fator;
-    final vSintetica = (velocidadeNormal * f).clamp(.6, 1.2).toDouble();
+    // a história (com perfil) desce até 0,5× por pedido do dono: o piso dela é mais baixo
+    final vSintetica = (velocidadeNormal * f).clamp(perfil != null ? .4 : .6, 1.2).toDouble();
     _emCurso++;
     try {
       if (perfil != null) {

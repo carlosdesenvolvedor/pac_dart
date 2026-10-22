@@ -118,7 +118,7 @@ void main() {
       expect(VozIngles.falando.value, isNull, reason: 'acabou: a boca fecha');
     });
 
-    test('a velocidade segue o fator (clamp .6–1.2), ignora a lenta global; a boca acompanha', () async {
+    test('a velocidade segue o fator (clamp .4–1.2: a história desce até .5×), ignora a lenta global; a boca acompanha', () async {
       VozIngles.lentaPorPadrao = true;
       final velocidades = <double>[];
       final voz = VozIngles(falarComPerfil: (_, v, _) async => velocidades.add(v));
@@ -133,7 +133,7 @@ void main() {
         closeTo(.76, 1e-9),
         closeTo(.95, 1e-9),
         1.2,
-        .6,
+        .4,
         closeTo(.95, 1e-9),
       ]);
       expect(

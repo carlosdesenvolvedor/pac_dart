@@ -314,15 +314,16 @@ void main() {
     expect(BalaoFala.textoNoChip(const Color(0xFF7FB8E8)), isNot(Colors.white), reason: 'Dra. Lee: texto escuro');
   });
 
-  testWidgets('barra: só PT, 🔊 e 🐢 têm estado de alternância', (t) async {
+  // 🐢 deixou de ser liga/desliga: agora percorre as velocidades 1×/.85×/.7×/.5× (pedido do dono)
+  testWidgets('barra: só PT e 🔊 têm estado de alternância', (t) async {
     tela(t, const Size(1280, 720));
     final h = t.ensureSemantics();
     await montar(t, VozFake());
     await avancar(t, 2.4);
-    for (final k in ['historia-pausa', 'historia-repetir']) {
+    for (final k in ['historia-pausa', 'historia-repetir', 'historia-voltar', 'historia-proxima', 'historia-lenta']) {
       expect(t.getSemantics(find.byKey(Key(k))), isSemantics(isButton: true, hasToggledState: false), reason: k);
     }
-    for (final k in ['historia-pt', 'historia-voz', 'historia-lenta']) {
+    for (final k in ['historia-pt', 'historia-voz']) {
       expect(t.getSemantics(find.byKey(Key(k))), isSemantics(isButton: true, hasToggledState: true), reason: k);
     }
     final pausa = t.getSemantics(find.byKey(const Key('historia-pausa')));
