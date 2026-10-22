@@ -3,6 +3,8 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 
+import '../../../../core/linguagem/linguagem.dart';
+
 /// Projeção pseudo-3D de um plano de chão visto por uma câmera que olha pro
 /// horizonte (o truque dos jogos de corrida clássicos).
 ///
@@ -167,16 +169,54 @@ void pintarQuadriculado(Canvas c, Perspectiva p, double d, double a, double b,
 }
 
 /// Texto pintado direto no canvas (placas, faixas de chegada).
+///
+/// ⚡ O TextPainter já medido fica num cache pequeno (os últimos
+/// [_maxTextosMedidos] textos/estilos): o velocímetro repinta a cada km/h e
+/// refazia o layout do "km/h" e do número toda vez. Os que saem do cache não
+/// são descartados à força (podem estar num quadro já gravado): o GC cuida,
+/// como antes. Só no curso de inglês (o dono pediu o Arcade do Dart e do C#
+/// como estava): fora dele, mede de novo a cada pintura.
 void pintarTexto(Canvas c, String texto, Offset centro,
     {double tamanho = 12, Color cor = Colors.white, FontWeight peso = FontWeight.w800, double espaco = 1}) {
-  final tp = TextPainter(
-    text: TextSpan(
-        text: texto,
-        style: TextStyle(color: cor, fontSize: tamanho, fontWeight: peso, letterSpacing: espaco)),
-    textDirection: TextDirection.ltr,
-  )..layout();
+  if (Linguagem.atual != Linguagem.ingles) {
+    final tp = TextPainter(
+      text: TextSpan(
+          text: texto,
+          style: TextStyle(color: cor, fontSize: tamanho, fontWeight: peso, letterSpacing: espaco)),
+      textDirection: TextDirection.ltr,
+    )..layout();
+    debugLayoutsPintarTexto++;
+    tp.paint(c, centro - Offset(tp.width / 2, tp.height / 2));
+    return;
+  }
+  if (!_ouvindoFontes) {
+    // fonte nova carregada (na web elas chegam depois do 1º quadro): mede de novo
+    _ouvindoFontes = true;
+    PaintingBinding.instance.systemFonts.addListener(_textosMedidos.clear);
+  }
+  final chave = (texto, tamanho, cor, peso, espaco);
+  var tp = _textosMedidos.remove(chave);
+  if (tp == null) {
+    tp = TextPainter(
+      text: TextSpan(
+          text: texto,
+          style: TextStyle(color: cor, fontSize: tamanho, fontWeight: peso, letterSpacing: espaco)),
+      textDirection: TextDirection.ltr,
+    )..layout();
+    debugLayoutsPintarTexto++;
+    if (_textosMedidos.length >= _maxTextosMedidos) _textosMedidos.remove(_textosMedidos.keys.first);
+  }
+  _textosMedidos[chave] = tp; // reinserido no fim: o mais recente
   tp.paint(c, centro - Offset(tp.width / 2, tp.height / 2));
 }
+
+const _maxTextosMedidos = 64;
+var _ouvindoFontes = false;
+final _textosMedidos = <(String, double, Color, FontWeight, double), TextPainter>{};
+
+/// Quantos layouts o [pintarTexto] já fez (medida do teste de desempenho).
+@visibleForTesting
+int debugLayoutsPintarTexto = 0;
 
 /// Escurece/clareia uma cor (sombra e luz do mesmo material).
 Color tom(Color c, double fator) {
