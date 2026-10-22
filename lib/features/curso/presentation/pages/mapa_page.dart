@@ -15,6 +15,7 @@ import '../../../ingles/presentation/texto_para_licao_page.dart';
 import '../../../ingles/domain/palavras_novas.dart';
 import '../../../ingles/presentation/minhas_palavras_page.dart';
 import '../../../ingles/domain/setlist.dart';
+import '../../../ingles/presentation/ouvir/assistir/assistir_licao_page.dart';
 import '../../../ingles/presentation/ouvir/ouvir_acoes.dart';
 import '../../../ingles/presentation/ouvir/ouvir_cubit.dart';
 import '../../../ingles/presentation/ouvir/ouvir_state.dart';
@@ -2031,6 +2032,13 @@ void mostrarOpcoesLicao(BuildContext context, CursoState st, int t, int l, int? 
               Navigator.of(sheet).pop();
               abrirTreinoPalavras(context, novas.take(8).toList(), titulo: licao.nome);
             },
+      // 📺 a historinha da lição (player próprio: a fila do Ouvir não muda; não marca progresso)
+      onAssistir: !ouvir || !podeAssistirLicao(context, licao)
+          ? null
+          : () {
+              Navigator.of(sheet).pop();
+              assistirLicao(context, licao);
+            },
       onTesteUnidade: st.ehIngles && trancada && !st.trilhas[t].propria
           ? () {
               Navigator.of(sheet).pop();
@@ -2348,6 +2356,9 @@ class _LicaoSheet extends StatelessWidget {
   final List<PalavraNova> novas;
   final VoidCallback? onPalavras;
 
+  /// Inglês: "📺 Assistir a historinha" (null = sem desenho para esta lição).
+  final VoidCallback? onAssistir;
+
   /// Inglês: o "🎧 Ouvir" — tocar a lição, tocar daqui até o fim do curso (null em texto próprio),
   /// pôr na setlist e escolher frases (toque longo no ➕ também). null = sem player.
   final VoidCallback? onOuvir, onOuvirDaqui, onPorNaSetlist, onEscolherFrases;
@@ -2360,6 +2371,7 @@ class _LicaoSheet extends StatelessWidget {
       this.onTesteUnidade,
       this.novas = const [],
       this.onPalavras,
+      this.onAssistir,
       this.onOuvir,
       this.onOuvirDaqui,
       this.onPorNaSetlist,
@@ -2520,6 +2532,18 @@ class _LicaoSheet extends StatelessWidget {
                 titulo: '🆕 Treinar as palavras novas (${novas.length})',
                 subtitulo: novas.take(5).map((p) => p.en).join(' · ') + (novas.length > 5 ? ' …' : ''),
                 onTap: onPalavras!,
+              ),
+            ),
+          ],
+          if (ingles && onAssistir != null) ...[
+            const SizedBox(height: 10),
+            KeyedSubtree(
+              key: const Key('sheet-assistir'),
+              child: _OpcaoSheet(
+                icone: Icons.live_tv_rounded,
+                titulo: '📺 Assistir a historinha',
+                subtitulo: 'o desenho da lição, só ouvindo — não conta progresso',
+                onTap: onAssistir!,
               ),
             ),
           ],

@@ -250,12 +250,18 @@ void main() {
       expect(s.temAutoral('primeiro-contato.oi-tudo-bem'), isTrue);
       expect(s.carregando('primeiro-contato.oi-tudo-bem'), isFalse);
 
-      // a 1ª lição de uma trilha ainda sem história escrita (os lotes vão cobrindo o curso aos poucos)
+      // a 1ª lição de uma trilha sem história escrita: hoje todas têm, então o índice do bundle esconde uma
+      // (a 1ª trilha que não é do piloto) e ela tem de cair na automática com a tabela
       final comHistoria = (_json('indice.json')['trilhas'] as Map).keys.toSet();
-      final fora = _porSlug.entries.firstWhere((e) => !comHistoria.contains(e.key)).value.licoes.first.id;
+      final semHistoria = _porSlug.keys.firstWhere(
+          (k) => !comHistoria.contains(k),
+          orElse: () => _porSlug.keys.firstWhere((k) => k != 'primeiro-contato' && k != 'numeros-horas-soletrar'));
+      final fora = _porSlug[semHistoria]!.licoes.first.id;
+      HistoriasLicoesRepo.limparCache();
+      final s2 = HistoriasLicoes(_trilhas, bundle: _BundleSemTrilha(semHistoria));
       final f2 = faixaDe(fora, 0);
-      await s.preparar(f2);
-      final auto = s.para(f2);
+      await s2.preparar(f2);
+      final auto = s2.para(f2);
       expect(auto, isNotNull);
       expect(auto!.autoral, isFalse);
       final linha = (_json('encenacao_auto.json')['licoes'] as Map)[fora] as Map;
@@ -263,4 +269,22 @@ void main() {
       HistoriasLicoesRepo.limparCache();
     });
   });
+}
+
+/// O bundle de verdade com o `indice.json` sem a trilha [slug] (para provar a queda na automática).
+class _BundleSemTrilha extends CachingAssetBundle {
+  _BundleSemTrilha(this.slug);
+  final String slug;
+
+  @override
+  Future<ByteData> load(String key) => rootBundle.load(key);
+
+  @override
+  Future<String> loadString(String key, {bool cache = true}) async {
+    final texto = await rootBundle.loadString(key, cache: cache);
+    if (key != HistoriasLicoesRepo.indice) return texto;
+    final j = jsonDecode(texto) as Map<String, dynamic>;
+    (j['trilhas'] as Map).remove(slug);
+    return jsonEncode(j);
+  }
 }

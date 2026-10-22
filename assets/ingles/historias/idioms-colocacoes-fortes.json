@@ -255,10 +255,10 @@
             },
             {
               "mudo": true,
-              "quem": "dev-novo",
-              "acao": "comemora",
-              "emocao": "radiante",
-              "efeito": "brilho"
+              "quem": "voce",
+              "acao": "olha",
+              "alvo": "dev-novo",
+              "emocao": "nervoso"
             },
             {
               "frase": "f-142851",
@@ -275,14 +275,18 @@
             },
             {
               "mudo": true,
-              "quem": "voce",
-              "acao": "acena",
-              "alvo": "dev-novo",
+              "quem": "dev-novo",
+              "acao": "comemora",
               "emocao": "radiante",
+              "efeito": "brilho",
               "reacoes": [
                 {
-                  "quem": "dev-novo",
-                  "acao": "acena",
+                  "quem": "voce",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "ana",
                   "emocao": "feliz"
                 }
               ]

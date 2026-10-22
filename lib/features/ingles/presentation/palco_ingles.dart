@@ -25,6 +25,7 @@ import '../domain/roteiro.dart';
 import '../domain/setlist.dart';
 import 'fixacao.dart';
 import 'ouvir/ouvir_acoes.dart';
+import 'ouvir/assistir/assistir_licao_page.dart';
 import 'zona_visivel.dart';
 import 'revisao_cubit.dart';
 import '../../../core/som/sons.dart';
@@ -600,6 +601,19 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     _pedirFoco();
   }
 
+  /// "📺 Assistir a historinha" (no começo da lição e na vitória): o desenho da lição abre por cima com um
+  /// player próprio; a voz da lição cala e, na volta, o teclado volta para onde estava (o progresso não muda).
+  Future<void> _assistirHistorinha() async {
+    _voz.parar();
+    await assistirLicao(context, curso.licao);
+    if (!mounted) return;
+    if (curso.vitoria) {
+      _focoVitoria.requestFocus();
+    } else {
+      _pedirFoco();
+    }
+  }
+
   /// "Começar direto": o cartão do começo sai e a frase segue com o teclado.
   void _comecarDireto() {
     if (!_antesDispensado) _pularAntes();
@@ -649,8 +663,10 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
   /// A altura da vitória (ela cobre o palco). A estimativa vale no 1º frame; depois, com os cartões, vale o
   /// conteúdo MEDIDO (o título e o placar quebram no celular, o "ver" abre o cartão, o "Agora não" o tira):
   /// o placar e os botões cabem sem rolar.
-  double _alturaVitoria({required bool comCartao, required bool teimosas, required bool dominadas}) {
+  double _alturaVitoria(
+      {required bool comCartao, required bool teimosas, required bool dominadas, bool assistir = false}) {
     var h = 380.0;
+    if (assistir) h += 50;
     if (comCartao) h += teimosas ? 44 : 120;
     // a oferta das teimosas; no celular os chips e os botões quebram em mais linhas
     if (teimosas) h += MediaQuery.sizeOf(context).width < 600 ? 360 : 210;
@@ -757,10 +773,22 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     } catch (_) {}
   }
 
+  /// A lição tem historinha para o 📺? (resolvida uma vez por lição)
+  ({String id, bool pode})? _assistirMemo;
+  bool get _podeAssistir {
+    final id = curso.licao.id;
+    final m = _assistirMemo;
+    if (m != null && m.id == id) return m.pode;
+    final pode = podeAssistirLicao(context, curso.licao);
+    _assistirMemo = (id: id, pode: pode);
+    return pode;
+  }
+
   @override
   Widget build(BuildContext context) {
     final passo = _atual;
     final revisao = RevisaoCubit.de(context);
+    final podeAssistir = _podeAssistir;
     // fim de lição nova (não repetida) com 2+ palavras novas: o cartão "🎯 Treinar" na vitória
     final palavras = curso.vitoria && !_repetindo ? PalavrasCubit.de(context) : null;
     final novas = palavras?.novasDaLicao(curso, curso.licao) ?? const <PalavraNova>[];
@@ -816,7 +844,11 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
               },
               child: SizedBox(
                   height: curso.vitoria
-                      ? _alturaVitoria(comCartao: comCartao, teimosas: sug != null, dominadas: dominadas.isNotEmpty)
+                      ? _alturaVitoria(
+                          comCartao: comCartao,
+                          teimosas: sug != null,
+                          dominadas: dominadas.isNotEmpty,
+                          assistir: podeAssistir)
                       : 200),
             )
           else
@@ -840,6 +872,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
                   const SizedBox(height: 8),
                 ],
                 _LinkEnsaio(ligado: _ensaioLigado != false, onAbrir: _abrirEnsaio),
+                if (podeAssistir) _LinkAssistir(onAbrir: _assistirHistorinha),
                 const SizedBox(height: 12),
                 // entra de uma vez (dá para tocar já; zero não pode: o AnimatedSize terminaria dentro do layout) e
                 // sai recolhendo: a frase sobe devagar, não pula no meio da tecla
@@ -977,15 +1010,19 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
               onPularQuiz: _seguir,
               onRepetir: _repetir,
               // no fluxo do placar (nada por cima do título)
-              extra: _ancoraNestaLicao || comCartao || sug != null || dominadas.isNotEmpty
+              extra: _ancoraNestaLicao || comCartao || sug != null || dominadas.isNotEmpty || podeAssistir
                   ? _AoMudarTamanho(aoMudar: _mediuExtraDaVitoria, child: Column(mainAxisSize: MainAxisSize.min, children: [
                       if (_ancoraNestaLicao) _LinhaAncora(frases: curso.licao.trechos.length, novas: !_repetindo),
-                      if (dominadas.isNotEmpty) ...[
+                      if (podeAssistir) ...[
                         if (_ancoraNestaLicao) const SizedBox(height: 10),
+                        _BotaoAssistirVitoria(onAbrir: _assistirHistorinha),
+                      ],
+                      if (dominadas.isNotEmpty) ...[
+                        if (_ancoraNestaLicao || podeAssistir) const SizedBox(height: 10),
                         _LinhaDominadas(palavras: dominadas),
                       ],
                       if (sug != null) ...[
-                        if (_ancoraNestaLicao || dominadas.isNotEmpty) const SizedBox(height: 12),
+                        if (_ancoraNestaLicao || podeAssistir || dominadas.isNotEmpty) const SizedBox(height: 12),
                         ConstrainedBox(
                           constraints: const BoxConstraints(maxWidth: 480),
                           child: CartaoTeimosas(
@@ -1003,7 +1040,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
                           ),
                         ),
                       ],
-                      if ((_ancoraNestaLicao || dominadas.isNotEmpty || sug != null) && comCartao)
+                      if ((_ancoraNestaLicao || podeAssistir || dominadas.isNotEmpty || sug != null) && comCartao)
                         const SizedBox(height: 12),
                       if (comCartao)
                         CartaoPalavrasNovas(
@@ -1102,6 +1139,51 @@ class _LinkEnsaio extends StatelessWidget {
                 style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.brand)),
             TextSpan(
                 text: ligado ? ' · 20 s de cena e frases antes de digitar' : ' · desligado — toque para ver (e religar)',
+                style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
+          ])),
+        ),
+      );
+}
+
+/// Na vitória: "📺 Assistir a historinha" (rever a lição que acabou de fazer, agora como desenho).
+class _BotaoAssistirVitoria extends StatelessWidget {
+  final VoidCallback onAbrir;
+  const _BotaoAssistirVitoria({required this.onAbrir});
+
+  @override
+  Widget build(BuildContext context) => Center(
+        child: OutlinedButton(
+          key: const Key('vitoria-assistir'),
+          onPressed: onAbrir,
+          style: OutlinedButton.styleFrom(
+            minimumSize: const Size(0, 40),
+            side: BorderSide(color: Mixart.brand.withValues(alpha: .7)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+          ),
+          child: Text('📺 Assistir a historinha',
+              style: Mixart.ui(size: 13, weight: FontWeight.w800, color: Mixart.brand)),
+        ),
+      );
+}
+
+/// No começo da lição: "📺 Assistir a historinha" (o desenho animado da lição, sem digitar).
+class _LinkAssistir extends StatelessWidget {
+  final VoidCallback onAbrir;
+  const _LinkAssistir({required this.onAbrir});
+
+  @override
+  Widget build(BuildContext context) => InkWell(
+        key: const Key('licao-assistir'),
+        onTap: onAbrir,
+        borderRadius: BorderRadius.circular(8),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+          child: Text.rich(TextSpan(children: [
+            TextSpan(
+                text: '📺 Assistir a historinha',
+                style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.brand)),
+            TextSpan(
+                text: ' · o desenho da lição, só ouvindo (não conta progresso)',
                 style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
           ])),
         ),
