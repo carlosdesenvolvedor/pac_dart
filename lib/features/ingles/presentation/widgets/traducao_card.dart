@@ -61,6 +61,10 @@ class TraducaoCard extends StatelessWidget {
   /// 16:9 à esquerda da tradução. Com o teclado aberto ([compacto]), uma faixa baixa.
   final Widget Function(Size tamanho)? cena;
 
+  /// 🎬 Quanto a faixa da cena ocupa num cartão estreito (o palco mede se a zona de digitação cabe na tela):
+  /// a faixa cheia, a baixa ou a miniatura no lugar do rosto. No cartão largo (caixa ao lado), não muda nada.
+  final TamanhoCena tamanhoCena;
+
   /// A chave "🎬 Cena / 🙂 Rosto" (na linha das caixinhas); null = sem a chave (lição sem historinha).
   final VoidCallback? onAlternarCena;
   final bool cenaLigada;
@@ -91,14 +95,31 @@ class TraducaoCard extends StatelessWidget {
     this.cena,
     this.onAlternarCena,
     this.cenaLigada = true,
+    this.tamanhoCena = TamanhoCena.cheia,
   });
 
   /// O tamanho da cena: a faixa de cima ([faixa]) ou a caixa ao lado da tradução, para o [interior] do cartão.
-  static Size tamanhoDaCena({required double interior, required bool faixa, required bool compacto, required double alturaTela}) {
-    if (faixa) return Size(interior, compacto ? 96 : (interior * .5).clamp(112.0, 150.0));
+  /// Na faixa, [tamanho] escolhe a cheia, a baixa (96 px, a do teclado aberto) ou a miniatura ([tamanhoMini]).
+  static Size tamanhoDaCena({
+    required double interior,
+    required bool faixa,
+    required bool compacto,
+    required double alturaTela,
+    TamanhoCena tamanho = TamanhoCena.cheia,
+  }) {
+    if (faixa) {
+      return switch (tamanho) {
+        TamanhoCena.mini => tamanhoMini(compacto: compacto),
+        TamanhoCena.baixa => Size(interior, 96),
+        TamanhoCena.cheia => Size(interior, compacto ? 96 : (interior * .5).clamp(112.0, 150.0)),
+      };
+    }
     final w = compacto ? 171.0 : math.min(alturaTela >= 900 ? 320.0 : 288.0, interior * .36);
     return Size(w, w * 9 / 16);
   }
+
+  /// 🎬 A miniatura 16:9 no lugar do rosto, da altura dele (48 com o teclado aberto): não aumenta o cartão.
+  static Size tamanhoMini({required bool compacto}) => compacto ? const Size(86, 48) : const Size(96, 54);
 
   @override
   Widget build(BuildContext context) {
@@ -136,13 +157,20 @@ class TraducaoCard extends StatelessWidget {
       final interior = (box.maxWidth.isFinite ? box.maxWidth : MediaQuery.sizeOf(context).width) - 34;
       final faixa = estreito || interior < larguraCenaAoLado;
       final tam = tamanhoDaCena(
-          interior: interior, faixa: faixa, compacto: compacto, alturaTela: MediaQuery.sizeOf(context).height);
-      return _cartao(context, estreito: estreito, botoes: botoes, cenaFaixa: faixa, cenaTamanho: tam);
+          interior: interior,
+          faixa: faixa,
+          compacto: compacto,
+          alturaTela: MediaQuery.sizeOf(context).height,
+          tamanho: tamanhoCena);
+      // a miniatura fica na linha da tradução, no lugar do rosto
+      final mini = faixa && tamanhoCena == TamanhoCena.mini;
+      return _cartao(context,
+          estreito: estreito, botoes: botoes, cenaFaixa: faixa && !mini, cenaMini: mini, cenaTamanho: tam);
     });
   }
 
   Widget _cartao(BuildContext context,
-      {required bool estreito, required Widget botoes, bool cenaFaixa = false, Size? cenaTamanho}) {
+      {required bool estreito, required Widget botoes, bool cenaFaixa = false, bool cenaMini = false, Size? cenaTamanho}) {
     final c = cena;
     final comCena = c != null && cenaTamanho != null;
     // a imagem-emoji e o rótulo "PT" saem quando há rosto no celular ou a cena (ela já mostra a frase)
@@ -165,7 +193,7 @@ class TraducaoCard extends StatelessWidget {
           if (comCena && !cenaFaixa)
             Padding(
               key: const Key('caixa-da-cena'),
-              padding: const EdgeInsets.only(right: 14),
+              padding: EdgeInsets.only(right: cenaMini ? 12 : 14),
               child: c(cenaTamanho),
             )
           else if (!comCena && rosto != null)
@@ -217,7 +245,7 @@ class TraducaoCard extends StatelessWidget {
                         .copyWith(height: 1.4)),
                 const SizedBox(height: 4),
               ],
-              if (_nomeDeQuem(trecho.quem) case final nome?)
+              if (nomeDeQuem(trecho.quem) case final nome?)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 2),
                   child: Text(nome, style: Mixart.ui(size: 11, weight: FontWeight.w800, color: Mixart.brand)),
@@ -284,6 +312,10 @@ class TraducaoCard extends StatelessWidget {
   }
 }
 
+/// 🎬 O tamanho da cena num cartão estreito: a faixa [cheia] no topo, a faixa [baixa] (96 px) ou a [mini]atura
+/// 16:9 no lugar do rosto (quando nem a baixa deixa a zona de digitação caber na tela do celular).
+enum TamanhoCena { cheia, baixa, mini }
+
 /// "CK · CC BY-NC-ND 3.0" → "CK (CC BY-NC-ND 3.0), Tatoeba"; null = sem gravação.
 String? _creditoDaVoz(String credito) {
   if (credito.isEmpty) return null;
@@ -303,12 +335,12 @@ String urlDaGravacao(String asset) {
 
 /// "Ana: " antes da fala anterior (vazio se não souber quem disse).
 String _prefixoQuem(String quem) {
-  final n = _nomeDeQuem(quem);
+  final n = nomeDeQuem(quem);
   return n == null ? '' : '$n: ';
 }
 
 /// Rótulo de quem fala ("Mike", "Você", "Atendente"); null = sem rótulo.
-String? _nomeDeQuem(String quem) {
+String? nomeDeQuem(String quem) {
   if (quem.isEmpty) return null;
   if (quem == 'voce') return 'Você';
   if (quem == 'dra-lee') return 'Dra. Lee';

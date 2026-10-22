@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/scheduler.dart';
 
-import '../../../arcade/domain/historia_turismo.dart' show TextoBilingue;
+import '../../../arcade/domain/historia_turismo.dart' show CenarioHistoria, TextoBilingue;
 import '../../../arcade/presentation/historia/palco_historia.dart';
 import '../../../arcade/presentation/historia/roteiro_visivel.dart';
 import '../../data/voz_ingles.dart';
 import '../../domain/assistir/historia_licao.dart';
 import 'roteiro_da_frase.dart';
+import 'traducao_card.dart' show nomeDeQuem;
 
 /// 🎬 A cena da frase no cartão da lição de inglês: o palco do 📺 Escutar assistindo ([PalcoHistoria]) parado
 /// no passo da historinha ancorado na frase atual ([ancora] = `historia.ancoras[chaveDaFrase(trecho)]`).
@@ -37,7 +38,7 @@ class CenaDaFrase extends StatefulWidget {
   /// false com o ensaio mental na frente: a cena fica parada (as frases do ensaio falam por cima).
   final bool ativo;
 
-  /// O nome da lição (o rótulo do leitor de tela, sem título autoral).
+  /// O nome da lição (o cartão de título do palco, sem título autoral).
   final String titulo;
 
   /// Quantas vezes alguma cena conferiu se ainda aparece na página (os testes provam que não é a cada quadro).
@@ -198,11 +199,6 @@ class _CenaDaFraseState extends State<CenaDaFrase> with SingleTickerProviderStat
   Widget build(BuildContext context) {
     final h = widget.historia;
     final nome = widget.titulo.isEmpty ? h.licaoId : widget.titulo;
-    final cab = CabecalhoPalco(
-      sobretitulo: '🎬',
-      titulo: h.titulo ?? TextoBilingue(nome, nome),
-      rotuloSemantico: 'Cena da frase: $nome',
-    );
     return KeyedSubtree(
       key: const Key('cena-da-frase'),
       child: _AoPintar(
@@ -220,7 +216,11 @@ class _CenaDaFraseState extends State<CenaDaFrase> with SingleTickerProviderStat
                     builder: (context, _) => PalcoHistoria(
                       roteiro: _roteiro,
                       relogio: _reduzir ? 0 : _quadro.value,
-                      cabecalho: cab,
+                      cabecalho: CabecalhoPalco(
+                        sobretitulo: '🎬',
+                        titulo: h.titulo ?? TextoBilingue(nome, nome),
+                        rotuloSemantico: rotuloDaCena(_roteiro),
+                      ),
                       reduzir: _reduzir,
                       semBalao: true,
                     ),
@@ -234,6 +234,64 @@ class _CenaDaFraseState extends State<CenaDaFrase> with SingleTickerProviderStat
     );
   }
 }
+
+/// O que o leitor de tela diz da cena, em português e sem o inglês (a cena não entrega a frase): quem fala,
+/// com quem e onde — "Cena da historinha: Mike fala com Você (videochamada)".
+@visibleForTesting
+String rotuloDaCena(RoteiroDaFrase roteiro) {
+  final f = roteiro.falaAtual;
+  final estado = roteiro.depois;
+  final lugar = _lugares[estado.cenario] ?? estado.cenario.name;
+  final quem = f == null || f.ehNarrador ? null : nomeDeQuem(f.quem);
+  final alvo = f?.alvo;
+  final com = quem == null || alvo == null || alvo == f!.quem || !estado.atores.containsKey(alvo) ? null : nomeDeQuem(alvo);
+  final acao = quem == null
+      ? 'o narrador conta'
+      : f!.mudo || f.en == null
+          ? '$quem em cena'
+          : '$quem fala${com == null ? '' : ' com $com'}';
+  return 'Cena da historinha: $acao ($lugar)';
+}
+
+const _lugares = {
+  CenarioHistoria.aeroporto: 'aeroporto',
+  CenarioHistoria.garagem: 'garagem',
+  CenarioHistoria.boxes: 'boxes',
+  CenarioHistoria.hotel: 'hotel',
+  CenarioHistoria.cafe: 'café',
+  CenarioHistoria.clinica: 'clínica',
+  CenarioHistoria.plataforma: 'plataforma',
+  CenarioHistoria.podio: 'pódio',
+  CenarioHistoria.campina: 'campina',
+  CenarioHistoria.deserto: 'deserto',
+  CenarioHistoria.cidade: 'cidade',
+  CenarioHistoria.neve: 'neve',
+  CenarioHistoria.vulcao: 'vulcão',
+  CenarioHistoria.espaco: 'espaço',
+  CenarioHistoria.praia: 'praia',
+  CenarioHistoria.ponte: 'ponte',
+  CenarioHistoria.canion: 'cânion',
+  CenarioHistoria.oasis: 'oásis',
+  CenarioHistoria.floresta: 'floresta',
+  CenarioHistoria.vale: 'vale',
+  CenarioHistoria.lago: 'lago',
+  CenarioHistoria.lua: 'lua',
+  CenarioHistoria.marte: 'Marte',
+  CenarioHistoria.estacao: 'estação espacial',
+  CenarioHistoria.autodromo: 'autódromo',
+  CenarioHistoria.videochamada: 'videochamada',
+  CenarioHistoria.escritorio: 'escritório',
+  CenarioHistoria.casa: 'casa',
+  CenarioHistoria.restaurante: 'restaurante',
+  CenarioHistoria.loja: 'loja',
+  CenarioHistoria.copa: 'copa',
+  CenarioHistoria.recepcaoHotel: 'recepção do hotel',
+  CenarioHistoria.salaDeEstar: 'sala de estar',
+  CenarioHistoria.dentroDoCarro: 'dentro do carro',
+  CenarioHistoria.cozinha: 'cozinha',
+  CenarioHistoria.quintal: 'quintal',
+  CenarioHistoria.bar: 'bar',
+};
 
 /// Avisa [aoPintar] cada vez que a página pinta este pedaço (o layout moveu a cena, a página rolou): a cena
 /// confere depois do quadro se ainda aparece. O desenho tem o próprio `RepaintBoundary` e não repinta isto.

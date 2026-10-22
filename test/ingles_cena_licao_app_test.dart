@@ -1,7 +1,8 @@
 // 🎬 A cena da historinha no lugar do rosto, na lição de inglês de verdade (o PalcoIngles com o CursoBloc e o
 // TypingBloc): a 1ª frase já com a cena, avançar leva à âncora da frase nova, a chave "🎬 Cena / 🙂 Rosto" troca
 // e salva sem tirar o foco da frase, trilha própria fica com o rosto, a autoral que demora (400 ms) e o índice
-// fora do ar caem na automática, os tamanhos no celular (com e sem teclado) e no computador, e o ensaio na frente.
+// fora do ar caem na automática, os tamanhos no celular (com e sem teclado, a faixa medida contra a área visível e
+// a miniatura no lugar do rosto quando ela não cabe) e no computador, o ensaio na frente e o rótulo do leitor de tela.
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
@@ -27,6 +28,7 @@ import 'package:pac_dart/features/ingles/presentation/palco_ingles.dart';
 import 'package:pac_dart/features/ingles/presentation/widgets/cena_da_frase.dart';
 import 'package:pac_dart/features/ingles/presentation/widgets/ensaio_mental.dart';
 import 'package:pac_dart/features/ingles/presentation/widgets/frase_view.dart';
+import 'package:pac_dart/features/ingles/presentation/widgets/roteiro_da_frase.dart';
 import 'package:pac_dart/features/ingles/presentation/widgets/traducao_card.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -162,8 +164,34 @@ CenaDaFrase _cena(WidgetTester tester) => tester.widget<CenaDaFrase>(find.byType
 }
 
 final _cenaKey = find.byKey(const Key('cena-da-frase'));
+final _caixaKey = find.byKey(const Key('caixa-da-cena'));
 final _rostoKey = find.byKey(const Key('rosto-da-frase'));
 final _chave = find.byKey(const Key('alternar-cena'));
+
+/// A zona de digitação (o cartão, a frase, o selo e a barra): a 1ª Column acima do cartão.
+Rect _zona(WidgetTester tester) =>
+    tester.getRect(find.ancestor(of: find.byType(TraducaoCard), matching: find.byType(Column)).first);
+
+/// A área da página que rola (a "tela" da lição).
+Rect _pagina(WidgetTester tester) => tester.getRect(find.byType(ListView));
+
+/// A cena está na miniatura (no lugar do rosto, na linha da tradução)?
+bool _naMiniatura(WidgetTester tester) => tester.getSize(_cenaKey).height <= 54;
+
+/// A regra do celular: a faixa só fica se a zona inteira cabe na página; senão, a miniatura — e ela só entra
+/// quando nem a faixa baixa (96 + 10 de respiro) caberia.
+void _conferirRegraDaFaixa(WidgetTester tester, String quando) {
+  final zona = _zona(tester).height;
+  final pagina = _pagina(tester).height;
+  if (_naMiniatura(tester)) {
+    expect(zona + 96 + 10, greaterThan(pagina), reason: '$quando: a miniatura só quando a faixa não cabe');
+  } else {
+    expect(zona, lessThanOrEqualTo(pagina + .5), reason: '$quando: com a faixa, a zona cabe na página');
+    final r = tester.getRect(_cenaKey);
+    expect(_pagina(tester).intersect(r).height, closeTo(r.height, .5), reason: '$quando: a faixa inteira à vista');
+  }
+  expect(_rostoKey, findsNothing, reason: '$quando: a cena, nunca o rosto');
+}
 
 void testWidgetsDesktop(String d, WidgetTesterCallback c) =>
     testWidgets(d, c, variant: TargetPlatformVariant.only(TargetPlatform.macOS));
@@ -294,7 +322,7 @@ void main() {
     expect(caixa.top, lessThan(traducao.top + 30));
   });
 
-  testWidgetsCelular('celular 390×844: faixa 274×137 no topo do cartão; com o teclado (sobram 544 px), o rosto',
+  testWidgetsCelular('celular 390×844: faixa 274×137 no topo do cartão; com o teclado, a miniatura no lugar do rosto',
       (tester) async {
     await _abrir(tester, tela: const Size(390, 844));
     await _assenta(tester);
@@ -302,47 +330,126 @@ void main() {
     final cartao = tester.getRect(find.byType(TraducaoCard));
     expect(tester.getRect(_cenaKey).top, lessThan(cartao.top + 20), reason: 'a faixa abre o cartão');
     expect(tester.getRect(find.byType(FraseView)).top, greaterThan(tester.getRect(_cenaKey).bottom));
+    _conferirRegraDaFaixa(tester, 'sem teclado');
     tester.view.viewInsets = const FakeViewPadding(bottom: 300);
     addTearDown(tester.view.resetViewInsets);
     await _assenta(tester);
-    expect(_cenaKey, findsNothing, reason: 'a zona com a faixa não caberia acima do teclado');
-    expect(tester.getSize(_rostoKey), const Size(48 + 12, 48), reason: 'o rosto compacto de sempre');
+    expect(tester.getSize(_cenaKey), const Size(86, 48), reason: 'a faixa não cabe acima do teclado: a miniatura');
+    expect(tester.getSize(_caixaKey), const Size(86 + 12, 48), reason: 'no lugar do rosto compacto (48 + 12)');
+    expect(_rostoKey, findsNothing);
+    final linha = tester.getRect(_caixaKey);
+    expect(linha.top, greaterThan(tester.getRect(find.byType(TraducaoCard)).top), reason: 'na linha da tradução');
     tester.view.resetViewInsets();
+    await _assenta(tester);
+    expect(tester.getSize(_cenaKey), const Size(274, 137), reason: 'o teclado fechou: a faixa volta');
+  });
+
+  testWidgetsCelular('o teclado sobe quadro a quadro (10, 150, 300 px): a faixa vira miniatura no fim', (tester) async {
+    await _abrir(tester, tela: const Size(390, 844));
+    await _assenta(tester);
+    expect(tester.getSize(_cenaKey), const Size(274, 137));
+    addTearDown(tester.view.resetViewInsets);
+    for (final k in [10.0, 150.0, 300.0]) {
+      tester.view.viewInsets = FakeViewPadding(bottom: k);
+      await tester.pump(const Duration(milliseconds: 16));
+    }
+    await _assenta(tester);
+    expect(tester.getSize(_cenaKey), const Size(86, 48), reason: 'a decisão acompanha o teclado até o fim');
+    expect(_rostoKey, findsNothing);
+    _conferirRegraDaFaixa(tester, 'teclado em degraus');
+    // e desce em degraus também
+    for (final k in [200.0, 60.0, 0.0]) {
+      tester.view.viewInsets = FakeViewPadding(bottom: k);
+      await tester.pump(const Duration(milliseconds: 16));
+    }
     await _assenta(tester);
     expect(tester.getSize(_cenaKey), const Size(274, 137));
   });
 
-  testWidgetsCelular('celular 430×932: com o teclado ainda sobra tela (632 px): a faixa baixa e a zona cabe',
-      (tester) async {
+  testWidgetsCelular('celular 430×932: a faixa cheia; com o teclado, a regra (faixa só se a zona cabe)', (tester) async {
     await _abrir(tester, tela: const Size(430, 932));
     await _assenta(tester);
     expect(tester.getSize(_cenaKey), const Size(314, 150));
+    _conferirRegraDaFaixa(tester, 'sem teclado');
     tester.view.viewInsets = const FakeViewPadding(bottom: 300);
     addTearDown(tester.view.resetViewInsets);
     await _assenta(tester);
-    expect(tester.getSize(_cenaKey), const Size(314, 96));
     expect(find.text('áudio automático'), findsNothing, reason: 'compacto: as caixinhas (e a chave) somem');
     expect(_chave, findsNothing);
-    // o cartão (com a faixa), a frase, o selo e a barra cabem nos 632 px de cima
-    final altura = tester.getRect(find.byType(FraseView)).bottom - tester.getRect(find.byType(TraducaoCard)).top + 90;
-    expect(altura, lessThanOrEqualTo(932 - 300));
+    _conferirRegraDaFaixa(tester, 'com teclado');
     tester.view.resetViewInsets();
     await _assenta(tester);
     expect(tester.getSize(_cenaKey), const Size(314, 150));
   });
 
-  testWidgetsCelular('celular 360×640: faixa 244×122; com o teclado numa tela baixa, o rosto pequeno', (tester) async {
+  testWidgetsCelular('celular 360×640: com e sem teclado, a cena no tamanho que cabe (nunca o rosto)', (tester) async {
     await _abrir(tester, tela: const Size(360, 640));
     await _assenta(tester);
-    expect(tester.getSize(_cenaKey), const Size(244, 122));
+    _conferirRegraDaFaixa(tester, 'sem teclado');
     tester.view.viewInsets = const FakeViewPadding(bottom: 270);
     addTearDown(tester.view.resetViewInsets);
     await _assenta(tester);
-    expect(_cenaKey, findsNothing);
-    expect(_rostoKey, findsOneWidget);
-    expect(tester.getSize(_rostoKey), const Size(48 + 12, 48), reason: 'o rosto compacto de sempre');
+    expect(tester.getSize(_cenaKey), const Size(86, 48), reason: 'a miniatura do tamanho do rosto compacto');
+    expect(_rostoKey, findsNothing);
     tester.view.resetViewInsets();
     await _assenta(tester);
+    _conferirRegraDaFaixa(tester, 'teclado fechado');
+  });
+
+  for (final (tela, letra) in [(const Size(360, 640), 1.0), (const Size(390, 844), 1.0), (const Size(430, 932), 1.0)]) {
+    testWidgetsCelular('${tela.width.toInt()}×${tela.height.toInt()} com letra $letra: em cada frase, a faixa só se a '
+        'zona cabe; a miniatura ocupa o lugar do rosto', (tester) async {
+      tester.platformDispatcher.textScaleFactorTestValue = letra;
+      addTearDown(tester.platformDispatcher.clearTextScaleFactorTestValue);
+      final curso = await _abrir(tester, tela: tela);
+      await _assenta(tester);
+      for (var i = 0; i < 3; i++) {
+        _conferirRegraDaFaixa(tester, 'passo ${i + 1}');
+        if (_naMiniatura(tester)) {
+          // a miniatura não é mais alta que o rosto: o cartão fica do tamanho de antes
+          expect(tester.getSize(_caixaKey).height, lessThanOrEqualTo(60));
+        }
+        await _proximaFrase(tester);
+        await _assenta(tester);
+      }
+      curso.add(const LicaoSelecionada(1));
+      await _assenta(tester);
+      _conferirRegraDaFaixa(tester, 'outra lição');
+    });
+  }
+
+  testWidgetsCelular('celular: a chave liga a cena sem pedir o teclado (a frase sem foco continua sem foco)',
+      (tester) async {
+    await _abrir(tester, tela: const Size(390, 844), prefs: {PreferenciaCenaLicao.chave: false});
+    await _assenta(tester);
+    expect(_rostoKey, findsOneWidget);
+    // o "OK" do teclado do iPhone soltou a frase
+    FocusManager.instance.primaryFocus?.unfocus();
+    await _anda(tester);
+    tester.testTextInput.log.clear();
+    await tester.tap(_chave);
+    await _assenta(tester);
+    expect(tester.testTextInput.log.where((c) => c.method == 'TextInput.show'), isEmpty,
+        reason: 'o teclado não sobe por cima da cena que acabou de ligar');
     expect(_cenaKey, findsOneWidget);
+    expect(find.text('🎬 Cena'), findsOneWidget);
+    expect((await SharedPreferences.getInstance()).getBool(PreferenciaCenaLicao.chave), isTrue);
+  });
+
+  testWidgetsDesktop('o leitor de tela ouve quem fala e onde, sem o inglês da frase', (tester) async {
+    final sem = tester.ensureSemantics();
+    final curso = await _abrir(tester);
+    await _assenta(tester);
+    final fala = RoteiroDaFrase()..irPara(_cena(tester).historia, _cena(tester).ancora);
+    final rotulo = rotuloDaCena(fala);
+    expect(rotulo, matches(RegExp(r'^Cena da historinha: .+ \(.+\)$')));
+    final quem = fala.falaAtual!.quem;
+    if (quem != 'narrador') expect(rotulo, contains(nomeDeQuem(quem)!));
+    final en = curso.state.licao.trechos[curso.state.trechoIdx].cod;
+    expect(rotulo, isNot(contains(en)));
+    expect(rotulo, isNot(contains(curso.state.licao.nome)), reason: 'o nome da lição parecia a frase');
+    expect(find.bySemanticsLabel(rotulo), findsOneWidget);
+    fala.dispose();
+    sem.dispose();
   });
 }

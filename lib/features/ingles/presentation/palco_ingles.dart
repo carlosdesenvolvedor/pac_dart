@@ -71,10 +71,6 @@ class PalcoIngles extends StatefulWidget {
   /// 🎬 Quanto a cena espera pela história autoral da trilha que está chegando (mostrando o rosto).
   static const esperaDaCena = Duration(milliseconds: 400);
 
-  /// 🎬 Com o teclado do celular aberto, abaixo desta altura visível (px) o cartão volta ao rosto pequeno: a zona
-  /// de digitação (o cartão com a faixa da cena, a frase, o selo e a barra) não caberia acima do teclado.
-  static const alturaMinimaComCena = 620.0;
-
   /// Pref: quantas vezes SEGUIDAS o cartão "🆕 palavras novas" do começo foi pulado (Começar direto ou a 1ª
   /// tecla); "Conhecer antes" zera.
   static const prefPulosAntes = 'en_antes_pulos';
@@ -224,6 +220,16 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
 
   /// A lição cuja cena falhou (o encenador lançou): o rosto, sem tentar de novo a cada quadro.
   String? _cenaFalhou;
+
+  /// 🎬 Celular: a faixa da cena que deixa a zona de digitação INTEIRA (o cartão com a faixa, a frase, o selo e a
+  /// barra) na área visível da página — com ou sem teclado, em qualquer tamanho de letra. A faixa cheia, a baixa
+  /// ou, se nem ela cabe, a miniatura no lugar do rosto (o rosto fica só para frase sem cena). Medida depois do
+  /// quadro ([_conferirTamanhoCena]) a cada frase, ao mudar a janela/teclado, a chave ou o jeito de responder.
+  TamanhoCena _tamanhoCena = TamanhoCena.cheia;
+  bool _conferenciaCenaAgendada = false;
+
+  /// O último build pôs a cena no cartão (sem ela não há o que medir).
+  bool _cenaNoCartao = false;
 
   /// Com o ensaio na frente, nenhuma tecla chega à frase e ela não fala.
   bool get _segurandoFrase => _ensaioAberto || _ensaioEsperando;
@@ -384,6 +390,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
       _ouviuAntes = 0;
       _viuNestePasso = _verFrases && p.modo.deMemoria;
     });
+    _conferirTamanhoCena();
     if (_segurandoFrase) {
       // o ensaio está na frente: a fala e o foco esperam ele fechar
       _vozSegurada = _audioAuto && p.estreia;
@@ -407,6 +414,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     if (e == _entrada) return;
     setState(() => _entrada = e);
     PrefsEntrada.salvar(e);
+    _conferirTamanhoCena();
     // celular: os blocos (ou o microfone) aparecem embaixo da frase — rola para a zona inteira ficar à vista
     _manterAFraseVisivel();
   }
@@ -420,6 +428,14 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
   /// Celular: a zona de digitação fica à vista com o teclado aberto.
   @override
   void aoSubirOTeclado() => _manterAFraseVisivel();
+
+  /// A janela mudou (o teclado sobe/desce quadro a quadro no Android/iOS, a tela girou): a faixa da cena é
+  /// conferida de novo depois do quadro, na área que sobrou.
+  @override
+  void didChangeMetrics() {
+    super.didChangeMetrics();
+    _conferirTamanhoCena();
+  }
 
   void _manterAFraseVisivel() => manterZonaVisivel(_zonaDigitacao, aindaVale: () => mounted && !_segurandoFrase);
 
@@ -830,6 +846,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     _esperandoCena = false;
     final id = curso.licao.id;
     if (_cenaLigada != true || id.isEmpty) return;
+    _conferirTamanhoCena();
     unawaited(_historias.prepararLicao(id).then((_) => _cenaChegou(id)));
     if (_historias.carregando(id)) {
       _esperandoCena = true;
@@ -843,6 +860,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     _esperaCena?.cancel();
     _esperaCena = null;
     setState(() => _esperandoCena = false);
+    _conferirTamanhoCena();
   }
 
   /// 🎬 A história e a âncora da frase atual; null = o rosto (chave desligada, lição sem historinha, autoral a
@@ -880,7 +898,9 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     return onde != null && onde.t < curso.trilhas.length && !curso.trilhas[onde.t].propria;
   }
 
-  /// "🎬 Cena / 🙂 Rosto": troca e salva; o teclado continua na frase.
+  /// "🎬 Cena / 🙂 Rosto": troca e salva. No computador o foco volta à frase (Enter, Esc e Tab seguem nela); no
+  /// celular não: com a frase sem foco (o "OK" do teclado do iPhone a solta), pedir o foco abriria o teclado e
+  /// a cena que acabou de ligar ficaria pequena atrás dele. Com a frase ainda focada, nada muda.
   void _alternarCena() {
     final liga = _cenaLigada != true;
     setState(() {
@@ -888,14 +908,46 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
       _prepararCena();
     });
     PreferenciaCenaLicao.salvar(liga);
-    _pedirFoco();
+    if (!ehCelular) _pedirFoco();
   }
 
-  /// A altura da janela que sobra acima do teclado virtual (px lógicos).
-  double _alturaVisivel(BuildContext context) {
-    final janela = View.maybeOf(context);
-    if (janela == null) return double.infinity;
-    return (janela.physicalSize.height - janela.viewInsets.bottom) / janela.devicePixelRatio;
+  /// 🎬 Celular: depois do próximo quadro, mede a zona de digitação e a área visível da página e escolhe a faixa
+  /// da cena que deixa a zona inteira à vista ([_tamanhoCena]); se mudou, refaz e rola a zona de novo.
+  void _conferirTamanhoCena() {
+    if (!ehCelular || _conferenciaCenaAgendada) return;
+    _conferenciaCenaAgendada = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _conferenciaCenaAgendada = false;
+      if (!mounted) return;
+      final t = _medirTamanhoCena();
+      if (t == null || t == _tamanhoCena) return;
+      setState(() => _tamanhoCena = t);
+      _manterAFraseVisivel();
+    });
+    WidgetsBinding.instance.ensureVisualUpdate();
+  }
+
+  /// A maior faixa que cabe: a zona sem a cena (a medida menos a faixa de agora; da miniatura, a zona inteira —
+  /// conta para cima, sem ir e voltar) mais a faixa, contra a altura da área que rola. null = nada a decidir
+  /// (sem cena no cartão, cartão largo com a caixa ao lado, ainda sem medida).
+  TamanhoCena? _medirTamanhoCena() {
+    if (!_cenaNoCartao) return null;
+    final ctx = _zonaDigitacao.currentContext;
+    final zona = ctx?.findRenderObject();
+    final pagina = ctx == null ? null : Scrollable.maybeOf(ctx)?.position;
+    if (zona is! RenderBox || !zona.hasSize || pagina == null || !pagina.hasViewportDimension) return null;
+    final interior = zona.size.width - 34;
+    if (MediaQuery.sizeOf(context).width >= 560 && interior >= TraducaoCard.larguraCenaAoLado) return null;
+    double faixa(TamanhoCena t) => t == TamanhoCena.mini
+        ? 0
+        : TraducaoCard.tamanhoDaCena(interior: interior, faixa: true, compacto: tecladoAberto, alturaTela: 0, tamanho: t)
+                .height +
+            10;
+    final semCena = zona.size.height - faixa(_tamanhoCena);
+    final cabe = pagina.viewportDimension + .5;
+    if (semCena + faixa(TamanhoCena.cheia) <= cabe) return TamanhoCena.cheia;
+    if (semCena + faixa(TamanhoCena.baixa) <= cabe) return TamanhoCena.baixa;
+    return TamanhoCena.mini;
   }
 
   /// A lição tem historinha para o 📺? (resolvida uma vez por lição)
@@ -934,10 +986,11 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     // uma linha só: pulado 3+ vezes seguidas, ou na 1ª lição no celular (o nivelamento já está em cima)
     final antesCompacto = _pulosAntes >= _pulosParaCompacto ||
         (curso.concluidas.isEmpty && MediaQuery.sizeOf(context).width < 600);
-    // 🎬 a cena da frase no lugar do rosto (com o teclado do celular aberto numa tela baixa, o rosto pequeno)
+    // 🎬 a cena da frase no lugar do rosto (no celular, a faixa que deixa a zona de digitação caber na tela; se
+    // nem a baixa cabe, a miniatura no lugar do rosto)
     final cena = passo == null || curso.vitoria ? null : _cenaDaFrase();
-    final usaCena =
-        cena != null && !(tecladoAberto && _alturaVisivel(context) < PalcoIngles.alturaMinimaComCena);
+    final usaCena = cena != null;
+    _cenaNoCartao = usaCena;
     // a chave só aparece em lição do curso (que tem historinha), depois de a pref chegar
     final mostraChaveCena = _cenaLigada != null && _licaoTemCena;
     return BlocListener<TypingBloc, TypingState>(
@@ -1051,6 +1104,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
                             titulo: curso.licao.nome,
                           )
                       : null,
+                  tamanhoCena: ehCelular ? _tamanhoCena : TamanhoCena.cheia,
                   cenaLigada: _cenaLigada == true,
                   onAlternarCena: mostraChaveCena ? _alternarCena : null,
                   rosto: _trecho.quem.isEmpty
