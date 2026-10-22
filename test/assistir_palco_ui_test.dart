@@ -3,7 +3,8 @@
 // a espera da autoral, o selo ✨, nenhum véu preto ao repetir (D18), minimizar e reabrir no meio do vão,
 // GlobalKey na troca de layout e no ⛶, o Ticker pelo TickerMode, as molduras da videochamada (390×844 e
 // 2560×1080) e 4 telas com texto 1,6× sem exceção; pausado não agenda quadro; nada de timer pendurado; o balão
-// compacto sem PT da chamada no celular deitado (sem cobrir cabeça) e o relógio parado com o palco rolado para fora.
+// compacto sem PT da chamada no celular deitado (sem cobrir cabeça, também com a frase longa) e o relógio parado com
+// o palco rolado para fora (ou empurrado para fora por uma mudança de layout, sem rolagem).
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -98,8 +99,8 @@ const _licaoChamada = Licao(id: 'trilha-a.licao-3', nome: 'A daily', emoji: '�
   Trecho(id: 'f-c3', quem: 'ben', cod: 'Hello!', dica: 'Olá!', out: ''),
 ]);
 
-HistoriaLicao _historiaChamada() => HistoriaLicao.daLicao(
-      _licaoChamada,
+HistoriaLicao _historiaChamada([Licao licao = _licaoChamada]) => HistoriaLicao.daLicao(
+      licao,
       [
         CenaHistoria(
           cenario: CenarioHistoria.videochamada,
@@ -112,7 +113,7 @@ HistoriaLicao _historiaChamada() => HistoriaLicao.daLicao(
             AtorEmCena(quem: 'ana', pos: PosicaoPalco.direita, visivel: false),
           ],
           falas: [
-            for (final t in _licaoChamada.trechos)
+            for (final t in licao.trechos)
               FalaHistoria(quem: t.quem, en: t.cod, pt: t.dicaPlana, acao: AcaoAtor.acena),
           ],
         ),
@@ -120,6 +121,26 @@ HistoriaLicao _historiaChamada() => HistoriaLicao.daLicao(
       nivel: NivelIngles.a1,
       autoral: false,
     );
+
+/// A mesma chamada com frases longas: ~70 letras na fonte dos testes (quadrada: 1 letra = 1 em, quase o dobro da
+/// Archivo), o que faz o compacto de 15 px precisar de 3 linhas no palco do celular deitado, como uma frase de ~140
+/// letras na fonte de verdade.
+const _licaoChamadaLonga = Licao(id: 'trilha-a.licao-3', nome: 'A daily', emoji: '💻', trechos: [
+  Trecho(id: 'f-c0', quem: 'voce', cod: 'Good morning, team!', dica: 'Bom dia, time!', out: ''),
+  Trecho(
+      id: 'f-c1',
+      quem: 'mike',
+      cod: 'Sure, I will send the new slides to all of you right after this call.',
+      dica: 'Claro, mando os slides novos para todos logo depois desta chamada.',
+      out: ''),
+  Trecho(
+      id: 'f-c2',
+      quem: 'sarah',
+      cod: 'A queue adds another moving part, but it keeps the main flow simple.',
+      dica: 'A fila acrescenta mais uma peça, mas mantém o fluxo principal simples.',
+      out: ''),
+  Trecho(id: 'f-c3', quem: 'ben', cod: 'Hello!', dica: 'Olá!', out: ''),
+]);
 
 const _trilhas = [
   Trilha(nivel: 'Trilha A', emoji: '🧪', etapa: etapaFixture, licoes: [licaoA, licaoB, _licaoChamada]),
@@ -664,5 +685,79 @@ void main() {
       }
       await tester.pumpWidget(Container());
     }
+  });
+
+  testWidgets('videochamada no celular deitado com frase longa (3 linhas no compacto): a letra do compacto encolhe '
+      'e o balão não cobre cabeça; as molduras não mudam de tamanho entre as falas', (tester) async {
+    final fila = [for (var k = 0; k < 4; k++) faixaDe(_licaoChamadaLonga, k)];
+    Rect? molduraAntes;
+    for (final indice in [0, 1, 2]) {
+      final m = _Montagem();
+      addTearDown(m.cubit.close);
+      m.historias.mapa[_licaoChamada.id] = _historiaChamada(_licaoChamadaLonga);
+      await _montar(tester, m: m, tela: const Size(844, 390), tamanho: const Size(640, 210),
+          estado: tocandoEm(indice: indice, fila: fila));
+      await _andar(tester, 4000);
+      expect(tester.takeException(), isNull);
+      final balao = tester.getRect(find.byKey(const Key('historia-balao')));
+      expect(find.byKey(const Key('historia-balao-pt')), findsNothing);
+      for (final q in ['voce', 'mike', 'sarah', 'ben']) {
+        final a = tester.getRect(find.byKey(ValueKey('historia-ator-$q')));
+        final cabeca = Rect.fromLTRB(a.left, a.top, a.right, a.top + a.height * .3);
+        expect(cabeca.overlaps(balao), isFalse, reason: 'fala $indice: o balão $balao cobre a cabeça de $q $cabeca');
+      }
+      // a frase inteira continua no balão (só a letra encolhe)
+      expect(_textoRico(tester, 'historia-balao-en'), _licaoChamadaLonga.trechos[indice].cod);
+      final moldura = tester.getRect(find.byKey(const ValueKey('historia-moldura-voce')));
+      if (molduraAntes != null) expect(moldura, molduraAntes, reason: 'fala $indice: a moldura pulou de tamanho');
+      molduraAntes = moldura;
+      await tester.pumpWidget(Container());
+    }
+  });
+
+  testWidgets('empurrado para fora da página por uma mudança de layout (sem rolar), o relógio para; de volta, anda; '
+      'tocando à vista, não confere a cada quadro', (tester) async {
+    tester.view.physicalSize = const Size(800, 600);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final m = _Montagem();
+    addTearDown(m.cubit.close);
+    m.cubit.emitir(tocandoEm());
+    var acima = 0.0;
+    late StateSetter mudar;
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(
+        body: SingleChildScrollView(
+          child: StatefulBuilder(builder: (context, setState) {
+            mudar = setState;
+            return Column(children: [
+              SizedBox(height: acima),
+              SizedBox(width: 640, height: 360, child: m.palco()),
+              const SizedBox(height: 400),
+            ]);
+          }),
+        ),
+      ),
+    ));
+    await tester.pump();
+    final c0 = PalcoAssistir.debugConferencias;
+    final t0 = _palcoHistoria(tester).roteiro.tPasso;
+    await _andar(tester, 1000);
+    expect(_palcoHistoria(tester).roteiro.tPasso, greaterThan(t0), reason: 'à vista, o desenho anda');
+    expect(PalcoAssistir.debugConferencias - c0, lessThan(4), reason: 'o desenho andando não repinta o vigia');
+    mudar(() => acima = 900); // o que vem acima cresce: o palco sai da tela, a rolagem fica em 0
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 16));
+    final t1 = _palcoHistoria(tester).roteiro.tPasso;
+    await tester.pump(const Duration(milliseconds: 500));
+    expect(_palcoHistoria(tester).roteiro.tPasso, t1, reason: 'empurrado para fora, o Ticker para');
+    expect(tester.binding.hasScheduledFrame, isFalse, reason: 'nenhum quadro agendado fora da tela');
+    mudar(() => acima = 100);
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 16));
+    final t2 = _palcoHistoria(tester).roteiro.tPasso;
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(_palcoHistoria(tester).roteiro.tPasso, greaterThan(t2), reason: 'de volta à vista, anda de novo');
+    expect(tester.takeException(), isNull);
   });
 }

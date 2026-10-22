@@ -485,6 +485,16 @@ void main() {
       expect(pensa.emocao, Expressao.pensativo);
     });
 
+    test('variante de gênero com ZWJ (🙋‍♀️, 🙅‍♂️, com tom de pele) = o gesto da pessoa', () {
+      expect(EncenadorLicao.gestoDe(_t('Me!', '🙋‍♀️')).acao, AcaoAtor.acena);
+      expect(EncenadorLicao.gestoDe(_t('Me!', '🙋‍♂️')).acao, AcaoAtor.acena);
+      expect(EncenadorLicao.gestoDe(_t('Me!', '🙋🏽‍♀️')).acao, AcaoAtor.acena);
+      expect(EncenadorLicao.gestoDe(_t('Okay.', '🙅‍♀️')).acao, AcaoAtor.nega);
+      expect(EncenadorLicao.gestoDe(_t('Okay.', '🙅🏿‍♂️❌')).acao, AcaoAtor.nega);
+      // a profissão com ZWJ continua um grafema só: 👩‍💻 não casa com 💻 (nem vira o notebook na mão)
+      expect(EncenadorLicao.gestoDe(_t('Okay.', '👩‍💻')).segura, isNull);
+    });
+
     test('emoji → emoção, efeito e prop', () {
       expect(EncenadorLicao.gestoDe(_t('Okay.', '😃')).emocao, Expressao.radiante);
       expect(EncenadorLicao.gestoDe(_t('Okay.', '😬')).emocao, Expressao.nervoso);
