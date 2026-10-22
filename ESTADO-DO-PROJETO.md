@@ -2524,3 +2524,58 @@ Estado: integrado, revisado, testado e com a prova visual feita no probe. **Sem 
 - **Teste ajustado:** `ingles_historias_licoes_conteudo_test` "preparar → … uma lição fora do piloto sai automática" procurava uma trilha sem história e não acha mais nenhuma; agora o bundle de teste esconde uma trilha do índice (`_BundleSemTrilha`) e confere que ela cai na automática com a tabela.
 - **Validação:** `validar_historias_licoes.py --pasta assets/ingles/historias` 0 erros e 1 aviso de propósito (o de sempre, `prazer-ate-amanha`); cada trilha nova 0 erros / 0 avisos; `--auto-teste` 59/59; `ingles_historias_licoes_conteudo`, `historias_licoes_repo`, `assistir_historias_licoes` e `historias_licoes_paridade`: 203/203.
 - **Pendente:** build + deploy (o lote é asset do bundle: o dono só vê depois do deploy); prova visual opcional de 2–3 lições.
+
+## ⚡ 22/out/2026 (rodada 19): travadas do Turismo 3D "mesmo no Leve" (FEITO; sem deploy)
+
+Pedido do dono: "mesmo no Leve ainda trava algumas partes". Não repete o pacote de 20/out (rodada 2). Visual e comportamento iguais.
+Medida com um **harness em node** (scratchpad, fora do repo): roda o `turismo3d.js` de verdade com o three.js do `web/lib3d` e um
+WebGL falso que só **conta** chamadas (`compileShader`, `linkProgram`, uploads de textura), qualidade Leve, pista de 3,2 km com 26
+pórticos (1 carro + 1 ficha cada; fichas pegas ao passar, 1 batida a cada 3 pórticos), 30 m/s, 6.280 quadros.
+
+- **Causa nº 1 — shader compilado no meio da corrida (o engasgo "em algumas partes").** Antes / depois, durante a corrida:
+  tema 3 (cidade) **72 programas / 144 compileShader em 34 quadros → 0**; tema 26 (estádio) **71 → 0**; tema 1 (campina, sem postes)
+  **26 → 0**. `renderer.info.programs` no fim: 64 → 19. Duas fontes:
+  - **Luzes dos postes** (`construirLampadas`/`atualizarLuzes`): o pool ligava/desligava `visible` conforme 3 ou 4 postes cabiam na
+    janela de 200 m; no three.js o nº de PointLights visíveis entra na chave do shader, então todo material com luz trocava de
+    programa e a 1ª vez de cada contagem **compilava ~9 programas de uma vez** (a ~50 m da largada e de novo perto da chegada). Agora o
+    pool tem **contagem fixa** (sempre visível no Leve/Alta; a luz que sobra fica com **intensidade 0**) e são **4** em vez de 5 (um
+    poste a cada 60 m numa janela de 200 m nunca dá 5 — a 5ª nunca acendia). `atualizarLuzes` sem `filter/slice` por quadro.
+  - **Faíscas** (`soltarFaiscas`, em toda ficha e batida): material novo descartado em 0,75 s; com o último descarte o three.js
+    apagava o programa e a **próxima ficha compilava de novo — um engasgo por moeda**. Agora um `PointsMaterial` "guardião"
+    (`guardarProgramaFaiscas`, mesmos parâmetros, invisível) fica na cena do `aquecer()` ao `destruir()`. O 1º sprite "+3 🪙"
+    (`novoPopup`, mesmo pool de 6) também nasce no `aquecer()`, já compilado e com a textura na GPU.
+- **Uploads de textura adiantados** (`texturasAdiante`/`subirTexturasAdiante`): as placas (512×176) e fichas (256×256) subiam no quadro
+  em que o pórtico entrava na vista (3 placas juntas a ~900 m). Agora: as dos primeiros 1.400 m no `aquecer()`, o resto **uma por
+  quadro** antes de entrar na vista. Uploads na corrida 129 → 94 (os outros 35 foram para a carga); quadros com 3 uploads 6 → 3 (os
+  que sobram são repinturas de placa ✓/batida, inerentes). Mesma memória no fim.
+- **Tráfego sem `find` por quadro:** `obstaculoDoCarro` (Map `k·8+i`) no lugar de `obstaculos.find(...)` por carro por quadro.
+- **Diagnóstico novo no `debug()`:** `programasNovosNaCorrida` (programas de shader criados depois da largada, mesmo os já mortos —
+  o ideal é **0**; só a troca de nível do vigia cria), `luzesPostes` {pool, visíveis, acesas} e `texturasAdiantadas`.
+- **Flutter:** `pintarTexto` (`widgets/perspectiva.dart`) reaproveita o `TextPainter` já medido (cache dos últimos 64; limpa quando
+  chega fonte nova via `systemFonts`): o velocímetro por cima do 3D refazia 2 layouts ("km/h" + número) a cada km/h. Medida no teste
+  novo: 5 repinturas com km/h já vistos = **3 layouts** (antes 10).
+- **Para a próxima tarefa no `turismo3d.js` (retoques visuais):** as mudanças estão em blocos marcados "⚡ desempenho (22/out)":
+  `LUZES_POOL`/`INTENSIDADE_POSTE` + `construirLampadas`/`atualizarLuzes`/`aplicarQualidade` (não voltar a mexer em `visible` de
+  luz durante a corrida — mude `intensity`); `materialFaisca`/`guardarProgramaFaiscas` (faísca nova tem de usar `materialFaisca`);
+  `novoPopup`; `texturasAdiante` (textura nova de pórtico/ficha: `texturasAdiante.push({ z, tex })`); `obstaculoDoCarro`;
+  `vigiarProgramas`. Material/luz novos que só aparecem no meio da corrida devem existir na cena antes do `aquecer()`
+  (o `compileAsync` compila até os invisíveis). Sem bump de `VERSAO` (API e Dart iguais).
+- **Suspeito, não mexido (motivo):**
+  - O Leve mantém **sombra PCF 1024 e luzes dinâmicas** (luz de acompanhamento, 2 faróis spot à noite, 4 postes): é o que mais pesa
+    por pixel numa GPU fraca, mas desligar muda o visual — decisão do dono (ex.: Leve sem postes reais, só os bulbos emissivos).
+  - **Rebaixar de nível no meio da corrida** (vigia) recompila todos os shaders (sombra e luzes mudam a chave): um engasgo de uma vez,
+    justo quando já está lento. Pré-compilar as variantes alongaria a carga.
+  - Repintura das placas no ✓/batida e do painel a cada tecla (upload do canvas inteiro): inerente; `texSubImage` parcial é mudança maior.
+  - Alocações pequenas por quadro no JS (`pose()`, `frente()/direita()`, `posicionarPaineis` com filter/map/`new Vector3`, chave
+    string do `pintarPainel`): GC jovem barato; trocar `frente/direita` por rascunho é arriscado (o retorno é guardado em `bater`/faíscas).
+  - Fichas: material transparente `DoubleSide` = 2 draws por ficha (o three força 2 passes) — mexer muda o desenho.
+  - Dart: `jsify()` do estado inteiro a cada tick (`vista_3d_web.dart`) e o `setState` da página do Turismo a ~30 Hz (a refatoração
+    grande do HUD segue pulada, como em 20/out).
+  - Chuva: `_TirosPainter` com `shouldRepaint` sempre true, `Paint`/gradiente/`MaskFilter.blur` por tiro por quadro (só com tiros no
+    ar; o blur já fora pulado em 20/out). `pista_gt` (vista 2D sem 3D) repinta todo quadro por natureza.
+  - `destruir()` não descarta geometrias/texturas da pista, placas e carros (só os extras dos mundos): o Dart chama `destruir()` com
+    `forceContextLoss` ao sair, o que libera a GPU; só um `montar` repetido no mesmo canvas acumularia.
+- **Testes:** novo `test/arcade_desempenho_test.dart` (2: velocímetro sem relayout de texto repetido; cache limitado). `arcade_*` + `turismo_*` + `progresso_turismo_30` + `engenheiro_gt` (23 arquivos): **286/286 passam**, nenhum teste antigo editado. `flutter analyze lib test`: sem avisos. `node --check` do JS numa cópia: ok.
+- **Conferir no aparelho (a máquina onde trava, no Leve):** uma corrida num mundo com postes (cidade, pista 3/17/18/25/26) e pegando
+  várias fichas; no console `turismo3d.debug().programasNovosNaCorrida` deve ficar **0** (antes subia a cada ficha) e
+  `luzesPostes` = {pool: 4, visíveis: 4, acesas: 3–4}; conferir que os postes iluminam o asfalto como antes e que o "+3 🪙" aparece.

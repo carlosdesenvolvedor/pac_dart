@@ -272,7 +272,7 @@ function aplicarQualidade(nivel) {
   for (const m of lampadasMalhas) m.castShadow = false;
   if (luzCarro) luzCarro.visible = perfilAtual.luzes;
   for (const l of faroisLuz) l.visible = perfilAtual.luzes;
-  if (!perfilAtual.luzes) for (const l of luzesPool) l.visible = false;
+  for (const l of luzesPool) l.visible = perfilAtual.luzes; // contagem fixa: ver construirLampadas
   if (!renderer) return;
   aplicarTamanho();
   const sombras = nivel !== 'minima';
@@ -348,6 +348,12 @@ function rebaixar(motivo, ms) {
 // (no Windows o ANGLE traduz GLSL→HLSL: cada material novo custava um
 // engasgo no primeiro frame em que aparecia)
 async function aquecer() {
+  // o que só nascia na 1ª ficha/batida (e compilava shader no meio da
+  // corrida): o guardião das faíscas e o 1º sprite "+3 🪙" (invisível; o
+  // pool de coletarFicha o reaproveita)
+  if (!renderer || !scene) return;
+  guardarProgramaFaiscas();
+  if (portais.some((pt) => pt.fichas && pt.fichas.length) && !popups.length) novoPopup();
   try {
     if (renderer.compileAsync) await renderer.compileAsync(scene, camera); else renderer.compile(scene, camera);
   } catch (e) { console.warn('[turismo3d] compile', e); }
@@ -361,6 +367,9 @@ async function aquecer() {
   for (const m of extrasLongos) m.visible = true;
   try { for (let i = 0; i < 3; i++) renderer.render(scene, camera); } catch (e) { console.warn('[turismo3d] aquecer', e); }
   obstaculos.forEach((o, i) => { o.visible = salvo[i]; });
+  // texturas que só apareceriam depois: placas/fichas do começo e o "+3 🪙"
+  subirTexturasAdiante(0, Infinity);
+  if (popupTex) { try { renderer.initTexture(popupTex); } catch (e) {} }
 }
 let camPos = new THREE.Vector3(), camAlvo = new THREE.Vector3();
 let tremor = 0;
@@ -628,6 +637,7 @@ function construirFichas(port, p) {
   if (!p.fichas) return;
   for (const f of p.fichas) {
     const tex = texturaFicha(f.texto);
+    texturasAdiante.push({ z: f.z, tex });
     const mat = new THREE.MeshStandardMaterial({ map: tex, emissive: 0xffc73b, emissiveMap: tex, emissiveIntensity: .35, metalness: .6, roughness: .35, side: THREE.DoubleSide, transparent: true });
     const moeda = new THREE.Mesh(new THREE.CircleGeometry(0.62, 32), mat);
     const q = pose(f.z);
@@ -657,13 +667,8 @@ function animarFichas(t, posicao) {
 // 🪙 pegou a ficha: ela voa pra cima girando, cresce e some num brilho,
 // e um "+3 🪙" sobe do lugar (pool de 6 sprites)
 let coletas = [], popups = [], popupTex = null;
-function coletarFicha(fx) {
-  fx.userData.pega = true;
-  fx.userData.baseY = fx.position.y;
-  fx.userData.t0 = relogioAnim;
-  coletas.push(fx);
-  soltarFaiscas(fx.position.clone(), frente(0), 0xffd54f, 40);
-  soltarFaiscas(fx.position.clone(), frente(0), 0xffffff, 12);
+// um sprite "+3 🪙" novo no pool (a textura é a mesma pra todos)
+function novoPopup() {
   if (!popupTex) {
     popupTex = canvasTex(256, 128, (ctx, w, h) => {
       ctx.clearRect(0, 0, w, h);
@@ -675,13 +680,22 @@ function coletarFicha(fx) {
       ctx.fillText('+3 🪙', w / 2, h / 2);
     }).tex;
   }
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: popupTex, transparent: true, depthTest: false }));
+  sp.renderOrder = 998;
+  sp.visible = false;
+  scene.add(sp);
+  popups.push(sp);
+  return sp;
+}
+function coletarFicha(fx) {
+  fx.userData.pega = true;
+  fx.userData.baseY = fx.position.y;
+  fx.userData.t0 = relogioAnim;
+  coletas.push(fx);
+  soltarFaiscas(fx.position.clone(), frente(0), 0xffd54f, 40);
+  soltarFaiscas(fx.position.clone(), frente(0), 0xffffff, 12);
   let sp = popups.find((x) => !x.visible);
-  if (!sp && popups.length < 6) {
-    sp = new THREE.Sprite(new THREE.SpriteMaterial({ map: popupTex, transparent: true, depthTest: false }));
-    sp.renderOrder = 998;
-    scene.add(sp);
-    popups.push(sp);
-  }
+  if (!sp && popups.length < 6) sp = novoPopup();
   if (sp) {
     sp.visible = true;
     sp.position.copy(fx.position);
@@ -714,7 +728,22 @@ function animarColetas(t) {
   }
 }
 
+// ⚡ desempenho (22/out): as texturas de canvas das placas (512×176) e das
+// fichas (256×256) subiam pra GPU no quadro em que o pórtico entrava na vista
+// (3 placas + fichas de uma vez, a ~900 m) ou a ficha chegava a 260 m. Agora
+// sobem ADIANTADAS, uma por quadro, quando o pórtico fica a menos de
+// ALCANCE_TEXTURAS da posição (os do começo já no aquecer()). Mesma textura,
+// mesma memória no fim; só o momento do upload muda.
+let texturasAdiante = [], texturasAdianteI = 0; // { z, tex } em ordem de z
+const ALCANCE_TEXTURAS = 1400;
+function subirTexturasAdiante(posicao, limite) {
+  while (limite-- > 0 && texturasAdianteI < texturasAdiante.length && texturasAdiante[texturasAdianteI].z < posicao + ALCANCE_TEXTURAS) {
+    try { renderer.initTexture(texturasAdiante[texturasAdianteI].tex); } catch (e) {}
+    texturasAdianteI++;
+  }
+}
 function construirPortais() {
+  texturasAdiante = []; texturasAdianteI = 0;
   const posteGeo = new THREE.CylinderGeometry(0.14, 0.16, 5.8, 12);
   const posteMat = new THREE.MeshStandardMaterial({ color: 0xdfe4e9, roughness: .4, metalness: .7 });
   const vigaGeo = new THREE.BoxGeometry(MEIA_PISTA * 2 + 2.4, 0.4, 0.4);
@@ -747,12 +776,14 @@ function construirPortais() {
       placa.position.set((faixa - 1) * LARGURA_FAIXA, 4.55, 0.22);
       grupo.add(placa);
       placas.push({ ...ct, faixa, texto, sub, estiloAtual: estilo, i });
+      texturasAdiante.push({ z: p.z, tex: ct.tex });
     }
     scene.add(grupo);
     const port = { grupo, placas, dados: p };
     construirFichas(port, p);
     portais.push(port);
   }
+  texturasAdiante.sort((a, b) => a.z - b.z);
   if (postesGeos.length) {
     const postes = new THREE.Mesh(fundir(postesGeos), posteMat);
     postes.castShadow = true;
@@ -829,10 +860,28 @@ function soltarFaiscas(ponto, f, cor = 0xffb347, n = 46) {
   }
   const geo = new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  const mat = new THREE.PointsMaterial({ color: cor, size: 0.07, transparent: true, opacity: 1, depthWrite: false });
+  const mat = materialFaisca(cor);
   const pts = new THREE.Points(geo, mat);
   scene.add(pts);
   faiscas.push({ pts, vel, t: 0, dur: .75 });
+}
+function materialFaisca(cor) {
+  return new THREE.PointsMaterial({ color: cor, size: 0.07, transparent: true, opacity: 1, depthWrite: false });
+}
+// ⚡ desempenho (22/out): cada faísca nasce com material próprio e é
+// descartada em 0,75 s; com o último descarte o three.js APAGA o programa
+// (usedTimes 0) e a próxima ficha/batida compilava o shader de novo — um
+// engasgo a cada moeda. Este material "guardião" (mesmos parâmetros, cor não
+// entra na chave) fica na cena invisível do montar ao destruir: o
+// compileAsync do aquecer() o compila e o programa nunca morre.
+let faiscaGuarda = null;
+function guardarProgramaFaiscas() {
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(3), 3));
+  faiscaGuarda = new THREE.Points(geo, materialFaisca(0xffb347));
+  faiscaGuarda.visible = false;
+  faiscaGuarda.frustumCulled = false;
+  scene.add(faiscaGuarda);
 }
 function animarFaiscas(dt) {
   for (const fx of faiscas) {
@@ -864,7 +913,7 @@ function atualizarPlacas() {
     if (flags.carros) {
       for (let i = 0; i < flags.carros.length; i++) {
         const fc = flags.carros[i];
-        const o = obstaculos.find((ob) => ob.userData.portalK === k && ob.userData.carroI === i);
+        const o = obstaculoDoCarro.get(k * 8 + i);
         if (!o) continue;
         if (fc.batido && !o.userData.arremessado) {
           bater(port, o.userData.faixa, fc.z);
@@ -1006,8 +1055,13 @@ function fundirPorMaterial(envolt) {
   console.info('[turismo3d] carro fundido:', originais.length, 'malhas →', grupos.size);
 }
 
+// carro de tráfego por (portal k, carro i) → chave k·8+i (≤ 3 carros por
+// pórtico). Antes era um obstaculos.find() por carro por quadro (a lista
+// inteira, 100+ carros, com uma closure nova a cada busca).
+let obstaculoDoCarro = new Map();
 async function construirObstaculos() {
   obstaculos = [];
+  obstaculoDoCarro = new Map();
   const ids = (cfg.trafego || []).filter((id) => CARROS[id]);
   const modelos = [];
   for (const id of ids) {
@@ -1034,6 +1088,9 @@ async function construirObstaculos() {
       modelo.visible = false;
       scene.add(modelo);
       obstaculos.push(modelo);
+      // o 1º que casa ganha, como o find() de antes
+      const chave = modelo.userData.portalK * 8 + modelo.userData.carroI;
+      if (modelo.userData.carroI >= 0 && !obstaculoDoCarro.has(chave)) obstaculoDoCarro.set(chave, modelo);
     }
   }
 }
@@ -1258,15 +1315,24 @@ async function construirCenario() {
 
 let postesLuz = [];
 let luzesPool = [];
+const LUZES_POOL = 4, INTENSIDADE_POSTE = 18;
 function construirLampadas() {
   const tema = cfg.tema;
   if (!tema.lampadas) return;
   // `luzes.cor` tinge o pool; 🌆 `neon` alterna as duas cores entre os postes (sem luz nova)
   const coresNeon = tema.neon ? tema.neon.cores : null;
-  for (let i = 0; i < 5; i++) {
+  // ⚡ desempenho (22/out): o pool fica SEMPRE com o mesmo número de luzes
+  // visíveis — a que sobra é apagada pela intensidade 0, não pelo `visible`.
+  // No three.js o nº de PointLights visíveis entra na chave do shader: cada
+  // vez que mudava (3 ↔ 4 postes na janela) TODOS os materiais com luz
+  // trocavam de programa, e a 1ª vez de cada contagem compilava shader no
+  // meio da corrida (o engasgo dos mundos com postes, mesmo no Leve). São 4
+  // (não 5): com um poste a cada 60 m e a janela de 200 m de atualizarLuzes
+  // nunca cabem 5 — a 5ª luz nunca acendia.
+  for (let i = 0; i < LUZES_POOL; i++) {
     const cor = tema.luzes && tema.luzes.cor != null ? tema.luzes.cor : (coresNeon ? coresNeon[i % 2] : 0xffe0a0);
-    const luz = new THREE.PointLight(cor, 18, 24, 2);
-    luz.visible = false;
+    const luz = new THREE.PointLight(cor, 0, 24, 2);
+    luz.visible = perfilAtual.luzes;
     scene.add(luz);
     luzesPool.push(luz);
   }
@@ -1345,14 +1411,19 @@ function construirLampadas() {
 }
 function atualizarLuzes(posicao) {
   if (!luzesPool.length || !postesLuz.length || !perfilAtual.luzes) return;
-  // os 5 postes mais próximos à frente/atrás do carro ganham luz de verdade
-  const perto = postesLuz.filter((p) => p.d > posicao - 40 && p.d < posicao + 160).slice(0, luzesPool.length);
-  luzesPool.forEach((luz, i) => {
-    const p = perto[i];
-    luz.visible = !!p;
-    if (p) luz.position.copy(p.pos);
-    if (p && p.cor != null) luz.color.setHex(p.cor);
-  });
+  // os postes mais próximos à frente/atrás do carro ganham luz de verdade (os
+  // primeiros da janela, na ordem da pista); a luz que sobra fica visível com
+  // intensidade 0 — ver construirLampadas. Sem filter/slice: nada alocado por quadro.
+  let i = 0;
+  for (let k = 0; k < postesLuz.length && i < luzesPool.length; k++) {
+    const p = postesLuz[k];
+    if (!(p.d > posicao - 40 && p.d < posicao + 160)) continue;
+    const luz = luzesPool[i++];
+    luz.intensity = INTENSIDADE_POSTE;
+    luz.position.copy(p.pos);
+    if (p.cor != null) luz.color.setHex(p.cor);
+  }
+  for (; i < luzesPool.length; i++) luzesPool[i].intensity = 0;
 }
 
 // ---------- 🌍 mundos do English Turismo (temas 7–26) ----------
@@ -2493,6 +2564,10 @@ async function montar(canvas, config) {
   api.progresso = 0.96;
   await medirDesempenho();
   vigiaAte = performance.now() + 3000;
+  // medida pro debug(): programas de shader compilados DEPOIS da largada
+  // (cada um é um engasgo; o ideal é 0 — só a troca de nível do vigia cria)
+  maiorIdPrograma = -1; nProgramasVisto = -1; vigiarProgramas();
+  api.programasNaLargada = maiorIdPrograma;
   api.progresso = 1;
   api.pronto = true;
 }
@@ -3002,13 +3077,29 @@ function quadro() {
     o.visible = dz > -30 && dz < perfilAtual.trafego;
   }
   atualizarPlacas();
+  if (api.pronto) subirTexturasAdiante(e.posicao || 0, 1);
   api.quadros++;
   renderer.render(scene, camera);
+  vigiarProgramas();
+}
+// diagnóstico (debug().programasNovosNaCorrida): o id dos programas do
+// three.js só cresce; guarda o maior visto (varre a lista só quando o
+// tamanho dela muda — nascer ou morrer um programa)
+let maiorIdPrograma = -1, nProgramasVisto = -1;
+function vigiarProgramas() {
+  const lista = renderer && renderer.info.programs;
+  if (!lista || lista.length === nProgramasVisto) return;
+  nProgramasVisto = lista.length;
+  for (const pr of lista) if (pr.id > maiorIdPrograma) maiorIdPrograma = pr.id;
 }
 
 function destruir(manterContexto) {
   pararAudio();
   destruirMundo(); // geometrias/materiais/texturas dos mundos novos (antes do renderer.dispose)
+  if (faiscaGuarda) { faiscaGuarda.geometry.dispose(); faiscaGuarda.material.dispose(); faiscaGuarda = null; }
+  texturasAdiante = []; texturasAdianteI = 0;
+  obstaculoDoCarro = new Map();
+  maiorIdPrograma = -1; nProgramasVisto = -1; api.programasNaLargada = null;
   arremessos = []; faiscas = [];
   if (animId) cancelAnimationFrame(animId);
   animId = 0;
@@ -3052,6 +3143,9 @@ function debug() {
     render: renderer ? { calls: renderer.info.render.calls, triangulos: renderer.info.render.triangles, texturas: renderer.info.memory.textures, geometrias: renderer.info.memory.geometries, programas: renderer.info.programs ? renderer.info.programs.length : null } : null,
     malhasCarro: carro ? (() => { let n = 0, mats = new Set(); carro.traverse((o) => { if (o.isMesh && o.visible) { n++; (Array.isArray(o.material) ? o.material : [o.material]).forEach((m) => mats.add(m.uuid)); } }); return { malhas: n, materiais: mats.size }; })() : null,
     obstaculosVisiveis: obstaculos.filter((o) => o.visible).length,
+    programasNovosNaCorrida: api.programasNaLargada != null ? maiorIdPrograma - api.programasNaLargada : null,
+    luzesPostes: { pool: luzesPool.length, visiveis: luzesPool.filter((l) => l.visible).length, acesas: luzesPool.filter((l) => l.visible && l.intensity > 0).length },
+    texturasAdiantadas: texturasAdianteI + '/' + texturasAdiante.length,
     qualidade: nivelQualidade, gpu: api.gpu, frameMs: api.frameMs, aviso: api.aviso, tremor: estado ? estado.tremor : null,
     fantasma: fantasma ? { visivel: fantasma.visible, pos: fantasma.position.toArray().map((v) => +v.toFixed(1)) } : null,
     coletas: coletas.length, popups: popups.filter((sp) => sp.visible).length,
