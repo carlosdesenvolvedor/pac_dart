@@ -45,12 +45,14 @@ const TEMAS = {
        agua: { lados: ['direita'], cor: 0x1f8fb3, dist: 26 }, palmeiras: { passo: 34, lado: 'esquerda' }, zebras: ['#29b6f6', '#ffffff'],
        cenario: { modelos: ['rock_09'], pesos: [1], passo: 48 } },
   12: { hdri: 'campina', chao: 'leafy_grass', repChao: 260, exposicao: 1.05, sol: [-0.4, 0.7, 0.3], solCor: 0xfff1d6, solForca: 2.4, noturno: false, neblina: 0xd6ecff, densidade: 0.0012,
-       ceu: { rotacao: 4.0 }, agua: { lados: 'ambos', cor: 0x1b6fa0, dist: 2, plano: true }, pilares: { passo: 40, cor: 0xd0d4d8 } },
+       ceu: { rotacao: 4.0 }, agua: { lados: 'ambos', cor: 0x1b6fa0, dist: 2, plano: true }, pilares: { passo: 40, cor: 0xd0d4d8 },
+       retoqueIngles: { agua: { lados: 'ambos', cor: 0x1b6fa0, dist: 2, plano: true, ondas: 0.5, rugosidade: 0.14 } } },
   13: { hdri: 'deserto', chao: 'sand_01', repChao: 220, chaoTinta: 0xc8643c, exposicao: 1.0, sol: [0.7, 0.45, 0.1], solCor: 0xffc08a, solForca: 2.5, noturno: false, neblina: 0xe0a070, densidade: 0.0016,
        ceu: { rotacao: 3.1 }, muros: { cor: 0xa0482a, altura: 26, dist: 14 },
        cenario: { modelos: ['namaqualand_boulder_04', 'rock_09'], pesos: [2, 3], passo: 22, tinta: 0xb5583a } },
   14: { hdri: 'deserto', chao: 'sand_01', repChao: 220, exposicao: 0.90, sol: [0.3, 0.5, 0.4], solCor: 0xffd18a, solForca: 1.4, noturno: false, neblina: 0xd9a35c, densidade: 0.0050,
        ceu: { intensidade: 0.6, desfoque: 0.5, env: 0.7 }, particulas: { tipo: 'poeira', qtd: 900, cor: 0xd9a35c },
+       retoqueIngles: { particulas: { tipo: 'poeira', qtd: 1400, cor: 0xd9a35c, caixa: [40, 60], tam: 1.15, opac: 0.34, fatorQtd: { alta: 1, leve: 0.8, minima: 0.35 } } },
        cenario: { modelos: ['quiver_tree_02', 'rock_09'], pesos: [1, 3], passo: 22 } },
   15: { hdri: 'deserto', chao: 'sand_01', repChao: 220, chaoTinta: 0x8a7a66, exposicao: 0.80, sol: [-0.3, 0.6, 0.4], solCor: 0x9fb7ff, solForca: 0.35, noturno: true, neblina: 0x10162b, densidade: 0.0016,
        ceu: { procedural: 'estrelas', cores: [0x0b1330, 0x24305e], env: 0.12 }, lampadas: true, luzes: { cor: 0xffb060 },
@@ -72,7 +74,7 @@ const TEMAS = {
        particulas: { tipo: 'brasas', qtd: 700 }, lava: { lado: 'esquerda', dist: 18, largura: 14, cor: 0xff5a1a }, pulso: { cor: 0xff3a1a, periodo: 2.4 },
        cenario: { modelos: ['moon_rock_01', 'moon_rock_03', 'moon_rock_05'], pesos: [1, 2, 2], passo: 22, tinta: 0x3b2b26 } },
   23: { hdri: 'espaco', chao: 'dark_rock', repChao: 200, chaoTinta: 0xb8b8b8, exposicao: 1.0, sol: [0.6, 0.4, -0.3], solCor: 0xffffff, solForca: 2.8, noturno: true, neblina: 0x05070d, densidade: 0.0006,
-       astro: { tipo: 'terra', dir: [-0.4, 0.35, -1], tam: 120 }, zebras: ['#90a4ae', '#eceff1'],
+       astro: { tipo: 'terra', dir: [-0.4, 0.35, -1], tam: 120 }, zebras: ['#90a4ae', '#eceff1'], retoqueIngles: { ceu: { procedural: 'lua', cores: [0x000000, 0x04050a] } },
        cenario: { modelos: ['moon_rock_01', 'moon_rock_03', 'moon_rock_05'], pesos: [1, 2, 2], passo: 18 } },
   24: { hdri: 'deserto', chao: 'sand_01', repChao: 220, chaoTinta: 0xb5532d, exposicao: 0.95, sol: [0.5, 0.5, 0.2], solCor: 0xffd2b0, solForca: 1.9, noturno: false, neblina: 0xc0623a, densidade: 0.0030,
        ceu: { procedural: 'marte', cores: [0x8a4a3a, 0xd9926a], env: 0.8 }, particulas: { tipo: 'poeira', qtd: 400, cor: 0xc0623a }, astro: { tipo: 'luas2', dir: [0.5, 0.42, -1], tam: 46 },
@@ -541,7 +543,7 @@ function construirPista(tema) {
   plano.rotation.x = -Math.PI / 2;
   plano.position.y = mar ? NIVEL_MAR_PONTE : -0.04;
   plano.receiveShadow = true;
-  plano.userData.tile = mar ? 20 : 4000 / tema.repChao;
+  plano.userData.tile = mar ? (cfg.ingles ? 140 : 20) : 4000 / tema.repChao; // 🇬🇧 mar: 7 tiles de 20 m (o período das duas escalas, ver materialAgua)
   scene.add(plano);
   chaoPlano = plano;
 
@@ -1690,6 +1692,25 @@ function materialAgua(a) {
     normalScale: new THREE.Vector2(gelo ? 0.25 : 0.8, gelo ? 0.25 : 0.8),
     polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1,
   });
+  // 🌊 o mesmo normal map em duas escalas: a 2ª amostra gira 90° (uv.yx) e tem
+  // 3/7 da frequência, então o padrão só se repete a cada 7 tiles (140 m no mar
+  // da ponte) em vez de 20 m; e as ondas acalmam com a distância (de 48 m a
+  // ~180 m caem a 20%), que é onde o padrão virava listras em fila. Patch no
+  // shader do próprio material (nasce na montagem e compila no aquecer(), como
+  // os outros; se um three novo mudar o trecho do chunk, o replace não acha e
+  // fica a amostra única de antes); o gelo fica como era. Só no inglês.
+  if (!gelo && cfg.ingles) {
+    // a média de duas amostras achata um pouco (1,05 compensa); `ondas` acalma o mar
+    // aberto da ponte, onde o espelho alternava céu e morro em manchas de 20 m
+    const ondas = a.ondas != null ? a.ondas : 1.05;
+    m.normalScale.set(ondas, ondas);
+    m.onBeforeCompile = (sh) => {
+      sh.fragmentShader = sh.fragmentShader.replace('#include <normal_fragment_maps>', THREE.ShaderChunk.normal_fragment_maps.replace(
+        'vec3 mapN = texture2D( normalMap, vNormalMapUv ).xyz * 2.0 - 1.0;',
+        'vec3 mapN = texture2D( normalMap, vNormalMapUv ).xyz + texture2D( normalMap, vNormalMapUv.yx * 0.4285714 + vec2( 0.31, 0.57 ) ).xyz - 1.0;\n\tmapN.xy *= clamp( 1.3 - length( vViewPosition ) / 160.0, 0.2, 1.0 );'));
+    };
+    m.customProgramCacheKey = () => 'agua-2escalas';
+  }
   descartar(nor, m);
   marcarEfeito(gelo ? 'gelo' : 'agua');
   // o mar mexe; o gelo fica parado
@@ -2005,7 +2026,11 @@ function construirParticulas(p) {
   const def = PARTICULAS[p.tipo];
   if (!def) { console.warn('[turismo3d] partículas desconhecidas:', p.tipo); return; }
   const max = Math.max(1, Math.round(p.qtd || 500));
-  const HX = 70, HZ = 80, yMin = def.yMin || 0, yMax = def.yMax || 40;
+  // o tema pode apertar a caixa (`caixa: [HX, HZ]`: mais grãos perto da câmera
+  // com a mesma contagem), engrossar/opacar o grão e trocar o corte por nível
+  // (`fatorQtd`: a 🏜️ tempestade não pode sumir no Leve)
+  const HX = p.caixa ? p.caixa[0] : 70, HZ = p.caixa ? p.caixa[1] : 80, yMin = def.yMin || 0, yMax = def.yMax || 40;
+  const fatorQtd = p.fatorQtd || FATOR_QTD;
   const r = rndDe(13), q0 = pose(0);
   const base = new Float32Array(max * 3), fase = new Float32Array(max);
   for (let i = 0; i < max; i++) {
@@ -2030,8 +2055,8 @@ function construirParticulas(p) {
       geo.setAttribute('color', ca);
     }
     mat = new THREE.PointsMaterial({
-      size: def.tam, color: comCores ? 0xffffff : (p.cor != null ? p.cor : def.cor), vertexColors: comCores,
-      map: texturaPonto(), transparent: true, opacity: def.opac, depthWrite: false,
+      size: p.tam || def.tam, color: comCores ? 0xffffff : (p.cor != null ? p.cor : def.cor), vertexColors: comCores,
+      map: texturaPonto(), transparent: true, opacity: p.opac || def.opac, depthWrite: false,
       blending: def.aditivo ? THREE.AdditiveBlending : THREE.NormalBlending,
     });
     obj = new THREE.Points(geo, mat);
@@ -2042,7 +2067,7 @@ function construirParticulas(p) {
   const vel = def.vel, deriva = p.deriva != null ? p.deriva : (def.deriva || 0), alturaCaixa = yMax - yMin;
   const corBase = new THREE.Color(p.cor != null ? p.cor : def.cor);
   extrasAnim.push((dt, t, e, px, pz, f) => {
-    const n = Math.max(1, Math.floor(max * (FATOR_QTD[nivelQualidade] || 1)));
+    const n = Math.max(1, Math.floor(max * (fatorQtd[nivelQualidade] || 1)));
     geo.setDrawRange(0, def.linhas ? n * 2 : n);
     const ax = px + f.x * 45, az = pz + f.z * 45; // a caixa vai à frente do carro
     const arr = pos.array;
@@ -2197,16 +2222,18 @@ function construirCeuProcedural(ceu) {
 function construirEstrelas(n) {
   const r = rndDe(77), pos = new Float32Array(n * 3), col = new Float32Array(n * 3), c = new THREE.Color();
   for (let i = 0; i < n; i++) {
-    const a = r() * 6.283, y = 0.03 + Math.pow(r(), 0.8) * 0.97, s = Math.sqrt(1 - y * y), rad = 700;
+    // 🇬🇧 a câmera de perseguição vê só até ~20° acima do horizonte: no inglês
+    // ~60% das estrelas caem nessa faixa (antes ~25%; o resto ia pro zênite)
+    const a = r() * 6.283, y = cfg.ingles ? 0.015 + Math.pow(r(), 2.2) * 0.985 : 0.03 + Math.pow(r(), 0.8) * 0.97, s = Math.sqrt(1 - y * y), rad = 700;
     pos.set([Math.cos(a) * s * rad, y * rad, Math.sin(a) * s * rad], i * 3);
-    const brilho = 0.45 + r() * 0.55, tom = r();
+    const brilho = cfg.ingles ? 0.6 + r() * 0.4 : 0.45 + r() * 0.55, tom = r();
     c.setRGB(brilho * (tom < 0.15 ? 1 : 0.9), brilho * 0.92, brilho * (tom > 0.8 ? 1 : 0.85));
     col.set([c.r, c.g, c.b], i * 3);
   }
   const geo = new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
   geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
-  const mat = new THREE.PointsMaterial({ size: 2.2, sizeAttenuation: false, vertexColors: true, map: texturaPonto(), transparent: true, depthWrite: false, fog: false });
+  const mat = new THREE.PointsMaterial({ size: cfg.ingles ? 2.8 : 2.2, sizeAttenuation: false, vertexColors: true, map: texturaPonto(), transparent: true, depthWrite: false, fog: false });
   const pts = new THREE.Points(geo, mat);
   pts.frustumCulled = false;
   pts.renderOrder = -1;
@@ -2214,22 +2241,29 @@ function construirEstrelas(n) {
   descartar(geo, mat);
   ceuSeguir.push((cam) => pts.position.copy(cam.position));
 }
+// A câmera de perseguição olha ~6° pra baixo e vê só até ~20° acima do
+// horizonte: as cortinas (antes 2, a 14°–29°, só à frente da largada) agora
+// são 3 de ~130° cada, de 4° a ~20°, cercando o horizonte inteiro — em
+// qualquer trecho da pista sinuosa há aurora no quadro. A Mínima fica com 2.
+// 🇬🇧 Só no inglês; fora dele, as 2 cortinas de antes, iguaizinhas.
 function construirAurora(cores) {
-  for (let k = 0; k < 2; k++) {
+  const ing = cfg.ingles, nFitas = ing ? (nivelQualidade === 'minima' ? 2 : 3) : 2;
+  for (let k = 0; k < nFitas; k++) {
     const geo = new THREE.PlaneGeometry(900, 160, 96, 1);
     const p = geo.attributes.position;
     for (let i = 0; i < p.count; i++) {
-      const x = p.getX(i), y = p.getY(i), ang = (x / 900) * 1.7, rad = 620 - k * 70;
-      p.setXYZ(i, Math.sin(ang) * rad + Math.sin(x * 0.012 + k) * 30, 150 + k * 45 + (y + 80) * 0.9 + Math.sin(x * 0.01 + k * 2) * 22, -Math.cos(ang) * rad);
+      const x = p.getX(i), y = p.getY(i), ang = (x / 900) * (ing ? 2.3 : 1.7), rad = 620 - k * (ing ? 40 : 70);
+      const alt = ing ? 42 + k * 16 + (y + 80) * 0.8 + Math.sin(x * 0.01 + k * 2) * 14 : 150 + k * 45 + (y + 80) * 0.9 + Math.sin(x * 0.01 + k * 2) * 22;
+      p.setXYZ(i, Math.sin(ang) * rad + Math.sin(x * 0.012 + k) * 30, alt, -Math.cos(ang) * rad);
     }
     const mat = new THREE.ShaderMaterial({
       transparent: true, depthWrite: false, side: THREE.DoubleSide, blending: THREE.AdditiveBlending, fog: false,
       uniforms: { tempo: { value: 0 }, corA: { value: new THREE.Color(cores[0]) }, corB: { value: new THREE.Color(cores[1] != null ? cores[1] : cores[0]) }, fase: { value: k * 1.7 } },
       vertexShader: 'varying vec2 vUv;\nvoid main() {\n  vUv = uv;\n  gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);\n}',
-      fragmentShader: 'uniform float tempo;\nuniform float fase;\nuniform vec3 corA;\nuniform vec3 corB;\nvarying vec2 vUv;\nvoid main() {\n  float faixa = smoothstep(0.0, 0.3, vUv.y) * (1.0 - smoothstep(0.45, 1.0, vUv.y));\n  float cortina = 0.55 + 0.45 * sin(vUv.x * 38.0 + tempo * 0.9 + fase) * sin(vUv.x * 11.0 - tempo * 0.4);\n  float bordas = smoothstep(0.0, 0.12, vUv.x) * (1.0 - smoothstep(0.88, 1.0, vUv.x));\n  vec3 c = mix(corA, corB, vUv.y);\n  gl_FragColor = vec4(c * faixa * cortina * bordas * 0.9, 1.0);\n  #include <colorspace_fragment>\n}',
+      fragmentShader: 'uniform float tempo;\nuniform float fase;\nuniform vec3 corA;\nuniform vec3 corB;\nvarying vec2 vUv;\nvoid main() {\n  float faixa = smoothstep(0.0, 0.3, vUv.y) * (1.0 - smoothstep(0.45, 1.0, vUv.y));\n  float cortina = 0.55 + 0.45 * sin(vUv.x * 38.0 + tempo * 0.9 + fase) * sin(vUv.x * 11.0 - tempo * 0.4);\n  float bordas = smoothstep(0.0, 0.12, vUv.x) * (1.0 - smoothstep(0.88, 1.0, vUv.x));\n  vec3 c = mix(corA, corB, vUv.y);\n  gl_FragColor = vec4(c * faixa * cortina * bordas * ' + (ing ? '1.15' : '0.9') + ', 1.0);\n  #include <colorspace_fragment>\n}',
     });
     const fita = new THREE.Mesh(geo, mat);
-    fita.rotation.y = k * 0.9 - 0.3;
+    fita.rotation.y = k * (ing ? 2.09 : 0.9) - 0.3;
     fita.frustumCulled = false;
     fita.renderOrder = -1;
     adicionarExtra(fita, 'aurora');
@@ -2393,6 +2427,9 @@ async function montar(canvas, config) {
   if (!temaPedido) console.warn('[turismo3d] tema', config.tema, 'não existe neste módulo (versão', VERSAO + '); usando o base', config.temaBase);
   api.temaId = temaPedido ? config.tema : (TEMAS[config.temaBase] ? config.temaBase : 1);
   cfg.tema = TEMAS[api.temaId];
+  // 🇬🇧 o motor é o mesmo nos 3 cursos; os retoques dos mundos (rodada 14) só ligam no inglês
+  cfg.ingles = !!config.ingles;
+  if (cfg.ingles && cfg.tema.retoqueIngles) cfg.tema = { ...cfg.tema, ...cfg.tema.retoqueIngles };
   L = config.comprimentoSegmento || 8;
   api.pronto = false;
   api.erro = null;
