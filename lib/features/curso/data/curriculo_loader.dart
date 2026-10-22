@@ -20,14 +20,18 @@ class CurriculoLoader {
     final raw = await rootBundle.loadString(linguagem.curriculo);
     final lista = jsonDecode(raw) as List;
     final trilhas = lista.map((e) => Trilha.fromJson(e as Map<String, dynamic>)).toList();
-    // inglês: as frases com gravação de nativo (ou voz gerada do personagem)
-    // passam a tocar o mp3
+    // inglês: as frases com voz gerada do personagem (ou, de reserva, gravação
+    // de nativo) passam a tocar o mp3
     AudioNativo.registrar(trilhas);
     if (linguagem == Linguagem.ingles) {
       try {
         final indice = await rootBundle.loadString(AudioNativo.indiceGeradas);
         AudioNativo.registrarGeradas(jsonDecode(indice) as Map<String, dynamic>);
       } catch (_) {} // sem o índice: a voz sintética do navegador
+      try {
+        final historia = await rootBundle.loadString(AudioNativo.indiceHistoria);
+        AudioNativo.registrarHistoria(jsonDecode(historia) as Map<String, dynamic>);
+      } catch (_) {} // sem ele: a história fala com a voz sintética e o perfil de cada personagem
       try {
         final bocas = await rootBundle.loadString(BocasIngles.indice);
         BocasIngles.registrar(jsonDecode(bocas) as Map<String, dynamic>);

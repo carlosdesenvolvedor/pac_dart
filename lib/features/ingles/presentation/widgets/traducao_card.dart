@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../../../core/util/abrir_url.dart';
 import '../../../curso/domain/curriculo.dart';
+import '../../data/audio_nativo.dart';
 import '../../domain/fonte_frase.dart';
 import '../../domain/roteiro.dart';
 
@@ -199,8 +200,9 @@ class TraducaoCard extends StatelessWidget {
                   style: Mixart.ui(size: 10.5, color: Mixart.textFaint)),
             ),
           ],
-        // a gravação de nativo que o 🔊 toca (a licença exige o crédito)
-        if (!compacto)
+        // a gravação de nativo que o 🔊 toca (a licença exige o crédito) — só quando ela toca de fato: com a
+        // voz do personagem gerada, o Tatoeba é só reserva e o crédito sairia falso
+        if (!compacto && AudioNativo.tocaGravacaoDeNativo(trecho.cod))
           if (_creditoDaVoz(trecho.audioCredito) case final voz?) ...[
             const SizedBox(height: 4),
             InkWell(

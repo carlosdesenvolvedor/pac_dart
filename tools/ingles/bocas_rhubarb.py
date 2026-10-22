@@ -1,6 +1,7 @@
 """Gera a BOCA (lip sync) de cada áudio do PAC·ENGLISH com o Rhubarb Lip Sync (MIT, github.com/DanielSWolf/rhubarb-lip-sync).
 
-Para cada mp3 (voz gerada do personagem em assets/ingles/vozes.json e gravação de nativo no campo `au` do currículo),
+Para cada mp3 (voz gerada do personagem em assets/ingles/vozes.json, falas da história do Turismo em
+assets/ingles/vozes_historia.json e gravação de nativo — reserva — no campo `au` do currículo),
 converte para wav 16 kHz com o ffmpeg e roda o Rhubarb com o TEXTO da frase (--dialogFile, bem mais preciso). O
 resultado vai para assets/ingles/bocas.json:
 
@@ -24,6 +25,7 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 CURRICULO = os.path.join(RAIZ, 'assets/ingles/curriculo.json')
 VOZES = os.path.join(RAIZ, 'assets/ingles/vozes.json')
+VOZES_HISTORIA = os.path.join(RAIZ, 'assets/ingles/vozes_historia.json')
 SAIDA = os.path.join(RAIZ, 'assets/ingles/bocas.json')
 RHUBARB_PADRAO = os.path.expanduser('~/development/rhubarb/rhubarb')
 
@@ -34,6 +36,10 @@ def audios():
     with open(VOZES, encoding='utf-8') as f:
         for texto, asset in json.load(f).items():
             r[asset] = texto
+    if os.path.exists(VOZES_HISTORIA):  # história do Turismo: chave "quem|texto"
+        with open(VOZES_HISTORIA, encoding='utf-8') as f:
+            for chave, asset in json.load(f).items():
+                r[asset] = chave.split('|', 1)[1]
     with open(CURRICULO, encoding='utf-8') as f:
         cur = json.load(f)
     for trilha in cur if isinstance(cur, list) else cur['trilhas']:
