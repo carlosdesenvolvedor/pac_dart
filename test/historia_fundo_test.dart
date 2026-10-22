@@ -68,10 +68,11 @@ void main() {
         }
       }
     }
-    // espaciais (espaco, lua, estacao) só têm noite: 30×4 + 3×1 = 123 pares cenário/hora
+    // espaciais (espaco, lua, estacao) só têm noite: 34×4 + 3×1 = 139 pares cenário/hora
     // (os 5 interiores das lições do 📺 entraram no fim do enum: 22×4 → 27×4; a 2ª leva dos pedidos de arte —
-    // copa, recepcaoHotel, salaDeEstar — mais 3: 27×4 → 30×4)
-    expect(quadros, 2 * 123 * 3 * 2 * 2);
+    // copa, recepcaoHotel, salaDeEstar — mais 3: 27×4 → 30×4; a 3ª leva — dentroDoCarro, cozinha, quintal, bar —
+    // mais 4: 30×4 → 34×4)
+    expect(quadros, 2 * 139 * 3 * 2 * 2);
   });
 
   test('entradas estranhas não quebram: tamanho zero, paralaxe negativa/enorme/NaN, t infinito', () {

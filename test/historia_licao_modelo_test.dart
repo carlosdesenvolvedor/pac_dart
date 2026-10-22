@@ -152,7 +152,9 @@ void main() {
       expect(CenarioHistoria.values.sublist(25, 30).map((c) => c.name),
           ['videochamada', 'escritorio', 'casa', 'restaurante', 'loja']);
       expect(PropHistoria.values.sublist(24, 28).map((p) => p.name), ['notebook', 'prato', 'sacola', 'documento']);
-      for (final c in CenarioHistoria.values.sublist(25)) {
+      // a 3ª leva tem o `quintal` (exterior, conferido em historia_cenarios_licao3_test): aqui ficam as 2 primeiras
+      // levas, todas interiores (25..33)
+      for (final c in CenarioHistoria.values.sublist(25, 33)) {
         expect(interioresHistoria.contains(c), isTrue, reason: c.name);
         expect(horasPermitidas(c), HoraHistoria.values.toSet(), reason: c.name);
       }

@@ -7,7 +7,7 @@
       "titulo": { "en": "Where Ben used to play", "pt": "Onde o Ben brincava" },
       "cenas": [
         {
-          "cenario": "casa", "hora": "dia", "clima": [],
+          "cenario": "quintal", "hora": "dia", "clima": [],
           "elenco": [
             { "quem": "voce", "pos": "centroEsquerda", "segura": "prato", "emocao": "feliz" },
             { "quem": "ben", "pos": "centroDireita", "emocao": "radiante" }
@@ -108,7 +108,7 @@
           "cenario": "casa", "hora": "tarde", "clima": [],
           "elenco": [
             { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
-            { "quem": "ben", "pos": "centroDireita", "segura": "livro", "emocao": "feliz" }
+            { "quem": "ben", "pos": "centroDireita", "segura": "portaRetrato", "emocao": "feliz" }
           ],
           "objetos": [ { "prop": "cafe", "pos": "direita" } ],
           "passos": [
@@ -121,7 +121,7 @@
             { "frase": "f-215bd0", "acao": "aponta", "alvo": "ben", "emocao": "radiante", "efeito": "notas",
               "reacoes": [ { "quem": "ben", "emocao": "radiante" } ] },
             { "mudo": true, "quem": "ben", "emocao": "feliz",
-              "objetos": [ { "prop": "livro", "acao": "aparece", "pos": "centro", "de": "ben" } ] },
+              "objetos": [ { "prop": "portaRetrato", "acao": "aparece", "pos": "centro", "de": "ben" } ] },
             { "frase": "f-a9a515", "segura": "celular", "acao": "mostra", "emocao": "feliz", "alvo": "voce", "camera": "dupla" },
             { "frase": "f-77114b", "acao": "pensa", "emocao": "surpreso" },
             { "frase": "f-f822c5", "acao": "concorda", "emocao": "radiante", "efeito": "brilho", "camera": "close" },
