@@ -67,13 +67,13 @@ class _Ranking implements RankingRepository {
 /// parado na frase, sem som e sem relógio de verdade). `parar()` corta tudo o que está pendente.
 /// A duração longa deixa o vigia de cada passo (segundos × 2,5 + 3 s) bem longe dos pumps do teste.
 class _SaidaFake implements SaidaDeAudio {
-  final pendentes = <({String tipo, String texto, Completer<FimDaFala> fim})>[];
+  final pendentes = <({String tipo, String texto, Completer<FimDaFala> fim, DateTime inicio})>[];
   final faladas = <String>[];
   var paradas = 0;
 
   Future<FimDaFala> _pendente(String tipo, String texto) {
     final c = Completer<FimDaFala>();
-    pendentes.add((tipo: tipo, texto: texto, fim: c));
+    pendentes.add((tipo: tipo, texto: texto, fim: c, inicio: DateTime.now()));
     return c.future;
   }
 
@@ -216,16 +216,27 @@ void testWidgetsDesktop(String d, WidgetTesterCallback c) =>
 OuvirCubit _player(WidgetTester tester) => tester.widget<AssistirLicaoPage>(find.byType(AssistirLicaoPage)).cubit;
 
 /// Deixa cada fala/silêncio pendente terminar até a historinha acabar.
+///
+/// O player da tela é o `OuvirCubit` de verdade, com o relógio de verdade (`DateTime.now`): uma fala em inglês
+/// que "acaba" em menos de [OuvirCubit.instantanea] conta como som que não saiu, e 3 seguidas pausam com
+/// `MotivoPausa.semSom`. Por isso a fala falsa só termina depois de durar esse mínimo em tempo real, como uma
+/// voz de verdade (sem isso, numa máquina rápida as 3 falas acabavam em ~30 ms e o player pausava no meio).
 Future<void> _ateOFim(WidgetTester tester, _SaidaFake saida) async {
   final cubit = _player(tester);
+  final duracaoMinima = OuvirCubit.instantanea + const Duration(milliseconds: 50);
   for (var i = 0; i < 80 && cubit.state.status != StatusOuvir.acabou; i++) {
+    final falas = [for (final p in saida.pendentes) if (p.tipo == 'en' && !p.fim.isCompleted) p];
+    if (falas.isNotEmpty) {
+      final falta = duracaoMinima - DateTime.now().difference(falas.first.inicio);
+      if (falta > Duration.zero) await tester.runAsync(() => Future<void>.delayed(falta));
+    }
     for (final p in [...saida.pendentes]) {
       if (!p.fim.isCompleted) p.fim.complete(FimDaFala.acabou);
     }
     saida.pendentes.clear();
     await _anda(tester, 1);
   }
-  expect(cubit.state.status, StatusOuvir.acabou);
+  expect(cubit.state.status, StatusOuvir.acabou, reason: 'motivo da pausa: ${cubit.state.motivo}');
   await _passa(tester);
 }
 
