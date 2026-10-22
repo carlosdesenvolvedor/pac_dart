@@ -1,0 +1,234 @@
+{
+  "versao": 1,
+  "trilha": "ha-quanto-tempo",
+  "arco": "Começo do B1, contando o tempo: o aluno diz à vizinha Emma há quanto tempo mora no bairro, se apresenta a clientes novos (uma vez atrasado), pergunta tudo num jantar na casa da Emma, luta com um bug de dias na daily e chega atrasado para encontrar o Ben no cinema. O café vai junto.",
+  "licoes": {
+    "ha-quanto-tempo.moro-aqui-ha-cinco-anos": {
+      "titulo": { "en": "Neighbors in the hallway", "pt": "Vizinhos no corredor" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "chave", "emocao": "feliz" },
+            { "quem": "emma", "pos": "centroDireita", "visivel": false, "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "emma", "acao": "entra", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-1f5016", "acao": "mostra", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-0e2f0d", "acao": "concorda", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-55953a", "emocao": "radiante", "efeito": "coracoes", "camera": "close" },
+            { "frase": "f-c23e3d", "acao": "nega", "emocao": "pensativo", "efeito": "suor",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-b2f12d", "acao": "concorda", "emocao": "timido",
+              "reacoes": [ { "quem": "emma", "emocao": "feliz" } ] },
+            { "frase": "f-5ed34e", "acao": "aponta", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-87ffe9", "acao": "concorda", "emocao": "radiante" },
+            { "frase": "f-85f530", "acao": "pensa", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-db1a0b", "acao": "nega", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close" },
+            { "frase": "f-b914b4", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "dupla",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "emma", "acao": "acena", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "ha-quanto-tempo.trabalho-aqui-desde-2022": {
+      "titulo": { "en": "Meeting the new client", "pt": "Conhecendo o cliente novo" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "visivel": false, "segura": "cafe", "emocao": "timido" },
+            { "quem": "sarah", "pos": "centroEsquerda", "segura": "documento", "emocao": "feliz" },
+            { "quem": "cliente", "pos": "centroDireita", "emocao": "feliz" },
+            { "quem": "engenheiro", "pos": "direita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "entra", "emocao": "timido",
+              "reacoes": [ { "quem": "sarah", "acao": "acena", "emocao": "feliz" }, { "quem": "cliente", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-8d9942", "acao": "mostra", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-8144af", "acao": "mostra", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "cliente", "acao": "concorda" } ] },
+            { "frase": "f-d46bc9", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "dupla" },
+            { "frase": "f-b2742d", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "engenheiro", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-41045d", "acao": "aponta", "alvo": "sarah", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-7f4815", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "cliente", "emocao": "radiante" } ] },
+            { "frase": "f-510d44", "acao": "aponta", "alvo": "voce", "emocao": "pensativo" },
+            { "frase": "f-022a66", "acao": "concorda", "emocao": "determinado", "camera": "close" },
+            { "frase": "f-614295", "acao": "olha", "alvo": "sarah", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-da71c6", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "cliente", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "cliente", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" }, { "quem": "sarah", "acao": "acena", "emocao": "feliz" }, { "quem": "engenheiro", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "ha-quanto-tempo.ha-quanto-tempo": {
+      "titulo": { "en": "Dinner at Emma's house", "pt": "Jantar na casa da Emma" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "ben", "pos": "esquerda", "visivel": false, "emocao": "radiante" },
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "emma", "pos": "centroDireita", "segura": "prato", "emocao": "feliz" },
+            { "quem": "marido", "pos": "direita", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "garrafa", "pos": "centro" } ],
+          "passos": [
+            { "mudo": true, "quem": "ben", "acao": "entra", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "frase": "f-dc42ba", "acao": "abraca", "alvo": "voce", "emocao": "radiante", "camera": "dupla",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "frase": "f-439c59", "acao": "olha", "alvo": "emma", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-097095", "acao": "concorda", "emocao": "radiante", "efeito": "coracoes",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-5bac95", "acao": "aponta", "alvo": "marido", "emocao": "feliz" },
+            { "frase": "f-ce1e88", "acao": "aponta", "alvo": "marido", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "marido", "acao": "concorda", "emocao": "radiante" } ] },
+            { "frase": "f-ff66c9", "acao": "olha", "alvo": "ben", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-d33895", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "emma", "emocao": "surpreso" } ] },
+            { "frase": "f-bcc75f", "emocao": "surpreso", "efeito": "suor", "camera": "close",
+              "reacoes": [ { "quem": "ben", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "marido", "acao": "aponta", "alvo": "voce", "efeito": "interrogacao",
+              "reacoes": [ { "quem": "ben", "acao": "concorda", "emocao": "feliz" }, { "quem": "emma", "emocao": "feliz" } ] },
+            { "frase": "f-0d691b", "acao": "pensa", "emocao": "radiante", "efeito": "brilho", "camera": "medio" },
+            { "frase": "f-a226b3", "acao": "aponta", "alvo": "ben", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" }, { "quem": "ben", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ben", "acao": "abraca", "alvo": "voce", "emocao": "radiante",
+              "reacoes": [ { "quem": "emma", "emocao": "radiante", "efeito": "coracoes" }, { "quem": "marido", "acao": "palmas", "emocao": "feliz" }, { "quem": "voce", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "ha-quanto-tempo.estou-nesse-bug-a-manha-inteira": {
+      "titulo": { "en": "Stuck on the login bug", "pt": "Empacado no bug do login" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [ "chuva" ],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "notebook", "emocao": "cansado" },
+            { "quem": "mike", "pos": "centroDireita", "emocao": "neutro" },
+            { "quem": "ana", "pos": "direita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-b37971", "acao": "aponta", "emocao": "neutro", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "mike", "acao": "pensa", "efeito": "interrogacao",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso" } ] },
+            { "frase": "f-d05c2b", "acao": "mostra", "emocao": "cansado", "camera": "medio" },
+            { "frase": "f-2b381c", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-3e6a16", "acao": "nega", "emocao": "nervoso", "efeito": "suor" },
+            { "frase": "f-d8885e", "acao": "mostra", "emocao": "bravo", "camera": "close",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-3f2d95", "acao": "concorda", "emocao": "pensativo" },
+            { "frase": "f-2516c0", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "emocao": "cansado", "efeito": "suor",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-6baedb", "acao": "aponta", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-8becd9", "acao": "concorda", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-acc387", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "dupla",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" }, { "quem": "ana", "acao": "palmas", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "ha-quanto-tempo.saiu-ha-vinte-minutos": {
+      "titulo": { "en": "Late for the movie", "pt": "Atrasado para o cinema" },
+      "cenas": [
+        {
+          "cenario": "cidade", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "nervoso" },
+            { "quem": "motorista", "pos": "centroDireita", "emocao": "neutro" },
+            { "quem": "ben", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-940c0c", "emocao": "nervoso", "efeito": "suor", "camera": "geral" },
+            { "frase": "f-d6c3b0", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-436cb3", "acao": "nega", "emocao": "cansado", "camera": "medio" },
+            { "frase": "f-876423", "acao": "aponta", "emocao": "cansado",
+              "reacoes": [ { "quem": "motorista", "emocao": "timido" } ] },
+            { "frase": "f-9ba36a", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-99339f", "acao": "mostra", "emocao": "pensativo" },
+            { "frase": "f-5fcb5d", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso", "efeito": "exclamacao" } ] },
+            { "mudo": true, "quem": "motorista", "acao": "concorda", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] }
+          ]
+        },
+        {
+          "cenario": "cidade", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "visivel": false, "segura": "celular", "emocao": "cansado" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "entra", "para": "centroEsquerda", "emocao": "cansado", "efeito": "suor",
+              "reacoes": [ { "quem": "ben", "acao": "acena", "emocao": "radiante" } ] },
+            { "frase": "f-0876e9", "acao": "acena", "alvo": "ben", "emocao": "feliz", "camera": "dupla" },
+            { "frase": "f-a4e2be", "acao": "aponta", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-a2d22a", "emocao": "timido", "efeito": "suor",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "ben", "acao": "comemora", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "ha-quanto-tempo.apresentacao-e-um-atraso": {
+      "titulo": { "en": "Late for the client call", "pt": "Atrasado na call com o cliente" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "visivel": false, "segura": "cafe", "emocao": "nervoso" },
+            { "quem": "cliente", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "entra", "emocao": "nervoso", "efeito": "suor",
+              "reacoes": [ { "quem": "cliente", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-5344de", "emocao": "timido", "efeito": "suor", "camera": "geral" },
+            { "frase": "f-8fec8b", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-d07d6a", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "dupla" },
+            { "frase": "f-123169", "acao": "concorda", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-2a1337", "acao": "aponta", "emocao": "feliz" },
+            { "frase": "f-152f11", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-cb3593", "acao": "mostra", "emocao": "radiante", "efeito": "coracoes", "camera": "close" },
+            { "frase": "f-30db79", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-710b04", "acao": "treme", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-b366d6", "emocao": "surpreso", "efeito": "suor", "camera": "medio",
+              "reacoes": [ { "quem": "cliente", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "cliente", "acao": "acena", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

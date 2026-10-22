@@ -1,0 +1,197 @@
+{
+  "versao": 1,
+  "trilha": "segunda-condicional",
+  "arco": "Antes da vaga sênior, o aluno sonha alto: imagina mais tempo livre com o Ben no parque, brinca de 'e se' no jantar do time, aconselha a Ana pelo celular, faz pedidos educados no chat e conta ao Ben o plano de mudar de cidade. Sempre de café por perto e sorrindo no fim.",
+  "licoes": {
+    "segunda-condicional.se-eu-tivesse-mais-tempo": {
+      "titulo": { "en": "If I had more free time", "pt": "Se eu tivesse mais tempo livre" },
+      "cenas": [
+        {
+          "cenario": "lago", "hora": "tarde", "clima": ["folhas"],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-c116b0", "acao": "senta", "emocao": "pensativo", "efeito": "notas", "camera": "geral" },
+            { "frase": "f-1fface", "acao": "senta", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "ben", "emocao": "pensativo" } ] },
+            { "frase": "f-fd2739", "acao": "nega", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-786a0b", "acao": "pensa", "emocao": "feliz" },
+            { "frase": "f-3fb574", "acao": "aponta", "emocao": "radiante", "camera": "close" },
+            { "mudo": true, "quem": "voce", "emocao": "radiante", "efeito": "exclamacao",
+              "objetos": [ { "prop": "cafe", "acao": "aparece", "pos": "esquerda", "de": "voce" } ] },
+            { "frase": "f-14a948", "segura": "celular", "acao": "mostra", "alvo": "ben", "emocao": "feliz",
+              "reacoes": [ { "quem": "ben", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "emocao": "feliz",
+              "objetos": [ { "prop": "cafe", "acao": "some" } ] },
+            { "frase": "f-805d8a", "acao": "pensa", "emocao": "radiante", "efeito": "brilho", "camera": "medio" },
+            { "frase": "f-57512f", "acao": "aponta", "alvo": "ben", "emocao": "feliz" },
+            { "frase": "f-138662", "acao": "nega", "emocao": "cansado",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-69dda8", "acao": "pensa", "emocao": "cansado", "efeito": "zzz" },
+            { "mudo": true, "quem": "ben", "acao": "palmas", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "segunda-condicional.o-que-voce-faria-se": {
+      "titulo": { "en": "Dreams at the team dinner", "pt": "Sonhos no jantar do time" },
+      "cenas": [
+        {
+          "cenario": "restaurante", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroEsquerda", "emocao": "radiante" },
+            { "quem": "mike", "pos": "centro", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "sarah", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "prato", "pos": "direita" } ],
+          "passos": [
+            { "frase": "f-956ff4", "acao": "pensa", "emocao": "radiante", "efeito": "brilho", "camera": "geral",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-619778", "acao": "mostra", "alvo": "ana", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "emocao": "pensativo" } ] },
+            { "frase": "f-c3e0c5", "acao": "nega", "emocao": "feliz", "efeito": "coracoes", "camera": "medio" },
+            { "frase": "f-47b102", "acao": "pensa", "emocao": "radiante", "camera": "close",
+              "reacoes": [ { "quem": "ana", "acao": "palmas", "emocao": "feliz" } ] },
+            { "frase": "f-7c9219", "acao": "aponta", "alvo": "mike", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-fcc0d3", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-cd6506", "acao": "aponta", "alvo": "sarah", "emocao": "feliz" },
+            { "frase": "f-fae91b", "acao": "nega", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "acao": "palmas", "emocao": "feliz" }, { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-7f3ccc", "acao": "aponta", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-389f20", "acao": "concorda", "emocao": "determinado", "camera": "close" },
+            { "mudo": true, "quem": "mike", "acao": "comemora", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "ana", "acao": "palmas", "emocao": "feliz" }, { "quem": "sarah", "acao": "palmas", "emocao": "feliz" }, { "quem": "voce", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "segunda-condicional.se-eu-fosse-voce": {
+      "titulo": { "en": "Advice for Ana", "pt": "Um conselho para a Ana" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "ana", "remoto": "celular", "emocao": "pensativo" }
+          ],
+          "objetos": [
+            { "prop": "celular", "pos": "centro" },
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "celular", "emocao": "surpreso", "efeito": "exclamacao",
+              "objetos": [ { "prop": "celular", "acao": "treme" } ] },
+            { "mudo": true, "quem": "voce", "segura": "celular", "emocao": "feliz",
+              "objetos": [ { "prop": "celular", "acao": "some" } ] },
+            { "frase": "f-a02a26", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-c9d7dc", "acao": "comemora", "emocao": "radiante", "efeito": "confete" },
+            { "frase": "f-ac49b5", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-8c0afc", "acao": "escreve", "emocao": "determinado" },
+            { "frase": "f-ab5052", "emocao": "triste",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-f0210b", "acao": "concorda", "emocao": "determinado", "camera": "close" },
+            { "frase": "f-45d4a9", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-8dfc19", "acao": "escreve", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-20998e", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "pensa" } ] },
+            { "frase": "f-27cba2", "acao": "comemora", "emocao": "radiante", "efeito": "brilho", "camera": "close" },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "segunda-condicional.seria-otimo-se-voce-pudesse": {
+      "titulo": { "en": "Polite requests in the chat", "pt": "Pedidos educados no chat" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "pensativo" },
+            { "quem": "mike", "remoto": "celular", "emocao": "feliz" },
+            { "quem": "sarah", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-f23874", "acao": "escreve", "emocao": "pensativo", "camera": "geral" },
+            { "frase": "f-7fd9b1", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-3cff76", "acao": "escreve", "emocao": "timido", "camera": "medio" },
+            { "frase": "f-032ae6", "acao": "olha", "alvo": "notebook", "emocao": "timido" },
+            { "frase": "f-d31117", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "comemora", "emocao": "radiante" } ] }
+          ]
+        },
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "ana", "remoto": "celular", "emocao": "feliz" },
+            { "quem": "dev-novo", "remoto": "celular", "emocao": "timido" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-7898f0", "acao": "aponta", "alvo": "notebook", "emocao": "timido", "camera": "geral" },
+            { "frase": "f-0fcadb", "emocao": "timido",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-2f6ab3", "acao": "concorda", "emocao": "feliz", "camera": "medio" },
+            { "mudo": true, "quem": "voce", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-5f62f5", "emocao": "timido" },
+            { "frase": "f-cab95b", "acao": "comemora", "emocao": "radiante", "efeito": "confete", "camera": "close" },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "dev-novo", "emocao": "radiante" }, { "quem": "ana", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "segunda-condicional.planos-reais-e-sonhos": {
+      "titulo": { "en": "Plans and dreams on Friday night", "pt": "Planos e sonhos numa sexta à noite" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "prato", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-4a34ad", "acao": "aponta", "alvo": "voce", "emocao": "surpreso", "camera": "geral" },
+            { "frase": "f-38f226", "acao": "concorda", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-267712", "acao": "concorda", "emocao": "feliz", "efeito": "brilho" },
+            { "frase": "f-ef249d", "acao": "pensa", "emocao": "feliz" },
+            { "frase": "f-103a0d", "acao": "aponta", "alvo": "ben", "emocao": "radiante",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] },
+            { "frase": "f-d7184b", "acao": "comemora", "emocao": "radiante" },
+            { "mudo": true, "quem": "ben", "segura": "chave", "emocao": "pensativo" },
+            { "frase": "f-85e7fe", "acao": "mostra", "emocao": "pensativo", "efeito": "interrogacao", "camera": "close" },
+            { "frase": "f-ed5104", "acao": "nega", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "ben", "acao": "concorda" } ] },
+            { "frase": "f-3fe37b", "acao": "pensa", "emocao": "pensativo", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-b3aa2d", "acao": "concorda", "emocao": "feliz", "camera": "close" },
+            { "mudo": true, "quem": "ben", "acao": "abraca", "alvo": "voce", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

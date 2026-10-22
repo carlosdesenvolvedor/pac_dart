@@ -1,0 +1,140 @@
+{
+  "versao": 1,
+  "trilha": "eu-costumava",
+  "arco": "Pausas na rotina para lembrar como a vida era: o quintal onde o Ben brincava, a caixa de coisas velhas da Julia, o café com a Ana sobre os hábitos que mudaram e o álbum de fotos na casa dos pais do aluno, entre risadas e um cafezinho.",
+  "licoes": {
+    "eu-costumava.eu-jogava-bola-todo-fim-de-semana": {
+      "titulo": { "en": "Where Ben used to play", "pt": "Onde o Ben brincava" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "prato", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "emocao": "radiante" }
+          ],
+          "objetos": [ { "prop": "garrafa", "pos": "direita" } ],
+          "passos": [
+            { "frase": "f-d23c13", "acao": "aponta", "emocao": "radiante", "camera": "geral" },
+            { "frase": "f-c3f516", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-0be03f", "acao": "concorda", "emocao": "feliz", "alvo": "ben", "camera": "dupla",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ben", "segura": "celular", "emocao": "feliz" },
+            { "frase": "f-c32523", "acao": "mostra", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-7e9c8e", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-7acd27", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-2f9b04", "acao": "nega", "emocao": "pensativo", "camera": "close" },
+            { "frase": "f-5a4e5a", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-a4ccbd", "acao": "nega", "emocao": "radiante",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] },
+            { "frase": "f-ad9a47", "acao": "concorda", "emocao": "radiante", "efeito": "brilho" },
+            { "mudo": true, "quem": "ben", "acao": "aponta", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "eu-costumava.a-gente-nao-tinha-internet": {
+      "titulo": { "en": "The box of old things", "pt": "A caixa de coisas antigas" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "julia", "pos": "centroDireita", "segura": "celular", "emocao": "radiante" }
+          ],
+          "objetos": [ { "prop": "sacola", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-a75c4e", "acao": "aponta", "alvo": "julia", "emocao": "surpreso", "camera": "geral" },
+            { "frase": "f-71c26f", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-ec1ff1", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-ed5fa6", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-6ee512", "acao": "nega", "emocao": "feliz" },
+            { "frase": "f-afa31c", "emocao": "surpreso", "efeito": "exclamacao", "camera": "medio" },
+            { "frase": "f-b60620", "acao": "concorda", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-1bdae5", "acao": "aponta", "alvo": "sacola", "emocao": "feliz" },
+            { "frase": "f-1dc292", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "julia", "segura": "mapa", "emocao": "surpreso" },
+            { "frase": "f-9a2e31", "acao": "mostra", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "julia", "acao": "pula", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "eu-costumava.morava-morei-ou-estava-morando": {
+      "titulo": { "en": "Old habits, new habits", "pt": "Hábitos de antes e de agora" },
+      "cenas": [
+        {
+          "cenario": "restaurante", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "garcom", "pos": "direita", "segura": "prato", "visivel": false }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-7fb95f", "acao": "pensa", "emocao": "cansado", "camera": "geral" },
+            { "frase": "f-bd69bf", "acao": "aponta", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "emocao": "radiante" } ] },
+            { "frase": "f-20b3a6", "acao": "pensa", "emocao": "timido" },
+            { "frase": "f-e7642f", "acao": "nega", "emocao": "cansado" },
+            { "frase": "f-bd13fd", "acao": "pensa", "emocao": "determinado", "efeito": "brilho", "camera": "medio" },
+            { "frase": "f-79efe8", "emocao": "cansado", "efeito": "zzz" },
+            { "frase": "f-93d8e1", "acao": "nega", "emocao": "pensativo", "alvo": "ana", "camera": "dupla" },
+            { "frase": "f-704f7e", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-5df2f1", "acao": "aponta", "alvo": "ana", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "ana", "segura": "celular", "emocao": "radiante" },
+            { "frase": "f-18857b", "acao": "mostra", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "garcom", "acao": "entra", "emocao": "feliz",
+              "objetos": [ { "prop": "prato", "acao": "aparece", "pos": "centro", "de": "garcom" } ],
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" }, { "quem": "ana", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "eu-costumava.fotos-antigas": {
+      "titulo": { "en": "The old photo album", "pt": "O álbum de fotos antigas" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "livro", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "cafe", "pos": "direita" } ],
+          "passos": [
+            { "frase": "f-f77059", "acao": "mostra", "emocao": "surpreso", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-9f849f", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] },
+            { "frase": "f-180e00", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-bd6c0b", "acao": "aponta", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-215bd0", "acao": "aponta", "alvo": "ben", "emocao": "radiante", "efeito": "notas",
+              "reacoes": [ { "quem": "ben", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "ben", "emocao": "feliz",
+              "objetos": [ { "prop": "livro", "acao": "aparece", "pos": "centro", "de": "ben" } ] },
+            { "frase": "f-a9a515", "segura": "celular", "acao": "mostra", "emocao": "feliz", "alvo": "voce", "camera": "dupla" },
+            { "frase": "f-77114b", "acao": "pensa", "emocao": "surpreso" },
+            { "frase": "f-f822c5", "acao": "concorda", "emocao": "radiante", "efeito": "brilho", "camera": "close" },
+            { "mudo": true, "quem": "ben", "segura": "cafe", "emocao": "feliz",
+              "objetos": [ { "prop": "cafe", "acao": "some" } ] },
+            { "frase": "f-553f30", "acao": "mostra", "emocao": "radiante", "efeito": "coracoes", "camera": "medio" },
+            { "frase": "f-7661e6", "acao": "aponta", "alvo": "ben", "emocao": "radiante",
+              "reacoes": [ { "quem": "ben", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "ben", "acao": "comemora", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "comemora", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}
