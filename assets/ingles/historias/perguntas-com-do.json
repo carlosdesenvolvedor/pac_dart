@@ -1,0 +1,673 @@
+{
+  "versao": 1,
+  "trilha": "perguntas-com-do",
+  "arco": "Uma semana de perguntas no escritório de Chicago: a festa de boas-vindas, o papo na máquina de café, o novo design da Ana no telão e um colega de outro escritório no fim da tarde. Com 'Do you...?', o aluno faz amigos. E o café dele sempre na mão.",
+  "licoes": {
+    "perguntas-com-do.voce-fala-ingles-do-you": {
+      "titulo": {
+        "en": "Do you speak Portuguese",
+        "pt": "Você fala português?"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "dev-novo",
+              "pos": "esquerda",
+              "segura": "cafe",
+              "emocao": "timido"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "visivel": false,
+              "segura": "documento"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "prato",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-ad690f",
+              "acao": "acena",
+              "emocao": "feliz",
+              "alvo": "mike",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-b8f9eb",
+              "acao": "concorda",
+              "emocao": "timido",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "entra",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "aponta",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-1a827f",
+              "acao": "acena",
+              "emocao": "feliz",
+              "alvo": "sarah",
+              "camera": "dupla"
+            },
+            {
+              "frase": "f-e24e16",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-8fb443",
+              "acao": "olha",
+              "emocao": "feliz",
+              "alvo": "dev-novo",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-53afbb",
+              "acao": "nega",
+              "emocao": "timido",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-371bdb",
+              "acao": "aponta",
+              "emocao": "timido",
+              "alvo": "mike",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "aponta",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "alvo": "voce"
+            },
+            {
+              "frase": "f-ed3bec",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "sarah",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "efeito": "confete",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "sarah",
+                  "acao": "comemora",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "dev-novo",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "perguntas-com-do.onde-voce-mora-com-o-que-trabalha": {
+      "titulo": {
+        "en": "Where do you live",
+        "pt": "Onde você mora?"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "dev-novo",
+              "pos": "centroDireita",
+              "emocao": "timido"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "cafe",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-9d2cb6",
+              "acao": "acena",
+              "emocao": "feliz",
+              "alvo": "dev-novo",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-304f7f",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "acao": "palmas",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-7b033e",
+              "acao": "olha",
+              "emocao": "feliz",
+              "alvo": "voce"
+            },
+            {
+              "frase": "f-3c1dd7",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "alvo": "dev-novo",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-f2d219",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-58e7f1",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "dev-novo",
+              "segura": "cafe",
+              "emocao": "feliz",
+              "objetos": [
+                {
+                  "prop": "cafe",
+                  "acao": "some"
+                }
+              ]
+            },
+            {
+              "frase": "f-f98db7",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-b4b0ae",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "dev-novo",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "perguntas-com-do.voce-gosta-adoro-o-objeto": {
+      "titulo": {
+        "en": "Do you like it",
+        "pt": "Você gosta?"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "mike",
+              "pos": "esquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "neutro"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroDireita",
+              "emocao": "nervoso"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-aeb612",
+              "acao": "aponta",
+              "emocao": "nervoso",
+              "alvo": "notebook",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-01533a",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "coracoes",
+              "alvo": "ana",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "alvo": "notebook"
+            },
+            {
+              "frase": "f-5bfa21",
+              "acao": "olha",
+              "emocao": "timido",
+              "alvo": "voce",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-f2a9db",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "alvo": "notebook",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "pula",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-95f423",
+              "acao": "aponta",
+              "emocao": "nervoso",
+              "alvo": "mike",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-d20ca6",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "efeito": "confete",
+              "alvo": "ana",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-f1c1de",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "alvo": "notebook",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-957adf",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "alvo": "ana",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "mike",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "perguntas-com-do.cena-conhecendo-um-colega": {
+      "titulo": {
+        "en": "A new friend from work",
+        "pt": "Um amigo novo no trabalho"
+      },
+      "cenas": [
+        {
+          "cenario": "escritorio",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "colega",
+              "pos": "centroDireita",
+              "segura": "cafe",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "livro",
+              "pos": "esquerda"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-9f40f0",
+              "acao": "acena",
+              "emocao": "feliz",
+              "alvo": "colega",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "colega",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-8578c3",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-3d61cd",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "colega",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-0bc098",
+              "acao": "aponta",
+              "emocao": "radiante",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-87fca4",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "colega",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-4ebc94",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "alvo": "colega",
+              "camera": "dupla"
+            },
+            {
+              "frase": "f-b95176",
+              "acao": "nega",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "colega",
+              "acao": "olha",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "alvo": "livro"
+            },
+            {
+              "frase": "f-af3ed0",
+              "acao": "aponta",
+              "emocao": "pensativo",
+              "alvo": "livro",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "segura": "livro",
+              "emocao": "radiante",
+              "objetos": [
+                {
+                  "prop": "livro",
+                  "acao": "some"
+                },
+                {
+                  "prop": "cafe",
+                  "acao": "aparece",
+                  "pos": "esquerda"
+                }
+              ],
+              "reacoes": [
+                {
+                  "quem": "colega",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

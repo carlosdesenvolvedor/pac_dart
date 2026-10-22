@@ -1,0 +1,195 @@
+{
+  "versao": 1,
+  "trilha": "familia-e-posse",
+  "arco": "Fotos e coisas de cada um: nas chamadas, o aluno mostra no celular os pais, a irmã Julia, o carro do irmão e a casa dela; em Chicago, devolve as coisas esquecidas no escritório no fim do dia e troca fotos de família com o Mike no almoço.",
+  "licoes": {
+    "familia-e-posse.minha-familia": {
+      "titulo": { "en": "This is my family", "pt": "Essa é a minha família" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "emocao": "feliz" },
+            { "quem": "mike", "pos": "direita", "segura": "cafe", "emocao": "neutro" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-ca6a4e", "acao": "mostra", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-2596ff", "acao": "aponta", "emocao": "feliz", "alvo": "voce" },
+            { "frase": "f-2501a0", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "palmas", "emocao": "radiante" } ] },
+            { "frase": "f-79b2d0", "acao": "pensa", "emocao": "pensativo", "alvo": "voce" },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "frase": "f-d32cac", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-c87082", "acao": "pensa", "emocao": "pensativo", "alvo": "voce" },
+            { "frase": "f-024879", "acao": "aponta", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "mike", "acao": "aponta", "alvo": "voce", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-af7ea9", "acao": "mostra", "emocao": "radiante", "efeito": "coracoes", "camera": "close" },
+            { "mudo": true, "quem": "ana", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" }, { "quem": "voce", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "familia-e-posse.dele-e-dela-his-e-her": {
+      "titulo": { "en": "His wife and her husband", "pt": "A esposa dele e o marido dela" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "documento", "emocao": "feliz" },
+            { "quem": "mike", "pos": "centro", "segura": "carta", "emocao": "feliz" },
+            { "quem": "sarah", "pos": "direita", "segura": "carta", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-2634bc", "acao": "mostra", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-689d6b", "acao": "concorda", "emocao": "radiante", "efeito": "brilho" },
+            { "mudo": true, "quem": "mike", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-aa06c5", "acao": "pensa", "emocao": "pensativo", "alvo": "mike",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "feliz" },
+            { "frase": "f-756142", "acao": "mostra", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-35f7d3", "acao": "pensa", "emocao": "pensativo", "alvo": "sarah",
+              "reacoes": [ { "quem": "sarah", "acao": "concorda", "emocao": "feliz" } ] }
+          ]
+        },
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "documento", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "ana", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-1a0849", "acao": "aponta", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-7da934", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-8f21b0", "acao": "pensa", "emocao": "pensativo", "alvo": "voce" },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "acao": "palmas", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "familia-e-posse.o-carro-do-meu-irmao-s": {
+      "titulo": { "en": "My brother's new car", "pt": "O carro novo do meu irmão" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-3a6085", "acao": "mostra", "emocao": "radiante", "efeito": "brilho", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-c43b47", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-b4d461", "acao": "mostra", "emocao": "timido", "efeito": "suor",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "pensativo" },
+            { "frase": "f-109be3", "acao": "mostra", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-d2c716", "acao": "pula", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close" },
+            { "frase": "f-853774", "acao": "pensa", "emocao": "pensativo", "alvo": "voce" },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "segura": "chave", "emocao": "radiante" } ] },
+            { "frase": "f-4eac0c", "acao": "mostra", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-bb2eb9", "acao": "aponta", "emocao": "feliz", "alvo": "ana",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "familia-e-posse.nosso-e-deles-achados-no-escritorio": {
+      "titulo": { "en": "Our team and their keys", "pt": "O nosso time e as chaves deles" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "emocao": "neutro" },
+            { "quem": "mike", "pos": "centroEsquerda", "emocao": "nervoso" },
+            { "quem": "dev-nova", "pos": "centroDireita", "visivel": false },
+            { "quem": "dev-novo", "pos": "direita", "visivel": false }
+          ],
+          "objetos": [
+            { "prop": "carta", "pos": "centro" },
+            { "prop": "celular", "pos": "centroDireita" },
+            { "prop": "chave", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-812544", "acao": "pensa", "emocao": "nervoso", "efeito": "interrogacao", "camera": "geral" },
+            { "mudo": true, "quem": "voce", "segura": "carta", "emocao": "surpreso",
+              "objetos": [ { "prop": "carta", "acao": "some" } ] },
+            { "frase": "f-4f5dca", "acao": "mostra", "emocao": "feliz", "alvo": "mike", "camera": "dupla" },
+            { "frase": "f-981360", "acao": "concorda", "emocao": "radiante", "segura": "carta",
+              "reacoes": [ { "quem": "voce", "segura": "nada", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "dev-nova", "acao": "entra", "emocao": "timido" },
+            { "mudo": true, "quem": "dev-novo", "acao": "entra", "emocao": "timido" },
+            { "frase": "f-bf25ee", "acao": "pensa", "emocao": "pensativo", "alvo": "mike",
+              "reacoes": [ { "quem": "mike", "acao": "aponta", "emocao": "feliz" }, { "quem": "dev-nova", "acao": "acena", "emocao": "timido" } ] },
+            { "frase": "f-ba5dff", "acao": "aponta", "emocao": "radiante", "alvo": "dev-novo", "camera": "geral",
+              "reacoes": [ { "quem": "dev-novo", "acao": "acena", "emocao": "feliz" }, { "quem": "dev-nova", "emocao": "feliz" } ] },
+            { "frase": "f-2c7817", "acao": "mostra", "emocao": "feliz", "segura": "celular", "camera": "medio",
+              "objetos": [ { "prop": "celular", "acao": "some" } ],
+              "reacoes": [ { "quem": "dev-nova", "acao": "concorda", "emocao": "surpreso" } ] },
+            { "frase": "f-4d725d", "acao": "aponta", "emocao": "feliz", "alvo": "chave",
+              "reacoes": [ { "quem": "voce", "segura": "nada", "emocao": "feliz" }, { "quem": "dev-nova", "segura": "celular", "emocao": "radiante" }, { "quem": "dev-novo", "emocao": "timido" } ] },
+            { "frase": "f-343578", "acao": "acena", "emocao": "radiante", "efeito": "exclamacao", "alvo": "mike", "camera": "medio",
+              "objetos": [ { "prop": "chave", "acao": "some" } ],
+              "reacoes": [ { "quem": "mike", "acao": "acena", "emocao": "feliz" }, { "quem": "dev-novo", "acao": "acena", "segura": "chave", "emocao": "feliz" }, { "quem": "dev-nova", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "familia-e-posse.cena-fotos-da-familia": {
+      "titulo": { "en": "My brother's dog", "pt": "O cachorro do meu irmão" },
+      "cenas": [
+        {
+          "cenario": "restaurante", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "prato", "pos": "centro" }
+          ],
+          "passos": [
+            { "frase": "f-bf37a3", "acao": "mostra", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-95b2b6", "acao": "pensa", "emocao": "feliz", "alvo": "mike" },
+            { "frase": "f-a7d120", "acao": "mostra", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "mike", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-711f6b", "acao": "pensa", "emocao": "feliz", "alvo": "mike",
+              "reacoes": [ { "quem": "mike", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "segura": "celular", "emocao": "feliz" },
+            { "frase": "f-359610", "acao": "aponta", "emocao": "feliz", "alvo": "voce",
+              "reacoes": [ { "quem": "voce", "acao": "mostra", "emocao": "feliz" } ] },
+            { "frase": "f-efe08c", "acao": "concorda", "emocao": "radiante", "camera": "close" },
+            { "frase": "f-1b3703", "acao": "aponta", "emocao": "radiante", "alvo": "voce",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-a44a42", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

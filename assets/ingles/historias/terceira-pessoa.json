@@ -1,0 +1,176 @@
+{
+  "versao": 1,
+  "trilha": "terceira-pessoa",
+  "arco": "Falando dos outros: você apresenta o time ao Ben por vídeo, ouve a Sarah numa pausa da chamada, sobrevive a uma manhã em que nada funciona no escritório de Chicago, toma café com o Ben e termina no chá da Emma. Sempre tem uma caneca por perto.",
+  "licoes": {
+    "terceira-pessoa.ela-trabalha-de-casa-o-s": {
+      "titulo": { "en": "This is my team", "pt": "Este é o meu time" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-51ad0e", "acao": "mostra", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "ben", "acao": "concorda" } ] },
+            { "frase": "f-e6f3f3", "acao": "mostra", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-ef117f", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "feliz" },
+            { "frase": "f-99db20", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "ben", "emocao": "surpreso" } ] },
+            { "frase": "f-ec137d", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "ben", "acao": "concorda", "emocao": "radiante" } ] },
+            { "frase": "f-f062bb", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-c284c9", "acao": "concorda", "emocao": "feliz", "efeito": "coracoes" },
+            { "frase": "f-7760a9", "acao": "concorda", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "ben", "acao": "palmas", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ben", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "terceira-pessoa.ele-tem-ela-estuda-has-es-ies": {
+      "titulo": { "en": "Coffee break with Sarah", "pt": "Pausa para o café com a Sarah" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "sarah", "pos": "centroDireita", "segura": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-35385a", "acao": "mostra", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-ef4665", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-839200", "emocao": "radiante", "efeito": "notas", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-7c5ebd", "acao": "concorda", "emocao": "surpreso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "sarah", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "sarah", "acao": "escreve", "emocao": "pensativo" },
+            { "frase": "f-8f1a42", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-7ebfde", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "acao": "palmas", "emocao": "feliz" } ] },
+            { "frase": "f-be07e5", "acao": "mostra", "emocao": "radiante", "efeito": "brilho" },
+            { "frase": "f-a8ae34", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "terceira-pessoa.nao-funciona-doesn-t": {
+      "titulo": { "en": "It doesn't work", "pt": "Não funciona!" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "nervoso" },
+            { "quem": "mike", "pos": "centroDireita", "visivel": false, "segura": "cafe" },
+            { "quem": "ana", "pos": "direita", "visivel": false, "segura": "celular" }
+          ],
+          "objetos": [
+            { "prop": "documento", "pos": "esquerda" },
+            { "prop": "cafe", "pos": "centro" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "mike", "acao": "entra", "emocao": "radiante" },
+            { "frase": "f-fda745", "acao": "aponta", "alvo": "documento", "emocao": "nervoso", "camera": "geral",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "frase": "f-f1fbf3", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-bb5c61", "acao": "mostra", "emocao": "nervoso", "camera": "dupla", "alvo": "mike" },
+            { "frase": "f-e2dcaf", "acao": "aponta", "emocao": "surpreso",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-bdd38b", "acao": "mostra", "emocao": "timido", "efeito": "suor",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "acao": "entra", "emocao": "feliz" },
+            { "frase": "f-debffa", "acao": "aponta", "alvo": "ana", "emocao": "pensativo" },
+            { "frase": "f-181eaf", "acao": "mostra", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-e57843", "acao": "aponta", "alvo": "cafe", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "mike", "segura": "nada", "emocao": "feliz",
+              "reacoes": [
+                { "quem": "voce", "segura": "cafe", "emocao": "radiante" },
+                { "quem": "ana", "acao": "palmas", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "terceira-pessoa.ela-fala-ingles-does": {
+      "titulo": { "en": "Coffee with Ben", "pt": "Um café com o Ben" },
+      "cenas": [
+        {
+          "cenario": "restaurante", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "celular", "pos": "centro" }
+          ],
+          "passos": [
+            { "frase": "f-3b87ca", "acao": "pensa", "emocao": "pensativo", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "acao": "nega", "emocao": "feliz" } ] },
+            { "frase": "f-d32d54", "acao": "aponta", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ben", "segura": "celular", "emocao": "feliz",
+              "objetos": [ { "prop": "celular", "acao": "some" } ] },
+            { "frase": "f-076bfd", "acao": "aponta", "alvo": "ben", "emocao": "radiante", "efeito": "brilho", "camera": "medio" },
+            { "frase": "f-73990b", "acao": "mostra", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-60eaf3", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-90f5a5", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "ben", "emocao": "timido" } ] },
+            { "frase": "f-b355a1", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "ben", "emocao": "surpreso" } ] },
+            { "frase": "f-69020f", "acao": "mostra", "emocao": "pensativo", "camera": "dupla", "alvo": "voce" },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "ben", "acao": "comemora", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "terceira-pessoa.cena-o-time-e-a-familia": {
+      "titulo": { "en": "Tea at Emma's house", "pt": "Chá na casa da Emma" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "emma", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "garrafa", "pos": "centro" }
+          ],
+          "passos": [
+            { "frase": "f-529b2c", "acao": "mostra", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-5082da", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-4598e6", "acao": "aponta", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-8d3e6a", "acao": "nega", "emocao": "timido",
+              "reacoes": [ { "quem": "emma", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "emma", "segura": "nada", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "segura": "cafe", "emocao": "radiante" } ] },
+            { "frase": "f-6a8e47", "acao": "aponta", "alvo": "voce", "emocao": "pensativo" },
+            { "frase": "f-a2d461", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "emma", "emocao": "surpreso" } ] },
+            { "frase": "f-86affc", "acao": "nega", "emocao": "pensativo" },
+            { "frase": "f-2a4254", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "emma", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "mostra", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

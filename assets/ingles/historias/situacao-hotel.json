@@ -1,0 +1,685 @@
+{
+  "versao": 1,
+  "trilha": "situacao-hotel",
+  "arco": "A chegada a Chicago: a fila da imigração com o passaporte na mão, o check-in à noite com a reserva que some e reaparece, a senha do Wi-Fi que a Sarah também quer e os probleminhas do quarto até o táxi de volta. A mala vai junto e tudo termina num sorriso.",
+  "licoes": {
+    "situacao-hotel.na-imigracao-o-passaporte": {
+      "titulo": {
+        "en": "Nothing to declare",
+        "pt": "Nada a declarar"
+      },
+      "cenas": [
+        {
+          "cenario": "aeroporto",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "passaporte",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "oficial",
+              "pos": "centroDireita",
+              "emocao": "pensativo"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "mala",
+              "pos": "esquerda"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-ef3e78",
+              "acao": "mostra",
+              "emocao": "nervoso",
+              "alvo": "oficial",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "oficial",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-231af0",
+              "acao": "concorda",
+              "emocao": "timido",
+              "segura": "nada",
+              "reacoes": [
+                {
+                  "quem": "oficial",
+                  "segura": "passaporte",
+                  "emocao": "neutro"
+                }
+              ]
+            },
+            {
+              "frase": "f-6026e8",
+              "acao": "aponta",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "oficial",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "oficial",
+              "acao": "aponta",
+              "alvo": "mala",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-a1b920",
+              "acao": "nega",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "oficial",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-a472ef",
+              "acao": "nega",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "oficial",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-13a8d6",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "segura": "documento",
+              "alvo": "oficial",
+              "reacoes": [
+                {
+                  "quem": "oficial",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-81edb3",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio"
+            },
+            {
+              "mudo": true,
+              "quem": "oficial",
+              "acao": "aponta",
+              "alvo": "mala",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-e770b0",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "segura": "notebook",
+              "alvo": "oficial",
+              "reacoes": [
+                {
+                  "quem": "oficial",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "oficial",
+              "acao": "acena",
+              "segura": "nada",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "passaporte",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-hotel.check-in-tenho-uma-reserva": {
+      "titulo": {
+        "en": "I have a reservation",
+        "pt": "Eu tenho uma reserva"
+      },
+      "cenas": [
+        {
+          "cenario": "hotel",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "segura": "mala",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "recepcionista",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "notebook",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "anda",
+              "para": "centroEsquerda",
+              "emocao": "cansado"
+            },
+            {
+              "frase": "f-63efc6",
+              "acao": "acena",
+              "emocao": "feliz",
+              "alvo": "recepcionista",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-951147",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "objetos": [
+                {
+                  "prop": "mala",
+                  "acao": "aparece",
+                  "pos": "esquerda",
+                  "de": "voce"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "recepcionista",
+              "acao": "olha",
+              "alvo": "notebook",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-aa29ad",
+              "emocao": "nervoso",
+              "efeito": "suor",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-07b82f",
+              "acao": "mostra",
+              "emocao": "determinado",
+              "segura": "passaporte",
+              "alvo": "recepcionista",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-b0373f",
+              "acao": "aponta",
+              "alvo": "notebook",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "radiante"
+                }
+              ],
+              "objetos": [
+                {
+                  "prop": "passaporte",
+                  "acao": "aparece",
+                  "pos": "centro",
+                  "de": "voce"
+                }
+              ]
+            },
+            {
+              "frase": "f-50252d",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-0446a8",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-d33c8e",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "segura": "chave",
+              "alvo": "voce",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "passaporte",
+                  "emocao": "feliz"
+                }
+              ],
+              "objetos": [
+                {
+                  "prop": "passaporte",
+                  "acao": "some"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "recepcionista",
+              "segura": "nada",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "chave",
+                  "acao": "comemora",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-hotel.o-quarto-o-cafe-e-o-wi-fi": {
+      "titulo": {
+        "en": "The Wi-Fi password",
+        "pt": "A senha do Wi-Fi"
+      },
+      "cenas": [
+        {
+          "cenario": "hotel",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "pensativo"
+            },
+            {
+              "quem": "recepcionista",
+              "pos": "centroDireita",
+              "segura": "chave",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "mala",
+              "pos": "esquerda"
+            },
+            {
+              "prop": "documento",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-a632d0",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "alvo": "recepcionista",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-27a85d",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-d744e0",
+              "acao": "aponta",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-f06fe3",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-e415d5",
+              "acao": "pensa",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-23e155",
+              "acao": "aponta",
+              "alvo": "documento",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "recepcionista",
+              "segura": "nada",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "chave",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "hotel",
+          "hora": "amanhecer",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "centroDireita",
+              "visivel": false,
+              "segura": "celular",
+              "emocao": "pensativo"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "entra",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-0100a6",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "alvo": "voce",
+              "camera": "dupla"
+            },
+            {
+              "frase": "f-f2ee08",
+              "acao": "aponta",
+              "alvo": "sarah",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "situacao-hotel.probleminhas-no-quarto": {
+      "titulo": {
+        "en": "Another towel, please",
+        "pt": "Outra toalha, por favor"
+      },
+      "cenas": [
+        {
+          "cenario": "hotel",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "esquerda",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "recepcionista",
+              "pos": "centroDireita",
+              "segura": "chave",
+              "emocao": "surpreso"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "anda",
+              "para": "centroEsquerda",
+              "emocao": "cansado",
+              "efeito": "zzz"
+            },
+            {
+              "frase": "f-c8b6f8",
+              "acao": "aponta",
+              "emocao": "cansado",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-517855",
+              "acao": "mostra",
+              "emocao": "timido",
+              "alvo": "voce",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-430232",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "alvo": "recepcionista",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "recepcionista",
+              "segura": "nada",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "segura": "chave",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "cenario": "hotel",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "celular",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "recepcionista",
+              "remoto": "celular",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "mala",
+              "pos": "direita"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-b69951",
+              "emocao": "timido",
+              "camera": "geral"
+            },
+            {
+              "frase": "f-d40b04",
+              "acao": "nega",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-f883fa",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-8f598f",
+              "acao": "treme",
+              "emocao": "nervoso",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "anda",
+              "para": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-35b96e",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "recepcionista",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "segura": "mala",
+              "emocao": "radiante",
+              "objetos": [
+                {
+                  "prop": "mala",
+                  "acao": "some"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

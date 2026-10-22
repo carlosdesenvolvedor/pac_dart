@@ -1,0 +1,201 @@
+{
+  "versao": 1,
+  "trilha": "presente-simples",
+  "arco": "Primeira semana em Chicago: na copa do escritório e no café da manhã do hotel, o aluno conta que mora no Brasil, trabalha de casa e ama café; no jantar com o time, cada um diz o que come. Já de volta em casa, por vídeo, ele compara o seu dia com o do Ben.",
+  "licoes": {
+    "presente-simples.trabalho-de-casa-moro-em-curitiba": {
+      "titulo": {"en": "I work from home", "pt": "Eu trabalho de casa"},
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            {"quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz"},
+            {"quem": "mike", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz"}
+          ],
+          "objetos": [],
+          "passos": [
+            {"mudo": true, "quem": "mike", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao"},
+            {"frase": "f-bfc0d9", "acao": "concorda", "emocao": "feliz", "alvo": "mike", "camera": "geral",
+              "reacoes": [{"quem": "mike", "emocao": "feliz"}]},
+            {"frase": "f-14bc2b", "acao": "aponta", "emocao": "radiante", "camera": "medio",
+              "reacoes": [{"quem": "mike", "acao": "concorda"}]},
+            {"frase": "f-c0e9f8", "acao": "aponta", "emocao": "pensativo", "alvo": "mike", "camera": "dupla"},
+            {"frase": "f-616da6", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [{"quem": "voce", "emocao": "feliz"}]},
+            {"frase": "f-471e9f", "acao": "aponta", "emocao": "feliz", "camera": "medio",
+              "reacoes": [{"quem": "voce", "acao": "concorda"}]},
+            {"mudo": true, "quem": "mike", "acao": "pensa", "efeito": "interrogacao"},
+            {"frase": "f-a039d3", "acao": "nega", "emocao": "feliz", "alvo": "mike"},
+            {"frase": "f-aaac1b", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [{"quem": "mike", "emocao": "surpreso"}]},
+            {"frase": "f-0d4fd2", "acao": "aponta", "emocao": "radiante", "alvo": "mike", "camera": "dupla",
+              "reacoes": [{"quem": "mike", "acao": "concorda", "emocao": "radiante"}]},
+            {"mudo": true, "quem": "mike", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [{"quem": "voce", "acao": "mostra", "emocao": "radiante"}]}
+          ]
+        }
+      ]
+    },
+    "presente-simples.gosto-de-cafe-amo-pizza": {
+      "titulo": {"en": "I love coffee", "pt": "Eu amo café"},
+      "cenas": [
+        {
+          "cenario": "restaurante", "hora": "amanhecer", "clima": [],
+          "elenco": [
+            {"quem": "garcom", "pos": "esquerda", "segura": "garrafa", "emocao": "feliz"},
+            {"quem": "voce", "pos": "centroEsquerda", "emocao": "cansado"},
+            {"quem": "mike", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz"},
+            {"quem": "ana", "pos": "direita", "segura": "cafe", "emocao": "feliz"}
+          ],
+          "objetos": [{"prop": "prato", "pos": "centro"}],
+          "passos": [
+            {"frase": "f-45f349", "acao": "concorda", "emocao": "radiante", "efeito": "coracoes", "alvo": "garcom", "camera": "geral"},
+            {"mudo": true, "quem": "garcom", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [{"quem": "voce", "segura": "cafe", "emocao": "radiante"}]},
+            {"frase": "f-2c7f2b", "acao": "mostra", "emocao": "feliz", "camera": "medio",
+              "reacoes": [{"quem": "ana", "acao": "concorda"}]},
+            {"frase": "f-e0f4c5", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [{"quem": "mike", "emocao": "pensativo"}]},
+            {"frase": "f-7c922c", "emocao": "surpreso", "efeito": "interrogacao", "alvo": "ana", "camera": "dupla"},
+            {"frase": "f-987102", "acao": "nega", "emocao": "timido",
+              "reacoes": [{"quem": "ana", "emocao": "surpreso"}]},
+            {"frase": "f-c42dbf", "emocao": "radiante", "efeito": "coracoes", "camera": "close",
+              "reacoes": [{"quem": "mike", "acao": "nega", "emocao": "feliz"}]},
+            {"frase": "f-72f161", "acao": "aponta", "emocao": "feliz", "alvo": "voce"},
+            {"frase": "f-1af636", "acao": "mostra", "emocao": "timido", "alvo": "ana"},
+            {"mudo": true, "quem": "garcom", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [{"quem": "voce", "emocao": "radiante", "efeito": "coracoes"}, {"quem": "ana", "emocao": "radiante"}, {"quem": "mike", "acao": "concorda", "emocao": "feliz"}]}
+          ]
+        }
+      ]
+    },
+    "presente-simples.quero-aprender-want-to-need-to": {
+      "titulo": {"en": "Let's learn together", "pt": "Vamos aprender juntos"},
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            {"quem": "ana", "pos": "esquerda", "emocao": "feliz"},
+            {"quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "radiante"},
+            {"quem": "mike", "pos": "centroDireita", "visivel": false, "segura": "notebook"}
+          ],
+          "objetos": [{"prop": "notebook", "pos": "centro"}],
+          "passos": [
+            {"frase": "f-4a2e48", "acao": "aponta", "emocao": "radiante", "efeito": "brilho", "camera": "geral"},
+            {"frase": "f-bb7c6f", "acao": "pensa", "emocao": "feliz",
+              "reacoes": [{"quem": "voce", "acao": "concorda"}]},
+            {"frase": "f-4aafeb", "acao": "concorda", "emocao": "determinado"},
+            {"mudo": true, "quem": "mike", "acao": "entra", "emocao": "feliz", "efeito": "interrogacao"},
+            {"frase": "f-a49ec7", "acao": "aponta", "emocao": "timido", "efeito": "suor", "alvo": "notebook",
+              "reacoes": [{"quem": "mike", "acao": "concorda"}]},
+            {"frase": "f-9e2883", "acao": "aponta", "emocao": "determinado", "alvo": "ana", "camera": "dupla",
+              "reacoes": [{"quem": "ana", "emocao": "surpreso"}]},
+            {"frase": "f-313dd4", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [{"quem": "mike", "emocao": "feliz"}]},
+            {"frase": "f-381bd5", "acao": "concorda", "emocao": "radiante", "camera": "geral",
+              "reacoes": [{"quem": "ana", "acao": "palmas", "emocao": "radiante"}, {"quem": "mike", "acao": "concorda", "emocao": "feliz"}]},
+            {"mudo": true, "quem": "mike", "acao": "aponta", "emocao": "feliz", "efeito": "exclamacao"},
+            {"frase": "f-580bce", "acao": "nega", "emocao": "feliz", "hora": "tarde", "camera": "medio"},
+            {"mudo": true, "quem": "voce", "acao": "comemora", "emocao": "radiante",
+              "reacoes": [{"quem": "ana", "acao": "palmas", "emocao": "radiante"}, {"quem": "mike", "emocao": "feliz"}]}
+          ]
+        }
+      ]
+    },
+    "presente-simples.nao-como-carne-don-t": {
+      "titulo": {"en": "Dinner with the team", "pt": "Jantar com o time"},
+      "cenas": [
+        {
+          "cenario": "restaurante", "hora": "noite", "clima": [],
+          "elenco": [
+            {"quem": "voce", "pos": "esquerda", "emocao": "feliz"},
+            {"quem": "ana", "pos": "centroEsquerda", "segura": "livro", "emocao": "pensativo"},
+            {"quem": "mike", "pos": "centro", "emocao": "determinado"},
+            {"quem": "garcom", "pos": "direita", "visivel": false, "segura": "documento"}
+          ],
+          "objetos": [],
+          "passos": [
+            {"frase": "f-ff091d", "acao": "aponta", "emocao": "feliz", "camera": "geral",
+              "reacoes": [{"quem": "mike", "acao": "concorda", "emocao": "feliz"}]},
+            {"mudo": true, "quem": "garcom", "acao": "entra", "emocao": "feliz", "efeito": "interrogacao"},
+            {"frase": "f-5d4400", "acao": "nega", "emocao": "feliz", "alvo": "garcom", "camera": "medio",
+              "reacoes": [{"quem": "garcom", "acao": "escreve"}]},
+            {"frase": "f-e3a381", "acao": "palmas", "emocao": "radiante", "efeito": "coracoes",
+              "reacoes": [{"quem": "garcom", "acao": "escreve", "emocao": "feliz"}]},
+            {"frase": "f-b64688", "acao": "nega", "emocao": "feliz",
+              "reacoes": [{"quem": "ana", "emocao": "surpreso"}]},
+            {"frase": "f-aaa9cf", "emocao": "surpreso", "efeito": "exclamacao", "alvo": "mike", "camera": "dupla"},
+            {"frase": "f-851b54", "acao": "aponta", "emocao": "radiante",
+              "reacoes": [{"quem": "mike", "emocao": "timido", "efeito": "suor"}]},
+            {"mudo": true, "quem": "garcom", "segura": "cafe", "emocao": "feliz", "efeito": "interrogacao",
+              "objetos": [{"prop": "prato", "acao": "aparece", "pos": "centroDireita"}]},
+            {"frase": "f-d23e57", "acao": "nega", "emocao": "feliz", "alvo": "garcom"},
+            {"frase": "f-7cbe35", "acao": "acena", "emocao": "radiante", "alvo": "garcom",
+              "reacoes": [{"quem": "garcom", "acao": "concorda"}]},
+            {"mudo": true, "quem": "garcom", "segura": "nada", "emocao": "feliz",
+              "reacoes": [{"quem": "mike", "segura": "cafe", "emocao": "radiante"}, {"quem": "ana", "emocao": "feliz"}, {"quem": "voce", "acao": "concorda", "emocao": "feliz"}]}
+          ]
+        }
+      ]
+    },
+    "presente-simples.vou-pra-casa-vou-dormir": {
+      "titulo": {"en": "Good night, Ben", "pt": "Boa noite, Ben"},
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "noite", "clima": [],
+          "elenco": [
+            {"quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz"},
+            {"quem": "ben", "pos": "centroDireita", "emocao": "cansado"}
+          ],
+          "objetos": [],
+          "passos": [
+            {"frase": "f-68f3a3", "acao": "acena", "emocao": "feliz", "camera": "geral"},
+            {"frase": "f-4b3063", "acao": "mostra", "emocao": "feliz", "camera": "medio",
+              "reacoes": [{"quem": "ben", "emocao": "feliz"}]},
+            {"frase": "f-1b0223", "acao": "concorda", "emocao": "feliz"},
+            {"frase": "f-d53bb4", "acao": "nega", "emocao": "radiante",
+              "reacoes": [{"quem": "ben", "emocao": "surpreso"}]},
+            {"frase": "f-057114", "acao": "concorda", "emocao": "feliz"},
+            {"frase": "f-cab154", "acao": "comemora", "emocao": "radiante",
+              "reacoes": [{"quem": "ben", "acao": "palmas", "emocao": "feliz"}]},
+            {"mudo": true, "quem": "ben", "emocao": "cansado", "efeito": "zzz"},
+            {"frase": "f-54b65c", "acao": "concorda", "emocao": "cansado", "camera": "close"},
+            {"frase": "f-f9308d", "acao": "acena", "emocao": "feliz", "alvo": "ben", "camera": "dupla",
+              "reacoes": [{"quem": "ben", "acao": "acena", "emocao": "feliz"}]},
+            {"mudo": true, "quem": "voce", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [{"quem": "ben", "emocao": "feliz", "efeito": "zzz"}]}
+          ]
+        }
+      ]
+    },
+    "presente-simples.cena-meu-dia-de-trabalho-remoto": {
+      "titulo": {"en": "My day at home", "pt": "Meu dia em casa"},
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            {"quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz"},
+            {"quem": "ben", "pos": "centroDireita", "segura": "garrafa", "emocao": "feliz"}
+          ],
+          "objetos": [],
+          "passos": [
+            {"frase": "f-3623ca", "acao": "aponta", "emocao": "feliz", "alvo": "voce", "camera": "geral"},
+            {"frase": "f-b3bb1a", "acao": "concorda", "emocao": "feliz", "camera": "medio"},
+            {"frase": "f-7ddbe5", "acao": "comemora", "emocao": "radiante",
+              "reacoes": [{"quem": "voce", "emocao": "feliz"}]},
+            {"mudo": true, "quem": "ben", "acao": "aponta", "alvo": "voce", "emocao": "pensativo", "efeito": "interrogacao"},
+            {"frase": "f-ec9f45", "acao": "mostra", "emocao": "radiante", "efeito": "coracoes", "camera": "close",
+              "reacoes": [{"quem": "ben", "acao": "mostra", "emocao": "feliz"}]},
+            {"frase": "f-3f7a82", "acao": "aponta", "emocao": "feliz", "alvo": "voce",
+              "reacoes": [{"quem": "voce", "acao": "pensa", "emocao": "pensativo"}]},
+            {"frase": "f-729221", "acao": "concorda", "emocao": "feliz"},
+            {"frase": "f-a4065e", "acao": "acena", "emocao": "feliz", "camera": "medio"},
+            {"frase": "f-8b4126", "acao": "acena", "emocao": "radiante", "alvo": "ben", "camera": "dupla",
+              "reacoes": [{"quem": "ben", "acao": "acena", "emocao": "feliz"}]},
+            {"mudo": true, "quem": "voce", "segura": "prato", "emocao": "radiante", "efeito": "brilho"}
+          ]
+        }
+      ]
+    }
+  }
+}
