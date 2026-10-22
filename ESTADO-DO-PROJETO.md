@@ -34,8 +34,8 @@ Turismo 3D) só muda o comportamento no inglês (`Linguagem.atual == Linguagem.i
   juntar** a branch `claude/csharp-curriculo`. Ver [🟣 PAC·C#](#-pacc--a-vertente-c-set2026-congelada-com-o-conteúdo-incompleto--regra-do-dono).
 
 **O que falta (só na máquina/contas do dono):**
-1. **Vozes por personagem** — branch `lote-vozes-wip` (NÃO está no main): precisa de `gcloud` logado no projeto `music-system-421ee`,
-   Rhubarb e ffmpeg; plano em `planejamento/historias-licoes/PLANO-VOZES.md`. ⚠️ `tools/ingles/vozes_google.py` apaga mp3 órfãos: rodar a simulação antes.
+1. ~~**Vozes por personagem**~~ — FEITO e no ar em 22/out/2026 (merge 740d8c0). Falta só ouvir no aparelho. Para regerar: `gcloud` no projeto
+   `music-system-421ee`, Rhubarb e ffmpeg; plano em `planejamento/historias-licoes/PLANO-VOZES.md`. ⚠️ `tools/ingles/vozes_google.py` apaga mp3 órfãos: rodar a simulação antes.
 2. **Claude na Conversa (Fase 11)** — o Worker da Cloudflare em `workers/conversa-claude/` ainda **não foi publicado**; até lá a Conversa
    usa o Gemini. Publicar e ligar pelo `config/tutor` (`workers/conversa-claude/LEIA-ME.md`). Ver [🙌 rodada 9](#-21out2026-rodada-9-claude-na-conversa-desligado-até-publicar-o-worker--modo-mãos-livres).
 3. **Lojas (Google Play / App Store)** — [📲 Lojas](#-lojas-google-play--app-store--pendente-com-o-dono-11out2026) e `branding/lojas/CHECKLIST.md`.
@@ -2582,7 +2582,7 @@ inglês** (`Linguagem.atual == Linguagem.ingles`, lido uma vez por tela/painter)
   vidas, aviso de nível/combo, tremor ao perder vida, fim de jogo; o Rali com várias palavras perfeitas (chama, carga da CPU,
   corredores andando). No Dart/C# nada deve mudar.
 
-## 🎙️ vozes por personagem (22/out/2026, branch `lote-vozes-wip`; NÃO está no main, sem deploy)
+## 🎙️ vozes por personagem (22/out/2026; juntado no main em 740d8c0 e publicado)
 
 - **Curso:** as frases que tocavam a gravação do Tatoeba (`au`) agora tocam a voz Chirp 3 HD do personagem que fala (`assets/ingles/voz/`,
   índice `vozes.json` {texto: asset}); o `au` fica de reserva. Ordem no app: mp3 gerado > Tatoeba > voz sintética.
