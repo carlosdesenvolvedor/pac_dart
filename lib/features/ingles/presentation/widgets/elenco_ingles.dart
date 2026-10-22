@@ -7,6 +7,7 @@ import 'package:flutter/scheduler.dart';
 
 import '../../data/voz_ingles.dart';
 import '../../domain/boca.dart';
+import '../../domain/expressao.dart';
 
 /// Os cabelos que o desenho sabe fazer.
 enum Cabelo { curto, lateral, franja, cacheado, longo, rabo, coque, bob }
@@ -156,11 +157,14 @@ abstract final class ElencoIngles {
 }
 
 /// O rosto de um personagem, do peito para cima, com a boca no formato [visema]. [olhos] = 1 aberto, 0 fechado
-/// (piscar); [balanco] de -1 a 1 inclina de leve a cabeça (respiração/idle).
+/// (piscar); [balanco] de -1 a 1 inclina de leve a cabeça (respiração/idle). [expressao] e [olhar] (direção do
+/// olhar, -1..1) servem ao desenho animado do English Turismo; os defaults são o desenho de sempre.
 class RostoPersonagem extends StatelessWidget {
   final Aparencia aparencia;
   final Visema visema;
   final double olhos, balanco, tamanho;
+  final Expressao expressao;
+  final Offset olhar;
 
   const RostoPersonagem({
     super.key,
@@ -169,12 +173,21 @@ class RostoPersonagem extends StatelessWidget {
     this.visema = Visema.x,
     this.olhos = 1,
     this.balanco = 0,
+    this.expressao = Expressao.neutro,
+    this.olhar = Offset.zero,
   });
 
   @override
   Widget build(BuildContext context) => CustomPaint(
     size: Size.square(tamanho),
-    painter: PersonagemPainter(aparencia, visema: visema, olhos: olhos, balanco: balanco),
+    painter: PersonagemPainter(
+      aparencia,
+      visema: visema,
+      olhos: olhos,
+      balanco: balanco,
+      expressao: expressao,
+      olhar: olhar,
+    ),
   );
 }
 
@@ -183,8 +196,17 @@ class PersonagemPainter extends CustomPainter {
   final Aparencia a;
   final Visema visema;
   final double olhos, balanco;
+  final Expressao expressao;
+  final Offset olhar;
 
-  PersonagemPainter(this.a, {this.visema = Visema.x, this.olhos = 1, this.balanco = 0});
+  PersonagemPainter(
+    this.a, {
+    this.visema = Visema.x,
+    this.olhos = 1,
+    this.balanco = 0,
+    this.expressao = Expressao.neutro,
+    this.olhar = Offset.zero,
+  });
 
   static const _contorno = Color(0xFF3A2A33);
   static const _bocaDentro = Color(0xFF7A2638);
@@ -350,26 +372,44 @@ class PersonagemPainter extends CustomPainter {
         c.drawCircle(_p(x, y), _s * .006, sarda);
       }
     }
+    if (expressao == Expressao.timido) {
+      // bochechas rosadas fortes
+      for (final x in [.3, .7]) {
+        c.drawOval(
+          _oval(x, .62, .07, .04),
+          Paint()
+            ..color = const Color(0xFFFF5C7F).withValues(alpha: .62)
+            ..maskFilter = MaskFilter.blur(BlurStyle.normal, _s * .01),
+        );
+      }
+    }
     // sobrancelhas
     final sob = Paint()
       ..color = _escurece(a.cabelo, .15)
       ..style = PaintingStyle.stroke
-      ..strokeWidth = _s * .016
+      ..strokeWidth = _s * (expressao == Expressao.timido ? .013 : .016)
       ..strokeCap = StrokeCap.round;
     for (final lado in [-1.0, 1.0]) {
       final cx = .5 + lado * .125;
+      // (ponta de dentro, meio, ponta de fora); neutro = o desenho de sempre
+      final (dentro, meio, fora) = _sobrancelha(lado);
       final p = Path()
-        ..moveTo(_s * (cx - lado * .045), _s * .445)
-        ..quadraticBezierTo(_s * cx, _s * .42, _s * (cx + lado * .045), _s * .44);
+        ..moveTo(_s * (cx - lado * .045), _s * dentro)
+        ..quadraticBezierTo(_s * cx, _s * meio, _s * (cx + lado * .045), _s * fora);
       c.drawPath(p, sob);
     }
-    // olhos
-    for (final x in [.375, .625]) {
+    // olhos (o olhar desloca os dois juntos; pensativo olha para cima)
+    final olhar = _olharEfetivo;
+    final yo = .53 + olhar.dy * .014;
+    final abertura = olhos * _aberturaDaExpressao;
+    final rx = expressao == Expressao.surpreso ? .054 : .05;
+    for (final x0 in [.375, .625]) {
+      final x = x0 + olhar.dx * .016;
       if (olhos < .25) {
         // piscando: um arquinho
         final p = Path()
-          ..moveTo(_s * (x - .042), _s * .525)
-          ..quadraticBezierTo(_s * x, _s * .55, _s * (x + .042), _s * .525);
+          ..moveTo(_s * (x - .042), _s * (yo - .005))
+          ..quadraticBezierTo(_s * x, _s * (yo + .02), _s * (x + .042), _s * (yo - .005));
         c.drawPath(
           p,
           Paint()
@@ -380,8 +420,36 @@ class PersonagemPainter extends CustomPainter {
         );
         continue;
       }
-      final ry = .07 * olhos;
-      final olho = _oval(x, .53, .05, ry);
+      if (expressao == Expressao.radiante) {
+        // olhos de arquinho ^^
+        final p = Path()
+          ..moveTo(_s * (x - .044), _s * (yo + .012))
+          ..quadraticBezierTo(_s * x, _s * (yo - .045), _s * (x + .044), _s * (yo + .012));
+        c.drawPath(
+          p,
+          Paint()
+            ..color = _contorno
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = _s * .017
+            ..strokeCap = StrokeCap.round,
+        );
+        continue;
+      }
+      if (expressao == Expressao.cansado) {
+        // olheiras leves
+        c.drawPath(
+          Path()
+            ..moveTo(_s * (x - .04), _s * (yo + .05))
+            ..quadraticBezierTo(_s * x, _s * (yo + .075), _s * (x + .04), _s * (yo + .05)),
+          Paint()
+            ..color = const Color(0xFF8E6FA8).withValues(alpha: .45)
+            ..style = PaintingStyle.stroke
+            ..strokeWidth = _s * .012
+            ..strokeCap = StrokeCap.round,
+        );
+      }
+      final ry = .07 * abertura;
+      final olho = _oval(x, yo, rx, ry);
       c.drawOval(
         olho,
         Paint()
@@ -392,17 +460,17 @@ class PersonagemPainter extends CustomPainter {
           ).createShader(olho),
       );
       // brilhos
-      c.drawCircle(_p(x + .016, .53 - ry * .45), _s * .019, Paint()..color = Colors.white);
-      c.drawCircle(_p(x - .016, .53 + ry * .45), _s * .009, Paint()..color = Colors.white.withValues(alpha: .85));
+      c.drawCircle(_p(x + .016, yo - ry * .45), _s * .019, Paint()..color = Colors.white);
+      c.drawCircle(_p(x - .016, yo + ry * .45), _s * .009, Paint()..color = Colors.white.withValues(alpha: .85));
       if (a.cilios) {
         // dois cílios no canto de fora
-        final lado = x < .5 ? -1.0 : 1.0;
+        final lado = x0 < .5 ? -1.0 : 1.0;
         final cilio = Paint()
           ..color = const Color(0xFF2A1F2D)
           ..style = PaintingStyle.stroke
           ..strokeWidth = _s * .01
           ..strokeCap = StrokeCap.round;
-        final canto = _p(x + lado * .042, .53 - ry * .62);
+        final canto = _p(x + lado * .042, yo - ry * .62);
         c.drawLine(canto, canto + Offset(lado * .03, -.018) * _s, cilio);
         c.drawLine(canto + Offset(-lado * .012, -.012) * _s, canto + Offset(lado * .014, -.036) * _s, cilio);
       }
@@ -435,6 +503,45 @@ class PersonagemPainter extends CustomPainter {
       c.drawLine(_p(.297, .52), _p(.2, .5), aro);
       c.drawLine(_p(.703, .52), _p(.8, .5), aro);
     }
+  }
+
+  // ───────────────────────── expressão ─────────────────────────
+
+  /// A sobrancelha do [lado] (-1 esquerda, 1 direita): y da ponta de dentro, do meio (controle) e da ponta de fora.
+  (double, double, double) _sobrancelha(double lado) {
+    const dentro = .445, meio = .42, fora = .44;
+    return switch (expressao) {
+      Expressao.neutro => (dentro, meio, fora),
+      Expressao.feliz => (dentro - .012, meio - .012, fora - .012),
+      Expressao.radiante => (dentro - .024, meio - .03, fora - .024),
+      Expressao.triste => (dentro - .03, meio - .012, fora + .012),
+      Expressao.surpreso => (dentro - .045, meio - .057, fora - .045),
+      Expressao.bravo => (dentro + .03, meio + .012, fora - .012),
+      // uma erguida (a direita), a outra reta
+      Expressao.pensativo =>
+        lado > 0 ? (dentro - .035, meio - .045, fora - .035) : (dentro + .008, meio + .012, fora),
+      Expressao.nervoso => (dentro - .022, meio - .006, fora + .006),
+      Expressao.timido => (dentro - .008, meio, fora - .008),
+      Expressao.determinado => (dentro + .018, meio + .006, fora - .006),
+      Expressao.cansado => (dentro + .006, meio + .01, fora + .026),
+    };
+  }
+
+  /// Quanto os olhos abrem com a emoção (multiplica [olhos]).
+  double get _aberturaDaExpressao => switch (expressao) {
+    Expressao.triste => .8,
+    Expressao.surpreso => 1.15,
+    Expressao.bravo => .7,
+    Expressao.pensativo || Expressao.timido => .85,
+    Expressao.determinado => .9,
+    Expressao.cansado => .45,
+    _ => 1,
+  };
+
+  /// [olhar] limitado a -1..1; o pensativo olha para cima (e um pouco para o lado).
+  Offset get _olharEfetivo {
+    final o = expressao == Expressao.pensativo ? olhar + const Offset(.35, -.8) : olhar;
+    return Offset(o.dx.clamp(-1.0, 1.0), o.dy.clamp(-1.0, 1.0));
   }
 
   // ───────────────────────── boca ─────────────────────────
@@ -494,12 +601,52 @@ class PersonagemPainter extends CustomPainter {
       c.drawPath(p, labio);
     }
 
+    /// Uma curva simples de (x0, y0) a (x1, y1) com o controle em (xc, yc).
+    void curva(double x0, double y0, double xc, double yc, double x1, double y1) => c.drawPath(
+      Path()
+        ..moveTo(_s * x0, _s * y0)
+        ..quadraticBezierTo(_s * xc, _s * yc, _s * x1, _s * y1),
+      labio,
+    );
+
     switch (visema) {
+      // calado: a boca em repouso da emoção (falando, a boca segue o visema)
       case Visema.x:
-        final p = Path()
-          ..moveTo(_s * (cx - .04), _s * (cy - .006))
-          ..quadraticBezierTo(_s * cx, _s * (cy + .03), _s * (cx + .04), _s * (cy - .006));
-        c.drawPath(p, labio);
+        switch (expressao) {
+          case Expressao.neutro:
+            final p = Path()
+              ..moveTo(_s * (cx - .04), _s * (cy - .006))
+              ..quadraticBezierTo(_s * cx, _s * (cy + .03), _s * (cx + .04), _s * (cy - .006));
+            c.drawPath(p, labio);
+          case Expressao.feliz:
+            desenhaAberta(aberta(.045, .05, topo: .004), dentes: .35, linguaR: .35);
+          case Expressao.radiante:
+            desenhaAberta(aberta(.056, .08, topo: .002), dentes: .3, linguaR: .45);
+          case Expressao.triste:
+            curva(cx - .035, cy + .014, cx, cy - .02, cx + .035, cy + .014);
+          case Expressao.surpreso:
+            final p = Path()..addOval(_oval(cx, cy + .008, .022, .027));
+            c.drawPath(p, dentro);
+            c.drawPath(p, labio..strokeWidth = _s * .014);
+          case Expressao.bravo:
+            curva(cx - .033, cy + .008, cx, cy + .004, cx + .033, cy + .008);
+          case Expressao.pensativo:
+            curva(cx - .004, cy + .008, cx + .02, cy + .013, cx + .04, cy - .002);
+          case Expressao.nervoso:
+            // ondulada
+            final p = Path()..moveTo(_s * (cx - .04), _s * (cy + .006));
+            for (var i = 0; i < 4; i++) {
+              final x0 = cx - .04 + i * .02;
+              p.quadraticBezierTo(_s * (x0 + .01), _s * (cy + (i.isEven ? -.008 : .02)), _s * (x0 + .02), _s * (cy + .006));
+            }
+            c.drawPath(p, labio);
+          case Expressao.timido:
+            curva(cx - .022, cy, cx, cy + .018, cx + .022, cy);
+          case Expressao.determinado:
+            curva(cx - .034, cy + .006, cx + .006, cy + .016, cx + .04, cy - .012);
+          case Expressao.cansado:
+            curva(cx - .018, cy + .008, cx, cy + .009, cx + .018, cy + .008);
+        }
       case Visema.a:
         final p = Path()
           ..moveTo(_s * (cx - .032), _s * cy)
@@ -756,7 +903,12 @@ class PersonagemPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(PersonagemPainter old) =>
-      old.a != a || old.visema != visema || old.olhos != olhos || old.balanco != balanco;
+      old.a != a ||
+      old.visema != visema ||
+      old.olhos != olhos ||
+      old.balanco != balanco ||
+      old.expressao != expressao ||
+      old.olhar != olhar;
 }
 
 /// O personagem de [quem] mexendo a boca com a voz do app ([VozIngles.falando]) e piscando de vez em quando.

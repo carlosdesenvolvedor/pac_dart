@@ -1,0 +1,3151 @@
+{
+ "versao": 2,
+ "parte": "b",
+ "titulo": {
+  "en": "The Golden Wheel",
+  "pt": "A Roda de Ouro"
+ },
+ "capitulos": [
+  {
+   "pista": 11,
+   "nivel": "A2",
+   "titulo": {
+    "en": "An Old Map",
+    "pt": "Um mapa antigo"
+   },
+   "resumo": "A Ana acha um mapa antigo atrás dos pneus. A Emma conta que ele mostra a rota até a Roda de Ouro, e o World Tour começa ao pôr do sol.",
+   "palavras": [
+    {
+     "en": "map",
+     "pt": "mapa"
+    },
+    {
+     "en": "old",
+     "pt": "antigo"
+    },
+    {
+     "en": "route",
+     "pt": "rota"
+    },
+    {
+     "en": "legend",
+     "pt": "lenda"
+    },
+    {
+     "en": "sunset",
+     "pt": "pôr do sol"
+    }
+   ],
+   "intro": [
+    {
+     "cenario": "garagem",
+     "hora": "tarde",
+     "clima": [],
+     "elenco": [
+      {
+       "quem": "voce",
+       "pos": "esquerda",
+       "segura": "capacete",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "ana",
+       "pos": "centroEsquerda",
+       "visivel": false,
+       "segura": "mapa",
+       "emocao": "radiante"
+      },
+      {
+       "quem": "mike",
+       "pos": "centroDireita",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "emma",
+       "pos": "direita",
+       "visivel": false,
+       "segura": "cafe",
+       "emocao": "pensativo"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "pneu",
+       "pos": "centro"
+      }
+     ],
+     "falas": [
+      {
+       "quem": "narrador",
+       "en": "Today, the World Tour starts. But where is Ana?",
+       "pt": "Hoje começa o World Tour. Mas cadê a Ana?",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "voce",
+       "mudo": true,
+       "emocao": "surpreso",
+       "efeito": "interrogacao",
+       "camera": "geral",
+       "objetos": [
+        {
+         "prop": "pneu",
+         "acao": "treme"
+        }
+       ],
+       "reacoes": [
+        {
+         "quem": "mike",
+         "emocao": "surpreso"
+        }
+       ]
+      },
+      {
+       "quem": "ana",
+       "en": "Look what I found behind the tires!",
+       "pt": "Olha o que eu achei atrás dos pneus!",
+       "acao": "entra",
+       "para": "centroEsquerda",
+       "efeito": "fumaca"
+      },
+      {
+       "quem": "ana",
+       "mudo": true,
+       "acao": "mostra",
+       "efeito": "brilho",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "surpreso",
+         "efeito": "exclamacao"
+        },
+        {
+         "quem": "mike",
+         "emocao": "surpreso"
+        }
+       ]
+      },
+      {
+       "quem": "mike",
+       "en": "It's a map of the World Tour. It's very old!",
+       "pt": "É um mapa do World Tour. É muito antigo!",
+       "emocao": "pensativo",
+       "acao": "pensa",
+       "camera": "medio"
+      },
+      {
+       "quem": "emma",
+       "en": "I know that map. It's the route to the Golden Wheel.",
+       "pt": "Eu conheço esse mapa. É a rota até a Roda de Ouro.",
+       "acao": "entra",
+       "para": "direita",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "surpreso"
+        },
+        {
+         "quem": "ana",
+         "emocao": "surpreso"
+        }
+       ]
+      },
+      {
+       "quem": "emma",
+       "en": "The legend says the Golden Wheel chooses its driver.",
+       "pt": "A lenda diz que a Roda de Ouro escolhe o seu piloto.",
+       "efeito": "brilho",
+       "camera": "close"
+      },
+      {
+       "quem": "voce",
+       "en": "Chooses? How?",
+       "pt": "Escolhe? Como assim?",
+       "emocao": "pensativo",
+       "acao": "pensa",
+       "camera": "dupla",
+       "alvo": "emma"
+      },
+      {
+       "quem": "emma",
+       "en": "Coffee first. Stories later.",
+       "pt": "Primeiro o café. A história fica para depois.",
+       "emocao": "feliz",
+       "acao": "mostra",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "emocao": "feliz"
+        },
+        {
+         "quem": "mike",
+         "acao": "concorda",
+         "emocao": "feliz"
+        },
+        {
+         "quem": "voce",
+         "emocao": "feliz"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "Twenty roads. One wheel. Let's go!",
+       "pt": "Vinte pistas. Uma Roda. Vamos lá!",
+       "emocao": "determinado",
+       "acao": "comemora",
+       "cenario": "campina",
+       "hora": "tarde",
+       "camera": "panoramica",
+       "objetos": [
+        {
+         "prop": "pneu",
+         "acao": "some"
+        }
+       ],
+       "reacoes": [
+        {
+         "quem": "ana",
+         "acao": "comemora"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "fim": [
+    {
+     "cenario": "campina",
+     "hora": "tarde",
+     "clima": [],
+     "elenco": [
+      {
+       "quem": "ana",
+       "pos": "esquerda",
+       "segura": "mapa",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "voce",
+       "pos": "centroEsquerda",
+       "segura": "capacete",
+       "emocao": "radiante"
+      },
+      {
+       "quem": "mike",
+       "pos": "centro",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "emma",
+       "pos": "centroDireita",
+       "segura": "cafe",
+       "emocao": "feliz"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "carro",
+       "pos": "direita"
+      }
+     ],
+     "falas": [
+      {
+       "quem": "ana",
+       "en": "The sunset was beautiful. You drove so well!",
+       "pt": "O pôr do sol estava lindo. Você dirigiu muito bem!",
+       "acao": "palmas",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "voce",
+       "en": "Thanks! I know two hundred racing words now!",
+       "pt": "Valeu! Agora eu sei duzentas palavras de corrida!",
+       "acao": "comemora",
+       "efeito": "confete",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "emma",
+         "acao": "palmas"
+        }
+       ]
+      },
+      {
+       "quem": "mike",
+       "mudo": true,
+       "acao": "olha",
+       "alvo": "ana",
+       "emocao": "pensativo",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "acao": "mostra"
+        }
+       ]
+      },
+      {
+       "quem": "mike",
+       "en": "Next on the map: Misty Valley. Lots of fog!",
+       "pt": "Próxima parada no mapa: Vale da Neblina. Muita neblina!",
+       "emocao": "nervoso",
+       "acao": "pensa",
+       "camera": "close",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "surpreso",
+         "efeito": "exclamacao"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "gancho": {
+    "en": "Tomorrow there is fog. You can't see anything!",
+    "pt": "Amanhã tem neblina. Não dá para ver nada!"
+   }
+  },
+  {
+   "pista": 12,
+   "nivel": "A2",
+   "titulo": {
+    "en": "Trust the Voice",
+    "pt": "Confie na voz"
+   },
+   "resumo": "No Vale da Neblina você não enxerga nada, mas confia na voz do Mike no rádio e aprende a responder como navegador.",
+   "palavras": [
+    {
+     "en": "fog",
+     "pt": "neblina"
+    },
+    {
+     "en": "hear",
+     "pt": "ouvir"
+    },
+    {
+     "en": "trust",
+     "pt": "confiar"
+    },
+    {
+     "en": "radio",
+     "pt": "rádio"
+    },
+    {
+     "en": "voice",
+     "pt": "voz"
+    }
+   ],
+   "intro": [
+    {
+     "cenario": "vale",
+     "hora": "amanhecer",
+     "clima": [
+      "neblina"
+     ],
+     "elenco": [
+      {
+       "quem": "voce",
+       "pos": "centro",
+       "noCarro": true,
+       "emocao": "nervoso"
+      },
+      {
+       "quem": "mike",
+       "remoto": "radio",
+       "emocao": "determinado"
+      }
+     ],
+     "objetos": [],
+     "falas": [
+      {
+       "quem": "voce",
+       "mudo": true,
+       "emocao": "nervoso",
+       "efeito": "suor",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "voce",
+       "en": "So much fog! I can't see the road!",
+       "pt": "Quanta neblina! Não consigo ver a estrada!",
+       "camera": "medio"
+      },
+      {
+       "quem": "mike",
+       "en": "I'm on the radio. You can't see, but you can hear.",
+       "pt": "Estou no rádio. Você não consegue ver, mas consegue ouvir."
+      },
+      {
+       "quem": "mike",
+       "en": "Trust my voice. I'm your eyes today.",
+       "pt": "Confia na minha voz. Hoje eu sou os seus olhos."
+      },
+      {
+       "quem": "voce",
+       "mudo": true,
+       "emocao": "surpreso",
+       "efeito": "exclamacao",
+       "camera": "tremida",
+       "objetos": [
+        {
+         "prop": "carroRival",
+         "acao": "passa"
+        }
+       ]
+      },
+      {
+       "quem": "mike",
+       "en": "That was Max. Don't follow him. Slow down.",
+       "pt": "Era o Max. Não vai atrás dele. Vai mais devagar.",
+       "camera": "geral"
+      },
+      {
+       "quem": "mike",
+       "en": "A curve is coming. Turn left and say: copy that.",
+       "pt": "Vem uma curva. Vira à esquerda e responde: entendido."
+      },
+      {
+       "quem": "voce",
+       "en": "Copy that!",
+       "pt": "Entendido!",
+       "emocao": "determinado"
+      },
+      {
+       "quem": "mike",
+       "en": "Ha! You talk like a navigator now!",
+       "pt": "Rá! Agora você fala como navegador!",
+       "pt_f": "Rá! Agora você fala como navegadora!",
+       "emocao": "radiante",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "radiante"
+        }
+       ]
+      },
+      {
+       "quem": "mike",
+       "en": "The gate is close. Read the word!",
+       "pt": "O portão está perto. Lê a palavra!",
+       "emocao": "determinado",
+       "camera": "aproxima"
+      },
+      {
+       "quem": "voce",
+       "en": "I can't see it, but I trust your voice!",
+       "pt": "Não consigo ver, mas confio na sua voz!",
+       "emocao": "determinado",
+       "camera": "aproxima"
+      }
+     ]
+    }
+   ],
+   "fim": [
+    {
+     "cenario": "vale",
+     "hora": "dia",
+     "clima": [
+      "neblina"
+     ],
+     "elenco": [
+      {
+       "quem": "voce",
+       "pos": "centroEsquerda",
+       "noCarro": true,
+       "emocao": "feliz"
+      },
+      {
+       "quem": "mike",
+       "pos": "centroDireita",
+       "visivel": false,
+       "segura": "radio",
+       "emocao": "radiante"
+      }
+     ],
+     "objetos": [],
+     "falas": [
+      {
+       "quem": "voce",
+       "mudo": true,
+       "acao": "desce",
+       "clima": [],
+       "efeito": "brilho",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "mike",
+       "en": "The fog is gone! And you did it!",
+       "pt": "A neblina foi embora! E você conseguiu!",
+       "acao": "entra",
+       "para": "centroDireita",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "acao": "pula",
+         "emocao": "radiante"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "I couldn't see, but I could hear your voice.",
+       "pt": "Eu não conseguia ver, mas conseguia ouvir a sua voz.",
+       "emocao": "feliz",
+       "camera": "dupla",
+       "alvo": "mike"
+      },
+      {
+       "quem": "mike",
+       "en": "That's teamwork. Do you copy?",
+       "pt": "Isso é trabalho em equipe. Entendido?",
+       "emocao": "feliz",
+       "acao": "aponta",
+       "alvo": "voce",
+       "camera": "medio"
+      },
+      {
+       "quem": "voce",
+       "en": "Copy that!",
+       "pt": "Entendido!",
+       "emocao": "radiante",
+       "acao": "comemora",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "mike",
+         "acao": "palmas",
+         "emocao": "radiante"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "gancho": {
+    "en": "In the forest, a friend needs help.",
+    "pt": "Na floresta, um amigo precisa de ajuda."
+   }
+  },
+  {
+   "pista": 13,
+   "nivel": "A2",
+   "titulo": {
+    "en": "A Friend in Trouble",
+    "pt": "Um amigo em apuros"
+   },
+   "resumo": "Na Floresta de Outono, o carro do Max quebra. Você para para ajudar, o Ben conserta o pneu e os dois rivais começam a virar amigos.",
+   "palavras": [
+    {
+     "en": "help",
+     "pt": "ajuda"
+    },
+    {
+     "en": "broken",
+     "pt": "quebrado"
+    },
+    {
+     "en": "fix",
+     "pt": "conserto"
+    },
+    {
+     "en": "tire",
+     "pt": "pneu"
+    },
+    {
+     "en": "thanks",
+     "pt": "obrigado"
+    }
+   ],
+   "intro": [
+    {
+     "cenario": "floresta",
+     "hora": "dia",
+     "clima": [
+      "folhas"
+     ],
+     "elenco": [
+      {
+       "quem": "voce",
+       "pos": "esquerda",
+       "noCarro": true,
+       "segura": "capacete",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "ben",
+       "pos": "centro",
+       "visivel": false,
+       "segura": "chave",
+       "emocao": "radiante"
+      },
+      {
+       "quem": "max",
+       "pos": "centroDireita",
+       "emocao": "nervoso"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "carroRival",
+       "pos": "direita"
+      }
+     ],
+     "falas": [
+      {
+       "quem": "voce",
+       "en": "The leaves are red and orange. So pretty!",
+       "pt": "As folhas estão vermelhas e laranja. Que lindo!",
+       "emocao": "radiante",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "max",
+       "en": "No, no, no! My car is broken!",
+       "pt": "Não, não, não! Meu carro quebrou!",
+       "emocao": "bravo",
+       "efeito": "fumaca",
+       "camera": "tremida",
+       "objetos": [
+        {
+         "prop": "carroRival",
+         "acao": "treme"
+        }
+       ],
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "surpreso",
+         "efeito": "exclamacao"
+        }
+       ]
+      },
+      {
+       "quem": "narrador",
+       "en": "Max kicks the tire. Bad idea.",
+       "pt": "O Max chuta o pneu. Má ideia.",
+       "efeito": "estalo",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "max",
+         "acao": "pula",
+         "emocao": "nervoso",
+         "efeito": "suor"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "mudo": true,
+       "acao": "desce",
+       "emocao": "determinado"
+      },
+      {
+       "quem": "voce",
+       "en": "Do you need help?",
+       "pt": "Você precisa de ajuda?",
+       "acao": "anda",
+       "para": "centroEsquerda",
+       "camera": "geral"
+      },
+      {
+       "quem": "max",
+       "en": "No. I don't need help.",
+       "pt": "Não. Eu não preciso de ajuda.",
+       "emocao": "bravo",
+       "acao": "nega",
+       "alvo": "voce",
+       "camera": "dupla"
+      },
+      {
+       "quem": "max",
+       "mudo": true,
+       "emocao": "timido",
+       "efeito": "fumaca",
+       "camera": "medio",
+       "objetos": [
+        {
+         "prop": "carroRival",
+         "acao": "treme"
+        }
+       ]
+      },
+      {
+       "quem": "max",
+       "en": "Okay… maybe I need a little help.",
+       "pt": "Tá bom… talvez eu precise de uma ajudinha.",
+       "efeito": "suor",
+       "camera": "close"
+      },
+      {
+       "quem": "ben",
+       "en": "Did someone say help? Leave it to me!",
+       "pt": "Alguém falou em ajuda? Deixa comigo!",
+       "acao": "entra",
+       "para": "centro",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "radiante",
+         "acao": "palmas"
+        },
+        {
+         "quem": "max",
+         "emocao": "surpreso",
+         "efeito": "interrogacao"
+        }
+       ]
+      },
+      {
+       "quem": "ben",
+       "mudo": true,
+       "acao": "mostra",
+       "efeito": "brilho",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "acao": "concorda"
+        },
+        {
+         "quem": "max",
+         "emocao": "pensativo"
+        }
+       ]
+      },
+      {
+       "quem": "ben",
+       "en": "Easy fix! The tire was flat. Now it's ready!",
+       "pt": "Conserto fácil! O pneu estava murcho. Agora está pronto!",
+       "acao": "comemora",
+       "emocao": "radiante",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "max",
+         "emocao": "surpreso"
+        }
+       ]
+      },
+      {
+       "quem": "max",
+       "en": "Why did you stop for me? We are rivals.",
+       "pt": "Por que você parou para me ajudar? Nós somos rivais.",
+       "emocao": "pensativo",
+       "acao": "olha",
+       "alvo": "voce",
+       "camera": "dupla"
+      },
+      {
+       "quem": "voce",
+       "en": "Rivals can help too. Now let's race!",
+       "pt": "Rivais também podem ajudar. Agora vamos correr!",
+       "emocao": "determinado",
+       "acao": "comemora",
+       "camera": "aproxima",
+       "reacoes": [
+        {
+         "quem": "ben",
+         "acao": "palmas"
+        },
+        {
+         "quem": "max",
+         "emocao": "timido"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "fim": [
+    {
+     "cenario": "floresta",
+     "hora": "tarde",
+     "clima": [
+      "folhas"
+     ],
+     "elenco": [
+      {
+       "quem": "voce",
+       "pos": "centroEsquerda",
+       "segura": "capacete",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "ben",
+       "pos": "centro",
+       "segura": "chave",
+       "emocao": "radiante"
+      },
+      {
+       "quem": "max",
+       "pos": "centroDireita",
+       "emocao": "timido"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "carroRival",
+       "pos": "centroDireita"
+      }
+     ],
+     "falas": [
+      {
+       "quem": "ben",
+       "en": "What a race! That tire was perfect!",
+       "pt": "Que corrida! Aquele pneu ficou perfeito!",
+       "acao": "comemora",
+       "efeito": "confete",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "acao": "palmas"
+        }
+       ]
+      },
+      {
+       "quem": "max",
+       "en": "Thanks for the help… rookie.",
+       "pt": "Valeu pela ajuda… novato.",
+       "pt_f": "Valeu pela ajuda… novata.",
+       "acao": "olha",
+       "alvo": "voce",
+       "camera": "dupla",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "surpreso"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "You're welcome… Max.",
+       "pt": "De nada… Max.",
+       "emocao": "radiante",
+       "acao": "acena",
+       "alvo": "max",
+       "camera": "medio"
+      },
+      {
+       "quem": "max",
+       "mudo": true,
+       "acao": "dirige",
+       "emocao": "determinado",
+       "camera": "geral"
+      },
+      {
+       "quem": "max",
+       "en": "But next time, I'm going to win!",
+       "pt": "Mas da próxima vez eu vou ganhar!",
+       "acao": "sai",
+       "reacoes": [
+        {
+         "quem": "ben",
+         "acao": "acena",
+         "emocao": "feliz"
+        },
+        {
+         "quem": "voce",
+         "emocao": "feliz",
+         "efeito": "notas"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "gancho": {
+    "en": "Tomorrow, a big storm is coming to the meadow.",
+    "pt": "Amanhã, vem aí uma grande tempestade na campina."
+   }
+  },
+  {
+   "pista": 14,
+   "nivel": "A2",
+   "titulo": {
+    "en": "Rain or Shine",
+    "pt": "Faça chuva ou sol"
+   },
+   "resumo": "Uma tempestade cai na campina e a Sarah quer cancelar a corrida. A equipe promete correr com cuidado e nasce o Plano T, de Tempestade.",
+   "palavras": [
+    {
+     "en": "rain",
+     "pt": "chuva"
+    },
+    {
+     "en": "storm",
+     "pt": "tempestade"
+    },
+    {
+     "en": "careful",
+     "pt": "cuidadoso"
+    },
+    {
+     "en": "umbrella",
+     "pt": "guarda-chuva"
+    },
+    {
+     "en": "safe",
+     "pt": "seguro"
+    }
+   ],
+   "intro": [
+    {
+     "cenario": "boxes",
+     "hora": "tarde",
+     "clima": [
+      "chuva"
+     ],
+     "elenco": [
+      {
+       "quem": "sarah",
+       "pos": "esquerda",
+       "segura": "guardaChuva",
+       "emocao": "nervoso"
+      },
+      {
+       "quem": "voce",
+       "pos": "centroEsquerda",
+       "segura": "capacete",
+       "emocao": "neutro"
+      },
+      {
+       "quem": "mike",
+       "pos": "centroDireita",
+       "segura": "radio",
+       "emocao": "neutro"
+      },
+      {
+       "quem": "ben",
+       "pos": "direita",
+       "emocao": "feliz"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "pneu",
+       "pos": "centro"
+      }
+     ],
+     "falas": [
+      {
+       "quem": "narrador",
+       "en": "Meadow Storm. The rain is heavy and the sky is dark.",
+       "pt": "Tempestade na Campina. A chuva está forte e o céu está escuro.",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "ben",
+       "mudo": true,
+       "acao": "cai",
+       "efeito": "relampago",
+       "camera": "tremida",
+       "reacoes": [
+        {
+         "quem": "sarah",
+         "emocao": "surpreso"
+        },
+        {
+         "quem": "voce",
+         "emocao": "surpreso"
+        },
+        {
+         "quem": "mike",
+         "emocao": "surpreso"
+        }
+       ]
+      },
+      {
+       "quem": "ben",
+       "en": "Whoa! That was loud! I'm okay! I'm okay!",
+       "pt": "Uau! Que barulhão! Estou bem! Estou bem!",
+       "emocao": "feliz",
+       "acao": "pula",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "feliz"
+        },
+        {
+         "quem": "mike",
+         "emocao": "feliz"
+        }
+       ]
+      },
+      {
+       "quem": "sarah",
+       "en": "I want to stop the race. This storm isn't safe.",
+       "pt": "Eu quero parar a corrida. Com essa tempestade, não é seguro.",
+       "emocao": "nervoso",
+       "acao": "nega",
+       "camera": "medio"
+      },
+      {
+       "quem": "voce",
+       "en": "We're going to race carefully, Sarah.",
+       "pt": "Nós vamos correr com cuidado, Sarah.",
+       "emocao": "determinado",
+       "acao": "olha",
+       "alvo": "sarah",
+       "camera": "dupla"
+      },
+      {
+       "quem": "mike",
+       "en": "I'm going to call every curve on the radio.",
+       "pt": "Eu vou avisar cada curva pelo rádio.",
+       "emocao": "determinado",
+       "acao": "mostra",
+       "camera": "medio"
+      },
+      {
+       "quem": "ben",
+       "en": "And I'm going to put rain tires on the car!",
+       "pt": "E eu vou colocar pneus de chuva no carro!",
+       "emocao": "radiante",
+       "acao": "aponta",
+       "alvo": "pneu"
+      },
+      {
+       "quem": "sarah",
+       "mudo": true,
+       "acao": "pensa",
+       "emocao": "pensativo",
+       "camera": "close"
+      },
+      {
+       "quem": "sarah",
+       "en": "Okay. I have a plan. Plan R: Rain!",
+       "pt": "Tá bom. Eu tenho um plano. Plano T: Tempestade!",
+       "emocao": "radiante",
+       "acao": "mostra",
+       "efeito": "exclamacao",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "mike",
+         "acao": "palmas"
+        },
+        {
+         "quem": "ben",
+         "acao": "comemora"
+        },
+        {
+         "quem": "voce",
+         "emocao": "radiante"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "cenario": "campina",
+     "hora": "tarde",
+     "clima": [
+      "chuva"
+     ],
+     "elenco": [
+      {
+       "quem": "sarah",
+       "pos": "esquerda",
+       "segura": "guardaChuva",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "voce",
+       "pos": "centro",
+       "segura": "capacete",
+       "emocao": "determinado"
+      },
+      {
+       "quem": "ben",
+       "pos": "direita",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "mike",
+       "remoto": "radio",
+       "emocao": "determinado"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "carro",
+       "pos": "centro"
+      }
+     ],
+     "falas": [
+      {
+       "quem": "ben",
+       "en": "Rain tires are on. The car is ready!",
+       "pt": "Pneus de chuva colocados. O carro está pronto!",
+       "acao": "aponta",
+       "alvo": "carro",
+       "camera": "geral"
+      },
+      {
+       "quem": "sarah",
+       "mudo": true,
+       "acao": "treme",
+       "emocao": "nervoso",
+       "efeito": "relampago",
+       "camera": "tremida",
+       "reacoes": [
+        {
+         "quem": "ben",
+         "emocao": "surpreso",
+         "efeito": "suor"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "mudo": true,
+       "camera": "geral",
+       "acao": "dirige",
+       "emocao": "determinado",
+       "reacoes": [
+        {
+         "quem": "sarah",
+         "acao": "acena"
+        },
+        {
+         "quem": "ben",
+         "acao": "palmas"
+        }
+       ]
+      },
+      {
+       "quem": "mike",
+       "en": "Copy that, Plan R. Go slow in the curves.",
+       "pt": "Entendido, Plano T. Vá devagar nas curvas.",
+       "camera": "medio"
+      },
+      {
+       "quem": "voce",
+       "en": "Copy that! Careful is the new fast. Let's go!",
+       "pt": "Entendido! Hoje, ser rápido é ir com cuidado. Vamos lá!",
+       "emocao": "radiante",
+       "camera": "aproxima",
+       "reacoes": [
+        {
+         "quem": "sarah",
+         "emocao": "radiante"
+        },
+        {
+         "quem": "ben",
+         "acao": "comemora"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "fim": [
+    {
+     "cenario": "campina",
+     "hora": "tarde",
+     "clima": [
+      "chuva"
+     ],
+     "elenco": [
+      {
+       "quem": "sarah",
+       "pos": "centroEsquerda",
+       "segura": "guardaChuva",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "voce",
+       "pos": "centro",
+       "segura": "capacete",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "mike",
+       "pos": "centroDireita",
+       "segura": "radio",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "ben",
+       "pos": "direita",
+       "emocao": "feliz"
+      }
+     ],
+     "objetos": [],
+     "falas": [
+      {
+       "quem": "narrador",
+       "en": "The rain stops, and the sun comes out.",
+       "pt": "A chuva para e o sol aparece.",
+       "clima": [
+        "arcoIris"
+       ],
+       "efeito": "brilho",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "sarah",
+       "en": "The rain stopped! Look, a rainbow!",
+       "pt": "A chuva parou! Olha, um arco-íris!",
+       "emocao": "radiante",
+       "acao": "aponta",
+       "camera": "geral"
+      },
+      {
+       "quem": "sarah",
+       "mudo": true,
+       "emocao": "surpreso",
+       "efeito": "exclamacao",
+       "objetos": [
+        {
+         "prop": "guardaChuva",
+         "acao": "voa",
+         "de": "sarah"
+        }
+       ],
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "surpreso"
+        },
+        {
+         "quem": "ben",
+         "acao": "pula"
+        }
+       ]
+      },
+      {
+       "quem": "ben",
+       "en": "Bye-bye, umbrella! Sarah, was that Plan U?",
+       "pt": "Tchau, tchau, guarda-chuva! Sarah, esse era o Plano G?",
+       "emocao": "radiante",
+       "acao": "acena",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "sarah",
+         "emocao": "timido"
+        },
+        {
+         "quem": "mike",
+         "emocao": "feliz",
+         "acao": "palmas"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "Rain or shine, we drive!",
+       "pt": "Faça chuva ou faça sol, a gente corre!",
+       "emocao": "radiante",
+       "acao": "comemora",
+       "efeito": "confete",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "sarah",
+         "acao": "comemora"
+        },
+        {
+         "quem": "mike",
+         "acao": "comemora"
+        },
+        {
+         "quem": "ben",
+         "acao": "danca"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "gancho": {
+    "en": "Tomorrow, a big surprise at the beach.",
+    "pt": "Amanhã, uma grande surpresa na praia."
+   }
+  },
+  {
+   "pista": 15,
+   "nivel": "A2",
+   "titulo": {
+    "en": "Surprise at the Beach",
+    "pt": "Surpresa na praia"
+   },
+   "resumo": "Na Estrada do Litoral, Lucas e Julia chegam de surpresa. Mas o Lucas descobre que a última página do mapa antigo está em branco.",
+   "palavras": [
+    {
+     "en": "beach",
+     "pt": "praia"
+    },
+    {
+     "en": "sea",
+     "pt": "mar"
+    },
+    {
+     "en": "surprise",
+     "pt": "surpresa"
+    },
+    {
+     "en": "brother",
+     "pt": "irmão"
+    },
+    {
+     "en": "sister",
+     "pt": "irmã"
+    },
+    {
+     "en": "empty",
+     "pt": "vazio"
+    }
+   ],
+   "intro": [
+    {
+     "cenario": "praia",
+     "hora": "dia",
+     "clima": [],
+     "elenco": [
+      {
+       "quem": "ana",
+       "pos": "centroEsquerda",
+       "segura": "mapa",
+       "emocao": "pensativo"
+      },
+      {
+       "quem": "voce",
+       "pos": "centro",
+       "segura": "capacete",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "lucas",
+       "pos": "centroDireita",
+       "visivel": false,
+       "emocao": "radiante"
+      },
+      {
+       "quem": "julia",
+       "pos": "direita",
+       "visivel": false,
+       "emocao": "radiante"
+      }
+     ],
+     "objetos": [],
+     "falas": [
+      {
+       "quem": "ana",
+       "en": "Close your eyes. There's a surprise for you on the beach.",
+       "pt": "Feche os olhos. Tem uma surpresa para você na praia.",
+       "acao": "olha",
+       "alvo": "voce",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "voce",
+       "mudo": true,
+       "acao": "dorme",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "emocao": "surpreso",
+         "efeito": "interrogacao"
+        }
+       ]
+      },
+      {
+       "quem": "ana",
+       "en": "Close your eyes, but don't sleep!",
+       "pt": "Feche os olhos, mas não durma!",
+       "emocao": "feliz",
+       "acao": "nega",
+       "camera": "dupla",
+       "alvo": "voce",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "acao": "pula",
+         "emocao": "surpreso"
+        }
+       ]
+      },
+      {
+       "quem": "lucas",
+       "mudo": true,
+       "acao": "entra",
+       "para": "centroDireita",
+       "efeito": "confete",
+       "camera": "geral"
+      },
+      {
+       "quem": "julia",
+       "en": "Surprise! We flew over the sea!",
+       "pt": "Surpresa! A gente veio voando por cima do mar!",
+       "acao": "entra",
+       "para": "direita",
+       "efeito": "exclamacao",
+       "reacoes": [
+        {
+         "quem": "lucas",
+         "acao": "comemora"
+        },
+        {
+         "quem": "voce",
+         "emocao": "radiante"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "My brother! My sister! You came!",
+       "pt": "Meu irmão! Minha irmã! Vocês vieram!",
+       "emocao": "radiante",
+       "acao": "abraca",
+       "alvo": "lucas",
+       "efeito": "coracoes",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "julia",
+         "efeito": "coracoes",
+         "acao": "pula"
+        }
+       ]
+      },
+      {
+       "quem": "lucas",
+       "en": "That's so cool! We wanted to see you race!",
+       "pt": "Que demais! A gente queria ver você correr!",
+       "acao": "pula",
+       "camera": "geral"
+      },
+      {
+       "quem": "ana",
+       "en": "Look, Lucas. This is our old map.",
+       "pt": "Olha, Lucas. Este é o nosso mapa antigo.",
+       "emocao": "feliz",
+       "segura": "nada",
+       "reacoes": [
+        {
+         "quem": "lucas",
+         "segura": "mapa",
+         "emocao": "feliz"
+        }
+       ]
+      },
+      {
+       "quem": "lucas",
+       "en": "Wait. The last page is empty!",
+       "pt": "Espera. A última página está vazia!",
+       "emocao": "pensativo",
+       "acao": "pensa",
+       "efeito": "exclamacao",
+       "camera": "close"
+      },
+      {
+       "quem": "ana",
+       "en": "What? There's no road at the end!",
+       "pt": "O quê? Não tem estrada no final!",
+       "emocao": "surpreso",
+       "efeito": "interrogacao",
+       "camera": "medio"
+      },
+      {
+       "quem": "julia",
+       "en": "Maybe the end is not written yet.",
+       "pt": "Talvez o final ainda não esteja escrito.",
+       "emocao": "pensativo",
+       "camera": "close",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "pensativo"
+        },
+        {
+         "quem": "ana",
+         "emocao": "pensativo"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "Then we'll write it. Let's race!",
+       "pt": "Então a gente vai escrever esse final. Vamos correr!",
+       "emocao": "determinado",
+       "acao": "comemora",
+       "camera": "aproxima",
+       "reacoes": [
+        {
+         "quem": "lucas",
+         "acao": "comemora"
+        },
+        {
+         "quem": "julia",
+         "acao": "palmas"
+        },
+        {
+         "quem": "ana",
+         "emocao": "radiante"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "fim": [
+    {
+     "cenario": "praia",
+     "hora": "tarde",
+     "clima": [],
+     "elenco": [
+      {
+       "quem": "ana",
+       "pos": "esquerda",
+       "segura": "mapa",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "voce",
+       "pos": "centroEsquerda",
+       "segura": "capacete",
+       "emocao": "radiante"
+      },
+      {
+       "quem": "julia",
+       "pos": "centro",
+       "emocao": "radiante"
+      },
+      {
+       "quem": "lucas",
+       "pos": "centroDireita",
+       "emocao": "radiante"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "carro",
+       "pos": "direita"
+      }
+     ],
+     "falas": [
+      {
+       "quem": "julia",
+       "en": "You were so fast! Can I sit in the car?",
+       "pt": "Você foi muito rápido! Posso sentar no carro?",
+       "pt_f": "Você foi muito rápida! Posso sentar no carro?",
+       "acao": "aponta",
+       "alvo": "carro",
+       "efeito": "confete",
+       "camera": "geral"
+      },
+      {
+       "quem": "voce",
+       "en": "Not today. But one day, I promise!",
+       "pt": "Hoje não. Mas um dia você vai, eu prometo!",
+       "emocao": "feliz",
+       "acao": "concorda",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "julia",
+         "emocao": "radiante",
+         "efeito": "coracoes"
+        }
+       ]
+      },
+      {
+       "quem": "lucas",
+       "en": "Can I drive it, then?",
+       "pt": "Então eu posso dirigir?",
+       "emocao": "radiante",
+       "acao": "pula",
+       "camera": "medio"
+      },
+      {
+       "quem": "ana",
+       "en": "No way, Lucas!",
+       "pt": "Nem pensar, Lucas!",
+       "emocao": "feliz",
+       "acao": "nega",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "acao": "nega"
+        },
+        {
+         "quem": "julia",
+         "acao": "nega"
+        },
+        {
+         "quem": "lucas",
+         "emocao": "timido",
+         "efeito": "suor"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "gancho": {
+    "en": "Next: a very high bridge. Don't look down!",
+    "pt": "Próxima: uma ponte muito alta. Não olhe para baixo!"
+   }
+  },
+  {
+   "pista": 16,
+   "nivel": "A2",
+   "titulo": {
+    "en": "Don't Look Down",
+    "pt": "Não olhe para baixo"
+   },
+   "resumo": "Na Ponte sobre o Mar, a Julia fica com muito medo da altura. Você ensina a respirar como a Dra. Lee, e ela descobre que é corajosa.",
+   "palavras": [
+    {
+     "en": "bridge",
+     "pt": "ponte"
+    },
+    {
+     "en": "high",
+     "pt": "alto"
+    },
+    {
+     "en": "afraid",
+     "pt": "com medo"
+    },
+    {
+     "en": "longer",
+     "pt": "mais longo"
+    },
+    {
+     "en": "brave",
+     "pt": "corajoso"
+    }
+   ],
+   "intro": [
+    {
+     "cenario": "ponte",
+     "hora": "dia",
+     "clima": [
+      "vento"
+     ],
+     "elenco": [
+      {
+       "quem": "lucas",
+       "pos": "esquerda",
+       "emocao": "radiante"
+      },
+      {
+       "quem": "julia",
+       "pos": "centroEsquerda",
+       "emocao": "nervoso"
+      },
+      {
+       "quem": "voce",
+       "pos": "centro",
+       "segura": "capacete",
+       "emocao": "feliz"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "carro",
+       "pos": "direita"
+      }
+     ],
+     "falas": [
+      {
+       "quem": "narrador",
+       "en": "Sea Bridge. It's long, high and very windy.",
+       "pt": "Ponte sobre o Mar. É longa, alta e tem muito vento.",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "julia",
+       "en": "The bridge is so high! I'm afraid.",
+       "pt": "A ponte é tão alta! Estou com medo.",
+       "acao": "treme",
+       "efeito": "suor",
+       "camera": "medio"
+      },
+      {
+       "quem": "lucas",
+       "en": "Wow! This bridge is longer than our whole street!",
+       "pt": "Uau! Essa ponte é mais longa que a nossa rua inteira!",
+       "acao": "aponta",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "julia",
+         "emocao": "nervoso"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "Julia, look at me. Don't look down.",
+       "pt": "Julia, olha para mim. Não olha para baixo.",
+       "emocao": "determinado",
+       "acao": "olha",
+       "alvo": "julia",
+       "camera": "dupla"
+      },
+      {
+       "quem": "voce",
+       "en": "Breathe in. Breathe out. Dr. Lee taught me that.",
+       "pt": "Inspira. Expira. A Dra. Lee me ensinou isso.",
+       "emocao": "feliz",
+       "camera": "medio"
+      },
+      {
+       "quem": "julia",
+       "mudo": true,
+       "acao": "concorda",
+       "emocao": "timido",
+       "camera": "close"
+      },
+      {
+       "quem": "lucas",
+       "en": "And it's higher than a building!",
+       "pt": "E ela é mais alta que um prédio!",
+       "emocao": "radiante",
+       "acao": "pula",
+       "efeito": "exclamacao",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "julia",
+         "acao": "treme",
+         "emocao": "nervoso"
+        }
+       ]
+      },
+      {
+       "quem": "julia",
+       "en": "Lucas! Not helping!",
+       "pt": "Lucas! Assim não ajuda!",
+       "emocao": "bravo",
+       "acao": "olha",
+       "alvo": "lucas",
+       "camera": "dupla",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "feliz",
+         "efeito": "notas"
+        }
+       ]
+      },
+      {
+       "quem": "lucas",
+       "mudo": true,
+       "emocao": "timido",
+       "efeito": "suor",
+       "camera": "medio"
+      },
+      {
+       "quem": "julia",
+       "en": "Okay. I'm braver than I think.",
+       "pt": "Tá bom. Eu sou mais corajosa do que eu imagino.",
+       "emocao": "determinado",
+       "camera": "aproxima"
+      },
+      {
+       "quem": "voce",
+       "en": "That's my sister! Now let's race across the bridge!",
+       "pt": "Essa é a minha irmã! Agora vamos correr pela ponte!",
+       "emocao": "radiante",
+       "acao": "comemora",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "lucas",
+         "acao": "palmas"
+        },
+        {
+         "quem": "julia",
+         "emocao": "feliz"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "fim": [
+    {
+     "cenario": "ponte",
+     "hora": "tarde",
+     "clima": [],
+     "elenco": [
+      {
+       "quem": "lucas",
+       "pos": "esquerda",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "julia",
+       "pos": "centroEsquerda",
+       "emocao": "radiante"
+      },
+      {
+       "quem": "voce",
+       "pos": "centro",
+       "segura": "capacete",
+       "emocao": "feliz"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "carro",
+       "pos": "direita"
+      }
+     ],
+     "falas": [
+      {
+       "quem": "julia",
+       "en": "I was brave! I looked at the sea!",
+       "pt": "Eu fui corajosa! Eu olhei para o mar!",
+       "acao": "comemora",
+       "efeito": "confete",
+       "camera": "geral"
+      },
+      {
+       "quem": "lucas",
+       "en": "You were braver than me today!",
+       "pt": "Hoje você foi mais corajosa do que eu!",
+       "acao": "palmas",
+       "camera": "medio"
+      },
+      {
+       "quem": "julia",
+       "mudo": true,
+       "acao": "abraca",
+       "alvo": "voce",
+       "efeito": "coracoes",
+       "camera": "dupla"
+      },
+      {
+       "quem": "voce",
+       "en": "I'm so proud of you, Julia!",
+       "pt": "Estou muito orgulhoso de você, Julia!",
+       "pt_f": "Estou muito orgulhosa de você, Julia!",
+       "emocao": "radiante",
+       "camera": "medio"
+      },
+      {
+       "quem": "lucas",
+       "en": "Whoa… I looked down. Now I'm afraid!",
+       "pt": "Opa… eu olhei para baixo. Agora quem está com medo sou eu!",
+       "emocao": "nervoso",
+       "acao": "treme",
+       "efeito": "suor",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "julia",
+         "emocao": "radiante",
+         "acao": "palmas"
+        },
+        {
+         "quem": "voce",
+         "emocao": "feliz"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "gancho": {
+    "en": "Next: a red canyon. Hello… hello… hello!",
+    "pt": "Próximo: um cânion vermelho. Olá… olá… olá!"
+   }
+  },
+  {
+   "pista": 17,
+   "nivel": "B1",
+   "titulo": {
+    "en": "Echoes",
+    "pt": "Ecos"
+   },
+   "resumo": "No Cânion Vermelho, a equipe se diverte com o eco, até que uma rajada de vento leva o mapa antigo. Pela primeira vez, ninguém sabe o caminho.",
+   "palavras": [
+    {
+     "en": "canyon",
+     "pt": "cânion"
+    },
+    {
+     "en": "echo",
+     "pt": "eco"
+    },
+    {
+     "en": "wind",
+     "pt": "vento"
+    },
+    {
+     "en": "lost",
+     "pt": "perdido"
+    },
+    {
+     "en": "way",
+     "pt": "caminho"
+    }
+   ],
+   "intro": [
+    {
+     "cenario": "canion",
+     "hora": "tarde",
+     "clima": [
+      "vento"
+     ],
+     "elenco": [
+      {
+       "quem": "ana",
+       "pos": "esquerda",
+       "emocao": "radiante"
+      },
+      {
+       "quem": "voce",
+       "pos": "centroEsquerda",
+       "segura": "capacete",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "mike",
+       "pos": "centro",
+       "segura": "radio",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "sarah",
+       "pos": "centroDireita",
+       "segura": "mapa",
+       "emocao": "feliz"
+      }
+     ],
+     "objetos": [],
+     "falas": [
+      {
+       "quem": "narrador",
+       "en": "Red Canyon. The walls are tall, red and very old.",
+       "pt": "Cânion Vermelho. Os paredões são altos, vermelhos e muito antigos.",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "ana",
+       "en": "Hello!",
+       "pt": "Olá!",
+       "acao": "acena",
+       "camera": "medio"
+      },
+      {
+       "quem": "narrador",
+       "en": "Hello… hello… hello…",
+       "pt": "Olá… olá… olá…",
+       "camera": "panoramica",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "acao": "pula",
+         "emocao": "radiante"
+        }
+       ]
+      },
+      {
+       "quem": "mike",
+       "en": "My turn. Team Star is the best!",
+       "pt": "Minha vez. A Equipe Estrela é a melhor!",
+       "emocao": "determinado",
+       "acao": "comemora",
+       "camera": "medio"
+      },
+      {
+       "quem": "narrador",
+       "en": "…the best… the best…",
+       "pt": "…a melhor… a melhor…",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "acao": "palmas",
+         "emocao": "feliz"
+        },
+        {
+         "quem": "sarah",
+         "emocao": "radiante"
+        },
+        {
+         "quem": "voce",
+         "emocao": "radiante"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "See? Even the echo agrees with you, Mike!",
+       "pt": "Viu? Até o eco concorda com você, Mike!",
+       "acao": "aponta",
+       "alvo": "mike",
+       "camera": "dupla",
+       "reacoes": [
+        {
+         "quem": "mike",
+         "acao": "pensa",
+         "emocao": "timido"
+        }
+       ]
+      },
+      {
+       "quem": "sarah",
+       "en": "According to the map, the road goes right through this canyon.",
+       "pt": "Pelo mapa, a estrada passa bem no meio deste cânion.",
+       "emocao": "determinado",
+       "acao": "mostra",
+       "camera": "medio"
+      },
+      {
+       "quem": "narrador",
+       "en": "Suddenly, a strong wind blows through the canyon.",
+       "pt": "De repente, um vento forte sopra pelo cânion.",
+       "efeito": "estalo",
+       "camera": "tremida",
+       "objetos": [
+        {
+         "prop": "mapa",
+         "acao": "voa",
+         "de": "sarah"
+        }
+       ],
+       "reacoes": [
+        {
+         "quem": "sarah",
+         "emocao": "surpreso",
+         "efeito": "exclamacao"
+        },
+        {
+         "quem": "ana",
+         "emocao": "surpreso"
+        },
+        {
+         "quem": "voce",
+         "emocao": "surpreso"
+        }
+       ]
+      },
+      {
+       "quem": "sarah",
+       "en": "The map! The wind has taken our map!",
+       "pt": "O mapa! O vento levou o nosso mapa!",
+       "emocao": "nervoso",
+       "acao": "corre",
+       "para": "direita",
+       "camera": "geral"
+      },
+      {
+       "quem": "voce",
+       "mudo": true,
+       "acao": "corre",
+       "para": "centroDireita",
+       "emocao": "nervoso",
+       "efeito": "suor"
+      },
+      {
+       "quem": "ana",
+       "en": "It's gone. We've lost it.",
+       "pt": "Sumiu. A gente perdeu o mapa.",
+       "emocao": "triste",
+       "camera": "close"
+      },
+      {
+       "quem": "mike",
+       "en": "We still have the race. Let's focus on the gates.",
+       "pt": "Ainda temos a corrida. Vamos focar nos portões.",
+       "emocao": "determinado",
+       "camera": "medio"
+      },
+      {
+       "quem": "voce",
+       "en": "Mike's right. Let's race now and look for the map later.",
+       "pt": "O Mike tem razão. Vamos correr agora e procurar o mapa depois.",
+       "emocao": "determinado",
+       "camera": "aproxima",
+       "reacoes": [
+        {
+         "quem": "sarah",
+         "acao": "concorda",
+         "emocao": "triste"
+        },
+        {
+         "quem": "ana",
+         "acao": "concorda"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "fim": [
+    {
+     "cenario": "canion",
+     "hora": "noite",
+     "clima": [
+      "estrelas"
+     ],
+     "elenco": [
+      {
+       "quem": "ana",
+       "pos": "esquerda",
+       "emocao": "triste"
+      },
+      {
+       "quem": "voce",
+       "pos": "centroEsquerda",
+       "segura": "capacete",
+       "emocao": "cansado"
+      },
+      {
+       "quem": "mike",
+       "pos": "centro",
+       "segura": "radio",
+       "emocao": "cansado"
+      },
+      {
+       "quem": "sarah",
+       "pos": "centroDireita",
+       "emocao": "triste"
+      }
+     ],
+     "objetos": [],
+     "falas": [
+      {
+       "quem": "sarah",
+       "en": "We've finished the race, but we've lost the map.",
+       "pt": "Terminamos a corrida, mas perdemos o mapa.",
+       "acao": "senta",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "ana",
+       "en": "I found that map. And now it's gone.",
+       "pt": "Fui eu que achei aquele mapa. E agora ele sumiu.",
+       "camera": "close"
+      },
+      {
+       "quem": "voce",
+       "en": "We'll find another way. We always do.",
+       "pt": "A gente vai achar outro caminho. A gente sempre acha.",
+       "emocao": "determinado",
+       "acao": "abraca",
+       "alvo": "ana",
+       "efeito": "coracoes",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "sarah",
+         "emocao": "pensativo"
+        }
+       ]
+      },
+      {
+       "quem": "mike",
+       "mudo": true,
+       "acao": "concorda",
+       "emocao": "determinado",
+       "camera": "geral"
+      },
+      {
+       "quem": "sarah",
+       "en": "I hope you're right.",
+       "pt": "Espero que você tenha razão.",
+       "emocao": "timido",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "emocao": "feliz"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "gancho": {
+    "en": "Next: a storm of sand… and a storm of words.",
+    "pt": "Próximo: uma tempestade de areia… e de palavras."
+   }
+  },
+  {
+   "pista": 18,
+   "nivel": "B1",
+   "titulo": {
+    "en": "Sand and Words",
+    "pt": "Areia e palavras"
+   },
+   "resumo": "Na Tempestade de Areia, sem o mapa, o Mike e a Sarah brigam pela rota. Você para a discussão e lembra que a equipe precisa ouvir antes de correr.",
+   "palavras": [
+    {
+     "en": "argue",
+     "pt": "discutir"
+    },
+    {
+     "en": "listen",
+     "pt": "escutar"
+    },
+    {
+     "en": "agree",
+     "pt": "concordar"
+    },
+    {
+     "en": "together",
+     "pt": "juntos"
+    },
+    {
+     "en": "sorry",
+     "pt": "desculpa"
+    }
+   ],
+   "intro": [
+    {
+     "cenario": "deserto",
+     "hora": "dia",
+     "clima": [
+      "areia"
+     ],
+     "elenco": [
+      {
+       "quem": "voce",
+       "pos": "esquerda",
+       "segura": "capacete",
+       "emocao": "nervoso"
+      },
+      {
+       "quem": "mike",
+       "pos": "centroEsquerda",
+       "segura": "radio",
+       "emocao": "determinado"
+      },
+      {
+       "quem": "sarah",
+       "pos": "centroDireita",
+       "segura": "livro",
+       "emocao": "determinado"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "carro",
+       "pos": "direita"
+      }
+     ],
+     "falas": [
+      {
+       "quem": "narrador",
+       "en": "Sandstorm Run. The wind is strong, and the sky is orange.",
+       "pt": "Tempestade de Areia. O vento está forte e o céu está laranja.",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "mike",
+       "en": "Without the map, we have to go straight through the storm.",
+       "pt": "Sem o mapa, a gente tem que atravessar a tempestade direto.",
+       "acao": "aponta",
+       "camera": "medio"
+      },
+      {
+       "quem": "sarah",
+       "en": "No! We should go around it. It's safer.",
+       "pt": "Não! A gente devia contornar. É mais seguro.",
+       "emocao": "bravo",
+       "acao": "nega",
+       "camera": "medio"
+      },
+      {
+       "quem": "mike",
+       "en": "You never listen to me!",
+       "pt": "Você nunca me escuta!",
+       "emocao": "bravo",
+       "acao": "olha",
+       "alvo": "sarah",
+       "camera": "dupla",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "nervoso",
+         "efeito": "suor"
+        }
+       ]
+      },
+      {
+       "quem": "sarah",
+       "en": "Because you never have a plan!",
+       "pt": "Porque você nunca tem um plano!",
+       "acao": "mostra",
+       "alvo": "mike",
+       "camera": "dupla"
+      },
+      {
+       "quem": "voce",
+       "mudo": true,
+       "acao": "corre",
+       "para": "centro",
+       "emocao": "determinado",
+       "camera": "geral"
+      },
+      {
+       "quem": "voce",
+       "en": "Stop! Please don't argue. We're one team, not two teams.",
+       "pt": "Parem! Por favor, não discutam. Somos uma equipe, não duas.",
+       "efeito": "estalo",
+       "camera": "tremida",
+       "reacoes": [
+        {
+         "quem": "mike",
+         "emocao": "surpreso"
+        },
+        {
+         "quem": "sarah",
+         "emocao": "surpreso"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "Mike knows the roads, and Sarah knows the plans. We need both.",
+       "pt": "O Mike conhece as estradas e a Sarah conhece os planos. A gente precisa dos dois.",
+       "emocao": "feliz",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "mike",
+         "emocao": "pensativo"
+        },
+        {
+         "quem": "sarah",
+         "emocao": "pensativo"
+        }
+       ]
+      },
+      {
+       "quem": "mike",
+       "mudo": true,
+       "acao": "pensa",
+       "emocao": "timido",
+       "camera": "close"
+      },
+      {
+       "quem": "voce",
+       "en": "Let's listen to each other first.",
+       "pt": "Primeiro, vamos escutar um ao outro.",
+       "emocao": "determinado",
+       "camera": "medio"
+      },
+      {
+       "quem": "mike",
+       "en": "Okay. I'm listening. Sarah, which road is safer?",
+       "pt": "Tá bom. Estou escutando. Sarah, qual estrada é mais segura?",
+       "emocao": "neutro",
+       "acao": "olha",
+       "alvo": "sarah",
+       "camera": "dupla"
+      },
+      {
+       "quem": "sarah",
+       "en": "Around the storm, but fast. Mike, you call the gates!",
+       "pt": "Contornando a tempestade, mas rápido. Mike, você avisa os portões!",
+       "emocao": "feliz",
+       "acao": "aponta",
+       "alvo": "mike",
+       "camera": "dupla"
+      },
+      {
+       "quem": "voce",
+       "en": "Copy that! Team Star, let's go!",
+       "pt": "Entendido! Equipe Estrela, vamos lá!",
+       "emocao": "radiante",
+       "acao": "comemora",
+       "camera": "aproxima",
+       "reacoes": [
+        {
+         "quem": "mike",
+         "emocao": "feliz"
+        },
+        {
+         "quem": "sarah",
+         "emocao": "feliz"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "fim": [
+    {
+     "cenario": "deserto",
+     "hora": "tarde",
+     "clima": [
+      "areia"
+     ],
+     "elenco": [
+      {
+       "quem": "mike",
+       "pos": "centroEsquerda",
+       "segura": "radio",
+       "emocao": "timido"
+      },
+      {
+       "quem": "voce",
+       "pos": "centro",
+       "segura": "capacete",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "sarah",
+       "pos": "centroDireita",
+       "segura": "livro",
+       "emocao": "feliz"
+      }
+     ],
+     "objetos": [],
+     "falas": [
+      {
+       "quem": "narrador",
+       "en": "The sand settles, and the team finishes together.",
+       "pt": "A areia baixa e a equipe cruza a chegada junta.",
+       "clima": [],
+       "camera": "panoramica"
+      },
+      {
+       "quem": "mike",
+       "en": "You were right, Sarah. I'm sorry.",
+       "pt": "Você tinha razão, Sarah. Desculpa.",
+       "acao": "olha",
+       "alvo": "sarah",
+       "camera": "dupla"
+      },
+      {
+       "quem": "sarah",
+       "en": "Me too. Next time, I'll listen first.",
+       "pt": "Eu também peço desculpa. Da próxima vez, eu escuto primeiro.",
+       "emocao": "timido",
+       "acao": "olha",
+       "alvo": "mike",
+       "camera": "dupla"
+      },
+      {
+       "quem": "mike",
+       "mudo": true,
+       "acao": "concorda",
+       "emocao": "feliz",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "sarah",
+         "acao": "concorda"
+        },
+        {
+         "quem": "voce",
+         "emocao": "radiante",
+         "efeito": "coracoes"
+        }
+       ]
+      },
+      {
+       "quem": "sarah",
+       "en": "Then we agree. Next storm… Plan M: Mike's way!",
+       "pt": "Então estamos de acordo. Na próxima tempestade… Plano M: do jeito do Mike!",
+       "emocao": "radiante",
+       "acao": "mostra",
+       "efeito": "confete",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "mike",
+         "acao": "comemora",
+         "emocao": "radiante"
+        },
+        {
+         "quem": "voce",
+         "acao": "palmas"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "gancho": {
+    "en": "Tonight, under the stars, Emma will tell the whole legend.",
+    "pt": "Esta noite, sob as estrelas, a Emma vai contar a lenda inteira."
+   }
+  },
+  {
+   "pista": 19,
+   "nivel": "B1",
+   "titulo": {
+    "en": "The Legend",
+    "pt": "A lenda"
+   },
+   "resumo": "No oásis, sob as estrelas, a Emma conta a lenda inteira: a Roda de Ouro vai para quem nunca corre sozinho. Uma estrela cadente leva os desejos da equipe.",
+   "palavras": [
+    {
+     "en": "legend",
+     "pt": "lenda"
+    },
+    {
+     "en": "wish",
+     "pt": "desejo"
+    },
+    {
+     "en": "stars",
+     "pt": "estrelas"
+    },
+    {
+     "en": "alone",
+     "pt": "sozinho"
+    },
+    {
+     "en": "story",
+     "pt": "história"
+    }
+   ],
+   "intro": [
+    {
+     "cenario": "oasis",
+     "hora": "noite",
+     "clima": [
+      "estrelas"
+     ],
+     "elenco": [
+      {
+       "quem": "ana",
+       "pos": "esquerda",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "voce",
+       "pos": "centroEsquerda",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "emma",
+       "pos": "centro",
+       "segura": "cafe",
+       "emocao": "pensativo"
+      },
+      {
+       "quem": "ben",
+       "pos": "centroDireita",
+       "emocao": "feliz"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "carro",
+       "pos": "direita"
+      }
+     ],
+     "falas": [
+      {
+       "quem": "narrador",
+       "en": "Starry Oasis. Lanterns float on the lake under a thousand stars.",
+       "pt": "Oásis Estrelado. Lanternas flutuam no lago sob mil estrelas.",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "emma",
+       "en": "Come, sit down. It's time for the whole legend.",
+       "pt": "Venham, sentem aqui. Chegou a hora da lenda inteira.",
+       "emocao": "feliz",
+       "acao": "acena",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "acao": "senta",
+         "emocao": "radiante"
+        },
+        {
+         "quem": "voce",
+         "acao": "senta",
+         "emocao": "radiante"
+        }
+       ]
+      },
+      {
+       "quem": "ben",
+       "en": "With coffee?",
+       "pt": "Com café?",
+       "emocao": "radiante",
+       "acao": "pula"
+      },
+      {
+       "quem": "emma",
+       "en": "Always. Coffee first, then the world.",
+       "pt": "Sempre. Primeiro o café, depois o mundo.",
+       "acao": "mostra",
+       "reacoes": [
+        {
+         "quem": "ben",
+         "acao": "senta",
+         "emocao": "feliz"
+        }
+       ]
+      },
+      {
+       "quem": "emma",
+       "en": "A long time ago, the first World Tour started right here.",
+       "pt": "Há muito tempo, o primeiro World Tour começou bem aqui.",
+       "emocao": "pensativo",
+       "camera": "aproxima"
+      },
+      {
+       "quem": "emma",
+       "en": "The fastest drivers never won, because they always raced alone.",
+       "pt": "Os pilotos mais rápidos nunca venceram, porque sempre corriam sozinhos.",
+       "camera": "medio"
+      },
+      {
+       "quem": "ana",
+       "mudo": true,
+       "emocao": "pensativo",
+       "acao": "pensa",
+       "efeito": "interrogacao"
+      },
+      {
+       "quem": "emma",
+       "en": "The Golden Wheel goes to the driver who never races alone.",
+       "pt": "A Roda de Ouro vai para o piloto que nunca corre sozinho.",
+       "emocao": "determinado",
+       "efeito": "brilho",
+       "camera": "close"
+      },
+      {
+       "quem": "voce",
+       "mudo": true,
+       "emocao": "surpreso",
+       "efeito": "exclamacao",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "ben",
+         "emocao": "surpreso"
+        },
+        {
+         "quem": "ana",
+         "emocao": "surpreso"
+        }
+       ]
+      },
+      {
+       "quem": "ben",
+       "en": "So it's not about speed?",
+       "pt": "Então não tem a ver com velocidade?",
+       "emocao": "pensativo",
+       "acao": "pensa"
+      },
+      {
+       "quem": "emma",
+       "en": "Speed helps. Friends help more.",
+       "pt": "Velocidade ajuda. Amigos ajudam mais.",
+       "emocao": "feliz",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "feliz"
+        }
+       ]
+      },
+      {
+       "quem": "ana",
+       "en": "Then Team Star has a real chance!",
+       "pt": "Então a Equipe Estrela tem uma chance de verdade!",
+       "emocao": "radiante",
+       "acao": "comemora",
+       "efeito": "brilho",
+       "camera": "geral"
+      },
+      {
+       "quem": "voce",
+       "en": "Together, then. The race starts at midnight. Let's go!",
+       "pt": "Juntos, então. A corrida começa à meia-noite. Vamos lá!",
+       "emocao": "determinado",
+       "acao": "comemora",
+       "camera": "aproxima",
+       "reacoes": [
+        {
+         "quem": "ben",
+         "acao": "comemora",
+         "emocao": "radiante"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "fim": [
+    {
+     "cenario": "oasis",
+     "hora": "noite",
+     "clima": [
+      "estrelas"
+     ],
+     "elenco": [
+      {
+       "quem": "ana",
+       "pos": "esquerda",
+       "emocao": "radiante"
+      },
+      {
+       "quem": "voce",
+       "pos": "centroEsquerda",
+       "segura": "capacete",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "emma",
+       "pos": "centro",
+       "segura": "cafe",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "ben",
+       "pos": "centroDireita",
+       "emocao": "cansado"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "carro",
+       "pos": "direita"
+      }
+     ],
+     "falas": [
+      {
+       "quem": "emma",
+       "en": "You finished the race! Now look up. A shooting star. Make a wish.",
+       "pt": "Vocês terminaram a corrida! Agora olhem para cima. Uma estrela cadente. Façam um pedido.",
+       "acao": "aponta",
+       "efeito": "estrelaCadente",
+       "camera": "panoramica",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "emocao": "surpreso"
+        },
+        {
+         "quem": "ben",
+         "emocao": "surpreso"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "I wish for all of us to finish the tour together.",
+       "pt": "Eu desejo que todos nós terminemos o World Tour juntos.",
+       "emocao": "feliz",
+       "efeito": "coracoes",
+       "camera": "close"
+      },
+      {
+       "quem": "ben",
+       "en": "I wish for pancakes.",
+       "pt": "Eu desejo panquecas.",
+       "emocao": "radiante",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "emocao": "radiante",
+         "acao": "palmas"
+        },
+        {
+         "quem": "voce",
+         "emocao": "radiante"
+        },
+        {
+         "quem": "emma",
+         "emocao": "radiante"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "Emma, how do you know this story so well?",
+       "pt": "Emma, como você conhece tão bem essa história?",
+       "emocao": "pensativo",
+       "acao": "pensa",
+       "camera": "dupla",
+       "alvo": "emma"
+      },
+      {
+       "quem": "emma",
+       "en": "Maybe I was here once. Coffee first, questions later.",
+       "pt": "Talvez eu já tenha passado por aqui. Primeiro o café, perguntas depois.",
+       "emocao": "pensativo",
+       "efeito": "brilho",
+       "camera": "close",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "efeito": "interrogacao"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "gancho": {
+    "en": "Tomorrow, in the city, someone has your map.",
+    "pt": "Amanhã, na cidade, alguém está com o seu mapa."
+   }
+  },
+  {
+   "pista": 20,
+   "nivel": "B1",
+   "titulo": {
+    "en": "The Map Comes Back",
+    "pt": "O mapa volta"
+   },
+   "resumo": "Ao meio-dia na cidade, o Max aparece com o mapa que o vento levou e devolve à equipe: ele mudou. No fim, uma foto juntos e um Max quase amigo.",
+   "palavras": [
+    {
+     "en": "return",
+     "pt": "devolver"
+    },
+    {
+     "en": "found",
+     "pt": "achou"
+    },
+    {
+     "en": "changed",
+     "pt": "mudou"
+    },
+    {
+     "en": "photo",
+     "pt": "foto"
+    },
+    {
+     "en": "rival",
+     "pt": "rival"
+    }
+   ],
+   "intro": [
+    {
+     "cenario": "cidade",
+     "hora": "dia",
+     "clima": [],
+     "elenco": [
+      {
+       "quem": "ana",
+       "pos": "esquerda",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "voce",
+       "pos": "centroEsquerda",
+       "emocao": "neutro"
+      },
+      {
+       "quem": "sarah",
+       "pos": "centro",
+       "segura": "livro",
+       "emocao": "determinado"
+      },
+      {
+       "quem": "max",
+       "pos": "direita",
+       "visivel": false,
+       "segura": "mapa",
+       "emocao": "determinado"
+      }
+     ],
+     "objetos": [
+      {
+       "prop": "carroRival",
+       "pos": "centroDireita",
+       "visivel": false
+      }
+     ],
+     "falas": [
+      {
+       "quem": "narrador",
+       "en": "Noon City. The sun is high, and the streets are busy.",
+       "pt": "Cidade ao Meio-dia. O sol está alto, e as ruas estão movimentadas.",
+       "camera": "panoramica"
+      },
+      {
+       "quem": "sarah",
+       "en": "Without the map, I've made three new plans.",
+       "pt": "Sem o mapa, eu fiz três planos novos.",
+       "acao": "mostra",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "emocao": "surpreso"
+        }
+       ]
+      },
+      {
+       "quem": "ana",
+       "en": "Three plans? Sarah, we only have one race today!",
+       "pt": "Três planos? Sarah, a gente só tem uma corrida hoje!",
+       "emocao": "radiante",
+       "camera": "geral"
+      },
+      {
+       "quem": "sarah",
+       "en": "Plan N, Plan O, and Plan P. Just in case.",
+       "pt": "Plano N, Plano O e Plano P. Só por garantia.",
+       "emocao": "timido",
+       "acao": "concorda",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "radiante"
+        }
+       ]
+      },
+      {
+       "quem": "narrador",
+       "en": "A black car with an orange lightning bolt stops beside them.",
+       "pt": "Um carro preto com um raio laranja para ao lado deles.",
+       "camera": "geral",
+       "objetos": [
+        {
+         "prop": "carroRival",
+         "acao": "entra",
+         "pos": "centroDireita"
+        }
+       ],
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "surpreso",
+         "efeito": "exclamacao"
+        },
+        {
+         "quem": "sarah",
+         "emocao": "nervoso"
+        }
+       ]
+      },
+      {
+       "quem": "max",
+       "en": "Looking for this? I found it on my car.",
+       "pt": "Procurando isto? Eu achei no meu carro.",
+       "emocao": "determinado",
+       "acao": "entra",
+       "para": "direita"
+      },
+      {
+       "quem": "max",
+       "mudo": true,
+       "acao": "mostra",
+       "efeito": "brilho",
+       "camera": "medio",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "emocao": "surpreso"
+        },
+        {
+         "quem": "sarah",
+         "emocao": "surpreso",
+         "efeito": "exclamacao"
+        }
+       ]
+      },
+      {
+       "quem": "ana",
+       "en": "Our map! Why are you returning it?",
+       "pt": "O nosso mapa! Por que você está devolvendo?",
+       "emocao": "surpreso",
+       "camera": "geral"
+      },
+      {
+       "quem": "max",
+       "en": "Because you stopped for me in the forest.",
+       "pt": "Porque vocês pararam por mim na floresta.",
+       "emocao": "timido",
+       "camera": "dupla",
+       "alvo": "voce"
+      },
+      {
+       "quem": "max",
+       "en": "I've changed.",
+       "pt": "Eu mudei.",
+       "camera": "close",
+       "segura": "nada",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "segura": "mapa",
+         "emocao": "feliz"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "Thank you, Max. Maybe you're more than a rival.",
+       "pt": "Obrigado, Max. Talvez você seja mais do que um rival.",
+       "pt_f": "Obrigada, Max. Talvez você seja mais do que um rival.",
+       "emocao": "feliz",
+       "acao": "mostra",
+       "camera": "medio"
+      },
+      {
+       "quem": "max",
+       "en": "Don't tell anyone. And I'm still going to win today.",
+       "pt": "Não conta para ninguém. E hoje eu vou ganhar mesmo assim.",
+       "emocao": "timido",
+       "acao": "nega",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "emocao": "radiante"
+        }
+       ]
+      },
+      {
+       "quem": "voce",
+       "en": "We'll see. Let's go, Team Star!",
+       "pt": "Vamos ver. Vamos lá, Equipe Estrela!",
+       "emocao": "determinado",
+       "acao": "comemora",
+       "camera": "aproxima",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "acao": "comemora"
+        },
+        {
+         "quem": "sarah",
+         "acao": "palmas",
+         "emocao": "feliz"
+        }
+       ]
+      }
+     ]
+    }
+   ],
+   "fim": [
+    {
+     "cenario": "cidade",
+     "hora": "tarde",
+     "clima": [],
+     "elenco": [
+      {
+       "quem": "ana",
+       "pos": "esquerda",
+       "segura": "celular",
+       "emocao": "radiante"
+      },
+      {
+       "quem": "voce",
+       "pos": "centroEsquerda",
+       "segura": "mapa",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "sarah",
+       "pos": "centroDireita",
+       "segura": "livro",
+       "emocao": "feliz"
+      },
+      {
+       "quem": "max",
+       "pos": "direita",
+       "emocao": "timido"
+      }
+     ],
+     "objetos": [],
+     "falas": [
+      {
+       "quem": "ana",
+       "en": "Photo time! Everyone, smile!",
+       "pt": "Hora da foto! Todo mundo sorrindo!",
+       "acao": "mostra",
+       "efeito": "brilho",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "radiante"
+        },
+        {
+         "quem": "sarah",
+         "emocao": "radiante"
+        },
+        {
+         "quem": "max",
+         "emocao": "timido"
+        }
+       ]
+      },
+      {
+       "quem": "max",
+       "en": "Not bad… team.",
+       "pt": "Nada mal… equipe.",
+       "emocao": "timido",
+       "camera": "close",
+       "reacoes": [
+        {
+         "quem": "voce",
+         "emocao": "surpreso",
+         "efeito": "exclamacao"
+        }
+       ]
+      },
+      {
+       "quem": "sarah",
+       "en": "Did Max just say team? I'm writing that down.",
+       "pt": "O Max acabou de dizer equipe? Vou anotar isso.",
+       "emocao": "radiante",
+       "acao": "escreve",
+       "camera": "medio"
+      },
+      {
+       "quem": "max",
+       "en": "Hey! I said don't tell anyone!",
+       "pt": "Ei! Eu disse para não contar para ninguém!",
+       "emocao": "timido",
+       "acao": "nega",
+       "camera": "geral",
+       "reacoes": [
+        {
+         "quem": "ana",
+         "emocao": "radiante",
+         "acao": "palmas"
+        },
+        {
+         "quem": "voce",
+         "emocao": "radiante"
+        }
+       ]
+      },
+      {
+       "quem": "narrador",
+       "en": "The sky turns gray. Rain is coming tonight.",
+       "pt": "O céu fica cinza. Vem chuva hoje à noite.",
+       "camera": "panoramica"
+      }
+     ]
+    }
+   ],
+   "gancho": {
+    "en": "Tonight, the streets will be wet and slippery.",
+    "pt": "Hoje à noite, as ruas vão estar molhadas e escorregadias."
+   }
+  }
+ ]
+}

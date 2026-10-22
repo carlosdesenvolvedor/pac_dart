@@ -6,6 +6,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 import 'escolha_voz.dart';
+import 'voz_ingles.dart' show ordemVozesEnUs;
 
 /// Fala em inglês no Android e no iOS: a gravação de nativo quando houver
 /// ([tocar], mp3 do pacote de assets) e, senão, a voz do sistema (`flutter_tts`,
@@ -107,6 +108,80 @@ Future<void> _voltarAoIngles(FlutterTts tts) async {
   } catch (_) {}
 }
 
+/// O `pitch` em uso (1 = normal) e se a voz en-US foi trocada pela variante de um personagem
+/// ([falarComPerfil]): a próxima fala comum volta ao normal, mesmo que a do personagem tenha sido cortada.
+double _tomAtual = 1;
+bool _vozVariante = false;
+
+Future<void> _voltarAoNormal(FlutterTts tts) async {
+  if (_tomAtual != 1) {
+    _tomAtual = 1;
+    try {
+      await tts.setPitch(1);
+    } catch (_) {}
+  }
+  if (_vozVariante) {
+    _vozVariante = false;
+    try {
+      final voz = _vozIngles;
+      if (voz != null) await tts.setVoice(voz);
+    } catch (_) {}
+  }
+}
+
+/// As vozes en-US instaladas da melhor para a pior (`ordemVozesEnUs`); null = ainda não montada.
+List<Map<String, String>>? _rankingEnUs;
+
+/// A voz da [variante] (null = a melhor, que já é a escolhida: variante 0 ou além da lista).
+Future<Map<String, String>?> _vozDaVariante(FlutterTts tts, int variante) async {
+  if (variante <= 0) return null;
+  var ranking = _rankingEnUs;
+  if (ranking == null) {
+    final vozes = await _listaDeVozes(tts);
+    final lista = [for (final m in vozes) {'name': '${m['name'] ?? ''}', 'locale': '${m['locale'] ?? ''}'}];
+    ranking = [for (final i in ordemVozesEnUs([for (final m in lista) (m['name']!, m['locale']!, true)])) lista[i]];
+    if (ranking.isNotEmpty) _rankingEnUs = ranking;
+  }
+  return variante < ranking.length ? ranking[variante] : null;
+}
+
+/// A voz de um personagem (história do English Turismo): `setPitch(`[tom]`)` (0,5–2) antes, a
+/// [variante]-ésima melhor voz en-US (0 ou além da lista = a melhor) e `setPitch(1)` depois. Mesmo contrato
+/// do [falar].
+Future<void> falarComPerfil(String texto, double velocidade, {double tom = 1, int variante = 0}) async {
+  if (!suportado) return;
+  final g = ++_geracao;
+  final fim = _novaVez();
+  FlutterTts? tts;
+  try {
+    await _player?.stop();
+    tts = await _sintetizador();
+    await tts.stop();
+    await _escolherVoz(tts);
+    await _voltarAoIngles(tts);
+    await _voltarAoNormal(tts);
+    final voz = await _vozDaVariante(tts, variante);
+    if (g != _geracao) return; // outra fala já assumiu (e já encerrou esta vez)
+    if (voz != null) {
+      _vozVariante = true;
+      await tts.setVoice(voz);
+    }
+    final t = tom.clamp(.5, 2).toDouble();
+    if (t != 1) {
+      _tomAtual = t;
+      await tts.setPitch(t);
+    }
+    if (g != _geracao) return;
+    await tts.setSpeechRate((.5 * velocidade).clamp(.1, 1.0));
+    await tts.speak(texto); // completa quando acaba (awaitSpeakCompletion)
+  } catch (_) {
+    // sem voz instalada ou o sistema recusou: fica mudo
+  } finally {
+    if (tts != null && g == _geracao) await _voltarAoNormal(tts);
+    _encerrarVez(fim);
+  }
+}
+
 /// `pt-BR` → `pt`.
 String _idiomaDe(String lang) => lang.toLowerCase().replaceAll('_', '-').split('-').first;
 
@@ -129,6 +204,7 @@ Future<bool> falarEm(String texto, double velocidade, String lang) async {
     tts = await _sintetizador();
     await tts.stop();
     await _escolherVoz(tts);
+    await _voltarAoNormal(tts); // (só se a fala de um personagem foi cortada no meio; senão não faz nada)
     if (idioma == 'en') {
       await _voltarAoIngles(tts);
     } else {

@@ -7,6 +7,7 @@ import '../domain/saida_audio.dart';
 import 'audio_nativo.dart';
 import 'audio_usuario.dart';
 import 'bocas_ingles.dart';
+import 'escolha_voz.dart';
 import 'fala_stub.dart'
     if (dart.library.js_interop) 'fala_web.dart'
     if (dart.library.io) 'fala_nativo.dart' as fala;
@@ -53,6 +54,38 @@ class FalaEmCurso {
   Visema visema(DateTime agora) => boca.em(segundo(agora));
 }
 
+/// 🎭 A voz de um personagem da história do English Turismo: [tom] = `pitch` da voz sintética
+/// (1 = normal) e [variante] = qual das melhores vozes en-US usar (0 = a melhor).
+class PerfilVoz {
+  final double tom;
+  final int variante;
+
+  const PerfilVoz({this.tom = 1, this.variante = 0});
+
+  static const padrao = PerfilVoz();
+
+  @override
+  bool operator ==(Object other) => other is PerfilVoz && other.tom == tom && other.variante == variante;
+
+  @override
+  int get hashCode => Object.hash(tom, variante);
+}
+
+/// A ordem das vozes para a `variante` do [PerfilVoz]: os índices de [vozes] (nome, idioma, local) só das
+/// en-US que servem ([notaDaVoz] > 0), da melhor para a pior (empate = a ordem da lista, como a escolha
+/// da voz do curso). A variante `n` é o `n`-ésimo; além do fim, a melhor. Usada pela web e pelo aparelho.
+List<int> ordemVozesEnUs(List<(String, String, bool)> vozes) {
+  final notas = <(int, int)>[];
+  for (var i = 0; i < vozes.length; i++) {
+    final (nome, lang, local) = vozes[i];
+    if (lang.toLowerCase().replaceAll('_', '-') != 'en-us') continue;
+    final n = notaDaVoz(nome, lang, local: local);
+    if (n > 0) notas.add((i, n));
+  }
+  notas.sort((a, b) => a.$2 != b.$2 ? b.$2.compareTo(a.$2) : a.$1.compareTo(b.$1));
+  return [for (final e in notas) e.$1];
+}
+
 class VozIngles {
   /// O que está sendo falado agora (null = silêncio). Vale para todas as vozes do app.
   static final falando = ValueNotifier<FalaEmCurso?>(null);
@@ -71,7 +104,11 @@ class VozIngles {
   /// vozes do app — a página que fecha sem ter falado nada não pausa o player do "🎧 Ouvir" (FASE-8).
   int _emCurso = 0;
 
-  VozIngles({this.tocarClipe});
+  /// A voz sintética com o [PerfilVoz] de um personagem (injetável nos testes; no app, a do navegador/
+  /// aparelho com `pitch` e a variante de voz — [falarNoPlayer] com `perfil`). Completa quando a fala acaba.
+  final Future<void> Function(String frase, double velocidade, PerfilVoz perfil)? falarComPerfil;
+
+  VozIngles({this.tocarClipe, this.falarComPerfil});
 
   /// Velocidade normal e a lenta (🐢) no `rate` do Web Speech — abaixo de
   /// 0,7 as vozes neurais arrastam (dossiê 06 §A6).
@@ -233,24 +270,50 @@ class VozIngles {
 
   /// Fala do player: ignora [lentaPorPadrao]; mp3 e áudio do aluno a `rate = fator`, Web Speech a
   /// `clamp(.95 * fator, .6, 1.2)`. [FimDaFala.cortada] = outra fala do app (ou um [parar]) entrou no meio.
-  Future<FimDaFala> falarNoPlayer(String frase, {required double fator}) async {
+  /// [perfil] (história do English Turismo): a voz do personagem — SEMPRE a sintética (pula o áudio do
+  /// aluno e o mp3: a fala da história nunca toca a gravação de outro personagem do curso), com
+  /// `pitch = tom` e a `variante`-ésima melhor voz en-US; a boca segue o texto. null = o caminho de sempre.
+  Future<FimDaFala> falarNoPlayer(String frase, {required double fator, PerfilVoz? perfil}) async {
     final minha = ++_vez;
     final g = ++_vezGlobal;
     final f = fator <= 0 ? 1.0 : fator;
+    final vSintetica = (velocidadeNormal * f).clamp(.6, 1.2).toDouble();
     _emCurso++;
     try {
-      await _falar(
-        frase,
-        minha,
-        vGravada: f,
-        vSintetica: (velocidadeNormal * f).clamp(.6, 1.2).toDouble(),
-        segPalavra: segPorPalavra / f,
-      );
+      if (perfil != null) {
+        await _falarComPerfil(frase, perfil, vSintetica: vSintetica, segPalavra: segPorPalavra / f);
+      } else {
+        await _falar(
+          frase,
+          minha,
+          vGravada: f,
+          vSintetica: vSintetica,
+          segPalavra: segPorPalavra / f,
+        );
+      }
     } finally {
       _emCurso--;
       _fecharBoca(minha, g);
     }
     return g == _vezGlobal ? FimDaFala.acabou : FimDaFala.cortada;
+  }
+
+  /// A fala de um personagem da história: só a voz sintética, com o [perfil] dele. Nunca lança.
+  Future<void> _falarComPerfil(
+    String frase,
+    PerfilVoz perfil, {
+    required double vSintetica,
+    required double segPalavra,
+  }) async {
+    try {
+      _anuncia(frase, TrilhaBoca.doTexto(frase, segPorPalavra: segPalavra));
+      final falar = falarComPerfil;
+      if (falar != null) {
+        await falar(frase, vSintetica, perfil);
+      } else {
+        await fala.falarComPerfil(frase, vSintetica, tom: perfil.tom, variante: perfil.variante);
+      }
+    } catch (_) {}
   }
 
   /// A tradução na voz pt-BR do sistema (sem boca); sem voz pt-BR → [FimDaFala.semVoz].

@@ -2,12 +2,20 @@
 // de verdade — os jogos funcionam sem login (RankingCubit vira no-op) — e
 // uma galeria com pista/personagens/cenários crus.
 //   flutter build web -t lib/main_arcade_probe.dart --output=build/probe
+// Rotas do English Turismo (prova visual do plano 8.3): /turismo-en, /turismo-en11 … /turismo-en30,
+// /historia-en (galeria), /historia-en1 (abertura 1) e /historia-en30 (final 30, créditos).
 import 'package:flutter/material.dart';
 
+import 'core/linguagem/linguagem.dart';
 import 'core/theme/mixart.dart';
+import 'features/arcade/data/historia_turismo_repo.dart';
 import 'features/arcade/domain/gerador_missoes.dart';
+import 'features/arcade/domain/historia_turismo.dart';
 import 'features/arcade/domain/personagem.dart';
+import 'features/arcade/domain/turismo.dart';
 import 'features/arcade/presentation/arcade_page.dart';
+import 'features/arcade/presentation/historia/galeria_historia.dart';
+import 'features/arcade/presentation/historia/player_historia.dart';
 import 'features/arcade/presentation/turismo_page.dart';
 import 'features/arcade/presentation/widgets/arcade_ui.dart';
 import 'features/arcade/presentation/widgets/avatares.dart';
@@ -30,8 +38,64 @@ class _ProbeApp extends StatelessWidget {
         '/turismo': (_) => const TurismoPage(semente: 3, pistaInicial: 1),
         '/turismo3': (_) => const TurismoPage(semente: 3, pistaInicial: 3),
         '/turismo10': (_) => const TurismoPage(semente: 3, pistaInicial: 10),
+        // 📖 English Turismo (o curso vira inglês DENTRO do builder): campeonato com a história, as 20
+        // pistas novas direto na corrida (sem história), a galeria e as cenas 1 (abertura) e 30 (final)
+        '/turismo-en': (_) => _ingles(const TurismoPage(carregarHistoria: true)),
+        for (var n = pistasClassicas + 1; n <= pistasGtIngles.length; n++)
+          '/turismo-en$n': (_) => _ingles(TurismoPage(semente: 3, pistaInicial: n)),
+        '/historia-en': (_) => _ingles(const _HistoriaProbe()),
+        '/historia-en1': (_) => _ingles(const _HistoriaProbe(pista: 1, parte: ParteDoCapitulo.intro)),
+        '/historia-en30': (_) => _ingles(const _HistoriaProbe(pista: 30, parte: ParteDoCapitulo.fim)),
       },
       home: const ArcadePage(),
+    );
+  }
+}
+
+/// Liga o curso de inglês antes de montar [pagina] (as rotas `-en` da prova visual).
+Widget _ingles(Widget pagina) {
+  Linguagem.atual = Linguagem.ingles;
+  return pagina;
+}
+
+/// 📖 Prova visual da história: com [pista], a cena ([parte]) desse capítulo; sem, a galeria inteira
+/// liberada (pistaMax 30 e todas as chegadas).
+class _HistoriaProbe extends StatelessWidget {
+  const _HistoriaProbe({this.pista, this.parte = ParteDoCapitulo.intro});
+
+  final int? pista;
+  final ParteDoCapitulo parte;
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<HistoriaTurismo?>(
+      future: HistoriaTurismoRepo.carregar(),
+      builder: (context, snap) {
+        final h = snap.data;
+        if (snap.connectionState != ConnectionState.done) {
+          return Scaffold(backgroundColor: Mixart.bg, body: const Center(child: CircularProgressIndicator()));
+        }
+        final cap = pista == null ? null : h?.capitulo(pista!);
+        if (h == null || (pista != null && cap == null)) {
+          return Scaffold(
+            backgroundColor: Mixart.bg,
+            body: Center(child: Text('📖 história indisponível', style: Mixart.ui(size: 14))),
+          );
+        }
+        if (cap == null) {
+          return GaleriaHistoriaPage(
+            historia: h,
+            pistaMax: pistasGtIngles.length,
+            chegadas: {for (final c in h.capitulos) c.pista},
+          );
+        }
+        return PlayerHistoria(
+          capitulo: cap,
+          parte: parte,
+          creditos: parte == ParteDoCapitulo.fim && cap.pista == pistasGtIngles.length,
+          onFim: (_) => Navigator.of(context).maybePop(),
+        );
+      },
     );
   }
 }

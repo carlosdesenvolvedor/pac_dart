@@ -40,5 +40,10 @@ class Vista3D extends StatelessWidget {
   static bool get disponivel => false;
 
   @override
-  Widget build(BuildContext context) => VistaCorrida(engine: engine, relogio: relogio);
+  Widget build(BuildContext context) => VistaCorrida(
+        engine: engine,
+        relogio: relogio,
+        // reduzir movimento = animações reduzidas do sistema OU tremor da câmera desligado (como na web)
+        reduzir: !tremor || (MediaQuery.maybeDisableAnimationsOf(context) ?? false),
+      );
 }

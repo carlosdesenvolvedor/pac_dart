@@ -10,22 +10,28 @@ import 'voz_jogo.dart';
 
 import '../../../core/som/sons.dart';
 import '../../../core/theme/mixart.dart';
+import '../../ingles/data/voz_ingles.dart';
 import '../../ingles/domain/erros_palavra.dart';
 import '../../ingles/domain/teimosas.dart';
 import '../../ingles/presentation/acoes_teimosas.dart';
 import '../../ingles/presentation/palavras_cubit.dart';
 import '../../ranking/presentation/ranking_cubit.dart';
 import '../domain/baralho_fases.dart';
+import '../domain/historia_turismo.dart';
 import '../domain/personagem.dart';
+import '../domain/progresso_historia.dart';
 import '../domain/progresso_turismo.dart';
 import '../domain/tropecos.dart';
 import '../domain/turismo.dart';
 import '../data/engenheiro_gt.dart';
+import '../data/historia_turismo_repo.dart';
+import 'historia/galeria_historia.dart';
+import 'historia/player_historia.dart';
+import 'widgets/ambiente_turismo.dart';
 import 'widgets/arcade_ui.dart';
 import 'widgets/aviso_arcade.dart';
 import 'widgets/campanha.dart';
 import 'widgets/campo_teclas.dart';
-import 'widgets/cenario.dart';
 import 'widgets/legenda_traducao.dart';
 import 'widgets/linha_fase.dart';
 import 'widgets/minimapa.dart';
@@ -34,21 +40,41 @@ import 'widgets/tutorial_turismo.dart';
 import 'widgets/vista_3d.dart';
 import 'widgets/vista_3d_controlador.dart';
 
-/// 🏎️ Dart Turismo — campeonato de digitação em 10 pistas pseudo-3D.
+/// 🏎️ Dart Turismo — campeonato de digitação em 10 pistas pseudo-3D (30 no English Turismo).
 /// Cada portal marca a faixa livre com uma PALAVRA: digite-a pra entrar na
 /// faixa. Toda tecla certa acelera; parar de digitar é ir parando; cruzar o
 /// portal numa faixa bloqueada é batida. Feche a pista dentro do tempo pra
 /// liberar a próxima — ouro, prata ou bronze pelo relógio.
+///
+/// 📖 No inglês, com [historia] ou [carregarHistoria], cada pista tem um capítulo de "The Golden Wheel":
+/// a abertura toca antes da corrida e a chegada 1,2 s depois do resultado (uma vez cada, com "📖 Auto").
 class TurismoPage extends StatefulWidget {
   /// Semente da pista (fixa nos testes; null = aleatória).
   final int? semente;
 
-  /// Abre direto correndo esta pista (1–10); null = tela do campeonato.
+  /// Abre direto correndo esta pista (1–10; 1–30 no inglês); null = tela do campeonato.
   final int? pistaInicial;
 
   /// A engenheira de pista (IA) — injetável nos testes.
   final EngenheiroGt? engenheiro;
-  const TurismoPage({super.key, this.semente, this.pistaInicial, this.engenheiro});
+
+  /// 📖 A história já carregada (testes). Só vale no inglês.
+  final HistoriaTurismo? historia;
+
+  /// 📖 Carrega a história dos JSON (o hub liga). Só vale no inglês: Dart e C# nunca carregam.
+  final bool carregarHistoria;
+
+  /// 📖 A voz dos desenhos (testes); null = uma `VozIngles` própria da página.
+  final VozIngles? vozHistoria;
+  const TurismoPage({
+    super.key,
+    this.semente,
+    this.pistaInicial,
+    this.engenheiro,
+    this.historia,
+    this.carregarHistoria = false,
+    this.vozHistoria,
+  });
 
   @override
   State<TurismoPage> createState() => _TurismoPageState();
@@ -142,6 +168,56 @@ class _TurismoPageState extends State<TurismoPage>
 
   static const _setas = ['⬅ ESQUERDA', '⬆ MEIO', '➡ DIREITA'];
 
+  /// As pistas do curso atual: 30 no inglês, 10 no Dart/C# (mesma lista `pistasGt` de sempre).
+  List<PistaGt> get _pistas => pistasTurismo(ingles: BancoArcade.soDigitacao);
+
+  /// Os troféus do curso atual (o inglês ganha 🌍 volta ao mundo, 🏆 lenda e 📖 história).
+  List<TrofeuGt> get _trofeusDoCurso => trofeusDoTurismo(ingles: BancoArcade.soDigitacao);
+
+  // ---------- 📖 história (só no inglês) ----------
+
+  /// A história vale nesta página? Só no inglês e só com opt-in ([TurismoPage.historia] ou
+  /// [TurismoPage.carregarHistoria]): os testes antigos e o Dart/C# nunca carregam os JSON.
+  bool get _historiaAtiva =>
+      BancoArcade.soDigitacao && (widget.historia != null || widget.carregarHistoria);
+  HistoriaTurismo? _historia;
+  Future<HistoriaTurismo?>? _futuroHistoria;
+
+  /// O que já foi visto (`i7`/`f7`/`c7`) e a pref "📖 Auto" (as cenas tocam sozinhas uma vez).
+  Set<String> _vistos = const {};
+  bool _historiaAuto = true;
+
+  /// Guarda de reentrada do [_correr] (toque duplo, "de novo" rápido): um player por vez.
+  bool _abrindoCena = false;
+
+  /// Uma rota da história (player ou galeria) está por cima: o campo de teclas da corrida fica fora do
+  /// foco (senão ele "rouba" o teclado do desenho) e volta novo ([_geracaoTeclas]) quando a rota fecha.
+  bool _cenaAberta = false;
+  int _geracaoTeclas = 0;
+
+  /// A chegada que abre sozinha 1,2 s depois do resultado; [_fichaChegada] invalida a que já disparou.
+  Timer? _chegadaAgendada;
+  int _fichaChegada = 0;
+  static const _esperaChegada = Duration(milliseconds: 1200);
+
+  /// O [_fim] gravando (registro, fantasma, estatísticas, moedas, campeonato, troféus): "📖 Continue a
+  /// história" espera ele acabar antes de abrir o player (plano 6.4). O ranking (rede) não entra aqui.
+  Completer<void>? _gravandoFim;
+
+  /// A voz dos desenhos: a injetada ou uma própria (criada só quando um desenho abre).
+  VozIngles? _vozPropria;
+  VozIngles get _vozHistoria => widget.vozHistoria ?? (_vozPropria ??= VozIngles());
+
+  /// Temporadas (inglês): o cartão da pista mais longe (rola até ele ao abrir) e as recolhidas.
+  final _chaveCartaoMax = GlobalKey(debugLabel: 'turismo-cartao-max');
+  bool _rolouAteMax = false;
+  final Set<int> _temporadasRecolhidas = {};
+  static const _temporadas = [
+    (de: 1, ate: 10, nome: 'Word Grand Tour'),
+    (de: 11, ate: 20, nome: 'World Tour'),
+    (de: 21, ate: 30, nome: 'Legends'),
+  ];
+
   /// As palavras na tela, pra quem precisa achá-las (testes): as dos portais e a de combustível.
   static const _chavesPalavra = [Key('turismo-palavra-0'), Key('turismo-palavra-1')];
   static const _chaveGas = Key('turismo-gas');
@@ -229,10 +305,15 @@ class _TurismoPageState extends State<TurismoPage>
     PersonagemStore.carregar().then((_) {
       if (mounted) setState(() {});
     });
+    if (_historiaAtiva) _iniciarHistoria();
     // o modo (⌨️/🎮), o carro e a câmera salvos entram ANTES da corrida direta
     _carregarCampeonato().then((_) {
       final inicial = widget.pistaInicial;
-      if (inicial != null && mounted) _correr(pistasGt[(inicial - 1).clamp(0, pistasGt.length - 1)]);
+      if (inicial != null && mounted) {
+        _correr(_pistas[(inicial - 1).clamp(0, _pistas.length - 1)]);
+      } else {
+        _rolarAtePistaMax();
+      }
     });
     if (BancoArcade.soDigitacao) {
       VozDoJogo.carregarPreferencia().then((_) {
@@ -241,8 +322,69 @@ class _TurismoPageState extends State<TurismoPage>
     }
   }
 
+  /// 📖 A história injetada ou carregada dos JSON (quando chega, os cartões ganham a linha 📖), o que já
+  /// foi visto e a pref "📖 Auto".
+  void _iniciarHistoria() {
+    final injetada = widget.historia;
+    if (injetada != null) {
+      _historia = injetada;
+    } else {
+      final f = _futuroHistoria = HistoriaTurismoRepo.carregar();
+      f.then((h) {
+        if (mounted && h != null) setState(() => _historia = h);
+      });
+    }
+    _recarregarVistos();
+  }
+
+  Future<void> _recarregarVistos() async {
+    final vistos = await ProgressoHistoria.vistos();
+    final auto = await ProgressoHistoria.auto();
+    if (!mounted) return;
+    setState(() {
+      _vistos = vistos;
+      _historiaAuto = auto;
+    });
+  }
+
+  /// A história pronta para tocar: espera o carregamento no máximo 3 s (falha ou demora = sem cena).
+  Future<HistoriaTurismo?> _historiaPronta() async {
+    final h = _historia;
+    if (h != null) return h;
+    final f = _futuroHistoria;
+    if (f == null) return null;
+    try {
+      return await f.timeout(const Duration(seconds: 3));
+    } catch (_) {
+      return null;
+    }
+  }
+
+  /// Inglês com temporadas: ao abrir, rola até o cartão da pista mais longe liberada (a 1 já está à vista
+  /// logo abaixo das opções; rolar ali só esconderia a explicação de quem está começando).
+  /// O cartão ainda pode não estar montado no 1º quadro: tenta de novo nos próximos ([tentativa] até 5) e
+  /// só marca [_rolouAteMax] quando achou (a lista do campeonato monta tudo de uma vez: `cacheExtent`).
+  void _rolarAtePistaMax({int tentativa = 0}) {
+    if (_rolouAteMax || !mounted || _pistas.length <= pistasClassicas || _campeonato.pistaMax <= 1) return;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || _rolouAteMax || _tela != _Tela.campeonato) return;
+      final ctx = _chaveCartaoMax.currentContext;
+      if (ctx == null) {
+        if (tentativa < 5) {
+          _rolarAtePistaMax(tentativa: tentativa + 1);
+          WidgetsBinding.instance.scheduleFrame();
+        }
+        return;
+      }
+      _rolouAteMax = true;
+      final reduzir = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+      Scrollable.ensureVisible(ctx,
+          alignment: .3, duration: reduzir ? Duration.zero : const Duration(milliseconds: 350));
+    });
+  }
+
   Future<void> _carregarCampeonato() async {
-    final c = await ProgressoTurismo.carregar(totalPistas: pistasGt.length);
+    final c = await ProgressoTurismo.carregar(totalPistas: _pistas.length);
     final carro = await ProgressoTurismo.carroEscolhido();
     final setas = await ProgressoTurismo.modoSetas();
     final camera = await ProgressoTurismo.camera();
@@ -379,6 +521,8 @@ class _TurismoPageState extends State<TurismoPage>
     _voz.encerrar();
     _ticker.dispose();
     _esperaCena?.cancel();
+    _cancelarChegada();
+    _vozPropria?.parar();
     _foco.dispose();
     Sons.motorParar();
     _publicarParcial();
@@ -422,9 +566,208 @@ class _TurismoPageState extends State<TurismoPage>
 
   // ---------- corrida ----------
 
+  /// Corre a pista [p]. No inglês com história, a abertura do capítulo toca ANTES (rota opaca, sem UI
+  /// sobre a vista 3D); a guarda [_abrindoCena] garante um player só para toques repetidos.
   Future<void> _correr(PistaGt p) async {
-    _desligarTicker();
-    Sons.motorParar();
+    if (_abrindoCena) return;
+    _abrindoCena = true;
+    var abriuCena = false;
+    try {
+      _desligarTicker();
+      Sons.motorParar();
+      _cancelarChegada();
+      if (_historiaAtiva) {
+        final (seguir, abriu) = await _aberturaDaHistoria(p);
+        abriuCena = abriu;
+        if (!mounted || !seguir) return;
+      }
+      await _montarCorrida(p);
+    } finally {
+      _abrindoCena = false;
+    }
+    // o teclado volta para a corrida depois do pop (digitando, o campo de teclas novo pega o foco sozinho)
+    if (abriuCena && mounted && _modoSetas) _foco.requestFocus();
+  }
+
+  /// 📖 A abertura do capítulo da pista [p], se ainda não foi vista e "📖 Auto" está ligado. Antes, uma
+  /// vez só, o aviso dos capítulos perdidos para quem chega no meio. Devolve (seguir para a corrida?,
+  /// abriu alguma cena?): "Ver do começo" abre a galeria e NÃO corre agora.
+  Future<(bool, bool)> _aberturaDaHistoria(PistaGt p) async {
+    final h = await _historiaPronta();
+    if (!mounted) return (false, false);
+    final cap = h?.capitulo(p.numero);
+    if (h == null || cap == null) return (true, false);
+    final vistos = await ProgressoHistoria.vistos();
+    final auto = await ProgressoHistoria.auto();
+    if (!mounted) return (false, false);
+    if (!auto || vistos.contains(ProgressoHistoria.id(p.numero, ParteDoCapitulo.intro))) return (true, false);
+    final perdidos = [
+      for (var k = 1; k < p.numero; k++)
+        if (h.capitulo(k) != null && !vistos.contains(ProgressoHistoria.id(k, ParteDoCapitulo.intro))) k,
+    ];
+    if (perdidos.isNotEmpty && !await ProgressoHistoria.perdidosAvisado()) {
+      await ProgressoHistoria.marcarPerdidosAvisado();
+      if (!mounted) return (false, false);
+      final escolha = await _comCenaAberta(
+          () => abrirCapitulosPerdidos(context, historia: h, ate: p.numero - 1, perdidos: perdidos));
+      if (!mounted) return (false, true);
+      if (escolha == EscolhaPerdidos.doComeco) {
+        _abrirGaleria();
+        return (false, true);
+      }
+    }
+    await _abrirCena(cap, ParteDoCapitulo.intro);
+    return (mounted, true);
+  }
+
+  /// Roda [abrir] (uma rota/diálogo da história) com o campo de teclas da corrida fora do foco.
+  Future<T> _comCenaAberta<T>(Future<T> Function() abrir) async {
+    if (mounted) setState(() => _cenaAberta = true);
+    try {
+      return await abrir();
+    } finally {
+      if (mounted) {
+        setState(() {
+          _cenaAberta = false;
+          _geracaoTeclas++;
+        });
+      }
+    }
+  }
+
+  /// Toca a [parte] do capítulo [cap] e, ao voltar, relê o que foi visto. Depois da chegada, relê o
+  /// campeonato: a do capítulo 30 assistida até o fim abre o 📖 (o player grava `c30` só ao voltar, depois
+  /// de o [_fim] já ter calculado os troféus novos — então ele entra aqui, como troféu novo).
+  Future<void> _abrirCena(CapituloHistoria cap, ParteDoCapitulo parte) async {
+    _voz.calar();
+    await _comCenaAberta(() => abrirCenaDaHistoria(
+          context,
+          capitulo: cap,
+          parte: parte,
+          voz: _vozHistoria,
+          creditos: parte == ParteDoCapitulo.fim && cap.pista == pistasGtIngles.length,
+        ));
+    if (!mounted) return;
+    await _recarregarVistos();
+    if (parte == ParteDoCapitulo.fim && mounted) await _conferirTrofeusDaHistoria();
+  }
+
+  Future<void> _conferirTrofeusDaHistoria() async {
+    final antes = _campeonato;
+    await _carregarCampeonato();
+    if (!mounted) return;
+    final novos = [
+      for (final t in _trofeusDoCurso)
+        if (!t.ganhou(_estatisticas, antes) && t.ganhou(_estatisticas, _campeonato) && !_trofeusNovos.contains(t)) t,
+    ];
+    if (novos.isEmpty) return;
+    Sons.toca(Som.fanfarra);
+    if (_acabou) setState(() => _trofeusNovos = [..._trofeusNovos, ...novos]);
+  }
+
+  /// 📖 Galeria da história (rever capítulos, resumo até aqui).
+  Future<void> _abrirGaleria() async {
+    final h = _historia;
+    if (h == null || !mounted) return;
+    Sons.toca(Som.blip);
+    await _comCenaAberta(() => Navigator.of(context).push(MaterialPageRoute<void>(
+          builder: (_) => GaleriaHistoriaPage(
+            historia: h,
+            pistaMax: _campeonato.pistaMax,
+            chegadas: _chegadas,
+            voz: _vozHistoria,
+          ),
+        )));
+    if (!mounted) return;
+    await _recarregarVistos();
+    if (mounted) await _conferirTrofeusDaHistoria();
+  }
+
+  /// As pistas com a chegada liberada na galeria: terminadas (com tempo) ou com a chegada já vista.
+  Set<int> get _chegadas => {
+        for (var n = 1; n <= _pistas.length; n++)
+          if (_campeonato.tempoDe(n) != null || _vistos.contains(ProgressoHistoria.id(n, ParteDoCapitulo.fim))) n,
+      };
+
+  /// 📖 O botão "📖" do cartão: toca a abertura do capítulo (sem correr).
+  Future<void> _reverAbertura(int pista) async {
+    final cap = _historia?.capitulo(pista);
+    if (cap == null || _abrindoCena) return;
+    _abrindoCena = true;
+    try {
+      Sons.toca(Som.blip);
+      await _abrirCena(cap, ParteDoCapitulo.intro);
+    } finally {
+      _abrindoCena = false;
+    }
+  }
+
+  /// "📖 Continue a história" / "📖 Rever final" do overlay de fim.
+  Future<void> _verChegada(int pista) async {
+    final cap = _historia?.capitulo(pista);
+    if (cap == null || _abrindoCena || _cenaAberta) return;
+    _cancelarChegada();
+    _abrindoCena = true;
+    try {
+      // o resultado termina de gravar antes (moedas, estatísticas, campeonato e troféus já calculados)
+      final corrida = _corridaId;
+      await _gravandoFim?.future;
+      if (!mounted || _corridaId != corrida || !_acabou || !(ModalRoute.of(context)?.isCurrent ?? true)) return;
+      await _abrirCena(cap, ParteDoCapitulo.fim);
+    } finally {
+      _abrindoCena = false;
+    }
+  }
+
+  /// A chegada abre sozinha [_esperaChegada] depois do resultado (o jogador vê o overlay primeiro), se a
+  /// corrida ainda é a mesma, "📖 Auto" está ligado e ela nunca foi vista. Cancelada por [_correr], "Sair",
+  /// "Campeonato", "Próxima" e [dispose].
+  void _agendarChegada(int pista, int corrida) {
+    _cancelarChegada();
+    final ficha = _fichaChegada;
+    _chegadaAgendada = Timer(_esperaChegada, () => _chegadaSozinha(pista, corrida, ficha));
+  }
+
+  void _cancelarChegada() {
+    _chegadaAgendada?.cancel();
+    _chegadaAgendada = null;
+    _fichaChegada++;
+  }
+
+  Future<void> _chegadaSozinha(int pista, int corrida, int ficha) async {
+    // ... e só com o Turismo à vista: nada de abrir por cima do treino das teimosas ou de outro diálogo/rota
+    bool valida() =>
+        mounted &&
+        ficha == _fichaChegada &&
+        _corridaId == corrida &&
+        _acabou &&
+        !_abrindoCena &&
+        !_cenaAberta &&
+        (ModalRoute.of(context)?.isCurrent ?? true);
+    _chegadaAgendada = null;
+    if (!valida()) return;
+    final cap = _historia?.capitulo(pista);
+    if (cap == null) return;
+    final auto = await ProgressoHistoria.auto();
+    final vistos = await ProgressoHistoria.vistos();
+    if (!auto || vistos.contains(ProgressoHistoria.id(pista, ParteDoCapitulo.fim)) || !valida()) return;
+    _abrindoCena = true;
+    try {
+      await _abrirCena(cap, ParteDoCapitulo.fim);
+    } finally {
+      _abrindoCena = false;
+    }
+    if (mounted && _modoSetas) _foco.requestFocus();
+  }
+
+  void _alternarHistoriaAuto() {
+    Sons.toca(Som.blip);
+    setState(() => _historiaAuto = !_historiaAuto);
+    ProgressoHistoria.salvarAuto(_historiaAuto);
+  }
+
+  /// O fluxo de sempre: tutorial, fantasma, baralho da fase e a corrida na tela.
+  Future<void> _montarCorrida(PistaGt p) async {
     final tutorial = !await ProgressoTurismo.tutorialVisto(setas: _modoSetas);
     final fantasma = await ProgressoTurismo.fantasma(p.numero);
     if (!mounted) return;
@@ -508,6 +851,7 @@ class _TurismoPageState extends State<TurismoPage>
   }
 
   void _voltarAoCampeonato() {
+    _cancelarChegada();
     _desligarTicker();
     _publicarParcial();
     Sons.motorParar();
@@ -669,9 +1013,12 @@ class _TurismoPageState extends State<TurismoPage>
 
   Widget _ofertaFim(SugestaoTeimosas s, PistaGt pista) => OfertaTeimosasFim(
         sugestao: s,
-        onTreinar: () => treinarTeimosas(context, s.palavras, origem: 'turismo').then((_) {
-          if (mounted) setState(() => _sug = null);
-        }),
+        onTreinar: () {
+          _cancelarChegada(); // a chegada automática não abre por cima do treino
+          treinarTeimosas(context, s.palavras, origem: 'turismo').then((_) {
+            if (mounted) setState(() => _sug = null);
+          });
+        },
         onRevanche: () {
           jogarComTeimosas(context, s.palavras, dentroDoJogo: true);
           _correr(pista);
@@ -686,6 +1033,16 @@ class _TurismoPageState extends State<TurismoPage>
   }
 
   Future<void> _fim() async {
+    if (_engine == null || _pista == null || _acabou) return;
+    final gravando = _gravandoFim = Completer<void>();
+    try {
+      await _fimCorrida();
+    } finally {
+      if (!gravando.isCompleted) gravando.complete();
+    }
+  }
+
+  Future<void> _fimCorrida() async {
     final e = _engine;
     final pista = _pista;
     if (e == null || pista == null || _acabou) return;
@@ -702,7 +1059,7 @@ class _TurismoPageState extends State<TurismoPage>
     setState(() {
       _acabou = true;
       pausado = false;
-      _campeao = e.terminou && pista.numero == pistasGt.length && e.medalha > 0;
+      _campeao = e.terminou && pista.numero == _pistas.length && e.medalha > 0;
       _moedasCorrida = e.moedas + moedasPorMedalha[e.medalha];
       _radio = null;
     });
@@ -713,7 +1070,7 @@ class _TurismoPageState extends State<TurismoPage>
         pista: pista.numero,
         medalha: e.medalha,
         tempo: e.tempoFinal!,
-        totalPistas: pistasGt.length,
+        totalPistas: _pistas.length,
         chegarLibera: e.semLimiteDeTempo,
       );
       // 👻 a melhor volta vira (ou continua sendo) o fantasma da pista
@@ -732,19 +1089,29 @@ class _TurismoPageState extends State<TurismoPage>
     if (_moedasCorrida > 0) await ProgressoTurismo.ganharMoedas(_moedasCorrida);
     if (!_pontuado) {
       _pontuado = true;
-      final recorde = await _ranking?.arcadeJogado('turismo', e.pontosFinais);
-      if (mounted && recorde == true) setState(() => _novoRecorde = true);
+      // 🌐 o ranking vai pela rede (Firestore, sem prazo — offline a escrita fica pendente): corre em paralelo
+      // e não segura o campeonato, os troféus nem a chegada; o "novo recorde" acende quando ele responder
+      final corrida = _corridaId;
+      unawaited(_ranking?.arcadeJogado('turismo', e.pontosFinais).then((recorde) {
+        if (mounted && recorde && _corridaId == corrida) setState(() => _novoRecorde = true);
+      }, onError: (Object _) {}));
     }
     await _carregarCampeonato();
     if (!mounted) return;
     setState(() {
       _estatisticas = statsDepois;
       _trofeusNovos = [
-        for (final t in trofeusGt)
+        for (final t in _trofeusDoCurso)
           if (!t.ganhou(statsAntes, campAntes) && t.ganhou(statsDepois, _campeonato)) t,
       ];
     });
     if (_trofeusNovos.isNotEmpty) Sons.toca(Som.fanfarra);
+    // 📖 a chegada só depois de TODA a persistência local (registro, fantasma, estatísticas, moedas,
+    // campeonato e troféus; o ranking segue em paralelo): abre sozinha 1,2 s depois, por um timer cancelável
+    // — nunca um await da cena aqui
+    if (e.terminou && _historiaAtiva && _historia?.capitulo(pista.numero) != null) {
+      _agendarChegada(pista.numero, _corridaId);
+    }
   }
 
   /// 🎧 A engenheira (Gemini, ou a de bolso) comenta a corrida que acabou.
@@ -780,7 +1147,7 @@ class _TurismoPageState extends State<TurismoPage>
                 else if (_contagem && _cenaPronta && _pista != null)
                   ContagemRegressiva(
                     onFim: _largada,
-                    legenda: '${emojiDaFase(_pista!.tema)} ${_pista!.nome} — '
+                    legenda: '${AmbienteTurismo.de(_pista!.tema).emoji} ${_pista!.nome} — '
                         '${_modoSetas ? 'segure ↑ pra acelerar' : 'digite pra acelerar'}',
                   ),
                 // inglês: o que esta fase traz (novas e as que voltam pra revisar 🔁)
@@ -798,6 +1165,9 @@ class _TurismoPageState extends State<TurismoPage>
 
   Widget _telaCampeonato() {
     return ListView(
+      // a grade da temporada é um filho só, bem abaixo das opções: no celular ela ficava fora do cache
+      // (sem montar) e o "rola até a pista mais longe" (D20) não achava o cartão. Monta tudo de uma vez.
+      cacheExtent: 100000,
       padding: const EdgeInsets.fromLTRB(20, 16, 20, 48),
       children: [
         CabecalhoJogo(
@@ -805,7 +1175,7 @@ class _TurismoPageState extends State<TurismoPage>
           titulo: '🏎️ ${BancoArcade.linguagem} Turismo',
           chips: [
             ChipPlacar('MOEDAS', '🪙 ${_campeonato.moedas}', cor: Mixart.brand),
-            ChipPlacar('MEDALHAS', '${_campeonato.totalMedalhas}/${pistasGt.length}'),
+            ChipPlacar('MEDALHAS', '${_campeonato.totalMedalhas}/${_pistas.length}'),
             ChipPlacar('OUROS', '${_campeonato.ouros}'),
           ],
         ),
@@ -819,16 +1189,17 @@ class _TurismoPageState extends State<TurismoPage>
           ),
           child: Text(
             BancoArcade.soDigitacao
-                ? 'Campeonato de ${pistasGt.length} pistas em 3D com as palavras das SUAS lições — a '
+                ? 'Campeonato de ${_pistas.length} pistas em 3D com as palavras das SUAS lições — a '
                     'tradução aparece embaixo. Cada portal marca a faixa LIVRE com uma palavra: digite-a '
                     'pra entrar na faixa e passar limpo — o tráfego das outras faixas arranca quando você '
                     'chega, e encostar nele é batida. Toda tecla certa acelera; parar de digitar é ir '
                     'parando. Passe por cima das fichas (hi, yes, wow…) na faixa livre pra ganhar 🪙 '
-                    'moedas, que compram os carros da garagem. Feche a pista no tempo pra liberar a '
-                    'próxima: 🥇 ouro, 🥈 prata ou 🥉 bronze. Cada corrida traz palavras novas (e mais '
+                    'moedas, que compram os carros da garagem. '
+                    '${_historiaAtiva ? 'Chegue ao fim para liberar a próxima pista e o próximo capítulo' : 'Chegue ao fim para liberar a próxima pista'}'
+                    ' — o relógio vale 🥇 ouro, 🥈 prata ou 🥉 bronze. Cada corrida traz palavras novas (e mais '
                     'delas a cada pista); as que você errar ou demorar voltam pra revisão 🔁. Esc pausa.'
                 :
-            'Campeonato de ${pistasGt.length} pistas em 3D. Cada portal marca a faixa LIVRE '
+            'Campeonato de ${_pistas.length} pistas em 3D. Cada portal marca a faixa LIVRE '
             'com uma palavra: digite-a pra entrar na faixa e passar limpo — o tráfego das '
             'outras faixas arranca quando você chega, e encostar nele é batida. Toda tecla '
             'certa acelera; parar de digitar é ir parando. Passe por cima das fichas de '
@@ -848,8 +1219,22 @@ class _TurismoPageState extends State<TurismoPage>
         LayoutBuilder(builder: (context, box) {
           final colunas = box.maxWidth >= 640 ? 2 : 1;
           final largura = (box.maxWidth - (colunas - 1) * 12) / colunas;
-          return Wrap(spacing: 12, runSpacing: 12, children: [
-            for (final p in pistasGt) SizedBox(width: largura, child: _cartaoPista(p)),
+          Widget grade(Iterable<PistaGt> pistas) => Wrap(spacing: 12, runSpacing: 12, children: [
+                for (final p in pistas) SizedBox(width: largura, child: _cartaoPista(p)),
+              ]);
+          // Dart/C#: as 10 de sempre, sem cabeçalho
+          if (_pistas.length <= pistasClassicas) return grade(_pistas);
+          // inglês: 3 temporadas (a 1ª sempre aberta; a 2ª e a 3ª recolhem no cabeçalho)
+          return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            for (var i = 0; i < _temporadas.length; i++)
+              if (_temporadas[i].de <= _pistas.length) ...[
+                if (i > 0) const SizedBox(height: 18),
+                _cabecalhoTemporada(i),
+                if (!_temporadasRecolhidas.contains(i)) ...[
+                  const SizedBox(height: 10),
+                  grade(_pistas.where((p) => p.numero >= _temporadas[i].de && p.numero <= _temporadas[i].ate)),
+                ],
+              ],
           ]);
         }),
         const SizedBox(height: 18),
@@ -860,10 +1245,49 @@ class _TurismoPageState extends State<TurismoPage>
           'por qubodup (OpenGameArt), CC BY 3.0 · Som da batida: qubodup (CC0) · Músicas: Kevin MacLeod '
           '(incompetech.com), licença CC BY 4.0 · Fachadas dos prédios: ambientCG (CC0) · Rochas, arbustos e '
           'árvores: Poly Haven (CC0) · Pneu cantando: audible-edge (OpenGameArt, CC BY 3.0) · '
-          'Engenheira de pista: Gemini · Motor 3D: three.js (MIT).',
+          'Engenheira de pista: Gemini · Motor 3D: three.js (MIT).'
+          '${BancoArcade.soDigitacao ? ' · História e desenhos: originais do Paclingo · Vozes da história: voz do sistema.' : ''}',
           style: Mixart.ui(size: 10.5, color: Mixart.textFaint).copyWith(height: 1.5),
         ),
       ],
+    );
+  }
+
+  /// Cabeçalho de uma temporada do inglês: nome, faixa de pistas e medalhas; a 2ª e a 3ª recolhem.
+  Widget _cabecalhoTemporada(int i) {
+    final t = _temporadas[i];
+    final ate = math.min(t.ate, _pistas.length);
+    final medalhas = _campeonato.medalhasEntre(t.de, ate);
+    final recolhida = _temporadasRecolhidas.contains(i);
+    final titulo = Row(children: [
+      Expanded(
+        child: Text('${t.nome.toUpperCase()} (${t.de}–$ate)',
+            style: Mixart.ui(size: 11, weight: FontWeight.w800, color: Mixart.brand).copyWith(letterSpacing: 2)),
+      ),
+      Text('🏅 $medalhas/${ate - t.de + 1}', style: Mixart.ui(size: 11, color: Mixart.textMuted)),
+      if (i > 0) ...[
+        const SizedBox(width: 6),
+        Icon(recolhida ? Icons.expand_more : Icons.expand_less, size: 18, color: Mixart.textMuted),
+      ],
+    ]);
+    final caixa = Container(
+      key: Key('turismo-temporada-${i + 1}'),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: Mixart.brandDim)),
+      ),
+      child: titulo,
+    );
+    if (i == 0) return Semantics(header: true, child: caixa);
+    return Semantics(
+      header: true,
+      button: true,
+      expanded: !recolhida,
+      label: 'temporada ${t.nome}',
+      child: InkWell(
+        onTap: () => setState(() => recolhida ? _temporadasRecolhidas.remove(i) : _temporadasRecolhidas.add(i)),
+        child: caixa,
+      ),
     );
   }
 
@@ -887,6 +1311,24 @@ class _TurismoPageState extends State<TurismoPage>
         _botaoMusica(),
         if (BancoArcade.soDigitacao)
           BotaoVozJogo(key: const Key('arcade-voz'), onTap: _alternarVoz, compacto: false),
+        // 📖 a galeria da história e se as cenas tocam sozinhas
+        if (_historiaAtiva && _historia != null)
+          KeyedSubtree(
+            key: const Key('turismo-historia'),
+            child: _botaoPilula('📖 História', ativo: true, rotulo: 'abrir a história', onTap: _abrirGaleria),
+          ),
+        if (_historiaAtiva)
+          KeyedSubtree(
+            key: const Key('turismo-historia-auto'),
+            child: _botaoPilula(
+              _historiaAuto ? '📖 Auto' : '📖 Manual',
+              ativo: _historiaAuto,
+              rotulo: _historiaAuto
+                  ? 'história automática: as cenas tocam sozinhas'
+                  : 'história manual: as cenas só pelo botão 📖',
+              onTap: _alternarHistoriaAuto,
+            ),
+          ),
         _botaoPilula(
           '${_tremor ? '📳' : '🚫'} Tremor ${_tremor ? 'ligado' : 'desligado'}',
           ativo: _tremor,
@@ -1012,9 +1454,10 @@ class _TurismoPageState extends State<TurismoPage>
   /// 🏆 Troféus e 📊 estatísticas acumuladas.
   Widget _trofeus() {
     final s = _estatisticas;
-    final ganhos = trofeusGt.where((t) => t.ganhou(s, _campeonato)).length;
+    final trofeus = _trofeusDoCurso;
+    final ganhos = trofeus.where((t) => t.ganhou(s, _campeonato)).length;
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text('TROFÉUS · $ganhos/${trofeusGt.length}',
+      Text('TROFÉUS · $ganhos/${trofeus.length}',
           style: Mixart.ui(size: 10, weight: FontWeight.w700, color: Mixart.textMuted)
               .copyWith(letterSpacing: 2)),
       const SizedBox(height: 10),
@@ -1028,7 +1471,7 @@ class _TurismoPageState extends State<TurismoPage>
       ]),
       const SizedBox(height: 10),
       Wrap(spacing: 8, runSpacing: 8, children: [
-        for (final t in trofeusGt) _cartaoTrofeu(t, t.ganhou(s, _campeonato)),
+        for (final t in trofeus) _cartaoTrofeu(t, t.ganhou(s, _campeonato)),
       ]),
     ]);
   }
@@ -1125,7 +1568,11 @@ class _TurismoPageState extends State<TurismoPage>
     final liberada = _campeonato.liberada(p.numero);
     final medalha = _campeonato.medalhaDe(p.numero);
     final tempo = _campeonato.tempoDe(p.numero);
+    final mundo = AmbienteTurismo.de(p.tema);
+    // 📖 o capítulo da pista (só nas liberadas: o título não adianta a história)
+    final cap = liberada && _historiaAtiva ? _historia?.capitulo(p.numero) : null;
     return Opacity(
+      key: p.numero == _campeonato.pistaMax ? _chaveCartaoMax : null,
       opacity: liberada ? 1 : .55,
       child: Container(
         padding: const EdgeInsets.all(14),
@@ -1158,13 +1605,18 @@ class _TurismoPageState extends State<TurismoPage>
                 Text(p.nome, style: Mixart.display(size: 15.5), maxLines: 1, overflow: TextOverflow.ellipsis),
                 const SizedBox(height: 3),
                 Text(
-                  '${emojiDaFase(p.tema)} ${nomeDaFase(p.tema)} · ${p.dificuldade} · '
+                  '${mundo.emoji} ${mundo.nome} · ${p.dificuldade} · '
                   '${(p.distancia / 1000).toStringAsFixed(1)} km · '
                   '${BancoArcade.soDigitacao ? 'bronze até' : 'limite'} ${p.tempoLimite.round()}s',
                   style: Mixart.ui(size: 11, color: Mixart.textMuted),
                 ),
                 if (p.tituloMusica.isNotEmpty)
                   Text('🎸 ${p.tituloMusica}', style: Mixart.ui(size: 10.5, color: Mixart.textFaint)),
+                if (cap != null)
+                  Text('📖 Chapter ${cap.pista} · ${cap.titulo.en}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Mixart.ui(size: 11, weight: FontWeight.w600, color: Mixart.brand)),
               ]),
             ),
             const SizedBox(width: 8),
@@ -1176,9 +1628,30 @@ class _TurismoPageState extends State<TurismoPage>
           ]),
           const SizedBox(height: 10),
           if (liberada)
-            Align(
-              alignment: Alignment.centerRight,
-              child: FilledButton.icon(
+            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              if (cap != null) ...[
+                Tooltip(
+                  message: 'Ver a abertura do capítulo ${cap.pista} (sem correr)',
+                  child: OutlinedButton(
+                    key: Key('turismo-capitulo-${p.numero}'),
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: Mixart.brand,
+                      side: BorderSide(color: Mixart.brandDim),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                      minimumSize: const Size(44, 40),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+                    ),
+                    onPressed: () => _reverAbertura(p.numero),
+                    child: Semantics(
+                      label: 'abertura do capítulo ${cap.pista}',
+                      excludeSemantics: true,
+                      child: const Text('📖', style: TextStyle(fontSize: 15)),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 8),
+              ],
+              FilledButton.icon(
                 style: FilledButton.styleFrom(
                   backgroundColor: Mixart.brand,
                   foregroundColor: Mixart.onBrand,
@@ -1190,7 +1663,7 @@ class _TurismoPageState extends State<TurismoPage>
                 icon: const Icon(Icons.play_arrow_rounded, size: 18),
                 label: Text(medalha > 0 ? 'Correr de novo' : 'Correr'),
               ),
-            )
+            ])
           else
             Text('🔒 vença a pista ${p.numero - 1} pra liberar',
                 style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
@@ -1206,7 +1679,7 @@ class _TurismoPageState extends State<TurismoPage>
       Padding(
         padding: const EdgeInsets.fromLTRB(20, 16, 20, 10),
         child: CabecalhoJogo(
-          rotulo: 'PISTA ${pista.numero}/${pistasGt.length} · ${pista.dificuldade.toUpperCase()}',
+          rotulo: 'PISTA ${pista.numero}/${_pistas.length} · ${pista.dificuldade.toUpperCase()}',
           titulo: '🏎️ ${pista.nome}',
           chips: [
             // inglês: o tempo corre pra frente, com a melhor medalha que ainda dá
@@ -1285,7 +1758,12 @@ class _TurismoPageState extends State<TurismoPage>
           ),
         )
       else
-        CampoTeclas(onChar: _tecla),
+        // 📖 com um desenho por cima, o campo invisível não pode pedir o foco de volta (roubaria o
+        // teclado do player); quando o desenho fecha, um campo novo nasce com autofocus
+        ExcludeFocus(
+          excluding: _cenaAberta,
+          child: CampoTeclas(key: ValueKey('turismo-teclas-$_geracaoTeclas'), onChar: _tecla),
+        ),
     ]);
   }
 
@@ -1585,7 +2063,10 @@ class _TurismoPageState extends State<TurismoPage>
         ? 'Tempo ${_seg(e.tempoFinal!)} · ouro até ${_seg(pista.tempoOuro)} · prata até ${_seg(pista.tempoPrata)} · bronze até ${_seg(pista.tempoLimite)}'
         : 'Você percorreu ${e.posicao.round()} m de ${pista.distancia.round()} — '
             '${e.porSetas ? 'segure ↑ o tempo todo e desvie do tráfego pela faixa livre.' : 'digite sem parar: parar de escrever é ir parando.'}';
-    final proxima = chegou && pista.numero < pistasGt.length ? pistasGt[pista.numero] : null;
+    final proxima = chegou && pista.numero < _pistas.length ? _pistas[pista.numero] : null;
+    // 📖 inglês com história: o gancho do capítulo e o botão da chegada (na 30, o fim da história)
+    final cap = chegou && _historiaAtiva ? _historia?.capitulo(pista.numero) : null;
+    final ultimo = pista.numero == pistasGtIngles.length;
     return Positioned.fill(
       child: TweenAnimationBuilder<double>(
         tween: Tween(begin: 0, end: 1),
@@ -1609,6 +2090,7 @@ class _TurismoPageState extends State<TurismoPage>
                     Text(subtitulo,
                         textAlign: TextAlign.center,
                         style: Mixart.ui(size: 12.5, color: Mixart.textMuted).copyWith(height: 1.45)),
+                    if (cap != null) ...[const SizedBox(height: 12), _chegadaNoFim(cap, ultimo: ultimo)],
                     const SizedBox(height: 16),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 12),
@@ -1664,6 +2146,50 @@ class _TurismoPageState extends State<TurismoPage>
           ]),
         ),
       ),
+    );
+  }
+
+  /// 📖 No overlay de fim (inglês): "To be continued" com o gancho do capítulo (na 30, "THE END") e o
+  /// botão da chegada — "Continue a história" ou, se já vista, "Rever final".
+  Widget _chegadaNoFim(CapituloHistoria cap, {required bool ultimo}) {
+    final gancho = cap.gancho;
+    final vista = _vistos.contains(ProgressoHistoria.id(cap.pista, ParteDoCapitulo.fim));
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        color: Mixart.surface,
+        border: Border.all(color: Mixart.brandDim),
+        borderRadius: BorderRadius.circular(Mixart.radiusMd),
+      ),
+      child: Column(children: [
+        if (ultimo && gancho == null)
+          Text('📖 THE END', textAlign: TextAlign.center, style: Mixart.display(size: 16, color: Mixart.brand))
+        else if (gancho != null) ...[
+          Text('📖 To be continued: ${gancho.en}',
+              textAlign: TextAlign.center,
+              style: Mixart.ui(size: 13, weight: FontWeight.w700, color: Mixart.text).copyWith(height: 1.4)),
+          const SizedBox(height: 2),
+          Text(gancho.pt,
+              textAlign: TextAlign.center,
+              style: Mixart.ui(size: 11.5, color: Mixart.textMuted).copyWith(fontStyle: FontStyle.italic)),
+        ] else
+          Text('📖 Chapter ${cap.pista} · ${cap.titulo.en}',
+              textAlign: TextAlign.center, style: Mixart.ui(size: 13, weight: FontWeight.w700, color: Mixart.text)),
+        const SizedBox(height: 10),
+        OutlinedButton(
+          key: const Key('turismo-continuar-historia'),
+          style: OutlinedButton.styleFrom(
+            foregroundColor: Mixart.brand,
+            side: BorderSide(color: Mixart.brand),
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+            textStyle: Mixart.ui(size: 13, weight: FontWeight.w700),
+          ),
+          onPressed: () => _verChegada(cap.pista),
+          child: Text(vista ? '📖 Rever final' : '📖 Continue a história'),
+        ),
+      ]),
     );
   }
 

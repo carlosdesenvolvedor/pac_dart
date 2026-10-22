@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'progresso_historia.dart';
 import 'turismo.dart';
 
 /// Situação do campeonato Dart Turismo (por dispositivo): até que pista o
@@ -104,9 +105,23 @@ final trofeusGt = <TrofeuGt>[
   TrofeuGt('maratona', '🛣️', 'Maratonista', 'percorra 50 km', (s, c) => s.km >= 50),
   TrofeuGt('garagem', '🚗', 'Garagem cheia', 'compre todos os carros', (s, c) => carrosGt.every((k) => c.temCarro(k.id))),
   TrofeuGt('metade', '🥈', 'Meio campeonato', 'medalha em 5 pistas', (s, c) => c.totalMedalhas >= 5),
-  TrofeuGt('campeao', '🏆', 'Campeão Dart Turismo', 'medalha nas 10 pistas', (s, c) => c.totalMedalhas >= 10),
-  TrofeuGt('dourado', '👑', 'Coleção dourada', 'ouro nas 10 pistas', (s, c) => c.ouros >= 10),
+  // só as 10 clássicas contam: no inglês (30 pistas) o 🏆/👑 abrem no mesmo ponto de sempre
+  TrofeuGt('campeao', '🏆', 'Campeão Dart Turismo', 'medalha nas 10 pistas', (s, c) => c.medalhasClassicas >= pistasClassicas),
+  TrofeuGt('dourado', '👑', 'Coleção dourada', 'ouro nas 10 pistas', (s, c) => c.ourosClassicos >= pistasClassicas),
 ];
+
+/// 🌍 Troféus que só existem no English Turismo (30 pistas + história).
+final trofeusExtrasIngles = <TrofeuGt>[
+  TrofeuGt('volta-mundo', '🌍', 'Volta ao mundo', 'medalha nas pistas 11 a 20',
+      (s, c) => c.medalhasEntre(11, 20) >= 10),
+  TrofeuGt('lenda', '🏆', 'Lenda do English Turismo', 'medalha nas 30 pistas',
+      (s, c) => c.medalhasEntre(1, pistasGtIngles.length) >= pistasGtIngles.length),
+  TrofeuGt('historia', '📖', 'História completa', 'assista ao final da história até o fim',
+      (s, c) => c.historiaCompleta),
+];
+
+/// Os troféus do curso atual: os 12 de sempre (+ os 3 do inglês).
+List<TrofeuGt> trofeusDoTurismo({required bool ingles}) => ingles ? [...trofeusGt, ...trofeusExtrasIngles] : trofeusGt;
 
 class EstadoCampeonato {
   /// Maior pista liberada (1 = só a primeira).
@@ -117,12 +132,20 @@ class EstadoCampeonato {
   /// Moedas acumuladas (fichas + bônus de medalha) e carros já comprados.
   final int moedas;
   final Set<String> comprados;
+
+  /// Quantas pistas tem o campeonato carregado (10 no Dart/C#, 30 no inglês).
+  final int totalPistas;
+
+  /// 📖 O final da história (chegada da pista 30) foi assistido até o fim (`c30`).
+  final bool historiaCompleta;
   const EstadoCampeonato({
     this.pistaMax = 1,
     this.medalhas = const {},
     this.tempos = const {},
     this.moedas = 0,
     this.comprados = const {},
+    this.totalPistas = pistasClassicas,
+    this.historiaCompleta = false,
   });
 
   static const vazio = EstadoCampeonato();
@@ -134,6 +157,13 @@ class EstadoCampeonato {
   bool liberada(int pista) => pista <= pistaMax;
   int get totalMedalhas => medalhas.values.where((m) => m > 0).length;
   int get ouros => medalhas.values.where((m) => m == 3).length;
+
+  /// Pistas com medalha entre [de] e [ate] (inclusive).
+  int medalhasEntre(int de, int ate) => medalhas.entries.where((e) => e.key >= de && e.key <= ate && e.value > 0).length;
+
+  /// Medalhas e ouros só nas 10 pistas clássicas (os troféus de sempre contam só estas).
+  int get medalhasClassicas => medalhasEntre(1, pistasClassicas);
+  int get ourosClassicos => medalhas.entries.where((e) => e.key >= 1 && e.key <= pistasClassicas && e.value == 3).length;
 }
 
 /// Carros da garagem (modelos glTF em `web/assets3d/carros/<id>/`); o
@@ -359,7 +389,10 @@ abstract final class ProgressoTurismo {
   static String _chaveMedalha(int n) => 'turismo_medalha_$n';
   static String _chaveTempo(int n) => 'turismo_tempo_$n';
 
-  static Future<EstadoCampeonato> carregar({int totalPistas = 10}) async {
+  /// Lê o campeonato de [totalPistas] pistas. Com mais de 10 (inglês), o desbloqueio das extras é
+  /// CALCULADO: quem chegou ao fim da pista n (tempo ou medalha gravados, n de 10 em diante) tem a n+1
+  /// liberada, mesmo com o `turismo_pista_max` preso em 10 de antes das 30 pistas. Nada é regravado.
+  static Future<EstadoCampeonato> carregar({int totalPistas = pistasClassicas}) async {
     try {
       final p = await SharedPreferences.getInstance();
       final medalhas = <int, int>{};
@@ -370,15 +403,23 @@ abstract final class ProgressoTurismo {
         final t = p.getDouble(_chaveTempo(n));
         if (t != null) tempos[n] = t;
       }
+      var max = p.getInt(_chaveMax) ?? 1;
+      if (totalPistas > pistasClassicas) {
+        for (var n = pistasClassicas; n < totalPistas; n++) {
+          if ((tempos[n] != null || (medalhas[n] ?? 0) > 0) && max < n + 1) max = n + 1;
+        }
+      }
       return EstadoCampeonato(
-        pistaMax: (p.getInt(_chaveMax) ?? 1).clamp(1, totalPistas),
+        pistaMax: max.clamp(1, totalPistas),
         medalhas: medalhas,
         tempos: tempos,
         moedas: p.getInt(_chaveMoedas) ?? 0,
         comprados: (p.getStringList(_chaveComprados) ?? const []).toSet(),
+        totalPistas: totalPistas,
+        historiaCompleta: (p.getStringList(ProgressoHistoria.chaveVistos) ?? const []).contains(ProgressoHistoria.idAssistido(pistasGtIngles.length)),
       );
     } catch (_) {
-      return EstadoCampeonato.vazio;
+      return EstadoCampeonato(totalPistas: totalPistas);
     }
   }
 

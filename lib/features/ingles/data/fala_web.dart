@@ -6,6 +6,7 @@ import 'dart:ui_web' as ui_web;
 import 'package:web/web.dart' as web;
 
 import 'escolha_voz.dart';
+import 'voz_ingles.dart' show ordemVozesEnUs;
 
 /// Fala em inglês: a gravação de nativo quando houver ([tocar], um
 /// `<audio>` só), senão direto no Web Speech (`speechSynthesis`), sem o
@@ -82,7 +83,36 @@ String _idiomaDe(String lang) => lang.toLowerCase().replaceAll('_', '-').split('
 /// Fala [texto] no Web Speech no idioma [lang] (`en-US`, `pt-BR`…), com a melhor voz dele ([notaDaVoz]).
 /// Mesmo contrato do [falar] (só completa quando acaba, é cortada ou falha). false = não há voz desse
 /// idioma no navegador (só para os idiomas que não são o inglês — o inglês sempre tenta).
-Future<bool> falarEm(String texto, double velocidade, String lang) async {
+Future<bool> falarEm(String texto, double velocidade, String lang) => _falarEm(texto, velocidade, lang);
+
+/// A voz de um personagem (história do English Turismo): `pitch = `[tom] (0,5–2) e a [variante]-ésima melhor
+/// voz en-US pela [notaDaVoz] (0 = a melhor; variante além da lista = a melhor). Mesmo contrato do [falar].
+Future<void> falarComPerfil(String texto, double velocidade, {double tom = 1, int variante = 0}) async {
+  await _falarEm(texto, velocidade, 'en-US', tom: tom.clamp(.5, 2).toDouble(), variante: variante);
+}
+
+/// As vozes en-US do navegador da melhor para a pior ([notaDaVoz]; empate = a ordem do navegador, como em
+/// [_melhorVoz]), sem as que não servem. null = ainda não montada (ou uma voz falhou e é preciso refazer).
+List<web.SpeechSynthesisVoice>? _rankingEnUs;
+
+List<web.SpeechSynthesisVoice> _ordenarEnUs(List<web.SpeechSynthesisVoice> lista) => [
+      for (final i in ordemVozesEnUs([for (final v in lista) (v.name, v.lang, v.localService)])) lista[i],
+    ];
+
+/// A voz da [variante] (o [_voz] já escolhido para a 0 ou quando a lista não chega até ela).
+Future<web.SpeechSynthesisVoice?> _vozDaVariante(int variante) async {
+  if (variante <= 0) return _voz;
+  var ranking = _rankingEnUs;
+  if (ranking == null) {
+    ranking = _ordenarEnUs(await _vozes());
+    if (ranking.isNotEmpty) _rankingEnUs = ranking; // lista vazia = vozes ainda carregando: tenta de novo
+  }
+  return variante < ranking.length ? ranking[variante] : _voz;
+}
+
+/// [tom] null = sem `pitch` (a voz como o navegador fala: o caminho de sempre); com [tom], [variante]
+/// escolhe a voz en-US ([falarComPerfil]).
+Future<bool> _falarEm(String texto, double velocidade, String lang, {double? tom, int variante = 0}) async {
   final g = ++_geracao;
   final fim = _novaVez();
   _pararGravacao();
@@ -96,6 +126,7 @@ Future<bool> falarEm(String texto, double velocidade, String lang) async {
       _voz = _melhorVoz(lista, 'en');
     }
     voz = _voz;
+    if (tom != null && variante > 0) voz = await _vozDaVariante(variante) ?? voz;
   } else {
     if (!_vozPorIdioma.containsKey(idioma)) {
       final lista = await _vozes();
@@ -116,12 +147,14 @@ Future<bool> falarEm(String texto, double velocidade, String lang) async {
   final u = web.SpeechSynthesisUtterance(texto)
     ..lang = ingles ? 'en-US' : lang
     ..rate = velocidade;
+  if (tom != null) u.pitch = tom;
   if (voz != null) u.voice = voz;
   u.onerror = ((web.SpeechSynthesisErrorEvent e) {
     // voz de rede que falhou: tenta outra na próxima fala
     if (e.error == 'network' || e.error == 'synthesis-failed') {
       if (ingles) {
         _voz = null;
+        _rankingEnUs = null;
       } else {
         _vozPorIdioma.remove(idioma);
       }

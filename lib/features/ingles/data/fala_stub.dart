@@ -8,6 +8,10 @@ Future<void> falar(String texto, double velocidade) async {}
 /// Fala [texto] na voz do idioma [lang] (ex. `pt-BR`). Fora do navegador não há voz: false.
 Future<bool> falarEm(String texto, double velocidade, String lang) async => false;
 
+/// A voz de um personagem (história do English Turismo): `pitch` [tom] e a [variante]-ésima voz en-US.
+/// Fora do navegador, muda.
+Future<void> falarComPerfil(String texto, double velocidade, {double tom = 1, int variante = 0}) async {}
+
 /// Há voz instalada cujo idioma começa com [prefixo] (ex. `pt`)? Fora do navegador, não.
 Future<bool> temVozEm(String prefixo) async => false;
 

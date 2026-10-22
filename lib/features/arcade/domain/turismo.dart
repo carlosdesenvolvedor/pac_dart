@@ -16,7 +16,7 @@ class PistaGt {
   final String nome;
   final String dificuldade;
 
-  /// Mundo do cenário (1–6, ver `cenario.dart`).
+  /// Mundo do cenário: 1–6 clássicos; 7–26 só no inglês (ver AmbienteTurismo).
   final int tema;
 
   /// Comprimento da pista em metros.
@@ -42,6 +42,9 @@ class PistaGt {
   final String musica;
   final String tituloMusica;
 
+  /// Fração de trechos RETOS no sorteio do traçado (0–1). Default .12 = o valor de sempre.
+  final double retas;
+
   const PistaGt({
     required this.numero,
     required this.nome,
@@ -55,6 +58,7 @@ class PistaGt {
     this.duasSaidas = false,
     this.musica = '',
     this.tituloMusica = '',
+    this.retas = .12,
   });
 
   double get velAlvoMs => velAlvo / 3.6;
@@ -98,6 +102,43 @@ const List<PistaGt> pistasGt = [
   PistaGt(numero: 9, nome: 'Cidade 24 Horas', dificuldade: 'Lendário', tema: 3, distancia: 11200, velAlvo: 140, tempoPorPortal: 4.5, curvaMax: 5.5, nivelPalavras: 3, duasSaidas: true, musica: '09_metalmania.mp3', tituloMusica: 'Metalmania'),
   PistaGt(numero: 10, nome: 'Grande Final Sideral', dificuldade: 'Lendário', tema: 6, distancia: 12000, velAlvo: 150, tempoPorPortal: 4.5, curvaMax: 6.0, nivelPalavras: 3, duasSaidas: true, musica: '10_summon_the_rawk.mp3', tituloMusica: 'Summon the Rawk'),
 ];
+
+/// As 10 pistas do campeonato clássico (Dart, C# e as 10 primeiras do inglês).
+const int pistasClassicas = 10;
+
+/// 🌍 As 20 pistas extras do English Turismo (números 11–30, contíguos; temas 7–26).
+/// No inglês não há tempo-limite: a dificuldade cresce em palavras, curvas e velocidade.
+const List<PistaGt> pistasGtExtrasIngles = [
+  PistaGt(numero: 11, nome: 'Pôr do Sol na Campina', dificuldade: 'Lendário II', tema: 7, distancia: 12200, velAlvo: 150, tempoPorPortal: 4.5, curvaMax: 5.0, retas: .12, nivelPalavras: 3, duasSaidas: true, musica: '06_exhilarate.mp3', tituloMusica: 'Exhilarate'),
+  PistaGt(numero: 12, nome: 'Vale da Neblina', dificuldade: 'Lendário II', tema: 8, distancia: 12400, velAlvo: 151, tempoPorPortal: 4.5, curvaMax: 4.5, retas: .10, nivelPalavras: 3, duasSaidas: true, musica: '04_delay_rock.mp3', tituloMusica: 'Delay Rock'),
+  PistaGt(numero: 13, nome: 'Floresta de Outono', dificuldade: 'Lendário II', tema: 9, distancia: 12600, velAlvo: 152, tempoPorPortal: 4.48, curvaMax: 5.0, retas: .14, nivelPalavras: 3, duasSaidas: true, musica: '01_cool_rock.mp3', tituloMusica: 'Cool Rock'),
+  PistaGt(numero: 14, nome: 'Tempestade na Campina', dificuldade: 'Lendário II', tema: 10, distancia: 12800, velAlvo: 153, tempoPorPortal: 4.48, curvaMax: 5.5, retas: .12, nivelPalavras: 3, duasSaidas: true, musica: '08_ready_aim_fire.mp3', tituloMusica: 'Ready Aim Fire'),
+  PistaGt(numero: 15, nome: 'Estrada do Litoral', dificuldade: 'Lendário II', tema: 11, distancia: 13000, velAlvo: 154, tempoPorPortal: 4.46, curvaMax: 3.5, retas: .30, nivelPalavras: 3, duasSaidas: true, musica: '02_hotrock.mp3', tituloMusica: 'Hotrock'),
+  PistaGt(numero: 16, nome: 'Ponte sobre o Mar', dificuldade: 'Mítico', tema: 12, distancia: 13200, velAlvo: 155, tempoPorPortal: 4.46, curvaMax: 3.0, retas: .45, nivelPalavras: 3, duasSaidas: true, musica: '07_riptide.mp3', tituloMusica: 'Riptide'),
+  PistaGt(numero: 17, nome: 'Cânion Vermelho', dificuldade: 'Sprint Mítico', tema: 13, distancia: 9000, velAlvo: 156, tempoPorPortal: 4.44, curvaMax: 6.0, retas: .05, nivelPalavras: 3, duasSaidas: true, musica: '03_big_rock.mp3', tituloMusica: 'Big Rock'),
+  PistaGt(numero: 18, nome: 'Tempestade de Areia', dificuldade: 'Mítico', tema: 14, distancia: 13600, velAlvo: 157, tempoPorPortal: 4.44, curvaMax: 5.0, retas: .15, nivelPalavras: 3, duasSaidas: true, musica: '05_neolith.mp3', tituloMusica: 'Neolith'),
+  PistaGt(numero: 19, nome: 'Oásis Estrelado', dificuldade: 'Mítico', tema: 15, distancia: 13800, velAlvo: 158, tempoPorPortal: 4.42, curvaMax: 5.5, retas: .20, nivelPalavras: 3, duasSaidas: true, musica: '09_metalmania.mp3', tituloMusica: 'Metalmania'),
+  PistaGt(numero: 20, nome: 'Cidade ao Meio-dia', dificuldade: 'Mítico', tema: 16, distancia: 14000, velAlvo: 159, tempoPorPortal: 4.42, curvaMax: 4.5, retas: .25, nivelPalavras: 3, duasSaidas: true, musica: '10_summon_the_rawk.mp3', tituloMusica: 'Summon the Rawk'),
+  PistaGt(numero: 21, nome: 'Cidade na Chuva', dificuldade: 'Mítico II', tema: 17, distancia: 14200, velAlvo: 160, tempoPorPortal: 4.4, curvaMax: 5.0, retas: .20, nivelPalavras: 3, duasSaidas: true, musica: '07_riptide.mp3', tituloMusica: 'Riptide'),
+  PistaGt(numero: 22, nome: 'Avenida Neon', dificuldade: 'Mítico II', tema: 18, distancia: 14400, velAlvo: 161, tempoPorPortal: 4.4, curvaMax: 5.5, retas: .30, nivelPalavras: 3, duasSaidas: true, musica: '06_exhilarate.mp3', tituloMusica: 'Exhilarate'),
+  PistaGt(numero: 23, nome: 'Nevasca', dificuldade: 'Mítico II', tema: 19, distancia: 14600, velAlvo: 162, tempoPorPortal: 4.38, curvaMax: 5.0, retas: .10, nivelPalavras: 3, duasSaidas: true, musica: '04_delay_rock.mp3', tituloMusica: 'Delay Rock'),
+  PistaGt(numero: 24, nome: 'Lago Congelado', dificuldade: 'Mítico II', tema: 20, distancia: 14800, velAlvo: 163, tempoPorPortal: 4.38, curvaMax: 4.0, retas: .35, nivelPalavras: 3, duasSaidas: true, musica: '01_cool_rock.mp3', tituloMusica: 'Cool Rock'),
+  PistaGt(numero: 25, nome: 'Aurora Boreal', dificuldade: 'Mítico II', tema: 21, distancia: 15000, velAlvo: 164, tempoPorPortal: 4.36, curvaMax: 5.0, retas: .15, nivelPalavras: 3, duasSaidas: true, musica: '02_hotrock.mp3', tituloMusica: 'Hotrock'),
+  PistaGt(numero: 26, nome: 'Vulcão em Erupção', dificuldade: 'Lenda Viva', tema: 22, distancia: 15200, velAlvo: 165, tempoPorPortal: 4.36, curvaMax: 6.0, retas: .08, nivelPalavras: 3, duasSaidas: true, musica: '05_neolith.mp3', tituloMusica: 'Neolith'),
+  PistaGt(numero: 27, nome: 'Cratera Lunar', dificuldade: 'Sprint Lenda', tema: 23, distancia: 9600, velAlvo: 166, tempoPorPortal: 4.34, curvaMax: 6.0, retas: .10, nivelPalavras: 3, duasSaidas: true, musica: '03_big_rock.mp3', tituloMusica: 'Big Rock'),
+  PistaGt(numero: 28, nome: 'Marte Vermelho', dificuldade: 'Lenda Viva', tema: 24, distancia: 15600, velAlvo: 167, tempoPorPortal: 4.34, curvaMax: 6.0, retas: .12, nivelPalavras: 3, duasSaidas: true, musica: '08_ready_aim_fire.mp3', tituloMusica: 'Ready Aim Fire'),
+  PistaGt(numero: 29, nome: 'Estação Orbital', dificuldade: 'Lenda Viva', tema: 25, distancia: 15800, velAlvo: 168, tempoPorPortal: 4.32, curvaMax: 4.5, retas: .22, nivelPalavras: 3, duasSaidas: true, musica: '09_metalmania.mp3', tituloMusica: 'Metalmania'),
+  PistaGt(numero: 30, nome: 'Grande Final das Lendas', dificuldade: 'Lenda Viva', tema: 26, distancia: 16000, velAlvo: 170, tempoPorPortal: 4.3, curvaMax: 6.0, retas: .10, nivelPalavras: 3, duasSaidas: true, musica: '10_summon_the_rawk.mp3', tituloMusica: 'Summon the Rawk'),
+];
+
+/// O campeonato do inglês: 30 pistas.
+const List<PistaGt> pistasGtIngles = [...pistasGt, ...pistasGtExtrasIngles];
+
+/// Pistas curtas e técnicas (quebram a regra "distância sempre sobe").
+const Set<int> pistasSprintIngles = {17, 27};
+
+/// A lista do curso atual: 30 no inglês, 10 no Dart/C#.
+List<PistaGt> pistasTurismo({required bool ingles}) => ingles ? pistasGtIngles : pistasGt;
 
 const nomesMedalha = ['—', 'Bronze', 'Prata', 'Ouro'];
 const emojisMedalha = ['·', '🥉', '🥈', '🥇'];
@@ -588,7 +629,7 @@ class TurismoEngine {
     while (i < total) {
       // poucas retas; curvas cheias (50–100% da máxima) alternando o lado —
       // sequência de S que faz a pista parecer um circuito de verdade
-      final reta = rnd.nextDouble() < .12;
+      final reta = rnd.nextDouble() < pista.retas;
       final alvo = reta ? 0.0 : sentido * pista.curvaMax * (.5 + .5 * rnd.nextDouble());
       if (!reta && rnd.nextDouble() < .8) sentido = -sentido;
       final entrada = 4 + rnd.nextInt(5);

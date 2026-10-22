@@ -313,7 +313,8 @@ class _ArcadePageState extends State<ArcadePage> {
       descricao: 'Campeonato de 10 pistas em 3D: digite a palavra da faixa livre pra '
           'fazer a curva. Cada tecla acelera — parar de digitar é ir parando. '
           'Ouro, prata ou bronze no relógio.',
-      abre: (BuildContext c) => const TurismoPage(),
+      // 📖 no inglês a página carrega a história (no Dart/C# o parâmetro não tem efeito)
+      abre: (BuildContext c) => const TurismoPage(carregarHistoria: true),
     ),
     (
       id: 'chuva',
@@ -367,6 +368,8 @@ class _ArcadePageState extends State<ArcadePage> {
     if (BancoArcade.linguagem == 'Dart') return texto;
     if (BancoArcade.soDigitacao) {
       texto = texto
+          // 📖 o English Turismo tem 30 pistas e a história em desenho animado
+          .replaceAll('Campeonato de 10 pistas', 'Campeonato de 30 pistas com história')
           .replaceAll('Chuva de Código', 'Chuva de Palavras')
           .replaceAll('Palavras do Dart', 'Palavras em inglês');
     }

@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../domain/personagem.dart';
 import '../../domain/turismo.dart';
+import 'ambiente_turismo.dart';
 import 'cenario.dart';
+import 'cenario_turismo.dart';
 import 'perspectiva.dart';
 import 'velocimetro.dart';
 
@@ -15,13 +17,17 @@ import 'velocimetro.dart';
 /// segmento e dobra a pista), cenário com paralaxe, adereços e portais
 /// passando, carros bloqueando as faixas, o SEU carro visto de trás
 /// (inclina ao trocar de faixa, lanternas ao frear, chamas no boost, faróis
-/// à noite), rastros de velocidade e velocímetro de ponteiro.
+/// à noite), rastros de velocidade e velocímetro de ponteiro. O mundo vem de
+/// [AmbienteTurismo] (temas 7–26 do English Turismo: véu no céu, chão e clima 2D).
 class VistaCorrida extends StatelessWidget {
   final TurismoEngine engine;
 
-  /// Relógio de animação em segundos (piscar, rastros).
+  /// Relógio de animação em segundos (piscar, rastros, clima).
   final double relogio;
-  const VistaCorrida({super.key, required this.engine, this.relogio = 0});
+
+  /// Reduzir animações: clima parado e sem clarão. null = o do sistema (MediaQuery).
+  final bool? reduzir;
+  const VistaCorrida({super.key, required this.engine, this.relogio = 0, this.reduzir});
 
   @override
   Widget build(BuildContext context) {
@@ -32,16 +38,19 @@ class VistaCorrida extends StatelessWidget {
         final horizonte = h * .46;
         // a curva empurra o horizonte pro lado oposto (paralaxe do fundo)
         final paralaxe = (-engine.curvaAtual * 16).clamp(-110.0, 110.0);
-        final tema = chaoDaFase(engine.pista.tema);
-        final t = (engine.pista.tema - 1) % 6;
-        final noturno = t == 2 || t == 4 || t == 5;
+        // 1–6: o chão/noturno de sempre; 7–26: o mundo do English Turismo
+        final ambiente = AmbienteTurismo.de(engine.pista.tema);
+        final tema = ambiente.chaoEfetivo;
+        final noturno = ambiente.noturno;
+        final reduzirMov = reduzir ?? (MediaQuery.maybeDisableAnimationsOf(context) ?? false);
+        final climaNaFrente = (ambiente.clima != Clima2D.nenhum && !ambiente.clima.doCeu) || ambiente.relampago;
         return Stack(children: [
           Positioned(
             left: -120 + paralaxe,
             right: -120 - paralaxe,
             top: 0,
             height: horizonte + 2,
-            child: CenarioFase(fase: engine.pista.tema),
+            child: CenarioTurismo(tema: engine.pista.tema, t: relogio, reduzir: reduzirMov, camada: CamadaClima.ceu),
           ),
           Positioned.fill(
             child: CustomPaint(
@@ -52,9 +61,22 @@ class VistaCorrida extends StatelessWidget {
                 tema: tema,
                 noturno: noturno,
                 piloto: PersonagemStore.atual,
+                // neon (temas 18 e 25): o tracejado entre as faixas na cor do mundo
+                linha: ambiente.tema > 6 ? tema.linha : null,
               ),
             ),
           ),
+          if (climaNaFrente)
+            Positioned.fill(
+              child: CamadaClima2D(
+                clima: ambiente.clima,
+                t: relogio,
+                noturno: noturno,
+                reduzir: reduzirMov,
+                camada: CamadaClima.frente,
+                relampago: ambiente.relampago,
+              ),
+            ),
         ]);
       }),
     );
@@ -81,6 +103,9 @@ class _EstradaGtPainter extends CustomPainter {
   final bool noturno;
   final Personagem piloto;
 
+  /// Cor do tracejado entre as faixas (null = o branco de sempre).
+  final Color? linha;
+
   _EstradaGtPainter({
     required this.engine,
     required this.horizonte,
@@ -88,6 +113,7 @@ class _EstradaGtPainter extends CustomPainter {
     required this.tema,
     required this.noturno,
     required this.piloto,
+    this.linha,
   });
 
   /// Meia largura da pista (3 faixas) em metros.
@@ -227,11 +253,11 @@ class _EstradaGtPainter extends CustomPainter {
     }
     // faixas tracejadas entre as 3 pistas
     if (claro) {
-      final linha = Paint()..color = _neblina(Colors.white.withValues(alpha: .75), nb);
+      final tracejado = Paint()..color = _neblina(linha ?? Colors.white.withValues(alpha: .75), nb);
       for (final l in [-1 / 3, 1 / 3]) {
         c.drawPath(
           _quad(p1.x + p1.w * l, p1.y, p1.w * .022, p2.x + p2.w * l, p2.y, p2.w * .022),
-          linha,
+          tracejado,
         );
       }
     }

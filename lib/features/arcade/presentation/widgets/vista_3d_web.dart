@@ -9,8 +9,8 @@ import 'package:web/web.dart' as web;
 
 import '../../../../core/theme/mixart.dart';
 import '../../domain/turismo.dart';
+import 'ambiente_turismo.dart';
 import 'pista_gt.dart';
-import 'cenario.dart';
 import 'vista_3d_controlador.dart';
 import 'velocimetro.dart';
 
@@ -38,6 +38,11 @@ extension type _Turismo3d(JSObject _) implements JSObject {
 
 /// Setas das faixas, como no painel 3D.
 const setasFaixa = ['⬅ ESQUERDA', '⬆ MEIO', '➡ DIREITA'];
+
+/// Versão do módulo `web/turismo3d/turismo3d.js` que este Dart espera (o JS exporta `VERSAO` e
+/// publica `window.turismo3d.versao`). Um módulo mais velho (cache) não conhece os temas 7–26: a
+/// vista manda o mundo base ([AmbienteTurismo.base]) em vez de deixar o JS pintar Campina.
+const versaoTurismo3d = 30;
 
 /// 🏎️ A corrida renderizada de verdade em 3D (Three.js + WebGL) dentro de
 /// um `HtmlElementView`: a lógica continua em Dart e, a cada frame, o
@@ -111,6 +116,13 @@ class _Vista3DState extends State<Vista3D> {
   double _largura = 0;
   double _altura = 0;
 
+  /// `window.turismo3d.versao` do módulo carregado (0 = módulo velho, sem o campo).
+  int _versaoJs = 0;
+
+  /// Reduzir animações do sistema (lido no build; o tremor desligado também conta — D18).
+  bool _animacoesDesligadas = false;
+  bool get _reduzirMovimento => _animacoesDesligadas || !widget.tremor;
+
   @override
   void initState() {
     super.initState();
@@ -124,6 +136,7 @@ class _Vista3DState extends State<Vista3D> {
     }
     if (obj.has('montar')) {
       _js = _Turismo3d(obj);
+      _versaoJs = _lerVersao(obj);
     } else {
       _carregarModulo(obj);
     }
@@ -159,10 +172,20 @@ class _Vista3DState extends State<Vista3D> {
         return;
       }
       _js = _Turismo3d(obj);
+      _versaoJs = _lerVersao(obj);
       _montar(); // se o canvas ainda não entrou no DOM, o relógio de carga insiste
     }).catchError((Object _) {
       falhou();
     });
+  }
+
+  static int _lerVersao(JSObject obj) {
+    try {
+      final v = obj.getProperty<JSAny?>('versao'.toJS).dartify();
+      return v is num ? v.toInt() : 0;
+    } catch (_) {
+      return 0;
+    }
   }
 
   void _montar() {
@@ -171,8 +194,17 @@ class _Vista3DState extends State<Vista3D> {
     if (js == null || canvas == null || _montado) return;
     _montado = true;
     final e = widget.engine;
+    final ambiente = AmbienteTurismo.de(e.pista.tema);
+    final tema = AmbienteTurismo.temaPara3d(e.pista.tema, versaoModulo: _versaoJs, esperada: versaoTurismo3d);
+    if (tema != e.pista.tema) {
+      debugPrint('[turismo3d] módulo 3D na versão $_versaoJs (esperada $versaoTurismo3d): '
+          'tema ${e.pista.tema} vira o mundo base $tema');
+    }
     final config = {
-      'tema': e.pista.tema,
+      'tema': tema,
+      // o JS cai neste se não conhecer o `tema` (TEMAS[tema] ?? TEMAS[temaBase] ?? TEMAS[1])
+      'temaBase': ambiente.base,
+      'reduzirMovimento': _reduzirMovimento,
       'pista': e.pista.numero,
       'qualidade': widget.qualidade,
       'fantasma': widget.fantasma?.amostras,
@@ -323,6 +355,7 @@ class _Vista3DState extends State<Vista3D> {
       'camera': widget.camera,
       'musica': widget.musica,
       'tremor': widget.tremor,
+      'reduzirMovimento': _reduzirMovimento,
       'acabou': !e.correndo,
       'impacto': e.impacto,
       'boost': e.boost,
@@ -455,7 +488,7 @@ class _Vista3DState extends State<Vista3D> {
           child: Column(mainAxisSize: MainAxisSize.min, children: [
             Text('🏎️', style: TextStyle(fontSize: 34)),
             const SizedBox(height: 10),
-            Text('${nomeDaFase(widget.engine.pista.tema)} em 3D',
+            Text('${AmbienteTurismo.de(widget.engine.pista.tema).nome} em 3D',
                 style: Mixart.display(size: 16, color: Colors.white)),
             const SizedBox(height: 6),
             Text('$etapa… ${(progresso * 100).round()}%',
@@ -481,7 +514,8 @@ class _Vista3DState extends State<Vista3D> {
 
   @override
   Widget build(BuildContext context) {
-    if (_falhou) return VistaCorrida(engine: widget.engine, relogio: widget.relogio);
+    _animacoesDesligadas = MediaQuery.maybeDisableAnimationsOf(context) ?? false;
+    if (_falhou) return VistaCorrida(engine: widget.engine, relogio: widget.relogio, reduzir: _reduzirMovimento);
     final e = widget.engine;
     return ClipRRect(
       borderRadius: BorderRadius.circular(Mixart.radiusLg),

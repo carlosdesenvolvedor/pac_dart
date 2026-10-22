@@ -2389,3 +2389,76 @@ Plano: `planejamento/FASE-11-CLAUDE-MAOS-LIVRES.md` (com as divergências no top
   Gemini em ~5 min. (3) Android/iOS: uma cena com o Claude ligado (sem `Origin`, o Worker aceita) e o fallback no Firebase AI.
 - **Decidido na revisão:** o `limite_pessoal` ganhou mensagem própria (`TipoFalhaIa.limitePessoal`) e o `limite_geral` do dia cai
   para o Gemini (ver o Fallback acima).
+
+## 🏎️📖 21/out/2026 (rodada 10): English Turismo com 30 pistas + história em desenho animado "The Golden Wheel" (FEITO e integrado; falta a revisão e a prova visual; sem commit/deploy)
+
+- **Só no inglês.** O campeonato do Turismo do inglês tem **30 pistas**: as 10 de sempre e mais 20 novas (11–30, temas 7..26, cada uma com seu mundo no 3D e no 2D de reserva; a 17 e a 27 são sprints). **Dart e C# não mudam**: as mesmas 10 pistas (`pistasGt`), o mesmo RNG e os mesmos troféus.
+  - Domínio: `pistasGtExtrasIngles`, `pistasGtIngles` e `pistasTurismo(ingles:)` em `turismo.dart`. O campo `PistaGt.retas` tem default `.12`.
+  - Progresso: nada é regravado. `ProgressoTurismo.carregar(totalPistas: 30)` calcula o desbloqueio (um tempo ou uma medalha na pista n, de 10 a 29, libera a n+1).
+  - Troféus: `campeao` e `dourado` contam só as pistas 1–10. O inglês ganha mais 3: 🌍 `volta-mundo` (11–20), 🏆 `lenda` (as 30) e 📖 `historia` (o final do capítulo 30 **assistido**, chave `c30`).
+  - 3D: o módulo agora é `turismo3d.js?v=30` (`VERSAO = 30`). Se o módulo em cache for mais velho, o Dart manda o mundo base (`temaBase`).
+- **História "The Golden Wheel / A Roda de Ouro":** 30 capítulos, um por pista, cada um com abertura antes da corrida e chegada depois.
+  - O nível sobe de A1 a B2.
+  - Os dados estão em `assets/ingles/turismo_historia_{a,b,c}.json` (≈220 KB, já cobertos pela linha `assets/ingles/` do pubspec).
+  - O desenho é feito em Flutter (`lib/features/arcade/presentation/historia/`): 25 cenários com paleta por hora do dia, atores de corpo inteiro com lip-sync e 11 expressões, clima, efeitos, props, balão em inglês com o PT que dá para esconder e voz com tom diferente por personagem (`PerfilVoz`).
+  - Controles: pular, galeria "📖 História", resumo até aqui e créditos "THE END".
+  - Elenco: os 8 personagens do curso, `voce`, o narrador e **2 extras só do jogo, Max (rival) e Kim (locutora)**. Eles foram registrados no DESIGN §5.5.
+  - Só carrega com opt-in: o hub passa `carregarHistoria: true`, e no Dart e no C# nada é lido.
+- **Validação da integração (21/out):**
+  - `flutter analyze lib test`: sem avisos.
+  - Suíte inteira: **2.733 testes, 2.728 passam, 5 falham** (as 5 de sempre do `csharp_curriculo_test`).
+  - Suíte de foco do plano: 392 testes, todos verdes.
+  - `validar_historia.py` nos 3 JSON: sem erros. Sobram 2 avisos de `pt_f`, ambos falsos positivos, porque o "sozinho" se refere ao Max.
+  - Novo `test/turismo_historia_conteudo_test.dart` (parse estrito dos 3 arquivos):
+    - `validar()` vazio;
+    - 30 capítulos, níveis da tabela 5.2 e regra V-mundo;
+    - os capítulos 1 e 30 tocados de ponta a ponta no player, com os créditos.
+  - Uma varredura temporária tocou os 30 capítulos (abertura e chegada) em 1280×720, 360×640 e 2560×1080, e também com animações reduzidas e texto 1.3×, sem exceção nem overflow.
+- **Pendente:**
+  1. Revisão de código e do inglês.
+  2. **Prova visual (plano 8.3):** UM build do probe (`/turismo-en`, `/turismo-en11..30`, `/historia-en`, `/historia-en1`, `/historia-en30`) e o smoke com Playwright. As cores dos 20 mundos só foram conferidas em código e no harness Node, sem WebGL.
+  3. Voz mp3 por personagem (Chirp) para a história, incluindo `max`, `kim` e `narrador` no `vozes_google.py` (D15). Rodar o script sem a história **apaga** mp3 órfãos.
+  4. Pré-carregar o 3D durante a cena de abertura (crítica b8).
+  5. O cabeçalho da corrida (`CabecalhoJogo`, `arcade_ui.dart:148`) estoura 39 px em ~800 px no modo digitação do inglês. Isso já acontecia antes desta rodada.
+  6. O arco-íris que aparece no meio de uma cena (cap. 14) surge sem o fade de 1 s, porque o clima usa o relógio global.
+- **Ajustes da integração entre grupos:**
+  - O palco soma a tremida do relâmpago (`EfeitoHistoriaLayer.tremor`, zero com reduzir) à câmera.
+  - O arremesso não desenha mais um 2º estalo, porque o projétil já faz o respingo.
+  - No nativo, `vista_3d_stub.dart` passa `reduzir` quando o tremor está desligado ou o sistema pede menos animação, como já acontece na web.
+
+## 🏁 21/out/2026 (rodada 14): English Turismo com 30 pistas + história em desenho animado 'The Golden Wheel' (FEITO, revisado e com prova visual no probe; sem commit/deploy)
+
+Fecha a rodada 10 acima (que ficou "falta a revisão e a prova visual"). O que vale agora:
+
+- **O que existe (só no inglês):**
+  - Campeonato de **30 pistas** em 3 temporadas (Word Grand Tour 1–10, World Tour 11–20, Legends 21–30), com cabeçalho e 🏅 por temporada; ao abrir, a lista rola até a pista mais longe liberada. `MEDALHAS x/30`, `TROFÉUS x/15` (12 de sempre + 🌍 Volta ao mundo, 🏆 Lenda do English Turismo, 📖 História completa).
+  - 20 mundos 3D novos (temas 7–26) + fallback 2D com clima; módulo `turismo3d.js?v=30` com handshake de versão.
+  - História **"The Golden Wheel / A Roda de Ouro"**: 30 capítulos (A1→B2), abertura antes da corrida e chegada depois; desenho em Flutter (palco, atores de corpo inteiro, lip-sync, 11 expressões, balão EN com PT, voz com tom por personagem), galeria "📖 História", "Resumo até aqui", aviso de capítulos perdidos e créditos "THE END" no fim do 30.
+  - Dart e C# continuam com 10 pistas, mesmo RNG e os 12 troféus.
+- **Padrões (defaults):** cenas automáticas ligadas (`📖 Auto`), PT visível, voz ligada, 🐢 voz lenta desligada; vistas gravadas em `en_turismo_historia_vistos` (`iN`/`fN`/`cN`). A abertura toca uma vez por pista (o 2º "Correr" vai direto para a largada); a chegada abre 1,2 s depois do fim, só depois de moedas/estatísticas/campeonato gravados, e o ranking (rede) não segura mais nada. Na web sem som liberado aparece "▶ Assistir".
+- **Correções da revisão (rodada de review → fix):** chegada não abre por cima de outra tela nem espera o ranking; Voltar do sistema grava a vista antes de o chamador reler; fala sem texto não trava; quem "sai" fala antes de sair; balão medido e centrado na boca (rabicho certo) e PT que não corta no celular; contraste do chip de nome; rolagem até a pista mais longe; aviso de perdidos com a lista real; água do 3D que não dobra nem invade outro trecho; muros do cânion sem "pop-in"; 6 ajustes de texto da história (H1–H6).
+- **Correção da verificação final:** as muretas de concreto da pista 30 (tema 26) usavam o modelo do Poly Haven com **~61 mil triângulos cada**; com passo de 12 m nos dois lados a pista desenhava **6,5–10 milhões de triângulos por quadro** (as outras ficam em ~0,35–0,97 mi). Agora são um perfil "New Jersey" extrudado (28 triângulos, `construirMuretas` em `turismo3d.js`), sem baixar o glTF: a pista 30 caiu para **~0,52 mi** e continua com as muretas visíveis. O modelo `concrete_road_barrier` ficou em `web/assets3d/modelos/` sem uso.
+- **Validação (21/out):**
+  - `flutter analyze lib test`: sem avisos.
+  - Suíte inteira: **2.751 testes, 2.746 passam, 5 falham** (as 5 de sempre do `csharp_curriculo_test`). Nenhum `test/_*` sobrando.
+  - JS: `node --check`, checador de `TEMAS` (26 temas, neblina ≤ .005, `VERSAO 30`, `?v=30`, assets) e o harness Node dos 26 temas (alta e mínima+reduzir) — tudo OK depois da troca das muretas.
+  - **Prova visual com UM build do probe** (`lib/main_arcade_probe.dart`, `build/probe`, apagado no fim) + Playwright com voz fake:
+    - 1280×720 `/#/turismo-en`: MEDALHAS 0/30, cabeçalhos de temporada, pistas 11 e 12 com "Correr" (`turismo_pista_max=12`), 13–30 trancadas, botão 📖 História, troféus 0/15.
+    - "Correr" na pista 1 → player: quadros em +0,5/+2/+4 s diferentes; 1ª fala "Your first trip to Chicago." (narrador, tom .95) e tons 1 / .88 / 1.1 / .8 nas seguintes; `t` esconde o PT (e grava); Espaço completa e depois avança; Esc → contagem e corrida 3D (tema 1); 2º "Correr" na pista 1 **não** reabre a cena.
+    - `/#/historia-en`: 30 capítulos, 30 "▶ Abertura" e 30 "▶ Chegada". `/#/historia-en30`: "▶ Assistir" → 16 falas → THE END com elenco e créditos; grava `f30` e `c30`.
+    - 390×844, 360×640 e 2560×1080: campeonato e `historia-en1` sem overflow, balão no topo (celular) e acima do falante (largo) com o rabicho na boca.
+    - 20 mundos (página nova por pista, `/?m=N#/turismo-enN`): `temaId == N-4` e `versao == 30` em todos, 3–4 s de corrida digitando, 20 screenshots distintos.
+    - 0 erros de página/console (só os avisos de fontes Noto e "RGBELoader deprecated").
+- **Diferido / pendente:**
+  1. Voz mp3 por personagem (D15) para a história (incluir `max`, `kim`, `narrador` no `vozes_google.py`; rodar sem a história **apaga** mp3 órfãos).
+  2. Pré-carregar o 3D durante a abertura (crítica b8).
+  3. Palavras da história como `foco` do baralho (b4) e 🐢 automática por nível (b5).
+  4. `pt_f` (frases no feminino) validado mas ainda não exibido.
+  5. Arco-íris do cap. 14 surge sem o fade de 1 s (clima no relógio global).
+  6. `CabecalhoJogo` estoura 39 px em ~800 px no modo digitação (já existia).
+- **Achados visuais para a próxima rodada (não corrigidos, precisariam de outro build para conferir):**
+  - Celular em pé (390×844/360×640): os atores ficam pequenos (~110 px) no terço de baixo, com muito céu vazio em cima; dá para subir a altura dos atores ou o enquadramento no retrato.
+  - Créditos: cada linha do elenco é centrada sozinha, então os rostinhos ficam em zigue-zague; alinhar a lista numa coluna de largura fixa.
+  - O troféu `campeao` ainda se chama "Campeão Dart Turismo" no inglês (texto antigo de `trofeusGt`, ao lado de "Lenda do English Turismo").
+  - 3D: no ângulo de perseguição o céu aparece pouco e fica atrás dos portais, então aurora (25) e estrelas quase não aparecem; a Cratera Lunar (27) usa um céu acinzentado com relevo, menos "espaço" do que a Estação Orbital; a Tempestade de Areia (18) quase não mostra partículas na qualidade Leve; a água da Ponte sobre o Mar (16) mostra o padrão repetido da textura.
+- **Conferir à mão (aparelho/navegador de verdade):** voz real do sistema (tons por personagem soam diferentes?), celular nativo (fallback 2D com clima, `reduzir`), máquina fraca nas pistas 21–30 (qualidade Mínima), a cena de chegada por cima da vista 3D e o troféu 📖 depois de assistir ao final do 30.
