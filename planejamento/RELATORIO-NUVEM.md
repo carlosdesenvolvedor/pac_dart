@@ -1,3 +1,101 @@
+# Relatório da sessão na nuvem — 2ª rodada (22/out/2026)
+
+Três tarefas, cada uma numa branch saindo do `main` (`e2cb03e`), com commit e push. Sem deploy. A regra do dono continua valendo: só o curso de **inglês** muda, e código compartilhado (Arcade, Turismo 3D) só liga a mudança no inglês.
+
+## Como juntar
+
+- **Ordem:** `claude/arte-historias-2`, `claude/desempenho-2` e por último `claude/estado-limpo`.
+- **Conflito:** as duas primeiras acrescentam uma seção no fim do `ESTADO-DO-PROJETO.md` e conflitam só ali; mantenha as duas partes. A `estado-limpo` entra limpa depois delas: ela reorganiza o arquivo, mas deixa intacta a última seção antiga, que é onde as outras acrescentam.
+- **Prova:** juntei as três numa pasta à parte, em cima do `main`. O resultado está no fim desta seção.
+- **Podem ser apagadas no GitHub** (já estão no `main`; daqui o GitHub recusa apagar): `claude/fix-pergunta-teste` e as branches da 1ª rodada. A `claude/csharp-curriculo` nunca deve ser juntada.
+
+## 1) 3ª leva de arte das histórias — `claude/arte-historias-2` (`c3ad77f`)
+
+**O que mudou:** 10 peças, pela contagem do `PEDIDOS-DE-ARTE.md`, que está atualizada no topo do arquivo, com ✅ no que foi feito.
+- **Cenários:**
+  - `dentroDoCarro`: o carro visto de lado, com a rua passando nas janelas; não usa o carro nem a pista do Turismo.
+  - `cozinha`.
+  - `quintal`: com churrasqueira; é exterior.
+  - `bar`: escuro à noite.
+- **Objetos:** `portaRetrato`, `cracha`, `cadeira`, `cartao`, `carteira`, `mochila`.
+- **Histórias:** 47 trocas de substitutos em 30 trilhas. Só mudaram cenário, prop, `segura` e alvo; nenhum id de frase.
+- **Documentação:** a RECEITA §5.4 e o `montar_contexto_lote.py` foram atualizados.
+
+**Testes:**
+- `historia_*`, `turismo_historia_*`, `assistir_*`, `ingles_assistir_*`, `ingles_historias_licoes_conteudo` e `historias_licoes_paridade`: **656/656**.
+- Novo: `historia_cenarios_licao3_test`.
+- Validador `--pasta`: 0 erros, só o aviso de sempre. `--auto-teste`: 59/59.
+- **3 testes antigos mudaram de propósito**, cada um com comentário. Eles conferem a quantidade e as fatias dos enums, que cresceram:
+  - `historia_fundo_test`: de 123 para 139 pares de cenário e hora;
+  - `historia_licao_modelo_test`: a checagem de "tudo interior" agora cobre a fatia 25..33, porque o `quintal` é exterior;
+  - `historia_cenarios_licao2_test`: fatias fixas em vez de "fim do enum".
+- O Turismo não muda: só entraram casos novos.
+
+**Ainda imperfeito:**
+- No celular em pé, a fila de trás cobre parte da churrasqueira e do balcão do bar.
+- Em `ligar-ideias.voce-e-brasileiro-ne`, um telão fica na frente do balcão do bar.
+- No carro, os atores ficam de pé na frente dos bancos, a não ser que a história use `senta`.
+
+**Conferir no aparelho** (em pé e deitado):
+- `gostos-e-lazer.escutar-e-listen-to` (carro);
+- `presente-continuo.o-que-voce-esta-fazendo` (cozinha à noite);
+- `convites-pedidos.quer-vir-jantar-would-you-like-to` (quintal);
+- `situacao-vida-social.saindo-com-o-time-a-rodada-e-a-conta` (bar);
+- `familia-e-posse.dele-e-dela-his-e-her` (porta-retrato).
+
+## 2) 2ª passada de desempenho — `claude/desempenho-2` (`63d6ff8`)
+
+**Só três jogos aparecem no inglês: Turismo, Chuva e Rali.** Corrida do Código, Gol de Dart e Caça-Bug só existem no Dart e no C#, então ficam de fora pela regra.
+
+**O que mudou** (só liga no inglês):
+- **Chuva:** cada quadro redesenhava a tela inteira, e agora redesenha só a arena. O placar só se reconstrói quando muda. As tintas dos tiros são reaproveitadas.
+- **Rali:** o cenário da pista ficou numa camada separada, então o Pac e a barra da CPU não forçam mais o redesenho dela.
+- **Pac:** o gradiente da mastigada fica guardado, em vez de ser criado a cada quadro.
+
+**Medidas** (120 quadros, antes → depois, no inglês):
+
+| | Reconstruções | Desenhos | Gradientes do Pac |
+|---|---|---|---|
+| Chuva | 22.094 → 4.427 | 21.540 → 5.589 | 120 → 0 |
+| Rali | 1.019 → 1.019 | 5.816 → 3.416 | 120 → 0 |
+
+No Dart, as contagens são idênticas às de antes. As imagens saíram iguais byte a byte, nos dois cursos.
+
+**Testes:** novo `arcade_desempenho_jogos_test` (6 casos). Os testes do Arcade, do Turismo, da Chuva e do Rali e o `engenheiro_gt`: **339/339**. Os testes do Treino do dia e das palavras: 50/50.
+
+**Suspeitos, sem mexer:** os borrados (sombras e brilhos) continuam sendo refeitos a cada quadro, e é o que mais pesa na placa de vídeo. Trocar por imagem pronta muda o desenho, então é decisão sua.
+
+**Conferir no aparelho** (inglês, qualidade Leve):
+- uma Chuva longa, até o nível 3 ou mais: placar, vidas, avisos e fim de jogo;
+- um Rali com várias palavras perfeitas;
+- no Dart, nada muda.
+
+## 3) ESTADO e RETOMAR limpos — `claude/estado-limpo` (`d22f581`)
+
+**O que mudou:**
+- **ESTADO:** de 2.638 para 2.503 linhas.
+  - Ganhou "📌 Estado atual" curto no topo: o que está no main, a regra do dono, o que falta e as falhas conhecidas.
+  - As seções contadas duas vezes viraram uma: Ouvir, Treino do dia, Conversa, voz no modo Setas e English Turismo.
+  - Datas, hashes, a contagem de testes e os títulos "sem commit/deploy" foram atualizados.
+  - Firebase, Armadilhas, Testes e Pendências subiram para perto da Arquitetura.
+- **RETOMAR:** reescrito curto, dizendo como fazer cada item que falta: vozes por personagem (`lote-vozes-wip`), Claude na Conversa (Worker), lojas e provas no aparelho.
+
+**Não chegou a ~2.000 linhas:** ~500 linhas são o histórico do Turismo do Dart (set/2026), que só se corta resumindo. Fica para você decidir.
+
+**Para confirmar:** se as regras do Firestore de `textos`, `palavras` e `setlists` foram publicadas. O histórico não registra isso, e o item ficou no RETOMAR.
+
+## Suíte inteira (as 3 branches juntas em cima do `main`)
+
+Rodei numa pasta à parte, com o `main` + as 3 branches juntas:
+
+- **`flutter test`: 3.269 testes, 3.263 passam e 6 falham.** As 6 já falhavam antes:
+  - as 5 do `csharp_curriculo_test`: o conteúdo do C# está incompleto, e o C# fica de fora pela regra do dono;
+  - `ingles_curriculo_test` "o motor digita toda frase…": estoura o limite de 30 s em máquina lenta.
+- `flutter analyze lib test`: sem avisos.
+- Validador `--pasta`: 0 erros e 1 aviso, o de sempre.
+
+---
+
 # Relatório da sessão na nuvem (22/out/2026)
 
 Pedido: `planejamento/PROMPT-NUVEM.md`. Cada tarefa numa branch própria saindo do `main` (`8d78d55`), com commit e push. Sem deploy.
