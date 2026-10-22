@@ -42,6 +42,7 @@ class BalaoFala extends StatelessWidget {
     this.escala = 1,
     this.esconderEn = false,
     this.icone,
+    this.compacto = false,
   });
 
   final String nome, en, pt;
@@ -57,6 +58,10 @@ class BalaoFala extends StatelessWidget {
 
   /// 📺 O emoji da frase no chip do nome (null = sem; o Turismo não passa).
   final String? icone;
+
+  /// 📺 Balão de uma linha (palco baixo na `videochamada`): o chip do nome ao lado do inglês, letra menor
+  /// (15 px), sem o PT (ignora [mostrarPt]) e com o rabicho curto. O inglês ainda quebra linha se não couber.
+  final bool compacto;
 
   /// O texto do inglês no balão ("…" com [esconderEn]).
   static String _textoEn(String en, bool esconderEn) => esconderEn ? escondido : en;
@@ -74,9 +79,10 @@ class BalaoFala extends StatelessWidget {
     final letras = esconderEn ? en.length : this.letras;
     final completo = letras >= en.length;
     final visivel = en.substring(0, letras.clamp(0, en.length));
-    final rabicho = 14.0 * escala;
+    final rabicho = (compacto ? _rabichoCompacto : 14.0) * escala;
     final corBorda = via == ViaRemota.radio ? const Color(0xFF5B6B7A) : _contorno;
-    final corpo = Padding(
+    final mostrarPt = this.mostrarPt && !compacto;
+    final corpo = compacto ? _corpoCompacto(en, visivel.length) : Padding(
       padding: EdgeInsets.fromLTRB(14 * escala, 10 * escala, 14 * escala, 12 * escala),
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
@@ -131,6 +137,7 @@ class BalaoFala extends StatelessWidget {
             rabicho: alvoRabicho == null ? 0 : rabicho,
             pontaX: alvoRabicho?.dx,
             escala: escala,
+            raio: (compacto ? 12 : 18) * escala,
           ),
           child: Padding(
             padding: EdgeInsets.only(bottom: alvoRabicho == null ? 0 : rabicho),
@@ -140,6 +147,46 @@ class BalaoFala extends StatelessWidget {
       ),
     );
   }
+
+  /// O corpo do [compacto]: chip do nome e o inglês lado a lado (o inglês quebra embaixo de si mesmo).
+  Widget _corpoCompacto(String en, int visiveis) => Padding(
+        padding: EdgeInsets.fromLTRB(10 * escala, 5 * escala, 12 * escala, 6 * escala),
+        child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 2 * escala),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(color: cor, borderRadius: BorderRadius.circular(Mixart.radiusChip)),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 6 * escala, vertical: 1 * escala),
+                    child: Text(_textoChip(via, nome, icone), style: _estiloChipCompacto(escala, textoNoChip(cor))),
+                  ),
+                ),
+              ),
+              SizedBox(width: 6 * escala),
+              Flexible(
+                child: Text.rich(
+                  key: const Key('historia-balao-en'),
+                  _digitado(en, visiveis, _estiloEnCompacto(escala)),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+
+  /// O rabicho do [compacto] (px por unidade de escala; o normal tem 14).
+  static const _rabichoCompacto = 10.0;
+
+  static TextStyle _estiloChipCompacto(double escala, Color cor) =>
+      Mixart.ui(size: 11 * escala, weight: FontWeight.w800, color: cor);
+
+  static TextStyle _estiloEnCompacto(double escala) =>
+      Mixart.ui(size: math.min(20, 15 * escala), weight: FontWeight.w700, color: _corTexto).copyWith(height: 1.25);
 
   static String _icone(ViaRemota? via) => switch (via) {
         ViaRemota.radio => '📻 ',
@@ -181,6 +228,7 @@ class BalaoFala extends StatelessWidget {
     TextScaler? textScaler,
     bool esconderEn = false,
     String? icone,
+    bool compacto = false,
   }) {
     final base = DefaultTextStyle.of(context).style;
     final scaler = textScaler ?? MediaQuery.textScalerOf(context);
@@ -195,6 +243,23 @@ class BalaoFala extends StatelessWidget {
       return tp;
     }
 
+    if (compacto) {
+      // o mesmo layout do _corpoCompacto: chip (6+6 de padding, 2+1+1 em cima/baixo) · 6 · inglês
+      final padHc = 22 * escala;
+      final maxC = math.max(1.0, maxLargura - padHc);
+      final chip = medida(_textoChip(via, nome, icone), _estiloChipCompacto(escala, _corTexto), maxC - 12 * escala);
+      final larguraChip = chip.width + 12 * escala + 6 * escala;
+      final ingles = medida(_textoEn(en, esconderEn), _estiloEnCompacto(escala), maxC - larguraChip);
+      final conteudo = math.min(maxC, larguraChip + ingles.width);
+      final altura = 5 * escala +
+          math.max(chip.height + 4 * escala, ingles.height) +
+          6 * escala +
+          (comRabicho ? _rabichoCompacto * escala : 0);
+      for (final tp in pintores) {
+        tp.dispose();
+      }
+      return Size(conteudo + padHc, altura);
+    }
     final chip = medida(_textoChip(via, nome, icone), _estiloChip(escala, _corTexto), maxConteudo - 16 * escala);
     final ingles = medida(_textoEn(en, esconderEn), _estiloEn(escala), maxConteudo);
     final temPt = mostrarPt && pt.isNotEmpty;
@@ -228,19 +293,19 @@ class _BalaoPainter extends CustomPainter {
     required this.rabicho,
     required this.pontaX,
     required this.escala,
+    required this.raio,
   });
 
   final Color borda;
   final bool tracejado, chiado, celular;
-  final double rabicho, escala;
+  final double rabicho, escala, raio;
   final double? pontaX;
 
   @override
   void paint(Canvas canvas, Size size) {
     final corpo = Rect.fromLTWH(0, 0, size.width, math.max(0, size.height - rabicho));
     if (corpo.isEmpty) return;
-    final raio = Radius.circular(18 * escala);
-    final rr = RRect.fromRectAndRadius(corpo, raio);
+    final rr = RRect.fromRectAndRadius(corpo, Radius.circular(raio));
     final path = Path()..addRRect(rr);
     if (rabicho > 0 && pontaX != null) {
       final base = pontaX!.clamp(28 * escala, math.max(28 * escala, size.width - 28 * escala));
@@ -303,7 +368,8 @@ class _BalaoPainter extends CustomPainter {
       old.celular != celular ||
       old.rabicho != rabicho ||
       old.pontaX != pontaX ||
-      old.escala != escala;
+      old.escala != escala ||
+      old.raio != raio;
 }
 
 /// 🎙️ A fala do narrador: faixa escura translúcida embaixo do palco.

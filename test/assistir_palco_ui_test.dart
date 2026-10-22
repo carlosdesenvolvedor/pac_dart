@@ -2,7 +2,8 @@
 // "Tradução", o lip-sync pela `VozIngles.falando`, bolinhas, tocar no palco, os véus (⏸, 🌙, 🏁), sem desenho,
 // a espera da autoral, o selo ✨, nenhum véu preto ao repetir (D18), minimizar e reabrir no meio do vão,
 // GlobalKey na troca de layout e no ⛶, o Ticker pelo TickerMode, as molduras da videochamada (390×844 e
-// 2560×1080) e 4 telas com texto 1,6× sem exceção; pausado não agenda quadro; nada de timer pendurado.
+// 2560×1080) e 4 telas com texto 1,6× sem exceção; pausado não agenda quadro; nada de timer pendurado; o balão
+// compacto sem PT da chamada no celular deitado (sem cobrir cabeça) e o relógio parado com o palco rolado para fora.
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -559,6 +560,74 @@ void main() {
     final mike = tester.getRect(find.byKey(const ValueKey('historia-moldura-mike')));
     expect(balao.bottom, lessThanOrEqualTo(mike.top), reason: '$balao / $mike');
     expect(mike.top - balao.bottom, lessThan(24), reason: 'o balão encostado em quem fala: $balao / $mike');
+  });
+
+  testWidgets('videochamada no celular deitado (palco da página 640×210): o balão não cobre cabeça; perde o PT '
+      '(a página o mostra) e vira 1 linha; no ⛶ e em 1280×720 o PT fica', (tester) async {
+    final fila = [for (var k = 0; k < 4; k++) faixaDe(_licaoChamada, k)];
+    for (final (tela, tamanho, grande, comPt) in const [
+      (Size(844, 390), Size(640, 210), false, false),
+      (Size(844, 390), Size(844, 390), true, true),
+      (Size(1280, 720), Size(720, 403), false, true),
+    ]) {
+      for (final indice in [0, 1, 2]) {
+        await _montar(tester, tela: tela, tamanho: tamanho, grande: grande, estado: tocandoEm(indice: indice, fila: fila));
+        await _andar(tester, 2500);
+        expect(tester.takeException(), isNull);
+        final onde = '$tamanho${grande ? ' ⛶' : ''} fala $indice';
+        final balao = tester.getRect(find.byKey(const Key('historia-balao')));
+        expect(find.byKey(const Key('historia-balao-pt')), comPt ? findsOneWidget : findsNothing, reason: onde);
+        if (!comPt) {
+          expect(balao.height, lessThan(60), reason: '$onde: o balão de uma linha ($balao)');
+          for (final q in ['voce', 'mike', 'sarah', 'ben']) {
+            final a = tester.getRect(find.byKey(ValueKey('historia-ator-$q')));
+            final cabeca = Rect.fromLTRB(a.left, a.top, a.right, a.top + a.height * .3);
+            expect(cabeca.overlaps(balao), isFalse, reason: '$onde: o balão $balao cobre a cabeça de $q $cabeca');
+          }
+        }
+        await tester.pumpWidget(Container());
+      }
+    }
+  });
+
+  testWidgets('rolado para fora da página o relógio do palco para; de volta à vista, anda', (tester) async {
+    tester.view.physicalSize = const Size(800, 600);
+    tester.view.devicePixelRatio = 1;
+    addTearDown(tester.view.reset);
+    final m = _Montagem();
+    addTearDown(m.cubit.close);
+    m.cubit.emitir(tocandoEm());
+    final rolagem = ScrollController();
+    addTearDown(rolagem.dispose);
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(
+        body: SingleChildScrollView(
+          controller: rolagem,
+          child: Column(children: [
+            SizedBox(width: 640, height: 360, child: m.palco()),
+            const SizedBox(height: 2000),
+          ]),
+        ),
+      ),
+    ));
+    await tester.pump();
+    final t0 = _palcoHistoria(tester).roteiro.tPasso;
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(_palcoHistoria(tester).roteiro.tPasso, greaterThan(t0), reason: 'à vista, o desenho anda');
+    rolagem.jumpTo(1000);
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 16));
+    final t1 = _palcoHistoria(tester).roteiro.tPasso;
+    await tester.pump(const Duration(milliseconds: 500));
+    expect(_palcoHistoria(tester).roteiro.tPasso, t1, reason: 'rolado para fora, o Ticker para');
+    expect(tester.binding.hasScheduledFrame, isFalse, reason: 'nenhum quadro agendado fora da tela');
+    rolagem.jumpTo(200); // um pedaço do palco volta à vista
+    await tester.pump();
+    await tester.pump(const Duration(milliseconds: 16));
+    final t2 = _palcoHistoria(tester).roteiro.tPasso;
+    await tester.pump(const Duration(milliseconds: 300));
+    expect(_palcoHistoria(tester).roteiro.tPasso, greaterThan(t2), reason: 'de volta à vista, anda de novo');
+    expect(tester.takeException(), isNull);
   });
 
   testWidgets('videochamada com câmera "medio"/"close": o zoom nunca corta uma moldura na borda do palco',

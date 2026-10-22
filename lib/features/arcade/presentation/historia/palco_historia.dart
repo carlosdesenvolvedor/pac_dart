@@ -35,6 +35,7 @@ class PalcoHistoria extends StatelessWidget {
     this.cabecalho,
     this.reduzir = false,
     this.balaoSemCorte = false,
+    this.ptNaPagina = false,
   }) : assert(capitulo != null || cabecalho != null);
 
   /// O Turismo passa o [RoteiroHistoria]; o 📺 Assistir, o `RoteiroSeguidor`.
@@ -53,6 +54,11 @@ class PalcoHistoria extends StatelessWidget {
   /// 📺 Palco baixo (a faixa do "Tocando agora" no celular): o balão que não cabe na faixa de cima cresce por
   /// cima dos atores em vez de cortar o texto. O Turismo (palco alto) usa o padrão `false`, sem mudança.
   final bool balaoSemCorte;
+
+  /// 📺 A página mostra o PT logo abaixo do palco (o "Tocando agora", fora do ⛶): na `videochamada` de uma fila,
+  /// o balão que cobriria rostos perde o PT e, se ainda cobrir, vira o [BalaoFala.compacto] (nome e inglês numa
+  /// linha); no palco estreito, o mesmo vale para não cobrir as molduras. Só com [balaoSemCorte].
+  final bool ptNaPagina;
 
   /// As 5 posições do palco (fração da largura); na tela estreita (< 560 px), um pouco mais juntas.
   static const xsLargo = [.12, .31, .50, .69, .88];
@@ -190,6 +196,7 @@ class PalcoHistoria extends StatelessWidget {
         agora: DateTime.now(),
         fala: VozIngles.falando.value,
         balaoSemCorte: balaoSemCorte,
+        ptNaPagina: ptNaPagina,
         escalaDoTexto: MediaQuery.textScalerOf(context).scale(1),
       );
       return Semantics(
@@ -273,12 +280,13 @@ class _Quadro {
     required this.agora,
     required this.fala,
     this.balaoSemCorte = false,
+    this.ptNaPagina = false,
     this.escalaDoTexto = 1,
   }) {
     _calcular();
   }
 
-  final bool balaoSemCorte;
+  final bool balaoSemCorte, ptNaPagina;
 
   /// O `textScaler` da tela (a faixa do balão do 📺 cresce com ele).
   final double escalaDoTexto;
@@ -1388,12 +1396,14 @@ class _Quadro {
     final nome = ElencoTurismo.nomeDe(f.quem);
     final mq = MediaQuery.of(context);
     var scaler = mq.textScaler;
+    var mostrarPt = roteiro.mostrarPt;
+    var compacto = false;
     Size medir({double? maxLargura}) => BalaoFala.medir(
           context,
           nome: nome,
           en: f.en!,
           pt: f.pt ?? '',
-          mostrarPt: roteiro.mostrarPt,
+          mostrarPt: mostrarPt,
           via: via,
           esconderEn: roteiro.esconderEn,
           icone: roteiro.iconeDaFala,
@@ -1401,6 +1411,7 @@ class _Quadro {
           escala: escala,
           maxLargura: maxLargura ?? largura,
           textScaler: scaler,
+          compacto: compacto,
         );
     var tam = medir();
     // em cima da cabeça só se o balão inteiro couber ali; senão a faixa do topo, que pode descer até perto
@@ -1417,6 +1428,35 @@ class _Quadro {
       fator = math.max(1.0, fator * .88);
       scaler = TextScaler.linear(fator);
       tam = medir();
+    }
+    // 📺 chamada de uma fila na página (o PT já está logo abaixo do palco): o balão que cobriria rostos (no palco
+    // estreito, as molduras) perde o PT e, se ainda cobrir, vira uma linha só com nome e inglês
+    if (balaoSemCorte && ptNaPagina && chamada && reservaBalao > 0 && !cabeEmCima) {
+      final rostos = estreito
+          ? [for (final m in molduras) Rect.fromPoints(naTela(m.$2.topLeft), naTela(m.$2.bottomRight))]
+          : _cabecasNaTela().values.toList();
+      bool cobre(Size t) {
+        final bw = math.min(largura, t.width.ceilToDouble() + 1);
+        final l = ancora == null ? (w - bw) / 2 : (ancora.dx - bw / 2).clamp(8.0, math.max(8.0, w - bw - 8)).toDouble();
+        final caixa = Rect.fromLTWH(l, 8, bw, t.height);
+        return rostos.any((r) => r.overlaps(caixa));
+      }
+
+      if (cobre(tam)) {
+        for (final c in [false, true]) {
+          if (!c && !mostrarPt) continue; // sem PT já é o que está medido
+          mostrarPt = false;
+          compacto = c;
+          tam = medir();
+          if (!cobre(tam)) break;
+        }
+        // texto ampliado: o compacto ainda encolhe a letra (até o tamanho normal) antes de cobrir um rosto
+        while (cobre(tam) && fator > 1.0) {
+          fator = math.max(1.0, fator * .88);
+          scaler = TextScaler.linear(fator);
+          tam = medir();
+        }
+      }
     }
     // 📺 palco baixo: melhor cobrir as cabeças do que cortar a frase
     if (balaoSemCorte && !cabeEmCima && tam.height > alturaMax) {
@@ -1489,12 +1529,13 @@ class _Quadro {
       en: f.en!,
       pt: f.pt ?? '',
       letras: roteiro.letrasVisiveis,
-      mostrarPt: roteiro.mostrarPt,
+      mostrarPt: mostrarPt,
       via: via,
       esconderEn: roteiro.esconderEn,
       icone: roteiro.iconeDaFala,
       alvoRabicho: alvo,
       escala: escala,
+      compacto: compacto,
     );
     if (scaler != mq.textScaler) balao = MediaQuery(data: mq.copyWith(textScaler: scaler), child: balao);
     if (cabeEmCima) {

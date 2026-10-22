@@ -31,7 +31,8 @@ import 'roteiro_seguidor.dart';
 ///
 /// Sem voz e sem `Timer`: o seguidor recebe cada emit do cubit (o 1º no initState), cada `VozIngles.falando` e
 /// o relógio de UM `Ticker` (do `TickerProviderStateMixin`: o `TickerMode` do Navigator o cala só quando a rota
-/// fica coberta por uma rota opaca). O Ticker só anda tocando, com o app visível; "reduzir animações" = passos
+/// fica coberta por uma rota opaca). O Ticker só anda tocando, com o app visível e com o palco dentro da área
+/// visível da página que rola (rolado para fora, ele para; ver [_PalcoAssistirState._conferirVisivel]); "reduzir animações" = passos
 /// de 100 ms, sem andar nem esmaecer. Tocar no palco = ⏯ (no fim, ▶ de novo). O palco não pega o foco
 /// (`ExcludeFocus`); o ⛶ e as bolinhas entram no Tab.
 class PalcoAssistir extends StatefulWidget {
@@ -78,6 +79,11 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
   Duration _ultimoTique = Duration.zero;
 
   bool _reduzir = false, _oculto = false;
+
+  /// O palco rolado para fora da área visível da página (o `Scrollable` em volta): o relógio para.
+  bool _foraDaTela = false;
+  ScrollPosition? _rolagem;
+  bool _conferenciaAgendada = false;
 
   /// Esperando a autoral (até [PalcoAssistir.esperaDaAutoral]); o seguidor só nasce depois.
   bool _esperando = false;
@@ -132,6 +138,13 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
       _reduzir = r;
       _seguidor.reduzir = r;
     }
+    // a página que rola em volta (no ⛶ não há): a cada rolagem, confere se o palco ainda aparece
+    final rolagem = Scrollable.maybeOf(context)?.position;
+    if (!identical(rolagem, _rolagem)) {
+      _rolagem?.removeListener(_agendarConferencia);
+      _rolagem = rolagem?..addListener(_agendarConferencia);
+      _agendarConferencia();
+    }
   }
 
   @override
@@ -145,6 +158,7 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    _rolagem?.removeListener(_agendarConferencia);
     VozIngles.falando.removeListener(_aoFalar);
     _ticker.dispose();
     _quadro.dispose();
@@ -158,6 +172,35 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
   void didChangeAppLifecycleState(AppLifecycleState state) {
     _oculto = state == AppLifecycleState.hidden || state == AppLifecycleState.paused;
     _sincronizar();
+  }
+
+  /// Confere a visibilidade depois do quadro (o layout já com a rolagem nova); várias rolagens no mesmo quadro
+  /// viram uma conferência só.
+  void _agendarConferencia() {
+    if (_conferenciaAgendada) return;
+    _conferenciaAgendada = true;
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      _conferenciaAgendada = false;
+      _conferirVisivel();
+    });
+    // parado (sem Ticker), a rolagem já agenda o quadro; garante um quadro mesmo assim
+    SchedulerBinding.instance.ensureVisualUpdate();
+  }
+
+  /// O palco está fora da área visível do `Scrollable` em volta? (sem `Scrollable`, ou sem layout ainda: visível)
+  void _conferirVisivel() {
+    if (!mounted) return;
+    var fora = false;
+    final eu = context.findRenderObject();
+    final vp = _rolagem == null ? null : Scrollable.maybeOf(context)?.context.findRenderObject();
+    if (eu is RenderBox && vp is RenderBox && eu.attached && vp.attached && eu.hasSize && vp.hasSize) {
+      final r = MatrixUtils.transformRect(eu.getTransformTo(vp), Offset.zero & eu.size);
+      fora = !r.overlaps(Offset.zero & vp.size);
+    }
+    if (fora != _foraDaTela) {
+      _foraDaTela = fora;
+      _sincronizar();
+    }
   }
 
   // ───────────────────────── entradas
@@ -193,7 +236,7 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
 
   void _sincronizar() {
     if (!mounted) return;
-    final andar = !_oculto && (_esperando || _seguidor.precisaDeRelogio);
+    final andar = !_oculto && !_foraDaTela && (_esperando || _seguidor.precisaDeRelogio);
     if (andar && !_ticker.isActive) {
       _ultimoTique = Duration.zero;
       _ticker.start();
@@ -357,6 +400,8 @@ class _PalcoAssistirState extends State<PalcoAssistir> with TickerProviderStateM
                   cabecalho: cab,
                   reduzir: _reduzir,
                   balaoSemCorte: true,
+                  // fora do ⛶ o "Tocando agora" mostra o PT logo abaixo do palco
+                  ptNaPagina: !widget.grande,
                 ),
               ),
             ),
