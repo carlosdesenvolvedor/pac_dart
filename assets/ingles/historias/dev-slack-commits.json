@@ -1,0 +1,173 @@
+{
+  "versao": 1,
+  "trilha": "dev-slack-commits",
+  "arco": "Os primeiros meses no emprego, trabalhando de casa pelo chat do time: a pergunta que demora a ter resposta, o primeiro commit elogiado pelo Mike, um bug report bem escrito e a thread do bug em produção que termina no staging. E o café sempre por perto.",
+  "licoes": {
+    "dev-slack-commits.no-chat-pergunta-rapida-e-novidades": {
+      "titulo": { "en": "Waiting for an answer", "pt": "Esperando a resposta" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "ana", "pos": "esquerda", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "notebook", "emocao": "pensativo" },
+            { "quem": "mike", "pos": "centroDireita", "visivel": false },
+            { "quem": "sarah", "pos": "direita", "segura": "documento", "visivel": false }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-3dba67", "acao": "escreve", "emocao": "pensativo", "efeito": "interrogacao", "camera": "geral" },
+            { "frase": "f-c22876", "acao": "escreve", "emocao": "cansado", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "mike", "acao": "entra", "emocao": "timido", "efeito": "suor" },
+            { "frase": "f-4a12ca", "acao": "concorda", "emocao": "timido", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-b73630", "acao": "aponta", "alvo": "mike", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "emocao": "pensativo" } ] },
+            { "frase": "f-38adfe", "acao": "aponta", "alvo": "voce", "emocao": "determinado", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-a0b259", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "sarah", "acao": "entra", "emocao": "determinado" },
+            { "frase": "f-4e5970", "acao": "mostra", "emocao": "determinado", "efeito": "exclamacao", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-560c3d", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" } ] },
+            { "frase": "f-f286ee", "acao": "aponta", "alvo": "mike", "emocao": "pensativo",
+              "reacoes": [ { "quem": "mike", "emocao": "nervoso" } ] },
+            { "frase": "f-26d80b", "acao": "concorda", "emocao": "timido", "efeito": "suor", "camera": "close" },
+            { "mudo": true, "quem": "mike", "acao": "acena", "emocao": "feliz",
+              "reacoes": [
+                { "quem": "voce", "acao": "acena", "emocao": "feliz", "segura": "cafe" },
+                { "quem": "sarah", "emocao": "feliz" },
+                { "quem": "ana", "acao": "acena", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "dev-slack-commits.commits-e-status-fix-add-i-ve-pushed": {
+      "titulo": { "en": "Nice commit message", "pt": "Boa mensagem de commit" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "determinado" },
+            { "quem": "mike", "remoto": "celular", "emocao": "feliz" },
+            { "quem": "sarah", "remoto": "celular" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "senta", "emocao": "determinado" },
+            { "frase": "f-f2dd91", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-5ec5b5", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-333719", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-f010f2", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "close" },
+            { "frase": "f-4834e9", "acao": "aponta", "alvo": "notebook", "emocao": "feliz", "efeito": "brilho" },
+            { "frase": "f-35e624", "acao": "olha", "alvo": "notebook", "emocao": "timido",
+              "reacoes": [ { "quem": "mike", "emocao": "pensativo" } ] },
+            { "frase": "f-ca7021", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "comemora", "emocao": "radiante" } ] },
+            { "frase": "f-47a06c", "acao": "concorda", "emocao": "feliz", "camera": "medio" },
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "notebook", "emocao": "cansado", "efeito": "zzz" },
+            { "frase": "f-eab4b6", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-07371b", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [
+                { "quem": "sarah", "emocao": "feliz" },
+                { "quem": "mike", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "dev-slack-commits.bug-report-esperado-x-real": {
+      "titulo": { "en": "The app freezes", "pt": "O app trava" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "nervoso" },
+            { "quem": "mike", "remoto": "celular", "emocao": "neutro" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-abb573", "acao": "mostra", "emocao": "nervoso", "camera": "geral" },
+            { "frase": "f-c54932", "acao": "escreve", "alvo": "notebook", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-735c88", "acao": "aponta", "alvo": "notebook", "emocao": "feliz" },
+            { "frase": "f-bb7f02", "acao": "nega", "emocao": "nervoso" },
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "notebook", "emocao": "pensativo",
+              "reacoes": [ { "quem": "mike", "emocao": "pensativo" } ] },
+            { "frase": "f-d3617a", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-594ec4", "acao": "mostra", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-b0bdd3", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-cf4e9f", "acao": "nega", "emocao": "determinado" },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "alvo": "notebook", "emocao": "determinado" },
+            { "frase": "f-53d62c", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-ae1752", "acao": "concorda", "emocao": "feliz", "camera": "medio" },
+            { "mudo": true, "quem": "voce", "acao": "comemora", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "dev-slack-commits.a-thread-do-bug": {
+      "titulo": { "en": "Nobody can log in", "pt": "Ninguém consegue entrar" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "sarah", "remoto": "celular" },
+            { "quem": "mike", "remoto": "celular" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-5cd4db", "emocao": "nervoso", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso", "efeito": "exclamacao" } ] },
+            { "frase": "f-a0a338", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao", "camera": "medio" },
+            { "frase": "f-638f1f", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "alvo": "notebook", "emocao": "nervoso", "efeito": "suor" },
+            { "frase": "f-6d0aa6", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso" } ] },
+            { "frase": "f-0c1f3a", "acao": "aponta", "alvo": "notebook", "emocao": "feliz", "efeito": "brilho", "camera": "close" },
+            { "frase": "f-62484d", "acao": "escreve", "alvo": "notebook", "emocao": "determinado" },
+            { "frase": "f-1f7848", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-24b9a0", "acao": "comemora", "emocao": "radiante", "camera": "medio",
+              "reacoes": [
+                { "quem": "mike", "emocao": "feliz" },
+                { "quem": "sarah", "emocao": "feliz" }
+              ] },
+            { "frase": "f-bf39ef", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-f7aade", "acao": "concorda", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "emocao": "radiante", "efeito": "brilho",
+              "objetos": [ { "prop": "cafe", "acao": "some" } ],
+              "reacoes": [
+                { "quem": "sarah", "emocao": "feliz" },
+                { "quem": "mike", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    }
+  }
+}

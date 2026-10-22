@@ -1,0 +1,143 @@
+{
+  "versao": 1,
+  "trilha": "talvez-might",
+  "arco": "Semanas de inverno com o time: a neve que ameaça o escritório de Chicago, uma segunda de sono e login travado, as respostas curtas antes de uma demo e o boa-noite cansado na véspera da próxima. Tudo com um 'talvez' e o café sempre na mão.",
+  "licoes": {
+    "talvez-might.talvez-eu-me-atrase-might-e-may": {
+      "titulo": { "en": "It might snow tonight", "pt": "Pode nevar hoje à noite" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "celular", "emocao": "pensativo" },
+            { "quem": "ana", "pos": "direita", "segura": "cachecol", "emocao": "neutro" }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "esquerda" } ],
+          "passos": [
+            { "frase": "f-fa6b6e", "acao": "mostra", "emocao": "pensativo", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-fad4cc", "acao": "treme", "emocao": "nervoso", "alvo": "mike",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-bff277", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-208890", "acao": "nega", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-d08754", "acao": "concorda", "emocao": "timido", "alvo": "mike" },
+            { "frase": "f-87626e", "acao": "concorda", "emocao": "feliz", "alvo": "voce" },
+            { "frase": "f-225823", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao",
+              "reacoes": [ { "quem": "mike", "acao": "nega" } ] },
+            { "mudo": true, "quem": "mike", "segura": "chave", "emocao": "determinado" },
+            { "frase": "f-37b7e5", "acao": "mostra", "emocao": "determinado", "alvo": "mike",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-1d8311", "acao": "pensa", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-36da77", "acao": "aponta", "emocao": "feliz", "alvo": "mike",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" }, { "quem": "ana", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "ana", "acao": "acena", "emocao": "feliz", "clima": ["neve"],
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "radiante" }, { "quem": "mike", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "talvez-might.nao-consegui-dormir-could-couldn-t": {
+      "titulo": { "en": "A sleepy Monday", "pt": "Uma segunda-feira com sono" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "amanhecer", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "cansado" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "notebook", "emocao": "cansado" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "ana", "acao": "olha", "alvo": "voce", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-476244", "emocao": "cansado", "efeito": "zzz", "camera": "geral" },
+            { "frase": "f-8b83dc", "acao": "mostra", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-6a73a5", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-138a1d", "acao": "nega", "emocao": "pensativo" },
+            { "frase": "f-3ade05", "acao": "aponta", "emocao": "pensativo", "alvo": "ana" },
+            { "frase": "f-61f8c6", "acao": "pensa", "emocao": "surpreso", "efeito": "interrogacao" },
+            { "frase": "f-9b6c57", "acao": "aponta", "emocao": "surpreso", "efeito": "exclamacao", "alvo": "ana", "camera": "close" },
+            { "frase": "f-67653a", "acao": "escreve", "emocao": "pensativo" },
+            { "frase": "f-9b4491", "acao": "comemora", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "acao": "palmas", "emocao": "feliz" } ] },
+            { "frase": "f-078f6c", "acao": "concorda", "emocao": "feliz", "alvo": "ana" },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "talvez-might.acho-que-sim-respostas-curtas": {
+      "titulo": { "en": "Ten minutes before the demo", "pt": "Dez minutos antes da demo" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "mike", "pos": "esquerda", "visivel": false, "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "nervoso" },
+            { "quem": "sarah", "pos": "centroDireita", "segura": "documento", "emocao": "determinado" },
+            { "quem": "ana", "pos": "direita", "visivel": false, "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-010f4b", "acao": "pensa", "emocao": "pensativo", "camera": "geral",
+              "reacoes": [ { "quem": "sarah", "acao": "escreve" } ] },
+            { "frase": "f-a5c10b", "acao": "concorda", "emocao": "feliz", "alvo": "voce" },
+            { "mudo": true, "quem": "mike", "acao": "entra", "emocao": "feliz" },
+            { "frase": "f-d85c55", "acao": "aponta", "emocao": "feliz", "alvo": "mike",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-2b3641", "acao": "nega", "emocao": "nervoso", "efeito": "suor", "camera": "medio",
+              "reacoes": [ { "quem": "sarah", "emocao": "surpreso" } ] },
+            { "frase": "f-2cb968", "acao": "concorda", "emocao": "pensativo" },
+            { "mudo": true, "quem": "ana", "acao": "entra", "emocao": "feliz" },
+            { "frase": "f-2ae8c3", "acao": "aponta", "emocao": "feliz", "alvo": "ana",
+              "reacoes": [ { "quem": "ana", "emocao": "radiante" } ] },
+            { "frase": "f-bb6e64", "acao": "nega", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-0ad1b3", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "mike", "acao": "concorda" }, { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-70679c", "acao": "escreve", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-05726c", "acao": "concorda", "emocao": "feliz", "efeito": "brilho", "camera": "medio",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" }, { "quem": "mike", "acao": "concorda" }, { "quem": "ana", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "sarah", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" }, { "quem": "mike", "acao": "palmas", "emocao": "feliz" }, { "quem": "ana", "acao": "palmas", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "talvez-might.previsao-do-tempo-e-da-demo": {
+      "titulo": { "en": "Good night before the demo", "pt": "Boa noite antes da demo" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "cansado" },
+            { "quem": "ana", "pos": "centroDireita", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-a7f444", "acao": "pensa", "emocao": "pensativo", "camera": "geral" },
+            { "frase": "f-39ae63", "acao": "nega", "emocao": "pensativo" },
+            { "frase": "f-7fb918", "acao": "mostra", "segura": "guardaChuva", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "emocao": "cansado", "efeito": "zzz",
+              "reacoes": [ { "quem": "ana", "acao": "aponta", "emocao": "surpreso", "segura": "nada" } ] },
+            { "frase": "f-2fcf98", "acao": "nega", "emocao": "cansado", "camera": "close" },
+            { "frase": "f-563e13", "acao": "nega", "emocao": "cansado", "efeito": "notas",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-2aa00e", "acao": "aponta", "emocao": "pensativo", "alvo": "ana", "camera": "medio" },
+            { "frase": "f-8c87a6", "acao": "concorda", "emocao": "nervoso" },
+            { "frase": "f-c5c06d", "acao": "concorda", "emocao": "feliz", "alvo": "ana",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-865cc1", "acao": "concorda", "emocao": "feliz", "efeito": "zzz" },
+            { "frase": "f-85a1fc", "acao": "acena", "emocao": "feliz", "alvo": "ana", "hora": "noite",
+              "reacoes": [ { "quem": "ana", "acao": "acena", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "segura": "nada", "emocao": "feliz", "efeito": "zzz",
+              "reacoes": [ { "quem": "ana", "acao": "acena", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

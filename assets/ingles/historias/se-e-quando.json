@@ -1,0 +1,202 @@
+{
+  "versao": 1,
+  "trilha": "se-e-quando",
+  "arco": "Os primeiros meses no emprego cheios de 'se' e 'quando': a rotina e o app novo na chamada com a Ana, o plano B do piquenique com o Ben, a ajuda na mudança da Ana, a ida ao aeroporto com a Julia e o deploy de sexta. Sempre tem um plano B e um sorriso no fim.",
+  "licoes": {
+    "se-e-quando.se-eu-tomo-cafe-nao-durmo": {
+      "titulo": { "en": "Coffee and the new app", "pt": "O café e o app novo" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "centro" } ],
+          "passos": [
+            { "mudo": true, "quem": "ana", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-4ca5ed", "acao": "nega", "emocao": "cansado", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-5a596a", "acao": "mostra", "emocao": "surpreso", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-3ff6ef", "acao": "nega", "emocao": "pensativo" },
+            { "frase": "f-fe0000", "acao": "pensa", "emocao": "pensativo", "alvo": "voce" },
+            { "frase": "f-573a9d", "acao": "concorda", "emocao": "bravo",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-b42399", "acao": "nega", "emocao": "bravo",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "acao": "aponta", "alvo": "notebook", "emocao": "feliz", "efeito": "brilho" },
+            { "frase": "f-dc3dae", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-9657e2", "acao": "aponta", "alvo": "notebook", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
+            { "frase": "f-60a45b", "emocao": "timido", "efeito": "suor", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-f26a4c", "acao": "concorda", "emocao": "feliz", "alvo": "ana", "camera": "medio" },
+            { "mudo": true, "quem": "ana", "acao": "comemora", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "acao": "palmas", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "se-e-quando.se-chover-a-gente-fica-em-casa": {
+      "titulo": { "en": "A picnic and a plan B", "pt": "Um piquenique com plano B" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "sacola", "pos": "centro" },
+            { "prop": "presente", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-6998a9", "acao": "aponta", "alvo": "sacola", "emocao": "radiante", "camera": "geral" },
+            { "frase": "f-05d1f6", "acao": "concorda", "emocao": "feliz", "alvo": "ben",
+              "reacoes": [ { "quem": "ben", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-b1f4c8", "acao": "mostra", "emocao": "feliz", "efeito": "brilho", "camera": "medio" },
+            { "frase": "f-6b8e88", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "ben", "emocao": "pensativo" } ] },
+            { "frase": "f-1ad03e", "acao": "aponta", "alvo": "presente", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-98a3c2", "acao": "concorda", "emocao": "feliz", "alvo": "ben",
+              "reacoes": [ { "quem": "ben", "acao": "palmas", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ben", "acao": "pensa", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-46fb94", "acao": "mostra", "emocao": "surpreso", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-9a6b99", "acao": "pensa", "emocao": "determinado" },
+            { "frase": "f-f6591f", "acao": "aponta", "alvo": "voce", "emocao": "feliz" },
+            { "frase": "f-0cd789", "acao": "aponta", "alvo": "sacola", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "ben", "acao": "comemora", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pula", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "ben", "acao": "palmas", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "se-e-quando.se-precisar-me-avisa": {
+      "titulo": { "en": "Help in the new apartment", "pt": "Uma ajuda no apartamento novo" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroDireita", "emocao": "cansado" }
+          ],
+          "objetos": [
+            { "prop": "mala", "pos": "esquerda" },
+            { "prop": "sacola", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-c00e6d", "acao": "concorda", "emocao": "feliz", "alvo": "ana", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-760c4d", "acao": "aponta", "alvo": "sacola", "emocao": "radiante" },
+            { "frase": "f-0fef75", "acao": "concorda", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-abd6fb", "acao": "aponta", "alvo": "voce", "emocao": "feliz" },
+            { "frase": "f-3cfc7a", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "voce", "segura": "mala", "emocao": "determinado",
+              "objetos": [ { "prop": "mala", "acao": "some" } ],
+              "reacoes": [ { "quem": "ana", "acao": "palmas", "emocao": "feliz" } ] },
+            { "frase": "f-7c6258", "acao": "aponta", "alvo": "ana", "emocao": "feliz" },
+            { "frase": "f-bdc444", "acao": "acena", "emocao": "radiante", "camera": "dupla", "alvo": "voce" },
+            { "frase": "f-2f9d79", "acao": "concorda", "emocao": "feliz", "alvo": "ana",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] }
+          ]
+        },
+        {
+          "cenario": "cidade", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "pensativo" },
+            { "quem": "ana", "remoto": "celular", "emocao": "timido" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-97016d", "emocao": "timido", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-e7fd2f", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "se-e-quando.quando-eu-chegar-when-as-soon-as": {
+      "titulo": { "en": "Call me when you land", "pt": "Me liga quando pousar" },
+      "cenas": [
+        {
+          "cenario": "aeroporto", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "chave", "emocao": "feliz" },
+            { "quem": "julia", "pos": "centroDireita", "segura": "sacola", "emocao": "pensativo" },
+            { "quem": "sarah", "remoto": "celular", "emocao": "feliz" },
+            { "quem": "mike", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "mala", "pos": "esquerda" } ],
+          "passos": [
+            { "frase": "f-3867f8", "acao": "pensa", "emocao": "pensativo", "camera": "geral" },
+            { "frase": "f-e26781", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "julia", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-fa9722", "acao": "mostra", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-cf3b32", "acao": "aponta", "alvo": "voce", "emocao": "determinado" },
+            { "frase": "f-160e81", "acao": "concorda", "segura": "celular", "emocao": "feliz",
+              "reacoes": [ { "quem": "julia", "emocao": "feliz" } ] },
+            { "frase": "f-5ccfe1", "acao": "aponta", "alvo": "voce", "emocao": "radiante" },
+            { "mudo": true, "quem": "julia", "acao": "abraca", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-20ecb1", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-5c833b", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-b12383", "acao": "escreve", "emocao": "determinado",
+              "reacoes": [ { "quem": "julia", "emocao": "surpreso" } ] },
+            { "frase": "f-be9c8b", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "alvo": "julia", "emocao": "radiante", "segura": "mala",
+              "objetos": [ { "prop": "mala", "acao": "some" } ],
+              "reacoes": [ { "quem": "julia", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "se-e-quando.plano-b-e-aviso-de-deploy": {
+      "titulo": { "en": "The deploy and the barbecue", "pt": "O deploy e o churrasco" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "mike", "remoto": "celular", "emocao": "feliz" },
+            { "quem": "ben", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centroDireita" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-733908", "acao": "escreve", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-8bfbf6", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "voce", "acao": "olha", "alvo": "notebook", "emocao": "nervoso", "efeito": "suor" },
+            { "frase": "f-296c3e", "acao": "nega", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-f81094", "acao": "aponta", "alvo": "notebook", "emocao": "pensativo" },
+            { "frase": "f-10d6b2", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-cb4dbd", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "frase": "f-38da79", "acao": "concorda", "emocao": "pensativo" },
+            { "frase": "f-b18d2b", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-4c9d7e", "acao": "escreve", "emocao": "pensativo" },
+            { "frase": "f-8c5739", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "comemora", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "mike", "emocao": "radiante" }, { "quem": "ben", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

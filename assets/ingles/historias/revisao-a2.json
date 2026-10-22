@@ -1,0 +1,175 @@
+{
+  "versao": 1,
+  "trilha": "revisao-a2",
+  "arco": "Checkpoint do A2: de volta das férias numa ilha perto de Salvador, o aluno conta a viagem ao time e mostra as fotos à Ana; depois marca com a Ana e o Ben um jantar de fim de projeto, que vira uma noite de atrasos e favores na casa da Emma. Tudo termina em sorriso.",
+  "licoes": {
+    "revisao-a2.as-ferias-o-que-a-gente-fez": {
+      "titulo": { "en": "Back from the island", "pt": "De volta da ilha" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "mapa", "emocao": "feliz" },
+            { "quem": "sarah", "pos": "centroEsquerda", "segura": "documento", "emocao": "feliz" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ana", "pos": "direita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "sarah", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "acao": "acena" } ] },
+            { "frase": "f-d9a064", "acao": "mostra", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "emocao": "radiante" } ] },
+            { "frase": "f-01de8f", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-bb0f90", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "acao": "concorda" } ] },
+            { "frase": "f-891a83", "acao": "pensa", "emocao": "feliz" },
+            { "frase": "f-0dc52b", "emocao": "cansado", "efeito": "suor", "camera": "close",
+              "reacoes": [ { "quem": "sarah", "emocao": "surpreso" }, { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-30d8b9", "acao": "nega", "emocao": "surpreso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-b70b7e", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-9f8edd", "acao": "comemora", "emocao": "radiante", "efeito": "coracoes",
+              "reacoes": [ { "quem": "mike", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "segura": "sacola", "emocao": "feliz" },
+            { "frase": "f-a58e01", "acao": "mostra", "emocao": "surpreso", "efeito": "exclamacao", "camera": "geral",
+              "reacoes": [ { "quem": "sarah", "emocao": "surpreso" } ] },
+            { "frase": "f-dae770", "acao": "aponta", "alvo": "voce", "emocao": "radiante", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" }, { "quem": "mike", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "segura": "presente", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [
+                { "quem": "ana", "acao": "comemora", "emocao": "radiante" },
+                { "quem": "sarah", "acao": "palmas", "emocao": "feliz" },
+                { "quem": "mike", "acao": "concorda", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "revisao-a2.ferias-o-melhor-e-as-primeiras-vezes": {
+      "titulo": { "en": "The most beautiful sunset", "pt": "O pôr do sol mais bonito" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "radiante" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "cafe", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "mapa", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-5c5839", "acao": "mostra", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-81cdb6", "emocao": "radiante", "efeito": "coracoes", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-656a51", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-ce1101", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-a81116", "acao": "aponta", "alvo": "mapa", "emocao": "cansado", "efeito": "suor",
+              "reacoes": [ { "quem": "ana", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-09e779", "acao": "aponta", "alvo": "mapa", "emocao": "feliz", "efeito": "suor",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-bcab93", "acao": "mostra", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-c43f31", "acao": "concorda", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-4ad998", "acao": "aponta", "alvo": "voce", "emocao": "feliz" },
+            { "frase": "f-4797e1", "acao": "concorda", "emocao": "radiante", "efeito": "suor", "camera": "close",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "ana", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "revisao-a2.marcando-um-jantar": {
+      "titulo": { "en": "Planning a dinner", "pt": "Marcando um jantar" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "radiante" },
+            { "quem": "ana", "remoto": "celular", "emocao": "feliz" },
+            { "quem": "ben", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "notebook", "pos": "centroDireita" } ],
+          "passos": [
+            { "frase": "f-01a6cd", "acao": "escreve", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-213544", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "frase": "f-65fc82", "acao": "escreve", "emocao": "radiante", "efeito": "brilho", "camera": "medio" },
+            { "frase": "f-a22af0", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "comemora", "emocao": "radiante" } ] },
+            { "frase": "f-9cd478", "acao": "escreve", "emocao": "feliz" },
+            { "frase": "f-ff0633", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-dbf985", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-13136b", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-744de8", "acao": "concorda", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-4dee50", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "nervoso", "efeito": "suor" },
+            { "mudo": true, "quem": "voce", "acao": "comemora", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "ana", "emocao": "radiante" }, { "quem": "ben", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "revisao-a2.no-dia-do-jantar-imprevistos-e-favores": {
+      "titulo": { "en": "Late for dinner", "pt": "Atrasados para o jantar" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "pensativo" },
+            { "quem": "ben", "pos": "centroDireita", "visivel": false, "segura": "celular", "emocao": "feliz" },
+            { "quem": "emma", "remoto": "celular", "emocao": "feliz" },
+            { "quem": "ana", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "prato", "pos": "esquerda" } ],
+          "passos": [
+            { "frase": "f-b8e739", "acao": "escreve", "emocao": "pensativo", "camera": "geral" },
+            { "frase": "f-f20e43", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-48db43", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "acao": "pensa", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "ben", "acao": "entra", "emocao": "feliz",
+              "objetos": [ { "prop": "prato", "acao": "some" } ],
+              "reacoes": [ { "quem": "voce", "segura": "prato", "emocao": "determinado" } ] },
+            { "frase": "f-3861c0", "acao": "aponta", "alvo": "ben", "emocao": "determinado", "camera": "dupla" },
+            { "frase": "f-f7f47f", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-232268", "acao": "concorda", "alvo": "ben", "emocao": "determinado", "efeito": "suor" },
+            { "frase": "f-1c498e", "emocao": "feliz",
+              "reacoes": [ { "quem": "ben", "acao": "concorda", "emocao": "feliz" } ] }
+          ]
+        },
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "ben", "pos": "esquerda", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "prato", "emocao": "timido" },
+            { "quem": "emma", "pos": "centroDireita", "emocao": "feliz" },
+            { "quem": "ana", "pos": "direita", "visivel": false, "segura": "presente", "emocao": "timido" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-c9e4e9", "acao": "mostra", "emocao": "timido", "efeito": "suor", "camera": "geral",
+              "reacoes": [ { "quem": "emma", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "acao": "entra", "emocao": "timido" },
+            { "frase": "f-17305f", "acao": "aponta", "alvo": "voce", "emocao": "timido", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "segura": "nada", "emocao": "feliz",
+              "reacoes": [ { "quem": "emma", "segura": "presente", "emocao": "surpreso" } ] },
+            { "frase": "f-e36493", "acao": "mostra", "emocao": "radiante", "efeito": "brilho", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "emocao": "radiante" }, { "quem": "voce", "acao": "palmas", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ben", "acao": "comemora", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "emma", "emocao": "feliz" }, { "quem": "voce", "emocao": "radiante" }, { "quem": "ana", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}
