@@ -265,6 +265,61 @@ async function benchmarkGpu(antialias, w, h, dpr) {
     return 0;
   }
 }
+// ⚡ desempenho (23/out, só no inglês): a troca de nível NO MEIO da corrida
+// (vigia) não mexe em nada que entra na chave do shader. Antes, desligar
+// luzes pelo `visible` e sombras pelo `shadowMap.enabled`/`sol.castShadow`
+// mudava a contagem de luzes/sombras e TODOS os materiais recompilavam de uma
+// vez — no iPhone, a travada dos primeiros segundos de várias pistas (o
+// vigia rebaixava e o jogo parava pra compilar; depois "ia que ia"). Agora a
+// luz apaga pela intensidade 0 e a sombra some tirando quem projeta (o mapa
+// fica vazio e para de ser redesenhado). Na corrida seguinte o nível já
+// nasce certo (memoNivel) e o aquecer() compila tudo antes da largada.
+function apagarSemRecompilar(luz) {
+  if (luz.userData.intensidadeBase == null) luz.userData.intensidadeBase = luz.intensity;
+  luz.intensity = 0;
+}
+function aplicarQualidadeEmCorrida(nivel) {
+  nivelQualidade = nivel;
+  perfilAtual = PERFIS[nivel] || PERFIS.alta;
+  api.qualidadeEfetiva = nivel;
+  for (const m of cenarioMalhas) m.castShadow = nivel === 'alta';
+  for (const m of extrasCenario) m.castShadow = nivel === 'alta';
+  if (!perfilAtual.luzes) {
+    if (luzCarro) apagarSemRecompilar(luzCarro);
+    for (const l of faroisLuz) apagarSemRecompilar(l);
+    for (const l of luzesPool) l.intensity = 0; // atualizarLuzes para de acender (perfilAtual.luzes false)
+  }
+  if (!renderer) return;
+  aplicarTamanho();
+  if (nivel === 'minima' && scene) {
+    scene.traverse((o) => { if (!o.isLight) o.castShadow = false; }); // a luz segue projetando (chave do shader)
+    renderer.shadowMap.needsUpdate = true; // um último desenho, já vazio
+    renderer.shadowMap.autoUpdate = false;
+  }
+  console.info('[turismo3d] qualidade (na corrida, sem recompilar):', nivel);
+}
+// o nível a que o vigia chegou fica lembrado por GPU e tamanho da vista: a
+// próxima pista já começa nele, em vez de engasgar 2 s até rebaixar de novo
+const ORDEM_NIVEIS = ['alta', 'leve', 'minima'];
+const CHAVE_MEMO_NIVEL = 'turismo3d_nivel';
+const VALIDADE_MEMO_NIVEL = 7 * 24 * 3600 * 1000;
+function chaveMemoNivel(gpu, w, h) { return `${gpu}|${w}x${h}`; }
+function lerMemoNivel(chave) {
+  try {
+    const tudo = JSON.parse(localStorage.getItem(CHAVE_MEMO_NIVEL) || '{}');
+    const m = tudo[chave];
+    if (!m || !ORDEM_NIVEIS.includes(m.nivel) || !(Date.now() - m.em < VALIDADE_MEMO_NIVEL)) return null;
+    return { nivel: m.nivel, escala: Math.max(0.6, Math.min(1, +m.escala || 1)) };
+  } catch (e) { return null; }
+}
+function gravarMemoNivel() {
+  if (!ingles || !api.chaveNivel) return;
+  try {
+    const tudo = JSON.parse(localStorage.getItem(CHAVE_MEMO_NIVEL) || '{}');
+    tudo[api.chaveNivel] = { nivel: nivelQualidade, escala: escalaExtra, em: Date.now() };
+    localStorage.setItem(CHAVE_MEMO_NIVEL, JSON.stringify(tudo));
+  } catch (e) {}
+}
 function aplicarQualidade(nivel) {
   nivelQualidade = nivel;
   perfilAtual = PERFIS[nivel] || PERFIS.alta;
@@ -339,10 +394,12 @@ function vigiarDesempenho() {
 }
 // um degrau por vez: alta → leve → mínima → mínima com menos pixels (até 60%)
 function rebaixar(motivo, ms) {
-  if (nivelQualidade === 'alta') aplicarQualidade('leve');
-  else if (nivelQualidade === 'leve') aplicarQualidade('minima');
+  const trocar = ingles ? aplicarQualidadeEmCorrida : aplicarQualidade;
+  if (nivelQualidade === 'alta') trocar('leve');
+  else if (nivelQualidade === 'leve') trocar('minima');
   else if (escalaExtra > 0.6) { escalaExtra = Math.max(0.6, +(escalaExtra - 0.2).toFixed(2)); aplicarTamanho(); }
   else return; // já está no chão
+  gravarMemoNivel();
   api.rebaixamentos = (api.rebaixamentos || 0) + 1;
   console.info('[turismo3d] vigia:', motivo, Math.round(ms) + ' ms →', nivelQualidade, 'escala', escalaExtra, 'dpr', api.pixelRatio);
   vigiaAte = performance.now() + 6000;
@@ -355,7 +412,7 @@ async function aquecer() {
   // corrida): o guardião das faíscas e o 1º sprite "+3 🪙" (invisível; o
   // pool de coletarFicha o reaproveita)
   if (ingles && renderer && scene) {
-    guardarProgramaFaiscas();
+    if (!faiscaGuarda) guardarProgramaFaiscas(); // o aquecer() pode rodar 2× (medida rebaixou)
     if (portais.some((pt) => pt.fichas && pt.fichas.length) && !popups.length) novoPopup();
   }
   try {
@@ -2470,12 +2527,27 @@ async function montar(canvas, config) {
     nivelQualidade = ms > 34 ? 'minima' : (ms > 19 || gpu.fraca || !resolverQualidade('auto')) ? 'leve' : 'alta';
     console.info('[turismo3d] benchmark', api.benchMs, 'ms @', medida.w + '×' + medida.h, 'dpr', dprAlta, '→', nivelQualidade);
   }
+  escalaExtra = 1;
+  // ⚡ (23/out, inglês): começa no nível a que o vigia chegou da última vez
+  // nesta GPU e neste tamanho (nunca acima do que a preferência/benchmark
+  // escolheram; "alta" escolhida à mão continua alta)
+  api.chaveNivel = ingles ? chaveMemoNivel(gpu.nome, medida.w, medida.h) : null;
+  api.nivelLembrado = null;
+  if (ingles && pref !== 'alta') {
+    const memo = lerMemoNivel(api.chaveNivel);
+    if (memo && ORDEM_NIVEIS.indexOf(memo.nivel) >= ORDEM_NIVEIS.indexOf(nivelQualidade)) {
+      if (ORDEM_NIVEIS.indexOf(memo.nivel) > ORDEM_NIVEIS.indexOf(nivelQualidade)) console.info('[turismo3d] nível lembrado:', nivelQualidade, '→', memo.nivel);
+      nivelQualidade = memo.nivel;
+      if (memo.nivel === 'minima') escalaExtra = memo.escala;
+      api.nivelLembrado = memo.nivel;
+    }
+  }
   qualidadeAlta = nivelQualidade === 'alta';
   perfilAtual = PERFIS[nivelQualidade];
   api.qualidadeEfetiva = nivelQualidade;
   api.frameMs = null;
   vigiaTempos = []; vigiaAte = 0; ultimoQuadroMs = 0; vigiaSomaMs = 0; vigiaLentosSeguidos = 0;
-  escalaExtra = 1; api.rebaixamentos = 0;
+  api.rebaixamentos = 0;
 
   renderer = new THREE.WebGLRenderer({ canvas, antialias: nivelQualidade !== 'minima', powerPreference: 'high-performance' });
   renderer.setPixelRatio(pixelRatioPara(nivelQualidade, medida.w, medida.h));
@@ -2620,7 +2692,15 @@ async function montar(canvas, config) {
   api.progresso = 0.9;
   await aquecer();
   api.progresso = 0.96;
+  const nivelAntesDaMedida = nivelQualidade;
   await medirDesempenho();
+  if (ingles && nivelQualidade !== nivelAntesDaMedida) {
+    // a medida rebaixou: luzes/sombras mudaram a chave dos shaders que o
+    // aquecer() acabou de compilar — compila de novo ANTES da largada (senão
+    // o 1º quadro da corrida compilava tudo) e lembra o nível pra próxima
+    await aquecer();
+    gravarMemoNivel();
+  }
   vigiaAte = performance.now() + 3000;
   // medida pro debug(): programas de shader compilados DEPOIS da largada
   // (cada um é um engasgo; o ideal é 0 — só a troca de nível do vigia cria)
@@ -3206,7 +3286,7 @@ function debug() {
     programasNovosNaCorrida: api.programasNaLargada != null ? maiorIdPrograma - api.programasNaLargada : null,
     luzesPostes: { pool: luzesPool.length, visiveis: luzesPool.filter((l) => l.visible).length, acesas: luzesPool.filter((l) => l.visible && l.intensity > 0).length },
     texturasAdiantadas: texturasAdianteI + '/' + texturasAdiante.length,
-    qualidade: nivelQualidade, gpu: api.gpu, frameMs: api.frameMs, aviso: api.aviso, tremor: estado ? estado.tremor : null,
+    qualidade: nivelQualidade, nivelLembrado: api.nivelLembrado, gpu: api.gpu, frameMs: api.frameMs, aviso: api.aviso, tremor: estado ? estado.tremor : null,
     fantasma: fantasma ? { visivel: fantasma.visible, pos: fantasma.position.toArray().map((v) => +v.toFixed(1)) } : null,
     coletas: coletas.length, popups: popups.filter((sp) => sp.visible).length,
     fichasPegasJs: portais.reduce((n, pt) => n + (pt.fichas || []).filter((f) => f.userData.pega).length, 0),
@@ -3257,7 +3337,7 @@ api.abaixarMusica = (ms) => {
   if (ate > duckAte) duckAte = ate;
 };
 // gancho de teste/diagnóstico: turismo3d.forcarQualidade('minima')
-api.forcarQualidade = (nivel) => { if (PERFIS[nivel]) aplicarQualidade(nivel); return nivelQualidade; };
+api.forcarQualidade = (nivel) => { if (PERFIS[nivel]) (ingles && api.pronto ? aplicarQualidadeEmCorrida : aplicarQualidade)(nivel); return nivelQualidade; };
 // o stub do index.html tinha carregar(); mantém o contrato depois da troca
 // (receitas externas fazem `await window.turismo3d.carregar()` sem saber se já carregou)
 api.carregar = () => Promise.resolve();
