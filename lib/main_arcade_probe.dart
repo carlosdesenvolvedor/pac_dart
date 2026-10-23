@@ -5,9 +5,15 @@
 // Rotas do English Turismo (prova visual do plano 8.3): /turismo-en, /turismo-en11 … /turismo-en30,
 // /historia-en (galeria), /historia-en1 (abertura 1) e /historia-en30 (final 30, créditos).
 // 📺 Escutar assistindo (plano das historinhas §11.3): /?licao=<Licao.id>&modo=so|ep|pe[&setlist=1]#/assistir-en
-// — o "▶ Assistir" é o gesto que libera o áudio na web; com setlist=1 toca uma setlist "Probe" de 2 lições.
+// — o "▶ Assistir" é o gesto que libera o áudio na web; com setlist=1 toca uma setlist "Probe" de 2 lições;
+// &vel=0.75 (🐢) e &pt=0 (balão sem a tradução) mudam a config do Ouvir.
 // 🎬 A cena da frase na lição de inglês: /?licao=<Licao.id>&cena=1|0&ensaio=0|1#/licao-en — a lição de verdade
-// (PalcoIngles) no enquadramento do HomePage; cena=0 mostra o rosto (a pref "🎬 Cena / 🙂 Rosto").
+// (PalcoIngles) no enquadramento do HomePage; cena=0 mostra o rosto (a pref "🎬 Cena / 🙂 Rosto");
+// &assistir=1 abre por cima o 📺 "Assistir a historinha" da lição (AssistirLicaoPage + a pergunta do fim).
+// Parâmetros da prova (vídeo): ?tema=claro|escuro|mixart (paleta; padrão mixart); no /historia-en,
+// ?pista=N&parte=intro|fim abre a cena desse capítulo (fim do 30 = créditos THE END); no /turismo-en,
+// ?pistamax=N grava o campeonato até a pista N (medalhas/tempos/vistos das anteriores, 1.240 🪙).
+// As rotas -en carregam antes o currículo de inglês (índice das vozes mp3 + bocas do Rhubarb).
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -20,6 +26,7 @@ import 'features/curso/data/progresso_repository.dart';
 import 'features/curso/presentation/bloc/curso_bloc.dart';
 import 'features/curso/presentation/bloc/typing_bloc.dart';
 import 'features/arcade/data/historia_turismo_repo.dart';
+import 'features/arcade/domain/progresso_historia.dart';
 import 'features/arcade/domain/gerador_missoes.dart';
 import 'features/arcade/domain/historia_turismo.dart';
 import 'features/arcade/domain/personagem.dart';
@@ -38,6 +45,7 @@ import 'features/ingles/data/setlists_repository.dart';
 import 'features/ingles/domain/config_ouvir.dart';
 import 'features/ingles/domain/fila_ouvir.dart';
 import 'features/ingles/domain/setlist.dart';
+import 'features/ingles/presentation/ouvir/assistir/assistir_licao_page.dart' show assistirLicao;
 import 'features/ingles/presentation/ouvir/ouvir_acoes.dart';
 import 'features/ingles/presentation/ouvir/ouvir_cubit.dart';
 import 'features/ingles/presentation/ouvir/setlists_cubit.dart';
@@ -46,7 +54,14 @@ import 'features/ingles/presentation/palco_ingles.dart';
 import 'features/ingles/presentation/widgets/ensaio_mental.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() => runApp(const _ProbeApp());
+void main() {
+  Mixart.atual = switch (Uri.base.queryParameters['tema']) {
+    'claro' => Paleta.flutterClaro,
+    'escuro' => Paleta.flutterEscuro,
+    _ => Paleta.mixart,
+  };
+  runApp(const _ProbeApp());
+}
 
 class _ProbeApp extends StatelessWidget {
   const _ProbeApp();
@@ -64,10 +79,13 @@ class _ProbeApp extends StatelessWidget {
         '/turismo10': (_) => const TurismoPage(semente: 3, pistaInicial: 10),
         // 📖 English Turismo (o curso vira inglês DENTRO do builder): campeonato com a história, as 20
         // pistas novas direto na corrida (sem história), a galeria e as cenas 1 (abertura) e 30 (final)
-        '/turismo-en': (_) => _ingles(const TurismoPage(carregarHistoria: true)),
+        '/turismo-en': (_) => _ingles(const _CampeonatoProbe()),
         for (var n = pistasClassicas + 1; n <= pistasGtIngles.length; n++)
           '/turismo-en$n': (_) => _ingles(TurismoPage(semente: 3, pistaInicial: n)),
-        '/historia-en': (_) => _ingles(const _HistoriaProbe()),
+        '/historia-en': (_) => _ingles(_HistoriaProbe(
+              pista: int.tryParse(Uri.base.queryParameters['pista'] ?? ''),
+              parte: Uri.base.queryParameters['parte'] == 'fim' ? ParteDoCapitulo.fim : ParteDoCapitulo.intro,
+            )),
         '/historia-en1': (_) => _ingles(const _HistoriaProbe(pista: 1, parte: ParteDoCapitulo.intro)),
         '/historia-en30': (_) => _ingles(const _HistoriaProbe(pista: 30, parte: ParteDoCapitulo.fim)),
         '/assistir-en': (_) => _ingles(const _AssistirProbe()),
@@ -78,10 +96,54 @@ class _ProbeApp extends StatelessWidget {
   }
 }
 
-/// Liga o curso de inglês antes de montar [pagina] (as rotas `-en` da prova visual).
+/// Liga o curso de inglês antes de montar [pagina] (as rotas `-en` da prova visual) e espera o currículo
+/// carregar uma vez: é ele que registra o índice das vozes mp3 (curso e história) e as bocas do Rhubarb —
+/// sem isso a história do Turismo falava com a voz sintética e a boca seguia só o texto.
 Widget _ingles(Widget pagina) {
   Linguagem.atual = Linguagem.ingles;
-  return pagina;
+  return FutureBuilder<void>(
+    future: _curriculoIngles,
+    builder: (_, snap) => snap.connectionState == ConnectionState.done
+        ? pagina
+        : Scaffold(backgroundColor: Mixart.bg, body: const Center(child: CircularProgressIndicator())),
+  );
+}
+
+final Future<void> _curriculoIngles =
+    CurriculoLoader(linguagem: Linguagem.ingles).carregar().then((_) {}, onError: (Object _) {});
+
+/// 🏁 O campeonato do English Turismo com a história; `?pistamax=N` grava antes o progresso de quem chegou à
+/// pista N (medalhas variadas e tempos nas anteriores, aberturas/chegadas já vistas, moedas e tutorial).
+class _CampeonatoProbe extends StatelessWidget {
+  const _CampeonatoProbe();
+
+  static final Future<void> _semear = () async {
+    final n = int.tryParse(Uri.base.queryParameters['pistamax'] ?? '');
+    if (n == null) return;
+    try {
+      final p = await SharedPreferences.getInstance();
+      final max = n.clamp(1, pistasGtIngles.length);
+      await p.setInt('turismo_pista_max', max);
+      await p.setInt('turismo_moedas', 1240);
+      await p.setBool('turismo_tutorial_digitacao', true);
+      const medalhas = [3, 3, 2, 3, 1, 3, 2, 3, 3, 2];
+      final vistos = <String>[];
+      for (var i = 1; i < max; i++) {
+        await p.setInt('turismo_medalha_$i', medalhas[i % medalhas.length]);
+        await p.setDouble('turismo_tempo_$i', 58.0 + (i * 7) % 23 + (i % 3) * .37);
+        vistos.addAll(['i$i', 'f$i', 'c$i']);
+      }
+      await p.setStringList(ProgressoHistoria.chaveVistos, vistos);
+    } catch (_) {}
+  }();
+
+  @override
+  Widget build(BuildContext context) => FutureBuilder<void>(
+        future: _semear,
+        builder: (_, snap) => snap.connectionState == ConnectionState.done
+            ? const TurismoPage(carregarHistoria: true)
+            : Scaffold(backgroundColor: Mixart.bg, body: const Center(child: CircularProgressIndicator())),
+      );
 }
 
 /// 📖 Prova visual da história: com [pista], a cena ([parte]) desse capítulo; sem, a galeria inteira
@@ -209,7 +271,14 @@ class _AssistirInicio extends StatelessWidget {
 
   void _assistir(BuildContext context) {
     final ouvir = OuvirCubit.de(context)!;
-    ouvir.configurar(ouvir.state.config.copyWith(modo: _modo));
+    // ?vel=0.75|0.9|1|1.15 (🐢 devagar) e ?pt=0 (sem a tradução no balão) para a prova visual
+    final q = Uri.base.queryParameters;
+    final vel = double.tryParse(q['vel'] ?? '');
+    ouvir.configurar(ouvir.state.config.copyWith(
+      modo: _modo,
+      velocidade: vel == null ? null : ConfigOuvir.velocidadeMaisPerto(vel),
+      mostrarTraducao: q['pt'] == '0' ? false : null,
+    ));
     if (_comSetlist) {
       final s = _setlistProbe(context);
       if (s != null) {
@@ -307,6 +376,16 @@ class _LicaoProbeState extends State<_LicaoProbe> {
     super.dispose();
   }
 
+  /// `&assistir=1`: abre o 📺 "Assistir a historinha" da lição por cima (uma vez, depois do 1º quadro da lição).
+  var _assistirAberto = false;
+  void _abrirAssistir(BuildContext context, CursoState st) {
+    if (_assistirAberto || Uri.base.queryParameters['assistir'] != '1') return;
+    _assistirAberto = true;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (context.mounted) unawaited(assistirLicao(context, st.licao));
+    });
+  }
+
   /// O curso chegou: vai para a lição pedida (uma vez).
   void _escolher(CursoState st) {
     if (_escolheu || st.status != CursoStatus.pronto) return;
@@ -345,6 +424,7 @@ class _LicaoProbeState extends State<_LicaoProbe> {
                           : const CircularProgressIndicator(),
                     );
                   }
+                  _abrirAssistir(context, st);
                   return Center(
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 980),
