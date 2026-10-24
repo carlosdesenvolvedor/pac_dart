@@ -2647,3 +2647,56 @@ Pedido do dono (print de uma lista do Gemini): uma lição no A1 com as 50 palav
 - **Conto Jack Hannaford** (`conto-jack-hannaford`, ordem 55.5, B1, logo depois dos tempos narrativos): 4 lições × 10 frases, reconto NOSSO do conto popular (Joseph Jacobs, 1890, domínio público), revisado por editor nativo. O dono mandou o PDF + mp3 do CIMV (Mairo Vergara, © 2019, com marca d'água da compra): **não entram no app** (material pago num app público); o texto foi escrito longe dele.
 - Papel novo **`narradora`** (voz Chirp Vindemiatrix): vira o narrador no palco (`quemNoPalco`), sem rosto na lição. Figurantes `jack`, `fazendeiro`, `esposa` na tabela fixa (42). Historinha autoral (5bf14a6); pedidos de arte (cavalo, rédeas, porta, estrada de terra, deitar de costas, nuvens) no PEDIDOS-DE-ARTE.
 - Curso: **125 trilhas · 626 lições · 5.548 frases** (testes contam 626).
+
+## 🔁 24/out/2026: "Revisão até aqui" — 10 exercícios misturados no mapa (PUBLICADO no hosting em 24/out; sem commit)
+
+Pedido do dono: um modo revisão "tipo Duolingo" com POUCAS perguntas (10) sortidas de tudo o que já estudou, misturando escrever,
+blocos, escutar e falar, com "não posso escutar / não posso falar", e no mapa um ponto de "revisão até onde você está".
+- **Mapa:** nó 🔁 **"Revisão até aqui"** (`Key('mapa-revisao')`, um `No3D` disponível) no caminho da trilha atual, LOGO ANTES da lição
+  atual (`CaminhoIngles.onRevisao`, faixa `bandaRevisao` 120 px; a estrada passa por ele como feito). Só aparece com ≥1 lição concluída.
+- **Sorteio** (`domain/revisao_mista.dart`, puro): frases das lições concluídas (`licoesEstudadas`), no máximo uma por lição até todas
+  darem uma, sorteio ponderado (u^(1/w)) com peso = memória do FSRS (`pesoNaRevisaoMista`: 1 + 2×(1−chance de lembrar) + 0,4×lapsos;
+  sem cartão 1,5; suspenso 0,2) × empurrão para as lições recentes (até 1,6×). Tipos nas cotas **3 ✍️ · 3 🧩 · 2 👂 · 2 🎤**
+  (`cotasDosTipos`, maiores restos), blocos só com 3+ palavras, falar ≤14 e escutar ≤18 palavras, sem trinca do mesmo tipo.
+- **Tela** (`presentation/revisao_mista_page.dart`): ✍️ = tradução em cima + digitar de memória; 🧩 = `FraseView` em Montar; 👂 = só o
+  🔊 grande + 🐢 (a frase toca sozinha, sem o português; ouvir não conta dica) e digitar; 🎤 = `FraseView` em Falar (só quando o
+  navegador tem reconhecimento de voz). **"🔇 Não posso escutar agora" / "🙊 Não posso falar agora"**: o exercício vira ✍️/🧩 na
+  hora, o tipo sai do resto da sessão e fica desligado por 1 hora (`PrefsRevisaoMista`, `en_rev_sem_audio_ate`/`en_rev_sem_fala_ate`;
+  com o som pausado a voz do app também cala). Errou = a frase volta UMA vez no fim, de outro jeito, sem nota. Resumo com % e
+  "🔀 Mais uma rodada" (sorteia outras 10).
+- **O que grava** (`presentation/revisao_mista.dart`, `abrirRevisaoMista`): cada exercício conta 1 no hábito; ranking no fim;
+  FSRS: ✍️ e 🎤 registram a nota de verdade; 🧩 e 👂 (mostram/dizem a frase) só registram o ERRO, como "difícil". Evidências das
+  palavras teimosas como na Revisão do dia (🧩/👂 sem crédito de acerto).
+- **Testes:** `ingles_revisao_mista_test.dart` (10), `ingles_revisao_mista_ui_test.dart` (2) e 2 novos no `ingles_mapa_ui_test.dart`;
+  suíte do inglês + treino do dia 1.537 ok; analyze limpo. **Falta:** ver no navegador/celular de verdade (falar e o "não posso").
+
+## 🎓 24/out/2026: Aula do professor em cada lição do A1 (PUBLICADO no hosting em 24/out; sem commit)
+
+Pedido do dono: em cada lição, uma explicação pronta (não IA) de um "professorzinho" de desenho, mexendo a boca e falando em
+português, como uma historinha — o sentido das frases, como lembrar, e o termo técnico/regra importante. Começar pelo A1.
+- **Personagem:** `ElencoIngles.prof` (quem = `prof`, nome em `nomeDoProfessor` = "Prof. Beto"): grisalho, óculos, camisa azul e
+  gravata (`Aparencia.gravata`, novo). Voz Google Chirp 3 HD **Sadaltager** em pt-BR e en-US (mesmo timbre nos dois idiomas).
+- **Conteúdo:** `assets/ingles/aulas/<slug>.json` (32 trilhas do A1, **156 aulas, 2.046 falas**) + `indice.json`. Formato:
+  `{"versao":1,"trilha":slug,"licoes":{Licao.id:{"titulo","falas":[{"pt","quadro"?} | {"en","tr"}]}}}` — o "pt" é falado em
+  português (SEM inglês dentro: a voz pt-BR pronunciaria errado), o "quadro" vai para a lousa, o "en" é o exemplo dito em inglês.
+  Escritas por 8 agentes autores + 8 revisores (inglês, regras, truques que ensinavam errado), receita em
+  `tools/ingles/aulas/PROMPT_AULAS.md`, contexto `montar_contexto.py`, validador `validar_aulas.py` (detector de inglês dentro do
+  português, tamanhos, ≥2 "en" copiados da lição), exemplo aprovado `exemplo_aula.json`.
+- **Voz e boca:** `tools/ingles/aulas/vozes_aula.py --gcp music-system-421ee` → `assets/ingles/voz_aula/<hash>.mp3` +
+  `assets/ingles/vozes_aula.json` {"pt|texto"/"en|texto": asset}; depois `python3 -I tools/ingles/bocas_rhubarb.py` (o português
+  vai com `-r phonetic`; o reconhecedor do Rhubarb é inglês). App: `AudioNativo.registrarAula/daAula`, `VozIngles.falarNaAula`
+  (mp3 + boca do Rhubarb; sem mp3 → voz do aparelho pt-BR/en-US com boca pelo texto).
+- **Tela** `presentation/aula_professor_page.dart`: rosto grande (`PersonagemFalante('prof')`), legenda do que ele diz, **lousa**
+  verde (o quadro, ou o exemplo em inglês + tradução), ⏮ ⏯ ⏭ (Espaço, ← →), 🐢, "📜 Ler a aula" (texto todo; tocar numa fala
+  começa dali), "Praticar/Começar a lição →". Toca sozinha quando o som já foi liberado por um toque.
+- **Onde aparece:** abre SOZINHA na 1ª visita de cada lição (não concluída, não vista; antes do ensaio mental), com a chave
+  "Abrir a aula sozinha nas lições novas" (`PrefsAula`: `en_aula_auto`, `en_aulas_vistas`); link "🎓 aula do Prof. Beto" no começo
+  da lição (`_LinkAula`) e "🎓 Aula do Prof. Beto" na folha da lição no mapa (`onAula`, pelo índice `AulasRepo`).
+  `PalcoIngles.aulaSozinha` (desligado no `test/flutter_test_config.dart`).
+- **Testes:** `ingles_aula_professor_test.dart` (formato, lousa, repo, tela), `ingles_aula_professor_app_test.dart` (app inteiro:
+  abre na 1ª visita, link, não reabre, pref desligada, lição sem aula), `ingles_aulas_conteudo_test.dart` (todo o A1 com aula, toda
+  fala com mp3 e boca).
+- **Dúvidas que os revisores acharam no CURRÍCULO (não mexido):** `numeros-horas-soletrar` — a nota dos -teen diz "sempre a força no
+  -teen" (antes de substantivo/contando, a força vai para o começo); `que-horas-sao` — a conta do fuso não fecha ("about seven
+  thirty" no Brasil × "It's almost midnight here!"); cena de `ele-ela-nos-eles` — "It's really hot" parece falar de Chicago.
+- **Próximo:** A2 em diante com a mesma receita (montar_contexto `--etapa A2`, autores + revisores, validar, copiar, vozes, bocas).

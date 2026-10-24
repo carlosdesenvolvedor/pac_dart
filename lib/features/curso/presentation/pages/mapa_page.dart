@@ -9,9 +9,13 @@ import '../../../ingles/data/audio_nativo.dart';
 import '../../../ingles/data/tradutor.dart';
 import '../../../ingles/domain/fonte_frase.dart';
 import '../../../ingles/domain/texto_salvo.dart';
+import '../../../ingles/data/aulas_repo.dart';
+import '../../../ingles/domain/aula_professor.dart';
+import '../../../ingles/presentation/aula_professor_page.dart';
 import '../../../ingles/presentation/baralhos_page.dart';
 import '../../../ingles/presentation/fixacao.dart';
 import '../../../ingles/presentation/revisao_cubit.dart';
+import '../../../ingles/presentation/revisao_mista.dart';
 import '../../../ingles/presentation/texto_para_licao_page.dart';
 import '../../../ingles/domain/palavras_novas.dart';
 import '../../../ingles/presentation/minhas_palavras_page.dart';
@@ -1076,6 +1080,8 @@ class _SecaoTrilhaIngles extends StatelessWidget {
               },
               onComecar: (l) => _praticar(context, t, l),
               onBau: () => _abrirBau(context, trilha, palavras, cor, completa, concluidas),
+              // 🔁 "Revisão até aqui": frases sortidas de tudo o que já foi feito, logo antes da lição atual
+              onRevisao: ehAtual && licoesEstudadas(st).isNotEmpty ? () => abrirRevisaoMista(context) : null,
             ),
           ),
         ),
@@ -2042,6 +2048,13 @@ void mostrarOpcoesLicao(BuildContext context, CursoState st, int t, int l, int? 
               Navigator.of(sheet).pop();
               escolherPalavrasParaTreinar(context, licao);
             },
+      // 🎓 a aula do professor (só se a trilha tem aulas: o índice já lido)
+      onAula: !st.ehIngles || !AulasRepo.temAulaNaTrilha(trilhaDaLicao(licao.id))
+          ? null
+          : () {
+              Navigator.of(sheet).pop();
+              abrirAulaProfessor(context, licao);
+            },
       // 📺 a historinha da lição (player próprio: a fila do Ouvir não muda; não marca progresso)
       onAssistir: !ouvir || !podeAssistirLicao(context, licao)
           ? null
@@ -2371,6 +2384,7 @@ class _LicaoSheet extends StatelessWidget {
 
   /// Inglês: "📺 Assistir a historinha" (null = sem desenho para esta lição).
   final VoidCallback? onAssistir;
+  final VoidCallback? onAula;
 
   /// Inglês: o "🎧 Ouvir" — tocar a lição, tocar daqui até o fim do curso (null em texto próprio),
   /// pôr na setlist e escolher frases (toque longo no ➕ também). null = sem player.
@@ -2386,6 +2400,7 @@ class _LicaoSheet extends StatelessWidget {
       this.onPalavras,
       this.onEscolherPalavras,
       this.onAssistir,
+      this.onAula,
       this.onOuvir,
       this.onOuvirDaqui,
       this.onPorNaSetlist,
@@ -2558,6 +2573,18 @@ class _LicaoSheet extends StatelessWidget {
                 titulo: '🎯 Escolher palavras para treinar',
                 subtitulo: 'marque só as que você quer estudar, de qualquer frase da lição',
                 onTap: onEscolherPalavras!,
+              ),
+            ),
+          ],
+          if (ingles && onAula != null) ...[
+            const SizedBox(height: 10),
+            KeyedSubtree(
+              key: const Key('sheet-aula'),
+              child: _OpcaoSheet(
+                icone: Icons.school_rounded,
+                titulo: '🎓 Aula do $nomeDoProfessor',
+                subtitulo: 'o professor explica a lição em português, com truques para lembrar',
+                onTap: onAula!,
               ),
             ),
           ],

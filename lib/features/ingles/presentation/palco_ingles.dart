@@ -20,6 +20,8 @@ import '../../ia/domain/explicacao.dart';
 import '../../ia/presentation/widgets/botao_por_que.dart';
 import '../data/preferencia_cena_licao.dart';
 import '../data/voz_ingles.dart';
+import '../data/aulas_repo.dart';
+import '../domain/aula_professor.dart';
 import '../domain/assistir/historia_licao.dart';
 import '../domain/assistir/historias_licoes.dart';
 import '../domain/baralhos.dart' show chaveDaFrase;
@@ -36,6 +38,7 @@ import 'ouvir/assistir/assistir_licao_page.dart';
 import 'zona_visivel.dart';
 import 'revisao_cubit.dart';
 import '../../../core/som/sons.dart';
+import 'aula_professor_page.dart';
 import 'widgets/audio_da_frase.dart';
 import 'widgets/cena_da_frase.dart';
 import 'widgets/cena_visual.dart';
@@ -75,6 +78,10 @@ class PalcoIngles extends StatefulWidget {
   /// Pref: quantas vezes SEGUIDAS o cartão "🆕 palavras novas" do começo foi pulado (Começar direto ou a 1ª
   /// tecla); "Conhecer antes" zera.
   static const prefPulosAntes = 'en_antes_pulos';
+
+  /// 🎓 Na 1ª visita a uma lição com aula do professor, a aula abre sozinha antes do ensaio (pref
+  /// [PrefsAula.chaveAuto]). Os testes antigos desligam (test/flutter_test_config.dart).
+  static bool aulaSozinha = true;
 
   @override
   State<PalcoIngles> createState() => _PalcoInglesState();
@@ -311,7 +318,17 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     if (trocouLicao || repetiu) {
       _montarFila();
       // lição nova começa com o ensaio; ao repetir ele pula (o link fica no palco)
-      if (trocouLicao && _ensaioLigado == true && !curso.vitoria) _abrirEnsaio(rebuild: false);
+      if (trocouLicao && PalcoIngles.aulaSozinha && !curso.vitoria) {
+        // 🎓 lição nova: a aula do professor (1ª vez) e depois o ensaio, pelo mesmo caminho do começo
+        _aulaTentada = false;
+        _ensaioEsperando = true;
+        final ligado = _ensaioLigado ?? true;
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          if (mounted) _decidirEnsaio(ligado);
+        });
+      } else if (trocouLicao && _ensaioLigado == true && !curso.vitoria) {
+        _abrirEnsaio(rebuild: false);
+      }
       _carregarPasso();
     }
     // a âncora de novo, no pico: o mesmo sino do ensaio (e o gesto, na linha
@@ -440,8 +457,30 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
 
   void _manterAFraseVisivel() => manterZonaVisivel(_zonaDigitacao, aindaVale: () => mounted && !_segurandoFrase);
 
-  /// A pref chegou: no começo da lição abre o ensaio (ou libera a frase).
+  /// 🎓 A aula desta lição já foi tentada (abriu sozinha, ou não tinha/não precisava).
+  bool _aulaTentada = false;
+
+  /// 🎓 Na 1ª visita (lição não concluída, aula ainda não vista, pref ligada): abre a aula do professor e espera
+  /// ela fechar. Nunca lança.
+  Future<void> _talvezAulaAntes() async {
+    try {
+      final l = curso.licao;
+      if (l.id.isEmpty || curso.licaoConcluida(curso.trilhaIdx, curso.licaoIdx)) return;
+      if (!await PrefsAula.autoLigada() || await PrefsAula.jaViu(l.id) || !mounted) return;
+      if (await AulasRepo.daLicao(l.id) == null || !mounted) return;
+      await abrirAulaProfessor(context, l, primeiraVez: true, voz: _voz);
+    } catch (_) {}
+  }
+
+  /// A pref chegou: no começo da lição abre o ensaio (ou libera a frase) — antes, a aula do professor, se for a 1ª vez.
   void _decidirEnsaio(bool ligado) {
+    if (PalcoIngles.aulaSozinha && !_aulaTentada && _ensaioEsperando && _fila.feitos == 0 && !curso.vitoria) {
+      _aulaTentada = true;
+      _talvezAulaAntes().whenComplete(() {
+        if (mounted) _decidirEnsaio(ligado);
+      });
+      return;
+    }
     final abre = ligado && _ensaioEsperando && _fila.feitos == 0 && !curso.vitoria;
     setState(() {
       _ensaioLigado = ligado;
@@ -1072,6 +1111,10 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
                   CenaVisual(licao: curso.licao, compacta: usaCena),
                   const SizedBox(height: 8),
                 ],
+                _LinkAula(
+                    key: ValueKey('link-aula-${curso.licao.id}'),
+                    licao: curso.licao,
+                    onAbrir: () => abrirAulaProfessor(context, curso.licao, voz: _voz)),
                 _LinkEnsaio(ligado: _ensaioLigado != false, onAbrir: _abrirEnsaio),
                 if (podeAssistir) _LinkAssistir(onAbrir: _assistirHistorinha),
                 const SizedBox(height: 12),
@@ -1336,6 +1379,46 @@ class _LinhaDominadas extends StatelessWidget {
       ),
     );
   }
+}
+
+/// No começo da lição: "🎓 aula do professor" (só quando a lição tem aula).
+class _LinkAula extends StatefulWidget {
+  final Licao licao;
+  final VoidCallback onAbrir;
+  const _LinkAula({super.key, required this.licao, required this.onAbrir});
+
+  @override
+  State<_LinkAula> createState() => _LinkAulaState();
+}
+
+class _LinkAulaState extends State<_LinkAula> {
+  late final Future<AulaLicao?> _aula = AulasRepo.daLicao(widget.licao.id);
+
+  @override
+  Widget build(BuildContext context) => FutureBuilder<AulaLicao?>(
+        future: _aula,
+        builder: (context, snap) {
+          final aula = snap.data;
+          if (aula == null) return const SizedBox.shrink();
+          final min = (aula.segundos / 60).ceil().clamp(1, 9);
+          return InkWell(
+            key: const Key('licao-aula'),
+            onTap: widget.onAbrir,
+            borderRadius: BorderRadius.circular(8),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 4),
+              child: Text.rich(TextSpan(children: [
+                TextSpan(
+                    text: '🎓 aula do $nomeDoProfessor',
+                    style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.brand)),
+                TextSpan(
+                    text: ' · ~$min min, em português: o que as frases querem dizer e como lembrar',
+                    style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
+              ])),
+            ),
+          );
+        },
+      );
 }
 
 /// No começo da lição: rever o ensaio mental sob demanda (e religá-lo, se

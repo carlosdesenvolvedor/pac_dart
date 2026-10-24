@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/services.dart' show rootBundle;
@@ -5,6 +6,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import '../../../core/linguagem/linguagem.dart';
 import '../../dartpad/mapa_rodavel.dart';
 import '../../ingles/data/audio_nativo.dart';
+import '../../ingles/data/aulas_repo.dart';
 import '../../ingles/data/bocas_ingles.dart';
 import '../domain/curriculo.dart';
 
@@ -32,6 +34,11 @@ class CurriculoLoader {
         final historia = await rootBundle.loadString(AudioNativo.indiceHistoria);
         AudioNativo.registrarHistoria(jsonDecode(historia) as Map<String, dynamic>);
       } catch (_) {} // sem ele: a história fala com a voz sintética e o perfil de cada personagem
+      try {
+        final aula = await rootBundle.loadString(AudioNativo.indiceAula);
+        AudioNativo.registrarAula(jsonDecode(aula) as Map<String, dynamic>);
+      } catch (_) {} // sem ele: a aula do professor fala com a voz pt-BR do aparelho
+      unawaited(AulasRepo.trilhasComAula()); // 🎓 o índice das aulas (a folha da lição no mapa consulta sem esperar)
       try {
         final bocas = await rootBundle.loadString(BocasIngles.indice);
         BocasIngles.registrar(jsonDecode(bocas) as Map<String, dynamic>);

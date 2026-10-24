@@ -19,6 +19,9 @@ class Aparencia {
   final bool oculos, gorro, brincos, sardas, jaleco, flor, cilios, fone;
   final Color? detalhe;
 
+  /// Gravata (o professor das aulas), na cor [detalhe] (ou vinho).
+  final bool gravata;
+
   const Aparencia({
     required this.pele,
     required this.cabelo,
@@ -33,6 +36,7 @@ class Aparencia {
     this.cilios = false,
     this.fone = false,
     this.detalhe,
+    this.gravata = false,
   });
 }
 
@@ -129,6 +133,17 @@ abstract final class ElencoIngles {
     estilo: Cabelo.lateral,
   );
 
+  /// 🎓 O professor das aulas (Prof. Beto): grisalho, de óculos, camisa e gravata.
+  static const prof = Aparencia(
+    pele: Color(0xFFE8B996),
+    cabelo: Color(0xFF9AA0A6),
+    roupa: Color(0xFF3E6FB0),
+    estilo: Cabelo.curto,
+    oculos: true,
+    gravata: true,
+    detalhe: Color(0xFFB0303A),
+  );
+
   static const _porNome = {
     'mike': mike,
     'sarah': sarah,
@@ -151,6 +166,7 @@ abstract final class ElencoIngles {
   static Aparencia? de(String quem) {
     if (quem.isEmpty || quem == 'narrador' || quem == 'narradora') return null;
     if (quem == 'voce') return voce;
+    if (quem == 'prof') return prof;
     return _porNome[quem] ?? (_femininos.contains(quem) ? ela : ele);
   }
 
@@ -304,7 +320,25 @@ class PersonagemPainter extends CustomPainter {
           ..strokeWidth = _s * .014
           ..strokeCap = StrokeCap.round,
       );
-      if (a.detalhe case final d? when a.gorro) {
+      if (a.gravata) {
+        // gravata do professor: o nó e a ponta, descendo do colarinho
+        final cor = a.detalhe ?? const Color(0xFFB0303A);
+        final no = Path()
+          ..moveTo(_s * .47, _s * .8)
+          ..lineTo(_s * .53, _s * .8)
+          ..lineTo(_s * .515, _s * .845)
+          ..lineTo(_s * .485, _s * .845)
+          ..close();
+        final ponta = Path()
+          ..moveTo(_s * .485, _s * .845)
+          ..lineTo(_s * .515, _s * .845)
+          ..lineTo(_s * .535, _s * .96)
+          ..lineTo(_s * .5, _s * 1.0)
+          ..lineTo(_s * .465, _s * .96)
+          ..close();
+        c.drawPath(ponta, Paint()..color = cor);
+        c.drawPath(no, Paint()..color = _escurece(cor, .15));
+      } else if (a.detalhe case final d? when a.gorro) {
         // cachecol do Ben
         final cachecol = RRect.fromRectAndRadius(Rect.fromLTRB(_s * .33, _s * .79, _s * .67, _s * .86), Radius.circular(_s * .035));
         c.drawRRect(cachecol, Paint()..color = d);

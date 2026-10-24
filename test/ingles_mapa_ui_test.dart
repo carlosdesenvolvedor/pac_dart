@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:pac_dart/core/linguagem/linguagem.dart';
 import 'package:pac_dart/core/theme/mixart.dart';
 import 'package:pac_dart/features/curso/data/curriculo_loader.dart';
@@ -22,6 +23,7 @@ import 'package:pac_dart/features/ingles/domain/dicionario.dart';
 import 'package:pac_dart/features/ingles/domain/srs.dart';
 import 'package:pac_dart/features/ingles/presentation/minhas_palavras_page.dart';
 import 'package:pac_dart/features/ingles/presentation/palavras_cubit.dart';
+import 'package:pac_dart/features/ingles/presentation/revisao_mista_page.dart';
 import 'package:pac_dart/features/ingles/presentation/sessao_memoria_page.dart';
 import 'package:pac_dart/features/ingles/domain/roteiro_treino.dart';
 import 'package:pac_dart/features/ingles/presentation/treino_palavras_page.dart';
@@ -518,5 +520,33 @@ void main() {
     expect(m.palavras.adicionar('zebra', 'zebra'), isNull);
     await _anda(tester, 2);
     expect(find.textContaining('22 palavras', skipOffstage: false), findsOneWidget);
+  });
+
+  testWidgets('🔁 "Revisão até aqui": um nó logo antes da lição atual; toque abre a revisão misturada', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    await montarMapa(tester, trilhas: cursoDeTeste(), progresso: progressoMeio());
+    final no = find.byKey(const Key('mapa-revisao'), skipOffstage: false);
+    expect(no, findsOneWidget);
+    expect(find.text('Revisão até aqui', skipOffstage: false), findsOneWidget);
+    // fica entre a última feita (u2.l1) e a atual (u2.l2)
+    final atual = _noNoEstado(EstadoNo.atual);
+    expect(tester.getCenter(no).dy, lessThan(tester.getCenter(atual).dy));
+    await _mostrar(tester, no);
+    await tester.tap(no);
+    await _anda(tester, 10);
+    expect(find.byType(RevisaoMistaPage), findsOneWidget);
+    final pagina = tester.widget<RevisaoMistaPage>(find.byType(RevisaoMistaPage));
+    expect(pagina.exercicios, hasLength(10));
+    final feitas = progressoMeio().feitas;
+    expect(pagina.exercicios.every((e) => feitas.contains(e.licao.id)), isTrue,
+        reason: 'só frases de lições concluídas: ${pagina.exercicios.map((e) => e.licao.id).toSet()}');
+    await tester.tap(find.byKey(const Key('revisao-mista-sair')));
+    await _anda(tester, 10);
+    expect(find.byType(MapaPage), findsOneWidget);
+  });
+
+  testWidgets('sem nenhuma lição feita, não há nó de revisão', (tester) async {
+    await montarMapa(tester, trilhas: cursoDeTeste(), progresso: ProgressoMemoria());
+    expect(find.byKey(const Key('mapa-revisao'), skipOffstage: false), findsNothing);
   });
 }

@@ -366,6 +366,42 @@ class VozIngles {
     } catch (_) {}
   }
 
+  /// 🎓 Uma fala da aula do professor: o mp3 dele ([AudioNativo.daAula], Chirp pt-BR ou en-US) a `rate = fator`
+  /// com a boca do Rhubarb; sem mp3 (ou se ele não tocar) → a voz do aparelho no idioma da fala (pt-BR ou en-US)
+  /// com a boca pelo texto. A boca é anunciada com [texto] (o rosto do professor segue esta fala).
+  /// [FimDaFala.cortada] = outra fala do app (ou um [parar]) entrou no meio.
+  Future<FimDaFala> falarNaAula(String texto, {required bool ingles, double fator = 1}) async {
+    final minha = ++_vez;
+    final g = ++_vezGlobal;
+    final f = fator <= 0 ? 1.0 : fator;
+    final vSintetica = (velocidadeNormal * f).clamp(.6, 1.2).toDouble();
+    _emCurso++;
+    var falou = false;
+    try {
+      final audio = AudioNativo.daAula(texto, ingles: ingles);
+      if (audio != null) {
+        try {
+          final boca = BocasIngles.de(audio);
+          _anuncia(texto, boca ?? TrilhaBoca.doTexto(texto, segPorPalavra: segPorPalavra / f * .8),
+              velocidade: f, gravacao: boca != null);
+          falou = await fala.tocar(audio, f);
+        } catch (_) {}
+      }
+      if (!falou && minha == _vez && g == _vezGlobal) {
+        // sem o mp3: a voz do aparelho, e a boca acompanhando o texto
+        _anuncia(texto, TrilhaBoca.doTexto(texto, segPorPalavra: segPorPalavra / f));
+        try {
+          falou = await fala.falarEm(texto, vSintetica, ingles ? 'en-US' : 'pt-BR');
+        } catch (_) {}
+      }
+    } finally {
+      _emCurso--;
+      _fecharBoca(minha, g);
+    }
+    if (g != _vezGlobal) return FimDaFala.cortada;
+    return falou ? FimDaFala.acabou : FimDaFala.semVoz;
+  }
+
   /// A tradução na voz pt-BR do sistema (sem boca); sem voz pt-BR → [FimDaFala.semVoz].
   Future<FimDaFala> falarPt(String texto, {double fator = 1}) async {
     final g = ++_vezGlobal;

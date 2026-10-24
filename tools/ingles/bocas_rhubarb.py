@@ -26,6 +26,10 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 CURRICULO = os.path.join(RAIZ, 'assets/ingles/curriculo.json')
 VOZES = os.path.join(RAIZ, 'assets/ingles/vozes.json')
 VOZES_HISTORIA = os.path.join(RAIZ, 'assets/ingles/vozes_historia.json')
+VOZES_AULA = os.path.join(RAIZ, 'assets/ingles/vozes_aula.json')
+
+# 🎓 as falas em português do professor: o reconhecedor de inglês do Rhubarb não serve; vai o fonético
+FONETICOS = set()
 SAIDA = os.path.join(RAIZ, 'assets/ingles/bocas.json')
 RHUBARB_PADRAO = os.path.expanduser('~/development/rhubarb/rhubarb')
 
@@ -40,6 +44,13 @@ def audios():
         with open(VOZES_HISTORIA, encoding='utf-8') as f:
             for chave, asset in json.load(f).items():
                 r[asset] = chave.split('|', 1)[1]
+    if os.path.exists(VOZES_AULA):  # 🎓 aulas do professor: chave "pt|texto" / "en|texto"
+        with open(VOZES_AULA, encoding='utf-8') as f:
+            for chave, asset in json.load(f).items():
+                lingua, texto = chave.split('|', 1)
+                r[asset] = texto
+                if lingua == 'pt':
+                    FONETICOS.add(asset)
     with open(CURRICULO, encoding='utf-8') as f:
         cur = json.load(f)
     for trilha in cur if isinstance(cur, list) else cur['trilhas']:
@@ -54,7 +65,7 @@ def compacta(cues):
     return ' '.join(f"{round(c['start'] * 100)}{c['value']}" for c in cues) + f" {round(cues[-1]['end'] * 100)}X" if cues else ''
 
 
-def processa(rhubarb, asset, texto):
+def processa(rhubarb, asset, texto, fonetico=False):
     with tempfile.TemporaryDirectory() as tmp:
         wav = os.path.join(tmp, 'a.wav')
         txt = os.path.join(tmp, 'a.txt')
@@ -62,7 +73,8 @@ def processa(rhubarb, asset, texto):
                        check=True)
         with open(txt, 'w', encoding='utf-8') as f:
             f.write(texto)
-        out = subprocess.run([rhubarb, '-q', '-f', 'json', '--extendedShapes', 'GHX', '-d', txt, wav],
+        opcoes = ['-r', 'phonetic'] if fonetico else ['-d', txt]
+        out = subprocess.run([rhubarb, '-q', '-f', 'json', '--extendedShapes', 'GHX', *opcoes, wav],
                              check=True, capture_output=True, text=True).stdout
     return asset, compacta(json.loads(out)['mouthCues'])
 
@@ -90,7 +102,7 @@ def main():
 
     erros = 0
     with ProcessPoolExecutor(a.processos) as ex:
-        futuros = [ex.submit(processa, a.rhubarb, asset, texto) for asset, texto in falta]
+        futuros = [ex.submit(processa, a.rhubarb, asset, texto, asset in FONETICOS) for asset, texto in falta]
         for i, fu in enumerate(as_completed(futuros), 1):
             try:
                 asset, boca = fu.result()

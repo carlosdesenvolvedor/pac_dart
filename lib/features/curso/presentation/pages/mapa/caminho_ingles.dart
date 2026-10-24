@@ -1,7 +1,8 @@
 // O caminho de lições do PAC·ENGLISH (estilo Duolingo): nós de apertar num seno contínuo entre as unidades,
 // a estrada na cor da etapa, o balão "COMEÇAR" no nó atual e o baú no fim. O nome da lição fica ao lado do
-// nó nas telas largas e embaixo nas estreitas (sempre um Text que dá para tocar). Tudo por callback: o mapa
-// decide o que cada toque faz.
+// nó nas telas largas e embaixo nas estreitas (sempre um Text que dá para tocar). Logo antes do nó atual, o
+// nó "🔁 Revisão até aqui" (frases sortidas de tudo o que já foi feito). Tudo por callback: o mapa decide o
+// que cada toque faz.
 import 'package:flutter/material.dart';
 
 import '../../../../../core/theme/mixart.dart';
@@ -48,6 +49,9 @@ class CaminhoIngles extends StatelessWidget {
   final void Function(int l) onComecar;
   final VoidCallback? onBau;
 
+  /// 🔁 "Revisão até aqui": um nó logo antes da lição atual desta trilha (null = sem o nó).
+  final VoidCallback? onRevisao;
+
   const CaminhoIngles({
     super.key,
     required this.st,
@@ -65,12 +69,14 @@ class CaminhoIngles extends StatelessWidget {
     this.celebrar,
     this.chaveAtual,
     this.onBau,
+    this.onRevisao,
   });
 
   // alturas das faixas (estreito / largo)
   static const bandaEstreita = 128.0, bandaLarga = 104.0;
   static const bandaAtualEstreita = 168.0, bandaAtualLarga = 146.0;
   static const bandaBau = 128.0;
+  static const bandaRevisao = 120.0;
   static const _topoNo = 10.0;
   static const _topoNoAtual = BolhaComecar.altura + 10;
   static const rotuloMaxEstreito = 150.0;
@@ -97,6 +103,12 @@ class CaminhoIngles extends StatelessWidget {
           ? (_estreito ? bandaAtualEstreita : bandaAtualLarga)
           : (_estreito ? bandaEstreita : bandaLarga);
       final topoNo = atual ? _topoNoAtual : _topoNo;
+      if (atual && onRevisao != null) {
+        // no meio do caminho entre a última feita e a atual
+        final x = l == 0 ? xDe(l) : (xDe(l - 1) + xDe(l)) / 2;
+        itens.add(_Item(l: _Item.revisao, y: y, altura: bandaRevisao, x: x, cy: y + _topoNo + No3D.tamanho / 2, estado: EstadoNo.feita));
+        y += bandaRevisao;
+      }
       itens.add(_Item(l: l, y: y, altura: altura, x: xDe(l), cy: y + topoNo + No3D.tamanho / 2, estado: estado, atual: atual));
       y += altura;
     }
@@ -110,7 +122,7 @@ class CaminhoIngles extends StatelessWidget {
     final pontos = [for (final it in itens) Offset(it.x, it.cy)];
     final feitos = [
       for (var i = 0; i < itens.length; i++)
-        itens[i].l >= 0 && itens[i].estado == EstadoNo.feita,
+        itens[i].l != _Item.bau && itens[i].estado == EstadoNo.feita,
     ];
     final iCelebrar = celebrar == null ? -1 : itens.indexWhere((it) => it.l >= 0 && licoes[it.l].id == celebrar);
 
@@ -142,7 +154,12 @@ class CaminhoIngles extends StatelessWidget {
               : estrada(1),
         ),
         for (final it in itens)
-          if (it.l >= 0) _faixaLicao(context, trilha, it, it.l == (iCelebrar >= 0 ? itens[iCelebrar].l : -2)) else _faixaBau(it),
+          if (it.l >= 0)
+            _faixaLicao(context, trilha, it, it.l == (iCelebrar >= 0 ? itens[iCelebrar].l : -2))
+          else if (it.l == _Item.revisao)
+            _faixaRevisao(it)
+          else
+            _faixaBau(it),
       ]),
     );
   }
@@ -290,6 +307,49 @@ class CaminhoIngles extends StatelessWidget {
     );
   }
 
+  /// 🔁 O nó da revisão: o nome sempre embaixo (cabe em qualquer largura).
+  Widget _faixaRevisao(_Item it) {
+    const w = 200.0;
+    final esq = (it.x - w / 2).clamp(0.0, (largura - w).clamp(0.0, double.infinity));
+    return Positioned(
+      top: it.y,
+      left: 0,
+      width: largura,
+      height: it.altura,
+      child: Stack(clipBehavior: Clip.none, children: [
+        Positioned(
+          left: it.x - No3D.tamanho / 2,
+          top: _topoNo,
+          child: No3D(
+            key: const Key('mapa-revisao'),
+            emoji: '🔁',
+            estado: EstadoNo.disponivel,
+            cor: cor,
+            rotulo: 'Revisão até aqui',
+            onTap: onRevisao!,
+          ),
+        ),
+        Positioned(
+          top: _topoNo + No3D.tamanho + No3D.labio + 4,
+          left: esq,
+          width: w,
+          child: GestureDetector(
+            onTap: onRevisao,
+            behavior: HitTestBehavior.opaque,
+            child: Column(mainAxisSize: MainAxisSize.min, children: [
+              Text('Revisão até aqui',
+                  textAlign: TextAlign.center,
+                  style: Mixart.ui(size: _estreito ? 12.5 : 13.5, weight: FontWeight.w800, color: cor)),
+              Text('10 exercícios · ✍️ 🧩 👂 🎤',
+                  textAlign: TextAlign.center,
+                  style: Mixart.ui(size: 10.5, weight: FontWeight.w600, color: Mixart.textFaint)),
+            ]),
+          ),
+        ),
+      ]),
+    );
+  }
+
   Widget _faixaBau(_Item it) => Positioned(
         top: it.y,
         left: 0,
@@ -316,7 +376,8 @@ class CaminhoIngles extends StatelessWidget {
 }
 
 class _Item {
-  final int l; // −1 = baú
+  static const bau = -1, revisao = -2;
+  final int l; // ≥ 0 = lição; [bau]; [revisao]
   final double y, altura, x, cy;
   final EstadoNo estado;
   final bool atual;
