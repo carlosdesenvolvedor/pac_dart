@@ -32,6 +32,9 @@ class PalavraTocada {
 /// Fala só a palavra tocada, na velocidade normal ou devagar (🐢).
 typedef OuvirPalavra = void Function(String palavra, {required bool lenta});
 
+/// "🎯 Treinar esta palavra" no balão: abre a escolha das palavras da lição com ela já marcada.
+typedef TreinarPalavra = void Function(String palavra);
+
 /// O balão do "toque na palavra": a pronúncia dela (🔊 normal e 🐢 devagar), o pé da letra (dicionário do app, na
 /// hora e sem internet) e o sentido NO CONTEXTO (o trecho da lição, se a palavra está nele, e o Prof. Dash, com cache e cota própria).
 ///
@@ -43,7 +46,13 @@ class BalaoPalavra {
   bool get aberto => _entrada != null;
 
   /// Abre (ou troca) o balão sob [ancora] — o retângulo da palavra, em coordenadas globais.
-  void abrir(BuildContext context, {required Rect ancora, required PalavraTocada palavra, OuvirPalavra? onOuvir}) {
+  void abrir(
+    BuildContext context, {
+    required Rect ancora,
+    required PalavraTocada palavra,
+    OuvirPalavra? onOuvir,
+    TreinarPalavra? onTreinar,
+  }) {
     fechar();
     final overlay = Overlay.maybeOf(context, rootOverlay: true);
     if (overlay == null) return;
@@ -60,6 +69,12 @@ class BalaoPalavra {
         palavra: palavra,
         ia: ia,
         onOuvir: onOuvir,
+        onTreinar: onTreinar == null
+            ? null
+            : (w) {
+                if (identical(_entrada, entrada)) fechar();
+                onTreinar(w);
+              },
         onFechar: () {
           if (identical(_entrada, entrada)) fechar();
         },
@@ -82,6 +97,7 @@ class _CamadaBalao extends StatelessWidget {
   final PalavraTocada palavra;
   final IaPalavrasCubit? ia;
   final OuvirPalavra? onOuvir;
+  final TreinarPalavra? onTreinar;
   final VoidCallback onFechar;
 
   const _CamadaBalao({
@@ -90,6 +106,7 @@ class _CamadaBalao extends StatelessWidget {
     required this.ia,
     required this.onFechar,
     this.onOuvir,
+    this.onTreinar,
   });
 
   @override
@@ -103,7 +120,13 @@ class _CamadaBalao extends StatelessWidget {
       ),
       child: TapRegion(
         onTapOutside: (_) => onFechar(),
-        child: ConteudoBalaoPalavra(palavra: palavra, ia: ia, onOuvir: onOuvir, onFechar: onFechar),
+        child: ConteudoBalaoPalavra(
+          palavra: palavra,
+          ia: ia,
+          onOuvir: onOuvir,
+          onTreinar: onTreinar,
+          onFechar: onFechar,
+        ),
       ),
     );
   }
@@ -143,7 +166,17 @@ class ConteudoBalaoPalavra extends StatefulWidget {
   /// 🔊/🐢 ao lado da palavra (null = sem voz, sem os botões).
   final OuvirPalavra? onOuvir;
 
-  const ConteudoBalaoPalavra({super.key, required this.palavra, this.ia, this.onFechar, this.onOuvir});
+  /// "🎯 Treinar esta palavra" no pé do balão (null = sem o botão).
+  final TreinarPalavra? onTreinar;
+
+  const ConteudoBalaoPalavra({
+    super.key,
+    required this.palavra,
+    this.ia,
+    this.onFechar,
+    this.onOuvir,
+    this.onTreinar,
+  });
 
   @override
   State<ConteudoBalaoPalavra> createState() => _ConteudoBalaoPalavraState();
@@ -363,6 +396,23 @@ class _ConteudoBalaoPalavraState extends State<ConteudoBalaoPalavra> {
                               )
                             : const SizedBox.shrink(),
                       ),
+                    if (widget.onTreinar case final treinar?) ...[
+                      const SizedBox(height: 10),
+                      OutlinedButton.icon(
+                        key: const Key('treinar-palavra'),
+                        onPressed: () => treinar(p.palavra),
+                        icon: Icon(Icons.track_changes_rounded, size: 18, color: Mixart.brand),
+                        label: Text(
+                          'Treinar esta palavra',
+                          style: Mixart.ui(size: 13, weight: FontWeight.w700, color: Mixart.text),
+                        ),
+                        style: OutlinedButton.styleFrom(
+                          visualDensity: VisualDensity.compact,
+                          side: BorderSide(color: Mixart.brandDim),
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Mixart.radiusChip)),
+                        ),
+                      ),
+                    ],
                   ],
                 ),
               ),

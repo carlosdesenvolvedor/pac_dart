@@ -32,6 +32,9 @@ import 'treino_palavras_page.dart';
 ///
 /// [voz]: injetável (testes).
 ///
+/// [reservaExtra]: opções erradas que vêm antes das da trilha (o "🎯 Escolher palavras": as outras
+/// palavras da lição).
+///
 /// Devolve o resultado da sessão (null: lista vazia ou saiu sem terminar). O registro, o hábito e a
 /// conclusão acontecem aqui de qualquer jeito.
 Future<ResultadoTreino?> abrirTreinoPalavras(
@@ -44,6 +47,7 @@ Future<ResultadoTreino?> abrirTreinoPalavras(
   bool revanche = false,
   bool antesDaLicao = false,
   bool modoTreino = false,
+  List<PalavraNova> reservaExtra = const [],
 }) async {
   if (palavras.isEmpty) return null;
   // tudo capturado ANTES de empurrar a rota (o contexto pode sumir enquanto a sessão está aberta)
@@ -60,7 +64,7 @@ Future<ResultadoTreino?> abrirTreinoPalavras(
   final r = await nav.push(MaterialPageRoute<ResultadoTreino>(
     builder: (_) => TreinoPalavrasPage(
       palavras: palavras,
-      reserva: _reserva(cubit, curso?.state, palavras),
+      reserva: [...reservaExtra, ..._reserva(cubit, curso?.state, palavras)],
       titulo: titulo,
       voz: voz,
       revanche: revanche,

@@ -71,6 +71,9 @@ class FraseView extends StatefulWidget {
   /// Só a palavra tocada (o 🔊/🐢 do balão dela); null = o balão sem voz.
   final OuvirPalavra? onOuvirPalavra;
 
+  /// "🎯 Treinar esta palavra" no balão da palavra tocada (null = sem o botão).
+  final TreinarPalavra? onTreinarPalavra;
+
   /// A palavra tocada já soa ao abrir o balão (na velocidade padrão do aluno) — segue o "áudio automático".
   final bool falarPalavraAoTocar;
 
@@ -123,6 +126,7 @@ class FraseView extends StatefulWidget {
     required this.onAvancar,
     this.onOuvir,
     this.onOuvirPalavra,
+    this.onTreinarPalavra,
     this.falarPalavraAoTocar = true,
     this.alvo = '',
     this.traducao = '',
@@ -1053,6 +1057,7 @@ class FraseViewState extends State<FraseView> {
       context,
       ancora: ancora,
       onOuvir: widget.onOuvirPalavra,
+      onTreinar: widget.onTreinarPalavra,
       palavra: PalavraTocada(
         palavra: palavra,
         frase: frase,

@@ -288,6 +288,43 @@ class IndicePalavras {
     return r;
   }
 
+  /// Todas as palavras das frases da lição [l] que dá para estudar sozinhas (o "🎯 Escolher palavras"):
+  /// as novas dela primeiro e depois as outras na ordem em que aparecem, inclusive as de função e as
+  /// curtas (you, there, me). Cada uma vem com uma frase da PRÓPRIA lição como exemplo (as novas, com a
+  /// delas). Ficam de fora os nomes das personagens, os nomes próprios, os números e o que o dicionário
+  /// não traduz. Memorizado por instância de lição.
+  List<PalavraNova> palavrasParaEstudar(Licao l) =>
+      _estudarPorLicao[l] ??= List.unmodifiable(_palavrasParaEstudar(l));
+
+  final _estudarPorLicao = Expando<List<PalavraNova>>('palavrasParaEstudar');
+
+  List<PalavraNova> _palavrasParaEstudar(Licao l) {
+    final r = <PalavraNova>[...novasDe(l.id)];
+    final vistas = {for (final p in r) p.chave};
+    for (final tr in l.trechos) {
+      for (final m in _reToken.allMatches(tr.cod)) {
+        final k = Dicionario.normalizar(m.group(0)!);
+        if (k.isEmpty || vistas.contains(k)) continue;
+        if (nomes.contains(k) || _reDigito.hasMatch(k) || _reSoletrada.hasMatch(k)) continue;
+        final gloss = dic.literal(k);
+        if (gloss == null || ehNomeProprio(gloss)) continue;
+        final pt = traducaoCurta(gloss);
+        if (pt.isEmpty) continue;
+        vistas.add(k);
+        r.add(PalavraNova(
+          en: _formas[k] ?? k,
+          pt: pt,
+          ptCompleta: gloss,
+          licaoId: l.id,
+          exemplo: tr.cod,
+          exemploPt: tr.dicaPlana,
+          trechoId: tr.id,
+        ));
+      }
+    }
+    return r;
+  }
+
   /// As palavras novas da trilha [t]: as das lições dela, sem repetir, revezando entre as lições
   /// (cada lição contribui), no máximo [max]. Trilha própria = vazio.
   List<PalavraNova> novasDaTrilha(Trilha t, {int max = maxPorTrilha}) {

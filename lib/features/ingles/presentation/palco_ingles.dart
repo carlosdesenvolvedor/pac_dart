@@ -50,6 +50,7 @@ import 'acoes_teimosas.dart';
 import 'palavras_cubit.dart';
 import 'sessao_memoria_page.dart' show semCreditoDeAcerto;
 import 'treino_palavras.dart';
+import 'escolher_palavras.dart';
 import 'widgets/cartao_palavras_novas.dart';
 import 'widgets/cartao_teimosas.dart';
 
@@ -665,6 +666,21 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     _pedirFoco();
   }
 
+  /// "🎯 Escolher palavras" (na barra da lição e o "Treinar esta palavra" do balão, que já vem com ela
+  /// marcada): a folha com as palavras da lição e o treino só das marcadas abrem por cima; na volta a
+  /// lição segue onde estava (o progresso não muda), com o teclado.
+  Future<void> _escolherPalavras({String? marcada}) async {
+    _voz.parar();
+    await escolherPalavrasParaTreinar(context, curso.licao, marcada: marcada, voz: _voz);
+    if (!mounted) return;
+    setState(() {});
+    if (curso.vitoria) {
+      _focoVitoria.requestFocus();
+    } else {
+      _pedirFoco();
+    }
+  }
+
   /// "📺 Assistir a historinha" (no começo da lição e na vitória): o desenho da lição abre por cima com um
   /// player próprio; a voz da lição cala e, na volta, o teclado volta para onde estava (o progresso não muda).
   Future<void> _assistirHistorinha() async {
@@ -1148,6 +1164,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
                   onAvancar: _avancar,
                   onOuvir: _ouvir,
                   onOuvirPalavra: (palavra, {required lenta}) => _voz.falar(palavra, lenta: lenta),
+                  onTreinarPalavra: PalavrasCubit.de(context) == null ? null : (w) => _escolherPalavras(marcada: w),
                   falarPalavraAoTocar: _audioAuto,
                   vitoria: curso.vitoria,
                   onProximaLicao: _seguir,
@@ -1196,7 +1213,11 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
                   Center(child: ChipAnotada(_formaDe(_chipAnotada!))),
                   const SizedBox(height: 4),
                 ],
-                _BarraFila(feitos: _fila.feitos, restantes: _fila.restantes),
+                _BarraFila(
+                  feitos: _fila.feitos,
+                  restantes: _fila.restantes,
+                  onPalavras: PalavrasCubit.de(context) == null ? null : _escolherPalavras,
+                ),
               ]),
             ]),
           if (curso.vitoria)
@@ -1521,15 +1542,46 @@ class _Selo extends StatelessWidget {
 
 class _BarraFila extends StatelessWidget {
   final int feitos, restantes;
-  const _BarraFila({required this.feitos, required this.restantes});
+
+  /// "🎯 Escolher palavras" no meio da linha (null = sem o botão).
+  final VoidCallback? onPalavras;
+
+  const _BarraFila({required this.feitos, required this.restantes, this.onPalavras});
 
   @override
   Widget build(BuildContext context) {
     final total = feitos + restantes;
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      // tela estreita (ou letra grande): os três encolhem com reticências em vez de estourar
       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Text('Lição', style: Mixart.ui(size: 11, color: Mixart.textMuted)),
-        Text('$feitos / $total digitações', style: Mixart.ui(size: 11, color: Mixart.textMuted)),
+        Flexible(
+          child: Text('Lição',
+              maxLines: 1, overflow: TextOverflow.ellipsis, style: Mixart.ui(size: 11, color: Mixart.textMuted)),
+        ),
+        if (onPalavras != null)
+          Flexible(
+            flex: 2,
+            child: InkWell(
+              key: const Key('licao-escolher-palavras'),
+              onTap: onPalavras,
+              borderRadius: BorderRadius.circular(Mixart.radiusChip),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: Text('🎯 Treinar palavras',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.brand)),
+              ),
+            ),
+          ),
+        Flexible(
+          flex: 2,
+          child: Text('$feitos / $total digitações',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.end,
+              style: Mixart.ui(size: 11, color: Mixart.textMuted)),
+        ),
       ]),
       const SizedBox(height: 6),
       BlocBuilder<TypingBloc, TypingState>(

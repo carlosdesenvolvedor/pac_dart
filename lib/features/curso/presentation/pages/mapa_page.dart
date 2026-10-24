@@ -22,6 +22,7 @@ import '../../../ingles/presentation/ouvir/ouvir_cubit.dart';
 import '../../../ingles/presentation/ouvir/ouvir_state.dart';
 import '../../../ingles/presentation/palavras_cubit.dart';
 import '../../../ingles/presentation/treino_palavras.dart';
+import '../../../ingles/presentation/escolher_palavras.dart';
 import '../../../ingles/presentation/widgets/elenco_ingles.dart';
 import '../../../ingles/domain/banco_palavras.dart';
 import '../../../../core/ui/festa.dart';
@@ -2034,6 +2035,13 @@ void mostrarOpcoesLicao(BuildContext context, CursoState st, int t, int l, int? 
               Navigator.of(sheet).pop();
               abrirTreinoPalavras(context, novas.take(8).toList(), titulo: licao.nome);
             },
+      // 🎯 escolher as palavras da lição (qualquer uma das frases) e treinar só elas
+      onEscolherPalavras: !st.ehIngles || PalavrasCubit.de(context) == null
+          ? null
+          : () {
+              Navigator.of(sheet).pop();
+              escolherPalavrasParaTreinar(context, licao);
+            },
       // 📺 a historinha da lição (player próprio: a fila do Ouvir não muda; não marca progresso)
       onAssistir: !ouvir || !podeAssistirLicao(context, licao)
           ? null
@@ -2358,6 +2366,9 @@ class _LicaoSheet extends StatelessWidget {
   final List<PalavraNova> novas;
   final VoidCallback? onPalavras;
 
+  /// Inglês: "🎯 Escolher palavras" — marcar só as palavras que quer estudar (null = fora do inglês).
+  final VoidCallback? onEscolherPalavras;
+
   /// Inglês: "📺 Assistir a historinha" (null = sem desenho para esta lição).
   final VoidCallback? onAssistir;
 
@@ -2373,6 +2384,7 @@ class _LicaoSheet extends StatelessWidget {
       this.onTesteUnidade,
       this.novas = const [],
       this.onPalavras,
+      this.onEscolherPalavras,
       this.onAssistir,
       this.onOuvir,
       this.onOuvirDaqui,
@@ -2534,6 +2546,18 @@ class _LicaoSheet extends StatelessWidget {
                 titulo: '🆕 Treinar as palavras novas (${novas.length})',
                 subtitulo: novas.take(5).map((p) => p.en).join(' · ') + (novas.length > 5 ? ' …' : ''),
                 onTap: onPalavras!,
+              ),
+            ),
+          ],
+          if (ingles && onEscolherPalavras != null) ...[
+            const SizedBox(height: 10),
+            KeyedSubtree(
+              key: const Key('sheet-escolher-palavras'),
+              child: _OpcaoSheet(
+                icone: Icons.track_changes_rounded,
+                titulo: '🎯 Escolher palavras para treinar',
+                subtitulo: 'marque só as que você quer estudar, de qualquer frase da lição',
+                onTap: onEscolherPalavras!,
               ),
             ),
           ],
