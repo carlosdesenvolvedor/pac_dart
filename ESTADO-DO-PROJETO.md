@@ -2648,7 +2648,7 @@ Pedido do dono (print de uma lista do Gemini): uma lição no A1 com as 50 palav
 - Papel novo **`narradora`** (voz Chirp Vindemiatrix): vira o narrador no palco (`quemNoPalco`), sem rosto na lição. Figurantes `jack`, `fazendeiro`, `esposa` na tabela fixa (42). Historinha autoral (5bf14a6); pedidos de arte (cavalo, rédeas, porta, estrada de terra, deitar de costas, nuvens) no PEDIDOS-DE-ARTE.
 - Curso: **125 trilhas · 626 lições · 5.548 frases** (testes contam 626).
 
-## 🔁 24/out/2026: "Revisão até aqui" — 10 exercícios misturados no mapa (PUBLICADO no hosting em 24/out; sem commit)
+## 🔁 24/out/2026: "Revisão até aqui" — 10 exercícios misturados no mapa (PUBLICADO no hosting em 24/out; commit c2f2fdb no main, com push)
 
 Pedido do dono: um modo revisão "tipo Duolingo" com POUCAS perguntas (10) sortidas de tudo o que já estudou, misturando escrever,
 blocos, escutar e falar, com "não posso escutar / não posso falar", e no mapa um ponto de "revisão até onde você está".
@@ -2670,7 +2670,7 @@ blocos, escutar e falar, com "não posso escutar / não posso falar", e no mapa 
 - **Testes:** `ingles_revisao_mista_test.dart` (10), `ingles_revisao_mista_ui_test.dart` (2) e 2 novos no `ingles_mapa_ui_test.dart`;
   suíte do inglês + treino do dia 1.537 ok; analyze limpo. **Falta:** ver no navegador/celular de verdade (falar e o "não posso").
 
-## 🎓 24/out/2026: Aula do professor em cada lição do A1 (PUBLICADO no hosting em 24/out; sem commit)
+## 🎓 24/out/2026: Aula do professor em cada lição do A1 (PUBLICADO no hosting em 24/out; commit c2f2fdb no main, com push)
 
 Pedido do dono: em cada lição, uma explicação pronta (não IA) de um "professorzinho" de desenho, mexendo a boca e falando em
 português, como uma historinha — o sentido das frases, como lembrar, e o termo técnico/regra importante. Começar pelo A1.
