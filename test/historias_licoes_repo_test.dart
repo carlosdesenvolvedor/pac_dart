@@ -217,7 +217,7 @@ void main() {
       expect(b.pedidos.length, antes);
     });
 
-    test('os assets do projeto existem: o piloto no índice e a tabela com as 602 lições (integração)', () async {
+    test('os assets do projeto existem: o piloto no índice e a tabela com as 622 lições (integração)', () async {
       // o bundle de verdade dos testes lê do disco
       final idx = await HistoriasLicoesRepo.trilhasComHistoria();
       // o índice cresce a cada lote escrito (A1 inteiro já está lá): só o
@@ -229,7 +229,7 @@ void main() {
         final t = await HistoriasLicoesRepo.trilha(e.key);
         expect(t, isNotNull, reason: 'assets/ingles/historias/${e.key}.json');
       }
-      expect(await HistoriasLicoesRepo.encenacaoAuto(), hasLength(602));
+      expect(await HistoriasLicoesRepo.encenacaoAuto(), hasLength(622));
     });
   });
 }

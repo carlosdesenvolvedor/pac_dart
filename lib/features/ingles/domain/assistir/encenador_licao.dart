@@ -11,7 +11,7 @@ import 'historia_licao.dart';
 /// Plano §4: (4.1) o cenário pelo texto da cena (1º lugar citado, com preposição de lugar e fronteira de
 /// palavra); (4.2) hora e clima; (4.3) elenco, posições, telefone/mensagem (remoto via celular) e entrada
 /// tardia; (4.4) gestos pelo emoji (por grafema) e depois pelo texto, câmera, reações e o aceno do fim.
-/// Toda saída passa no `validarHistoriaLicao` (o teste roda as 602 lições).
+/// Toda saída passa no `validarHistoriaLicao` (o teste roda as 622 lições).
 
 /// O gesto de uma frase (pelo emoji e pelo texto).
 class GestoDaFrase {

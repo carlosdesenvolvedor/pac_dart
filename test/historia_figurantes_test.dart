@@ -237,7 +237,7 @@ void main() {
   });
 
   group('o currículo inteiro (assets/ingles/curriculo.json)', () {
-    test('602 lições lidas', () => expect(licoes, hasLength(602)));
+    test('622 lições lidas', () => expect(licoes, hasLength(622)));
 
     test('todo quem do currículo tem corpo no palco (exceto \'\'/placa), e nenhum papel cai no hash', () {
       for (final q in papeis) {
@@ -250,7 +250,7 @@ void main() {
       expect(ElencoTurismo.de(quemNoPalco('')), isNull);
     });
 
-    test('em cada uma das 602 lições, personagens diferentes têm aparência diferente', () {
+    test('em cada uma das 622 lições, personagens diferentes têm aparência diferente', () {
       for (final l in licoes) {
         final quem = {
           for (final t in l.trechos)
