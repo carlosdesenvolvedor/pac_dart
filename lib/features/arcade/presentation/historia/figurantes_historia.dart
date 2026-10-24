@@ -10,7 +10,7 @@ import '../../domain/historia_turismo.dart';
 /// e o rótulo do chip do balão. Só no palco: o `RostoDaFaixa` do Ouvir e a lição continuam com
 /// `ElencoIngles.de` (diferença assumida, plano §14).
 ///
-/// - Os 39 [figurantesConhecidos] têm uma aparência FIXA (tabela `const`), todas distintas entre si e
+/// - Os 42 [figurantesConhecidos] têm uma aparência FIXA (tabela `const`), todas distintas entre si e
 ///   distintas do elenco das lições: dois papéis na mesma lição nunca saem iguais, e a cor do chip (a roupa)
 ///   não se confunde com a de ninguém.
 /// - O gênero de cada papel segue a VOZ que o `tools/ingles/vozes_google.py` sorteou para ele (o mp3 que o
@@ -23,7 +23,7 @@ import '../../domain/historia_turismo.dart';
 ///   bytes UTF-8, nunca `String.hashCode`, que muda entre plataformas e execuções).
 abstract final class FigurantesHistoria {
   /// Os que não são figurantes: o elenco das lições, os extras do Turismo e quem não tem corpo.
-  static const _naoFigurantes = {'max', 'kim', narrador, '', 'placa'};
+  static const _naoFigurantes = {'max', 'kim', narrador, 'narradora', '', 'placa'};
 
   /// Não está no elenco das lições nem é max/kim/narrador/''/placa.
   static bool ehFigurante(String quem) => !elencoDasLicoes.contains(quem) && !_naoFigurantes.contains(quem);
@@ -229,6 +229,13 @@ abstract final class FigurantesHistoria {
         estilo: Cabelo.cacheado,
         sardas: true,
         cilios: true),
+    // o conto "Jack Hannaford" (B1): o velho soldado esperto, o fazendeiro e a esposa dele
+    'jack': Aparencia(
+        pele: _rosada, cabelo: Color(0xFF9A9A9A), roupa: Color(0xFF8E3B46), estilo: Cabelo.lateral, sardas: true),
+    'fazendeiro': Aparencia(
+        pele: _trigueira, cabelo: Color(0xFF5C3A21), roupa: Color(0xFF6A994E), estilo: Cabelo.curto),
+    'esposa': Aparencia(
+        pele: _clara, cabelo: Color(0xFF8B5A2B), roupa: Color(0xFFC17C74), estilo: Cabelo.coque, cilios: true),
     // só figurante mudo (D20)
     'oficial': Aparencia(
         pele: _marrom,

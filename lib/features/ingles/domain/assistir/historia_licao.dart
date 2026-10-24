@@ -12,14 +12,15 @@ import '../baralhos.dart' show chaveDaFrase;
 /// Os personagens canônicos que podem aparecer em qualquer lição (Max e Kim são só do Turismo).
 const elencoDasLicoes = {'voce', 'mike', 'sarah', 'ana', 'ben', 'emma', 'lucas', 'julia', 'dra-lee'};
 
-/// Os 36 papéis que falam no currículo (conferido em 22/out/2026) + 3 só para figurante mudo (D20).
+/// Os 39 papéis que falam no currículo (conferido em 24/out/2026; jack, fazendeiro e esposa são do conto
+/// "Jack Hannaford") + 3 só para figurante mudo (D20).
 /// Fonte única: o FigurantesHistoria (grupo B) tem uma aparência fixa para cada um destes.
 const figurantesConhecidos = {
   'amigo-do-ben', 'atendente', 'caixa', 'cfo', 'cliente', 'colega', 'convidada', 'convidado', 'corretora',
   'desenvolvedora', 'dev-junior', 'dev-nova', 'dev-novo', 'dev-pleno', 'diretora', 'engenheira', 'engenheiro',
   'entrevistador', 'estagiaria', 'farmaceutica', 'gestora', 'guia', 'marido', 'moradora', 'motorista',
   'participante', 'passageira', 'passageiro', 'proprietario', 'recepcionista', 'recrutadora', 'seguranca',
-  'stakeholder', 'supervisora', 'vendedor', 'vizinha',
+  'stakeholder', 'supervisora', 'vendedor', 'vizinha', 'jack', 'fazendeiro', 'esposa',
   'oficial', 'garcom', 'vendedora'};
 
 /// Figurantes que estão na cena sem falar nenhuma frase da lição (por lição, somando as cenas).
@@ -43,8 +44,8 @@ const propsSoDoTurismo = {PropHistoria.carro, PropHistoria.carroRival, PropHisto
 /// Ações de deslocamento: nunca numa âncora (a voz do Ouvir não espera a andança); vão num passo mudo.
 const acoesQueDeslocam = {AcaoAtor.entra, AcaoAtor.anda, AcaoAtor.corre, AcaoAtor.dirige, AcaoAtor.desce, AcaoAtor.sai};
 
-/// '' e 'placa' → narrador; o resto como veio.
-String quemNoPalco(String quem) => quem.isEmpty || quem == 'placa' ? narrador : quem;
+/// '', 'placa' e 'narradora' (a voz que conta os contos) → narrador; o resto como veio.
+String quemNoPalco(String quem) => quem.isEmpty || quem == 'placa' || quem == 'narradora' ? narrador : quem;
 
 /// A1→a1, A2→a2, B1→b1, B2/C1/DEV→b2 (pelo começo de `Trilha.etapa`).
 NivelIngles nivelDaEtapa(String etapa) {

@@ -144,11 +144,12 @@ abstract final class ElencoIngles {
   static const _femininos = {
     'recrutadora', 'diretora', 'moradora', 'engenheira', 'corretora', 'passageira', 'estagiaria', 'gestora',
     'recepcionista', 'atendente', 'guia', 'enfermeira', 'professora', 'vizinha', 'amiga', 'chefe', 'medica',
+    'esposa',
   };
 
   /// A cara de [quem] (o campo `quem` da frase); null = ninguém (sem rosto).
   static Aparencia? de(String quem) {
-    if (quem.isEmpty) return null;
+    if (quem.isEmpty || quem == 'narrador' || quem == 'narradora') return null;
     if (quem == 'voce') return voce;
     return _porNome[quem] ?? (_femininos.contains(quem) ? ela : ele);
   }

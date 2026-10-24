@@ -55,6 +55,7 @@ ELENCO = {
     'julia': 'Zephyr',
     'dra-lee': 'Sulafat',
     'narrador': 'Charon',  # exemplos da teoria e placas
+    'narradora': 'Vindemiatrix',  # quem conta os contos (Jack Hannaford): voz feminina calma
     'placa': 'Charon',
 }
 # a história do Turismo ("The Golden Wheel"): os do curso com a MESMA voz; Max, Kim e o narrador da história com as
@@ -69,7 +70,7 @@ FEMININAS = ['Achernar', 'Autonoe', 'Callirrhoe', 'Despina', 'Erinome', 'Gacrux'
 FEMININOS = {'recrutadora', 'diretora', 'moradora', 'engenheira', 'corretora', 'passageira', 'estagiaria', 'gestora',
              'farmaceutica', 'desenvolvedora', 'vizinha', 'esposa', 'mae', 'namorada', 'professora', 'medica',
              'enfermeira', 'chefe-dela', 'convidada', 'dev-nova', 'supervisora'}
-MASCULINOS = {'entrevistador', 'proprietario', 'passageiro', 'vendedor', 'amigo-do-ben', 'convidado', 'marido',
+MASCULINOS = {'jack', 'entrevistador', 'proprietario', 'passageiro', 'vendedor', 'amigo-do-ben', 'convidado', 'marido',
               'engenheiro', 'dev-novo', 'dev-junior', 'pai', 'irmao', 'professor', 'medico'}
 
 

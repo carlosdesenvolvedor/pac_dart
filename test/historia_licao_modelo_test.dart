@@ -116,6 +116,7 @@ void main() {
     test('quemNoPalco, nivelDaEtapa, slugDaLicao', () {
       expect(quemNoPalco(''), narrador);
       expect(quemNoPalco('placa'), narrador);
+      expect(quemNoPalco('narradora'), narrador);
       expect(quemNoPalco('atendente'), 'atendente');
       expect(nivelDaEtapa('A1 · Fundação'), NivelIngles.a1);
       expect(nivelDaEtapa('A2 · Dia a dia'), NivelIngles.a2);
@@ -131,7 +132,7 @@ void main() {
       expect(elencoDasLicoes, hasLength(9));
       expect(elencoDasLicoes.intersection({'max', 'kim'}), isEmpty);
       expect(elencoDasLicoes.difference(personagensHistoria), isEmpty);
-      expect(figurantesConhecidos, hasLength(39));
+      expect(figurantesConhecidos, hasLength(42));
       expect(figurantesConhecidos.intersection(elencoDasLicoes), isEmpty);
       expect(maxFigurantesMudos, 2);
       expect(cenariosSoDoTurismo, hasLength(9));
