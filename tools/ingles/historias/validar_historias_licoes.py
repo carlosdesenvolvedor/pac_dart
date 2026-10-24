@@ -124,7 +124,7 @@ FEMININOS = {'emocao', 'acao', 'hora', 'camera', 'pos', 'para'}
 
 
 def quem_no_palco(q):
-    return NARRADOR if q in ('', 'placa') else q
+    return NARRADOR if q in ('', 'placa', 'narradora') else q
 
 
 def nivel_da_etapa(etapa):
