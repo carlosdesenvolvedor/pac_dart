@@ -1,0 +1,176 @@
+{
+  "versao": 1,
+  "trilha": "conto-jack-hannaford",
+  "arco": "Um conto popular contado pela narradora: na fazenda isolada, o velho soldado Jack engana a esposa crédula, leva as economias \"para o primeiro marido no Paraíso\" e ainda foge no cavalo do fazendeiro. No fim, os dois tolos sorriem, certos de que ajudaram.",
+  "licoes": {
+    "conto-jack-hannaford.era-uma-vez-dois-tolos": {
+      "titulo": { "en": "Two fools and a soldier", "pt": "Dois tolos e um soldado" },
+      "cenas": [
+        {
+          "cenario": "quintal", "hora": "amanhecer", "clima": [],
+          "elenco": [
+            { "quem": "esposa", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "fazendeiro", "pos": "centro", "emocao": "feliz" },
+            { "quem": "jack", "pos": "direita", "visivel": false, "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-531156", "camera": "geral",
+              "reacoes": [ { "quem": "esposa", "acao": "acena", "emocao": "feliz" },
+                           { "quem": "fazendeiro", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-9854f0",
+              "reacoes": [ { "quem": "esposa", "emocao": "timido" } ] },
+            { "frase": "f-198e05",
+              "reacoes": [ { "quem": "esposa", "acao": "pensa", "emocao": "triste" } ] },
+            { "frase": "f-55e5bb", "camera": "medio",
+              "objetos": [ { "prop": "caixa", "acao": "aparece", "pos": "esquerda" } ],
+              "reacoes": [ { "quem": "fazendeiro", "acao": "concorda", "emocao": "determinado" },
+                           { "quem": "esposa", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "jack", "acao": "entra", "emocao": "feliz" },
+            { "frase": "f-33fc8f", "camera": "geral",
+              "reacoes": [ { "quem": "jack", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-2e31a4",
+              "reacoes": [ { "quem": "jack", "acao": "pensa", "emocao": "determinado", "efeito": "brilho" } ] },
+            { "frase": "f-0f25d5",
+              "reacoes": [ { "quem": "fazendeiro", "acao": "acena", "emocao": "feliz" },
+                           { "quem": "esposa", "acao": "acena", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "fazendeiro", "acao": "sai", "emocao": "feliz" },
+            { "mudo": true, "quem": "jack", "acao": "anda", "para": "centroDireita", "emocao": "determinado" },
+            { "frase": "f-df3491",
+              "reacoes": [ { "quem": "jack", "acao": "aponta", "efeito": "estalo" },
+                           { "quem": "esposa", "emocao": "surpreso", "efeito": "exclamacao" } ] },
+            { "frase": "f-0f68a9", "acao": "acena", "emocao": "feliz", "alvo": "jack", "camera": "dupla",
+              "reacoes": [ { "quem": "jack", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-6004eb", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao", "alvo": "jack",
+              "camera": "medio",
+              "reacoes": [ { "quem": "jack", "acao": "aponta", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "conto-jack-hannaford.eu-vim-do-paraiso": {
+      "titulo": { "en": "Straight from Paradise", "pt": "Direto do Paraíso" },
+      "cenas": [
+        {
+          "cenario": "quintal", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "esposa", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "jack", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-7e0326", "acao": "aponta", "emocao": "radiante", "efeito": "brilho", "camera": "medio",
+              "reacoes": [ { "quem": "esposa", "emocao": "surpreso" } ] },
+            { "frase": "f-6c17aa",
+              "reacoes": [ { "quem": "esposa", "acao": "concorda", "emocao": "radiante" },
+                           { "quem": "jack", "emocao": "feliz", "efeito": "brilho" } ] },
+            { "frase": "f-0f2c36", "acao": "pula", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close" },
+            { "frase": "f-6b8682", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "esposa", "emocao": "radiante" } ] },
+            { "frase": "f-3b0167", "acao": "pensa", "emocao": "pensativo", "alvo": "jack" },
+            { "frase": "f-785928", "acao": "nega", "emocao": "triste",
+              "reacoes": [ { "quem": "esposa", "emocao": "surpreso" } ] },
+            { "frase": "f-a0bf70", "acao": "mostra", "segura": "prato", "emocao": "triste", "camera": "medio",
+              "reacoes": [ { "quem": "esposa", "emocao": "triste" } ] },
+            { "frase": "f-aa69d9", "emocao": "triste", "efeito": "coracoes", "alvo": "jack", "camera": "close" },
+            { "frase": "f-c0cbce", "acao": "aponta", "segura": "nada", "emocao": "determinado",
+              "reacoes": [ { "quem": "esposa", "emocao": "pensativo" } ] },
+            { "frase": "f-d770e2", "acao": "concorda", "emocao": "feliz", "alvo": "esposa", "camera": "dupla",
+              "reacoes": [ { "quem": "esposa", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "jack", "acao": "comemora", "emocao": "radiante", "efeito": "brilho" }
+          ]
+        }
+      ]
+    },
+    "conto-jack-hannaford.o-dinheiro-escondido": {
+      "titulo": { "en": "The empty money box", "pt": "A caixa de dinheiro vazia" },
+      "cenas": [
+        {
+          "cenario": "cozinha", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "esposa", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "jack", "pos": "centroDireita", "emocao": "feliz" },
+            { "quem": "fazendeiro", "pos": "direita", "visivel": false, "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "caixa", "pos": "esquerda" } ],
+          "passos": [
+            { "frase": "f-293a9f", "camera": "geral",
+              "objetos": [ { "prop": "caixa", "acao": "some" } ],
+              "reacoes": [ { "quem": "esposa", "segura": "caixa", "emocao": "feliz" } ] },
+            { "frase": "f-d86f30", "camera": "medio",
+              "objetos": [ { "prop": "caixa", "acao": "aparece", "pos": "centro", "de": "esposa" } ],
+              "reacoes": [ { "quem": "jack", "segura": "sacola", "emocao": "radiante" } ] },
+            { "frase": "f-e6b7eb", "acao": "aponta", "emocao": "feliz", "efeito": "coracoes", "alvo": "jack" },
+            { "frase": "f-182fc1", "acao": "mostra", "emocao": "feliz", "efeito": "brilho", "camera": "close",
+              "reacoes": [ { "quem": "esposa", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "jack", "acao": "sai", "emocao": "radiante" },
+            { "mudo": true, "quem": "fazendeiro", "acao": "entra", "emocao": "feliz" },
+            { "frase": "f-35c987", "camera": "geral",
+              "reacoes": [ { "quem": "fazendeiro", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-795250", "acao": "comemora", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "fazendeiro", "emocao": "surpreso", "efeito": "interrogacao" } ] },
+            { "frase": "f-a6ca01", "acao": "aponta", "alvo": "caixa", "emocao": "surpreso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "esposa", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-a4e782", "acao": "nega", "emocao": "bravo", "efeito": "estalo", "camera": "close",
+              "reacoes": [ { "quem": "esposa", "emocao": "surpreso" } ] },
+            { "frase": "f-bd8cdb", "acao": "pensa", "emocao": "determinado",
+              "reacoes": [ { "quem": "esposa", "acao": "aponta", "emocao": "timido" } ] },
+            { "frase": "f-42db8d",
+              "reacoes": [ { "quem": "fazendeiro", "acao": "pula", "emocao": "determinado" } ] },
+            { "mudo": true, "quem": "fazendeiro", "acao": "sai", "emocao": "determinado",
+              "reacoes": [ { "quem": "esposa", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "conto-jack-hannaford.o-homem-nas-nuvens": {
+      "titulo": { "en": "The man in the clouds", "pt": "O homem nas nuvens" },
+      "cenas": [
+        {
+          "cenario": "cidade", "hora": "tarde", "clima": ["folhas"],
+          "elenco": [
+            { "quem": "jack", "pos": "centroEsquerda", "segura": "sacola", "emocao": "feliz" },
+            { "quem": "fazendeiro", "pos": "direita", "visivel": false, "emocao": "bravo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-7769b9", "camera": "medio",
+              "reacoes": [ { "quem": "jack", "acao": "pensa", "emocao": "pensativo", "efeito": "estalo" } ] },
+            { "frase": "f-fa49e7",
+              "reacoes": [ { "quem": "jack", "acao": "senta", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "fazendeiro", "acao": "entra", "para": "centroDireita", "emocao": "bravo", "efeito": "suor" },
+            { "frase": "f-db4a9c", "acao": "aponta", "alvo": "jack", "emocao": "bravo", "camera": "dupla" },
+            { "frase": "f-2e4f65", "acao": "aponta", "emocao": "radiante", "efeito": "brilho", "camera": "close",
+              "reacoes": [ { "quem": "fazendeiro", "emocao": "surpreso" } ] },
+            { "frase": "f-6e5738", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-b4ed13", "acao": "concorda", "emocao": "feliz", "alvo": "fazendeiro", "camera": "medio",
+              "reacoes": [ { "quem": "fazendeiro", "acao": "concorda", "emocao": "pensativo" } ] },
+            { "frase": "f-3e0a1a",
+              "reacoes": [ { "quem": "fazendeiro", "acao": "senta", "emocao": "pensativo" } ] },
+            { "frase": "f-a3e96e", "camera": "geral",
+              "reacoes": [ { "quem": "jack", "acao": "pula", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "jack", "acao": "sai", "emocao": "radiante",
+              "reacoes": [ { "quem": "fazendeiro", "emocao": "surpreso", "efeito": "exclamacao" } ] }
+          ]
+        },
+        {
+          "cenario": "quintal", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "esposa", "pos": "centroEsquerda", "emocao": "pensativo" },
+            { "quem": "fazendeiro", "pos": "centroDireita", "visivel": false, "emocao": "cansado" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "mudo": true, "quem": "fazendeiro", "acao": "entra", "emocao": "cansado", "efeito": "suor" },
+            { "frase": "f-1f8467", "camera": "geral",
+              "reacoes": [ { "quem": "esposa", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" } ] },
+            { "frase": "f-c2522b", "acao": "aponta", "emocao": "feliz", "efeito": "suor", "camera": "medio",
+              "reacoes": [ { "quem": "esposa", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "esposa", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "fazendeiro", "acao": "concorda", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}
