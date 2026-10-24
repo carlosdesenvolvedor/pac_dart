@@ -387,3 +387,15 @@ Cada linha: lição, o que faltou, o que foi usado no lugar. Viram cenários/pro
 - palavras-101-200.161-a-170: prop "xícara de chá" (a Ana está com um chá na chamada) → usei `cafe` (a caneca).
 - palavras-101-200.181-a-190: figurantes novos "mãe da Ana", "irmão da Ana" e "avó" (almoço de domingo com a família da Ana) → a mãe que serve o macarrão é a `moradora` (senhora de coque e óculos), o irmão é o `convidado` (na churrasqueira do `quintal`); a avó ficou fora do palco.
 - palavras-101-200.191-a-200: prop "cartas do jogo de perguntas / baralho" (noite de jogo na casa da Emma) → usei `caderno` (o placar) na mão da Emma.
+
+### Conto Jack Hannaford (24/out/2026)
+- conto-jack-hannaford.era-uma-vez-dois-tolos: faltou o cavalo do fazendeiro (frase f-0f25d5, "rode to the market"); usei um mudo `sai` do fazendeiro, acenando.
+- conto-jack-hannaford.era-uma-vez-dois-tolos: faltou a porta da casa da fazenda (frase f-df3491, a batida); usei o `quintal` (fundos da casa à esquerda) com a reação do Jack `aponta` + `estalo`.
+- conto-jack-hannaford.o-dinheiro-escondido: faltou a cama (frase f-293a9f, "a box from under the bed"); usei a `caixa` como objeto no chão (`esquerda`), que some quando a esposa a pega.
+- conto-jack-hannaford.o-dinheiro-escondido: faltou um saquinho de moedas (as economias); usei a `sacola` na mão do Jack (ela continua com ele na lição seguinte).
+- conto-jack-hannaford.o-dinheiro-escondido: faltou a mesa da cozinha (a caixa vazia "sobre a mesa"); a caixa vazia fica no `centro` (perto do fogão).
+- conto-jack-hannaford.o-homem-nas-nuvens: faltou um cenário de estrada de terra/campo sem pista (a `campina` é vetada por causa da pista de corrida); usei a `cidade` à tarde com `clima: ["folhas"]`.
+- conto-jack-hannaford.o-homem-nas-nuvens: faltou deitar de costas na grama (frases f-fa49e7 e f-3e0a1a); usei `senta` (Jack e depois o fazendeiro).
+- conto-jack-hannaford.o-homem-nas-nuvens: faltaram o cavalo e as rédeas (f-b4ed13, f-3e0a1a, f-a3e96e); usei o `pula` do Jack seguido de um mudo `sai` (a fuga a galope).
+- conto-jack-hannaford.o-homem-nas-nuvens: faltaram as nuvens/o homem subindo ao Paraíso (f-2e4f65); usei o Jack `aponta` para o alto, com `brilho`.
+- conto-jack-hannaford.eu-vim-do-paraiso: faltaram as nuvens/o céu do Paraíso (f-7e0326, f-c0cbce); usei o Jack `aponta` para o alto, com `brilho`.

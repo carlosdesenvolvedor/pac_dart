@@ -2640,3 +2640,10 @@ Pedido do dono (print de uma lista do Gemini): uma lição no A1 com as 50 palav
 - Junto: 20 linhas na `encenacao_auto.json`, +10 palavras no `dicionario.json`, 199 vozes Chirp + bocas, historinhas
   autorais (✨) das 3 trilhas (124 trilhas com história) e os testes de contagem 602 → 622. A "mãe da Ana" (papel novo)
   virou fala da `ana` para não precisar de figurante novo; pedidos de arte do lote em `PEDIDOS-DE-ARTE.md`.
+
+## 🦊 24/out/2026: conto "Jack Hannaford" no B1 + 🎯 escolher palavras da lição (FEITO; no ar)
+
+- **🎯 Escolher palavras** (eda10b8): folha com TODAS as palavras das frases de uma lição (`IndicePalavras.palavrasParaEstudar`), marcar só as que quer e treinar só elas no treino de palavras. Entradas: "🎯 Treinar palavras" na barra da lição, "Treinar esta palavra" no balão da palavra tocada, e no menu da lição no mapa.
+- **Conto Jack Hannaford** (`conto-jack-hannaford`, ordem 55.5, B1, logo depois dos tempos narrativos): 4 lições × 10 frases, reconto NOSSO do conto popular (Joseph Jacobs, 1890, domínio público), revisado por editor nativo. O dono mandou o PDF + mp3 do CIMV (Mairo Vergara, © 2019, com marca d'água da compra): **não entram no app** (material pago num app público); o texto foi escrito longe dele.
+- Papel novo **`narradora`** (voz Chirp Vindemiatrix): vira o narrador no palco (`quemNoPalco`), sem rosto na lição. Figurantes `jack`, `fazendeiro`, `esposa` na tabela fixa (42). Historinha autoral (5bf14a6); pedidos de arte (cavalo, rédeas, porta, estrada de terra, deitar de costas, nuvens) no PEDIDOS-DE-ARTE.
+- Curso: **125 trilhas · 626 lições · 5.548 frases** (testes contam 626).
