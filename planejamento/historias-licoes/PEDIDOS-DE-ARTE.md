@@ -379,3 +379,11 @@ Cada linha: lição, o que faltou, o que foi usado no lugar. Viram cenários/pro
 - pro-carreira-networking.apresentar-o-que-voce-faz: faltou uma "mesa comprida com bandejas" no `restaurante` (almoço do evento); usei um `prato` em `centro` entre o voce e a engenheira.
 - pro-dia-de-trabalho.meio-do-dia-design-e-code-review: faltou o prop "quadroVirtual" (o diagrama da fila de notificações compartilhado na tela da videochamada, com a aba dos PRs); usei `notebook` em `centro` como a tela (alvo dos `aponta`) e `documento` na mão do voce como o PR.
 - pro-dia-de-trabalho.tarde-incidente-cliente-e-prazo: faltou um prop "grafico" (o gráfico de logins que despenca em vermelho e volta a subir, compartilhado na videochamada); usei `notebook` em `centro` como a tela (alvo do `aponta` e do `escreve`).
+
+### Lote das palavras mais usadas (24/out/2026)
+- palavras-51-100.91-a-100: faltou o prop `relogio` (vitrine de relógios, frases "These are nice." / "Most people like this one."); usei `caixa` no `centro` como a caixa de relógios.
+- palavras-top-50.11-a-20: falta o prop luminária (a Ana manda pôr a luminária e o monitor na mesa; a lâmpada está na caixa); usei `caixa` (no centro) + `notebook` (à direita) no lugar.
+- palavras-101-200.141-a-150: cenário "elevador/corredor do prédio" (a cena é no elevador, com as caixas da mudança) → usei `casa`.
+- palavras-101-200.161-a-170: prop "xícara de chá" (a Ana está com um chá na chamada) → usei `cafe` (a caneca).
+- palavras-101-200.181-a-190: figurantes novos "mãe da Ana", "irmão da Ana" e "avó" (almoço de domingo com a família da Ana) → a mãe que serve o macarrão é a `moradora` (senhora de coque e óculos), o irmão é o `convidado` (na churrasqueira do `quintal`); a avó ficou fora do palco.
+- palavras-101-200.191-a-200: prop "cartas do jogo de perguntas / baralho" (noite de jogo na casa da Emma) → usei `caderno` (o placar) na mão da Emma.

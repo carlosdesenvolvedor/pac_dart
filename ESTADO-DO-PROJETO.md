@@ -2627,3 +2627,16 @@ inglês** (`Linguagem.atual == Linguagem.ingles`, lido uma vez por tela/painter)
   a chave troca para o rosto e de volta mantendo o foco da digitação; 0 erros no console.
 - **Limites conhecidos:** em 360×640 a página rola para manter a digitação e a faixa pode sair do topo (escolhe a miniatura quando não
   cabe); ao trocar de lição em 390×844, a 1ª frase pode cortar ~40 px do topo da cena. Falta conferir num celular de verdade.
+
+## 📚 24/out/2026: as 200 palavras mais usadas no A1 (FEITO; no ar)
+
+Pedido do dono (print de uma lista do Gemini): uma lição no A1 com as 50 palavras mais usadas, depois até 100 e até 200.
+- **3 trilhas novas no A1** (20 lições, 10 palavras e 10 frases cada; cada palavra é o `alvo` da sua frase; a teoria abre
+  com o glossário das 10): `palavras-top-50` (ordem 5.5, depois de perguntas-com-be), `palavras-51-100` (13.5, depois da
+  rotina) e `palavras-101-200` (25.5, depois de going to). Listas: 1–100 = Oxford English Corpus (a do print); 101–200 =
+  NGSL 1.2 (CC BY-SA 4.0, `NGSL_12_stats.csv`) na ordem de frequência, sem as 100 primeiras.
+- Gerado com `tools/ingles/workflow_gerar_trilhas.js` (autor → revisor nativo → revisor PT), validador OK; integrado com
+  `integrar.py` (nenhuma lição antiga mudou). Curso: **124 trilhas · 622 lições · 5.508 frases**.
+- Junto: 20 linhas na `encenacao_auto.json`, +10 palavras no `dicionario.json`, 199 vozes Chirp + bocas, historinhas
+  autorais (✨) das 3 trilhas (124 trilhas com história) e os testes de contagem 602 → 622. A "mãe da Ana" (papel novo)
+  virou fala da `ana` para não precisar de figurante novo; pedidos de arte do lote em `PEDIDOS-DE-ARTE.md`.
