@@ -2728,7 +2728,7 @@ curiosidades… colocar umas imagens [na lousa] quando o professor citar… aind
 - **Currículo corrigido pelo caminho:** nota `pay → pays` → `buy → buys` (conjugar-s-es-ies/06); a força do -teen ("dito
   sozinho, o -teen é forte e comprido", não "sempre no fim") em numeros-horas-soletrar/02.
 
-### 🎓 v2 no curso INTEIRO (25/out/2026): aulas longas do A2 ao DEV — 626/626 lições com aula
+### 🎓 v2 no curso INTEIRO (25/out/2026): aulas longas do A2 ao DEV — 626/626 lições com aula (PUBLICADO em 25/out, commit 36c94b5; 36.600 arquivos em aula_voz, ~1,1 GB, ainda no Firebase — migrar p/ Oracle sa-saopaulo-1 depois)
 Pedido do dono: "mantenha esse mesmo nível para todo o restante do curso, aulas de 6 a 10 min… para eu ter um curso bem completo".
 - **Receita** (`PROMPT_AULAS.md` agora genérico, com `<NIVEL>` e o bloco NÍVEL: A1/A2, B1/B2, C1, DEV, conto): por trilha
   autor → revisor → **verificador adversarial** (tenta refutar cada curiosidade; só fato de dicionário). Validador: 6–10,5 min
