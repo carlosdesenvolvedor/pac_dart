@@ -2727,3 +2727,22 @@ curiosidades… colocar umas imagens [na lousa] quando o professor citar… aind
   `vozes_aula.json`, `AudioNativo.daAula` e as bocas das aulas do `bocas.json`. Testes rodam sem rede (`VozesAula.fixas = {}`).
 - **Currículo corrigido pelo caminho:** nota `pay → pays` → `buy → buys` (conjugar-s-es-ies/06); a força do -teen ("dito
   sozinho, o -teen é forte e comprido", não "sempre no fim") em numeros-horas-soletrar/02.
+
+### 🎓 v2 no curso INTEIRO (25/out/2026): aulas longas do A2 ao DEV — 626/626 lições com aula
+Pedido do dono: "mantenha esse mesmo nível para todo o restante do curso, aulas de 6 a 10 min… para eu ter um curso bem completo".
+- **Receita** (`PROMPT_AULAS.md` agora genérico, com `<NIVEL>` e o bloco NÍVEL: A1/A2, B1/B2, C1, DEV, conto): por trilha
+  autor → revisor → **verificador adversarial** (tenta refutar cada curiosidade; só fato de dicionário). Validador: 6–10,5 min
+  pela fórmula do app (`minutos()` = `AulaLicao.segundos`), português 3.500–8.200 letras; `NOMES`/`EMPRESTADAS` ampliados.
+- **A2 + B1** (46 trilhas, 227 aulas, 7,0–9,9 min, média 8,6 → 32,5 h): workflow local. Relatório + dúvidas para o dono:
+  `planejamento/RELATORIO-AULAS-A2-B1.md` (157 dúvidas: fotos que não combinam, notas do currículo exageradas).
+- **B2 + C1 + DEV** (47 trilhas, 243 aulas, 7,0–9,4 min, média 8,4 → 33,9 h): sessão na NUVEM (`planejamento/PROMPT-NUVEM-AULAS.md`,
+  branch `claude/aulas-b2-c1-dev`, merge no main). Relatório: `planejamento/RELATORIO-NUVEM-AULAS-B2-C1-DEV.md`.
+- **Varredura só do inglês** (7.748 frases "en", localizador + cético por lote): 2 erros confirmados, ambos de TRADUÇÃO do
+  currículo, corrigidos na fonte e no `curriculo.json`: "Longa!" → "Longo! Esperei no portão…" (situacao-viagem/02) e
+  "Está, sim." → "É, sim. Posso ver o seu cartão de embarque…" (contar-historia/04).
+- **Total:** 626 aulas, ≈83 h de aula falada (A1 ≈17 h). Voz ≈2,9 M letras no Chirp 3 HD.
+- **Voz:** os mp3 saíram do git (`.gitignore`: `web/aula_voz/*.mp3`; só os índices `.json` vão) — regerar com
+  `vozes_aula.py` (sem `--so`: gera o que falta, faz as bocas, apaga órfãos, escreve os 125 índices). ⚠️ A cota por minuto do
+  Chirp 3 HD estoura com duas rodadas em paralelo (429 RESOURCE_EXHAUSTED): rodar UMA só, `--paralelo 6`; o 429 agora insiste
+  por ~15 min antes de desistir. O teste de voz pula quando a cópia não tem os mp3 (nuvem/CI).
+- `ingles_aulas_conteudo_test.dart` agora exige aula em TODA lição do curso (≥620).

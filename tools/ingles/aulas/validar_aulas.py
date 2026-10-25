@@ -264,7 +264,7 @@ def validar_aula(aula, licao, en, pt):
     if falas and isinstance(falas[-1], dict) and 'pt' not in falas[-1]:
         erros.append('a última fala é em português (o professor fecha a aula)')
     if not (PT_TOTAL_MIN <= total_pt <= PT_TOTAL_MAX):
-        erros.append(f'português somado {total_pt} caracteres (de {PT_TOTAL_MIN} a {PT_TOTAL_MAX}: ~5 a 10 minutos)')
+        erros.append(f'português somado {total_pt} caracteres (de {PT_TOTAL_MIN} a {PT_TOTAL_MAX}: ~6 a 10 minutos)')
     m = minutos(falas)
     if not (MIN_MIN <= m <= MIN_MAX):
         erros.append(f'a aula dura ≈ {m:.1f} min (de {MIN_MIN:g} a {MIN_MAX:g}): '

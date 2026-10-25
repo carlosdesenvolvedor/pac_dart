@@ -1,5 +1,5 @@
 // 🎓 A AULA DO PROFESSOR de uma lição do PAC·ENGLISH: o Prof. Beto aparece, mexendo a boca, e dá uma aula falada
-// (voz pt-BR pronta, não IA) de 5 a 10 minutos, dividida em partes — a cena como historinha, cada frase, a regra
+// (voz pt-BR pronta, não IA) de 6 a 10 minutos, dividida em partes — a cena como historinha, cada frase, a regra
 // ou o termo técnico, pronúncia, curiosidades, erros comuns, desafios e a recapitulação. Os exemplos em inglês
 // ele diz em inglês; a lousa mostra o quadro, o exemplo e as figuras (a foto da cena ou emojis). Dart puro.
 

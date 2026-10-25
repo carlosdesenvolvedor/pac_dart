@@ -3,7 +3,7 @@
 falas em português com a voz pt-BR dele e os exemplos em inglês com a mesma voz em en-US (o mesmo timbre nos dois
 idiomas).
 
-As aulas longas (5 a 10 minutos cada) passam de 200 MB de mp3: elas NÃO vão no pacote do app (o .aab da Play Store
+As aulas longas (6 a 10 minutos cada) passam de 200 MB de mp3: elas NÃO vão no pacote do app (o .aab da Play Store
 estouraria) — ficam em web/, que o `flutter build web` copia para o site, e o app busca de lá (VozesAula).
 
 Entrada: assets/ingles/aulas/<slug>.json (todas as trilhas do indice.json).
@@ -46,9 +46,11 @@ class Token:
     def __init__(self):
         self._t, self._em, self._lock = None, 0, threading.Lock()
 
-    def __call__(self):
+    def __call__(self, novo=False):
         with self._lock:
-            if not self._t or time.time() - self._em > 2400:
+            if novo and time.time() - self._em > 30:  # 401: o gcloud devolveu um token em cache perto de vencer
+                self._t = None
+            if not self._t or time.time() - self._em > 1200:
                 self._t = subprocess.check_output(['gcloud', 'auth', 'print-access-token'], text=True).strip()
                 self._em = time.time()
             return self._t
@@ -61,14 +63,18 @@ def sintetizar(texto, lingua, gcp, token):
         'voice': {'languageCode': codigo, 'name': f'{codigo}-Chirp3-HD-{VOZ}'},
         'audioConfig': {'audioEncoding': 'MP3'},
     }).encode()
-    for tentativa in range(8):
+    for tentativa in range(20):  # a cota por minuto do Chirp 3 HD estoura fácil: insiste por ~15 min
         req = urllib.request.Request(API, data=corpo, headers={
             'Authorization': 'Bearer ' + token(), 'x-goog-user-project': gcp, 'Content-Type': 'application/json'})
         try:
             with urllib.request.urlopen(req, timeout=90) as r:
                 return base64.b64decode(json.load(r)['audioContent'])
         except urllib.error.HTTPError as e:
-            if e.code in (429, 500, 503) and tentativa < 7:
+            if e.code == 401 and tentativa < 19:
+                time.sleep(3)
+                token(novo=True)
+                continue
+            if e.code in (429, 500, 503) and tentativa < 19:
                 time.sleep(min(60, 2 ** tentativa))
                 continue
             raise RuntimeError(f'{e.code} {e.read()[:300]!r} em {texto!r}')

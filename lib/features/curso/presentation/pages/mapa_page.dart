@@ -2583,7 +2583,7 @@ class _LicaoSheet extends StatelessWidget {
               child: _OpcaoSheet(
                 icone: Icons.school_rounded,
                 titulo: '🎓 Aula do $nomeDoProfessor',
-                subtitulo: 'uma aula falada de 5 a 10 minutos: a cena, cada frase, a regra, curiosidades e desafios',
+                subtitulo: 'uma aula falada de 6 a 10 minutos: a cena, cada frase, a regra, curiosidades e desafios',
                 onTap: onAula!,
               ),
             ),

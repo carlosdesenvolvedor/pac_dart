@@ -1,0 +1,1239 @@
+{
+ "versao": 2,
+ "trilha": "dev-docs-email",
+ "licoes": {
+  "dev-docs-email.instale-as-dependencias": {
+   "titulo": "O leia-me que todo dev novo agradece",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "foto",
+     "pt": "Olha essa mesa: dois monitores grandes, um notebook com a tela preta cheia de letrinhas verdes, e a janela dando para os prédios da cidade. É aqui que você trabalha hoje."
+    },
+    {
+     "pt": "O seu time tem uma biblioteca interna, um pedaço de código que vários projetos da empresa usam. E acabou de chegar um dev novo, que precisa rodar essa biblioteca na máquina dele."
+    },
+    {
+     "img": "📘💻",
+     "pt": "Em vez de explicar tudo de boca, você escreve as instruções no arquivo de leia-me do projeto, o primeiro arquivo que alguém abre quando chega num repositório.",
+     "quadro": "README = read me = leia-me"
+    },
+    {
+     "pt": "Enquanto isso, o dev novo vai seguindo os passos e mandando dúvidas no chat. Então a aula tem dois registros: o texto escrito do leia-me, mais formal, e a conversa rápida do chat."
+    },
+    {
+     "secao": "Apresentando a biblioteca",
+     "pt": "O leia-me costuma abrir dizendo o que o projeto precisa. A sua frase é animadora para quem chega:"
+    },
+    {
+     "en": "This library has only two dependencies.",
+     "tr": "Esta biblioteca tem apenas duas dependências.",
+     "img": "📚🔗"
+    },
+    {
+     "pt": "Primeira armadilha: a palavra do começo quer dizer biblioteca, e não livraria. É um falso cognato clássico. A loja onde você compra livro é outra palavra.",
+     "quadro": "library = biblioteca · bookstore = livraria"
+    },
+    {
+     "pt": "Agora a palavra do fim. Dependência é aquilo que o seu projeto precisa para funcionar: outras bibliotecas que ele usa por baixo. Olha a escrita, porque aqui o brasileiro tropeça.",
+     "quadro": "dependency → dependencies (com -en-)"
+    },
+    {
+     "pt": "A penúltima sílaba é com e, igual ao nosso dependência. Muita gente escreve com a. E no plural, o y vira i e ganha o final de plural, como você viu na trilha de conjugar."
+    },
+    {
+     "pt": "E a palavrinha antes do número quer dizer apenas. Ela dá o tom da frase: só duas, vai ser fácil.",
+     "quadro": "only two = apenas duas"
+    },
+    {
+     "secao": "Os primeiros passos",
+     "pt": "Depois vêm os passos. E a regra de ouro do leia-me: cada passo começa com o verbo, sem sujeito. É o modo imperativo. Primeiro passo:"
+    },
+    {
+     "en": "Clone the repo and open the root folder.",
+     "tr": "Clone o repositório e abra a pasta raiz.",
+     "img": "📂🌳"
+    },
+    {
+     "pt": "Dois verbos de ordem ligados pelo e: clonar, que é copiar o repositório para a sua máquina, e abrir. Nenhum você na frente. Num texto de instruções, ninguém precisa dizer quem faz.",
+     "quadro": "Clone... and open... (imperativo, sem you)"
+    },
+    {
+     "pt": "A palavra do meio é a forma curta de repositório, a que todo dev fala no dia a dia. E no fim, a pasta raiz: a pasta principal do projeto, onde todas as outras ficam penduradas.",
+     "quadro": "repo = repositório · root folder = pasta raiz"
+    },
+    {
+     "img": "🌳",
+     "pt": "Por que raiz? Porque as pastas de um computador são desenhadas como uma árvore de cabeça para baixo. Lá em cima fica a raiz, e dela saem os galhos, que são as subpastas."
+    },
+    {
+     "pt": "Segundo passo. Esse tem uma ordem que, se o dev novo pular, nada funciona:"
+    },
+    {
+     "en": "Install the dependencies before you run the app.",
+     "tr": "Instale as dependências antes de rodar o app.",
+     "img": "📦⬇️"
+    },
+    {
+     "pt": "Olha a diferença para o português. A gente diz antes de rodar, sem sujeito. Em inglês, depois de antes vem uma frase completa: antes que você rode.",
+     "quadro": "antes de rodar = before you run"
+    },
+    {
+     "pt": "Também vale a outra forma, com o verbo terminado no gerúndio, um pouco mais seca:"
+    },
+    {
+     "en": "Install the dependencies before running the app.",
+     "tr": "Instale as dependências antes de rodar o app."
+    },
+    {
+     "pt": "O que não existe é a mistura: antes, mais o verbo puro, sem sujeito. É um dos erros mais comuns de brasileiro em mensagem de trabalho.",
+     "quadro": "before you run / before running · NÃO: before run"
+    },
+    {
+     "secao": "O seguinte comando",
+     "pt": "Leia-me de verdade sempre tem um comando para copiar e colar. E ele vem anunciado por uma frase que você vai ver em todo projeto do mundo:"
+    },
+    {
+     "en": "Run the following command in the root folder.",
+     "tr": "Rode o seguinte comando na pasta raiz.",
+     "img": "⌨️⚡"
+    },
+    {
+     "pt": "O verbo do começo quer dizer correr, mas para comando, programa e teste ele quer dizer rodar, executar. É o mesmo sentido do nosso rodar os testes, rodar o app.",
+     "quadro": "run a command = rodar um comando"
+    },
+    {
+     "pt": "E a palavra do meio vem do verbo seguir: o seguinte, aquilo que vem logo abaixo. Vale também para os seguintes passos, os seguintes arquivos.",
+     "quadro": "follow = seguir → the following = o seguinte"
+    },
+    {
+     "pt": "Mais adiante, você explica como atualizar as dependências. E a frase começa pelo objetivo:"
+    },
+    {
+     "en": "To update the dependencies, run the following command.",
+     "tr": "Para atualizar as dependências, rode o seguinte comando.",
+     "img": "🔄⌨️"
+    },
+    {
+     "pt": "Atenção nesse começo. Para fazer alguma coisa, com ideia de finalidade, é só a partícula do infinitivo mais o verbo. O brasileiro adora traduzir o para e junta duas palavras.",
+     "quadro": "Para atualizar = To update · NÃO: for to update"
+    },
+    {
+     "secao": "Certifique-se de que",
+     "pt": "Agora a expressão mais útil da aula. Antes de rodar qualquer coisa, o leia-me pede para o leitor conferir uma condição:"
+    },
+    {
+     "en": "Make sure that Git is installed on your machine.",
+     "tr": "Certifique-se de que o Git está instalado na sua máquina.",
+     "img": "✅💻"
+    },
+    {
+     "pt": "Ao pé da letra, faça certo que. É o nosso certifique-se de que, ou, no falado, vê se. Depois dela vem uma frase completa, com sujeito e verbo.",
+     "quadro": "Make sure (that) + frase = Certifique-se de que"
+    },
+    {
+     "pt": "Dois detalhes finos. Nome de ferramenta e de linguagem vem sem artigo em inglês, apesar do nosso o. E na sua máquina usa a preposição de superfície, a de em cima da mesa.",
+     "quadro": "Git (sem the) · on your machine"
+    },
+    {
+     "pt": "A palavrinha de ligação, o nosso que, pode sumir. Sem ela a frase fica igualmente certa, e até mais comum:"
+    },
+    {
+     "en": "Make sure the tests pass before you push your code.",
+     "tr": "Certifique-se de que os testes passam antes de fazer push do seu código.",
+     "img": "🧪✅"
+    },
+    {
+     "pt": "Repare que os testes passam, no presente simples. Depois de certifique-se e de antes, o inglês usa o presente, sem futuro."
+    },
+    {
+     "pt": "E o seu código está no singular. Em inglês, código é incontável, como água e informação. No plural, a palavra lembra código de acesso ou de desconto. O código do programa fica sempre no singular.",
+     "quadro": "your code · NÃO: your codes"
+    },
+    {
+     "secao": "No chat com o dev novo",
+     "img": "💬❓",
+     "pt": "Enquanto você escreve, o chat apita. O dev novo já está tentando. Repare em como ele abre a mensagem:"
+    },
+    {
+     "en": "Quick question: where's the root folder?",
+     "tr": "Pergunta rápida: onde fica a pasta raiz?",
+     "img": "❓📂"
+    },
+    {
+     "pt": "Pergunta rápida, com dois-pontos, é a etiqueta clássica do chat: avisa que é coisa de um minuto. E a pergunta usa a contração de onde com o verbo é.",
+     "quadro": "where's = where is"
+    },
+    {
+     "pt": "Logo depois, ele manda o que apareceu na tela:"
+    },
+    {
+     "en": "It says some dependencies are missing.",
+     "tr": "Está dizendo que faltam algumas dependências.",
+     "img": "🧩❌"
+    },
+    {
+     "pt": "Em português, está dizendo vem sem sujeito. Em inglês o sujeito é obrigatório, então entra o pronome das coisas: a tela, a mensagem de erro. E o verbo dizer serve para texto escrito.",
+     "quadro": "It says... = Está dizendo... (it obrigatório)"
+    },
+    {
+     "pt": "No fim, quem falta vira o sujeito: as dependências estão faltando. Bem diferente do nosso faltam algumas dependências.",
+     "quadro": "missing = faltando"
+    },
+    {
+     "pt": "E você responde no tom do chat, sem a formalidade do leia-me:"
+    },
+    {
+     "en": "Then just install them again with the same command.",
+     "tr": "Então instala de novo com o mesmo comando.",
+     "img": "🔁📦"
+    },
+    {
+     "pt": "A palavrinha logo depois do então quer dizer é só. É ela que deixa a frase leve, de colega para colega. Sem ela, soaria como uma ordem seca."
+    },
+    {
+     "pt": "E o pronome depois do verbo. A gente diz instala de novo e pronto. Em inglês, instalar pede objeto: instala elas de novo. Sem o pronome, a frase fica incompleta.",
+     "quadro": "install them again (objeto obrigatório)"
+    },
+    {
+     "pt": "Percebeu o tom? No leia-me, o português usa instale, rode, certifique-se. No chat, instala, roda, vê se. Em inglês o verbo é o mesmo: quem muda o tom são as palavrinhas em volta.",
+     "quadro": "Leia-me: Instale · Chat: instala"
+    },
+    {
+     "secao": "Pronúncia e curiosidade",
+     "pt": "Pronúncia. Em dependências, a sílaba forte é a segunda, e as outras ficam fraquinhas, quase engolidas. Escuta:"
+    },
+    {
+     "en": "dependencies",
+     "tr": "dependências"
+    },
+    {
+     "pt": "E em raiz, a vogal é um u bem comprido, e o r do começo não vibra: a língua fica solta, sem bater em lugar nenhum. Ouça:"
+    },
+    {
+     "en": "the root folder",
+     "tr": "a pasta raiz"
+    },
+    {
+     "img": "🌳👑",
+     "pt": "Curiosidade de dev: nos sistemas da família Unix, como o Linux e o macOS, a pasta do topo de todas também se chama raiz. E o superusuário, o que tem todos os poderes na máquina, tem esse mesmo nome."
+    },
+    {
+     "img": "🕰️",
+     "pt": "E dependência vem do latim, de um verbo que quer dizer ficar pendurado. É a família de pêndulo e de pendente. Uma dependência é algo de que o seu projeto fica pendurado."
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Hora do desafio. Escreva no leia-me: Abra a pasta raiz. Lembre: verbo no começo, sem sujeito.",
+     "pausa": 4
+    },
+    {
+     "en": "Open the root folder.",
+     "tr": "Abra a pasta raiz."
+    },
+    {
+     "pt": "Agora uma mais comprida. Escreva: Certifique-se de que os testes passam antes de rodar o app.",
+     "pausa": 6
+    },
+    {
+     "en": "Make sure the tests pass before you run the app.",
+     "tr": "Certifique-se de que os testes passam antes de rodar o app."
+    },
+    {
+     "pt": "E no chat: o dev novo diz que está faltando uma dependência. Diga a ele: então é só instalar de novo.",
+     "pausa": 5
+    },
+    {
+     "en": "Then just install it again.",
+     "tr": "Então é só instalar de novo."
+    },
+    {
+     "pt": "Como era uma dependência só, o pronome virou o das coisas no singular. Se acertou isso, você entendeu de verdade."
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando. No leia-me, cada passo começa com o verbo. Para conferir uma condição, certifique-se, e depois uma frase completa.",
+     "quadro": "Install · Run · Make sure (that)"
+    },
+    {
+     "pt": "Para anunciar o comando, o seguinte, do verbo seguir. Para finalidade, a partícula do infinitivo sozinha. Dependência com e no meio, e código sempre no singular."
+    },
+    {
+     "pt": "Agora é a sua vez de digitar o leia-me e a conversa com o dev novo. Imagine que ele vai ler tudo amanhã de manhã, então capricha. Bom trabalho!"
+    }
+   ]
+  },
+  "dev-docs-email.este-metodo-esta-obsoleto": {
+   "titulo": "Obsoleto não é desvalorizado: a reza e o preço",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "foto",
+     "pt": "Fim de tarde. O sol entra pela janela e desenha a sombra de umas folhas na parede. Na mesa escura, uma pilha de cadernos e o notebook aberto, com o código colorido na tela."
+    },
+    {
+     "pt": "A biblioteca do seu time vai ganhar uma versão nova, a três. E versão nova traz mudança: método que vai sair, comportamento que muda. Quem usa a biblioteca precisa saber disso antes."
+    },
+    {
+     "img": "📄⚠️",
+     "pt": "Então hoje você escreve a documentação da API: o texto que diz o que cada método faz, o que ele devolve e o que está para mudar. E depois apresenta tudo numa chamada de vídeo com o time, onde o Mike vai te interromper com uma pergunta."
+    },
+    {
+     "pt": "Documentação de API tem um estilo próprio em inglês: frases curtas, muita voz passiva e frases sem sujeito. Vamos ver cada peça."
+    },
+    {
+     "secao": "Obsoleto, use o novo",
+     "pt": "O aviso mais importante de uma documentação é dizer que um método está com os dias contados. Olha como se escreve:"
+    },
+    {
+     "en": "This method is deprecated. Use the new one instead.",
+     "tr": "Este método está obsoleto. Use o novo.",
+     "img": "⚠️🕰️"
+    },
+    {
+     "pt": "A palavra do fim da primeira frase quer dizer obsoleto, mas com um sentido bem preciso: o método ainda funciona hoje, só que não é mais recomendado e vai sair numa versão futura.",
+     "quadro": "deprecated = obsoleto (ainda funciona, mas vai sair)"
+    },
+    {
+     "pt": "Na segunda frase, um truque elegante. Em vez de repetir o método novo, o inglês põe uma palavrinha que substitui o substantivo. O novo, aquele novo. A gente faz a mesma coisa ao dizer use o novo.",
+     "quadro": "the new one = o novo (one = method)"
+    },
+    {
+     "pt": "E a palavra do fim quer dizer em vez disso, no lugar. Ela fica no final da frase, e é muito usada para indicar a alternativa.",
+     "quadro": "Use X instead = use X no lugar"
+    },
+    {
+     "en": "Use the new login method instead.",
+     "tr": "Use o novo método de login no lugar."
+    },
+    {
+     "secao": "A prece e o preço",
+     "pt": "Agora o erro que até dev experiente comete. Existe uma palavra parecidíssima com obsoleto, com um i a mais no meio. Só que ela quer dizer desvalorizado, que perdeu valor, como um carro usado.",
+     "quadro": "deprecated = obsoleto · depreciated = desvalorizado"
+    },
+    {
+     "img": "🙏💰",
+     "pt": "E a origem das duas resolve a confusão para sempre. A palavra de obsoleto vem do latim, de um verbo que quer dizer afastar com reza, pedir que algo não aconteça. É a família da nossa palavra prece."
+    },
+    {
+     "pt": "Já a de desvalorizado vem do latim que deu a nossa palavra preço. Depreciar é baixar o preço. Então guarde assim: o método obsoleto, a gente reza para ele ir embora. O carro desvalorizado perdeu o preço.",
+     "quadro": "deprecate ~ prece · depreciate ~ preço"
+    },
+    {
+     "secao": "Será removido",
+     "pt": "Logo depois do aviso, você diz quando o método vai sair de vez:"
+    },
+    {
+     "en": "The old API will be removed in version 3.",
+     "tr": "A API antiga será removida na versão 3.",
+     "img": "🗑️📅"
+    },
+    {
+     "pt": "Essa é a voz passiva no futuro. A estrutura está na lousa: o futuro, mais o verbo ser, mais o particípio. Igual ao nosso será removida.",
+     "quadro": "will be + particípio = será + particípio"
+    },
+    {
+     "pt": "Por que passiva? Porque quem tira não importa, seja o Mike, você ou o time inteiro. O que importa para o leitor é o que acontece com a API. Documentação ama a passiva por isso."
+    },
+    {
+     "pt": "E repare na versão. Antes do número da versão não vai artigo nenhum. Em português a gente diz na versão três, mas em inglês é só em, mais versão, mais o número.",
+     "quadro": "in version 3 · NÃO: in the version 3"
+    },
+    {
+     "secao": "A pergunta do Mike",
+     "pt": "Na chamada, você está apresentando as mudanças, e o Mike levanta a mão. Repare em como ele interrompe com educação:"
+    },
+    {
+     "en": "Sorry to interrupt, but is the login method deprecated too?",
+     "tr": "Desculpa interromper, mas o método de login também está obsoleto?",
+     "img": "🙋🔐"
+    },
+    {
+     "pt": "O começo é a fórmula educada de entrar na fala de alguém: desculpa interromper. Depois da desculpa vem a partícula do infinitivo e o verbo, e em seguida o mas.",
+     "quadro": "Sorry to interrupt, but... = Desculpa interromper, mas..."
+    },
+    {
+     "pt": "Olha o método de login: o substantivo que descreve vem antes, como um adjetivo. E o também fica lá no final da frase, onde o inglês costuma colocá-lo.",
+     "quadro": "the login method · ... too? = também"
+    },
+    {
+     "pt": "E você responde que sim, e diz quando ele sai:"
+    },
+    {
+     "en": "Yes. It will be removed in the next major version.",
+     "tr": "Sim. Será removido na próxima versão major.",
+     "img": "⏭️🗑️"
+    },
+    {
+     "pt": "De novo a passiva no futuro, agora com o sujeito obrigatório do inglês, o pronome das coisas. Em português o sujeito some, mas em inglês ele sempre aparece.",
+     "quadro": "It will be removed = Será removido"
+    },
+    {
+     "img": "🔢",
+     "pt": "E a versão principal tem uma história. Muitos projetos numeram as versões com três números separados por ponto, numa convenção chamada versionamento semântico.",
+     "quadro": "3.1.4 = major.minor.patch"
+    },
+    {
+     "pt": "O primeiro número é o principal, e ele sobe quando vem mudança que quebra quem usa a biblioteca. O segundo sobe com novidade compatível, e o terceiro com correção. Por isso a remoção espera a próxima versão principal."
+    },
+    {
+     "secao": "O estilo curto: Retorna",
+     "pt": "Agora o estilo mais típico da documentação de API. Cada método tem uma linha dizendo o que ele devolve. E essa linha começa direto pelo verbo, com o final da terceira pessoa:"
+    },
+    {
+     "en": "Returns null if the user is not found.",
+     "tr": "Retorna null se o usuário não for encontrado.",
+     "img": "🔍👤"
+    },
+    {
+     "pt": "Por que o verbo tem o final da terceira pessoa, se não tem sujeito? Porque o sujeito está escondido: este método retorna. A gente faz igual em português: retorna, e não retorne.",
+     "quadro": "(This method) Returns... = Retorna..."
+    },
+    {
+     "pt": "Isso é o que distingue a descrição da instrução. No leia-me, o verbo vem puro porque é uma ordem para o leitor. Aqui ele vem com o final da terceira pessoa porque descreve o que o método faz.",
+     "quadro": "Install (ordem) x Returns (descrição)"
+    },
+    {
+     "pt": "A palavra do valor fica em inglês, porque é palavra do código, igual nas linguagens de programação. E no fim, mais uma passiva, agora no presente: se não for encontrado.",
+     "quadro": "if... is not found = se não for encontrado"
+    },
+    {
+     "pt": "Olha que interessante: o português usa o subjuntivo, se não for. O inglês usa o presente simples depois do se. Nada de futuro, nada de subjuntivo."
+    },
+    {
+     "pt": "A segunda linha de retorno é para o método de busca:"
+    },
+    {
+     "en": "Returns an empty list if there are no results.",
+     "tr": "Retorna uma lista vazia se não houver resultados.",
+     "img": "📭📋"
+    },
+    {
+     "pt": "Lista vazia, com o artigo de antes de vogal, porque a palavra de vazia começa com som de vogal. E no fim, se não houver: aqui o brasileiro troca o haver pelo ter.",
+     "quadro": "an empty list · if there are no results"
+    },
+    {
+     "pt": "Lembra da trilha do tem um banco aqui perto? Para dizer que algo existe ou não existe, é aquela estrutura, nunca o verbo ter. Com ter, a frase diria que alguém possui resultados."
+    },
+    {
+     "pt": "A documentação também diz o valor padrão de cada parâmetro:"
+    },
+    {
+     "en": "The default value is null.",
+     "tr": "O valor padrão é null.",
+     "img": "⚙️🚫"
+    },
+    {
+     "pt": "A primeira palavra importante quer dizer padrão, o que vem de fábrica. Você já viu ela nas configurações de qualquer app: restaurar o padrão.",
+     "quadro": "default value = valor padrão"
+    },
+    {
+     "pt": "E sobre o campo do formulário de cadastro:"
+    },
+    {
+     "en": "The email field can be null.",
+     "tr": "O campo de e-mail pode ser null.",
+     "img": "📧⬜"
+    },
+    {
+     "pt": "Duas coisas. O campo de e-mail segue o padrão de substantivo mais substantivo, com o que descreve na frente. E pode ser usa o modal de poder mais o verbo ser no infinitivo, sem partícula nenhuma.",
+     "quadro": "the email field · can be (sem to)"
+    },
+    {
+     "secao": "A mudança que quebra",
+     "pt": "Por fim, o aviso mais sério da documentação. Quando a mudança obriga quem usa a biblioteca a mexer no próprio código, ela tem um nome especial:"
+    },
+    {
+     "en": "This is a breaking change, so please update your code.",
+     "tr": "Esta é uma mudança incompatível, então, por favor, atualize seu código.",
+     "img": "💥🔧"
+    },
+    {
+     "pt": "Ao pé da letra, uma mudança quebrante, que quebra. O verbo quebrar ganhou o final de gerúndio e virou adjetivo. Em português a gente fala mudança incompatível, ou fala o termo em inglês mesmo.",
+     "quadro": "breaking change = mudança que quebra"
+    },
+    {
+     "pt": "E o pedido vem com o por favor no meio da frase, logo depois do então. É um jeito educado de dar uma ordem por escrito, e é muito comum em documentação e e-mail."
+    },
+    {
+     "pt": "No resumo da versão, você conta quantas são:"
+    },
+    {
+     "en": "Version 3 has two breaking changes.",
+     "tr": "A versão 3 tem duas mudanças incompatíveis.",
+     "img": "💥📦"
+    },
+    {
+     "pt": "Versão três no começo, sem artigo, como você já viu. E o plural fica só no substantivo final: o adjetivo nunca vai para o plural em inglês."
+    },
+    {
+     "secao": "Pronúncia",
+     "pt": "Pronúncia. Em obsoleto, a sílaba forte é a primeira, e a segunda fica bem fraquinha, quase engolida. Escuta:"
+    },
+    {
+     "en": "deprecated",
+     "tr": "obsoleto"
+    },
+    {
+     "pt": "E o final de particípio, em removido, não vira sílaba nova. Depois de um som vibrado como o do v, a terminação é só a consoante, colada na palavra, sem vogal nova no fim. Ouça:"
+    },
+    {
+     "en": "It will be removed.",
+     "tr": "Será removido."
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Desafio. Escreva na documentação: Este método está obsoleto. Use o novo no lugar.",
+     "pausa": 5
+    },
+    {
+     "en": "This method is deprecated. Use the new one instead.",
+     "tr": "Este método está obsoleto. Use o novo."
+    },
+    {
+     "pt": "Agora com a passiva no futuro: O método antigo será removido na versão quatro.",
+     "pausa": 5
+    },
+    {
+     "en": "The old method will be removed in version 4.",
+     "tr": "O método antigo será removido na versão 4."
+    },
+    {
+     "pt": "E o estilo curto: Retorna falso se a lista estiver vazia.",
+     "pausa": 5
+    },
+    {
+     "en": "Returns false if the list is empty.",
+     "tr": "Retorna false se a lista estiver vazia."
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando. Obsoleto é o da prece, não o do preço. Para dizer o que vai sair, a passiva no futuro, sem artigo antes do número da versão.",
+     "quadro": "deprecated · will be removed · in version 3"
+    },
+    {
+     "pt": "Para descrever um método, o verbo com o final da terceira pessoa, sem sujeito. Depois do se, o presente. E mudança que quebra o código dos outros vem com aviso e com por favor."
+    },
+    {
+     "pt": "Agora é a sua vez de digitar a documentação e a conversa com o Mike. Capricha na grafia de obsoleto, que essa até o corretor deixa passar. Bom trabalho!"
+    }
+   ]
+  },
+  "dev-docs-email.espero-que-esteja-bem": {
+   "titulo": "O e-mail que abre portas: do oi ao atenciosamente",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "foto",
+     "pt": "Olha a foto, tirada de cima: uma mesa de madeira clarinha, as mãos no teclado do notebook, um relógio no pulso e o celular ao lado. Uma cena calma, de quem vai escrever algo com cuidado."
+    },
+    {
+     "pt": "E vai mesmo. A empresa fechou com um cliente novo, de fora do Brasil, e você ficou responsável pela parte técnica. Agora precisa mandar os primeiros e-mails para ele."
+    },
+    {
+     "img": "✉️🗓️",
+     "pt": "O assunto é o cronograma do projeto: as fases, as datas, quando cada coisa fica pronta. E primeiro e-mail com cliente novo é cartão de visita. Tom certo, nem duro demais, nem solto demais."
+    },
+    {
+     "pt": "A boa notícia é que o e-mail profissional em inglês é cheio de fórmulas prontas. Você aprende meia dúzia delas e escreve qualquer e-mail com cara de quem faz isso há anos."
+    },
+    {
+     "secao": "A abertura",
+     "pt": "Todo e-mail tem três partes: abertura, motivo e fecho. A abertura começa com o cumprimento e o nome, seguida de vírgula, e depois uma frase de cortesia. Olha a sua:"
+    },
+    {
+     "en": "Hi everyone, I hope you're doing well.",
+     "tr": "Oi, pessoal, espero que vocês estejam bem.",
+     "img": "👋😊"
+    },
+    {
+     "pt": "O cumprimento é o oi mesmo. Hoje, em e-mail de trabalho, ele é muito comum, até com cliente. Existe uma forma mais tradicional, que lembra o nosso prezado, mas ela soa cerimoniosa no dia a dia.",
+     "quadro": "Hi + nome, (comum) · Dear + nome, (mais formal)"
+    },
+    {
+     "pt": "E a palavra depois do oi quer dizer todo mundo, pessoal. É o jeito seguro de falar com um grupo, porque serve para qualquer equipe."
+    },
+    {
+     "pt": "Agora a frase de cortesia. Ao pé da letra: eu espero que você esteja indo bem. Repare que o inglês usa o presente contínuo, e não o subjuntivo que a gente usa.",
+     "quadro": "I hope you're doing well = espero que esteja bem"
+    },
+    {
+     "pt": "Para o português, ela soa quase como enfeite, e é mesmo. Mas em inglês ela faz o papel de um sorriso antes do assunto. Pular essa frase no primeiro e-mail pode deixar o texto seco demais."
+    },
+    {
+     "pt": "Na segunda-feira, você manda outro e-mail e enfeita a cortesia com o fim de semana:"
+    },
+    {
+     "en": "Good morning, I hope you're doing well and had a great weekend.",
+     "tr": "Bom dia, espero que você esteja bem e tenha tido um ótimo fim de semana.",
+     "img": "☀️☕"
+    },
+    {
+     "pt": "Olha a diferença de tempo verbal. Em português: tenha tido, um subjuntivo composto, complicado. Em inglês, o fim de semana já acabou, então é o passado simples e pronto.",
+     "quadro": "tenha tido = had (passado simples)"
+    },
+    {
+     "pt": "Atenção a um detalhe: o bom dia do começo de e-mail só funciona se você souber que ele vai ler de manhã. Com cliente em outro fuso horário, o oi é mais seguro."
+    },
+    {
+     "secao": "O motivo do e-mail",
+     "pt": "Depois da cortesia, vai direto ao motivo. E para isso existe uma fórmula de ouro:"
+    },
+    {
+     "en": "I'm writing to share the project timeline.",
+     "tr": "Estou escrevendo para compartilhar o cronograma do projeto.",
+     "img": "✍️🗓️"
+    },
+    {
+     "pt": "Estou escrevendo, no presente contínuo, porque é o que você está fazendo agora. E depois vem a partícula do infinitivo com o verbo: para compartilhar. Lembra da finalidade, da aula do leia-me?",
+     "quadro": "I'm writing to + verbo = Escrevo para..."
+    },
+    {
+     "pt": "O erro clássico é traduzir o para ao pé da letra e usar a preposição de destino. Para dizer por que você está escrevendo, com verbo depois, use a partícula do infinitivo.",
+     "quadro": "NÃO: I'm writing for share"
+    },
+    {
+     "pt": "A mesma fórmula serve para qualquer motivo. Escrevo para perguntar, para confirmar, para avisar. Escuta o e-mail da segunda-feira:"
+    },
+    {
+     "en": "I'm writing to ask whether Monday works for you.",
+     "tr": "Estou escrevendo para perguntar se segunda funciona para você.",
+     "img": "📅❓"
+    },
+    {
+     "pt": "A palavra depois do verbo perguntar quer dizer se, mas um se especial: o da pergunta indireta, quando você pergunta se algo é assim ou não. Ela soa um pouco mais formal que o se comum, e cai muito bem em e-mail.",
+     "quadro": "whether = se (pergunta indireta) · if também serve"
+    },
+    {
+     "pt": "Dia da semana em inglês sempre com letra maiúscula, porque é nome próprio. E funciona para você é uma expressão de ouro para marcar reunião: a segunda funciona para você?",
+     "quadro": "Monday (maiúscula) · works for you = funciona para você"
+    },
+    {
+     "secao": "O cronograma",
+     "pt": "No corpo do e-mail você explica o cronograma. A frase é simples, mas a palavra principal vale a aula:"
+    },
+    {
+     "en": "The timeline has three phases.",
+     "tr": "O cronograma tem três fases.",
+     "img": "🗓️🧩"
+    },
+    {
+     "pt": "A palavra do cronograma junta tempo com linha. Uma linha do tempo, onde você marca o que acontece e quando. E fase começa com aquele par de letras que soa como f, o mesmo da grafia antiga do português, quando se escrevia farmácia assim.",
+     "quadro": "timeline = time + line · phase = fase"
+    },
+    {
+     "pt": "No fim do dia, o cliente responde, todo satisfeito:"
+    },
+    {
+     "en": "Thanks, Carlos. The timeline looks great.",
+     "tr": "Obrigado, Carlos. O cronograma parece ótimo.",
+     "img": "👍🗓️"
+    },
+    {
+     "pt": "O verbo do meio é parecer, pelo que se vê. Ele tem o final da terceira pessoa, porque o sujeito é o cronograma. E depois dele vem o adjetivo, não o advérbio: parece ótimo.",
+     "quadro": "looks great = parece ótimo (looks + adjetivo)"
+    },
+    {
+     "pt": "Esse verbo de parecer é ótimo para dar retorno. Parece bom, parece certo, parece ótimo. Em revisão de código, você vai ver muito a forma curtinha: parece bom para mim."
+    },
+    {
+     "secao": "Qualquer dúvida",
+     "pt": "Agora o fecho, que tem duas partes: a porta aberta e a despedida. A porta aberta é o nosso qualquer dúvida, me avise:"
+    },
+    {
+     "en": "Let me know if you have any questions.",
+     "tr": "Qualquer dúvida, me avise.",
+     "img": "🙋📩"
+    },
+    {
+     "pt": "Ao pé da letra: me deixe saber se você tiver quaisquer perguntas. E aqui mora uma armadilha enorme do brasileiro. Dúvida, nesse sentido, é pergunta, e não aquela palavra parecida com dúvida.",
+     "quadro": "dúvida (pergunta) = question · doubt = desconfiança"
+    },
+    {
+     "pt": "A palavra parecida com dúvida, em inglês, é incerteza, desconfiança. Se você escreve que tem uma dúvida com essa palavra, pode soar como se você estivesse desconfiado de alguma coisa."
+    },
+    {
+     "pt": "E repare no plural depois de qualquer. Em português, qualquer dúvida, no singular. Em inglês, o natural é quaisquer perguntas, no plural. Na reunião de apresentação, você pergunta:"
+    },
+    {
+     "en": "Do you have any questions so far?",
+     "tr": "Vocês têm alguma dúvida até agora?",
+     "img": "🙋‍♀️❓"
+    },
+    {
+     "pt": "A expressão do fim quer dizer até agora, até aqui. Ela é perfeita para pausar uma explicação comprida e checar se o outro está acompanhando.",
+     "quadro": "so far = até agora"
+    },
+    {
+     "pt": "E uma prima dessa armadilha: informação não tem plural em inglês. Qualquer informação, alguma informação, sempre no singular, igual código.",
+     "quadro": "any information · NÃO: informations"
+    },
+    {
+     "secao": "O atenciosamente",
+     "pt": "Por fim, a despedida. O nosso atenciosamente tem um equivalente que funciona em quase todo e-mail de trabalho:"
+    },
+    {
+     "en": "Best regards, Carlos.",
+     "tr": "Atenciosamente, Carlos.",
+     "img": "🤝✉️"
+    },
+    {
+     "pt": "Ao pé da letra, os melhores cumprimentos. A segunda palavra vem de consideração, apreço. Depois dela vai vírgula, e o seu nome, normalmente na linha de baixo.",
+     "quadro": "Best regards, / Carlos"
+    },
+    {
+     "pt": "Existem variações. Uma com gentil no lugar de melhor, também muito usada. Ou só o melhor, sozinho, mais informal. E o obrigado, quando você pediu alguma coisa no e-mail.",
+     "quadro": "Kind regards, · Best, · Thanks,"
+    },
+    {
+     "pt": "No último e-mail do dia, você agradece o tempo do cliente antes de fechar:"
+    },
+    {
+     "en": "Thanks again for your time. Best regards, Carlos.",
+     "tr": "Obrigado de novo pelo seu tempo. Atenciosamente, Carlos.",
+     "img": "🙏✉️"
+    },
+    {
+     "pt": "Obrigado pelo seu tempo é um agradecimento muito comum em e-mail de trabalho. O de novo no meio mostra que você já agradeceu antes, numa reunião ou noutro e-mail."
+    },
+    {
+     "secao": "Pronúncia e curiosidade",
+     "pt": "Pronúncia: no meio do se da pergunta indireta, a língua vai entre os dentes, com a garganta vibrando. E, na maioria dos sotaques, a palavra soa igualzinha à palavra do tempo, do clima. Escuta:"
+    },
+    {
+     "en": "whether",
+     "tr": "se"
+    },
+    {
+     "img": "🌦️❓",
+     "pt": "Truque de memória: a mesma pronúncia serve para tempo e para se. Será que vai chover? É uma dúvida sobre o tempo. Pensa na nuvem e você lembra do se da pergunta indireta."
+    },
+    {
+     "img": "🌙📅",
+     "pt": "Curiosidade: o nome da segunda-feira em inglês vem do inglês antigo, e quer dizer dia da lua. Domingo é o dia do sol. Em espanhol e em francês, a segunda também é ligada à lua."
+    },
+    {
+     "pt": "E o português é exceção entre as línguas latinas: em vez de deuses e astros, a gente numerou os dias. Segunda, terça, quarta. Por isso o nosso nome do dia não ajuda em nada a lembrar o inglês."
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Desafio. Abra um e-mail para o cliente: Oi, pessoal, espero que vocês estejam bem.",
+     "pausa": 5
+    },
+    {
+     "en": "Hi everyone, I hope you're doing well.",
+     "tr": "Oi, pessoal, espero que vocês estejam bem."
+    },
+    {
+     "pt": "Agora o motivo: Estou escrevendo para confirmar a reunião.",
+     "pausa": 5
+    },
+    {
+     "en": "I'm writing to confirm the meeting.",
+     "tr": "Estou escrevendo para confirmar a reunião."
+    },
+    {
+     "pt": "E o fecho completo, em duas frases: Qualquer dúvida, me avise. Atenciosamente, Carlos.",
+     "pausa": 6
+    },
+    {
+     "en": "Let me know if you have any questions. Best regards, Carlos.",
+     "tr": "Qualquer dúvida, me avise. Atenciosamente, Carlos."
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando o esqueleto do e-mail. Abertura: oi, o nome, vírgula, e a frase de cortesia. Motivo: estou escrevendo, a partícula do infinitivo e o verbo.",
+     "quadro": "Hi... · I hope... · I'm writing to... · Best regards,"
+    },
+    {
+     "pt": "Fecho: qualquer dúvida, com perguntas no plural, e o atenciosamente com vírgula. Dúvida é pergunta, informação não tem plural, e o se da pergunta indireta soa como o tempo."
+    },
+    {
+     "pt": "Agora é a sua vez de digitar os e-mails para o cliente. Escreva como se fosse mandar de verdade, porque logo, logo você vai. Bom trabalho!"
+    }
+   ]
+  },
+  "dev-docs-email.so-retomando-meu-ultimo-e-mail": {
+   "titulo": "Cobrar sem ser chato: o só retomando",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "foto",
+     "pt": "Mesa de madeira vista de cima: o notebook aberto, uma xícara de café ainda quente, os óculos em cima do caderno verde, o celular e uma plantinha no canto. Tudo arrumado. Só falta uma coisa: a resposta do cliente."
+    },
+    {
+     "img": "⏰📧",
+     "pt": "Faz uma semana que você mandou a proposta e não veio nada. E o projeto não anda sem o sim dele. O que fazer? Em inglês, existe um ritual para isso, com frases prontas e um tom bem calibrado."
+    },
+    {
+     "pt": "Hoje você vai aprender a retomar um e-mail sem resposta, a mandar anexos e a pedir confirmação com prazo. Tudo com educação, mas sem deixar o assunto morrer."
+    },
+    {
+     "secao": "Contando para o Mike",
+     "pt": "Antes de tudo, você comenta com o Mike, no chat do time, o que está acontecendo:"
+    },
+    {
+     "en": "I sent the client a reminder, but nobody replied.",
+     "tr": "Mandei um lembrete pro cliente, mas ninguém respondeu.",
+     "img": "⏰📨"
+    },
+    {
+     "pt": "Olha a ordem no começo. O verbo mandar tem duas formas certas. Na que você usou, a pessoa vem logo depois do verbo, e a coisa depois. Na outra, a coisa vem primeiro, e a pessoa vai para o fim, com a preposição de destino.",
+     "quadro": "sent the client a reminder = sent a reminder to the client"
+    },
+    {
+     "pt": "A palavra lembrete vem do verbo lembrar alguém de algo. Dentro dela tem a palavra mente: é aquilo que põe a coisa de volta na sua mente.",
+     "quadro": "remind = lembrar alguém · reminder = lembrete"
+    },
+    {
+     "pt": "E no fim, a armadilha. Ninguém respondeu, com o verbo no afirmativo. Em português a gente pode dizer não respondeu ninguém, com duas negações. Em inglês é uma negação só. A palavra ninguém já nega tudo.",
+     "quadro": "nobody replied · NÃO: nobody didn't reply"
+    },
+    {
+     "secao": "O só retomando",
+     "pt": "Agora o e-mail para o cliente. A frase mais famosa do e-mail corporativo em inglês, a cobrança educada, começa assim:"
+    },
+    {
+     "en": "Just following up on my last email.",
+     "tr": "Só retomando meu último e-mail.",
+     "img": "📧🔁"
+    },
+    {
+     "pt": "Repare que falta um pedaço. A frase completa seria eu só estou retomando. Mas no e-mail o sujeito e o verbo auxiliar caem, e fica só o miolo. É uma frase pela metade de propósito, e todo mundo entende.",
+     "quadro": "(I'm) just following up on... = Só retomando..."
+    },
+    {
+     "pt": "O verbo é seguir, mais uma partícula que quer dizer para cima. Juntos, querem dizer dar continuidade, acompanhar um assunto. É um verbo frasal, daqueles que você viu na trilha de como e de quem."
+    },
+    {
+     "pt": "E o só do começo é o que dá o tom. Ele diminui a cobrança: não estou reclamando, estou só retomando. Sem ele, a frase fica mais dura."
+    },
+    {
+     "pt": "Último, aqui, é o mais recente. Meu último e-mail, o que eu mandei por último. Você pode também dizer de qual dia ele é:"
+    },
+    {
+     "en": "Just following up on my email from Monday.",
+     "tr": "Só retomando meu e-mail de segunda.",
+     "img": "📧📅"
+    },
+    {
+     "pt": "O meu e-mail de segunda usa a preposição de origem, de onde ele vem no tempo. É bem natural, e evita aquela confusão de qual e-mail.",
+     "quadro": "my email from Monday = meu e-mail de segunda"
+    },
+    {
+     "secao": "O lembrete rápido",
+     "pt": "Quando a cobrança é sobre um compromisso marcado, existe uma variação ainda mais leve:"
+    },
+    {
+     "en": "Just a quick reminder about tomorrow's call.",
+     "tr": "Só um lembrete rápido sobre a call de amanhã.",
+     "img": "⏰📞"
+    },
+    {
+     "pt": "De novo o só na frente, e agora o lembrete rápido. Olha o possessivo com o tempo: a chamada de amanhã vira amanhã com apóstrofo e esse. O inglês trata o dia como se fosse o dono.",
+     "quadro": "tomorrow's call = a chamada de amanhã"
+    },
+    {
+     "pt": "Isso vale para hoje, para a semana que vem, para o ano passado. A reunião de hoje, as notícias de hoje, tudo com esse possessivo do tempo."
+    },
+    {
+     "en": "Today's meeting is at three.",
+     "tr": "A reunião de hoje é às três."
+    },
+    {
+     "secao": "Segue em anexo",
+     "pt": "No mesmo e-mail, você reenvia a proposta, para o cliente nem precisar procurar. E para dizer segue em anexo, o inglês tem uma fórmula curiosa:"
+    },
+    {
+     "en": "Please find the latest version of the proposal attached.",
+     "tr": "Segue em anexo a versão mais recente da proposta.",
+     "img": "📎📄"
+    },
+    {
+     "pt": "Ao pé da letra: por favor, encontre a versão mais recente anexada. Parece estranho mandar o cliente encontrar, mas é só uma fórmula. A estrutura está na lousa: encontre, a coisa, e anexada no fim.",
+     "quadro": "Please find + coisa + attached = Segue em anexo"
+    },
+    {
+     "pt": "E repare: mais recente é uma palavra diferente de último. A versão mais recente é a mais nova de todas, a que acabou de sair. O último pode ser o final, o que não vai ter outro depois.",
+     "quadro": "latest = mais recente · last = último"
+    },
+    {
+     "pt": "Essa fórmula é tradicional e bem formal. Muita gente hoje prefere dizer simplesmente anexei, e você vai ver essa forma na próxima lição. Mas com cliente novo, a fórmula clássica cai muito bem."
+    },
+    {
+     "pt": "Junto, vai a fatura da primeira fase. E aqui a frase muda de jeito: em vez da fórmula, você diz que ela está em anexo:"
+    },
+    {
+     "en": "The invoice for the first phase is attached.",
+     "tr": "A invoice da primeira fase está em anexo.",
+     "img": "🧾💵"
+    },
+    {
+     "pt": "A palavra do começo quer dizer fatura, a nota de cobrança. No mundo de dev que trabalha para fora, muita gente fala a palavra em inglês mesmo. E anexada, aqui, funciona como adjetivo: a fatura está anexada.",
+     "quadro": "invoice = fatura · is attached = está em anexo"
+    },
+    {
+     "secao": "Prazo: até sexta",
+     "pt": "Em outro e-mail, você manda o relatório e pede uma confirmação com prazo. Duas frases, uma de anexo e uma de pedido:"
+    },
+    {
+     "en": "Please find the report attached. Could you confirm the numbers by Friday?",
+     "tr": "Segue em anexo o relatório. Você poderia confirmar os números até sexta?",
+     "img": "📊📎"
+    },
+    {
+     "pt": "O pedido usa o você poderia, o jeito educado de pedir que você viu na trilha de convites e pedidos. E no fim, o até sexta. Atenção, porque o inglês tem duas palavras para até.",
+     "quadro": "by Friday = até sexta (prazo) · until = até (duração)"
+    },
+    {
+     "pt": "A da frase é a do prazo: no máximo na sexta, pode ser antes. A outra é a da duração, de algo que continua até aquele momento. Eu trabalho até as seis, o escritório fica fechado até segunda."
+    },
+    {
+     "en": "I'm working until six.",
+     "tr": "Estou trabalhando até as seis."
+    },
+    {
+     "pt": "Trocar uma pela outra é um erro clássico. Pedir para confirmar com a palavra da duração soaria como fique confirmando até sexta, sem parar."
+    },
+    {
+     "secao": "Aguardo o seu retorno",
+     "pt": "E o fecho mais típico desse tipo de e-mail, o nosso aguardo o seu retorno:"
+    },
+    {
+     "en": "Looking forward to hearing from you.",
+     "tr": "Aguardo o seu retorno.",
+     "img": "⏳📬"
+    },
+    {
+     "pt": "De novo a frase sem sujeito, como o só retomando. Ao pé da letra: olhando para a frente, para ter notícias suas. Olhar para frente, ansioso pelo que vem.",
+     "quadro": "look forward to = aguardar com expectativa"
+    },
+    {
+     "pt": "E agora o ponto mais importante da aula. A palavrinha depois de para frente parece a partícula do infinitivo, mas não é: aqui ela é preposição. E depois de preposição, o verbo vem com o final de gerúndio.",
+     "quadro": "looking forward to hearing · NÃO: to hear"
+    },
+    {
+     "pt": "É um erro muito comum nesse fecho, até de quem fala bem. O truque é testar com um substantivo: aguardo a sua resposta. Se cabe um substantivo ali, a palavrinha é preposição, e o verbo vem no gerúndio."
+    },
+    {
+     "en": "I look forward to your reply.",
+     "tr": "Aguardo a sua resposta."
+    },
+    {
+     "pt": "E ter notícias de alguém é o verbo ouvir mais a preposição de origem. Não é escutar a voz: é receber notícia, por e-mail, mensagem ou ligação.",
+     "quadro": "hear from you = ter notícias suas"
+    },
+    {
+     "pt": "Na sexta-feira, você junta o fecho com a despedida de fim de semana:"
+    },
+    {
+     "en": "Have a great weekend. Looking forward to hearing from you.",
+     "tr": "Tenha um ótimo fim de semana. Aguardo o seu retorno.",
+     "img": "🌴⏳"
+    },
+    {
+     "secao": "A resposta e a curiosidade",
+     "pt": "E funciona! Na segunda, chega a resposta do cliente. Repare que ele começa pedindo desculpa pela demora, outra fórmula que vale ouro:"
+    },
+    {
+     "en": "Sorry for the late reply. The invoice was paid yesterday.",
+     "tr": "Desculpa a demora para responder. A invoice foi paga ontem.",
+     "img": "💸✅"
+    },
+    {
+     "pt": "A segunda frase é a voz passiva no passado: foi paga. O verbo ser no passado, mais o particípio. Quem pagou não importa, importa que o dinheiro caiu."
+    },
+    {
+     "pt": "Pronúncia. Em fatura, a sílaba forte é a primeira. E em anexada, o final de particípio vira um som seco, sem vogal nenhuma, colado na palavra. Escuta:"
+    },
+    {
+     "en": "The invoice is attached.",
+     "tr": "A fatura está em anexo."
+    },
+    {
+     "img": "📎",
+     "pt": "Curiosidade: repare que o símbolo de anexo, em quase todo programa de e-mail, é um clipe de papel. É a herança da carta em papel, quando o documento extra ia preso à carta com um clipe."
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Desafio. Comece um e-mail cobrando a resposta: Só retomando meu e-mail de sexta.",
+     "pausa": 4
+    },
+    {
+     "en": "Just following up on my email from Friday.",
+     "tr": "Só retomando meu e-mail de sexta."
+    },
+    {
+     "pt": "Agora o anexo com a fórmula clássica: Segue em anexo a proposta.",
+     "pausa": 4
+    },
+    {
+     "en": "Please find the proposal attached.",
+     "tr": "Segue em anexo a proposta."
+    },
+    {
+     "pt": "E o fecho, sem cair na armadilha da preposição: Aguardo o seu retorno.",
+     "pausa": 4
+    },
+    {
+     "en": "Looking forward to hearing from you.",
+     "tr": "Aguardo o seu retorno."
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando. Para cobrar com educação, o só retomando, com o sujeito escondido. Para anexo, encontre, a coisa, e anexada no fim, ou simplesmente está em anexo.",
+     "quadro": "Just following up on · Please find... attached · by Friday"
+    },
+    {
+     "pt": "Prazo é com a palavra do máximo até, e não a da duração. E no aguardo o seu retorno, a palavrinha do meio é preposição, então o verbo vai para o gerúndio."
+    },
+    {
+     "pt": "Agora é a sua vez de digitar a cobrança, os anexos e a resposta do cliente. E lembre: se ninguém responder, só retome. Bom trabalho!"
+    }
+   ]
+  },
+  "dev-docs-email.nova-versao-e-e-mail-ao-cliente": {
+   "titulo": "Sexta de entrega: leia-me, documentação e e-mail",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "foto",
+     "pt": "Sexta-feira. Parede de concreto, mesa de madeira clara, você de blusa branca no notebook, a caneca do café do lado e os óculos esperando em cima da mesa. Dia de entrega."
+    },
+    {
+     "img": "🚀📦",
+     "pt": "A versão três da biblioteca já saiu, com o método removido e as mudanças que quebram, tudo que você documentou nas aulas anteriores. Hoje sai uma atualização dela, a três ponto um."
+    },
+    {
+     "pt": "E o dia de hoje é um resumo da trilha inteira. De manhã você atualiza o leia-me, depois a documentação da API, e de tarde escreve para o cliente contando a novidade."
+    },
+    {
+     "pt": "Três textos sobre o mesmo assunto, cada um no seu tom. Guarde essa ideia, porque é ela que separa quem escreve inglês de livro de quem escreve inglês de trabalho."
+    },
+    {
+     "secao": "O leia-me da versão nova",
+     "img": "📘",
+     "pt": "Primeiro, o leia-me. Você lembra a regra: cada passo começa com o verbo, sem sujeito. O primeiro passo da versão nova é este:"
+    },
+    {
+     "en": "Install the latest version and run the tests again.",
+     "tr": "Instale a versão mais recente e rode os testes de novo.",
+     "img": "📦🧪"
+    },
+    {
+     "pt": "Dois imperativos ligados pelo e: instale e rode. E a versão mais recente, com a palavra que você viu na aula do só retomando: a mais nova de todas, e não a última de uma série que acabou.",
+     "quadro": "Install... and run... · latest = mais recente"
+    },
+    {
+     "pt": "E o de novo, no fim, é uma palavrinha só em inglês. E normalmente ela fica no final da frase, como aqui."
+    },
+    {
+     "pt": "O segundo passo é um aviso, com a expressão de conferir uma condição:"
+    },
+    {
+     "en": "Make sure that your code doesn't use the deprecated method.",
+     "tr": "Certifique-se de que seu código não usa o método obsoleto.",
+     "img": "✅⚠️"
+    },
+    {
+     "pt": "Olha o verbo auxiliar da negação: é o da terceira pessoa. Por quê? Porque código, em inglês, é incontável, e coisa incontável conta como ele, ela, no singular.",
+     "quadro": "your code doesn't use · NÃO: your codes don't use"
+    },
+    {
+     "pt": "E o método obsoleto: aquele que ainda funciona, mas que a gente reza para ir embora. Lembra da prece e do preço? Obsoleto é o da prece."
+    },
+    {
+     "secao": "A documentação",
+     "img": "📄",
+     "pt": "Agora a documentação. Lembra que, na aula do obsoleto, o método de login seria removido na versão três? Pois a versão três chegou, e a frase passou para o passado:"
+    },
+    {
+     "en": "The old login method was removed in version 3.",
+     "tr": "O método de login antigo foi removido na versão 3.",
+     "img": "🗑️🔐"
+    },
+    {
+     "pt": "A passiva continua, só mudou o tempo. Antes era o futuro, mais ser, mais o particípio. Agora é o verbo ser no passado, mais o particípio. Foi removido.",
+     "quadro": "will be removed → was removed"
+    },
+    {
+     "pt": "E repare na ordem dos adjetivos: o antigo vem antes, e o substantivo que descreve, login, vem colado no método. Em inglês, quem está mais perto do substantivo é o que define o tipo dele."
+    },
+    {
+     "pt": "E a boa notícia desta atualização: só o número do meio subiu, lembra do versionamento semântico? Então ela não quebra nada:"
+    },
+    {
+     "en": "This version has no breaking changes.",
+     "tr": "Esta versão não tem nenhuma mudança incompatível.",
+     "img": "😌🧩"
+    },
+    {
+     "pt": "Olha a negação. Em português a gente usa duas: não tem nenhuma. Em inglês é uma só. Ou você nega o verbo e usa a palavra de qualquer, ou deixa o verbo afirmativo e põe a palavra de nenhum na frente da coisa.",
+     "quadro": "has no = doesn't have any (uma negação só)"
+    },
+    {
+     "pt": "A forma da lição, com o verbo afirmativo, é mais enxuta e soa melhor em documentação. A outra também é muito comum, principalmente na fala."
+    },
+    {
+     "pt": "E no meio da documentação, mais uma linha de retorno no estilo curto:"
+    },
+    {
+     "en": "Returns false if the user is not logged in.",
+     "tr": "Retorna false se o usuário não estiver logado.",
+     "img": "🔒❌"
+    },
+    {
+     "pt": "O verbo com o final da terceira pessoa, porque o sujeito escondido é o método. O valor fica em inglês, porque é palavra do código. E depois do se, o presente simples, mesmo que o português peça o subjuntivo.",
+     "quadro": "if the user is not = se o usuário não estiver"
+    },
+    {
+     "pt": "E a expressão de estar logado é com a preposição de dentro: logado para dentro do sistema. Para sair, é a mesma palavra do registro, com a preposição de fora.",
+     "quadro": "logged in = logado · log out = sair"
+    },
+    {
+     "secao": "O e-mail ao cliente",
+     "img": "✉️",
+     "pt": "De tarde, o e-mail para o cliente. Abertura de cortesia, que você já domina, e logo o motivo:"
+    },
+    {
+     "en": "I hope you're doing well. I've attached the new version of the proposal.",
+     "tr": "Espero que você esteja bem. Anexei a nova versão da proposta.",
+     "img": "📎📑"
+    },
+    {
+     "pt": "Lembra da fórmula clássica de segue em anexo? Aqui está o jeito mais direto, que muita gente prefere hoje: anexei. E ele vem no tempo composto do inglês, o verbo ter mais o particípio.",
+     "quadro": "I've attached = Anexei (resultado: está aqui agora)"
+    },
+    {
+     "pt": "Por que esse tempo? Porque o resultado está presente: o anexo está aí, no e-mail, agora. É o mesmo raciocínio do acabei de, que você viu na trilha do já e do ainda não. Muita gente, principalmente nos Estados Unidos, usa também o passado simples."
+    },
+    {
+     "pt": "E você aproveita para dar uma boa notícia, de passagem:"
+    },
+    {
+     "en": "By the way, the new version is much faster.",
+     "tr": "Aliás, a versão nova é muito mais rápida.",
+     "img": "⚡🚀"
+    },
+    {
+     "pt": "A expressão do começo quer dizer aliás, a propósito. Ao pé da letra, pelo caminho. Ela introduz um comentário extra, que não é o assunto principal, mas vale a pena dizer.",
+     "quadro": "By the way = Aliás, a propósito"
+    },
+    {
+     "pt": "E o muito mais rápida. Aqui está um erro clássico do brasileiro: com comparativo, o muito não é aquele muito de muito bom. É a palavra de muito para quantidade.",
+     "quadro": "much faster · NÃO: very faster"
+    },
+    {
+     "pt": "Lembra da trilha de comparar? Muito mais caro, muito melhor, muito mais rápido, tudo com a mesma palavra. A outra palavra de muito é a do adjetivo puro, sem comparação: muito rápido."
+    },
+    {
+     "en": "It's much better now.",
+     "tr": "Está muito melhor agora."
+    },
+    {
+     "pt": "Por fim, o pedido de confirmação, no tom educado de e-mail com cliente:"
+    },
+    {
+     "en": "Could you please confirm that the login issue was fixed?",
+     "tr": "Você poderia confirmar que o problema do login foi corrigido?",
+     "img": "🔐🔧"
+    },
+    {
+     "pt": "O você poderia, com o por favor no meio, é um pedido bem educado, perfeito para e-mail com cliente. E a palavra do meio quer dizer problema, questão. É o jeito neutro de falar de algo que deu errado.",
+     "quadro": "Could you please...? · issue = problema"
+    },
+    {
+     "pt": "No fim, a passiva no passado de novo: foi corrigido. O verbo consertar ganhou o final de particípio. Quem corrigiu não importa, importa que funciona."
+    },
+    {
+     "secao": "A resposta do cliente",
+     "pt": "Dessa vez o cliente responde rápido, e de bom humor:"
+    },
+    {
+     "en": "Yes, it was fixed yesterday. Thanks for checking!",
+     "tr": "Sim, foi corrigido ontem. Obrigado por verificar!",
+     "img": "✅🙌"
+    },
+    {
+     "pt": "Olha o obrigado por, seguido de verbo. A preposição de novo, e depois dela, como no aguardo o seu retorno, o verbo vem com o final de gerúndio.",
+     "quadro": "Thanks for + -ing = Obrigado por + verbo"
+    },
+    {
+     "pt": "Obrigado por perguntar, obrigado por ajudar, obrigado por esperar: todos com o mesmo encaixe. É uma das regras que mais aparecem em e-mail."
+    },
+    {
+     "pt": "E você fecha a conversa como manda a sexta-feira:"
+    },
+    {
+     "en": "Perfect, thanks! Have a great weekend.",
+     "tr": "Perfeito, obrigado! Tenha um ótimo fim de semana.",
+     "img": "🎉🌅"
+    },
+    {
+     "pt": "Tenha um ótimo fim de semana é a despedida padrão de sexta, de chat a e-mail com cliente. E é uma ordem só no formato: na prática, é um desejo."
+    },
+    {
+     "secao": "Um assunto, três tons",
+     "img": "📘💬✉️",
+     "pt": "Agora repare na grande lição do dia. O mesmo assunto, conferir se o login funciona, aparece em três tons. No leia-me: certifique-se. No chat com o colega: dá uma olhada. No e-mail com o cliente: você poderia confirmar?",
+     "quadro": "Make sure... · Can you check...? · Could you please confirm...?"
+    },
+    {
+     "pt": "Quem escreve o leia-me como se fosse e-mail fica prolixo. Quem escreve para o cliente como se fosse chat parece descuidado. Escolher o tom é metade do inglês de trabalho."
+    },
+    {
+     "secao": "Pronúncia e curiosidade",
+     "pt": "Pronúncia. Em corrigido, o final de particípio não vira sílaba: a palavra continua com uma sílaba só, terminando num som seco. Escuta:"
+    },
+    {
+     "en": "It was fixed.",
+     "tr": "Foi corrigido."
+    },
+    {
+     "img": "🐞📋",
+     "pt": "Curiosidade: a palavra de problema da sua frase é tão central para dev que dá nome à aba do GitHub onde se registram bugs e pedidos. Abrir uma delas, lá, é registrar um problema no projeto."
+    },
+    {
+     "img": "💬⚡",
+     "pt": "E o aliás é tão comum em chat que virou sigla de três letras, as iniciais da expressão. Quando você vir essas três letras numa mensagem, é só o colega dizendo a propósito."
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Desafio. No leia-me: Instale a versão mais recente.",
+     "pausa": 4
+    },
+    {
+     "en": "Install the latest version.",
+     "tr": "Instale a versão mais recente."
+    },
+    {
+     "pt": "No e-mail ao cliente: Você poderia confirmar que o bug foi corrigido?",
+     "pausa": 5
+    },
+    {
+     "en": "Could you please confirm that the bug was fixed?",
+     "tr": "Você poderia confirmar que o bug foi corrigido?"
+    },
+    {
+     "pt": "E agradeça ao cliente: Obrigado por esperar!",
+     "pausa": 4
+    },
+    {
+     "en": "Thanks for waiting!",
+     "tr": "Obrigado por esperar!"
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando a trilha inteira. Leia-me: imperativo e certifique-se. Documentação: passiva, retorna com o final da terceira pessoa, e obsoleto com a prece no meio.",
+     "quadro": "README: Install · Docs: was removed, Returns · E-mail: Could you please...?"
+    },
+    {
+     "pt": "E-mail: cortesia na abertura, estou escrevendo para, anexei, você poderia confirmar, e obrigado por com o verbo no gerúndio. Código no singular, muito mais com a palavra de quantidade."
+    },
+    {
+     "pt": "Agora é a sua vez de digitar o dia de entrega inteiro. E depois, bom fim de semana, que você mereceu. Bom trabalho!"
+    }
+   ]
+  }
+ }
+}

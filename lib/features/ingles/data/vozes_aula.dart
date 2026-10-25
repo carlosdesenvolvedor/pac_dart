@@ -11,7 +11,7 @@ import 'fala_stub.dart'
 /// O mp3 de uma fala da aula ([url] inteira, no site) e a boca dela (o lip sync compacto; '' = sem).
 typedef VozDaFala = ({String url, String boca});
 
-/// 🎓 A voz do Prof. Beto nas aulas. As aulas longas (5 a 10 minutos cada) passam de 200 MB de mp3: elas NÃO vão
+/// 🎓 A voz do Prof. Beto nas aulas. As aulas longas (6 a 10 minutos cada) passam de 200 MB de mp3: elas NÃO vão
 /// no pacote do app — ficam no site (`web/aula_voz/`, publicado junto com o app web), com um índice por trilha,
 /// `aula_voz/<slug>.json` = {"pt|texto": ["<arquivo>.mp3", "<boca>"], "en|texto": [...]} (gerado por
 /// `tools/ingles/aulas/vozes_aula.py`). Na web o endereço é o do próprio site; no celular, o do site publicado.

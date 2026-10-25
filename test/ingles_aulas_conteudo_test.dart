@@ -1,5 +1,5 @@
-// 🎓 O conteúdo das aulas do professor no app: toda lição do A1 tem aula, toda aula lê inteira no app (nenhuma
-// fala some no parse), é uma aula de verdade (5 a 10 minutos, em partes, dizendo todas as frases da lição) e toda
+// 🎓 O conteúdo das aulas do professor no app: toda lição do curso tem aula, toda aula lê inteira no app (nenhuma
+// fala some no parse), é uma aula de verdade (6 a 10 minutos, em partes, dizendo todas as frases da lição) e toda
 // fala tem o mp3 do Prof. Beto e a boca dele no site (web/aula_voz/<slug>.json → arquivo existe).
 import 'dart:convert';
 import 'dart:io';
@@ -31,20 +31,17 @@ void main() {
     }
   });
 
-  // As aulas do A2 ao DEV estão sendo escritas (out/2026): quando entrarem todas, este teste passa a cobrar o curso
-  // inteiro (trocar o filtro do A1 por todas as lições, com pelo menos 620).
-  test('toda lição do A1 tem aula (e as aulas são de lições que existem)', () {
+  test('toda lição do curso tem aula, do A1 ao DEV (e as aulas são de lições que existem)', () {
     final todas = [
       for (final t in curriculo)
-        if ((t['etapa'] as String).startsWith('A1'))
-          for (final l in t['licoes'] as List) l['id'] as String,
+        for (final l in t['licoes'] as List) l['id'] as String,
     ];
-    expect(todas.length, greaterThanOrEqualTo(150));
+    expect(todas.length, greaterThanOrEqualTo(620));
     expect(todas.where((id) => !aulas.containsKey(id)), isEmpty);
     expect(aulas.keys.where((id) => !licoes.containsKey(id)), isEmpty);
   });
 
-  test('cada aula é uma aula inteira: 5 a 10 minutos, em partes, com figuras e todas as frases da lição', () {
+  test('cada aula é uma aula inteira: 6 a 10 minutos, em partes, com figuras e todas as frases da lição', () {
     final ruins = <String>[];
     for (final e in aulas.entries) {
       final a = e.value;

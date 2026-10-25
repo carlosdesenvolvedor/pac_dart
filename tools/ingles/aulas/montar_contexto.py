@@ -62,7 +62,7 @@ def contexto(t, anteriores):
         velha = antigas.get(l['id'])
         if velha:
             linhas += ['- **A aula CURTA que já existe (revisada por professor; os fatos dela estão certos — '
-                       'aproveite, mas a nova é uma aula inteira de 5 a 10 minutos):**', '']
+                       'aproveite, mas a nova é uma aula inteira de 6 a 10 minutos):**', '']
             for f in velha.get('falas', []):
                 if 'en' in f:
                     linhas.append(f'  - EN: {f["en"]}  →  {f.get("tr", "")}')

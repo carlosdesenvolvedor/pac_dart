@@ -95,7 +95,7 @@ Future<bool> abrirAulaProfessor(BuildContext context, Licao licao, {bool primeir
   return true;
 }
 
-/// 🎓 A aula do professor (5 a 10 minutos, em partes): o Prof. Beto (rosto com a boca sincronizada) fala cada
+/// 🎓 A aula do professor (6 a 10 minutos, em partes): o Prof. Beto (rosto com a boca sincronizada) fala cada
 /// trecho da aula em português e diz os exemplos em inglês; a lousa mostra o que está escrito (o quadro, ou o
 /// exemplo com a tradução), a figura (a foto da cena ou emojis) e a legenda, o que ele está dizendo. Toca
 /// sozinha, uma fala depois da outra, com o silêncio dos desafios ("sua vez"); ⏮ ⏯ ⏭, as partes (pular para
