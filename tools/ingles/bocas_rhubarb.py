@@ -26,9 +26,8 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 CURRICULO = os.path.join(RAIZ, 'assets/ingles/curriculo.json')
 VOZES = os.path.join(RAIZ, 'assets/ingles/vozes.json')
 VOZES_HISTORIA = os.path.join(RAIZ, 'assets/ingles/vozes_historia.json')
-VOZES_AULA = os.path.join(RAIZ, 'assets/ingles/vozes_aula.json')
-
-# 🎓 as falas em português do professor: o reconhecedor de inglês do Rhubarb não serve; vai o fonético
+# (🎓 a boca das aulas do professor sai junto com a voz: tools/ingles/aulas/vozes_aula.py, com fonetico=True no
+# português — o reconhecedor de inglês do Rhubarb não serve para ele)
 FONETICOS = set()
 SAIDA = os.path.join(RAIZ, 'assets/ingles/bocas.json')
 RHUBARB_PADRAO = os.path.expanduser('~/development/rhubarb/rhubarb')
@@ -44,13 +43,6 @@ def audios():
         with open(VOZES_HISTORIA, encoding='utf-8') as f:
             for chave, asset in json.load(f).items():
                 r[asset] = chave.split('|', 1)[1]
-    if os.path.exists(VOZES_AULA):  # 🎓 aulas do professor: chave "pt|texto" / "en|texto"
-        with open(VOZES_AULA, encoding='utf-8') as f:
-            for chave, asset in json.load(f).items():
-                lingua, texto = chave.split('|', 1)
-                r[asset] = texto
-                if lingua == 'pt':
-                    FONETICOS.add(asset)
     with open(CURRICULO, encoding='utf-8') as f:
         cur = json.load(f)
     for trilha in cur if isinstance(cur, list) else cur['trilhas']:

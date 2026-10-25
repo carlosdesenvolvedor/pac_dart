@@ -11,6 +11,17 @@ import os
 
 RAIZ = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 CURRICULO = os.path.join(RAIZ, 'assets', 'ingles', 'curriculo.json')
+AULAS = os.path.join(RAIZ, 'assets', 'ingles', 'aulas')
+FOTOS = os.path.join(RAIZ, 'assets', 'ingles', 'fotos')
+
+
+def aulas_antigas(slug):
+    """As aulas que já existem da trilha (a versão curta, já revisada: o ponto de partida da longa)."""
+    try:
+        with open(os.path.join(AULAS, f'{slug}.json'), encoding='utf-8') as f:
+            return json.load(f).get('licoes', {})
+    except (OSError, ValueError):
+        return {}
 
 
 def slug_de(t):
@@ -22,8 +33,16 @@ def contexto(t, anteriores):
     if anteriores:
         linhas += ['Trilhas que o aluno JÁ fez antes desta (pode citar o que ele já sabe):',
                    ', '.join(anteriores), '']
+    antigas = aulas_antigas(slug_de(t))
     for l in t['licoes']:
         linhas += [f'## Lição `{l["id"]}` — {l["emoji"]} {l["nome"]}', '']
+        foto = os.path.join(FOTOS, f'{l["id"]}.jpg')
+        if os.path.exists(foto):
+            linhas.append(f'- **Foto da cena (pode usar "img": "foto"; abra com Read para ver):** {foto}')
+        else:
+            linhas.append('- **Foto da cena:** esta lição NÃO tem foto (não use "img": "foto"; use emojis)')
+        if l.get('imagem'):
+            linhas.append(f'- **Emojis da lição:** {l["imagem"]}')
         if l.get('cena'):
             linhas.append(f'- **Cena:** {l["cena"]}')
         if l.get('resumo'):
@@ -33,12 +52,24 @@ def contexto(t, anteriores):
             for b in l['teoria']:
                 c = b['c'].replace('\n', ' / ')
                 linhas.append(f'  - [{b["t"]}] {c}')
-        linhas += ['', '| quem | inglês (cod — copie EXATO se usar num "en") | português | alvo | nota do autor |',
-                   '|---|---|---|---|---|']
+        linhas += ['', '| quem | inglês (cod — copie EXATO num "en") | português | alvo | emoji | nota do autor |',
+                   '|---|---|---|---|---|---|']
         for tr in l['trechos']:
-            cel = [tr.get('quem', ''), tr['cod'], tr.get('dica', ''), tr.get('alvo', ''), tr.get('conceito', '')]
+            cel = [tr.get('quem', ''), tr['cod'], tr.get('dica', ''), tr.get('alvo', ''), tr.get('img', ''),
+                   tr.get('conceito', '')]
             linhas.append('| ' + ' | '.join(str(c).replace('|', '/').replace('\n', ' ') for c in cel) + ' |')
         linhas.append('')
+        velha = antigas.get(l['id'])
+        if velha:
+            linhas += ['- **A aula CURTA que já existe (revisada por professor; os fatos dela estão certos — '
+                       'aproveite, mas a nova é uma aula inteira de 5 a 10 minutos):**', '']
+            for f in velha.get('falas', []):
+                if 'en' in f:
+                    linhas.append(f'  - EN: {f["en"]}  →  {f.get("tr", "")}')
+                else:
+                    q = f' [lousa: {f["quadro"]}]' if f.get('quadro') else ''
+                    linhas.append(f'  - PT: {f["pt"]}{q}')
+            linhas.append('')
     return '\n'.join(linhas)
 
 

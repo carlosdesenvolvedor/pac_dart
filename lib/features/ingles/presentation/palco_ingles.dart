@@ -1400,7 +1400,7 @@ class _LinkAulaState extends State<_LinkAula> {
         builder: (context, snap) {
           final aula = snap.data;
           if (aula == null) return const SizedBox.shrink();
-          final min = (aula.segundos / 60).ceil().clamp(1, 9);
+          final min = (aula.segundos / 60).round().clamp(1, 15);
           return InkWell(
             key: const Key('licao-aula'),
             onTap: widget.onAbrir,

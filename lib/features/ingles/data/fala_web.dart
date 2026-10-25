@@ -217,7 +217,32 @@ void _pararGravacao() {
 /// zero. false = não tocou (arquivo faltando, navegador bloqueou) e a voz
 /// sintética assume — mas não se outra fala já tomou a vez. true só volta
 /// quando a gravação ACABA (ou foi interrompida).
-Future<bool> tocar(String asset, double velocidade) async {
+Future<bool> tocar(String asset, double velocidade) => _tocarSrc(ui_web.assetManager.getAssetUrl(asset), velocidade);
+
+/// Como [tocar], mas um mp3 do SITE ([url] inteira — [urlDoSite]), fora do pacote do app (🎓 a voz das aulas).
+Future<bool> tocarUrl(String url, double velocidade) => _tocarSrc(url, velocidade);
+
+/// O endereço de [caminho] (`aula_voz/x.mp3`) no site, pelo `<base href>` da página.
+String urlDoSite(String caminho) {
+  try {
+    return web.URL(caminho, web.document.baseURI).href;
+  } catch (_) {
+    return caminho;
+  }
+}
+
+/// Começar a baixar o mp3 do site [url] (a próxima fala da aula já chega pronta).
+void preaquecerUrl(String url) {
+  if (!_preaquecidos.add(url)) return;
+  if (_preaquecidos.length > 400) _preaquecidos.clear();
+  try {
+    web.window.fetch(url.toJS).toDart.then((_) {}, onError: (Object _) {
+      _preaquecidos.remove(url);
+    });
+  } catch (_) {}
+}
+
+Future<bool> _tocarSrc(String src, double velocidade) async {
   final g = ++_geracao;
   final fim = _novaVez();
   try {
@@ -227,7 +252,6 @@ Future<bool> tocar(String asset, double velocidade) async {
   try {
     final a = _audio ??= web.HTMLAudioElement()..preload = 'auto';
     a.pause();
-    final src = ui_web.assetManager.getAssetUrl(asset);
     if (_srcAtual == src) {
       a.currentTime = 0;
     } else {

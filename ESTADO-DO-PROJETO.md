@@ -2700,3 +2700,30 @@ português, como uma historinha — o sentido das frases, como lembrar, e o term
   -teen" (antes de substantivo/contando, a força vai para o começo); `que-horas-sao` — a conta do fuso não fecha ("about seven
   thirty" no Brasil × "It's almost midnight here!"); cena de `ele-ela-nos-eles` — "It's really hot" parece falar de Chicago.
 - **Próximo:** A2 em diante com a mesma receita (montar_contexto `--etapa A2`, autores + revisores, validar, copiar, vozes, bocas).
+
+### 🎓 v2 (24/out/2026, noite): AULAS LONGAS — 5 a 10 minutos, em partes, com figuras na lousa e desafios (A1 inteiro)
+Pedido do dono: "achei muito curtinha as aulas, pode fazer maiores, como uma aula mesmo, de 5 a 10 min… com mais detalhes,
+curiosidades… colocar umas imagens [na lousa] quando o professor citar… ainda foque na A1".
+- **Formato v2** (`"versao": 2`): além de `pt`/`quadro`/`en`/`tr`, cada fala pode ter `"secao"` (nome da parte que começa nela;
+  5–10 partes por aula), `"img"` (`"foto"` = a foto da cena da lição, ou 1–4 emojis grandes na lousa) e `"pausa"` (2–8 s de
+  silêncio depois da fala pt: o desafio "como você diria…?", com a resposta na fala en seguinte). Validador: 35–130 falas,
+  português 3.800–8.200 letras (≈5–10 min), TODA frase da lição dita como "en" exato, ≥4 figuras (a foto se a lição tem),
+  1–6 desafios. `FalaAula.img/secao/pausa`, `AulaLicao.secoes/secaoDe/segundosDesde`, `figuraAte` (a figura fica até a lousa
+  escrever outra coisa).
+- **Conteúdo:** 32 autores (1 por trilha, partindo da aula curta revisada + a FOTO da cena, que o agente abre) + 32 revisores
+  (inglês, regras, curiosidades só com fato garantido, pronúncia descrita sem letras do português, fechamentos variados).
+  156 aulas, ≈8.150 falas, 6–9 min cada. Exemplo aprovado: `exemplo_aula.json` (oi-tudo-bem, 52 falas, ≈7 min).
+- **Tela:** "Parte 2 de 7 · Nome" em cima da lousa, chips das partes (pular), figura na lousa (foto em moldura branca torta ou
+  emojis 64 px), "🤔 Sua vez! Responda em voz alta…" com barra no desafio, "≈ N min" no topo e "faltam N min" no contador,
+  progresso pelo tempo, **continua de onde parou** (`PrefsAula` `en_aula_posicoes`, "↺ Do começo"), atalho "Praticar →" no topo,
+  partes na transcrição.
+- **Voz FORA do pacote do app:** as aulas longas passam de 300 MB de mp3 — no .aab da Play Store estourariam o limite. Agora
+  `vozes_aula.py` grava em **`web/aula_voz/<hash>.mp3`** + **`web/aula_voz/<slug>.json`** {"pt|texto": [mp3, boca]} (Rhubarb
+  junto, fonético no português; `--so a,b` gera só essas trilhas, `--sem-boca` deixa a boca para a rodada completa). O
+  `flutter build web` copia `web/` para o site; o app busca pelo `VozesAula` (`aula_voz/<slug>.json` relativo ao `<base href>`
+  na web; `https://pac-dart.web.app/` no celular — `site_do_app.dart`) e toca com `fala.tocarUrl` (web: o `<audio>`; nativo:
+  `UrlSource`, rede de segurança de 90 s). Sem rede → a voz pt-BR do aparelho. Próxima fala pré-baixada (`preaquecerAula`).
+  Cache no hosting: mp3 imutável 1 ano, índices `no-cache` (`firebase.json`). Saíram do app `assets/ingles/voz_aula/`,
+  `vozes_aula.json`, `AudioNativo.daAula` e as bocas das aulas do `bocas.json`. Testes rodam sem rede (`VozesAula.fixas = {}`).
+- **Currículo corrigido pelo caminho:** nota `pay → pays` → `buy → buys` (conjugar-s-es-ies/06); a força do -teen ("dito
+  sozinho, o -teen é forte e comprido", não "sempre no fim") em numeros-horas-soletrar/02.

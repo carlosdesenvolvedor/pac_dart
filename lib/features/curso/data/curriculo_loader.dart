@@ -34,10 +34,6 @@ class CurriculoLoader {
         final historia = await rootBundle.loadString(AudioNativo.indiceHistoria);
         AudioNativo.registrarHistoria(jsonDecode(historia) as Map<String, dynamic>);
       } catch (_) {} // sem ele: a história fala com a voz sintética e o perfil de cada personagem
-      try {
-        final aula = await rootBundle.loadString(AudioNativo.indiceAula);
-        AudioNativo.registrarAula(jsonDecode(aula) as Map<String, dynamic>);
-      } catch (_) {} // sem ele: a aula do professor fala com a voz pt-BR do aparelho
       unawaited(AulasRepo.trilhasComAula()); // 🎓 o índice das aulas (a folha da lição no mapa consulta sem esperar)
       try {
         final bocas = await rootBundle.loadString(BocasIngles.indice);

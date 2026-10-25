@@ -15,7 +15,6 @@ class AudioNativo {
   static final Map<String, String> _porFrase = {};
   static final Map<String, String> _geradas = {};
   static final Map<String, String> _historia = {};
-  static final Map<String, String> _aula = {};
 
   /// Índice da voz gerada: {texto em inglês: asset}.
   static const indiceGeradas = 'assets/ingles/vozes.json';
@@ -24,8 +23,6 @@ class AudioNativo {
   /// fala: na história o mesmo texto sai da boca de personagens diferentes ("Copy that!").
   static const indiceHistoria = 'assets/ingles/vozes_historia.json';
 
-  /// 🎓 Índice das falas das aulas do professor: {"pt|texto": asset, "en|texto": asset} (voz pt-BR e en-US dele).
-  static const indiceAula = 'assets/ingles/vozes_aula.json';
 
   /// Guarda as gravações das frases das [trilhas] (soma ao que já havia:
   /// carregar o currículo do Dart não apaga as do inglês).
@@ -68,16 +65,6 @@ class AudioNativo {
   /// O mp3 da fala de [quem] na história ([frase] exatamente como no JSON), ou null.
   static String? daHistoria(String quem, String frase) => _historia['$quem|${frase.trim()}'];
 
-  /// Guarda as falas das aulas ({"pt|texto" / "en|texto": asset}).
-  static void registrarAula(Map<String, dynamic> indice) {
-    for (final e in indice.entries) {
-      if (e.value is String) _aula[e.key.trim()] = e.value as String;
-    }
-  }
-
-  /// O mp3 da fala da aula ([ingles] = o exemplo em inglês), ou null.
-  static String? daAula(String texto, {required bool ingles}) => _aula['${ingles ? 'en' : 'pt'}|${texto.trim()}'];
-
   static int get total => _porFrase.length;
   static int get totalGeradas => _geradas.length;
   static int get totalHistoria => _historia.length;
@@ -87,6 +74,5 @@ class AudioNativo {
     _porFrase.clear();
     _geradas.clear();
     _historia.clear();
-    _aula.clear();
   }
 }

@@ -1,5 +1,7 @@
 import 'dart:typed_data';
 
+import 'site_do_app.dart';
+
 /// Fora do navegador (testes na VM): mudo, nunca lança.
 const suportado = false;
 
@@ -26,6 +28,14 @@ bool get oculto => false;
 
 /// Sem `<audio>` fora do navegador: a voz sintética (muda) assume.
 Future<bool> tocar(String asset, double velocidade) async => false;
+
+/// Sem `<audio>` fora do navegador: a voz sintética (muda) assume.
+Future<bool> tocarUrl(String url, double velocidade) async => false;
+
+/// O endereço de [caminho] no site publicado.
+String urlDoSite(String caminho) => '$siteDoApp$caminho';
+
+void preaquecerUrl(String url) {}
 
 /// Sem `<audio>` fora do navegador: a voz sintética (muda) assume.
 Future<bool> tocarBytes(Uint8List bytes, String mime, double velocidade) async => false;

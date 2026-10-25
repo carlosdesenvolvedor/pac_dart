@@ -11,6 +11,7 @@ import 'escolha_voz.dart';
 import 'fala_stub.dart'
     if (dart.library.js_interop) 'fala_web.dart'
     if (dart.library.io) 'fala_nativo.dart' as fala;
+import 'vozes_aula.dart';
 
 /// Fala as frases do curso de inglês em inglês americano com a melhor voz
 /// que o navegador tiver. Grátis e sem cota (Web Speech API): as vozes de
@@ -366,11 +367,11 @@ class VozIngles {
     } catch (_) {}
   }
 
-  /// 🎓 Uma fala da aula do professor: o mp3 dele ([AudioNativo.daAula], Chirp pt-BR ou en-US) a `rate = fator`
-  /// com a boca do Rhubarb; sem mp3 (ou se ele não tocar) → a voz do aparelho no idioma da fala (pt-BR ou en-US)
-  /// com a boca pelo texto. A boca é anunciada com [texto] (o rosto do professor segue esta fala).
+  /// 🎓 Uma fala da aula do professor da trilha [trilha]: o mp3 dele ([VozesAula], no site — Chirp pt-BR ou
+  /// en-US) a `rate = fator` com a boca do Rhubarb; sem mp3 (sem rede, ou se ele não tocar) → a voz do aparelho
+  /// no idioma da fala (pt-BR ou en-US) com a boca pelo texto. A boca é anunciada com [texto] (o rosto do professor segue esta fala).
   /// [FimDaFala.cortada] = outra fala do app (ou um [parar]) entrou no meio.
-  Future<FimDaFala> falarNaAula(String texto, {required bool ingles, double fator = 1}) async {
+  Future<FimDaFala> falarNaAula(String texto, {required bool ingles, double fator = 1, String trilha = ''}) async {
     final minha = ++_vez;
     final g = ++_vezGlobal;
     final f = fator <= 0 ? 1.0 : fator;
@@ -378,13 +379,13 @@ class VozIngles {
     _emCurso++;
     var falou = false;
     try {
-      final audio = AudioNativo.daAula(texto, ingles: ingles);
-      if (audio != null) {
+      final voz = VozesAula.de(trilha, texto, ingles: ingles);
+      if (voz != null) {
         try {
-          final boca = BocasIngles.de(audio);
+          final boca = voz.boca.isEmpty ? null : TrilhaBoca.compacta(voz.boca);
           _anuncia(texto, boca ?? TrilhaBoca.doTexto(texto, segPorPalavra: segPorPalavra / f * .8),
               velocidade: f, gravacao: boca != null);
-          falou = await fala.tocar(audio, f);
+          falou = await fala.tocarUrl(voz.url, f);
         } catch (_) {}
       }
       if (!falou && minha == _vez && g == _vezGlobal) {
@@ -455,6 +456,14 @@ class VozIngles {
     final pelaBoca = BocasIngles.duracaoDe(AudioNativo.daHistoria(quem, frase));
     if (pelaBoca != null && pelaBoca > 0) return pelaBoca;
     return duracaoDe(frase);
+  }
+
+  /// 🎓 Começa a baixar o mp3 de uma fala da aula (a próxima, enquanto o professor fala esta). Nunca lança.
+  static void preaquecerAula(String trilha, String texto, {required bool ingles}) {
+    try {
+      final voz = VozesAula.de(trilha, texto, ingles: ingles);
+      if (voz != null) fala.preaquecerUrl(voz.url);
+    } catch (_) {}
   }
 
   /// Começa a baixar o mp3 da fala de [quem] na história (sem tocar). Nunca lança.

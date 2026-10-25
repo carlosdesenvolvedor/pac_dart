@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'dart:convert';
+import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -8,6 +10,7 @@ import '../../../core/theme/mixart.dart';
 import '../../curso/domain/curriculo.dart';
 import '../data/aulas_repo.dart';
 import '../data/voz_ingles.dart';
+import '../data/vozes_aula.dart';
 import '../domain/aula_professor.dart';
 import '../domain/saida_audio.dart' show FimDaFala;
 import 'widgets/elenco_ingles.dart';
@@ -39,6 +42,37 @@ abstract final class PrefsAula {
     }
   }
 
+  static const chavePosicoes = 'en_aula_posicoes';
+
+  /// Onde o aluno parou na aula da lição (índice da fala; 0 = do começo).
+  static Future<int> posicao(String licaoId) async {
+    try {
+      final j = jsonDecode((await SharedPreferences.getInstance()).getString(chavePosicoes) ?? '{}');
+      final v = j is Map ? j[licaoId] : null;
+      return v is int ? v : 0;
+    } catch (_) {
+      return 0;
+    }
+  }
+
+  /// Guarda onde parou (0 = terminou ou voltou ao começo: apaga). As 60 aulas mais recentes.
+  static Future<void> salvarPosicao(String licaoId, int i) async {
+    try {
+      final p = await SharedPreferences.getInstance();
+      final j = jsonDecode(p.getString(chavePosicoes) ?? '{}');
+      final m = <String, int>{
+        if (j is Map)
+          for (final e in j.entries)
+            if (e.key is String && e.value is int && e.key != licaoId) e.key as String: e.value as int,
+      };
+      if (i > 0) m[licaoId] = i;
+      while (m.length > 60) {
+        m.remove(m.keys.first);
+      }
+      await p.setString(chavePosicoes, jsonEncode(m));
+    } catch (_) {}
+  }
+
   static Future<void> marcarVista(String licaoId) async {
     try {
       final p = await SharedPreferences.getInstance();
@@ -61,10 +95,12 @@ Future<bool> abrirAulaProfessor(BuildContext context, Licao licao, {bool primeir
   return true;
 }
 
-/// 🎓 A aula do professor: o Prof. Beto (rosto com a boca sincronizada) fala cada trecho da aula em português e
-/// diz os exemplos em inglês; a lousa mostra o que está escrito (o quadro, ou o exemplo com a tradução) e a
-/// legenda, o que ele está dizendo. Toca sozinha, uma fala depois da outra; ⏮ ⏯ ⏭, 🐢 e "📜 Ler a aula" (o
-/// texto todo, tocar numa fala começa dali). Espaço = tocar/pausar, ← → = fala anterior/seguinte, Esc = sair.
+/// 🎓 A aula do professor (5 a 10 minutos, em partes): o Prof. Beto (rosto com a boca sincronizada) fala cada
+/// trecho da aula em português e diz os exemplos em inglês; a lousa mostra o que está escrito (o quadro, ou o
+/// exemplo com a tradução), a figura (a foto da cena ou emojis) e a legenda, o que ele está dizendo. Toca
+/// sozinha, uma fala depois da outra, com o silêncio dos desafios ("sua vez"); ⏮ ⏯ ⏭, as partes (pular para
+/// uma), 🐢 e "📜 Ler a aula" (o texto todo, tocar numa fala começa dali). Lembra onde o aluno parou.
+/// Espaço = tocar/pausar, ← → = fala anterior/seguinte, Esc = sair.
 class AulaProfessorPage extends StatefulWidget {
   final Licao licao;
   final AulaLicao aula;
@@ -94,6 +130,17 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
   bool _tocando = false, _fim = false, _texto = false, _devagar = false, _comecou = false;
   bool? _auto;
 
+  /// Voltou de onde tinha parado (mostra "↺ Do começo").
+  bool _retomou = false;
+
+  /// Segundos do desafio em curso ("sua vez"); 0 = nenhum.
+  int _pensando = 0;
+
+  /// O índice das vozes da trilha (no site); a aula começa sem esperar demais por ele.
+  late final Future<bool> _vozes = VozesAula.carregar(_trilha);
+
+  String get _trilha => trilhaDaLicao(widget.licao.id);
+
   /// Cada "tocar daqui" ganha um número: o laço antigo para quando outro começa (ou ao pausar).
   int _sessao = 0;
 
@@ -122,15 +169,25 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
   void initState() {
     super.initState();
     if (widget.primeiraVez) PrefsAula.autoLigada().then((v) => mounted ? setState(() => _auto = v) : null);
-    if (widget.tocarAoAbrir && _voz.somLiberado) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) _tocarDaqui(0);
+    unawaited(_vozes);
+    _abrir();
+  }
+
+  Future<void> _abrir() async {
+    final pos = await PrefsAula.posicao(widget.licao.id);
+    if (!mounted) return;
+    if (pos > 0 && pos < _falas.length - 1) {
+      setState(() {
+        _i = pos;
+        _retomou = true;
       });
     }
+    if (widget.tocarAoAbrir && _voz.somLiberado) _tocarDaqui(_i);
   }
 
   @override
   void dispose() {
+    if (_comecou) unawaited(PrefsAula.salvarPosicao(widget.licao.id, _fim ? 0 : _i));
     _sessao++;
     _cortarRespiro();
     _voz.parar();
@@ -145,12 +202,19 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
       _tocando = true;
       _fim = false;
       _comecou = true;
+      _pensando = 0;
     });
+    // as vozes vêm do site: espera um pouco por elas; sem rede, a voz do aparelho começa
+    await _vozes.timeout(const Duration(seconds: 3), onTimeout: () => false);
     for (var k = _i; k < _falas.length; k++) {
       if (!mounted || s != _sessao) return;
       setState(() => _i = k);
+      if (_secaoComeca(k)) unawaited(PrefsAula.salvarPosicao(widget.licao.id, k));
       final f = _falas[k];
-      final r = await _voz.falarNaAula(f.texto, ingles: f.ingles, fator: _devagar ? .8 : 1);
+      if (k + 1 < _falas.length) {
+        VozIngles.preaquecerAula(_trilha, _falas[k + 1].texto, ingles: _falas[k + 1].ingles);
+      }
+      final r = await _voz.falarNaAula(f.texto, ingles: f.ingles, fator: _devagar ? .8 : 1, trilha: _trilha);
       if (!mounted || s != _sessao) return;
       if (r == FimDaFala.cortada) {
         setState(() => _tocando = false);
@@ -161,19 +225,33 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
           ? Duration(milliseconds: (f.texto.length * 70).clamp(1500, 9000))
           : Duration(milliseconds: f.ingles ? 650 : 300);
       await _esperar(pausa);
+      if (f.pausa > 0 && mounted && s == _sessao) {
+        // o desafio: silêncio para o aluno pensar e responder em voz alta
+        setState(() => _pensando = f.pausa);
+        await _esperar(Duration(seconds: f.pausa));
+        if (mounted && s == _sessao) setState(() => _pensando = 0);
+      }
     }
     if (!mounted || s != _sessao) return;
+    unawaited(PrefsAula.salvarPosicao(widget.licao.id, 0));
     setState(() {
       _tocando = false;
       _fim = true;
+      _retomou = false;
     });
   }
+
+  bool _secaoComeca(int k) => widget.aula.secoes.any((x) => x.inicio == k);
 
   void _pausar() {
     _sessao++;
     _cortarRespiro();
     _voz.parar();
-    setState(() => _tocando = false);
+    unawaited(PrefsAula.salvarPosicao(widget.licao.id, _i));
+    setState(() {
+      _tocando = false;
+      _pensando = 0;
+    });
   }
 
   void _alternar() => _tocando ? _pausar() : _tocarDaqui(_fim ? 0 : _i);
@@ -188,8 +266,15 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
         _i = i;
         _fim = false;
         _comecou = true;
+        _pensando = 0;
       });
     }
+  }
+
+  void _doComeco() {
+    setState(() => _retomou = false);
+    unawaited(PrefsAula.salvarPosicao(widget.licao.id, 0));
+    _irPara(0);
   }
 
   void _sair() => Navigator.of(context).maybePop();
@@ -232,11 +317,15 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
                     Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
                       SizedBox(width: 250, child: _professor(190)),
                       const SizedBox(width: 18),
-                      Expanded(child: _lousa(alta: true)),
+                      Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                        _parteAtual(),
+                        _lousa(alta: true),
+                      ])),
                     ])
                   else ...[
                     _professor(140),
                     const SizedBox(height: 12),
+                    _parteAtual(),
                     _lousa(alta: false),
                   ],
                   const SizedBox(height: 14),
@@ -269,9 +358,19 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
                 style: Mixart.display(size: 19),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis),
-            Text('Aula do $nomeDoProfessor · ${widget.licao.nome}',
-                style: Mixart.ui(size: 12, color: Mixart.textMuted), overflow: TextOverflow.ellipsis),
+            Text('Aula do $nomeDoProfessor · ${widget.licao.nome} · ≈ ${_minutos(widget.aula.segundos)} min',
+                key: const Key('aula-tempo'),
+                style: Mixart.ui(size: 12, color: Mixart.textMuted),
+                overflow: TextOverflow.ellipsis),
           ]),
+        ),
+        const SizedBox(width: 8),
+        // a aula é longa: praticar fica sempre à mão (o botão grande está no fim da tela)
+        TextButton(
+          key: const Key('aula-pular'),
+          onPressed: _sair,
+          child: Text(widget.primeiraVez ? 'Lição →' : 'Praticar →',
+              style: Mixart.ui(size: 12.5, weight: FontWeight.w800, color: Mixart.brand)),
         ),
       ]);
 
@@ -315,13 +414,33 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
     ]);
   }
 
-  /// A lousa: o exemplo em inglês com a tradução, ou o quadro da fala (fica até aparecer outra coisa escrita).
+  static int _minutos(double segundos) => math.max(1, (segundos / 60).round());
+
+  /// A parte em que a aula está, em cima da lousa ("Parte 2 de 7 · A regra").
+  Widget _parteAtual() {
+    final secoes = widget.aula.secoes;
+    if (secoes.length < 2) return const SizedBox.shrink();
+    final k = widget.aula.secaoDe(_i);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Text('Parte ${k + 1} de ${secoes.length} · ${secoes[k].nome}',
+          key: const Key('aula-parte-atual'),
+          style: Mixart.ui(size: 12.5, weight: FontWeight.w800, color: Mixart.brand),
+          overflow: TextOverflow.ellipsis),
+    );
+  }
+
+  /// A lousa: o exemplo em inglês com a tradução, ou o quadro da fala (fica até aparecer outra coisa escrita),
+  /// com a figura do que ele está citando (a foto da cena ou emojis) e, no desafio, o "sua vez".
   Widget _lousa({required bool alta}) {
     final f = lousaAte(_falas, _i);
+    final figura = figuraAte(_falas, _i);
     const verde = Color(0xFF1F3A2E), giz = Color(0xFFF4F1E8);
-    final conteudo = f == null
-        ? Text(widget.licao.nome,
-            textAlign: TextAlign.center, style: Mixart.display(size: 22, color: giz.withValues(alpha: .7)))
+    final Widget? texto = f == null
+        ? (figura.isEmpty
+            ? Text(widget.licao.nome,
+                textAlign: TextAlign.center, style: Mixart.display(size: 22, color: giz.withValues(alpha: .7)))
+            : null)
         : f.ingles
             ? Column(mainAxisSize: MainAxisSize.min, children: [
                 Text(f.en,
@@ -337,8 +456,13 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
                 key: const Key('aula-lousa-quadro'),
                 textAlign: TextAlign.center,
                 style: Mixart.display(size: alta ? 26 : 21, color: giz));
+    final conteudo = Column(mainAxisSize: MainAxisSize.min, children: [
+      if (figura.isNotEmpty) _figura(figura, alta: alta),
+      if (figura.isNotEmpty && texto != null) SizedBox(height: alta ? 16 : 12),
+      ?texto,
+    ]);
     return Container(
-      constraints: BoxConstraints(minHeight: alta ? 260 : 150),
+      constraints: BoxConstraints(minHeight: alta ? 300 : 190),
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
         color: verde,
@@ -346,12 +470,69 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
         border: Border.all(color: const Color(0xFF6B4A2B), width: 8),
       ),
       alignment: Alignment.center,
-      child: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 220),
-        child: KeyedSubtree(key: ValueKey(f), child: conteudo),
-      ),
+      child: Column(mainAxisSize: MainAxisSize.min, children: [
+        AnimatedSwitcher(
+          duration: const Duration(milliseconds: 220),
+          child: KeyedSubtree(key: ValueKey('$figura|${f?.texto}|${f?.quadro}'), child: conteudo),
+        ),
+        if (_pensando > 0) ...[const SizedBox(height: 16), _suaVez(giz)],
+      ]),
     );
   }
+
+  /// A figura na lousa: a foto da cena (moldura branca, meio torta, como presa no quadro) ou os emojis grandes.
+  Widget _figura(String figura, {required bool alta}) {
+    if (figura == figuraFoto) {
+      final foto = widget.licao.foto;
+      if (foto.isEmpty) return const SizedBox.shrink();
+      return Transform.rotate(
+        angle: -.025,
+        child: Container(
+          key: const Key('aula-figura-foto'),
+          padding: const EdgeInsets.all(6),
+          decoration: BoxDecoration(color: const Color(0xFFF7F4EC), borderRadius: BorderRadius.circular(6)),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(3),
+            child: SizedBox(
+              height: alta ? 180 : 130,
+              child: AspectRatio(
+                aspectRatio: 16 / 10,
+                child: Image.asset(foto, fit: BoxFit.cover, errorBuilder: (_, _, _) => const SizedBox.shrink()),
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+    return Text(figura,
+        key: const Key('aula-figura'),
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: alta ? 64 : 48, height: 1.15));
+  }
+
+  /// O desafio: a vez do aluno responder, com a barra do tempo que falta.
+  Widget _suaVez(Color giz) => Column(key: const Key('aula-pensando'), mainAxisSize: MainAxisSize.min, children: [
+        Text('🤔 Sua vez! Responda em voz alta…',
+            style: Mixart.ui(size: 13.5, weight: FontWeight.w800, color: giz)),
+        const SizedBox(height: 8),
+        SizedBox(
+          width: 180,
+          child: TweenAnimationBuilder<double>(
+            key: ValueKey('pensa-$_i'),
+            tween: Tween(begin: 1, end: 0),
+            duration: Duration(seconds: _pensando),
+            builder: (_, v, _) => ClipRRect(
+              borderRadius: BorderRadius.circular(999),
+              child: LinearProgressIndicator(
+                value: v,
+                minHeight: 5,
+                backgroundColor: giz.withValues(alpha: .15),
+                color: giz.withValues(alpha: .8),
+              ),
+            ),
+          ),
+        ),
+      ]);
 
   Widget _controles() {
     Widget redondo(Key k, IconData icone, String dica, VoidCallback? onTap, {bool destaque = false}) => Tooltip(
@@ -374,7 +555,7 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
       ClipRRect(
         borderRadius: BorderRadius.circular(999),
         child: LinearProgressIndicator(
-          value: _fim ? 1 : (_i + (_tocando ? .5 : 0)) / _falas.length,
+          value: _fim ? 1 : 1 - widget.aula.segundosDesde(_i) / math.max(1, widget.aula.segundos),
           minHeight: 6,
           backgroundColor: Mixart.surfaceHi,
           color: Mixart.brand,
@@ -392,13 +573,30 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
         ),
         redondo(const Key('aula-proxima'), Icons.skip_next_rounded, 'Próxima fala (→)',
             _i < _falas.length - 1 ? () => _irPara(_i + 1) : null),
-        Text('${_i + 1} / ${_falas.length}', style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.textMuted)),
+        Text(
+            _fim
+                ? '${_falas.length} / ${_falas.length}'
+                : '${_i + 1} / ${_falas.length} · faltam ${_minutos(widget.aula.segundosDesde(_i) / (_devagar ? .8 : 1))} min',
+            key: const Key('aula-contador'),
+            style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.textMuted)),
       ]),
+      if (_retomou && !_fim) ...[
+        const SizedBox(height: 8),
+        Wrap(alignment: WrapAlignment.center, crossAxisAlignment: WrapCrossAlignment.center, spacing: 8, children: [
+          Text('Continuando de onde você parou', style: Mixart.ui(size: 12, color: Mixart.textMuted)),
+          TextButton(
+            key: const Key('aula-do-comeco'),
+            onPressed: _doComeco,
+            child: Text('↺ Do começo', style: Mixart.ui(size: 12, weight: FontWeight.w800, color: Mixart.brand)),
+          ),
+        ]),
+      ],
       if (!_comecou) ...[
         const SizedBox(height: 8),
         Text('Toque em ▶ para o professor começar a aula',
             style: Mixart.ui(size: 12.5, weight: FontWeight.w700, color: Mixart.brand)),
       ],
+      if (widget.aula.secoes.length > 1) ...[const SizedBox(height: 12), _partes()],
       const SizedBox(height: 10),
       Wrap(alignment: WrapAlignment.center, spacing: 8, runSpacing: 8, children: [
         FilterChip(
@@ -418,6 +616,38 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
         ),
       ]),
     ]);
+  }
+
+  /// As partes da aula: tocar numa pula para o começo dela (tocando, segue tocando dali).
+  Widget _partes() {
+    final secoes = widget.aula.secoes;
+    final atual = widget.aula.secaoDe(_i);
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(children: [
+        for (var k = 0; k < secoes.length; k++)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 3),
+            child: Material(
+              color: k == atual ? Mixart.brand : Mixart.surfaceHi,
+              shape: StadiumBorder(side: BorderSide(color: k == atual ? Mixart.brand : Mixart.border)),
+              child: InkWell(
+                key: Key('aula-parte-$k'),
+                customBorder: const StadiumBorder(),
+                onTap: () => _irPara(secoes[k].inicio),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                  child: Text('${k + 1}. ${secoes[k].nome}',
+                      style: Mixart.ui(
+                          size: 11.5,
+                          weight: FontWeight.w800,
+                          color: k == atual ? Mixart.onBrand : Mixart.text)),
+                ),
+              ),
+            ),
+          ),
+      ]),
+    );
   }
 
   Widget _rodape() => Column(children: [
@@ -472,7 +702,12 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
           borderRadius: BorderRadius.circular(Mixart.radiusMd),
         ),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          for (var k = 0; k < _falas.length; k++)
+          for (var k = 0; k < _falas.length; k++) ...[
+            if (_falas[k].secao.isNotEmpty)
+              Padding(
+                padding: EdgeInsets.fromLTRB(8, k == 0 ? 0 : 14, 8, 4),
+                child: Text(_falas[k].secao, style: Mixart.display(size: 15, color: Mixart.brand)),
+              ),
             InkWell(
               onTap: () => _tocarDaqui(k),
               borderRadius: BorderRadius.circular(8),
@@ -498,6 +733,7 @@ class _AulaProfessorPageState extends State<AulaProfessorPage> {
                       ]),
               ),
             ),
+          ],
         ]),
       );
 }

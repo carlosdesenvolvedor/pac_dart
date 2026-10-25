@@ -1,257 +1,350 @@
 {
- "versao": 1,
- "trilha": "familia-e-posse",
- "licoes": {
-  "familia-e-posse.minha-familia": {
-   "titulo": "Essa é a minha família: my e your",
-   "falas": [
-    {
-     "pt": "Pausa na chamada. Você pega o celular e mostra as fotos da família para a Ana e o Mike."
+  "versao": 2,
+  "trilha": "familia-e-posse",
+  "licoes": {
+    "familia-e-posse.minha-familia": {
+      "titulo": "Meu, seu e os pais que não são parentes",
+      "falas": [
+        {"secao": "A cena", "pt": "Pausa no meio da chamada. O Mike foi buscar um café, a Ana esticou as costas, e você aproveita para pegar o celular."},
+        {"img": "foto", "pt": "Sabe aquele momento em que todo mundo se junta em volta de um celular para ver foto de família? Todo mundo debruçado, apontando, sorrindo. É essa a cena de hoje."},
+        {"img": "📱👨‍👩‍👧‍👦", "pt": "Você abre a galeria e mostra a primeira foto para a Ana e o Mike: todo mundo junto, num almoço de domingo. E apresenta, do jeito mais natural do mundo:"},
+        {"en": "This is my family.", "tr": "Essa é a minha família."},
+
+        {"secao": "Meu e minha: uma palavra só", "pt": "Vamos por partes. O começo você já conhece das apresentações: é o este ou esta, mais o verbo é. Serve para apresentar alguém ou alguma coisa.", "quadro": "This is... = Este é... / Esta é..."},
+        {"pt": "Depois vem a palavra mais importante desta aula: meu. Olha na lousa como ela é simples.", "quadro": "my = meu, minha, meus, minhas"},
+        {"pt": "Em português, o meu muda o tempo todo. Meu pai, minha mãe, meus irmãos, minhas primas. Muda com o gênero e muda com o plural."},
+        {"pt": "Em inglês, não. É uma palavra só, de duas letras, que nunca muda. Minha família, meu pai, meus pais: sempre a mesma palavrinha."},
+        {"img": "💻", "pt": "Para um dev, pense numa constante. Você declara uma vez e ela nunca muda de valor, não importa a coisa que vem depois dela."},
+        {"pt": "E a última palavra da frase é família, quase igual à nossa. As duas vêm da mesma palavra do latim, por isso se parecem tanto. Ouça só o pedaço final:"},
+        {"en": "my family", "tr": "a minha família"},
+        {"pt": "E repare: em português a gente diz a minha família, com artigo na frente. Em inglês, nunca vai artigo antes do meu. É só o meu e a coisa.", "quadro": "my family (não: the my family)"},
+
+        {"secao": "Os pais da foto", "img": "👨👩❓", "pt": "Você passa para a próxima foto. Aparece um casal mais velho, sorrindo na varanda. A Ana fica curiosa e pergunta:"},
+        {"en": "Are they your parents?", "tr": "Eles são seus pais?"},
+        {"pt": "Olha a ordem da pergunta. Na trilha das perguntas você viu que o verbo ser e estar pula para a frente da pessoa. Em vez de eles são, fica são eles.", "quadro": "They are → Are they...?"},
+        {"pt": "Depois vem o seu, a palavra de você. Mesma história do meu: uma palavra só para seu, sua, seus e suas.", "quadro": "your = seu, sua, seus, suas"},
+        {"pt": "Agora, atenção máxima na última palavra. Ela parece muito com parentes, mas é uma armadilha clássica. Ela quer dizer pais: o pai e a mãe, juntos.", "quadro": "parents = pais (pai e mãe)"},
+        {"pt": "Os outros parentes, como tios, primos e avós, têm outra palavra, que está na lousa. É um falso cognato: parece uma coisa e quer dizer outra.", "quadro": "parents = pais · relatives = parentes"},
+        {"pt": "Truque de memória: a palavra que parece parentes ficou só com os dois mais importantes da família, o pai e a mãe. O resto do pessoal ficou com a outra palavra."},
+        {"pt": "Você confirma, todo orgulhoso:"},
+        {"en": "Yes, my mother and father.", "tr": "Sim, minha mãe e meu pai.", "img": "👵👴✅"},
+        {"pt": "Mãe e pai estão na lousa. As duas palavras terminam igualzinho, só o começo muda. Fica fácil guardar as duas juntas.", "quadro": "mother = mãe · father = pai"},
+        {"pt": "E olha um detalhe: o meu apareceu uma vez só, e vale para os dois. Em português a gente repete, minha mãe e meu pai. Em inglês, um meu basta."},
+
+        {"secao": "Quem está onde", "pt": "O Mike volta com o café, vê a foto dos seus pais e entra na conversa. Ele quer saber se eles estão em Curitiba:"},
+        {"en": "Are your parents in Curitiba?", "tr": "Seus pais estão em Curitiba?", "img": "👴👵🏙️"},
+        {"pt": "De novo, o verbo vem primeiro, porque é pergunta. E repare que aqui ele faz o papel de estar. Em inglês é o mesmo verbo para ser e para estar num lugar.", "quadro": "be = ser / estar"},
+        {"img": "👩📸", "pt": "Aí você mostra outra foto. Uma moça sorrindo, de cabelo preso, segurando uma xícara. É a sua irmã, a Julia:"},
+        {"en": "And this is my sister, Julia.", "tr": "E essa é a minha irmã, Julia."},
+        {"pt": "Irmã está na lousa. E a vírgula antes do nome funciona igual ao português: minha irmã, vírgula, Julia. O nome vem depois, explicando quem ela é.", "quadro": "sister = irmã"},
+        {"pt": "A Ana quer saber se a Julia também está na mesma cidade dos seus pais. A palavra também vai lá no fim da frase:"},
+        {"en": "Is your sister in Curitiba too?", "tr": "Sua irmã também está em Curitiba?", "img": "👩🏙️❓"},
+        {"pt": "Essa palavrinha do final quer dizer também. Em português o também passeia pela frase; em inglês, essa palavrinha costuma ficar no fim.", "quadro": "too = também (no fim da frase)"},
+        {"img": "👨‍👩‍👧🏖️", "pt": "Aí a Ana conta da família dela, que mora longe, lá no Nordeste:"},
+        {"en": "My family is in Recife.", "tr": "A minha família está em Recife."},
+        {"pt": "Percebeu? A Ana, mulher, usou o mesmo meu que você usou. Não importa quem fala, nem qual é a coisa: a palavra não muda nunca."},
+        {"pt": "E o verbo ficou no singular, porque família é um grupo só. Igual ao português: a família está.", "quadro": "My family is... = A minha família está..."},
+        {"img": "👉👩‍🦳", "pt": "Você volta para a sua foto, amplia a imagem e aponta para uma senhora lá no fundo, de óculos. É a sua mãe:"},
+        {"en": "That's my mother.", "tr": "Essa é a minha mãe."},
+        {"pt": "Agora você não usou o este, e sim o aquele, porque está apontando para alguém mais longe, lá no fundo da foto. E ele vem contraído com o verbo é.", "quadro": "That's = That is · this = este · that = aquele"},
+
+        {"secao": "A pronúncia", "pt": "Agora a pronúncia. Três palavras desta lição têm o mesmo som difícil: o este, a mãe e o pai. Todas se escrevem com um tê e um agá juntos.", "quadro": "this · mother · father"},
+        {"pt": "Esse som não existe no português. Ponha a pontinha da língua entre os dentes de cima e de baixo, e solte a voz devagar, sem encostar a língua no céu da boca. Escuta:"},
+        {"en": "This is my mother.", "tr": "Essa é a minha mãe."},
+        {"pt": "O erro típico é trocar esse som por um dê ou por um zê. Ainda dá para entender, mas com a língua entre os dentes o seu inglês fica muito mais claro."},
+        {"pt": "E na palavra família, a força vai na primeira sílaba, e não no meio, como em português. Ouça:"},
+        {"en": "family", "tr": "família"},
+
+        {"secao": "Curiosidade", "pt": "Uma curiosidade sobre aquela armadilha dos pais. A palavra vem do latim, e lá ela queria dizer pai ou mãe. O inglês guardou esse sentido."},
+        {"pt": "No português, o sentido foi ficando mais largo, até a nossa palavra parentes cobrir a família toda. Por isso as duas se parecem tanto, e por isso enganam tanto."},
+        {"pt": "E mais uma. A palavra do dia a dia para mãe muda de um lado para o outro do oceano. Ouça primeiro a dos americanos, e depois a do Reino Unido:", "img": "🇺🇸🇬🇧"},
+        {"en": "Mom", "tr": "Mãe (Estados Unidos)"},
+        {"en": "Mum", "tr": "Mãe (Reino Unido)"},
+
+        {"secao": "Desafio", "pt": "Hora do desafio. A Ana mostra uma foto de um casal e você quer saber se são os pais dela. Como você pergunta: eles são seus pais?", "pausa": 4},
+        {"en": "Are they your parents?", "tr": "Eles são seus pais?"},
+        {"pt": "Mais uma. Você abre a foto do almoço de domingo e apresenta todo mundo. Como você diz: essa é a minha família?", "pausa": 4},
+        {"en": "This is my family.", "tr": "Essa é a minha família."},
+        {"pt": "E a última: como você diz que a sua família está em Curitiba? Lembre que família é um grupo só.", "pausa": 5},
+        {"en": "My family is in Curitiba.", "tr": "A minha família está em Curitiba."},
+
+        {"secao": "Recapitulando", "pt": "Recapitulando. Meu e seu são uma palavra só, que não muda com o gênero, nem com o plural, e não leva artigo na frente.", "quadro": "my · your"},
+        {"pt": "A palavra que parece parentes quer dizer pai e mãe. Mãe e pai terminam igual. E o também vai no fim da frase."},
+        {"pt": "Pronto para mostrar a sua família? Digite frase por frase e, quando falar da mãe e do pai em voz alta, capriche na língua entre os dentes!"}
+      ]
     },
-    {
-     "en": "This is my family.",
-     "tr": "Essa é a minha família."
+
+    "familia-e-posse.dele-e-dela-his-e-her": {
+      "titulo": "Dele ou dela? Quem manda é o dono",
+      "falas": [
+        {"secao": "A cena", "pt": "Chamada de vídeo com o Mike e a Sarah. Hoje o assunto não é código: cada um resolveu mostrar um pouco da própria família."},
+        {"img": "foto", "pt": "O Mike vira a câmera para a estante. Ali tem um porta-retrato dourado, com a foto do casamento dele, do lado de uma luminária."},
+        {"pt": "Ele aponta para a noiva da foto e apresenta, com aquele meu que você aprendeu na lição passada:"},
+        {"en": "This is my wife.", "tr": "Essa é a minha esposa.", "img": "💍👩"},
+        {"pt": "Na lousa, esposa e marido. A esposa é uma palavra curtinha, de uma sílaba só. O marido é mais comprido, e ele já vai aparecer.", "quadro": "wife = esposa · husband = marido"},
+        {"pt": "E o Mike conta de onde ela é. Lembra de como se diz que alguém é de uma cidade? O verbo ser, mais uma palavrinha que quer dizer de:"},
+        {"en": "My wife is from Chicago.", "tr": "A minha esposa é de Chicago.", "img": "💍🏙️"},
+        {"pt": "Essa palavrinha da lousa é o de da origem: ser de um lugar, vir de um lugar. Você vai usar muito para falar de onde as pessoas são.", "quadro": "is from = é de (cidade, país)"},
+
+        {"secao": "Dele: o dono é homem", "img": "👨👦", "pt": "Na foto seguinte aparece o Mike com um menino no colo. É o filho dele. Você quer saber o nome do garoto."},
+        {"pt": "Em português você diria qual é o nome dele. Em inglês, dele é uma palavra só, de três letras, e ela vem antes da coisa, colada nela.", "quadro": "his = dele"},
+        {"en": "What's his name?", "tr": "Qual é o nome dele?"},
+        {"pt": "Olha a ordem. Em português, o nome dele: primeiro a coisa, depois o dono. Em inglês, ao contrário: o dono vem antes.", "quadro": "his name = o nome dele"},
+        {"pt": "E o começo da frase é uma contração que você já viu nas perguntas: qual, mais o verbo é, numa palavra só.", "quadro": "What's = What is"},
+        {"pt": "Repare quem é o dono do nome: o menino. Menino é homem, então a palavra é dele. Guarde essa pergunta, de quem é, porque ela vai salvar você daqui a pouco."},
+
+        {"secao": "A Sarah e o marido", "pt": "Agora é a vez da Sarah. Ela pega um porta-retrato da mesa dela e mostra para a câmera:"},
+        {"en": "This is my husband.", "tr": "Esse é o meu marido.", "img": "💍👨"},
+        {"pt": "Repare: é o mesmo meu do Mike. Ele falou da esposa, ela fala do marido, e a palavrinha não mudou nada. O meu do inglês não liga para o gênero."},
+        {"pt": "A Sarah é de Austin, no Texas. Você quer saber se o marido dela também é de lá. Mas você está falando com ela, então é o seu marido:"},
+        {"en": "Is your husband from Austin too?", "tr": "O seu marido também é de Austin?", "img": "👨📍❓"},
+        {"pt": "Olha a diferença. Quando você fala com a pessoa, usa a palavra de você. Quando fala sobre a pessoa, para outra pessoa, aí entra dele ou dela.", "quadro": "falando com a Sarah: your · falando da Sarah: her"},
+
+        {"secao": "A regra de ouro", "img": "💬", "pt": "A chamada acaba, e a Ana te chama no chat: e aí, como foi? Você conta tudo. Agora você está falando sobre o Mike e a Sarah, e não com eles."},
+        {"pt": "Primeiro, o Mike. Na foto ele estava com o filho. Quem tem o filho é o Mike, um homem. Então é o filho dele:"},
+        {"en": "He's with his son.", "tr": "Ele está com o filho dele.", "img": "👨👦"},
+        {"pt": "No começo, outra contração: ele, mais o verbo estar. E filho, na lousa, é uma palavra curtinha, de três letras.", "quadro": "He's = He is · son = filho"},
+        {"pt": "Agora a Sarah. O marido é homem, certo? Mas quem tem o marido é a Sarah. E é ela quem manda na palavra:"},
+        {"en": "Sarah and her husband are from Austin.", "tr": "A Sarah e o marido dela são de Austin.", "img": "👩👨📍"},
+        {"pt": "Marido dela, nunca marido dele. Quem decide é o dono, e nunca a coisa. Essa é a regra de ouro desta lição.", "quadro": "her husband = o marido dela"},
+        {"pt": "E repare no verbo: a Sarah e o marido são duas pessoas, então o verbo vai para o plural, aquele que você usa com eles."},
+        {"pt": "Em português, o seu esconde o dono. Seu marido pode ser o marido de qualquer pessoa. Em inglês, o dono fica sempre à mostra."},
+        {"pt": "Truque de memória: na hora de traduzir, nunca pense em seu ou sua. Pense em dele ou dela. Dele e dela mostram quem é o dono, igualzinho ao inglês.", "quadro": "his = dele · her = dela"},
+
+        {"secao": "A idade da filha", "img": "👧🎂", "pt": "A Ana lembra que a Sarah tem uma filha também, e quer saber a idade dela. A filha é da Sarah, mulher. Então é dela:"},
+        {"en": "How old is her daughter?", "tr": "Quantos anos tem a filha dela?"},
+        {"pt": "Filha está na lousa. É uma palavra bem mais comprida que filho, e tem letras no meio que se escrevem mas não se falam. Na hora de digitar, cuidado.", "quadro": "daughter = filha · son = filho"},
+        {"pt": "E a idade? Lembra da trilha das perguntas: em inglês, idade é com o verbo ser e estar, nunca com ter. Ninguém tem anos; a pessoa é tantos anos.", "quadro": "How old is...? = Quantos anos tem...?"},
+        {"pt": "A resposta segue a mesma lógica. A filha dela é dez, ao pé da letra:"},
+        {"en": "Her daughter is ten.", "tr": "A filha dela tem dez anos."},
+
+        {"secao": "O sopro do agá", "pt": "Agora a pronúncia. Dele, dela e marido começam com a letra agá. Em português, o agá é mudo. Em inglês, nessas palavras, ele é um sopro.", "quadro": "his · her · husband"},
+        {"pt": "Imagine que você vai embaçar um vidro com o ar da boca. É esse ar, saindo leve, logo antes da vogal. Escuta:"},
+        {"en": "his, her, husband", "tr": "dele, dela, marido"},
+        {"pt": "Se você engolir esse sopro, a palavra dele fica igualzinha ao verbo é. Ouça as duas juntas numa frase só, e repare no ar da primeira:"},
+        {"en": "His son is here.", "tr": "O filho dele está aqui."},
+
+        {"secao": "Curiosidade", "pt": "Uma curiosidade. A palavra marido, em inglês, é bem antiga, e queria dizer o dono da casa. Repare que ela começa com um pedaço parecido com a palavra casa.", "quadro": "house = casa · husband = marido", "img": "🏠👨"},
+        {"pt": "Então, quando for escrever marido, lembre da casa: o começo das duas palavras se parece. É um gancho a mais para a memória."},
+
+        {"secao": "Erros comuns", "pt": "Agora os erros mais comuns. O primeiro você já conhece: seguir o gênero da coisa. Marido dela vira marido dele, só porque marido é homem.", "quadro": "her husband (não: his husband)"},
+        {"pt": "O segundo é usar a palavra de você para todo mundo, porque em português a gente diz seu marido para qualquer um. Se você não está falando com a pessoa, não é seu."},
+        {"pt": "E o terceiro é a idade com o verbo ter. Em português, ela tem dez anos. Em inglês, ela é dez.", "quadro": "She is ten. (não: She has ten years.)"},
+
+        {"secao": "Desafio", "pt": "Hora do desafio. Você conta para a Ana sobre o Mike. Como você diz: o Mike e a esposa dele são de Chicago?", "pausa": 5},
+        {"en": "Mike and his wife are from Chicago.", "tr": "O Mike e a esposa dele são de Chicago."},
+        {"pt": "Mais uma. Você quer saber o nome da filha da Sarah, e pergunta para a Ana. Como fica: qual é o nome dela?", "pausa": 4},
+        {"en": "What's her name?", "tr": "Qual é o nome dela?"},
+        {"pt": "E a última, a mais traiçoeira. Como você diz: a Sarah está com o marido dela?", "pausa": 5},
+        {"en": "Sarah is with her husband.", "tr": "A Sarah está com o marido dela."},
+
+        {"secao": "Recapitulando", "pt": "Recapitulando. Dele é a palavra do dono homem; dela, a da dona mulher. E quem decide é sempre o dono, nunca a coisa.", "quadro": "his = dele · her = dela"},
+        {"pt": "Falando com a pessoa, use o seu, a palavra de você. Falando sobre ela, use dele ou dela. E idade é com o verbo ser, nunca com ter."},
+        {"pt": "Bora para o teclado. Antes de cada frase, faça a pergunta mágica: quem é o dono? Homem, dele. Mulher, dela. E não esqueça o sopro do agá!"}
+      ]
     },
-    {
-     "pt": "A palavra meu, em inglês, é uma só. Serve para minha, meus e minhas também. Ela não muda nem com a coisa, nem com o plural.",
-     "quadro": "my = meu, minha, meus, minhas"
+
+    "familia-e-posse.o-carro-do-meu-irmao-s": {
+      "titulo": "O carro do meu irmão: a etiqueta do dono",
+      "falas": [
+        {"secao": "A cena", "pt": "Mais uma chamada com a Ana. Dessa vez o assunto são as coisas da família: carro, casa, apartamento. Cada um vai mostrando as próprias fotos."},
+        {"img": "foto", "pt": "Você abre uma foto de uma rua tranquila: uma casa com garagem, um gramado na frente, céu azul e alguns carros estacionados na rua."},
+        {"pt": "E você começa pelo orgulho da família: o carro novinho do seu irmão. Ouça:"},
+        {"en": "My brother's car is new.", "tr": "O carro do meu irmão é novo.", "img": "🚗✨"},
+
+        {"secao": "A etiqueta do dono", "pt": "Irmão está na lousa. Lembra da mãe e do pai, na primeira lição? Irmão termina igualzinho a essas duas palavras, com a língua entre os dentes no final.", "quadro": "brother = irmão (mesmo final de mother e father)"},
+        {"pt": "Agora o mais importante. Em português, a gente diz o carro do meu irmão: primeiro a coisa, depois a palavra de, depois o dono."},
+        {"pt": "Em inglês, a ordem vira ao contrário. O dono vem primeiro, com um apóstrofo e a letra esse grudados nele. E só depois vem a coisa.", "quadro": "my brother's car = o carro do meu irmão"},
+        {"img": "🏷️", "pt": "Truque de memória: pense no apóstrofo com a letra esse como uma etiqueta de nome, pendurada no dono. Primeiro você lê a etiqueta, depois vê a coisa."},
+        {"pt": "É a mesma ideia do dele e do dela da lição passada: o dono sempre na frente. Lá era uma palavrinha; aqui é o próprio dono, com a etiqueta."},
+        {"pt": "E para quem é dev: lembra de acessar a propriedade de um objeto? Primeiro o objeto, um ponto, e depois a propriedade. A etiqueta faz o papel desse ponto.", "quadro": "brother.car → my brother's car"},
+
+        {"secao": "Grande ou velho", "img": "🚙❓", "pt": "A Ana fica animada e quer saber se o carro é grande. Ela pergunta:"},
+        {"en": "Nice! Is it big?", "tr": "Que legal! É grande?"},
+        {"pt": "A primeira palavra é um elogio rápido: que legal, que bacana. Use à vontade numa conversa.", "quadro": "Nice! = Que legal!"},
+        {"pt": "Agora repare na pergunta. Em português, a gente diz só é grande, sem sujeito nenhum. Em inglês, isso não existe: precisa de alguém no lugar da coisa.", "quadro": "Is it big? (não: Is big?)"},
+        {"pt": "Essa palavrinha é o pronome das coisas e dos animais. Ela segura o lugar do carro na frase. Sem ela, a pergunta fica capenga."},
+        {"pt": "E a Ana conta do carro do pai dela, que é bem o oposto do carro do seu irmão:"},
+        {"en": "My father's car is really old.", "tr": "O carro do meu pai é bem velho.", "img": "🚗👴"},
+        {"pt": "A etiqueta aparece de novo, agora pendurada no pai. E a palavra antes de velho reforça: bem velho, velho de verdade.", "quadro": "really = bem, muito · old = velho · new = novo"},
+        {"pt": "Novo e velho são opostos, e os dois vêm depois do verbo ser, igual ao português: o carro é novo, o carro é velho. E eles nunca vão para o plural."},
+
+        {"secao": "Sem artigo antes do nome", "img": "🏠👩", "pt": "Agora você mostra a casa da sua irmã, a Julia. É aquela da foto, com a garagem branca e as janelas verdes."},
+        {"en": "And this is Julia's house.", "tr": "E essa é a casa da Julia."},
+        {"pt": "Aqui mora o erro clássico de brasileiro. Em português, a gente diz a casa da Julia, com artigo antes do nome. Em inglês, nada de artigo.", "quadro": "Julia's house (não: the Julia's house)"},
+        {"pt": "É só o nome com a etiqueta, e depois a casa. O nome da pessoa já diz de quem é; não precisa de mais nada na frente."},
+        {"pt": "O outro erro é traduzir palavra por palavra, com a palavra de no meio. Até existe essa construção em inglês, mas, quando o dono é uma pessoa, ela soa estranha.", "quadro": "the house of Julia → Julia's house"},
+        {"pt": "A Ana fica impressionada com o tamanho da casa:"},
+        {"en": "Wow, your sister's house is big!", "tr": "Nossa, a casa da sua irmã é grande!", "img": "🏡😮"},
+        {"pt": "Repare que aqui o dono tem duas palavras: sua irmã. A etiqueta vai na última, colada na irmã. E o seu fica na frente, também sem artigo.", "quadro": "your sister's house = a casa da sua irmã"},
+        {"pt": "Aí a Ana quer saber onde fica essa casa. A casa é da Julia, mulher. Então volta a palavra dela, da lição passada:"},
+        {"en": "Where's her house?", "tr": "Onde fica a casa dela?", "img": "🏡📍❓"},
+        {"pt": "No começo, a contração de onde com o verbo é. Em português a gente diz onde fica; em inglês é só onde é, com o verbo ser e estar.", "quadro": "Where's = Where is"},
+
+        {"secao": "O apartamento da Ana", "img": "🏢🔑", "pt": "Por fim, a Ana mostra onde ela mora. Não é casa: é um apartamento, num prédio alto."},
+        {"en": "This is my apartment.", "tr": "Esse é o meu apartamento."},
+        {"pt": "Essa palavra é quase igual à nossa, só que mais curta no final. Cuidado ao digitar: tem um pê só, igualzinho ao português."},
+        {"pt": "Você pergunta se o apartamento é novo. Pergunta com o verbo ser e estar na frente, como sempre:"},
+        {"en": "Is your apartment new?", "tr": "O seu apartamento é novo?", "img": "🏢✨❓"},
+
+        {"secao": "A pronúncia da etiqueta", "pt": "Agora a pronúncia. A etiqueta do dono, nas frases desta lição, soa como um zumbido: um zê bem curto, grudado no fim da palavra. Escuta:"},
+        {"en": "my brother's car, Julia's house", "tr": "o carro do meu irmão, a casa da Julia"},
+        {"pt": "Mas depois de alguns sons secos, como o cá do fim do nome do Mike, ela soa como um esse seco, sem zumbido. Ouça:"},
+        {"en": "Mike's car", "tr": "o carro do Mike"},
+        {"pt": "Não precisa decorar regra agora. Escute os exemplos, repita junto, e o ouvido vai pegando sozinho. O importante é a etiqueta não sumir."},
+
+        {"secao": "Curiosidade", "pt": "Uma curiosidade. A palavra que a Ana usou para apartamento é a dos americanos. No Reino Unido, o mais comum é outra, curtinha, que também quer dizer plano, achatado.", "quadro": "apartment (EUA) · flat (Reino Unido)", "img": "🇺🇸🇬🇧"},
+        {"pt": "Os dois lados entendem as duas palavras, então não tem erro. Mas, se um colega inglês falar daquela palavra curtinha, você já sabe: é onde ele mora."},
+
+        {"secao": "Erros comuns", "pt": "Os erros desta lição, todos juntos. Artigo antes do nome, a construção com a palavra de, e esquecer a palavrinha das coisas na pergunta."},
+        {"pt": "E um erro de teclado: no teclado brasileiro, o apóstrofo é aquela tecla à esquerda do número um. Sem ele, a etiqueta cai, e a frase perde o dono."},
+
+        {"secao": "Desafio", "pt": "Hora do desafio. Como você diz: o carro da Julia é novo? Lembre: nada de artigo antes do nome.", "pausa": 5},
+        {"en": "Julia's car is new.", "tr": "O carro da Julia é novo."},
+        {"pt": "Mais uma. Como você diz: a casa do meu pai é grande?", "pausa": 5},
+        {"en": "My father's house is big.", "tr": "A casa do meu pai é grande."},
+        {"pt": "E a última: pergunte para a Ana se o apartamento dela é grande. Você está falando com ela.", "pausa": 4},
+        {"en": "Is your apartment big?", "tr": "O seu apartamento é grande?"},
+
+        {"secao": "Recapitulando", "pt": "Recapitulando. Para dizer de quem é, o dono vem primeiro, com o apóstrofo e a letra esse, e depois a coisa. Sem artigo antes do nome.", "quadro": "dono + 's + coisa: Julia's house"},
+        {"pt": "Na pergunta, a palavrinha das coisas não pode sumir. E o apartamento tem um pê só."},
+        {"pt": "Sua vez de digitar as frases da lição. Dono primeiro, etiqueta com apóstrofo, e só depois a coisa. O dedo já sabe onde fica a tecla do apóstrofo, né?"}
+      ]
     },
-    {
-     "pt": "O mesmo vale para o seu, de você. Uma palavra só para seu, sua, seus e suas.",
-     "quadro": "your = seu, sua, seus, suas"
+
+    "familia-e-posse.nosso-e-deles-achados-no-escritorio": {
+      "titulo": "Nosso e deles: achados no escritório",
+      "falas": [
+        {"secao": "A cena", "pt": "Fim do dia no escritório de Chicago. O pessoal já está indo embora, e as mesas estão naquela bagunça de sempre."},
+        {"img": "foto", "pt": "Olha essa mesa: papel para todo lado, uma cadeira vazia, a lousa toda rabiscada. No meio dessa confusão, sempre fica alguma coisa esquecida."},
+        {"pt": "E o Mike está revirando a mochila, desesperado. Ele não acha uma coisa importante:"},
+        {"en": "Where's my wallet?", "tr": "Cadê a minha carteira?", "img": "👛🔍"},
+        {"pt": "A palavra da lousa é a carteira de dinheiro, aquela do bolso. Não é a carteira de motorista, nem a carteira da escola.", "quadro": "wallet = carteira (de dinheiro)"},
+        {"pt": "E o começo você já conhece: onde, mais o verbo é, numa contração. Na conversa do dia a dia, dá para traduzir como cadê.", "quadro": "Where's...? = Cadê...?"},
+
+        {"secao": "É seu?", "pt": "Você olha em volta e acha uma carteira em cima de uma mesa, escondida embaixo de uns papéis. Você levanta e pergunta:"},
+        {"en": "Is this your wallet?", "tr": "Essa carteira é sua?", "img": "👛❓"},
+        {"pt": "Repare na ordem. Em português, a gente diz essa carteira é sua. Em inglês, a frase fica assim: é esta a sua carteira?", "quadro": "Is this your...? = Esse... é seu?"},
+        {"pt": "O verbo pula para o começo, porque é pergunta. E o seu, a palavra de você, vem colado antes da coisa, como todo dono."},
+        {"pt": "Essa pergunta é uma ferramenta de escritório. Achou qualquer coisa? Troque só a última palavra. Uma caneta, por exemplo:"},
+        {"en": "Is this your pen?", "tr": "Essa caneta é sua?"},
+        {"pt": "O Mike vê a carteira na sua mão, do outro lado da sala, e responde aliviado:"},
+        {"en": "Yes, that's my wallet. Thanks!", "tr": "Sim, é a minha carteira. Valeu!", "img": "👛✅🙏"},
+        {"pt": "Repare que ele trocou o esta pelo aquela. Para você, a carteira estava perto, na mão. Para ele, estava longe, do outro lado da sala.", "quadro": "this = este, esta (perto) · that = aquele, aquela (longe)"},
+        {"pt": "E no fim, ele agradece com a forma curta e informal do obrigado, aquela do primeiro contato. Entre colegas, é a mais comum."},
+
+        {"secao": "O nosso time", "img": "👨‍💻👩‍💻🤝", "pt": "Antes de ir embora, o Mike mostra na tela do computador uma foto da turma toda, num evento da empresa. E diz, orgulhoso:"},
+        {"en": "This is our team.", "tr": "Esse é o nosso time."},
+        {"pt": "Nosso, em inglês, é uma palavra só, igual ao meu e ao seu. Não muda com o gênero, nem com o plural.", "quadro": "our = nosso, nossa, nossos, nossas"},
+        {"pt": "E a palavra time você conhece do futebol: o português pegou essa palavra do inglês e mudou a escrita. Em inglês, ela quer dizer time ou equipe.", "quadro": "team = time, equipe"},
+
+        {"secao": "Os dois devs novos", "img": "👥📛", "pt": "Aí passam dois desenvolvedores novos, que começaram há pouco tempo. Você ainda não sabe o nome deles e pergunta ao Mike:"},
+        {"en": "What are their names?", "tr": "Quais são os nomes deles?"},
+        {"pt": "A palavra da lousa quer dizer deles ou delas. Serve igual para dois homens, duas mulheres ou uma turma misturada.", "quadro": "their = deles, delas"},
+        {"pt": "Repare também no verbo. Os nomes são dois, então o verbo vai para o plural. Para um nome, é. Para vários nomes, são."},
+        {"pt": "Os dois novatos também esqueceram coisas. Em cima da mesa deles tem dois molhos de chaves. O Mike avisa:"},
+        {"en": "Their keys are here, too.", "tr": "As chaves deles também estão aqui.", "img": "🔑🔑👥"},
+        {"pt": "As chaves são dos dois novatos. Então é deles. E repare no também de novo, lá no fim, agora depois de uma vírgula.", "quadro": "their keys = as chaves deles · key = chave"},
+        {"pt": "Aí você acha um celular perto da janela. Mesma pergunta de antes; só troca a coisa:"},
+        {"en": "Is this your phone?", "tr": "Esse celular é seu?", "img": "📱❓"},
+
+        {"secao": "Dele, dela ou deles?", "pt": "Agora a armadilha principal desta lição. Em português, o seu e o sua às vezes querem dizer dele, dela ou deles. Ele pegou o seu carro: o carro de quem?"},
+        {"pt": "Em inglês, essa confusão não existe. Se as chaves são dos novatos, é deles. Se são do Mike, é dele. A palavra de você só serve para quem está na sua frente, ouvindo."},
+        {"pt": "E a lousa traz mais uma, para coisas e animais: é o dele ou dela quando o dono não é gente. Atenção: ela não tem apóstrofo.", "quadro": "its = dele, dela (coisa, animal) · it's = it is"},
+        {"en": "The cat is in its bed.", "tr": "O gato está na caminha dele.", "img": "🐈🛏️"},
+        {"pt": "Com apóstrofo, é a contração do verbo é. Sem apóstrofo, é o dono. Essa troca confunde até quem nasceu falando inglês, então capriche."},
+
+        {"secao": "Mesmo som, outra palavra", "pt": "Agora a pronúncia, com um truque. A palavra deles soa igualzinho à palavra lá, que você viu nas cinquenta mais usadas. Só a escrita muda.", "quadro": "their = deles · there = lá · mesmo som"},
+        {"en": "Their keys are there.", "tr": "As chaves deles estão lá."},
+        {"pt": "Pense assim: as coisas deles estão lá, longe de você. Uma frase, duas palavras, o mesmo som. Quem diferencia é a escrita, então atenção ao digitar."},
+        {"pt": "E a palavra nosso, na maioria dos sotaques, tem o mesmo som da palavra hora. Na palavra hora, o agá é mudo, ao contrário do sopro do dele e do dela.", "quadro": "our = nosso · hour = hora · mesmo som"},
+        {"en": "our, hour", "tr": "nosso, hora"},
+
+        {"secao": "O táxi chegou", "img": "🚕👋", "pt": "Bom, o dia acabou. Você olha pela janela e vê que o táxi que vocês chamaram já está lá embaixo. Você chama o Mike:"},
+        {"en": "Mike, our taxi is here!", "tr": "Mike, o nosso táxi está aqui!"},
+        {"pt": "Repare na vírgula depois do nome. Quando você chama alguém, o nome vem separado por vírgula, como no português."},
+        {"pt": "E o táxi é seu e do Mike, juntos. Você mais ele dá nós. Então é nosso."},
+
+        {"secao": "Curiosidade", "pt": "Curiosidade de escritório. Nos Estados Unidos, o celular tem o mesmo nome do português, telefone celular. No Reino Unido, é o telefone móvel. A palavra curta da lição funciona nos dois lados.", "quadro": "cell phone (EUA) · mobile (Reino Unido) · phone", "img": "🇺🇸🇬🇧📱"},
+        {"pt": "E mais uma: no Reino Unido, é comum o time levar o verbo no plural, como se fosse eles, porque são várias pessoas. Nos Estados Unidos, ele fica no singular, como no português."},
+
+        {"secao": "Desafio", "pt": "Hora do desafio. Você acha uma chave em cima da sua mesa. Como você pergunta ao Mike se a chave é dele?", "pausa": 4},
+        {"en": "Is this your key?", "tr": "Essa chave é sua?"},
+        {"pt": "Mais uma. Os novatos se chamam Ben e Emma. Como você diz: os nomes deles são Ben e Emma?", "pausa": 5},
+        {"en": "Their names are Ben and Emma.", "tr": "Os nomes deles são Ben e Emma."},
+        {"pt": "E a última. Você mostra a sala para um visitante. Como você diz: esse é o nosso escritório?", "pausa": 4},
+        {"en": "This is our office.", "tr": "Esse é o nosso escritório."},
+
+        {"secao": "Recapitulando", "pt": "Recapitulando. Nosso é uma palavra só, que não muda. Deles e delas também. E o dele ou dela das coisas não tem apóstrofo.", "quadro": "our · their · its"},
+        {"pt": "Para devolver uma coisa ao dono, use a pergunta da carteira e troque só a última palavra. E lembre: o seu do português pode ser dele ou deles."},
+        {"pt": "O escritório está quase vazio, e as coisas esquecidas esperam por você. Digite as frases, devolva cada uma ao dono certo e cuidado com as palavras que soam igual!"}
+      ]
     },
-    {
-     "pt": "A Ana olha a foto de um casal mais velho e pergunta:"
-    },
-    {
-     "en": "Are they your parents?",
-     "tr": "Eles são seus pais?"
-    },
-    {
-     "pt": "Atenção, falso cognato! Essa palavra parece parentes, mas quer dizer pais, o pai e a mãe juntos. Parentes, em inglês, é outra palavra.",
-     "quadro": "parents = pais · relatives = parentes"
-    },
-    {
-     "pt": "Truque de memória: a palavra que parece parentes ficou só com os dois mais importantes da família, o pai e a mãe. O resto dos parentes é a outra palavra da lousa."
-    },
-    {
-     "en": "Yes, my mother and father.",
-     "tr": "Sim, minha mãe e meu pai."
-    },
-    {
-     "pt": "Na foto seguinte aparece uma moça sorrindo. Você apresenta, com o mesmo meu do começo:"
-    },
-    {
-     "en": "And this is my sister, Julia.",
-     "tr": "E essa é a minha irmã, Julia."
-    },
-    {
-     "pt": "Agora é com você. Mostre a sua família: meu, seu, pais, mãe e irmã. E lembre: a palavra que parece parentes quer dizer pai e mãe."
+
+    "familia-e-posse.cena-fotos-da-familia": {
+      "titulo": "Fotos da família no almoço: de quem é?",
+      "falas": [
+        {"secao": "A cena", "pt": "Hora do almoço em Chicago. Você, o Mike e mais dois colegas sentam num café perto do escritório, pedem uma pizza, e logo o celular aparece em cima da mesa."},
+        {"img": "foto", "pt": "É aquela cena clássica: xícaras de café, pizza esfriando, e todo mundo debruçado sobre a tela, apontando, rindo, perguntando quem é quem."},
+        {"pt": "Esta lição junta tudo da trilha: meu, seu, dele, dela, deles e a etiqueta do dono. Então, em cada frase, fique de olho em quem é o dono de cada coisa."},
+
+        {"secao": "A família do Mike", "img": "👰📸", "pt": "O Mike começa. Ele mostra uma moça vestida de noiva, no casamento do irmão dele. Em vez de procurar uma palavra para cunhada, ele diz assim:"},
+        {"en": "This is my brother's wife.", "tr": "Essa é a esposa do meu irmão."},
+        {"pt": "Olha a etiqueta num dono de duas palavras: meu irmão. Primeiro o dono inteiro, depois a etiqueta, depois a coisa.", "quadro": "my brother's wife = a esposa do meu irmão"},
+        {"pt": "Você quer saber o nome dela. A dona do nome é a cunhada, uma mulher, então entra a palavra dela:"},
+        {"en": "What's her name?", "tr": "Qual é o nome dela?", "img": "📛❓"},
+        {"pt": "Repare que o nome é dela, e não do irmão do Mike. Quem tem o nome é a moça da foto. A pergunta de quem é resolve tudo."},
+        {"img": "🏡✨", "pt": "Depois ele mostra a casa nova do casal. Dois donos: o irmão e a esposa. Homem e mulher juntos? Então é deles:"},
+        {"en": "Their house is big and new.", "tr": "A casa deles é grande e nova."},
+        {"pt": "Repare nos dois adjetivos ligados pelo e. Vêm depois do verbo, na mesma ordem do português, e nunca vão para o plural.", "quadro": "big and new = grande e nova"},
+        {"pt": "E olha que curioso: em português, a casa é nova, no feminino. Em inglês, o adjetivo não tem feminino nem masculino. É sempre a mesma palavra."},
+
+        {"secao": "O filho e a irmã", "img": "👦🎂", "pt": "Você lembra que o Mike tem um filho, aquele menino da chamada de vídeo, e quer saber a idade dele. Você está falando com o pai do menino:"},
+        {"en": "How old is your son?", "tr": "Quantos anos tem o seu filho?"},
+        {"pt": "Idade com o verbo ser e estar, como sempre. E aqui é o seu, a palavra de você, porque você está falando com o próprio Mike.", "quadro": "How old is...? = Quantos anos tem...?"},
+        {"img": "👩📱", "pt": "Aí o Mike pega o seu celular. Aparece uma moça sorrindo, numa foto tirada de longe. Ele aponta:"},
+        {"en": "Is that your sister?", "tr": "Essa é a sua irmã?"},
+        {"pt": "Lembra da carteira do Mike? Ele usou o aquela, e não o esta, porque a moça está longe, lá na foto, e ele está apontando.", "quadro": "this = esta (perto) · that = aquela (longe)"},
+        {"pt": "E você responde, já apresentando:"},
+        {"en": "Yes. Her name is Julia.", "tr": "Sim. O nome dela é Julia.", "img": "👩📛✅"},
+        {"pt": "De novo a palavra dela, porque o nome é da Julia. E repare que você respondeu em duas frases curtas: sim, ponto, e depois o nome. Natural e direto."},
+
+        {"secao": "O cachorro de quem?", "img": "🐕❓", "pt": "Na foto seguinte aparece um cachorro enorme, deitado no sofá. O Mike acha que ele é da sua irmã e pergunta:"},
+        {"en": "Is this your sister's dog?", "tr": "Esse é o cachorro da sua irmã?"},
+        {"pt": "Olha a etiqueta de novo, agora pendurada na sua irmã. E a palavra de você vem antes, sem artigo nenhum.", "quadro": "your sister's dog = o cachorro da sua irmã"},
+        {"pt": "Mas o cachorro não é da Julia. Você corrige: ele é do seu irmão."},
+        {"en": "No, it's my brother's dog.", "tr": "Não, é o cachorro do meu irmão.", "img": "🐕👨"},
+        {"pt": "Repare no começo da resposta: é a contração das coisas, com apóstrofo, que quer dizer é. Lembra da lição passada? Com apóstrofo, é o verbo; sem apóstrofo, é o dono.", "quadro": "it's = it is"},
+
+        {"secao": "A regra da trilha inteira", "pt": "Vamos juntar tudo num quadro só. Cada pessoa tem a sua palavra de dono, e nenhuma delas muda com a coisa.", "quadro": "my · your · his · her · our · their"},
+        {"pt": "Eu, meu. Você, seu. Ele, dele. Ela, dela. Nós, nosso. Eles, deles. Seis palavras, uma para cada pessoa."},
+        {"pt": "E quando o dono tem nome, ou é uma pessoa da família, use a etiqueta: o dono, o apóstrofo com a letra esse, e depois a coisa.", "quadro": "nome + 's: Julia's dog · my brother's car"},
+        {"pt": "Truque de memória da trilha: em inglês, o dono sempre fura a fila. Seja com uma palavrinha, seja com a etiqueta, ele entra na frente da coisa."},
+
+        {"secao": "A melodia das perguntas", "pt": "Um detalhe de pronúncia nesta revisão. Nas perguntas de sim ou não, a voz costuma subir no final. Ouça a pergunta do Mike:"},
+        {"en": "Is that your sister?", "tr": "Essa é a sua irmã?"},
+        {"pt": "Já nas perguntas que começam com palavra de pergunta, como quantos anos ou qual, a voz costuma descer no final. Compare:"},
+        {"en": "How old is your son?", "tr": "Quantos anos tem o seu filho?"},
+
+        {"secao": "Curiosidade", "pt": "Curiosidade da família. O inglês tem uma palavra própria para cunhada, e ela é curiosa: é irmã, mais uma expressão que quer dizer pela lei.", "quadro": "sister-in-law = cunhada · brother-in-law = cunhado"},
+        {"pt": "A mesma ideia vale para a sogra, a mãe pela lei, e para o sogro, o pai pela lei. É a família que chega pelo casamento.", "quadro": "mother-in-law = sogra · father-in-law = sogro", "img": "💍👨‍👩‍👧"},
+        {"pt": "Mas, como o Mike mostrou, dizer a esposa do meu irmão também é perfeitamente natural. Para começar, a etiqueta resolve."},
+
+        {"secao": "Erros comuns", "pt": "Os três erros que mais aparecem nesta trilha. Primeiro, o dono errado: marido dela virando marido dele, só porque marido é homem.", "quadro": "her husband · his wife"},
+        {"pt": "Segundo, artigo antes do nome, ou a construção com a palavra de. É o nome com a etiqueta, e pronto.", "quadro": "Julia's dog (não: the dog of Julia)"},
+        {"pt": "Terceiro, idade com o verbo ter. Em inglês, a pessoa é tantos anos, com o verbo ser e estar."},
+
+        {"secao": "Desafio", "pt": "Hora do desafio. Você mostra uma foto do casamento da Julia. Como você diz: esse é o marido da minha irmã?", "pausa": 5},
+        {"en": "This is my sister's husband.", "tr": "Esse é o marido da minha irmã."},
+        {"pt": "Mais uma. O Mike pergunta o nome do seu irmão. Como você responde: o nome dele é Lucas?", "pausa": 4},
+        {"en": "His name is Lucas.", "tr": "O nome dele é Lucas."},
+        {"pt": "E a última. O Mike mostra a casa dos pais dele. Como você pergunta: essa é a casa deles?", "pausa": 4},
+        {"en": "Is this their house?", "tr": "Essa é a casa deles?"},
+
+        {"secao": "Recapitulando", "pt": "Recapitulando a trilha. Antes de cada coisa, pergunte de quem é. A resposta escolhe a palavra: meu, seu, dele, dela, nosso, deles, ou o nome com a etiqueta."},
+        {"pt": "Sem artigo antes do nome, idade com o verbo ser, e o dono sempre na frente da coisa."},
+        {"pt": "Fim da trilha da família! Troque as fotos com o Mike digitando cada frase, de olho no dono de cada coisa. E bom almoço, antes que a pizza esfrie!"}
+      ]
     }
-   ]
-  },
-  "familia-e-posse.dele-e-dela-his-e-her": {
-   "titulo": "His ou her? Quem manda é o dono",
-   "falas": [
-    {
-     "pt": "Chamada de vídeo com o Mike e a Sarah. Cada um mostra uma foto da família. O Mike começa:"
-    },
-    {
-     "en": "This is my wife.",
-     "tr": "Essa é a minha esposa."
-    },
-    {
-     "pt": "Você quer saber o nome do filho do Mike. Em português você diria qual é o nome dele. Em inglês, dele é uma palavra só, de três letras.",
-     "quadro": "his = dele"
-    },
-    {
-     "en": "What's his name?",
-     "tr": "Qual é o nome dele?"
-    },
-    {
-     "pt": "Depois a Sarah mostra o marido. Quando a chamada acaba, você conta tudo para a Ana. E aqui mora a regra de ouro: quem decide entre dele e dela é o dono, nunca a coisa."
-    },
-    {
-     "en": "Sarah and her husband are from Austin.",
-     "tr": "A Sarah e o marido dela são de Austin."
-    },
-    {
-     "pt": "O marido é homem, mas quem tem o marido é a Sarah. Então é o marido dela, nunca dele.",
-     "quadro": "her husband = o marido dela"
-    },
-    {
-     "pt": "Truque de memória: traduza sempre como dele ou dela, nunca como seu ou sua. O seu do português esconde o dono. O dele e o dela mostram quem é."
-    },
-    {
-     "pt": "E o Mike, na foto? Ele está com o filho. Quem tem o filho é o Mike, homem, então é dele:"
-    },
-    {
-     "en": "He's with his son.",
-     "tr": "Ele está com o filho dele."
-    },
-    {
-     "pt": "E se a Ana quer saber a idade da filha da Sarah? Lembra da trilha das perguntas: idade é com o verbo ser e estar, nunca com ter."
-    },
-    {
-     "en": "How old is her daughter?",
-     "tr": "Quantos anos tem a filha dela?"
-    },
-    {
-     "pt": "Agora é com você. Antes de digitar cada frase, pergunte: quem é o dono? Homem, dele. Mulher, dela."
-    }
-   ]
-  },
-  "familia-e-posse.o-carro-do-meu-irmao-s": {
-   "titulo": "O carro do meu irmão: o dono vem primeiro",
-   "falas": [
-    {
-     "pt": "Chamada com a Ana. Você mostra a foto do carro novo do seu irmão, todo orgulhoso."
-    },
-    {
-     "en": "My brother's car is new.",
-     "tr": "O carro do meu irmão é novo."
-    },
-    {
-     "pt": "Olha a ordem: em português é o carro do meu irmão. Em inglês, o dono vem primeiro, com um apóstrofo e a letra esse grudados nele, e só depois vem a coisa.",
-     "quadro": "my brother's car = o carro do meu irmão"
-    },
-    {
-     "pt": "Truque de memória: pense no apóstrofo com a letra esse como uma etiqueta de nome, pendurada no dono. Primeiro você lê a etiqueta, depois vê a coisa."
-    },
-    {
-     "pt": "A Ana pergunta se o carro é grande. Repare que a palavrinha que segura o lugar da coisa não pode sumir da pergunta.",
-     "quadro": "Is it big? (não: Is big?)"
-    },
-    {
-     "en": "Nice! Is it big?",
-     "tr": "Que legal! É grande?"
-    },
-    {
-     "pt": "Depois você mostra a casa da sua irmã, a Julia. Agora o dono é um nome de pessoa, e aqui vem o erro clássico de brasileiro: colocar artigo antes do nome."
-    },
-    {
-     "en": "And this is Julia's house.",
-     "tr": "E essa é a casa da Julia."
-    },
-    {
-     "pt": "Em português a gente diz a casa da Julia, com artigo. Em inglês, nada de artigo antes do nome. É só o nome com a etiqueta, e depois a casa.",
-     "quadro": "Julia's house (não: the Julia's house)"
-    },
-    {
-     "en": "Wow, your sister's house is big!",
-     "tr": "Nossa, a casa da sua irmã é grande!"
-    },
-    {
-     "pt": "Uma dica de teclado: o apóstrofo é aquela tecla à esquerda do número um. Sem ele, a etiqueta cai e a frase perde o dono."
-    },
-    {
-     "pt": "Agora é com você. Dono primeiro, etiqueta com apóstrofo, e depois a coisa. Digite cada frase e capriche no apóstrofo!"
-    }
-   ]
-  },
-  "familia-e-posse.nosso-e-deles-achados-no-escritorio": {
-   "titulo": "Essa carteira é sua? Achados no escritório",
-   "falas": [
-    {
-     "pt": "Fim do dia no escritório de Chicago. Tem coisa esquecida em todas as mesas, e o Mike está desesperado:"
-    },
-    {
-     "en": "Where's my wallet?",
-     "tr": "Cadê a minha carteira?"
-    },
-    {
-     "pt": "Essa palavra é a carteira de dinheiro, aquela do bolso. Você acha uma em cima da mesa e pergunta se é dele. Repare na ordem da pergunta:"
-    },
-    {
-     "en": "Is this your wallet?",
-     "tr": "Essa carteira é sua?"
-    },
-    {
-     "pt": "Em português a gente diz essa carteira é sua. Em inglês, fica assim: é esta a sua carteira? O sua vem colado antes da coisa, e o verbo pula para o começo.",
-     "quadro": "Is this your...? = Esse... é seu?"
-    },
-    {
-     "pt": "Aí chegam dois devs novos, e você quer saber os nomes deles. A palavra deles serve igual para homens e para mulheres."
-    },
-    {
-     "en": "What are their names?",
-     "tr": "Quais são os nomes deles?"
-    },
-    {
-     "pt": "E o Mike, todo orgulhoso, mostra a foto da turma. Nosso e nossa, em inglês, é uma palavra só, que não muda.",
-     "quadro": "our = nosso, nossa · their = deles, delas"
-    },
-    {
-     "en": "This is our team.",
-     "tr": "Esse é o nosso time."
-    },
-    {
-     "pt": "Agora o erro típico. Em português, o seu e o sua às vezes querem dizer dele, dela ou deles. Em inglês não: se as chaves são dos devs novos, a palavra é deles, e não a de você.",
-     "quadro": "their keys = as chaves deles"
-    },
-    {
-     "pt": "Truque de memória: a palavra deles soa igualzinho à palavra lá, que você viu nas cinquenta mais usadas. Só a escrita muda. Pense assim: as coisas deles estão lá, longe de você.",
-     "quadro": "their = deles · there = lá · mesmo som, escrita diferente"
-    },
-    {
-     "en": "Their keys are here, too.",
-     "tr": "As chaves deles também estão aqui."
-    },
-    {
-     "pt": "Agora é com você. Nosso, deles e a pergunta é seu: digite as frases e devolva cada coisa ao dono certo."
-    }
-   ]
-  },
-  "familia-e-posse.cena-fotos-da-familia": {
-   "titulo": "Troca de fotos da família no almoço",
-   "falas": [
-    {
-     "pt": "Almoço em Chicago. Você e o Mike pegam o celular e trocam fotos da família. Essa aula junta tudo: meu, seu, dele, dela, deles e a etiqueta do dono."
-    },
-    {
-     "pt": "O Mike começa com uma foto da cunhada dele. Em vez de procurar a palavra cunhada, ele diz a esposa do meu irmão, e o irmão é o dono:"
-    },
-    {
-     "en": "This is my brother's wife.",
-     "tr": "Essa é a esposa do meu irmão."
-    },
-    {
-     "pt": "Repare que a etiqueta com apóstrofo vai até num dono de duas palavras, meu irmão. Primeiro o dono, depois a coisa.",
-     "quadro": "my brother's wife = a esposa do meu irmão"
-    },
-    {
-     "pt": "Você quer saber o nome dela. A dona do nome é mulher, então entra a palavra dela."
-    },
-    {
-     "en": "What's her name?",
-     "tr": "Qual é o nome dela?"
-    },
-    {
-     "pt": "Depois ele mostra a casa do irmão e da cunhada. Dois donos, homem e mulher juntos? Então é deles."
-    },
-    {
-     "en": "Their house is big and new.",
-     "tr": "A casa deles é grande e nova."
-    },
-    {
-     "pt": "Na sua vez, o Mike vê um cachorro na foto e pergunta se é da sua irmã. Você corrige: é do seu irmão."
-    },
-    {
-     "en": "No, it's my brother's dog.",
-     "tr": "Não, é o cachorro do meu irmão."
-    },
-    {
-     "pt": "Truque de memória da trilha inteira: pergunte sempre de quem é. A resposta escolhe a palavra. Homem, dele. Mulher, dela. Mais de um, deles.",
-     "quadro": "his · her · their · nome + 's"
-    },
-    {
-     "pt": "E nada de traduzir o cachorro da Julia palavra por palavra. Em inglês, vem a Julia com a etiqueta, e depois o cachorro.",
-     "quadro": "Julia's dog (não: the dog of Julia)"
-    },
-    {
-     "pt": "Agora é com você. Troque as fotos com o Mike digitando cada frase, e capriche no dono certo de cada coisa."
-    }
-   ]
   }
- }
 }

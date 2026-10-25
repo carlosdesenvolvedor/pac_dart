@@ -6,6 +6,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 import 'escolha_voz.dart';
+import 'site_do_app.dart';
 import 'voz_ingles.dart' show ordemVozesEnUs;
 
 /// Fala em inglês no Android e no iOS: o mp3 da frase quando houver (voz do
@@ -274,13 +275,24 @@ Future<bool> tocar(String asset, double velocidade) {
   return _tocarFonte(AssetSource(chave), velocidade);
 }
 
+/// Como [tocar], mas um mp3 do SITE ([url] inteira — [urlDoSite]), fora do pacote do app (🎓 a voz das aulas):
+/// precisa de internet; sem ela, false e a voz do sistema assume.
+Future<bool> tocarUrl(String url, double velocidade) =>
+    _tocarFonte(UrlSource(url), velocidade, limite: const Duration(seconds: 90));
+
+/// O endereço de [caminho] (`aula_voz/x.mp3`) no site publicado.
+String urlDoSite(String caminho) => '$siteDoApp$caminho';
+
+/// No aparelho, nada (o player baixa na hora de tocar).
+void preaquecerUrl(String url) {}
+
 /// Toca o áudio que o ALUNO anexou ([bytes], no formato dele — [mime]). Mesmo
 /// contrato do [tocar]: false = não tocou (formato que este aparelho não decodifica…)
 /// e a voz padrão assume.
 Future<bool> tocarBytes(Uint8List bytes, String mime, double velocidade) =>
     _tocarFonte(BytesSource(bytes, mimeType: mime), velocidade);
 
-Future<bool> _tocarFonte(Source fonte, double velocidade) async {
+Future<bool> _tocarFonte(Source fonte, double velocidade, {Duration limite = const Duration(seconds: 30)}) async {
   if (!suportado) return false;
   final g = ++_geracao;
   final fim = _novaVez();
@@ -301,8 +313,8 @@ Future<bool> _tocarFonte(Source fonte, double velocidade) async {
     try {
       await p.play(fonte);
       if (g != _geracao) return true;
-      // rede de segurança: gravação nenhuma passa de 30 s
-      await Future.any([acabou.future, fim.future, Future<void>.delayed(const Duration(seconds: 30))]);
+      // rede de segurança: gravação nenhuma passa de 30 s (fala de aula, 90)
+      await Future.any([acabou.future, fim.future, Future<void>.delayed(limite)]);
     } finally {
       await sub.cancel();
     }
