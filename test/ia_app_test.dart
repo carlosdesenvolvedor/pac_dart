@@ -33,6 +33,7 @@ import 'package:pac_dart/features/ingles/presentation/widgets/frase_view.dart';
 import 'package:pac_dart/features/ranking/data/ranking_repository.dart';
 import 'package:pac_dart/features/ranking/domain/jogador_ranking.dart';
 import 'package:pac_dart/main.dart';
+import 'package:pac_dart/features/ingles/presentation/fixacao.dart' show RevisaoLeve;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'ia_cubit_test.dart' show TutorFalso;
@@ -173,6 +174,10 @@ void testWidgetsDesktop(String d, WidgetTesterCallback c) =>
 IaCubit _ia(WidgetTester tester) => tester.element(find.byType(HomePage, skipOffstage: false)).read<IaCubit>();
 
 void main() {
+  // estes testes cobrem a revisão 100% de memória (o caminho das provas); a revisão leve tem os dela
+  // (test/ingles_revisao_leve_test.dart)
+  setUpAll(() => RevisaoLeve.ligada = false);
+  tearDownAll(() => RevisaoLeve.ligada = true);
   TestWidgetsFlutterBinding.ensureInitialized();
   Mixart.usarGoogleFonts = false;
   setUp(() => FraseView.carencia = Duration.zero);

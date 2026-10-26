@@ -334,7 +334,7 @@ class _RevisaoMistaPageState extends State<RevisaoMistaPage> with WidgetsBinding
         const SizedBox(height: 12),
         Column(key: _zona, crossAxisAlignment: CrossAxisAlignment.start, children: [
           if (escutar && !_aguardando)
-            _CartaoEscutar(onOuvir: () => _ouvir(lenta: false), onDevagar: () => _ouvir(lenta: true))
+            CartaoEscutar(onOuvir: () => _ouvir(lenta: false), onDevagar: () => _ouvir(lenta: true))
           else
             TraducaoCard(
               key: ValueKey('trad-$_versao'),
@@ -474,9 +474,9 @@ class _RevisaoMistaPageState extends State<RevisaoMistaPage> with WidgetsBinding
 }
 
 /// 👂 O cartão do escutar: nada escrito (nem o português) — só o 🔊 grande e o 🐢.
-class _CartaoEscutar extends StatelessWidget {
+class CartaoEscutar extends StatelessWidget {
   final VoidCallback onOuvir, onDevagar;
-  const _CartaoEscutar({required this.onOuvir, required this.onDevagar});
+  const CartaoEscutar({super.key, required this.onOuvir, required this.onDevagar});
 
   @override
   Widget build(BuildContext context) => Container(

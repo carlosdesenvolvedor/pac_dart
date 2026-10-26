@@ -37,6 +37,7 @@ import 'package:pac_dart/features/treino_dia/domain/plano_treino.dart';
 import 'package:pac_dart/features/treino_dia/presentation/treino_dia_acoes.dart';
 import 'package:pac_dart/features/treino_dia/presentation/treino_dia_cubit.dart';
 import 'package:pac_dart/features/treino_dia/presentation/treino_dia_page.dart';
+import 'package:pac_dart/features/ingles/presentation/fixacao.dart' show RevisaoLeve;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'ingles_baralhos_test.dart' show RepoMemoria;
@@ -222,6 +223,10 @@ String _botao(WidgetTester tester) => tester
     .data!;
 
 void main() {
+  // estes testes cobrem a revisão 100% de memória (o caminho das provas); a revisão leve tem os dela
+  // (test/ingles_revisao_leve_test.dart)
+  setUpAll(() => RevisaoLeve.ligada = false);
+  tearDownAll(() => RevisaoLeve.ligada = true);
   TestWidgetsFlutterBinding.ensureInitialized();
   Mixart.usarGoogleFonts = false;
   tearDown(() => Linguagem.atual = Linguagem.dart);

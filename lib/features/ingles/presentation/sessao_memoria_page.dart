@@ -11,6 +11,7 @@ import '../data/voz_ingles.dart';
 import '../domain/alternativas.dart';
 import '../domain/avaliacao.dart';
 import '../domain/revisao.dart';
+import '../domain/revisao_leve.dart';
 import '../domain/roteiro.dart';
 import '../domain/entrada_resposta.dart' show EntradaResposta;
 import '../domain/erros_palavra.dart' show EvidenciaPalavra, FonteErro, evidenciasDaFrase;
@@ -18,6 +19,7 @@ import '../domain/teimosas.dart' show LocalSugestao, SugestaoTeimosas;
 import '../../../core/som/sons.dart';
 import 'acoes_teimosas.dart';
 import 'palavras_cubit.dart';
+import 'revisao_mista_page.dart' show CartaoEscutar;
 import 'widgets/cartao_teimosas.dart';
 import 'widgets/audio_da_frase.dart';
 import 'widgets/cena_visual.dart';
@@ -48,6 +50,11 @@ class ResultadoFrase {
 /// lição. Só a 1ª tentativa de cada frase vale nota; a que sai errada
 /// recebe a cópia corrigida na hora e volta na mesma sessão — primeiro no
 /// esqueleto, depois de memória — até sair (reaprendizagem sucessiva).
+///
+/// 🌱 Com [ajudaDe] é a REVISÃO LEVE ([AjudaRevisao]): cada frase vem com a ajuda que a memória dela pede (a
+/// fraca reaparece escrita e falada e depois volta em blocos; a média vem com blocos, iniciais ou só o áudio; a
+/// forte, com os tracinhos ou de memória), e a errada volta um degrau MAIS FÁCIL. Sem ele (provas, nivelamento),
+/// tudo de memória como sempre.
 class SessaoMemoriaPage extends StatefulWidget {
   final String titulo, subtitulo, emoji;
   final List<Trecho> itens;
@@ -77,6 +84,9 @@ class SessaoMemoriaPage extends StatefulWidget {
   /// informar, e a evidência é gravada; a cota de ofertas do dia não é gasta).
   final bool semOferta;
 
+  /// 🌱 A ajuda de cada frase (revisão leve); null = tudo de memória.
+  final AjudaRevisao Function(Trecho trecho)? ajudaDe;
+
   const SessaoMemoriaPage({
     super.key,
     required this.titulo,
@@ -91,19 +101,29 @@ class SessaoMemoriaPage extends StatefulWidget {
     this.resumoExtra,
     this.voz,
     this.semOferta = false,
+    this.ajudaDe,
   });
 
   @override
   State<SessaoMemoriaPage> createState() => _SessaoMemoriaPageState();
 }
 
-/// Um item da fila: a frase, o modo e se é a tentativa que vale nota.
+/// Um item da fila: a frase, o modo e se é a tentativa que vale nota (e, na revisão leve, a ajuda).
 class _Item {
   final Trecho trecho;
   final ModoFrase modo;
   final bool vale;
   final bool correcao;
-  const _Item(this.trecho, this.modo, {this.vale = false, this.correcao = false});
+  final AjudaRevisao? ajuda;
+  const _Item(this.trecho, this.modo, {this.vale = false, this.correcao = false}) : ajuda = null;
+
+  _Item.leve(this.trecho, AjudaRevisao a, {this.vale = false})
+      : modo = a.modo,
+        correcao = false,
+        ajuda = a;
+
+  /// O reencontro (copiar a frase à vista): não gera nota.
+  bool get reencontro => ajuda == AjudaRevisao.reencontro;
 }
 
 class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindingObserver, VigiaDoTeclado {
@@ -116,7 +136,17 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
   final _zona = GlobalKey();
   late final VozIngles _voz = widget.voz ?? VozIngles();
 
-  late final List<_Item> _fila = [for (final t in widget.itens) _Item(t, ModoFrase.memoria, vale: true)];
+  late final List<_Item> _fila = _montarFila();
+
+  List<_Item> _montarFila() {
+    final ajudaDe = widget.ajudaDe;
+    if (ajudaDe == null) return [for (final t in widget.itens) _Item(t, ModoFrase.memoria, vale: true)];
+    final plano = planoDaSessao(widget.itens.length, (i) => ajudaDe(widget.itens[i]));
+    return [for (final p in plano) _Item.leve(widget.itens[p.indice], p.ajuda, vale: p.vale)];
+  }
+
+  /// Os blocos de enfeite do 🧩: palavras das outras frases da sessão.
+  late final List<String> _outras = [for (final t in widget.itens) t.cod];
   final List<ResultadoFrase> _resultados = [];
   final Map<String, int> _voltas = {};
   int _i = 0;
@@ -185,6 +215,8 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
     _erradas = const {};
     _aguardando = false;
     _evPasso = null;
+    // 🌱 o reencontro e o ouvir começam pela voz (no reencontro a frase está à vista: ouvir não é dica)
+    if (_item.reencontro || (_item.ajuda?.soAudio ?? false)) _voz.falar(_item.trecho.cod);
   }
 
   /// 🔥 As evidências desta frase de memória (null sem o cubit, sem o índice ou no nivelamento).
@@ -237,15 +269,26 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
         errosPorPosicao: somarErros(st.errosPorPosicao, fv?.errosDeFala),
         reveladas: fv?.reveladas ?? const {},
         desistiu: fv?.desistiu ?? false,
-        dicasExtras: _ouviuAntes,
+        // no 👂 ouvir, ouvir É o exercício
+        dicasExtras: (item.ajuda?.soAudio ?? false) ? 0 : _ouviuAntes,
       );
-      if (item.vale) _aRegistrar = ResultadoFrase(item.trecho, d.resultado);
-      if (d.resultado == ResultadoRevisao.acertou) Sons.toca(Som.gol); // âncora de acerto
+      final a = item.ajuda;
+      var res = d.resultado;
+      // 🌱 revisão leve: se o único "erro" foi a palavra pedida no 💡, é tropeço (a ajuda não é castigo)
+      if (a != null && res == ResultadoRevisao.errou && !d.desistiu && (fv?.reveladas.isNotEmpty ?? false)) {
+        final semAjuda = avaliarDigitacao(st.chars.join(),
+            errosPorPosicao: somarErros(st.errosPorPosicao, fv?.errosDeFala));
+        if (semAjuda.resultado != ResultadoRevisao.errou) res = ResultadoRevisao.hesitou;
+      }
+      final nota = a == null ? res : notaComAjuda(res, a);
+      if (item.vale && nota != null) _aRegistrar = ResultadoFrase(item.trecho, nota);
+      if (res == ResultadoRevisao.acertou) Sons.toca(Som.gol); // âncora de acerto
       _desistiuAgora = d.desistiu;
       _evPasso = _evidenciasDe(st, fv);
-      _evPassoSemCredito = _ouviuAntes > 0 || item.modo != ModoFrase.memoria;
+      _evPassoSemCredito =
+          _ouviuAntes > 0 || item.modo != ModoFrase.memoria || (a != null && a != AjudaRevisao.memoria);
       setState(() {
-        _ultimo = d.resultado;
+        _ultimo = res;
         _erradas = d.palavrasErradas;
         _aguardando = true;
       });
@@ -263,6 +306,13 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
     _voltas[k] = voltas + 1;
     var pos = _i + 1;
     if (!desistiu) _fila.insert(pos++, _Item(item.trecho, ModoFrase.ver, correcao: true));
+    final a = item.ajuda;
+    if (a != null) {
+      // 🌱 revisão leve: volta UM degrau mais fácil, daqui a pouco (nunca mais difícil)
+      final facil = a.maisFacil == AjudaRevisao.reencontro ? AjudaRevisao.montar : a.maisFacil;
+      _fila.insert((pos + 3).clamp(pos, _fila.length), _Item.leve(item.trecho, facil));
+      return;
+    }
     final esqueleto = (pos + 4).clamp(pos, _fila.length);
     _fila.insert(esqueleto, _Item(item.trecho, ModoFrase.esqueleto));
     _fila.add(_Item(item.trecho, ModoFrase.memoria));
@@ -327,7 +377,7 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
   /// Ouvir antes de terminar uma digitação de memória conta como dica.
   void _ouvir({required bool lenta}) {
     if (_fim) return;
-    if (_item.modo.deMemoria && !_aguardando) _ouviuAntes++;
+    if (_item.modo.deMemoria && !_aguardando && !(_item.ajuda?.soAudio ?? false)) _ouviuAntes++;
     _voz.falar(_item.trecho.cod, lenta: lenta);
   }
 
@@ -376,13 +426,24 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
   Widget _sessao() {
     final item = _item;
     final palavras = palavrasDe(item.trecho.cod).length;
+    final a = item.ajuda;
+    final licaoDaFrase = widget.cenaDe?.call(item.trecho);
     final aviso = item.correcao
         ? '🔁 Corrija copiando a frase certa'
-        : switch (item.modo) {
-            ModoFrase.esqueleto => '▁ Essa voltou: só o tamanho das palavras',
-            ModoFrase.memoria when !item.vale => '🧠 …e agora de memória de novo · $palavras palavras',
-            _ => '🧠 Digite em inglês, de memória · $palavras palavras',
-          };
+        : a != null
+            ? switch (a) {
+                AjudaRevisao.reencontro => licaoDaFrase == null
+                    ? '👀 Lembra dessa? Ouça e copie'
+                    : '👀 Lembra dessa? Da lição “${licaoDaFrase.nome}” · ouça e copie',
+                _ when !item.vale => '🔁 Essa voltou, mais fácil · ${a.emoji} ${a.instrucao}',
+                _ => '${a.emoji} ${a.instrucao} · $palavras palavras',
+              }
+            : switch (item.modo) {
+                ModoFrase.esqueleto => '▁ Essa voltou: só o tamanho das palavras',
+                ModoFrase.memoria when !item.vale => '🧠 …e agora de memória de novo · $palavras palavras',
+                _ => '🧠 Digite em inglês, de memória · $palavras palavras',
+              };
+    final soAudio = a?.soAudio ?? false;
     return BlocListener<TypingBloc, TypingState>(
       listenWhen: (a, b) => !a.concluido && b.concluido,
       listener: (_, st) => _concluiu(st),
@@ -404,25 +465,32 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
           const SizedBox(height: 10),
         ],
         Column(key: _zona, crossAxisAlignment: CrossAxisAlignment.start, children: [
-          TraducaoCard(
-            acaoAudio: BotaoAudioDaFrase(frase: item.trecho.cod, voz: _voz, redondo: true),
-            rosto: item.trecho.quem.isEmpty
-                ? null
-                : (tamanho) => PersonagemFalante(
-                    key: ValueKey('rosto-${item.trecho.quem}'),
-                    quem: item.trecho.quem,
-                    frase: item.trecho.cod,
-                    tamanho: tamanho,
-                  ),
-            trecho: item.trecho,
-            modo: item.modo,
-            mostrarNota: item.correcao,
-            onOuvir: () => _ouvir(lenta: false),
-            onOuvirDevagar: () => _ouvir(lenta: true),
-            onDica: item.modo.deMemoria ? () => _frase.currentState?.revelarPalavra() : null,
-            onNaoSei: item.modo.deMemoria ? () => _frase.currentState?.naoSei() : null,
-            compacto: tecladoAberto,
-          ),
+          // 👂 ouvir: sem o português nem o inglês — só a voz (o português aparece no fim)
+          if (soAudio && !_aguardando)
+            CartaoEscutar(
+                key: const Key('revisao-leve-ouvir'),
+                onOuvir: () => _ouvir(lenta: false),
+                onDevagar: () => _ouvir(lenta: true))
+          else
+            TraducaoCard(
+              acaoAudio: BotaoAudioDaFrase(frase: item.trecho.cod, voz: _voz, redondo: true),
+              rosto: item.trecho.quem.isEmpty
+                  ? null
+                  : (tamanho) => PersonagemFalante(
+                      key: ValueKey('rosto-${item.trecho.quem}'),
+                      quem: item.trecho.quem,
+                      frase: item.trecho.cod,
+                      tamanho: tamanho,
+                    ),
+              trecho: item.trecho,
+              modo: item.modo,
+              mostrarNota: item.correcao,
+              onOuvir: () => _ouvir(lenta: false),
+              onOuvirDevagar: () => _ouvir(lenta: true),
+              onDica: item.modo.deMemoria ? () => _frase.currentState?.revelarPalavra() : null,
+              onNaoSei: item.modo.deMemoria ? () => _frase.currentState?.naoSei() : null,
+              compacto: tecladoAberto,
+            ),
           const SizedBox(height: 14),
           FraseView(
             key: _frase,
@@ -439,15 +507,32 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
             alternativas: item.modo == ModoFrase.memoria
                 ? alternativasDe(item.trecho.cod, declaradas: item.trecho.alternativas)
                 : const [],
+            entrada: a?.entrada ?? EntradaResposta.digitar,
+            apoioMontagem: [for (final c in _outras) if (c != item.trecho.cod) c],
             onMicrofone: (ouvindo) {
               if (ouvindo) _voz.calarTudo();
             },
           ),
+          // 🌱 a ajuda à vista, com nome (usar conta como tropeço, não como erro)
+          if (a != null && !_aguardando && !item.correcao && item.modo.deMemoria && a != AjudaRevisao.montar) ...[
+            const SizedBox(height: 10),
+            Wrap(alignment: WrapAlignment.center, spacing: 8, runSpacing: 8, children: [
+              _ChipAjuda(
+                  key: const Key('revisao-leve-palavra'),
+                  '💡 Mostrar uma palavra',
+                  () => _frase.currentState?.revelarPalavra()),
+              _ChipAjuda(
+                  key: const Key('revisao-leve-ver'),
+                  '👀 Não lembro: ver a frase',
+                  () => _frase.currentState?.naoSei()),
+            ]),
+          ],
           const SizedBox(height: 12),
           ConstrainedBox(
             constraints: const BoxConstraints(minHeight: 28),
             child: _aguardando
                 ? _Selo(_ultimo,
+                    ajuda: item.correcao ? null : a,
                     onSeguir: _avancar,
                     onContestar:
                         _contestou || _ultimo == null || _ultimo == ResultadoRevisao.acertou ? null : _contestar)
@@ -554,16 +639,20 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
 }
 
 class _Selo extends StatelessWidget {
-  /// null = cópia (de correção): não gera nota.
+  /// null = cópia (de correção ou o reencontro): não gera nota.
   final ResultadoRevisao? r;
+  final AjudaRevisao? ajuda;
   final VoidCallback onSeguir;
   final VoidCallback? onContestar;
-  const _Selo(this.r, {required this.onSeguir, this.onContestar});
+  const _Selo(this.r, {this.ajuda, required this.onSeguir, this.onContestar});
 
   @override
   Widget build(BuildContext context) {
+    final comAjuda = ajuda != null && ajuda != AjudaRevisao.memoria;
     final (texto, cor) = switch (r) {
+      null when ajuda == AjudaRevisao.reencontro => ('✓ Copiada! Daqui a pouco ela volta para você montar', Mixart.brand),
       null => ('✓ Copiada', Mixart.textMuted),
+      ResultadoRevisao.acertou when comAjuda => ('✅ Acertou!', Mixart.brand),
       ResultadoRevisao.acertou => ('✅ De memória, sem erro!', Mixart.brand),
       ResultadoRevisao.hesitou => ('🟡 Quase — as palavras em vermelho tropeçaram', Mixart.textMuted),
       ResultadoRevisao.errou => ('🔁 Essa volta daqui a pouco', Mixart.danger),
@@ -583,6 +672,24 @@ class _Selo extends StatelessWidget {
       ]),
     );
   }
+}
+
+/// 🌱 Um botão de ajuda com nome (no lugar do ícone escondido).
+class _ChipAjuda extends StatelessWidget {
+  final String texto;
+  final VoidCallback onTap;
+  const _ChipAjuda(this.texto, this.onTap, {super.key});
+
+  @override
+  Widget build(BuildContext context) => OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          side: BorderSide(color: Mixart.border),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+        ),
+        onPressed: onTap,
+        child: Text(texto, style: Mixart.ui(size: 12.5, weight: FontWeight.w700, color: Mixart.textMuted)),
+      );
 }
 
 class _Placar extends StatelessWidget {

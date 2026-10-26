@@ -7,9 +7,12 @@ import '../../curso/domain/curriculo.dart';
 import '../../curso/presentation/bloc/curso_bloc.dart';
 import '../../habito/presentation/habito_cubit.dart';
 import '../../ranking/presentation/ranking_cubit.dart';
+import '../domain/avaliacao.dart' show palavrasDe;
 import '../domain/baralhos.dart';
 import '../domain/cartoes_texto.dart' show idCartoesAvulsos;
 import '../domain/revisao.dart';
+import '../domain/revisao_leve.dart';
+import '../domain/revisao_mista.dart' show PrefsRevisaoMista;
 import 'revisao_cubit.dart';
 import 'sessao_cartoes_page.dart';
 import 'sessao_memoria_page.dart';
@@ -26,22 +29,46 @@ int notaDaFixacao(List<ResultadoFrase> rs) {
   return (pontos * 10 / rs.length).round();
 }
 
+/// 🌱 Revisão leve ligada (os testes antigos da revisão 100% de memória desligam: o caminho segue o das provas).
+abstract final class RevisaoLeve {
+  static bool ligada = true;
+}
+
+/// 🌱 A ajuda de cada frase na revisão leve, pela memória dela (o cartão da revisão espaçada); o 👂 só com som.
+/// null = revisão leve desligada (tudo de memória).
+Future<AjudaRevisao Function(Trecho)?> ajudaDaRevisao(RevisaoCubit? revisao) async {
+  if (!RevisaoLeve.ligada) return null;
+  final pausa = await PrefsRevisaoMista.carregar();
+  return (f) => ajudaPelaMemoria(
+        revisao?.state.cartoes[RevisaoCubit.chaveDe(f)],
+        f.cod,
+        podeOuvir: pausa.semAudio == null,
+        podeMontar: palavrasDe(f.cod).length >= 3,
+      );
+}
+
 /// Abre o Treino de memória da lição [l] da trilha [t] (no mapa): todas as
-/// frases da lição, embaralhadas, de memória. A nota só sobe (fica a melhor).
-/// Devolve true se a pessoa terminou e quer seguir.
-Future<bool?> abrirFixacao(BuildContext context, int t, int l, {bool emSequencia = false, Random? rnd}) {
+/// frases da lição, embaralhadas, cada uma com a ajuda que a memória dela pede (revisão leve). A nota só sobe
+/// (fica a melhor). Devolve true se a pessoa terminou e quer seguir.
+Future<bool?> abrirFixacao(BuildContext context, int t, int l, {bool emSequencia = false, Random? rnd}) async {
   final bloc = context.read<CursoBloc>();
   final ranking = RankingCubit.de(context);
+  final nav = Navigator.of(context);
+  final ajuda = await ajudaDaRevisao(RevisaoCubit.de(context));
   final licao = bloc.state.trilhas[t].licoes[l];
   final itens = [...licao.trechos]..shuffle(rnd ?? Random());
-  return Navigator.of(context).push<bool>(MaterialPageRoute<bool>(
+  if (!nav.mounted) return null;
+  return nav.push<bool>(MaterialPageRoute<bool>(
     builder: (_) => SessaoMemoriaPage(
       titulo: 'Treino de memória · ${licao.nome}',
-      subtitulo: 'todas as frases da lição, de memória, fora de ordem',
+      subtitulo: ajuda == null
+          ? 'todas as frases da lição, de memória, fora de ordem'
+          : 'todas as frases da lição, fora de ordem, com a ajuda que cada uma pede',
       emoji: '🧠',
       itens: itens,
       emSequencia: emSequencia,
       cenaDe: (_) => licao,
+      ajudaDe: ajuda,
       onFim: (rs) {
         if (bloc.isClosed) return;
         bloc.add(QuizFinalizado(t, l, notaDaFixacao(rs)));
@@ -147,6 +174,8 @@ Future<FimDaRevisao> abrirRevisao(BuildContext context,
   final ranking = RankingCubit.de(context);
   final habito = HabitoCubit.de(context);
   final nav = Navigator.of(context);
+  final ajuda = await ajudaDaRevisao(revisao);
+  if (!nav.mounted) return const FimDaRevisao(respondidas: 0, terminou: false);
   // o que foi respondido (1ª tentativa), na ordem, e que partes chegaram ao fim
   final revisadas = <Trecho>[];
   var fimMemoria = false, fimCartoes = false;
@@ -163,9 +192,11 @@ Future<FimDaRevisao> abrirRevisao(BuildContext context,
             titulo: nome == null ? 'Revisão do dia' : 'Revisão · $nome',
             subtitulo: diretas.isEmpty
                 ? 'nenhuma frase vence hoje'
-                : '${diretas.length} frase${diretas.length == 1 ? '' : 's'} de lições anteriores, de memória',
+                : '${diretas.length} frase${diretas.length == 1 ? '' : 's'} de lições anteriores, '
+                    '${ajuda == null ? 'de memória' : 'com a ajuda que cada uma pede'}',
             emoji: '🔁',
             itens: diretas,
+            ajudaDe: ajuda,
             emSequencia: invertidas.isNotEmpty,
             semOferta: modoTreino,
             cenaDe: (f) => licaoDe[f.cod],

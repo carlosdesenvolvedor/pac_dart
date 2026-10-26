@@ -44,6 +44,7 @@ import 'package:pac_dart/features/ingles/presentation/treino_palavras_page.dart'
 import 'package:pac_dart/features/ranking/data/ranking_repository.dart';
 import 'package:pac_dart/features/ranking/domain/jogador_ranking.dart';
 import 'package:pac_dart/main.dart';
+import 'package:pac_dart/features/ingles/presentation/fixacao.dart' show RevisaoLeve;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class _AuthFake implements AuthRepository {
@@ -314,6 +315,10 @@ Future<void> _compoe(WidgetTester tester, String palavra) async {
 }
 
 void main() {
+  // estes testes cobrem a revisão 100% de memória (o caminho das provas); a revisão leve tem os dela
+  // (test/ingles_revisao_leve_test.dart)
+  setUpAll(() => RevisaoLeve.ligada = false);
+  tearDownAll(() => RevisaoLeve.ligada = true);
   TestWidgetsFlutterBinding.ensureInitialized();
   Mixart.usarGoogleFonts = false;
 

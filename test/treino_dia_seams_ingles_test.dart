@@ -344,6 +344,10 @@ Future<String> _responder(WidgetTester tester, Map<String, String> pt, _VozFake 
 }
 
 void main() {
+  // estes testes cobrem a revisão 100% de memória (o caminho das provas); a revisão leve tem os dela
+  // (test/ingles_revisao_leve_test.dart)
+  setUpAll(() => RevisaoLeve.ligada = false);
+  tearDownAll(() => RevisaoLeve.ligada = true);
   TestWidgetsFlutterBinding.ensureInitialized();
   Mixart.usarGoogleFonts = false;
   setUp(() {

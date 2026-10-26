@@ -2793,3 +2793,20 @@ Pedido do dono: "Faça a etapa do certificado e substitua os áudios sem licenç
     quem mexer no cliente pode criar um certificado da própria conta. Próximo passo se precisar: emitir pelo Worker da
     Cloudflare (corrige a prova no servidor e assina).
   - `pubspec`: `pdf ^3.12.0` + `image <4.11.0` (o pdf trava o archive em 4.0.9; o image 4.11 precisa do 4.0.10).
+
+## 🌱 26/out/2026: Revisão LEVE — a ajuda que a memória de cada frase pede
+Pedido do dono: os treinos extras (revisões, baralhos…) estavam "secos, sem ajuda… forçando muito a memória, e o aluno
+desiste"; quer ajuda gradual, tipos misturados como o Duolingo, mostrar como se escreve antes de cobrar, leveza.
+- `domain/revisao_leve.dart`: `AjudaRevisao` (👀 reencontro = copiar a frase escrita e falada · 🧩 montar · 🔍 iniciais ·
+  👂 ouvir · ▁ tracinhos · 🧠 de memória), `forcaDe(cartão)` (fraca < 4 dias de estabilidade ou sem cartão; forte ≥ 21),
+  `ajudaPelaMemoria` (fraca → reencontro; média → montar/iniciais/ouvir variando; forte → tracinhos/memória),
+  `notaComAjuda` (memória e tracinhos valem inteiro; iniciais/blocos/áudio: acerto vira tropeço; reencontro sem nota),
+  `planoDaSessao` (o reencontro ganha uma volta de montar que vale nota 3 frases depois; nunca 3 seguidos do mesmo jeito).
+- `SessaoMemoriaPage(ajudaDe:)`: a instrução de cada ajuda ("👀 Lembra dessa? Da lição “X” · ouça e copie"), o
+  reencontro e o ouvir começam pela voz, o 👂 esconde o texto (`CartaoEscutar`, agora público), botões com nome
+  "💡 Mostrar uma palavra" / "👀 Não lembro: ver a frase"; errou → a cópia e a volta UM degrau mais fácil; pedir a
+  palavra no 💡 é tropeço, não erro (antes 1 palavra revelada numa frase de 4 dava "errou").
+- Ligado em `abrirRevisao` (Revisão do dia, baralhos, ⚡ Treino do dia) e `abrirFixacao` (Treino de memória da lição),
+  via `ajudaDaRevisao(revisao)` (o 👂 só sem o "não posso escutar"). Provas, nivelamento e a prova do certificado
+  continuam 100% de memória. `RevisaoLeve.ligada` desliga nos testes antigos do caminho de memória.
+- Testes: `test/ingles_revisao_leve_test.dart` (12).
