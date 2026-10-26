@@ -69,6 +69,8 @@ Future<void> apagarDadosDoUsuario(FirebaseFirestore db, String uid) async {
     ...(await doc.collection('textos').get()).docs.map((d) => d.reference),
     ...(await doc.collection('palavras').get()).docs.map((d) => d.reference),
     ...(await doc.collection('setlists').get()).docs.map((d) => d.reference),
+    // 🎓 os certificados emitidos (o nome do aluno sai junto; o link de verificação deixa de valer)
+    ...(await db.collection('certificados').where('uid', isEqualTo: uid).get()).docs.map((d) => d.reference),
   ];
   // os áudios do aluno: lê só o ÍNDICE (listar a coleção baixaria todos os arquivos)
   final audios = doc.collection('audio');

@@ -9,11 +9,15 @@ import 'package:flutter_test/flutter_test.dart';
 /// em listagens de coleção. Roda só na VM (lê o arquivo).
 void main() {
   // O analisador do fake não conhece `rules_version` nem `allow create, update[, delete]`
-  // (só `read`/`write`): essas duas linhas são trocadas; o resto do arquivo REAL entra como está.
+  // (só `read`/`write`): essas duas linhas são trocadas e o bloco dos certificados sai; o resto do arquivo
+  // REAL entra como está.
   final regras = File('firestore.rules')
       .readAsStringSync()
       .replaceFirst(RegExp(r"rules_version\s*=\s*'2';"), '')
-      .replaceAll(RegExp(r'allow create, update(, delete)?:'), 'allow write:');
+      .replaceAll(RegExp(r'allow create, update(, delete)?:'), 'allow write:')
+      // 🎓 o bloco dos certificados usa get/list/create, `resource` e `request.resource`, que o fake não lê: sai
+      // daqui (test/ingles_certificado_test.dart confere o texto dele)
+      .replaceFirst(RegExp(r'    // 🎓 Certificados de conclusão[\s\S]*?\n    }\n'), '');
 
   FakeFirebaseFirestore como(String? uid) =>
       FakeFirebaseFirestore(securityRules: regras, authObject: Stream.value(uid == null ? null : {'uid': uid}));

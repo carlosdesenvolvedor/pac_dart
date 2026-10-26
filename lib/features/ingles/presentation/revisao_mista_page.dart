@@ -55,6 +55,10 @@ class RevisaoMistaPage extends StatefulWidget {
   final VozIngles? voz;
   final ReconhecedorFala? reconhecedor;
 
+  /// 🎓 Modo PROVA (a prova final do certificado), com este título no resumo: sem "foi erro de digitação", a
+  /// frase errada não volta no fim e não há "mais uma rodada" (a nota é de quem abriu, pelo [onFim]).
+  final String? prova;
+
   const RevisaoMistaPage({
     super.key,
     required this.exercicios,
@@ -66,6 +70,7 @@ class RevisaoMistaPage extends StatefulWidget {
     this.extraMontagem = const [],
     this.voz,
     this.reconhecedor,
+    this.prova,
   });
 
   @override
@@ -207,8 +212,8 @@ class _RevisaoMistaPageState extends State<RevisaoMistaPage> with WidgetsBinding
     _resultados.add(res);
     if (ex.repeticao) return;
     widget.onResultado?.call(res);
-    // errou: a frase volta no fim, de outro jeito (uma vez só, sem nota)
-    if (r == ResultadoRevisao.errou) {
+    // errou: a frase volta no fim, de outro jeito (uma vez só, sem nota) — na prova, não
+    if (r == ResultadoRevisao.errou && widget.prova == null) {
       final tipo = tipoDaVolta(ex);
       _fila.add(ExercicioMisto(ex.trecho, ex.licao, tipo, repeticao: true));
     }
@@ -370,7 +375,8 @@ class _RevisaoMistaPageState extends State<RevisaoMistaPage> with WidgetsBinding
             child: _aguardando
                 ? _Selo(_ultimo,
                     onSeguir: _avancar,
-                    onContestar: _contestou ||
+                    onContestar: widget.prova != null ||
+                            _contestou ||
                             _ultimo == null ||
                             _ultimo == ResultadoRevisao.acertou ||
                             _entrada != EntradaResposta.digitar
@@ -419,7 +425,7 @@ class _RevisaoMistaPageState extends State<RevisaoMistaPage> with WidgetsBinding
           borderRadius: BorderRadius.circular(Mixart.radiusLg),
         ),
         child: Column(children: [
-          Text(validos.isEmpty ? 'Nada para revisar ainda' : 'Revisão feita! 🎉',
+          Text(validos.isEmpty ? 'Nada para revisar ainda' : (widget.prova != null ? '${widget.prova}: concluída' : 'Revisão feita! 🎉'),
               textAlign: TextAlign.center, style: Mixart.display(size: 26, color: Mixart.brand)),
           if (validos.isNotEmpty) ...[
             const SizedBox(height: 6),
@@ -438,7 +444,7 @@ class _RevisaoMistaPageState extends State<RevisaoMistaPage> with WidgetsBinding
           ],
           const SizedBox(height: 20),
           Wrap(spacing: 10, runSpacing: 10, alignment: WrapAlignment.center, children: [
-            if (validos.isNotEmpty)
+            if (validos.isNotEmpty && widget.prova == null)
               OutlinedButton(
                 key: const Key('revisao-mista-mais-uma'),
                 style: OutlinedButton.styleFrom(

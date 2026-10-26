@@ -10,6 +10,8 @@ import '../../../ingles/domain/fonte_frase.dart';
 import '../../../ingles/domain/texto_salvo.dart';
 import '../../../ingles/data/aulas_repo.dart';
 import '../../../ingles/domain/aula_professor.dart';
+import '../../../ingles/domain/certificado.dart';
+import '../../../ingles/presentation/certificado_page.dart';
 import '../../../ingles/presentation/aula_professor_page.dart';
 import '../../../ingles/presentation/baralhos_page.dart';
 import '../../../ingles/presentation/fixacao.dart';
@@ -273,6 +275,10 @@ class _MapaPageState extends State<MapaPage> {
                           SliverToBoxAdapter(child: _FaixaEtapa(st: st, t: t)),
                         SliverToBoxAdapter(child: _SecaoTrilha(st: st, t: t, ingles: ingles)),
                         const SliverToBoxAdapter(child: _Conector()),
+                        // 🎓 o certificado do nível, depois da última trilha dele
+                        if (st.ehIngles && (t == st.trilhas.length - 1 || st.trilhas[t + 1].etapa != st.trilhas[t].etapa))
+                          if (_nivelComCertificado(st, t) case final n?)
+                            SliverToBoxAdapter(child: CartaoCertificado(key: ValueKey('cert:${n.codigo}'), st: st, nivel: n)),
                       ],
                     if (st.masterApps.isNotEmpty)
                       SliverToBoxAdapter(child: _SecaoMaster(st: st)),
@@ -384,6 +390,15 @@ class _TesteDaTrilha extends StatelessWidget {
           ),
         ),
       );
+}
+
+/// O nível (com certificado) que termina na trilha [t], ou null.
+NivelCertificado? _nivelComCertificado(CursoState st, int t) {
+  final codigo = codigoDaEtapa(st.trilhas[t].etapa);
+  for (final n in niveisDoCurso(st.trilhas)) {
+    if (n.codigo == codigo) return n;
+  }
+  return null;
 }
 
 /// Créditos do curso de inglês: as frases que vieram do Tatoeba (a licença

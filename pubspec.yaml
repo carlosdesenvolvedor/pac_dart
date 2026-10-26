@@ -30,6 +30,10 @@ dependencies:
   file_picker: ^13.1.0
   flutter_local_notifications: ^22.3.2
   timezone: ^0.11.2
+  # 🎓 o PDF do certificado (o QR vem junto, pelo barcode)
+  pdf: ^3.12.0
+  # o pdf 3.12 trava o archive em 4.0.9, e o image 4.11 usa uma API do archive 4.0.10+: fica abaixo dele
+  image: ">=4.3.0 <4.11.0"
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +55,8 @@ flutter:
     - assets/ingles/historias/
     - assets/ingles/aulas/
     - assets/ingles/fotos/
+    # as fontes do app no PDF do certificado (Archivo e Funnel Display, SIL OFL 1.1)
+    - assets/fonts/
     # voz gerada por personagem (Google Cloud TTS — tools/ingles/vozes_google.py)
     - assets/ingles/voz/
     - assets/ingles/vozes.json

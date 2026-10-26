@@ -2765,3 +2765,31 @@ Pedido do dono: "Faça a trilha de vocabulário B2/C1" (escolheu o "núcleo inte
 - Testes: contagens 626 → 796; o "motor digita toda frase" ganhou timeout de 3 min (7 mil frases).
 - Relatório e dúvidas: `planejamento/RELATORIO-VOCAB-B2-C1.md`. ⚠️ Não usar `dart format` nos arquivos do projeto (reformata
   tudo: o projeto usa linhas de 120 sem o formatador).
+
+## 🎓 26/out/2026: Certificado de conclusão por nível + 🔇 fora os áudios do Tatoeba (licença não comercial)
+Pedido do dono: "Faça a etapa do certificado e substitua os áudios sem licença".
+- **Áudios do Tatoeba** (5d797c1): as 407 gravações (CK, CC BY-NC-ND 3.0; Susan1430, CC BY-NC 4.0) saíram do app pago
+  (−7 MB); `integrar.py` não gera mais `au`/`au_cred`; `AudioNativo` sem a camada de reserva; sai o "🎙️ voz nativa" do
+  cartão e dos créditos; as 2 frases que ainda tocavam o Tatoeba ganharam a voz do personagem. As FRASES do Tatoeba ficam
+  (CC BY 2.0 FR, com crédito). Os créditos do mapa ganharam a atribuição da NGSL/NAWL (CC BY-SA 4.0). `audio_nativo.py`
+  aposentado. Teste trava a volta (nenhum "au", sem a pasta, fora do pubspec).
+- **Certificado** (`domain/certificado.dart`, `data/certificados_repository.dart`, `data/certificado_pdf.dart`,
+  `presentation/certificado_page.dart`):
+  - **Regras:** por nível (A1, A2, B1, B2, C1, DEV); a prova libera com a trilha de revisão do nível concluída + 80% das
+    lições do nível; **prova final** = 20 exercícios (a `RevisaoMistaPage` em modo `prova`: sem "foi erro de digitação",
+    sem a volta da errada, sem "mais uma rodada") com frases de TODAS as lições do nível; nota ≥ 80% (de primeira = 1,
+    tropeço = ½); reprovou → espera de 1 h (`PrefsCertificado`).
+  - **Emissão:** pede o nome completo (a conta só tem e-mail; não muda depois), código `PCL-<NÍVEL>-XXXX-XXXX` (sem 0/O/1/I/L),
+    carga horária do CONTEÚDO (aulas pela duração estimada + 1 min por frase), grava `certificados/<codigo>` no Firestore.
+  - **PDF** (pacote `pdf`, A4 deitado, fontes do app em `assets/fonts/` — Archivo e Funnel Display, OFL), com o QR da
+    página de verificação; no celular o botão abre o site para baixar.
+  - **Verificação pública:** `https://pac-dart.web.app/?certificado=<codigo>` abre SEM login (`PacDartApp.certificado`, lido
+    do `Uri.base` no `main`). Regras: `get` público, `list` só do dono, `create` só do dono com código/nota/campos validados,
+    ninguém altera; a exclusão de conta apaga os certificados.
+  - **Mapa:** cartão "🎓 Certificado do nível" depois da última trilha de cada nível (o que falta / Fazer a prova / Ver).
+  - Texto: "certificado de conclusão de curso livre; não é certificado de proficiência"; nunca "oficial", MEC ou
+    equivalência a TOEFL/IELTS; no fim, a dica do EF SET (teste externo gratuito).
+  - ⚠️ Limite conhecido: sem servidor (Cloud Functions exige o Blaze), a regra não consegue provar que a prova foi feita —
+    quem mexer no cliente pode criar um certificado da própria conta. Próximo passo se precisar: emitir pelo Worker da
+    Cloudflare (corrige a prova no servidor e assina).
+  - `pubspec`: `pdf ^3.12.0` + `image <4.11.0` (o pdf trava o archive em 4.0.9; o image 4.11 precisa do 4.0.10).

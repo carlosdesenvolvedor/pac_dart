@@ -42,6 +42,7 @@ import 'features/ingles/data/setlists_repository.dart';
 import 'features/ingles/data/textos_repository.dart';
 import 'features/ingles/data/tradutor.dart';
 import 'features/ingles/domain/saida_audio.dart';
+import 'features/ingles/presentation/certificado_page.dart';
 import 'features/ingles/presentation/ouvir/ouvir_acoes.dart';
 import 'features/ingles/presentation/ouvir/ouvir_cubit.dart';
 import 'features/ingles/presentation/ouvir/setlists_cubit.dart';
@@ -61,7 +62,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
     await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-    runApp(const PacDartApp());
+    // 🎓 a página pública de verificação do certificado (?certificado=<codigo>) abre sem login
+    runApp(PacDartApp(certificado: kIsWeb ? Uri.base.queryParameters['certificado'] : null));
   } catch (e) {
     // Se o Firebase não iniciar, mostra um aviso em vez de tela em branco.
     runApp(_ErroInicializacao(erro: e.toString()));
@@ -163,6 +165,9 @@ class PacDartApp extends StatelessWidget {
   /// nuvem (campo `{prefixo}treino_dia` em `users/{uid}`, com cópia no aparelho); sem Firebase iniciado, o aparelho.
   final TreinoDiaRepository Function(AppUser user, Linguagem linguagem)? treinoDiaBuilder;
 
+  /// 🎓 Código de certificado vindo da URL (`?certificado=`): abre só a página pública de verificação.
+  final String? certificado;
+
   const PacDartApp({
     super.key,
     this.authCubitOverride,
@@ -187,10 +192,15 @@ class PacDartApp extends StatelessWidget {
     this.iaCacheBuilder,
     this.iaAgora,
     this.treinoDiaBuilder,
+    this.certificado,
   });
 
   @override
   Widget build(BuildContext context) {
+    final cert = certificado;
+    if (cert != null && cert.trim().isNotEmpty) {
+      return BlocProvider(create: (_) => ThemeCubit(), child: _AppShell(home: VerificarCertificadoPage(cert)));
+    }
     // Cada vertente guarda o progresso com o próprio prefixo no mesmo doc
     // (Dart sem prefixo, C# com "cs_", inglês com "en_").
     ProgressoRepository progressoDe(AppUser u, Linguagem l) =>
