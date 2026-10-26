@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:pac_dart/features/curso/presentation/pages/inicio_page.dart';
 import 'package:pac_dart/features/ingles/data/preferencia_cena_licao.dart';
 import 'package:pac_dart/features/ingles/data/vozes_aula.dart';
+import 'package:pac_dart/features/ingles/domain/roteiro.dart';
 import 'package:pac_dart/features/ingles/presentation/palco_ingles.dart';
 
 /// Roda antes de cada arquivo de teste.
@@ -18,8 +19,12 @@ import 'package:pac_dart/features/ingles/presentation/palco_ingles.dart';
 /// 🏠 A tela Início abre por cima da lição no app (e a lição fica com o cabeçalho limpo, o mapa sem as
 /// ferramentas); os testes antigos abrem direto na lição com o cabeçalho cheio: aqui ela fica desligada (os
 /// testes do Início ligam `Inicio.ligado = true`).
+///
+/// 🪜 As partes (sub-lições de ~10 digitações) pausam a lição no app; os testes antigos fazem a lição de uma vez: aqui
+/// ficam desligadas (os testes das partes ligam `EtapasDaLicao.ligadas = true`).
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   Inicio.ligado = false;
+  EtapasDaLicao.ligadas = false;
   PreferenciaCenaLicao.padrao = false;
   PalcoIngles.aulaSozinha = false;
   VozesAula.fixas = const {};

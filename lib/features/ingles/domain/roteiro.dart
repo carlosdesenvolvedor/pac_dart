@@ -337,19 +337,23 @@ class FilaLicao {
         _semente = semente == 0 ? 1 : semente;
 }
 
-/// 🪜 As ETAPAS de uma lição (pedido do dono, 26/out/2026: "40 a 60 é muito… fracionar para ficar de 10 a 15, como o
-/// Duolingo"): as digitações da lição (5 por frase) divididas em partes de ~[alvo], cada uma com o seu "concluída!" e
-/// a chance de parar ali e continuar depois. As fronteiras são fixadas no começo (pelo total previsto); um erro
+/// 🪜 As PARTES (sub-lições) de uma lição (pedido do dono, 26/out/2026: "40 a 60 é muito… fracionar… dentro de uma
+/// lição várias sub-lições, como o Duolingo: 60 → 6 de 10, 40 → 4"): as digitações da lição (5 por frase) divididas em
+/// partes de ~[alvo], cada uma concluída por si (o anel do nó no mapa enche parte a parte) e salva para continuar depois. As fronteiras são fixadas no começo (pelo total previsto); um erro
 /// acrescenta digitações e só alonga a última etapa.
 class EtapasDaLicao {
-  /// Digitações por etapa (de 10 a 15 na prática: 40 → 3 de ~13; 60 → 5 de 12).
-  static const alvo = 12;
+  /// Digitações por parte (~10: 40 → 4 partes de 10; 60 → 6 de 10; 45 → 5 de 9).
+  static const alvo = 10;
+
+  /// Ligadas no app; os testes antigos (lições feitas de uma vez) desligam no `flutter_test_config.dart`.
+  static bool ligadas = true;
 
   /// O total previsto no começo (5 digitações por frase).
   final int total;
   const EtapasDaLicao(this.total);
 
-  factory EtapasDaLicao.deFrases(int frases) => EtapasDaLicao(frases * Degrau.values.length);
+  /// Desligadas ([ligadas] = false): uma parte só (a lição inteira de uma vez, como antes).
+  factory EtapasDaLicao.deFrases(int frases) => EtapasDaLicao(ligadas ? frases * Degrau.values.length : 0);
 
   int get quantas => total <= 0 ? 1 : max(1, (total / alvo).round());
 

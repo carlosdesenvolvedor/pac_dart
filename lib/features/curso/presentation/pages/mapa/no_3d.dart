@@ -32,6 +32,10 @@ class No3D extends StatefulWidget {
   /// Estrelas da nota do quiz (0–3); null = sem nota.
   final int? estrelas;
 
+  /// 🪜 As partes (sub-lições) da lição e quantas já foram concluídas: o anel em volta do nó, um pedaço por parte
+  /// (como o Duolingo). 0 ou 1 parte = sem anel.
+  final int partes, partesFeitas;
+
   const No3D({
     super.key,
     required this.emoji,
@@ -42,6 +46,8 @@ class No3D extends StatefulWidget {
     this.celebrar = false,
     this.rotulo = '',
     this.estrelas,
+    this.partes = 0,
+    this.partesFeitas = 0,
   });
 
   /// O que o leitor de tela anuncia: o nome, o estado e as estrelas ("No café, concluída, 3 de 3 estrelas").
@@ -55,6 +61,7 @@ class No3D extends StatefulWidget {
         EstadoNo.trancada => 'mais adiante, trancada',
       },
       if (estrelas != null) '${estrelas!.clamp(0, 3)} de 3 estrelas',
+      if (this.partes > 1 && estado != EstadoNo.feita && partesFeitas > 0) '$partesFeitas de ${this.partes} partes feitas',
       if (novas >= 2 && estado != EstadoNo.feita) '$novas palavras novas',
     ];
     return partes.join(', ');
@@ -212,6 +219,24 @@ class _No3DState extends State<No3D> with TickerProviderStateMixin {
             decoration: BoxDecoration(color: labio, shape: BoxShape.circle),
           ),
         ),
+        // 🪜 o anel das partes (só com 2+ partes, fora das trancadas e das feitas: a feita já é o ouro inteiro)
+        if (widget.partes > 1 && estado != EstadoNo.trancada && estado != EstadoNo.feita)
+          Positioned(
+            left: -7,
+            top: desce - 7,
+            child: IgnorePointer(
+              child: CustomPaint(
+                key: const Key('no-partes'),
+                size: const Size(tam + 14, tam + 14),
+                painter: _AnelPartes(
+                  partes: widget.partes,
+                  feitas: widget.partesFeitas.clamp(0, widget.partes),
+                  cor: estado == EstadoNo.atual ? widget.cor : CoresFesta.ouro,
+                  fundo: claro ? const Color(0x22000000) : const Color(0x33FFFFFF),
+                ),
+              ),
+            ),
+          ),
         rosto,
         if (_foco)
           Positioned(
@@ -442,4 +467,31 @@ class _EstrelasPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant _EstrelasPainter old) => old.n != n || old.claro != claro;
+}
+
+/// 🪜 O anel das partes da lição: um arco por parte, com um respiro entre eles; as feitas na cor, o resto apagado.
+class _AnelPartes extends CustomPainter {
+  final int partes, feitas;
+  final Color cor, fundo;
+  const _AnelPartes({required this.partes, required this.feitas, required this.cor, required this.fundo});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    const espessura = 4.0;
+    final r = Rect.fromLTWH(espessura / 2, espessura / 2, size.width - espessura, size.height - espessura);
+    final fatia = 2 * math.pi / partes;
+    final folga = math.min(.14, fatia * .18);
+    for (var i = 0; i < partes; i++) {
+      final p = Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = espessura
+        ..strokeCap = StrokeCap.round
+        ..color = i < feitas ? cor : fundo;
+      canvas.drawArc(r, -math.pi / 2 + i * fatia + folga / 2, fatia - folga, false, p);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _AnelPartes old) =>
+      old.partes != partes || old.feitas != feitas || old.cor != cor || old.fundo != fundo;
 }

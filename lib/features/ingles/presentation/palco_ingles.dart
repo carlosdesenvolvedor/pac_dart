@@ -737,7 +737,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
       abrirInicio(context);
     } else {
       ScaffoldMessenger.maybeOf(context)
-          ?.showSnackBar(const SnackBar(content: Text('Progresso salvo: na volta, a lição continua da próxima etapa.')));
+          ?.showSnackBar(const SnackBar(content: Text('Parte salva: na volta, a lição continua da próxima.')));
     }
   }
 
@@ -1180,7 +1180,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               if (_fila.feitos == 0 && Inicio.ligado && curso.concluidas.isEmpty) const _AvisoNivelamento(),
               if (_etapaRetomada case final et?) ...[
-                Text('▶ Você parou aqui: etapa $et de ${_etapas.quantas}',
+                Text('▶ Você parou aqui: parte $et de ${_etapas.quantas}',
                     key: const Key('etapa-retomada'),
                     style: Mixart.ui(size: 12.5, weight: FontWeight.w800, color: Mixart.brand)),
                 const SizedBox(height: 8),
@@ -1807,7 +1807,7 @@ class _BarraFila extends StatelessWidget {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Flexible(
-          child: Text('Etapa ${k + 1} de ${et.quantas}',
+          child: Text('Parte ${k + 1} de ${et.quantas}',
               key: const Key('etapa-atual'),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -1831,7 +1831,7 @@ class _BarraFila extends StatelessWidget {
           ),
         Flexible(
           flex: 2,
-          child: Text('${feitos - ini} / ${fim - ini} nesta etapa',
+          child: Text('${feitos - ini} / ${fim - ini} nesta parte',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.end,
@@ -2033,10 +2033,10 @@ class _EtapaConcluida extends StatelessWidget {
           child: Column(children: [
             const Text('🎉', style: TextStyle(fontSize: 44)),
             const SizedBox(height: 8),
-            Text('Etapa $etapa de $de concluída!', textAlign: TextAlign.center, style: Mixart.display(size: 22, color: Mixart.brand)),
+            Text('Parte $etapa de $de concluída!', textAlign: TextAlign.center, style: Mixart.display(size: 22, color: Mixart.brand)),
             const SizedBox(height: 6),
             Text(
-              etapa == de - 1 ? 'Falta só a última: a prova da lição.' : 'Mais ${de - etapa} etapa${de - etapa == 1 ? '' : 's'} para fechar a lição.',
+              etapa == de - 1 ? 'Falta só a última parte para fechar a lição.' : 'Mais ${de - etapa} partes para fechar a lição.',
               textAlign: TextAlign.center,
               style: Mixart.ui(size: 13.5, color: Mixart.textMuted),
             ),
@@ -2065,7 +2065,7 @@ class _EtapaConcluida extends StatelessWidget {
               ),
             ]),
             const SizedBox(height: 8),
-            Text('Seu progresso fica salvo: na volta, a lição continua daqui.',
+            Text('A parte fica salva: na volta, a lição continua da próxima.',
                 textAlign: TextAlign.center, style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
           ]),
         ),

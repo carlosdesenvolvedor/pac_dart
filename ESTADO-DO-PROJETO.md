@@ -2848,3 +2848,12 @@ etapas como o Duolingo, isso motiva".
   da etapa k de N" no cartão Continuar. `_avancar` não anda durante a pausa.
 - Testes: `ingles_etapas_test.dart` (5) e `ingles_etapas_app_test.dart` (app inteiro: pausa, continuar, reabrir e
   retomar). iOS 1.0.0+6.
+- **Ajuste (mesmo dia, o dono: "dentro de uma lição várias sub-lições… 60 → 6 de 10, 40 → 4"):** partes de ~10 (`alvo`
+  10: 8 frases = 4 partes de 10; 12 = 6; toda parte das lições do curso fica entre 9 e 11), o texto passa a "Parte k de
+  N" e o MAPA mostra as partes: um anel em volta do nó (`No3D.partes/partesFeitas`, `_AnelPartes`; um arco por parte,
+  as feitas na cor) e o balão "PARTE k DE N" na lição atual; `EtapasSalvas.carregarTodas/partesFeitas` (cache lido
+  pelo mapa). `EtapasDaLicao.ligadas` desligado no `flutter_test_config.dart` (testes antigos fazem a lição de uma vez).
+- ⚠️ **Hosting estourou a cota (10 GB do plano grátis):** cada deploy guardava uma versão inteira (1,6 GB com as vozes
+  das aulas) e havia 7. Pela API do Firebase Hosting: `retainedReleaseCount = 2` no canal live e as 5 versões antigas
+  apagadas. Migrar as vozes para a Oracle resolve de vez (ver memória).
+

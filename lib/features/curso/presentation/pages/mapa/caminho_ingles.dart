@@ -10,6 +10,8 @@ import '../../../../../core/ui/festa.dart';
 import '../../../domain/curriculo.dart';
 import '../../../domain/mapa_regras.dart';
 import '../../bloc/curso_bloc.dart';
+import '../../../../ingles/data/etapas_salvas.dart';
+import '../../../../ingles/domain/roteiro.dart' show EtapasDaLicao;
 import 'bau_trilha.dart';
 import 'bolha_comecar.dart';
 import 'no_3d.dart';
@@ -171,6 +173,9 @@ class CaminhoIngles extends StatelessWidget {
     final novas = feita ? 0 : (novasDe?.call(licao) ?? 0);
     final topoNo = it.cy - it.y - No3D.tamanho / 2;
     void abrir() => onAbrirLicao(it.l);
+    // 🪜 as partes (sub-lições) da lição: o anel do nó e o "PARTE k DE N" do balão
+    final partes = trilha.propria ? 0 : EtapasDaLicao.deFrases(licao.trechos.length).quantas;
+    final partesFeitas = feita ? partes : EtapasSalvas.partesFeitas(licao.id, licao.trechos.length);
 
     final no = No3D(
       emoji: licao.emoji,
@@ -181,6 +186,8 @@ class CaminhoIngles extends StatelessWidget {
       rotulo: licao.nome,
       estrelas: nota == null ? null : estrelasDaNota(nota),
       onTap: abrir,
+      partes: partes,
+      partesFeitas: partesFeitas,
     );
 
     final filhos = <Widget>[];
@@ -197,7 +204,9 @@ class CaminhoIngles extends StatelessWidget {
         child: Center(
           child: BolhaComecar(
             key: const Key('mapa-comecar'),
-            texto: feita ? 'PRATICAR DE NOVO' : 'COMEÇAR',
+            texto: feita
+                ? 'PRATICAR DE NOVO'
+                : (partes > 1 && partesFeitas > 0 ? 'PARTE ${partesFeitas + 1} DE $partes' : 'COMEÇAR'),
             cor: cor,
             onTap: () => onComecar(it.l),
           ),

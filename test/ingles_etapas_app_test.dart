@@ -1,5 +1,5 @@
-// 🪜 As etapas da lição no app inteiro: a lição de 5 frases (25 digitações) tem 2 etapas; no fim da 1ª, "Etapa
-// concluída!" com Continuar e Parar; a fila fica salva e, reabrindo o app, a lição continua da etapa 2.
+// 🪜 As partes da lição no app inteiro: a lição de 5 frases (25 digitações) tem 3 partes; no fim da 1ª, "Parte
+// concluída!" com Continuar e Parar; a fila fica salva e, reabrindo o app, a lição continua da parte 2.
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -26,6 +26,7 @@ import 'package:pac_dart/features/ingles/presentation/widgets/ensaio_mental.dart
 import 'package:pac_dart/features/ingles/presentation/widgets/frase_view.dart';
 import 'package:pac_dart/features/ranking/data/ranking_repository.dart';
 import 'package:pac_dart/features/ranking/domain/jogador_ranking.dart';
+import 'package:pac_dart/features/ingles/domain/roteiro.dart';
 import 'package:pac_dart/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -217,31 +218,33 @@ Future<void> _passo(WidgetTester tester) async {
 }
 
 void main() {
+  setUpAll(() => EtapasDaLicao.ligadas = true);
+  tearDownAll(() => EtapasDaLicao.ligadas = false);
   Mixart.usarGoogleFonts = false;
   setUp(() => FraseView.carencia = Duration.zero);
 
-  testWidgets('5 frases = 2 etapas: no fim da 1ª, "Etapa concluída!"; continuar; reabrir o app continua da etapa 2',
+  testWidgets('5 frases (25 digitações) = 3 partes: no fim da 1ª, "Parte concluída!"; continuar; reabrir o app continua da parte 2',
       (tester) async {
     await _abrirApp(tester, linguagem: Linguagem.ingles);
     expect(_k('etapa-atual'), findsOneWidget);
-    expect(find.text('Etapa 1 de 2'), findsOneWidget);
+    expect(find.text('Parte 1 de 3'), findsOneWidget);
     for (var i = 0; i < 20 && _k('etapa-concluida').evaluate().isEmpty; i++) {
       await _passo(tester);
     }
     expect(_k('etapa-concluida'), findsOneWidget);
-    expect(find.text('Etapa 1 de 2 concluída!'), findsOneWidget);
+    expect(find.text('Parte 1 de 3 concluída!'), findsOneWidget);
     final p = await SharedPreferences.getInstance();
     expect(p.getString('en_etapa_mesa.cha'), isNotNull, reason: 'a fila fica salva no fim da etapa');
     await tester.tap(_k('etapa-continuar'));
     await _anda(tester, 4);
     expect(_k('etapa-concluida'), findsNothing);
-    expect(find.text('Etapa 2 de 2'), findsOneWidget);
+    expect(find.text('Parte 2 de 3'), findsOneWidget);
     // reabre o app (as prefs ficam): a lição continua da etapa 2
     await tester.pumpWidget(const SizedBox());
     await _anda(tester, 2);
     await _abrirApp(tester, linguagem: Linguagem.ingles, limpar: false);
     await _anda(tester, 4);
     expect(_k('etapa-retomada'), findsOneWidget);
-    expect(find.text('Etapa 2 de 2'), findsOneWidget);
+    expect(find.text('Parte 2 de 3'), findsOneWidget);
   }, variant: TargetPlatformVariant.only(TargetPlatform.macOS));
 }

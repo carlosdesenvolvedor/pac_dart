@@ -1,38 +1,45 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:pac_dart/core/theme/mixart.dart';
+import 'package:pac_dart/features/curso/domain/mapa_regras.dart';
+import 'package:pac_dart/features/curso/presentation/pages/mapa/no_3d.dart';
 import 'package:pac_dart/features/ingles/domain/revisao.dart';
 import 'package:pac_dart/features/ingles/domain/roteiro.dart';
 
-/// 🪜 As etapas da lição (~12 digitações cada, como o Duolingo) e a fila salva para continuar depois.
+/// 🪜 As partes (sub-lições) da lição (~10 digitações cada, como o Duolingo), a fila salva para continuar depois e
+/// o anel das partes no nó do mapa.
 void main() {
+  setUpAll(() => EtapasDaLicao.ligadas = true);
+  tearDownAll(() => EtapasDaLicao.ligadas = false);
   group('EtapasDaLicao', () {
-    test('8 frases (40 digitações) = 3 etapas de ~13; 12 frases (60) = 5 de 12; lição curta = 1', () {
+    test('8 frases (40 digitações) = 4 partes de 10; 12 frases (60) = 6 de 10; lição curta = 1', () {
       final e40 = EtapasDaLicao.deFrases(8);
       expect(e40.total, 40);
-      expect(e40.quantas, 3);
-      expect([e40.fimDa(0), e40.fimDa(1)], [13, 27]);
+      expect(e40.quantas, 4);
+      expect([e40.fimDa(0), e40.fimDa(1), e40.fimDa(2)], [10, 20, 30]);
       final e60 = EtapasDaLicao.deFrases(12);
-      expect(e60.quantas, 5);
-      expect([for (var k = 0; k < 4; k++) e60.fimDa(k)], [12, 24, 36, 48]);
-      expect(EtapasDaLicao.deFrases(2).quantas, 1);
+      expect(e60.quantas, 6);
+      expect([for (var k = 0; k < 5; k++) e60.fimDa(k)], [10, 20, 30, 40, 50]);
+      expect(EtapasDaLicao.deFrases(1).quantas, 1);
     });
 
     test('etapaDe, inicioDa e fechouEtapa (a última nunca "fecha": é o fim da lição)', () {
       final e = EtapasDaLicao.deFrases(8);
-      expect([e.etapaDe(0), e.etapaDe(12), e.etapaDe(13), e.etapaDe(26), e.etapaDe(27), e.etapaDe(99)], [0, 0, 1, 1, 2, 2]);
-      expect([e.inicioDa(0), e.inicioDa(1), e.inicioDa(2)], [0, 13, 27]);
-      expect(e.fechouEtapa(13), isTrue);
-      expect(e.fechouEtapa(27), isTrue);
-      expect(e.fechouEtapa(14), isFalse);
+      expect([e.etapaDe(0), e.etapaDe(9), e.etapaDe(10), e.etapaDe(29), e.etapaDe(30), e.etapaDe(99)], [0, 0, 1, 2, 3, 3]);
+      expect([e.inicioDa(0), e.inicioDa(1), e.inicioDa(3)], [0, 10, 30]);
+      expect(e.fechouEtapa(10), isTrue);
+      expect(e.fechouEtapa(30), isTrue);
+      expect(e.fechouEtapa(11), isFalse);
       expect(e.fechouEtapa(40), isFalse);
       expect(e.fechouEtapa(0), isFalse);
     });
 
-    test('toda etapa fica entre 10 e 15 digitações nas lições do curso (8 a 14 frases)', () {
+    test('toda parte fica com ~10 digitações (de 9 a 11) nas lições do curso (8 a 14 frases)', () {
       for (var frases = 8; frases <= 14; frases++) {
         final e = EtapasDaLicao.deFrases(frases);
         for (var k = 0; k < e.quantas; k++) {
           final tam = (k == e.quantas - 1 ? e.total : e.fimDa(k)) - e.inicioDa(k);
-          expect(tam, inInclusiveRange(10, 15), reason: '$frases frases, etapa $k: $tam');
+          expect(tam, inInclusiveRange(9, 11), reason: '$frases frases, parte $k: $tam');
         }
       }
     });
@@ -82,5 +89,25 @@ void main() {
       expect(FilaLicao.fromJson({'v': 1, 'n': 8}, 8), isNull);
       expect(FilaLicao.fromJson({'v': 9}, 8), isNull);
     });
+  });
+
+  testWidgets('o nó do mapa ganha o anel das partes (2+ partes, fora da feita e da trancada) e o leitor diz quantas', (tester) async {
+    Mixart.usarGoogleFonts = false;
+    Future<void> no(EstadoNo e, {int partes = 4, int feitas = 2}) => tester.pumpWidget(MaterialApp(
+          home: Scaffold(
+            body: Center(
+              child: No3D(emoji: '☕', estado: e, cor: Colors.green, onTap: () {}, rotulo: 'Café', partes: partes, partesFeitas: feitas),
+            ),
+          ),
+        ));
+    await no(EstadoNo.disponivel);
+    expect(find.byKey(const Key('no-partes')), findsOneWidget);
+    expect(tester.widget<No3D>(find.byType(No3D)).rotuloLido, contains('2 de 4 partes feitas'));
+    await no(EstadoNo.feita);
+    expect(find.byKey(const Key('no-partes')), findsNothing);
+    await no(EstadoNo.trancada);
+    expect(find.byKey(const Key('no-partes')), findsNothing);
+    await no(EstadoNo.disponivel, partes: 1, feitas: 0);
+    expect(find.byKey(const Key('no-partes')), findsNothing);
   });
 }

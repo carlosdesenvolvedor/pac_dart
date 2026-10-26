@@ -141,7 +141,7 @@ class _Continuar extends StatelessWidget {
                         if (e == null) return const SizedBox.shrink();
                         return Padding(
                           padding: const EdgeInsets.only(top: 4),
-                          child: Text('▶ continua da etapa ${e.etapa} de ${e.de}',
+                          child: Text('▶ continua da parte ${e.etapa} de ${e.de}',
                               key: const Key('inicio-etapa'),
                               style: Mixart.ui(size: 12.5, weight: FontWeight.w800, color: Mixart.brand)),
                         );

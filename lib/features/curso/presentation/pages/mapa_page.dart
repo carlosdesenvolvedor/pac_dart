@@ -10,6 +10,7 @@ import '../../../ingles/domain/fonte_frase.dart';
 import '../../../ingles/domain/texto_salvo.dart';
 import '../../../ingles/data/aulas_repo.dart';
 import '../../../ingles/domain/aula_professor.dart';
+import '../../../ingles/data/etapas_salvas.dart';
 import '../../../ingles/domain/certificado.dart';
 import '../../../ingles/presentation/certificado_page.dart';
 import 'inicio_page.dart' show Inicio;
@@ -94,6 +95,10 @@ class _MapaPageState extends State<MapaPage> {
   @override
   void initState() {
     super.initState();
+    // 🪜 as lições paradas no meio (o anel das partes de cada nó)
+    EtapasSalvas.carregarTodas().then((_) {
+      if (mounted) setState(() {});
+    });
     final bloc = context.read<CursoBloc>();
     final st = bloc.state;
     if (st.status == CursoStatus.pronto && st.ehIngles) {
