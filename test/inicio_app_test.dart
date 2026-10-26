@@ -247,6 +247,13 @@ void main() {
     expect(_k('abrir-inicio'), findsOneWidget);
     expect(find.byType(Hud), findsNothing, reason: 'a lição fica limpa');
     expect(find.text('SCORE'), findsNothing);
+    // a lição limpa: o ☰ tem o resto (entender a lição, o ensaio, o mapa…)
+    expect(find.textContaining('Entenda a lição'), findsNothing, reason: 'saiu do topo da lição');
+    await _tocar(tester, 'menu-licao');
+    expect(_k('menu-ensaio'), findsOneWidget);
+    expect(_k('menu-mapa'), findsOneWidget);
+    await tester.tapAt(const Offset(20, 20)); // fecha a folha
+    await _passa(tester);
     await _tocar(tester, 'abrir-inicio');
     expect(_k('inicio'), findsOneWidget);
   });

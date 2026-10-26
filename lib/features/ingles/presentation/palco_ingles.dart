@@ -11,6 +11,7 @@ import '../../../core/theme/mixart.dart';
 import '../../../core/ui/festa.dart' show CoresFesta;
 import '../../curso/domain/curriculo.dart';
 import '../../curso/presentation/bloc/curso_bloc.dart';
+import '../../curso/presentation/pages/inicio_page.dart' show Inicio;
 import '../../curso/presentation/bloc/typing_bloc.dart';
 import '../../curso/presentation/fluxo_licao.dart';
 import '../../curso/presentation/pages/teoria_page.dart';
@@ -41,6 +42,7 @@ import '../../../core/som/sons.dart';
 import 'aula_professor_page.dart';
 import 'widgets/audio_da_frase.dart';
 import 'widgets/cena_da_frase.dart';
+import 'widgets/barra_licao_ingles.dart';
 import 'widgets/cena_visual.dart';
 import 'widgets/ensaio_mental.dart';
 import 'widgets/frase_view.dart';
@@ -1055,7 +1057,8 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
         : null;
     final novasAntes =
         pc != null && pc.state.carregado ? pc.novasDaLicao(curso, curso.licao) : const <PalavraNova>[];
-    final comAntes = novasAntes.length >= 2 && !_jaTreinadas(pc!, novasAntes);
+    // (com a tela Início, as palavras novas ficam no ☰ da barra: o cartão não aparece)
+    final comAntes = !Inicio.ligado && novasAntes.length >= 2 && !_jaTreinadas(pc!, novasAntes);
     _antesNaTela = comAntes ? novasAntes : null;
     // uma linha só: pulado 3+ vezes seguidas, ou na 1ª lição no celular (o nivelamento já está em cima)
     final antesCompacto = _pulosAntes >= _pulosParaCompacto ||
@@ -1067,7 +1070,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     _cenaNoCartao = usaCena;
     // a chave só aparece em lição do curso (que tem historinha), depois de a pref chegar
     final mostraChaveCena = _cenaLigada != null && _licaoTemCena;
-    return BlocListener<TypingBloc, TypingState>(
+    final palcoInteiro = BlocListener<TypingBloc, TypingState>(
       listenWhen: (a, b) => !a.concluido && b.concluido,
       listener: (_, st) => _concluiu(st),
       child: BlocListener<TypingBloc, TypingState>(
@@ -1111,7 +1114,8 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
             )
           else
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              if (_fila.feitos == 0) ...[
+              if (_fila.feitos == 0 && Inicio.ligado && curso.concluidas.isEmpty) const _AvisoNivelamento(),
+              if (_fila.feitos == 0 && !Inicio.ligado) ...[
                 if (curso.concluidas.isEmpty) const _AvisoNivelamento(),
                 if (revisao != null)
                   BlocBuilder<RevisaoCubit, RevisaoState>(
@@ -1336,6 +1340,24 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
         ])),
       ))),
     );
+    if (!Inicio.ligado) return palcoInteiro;
+    // 🏠 lição limpa: o que ficava antes da frase (revisar, entender a lição, a aula, o ensaio, a historinha, as
+    // palavras novas) vira a barra do topo — "← Início", o nome da lição e o ☰
+    return Column(crossAxisAlignment: CrossAxisAlignment.stretch, mainAxisSize: MainAxisSize.min, children: [
+      BarraLicaoIngles(
+        curso: curso,
+        revisao: revisao,
+        podeAssistir: podeAssistir && !curso.vitoria,
+        novas: novasAntes.length >= 2 ? novasAntes.length : 0,
+        ensaioLigado: _ensaioLigado != false,
+        onAula: () => abrirAulaProfessor(context, curso.licao, voz: _voz),
+        onEnsaio: _abrirEnsaio,
+        onHistorinha: _assistirHistorinha,
+        onPalavras: () => _conhecerAntes(novasAntes),
+      ),
+      const SizedBox(height: 12),
+      palcoInteiro,
+    ]);
   }
 }
 

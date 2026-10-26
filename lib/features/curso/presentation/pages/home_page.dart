@@ -103,10 +103,11 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.fromLTRB(20, 24, 20, 48),
                     children: [
                       // 🏠 com a tela Início, a lição fica limpa: só o "☰ Início" (o resto mora lá)
-                      if (Inicio.ligado) const BarraDaLicao() else const Hud(),
-                      SizedBox(height: Inicio.ligado ? 12 : 18),
-                      const MenuTrilhas(),
-                      const SizedBox(height: 16),
+                      // (no inglês a barra é a do palco: "← Início", o nome da lição e o ☰ com a aula, o ensaio…)
+                      if (!Inicio.ligado) ...[const Hud(), const SizedBox(height: 18)]
+                      else if (!curso.ehIngles) ...[const BarraDaLicao(), const SizedBox(height: 12)],
+                      // 🏠 inglês com o Início: trocar de lição é pelo mapa (a barra do palco já diz onde está)
+                      if (!(Inicio.ligado && curso.ehIngles)) ...[const MenuTrilhas(), const SizedBox(height: 16)],
                       if (curso.ehIngles) PalcoIngles(curso: curso) else _Palco(curso: curso),
                       const SizedBox(height: 24),
                       Text(

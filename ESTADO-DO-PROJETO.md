@@ -2826,3 +2826,9 @@ abrir o app num menu com "voltar para a última lição" e as opções do cabeç
 - `Inicio.ligado` (desligado no `flutter_test_config.dart` para os testes antigos); testes novos:
   `test/inicio_app_test.dart` (3) e o da aula esperando o Início (`ingles_aula_professor_app_test.dart`).
 - iOS: build 3 para o TestFlight (pubspec 1.0.0+3).
+- **Barra da lição de inglês** (mesmo dia, pedido do dono: "essas informações podem estar ocultas por botões no topo… no
+  menu de hambúrguer, e um voltar"): `widgets/barra_licao_ingles.dart` — "← Início", o nome da lição (trilha · lição
+  i de n), 🔁 N (revisar, só quando há) e ☰ (folha: 📖 Entenda a lição — cena, foto, resumo e a teoria —, 🎓 aula do
+  Prof. Beto, 🎬 ensaio mental, 📺 historinha, 🆕 palavras novas (bolinha no ☰), 🗺️ Mapa · trocar de lição). Saem do
+  topo da lição: o aviso de revisar, a introdução, a faixa da cena, os links da aula/ensaio/historinha, o cartão das
+  palavras novas e a escolha de trilha/lição (`MenuTrilhas`). Fica só o aviso do nivelamento na 1ª lição. iOS 1.0.0+4.
