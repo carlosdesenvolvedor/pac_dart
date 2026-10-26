@@ -326,9 +326,31 @@ class FraseViewState extends State<FraseView> {
     if (ehCelular) _mostrarTeclado();
   }
 
+  /// O campo escondido (para achar o editor dele e reabrir o teclado).
+  final _campo = GlobalKey();
+
+  /// Abre o teclado do celular. Com o campo já focado e o teclado fechado pela pessoa ("OK", tocar fora), a
+  /// conexão com o teclado foi encerrada: só pedir o foco (ou o `TextInput.show`) não a reabre e o teclado não
+  /// volta. O `requestKeyboard` do editor reabre a conexão e mostra o teclado — chamado DENTRO do toque, que é
+  /// quando o iPhone deixa o teclado subir.
   void _mostrarTeclado() {
+    EditableTextState? editor;
+    void procura(Element e) {
+      if (editor != null) return;
+      if (e is StatefulElement && e.state is EditableTextState) {
+        editor = e.state as EditableTextState;
+        return;
+      }
+      e.visitChildren(procura);
+    }
+
+    _campo.currentContext?.visitChildElements(procura);
     try {
-      SystemChannels.textInput.invokeMethod<void>('TextInput.show').catchError((_) {});
+      if (editor != null) {
+        editor!.requestKeyboard();
+      } else {
+        SystemChannels.textInput.invokeMethod<void>('TextInput.show').catchError((_) {});
+      }
     } catch (_) {}
   }
 
@@ -739,6 +761,7 @@ class FraseViewState extends State<FraseView> {
                 width: 1,
                 height: 1,
                 child: Opacity(
+                  key: _campo,
                   opacity: 0,
                   // invisível, mas no leitor de tela: com a acessibilidade ligada o Flutter
                   // web só digita em campo que está na árvore semântica

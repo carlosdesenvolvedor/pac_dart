@@ -13,7 +13,7 @@ import '../domain/avaliacao.dart';
 import '../domain/revisao.dart';
 import '../domain/revisao_leve.dart';
 import '../domain/roteiro.dart';
-import '../domain/entrada_resposta.dart' show EntradaResposta;
+import '../domain/entrada_resposta.dart' show EntradaResposta, PrefsEntrada;
 import '../domain/erros_palavra.dart' show EvidenciaPalavra, FonteErro, evidenciasDaFrase;
 import '../domain/teimosas.dart' show LocalSugestao, SugestaoTeimosas;
 import '../../../core/som/sons.dart';
@@ -145,6 +145,28 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
     return [for (final p in plano) _Item.leve(widget.itens[p.indice], p.ajuda, vale: p.vale)];
   }
 
+  /// ⌨️ 🎤 🧩 Como a pessoa prefere responder (a mesma escolha da lição) e a troca feita só nesta frase.
+  EntradaResposta _entradaPreferida = EntradaResposta.padrao;
+  EntradaResposta? _entradaDoItem;
+
+  /// O jeito de responder da frase atual: a troca da pessoa nesta frase; senão, o 🧩 da ajuda de montar; senão, o
+  /// preferido (na revisão leve) ou digitar (provas e nivelamento).
+  EntradaResposta get _entradaAtual =>
+      _entradaDoItem ??
+      (_item.ajuda == AjudaRevisao.montar
+          ? EntradaResposta.montar
+          : (widget.ajudaDe != null ? _entradaPreferida : EntradaResposta.digitar));
+
+  void _mudarEntrada(EntradaResposta e) {
+    if (e == _entradaAtual) return;
+    setState(() => _entradaDoItem = e);
+    // a escolha fica (como na lição), menos quando ela só desfaz o 🧩 da ajuda de montar
+    if (_item.ajuda != AjudaRevisao.montar) {
+      _entradaPreferida = e;
+      PrefsEntrada.salvar(e);
+    }
+  }
+
   /// Os blocos de enfeite do 🧩: palavras das outras frases da sessão.
   late final List<String> _outras = [for (final t in widget.itens) t.cod];
   final List<ResultadoFrase> _resultados = [];
@@ -182,6 +204,11 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
   void initState() {
     super.initState();
     _palavras = widget.reaprender ? PalavrasCubit.de(context) : null;
+    if (widget.ajudaDe != null) {
+      PrefsEntrada.carregar().then((e) {
+        if (mounted && e != _entradaPreferida) setState(() => _entradaPreferida = e);
+      });
+    }
     if (_fila.isEmpty) {
       _fim = true;
     } else {
@@ -215,6 +242,7 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
     _erradas = const {};
     _aguardando = false;
     _evPasso = null;
+    _entradaDoItem = null;
     // 🌱 o reencontro e o ouvir começam pela voz (no reencontro a frase está à vista: ouvir não é dica)
     if (_item.reencontro || (_item.ajuda?.soAudio ?? false)) _voz.falar(_item.trecho.cod);
   }
@@ -272,7 +300,10 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
         // no 👂 ouvir, ouvir É o exercício
         dicasExtras: (item.ajuda?.soAudio ?? false) ? 0 : _ouviuAntes,
       );
-      final a = item.ajuda;
+      // montou com os blocos (escolha da pessoa) = a ajuda de montar: reconhecer não é lembrar
+      final a = item.ajuda != null && item.ajuda != AjudaRevisao.reencontro && fv?.entradaAtiva == EntradaResposta.montar
+          ? AjudaRevisao.montar
+          : item.ajuda;
       var res = d.resultado;
       // 🌱 revisão leve: se o único "erro" foi a palavra pedida no 💡, é tropeço (a ajuda não é castigo)
       if (a != null && res == ResultadoRevisao.errou && !d.desistiu && (fv?.reveladas.isNotEmpty ?? false)) {
@@ -507,14 +538,16 @@ class _SessaoMemoriaPageState extends State<SessaoMemoriaPage> with WidgetsBindi
             alternativas: item.modo == ModoFrase.memoria
                 ? alternativasDe(item.trecho.cod, declaradas: item.trecho.alternativas)
                 : const [],
-            entrada: a?.entrada ?? EntradaResposta.digitar,
+            entrada: _entradaAtual,
+            // ⌨️ 🎤 🧩 a escolha de como responder (como na lição) — só na revisão leve; prova é prova
+            onMudarEntrada: a != null && !item.correcao ? _mudarEntrada : null,
             apoioMontagem: [for (final c in _outras) if (c != item.trecho.cod) c],
             onMicrofone: (ouvindo) {
               if (ouvindo) _voz.calarTudo();
             },
           ),
           // 🌱 a ajuda à vista, com nome (usar conta como tropeço, não como erro)
-          if (a != null && !_aguardando && !item.correcao && item.modo.deMemoria && a != AjudaRevisao.montar) ...[
+          if (a != null && !_aguardando && !item.correcao && item.modo.deMemoria && _entradaAtual != EntradaResposta.montar) ...[
             const SizedBox(height: 10),
             Wrap(alignment: WrapAlignment.center, spacing: 8, runSpacing: 8, children: [
               _ChipAjuda(

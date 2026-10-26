@@ -203,6 +203,16 @@ void main() {
       expect(voz.falou, contains(_tarde.cod));
     }, variant: _desktop);
 
+    testWidgets('⌨️ 🎤 🧩 a escolha de como responder aparece na revisão leve (como na lição)', (tester) async {
+      await abrir(tester, const [_cafe], (_) => AjudaRevisao.memoria);
+      expect(find.byKey(const Key('entrada-montar')), findsOneWidget);
+      expect(find.byKey(const Key('entrada-digitar')), findsOneWidget);
+      await tester.tap(find.byKey(const Key('entrada-montar')));
+      await tester.pump(const Duration(milliseconds: 60));
+      // montando, sem os botões de digitar ("mostrar uma palavra")
+      expect(find.byKey(const Key('revisao-leve-palavra')), findsNothing);
+    }, variant: _desktop);
+
     testWidgets('sem a ajuda (provas, nivelamento): tudo de memória, como sempre', (tester) async {
       tester.view.physicalSize = const Size(1200, 1800);
       tester.view.devicePixelRatio = 1;
@@ -213,6 +223,7 @@ void main() {
       await tester.pump();
       expect(find.textContaining('Digite em inglês, de memória'), findsOneWidget);
       expect(find.byKey(const Key('revisao-leve-palavra')), findsNothing);
+      expect(find.byKey(const Key('entrada-montar')), findsNothing, reason: 'prova é prova: sem trocar para os blocos');
     }, variant: _desktop);
   });
 }
