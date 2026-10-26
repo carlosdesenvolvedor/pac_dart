@@ -1,0 +1,243 @@
+{
+  "id": "vocab-saude-corpo.dores-home-office",
+  "trilha": "vocab-saude-corpo",
+  "nome": "Dores do home office: pain, neck…",
+  "emoji": "💻",
+  "cena": "Depois de uma semana de sprint, você e o Mike reclamam na daily das dores de passar o dia no computador.",
+  "resumo": "Falar das dores do trabalho no computador: pescoço, braço, ombro, costas, vista cansada e fisioterapia.",
+  "fechamento": false,
+  "novos": [
+    "arm",
+    "suffer",
+    "pain",
+    "shoulder",
+    "neck",
+    "muscle",
+    "strain",
+    "therapy"
+  ],
+  "apoio": [
+    "sprint",
+    "mouse",
+    "headaches",
+    "stiff"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**arm** = braço · **suffer** = sofrer · **pain** = dor · **shoulder** = ombro · **neck** = pescoço · **muscle** = músculo · **strain** = tensão, sobrecarga · **therapy** = terapia, fisioterapia"
+    },
+    {
+      "t": "ex",
+      "c": "I have a stiff neck.\nEstou com torcicolo."
+    },
+    {
+      "t": "tip",
+      "c": "Dor nas costas = **back pain**; vista cansada = **eye strain**; fisioterapia (EUA) = **physical therapy**."
+    },
+    {
+      "t": "warn",
+      "c": "Sofrer de = **suffer from** (não: suffer of). Dor de cabeça é **headache**, não *head pain*. *Physiotherapy* é britânico."
+    }
+  ],
+  "imagem": "💻🪑😣",
+  "visualizacao": "É sexta, fim da sprint. Você gira o pescoço na frente da câmera e ouve um estalo; na tela, o Mike massageia o ombro e ri da cara que você faz.",
+  "foto_busca": "neck pain desk computer home office",
+  "trechos": [
+    {
+      "id": "f-bbbad9",
+      "quem": "voce",
+      "cod": "I woke up with a stiff neck.",
+      "dica": "Acordei com torcicolo.",
+      "img": "🛏️😖",
+      "alvo": "stiff neck",
+      "alvo_pt": "torcicolo",
+      "lit": "[lit.: um pescoço duro]",
+      "conceito": "neck = pescoço; stiff neck = torcicolo, pescoço travado.",
+      "registro": "informal",
+      "armadilhas": [
+        "torticollis",
+        "hard neck"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2784050,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-dac3dd",
+      "quem": "voce",
+      "cod": "My right arm hurts from using the mouse all day.",
+      "dica": "O meu braço direito dói de tanto usar o mouse o dia todo.",
+      "img": "💪🖱️",
+      "alvo": "arm",
+      "alvo_pt": "braço",
+      "conceito": "arm = braço; armrest = apoio de braço da cadeira.",
+      "registro": "informal",
+      "armadilhas": [
+        "harm",
+        "arms"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-089eec",
+      "quem": "mike",
+      "contexto": "f-dac3dd",
+      "cod": "Same here. My shoulder is really stiff.",
+      "dica": "Aqui também. O meu ombro está bem travado.",
+      "img": "🤷‍♂️😣",
+      "alvo": "shoulder",
+      "alvo_pt": "ombro",
+      "conceito": "Same here = aqui também (eu também); a stiff shoulder = ombro travado.",
+      "registro": "informal",
+      "armadilhas": [
+        "sholder",
+        "the shoulder"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "shoulder is",
+          "aceita": [
+            "shoulder's"
+          ]
+        },
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-da2d06",
+      "quem": "voce",
+      "cod": "I get back pain when I sit for too long.",
+      "dica": "Tenho dor nas costas quando fico sentado tempo demais.",
+      "img": "🪑🔙😩",
+      "alvo": "back pain",
+      "alvo_pt": "dor nas costas",
+      "lit": "[lit.: dor de costas]",
+      "conceito": "pain = dor; back pain = dor nas costas. A pain in the neck = uma chatice.",
+      "var": [
+        {
+          "em": "get",
+          "aceita": [
+            "have"
+          ]
+        }
+      ],
+      "pt_f": "Tenho dor nas costas quando fico sentada tempo demais.",
+      "registro": "informal",
+      "armadilhas": [
+        "pains",
+        "coasts"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8b5d0d",
+      "quem": "mike",
+      "contexto": "f-da2d06",
+      "cod": "Do you suffer from headaches, too?",
+      "dica": "Você também sofre de dor de cabeça?",
+      "img": "🤕❓",
+      "alvo": "suffer from",
+      "alvo_pt": "sofre de",
+      "conceito": "suffer from = sofrer de, ter (mais leve que em PT). Nunca suffer of.",
+      "var": [
+        {
+          "em": "headaches",
+          "aceita": [
+            "headache"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "suffer of",
+        "head pain"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3823546,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Do you suffer from insomnia? → Do you suffer from headaches, too?; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b2d006",
+      "quem": "voce",
+      "contexto": "f-8b5d0d",
+      "cod": "Sometimes. It's usually eye strain from the screen.",
+      "dica": "Às vezes. Normalmente é vista cansada por causa da tela.",
+      "img": "👀🖥️",
+      "alvo": "eye strain",
+      "alvo_pt": "vista cansada",
+      "lit": "[lit.: sobrecarga do olho]",
+      "conceito": "strain = tensão, sobrecarga; strain your eyes = forçar a vista.",
+      "registro": "informal",
+      "armadilhas": [
+        "tired eyes",
+        "eyes strain"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "usually",
+          "aceita": [
+            "normally"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0eff8d",
+      "quem": "mike",
+      "cod": "Physical therapy twice a week is really helping.",
+      "dica": "A fisioterapia duas vezes por semana está ajudando de verdade.",
+      "img": "🏋️‍♂️📅",
+      "alvo": "Physical therapy",
+      "alvo_pt": "fisioterapia",
+      "conceito": "Fisioterapia (EUA) = physical therapy; o fisioterapeuta = physical therapist, ou PT.",
+      "registro": "informal",
+      "armadilhas": [
+        "physiotherapy",
+        "fisiotherapy"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-202963",
+      "quem": "mike",
+      "cod": "My physical therapist says my muscles are too tight.",
+      "dica": "O meu fisioterapeuta diz que os meus músculos estão tensos demais.",
+      "img": "💪😬",
+      "alvo": "muscles",
+      "alvo_pt": "músculos",
+      "conceito": "muscle = músculo; o c é mudo (MUH-sl). sore muscles = músculos doloridos.",
+      "registro": "informal",
+      "armadilhas": [
+        "muscule",
+        "muscules"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,323 @@
+{
+  "id": "vocab-trabalho-empresa.plantao-de-fim-de-semana",
+  "trilha": "vocab-trabalho-empresa",
+  "nome": "Plantão: duty, ownership, routine…",
+  "emoji": "🛠️",
+  "cena": "Você vai pegar o plantão do fim de semana pela primeira vez, e o Mike explica como funciona numa chamada na sexta.",
+  "resumo": "As palavras do plantão: duties, routine check, ownership, tackle, procedure, naming convention, efficient…",
+  "fechamento": false,
+  "novos": [
+    "duty",
+    "ownership",
+    "routine",
+    "procedure",
+    "undertake",
+    "dedicate",
+    "fulfill",
+    "tackle",
+    "efficient",
+    "convention"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O plantão do fim de semana"
+    },
+    {
+      "t": "p",
+      "c": "**duty** dever, atribuição · **ownership** responsabilidade (ser dono) · **routine** rotina · **procedure** procedimento · **undertake** encarar (algo grande) · **dedicate** dedicar · **fulfill** atender, cumprir · **tackle** atacar (um problema) · **efficient** eficiente · **convention** convenção, padrão"
+    },
+    {
+      "t": "ex",
+      "c": "Each team takes ownership of its own services.\nCada time assume a responsabilidade pelos próprios serviços."
+    },
+    {
+      "t": "tip",
+      "c": "Plantão de dev = **on call**; on duty é de turno (enfermeiro, segurança)."
+    },
+    {
+      "t": "warn",
+      "c": "**efficient** = eficiente; eficaz (que funciona) = **effective**. fulfill (EUA) tem ll."
+    }
+  ],
+  "imagem": "🛠️📟🌙",
+  "visualizacao": "Sexta no fim do dia, o Mike compartilha um painel cheio de gráficos verdes. Você anota tudo num caderno, com o celular do plantão carregando do lado.",
+  "foto_busca": "monitoring dashboard on call engineer",
+  "trechos": [
+    {
+      "id": "f-4e99a0",
+      "quem": "mike",
+      "cod": "Answering alerts is one of your duties this weekend.",
+      "dica": "Responder aos alertas é uma das suas atribuições neste fim de semana.",
+      "img": "🚨📱",
+      "alvo": "duties",
+      "alvo_pt": "atribuições",
+      "conceito": "duty = dever; duties = atribuições do cargo. One of + plural: one of your duties.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR52",
+        "BR05"
+      ],
+      "armadilhas": [
+        "one of your duty",
+        "answer alerts is"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0f9f5c",
+      "quem": "mike",
+      "cod": "Every two hours, do a routine check of the dashboards.",
+      "dica": "A cada duas horas, faz uma checagem de rotina nos dashboards.",
+      "img": "🔁📊⏰",
+      "alvo": "routine check",
+      "alvo_pt": "checagem de rotina",
+      "conceito": "routine = rotina; também adjetivo: a routine check = uma checagem de rotina.",
+      "var": [
+        {
+          "em": "of the dashboards",
+          "aceita": [
+            "on the dashboards"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR32"
+      ],
+      "armadilhas": [
+        "make a routine",
+        "check of routine"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e483df",
+      "quem": "mike",
+      "cod": "Each team takes ownership of its own services.",
+      "dica": "Cada time assume a responsabilidade pelos próprios serviços.",
+      "img": "🔑🗂️",
+      "alvo": "takes ownership",
+      "alvo_pt": "assume a responsabilidade",
+      "conceito": "take ownership of = assumir a responsabilidade por (ser dono de algo). Literal: ownership = propriedade.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11"
+      ],
+      "armadilhas": [
+        "it's own",
+        "responsibility"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dc474a",
+      "quem": "mike",
+      "cod": "Tackle the critical alerts first, then the rest.",
+      "dica": "Ataca primeiro os alertas críticos, depois o resto.",
+      "img": "🔥🧯",
+      "alvo": "Tackle",
+      "alvo_pt": "Ataca",
+      "conceito": "tackle = atacar, enfrentar (um problema, uma tarefa): tackle the problem.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "attack",
+        "alerts critical"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a304ae",
+      "quem": "mike",
+      "cod": "Try to fulfill urgent requests within an hour.",
+      "dica": "Tenta atender os pedidos urgentes em até uma hora.",
+      "img": "📨⏱️✅",
+      "alvo": "fulfill",
+      "alvo_pt": "atender",
+      "conceito": "fulfill (EUA, com ll) = atender, cumprir (fulfill a request, fulfill the requirements).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "fulfil",
+        "attend"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "fulfill urgent",
+          "aceita": [
+            "fulfill the urgent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-28c206",
+      "quem": "mike",
+      "cod": "We'll undertake the database migration next month, not this weekend.",
+      "dica": "Vamos encarar a migração do banco de dados no mês que vem, não neste fim de semana.",
+      "img": "🗄️🚚📅",
+      "alvo": "undertake",
+      "alvo_pt": "encarar",
+      "conceito": "undertake = assumir, encarar (algo grande); formal e irregular: undertook, undertaken.",
+      "var": [
+        {
+          "em": "We'll",
+          "aceita": [
+            "We're going to",
+            "We will"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR25",
+        "BR17"
+      ],
+      "armadilhas": [
+        "at the weekend",
+        "undertook",
+        "tackle"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        5
+      ]
+    },
+    {
+      "id": "f-17f284",
+      "quem": "mike",
+      "cod": "Write a short report after every incident. It's standard procedure.",
+      "dica": "Escreve um relatório curto depois de cada incidente. É procedimento padrão.",
+      "img": "📝🚑📏",
+      "alvo": "standard procedure",
+      "alvo_pt": "procedimento padrão",
+      "conceito": "procedure = procedimento; follow the procedure = seguir o procedimento. It é obrigatório: It's standard procedure.",
+      "var": [
+        {
+          "em": "every",
+          "aceita": [
+            "each"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "is standard",
+        "procediment"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2249286,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"It's standard procedure.\"; + Write a short report after every incident. (frase anterior da mesma fala); PT original: \"É procedimento padrão.\"; PT reescrito com a primeira frase",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-201b35",
+      "quem": "mike",
+      "cod": "Our naming convention for alerts is in the wiki.",
+      "dica": "A nossa convenção de nomes para os alertas está na wiki.",
+      "img": "🏷️📚",
+      "alvo": "naming convention",
+      "alvo_pt": "convenção de nomes",
+      "conceito": "convention = convenção, padrão (naming convention); também congresso (a developer convention).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "convention of names",
+        "name convention"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5d916c",
+      "quem": "voce",
+      "cod": "I'll dedicate Saturday morning to cleaning up old alerts.",
+      "dica": "Vou dedicar a manhã de sábado a limpar alertas antigos.",
+      "img": "🧹🌅",
+      "alvo": "dedicate",
+      "alvo_pt": "dedicar",
+      "conceito": "dedicate ... to + substantivo ou -ing = dedicar a (to cleaning, não to clean).",
+      "var": [
+        {
+          "em": "I'll dedicate",
+          "aceita": [
+            "I'm going to dedicate"
+          ]
+        },
+        {
+          "em": "cleaning up",
+          "aceita": [
+            "cleaning"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52",
+        "BR15"
+      ],
+      "armadilhas": [
+        "to clean",
+        "saturday",
+        "devote"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-82ee33",
+      "quem": "mike",
+      "contexto": "f-5d916c",
+      "cod": "Good idea. That'll make the whole process more efficient.",
+      "dica": "Boa ideia. Isso vai deixar o processo todo mais eficiente.",
+      "img": "⚡⚙️👍",
+      "alvo": "efficient",
+      "alvo_pt": "eficiente",
+      "conceito": "efficient = eficiente (faz bem e sem desperdício); eficaz = effective.",
+      "var": [
+        {
+          "em": "the whole process",
+          "aceita": [
+            "the entire process"
+          ]
+        },
+        {
+          "em": "That'll",
+          "aceita": [
+            "That will",
+            "That's going to"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR32"
+      ],
+      "armadilhas": [
+        "effective",
+        "more eficient"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

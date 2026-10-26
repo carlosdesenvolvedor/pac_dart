@@ -1,0 +1,310 @@
+{
+  "id": "vocab-trabalho-empresa.historia-da-empresa",
+  "trilha": "vocab-trabalho-empresa",
+  "nome": "A empresa: found, corporate, reputation…",
+  "emoji": "🏛️",
+  "cena": "No encontro anual da empresa, por vídeo, a presidente do conselho conta como fundou a empresa, e você comenta tudo com o Mike e a Ana no chat.",
+  "resumo": "As palavras da história de uma empresa: was founded, corporation, corporate, chairman, committee, reputation…",
+  "fechamento": false,
+  "novos": [
+    "found",
+    "corporation",
+    "corporate",
+    "chairman",
+    "vice",
+    "committee",
+    "administration",
+    "reputation",
+    "politics",
+    "battle"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A história da empresa"
+    },
+    {
+      "t": "p",
+      "c": "**found** fundar · **corporation** grande empresa · **corporate** corporativo · **chairman** presidente do conselho · **vice** vice · **committee** comitê · **administration** administração · **reputation** reputação · **politics** política interna · **battle** luta (figurado)"
+    },
+    {
+      "t": "ex",
+      "c": "Our company was founded in Chicago in 2010.\nA nossa empresa foi fundada em Chicago em 2010."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: corporate culture, chairman of the board, office politics."
+    },
+    {
+      "t": "warn",
+      "c": "**found** (fundar) é regular: founded; não é o found de find. Política como regra = **policy**."
+    }
+  ],
+  "imagem": "🏛️🎤💬",
+  "visualizacao": "Você assiste ao encontro anual numa janela grande. A presidente fala de um palco com fotos antigas da empresa, e o chat ao lado não para de piscar com o Mike e a Ana.",
+  "foto_busca": "company annual meeting speaker stage",
+  "trechos": [
+    {
+      "id": "f-13f69f",
+      "quem": "presidente",
+      "cod": "Our company was founded in Chicago in 2010.",
+      "dica": "A nossa empresa foi fundada em Chicago em 2010.",
+      "img": "🏢🌱📅",
+      "alvo": "was founded",
+      "alvo_pt": "foi fundada",
+      "conceito": "found = fundar (regular: founded). Foi fundada = was founded (passiva).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "was found",
+        "founded in 2010 in"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5364078,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"The company was founded in Boston in 2013.\"; The → Our, Boston → Chicago, 2013 → 2010; PT original: \"A empresa foi fundada em Boston em 2013.\"; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-df38a9",
+      "quem": "presidente",
+      "cod": "I had just finished my degree in business administration.",
+      "dica": "Eu tinha acabado de terminar a minha graduação em Administração de Empresas.",
+      "img": "🎓📚",
+      "alvo": "business administration",
+      "alvo_pt": "Administração de Empresas",
+      "conceito": "business administration = Administração de Empresas (o curso); MBA = Master of Business Administration.",
+      "registro": "neutro",
+      "armadilhas": [
+        "administration of business",
+        "graduated"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I had",
+          "aceita": [
+            "I'd"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-23e6ab",
+      "quem": "presidente",
+      "cod": "Before that, I worked for a large corporation.",
+      "dica": "Antes disso, trabalhei numa grande corporação.",
+      "img": "🏙️🏢",
+      "alvo": "large corporation",
+      "alvo_pt": "grande corporação",
+      "conceito": "corporation = corporação, grande empresa. Trabalhar numa empresa = work for ou work at.",
+      "var": [
+        {
+          "em": "for",
+          "aceita": [
+            "at"
+          ]
+        },
+        {
+          "em": "large",
+          "aceita": [
+            "big"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "corporation large",
+        "in a large"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2662238,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"He works for a large corporation.\"; He works → Before that, I worked; PT original: \"Ele trabalha para uma grande corporação.\"; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-57f9e8",
+      "quem": "presidente",
+      "cod": "I didn't like the corporate culture there.",
+      "dica": "Eu não gostava da cultura corporativa de lá.",
+      "img": "👔🙅",
+      "alvo": "corporate culture",
+      "alvo_pt": "cultura corporativa",
+      "conceito": "corporate = corporativo (adjetivo); corporation = a empresa (substantivo).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07",
+        "BR08"
+      ],
+      "armadilhas": [
+        "culture corporate",
+        "corporative"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b11d40",
+      "quem": "mike",
+      "contexto": "f-57f9e8",
+      "cod": "Her co-founder was chairman of the board until 2018.",
+      "dica": "O cofundador dela foi presidente do conselho até 2018.",
+      "img": "🪑👨‍💼📅",
+      "alvo": "chairman of the board",
+      "alvo_pt": "presidente do conselho",
+      "conceito": "chairman = presidente do conselho; hoje também se diz chair, neutro. CEO é outro cargo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR11"
+      ],
+      "armadilhas": [
+        "president of the board",
+        "his co-founder"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-14e49a",
+      "quem": "ana",
+      "cod": "Is the new vice president on the call too?",
+      "dica": "A nova vice-presidente está na chamada também?",
+      "img": "👩‍💼📞❓",
+      "alvo": "vice president",
+      "alvo_pt": "vice-presidente",
+      "conceito": "vice só como prefixo de cargo (vice president, sem hífen). Sozinho, vice é vício.",
+      "var": [
+        {
+          "em": "vice president",
+          "aceita": [
+            "vice-president"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "vice-presidente"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c1165f",
+      "quem": "presidente",
+      "cod": "We built a good reputation one client at a time.",
+      "dica": "Construímos uma boa reputação cliente por cliente.",
+      "img": "⭐🤝",
+      "alvo": "good reputation",
+      "alvo_pt": "boa reputação",
+      "conceito": "reputation = reputação; build a good reputation = construir uma boa reputação.",
+      "registro": "neutro",
+      "armadilhas": [
+        "reputation good",
+        "fame"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-087b76",
+      "quem": "presidente",
+      "cod": "Getting our first big client was an uphill battle.",
+      "dica": "Conseguir o nosso primeiro cliente grande foi uma luta difícil.",
+      "img": "⛰️🧗",
+      "alvo": "uphill battle",
+      "alvo_pt": "luta difícil",
+      "lit": "[lit.: uma batalha morro acima]",
+      "conceito": "an uphill battle = uma luta difícil, remar contra a maré. battle aqui é só figurado.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "get our first",
+        "difficult battle"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fffc60",
+      "quem": "presidente",
+      "cod": "Dealing with office politics was the hardest part for me.",
+      "dica": "Lidar com a política interna foi a parte mais difícil para mim.",
+      "img": "🏢♟️😮‍💨",
+      "alvo": "office politics",
+      "alvo_pt": "política interna",
+      "conceito": "office politics = política interna, jogo de poder no trabalho. Política como regra = policy.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR52",
+        "BR56"
+      ],
+      "armadilhas": [
+        "policy",
+        "deal with office"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10856855,
+        "en_autor": "Amastan",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Dealing with office politics is a true nightmare.\"; is a true nightmare → was the hardest part for me; PT original: \"Lidar com a política do escritório é um verdadeiro pesadelo.\"; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1d099b",
+      "quem": "voce",
+      "cod": "Is there a planning committee for next year's meeting? I'd like to help.",
+      "dica": "Tem um comitê de planejamento para o encontro do ano que vem? Gostaria de ajudar.",
+      "img": "👥📋🙋",
+      "alvo": "committee",
+      "alvo_pt": "comitê",
+      "conceito": "committee = comitê, comissão (be on the committee). Grafia: dois m, dois t, dois e.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR10"
+      ],
+      "armadilhas": [
+        "comittee",
+        "commitee",
+        "have a committee"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        8
+      ],
+      "var": [
+        {
+          "em": "planning committee",
+          "aceita": [
+            "organizing committee"
+          ]
+        }
+      ]
+    }
+  ]
+}

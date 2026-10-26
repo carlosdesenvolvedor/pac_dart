@@ -51,10 +51,10 @@ void main() {
   final licoes = [for (final t in curso) for (final l in t.licoes) l];
   final papeis = {for (final l in licoes) for (final t in l.trechos) t.quem};
 
-  group('a tabela fixa dos 42 figurantesConhecidos', () {
+  group('a tabela fixa dos 53 figurantesConhecidos', () {
     test('cobre exatamente os figurantesConhecidos, e todos são figurantes', () {
       expect(FigurantesHistoria.tabelados.toSet(), figurantesConhecidos);
-      expect(FigurantesHistoria.tabelados, hasLength(42));
+      expect(FigurantesHistoria.tabelados, hasLength(53));
       for (final id in figurantesConhecidos) {
         expect(FigurantesHistoria.ehFigurante(id), isTrue, reason: id);
       }
@@ -67,7 +67,7 @@ void main() {
       expect(FigurantesHistoria.ehFigurante('papel-novo'), isTrue);
     });
 
-    test('42 aparências distintas entre si e distintas do elenco (inclusive dos genéricos ele/ela)', () {
+    test('53 aparências distintas entre si e distintas do elenco (inclusive dos genéricos ele/ela)', () {
       final elenco = {
         for (final id in [..._turismo]) id: ElencoTurismo.de(id)!,
         'ele': ElencoIngles.ele,
@@ -80,7 +80,7 @@ void main() {
         expect(vistas[s], isNull, reason: '$id saiu igual a ${vistas[s]}');
         vistas[s] = id;
       }
-      expect(vistas, hasLength(elenco.length + 42));
+      expect(vistas, hasLength(elenco.length + 53));
     });
 
     test('a roupa (= a cor do chip) não se confunde: ≥ 30 de distância RGB entre figurantes e do elenco', () {
@@ -128,6 +128,7 @@ void main() {
         'atendente', 'convidada', 'corretora', 'desenvolvedora', 'dev-nova', 'diretora', 'engenheira', 'estagiaria',
         'farmaceutica', 'gestora', 'moradora', 'motorista', 'participante', 'passageira', 'recepcionista',
         'recrutadora', 'supervisora', 'vizinha', 'vendedora', 'esposa',
+        'presidente', 'advogada', 'economista', 'pesquisadora', 'consultora', 'prima', 'tia', 'mae',
       };
       for (final id in figurantesConhecidos) {
         expect(FigurantesHistoria.de(id).cilios, delas.contains(id), reason: id);
@@ -135,7 +136,7 @@ void main() {
       expect(FigurantesHistoria.de('guia').cilios, isFalse, reason: 'a guia fala com voz de homem');
     });
 
-    test('o corpo do palco desenha todos os 42 sem exceção', () {
+    test('o corpo do palco desenha todos os 53 sem exceção', () {
       final rec = ui.PictureRecorder();
       final c = Canvas(rec);
       for (final id in figurantesConhecidos) {
@@ -237,7 +238,7 @@ void main() {
   });
 
   group('o currículo inteiro (assets/ingles/curriculo.json)', () {
-    test('626 lições lidas', () => expect(licoes, hasLength(626)));
+    test('796 lições lidas', () => expect(licoes, hasLength(796)));
 
     test('todo quem do currículo tem corpo no palco (exceto \'\'/placa), e nenhum papel cai no hash', () {
       for (final q in papeis) {
@@ -250,7 +251,7 @@ void main() {
       expect(ElencoTurismo.de(quemNoPalco('')), isNull);
     });
 
-    test('em cada uma das 626 lições, personagens diferentes têm aparência diferente', () {
+    test('em cada uma das 796 lições, personagens diferentes têm aparência diferente', () {
       for (final l in licoes) {
         final quem = {
           for (final t in l.trechos)

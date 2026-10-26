@@ -1,0 +1,288 @@
+{
+  "id": "vocab-dinheiro-economia.fabrica-do-cliente",
+  "trilha": "vocab-dinheiro-economia",
+  "nome": "Na fábrica: factory, supply, import…",
+  "emoji": "🏭",
+  "cena": "Você e o Mike fazem uma visita por vídeo à fábrica de um cliente que produz bicicletas elétricas e precisa de um sistema.",
+  "resumo": "Falar de produção e fornecimento: fábrica, fabricante, importar, revendedores, consumir e garantir.",
+  "fechamento": false,
+  "novos": [
+    "supply",
+    "manufacture",
+    "factory",
+    "guarantee",
+    "import",
+    "manufacturer",
+    "enterprise",
+    "dealer",
+    "consume",
+    "possess"
+  ],
+  "apoio": [
+    "bikes",
+    "batteries",
+    "deliveries",
+    "system"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**factory** = fábrica · **manufacture** = fabricar · **manufacturer** = fabricante · **import** = importar · **supply** = fornecimento · **dealer** = revendedor · **enterprise** = empresa (grande), corporativo · **consume** = consumir · **possess** = possuir · **guarantee** = garantir"
+    },
+    {
+      "t": "ex",
+      "c": "We import the parts and manufacture the bikes here.\nImportamos as peças e fabricamos as bicicletas aqui."
+    },
+    {
+      "t": "tip",
+      "c": "**supply chain** = cadeia de suprimentos; **in short supply** = em falta; **a bike dealer** = um revendedor de bicicletas."
+    },
+    {
+      "t": "warn",
+      "c": "**fabric** = tecido, não fábrica. Garantia de produto costuma ser **warranty**. **possess** é formal; na fala, **have**."
+    }
+  ],
+  "imagem": "🏭🚲🔋",
+  "visualizacao": "Pela câmera do celular do cliente, você vê a linha de montagem: bicicletas elétricas penduradas, barulho de máquinas e caixas de baterias empilhadas no canto.",
+  "foto_busca": "electric bicycle factory assembly line",
+  "trechos": [
+    {
+      "id": "f-fb57e2",
+      "quem": "cliente",
+      "cod": "We're building a second factory in Mexico this year.",
+      "dica": "Estamos construindo uma segunda fábrica no México este ano.",
+      "img": "🏭🏗️",
+      "alvo": "factory",
+      "alvo_pt": "fábrica",
+      "conceito": "factory = fábrica (work in a factory); fabric = tecido.",
+      "registro": "neutro",
+      "armadilhas": [
+        "fabric",
+        "fabrica"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5412140,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "This company is building a factory in China. → We're building a second factory in Mexico this year.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5f65c3",
+      "quem": "cliente",
+      "cod": "Here we manufacture about two hundred bikes a day.",
+      "dica": "Aqui, fabricamos cerca de duzentas bicicletas por dia.",
+      "img": "🚲🔧",
+      "alvo": "manufacture",
+      "alvo_pt": "fabricamos",
+      "conceito": "manufacture = fabricar (formal); na conversa, make também serve.",
+      "var": [
+        {
+          "em": "a day",
+          "aceita": [
+            "per day"
+          ]
+        },
+        {
+          "em": "about",
+          "aceita": [
+            "around"
+          ]
+        },
+        {
+          "em": "bikes",
+          "aceita": [
+            "bicycles"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "fabricate",
+        "manufacturate"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e68679",
+      "quem": "cliente",
+      "cod": "The new motors consume less energy than the old ones.",
+      "dica": "Os motores novos consomem menos energia que os antigos.",
+      "img": "⚙️🔋⬇️",
+      "alvo": "consume",
+      "alvo_pt": "consomem",
+      "conceito": "consume = consumir (energia, recurso); comprar é buy. time-consuming = demorado.",
+      "registro": "neutro",
+      "armadilhas": [
+        "consumes",
+        "spend"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-96f9ac",
+      "quem": "cliente",
+      "cod": "We import the batteries from South Korea.",
+      "dica": "Importamos as baterias da Coreia do Sul.",
+      "img": "🚢🔋",
+      "alvo": "import",
+      "alvo_pt": "Importamos",
+      "conceito": "import = importar (verbo: im-PORT; substantivo: IM-port). Em dev: import a library.",
+      "registro": "neutro",
+      "armadilhas": [
+        "imported",
+        "importate"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2949037,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "We imported this from Australia. → We import the batteries from South Korea.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a46f23",
+      "quem": "cliente",
+      "cod": "Our battery manufacturer is always late with deliveries.",
+      "dica": "O nosso fabricante de baterias está sempre atrasado nas entregas.",
+      "img": "🏭⏰📦",
+      "alvo": "manufacturer",
+      "alvo_pt": "fabricante",
+      "conceito": "manufacturer = fabricante (a car manufacturer, a leading manufacturer).",
+      "registro": "neutro",
+      "armadilhas": [
+        "fabricant",
+        "manufacture"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "with deliveries",
+          "aceita": [
+            "with the deliveries",
+            "on deliveries"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1c0bed",
+      "quem": "mike",
+      "contexto": "f-a46f23",
+      "cod": "So the supply chain is the main problem?",
+      "dica": "Então a cadeia de suprimentos é o principal problema?",
+      "img": "🔗📦⚠️",
+      "alvo": "supply chain",
+      "alvo_pt": "cadeia de suprimentos",
+      "conceito": "supply = fornecimento; supply chain = cadeia de suprimentos; supplies = materiais.",
+      "registro": "neutro",
+      "armadilhas": [
+        "supplies",
+        "suply"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ae97cc",
+      "quem": "cliente",
+      "cod": "We sell the bikes through forty dealers across the country.",
+      "dica": "Vendemos as bicicletas por meio de quarenta revendedores em todo o país.",
+      "img": "🏪🚲🗺️",
+      "alvo": "dealers",
+      "alvo_pt": "revendedores",
+      "conceito": "dealer = revendedor (a car dealer, a bike dealer); a loja é dealership.",
+      "registro": "neutro",
+      "armadilhas": [
+        "resellers",
+        "dealership"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        4
+      ],
+      "var": [
+        {
+          "em": "bikes",
+          "aceita": [
+            "bicycles"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-943424",
+      "quem": "cliente",
+      "cod": "Basically, we need an enterprise system that connects everything.",
+      "dica": "Basicamente, precisamos de um sistema corporativo que conecte tudo.",
+      "img": "🖥️🔗🏢",
+      "alvo": "enterprise",
+      "alvo_pt": "corporativo",
+      "conceito": "enterprise = empresa grande; enterprise software = software corporativo.",
+      "registro": "neutro",
+      "armadilhas": [
+        "corporative",
+        "enterprises"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aaa9b3",
+      "quem": "mike",
+      "contexto": "f-943424",
+      "cod": "Our team possesses all the skills this project requires.",
+      "dica": "(na proposta) O nosso time possui todas as habilidades que este projeto exige.",
+      "img": "🧰💡",
+      "alvo": "possesses",
+      "alvo_pt": "possui",
+      "conceito": "possess = possuir, ter (formal, de proposta ou anúncio de vaga); na fala, have.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "posses",
+        "possess",
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c33a3e",
+      "quem": "cliente",
+      "contexto": "f-aaa9b3",
+      "cod": "Can you guarantee that?",
+      "dica": "Você pode garantir isso?",
+      "img": "✅🤝❓",
+      "alvo": "guarantee",
+      "alvo_pt": "garantir",
+      "conceito": "guarantee = garantir (ga-ran-TII); garantia de produto = warranty.",
+      "registro": "neutro",
+      "armadilhas": [
+        "garantee",
+        "garanty"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3327772,
+        "en_autor": "CK",
+        "pt_id": 3449478,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN e PT iguais aos originais",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

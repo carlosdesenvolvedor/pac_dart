@@ -1,0 +1,250 @@
+{
+  "id": "vocab-casa-cidade.transito-chicago",
+  "trilha": "vocab-casa-cidade",
+  "nome": "Trânsito em Chicago: vehicle, fuel…",
+  "emoji": "🚦",
+  "cena": "Em Chicago, o Mike te dá carona até o escritório num dia de obras e trânsito parado.",
+  "resumo": "Dez palavras de trânsito e transporte: construction, accident, vehicle, fuel, transportation e outras.",
+  "fechamento": false,
+  "novos": [
+    "transport",
+    "accident",
+    "construction",
+    "vehicle",
+    "fuel",
+    "van",
+    "motor",
+    "rail",
+    "shelter",
+    "transportation"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Trânsito e transporte"
+    },
+    {
+      "t": "p",
+      "c": "**construction** obra · **accident** acidente · **vehicle** veículo · **van** van · **fuel** combustível · **motor** motor (elétrico, pequeno) · **transportation** transporte · **rail** trilho, trem · **shelter** abrigo · **transport** transportar"
+    },
+    {
+      "t": "ex",
+      "c": "Public transportation in this city is very convenient.\nO transporte público desta cidade é muito prático."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: road construction, a delivery van, run low on fuel, a bus shelter, by rail."
+    },
+    {
+      "t": "warn",
+      "c": "Motor de carro é engine; motor é de patinete, ventilador ou portão. Para abastecer o carro: get gas."
+    }
+  ],
+  "imagem": "🚗🚧🚦",
+  "visualizacao": "Você está no banco do passageiro do carro do Mike, parado no trânsito de Chicago. Cones laranja, buzinas ao longe e o trem elevado passando por cima da rua.",
+  "foto_busca": "Chicago traffic road construction",
+  "trechos": [
+    {
+      "id": "f-d09cb1",
+      "quem": "mike",
+      "cod": "Sorry, there's road construction on this street.",
+      "dica": "Desculpa, tem obra nesta rua.",
+      "img": "🚧🛣️",
+      "alvo": "construction",
+      "alvo_pt": "obra",
+      "conceito": "obra na rua = road construction (ou roadwork); under construction = em obras.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-481467",
+      "quem": "mike",
+      "cod": "There's probably been a traffic accident.",
+      "dica": "Provavelmente houve um acidente de trânsito.",
+      "img": "🚗💥",
+      "alvo": "accident",
+      "alvo_pt": "acidente",
+      "conceito": "traffic accident = acidente de trânsito; by accident = sem querer.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 737181,
+        "en_autor": "CM",
+        "pt_id": 1248882,
+        "pt_autor": "Welton",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "There's probably been",
+          "aceita": [
+            "There was probably"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f8dac1",
+      "quem": "voce",
+      "cod": "Look, that vehicle is blocking two lanes.",
+      "dica": "Olha, aquele veículo está bloqueando duas faixas.",
+      "img": "🚐🛑",
+      "alvo": "vehicle",
+      "alvo_pt": "veículo",
+      "conceito": "vehicle: o h é mudo (VI-i-kl).",
+      "registro": "informal",
+      "interferencias": [
+        "BR46"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b02fe4",
+      "quem": "mike",
+      "contexto": "f-f8dac1",
+      "cod": "It's just a delivery van with a flat tire.",
+      "dica": "É só uma van de entrega com o pneu furado.",
+      "img": "📦🚐",
+      "alvo": "delivery van",
+      "alvo_pt": "van de entrega",
+      "conceito": "delivery van = van de entrega; van também é furgão.",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-547933",
+      "quem": "mike",
+      "cod": "We're running low on fuel, so I need to stop for gas.",
+      "dica": "Estamos com pouco combustível, então preciso parar para abastecer.",
+      "img": "⛽📉",
+      "alvo": "fuel",
+      "alvo_pt": "combustível",
+      "conceito": "fuel = combustível (termo geral); para carro, gas: get gas = abastecer.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "We're running low",
+          "aceita": [
+            "We're low"
+          ]
+        },
+        {
+          "em": "stop for gas",
+          "aceita": [
+            "stop to get gas"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-2400ce",
+      "quem": "voce",
+      "cod": "Those scooters have small electric motors.",
+      "dica": "Aqueles patinetes têm motores elétricos pequenos.",
+      "img": "🛴⚡",
+      "alvo": "electric motors",
+      "alvo_pt": "motores elétricos",
+      "conceito": "motor = motor elétrico ou pequeno; motor de carro é engine.",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8123d7",
+      "quem": "voce",
+      "cod": "Public transportation in this city is very convenient.",
+      "dica": "O transporte público desta cidade é muito prático.",
+      "img": "🚇🏙️",
+      "alvo": "Public transportation",
+      "alvo_pt": "transporte público",
+      "conceito": "transportation = transporte (EUA); public transport é britânico. Sem artigo no começo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the",
+        "practical"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 474217,
+        "en_autor": "FeuDRenais",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "The transportation trocado por Public transportation",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-8b8bb3",
+      "quem": "mike",
+      "cod": "The new rail line goes right past our office.",
+      "dica": "A linha de trem nova passa bem do lado do nosso escritório.",
+      "img": "🚆🏢",
+      "alvo": "rail line",
+      "alvo_pt": "linha de trem",
+      "conceito": "rail = trilho; by rail = de trem. Em Chicago, o trem elevado é the L.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "goes right past",
+          "aceita": [
+            "goes right by",
+            "passes right by"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7c6deb",
+      "quem": "mike",
+      "cod": "At least the bus stop has a shelter, so you won't get wet.",
+      "dica": "Pelo menos o ponto de ônibus tem cobertura, então você não vai se molhar.",
+      "img": "🚏☔",
+      "alvo": "shelter",
+      "alvo_pt": "cobertura",
+      "lit": "[lit.: abrigo]",
+      "conceito": "bus shelter = ponto de ônibus coberto; o ponto em si é bus stop.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3f4b09",
+      "quem": "mike",
+      "cod": "That truck is transporting a bunch of new cars.",
+      "dica": "Aquele caminhão está transportando um monte de carros novos.",
+      "img": "🚛🚗🚗",
+      "alvo": "transporting",
+      "alvo_pt": "transportando",
+      "conceito": "transport (verbo) = transportar; o substantivo, nos EUA, é transportation.",
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

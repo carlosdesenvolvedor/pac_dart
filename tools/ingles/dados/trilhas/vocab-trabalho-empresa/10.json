@@ -1,0 +1,333 @@
+{
+  "id": "vocab-trabalho-empresa.o-time-cresce",
+  "trilha": "vocab-trabalho-empresa",
+  "nome": "Time novo: colleague, peer, assign…",
+  "emoji": "👥",
+  "cena": "Na chamada de segunda, o Mike apresenta os devs novos, conta quem foi promovido e distribui as tarefas.",
+  "resumo": "As palavras de um time que cresce: colleague, recruit, veteran, appointed, assign, assist, peer review…",
+  "fechamento": false,
+  "novos": [
+    "colleague",
+    "fellow",
+    "peer",
+    "crew",
+    "recruit",
+    "appoint",
+    "assign",
+    "assist",
+    "personnel",
+    "veteran"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Gente nova no time"
+    },
+    {
+      "t": "p",
+      "c": "**colleague** colega de trabalho · **fellow** companheiro (da mesma área ou origem) · **peer** par, colega do mesmo nível · **crew** turma · **recruit** recrutar · **appoint** nomear · **assign** atribuir · **assist** dar apoio · **personnel** pessoal, quadro · **veteran** veterano"
+    },
+    {
+      "t": "ex",
+      "c": "Ana was appointed design lead.\nA Ana foi nomeada líder de design."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: peer review, assign a task to someone, assist with onboarding, an industry veteran."
+    },
+    {
+      "t": "warn",
+      "c": "Falsos cognatos: **assign** não é assinar (sign); **assist** não é assistir (watch); **appoint** não é apontar (point)."
+    }
+  ],
+  "imagem": "👥👋📋",
+  "visualizacao": "Segunda de manhã, a chamada tem rostos que você nunca viu. O Mike dá as boas-vindas, compartilha um quadro de tarefas e os nomes novos vão aparecendo nos cards.",
+  "foto_busca": "team welcome video call new members",
+  "trechos": [
+    {
+      "id": "f-6ebd82",
+      "quem": "mike",
+      "cod": "We have a new colleague in Spain.",
+      "dica": "Temos um colega novo na Espanha.",
+      "img": "👋🇪🇸",
+      "alvo": "colleague",
+      "alvo_pt": "colega",
+      "conceito": "colleague = colega de trabalho (KOL-eeg); colega de classe = classmate.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR12"
+      ],
+      "armadilhas": [
+        "the spain",
+        "colegue"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 466658,
+        "en_autor": "FeuDRenais",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"We have a colleague in Spain.\"; + new; PT original: \"Nós temos um colega na Espanha.\"; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fdb701",
+      "quem": "mike",
+      "cod": "We recruited three new developers this month.",
+      "dica": "Recrutamos três desenvolvedores novos este mês.",
+      "img": "🧲🧑‍💻",
+      "alvo": "recruited",
+      "alvo_pt": "Recrutamos",
+      "conceito": "recruit = recrutar (recruit new developers).",
+      "var": [
+        {
+          "em": "developers",
+          "aceita": [
+            "devs"
+          ]
+        },
+        {
+          "em": "We recruited",
+          "aceita": [
+            "We've recruited"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR05",
+        "BR27"
+      ],
+      "armadilhas": [
+        "in this month",
+        "recruted"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1a619c",
+      "quem": "mike",
+      "cod": "One of them is an industry veteran with twenty years in mobile.",
+      "dica": "Um deles é um veterano do setor, com vinte anos em mobile.",
+      "img": "🧓📱💪",
+      "alvo": "industry veteran",
+      "alvo_pt": "veterano do setor",
+      "conceito": "veteran = veterano, profissional muito experiente (an industry veteran).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "veteran of the industry",
+        "has twenty years"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8a1d9b",
+      "quem": "mike",
+      "cod": "And another one is a fellow Brazilian.",
+      "dica": "E outro é seu conterrâneo brasileiro.",
+      "img": "🇧🇷🤝",
+      "alvo": "fellow Brazilian",
+      "alvo_pt": "conterrâneo brasileiro",
+      "conceito": "fellow + substantivo = colega, companheiro da mesma área ou origem (fellow devs, a fellow Brazilian).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15"
+      ],
+      "armadilhas": [
+        "brazilian fellow",
+        "brazilian too"
+      ],
+      "origem": "autoral_ia",
+      "lit": "[lit.: um companheiro brasileiro]",
+      "opcional": [
+        "one"
+      ]
+    },
+    {
+      "id": "f-d9f7a4",
+      "quem": "mike",
+      "cod": "Also, Ana was appointed design lead.",
+      "dica": "Além disso, a Ana foi nomeada líder de design.",
+      "img": "👩‍🎨⬆️🎉",
+      "alvo": "was appointed",
+      "alvo_pt": "foi nomeada",
+      "conceito": "appoint = nomear para um cargo, quase sempre na passiva (was appointed). Não é apontar.",
+      "var": [
+        {
+          "em": "appointed design lead",
+          "aceita": [
+            "appointed as design lead",
+            "appointed as the design lead"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR58",
+        "BR12"
+      ],
+      "armadilhas": [
+        "pointed",
+        "the ana"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 388631,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"She was appointed chairperson.\"; She → Also, Ana; chairperson → design lead; PT original: \"Ela foi nomeada presidente.\"; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-4cc9bf",
+      "quem": "mike",
+      "cod": "I assigned the new devs a small first task.",
+      "dica": "Atribuí aos devs novos uma primeira tarefa pequena.",
+      "img": "📌🧑‍💻",
+      "alvo": "assigned",
+      "alvo_pt": "Atribuí",
+      "conceito": "assign = atribuir, designar (a-SAIN, g mudo). Não é assinar (sign). Assignment = tarefa.",
+      "var": [
+        {
+          "em": "assigned the new devs a small first task",
+          "aceita": [
+            "assigned a small first task to the new devs"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "signed",
+        "assined"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8081258,
+        "en_autor": "AlanF_US",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"He assigned me a new task.\"; He → I, me → the new devs, a new task → a small first task; PT original: \"Ele me designou uma nova tarefa.\"; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-dd2d81",
+      "quem": "voce",
+      "cod": "I'm happy to assist with onboarding.",
+      "dica": "Fico feliz em dar apoio no onboarding.",
+      "img": "🙋‍♂️🧭",
+      "alvo": "assist",
+      "alvo_pt": "dar apoio",
+      "conceito": "assist = ajudar, dar apoio (mais formal que help). Assistir TV = watch.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56",
+        "BR30"
+      ],
+      "armadilhas": [
+        "watch",
+        "happy for"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I'm happy",
+          "aceita": [
+            "I'd be happy"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-34a005",
+      "quem": "mike",
+      "contexto": "f-dd2d81",
+      "cod": "Great. Start with peer review on their first PRs.",
+      "dica": "Ótimo. Começa com a revisão por pares nos primeiros PRs deles.",
+      "img": "👀🔍📝",
+      "alvo": "peer review",
+      "alvo_pt": "revisão por pares",
+      "conceito": "peer = par, colega do mesmo nível; peer review = revisão por pares. Não é pera (pear).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11",
+        "BR24"
+      ],
+      "armadilhas": [
+        "pear",
+        "review of peers"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c41d40",
+      "quem": "mike",
+      "cod": "HR will send out the personnel changes today.",
+      "dica": "O RH vai divulgar as mudanças de pessoal hoje.",
+      "img": "📧👥🔄",
+      "alvo": "personnel changes",
+      "alvo_pt": "mudanças de pessoal",
+      "conceito": "personnel = pessoal, quadro de funcionários (formal; per-so-NEL). Pessoal (particular) = personal.",
+      "var": [
+        {
+          "em": "will send out",
+          "aceita": [
+            "is going to send out",
+            "will announce",
+            "is going to announce"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR12"
+      ],
+      "armadilhas": [
+        "personal",
+        "the hr"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-105342",
+      "quem": "voce",
+      "cod": "Is the whole crew meeting in Austin in March?",
+      "dica": "A turma toda vai se encontrar em Austin em março?",
+      "img": "👥✈️🤠",
+      "alvo": "whole crew",
+      "alvo_pt": "turma toda",
+      "conceito": "crew = equipe, turma (informal, o time todo). Plano combinado: present continuous.",
+      "registro": "informal",
+      "interferencias": [
+        "BR29",
+        "BR17"
+      ],
+      "armadilhas": [
+        "will the whole",
+        "on march"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

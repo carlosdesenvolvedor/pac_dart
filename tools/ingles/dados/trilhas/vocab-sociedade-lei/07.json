@@ -1,0 +1,215 @@
+{
+  "id": "vocab-sociedade-lei.padaria-da-emma",
+  "trilha": "vocab-sociedade-lei",
+  "nome": "A padaria caseira da Emma",
+  "emoji": "🧁",
+  "cena": "Por vídeo, a Emma, sua vizinha, conta que quer vender bolos e pães feitos em casa, e você ajuda a entender as licenças, as regras da cidade e o que é proibido.",
+  "resumo": "Regras para um pequeno negócio: a permit, health regulations, restrictions on, banned, impose a fee on.",
+  "fechamento": false,
+  "novos": [
+    "regulation",
+    "permit",
+    "ban",
+    "impose",
+    "restriction",
+    "illegal",
+    "permission",
+    "chamber",
+    "regulate"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Licenças e regras da cidade"
+    },
+    {
+      "t": "p",
+      "c": "**regulation** norma · **permit** alvará, licença · **ban** proibir · **impose** impor · **restriction** restrição · **illegal** ilegal · **permission** permissão · **chamber** câmara · **regulate** regulamentar"
+    },
+    {
+      "t": "ex",
+      "c": "Do I need a permit to sell cakes?\nPreciso de alvará para vender bolo?"
+    },
+    {
+      "t": "tip",
+      "c": "**impose** algo **on** alguém; **restrictions on** (não: to); **apply for a permit** = pedir o alvará."
+    },
+    {
+      "t": "warn",
+      "c": "**permission** é a autorização; **permit** é o documento. **regulate** = regulamentar; regular (comum) = **regular**. Passado de ban: **banned**."
+    }
+  ],
+  "imagem": "🧁🍞📋",
+  "visualizacao": "A Emma aparece na cozinha dela, com farinha no avental e uma bandeja de cupcakes atrás. Você abre o site da prefeitura numa outra aba enquanto ela fala.",
+  "foto_busca": "home kitchen baking cupcakes",
+  "trechos": [
+    {
+      "id": "f-a8f571",
+      "quem": "voce",
+      "cod": "First, you need a permit from the city.",
+      "dica": "Primeiro, você precisa de um alvará da cidade.",
+      "img": "📄🏙️",
+      "alvo": "permit",
+      "alvo_pt": "alvará",
+      "conceito": "permit (PER-mit) = alvará, licença; a work permit = autorização de trabalho.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia",
+      "contexto": "I want to sell cakes from home. Where do I start?",
+      "var": [
+        {
+          "em": "from the city",
+          "aceita": [
+            "from City Hall"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6fc7cb",
+      "quem": "emma",
+      "contexto": "Some people sell cakes online without a permit.",
+      "cod": "Isn't that illegal?",
+      "dica": "Isso não é ilegal?",
+      "img": "🤔⚖️",
+      "alvo": "illegal",
+      "alvo_pt": "ilegal",
+      "conceito": "illegal = ilegal; it's illegal to + verbo = é ilegal + verbo.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2248685,
+        "en_autor": "CK",
+        "pt_id": 8431063,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN e PT iguais ao original",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b02f49",
+      "quem": "voce",
+      "contexto": "f-6fc7cb",
+      "cod": "Yes, the city regulates all food sales.",
+      "dica": "É, a cidade regulamenta toda venda de comida.",
+      "img": "🏙️🍰📏",
+      "alvo": "regulates",
+      "alvo_pt": "regulamenta",
+      "conceito": "regulate = regulamentar, controlar por regras. Regular (comum) = regular.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d6de3b",
+      "quem": "voce",
+      "cod": "You also have to follow the health regulations.",
+      "dica": "Você também tem que seguir as normas sanitárias.",
+      "img": "🧼🧤📋",
+      "alvo": "regulations",
+      "alvo_pt": "normas",
+      "conceito": "regulations (quase sempre no plural) = as normas, o regulamento.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2e637b",
+      "quem": "emma",
+      "cod": "Are there any restrictions on home businesses here?",
+      "dica": "Tem restrições para negócios em casa aqui?",
+      "img": "🏠🚧",
+      "alvo": "restrictions on",
+      "alvo_pt": "restrições para",
+      "conceito": "restriction on (não: to) = restrição a, para.",
+      "opcional": [
+        "any"
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e137b3",
+      "quem": "voce",
+      "cod": "The city banned plastic bags last year, so use paper ones.",
+      "dica": "A cidade proibiu sacolas plásticas no ano passado, então usa as de papel.",
+      "img": "🛍️🚫📄",
+      "alvo": "banned",
+      "alvo_pt": "proibiu",
+      "conceito": "ban = proibir por regra ou lei. Passado: banned (dobra o n).",
+      "registro": "informal",
+      "armadilhas": [
+        "baned"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "paper ones",
+          "aceita": [
+            "paper bags"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-93a3da",
+      "quem": "voce",
+      "cod": "The city also imposes a yearly fee on home bakeries.",
+      "dica": "A cidade também impõe uma taxa anual às padarias caseiras.",
+      "img": "💵📅",
+      "alvo": "imposes",
+      "alvo_pt": "impõe",
+      "conceito": "impose + algo + on + alguém = impor algo a alguém.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "yearly",
+          "aceita": [
+            "annual"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-da79d7",
+      "quem": "emma",
+      "cod": "Do I need permission to use my kitchen for my business?",
+      "dica": "Preciso de permissão para usar minha cozinha no meu negócio?",
+      "img": "🍳✋",
+      "alvo": "permission",
+      "alvo_pt": "permissão",
+      "conceito": "permission = a autorização; permit = o documento, o alvará.",
+      "registro": "informal",
+      "armadilhas": [
+        "permit"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-10fa16",
+      "quem": "voce",
+      "cod": "The chamber of commerce has free classes for small businesses.",
+      "dica": "A câmara de comércio tem cursos grátis para pequenos negócios.",
+      "img": "🏛️🎓🧁",
+      "alvo": "chamber of commerce",
+      "alvo_pt": "câmara de comércio",
+      "conceito": "chamber of commerce = câmara de comércio, a associação das empresas da cidade.",
+      "var": [
+        {
+          "em": "classes",
+          "aceita": [
+            "courses"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

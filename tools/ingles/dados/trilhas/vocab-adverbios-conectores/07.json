@@ -1,0 +1,247 @@
+{
+  "id": "vocab-adverbios-conectores.proposta-por-escrito",
+  "trilha": "vocab-adverbios-conectores",
+  "nome": "A proposta por escrito",
+  "emoji": "📝",
+  "cena": "Você e a Ana escrevem uma proposta para unificar os componentes do design system antes de mandar para o Mike.",
+  "resumo": "Conectores para ligar argumentos por escrito: moreover, furthermore, thus, hence, regardless of, respectively.",
+  "fechamento": false,
+  "novos": [
+    "thus",
+    "moreover",
+    "besides",
+    "furthermore",
+    "hence",
+    "similarly",
+    "regardless",
+    "equally",
+    "respectively",
+    "altogether"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**thus** = dessa forma · **moreover** = além disso · **besides** = além do mais · **furthermore** = ademais · **hence** = daí · **similarly** = da mesma forma · **regardless of** = independentemente de · **equally** = igualmente · **respectively** = respectivamente · **altogether** = ao todo."
+    },
+    {
+      "t": "ex",
+      "c": "The server was down, hence the delay.\nO servidor estava fora do ar, daí o atraso."
+    },
+    {
+      "t": "tip",
+      "c": "Na fala: **besides**, also, plus. Na escrita formal: **moreover**, **furthermore**, **thus**, **hence**."
+    },
+    {
+      "t": "warn",
+      "c": "**altogether** (ao todo) não é **all together** (todos juntos); **besides** não é **beside** (ao lado de)."
+    }
+  ],
+  "imagem": "📝🧩💻",
+  "visualizacao": "Você e a Ana editam o mesmo documento ao mesmo tempo. O cursor dela pisca ao lado do seu, e comentários amarelos vão aparecendo na margem.",
+  "foto_busca": "two people writing document laptop",
+  "trechos": [
+    {
+      "id": "f-8a49f1",
+      "quem": "ana",
+      "cod": "Each team built its own buttons, hence the mess.",
+      "dica": "Cada time fez os próprios botões, daí a bagunça.",
+      "img": "🔘🌀",
+      "alvo": "hence",
+      "alvo_pt": "daí",
+      "conceito": "hence + substantivo = daí o/a...: hence the delay (daí o atraso).",
+      "registro": "informal",
+      "interferencias": [
+        "BR11"
+      ],
+      "armadilhas": [
+        "it's own",
+        "their own"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b1382a",
+      "quem": "ana",
+      "cod": "Besides, one shared library is easier to maintain.",
+      "dica": "Além do mais, uma biblioteca compartilhada é mais fácil de manter.",
+      "img": "📚🔧",
+      "alvo": "Besides",
+      "alvo_pt": "Além do mais",
+      "conceito": "besides = além do mais (fala); não confundir com beside (ao lado de).",
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "beside",
+        "more easy"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-05a748",
+      "quem": "voce",
+      "cod": "Regardless of the cost, we need to do this.",
+      "dica": "Independentemente do custo, a gente precisa fazer isso.",
+      "img": "💰🤷✅",
+      "alvo": "Regardless of",
+      "alvo_pt": "Independentemente do",
+      "conceito": "regardless of + substantivo = independentemente de.",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "irregardless",
+        "need do"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b459f2",
+      "quem": "voce",
+      "cod": "Moreover, shared components save the team time.",
+      "dica": "(proposta) Além disso, componentes compartilhados poupam tempo do time.",
+      "img": "🧩⏱️",
+      "alvo": "Moreover",
+      "alvo_pt": "Além disso",
+      "conceito": "moreover = além disso, na escrita formal; na fala, also ou plus.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "saves",
+        "the shared"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5e22af",
+      "quem": "voce",
+      "cod": "Furthermore, users have asked for a more consistent look.",
+      "dica": "(proposta) Ademais, os usuários pediram um visual mais consistente.",
+      "img": "👥🙋🎨",
+      "alvo": "Furthermore",
+      "alvo_pt": "Ademais",
+      "conceito": "furthermore = além disso, ademais; bem formal, traz um argumento a mais.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR27"
+      ],
+      "armadilhas": [
+        "asked a",
+        "the users"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "have asked",
+          "aceita": [
+            "asked"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-510146",
+      "quem": "ana",
+      "cod": "Similarly, all our forms should follow the same pattern.",
+      "dica": "Da mesma forma, todos os nossos formulários deveriam seguir o mesmo padrão.",
+      "img": "📋✔️",
+      "alvo": "Similarly",
+      "alvo_pt": "Da mesma forma",
+      "conceito": "similarly = da mesma forma; liga dois casos parecidos no começo da frase.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "should to",
+        "similar"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-95d76a",
+      "quem": "voce",
+      "cod": "Thus, the app will look the same on every device.",
+      "dica": "(proposta) Dessa forma, o app vai ficar igual em todos os aparelhos.",
+      "img": "📱💻✅",
+      "alvo": "Thus",
+      "alvo_pt": "Dessa forma",
+      "conceito": "thus = assim, dessa forma (escrita formal); and thus = e, portanto.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "same of",
+        "equal"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-84a60b",
+      "quem": "ana",
+      "cod": "Phases one and two will take two and four weeks, respectively.",
+      "dica": "(proposta) As fases um e dois vão levar duas e quatro semanas, respectivamente.",
+      "img": "📆📆✍️",
+      "alvo": "respectively",
+      "alvo_pt": "respectivamente",
+      "conceito": "respectively vai no fim, depois da lista, com vírgula antes.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "respectivelly",
+        "takes"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7d7389",
+      "quem": "voce",
+      "contexto": "f-84a60b",
+      "cod": "Altogether, the migration will take about six weeks.",
+      "dica": "(proposta) Ao todo, a migração vai levar umas seis semanas.",
+      "img": "🧮🗓️",
+      "alvo": "Altogether",
+      "alvo_pt": "Ao todo",
+      "conceito": "altogether = ao todo, no total; não é all together (todos juntos).",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "all together",
+        "take"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ddd4c9",
+      "quem": "ana",
+      "cod": "Let's split the final review equally before we send it to Mike.",
+      "dica": "Vamos dividir a revisão final igualmente antes de mandar pro Mike.",
+      "img": "✂️⚖️📨",
+      "alvo": "equally",
+      "alvo_pt": "igualmente",
+      "conceito": "split equally = dividir igual; equally important = tão importante quanto.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "equal",
+        "will send"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "before we send it",
+          "aceita": [
+            "before sending it"
+          ]
+        }
+      ]
+    }
+  ]
+}

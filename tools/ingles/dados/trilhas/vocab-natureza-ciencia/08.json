@@ -1,0 +1,208 @@
+{
+  "id": "vocab-natureza-ciencia.estrelas-no-deserto",
+  "trilha": "vocab-natureza-ciencia",
+  "nome": "Estrelas no deserto",
+  "emoji": "🌌",
+  "cena": "Na viagem ao Texas, a Sarah leva você e o Lucas para ver as estrelas num parque no deserto, longe das luzes da cidade, numa noite de lua cheia.",
+  "resumo": "Falar do céu à noite: desert, darkness, moon, shadows, the solar system, Earth, the universe.",
+  "fechamento": false,
+  "novos": [
+    "earth",
+    "phenomenon",
+    "desert",
+    "moon",
+    "solar",
+    "universe",
+    "darkness",
+    "shadow"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Palavras do céu à noite"
+    },
+    {
+      "t": "p",
+      "c": "**earth** Terra (planeta); terra · **phenomenon** fenômeno · **desert** deserto · **moon** lua · **solar** solar · **universe** universo · **darkness** escuridão · **shadow** sombra (projetada)"
+    },
+    {
+      "t": "ex",
+      "c": "The moon is very bright tonight.\nA lua está muito brilhante hoje."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **the solar system** (sistema solar), **a natural phenomenon** (fenômeno natural), **cast a shadow** (projetar uma sombra). Plural: phenomena."
+    },
+    {
+      "t": "warn",
+      "c": "**desert** (DE-sert, deserto) x **dessert** (de-SSERT, sobremesa). E ficar na sombra para fugir do sol é **stay in the shade**; shadow é a silhueta."
+    }
+  ],
+  "imagem": "🏜️🌕✨",
+  "visualizacao": "Você está deitado numa canga no chão do deserto, ainda morno do dia. O céu está cheio de estrelas, a lua cheia clareia as pedras e a voz da Sarah aponta cada planeta.",
+  "foto_busca": "desert night sky stars full moon",
+  "trechos": [
+    {
+      "id": "f-3746f4",
+      "quem": "sarah",
+      "cod": "This park is in the desert, far from the city lights.",
+      "dica": "Esse parque fica no deserto, longe das luzes da cidade.",
+      "img": "🏜️🌌",
+      "alvo": "desert",
+      "alvo_pt": "deserto",
+      "conceito": "desert = deserto (DE-sert). Cuidado: dessert, com ss, é sobremesa.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "dessert"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0e65b7",
+      "quem": "lucas",
+      "cod": "I can't see anything in this darkness.",
+      "dica": "Não consigo ver nada nessa escuridão.",
+      "img": "🌑🙈",
+      "alvo": "darkness",
+      "alvo_pt": "escuridão",
+      "conceito": "darkness = escuridão; na conversa também se diz in the dark (sit in the dark).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-23d308",
+      "quem": "sarah",
+      "cod": "The moon is very bright tonight.",
+      "dica": "A lua está muito brilhante hoje à noite.",
+      "img": "🌕💡",
+      "alvo": "moon",
+      "alvo_pt": "lua",
+      "conceito": "moon = lua, com the: the moon (a nossa lua). A full moon = lua cheia.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6009176,
+        "en_autor": "mailohilohi",
+        "pt_id": 6010548,
+        "pt_autor": "sergiomelo",
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN igual ao original; PT ajustado na revisão: 'hoje' -> 'hoje à noite' (leva a tonight)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6d065a",
+      "quem": "lucas",
+      "cod": "Look, you can see our shadows in the moonlight!",
+      "dica": "Olha, dá pra ver as nossas sombras no luar!",
+      "img": "🌕🧍🧍",
+      "alvo": "shadows",
+      "alvo_pt": "sombras",
+      "conceito": "shadow = sombra projetada, a silhueta. Ficar na sombra para fugir do sol = stay in the shade.",
+      "registro": "informal",
+      "armadilhas": [
+        "shade",
+        "shades"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ec0044",
+      "quem": "sarah",
+      "cod": "That bright dot is Jupiter, the biggest planet in the solar system.",
+      "dica": "Aquele ponto brilhante é Júpiter, o maior planeta do sistema solar.",
+      "img": "🪐☀️",
+      "alvo": "solar",
+      "alvo_pt": "solar",
+      "conceito": "solar = solar: the solar system, solar panels (painéis solares).",
+      "var": [
+        {
+          "em": "biggest",
+          "aceita": [
+            "largest"
+          ]
+        },
+        {
+          "em": "in the solar system",
+          "aceita": [
+            "of the solar system"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-66a750",
+      "quem": "lucas",
+      "cod": "How far is Jupiter from Earth?",
+      "dica": "Júpiter fica a que distância da Terra?",
+      "img": "🪐↔️🌍",
+      "alvo": "Earth",
+      "alvo_pt": "Terra",
+      "conceito": "Earth = a Terra, planeta, com maiúscula (Earth ou the Earth). Terra de plantar é soil.",
+      "var": [
+        {
+          "em": "from Earth",
+          "aceita": [
+            "from the Earth"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "land"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-34b48a",
+      "quem": "sarah",
+      "cod": "Shooting stars are a natural phenomenon, not real stars.",
+      "dica": "Estrelas cadentes são um fenômeno natural, não estrelas de verdade.",
+      "img": "🌠🤓",
+      "alvo": "phenomenon",
+      "alvo_pt": "fenômeno",
+      "conceito": "phenomenon = fenômeno; plural phenomena. Tônica: phe-NOM-e-non.",
+      "registro": "informal",
+      "armadilhas": [
+        "fenomenon",
+        "phenomena"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-407d9f",
+      "quem": "lucas",
+      "cod": "How old is the universe?",
+      "dica": "Quantos anos tem o universo?",
+      "img": "🌌❓",
+      "alvo": "universe",
+      "alvo_pt": "universo",
+      "conceito": "universe = universo, com the: the universe. Idade com be: How old is it? (não: How many years has it?)",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 682266,
+        "en_autor": "Source_VOA",
+        "pt_id": 5231838,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN e PT iguais ao original",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

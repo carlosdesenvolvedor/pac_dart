@@ -1,0 +1,395 @@
+{
+  "versao": 1,
+  "trilha": "vocab-coisas-descricoes",
+  "arco": "Descrever o que se vê: o protótipo da Ana, a mudança e o brechó com a Julia, a arquitetura com o Mike, o home office montado com o Lucas, a trilha e a obra do Ben, o local do encontro e as métricas com a Sarah, o jantar e as cores da sala da Emma. Sempre um sorriso no fim.",
+  "licoes": {
+    "vocab-coisas-descricoes.prototipo-tela-ana": {
+      "titulo": { "en": "The new home screen", "pt": "A tela inicial nova" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-977637", "acao": "mostra", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-979b91", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "emocao": "radiante" } ] },
+            { "frase": "f-267523", "acao": "mostra", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-bef358", "acao": "aponta", "emocao": "neutro",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-9e47b8", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-d46579", "acao": "concorda", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-135dc1", "acao": "aponta", "emocao": "surpreso", "efeito": "interrogacao" },
+            { "frase": "f-c55b99", "acao": "aponta", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-cc1c05", "acao": "concorda", "emocao": "pensativo", "camera": "close",
+              "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
+            { "frase": "f-7442a0", "acao": "mostra", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-a22ee4", "acao": "concorda", "emocao": "feliz", "camera": "geral" },
+            { "mudo": true, "quem": "voce", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-coisas-descricoes.mudanca-julia": {
+      "titulo": { "en": "Moving day with Julia", "pt": "Dia de mudança com a Julia" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "julia", "pos": "centroDireita", "segura": "caixa", "emocao": "cansado" }
+          ],
+          "objetos": [
+            { "prop": "caixa", "pos": "esquerda" },
+            { "prop": "portaRetrato", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-e166bc", "acao": "nega", "emocao": "cansado", "efeito": "suor", "camera": "geral" },
+            { "frase": "f-911f28", "acao": "mostra", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-c58d7a", "acao": "aponta", "alvo": "portaRetrato", "emocao": "feliz",
+              "reacoes": [ { "quem": "julia", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "julia", "segura": "portaRetrato",
+              "objetos": [
+                { "prop": "caixa", "acao": "aparece", "pos": "centro" },
+                { "prop": "portaRetrato", "acao": "some" }
+              ] },
+            { "frase": "f-e014be", "acao": "mostra", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-7d41eb", "acao": "aponta", "alvo": "caixa", "emocao": "determinado",
+              "reacoes": [ { "quem": "julia", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "julia", "segura": "documento",
+              "objetos": [ { "prop": "portaRetrato", "acao": "aparece", "pos": "direita" } ] },
+            { "frase": "f-32aa2b", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-8cd475", "acao": "aponta", "emocao": "surpreso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "julia", "emocao": "surpreso" } ] },
+            { "frase": "f-e23123", "acao": "aponta", "alvo": "caixa", "emocao": "feliz" },
+            { "frase": "f-90f2b5", "acao": "nega", "emocao": "determinado" },
+            { "frase": "f-01c444", "acao": "aponta", "alvo": "caixa", "emocao": "feliz", "efeito": "coracoes",
+              "camera": "medio" },
+            { "frase": "f-2d22db", "acao": "aponta", "emocao": "timido", "efeito": "suor", "camera": "close",
+              "reacoes": [ { "quem": "julia", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "julia", "acao": "abraca", "alvo": "voce", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-coisas-descricoes.brecho-julia": {
+      "titulo": { "en": "Treasures at the thrift store", "pt": "Achados no brechó" },
+      "cenas": [
+        {
+          "cenario": "loja", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "julia", "pos": "esquerda", "segura": "casaco", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "vendedor", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "presente", "pos": "direita" } ],
+          "passos": [
+            { "frase": "f-4f9c3e", "acao": "mostra", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-9d3dbb", "acao": "aponta", "emocao": "pensativo",
+              "reacoes": [ { "quem": "vendedor", "emocao": "feliz" } ] },
+            { "frase": "f-adcd65", "acao": "concorda", "emocao": "radiante", "efeito": "brilho", "camera": "medio" },
+            { "frase": "f-ff0f16", "acao": "nega", "emocao": "pensativo",
+              "reacoes": [ { "quem": "vendedor", "emocao": "surpreso" } ] },
+            { "frase": "f-ec587a", "acao": "aponta", "emocao": "surpreso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-a4888a", "acao": "pensa", "emocao": "surpreso" },
+            { "mudo": true, "quem": "voce", "segura": "presente",
+              "objetos": [ { "prop": "presente", "acao": "some" } ] },
+            { "frase": "f-a2efeb", "acao": "mostra", "alvo": "julia", "emocao": "feliz",
+              "reacoes": [ { "quem": "julia", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-590204", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-269c26", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-a56941", "acao": "aponta", "alvo": "vendedor", "emocao": "feliz", "camera": "medio" },
+            { "mudo": true, "quem": "vendedor", "acao": "acena", "emocao": "feliz",
+              "reacoes": [
+                { "quem": "voce", "segura": "sacola", "emocao": "radiante" },
+                { "quem": "julia", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "vocab-coisas-descricoes.arquitetura-sistema": {
+      "titulo": { "en": "The architecture review", "pt": "A revisão de arquitetura" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "caderno", "emocao": "determinado" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-74a3cf", "acao": "escreve", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-ce7250", "acao": "aponta", "emocao": "nervoso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "mike", "emocao": "pensativo" } ] },
+            { "frase": "f-991ec4", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-fc856c", "acao": "mostra", "emocao": "neutro", "camera": "medio" },
+            { "frase": "f-5898b9", "acao": "nega", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-dddec9", "acao": "aponta", "emocao": "pensativo",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-7eebcd", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-0559fc", "acao": "aponta", "emocao": "surpreso" },
+            { "mudo": true, "quem": "mike", "acao": "escreve", "emocao": "pensativo" },
+            { "frase": "f-202bb9", "acao": "mostra", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-5fe75b", "acao": "concorda", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "mike", "acao": "palmas", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-coisas-descricoes.setup-home-office": {
+      "titulo": { "en": "Setting up the home office", "pt": "Montando o home office" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "lucas", "pos": "centroDireita", "segura": "caixa", "emocao": "neutro" },
+            { "quem": "mike", "remoto": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centro" },
+            { "prop": "caixa", "pos": "direita" }
+          ],
+          "passos": [
+            { "frase": "f-a14ee4", "acao": "aponta", "emocao": "nervoso", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-f07ac7", "acao": "aponta", "emocao": "timido" },
+            { "frase": "f-d331cb", "acao": "nega", "emocao": "pensativo" },
+            { "frase": "f-abecb7", "segura": "celular", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "lucas", "emocao": "feliz" } ] },
+            { "frase": "f-d5cd4b", "acao": "mostra", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-2e01a8", "acao": "aponta", "alvo": "notebook", "emocao": "feliz" },
+            { "frase": "f-67182c", "acao": "pensa", "emocao": "determinado" },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-ed64fb", "emocao": "feliz" },
+            { "frase": "f-93ead6", "acao": "concorda", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "lucas", "emocao": "feliz" } ] },
+            { "frase": "f-046057", "acao": "aponta", "alvo": "lucas", "emocao": "timido" },
+            { "mudo": true, "quem": "lucas", "segura": "caderno", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-coisas-descricoes.parque-com-ben": {
+      "titulo": { "en": "A trail with Ben", "pt": "Uma trilha com o Ben" },
+      "cenas": [
+        {
+          "cenario": "lago", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "garrafa", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "mapa", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-b9781f", "acao": "aponta", "emocao": "nervoso", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-d01f4d", "acao": "aponta", "emocao": "radiante" },
+            { "frase": "f-6f0d34", "acao": "aponta", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-537b1d", "acao": "pensa", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "acao": "anda", "para": "centro" },
+            { "frase": "f-fe28d8", "acao": "mostra", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-5f8493", "acao": "aponta", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-679ec5", "acao": "aponta", "emocao": "radiante" },
+            { "frase": "f-c5e6fa", "acao": "nega", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-011ea7", "acao": "pensa", "emocao": "surpreso" },
+            { "frase": "f-428393", "acao": "comemora", "emocao": "radiante", "efeito": "brilho", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-coisas-descricoes.obra-casa-ben": {
+      "titulo": { "en": "Ben's old house", "pt": "A casa antiga do Ben" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "documento", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-00f4b0", "acao": "mostra", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-68f15b", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-d1a67c", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-6d9f30", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-32ad65", "acao": "aponta", "emocao": "feliz" },
+            { "frase": "f-1e8e89", "acao": "aponta", "emocao": "surpreso" },
+            { "frase": "f-e46c86", "acao": "concorda", "emocao": "radiante", "camera": "medio" },
+            { "frase": "f-7c5a9d", "acao": "mostra", "emocao": "neutro" },
+            { "frase": "f-96ad64", "acao": "aponta", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-5cb49b", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-b43bac", "acao": "nega", "emocao": "feliz" },
+            { "frase": "f-43df81", "acao": "concorda", "emocao": "determinado" },
+            { "mudo": true, "quem": "ben", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-coisas-descricoes.offsite-austin": {
+      "titulo": { "en": "Picking a venue for the team", "pt": "Escolhendo o local do encontro" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "sarah", "pos": "centroDireita", "segura": "mapa", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-368887", "acao": "mostra", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-df0b75", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-1188ff", "acao": "nega", "emocao": "pensativo" },
+            { "mudo": true, "quem": "sarah", "acao": "aponta", "emocao": "determinado", "efeito": "exclamacao" },
+            { "frase": "f-0a3849", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "emocao": "radiante" } ] },
+            { "frase": "f-c45527", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-4b23da", "acao": "mostra", "emocao": "neutro", "camera": "medio" },
+            { "frase": "f-e1cf07", "acao": "nega", "emocao": "nervoso", "efeito": "suor" },
+            { "frase": "f-4a3390", "acao": "nega", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-131072", "acao": "aponta", "emocao": "pensativo" },
+            { "frase": "f-850627", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "sarah", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-coisas-descricoes.jantar-emma": {
+      "titulo": { "en": "Dinner at Emma's", "pt": "Jantar na casa da Emma" },
+      "cenas": [
+        {
+          "cenario": "salaDeEstar", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "vizinha", "pos": "esquerda", "visivel": false },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "presente", "emocao": "feliz" },
+            { "quem": "emma", "pos": "centroDireita", "emocao": "radiante" },
+            { "quem": "marido", "pos": "direita", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "prato", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-d3068f", "acao": "mostra", "alvo": "emma", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "emma", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "segura": "nada",
+              "reacoes": [ { "quem": "emma", "segura": "presente", "emocao": "feliz" } ] },
+            { "frase": "f-58c430", "acao": "nega", "emocao": "feliz" },
+            { "frase": "f-f122da", "acao": "aponta", "alvo": "prato", "emocao": "feliz",
+              "reacoes": [ { "quem": "emma", "emocao": "timido" } ] },
+            { "frase": "f-01b92f", "acao": "aponta", "alvo": "emma", "emocao": "radiante",
+              "reacoes": [ { "quem": "marido", "emocao": "surpreso" } ] },
+            { "frase": "f-a3bd9c", "acao": "aponta", "alvo": "marido", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "marido", "acao": "nega", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "vizinha", "acao": "entra", "emocao": "feliz" },
+            { "frase": "f-ae6f94", "acao": "acena", "alvo": "vizinha", "emocao": "radiante", "efeito": "confete" },
+            { "frase": "f-d382c6", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "vizinha", "emocao": "feliz" } ] },
+            { "frase": "f-904416", "acao": "pensa", "emocao": "timido",
+              "objetos": [
+                { "prop": "prato", "acao": "some" },
+                { "prop": "bolo", "acao": "aparece", "pos": "centro" }
+              ] },
+            { "frase": "f-3faf74", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "emma", "emocao": "feliz" } ] },
+            { "frase": "f-3848f2", "acao": "acena", "alvo": "emma", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "emma", "emocao": "radiante" }, { "quem": "marido", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "emma", "acao": "abraca", "alvo": "voce", "emocao": "radiante",
+              "reacoes": [
+                { "quem": "marido", "acao": "acena", "emocao": "feliz" },
+                { "quem": "vizinha", "acao": "acena", "emocao": "feliz" }
+              ] }
+          ]
+        }
+      ]
+    },
+    "vocab-coisas-descricoes.metricas-sarah": {
+      "titulo": { "en": "The launch numbers", "pt": "Os números do lançamento" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "sarah", "pos": "centroDireita", "segura": "documento", "emocao": "determinado" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-1b8168", "acao": "mostra", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-573dd5", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-5cf8e6", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-0d0265", "acao": "nega", "emocao": "nervoso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "sarah", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "sarah", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-d13e78", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-fc6817", "acao": "nega", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-cb4476", "acao": "aponta", "emocao": "pensativo" },
+            { "frase": "f-a7c443", "acao": "mostra", "emocao": "surpreso" },
+            { "frase": "f-a1da38", "acao": "aponta", "emocao": "radiante", "efeito": "brilho", "camera": "close",
+              "reacoes": [ { "quem": "sarah", "emocao": "radiante" } ] },
+            { "frase": "f-2aba65", "acao": "nega", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "acao": "acena", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-coisas-descricoes.cores-sala-emma": {
+      "titulo": { "en": "Colors for the living room", "pt": "As cores da sala" },
+      "cenas": [
+        {
+          "cenario": "salaDeEstar", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "emma", "pos": "centroDireita", "segura": "caderno", "emocao": "pensativo" }
+          ],
+          "objetos": [ { "prop": "garrafa", "pos": "esquerda" } ],
+          "passos": [
+            { "frase": "f-049f32", "acao": "mostra", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-8a9029", "acao": "nega", "emocao": "nervoso" },
+            { "frase": "f-adc569", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-77d4b8", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "emma", "emocao": "feliz" } ] },
+            { "frase": "f-1c88da", "acao": "pensa", "emocao": "feliz" },
+            { "frase": "f-b14906", "acao": "aponta", "alvo": "garrafa", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "segura": "garrafa",
+              "objetos": [ { "prop": "garrafa", "acao": "some" } ] },
+            { "mudo": true, "quem": "voce", "segura": "nada",
+              "reacoes": [ { "quem": "emma", "segura": "garrafa", "emocao": "feliz" } ] },
+            { "frase": "f-1e4cf2", "acao": "mostra", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-780770", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "emma", "emocao": "radiante" } ] },
+            { "frase": "f-e51325", "acao": "aponta", "emocao": "radiante", "efeito": "brilho" },
+            { "frase": "f-40c2de", "acao": "aponta", "emocao": "feliz" },
+            { "frase": "f-81b625", "acao": "comemora", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "emma", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

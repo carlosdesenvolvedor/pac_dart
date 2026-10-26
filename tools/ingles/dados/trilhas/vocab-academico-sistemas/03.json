@@ -1,0 +1,321 @@
+{
+  "id": "vocab-academico-sistemas.tela-nova-ana",
+  "trilha": "vocab-academico-sistemas",
+  "nome": "A tela nova: render, grid, gradient…",
+  "emoji": "🎨",
+  "cena": "A Ana mostra por chamada o protótipo da tela nova, e vocês discutem como o layout vai se comportar no celular, no tablet e no computador antes de você codar.",
+  "resumo": "As palavras de layout e interface: render, grid, gradient, fluid, adaptive, static, dynamic, compact…",
+  "fechamento": false,
+  "novos": [
+    "render",
+    "grid",
+    "gradient",
+    "fluid",
+    "adaptive",
+    "adjacent",
+    "static",
+    "dynamic",
+    "reactive",
+    "composite",
+    "compact"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Layout em todas as telas"
+    },
+    {
+      "t": "p",
+      "c": "**render** renderizar · **grid** grade · **gradient** degradê · **fluid** fluido · **adaptive** adaptativo · **adjacent** adjacente, vizinho · **static** estático · **dynamic** dinâmico · **reactive** reativo · **composite** composto · **compact** compacto"
+    },
+    {
+      "t": "ex",
+      "c": "I want a soft blue gradient behind the header.\nQuero um degradê azul suave atrás do cabeçalho."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: a fluid layout, dynamic content, reactive programming, a composite image, compact mode."
+    },
+    {
+      "t": "warn",
+      "c": "**degradê** não existe em inglês: é **gradient** (GREI-di-ent). **adjacent** pede to: adjacent to the menu."
+    }
+  ],
+  "imagem": "🎨📱💻",
+  "visualizacao": "Você está numa chamada de vídeo com a Ana. Ela arrasta telas coloridas do protótipo lado a lado: celular, tablet e computador, e aponta cada detalhe com o cursor.",
+  "foto_busca": "designer prototype screens phone tablet",
+  "trechos": [
+    {
+      "id": "f-569a90",
+      "quem": "ana",
+      "cod": "The home screen uses a 12-column grid.",
+      "dica": "A tela inicial usa uma grade de 12 colunas.",
+      "img": "📱🔲",
+      "alvo": "grid",
+      "alvo_pt": "grade",
+      "conceito": "grid = grade de layout; designer no Brasil também diz grid. 12-column grid: número + hífen, sem plural.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR09",
+        "BR24"
+      ],
+      "armadilhas": [
+        "12-columns",
+        "grade"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1cf537",
+      "quem": "ana",
+      "cod": "On mobile, the layout is fluid and fills the whole screen.",
+      "dica": "No celular, o layout é fluido e ocupa a tela inteira.",
+      "img": "📱💧",
+      "alvo": "fluid",
+      "alvo_pt": "fluido",
+      "conceito": "fluid = layout que se estica com a tela; como substantivo, fluid é líquido.",
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "fluent",
+        "fluido"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "fills",
+          "aceita": [
+            "takes up"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-2d0fdd",
+      "quem": "voce",
+      "cod": "Is the design adaptive or just responsive?",
+      "dica": "O design é adaptativo ou só responsivo?",
+      "img": "🤔📐",
+      "alvo": "adaptive",
+      "alvo_pt": "adaptativo",
+      "conceito": "adaptive = layouts separados por tamanho de tela; responsive = um layout que se ajusta.",
+      "registro": "neutro",
+      "armadilhas": [
+        "adaptative",
+        "adaptable"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3f65b2",
+      "quem": "ana",
+      "cod": "When you tap a card, the adjacent cards shift to make room.",
+      "dica": "Quando você toca num card, os cards adjacentes se mexem pra abrir espaço.",
+      "img": "👆🃏↔️",
+      "alvo": "adjacent cards",
+      "alvo_pt": "cards adjacentes",
+      "conceito": "adjacent = vizinho, ao lado. Com objeto, pede to: adjacent to the menu.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR08",
+        "BR09"
+      ],
+      "armadilhas": [
+        "adjacents",
+        "adjacent of"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "shift",
+          "aceita": [
+            "move"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a1ed0a",
+      "quem": "voce",
+      "cod": "The settings page can be static, since nothing changes there.",
+      "dica": "A página de configurações pode ser estática, já que nada muda nela.",
+      "img": "⚙️🧊",
+      "alvo": "static",
+      "alvo_pt": "estática",
+      "conceito": "static = estático, fixo: static page, static method. Já que = since.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR25"
+      ],
+      "armadilhas": [
+        "statical",
+        "estatic"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-31d4ca",
+      "quem": "ana",
+      "cod": "But the feed has dynamic content that updates every minute.",
+      "dica": "Mas o feed tem conteúdo dinâmico que se atualiza a cada minuto.",
+      "img": "📰🔄⏱️",
+      "alvo": "dynamic content",
+      "alvo_pt": "conteúdo dinâmico",
+      "conceito": "dynamic content = conteúdo dinâmico; como substantivo, a dinâmica: the team dynamic.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR22"
+      ],
+      "armadilhas": [
+        "dinamic",
+        "dynamic contents"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ee6b59",
+      "quem": "voce",
+      "cod": "The app will only render the cards that are on screen.",
+      "dica": "O app só vai renderizar os cards que estão na tela.",
+      "img": "🖼️👀",
+      "alvo": "render",
+      "alvo_pt": "renderizar",
+      "conceito": "render = renderizar, desenhar na tela. Fora da tela, render = tornar: rendered the app unusable.",
+      "var": [
+        {
+          "em": "will only render",
+          "aceita": [
+            "will render only",
+            "is only going to render"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "renderize",
+        "rendering"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b0d91a",
+      "quem": "ana",
+      "cod": "I want a soft blue gradient behind the header.",
+      "dica": "Quero um degradê azul suave atrás do cabeçalho.",
+      "img": "🌅💙",
+      "alvo": "gradient",
+      "alvo_pt": "degradê",
+      "conceito": "degradê = gradient. Ordem dos adjetivos: soft blue gradient.",
+      "var": [
+        {
+          "em": "I want",
+          "aceita": [
+            "I'd like"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "degrade",
+        "blue soft"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b5fbcd",
+      "quem": "voce",
+      "cod": "With reactive programming, the screen updates by itself.",
+      "dica": "Com programação reativa, a tela se atualiza sozinha.",
+      "img": "⚡🔁📱",
+      "alvo": "reactive programming",
+      "alvo_pt": "programação reativa",
+      "conceito": "reactive = reativo. Sobre pessoas, reactive é reagir em vez de se antecipar (proactive).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR62"
+      ],
+      "armadilhas": [
+        "programming reactive",
+        "updates itself"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "by itself",
+          "aceita": [
+            "on its own"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-dcd1fa",
+      "quem": "ana",
+      "cod": "For the logo, I made a composite image with three layers.",
+      "dica": "Pro logo, fiz uma imagem composta com três camadas.",
+      "img": "🖼️🥞",
+      "alvo": "composite image",
+      "alvo_pt": "imagem composta",
+      "conceito": "composite = composto de várias partes. Pronúncia en-US: com-PAH-zit.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR32"
+      ],
+      "armadilhas": [
+        "composed image",
+        "did a"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-034166",
+      "quem": "ana",
+      "cod": "On desktop, you can switch to compact mode.",
+      "dica": "No computador, dá pra mudar pro modo compacto.",
+      "img": "🖥️🗜️",
+      "alvo": "compact mode",
+      "alvo_pt": "modo compacto",
+      "conceito": "compact mode = modo compacto. Dá pra = you can (sujeito obrigatório).",
+      "var": [
+        {
+          "em": "switch",
+          "aceita": [
+            "change"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR02",
+        "BR08"
+      ],
+      "armadilhas": [
+        "mode compact",
+        "can to"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

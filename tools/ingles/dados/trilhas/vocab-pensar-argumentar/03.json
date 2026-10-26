@@ -1,0 +1,286 @@
+{
+  "id": "vocab-pensar-argumentar.estudo-e-provas",
+  "trilha": "vocab-pensar-argumentar",
+  "nome": "Estudo: subject, exam, graduate…",
+  "emoji": "🎓",
+  "cena": "A sua irmã Julia está no último semestre da faculdade e você ajuda a montar um plano de estudo na mesa da cozinha.",
+  "resumo": "Dez palavras de estudo: graduate, subject, knowledge, concentrate, concentration, lesson, academic, master, exam, education.",
+  "fechamento": false,
+  "novos": [
+    "subject",
+    "education",
+    "knowledge",
+    "lesson",
+    "concentrate",
+    "graduate",
+    "master",
+    "academic",
+    "concentration",
+    "exam"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Estudo e provas"
+    },
+    {
+      "t": "p",
+      "c": "**subject** matéria; assunto · **education** formação, estudo · **knowledge** conhecimento · **lesson** lição, aula · **concentrate** concentrar-se · **graduate** formar-se · **master** dominar · **academic** acadêmico · **concentration** concentração · **exam** prova"
+    },
+    {
+      "t": "ex",
+      "c": "She graduated from college last year.\nEla se formou na faculdade no ano passado."
+    },
+    {
+      "t": "tip",
+      "c": "**concentrate on** (não in), **graduate from** college e **take an exam** (não make)."
+    },
+    {
+      "t": "warn",
+      "c": "**education** é formação; educado (gentil) é **polite**. E **knowledge** é incontável: sem -s e sem a."
+    }
+  ],
+  "imagem": "📚🍳📝",
+  "visualizacao": "Você está na mesa da cozinha com a Julia. Livros abertos, marca-textos espalhados, café esfriando na caneca e um calendário de provas preso na geladeira.",
+  "foto_busca": "student studying kitchen table",
+  "trechos": [
+    {
+      "id": "f-17f793",
+      "quem": "julia",
+      "cod": "I need to pass everything to graduate in December.",
+      "dica": "Preciso passar em tudo pra me formar em dezembro.",
+      "img": "🎓📅",
+      "alvo": "graduate",
+      "alvo_pt": "me formar",
+      "conceito": "graduate = formar-se, sem reflexivo: graduate from college.",
+      "registro": "informal",
+      "interferencias": [
+        "BR62",
+        "BR15"
+      ],
+      "armadilhas": [
+        "myself"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7ece2e",
+      "quem": "voce",
+      "cod": "Which subject is the hardest for you?",
+      "dica": "Qual matéria é a mais difícil pra você?",
+      "img": "📚😓",
+      "alvo": "subject",
+      "alvo_pt": "matéria",
+      "conceito": "subject = matéria (na escola) ou assunto: change the subject = mudar de assunto.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-03bc1d",
+      "quem": "julia",
+      "contexto": "f-7ece2e",
+      "cod": "Statistics. My knowledge is really basic.",
+      "dica": "Estatística. O meu conhecimento é bem básico.",
+      "img": "📊🧠🤏",
+      "alvo": "knowledge",
+      "alvo_pt": "conhecimento",
+      "conceito": "knowledge é incontável: my knowledge (não: my knowledges).",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "knowledges"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0b2cd2",
+      "quem": "voce",
+      "contexto": "f-03bc1d",
+      "cod": "Then let's concentrate on statistics first.",
+      "dica": "Então vamos nos concentrar em estatística primeiro.",
+      "img": "🎯📊",
+      "alvo": "concentrate on",
+      "alvo_pt": "nos concentrar em",
+      "conceito": "concentrate on = concentrar-se em (não: in), sem ourselves.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53",
+        "BR62"
+      ],
+      "armadilhas": [
+        "in",
+        "ourselves"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5179389,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Let's concentrate on the future.\"; the future → statistics, + Then e first; PT reescrito (original: \"Vamos nos concentrar no futuro.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c2d985",
+      "quem": "julia",
+      "cod": "I always lose concentration when my phone buzzes.",
+      "dica": "Sempre perco a concentração quando o meu celular vibra.",
+      "img": "📳😵",
+      "alvo": "concentration",
+      "alvo_pt": "concentração",
+      "conceito": "lose concentration = perder a concentração.",
+      "registro": "informal",
+      "interferencias": [
+        "BR34",
+        "BR19"
+      ],
+      "armadilhas": [
+        "miss"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "lose concentration",
+          "aceita": [
+            "lose my concentration"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ea846d",
+      "quem": "voce",
+      "cod": "Remember last semester? You learned your lesson.",
+      "dica": "Lembra do semestre passado? Você aprendeu a lição.",
+      "img": "📘✅",
+      "alvo": "lesson",
+      "alvo_pt": "lição",
+      "conceito": "learn your lesson = aprender a lição. Aula de faculdade costuma ser class.",
+      "var": [
+        {
+          "em": "your lesson",
+          "aceita": [
+            "the lesson",
+            "a lesson"
+          ]
+        },
+        {
+          "em": "Remember",
+          "aceita": [
+            "Do you remember"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-09e45f",
+      "quem": "voce",
+      "cod": "Relax, you have an impressive academic record.",
+      "dica": "Relaxa, você tem um histórico acadêmico impressionante.",
+      "img": "📜⭐",
+      "alvo": "academic",
+      "alvo_pt": "acadêmico",
+      "conceito": "academic record = histórico acadêmico; academic year = ano letivo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6002354,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom has an impressive academic record.\"; Tom has → Relax, you have (elenco sem Tom); PT reescrito (original: \"Tom tem um histórico acadêmico impressionante.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ad2df7",
+      "quem": "voce",
+      "cod": "You don't need to master statistics. You just need to pass.",
+      "dica": "Você não precisa dominar estatística. Só precisa passar.",
+      "img": "💪📊",
+      "alvo": "master",
+      "alvo_pt": "dominar",
+      "conceito": "master = dominar um assunto. Mestrado = master's degree.",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ec3e7e",
+      "quem": "julia",
+      "cod": "I hope the statistics exam isn't too hard.",
+      "dica": "Espero que a prova de estatística não seja muito difícil.",
+      "img": "📝🙏",
+      "alvo": "exam",
+      "alvo_pt": "prova",
+      "conceito": "exam = prova. Fazer prova = take an exam; passar = pass.",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6108579,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I hope that the exam isn't too difficult.\"; + statistics, sem that, difficult → hard; PT reescrito (original: \"Espero que a prova não seja tão difícil.\")",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "hard",
+          "aceita": [
+            "difficult"
+          ]
+        },
+        {
+          "em": "I hope",
+          "aceita": [
+            "I hope that"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ad4fc2",
+      "quem": "julia",
+      "cod": "Mom always says that a good education is worth the effort.",
+      "dica": "A mamãe sempre diz que uma boa formação vale o esforço.",
+      "img": "👩🎓💡",
+      "alvo": "education",
+      "alvo_pt": "formação",
+      "conceito": "education = formação, estudo; educado (gentil) = polite.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR12"
+      ],
+      "armadilhas": [
+        "polite"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

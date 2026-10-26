@@ -1,0 +1,311 @@
+{
+  "id": "vocab-tempo-quantidade.medindo-a-sala-emma",
+  "trilha": "vocab-tempo-quantidade",
+  "nome": "Medidas: length, inch, pound, height…",
+  "emoji": "📏",
+  "cena": "A Emma empresta uma fita métrica e ajuda você a medir a sala para comprar um sofá e uma estante.",
+  "resumo": "Tirar medidas e converter: metro, polegada, libra, comprimento, altura, profundidade e dimensões.",
+  "fechamento": false,
+  "novos": [
+    "measurement",
+    "length",
+    "meter",
+    "equivalent",
+    "height",
+    "depth",
+    "pound",
+    "inch",
+    "exact",
+    "dimension"
+  ],
+  "apoio": [
+    "tape measure",
+    "feet",
+    "sofa",
+    "shelf",
+    "wall",
+    "ceiling"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**measurement** = medida · **length** = comprimento · **height** = altura · **depth** = profundidade · **dimensions** = dimensões · **meter** = metro · **inch** = polegada (2,54 cm) · **pound** = libra (453 g) · **equivalent** = equivalente · **exact** = exato"
+    },
+    {
+      "t": "ex",
+      "c": "Check the depth of the shelf, too.\nConfere a profundidade da estante também."
+    },
+    {
+      "t": "tip",
+      "c": "**take measurements** = tirar as medidas · **a 55-inch TV** = uma TV de 55 polegadas (inch no singular, com hífen)."
+    },
+    {
+      "t": "warn",
+      "c": "Medida vai com **be**: It's four meters wide (não: has four meters). **height** se lê HAIT, sem th."
+    }
+  ],
+  "imagem": "📏🛋️🏠",
+  "visualizacao": "Você está agachado na sala vazia, segurando a ponta da fita métrica amarela. A Emma estica a fita até a janela e lê os números em voz alta.",
+  "foto_busca": "tape measure empty living room",
+  "trechos": [
+    {
+      "id": "f-2669b9",
+      "quem": "emma",
+      "cod": "Here's my tape measure. Let's take some measurements.",
+      "dica": "Aqui está a minha fita métrica. Vamos tirar umas medidas.",
+      "img": "📏🙋",
+      "alvo": "measurements",
+      "alvo_pt": "medidas",
+      "conceito": "take measurements = tirar as medidas; o verbo é measure.",
+      "registro": "informal",
+      "armadilhas": [
+        "measures",
+        "mesurements"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-43985d",
+      "quem": "emma",
+      "cod": "Measure the length of the wall, from the door to the window.",
+      "dica": "Mede o comprimento da parede, da porta até a janela.",
+      "img": "🚪↔️🪟",
+      "alvo": "length",
+      "alvo_pt": "comprimento",
+      "conceito": "length = comprimento (lénkth); também duração: the length of the meeting.",
+      "registro": "informal",
+      "armadilhas": [
+        "lenght",
+        "long",
+        "large"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c2ccc",
+      "quem": "voce",
+      "contexto": "f-43985d",
+      "cod": "It's about four meters.",
+      "dica": "Dá uns quatro metros.",
+      "img": "🧱📏",
+      "alvo": "meters",
+      "alvo_pt": "metros",
+      "conceito": "meter é a grafia americana (metre é britânica). Nos EUA, quase tudo se mede em feet e inches.",
+      "var": [
+        {
+          "em": "It's",
+          "aceita": [
+            "It is"
+          ]
+        },
+        {
+          "em": "about",
+          "aceita": [
+            "around"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "metres",
+        "has"
+      ],
+      "origem": "autoral_ia",
+      "lit": "[lit.: é uns quatro metros]",
+      "interferencias": [
+        "BR01",
+        "BR04"
+      ]
+    },
+    {
+      "id": "f-0d0017",
+      "quem": "emma",
+      "contexto": "f-4c2ccc",
+      "cod": "What's the equivalent in feet?",
+      "dica": "Qual é o equivalente em pés?",
+      "img": "🦶❓",
+      "alvo": "equivalent",
+      "alvo_pt": "equivalente",
+      "conceito": "equivalent = equivalente; equivalent to = equivalente a; the equivalent of two weeks.",
+      "var": [
+        {
+          "em": "What's",
+          "aceita": [
+            "What is"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "equal",
+        "equivalence",
+        "equivalente"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7f40db",
+      "quem": "voce",
+      "cod": "What's the height of the ceiling?",
+      "dica": "Qual é a altura do teto?",
+      "img": "⬆️🏠",
+      "alvo": "height",
+      "alvo_pt": "altura",
+      "conceito": "height = altura (HAIT, sem th no fim); os adjetivos são high e tall.",
+      "var": [
+        {
+          "em": "What's",
+          "aceita": [
+            "What is"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "heigth",
+        "high",
+        "tall"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dc4634",
+      "quem": "emma",
+      "cod": "Check the depth of the shelf, too.",
+      "dica": "Confere a profundidade da estante também.",
+      "img": "📚📐",
+      "alvo": "depth",
+      "alvo_pt": "profundidade",
+      "conceito": "depth = profundidade (o adjetivo é deep); in depth = a fundo.",
+      "registro": "informal",
+      "armadilhas": [
+        "deep",
+        "deepness",
+        "deph"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9b3874",
+      "quem": "emma",
+      "contexto": "f-dc4634",
+      "cod": "This shelf weighs about 40 pounds.",
+      "dica": "Essa estante pesa umas 40 libras.",
+      "img": "📚🏋️",
+      "alvo": "pounds",
+      "alvo_pt": "libras",
+      "conceito": "pound = libra (453 gramas; abreviatura lb): 40 pounds são uns 18 quilos.",
+      "var": [
+        {
+          "em": "about",
+          "aceita": [
+            "around"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "pound",
+        "libras",
+        "weights"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7899942,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "This package weighs three pounds. → This shelf weighs about 40 pounds.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-44800f",
+      "quem": "voce",
+      "cod": "I want to buy a 55-inch TV for this wall.",
+      "dica": "Quero comprar uma TV de 55 polegadas para esta parede.",
+      "img": "📺🧱",
+      "alvo": "inch",
+      "alvo_pt": "polegadas",
+      "conceito": "a 55-inch TV = uma TV de 55 polegadas: antes do substantivo, inch fica no singular.",
+      "registro": "informal",
+      "armadilhas": [
+        "inches",
+        "55 inches"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9939137,
+        "en_autor": "Alairis",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I want to buy a 32-inch TV screen. → I want to buy a 55-inch TV for this wall.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-371c41",
+      "quem": "emma",
+      "cod": "This sofa is the exact size you need.",
+      "dica": "Esse sofá tem o tamanho exato de que você precisa.",
+      "img": "🛋️👌",
+      "alvo": "exact",
+      "alvo_pt": "exato",
+      "conceito": "the exact size = o tamanho exato; to be exact = para ser exato; Exactly! = Isso mesmo!",
+      "registro": "informal",
+      "armadilhas": [
+        "exactly",
+        "exat",
+        "has"
+      ],
+      "origem": "autoral_ia",
+      "lit": "[lit.: este sofá é o tamanho exato]",
+      "interferencias": [
+        "BR04"
+      ]
+    },
+    {
+      "id": "f-0960a8",
+      "quem": "voce",
+      "contexto": "f-371c41",
+      "cod": "Can you send me the dimensions?",
+      "dica": "Pode me enviar as dimensões?",
+      "img": "📩📐",
+      "alvo": "dimensions",
+      "alvo_pt": "dimensões",
+      "conceito": "dimensions (plural) = as medidas: altura, largura e profundidade.",
+      "registro": "informal",
+      "armadilhas": [
+        "dimension",
+        "measures",
+        "dimentions"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6878332,
+        "en_autor": "Eccles17",
+        "pt_id": 11148367,
+        "pt_autor": "Advanced",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "Can",
+          "aceita": [
+            "Could"
+          ]
+        }
+      ]
+    }
+  ]
+}

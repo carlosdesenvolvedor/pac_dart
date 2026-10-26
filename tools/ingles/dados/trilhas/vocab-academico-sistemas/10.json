@@ -1,0 +1,284 @@
+{
+  "id": "vocab-academico-sistemas.revisao-seguranca",
+  "trilha": "vocab-academico-sistemas",
+  "nome": "Segurança: exploit, susceptible, rotate…",
+  "emoji": "🔐",
+  "cena": "Antes da auditoria anual, o Mike conduz uma revisão de segurança do app, e vocês listam os pontos fracos e o que vão reforçar nas próximas semanas.",
+  "resumo": "As palavras de segurança: exploit, susceptible, resistant, rotate, confine, constrain, manipulate…",
+  "fechamento": false,
+  "novos": [
+    "exploit",
+    "susceptible",
+    "resistant",
+    "rotate",
+    "confine",
+    "constrain",
+    "manipulate",
+    "technically",
+    "shortly"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fechando as portas"
+    },
+    {
+      "t": "p",
+      "c": "**exploit** explorar (uma falha); aproveitar · **susceptible** suscetível · **resistant** resistente · **rotate** rotacionar, revezar · **confine** restringir · **constrain** limitar · **manipulate** manipular · **technically** tecnicamente, a rigor · **shortly** daqui a pouco"
+    },
+    {
+      "t": "ex",
+      "c": "Our old login form is susceptible to automated attacks.\nO nosso formulário de login antigo está suscetível a ataques automatizados."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: exploit a vulnerability, susceptible to, resistant to, rotate the keys, be constrained by."
+    },
+    {
+      "t": "warn",
+      "c": "**exploit** não é explorar um lugar (explore). **shortly** = daqui a pouco, não resumidamente (briefly)."
+    }
+  ],
+  "imagem": "🔐📋🔍",
+  "visualizacao": "Você está na chamada com o Mike, uma lista de itens de segurança aberta na tela. Cada ponto fraco que vocês acham ganha um cadeado vermelho do lado.",
+  "foto_busca": "security audit checklist laptop",
+  "trechos": [
+    {
+      "id": "f-ee1408",
+      "quem": "mike",
+      "cod": "I'll join the call shortly.",
+      "dica": "Entro na chamada daqui a pouco.",
+      "img": "💻⏱️",
+      "alvo": "shortly",
+      "alvo_pt": "daqui a pouco",
+      "conceito": "shortly = daqui a pouco, em breve; resumidamente é briefly.",
+      "var": [
+        {
+          "em": "I'll",
+          "aceita": [
+            "I will"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "briefly",
+        "shortely"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "licenca": "CC BY 2.0 FR",
+        "en_id": 2547296,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "modificada": true,
+        "nota_modificacao": "be there trocado por join the call (revisão por chamada); PT reescrito na fala",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-935622",
+      "quem": "mike",
+      "cod": "An attacker could exploit this vulnerability in the login.",
+      "dica": "Um atacante poderia explorar essa vulnerabilidade no login.",
+      "img": "🦹🔓",
+      "alvo": "exploit",
+      "alvo_pt": "explorar",
+      "conceito": "exploit = tirar proveito de uma falha; explorar um lugar = explore. Como substantivo, o código do ataque.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "explore",
+        "explode"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9b1527",
+      "quem": "voce",
+      "cod": "Our old login form is susceptible to automated attacks.",
+      "dica": "O nosso formulário de login antigo está suscetível a ataques automatizados.",
+      "img": "📝🤖⚠️",
+      "alvo": "susceptible to",
+      "alvo_pt": "suscetível a",
+      "conceito": "susceptible to = suscetível a, sempre com to. Pronúncia: sus-SÉP-ti-bol.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR53"
+      ],
+      "armadilhas": [
+        "suceptible",
+        "susceptible of"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-231c41",
+      "quem": "mike",
+      "contexto": "f-9b1527",
+      "cod": "Then let's make the new one resistant to brute-force attacks.",
+      "dica": "Então vamos deixar o novo resistente a ataques de força bruta.",
+      "img": "🛡️💪",
+      "alvo": "resistant to",
+      "alvo_pt": "resistente a",
+      "conceito": "resistant to = resistente a; também water-resistant. Deixar + adjetivo = make + adjetivo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR32",
+        "BR53"
+      ],
+      "armadilhas": [
+        "resistent",
+        "resistant against"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-15466f",
+      "quem": "mike",
+      "cod": "We also need to rotate the API keys every ninety days.",
+      "dica": "A gente também precisa rotacionar as chaves da API a cada noventa dias.",
+      "img": "🔑🔄📅",
+      "alvo": "rotate",
+      "alvo_pt": "rotacionar",
+      "conceito": "rotate the keys = trocar as chaves de tempos em tempos; rotate on-call = revezar o plantão.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR19",
+        "BR30"
+      ],
+      "armadilhas": [
+        "rotation",
+        "change"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-454971",
+      "quem": "voce",
+      "cod": "The changes will be confined to the login module.",
+      "dica": "As mudanças vão ficar restritas ao módulo de login.",
+      "img": "📦🔒",
+      "alvo": "confined to",
+      "alvo_pt": "restritas ao",
+      "conceito": "be confined to = ficar restrito a; confine é mais comum no passivo.",
+      "var": [
+        {
+          "em": "will be",
+          "aceita": [
+            "'re going to be",
+            "are going to be"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "restricted",
+        "confined in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c3a9b1",
+      "quem": "mike",
+      "cod": "Make sure no one can manipulate the price on the client side.",
+      "dica": "Garante que ninguém consiga manipular o preço no lado do cliente.",
+      "img": "🏷️🕹️🚫",
+      "alvo": "manipulate",
+      "alvo_pt": "manipular",
+      "conceito": "manipulate = manipular; neutro com dados, negativo com pessoas. Make sure = garante que.",
+      "var": [
+        {
+          "em": "no one",
+          "aceita": [
+            "nobody"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR25"
+      ],
+      "armadilhas": [
+        "manipulat",
+        "can't"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-80e2b0",
+      "quem": "voce",
+      "cod": "Technically, the old login works, but it isn't secure.",
+      "dica": "Tecnicamente, o login antigo funciona, mas não é seguro.",
+      "img": "🤔🔓",
+      "alvo": "Technically",
+      "alvo_pt": "Tecnicamente",
+      "conceito": "technically também introduz ressalva: Technically, it works, but... = A rigor, funciona, mas...",
+      "var": [
+        {
+          "em": "it isn't",
+          "aceita": [
+            "it's not"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR08"
+      ],
+      "armadilhas": [
+        "technicaly",
+        "tecnically"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1303f5",
+      "quem": "mike",
+      "cod": "We're constrained by the audit date, so let's start with the critical items.",
+      "dica": "Estamos limitados pela data da auditoria, então vamos começar pelos itens críticos.",
+      "img": "📅⛓️",
+      "alvo": "constrained by",
+      "alvo_pt": "limitados pela",
+      "conceito": "be constrained by = estar limitado por; o substantivo constraint (restrição) é comum em engenharia.",
+      "var": [
+        {
+          "em": "We're",
+          "aceita": [
+            "We are"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR58",
+        "BR24"
+      ],
+      "armadilhas": [
+        "limited",
+        "constricted"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

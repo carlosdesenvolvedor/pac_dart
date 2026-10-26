@@ -1,0 +1,241 @@
+{
+  "id": "vocab-academico-argumentar.redacao-da-julia",
+  "trilha": "vocab-academico-argumentar",
+  "nome": "A redação da Julia: subtle, tricky…",
+  "emoji": "🎓",
+  "cena": "A sua irmã Julia se candidata a um mestrado nos Estados Unidos e pede ajuda com a redação, os e-mails e o simulado de inglês.",
+  "resumo": "Doze palavras para revisar um texto: shallow, subtle, sufficiently, textbook, tricky, comprehension…",
+  "fechamento": false,
+  "novos": [
+    "complement",
+    "correction",
+    "correspondence",
+    "precede",
+    "shallow",
+    "singular",
+    "subtle",
+    "sufficiently",
+    "textbook",
+    "tricky",
+    "virtue",
+    "comprehension"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Redação"
+    },
+    {
+      "t": "p",
+      "c": "**complement** complementar · **correction** correção · **correspondence** troca de e-mails · **precede** vir antes · **shallow** raso, superficial · **singular** singular · **subtle** sutil · **sufficiently** suficientemente · **textbook** de manual · **tricky** com pegadinha · **by virtue of** em razão de · **comprehension** compreensão"
+    },
+    {
+      "t": "ex",
+      "c": "Your two examples should complement each other.\nOs seus dois exemplos deveriam se complementar."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **a subtle difference**, **a textbook example of**."
+    },
+    {
+      "t": "warn",
+      "c": "**complement** ≠ compliment (elogio). A correspondência que chega em casa é **mail**."
+    }
+  ],
+  "imagem": "🎓📝✉️",
+  "visualizacao": "Você está no sofá da Julia, em Curitiba, com a redação dela impressa e uma caneta vermelha. Ela lê por cima do seu ombro, ansiosa.",
+  "foto_busca": "essay editing red pen desk",
+  "trechos": [
+    {
+      "id": "f-6a8d5c",
+      "quem": "julia",
+      "cod": "My essay is a bit shallow.",
+      "dica": "A minha redação está meio rasa.",
+      "img": "📄🏊",
+      "alvo": "shallow",
+      "alvo_pt": "rasa",
+      "conceito": "shallow = raso; texto raso = superficial, sem profundidade.",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9a4def",
+      "quem": "voce",
+      "contexto": "f-6a8d5c",
+      "cod": "Your two examples should complement each other.",
+      "dica": "Os seus dois exemplos deveriam se complementar.",
+      "img": "🧩🤝",
+      "alvo": "complement",
+      "alvo_pt": "complementar",
+      "conceito": "complement each other = se complementar; compliment = elogio.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-58537f",
+      "quem": "voce",
+      "cod": "This sentence needs a singular verb, not a plural one.",
+      "dica": "Essa frase precisa de um verbo no singular, não no plural.",
+      "img": "☝️✏️",
+      "alvo": "singular",
+      "alvo_pt": "singular",
+      "conceito": "singular or plural = singular ou plural (gramática).",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d42638",
+      "quem": "julia",
+      "contexto": "f-58537f",
+      "cod": "Thanks for the correction.",
+      "dica": "Obrigada pela correção.",
+      "img": "🙏🖊️",
+      "alvo": "correction",
+      "alvo_pt": "correção",
+      "conceito": "make a correction = fazer uma correção.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2812089,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito no feminino (quem fala é a Julia; original \"Obrigado pela correção.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-930ab2",
+      "quem": "voce",
+      "cod": "There's a subtle difference between these two words.",
+      "dica": "Tem uma diferença sutil entre essas duas palavras.",
+      "img": "🔬✏️",
+      "alvo": "subtle",
+      "alvo_pt": "sutil",
+      "conceito": "a subtle difference = uma diferença sutil. Pronúncia: SUT-l.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1e9ec5",
+      "quem": "julia",
+      "cod": "Is my introduction sufficiently clear?",
+      "dica": "A minha introdução está suficientemente clara?",
+      "img": "📖🔍",
+      "alvo": "sufficiently",
+      "alvo_pt": "suficientemente",
+      "conceito": "sufficiently clear = claro o bastante; mais formal que enough.",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-495be4",
+      "quem": "voce",
+      "cod": "Your first paragraph is a textbook example of a strong opening.",
+      "dica": "O seu primeiro parágrafo é um exemplo de manual de abertura forte.",
+      "img": "📘🏆",
+      "alvo": "textbook example",
+      "alvo_pt": "exemplo de manual",
+      "lit": "[lit.: um exemplo de livro didático]",
+      "conceito": "a textbook example of = um exemplo de manual, clássico, perfeito de.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0e4280",
+      "quem": "julia",
+      "cod": "Should I mention my correspondence with the professor?",
+      "dica": "Eu menciono a minha troca de e-mails com o professor?",
+      "img": "✉️👨‍🏫",
+      "alvo": "correspondence",
+      "alvo_pt": "troca de e-mails",
+      "conceito": "correspondence = troca de cartas ou e-mails formais; a que chega em casa é mail.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6943c2",
+      "quem": "voce",
+      "cod": "By virtue of your work experience, you can skip the first course.",
+      "dica": "(e-mail) Em virtude da sua experiência profissional, você pode pular a primeira disciplina.",
+      "img": "💼⏭️",
+      "alvo": "By virtue of",
+      "alvo_pt": "Em virtude da",
+      "conceito": "by virtue of = em virtude de, graças a (formal, típico de texto oficial).",
+      "registro": "formal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5c2074",
+      "quem": "julia",
+      "cod": "The interview is preceded by a short reading test.",
+      "dica": "A entrevista é precedida por um teste curto de leitura.",
+      "img": "📝➡️🎤",
+      "alvo": "preceded",
+      "alvo_pt": "precedida",
+      "conceito": "A is preceded by B = B vem antes de A; não confunda com proceed (prosseguir).",
+      "registro": "informal",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-70ac0b",
+      "quem": "julia",
+      "cod": "I'm worried about the reading comprehension section.",
+      "dica": "Estou preocupada com a parte de compreensão de leitura.",
+      "img": "📖😟",
+      "alvo": "comprehension",
+      "alvo_pt": "compreensão",
+      "conceito": "reading comprehension = compreensão de leitura; comprehensive = abrangente.",
+      "registro": "informal",
+      "interferencias": [
+        "BR41",
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-106179",
+      "quem": "voce",
+      "contexto": "f-70ac0b",
+      "cod": "Some of the questions are tricky, so read each one twice.",
+      "dica": "Algumas perguntas são cheias de pegadinha, então lê cada uma duas vezes.",
+      "img": "❓🪤",
+      "alvo": "tricky",
+      "alvo_pt": "cheias de pegadinha",
+      "conceito": "tricky = cheio de pegadinha, complicado: a tricky question.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Some of the questions",
+          "aceita": [
+            "Some questions"
+          ]
+        }
+      ]
+    }
+  ]
+}

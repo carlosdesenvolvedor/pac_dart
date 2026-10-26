@@ -1,0 +1,226 @@
+{
+  "id": "vocab-esporte-arte-cultura.concerto-da-emma",
+  "trilha": "vocab-esporte-arte-cultura",
+  "nome": "O concerto da Emma: sing, album…",
+  "emoji": "🎻",
+  "cena": "A Emma, sua vizinha, canta no coral da cidade e leva você e a Julia a um concerto de música clássica; na saída, conta do álbum dela.",
+  "resumo": "Oito palavras de música: sing, classical, opera, instrument, compose, composition, singer e album.",
+  "fechamento": false,
+  "novos": [
+    "sing",
+    "instrument",
+    "album",
+    "singer",
+    "opera",
+    "classical",
+    "compose",
+    "composition"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Uma noite de concerto"
+    },
+    {
+      "t": "p",
+      "c": "**sing** cantar · **classical** clássico (erudito) · **opera** ópera · **instrument** instrumento · **compose** compor · **composition** composição · **singer** cantor(a) · **album** álbum"
+    },
+    {
+      "t": "ex",
+      "c": "I sing in the city choir every Thursday.\nEu canto no coral da cidade toda quinta."
+    },
+    {
+      "t": "tip",
+      "c": "Tocar instrumento = play (play the piano); sing in a choir; release an album = lançar um álbum."
+    },
+    {
+      "t": "warn",
+      "c": "classical music = música erudita; um clássico (filme, jogo) = a classic. sing é irregular: sing, sang, sung."
+    }
+  ],
+  "imagem": "🎻🎶🎤",
+  "visualizacao": "Você está numa sala de concerto de madeira escura, com o coral de roupa preta no palco. A Emma acena da segunda fila, e os violinos começam baixinho.",
+  "foto_busca": "choir classical concert hall",
+  "trechos": [
+    {
+      "id": "f-d2a6dc",
+      "quem": "emma",
+      "cod": "I sing in the city choir every Thursday.",
+      "dica": "Eu canto no coral da cidade toda quinta.",
+      "img": "🎤👥",
+      "alvo": "sing",
+      "alvo_pt": "canto",
+      "conceito": "sing = cantar (sang, sung); choir = coral, com som de /kwaɪr/.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ff13cb",
+      "quem": "julia",
+      "cod": "I really like classical music.",
+      "dica": "Eu gosto muito de música clássica.",
+      "img": "🎼❤️",
+      "alvo": "classical music",
+      "alvo_pt": "música clássica",
+      "conceito": "classical = erudito; classic = clássico, que não sai de moda.",
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6808817,
+        "en_autor": "CK",
+        "pt_id": 6809230,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7e79f5",
+      "quem": "emma",
+      "cod": "Have you ever been to the opera?",
+      "dica": "Você já foi à ópera?",
+      "img": "🎭🎶",
+      "alvo": "opera",
+      "alvo_pt": "ópera",
+      "conceito": "opera = ópera; an opera singer = cantor de ópera; go to the opera.",
+      "registro": "informal",
+      "interferencias": [
+        "BR27"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 953290,
+        "en_autor": "CK",
+        "pt_id": 1048390,
+        "pt_autor": "brauliobezerra",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "export": "2026-10-03",
+        "nota_modificacao": "an opera trocado por the opera"
+      }
+    },
+    {
+      "id": "f-619c8c",
+      "quem": "julia",
+      "cod": "Do you play any instruments?",
+      "dica": "Você toca algum instrumento?",
+      "img": "🎹🎸",
+      "alvo": "instruments",
+      "alvo_pt": "instrumento",
+      "conceito": "Tocar instrumento = play an instrument (não touch).",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "armadilhas": [
+        "touch"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1745293,
+        "en_autor": "Amastan",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "export": "2026-10-03",
+        "nota_modificacao": "Which instruments do you play? trocado por Do you play any instruments?"
+      },
+      "var": [
+        {
+          "em": "instruments",
+          "aceita": [
+            "instrument"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c95cca",
+      "quem": "emma",
+      "cod": "Our conductor composed the last piece we sang.",
+      "dica": "O nosso regente compôs a última peça que a gente cantou.",
+      "img": "🎼✍️",
+      "alvo": "composed",
+      "alvo_pt": "compôs",
+      "conceito": "compose = compor (soa erudito); na fala, write a song. composer = compositor.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5324af",
+      "quem": "voce",
+      "cod": "That original composition at the end was my favorite part.",
+      "dica": "Aquela composição original do final foi a minha parte favorita.",
+      "img": "🎻🌟",
+      "alvo": "composition",
+      "alvo_pt": "composição",
+      "conceito": "composition = composição, também o enquadramento de uma foto. Redação escolar é essay.",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e3d1b9",
+      "quem": "julia",
+      "cod": "You're a very good singer.",
+      "dica": "Você é uma cantora muito boa.",
+      "img": "🎤👏",
+      "alvo": "singer",
+      "alvo_pt": "cantora",
+      "conceito": "singer = cantor(a); a lead singer = o vocalista.",
+      "registro": "informal",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2713322,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a3d510",
+      "quem": "emma",
+      "cod": "I'm working on my first album with two friends.",
+      "dica": "Estou trabalhando no meu primeiro álbum com duas amigas.",
+      "img": "💿🎙️",
+      "alvo": "album",
+      "alvo_pt": "álbum",
+      "conceito": "album = álbum, tônica no AL; release an album = lançar um álbum.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6258700,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom trocado por I (his por my); third trocado por first; acrescentado with two friends",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

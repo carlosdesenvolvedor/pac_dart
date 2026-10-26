@@ -1,0 +1,225 @@
+{
+  "id": "vocab-academico-argumentar.conectores-formais",
+  "trilha": "vocab-academico-argumentar",
+  "nome": "Texto formal: thereby, likewise…",
+  "emoji": "🔗",
+  "cena": "Você escreve com a Sarah uma proposta formal para a diretoria sobre a mudança no processo de deploy e acerta os conectores.",
+  "resumo": "Onze palavras para ligar ideias no texto formal: whereby, thereby, likewise, nonetheless…",
+  "fechamento": false,
+  "novos": [
+    "formally",
+    "importantly",
+    "inevitably",
+    "interestingly",
+    "likewise",
+    "nonetheless",
+    "purely",
+    "strictly",
+    "supposedly",
+    "thereby",
+    "whereby"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Conectores do texto formal"
+    },
+    {
+      "t": "p",
+      "c": "**formally** formalmente · **more importantly** o que é mais importante · **inevitably** inevitavelmente · **interestingly** curiosamente · **likewise** da mesma forma · **nonetheless** mesmo assim · **purely** puramente · **strictly speaking** a rigor · **supposedly** supostamente · **thereby** com isso · **whereby** pelo qual"
+    },
+    {
+      "t": "ex",
+      "c": "It is nonetheless worth the effort.\nMesmo assim, vale o esforço."
+    },
+    {
+      "t": "tip",
+      "c": "**thereby** vem antes de -ing: ..., thereby lowering the risk."
+    },
+    {
+      "t": "warn",
+      "c": "**formally** (oficialmente) ≠ formerly (antigamente)."
+    }
+  ],
+  "imagem": "📄🔗🏢",
+  "visualizacao": "Você está escrevendo a proposta num documento compartilhado. O cursor da Sarah pisca ao lado do seu, trocando palavras e acertando cada conector.",
+  "foto_busca": "writing formal proposal laptop",
+  "trechos": [
+    {
+      "id": "f-9cc235",
+      "quem": "sarah",
+      "cod": "Let's formally propose the new deploy process to the board.",
+      "dica": "Vamos propor formalmente o novo processo de deploy para a diretoria.",
+      "img": "📨🏢",
+      "alvo": "formally",
+      "alvo_pt": "formalmente",
+      "conceito": "formally = oficialmente, de modo formal; formerly = antigamente.",
+      "registro": "neutro",
+      "armadilhas": [
+        "formerly"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9330c1",
+      "quem": "voce",
+      "cod": "We propose a process whereby every release is tested in staging first.",
+      "dica": "(proposta) Propomos um processo pelo qual cada release é testada primeiro em staging.",
+      "img": "🧪🚦",
+      "alvo": "whereby",
+      "alvo_pt": "pelo qual",
+      "conceito": "a process whereby = um processo pelo qual; formal, de texto escrito.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7a8305",
+      "quem": "voce",
+      "cod": "This change will reduce manual steps, thereby lowering the risk of errors.",
+      "dica": "(proposta) Essa mudança vai reduzir as etapas manuais e, com isso, diminuir o risco de erros.",
+      "img": "📉⚠️",
+      "alvo": "thereby",
+      "alvo_pt": "com isso",
+      "conceito": "thereby + -ing = e, com isso, ...; formal.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR52"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e95d2c",
+      "quem": "voce",
+      "cod": "More importantly, the new process will save the team ten hours a week.",
+      "dica": "(proposta) Mais importante: o novo processo vai poupar dez horas por semana ao time.",
+      "img": "⏱️💡",
+      "alvo": "More importantly",
+      "alvo_pt": "Mais importante",
+      "conceito": "More importantly, ... = E, o que é mais importante, ...",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a week",
+          "aceita": [
+            "per week"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ffb6dd",
+      "quem": "voce",
+      "cod": "Manual deploys inevitably lead to mistakes on busy days.",
+      "dica": "(proposta) Deploys manuais inevitavelmente levam a erros em dias corridos.",
+      "img": "🖐️💥",
+      "alvo": "inevitably",
+      "alvo_pt": "inevitavelmente",
+      "conceito": "inevitably lead to = levar inevitavelmente a.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR21",
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-39d7c5",
+      "quem": "sarah",
+      "contexto": "f-ffb6dd",
+      "cod": "Interestingly enough, that's exactly what happened.",
+      "dica": "Curiosamente, foi exatamente o que aconteceu.",
+      "img": "🤨📅",
+      "alvo": "Interestingly enough",
+      "alvo_pt": "Curiosamente",
+      "conceito": "Interestingly enough, ... = Curiosamente, ...; abre a frase.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8388906,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (original \"O interessante, foi exatamente o que aconteceu.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-148b38",
+      "quem": "voce",
+      "cod": "Likewise, the QA team will get fewer last-minute requests.",
+      "dica": "(proposta) Da mesma forma, o time de QA vai receber menos pedidos de última hora.",
+      "img": "🧑‍🔬📉",
+      "alvo": "Likewise",
+      "alvo_pt": "Da mesma forma",
+      "conceito": "Likewise, ... = Da mesma forma, ...; como resposta, Likewise. = Igualmente.",
+      "registro": "escrito-trabalho",
+      "interferencias": [
+        "BR23"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c64b93",
+      "quem": "sarah",
+      "cod": "The new tool is supposedly easy to set up.",
+      "dica": "A ferramenta nova supostamente é fácil de configurar.",
+      "img": "🛠️🤔",
+      "alvo": "supposedly",
+      "alvo_pt": "supostamente",
+      "conceito": "supposedly = supostamente, com tom de dúvida (dizem que...).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d86046",
+      "quem": "voce",
+      "cod": "The change is purely technical, so users won't notice it.",
+      "dica": "A mudança é puramente técnica, então os usuários não vão perceber.",
+      "img": "⚙️🙈",
+      "alvo": "purely",
+      "alvo_pt": "puramente",
+      "conceito": "purely = só, puramente: purely technical, purely cosmetic.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-70ac9f",
+      "quem": "sarah",
+      "cod": "Strictly speaking, we don't need the board's approval for this.",
+      "dica": "A rigor, a gente não precisa da aprovação da diretoria pra isso.",
+      "img": "📏✅",
+      "alvo": "Strictly speaking",
+      "alvo_pt": "A rigor",
+      "conceito": "Strictly speaking = a rigor, tecnicamente falando.",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-559d8f",
+      "quem": "voce",
+      "cod": "The migration will take two weeks but is nonetheless worth the effort.",
+      "dica": "(proposta) A migração vai levar duas semanas, mas mesmo assim vale o esforço.",
+      "img": "🗓️💪",
+      "alvo": "nonetheless",
+      "alvo_pt": "mesmo assim",
+      "conceito": "nonetheless = mesmo assim, ainda assim; formal (= still, even so).",
+      "registro": "escrito-trabalho",
+      "origem": "autoral_ia"
+    }
+  ]
+}

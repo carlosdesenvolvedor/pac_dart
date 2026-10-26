@@ -1,0 +1,304 @@
+{
+  "id": "vocab-dinheiro-economia.contas-da-julia",
+  "trilha": "vocab-dinheiro-economia",
+  "nome": "Contas da casa: afford, owe, mortgage…",
+  "emoji": "🏦",
+  "cena": "A Julia quer comprar o primeiro apartamento; à noite, você abre o app do banco com ela e faz as contas.",
+  "resumo": "Falar de dinheiro pessoal: extrato, financiamento, seguro, aposentadoria e ter condições de pagar.",
+  "fechamento": false,
+  "novos": [
+    "cent",
+    "statement",
+    "rich",
+    "afford",
+    "owe",
+    "withdraw",
+    "pension",
+    "mortgage",
+    "insure",
+    "wealthy",
+    "buyer"
+  ],
+  "apoio": [
+    "bank",
+    "savings",
+    "down payment",
+    "neighborhood"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**rich / wealthy** = rico (wealthy é mais formal) · **cent** = centavo · **statement** = extrato · **afford** = ter condições de pagar · **owe** = dever · **withdraw** = sacar · **pension** = aposentadoria · **mortgage** = financiamento imobiliário · **insure** = fazer seguro · **buyer** = comprador"
+    },
+    {
+      "t": "ex",
+      "c": "I can't afford a new car right now.\nNão tenho condições de comprar um carro novo agora."
+    },
+    {
+      "t": "tip",
+      "c": "**afford** quase sempre vem com can / can't: I can't afford it. **first-time buyer** = quem compra o primeiro imóvel."
+    },
+    {
+      "t": "warn",
+      "c": "Extrato é **statement** (não extract). **mortgage** se diz MOR-gij. **insure** = fazer seguro; **ensure** = garantir."
+    }
+  ],
+  "imagem": "🏦📱🏠",
+  "visualizacao": "É noite na sala da Julia. Vocês dois estão no sofá com o notebook aberto no app do banco, a calculadora no celular e um café esfriando.",
+  "foto_busca": "laptop home budget calculator night",
+  "trechos": [
+    {
+      "id": "f-c7f8c8",
+      "quem": "julia",
+      "cod": "I'm not rich, but I want my own apartment.",
+      "dica": "Não sou rica, mas quero o meu próprio apartamento.",
+      "img": "🏠🙏",
+      "alvo": "rich",
+      "alvo_pt": "rica",
+      "conceito": "rich = rico (get rich, rich people); rico em vitaminas = rich in vitamins.",
+      "registro": "informal",
+      "armadilhas": [
+        "rica",
+        "wealth"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3330202,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I'm not rich. → I'm not rich, but I want my own apartment.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-eae09f",
+      "quem": "voce",
+      "contexto": "f-c7f8c8",
+      "cod": "Let's look at your bank statement first.",
+      "dica": "Vamos olhar o seu extrato do banco primeiro.",
+      "img": "🧾🏦👀",
+      "alvo": "statement",
+      "alvo_pt": "extrato",
+      "conceito": "bank statement = extrato bancário; statement também é declaração.",
+      "registro": "informal",
+      "armadilhas": [
+        "extract",
+        "extrato"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b8f478",
+      "quem": "julia",
+      "contexto": "f-eae09f",
+      "cod": "Go ahead. I know where every cent goes.",
+      "dica": "Pode olhar. Eu sei para onde vai cada centavo.",
+      "img": "🪙🔍",
+      "alvo": "cent",
+      "alvo_pt": "centavo",
+      "conceito": "cent = centavo (ninety-nine cents); cem = a hundred.",
+      "registro": "informal",
+      "armadilhas": [
+        "cents",
+        "penny"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2a9588",
+      "quem": "julia",
+      "cod": "The nicest apartments are in a wealthy neighborhood near my office.",
+      "dica": "Os apartamentos mais bonitos ficam num bairro nobre perto do meu escritório.",
+      "img": "🏘️💎📍",
+      "alvo": "wealthy",
+      "alvo_pt": "nobre",
+      "conceito": "wealthy = rico, abastado (um pouco mais formal que rich); bairro nobre = wealthy neighborhood.",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "noble",
+        "healthy",
+        "rich"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-696723",
+      "quem": "voce",
+      "cod": "The bank has a special program for first-time buyers.",
+      "dica": "O banco tem um programa especial para quem compra o primeiro imóvel.",
+      "img": "🔑🏠🥇",
+      "alvo": "first-time buyers",
+      "alvo_pt": "quem compra o primeiro imóvel",
+      "conceito": "buyer = comprador; first-time buyer = quem compra o primeiro imóvel.",
+      "registro": "informal",
+      "armadilhas": [
+        "first buyers",
+        "purchasers"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-27d185",
+      "quem": "voce",
+      "cod": "The mortgage would be about two thousand reais a month.",
+      "dica": "O financiamento ficaria em uns dois mil reais por mês.",
+      "img": "🏠📅💸",
+      "alvo": "mortgage",
+      "alvo_pt": "financiamento",
+      "conceito": "mortgage = financiamento imobiliário (MOR-gij, o t é mudo); take out a mortgage.",
+      "var": [
+        {
+          "em": "a month",
+          "aceita": [
+            "per month"
+          ]
+        },
+        {
+          "em": "about",
+          "aceita": [
+            "around"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "financing",
+        "mortage"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dea931",
+      "quem": "julia",
+      "contexto": "f-27d185",
+      "cod": "I can't afford it right now.",
+      "dica": "Eu não tenho condições de pagar agora.",
+      "img": "💸🚫",
+      "alvo": "afford",
+      "alvo_pt": "tenho condições de pagar",
+      "conceito": "afford = ter condições de pagar; quase sempre com can / can't.",
+      "registro": "informal",
+      "armadilhas": [
+        "pay",
+        "afort"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3382897,
+        "en_autor": "Hybrid",
+        "pt_id": 7695630,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN e PT iguais aos originais",
+        "export": "2026-10-03"
+      },
+      "opcional": [
+        "right"
+      ]
+    },
+    {
+      "id": "f-354d27",
+      "quem": "voce",
+      "contexto": "f-dea931",
+      "cod": "You could withdraw some money from your savings for a bigger down payment.",
+      "dica": "Você poderia sacar um dinheiro da sua poupança para uma entrada maior.",
+      "img": "🏧💵",
+      "alvo": "withdraw",
+      "alvo_pt": "sacar",
+      "conceito": "withdraw = sacar (withdrew, withdrawn); saque = withdrawal. Entrada = down payment.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "withdrawal",
+        "draw"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-34be16",
+      "quem": "voce",
+      "cod": "You'll also need to insure the apartment.",
+      "dica": "Você também vai precisar fazer o seguro do apartamento.",
+      "img": "🛡️🏠",
+      "alvo": "insure",
+      "alvo_pt": "fazer o seguro",
+      "conceito": "insure = fazer seguro de; ensure = garantir; assure = assegurar a alguém.",
+      "registro": "informal",
+      "armadilhas": [
+        "ensure",
+        "assure",
+        "insurance"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5bcb08",
+      "quem": "julia",
+      "cod": "At least my company has a good pension plan.",
+      "dica": "Pelo menos a minha empresa tem um bom plano de aposentadoria.",
+      "img": "🧓💰",
+      "alvo": "pension plan",
+      "alvo_pt": "plano de aposentadoria",
+      "conceito": "pension plan = plano de aposentadoria da empresa; pensão alimentícia = child support.",
+      "registro": "informal",
+      "armadilhas": [
+        "pention",
+        "pensions"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3b7ca8",
+      "quem": "julia",
+      "cod": "Thanks for your help. I owe you dinner.",
+      "dica": "Obrigada pela ajuda. Te devo um jantar.",
+      "img": "🍝🙏",
+      "alvo": "owe",
+      "alvo_pt": "devo",
+      "conceito": "owe = dever (dinheiro, favor): I owe you one = te devo uma. Dever de obrigação = must.",
+      "registro": "informal",
+      "armadilhas": [
+        "must",
+        "debt"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5852527,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I owe you dinner. → Thanks for your help. I owe you dinner.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "your help",
+          "aceita": [
+            "the help"
+          ]
+        },
+        {
+          "em": "dinner",
+          "aceita": [
+            "a dinner"
+          ]
+        }
+      ]
+    }
+  ]
+}

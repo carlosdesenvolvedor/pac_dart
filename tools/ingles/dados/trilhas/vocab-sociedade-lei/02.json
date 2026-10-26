@@ -1,0 +1,285 @@
+{
+  "id": "vocab-sociedade-lei.eleicao-no-predio",
+  "trilha": "vocab-sociedade-lei",
+  "nome": "Eleição no prédio",
+  "emoji": "🗳️",
+  "cena": "Na reunião do prédio, a Emma, sua vizinha, se candidata a presidente da associação de moradores, e os vizinhos discutem uma taxa nova.",
+  "resumo": "Votação e reunião de condomínio: vote for, hold an election, the majority of, keep it civil.",
+  "fechamento": false,
+  "novos": [
+    "vote",
+    "official",
+    "election",
+    "majority",
+    "civil",
+    "elect",
+    "association",
+    "protest",
+    "minority",
+    "govern"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Votar e eleger"
+    },
+    {
+      "t": "p",
+      "c": "**vote** votar · **official** oficial · **election** eleição · **majority** maioria · **civil** educado, respeitoso · **elect** eleger · **association** associação · **protest** protestar · **minority** minoria · **govern** reger, governar"
+    },
+    {
+      "t": "ex",
+      "c": "We'll vote on the new fee tonight.\nHoje à noite a gente vota a taxa nova."
+    },
+    {
+      "t": "tip",
+      "c": "**vote for** alguém (votar em) x **vote on** uma proposta. **Keep it civil** = vamos manter o respeito."
+    },
+    {
+      "t": "warn",
+      "c": "**official** é adjetivo (the official results); o policial ou o agente é **officer**. E nos EUA: **protest the fee**, sem against."
+    }
+  ],
+  "imagem": "🏢🗳️🙋",
+  "visualizacao": "Você está no salão do prédio, cadeiras de plástico em fila. A Emma ajeita o crachá, os vizinhos cochicham e alguém distribui as cédulas.",
+  "foto_busca": "residents meeting community room",
+  "trechos": [
+    {
+      "id": "f-0f1d25",
+      "quem": "emma",
+      "cod": "I'm running for president of the homeowners association.",
+      "dica": "Estou me candidatando a presidente da associação de moradores.",
+      "img": "🙋‍♀️🏢",
+      "alvo": "homeowners association",
+      "alvo_pt": "associação de moradores",
+      "conceito": "homeowners association (HOA) = a associação de moradores de condomínio nos EUA. Run for = se candidatar a.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-56211c",
+      "quem": "voce",
+      "contexto": "f-0f1d25",
+      "cod": "I know who I'm going to vote for.",
+      "dica": "Sei em quem eu vou votar.",
+      "img": "🗳️😉",
+      "alvo": "vote for",
+      "alvo_pt": "votar",
+      "lit": "[lit.: sei quem eu vou votar para]",
+      "conceito": "vote for = votar em (alguém, a favor). Vote on = votar uma proposta.",
+      "registro": "informal",
+      "armadilhas": [
+        "in"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2376486,
+        "en_autor": "CK",
+        "pt_id": 6937395,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN e PT iguais ao original",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-7a4388",
+      "quem": "vizinha",
+      "cod": "We hold an election every two years.",
+      "dica": "A gente faz eleição a cada dois anos.",
+      "img": "📅🗳️",
+      "alvo": "election",
+      "alvo_pt": "eleição",
+      "conceito": "hold an election = fazer, realizar uma eleição.",
+      "registro": "informal",
+      "armadilhas": [
+        "make",
+        "do"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "hold an election",
+          "aceita": [
+            "have an election",
+            "hold elections",
+            "have elections"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-fdc200",
+      "quem": "vizinho",
+      "cod": "The majority of residents support the new fee.",
+      "dica": "A maioria dos moradores apoia a taxa nova.",
+      "img": "👥👍💵",
+      "alvo": "The majority of",
+      "alvo_pt": "A maioria dos",
+      "conceito": "The majority of + plural pede verbo no plural: support (não: supports).",
+      "registro": "neutro",
+      "armadilhas": [
+        "supports"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "of residents",
+          "aceita": [
+            "of the residents"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-aa1a5b",
+      "quem": "vizinha",
+      "cod": "Some neighbors want to protest the new fee.",
+      "dica": "Alguns vizinhos querem protestar contra a taxa nova.",
+      "img": "🙅‍♂️💵",
+      "alvo": "protest",
+      "alvo_pt": "protestar contra",
+      "conceito": "Nos EUA, protest the fee (sem against). O verbo tem a tônica no fim: pro-TEST.",
+      "registro": "neutro",
+      "armadilhas": [
+        "against"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "protest the",
+          "aceita": [
+            "protest against the"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-128a06",
+      "quem": "voce",
+      "contexto": "f-fdc200",
+      "cod": "Looks like we're in the minority on this one.",
+      "dica": "Parece que a gente está em minoria nessa.",
+      "img": "👥🤏",
+      "alvo": "in the minority",
+      "alvo_pt": "em minoria",
+      "conceito": "be in the minority = estar em minoria (numa votação).",
+      "var": [
+        {
+          "em": "Looks like",
+          "aceita": [
+            "It looks like",
+            "Seems like",
+            "It seems like"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "opcional": [
+        "one"
+      ]
+    },
+    {
+      "id": "f-149c25",
+      "quem": "emma",
+      "cod": "Okay, everyone, let's keep it civil.",
+      "dica": "Tá bom, pessoal, vamos manter o respeito.",
+      "img": "🤝🗣️",
+      "alvo": "keep it civil",
+      "alvo_pt": "manter o respeito",
+      "lit": "[lit.: vamos mantê-lo civil]",
+      "conceito": "civil aqui = educado, respeitoso. No sentido jurídico: a civil case = um processo cível.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Okay",
+          "aceita": [
+            "OK"
+          ]
+        },
+        {
+          "em": "everyone",
+          "aceita": [
+            "everybody"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cee2ca",
+      "quem": "vizinha",
+      "cod": "These are the rules that govern the building.",
+      "dica": "Essas são as regras que regem o prédio.",
+      "img": "📜🏢",
+      "alvo": "govern",
+      "alvo_pt": "regem",
+      "conceito": "govern = reger, governar. Governar um país = govern ou run.",
+      "opcional": [],
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "that",
+          "aceita": [
+            "which"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-730e03",
+      "quem": "vizinha",
+      "cod": "We'll post the official results in the lobby tonight.",
+      "dica": "A gente vai colocar os resultados oficiais no hall hoje à noite.",
+      "img": "📋✅",
+      "alvo": "official",
+      "alvo_pt": "oficiais",
+      "conceito": "official (adj.) = oficial, formal. O policial, o agente = officer.",
+      "var": [
+        {
+          "em": "post",
+          "aceita": [
+            "put"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "officer"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1acd78",
+      "quem": "voce",
+      "cod": "We elected Emma president of the association!",
+      "dica": "A gente elegeu a Emma presidente da associação!",
+      "img": "🎉🏆",
+      "alvo": "elected",
+      "alvo_pt": "elegeu",
+      "conceito": "elect = eleger; vote = votar. Na passiva: She was elected president.",
+      "registro": "informal",
+      "armadilhas": [
+        "voted"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 680792,
+        "en_autor": "Source_VOA",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "They elected her to be the mayor. → We elected Emma president of the association!; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "id": "vocab-academico-argumentar.documento-claro",
+  "trilha": "vocab-academico-argumentar",
+  "nome": "Escrever claro: vague, explicit…",
+  "emoji": "📝",
+  "cena": "O Mike revisa o seu design doc antes de mandar para o time e aponta o que está claro, vago ou só subentendido.",
+  "resumo": "Onze palavras para avaliar um texto: coherent, vague, explicit, implicit, straightforward…",
+  "fechamento": false,
+  "novos": [
+    "articulate",
+    "coherent",
+    "explicit",
+    "explicitly",
+    "grasp",
+    "implicit",
+    "logical",
+    "readily",
+    "straightforward",
+    "vague",
+    "deliberately"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Um texto claro"
+    },
+    {
+      "t": "p",
+      "c": "**articulate** que se expressa bem · **coherent** coerente · **explicit** explícito · **explicitly** explicitamente · **grasp** captar, entender · **implicit** implícito · **logical** lógico · **readily** prontamente, facilmente · **straightforward** direto, simples · **vague** vago · **deliberately** deliberadamente, de propósito"
+    },
+    {
+      "t": "ex",
+      "c": "Overall, the doc is pretty straightforward.\nNo geral, o doc é bem direto."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **an implicit assumption**, **the logical next step**, **readily available**."
+    },
+    {
+      "t": "warn",
+      "c": "**readily** = sem dificuldade (readily available); nada a ver com really."
+    }
+  ],
+  "imagem": "📝💬🔍",
+  "visualizacao": "Você está na sua mesa, com o design doc aberto. Os comentários do Mike vão aparecendo na margem, uns elogiando, outros pedindo mais clareza.",
+  "foto_busca": "document review comments laptop",
+  "trechos": [
+    {
+      "id": "f-8e9677",
+      "quem": "mike",
+      "cod": "Overall, the doc is pretty straightforward.",
+      "dica": "No geral, o doc é bem direto.",
+      "img": "📄👍",
+      "alvo": "straightforward",
+      "alvo_pt": "direto",
+      "conceito": "straightforward = simples, direto, sem complicação.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b13c54",
+      "quem": "mike",
+      "cod": "The argument in section two is clear and coherent.",
+      "dica": "O argumento da seção dois é claro e coerente.",
+      "img": "🧱✅",
+      "alvo": "coherent",
+      "alvo_pt": "coerente",
+      "conceito": "a coherent argument = um argumento coerente, que se sustenta.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b94ae9",
+      "quem": "mike",
+      "cod": "But this paragraph about caching is a bit vague.",
+      "dica": "Mas esse parágrafo sobre cache está meio vago.",
+      "img": "🌫️📄",
+      "alvo": "vague",
+      "alvo_pt": "vago",
+      "conceito": "vague = vago, impreciso. Pronúncia: veig (uma sílaba).",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "caching",
+          "aceita": [
+            "cache"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-5d35e6",
+      "quem": "voce",
+      "contexto": "f-b94ae9",
+      "cod": "I deliberately left out the details to keep it short.",
+      "dica": "Deixei os detalhes de fora deliberadamente, pra ficar curto.",
+      "img": "✂️🎯",
+      "alvo": "deliberately",
+      "alvo_pt": "deliberadamente",
+      "conceito": "deliberately = deliberadamente, de propósito; o contrário é by accident.",
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I deliberately left out the details",
+          "aceita": [
+            "I left out the details deliberately",
+            "I deliberately left the details out"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8d16af",
+      "quem": "mike",
+      "contexto": "f-5d35e6",
+      "cod": "Then say that explicitly so nobody's left guessing.",
+      "dica": "Então diz isso explicitamente, pra ninguém ficar na dúvida.",
+      "img": "📢✍️",
+      "alvo": "explicitly",
+      "alvo_pt": "explicitamente",
+      "conceito": "explicitly state/say = deixar claro com todas as letras.",
+      "registro": "informal",
+      "interferencias": [
+        "BR31"
+      ],
+      "origem": "autoral_ia",
+      "lit": "[lit.: pra ninguém ficar adivinhando]",
+      "var": [
+        {
+          "em": "Then",
+          "aceita": [
+            "So"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1e9371",
+      "quem": "mike",
+      "cod": "There's an implicit assumption that the cache never fails.",
+      "dica": "Tem uma suposição implícita de que o cache nunca falha.",
+      "img": "🤫💾",
+      "alvo": "implicit",
+      "alvo_pt": "implícita",
+      "conceito": "an implicit assumption = uma suposição que ninguém escreveu.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3452a0",
+      "quem": "voce",
+      "cod": "Should I add explicit instructions for the rollback?",
+      "dica": "Eu acrescento instruções explícitas para o rollback?",
+      "img": "📋⏪",
+      "alvo": "explicit",
+      "alvo_pt": "explícitas",
+      "conceito": "explicit instructions = instruções explícitas, passo a passo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR09"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-11b133",
+      "quem": "mike",
+      "contexto": "f-3452a0",
+      "cod": "Yes. A diagram would be the logical next step.",
+      "dica": "Sim. Um diagrama seria o próximo passo lógico.",
+      "img": "🗺️➡️",
+      "alvo": "logical",
+      "alvo_pt": "lógico",
+      "conceito": "the logical next step = o próximo passo lógico.",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0b999d",
+      "quem": "mike",
+      "cod": "A new dev should be able to grasp the idea in ten minutes.",
+      "dica": "Um dev novo deveria conseguir captar a ideia em dez minutos.",
+      "img": "🧑‍💻💡",
+      "alvo": "grasp",
+      "alvo_pt": "captar",
+      "conceito": "grasp the idea/concept = captar, entender de verdade.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9e2fc8",
+      "quem": "mike",
+      "cod": "Make sure the links to the logs are readily available.",
+      "dica": "Garante que os links dos logs fiquem prontamente disponíveis.",
+      "img": "🔗📂",
+      "alvo": "readily",
+      "alvo_pt": "prontamente",
+      "conceito": "readily available = prontamente disponível, à mão; não é really.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-530be9",
+      "quem": "mike",
+      "cod": "You're very articulate in writing, by the way.",
+      "dica": "Aliás, você se expressa muito bem por escrito.",
+      "img": "✍️🌟",
+      "alvo": "very articulate",
+      "alvo_pt": "se expressa muito bem",
+      "lit": "[lit.: você é muito articulado]",
+      "conceito": "articulate (adjetivo) = que se expressa bem: She's very articulate.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

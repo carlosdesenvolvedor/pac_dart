@@ -1,0 +1,303 @@
+{
+  "id": "vocab-trabalho-empresa.curriculo-habilidades",
+  "trilha": "vocab-trabalho-empresa",
+  "nome": "Currículo: skill, ability, achievement…",
+  "emoji": "📄",
+  "cena": "Numa chamada à tarde, a Ana ajuda você a reescrever o currículo e o perfil profissional para uma vaga sênior interna.",
+  "resumo": "As palavras do currículo: skills, professional experience, capable of, achievement, qualifications…",
+  "fechamento": false,
+  "novos": [
+    "skill",
+    "ability",
+    "professional",
+    "technique",
+    "capable",
+    "discipline",
+    "specialize",
+    "specialist",
+    "qualification",
+    "achievement"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O que você sabe fazer"
+    },
+    {
+      "t": "p",
+      "c": "**skill** habilidade · **ability** capacidade · **professional** profissional · **technique** técnica · **capable** capaz · **discipline** disciplina · **specialize** especializar-se · **specialist** especialista · **qualification** requisito, formação · **achievement** conquista"
+    },
+    {
+      "t": "ex",
+      "c": "You're definitely capable of leading a team.\nVocê com certeza é capaz de liderar um time."
+    },
+    {
+      "t": "tip",
+      "c": "Regência: capable **of** + -ing, the ability **to** + verbo, specialize **in**."
+    },
+    {
+      "t": "warn",
+      "c": "Disciplina da faculdade (matéria) é **subject** ou class, não discipline. E especialista leva artigo: I'm not **a** specialist."
+    }
+  ],
+  "imagem": "📄✏️💻",
+  "visualizacao": "Você está com o currículo aberto numa janela e a Ana na outra, rindo e riscando frases. O cursor pisca em \"Skills\" e o sol da tarde bate no teclado.",
+  "foto_busca": "resume editing laptop desk",
+  "trechos": [
+    {
+      "id": "f-29741a",
+      "quem": "ana",
+      "cod": "Let's start with your skills.",
+      "dica": "Vamos começar pelas suas habilidades.",
+      "img": "🧰✨",
+      "alvo": "skills",
+      "alvo_pt": "habilidades",
+      "conceito": "skill = habilidade, competência; soft skills = habilidades comportamentais.",
+      "registro": "informal",
+      "armadilhas": [
+        "habilities",
+        "abilities"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6154cb",
+      "quem": "ana",
+      "cod": "How many years of professional experience should I put?",
+      "dica": "Quantos anos de experiência profissional eu coloco?",
+      "img": "🗓️💼❓",
+      "alvo": "professional experience",
+      "alvo_pt": "experiência profissional",
+      "conceito": "professional = profissional. Eu coloco? (oferta, pergunta) = Should I put?",
+      "registro": "informal",
+      "interferencias": [
+        "BR08",
+        "BR22"
+      ],
+      "armadilhas": [
+        "experiences",
+        "experience professional"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7400f6",
+      "quem": "voce",
+      "contexto": "f-6154cb",
+      "cod": "Put {anos_dev} years. I specialize in mobile apps.",
+      "dica": "Coloca {anos_dev} anos. Sou especializado em apps mobile.",
+      "pt_f": "Coloca {anos_dev} anos. Sou especializada em apps mobile.",
+      "img": "📱🔧",
+      "alvo": "specialize in",
+      "alvo_pt": "especializado em",
+      "conceito": "specialize in = especializar-se em (com z nos EUA). Aceita também I'm specialized in.",
+      "var": [
+        {
+          "em": "I specialize in",
+          "aceita": [
+            "I'm specialized in"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "specialise",
+        "specialize on"
+      ],
+      "bio": [
+        "anos_dev"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d5ba9f",
+      "quem": "ana",
+      "cod": "You're definitely capable of leading a team.",
+      "dica": "Você com certeza é capaz de liderar um time.",
+      "img": "👥🧭💪",
+      "alvo": "capable of",
+      "alvo_pt": "capaz de",
+      "conceito": "capable of + -ing = capaz de + verbo (não: capable to lead).",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "capable to",
+        "capable of lead"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7144ac",
+      "quem": "ana",
+      "cod": "The offline mode was a huge achievement.",
+      "dica": "O modo offline foi uma conquista enorme.",
+      "img": "🏆📴",
+      "alvo": "achievement",
+      "alvo_pt": "conquista",
+      "conceito": "achievement = conquista, realização (my biggest achievement). Pronúncia: a-CHEEV-ment.",
+      "registro": "informal",
+      "armadilhas": [
+        "achievment",
+        "conquest"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4495468,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"That's a huge achievement.\"; That's → The offline mode was; PT original: \"Isso é uma grande conquista.\"; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-405b11",
+      "quem": "ana",
+      "cod": "Mention the debugging technique you taught the new devs.",
+      "dica": "Menciona a técnica de debug que você ensinou para os devs novos.",
+      "img": "🐞🔍👨‍🏫",
+      "alvo": "debugging technique",
+      "alvo_pt": "técnica de debug",
+      "conceito": "technique = técnica (subst., tek-NEEK); technical = técnico (adj.); o técnico = technician.",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "technic",
+        "technical"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9d925d",
+      "quem": "ana",
+      "cod": "Highlight your ability to learn new tools fast.",
+      "dica": "Destaca a sua capacidade de aprender ferramentas novas rápido.",
+      "img": "🧠⚡🛠️",
+      "alvo": "ability to",
+      "alvo_pt": "capacidade de",
+      "conceito": "ability to + verbo = capacidade de (não: ability of learning).",
+      "var": [
+        {
+          "em": "fast",
+          "aceita": [
+            "quickly"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "ability of",
+        "hability"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e5edb3",
+      "quem": "ana",
+      "cod": "Working from home takes discipline, and you have plenty.",
+      "dica": "Trabalhar de casa exige disciplina, e você tem de sobra.",
+      "img": "🏠⏰💪",
+      "alvo": "discipline",
+      "alvo_pt": "disciplina",
+      "conceito": "discipline = disciplina (autocontrole). Matéria da faculdade = subject ou class.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR52"
+      ],
+      "armadilhas": [
+        "work from home takes",
+        "subject"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "takes",
+          "aceita": [
+            "requires"
+          ]
+        },
+        {
+          "em": "you have plenty",
+          "aceita": [
+            "you have plenty of it"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a14c1f",
+      "quem": "ana",
+      "cod": "You meet almost all the qualifications for this job.",
+      "dica": "Você atende a quase todas as qualificações dessa vaga.",
+      "img": "📋✅",
+      "alvo": "qualifications",
+      "alvo_pt": "qualificações",
+      "conceito": "qualifications (numa vaga) = as qualificações pedidas, os requisitos; meet the qualifications = atender a elas.",
+      "var": [
+        {
+          "em": "for this job",
+          "aceita": [
+            "of this job"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR40"
+      ],
+      "armadilhas": [
+        "requirements",
+        "work"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-851636",
+      "quem": "voce",
+      "contexto": "f-a14c1f",
+      "cod": "I'm not a security specialist, but I know the basics.",
+      "dica": "Não sou especialista em segurança, mas sei o básico.",
+      "img": "🔒🤷",
+      "alvo": "security specialist",
+      "alvo_pt": "especialista em segurança",
+      "conceito": "specialist = especialista. Profissão leva a/an: I'm not a specialist.",
+      "registro": "informal",
+      "interferencias": [
+        "BR13",
+        "BR24"
+      ],
+      "armadilhas": [
+        "specialist in security",
+        "i'm not security"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5036693,
+        "en_autor": "AlanF_US",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm not a specialist.\"; + security, + but I know the basics; PT original: \"Não sou um especialista.\"; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

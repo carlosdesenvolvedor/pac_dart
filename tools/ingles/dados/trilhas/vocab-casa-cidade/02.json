@@ -1,0 +1,243 @@
+{
+  "id": "vocab-casa-cidade.direcoes-boston",
+  "trilha": "vocab-casa-cidade",
+  "nome": "Perdido em Boston: left, north, bridge…",
+  "emoji": "🧭",
+  "cena": "A pé em Boston, você se perde perto do rio e o Ben te guia pelo telefone até o restaurante.",
+  "resumo": "Nove palavras para pedir e dar caminho: direction, left, north, bridge, beside e outras.",
+  "fechamento": false,
+  "novos": [
+    "church",
+    "direction",
+    "north",
+    "left",
+    "locate",
+    "west",
+    "bridge",
+    "east",
+    "beside"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Pedir e dar caminho"
+    },
+    {
+      "t": "p",
+      "c": "**direction** direção (pl. directions = instruções de caminho) · **north / west / east** norte, oeste, leste · **be located** ficar, estar situado · **church** igreja · **left** esquerda · **bridge** ponte · **beside** ao lado de"
+    },
+    {
+      "t": "ex",
+      "c": "Turn left at the church.\nVira à esquerda na igreja."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: ask for directions, head north, east of the bridge, cross the bridge, be located near."
+    },
+    {
+      "t": "warn",
+      "c": "beside = ao lado de; besides = além disso. E left também é o passado de leave (I left = eu saí)."
+    }
+  ],
+  "imagem": "🧭🌉📱",
+  "visualizacao": "Você está parado na beira de um rio em Boston, celular no ouvido. Venta, o sol está baixo, e a voz do Ben explica o caminho com calma.",
+  "foto_busca": "Boston river bridge pedestrian",
+  "trechos": [
+    {
+      "id": "f-3e958e",
+      "quem": "voce",
+      "cod": "I think I'm going in the wrong direction.",
+      "dica": "Acho que estou indo na direção errada.",
+      "img": "🧭❌",
+      "alvo": "direction",
+      "alvo_pt": "direção",
+      "conceito": "direction = direção; ask for directions = pedir informação de caminho (no plural).",
+      "registro": "informal",
+      "interferencias": [
+        "BR02"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4664101,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom is trocado por I think I am",
+        "export": "2026-10-03"
+      },
+      "opcional": [
+        "in"
+      ]
+    },
+    {
+      "id": "f-241275",
+      "quem": "voce",
+      "cod": "I'm on the west side of the river now.",
+      "dica": "Agora estou do lado oeste do rio.",
+      "img": "🌇🏞️",
+      "alvo": "west",
+      "alvo_pt": "oeste",
+      "conceito": "west side = lado oeste; the West = o oeste dos EUA.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-03bdb3",
+      "quem": "voce",
+      "cod": "Where exactly is the restaurant located?",
+      "dica": "Onde exatamente fica localizado o restaurante?",
+      "img": "📍🍽️",
+      "alvo": "located",
+      "alvo_pt": "localizado",
+      "conceito": "be located = ficar, estar situado (uso passivo). Na ativa, locate = achar a posição.",
+      "var": [
+        {
+          "em": "Where exactly is",
+          "aceita": [
+            "Where exactly's"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10784477,
+        "en_autor": "megamanenm",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "store trocado por restaurant; acrescentado exactly",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-075815",
+      "quem": "ben",
+      "contexto": "f-03bdb3",
+      "cod": "It's east of the bridge.",
+      "dica": "Fica a leste da ponte.",
+      "img": "🌅🌉",
+      "alvo": "east",
+      "alvo_pt": "leste",
+      "conceito": "east of = a leste de; East Coast = Costa Leste dos EUA (Boston, NY).",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e8215e",
+      "quem": "ben",
+      "cod": "Do you see the old church on the corner?",
+      "dica": "Você está vendo a igreja antiga na esquina?",
+      "img": "⛪👀",
+      "alvo": "church",
+      "alvo_pt": "igreja",
+      "conceito": "church como ponto de referência no caminho: turn left at the church.",
+      "registro": "informal",
+      "interferencias": [
+        "BR20"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Do you see",
+          "aceita": [
+            "Can you see"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-3dec25",
+      "quem": "ben",
+      "cod": "Turn left at the church.",
+      "dica": "Vira à esquerda na igreja.",
+      "img": "⬅️⛪",
+      "alvo": "left",
+      "alvo_pt": "esquerda",
+      "conceito": "turn left = virar à esquerda (sem artigo); left também é o passado de leave.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c3a653",
+      "quem": "ben",
+      "cod": "Be careful when you cross the bridge.",
+      "dica": "Cuidado ao cruzar a ponte.",
+      "img": "🌉⚠️",
+      "alvo": "bridge",
+      "alvo_pt": "ponte",
+      "conceito": "atravessar a ponte = cross the bridge (não pass).",
+      "var": [
+        {
+          "em": "when you cross",
+          "aceita": [
+            "crossing",
+            "when crossing"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "pass"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 9077269,
+        "en_autor": "CK",
+        "pt_id": 9119780,
+        "pt_autor": "JGEN",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5ef7cc",
+      "quem": "ben",
+      "cod": "After the bridge, head north for two blocks.",
+      "dica": "Depois da ponte, segue para o norte por duas quadras.",
+      "img": "⬆️🚶",
+      "alvo": "north",
+      "alvo_pt": "norte",
+      "conceito": "head north = seguir para o norte, sem preposição (não: go to the north).",
+      "registro": "informal",
+      "armadilhas": [
+        "to"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-83182f",
+      "quem": "ben",
+      "cod": "I'm waiting right beside the front door.",
+      "dica": "Estou esperando bem ao lado da porta da frente.",
+      "img": "🚪🧍",
+      "alvo": "beside",
+      "alvo_pt": "ao lado da",
+      "conceito": "beside = ao lado de; besides (com s) = além disso, além de.",
+      "registro": "informal",
+      "armadilhas": [
+        "besides"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

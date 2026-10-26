@@ -1,0 +1,310 @@
+{
+  "id": "vocab-coisas-descricoes.obra-casa-ben",
+  "trilha": "vocab-coisas-descricoes",
+  "nome": "A obra: structure, steel, crack…",
+  "emoji": "🏗️",
+  "cena": "O Ben comprou uma casa antiga em Boston e, numa chamada de vídeo, mostra a obra e conta o que o engenheiro disse.",
+  "resumo": "Falar de obra: estrutura, materiais, rachaduras, aço, concreto e fundação.",
+  "fechamento": false,
+  "novos": [
+    "material",
+    "structure",
+    "surface",
+    "stone",
+    "metal",
+    "solid",
+    "thick",
+    "crack",
+    "steel",
+    "foundation",
+    "concrete",
+    "structural"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**material** · **structure** = estrutura · **surface** = superfície · **stone** = pedra · **metal** · **solid** = maciço, firme · **thick** = grosso · **crack** = rachadura · **steel** = aço · **foundation** = fundação · **concrete** = concreto · **structural** = estrutural"
+    },
+    {
+      "t": "ex",
+      "c": "There's a crack in the basement wall.\nTem uma rachadura na parede do porão."
+    },
+    {
+      "t": "tip",
+      "c": "Do que é feito: **made of stone**, **a stone wall**, **a metal railing**, **solid wood** (madeira maciça)."
+    },
+    {
+      "t": "warn",
+      "c": "**steel** (aço) soa igual a **steal** (roubar). Cimento em pó = **cement**. Grosso de espessura = **thick**; mal-educado = **rude**."
+    }
+  ],
+  "imagem": "🏠🔨📹",
+  "visualizacao": "Você vê o Ben na tela do celular, de capacete, andando pela casa velha. Barulho de furadeira, poeira no ar e paredes sem reboco atrás dele.",
+  "foto_busca": "old house renovation construction interior",
+  "trechos": [
+    {
+      "id": "f-00f4b0",
+      "quem": "ben",
+      "cod": "The engineer checked the structure of the house last week.",
+      "dica": "O engenheiro verificou a estrutura da casa semana passada.",
+      "img": "👷🏠",
+      "alvo": "structure",
+      "alvo_pt": "estrutura",
+      "conceito": "structure = estrutura (de casa, de sistema ou de texto).",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-68f15b",
+      "quem": "ben",
+      "contexto": "f-00f4b0",
+      "cod": "He said the foundation is still in good shape.",
+      "dica": "Ele disse que a fundação ainda está em bom estado.",
+      "img": "🏗️👍",
+      "alvo": "foundation",
+      "alvo_pt": "fundação",
+      "conceito": "foundation = fundação, base da casa; também base em sentido figurado.",
+      "var": [
+        {
+          "em": "is still",
+          "aceita": [
+            "was still"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d1a67c",
+      "quem": "voce",
+      "contexto": "f-68f15b",
+      "cod": "Did he find any structural problems?",
+      "dica": "Ele achou algum problema estrutural?",
+      "img": "🔍🏚️",
+      "alvo": "structural",
+      "alvo_pt": "estrutural",
+      "conceito": "structural = estrutural: structural damage, a structural problem.",
+      "var": [
+        {
+          "em": "problems",
+          "aceita": [
+            "problem"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6d9f30",
+      "quem": "ben",
+      "contexto": "f-d1a67c",
+      "cod": "There's a crack in the basement wall, but it's not serious.",
+      "dica": "Tem uma rachadura na parede do porão, mas não é grave.",
+      "img": "🧱💔",
+      "alvo": "crack",
+      "alvo_pt": "rachadura",
+      "conceito": "crack = rachadura, fenda; o verbo: The wall cracked.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4497080,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "There was a crack in the mirror. → There's a crack in the basement wall, but it's not serious.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-32ad65",
+      "quem": "ben",
+      "cod": "The walls are really thick, so the house stays warm.",
+      "dica": "As paredes são bem grossas, então a casa fica quentinha.",
+      "img": "🧱🔥",
+      "alvo": "thick",
+      "alvo_pt": "grossas",
+      "conceito": "thick = grosso, espesso; o oposto é thin. Mal-educado = rude.",
+      "registro": "informal",
+      "armadilhas": [
+        "fat",
+        "rude"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1e8e89",
+      "quem": "voce",
+      "cod": "Is that wall made of stone?",
+      "dica": "Essa parede é feita de pedra?",
+      "img": "🪨🧱",
+      "alvo": "stone",
+      "alvo_pt": "pedra",
+      "conceito": "stone = pedra (o material ou pedra pequena); rock = rocha, pedra grande.",
+      "registro": "informal",
+      "armadilhas": [
+        "rock"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "that wall",
+          "aceita": [
+            "this wall"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e46c86",
+      "quem": "ben",
+      "contexto": "f-1e8e89",
+      "cod": "Yes, and the old doors are solid wood.",
+      "dica": "É, sim, e as portas antigas são de madeira maciça.",
+      "img": "🚪🪵",
+      "alvo": "solid",
+      "alvo_pt": "maciça",
+      "conceito": "solid wood = madeira maciça; solid também é firme, confiável: a solid plan.",
+      "var": [
+        {
+          "em": "are solid wood",
+          "aceita": [
+            "are made of solid wood"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7c5a9d",
+      "quem": "ben",
+      "cod": "The new floor is made from the same material as the old one.",
+      "dica": "O piso novo é feito do mesmo material que o antigo.",
+      "img": "🪵🔁",
+      "alvo": "material",
+      "alvo_pt": "material",
+      "conceito": "material = material; material de escritório = office supplies.",
+      "var": [
+        {
+          "em": "made from",
+          "aceita": [
+            "made of"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1116305,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "These two shirts are made from the same material. → The new floor is made from the same material as the old one.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-96ad64",
+      "quem": "ben",
+      "cod": "We replaced the old wood beams with steel.",
+      "dica": "A gente substituiu as vigas velhas de madeira por aço.",
+      "img": "🏗️⚙️",
+      "alvo": "steel",
+      "alvo_pt": "aço",
+      "conceito": "steel (STIL) = aço; soa igual a steal (roubar).",
+      "var": [
+        {
+          "em": "wood beams",
+          "aceita": [
+            "wooden beams"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "steal",
+        "iron"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5cb49b",
+      "quem": "voce",
+      "cod": "Is the basement floor concrete?",
+      "dica": "O chão do porão é de concreto?",
+      "img": "🏗️❓",
+      "alvo": "concrete",
+      "alvo_pt": "concreto",
+      "conceito": "concrete = concreto (da obra); cimento em pó = cement. Figurado: a concrete example.",
+      "var": [
+        {
+          "em": "floor concrete",
+          "aceita": [
+            "floor made of concrete"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "cement"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b43bac",
+      "quem": "ben",
+      "cod": "This new railing is metal, not wood.",
+      "dica": "Esse corrimão novo é de metal, não de madeira.",
+      "img": "🔩🪜",
+      "alvo": "metal",
+      "alvo_pt": "metal",
+      "conceito": "metal (MÉ-dl) = metal: a metal frame, metal pipes.",
+      "var": [
+        {
+          "em": "is metal",
+          "aceita": [
+            "is made of metal"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-43df81",
+      "quem": "ben",
+      "cod": "We need to clean the surface before we paint it.",
+      "dica": "A gente precisa limpar a superfície antes de pintar.",
+      "img": "🧽🎨",
+      "alvo": "surface",
+      "alvo_pt": "superfície",
+      "conceito": "surface (SÂR-fis) = superfície; on the surface = por fora, na aparência.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "before we paint it",
+          "aceita": [
+            "before painting it"
+          ]
+        }
+      ]
+    }
+  ]
+}

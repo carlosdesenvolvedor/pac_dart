@@ -1,0 +1,237 @@
+{
+  "id": "vocab-pensar-argumentar.debate-na-reuniao",
+  "trilha": "vocab-pensar-argumentar",
+  "nome": "Debate: argument, insist, persuade…",
+  "emoji": "🗣️",
+  "cena": "Na reunião de planejamento, o Mike quer reescrever o app do zero e a Sarah é contra; você tenta achar um meio-termo.",
+  "resumo": "Dez palavras para debater sem brigar: insist, oppose, argument, criticize, debate, judge, defend, persuaded…",
+  "fechamento": false,
+  "novos": [
+    "argument",
+    "debate",
+    "judge",
+    "oppose",
+    "insist",
+    "judgment",
+    "opposition",
+    "defend",
+    "persuade",
+    "criticize"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Debater sem brigar"
+    },
+    {
+      "t": "p",
+      "c": "**argument** argumento; discussão · **debate** debate · **judge** julgar, avaliar · **oppose** opor-se · **insist** insistir · **judgment** julgamento · **opposition** oposição · **defend** defender · **persuade** persuadir, convencer · **criticize** criticar"
+    },
+    {
+      "t": "ex",
+      "c": "We had an argument about the deadline.\nA gente discutiu por causa do prazo."
+    },
+    {
+      "t": "tip",
+      "c": "**insist on** + -ing (não in), **be opposed to** (ser contrário a) e **persuade** someone **to** + verbo."
+    },
+    {
+      "t": "warn",
+      "c": "**have an argument** é discutir, brigar; argumento lógico é **an argument for/against**. Grafia americana: **judgment**, **criticize**."
+    }
+  ],
+  "imagem": "🗓️💻🗣️",
+  "visualizacao": "Você está na chamada de planejamento. O Mike fala rápido, empolgado, e a Sarah cruza os braços na janelinha ao lado. No quadro, a palavra rewrite pisca.",
+  "foto_busca": "team video meeting discussion",
+  "trechos": [
+    {
+      "id": "f-9712ec",
+      "quem": "mike",
+      "cod": "I insist on rewriting the app from scratch.",
+      "dica": "Eu insisto em reescrever o app do zero.",
+      "img": "🔁📱🧱",
+      "alvo": "insist on",
+      "alvo_pt": "insisto em",
+      "conceito": "insist on + -ing = insistir em (não: insist in, nem insist to rewrite).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR52",
+        "BR53"
+      ],
+      "armadilhas": [
+        "in",
+        "to"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9df527",
+      "quem": "sarah",
+      "contexto": "f-9712ec",
+      "cod": "I'm opposed to a full rewrite right now.",
+      "dica": "Sou contrária a uma reescrita completa agora.",
+      "img": "✋🚫",
+      "alvo": "opposed to",
+      "alvo_pt": "contrária a",
+      "conceito": "be opposed to = ser contrário a; na fala soa mais natural que I oppose.",
+      "registro": "neutro",
+      "armadilhas": [
+        "against"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dc4f32",
+      "quem": "mike",
+      "contexto": "f-9df527",
+      "cod": "My main argument is that the old code is slowing us down.",
+      "dica": "O meu principal argumento é que o código antigo está atrasando a gente.",
+      "img": "🐢💻",
+      "alvo": "argument",
+      "alvo_pt": "argumento",
+      "conceito": "argument = argumento; have an argument = discutir, brigar.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR60"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-36be8a",
+      "quem": "sarah",
+      "contexto": "f-dc4f32",
+      "cod": "I'm not criticizing your idea, but we have a deadline.",
+      "dica": "Não estou criticando a sua ideia, mas a gente tem um prazo.",
+      "img": "💬⏰",
+      "alvo": "criticizing",
+      "alvo_pt": "criticando",
+      "conceito": "criticize, com z no inglês americano; criticism = crítica.",
+      "registro": "neutro",
+      "armadilhas": [
+        "criticising"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2816325,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"I'm not criticizing you.\"; you → your idea, + but we have a deadline; PT reescrito (original: \"Não estou criticando você.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e86e31",
+      "quem": "voce",
+      "cod": "There's room for debate here. Let's find a middle ground.",
+      "dica": "Aqui tem espaço pra debate. Vamos achar um meio-termo.",
+      "img": "🤝🧩",
+      "alvo": "debate",
+      "alvo_pt": "debate",
+      "conceito": "room for debate = espaço pra debate; middle ground = meio-termo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4850020,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"There's room for debate.\"; + here e + Let's find a middle ground.; PT reescrito (original: \"Há espaço para debate.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-670486",
+      "quem": "voce",
+      "cod": "It's hard to judge which option is riskier.",
+      "dica": "É difícil julgar qual opção é mais arriscada.",
+      "img": "🤔⚖️",
+      "alvo": "judge",
+      "alvo_pt": "julgar",
+      "conceito": "judge aqui é verbo: avaliar uma situação. Sem sentido de tribunal.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e52b00",
+      "quem": "mike",
+      "cod": "I can defend this decision with data from the last three sprints.",
+      "dica": "Consigo defender essa decisão com dados das últimas três sprints.",
+      "img": "🛡️📊",
+      "alvo": "defend",
+      "alvo_pt": "defender",
+      "conceito": "defend a decision = defender, justificar uma escolha.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e40366",
+      "quem": "sarah",
+      "contexto": "f-e52b00",
+      "cod": "I'm not persuaded.",
+      "dica": "Não estou persuadida.",
+      "img": "🙄",
+      "alvo": "persuaded",
+      "alvo_pt": "persuadida",
+      "conceito": "persuade = persuadir (levar a agir). Não estou convencido(a) = I'm not convinced.",
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3365633,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN sem alteração; PT reescrito (original: \"Ninguém me persuade.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-14efe3",
+      "quem": "voce",
+      "cod": "A smaller rewrite would face less opposition from the team.",
+      "dica": "Uma reescrita menor enfrentaria menos oposição do time.",
+      "img": "🧩👥",
+      "alvo": "opposition",
+      "alvo_pt": "oposição",
+      "conceito": "opposition = oposição, resistência a uma ideia; face opposition = enfrentar oposição.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0d77e3",
+      "quem": "mike",
+      "contexto": "f-14efe3",
+      "cod": "OK, I trust your judgment. Let's try it.",
+      "dica": "Tá bom, confio no seu julgamento. Vamos tentar.",
+      "img": "🤝👍",
+      "alvo": "judgment",
+      "alvo_pt": "julgamento",
+      "conceito": "judgment, sem e depois do g, na grafia americana.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR18"
+      ],
+      "armadilhas": [
+        "judgement"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

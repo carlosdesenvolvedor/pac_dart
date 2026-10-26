@@ -1,0 +1,295 @@
+{
+  "id": "vocab-trabalho-empresa.cliente-consultoria",
+  "trilha": "vocab-trabalho-empresa",
+  "nome": "O cliente: consultant, agent, agency…",
+  "emoji": "🤝",
+  "cena": "Você e a Sarah fazem uma reunião por vídeo com um cliente que tem uma central de atendimento, o analista de dados dele e a consultora que ele contratou.",
+  "resumo": "As palavras de uma reunião com cliente: analyst, consultant, agents, agency, efficiency, negotiations…",
+  "fechamento": false,
+  "novos": [
+    "negotiation",
+    "consult",
+    "consultant",
+    "adviser",
+    "analyst",
+    "agency",
+    "agent",
+    "operator",
+    "efficiency"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Reunião com o cliente"
+    },
+    {
+      "t": "p",
+      "c": "**negotiation** negociação · **consult** consultar · **consultant** consultor(a) · **adviser** assessor, conselheiro · **analyst** analista · **agency** agência · **agent** atendente, agente · **operator** operador(a) · **efficiency** eficiência"
+    },
+    {
+      "t": "ex",
+      "c": "Most of them come from a staffing agency.\nA maioria vem de uma agência de terceirização."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: a data analyst, a staffing agency, a customer service agent, improve efficiency, contract negotiations."
+    },
+    {
+      "t": "warn",
+      "c": "**adviser** (ou advisor) não é advogado: advogado é **lawyer**. Numa central de atendimento, **agent** = atendente."
+    }
+  ],
+  "imagem": "🤝💻🎧",
+  "visualizacao": "Na sua tela, quatro janelas de vídeo: a Sarah, o cliente numa sala envidraçada, o analista com planilhas e a consultora. Ao fundo do cliente, fileiras de atendentes de headset.",
+  "foto_busca": "call center agents headsets office",
+  "trechos": [
+    {
+      "id": "f-ac1018",
+      "quem": "cliente",
+      "cod": "Our data analyst is on the call too.",
+      "dica": "O nosso analista de dados também está na chamada.",
+      "img": "📊👨‍💻",
+      "alvo": "data analyst",
+      "alvo_pt": "analista de dados",
+      "conceito": "analyst = analista (AN-a-list); data analyst = analista de dados.",
+      "var": [
+        {
+          "em": "too",
+          "aceita": [
+            "as well"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "analist",
+        "analyst of data"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0702cf",
+      "quem": "cliente",
+      "cod": "And this is the consultant we hired last month.",
+      "dica": "E essa é a consultora que contratamos no mês passado.",
+      "img": "👩‍💼🤝📅",
+      "alvo": "consultant",
+      "alvo_pt": "consultora",
+      "conceito": "consultant = consultor(a) (an outside consultant). Relativa sem that: the consultant we hired.",
+      "registro": "neutro",
+      "armadilhas": [
+        "consultor",
+        "contracted"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "the consultant we hired",
+          "aceita": [
+            "the consultant that we hired",
+            "the consultant who we hired"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d01f2e",
+      "quem": "cliente",
+      "cod": "Our agents handle about 2,000 calls a day.",
+      "dica": "Os nossos atendentes atendem umas 2.000 ligações por dia.",
+      "img": "🎧📞📞",
+      "alvo": "agents",
+      "alvo_pt": "atendentes",
+      "conceito": "agent = atendente (central de atendimento); real estate agent = corretor de imóveis.",
+      "var": [
+        {
+          "em": "about",
+          "aceita": [
+            "around"
+          ]
+        },
+        {
+          "em": "handle",
+          "aceita": [
+            "answer",
+            "take"
+          ]
+        },
+        {
+          "em": "a day",
+          "aceita": [
+            "per day"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "attendants",
+        "attend"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c0402",
+      "quem": "cliente",
+      "cod": "Most of them come from a staffing agency.",
+      "dica": "A maioria vem de uma agência de terceirização.",
+      "img": "🏢➡️🎧",
+      "alvo": "staffing agency",
+      "alvo_pt": "agência de terceirização",
+      "conceito": "agency = agência; staffing agency = agência que fornece mão de obra temporária ou terceirizada.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "the most",
+        "outsourcing agency"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fb1e37",
+      "quem": "consultora",
+      "cod": "We want to improve efficiency without hiring more people.",
+      "dica": "Queremos melhorar a eficiência sem contratar mais pessoas.",
+      "img": "⚙️📈👥",
+      "alvo": "efficiency",
+      "alvo_pt": "eficiência",
+      "conceito": "efficiency = eficiência (sem artigo em sentido geral). Preposição + -ing: without hiring.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR21",
+        "BR52"
+      ],
+      "armadilhas": [
+        "the efficiency",
+        "without hire"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8fd076",
+      "quem": "cliente",
+      "cod": "Right now, callers have to press zero to speak to an operator.",
+      "dica": "No momento, quem liga tem que apertar zero para falar com um operador.",
+      "img": "☎️👆🧑‍💼",
+      "alvo": "operator",
+      "alvo_pt": "operador",
+      "conceito": "operator = operador(a), a pessoa que atende no menu do telefone (Press zero to speak to an operator).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR14",
+        "BR30"
+      ],
+      "armadilhas": [
+        "callers has",
+        "for speak"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "speak to",
+          "aceita": [
+            "talk to"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-43c7e7",
+      "quem": "voce",
+      "cod": "We'd like to consult your agents before we design anything.",
+      "dica": "Gostaríamos de consultar os seus atendentes antes de desenhar qualquer coisa.",
+      "img": "🗣️🎧✏️",
+      "alvo": "consult",
+      "alvo_pt": "consultar",
+      "conceito": "consult = consultar (alguém, a documentação); consult with = trocar ideias com.",
+      "var": [
+        {
+          "em": "consult your agents",
+          "aceita": [
+            "consult with your agents"
+          ]
+        },
+        {
+          "em": "before we design",
+          "aceita": [
+            "before designing"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "consult to",
+        "will design"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-68694a",
+      "quem": "sarah",
+      "cod": "Next time, our technical advisor will join us.",
+      "dica": "Da próxima vez, o nosso assessor técnico vai participar.",
+      "img": "🧑‍🔧💬",
+      "alvo": "technical advisor",
+      "alvo_pt": "assessor técnico",
+      "conceito": "adviser (ou advisor) = assessor, conselheiro. Advogado é lawyer.",
+      "var": [
+        {
+          "em": "advisor",
+          "aceita": [
+            "adviser"
+          ]
+        },
+        {
+          "em": "will join us",
+          "aceita": [
+            "is going to join us",
+            "will join"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR56"
+      ],
+      "armadilhas": [
+        "advocate",
+        "advisor technical"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fe6bff",
+      "quem": "sarah",
+      "cod": "Let's leave the contract negotiations for next week.",
+      "dica": "Vamos deixar as negociações do contrato para a semana que vem.",
+      "img": "📄🤝🗓️",
+      "alvo": "contract negotiations",
+      "alvo_pt": "negociações do contrato",
+      "conceito": "negotiation = negociação, muito usada no plural: contract negotiations.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "negociations",
+        "next week negotiations"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

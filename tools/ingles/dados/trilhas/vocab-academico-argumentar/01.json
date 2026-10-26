@@ -1,0 +1,239 @@
+{
+  "id": "vocab-academico-argumentar.aspectos-do-problema",
+  "trilha": "vocab-academico-argumentar",
+  "nome": "O problema por partes: aspect, namely…",
+  "emoji": "🧩",
+  "cena": "Na retrospectiva da sprint, você, a Ana e o Mike analisam por que tantos usuários desistem no cadastro do app.",
+  "resumo": "Onze palavras para dividir um problema em partes: aspect, essence, integral, namely, ultimate…",
+  "fechamento": false,
+  "novos": [
+    "aspect",
+    "broadly",
+    "commonly",
+    "essence",
+    "essentially",
+    "facet",
+    "fundamentally",
+    "indirect",
+    "integral",
+    "namely",
+    "ultimate"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "O problema por partes"
+    },
+    {
+      "t": "p",
+      "c": "**aspect** aspecto · **broadly** de modo geral · **commonly** comumente · **essence** essência · **essentially** essencialmente · **facet** faceta · **fundamentally** fundamentalmente · **indirect** indireto · **integral** parte integrante · **namely** ou seja, a saber · **ultimate** final, maior"
+    },
+    {
+      "t": "ex",
+      "c": "Our ultimate goal is a faster sign-up.\nNosso objetivo final é um cadastro mais rápido."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: every **aspect of**, **broadly speaking**, **in essence**, **an integral part of**."
+    },
+    {
+      "t": "warn",
+      "c": "**ultimate** não é último (last): é o objetivo final. Pão integral é whole wheat bread."
+    }
+  ],
+  "imagem": "💻📉📝🔍",
+  "visualizacao": "Você está na chamada da retro. Na tela compartilhada, o Mike mostra o funil de cadastro caindo a cada passo, e a Ana circula o formulário em vermelho.",
+  "foto_busca": "team meeting funnel chart screen",
+  "trechos": [
+    {
+      "id": "f-5fa499",
+      "quem": "mike",
+      "cod": "Let's look at every aspect of the sign-up flow.",
+      "dica": "Vamos olhar cada aspecto do fluxo de cadastro.",
+      "img": "🔍📝",
+      "alvo": "aspect",
+      "alvo_pt": "aspecto",
+      "conceito": "aspect pede of: every aspect of = cada aspecto de.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "every",
+          "aceita": [
+            "each"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cb2e4a",
+      "quem": "ana",
+      "cod": "Broadly speaking, users quit when the form gets too long.",
+      "dica": "De modo geral, os usuários desistem quando o formulário fica longo demais.",
+      "img": "📋📏🚪",
+      "alvo": "Broadly speaking",
+      "alvo_pt": "De modo geral",
+      "conceito": "broadly speaking = de modo geral, falando de forma ampla; abre a frase.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9607aa",
+      "quem": "voce",
+      "cod": "Slow verification emails are a commonly reported issue.",
+      "dica": "E-mails de verificação demorados são um problema comumente relatado.",
+      "img": "📧🐢",
+      "alvo": "commonly",
+      "alvo_pt": "comumente",
+      "conceito": "a commonly reported issue = um problema que muita gente relata.",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-97cfe7",
+      "quem": "mike",
+      "cod": "In essence, we're asking for too much information too early.",
+      "dica": "Em essência, a gente está pedindo informação demais cedo demais.",
+      "img": "📋⏰",
+      "alvo": "essence",
+      "alvo_pt": "essência",
+      "conceito": "In essence = no fundo, em essência; resume a ideia.",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "informations"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-924deb",
+      "quem": "ana",
+      "cod": "The new form is essentially the same as the old one.",
+      "dica": "O formulário novo é essencialmente igual ao antigo.",
+      "img": "📄📄🤷",
+      "alvo": "essentially",
+      "alvo_pt": "essencialmente",
+      "conceito": "essentially = essencialmente, no fundo. Igual a = the same as.",
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f8f282",
+      "quem": "voce",
+      "cod": "There's more than one facet to this problem.",
+      "dica": "Tem mais de uma faceta nesse problema.",
+      "img": "💎🧩",
+      "alvo": "facet",
+      "alvo_pt": "faceta",
+      "conceito": "There's more than one facet to = tem mais de um lado; mais formal que aspect. Pronúncia: FA-sit.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8d8e2e",
+      "quem": "mike",
+      "cod": "Mobile sign-up is fundamentally different from desktop.",
+      "dica": "O cadastro no celular é fundamentalmente diferente do desktop.",
+      "img": "📱↔️💻",
+      "alvo": "fundamentally",
+      "alvo_pt": "fundamentalmente",
+      "conceito": "fundamentally different from = diferente na base (não: different of).",
+      "registro": "informal",
+      "interferencias": [
+        "BR55"
+      ],
+      "armadilhas": [
+        "of"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "from desktop",
+          "aceita": [
+            "from the desktop"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1d5930",
+      "quem": "ana",
+      "cod": "The slow page might be an indirect cause of the drop-off.",
+      "dica": "A página lenta pode ser uma causa indireta da desistência.",
+      "img": "🐢📉",
+      "alvo": "indirect",
+      "alvo_pt": "indireta",
+      "conceito": "an indirect cause = uma causa indireta; pode ser = might be.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "might",
+          "aceita": [
+            "could",
+            "may"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-59e2b9",
+      "quem": "voce",
+      "cod": "Trust is an integral part of the sign-up experience.",
+      "dica": "A confiança é parte integrante da experiência de cadastro.",
+      "img": "🤝🧩",
+      "alvo": "integral part",
+      "alvo_pt": "parte integrante",
+      "conceito": "an integral part of = parte essencial de. Pão integral = whole wheat bread.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR21"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b04138",
+      "quem": "mike",
+      "cod": "We found two problems, namely the long form and the slow page.",
+      "dica": "Achamos dois problemas, ou seja, o formulário longo e a página lenta.",
+      "img": "📋⏳",
+      "alvo": "namely",
+      "alvo_pt": "ou seja",
+      "conceito": "namely = a saber, ou seja: vem depois da ideia geral e lista os itens.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e54983",
+      "quem": "ana",
+      "cod": "Our ultimate goal is a sign-up that takes under a minute.",
+      "dica": "Nosso objetivo final é um cadastro que leve menos de um minuto.",
+      "img": "🎯⏱️",
+      "alvo": "ultimate",
+      "alvo_pt": "final",
+      "conceito": "ultimate goal = objetivo final, o maior; último = last.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "last"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

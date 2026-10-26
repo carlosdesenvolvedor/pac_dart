@@ -1,0 +1,209 @@
+{
+  "id": "vocab-coisas-descricoes.arquitetura-sistema",
+  "trilha": "vocab-coisas-descricoes",
+  "nome": "Arquitetura: core, complex, weak…",
+  "emoji": "🧩",
+  "cena": "Na revisão de arquitetura, o Mike desenha no quadro o sistema atual e você aponta o que é central, o que é frágil e o que dá para modernizar.",
+  "resumo": "Descrever um sistema: o que é central, complexo, fraco e o que dá para modernizar.",
+  "fechamento": false,
+  "novos": [
+    "modern",
+    "central",
+    "complex",
+    "combination",
+    "weak",
+    "core",
+    "inner",
+    "conventional",
+    "fragment",
+    "functional"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**modern** = moderno · **central** = central · **complex** = complexo · **combination** = combinação · **weak** = fraco · **core** = essencial, do núcleo · **inner** = interno · **conventional** = convencional · **fragment** = fragmento · **functional** = funcional"
+    },
+    {
+      "t": "ex",
+      "c": "Everything goes through this central database.\nTudo passa por esse banco de dados central."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações de arquitetura: **a weak point**, **core features**, **the inner loop**, **fully functional**, **a conventional approach**."
+    },
+    {
+      "t": "warn",
+      "c": "**inner** só vem antes do substantivo (the inner loop). Trecho de código para colar é **snippet**; **fragment** é pedaço solto."
+    }
+  ],
+  "imagem": "💻🧩📐",
+  "visualizacao": "Você vê o Mike na câmera, de pé ao lado do quadro branco. Ele desenha caixas e setas com caneta azul e bate a ponta no banco de dados do meio.",
+  "foto_busca": "whiteboard software architecture diagram",
+  "trechos": [
+    {
+      "id": "f-74a3cf",
+      "quem": "mike",
+      "cod": "Everything goes through this central database.",
+      "dica": "Tudo passa por esse banco de dados central.",
+      "img": "🗄️🎯",
+      "alvo": "central",
+      "alvo_pt": "central",
+      "conceito": "central = central: a central database, play a central role.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ce7250",
+      "quem": "voce",
+      "contexto": "f-74a3cf",
+      "cod": "That's also our weak point. If it goes down, everything stops.",
+      "dica": "Esse também é o nosso ponto fraco. Se ele cair, tudo para.",
+      "img": "🗄️⚠️",
+      "alvo": "weak",
+      "alvo_pt": "fraco",
+      "conceito": "weak point = ponto fraco; o oposto de weak é strong.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "week"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-991ec4",
+      "quem": "voce",
+      "cod": "This module is a little more complex than the others.",
+      "dica": "Esse módulo é um pouco mais complexo que os outros.",
+      "img": "🧶🤯",
+      "alvo": "complex",
+      "alvo_pt": "complexo",
+      "conceito": "complex = complexo; an apartment complex = um condomínio de prédios.",
+      "var": [
+        {
+          "em": "a little",
+          "aceita": [
+            "a bit"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5325782,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "This example is a little more complex. → This module is a little more complex than the others.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fc856c",
+      "quem": "mike",
+      "cod": "The checkout flow is a combination of old and new code.",
+      "dica": "O fluxo de checkout é uma combinação de código antigo e novo.",
+      "img": "🔀🧩",
+      "alvo": "combination",
+      "alvo_pt": "combinação",
+      "conceito": "a combination of = uma combinação de; in combination with = junto com.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5898b9",
+      "quem": "mike",
+      "cod": "Payments are a core feature, so we can't break them.",
+      "dica": "Os pagamentos são uma feature essencial, então não podemos quebrá-los.",
+      "img": "💳⭐",
+      "alvo": "core",
+      "alvo_pt": "essencial",
+      "conceito": "core = essencial, do núcleo: core features, the core team, core business.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dddec9",
+      "quem": "voce",
+      "cod": "The inner loop runs a query every time. That's the slow part.",
+      "dica": "O laço interno roda uma consulta toda vez. Essa é a parte lenta.",
+      "img": "🔁🐢",
+      "alvo": "inner",
+      "alvo_pt": "interno",
+      "conceito": "inner = interno, de dentro; vem antes do substantivo: the inner loop.",
+      "blocos": [
+        7
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "internal"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7eebcd",
+      "quem": "mike",
+      "cod": "A conventional approach would work fine here.",
+      "dica": "Uma abordagem convencional funcionaria bem aqui.",
+      "img": "🛤️👌",
+      "alvo": "conventional",
+      "alvo_pt": "convencional",
+      "conceito": "conventional = convencional, tradicional; conventional wisdom = o senso comum.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0559fc",
+      "quem": "voce",
+      "cod": "I found fragments of old code that nobody uses anymore.",
+      "dica": "Achei fragmentos de código antigo que ninguém usa mais.",
+      "img": "📜🗑️",
+      "alvo": "fragments",
+      "alvo_pt": "fragmentos",
+      "conceito": "fragment = fragmento, pedaço solto; trecho de código para colar = snippet.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-202bb9",
+      "quem": "mike",
+      "cod": "The new version needs to be fully functional by June.",
+      "dica": "A versão nova precisa estar totalmente funcional até junho.",
+      "img": "✅⚙️",
+      "alvo": "functional",
+      "alvo_pt": "funcional",
+      "conceito": "fully functional = funcionando por completo; functional programming = programação funcional.",
+      "var": [
+        {
+          "em": "needs to",
+          "aceita": [
+            "has to"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5fe75b",
+      "quem": "voce",
+      "cod": "We could migrate the rest to a more modern stack.",
+      "dica": "A gente podia migrar o resto para uma stack mais moderna.",
+      "img": "🚀✨",
+      "alvo": "modern",
+      "alvo_pt": "moderna",
+      "conceito": "modern (MÁ-dern) = moderno: a modern stack, modern tools.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

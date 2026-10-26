@@ -1,0 +1,2647 @@
+{
+ "versao": 2,
+ "trilha": "vocab-academico-sistemas",
+ "licoes": {
+  "vocab-academico-sistemas.pipeline-build": {
+   "titulo": "Sexta-feira, pipeline quebrado: o vocabulário do build",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "💻🚧📦",
+     "pt": "Sexta-feira, quatro da tarde. Você já estava pensando no fim de semana quando chega a mensagem do Mike: a esteira de integração quebrou de novo."
+    },
+    {
+     "pt": "Vocês abrem uma chamada, compartilham a tela e começam a revisar juntos a configuração, o contêiner e o tamanho do pacote do app. Tudo com calma, porque sexta não é dia de pânico."
+    },
+    {
+     "pt": "São onze palavras hoje, uma por frase. Quase todas parecem com o português, e é justamente aí que mora o perigo: duas delas têm armadilha de sentido, e uma tem armadilha de pronúncia."
+    },
+    {
+     "secao": "Artefato e configuração",
+     "pt": "O Mike abre a chamada já com a má notícia. Escuta:"
+    },
+    {
+     "en": "The pipeline broke again, so there's no build artifact to test.",
+     "tr": "O pipeline quebrou de novo, então não tem artefato do build pra testar.",
+     "img": "🚧📦❌"
+    },
+    {
+     "pt": "A palavra da lição é artefato. Em dev, é o arquivo que a esteira gera e guarda no fim do processo: o executável, o pacote, a imagem pronta para instalar.",
+     "quadro": "build artifact = artefato do build"
+    },
+    {
+     "pt": "Repare na colocação: substantivo mais substantivo, sem preposição no meio. O português diz artefato do processo; o inglês só encosta uma palavra na outra.",
+     "quadro": "build artifact · test artifacts · store the artifacts"
+    },
+    {
+     "pt": "Fora da computação, artefato é o objeto feito pela mão humana, aquele que o arqueólogo encontra numa escavação:"
+    },
+    {
+     "en": "The museum has artifacts from ancient Egypt.",
+     "tr": "O museu tem artefatos do antigo Egito.",
+     "img": "🏺🏛️"
+    },
+    {
+     "pt": "A grafia muda de país para país: com i nos Estados Unidos, e muitas vezes com e no Reino Unido. As duas estão certas.",
+     "quadro": "US: artifact · UK: artefact"
+    },
+    {
+     "pt": "Diante do problema, você propõe começar pelo óbvio:"
+    },
+    {
+     "en": "Let's check the configuration file first.",
+     "tr": "Vamos conferir o arquivo de configuração primeiro.",
+     "img": "🔍📄⚙️"
+    },
+    {
+     "pt": "De novo, substantivo mais substantivo: arquivo de configuração vira configuração arquivo, nessa ordem. A palavra que descreve vem antes.",
+     "quadro": "configuration file = arquivo de configuração"
+    },
+    {
+     "pt": "Na conversa, quase nenhum dev diz a palavra inteira. Ela encolhe para as seis primeiras letras, e é assim que você vai ouvir no dia a dia:"
+    },
+    {
+     "en": "Where's the config file?",
+     "tr": "Cadê o arquivo de configuração?"
+    },
+    {
+     "secao": "Parâmetro e execução",
+     "pt": "O Mike encontra a primeira pista olhando o arquivo:"
+    },
+    {
+     "en": "We're passing the wrong parameter to the deploy script.",
+     "tr": "A gente está passando o parâmetro errado pro script de deploy.",
+     "img": "📜❌🔧"
+    },
+    {
+     "pt": "Olha a lousa: passar um parâmetro para alguma coisa. O verbo é o mesmo que a gente usa em português, e a preposição é a de direção, a mesma do para.",
+     "quadro": "pass a parameter to the script"
+    },
+    {
+     "pt": "Agora a pronúncia. A força cai na segunda sílaba, como no nosso parâmetro. A armadilha está no resto: a vogal forte sai com a boca bem aberta, e o final perde a vogal, termina no erre do inglês. Escuta:"
+    },
+    {
+     "en": "parameter",
+     "tr": "parâmetro"
+    },
+    {
+     "pt": "Fora do código, com a letra esse no final, a palavra vira limites, as regras do jogo. É o que um gerente diz quando define até onde o time pode ir:"
+    },
+    {
+     "en": "We need to work within these parameters.",
+     "tr": "A gente precisa trabalhar dentro desses limites.",
+     "img": "📏🚧"
+    },
+    {
+     "pt": "Você quer ver o erro com os próprios olhos, então pede:"
+    },
+    {
+     "en": "Can you execute the script locally and send me the log?",
+     "tr": "Você pode executar o script localmente e me mandar o log?",
+     "img": "🏃📜💻"
+    },
+    {
+     "pt": "Executar é o verbo mais formal da família. Ele aparece em documentação, em mensagem de erro, em relatório. No papo de time, o verbo campeão é o de correr, rodar:",
+     "quadro": "execute (formal) · run (dia a dia)"
+    },
+    {
+     "en": "Can you run the script and send me the log?",
+     "tr": "Você pode rodar o script e me mandar o log?"
+    },
+    {
+     "pt": "Um detalhe de C1: fora da tecnologia, executar quer dizer pôr em prática com competência. Um plano bem executado, uma jogada bem executada. É elogio.",
+     "quadro": "execute a plan · flawless execution"
+    },
+    {
+     "pt": "O Mike roda, e volta com um número assustador:"
+    },
+    {
+     "en": "Done. The execution time jumped from two to nine minutes.",
+     "tr": "Pronto. O tempo de execução pulou de dois para nove minutos.",
+     "img": "⏱️📈"
+    },
+    {
+     "pt": "O substantivo é execução, e de novo a colocação é encostada: tempo de execução, sem a preposição de no meio. Quem põe a preposição soa traduzido.",
+     "quadro": "execution time (e não time of execution)"
+    },
+    {
+     "secao": "Pacote e embutir",
+     "pt": "Aí é você quem descobre a segunda pista, comparando com a versão anterior:"
+    },
+    {
+     "en": "The bundle size doubled after yesterday's merge.",
+     "tr": "O tamanho do bundle dobrou depois do merge de ontem.",
+     "img": "📦📦📈"
+    },
+    {
+     "pt": "Essa palavra é o pacote final do app, tudo empacotado num arquivo só. A colocação é tamanho do pacote, de novo com o substantivo encostado.",
+     "quadro": "bundle = pacote · bundle size = tamanho do pacote"
+    },
+    {
+     "pt": "No comércio, a mesma palavra é o combo: vários produtos vendidos juntos, por um preço só. E no dia a dia, é o maço, o feixe, o monte amarrado."
+    },
+    {
+     "en": "The laptop comes bundled with a mouse and a backpack.",
+     "tr": "O notebook vem num combo com um mouse e uma mochila.",
+     "img": "💻🖱️🎒"
+    },
+    {
+     "pt": "O Mike entende na hora o motivo:"
+    },
+    {
+     "en": "That's because we now embed all the fonts in the app.",
+     "tr": "É porque agora a gente embute todas as fontes no app.",
+     "img": "🖋️📱"
+    },
+    {
+     "pt": "Esse verbo quer dizer embutir, incorporar, pôr uma coisa dentro da outra de um jeito que ela passa a fazer parte dela. Repare: embutir alguma coisa em outra.",
+     "quadro": "embed X in Y = embutir X em Y"
+    },
+    {
+     "pt": "A forma no particípio vira adjetivo e dá nome a uma área inteira da engenharia: os sistemas embarcados, aqueles que vivem dentro de um carro, de uma geladeira, de uma máquina.",
+     "quadro": "embedded systems = sistemas embarcados"
+    },
+    {
+     "secao": "Codificar e mínimo",
+     "pt": "Você completa o diagnóstico com a outra metade do problema:"
+    },
+    {
+     "en": "And we encode every icon in base64, so the file gets even bigger.",
+     "tr": "E a gente codifica cada ícone em base64, então o arquivo fica ainda maior.",
+     "img": "🖼️🔄📦"
+    },
+    {
+     "pt": "Aqui está o primeiro falso amigo da aula. Esse verbo não é programar. Ele quer dizer converter uma informação para um formato, um código, uma representação.",
+     "quadro": "encode = converter para um formato · programar = code"
+    },
+    {
+     "pt": "O contrário tem o prefixo que desfaz: decodificar. E quem converte vídeo para outro formato também usa essa família de palavras.",
+     "quadro": "encode ↔ decode · encoding = codificação"
+    },
+    {
+     "en": "The file has the wrong encoding.",
+     "tr": "O arquivo está com a codificação errada."
+    },
+    {
+     "pt": "O Mike avalia a mudança que vocês querem fazer, e tranquiliza:"
+    },
+    {
+     "en": "The risk is minimal.",
+     "tr": "O risco é mínimo.",
+     "img": "🛡️🤏"
+    },
+    {
+     "pt": "Segundo par traiçoeiro. Esse adjetivo quer dizer muito pequeno, enxuto, quase nada. Já a palavra parecida, terminada com a sílaba do mínimo, é o piso exigido, o mínimo obrigatório.",
+     "quadro": "minimal = muito pequeno, enxuto · minimum = o mínimo exigido"
+    },
+    {
+     "en": "The minimum version is Android 10.",
+     "tr": "A versão mínima é o Android 10."
+    },
+    {
+     "secao": "Contêiner e montagem",
+     "pt": "Para não ter mais surpresa, o Mike sugere testar no mesmo ambiente do servidor de verdade:"
+    },
+    {
+     "en": "Let's run the tests in a container, just like in production.",
+     "tr": "Vamos rodar os testes num contêiner, igualzinho à produção.",
+     "img": "🧪📦🖥️"
+    },
+    {
+     "pt": "Em dev, o contêiner é o ambiente isolado onde o app roda, com tudo o que ele precisa dentro. Repare na preposição: dentro de um contêiner, em inglês, é em um contêiner.",
+     "quadro": "run it in a container"
+    },
+    {
+     "pt": "Em casa, a mesma palavra é o pote. O pote de plástico da marmita, a vasilha da geladeira, qualquer recipiente que guarda alguma coisa.",
+     "img": "🥡🍱"
+    },
+    {
+     "en": "Put the leftovers in a plastic container.",
+     "tr": "Põe as sobras num pote de plástico."
+    },
+    {
+     "pt": "E você fecha a chamada com uma reflexão de sexta-feira:"
+    },
+    {
+     "en": "In the end, a good pipeline is just an assembly line.",
+     "tr": "No fim, um bom pipeline é só uma linha de montagem.",
+     "img": "🏭⚙️➡️"
+    },
+    {
+     "pt": "Essa palavra quer dizer montagem: linha de montagem, instruções de montagem. E também quer dizer assembleia, a reunião de muita gente para decidir alguma coisa.",
+     "quadro": "assembly line · assembly instructions · a general assembly"
+    },
+    {
+     "pt": "E tem um sentido que todo dev conhece: a linguagem de montagem, a mais próxima da máquina. Em português a gente até chama pelo nome em inglês."
+    },
+    {
+     "secao": "Curiosidades de dicionário",
+     "img": "🏺🔨",
+     "pt": "A palavra artefato vem de duas palavras do latim: arte, no sentido de habilidade, e feito. Ao pé da letra, uma coisa feita com habilidade."
+    },
+    {
+     "pt": "A palavra parâmetro vem do grego, e carrega a mesma raiz de metro, a medida. É aquilo que serve de medida ao lado de outra coisa."
+    },
+    {
+     "pt": "E o verbo embutir, em inglês, tem uma cama escondida dentro dele. Literalmente, é deitar uma coisa num leito, firmemente, cercada por outra.",
+     "quadro": "em + bed (cama) = embed",
+     "img": "🛏️"
+    },
+    {
+     "pt": "Por fim, o contêiner do software costuma ser comparado ao contêiner de navio: uma caixa padronizada, que vai para qualquer porto sem ninguém precisar abrir o conteúdo.",
+     "img": "🚢📦"
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Agora é a sua vez. Como você diz para o seu colega que vai rodar o arquivo de comandos primeiro? Use o verbo do dia a dia, não o formal.",
+     "pausa": 5
+    },
+    {
+     "en": "I'm going to run the script first.",
+     "tr": "Vou rodar o script primeiro."
+    },
+    {
+     "pt": "Mais um. Você quer dizer, num relatório formal, que o tempo de execução dobrou. Pense na colocação encostada.",
+     "pausa": 5
+    },
+    {
+     "en": "The execution time doubled.",
+     "tr": "O tempo de execução dobrou."
+    },
+    {
+     "pt": "E o último: diga que a versão mínima do app é a dois ponto zero. Cuidado com o par traiçoeiro da aula.",
+     "pausa": 5
+    },
+    {
+     "en": "The minimum version is 2.0.",
+     "tr": "A versão mínima é a 2.0."
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando: o artefato é o que a esteira entrega, o arquivo de configuração costuma encolher na fala, e o parâmetro tem a força na segunda sílaba e o final sem vogal."
+    },
+    {
+     "pt": "Executar é formal, rodar é do dia a dia. Embutir é pôr dentro, com uma cama escondida no meio. E codificar é converter, não programar."
+    },
+    {
+     "pt": "Enxuto não é o mínimo exigido, o contêiner também é o pote da marmita, e a montagem é a da linha da fábrica. Agora é a sua vez de digitar as frases da sexta-feira do Mike. Bom trabalho!"
+    }
+   ]
+  },
+  "vocab-academico-sistemas.dia-do-lancamento": {
+   "titulo": "Dia de lançamento: aguentar o pico em inglês",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "🚀📈💻",
+     "pt": "Hoje é o dia do lançamento da campanha da Sarah. Às nove da manhã os anúncios entram no ar, e em uma hora o tráfego do app triplica."
+    },
+    {
+     "pt": "O time inteiro fica numa chamada aberta a tarde toda, de olho nos gráficos. Ninguém está apagando incêndio ainda, mas todo mundo sabe que pode começar a qualquer momento."
+    },
+    {
+     "pt": "As palavras de hoje são as de carga e desempenho. Várias são cognatas do português e vêm do latim. Por isso a aula vai mirar no que muda: a colocação, o registro e uma armadilha boa com a palavra ótimo."
+    },
+    {
+     "secao": "Disponível e elástico",
+     "pt": "A Sarah abre a chamada deixando claro o que importa hoje:"
+    },
+    {
+     "en": "Today we need high availability, no matter what.",
+     "tr": "Hoje a gente precisa de alta disponibilidade, aconteça o que acontecer.",
+     "img": "🟢🌐⏰"
+    },
+    {
+     "pt": "A palavra é disponibilidade, e a colocação fixa é alta disponibilidade: o sistema no ar o tempo todo, mesmo quando uma peça falha. É um termo de engenharia.",
+     "quadro": "high availability = alta disponibilidade"
+    },
+    {
+     "pt": "E o final da frase é uma expressão ótima para guardar: aconteça o que acontecer, custe o que custar. Ao pé da letra, não importa o quê.",
+     "quadro": "no matter what = aconteça o que acontecer"
+    },
+    {
+     "pt": "Fora do servidor, a mesma palavra é a sua agenda livre. Quando alguém quer marcar uma reunião, pergunta assim:"
+    },
+    {
+     "en": "What's your availability next week?",
+     "tr": "Qual é a sua disponibilidade na semana que vem?",
+     "img": "🗓️🙋"
+    },
+    {
+     "pt": "O Mike, que cuida da infraestrutura, responde com calma:"
+    },
+    {
+     "en": "Traffic tripled, but elastic scaling is handling it.",
+     "tr": "O tráfego triplicou, mas o escalonamento elástico está dando conta.",
+     "img": "📈↔️🖥️"
+    },
+    {
+     "pt": "Elástico é o que estica e volta. No servidor, é a capacidade que cresce no pico, com mais máquinas, e encolhe depois, para não pagar à toa.",
+     "quadro": "elastic scaling = escalonamento elástico"
+    },
+    {
+     "pt": "E repare no verbo do fim: lidar, dar conta. No presente contínuo, ele diz que o sistema está aguentando agora, neste momento.",
+     "quadro": "handle it = dar conta, lidar com isso"
+    },
+    {
+     "pt": "Cuidado com o elástico de escritório, aquele de prender papel. Nos Estados Unidos, ele é a faixa de borracha; no Reino Unido, também se diz faixa elástica.",
+     "quadro": "rubber band (US) · elastic band (UK)",
+     "img": "🏢📎"
+    },
+    {
+     "secao": "Absorver e acelerar",
+     "pt": "Você olha o primeiro gráfico e comemora:"
+    },
+    {
+     "en": "The new servers absorbed the first traffic spike.",
+     "tr": "Os servidores novos absorveram o primeiro pico de tráfego.",
+     "img": "🖥️🧽⚡"
+    },
+    {
+     "pt": "Absorver, aqui, é aguentar o impacto sem quebrar, como uma esponja que segura a água. O pico de tráfego é a ponta do gráfico, aquele espinho que sobe de repente.",
+     "quadro": "absorb a spike = absorver um pico"
+    },
+    {
+     "pt": "Com informação, o verbo quer dizer assimilar. E no particípio, com a preposição de dentro, quer dizer estar absorto, concentrado em alguma coisa:"
+    },
+    {
+     "en": "She was absorbed in her work.",
+     "tr": "Ela estava absorta no trabalho."
+    },
+    {
+     "pt": "A Sarah explica por que o pico veio tão cedo:"
+    },
+    {
+     "en": "Ads usually accelerate growth in the first few hours.",
+     "tr": "Os anúncios costumam acelerar o crescimento nas primeiras horas.",
+     "img": "📣🏎️📈"
+    },
+    {
+     "pt": "Duas coisas na colocação. Acelerar o crescimento, sem artigo antes de crescimento, porque é a ideia geral. E o advérbio de frequência vem antes do verbo principal.",
+     "quadro": "accelerate growth · usually + verbo"
+    },
+    {
+     "pt": "Na pronúncia, o brasileiro tende a jogar a força no fim, como no nosso acelerar. Em inglês, ela cai na segunda sílaba. E os dois cês soam diferentes: o primeiro é duro, como em casa, e o segundo é sibilante, como em cebola. Escuta:"
+    },
+    {
+     "en": "accelerate",
+     "tr": "acelerar"
+    },
+    {
+     "secao": "Acumular, lote e pedaço",
+     "pt": "Mas aí o Mike vê um número subindo onde não devia:"
+    },
+    {
+     "en": "Requests are starting to accumulate in the queue.",
+     "tr": "As requisições estão começando a se acumular na fila.",
+     "img": "📨📨⏳"
+    },
+    {
+     "pt": "Repare que, em português, a gente diz se acumular, com o se. Em inglês, o verbo já basta sozinho. E na grafia, os dois cês do começo são fáceis de esquecer.",
+     "quadro": "accumulate (cc) · se acumular = accumulate"
+    },
+    {
+     "pt": "Uma colocação que todo dev vai usar um dia: acumular dívida técnica, aquele monte de atalho que um dia cobra a conta.",
+     "quadro": "accumulate tech debt"
+    },
+    {
+     "pt": "Para aliviar a fila, você sugere tirar trabalho do horário de pico:"
+    },
+    {
+     "en": "Let's send the welcome emails in bulk tonight.",
+     "tr": "Vamos mandar os e-mails de boas-vindas em lote hoje à noite.",
+     "img": "📧📧🌙"
+    },
+    {
+     "pt": "Essa expressão quer dizer em lote, tudo de uma vez, em grande quantidade. No mercado, comprar assim é comprar no atacado.",
+     "quadro": "in bulk = em lote · buy in bulk = comprar no atacado"
+    },
+    {
+     "pt": "E a palavra sozinha, com o artigo e a preposição de, quer dizer a maior parte. É uma colocação muito de C1:"
+    },
+    {
+     "en": "The bulk of the traffic comes from mobile.",
+     "tr": "A maior parte do tráfego vem do celular."
+    },
+    {
+     "pt": "O Mike aproveita e pede uma coisa para a exportação de dados que está travando:"
+    },
+    {
+     "en": "Break the export into small chunks, please.",
+     "tr": "Quebra a exportação em pedaços pequenos, por favor.",
+     "img": "🧩✂️"
+    },
+    {
+     "pt": "Pedaço, aqui, é um bloco de tamanho razoável, não uma migalha. Repare na estrutura: quebrar alguma coisa em pedaços usa a preposição de movimento para dentro.",
+     "quadro": "break X into chunks = dividir X em pedaços"
+    },
+    {
+     "en": "a chunk of chocolate",
+     "tr": "um pedaço de chocolate",
+     "img": "🍫"
+    },
+    {
+     "secao": "Tolerância e ótimo",
+     "pt": "A Sarah, que não é da engenharia, quer entender o risco:"
+    },
+    {
+     "en": "How much fault tolerance does the system have?",
+     "tr": "Quanta tolerância a falhas o sistema tem?",
+     "img": "🛡️⚠️❓"
+    },
+    {
+     "pt": "Tolerância a falhas é a capacidade de o sistema continuar de pé quando uma peça cai. E repare: falha vira substantivo de descrição, encostado antes de tolerância.",
+     "quadro": "fault tolerance = tolerância a falhas"
+    },
+    {
+     "pt": "E como a tolerância é incontável, a pergunta usa o quanto dos incontáveis, aquele que você viu lá atrás. Na lousa vai outra colocação famosa: a tolerância zero.",
+     "quadro": "how much tolerance · zero tolerance"
+    },
+    {
+     "pt": "O Mike responde com honestidade:"
+    },
+    {
+     "en": "Finding an optimal solution will take some time.",
+     "tr": "Encontrar uma solução ótima vai levar algum tempo.",
+     "img": "🎯🧮⏳"
+    },
+    {
+     "pt": "Aqui está a armadilha da aula. Esse adjetivo não é o ótimo de muito bom, de quando a pizza está ótima. É o ótimo técnico: a melhor opção possível dentro das condições.",
+     "quadro": "optimal = o melhor possível · ótimo de muito bom = great"
+    },
+    {
+     "en": "The pizza was great.",
+     "tr": "A pizza estava ótima.",
+     "img": "🍕😋"
+    },
+    {
+     "pt": "E o começo da frase mostra uma estrutura de nível alto: o verbo com a terminação de gerúndio funcionando como sujeito. Encontrar uma solução é que vai levar tempo."
+    },
+    {
+     "secao": "Utilizar e ao mesmo tempo",
+     "pt": "No fim da tarde, a Sarah lê o relatório de custos e estranha:"
+    },
+    {
+     "en": "The report says we're only utilizing forty percent of our server capacity.",
+     "tr": "O relatório diz que a gente está utilizando só quarenta por cento da nossa capacidade de servidores.",
+     "img": "📄🖥️🔋"
+    },
+    {
+     "pt": "Esse verbo é o utilizar mais formal, de relatório, de texto técnico. Ele tem o sentido de aproveitar um recurso. No papo do time, o verbo curto e comum faz o mesmo serviço.",
+     "quadro": "utilize (relatório) · use (dia a dia)"
+    },
+    {
+     "pt": "Muitos guias de redação em inglês recomendam justamente isso: trocar o verbo comprido pelo curto. Quem exagera no comprido soa pomposo. E repare no zê da grafia americana."
+    },
+    {
+     "pt": "No fim do dia, o Mike liga a segunda região de servidores e anuncia:"
+    },
+    {
+     "en": "Now both regions are running simultaneously.",
+     "tr": "Agora as duas regiões estão rodando simultaneamente.",
+     "img": "🌎🌍⚡"
+    },
+    {
+     "pt": "Simultaneamente, ao mesmo tempo. A sílaba forte é a terceira. E a primeira vogal muda de país para país: nos Estados Unidos ela é um ditongo, no Reino Unido é um i curto. Escuta:"
+    },
+    {
+     "en": "simultaneously",
+     "tr": "simultaneamente"
+    },
+    {
+     "pt": "Na conversa, é comum trocar a palavra comprida por uma expressão curta, que quer dizer exatamente o mesmo:",
+     "quadro": "at the same time = ao mesmo tempo"
+    },
+    {
+     "en": "at the same time",
+     "tr": "ao mesmo tempo"
+    },
+    {
+     "secao": "Curiosidades de dicionário",
+     "img": "☁️📚",
+     "pt": "Acumular vem do latim, de uma palavra que queria dizer monte. É a mesma que deu o nosso cúmulo e o nome da nuvem cúmulo, aquela nuvem amontoada, que parece algodão."
+    },
+    {
+     "pt": "Acelerar tem dentro uma palavra latina que queria dizer rápido. Ela também vive no português, em celeridade, a palavra que juiz e advogado usam para rapidez."
+    },
+    {
+     "pt": "Absorver vem do verbo latino que deu o nosso sorver, com um prefixo na frente. Na origem, é puxar um líquido para dentro, como a esponja faz com a água.",
+     "img": "🥤"
+    },
+    {
+     "pt": "E o ótimo técnico vem do superlativo latino que queria dizer o melhor. O nosso ótimo vem da mesma palavra; só que o inglês guardou o sentido de origem, o de melhor possível.",
+     "quadro": "optimus (latim) = o melhor"
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Agora é com você. Um cliente pergunta qual é a sua agenda livre na sexta. Como ele perguntaria, usando a palavra disponibilidade?",
+     "pausa": 5
+    },
+    {
+     "en": "What's your availability on Friday?",
+     "tr": "Qual é a sua disponibilidade na sexta?"
+    },
+    {
+     "pt": "Mais um. Diga que vamos comprar café no atacado. Pense na expressão do lote.",
+     "pausa": 4
+    },
+    {
+     "en": "Let's buy coffee in bulk.",
+     "tr": "Vamos comprar café no atacado."
+    },
+    {
+     "pt": "E o último: diga que o jantar estava ótimo. Cuidado para não escolher o ótimo técnico.",
+     "pausa": 4
+    },
+    {
+     "en": "Dinner was great.",
+     "tr": "O jantar estava ótimo."
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando. Alta disponibilidade é o sistema no ar, e disponibilidade também é a agenda livre. Elástico estica e volta, mas o do escritório, nos Estados Unidos, é a faixa de borracha."
+    },
+    {
+     "pt": "Absorver o pico, acelerar o crescimento, acumular na fila sem o se. Em lote é tudo de uma vez, e o pedaço é um bloco de bom tamanho."
+    },
+    {
+     "pt": "Tolerância a falhas encosta as palavras, o ótimo técnico é o melhor possível, utilizar é de relatório, e simultâneo tem a força na terceira sílaba. Agora é a sua vez de digitar as frases do dia do lançamento!"
+    }
+   ]
+  },
+  "vocab-academico-sistemas.tela-nova-ana": {
+   "titulo": "A tela nova da Ana: grade, degradê e companhia",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "🎨📱💻",
+     "pt": "A Ana terminou o protótipo da tela nova do app e chamou você para uma conversa antes de você começar a programar. Ela compartilha a tela, e lá está o desenho, bonito e cheio de detalhe."
+    },
+    {
+     "pt": "A pergunta da reunião é uma só: como esse layout vai se comportar no celular, no tablet e no computador? Designer e dev precisam falar a mesma língua, e essa língua, no time, é o inglês."
+    },
+    {
+     "pt": "São onze palavras de tela e de desenho hoje. Quase todas parecem com o português, mas tem uma que simplesmente não existe em inglês, por mais que a gente use todo dia. Vamos lá."
+    },
+    {
+     "secao": "Grade e fluido",
+     "pt": "A Ana começa pela estrutura da tela principal:"
+    },
+    {
+     "en": "The home screen uses a 12-column grid.",
+     "tr": "A tela inicial usa uma grade de 12 colunas.",
+     "img": "📱🔲"
+    },
+    {
+     "pt": "A palavra é grade, a malha invisível que organiza a tela em colunas. O designer brasileiro já usa a palavra inglesa, então essa é fácil. O detalhe de C1 está no número.",
+     "quadro": "grid = grade de layout"
+    },
+    {
+     "pt": "Repare: doze colunas virou um adjetivo, com hífen, e a coluna ficou sem a letra esse. Quando número mais substantivo descreve outra coisa, o inglês não põe a marca de mais de um.",
+     "quadro": "a 12-column grid · a two-hour meeting"
+    },
+    {
+     "en": "We had a two-hour meeting.",
+     "tr": "A gente teve uma reunião de duas horas."
+    },
+    {
+     "pt": "Fora da tela, a mesma palavra é a rede elétrica. E viver fora da rede, sem energia da companhia, é uma expressão que virou sinônimo de sumir do mapa.",
+     "quadro": "the power grid · off the grid",
+     "img": "⚡🏠"
+    },
+    {
+     "pt": "A Ana continua, agora falando do celular:"
+    },
+    {
+     "en": "On mobile, the layout is fluid and fills the whole screen.",
+     "tr": "No celular, o layout é fluido e ocupa a tela inteira.",
+     "img": "📱💧"
+    },
+    {
+     "pt": "Fluido é o layout que se espalha como água e ocupa o espaço que tiver. E repare no verbo encher para dizer ocupar: o layout enche a tela inteira.",
+     "quadro": "a fluid layout · fill the whole screen"
+    },
+    {
+     "pt": "Como substantivo, a palavra é o líquido. É o que o médico recomenda quando você está gripado:"
+    },
+    {
+     "en": "Drink plenty of fluids.",
+     "tr": "Beba bastante líquido.",
+     "img": "🤒🥤"
+    },
+    {
+     "secao": "Adaptativo e adjacente",
+     "pt": "Você quer entender a estratégia antes de escolher como programar, e pergunta:"
+    },
+    {
+     "en": "Is the design adaptive or just responsive?",
+     "tr": "O design é adaptativo ou só responsivo?",
+     "img": "🤔📐"
+    },
+    {
+     "pt": "Essa pergunta mostra que você conhece o assunto. Adaptativo é ter um layout separado para cada faixa de tamanho de tela. Responsivo é um layout só, que se ajusta ao espaço.",
+     "quadro": "adaptive = vários layouts · responsive = um que se ajusta"
+    },
+    {
+     "pt": "E repare no advérbio só antes do adjetivo. Ele diminui a segunda opção: ou é adaptativo, ou é apenas responsivo. É um jeito sutil de dizer que uma opção dá mais trabalho."
+    },
+    {
+     "pt": "A Ana mostra uma animação:"
+    },
+    {
+     "en": "When you tap a card, the adjacent cards shift to make room.",
+     "tr": "Quando você toca num card, os cards adjacentes se mexem pra abrir espaço.",
+     "img": "👆🃏↔️"
+    },
+    {
+     "pt": "Adjacente é o vizinho, o que está do lado. Quando ele vem antes do substantivo, vai sozinho. Quando vem depois, pede a preposição de direção:",
+     "quadro": "adjacent cards · adjacent to the menu"
+    },
+    {
+     "en": "The search bar is adjacent to the menu.",
+     "tr": "A barra de busca fica ao lado do menu."
+    },
+    {
+     "pt": "E a força dessa palavra cai na segunda sílaba. E fique com a expressão do fim da frase: abrir espaço, ao pé da letra, fazer espaço.",
+     "quadro": "make room = abrir espaço"
+    },
+    {
+     "secao": "Estático e dinâmico",
+     "pt": "Você vai separando o que dá trabalho do que não dá:"
+    },
+    {
+     "en": "The settings page can be static, since nothing changes there.",
+     "tr": "A página de configurações pode ser estática, já que nada muda nela.",
+     "img": "⚙️🧊"
+    },
+    {
+     "pt": "Estático é fixo, parado. Em dev ele aparece em página estática e em método estático. E repare no conector: aqui ele quer dizer já que, uma causa.",
+     "quadro": "since = já que (causa) · since = desde (tempo)"
+    },
+    {
+     "pt": "Fora da tela, como substantivo, essa palavra é o chiado do rádio ou da ligação ruim. E também a eletricidade estática, a do choquinho na maçaneta."
+    },
+    {
+     "pt": "A Ana aponta o contraste:"
+    },
+    {
+     "en": "But the feed has dynamic content that updates every minute.",
+     "tr": "Mas o feed tem conteúdo dinâmico que se atualiza a cada minuto.",
+     "img": "📰🔄⏱️"
+    },
+    {
+     "pt": "Conteúdo dinâmico é o que muda sozinho, o tempo todo. E de novo o se do português sumiu: atualizar-se, em inglês, é só o verbo.",
+     "quadro": "dynamic content · updates = se atualiza"
+    },
+    {
+     "pt": "Como substantivo, a palavra vira a dinâmica de um grupo, o jeito como as pessoas se relacionam. É um termo muito usado em gestão:"
+    },
+    {
+     "en": "The team dynamic is really good.",
+     "tr": "A dinâmica do time é muito boa.",
+     "img": "👥🤝"
+    },
+    {
+     "secao": "Renderizar e degradê",
+     "pt": "Aí você entra com a parte de desempenho:"
+    },
+    {
+     "en": "The app will only render the cards that are on screen.",
+     "tr": "O app só vai renderizar os cards que estão na tela.",
+     "img": "🖼️👀"
+    },
+    {
+     "pt": "Renderizar é desenhar na tela. E repare onde fica o só: no meio do verbo, entre o auxiliar e o principal. É a posição mais comum na fala; num texto bem cuidado, ele também pode vir colado no que ele limita.",
+     "quadro": "will only render · will render only the cards"
+    },
+    {
+     "pt": "No inglês formal, fora da tecnologia, esse verbo quer dizer tornar, deixar de um jeito, muitas vezes para o pior. Veja num relatório de incidente:",
+     "quadro": "render + adjetivo = tornar"
+    },
+    {
+     "en": "The bug rendered the app unusable.",
+     "tr": "O bug deixou o app inutilizável."
+    },
+    {
+     "pt": "Agora a parte favorita da Ana:"
+    },
+    {
+     "en": "I want a soft blue gradient behind the header.",
+     "tr": "Quero um degradê azul suave atrás do cabeçalho.",
+     "img": "🌅💙"
+    },
+    {
+     "pt": "Aqui está a palavra que não existe em inglês: o nosso degradê veio do francês. Em inglês é essa da frase, com a força na primeira sílaba. Escuta:",
+     "quadro": "degradê = gradient"
+    },
+    {
+     "en": "gradient",
+     "tr": "degradê"
+    },
+    {
+     "pt": "E a ordem dos adjetivos: a qualidade vem antes, a cor depois, e por último a coisa. Suave, azul, degradê. Trocar a ordem soa estranho para o nativo.",
+     "quadro": "soft + blue + gradient"
+    },
+    {
+     "secao": "Reativo, composto e compacto",
+     "pt": "Você explica como o mural de novidades vai se atualizar:"
+    },
+    {
+     "en": "With reactive programming, the screen updates by itself.",
+     "tr": "Com programação reativa, a tela se atualiza sozinha.",
+     "img": "⚡🔁📱"
+    },
+    {
+     "pt": "Programação reativa é aquela em que a tela reage sozinha quando o dado muda. E a expressão do fim quer dizer sozinho, por conta própria.",
+     "quadro": "by itself = sozinho"
+    },
+    {
+     "pt": "Mas cuidado ao usar essa palavra para gente. Uma pessoa reativa só se mexe depois que o problema aparece. O elogio é o contrário: ser proativo, se antecipar.",
+     "quadro": "reactive (reage depois) · proactive (se antecipa)"
+    },
+    {
+     "pt": "A Ana mostra o logo:"
+    },
+    {
+     "en": "For the logo, I made a composite image with three layers.",
+     "tr": "Pro logo, fiz uma imagem composta com três camadas.",
+     "img": "🖼️🥞"
+    },
+    {
+     "pt": "Composto é o que é feito de várias partes juntas. Nos Estados Unidos, a força cai na segunda sílaba. No Reino Unido, na primeira. Escuta a americana:",
+     "quadro": "composite image · composite materials"
+    },
+    {
+     "en": "a composite image",
+     "tr": "uma imagem composta"
+    },
+    {
+     "pt": "E por fim, a novidade para quem usa o computador:"
+    },
+    {
+     "en": "On desktop, you can switch to compact mode.",
+     "tr": "No computador, dá pra mudar pro modo compacto.",
+     "img": "🖥️🗜️"
+    },
+    {
+     "pt": "Compacto é o que cabe em pouco espaço: no modo compacto, os itens ficam mais juntos, com menos espaço em branco, e cabe mais informação na tela. O mesmo adjetivo serve para carro pequeno e para apartamento.",
+     "quadro": "compact mode · a compact car · a compact apartment"
+    },
+    {
+     "pt": "O detalhe aqui é de tradução. O nosso dá para não tem sujeito. Em inglês, o sujeito é obrigatório, e o você genérico faz esse papel.",
+     "quadro": "dá pra mudar = you can switch"
+    },
+    {
+     "secao": "Curiosidades de dicionário",
+     "img": "🪦📚",
+     "pt": "Adjacente vem do latim, de um verbo que queria dizer estar deitado. É o mesmo que deu o nosso jazer, do aqui jaz. Adjacente é o que jaz ao lado."
+    },
+    {
+     "pt": "Dinâmico vem do grego, de uma palavra que queria dizer força, poder. A mesma raiz batizou a dinamite.",
+     "img": "💥"
+    },
+    {
+     "pt": "E o degradê do português veio do francês, do verbo que quer dizer ir diminuindo aos poucos. Já a palavra inglesa tem a mesma raiz latina de grau e de degrau: subir ou descer passo a passo."
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Agora é com você. Diga para a Ana que o botão fica ao lado do campo de busca. Use a palavra vizinho com a preposição.",
+     "pausa": 6
+    },
+    {
+     "en": "The button is adjacent to the search field.",
+     "tr": "O botão fica ao lado do campo de busca."
+    },
+    {
+     "pt": "Mais um. Diga que a gente teve uma reunião de três horas. Lembre do número que vira adjetivo.",
+     "pausa": 5
+    },
+    {
+     "en": "We had a three-hour meeting.",
+     "tr": "A gente teve uma reunião de três horas."
+    },
+    {
+     "pt": "E o último. Como você pede um degradê verde suave?",
+     "pausa": 4
+    },
+    {
+     "en": "I want a soft green gradient.",
+     "tr": "Quero um degradê verde suave."
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando. A grade de doze colunas fica sem a letra esse, o fluido ocupa a tela, e adaptativo não é a mesma coisa que responsivo."
+    },
+    {
+     "pt": "Adjacente pede a preposição quando vem depois, estático pode ser o chiado, dinâmico também é a dinâmica do time, e renderizar no inglês formal quer dizer tornar."
+    },
+    {
+     "pt": "O degradê não existe em inglês, reativo é ótimo no código mas não é elogio para gente, composto muda a força de país para país, compacto cabe em pouco espaço, e dá para pede sujeito. Agora é a sua vez de digitar as frases da tela nova da Ana!"
+    }
+   ]
+  },
+  "vocab-academico-sistemas.algoritmo-lucas": {
+   "titulo": "Domingo com o Lucas: o algoritmo e seus amigos",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "🏠💻📓",
+     "pt": "Domingo à tarde, na mesa da sala. O seu irmão Lucas está aprendendo a programar num curso online, todo em inglês, e travou num exercício de busca."
+    },
+    {
+     "pt": "Você puxa uma cadeira, pega um café, e os dois resolvem juntos. E como o curso é em inglês, a conversa vai para o inglês também, que é ótimo treino para os dois."
+    },
+    {
+     "pt": "São dez palavras da base da programação. Você usa todas elas em português sem pensar. O desafio hoje é a pronúncia, que tem armadilha em quase todas, e dois plurais irregulares."
+    },
+    {
+     "secao": "Algoritmo e vetor",
+     "pt": "O Lucas explica o que o curso pediu:"
+    },
+    {
+     "en": "I have to write a search algorithm for my course.",
+     "tr": "Tenho que escrever um algoritmo de busca pro meu curso.",
+     "img": "🔍📝"
+    },
+    {
+     "pt": "A colocação é escrever um algoritmo, e o tipo vem antes, encostado: algoritmo de busca vira busca algoritmo. O mesmo vale para algoritmo de ordenação.",
+     "quadro": "a search algorithm · a sorting algorithm"
+    },
+    {
+     "pt": "Agora a pronúncia, que o brasileiro quase sempre erra. A força vai na primeira sílaba. No meio aparece aquele som com a ponta da língua entre os dentes. E o final termina no eme, sem vogal depois. Escuta:",
+     "quadro": "AL-go-rith-um · th = língua entre os dentes"
+    },
+    {
+     "en": "algorithm",
+     "tr": "algoritmo"
+    },
+    {
+     "pt": "E repare na grafia: tem um agá depois do tê. Quem digita do jeito do português esquece essa letra."
+    },
+    {
+     "pt": "O Lucas mostra os dados do exercício:"
+    },
+    {
+     "en": "The numbers are in an array, and they're already sorted.",
+     "tr": "Os números estão num array, e já estão ordenados.",
+     "img": "📚➡️"
+    },
+    {
+     "pt": "Essa palavra é o vetor de valores, a lista em sequência. Em português, a maioria dos devs já fala o nome em inglês mesmo."
+    },
+    {
+     "pt": "Fora do código, ela tem um uso elegante, bem de C1: uma grande variedade, uma bela gama de opções.",
+     "quadro": "a wide array of = uma grande variedade de"
+    },
+    {
+     "en": "The store has a wide array of coffees.",
+     "tr": "A loja tem uma grande variedade de cafés.",
+     "img": "☕☕☕"
+    },
+    {
+     "pt": "E cuidado com o verbo do fim da frase. Ele quer dizer ordenar, organizar, separar por tipo. Ele não tem nada a ver com o nosso sortear, de rifa e de loteria.",
+     "quadro": "sort = ordenar, organizar · sortear = draw"
+    },
+    {
+     "secao": "Binário, matriz e vetor",
+     "pt": "Como os números já estão em ordem, você dá a dica:"
+    },
+    {
+     "en": "Then binary search is the best option.",
+     "tr": "Então a busca binária é a melhor opção.",
+     "img": "✂️🔍"
+    },
+    {
+     "pt": "A busca binária olha o meio da lista e descarta metade a cada passo, como quem procura uma palavra no dicionário de papel. E repare: busca binária, de novo com o adjetivo antes.",
+     "quadro": "binary search = busca binária"
+    },
+    {
+     "pt": "Como substantivo, com o artigo, a palavra vira o binário: o executável que o compilador gera. É um tipo de artefato, aquela palavra da lição do build."
+    },
+    {
+     "pt": "O Lucas passa para o próximo exercício:"
+    },
+    {
+     "en": "The next exercise uses a 3x3 matrix.",
+     "tr": "O próximo exercício usa uma matriz 3x3.",
+     "img": "🔳🔲"
+    },
+    {
+     "pt": "Olha a lousa: o vezes do três por três, em inglês, se lê com a preposição que quer dizer por, ao lado de. Escuta:",
+     "quadro": "3x3 = three by three"
+    },
+    {
+     "en": "a three by three matrix",
+     "tr": "uma matriz três por três"
+    },
+    {
+     "pt": "E a forma de mais de uma foge da regra, herdada do latim: a terminação vira outra, e a sílaba forte continua sendo a primeira.",
+     "quadro": "matrix → matrices"
+    },
+    {
+     "pt": "Você explica a estrutura:"
+    },
+    {
+     "en": "Each row of the matrix is a vector of three numbers.",
+     "tr": "Cada linha da matriz é um vetor de três números.",
+     "img": "➡️📏"
+    },
+    {
+     "pt": "Atenção à palavra linha. Numa tabela ou matriz, a linha horizontal tem um nome, e a coluna, outro. A linha do código, onde está o erro, usa uma terceira palavra.",
+     "quadro": "row = linha (tabela) · column = coluna · line = linha (código)"
+    },
+    {
+     "pt": "E o vetor, em design, é o tipo de imagem que não perde qualidade quando cresce. Em português é imagem vetorial; em inglês, a palavra vira adjetivo antes de gráficos.",
+     "quadro": "vector graphics = imagem vetorial"
+    },
+    {
+     "secao": "Tipos e sintaxe",
+     "pt": "Você aproveita e explica os tipos básicos:"
+    },
+    {
+     "en": "Integers and booleans are primitive types.",
+     "tr": "Inteiros e booleanos são tipos primitivos.",
+     "img": "🧱🧩"
+    },
+    {
+     "pt": "Primitivo, em computação, não é xingamento. É o tipo básico, o tijolo que não se divide em partes menores. Fora daqui, a palavra pode soar como atrasado, rudimentar."
+    },
+    {
+     "pt": "E a pronúncia de inteiro, em inglês, tem uma surpresa: o gê do meio soa como o jota da palavra jeans, do jeito que o brasileiro fala, e não como o gê de gato. Escuta:"
+    },
+    {
+     "en": "integer",
+     "tr": "inteiro"
+    },
+    {
+     "pt": "Aí o Lucas roda o código, e vem o vermelho:"
+    },
+    {
+     "en": "My code has a syntax error on line 12.",
+     "tr": "O meu código tem um erro de sintaxe na linha 12.",
+     "img": "💻❌"
+    },
+    {
+     "pt": "Sintaxe é a gramática da linguagem de programação: onde vai cada vírgula, cada parêntese, cada chave. A força cai na primeira sílaba, e a palavra inglesa termina num xis, que soa igual ao de táxi.",
+     "quadro": "syntax = sintaxe · a syntax error"
+    },
+    {
+     "pt": "E o erro de sintaxe vira, de novo, substantivo mais substantivo. A preposição da linha é a de superfície, a mesma de em cima: na linha doze.",
+     "quadro": "a syntax error · on line 12"
+    },
+    {
+     "pt": "Você olha e acha o problema na hora:"
+    },
+    {
+     "en": "You forgot to close the parenthesis in the conditional.",
+     "tr": "Você esqueceu de fechar o parêntese na condicional.",
+     "img": "🔀🙈"
+    },
+    {
+     "pt": "Esquecer de fazer, aquilo que não foi feito, usa a forma com a preposição de infinitivo. A forma com a terminação de gerúndio seria esquecer uma coisa que você fez, uma lembrança.",
+     "quadro": "forget to close = esquecer de fechar"
+    },
+    {
+     "pt": "E o parêntese também foge da regra quando são dois, herança do grego. A terminação vira outra, e o som da última sílaba muda junto.",
+     "quadro": "parenthesis → parentheses"
+    },
+    {
+     "pt": "A condicional é o bloco do se. Fora do código, o adjetivo com a preposição de superfície quer dizer depende de, está condicionado a:",
+     "quadro": "conditional on = condicionado a"
+    },
+    {
+     "en": "The offer is conditional on approval.",
+     "tr": "A oferta depende de aprovação."
+    },
+    {
+     "secao": "Cálculo e processador",
+     "pt": "O programa roda, mas leva uma eternidade. O Lucas reclama:"
+    },
+    {
+     "en": "Why is this computation taking so long?",
+     "tr": "Por que esse cálculo está demorando tanto?",
+     "img": "🧮🐢"
+    },
+    {
+     "pt": "Essa palavra é um cálculo, um processamento específico. Ela é mais técnica do que o cálculo de escola. E o verbo levar, com a palavra comprido, é o nosso demorar.",
+     "quadro": "take so long = demorar tanto"
+    },
+    {
+     "pt": "E você dá o veredito, com um pouco de humor:"
+    },
+    {
+     "en": "Your laptop's processor is old, but the real problem is the loop.",
+     "tr": "O processador do seu notebook é antigo, mas o problema de verdade é o loop.",
+     "img": "💻🐌🔁"
+    },
+    {
+     "pt": "Repare no apóstrofo com esse: o processador do notebook. Em inglês, o dono vem primeiro, e a coisa depois. E a sílaba forte de processador é a primeira.",
+     "quadro": "your laptop's processor"
+    },
+    {
+     "en": "processor",
+     "tr": "processador"
+    },
+    {
+     "secao": "Curiosidades de dicionário",
+     "img": "📜🧮",
+     "pt": "Algoritmo vem do nome de um matemático persa que viveu em Bagdá, conhecido como Al-Khwarizmi. O nome dele, em latim, virou a palavra. E o título de um livro dele deu a palavra álgebra."
+    },
+    {
+     "pt": "E aquele som da língua entre os dentes tem explicação: com o tempo, a palavra foi influenciada pela palavra grega que quer dizer número, a mesma de aritmética."
+    },
+    {
+     "pt": "Matriz vem do latim, de mãe. No começo queria dizer útero, o lugar onde algo se forma. Por isso, em português, a gente também fala da matriz de uma empresa, a casa mãe.",
+     "img": "🏢"
+    },
+    {
+     "pt": "E o computador, em inglês, antes de ser máquina, era uma pessoa: alguém cujo trabalho era fazer cálculos à mão. A máquina herdou o nome do cargo.",
+     "img": "🧑‍💼✍️"
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Sua vez. O Lucas pergunta qual é o tamanho da matriz. Como você diz que é uma matriz quatro por quatro?",
+     "pausa": 5
+    },
+    {
+     "en": "It's a four by four matrix.",
+     "tr": "É uma matriz quatro por quatro."
+    },
+    {
+     "pt": "Mais um. Diga que você precisa ordenar a lista. Cuidado para não sortear nada.",
+     "pausa": 4
+    },
+    {
+     "en": "I need to sort the list.",
+     "tr": "Eu preciso ordenar a lista."
+    },
+    {
+     "pt": "E o último. Diga que o erro está na linha trinta. Pense na preposição.",
+     "pausa": 4
+    },
+    {
+     "en": "The error is on line 30.",
+     "tr": "O erro está na linha 30."
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando. Algoritmo tem força no começo, a língua entre os dentes e o agá na grafia. O vetor de valores também é uma grande variedade, e ordenar não é sortear."
+    },
+    {
+     "pt": "A busca binária vem com o adjetivo antes, a matriz é três por três e foge da regra quando são várias, e a linha da tabela não é a mesma linha do código."
+    },
+    {
+     "pt": "Primitivo não é xingamento, o erro de sintaxe fica na linha com a preposição de superfície, e esquecer de fazer leva o infinitivo. Agora é a sua vez de digitar as frases do domingo com o Lucas!"
+    }
+   ]
+  },
+  "vocab-academico-sistemas.bug-producao": {
+   "titulo": "Bug em produção: diagnosticar, estabilizar, explicar",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "📱🐞🔍",
+     "pt": "Terça-feira, você está de plantão. No meio da manhã, o suporte começa a receber reclamação: o app está travando para alguns clientes, bem na hora de fechar a compra."
+    },
+    {
+     "pt": "Você chama o Mike, e os dois mergulham nos registros do servidor. Uma hora depois, o sistema está estável de novo, e o relatório do incidente está escrito."
+    },
+    {
+     "pt": "As palavras de hoje são as de investigar um problema. Elas vêm em famílias, e o segredo de C1 é escolher a forma certa: o verbo, o substantivo ou o adjetivo, e o prefixo certo."
+    },
+    {
+     "secao": "Defeito e diagnóstico",
+     "pt": "O Mike abre a chamada lendo o chamado do suporte:"
+    },
+    {
+     "en": "Support logged a critical defect: the app is freezing for some customers.",
+     "tr": "O suporte registrou um defeito crítico: o app está travando para alguns clientes.",
+     "img": "🚨📱🥶"
+    },
+    {
+     "pt": "Defeito é o termo formal da área de qualidade para o que a gente chama de bug. Ele aparece em relatório, em processo, em contrato. No papo do time, todo mundo fala bug mesmo.",
+     "quadro": "defect (formal, QA) · bug (dia a dia)"
+    },
+    {
+     "pt": "Repare em dois verbos da frase. Registrar um chamado usa o verbo do diário de bordo. E travar, com a tela parada, é o verbo de congelar. Quando o app fecha sozinho, o verbo é outro:",
+     "quadro": "freeze = travar · crash = fechar, cair"
+    },
+    {
+     "en": "The app keeps crashing on startup.",
+     "tr": "O app fica fechando sozinho ao abrir."
+    },
+    {
+     "pt": "Um detalhe de C1 sobre a palavra defeito: como verbo, com a força na segunda sílaba, ela quer dizer desertar, passar para o lado do inimigo. Um diplomata que foge para o país adversário faz isso."
+    },
+    {
+     "pt": "Você segura a ansiedade de sair mexendo e propõe:"
+    },
+    {
+     "en": "Let's diagnose the problem before we touch any code.",
+     "tr": "Vamos diagnosticar o problema antes de mexer em qualquer código.",
+     "img": "🩺💻"
+    },
+    {
+     "pt": "Esse é o verbo da família: diagnosticar. E repare no fim da frase: o inglês usa uma oração completa, com sujeito, e o verbo fica no presente, mesmo falando do futuro. Existe também a versão com a terminação de gerúndio:",
+     "quadro": "before we touch = before touching"
+    },
+    {
+     "en": "Let's diagnose it before touching anything.",
+     "tr": "Vamos diagnosticar antes de mexer em qualquer coisa."
+    },
+    {
+     "pt": "O Mike pede um teste no aparelho:"
+    },
+    {
+     "en": "Run the diagnostic tool on one of the affected phones.",
+     "tr": "Roda a ferramenta de diagnóstico num dos celulares afetados.",
+     "img": "🧰📱"
+    },
+    {
+     "pt": "Aqui a palavra é adjetivo: de diagnóstico. Ela vem antes do substantivo e fica sem mudança. Uma ferramenta de diagnóstico, um teste de diagnóstico.",
+     "quadro": "a diagnostic tool · diagnostic tests"
+    },
+    {
+     "pt": "Com a letra esse no final, ela vira substantivo, e quer dizer os testes de verificação. Rodar os diagnósticos é uma colocação comum de suporte.",
+     "quadro": "run diagnostics = rodar os testes de verificação"
+    },
+    {
+     "secao": "Instável e instabilidade",
+     "pt": "Você olha os registros e encontra a primeira pista:"
+    },
+    {
+     "en": "The logs show a lot of network instability this morning.",
+     "tr": "Os logs mostram muita instabilidade de rede hoje de manhã.",
+     "img": "📶〰️🌅"
+    },
+    {
+     "pt": "Instabilidade de rede, com a rede encostada antes, como descrição. E hoje de manhã, em inglês, é esta manhã, sem preposição nenhuma.",
+     "quadro": "network instability · this morning = hoje de manhã"
+    },
+    {
+     "pt": "O Mike concorda, mas desconfia:"
+    },
+    {
+     "en": "Yeah, the connection was unstable, but that's not the whole story.",
+     "tr": "É, a conexão estava instável, mas não é só isso.",
+     "img": "📶😬"
+    },
+    {
+     "pt": "Aqui está a pegadinha da aula. O adjetivo instável usa um prefixo, e o substantivo instabilidade usa outro. Olha a lousa: são prefixos diferentes na mesma família.",
+     "quadro": "unstable (adjetivo) · instability (substantivo)"
+    },
+    {
+     "pt": "E tem um par gêmeo que segue a mesma lógica, e que você pode usar para lembrar: incapaz e incapacidade.",
+     "quadro": "unable · inability"
+    },
+    {
+     "en": "His inability to say no is a real problem.",
+     "tr": "A incapacidade dele de dizer não é um problema de verdade."
+    },
+    {
+     "pt": "E a expressão do fim é ótima para reunião: não é só isso, a história não está completa. Use quando a explicação fácil não explica tudo.",
+     "quadro": "that's not the whole story = não é só isso"
+    },
+    {
+     "secao": "Infinito e regressão",
+     "pt": "Você continua cavando e acha o culpado:"
+    },
+    {
+     "en": "Look, there's an infinite loop when the cart is empty.",
+     "tr": "Olha, tem um loop infinito quando o carrinho está vazio.",
+     "img": "♾️🛒"
+    },
+    {
+     "pt": "A pronúncia de infinito engana. A força cai na primeira sílaba, e as vogais do meio e do fim saem curtas. Escuta:",
+     "quadro": "IN-fi-nit (força no começo)"
+    },
+    {
+     "en": "an infinite loop",
+     "tr": "um loop infinito"
+    },
+    {
+     "pt": "Guarde esse som, porque na palavra sem o prefixo, finito, a pronúncia muda bastante. Você vai ver isso numa próxima lição."
+    },
+    {
+     "pt": "O Mike olha o histórico e dá o diagnóstico:"
+    },
+    {
+     "en": "It's a regression from last week's release.",
+     "tr": "É uma regressão da release da semana passada.",
+     "img": "⏪🐞"
+    },
+    {
+     "pt": "Regressão, em software, é aquilo que funcionava e quebrou depois de uma mudança. O código andou para trás. Por isso existe o teste de regressão, que confere se o que já funcionava continua funcionando.",
+     "quadro": "a regression · regression testing"
+    },
+    {
+     "pt": "E a semana passada vira dona da versão, com o apóstrofo e o esse. Em inglês, até o tempo pode ser dono de alguma coisa.",
+     "quadro": "last week's release · yesterday's merge"
+    },
+    {
+     "secao": "Mutação e corrupção",
+     "pt": "Você entende o mecanismo e explica:"
+    },
+    {
+     "en": "A state mutation inside the cart is causing the loop.",
+     "tr": "Uma mutação de estado dentro do carrinho está causando o loop.",
+     "img": "🧬🛒🔁"
+    },
+    {
+     "pt": "Mutação, em programação, é alterar um objeto no lugar, em vez de criar um novo. O contrário é o imutável, aquilo que não muda depois de criado. O verbo da família é mudar, alterar.",
+     "quadro": "mutation · mutate · immutable"
+    },
+    {
+     "pt": "A pergunta que todo mundo teme vem logo em seguida:"
+    },
+    {
+     "en": "Was there any data corruption?",
+     "tr": "Teve alguma corrupção de dados?",
+     "img": "💾💥❓"
+    },
+    {
+     "pt": "Corrupção de dados é quando o dado fica estragado, ilegível. Arquivo corrompido usa o adjetivo da família. A palavra também tem o sentido político, igual ao português.",
+     "quadro": "data corruption · a corrupted file"
+    },
+    {
+     "pt": "E repare na pergunta: o nosso teve, no sentido de existir, é a estrutura do há em inglês, no passado e com a ordem invertida.",
+     "quadro": "Teve...? = Was there...? / Were there...?"
+    },
+    {
+     "secao": "Estabilizar e o diagnóstico",
+     "pt": "Você responde, aliviado:"
+    },
+    {
+     "en": "No, and the hotfix should stabilize the system in a few minutes.",
+     "tr": "Não, e o hotfix deve estabilizar o sistema em poucos minutos.",
+     "img": "🩹📉✅"
+    },
+    {
+     "pt": "Estabilizar, com a grafia americana de zê. No Reino Unido, é comum ver com esse. E o verbo modal aqui quer dizer deve, no sentido de expectativa, de previsão razoável, e não de obrigação.",
+     "quadro": "should = deve (expectativa) · stabilize (US) · stabilise (UK)"
+    },
+    {
+     "pt": "E em poucos minutos, em inglês, usa a preposição de dentro: dentro de alguns minutos, a partir de agora."
+    },
+    {
+     "pt": "No fim, o Mike pede o registro:"
+    },
+    {
+     "en": "Add the diagnosis to the incident report, please.",
+     "tr": "Coloca o diagnóstico no relatório do incidente, por favor.",
+     "img": "📝🩺"
+    },
+    {
+     "pt": "Agora sim, o substantivo: o diagnóstico. A família completa fica assim na lousa, e é isso que você precisa ter na cabeça para não trocar as formas.",
+     "quadro": "diagnose (verbo) · diagnosis (subst.) · diagnostic (adj.)"
+    },
+    {
+     "pt": "E quando são vários, o substantivo segue a regra grega: a terminação muda, como no parêntese que você viu com o Lucas. Escuta os dois:",
+     "quadro": "diagnosis → diagnoses"
+    },
+    {
+     "en": "one diagnosis, two diagnoses",
+     "tr": "um diagnóstico, dois diagnósticos"
+    },
+    {
+     "secao": "Curiosidades de dicionário",
+     "img": "🩺📚",
+     "pt": "Diagnóstico vem do grego: um prefixo que quer dizer através, e uma palavra que quer dizer conhecimento. É conhecer através dos sinais. E em inglês o substantivo veio primeiro; o verbo foi criado depois, a partir dele."
+    },
+    {
+     "pt": "Mutação vem do verbo latino que quer dizer mudar. E o nosso mudar vem desse mesmo verbo. Mutação e mudança são primas."
+    },
+    {
+     "pt": "E sobre a palavra bug: há uma história famosa de uma equipe que achou uma mariposa presa num computador antigo e colou o inseto no diário de bordo, com a anotação de primeiro caso real de bug encontrado."
+    },
+    {
+     "pt": "A graça da anotação é justamente essa: os engenheiros já usavam a palavra inseto para defeito antes disso. A mariposa só virou a piada perfeita."
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Agora é a sua vez. O seu chefe pergunta o que você vai fazer primeiro. Responda que você vai diagnosticar o problema. Verbo, substantivo ou adjetivo?",
+     "pausa": 5
+    },
+    {
+     "en": "I'm going to diagnose the problem.",
+     "tr": "Vou diagnosticar o problema."
+    },
+    {
+     "pt": "Mais um. Diga que a rede está instável. Atenção ao prefixo do adjetivo.",
+     "pausa": 4
+    },
+    {
+     "en": "The network is unstable.",
+     "tr": "A rede está instável."
+    },
+    {
+     "pt": "E o último. Pergunte se teve alguma perda de dados. Use a pergunta do passado que você acabou de ver.",
+     "pausa": 5
+    },
+    {
+     "en": "Was there any data loss?",
+     "tr": "Teve alguma perda de dados?"
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando. Defeito é o termo formal, travar é congelar, fechar sozinho é outro verbo. Diagnosticar é o verbo, o diagnóstico é o substantivo, e a ferramenta é de diagnóstico, com o adjetivo."
+    },
+    {
+     "pt": "Instável tem um prefixo e instabilidade tem outro. Infinito tem a força no começo. Regressão é o que andou para trás, e mutação é mudar o objeto no lugar."
+    },
+    {
+     "pt": "Corrupção de dados é dado estragado, e o modal de expectativa diz que a correção deve estabilizar o sistema. Agora é a sua vez de digitar as frases do plantão com o Mike!"
+    }
+   ]
+  },
+  "vocab-academico-sistemas.arquitetura-app": {
+   "titulo": "Desenhando a arquitetura: domínio, entidade, camada",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "🏛️🧩🖊️",
+     "pt": "Hoje é dia de revisão de design. O Mike está em Chicago, com um quadro virtual aberto na tela, desenhando as camadas do app novo que o time vai começar a construir."
+    },
+    {
+     "pt": "Ele vai desenhando caixas e setas: no meio, as regras do negócio; em volta, o banco de dados, as telas, os serviços de fora. E você vai fazendo as perguntas certas."
+    },
+    {
+     "pt": "Essas palavras são as da arquitetura de software. Você vai ouvir todas elas em entrevista de emprego, em revisão de código e em documentação técnica. E duas delas são parecidíssimas, mas não são a mesma coisa."
+    },
+    {
+     "secao": "Projetar e o domínio",
+     "pt": "O Mike começa pela visão geral:"
+    },
+    {
+     "en": "I want to architect the new app in three layers.",
+     "tr": "Quero projetar a arquitetura do app novo em três camadas.",
+     "img": "🏗️🥞"
+    },
+    {
+     "pt": "A surpresa aqui é a palavra arquiteto usada como verbo. Entre devs, é comum: projetar a arquitetura de um sistema. Em textos mais tradicionais, o verbo preferido é projetar mesmo.",
+     "quadro": "architect a system = projetar a arquitetura"
+    },
+    {
+     "pt": "Na pronúncia, a força vai na primeira sílaba, e o cê com agá do meio tem o mesmo som duro do nosso arquiteto. Nada de som chiado. Escuta:"
+    },
+    {
+     "en": "architect",
+     "tr": "arquiteto; projetar"
+    },
+    {
+     "pt": "E a camada, em inglês, é a palavra que também serve para as camadas de um bolo, ou de roupa no inverno.",
+     "quadro": "layer = camada",
+     "img": "🎂🧥"
+    },
+    {
+     "pt": "Ele aponta para o centro do desenho:"
+    },
+    {
+     "en": "At the center is the domain, with all the business rules.",
+     "tr": "No centro fica o domínio, com todas as regras de negócio.",
+     "img": "🎯📜"
+    },
+    {
+     "pt": "Repare na ordem da frase. O lugar vem primeiro, depois o verbo, e só no fim o sujeito. É a inversão com o lugar na frente, que você viu nas trilhas de ênfase. Ela dá um tom de apresentação, de quem está mostrando um mapa.",
+     "quadro": "At the center is the domain."
+    },
+    {
+     "pt": "O domínio é a área do negócio que o código representa: pedidos, pagamentos, clientes. E a mesma palavra é o endereço do site que você compra:"
+    },
+    {
+     "en": "We need to buy a domain for the new site.",
+     "tr": "A gente precisa comprar um domínio para o site novo.",
+     "img": "🌐🛒"
+    },
+    {
+     "pt": "E em direito autoral, a obra que não tem mais dono está em domínio público, com a mesma palavra.",
+     "quadro": "in the public domain = em domínio público"
+    },
+    {
+     "secao": "Entidade e interface",
+     "pt": "Você quer confirmar que entendeu:"
+    },
+    {
+     "en": "So an order is an entity with its own ID?",
+     "tr": "Então um pedido é uma entidade com um ID próprio?",
+     "img": "🧾👤"
+    },
+    {
+     "pt": "Entidade é o objeto que tem identidade própria, mesmo que os dados mudem: um cliente, um pedido. E quando são várias, o ípsilon do final vira i, e ganha o final de mais de um.",
+     "quadro": "entity → entities"
+    },
+    {
+     "pt": "Dois detalhes da frase. O próprio, em inglês, é o possessivo seguido da palavra que reforça. E o possessivo de coisa não tem apóstrofo; com apóstrofo, seria a contração de ele é.",
+     "quadro": "its own = próprio · its (dele) ≠ it's (it is)"
+    },
+    {
+     "pt": "E repare que a pergunta usa a ordem de afirmação, com entonação subindo no final. É um jeito espontâneo de confirmar algo que você acha que entendeu."
+    },
+    {
+     "pt": "O Mike confirma e explica como as partes conversam:"
+    },
+    {
+     "en": "Right, and each layer talks to the others through a clean interface.",
+     "tr": "Isso, e cada camada conversa com as outras por uma interface limpa.",
+     "img": "🔌🧼"
+    },
+    {
+     "pt": "Essa palavra tem dois sentidos em dev. É a tela, aquilo que o usuário toca e vê. E é o contrato entre partes do código: o que uma parte promete para a outra.",
+     "quadro": "user interface · a clean interface"
+    },
+    {
+     "pt": "E repare nas preposições: conversar com usa a de direção, e por meio de usa a palavra que quer dizer através.",
+     "quadro": "talk to · through = por meio de"
+    },
+    {
+     "secao": "Separação e injeção",
+     "pt": "Você gosta do que vê, e elogia:"
+    },
+    {
+     "en": "I like the separation of concerns here.",
+     "tr": "Gosto da separação de responsabilidades aqui.",
+     "img": "📦📦👍"
+    },
+    {
+     "pt": "Separação de responsabilidades é uma colocação fixa de engenharia: cada parte do sistema cuida de um assunto só. Repare que, nessa expressão, a preposição de aparece, ao contrário de tantas outras.",
+     "quadro": "separation of concerns"
+    },
+    {
+     "pt": "A segunda palavra é traiçoeira. Ela quer dizer preocupação, mas também assunto, responsabilidade, aquilo que é da conta de alguém. Olha:"
+    },
+    {
+     "en": "That's not my concern.",
+     "tr": "Isso não é problema meu.",
+     "img": "🤷"
+    },
+    {
+     "pt": "O Mike passa para a parte prática:"
+    },
+    {
+     "en": "We'll inject the repository into each use case.",
+     "tr": "A gente vai injetar o repositório em cada caso de uso.",
+     "img": "💉🗃️"
+    },
+    {
+     "pt": "Injetar alguma coisa em outra usa a preposição de movimento para dentro. É como uma seringa: você põe algo dentro de outra coisa.",
+     "quadro": "inject X into Y"
+    },
+    {
+     "pt": "E você completa com a vantagem principal:"
+    },
+    {
+     "en": "Dependency injection also makes testing much easier.",
+     "tr": "A injeção de dependência também deixa os testes bem mais fáceis.",
+     "img": "🧪😌"
+    },
+    {
+     "pt": "Duas coisas. Injeção de dependência, de novo, sem preposição: as duas palavras encostadas. E deixar mais fácil é fazer mais fácil, com o verbo fazer e o adjetivo depois do objeto.",
+     "quadro": "dependency injection · make X easier"
+    },
+    {
+     "pt": "Na segurança, a mesma palavra aparece num ataque famoso, em que o invasor injeta comandos no banco de dados.",
+     "quadro": "SQL injection"
+    },
+    {
+     "secao": "Externo e dependência",
+     "pt": "O Mike desenha o círculo de fora:"
+    },
+    {
+     "en": "The database lives in the outer layer.",
+     "tr": "O banco de dados fica na camada externa.",
+     "img": "🗄️⭕"
+    },
+    {
+     "pt": "Duas coisas aqui. O verbo morar, para dizer onde uma coisa fica no código: é bem comum entre devs. E externo, que só funciona como adjetivo, antes do substantivo. O par dele é o interno.",
+     "quadro": "outer ↔ inner · outer space = espaço sideral"
+    },
+    {
+     "pt": "Aí você levanta uma preocupação:"
+    },
+    {
+     "en": "Right now, our dependence on a single service worries me.",
+     "tr": "No momento, a nossa dependência de um único serviço me preocupa.",
+     "img": "🔗😟"
+    },
+    {
+     "pt": "Aqui está o par parecidíssimo da aula. Essa palavra é o fato de depender de algo. A biblioteca que você instala no projeto é outra palavra, com a terminação de ípsilon.",
+     "quadro": "dependence = o fato de depender · dependency = a biblioteca"
+    },
+    {
+     "en": "This project has too many dependencies.",
+     "tr": "Este projeto tem dependências demais."
+    },
+    {
+     "pt": "E a preposição: depender de, em inglês, é depender em cima de. Quem traduz a preposição do português erra. E o substantivo leva a mesma preposição do verbo.",
+     "quadro": "depend on · dependence on"
+    },
+    {
+     "secao": "Periférico e unificar",
+     "pt": "O Mike explica onde fica o registro de eventos do sistema:"
+    },
+    {
+     "en": "Logging is a peripheral concern, so it stays outside the domain.",
+     "tr": "O logging é uma questão periférica, então fica fora do domínio.",
+     "img": "📋↗️"
+    },
+    {
+     "pt": "Periférico é o que fica fora do centro, secundário. A força cai na segunda sílaba. E de novo aparece aquela palavra traiçoeira, agora no sentido de assunto, questão.",
+     "quadro": "a peripheral concern = uma questão secundária"
+    },
+    {
+     "pt": "Nos equipamentos, com a letra esse no final, a palavra vira os periféricos: mouse, teclado, impressora. E no corpo, a visão periférica é a do canto do olho.",
+     "quadro": "peripherals · peripheral vision",
+     "img": "🖱️⌨️👀"
+    },
+    {
+     "pt": "E você termina com uma proposta ousada:"
+    },
+    {
+     "en": "Should we unify the two apps into one codebase?",
+     "tr": "A gente devia unificar os dois apps numa codebase só?",
+     "img": "📱➕📱"
+    },
+    {
+     "pt": "Unificar é juntar em um só. E de novo, a preposição de movimento para dentro: unificar duas coisas em uma. Repare também no modal de sugestão, o devia, que deixa a proposta educada.",
+     "quadro": "unify X into Y · Should we...? = A gente devia...?"
+    },
+    {
+     "secao": "Curiosidades de dicionário",
+     "img": "🏛️📜",
+     "pt": "Arquiteto vem do grego, de duas partes: chefe e construtor. O arquiteto era o mestre de obras, o chefe dos construtores."
+    },
+    {
+     "pt": "Domínio vem do latim, da palavra que queria dizer senhor, o dono da casa. O domínio era a terra que pertencia a ele. Hoje, é a área que o seu código governa."
+    },
+    {
+     "pt": "E periférico vem do grego, de um prefixo que quer dizer em volta, e um verbo que quer dizer carregar. A periferia é o que fica em volta, na borda, longe do centro.",
+     "img": "⭕"
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Agora é com você. Diga que o app tem dependências demais. Qual das duas palavras parecidas você usa?",
+     "pausa": 5
+    },
+    {
+     "en": "The app has too many dependencies.",
+     "tr": "O app tem dependências demais."
+    },
+    {
+     "pt": "Mais um. Diga que a gente depende de um único fornecedor. Pense na preposição.",
+     "pausa": 5
+    },
+    {
+     "en": "We depend on a single vendor.",
+     "tr": "A gente depende de um único fornecedor."
+    },
+    {
+     "pt": "E o último. Diga que isso não é assunto seu, usando aquela palavra traiçoeira da separação. Cuidado com o tom: dito seco, soa como descaso.",
+     "pausa": 4
+    },
+    {
+     "en": "That's not my concern.",
+     "tr": "Isso não é problema meu."
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando. Arquiteto também vira verbo, com o cê agá duro no meio. O domínio é o coração do negócio e também o endereço do site. A entidade tem identidade própria."
+    },
+    {
+     "pt": "A palavra da conexão é a tela e o contrato. A separação de responsabilidades usa aquela palavra traiçoeira. Injetar pede a preposição de movimento para dentro, e a injeção de dependência deixa os testes mais fáceis."
+    },
+    {
+     "pt": "Externo só é adjetivo, depender pede a preposição de cima, e a biblioteca é diferente do fato de depender. Agora é a sua vez de digitar as frases da revisão de design com o Mike!"
+    }
+   ]
+  },
+  "vocab-academico-sistemas.retro-processo": {
+   "titulo": "Na retro: as palavras de mudar um processo",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "🗓️🔄📝",
+     "pt": "Última sexta do mês, dia de retrospectiva. O time inteiro na chamada: a Sarah, a Ana, o Mike e você. Cada um com um café e uma lista de queixas."
+    },
+    {
+     "pt": "A Sarah tem uma proposta: mudar o jeito como o time entrega e revisa código. E cada um vai sugerindo o que padronizar, o que trocar e o que cortar do processo."
+    },
+    {
+     "pt": "As palavras de hoje são compridas, quase todas do latim, e soam formais. A chave de C1 é saber quando a palavra comprida cabe, numa proposta ou num documento, e quando a curta soa melhor, no papo do time."
+    },
+    {
+     "secao": "Dar início e padronizar",
+     "pt": "A Sarah abre a reunião com cuidado, porque mudança de processo sempre mexe com gente:"
+    },
+    {
+     "en": "I'd like to initiate a small change to our process.",
+     "tr": "Eu queria dar início a uma pequena mudança no nosso processo.",
+     "img": "🚦🔄"
+    },
+    {
+     "pt": "Esse verbo é o iniciar formal, de documento, de ata de reunião. Ele dá um peso oficial à proposta. Na conversa comum, o verbo começar faz o mesmo serviço, e existe uma expressão do futebol muito usada:",
+     "quadro": "initiate (formal) · start · kick off"
+    },
+    {
+     "en": "Let's kick off the project next week.",
+     "tr": "Vamos dar o pontapé inicial no projeto semana que vem.",
+     "img": "⚽"
+    },
+    {
+     "pt": "Repare também na preposição: mudança no processo, em inglês, é mudança para o processo. E o eu queria, educado, é o modal de condicional com o verbo gostar.",
+     "quadro": "a change to our process · I'd like to = eu queria"
+    },
+    {
+     "pt": "Da mesma família vem a iniciativa. E a colocação é tomar a iniciativa, igualzinho ao português:",
+     "quadro": "take the initiative = tomar a iniciativa"
+    },
+    {
+     "pt": "A Ana já chega com a primeira sugestão:"
+    },
+    {
+     "en": "Let's standardize the pull request template first.",
+     "tr": "Vamos padronizar o template de pull request primeiro.",
+     "img": "📋📐"
+    },
+    {
+     "pt": "Padronizar, com zê na grafia americana e esse na britânica. O substantivo de base é o padrão, e ele tem uma colocação ótima, que veio da economia: o padrão-ouro, a referência máxima numa área.",
+     "quadro": "standard · standardize · the gold standard"
+    },
+    {
+     "en": "This library is the gold standard for testing.",
+     "tr": "Essa biblioteca é a referência máxima em testes.",
+     "img": "🥇"
+    },
+    {
+     "secao": "Progressivo e ativar",
+     "pt": "Você entra na conversa com uma proposta sua:"
+    },
+    {
+     "en": "I suggest a progressive rollout for every new feature.",
+     "tr": "Sugiro um rollout progressivo pra cada feature nova.",
+     "img": "📶🚀"
+    },
+    {
+     "pt": "Liberação progressiva é soltar a funcionalidade aos poucos, em etapas, para uma parte dos usuários de cada vez. O adjetivo quer dizer gradual.",
+     "quadro": "a progressive rollout = liberação gradual"
+    },
+    {
+     "pt": "E aqui tem um erro clássico de brasileiro. Depois do verbo sugerir, nunca vem a pessoa com a preposição de infinitivo. Ou vem um substantivo, como na frase, ou uma oração com que, ou a terminação de gerúndio.",
+     "quadro": "errado: I suggest you to... · certo: I suggest (that) you..."
+    },
+    {
+     "en": "I suggest that we start small.",
+     "tr": "Sugiro que a gente comece pequeno."
+    },
+    {
+     "pt": "A Sarah topa e detalha:"
+    },
+    {
+     "en": "We can activate the feature for five percent of users first.",
+     "tr": "A gente pode ativar a feature para cinco por cento dos usuários primeiro.",
+     "img": "🔛👥"
+    },
+    {
+     "pt": "Ativar, e o contrário, com o prefixo que desfaz: desativar. E o por cento, na grafia americana, vira uma palavra só; no Reino Unido, é comum ver separado em duas.",
+     "quadro": "activate ↔ deactivate · percent (US) · per cent (UK)"
+    },
+    {
+     "secao": "Progressão e adaptação",
+     "pt": "O Mike vai mais longe:"
+    },
+    {
+     "en": "Weekly releases are a natural progression for this team.",
+     "tr": "Releases semanais são uma progressão natural para este time.",
+     "img": "📅➡️📈"
+    },
+    {
+     "pt": "Com o adjetivo da natureza, a progressão é o próximo passo lógico, aquele que vem sem forçar. É muito usada em carreira também: virar líder técnico pode ser esse passo para um dev sênior.",
+     "quadro": "a natural progression = o passo natural seguinte"
+    },
+    {
+     "pt": "Cuidado com a prima dela, a palavra progresso. Em inglês, progresso é incontável. Fazer muito progresso, sem artigo e sem o final de mais de um.",
+     "quadro": "make progress · a lot of progress (sem -es)"
+    },
+    {
+     "en": "We made a lot of progress this sprint.",
+     "tr": "A gente avançou bastante nesta sprint."
+    },
+    {
+     "pt": "A Ana, realista, avisa:"
+    },
+    {
+     "en": "There will be a period of adaptation, of course.",
+     "tr": "Vai ter um período de adaptação, claro.",
+     "img": "🌱⏳"
+    },
+    {
+     "pt": "Adaptação, com a preposição de: período de adaptação. E o vai ter, de existência no futuro, é a estrutura do há com o verbo auxiliar de futuro.",
+     "quadro": "There will be = vai ter, haverá"
+    },
+    {
+     "pt": "Fora do trabalho, essa palavra é a de um livro que vira filme. Uma adaptação para o cinema:",
+     "img": "📖🎬"
+    },
+    {
+     "en": "The film adaptation is better than the book.",
+     "tr": "A adaptação para o cinema é melhor que o livro."
+    },
+    {
+     "secao": "Periódico e modificação",
+     "pt": "Você propõe um cuidado para a mudança não se perder com o tempo:"
+    },
+    {
+     "en": "We should schedule periodic reviews of the checklist.",
+     "tr": "A gente devia marcar revisões periódicas do checklist.",
+     "img": "🔁✅"
+    },
+    {
+     "pt": "Periódico, aqui, quer dizer de tempos em tempos, num ritmo fixo. E é só adjetivo. A revista da banca, que a gente também chama de periódico, em inglês é outra palavra.",
+     "quadro": "periodic = regular · periódico (revista) = magazine, journal"
+    },
+    {
+     "pt": "E repare no verbo marcar, agendar. A pronúncia muda de país: nos Estados Unidos começa com som de esse e cá; no Reino Unido, é comum começar com um som chiado. Escuta a americana:"
+    },
+    {
+     "en": "schedule",
+     "tr": "agendar; cronograma"
+    },
+    {
+     "pt": "O Mike, sempre cauteloso, completa:"
+    },
+    {
+     "en": "Even a small modification needs a second review.",
+     "tr": "Até uma pequena modificação precisa de uma segunda revisão.",
+     "img": "🔧👀"
+    },
+    {
+     "pt": "Modificação é a palavra formal. No dia a dia, a mudança, a palavra curta, é muito mais comum. E o até, de inclusão surpreendente, fica bem no começo.",
+     "quadro": "modification (formal) · change (dia a dia) · even = até"
+    },
+    {
+     "secao": "Substituir e eliminar",
+     "pt": "A Ana tem uma ideia de troca:"
+    },
+    {
+     "en": "Can we make a substitution: automated checks instead of manual testing?",
+     "tr": "Podemos fazer uma substituição: checagens automáticas em vez de teste manual?",
+     "img": "🔄📋"
+    },
+    {
+     "pt": "Fazer uma substituição usa o verbo fazer de produzir. E quem entra no lugar de outro é o substituto, o reserva do futebol. E em vez de, em inglês, é a palavra lugar com a preposição de.",
+     "quadro": "make a substitution · a substitute · instead of"
+    },
+    {
+     "pt": "Agora uma armadilha de C1. O verbo substituir, com a preposição para, tem uma ordem que confunde até nativo. A primeira coisa é a que entra; a segunda, a que sai.",
+     "quadro": "substitute A for B = usar A no lugar de B"
+    },
+    {
+     "en": "You can substitute honey for sugar.",
+     "tr": "Você pode usar mel no lugar do açúcar.",
+     "img": "🍯🍬"
+    },
+    {
+     "pt": "E a Sarah fecha com o objetivo final:"
+    },
+    {
+     "en": "The goal is the elimination of all manual steps.",
+     "tr": "O objetivo é a eliminação de todas as etapas manuais.",
+     "img": "🗑️✋"
+    },
+    {
+     "pt": "Eliminação, a palavra comprida e formal. E uma expressão ótima: por eliminação, quando você descarta as opções até sobrar a certa. Ao pé da letra, por um processo de eliminação.",
+     "quadro": "by a process of elimination = por eliminação"
+    },
+    {
+     "secao": "Curiosidades de dicionário",
+     "img": "🚪📚",
+     "pt": "Eliminar vem do latim, e quer dizer, ao pé da letra, pôr para fora da soleira, da porta de casa. A palavra latina da soleira também deu o nosso limiar."
+    },
+    {
+     "pt": "Periódico vem do grego: aquele mesmo prefixo de em volta, do periférico da outra lição, e uma palavra que quer dizer caminho. Um período é um caminho que dá a volta e recomeça, como um ciclo. Daí vem a tabela periódica.",
+     "img": "⚗️🔁"
+    },
+    {
+     "pt": "E a própria retrospectiva vem do latim: olhar para trás. É a mesma raiz de espectador, aquele que olha."
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Agora é com você. Sugira que o time revise o código toda sexta. Cuidado com o erro clássico depois de sugerir.",
+     "pausa": 6
+    },
+    {
+     "en": "I suggest that we review the code every Friday.",
+     "tr": "Sugiro que a gente revise o código toda sexta."
+    },
+    {
+     "pt": "Mais um. Diga que vocês fizeram muito progresso esta semana. Lembre que progresso é incontável.",
+     "pausa": 5
+    },
+    {
+     "en": "We made a lot of progress this week.",
+     "tr": "A gente avançou bastante esta semana."
+    },
+    {
+     "pt": "E o último. No papo com o time, sem formalidade, diga que vamos começar o processo novo amanhã.",
+     "pausa": 4
+    },
+    {
+     "en": "Let's start the new process tomorrow.",
+     "tr": "Vamos começar o processo novo amanhã."
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando. Dar início é o verbo formal; começar é o do dia a dia. Padronizar tem zê na grafia americana, e o padrão-ouro é a referência máxima."
+    },
+    {
+     "pt": "A liberação progressiva é gradual, sugerir nunca leva a pessoa com o infinitivo, ativar tem o contrário com prefixo, e a progressão sem forçar é o passo seguinte. Progresso é incontável."
+    },
+    {
+     "pt": "O período de adaptação, a revisão periódica que não é revista, a modificação formal, a substituição com a ordem traiçoeira e a eliminação da soleira. Agora é a sua vez de digitar as frases da retro!"
+    }
+   ]
+  },
+  "vocab-academico-sistemas.experimento-ia": {
+   "titulo": "O experimento de IA: variante, deriva e corte de custo",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "🤖📊🧪",
+     "pt": "Durante duas semanas, a Sarah e a Ana testam um recurso novo de IA no app. É um teste com duas versões, e metade dos usuários vê cada uma."
+    },
+    {
+     "pt": "Você acompanha os números com elas: quem clica, quem volta, quanto custa cada usuário. E no fim, o time vai ter que escolher uma versão, e cortar custo antes do lançamento geral."
+    },
+    {
+     "pt": "As palavras de hoje são de experimento e de custo. Muitas têm um sentido técnico e outro do dia a dia, e o que separa o aluno avançado do intermediário é conhecer os dois."
+    },
+    {
+     "secao": "Artificial e variante",
+     "pt": "A Sarah abre a reunião com o status:"
+    },
+    {
+     "en": "The artificial intelligence feature is live for half of our users.",
+     "tr": "A feature de inteligência artificial está no ar para metade dos nossos usuários.",
+     "img": "🤖🟢👥"
+    },
+    {
+     "pt": "Na frase, o adjetivo vem antes de inteligência, ao contrário do português. Na fala, quase todo mundo usa a sigla, lida letra por letra:",
+     "quadro": "artificial intelligence = AI"
+    },
+    {
+     "en": "AI",
+     "tr": "IA"
+    },
+    {
+     "pt": "E um detalhe de pronúncia valioso: a palavra de no ar, aqui, é adjetivo, a mesma de ao vivo, e tem um ditongo. O verbo morar, escrito igualzinho, tem um i curto. Escuta os dois:",
+     "quadro": "live (adj.) = no ar, ao vivo · live (verbo) = morar"
+    },
+    {
+     "en": "It's live. I live in Brazil.",
+     "tr": "Está no ar. Eu moro no Brasil."
+    },
+    {
+     "pt": "Sobre pessoas, esse adjetivo quer dizer forçado, falso. Um sorriso assim é aquele de foto de empresa, que não chega aos olhos.",
+     "quadro": "an artificial smile = um sorriso forçado"
+    },
+    {
+     "pt": "Ela mostra a versão nova:"
+    },
+    {
+     "en": "Variant B shows the suggestions on the home screen.",
+     "tr": "A variante B mostra as sugestões na tela inicial.",
+     "img": "🧪📱💡"
+    },
+    {
+     "pt": "Num teste com duas versões, uma é o grupo de controle, a versão atual, e a outra é a variante. E repare: variante com letra funciona como um nome próprio e vai sem artigo, igual ao portão doze do aeroporto.",
+     "quadro": "the control and the variant · Variant B · Gate 12"
+    },
+    {
+     "pt": "A família é grande: variar, a variedade, e a variável, que todo dev conhece.",
+     "quadro": "vary · variety · variable · variant"
+    },
+    {
+     "secao": "Abranger e simular",
+     "pt": "A Ana explica o desenho do teste:"
+    },
+    {
+     "en": "The test spans two weeks and covers two groups of users.",
+     "tr": "O teste abrange duas semanas e cobre dois grupos de usuários.",
+     "img": "🗓️👥👥"
+    },
+    {
+     "pt": "Esse verbo quer dizer abranger, se estender por um período ou por várias áreas. Uma carreira que se estende por vinte anos usa esse verbo. E o passado dobra o ene.",
+     "quadro": "span · spanned · a career spanning 20 years"
+    },
+    {
+     "pt": "Como substantivo, ele é o tamanho de alguma coisa no tempo. E tem uma colocação famosa, que todo educador conhece: a capacidade de atenção.",
+     "quadro": "attention span = capacidade de atenção · life span = tempo de vida"
+    },
+    {
+     "en": "I have a short attention span before coffee.",
+     "tr": "Antes do café, a minha capacidade de atenção é curta.",
+     "img": "☕🧠"
+    },
+    {
+     "pt": "Você lembra como o time se preparou:"
+    },
+    {
+     "en": "Before the launch, we ran a simulation with fake users.",
+     "tr": "Antes do lançamento, a gente rodou uma simulação com usuários falsos.",
+     "img": "🎮👤"
+    },
+    {
+     "pt": "A colocação é rodar uma simulação, com o verbo correr no passado, que foge da regra. Correr, correu, corrido: a forma do meio é a única que muda a vogal.",
+     "quadro": "run a simulation · run, ran, run"
+    },
+    {
+     "secao": "Deriva e queda",
+     "pt": "Mas os números reais começam a contar outra história:"
+    },
+    {
+     "en": "The results are slowly drifting away from the simulation.",
+     "tr": "Os resultados estão se desviando aos poucos da simulação.",
+     "img": "🛶↗️"
+    },
+    {
+     "pt": "Esse verbo é lindo. É ir se desviando aos poucos, sem ninguém perceber, como um barco sem remo levado pela corrente. Em ciência de dados, quando o comportamento real foge do modelo, se fala em deriva dos dados.",
+     "quadro": "drift away from = se afastar aos poucos de · data drift"
+    },
+    {
+     "pt": "Com amigos, ele descreve aquela amizade que foi esfriando sem briga nenhuma, só com o tempo:"
+    },
+    {
+     "en": "We drifted apart after college.",
+     "tr": "A gente foi se afastando depois da faculdade.",
+     "img": "👫↔️"
+    },
+    {
+     "pt": "A Sarah não se assusta, porque já viu isso antes:"
+    },
+    {
+     "en": "Engagement usually shows a gradual decay after the first week.",
+     "tr": "O engajamento costuma ter uma queda gradual depois da primeira semana.",
+     "img": "📉🍂"
+    },
+    {
+     "pt": "Essa palavra é a queda lenta de um número com o tempo. Com o adjetivo gradual na frente, fica a colocação típica de relatório.",
+     "quadro": "a gradual decay = uma queda gradual"
+    },
+    {
+     "pt": "No sentido mais concreto, ela é o apodrecimento. A cárie do dente, em inglês, é o apodrecimento do dente. E na física, é o decaimento radioativo.",
+     "quadro": "tooth decay = cárie · radioactive decay",
+     "img": "🦷"
+    },
+    {
+     "secao": "Convergir e engrenagem",
+     "pt": "A Ana pergunta o que todo mundo quer saber:"
+    },
+    {
+     "en": "So the two variants will probably converge in the end?",
+     "tr": "Então as duas variantes provavelmente vão convergir no fim?",
+     "img": "↘️🎯↙️"
+    },
+    {
+     "pt": "Convergir é ir para o mesmo ponto. O contrário é divergir. E repare na posição do advérbio de probabilidade: ele fica entre o auxiliar de futuro e o verbo principal.",
+     "quadro": "will probably converge · converge ↔ diverge"
+    },
+    {
+     "pt": "Na negativa, ele vem antes do auxiliar negativo. Pense assim: o provavelmente vem antes do não. Escuta:"
+    },
+    {
+     "en": "They probably won't converge.",
+     "tr": "Elas provavelmente não vão convergir."
+    },
+    {
+     "pt": "Você decide abrir a caixa-preta para elas:"
+    },
+    {
+     "en": "Let me show you the machinery behind the suggestions.",
+     "tr": "Deixa eu te mostrar a engrenagem por trás das sugestões.",
+     "img": "⚙️🔍"
+    },
+    {
+     "pt": "Essa palavra é o maquinário, a engrenagem, e é incontável. Não leva artigo indefinido, nem o final de mais de um. A máquina, sozinha, é contável. O conjunto não.",
+     "quadro": "a machine (contável) · machinery (incontável)"
+    },
+    {
+     "pt": "E no sentido figurado, ela é o mecanismo de uma instituição: a engrenagem do governo, a máquina administrativa.",
+     "quadro": "the machinery of government"
+    },
+    {
+     "secao": "Pilha e cortar",
+     "pt": "E você avisa onde está o problema:"
+    },
+    {
+     "en": "Our tech stack can handle it, but the API calls are expensive.",
+     "tr": "A nossa stack tecnológica aguenta, mas as chamadas da API são caras.",
+     "img": "🥞💸"
+    },
+    {
+     "pt": "A pilha de tecnologias é o conjunto de ferramentas do projeto, uma em cima da outra: banco, servidor, linguagem, tela. É daí que vem o dev que domina a pilha inteira.",
+     "quadro": "the tech stack · a full-stack developer"
+    },
+    {
+     "pt": "Fora da tecnologia, é uma pilha mesmo, de pratos, de papel, de livros. E como verbo, é empilhar.",
+     "img": "📚🍽️"
+    },
+    {
+     "en": "Stack the plates on the table.",
+     "tr": "Empilha os pratos na mesa."
+    },
+    {
+     "pt": "A Sarah, que cuida do orçamento, é direta:"
+    },
+    {
+     "en": "Then we need to slash the cost per user before the full launch.",
+     "tr": "Então precisamos cortar drasticamente o custo por usuário antes do lançamento geral.",
+     "img": "✂️💰"
+    },
+    {
+     "pt": "Esse verbo é o corte de faca, um golpe rápido. Com custos e preços, quer dizer cortar drasticamente. É palavra de manchete: uma empresa que corta preços pela metade usa esse verbo.",
+     "quadro": "slash costs = cortar custos drasticamente"
+    },
+    {
+     "pt": "E a mesma palavra é o nome daquele símbolo inclinado, a barra. A barra invertida tem o prefixo de para trás.",
+     "quadro": "/ = slash · \\ = backslash"
+    },
+    {
+     "secao": "Finito",
+     "pt": "E você fecha a decisão:"
+    },
+    {
+     "en": "Our resources are finite, so let's go with variant B.",
+     "tr": "Os nossos recursos são finitos, então vamos ficar com a variante B.",
+     "img": "⏳💰✅"
+    },
+    {
+     "pt": "Lembra do infinito, do plantão com o Mike? Na palavra sem prefixo, a pronúncia muda toda. A primeira vogal vira um ditongo, a última também, e a força continua no começo. Escuta os dois:",
+     "quadro": "FAI-nait · IN-fi-nit"
+    },
+    {
+     "en": "finite, infinite",
+     "tr": "finito, infinito"
+    },
+    {
+     "pt": "E repare na expressão do fim: ir com alguma coisa quer dizer escolher, ficar com. É o que você diz no restaurante também, quando decide o prato.",
+     "quadro": "go with = escolher, ficar com"
+    },
+    {
+     "secao": "Curiosidades de dicionário",
+     "img": "🎨🏺",
+     "pt": "O adjetivo da IA e o artefato, da primeira lição desta trilha, são parentes. As duas vêm do latim, das mesmas palavras: arte, no sentido de habilidade, e fazer."
+    },
+    {
+     "pt": "Pilha, em inglês, é uma palavra de origem nórdica, ligada ao monte de feno. E ela está escondida numa expressão que você conhece: procurar uma agulha no palheiro, que em inglês é procurar no monte de feno.",
+     "quadro": "a needle in a haystack",
+     "img": "🌾🪡"
+    },
+    {
+     "pt": "E maquinário vem, pelo latim, de uma palavra grega que queria dizer engenhoca, dispositivo. É a mesma raiz da nossa mecânica."
+    },
+    {
+     "pt": "E a queda gradual tem uma prima no português: as duas palavras vêm do mesmo verbo latino de cair, que deu o nosso decair. Decair, cair aos poucos.",
+     "img": "🍂📉"
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Agora é com você. Diga que o projeto abrange três países. Use o verbo de abranger.",
+     "pausa": 5
+    },
+    {
+     "en": "The project spans three countries.",
+     "tr": "O projeto abrange três países."
+    },
+    {
+     "pt": "Mais um. Diga que o time provavelmente não vai terminar hoje. Atenção à posição do advérbio.",
+     "pausa": 5
+    },
+    {
+     "en": "The team probably won't finish today.",
+     "tr": "O time provavelmente não vai terminar hoje."
+    },
+    {
+     "pt": "E o último. Diga que precisamos cortar drasticamente os preços.",
+     "pausa": 4
+    },
+    {
+     "en": "We need to slash prices.",
+     "tr": "Precisamos cortar os preços drasticamente."
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando. O adjetivo da IA é da família do artefato, a palavra de no ar tem ditongo, e a variante com letra vai sem artigo. O verbo de abranger também aparece na capacidade de atenção."
+    },
+    {
+     "pt": "Rodar uma simulação, desviar aos poucos como um barco na corrente, a queda gradual que também é a cárie, e convergir, com o advérbio entre o auxiliar e o verbo."
+    },
+    {
+     "pt": "A engrenagem é incontável, a pilha de tecnologias é uma pilha de pratos, cortar drasticamente é o golpe de faca, e finito tem ditongo. Agora é a sua vez de digitar as frases do experimento!"
+    }
+   ]
+  },
+  "vocab-academico-sistemas.migracao-banco": {
+   "titulo": "Sábado de migração: tudo ou nada no banco de dados",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "🗄️➡️🗄️",
+     "pt": "Sábado à noite, combinado com semanas de antecedência. Você e o Mike vão mudar os dados do app de casa: do banco de dados antigo para o novo."
+    },
+    {
+     "pt": "É uma mudança delicada. Cada etapa é conferida duas vezes, porque o combinado é um só: os clientes não podem perder nada, e de preferência nem perceber que alguma coisa aconteceu."
+    },
+    {
+     "pt": "As palavras de hoje são as de migração de dados. Várias têm um uso técnico preciso e um uso do dia a dia bem diferente. E uma delas é um falso amigo clássico do atendimento ao cliente."
+    },
+    {
+     "secao": "Migrar e transação",
+     "pt": "O Mike abre a chamada com o plano da noite:"
+    },
+    {
+     "en": "Today we're migrating the old database to the new one.",
+     "tr": "Hoje a gente está migrando o banco de dados antigo para o novo.",
+     "img": "🗄️🚚"
+    },
+    {
+     "pt": "Migrar de um lugar para outro usa as preposições de origem e de direção. E repare no tempo: presente contínuo, porque é um plano combinado e já em andamento.",
+     "quadro": "migrate from X to Y"
+    },
+    {
+     "pt": "E o final da frase evita repetir a palavra banco: o novo, em inglês, é o novo um. Essa palavrinha substitui o substantivo que já foi dito.",
+     "quadro": "the new one = o novo"
+    },
+    {
+     "pt": "A mesma palavra serve para as aves que viajam no inverno, e para as pessoas que mudam de país. Quem sai é o emigrante; quem chega é o imigrante.",
+     "quadro": "bird migration · emigrate · immigrate",
+     "img": "🐦✈️"
+    },
+    {
+     "pt": "Você explica a primeira garantia de segurança:"
+    },
+    {
+     "en": "Every write runs inside a database transaction.",
+     "tr": "Toda gravação roda dentro de uma transação de banco de dados.",
+     "img": "✍️🔒"
+    },
+    {
+     "pt": "Repare que o verbo escrever virou substantivo: uma gravação. Entre devs, é comum falar das leituras e das gravações de um banco, usando os dois verbos como substantivos.",
+     "quadro": "reads and writes = leituras e gravações"
+    },
+    {
+     "pt": "Transação, no banco de dados, é um pacote de operações que vai junto. E no banco de dinheiro, é a compra no cartão. A mesma palavra, nos dois mundos.",
+     "quadro": "a database transaction · a credit card transaction",
+     "img": "💳"
+    },
+    {
+     "secao": "Atômico e recuperar",
+     "pt": "O Mike gosta do que ouve:"
+    },
+    {
+     "en": "Great, so each step is atomic: all or nothing.",
+     "tr": "Ótimo, então cada etapa é atômica: tudo ou nada.",
+     "img": "⚛️✅❌"
+    },
+    {
+     "pt": "Atômico, aqui, é indivisível. Ou a operação acontece inteira, ou nenhuma parte acontece. Não existe meio termo, não existe metade gravada.",
+     "quadro": "atomic = indivisível, tudo ou nada"
+    },
+    {
+     "pt": "E a expressão do fim é igualzinha ao português, palavra por palavra: tudo ou nada. Ela serve para qualquer decisão sem meio termo, até fora da tecnologia."
+    },
+    {
+     "pt": "Você descreve o que o programa de migração vai fazer:"
+    },
+    {
+     "en": "The script will retrieve the records in batches of a thousand.",
+     "tr": "O script vai recuperar os registros em lotes de mil.",
+     "img": "📥📚"
+    },
+    {
+     "pt": "Recuperar, buscar dados, é o verbo formal. Na conversa, o dev diz pegar ou buscar, com verbos curtos. O substantivo da família dá nome a uma área inteira da computação: a recuperação da informação.",
+     "quadro": "retrieve (formal) · get, fetch · information retrieval"
+    },
+    {
+     "pt": "E repare no número: mil, em inglês, leva o artigo na frente. Em português a gente diz só mil; em inglês, é um mil. E o lote, aqui, é outra palavra, a mais comum para processamento em grupos.",
+     "quadro": "a thousand · in batches of = em lotes de"
+    },
+    {
+     "secao": "Destino e reconstruir",
+     "pt": "O Mike dá uma ordem de cautela:"
+    },
+    {
+     "en": "Double-check the column types in the destination table.",
+     "tr": "Confere duas vezes os tipos das colunas na tabela de destino.",
+     "img": "🎯📊"
+    },
+    {
+     "pt": "Conferir duas vezes é um verbo só, com hífen. É a cara do engenheiro cuidadoso. E destino, em migração, é para onde os dados vão. A origem é a fonte.",
+     "quadro": "double-check · destination ↔ source"
+    },
+    {
+     "pt": "Em viagem, destino é o lugar para onde você vai. E repare: o destino de viagem não é o destino da vida, aquele do que tiver de ser será. Esse é outra palavra.",
+     "quadro": "a travel destination · destino (sorte) = fate, destiny",
+     "img": "🏝️✈️"
+    },
+    {
+     "pt": "Você tranquiliza o Mike com o plano B:"
+    },
+    {
+     "en": "If something goes wrong, we can reconstruct the data from the logs.",
+     "tr": "Se alguma coisa der errado, a gente consegue reconstruir os dados a partir dos logs.",
+     "img": "🧱🔁📜"
+    },
+    {
+     "pt": "Reconstruir, aqui, é montar de novo a partir de pedaços, de registros. É o mesmo verbo da polícia que reconstitui uma cena. Já gerar o app de novo, compilar outra vez, usa um verbo diferente, mais curto.",
+     "quadro": "reconstruct = reconstruir a partir de pedaços · rebuild = gerar de novo"
+    },
+    {
+     "pt": "E repare na condicional: se der errado, em inglês, é o presente simples depois do se. Nada de futuro ali. É a primeira condicional que você já conhece.",
+     "quadro": "If something goes wrong, we can..."
+    },
+    {
+     "secao": "Continuidade e transmitir",
+     "pt": "O Mike lembra a prioridade da noite:"
+    },
+    {
+     "en": "Business continuity comes first: customers shouldn't notice a thing.",
+     "tr": "A continuidade do negócio vem primeiro: os clientes não devem perceber nada.",
+     "img": "🏪🔛"
+    },
+    {
+     "pt": "A continuidade do negócio é o termo de gestão para a empresa seguir funcionando durante uma falha ou uma mudança. É uma colocação fixa, com o negócio na frente, encostado.",
+     "quadro": "business continuity"
+    },
+    {
+     "pt": "E o final é um jeito enfático de dizer nada. Com o não, uma coisa só, com o artigo, quer dizer coisa nenhuma, nadinha.",
+     "quadro": "not notice a thing = não perceber nada"
+    },
+    {
+     "pt": "Na hora de copiar os dados, você nota um gargalo:"
+    },
+    {
+     "en": "The old server can only transmit about fifty megabytes per second.",
+     "tr": "O servidor antigo só consegue transmitir uns cinquenta megabytes por segundo.",
+     "img": "📡🐢"
+    },
+    {
+     "pt": "Transmitir. No passado, o tê final dobra, porque a força está na última sílaba. É a mesma regra de admitir e de cometer.",
+     "quadro": "transmit → transmitted · admit → admitted"
+    },
+    {
+     "pt": "E o substantivo da família tem uma surpresa: no carro, ele é o câmbio. O câmbio automático, em inglês, é a transmissão automática.",
+     "quadro": "automatic transmission = câmbio automático",
+     "img": "🚗⚙️"
+    },
+    {
+     "pt": "Repare também no número aproximado: os nossos uns cinquenta, em inglês, usam a preposição de em volta, sobre. Por segundo usa a palavrinha latina por.",
+     "quadro": "about fifty = uns cinquenta · per second"
+    },
+    {
+     "secao": "Protocolo, conector e troca",
+     "pt": "O Mike explica por que a conexão nova é diferente:"
+    },
+    {
+     "en": "The new database uses a different communication protocol.",
+     "tr": "O banco de dados novo usa um protocolo de comunicação diferente.",
+     "img": "🤝📡"
+    },
+    {
+     "pt": "Protocolo é o conjunto de regras de comunicação. Na diplomacia, é a etiqueta oficial. Mas aqui está o falso amigo: o número de protocolo do atendimento, aquele que você anota no telefone, não é essa palavra.",
+     "quadro": "protocol = regras · número de protocolo = ticket number, case number"
+    },
+    {
+     "en": "What's my ticket number?",
+     "tr": "Qual é o meu número de protocolo?",
+     "img": "📞🎫"
+    },
+    {
+     "pt": "Você tira a conclusão:"
+    },
+    {
+     "en": "So we need a new connector in the app.",
+     "tr": "Então a gente precisa de um conector novo no app.",
+     "img": "🔌📱"
+    },
+    {
+     "pt": "O conector é a peça que liga o app ao banco. E a família vem toda do verbo conectar: a conexão, conectado, desconectar.",
+     "quadro": "connect · connection · connector"
+    },
+    {
+     "pt": "E o grande momento da noite:"
+    },
+    {
+     "en": "At midnight, we swap the old database for the new one.",
+     "tr": "À meia-noite, a gente troca o banco antigo pelo novo.",
+     "img": "🕛🔁"
+    },
+    {
+     "pt": "Trocar uma coisa por outra, com a preposição para. É um verbo informal e muito usado, inclusive entre amigos: trocar de lugar, trocar de turno.",
+     "quadro": "swap A for B · swap seats · swap shifts"
+    },
+    {
+     "en": "Can we swap seats?",
+     "tr": "A gente pode trocar de lugar?",
+     "img": "💺🔁"
+    },
+    {
+     "secao": "Curiosidades de dicionário",
+     "img": "📜",
+     "pt": "Protocolo vem do grego: a primeira folha colada na frente de um rolo de documentos, onde se anotava o conteúdo. Primeiro, e cola. Daí veio o registro oficial, e depois as regras."
+    },
+    {
+     "pt": "Atômico vem do grego também: um prefixo de negação e uma palavra que quer dizer cortar. O átomo era o que não se podia cortar. O banco de dados guardou o sentido de origem melhor que a física."
+    },
+    {
+     "pt": "E o verbo recuperar, em inglês, deu nome a um tipo de cachorro de caça: aquele que busca a presa abatida e traz de volta para o caçador.",
+     "quadro": "golden retriever",
+     "img": "🐕🦆"
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Agora é com você. Diga que a gente vai migrar do sistema velho para o novo. Use a palavrinha que evita repetir o substantivo.",
+     "pausa": 6
+    },
+    {
+     "en": "We're migrating from the old system to the new one.",
+     "tr": "A gente vai migrar do sistema velho para o novo."
+    },
+    {
+     "pt": "Mais um. Você ligou para o suporte e quer o número de protocolo. Como você pede?",
+     "pausa": 5
+    },
+    {
+     "en": "Can I have the ticket number, please?",
+     "tr": "Pode me passar o número de protocolo, por favor?"
+    },
+    {
+     "pt": "E o último. Pergunte a um colega se ele pode trocar de turno com você.",
+     "pausa": 5
+    },
+    {
+     "en": "Can you swap shifts with me?",
+     "tr": "Você pode trocar de turno comigo?"
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando. Migrar de um lugar para outro, com a palavrinha que substitui o substantivo. A transação é do banco de dados e do cartão. Atômico é tudo ou nada."
+    },
+    {
+     "pt": "Recuperar é formal, mil leva artigo, o destino da viagem não é o da vida, e reconstruir é montar a partir de pedaços. A continuidade do negócio vem primeiro."
+    },
+    {
+     "pt": "Transmitir dobra o tê, protocolo não é o número do atendimento, e trocar uma coisa por outra é o verbo informal da meia-noite. Agora é a sua vez de digitar as frases do sábado de migração!"
+    }
+   ]
+  },
+  "vocab-academico-sistemas.revisao-seguranca": {
+   "titulo": "Revisão de segurança: explorar não é explorar",
+   "falas": [
+    {
+     "secao": "A cena",
+     "img": "🔐📋🔍",
+     "pt": "Faltam poucas semanas para a auditoria anual de segurança da empresa. O Mike marcou uma revisão do app com você, para achar os pontos fracos antes que alguém de fora ache."
+    },
+    {
+     "pt": "Vocês vão listar o que está vulnerável, o que precisa ser reforçado, e o que dá para fazer até a data da auditoria. É uma conversa séria, mas sem pânico."
+    },
+    {
+     "pt": "As palavras de hoje são as de segurança. E esta lição tem a maior concentração de falsos amigos da trilha: três palavras que parecem uma coisa em português, e querem dizer outra."
+    },
+    {
+     "secao": "Daqui a pouco e explorar",
+     "pt": "Antes de começar, o Mike manda uma mensagem rápida:"
+    },
+    {
+     "en": "I'll join the call shortly.",
+     "tr": "Entro na chamada daqui a pouco.",
+     "img": "💻⏱️"
+    },
+    {
+     "pt": "Primeiro falso amigo. Esse advérbio parece querer dizer curtamente, de forma resumida. Mas não: ele quer dizer daqui a pouco, em breve. Para resumidamente, o inglês usa outra palavra.",
+     "quadro": "shortly = daqui a pouco · briefly = resumidamente"
+    },
+    {
+     "en": "Let me explain it briefly.",
+     "tr": "Deixa eu explicar resumidamente."
+    },
+    {
+     "pt": "E repare no verbo de entrar na chamada. O inglês não usa o verbo entrar ali; usa o verbo juntar-se, participar. Entrar na reunião, entrar no time, entrar no grupo: todos com esse verbo.",
+     "quadro": "join the call · join the team · join the meeting"
+    },
+    {
+     "pt": "O Mike entra, e vai direto ao ponto:"
+    },
+    {
+     "en": "An attacker could exploit this vulnerability in the login.",
+     "tr": "Um atacante poderia explorar essa vulnerabilidade no login.",
+     "img": "🦹🔓"
+    },
+    {
+     "pt": "Segundo falso amigo, e o mais importante. Esse verbo é explorar no sentido de tirar proveito de uma falha. Explorar um lugar, conhecer uma cidade nova, é outro verbo.",
+     "quadro": "exploit a vulnerability · explore a city"
+    },
+    {
+     "pt": "Com pessoas, esse verbo é negativo: explorar trabalhadores, abusar de alguém. E como substantivo, com a força na primeira sílaba, ele é o próprio código do ataque. Escuta o verbo e o substantivo:",
+     "quadro": "to exPLOIT (verbo) · an EXploit (substantivo)"
+    },
+    {
+     "en": "They released an exploit for this bug.",
+     "tr": "Eles publicaram um código de ataque para esse bug."
+    },
+    {
+     "pt": "E o modal da frase, o poderia, é de possibilidade. Ninguém atacou ainda; é um risco. Em segurança, esse modal aparece o tempo todo para falar de ameaça."
+    },
+    {
+     "secao": "Suscetível e resistente",
+     "pt": "Você concorda, e aponta outro ponto fraco:"
+    },
+    {
+     "en": "Our old login form is susceptible to automated attacks.",
+     "tr": "O nosso formulário de login antigo está suscetível a ataques automatizados.",
+     "img": "📝🤖⚠️"
+    },
+    {
+     "pt": "Suscetível a alguma coisa, sempre com a preposição de direção. Na pronúncia, a força cai na segunda sílaba, e o final sai curto e apagado. Escuta:",
+     "quadro": "susceptible to = suscetível a"
+    },
+    {
+     "en": "susceptible to attacks",
+     "tr": "suscetível a ataques"
+    },
+    {
+     "pt": "Fora da informática, é ser propenso, ter tendência. Quem pega gripe toda hora é suscetível a resfriados.",
+     "img": "🤧"
+    },
+    {
+     "en": "She's very susceptible to colds.",
+     "tr": "Ela pega resfriado com muita facilidade."
+    },
+    {
+     "pt": "O Mike propõe a solução:"
+    },
+    {
+     "en": "Then let's make the new one resistant to brute-force attacks.",
+     "tr": "Então vamos deixar o novo resistente a ataques de força bruta.",
+     "img": "🛡️💪"
+    },
+    {
+     "pt": "Resistente a, de novo com a preposição de direção. E o deixar mais um adjetivo, em inglês, é fazer mais um adjetivo. E força bruta virou adjetivo com hífen, antes de ataque.",
+     "quadro": "make it resistant to · brute-force attacks"
+    },
+    {
+     "pt": "Um detalhe útil para comprar relógio: resistente à água aguenta respingo e chuva. À prova de água é a palavra da água seguida da palavra prova, e promete bem mais.",
+     "quadro": "water-resistant · waterproof",
+     "img": "⌚💧"
+    },
+    {
+     "secao": "Rotacionar e restringir",
+     "pt": "O Mike continua a lista:"
+    },
+    {
+     "en": "We also need to rotate the API keys every ninety days.",
+     "tr": "A gente também precisa rotacionar as chaves da API a cada noventa dias.",
+     "img": "🔑🔄📅"
+    },
+    {
+     "pt": "Rotacionar as chaves é trocar de tempos em tempos, num rodízio. O mesmo verbo serve para revezar pessoas: rodízio do plantão, rodízio de funções.",
+     "quadro": "rotate the keys · rotate on-call duty"
+    },
+    {
+     "pt": "E a cada noventa dias usa a palavra cada com o número e o substantivo com a marca de mais de um. Igual a a cada duas horas, a cada três semanas.",
+     "quadro": "every ninety days · every two hours"
+    },
+    {
+     "pt": "Você define o tamanho da mudança:"
+    },
+    {
+     "en": "The changes will be confined to the login module.",
+     "tr": "As mudanças vão ficar restritas ao módulo de login.",
+     "img": "📦🔒"
+    },
+    {
+     "pt": "Ficar restrito a usa esse verbo quase sempre na voz passiva, com a preposição de direção. É formal, de relatório técnico. E o substantivo da família é o confinamento.",
+     "quadro": "be confined to = ficar restrito a · confinement"
+    },
+    {
+     "pt": "Um espaço confinado, apertado e fechado, também usa essa palavra. Ela passa a ideia de limite físico, de paredes em volta."
+    },
+    {
+     "secao": "Manipular e tecnicamente",
+     "pt": "O Mike faz um alerta importante:"
+    },
+    {
+     "en": "Make sure no one can manipulate the price on the client side.",
+     "tr": "Garante que ninguém consiga manipular o preço no lado do cliente.",
+     "img": "🏷️🕹️🚫"
+    },
+    {
+     "pt": "Manipular é neutro com dados: mexer, alterar. Com pessoas, é negativo, igual ao português. E garantir que, no imperativo, é a expressão de ter certeza.",
+     "quadro": "make sure (that) = garante que"
+    },
+    {
+     "pt": "Agora a armadilha de gramática. O português aceita dupla negação: não vi ninguém. O inglês padrão não aceita. Ou você usa ninguém sozinho, ou a negação com a palavra de qualquer um.",
+     "quadro": "no one can = ninguém pode · nobody can't (errado)"
+    },
+    {
+     "en": "No one can see it. We can't let anyone see it.",
+     "tr": "Ninguém pode ver. A gente não pode deixar ninguém ver."
+    },
+    {
+     "pt": "Você admite o problema do sistema velho, com honestidade:"
+    },
+    {
+     "en": "Technically, the old login works, but it isn't secure.",
+     "tr": "Tecnicamente, o login antigo funciona, mas não é seguro.",
+     "img": "🤔🔓"
+    },
+    {
+     "pt": "No começo da frase, esse advérbio não é só tecnicamente. Ele introduz uma ressalva, como o nosso a rigor. Funciona, a rigor, mas tem um porém. Repare que o porém vem logo em seguida.",
+     "quadro": "Technically, it works, but... = A rigor, funciona, mas..."
+    },
+    {
+     "pt": "E o seguro da frase é o de protegido contra ataque. Para seguro no sentido de sem perigo, de seguro comer ou seguro atravessar, o inglês prefere outra palavra.",
+     "quadro": "secure = protegido · safe = sem perigo"
+    },
+    {
+     "en": "Is it safe to drink the water here?",
+     "tr": "É seguro beber a água daqui?",
+     "img": "🚰"
+    },
+    {
+     "secao": "Limitado por",
+     "pt": "E o Mike fecha a reunião com o plano:"
+    },
+    {
+     "en": "We're constrained by the audit date, so let's start with the critical items.",
+     "tr": "Estamos limitados pela data da auditoria, então vamos começar pelos itens críticos.",
+     "img": "📅⛓️"
+    },
+    {
+     "pt": "Estar limitado por alguma coisa, com a preposição de agente, a mesma da voz passiva. E aqui está o terceiro falso amigo: esse verbo não é constranger. Constrangido, sem graça, é outra palavra.",
+     "quadro": "be constrained by = estar limitado por · constrangido = embarrassed"
+    },
+    {
+     "en": "I was so embarrassed.",
+     "tr": "Fiquei tão constrangido.",
+     "img": "😳"
+    },
+    {
+     "pt": "O substantivo da família é a restrição, e ele é comum em engenharia e em gestão de projeto: restrição de tempo, restrição de orçamento.",
+     "quadro": "a constraint · time constraints · budget constraints"
+    },
+    {
+     "pt": "E começar por alguma coisa, em inglês, é começar com ela. Quem traduz a preposição do português erra aqui.",
+     "quadro": "start with = começar por"
+    },
+    {
+     "secao": "Curiosidades de dicionário",
+     "img": "✋📚",
+     "pt": "Manipular vem do latim, da palavra mão. No começo, era trabalhar com as mãos, como um farmacêutico que manipula uma fórmula. O sentido de controlar alguém veio depois."
+    },
+    {
+     "pt": "E o falso amigo do constranger tem uma explicação bonita. As duas palavras vêm do mesmo verbo latino, que queria dizer apertar, amarrar forte. O inglês ficou com o aperto do limite; o português, com o aperto do sem graça.",
+     "img": "🪢"
+    },
+    {
+     "pt": "Por fim, a palavra do ataque, como substantivo, tem um sentido mais antigo que ainda se usa: uma façanha, uma proeza. Quando são vários, são os feitos de um herói de livro, as aventuras de alguém.",
+     "img": "🦸"
+    },
+    {
+     "secao": "Desafio",
+     "pt": "Agora é com você. Avise a equipe que você já começa a reunião daqui a pouco. Cuidado com o falso amigo.",
+     "pausa": 5
+    },
+    {
+     "en": "I'll start the meeting shortly.",
+     "tr": "Já começo a reunião daqui a pouco."
+    },
+    {
+     "pt": "Mais um. Diga que você quer explorar a cidade no fim de semana. Qual dos dois verbos?",
+     "pausa": 5
+    },
+    {
+     "en": "I want to explore the city this weekend.",
+     "tr": "Quero explorar a cidade neste fim de semana."
+    },
+    {
+     "pt": "E o último. Diga que estamos limitados pelo orçamento.",
+     "pausa": 4
+    },
+    {
+     "en": "We're constrained by the budget.",
+     "tr": "Estamos limitados pelo orçamento."
+    },
+    {
+     "secao": "Recapitulando",
+     "pt": "Recapitulando os três falsos amigos: daqui a pouco não é resumidamente, explorar uma falha não é explorar uma cidade, e limitado por não é constrangido."
+    },
+    {
+     "pt": "Suscetível e resistente pedem a preposição de direção. Rotacionar é o rodízio das chaves e do plantão. Restrito a vem na passiva, manipular é neutro com dados, e ninguém pede uma negação só."
+    },
+    {
+     "pt": "A rigor introduz a ressalva, seguro de ataque não é seguro de perigo, e começar por é começar com. Agora é a sua vez de digitar as frases da revisão de segurança. Bom trabalho!"
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,276 @@
+{
+  "id": "vocab-sociedade-lei.juri-do-ben",
+  "trilha": "vocab-sociedade-lei",
+  "nome": "O júri do Ben",
+  "emoji": "⚖️",
+  "cena": "Numa chamada, o Ben conta que foi convocado para ser jurado num processo cível no tribunal do condado, em Boston, e comenta as notícias da cidade.",
+  "resumo": "Justiça e governo local nos EUA: be in court, county, a federal holiday, public servant, city council.",
+  "fechamento": false,
+  "novos": [
+    "court",
+    "federal",
+    "reform",
+    "council",
+    "citizen",
+    "legislation",
+    "county",
+    "governor",
+    "servant",
+    "mayor"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Tribunal e governo local"
+    },
+    {
+      "t": "p",
+      "c": "**court** tribunal · **federal** federal · **reform** reforma (de lei, de sistema) · **council** câmara municipal, conselho · **citizen** cidadão · **legislation** legislação · **county** condado · **governor** governador · **servant** servidor · **mayor** prefeito"
+    },
+    {
+      "t": "ex",
+      "c": "The city council meets on Tuesday nights.\nA câmara municipal se reúne às terças à noite."
+    },
+    {
+      "t": "tip",
+      "c": "**jury duty** = a convocação para ser jurado. **a public servant** = servidor público; sozinho, servant = criado."
+    },
+    {
+      "t": "warn",
+      "c": "Falsos amigos: **mayor** = prefeito (maior = bigger); **reform** = reforma de lei (a da casa é **renovation**); **legislation** é incontável (não: a legislation)."
+    }
+  ],
+  "imagem": "📞⚖️🏛️",
+  "visualizacao": "É fim de tarde. O Ben aparece na tela de camisa social, com a carta do tribunal na mão, e reclama do trânsito de Boston enquanto afrouxa a gravata.",
+  "foto_busca": "county courthouse building steps",
+  "trechos": [
+    {
+      "id": "f-eae0b5",
+      "quem": "ben",
+      "cod": "I have to be in court at 2:30.",
+      "dica": "Tenho que estar no tribunal às 2h30.",
+      "img": "⏰⚖️",
+      "alvo": "court",
+      "alvo_pt": "tribunal",
+      "lit": "[lit.: estar em tribunal]",
+      "conceito": "be in court = estar no tribunal. Court também é quadra: a basketball court.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1887372,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN igual ao original; PT reescrito (Tenho que estar na corte às 2:30. → Tenho que estar no tribunal às 2h30.)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-dfa5f6",
+      "quem": "ben",
+      "cod": "It's a civil case at the county courthouse.",
+      "dica": "É um processo cível no fórum do condado.",
+      "img": "📁🏛️",
+      "alvo": "county",
+      "alvo_pt": "condado",
+      "conceito": "county = condado, a divisão dentro do estado americano. Courthouse = o fórum, o prédio do tribunal.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf32fa",
+      "quem": "ben",
+      "cod": "Only U.S. citizens get called for jury duty.",
+      "dica": "Só cidadãos americanos são convocados para o júri.",
+      "img": "🧑‍⚖️📬",
+      "alvo": "citizens",
+      "alvo_pt": "cidadãos",
+      "conceito": "citizen = cidadão; a U.S. citizen = um cidadão americano. Senior citizen = idoso.",
+      "var": [
+        {
+          "em": "U.S.",
+          "aceita": [
+            "US",
+            "American"
+          ]
+        },
+        {
+          "em": "get called",
+          "aceita": [
+            "are called",
+            "get summoned",
+            "are summoned"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-297fdf",
+      "quem": "ben",
+      "cod": "Monday is a federal holiday, so the court is closed.",
+      "dica": "Segunda é feriado federal, então o tribunal fica fechado.",
+      "img": "📅🔒",
+      "alvo": "a federal holiday",
+      "alvo_pt": "feriado federal",
+      "conceito": "federal holiday = o feriado nacional oficial dos EUA (bancos e tribunais fecham).",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "is closed",
+          "aceita": [
+            "will be closed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f368bd",
+      "quem": "ben",
+      "cod": "My mom has been a public servant for thirty years.",
+      "dica": "Minha mãe é servidora pública há trinta anos.",
+      "img": "👩‍💼🏛️",
+      "alvo": "public servant",
+      "alvo_pt": "servidora pública",
+      "conceito": "public servant (ou civil servant) = servidor público. Sozinho, servant = criado.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a66821",
+      "quem": "ben",
+      "cod": "My mom works at City Hall, so she knows the mayor.",
+      "dica": "Minha mãe trabalha na prefeitura, então ela conhece o prefeito.",
+      "img": "🤝🏙️",
+      "alvo": "mayor",
+      "alvo_pt": "prefeito",
+      "conceito": "Falso amigo: mayor = prefeito; maior = bigger, major.",
+      "registro": "informal",
+      "armadilhas": [
+        "major"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9836078,
+        "en_autor": "Luornu",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "He knows the mayor. → My mom works at City Hall, so she knows the mayor.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "at City Hall",
+          "aceita": [
+            "in City Hall"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e0ef43",
+      "quem": "ben",
+      "cod": "The city council meets every Tuesday night.",
+      "dica": "A câmara municipal se reúne toda terça à noite.",
+      "img": "🏛️🗓️🌙",
+      "alvo": "city council",
+      "alvo_pt": "câmara municipal",
+      "conceito": "council = câmara, conselho. Soa igual a counsel (orientação, advogado).",
+      "registro": "neutro",
+      "armadilhas": [
+        "counsel"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "every Tuesday night",
+          "aceita": [
+            "on Tuesday nights"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0d32f5",
+      "quem": "ben",
+      "cod": "There's new legislation on data privacy.",
+      "dica": "Tem legislação nova sobre privacidade de dados.",
+      "img": "📜🔐",
+      "alvo": "legislation",
+      "alvo_pt": "legislação",
+      "conceito": "legislation é incontável: new legislation (não: a legislation).",
+      "registro": "informal",
+      "armadilhas": [
+        "legislations"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "on data",
+          "aceita": [
+            "about data"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4ff3a1",
+      "quem": "ben",
+      "cod": "People here are debating education reform.",
+      "dica": "O pessoal aqui está debatendo a reforma da educação.",
+      "img": "🏫🗣️",
+      "alvo": "reform",
+      "alvo_pt": "reforma",
+      "conceito": "reform = reforma de lei ou de sistema. Reforma da casa = renovation, remodel.",
+      "registro": "informal",
+      "armadilhas": [
+        "renovation"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "debating education",
+          "aceita": [
+            "debating the education",
+            "discussing education",
+            "discussing the education"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1fffec",
+      "quem": "ben",
+      "cod": "Like in Brazil, each state has its own governor.",
+      "dica": "Assim como no Brasil, cada estado tem seu próprio governador.",
+      "img": "🗺️👔",
+      "alvo": "governor",
+      "alvo_pt": "governador",
+      "conceito": "governor = governador; government = governo.",
+      "registro": "neutro",
+      "armadilhas": [
+        "government"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Like in",
+          "aceita": [
+            "Just like in",
+            "As in"
+          ]
+        }
+      ]
+    }
+  ]
+}

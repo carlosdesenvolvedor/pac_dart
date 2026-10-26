@@ -1,0 +1,309 @@
+{
+  "id": "vocab-dinheiro-economia.investidores-startup",
+  "trilha": "vocab-dinheiro-economia",
+  "nome": "Investimento: stock, investor, venture…",
+  "emoji": "📈",
+  "cena": "Numa call de fim de tarde, o Mike conta ao time que a empresa recebeu uma oferta de investimento e talvez de compra.",
+  "resumo": "Falar de investimento e aquisição: investidores, capital, expansão, ações, acionistas e o que está em jogo.",
+  "fechamento": false,
+  "novos": [
+    "stock",
+    "investment",
+    "acquire",
+    "investor",
+    "acquisition",
+    "expansion",
+    "bid",
+    "shareholder",
+    "venture",
+    "stake",
+    "capital"
+  ],
+  "apoio": [
+    "offer",
+    "fund",
+    "company",
+    "fair price"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**investor** = investidor · **investment** = investimento · **venture capital** = capital de risco · **capital** = capital · **expansion** = expansão · **acquire** = adquirir · **acquisition** = aquisição · **bid** = proposta, lance · **stock** = ações · **shareholder** = acionista · **at stake** = em jogo"
+    },
+    {
+      "t": "ex",
+      "c": "The investors want a stake in the company.\nOs investidores querem uma participação na empresa."
+    },
+    {
+      "t": "tip",
+      "c": "**make a bid for** = fazer uma proposta de compra; **raise capital** = captar recursos; **a new venture** = um novo empreendimento."
+    },
+    {
+      "t": "warn",
+      "c": "**stake** (participação) soa igual a **steak** (bife). **stock** também é estoque: out of stock = esgotado."
+    }
+  ],
+  "imagem": "💻📈🤝",
+  "visualizacao": "É fim de tarde e a luz alaranjada entra pela janela. Na call, você vê o Mike sério e animado ao mesmo tempo, e o time inteiro fica em silêncio.",
+  "foto_busca": "team video call business news",
+  "trechos": [
+    {
+      "id": "f-391124",
+      "quem": "mike",
+      "cod": "We got an offer from a group of investors.",
+      "dica": "Recebemos uma oferta de um grupo de investidores.",
+      "img": "📩💼👥",
+      "alvo": "investors",
+      "alvo_pt": "investidores",
+      "conceito": "investor = investidor (attract investors = atrair investidores).",
+      "registro": "neutro",
+      "armadilhas": [
+        "investidors",
+        "inversors"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "got",
+          "aceita": [
+            "received"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-954e9d",
+      "quem": "mike",
+      "contexto": "f-391124",
+      "cod": "They run a venture capital fund here in Chicago.",
+      "dica": "Eles administram um fundo de capital de risco aqui em Chicago.",
+      "img": "🏦🌆",
+      "alvo": "venture capital",
+      "alvo_pt": "capital de risco",
+      "conceito": "venture capital = capital de risco; a new venture = um novo empreendimento.",
+      "registro": "neutro",
+      "armadilhas": [
+        "adventure",
+        "risk capital"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "run",
+          "aceita": [
+            "manage"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-701a5d",
+      "quem": "mike",
+      "cod": "We need capital to grow faster.",
+      "dica": "Precisamos de capital para crescer mais rápido.",
+      "img": "🌱💰🚀",
+      "alvo": "capital",
+      "alvo_pt": "capital",
+      "conceito": "capital = dinheiro investido numa empresa; raise capital = captar recursos.",
+      "registro": "neutro",
+      "armadilhas": [
+        "capitals",
+        "capitol"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5418181,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "We need capital. → We need capital to grow faster.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d8cf26",
+      "quem": "mike",
+      "cod": "With their investment, we could hire ten more developers.",
+      "dica": "Com o investimento deles, a gente poderia contratar mais dez desenvolvedores.",
+      "img": "💼➕👥",
+      "alvo": "investment",
+      "alvo_pt": "investimento",
+      "conceito": "investment = investimento (a good investment, make an investment).",
+      "registro": "informal",
+      "armadilhas": [
+        "investiment",
+        "investing"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ae5dcc",
+      "quem": "mike",
+      "cod": "The money would fund our expansion into Latin America.",
+      "dica": "O dinheiro financiaria a nossa expansão para a América Latina.",
+      "img": "💵🌎➡️",
+      "alvo": "expansion",
+      "alvo_pt": "expansão",
+      "conceito": "expansion into = expansão para (um mercado ou região).",
+      "registro": "neutro",
+      "armadilhas": [
+        "expantion",
+        "extension"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "fund",
+          "aceita": [
+            "finance"
+          ]
+        },
+        {
+          "em": "into",
+          "aceita": [
+            "to"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-79aaa5",
+      "quem": "mike",
+      "cod": "There's also a bigger company that wants to acquire us.",
+      "dica": "Também tem uma empresa maior que quer nos adquirir.",
+      "img": "🐋🐟",
+      "alvo": "acquire",
+      "alvo_pt": "adquirir",
+      "conceito": "acquire = adquirir (formal: acquire a company); no dia a dia, buy.",
+      "registro": "neutro",
+      "armadilhas": [
+        "adquire",
+        "aquire"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-90c37a",
+      "quem": "voce",
+      "contexto": "f-79aaa5",
+      "cod": "Have they made a bid yet?",
+      "dica": "Eles já fizeram uma proposta de compra?",
+      "img": "🔨❓",
+      "alvo": "bid",
+      "alvo_pt": "proposta de compra",
+      "conceito": "bid = lance, proposta de compra (make a bid for a company). Já... ? = yet.",
+      "registro": "informal",
+      "armadilhas": [
+        "bidded",
+        "did they"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f897fa",
+      "quem": "mike",
+      "contexto": "f-90c37a",
+      "cod": "Not yet, but an acquisition would change a lot for us.",
+      "dica": "Ainda não, mas uma aquisição mudaria muita coisa para a gente.",
+      "img": "🔄🏢",
+      "alvo": "acquisition",
+      "alvo_pt": "aquisição",
+      "conceito": "acquisition = aquisição; mergers and acquisitions = fusões e aquisições.",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "aquisition",
+        "acquirement"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c1fea5",
+      "quem": "voce",
+      "cod": "What happens to people who own stock in the company?",
+      "dica": "O que acontece com quem tem ações da empresa?",
+      "img": "📊❓",
+      "alvo": "stock",
+      "alvo_pt": "ações",
+      "conceito": "stock = ações (buy stock, the stock market); também estoque.",
+      "var": [
+        {
+          "em": "own",
+          "aceita": [
+            "have"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "actions",
+        "stocks"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f15e68",
+      "quem": "mike",
+      "contexto": "f-c1fea5",
+      "cod": "Every shareholder would get a fair price for their shares.",
+      "dica": "Todo acionista receberia um preço justo pelas ações.",
+      "img": "🧑‍💼⚖️💵",
+      "alvo": "shareholder",
+      "alvo_pt": "acionista",
+      "conceito": "shareholder = acionista (em en-US também stockholder).",
+      "registro": "neutro",
+      "armadilhas": [
+        "actionist",
+        "shareholders"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "get",
+          "aceita": [
+            "receive"
+          ]
+        },
+        {
+          "em": "their shares",
+          "aceita": [
+            "the shares"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c7208d",
+      "quem": "mike",
+      "cod": "There's a lot at stake for all of us.",
+      "dica": "Tem muita coisa em jogo para todos nós.",
+      "img": "🎲⚖️",
+      "alvo": "at stake",
+      "alvo_pt": "em jogo",
+      "conceito": "at stake = em jogo; a stake in = participação em. Não confunda com steak (bife).",
+      "registro": "neutro",
+      "armadilhas": [
+        "steak",
+        "in game"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4923386,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "There's a lot at stake. → There's a lot at stake for all of us.; PT reescrito (Há → Tem)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

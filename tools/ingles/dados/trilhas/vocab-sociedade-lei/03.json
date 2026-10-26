@@ -1,0 +1,276 @@
+{
+  "id": "vocab-sociedade-lei.ana-em-chicago",
+  "trilha": "vocab-sociedade-lei",
+  "nome": "A Ana chega a Chicago",
+  "emoji": "🛬",
+  "cena": "A Ana chega a Chicago para uma semana no escritório: passa pela imigração, preenche um formulário online, pede ajuda a um policial e passeia com o Mike pelo bairro.",
+  "resumo": "Chegada e segurança na cidade: go through immigration, be in danger of, the police are, the crime rate.",
+  "fechamento": false,
+  "novos": [
+    "police",
+    "officer",
+    "crime",
+    "safety",
+    "danger",
+    "dangerous",
+    "gender",
+    "province",
+    "immigrant",
+    "immigration"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Chegar, se informar, andar seguro"
+    },
+    {
+      "t": "p",
+      "c": "**police** polícia · **officer** policial, agente · **crime** criminalidade · **safety** segurança · **danger** perigo · **dangerous** perigoso · **gender** gênero · **province** província · **immigrant** imigrante · **immigration** imigração"
+    },
+    {
+      "t": "ex",
+      "c": "Excuse me, officer, where is the train station?\nCom licença, seu guarda, onde fica a estação de trem?"
+    },
+    {
+      "t": "tip",
+      "c": "**go through immigration** = passar pela imigração. **be in danger of + -ing** = correr o risco de."
+    },
+    {
+      "t": "warn",
+      "c": "**police** é plural: the police are (não: is). **safety** é contra acidentes; contra ataques e na TI é **security**."
+    }
+  ],
+  "imagem": "🛬🛂👮",
+  "visualizacao": "Você acompanha a Ana por vídeo. Ela está na fila da imigração em Chicago, de casaco, com a mala do lado, olhando o relógio do celular.",
+  "foto_busca": "airport immigration line passengers",
+  "trechos": [
+    {
+      "id": "f-f8573f",
+      "quem": "ana",
+      "cod": "I get nervous going through immigration.",
+      "dica": "Fico nervosa quando passo pela imigração.",
+      "img": "😬🛂",
+      "alvo": "going through immigration",
+      "alvo_pt": "passo pela imigração",
+      "lit": "[lit.: fico nervosa passando pela imigração]",
+      "conceito": "go through immigration = passar pela imigração; a fila = the immigration line.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8226923,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN igual ao original; PT reescrito no feminino (Fico nervoso ao passar pela imigração. → Fico nervosa quando passo pela imigração.)",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "going through",
+          "aceita": [
+            "when I go through"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cc107c",
+      "quem": "ana",
+      "cod": "At this rate, I'm in danger of missing my first meeting.",
+      "dica": "Nesse ritmo, corro o risco de perder minha primeira reunião.",
+      "img": "⏳🧍‍♀️🧍",
+      "alvo": "in danger of",
+      "alvo_pt": "corro o risco de",
+      "lit": "[lit.: estou em perigo de perder]",
+      "conceito": "be in danger of + -ing = correr o risco de. Danger = perigo.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-de218a",
+      "quem": "ana",
+      "cod": "Why does this online form ask for my gender?",
+      "dica": "Por que esse formulário online pede o meu gênero?",
+      "img": "📝❓",
+      "alvo": "gender",
+      "alvo_pt": "gênero",
+      "conceito": "gender = gênero (campo de formulário: select your gender). Alguns pedem Sex.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6fb281",
+      "quem": "mike",
+      "contexto": "There's no field for Brazilian states here.",
+      "cod": "Just type your state in the State or Province field.",
+      "dica": "É só digitar o seu estado no campo Estado ou Província.",
+      "img": "⌨️🗺️",
+      "alvo": "Province",
+      "alvo_pt": "Província",
+      "conceito": "province = província. O Canadá tem provinces; o Brasil e os EUA têm states.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a505fb",
+      "quem": "motorista",
+      "cod": "For your safety, please wear your seat belt.",
+      "dica": "Para a sua segurança, por favor, use o cinto.",
+      "img": "🚕💺",
+      "alvo": "For your safety",
+      "alvo_pt": "Para a sua segurança",
+      "conceito": "safety = segurança contra acidentes; security = contra ameaças, ataques e na TI.",
+      "registro": "neutro",
+      "armadilhas": [
+        "security"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "wear",
+          "aceita": [
+            "put on"
+          ]
+        },
+        {
+          "em": "seat belt",
+          "aceita": [
+            "seatbelt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1d763a",
+      "quem": "ana",
+      "cod": "Excuse me, officer, how do I get to the train station?",
+      "dica": "Com licença, seu guarda, como eu chego na estação de trem?",
+      "img": "👮‍♂️🚉❓",
+      "alvo": "officer",
+      "alvo_pt": "seu guarda",
+      "conceito": "Para chamar um policial nos EUA: officer (= seu guarda). Policial = police officer; cop é informal.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d24a82",
+      "quem": "ana",
+      "cod": "The police here are really nice.",
+      "dica": "A polícia daqui é muito simpática.",
+      "img": "👮👍",
+      "alvo": "The police",
+      "alvo_pt": "A polícia",
+      "conceito": "police é plural em inglês: the police are (não: the police is).",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        },
+        {
+          "em": "nice",
+          "aceita": [
+            "friendly"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "is"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-586657",
+      "quem": "mike",
+      "cod": "My grandparents were immigrants from Poland.",
+      "dica": "Meus avós eram imigrantes da Polônia.",
+      "img": "👴👵🚢",
+      "alvo": "immigrants",
+      "alvo_pt": "imigrantes",
+      "conceito": "immigrant = quem chega para morar num país; emigrant = quem sai do seu país.",
+      "registro": "informal",
+      "armadilhas": [
+        "emigrants"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-08efc4",
+      "quem": "mike",
+      "cod": "This intersection is very dangerous.",
+      "dica": "Esse cruzamento é muito perigoso.",
+      "img": "🚦🚗⚠️",
+      "alvo": "dangerous",
+      "alvo_pt": "perigoso",
+      "conceito": "dangerous = perigoso (adjetivo); danger = perigo (substantivo). Não: It is danger.",
+      "registro": "neutro",
+      "armadilhas": [
+        "danger"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5933718,
+        "en_autor": "mailohilohi",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "This neighborhood is very dangerous. → This intersection is very dangerous.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "very",
+          "aceita": [
+            "really"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-59fc8e",
+      "quem": "mike",
+      "cod": "But the crime rate is low in this neighborhood.",
+      "dica": "Mas a taxa de criminalidade é baixa neste bairro.",
+      "img": "🏘️📉",
+      "alvo": "crime rate",
+      "alvo_pt": "taxa de criminalidade",
+      "conceito": "crime no geral é incontável: crime is low here = a criminalidade é baixa aqui.",
+      "var": [
+        {
+          "em": "this neighborhood",
+          "aceita": [
+            "this area"
+          ]
+        },
+        {
+          "em": "is low in this neighborhood",
+          "aceita": [
+            "in this neighborhood is low"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6795373,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "The crime rate is low. → But the crime rate is low in this neighborhood.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

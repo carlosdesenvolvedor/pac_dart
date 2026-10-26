@@ -1,0 +1,427 @@
+{
+  "versao": 1,
+  "trilha": "vocab-pessoas-emocoes",
+  "arco": "Gente e sentimentos: o almoço de domingo com a tia, o 1:1 com o Mike, a demo que congela, os vizinhos da Emma, a retro tensa, a formatura da Julia, os gêmeos da prima, o sobrinho do Mike, as desculpas ao Ben, o escape room e a sexta de cinema. Todo mundo termina sorrindo.",
+  "licoes": {
+    "vocab-pessoas-emocoes.almoco-de-domingo": {
+      "titulo": { "en": "Old photos at Sunday lunch", "pt": "Fotos antigas no almoço de domingo" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "lucas", "pos": "esquerda", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "julia", "pos": "centroDireita", "segura": "portaRetrato", "emocao": "radiante" },
+            { "quem": "tia", "pos": "direita", "emocao": "feliz" }
+          ],
+          "objetos": [ { "prop": "prato", "pos": "centro" } ],
+          "passos": [
+            { "frase": "f-5a7a68", "acao": "mostra", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "tia", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "julia", "segura": "nada",
+              "reacoes": [ { "quem": "tia", "segura": "portaRetrato", "emocao": "feliz" } ] },
+            { "frase": "f-c2abdd", "acao": "mostra", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-4a329b", "acao": "aponta", "alvo": "tia", "emocao": "radiante",
+              "reacoes": [ { "quem": "julia", "emocao": "feliz" } ] },
+            { "frase": "f-26004b", "acao": "aponta", "alvo": "lucas", "emocao": "feliz",
+              "reacoes": [ { "quem": "lucas", "emocao": "timido" } ] },
+            { "frase": "f-2783b6", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-b0b5bb", "acao": "aponta", "alvo": "julia", "emocao": "feliz", "camera": "dupla",
+              "reacoes": [ { "quem": "julia", "emocao": "radiante" } ] },
+            { "frase": "f-093b4a", "acao": "concorda", "emocao": "feliz", "efeito": "coracoes",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" }, { "quem": "lucas", "emocao": "feliz" } ] },
+            { "frase": "f-9f96a3", "acao": "aponta", "alvo": "lucas", "emocao": "feliz",
+              "reacoes": [ { "quem": "lucas", "emocao": "timido" } ] },
+            { "frase": "f-1b00ea", "acao": "aponta", "emocao": "surpreso",
+              "reacoes": [ { "quem": "julia", "acao": "concorda" } ] },
+            { "frase": "f-6d5caf", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "tia", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "segura": "celular", "emocao": "determinado" },
+            { "frase": "f-348a9c", "acao": "mostra", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "tia", "acao": "acena" }, { "quem": "julia", "acao": "acena" }, { "quem": "lucas", "acao": "pula" } ] },
+            { "mudo": true, "quem": "tia", "acao": "comemora", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" }, { "quem": "julia", "emocao": "radiante" }, { "quem": "lucas", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-pessoas-emocoes.conversa-um-a-um": {
+      "titulo": { "en": "A one-on-one with Mike", "pt": "A conversa individual com o Mike" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "pensativo" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "documento", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-a57e94", "acao": "mostra", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-0dbf16", "acao": "pensa", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "acao": "concorda" } ] },
+            { "frase": "f-ff998b", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-013d55", "acao": "aponta", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-bd7c7f", "acao": "mostra", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "determinado" },
+            { "frase": "f-dfbdea", "acao": "aponta", "alvo": "voce", "emocao": "determinado", "camera": "dupla",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-71ef02", "acao": "nega", "emocao": "nervoso", "efeito": "suor", "camera": "close" },
+            { "frase": "f-b5984b", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-12ee51", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "emocao": "determinado" } ] },
+            { "frase": "f-b8331a", "acao": "acena", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "mike", "acao": "palmas", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-pessoas-emocoes.demo-para-o-cliente": {
+      "titulo": { "en": "The demo that froze", "pt": "A demo que congelou" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "sarah", "pos": "esquerda", "segura": "documento", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "notebook", "emocao": "nervoso" },
+            { "quem": "cliente", "pos": "centroDireita", "emocao": "feliz" },
+            { "quem": "mike", "pos": "direita", "visivel": false }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-78377f", "acao": "acena", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" }, { "quem": "sarah", "acao": "acena" } ] },
+            { "frase": "f-e76b78", "acao": "mostra", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-041527", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "cliente", "acao": "concorda" } ] },
+            { "frase": "f-24b193", "acao": "aponta", "alvo": "cliente", "emocao": "feliz",
+              "reacoes": [ { "quem": "cliente", "emocao": "pensativo" } ] },
+            { "frase": "f-62f4ad", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "sarah", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "emocao": "nervoso", "efeito": "suor",
+              "reacoes": [ { "quem": "sarah", "emocao": "surpreso" }, { "quem": "cliente", "emocao": "surpreso" } ] },
+            { "frase": "f-11346b", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-46d12a", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-8e63f1", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "mike", "acao": "entra", "emocao": "feliz" },
+            { "frase": "f-626d4a", "acao": "palmas", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "sarah", "emocao": "radiante" } ] },
+            { "frase": "f-8cedbc", "acao": "concorda", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" }, { "quem": "cliente", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "cliente", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "feliz" }, { "quem": "sarah", "acao": "acena" }, { "quem": "mike", "acao": "acena" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-pessoas-emocoes.festa-do-predio": {
+      "titulo": { "en": "Meeting Emma's neighbors", "pt": "Conhecendo os vizinhos da Emma" },
+      "cenas": [
+        {
+          "cenario": "quintal", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "timido" },
+            { "quem": "convidado", "pos": "centro", "segura": "prato", "emocao": "feliz" },
+            { "quem": "emma", "pos": "centroDireita", "emocao": "radiante" },
+            { "quem": "vizinha", "pos": "direita", "segura": "bolo", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-4a7ea5", "acao": "acena", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "vizinha", "acao": "acena" }, { "quem": "convidado", "acao": "acena" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "feliz" },
+            { "frase": "f-9549aa", "acao": "aponta", "alvo": "vizinha", "emocao": "feliz",
+              "reacoes": [ { "quem": "vizinha", "acao": "mostra", "emocao": "radiante" } ] },
+            { "frase": "f-2328c3", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "vizinha", "acao": "danca" } ] },
+            { "frase": "f-8bcf6a", "acao": "aponta", "alvo": "convidado", "emocao": "feliz", "camera": "dupla",
+              "reacoes": [ { "quem": "convidado", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-d2a866", "acao": "concorda", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "emma", "emocao": "feliz" } ] },
+            { "frase": "f-34ad7a", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-a0717f", "emocao": "nervoso", "efeito": "suor", "camera": "close" },
+            { "frase": "f-1162c5", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-da8241", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-905547", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "emma", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "convidado", "segura": "nada",
+              "reacoes": [ { "quem": "voce", "segura": "prato", "emocao": "radiante" }, { "quem": "emma", "acao": "palmas" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-pessoas-emocoes.retrospectiva-tensa": {
+      "titulo": { "en": "A tense retrospective", "pt": "A retro tensa" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "nervoso" },
+            { "quem": "mike", "pos": "centro", "emocao": "pensativo" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "cafe", "emocao": "nervoso" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-94f35c", "acao": "nega", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-a9cd89", "acao": "olha", "alvo": "voce", "emocao": "nervoso", "efeito": "suor" },
+            { "frase": "f-c4f3c0", "emocao": "triste", "camera": "close",
+              "reacoes": [ { "quem": "ana", "emocao": "pensativo" } ] },
+            { "frase": "f-6c3afa", "acao": "concorda", "emocao": "feliz", "efeito": "coracoes",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-5b5a03", "acao": "concorda", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
+            { "frase": "f-c75def", "emocao": "timido",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "frase": "f-fb8e33", "acao": "palmas", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" }, { "quem": "ana", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "segura": "celular", "emocao": "pensativo" },
+            { "frase": "f-c153b7", "acao": "mostra", "emocao": "cansado",
+              "reacoes": [ { "quem": "ana", "acao": "concorda" } ] },
+            { "frase": "f-fc05d0", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-04425f", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "voce", "segura": "cafe", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" }, { "quem": "ana", "acao": "acena", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-pessoas-emocoes.formatura-da-julia": {
+      "titulo": { "en": "Julia's graduation day", "pt": "O dia da formatura da Julia" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "lucas", "pos": "esquerda", "segura": "portaRetrato", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "julia", "pos": "centroDireita", "visivel": false, "segura": "microfone" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-3e9576", "acao": "mostra", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-debdf7", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "lucas", "acao": "concorda" } ] },
+            { "frase": "f-00df30", "acao": "concorda", "emocao": "pensativo" },
+            { "mudo": true, "quem": "julia", "acao": "entra", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "palmas", "emocao": "radiante" }, { "quem": "lucas", "acao": "palmas" } ] },
+            { "frase": "f-4db191", "emocao": "feliz", "efeito": "brilho", "camera": "medio" },
+            { "frase": "f-6a1c38", "emocao": "radiante", "efeito": "coracoes" },
+            { "frase": "f-94e5cb", "acao": "concorda", "emocao": "determinado" },
+            { "frase": "f-0d744f", "acao": "pensa", "emocao": "pensativo" },
+            { "mudo": true, "quem": "julia", "segura": "documento", "emocao": "radiante" },
+            { "frase": "f-81f7b9", "acao": "mostra", "emocao": "radiante", "camera": "close",
+              "reacoes": [ { "quem": "lucas", "acao": "palmas" } ] },
+            { "frase": "f-eb5e00", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" }, { "quem": "lucas", "emocao": "feliz" } ] },
+            { "frase": "f-d57e5b", "acao": "palmas", "emocao": "radiante", "camera": "dupla", "alvo": "julia",
+              "reacoes": [ { "quem": "julia", "emocao": "timido" } ] },
+            { "frase": "f-a0dbeb", "emocao": "feliz", "efeito": "brilho", "camera": "close",
+              "reacoes": [ { "quem": "lucas", "acao": "concorda", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "julia", "acao": "acena", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "voce", "acao": "palmas" }, { "quem": "lucas", "acao": "comemora" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-pessoas-emocoes.gemeos-da-prima": {
+      "titulo": { "en": "Visiting the newborn twins", "pt": "A visita aos gêmeos recém-nascidos" },
+      "cenas": [
+        {
+          "cenario": "salaDeEstar", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "julia", "pos": "centro", "segura": "presente", "emocao": "radiante" },
+            { "quem": "prima", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-7ae89d", "acao": "comemora", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "frase": "f-8e2135", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "prima", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "julia", "segura": "nada",
+              "reacoes": [ { "quem": "prima", "segura": "presente", "emocao": "feliz" } ] },
+            { "frase": "f-5128c4", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso" } ] },
+            { "frase": "f-96b25d", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "julia", "acao": "concorda" } ] },
+            { "frase": "f-0cb451", "emocao": "timido",
+              "reacoes": [ { "quem": "prima", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-bd4816", "emocao": "radiante", "efeito": "coracoes", "camera": "close" },
+            { "frase": "f-07d7f8", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-b20282", "acao": "senta", "emocao": "feliz" },
+            { "frase": "f-cb9b8d", "emocao": "feliz", "efeito": "coracoes",
+              "reacoes": [ { "quem": "julia", "emocao": "feliz" } ] },
+            { "frase": "f-73c494", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" }, { "quem": "julia", "emocao": "feliz" } ] },
+            { "frase": "f-d6721b", "emocao": "radiante", "efeito": "brilho", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "julia", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "radiante" }, { "quem": "prima", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-pessoas-emocoes.sobrinho-do-mike": {
+      "titulo": { "en": "Questions from Mike's nephew", "pt": "As perguntas do sobrinho do Mike" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "sobrinho", "pos": "centroDireita", "segura": "caderno", "emocao": "feliz" },
+            { "quem": "mae", "pos": "direita", "visivel": false }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-980848", "acao": "acena", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-94bc66", "emocao": "timido" },
+            { "frase": "f-c2de82", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "voce", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "sobrinho", "emocao": "feliz" } ] },
+            { "frase": "f-3ca428", "emocao": "radiante", "efeito": "brilho" },
+            { "frase": "f-eb3d48", "acao": "mostra", "emocao": "timido" },
+            { "frase": "f-3b54d7", "acao": "concorda", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "sobrinho", "acao": "escreve" } ] },
+            { "frase": "f-b855cc", "acao": "pensa", "emocao": "feliz" },
+            { "frase": "f-18706e", "emocao": "nervoso", "efeito": "suor", "camera": "close" },
+            { "frase": "f-daff36", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "sobrinho", "emocao": "feliz" } ] },
+            { "frase": "f-2fc434", "acao": "aponta", "alvo": "sobrinho", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "sobrinho", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "mae", "acao": "entra", "emocao": "determinado" },
+            { "frase": "f-45a17a", "acao": "aponta", "alvo": "sobrinho", "emocao": "feliz",
+              "reacoes": [ { "quem": "sobrinho", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "sobrinho", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "acena", "emocao": "radiante" }, { "quem": "mae", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-pessoas-emocoes.aniversario-esquecido": {
+      "titulo": { "en": "The forgotten birthday", "pt": "O aniversário esquecido" },
+      "cenas": [
+        {
+          "cenario": "salaDeEstar", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "nervoso" },
+            { "quem": "ben", "remoto": "celular", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-0b9b4f", "emocao": "nervoso", "efeito": "suor", "camera": "medio",
+              "reacoes": [ { "quem": "ben", "emocao": "triste" } ] },
+            { "frase": "f-1ad590", "emocao": "triste" },
+            { "frase": "f-1120cd", "acao": "nega", "emocao": "timido", "camera": "close" },
+            { "frase": "f-826eb8", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "voce", "acao": "senta", "emocao": "feliz" },
+            { "frase": "f-af72f0", "emocao": "feliz", "efeito": "coracoes" },
+            { "frase": "f-8f39ce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-770f64", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-a695ca", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "cansado" } ] },
+            { "frase": "f-53ca56", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "timido", "efeito": "suor" } ] },
+            { "frase": "f-9d3a19", "acao": "aponta", "emocao": "radiante",
+              "reacoes": [ { "quem": "ben", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante", "efeito": "coracoes",
+              "reacoes": [ { "quem": "ben", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-pessoas-emocoes.escape-room": {
+      "titulo": { "en": "Sixty minutes to escape", "pt": "Sessenta minutos para escapar" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "lucas", "pos": "esquerda", "segura": "documento", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centro", "segura": "carta", "emocao": "determinado" },
+            { "quem": "atendente", "pos": "direita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-223e33", "acao": "aponta", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "ben", "emocao": "determinado" } ] },
+            { "frase": "f-c90f10", "acao": "aponta", "emocao": "neutro", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "lucas", "emocao": "nervoso" } ] },
+            { "mudo": true, "quem": "atendente", "acao": "sai" },
+            { "frase": "f-42d880", "acao": "aponta", "emocao": "pensativo", "efeito": "interrogacao", "camera": "medio" },
+            { "frase": "f-b9116c", "acao": "pula", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close",
+              "reacoes": [ { "quem": "ben", "emocao": "surpreso" }, { "quem": "lucas", "emocao": "surpreso" } ] },
+            { "frase": "f-b13d83", "acao": "mostra", "emocao": "pensativo" },
+            { "frase": "f-ef64c7", "acao": "nega", "emocao": "surpreso",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-6d8d4d", "acao": "pensa", "emocao": "timido", "efeito": "suor" },
+            { "frase": "f-243162", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso" } ] },
+            { "frase": "f-0431e3", "acao": "nega", "emocao": "determinado", "camera": "medio",
+              "reacoes": [ { "quem": "voce", "emocao": "determinado" }, { "quem": "lucas", "emocao": "determinado" } ] },
+            { "mudo": true, "quem": "voce", "segura": "chave", "emocao": "radiante", "efeito": "estalo" },
+            { "frase": "f-a4e8a1", "acao": "comemora", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "ben", "acao": "comemora", "emocao": "radiante" }, { "quem": "lucas", "acao": "pula", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "atendente", "acao": "entra", "emocao": "feliz" },
+            { "frase": "f-c7afc5", "acao": "palmas", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" }, { "quem": "ben", "emocao": "feliz" }, { "quem": "lucas", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-pessoas-emocoes.sexta-de-cinema": {
+      "titulo": { "en": "Friday movie night", "pt": "Sexta de cinema" },
+      "cenas": [
+        {
+          "cenario": "salaDeEstar", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "prato", "emocao": "feliz" },
+            { "quem": "julia", "pos": "centro", "emocao": "feliz" },
+            { "quem": "lucas", "pos": "centroDireita", "emocao": "pensativo" }
+          ],
+          "objetos": [ { "prop": "celular", "pos": "esquerda" } ],
+          "passos": [
+            { "frase": "f-ab01fd", "acao": "aponta", "alvo": "celular", "emocao": "determinado", "camera": "geral",
+              "reacoes": [ { "quem": "julia", "acao": "concorda" } ] },
+            { "frase": "f-3ee492", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-7550a1", "emocao": "radiante", "efeito": "coracoes" },
+            { "frase": "f-947c00", "acao": "nega", "emocao": "determinado",
+              "reacoes": [ { "quem": "julia", "emocao": "surpreso" } ] },
+            { "frase": "f-01e693", "acao": "nega", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "lucas", "emocao": "surpreso" } ] },
+            { "frase": "f-e21094", "acao": "aponta", "alvo": "lucas", "emocao": "feliz", "efeito": "exclamacao" },
+            { "mudo": true, "quem": "lucas", "acao": "comemora", "emocao": "radiante", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" }, { "quem": "julia", "emocao": "surpreso" } ] },
+            { "frase": "f-eea958", "acao": "aponta", "alvo": "lucas", "emocao": "radiante", "camera": "dupla" },
+            { "frase": "f-f5c688", "emocao": "nervoso", "camera": "close" },
+            { "frase": "f-b92136", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "lucas", "emocao": "feliz" } ] },
+            { "frase": "f-bffd90", "acao": "concorda", "emocao": "feliz", "efeito": "coracoes",
+              "reacoes": [ { "quem": "lucas", "emocao": "radiante" }, { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "lucas", "emocao": "radiante" }, { "quem": "julia", "acao": "palmas" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

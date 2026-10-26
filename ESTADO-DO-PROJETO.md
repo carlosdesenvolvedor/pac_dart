@@ -2746,3 +2746,22 @@ Pedido do dono: "mantenha esse mesmo nível para todo o restante do curso, aulas
   Chirp 3 HD estoura com duas rodadas em paralelo (429 RESOURCE_EXHAUSTED): rodar UMA só, `--paralelo 6`; o 429 agora insiste
   por ~15 min antes de desistir. O teste de voz pula quando a cópia não tem os mp3 (nuvem/CI).
 - `ingles_aulas_conteudo_test.dart` agora exige aula em TODA lição do curso (≥620).
+
+## 📚 25/out/2026: 18 trilhas de VOCABULÁRIO no B2 e no C1 (170 lições, 1.700 palavras) — o curso vai a 143 trilhas · 796 lições · 7.248 frases
+Pedido do dono: "Faça a trilha de vocabulário B2/C1" (escolheu o "núcleo inteiro"; "lembre da aula historinha etc").
+- **Medição:** das 2.809 palavras da NGSL 1.2 o curso praticava 1.454 nas frases. Curadoria: 1.289 das 1.355 que faltavam
+  (66 cortadas pelas proibições do DESIGN §5.7 e britanismos; lista no relatório) + 411 da NAWL 1.2 (acadêmicas úteis; 465
+  de jargão de ciência fora). Planejamento em workflow (curadores → arquiteto de temas → lições por trilha → revisor).
+- **Trilhas** `vocab-*` (14 no B2, entre 74.5 e 94.5; 4 no C1, entre 97.5 e 105.5), por tema: dinheiro, sociedade/lei,
+  advérbios/conectores, trabalho, pensar/argumentar, verbos de ação, coisas/descrições, casa/cidade, tempo/quantidade,
+  pessoas/emoções, saúde/corpo, comunicação/tecnologia, esporte/arte, natureza/ciência; C1: sistemas, pesquisa, argumentar,
+  sociedade. 8–12 palavras por lição, uma frase por palavra (alvo = a palavra), teoria com glossário + tip + warn. Sem foto.
+- **Gerado** com `workflow_gerar_trilhas.js` (autor → revisor nativo → revisor PT; validador OK nas 18); integrado sem mudar
+  nenhuma lição antiga; vozes Chirp + bocas das 1.752 frases; historinhas ✨ (autor + revisor, 0 erros) e as 170 linhas da
+  `encenacao_auto.json`; dicionário +1.947 palavras (5.119); aulas 🎓 (autor → revisor → verificador adversarial), ≈24 h.
+- **Figurantes novos (11):** presidente, advogada, economista, pesquisadora, consultora, prima, tia, mae, sobrinho, socio,
+  vizinho na tabela fixa (`FigurantesHistoria`, 53) e em `figurantesConhecidos`; gênero da voz acertado no `vozes_google.py`
+  (sobrinho/vizinho tinham saído com voz feminina e a prima com masculina — regerados).
+- Testes: contagens 626 → 796; o "motor digita toda frase" ganhou timeout de 3 min (7 mil frases).
+- Relatório e dúvidas: `planejamento/RELATORIO-VOCAB-B2-C1.md`. ⚠️ Não usar `dart format` nos arquivos do projeto (reformata
+  tudo: o projeto usa linhas de 120 sem o formatador).

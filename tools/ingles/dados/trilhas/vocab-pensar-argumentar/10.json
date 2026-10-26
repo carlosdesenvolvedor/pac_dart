@@ -1,0 +1,214 @@
+{
+  "id": "vocab-pensar-argumentar.causa-do-problema",
+  "trilha": "vocab-pensar-argumentar",
+  "nome": "Causas: origin, stem, crucial…",
+  "emoji": "🧩",
+  "cena": "Na retrospectiva do incidente, você e o Mike procuram a causa de o app cair toda sexta-feira à tarde.",
+  "resumo": "Dez palavras para achar uma causa: apparent, origin, indication, correspond to, stem from, underlying, crucial…",
+  "fechamento": false,
+  "novos": [
+    "derive",
+    "crucial",
+    "origin",
+    "vital",
+    "underlie",
+    "apparent",
+    "stem",
+    "correspond",
+    "tendency",
+    "indication"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Achar a causa"
+    },
+    {
+      "t": "p",
+      "c": "**derive** derivar, vir de · **crucial** crucial · **origin** origem · **vital** vital · **underlying** de fundo, subjacente · **apparent** aparente · **stem from** vir de, nascer de · **correspond** corresponder · **tendency** tendência · **indication** indício, sinal"
+    },
+    {
+      "t": "ex",
+      "c": "The problem stems from the cache.\nO problema vem do cache."
+    },
+    {
+      "t": "tip",
+      "c": "**stem from**, **be derived from**, **correspond to** e **for no apparent reason** (sem motivo aparente)."
+    },
+    {
+      "t": "warn",
+      "c": "**tendency** é tendência de comportamento; tendência de moda é **trend**. E **apparently** = pelo jeito."
+    }
+  ],
+  "imagem": "💥📅🔍",
+  "visualizacao": "Você está na retrospectiva com o Mike. No gráfico de erros compartilhado na tela, picos iguais aparecem toda sexta à tarde, como dentes de serra.",
+  "foto_busca": "error graph monitoring dashboard",
+  "trechos": [
+    {
+      "id": "f-f0dbcc",
+      "quem": "mike",
+      "cod": "The app crashes every Friday afternoon for no apparent reason.",
+      "dica": "O app cai toda sexta à tarde sem motivo aparente.",
+      "img": "💥📅",
+      "alvo": "apparent",
+      "alvo_pt": "aparente",
+      "conceito": "for no apparent reason = sem motivo aparente.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15",
+        "BR14"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-279c37",
+      "quem": "voce",
+      "contexto": "f-f0dbcc",
+      "cod": "We need to find the origin of the problem first.",
+      "dica": "A gente precisa achar a origem do problema primeiro.",
+      "img": "🧭🐛",
+      "alvo": "origin",
+      "alvo_pt": "origem",
+      "conceito": "the origin of = a origem de.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f0e9c2",
+      "quem": "mike",
+      "cod": "There's no indication that anyone changed the code on Fridays.",
+      "dica": "Não tem nenhum indício de que alguém mudou o código às sextas.",
+      "img": "🔎🚫",
+      "alvo": "indication",
+      "alvo_pt": "indício",
+      "conceito": "there's no indication that = não há indício de que.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR03",
+        "BR25",
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-20e2b8",
+      "quem": "voce",
+      "cod": "The crash times correspond to the weekly report job.",
+      "dica": "Os horários das quedas correspondem ao job do relatório semanal.",
+      "img": "📈🧾",
+      "alvo": "correspond to",
+      "alvo_pt": "correspondem ao",
+      "conceito": "correspond to = corresponder a (preposição to, não with).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR53",
+        "BR24"
+      ],
+      "armadilhas": [
+        "with"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2ff864",
+      "quem": "mike",
+      "contexto": "f-20e2b8",
+      "cod": "So the problem stems from the database, not the app?",
+      "dica": "Então o problema nasce no banco de dados, e não no app?",
+      "img": "🗄️❓",
+      "alvo": "stems from",
+      "alvo_pt": "nasce no",
+      "lit": "[lit.: brota do banco de dados]",
+      "conceito": "stem from = vir de, originar-se de; sempre com from.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f27e57",
+      "quem": "voce",
+      "contexto": "f-2ff864",
+      "cod": "Yes. The underlying cause is a query that locks the users table.",
+      "dica": "Sim. A causa de fundo é uma query que trava a tabela de usuários.",
+      "img": "🔒🗄️",
+      "alvo": "underlying",
+      "alvo_pt": "de fundo",
+      "conceito": "underlying cause = causa de fundo, subjacente; underlie quase sempre vira underlying.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-47f4ca",
+      "quem": "mike",
+      "contexto": "f-f27e57",
+      "cod": "Good catch. It's crucial to fix that query before next Friday.",
+      "dica": "Bem observado. É crucial corrigir essa query antes da próxima sexta.",
+      "img": "🛠️⏰",
+      "alvo": "crucial",
+      "alvo_pt": "crucial",
+      "conceito": "crucial = crucial, decisivo: a crucial step.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR52",
+        "BR15"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-350f3a",
+      "quem": "voce",
+      "cod": "The report data is derived from three different tables.",
+      "dica": "Os dados do relatório são derivados de três tabelas diferentes.",
+      "img": "🧮🗂️",
+      "alvo": "derived from",
+      "alvo_pt": "derivados de",
+      "conceito": "be derived from = ser derivado de, vir de.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-24f47c",
+      "quem": "mike",
+      "cod": "We have a tendency to blame the app first.",
+      "dica": "A gente tem a tendência de culpar o app primeiro.",
+      "img": "👉📱",
+      "alvo": "tendency",
+      "alvo_pt": "tendência",
+      "conceito": "have a tendency to + verbo = ter tendência a. Tendência de moda = trend.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-df22c2",
+      "quem": "voce",
+      "contexto": "f-24f47c",
+      "cod": "Good monitoring is vital for catching problems like this early.",
+      "dica": "Um bom monitoramento é vital pra pegar problemas assim cedo.",
+      "img": "📟👀",
+      "alvo": "vital",
+      "alvo_pt": "vital",
+      "conceito": "vital = vital, essencial: vital for + -ing, vital to.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR21",
+        "BR30"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "for catching",
+          "aceita": [
+            "to catch"
+          ]
+        }
+      ]
+    }
+  ]
+}

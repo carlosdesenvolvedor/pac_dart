@@ -1,0 +1,248 @@
+{
+  "id": "vocab-sociedade-lei.contrato-do-cliente",
+  "trilha": "vocab-sociedade-lei",
+  "nome": "O contrato do cliente",
+  "emoji": "📑",
+  "cena": "A Sarah e a advogada da empresa revisam com você o contrato de um cliente novo antes da assinatura.",
+  "resumo": "Ler um contrato: the legal team, a clause, a penalty for late delivery, be entitled to, limit our liability.",
+  "fechamento": false,
+  "novos": [
+    "legal",
+    "provision",
+    "settlement",
+    "obligation",
+    "entitle",
+    "counsel",
+    "clause",
+    "penalty",
+    "amendment",
+    "liability"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "A linguagem do contrato"
+    },
+    {
+      "t": "p",
+      "c": "**legal** jurídico · **provision** disposição · **settlement** acordo (que encerra uma disputa) · **obligation** obrigação · **entitle** dar direito · **counsel** advogado, assessoria · **clause** cláusula · **penalty** multa · **amendment** aditivo · **liability** responsabilidade legal"
+    },
+    {
+      "t": "ex",
+      "c": "The contract has a penalty clause.\nO contrato tem uma cláusula de multa."
+    },
+    {
+      "t": "tip",
+      "c": "**be entitled to** = ter direito a. **be under no obligation to** = não ter obrigação nenhuma de. **reach a settlement** = fechar um acordo."
+    },
+    {
+      "t": "warn",
+      "c": "Falsos amigos: **legal** = jurídico (que legal! = **cool**); **provision** não é provisão; **liability** não é reliability."
+    }
+  ],
+  "imagem": "📑🖊️⚖️",
+  "visualizacao": "Você está na chamada com o contrato aberto, cheio de comentários amarelos. A Sarah rola as páginas e a advogada lê cada cláusula com voz calma.",
+  "foto_busca": "contract review meeting laptop",
+  "trechos": [
+    {
+      "id": "f-43479a",
+      "quem": "sarah",
+      "cod": "Our legal team has to review the contract first.",
+      "dica": "A nossa equipe jurídica tem que revisar o contrato primeiro.",
+      "img": "📑👀",
+      "alvo": "legal team",
+      "alvo_pt": "equipe jurídica",
+      "conceito": "legal = jurídico ou dentro da lei. Que legal! = That's cool!",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-be31ff",
+      "quem": "sarah",
+      "cod": "Our legal counsel is joining the call in five minutes.",
+      "dica": "Nossa assessora jurídica entra na chamada em cinco minutos.",
+      "img": "👩‍⚖️⏱️",
+      "alvo": "legal counsel",
+      "alvo_pt": "assessora jurídica",
+      "conceito": "counsel = advogado(a), assessoria jurídica. Soa igual a council (câmara).",
+      "registro": "neutro",
+      "armadilhas": [
+        "council"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "is joining",
+          "aceita": [
+            "will join",
+            "joins"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e552c1",
+      "quem": "advogada",
+      "cod": "There's a confidentiality clause on page three.",
+      "dica": "Tem uma cláusula de confidencialidade na página três.",
+      "img": "🤫📄",
+      "alvo": "clause",
+      "alvo_pt": "cláusula",
+      "conceito": "clause = cláusula (em gramática, também oração).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4ee5ac",
+      "quem": "advogada",
+      "cod": "This provision limits how we can use their data.",
+      "dica": "Essa disposição limita como podemos usar os dados deles.",
+      "img": "📜🔒",
+      "alvo": "provision",
+      "alvo_pt": "disposição",
+      "conceito": "provision (contrato) = disposição, cláusula. Provisions no plural = mantimentos.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a76f5a",
+      "quem": "sarah",
+      "cod": "There's a penalty for late delivery.",
+      "dica": "Tem uma multa contratual por atraso na entrega.",
+      "img": "⏰💸",
+      "alvo": "penalty",
+      "alvo_pt": "multa contratual",
+      "conceito": "penalty = multa contratual, penalidade. Multa de trânsito = ticket; no futebol, penalty = pênalti.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0073b7",
+      "quem": "advogada",
+      "contexto": "Do we have to fix their old bugs for free?",
+      "cod": "We're under no obligation to do that.",
+      "dica": "Não temos nenhuma obrigação de fazer isso.",
+      "img": "🙅‍♀️🐛",
+      "alvo": "under no obligation",
+      "alvo_pt": "nenhuma obrigação",
+      "lit": "[lit.: estamos sob nenhuma obrigação]",
+      "conceito": "be under no obligation to = não ter obrigação nenhuma de.",
+      "registro": "formal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3728022,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I'm under no obligation to tell you that. → We're under no obligation to do that.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "We're under no obligation",
+          "aceita": [
+            "We have no obligation"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f4e930",
+      "quem": "advogada",
+      "cod": "You're entitled to ask for changes before you sign.",
+      "dica": "Vocês têm direito de pedir mudanças antes de assinar.",
+      "img": "✍️🔄",
+      "alvo": "entitled to",
+      "alvo_pt": "têm direito de",
+      "lit": "[lit.: vocês são intitulados a pedir]",
+      "conceito": "be entitled to = ter direito a (quase sempre nessa forma).",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6265377,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "You're entitled to do that. → You're entitled to ask for changes before you sign.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "before you sign",
+          "aceita": [
+            "before signing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-07012e",
+      "quem": "sarah",
+      "cod": "We'll add an amendment about the new deadline.",
+      "dica": "Vamos incluir um aditivo sobre o prazo novo.",
+      "img": "📝➕",
+      "alvo": "amendment",
+      "alvo_pt": "aditivo",
+      "conceito": "amendment = aditivo de contrato: an amendment to the contract.",
+      "var": [
+        {
+          "em": "add",
+          "aceita": [
+            "include"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-807e24",
+      "quem": "advogada",
+      "cod": "We need to limit our liability in case of a data leak.",
+      "dica": "Precisamos limitar nossa responsabilidade legal em caso de vazamento de dados.",
+      "img": "🛡️📉",
+      "alvo": "liability",
+      "alvo_pt": "responsabilidade legal",
+      "conceito": "liability = responsabilidade legal (e passivo, na contabilidade). Reliability = confiabilidade.",
+      "registro": "neutro",
+      "armadilhas": [
+        "responsibility",
+        "reliability"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-34e3f3",
+      "quem": "advogada",
+      "cod": "We reached a settlement with a former client last year.",
+      "dica": "(fim de disputa) Fechamos um acordo com um ex-cliente no ano passado.",
+      "img": "🤝✅",
+      "alvo": "settlement",
+      "alvo_pt": "acordo",
+      "conceito": "settlement = o acordo que encerra uma disputa; acordo comum = agreement, deal.",
+      "registro": "neutro",
+      "armadilhas": [
+        "agreement",
+        "deal"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a former client",
+          "aceita": [
+            "an old client",
+            "an ex-client"
+          ]
+        }
+      ]
+    }
+  ]
+}

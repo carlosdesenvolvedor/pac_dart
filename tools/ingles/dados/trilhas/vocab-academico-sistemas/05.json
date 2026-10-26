@@ -1,0 +1,316 @@
+{
+  "id": "vocab-academico-sistemas.bug-producao",
+  "trilha": "vocab-academico-sistemas",
+  "nome": "O bug em produção: defect, diagnose…",
+  "emoji": "🐞",
+  "cena": "Num plantão de terça, o app começa a travar para alguns clientes, e você e o Mike investigam os logs juntos até deixar o sistema estável de novo.",
+  "resumo": "As palavras de investigar um problema: defect, diagnose, diagnosis, regression, unstable, stabilize…",
+  "fechamento": false,
+  "novos": [
+    "defect",
+    "diagnose",
+    "diagnosis",
+    "diagnostic",
+    "corruption",
+    "regression",
+    "mutation",
+    "instability",
+    "unstable",
+    "stabilize",
+    "infinite"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Caçando o bug"
+    },
+    {
+      "t": "p",
+      "c": "**defect** defeito · **diagnose** diagnosticar · **diagnosis** diagnóstico · **diagnostic** de diagnóstico · **corruption** corrupção (de dados) · **regression** regressão · **mutation** mutação · **instability** instabilidade · **unstable** instável · **stabilize** estabilizar · **infinite** infinito"
+    },
+    {
+      "t": "ex",
+      "c": "It's a regression from last week's release.\nÉ uma regressão da release da semana passada."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: diagnose the problem, a diagnostic tool, data corruption, an infinite loop."
+    },
+    {
+      "t": "warn",
+      "c": "**diagnose** é o verbo e **diagnosis** é o substantivo. O contrário de stable é **unstable**, mas o substantivo é **instability**."
+    }
+  ],
+  "imagem": "📱🐞🔍",
+  "visualizacao": "Você está de plantão numa terça, fim de tarde. Alertas vermelhos piscam no canto da tela, o Mike está na chamada e vocês dois rolam linhas e linhas de log em silêncio.",
+  "foto_busca": "developer debugging logs screen night",
+  "trechos": [
+    {
+      "id": "f-1b641a",
+      "quem": "mike",
+      "cod": "Support logged a critical defect: the app is freezing for some customers.",
+      "dica": "O suporte registrou um defeito crítico: o app está travando para alguns clientes.",
+      "img": "🚨📱🥶",
+      "alvo": "critical defect",
+      "alvo_pt": "defeito crítico",
+      "conceito": "defect = defeito; em QA, é o termo formal para bug.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR12"
+      ],
+      "armadilhas": [
+        "defect critical",
+        "the support"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Support logged",
+          "aceita": [
+            "Support reported"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-fc34bc",
+      "quem": "voce",
+      "cod": "Let's diagnose the problem before we touch any code.",
+      "dica": "Vamos diagnosticar o problema antes de mexer em qualquer código.",
+      "img": "🩺💻",
+      "alvo": "diagnose",
+      "alvo_pt": "diagnosticar",
+      "conceito": "diagnose = diagnosticar (verbo). Antes de mexer = before we touch / before touching.",
+      "var": [
+        {
+          "em": "we touch",
+          "aceita": [
+            "touching"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28",
+        "BR52"
+      ],
+      "armadilhas": [
+        "diagnosis",
+        "diagnostic"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4040b1",
+      "quem": "mike",
+      "cod": "Run the diagnostic tool on one of the affected phones.",
+      "dica": "Roda a ferramenta de diagnóstico num dos celulares afetados.",
+      "img": "🧰📱",
+      "alvo": "diagnostic tool",
+      "alvo_pt": "ferramenta de diagnóstico",
+      "conceito": "diagnostic = de diagnóstico (adjetivo): a diagnostic tool; run diagnostics = rodar testes de verificação.",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "diagnosis tool",
+        "tool of diagnostic"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f242bf",
+      "quem": "voce",
+      "cod": "The logs show a lot of network instability this morning.",
+      "dica": "Os logs mostram muita instabilidade de rede hoje de manhã.",
+      "img": "📶〰️🌅",
+      "alvo": "network instability",
+      "alvo_pt": "instabilidade de rede",
+      "conceito": "instability = instabilidade, com in- (não unstability). Hoje de manhã = this morning.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR05",
+        "BR23",
+        "BR24"
+      ],
+      "armadilhas": [
+        "unstability",
+        "today morning"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8b70c3",
+      "quem": "mike",
+      "contexto": "f-f242bf",
+      "cod": "Yeah, the connection was unstable, but that's not the whole story.",
+      "dica": "É, a conexão estava instável, mas não é só isso.",
+      "img": "📶😬",
+      "alvo": "unstable",
+      "alvo_pt": "instável",
+      "conceito": "unstable = instável, com un- (o substantivo é instability). Not the whole story = não é só isso.",
+      "var": [
+        {
+          "em": "that's not",
+          "aceita": [
+            "that isn't"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "instable",
+        "inestable"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c1191e",
+      "quem": "voce",
+      "cod": "Look, there's an infinite loop when the cart is empty.",
+      "dica": "Olha, tem um loop infinito quando o carrinho está vazio.",
+      "img": "♾️🛒",
+      "alvo": "infinite loop",
+      "alvo_pt": "loop infinito",
+      "conceito": "infinite loop = loop infinito. Pronúncia: IN-fi-nit, acento no começo.",
+      "var": [
+        {
+          "em": "there's",
+          "aceita": [
+            "there is"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR08"
+      ],
+      "armadilhas": [
+        "loop infinite",
+        "infinit"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f85d52",
+      "quem": "mike",
+      "cod": "It's a regression from last week's release.",
+      "dica": "É uma regressão da release da semana passada.",
+      "img": "⏪🐞",
+      "alvo": "regression",
+      "alvo_pt": "regressão",
+      "conceito": "regression = algo que funcionava e quebrou depois de uma mudança.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01",
+        "BR10"
+      ],
+      "armadilhas": [
+        "regretion",
+        "the last week"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f67d53",
+      "quem": "voce",
+      "cod": "A state mutation inside the cart is causing the loop.",
+      "dica": "Uma mutação de estado dentro do carrinho está causando o loop.",
+      "img": "🧬🛒🔁",
+      "alvo": "state mutation",
+      "alvo_pt": "mutação de estado",
+      "conceito": "mutation = alterar um objeto no lugar; immutable = que não muda.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "mutation of state",
+        "mutacion"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aafc14",
+      "quem": "mike",
+      "cod": "Was there any data corruption?",
+      "dica": "Teve alguma corrupção de dados?",
+      "img": "💾💥❓",
+      "alvo": "data corruption",
+      "alvo_pt": "corrupção de dados",
+      "conceito": "data corruption = dados corrompidos, ilegíveis. Teve (existir) no passado = was there.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06",
+        "BR24"
+      ],
+      "armadilhas": [
+        "corruption of data",
+        "we had"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Was there",
+          "aceita": [
+            "Did we have",
+            "Did we get"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4a566e",
+      "quem": "voce",
+      "contexto": "f-aafc14",
+      "cod": "No, and the hotfix should stabilize the system in a few minutes.",
+      "dica": "Não, e o hotfix deve estabilizar o sistema em poucos minutos.",
+      "img": "🩹📉✅",
+      "alvo": "stabilize",
+      "alvo_pt": "estabilizar",
+      "conceito": "stabilize, com z (stabilise é britânico). Deve (expectativa) = should.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR30"
+      ],
+      "armadilhas": [
+        "stabilise",
+        "estabilize"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6f7140",
+      "quem": "mike",
+      "cod": "Add the diagnosis to the incident report, please.",
+      "dica": "Coloca o diagnóstico no relatório do incidente, por favor.",
+      "img": "📝🩺",
+      "alvo": "diagnosis",
+      "alvo_pt": "diagnóstico",
+      "conceito": "diagnosis = o diagnóstico (substantivo); plural diagnoses.",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "diagnose",
+        "diagnostic"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "versao": 1,
+  "trilha": "vocab-trabalho-empresa",
+  "arco": "As palavras do trabalho numa temporada de chamadas: o organograma, as metas do trimestre, o currículo com a Ana, a história da empresa, o almoço em família, a novidade do Ben, o cliente, a avaliação, o hackathon, o time novo e o 1º plantão. O café sempre ao lado do teclado.",
+  "licoes": {
+    "vocab-trabalho-empresa.quem-e-quem": {
+      "titulo": { "en": "Who's who", "pt": "Quem é quem" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "documento", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-e52984", "acao": "mostra", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-5a2052", "acao": "parado", "emocao": "surpreso", "efeito": "exclamacao", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-980382", "acao": "aponta", "emocao": "feliz" },
+            { "frase": "f-ffcd3e", "acao": "mostra", "emocao": "neutro",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "voce", "segura": "caderno", "acao": "escreve", "emocao": "determinado" },
+            { "frase": "f-b6e414", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "escreve" } ] },
+            { "frase": "f-40bc40", "acao": "mostra", "emocao": "neutro",
+              "reacoes": [ { "quem": "voce", "acao": "escreve" } ] },
+            { "frase": "f-7aa9a7", "acao": "concorda", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-098ecc", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-451c99", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-fa4608", "acao": "pensa", "emocao": "feliz", "camera": "close",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-trabalho-empresa.planejamento-trimestre": {
+      "titulo": { "en": "Goals for the quarter", "pt": "As metas do trimestre" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "sarah", "pos": "centro", "segura": "documento", "emocao": "radiante" },
+            { "quem": "mike", "pos": "centroDireita", "emocao": "neutro" },
+            { "quem": "ana", "pos": "direita", "emocao": "neutro" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-86850e", "acao": "comemora", "emocao": "radiante", "efeito": "confete", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "acao": "palmas", "emocao": "feliz" }, { "quem": "mike", "acao": "palmas", "emocao": "feliz" } ] },
+            { "frase": "f-145fe0", "acao": "mostra", "emocao": "determinado" },
+            { "frase": "f-139843", "acao": "aponta", "emocao": "determinado", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-7800a6", "acao": "parado", "emocao": "nervoso", "efeito": "suor", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "pensativo" } ] },
+            { "frase": "f-70a254", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-24c006", "acao": "mostra", "emocao": "feliz", "efeito": "brilho" },
+            { "frase": "f-918697", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao", "alvo": "sarah", "camera": "dupla" },
+            { "frase": "f-bf21e9", "acao": "nega", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso" } ] },
+            { "frase": "f-333dec", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" }, { "quem": "mike", "acao": "concorda" } ] },
+            { "frase": "f-7324aa", "acao": "parado", "emocao": "radiante", "camera": "close",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "mostra", "emocao": "feliz", "efeito": "suor",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" }, { "quem": "sarah", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-trabalho-empresa.curriculo-habilidades": {
+      "titulo": { "en": "A better resume", "pt": "Um currículo melhor" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "pensativo" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "documento", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-29741a", "acao": "mostra", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-6154cb", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-7400f6", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "ana", "acao": "escreve" } ] },
+            { "frase": "f-d5ba9f", "acao": "aponta", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-7144ac", "acao": "palmas", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-405b11", "acao": "escreve", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-9d925d", "acao": "aponta", "alvo": "voce", "emocao": "determinado" },
+            { "frase": "f-e5edb3", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "mudo": true, "quem": "ana", "acao": "escreve", "emocao": "feliz" },
+            { "frase": "f-a14c1f", "acao": "mostra", "emocao": "radiante", "alvo": "voce", "camera": "dupla",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-851636", "acao": "nega", "emocao": "timido", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-trabalho-empresa.historia-da-empresa": {
+      "titulo": { "en": "How it all started", "pt": "Como tudo começou" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "presidente", "pos": "centro", "segura": "microfone", "emocao": "feliz" },
+            { "quem": "mike", "pos": "centroDireita", "emocao": "neutro" },
+            { "quem": "ana", "pos": "direita", "emocao": "neutro" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-13f69f", "acao": "mostra", "segura": "portaRetrato", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-df38a9", "acao": "pensa", "emocao": "feliz" },
+            { "frase": "f-23e6ab", "acao": "aponta", "emocao": "neutro" },
+            { "frase": "f-57f9e8", "acao": "nega", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-b11d40", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-14e49a", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao",
+              "reacoes": [ { "quem": "mike", "acao": "pensa" } ] },
+            { "frase": "f-c1165f", "acao": "concorda", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "ana", "acao": "palmas", "emocao": "feliz" } ] },
+            { "frase": "f-087b76", "acao": "parado", "emocao": "determinado", "efeito": "suor", "camera": "medio" },
+            { "frase": "f-fffc60", "acao": "nega", "emocao": "cansado",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "determinado" },
+            { "frase": "f-1d099b", "acao": "acena", "emocao": "radiante", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "acao": "palmas", "emocao": "feliz" }, { "quem": "ana", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "presidente", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" }, { "quem": "ana", "acao": "acena" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-trabalho-empresa.almoco-profissoes": {
+      "titulo": { "en": "A teacher in the family", "pt": "Uma professora na família" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "prato", "emocao": "feliz" },
+            { "quem": "julia", "pos": "centro", "emocao": "pensativo" },
+            { "quem": "lucas", "pos": "centroDireita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-438351", "acao": "pensa", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-4fa098", "acao": "aponta", "alvo": "julia", "emocao": "pensativo", "camera": "dupla" },
+            { "frase": "f-850c43", "acao": "concorda", "emocao": "determinado" },
+            { "mudo": true, "quem": "voce", "segura": "nada",
+              "reacoes": [ { "quem": "lucas", "segura": "prato", "emocao": "feliz" } ] },
+            { "frase": "f-81ae5b", "acao": "parado", "emocao": "cansado", "efeito": "suor",
+              "reacoes": [ { "quem": "julia", "emocao": "determinado" } ] },
+            { "frase": "f-18f72d", "acao": "concorda", "emocao": "radiante", "efeito": "coracoes" },
+            { "frase": "f-467943", "acao": "pensa", "emocao": "feliz", "efeito": "brilho" },
+            { "frase": "f-5ad40c", "acao": "aponta", "alvo": "julia", "emocao": "feliz", "camera": "medio",
+              "reacoes": [ { "quem": "julia", "emocao": "surpreso" } ] },
+            { "frase": "f-7a3b8a", "acao": "pensa", "emocao": "feliz", "efeito": "coracoes",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-7d6416", "acao": "aponta", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "julia", "segura": "celular", "emocao": "radiante" },
+            { "frase": "f-a74f05", "acao": "mostra", "emocao": "radiante", "efeito": "confete", "camera": "close",
+              "reacoes": [ { "quem": "voce", "acao": "palmas", "emocao": "radiante" }, { "quem": "lucas", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-trabalho-empresa.ben-muda-de-emprego": {
+      "titulo": { "en": "Ben quits his job", "pt": "O Ben pede demissão" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "cafe", "emocao": "nervoso" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-4d2ecf", "acao": "acena", "emocao": "nervoso", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso", "efeito": "exclamacao" } ] },
+            { "frase": "f-0fbdf7", "acao": "parado", "emocao": "surpreso", "camera": "medio" },
+            { "frase": "f-53a74c", "acao": "concorda", "emocao": "cansado" },
+            { "frase": "f-b58b42", "acao": "nega", "emocao": "cansado",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-db69d3", "acao": "concorda", "alvo": "ben", "emocao": "pensativo", "camera": "dupla" },
+            { "frase": "f-5ec327", "acao": "concorda", "emocao": "feliz", "efeito": "brilho",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-94efeb", "acao": "aponta", "alvo": "ben", "emocao": "feliz" },
+            { "frase": "f-b0f166", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-efabc1", "acao": "aponta", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-19f21d", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-504ae8", "acao": "concorda", "emocao": "feliz", "efeito": "coracoes",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "ben", "acao": "acena", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-trabalho-empresa.cliente-consultoria": {
+      "titulo": { "en": "Meeting the client", "pt": "A reunião com o cliente" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "caderno", "emocao": "neutro" },
+            { "quem": "sarah", "pos": "centroEsquerda", "segura": "documento", "emocao": "feliz" },
+            { "quem": "cliente", "pos": "centro", "emocao": "feliz" },
+            { "quem": "participante", "pos": "centroDireita", "emocao": "neutro" },
+            { "quem": "consultora", "pos": "direita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-ac1018", "acao": "aponta", "alvo": "participante", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "participante", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-0702cf", "acao": "aponta", "alvo": "consultora", "emocao": "feliz",
+              "reacoes": [ { "quem": "consultora", "acao": "acena" } ] },
+            { "frase": "f-d01f2e", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-4c0402", "acao": "aponta", "emocao": "neutro",
+              "reacoes": [ { "quem": "voce", "acao": "escreve" } ] },
+            { "frase": "f-fb1e37", "acao": "concorda", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-8fd076", "acao": "nega", "emocao": "cansado",
+              "reacoes": [ { "quem": "sarah", "emocao": "pensativo" } ] },
+            { "frase": "f-43c7e7", "acao": "mostra", "alvo": "cliente", "emocao": "determinado", "camera": "dupla",
+              "reacoes": [ { "quem": "cliente", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-68694a", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-fe6bff", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "cliente", "acao": "concorda", "emocao": "feliz" }, { "quem": "consultora", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "cliente", "acao": "acena" }, { "quem": "sarah", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-trabalho-empresa.avaliacao-desempenho": {
+      "titulo": { "en": "Good news in the review", "pt": "Boas notícias na avaliação" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "nervoso" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "documento", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-ab5f55", "acao": "mostra", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso" } ] },
+            { "frase": "f-568120", "acao": "aponta", "alvo": "voce", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-31bc8c", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-4d0fac", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-76d438", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-f21f52", "acao": "aponta", "alvo": "voce", "emocao": "radiante", "efeito": "brilho", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-04aa24", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "frase": "f-711d73", "acao": "pensa", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-c9a2fc", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-83a7b2", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "timido" } ] },
+            { "frase": "f-9a630e", "acao": "aponta", "alvo": "voce", "emocao": "radiante", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "comemora", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "mike", "acao": "palmas", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-trabalho-empresa.hackathon-interno": {
+      "titulo": { "en": "Two days of ideas", "pt": "Dois dias de ideias" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ana", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "sarah", "pos": "centro", "segura": "documento", "emocao": "radiante" },
+            { "quem": "colega", "pos": "centroDireita", "emocao": "feliz" },
+            { "quem": "desenvolvedora", "pos": "direita", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-fc5037", "acao": "acena", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "colega", "acao": "acena" }, { "quem": "desenvolvedora", "acao": "acena" } ] },
+            { "frase": "f-36d1c3", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "desenvolvedora", "emocao": "radiante" } ] },
+            { "frase": "f-7ad9ef", "acao": "aponta", "emocao": "determinado" },
+            { "frase": "f-7fe641", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-bd7f40", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "colega", "acao": "concorda" } ] },
+            { "frase": "f-04bbed", "acao": "aponta", "alvo": "voce", "emocao": "radiante", "camera": "dupla",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-63667d", "acao": "aponta", "emocao": "determinado", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "acao": "palmas" } ] },
+            { "frase": "f-3d4476", "acao": "comemora", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "colega", "acao": "palmas" }, { "quem": "desenvolvedora", "acao": "palmas" } ] },
+            { "frase": "f-573bfa", "acao": "concorda", "emocao": "radiante", "efeito": "coracoes",
+              "reacoes": [ { "quem": "voce", "acao": "palmas" }, { "quem": "ana", "acao": "palmas" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "acao": "acena" }, { "quem": "sarah", "acao": "acena" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-trabalho-empresa.o-time-cresce": {
+      "titulo": { "en": "New faces on the team", "pt": "Rostos novos no time" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "ana", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "mike", "pos": "centro", "segura": "documento", "emocao": "feliz" },
+            { "quem": "dev-novo", "pos": "centroDireita", "emocao": "timido" },
+            { "quem": "dev-nova", "pos": "direita", "emocao": "timido" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-6ebd82", "acao": "aponta", "alvo": "dev-nova", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "dev-nova", "acao": "acena", "emocao": "feliz" } ] },
+            { "frase": "f-fdb701", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-1a619c", "acao": "aponta", "alvo": "dev-novo", "emocao": "feliz",
+              "reacoes": [ { "quem": "dev-novo", "acao": "acena", "emocao": "feliz" }, { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-8a1d9b", "acao": "aponta", "alvo": "voce", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "frase": "f-d9f7a4", "acao": "palmas", "emocao": "radiante", "efeito": "confete",
+              "reacoes": [ { "quem": "ana", "acao": "comemora", "emocao": "radiante" }, { "quem": "voce", "acao": "palmas" } ] },
+            { "frase": "f-4cc9bf", "acao": "mostra", "emocao": "neutro",
+              "reacoes": [ { "quem": "dev-novo", "acao": "concorda" } ] },
+            { "frase": "f-dd2d81", "acao": "acena", "emocao": "determinado", "camera": "medio",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "frase": "f-34a005", "acao": "concorda", "alvo": "voce", "emocao": "feliz", "camera": "dupla" },
+            { "frase": "f-c41d40", "acao": "mostra", "emocao": "neutro" },
+            { "frase": "f-105342", "acao": "pensa", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "acao": "concorda", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "mike", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "acao": "acena" }, { "quem": "ana", "acao": "acena" }, { "quem": "dev-novo", "acao": "acena" }, { "quem": "dev-nova", "acao": "acena" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-trabalho-empresa.plantao-de-fim-de-semana": {
+      "titulo": { "en": "My first weekend on call", "pt": "O meu primeiro plantão" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "caderno", "emocao": "nervoso" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "documento", "emocao": "determinado" }
+          ],
+          "objetos": [ { "prop": "celular", "pos": "esquerda" } ],
+          "passos": [
+            { "frase": "f-4e99a0", "acao": "aponta", "alvo": "voce", "emocao": "determinado", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "nervoso" } ] },
+            { "frase": "f-0f9f5c", "acao": "mostra", "emocao": "neutro",
+              "reacoes": [ { "quem": "voce", "acao": "escreve" } ] },
+            { "frase": "f-e483df", "acao": "concorda", "emocao": "neutro" },
+            { "frase": "f-dc474a", "acao": "aponta", "emocao": "determinado", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso", "efeito": "suor" } ] },
+            { "frase": "f-a304ae", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "acao": "escreve" } ] },
+            { "frase": "f-28c206", "acao": "nega", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-17f284", "acao": "mostra", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "acao": "escreve", "emocao": "determinado" } ] },
+            { "frase": "f-201b35", "acao": "aponta", "emocao": "feliz" },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-5d916c", "acao": "mostra", "emocao": "determinado", "efeito": "brilho", "camera": "medio" },
+            { "frase": "f-82ee33", "acao": "concorda", "alvo": "voce", "emocao": "radiante", "camera": "dupla",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "voce", "acao": "acena", "emocao": "radiante",
+              "reacoes": [ { "quem": "mike", "acao": "acena", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

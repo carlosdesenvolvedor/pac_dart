@@ -1,0 +1,254 @@
+{
+  "id": "vocab-comunicacao-tecnologia.a-festa-surpresa",
+  "trilha": "vocab-comunicacao-tecnologia",
+  "nome": "A festa surpresa: greet, whisper…",
+  "emoji": "🎉",
+  "cena": "Você e o Lucas organizam no seu apartamento uma festa surpresa para a Julia; a Emma e o Ben chegam cedo e todo mundo espera no escuro.",
+  "resumo": "Falar de comunicação entre pessoas: greet, chat, whisper, scream, sigh, remark.",
+  "fechamento": false,
+  "novos": [
+    "voice",
+    "express",
+    "communicate",
+    "remark",
+    "greet",
+    "chat",
+    "whisper",
+    "scream",
+    "sigh"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Falar, cochichar e gritar"
+    },
+    {
+      "t": "p",
+      "c": "**voice** voz · **express** expressar · **communicate** comunicar-se · **remark** comentário · **greet** cumprimentar (quem chega) · **chat** bater papo · **whisper** cochichar · **scream** gritar · **sigh** suspirar, suspiro"
+    },
+    {
+      "t": "ex",
+      "c": "Please keep your voice down. Julia is almost here.\nPor favor, fala baixo. A Julia está quase chegando."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **keep your voice down** (falar baixo), **greet the guests** (cumprimentar os convidados), **chat with** alguém, **a sigh of relief** (um suspiro de alívio)."
+    },
+    {
+      "t": "warn",
+      "c": "**remark** não é remarcar (= **reschedule**): é um comentário rápido. E **express** é expressar; café expresso é **espresso**."
+    }
+  ],
+  "imagem": "🎉🎂🤫",
+  "visualizacao": "Você está agachado atrás do sofá, com a luz apagada e balões no teto. Dá pra ouvir a respiração do Ben e o elevador subindo devagar.",
+  "foto_busca": "surprise birthday party dark room",
+  "trechos": [
+    {
+      "id": "f-641f9d",
+      "quem": "lucas",
+      "cod": "Emma, can you greet the guests at the door?",
+      "dica": "Emma, você pode cumprimentar os convidados na porta?",
+      "img": "🚪👋🙂",
+      "alvo": "greet",
+      "alvo_pt": "cumprimentar",
+      "conceito": "greet = cumprimentar quem chega; greet the guests = cumprimentar os convidados.",
+      "registro": "informal",
+      "armadilhas": [
+        "receive"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f72ad5",
+      "quem": "lucas",
+      "contexto": "How did you plan all this without Julia knowing?",
+      "cod": "We only communicated by email so she wouldn't find out.",
+      "dica": "A gente só se comunicou por e-mail pra ela não descobrir.",
+      "img": "📧🤐",
+      "alvo": "communicated",
+      "alvo_pt": "se comunicou",
+      "conceito": "communicate = comunicar-se, sem pronome em inglês; communicate with each other = se comunicar.",
+      "var": [
+        {
+          "em": "by email",
+          "aceita": [
+            "by e-mail"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR62"
+      ],
+      "armadilhas": [
+        "ourselves"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-123b38",
+      "quem": "voce",
+      "cod": "Please keep your voice down. Julia is almost here.",
+      "dica": "Por favor, fala baixo. A Julia está quase chegando.",
+      "img": "🔉🤫",
+      "alvo": "keep your voice down",
+      "alvo_pt": "fala baixo",
+      "lit": "[lit.: mantenha sua voz baixa]",
+      "conceito": "voice = voz; keep your voice down = falar baixo; in a loud voice = em voz alta.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 497566,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Please keep your voice down. + Julia is almost here.; PT reescrito (fala baixo)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-971396",
+      "quem": "ben",
+      "cod": "Why are we whispering? She can't hear us yet.",
+      "dica": "Por que a gente está cochichando? Ela ainda não ouve a gente.",
+      "img": "🗣️👂😆",
+      "alvo": "whispering",
+      "alvo_pt": "cochichando",
+      "conceito": "whisper = cochichar, sussurrar; whisper in her ear = cochichar no ouvido dela.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f2876b",
+      "quem": "lucas",
+      "cod": "When she opens the door, everybody scream surprise!",
+      "dica": "Quando ela abrir a porta, todo mundo grita surpresa!",
+      "img": "🚪🎉😱",
+      "alvo": "scream",
+      "alvo_pt": "grita",
+      "conceito": "scream = gritar (de alegria). Ordem pro grupo: everybody + verbo sem -s. When + presente = quando + subjuntivo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "everybody",
+          "aceita": [
+            "everyone"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6d6db3",
+      "quem": "julia",
+      "cod": "I can't even express how happy I am.",
+      "dica": "Eu nem consigo expressar o quanto estou feliz.",
+      "img": "🥰💖",
+      "alvo": "express",
+      "alvo_pt": "expressar",
+      "conceito": "express = expressar; express your thanks = expressar a sua gratidão.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6d1039",
+      "quem": "ben",
+      "cod": "Everybody let out a sigh of relief when Julia smiled.",
+      "dica": "Todo mundo soltou um suspiro de alívio quando a Julia sorriu.",
+      "img": "😌💨",
+      "alvo": "sigh of relief",
+      "alvo_pt": "suspiro de alívio",
+      "conceito": "sigh = suspiro, suspirar; let out a sigh of relief = soltar um suspiro de alívio.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 953262,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Everybody in the room let out a sigh of relief. → Everybody let out a sigh of relief when Julia smiled. (motivo do alívio na cena); PT autoral",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "Everybody",
+          "aceita": [
+            "Everyone"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-21657f",
+      "quem": "voce",
+      "cod": "Ben's funny remark made everyone laugh.",
+      "dica": "O comentário engraçado do Ben fez todo mundo rir.",
+      "img": "😂💬",
+      "alvo": "remark",
+      "alvo_pt": "comentário",
+      "conceito": "remark = comentário rápido (não é remarcar = reschedule). Make someone laugh = fazer alguém rir.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "to",
+        "reschedule"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "everyone",
+          "aceita": [
+            "everybody"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-dc45e8",
+      "quem": "emma",
+      "cod": "It was nice chatting with you.",
+      "dica": "Foi bom bater papo com você.",
+      "img": "☕💬🙂",
+      "alvo": "chatting",
+      "alvo_pt": "bater papo",
+      "conceito": "chat = bater papo; chat with alguém, chat about um assunto. Nice + -ing = foi bom...",
+      "var": [
+        {
+          "em": "chatting",
+          "aceita": [
+            "to chat"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2643031,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN igual; PT original: \"Foi bom conversar com você.\"; PT reescrito (bater papo = chat)",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

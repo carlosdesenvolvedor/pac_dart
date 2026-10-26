@@ -1,0 +1,264 @@
+{
+  "id": "vocab-comunicacao-tecnologia.correio-e-caixa-de-entrada",
+  "trilha": "vocab-comunicacao-tecnologia",
+  "nome": "Correio e e-mail: mail, stamp…",
+  "emoji": "✉️",
+  "cena": "Segunda de manhã, você está soterrado de e-mails e ainda precisa mandar pelo correio o contrato assinado para o escritório do Mike em Chicago.",
+  "resumo": "Lidar com e-mail e correio: buried, glance, scan, inquiry, attachment, mail, stamps.",
+  "fechamento": false,
+  "novos": [
+    "mail",
+    "respond",
+    "acknowledge",
+    "inquiry",
+    "bury",
+    "glance",
+    "scan",
+    "stamp",
+    "envelope",
+    "attachment"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "E-mail e correio"
+    },
+    {
+      "t": "p",
+      "c": "**mail** correio; mandar pelo correio · **respond** responder · **acknowledge** confirmar (recebimento) · **inquiry** consulta · **bury** soterrar · **glance** olhada rápida · **scan** passar o olho; escanear · **stamp** selo · **envelope** envelope · **attachment** anexo"
+    },
+    {
+      "t": "ex",
+      "c": "I'm buried in emails this morning.\nEstou soterrado de e-mails hoje de manhã."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **respond to** alguém, **acknowledge receipt** (confirmar o recebimento), **take a quick glance at**, **by mail** (pelo correio)."
+    },
+    {
+      "t": "warn",
+      "c": "**acknowledge** não é conhecer: é confirmar que recebeu ou admitir. Anexo é **attachment** (não annex). En-US: **inquiry** e **mail** (no britânico, enquiry e post)."
+    }
+  ],
+  "imagem": "📧📮✉️",
+  "visualizacao": "Você está na sua mesa com a caixa de entrada lotada e o café esfriando. Do lado do teclado, o contrato assinado espera dentro de um envelope pardo.",
+  "foto_busca": "inbox laptop envelope desk morning",
+  "trechos": [
+    {
+      "id": "f-7060e7",
+      "quem": "voce",
+      "cod": "I'm buried in emails this morning.",
+      "dica": "Estou soterrado de e-mails hoje de manhã.",
+      "img": "📧📧😵",
+      "alvo": "buried",
+      "alvo_pt": "soterrado",
+      "lit": "[lit.: estou enterrado em e-mails]",
+      "conceito": "be buried in = estar soterrado de (bury = enterrar; pronúncia BER-ee).",
+      "var": [
+        {
+          "em": "emails",
+          "aceita": [
+            "e-mails"
+          ]
+        }
+      ],
+      "pt_f": "Estou soterrada de e-mails hoje de manhã.",
+      "registro": "informal",
+      "armadilhas": [
+        "of"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-71f13e",
+      "quem": "voce",
+      "cod": "Let me take a quick glance at my inbox first.",
+      "dica": "Deixa eu dar uma olhada rápida na minha caixa de entrada primeiro.",
+      "img": "👀📥",
+      "alvo": "glance",
+      "alvo_pt": "olhada rápida",
+      "conceito": "glance = olhada rápida; take a quick glance at = dar uma olhada rápida em; at a glance = de relance.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-43c31b",
+      "quem": "voce",
+      "cod": "Most days, I just scan the subject lines.",
+      "dica": "Na maioria dos dias, eu só passo o olho nos assuntos.",
+      "img": "📨🔎",
+      "alvo": "scan",
+      "alvo_pt": "passo o olho",
+      "conceito": "scan = passar o olho, ler por cima; também escanear um documento. Subject line = assunto do e-mail.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Most days",
+          "aceita": [
+            "On most days"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e7367f",
+      "quem": "voce",
+      "cod": "There's an inquiry from a new client about our prices.",
+      "dica": "Tem uma consulta de um cliente novo sobre os nossos preços.",
+      "img": "🙋‍♂️💲❓",
+      "alvo": "inquiry",
+      "alvo_pt": "consulta",
+      "conceito": "inquiry = consulta, pedido de informação (en-US; enquiry é britânico).",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "has",
+        "enquiry"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-227462",
+      "quem": "voce",
+      "cod": "I'm not sure how to respond to this client.",
+      "dica": "Não sei bem como responder a esse cliente.",
+      "img": "🤔↩️",
+      "alvo": "respond to",
+      "alvo_pt": "responder a",
+      "conceito": "respond to = responder a (mais formal que answer ou reply; sempre com to).",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "answer",
+        "reply"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6339180,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I'm not sure how to respond to Tom's question. → I'm not sure how to respond to this client.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e34207",
+      "quem": "voce",
+      "cod": "I'll acknowledge the email now and deal with it later.",
+      "dica": "Vou confirmar o recebimento do e-mail agora e cuidar dele depois.",
+      "img": "📩✔️⏳",
+      "alvo": "acknowledge",
+      "alvo_pt": "confirmar o recebimento",
+      "conceito": "acknowledge = confirmar que recebeu (acknowledge receipt) ou admitir; não é conhecer.",
+      "var": [
+        {
+          "em": "email",
+          "aceita": [
+            "e-mail"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-956b77",
+      "quem": "voce",
+      "cod": "Mike said he couldn't open the attachment.",
+      "dica": "O Mike disse que não conseguiu abrir o anexo.",
+      "img": "📎🔒",
+      "alvo": "attachment",
+      "alvo_pt": "anexo",
+      "conceito": "attachment = anexo; attach = anexar. Open the attachment = abrir o anexo.",
+      "registro": "informal",
+      "armadilhas": [
+        "annex"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5f21f5",
+      "quem": "voce",
+      "cod": "I signed the contract, but I haven't mailed it yet.",
+      "dica": "Eu assinei o contrato, mas ainda não mandei pelo correio.",
+      "img": "✍️📄📮",
+      "alvo": "mailed",
+      "alvo_pt": "mandei pelo correio",
+      "conceito": "mail = mandar pelo correio (en-US; o britânico diz post). Ainda não = haven't... yet.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8382502,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom has written the letter, but he hasn't mailed it yet. → I signed the contract, but I haven't mailed it yet.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-813dc7",
+      "quem": "voce",
+      "cod": "I need to buy stamps.",
+      "dica": "Preciso comprar selos.",
+      "img": "🏤💌",
+      "alvo": "stamps",
+      "alvo_pt": "selos",
+      "conceito": "stamp = selo; a postage stamp = um selo postal.",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1448081,
+        "en_autor": "CK",
+        "pt_id": 5237983,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1958b1",
+      "quem": "voce",
+      "cod": "The contract doesn't fit in this envelope.",
+      "dica": "O contrato não cabe neste envelope.",
+      "img": "📄✉️😬",
+      "alvo": "envelope",
+      "alvo_pt": "envelope",
+      "conceito": "envelope = envelope; fit in = caber em.",
+      "registro": "informal",
+      "armadilhas": [
+        "fits"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "fit in",
+          "aceita": [
+            "fit into"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "id": "vocab-adverbios-conectores.postmortem-incidente",
+  "trilha": "vocab-adverbios-conectores",
+  "nome": "O que aconteceu",
+  "emoji": "🚨",
+  "cena": "Na reunião de postmortem, o Mike conduz a linha do tempo da queda do app de terça.",
+  "resumo": "Advérbios para contar um incidente em ordem: previously, suddenly, initially, immediately, ultimately.",
+  "fechamento": false,
+  "novos": [
+    "immediately",
+    "suddenly",
+    "previously",
+    "rapidly",
+    "ultimately",
+    "initially",
+    "briefly",
+    "newly",
+    "dramatically",
+    "subsequently"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**immediately** = imediatamente · **suddenly** = de repente · **previously** = anteriormente · **rapidly** = rapidamente · **ultimately** = no fim das contas · **initially** = inicialmente · **briefly** = brevemente · **newly** = recém- · **dramatically** = drasticamente · **subsequently** = posteriormente."
+    },
+    {
+      "t": "ex",
+      "c": "Initially, we thought it was the cache.\nInicialmente, a gente achou que era o cache."
+    },
+    {
+      "t": "tip",
+      "c": "Linha do tempo: **Previously → Suddenly → Immediately → Subsequently → Ultimately**."
+    },
+    {
+      "t": "warn",
+      "c": "Falso cognato: **ultimately** não é \"ultimamente\" (= lately). É \"no fim das contas\"."
+    }
+  ],
+  "imagem": "🚨📉🕒",
+  "visualizacao": "Você está na call de postmortem. O Mike compartilha uma linha do tempo com horários em vermelho, e o gráfico de erros mostra um pico enorme na terça de manhã.",
+  "foto_busca": "team meeting incident timeline screen",
+  "trechos": [
+    {
+      "id": "f-7b2694",
+      "quem": "mike",
+      "cod": "Let me briefly explain what happened on Tuesday.",
+      "dica": "Deixa eu explicar brevemente o que aconteceu na terça.",
+      "img": "🗣️⏱️",
+      "alvo": "briefly",
+      "alvo_pt": "brevemente",
+      "conceito": "Let me briefly explain = deixa eu explicar brevemente; briefly também é por pouco tempo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "explain you",
+        "in Tuesday"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8386c0",
+      "quem": "mike",
+      "cod": "Previously, the search service ran on a single server.",
+      "dica": "Anteriormente, o serviço de busca rodava num servidor só.",
+      "img": "🖥️☝️",
+      "alvo": "Previously",
+      "alvo_pt": "Anteriormente",
+      "conceito": "previously = anteriormente, antes; as previously mentioned = como dito antes.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "service of search",
+        "runned"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fd71e4",
+      "quem": "mike",
+      "cod": "On Monday night, we moved search to the newly added servers.",
+      "dica": "Na segunda à noite, a gente passou a busca para os servidores recém-adicionados.",
+      "img": "🚀🌙",
+      "alvo": "newly added",
+      "alvo_pt": "recém-adicionados",
+      "conceito": "newly + particípio = recém-: newly built, newly hired.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "in monday",
+        "new updated"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7fe16e",
+      "quem": "mike",
+      "cod": "On Tuesday morning, the API suddenly stopped responding.",
+      "dica": "Na terça de manhã, a API de repente parou de responder.",
+      "img": "⚡🛑",
+      "alvo": "suddenly",
+      "alvo_pt": "de repente",
+      "conceito": "suddenly marca a virada na narrativa; combina com o passado simples.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "to respond",
+        "sudden"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-af75dd",
+      "quem": "voce",
+      "cod": "Errors increased rapidly in the first ten minutes.",
+      "dica": "Os erros aumentaram rapidamente nos primeiros dez minutos.",
+      "img": "📈🔥",
+      "alvo": "rapidly",
+      "alvo_pt": "rapidamente",
+      "conceito": "rapidly = rápido, mais formal que quickly; comum com increase, grow e change.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the errors",
+        "rapid"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c2a55d",
+      "quem": "voce",
+      "cod": "Initially, we thought it was the database.",
+      "dica": "Inicialmente, a gente achou que era o banco de dados.",
+      "img": "🤔🗄️",
+      "alvo": "Initially",
+      "alvo_pt": "Inicialmente",
+      "conceito": "Initially... prepara a virada: Initially we thought X, but then...",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "was database",
+        "thinked"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7ac7be",
+      "quem": "mike",
+      "cod": "We immediately rolled back to the previous version.",
+      "dica": "A gente fez rollback imediatamente para a versão anterior.",
+      "img": "⏪⚡",
+      "alvo": "immediately",
+      "alvo_pt": "imediatamente",
+      "conceito": "immediately = na hora; immediately after = logo depois.",
+      "registro": "informal",
+      "armadilhas": [
+        "immediatly",
+        "made rollback"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ec62db",
+      "quem": "mike",
+      "cod": "After the rollback, response times improved dramatically.",
+      "dica": "Depois do rollback, o tempo de resposta melhorou drasticamente.",
+      "img": "⏱️✅🚀",
+      "alvo": "dramatically",
+      "alvo_pt": "drasticamente",
+      "conceito": "dramatically = drasticamente, de forma marcante; improved dramatically soa melhor que drastically.",
+      "registro": "neutro",
+      "armadilhas": [
+        "dramatic",
+        "drastically"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-25f8b9",
+      "quem": "mike",
+      "cod": "The fix was subsequently tested in staging.",
+      "dica": "A correção foi posteriormente testada em staging.",
+      "img": "🧪✅",
+      "alvo": "subsequently",
+      "alvo_pt": "posteriormente",
+      "conceito": "subsequently = posteriormente (formal, de relatório); na fala, later.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "armadilhas": [
+        "tested subsequently",
+        "was test"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8785bc",
+      "quem": "mike",
+      "cod": "Ultimately, it was a config error, not the code.",
+      "dica": "No fim das contas, foi um erro de config, não o código.",
+      "img": "⚙️❌",
+      "alvo": "Ultimately",
+      "alvo_pt": "No fim das contas",
+      "conceito": "ultimately = no fim das contas; NÃO é \"ultimamente\" (= lately).",
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR01"
+      ],
+      "armadilhas": [
+        "lately",
+        "was a error"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

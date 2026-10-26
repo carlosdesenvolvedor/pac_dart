@@ -1,0 +1,254 @@
+{
+  "id": "vocab-comunicacao-tecnologia.a-tela-nova-do-app",
+  "trilha": "vocab-comunicacao-tecnologia",
+  "nome": "A tela nova do app: tap, drag…",
+  "emoji": "📱",
+  "cena": "A Ana revisa com você, numa chamada, a tela nova de edição de fotos do app: o que o usuário toca, arrasta e recorta, e o que muda no código.",
+  "resumo": "Falar de interface e código: tap, drag, crop, dismiss, dialog, bind, string, hook.",
+  "fechamento": false,
+  "novos": [
+    "bind",
+    "string",
+    "hook",
+    "attribute",
+    "dialog",
+    "dismiss",
+    "tap",
+    "drag",
+    "crop",
+    "edit",
+    "symbol"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Interface e código"
+    },
+    {
+      "t": "p",
+      "c": "**bind** vincular · **string** string · **hook** hook · **attribute** atributo · **dialog** dialog, caixa de diálogo · **dismiss** dispensar, fechar · **tap** tocar · **drag** arrastar · **crop** recortar · **edit** editar · **symbol** símbolo"
+    },
+    {
+      "t": "ex",
+      "c": "First, the user taps the photo.\nPrimeiro, o usuário toca na foto."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **tap the button** (tocar no botão), **drag and drop** (arrastar e soltar), **crop the photo** (recortar a foto), **an empty string** (uma string vazia), **a custom hook**."
+    },
+    {
+      "t": "warn",
+      "c": "**tap** é o toque no celular; **click** é com mouse. **dismiss** também é dispensar alguém, mas no app é fechar o aviso. E en-US escreve **dialog** (dialogue é britânico ou literário)."
+    }
+  ],
+  "imagem": "📱🖼️✂️",
+  "visualizacao": "Você está olhando o protótipo da Ana na tela, ao lado do seu editor de código. Ela mexe o dedo no celular e a foto gira e encolhe no espelho da chamada.",
+  "foto_busca": "designer mobile app prototype photo",
+  "trechos": [
+    {
+      "id": "f-9d396d",
+      "quem": "ana",
+      "cod": "First, the user taps the photo.",
+      "dica": "Primeiro, o usuário toca na foto.",
+      "img": "👆🖼️",
+      "alvo": "taps",
+      "alvo_pt": "toca",
+      "conceito": "tap = tocar rápido na tela (click é com mouse). 3ª pessoa: taps.",
+      "var": [
+        {
+          "em": "taps the photo",
+          "aceita": [
+            "taps on the photo"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "tap",
+        "click"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fe7cc7",
+      "quem": "ana",
+      "cod": "Then the user can crop the photo into a square.",
+      "dica": "Depois, o usuário pode recortar a foto em formato quadrado.",
+      "img": "✂️⬛",
+      "alvo": "crop",
+      "alvo_pt": "recortar",
+      "conceito": "crop = recortar uma imagem (também é colheita, a safra); crop the photo = recortar a foto.",
+      "var": [
+        {
+          "em": "into a square",
+          "aceita": [
+            "to a square"
+          ]
+        },
+        {
+          "em": "Then",
+          "aceita": [
+            "After that",
+            "Next"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-64a37b",
+      "quem": "voce",
+      "cod": "Can you tell me what this symbol means?",
+      "dica": "Você pode me dizer o que esse símbolo significa?",
+      "img": "🧐❓",
+      "alvo": "symbol",
+      "alvo_pt": "símbolo",
+      "conceito": "symbol = símbolo; pergunta encaixada em ordem direta: what this symbol means.",
+      "registro": "informal",
+      "interferencias": [
+        "BR50"
+      ],
+      "armadilhas": [
+        "does"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3203809,
+        "en_autor": "CK",
+        "pt_id": 4394934,
+        "pt_autor": "carloseperola",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b32978",
+      "quem": "ana",
+      "cod": "Just drag the image with one finger to move it.",
+      "dica": "É só arrastar a imagem com um dedo pra mover.",
+      "img": "☝️↔️🖼️",
+      "alvo": "drag",
+      "alvo_pt": "arrastar",
+      "conceito": "drag = arrastar; drag and drop = arrastar e soltar.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2863f5",
+      "quem": "ana",
+      "cod": "To edit the text, tap the pencil icon.",
+      "dica": "Pra editar o texto, toca no ícone do lápis.",
+      "img": "✏️📝",
+      "alvo": "edit",
+      "alvo_pt": "editar",
+      "conceito": "edit = editar; quem edita é the editor. A editora (empresa) é the publisher.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4631941,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "To edit a sentence, click on the pencil icon. → To edit the text, tap the pencil icon.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "tap the",
+          "aceita": [
+            "tap on the"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-54dfc5",
+      "quem": "ana",
+      "cod": "Users can dismiss the message by tapping anywhere.",
+      "dica": "Os usuários podem dispensar a mensagem tocando em qualquer lugar.",
+      "img": "💬👋❌",
+      "alvo": "dismiss",
+      "alvo_pt": "dispensar",
+      "conceito": "dismiss = dispensar, fechar um aviso; dismiss the notification. By + -ing = tocando.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Users",
+          "aceita": [
+            "The users"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-52db52",
+      "quem": "voce",
+      "cod": "We need a confirmation dialog before deleting a photo.",
+      "dica": "A gente precisa de um dialog de confirmação antes de apagar uma foto.",
+      "img": "🗑️❓✅",
+      "alvo": "confirmation dialog",
+      "alvo_pt": "dialog de confirmação",
+      "conceito": "dialog = caixa de diálogo; o dev diz \"o dialog\" (en-US; dialogue é britânico). Before + -ing = antes de.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d16631",
+      "quem": "voce",
+      "cod": "I'll bind the slider value to the image brightness.",
+      "dica": "Vou vincular o valor do slider ao brilho da imagem.",
+      "img": "🔗🎚️☀️",
+      "alvo": "bind",
+      "alvo_pt": "vincular",
+      "conceito": "bind = vincular, ligar dados a um elemento (bind, bound, bound); data binding.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f371c8",
+      "quem": "voce",
+      "cod": "For now, the caption is just an empty string.",
+      "dica": "Por enquanto, a legenda é só uma string vazia.",
+      "img": "🧵🕳️",
+      "alvo": "empty string",
+      "alvo_pt": "string vazia",
+      "conceito": "string = texto no código; fora do código, barbante ou corda (de violão).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b3a8f5",
+      "quem": "voce",
+      "cod": "I wrote a custom hook to load the photos.",
+      "dica": "Eu escrevi um hook customizado pra carregar as fotos.",
+      "img": "🪝⚙️🖼️",
+      "alvo": "custom hook",
+      "alvo_pt": "hook customizado",
+      "conceito": "hook = função reutilizável no código; fora dele, gancho. Custom = customizado, próprio.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a195ce",
+      "quem": "ana",
+      "cod": "Don't forget the alt attribute for accessibility.",
+      "dica": "Não esquece o atributo alt pra acessibilidade.",
+      "img": "♿🏷️",
+      "alvo": "attribute",
+      "alvo_pt": "atributo",
+      "conceito": "attribute (subst.) = atributo, com acento em AT-tribute; the alt attribute = o atributo alt.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

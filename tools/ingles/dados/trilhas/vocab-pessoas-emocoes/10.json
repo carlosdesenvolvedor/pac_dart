@@ -1,0 +1,290 @@
+{
+  "id": "vocab-pessoas-emocoes.escape-room",
+  "trilha": "vocab-pessoas-emocoes",
+  "nome": "O escape room: scare, panic, joke…",
+  "emoji": "🔐",
+  "cena": "Num sábado em que o Ben visita Curitiba, você, ele e o Lucas encaram um escape room cheio de sustos e pistas confusas.",
+  "resumo": "Brincar, se assustar e rir em grupo: imaginação, assustar, curioso, susto, confusão, piada, bobo, nervos, pânico, gargalhada e humor.",
+  "fechamento": false,
+  "novos": [
+    "scare",
+    "frighten",
+    "joke",
+    "panic",
+    "curious",
+    "confusion",
+    "imagination",
+    "laughter",
+    "silly",
+    "humor",
+    "nerve"
+  ],
+  "apoio": [
+    "clue",
+    "lock",
+    "door",
+    "clock"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**scare** = assustar · **frighten** = assustar (formal) · **joke** = piada · **panic** = entrar em pânico · **curious** = curioso · **confusion** = confusão · **imagination** = imaginação · **laughter** = risada · **silly** = bobo · **humor** = humor · **nerve** = nervos, coragem"
+    },
+    {
+      "t": "ex",
+      "c": "Don't panic! We still have one minute.\nNão entra em pânico! A gente ainda tem um minuto."
+    },
+    {
+      "t": "tip",
+      "c": "**get on my nerves** = me dar nos nervos. **burst into laughter** = cair na gargalhada."
+    },
+    {
+      "t": "warn",
+      "c": "Confusão de bagunça = **mess**; de briga = **trouble**. **laughter** não tem plural. Passado: **panicked**."
+    }
+  ],
+  "imagem": "🔐🕯️😱",
+  "visualizacao": "Você está numa sala escura com o Ben e o Lucas. Um relógio faz tique-taque na parede, e uma porta range e se abre sozinha.",
+  "foto_busca": "escape room friends puzzle",
+  "trechos": [
+    {
+      "id": "f-223e33",
+      "quem": "atendente",
+      "cod": "You have sixty minutes. Use your imagination!",
+      "dica": "Vocês têm sessenta minutos. Usem a imaginação!",
+      "img": "⏱️💭",
+      "alvo": "imagination",
+      "alvo_pt": "imaginação",
+      "conceito": "use your imagination = usar a imaginação.",
+      "registro": "neutro",
+      "armadilhas": [
+        "imaginacion"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c90f10",
+      "quem": "atendente",
+      "cod": "Some rooms may frighten younger players.",
+      "dica": "(aviso) Algumas salas podem assustar jogadores mais novos.",
+      "img": "⚠️👻",
+      "alvo": "frighten",
+      "alvo_pt": "assustar",
+      "conceito": "frighten = assustar, mais formal ou escrito que scare.",
+      "var": [
+        {
+          "em": "may",
+          "aceita": [
+            "might",
+            "can"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "scare",
+        "fright"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-42d880",
+      "quem": "ben",
+      "cod": "I'm curious. What's behind that red door?",
+      "dica": "Estou curioso. O que tem atrás daquela porta vermelha?",
+      "img": "🧐🚪",
+      "alvo": "curious",
+      "alvo_pt": "curioso",
+      "conceito": "curious = curioso (quer saber); estranho = strange.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "have",
+        "curios"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b9116c",
+      "quem": "voce",
+      "cod": "Whoa! That door scared me!",
+      "dica": "Nossa! Aquela porta me assustou!",
+      "img": "😱🚪",
+      "alvo": "scared",
+      "alvo_pt": "assustou",
+      "conceito": "You scared me! = Você me assustou! be scared of = ter medo de.",
+      "registro": "informal",
+      "armadilhas": [
+        "scary",
+        "frightened"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Whoa",
+          "aceita": [
+            "Wow"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b13d83",
+      "quem": "ben",
+      "cod": "That last clue only caused more confusion.",
+      "dica": "Aquela última pista só causou mais confusão.",
+      "img": "🧩😵",
+      "alvo": "confusion",
+      "alvo_pt": "confusão",
+      "conceito": "confusion = confusão de entendimento; bagunça = mess.",
+      "registro": "informal",
+      "armadilhas": [
+        "mess",
+        "confusing"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10208802,
+        "en_autor": "DostKaplan",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "What he said caused a lot of confusion. → That last clue only caused more confusion.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ef64c7",
+      "quem": "lucas",
+      "cod": "Is this clue a joke? It makes no sense!",
+      "dica": "Essa pista é piada? Não faz sentido nenhum!",
+      "img": "🤡🧩",
+      "alvo": "joke",
+      "alvo_pt": "piada",
+      "conceito": "tell a joke = contar uma piada; I'm just joking = estou só brincando.",
+      "registro": "informal",
+      "armadilhas": [
+        "joking",
+        "do"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "makes no sense",
+          "aceita": [
+            "doesn't make any sense",
+            "doesn't make sense"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6d8d4d",
+      "quem": "voce",
+      "cod": "I made a silly mistake with the lock code.",
+      "dica": "Eu cometi um erro bobo com o código do cadeado.",
+      "img": "🙃🔢",
+      "alvo": "silly",
+      "alvo_pt": "bobo",
+      "conceito": "a silly mistake = um erro bobo. Cometer erro = make a mistake (não: do).",
+      "registro": "informal",
+      "interferencias": [
+        "BR32"
+      ],
+      "armadilhas": [
+        "did",
+        "stupid"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-243162",
+      "quem": "lucas",
+      "cod": "That ticking clock is getting on my nerves.",
+      "dica": "Esse relógio fazendo tique-taque está me dando nos nervos.",
+      "img": "⏰😤",
+      "alvo": "nerves",
+      "alvo_pt": "nervos",
+      "conceito": "get on my nerves = me dar nos nervos; lose your nerve = perder a coragem.",
+      "registro": "informal",
+      "armadilhas": [
+        "nervous"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0431e3",
+      "quem": "ben",
+      "cod": "Don't panic! We still have one minute.",
+      "dica": "Não entra em pânico! A gente ainda tem um minuto.",
+      "img": "😨⏳",
+      "alvo": "panic",
+      "alvo_pt": "entra em pânico",
+      "conceito": "panic = entrar em pânico; passado com k: panicked.",
+      "registro": "informal",
+      "armadilhas": [
+        "panicked",
+        "enter"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a4e8a1",
+      "quem": "voce",
+      "cod": "We all burst into laughter at the end.",
+      "dica": "Todos nós caímos na gargalhada no final.",
+      "img": "🤣🔓",
+      "alvo": "laughter",
+      "alvo_pt": "gargalhada",
+      "conceito": "burst into laughter = cair na gargalhada; laughter não tem plural.",
+      "registro": "informal",
+      "armadilhas": [
+        "laughters",
+        "laugh"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7268087,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "The crowd burst into laughter. → We all burst into laughter at the end.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-c7afc5",
+      "quem": "atendente",
+      "cod": "You three have a great sense of humor.",
+      "dica": "Vocês três têm um ótimo senso de humor.",
+      "img": "😄🎭",
+      "alvo": "humor",
+      "alvo_pt": "humor",
+      "conceito": "a sense of humor = senso de humor. Grafia en-US: humor (britânico: humour).",
+      "registro": "neutro",
+      "armadilhas": [
+        "humour"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5214629,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I love your sense of humor. → You three have a great sense of humor.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

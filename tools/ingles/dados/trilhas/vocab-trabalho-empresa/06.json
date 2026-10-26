@@ -1,0 +1,329 @@
+{
+  "id": "vocab-trabalho-empresa.ben-muda-de-emprego",
+  "trilha": "vocab-trabalho-empresa",
+  "nome": "Mudar de emprego: resign, wage…",
+  "emoji": "☕",
+  "cena": "Numa chamada de vídeo na sexta à noite, o Ben conta que pediu demissão e está procurando emprego em Boston.",
+  "resumo": "As palavras de trocar de emprego: resign, job hunting, employer, compensation, trial period, wage…",
+  "fechamento": false,
+  "novos": [
+    "resign",
+    "hunt",
+    "employment",
+    "employer",
+    "wage",
+    "compensation",
+    "flexible",
+    "arrangement",
+    "trial",
+    "labor",
+    "union"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Trocar de emprego"
+    },
+    {
+      "t": "p",
+      "c": "**resign** pedir demissão · **hunt** procurar (job hunting) · **employment** emprego, vínculo · **employer** empregador · **wage** salário por hora · **compensation** remuneração · **flexible** flexível · **arrangement** esquema, acordo · **trial** experiência, teste · **labor** trabalho, mão de obra · **union** sindicato"
+    },
+    {
+      "t": "ex",
+      "c": "The salary is good, but there's a 90-day trial period.\nO salário é bom, mas tem um período de experiência de 90 dias."
+    },
+    {
+      "t": "tip",
+      "c": "employer contrata (-er); employee é contratado (-ee)."
+    },
+    {
+      "t": "warn",
+      "c": "**resign** = pedir demissão, não resignar-se. **compensation** = remuneração."
+    }
+  ],
+  "imagem": "💻🌙☕",
+  "visualizacao": "Sexta à noite, luz baixa na sala. O Ben aparece na tela com um moletom e uma caneca, rindo meio nervoso, e você puxa a cadeira para ouvir a novidade.",
+  "foto_busca": "friends video call evening home",
+  "trechos": [
+    {
+      "id": "f-4d2ecf",
+      "quem": "ben",
+      "cod": "I finally resigned.",
+      "dica": "Finalmente pedi demissão.",
+      "img": "📦🚪👋",
+      "alvo": "resigned",
+      "alvo_pt": "pedi demissão",
+      "conceito": "resign = pedir demissão (formal; na conversa, quit). Resignar-se = accept it.",
+      "registro": "informal",
+      "interferencias": [
+        "BR56",
+        "BR40"
+      ],
+      "armadilhas": [
+        "resignated",
+        "demitted",
+        "quit"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4724946,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Tom has finally resigned.\"; Tom has → I (passado simples); PT original: \"Tom finalmente renunciou.\"; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0fbdf7",
+      "quem": "voce",
+      "contexto": "f-4d2ecf",
+      "cod": "Wow! So you're job hunting now?",
+      "dica": "Nossa! Então você está procurando emprego agora?",
+      "img": "🔍💼",
+      "alvo": "job hunting",
+      "alvo_pt": "procurando emprego",
+      "lit": "[lit.: caçando emprego]",
+      "conceito": "hunt aqui é só figurado: job hunting, house hunting = procurar emprego, casa.",
+      "registro": "informal",
+      "armadilhas": [
+        "searching job",
+        "hunting job",
+        "looking for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-53a74c",
+      "quem": "ben",
+      "contexto": "f-0fbdf7",
+      "cod": "Yeah. Every application asks for my employment history.",
+      "dica": "É. Toda candidatura pede o meu histórico profissional.",
+      "img": "📝📜",
+      "alvo": "employment history",
+      "alvo_pt": "histórico profissional",
+      "conceito": "employment = emprego, vínculo empregatício; mais formal que job, comum em contrato e formulário.",
+      "registro": "informal",
+      "interferencias": [
+        "BR24",
+        "BR42"
+      ],
+      "armadilhas": [
+        "history of employment",
+        "asks my"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b58b42",
+      "quem": "ben",
+      "cod": "My old employer wouldn't let me work from home.",
+      "dica": "O meu antigo empregador não me deixava trabalhar de casa.",
+      "img": "🏢🚫🏠",
+      "alvo": "employer",
+      "alvo_pt": "empregador",
+      "conceito": "employer = empregador (quem contrata); employee = funcionário (quem é contratado).",
+      "registro": "informal",
+      "interferencias": [
+        "BR07",
+        "BR16"
+      ],
+      "armadilhas": [
+        "employee",
+        "let me to"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "old",
+          "aceita": [
+            "former",
+            "previous"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-db69d3",
+      "quem": "voce",
+      "contexto": "f-b58b42",
+      "cod": "So a flexible schedule is important for you now.",
+      "dica": "Então um horário flexível é importante para você agora.",
+      "img": "🕰️🤸",
+      "alvo": "flexible",
+      "alvo_pt": "flexível",
+      "conceito": "flexible = flexível (flexible hours, a flexible schedule).",
+      "var": [
+        {
+          "em": "schedule",
+          "aceita": [
+            "hours"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "flexivel",
+        "schedule flexible"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5ec327",
+      "quem": "ben",
+      "cod": "One company offered me a good arrangement: two days a week in the office.",
+      "dica": "Uma empresa me ofereceu um esquema bom: dois dias por semana no escritório.",
+      "img": "🗓️🏢🏠",
+      "alvo": "arrangement",
+      "alvo_pt": "esquema",
+      "conceito": "arrangement = combinado, esquema, acordo (a flexible work arrangement).",
+      "blocos": [
+        7
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "scheme",
+        "deal"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-94efeb",
+      "quem": "voce",
+      "contexto": "f-5ec327",
+      "cod": "Nice! What about the compensation package?",
+      "dica": "Legal! E o pacote de remuneração?",
+      "img": "💵🎁",
+      "alvo": "compensation package",
+      "alvo_pt": "pacote de remuneração",
+      "conceito": "compensation (RH) = remuneração: salário + benefícios. Não é compensar um dano.",
+      "var": [
+        {
+          "em": "What about",
+          "aceita": [
+            "How about"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "remuneration",
+        "salary package"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b0f166",
+      "quem": "ben",
+      "contexto": "f-94efeb",
+      "cod": "The salary is good, but there's a 90-day trial period.",
+      "dica": "O salário é bom, mas tem um período de experiência de 90 dias.",
+      "img": "⏳📆✅",
+      "alvo": "trial period",
+      "alvo_pt": "período de experiência",
+      "conceito": "trial period = período de experiência; free trial = teste grátis. Tem (existir) = there is.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "has a 90",
+        "experience period"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-efabc1",
+      "quem": "ben",
+      "cod": "The labor market in Boston is really strong right now.",
+      "dica": "O mercado de trabalho em Boston está muito aquecido agora.",
+      "img": "📈🏙️",
+      "alvo": "labor market",
+      "alvo_pt": "mercado de trabalho",
+      "conceito": "labor = trabalho, mão de obra (EUA, sem u; labour é britânico). Labor Day = feriado de setembro.",
+      "var": [
+        {
+          "em": "strong",
+          "aceita": [
+            "hot"
+          ]
+        },
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "labour",
+        "work market"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-19f21d",
+      "quem": "ben",
+      "cod": "The other company pays an hourly wage, not a salary.",
+      "dica": "A outra empresa paga salário por hora, não salário fixo.",
+      "img": "⏱️💵",
+      "alvo": "hourly wage",
+      "alvo_pt": "salário por hora",
+      "conceito": "wage = salário pago por hora ou semana; salário mensal ou anual de escritório = salary.",
+      "registro": "informal",
+      "interferencias": [
+        "BR35",
+        "BR12"
+      ],
+      "armadilhas": [
+        "salary per hour",
+        "pays a hourly"
+      ],
+      "origem": "autoral_ia",
+      "contexto": "f-5ec327"
+    },
+    {
+      "id": "f-504ae8",
+      "quem": "ben",
+      "cod": "My dad had a union job with great benefits.",
+      "dica": "O meu pai tinha um emprego sindicalizado com ótimos benefícios.",
+      "img": "👷🤝🏥",
+      "alvo": "union job",
+      "alvo_pt": "emprego sindicalizado",
+      "conceito": "union = sindicato; a union job = emprego coberto por um sindicato.",
+      "registro": "informal",
+      "interferencias": [
+        "BR24",
+        "BR40"
+      ],
+      "armadilhas": [
+        "syndicate",
+        "work of union"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "dad",
+          "aceita": [
+            "father"
+          ]
+        }
+      ]
+    }
+  ]
+}

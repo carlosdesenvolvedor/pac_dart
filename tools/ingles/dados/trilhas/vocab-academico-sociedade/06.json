@@ -1,0 +1,278 @@
+{
+  "id": "vocab-academico-sociedade.integracao-da-novata",
+  "trilha": "vocab-academico-sociedade",
+  "nome": "A semana de integração da novata",
+  "emoji": "🧭",
+  "cena": "Uma dev júnior acabou de entrar no time, insegura no primeiro emprego, e você conduz a semana de integração dela, com a Ana ajudando.",
+  "resumo": "Receber quem chega: orientation week, novice, competence, expertise, on-call rotation, impostor syndrome.",
+  "fechamento": false,
+  "novos": [
+    "orientation",
+    "orient",
+    "novice",
+    "competence",
+    "competent",
+    "expertise",
+    "rotation",
+    "informal",
+    "interact",
+    "forum",
+    "syndrome"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**orientation** integração · **orient** ambientar · **novice** novato · **competence** competência · **competent** competente · **expertise** expertise · **rotation** escala, rodízio · **informal** informal · **interact** interagir · **forum** fórum · **syndrome** síndrome"
+    },
+    {
+      "t": "ex",
+      "c": "In your second month, you'll join the on-call rotation.\nNo seu segundo mês, você vai entrar na escala de plantão."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **orientation week**, **interact with**, **impostor syndrome**."
+    },
+    {
+      "t": "warn",
+      "c": "**orientation** é a integração de novatos; orientação (conselho) = guidance. **expertise** é incontável."
+    }
+  ],
+  "imagem": "🧭💻👋",
+  "visualizacao": "Você está numa chamada com a dev nova, que sorri meio tímida com o caderno aberto. A Ana entra na chamada com uma caneca e compartilha a tela com o mapa das ferramentas do time.",
+  "foto_busca": "new employee onboarding video call",
+  "trechos": [
+    {
+      "id": "f-0044a7",
+      "quem": "mike",
+      "cod": "Can you run the orientation week for our new junior dev?",
+      "dica": "Você pode conduzir a semana de integração da nossa nova dev júnior?",
+      "img": "🧭📅👩‍💻",
+      "alvo": "orientation week",
+      "alvo_pt": "semana de integração",
+      "conceito": "orientation = integração de quem chega. Orientação (conselho) = guidance; orientador = advisor.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "guidance"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b3203d",
+      "quem": "voce",
+      "cod": "Our goal this week is to orient you to the codebase.",
+      "dica": "Nosso objetivo esta semana é te ambientar no código.",
+      "img": "🗺️💻",
+      "alvo": "orient",
+      "alvo_pt": "ambientar",
+      "conceito": "orient someone to = ambientar alguém em. Orientate é britânico; en-US usa orient.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR05"
+      ],
+      "armadilhas": [
+        "orientate"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e39121",
+      "quem": "dev-nova",
+      "cod": "I'm a novice at this kind of work.",
+      "dica": "Sou novata nesse tipo de trabalho.",
+      "img": "🐣💼",
+      "alvo": "novice",
+      "alvo_pt": "novata",
+      "conceito": "novice = novato, iniciante (mais formal). Na conversa: beginner ou newbie.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 8106686,
+        "en_autor": "AlanF_US",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito no feminino (fala da dev nova)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-224d8b",
+      "quem": "voce",
+      "contexto": "f-e39121",
+      "cod": "That's okay. Technical competence comes with time.",
+      "dica": "Tudo bem. A competência técnica vem com o tempo.",
+      "img": "⏳📈🧠",
+      "alvo": "Technical competence",
+      "alvo_pt": "competência técnica",
+      "conceito": "competence = competência; technical competence, sem artigo em generalização.",
+      "var": [
+        {
+          "em": "okay",
+          "aceita": [
+            "OK",
+            "ok"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR21"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5e3bba",
+      "quem": "dev-nova",
+      "cod": "I think I have a bit of impostor syndrome.",
+      "dica": "Acho que estou com um pouco de síndrome do impostor.",
+      "img": "🎭😟",
+      "alvo": "impostor syndrome",
+      "alvo_pt": "síndrome do impostor",
+      "conceito": "impostor syndrome = sentir que não é bom o bastante. Também se escreve imposter.",
+      "var": [
+        {
+          "em": "impostor",
+          "aceita": [
+            "imposter"
+          ]
+        },
+        {
+          "em": "a bit of",
+          "aceita": [
+            "a little"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dab61c",
+      "quem": "voce",
+      "contexto": "f-5e3bba",
+      "cod": "You don't need to be perfect, just competent and curious.",
+      "dica": "Você não precisa ser perfeita, só competente e curiosa.",
+      "img": "🙂🔍",
+      "alvo": "competent",
+      "alvo_pt": "competente",
+      "conceito": "competent = competente, faz bem o que precisa (elogio moderado). Elogio forte: great, excellent.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR07"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "don't need to",
+          "aceita": [
+            "don't have to"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-93e534",
+      "quem": "mike",
+      "cod": "Ana has a lot of expertise in accessibility.",
+      "dica": "A Ana tem muita expertise em acessibilidade.",
+      "img": "🎨♿⭐",
+      "alvo": "expertise",
+      "alvo_pt": "expertise",
+      "conceito": "expertise (ek-sper-TEEZ) = conhecimento especializado; incontável: a lot of expertise.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR22"
+      ],
+      "armadilhas": [
+        "expertises"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e9a990",
+      "quem": "ana",
+      "cod": "In your second month, you'll join the on-call rotation.",
+      "dica": "No seu segundo mês, você vai entrar na escala de plantão.",
+      "img": "📟🔄📆",
+      "alvo": "on-call rotation",
+      "alvo_pt": "escala de plantão",
+      "conceito": "rotation = rodízio; on-call rotation = escala de plantão do time.",
+      "var": [
+        {
+          "em": "you'll",
+          "aceita": [
+            "you will"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ec86cd",
+      "quem": "voce",
+      "cod": "Friday's meeting is informal, so feel free to ask anything.",
+      "dica": "A reunião de sexta é informal, então fica à vontade para perguntar qualquer coisa.",
+      "img": "☕💬🙋‍♀️",
+      "alvo": "informal",
+      "alvo_pt": "informal",
+      "conceito": "informal = informal, descontraído; an informal chat = um bate-papo informal.",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-82ea3b",
+      "quem": "ana",
+      "cod": "Try to interact with other squads, not just ours.",
+      "dica": "Tenta interagir com outros squads, não só com o nosso.",
+      "img": "👥↔️👥",
+      "alvo": "interact with",
+      "alvo_pt": "interagir com",
+      "conceito": "interact with = interagir com; sempre com with.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "just",
+          "aceita": [
+            "only"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-c8666a",
+      "quem": "voce",
+      "cod": "You can post your questions on the internal forum.",
+      "dica": "Você pode postar suas dúvidas no fórum interno.",
+      "img": "🗂️❓💬",
+      "alvo": "internal forum",
+      "alvo_pt": "fórum interno",
+      "conceito": "forum = espaço de discussão; on the forum (en-US). O fórum (tribunal) = courthouse.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "courthouse"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

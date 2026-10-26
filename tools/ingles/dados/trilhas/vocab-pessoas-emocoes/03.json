@@ -1,0 +1,286 @@
+{
+  "id": "vocab-pessoas-emocoes.demo-para-o-cliente",
+  "trilha": "vocab-pessoas-emocoes",
+  "nome": "A demo para o cliente: relief, honor…",
+  "emoji": "🎤",
+  "cena": "Você e a Sarah apresentam a nova versão do app a um cliente por vídeo; a internet cai no meio da demo, mas tudo acaba bem.",
+  "resumo": "Reagir numa reunião com cliente: prazer, presença, satisfazer, reação, satisfação, maneira, alívio, choque, espírito e honra.",
+  "fechamento": false,
+  "novos": [
+    "satisfy",
+    "presence",
+    "reaction",
+    "pleasure",
+    "spirit",
+    "shock",
+    "manner",
+    "relief",
+    "honor",
+    "satisfaction"
+  ],
+  "apoio": [
+    "client",
+    "demo",
+    "version",
+    "design",
+    "connection"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**satisfy** = satisfazer · **presence** = presença · **reaction** = reação · **pleasure** = prazer · **spirit** = espírito · **shock** = choque · **manner** = maneira · **relief** = alívio · **honor** = honra · **satisfaction** = satisfação"
+    },
+    {
+      "t": "ex",
+      "c": "It's a pleasure to meet you both.\nÉ um prazer conhecer vocês dois."
+    },
+    {
+      "t": "tip",
+      "c": "**My pleasure.** = Imagina, por nada. **What a relief!** = Que alívio! **team spirit** = espírito de equipe."
+    },
+    {
+      "t": "warn",
+      "c": "**manner** = modo; **manners** = boas maneiras. **honor** tem h mudo: **an honor**."
+    }
+  ],
+  "imagem": "🎤💻🤝",
+  "visualizacao": "Você está na call com o cliente, a Sarah ao lado na tela e o app novo aberto. De repente a imagem congela, e o seu coração dispara.",
+  "foto_busca": "client video call product demo",
+  "trechos": [
+    {
+      "id": "f-78377f",
+      "quem": "cliente",
+      "cod": "It's a pleasure to meet you both.",
+      "dica": "É um prazer conhecer vocês dois.",
+      "img": "🤝😊",
+      "alvo": "pleasure",
+      "alvo_pt": "prazer",
+      "conceito": "It's a pleasure to meet you = é um prazer. My pleasure = por nada.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR36"
+      ],
+      "armadilhas": [
+        "know"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3726715,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "It's a pleasure to meet you, sir. → It's a pleasure to meet you both.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e76b78",
+      "quem": "sarah",
+      "cod": "This update will give your brand a much stronger online presence.",
+      "dica": "Esta atualização vai dar à marca de vocês uma presença online muito mais forte.",
+      "img": "📱🌐💪",
+      "alvo": "presence",
+      "alvo_pt": "presença",
+      "conceito": "online presence = presença online. Your presence (= a sua presença) soa formal; na fala: Thanks for being here.",
+      "registro": "neutro",
+      "armadilhas": [
+        "presency"
+      ],
+      "origem": "autoral_ia",
+      "blocos": [
+        6
+      ]
+    },
+    {
+      "id": "f-041527",
+      "quem": "voce",
+      "cod": "We built this version to satisfy all your team's requirements.",
+      "dica": "Fizemos esta versão para satisfazer todos os requisitos do seu time.",
+      "img": "🛠️✅",
+      "alvo": "satisfy",
+      "alvo_pt": "satisfazer",
+      "conceito": "satisfy the requirements = satisfazer os requisitos; satisfy the client = satisfazer o cliente.",
+      "var": [
+        {
+          "em": "built",
+          "aceita": [
+            "made"
+          ]
+        },
+        {
+          "em": "all",
+          "aceita": [
+            "all of"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "satisfied"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-24b193",
+      "quem": "voce",
+      "cod": "What was your first reaction to the new design?",
+      "dica": "Qual foi a sua primeira reação ao novo design?",
+      "img": "😮🎨",
+      "alvo": "reaction",
+      "alvo_pt": "reação",
+      "conceito": "reaction to = reação a.",
+      "registro": "neutro",
+      "armadilhas": [
+        "reation"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2545684,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "What was Tom's reaction? → What was your first reaction to the new design?; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-62f4ad",
+      "quem": "cliente",
+      "cod": "This will really improve our customer satisfaction.",
+      "dica": "Isso vai melhorar muito a satisfação dos nossos clientes.",
+      "img": "📈😀",
+      "alvo": "satisfaction",
+      "alvo_pt": "satisfação",
+      "conceito": "customer satisfaction = satisfação dos clientes.",
+      "registro": "neutro",
+      "armadilhas": [
+        "satisfy"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-11346b",
+      "quem": "sarah",
+      "cod": "Losing the internet in the middle of the demo was a shock.",
+      "dica": "Perder a internet no meio da demo foi um choque.",
+      "img": "📡⚡",
+      "alvo": "shock",
+      "alvo_pt": "choque",
+      "conceito": "It came as a shock = foi um choque. Surpresa boa = a pleasant surprise.",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "chock"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-46d12a",
+      "quem": "cliente",
+      "cod": "You handled the connection problem in a very professional manner.",
+      "dica": "Vocês lidaram com o problema de conexão de uma maneira muito profissional.",
+      "img": "📶👔",
+      "alvo": "manner",
+      "alvo_pt": "maneira",
+      "conceito": "in a professional manner = de uma maneira profissional; manners = boas maneiras.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "manners"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8e63f1",
+      "quem": "sarah",
+      "contexto": "f-46d12a",
+      "cod": "That's a relief to hear!",
+      "dica": "É um alívio ouvir isso!",
+      "img": "😌🙌",
+      "alvo": "relief",
+      "alvo_pt": "alívio",
+      "conceito": "What a relief! = Que alívio! Aliviado = relieved.",
+      "registro": "informal",
+      "armadilhas": [
+        "relieve"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3594018,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "That's a huge relief. → That's a relief to hear!; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "That's a relief to hear",
+          "aceita": [
+            "It's a relief to hear that"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-626d4a",
+      "quem": "mike",
+      "cod": "That's the kind of team spirit I love to see.",
+      "dica": "Esse é o tipo de espírito de equipe que eu adoro ver.",
+      "img": "👏👥",
+      "alvo": "spirit",
+      "alvo_pt": "espírito",
+      "conceito": "team spirit = espírito de equipe (sem sentido religioso).",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "spirity"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8cedbc",
+      "quem": "voce",
+      "contexto": "f-626d4a",
+      "cod": "It's an honor to work with you all.",
+      "dica": "É uma honra trabalhar com todos vocês.",
+      "img": "🏅🤗",
+      "alvo": "honor",
+      "alvo_pt": "honra",
+      "conceito": "Grafia en-US: honor (britânico: honour); h mudo, por isso an honor.",
+      "registro": "neutro",
+      "armadilhas": [
+        "honour",
+        "a honor"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9133614,
+        "en_autor": "acell",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "It was an honor to work with you all. → It's an honor to work with you all.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "id": "vocab-coisas-descricoes.metricas-sarah",
+  "trilha": "vocab-coisas-descricoes",
+  "nome": "Métricas: raw, accurate, precise…",
+  "emoji": "📈",
+  "cena": "A Sarah prepara a apresentação dos resultados do lançamento e pede a sua ajuda com os dados.",
+  "resumo": "Falar de dados: brutos, precisos, aceitáveis, desconhecidos e o oposto do esperado.",
+  "fechamento": false,
+  "novos": [
+    "broad",
+    "impossible",
+    "opposite",
+    "unknown",
+    "smooth",
+    "accurate",
+    "acceptable",
+    "distinct",
+    "raw",
+    "precise"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**broad** = amplo, geral · **impossible** = impossível · **opposite** = oposto · **unknown** = desconhecido · **smooth** = tranquilo; liso · **accurate** = preciso, correto · **acceptable** = aceitável · **distinct** = distinto · **raw** = bruto; cru · **precise** = exato"
+    },
+    {
+      "t": "ex",
+      "c": "Can you send me the raw data from the launch?\nVocê pode me mandar os dados brutos do lançamento?"
+    },
+    {
+      "t": "tip",
+      "c": "Expressões de relatório: **in broad terms** = em linhas gerais · **to be precise** = para ser exato · **a smooth launch** = um lançamento tranquilo."
+    },
+    {
+      "t": "warn",
+      "c": "**accurate** = fiel à realidade; **precise** = detalhado, exato. **the opposite of** + substantivo (sem to). Precisar = **need**."
+    }
+  ],
+  "imagem": "📈💻📊",
+  "visualizacao": "Você está na call com a Sarah, que mostra os slides do lançamento. Gráficos coloridos na tela, uma planilha aberta ao lado e o café esfriando na mesa.",
+  "foto_busca": "data dashboard charts laptop",
+  "trechos": [
+    {
+      "id": "f-1b8168",
+      "quem": "sarah",
+      "cod": "Can you send me the raw data from the launch?",
+      "dica": "Você pode me mandar os dados brutos do lançamento?",
+      "img": "🗃️📤",
+      "alvo": "raw",
+      "alvo_pt": "brutos",
+      "conceito": "raw data = dados brutos, sem tratamento; com comida, raw = cru.",
+      "registro": "neutro",
+      "armadilhas": [
+        "gross",
+        "brute"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-573dd5",
+      "quem": "voce",
+      "cod": "In broad terms, the launch went well.",
+      "dica": "Em linhas gerais, o lançamento foi bem.",
+      "img": "🗺️👍",
+      "alvo": "broad terms",
+      "alvo_pt": "linhas gerais",
+      "lit": "[lit.: em termos amplos]",
+      "conceito": "broad = amplo, geral: in broad terms, a broad overview.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5cf8e6",
+      "quem": "sarah",
+      "contexto": "f-573dd5",
+      "cod": "Yes, it was a smooth launch. No major bugs.",
+      "dica": "Foi, sim, um lançamento tranquilo. Nenhum bug grave.",
+      "img": "🚀😌",
+      "alvo": "smooth",
+      "alvo_pt": "tranquilo",
+      "conceito": "smooth = que correu sem problemas: a smooth launch. No sentido físico, liso.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0d0265",
+      "quem": "voce",
+      "cod": "These numbers aren't accurate yet. Some events were counted twice.",
+      "dica": "Esses números ainda não estão precisos. Alguns eventos foram contados duas vezes.",
+      "img": "🔢❌",
+      "alvo": "accurate",
+      "alvo_pt": "precisos",
+      "conceito": "accurate = preciso, fiel à realidade: accurate data. Acurado em PT é raro.",
+      "registro": "neutro",
+      "armadilhas": [
+        "precise",
+        "exact"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d13e78",
+      "quem": "voce",
+      "contexto": "Is a two percent error rate okay for the report?",
+      "cod": "Yes, that's perfectly acceptable for a first launch.",
+      "dica": "Sim, isso é perfeitamente aceitável para um primeiro lançamento.",
+      "img": "✅🙂",
+      "alvo": "acceptable",
+      "alvo_pt": "aceitável",
+      "conceito": "acceptable = aceitável: an acceptable error rate, acceptable to everyone.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7010437,
+        "en_autor": "Eccles17",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "That's perfectly acceptable. → Yes, that's perfectly acceptable for a first launch.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-fc6817",
+      "quem": "sarah",
+      "cod": "The cause of the crash is still unknown.",
+      "dica": "A causa do crash ainda é desconhecida.",
+      "img": "💥❓",
+      "alvo": "unknown",
+      "alvo_pt": "desconhecida",
+      "conceito": "unknown = desconhecido: for unknown reasons, an unknown error.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4500431,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "The number of casualties is still unknown. → The cause of the crash is still unknown.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cb4476",
+      "quem": "voce",
+      "cod": "New users and returning users show two distinct patterns.",
+      "dica": "Os usuários novos e os que voltam mostram dois padrões distintos.",
+      "img": "👥🔀",
+      "alvo": "distinct",
+      "alvo_pt": "distintos",
+      "conceito": "distinct = claramente diferente, separado (não distinto de elegante).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a7c443",
+      "quem": "sarah",
+      "cod": "On tablets, we have the opposite problem.",
+      "dica": "Nos tablets, a gente tem o problema oposto.",
+      "img": "📱🔄",
+      "alvo": "opposite",
+      "alvo_pt": "oposto",
+      "conceito": "opposite = oposto: the opposite problem, the opposite of + substantivo.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3251020,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I have the opposite problem. → On tablets, we have the opposite problem.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a1da38",
+      "quem": "voce",
+      "cod": "To be precise, retention went up 11 percent.",
+      "dica": "Para ser exato, a retenção subiu 11 por cento.",
+      "img": "📏📈",
+      "alvo": "precise",
+      "alvo_pt": "exato",
+      "conceito": "to be precise = para ser exato; precise = detalhado, exato. Precisar = need.",
+      "pt_f": "Para ser exata, a retenção subiu 11 por cento.",
+      "registro": "neutro",
+      "armadilhas": [
+        "precisely",
+        "exact"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "went up",
+          "aceita": [
+            "rose",
+            "increased"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-2aba65",
+      "quem": "sarah",
+      "cod": "It's impossible to predict next month's numbers with this data.",
+      "dica": "É impossível prever os números do próximo mês com esses dados.",
+      "img": "🔮🚫",
+      "alvo": "impossible",
+      "alvo_pt": "impossível",
+      "conceito": "impossible = impossível: almost impossible, impossible to predict.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

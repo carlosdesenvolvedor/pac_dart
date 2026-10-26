@@ -1,0 +1,192 @@
+{
+  "id": "vocab-esporte-arte-cultura.museu-de-arte",
+  "trilha": "vocab-esporte-arte-cultura",
+  "nome": "No museu de arte: artist, gallery…",
+  "emoji": "🖼️",
+  "cena": "A Ana visita Chicago e o Mike leva vocês dois a um museu de arte no domingo; ela comenta as obras e quer ir a uma feira de artesanato.",
+  "resumo": "Oito palavras de arte: collection, artist, exhibition, exhibit, contemporary, creative, gallery e craft.",
+  "fechamento": false,
+  "novos": [
+    "collection",
+    "artist",
+    "exhibition",
+    "exhibit",
+    "contemporary",
+    "creative",
+    "gallery",
+    "craft"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Um domingo no museu"
+    },
+    {
+      "t": "p",
+      "c": "**collection** coleção, acervo · **artist** artista · **exhibition** exposição · **exhibit** mostra; peça exposta · **contemporary** contemporâneo · **creative** criativo · **gallery** galeria · **craft** artesanato; ofício"
+    },
+    {
+      "t": "ex",
+      "c": "This museum has an amazing collection of American art.\nEste museu tem uma coleção incrível de arte americana."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: a photography exhibition, a new exhibit, contemporary art, an art gallery, arts and crafts, a craft fair."
+    },
+    {
+      "t": "warn",
+      "c": "O h de exhibit e exhibition é mudo. contemporary art é a arte de hoje; modern art vai de 1870 a 1970, mais ou menos."
+    }
+  ],
+  "imagem": "🖼️🏛️🎨",
+  "visualizacao": "Você está num salão branco e iluminado, com quadros enormes nas paredes. A Ana chega bem perto de uma obra, e o Mike lê a plaquinha em voz baixa.",
+  "foto_busca": "art museum gallery visitors paintings",
+  "trechos": [
+    {
+      "id": "f-7ceda0",
+      "quem": "mike",
+      "cod": "This museum has an amazing collection of American art.",
+      "dica": "Este museu tem uma coleção incrível de arte americana.",
+      "img": "🖼️🗂️",
+      "alvo": "collection",
+      "alvo_pt": "coleção",
+      "conceito": "collection = coleção, acervo: the permanent collection. No trabalho: data collection.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-192094",
+      "quem": "ana",
+      "cod": "The artist used only three colors in this painting.",
+      "dica": "O artista usou só três cores neste quadro.",
+      "img": "🎨🔴🔵",
+      "alvo": "artist",
+      "alvo_pt": "artista",
+      "conceito": "artist = sobretudo artista plástico; para ator e cantor, actor, singer, performer.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d89291",
+      "quem": "mike",
+      "cod": "There's also a photography exhibition on the second floor.",
+      "dica": "Também tem uma exposição de fotografia no segundo andar.",
+      "img": "📷🖼️",
+      "alvo": "photography exhibition",
+      "alvo_pt": "exposição de fotografia",
+      "conceito": "exhibition = exposição; o x soa /ks/ e o h é mudo.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03",
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7df8ee",
+      "quem": "mike",
+      "cod": "The new exhibit runs through October twentieth.",
+      "dica": "A mostra nova vai até vinte de outubro.",
+      "img": "📅🖼️",
+      "alvo": "exhibit",
+      "alvo_pt": "mostra",
+      "conceito": "No en-US, exhibit = mostra, exposição, e também a peça exposta. runs through = fica até.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4498401,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado new; 20th escrito por extenso (twentieth)",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "through",
+          "aceita": [
+            "until"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8f5289",
+      "quem": "ana",
+      "cod": "Let's see the contemporary art section next.",
+      "dica": "Em seguida, vamos ver a seção de arte contemporânea.",
+      "img": "🌀🖌️",
+      "alvo": "contemporary art",
+      "alvo_pt": "arte contemporânea",
+      "conceito": "contemporary = contemporâneo, de hoje; tônica: con-TEM-po-ra-ry.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d57a04",
+      "quem": "ana",
+      "cod": "This piece is so creative! It's all made of paper.",
+      "dica": "Essa obra é tão criativa! É toda feita de papel.",
+      "img": "📄💡",
+      "alvo": "creative",
+      "alvo_pt": "criativa",
+      "conceito": "creative = criativo; creativity = criatividade.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-80c08f",
+      "quem": "ana",
+      "cod": "A friend of mine from Recife works at an art gallery.",
+      "dica": "Uma amiga minha de Recife trabalha numa galeria de arte.",
+      "img": "👩‍🎨🏢",
+      "alvo": "art gallery",
+      "alvo_pt": "galeria de arte",
+      "conceito": "gallery = galeria; a friend of mine = um amigo meu, uma amiga minha.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7767257,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom trocado por A friend of mine from Recife",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "at",
+          "aceita": [
+            "in"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-90c8a8",
+      "quem": "ana",
+      "cod": "Can we stop by the craft fair after lunch?",
+      "dica": "A gente pode passar na feira de artesanato depois do almoço?",
+      "img": "🧶🛍️",
+      "alvo": "craft fair",
+      "alvo_pt": "feira de artesanato",
+      "conceito": "craft = artesanato e ofício; arts and crafts = artesanato. stop by = passar rapidinho.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "id": "vocab-verbos-acao.ajustes-layout",
+  "trilha": "vocab-verbos-acao",
+  "nome": "Ajustes no layout: collapse, snap, fade…",
+  "emoji": "🎨",
+  "cena": "A Ana revisa com você os ajustes finos da nova tela no app: o menu lateral, as animações e o texto.",
+  "resumo": "Nove palavras de interface: collapse, adjustment, movement, fine-tune, fade out, snap e outras.",
+  "fechamento": false,
+  "novos": [
+    "collapse",
+    "tune",
+    "mount",
+    "snap",
+    "fade",
+    "adjustment",
+    "substitute",
+    "movement",
+    "bend"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Palavras de interface"
+    },
+    {
+      "t": "p",
+      "c": "**collapse** recolher · **adjustment** ajuste · **movement** movimento · **fine-tune** fazer ajuste fino · **fade out** sumir aos poucos · **snap** encaixar · **mount** montar (componente) · **substitute** substituto · **bend the rules** flexibilizar as regras"
+    },
+    {
+      "t": "ex",
+      "c": "Can we collapse the sidebar on small screens?\nDá para recolher o menu lateral nas telas pequenas?"
+    },
+    {
+      "t": "tip",
+      "c": "make an adjustment (não: do an adjustment). O oposto de collapse é expand."
+    },
+    {
+      "t": "warn",
+      "c": "substitute A for B = usar A no lugar de B (ordem inversa do português). Na dúvida, diga replace B with A."
+    }
+  ],
+  "imagem": "🎨📱✨",
+  "visualizacao": "A Ana compartilha o protótipo ao lado do app rodando no seu celular. Ela aponta o menu lateral, repete a animação devagar e circula o texto que estoura a caixa.",
+  "foto_busca": "designer reviewing mobile app layout",
+  "trechos": [
+    {
+      "id": "f-015479",
+      "quem": "ana",
+      "cod": "Can we collapse the sidebar on small screens?",
+      "dica": "Dá para recolher o menu lateral nas telas pequenas?",
+      "img": "📱↔️",
+      "alvo": "collapse",
+      "alvo_pt": "recolher",
+      "conceito": "collapse = recolher (menu, seção). Também desabar. O oposto, na interface: expand.",
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5174b2",
+      "quem": "voce",
+      "contexto": "f-015479",
+      "cod": "Sure, I'll make a small adjustment to the layout.",
+      "dica": "Claro, vou fazer um pequeno ajuste no layout.",
+      "img": "🔧📐",
+      "alvo": "adjustment",
+      "alvo_pt": "ajuste",
+      "conceito": "make an adjustment to = fazer um ajuste em (não: do an adjustment).",
+      "var": [
+        {
+          "em": "I'll",
+          "aceita": [
+            "I will"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR32"
+      ],
+      "armadilhas": [
+        "do"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d307af",
+      "quem": "ana",
+      "cod": "The menu's movement is a little too fast.",
+      "dica": "O movimento do menu está um pouco rápido demais.",
+      "img": "🏃‍♀️💨",
+      "alvo": "movement",
+      "alvo_pt": "movimento",
+      "conceito": "movement = movimento de algo na tela. Em design, motion é o termo geral.",
+      "registro": "informal",
+      "interferencias": [
+        "BR23"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "The menu's movement",
+          "aceita": [
+            "The movement of the menu"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ba9492",
+      "quem": "ana",
+      "cod": "Let's fine-tune the timing of the animation.",
+      "dica": "Vamos fazer um ajuste fino no tempo da animação.",
+      "img": "🎛️⏱️",
+      "alvo": "fine-tune",
+      "alvo_pt": "ajuste fino",
+      "conceito": "fine-tune = fazer o ajuste fino. tune sozinho também é afinar instrumento.",
+      "registro": "informal",
+      "interferencias": [
+        "BR10"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7d29a4",
+      "quem": "ana",
+      "cod": "When you tap outside, the menu should fade out.",
+      "dica": "Quando você toca fora, o menu devia sumir aos poucos.",
+      "img": "👆🌫️",
+      "alvo": "fade out",
+      "alvo_pt": "sumir aos poucos",
+      "conceito": "fade out = sumir aos poucos; fade in = aparecer aos poucos.",
+      "registro": "informal",
+      "interferencias": [
+        "BR60"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-df5a8b",
+      "quem": "voce",
+      "cod": "These cards snap into place when you drop them.",
+      "dica": "Esses cards se encaixam no lugar quando você solta.",
+      "img": "🧲🃏",
+      "alvo": "snap into place",
+      "alvo_pt": "se encaixam no lugar",
+      "conceito": "snap into place = encaixar no lugar. Em inglês, o objeto them é obrigatório.",
+      "registro": "informal",
+      "interferencias": [
+        "BR18",
+        "BR62"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-136f82",
+      "quem": "voce",
+      "cod": "The component mounts before the data arrives.",
+      "dica": "O componente monta antes de os dados chegarem.",
+      "img": "🧱⏳",
+      "alvo": "mounts",
+      "alvo_pt": "monta",
+      "conceito": "mount (React, Flutter) = o componente entra na tela. Fora do código: fixar na parede.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9dff7a",
+      "quem": "ana",
+      "cod": "Let's use an icon as a substitute for this long text.",
+      "dica": "Vamos usar um ícone como substituto desse texto longo.",
+      "img": "🖼️🔄",
+      "alvo": "substitute",
+      "alvo_pt": "substituto",
+      "conceito": "a substitute for = um substituto de. Verbo: substitute A for B = usar A no lugar de B.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5fae10",
+      "quem": "ana",
+      "cod": "We can bend the rules a little on this screen.",
+      "dica": "A gente pode flexibilizar as regras um pouco nessa tela.",
+      "img": "📏🤸",
+      "alvo": "bend the rules",
+      "alvo_pt": "flexibilizar as regras",
+      "lit": "[lit.: dobrar as regras]",
+      "conceito": "bend the rules = abrir uma exceção (no design system, por exemplo). Passado: bent.",
+      "registro": "informal",
+      "interferencias": [
+        "BR19"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

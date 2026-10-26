@@ -81,7 +81,7 @@ void main() {
         expect(bloc.state.errosTrecho, 0, reason: '"${x.f.cod}" (tolerante: $tolerante)');
       }
     }
-  });
+  }, timeout: const Timeout(Duration(minutes: 3))); // 7 mil frases: passa de 30 s com a máquina ocupada
 
   test('voz nativa: todo "au" é um mp3 de assets/ingles/audio/ que existe, com autor e licença', () {
     final comAudio = frases.where((x) => x.f.audio.isNotEmpty).toList();

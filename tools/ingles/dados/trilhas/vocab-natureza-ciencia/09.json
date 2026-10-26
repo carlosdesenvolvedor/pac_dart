@@ -1,0 +1,274 @@
+{
+  "id": "vocab-natureza-ciencia.feira-do-condado",
+  "trilha": "vocab-natureza-ciencia",
+  "nome": "Feira agrícola do condado",
+  "emoji": "🐄",
+  "cena": "A Emma, sua vizinha, leva você à feira agrícola do condado: concurso de vacas, porcos e ovelhas, raças de cachorro, rosas premiadas e uma barraca de orgânicos.",
+  "resumo": "Falar de fazenda e feira: cows, pigs, sheep, breed, tail, roses, organic, grains, seeds, soil.",
+  "fechamento": false,
+  "novos": [
+    "seed",
+    "soil",
+    "breed",
+    "agricultural",
+    "pig",
+    "tail",
+    "cow",
+    "sheep",
+    "grain",
+    "organic",
+    "rose"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Palavras da fazenda e da feira"
+    },
+    {
+      "t": "p",
+      "c": "**seed** semente · **soil** solo, terra (de plantar) · **breed** raça (de animal) · **agricultural** agrícola · **pig** porco · **tail** rabo · **cow** vaca · **sheep** ovelha · **grain** grão · **organic** orgânico · **rose** rosa (flor)"
+    },
+    {
+      "t": "ex",
+      "c": "What breed is that big white dog?\nDe que raça é aquele cachorro grande e branco?"
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **wag its tail** (abanar o rabo), **whole grains** (grãos integrais), **organic food** (comida orgânica), **plant seeds** (plantar sementes)."
+    },
+    {
+      "t": "warn",
+      "c": "Raça de animal é **breed** (não: race). A carne de porco é **pork** e a de vaca, **beef**. E **sheep** é igual no plural: ten sheep."
+    }
+  ],
+  "imagem": "🎡🐄🌹",
+  "visualizacao": "Você caminha com a Emma entre os galpões da feira. Cheiro de feno e pipoca, vacas mugindo, uma roda-gigante girando ao fundo e fitas azuis de prêmio penduradas nas baias.",
+  "foto_busca": "county fair cows barn ribbons",
+  "trechos": [
+    {
+      "id": "f-4b39f4",
+      "quem": "emma",
+      "cod": "The county fair is the biggest agricultural event around here.",
+      "dica": "A feira do condado é o maior evento agrícola da região.",
+      "img": "🎡🚜",
+      "alvo": "agricultural",
+      "alvo_pt": "agrícola",
+      "conceito": "agricultural = agrícola: an agricultural fair. A agricultura = agriculture.",
+      "var": [
+        {
+          "em": "around here",
+          "aceita": [
+            "in the area"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "agricole"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7faac4",
+      "quem": "emma",
+      "cod": "These dairy cows are the stars of the fair.",
+      "dica": "Essas vacas leiteiras são as estrelas da feira.",
+      "img": "🐄⭐🥛",
+      "alvo": "cows",
+      "alvo_pt": "vacas",
+      "conceito": "cow = vaca; dairy cows = vacas leiteiras. A carne de vaca é beef.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2f8afd",
+      "quem": "voce",
+      "cod": "I didn't know pigs could get this big.",
+      "dica": "Não sabia que porcos podiam ficar tão grandes.",
+      "img": "🐖😲",
+      "alvo": "pigs",
+      "alvo_pt": "porcos",
+      "conceito": "pig = porco. A carne de porco é pork (não: pig meat).",
+      "var": [
+        {
+          "em": "this big",
+          "aceita": [
+            "so big"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "pork"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-efdb2b",
+      "quem": "emma",
+      "cod": "There are more sheep than people at this fair.",
+      "dica": "Tem mais ovelhas do que pessoas nesta feira.",
+      "img": "🐑🐑👥",
+      "alvo": "sheep",
+      "alvo_pt": "ovelhas",
+      "conceito": "sheep = ovelha; singular e plural iguais: one sheep, ten sheep (não: sheeps).",
+      "registro": "informal",
+      "armadilhas": [
+        "sheeps",
+        "ship"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4d8d2f",
+      "quem": "voce",
+      "cod": "What breed is that big white dog?",
+      "dica": "De que raça é aquele cachorro grande e branco?",
+      "img": "🐕🏅❓",
+      "alvo": "breed",
+      "alvo_pt": "raça",
+      "conceito": "breed = raça de animal. Race é corrida; nunca use race para cachorro.",
+      "registro": "informal",
+      "armadilhas": [
+        "race"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a903e7",
+      "quem": "emma",
+      "cod": "That dog is wagging its tail at you.",
+      "dica": "Aquele cachorro está abanando o rabo pra você.",
+      "img": "🐕💛",
+      "alvo": "tail",
+      "alvo_pt": "rabo",
+      "conceito": "tail = rabo, cauda; wag its tail = abanar o rabo. Para dev, tail -f mostra o fim do log.",
+      "registro": "informal",
+      "armadilhas": [
+        "tale"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 9435661,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Your dog is wagging its tail. → That dog is wagging its tail at you.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-88e3a1",
+      "quem": "voce",
+      "cod": "I want to see the roses before we leave.",
+      "dica": "Quero ver as rosas antes de a gente ir embora.",
+      "img": "🌹👀",
+      "alvo": "roses",
+      "alvo_pt": "rosas",
+      "conceito": "rose = rosa, a flor. A cor rosa é pink; rose também é o passado de rise (The sun rose at six).",
+      "registro": "informal",
+      "armadilhas": [
+        "pink"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4006542,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I want to see the roses. → I want to see the roses before we leave.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-79e93c",
+      "quem": "voce",
+      "cod": "Is everything at this stand organic?",
+      "dica": "Tudo nessa barraca é orgânico?",
+      "img": "🥕🌱❓",
+      "alvo": "organic",
+      "alvo_pt": "orgânico",
+      "conceito": "organic = orgânico: organic food. Em marketing, organic traffic = tráfego orgânico, sem anúncio.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "at this stand",
+          "aceita": [
+            "at this booth"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-deec54",
+      "quem": "emma",
+      "cod": "This bread is made with whole grains from local farms.",
+      "dica": "Esse pão é feito com grãos integrais de fazendas da região.",
+      "img": "🍞🌾",
+      "alvo": "grains",
+      "alvo_pt": "grãos",
+      "conceito": "grain = grão, cereal; whole grains = grãos integrais. Go against the grain = ir contra a corrente.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d781de",
+      "quem": "emma",
+      "cod": "I always buy my seeds here and plant them in the spring.",
+      "dica": "Eu sempre compro as minhas sementes aqui e planto na primavera.",
+      "img": "🌱🛍️🌸",
+      "alvo": "seeds",
+      "alvo_pt": "sementes",
+      "conceito": "seed = semente; plant seeds = plantar sementes.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ed8708",
+      "quem": "emma",
+      "cod": "The secret to good tomatoes is rich soil.",
+      "dica": "O segredo pra ter tomate bom é terra fértil.",
+      "img": "🍅🪴",
+      "alvo": "soil",
+      "alvo_pt": "terra",
+      "conceito": "soil = solo, terra de plantar (na fala também dirt). A Terra, o planeta, é Earth.",
+      "var": [
+        {
+          "em": "rich soil",
+          "aceita": [
+            "good soil",
+            "fertile soil"
+          ]
+        },
+        {
+          "em": "to good",
+          "aceita": [
+            "to growing good",
+            "of good"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "earth",
+        "land"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

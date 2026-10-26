@@ -1,0 +1,273 @@
+{
+  "id": "vocab-pensar-argumentar.comparar-opcoes",
+  "trilha": "vocab-pensar-argumentar",
+  "nome": "Análise: analysis, assess, predict…",
+  "emoji": "📊",
+  "cena": "A Sarah precisa escolher entre três fornecedores e pede que você compare custos e riscos numa planilha até sexta.",
+  "resumo": "Dez palavras para analisar opções: selection, analyze, assessment, assess, predict, conservative, reasonable…",
+  "fechamento": false,
+  "novos": [
+    "analysis",
+    "assessment",
+    "assess",
+    "predict",
+    "reasonable",
+    "comparison",
+    "conservative",
+    "analyze",
+    "selection",
+    "evaluate"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Analisar e comparar"
+    },
+    {
+      "t": "p",
+      "c": "**analysis** análise · **assessment** avaliação · **assess** avaliar · **predict** prever · **reasonable** razoável · **comparison** comparação · **conservative** conservador (cauteloso) · **analyze** analisar · **selection** seleção · **evaluate** avaliar (mais formal)"
+    },
+    {
+      "t": "ex",
+      "c": "That's a reasonable price.\nÉ um preço razoável."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **risk assessment**, **a conservative estimate**, **in comparison with**, **hard to predict**."
+    },
+    {
+      "t": "warn",
+      "c": "Grafia americana: **analyze** (analyse é britânico). O plural de analysis é **analyses**."
+    }
+  ],
+  "imagem": "📊🏢💰",
+  "visualizacao": "Você está com a planilha aberta: três colunas, uma por fornecedor, números em verde e vermelho. A Sarah manda mensagem lembrando que o prazo é sexta.",
+  "foto_busca": "spreadsheet laptop comparing costs",
+  "trechos": [
+    {
+      "id": "f-13ee51",
+      "quem": "sarah",
+      "cod": "We need to finish the vendor selection by Friday.",
+      "dica": "Precisamos terminar a seleção do fornecedor até sexta.",
+      "img": "🏢✅📅",
+      "alvo": "selection",
+      "alvo_pt": "seleção",
+      "conceito": "selection = seleção, escolha: the selection process.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR15",
+        "BR24"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "finish",
+          "aceita": [
+            "complete"
+          ]
+        },
+        {
+          "em": "vendor",
+          "aceita": [
+            "supplier"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-11ccbb",
+      "quem": "voce",
+      "contexto": "f-13ee51",
+      "cod": "I can analyze the costs in a spreadsheet.",
+      "dica": "Posso analisar os custos numa planilha.",
+      "img": "🧮💻",
+      "alvo": "analyze",
+      "alvo_pt": "analisar",
+      "conceito": "analyze, com z no inglês americano.",
+      "registro": "neutro",
+      "armadilhas": [
+        "analyse"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bbf18e",
+      "quem": "sarah",
+      "contexto": "f-11ccbb",
+      "cod": "Great. I also need a risk assessment for each one.",
+      "dica": "Ótimo. Também preciso de uma avaliação de risco de cada um.",
+      "img": "⚠️📋",
+      "alvo": "assessment",
+      "alvo_pt": "avaliação",
+      "conceito": "risk assessment = avaliação de risco (substantivo + substantivo).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR19"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d787ce",
+      "quem": "voce",
+      "cod": "It's hard to assess the risk without their security reports.",
+      "dica": "É difícil avaliar o risco sem os relatórios de segurança deles.",
+      "img": "🔒📄❓",
+      "alvo": "assess",
+      "alvo_pt": "avaliar",
+      "conceito": "assess the risk = avaliar o risco. Assessment é o substantivo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11",
+        "BR01"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5b2a03",
+      "quem": "voce",
+      "cod": "We can't predict how their prices will change next year.",
+      "dica": "A gente não consegue prever como os preços deles vão mudar no ano que vem.",
+      "img": "🔮💰",
+      "alvo": "predict",
+      "alvo_pt": "prever",
+      "conceito": "predict = prever; hard to predict = difícil de prever.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11",
+        "BR50"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6436479,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"We can't predict how Tom will feel.\"; how Tom will feel → how their prices will change next year (elenco sem Tom); PT reescrito (original: \"Não podemos prever como o Tom vai se sentir.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-95a09e",
+      "quem": "sarah",
+      "contexto": "f-5b2a03",
+      "cod": "Then use a conservative estimate for the price increase.",
+      "dica": "Então usa uma estimativa conservadora pro aumento de preço.",
+      "img": "🛟📈",
+      "alvo": "conservative",
+      "alvo_pt": "conservadora",
+      "conceito": "conservative estimate = estimativa conservadora, cautelosa. Aqui, sem sentido político.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-89c2e6",
+      "quem": "voce",
+      "cod": "In comparison with the others, vendor B is much cheaper.",
+      "dica": "Em comparação com os outros, o fornecedor B é bem mais barato.",
+      "img": "⚖️💵",
+      "alvo": "In comparison with",
+      "alvo_pt": "Em comparação com",
+      "conceito": "in comparison with (ou to) = em comparação com.",
+      "var": [
+        {
+          "em": "comparison with",
+          "aceita": [
+            "comparison to"
+          ]
+        },
+        {
+          "em": "vendor B",
+          "aceita": [
+            "supplier B"
+          ]
+        },
+        {
+          "em": "much",
+          "aceita": [
+            "a lot"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR12"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-06ca1d",
+      "quem": "sarah",
+      "contexto": "f-89c2e6",
+      "cod": "Their price is reasonable, but what about support?",
+      "dica": "O preço deles é razoável, mas e o suporte?",
+      "img": "💰🤔🛠️",
+      "alvo": "reasonable",
+      "alvo_pt": "razoável",
+      "conceito": "reasonable = razoável, sensato: a reasonable price.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3821238,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "EN original: \"Your offer is reasonable.\"; Your offer → Their price, + but what about support?; PT reescrito (original: \"A sua oferta é razoável.\")",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d13479",
+      "quem": "voce",
+      "contexto": "f-06ca1d",
+      "cod": "My analysis shows that their support is the weakest.",
+      "dica": "A minha análise mostra que o suporte deles é o mais fraco.",
+      "img": "🔬📉",
+      "alvo": "analysis",
+      "alvo_pt": "análise",
+      "conceito": "analysis = análise; o plural é analyses.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d6de78",
+      "quem": "sarah",
+      "cod": "We evaluated three vendors based on cost and risk.",
+      "dica": "(e-mail formal) Avaliamos três fornecedores com base em custo e risco.",
+      "img": "📧✅",
+      "alvo": "evaluated",
+      "alvo_pt": "Avaliamos",
+      "conceito": "evaluate = avaliar, um pouco mais formal que assess.",
+      "registro": "formal",
+      "interferencias": [
+        "BR02"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "vendors",
+          "aceita": [
+            "suppliers"
+          ]
+        }
+      ]
+    }
+  ]
+}

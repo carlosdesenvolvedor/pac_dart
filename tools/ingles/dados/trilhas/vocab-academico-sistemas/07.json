@@ -1,0 +1,295 @@
+{
+  "id": "vocab-academico-sistemas.retro-processo",
+  "trilha": "vocab-academico-sistemas",
+  "nome": "A retro: initiate, standardize…",
+  "emoji": "🔄",
+  "cena": "Na retrospectiva do mês, a Sarah propõe mudar o jeito como o time entrega e revisa código, e cada um sugere o que padronizar, trocar ou cortar do processo.",
+  "resumo": "As palavras de mudar um processo: initiate, activate, standardize, periodic, modification, elimination…",
+  "fechamento": false,
+  "novos": [
+    "initiate",
+    "activate",
+    "adaptation",
+    "progressive",
+    "progression",
+    "periodic",
+    "standardize",
+    "modification",
+    "substitution",
+    "elimination"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Mexendo no processo"
+    },
+    {
+      "t": "p",
+      "c": "**initiate** dar início · **activate** ativar · **adaptation** adaptação · **progressive** gradual, progressivo · **progression** progressão · **periodic** periódico · **standardize** padronizar · **modification** modificação · **substitution** substituição · **elimination** eliminação"
+    },
+    {
+      "t": "ex",
+      "c": "Let's standardize the pull request template first.\nVamos padronizar o template de pull request primeiro."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: a progressive rollout, a natural progression, periodic reviews, make a substitution."
+    },
+    {
+      "t": "warn",
+      "c": "**periodic** é só adjetivo; a revista da banca é a magazine. **initiate** é formal: na conversa, start."
+    }
+  ],
+  "imagem": "🗓️🔄📝",
+  "visualizacao": "Você está na retro do mês, numa chamada com o time todo. A Sarah abre um quadro com notas coloridas e cada um arrasta uma ideia nova para a coluna do que mudar.",
+  "foto_busca": "team retrospective sticky notes board",
+  "trechos": [
+    {
+      "id": "f-c8f8bb",
+      "quem": "sarah",
+      "cod": "I'd like to initiate a small change to our process.",
+      "dica": "Eu queria dar início a uma pequena mudança no nosso processo.",
+      "img": "🚦🔄",
+      "alvo": "initiate",
+      "alvo_pt": "dar início",
+      "conceito": "initiate = dar início, iniciar; formal. Na conversa, start ou kick off são mais comuns.",
+      "var": [
+        {
+          "em": "I'd like",
+          "aceita": [
+            "I would like"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "iniciate",
+        "start"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1dc5e5",
+      "quem": "ana",
+      "contexto": "f-c8f8bb",
+      "cod": "Let's standardize the pull request template first.",
+      "dica": "Vamos padronizar o template de pull request primeiro.",
+      "img": "📋📐",
+      "alvo": "standardize",
+      "alvo_pt": "padronizar",
+      "conceito": "standardize, com z (standardise é britânico).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "standardise",
+        "padronize"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fe146f",
+      "quem": "voce",
+      "cod": "I suggest a progressive rollout for every new feature.",
+      "dica": "Sugiro um rollout progressivo pra cada feature nova.",
+      "img": "📶🚀",
+      "alvo": "progressive rollout",
+      "alvo_pt": "rollout progressivo",
+      "conceito": "progressive rollout = liberar aos poucos, em etapas.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "rollout progressive",
+        "suggest to"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "every new feature",
+          "aceita": [
+            "each new feature"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7c8e3e",
+      "quem": "sarah",
+      "contexto": "f-fe146f",
+      "cod": "We can activate the feature for five percent of users first.",
+      "dica": "A gente pode ativar a feature para cinco por cento dos usuários primeiro.",
+      "img": "🔛👥",
+      "alvo": "activate",
+      "alvo_pt": "ativar",
+      "conceito": "activate = ativar; o contrário é deactivate. Percent sempre por extenso.",
+      "var": [
+        {
+          "em": "of users",
+          "aceita": [
+            "of the users",
+            "of our users"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "ative",
+        "activ"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-747959",
+      "quem": "mike",
+      "cod": "Weekly releases are a natural progression for this team.",
+      "dica": "Releases semanais são uma progressão natural para este time.",
+      "img": "📅➡️📈",
+      "alvo": "natural progression",
+      "alvo_pt": "progressão natural",
+      "conceito": "a natural progression = o passo natural seguinte.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "progression natural",
+        "progress"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-41e831",
+      "quem": "ana",
+      "cod": "There will be a period of adaptation, of course.",
+      "dica": "Vai ter um período de adaptação, claro.",
+      "img": "🌱⏳",
+      "alvo": "adaptation",
+      "alvo_pt": "adaptação",
+      "conceito": "adaptation = adaptação; também a de livro para filme: a film adaptation.",
+      "var": [
+        {
+          "em": "There will be",
+          "aceita": [
+            "There's going to be",
+            "There is going to be"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "adaption",
+        "will have"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6e18a3",
+      "quem": "voce",
+      "cod": "We should schedule periodic reviews of the checklist.",
+      "dica": "A gente devia marcar revisões periódicas do checklist.",
+      "img": "🔁✅",
+      "alvo": "periodic reviews",
+      "alvo_pt": "revisões periódicas",
+      "conceito": "periodic = periódico, regular; é só adjetivo (a revista é a magazine).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR09"
+      ],
+      "armadilhas": [
+        "periodics",
+        "reviews periodic"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-57ca59",
+      "quem": "mike",
+      "cod": "Even a small modification needs a second review.",
+      "dica": "Até uma pequena modificação precisa de uma segunda revisão.",
+      "img": "🔧👀",
+      "alvo": "small modification",
+      "alvo_pt": "pequena modificação",
+      "conceito": "modification = modificação; na fala, change é mais comum.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR53"
+      ],
+      "armadilhas": [
+        "needs of",
+        "modificaton"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9f4a81",
+      "quem": "ana",
+      "cod": "Can we make a substitution: automated checks instead of manual testing?",
+      "dica": "Podemos fazer uma substituição: checagens automáticas em vez de teste manual?",
+      "img": "🔄📋",
+      "alvo": "make a substitution",
+      "alvo_pt": "fazer uma substituição",
+      "conceito": "make a substitution = fazer uma troca; quem substitui é o substitute.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR32"
+      ],
+      "armadilhas": [
+        "do a substitution",
+        "substitute"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "licenca": "CC BY 2.0 FR",
+        "en_id": 3315518,
+        "en_autor": "CK",
+        "pt_id": 3465939,
+        "pt_autor": "piterkeo",
+        "pt_autoral": false,
+        "modificada": true,
+        "nota_modificacao": "acrescentado o que se troca (automated checks instead of manual testing), cena da retro",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d81b2e",
+      "quem": "sarah",
+      "cod": "The goal is the elimination of all manual steps.",
+      "dica": "O objetivo é a eliminação de todas as etapas manuais.",
+      "img": "🗑️✋",
+      "alvo": "elimination",
+      "alvo_pt": "eliminação",
+      "conceito": "elimination = eliminação; by a process of elimination = por eliminação.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "eliminacion",
+        "all manual steps"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

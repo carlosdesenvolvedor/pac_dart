@@ -1,0 +1,326 @@
+{
+  "id": "vocab-saude-corpo.gripe-de-inverno",
+  "trilha": "vocab-saude-corpo",
+  "nome": "Gripe de inverno: virus, symptom, nose…",
+  "emoji": "🤧",
+  "cena": "No meio do inverno, você pega uma gripe leve, avisa a Sarah que vai faltar e faz uma consulta por vídeo com a Dra. Lee.",
+  "resumo": "Descrever uma gripe leve: sintomas, nariz escorrendo, pele e lábios rachados, vírus e infecção.",
+  "fechamento": false,
+  "novos": [
+    "mouth",
+    "skin",
+    "ill",
+    "illness",
+    "symptom",
+    "nose",
+    "infection",
+    "lip",
+    "virus",
+    "tissue",
+    "cheek"
+  ],
+  "apoio": [
+    "sick day",
+    "fever",
+    "sore throat",
+    "chapped"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**mouth** = boca · **skin** = pele · **ill** = doente · **illness** = doença · **symptom** = sintoma · **nose** = nariz · **infection** = infecção · **lip** = lábio · **virus** = vírus · **tissue** = lenço de papel · **cheek** = bochecha"
+    },
+    {
+      "t": "ex",
+      "c": "I have a runny nose.\nEstou com o nariz escorrendo."
+    },
+    {
+      "t": "tip",
+      "c": "Nariz escorrendo = **a runny nose**; entupido = **a stuffy nose**; lábios rachados = **chapped lips**."
+    },
+    {
+      "t": "warn",
+      "c": "**tissue** = lenço de papel; tecido (pano) é **fabric**. Na fala, doente é mais **sick**; *ill* é mais formal."
+    }
+  ],
+  "imagem": "🤧❄️💻",
+  "visualizacao": "Lá fora neva e o ar está seco. Você está debaixo de um cobertor, com uma caixa de lenços do lado do notebook, esperando a Dra. Lee entrar na chamada.",
+  "foto_busca": "sick at home winter tissues",
+  "trechos": [
+    {
+      "id": "f-87441d",
+      "quem": "voce",
+      "cod": "I'm feeling ill, so I'm taking a sick day.",
+      "dica": "Estou me sentindo doente, então vou tirar um dia de licença.",
+      "img": "🤒📱",
+      "alvo": "feeling ill",
+      "alvo_pt": "me sentindo doente",
+      "conceito": "ill = doente (mais formal; na fala, sick). sick day = dia de folga por doença.",
+      "registro": "escrito-trabalho",
+      "armadilhas": [
+        "sick",
+        "feeling myself"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-84ae64",
+      "quem": "voce",
+      "cod": "I have a runny nose and a sore throat.",
+      "dica": "Estou com o nariz escorrendo e dor de garganta.",
+      "img": "👃💧",
+      "alvo": "runny nose",
+      "alvo_pt": "nariz escorrendo",
+      "lit": "[lit.: um nariz que corre]",
+      "conceito": "nose = nariz; runny nose = nariz escorrendo; stuffy nose = entupido.",
+      "registro": "neutro",
+      "armadilhas": [
+        "running nose",
+        "nose running"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6024931,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom has a runny nose. → I have a runny nose and a sore throat.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5339b5",
+      "quem": "dra-lee",
+      "contexto": "f-84ae64",
+      "cod": "Your symptoms sound mild.",
+      "dica": "Os seus sintomas parecem leves.",
+      "img": "📋🙂",
+      "alvo": "symptoms",
+      "alvo_pt": "sintomas",
+      "conceito": "symptom = sintoma; o p é pronunciado (SIMP-tum). mild symptoms = sintomas leves.",
+      "var": [
+        {
+          "em": "sound",
+          "aceita": [
+            "seem"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "sintoms",
+        "symptons"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-136933",
+      "quem": "dra-lee",
+      "contexto": "f-5339b5",
+      "cod": "It's probably just a virus.",
+      "dica": "Provavelmente é só um vírus.",
+      "img": "🦠🤔",
+      "alvo": "virus",
+      "alvo_pt": "vírus",
+      "conceito": "virus = vírus (VAI-rus). There is a virus going around = tem um vírus circulando.",
+      "registro": "formal",
+      "armadilhas": [
+        "virus's",
+        "viruses"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3178626,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "export": "2026-10-03",
+        "nota_modificacao": "It's probably a virus. → It's probably just a virus.; PT reescrito"
+      }
+    },
+    {
+      "id": "f-6bda34",
+      "quem": "dra-lee",
+      "cod": "This kind of illness usually goes away in about a week.",
+      "dica": "Esse tipo de doença costuma passar em mais ou menos uma semana.",
+      "img": "📅🌤️",
+      "alvo": "illness",
+      "alvo_pt": "doença",
+      "conceito": "illness = doença, o estado de estar doente; disease = a doença específica.",
+      "var": [
+        {
+          "em": "This kind",
+          "aceita": [
+            "That kind"
+          ]
+        }
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "disease",
+        "sickness"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e3d783",
+      "quem": "dra-lee",
+      "cod": "Cover your mouth when you cough.",
+      "dica": "Cubra a boca quando tossir.",
+      "img": "✋👄",
+      "alvo": "mouth",
+      "alvo_pt": "boca",
+      "conceito": "mouth = boca (mauth, th surdo). Em inglês o possessivo é obrigatório: your mouth.",
+      "registro": "formal",
+      "armadilhas": [
+        "the mouth",
+        "mouse"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-33346c",
+      "quem": "voce",
+      "cod": "I've already used a whole box of tissues.",
+      "dica": "Já usei uma caixa inteira de lenço de papel.",
+      "img": "🧻📦",
+      "alvo": "tissues",
+      "alvo_pt": "lenço de papel",
+      "conceito": "tissue = lenço de papel (falso amigo); tecido, pano = fabric.",
+      "var": [
+        {
+          "em": "I've already used",
+          "aceita": [
+            "I already used"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "handkerchief",
+        "paper"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-32091f",
+      "quem": "dra-lee",
+      "cod": "Do you have a fever? Your cheeks are all red.",
+      "dica": "Você está com febre? As suas bochechas estão bem vermelhas.",
+      "img": "🤒🍎",
+      "alvo": "cheeks",
+      "alvo_pt": "bochechas",
+      "conceito": "cheek = bochecha (tchiik, i longo); não confunda com check (conferir).",
+      "registro": "formal",
+      "armadilhas": [
+        "checks",
+        "chicks"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4300659,
+        "en_autor": "Ronin1134",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "all red",
+          "aceita": [
+            "very red",
+            "really red"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-098096",
+      "quem": "voce",
+      "contexto": "f-32091f",
+      "cod": "No fever. The cold, dry air is bad for my skin.",
+      "dica": "Febre não. O ar frio e seco faz mal pra minha pele.",
+      "img": "🥶💨🧴",
+      "alvo": "skin",
+      "alvo_pt": "pele",
+      "conceito": "skin = pele; dry skin = pele seca. Pele de animal (couro) é leather.",
+      "registro": "informal",
+      "armadilhas": [
+        "leather",
+        "peel"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ae88bd",
+      "quem": "voce",
+      "cod": "My lips often get chapped in the winter.",
+      "dica": "Os meus lábios ficam rachados com frequência no inverno.",
+      "img": "👄❄️",
+      "alvo": "lips",
+      "alvo_pt": "lábios",
+      "conceito": "lip = lábio; chapped lips = lábios rachados; lip balm = protetor labial.",
+      "var": [
+        {
+          "em": "in the winter",
+          "aceita": [
+            "in winter"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "labs",
+        "lip's"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2976341,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f16981",
+      "quem": "dra-lee",
+      "cod": "If your ear starts to hurt, it could be an infection.",
+      "dica": "Se o seu ouvido começar a doer, pode ser uma infecção.",
+      "img": "👂⚠️",
+      "alvo": "infection",
+      "alvo_pt": "infecção",
+      "conceito": "infection = infecção; an ear infection = infecção de ouvido. If + presente = futuro do subjuntivo.",
+      "var": [
+        {
+          "em": "starts to hurt",
+          "aceita": [
+            "starts hurting"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "formal",
+      "armadilhas": [
+        "infeccion",
+        "infestation"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

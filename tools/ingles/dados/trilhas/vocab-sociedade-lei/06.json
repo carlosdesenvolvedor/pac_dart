@@ -1,0 +1,222 @@
+{
+  "id": "vocab-sociedade-lei.mudanca-no-processo",
+  "trilha": "vocab-sociedade-lei",
+  "nome": "Mudança no processo",
+  "emoji": "🔄",
+  "cena": "Na call semanal, o Mike propõe trocar o deploy manual por um processo automático; a Sarah apoia a ideia e você explica um atraso.",
+  "resumo": "Defender e discutir uma mudança: without manual intervention, resistance to change, in my defense, institutional knowledge.",
+  "fechamento": false,
+  "novos": [
+    "institution",
+    "defense",
+    "freedom",
+    "justice",
+    "intervention",
+    "ally",
+    "resistance",
+    "universal",
+    "institutional"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Discutir uma mudança no time"
+    },
+    {
+      "t": "p",
+      "c": "**institution** instituição · **defense** defesa · **freedom** liberdade · **justice** justiça · **intervention** intervenção · **ally** aliado · **resistance** resistência · **universal** universal · **institutional** institucional"
+    },
+    {
+      "t": "ex",
+      "c": "We need more freedom to choose our tools.\nPrecisamos de mais liberdade para escolher nossas ferramentas."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **in my defense**, **resistance to change**, **without manual intervention**, **institutional knowledge** (o que o time sabe e não está documentado)."
+    },
+    {
+      "t": "warn",
+      "c": "Grafia americana: **defense** (britânico: defence). **do it justice** = fazer jus. E **universal** não é universitário (= college)."
+    }
+  ],
+  "imagem": "💻🔄🚀",
+  "visualizacao": "É segunda de manhã. Na tela, o Mike compartilha um diagrama cheio de setas, a Sarah concorda com a cabeça e você respira fundo quando ele cita o atraso de sexta.",
+  "foto_busca": "team video call diagram",
+  "trechos": [
+    {
+      "id": "f-bbfcd1",
+      "quem": "mike",
+      "cod": "I want our deploys to run without manual intervention.",
+      "dica": "Quero que nossos deploys rodem sem intervenção manual.",
+      "img": "🤖🚀",
+      "alvo": "intervention",
+      "alvo_pt": "intervenção",
+      "conceito": "without manual intervention = sem intervenção manual, muito usado em dev.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d8372d",
+      "quem": "mike",
+      "cod": "Our new client is a big financial institution.",
+      "dica": "Nosso cliente novo é uma grande instituição financeira.",
+      "img": "🏦💼",
+      "alvo": "institution",
+      "alvo_pt": "instituição",
+      "conceito": "institution = instituição; a financial institution = uma instituição financeira.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "big",
+          "aceita": [
+            "large"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7092b0",
+      "quem": "mike",
+      "cod": "I know there'll be some resistance to change.",
+      "dica": "Sei que vai ter alguma resistência à mudança.",
+      "img": "🧱🔄",
+      "alvo": "resistance to change",
+      "alvo_pt": "resistência à mudança",
+      "conceito": "resistance to change = resistência à mudança; meet resistance = encontrar resistência.",
+      "var": [
+        {
+          "em": "there'll",
+          "aceita": [
+            "there will"
+          ]
+        },
+        {
+          "em": "there'll be",
+          "aceita": [
+            "there's going to be",
+            "there is going to be"
+          ]
+        }
+      ],
+      "opcional": [
+        "some"
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c05f41",
+      "quem": "sarah",
+      "cod": "Mike, I'm your ally on this one.",
+      "dica": "Mike, nessa eu sou sua aliada.",
+      "img": "🤝💪",
+      "alvo": "ally",
+      "alvo_pt": "aliada",
+      "conceito": "ally = aliado(a), quem apoia a sua ideia. Pronúncia: AL-ai.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "opcional": [
+        "one"
+      ]
+    },
+    {
+      "id": "f-690a9b",
+      "quem": "sarah",
+      "cod": "This diagram doesn't do the new process justice.",
+      "dica": "Esse diagrama não faz jus ao processo novo.",
+      "img": "📊👎",
+      "alvo": "justice",
+      "alvo_pt": "faz jus",
+      "lit": "[lit.: não faz justiça ao processo novo]",
+      "conceito": "do something justice = fazer jus a algo. A Justiça (o sistema) = the justice system.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-43adbe",
+      "quem": "voce",
+      "cod": "In my defense, the deploy failed twice on Friday.",
+      "dica": "Em minha defesa, o deploy falhou duas vezes na sexta.",
+      "img": "🙋‍♂️🛡️",
+      "alvo": "In my defense",
+      "alvo_pt": "Em minha defesa",
+      "conceito": "In my defense = em minha defesa. Grafia americana: defense.",
+      "registro": "informal",
+      "armadilhas": [
+        "defence"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5359ad",
+      "quem": "mike",
+      "contexto": "f-43adbe",
+      "cod": "Right now, our institutional knowledge is only in people's heads.",
+      "dica": "No momento, nosso conhecimento institucional está só na cabeça das pessoas.",
+      "img": "🧠📚",
+      "alvo": "institutional knowledge",
+      "alvo_pt": "conhecimento institucional",
+      "conceito": "institutional knowledge = o que o time sabe e não está documentado em lugar nenhum.",
+      "var": [
+        {
+          "em": "Right now",
+          "aceita": [
+            "At the moment"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1e3afa",
+      "quem": "mike",
+      "cod": "Automation gives everyone the freedom to deploy any day of the week.",
+      "dica": "A automação dá a todo mundo a liberdade de fazer deploy em qualquer dia da semana.",
+      "img": "🕊️📅",
+      "alvo": "freedom",
+      "alvo_pt": "liberdade",
+      "conceito": "the freedom to + verbo = a liberdade de (fazer algo).",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "to deploy any",
+          "aceita": [
+            "to deploy on any"
+          ]
+        },
+        {
+          "em": "everyone",
+          "aceita": [
+            "everybody"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-90f5f1",
+      "quem": "sarah",
+      "cod": "There's no universal solution, but this is a good start.",
+      "dica": "Não existe solução universal, mas isso é um bom começo.",
+      "img": "🧩👍",
+      "alvo": "universal",
+      "alvo_pt": "universal",
+      "conceito": "Também se diz: there's no one-size-fits-all solution. Universitário = college.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "this is",
+          "aceita": [
+            "it's",
+            "that's"
+          ]
+        }
+      ]
+    }
+  ]
+}

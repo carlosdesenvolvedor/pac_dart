@@ -1,0 +1,273 @@
+{
+  "id": "vocab-tempo-quantidade.consulta-rotina-dra-lee",
+  "trilha": "vocab-tempo-quantidade",
+  "nome": "Frequência: daily, regular, weekly…",
+  "emoji": "🩺",
+  "cena": "No check-up anual, a Dra. Lee pergunta sobre a sua rotina de dev remoto: sono, café, pausas e exercício.",
+  "resumo": "Falar de hábitos e frequência: diário, semanal, regular, frequente, moderado, adequado, excesso e ocasião.",
+  "fechamento": false,
+  "novos": [
+    "daily",
+    "excess",
+    "everyday",
+    "occasion",
+    "adequate",
+    "regular",
+    "weekly",
+    "moderate",
+    "frequency",
+    "frequent"
+  ],
+  "apoio": [
+    "On average",
+    "coffee",
+    "sleep",
+    "exercise",
+    "walk",
+    "breaks"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**daily** = diário, diariamente · **weekly** = semanal · **regular** = habitual, regular · **frequent** = frequente · **frequency** = frequência · **everyday** = do dia a dia · **moderate** = moderado · **adequate** = adequado · **excess** = excesso · **occasion** = ocasião"
+    },
+    {
+      "t": "ex",
+      "c": "Regular exercise would help your back a lot.\nExercício regular ajudaria muito as suas costas."
+    },
+    {
+      "t": "tip",
+      "c": "**everyday life** = o dia a dia · **a special occasion** = uma ocasião especial · **excess caffeine** = excesso de cafeína · **a weekly walk** = uma caminhada semanal."
+    },
+    {
+      "t": "warn",
+      "c": "**everyday** (junto) é adjetivo: everyday life. **every day** (separado) é todo dia: I drink coffee every day."
+    }
+  ],
+  "imagem": "🩺☕🛌",
+  "visualizacao": "Você está sentado na maca do consultório, sob uma luz branca. A Dra. Lee digita no computador, olha por cima dos óculos e pergunta sobre o seu café.",
+  "foto_busca": "doctor office checkup patient talking",
+  "trechos": [
+    {
+      "id": "f-970081",
+      "quem": "dra-lee",
+      "cod": "On average, how many cups of coffee do you drink daily?",
+      "dica": "Em média, quantas xícaras de café você toma diariamente?",
+      "img": "☕☕📅",
+      "alvo": "daily",
+      "alvo_pt": "diariamente",
+      "conceito": "daily = diário (a daily walk) e diariamente (I walk daily).",
+      "registro": "neutro",
+      "armadilhas": [
+        "dayly",
+        "diary",
+        "everyday"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 9853854,
+        "en_autor": "NurseMeeks",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "PT reescrito (tomar café; ordem natural)",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-b623ff",
+      "quem": "dra-lee",
+      "contexto": "Usually about five cups.",
+      "cod": "Excess caffeine can affect your sleep.",
+      "dica": "O excesso de cafeína pode afetar o seu sono.",
+      "img": "☕🛌⚠️",
+      "alvo": "Excess",
+      "alvo_pt": "excesso",
+      "conceito": "excess = excesso (ek-SÉS): excess caffeine; na fala, também too much caffeine.",
+      "registro": "neutro",
+      "armadilhas": [
+        "access",
+        "exceed",
+        "excesso",
+        "the excess"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e170c9",
+      "quem": "voce",
+      "contexto": "f-b623ff",
+      "cod": "Coffee is part of my everyday life.",
+      "dica": "O café faz parte do meu dia a dia.",
+      "img": "☕🏠💛",
+      "alvo": "everyday life",
+      "alvo_pt": "dia a dia",
+      "conceito": "everyday life = o dia a dia; everyday (junto) vem antes do substantivo; every day (separado) = todo dia.",
+      "registro": "neutro",
+      "armadilhas": [
+        "every day",
+        "daily"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b5a17e",
+      "quem": "dra-lee",
+      "contexto": "f-e170c9",
+      "cod": "Then save the fifth cup for special occasions.",
+      "dica": "Então guarde a quinta xícara para ocasiões especiais.",
+      "img": "☕🎉",
+      "alvo": "occasions",
+      "alvo_pt": "ocasiões",
+      "conceito": "a special occasion = uma ocasião especial; aproveitar a ocasião = take the opportunity.",
+      "registro": "neutro",
+      "armadilhas": [
+        "ocasions",
+        "opportunities"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a4558",
+      "quem": "dra-lee",
+      "contexto": "I sleep about five hours a night.",
+      "cod": "That's far from adequate.",
+      "dica": "Isso está longe de ser adequado.",
+      "img": "😴⏰👎",
+      "alvo": "adequate",
+      "alvo_pt": "adequado",
+      "conceito": "adequate = suficiente, adequado em quantidade (adequate sleep); 'apropriado' é appropriate.",
+      "var": [
+        {
+          "em": "That's",
+          "aceita": [
+            "That is"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "adequated",
+        "appropriate",
+        "enough"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 9864910,
+        "en_autor": "CK",
+        "pt_id": 10555666,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cd4bd5",
+      "quem": "dra-lee",
+      "cod": "Regular exercise would help your back a lot.",
+      "dica": "Exercício regular ajudaria muito as suas costas.",
+      "img": "🏃💪",
+      "alvo": "Regular",
+      "alvo_pt": "regular",
+      "conceito": "regular = habitual, frequente (não 'mais ou menos'); regular size = tamanho normal.",
+      "registro": "neutro",
+      "armadilhas": [
+        "regularly",
+        "so-so"
+      ],
+      "origem": "autoral_ia",
+      "interferencias": [
+        "BR56"
+      ]
+    },
+    {
+      "id": "f-022fc2",
+      "quem": "voce",
+      "cod": "Can I start with a weekly walk?",
+      "dica": "Posso começar com uma caminhada semanal?",
+      "img": "🚶🗓️",
+      "alvo": "weekly",
+      "alvo_pt": "semanal",
+      "conceito": "weekly = semanal; também advérbio: We meet weekly. (= toda semana).",
+      "registro": "neutro",
+      "armadilhas": [
+        "week",
+        "weekley"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bd4f42",
+      "quem": "dra-lee",
+      "contexto": "f-022fc2",
+      "cod": "That's a start, but moderate exercise three times a week would be better.",
+      "dica": "É um começo, mas exercício moderado três vezes por semana seria melhor.",
+      "img": "👟💪🗓️",
+      "alvo": "moderate",
+      "alvo_pt": "moderado",
+      "conceito": "moderate = moderado (MÓ-de-rit); com moderação = in moderation.",
+      "var": [
+        {
+          "em": "a week",
+          "aceita": [
+            "per week"
+          ]
+        },
+        {
+          "em": "That's",
+          "aceita": [
+            "That is",
+            "It's"
+          ]
+        }
+      ],
+      "blocos": [
+        3
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "moderated",
+        "moderately"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c9f682",
+      "quem": "voce",
+      "cod": "I could increase the frequency of my breaks, too.",
+      "dica": "Eu poderia aumentar a frequência das minhas pausas também.",
+      "img": "⏸️📈",
+      "alvo": "frequency",
+      "alvo_pt": "frequência",
+      "conceito": "frequency = frequência; na conversa, a pergunta é How often...? (Com que frequência...?).",
+      "registro": "neutro",
+      "armadilhas": [
+        "frequence",
+        "frequencie"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-90494e",
+      "quem": "dra-lee",
+      "contexto": "f-c9f682",
+      "cod": "Good idea. Short, frequent breaks are great for your eyes.",
+      "dica": "Boa ideia. Pausas curtas e frequentes são ótimas para os seus olhos.",
+      "img": "👀🌿⏸️",
+      "alvo": "frequent",
+      "alvo_pt": "frequentes",
+      "conceito": "frequent = frequente (FRÍ-kuent); frequent flyer = passageiro frequente.",
+      "registro": "neutro",
+      "armadilhas": [
+        "frequently",
+        "frequents"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

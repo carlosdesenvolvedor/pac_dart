@@ -1,0 +1,350 @@
+{
+  "id": "vocab-saude-corpo.jantar-com-emma",
+  "trilha": "vocab-saude-corpo",
+  "nome": "Jantar com a Emma: plate, pot, stir…",
+  "emoji": "🍲",
+  "cena": "A vizinha Emma convida você e o Lucas para jantar, e vocês cozinham juntos o frango com batatas.",
+  "resumo": "As palavras da cozinha e da mesa: frango, batata, panela, tigela, prato, mexer, provar, vinho e cerveja.",
+  "fechamento": false,
+  "novos": [
+    "wine",
+    "taste",
+    "plate",
+    "breast",
+    "beer",
+    "bowl",
+    "chicken",
+    "pot",
+    "cheese",
+    "potato",
+    "stir",
+    "tender"
+  ],
+  "apoio": [
+    "sauce",
+    "cabinet",
+    "grated",
+    "roast"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**wine** = vinho · **taste** = sabor, provada · **plate** = prato (louça) · **breast** = peito (de frango) · **beer** = cerveja · **bowl** = tigela · **chicken** = frango · **pot** = panela · **cheese** = queijo · **potato** = batata · **stir** = mexer · **tender** = macio"
+    },
+    {
+      "t": "ex",
+      "c": "Would you like a taste?\nQuer dar uma provada?"
+    },
+    {
+      "t": "tip",
+      "c": "Purê de batata = **mashed potatoes**; queijo ralado = **grated cheese**; frango assado = **roast chicken**."
+    },
+    {
+      "t": "warn",
+      "c": "**plate** é a louça; o prato (a comida) é **dish**. Plural: **potatoes**, com es. **bowl** rima com goal."
+    }
+  ],
+  "imagem": "🍗🥔🍲🍷",
+  "visualizacao": "A cozinha da Emma está quente e cheira a alho. A panela borbulha no fogão, o Lucas abre o vinho e a Emma passa uma colher de pau para você.",
+  "foto_busca": "friends cooking dinner home kitchen",
+  "trechos": [
+    {
+      "id": "f-daa213",
+      "quem": "lucas",
+      "contexto": "Come over for dinner on Saturday!",
+      "cod": "Great! I'll bring the wine.",
+      "dica": "Ótimo! Eu levo o vinho.",
+      "img": "🍷🎁",
+      "alvo": "wine",
+      "alvo_pt": "vinho",
+      "conceito": "wine = vinho; a glass of wine = uma taça de vinho. Eu levo (promessa) = I will bring.",
+      "registro": "informal",
+      "armadilhas": [
+        "take",
+        "vine"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2548342,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I'll bring the wine. → Great! I'll bring the wine.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ffa5cb",
+      "quem": "emma",
+      "cod": "I bought some chicken breasts for tonight.",
+      "dica": "Comprei peito de frango para hoje à noite.",
+      "img": "🛒🍗",
+      "alvo": "breasts",
+      "alvo_pt": "peito",
+      "conceito": "breast = peito, só em comida aqui: chicken breast. O peito (do corpo) é chest.",
+      "registro": "informal",
+      "armadilhas": [
+        "chest",
+        "breast chicken"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "some"
+      ],
+      "var": [
+        {
+          "em": "breasts",
+          "aceita": [
+            "breast"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-86a074",
+      "quem": "lucas",
+      "contexto": "f-ffa5cb",
+      "cod": "I love roast chicken.",
+      "dica": "Eu adoro frango assado.",
+      "img": "😋🍗",
+      "alvo": "chicken",
+      "alvo_pt": "frango",
+      "conceito": "chicken = frango (e galinha); roast chicken = frango assado.",
+      "registro": "informal",
+      "armadilhas": [
+        "chiken",
+        "hen"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4499924,
+        "en_autor": "CK",
+        "pt_id": 5224280,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-bc0fbe",
+      "quem": "voce",
+      "cod": "Where do you keep the big pot?",
+      "dica": "Onde você guarda a panela grande?",
+      "img": "🍲❓",
+      "alvo": "pot",
+      "alvo_pt": "panela",
+      "conceito": "pot = panela funda; pan = frigideira, panela rasa. a pot of coffee = um bule de café.",
+      "registro": "informal",
+      "armadilhas": [
+        "pan",
+        "panel"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fcd59c",
+      "quem": "voce",
+      "cod": "Do you have a bigger bowl?",
+      "dica": "Você tem uma tigela maior?",
+      "img": "🥣➕",
+      "alvo": "bowl",
+      "alvo_pt": "tigela",
+      "conceito": "bowl = tigela (bôul, rima com goal); a bowl of soup = um prato de sopa.",
+      "registro": "informal",
+      "armadilhas": [
+        "ball",
+        "bol"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3315259,
+        "en_autor": "CK",
+        "pt_id": 5142927,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0f30bf",
+      "quem": "emma",
+      "cod": "Do you like mashed potatoes?",
+      "dica": "Você gosta de purê de batata?",
+      "img": "🥔🥄",
+      "alvo": "potatoes",
+      "alvo_pt": "batata",
+      "lit": "[lit.: batatas amassadas]",
+      "conceito": "potato = batata; plural potatoes. mashed potatoes = purê de batata.",
+      "registro": "informal",
+      "armadilhas": [
+        "potatos",
+        "pure"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5813922,
+        "en_autor": "Hybrid",
+        "pt_id": 5813944,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ac3ed5",
+      "quem": "voce",
+      "cod": "Should I stir the sauce?",
+      "dica": "Eu mexo o molho?",
+      "img": "🥄🍅",
+      "alvo": "stir",
+      "alvo_pt": "mexo",
+      "conceito": "stir = mexer com colher; mix = misturar ingredientes. Eu mexo...? (oferta) = Should I...?",
+      "registro": "informal",
+      "armadilhas": [
+        "mix",
+        "move"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9d6bf9",
+      "quem": "emma",
+      "contexto": "f-ac3ed5",
+      "cod": "Would you like a taste?",
+      "dica": "Gostaria de uma provada?",
+      "img": "👅🥄",
+      "alvo": "a taste",
+      "alvo_pt": "uma provada",
+      "conceito": "taste = sabor, provada; have a taste = dar uma provada. Verbo: It tastes great.",
+      "registro": "informal",
+      "armadilhas": [
+        "try",
+        "test"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3256371,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-58b79c",
+      "quem": "emma",
+      "cod": "How about some grated cheese on top?",
+      "dica": "Que tal um pouco de queijo ralado por cima?",
+      "img": "🧀⬇️",
+      "alvo": "grated cheese",
+      "alvo_pt": "queijo ralado",
+      "conceito": "cheese = queijo; grated cheese = queijo ralado (o adjetivo vem antes).",
+      "opcional": [
+        "some"
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "cheese grated",
+        "chese"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bc9361",
+      "quem": "lucas",
+      "contexto": "What would you like to drink?",
+      "cod": "I'd love a cold beer, thanks.",
+      "dica": "Eu adoraria uma cerveja gelada, obrigado.",
+      "img": "🍺❄️",
+      "alvo": "beer",
+      "alvo_pt": "cerveja",
+      "conceito": "beer = cerveja; alcohol-free beer = cerveja sem álcool. gelada = cold.",
+      "var": [
+        {
+          "em": "I'd",
+          "aceita": [
+            "I would"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "frozen",
+        "ice beer"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0775b2",
+      "quem": "emma",
+      "cod": "Grab a plate and help yourself.",
+      "dica": "Pega um prato e se serve.",
+      "img": "🍽️🙌",
+      "alvo": "plate",
+      "alvo_pt": "prato",
+      "conceito": "plate = prato (a louça); o prato (a comida) é dish: my favorite dish.",
+      "registro": "informal",
+      "armadilhas": [
+        "dish",
+        "serve yourself"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Grab",
+          "aceita": [
+            "Take"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-72630c",
+      "quem": "lucas",
+      "cod": "Wow, this chicken is really tender.",
+      "dica": "Nossa, esse frango está muito macio.",
+      "img": "🍗😍",
+      "alvo": "tender",
+      "alvo_pt": "macio",
+      "conceito": "tender = macio (carne); para pão ou travesseiro, soft. Também: dolorido ao toque.",
+      "registro": "informal",
+      "armadilhas": [
+        "soft",
+        "macy"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7977551,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "This meat is really tender. → Wow, this chicken is really tender.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+{
+  "versao": 1,
+  "trilha": "vocab-academico-pesquisa",
+  "arco": "Já tech lead, o aluno aprende a ler e produzir pesquisa: o gráfico de usuários na call de segunda, o teste A/B, a estimativa da nuvem, a pesquisa da Ana, os alarmes da madrugada, os 500 comentários, as provas que o Mike pede, o artigo da Julia e as conclusões diante da diretoria.",
+  "licoes": {
+    "vocab-academico-pesquisa.grafico-de-crescimento": {
+      "titulo": { "en": "Our daily active users", "pt": "Os nossos usuários ativos" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "sarah", "pos": "centro", "segura": "documento", "emocao": "feliz" },
+            { "quem": "mike", "pos": "centroDireita", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-ee1b2e", "acao": "mostra", "emocao": "feliz", "camera": "geral" },
+            { "mudo": true, "quem": "mike", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-f800af", "acao": "aponta", "emocao": "feliz", "camera": "medio" },
+            { "frase": "f-4a5463", "acao": "aponta", "emocao": "neutro",
+              "reacoes": [ { "quem": "mike", "acao": "concorda" } ] },
+            { "frase": "f-ae52de", "acao": "concorda", "emocao": "radiante", "efeito": "brilho",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" } ] },
+            { "frase": "f-90a152", "acao": "pensa", "emocao": "pensativo", "camera": "aproxima" },
+            { "frase": "f-d4eadc", "acao": "aponta", "alvo": "voce", "emocao": "feliz" },
+            { "frase": "f-9c56a6", "acao": "aponta", "emocao": "determinado" },
+            { "frase": "f-b79113", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-4cea06", "acao": "concorda", "emocao": "determinado", "camera": "close" },
+            { "frase": "f-f599dd", "acao": "nega", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "sarah", "acao": "palmas", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" }, { "quem": "mike", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-academico-pesquisa.teste-a-b": {
+      "titulo": { "en": "Real difference or just luck", "pt": "Diferença real ou só sorte" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "sarah", "pos": "centro", "segura": "documento", "emocao": "feliz" },
+            { "quem": "mike", "pos": "centroDireita", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-ba8d80", "acao": "aponta", "emocao": "neutro", "camera": "geral" },
+            { "frase": "f-d6381b", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-a22091", "acao": "mostra", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-c68734", "acao": "nega", "emocao": "pensativo", "efeito": "interrogacao", "camera": "medio" },
+            { "frase": "f-ac387b", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-f65f87", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-d3988a", "acao": "aponta", "emocao": "feliz", "efeito": "brilho" },
+            { "frase": "f-211b95", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-607efd", "acao": "nega", "emocao": "pensativo", "camera": "close" },
+            { "frase": "f-8d10d6", "acao": "escreve", "emocao": "pensativo", "camera": "geral" },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" }, { "quem": "mike", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-academico-pesquisa.estimar-custos-nuvem": {
+      "titulo": { "en": "A rough cloud estimate", "pt": "O custo da nuvem, por alto" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "notebook", "emocao": "neutro" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "documento", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-a652d3", "acao": "aponta", "alvo": "voce", "emocao": "neutro", "camera": "geral" },
+            { "frase": "f-cb7707", "acao": "concorda", "emocao": "pensativo" },
+            { "frase": "f-321760", "acao": "escreve", "emocao": "neutro", "camera": "medio" },
+            { "frase": "f-90c37c", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-1ca5a9", "acao": "mostra", "emocao": "determinado" },
+            { "frase": "f-e455ee", "acao": "escreve", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "emocao": "pensativo" } ] },
+            { "frase": "f-c82ced", "acao": "mostra", "emocao": "timido", "efeito": "suor",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "mike", "acao": "mostra", "emocao": "pensativo" },
+            { "frase": "f-5c2797", "acao": "nega", "emocao": "pensativo", "camera": "close" },
+            { "frase": "f-9a0df6", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-e7947d", "acao": "concorda", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "voce", "acao": "comemora", "emocao": "radiante",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-academico-pesquisa.pesquisa-com-usuarios": {
+      "titulo": { "en": "Asking users the right way", "pt": "Perguntando do jeito certo" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "caderno", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-725718", "acao": "mostra", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-e9a948", "acao": "escreve", "emocao": "neutro" },
+            { "frase": "f-0ceb15", "acao": "concorda", "emocao": "determinado", "camera": "medio",
+              "reacoes": [ { "quem": "ana", "emocao": "pensativo" } ] },
+            { "frase": "f-002759", "acao": "aponta", "emocao": "feliz" },
+            { "frase": "f-08d26e", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-b5cba7", "acao": "concorda", "emocao": "determinado" },
+            { "frase": "f-ac29b7", "acao": "concorda", "emocao": "timido" },
+            { "frase": "f-a1a8db", "acao": "aponta", "alvo": "ana", "emocao": "determinado" },
+            { "mudo": true, "quem": "ana", "acao": "escreve", "emocao": "pensativo" },
+            { "frase": "f-b07d3f", "acao": "mostra", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-389def", "acao": "concorda", "emocao": "radiante", "camera": "geral",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-academico-pesquisa.alerta-de-latencia": {
+      "titulo": { "en": "A night of false alarms", "pt": "Uma madrugada de alarmes falsos" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "amanhecer", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "cansado" },
+            { "quem": "mike", "pos": "centroDireita", "segura": "celular", "emocao": "cansado" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-d0a66d", "acao": "nega", "emocao": "cansado", "camera": "geral" },
+            { "frase": "f-628d92", "acao": "concorda", "emocao": "cansado", "efeito": "zzz", "camera": "medio" },
+            { "frase": "f-515cfc", "acao": "aponta", "emocao": "determinado" },
+            { "frase": "f-35b911", "acao": "aponta", "emocao": "neutro" },
+            { "frase": "f-07e803", "acao": "pensa", "emocao": "pensativo" },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "determinado" },
+            { "frase": "f-e36a6a", "acao": "aponta", "emocao": "determinado",
+              "reacoes": [ { "quem": "mike", "emocao": "pensativo" } ] },
+            { "frase": "f-9d35e8", "acao": "aponta", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-e37cd8", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-49f1a6", "acao": "concorda", "emocao": "pensativo",
+              "reacoes": [ { "quem": "mike", "acao": "concorda" } ] },
+            { "frase": "f-0a0040", "acao": "nega", "emocao": "surpreso", "efeito": "exclamacao", "camera": "close" },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-academico-pesquisa.organizar-feedback": {
+      "titulo": { "en": "Five hundred user comments", "pt": "Quinhentos comentários de usuários" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "notebook", "emocao": "neutro" },
+            { "quem": "ana", "pos": "centroDireita", "segura": "caderno", "emocao": "determinado" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-c505b3", "acao": "aponta", "emocao": "determinado", "camera": "geral" },
+            { "frase": "f-bc1e56", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "ana", "emocao": "feliz" } ] },
+            { "frase": "f-d133be", "acao": "escreve", "emocao": "neutro", "camera": "medio" },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "feliz" },
+            { "frase": "f-976791", "acao": "mostra", "emocao": "surpreso", "efeito": "exclamacao" },
+            { "frase": "f-78b8b6", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-8824c4", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-a77a71", "acao": "escreve", "emocao": "neutro" },
+            { "frase": "f-c8bb0e", "acao": "aponta", "emocao": "determinado" },
+            { "frase": "f-680068", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-e5b7fc", "acao": "nega", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "voce", "acao": "comemora", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-academico-pesquisa.validar-resultados": {
+      "titulo": { "en": "Proof before the change", "pt": "Provas antes da mudança" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "notebook", "emocao": "neutro" },
+            { "quem": "mike", "pos": "centroDireita", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-287585", "acao": "nega", "emocao": "pensativo", "camera": "geral" },
+            { "frase": "f-e4601a", "acao": "aponta", "alvo": "voce", "emocao": "pensativo" },
+            { "frase": "f-d5417d", "acao": "mostra", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-cec8f4", "acao": "aponta", "emocao": "determinado" },
+            { "frase": "f-4239d6", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-92720e", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "mudo": true, "quem": "voce", "acao": "escreve", "emocao": "pensativo" },
+            { "frase": "f-6aee5f", "acao": "mostra", "emocao": "surpreso" },
+            { "frase": "f-45fd37", "acao": "nega", "emocao": "pensativo" },
+            { "frase": "f-25bfb2", "acao": "pensa", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "acao": "concorda" } ] },
+            { "frase": "f-8305d3", "acao": "concorda", "emocao": "determinado", "camera": "close",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "mike", "acao": "palmas", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-academico-pesquisa.tese-da-julia": {
+      "titulo": { "en": "Julia's conference paper", "pt": "O artigo da Julia" },
+      "cenas": [
+        {
+          "cenario": "casa", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "julia", "pos": "centroDireita", "segura": "documento", "emocao": "nervoso" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centro" },
+            { "prop": "cafe", "pos": "direita" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "senta",
+              "reacoes": [ { "quem": "julia", "acao": "senta" } ] },
+            { "frase": "f-696c94", "acao": "mostra", "emocao": "nervoso", "camera": "geral" },
+            { "frase": "f-20561a", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-30c55d", "acao": "aponta", "alvo": "notebook", "emocao": "determinado", "camera": "medio" },
+            { "frase": "f-ca2d59", "acao": "mostra", "emocao": "neutro" },
+            { "frase": "f-566d61", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "julia", "emocao": "timido" } ] },
+            { "frase": "f-9e940f", "acao": "escreve", "emocao": "timido" },
+            { "frase": "f-f86a57", "acao": "aponta", "alvo": "notebook", "emocao": "feliz" },
+            { "frase": "f-1eb7c8", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "julia", "emocao": "radiante" } ] },
+            { "mudo": true, "quem": "julia", "acao": "abraca", "alvo": "voce", "emocao": "radiante", "efeito": "coracoes",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-academico-pesquisa.apresentar-conclusoes": {
+      "titulo": { "en": "Careful conclusions for the board", "pt": "Conclusões com cuidado na diretoria" },
+      "cenas": [
+        {
+          "cenario": "escritorio", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "sarah", "pos": "centroEsquerda", "emocao": "feliz" },
+            { "quem": "voce", "pos": "centro", "segura": "cafe", "emocao": "determinado" },
+            { "quem": "diretora", "pos": "centroDireita", "emocao": "neutro" },
+            { "quem": "cfo", "pos": "direita", "segura": "documento", "emocao": "neutro" }
+          ],
+          "objetos": [ { "prop": "telao", "pos": "esquerda" } ],
+          "passos": [
+            { "frase": "f-1885b6", "acao": "aponta", "alvo": "telao", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-8699d9", "acao": "nega", "emocao": "pensativo", "camera": "medio",
+              "reacoes": [ { "quem": "diretora", "emocao": "pensativo" } ] },
+            { "frase": "f-046d91", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-bea67e", "acao": "aponta", "alvo": "telao", "emocao": "neutro" },
+            { "frase": "f-3de254", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-a7558c", "acao": "concorda", "emocao": "determinado", "camera": "close" },
+            { "mudo": true, "quem": "diretora", "acao": "aponta", "alvo": "telao", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-5cd57c", "acao": "concorda", "emocao": "pensativo" },
+            { "mudo": true, "quem": "cfo", "acao": "mostra", "emocao": "pensativo" },
+            { "frase": "f-e603a2", "acao": "aponta", "alvo": "cfo", "emocao": "feliz",
+              "reacoes": [ { "quem": "cfo", "emocao": "radiante" } ] },
+            { "frase": "f-51eb12", "acao": "concorda", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "diretora", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "diretora", "acao": "palmas", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "emocao": "radiante" }, { "quem": "voce", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

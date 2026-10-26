@@ -1,0 +1,262 @@
+{
+  "id": "vocab-comunicacao-tecnologia.a-materia-da-revista",
+  "trilha": "vocab-comunicacao-tecnologia",
+  "nome": "Na revista: article, magazine, column…",
+  "emoji": "📰",
+  "cena": "Num café em Boston, o Ben mostra a matéria que uma revista de tecnologia publicou sobre a startup dele, e vocês leem juntos.",
+  "resumo": "Falar de imprensa: article, magazine, newspaper, journalist, readers, publisher.",
+  "fechamento": false,
+  "novos": [
+    "article",
+    "newspaper",
+    "magazine",
+    "title",
+    "reader",
+    "column",
+    "journalist",
+    "publication",
+    "journal",
+    "publisher"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Jornal, revista e quem escreve"
+    },
+    {
+      "t": "p",
+      "c": "**article** artigo, matéria · **newspaper** jornal · **magazine** revista · **title** título · **reader** leitor · **column** coluna · **journalist** jornalista · **publication** publicação · **journal** revista científica; diário · **publisher** editora"
+    },
+    {
+      "t": "ex",
+      "c": "That magazine has more than a million readers.\nEssa revista tem mais de um milhão de leitores."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **write an article** (escrever uma matéria), **a weekly column** (uma coluna semanal), **read the newspaper** (ler o jornal)."
+    },
+    {
+      "t": "warn",
+      "c": "Falsos amigos: **magazine** é revista (não magazine de loja); **journal** não é jornal (= **newspaper**); **publisher** é a editora, **editor** é quem edita o texto."
+    }
+  ],
+  "imagem": "☕📰😃",
+  "visualizacao": "Você está numa mesinha de café em Boston, com uma caneca quente na mão. O Ben abre a revista na página da matéria e aponta a foto do time, todo orgulhoso.",
+  "foto_busca": "friends reading magazine coffee shop",
+  "trechos": [
+    {
+      "id": "f-75a245",
+      "quem": "ben",
+      "cod": "Look, they wrote an article about our startup!",
+      "dica": "Olha, escreveram uma matéria sobre a nossa startup!",
+      "img": "📰🚀😃",
+      "alvo": "article",
+      "alvo_pt": "matéria",
+      "conceito": "article = artigo, matéria de jornal ou revista. Escreveram (sujeito indefinido) = they wrote.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4a694c",
+      "quem": "voce",
+      "contexto": "f-75a245",
+      "cod": "What's the title of the article?",
+      "dica": "Qual é o título da matéria?",
+      "img": "🏷️📰❓",
+      "alvo": "title",
+      "alvo_pt": "título",
+      "conceito": "title = título; the title of the article = o título da matéria.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2713063,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "What's the title of that book? → What's the title of the article?; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-232948",
+      "quem": "ben",
+      "contexto": "Who wrote it?",
+      "cod": "She's a tech journalist based in Boston.",
+      "dica": "Ela é jornalista de tecnologia, baseada em Boston.",
+      "img": "👩‍💼🎤🏙️",
+      "alvo": "journalist",
+      "alvo_pt": "jornalista",
+      "conceito": "journalist = jornalista; based in = baseado em (onde a pessoa trabalha).",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6253951,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom is a journalist based in Boston. → She's a tech journalist based in Boston.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "tech journalist",
+          "aceita": [
+            "technology journalist"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-085e36",
+      "quem": "ben",
+      "cod": "My mom bought ten copies of the magazine.",
+      "dica": "A minha mãe comprou dez exemplares da revista.",
+      "img": "👩🛍️📚",
+      "alvo": "magazine",
+      "alvo_pt": "revista",
+      "conceito": "magazine = revista (não é loja). Copy = exemplar.",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "journal"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eaf128",
+      "quem": "ben",
+      "cod": "That magazine has more than a million readers.",
+      "dica": "Essa revista tem mais de um milhão de leitores.",
+      "img": "👥📖🌎",
+      "alvo": "readers",
+      "alvo_pt": "leitores",
+      "conceito": "reader = leitor; our readers = os nossos leitores.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "That magazine",
+          "aceita": [
+            "This magazine"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-7a27e2",
+      "quem": "ben",
+      "cod": "The same journalist writes a weekly column about startups.",
+      "dica": "A mesma jornalista escreve uma coluna semanal sobre startups.",
+      "img": "🗞️✍️📅",
+      "alvo": "column",
+      "alvo_pt": "coluna",
+      "conceito": "column = coluna de jornal; também a coluna de uma tabela: add a column.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-829c41",
+      "quem": "voce",
+      "cod": "Who's the publisher of this magazine?",
+      "dica": "Quem é a editora desta revista?",
+      "img": "🏢📚❓",
+      "alvo": "publisher",
+      "alvo_pt": "editora",
+      "conceito": "publisher = editora (a empresa que publica); editor = quem edita o texto.",
+      "var": [
+        {
+          "em": "the publisher of this magazine",
+          "aceita": [
+            "this magazine's publisher"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "editor"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3b7a62",
+      "quem": "ben",
+      "cod": "Right after publication, our website went down for an hour.",
+      "dica": "Logo depois da publicação, o nosso site caiu por uma hora.",
+      "img": "🌐💥⏳",
+      "alvo": "publication",
+      "alvo_pt": "publicação",
+      "conceito": "publication = publicação; after publication = depois da publicação (sem artigo).",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "after publication",
+          "aceita": [
+            "after the publication"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d14055",
+      "quem": "voce",
+      "cod": "Do you have time to read the newspaper in the morning?",
+      "dica": "Você tem tempo para ler o jornal de manhã?",
+      "img": "🗞️🌅⏰",
+      "alvo": "newspaper",
+      "alvo_pt": "jornal",
+      "conceito": "newspaper = jornal (impresso). Journal é outra coisa: revista científica ou diário.",
+      "registro": "informal",
+      "interferencias": [
+        "BR44"
+      ],
+      "armadilhas": [
+        "journal"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 1495716,
+        "en_autor": "CK",
+        "pt_id": 5066286,
+        "pt_autor": "ToinhoAlam",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      },
+      "blocos": [
+        4,
+        8
+      ]
+    },
+    {
+      "id": "f-26f1a3",
+      "quem": "ben",
+      "cod": "Next year, we want to publish our research in a scientific journal.",
+      "dica": "Ano que vem, a gente quer publicar a nossa pesquisa numa revista científica.",
+      "img": "🔬📘🎓",
+      "alvo": "scientific journal",
+      "alvo_pt": "revista científica",
+      "conceito": "journal = revista científica ou especializada; keep a journal = escrever um diário.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "blocos": [
+        8
+      ]
+    }
+  ]
+}

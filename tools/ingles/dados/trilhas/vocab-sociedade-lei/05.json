@@ -1,0 +1,218 @@
+{
+  "id": "vocab-sociedade-lei.golpe-de-phishing",
+  "trilha": "vocab-sociedade-lei",
+  "nome": "Golpe de phishing",
+  "emoji": "🎣",
+  "cena": "Numa reunião rápida, o Mike conta que um e-mail falso tentou roubar as senhas do time; a conta da Ana foi suspensa por precaução, e ninguém está culpando ninguém.",
+  "resumo": "Segurança no trabalho: steal passwords, be suspended, accuse someone of, restrict access, admin privileges.",
+  "fechamento": false,
+  "novos": [
+    "investigation",
+    "victim",
+    "protection",
+    "steal",
+    "accuse",
+    "restrict",
+    "privilege",
+    "suspend"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Golpe, investigação e acesso"
+    },
+    {
+      "t": "p",
+      "c": "**investigation** investigação · **victim** vítima · **protection** proteção · **steal** roubar · **accuse** acusar · **restrict** restringir · **privilege** privilégio, permissão de acesso · **suspend** suspender"
+    },
+    {
+      "t": "ex",
+      "c": "Someone tried to steal our passwords.\nAlguém tentou roubar nossas senhas."
+    },
+    {
+      "t": "tip",
+      "c": "**accuse** alguém **of** algo: Nobody is accusing you of anything. Em TI, **admin privileges** = permissões de admin."
+    },
+    {
+      "t": "warn",
+      "c": "**steal** + a coisa (steal a password); **rob** + a pessoa ou o lugar (rob a bank). Passado irregular: steal, stole, stolen."
+    }
+  ],
+  "imagem": "📧🎣🔐",
+  "visualizacao": "Você entra na chamada às pressas. O Mike está sério, com o e-mail falso na tela, e a Ana, com o rosto vermelho, segura uma caneca de café.",
+  "foto_busca": "phishing email laptop screen",
+  "trechos": [
+    {
+      "id": "f-ff9f42",
+      "quem": "mike",
+      "cod": "Someone tried to steal our passwords with a fake email.",
+      "dica": "Alguém tentou roubar nossas senhas com um e-mail falso.",
+      "img": "📧🔑🦹",
+      "alvo": "steal",
+      "alvo_pt": "roubar",
+      "conceito": "steal + a coisa (steal passwords); rob + a pessoa ou o lugar (rob a bank).",
+      "registro": "neutro",
+      "armadilhas": [
+        "rob"
+      ],
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "email",
+          "aceita": [
+            "e-mail"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b01a47",
+      "quem": "mike",
+      "cod": "Ana's account is suspended for now, just in case.",
+      "dica": "A conta da Ana está suspensa por enquanto, só por precaução.",
+      "img": "👤⏸️",
+      "alvo": "suspended",
+      "alvo_pt": "suspensa",
+      "conceito": "suspend = suspender; suspend an account = suspender uma conta. Passado regular: suspended.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "is suspended",
+          "aceita": [
+            "has been suspended",
+            "was suspended"
+          ]
+        },
+        {
+          "em": "just in case",
+          "aceita": [
+            "as a precaution",
+            "just as a precaution"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b18b5f",
+      "quem": "mike",
+      "contexto": "I'm so sorry, I clicked the link.",
+      "cod": "Nobody's accusing you of anything, Ana.",
+      "dica": "Ninguém está te acusando de nada, Ana.",
+      "img": "🙅‍♂️👉",
+      "alvo": "accusing you of",
+      "alvo_pt": "te acusando de",
+      "conceito": "accuse someone of + algo ou -ing (não: accuse for).",
+      "var": [
+        {
+          "em": "Nobody's",
+          "aceita": [
+            "Nobody is",
+            "No one is",
+            "No one's"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "for"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9bd54e",
+      "quem": "mike",
+      "cod": "Anyone can be a victim of a scam like this.",
+      "dica": "Qualquer pessoa pode ser vítima de um golpe assim.",
+      "img": "🎣😟",
+      "alvo": "victim",
+      "alvo_pt": "vítima",
+      "conceito": "victim = vítima; fall victim to a scam = cair num golpe.",
+      "var": [
+        {
+          "em": "a victim",
+          "aceita": [
+            "the victim"
+          ]
+        },
+        {
+          "em": "Anyone",
+          "aceita": [
+            "Anybody"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ff1681",
+      "quem": "voce",
+      "cod": "How's the investigation going?",
+      "dica": "Como está indo a investigação?",
+      "img": "🔍🕵️",
+      "alvo": "investigation",
+      "alvo_pt": "investigação",
+      "conceito": "investigation = investigação; be under investigation = estar sendo investigado.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3513490,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "How's your investigation going? → How's the investigation going?; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-583001",
+      "quem": "mike",
+      "cod": "From now on, we'll restrict access to the production database.",
+      "dica": "A partir de agora, vamos restringir o acesso ao banco de dados de produção.",
+      "img": "🗄️🔒",
+      "alvo": "restrict",
+      "alvo_pt": "restringir",
+      "conceito": "restrict access to = restringir o acesso a.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d69bde",
+      "quem": "mike",
+      "cod": "Only three people will have admin privileges.",
+      "dica": "Só três pessoas vão ter privilégios de admin.",
+      "img": "👥🛡️",
+      "alvo": "admin privileges",
+      "alvo_pt": "privilégios de admin",
+      "conceito": "privilege = privilégio; em TI, permissão de acesso: admin ou root privileges.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-075968",
+      "quem": "sarah",
+      "cod": "Data protection is everyone's job.",
+      "dica": "Proteção de dados é trabalho de todo mundo.",
+      "img": "🛡️💾👥",
+      "alvo": "Data protection",
+      "alvo_pt": "Proteção de dados",
+      "conceito": "data protection = proteção de dados.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "everyone's",
+          "aceita": [
+            "everybody's"
+          ]
+        }
+      ]
+    }
+  ]
+}

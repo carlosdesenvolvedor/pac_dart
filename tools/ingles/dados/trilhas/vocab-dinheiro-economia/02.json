@@ -1,0 +1,293 @@
+{
+  "id": "vocab-dinheiro-economia.economia-noticiario",
+  "trilha": "vocab-dinheiro-economia",
+  "nome": "No jornal: economy, crisis, inflation…",
+  "emoji": "📰",
+  "cena": "No café de domingo, o Ben lê uma reportagem sobre a economia americana no celular, e vocês comparam com o Brasil.",
+  "resumo": "Falar da economia de um país: crescimento, desemprego, inflação, moeda, setor e crise.",
+  "fechamento": false,
+  "novos": [
+    "economic",
+    "economy",
+    "sector",
+    "crisis",
+    "industrial",
+    "unemployment",
+    "currency",
+    "deficit",
+    "inflation",
+    "boom",
+    "wealth"
+  ],
+  "apoio": [
+    "dollar",
+    "prices",
+    "growth",
+    "rate"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**economy** = economia (de um país) · **economic** = econômico, da economia · **sector** = setor · **crisis** = crise · **industrial** = industrial · **unemployment** = desemprego · **currency** = moeda · **deficit** = déficit · **inflation** = inflação · **boom** = alta rápida · **wealth** = riqueza"
+    },
+    {
+      "t": "ex",
+      "c": "Inflation is high, but unemployment is low.\nA inflação está alta, mas o desemprego está baixo."
+    },
+    {
+      "t": "tip",
+      "c": "**economic growth** = crescimento econômico; **the unemployment rate** = a taxa de desemprego; **a budget deficit** = um déficit no orçamento."
+    },
+    {
+      "t": "warn",
+      "c": "Econômico de gastar pouco é **economical** (an economical car). Moedinha de metal é **coin**; **currency** é o real, o dólar."
+    }
+  ],
+  "imagem": "☕📱📰",
+  "visualizacao": "É domingo de manhã num café. O Ben rola uma reportagem no celular entre um gole e outro, e você vê gráficos subindo e descendo na tela.",
+  "foto_busca": "friends coffee shop reading news phone",
+  "trechos": [
+    {
+      "id": "f-81e76e",
+      "quem": "ben",
+      "cod": "My dad is really worried about the economy.",
+      "dica": "Meu pai está muito preocupado com a economia.",
+      "img": "👨😟📉",
+      "alvo": "economy",
+      "alvo_pt": "economia",
+      "conceito": "economy = a economia de um país; economizar dinheiro = save.",
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "economics",
+        "economic"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7010523,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom is worried about the economy. → My dad is really worried about the economy.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-809713",
+      "quem": "voce",
+      "contexto": "f-81e76e",
+      "cod": "Why? Economic growth has been strong this year.",
+      "dica": "Por quê? O crescimento econômico tem sido forte este ano.",
+      "img": "📈💪",
+      "alvo": "Economic",
+      "alvo_pt": "econômico",
+      "conceito": "economic = da economia (economic growth); economical = que gasta pouco.",
+      "registro": "informal",
+      "armadilhas": [
+        "economical",
+        "economy"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1eefb7",
+      "quem": "ben",
+      "contexto": "f-809713",
+      "cod": "True, and the unemployment rate fell to four percent.",
+      "dica": "É verdade, e a taxa de desemprego caiu para quatro por cento.",
+      "img": "👷📉",
+      "alvo": "unemployment",
+      "alvo_pt": "desemprego",
+      "conceito": "unemployment = desemprego; desempregado = unemployed.",
+      "registro": "informal",
+      "armadilhas": [
+        "unemployed",
+        "desemployment"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4704215,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "The unemployment rate in Japan was 3.4 percent in September of 2015. → True, and the unemployment rate fell to four percent.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-ff6af5",
+      "quem": "ben",
+      "cod": "The problem is inflation. Everything costs more now.",
+      "dica": "O problema é a inflação. Tudo custa mais agora.",
+      "img": "🛒💸⬆️",
+      "alvo": "inflation",
+      "alvo_pt": "inflação",
+      "conceito": "inflation = inflação; inflation is rising = a inflação está subindo.",
+      "registro": "informal",
+      "armadilhas": [
+        "inflaction",
+        "the inflation"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-817b41",
+      "quem": "voce",
+      "cod": "In Brazil, our currency lost a lot of value against the dollar.",
+      "dica": "No Brasil, a nossa moeda perdeu muito valor em relação ao dólar.",
+      "img": "💱💵📉",
+      "alvo": "currency",
+      "alvo_pt": "moeda",
+      "conceito": "currency = moeda de um país (o real, o dólar); a moedinha de metal é coin.",
+      "blocos": [
+        9
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "coin",
+        "money"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f7bdc1",
+      "quem": "voce",
+      "cod": "Brazil is still recovering from the last crisis.",
+      "dica": "O Brasil ainda está se recuperando da última crise.",
+      "img": "🩹📈",
+      "alvo": "crisis",
+      "alvo_pt": "crise",
+      "conceito": "crisis = crise (CRAI-sis); plural crises (CRAI-siiz).",
+      "registro": "informal",
+      "armadilhas": [
+        "crise",
+        "crises"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a8e18e",
+      "quem": "ben",
+      "cod": "The government is running a big budget deficit this year.",
+      "dica": "O governo está com um grande déficit no orçamento este ano.",
+      "img": "🏛️🕳️💵",
+      "alvo": "deficit",
+      "alvo_pt": "déficit",
+      "conceito": "deficit = déficit (DEF-i-sit); run a deficit = estar com déficit; a budget deficit = déficit no orçamento.",
+      "var": [
+        {
+          "em": "big",
+          "aceita": [
+            "large"
+          ]
+        },
+        {
+          "em": "is running",
+          "aceita": [
+            "has"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "deficite",
+        "debt"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6d9a63",
+      "quem": "ben",
+      "cod": "Boston's tech sector is hiring again.",
+      "dica": "O setor de tecnologia de Boston está contratando de novo.",
+      "img": "💻🏢🤝",
+      "alvo": "sector",
+      "alvo_pt": "setor",
+      "conceito": "sector = setor (the tech sector, the private sector).",
+      "registro": "informal",
+      "armadilhas": [
+        "setor",
+        "area"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Boston's tech sector",
+          "aceita": [
+            "The tech sector in Boston"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-5053ed",
+      "quem": "ben",
+      "contexto": "f-6d9a63",
+      "cod": "But industrial production fell for the third month in a row.",
+      "dica": "Mas a produção industrial caiu pelo terceiro mês seguido.",
+      "img": "🏭📉",
+      "alvo": "industrial",
+      "alvo_pt": "industrial",
+      "conceito": "industrial production = produção industrial; in a row = seguido.",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "industry"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-770cb6",
+      "quem": "ben",
+      "cod": "Austin had a huge tech boom a few years ago.",
+      "dica": "Austin teve um boom enorme de tecnologia há alguns anos.",
+      "img": "🌆🚀",
+      "alvo": "boom",
+      "alvo_pt": "boom",
+      "conceito": "boom = fase de crescimento rápido (a tech boom, an economic boom), não explosão.",
+      "registro": "informal",
+      "armadilhas": [
+        "bum",
+        "explosion"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8ba050",
+      "quem": "ben",
+      "contexto": "f-770cb6",
+      "cod": "It created a lot of wealth, but rents went up too.",
+      "dica": "Criou muita riqueza, mas os aluguéis também subiram.",
+      "img": "💎🏠⬆️",
+      "alvo": "wealth",
+      "alvo_pt": "riqueza",
+      "conceito": "wealth = riqueza, incontável (não: wealths); a wealth of = muito.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "wealths",
+        "richness",
+        "riches"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

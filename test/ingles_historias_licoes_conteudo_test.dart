@@ -59,8 +59,8 @@ T? _porNome<T extends Enum>(List<T> valores, Object? v) {
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  test('o currículo tem as 626 lições do curso (a base dos testes abaixo)', () {
-    expect(_licoesDoCurso.length, 626);
+  test('o currículo tem as 796 lições do curso (a base dos testes abaixo)', () {
+    expect(_licoesDoCurso.length, 796);
   });
 
   test('a pasta é declarada no pubspec (senão o app nunca acha os arquivos)', () {
@@ -145,7 +145,7 @@ void main() {
     final j = _json('encenacao_auto.json');
     final licoes = (j['licoes'] as Map).cast<String, Object?>();
 
-    test('versão 1 e uma entrada para CADA uma das 626 lições, só ids que existem', () {
+    test('versão 1 e uma entrada para CADA uma das 796 lições, só ids que existem', () {
       expect(j.keys.toSet(), {'versao', 'licoes'});
       expect(j['versao'], 1);
       expect(licoes.keys.where((id) => !_licoesDoCurso.containsKey(id)), isEmpty);
@@ -197,7 +197,7 @@ void main() {
       expect(erros, isEmpty);
     });
 
-    test('com a tabela, as 626 encenações automáticas validam e respeitam o cenário/hora da tabela', () {
+    test('com a tabela, as 796 encenações automáticas validam e respeitam o cenário/hora da tabela', () {
       final problemas = <String>[];
       for (final e in licoes.entries) {
         final (:t, :l) = _licoesDoCurso[e.key]!;
@@ -231,7 +231,7 @@ void main() {
       final indice = await HistoriasLicoesRepo.trilhasComHistoria(bundle: rootBundle);
       expect(indice.keys, containsAll(['primeiro-contato', 'numeros-horas-soletrar']));
       final tabela = await HistoriasLicoesRepo.encenacaoAuto(bundle: rootBundle);
-      expect(tabela.length, 626);
+      expect(tabela.length, 796);
       final pc = await HistoriasLicoesRepo.trilha('primeiro-contato', bundle: rootBundle);
       expect(pc?['trilha'], 'primeiro-contato');
       HistoriasLicoesRepo.limparCache();

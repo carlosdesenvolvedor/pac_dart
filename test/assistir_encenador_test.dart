@@ -9,11 +9,11 @@ import 'package:pac_dart/features/ingles/domain/assistir/historia_licao.dart';
 import 'package:pac_dart/features/ingles/domain/baralhos.dart' show chaveDaFrase;
 import 'package:pac_dart/features/ingles/domain/expressao.dart';
 
-/// 📺 A encenação automática (plano §4): as 626 lições do currículo real viram uma história válida, sempre
+/// 📺 A encenação automática (plano §4): as 796 lições do currículo real viram uma história válida, sempre
 /// igual, rápido, sem nada do Turismo; os casos conhecidos da heurística ficam presos aqui.
 ///
 /// `--dart-define=DISTRIBUICAO=<arquivo>` grava a contagem de cenários (revisão do lead, plano §9 D); com
-/// `--dart-define=TABELA=<encenacao_auto.json>` também encena as 626 com a tabela (tem de dar 0 erros) e lista
+/// `--dart-define=TABELA=<encenacao_auto.json>` também encena as 796 com a tabela (tem de dar 0 erros) e lista
 /// onde a heurística e a tabela discordam no cenário (para o grupo F revisar).
 
 final _trilhas = (jsonDecode(File('assets/ingles/curriculo.json').readAsStringSync()) as List)
@@ -65,7 +65,7 @@ String _assinatura(HistoriaLicao h) {
 }
 
 void main() {
-  group('as 626 lições do currículo', () {
+  group('as 796 lições do currículo', () {
     late final Map<String, HistoriaLicao> historias;
     late final int ms;
 
@@ -76,7 +76,7 @@ void main() {
     });
 
     test('todas viram uma história válida (validarHistoriaLicao vazio), em menos de 15 s', () {
-      expect(_doCurso.length, greaterThanOrEqualTo(626));
+      expect(_doCurso.length, greaterThanOrEqualTo(796));
       final erros = <String>[];
       for (final e in _doCurso) {
         final h = historias[e.l.id]!;

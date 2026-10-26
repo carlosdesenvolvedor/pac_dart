@@ -1,0 +1,242 @@
+{
+  "id": "vocab-natureza-ciencia.trilha-new-hampshire",
+  "trilha": "vocab-natureza-ciencia",
+  "nome": "Trilha em New Hampshire",
+  "emoji": "🥾",
+  "cena": "O Ben chama você para um fim de semana de trilha nas montanhas de New Hampshire: morro, riacho, a prainha do lago e a volta para a cabana.",
+  "resumo": "Falar da paisagem numa trilha: trail, forest, stream, slope, hill, valley, river, sand.",
+  "fechamento": false,
+  "novos": [
+    "river",
+    "forest",
+    "atmosphere",
+    "hill",
+    "landscape",
+    "stream",
+    "trail",
+    "valley",
+    "sand",
+    "slope"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Palavras da trilha"
+    },
+    {
+      "t": "p",
+      "c": "**river** rio · **forest** floresta, mata · **atmosphere** clima, ambiente (de um lugar) · **hill** morro, colina · **landscape** paisagem · **stream** riacho · **trail** trilha · **valley** vale · **sand** areia · **slope** encosta, ladeira"
+    },
+    {
+      "t": "ex",
+      "c": "Stay on the trail so we don't get lost.\nFica na trilha pra gente não se perder."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **a steep slope** (uma encosta íngreme), **cross a stream** (atravessar um riacho), **at the top of the hill** (no alto do morro). Nome de rio vem com the: the Charles River."
+    },
+    {
+      "t": "warn",
+      "c": "**sand** é incontável: some sand (não: a sand). E para mata pequena e perto de casa o americano diz **the woods**."
+    }
+  ],
+  "imagem": "🥾🌲⛰️",
+  "visualizacao": "Você sobe a trilha atrás do Ben, de mochila nas costas. Cheiro de pinheiro, folhas estalando sob a bota e, lá embaixo, o barulho de um riacho entre as pedras.",
+  "foto_busca": "hiking trail mountain forest",
+  "trechos": [
+    {
+      "id": "f-5cfdf5",
+      "quem": "ben",
+      "cod": "Stay on the trail so we don't get lost.",
+      "dica": "Fica na trilha pra gente não se perder.",
+      "img": "🥾🌲➡️",
+      "alvo": "trail",
+      "alvo_pt": "trilha",
+      "conceito": "trail = trilha. Também é rastro: a paper trail; para dev, an audit trail (trilha de auditoria).",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-01fd69",
+      "quem": "voce",
+      "cod": "I've never seen a forest this green.",
+      "dica": "Nunca vi uma floresta tão verde.",
+      "img": "🌲🌳💚",
+      "alvo": "forest",
+      "alvo_pt": "floresta",
+      "conceito": "forest = floresta, mata. Para mata pequena e perto de casa: the woods.",
+      "var": [
+        {
+          "em": "this green",
+          "aceita": [
+            "so green"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-306de2",
+      "quem": "ben",
+      "cod": "We have to cross a stream here.",
+      "dica": "A gente tem que atravessar um riacho aqui.",
+      "img": "🏞️💧👣",
+      "alvo": "stream",
+      "alvo_pt": "riacho",
+      "conceito": "stream = riacho. É o mesmo stream de live stream: um fluxo contínuo.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7cdbcf",
+      "quem": "ben",
+      "cod": "Careful, this slope is really steep.",
+      "dica": "Cuidado, essa encosta é muito íngreme.",
+      "img": "⛰️⚠️",
+      "alvo": "slope",
+      "alvo_pt": "encosta",
+      "conceito": "slope = encosta, ladeira, inclinação. Ski slopes = pistas de esqui; em matemática, inclinação da reta.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7779724,
+        "en_autor": "AlanF_US",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "It's a very steep slope. → Careful, this slope is really steep.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "really",
+          "aceita": [
+            "very"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-3f1e42",
+      "quem": "ben",
+      "cod": "From the top of the hill, you can see the whole lake.",
+      "dica": "Do alto do morro, dá pra ver o lago inteiro.",
+      "img": "⛰️👀🏞️",
+      "alvo": "hill",
+      "alvo_pt": "morro",
+      "conceito": "hill = morro, colina (menor que mountain). At the top of the hill = no alto do morro.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "whole",
+          "aceita": [
+            "entire"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b0d0ad",
+      "quem": "voce",
+      "cod": "The landscape here looks like a painting.",
+      "dica": "A paisagem aqui parece uma pintura.",
+      "img": "🏞️🖼️",
+      "alvo": "landscape",
+      "alvo_pt": "paisagem",
+      "conceito": "landscape = paisagem. Para dev: landscape mode = tela deitada (o oposto é portrait).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-eef4eb",
+      "quem": "ben",
+      "cod": "Our cabin is down in the valley, near the lake.",
+      "dica": "Nossa cabana fica lá embaixo, no vale, perto do lago.",
+      "img": "🏡⛰️",
+      "alvo": "valley",
+      "alvo_pt": "vale",
+      "conceito": "valley = vale. Down in the valley = lá embaixo, no vale.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-30998b",
+      "quem": "voce",
+      "cod": "There's sand in my shoes again.",
+      "dica": "Tem areia nos meus sapatos de novo.",
+      "img": "🏖️👟",
+      "alvo": "sand",
+      "alvo_pt": "areia",
+      "conceito": "sand = areia, incontável: some sand (não: a sand).",
+      "registro": "informal",
+      "armadilhas": [
+        "sands"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d7e7fc",
+      "quem": "ben",
+      "cod": "We can go for a swim in the river tomorrow.",
+      "dica": "Amanhã a gente pode ir nadar no rio.",
+      "img": "🏊🌊",
+      "alvo": "river",
+      "alvo_pt": "rio",
+      "conceito": "river = rio. Go for a swim = ir nadar; nome de rio vem com the: the Charles River.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8232819,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "We went for a swim in the river. → We can go for a swim in the river tomorrow.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "go for a swim",
+          "aceita": [
+            "go swimming"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ff31b8",
+      "quem": "voce",
+      "cod": "I love the cozy atmosphere of this cabin.",
+      "dica": "Adoro o ambiente aconchegante desta cabana.",
+      "img": "🔥🛋️☕",
+      "alvo": "atmosphere",
+      "alvo_pt": "ambiente",
+      "conceito": "atmosphere = clima, ambiente de um lugar ou grupo; na ciência, a atmosfera da Terra.",
+      "registro": "informal",
+      "armadilhas": [
+        "ambient",
+        "environment"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "of this cabin",
+          "aceita": [
+            "in this cabin"
+          ]
+        }
+      ]
+    }
+  ]
+}

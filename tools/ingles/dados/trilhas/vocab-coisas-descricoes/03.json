@@ -1,0 +1,237 @@
+{
+  "id": "vocab-coisas-descricoes.brecho-julia",
+  "trilha": "vocab-coisas-descricoes",
+  "nome": "No brechó: medium, gold, tie, odd…",
+  "emoji": "🛍️",
+  "cena": "Você e a Julia procuram presentes num brechó e numa feira de antiguidades.",
+  "resumo": "Descrever peças: tamanho, material, valor e o que é comum ou diferente.",
+  "fechamento": false,
+  "novos": [
+    "medium",
+    "gold",
+    "tie",
+    "unique",
+    "ordinary",
+    "odd",
+    "unusual",
+    "valuable",
+    "silver",
+    "cap"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**medium** = médio, tamanho M · **gold** = ouro · **tie** = gravata; empate · **unique** = único, sem igual · **ordinary** = comum · **odd** = estranho · **unusual** = incomum · **valuable** = valioso · **silver** = prata · **cap** = boné"
+    },
+    {
+      "t": "ex",
+      "c": "Do you have this jacket in a medium?\nVocês têm essa jaqueta no tamanho M?"
+    },
+    {
+      "t": "tip",
+      "c": "Tamanhos: **small, medium, large**. O metal vem antes, como adjetivo: **a gold ring**, **silver earrings**."
+    },
+    {
+      "t": "warn",
+      "c": "**ordinary** é só comum, não ordinário (de má qualidade). **cap** é boné, não capa. O único (só um) = **the only one**."
+    }
+  ],
+  "imagem": "🛍️👗🏺",
+  "visualizacao": "Você anda com a Julia entre araras de roupa usada e mesas de antiguidades. Cheiro de coisa antiga e peças de prata brilhando no sol.",
+  "foto_busca": "thrift store vintage clothes rack",
+  "trechos": [
+    {
+      "id": "f-4f9c3e",
+      "quem": "julia",
+      "cod": "Do you have this jacket in a medium?",
+      "dica": "Vocês têm essa jaqueta no tamanho M?",
+      "img": "🧥📏",
+      "alvo": "a medium",
+      "alvo_pt": "tamanho M",
+      "conceito": "Tamanho M = medium (in a medium). Carne ao ponto também é medium.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9d3dbb",
+      "quem": "voce",
+      "cod": "Is this necklace real gold?",
+      "dica": "Esse colar é de ouro de verdade?",
+      "img": "📿🥇",
+      "alvo": "gold",
+      "alvo_pt": "ouro",
+      "conceito": "gold = ouro (o metal); golden = dourado (cor, brilho).",
+      "registro": "informal",
+      "armadilhas": [
+        "golden"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "real gold",
+          "aceita": [
+            "made of real gold"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-adcd65",
+      "quem": "vendedor",
+      "contexto": "f-9d3dbb",
+      "cod": "Yes, and it's a unique piece. I've never seen another one like it.",
+      "dica": "É, sim, e é uma peça única. Nunca vi outra igual.",
+      "img": "💎☝️",
+      "alvo": "unique",
+      "alvo_pt": "única",
+      "conceito": "unique = único, sem igual; o único (só um) = the only one.",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "only"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ff0f16",
+      "quem": "voce",
+      "cod": "Honestly, it looks like an ordinary necklace to me.",
+      "dica": "Sinceramente, pra mim parece um colar comum.",
+      "img": "📿🤷",
+      "alvo": "ordinary",
+      "alvo_pt": "comum",
+      "conceito": "ordinary = comum, normal (não ordinário, de má qualidade).",
+      "registro": "informal",
+      "armadilhas": [
+        "common"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ec587a",
+      "quem": "julia",
+      "cod": "What an odd color for a teapot!",
+      "dica": "Que cor estranha para um bule!",
+      "img": "🫖🤨",
+      "alvo": "odd",
+      "alvo_pt": "estranha",
+      "conceito": "odd = estranho, esquisito; odd numbers = números ímpares.",
+      "registro": "informal",
+      "armadilhas": [
+        "strange"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a4888a",
+      "quem": "voce",
+      "cod": "It's unusual to find a lamp like this in such good condition.",
+      "dica": "É incomum achar uma luminária assim em tão bom estado.",
+      "img": "💡🔎",
+      "alvo": "unusual",
+      "alvo_pt": "incomum",
+      "conceito": "unusual = incomum, diferente: It's unusual to find... = Não é comum achar...",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "rare"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a2efeb",
+      "quem": "voce",
+      "cod": "I think this tie will go great with Dad's blue shirt.",
+      "dica": "Acho que essa gravata vai ficar ótima com a camisa azul do pai.",
+      "img": "👔🎁",
+      "alvo": "tie",
+      "alvo_pt": "gravata",
+      "conceito": "tie = gravata; também empate (It ended in a tie) e o verbo amarrar.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 953652,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I think this tie will go great with that shirt. → ...with Dad's blue shirt.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "go great",
+          "aceita": [
+            "look great"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-590204",
+      "quem": "vendedor",
+      "cod": "This vase is more valuable than that one.",
+      "dica": "Esse vaso é mais valioso que aquele.",
+      "img": "🏺💰",
+      "alvo": "valuable",
+      "alvo_pt": "valioso",
+      "conceito": "valuable = valioso, de valor; valid = válido. Valores (princípios) = values.",
+      "registro": "neutro",
+      "armadilhas": [
+        "valid",
+        "valued"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 719360,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "This carpet is more valuable than that one. → This vase...; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-269c26",
+      "quem": "julia",
+      "cod": "I'm looking for silver earrings for a friend.",
+      "dica": "Estou procurando brincos de prata para uma amiga.",
+      "img": "🥈👂",
+      "alvo": "silver",
+      "alvo_pt": "de prata",
+      "conceito": "silver = prata e prateado: silver earrings, a silver car.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a56941",
+      "quem": "voce",
+      "cod": "How much is this baseball cap?",
+      "dica": "Quanto é esse boné de beisebol?",
+      "img": "🧢💲",
+      "alvo": "cap",
+      "alvo_pt": "boné",
+      "conceito": "cap = boné (não capa); também tampa: a bottle cap.",
+      "registro": "informal",
+      "armadilhas": [
+        "cape",
+        "hat"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

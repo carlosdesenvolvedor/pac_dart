@@ -1,0 +1,311 @@
+{
+  "id": "vocab-academico-sistemas.migracao-banco",
+  "trilha": "vocab-academico-sistemas",
+  "nome": "Migração do banco: migrate, transaction…",
+  "emoji": "🗄️",
+  "cena": "Num sábado combinado com antecedência, você e o Mike migram o banco de dados antigo para o novo, conferindo cada etapa para os clientes não perderem nada.",
+  "resumo": "As palavras de migração de dados: migrate, transaction, atomic, retrieve, destination, protocol, swap…",
+  "fechamento": false,
+  "novos": [
+    "migrate",
+    "transaction",
+    "atomic",
+    "retrieve",
+    "destination",
+    "reconstruct",
+    "continuity",
+    "transmit",
+    "protocol",
+    "swap",
+    "connector"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Mudando os dados de casa"
+    },
+    {
+      "t": "p",
+      "c": "**migrate** migrar · **transaction** transação · **atomic** atômico (tudo ou nada) · **retrieve** recuperar, buscar · **destination** destino · **reconstruct** reconstruir · **continuity** continuidade · **transmit** transmitir · **protocol** protocolo · **swap** trocar · **connector** conector"
+    },
+    {
+      "t": "ex",
+      "c": "At midnight, we swap the old database for the new one.\nÀ meia-noite, a gente troca o banco antigo pelo novo."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: migrate from X to Y, a database transaction, retrieve data, business continuity."
+    },
+    {
+      "t": "warn",
+      "c": "**protocol** não é o número de protocolo do atendimento (isso é ticket ou case number)."
+    }
+  ],
+  "imagem": "🗄️➡️🗄️",
+  "visualizacao": "Você está no home office num sábado de manhã, café do lado do teclado. O Mike está na chamada, e uma barra de progresso avança devagar enquanto vocês conferem cada tabela.",
+  "foto_busca": "database migration progress bar screen",
+  "trechos": [
+    {
+      "id": "f-b52102",
+      "quem": "mike",
+      "cod": "Today we're migrating the old database to the new one.",
+      "dica": "Hoje a gente está migrando o banco de dados antigo para o novo.",
+      "img": "🗄️🚚",
+      "alvo": "migrating",
+      "alvo_pt": "migrando",
+      "conceito": "migrate from X to Y = migrar de X para Y. Plano combinado: present continuous.",
+      "var": [
+        {
+          "em": "we're",
+          "aceita": [
+            "we are"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR29",
+        "BR08"
+      ],
+      "armadilhas": [
+        "migrating from",
+        "migrate"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ed2479",
+      "quem": "voce",
+      "cod": "Every write runs inside a database transaction.",
+      "dica": "Toda gravação roda dentro de uma transação de banco de dados.",
+      "img": "✍️🔒",
+      "alvo": "database transaction",
+      "alvo_pt": "transação de banco de dados",
+      "conceito": "transaction = transação; também a do cartão: a credit card transaction.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "transaction of database",
+        "transation"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7f638a",
+      "quem": "mike",
+      "contexto": "f-ed2479",
+      "cod": "Great, so each step is atomic: all or nothing.",
+      "dica": "Ótimo, então cada etapa é atômica: tudo ou nada.",
+      "img": "⚛️✅❌",
+      "alvo": "atomic",
+      "alvo_pt": "atômica",
+      "conceito": "atomic = indivisível: ou a operação inteira acontece, ou nenhuma parte.",
+      "registro": "informal",
+      "armadilhas": [
+        "atomical",
+        "atomic all"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-18c7cf",
+      "quem": "voce",
+      "cod": "The script will retrieve the records in batches of a thousand.",
+      "dica": "O script vai recuperar os registros em lotes de mil.",
+      "img": "📥📚",
+      "alvo": "retrieve",
+      "alvo_pt": "recuperar",
+      "conceito": "retrieve = recuperar, buscar dados; formal para get ou fetch.",
+      "var": [
+        {
+          "em": "will retrieve",
+          "aceita": [
+            "'s going to retrieve",
+            "is going to retrieve"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "recover",
+        "retreive"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-08e4d3",
+      "quem": "mike",
+      "cod": "Double-check the column types in the destination table.",
+      "dica": "Confere duas vezes os tipos das colunas na tabela de destino.",
+      "img": "🎯📊",
+      "alvo": "destination table",
+      "alvo_pt": "tabela de destino",
+      "conceito": "destination = destino; em migração, para onde os dados vão (o contrário é source).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "table of destination",
+        "destiny"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c470b2",
+      "quem": "voce",
+      "cod": "If something goes wrong, we can reconstruct the data from the logs.",
+      "dica": "Se alguma coisa der errado, a gente consegue reconstruir os dados a partir dos logs.",
+      "img": "🧱🔁📜",
+      "alvo": "reconstruct",
+      "alvo_pt": "reconstruir",
+      "conceito": "reconstruct = reconstruir a partir de pedaços ou registros; recompilar é rebuild.",
+      "blocos": [
+        5
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "rebuild",
+        "reconstrue"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-43b630",
+      "quem": "mike",
+      "cod": "Business continuity comes first: customers shouldn't notice a thing.",
+      "dica": "A continuidade do negócio vem primeiro: os clientes não devem perceber nada.",
+      "img": "🏪🔛",
+      "alvo": "Business continuity",
+      "alvo_pt": "continuidade do negócio",
+      "conceito": "business continuity = o negócio seguir funcionando mesmo durante uma falha ou mudança.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR25"
+      ],
+      "armadilhas": [
+        "continuity of the business",
+        "nothing"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a thing",
+          "aceita": [
+            "anything"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-99532a",
+      "quem": "voce",
+      "cod": "The old server can only transmit about fifty megabytes per second.",
+      "dica": "O servidor antigo só consegue transmitir uns cinquenta megabytes por segundo.",
+      "img": "📡🐢",
+      "alvo": "transmit",
+      "alvo_pt": "transmitir",
+      "conceito": "transmit = transmitir dados; transmit, transmitted (dobra o t).",
+      "var": [
+        {
+          "em": "about",
+          "aceita": [
+            "around"
+          ]
+        },
+        {
+          "em": "can only transmit",
+          "aceita": [
+            "can transmit only"
+          ]
+        }
+      ],
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "transmite",
+        "transmitt"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-792009",
+      "quem": "mike",
+      "cod": "The new database uses a different communication protocol.",
+      "dica": "O banco de dados novo usa um protocolo de comunicação diferente.",
+      "img": "🤝📡",
+      "alvo": "communication protocol",
+      "alvo_pt": "protocolo de comunicação",
+      "conceito": "protocol = protocolo (regras de comunicação). Número de protocolo do atendimento = ticket number.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR24"
+      ],
+      "armadilhas": [
+        "protocol of communication",
+        "protocole"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8742d3",
+      "quem": "voce",
+      "contexto": "f-792009",
+      "cod": "So we need a new connector in the app.",
+      "dica": "Então a gente precisa de um conector novo no app.",
+      "img": "🔌📱",
+      "alvo": "connector",
+      "alvo_pt": "conector",
+      "conceito": "connector = conector; a database connector liga o app ao banco.",
+      "registro": "informal",
+      "interferencias": [
+        "BR08",
+        "BR53"
+      ],
+      "armadilhas": [
+        "conector",
+        "connecter"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-30c6bf",
+      "quem": "mike",
+      "cod": "At midnight, we swap the old database for the new one.",
+      "dica": "À meia-noite, a gente troca o banco antigo pelo novo.",
+      "img": "🕛🔁",
+      "alvo": "swap",
+      "alvo_pt": "troca",
+      "conceito": "swap A for B = trocar A por B; informal e muito usado. Hot swap = trocar sem desligar.",
+      "blocos": [
+        2
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR17"
+      ],
+      "armadilhas": [
+        "switch",
+        "change"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

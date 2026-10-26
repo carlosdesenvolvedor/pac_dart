@@ -1,0 +1,245 @@
+{
+  "id": "vocab-adverbios-conectores.feedback-com-precisao",
+  "trilha": "vocab-adverbios-conectores",
+  "nome": "Discordar com precisão",
+  "emoji": "🎯",
+  "cena": "Num 1:1 por vídeo, o Mike sugere dois revisores em todo PR, e você concorda em parte.",
+  "resumo": "Advérbios para concordar, discordar e ser exato sem grosseria: entirely, simply, necessarily, precisely.",
+  "fechamento": false,
+  "novos": [
+    "particularly",
+    "simply",
+    "necessarily",
+    "entirely",
+    "strongly",
+    "specifically",
+    "merely",
+    "precisely",
+    "perfectly"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**particularly** = particularmente, especialmente · **simply** = simplesmente · **necessarily** = necessariamente · **entirely** = inteiramente · **strongly** = fortemente · **specifically** = especificamente · **merely** = meramente · **precisely** = precisamente · **perfectly** = perfeitamente."
+    },
+    {
+      "t": "ex",
+      "c": "That doesn't necessarily mean it's wrong.\nIsso não significa necessariamente que está errado."
+    },
+    {
+      "t": "tip",
+      "c": "Para discordar com educação: **I'm not entirely sure.** / **Not necessarily.**"
+    },
+    {
+      "t": "warn",
+      "c": "**particularly** não é \"particular, privado\": é \"especialmente\". **I'm not particularly worried.** = Não estou muito preocupado."
+    }
+  ],
+  "imagem": "💻🎧🎯",
+  "visualizacao": "Você está na sua mesa, de fone, olhando o Mike na tela. Ele compartilha um documento com a regra nova de code review e espera a sua opinião.",
+  "foto_busca": "one on one video call",
+  "trechos": [
+    {
+      "id": "f-c9b9d1",
+      "quem": "mike",
+      "cod": "It's merely a suggestion, not a new rule.",
+      "dica": "É meramente uma sugestão, não uma regra nova.",
+      "img": "💡📄",
+      "alvo": "merely",
+      "alvo_pt": "meramente",
+      "conceito": "merely = apenas, só (formal, minimiza): merely a suggestion.",
+      "registro": "neutro",
+      "armadilhas": [
+        "mere"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5e5e1b",
+      "quem": "voce",
+      "contexto": "f-c9b9d1",
+      "cod": "I agree with you entirely on the first point.",
+      "dica": "Concordo inteiramente com você no primeiro ponto.",
+      "img": "🤝☝️",
+      "alvo": "entirely",
+      "alvo_pt": "inteiramente",
+      "conceito": "entirely = inteiramente (totally = totalmente). Concordo = I agree (não: I am agree).",
+      "var": [
+        {
+          "em": "agree with you entirely",
+          "aceita": [
+            "entirely agree with you"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "am",
+        "entire"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4529935,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "acrescentado on the first point; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-e2a559",
+      "quem": "mike",
+      "contexto": "f-5e5e1b",
+      "cod": "What specifically worries you about the second one?",
+      "dica": "O que te preocupa especificamente no segundo?",
+      "img": "🔍❓",
+      "alvo": "specifically",
+      "alvo_pt": "especificamente",
+      "conceito": "specifically pede ou dá detalhes: What specifically...?",
+      "registro": "neutro",
+      "armadilhas": [
+        "especifically",
+        "specially"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-db332e",
+      "quem": "voce",
+      "contexto": "f-e2a559",
+      "cod": "We simply don't have the time.",
+      "dica": "A gente simplesmente não tem tempo.",
+      "img": "⏰🤷",
+      "alvo": "simply",
+      "alvo_pt": "simplesmente",
+      "conceito": "simply = simplesmente; simply put = resumindo.",
+      "registro": "informal",
+      "armadilhas": [
+        "simple"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2361699,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I → We; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "opcional": [
+        "the"
+      ]
+    },
+    {
+      "id": "f-bc4432",
+      "quem": "voce",
+      "cod": "The rule slows us down, particularly on small fixes.",
+      "dica": "A regra atrasa a gente, particularmente nas correções pequenas.",
+      "img": "🩹🐢",
+      "alvo": "particularly",
+      "alvo_pt": "particularmente",
+      "conceito": "particularly = especialmente; não é \"particular, privado\".",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "particular"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f11500",
+      "quem": "mike",
+      "contexto": "f-bc4432",
+      "cod": "One reviewer for small fixes is perfectly acceptable.",
+      "dica": "Um revisor para correções pequenas é perfeitamente aceitável.",
+      "img": "👤✅",
+      "alvo": "perfectly",
+      "alvo_pt": "perfeitamente",
+      "conceito": "perfectly + adjetivo = totalmente: perfectly fine, perfectly clear.",
+      "registro": "neutro",
+      "armadilhas": [
+        "perfect"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7010437,
+        "en_autor": "Eccles17",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "That's → One reviewer for small fixes is; PT adaptado",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-120299",
+      "quem": "voce",
+      "cod": "Having more reviewers doesn't necessarily mean fewer bugs.",
+      "dica": "Ter mais revisores não significa necessariamente menos bugs.",
+      "img": "👥🐛❓",
+      "alvo": "necessarily",
+      "alvo_pt": "necessariamente",
+      "conceito": "not necessarily = não necessariamente. Sozinho, Not necessarily. discorda com educação.",
+      "registro": "neutro",
+      "armadilhas": [
+        "less bugs"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-a337ec",
+      "quem": "voce",
+      "cod": "But I strongly recommend two reviewers for big PRs.",
+      "dica": "Mas eu recomendo fortemente dois revisores para PRs grandes.",
+      "img": "💪👍",
+      "alvo": "strongly",
+      "alvo_pt": "fortemente",
+      "conceito": "strongly = fortemente: strongly agree, strongly recommend, strongly support.",
+      "registro": "neutro",
+      "armadilhas": [
+        "strong"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-46ac4c",
+      "quem": "mike",
+      "contexto": "f-a337ec",
+      "cod": "That's precisely why I suggested it.",
+      "dica": "É precisamente por isso que eu sugeri.",
+      "img": "🎯👂😊",
+      "alvo": "precisely",
+      "alvo_pt": "precisamente",
+      "conceito": "precisely = exatamente; sozinho, Precisely. = Exatamente!",
+      "registro": "neutro",
+      "armadilhas": [
+        "precise"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3689953,
+        "en_autor": "karloelkebekio",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "PT reescrito: exatamente → precisamente; revisão nativa: what I wanted to hear → why I suggested it; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

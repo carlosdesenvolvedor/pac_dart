@@ -1,0 +1,218 @@
+{
+  "versao": 1,
+  "trilha": "vocab-dinheiro-economia",
+  "arco": "No B2, o assunto é dinheiro: a call do orçamento em que o aluno defende a verba da nuvem, o café de domingo com o Ben sobre a economia, a pesquisa de mercado do cliente de roupas, as contas do apartamento da Julia, a oferta dos investidores e a visita por vídeo à fábrica de bicicletas.",
+  "licoes": {
+    "vocab-dinheiro-economia.reuniao-orcamento": {
+      "titulo": { "en": "The budget meeting", "pt": "A reunião do orçamento" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "sarah", "pos": "centro", "segura": "documento", "emocao": "neutro" },
+            { "quem": "mike", "pos": "centroDireita", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-566585", "acao": "mostra", "emocao": "neutro", "camera": "geral" },
+            { "frase": "f-a44d07", "acao": "concorda", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-6ccee1", "acao": "nega", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-b0752c", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "sarah", "emocao": "pensativo" } ] },
+            { "frase": "f-4e4296", "acao": "nega", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "nervoso" } ] },
+            { "frase": "f-6254a2", "acao": "mostra", "emocao": "feliz" },
+            { "frase": "f-57efb1", "acao": "nega", "emocao": "determinado",
+              "reacoes": [ { "quem": "mike", "acao": "concorda" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "determinado" },
+            { "frase": "f-242c56", "acao": "concorda", "emocao": "timido", "camera": "close" },
+            { "frase": "f-cecb93", "acao": "aponta", "emocao": "determinado",
+              "reacoes": [ { "quem": "sarah", "emocao": "pensativo" } ] },
+            { "frase": "f-c4679e", "acao": "concorda", "emocao": "feliz", "camera": "geral",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "sarah", "acao": "palmas", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-dinheiro-economia.economia-noticiario": {
+      "titulo": { "en": "Sunday coffee and the news", "pt": "Café de domingo e o noticiário" },
+      "cenas": [
+        {
+          "cenario": "restaurante", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "ben", "pos": "centroDireita", "segura": "celular", "emocao": "pensativo" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-81e76e", "acao": "mostra", "emocao": "nervoso", "camera": "geral" },
+            { "frase": "f-809713", "emocao": "surpreso", "camera": "medio" },
+            { "frase": "f-1eefb7", "acao": "concorda", "emocao": "feliz" },
+            { "frase": "f-ff6af5", "acao": "nega", "emocao": "nervoso",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-817b41", "acao": "nega", "emocao": "pensativo",
+              "reacoes": [ { "quem": "ben", "emocao": "surpreso" } ] },
+            { "frase": "f-f7bdc1", "acao": "concorda", "emocao": "determinado" },
+            { "mudo": true, "quem": "ben", "acao": "pensa", "emocao": "pensativo" },
+            { "frase": "f-a8e18e", "acao": "mostra", "emocao": "pensativo" },
+            { "frase": "f-6d9a63", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-5053ed", "acao": "nega", "emocao": "pensativo" },
+            { "frase": "f-770cb6", "acao": "mostra", "emocao": "surpreso", "efeito": "brilho" },
+            { "frase": "f-8ba050", "acao": "nega", "emocao": "pensativo", "camera": "dupla", "alvo": "voce",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "pensativo" } ] },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "ben", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-dinheiro-economia.concorrencia-varejo": {
+      "titulo": { "en": "A crowded retail market", "pt": "Um varejo cheio de concorrência" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "sarah", "pos": "centroDireita", "segura": "documento", "emocao": "feliz" },
+            { "quem": "ana", "pos": "direita", "segura": "celular", "emocao": "feliz" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-8bd2ef", "acao": "mostra", "emocao": "feliz", "camera": "geral" },
+            { "frase": "f-f79206", "acao": "aponta", "emocao": "determinado" },
+            { "frase": "f-8e0e4a", "acao": "nega", "emocao": "pensativo" },
+            { "frase": "f-2172c8", "acao": "mostra", "emocao": "neutro" },
+            { "frase": "f-ff9a81", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao", "camera": "medio" },
+            { "frase": "f-32cd3d", "acao": "concorda", "emocao": "pensativo",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-f39c1a", "acao": "aponta", "emocao": "feliz" },
+            { "frase": "f-6d12e4", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "sarah", "emocao": "surpreso" } ] },
+            { "mudo": true, "quem": "voce", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-772d37", "acao": "nega", "emocao": "nervoso", "efeito": "exclamacao",
+              "reacoes": [ { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-04ce3e", "emocao": "determinado", "camera": "close",
+              "reacoes": [ { "quem": "sarah", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "ana", "acao": "palmas", "emocao": "radiante",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" }, { "quem": "sarah", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-dinheiro-economia.contas-da-julia": {
+      "titulo": { "en": "Julia's first apartment", "pt": "O primeiro apartamento da Julia" },
+      "cenas": [
+        {
+          "cenario": "salaDeEstar", "hora": "noite", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "celular", "emocao": "feliz" },
+            { "quem": "julia", "pos": "centroDireita", "emocao": "timido" }
+          ],
+          "objetos": [
+            { "prop": "notebook", "pos": "centro" },
+            { "prop": "cafe", "pos": "esquerda" }
+          ],
+          "passos": [
+            { "mudo": true, "quem": "voce", "acao": "senta",
+              "reacoes": [ { "quem": "julia", "acao": "senta" } ] },
+            { "frase": "f-c7f8c8", "acao": "concorda", "emocao": "timido", "camera": "geral" },
+            { "frase": "f-eae09f", "acao": "aponta", "alvo": "notebook", "emocao": "feliz" },
+            { "frase": "f-b8f478", "acao": "concorda", "emocao": "determinado" },
+            { "frase": "f-2a9588", "acao": "aponta", "alvo": "notebook", "emocao": "radiante", "efeito": "brilho" },
+            { "frase": "f-696723", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "julia", "emocao": "surpreso" } ] },
+            { "frase": "f-27d185", "acao": "escreve", "emocao": "pensativo", "camera": "medio" },
+            { "frase": "f-dea931", "acao": "nega", "emocao": "triste", "camera": "close",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-354d27", "acao": "aponta", "alvo": "notebook", "emocao": "feliz",
+              "reacoes": [ { "quem": "julia", "emocao": "pensativo" } ] },
+            { "frase": "f-34be16", "acao": "concorda", "emocao": "determinado" },
+            { "frase": "f-5bcb08", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-3b7ca8", "acao": "abraca", "alvo": "voce", "emocao": "radiante", "camera": "dupla",
+              "efeito": "coracoes" },
+            { "mudo": true, "quem": "voce", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "julia", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-dinheiro-economia.investidores-startup": {
+      "titulo": { "en": "An offer from investors", "pt": "Uma oferta de investidores" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "tarde", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "esquerda", "segura": "cafe", "emocao": "neutro" },
+            { "quem": "sarah", "pos": "centroEsquerda", "emocao": "neutro" },
+            { "quem": "mike", "pos": "centro", "segura": "documento", "emocao": "determinado" },
+            { "quem": "ana", "pos": "centroDireita", "emocao": "neutro" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-391124", "acao": "mostra", "emocao": "determinado", "camera": "geral",
+              "reacoes": [ { "quem": "sarah", "emocao": "surpreso" }, { "quem": "ana", "emocao": "surpreso" } ] },
+            { "frase": "f-954e9d", "acao": "aponta", "emocao": "feliz" },
+            { "frase": "f-701a5d", "acao": "concorda", "emocao": "determinado" },
+            { "frase": "f-d8cf26", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "ana", "acao": "comemora", "emocao": "radiante" } ] },
+            { "frase": "f-ae5dcc", "acao": "aponta", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "surpreso" } ] },
+            { "frase": "f-79aaa5", "emocao": "pensativo", "efeito": "exclamacao", "camera": "close",
+              "reacoes": [ { "quem": "sarah", "emocao": "surpreso" } ] },
+            { "frase": "f-90c37a", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao", "camera": "medio" },
+            { "frase": "f-f897fa", "acao": "nega", "emocao": "pensativo" },
+            { "frase": "f-c1fea5", "emocao": "nervoso",
+              "reacoes": [ { "quem": "ana", "emocao": "pensativo" } ] },
+            { "frase": "f-f15e68", "acao": "concorda", "emocao": "feliz",
+              "reacoes": [ { "quem": "voce", "emocao": "feliz" } ] },
+            { "frase": "f-c7208d", "emocao": "determinado", "camera": "geral",
+              "reacoes": [ { "quem": "sarah", "acao": "concorda", "emocao": "determinado" } ] },
+            { "mudo": true, "quem": "voce", "acao": "palmas", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" }, { "quem": "ana", "emocao": "feliz" },
+                           { "quem": "sarah", "emocao": "feliz" } ] }
+          ]
+        }
+      ]
+    },
+    "vocab-dinheiro-economia.fabrica-do-cliente": {
+      "titulo": { "en": "A video tour of the factory", "pt": "Visita por vídeo à fábrica" },
+      "cenas": [
+        {
+          "cenario": "videochamada", "hora": "dia", "clima": [],
+          "elenco": [
+            { "quem": "voce", "pos": "centroEsquerda", "segura": "cafe", "emocao": "feliz" },
+            { "quem": "cliente", "pos": "centro", "segura": "celular", "emocao": "feliz" },
+            { "quem": "mike", "pos": "centroDireita", "emocao": "neutro" }
+          ],
+          "objetos": [],
+          "passos": [
+            { "frase": "f-fb57e2", "acao": "aponta", "emocao": "radiante", "camera": "geral" },
+            { "frase": "f-5f65c3", "acao": "mostra", "emocao": "feliz",
+              "reacoes": [ { "quem": "mike", "emocao": "surpreso" } ] },
+            { "frase": "f-e68679", "acao": "concorda", "emocao": "feliz" },
+            { "mudo": true, "quem": "cliente", "segura": "caixa", "emocao": "neutro" },
+            { "frase": "f-96f9ac", "acao": "mostra", "emocao": "neutro", "camera": "medio" },
+            { "frase": "f-a46f23", "acao": "nega", "emocao": "cansado", "efeito": "suor",
+              "reacoes": [ { "quem": "voce", "emocao": "pensativo" } ] },
+            { "frase": "f-1c0bed", "acao": "pensa", "emocao": "pensativo", "efeito": "interrogacao" },
+            { "frase": "f-ae97cc", "acao": "aponta", "emocao": "feliz" },
+            { "frase": "f-943424", "acao": "concorda", "emocao": "determinado",
+              "reacoes": [ { "quem": "voce", "emocao": "determinado" } ] },
+            { "frase": "f-aaa9b3", "acao": "concorda", "emocao": "determinado", "camera": "close",
+              "reacoes": [ { "quem": "voce", "acao": "concorda", "emocao": "feliz" } ] },
+            { "frase": "f-c33a3e", "acao": "pensa", "emocao": "pensativo",
+              "reacoes": [ { "quem": "mike", "emocao": "feliz" } ] },
+            { "mudo": true, "quem": "mike", "acao": "concorda", "emocao": "radiante",
+              "reacoes": [ { "quem": "cliente", "emocao": "feliz" }, { "quem": "voce", "emocao": "radiante" } ] }
+          ]
+        }
+      ]
+    }
+  }
+}

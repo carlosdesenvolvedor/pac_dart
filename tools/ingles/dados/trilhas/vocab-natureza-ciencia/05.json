@@ -1,0 +1,249 @@
+{
+  "id": "vocab-natureza-ciencia.dia-verde-empresa",
+  "trilha": "vocab-natureza-ciencia",
+  "nome": "Dia Verde na empresa",
+  "emoji": "🌍",
+  "cena": "No Dia Verde da empresa, a Sarah apresenta o relatório ambiental (a pegada de carbono dos servidores) e a Ana mostra fotos de um mutirão de limpeza numa praia do Brasil.",
+  "resumo": "Falar de meio ambiente: environmental, carbon footprint, coal, life cycle, pollution, the ocean.",
+  "fechamento": false,
+  "novos": [
+    "environmental",
+    "smoke",
+    "cycle",
+    "pollution",
+    "planet",
+    "ocean",
+    "coal",
+    "carbon",
+    "shore"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Palavras do meio ambiente"
+    },
+    {
+      "t": "p",
+      "c": "**environmental** ambiental · **smoke** fumaça · **cycle** ciclo · **pollution** poluição · **planet** planeta · **ocean** oceano, mar · **coal** carvão (mineral) · **carbon** carbono · **shore** beira, costa (de mar ou lago)"
+    },
+    {
+      "t": "ex",
+      "c": "Plastic pollution is a serious problem in Brazil.\nA poluição por plástico é um problema sério no Brasil."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **carbon footprint** (pegada de carbono), **the life cycle of a product** (ciclo de vida), **air pollution** (poluição do ar), **on the shore** (na beira)."
+    },
+    {
+      "t": "warn",
+      "c": "**pollution** é incontável: a lot of pollution (não: a pollution). O carvão do churrasco é **charcoal**, não coal."
+    }
+  ],
+  "imagem": "🌍📊🏖️",
+  "visualizacao": "Você está na call do Dia Verde. A Sarah mostra um gráfico verde de emissões; depois a Ana compartilha fotos de uma praia de Recife, gente com luvas e sacos de lixo na areia.",
+  "foto_busca": "beach cleanup volunteers trash bags",
+  "trechos": [
+    {
+      "id": "f-4a5058",
+      "quem": "sarah",
+      "cod": "Today I'm going to present our environmental report.",
+      "dica": "Hoje eu vou apresentar o nosso relatório ambiental.",
+      "img": "📊🌱",
+      "alvo": "environmental",
+      "alvo_pt": "ambiental",
+      "conceito": "environmental = ambiental; o meio ambiente = the environment (também o ambiente de teste, em dev).",
+      "registro": "neutro",
+      "armadilhas": [
+        "ambiental"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7fb45d",
+      "quem": "sarah",
+      "cod": "Our servers have a bigger carbon footprint than our offices.",
+      "dica": "Os nossos servidores têm uma pegada de carbono maior que a dos nossos escritórios.",
+      "img": "🖥️👣💨",
+      "alvo": "carbon",
+      "alvo_pt": "carbono",
+      "conceito": "carbon = carbono: carbon footprint (pegada de carbono), carbon emissions (emissões de carbono).",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "bigger",
+          "aceita": [
+            "larger"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e2998a",
+      "quem": "sarah",
+      "cod": "Some data centers still get their power from coal.",
+      "dica": "Alguns data centers ainda tiram energia do carvão.",
+      "img": "⚫🏭⚡",
+      "alvo": "coal",
+      "alvo_pt": "carvão",
+      "conceito": "coal = carvão mineral (coal plants = usinas a carvão). O carvão do churrasco é charcoal.",
+      "var": [
+        {
+          "em": "power",
+          "aceita": [
+            "energy",
+            "electricity"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "charcoal"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5787b6",
+      "quem": "sarah",
+      "cod": "We need to look at the whole life cycle of our hardware.",
+      "dica": "Precisamos olhar o ciclo de vida inteiro do nosso hardware.",
+      "img": "🔄💻",
+      "alvo": "cycle",
+      "alvo_pt": "ciclo",
+      "conceito": "cycle = ciclo: life cycle, release cycle. Bicicleta, no en-US, é bike.",
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "whole",
+          "aceita": [
+            "entire"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-184747",
+      "quem": "mike",
+      "cod": "Every small change helps the planet.",
+      "dica": "Toda pequena mudança ajuda o planeta.",
+      "img": "🌍🤲",
+      "alvo": "planet",
+      "alvo_pt": "planeta",
+      "conceito": "planet = planeta. On the planet = no planeta; save the planet = salvar o planeta.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-423314",
+      "quem": "ana",
+      "cod": "Plastic pollution is a serious problem in Brazil.",
+      "dica": "A poluição por plástico é um problema sério no Brasil.",
+      "img": "🥤🏖️😟",
+      "alvo": "pollution",
+      "alvo_pt": "poluição",
+      "conceito": "pollution = poluição, incontável (não: a pollution). Air pollution = poluição do ar.",
+      "registro": "neutro",
+      "armadilhas": [
+        "polution"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7791097,
+        "en_autor": "sharris123",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Pollution is a serious problem in China. → Plastic pollution is a serious problem in Brazil.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-164d5b",
+      "quem": "ana",
+      "cod": "We picked up trash along the shore all morning.",
+      "dica": "A gente catou lixo na beira do mar a manhã inteira.",
+      "img": "🗑️🏖️🧤",
+      "alvo": "shore",
+      "alvo_pt": "beira do mar",
+      "conceito": "shore = beira, costa de mar ou lago. A beira de rio é bank: the river bank.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "trash",
+          "aceita": [
+            "garbage"
+          ]
+        },
+        {
+          "em": "along the shore",
+          "aceita": [
+            "on the shore",
+            "by the shore"
+          ]
+        },
+        {
+          "em": "all morning",
+          "aceita": [
+            "the whole morning",
+            "all morning long"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-92a699",
+      "quem": "ana",
+      "cod": "You can see the smoke from the factories behind the beach.",
+      "dica": "Dá pra ver a fumaça das fábricas atrás da praia.",
+      "img": "🏭💨🏖️",
+      "alvo": "smoke",
+      "alvo_pt": "fumaça",
+      "conceito": "smoke = fumaça; também verbo (fumar) e alarme: smoke detector.",
+      "var": [
+        {
+          "em": "see the smoke",
+          "aceita": [
+            "see smoke"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ed8f82",
+      "quem": "ana",
+      "cod": "Most of that plastic ends up in the ocean.",
+      "dica": "A maior parte desse plástico acaba no oceano.",
+      "img": "🌊🥤",
+      "alvo": "ocean",
+      "alvo_pt": "oceano",
+      "conceito": "ocean = oceano; no en-US, o mar em geral também é the ocean (swim in the ocean).",
+      "var": [
+        {
+          "em": "that plastic",
+          "aceita": [
+            "this plastic"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "sea"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

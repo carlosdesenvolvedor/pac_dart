@@ -1,0 +1,274 @@
+{
+  "id": "vocab-academico-argumentar.pros-e-contras",
+  "trilha": "vocab-academico-argumentar",
+  "nome": "Prós e contras: superior, trivial…",
+  "emoji": "📊",
+  "cena": "Você e a Sarah comparam duas ferramentas de monitoramento para o time e pesam o que realmente importa antes de escolher.",
+  "resumo": "Onze palavras para avaliar opções: disadvantage, superior to, on par with, trivial, irrelevant…",
+  "fechamento": false,
+  "novos": [
+    "adverse",
+    "disadvantage",
+    "enormously",
+    "inferior",
+    "irrelevant",
+    "meaningful",
+    "par",
+    "problematic",
+    "superior",
+    "tremendous",
+    "trivial"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Prós e contras"
+    },
+    {
+      "t": "p",
+      "c": "**adverse** adverso, negativo · **disadvantage** desvantagem · **enormously** enormemente · **inferior** inferior · **irrelevant** irrelevante · **meaningful** significativo · **on par with** no mesmo nível de · **problematic** problemático · **superior** superior · **tremendous** tremendo, enorme · **trivial** trivial, simples"
+    },
+    {
+      "t": "ex",
+      "c": "It's a trivial fix.\nÉ uma correção trivial."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **an adverse effect on**, **a meaningful difference**, **a tremendous amount of**, **enormously helpful**."
+    },
+    {
+      "t": "warn",
+      "c": "**superior** e **inferior** vão com **to**, não com than: superior to the first one."
+    }
+  ],
+  "imagem": "📊⚖️🖥️",
+  "visualizacao": "Você está numa chamada com a Sarah. Dois painéis de monitoramento lado a lado na tela, gráficos subindo, e uma planilha de prós e contras aberta.",
+  "foto_busca": "monitoring dashboard comparison screen",
+  "trechos": [
+    {
+      "id": "f-246a04",
+      "quem": "sarah",
+      "cod": "What's the main disadvantage of the first tool?",
+      "dica": "Qual é a principal desvantagem da primeira ferramenta?",
+      "img": "👎🔧",
+      "alvo": "disadvantage",
+      "alvo_pt": "desvantagem",
+      "conceito": "the main disadvantage of = a principal desvantagem de.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-19f6c0",
+      "quem": "voce",
+      "contexto": "f-246a04",
+      "cod": "Its alerts are on par with the second one's, but it costs twice as much.",
+      "dica": "Os alertas dela estão no mesmo nível dos da segunda, mas ela custa o dobro.",
+      "img": "🔔🤝",
+      "alvo": "on par with",
+      "alvo_pt": "no mesmo nível",
+      "conceito": "on par with = no mesmo nível de; par quase só aparece assim.",
+      "registro": "informal",
+      "interferencias": [
+        "BR11"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b40658",
+      "quem": "sarah",
+      "cod": "Is the price difference meaningful for a team our size?",
+      "dica": "A diferença de preço é significativa pra um time do nosso tamanho?",
+      "img": "💲🤔",
+      "alvo": "meaningful",
+      "alvo_pt": "significativa",
+      "conceito": "a meaningful difference = uma diferença que pesa de verdade.",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dfb54e",
+      "quem": "voce",
+      "contexto": "f-b40658",
+      "cod": "Not really, and the second tool is superior to the first one anyway.",
+      "dica": "Não muito, e a segunda ferramenta é superior à primeira de qualquer jeito.",
+      "img": "🥇🔧",
+      "alvo": "superior to",
+      "alvo_pt": "superior à",
+      "conceito": "superior to (não: superior than).",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "than"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-24d6b0",
+      "quem": "sarah",
+      "cod": "Last year we picked a tool that was inferior to the cheaper option.",
+      "dica": "No ano passado a gente escolheu uma ferramenta que era inferior à opção mais barata.",
+      "img": "📉🛒",
+      "alvo": "inferior to",
+      "alvo_pt": "inferior à",
+      "conceito": "inferior to (não: inferior than).",
+      "registro": "informal",
+      "interferencias": [
+        "BR53",
+        "BR05"
+      ],
+      "armadilhas": [
+        "than"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "picked",
+          "aceita": [
+            "chose"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b1f65d",
+      "quem": "voce",
+      "cod": "The second tool's agent might have an adverse effect on performance.",
+      "dica": "O agente da segunda ferramenta pode ter um efeito adverso no desempenho.",
+      "img": "🐌⚠️",
+      "alvo": "adverse",
+      "alvo_pt": "adverso",
+      "conceito": "an adverse effect on = um efeito adverso, negativo em; não confunda com averse.",
+      "registro": "informal",
+      "interferencias": [
+        "BR53"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "might",
+          "aceita": [
+            "could",
+            "may"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-36d25e",
+      "quem": "sarah",
+      "contexto": "f-b1f65d",
+      "cod": "Is that really problematic for our servers?",
+      "dica": "Isso é problemático mesmo pros nossos servidores?",
+      "img": "🖥️❗",
+      "alvo": "problematic",
+      "alvo_pt": "problemático",
+      "conceito": "problematic = problemático; highly problematic = muito problemático.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b4463a",
+      "quem": "voce",
+      "contexto": "f-36d25e",
+      "cod": "No, it's a trivial fix. We just need to change one setting.",
+      "dica": "Não, é uma correção trivial. A gente só precisa mudar uma configuração.",
+      "img": "🔧👌",
+      "alvo": "trivial",
+      "alvo_pt": "trivial",
+      "conceito": "Entre devs, trivial = fácil, rápido de resolver: a trivial fix.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "one setting",
+          "aceita": [
+            "a setting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-9cfc19",
+      "quem": "sarah",
+      "cod": "The second tool also stores a tremendous amount of data.",
+      "dica": "A segunda ferramenta também guarda uma quantidade tremenda de dados.",
+      "img": "🗄️📦",
+      "alvo": "tremendous",
+      "alvo_pt": "tremenda",
+      "conceito": "a tremendous amount of = uma quantidade tremenda, enorme de (sentido de tamanho).",
+      "registro": "informal",
+      "interferencias": [
+        "BR22"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-0c9597",
+      "quem": "voce",
+      "cod": "Its search feature would be enormously helpful during incidents.",
+      "dica": "A busca dela seria enormemente útil durante os incidentes.",
+      "img": "🔎🚨",
+      "alvo": "enormously",
+      "alvo_pt": "enormemente",
+      "conceito": "enormously helpful = enormemente útil, de enorme ajuda.",
+      "registro": "informal",
+      "interferencias": [
+        "BR63"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "search feature",
+          "aceita": [
+            "search"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-6793fb",
+      "quem": "sarah",
+      "contexto": "The first tool has nicer colors and a cute logo.",
+      "cod": "These details are irrelevant.",
+      "dica": "Esses detalhes são irrelevantes.",
+      "img": "🎨🙄",
+      "alvo": "irrelevant",
+      "alvo_pt": "irrelevantes",
+      "conceito": "irrelevant (to) = irrelevante (para). Pronúncia: i-RE-le-vant.",
+      "registro": "informal",
+      "interferencias": [
+        "BR09"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 3008845,
+        "en_autor": "CK",
+        "pt_id": 5126700,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "These",
+          "aceita": [
+            "Those"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1130 @@
+{
+  "versao": 1,
+  "trilha": "vocab-saude-corpo",
+  "arco": "Com a migração encaminhada, a vida pede cuidado: o check-up com a Dra. Lee, o respiro da Ana antes da demo, as dores da sprint com o Mike, a gripe com neve na janela, o joelho do Ben no parque, o jantar na cozinha da Emma e a grande notícia da Julia no almoço de domingo.",
+  "licoes": {
+    "vocab-saude-corpo.check-up": {
+      "titulo": {
+        "en": "The annual check-up",
+        "pt": "O check-up anual"
+      },
+      "cenas": [
+        {
+          "cenario": "clinica",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "emocao": "timido"
+            },
+            {
+              "quem": "dra-lee",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "colega",
+              "pos": "direita",
+              "segura": "documento",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-24d48a",
+              "acao": "acena",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "acena",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "frase": "f-130383",
+              "acao": "aponta",
+              "emocao": "surpreso",
+              "reacoes": [
+                {
+                  "quem": "dra-lee",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-be9d70",
+              "acao": "aponta",
+              "alvo": "colega",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "colega",
+                  "acao": "acena",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "senta",
+              "emocao": "nervoso"
+            },
+            {
+              "frase": "f-c199e2",
+              "acao": "olha",
+              "alvo": "voce",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "colega",
+                  "acao": "escreve"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "colega",
+              "segura": "nada",
+              "reacoes": [
+                {
+                  "quem": "dra-lee",
+                  "segura": "documento"
+                }
+              ]
+            },
+            {
+              "frase": "f-3bdfc9",
+              "acao": "mostra",
+              "emocao": "pensativo",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-4a9a2c",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "pensa",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-077c8d",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "dra-lee",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-b0e183",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "efeito": "interrogacao",
+              "reacoes": [
+                {
+                  "quem": "dra-lee",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-3d9f0d",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "nervoso",
+                  "efeito": "suor"
+                }
+              ]
+            },
+            {
+              "frase": "f-b99904",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "colega",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "dra-lee",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "colega",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "vocab-saude-corpo.cabeca-no-lugar": {
+      "titulo": {
+        "en": "A deep breath before the demo",
+        "pt": "Respirar fundo antes da demo"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "nervoso"
+            },
+            {
+              "quem": "ana",
+              "pos": "centroDireita",
+              "visivel": false,
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "mudo": true,
+              "quem": "ana",
+              "acao": "entra",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-4c9fd1",
+              "acao": "acena",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "nervoso",
+                  "efeito": "suor"
+                }
+              ]
+            },
+            {
+              "frase": "f-ee1396",
+              "acao": "pensa",
+              "emocao": "cansado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-fd463e",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-60355b",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "concorda",
+              "emocao": "neutro",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-63ccca",
+              "emocao": "feliz",
+              "efeito": "coracoes",
+              "camera": "close"
+            },
+            {
+              "frase": "f-b790e1",
+              "acao": "pula",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-755bd3",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-2e42c0",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "emocao": "determinado",
+              "reacoes": [
+                {
+                  "quem": "ana",
+                  "acao": "acena",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "vocab-saude-corpo.dores-home-office": {
+      "titulo": {
+        "en": "Home office aches",
+        "pt": "As dores do home office"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "cafe",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "mike",
+              "pos": "centroDireita",
+              "emocao": "cansado"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-bbbad9",
+              "acao": "treme",
+              "emocao": "cansado",
+              "efeito": "estalo",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-dac3dd",
+              "acao": "aponta",
+              "emocao": "cansado",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "emocao": "cansado"
+                }
+              ]
+            },
+            {
+              "frase": "f-089eec",
+              "acao": "concorda",
+              "emocao": "cansado",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-da2d06",
+              "acao": "pensa",
+              "emocao": "cansado"
+            },
+            {
+              "frase": "f-8b5d0d",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-b2d006",
+              "acao": "concorda",
+              "emocao": "pensativo"
+            },
+            {
+              "mudo": true,
+              "quem": "mike",
+              "acao": "pensa",
+              "emocao": "feliz",
+              "efeito": "brilho"
+            },
+            {
+              "frase": "f-0eff8d",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-202963",
+              "emocao": "timido",
+              "efeito": "suor",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "mike",
+                  "acao": "acena",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "vocab-saude-corpo.gripe-de-inverno": {
+      "titulo": {
+        "en": "A winter cold",
+        "pt": "Uma gripe de inverno"
+      },
+      "cenas": [
+        {
+          "cenario": "videochamada",
+          "hora": "dia",
+          "clima": [
+            "neve"
+          ],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "caixa",
+              "emocao": "cansado"
+            },
+            {
+              "quem": "dra-lee",
+              "pos": "centroDireita",
+              "visivel": false,
+              "emocao": "feliz"
+            },
+            {
+              "quem": "sarah",
+              "pos": "direita",
+              "emocao": "neutro"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-87441d",
+              "acao": "olha",
+              "alvo": "sarah",
+              "emocao": "cansado",
+              "camera": "dupla",
+              "reacoes": [
+                {
+                  "quem": "sarah",
+                  "acao": "concorda",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "sarah",
+              "acao": "sai",
+              "emocao": "feliz"
+            },
+            {
+              "mudo": true,
+              "quem": "dra-lee",
+              "acao": "entra",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-84ae64",
+              "acao": "aponta",
+              "emocao": "cansado",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "dra-lee",
+                  "emocao": "pensativo"
+                }
+              ]
+            },
+            {
+              "frase": "f-5339b5",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-136933",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-6bda34",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-e3d783",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-33346c",
+              "acao": "mostra",
+              "emocao": "timido",
+              "efeito": "suor",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "dra-lee",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-32091f",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "pensativo",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-098096",
+              "acao": "nega",
+              "emocao": "cansado"
+            },
+            {
+              "frase": "f-ae88bd",
+              "acao": "aponta",
+              "emocao": "timido",
+              "reacoes": [
+                {
+                  "quem": "dra-lee",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-f16981",
+              "acao": "concorda",
+              "emocao": "pensativo",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "acena",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "dra-lee",
+                  "acao": "acena",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "vocab-saude-corpo.pelada-com-ben": {
+      "titulo": {
+        "en": "Soccer in the park",
+        "pt": "A pelada no parque"
+      },
+      "cenas": [
+        {
+          "cenario": "lago",
+          "hora": "dia",
+          "clima": [
+            "folhas"
+          ],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "segura": "mochila",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "ben",
+              "pos": "centroDireita",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "amigo-do-ben",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-46d2c8",
+              "acao": "pula",
+              "emocao": "feliz",
+              "camera": "geral"
+            },
+            {
+              "mudo": true,
+              "quem": "ben",
+              "acao": "corre",
+              "para": "centro",
+              "emocao": "determinado"
+            },
+            {
+              "frase": "f-0af114",
+              "acao": "senta",
+              "emocao": "surpreso",
+              "efeito": "exclamacao",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                },
+                {
+                  "quem": "amigo-do-ben",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-36cca0",
+              "acao": "olha",
+              "alvo": "ben",
+              "emocao": "pensativo",
+              "camera": "dupla"
+            },
+            {
+              "frase": "f-d8b384",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-d8af7d",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "ben",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-1bed7d",
+              "acao": "aponta",
+              "emocao": "surpreso",
+              "efeito": "estalo",
+              "reacoes": [
+                {
+                  "quem": "amigo-do-ben",
+                  "emocao": "timido"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "amigo-do-ben",
+              "acao": "acena",
+              "emocao": "timido",
+              "efeito": "suor"
+            },
+            {
+              "frase": "f-61d388",
+              "acao": "concorda",
+              "alvo": "amigo-do-ben",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "amigo-do-ben",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-992a65",
+              "acao": "aponta",
+              "alvo": "ben",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "ben",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "ben",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "amigo-do-ben",
+                  "acao": "pula",
+                  "emocao": "radiante"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "vocab-saude-corpo.jantar-com-emma": {
+      "titulo": {
+        "en": "Dinner with Emma",
+        "pt": "Jantar com a Emma"
+      },
+      "cenas": [
+        {
+          "cenario": "cozinha",
+          "hora": "noite",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "emma",
+              "pos": "centroDireita",
+              "segura": "sacola",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "lucas",
+              "pos": "direita",
+              "segura": "garrafa",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [],
+          "passos": [
+            {
+              "frase": "f-daa213",
+              "acao": "mostra",
+              "emocao": "feliz",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-ffa5cb",
+              "acao": "mostra",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-86a074",
+              "acao": "concorda",
+              "emocao": "radiante",
+              "efeito": "coracoes"
+            },
+            {
+              "mudo": true,
+              "quem": "emma",
+              "segura": "prato",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-bc0fbe",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "camera": "medio",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "aponta"
+                }
+              ]
+            },
+            {
+              "frase": "f-fcd59c",
+              "acao": "olha",
+              "alvo": "emma",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-0f30bf",
+              "acao": "aponta",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "radiante"
+                }
+              ]
+            },
+            {
+              "frase": "f-ac3ed5",
+              "acao": "aponta",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-9d6bf9",
+              "acao": "mostra",
+              "alvo": "voce",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-58b79c",
+              "acao": "pensa",
+              "emocao": "feliz",
+              "efeito": "brilho",
+              "reacoes": [
+                {
+                  "quem": "lucas",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "emma",
+              "acao": "aponta",
+              "alvo": "lucas",
+              "efeito": "interrogacao"
+            },
+            {
+              "frase": "f-bc9361",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-0775b2",
+              "acao": "mostra",
+              "emocao": "radiante",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "frase": "f-72630c",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "coracoes",
+              "camera": "close",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "emocao": "radiante"
+                },
+                {
+                  "quem": "voce",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "emma",
+                  "acao": "concorda",
+                  "emocao": "feliz"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "vocab-saude-corpo.novidade-da-julia": {
+      "titulo": {
+        "en": "Big news from Julia",
+        "pt": "A grande notícia da Julia"
+      },
+      "cenas": [
+        {
+          "cenario": "quintal",
+          "hora": "tarde",
+          "clima": [],
+          "elenco": [
+            {
+              "quem": "voce",
+              "pos": "centroEsquerda",
+              "emocao": "feliz"
+            },
+            {
+              "quem": "julia",
+              "pos": "centroDireita",
+              "segura": "garrafa",
+              "emocao": "timido"
+            },
+            {
+              "quem": "lucas",
+              "pos": "direita",
+              "emocao": "feliz"
+            }
+          ],
+          "objetos": [
+            {
+              "prop": "prato",
+              "pos": "centro"
+            }
+          ],
+          "passos": [
+            {
+              "frase": "f-81545e",
+              "acao": "comemora",
+              "emocao": "radiante",
+              "efeito": "confete",
+              "camera": "geral",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "surpreso"
+                },
+                {
+                  "quem": "lucas",
+                  "emocao": "surpreso"
+                }
+              ]
+            },
+            {
+              "frase": "f-e5d980",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "camera": "dupla",
+              "alvo": "julia",
+              "reacoes": [
+                {
+                  "quem": "julia",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "lucas",
+              "acao": "palmas",
+              "emocao": "radiante",
+              "efeito": "coracoes"
+            },
+            {
+              "frase": "f-5df29c",
+              "acao": "concorda",
+              "emocao": "feliz",
+              "camera": "medio"
+            },
+            {
+              "frase": "f-f1e212",
+              "acao": "pensa",
+              "emocao": "pensativo"
+            },
+            {
+              "frase": "f-4d23c0",
+              "acao": "aponta",
+              "alvo": "prato",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-da4edf",
+              "acao": "pensa",
+              "emocao": "pensativo",
+              "reacoes": [
+                {
+                  "quem": "julia",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-cfd016",
+              "acao": "concorda",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-8cbd75",
+              "acao": "nega",
+              "emocao": "feliz",
+              "reacoes": [
+                {
+                  "quem": "lucas",
+                  "acao": "concorda"
+                }
+              ]
+            },
+            {
+              "frase": "f-ce125c",
+              "emocao": "radiante",
+              "efeito": "coracoes",
+              "camera": "close"
+            },
+            {
+              "frase": "f-fb21f4",
+              "acao": "mostra",
+              "emocao": "feliz"
+            },
+            {
+              "frase": "f-c07a1d",
+              "acao": "aponta",
+              "alvo": "prato",
+              "emocao": "radiante",
+              "reacoes": [
+                {
+                  "quem": "voce",
+                  "emocao": "feliz"
+                },
+                {
+                  "quem": "lucas",
+                  "acao": "palmas",
+                  "emocao": "feliz"
+                }
+              ]
+            },
+            {
+              "mudo": true,
+              "quem": "voce",
+              "acao": "abraca",
+              "alvo": "julia",
+              "emocao": "radiante",
+              "efeito": "coracoes",
+              "reacoes": [
+                {
+                  "quem": "lucas",
+                  "acao": "palmas"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

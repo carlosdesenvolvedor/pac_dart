@@ -1,0 +1,220 @@
+{
+  "id": "vocab-natureza-ciencia.dados-com-mike",
+  "trilha": "vocab-natureza-ciencia",
+  "nome": "Dados do teste A/B com o Mike",
+  "emoji": "📊",
+  "cena": "O Mike e você revisam a planilha do teste A/B de um recurso experimental: a fórmula, a probabilidade de o resultado ser sorte e o mecanismo de cache da tela nova.",
+  "resumo": "Falar de números e dados: formula, calculate, statistic, probability, mechanism, equation.",
+  "fechamento": false,
+  "novos": [
+    "mechanism",
+    "calculate",
+    "mathematics",
+    "formula",
+    "statistic",
+    "equation",
+    "probability",
+    "theoretical",
+    "experimental"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Palavras de números e dados"
+    },
+    {
+      "t": "p",
+      "c": "**mechanism** mecanismo · **calculate** calcular · **mathematics** matemática · **formula** fórmula · **statistic** estatística (um dado) · **equation** equação · **probability** probabilidade · **theoretical** teórico · **experimental** experimental"
+    },
+    {
+      "t": "ex",
+      "c": "Speed is only part of the equation.\nA velocidade é só uma parte da equação."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **a caching mechanism** (mecanismo de cache), **an experimental flag** (flag de recurso em teste), **part of the equation** (um dos fatores)."
+    },
+    {
+      "t": "warn",
+      "c": "Na fala, matemática é **math** (maths é britânico). E **a statistic** é um dado só; **statistics** é a área ou um conjunto de dados."
+    }
+  ],
+  "imagem": "📊💻🧮",
+  "visualizacao": "Você está com a planilha aberta e o Mike na call, compartilhando a tela. Colunas verdes e vermelhas, um gráfico subindo e o cursor dele parado numa célula com fórmula.",
+  "foto_busca": "spreadsheet charts data analysis laptop",
+  "trechos": [
+    {
+      "id": "f-6c3f03",
+      "quem": "mike",
+      "cod": "The new screen is still behind an experimental flag.",
+      "dica": "A tela nova ainda está atrás de uma flag experimental.",
+      "img": "🚩🧪📱",
+      "alvo": "experimental",
+      "alvo_pt": "experimental",
+      "conceito": "experimental = experimental, ainda em teste: an experimental feature, an experimental flag.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e89913",
+      "quem": "voce",
+      "cod": "I think the formula in column C is wrong.",
+      "dica": "Acho que a fórmula da coluna C está errada.",
+      "img": "📊❌",
+      "alvo": "formula",
+      "alvo_pt": "fórmula",
+      "conceito": "formula = fórmula (de planilha, de química); plural formulas.",
+      "registro": "neutro",
+      "armadilhas": [
+        "formule"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-531fa0",
+      "quem": "mike",
+      "cod": "Can you calculate the conversion rate for each group?",
+      "dica": "Você consegue calcular a taxa de conversão de cada grupo?",
+      "img": "🧮📈",
+      "alvo": "calculate",
+      "alvo_pt": "calcular",
+      "conceito": "calculate = calcular. No dia a dia também se diz figure out: figure out the cost.",
+      "registro": "neutro",
+      "armadilhas": [
+        "calcule"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "for each group",
+          "aceita": [
+            "of each group"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-2d7346",
+      "quem": "voce",
+      "cod": "Here's a surprising statistic: the new screen is twice as fast.",
+      "dica": "Aqui vai uma estatística surpreendente: a tela nova é duas vezes mais rápida.",
+      "img": "📊😮⚡",
+      "alvo": "statistic",
+      "alvo_pt": "estatística",
+      "conceito": "a statistic = uma estatística, um dado; statistics = a área ou um conjunto de dados.",
+      "blocos": [
+        4
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "statistics"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "twice as fast",
+          "aceita": [
+            "two times faster",
+            "two times as fast"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-15797a",
+      "quem": "mike",
+      "cod": "What's the probability that this result is just luck?",
+      "dica": "Qual é a probabilidade de esse resultado ser só sorte?",
+      "img": "🎲🤔",
+      "alvo": "probability",
+      "alvo_pt": "probabilidade",
+      "conceito": "probability = probabilidade. Na conversa é mais comum chance: There's a good chance it works.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bb28fe",
+      "quem": "voce",
+      "cod": "The new caching mechanism is what made the screen faster.",
+      "dica": "O novo mecanismo de cache é o que deixou a tela mais rápida.",
+      "img": "⚙️⚡📱",
+      "alvo": "mechanism",
+      "alvo_pt": "mecanismo",
+      "conceito": "mechanism = mecanismo: a caching mechanism, a safety mechanism.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-306276",
+      "quem": "mike",
+      "cod": "Speed is only part of the equation.",
+      "dica": "A velocidade é só uma parte da equação.",
+      "img": "⚡🧩",
+      "alvo": "equation",
+      "alvo_pt": "equação",
+      "conceito": "equation = equação; part of the equation = um dos fatores de uma decisão.",
+      "var": [
+        {
+          "em": "only part",
+          "aceita": [
+            "just part",
+            "only a part",
+            "just a part",
+            "only one part"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-72ef90",
+      "quem": "mike",
+      "cod": "It works in practice, so it's only a theoretical problem.",
+      "dica": "Funciona na prática, então é só um problema teórico.",
+      "img": "✅🤓",
+      "alvo": "theoretical",
+      "alvo_pt": "teórico",
+      "conceito": "theoretical = teórico, em contraste com practical: a theoretical problem x a practical solution.",
+      "var": [
+        {
+          "em": "only",
+          "aceita": [
+            "just"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-608779",
+      "quem": "mike",
+      "cod": "I studied applied mathematics in college.",
+      "dica": "Eu estudei matemática aplicada na faculdade.",
+      "img": "🎓➗",
+      "alvo": "mathematics",
+      "alvo_pt": "matemática",
+      "conceito": "mathematics = matemática, mais formal; na fala, math. Maths é britânico.",
+      "registro": "neutro",
+      "armadilhas": [
+        "maths",
+        "mathematic"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2920711,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I study mathematics. → I studied applied mathematics in college.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

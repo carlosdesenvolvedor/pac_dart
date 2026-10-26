@@ -1,0 +1,309 @@
+{
+  "id": "vocab-casa-cidade.apartamento-austin",
+  "trilha": "vocab-casa-cidade",
+  "nome": "Apartamento em Austin: wall, studio…",
+  "emoji": "🏢",
+  "cena": "Por chamada de vídeo, a Sarah lê anúncios de apartamento em Austin com você e a Julia, que vai fazer intercâmbio lá.",
+  "resumo": "Doze palavras para procurar onde morar: studio apartment, nearby, distance, real estate e outras.",
+  "fechamento": false,
+  "novos": [
+    "wall",
+    "property",
+    "facility",
+    "district",
+    "studio",
+    "resident",
+    "estate",
+    "situate",
+    "nearby",
+    "distance",
+    "hall",
+    "interior"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Morar: as palavras do anúncio"
+    },
+    {
+      "t": "p",
+      "c": "**studio apartment** quitinete · **be situated** estar situado · **district** região, bairro (oficial) · **nearby** por perto · **distance** distância · **property** imóvel · **wall** parede · **interior** parte de dentro · **hall** corredor · **facilities** estrutura do prédio · **resident** morador · **real estate** imóveis"
+    },
+    {
+      "t": "ex",
+      "c": "There's a big park nearby where you can go running.\nTem um parque grande por perto onde você pode correr."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: thin walls, rental property, laundry facilities, residents only, within walking distance, down the hall."
+    },
+    {
+      "t": "warn",
+      "c": "Falsos amigos: facility não é facilidade (ease); o interior do estado é the countryside, não interior."
+    }
+  ],
+  "imagem": "🏢🔑💻",
+  "visualizacao": "Você está numa chamada de vídeo com a Sarah e a Julia. A Sarah compartilha a tela com fotos de apartamentos: paredes brancas, um corredor comprido, a piscina do prédio.",
+  "foto_busca": "apartment listing video call",
+  "trechos": [
+    {
+      "id": "f-fc5a90",
+      "quem": "julia",
+      "cod": "I'm looking for a studio apartment near campus.",
+      "dica": "Estou procurando uma quitinete perto do campus.",
+      "img": "🛏️🔍",
+      "alvo": "studio apartment",
+      "alvo_pt": "quitinete",
+      "conceito": "studio apartment = quitinete; studio sozinho também é estúdio (de gravação, de foto).",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "near campus",
+          "aceita": [
+            "near the campus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-03ab32",
+      "quem": "sarah",
+      "cod": "According to the ad, the building is situated near the university.",
+      "dica": "Segundo o anúncio, o prédio está situado perto da universidade.",
+      "img": "📰🏫",
+      "alvo": "is situated",
+      "alvo_pt": "está situado",
+      "conceito": "be situated = estar situado: tom de anúncio. Na conversa, diga is located ou só is.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR58"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 7683402,
+        "en_autor": "AlanF_US",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "The hotel is situated on the mountain: hotel/montanha trocados por building/near the university; acrescentado According to the ad",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cce3db",
+      "quem": "sarah",
+      "contexto": "f-03ab32",
+      "cod": "It's in the historic district, so the rent is a bit higher.",
+      "dica": "Fica no bairro histórico, então o aluguel é um pouco mais alto.",
+      "img": "🏛️💲",
+      "alvo": "historic district",
+      "alvo_pt": "bairro histórico",
+      "conceito": "historic district = bairro histórico; district é região com nome oficial. Bairro comum é neighborhood.",
+      "registro": "informal",
+      "interferencias": [
+        "BR01"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a bit",
+          "aceita": [
+            "a little"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-228f05",
+      "quem": "sarah",
+      "cod": "There's a big park nearby where you can go running.",
+      "dica": "Tem um parque grande por perto onde você pode ir correr.",
+      "img": "🌳🏃",
+      "alvo": "nearby",
+      "alvo_pt": "por perto",
+      "conceito": "nearby vem no fim (a park nearby) ou antes do substantivo (a nearby park); nunca nearby of.",
+      "var": [
+        {
+          "em": "There's",
+          "aceita": [
+            "There is"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "near"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10550210,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "lake/swim trocados por big park/go running; we trocado por you",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a4a826",
+      "quem": "julia",
+      "cod": "What's the distance from the apartment to campus?",
+      "dica": "Qual é a distância do apartamento até o campus?",
+      "img": "📏🎓",
+      "alvo": "distance",
+      "alvo_pt": "distância",
+      "conceito": "distance = distância; within walking distance = dá para ir a pé.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6657169,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "between Boston and Chicago trocado por from the apartment to campus",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "to campus",
+          "aceita": [
+            "to the campus"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-91a11f",
+      "quem": "sarah",
+      "cod": "Look, there's another rental property on the same street.",
+      "dica": "Olha, tem outro imóvel para alugar na mesma rua.",
+      "img": "🏘️🔑",
+      "alvo": "rental property",
+      "alvo_pt": "imóvel para alugar",
+      "conceito": "property = imóvel (casa ou prédio); rental property = imóvel de aluguel.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b0d05f",
+      "quem": "sarah",
+      "cod": "I heard the walls in that building are really thin.",
+      "dica": "Ouvi dizer que as paredes daquele prédio são bem finas.",
+      "img": "🧱👂",
+      "alvo": "walls",
+      "alvo_pt": "paredes",
+      "conceito": "wall = parede (e também muro); cerca é fence. thin walls = paredes finas.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-91da31",
+      "quem": "sarah",
+      "cod": "The interior was just renovated.",
+      "dica": "O interior acabou de ser reformado.",
+      "img": "🛋️✨",
+      "alvo": "interior",
+      "alvo_pt": "interior",
+      "conceito": "interior = a parte de dentro; o interior do estado é the countryside (não interior).",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "was just",
+          "aceita": [
+            "has just been"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-72eeb0",
+      "quem": "sarah",
+      "cod": "The elevator is down the hall.",
+      "dica": "O elevador fica no fim do corredor.",
+      "img": "🚶🚪",
+      "alvo": "down the hall",
+      "alvo_pt": "no fim do corredor",
+      "lit": "[lit.: corredor abaixo]",
+      "conceito": "down the hall = no fim do corredor; hall também é salão (concert hall).",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f7e895",
+      "quem": "sarah",
+      "cod": "The building has laundry facilities in the basement.",
+      "dica": "O prédio tem lavanderia coletiva no subsolo.",
+      "img": "🧺👕",
+      "alvo": "laundry facilities",
+      "alvo_pt": "lavanderia coletiva",
+      "conceito": "facilities = a estrutura do prédio (lavanderia, academia); facility não é facilidade (= ease).",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "facility"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c2539f",
+      "quem": "sarah",
+      "cod": "Only residents can use the pool and the gym.",
+      "dica": "Só os moradores podem usar a piscina e a academia.",
+      "img": "🏊🏋️",
+      "alvo": "residents",
+      "alvo_pt": "moradores",
+      "conceito": "resident = morador; residents only = só para moradores.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3116ec",
+      "quem": "sarah",
+      "cod": "My neighbor is a real estate agent, so she can help you.",
+      "dica": "A minha vizinha é corretora de imóveis, então ela pode te ajudar.",
+      "img": "🤝🏠",
+      "alvo": "real estate agent",
+      "alvo_pt": "corretora de imóveis",
+      "conceito": "real estate = imóveis (o mercado); estate sozinho = propriedade grande ou herança.",
+      "registro": "informal",
+      "interferencias": [
+        "BR13"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5621937,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom trocado por My neighbor; acrescentado so she can help you",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

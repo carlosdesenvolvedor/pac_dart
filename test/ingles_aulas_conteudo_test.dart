@@ -36,7 +36,7 @@ void main() {
       for (final t in curriculo)
         for (final l in t['licoes'] as List) l['id'] as String,
     ];
-    expect(todas.length, greaterThanOrEqualTo(620));
+    expect(todas.length, greaterThanOrEqualTo(796));
     expect(todas.where((id) => !aulas.containsKey(id)), isEmpty);
     expect(aulas.keys.where((id) => !licoes.containsKey(id)), isEmpty);
   });

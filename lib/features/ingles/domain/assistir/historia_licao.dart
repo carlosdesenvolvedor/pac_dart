@@ -21,7 +21,10 @@ const figurantesConhecidos = {
   'entrevistador', 'estagiaria', 'farmaceutica', 'gestora', 'guia', 'marido', 'moradora', 'motorista',
   'participante', 'passageira', 'passageiro', 'proprietario', 'recepcionista', 'recrutadora', 'seguranca',
   'stakeholder', 'supervisora', 'vendedor', 'vizinha', 'jack', 'fazendeiro', 'esposa',
-  'oficial', 'garcom', 'vendedora'};
+  'oficial', 'garcom', 'vendedora',
+  // as trilhas de vocabulário (B2/C1)
+  'presidente', 'advogada', 'economista', 'pesquisadora', 'consultora', 'prima', 'tia', 'mae', 'sobrinho', 'socio',
+  'vizinho'};
 
 /// Figurantes que estão na cena sem falar nenhuma frase da lição (por lição, somando as cenas).
 const maxFigurantesMudos = 2;

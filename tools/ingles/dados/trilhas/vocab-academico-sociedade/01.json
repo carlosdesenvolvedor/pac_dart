@@ -1,0 +1,220 @@
+{
+  "id": "vocab-academico-sociedade.planejamento-trimestre",
+  "trilha": "vocab-academico-sociedade",
+  "nome": "O plano do trimestre",
+  "emoji": "🗂️",
+  "cena": "Numa chamada de planejamento, a Sarah e o Mike dividem o trabalho do próximo trimestre e decidem quanta liberdade cada squad vai ter.",
+  "resumo": "Dividir trabalho e poder: allocation, allocate, authority, autonomy, hierarchy, coordinate.",
+  "fechamento": false,
+  "novos": [
+    "allocate",
+    "allocation",
+    "assignment",
+    "authority",
+    "autonomy",
+    "coordinate",
+    "coordination",
+    "directive",
+    "hierarchy",
+    "strategic"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**allocate** alocar · **allocation** distribuição · **assignment** atribuição, tarefa · **authority** autoridade · **autonomy** autonomia · **coordinate** coordenar · **coordination** coordenação · **directive** diretriz · **hierarchy** hierarquia · **strategic** estratégico"
+    },
+    {
+      "t": "ex",
+      "c": "Pausing work on the old app is a strategic decision for us.\nPausar o trabalho no app antigo é uma decisão estratégica para nós."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **allocate X to** a project, **have the authority to**, **coordinate with**, **a flat hierarchy**."
+    },
+    {
+      "t": "warn",
+      "c": "**assignment** é tarefa, não assinatura (= signature). **directive** é formal; no dia a dia, guideline."
+    }
+  ],
+  "imagem": "🗓️💻📊",
+  "visualizacao": "Você está no home office com o fone no ouvido. Na tela, a Sarah compartilha uma planilha colorida do trimestre e o Mike, em Chicago, vai arrastando nomes para cada coluna.",
+  "foto_busca": "team planning video call spreadsheet",
+  "trechos": [
+    {
+      "id": "f-9e15fd",
+      "quem": "sarah",
+      "cod": "Let's start with the budget allocation for next quarter.",
+      "dica": "Vamos começar pela alocação do orçamento do próximo trimestre.",
+      "img": "💰📊",
+      "alvo": "budget allocation",
+      "alvo_pt": "alocação do orçamento",
+      "conceito": "budget allocation = alocação (distribuição) do orçamento entre times e projetos.",
+      "registro": "neutro",
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4c19f7",
+      "quem": "mike",
+      "cod": "I'd like to allocate two more devs to the payments squad.",
+      "dica": "Eu queria alocar mais dois devs no squad de pagamentos.",
+      "img": "👩‍💻👨‍💻➡️",
+      "alvo": "allocate",
+      "alvo_pt": "alocar",
+      "conceito": "allocate X to Y = alocar X em Y; vale para pessoas e para dinheiro (allocate budget).",
+      "var": [
+        {
+          "em": "I'd",
+          "aceita": [
+            "I would"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "allocate in"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-26af59",
+      "quem": "sarah",
+      "contexto": "f-4c19f7",
+      "cod": "I don't have the authority to change the budget.",
+      "dica": "Eu não tenho autoridade para mudar o orçamento.",
+      "img": "🚫✍️💰",
+      "alvo": "authority",
+      "alvo_pt": "autoridade",
+      "lit": "[lit.: eu não tenho a autoridade para mudar]",
+      "conceito": "have the authority to + verbo = ter autoridade para. An authority on = uma referência em.",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2315282,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I don't have the authority to fire Tom. → I don't have the authority to change the budget.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d44c8b",
+      "quem": "mike",
+      "cod": "The directive from leadership is clear: fewer features, higher quality.",
+      "dica": "A diretriz da liderança é clara: menos features, qualidade mais alta.",
+      "img": "📜🎯",
+      "alvo": "directive",
+      "alvo_pt": "diretriz",
+      "conceito": "directive = diretriz que vem de cima; mais formal que guideline ou instruction.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ea4b10",
+      "quem": "mike",
+      "cod": "Each squad will have more autonomy to pick its own tools.",
+      "dica": "Cada squad vai ter mais autonomia para escolher as próprias ferramentas.",
+      "img": "🧰🗽",
+      "alvo": "autonomy",
+      "alvo_pt": "autonomia",
+      "conceito": "autonomy = autonomia; give teams more autonomy = dar mais autonomia aos times.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "pick",
+          "aceita": [
+            "choose"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-494dd6",
+      "quem": "sarah",
+      "cod": "We have a pretty flat hierarchy, so anyone can suggest ideas.",
+      "dica": "Temos uma hierarquia bem horizontal, então qualquer um pode sugerir ideias.",
+      "img": "🪜➖💡",
+      "alvo": "hierarchy",
+      "alvo_pt": "hierarquia",
+      "lit": "[lit.: temos uma hierarquia bem achatada]",
+      "conceito": "hierarchy (HIGH-er-ar-kee). A flat hierarchy = hierarquia horizontal, com poucas camadas de chefia.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b4df6e",
+      "quem": "voce",
+      "cod": "So what's my assignment for this quarter?",
+      "dica": "E qual é a minha atribuição para este trimestre?",
+      "img": "📋🙋‍♂️",
+      "alvo": "assignment",
+      "alvo_pt": "atribuição",
+      "conceito": "assignment = atribuição, tarefa designada (na escola, trabalho). Assinatura = signature ou subscription.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "signature"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-59dc33",
+      "quem": "mike",
+      "contexto": "f-b4df6e",
+      "cod": "You'll coordinate with the design team on the new onboarding.",
+      "dica": "Você vai se coordenar com o time de design no novo onboarding.",
+      "img": "🤝🎨",
+      "alvo": "coordinate with",
+      "alvo_pt": "se coordenar com",
+      "conceito": "coordinate with = se coordenar, alinhar com (outro time). Sem with, coordinate X = coordenar X.",
+      "var": [
+        {
+          "em": "You'll",
+          "aceita": [
+            "You will"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-bf2911",
+      "quem": "sarah",
+      "cod": "This project needs close coordination with Ana's team.",
+      "dica": "Esse projeto precisa de coordenação próxima com o time da Ana.",
+      "img": "🔗👥",
+      "alvo": "close coordination",
+      "alvo_pt": "coordenação próxima",
+      "conceito": "close coordination = coordenação próxima, constante; close aqui é \"de perto\".",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4af59a",
+      "quem": "sarah",
+      "cod": "Pausing work on the old app is a strategic decision for us.",
+      "dica": "Pausar o trabalho no app antigo é uma decisão estratégica para nós.",
+      "img": "⏸️♟️",
+      "alvo": "strategic decision",
+      "alvo_pt": "decisão estratégica",
+      "conceito": "strategic (struh-TEE-jik) = estratégico; a strategic decision, a strategic partner.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

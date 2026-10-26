@@ -69,9 +69,10 @@ FEMININAS = ['Achernar', 'Autonoe', 'Callirrhoe', 'Despina', 'Erinome', 'Gacrux'
 # papéis menores: o gênero vem da palavra em português (recrutadora, diretor…); neutro sorteia pelo hash do papel
 FEMININOS = {'recrutadora', 'diretora', 'moradora', 'engenheira', 'corretora', 'passageira', 'estagiaria', 'gestora',
              'farmaceutica', 'desenvolvedora', 'vizinha', 'esposa', 'mae', 'namorada', 'professora', 'medica',
-             'enfermeira', 'chefe-dela', 'convidada', 'dev-nova', 'supervisora'}
+             'enfermeira', 'chefe-dela', 'convidada', 'dev-nova', 'supervisora', 'prima', 'tia', 'presidente',
+             'economista', 'advogada', 'pesquisadora', 'consultora'}
 MASCULINOS = {'jack', 'entrevistador', 'proprietario', 'passageiro', 'vendedor', 'amigo-do-ben', 'convidado', 'marido',
-              'engenheiro', 'dev-novo', 'dev-junior', 'pai', 'irmao', 'professor', 'medico'}
+              'engenheiro', 'dev-novo', 'dev-junior', 'pai', 'irmao', 'professor', 'medico', 'sobrinho', 'socio', 'vizinho'}
 
 
 def _h(s):

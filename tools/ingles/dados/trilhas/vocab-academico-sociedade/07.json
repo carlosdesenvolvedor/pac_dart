@@ -1,0 +1,220 @@
+{
+  "id": "vocab-academico-sociedade.julia-faculdade-eua",
+  "trilha": "vocab-academico-sociedade",
+  "nome": "A Julia e a faculdade nos EUA",
+  "emoji": "🎓",
+  "cena": "Numa videochamada, a Julia, sua irmã, pede ajuda para entender o site de uma universidade americana: inscrição, grade, nível de inglês e carreiras.",
+  "resumo": "Falar de estudo: admission requirements, curriculum, intermediate, intensive course, career pathway.",
+  "fechamento": false,
+  "novos": [
+    "admission",
+    "bilingual",
+    "curriculum",
+    "intermediate",
+    "intensive",
+    "pathway",
+    "occupation",
+    "specialty",
+    "practitioner"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**admission** admissão · **bilingual** bilíngue · **curriculum** grade curricular · **intermediate** intermediário · **intensive** intensivo · **pathway** caminho · **occupation** ocupação · **specialty** especialidade · **practitioner** profissional da área"
+    },
+    {
+      "t": "ex",
+      "c": "Where can I find the admission requirements?\nOnde eu encontro os requisitos de admissão?"
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **admission requirements**, **an intensive English course**, **a career pathway**."
+    },
+    {
+      "t": "warn",
+      "c": "**curriculum** é a grade do curso; currículo de emprego = **resume** (en-US). Occupation é campo de formulário."
+    }
+  ],
+  "imagem": "🎓💻🇺🇸",
+  "visualizacao": "Você está no sofá com o notebook. Na tela, a Julia compartilha o site de uma universidade americana, com fotos de um campus cheio de árvores, e vai rolando a página devagar.",
+  "foto_busca": "university website laptop campus",
+  "trechos": [
+    {
+      "id": "f-73d43d",
+      "quem": "julia",
+      "cod": "Where can I find the admission requirements?",
+      "dica": "Onde eu encontro os requisitos de admissão?",
+      "img": "🔎📋🎓",
+      "alvo": "admission requirements",
+      "alvo_pt": "requisitos de admissão",
+      "conceito": "admission = admissão, entrada; college admissions = processo seletivo da faculdade.",
+      "registro": "informal",
+      "teste": true,
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "can I",
+          "aceita": [
+            "do I"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-87693a",
+      "quem": "voce",
+      "cod": "The first-year curriculum is on this page.",
+      "dica": "A grade curricular do primeiro ano está nesta página.",
+      "img": "📚🗓️",
+      "alvo": "curriculum",
+      "alvo_pt": "grade curricular",
+      "conceito": "curriculum = grade curricular. Currículo de emprego = resume (en-US).",
+      "registro": "informal",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "resume"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f09c85",
+      "quem": "julia",
+      "cod": "My English is intermediate, not advanced.",
+      "dica": "Meu inglês é intermediário, não avançado.",
+      "img": "📶🗣️",
+      "alvo": "intermediate",
+      "alvo_pt": "intermediário",
+      "conceito": "intermediate = intermediário; an intermediate level = um nível intermediário.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1d4959",
+      "quem": "voce",
+      "contexto": "f-f09c85",
+      "cod": "They offer an intensive English course in the summer.",
+      "dica": "Eles oferecem um curso intensivo de inglês no verão.",
+      "img": "☀️📖⏱️",
+      "alvo": "intensive English course",
+      "alvo_pt": "curso intensivo de inglês",
+      "conceito": "intensive = intensivo; o adjetivo vem antes: an intensive English course.",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-18270e",
+      "quem": "julia",
+      "cod": "Being bilingual could really help my application.",
+      "dica": "Ser bilíngue poderia ajudar muito na minha inscrição.",
+      "img": "🗣️🗣️📝",
+      "alvo": "bilingual",
+      "alvo_pt": "bilíngue",
+      "conceito": "bilingual = bilíngue; application = inscrição, candidatura (não aplicação).",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "really help my application",
+          "aceita": [
+            "help my application a lot",
+            "help a lot with my application"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-3b0569",
+      "quem": "voce",
+      "cod": "The form asks for your occupation, so just put student.",
+      "dica": "O formulário pede a sua ocupação, então é só colocar estudante.",
+      "img": "📝👩‍🎓",
+      "alvo": "occupation",
+      "alvo_pt": "ocupação",
+      "conceito": "occupation = ocupação, campo de formulário. Na conversa: What do you do?",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-380c1e",
+      "quem": "julia",
+      "cod": "Is there a clear career pathway after this program?",
+      "dica": "Tem um caminho de carreira claro depois desse curso?",
+      "img": "🛤️💼",
+      "alvo": "career pathway",
+      "alvo_pt": "caminho de carreira",
+      "conceito": "pathway = caminho, trajetória; a career pathway = um caminho de carreira.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "program",
+          "aceita": [
+            "course"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-95e1e1",
+      "quem": "voce",
+      "contexto": "Can you help me with my essay in English?",
+      "cod": "That's my specialty.",
+      "dica": "Essa é a minha especialidade.",
+      "img": "✍️😎",
+      "alvo": "specialty",
+      "alvo_pt": "especialidade",
+      "conceito": "specialty = especialidade (en-US); speciality é britânico. Na faculdade, a área escolhida é a major.",
+      "registro": "informal",
+      "armadilhas": [
+        "speciality"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2251103,
+        "en_autor": "CK",
+        "pt_id": 6054771,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-53dc86",
+      "quem": "julia",
+      "cod": "I want to talk to practitioners, not just professors.",
+      "dica": "Quero conversar com profissionais da área, não só com professores.",
+      "img": "👩‍⚕️🗣️👨‍🏫",
+      "alvo": "practitioners",
+      "alvo_pt": "profissionais da área",
+      "conceito": "practitioner = quem exerce a profissão, o oposto de quem só estuda a teoria.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "just",
+          "aceita": [
+            "only"
+          ]
+        }
+      ]
+    }
+  ]
+}

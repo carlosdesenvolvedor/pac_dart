@@ -1,0 +1,293 @@
+{
+  "id": "vocab-trabalho-empresa.quem-e-quem",
+  "trilha": "vocab-trabalho-empresa",
+  "nome": "Quem é quem: staff, leader, director…",
+  "emoji": "🏢",
+  "cena": "Na sua primeira semana no time novo, o Mike compartilha a tela em Chicago e mostra o organograma da empresa.",
+  "resumo": "As palavras de quem é quem na empresa: staff, employee, leader, director, management, chief…",
+  "fechamento": false,
+  "novos": [
+    "staff",
+    "organization",
+    "industry",
+    "leader",
+    "employee",
+    "firm",
+    "management",
+    "director",
+    "executive",
+    "chief"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Quem é quem na empresa"
+    },
+    {
+      "t": "p",
+      "c": "**staff** equipe, quadro · **organization** organização · **industry** setor, ramo · **leader** líder · **employee** funcionário · **firm** escritório, empresa de serviços · **management** gestão; a diretoria · **director** diretor(a) de área · **executive** executivo · **chief** chefe, principal (em cargo)"
+    },
+    {
+      "t": "ex",
+      "c": "I've worked in the tech industry since 2008.\nTrabalho no setor de tecnologia desde 2008."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: staff meeting, upper management, a design firm."
+    },
+    {
+      "t": "warn",
+      "c": "**chief** só aparece em cargo (chief architect; CEO = chief executive officer). Meu chefe = my boss ou my manager."
+    }
+  ],
+  "imagem": "💻🏢👥",
+  "visualizacao": "Você está no seu home office, de fone. O Mike compartilha a tela de Chicago e um organograma cheio de caixinhas com nomes e fotos ocupa o monitor inteiro.",
+  "foto_busca": "video call organization chart screen",
+  "trechos": [
+    {
+      "id": "f-e52984",
+      "quem": "mike",
+      "cod": "We have about 300 employees.",
+      "dica": "Temos cerca de 300 funcionários.",
+      "img": "👥🏢",
+      "alvo": "employees",
+      "alvo_pt": "funcionários",
+      "conceito": "employee = funcionário (quem é contratado); employer = empregador (quem contrata).",
+      "var": [
+        {
+          "em": "about",
+          "aceita": [
+            "around"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "armadilhas": [
+        "employers",
+        "workers"
+      ],
+      "teste": true,
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 5513989,
+        "en_autor": "CK",
+        "pt_id": 6470368,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-5a2052",
+      "quem": "voce",
+      "contexto": "f-e52984",
+      "cod": "Wow, that's a bigger organization than I thought.",
+      "dica": "Nossa, é uma organização maior do que eu pensava.",
+      "img": "🏢📈😮",
+      "alvo": "organization",
+      "alvo_pt": "organização",
+      "conceito": "organization = organização (empresa, entidade). Nos EUA, com z; organisation é britânico.",
+      "var": [
+        {
+          "em": "thought",
+          "aceita": [
+            "imagined"
+          ]
+        },
+        {
+          "em": "that's",
+          "aceita": [
+            "it's"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "organisation"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-980382",
+      "quem": "mike",
+      "cod": "Each team has its own leader.",
+      "dica": "Cada time tem o seu próprio líder.",
+      "img": "👥⭐",
+      "alvo": "leader",
+      "alvo_pt": "líder",
+      "conceito": "leader = líder; team leader = líder do time. its = dele (do time), sem apóstrofo.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11"
+      ],
+      "armadilhas": [
+        "it's",
+        "lider"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Each",
+          "aceita": [
+            "Every"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-ffcd3e",
+      "quem": "mike",
+      "cod": "We have a staff meeting every Monday at 10:00.",
+      "dica": "Temos uma reunião de equipe toda segunda às 10h00.",
+      "img": "🗓️👥🕙",
+      "alvo": "staff meeting",
+      "alvo_pt": "reunião de equipe",
+      "conceito": "staff = a equipe, o quadro de funcionários (coletivo). Uma pessoa é a staff member.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR17",
+        "BR24"
+      ],
+      "armadilhas": [
+        "meeting of staff",
+        "on monday"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-b6e414",
+      "quem": "mike",
+      "cod": "Our director of engineering works from Denver.",
+      "dica": "A nossa diretora de engenharia trabalha de Denver.",
+      "img": "👩‍💼🏔️",
+      "alvo": "director of engineering",
+      "alvo_pt": "diretora de engenharia",
+      "conceito": "director = diretor(a) de uma área. Nos EUA, fica abaixo do VP; não é o topo da empresa.",
+      "registro": "neutro",
+      "armadilhas": [
+        "engineering's director"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "director of engineering",
+          "aceita": [
+            "engineering director"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-40bc40",
+      "quem": "mike",
+      "cod": "Two senior executives visit the Chicago office every month.",
+      "dica": "Dois executivos seniores visitam o escritório de Chicago todo mês.",
+      "img": "👔✈️🏙️",
+      "alvo": "senior executives",
+      "alvo_pt": "executivos seniores",
+      "conceito": "executive = executivo (alto cargo). Adjetivo antes do substantivo: senior executives.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08",
+        "BR09"
+      ],
+      "armadilhas": [
+        "executives seniors",
+        "seniors"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7aa9a7",
+      "quem": "mike",
+      "cod": "Upper management approved two new positions last week.",
+      "dica": "A alta diretoria aprovou duas vagas novas na semana passada.",
+      "img": "✅📋",
+      "alvo": "Upper management",
+      "alvo_pt": "alta diretoria",
+      "conceito": "management = gestão, e também o grupo de gestores: Management approved it = a diretoria aprovou.",
+      "registro": "neutro",
+      "armadilhas": [
+        "the upper management",
+        "direction"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-098ecc",
+      "quem": "mike",
+      "cod": "Our chief architect wrote the first version of the app.",
+      "dica": "O nosso arquiteto-chefe escreveu a primeira versão do app.",
+      "img": "🧑‍💻📱",
+      "alvo": "chief architect",
+      "alvo_pt": "arquiteto-chefe",
+      "conceito": "chief = chefe, principal, só em cargo (chief architect). Meu chefe = my boss.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "architect chief",
+        "boss"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-451c99",
+      "quem": "mike",
+      "cod": "Before joining us, Ana worked at a design firm in Recife.",
+      "dica": "Antes de entrar no time, a Ana trabalhou num escritório de design em Recife.",
+      "img": "🎨🏢🌴",
+      "alvo": "design firm",
+      "alvo_pt": "escritório de design",
+      "conceito": "firm (subst.) = escritório, empresa de serviços (a law firm, a design firm); firm (adj.) = firme.",
+      "var": [
+        {
+          "em": "at",
+          "aceita": [
+            "for"
+          ]
+        },
+        {
+          "em": "joining us",
+          "aceita": [
+            "joining the team"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR52",
+        "BR12"
+      ],
+      "armadilhas": [
+        "before join",
+        "the ana"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-fa4608",
+      "quem": "mike",
+      "cod": "I've worked in the tech industry since 2008.",
+      "dica": "Trabalho no setor de tecnologia desde 2008.",
+      "img": "💻📅",
+      "alvo": "tech industry",
+      "alvo_pt": "setor de tecnologia",
+      "conceito": "industry = setor, ramo de atividade (não só fábrica). Trabalho... desde = present perfect + since.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR47"
+      ],
+      "armadilhas": [
+        "i work",
+        "technology industry"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

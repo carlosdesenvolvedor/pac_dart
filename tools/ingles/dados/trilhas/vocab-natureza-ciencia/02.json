@@ -1,0 +1,264 @@
+{
+  "id": "vocab-natureza-ciencia.palestra-museu-ciencia",
+  "trilha": "vocab-natureza-ciencia",
+  "nome": "Palestra no museu de ciências",
+  "emoji": "🔬",
+  "cena": "Num sábado em Boston, o Ben leva você a uma palestra num museu de ciências; uma pesquisadora conta a descoberta da equipe e, na saída, vocês comentam.",
+  "resumo": "Falar de ciência: scientist, researcher, hypothesis, experiment, discovery, in theory.",
+  "fechamento": false,
+  "novos": [
+    "theory",
+    "discover",
+    "experiment",
+    "scientist",
+    "researcher",
+    "scientific",
+    "observation",
+    "discovery",
+    "laboratory",
+    "hypothesis"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Palavras da ciência"
+    },
+    {
+      "t": "p",
+      "c": "**theory** teoria · **discover** descobrir (algo que existia) · **experiment** experimento · **scientist** cientista · **researcher** pesquisador(a) · **scientific** científico · **observation** observação · **discovery** descoberta · **laboratory** laboratório · **hypothesis** hipótese"
+    },
+    {
+      "t": "ex",
+      "c": "In theory it sounds simple, but in practice it takes years.\nNa teoria parece simples, mas na prática leva anos."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **make a discovery** (fazer uma descoberta), **run an experiment** (fazer um experimento), **test a hypothesis** (testar uma hipótese)."
+    },
+    {
+      "t": "warn",
+      "c": "Ficar sabendo de uma informação é **find out**, não discover. E experimentar comida ou roupa é **try** (on), não experiment."
+    }
+  ],
+  "imagem": "🏛️🔬🎤",
+  "visualizacao": "Você está num auditório do museu, com o Ben do seu lado. As luzes baixam, um slide com um sapinho verde aparece no telão e a pesquisadora pega o microfone.",
+  "foto_busca": "science museum lecture audience",
+  "trechos": [
+    {
+      "id": "f-54a05a",
+      "quem": "ben",
+      "cod": "When I was a kid, I wanted to be a scientist.",
+      "dica": "Quando eu era criança, queria ser cientista.",
+      "img": "🧒🔬",
+      "alvo": "scientist",
+      "alvo_pt": "cientista",
+      "conceito": "scientist = cientista; science = ciência. Com profissão, o inglês usa a: be a scientist.",
+      "registro": "informal",
+      "armadilhas": [
+        "cientist"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8913572,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "I want to be a scientist. → When I was a kid, I wanted to be a scientist.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-234780",
+      "quem": "pesquisadora",
+      "cod": "I'm the lead researcher on this project.",
+      "dica": "Sou a pesquisadora principal deste projeto.",
+      "img": "👩‍🔬📋",
+      "alvo": "researcher",
+      "alvo_pt": "pesquisadora",
+      "conceito": "researcher = pesquisador(a). Research (pesquisa) é incontável: do research (não: a research).",
+      "registro": "neutro",
+      "armadilhas": [
+        "research",
+        "searcher"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "lead",
+          "aceita": [
+            "main"
+          ]
+        },
+        {
+          "em": "on this project",
+          "aceita": [
+            "of this project",
+            "for this project"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f9348f",
+      "quem": "pesquisadora",
+      "cod": "It all started with a simple observation in the field.",
+      "dica": "Tudo começou com uma simples observação em campo.",
+      "img": "👀📓🌿",
+      "alvo": "observation",
+      "alvo_pt": "observação",
+      "conceito": "observation = observação científica. Observação no sentido de comentário: comment ou remark.",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "It all started",
+          "aceita": [
+            "Everything started"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-cdbcb4",
+      "quem": "pesquisadora",
+      "cod": "Our hypothesis was wrong, and that was the best part.",
+      "dica": "Nossa hipótese estava errada, e essa foi a melhor parte.",
+      "img": "💡❌😄",
+      "alvo": "hypothesis",
+      "alvo_pt": "hipótese",
+      "conceito": "hypothesis = hipótese; plural hypotheses. Tônica na 2ª sílaba: hy-POTH-e-sis.",
+      "registro": "neutro",
+      "armadilhas": [
+        "hipothesis",
+        "hypotesis"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4ff2c5",
+      "quem": "pesquisadora",
+      "cod": "The first experiment was a total failure.",
+      "dica": "O primeiro experimento foi um fracasso total.",
+      "img": "🧪💥",
+      "alvo": "experiment",
+      "alvo_pt": "experimento",
+      "conceito": "experiment = experimento (científico). Experimentar comida ou roupa é try (on).",
+      "registro": "neutro",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2722401,
+        "en_autor": "Hybrid",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "The experiment was a failure. → The first experiment was a total failure.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "total",
+          "aceita": [
+            "complete"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-552827",
+      "quem": "pesquisadora",
+      "cod": "We tested every sample in the laboratory.",
+      "dica": "Testamos todas as amostras no laboratório.",
+      "img": "🧫🔬",
+      "alvo": "laboratory",
+      "alvo_pt": "laboratório",
+      "conceito": "laboratory = laboratório; na fala quase sempre lab (in the lab, lab results).",
+      "var": [
+        {
+          "em": "every sample",
+          "aceita": [
+            "all the samples",
+            "all of the samples"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9f62cd",
+      "quem": "pesquisadora",
+      "cod": "Last year, our team discovered a new species of frog.",
+      "dica": "No ano passado, a nossa equipe descobriu uma nova espécie de sapo.",
+      "img": "🐸✨",
+      "alvo": "discovered",
+      "alvo_pt": "descobriu",
+      "conceito": "discover = descobrir algo que já existia. Descobrir uma informação = find out.",
+      "blocos": [
+        2
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f14f4d",
+      "quem": "ben",
+      "contexto": "f-9f62cd",
+      "cod": "What a great discovery!",
+      "dica": "Que grande descoberta!",
+      "img": "🎉🔍",
+      "alvo": "discovery",
+      "alvo_pt": "descoberta",
+      "conceito": "discovery = descoberta. Colocação: make a discovery (não: do a discovery).",
+      "registro": "informal",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4497344,
+        "en_autor": "CK",
+        "pt_id": 4827149,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN e PT iguais ao original",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-6c647a",
+      "quem": "voce",
+      "cod": "I liked how she explained the scientific part in simple terms.",
+      "dica": "Gostei de como ela explicou a parte científica em termos simples.",
+      "img": "👩‍🏫🧠👍",
+      "alvo": "scientific",
+      "alvo_pt": "científica",
+      "conceito": "scientific = científico (adjetivo): scientific evidence, the scientific method.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb1370",
+      "quem": "ben",
+      "cod": "In theory it sounds simple, but in practice it takes years.",
+      "dica": "Na teoria parece simples, mas na prática leva anos.",
+      "img": "📖⏳",
+      "alvo": "In theory",
+      "alvo_pt": "Na teoria",
+      "conceito": "in theory = na teoria, quase sempre em contraste com in practice (na prática).",
+      "blocos": [
+        4
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}

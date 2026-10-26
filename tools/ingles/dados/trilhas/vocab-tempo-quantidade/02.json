@@ -1,0 +1,341 @@
+{
+  "id": "vocab-tempo-quantidade.passeio-historico-boston",
+  "trilha": "vocab-tempo-quantidade",
+  "nome": "Épocas: period, century, former, recent…",
+  "emoji": "🏛️",
+  "cena": "Num sábado de outono, o Ben leva você para um passeio a pé pelo centro histórico de Boston.",
+  "resumo": "Falar de épocas e de antes e depois: século, período, era, antigo, recente, prévio e para sempre.",
+  "fechamento": false,
+  "novos": [
+    "century",
+    "period",
+    "subsequent",
+    "middle",
+    "recent",
+    "prior",
+    "latter",
+    "former",
+    "era",
+    "forever"
+  ],
+  "apoio": [
+    "building",
+    "square",
+    "museum",
+    "coffee shop",
+    "factory",
+    "line"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**century** = século · **period** = período · **era** = era, época · **former** = antigo, ex- · **latter** = o segundo (de dois) · **recent** = recente · **prior** = prévio · **subsequent** = seguinte (formal) · **middle** = meio · **forever** = para sempre"
+    },
+    {
+      "t": "ex",
+      "c": "This house was built in the eighteenth century.\nEsta casa foi construída no século dezoito."
+    },
+    {
+      "t": "tip",
+      "c": "**in the middle of** = no meio de · **a former factory** = uma antiga fábrica · **take forever** = demorar uma eternidade · **the end of an era** = o fim de uma era."
+    },
+    {
+      "t": "warn",
+      "c": "**former** não tem a ver com formar: é o que já foi e não é mais. **latter** (o segundo) não é **later** (mais tarde)."
+    }
+  ],
+  "imagem": "🍂🏛️🚶",
+  "visualizacao": "Você caminha com o Ben por ruas de tijolo vermelho. Folhas secas estalam sob os pés, e placas de bronze contam a história de cada prédio.",
+  "foto_busca": "historic brick street autumn city",
+  "trechos": [
+    {
+      "id": "f-339db2",
+      "quem": "ben",
+      "cod": "This house was built in the eighteenth century.",
+      "dica": "Esta casa foi construída no século dezoito.",
+      "img": "🏠🕰️",
+      "alvo": "century",
+      "alvo_pt": "século",
+      "conceito": "the eighteenth century = o século XVIII: em inglês o ordinal vem antes de century.",
+      "var": [
+        {
+          "em": "eighteenth",
+          "aceita": [
+            "18th"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "century eighteen",
+        "centure",
+        "centuries"
+      ],
+      "teste": true,
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 5617888,
+        "en_autor": "gravnash",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "This fountain was built in the 18th century. → This house was built in the eighteenth century.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0f0d1e",
+      "quem": "ben",
+      "contexto": "f-339db2",
+      "cod": "During that period, Boston was a much smaller city.",
+      "dica": "Nesse período, Boston era uma cidade bem menor.",
+      "img": "🏘️⏳",
+      "alvo": "period",
+      "alvo_pt": "período",
+      "conceito": "period = período; em en-US também é o ponto final (.): That's it, period. = E ponto final.",
+      "var": [
+        {
+          "em": "During",
+          "aceita": [
+            "In"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "time",
+        "epoch",
+        "periode"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ee1f7f",
+      "quem": "ben",
+      "cod": "The building was damaged in 1872 and rebuilt in subsequent years.",
+      "dica": "(na placa) O prédio foi danificado em 1872 e reconstruído nos anos subsequentes.",
+      "img": "🪧🔨",
+      "alvo": "subsequent",
+      "alvo_pt": "subsequentes",
+      "conceito": "subsequent = subsequente, seguinte (formal, de texto); na fala, the following years ou later.",
+      "registro": "formal",
+      "armadilhas": [
+        "subsequently",
+        "following",
+        "next"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "in subsequent years",
+          "aceita": [
+            "in the subsequent years"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-13c194",
+      "quem": "ben",
+      "cod": "There's a small market in the middle of the square.",
+      "dica": "Tem uma feirinha no meio da praça.",
+      "img": "⛲🧺",
+      "alvo": "middle",
+      "alvo_pt": "meio",
+      "conceito": "in the middle of = no meio de; metade = half; médio (tamanho) = medium.",
+      "var": [
+        {
+          "em": "There's",
+          "aceita": [
+            "There is"
+          ]
+        },
+        {
+          "em": "small",
+          "aceita": [
+            "little"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "half",
+        "medium",
+        "meddle",
+        "has",
+        "have"
+      ],
+      "origem": "autoral_ia",
+      "interferencias": [
+        "BR03"
+      ]
+    },
+    {
+      "id": "f-ff920b",
+      "quem": "ben",
+      "cod": "Those bike lanes are pretty recent.",
+      "dica": "Aquelas ciclovias são bem recentes.",
+      "img": "🚲🛣️✨",
+      "alvo": "recent",
+      "alvo_pt": "recentes",
+      "conceito": "recent = recente; in recent years = nos últimos anos; recently = recentemente.",
+      "registro": "informal",
+      "armadilhas": [
+        "recently",
+        "resent"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "pretty",
+          "aceita": [
+            "really",
+            "very"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-8c3576",
+      "quem": "ben",
+      "cod": "The museum is hiring guides, and you don't need any prior experience.",
+      "dica": "O museu está contratando guias, e não precisa de experiência prévia.",
+      "img": "🏛️🙋",
+      "alvo": "prior",
+      "alvo_pt": "prévia",
+      "conceito": "prior = prévio, anterior; prior to = antes de (formal, de placa e e-mail); na fala, before.",
+      "registro": "informal",
+      "armadilhas": [
+        "priority",
+        "previous",
+        "before"
+      ],
+      "origem": "autoral_ia",
+      "opcional": [
+        "any"
+      ],
+      "var": [
+        {
+          "em": "don't",
+          "aceita": [
+            "do not"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "interferencias": [
+        "BR02"
+      ]
+    },
+    {
+      "id": "f-3eb6ac",
+      "quem": "ben",
+      "cod": "We could visit the library or the harbor, but I'd pick the latter.",
+      "dica": "A gente podia visitar a biblioteca ou o porto, mas eu escolheria o segundo.",
+      "img": "📚⚓👉",
+      "alvo": "the latter",
+      "alvo_pt": "o segundo",
+      "conceito": "the former... the latter = o primeiro... o segundo (de dois já citados); later = mais tarde.",
+      "blocos": [
+        8
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "later",
+        "last",
+        "second"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "I'd",
+          "aceita": [
+            "I would"
+          ]
+        },
+        {
+          "em": "pick",
+          "aceita": [
+            "choose"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-bc3326",
+      "quem": "ben",
+      "cod": "My favorite coffee shop is inside a former shoe factory.",
+      "dica": "O meu café favorito fica dentro de uma antiga fábrica de sapatos.",
+      "img": "☕🏭👞",
+      "alvo": "former",
+      "alvo_pt": "antiga",
+      "conceito": "former = antigo no sentido de ex- (o que já foi e não é mais); my former boss = meu ex-chefe.",
+      "registro": "informal",
+      "armadilhas": [
+        "formed",
+        "old",
+        "formal"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "coffee shop",
+          "aceita": [
+            "cafe"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-d51a82",
+      "quem": "ben",
+      "contexto": "f-bc3326",
+      "cod": "When the factory closed, it was the end of an era.",
+      "dica": "Quando a fábrica fechou, foi o fim de uma era.",
+      "img": "🏭🔒👋",
+      "alvo": "era",
+      "alvo_pt": "era",
+      "conceito": "era = era, época (ÉR-a ou ÍR-a); não tem nada a ver com o verbo era (= was).",
+      "registro": "informal",
+      "armadilhas": [
+        "age",
+        "epoch",
+        "time"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d084e4",
+      "quem": "voce",
+      "cod": "This line is going to take forever.",
+      "dica": "Essa fila vai demorar uma eternidade.",
+      "img": "👥⏳😩",
+      "alvo": "forever",
+      "alvo_pt": "uma eternidade",
+      "conceito": "take forever = demorar uma eternidade (exagero comum); forever = para sempre. Junto em en-US.",
+      "registro": "informal",
+      "armadilhas": [
+        "for ever",
+        "eternity",
+        "a lot"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2884672,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "This is going to take forever. → This line is going to take forever.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "lit": "[lit.: essa fila vai levar para sempre]"
+    }
+  ]
+}

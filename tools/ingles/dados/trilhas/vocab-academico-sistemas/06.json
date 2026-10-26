@@ -1,0 +1,340 @@
+{
+  "id": "vocab-academico-sistemas.arquitetura-app",
+  "trilha": "vocab-academico-sistemas",
+  "nome": "Arquitetura: architect, domain, entity…",
+  "emoji": "🏛️",
+  "cena": "Numa chamada de design review, o Mike desenha de Chicago, num quadro virtual, as camadas do app novo, as entidades do domínio e como cada parte conversa com as outras.",
+  "resumo": "As palavras de arquitetura de software: domain, entity, interface, separation, injection, outer layer…",
+  "fechamento": false,
+  "novos": [
+    "architect",
+    "domain",
+    "entity",
+    "interface",
+    "separation",
+    "dependence",
+    "inject",
+    "injection",
+    "outer",
+    "peripheral",
+    "unify"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Desenhando a arquitetura"
+    },
+    {
+      "t": "p",
+      "c": "**architect** arquiteto; projetar · **domain** domínio · **entity** entidade · **interface** interface · **separation** separação · **dependence** dependência (o fato de depender) · **inject** injetar · **injection** injeção · **outer** externo · **peripheral** periférico · **unify** unificar"
+    },
+    {
+      "t": "ex",
+      "c": "The database lives in the outer layer.\nO banco de dados fica na camada externa."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: separation of concerns, dependency injection, a clean interface, the outer layer."
+    },
+    {
+      "t": "warn",
+      "c": "A biblioteca que você instala é a **dependency**; **dependence** é o fato de depender de algo."
+    }
+  ],
+  "imagem": "🏛️🧩🖊️",
+  "visualizacao": "Você está na chamada, de fone. O Mike desenha caixas e setas coloridas num quadro virtual, camada por camada, e você vê o app novo tomar forma na tela.",
+  "foto_busca": "software architecture diagram whiteboard",
+  "trechos": [
+    {
+      "id": "f-e72d79",
+      "quem": "mike",
+      "cod": "I want to architect the new app in three layers.",
+      "dica": "Quero projetar a arquitetura do app novo em três camadas.",
+      "img": "🏗️🥞",
+      "alvo": "architect",
+      "alvo_pt": "projetar a arquitetura",
+      "conceito": "architect também é verbo em dev: architect a system = projetar a arquitetura de um sistema.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "design the architecture",
+        "architecture"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6b3773",
+      "quem": "mike",
+      "cod": "At the center is the domain, with all the business rules.",
+      "dica": "No centro fica o domínio, com todas as regras de negócio.",
+      "img": "🎯📜",
+      "alvo": "domain",
+      "alvo_pt": "domínio",
+      "conceito": "domain = a área de negócio que o código modela; também o endereço do site (buy a domain).",
+      "blocos": [
+        6
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "armadilhas": [
+        "dominion",
+        "centre"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "At the center",
+          "aceita": [
+            "In the center"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f47de7",
+      "quem": "voce",
+      "contexto": "f-6b3773",
+      "cod": "So an order is an entity with its own ID?",
+      "dica": "Então um pedido é uma entidade com um ID próprio?",
+      "img": "🧾👤",
+      "alvo": "entity",
+      "alvo_pt": "entidade",
+      "conceito": "entity = objeto com identidade própria (um User, um Order); plural entities.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR11",
+        "BR13"
+      ],
+      "armadilhas": [
+        "entitie",
+        "it's own"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-613460",
+      "quem": "mike",
+      "contexto": "f-f47de7",
+      "cod": "Right, and each layer talks to the others through a clean interface.",
+      "dica": "Isso, e cada camada conversa com as outras por uma interface limpa.",
+      "img": "🔌🧼",
+      "alvo": "clean interface",
+      "alvo_pt": "interface limpa",
+      "conceito": "interface = tanto a tela (user interface) quanto o contrato entre partes do código.",
+      "blocos": [
+        6
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR08",
+        "BR31"
+      ],
+      "armadilhas": [
+        "interface clean",
+        "talks with"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Right, and",
+          "aceita": [
+            "Exactly, and",
+            "Yes, and",
+            "Yeah, and"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0af256",
+      "quem": "voce",
+      "cod": "I like the separation of concerns here.",
+      "dica": "Gosto da separação de responsabilidades aqui.",
+      "img": "📦📦👍",
+      "alvo": "separation of concerns",
+      "alvo_pt": "separação de responsabilidades",
+      "conceito": "separation of concerns = separação de responsabilidades; colocação fixa em arquitetura.",
+      "registro": "neutro",
+      "armadilhas": [
+        "separation of responsibilities",
+        "separacion"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2e366f",
+      "quem": "mike",
+      "cod": "We'll inject the repository into each use case.",
+      "dica": "A gente vai injetar o repositório em cada caso de uso.",
+      "img": "💉🗃️",
+      "alvo": "inject",
+      "alvo_pt": "injetar",
+      "conceito": "inject X into Y = injetar X em Y; em dev, é técnico e neutro.",
+      "var": [
+        {
+          "em": "We'll",
+          "aceita": [
+            "We're going to",
+            "We will"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "inject in",
+        "injet"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2404d2",
+      "quem": "voce",
+      "cod": "Dependency injection also makes testing much easier.",
+      "dica": "A injeção de dependência também deixa os testes bem mais fáceis.",
+      "img": "🧪😌",
+      "alvo": "Dependency injection",
+      "alvo_pt": "injeção de dependência",
+      "conceito": "injection = injeção; dependency injection, sem of. Também em segurança: SQL injection.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24",
+        "BR23"
+      ],
+      "armadilhas": [
+        "injection of dependency",
+        "very easier"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "testing",
+          "aceita": [
+            "the tests"
+          ]
+        },
+        {
+          "em": "much easier",
+          "aceita": [
+            "a lot easier"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-66c44e",
+      "quem": "mike",
+      "cod": "The database lives in the outer layer.",
+      "dica": "O banco de dados fica na camada externa.",
+      "img": "🗄️⭕",
+      "alvo": "outer layer",
+      "alvo_pt": "camada externa",
+      "conceito": "outer = externo, de fora; par com inner (the inner loop). Só adjetivo.",
+      "var": [
+        {
+          "em": "lives",
+          "aceita": [
+            "is",
+            "sits"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "armadilhas": [
+        "external layer",
+        "layer outer"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-3f73eb",
+      "quem": "voce",
+      "cod": "Right now, our dependence on a single service worries me.",
+      "dica": "No momento, a nossa dependência de um único serviço me preocupa.",
+      "img": "🔗😟",
+      "alvo": "dependence",
+      "alvo_pt": "dependência",
+      "conceito": "dependence on = dependência de (o fato de depender); a lib instalada é a dependency.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "dependency",
+        "dependence of"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Right now",
+          "aceita": [
+            "At the moment"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-59bfbc",
+      "quem": "mike",
+      "cod": "Logging is a peripheral concern, so it stays outside the domain.",
+      "dica": "O logging é uma questão periférica, então fica fora do domínio.",
+      "img": "📋↗️",
+      "alvo": "peripheral",
+      "alvo_pt": "periférica",
+      "conceito": "peripheral = periférico, secundário, fora do centro; também o dispositivo (mouse, teclado).",
+      "var": [
+        {
+          "em": "concern",
+          "aceita": [
+            "issue"
+          ]
+        }
+      ],
+      "blocos": [
+        5
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR01"
+      ],
+      "armadilhas": [
+        "periferic",
+        "periferical"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-be70b2",
+      "quem": "voce",
+      "cod": "Should we unify the two apps into one codebase?",
+      "dica": "A gente devia unificar os dois apps numa codebase só?",
+      "img": "📱➕📱",
+      "alvo": "unify",
+      "alvo_pt": "unificar",
+      "conceito": "unify = unificar, juntar em um só; unify X into Y.",
+      "var": [
+        {
+          "em": "one codebase",
+          "aceita": [
+            "a single codebase",
+            "one single codebase"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "unificate",
+        "unite"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

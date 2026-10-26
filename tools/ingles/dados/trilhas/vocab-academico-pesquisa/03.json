@@ -1,0 +1,251 @@
+{
+  "id": "vocab-academico-pesquisa.estimar-custos-nuvem",
+  "trilha": "vocab-academico-pesquisa",
+  "nome": "Cálculos: accuracy, crude, residual…",
+  "emoji": "🧮",
+  "cena": "Numa call, o Mike pede uma estimativa do custo da nuvem para o próximo trimestre, e você monta a planilha explicando cada número.",
+  "resumo": "Dez palavras para estimar e calcular: calculation, crude estimate, approximate, aggregate, residual costs…",
+  "fechamento": false,
+  "novos": [
+    "calculation",
+    "accuracy",
+    "accurately",
+    "approximate",
+    "estimation",
+    "numerical",
+    "mathematical",
+    "crude",
+    "aggregate",
+    "residual"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Estimar sem prometer demais"
+    },
+    {
+      "t": "p",
+      "c": "**calculation** cálculo · **accuracy** precisão, exatidão · **accurately** com precisão · **approximate** aproximado · **estimation** estimativa (o ato) · **numerical** numérico · **mathematical** matemático · **crude** por alto, rudimentar · **aggregate** agregado, total · **residual** residual"
+    },
+    {
+      "t": "ex",
+      "c": "Here's a crude estimate based on last month's bill.\nAqui vai uma estimativa por alto, com base na conta do mês passado."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **do** a quick calculation, by my calculations (pelas minhas contas), **in** aggregate (no total)."
+    },
+    {
+      "t": "warn",
+      "c": "crude não é cru (comida crua é **raw**): crude = grosseiro, sem refino. O número estimado costuma ser **an estimate**; estimation é o processo."
+    }
+  ],
+  "imagem": "☁️🧮📊",
+  "visualizacao": "Você divide a tela com o Mike e abre uma planilha cheia de colunas. Cada célula que você preenche, ele pergunta de onde veio, e você vai explicando.",
+  "foto_busca": "spreadsheet budget laptop desk",
+  "trechos": [
+    {
+      "id": "f-a652d3",
+      "quem": "mike",
+      "cod": "Can you do a quick calculation of next quarter's cloud costs?",
+      "dica": "Você consegue fazer um cálculo rápido dos custos da nuvem do próximo trimestre?",
+      "img": "☁️🧮",
+      "alvo": "calculation",
+      "alvo_pt": "cálculo",
+      "conceito": "Fazer um cálculo = do a calculation; pelas minhas contas = by my calculations.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR32",
+        "BR10"
+      ],
+      "armadilhas": [
+        "make"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cb7707",
+      "quem": "voce",
+      "contexto": "f-a652d3",
+      "cod": "Sure, but cloud cost estimation is never exact.",
+      "dica": "Claro, mas a estimativa de custos da nuvem nunca é exata.",
+      "img": "🤷☁️",
+      "alvo": "estimation",
+      "alvo_pt": "estimativa",
+      "conceito": "estimation = o ato de estimar (cost estimation); o número em si costuma ser an estimate.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-321760",
+      "quem": "voce",
+      "cod": "Here's a crude estimate based on last month's bill.",
+      "dica": "Aqui vai uma estimativa por alto, com base na conta do mês passado.",
+      "img": "✏️🧾",
+      "alvo": "crude",
+      "alvo_pt": "por alto",
+      "lit": "[lit.: uma estimativa grosseira]",
+      "conceito": "crude = rudimentar, sem refino (crude oil = petróleo bruto). Cru, de comida, é raw.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR56"
+      ],
+      "armadilhas": [
+        "raw"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-90c37c",
+      "quem": "mike",
+      "contexto": "f-321760",
+      "cod": "An approximate number is fine for now.",
+      "dica": "Um número aproximado tá bom por enquanto.",
+      "img": "🔢👌",
+      "alvo": "approximate",
+      "alvo_pt": "aproximado",
+      "conceito": "Adjetivo: a-PRAK-si-mit. Na fala, o mais comum é approximately ou about.",
+      "registro": "informal",
+      "interferencias": [
+        "BR13"
+      ],
+      "armadilhas": [
+        "a approximate"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1ca5a9",
+      "quem": "voce",
+      "cod": "All the numerical data comes straight from the billing page.",
+      "dica": "Todos os dados numéricos vêm direto da página de faturamento.",
+      "img": "🔢🧾",
+      "alvo": "numerical",
+      "alvo_pt": "numéricos",
+      "conceito": "numerical data = dados numéricos; in numerical order = em ordem numérica.",
+      "var": [
+        {
+          "em": "comes",
+          "aceita": [
+            "come"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR22"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e455ee",
+      "quem": "voce",
+      "cod": "This column shows the aggregate cost of all our services.",
+      "dica": "Essa coluna mostra o custo agregado de todos os nossos serviços.",
+      "img": "➕💵",
+      "alvo": "aggregate",
+      "alvo_pt": "agregado",
+      "conceito": "Adjetivo AG-ri-git; verbo AG-ri-geit (aggregate the results). In aggregate = no total.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c82ced",
+      "quem": "voce",
+      "cod": "The residual costs come from the old servers we haven't shut down yet.",
+      "dica": "Os custos residuais vêm dos servidores antigos que a gente ainda não desligou.",
+      "img": "🖥️💸",
+      "alvo": "residual",
+      "alvo_pt": "residuais",
+      "conceito": "residual costs = o custo que sobra mesmo depois da migração. Ainda não desligou = haven't shut down yet.",
+      "var": [
+        {
+          "em": "servers we",
+          "aceita": [
+            "servers that we"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR27",
+        "BR09"
+      ],
+      "armadilhas": [
+        "residuals"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5c2797",
+      "quem": "mike",
+      "contexto": "Finance sent us a report with their own numbers.",
+      "cod": "I doubt the accuracy of the report.",
+      "dica": "Duvido da precisão do relatório.",
+      "img": "🤨📄",
+      "alvo": "accuracy",
+      "alvo_pt": "precisão",
+      "conceito": "accuracy = acertar o valor real; precision = dar resultados consistentes. Duvidar de = doubt, sem preposição.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR42"
+      ],
+      "armadilhas": [
+        "of the accuracy"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6891698,
+        "en_autor": "DanielDaniel",
+        "pt_id": 7589816,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9a0df6",
+      "quem": "mike",
+      "cod": "How accurately can we predict December traffic?",
+      "dica": "Com que precisão a gente consegue prever o tráfego de dezembro?",
+      "img": "🎯🎄",
+      "alvo": "How accurately",
+      "alvo_pt": "Com que precisão",
+      "conceito": "accurately = com precisão (advérbio); accurately predict, accurately reflect.",
+      "registro": "informal",
+      "interferencias": [
+        "BR15",
+        "BR17"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e7947d",
+      "quem": "mike",
+      "cod": "We don't need a mathematical model, just a good spreadsheet.",
+      "dica": "A gente não precisa de um modelo matemático, só de uma boa planilha.",
+      "img": "📐📋",
+      "alvo": "mathematical",
+      "alvo_pt": "matemático",
+      "conceito": "mathematical é só adjetivo; a pessoa é mathematician; a matéria, em en-US, é math.",
+      "registro": "informal",
+      "interferencias": [
+        "BR07"
+      ],
+      "armadilhas": [
+        "maths"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "id": "vocab-academico-sociedade.etica-e-dados",
+  "trilha": "vocab-academico-sociedade",
+  "nome": "Ética e dados dos usuários",
+  "emoji": "🔐",
+  "cena": "Antes de lançar um recurso que usa dados dos usuários, a Sarah reúne você e o Mike para revisar a política de privacidade e o que a lei exige.",
+  "resumo": "Privacidade e regras: comply with, consent, dictate, ethical, transparency, liable.",
+  "fechamento": false,
+  "novos": [
+    "ethics",
+    "ethical",
+    "consent",
+    "comply",
+    "transparency",
+    "liable",
+    "enforcement",
+    "circulate",
+    "dictate"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**ethics** ética · **ethical** ético · **consent** consentimento · **comply** cumprir · **transparency** transparência · **liable** responsável (pela lei) · **enforcement** fiscalização · **circulate** fazer circular · **dictate** ditar, determinar"
+    },
+    {
+      "t": "ex",
+      "c": "We need to comply with the new privacy law.\nPrecisamos cumprir a nova lei de privacidade."
+    },
+    {
+      "t": "tip",
+      "c": "Preposições fixas: **comply with**, **ask for consent**, **be liable for**."
+    },
+    {
+      "t": "warn",
+      "c": "**liable** não é confiável (= reliable). **ethics** como área leva verbo no singular: Ethics is a big topic."
+    }
+  ],
+  "imagem": "🔐📄⚖️",
+  "visualizacao": "Você está numa chamada com a Sarah e o Mike. Na tela, um documento de política de privacidade cheio de comentários amarelos, e o cursor da Sarah parado num parágrafo sobre localização.",
+  "foto_busca": "privacy policy document laptop",
+  "trechos": [
+    {
+      "id": "f-001d17",
+      "quem": "sarah",
+      "cod": "We need to comply with the new privacy law.",
+      "dica": "Precisamos cumprir a nova lei de privacidade.",
+      "img": "⚖️✅",
+      "alvo": "comply with",
+      "alvo_pt": "cumprir",
+      "conceito": "comply with = cumprir, estar em conformidade com; sempre com with. Substantivo: compliance.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "comply the",
+        "comply to"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-7d2218",
+      "quem": "voce",
+      "cod": "Do we ask users for consent before we collect their location data?",
+      "dica": "A gente pede consentimento aos usuários antes de coletar os dados de localização deles?",
+      "img": "📍🙋❓",
+      "alvo": "consent",
+      "alvo_pt": "consentimento",
+      "conceito": "ask for consent = pedir consentimento; o verbo pede to: consent to.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "we collect",
+          "aceita": [
+            "collecting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-0a7a86",
+      "quem": "mike",
+      "cod": "The law dictates how long we can store that data.",
+      "dica": "A lei dita por quanto tempo podemos guardar esses dados.",
+      "img": "📜⏳🗄️",
+      "alvo": "dictates",
+      "alvo_pt": "dita",
+      "conceito": "dictate = ditar um texto e também ditar regras, determinar: the law dictates how...",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e05e41",
+      "quem": "sarah",
+      "cod": "Is this ethical?",
+      "dica": "Isso é ético?",
+      "img": "🤔⚖️",
+      "alvo": "ethical",
+      "alvo_pt": "ético",
+      "conceito": "ethical = ético (adjetivo); ethics = ética (a área, o código).",
+      "registro": "neutro",
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4401028,
+        "en_autor": "CK",
+        "pt_id": 5081246,
+        "pt_autor": "ToinhoAlam",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "this",
+          "aceita": [
+            "that"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-11ccf1",
+      "quem": "mike",
+      "cod": "Our code of ethics says we only collect what we really need.",
+      "dica": "Nosso código de ética diz que só coletamos o que realmente precisamos.",
+      "img": "📘🧺",
+      "alvo": "code of ethics",
+      "alvo_pt": "código de ética",
+      "conceito": "ethics termina em -s, mas não é plural de ethic: a code of ethics = um código de ética.",
+      "registro": "neutro",
+      "armadilhas": [
+        "ethic"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-93e702",
+      "quem": "voce",
+      "cod": "Users want full transparency about what we do with their data.",
+      "dica": "Os usuários querem transparência total sobre o que fazemos com os dados deles.",
+      "img": "🔍🪟",
+      "alvo": "full transparency",
+      "alvo_pt": "transparência total",
+      "conceito": "full transparency = transparência total; o adjetivo é transparent.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8fdab4",
+      "quem": "sarah",
+      "cod": "If there's a data leak, the company could be liable for damages.",
+      "dica": "Se houver um vazamento de dados, a empresa poderia responder pelos danos.",
+      "img": "💧🗂️💸",
+      "alvo": "liable for damages",
+      "alvo_pt": "responder pelos danos",
+      "lit": "[lit.: ser responsável pelos danos]",
+      "conceito": "be liable for = responder (legalmente) por. Não é confiável (= reliable).",
+      "var": [
+        {
+          "em": "there's",
+          "aceita": [
+            "there is"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "interferencias": [
+        "BR03",
+        "BR56"
+      ],
+      "armadilhas": [
+        "reliable",
+        "have a"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-576a72",
+      "quem": "mike",
+      "cod": "The legal team will handle enforcement of the new rules.",
+      "dica": "O time jurídico vai cuidar da fiscalização das novas regras.",
+      "img": "🔎📋✅",
+      "alvo": "enforcement",
+      "alvo_pt": "fiscalização",
+      "conceito": "enforcement = aplicação, fiscalização de regras; enforce = fazer cumprir.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-33040f",
+      "quem": "sarah",
+      "cod": "I'll circulate a draft of the policy by Friday.",
+      "dica": "Vou circular um rascunho da política até sexta.",
+      "img": "📄🔄📅",
+      "alvo": "circulate",
+      "alvo_pt": "circular",
+      "conceito": "circulate a draft = fazer um rascunho circular entre as pessoas para comentários.",
+      "var": [
+        {
+          "em": "I'll",
+          "aceita": [
+            "I will"
+          ]
+        }
+      ],
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

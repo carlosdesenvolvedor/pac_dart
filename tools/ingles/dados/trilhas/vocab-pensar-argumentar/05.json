@@ -1,0 +1,261 @@
+{
+  "id": "vocab-pensar-argumentar.resultado-do-teste",
+  "trilha": "vocab-pensar-argumentar",
+  "nome": "Conclusões: conclude, imply, emphasis…",
+  "emoji": "📈",
+  "cena": "Na reunião geral, a Sarah apresenta o resultado do teste A/B da nova tela de pagamento e o time tira as conclusões.",
+  "resumo": "Dez palavras para tirar conclusões de dados: consist of, conclude, conclusion, demonstrate, in contrast, relevant…",
+  "fechamento": false,
+  "novos": [
+    "conclusion",
+    "contrast",
+    "demonstrate",
+    "conclude",
+    "relevant",
+    "consist",
+    "imply",
+    "emphasize",
+    "implication",
+    "emphasis"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Tirar conclusões"
+    },
+    {
+      "t": "p",
+      "c": "**conclusion** conclusão · **contrast** contraste · **demonstrate** demonstrar · **conclude** concluir · **relevant** relevante · **consist of** consistir em · **imply** dar a entender, implicar · **emphasize** enfatizar · **implication** implicação · **emphasis** ênfase"
+    },
+    {
+      "t": "ex",
+      "c": "Let's not jump to conclusions.\nNão vamos tirar conclusões precipitadas."
+    },
+    {
+      "t": "tip",
+      "c": "Preposições: **consist of**, **relevant to**, **put emphasis on**. Mas **emphasize** vai sem preposição: emphasize the point."
+    },
+    {
+      "t": "warn",
+      "c": "**imply** = quem fala sugere; **infer** = quem ouve deduz. Implicar com alguém é **pick on**."
+    }
+  ],
+  "imagem": "📊🛒🧪",
+  "visualizacao": "Você está na reunião geral, com dezenas de rostinhos na tela. A Sarah compartilha um gráfico colorido e o chat começa a encher de perguntas.",
+  "foto_busca": "presentation chart online meeting",
+  "trechos": [
+    {
+      "id": "f-f29265",
+      "quem": "sarah",
+      "cod": "The test consisted of two versions of the checkout screen.",
+      "dica": "O teste consistiu em duas versões da tela de pagamento.",
+      "img": "🧪📱",
+      "alvo": "consisted of",
+      "alvo_pt": "consistiu em",
+      "conceito": "consist of = consistir em, ser composto de (não: consist in).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR53"
+      ],
+      "armadilhas": [
+        "in"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-aef6f8",
+      "quem": "sarah",
+      "cod": "We can conclude that the new version works better.",
+      "dica": "Podemos concluir que a versão nova funciona melhor.",
+      "img": "✅📈",
+      "alvo": "conclude",
+      "alvo_pt": "concluir",
+      "conceito": "conclude that = concluir que.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR14"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d7fe0d",
+      "quem": "mike",
+      "contexto": "f-aef6f8",
+      "cod": "How did you come to that conclusion?",
+      "dica": "Como você chegou a essa conclusão?",
+      "img": "🤔🧭",
+      "alvo": "conclusion",
+      "alvo_pt": "conclusão",
+      "conceito": "come to / reach a conclusion = chegar a uma conclusão.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 6795002,
+        "en_autor": "CK",
+        "pt_id": 6795436,
+        "pt_autor": "Ricardo14",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "EN e PT sem alteração",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "come to",
+          "aceita": [
+            "reach",
+            "get to"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-a29dea",
+      "quem": "sarah",
+      "contexto": "f-d7fe0d",
+      "cod": "The numbers demonstrate that more users complete their purchase.",
+      "dica": "Os números demonstram que mais usuários finalizam a compra.",
+      "img": "🔢🛒✅",
+      "alvo": "demonstrate",
+      "alvo_pt": "demonstram",
+      "conceito": "demonstrate that = demonstrar, mostrar que (com dados).",
+      "registro": "neutro",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "complete",
+          "aceita": [
+            "finish"
+          ]
+        },
+        {
+          "em": "their purchase",
+          "aceita": [
+            "the purchase"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-2e4b3e",
+      "quem": "sarah",
+      "cod": "In contrast, the old screen lost a lot of users at the last step.",
+      "dica": "Em contraste, a tela antiga perdeu muitos usuários na última etapa.",
+      "img": "📉🚪",
+      "alvo": "In contrast",
+      "alvo_pt": "Em contraste",
+      "conceito": "In contrast = em contraste: liga duas coisas bem diferentes ao comparar.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR34"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "a lot of",
+          "aceita": [
+            "many"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-4dd977",
+      "quem": "voce",
+      "cod": "The test only ran for one week, and that's relevant.",
+      "dica": "O teste só rodou por uma semana, e isso é relevante.",
+      "img": "📅⚠️",
+      "alvo": "relevant",
+      "alvo_pt": "relevante",
+      "conceito": "relevant = relevante; relevant to the project (preposição to).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR63"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "one week",
+          "aceita": [
+            "a week"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-3b7990",
+      "quem": "mike",
+      "cod": "I want to emphasize that the sample was small.",
+      "dica": "Quero enfatizar que a amostra foi pequena.",
+      "img": "🔍🤏",
+      "alvo": "emphasize",
+      "alvo_pt": "enfatizar",
+      "conceito": "emphasize vai sem preposição (não: emphasize on).",
+      "registro": "neutro",
+      "armadilhas": [
+        "on"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-dc7360",
+      "quem": "ana",
+      "cod": "Does this imply that we should drop the old design?",
+      "dica": "Isso implica que a gente deveria abandonar o design antigo?",
+      "img": "❓🗑️🎨",
+      "alvo": "imply",
+      "alvo_pt": "implica",
+      "conceito": "imply = dar a entender, implicar; implicar com alguém = pick on.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "this",
+          "aceita": [
+            "that"
+          ]
+        },
+        {
+          "em": "drop",
+          "aceita": [
+            "abandon"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f92f11",
+      "quem": "voce",
+      "contexto": "f-dc7360",
+      "cod": "Not necessarily, but the implications for the next sprint are big.",
+      "dica": "Não necessariamente, mas as implicações para a próxima sprint são grandes.",
+      "img": "🗓️🔮",
+      "alvo": "implications",
+      "alvo_pt": "implicações",
+      "conceito": "implications for = implicações para.",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f13fcd",
+      "quem": "sarah",
+      "cod": "Next time, we'll put more emphasis on mobile users.",
+      "dica": "Da próxima vez, vamos dar mais ênfase aos usuários de celular.",
+      "img": "📱🎯",
+      "alvo": "emphasis",
+      "alvo_pt": "ênfase",
+      "conceito": "put emphasis on = dar ênfase a (com o substantivo vem on).",
+      "registro": "neutro",
+      "origem": "autoral_ia"
+    }
+  ]
+}

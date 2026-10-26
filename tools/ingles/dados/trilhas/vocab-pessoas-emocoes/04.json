@@ -1,0 +1,288 @@
+{
+  "id": "vocab-pessoas-emocoes.festa-do-predio",
+  "trilha": "vocab-pessoas-emocoes",
+  "nome": "A festa do prédio da Emma: folks…",
+  "emoji": "🏢",
+  "cena": "Numa viagem aos EUA, a Emma faz um churrasco no terraço do prédio dela e apresenta você aos vizinhos.",
+  "resumo": "Conhecer gente nova e descrever pessoas: pessoal, senhora, idoso, cavalheiro, simpático, conhecido, impressão, personalidade, aparência e charme.",
+  "fechamento": false,
+  "novos": [
+    "lady",
+    "familiar",
+    "friendly",
+    "appearance",
+    "personality",
+    "folk",
+    "impression",
+    "gentleman",
+    "elderly",
+    "charm"
+  ],
+  "apoio": [
+    "neighbor",
+    "rooftop",
+    "grill",
+    "couple",
+    "pie"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**lady** = senhora · **familiar** = conhecido · **friendly** = simpático · **appearance** = aparência · **personality** = personalidade · **folks** = pessoal · **impression** = impressão · **gentleman** = cavalheiro · **elderly** = idoso · **charm** = charme"
+    },
+    {
+      "t": "ex",
+      "c": "I want to make a good impression.\nEu quero causar uma boa impressão."
+    },
+    {
+      "t": "tip",
+      "c": "Causar uma boa impressão = **make a good impression**. Parecer conhecido = **look familiar**."
+    },
+    {
+      "t": "warn",
+      "c": "**familiar** = conhecido, não de família (= family). **friendly** é adjetivo, apesar do -ly."
+    }
+  ],
+  "imagem": "🏢🍖👋",
+  "visualizacao": "Você está no terraço do prédio da Emma, fim de tarde. Fumaça da churrasqueira, música baixa e vizinhos sorrindo com pratos na mão.",
+  "foto_busca": "rooftop barbecue neighbors party",
+  "trechos": [
+    {
+      "id": "f-4a7ea5",
+      "quem": "emma",
+      "cod": "Hi, folks! This is my friend from Brazil.",
+      "dica": "Oi, pessoal! Este é o meu amigo do Brasil.",
+      "img": "👋👥",
+      "alvo": "folks",
+      "alvo_pt": "pessoal",
+      "conceito": "folks = pessoal (en-US, quase sempre no plural); my folks = meus pais.",
+      "pt_f": "Oi, pessoal! Esta é a minha amiga do Brasil.",
+      "registro": "informal",
+      "armadilhas": [
+        "folk",
+        "people"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-9549aa",
+      "quem": "emma",
+      "cod": "The lady from 4B made this apple pie.",
+      "dica": "A senhora do 4B fez esta torta de maçã.",
+      "img": "👵🥧",
+      "alvo": "lady",
+      "alvo_pt": "senhora",
+      "conceito": "lady = jeito educado de falar de uma mulher: the lady at the front desk.",
+      "registro": "informal",
+      "armadilhas": [
+        "woman",
+        "madam"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-2328c3",
+      "quem": "emma",
+      "cod": "Our elderly neighbors never miss a party.",
+      "dica": "Os nossos vizinhos idosos nunca perdem uma festa.",
+      "img": "👴👵🎉",
+      "alvo": "elderly",
+      "alvo_pt": "idosos",
+      "conceito": "elderly é respeitoso; mais neutro: older. Perder uma festa = miss a party.",
+      "registro": "informal",
+      "interferencias": [
+        "BR34"
+      ],
+      "armadilhas": [
+        "lose",
+        "old"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8bcf6a",
+      "quem": "emma",
+      "cod": "The older man by the grill is a real gentleman.",
+      "dica": "O senhor perto da churrasqueira é um verdadeiro cavalheiro.",
+      "img": "🎩🍖",
+      "alvo": "gentleman",
+      "alvo_pt": "cavalheiro",
+      "conceito": "gentleman = cavalheiro; plural gentlemen. Ladies and gentlemen = senhoras e senhores.",
+      "var": [
+        {
+          "em": "older man",
+          "aceita": [
+            "man",
+            "elderly man"
+          ]
+        },
+        {
+          "em": "by the grill",
+          "aceita": [
+            "near the grill"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "gentlemen",
+        "gentle"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2713449,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "You're a true gentleman. → The older man by the grill is a real gentleman.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-d2a866",
+      "quem": "voce",
+      "cod": "Everyone here is so friendly.",
+      "dica": "Todo mundo aqui é tão simpático.",
+      "img": "😊🏘️",
+      "alvo": "friendly",
+      "alvo_pt": "simpático",
+      "conceito": "friendly = simpático, amigável; é adjetivo, apesar do -ly.",
+      "registro": "informal",
+      "armadilhas": [
+        "nice",
+        "sympathetic"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Everyone",
+          "aceita": [
+            "Everybody"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-34ad7a",
+      "quem": "voce",
+      "cod": "Doesn't that couple look familiar?",
+      "dica": "Aquele casal não parece conhecido?",
+      "img": "👫🤔",
+      "alvo": "familiar",
+      "alvo_pt": "conhecido",
+      "conceito": "look familiar = parecer conhecido. Falso cognato: de família = family.",
+      "registro": "informal",
+      "armadilhas": [
+        "known",
+        "family"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 2395973,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Doesn't that car look familiar? → Doesn't that couple look familiar?; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-a0717f",
+      "quem": "voce",
+      "cod": "I want to make a good impression.",
+      "dica": "Eu quero causar uma boa impressão.",
+      "img": "🤵✨",
+      "alvo": "impression",
+      "alvo_pt": "impressão",
+      "conceito": "Causar impressão = make an impression (não: cause).",
+      "registro": "informal",
+      "armadilhas": [
+        "cause",
+        "give"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 2015211,
+        "en_autor": "CK",
+        "pt_id": 9845396,
+        "pt_autor": "bill",
+        "pt_autoral": false,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "nota_modificacao": "",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-1162c5",
+      "quem": "emma",
+      "contexto": "f-a0717f",
+      "cod": "Just be yourself. People love your personality.",
+      "dica": "É só ser você mesmo. As pessoas adoram a sua personalidade.",
+      "img": "🌟🙂",
+      "alvo": "personality",
+      "alvo_pt": "personalidade",
+      "conceito": "a great personality = uma personalidade ótima. People é plural: people love.",
+      "pt_f": "É só ser você mesma. As pessoas adoram a sua personalidade.",
+      "registro": "informal",
+      "interferencias": [
+        "BR14"
+      ],
+      "armadilhas": [
+        "loves",
+        "personalidade"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-da8241",
+      "quem": "emma",
+      "cod": "The building looks old, but don't judge by appearances.",
+      "dica": "O prédio parece velho, mas não julga pelas aparências.",
+      "img": "🏚️👀",
+      "alvo": "appearances",
+      "alvo_pt": "aparências",
+      "conceito": "Don't judge by appearances: nessa expressão o inglês usa o plural.",
+      "registro": "informal",
+      "armadilhas": [
+        "appearence",
+        "aparence"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-905547",
+      "quem": "voce",
+      "contexto": "f-da8241",
+      "cod": "Old buildings have their charm.",
+      "dica": "Prédios antigos têm o seu charme.",
+      "img": "🧱💛",
+      "alvo": "charm",
+      "alvo_pt": "charme",
+      "conceito": "have a lot of charm = ter muito charme; charming = encantador.",
+      "registro": "informal",
+      "armadilhas": [
+        "charme"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8060463,
+        "en_autor": "AlanF_US",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Old trains have their charm. → Old buildings have their charm.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+{
+  "id": "vocab-natureza-ciencia.documentario-vida-selvagem",
+  "trilha": "vocab-natureza-ciencia",
+  "nome": "Documentário de vida selvagem",
+  "emoji": "🦓",
+  "cena": "Domingo à noite, você e o Lucas, seu irmão, assistem a um documentário de vida selvagem na TV, e o Ben comenta cada cena por mensagem.",
+  "resumo": "Falar de bichos e natureza: nature, animals, wild, birds, species, evolution, rats.",
+  "fechamento": false,
+  "novos": [
+    "animal",
+    "nature",
+    "natural",
+    "bird",
+    "wild",
+    "creature",
+    "species",
+    "survival",
+    "evolution",
+    "rat"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Palavras da vida selvagem"
+    },
+    {
+      "t": "p",
+      "c": "**animal** animal · **nature** natureza · **natural** natural; normal · **bird** pássaro, ave · **wild** selvagem · **creature** criatura, bicho · **species** espécie · **survival** sobrevivência · **evolution** evolução · **rat** rato grande, ratazana"
+    },
+    {
+      "t": "ex",
+      "c": "I love nature, so I never miss these documentaries.\nEu adoro a natureza, então nunca perco esses documentários."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **in the wild** (na natureza, fora do zoológico), **an endangered species** (uma espécie ameaçada), **the key to survival** (a chave da sobrevivência)."
+    },
+    {
+      "t": "warn",
+      "c": "A natureza em geral vai sem artigo: **I love nature** (não: the nature). E **species** é igual no singular e no plural: one species, two species."
+    }
+  ],
+  "imagem": "📺🛋️🦓",
+  "visualizacao": "Você está no sofá com o Lucas, a sala no escuro e a TV mostrando a savana. Uma zebra corre, o narrador fala baixinho e o seu celular vibra com mais uma mensagem do Ben.",
+  "foto_busca": "wildlife documentary on tv living room",
+  "trechos": [
+    {
+      "id": "f-c0f35f",
+      "quem": "ben",
+      "cod": "I love nature, so I never miss these documentaries.",
+      "dica": "Eu adoro a natureza, então nunca perco esses documentários.",
+      "img": "🌳💚📺",
+      "alvo": "nature",
+      "alvo_pt": "natureza",
+      "conceito": "nature = natureza. A natureza em geral vai sem the (não: I love the nature).",
+      "registro": "informal",
+      "armadilhas": [
+        "the"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-63107e",
+      "quem": "lucas",
+      "cod": "Most of these animals only come out at night.",
+      "dica": "A maioria desses animais só sai à noite.",
+      "img": "🦉🌙",
+      "alvo": "animals",
+      "alvo_pt": "animais",
+      "conceito": "animal = animal, igual ao português; o plural é animals.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-64e6d4",
+      "quem": "voce",
+      "cod": "It's amazing to see lions in their natural habitat.",
+      "dica": "É incrível ver leões no habitat natural deles.",
+      "img": "🦁🌾",
+      "alvo": "natural",
+      "alvo_pt": "natural",
+      "conceito": "natural = da natureza, sem nada artificial. Também é normal: It's natural to feel nervous.",
+      "registro": "informal",
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "amazing",
+          "aceita": [
+            "incredible"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-b3bd7e",
+      "quem": "ben",
+      "cod": "These birds fly south for the winter.",
+      "dica": "Esses pássaros voam para o sul no inverno.",
+      "img": "🐦🧭❄️",
+      "alvo": "birds",
+      "alvo_pt": "pássaros",
+      "conceito": "bird = pássaro, ave. Um bando de pássaros = a flock of birds.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 3316846,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Birds fly south in the winter. → These birds fly south for the winter.; PT reescrito",
+        "export": "2026-10-03"
+      },
+      "var": [
+        {
+          "em": "for the winter",
+          "aceita": [
+            "in the winter",
+            "in winter"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-f84dd4",
+      "quem": "lucas",
+      "cod": "That's the strangest creature I've ever seen.",
+      "dica": "É a criatura mais estranha que eu já vi.",
+      "img": "🐙😳",
+      "alvo": "creature",
+      "alvo_pt": "criatura",
+      "conceito": "creature = criatura, bicho, ser vivo. Em inglês é neutro, sem o tom pejorativo de criatura.",
+      "var": [
+        {
+          "em": "That's",
+          "aceita": [
+            "It's"
+          ]
+        },
+        {
+          "em": "strangest",
+          "aceita": [
+            "weirdest"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-97d7be",
+      "quem": "voce",
+      "cod": "How many new animal species are found every year?",
+      "dica": "Quantas espécies novas de animais são encontradas por ano?",
+      "img": "🔍🐸❓",
+      "alvo": "species",
+      "alvo_pt": "espécies",
+      "conceito": "species = espécie; singular e plural iguais (não: specie). Para tipo no dia a dia, kind.",
+      "var": [
+        {
+          "em": "every year",
+          "aceita": [
+            "each year",
+            "a year",
+            "per year"
+          ]
+        },
+        {
+          "em": "new animal species",
+          "aceita": [
+            "new species of animals",
+            "new species of animal"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "specie",
+        "specieses"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 1821339,
+        "en_autor": "Amastan",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "How many animal species are discovered every year? → How many new animal species are found every year?; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-16d4d0",
+      "quem": "ben",
+      "cod": "Adaptation is the key to survival.",
+      "dica": "A adaptação é a chave da sobrevivência.",
+      "img": "🦎🔑",
+      "alvo": "survival",
+      "alvo_pt": "sobrevivência",
+      "conceito": "survival = sobrevivência; vem de survive (sobreviver). Colocação: the key to survival.",
+      "registro": "informal",
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 6891694,
+        "en_autor": "DanielDaniel",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Adaptation is the secret of survival. → Adaptation is the key to survival.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-9e9b60",
+      "quem": "ben",
+      "cod": "There are wild turkeys walking around my neighborhood in Boston.",
+      "dica": "Tem perus selvagens andando pelo meu bairro, em Boston.",
+      "img": "🦃🏘️",
+      "alvo": "wild",
+      "alvo_pt": "selvagens",
+      "conceito": "wild = selvagem, que vive solto. In the wild = na natureza; a wild week = uma semana louca.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-01a051",
+      "quem": "ben",
+      "cod": "Boston has a big rat problem downtown.",
+      "dica": "Boston tem um grande problema de ratos no centro.",
+      "img": "🐀🏙️",
+      "alvo": "rat",
+      "alvo_pt": "ratos",
+      "conceito": "rat = rato grande, ratazana; o ratinho (e o do computador) é mouse. Rat problem: substantivo no singular.",
+      "registro": "informal",
+      "armadilhas": [
+        "mouse",
+        "rats"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8decd9",
+      "quem": "ben",
+      "cod": "City animals are a great example of evolution in action.",
+      "dica": "Os animais da cidade são um ótimo exemplo de evolução em ação.",
+      "img": "🐦🏙️🧬",
+      "alvo": "evolution",
+      "alvo_pt": "evolução",
+      "conceito": "evolution = evolução biológica. Meu inglês evoluiu = My English has improved (não: evolved).",
+      "registro": "informal",
+      "armadilhas": [
+        "evolucion"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "City animals",
+          "aceita": [
+            "Animals in the city",
+            "The animals in the city",
+            "The city animals"
+          ]
+        }
+      ]
+    }
+  ]
+}

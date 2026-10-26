@@ -132,7 +132,7 @@ void main() {
       expect(elencoDasLicoes, hasLength(9));
       expect(elencoDasLicoes.intersection({'max', 'kim'}), isEmpty);
       expect(elencoDasLicoes.difference(personagensHistoria), isEmpty);
-      expect(figurantesConhecidos, hasLength(42));
+      expect(figurantesConhecidos, hasLength(53));
       expect(figurantesConhecidos.intersection(elencoDasLicoes), isEmpty);
       expect(maxFigurantesMudos, 2);
       expect(cenariosSoDoTurismo, hasLength(9));

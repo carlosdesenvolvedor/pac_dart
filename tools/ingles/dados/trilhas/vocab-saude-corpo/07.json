@@ -1,0 +1,271 @@
+{
+  "id": "vocab-saude-corpo.novidade-da-julia",
+  "trilha": "vocab-saude-corpo",
+  "nome": "A notícia da Julia: pregnant, diet…",
+  "emoji": "🤰",
+  "cena": "No almoço de domingo, a sua irmã Julia conta que está grávida e fala do que mudou na alimentação dela.",
+  "resumo": "Falar de alimentação e gravidez: dieta, gordura, legumes, proteína, suplemento, álcool, fome e sede.",
+  "fechamento": false,
+  "novos": [
+    "fat",
+    "diet",
+    "protein",
+    "alcohol",
+    "vegetable",
+    "pregnant",
+    "chocolate",
+    "supplement",
+    "pregnancy",
+    "hunger",
+    "thirst"
+  ],
+  "apoio": [
+    "eggs",
+    "vitamin",
+    "quench"
+  ],
+  "teoria": [
+    {
+      "t": "p",
+      "c": "**fat** = gordura · **diet** = alimentação, dieta · **protein** = proteína · **alcohol** = álcool · **vegetable** = legume, verdura · **pregnant** = grávida · **pregnancy** = gravidez · **supplement** = suplemento · **hunger** = fome · **thirst** = sede"
+    },
+    {
+      "t": "ex",
+      "c": "I have some big news. I'm pregnant!\nTenho uma grande notícia. Estou grávida!"
+    },
+    {
+      "t": "tip",
+      "c": "Com pouca gordura = **low in fat**; fazer dieta = **be on a diet**; grávida de seis meses = **six months pregnant**."
+    },
+    {
+      "t": "warn",
+      "c": "Ter fome e sede: **be hungry**, **be thirsty** (não: have hunger). *Legume* em inglês é leguminosa; legume em PT = **vegetable**."
+    }
+  ],
+  "imagem": "🤰🥗🍽️",
+  "visualizacao": "Você está à mesa cheia do almoço de domingo. A Julia segura um copo de água, sorri de um jeito diferente e todo mundo se cala quando ela pede atenção.",
+  "foto_busca": "family sunday lunch table salad",
+  "trechos": [
+    {
+      "id": "f-81545e",
+      "quem": "julia",
+      "cod": "I have some big news. I'm pregnant!",
+      "dica": "Tenho uma grande notícia. Estou grávida!",
+      "img": "🤰🎉",
+      "alvo": "pregnant",
+      "alvo_pt": "grávida",
+      "conceito": "pregnant = grávida (PREG-nunt); engravidar = get pregnant. Cuidado: embarrassed = envergonhado.",
+      "opcional": [
+        "some"
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "embarrassed",
+        "pregnated"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e5d980",
+      "quem": "voce",
+      "contexto": "f-81545e",
+      "cod": "That's amazing! Is everything going well with the pregnancy?",
+      "dica": "Que incrível! Está tudo indo bem com a gravidez?",
+      "img": "😃👶",
+      "alvo": "pregnancy",
+      "alvo_pt": "gravidez",
+      "conceito": "pregnancy = gravidez (substantivo); during pregnancy = durante a gravidez.",
+      "registro": "informal",
+      "armadilhas": [
+        "pregnant",
+        "gravity"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-5df29c",
+      "quem": "julia",
+      "contexto": "f-e5d980",
+      "cod": "Yes, but I had to change my whole diet.",
+      "dica": "Sim, mas tive que mudar toda a minha alimentação.",
+      "img": "🔄🥗",
+      "alvo": "diet",
+      "alvo_pt": "alimentação",
+      "conceito": "diet = a alimentação habitual, não só regime. Fazer dieta = be on a diet.",
+      "var": [
+        {
+          "em": "had to",
+          "aceita": [
+            "needed to"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "armadilhas": [
+        "food",
+        "alimentation"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 4496475,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Tom changed his diet. → Yes, but I had to change my whole diet.; PT reescrito",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f1e212",
+      "quem": "julia",
+      "cod": "I'm trying to choose foods that are low in fat.",
+      "dica": "Estou tentando escolher alimentos com pouca gordura.",
+      "img": "🧈⬇️",
+      "alvo": "low in fat",
+      "alvo_pt": "pouca gordura",
+      "lit": "[lit.: baixa em gordura]",
+      "conceito": "fat = gordura (substantivo); low-fat milk = leite desnatado. Como adjetivo para pessoas, ofende.",
+      "registro": "informal",
+      "armadilhas": [
+        "grease",
+        "fatty"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4d23c0",
+      "quem": "julia",
+      "cod": "I eat vegetables with every meal now.",
+      "dica": "Agora eu como legumes em todas as refeições.",
+      "img": "🥦🥕",
+      "alvo": "vegetables",
+      "alvo_pt": "legumes",
+      "conceito": "vegetable = legume, verdura (VEJ-tuh-bul). Em inglês, legume é leguminosa.",
+      "registro": "informal",
+      "armadilhas": [
+        "legumes",
+        "vegetals"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-da4edf",
+      "quem": "voce",
+      "cod": "Are eggs a good source of protein?",
+      "dica": "Ovos são uma boa fonte de proteína?",
+      "img": "🥚💪",
+      "alvo": "protein",
+      "alvo_pt": "proteína",
+      "conceito": "protein = proteína, em duas sílabas (PROH-teen). high in protein = rico em proteína.",
+      "registro": "informal",
+      "armadilhas": [
+        "proteins",
+        "protean"
+      ],
+      "origem": "tatoeba",
+      "fonte": {
+        "en_id": 4744158,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": false,
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-cfd016",
+      "quem": "julia",
+      "cod": "My doctor says I need to take a vitamin supplement.",
+      "dica": "A minha médica diz que eu preciso tomar um suplemento vitamínico.",
+      "img": "💊🌿",
+      "alvo": "supplement",
+      "alvo_pt": "suplemento",
+      "conceito": "supplement = suplemento; take a supplement = tomar um suplemento. prenatal vitamins = vitaminas pré-natais.",
+      "registro": "informal",
+      "armadilhas": [
+        "suplement",
+        "complement"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8cbd75",
+      "quem": "julia",
+      "cod": "And of course, no alcohol for now.",
+      "dica": "E, claro, nada de álcool por enquanto.",
+      "img": "🚫🍷",
+      "alvo": "alcohol",
+      "alvo_pt": "álcool",
+      "conceito": "alcohol = álcool, bebida alcoólica (AL-kuh-hol, com h).",
+      "registro": "informal",
+      "armadilhas": [
+        "alcool",
+        "alcohols"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ce125c",
+      "quem": "julia",
+      "cod": "All I want these days is chocolate.",
+      "dica": "Tudo o que eu quero hoje em dia é chocolate.",
+      "img": "🍫😋",
+      "alvo": "chocolate",
+      "alvo_pt": "chocolate",
+      "conceito": "chocolate em duas sílabas (CHAWK-lit). craving = desejo (de grávida).",
+      "registro": "informal",
+      "armadilhas": [
+        "chocolat",
+        "chocolates"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "these days",
+          "aceita": [
+            "nowadays"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-fb21f4",
+      "quem": "julia",
+      "cod": "Ice water is the only thing that quenches my thirst.",
+      "dica": "Água gelada é a única coisa que mata a minha sede.",
+      "img": "🧊💧😮‍💨",
+      "alvo": "thirst",
+      "alvo_pt": "sede",
+      "lit": "[lit.: que sacia a minha sede]",
+      "conceito": "thirst = sede (th surdo); ter sede = be thirsty (não: have thirst).",
+      "registro": "informal",
+      "armadilhas": [
+        "thirsty",
+        "kills"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-c07a1d",
+      "quem": "julia",
+      "cod": "The hunger is crazy. I eat every two hours.",
+      "dica": "A fome é absurda. Eu como a cada duas horas.",
+      "img": "🍽️⏰😋",
+      "alvo": "hunger",
+      "alvo_pt": "fome",
+      "conceito": "hunger = fome (substantivo); ter fome = be hungry (não: have hunger).",
+      "registro": "informal",
+      "armadilhas": [
+        "hungry",
+        "hunger of"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

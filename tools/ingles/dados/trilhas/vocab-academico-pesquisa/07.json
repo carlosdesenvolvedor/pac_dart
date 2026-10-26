@@ -1,0 +1,239 @@
+{
+  "id": "vocab-academico-pesquisa.validar-resultados",
+  "trilha": "vocab-academico-pesquisa",
+  "nome": "Validação: empirical, replicate…",
+  "emoji": "🔁",
+  "cena": "Antes de mudar o algoritmo de recomendação, o Mike quer provas: você precisa repetir o experimento e mostrar que ele é válido.",
+  "resumo": "Dez palavras para validar um resultado: empirical evidence, methodology, replicate, validity, variability…",
+  "fechamento": false,
+  "novos": [
+    "methodology",
+    "empirical",
+    "systematic",
+    "validity",
+    "replicate",
+    "replication",
+    "independently",
+    "variability",
+    "linear",
+    "individually"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Provar antes de mudar"
+    },
+    {
+      "t": "p",
+      "c": "**methodology** metodologia · **empirical** empírico · **systematic** sistemático · **validity** validade · **replicate** replicar · **replication** replicação · **independently** de forma independente · **variability** variabilidade · **linear** linear · **individually** individualmente"
+    },
+    {
+      "t": "ex",
+      "c": "We need to replicate the results with a new group of users.\nA gente precisa replicar os resultados com um grupo novo de usuários."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: **empirical evidence**, a **systematic error**, the validity **of** the results, independently **of**."
+    },
+    {
+      "t": "warn",
+      "c": "evidence é incontável: evidências = **evidence** (nunca evidences). Validade de produto é **expiration date**. Bug se reproduz com **reproduce**."
+    }
+  ],
+  "imagem": "🔁🧪✅",
+  "visualizacao": "O Mike está de braços cruzados na call, com cara de quem só acredita vendo. Na sua tela, dois gráficos do experimento lado a lado, esperando a segunda rodada.",
+  "foto_busca": "data analysis two monitors office",
+  "trechos": [
+    {
+      "id": "f-287585",
+      "quem": "mike",
+      "cod": "Before we change the algorithm, I want empirical evidence.",
+      "dica": "Antes de mudar o algoritmo, quero evidências empíricas.",
+      "img": "🧪📊",
+      "alvo": "empirical",
+      "alvo_pt": "empíricas",
+      "conceito": "evidence é incontável: evidências empíricas = empirical evidence (não: evidences).",
+      "registro": "neutro",
+      "interferencias": [
+        "BR22",
+        "BR09"
+      ],
+      "armadilhas": [
+        "evidences",
+        "empiricals"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "Before we change",
+          "aceita": [
+            "Before changing"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-e4601a",
+      "quem": "mike",
+      "cod": "Walk me through the methodology behind this test.",
+      "dica": "Me explica a metodologia por trás desse teste.",
+      "img": "🗺️🧪",
+      "alvo": "methodology",
+      "alvo_pt": "metodologia",
+      "conceito": "methodology = o conjunto de métodos e a justificativa deles, não só um sinônimo chique de method.",
+      "var": [
+        {
+          "em": "Walk me through",
+          "aceita": [
+            "Explain",
+            "Explain to me"
+          ]
+        }
+      ],
+      "registro": "informal",
+      "interferencias": [
+        "BR54",
+        "BR60"
+      ],
+      "armadilhas": [
+        "explain me"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-d5417d",
+      "quem": "voce",
+      "cod": "We need to replicate the results with a new group of users.",
+      "dica": "A gente precisa replicar os resultados com um grupo novo de usuários.",
+      "img": "🔁👥",
+      "alvo": "replicate",
+      "alvo_pt": "replicar",
+      "conceito": "replicate the results = repetir o experimento e chegar ao mesmo resultado. Bug: reproduce.",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cec8f4",
+      "quem": "mike",
+      "contexto": "f-d5417d",
+      "cod": "If the replication fails, we keep the current algorithm.",
+      "dica": "Se a replicação falhar, a gente mantém o algoritmo atual.",
+      "img": "❌🔁",
+      "alvo": "replication",
+      "alvo_pt": "replicação",
+      "conceito": "Se + futuro do subjuntivo = if + presente (if it fails). Em banco de dados, replication = cópia entre servidores.",
+      "registro": "informal",
+      "interferencias": [
+        "BR28"
+      ],
+      "armadilhas": [
+        "will fail"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-4239d6",
+      "quem": "voce",
+      "cod": "Ana is going to check the data independently, without seeing my results.",
+      "dica": "A Ana vai conferir os dados de forma independente, sem ver os meus resultados.",
+      "img": "🕵️📋",
+      "alvo": "independently",
+      "alvo_pt": "de forma independente",
+      "conceito": "independently = sem depender de outra pessoa; independently of = independentemente de.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR52",
+        "BR12"
+      ],
+      "armadilhas": [
+        "without see",
+        "the ana"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-92720e",
+      "quem": "mike",
+      "cod": "Is there a systematic error in how we log the clicks?",
+      "dica": "Tem um erro sistemático em como a gente registra os cliques?",
+      "img": "⚙️❗",
+      "alvo": "systematic",
+      "alvo_pt": "sistemático",
+      "conceito": "systematic error = erro que se repete sempre no mesmo sentido; a systematic approach = método organizado.",
+      "registro": "informal",
+      "interferencias": [
+        "BR03"
+      ],
+      "armadilhas": [
+        "has"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-6aee5f",
+      "quem": "voce",
+      "cod": "The variability between users is much higher than I expected.",
+      "dica": "A variabilidade entre os usuários é bem maior do que eu esperava.",
+      "img": "🎢👥",
+      "alvo": "variability",
+      "alvo_pt": "variabilidade",
+      "conceito": "high variability = os valores mudam muito de um caso para outro.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR55",
+        "BR23"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-45fd37",
+      "quem": "voce",
+      "cod": "The relationship between views and purchases isn't linear.",
+      "dica": "A relação entre visualizações e compras não é linear.",
+      "img": "📈〰️",
+      "alvo": "linear",
+      "alvo_pt": "linear",
+      "conceito": "LI-ni-ar, três sílabas. linear growth = crescimento constante, em linha reta.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR21"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-25bfb2",
+      "quem": "mike",
+      "contexto": "f-45fd37",
+      "cod": "That doesn't affect the validity of the results, right?",
+      "dica": "Isso não afeta a validade dos resultados, né?",
+      "img": "✅🤔",
+      "alvo": "validity",
+      "alvo_pt": "validade",
+      "conceito": "validity = se algo é válido; validade de produto = expiration date. né? = right?",
+      "registro": "informal",
+      "interferencias": [
+        "BR59"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8305d3",
+      "quem": "voce",
+      "cod": "I checked the twenty biggest accounts individually.",
+      "dica": "Conferi as vinte maiores contas individualmente.",
+      "img": "🔍☝️",
+      "alvo": "individually",
+      "alvo_pt": "individualmente",
+      "conceito": "individually = um por um; sozinho, por conta própria, é on your own.",
+      "registro": "neutro",
+      "interferencias": [
+        "BR19"
+      ],
+      "origem": "autoral_ia"
+    }
+  ]
+}

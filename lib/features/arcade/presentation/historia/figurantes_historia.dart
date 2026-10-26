@@ -10,7 +10,7 @@ import '../../domain/historia_turismo.dart';
 /// e o rótulo do chip do balão. Só no palco: o `RostoDaFaixa` do Ouvir e a lição continuam com
 /// `ElencoIngles.de` (diferença assumida, plano §14).
 ///
-/// - Os 42 [figurantesConhecidos] têm uma aparência FIXA (tabela `const`), todas distintas entre si e
+/// - Os 53 [figurantesConhecidos] têm uma aparência FIXA (tabela `const`), todas distintas entre si e
 ///   distintas do elenco das lições: dois papéis na mesma lição nunca saem iguais, e a cor do chip (a roupa)
 ///   não se confunde com a de ninguém.
 /// - O gênero de cada papel segue a VOZ que o `tools/ingles/vozes_google.py` sorteou para ele (o mp3 que o
@@ -236,6 +236,54 @@ abstract final class FigurantesHistoria {
         pele: _trigueira, cabelo: Color(0xFF5C3A21), roupa: Color(0xFF6A994E), estilo: Cabelo.curto),
     'esposa': Aparencia(
         pele: _clara, cabelo: Color(0xFF8B5A2B), roupa: Color(0xFFC17C74), estilo: Cabelo.coque, cilios: true),
+    // as trilhas de vocabulário (B2/C1): a fundadora da empresa, a advogada, a economista do noticiário…
+    'presidente': Aparencia(
+        pele: _clara,
+        cabelo: Color(0xFF9A9A9A),
+        roupa: Color(0xFF6A040F),
+        estilo: Cabelo.bob,
+        cilios: true,
+        brincos: true),
+    'advogada': Aparencia(
+        pele: _escura, cabelo: Color(0xFF1E1A1A), roupa: Color(0xFF669BBC), estilo: Cabelo.coque, cilios: true),
+    'economista': Aparencia(
+        pele: _amarelada,
+        cabelo: Color(0xFF2B1B17),
+        roupa: Color(0xFFC9A227),
+        estilo: Cabelo.longo,
+        oculos: true,
+        cilios: true),
+    'pesquisadora': Aparencia(
+        pele: _morena,
+        cabelo: Color(0xFF3B2A22),
+        roupa: Color(0xFFE0AAFF),
+        estilo: Cabelo.rabo,
+        oculos: true,
+        cilios: true),
+    'consultora': Aparencia(
+        pele: _rosada,
+        cabelo: Color(0xFFE3B35A),
+        roupa: Color(0xFF8338EC),
+        estilo: Cabelo.franja,
+        cilios: true,
+        brincos: true),
+    'prima': Aparencia(
+        pele: _trigueira, cabelo: Color(0xFF6B4630), roupa: Color(0xFFFFB703), estilo: Cabelo.cacheado, cilios: true),
+    'tia': Aparencia(
+        pele: _marrom,
+        cabelo: Color(0xFF8A5A2B),
+        roupa: Color(0xFFFEFAE0),
+        estilo: Cabelo.coque,
+        cilios: true,
+        brincos: true),
+    'mae': Aparencia(
+        pele: _morena, cabelo: Color(0xFF9A9A9A), roupa: Color(0xFFFFFD82), estilo: Cabelo.bob, cilios: true),
+    'sobrinho': Aparencia(
+        pele: _morena, cabelo: Color(0xFF1E1A1A), roupa: Color(0xFF80B918), estilo: Cabelo.cacheado, sardas: true),
+    'socio': Aparencia(
+        pele: _retinta, cabelo: Color(0xFF111111), roupa: Color(0xFF38B000), estilo: Cabelo.curto, oculos: true),
+    'vizinho': Aparencia(
+        pele: _clara, cabelo: Color(0xFFC0612B), roupa: Color(0xFFAACC00), estilo: Cabelo.lateral),
     // só figurante mudo (D20)
     'oficial': Aparencia(
         pele: _marrom,
@@ -271,6 +319,8 @@ abstract final class FigurantesHistoria {
     'proprietario': 'Proprietário',
     'seguranca': 'Segurança',
     'garcom': 'Garçom',
+    'mae': 'Mãe',
+    'socio': 'Sócio',
   };
 
   // ───────────────────────── papel novo: paleta por hash ─────────────────────────
@@ -294,10 +344,11 @@ abstract final class FigurantesHistoria {
     'recrutadora', 'diretora', 'moradora', 'engenheira', 'corretora', 'passageira', 'estagiaria', 'gestora',
     'farmaceutica', 'desenvolvedora', 'vizinha', 'esposa', 'mae', 'namorada', 'professora', 'medica',
     'enfermeira', 'chefe-dela', 'convidada', 'dev-nova', 'supervisora', 'recepcionista', 'atendente', 'amiga',
+    'prima', 'tia', 'presidente', 'economista', 'advogada', 'pesquisadora', 'consultora',
   };
   static const _masculinos = {
     'entrevistador', 'proprietario', 'passageiro', 'vendedor', 'amigo-do-ben', 'convidado', 'marido',
-    'engenheiro', 'dev-novo', 'dev-junior', 'pai', 'irmao', 'professor', 'medico',
+    'engenheiro', 'dev-novo', 'dev-junior', 'pai', 'irmao', 'professor', 'medico', 'sobrinho', 'socio', 'vizinho',
   };
 
   static bool _feminino(String quem, int h) {

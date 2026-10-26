@@ -1,0 +1,256 @@
+{
+  "id": "vocab-casa-cidade.passeio-ferias",
+  "trilha": "vocab-casa-cidade",
+  "nome": "As férias da Ana em Portugal",
+  "emoji": "🏰",
+  "cena": "Na pausa do café, a Ana mostra as fotos das férias em Portugal e você anota dicas para a sua próxima viagem.",
+  "resumo": "Onze palavras de passeio: village, castle, guide, attraction, sights, tourism, harbor, vessel, wander, resort e guest.",
+  "fechamento": false,
+  "novos": [
+    "village",
+    "guide",
+    "sight",
+    "guest",
+    "resort",
+    "tourism",
+    "attraction",
+    "castle",
+    "vessel",
+    "harbor",
+    "wander"
+  ],
+  "apoio": [],
+  "teoria": [
+    {
+      "t": "h",
+      "c": "Fotos das férias"
+    },
+    {
+      "t": "p",
+      "c": "**village** vilarejo · **castle** castelo · **guide** guia · **attraction** atração · **sights** pontos turísticos · **tourism** turismo · **harbor** porto · **vessel** embarcação · **wander** passear sem rumo · **resort** resort · **guest** hóspede, convidado"
+    },
+    {
+      "t": "ex",
+      "c": "You have to see the sights in Sintra.\nVocê tem que conhecer os pontos turísticos de Sintra."
+    },
+    {
+      "t": "tip",
+      "c": "Colocações: a fishing village, a tour guide, see the sights, a tourist attraction, a beach resort, hotel guests."
+    },
+    {
+      "t": "warn",
+      "c": "wander (passear sem rumo) não é wonder (perguntar-se). E castle tem o t mudo: KA-sel."
+    }
+  ],
+  "imagem": "🏰⛵📸",
+  "visualizacao": "Você está na cozinha do escritório com uma xícara de café. A Ana passa as fotos no celular: casinhas brancas, um castelo no morro, barcos coloridos no porto.",
+  "foto_busca": "Portugal fishing village harbor castle",
+  "trechos": [
+    {
+      "id": "f-aaf01f",
+      "quem": "ana",
+      "cod": "We stayed in a small fishing village.",
+      "dica": "A gente ficou num pequeno vilarejo de pescadores.",
+      "img": "🎣🏘️",
+      "alvo": "fishing village",
+      "alvo_pt": "vilarejo de pescadores",
+      "conceito": "village = vilarejo; fishing village = vilarejo de pescadores.",
+      "registro": "informal",
+      "interferencias": [
+        "BR33"
+      ],
+      "teste": true,
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-ca935e",
+      "quem": "voce",
+      "cod": "How old is that castle?",
+      "dica": "Quantos anos tem aquele castelo?",
+      "img": "🏰❓",
+      "alvo": "castle",
+      "alvo_pt": "castelo",
+      "conceito": "castle: o t é mudo (KA-sel). How old is...? = quantos anos tem...?",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 8241079,
+        "en_autor": "CK",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "this trocado por that",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-702614",
+      "quem": "ana",
+      "contexto": "f-ca935e",
+      "cod": "Our guide said it's over eight hundred years old.",
+      "dica": "O nosso guia disse que tem mais de oitocentos anos.",
+      "img": "🧑‍🏫📜",
+      "alvo": "guide",
+      "alvo_pt": "guia",
+      "conceito": "tour guide = guia turístico; travel guide = guia de viagem (o livro).",
+      "registro": "informal",
+      "interferencias": [
+        "BR04"
+      ],
+      "origem": "autoral_ia",
+      "var": [
+        {
+          "em": "it's",
+          "aceita": [
+            "it was"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "f-1abc10",
+      "quem": "ana",
+      "cod": "Portugal has so many tourist attractions.",
+      "dica": "Portugal tem tantas atrações turísticas.",
+      "img": "🇵🇹📸",
+      "alvo": "tourist attractions",
+      "alvo_pt": "atrações turísticas",
+      "conceito": "tourist attraction = atração turística (substantivo + substantivo).",
+      "registro": "informal",
+      "interferencias": [
+        "BR24"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 10066862,
+        "en_autor": "Amastan",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "Japan trocado por Portugal; many trocado por so many",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-0e458a",
+      "quem": "ana",
+      "cod": "You have to see the sights in Sintra.",
+      "dica": "Você tem que conhecer os pontos turísticos de Sintra.",
+      "img": "👀🗺️",
+      "alvo": "the sights",
+      "alvo_pt": "os pontos turísticos",
+      "conceito": "see the sights = conhecer os pontos turísticos; sightseeing = passeio turístico.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-f2bac9",
+      "quem": "ana",
+      "cod": "Tourism is really important for the local economy.",
+      "dica": "O turismo é muito importante para a economia local.",
+      "img": "🧳💶",
+      "alvo": "Tourism",
+      "alvo_pt": "turismo",
+      "conceito": "Generalização sem artigo: Tourism is... (não: The tourism). Pronúncia TUR-izm.",
+      "registro": "informal",
+      "interferencias": [
+        "BR21"
+      ],
+      "armadilhas": [
+        "the"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-e75b54",
+      "quem": "ana",
+      "cod": "This photo is from a boat tour around the harbor.",
+      "dica": "Essa foto é de um passeio de barco pelo porto.",
+      "img": "⛵📷",
+      "alvo": "harbor",
+      "alvo_pt": "porto",
+      "conceito": "harbor (EUA) = porto, baía; a grafia britânica é harbour.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-8169ca",
+      "quem": "ana",
+      "cod": "The harbor was full of old fishing vessels.",
+      "dica": "O porto estava cheio de embarcações de pesca antigas.",
+      "img": "🚢⚓",
+      "alvo": "vessels",
+      "alvo_pt": "embarcações",
+      "conceito": "vessel = embarcação (formal; no dia a dia, boat). Vaso de flor é vase.",
+      "registro": "informal",
+      "interferencias": [
+        "BR08"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-1457d5",
+      "quem": "ana",
+      "cod": "We spent a whole day wandering around the old town.",
+      "dica": "A gente passou um dia inteiro passeando sem rumo pelo centro antigo.",
+      "img": "🚶🌀",
+      "alvo": "wandering around",
+      "alvo_pt": "passeando sem rumo",
+      "conceito": "wander = passear sem rumo (WAHN-der); wonder = perguntar-se (WUHN-der).",
+      "registro": "informal",
+      "interferencias": [
+        "BR52"
+      ],
+      "armadilhas": [
+        "wondering"
+      ],
+      "origem": "tatoeba_adaptada",
+      "fonte": {
+        "en_id": 415434,
+        "en_autor": "CM",
+        "pt_id": null,
+        "pt_autor": null,
+        "pt_autoral": true,
+        "licenca": "CC BY 2.0 FR",
+        "modificada": true,
+        "nota_modificacao": "He spent a few months trocado por We spent a whole day; Europe trocado por the old town",
+        "export": "2026-10-03"
+      }
+    },
+    {
+      "id": "f-f71bec",
+      "quem": "voce",
+      "cod": "Did you stay at a beach resort?",
+      "dica": "Vocês ficaram num resort de praia?",
+      "img": "🏖️🍹",
+      "alvo": "beach resort",
+      "alvo_pt": "resort de praia",
+      "conceito": "beach resort = resort de praia; as a last resort = em último caso.",
+      "registro": "informal",
+      "interferencias": [
+        "BR06"
+      ],
+      "origem": "autoral_ia"
+    },
+    {
+      "id": "f-cc1dda",
+      "quem": "ana",
+      "contexto": "f-f71bec",
+      "cod": "No, it was a small inn, and we were the only guests.",
+      "dica": "Não, era uma pousada pequena, e éramos os únicos hóspedes.",
+      "img": "🔑👫",
+      "alvo": "guests",
+      "alvo_pt": "hóspedes",
+      "conceito": "guest = hóspede ou convidado; Be my guest! = fique à vontade.",
+      "registro": "informal",
+      "origem": "autoral_ia"
+    }
+  ]
+}
