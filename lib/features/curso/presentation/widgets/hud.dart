@@ -73,11 +73,7 @@ class _HudState extends State<Hud> {
         crossAxisAlignment: WrapCrossAlignment.center,
         runSpacing: 10,
         children: [
-          Row(mainAxisSize: MainAxisSize.min, children: [
-            const _LogoPac(),
-            const SizedBox(width: 12),
-            const _Marca(),
-          ]),
+          const MarcaPaclingo(),
           BlocBuilder<TypingBloc, TypingState>(
             builder: (context, st) => Wrap(spacing: 8, runSpacing: 8, children: [
               _Stat('SCORE', '${st.score}', cor: Mixart.brand),
@@ -88,7 +84,56 @@ class _HudState extends State<Hud> {
             ]),
           ),
           // Wrap: no celular os botões quebram linha em vez de sumir pela borda
-          Wrap(spacing: 8, runSpacing: 8, crossAxisAlignment: WrapCrossAlignment.center, children: [
+          const AtalhosHud(),
+        ],
+      ),
+    );
+  }
+}
+
+/// A logo e o PACLINGO (com a troca de curso): no cabeçalho da lição antiga e no topo da tela Início.
+class MarcaPaclingo extends StatelessWidget {
+  const MarcaPaclingo({super.key});
+
+  @override
+  Widget build(BuildContext context) => const Row(mainAxisSize: MainAxisSize.min, children: [
+        _LogoPac(),
+        SizedBox(width: 12),
+        _Marca(),
+      ]);
+}
+
+/// Os atalhos do app: 🔥 sequência, ⚡ Treino, Mapa, Arcade, Ranking, Revisão (ou Voz), Ouvir, Som, tema e conta.
+/// Moravam no cabeçalho da lição; com a tela Início ([Inicio.ligado]) ficam lá.
+class AtalhosHud extends StatefulWidget {
+  const AtalhosHud({super.key});
+
+  @override
+  State<AtalhosHud> createState() => _AtalhosHudState();
+}
+
+class _AtalhosHudState extends State<AtalhosHud> {
+  Timer? _tick;
+
+  @override
+  void initState() {
+    super.initState();
+    Sons.carregar().then((_) {
+      if (mounted) setState(() {});
+    });
+    // a virada do dia (o chip da sequência e o "Treino" voltam sozinhos), no mesmo passo de 1 s do relógio antigo
+    _tick = Timer.periodic(const Duration(seconds: 1), (_) => setState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _tick?.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(spacing: 8, runSpacing: 8, crossAxisAlignment: WrapCrossAlignment.center, children: [
             // não é const de propósito: o relógio do Hud (1 s) redesenha o chip na virada do dia
             // ignore: prefer_const_constructors
             ChipSequencia(),
@@ -192,10 +237,7 @@ class _HudState extends State<Hud> {
             ),
             const SeletorTema(compacto: true),
             const _ContaBotao(),
-          ]),
-        ],
-      ),
-    );
+          ]);
   }
 }
 

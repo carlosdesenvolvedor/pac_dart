@@ -12,6 +12,7 @@ import '../../../ingles/data/aulas_repo.dart';
 import '../../../ingles/domain/aula_professor.dart';
 import '../../../ingles/domain/certificado.dart';
 import '../../../ingles/presentation/certificado_page.dart';
+import 'inicio_page.dart' show Inicio;
 import '../../../ingles/presentation/aula_professor_page.dart';
 import '../../../ingles/presentation/baralhos_page.dart';
 import '../../../ingles/presentation/fixacao.dart';
@@ -247,18 +248,23 @@ class _MapaPageState extends State<MapaPage> {
                   if (buscando)
                     _Resultados(st: st, query: _query)
                   else ...[
-                    SliverToBoxAdapter(child: _HeroDashboard(st: st)),
-                    // "⚡ Treino do dia" (os 3 cursos): a segunda porta de entrada, logo depois do painel
-                    const SliverToBoxAdapter(child: _CartaoTreinoDia()),
+                    // 🏠 com a tela Início, o painel e as ferramentas moram lá: o mapa é só o caminho
+                    if (!Inicio.ligado) ...[
+                      SliverToBoxAdapter(child: HeroDashboard(st: st)),
+                      // "⚡ Treino do dia" (os 3 cursos): a segunda porta de entrada, logo depois do painel
+                      const SliverToBoxAdapter(child: CartaoTreinoDia()),
+                    ],
                     // inglês: o texto que a pessoa cola vira trilha própria, no topo
                     if (st.ehIngles) ...[
-                      const SliverToBoxAdapter(child: _CartaoNovoTexto()),
-                      const SliverToBoxAdapter(child: _CartaoBaralhos()),
-                      const SliverToBoxAdapter(child: _CartaoLer()),
-                      const SliverToBoxAdapter(child: _CartaoOuvir()),
-                      const SliverToBoxAdapter(child: _CartaoConversar()),
-                      const SliverToBoxAdapter(child: _CartaoEscrever()),
-                      if (ps != null) SliverToBoxAdapter(child: _CartaoMinhasPalavras(st: st)),
+                      if (!Inicio.ligado) ...[
+                        const SliverToBoxAdapter(child: CartaoNovoTexto()),
+                        const SliverToBoxAdapter(child: CartaoBaralhos()),
+                        const SliverToBoxAdapter(child: CartaoLer()),
+                        const SliverToBoxAdapter(child: CartaoOuvir()),
+                        const SliverToBoxAdapter(child: CartaoConversar()),
+                        const SliverToBoxAdapter(child: CartaoEscrever()),
+                        if (ps != null) SliverToBoxAdapter(child: CartaoMinhasPalavras(st: st)),
+                      ],
                       for (var t = 0; t < st.trilhas.length; t++)
                         if (st.trilhas[t].propria) ...[
                           if (t == st.trilhas.indexWhere((x) => x.propria))
@@ -713,9 +719,9 @@ class _ItemResultado extends StatelessWidget {
 }
 
 // ───────────────────────── dashboard ─────────────────────────
-class _HeroDashboard extends StatelessWidget {
+class HeroDashboard extends StatelessWidget {
   final CursoState st;
-  const _HeroDashboard({required this.st});
+  const HeroDashboard({super.key, required this.st});
 
   @override
   Widget build(BuildContext context) {
@@ -1112,9 +1118,9 @@ class _SecaoTrilhaIngles extends StatelessWidget {
 }
 
 /// Inglês: o banco de palavras do aluno — "N palavras · M para revisar hoje". Sem o cubit, some.
-class _CartaoMinhasPalavras extends StatelessWidget {
+class CartaoMinhasPalavras extends StatelessWidget {
   final CursoState st;
-  const _CartaoMinhasPalavras({required this.st});
+  const CartaoMinhasPalavras({super.key, required this.st});
 
   @override
   Widget build(BuildContext context) {
@@ -1180,14 +1186,14 @@ class _CartaoMinhasPalavras extends StatelessWidget {
 ///
 /// Olha o dia a cada segundo (o mesmo ritmo do HUD) e só redesenha quando ele vira: com o mapa aberto
 /// de madrugada, "Feito hoje ✓" volta a "~10 min…" junto com o botão do HUD.
-class _CartaoTreinoDia extends StatefulWidget {
-  const _CartaoTreinoDia();
+class CartaoTreinoDia extends StatefulWidget {
+  const CartaoTreinoDia({super.key});
 
   @override
-  State<_CartaoTreinoDia> createState() => _CartaoTreinoDiaState();
+  State<CartaoTreinoDia> createState() => CartaoTreinoDiaState();
 }
 
-class _CartaoTreinoDiaState extends State<_CartaoTreinoDia> {
+class CartaoTreinoDiaState extends State<CartaoTreinoDia> {
   Timer? _tick;
   int? _dia;
 
@@ -1261,8 +1267,8 @@ class _CartaoTreinoDiaState extends State<_CartaoTreinoDia> {
 }
 
 /// Inglês: o Anki do app — baralhos, previsão, cartões de virar e ajustes.
-class _CartaoBaralhos extends StatelessWidget {
-  const _CartaoBaralhos();
+class CartaoBaralhos extends StatelessWidget {
+  const CartaoBaralhos({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -1308,8 +1314,8 @@ class _CartaoBaralhos extends StatelessWidget {
 }
 
 /// Inglês: ler textos e guardar as palavras novas como cartões de lacuna.
-class _CartaoLer extends StatelessWidget {
-  const _CartaoLer();
+class CartaoLer extends StatelessWidget {
+  const CartaoLer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -1355,8 +1361,8 @@ class _CartaoLer extends StatelessWidget {
 }
 
 /// Inglês: o "🎧 Ouvir" — escutar as lições na ordem ou as setlists, sem digitar. Sem o player na árvore, some.
-class _CartaoOuvir extends StatelessWidget {
-  const _CartaoOuvir();
+class CartaoOuvir extends StatelessWidget {
+  const CartaoOuvir({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -1404,8 +1410,8 @@ class _CartaoOuvir extends StatelessWidget {
 }
 
 /// Inglês: "💬 Conversa com IA" (role-play com um personagem do palco; o Prof. Dash corrige cada fala). Sem a IA na árvore, some.
-class _CartaoConversar extends StatelessWidget {
-  const _CartaoConversar();
+class CartaoConversar extends StatelessWidget {
+  const CartaoConversar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -1445,8 +1451,8 @@ class _CartaoConversar extends StatelessWidget {
 }
 
 /// Inglês: escrever 2–3 frases e ser corrigido pelo Prof. Dash (cada erro vira cartão). Sem a IA na árvore, some.
-class _CartaoEscrever extends StatelessWidget {
-  const _CartaoEscrever();
+class CartaoEscrever extends StatelessWidget {
+  const CartaoEscrever({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -1484,8 +1490,8 @@ class _CartaoEscrever extends StatelessWidget {
 }
 
 /// Inglês: "cole um texto e ele vira lição" — abre a tela de colar/traduzir/revisar.
-class _CartaoNovoTexto extends StatelessWidget {
-  const _CartaoNovoTexto();
+class CartaoNovoTexto extends StatelessWidget {
+  const CartaoNovoTexto({super.key});
 
   Future<void> _abrir(BuildContext context) async {
     final bloc = context.read<CursoBloc>();

@@ -22,6 +22,7 @@ import 'package:pac_dart/features/ingles/presentation/widgets/ensaio_mental.dart
 import 'package:pac_dart/features/ingles/presentation/widgets/frase_view.dart';
 import 'package:pac_dart/features/ranking/data/ranking_repository.dart';
 import 'package:pac_dart/features/ranking/domain/jogador_ranking.dart';
+import 'package:pac_dart/features/curso/presentation/pages/inicio_page.dart';
 import 'package:pac_dart/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -140,6 +141,21 @@ void main() {
     await tester.tap(find.byKey(const Key('aula-sair')));
     await _anda(tester, 10);
   }
+
+  testWidgetsDesktop('🏠 com a tela Início por cima, a aula espera: só abre quando a pessoa toca em "Continuar"',
+      (tester) async {
+    Inicio.ligado = true;
+    addTearDown(() => Inicio.ligado = false);
+    await _abrirApp(tester);
+    await _esperar(tester, find.byKey(const Key('inicio')));
+    await _anda(tester, 10);
+    expect(find.byKey(const Key('inicio')), findsOneWidget);
+    expect(find.byType(AulaProfessorPage), findsNothing, reason: 'a aula não aparece por cima do Início');
+    await tester.tap(find.byKey(const Key('inicio-continuar')));
+    await _esperar(tester, find.byType(AulaProfessorPage));
+    expect(find.byType(AulaProfessorPage), findsOneWidget);
+    await fecharAula(tester);
+  });
 
   testWidgetsDesktop('1ª visita: a aula abre sozinha; fechada, a lição segue e o link fica; reabrir não abre de novo',
       (tester) async {

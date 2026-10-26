@@ -2810,3 +2810,19 @@ desiste"; quer ajuda gradual, tipos misturados como o Duolingo, mostrar como se 
   via `ajudaDaRevisao(revisao)` (o 👂 só sem o "não posso escutar"). Provas, nivelamento e a prova do certificado
   continuam 100% de memória. `RevisaoLeve.ligada` desliga nos testes antigos do caminho de memória.
 - Testes: `test/ingles_revisao_leve_test.dart` (12).
+
+## 🏠 26/out/2026: tela Início + lição limpa + mapa só com o caminho
+Pedido do dono: tirar do mapa as ferramentas (texto→lição, baralhos, ler, ouvir, conversa, escrever, minhas palavras),
+abrir o app num menu com "voltar para a última lição" e as opções do cabeçalho, e deixar a lição limpa para estudar.
+- `presentation/pages/inicio_page.dart`: `InicioPage` (▶ CONTINUAR com a trilha/lição onde parou · Hoje: os atalhos
+  `AtalhosHud` + ⚡ Treino do dia · Praticar (inglês): Ouvir, Conversa, Escrever, Ler, Baralhos, Minhas palavras,
+  Texto→lição · Seu progresso: `HeroDashboard`). Abre POR CIMA da lição (`abrirInicio`, rota `/inicio`) — a lição não
+  perde o passo; "Continuar" faz pop. `BarraDaLicao` (☰ Início) no lugar do `Hud` na lição.
+- `hud.dart`: `MarcaPaclingo` e `AtalhosHud` públicos (o `Hud` antigo é a marca + estatísticas + atalhos).
+- `mapa_page.dart`: os cartões e o painel viraram públicos (`CartaoOuvir`, `HeroDashboard`…); com o Início o mapa não os
+  mostra.
+- Palco: a aula que abre sozinha ESPERA a lição voltar ao topo (`_esperarTopo`); a frase só pede foco/teclado na rota
+  do topo (`FraseView._pedeFoco`); de volta ao topo, no computador, o foco volta para a frase.
+- `Inicio.ligado` (desligado no `flutter_test_config.dart` para os testes antigos); testes novos:
+  `test/inicio_app_test.dart` (3) e o da aula esperando o Início (`ingles_aula_professor_app_test.dart`).
+- iOS: build 3 para o TestFlight (pubspec 1.0.0+3).

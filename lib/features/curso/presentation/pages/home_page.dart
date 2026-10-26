@@ -21,6 +21,7 @@ import '../widgets/console_view.dart';
 import '../widgets/dica_banner.dart';
 import '../widgets/fundo_fase.dart';
 import '../widgets/hud.dart';
+import 'inicio_page.dart';
 import '../widgets/menu_trilhas.dart';
 import 'teoria_page.dart';
 import '../widgets/preview_panel.dart';
@@ -42,6 +43,17 @@ class _HomePageState extends State<HomePage> {
   /// à esquerda ↔ botão flutuante): com a chave ele é MOVIDO, não recriado —
   /// a fila da lição de inglês, o foco e os timers sobrevivem.
   final _chaveConteudo = GlobalKey();
+
+  @override
+  void initState() {
+    super.initState();
+    // 🏠 o app abre na tela Início (por cima da lição: "Continuar" volta para a frase onde parou)
+    if (Inicio.ligado) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) abrirInicio(context, semAnimacao: true);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,8 +102,9 @@ class _HomePageState extends State<HomePage> {
                   child: ListView(
                     padding: const EdgeInsets.fromLTRB(20, 24, 20, 48),
                     children: [
-                      const Hud(),
-                      const SizedBox(height: 18),
+                      // 🏠 com a tela Início, a lição fica limpa: só o "☰ Início" (o resto mora lá)
+                      if (Inicio.ligado) const BarraDaLicao() else const Hud(),
+                      SizedBox(height: Inicio.ligado ? 12 : 18),
                       const MenuTrilhas(),
                       const SizedBox(height: 16),
                       if (curso.ehIngles) PalcoIngles(curso: curso) else _Palco(curso: curso),

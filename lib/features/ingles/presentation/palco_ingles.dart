@@ -284,15 +284,31 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     FocusManager.instance.addEarlyKeyEventHandler(_atalhoAntes);
   }
 
-  /// A rota do palco voltou ao topo (fechou o mapa, a revisão…) com o
-  /// ensaio aberto: o teclado volta para ele, não para a frase.
+  /// Quem espera a lição voltar ao topo (a aula que abre sozinha, com o Início por cima).
+  Completer<void>? _esperandoTopo;
+
+  Future<void> _esperarTopo() {
+    if (ModalRoute.of(context)?.isCurrent ?? true) return Future.value();
+    return (_esperandoTopo ??= Completer<void>()).future;
+  }
+
+  /// A rota do palco voltou ao topo (fechou o mapa, a revisão, o Início…): com o ensaio aberto, o teclado volta
+  /// para ele; senão, no computador, para a frase (no celular o teclado só sobe com um toque).
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     final noTopo = ModalRoute.of(context)?.isCurrent ?? true;
     if (noTopo && !_noTopo) {
+      final espera = _esperandoTopo;
+      _esperandoTopo = null;
+      espera?.complete();
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted && _ensaioAberto) _focoEnsaio.requestFocus();
+        if (!mounted) return;
+        if (_ensaioAberto) {
+          _focoEnsaio.requestFocus();
+        } else if (!ehCelular) {
+          _pedirFoco();
+        }
       });
     }
     _noTopo = noTopo;
@@ -464,6 +480,9 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
   /// ela fechar. Nunca lança.
   Future<void> _talvezAulaAntes() async {
     try {
+      // 🏠 com a tela Início (ou outra) por cima, a aula espera a lição voltar ao topo
+      await _esperarTopo();
+      if (!mounted) return;
       final l = curso.licao;
       if (l.id.isEmpty || curso.licaoConcluida(curso.trilhaIdx, curso.licaoIdx)) return;
       if (!await PrefsAula.autoLigada() || await PrefsAula.jaViu(l.id) || !mounted) return;

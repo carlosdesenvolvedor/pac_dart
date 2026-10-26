@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:pac_dart/features/curso/presentation/pages/inicio_page.dart';
 import 'package:pac_dart/features/ingles/data/preferencia_cena_licao.dart';
 import 'package:pac_dart/features/ingles/data/vozes_aula.dart';
 import 'package:pac_dart/features/ingles/presentation/palco_ingles.dart';
@@ -13,7 +14,12 @@ import 'package:pac_dart/features/ingles/presentation/palco_ingles.dart';
 /// 🎓 A aula do professor abre sozinha na 1ª visita de cada lição no app; os testes antigos não a esperam:
 /// aqui ela fica desligada (os testes da aula ligam `PalcoIngles.aulaSozinha = true`). A voz dela vem do site:
 /// nos testes, sem rede (nenhuma trilha com voz; a voz do aparelho, muda, assume).
+///
+/// 🏠 A tela Início abre por cima da lição no app (e a lição fica com o cabeçalho limpo, o mapa sem as
+/// ferramentas); os testes antigos abrem direto na lição com o cabeçalho cheio: aqui ela fica desligada (os
+/// testes do Início ligam `Inicio.ligado = true`).
 Future<void> testExecutable(FutureOr<void> Function() testMain) async {
+  Inicio.ligado = false;
   PreferenciaCenaLicao.padrao = false;
   PalcoIngles.aulaSozinha = false;
   VozesAula.fixas = const {};

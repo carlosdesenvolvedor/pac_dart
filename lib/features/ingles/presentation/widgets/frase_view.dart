@@ -215,7 +215,10 @@ class FraseViewState extends State<FraseView> {
   List<({int indice, int ini, int fim, Rect caixa})> _palavrasAVista = const [];
 
   /// Este modo pede o foco do campo escondido (e, no celular, o teclado)? Só o Digitar; no computador sempre.
-  bool get _pedeFoco => abreTeclado(entradaAtiva, celular: ehCelular);
+  /// Pede o foco (e o teclado) — só com a frase na tela do topo: com o Início (ou outra tela) por cima, o teclado
+  /// não sobe por cima dela.
+  bool get _pedeFoco =>
+      abreTeclado(entradaAtiva, celular: ehCelular) && (ModalRoute.of(context)?.isCurrent ?? true);
 
   final _montagem = GlobalKey<MontagemFraseState>();
 
