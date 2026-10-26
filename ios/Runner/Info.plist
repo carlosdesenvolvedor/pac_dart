@@ -6,10 +6,6 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>O Paclingo usa o microfone só quando você toca no 🎤 para responder uma frase em inglês falando.</string>
-	<key>NSSpeechRecognitionUsageDescription</key>
-	<string>O Paclingo usa o reconhecimento de voz para entender a frase em inglês que você fala e dizer se ela está certa.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Paclingo</string>
 	<key>CFBundleExecutable</key>
@@ -28,8 +24,14 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>O Paclingo usa o microfone só quando você toca no 🎤 para responder uma frase em inglês falando.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>O Paclingo usa o reconhecimento de voz para entender a frase em inglês que você fala e dizer se ela está certa.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
