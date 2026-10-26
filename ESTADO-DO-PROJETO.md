@@ -2747,7 +2747,7 @@ Pedido do dono: "mantenha esse mesmo nível para todo o restante do curso, aulas
   por ~15 min antes de desistir. O teste de voz pula quando a cópia não tem os mp3 (nuvem/CI).
 - `ingles_aulas_conteudo_test.dart` agora exige aula em TODA lição do curso (≥620).
 
-## 📚 25/out/2026: 18 trilhas de VOCABULÁRIO no B2 e no C1 (170 lições, 1.700 palavras) — o curso vai a 143 trilhas · 796 lições · 7.248 frases
+## 📚 25/out/2026: 18 trilhas de VOCABULÁRIO no B2 e no C1 (170 lições, 1.700 palavras; PUBLICADO em 26/out, commit 94079fb) — o curso vai a 143 trilhas · 796 lições · 7.248 frases
 Pedido do dono: "Faça a trilha de vocabulário B2/C1" (escolheu o "núcleo inteiro"; "lembre da aula historinha etc").
 - **Medição:** das 2.809 palavras da NGSL 1.2 o curso praticava 1.454 nas frases. Curadoria: 1.289 das 1.355 que faltavam
   (66 cortadas pelas proibições do DESIGN §5.7 e britanismos; lista no relatório) + 411 da NAWL 1.2 (acadêmicas úteis; 465
