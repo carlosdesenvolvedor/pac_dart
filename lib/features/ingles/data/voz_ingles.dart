@@ -253,10 +253,6 @@ class VozIngles {
   /// do 1º gesto o `<audio>` e a voz sintética ficam mudos.
   bool get somLiberado => Sons.liberado;
 
-  /// A frase tem gravação de nativo registrada? (Hoje ela só toca de reserva: a voz do personagem vence —
-  /// [AudioNativo.tocaGravacaoDeNativo].)
-  static bool temVozNativa(String frase) => AudioNativo.daFrase(frase) != null;
-
   /// A voz em uso (null fora do navegador ou antes da 1ª fala).
   String? get vozAtual => fala.vozAtual;
 

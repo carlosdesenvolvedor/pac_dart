@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/mixart.dart';
 import '../../../../core/util/abrir_url.dart';
 import '../../../curso/domain/curriculo.dart';
-import '../../data/audio_nativo.dart';
 import '../../domain/fonte_frase.dart';
 import '../../domain/roteiro.dart';
 
@@ -287,17 +286,6 @@ class TraducaoCard extends StatelessWidget {
                   style: Mixart.ui(size: 10.5, color: Mixart.textFaint)),
             ),
           ],
-        // a gravação de nativo que o 🔊 toca (a licença exige o crédito) — só quando ela toca de fato: com a
-        // voz do personagem gerada, o Tatoeba é só reserva e o crédito sairia falso
-        if (!compacto && AudioNativo.tocaGravacaoDeNativo(trecho.cod))
-          if (_creditoDaVoz(trecho.audioCredito) case final voz?) ...[
-            const SizedBox(height: 4),
-            InkWell(
-              onTap: () => abrirUrl(urlDaGravacao(trecho.audio)),
-              borderRadius: BorderRadius.circular(6),
-              child: Text('🎙️ voz nativa: $voz', style: Mixart.ui(size: 10.5, color: Mixart.textFaint)),
-            ),
-          ],
         if (!compacto && (onAlternarAudio != null || onAlternarVozLenta != null || (onAlternarCena != null && !estreito))) ...[
           const SizedBox(height: 8),
           Wrap(spacing: 16, runSpacing: 4, crossAxisAlignment: WrapCrossAlignment.center, children: [
@@ -315,23 +303,6 @@ class TraducaoCard extends StatelessWidget {
 /// 🎬 O tamanho da cena num cartão estreito: a faixa [cheia] no topo, a faixa [baixa] (96 px) ou a [mini]atura
 /// 16:9 no lugar do rosto (quando nem a baixa deixa a zona de digitação caber na tela do celular).
 enum TamanhoCena { cheia, baixa, mini }
-
-/// "CK · CC BY-NC-ND 3.0" → "CK (CC BY-NC-ND 3.0), Tatoeba"; null = sem gravação.
-String? _creditoDaVoz(String credito) {
-  if (credito.isEmpty) return null;
-  final i = credito.indexOf(' · ');
-  if (i < 0) return '$credito, Tatoeba';
-  return '${credito.substring(0, i)} (${credito.substring(i + 3)}), Tatoeba';
-}
-
-/// A página da frase gravada no Tatoeba (o mp3 se chama
-/// `<id da frase>-<id da gravação>.mp3`; o formato antigo, sem a gravação,
-/// também vale).
-@visibleForTesting
-String urlDaGravacao(String asset) {
-  final id = RegExp(r'(\d+)(?:-\d+)?\.mp3$').firstMatch(asset)?.group(1);
-  return id == null ? 'https://tatoeba.org' : 'https://tatoeba.org/pt-br/sentences/show/$id';
-}
 
 /// "Ana: " antes da fala anterior (vazio se não souber quem disse).
 String _prefixoQuem(String quem) {

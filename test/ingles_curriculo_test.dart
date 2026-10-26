@@ -5,11 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:pac_dart/features/curso/domain/curriculo.dart';
 import 'package:pac_dart/features/curso/presentation/bloc/typing_bloc.dart';
 import 'package:pac_dart/features/ingles/data/audio_nativo.dart';
-import 'package:pac_dart/features/ingles/data/voz_ingles.dart';
 import 'package:pac_dart/features/ingles/domain/avaliacao.dart';
 import 'package:pac_dart/features/ingles/domain/fonte_frase.dart';
 import 'package:pac_dart/features/ingles/domain/revisao.dart';
-import 'package:pac_dart/features/ingles/presentation/widgets/traducao_card.dart';
 
 /// Auditoria do currículo de inglês integrado (assets/ingles/curriculo.json).
 void main() {
@@ -83,58 +81,12 @@ void main() {
     }
   }, timeout: const Timeout(Duration(minutes: 3))); // 7 mil frases: passa de 30 s com a máquina ocupada
 
-  test('voz nativa: todo "au" é um mp3 de assets/ingles/audio/ que existe, com autor e licença', () {
-    final comAudio = frases.where((x) => x.f.audio.isNotEmpty).toList();
-    expect(comAudio.length, greaterThanOrEqualTo(300), reason: 'gravações do Tatoeba sumiram do currículo');
-    // o registro do audio_nativo.py: qual gravação (audio_id) e de quem é cada frase
-    final registro = jsonDecode(File('tools/ingles/dados/audio_nativo.json').readAsStringSync()) as Map<String, dynamic>;
-    final usados = <String>{};
-    for (final x in comAudio) {
-      final onde = '${x.t.nivel} › ${x.l.nome}: "${x.f.cod}"';
-      // <sentence_id>-<audio_id>.mp3: o nome prova QUAL gravação está no disco
-      final nome = RegExp(r'^assets/ingles/audio/(\d+)-(\d+)\.mp3$').firstMatch(x.f.audio);
-      expect(nome, isNotNull, reason: '$onde (${x.f.audio})');
-      // crédito e áudio batem: o mp3 é a gravação registrada, e o crédito é do autor dela
-      final r = registro[x.f.cod] as Map<String, dynamic>?;
-      expect(r, isNotNull, reason: '$onde (fora do audio_nativo.json)');
-      expect('${r!['id']}-${r['audio']}', '${nome!.group(1)}-${nome.group(2)}', reason: onde);
-      expect(x.f.audioCredito, '${r['autor']} · ${r['licenca']}', reason: onde);
-      // o link do crédito abre a FRASE do Tatoeba (não o id da gravação)
-      expect(urlDaGravacao(x.f.audio), 'https://tatoeba.org/pt-br/sentences/show/${r['id']}', reason: onde);
-      final arq = File(x.f.audio);
-      expect(arq.existsSync(), isTrue, reason: '$onde (falta ${x.f.audio})');
-      expect(arq.lengthSync(), greaterThan(1000), reason: '$onde (${x.f.audio} vazio)');
-      // a licença exige atribuição: "autor · CC …"
-      expect(x.f.audioCredito, matches(RegExp(r'^\S+ · CC')), reason: '$onde (crédito "${x.f.audioCredito}")');
-      usados.add(x.f.audio.split('/').last);
-    }
-    // nenhum mp3 sobrando na pasta (peso à toa no app)
-    final naPasta = Directory('assets/ingles/audio')
-        .listSync()
-        .map((e) => e.path.split('/').last)
-        .where((n) => n.endsWith('.mp3'))
-        .toSet();
-    expect(naPasta.difference(usados), isEmpty);
-    // e a pasta está no pubspec (diretório de asset não é recursivo)
-    expect(File('pubspec.yaml').readAsStringSync(), contains('- assets/ingles/audio/'));
-  });
-
-  test('registro frase → gravação: com voz nativa toca o mp3, sem ela fica a voz sintética', () async {
-    AudioNativo.limpar();
-    addTearDown(AudioNativo.limpar);
-    final com = frases.firstWhere((x) => x.f.audio.isNotEmpty).f;
-    final sem = frases.firstWhere((x) => x.f.audio.isEmpty).f;
-    expect(AudioNativo.daFrase(com.cod), isNull, reason: 'antes de carregar o currículo');
-    AudioNativo.registrar(trilhas);
-    expect(AudioNativo.daFrase(com.cod), com.audio);
-    expect(VozIngles.temVozNativa(com.cod), isTrue);
-    expect(AudioNativo.daFrase(sem.cod), isNull);
-    expect(VozIngles.temVozNativa(sem.cod), isFalse);
-    expect(AudioNativo.total, frases.where((x) => x.f.audio.isNotEmpty).map((x) => x.f.cod).toSet().length);
-    // fora do navegador (VM) tocar não quebra: o stub cai na voz sintética muda
-    await VozIngles().falar(com.cod);
-    await VozIngles().falar(sem.cod, lenta: false);
-    await VozIngles().parar();
+  // As gravações de nativo do Tatoeba (CC BY-NC-ND / CC BY-NC) não permitem uso comercial e o Paclingo é pago:
+  // saíram do app em 26/out/2026. Toda frase toca a voz do personagem.
+  test('nenhuma gravação do Tatoeba (licença não comercial) no app: sem "au", sem a pasta, fora do pubspec', () {
+    expect(frases.where((x) => x.f.audio.isNotEmpty || x.f.audioCredito.isNotEmpty), isEmpty);
+    expect(Directory('assets/ingles/audio').existsSync(), isFalse);
+    expect(File('pubspec.yaml').readAsStringSync(), isNot(contains('- assets/ingles/audio/')));
   });
 
   // Mudou no lote "trocar as vozes" (22/out/2026, decisão do dono): toda frase — inclusive as que têm gravação
@@ -189,24 +141,13 @@ void main() {
 
   // Mudou no lote "trocar as vozes" (22/out/2026, decisão do dono: "faça um lote separado para trocar essas
   // vozes"): a prioridade era Tatoeba > personagem; agora a voz do personagem vence e o Tatoeba é só reserva.
-  test('o que tocar: voz gerada do personagem > gravação de nativo (reserva) > voz sintética', () {
+  test('o que tocar: voz gerada do personagem > voz sintética', () {
     AudioNativo.limpar();
     addTearDown(AudioNativo.limpar);
-    final nativa = frases.firstWhere((x) => x.f.audio.isNotEmpty).f;
-    final outraNativa = frases.lastWhere((x) => x.f.audio.isNotEmpty && x.f.cod != nativa.cod).f;
-    final gerada = frases.firstWhere((x) => x.f.audio.isEmpty).f;
-    AudioNativo.registrar(trilhas);
-    AudioNativo.registrarGeradas({nativa.cod: 'assets/ingles/voz/x.mp3', gerada.cod: 'assets/ingles/voz/y.mp3'});
-    expect(AudioNativo.paraTocar(nativa.cod), 'assets/ingles/voz/x.mp3', reason: 'o personagem vence o Tatoeba');
-    expect(AudioNativo.paraTocar(gerada.cod), 'assets/ingles/voz/y.mp3');
-    // sem a voz do personagem, a gravação de nativo ainda toca (reserva)
-    expect(AudioNativo.paraTocar(outraNativa.cod), outraNativa.audio);
-    // o crédito "voz nativa" só quando o Tatoeba toca de fato
-    expect(AudioNativo.tocaGravacaoDeNativo(nativa.cod), isFalse);
-    expect(AudioNativo.tocaGravacaoDeNativo(outraNativa.cod), isTrue);
-    expect(AudioNativo.tocaGravacaoDeNativo(gerada.cod), isFalse);
-    expect(VozIngles.temVozNativa(nativa.cod), isTrue, reason: 'a gravação continua registrada (reserva)');
-    expect(VozIngles.temVozNativa(gerada.cod), isFalse);
+    final uma = frases.first.f, outra = frases.last.f;
+    AudioNativo.registrarGeradas({uma.cod: 'assets/ingles/voz/x.mp3'});
+    expect(AudioNativo.paraTocar(uma.cod), 'assets/ingles/voz/x.mp3');
+    expect(AudioNativo.paraTocar(outra.cod), isNull, reason: 'sem voz gerada: a voz sintética do navegador');
     expect(AudioNativo.paraTocar('Not in the course at all.'), isNull);
   });
 

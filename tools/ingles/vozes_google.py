@@ -2,9 +2,9 @@
 """Gera a voz de cada frase do PAC·ENGLISH com o Google Cloud Text-to-Speech (vozes Chirp 3 HD, inglês americano).
 
 Cada personagem tem SEMPRE a mesma voz (o aluno, Mike, Ana, Sarah…), e os exemplos da teoria têm a voz do narrador.
-Toda frase do curso tem a voz do personagem, inclusive as que têm gravação de nativo do Tatoeba (campo "au"): no app
-a voz do personagem vence e o Tatoeba fica só de reserva. As falas da história do Turismo ("The Golden Wheel") também
-ganham a voz de quem fala (Max, Kim e o narrador da história com vozes próprias).
+Toda frase do curso tem a voz do personagem (as gravações de nativo do Tatoeba saíram do app: licença não comercial).
+As falas da história do Turismo ("The Golden Wheel") também ganham a voz de quem fala (Max, Kim e o narrador da
+história com vozes próprias).
 
 Saída:
   assets/ingles/voz/<hash>.mp3     um arquivo por (voz, texto); rodar de novo só gera o que falta e apaga os órfãos
@@ -128,29 +128,20 @@ def sintetizar(texto, voz, gcp, token):
 
 
 def universo_curso():
-    """{texto: papel} do curso: toda frase (inclusive as que têm gravação do Tatoeba em "au", que agora ficam só de
-    reserva no app) e todo exemplo da teoria. A 1ª fala vale: o mesmo texto não muda de voz.
-    Exceção: o índice é só por texto, então frase com gravação do Tatoeba ("au") dita por personagens de vozes
-    DIFERENTES fica de fora — segue tocando o Tatoeba para todos (senão o Ben falaria com a voz da Ana)."""
+    """{texto: papel} do curso: toda frase e todo exemplo da teoria. A 1ª fala vale: o mesmo texto não muda de voz.
+    (As gravações do Tatoeba saíram do app em 26/out/2026 — licença não comercial —, então não há mais exceção.)"""
     trilhas = json.load(open(CURRICULO, encoding='utf-8'))
-    pedidos, falantes, com_au = {}, {}, set()
+    pedidos = {}
     for t in trilhas:
         for l in t['licoes']:
             for f in l['trechos']:
-                cod, quem = f['cod'].strip(), f.get('quem') or 'narrador'
-                pedidos.setdefault(cod, quem)
-                falantes.setdefault(cod, set()).add(quem)
-                if f.get('au'):
-                    com_au.add(cod)
-    fora = {c for c in com_au if len({voz_do_papel(q) for q in falantes[c]}) > 1}
-    for c in fora:
-        del pedidos[c]
+                pedidos.setdefault(f['cod'].strip(), f.get('quem') or 'narrador')
     for t in trilhas:
         for l in t['licoes']:
             for b in l.get('teoria') or []:
                 if isinstance(b, dict) and b.get('t') == 'ex':
                     en = b['c'].split('\n')[0].strip()
-                    if en and en not in fora:
+                    if en:
                         pedidos.setdefault(en, 'narrador')
     return pedidos
 

@@ -22,9 +22,7 @@ class CurriculoLoader {
     final raw = await rootBundle.loadString(linguagem.curriculo);
     final lista = jsonDecode(raw) as List;
     final trilhas = lista.map((e) => Trilha.fromJson(e as Map<String, dynamic>)).toList();
-    // inglês: as frases com voz gerada do personagem (ou, de reserva, gravação
-    // de nativo) passam a tocar o mp3
-    AudioNativo.registrar(trilhas);
+    // inglês: as frases com voz gerada do personagem passam a tocar o mp3
     if (linguagem == Linguagem.ingles) {
       try {
         final indice = await rootBundle.loadString(AudioNativo.indiceGeradas);

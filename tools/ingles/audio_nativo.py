@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Voz nativa do Tatoeba para as frases do PAC·ENGLISH (no lugar da voz sintética do navegador).
 
+⚠️ APOSENTADO em 26/out/2026: as gravações (CC BY-NC-ND / CC BY-NC) não permitem uso comercial e o Paclingo é
+pago; o integrar.py não lê mais o audio_nativo.json e o app não tem mais assets/ingles/audio/. Não rode de novo.
+
     python3 tools/ingles/audio_nativo.py [--cache DIR] [--sem-baixar]
 
 1. Baixa (uma vez) os exports oficiais do Tatoeba para --cache (padrão: <tmp>/pac_dart_tatoeba — dado bruto
