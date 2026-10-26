@@ -2832,3 +2832,5 @@ abrir o app num menu com "voltar para a última lição" e as opções do cabeç
   Prof. Beto, 🎬 ensaio mental, 📺 historinha, 🆕 palavras novas (bolinha no ☰), 🗺️ Mapa · trocar de lição). Saem do
   topo da lição: o aviso de revisar, a introdução, a faixa da cena, os links da aula/ensaio/historinha, o cartão das
   palavras novas e a escolha de trilha/lição (`MenuTrilhas`). Fica só o aviso do nivelamento na 1ª lição. iOS 1.0.0+4.
+- Na barra, ao lado do ☰: 🧭 trocar de trilha e 📋 trocar de lição (folhas com a lista, abertas na atual, ✓ nas
+  feitas); no celular (< 480 px) os botões encolhem e o emoji sai. iOS 1.0.0+5.

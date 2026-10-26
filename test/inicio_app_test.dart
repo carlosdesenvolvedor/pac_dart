@@ -258,6 +258,30 @@ void main() {
     expect(_k('inicio'), findsOneWidget);
   });
 
+  testWidgets('os ícones ao lado do ☰ trocam de lição e de trilha sem ir ao mapa', (tester) async {
+    await _abrirApp(tester, linguagem: Linguagem.ingles);
+    await _esperar(tester, _k('inicio'));
+    await _tocar(tester, 'inicio-continuar');
+    expect(find.text('Chá da tarde'), findsWidgets);
+    await _tocar(tester, 'barra-licoes');
+    expect(_k('lista-escolher'), findsOneWidget);
+    await _tocar(tester, 'escolher-1');
+    await _anda(tester, 6);
+    expect(find.text('De novo'), findsWidgets, reason: 'foi para a 2ª lição');
+    await _tocar(tester, 'barra-trilhas');
+    expect(_k('escolher-0'), findsOneWidget);
+  });
+
+  testWidgets('no celular (360 px) a barra da lição cabe, sem estourar', (tester) async {
+    await _abrirApp(tester, linguagem: Linguagem.ingles, tela: const Size(360, 780));
+    await _esperar(tester, _k('inicio'));
+    await _tocar(tester, 'inicio-continuar');
+    expect(_k('barra-trilhas'), findsOneWidget);
+    expect(_k('barra-licoes'), findsOneWidget);
+    expect(_k('menu-licao'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
   testWidgets('o mapa fica só com o caminho (as ferramentas moram no Início)', (tester) async {
     await _abrirApp(tester, linguagem: Linguagem.ingles);
     await _esperar(tester, _k('inicio'));
