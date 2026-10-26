@@ -100,7 +100,9 @@ class _HomePageState extends State<HomePage> {
                 child: ConstrainedBox(
                   constraints: const BoxConstraints(maxWidth: 980),
                   child: ListView(
-                    padding: const EdgeInsets.fromLTRB(20, 24, 20, 48),
+                    // 📱 no celular a barra do topo desce até sair de baixo do relógio/bateria
+                    // (sob a barra de status o toque às vezes ia pro sistema); no resto, 24 fixo
+                    padding: EdgeInsets.fromLTRB(20, ehCelular ? _topoCelular(context) : 24, 20, 48),
                     children: [
                       // 🏠 com a tela Início, a lição fica limpa: só o "☰ Início" (o resto mora lá)
                       // (no inglês a barra é a do palco: "← Início", o nome da lição e o ☰ com a aula, o ensaio…)
@@ -147,6 +149,13 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+/// Margem do topo no celular: a área segura (barra de status) menos um tiquinho,
+/// nunca abaixo dos 24 de sempre — só o suficiente pros botões saírem do relógio.
+double _topoCelular(BuildContext context) {
+  final seguro = MediaQuery.paddingOf(context).top - 6;
+  return seguro > 24 ? seguro : 24;
 }
 
 class _Palco extends StatefulWidget {

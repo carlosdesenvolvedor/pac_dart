@@ -2834,3 +2834,17 @@ abrir o app num menu com "voltar para a última lição" e as opções do cabeç
   palavras novas e a escolha de trilha/lição (`MenuTrilhas`). Fica só o aviso do nivelamento na 1ª lição. iOS 1.0.0+4.
 - Na barra, ao lado do ☰: 🧭 trocar de trilha e 📋 trocar de lição (folhas com a lista, abertas na atual, ✓ nas
   feitas); no celular (< 480 px) os botões encolhem e o emoji sai. iOS 1.0.0+5.
+
+## 🪜 26/out/2026: a lição em ETAPAS (como o Duolingo)
+Pedido do dono: "40 a 60 é muito para a lição… fracionar para ficar de 10 a 15, não tire as 40 digitações, mas coloque em
+etapas como o Duolingo, isso motiva".
+- `domain/roteiro.dart`: `EtapasDaLicao` (alvo 12 digitações: 8 frases = 3 etapas de ~13; 12 frases = 5 de 12; toda
+  etapa das lições do curso fica entre 10 e 15; fronteiras fixadas no começo, um erro só alonga a última) e
+  `FilaLicao.toJson/fromJson` (o estado inteiro da fila: parar e continuar dá a MESMA lição — passos, nota, difíceis).
+- `data/etapas_salvas.dart`: a fila salva no aparelho (`en_etapa_<id da lição>`) no fim de cada etapa; sai no fim da lição.
+- Palco: a barra vira "Etapa k de N · x / y nesta etapa" com um segmento por etapa; no fim de cada etapa (menos a
+  última) o cartão "🎉 Etapa k de N concluída!" com "Continuar →" (Enter) e "Parar por aqui" (vai ao Início; salvo);
+  reabrindo a lição, "▶ Você parou aqui: etapa k de N" (sem ensaio/aula, que são do começo). O Início mostra "▶ continua
+  da etapa k de N" no cartão Continuar. `_avancar` não anda durante a pausa.
+- Testes: `ingles_etapas_test.dart` (5) e `ingles_etapas_app_test.dart` (app inteiro: pausa, continuar, reabrir e
+  retomar). iOS 1.0.0+6.

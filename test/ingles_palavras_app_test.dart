@@ -179,6 +179,12 @@ bool _tem(String chave) => find.byKey(Key(chave)).evaluate().isNotEmpty;
 /// Faz as frases da lição (digita a frase inteira e Enter) até a vitória.
 Future<void> _fazerLicao(WidgetTester tester, CursoBloc curso, TypingBloc typing) async {
   for (var i = 0; i < 40 && !curso.state.vitoria; i++) {
+    // 🪜 a pausa entre as etapas da lição: continua
+    if (find.byKey(const Key('etapa-continuar')).evaluate().isNotEmpty) {
+      await tester.tap(find.byKey(const Key('etapa-continuar')));
+      await _anda(tester, 3);
+      continue;
+    }
     await tester.enterText(
         find.descendant(of: find.byType(FraseView), matching: find.byType(TextField)).last, typing.state.chars.join());
     await tester.runAsync(() => Future<void>.delayed(const Duration(milliseconds: 5)));

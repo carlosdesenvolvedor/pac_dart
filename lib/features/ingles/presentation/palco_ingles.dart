@@ -11,7 +11,7 @@ import '../../../core/theme/mixart.dart';
 import '../../../core/ui/festa.dart' show CoresFesta;
 import '../../curso/domain/curriculo.dart';
 import '../../curso/presentation/bloc/curso_bloc.dart';
-import '../../curso/presentation/pages/inicio_page.dart' show Inicio;
+import '../../curso/presentation/pages/inicio_page.dart' show Inicio, abrirInicio;
 import '../../curso/presentation/bloc/typing_bloc.dart';
 import '../../curso/presentation/fluxo_licao.dart';
 import '../../curso/presentation/pages/teoria_page.dart';
@@ -22,6 +22,7 @@ import '../../ia/presentation/widgets/botao_por_que.dart';
 import '../data/preferencia_cena_licao.dart';
 import '../data/voz_ingles.dart';
 import '../data/aulas_repo.dart';
+import '../data/etapas_salvas.dart';
 import '../domain/aula_professor.dart';
 import '../domain/assistir/historia_licao.dart';
 import '../domain/assistir/historias_licoes.dart';
@@ -105,6 +106,13 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
   static const prefVerFrases = 'en_ver_frases';
 
   late FilaLicao _fila;
+
+  /// 🪜 As etapas da lição (~12 digitações cada) e se está no "Etapa concluída!" (a fila já avançou; a próxima
+  /// frase só carrega no "Continuar"). [_etapaRetomada] = a etapa (1-based) de onde a lição continuou.
+  late EtapasDaLicao _etapas;
+  bool _pausaEtapa = false;
+  int? _etapaRetomada;
+  SharedPreferences? _sp;
   bool _audioAuto = true;
   bool _vozLenta = VozIngles.lentaPorPadrao;
   bool _verFrases = false;
@@ -257,6 +265,16 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     WidgetsBinding.instance.addPostFrameCallback((_) => _carregarPasso());
     SharedPreferences.getInstance().then((p) {
       if (!mounted) return;
+      _sp = p;
+      // 💾 a lição parou no fim de uma etapa: continua de lá (antes do ensaio e da aula, que só abrem no começo)
+      if (_fila.feitos == 0 && !curso.vitoria) {
+        final salva = EtapasSalvas.ler(p, curso.licao.id, curso.licao.trechos.length);
+        if (salva != null && !salva.terminou && salva.feitos > 0) {
+          _fila = salva;
+          _etapaRetomada = _etapas.etapaDe(salva.feitos) + 1;
+          WidgetsBinding.instance.addPostFrameCallback((_) => _carregarPasso());
+        }
+      }
       setState(() {
         _audioAuto = p.getBool(prefAudio) ?? true;
         _verFrases = p.getBool(prefVerFrases) ?? false;
@@ -383,7 +401,15 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     _gravouLicao = false;
     _alturaConteudoVitoria = null;
     // a semente varia por lição: a rodada final não sai sempre na mesma ordem
-    _fila = FilaLicao(curso.licao.trechos.length, semente: curso.trilhaIdx * 1000 + curso.licaoIdx + 7);
+    final n = curso.licao.trechos.length;
+    _etapas = EtapasDaLicao.deFrases(n);
+    _pausaEtapa = false;
+    // 💾 parou no fim de uma etapa: continua de lá (repetir a lição começa do zero)
+    final salva = _sp != null && !_repetindo && !curso.vitoria ? EtapasSalvas.ler(_sp!, curso.licao.id, n) : null;
+    _fila = salva != null && !salva.terminou
+        ? salva
+        : FilaLicao(n, semente: curso.trilhaIdx * 1000 + curso.licaoIdx + 7);
+    _etapaRetomada = identical(_fila, salva) ? _etapas.etapaDe(_fila.feitos) + 1 : null;
     _pendente = null;
     _aguardando = false;
     _erradas = const {};
@@ -659,16 +685,25 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
   String _formaDe(String chave) => PalavrasCubit.de(context)?.state.indice?.formaDe(chave) ?? chave;
 
   void _avancar() {
-    if (!mounted || curso.vitoria || _atual == null || !_aguardando) return;
+    if (!mounted || curso.vitoria || _atual == null || !_aguardando || _pausaEtapa) return;
     // cada frase digitada conta 1 exercício do dia; a cópia de correção depois de um
     // erro é repetição do erro, não exercício novo
     if (!_atual!.correcao) HabitoCubit.de(context)?.praticou();
     _gravarPasso();
     _fila.registrar(_pendente, semCorrecao: _pendenteSemCorrecao, vista: _viuNestePasso);
+    _etapaRetomada = null;
     if (!_fila.terminou) {
+      // 🪜 fechou uma etapa: "Etapa concluída!" (salva: dá para parar aqui e continuar depois)
+      if (_etapas.fechouEtapa(_fila.feitos)) {
+        EtapasSalvas.salvar(curso.licao.id, _fila);
+        Sons.toca(Som.gol);
+        setState(() => _pausaEtapa = true);
+        return;
+      }
       _carregarPasso();
       return;
     }
+    EtapasSalvas.apagar(curso.licao.id);
     // fim da lição: as frases entram na revisão espaçada (1ª revisão amanhã)
     // e a prova vira a nota da lição no mapa
     final trechos = curso.licao.trechos;
@@ -686,6 +721,24 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
     final bloc = context.read<CursoBloc>();
     bloc.add(QuizFinalizado(curso.trilhaIdx, curso.licaoIdx, _fila.nota));
     bloc.add(const LicaoFinalizada());
+  }
+
+  /// 🪜 "Continuar →" no fim de uma etapa: a próxima frase.
+  void _continuarEtapa() {
+    if (!mounted || !_pausaEtapa) return;
+    setState(() => _pausaEtapa = false);
+    _carregarPasso();
+    _pedirFoco();
+  }
+
+  /// 🪜 "Parar por aqui": a lição já está salva no fim desta etapa; volta para o Início (sem ele, só avisa).
+  void _pararNaEtapa() {
+    if (Inicio.ligado) {
+      abrirInicio(context);
+    } else {
+      ScaffoldMessenger.maybeOf(context)
+          ?.showSnackBar(const SnackBar(content: Text('Progresso salvo: na volta, a lição continua da próxima etapa.')));
+    }
   }
 
   Future<void> _seguir() async {
@@ -1112,9 +1165,26 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
                           assistir: podeAssistir)
                       : 200),
             )
+          else if (_pausaEtapa)
+            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+              _EtapaConcluida(
+                etapa: _etapas.etapaDe(_fila.feitos - 1) + 1,
+                de: _etapas.quantas,
+                onContinuar: _continuarEtapa,
+                onParar: _pararNaEtapa,
+              ),
+              const SizedBox(height: 16),
+              _BarraFila(feitos: _fila.feitos, restantes: _fila.restantes, etapas: _etapas),
+            ])
           else
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               if (_fila.feitos == 0 && Inicio.ligado && curso.concluidas.isEmpty) const _AvisoNivelamento(),
+              if (_etapaRetomada case final et?) ...[
+                Text('▶ Você parou aqui: etapa $et de ${_etapas.quantas}',
+                    key: const Key('etapa-retomada'),
+                    style: Mixart.ui(size: 12.5, weight: FontWeight.w800, color: Mixart.brand)),
+                const SizedBox(height: 8),
+              ],
               if (_fila.feitos == 0 && !Inicio.ligado) ...[
                 if (curso.concluidas.isEmpty) const _AvisoNivelamento(),
                 if (revisao != null)
@@ -1282,6 +1352,7 @@ class _PalcoInglesState extends State<PalcoIngles> with WidgetsBindingObserver, 
                 _BarraFila(
                   feitos: _fila.feitos,
                   restantes: _fila.restantes,
+                  etapas: _etapas,
                   onPalavras: PalavrasCubit.de(context) == null ? null : _escolherPalavras,
                 ),
               ]),
@@ -1667,13 +1738,18 @@ class _Selo extends StatelessWidget {
 class _BarraFila extends StatelessWidget {
   final int feitos, restantes;
 
+  /// 🪜 As etapas da lição: a barra vira segmentos e o texto diz "Etapa k de N".
+  final EtapasDaLicao? etapas;
+
   /// "🎯 Escolher palavras" no meio da linha (null = sem o botão).
   final VoidCallback? onPalavras;
 
-  const _BarraFila({required this.feitos, required this.restantes, this.onPalavras});
+  const _BarraFila({required this.feitos, required this.restantes, this.etapas, this.onPalavras});
 
   @override
   Widget build(BuildContext context) {
+    final et = etapas;
+    if (et != null && et.quantas > 1) return _porEtapas(context, et);
     final total = feitos + restantes;
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       // tela estreita (ou letra grande): os três encolhem com reticências em vez de estourar
@@ -1719,6 +1795,68 @@ class _BarraFila extends StatelessWidget {
             color: Mixart.brand,
           ),
         ),
+      ),
+    ]);
+  }
+
+  /// "Etapa 2 de 3 · 5 / 13" e um segmento por etapa (as feitas cheias, a atual andando).
+  Widget _porEtapas(BuildContext context, EtapasDaLicao et) {
+    final k = et.etapaDe(feitos);
+    final ini = et.inicioDa(k);
+    final fim = k == et.quantas - 1 ? feitos + restantes : et.fimDa(k);
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Flexible(
+          child: Text('Etapa ${k + 1} de ${et.quantas}',
+              key: const Key('etapa-atual'),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: Mixart.ui(size: 11.5, weight: FontWeight.w800, color: Mixart.brand)),
+        ),
+        if (onPalavras != null)
+          Flexible(
+            flex: 2,
+            child: InkWell(
+              key: const Key('licao-escolher-palavras'),
+              onTap: onPalavras,
+              borderRadius: BorderRadius.circular(Mixart.radiusChip),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                child: Text('🎯 Treinar palavras',
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Mixart.ui(size: 12, weight: FontWeight.w700, color: Mixart.brand)),
+              ),
+            ),
+          ),
+        Flexible(
+          flex: 2,
+          child: Text('${feitos - ini} / ${fim - ini} nesta etapa',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.end,
+              style: Mixart.ui(size: 11, color: Mixart.textMuted)),
+        ),
+      ]),
+      const SizedBox(height: 6),
+      BlocBuilder<TypingBloc, TypingState>(
+        buildWhen: (a, b) => a.progresso != b.progresso,
+        builder: (context, typing) => Row(children: [
+          for (var i = 0; i < et.quantas; i++) ...[
+            if (i > 0) const SizedBox(width: 5),
+            Expanded(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(999),
+                child: LinearProgressIndicator(
+                  value: i < k ? 1 : (i > k ? 0 : (fim == ini ? 0 : ((feitos - ini + typing.progresso) / (fim - ini)).clamp(0.0, 1.0))),
+                  minHeight: 8,
+                  backgroundColor: Mixart.surfaceHi,
+                  color: Mixart.brand,
+                ),
+              ),
+            ),
+          ],
+        ]),
       ),
     ]);
   }
@@ -1865,4 +2003,71 @@ class _IntroLicaoIngles extends StatelessWidget {
       ]),
     );
   }
+}
+
+/// 🎉 "Etapa concluída!" — a pausa entre as etapas da lição: continuar (Enter) ou parar aqui (salvo).
+class _EtapaConcluida extends StatelessWidget {
+  final int etapa, de;
+  final VoidCallback onContinuar, onParar;
+  const _EtapaConcluida({required this.etapa, required this.de, required this.onContinuar, required this.onParar});
+
+  @override
+  Widget build(BuildContext context) => Focus(
+        autofocus: true,
+        onKeyEvent: (_, e) {
+          if (e is KeyDownEvent &&
+              (e.logicalKey == LogicalKeyboardKey.enter || e.logicalKey == LogicalKeyboardKey.numpadEnter)) {
+            onContinuar();
+            return KeyEventResult.handled;
+          }
+          return KeyEventResult.ignored;
+        },
+        child: Container(
+          key: const Key('etapa-concluida'),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 26),
+          decoration: BoxDecoration(
+            color: Mixart.bg,
+            border: Border.all(color: Mixart.brand, width: 1.5),
+            borderRadius: BorderRadius.circular(Mixart.radiusLg),
+          ),
+          child: Column(children: [
+            const Text('🎉', style: TextStyle(fontSize: 44)),
+            const SizedBox(height: 8),
+            Text('Etapa $etapa de $de concluída!', textAlign: TextAlign.center, style: Mixart.display(size: 22, color: Mixart.brand)),
+            const SizedBox(height: 6),
+            Text(
+              etapa == de - 1 ? 'Falta só a última: a prova da lição.' : 'Mais ${de - etapa} etapa${de - etapa == 1 ? '' : 's'} para fechar a lição.',
+              textAlign: TextAlign.center,
+              style: Mixart.ui(size: 13.5, color: Mixart.textMuted),
+            ),
+            const SizedBox(height: 18),
+            Wrap(alignment: WrapAlignment.center, spacing: 10, runSpacing: 10, children: [
+              FilledButton(
+                key: const Key('etapa-continuar'),
+                style: FilledButton.styleFrom(
+                  backgroundColor: Mixart.brand,
+                  foregroundColor: Mixart.onBrand,
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+                ),
+                onPressed: onContinuar,
+                child: Text('Continuar →', style: Mixart.ui(size: 14, weight: FontWeight.w800, color: Mixart.onBrand)),
+              ),
+              OutlinedButton(
+                key: const Key('etapa-parar'),
+                style: OutlinedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+                  side: BorderSide(color: Mixart.border),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
+                ),
+                onPressed: onParar,
+                child: Text('Parar por aqui', style: Mixart.ui(size: 13.5, weight: FontWeight.w700, color: Mixart.textMuted)),
+              ),
+            ]),
+            const SizedBox(height: 8),
+            Text('Seu progresso fica salvo: na volta, a lição continua daqui.',
+                textAlign: TextAlign.center, style: Mixart.ui(size: 11.5, color: Mixart.textFaint)),
+          ]),
+        ),
+      );
 }

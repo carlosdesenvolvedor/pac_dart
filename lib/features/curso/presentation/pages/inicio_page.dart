@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/mixart.dart';
+import '../../../ingles/data/etapas_salvas.dart';
 import '../../../ingles/presentation/palavras_cubit.dart';
 import '../bloc/curso_bloc.dart';
 import '../widgets/hud.dart';
@@ -131,6 +132,21 @@ class _Continuar extends StatelessWidget {
                     Text('${trilha.nivel} · lição ${st.licaoIdx + 1} de ${trilha.licoes.length}',
                         style: Mixart.ui(size: 12.5, color: Mixart.textMuted), maxLines: 2, overflow: TextOverflow.ellipsis),
                   ],
+                  // 🪜 parou no fim de uma etapa: "continua da etapa 2 de 3"
+                  if (licao != null && st.ehIngles)
+                    FutureBuilder<({int etapa, int de})?>(
+                      future: EtapasSalvas.ondeParou(licao.id, licao.trechos.length),
+                      builder: (_, snap) {
+                        final e = snap.data;
+                        if (e == null) return const SizedBox.shrink();
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 4),
+                          child: Text('▶ continua da etapa ${e.etapa} de ${e.de}',
+                              key: const Key('inicio-etapa'),
+                              style: Mixart.ui(size: 12.5, weight: FontWeight.w800, color: Mixart.brand)),
+                        );
+                      },
+                    ),
                 ]),
               ),
               const SizedBox(width: 10),

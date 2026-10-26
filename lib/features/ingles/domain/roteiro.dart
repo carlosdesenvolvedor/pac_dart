@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:equatable/equatable.dart';
 
 import 'revisao.dart';
@@ -272,6 +274,101 @@ class FilaLicao {
     }
     return (pontos * 10 / n).round();
   }
+
+  // ───────── 💾 parar numa etapa e continuar depois (o estado inteiro da fila) ─────────
+
+  /// O estado da fila para continuar depois (a lição parada no fim de uma etapa).
+  Map<String, dynamic> toJson() => {
+        'v': 1,
+        'n': n,
+        'passo': _passo,
+        'semente': _semente,
+        'correcao': _correcao,
+        'atual': _atual == null
+            ? null
+            : [_atual!.frase, _atual!.degrau.index, _atual!.correcao ? 1 : 0, _atual!.vez],
+        'prova': {for (final e in primeiraProva.entries) '${e.key}': e.value.index},
+        'dificeis': dificeis.toList(),
+        'f': [
+          for (final e in _f)
+            [e.degrau.index, e.introduzida ? 1 : 0, e.concluida ? 1 : 0, e.retentativa ? 1 : 0, e.ultimo?.index ?? -1,
+              e.venceEm, e.vezes, e.ultimoPasso],
+        ],
+      };
+
+  /// A fila salva por [toJson]; null se não confere (outra lição, outro tamanho, dado estragado).
+  static FilaLicao? fromJson(Map<String, dynamic> j, int n) {
+    try {
+      if (j['v'] != 1 || j['n'] != n) return null;
+      final fila = FilaLicao._vazia(n, semente: j['semente'] as int);
+      final fs = j['f'] as List;
+      if (fs.length != n) return null;
+      for (var i = 0; i < n; i++) {
+        final v = (fs[i] as List).cast<int>();
+        final e = fila._f[i]
+          ..degrau = Degrau.values[v[0]]
+          ..introduzida = v[1] == 1
+          ..concluida = v[2] == 1
+          ..retentativa = v[3] == 1
+          ..ultimo = v[4] < 0 ? null : ResultadoRevisao.values[v[4]]
+          ..venceEm = v[5]
+          ..vezes = v[6]
+          ..ultimoPasso = v[7];
+        assert(e.vezes >= 0);
+      }
+      fila._passo = j['passo'] as int;
+      fila._correcao = j['correcao'] as int?;
+      final a = j['atual'] as List?;
+      fila._atual = a == null
+          ? null
+          : PassoFila(a[0] as int, Degrau.values[a[1] as int], correcao: a[2] == 1, vez: a[3] as int);
+      for (final e in (j['prova'] as Map).entries) {
+        fila.primeiraProva[int.parse('${e.key}')] = ResultadoRevisao.values[e.value as int];
+      }
+      fila.dificeis.addAll((j['dificeis'] as List).cast<int>());
+      return fila;
+    } catch (_) {
+      return null;
+    }
+  }
+
+  FilaLicao._vazia(this.n, {required int semente})
+      : _f = List.generate(n, (_) => _EstadoFrase()),
+        _semente = semente == 0 ? 1 : semente;
+}
+
+/// 🪜 As ETAPAS de uma lição (pedido do dono, 26/out/2026: "40 a 60 é muito… fracionar para ficar de 10 a 15, como o
+/// Duolingo"): as digitações da lição (5 por frase) divididas em partes de ~[alvo], cada uma com o seu "concluída!" e
+/// a chance de parar ali e continuar depois. As fronteiras são fixadas no começo (pelo total previsto); um erro
+/// acrescenta digitações e só alonga a última etapa.
+class EtapasDaLicao {
+  /// Digitações por etapa (de 10 a 15 na prática: 40 → 3 de ~13; 60 → 5 de 12).
+  static const alvo = 12;
+
+  /// O total previsto no começo (5 digitações por frase).
+  final int total;
+  const EtapasDaLicao(this.total);
+
+  factory EtapasDaLicao.deFrases(int frases) => EtapasDaLicao(frases * Degrau.values.length);
+
+  int get quantas => total <= 0 ? 1 : max(1, (total / alvo).round());
+
+  /// Digitações feitas ao fim da etapa [k] (0-based); a última vai até o fim da lição.
+  int fimDa(int k) => k >= quantas - 1 ? 1 << 30 : ((k + 1) * total / quantas).round();
+
+  /// A etapa (0-based) em que está quem já fez [feitos] digitações.
+  int etapaDe(int feitos) {
+    for (var k = 0; k < quantas; k++) {
+      if (feitos < fimDa(k)) return k;
+    }
+    return quantas - 1;
+  }
+
+  /// Onde a etapa [k] começa.
+  int inicioDa(int k) => k == 0 ? 0 : fimDa(k - 1);
+
+  /// Acabou de fechar uma etapa (não a última) com [feitos] digitações?
+  bool fechouEtapa(int feitos) => feitos > 0 && etapaDe(feitos) > etapaDe(feitos - 1);
 }
 
 /// O que aparece de cada caractere ainda NÃO digitado.
