@@ -4,7 +4,8 @@ main = "src/index.ts"
 compatibility_date = "2026-09-01"
 
 # Valores públicos (NÃO coloque segredo aqui).
-# A chave do OpenRouter é segredo: local em .dev.vars; publicado com `npx wrangler secret put OPENROUTER_API_KEY`.
+# As chaves são segredo: local em .dev.vars; publicado com `npx wrangler secret put <NOME>`
+# (TYPESAFE_API_KEY, ANTHROPIC_API_KEY, OPENAI_API_KEY e/ou OPENROUTER_API_KEY).
 [vars]
 # Só estes modelos passam (protege o crédito). Acrescente os que for comparar.
 # Ids conferidos no OpenRouter em 2026-10-29. Fixe a versão do Jev (1.14) para as rodadas serem

@@ -2,7 +2,7 @@
   "name": "triagem-jev-worker",
   "version": "0.1.0",
   "private": true,
-  "description": "Proxy do protótipo de triagem para o OpenRouter (Jev + LLM). A chave fica só aqui.",
+  "description": "Proxy do protótipo de triagem (Jev + LLM): TypeSafe, Anthropic e OpenAI direto, ou OpenRouter. As chaves ficam só aqui.",
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
@@ -16,5 +16,8 @@
     "vite": "8.3.2",
     "vitest": "5.0.3",
     "wrangler": "4.147.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.3.0"
   }
 }

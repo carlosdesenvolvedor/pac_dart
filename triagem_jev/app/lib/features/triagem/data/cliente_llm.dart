@@ -23,12 +23,12 @@ class ClienteLlmOpenRouter implements ILlmClient {
     : _http = cliente ?? http.Client();
 
   /// Temperatura e top-p em zero (boa prática do grupo) — exceto nos Claude atuais, que recusam
-  /// parâmetros de amostragem com erro 400; neles a resposta já é pedida em JSON fixo.
+  /// parâmetros de amostragem com erro 400; neles a resposta já é pedida em JSON fixo. Os Claude
+  /// atuais raciocinam antes de responder e o raciocínio conta no max_tokens, por isso o teto maior.
   @override
-  Map<String, dynamic> get parametros => {
-    if (!modelo.startsWith('anthropic/')) ...{'temperature': 0, 'top_p': 0},
-    'max_tokens': 300,
-  };
+  Map<String, dynamic> get parametros => modelo.startsWith('anthropic/')
+      ? {'max_tokens': 2000}
+      : {'temperature': 0, 'top_p': 0, 'max_tokens': 300};
 
   @override
   Future<Resposta<JustificativaLlm>> justificar(Estudo estudo, List<Criterio> criterios) async {

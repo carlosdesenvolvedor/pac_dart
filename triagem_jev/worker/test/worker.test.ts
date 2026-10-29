@@ -1,6 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import worker, { URL_CHAT, URL_DECISOES, type Env } from '../src/index';
+import { URL_CHAT, URL_DECISOES, URL_OPENAI, URL_TYPESAFE } from '../src/config';
+import worker, { type Env } from '../src/index';
 
 const env: Env = { OPENROUTER_API_KEY: 'sk-teste', MODELOS_PERMITIDOS: 'typesafe/jev-1.14,anthropic/claude-haiku-5.5' };
 
@@ -57,5 +58,126 @@ describe('worker', () => {
   it('sem a chave configurada, avisa', async () => {
     const r = await worker.fetch(post('/jev', { model: 'typesafe/jev-1.14' }), {});
     expect(r.status).toBe(500);
+  });
+});
+
+describe('worker com as chaves de cada empresa', () => {
+  const diretas: Env = {
+    TYPESAFE_API_KEY: 'ts-teste',
+    ANTHROPIC_API_KEY: 'sk-ant-teste',
+    OPENAI_API_KEY: 'sk-oa-teste',
+    OPENROUTER_API_KEY: 'sk-or-teste', // existe, mas a chave direta tem prioridade
+  };
+
+  function chamada(f: ReturnType<typeof vi.fn>): { url: string; corpo: Record<string, unknown>; cabecalhos: Headers } {
+    const [url, init] = f.mock.calls[0] as unknown as [string | URL | Request, RequestInit];
+    return {
+      url: String(url instanceof Request ? url.url : url),
+      corpo: JSON.parse(String(init.body)) as Record<string, unknown>,
+      cabecalhos: new Headers(init.headers),
+    };
+  }
+
+  it('/jev vai para a TypeSafe com o id dela', async () => {
+    const f = vi.fn(async () => new Response('{"answers":{}}', { status: 200 }));
+    vi.stubGlobal('fetch', f);
+    const r = await worker.fetch(post('/jev', { model: 'typesafe/jev-1.14', state: 'x', questions: {} }), diretas);
+    expect(r.status).toBe(200);
+    const c = chamada(f);
+    expect(c.url).toBe(URL_TYPESAFE);
+    expect(c.corpo.model).toBe('jev-1.14.0');
+    expect(c.cabecalhos.get('authorization')).toBe('Bearer ts-teste');
+  });
+
+  it('/llm com GPT vai para a OpenAI com o id dela', async () => {
+    const f = vi.fn(async () => new Response('{"choices":[]}', { status: 200 }));
+    vi.stubGlobal('fetch', f);
+    await worker.fetch(post('/llm', { model: 'openai/gpt-6-luna', messages: [], temperature: 0 }), diretas);
+    const c = chamada(f);
+    expect(c.url).toBe(URL_OPENAI);
+    expect(c.corpo).toMatchObject({ model: 'gpt-6-luna', temperature: 0 });
+    expect(c.cabecalhos.get('authorization')).toBe('Bearer sk-oa-teste');
+  });
+
+  it('/llm com Claude usa a Messages API e devolve no formato chat/completions', async () => {
+    const f = vi.fn(
+      async () =>
+        new Response(
+          JSON.stringify({
+            id: 'msg_1',
+            type: 'message',
+            role: 'assistant',
+            model: 'claude-haiku-5-5',
+            content: [
+              { type: 'thinking', thinking: '', signature: 's' },
+              { type: 'text', text: '{"decisao_sugerida":"incluir"}' },
+            ],
+            stop_reason: 'end_turn',
+            stop_details: null,
+            usage: { input_tokens: 300, output_tokens: 40 },
+          }),
+          { status: 200, headers: { 'content-type': 'application/json' } },
+        ),
+    );
+    vi.stubGlobal('fetch', f);
+    const r = await worker.fetch(
+      post('/llm', {
+        model: 'anthropic/claude-haiku-5.5',
+        max_tokens: 300,
+        messages: [
+          { role: 'system', content: 'Você faz triagem.' },
+          { role: 'user', content: 'Estudo E1' },
+        ],
+      }),
+      diretas,
+    );
+    expect(r.status).toBe(200);
+    expect(await r.json()).toMatchObject({
+      choices: [{ message: { content: '{"decisao_sugerida":"incluir"}' } }],
+      usage: { prompt_tokens: 300, completion_tokens: 40 },
+    });
+    const c = chamada(f);
+    expect(c.url).toBe('https://api.anthropic.com/v1/messages');
+    // O SDK 1.x manda a chave como Bearer.
+    expect(c.cabecalhos.get('authorization')).toBe('Bearer sk-ant-teste');
+    expect(c.corpo).toMatchObject({
+      model: 'claude-haiku-5-5',
+      system: 'Você faz triagem.',
+      messages: [{ role: 'user', content: 'Estudo E1' }],
+    });
+    // O teto sobe para caber o raciocínio; temperatura nunca vai para o Claude.
+    expect(c.corpo.max_tokens).toBe(2000);
+    expect(c.corpo).not.toHaveProperty('temperature');
+  });
+
+  it('recusa do Claude vira erro, sem trocar de modelo', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(
+        async () =>
+          new Response(
+            JSON.stringify({
+              id: 'msg_2',
+              type: 'message',
+              role: 'assistant',
+              model: 'claude-haiku-5-5',
+              content: [],
+              stop_reason: 'refusal',
+              stop_details: { type: 'refusal', category: null, explanation: null },
+              usage: { input_tokens: 10, output_tokens: 0 },
+            }),
+            { status: 200, headers: { 'content-type': 'application/json' } },
+          ),
+      ),
+    );
+    const r = await worker.fetch(post('/llm', { model: 'anthropic/claude-haiku-5.5', messages: [] }), diretas);
+    expect(r.status).toBe(502);
+  });
+
+  it('sem chave direta, cai no OpenRouter', async () => {
+    const f = vi.fn(async () => new Response('{}', { status: 200 }));
+    vi.stubGlobal('fetch', f);
+    await worker.fetch(post('/llm', { model: 'openai/gpt-6-luna', messages: [] }), { OPENROUTER_API_KEY: 'sk-or' });
+    expect(chamada(f).url).toBe(URL_CHAT);
   });
 });

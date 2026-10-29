@@ -47,10 +47,10 @@ triagem_jev/
 │       │   ├── clientes_simulados.dart   heurística local, sem internet e sem custo
 │       │   └── arquivos_triagem.dart     leitura do JSON, exportação JSON/CSV
 │       └── presentation/                 TriagemCubit + página única
-└── worker/                               Cloudflare Worker (TypeScript): /jev e /llm → OpenRouter
+└── worker/                               Cloudflare Worker (TypeScript): /jev e /llm → TypeSafe, Anthropic, OpenAI ou OpenRouter
 ```
 
-Uma chave do **OpenRouter** serve para tudo: o Jev (`typesafe/jev-1.14`) e o LLM (Claude, GPT…).
+O app usa sempre os ids do OpenRouter (`typesafe/jev-1.14`, `anthropic/claude-haiku-5.5`…). O Worker escolhe o caminho em cada pedido: a **chave da própria empresa**, se existir no `.dev.vars` (TypeSafe, Anthropic, OpenAI), ou então uma chave do **OpenRouter**, que sozinha serve para tudo. Os ids de cada empresa ficam em `worker/src/config.ts` (`IDS_DIRETOS`). Pela Anthropic, o Worker usa o SDK oficial (`@anthropic-ai/sdk`) e devolve a resposta no mesmo formato chat/completions, para o app não mudar.
 
 ## Rodar
 
@@ -67,11 +67,14 @@ Clique em **Usar exemplo** → **Rodar triagem**. A "decisão" simulada é uma h
 
 ### Modo real (Jev + LLM pelo OpenRouter)
 
-1. Crie uma chave em <https://openrouter.ai/keys> e defina um **limite de gasto** na conta.
-2. Coloque a chave em `triagem_jev/worker/.dev.vars` (esse arquivo não vai para o git):
+1. Coloque as chaves em `triagem_jev/worker/.dev.vars` (esse arquivo não vai para o git). Use as das empresas, a do OpenRouter, ou as duas (a da empresa tem prioridade):
    ```
-   OPENROUTER_API_KEY=sk-or-...
+   TYPESAFE_API_KEY=...        # Jev direto (console.typesafe.ai)
+   ANTHROPIC_API_KEY=sk-ant-…  # Claude direto
+   OPENAI_API_KEY=sk-…         # GPT direto
+   OPENROUTER_API_KEY=sk-or-…  # opcional: serve para todos os modelos
    ```
+   Defina um **limite de gasto** em cada conta. Linha vazia conta como "sem chave". Depois de mudar o `.dev.vars`, reinicie o Worker.
 3. Suba o Worker local:
    ```sh
    cd triagem_jev/worker
@@ -96,9 +99,11 @@ Se for publicar o Worker (`npx wrangler deploy`), defina `TOKEN_ACESSO` (`npx wr
    - resposta `{model, answers, usage: {input_tokens, output_tokens, cost}}`: noul → `noul`; choice → `choice`, `confidence`, `probabilities`; score → `score`, `confidence`, `probabilities` (`"0".."6"`) e `legend`.
    - As perguntas vão em **inglês** (o Jev é treinado em inglês e lê as instruções ao pé da letra); o estudo e os critérios vão como estão.
    - Acima de ~32 mil bytes de texto o Jev entra num modo de contexto longo, mais lento e menos preciso. Um estudo fica muito abaixo disso.
-2. **Ids e preços** (API pública de modelos do OpenRouter): `typesafe/jev-1.14` a US$ 0,042/M de entrada (saída grátis; 1.13 ainda disponível pelo mesmo preço); `anthropic/claude-haiku-5.5` 0,10/0,50; `anthropic/claude-sonnet-5.5` 2,00/10,00; `openai/gpt-6-luna` 0,10/0,50. O Jev fica **fixado na 1.14** para as rodadas serem reproduzíveis (`~typesafe/jev-latest` muda sozinho).
-3. **OpenAI Decisions API:** não achei no OpenRouter. O cenário 3 continua **estimado** com 0,10/M de entrada.
-4. **Temperatura zero:** os modelos Claude atuais recusam `temperature` e `top_p` (erro 400). Para eles o cliente não envia esses parâmetros. Para os demais, envia 0. Isso fica registrado no log de cada chamada.
+2. **Primeira rodada real (29/10/2026), só a etapa 1:** Jev 1.14 direto pela TypeSafe, nos 24 estudos fictícios, com as perguntas por critério. US$ 0,0016 e 6,3 s no total (~1.640 tokens de entrada por estudo). Ficaram incertos só E08 (literatura cinzenta) e E24; nenhum estudo do gabarito "incluir" foi excluído. A amostra é fictícia e fácil: isso mostra que o caminho funciona, não que o Jev acerta.
+3. **Ids e preços** (API pública de modelos do OpenRouter; na TypeSafe direta o Jev 1.14 é `jev-1.14.0`, pelo mesmo preço): `typesafe/jev-1.14` a US$ 0,042/M de entrada (saída grátis; 1.13 ainda disponível pelo mesmo preço); `anthropic/claude-haiku-5.5` 0,10/0,50; `anthropic/claude-sonnet-5.5` 2,00/10,00; `openai/gpt-6-luna` 0,10/0,50. O Jev fica **fixado na 1.14** para as rodadas serem reproduzíveis (`~typesafe/jev-latest` muda sozinho).
+4. **OpenAI Decisions API:** não achei no OpenRouter. O cenário 3 continua **estimado** com 0,10/M de entrada.
+5. **Temperatura zero:** os modelos Claude atuais recusam `temperature` e `top_p` (erro 400). Para eles o cliente não envia esses parâmetros. Para os demais, envia 0. Isso fica registrado no log de cada chamada.
+6. **Claude raciocina antes de responder** (Haiku 5.5 e Sonnet 5.5) e o raciocínio conta no `max_tokens`; por isso o pedido ao Claude usa 2000. Se o Claude recusar por segurança, o estudo fica com erro e vai para o pesquisador: o Worker não troca de modelo em silêncio.
 
 ## Regras que o código segue
 
@@ -112,12 +117,12 @@ Se for publicar o Worker (`npx wrangler deploy`), defina `TOKEN_ACESSO` (`npx wr
 
 ```sh
 cd triagem_jev/app && flutter analyze && flutter test       # 20 testes
-cd triagem_jev/worker && npm run typecheck && npm test      # 6 testes
+cd triagem_jev/worker && npm run typecheck && npm test      # 11 testes
 ```
 
 ## Próximos passos sugeridos
 
-1. Fazer uma rodada real com o exemplo (o formato já foi conferido, mas ainda não rodou contra o OpenRouter).
+1. Completar a rodada real com a etapa 2 (falta a chave da Anthropic ou da OpenAI no `.dev.vars`).
 2. Trocar o exemplo fictício por uma **revisão sistemática publicada** (Opção A do plano), com 20 a 40 estudos e o gabarito dela.
 3. Rodar o cenário "só LLM" de verdade em uma amostra, para trocar *estimado* por *medido*.
 4. Repetir as rodadas (o grupo usa de 6 a 10) e medir a variação.
