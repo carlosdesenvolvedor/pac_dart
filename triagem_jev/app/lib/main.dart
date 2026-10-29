@@ -14,7 +14,7 @@ import 'features/triagem/presentation/triagem_page.dart';
 const workerUrl = String.fromEnvironment('WORKER_URL');
 
 /// Modelos da rodada real (ids do OpenRouter; precisam existir em assets/precos.json).
-const modeloDecisao = String.fromEnvironment('MODELO_DECISAO', defaultValue: 'typesafe/jev-1.13');
+const modeloDecisao = String.fromEnvironment('MODELO_DECISAO', defaultValue: 'typesafe/jev-1.14');
 
 /// Só se o Worker publicado tiver TOKEN_ACESSO.
 const tokenAcesso = String.fromEnvironment('TOKEN_ACESSO');

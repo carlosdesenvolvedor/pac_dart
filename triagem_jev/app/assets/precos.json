@@ -1,11 +1,13 @@
 {
-  "conferido_em": "A CONFIRMAR nas páginas oficiais no dia da demonstração (valores de 2026-10-29)",
-  "observacao": "US$ por 1 milhão de tokens. Jev e Decisions API: valores do plano de pesquisa. Claude Haiku 5.5: preço da API da Anthropic (no OpenRouter pode diferir).",
+  "conferido_em": "2026-10-29, na API pública de modelos do OpenRouter (openrouter.ai/api/v1/models) e na página do Jev (openrouter.ai/typesafe/jev-1.14)",
+  "observacao": "US$ por 1 milhão de tokens, preços do OpenRouter. Jev: só a entrada é cobrada (a resposta traz usage.cost, que fica no log de cada chamada). OpenAI Decisions API: não confirmada no OpenRouter; 0,10 é o preço de entrada do GPT-6 Luna, usado só para ESTIMAR o cenário 3.",
   "modelos": {
+    "typesafe/jev-1.14": { "entrada": 0.042, "saida": 0 },
     "typesafe/jev-1.13": { "entrada": 0.042, "saida": 0 },
     "openai/decisions-gpt-6-luna": { "entrada": 0.10, "saida": 0 },
     "anthropic/claude-haiku-5.5": { "entrada": 0.10, "saida": 0.50 },
     "anthropic/claude-sonnet-5.5": { "entrada": 2.00, "saida": 10.00 },
+    "openai/gpt-6-luna": { "entrada": 0.10, "saida": 0.50 },
     "simulado/decisao": { "entrada": 0.042, "saida": 0 },
     "simulado/llm": { "entrada": 0.10, "saida": 0.50 }
   }

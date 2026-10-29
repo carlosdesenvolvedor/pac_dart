@@ -12,57 +12,77 @@ const _estudo = Estudo(id: 'E1', titulo: 'Geração de testes com LLM', resumo: 
 const _criterios = [Criterio('C1', 'Trata de geração de testes.')];
 
 void main() {
-  group('cliente de decisão (formato A CONFIRMAR)', () {
-    test('o pedido leva as três perguntas e a ordem das opções', () {
+  group('cliente de decisão (Decisions API do OpenRouter)', () {
+    test('o pedido segue o esquema: noul, choice com criteria em mapa e score com níveis', () {
       final c = ClienteDecisaoOpenRouter.corpo(
-        'typesafe/jev-1.13',
+        'typesafe/jev-1.14',
         _estudo,
         _criterios,
         Decisao.values.reversed.toList(),
       );
-      final ds = c['decisions'] as List;
-      expect([for (final d in ds) d['type']], ['condition', 'choice', 'score']);
-      expect(ds[1]['options'], ['incerto', 'excluir', 'incluir']);
-      expect(c['state'], contains('C1: Trata de geração de testes.'));
+      expect(c['model'], 'typesafe/jev-1.14');
+      final q = c['questions'] as Map<String, dynamic>;
+      expect([for (final v in q.values) v['type']], ['noul', 'choice', 'score']);
+      expect((q['condicao']['criteria'] as Map).keys, ['true', 'false']);
+      // A ordem das opções segue o pedido (o teste de estabilidade inverte).
+      expect((q['escolha']['criteria'] as Map).keys, ['incerto', 'excluir', 'incluir']);
+      expect(q['nota']['criteria'], hasLength(7));
+      final state = c['state'] as Map<String, dynamic>;
+      expect(state['inclusion_criteria'], {'C1': 'Trata de geração de testes.'});
+      expect(state['study'], {
+        'source_type': 'peer-reviewed article',
+        'title': 'Geração de testes com LLM',
+        'abstract': 'Um experimento.',
+      });
+      // Sobrevive ao jsonEncode (é o que vai pelo fio).
+      expect(jsonDecode(jsonEncode(c)), c);
     });
 
-    test('lê resposta em lista com nomes', () {
+    test('lê as três respostas no formato documentado', () {
       final d = ClienteDecisaoOpenRouter.mapearResposta(
         {
-          'decisions': [
-            {'name': 'condicao', 'probability': 0.83},
-            {
-              'name': 'escolha',
+          'id': 'gen-1',
+          'model': 'typesafe/jev-1.14',
+          'answers': {
+            'condicao': {'type': 'noul', 'noul': 0.83},
+            'escolha': {
+              'type': 'choice',
               'choice': 'incluir',
-              'probabilities': {'incluir': 0.7, 'excluir': 0.1, 'incerto': 0.2},
               'confidence': 0.66,
+              'probabilities': {'incluir': 0.7, 'excluir': 0.1, 'incerto': 0.2},
             },
-            {
-              'name': 'nota',
-              'distribution': [0, 0, 0, 0.1, 0.2, 0.3, 0.4],
+            'nota': {
+              'type': 'score',
+              'score': 5.0,
+              'confidence': 0.4,
+              'probabilities': {'0': 0.0, '1': 0.0, '2': 0.0, '3': 0.1, '4': 0.2, '5': 0.3, '6': 0.4},
+              'legend': {'0': '1: certainly exclude'},
             },
-          ],
-          'usage': {'prompt_tokens': 210, 'completion_tokens': 0},
+          },
+          'usage': {'input_tokens': 210, 'output_tokens': 70, 'cost': 0.0000088},
         },
         'E1',
-        'typesafe/jev-1.13',
+        'typesafe/jev-1.14',
         Decisao.values,
         123,
       );
       expect(d.probInclusao, 0.83);
       expect(d.escolha, Decisao.incluir);
+      expect(d.probEscolha, {Decisao.incluir: 0.7, Decisao.excluir: 0.1, Decisao.incerto: 0.2});
       expect(d.confianca, 0.66);
       expect(d.notaEsperada, closeTo(6.0, 1e-9));
       expect(d.uso.tokensEntrada, 210);
+      expect(d.uso.ms, 123);
       expect(d.uso.medido, isTrue);
     });
 
-    test('lê resposta em mapa e escolhe pela maior probabilidade', () {
+    test('sem "choice" escolhe pela maior probabilidade; nota é opcional', () {
       final d = ClienteDecisaoOpenRouter.mapearResposta(
         {
-          'results': {
-            'condicao': {'p_true': 0.2},
+          'answers': {
+            'condicao': {'type': 'noul', 'noul': 0.2},
             'escolha': {
+              'type': 'choice',
               'probabilities': {'incluir': 0.1, 'excluir': 0.8, 'incerto': 0.1},
             },
           },
@@ -74,6 +94,13 @@ void main() {
       );
       expect(d.escolha, Decisao.excluir);
       expect(d.notaEsperada, isNull);
+    });
+
+    test('resposta sem answers vira FalhaModelo', () {
+      expect(
+        () => ClienteDecisaoOpenRouter.mapearResposta({'error': {'code': 400}}, 'E1', 'm', Decisao.values, 1),
+        throwsA(isA<FalhaModelo>()),
+      );
     });
 
     test('HTTP de erro vira FalhaModelo com mensagem útil', () async {

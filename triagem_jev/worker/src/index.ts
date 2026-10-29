@@ -10,7 +10,10 @@
  * publicar, defina TOKEN_ACESSO e ORIGENS (veja o LEIA-ME) — senão qualquer um gasta seu crédito.
  */
 
-/** ⚠️ CONFIRMAR na documentação: https://openrouter.ai/docs/guides/community/jev */
+/**
+ * Conferido em 2026-10-29: https://openrouter.ai/docs/guides/community/jev e a referência da Decisions
+ * API (o servidor dessa rota é https://openrouter.ai, não https://openrouter.ai/api/v1).
+ */
 export const URL_DECISOES = 'https://openrouter.ai/api/alpha/decisions';
 export const URL_CHAT = 'https://openrouter.ai/api/v1/chat/completions';
 export const TEMPO_LIMITE_MS = 30_000;

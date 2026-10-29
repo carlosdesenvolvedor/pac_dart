@@ -7,5 +7,7 @@ compatibility_date = "2026-09-01"
 # A chave do OpenRouter é segredo: local em .dev.vars; publicado com `npx wrangler secret put OPENROUTER_API_KEY`.
 [vars]
 # Só estes modelos passam (protege o crédito). Acrescente os que for comparar.
-MODELOS_PERMITIDOS = "typesafe/jev-1.13,~typesafe/jev-latest,anthropic/claude-haiku-5.5,anthropic/claude-sonnet-5.5"
+# Ids conferidos no OpenRouter em 2026-10-29. Fixe a versão do Jev (1.14) para as rodadas serem
+# reproduzíveis; ~typesafe/jev-latest muda sozinho quando sai versão nova.
+MODELOS_PERMITIDOS = "typesafe/jev-1.14,typesafe/jev-1.13,anthropic/claude-haiku-5.5,anthropic/claude-sonnet-5.5,openai/gpt-6-luna"
 ORIGENS = ""

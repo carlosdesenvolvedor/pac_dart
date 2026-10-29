@@ -11,7 +11,7 @@ Protótipo para a reunião de orientação do mestrado: um **modelo de decisão*
 | Item do plano (seção 11) | Situação |
 |---|---|
 | 1. Modelos de domínio e leitura do arquivo | ✅ |
-| 2. Cliente Jev + orquestrador da etapa 1 | ✅ código pronto · ⚠️ **formato da API a confirmar** (ver abaixo) |
+| 2. Cliente Jev + orquestrador da etapa 1 | ✅ formato conferido na documentação (29/10/2026) · falta a 1ª rodada real |
 | 3. Métricas vs gabarito (recall, precisão, acurácia, Kappa, redução) | ✅ |
 | 4. Cliente LLM + etapa 2 | ✅ (OpenRouter, qualquer modelo) |
 | 5. Custo e comparação dos 3 cenários + projeção 1.000/5.000 × 6 rodadas | ✅ (medido × estimado na tela) |
@@ -41,7 +41,7 @@ triagem_jev/
 │       │   ├── custo.dart                calculadora de custo, 3 cenários e projeção
 │       │   └── prompt_llm.dart           prompt da etapa 2 (boas práticas do grupo)
 │       ├── data/
-│       │   ├── cliente_decisao.dart      Jev / Decisions API via Worker  ⚠️ formato a confirmar
+│       │   ├── cliente_decisao.dart      Jev / Decisions API via Worker
 │       │   ├── cliente_llm.dart          LLM via Worker (chat/completions do OpenRouter)
 │       │   ├── clientes_simulados.dart   heurística local, sem internet e sem custo
 │       │   └── arquivos_triagem.dart     leitura do JSON, exportação JSON/CSV
@@ -49,7 +49,7 @@ triagem_jev/
 └── worker/                               Cloudflare Worker (TypeScript): /jev e /llm → OpenRouter
 ```
 
-Uma chave do **OpenRouter** serve para tudo: o Jev (`typesafe/jev-1.13`) e o LLM (Claude, GPT…).
+Uma chave do **OpenRouter** serve para tudo: o Jev (`typesafe/jev-1.14`) e o LLM (Claude, GPT…).
 
 ## Rodar
 
@@ -87,14 +87,16 @@ Clique em **Usar exemplo** → **Rodar triagem**. A "decisão" simulada é uma h
 
 Se for publicar o Worker (`npx wrangler deploy`), defina `TOKEN_ACESSO` (`npx wrangler secret put TOKEN_ACESSO`), passe o mesmo valor ao app com `--dart-define=TOKEN_ACESSO=…` e coloque a origem do site em `ORIGENS`. Sem isso, qualquer pessoa que achar a URL gasta o seu crédito.
 
-## ⚠️ Antes da demonstração, confirmar
+## O que já foi conferido (29/10/2026)
 
-1. **Formato da Decisions API do Jev.** O código usa o endpoint `POST https://openrouter.ai/api/alpha/decisions` e o id `typesafe/jev-1.13`, que aparecem em fontes públicas. Os **nomes dos campos** do pedido e da resposta foram escritos sem acesso à documentação. Ajuste só dois métodos, que têm testes próprios:
-   - `ClienteDecisaoOpenRouter.corpo` (pedido) e `ClienteDecisaoOpenRouter.mapearResposta` (resposta), em `app/lib/features/triagem/data/cliente_decisao.dart`;
-   - a URL em `worker/src/index.ts` (`URL_DECISOES`).
-   Documentação: <https://openrouter.ai/docs/guides/community/jev>
-2. **Preços** em `app/assets/precos.json` (Jev 0,042 e Decisions API 0,10 vêm do plano; Claude Haiku 5.5 a US$ 0,10/0,50 é o preço da API da Anthropic, e no OpenRouter pode ser diferente).
-3. **Ids dos modelos no OpenRouter** (ex.: `anthropic/claude-haiku-5.5`).
+1. **Formato da Decisions API do Jev**, na [referência oficial](https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-questions-and-answers-request.md) e numa resposta real do Jev 1.13:
+   - `POST https://openrouter.ai/api/alpha/decisions` (o servidor dessa rota é `https://openrouter.ai`, sem `/api/v1`), com `Authorization: Bearer <chave do OpenRouter>`;
+   - pedido `{model, state, questions}`, e `questions` é um **mapa** nome → `{type, instructions, criteria}`. Tipos: `noul` (`criteria: {true, false}`), `choice` (`criteria` = mapa opção → descrição; **não existe** `options`) e `score` (`criteria` = lista de níveis, e a posição na lista é o nível, a partir de 0);
+   - resposta `{model, answers, usage: {input_tokens, output_tokens, cost}}`: noul → `noul`; choice → `choice`, `confidence`, `probabilities`; score → `score`, `confidence`, `probabilities` (`"0".."6"`) e `legend`.
+   - As perguntas vão em **inglês** (o Jev é treinado em inglês e lê as instruções ao pé da letra); o estudo e os critérios vão como estão.
+   - Acima de ~32 mil bytes de texto o Jev entra num modo de contexto longo, mais lento e menos preciso. Um estudo fica muito abaixo disso.
+2. **Ids e preços** (API pública de modelos do OpenRouter): `typesafe/jev-1.14` a US$ 0,042/M de entrada (saída grátis; 1.13 ainda disponível pelo mesmo preço); `anthropic/claude-haiku-5.5` 0,10/0,50; `anthropic/claude-sonnet-5.5` 2,00/10,00; `openai/gpt-6-luna` 0,10/0,50. O Jev fica **fixado na 1.14** para as rodadas serem reproduzíveis (`~typesafe/jev-latest` muda sozinho).
+3. **OpenAI Decisions API:** não achei no OpenRouter. O cenário 3 continua **estimado** com 0,10/M de entrada.
 4. **Temperatura zero:** os modelos Claude atuais recusam `temperature` e `top_p` (erro 400). Para eles o cliente não envia esses parâmetros. Para os demais, envia 0. Isso fica registrado no log de cada chamada.
 
 ## Regras que o código segue
@@ -107,13 +109,13 @@ Se for publicar o Worker (`npx wrangler deploy`), defina `TOKEN_ACESSO` (`npx wr
 ## Testes
 
 ```sh
-cd triagem_jev/app && flutter analyze && flutter test       # 19 testes
+cd triagem_jev/app && flutter analyze && flutter test       # 20 testes
 cd triagem_jev/worker && npm run typecheck && npm test      # 6 testes
 ```
 
 ## Próximos passos sugeridos
 
-1. Confirmar o formato do Jev (acima) e fazer uma rodada real com o exemplo.
+1. Fazer uma rodada real com o exemplo (o formato já foi conferido, mas ainda não rodou contra o OpenRouter).
 2. Trocar o exemplo fictício por uma **revisão sistemática publicada** (Opção A do plano), com 20 a 40 estudos e o gabarito dela.
 3. Rodar o cenário "só LLM" de verdade em uma amostra, para trocar *estimado* por *medido*.
 4. Repetir as rodadas (o grupo usa de 6 a 10) e medir a variação.

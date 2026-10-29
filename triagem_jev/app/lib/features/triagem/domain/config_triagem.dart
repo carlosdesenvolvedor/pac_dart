@@ -66,7 +66,7 @@ class ConfigTriagem extends Equatable {
   const ConfigTriagem({
     this.limiteIncluir = 0.80,
     this.limiteExcluir = 0.30,
-    this.modeloDecisao = 'typesafe/jev-1.13',
+    this.modeloDecisao = 'typesafe/jev-1.14',
     this.modeloLlm = 'anthropic/claude-haiku-5.5',
     this.modeloDecisaoAlternativo = 'openai/decisions-gpt-6-luna',
     this.testeEstabilidade = false,

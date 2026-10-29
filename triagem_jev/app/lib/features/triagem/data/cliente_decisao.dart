@@ -9,11 +9,18 @@ import 'falha_modelo.dart';
 
 /// Jev (TypeSafe AI) pela Decisions API do OpenRouter, passando pelo Worker (a chave fica lá).
 ///
-/// ⚠️ CONFIRMAR NA DOCUMENTAÇÃO OFICIAL antes da demonstração:
-/// https://openrouter.ai/docs/guides/community/jev — o formato do pedido em [corpo] e a leitura em
-/// [mapearResposta] foram escritos sem acesso à documentação (só o endpoint `/api/alpha/decisions`
-/// e o id `typesafe/jev-1.13` foram vistos em fontes públicas). Os dois métodos são estáticos e
-/// testados à parte, para ajustar sem mexer no resto.
+/// Formato conferido em 29/10/2026 na referência oficial
+/// (https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-questions-and-answers-request.md)
+/// e numa resposta real do Jev 1.13:
+/// - pedido: `{model, state, questions: {nome: {type, instructions, criteria}}}`;
+///   `noul` leva `criteria: {true, false}`, `choice` um mapa opção→descrição e `score` uma lista
+///   de níveis (a posição na lista é o nível, a partir de 0);
+/// - resposta: `{model, answers: {nome: …}, usage: {input_tokens, output_tokens, cost}}`;
+///   noul → `noul`; choice → `choice`, `confidence`, `probabilities`; score → `score`,
+///   `confidence`, `probabilities` ("0".."6"), `legend`.
+///
+/// As perguntas vão em inglês (o Jev é mais preciso em inglês e lê as instruções ao pé da letra);
+/// o texto do estudo e dos critérios vai como está.
 ///
 /// Serve também para a OpenAI Decisions API (cenário 3): mesmo formato, outro [modelo] e [rota].
 class ClienteDecisaoOpenRouter implements IDecisionModelClient {
@@ -30,7 +37,7 @@ class ClienteDecisaoOpenRouter implements IDecisionModelClient {
 
   ClienteDecisaoOpenRouter({
     required this.worker,
-    this.modelo = 'typesafe/jev-1.13',
+    this.modelo = 'typesafe/jev-1.14',
     this.rota = '/jev',
     http.Client? cliente,
     this.tokenAcesso = '',
@@ -42,33 +49,59 @@ class ClienteDecisaoOpenRouter implements IDecisionModelClient {
     'perguntas': ['condicao', 'escolha', 'nota_1_7'],
   };
 
-  static const perguntaCondicao = 'Este estudo atende a todos os critérios de inclusão?';
-  static const perguntaEscolha = 'Qual deve ser a decisão de triagem para este estudo?';
-  static const perguntaNota =
-      'Numa escala de 1 a 7, o quanto este estudo deve ser incluído? '
-      '1 = certamente deve ser excluído, 7 = certamente deve ser incluído.';
+  static const _base =
+      'You are screening studies for a systematic review. Judge only from the `study` in `state` '
+      '(source type, title, abstract, keywords) against the `inclusion_criteria`; do not use outside knowledge. ';
+  static const perguntaCondicao = '${_base}Does the study meet ALL the inclusion criteria?';
+  static const perguntaEscolha = '${_base}What should the screening decision for this study be?';
+  static const perguntaNota = '${_base}How strongly should this study be included?';
+
+  static const criteriosCondicao = {
+    'true': 'The study meets every inclusion criterion',
+    'false': 'At least one inclusion criterion is not met',
+  };
+  static const opcoesEscolha = {
+    Decisao.incluir: 'Include: the study clearly meets every inclusion criterion',
+    Decisao.excluir: 'Exclude: the study clearly fails at least one inclusion criterion',
+    Decisao.incerto: 'Uncertain: the text is not enough to decide; a researcher must read the full study',
+  };
+
+  /// Os 7 níveis da nota (índice 0 = nota 1).
+  static const niveisNota = [
+    '1: certainly exclude',
+    '2: very likely exclude',
+    '3: probably exclude',
+    '4: cannot tell',
+    '5: probably include',
+    '6: very likely include',
+    '7: certainly include',
+  ];
 
   /// O pedido: estado (critérios + estudo, nada de irrelevante) e as três perguntas numa chamada só.
+  /// A ordem das opções da escolha segue [ordem] (o teste de estabilidade inverte).
   static Map<String, dynamic> corpo(String modelo, Estudo estudo, List<Criterio> criterios, List<Decisao> ordem) => {
     'model': modelo,
-    'state':
-        'Critérios de inclusão:\n${[for (final c in criterios) '${c.id}: ${c.texto}'].join('\n')}\n\n'
-        'Estudo:\n${estudo.estadoTexto}',
-    'decisions': [
-      {'name': 'condicao', 'type': 'condition', 'question': perguntaCondicao},
-      {
-        'name': 'escolha',
+    'state': {
+      'inclusion_criteria': {for (final c in criterios) c.id: c.texto},
+      'study': {
+        'source_type': switch (estudo.tipoFonte) {
+          TipoFonte.artigo => 'peer-reviewed article',
+          TipoFonte.literaturaCinzenta => 'grey literature (blog post, documentation, issue; no formal abstract)',
+        },
+        'title': estudo.titulo,
+        if (estudo.resumo.isNotEmpty) 'abstract': estudo.resumo,
+        if (estudo.palavrasChave.isNotEmpty) 'keywords': estudo.palavrasChave,
+      },
+    },
+    'questions': {
+      'condicao': {'type': 'noul', 'instructions': perguntaCondicao, 'criteria': criteriosCondicao},
+      'escolha': {
         'type': 'choice',
-        'question': perguntaEscolha,
-        'options': [for (final o in ordem) o.name],
+        'instructions': perguntaEscolha,
+        'criteria': {for (final o in ordem) o.name: opcoesEscolha[o]},
       },
-      {
-        'name': 'nota',
-        'type': 'score',
-        'question': perguntaNota,
-        'scale': [for (var n = 1; n <= 7; n++) '$n'],
-      },
-    ],
+      'nota': {'type': 'score', 'instructions': perguntaNota, 'criteria': niveisNota},
+    },
   };
 
   @override
@@ -86,8 +119,8 @@ class ClienteDecisaoOpenRouter implements IDecisionModelClient {
     return Resposta(mapearResposta(json, estudo.id, modelo, ordem, relogio.elapsedMilliseconds), resp.body);
   }
 
-  /// Lê a resposta de forma tolerante (lista ou mapa de decisões; nomes de campo alternativos).
-  /// AJUSTAR aos nomes reais da documentação.
+  /// Lê `answers` da Decisions API. Sem a condição ou a escolha → [FalhaModelo] (o estudo vira
+  /// incerto e segue para o pesquisador). A nota é opcional.
   static DecisaoModelo mapearResposta(
     Map<String, dynamic> j,
     String estudoId,
@@ -95,62 +128,39 @@ class ClienteDecisaoOpenRouter implements IDecisionModelClient {
     List<Decisao> ordem,
     int ms,
   ) {
-    final porNome = <String, Map<String, dynamic>>{};
-    final lista = j['decisions'] ?? j['results'] ?? j['outputs'];
-    if (lista is List) {
-      for (final (i, item) in lista.indexed) {
-        final m = item as Map<String, dynamic>;
-        porNome['${m['name'] ?? ['condicao', 'escolha', 'nota'][i]}'] = m;
-      }
-    } else if (lista is Map) {
-      for (final MapEntry(:key, :value) in lista.entries) {
-        porNome['$key'] = value as Map<String, dynamic>;
-      }
-    }
-    final cond = porNome['condicao'];
-    final esc = porNome['escolha'];
-    final nota = porNome['nota'];
-    if (cond == null || esc == null) throw FalhaModelo('Resposta sem as decisões esperadas: ${jsonEncode(j)}');
+    final answers = j['answers'];
+    final cond = answers is Map ? answers['condicao'] : null;
+    final esc = answers is Map ? answers['escolha'] : null;
+    final nota = answers is Map ? answers['nota'] : null;
+    if (cond is! Map || esc is! Map) throw FalhaModelo('Resposta sem as decisões esperadas: ${jsonEncode(j)}');
 
-    final probCond = _num(cond['probability'] ?? cond['p_true'] ?? cond['probabilities']?['true'] ?? cond['value']);
-
-    final probEscolha = <Decisao, double>{};
-    final pe = esc['probabilities'] ?? esc['distribution'];
-    if (pe is Map) {
-      for (final MapEntry(:key, :value) in pe.entries) {
-        final d = Decisao.deTexto('$key');
-        if (d != null) probEscolha[d] = _num(value);
-      }
-    } else if (pe is List && pe.length == ordem.length) {
-      for (var i = 0; i < ordem.length; i++) {
-        probEscolha[ordem[i]] = _num(pe[i] is Map ? (pe[i] as Map)['probability'] : pe[i]);
-      }
-    }
+    final probEscolha = <Decisao, double>{
+      if (esc['probabilities'] case final Map pe)
+        for (final MapEntry(:key, :value) in pe.entries) ?Decisao.deTexto('$key'): _num(value),
+    };
     final escolha =
-        Decisao.deTexto('${esc['choice'] ?? esc['answer'] ?? esc['value']}') ??
+        Decisao.deTexto('${esc['choice']}') ??
         (probEscolha.isEmpty ? Decisao.incerto : probEscolha.entries.reduce((a, b) => a.value >= b.value ? a : b).key);
 
-    var dist = <double>[];
-    final pn = nota?['distribution'] ?? nota?['probabilities'];
-    if (pn is List) {
-      dist = [for (final v in pn) _num(v is Map ? v['probability'] : v)];
-    } else if (pn is Map) {
-      dist = [for (var n = 1; n <= 7; n++) _num(pn['$n'] ?? 0)];
-    }
+    // Níveis "0".."6" → notas 1..7.
+    final dist = <double>[
+      if (nota is Map && nota['probabilities'] is Map)
+        for (var i = 0; i < niveisNota.length; i++) _num((nota['probabilities'] as Map)['$i']),
+    ];
 
     final usage = (j['usage'] as Map?) ?? const {};
     return DecisaoModelo(
       estudoId: estudoId,
       modelo: modelo,
-      probCondicao: probCond,
+      probCondicao: _num(cond['noul']),
       escolha: escolha,
       probEscolha: probEscolha,
       confianca: _num(esc['confidence'] ?? probEscolha[escolha] ?? 0),
       distribuicaoNota: dist,
       ordemOpcoes: ordem,
       uso: Uso(
-        tokensEntrada: (usage['prompt_tokens'] ?? usage['input_tokens'] ?? 0) as int,
-        tokensSaida: (usage['completion_tokens'] ?? usage['output_tokens'] ?? 0) as int,
+        tokensEntrada: (usage['input_tokens'] ?? 0) as int,
+        tokensSaida: (usage['output_tokens'] ?? 0) as int,
         ms: ms,
         medido: true,
       ),
