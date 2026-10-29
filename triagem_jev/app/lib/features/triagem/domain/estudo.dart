@@ -26,7 +26,11 @@ enum TipoFonte {
     'cinzenta' ||
     'blog' ||
     'issue' ||
-    'documentacao' => TipoFonte.literaturaCinzenta,
+    'documentacao' ||
+    'discussao' ||
+    'forum' ||
+    'video' ||
+    'post' => TipoFonte.literaturaCinzenta,
     _ => TipoFonte.artigo,
   };
 
@@ -80,7 +84,7 @@ class Estudo extends Equatable {
     final b = StringBuffer()
       ..writeln('Tipo de fonte: ${tipoFonte.rotulo}')
       ..writeln('Título: $titulo');
-    if (resumo.isNotEmpty) b.writeln('Resumo: $resumo');
+    if (resumo.isNotEmpty) b.writeln('${tipoFonte == TipoFonte.artigo ? 'Resumo' : 'Trecho do texto'}: $resumo');
     if (palavrasChave.isNotEmpty) b.writeln('Palavras-chave: ${palavrasChave.join(', ')}');
     return b.toString().trimRight();
   }
