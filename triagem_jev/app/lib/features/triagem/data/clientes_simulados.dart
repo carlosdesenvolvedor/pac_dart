@@ -97,12 +97,20 @@ class SimuladoDecisionClient implements IDecisionModelClient {
     final probs = {for (final MapEntry(:key, :value) in bruto.entries) key: value / soma};
     final escolha = probs.entries.reduce((a, b) => a.value >= b.value ? a : b).key;
 
-    // Nota 1..7 centrada em 1 + 6p.
-    final centro = 1 + 6 * p;
-    final pesos = [for (var n = 1; n <= 7; n++) exp(-pow(n - centro, 2) / 1.2)];
-    final total = pesos.reduce((a, b) => a + b);
+    // Notas 1..7 em sino: a geral centrada em 1 + 6p; por critério, a cobertura de cada um vira
+    // P(atende) e um Likert centrado em 1 + 6·cobertura.
+    final cob = _Heuristica.cobertura(estudo, criterios);
+    List<double> sino(double centro) {
+      final w = [for (var n = 1; n <= 7; n++) exp(-pow(n - centro, 2) / 1.2)];
+      final t = w.reduce((a, b) => a + b);
+      return [for (final x in w) x / t];
+    }
 
-    final entrada = PromptLlm.estimarTokens('${estudo.estadoTexto}\n${criterios.map((c) => c.texto).join('\n')}') + 60;
+    // O estado vai uma vez; cada critério acrescenta o texto das duas perguntas.
+    final entrada =
+        PromptLlm.estimarTokens('${estudo.estadoTexto}\n${criterios.map((c) => c.texto).join('\n')}') +
+        60 +
+        criterios.fold<int>(0, (a, c) => a + 2 * PromptLlm.estimarTokens(c.texto) + 90);
     final d = DecisaoModelo(
       estudoId: estudo.id,
       modelo: modelo,
@@ -110,8 +118,16 @@ class SimuladoDecisionClient implements IDecisionModelClient {
       escolha: escolha,
       probEscolha: probs,
       confianca: probs[escolha]!,
-      distribuicaoNota: [for (final w in pesos) w / total],
+      distribuicaoNota: sino(1 + 6 * p),
       ordemOpcoes: ordem,
+      porCriterio: [
+        for (var i = 0; i < criterios.length; i++)
+          AvaliacaoCriterio(
+            criterios[i].id,
+            probAtende: 1 / (1 + exp(-8 * (cob[i] - 0.5))),
+            distribuicaoLikert: sino(1 + 6 * cob[i]),
+          ),
+      ],
       uso: Uso(tokensEntrada: entrada, ms: _Heuristica.msFalso(estudo.id, 60)),
     );
     return Resposta(d, '{"simulado": true, "p": ${p.toStringAsFixed(3)}}');

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../domain/decisoes.dart';
 import '../../domain/estudo.dart';
 import '../../domain/resultado_estudo.dart';
 import '../cores_decisao.dart';
@@ -26,6 +27,14 @@ class TabelaEstudos extends StatelessWidget {
         const DataColumn(label: Text('P(inclusão)'), numeric: true),
         const DataColumn(label: Text('Escolha / conf.')),
         const DataColumn(label: Text('Nota 1–7'), numeric: true),
+        const DataColumn(
+          label: Tooltip(
+            message:
+                'Cada critério avaliado à parte, como nos templates do grupo: Likert 1–7 esperado '
+                '(verde = booleano "atende" ≥ 50%) e a soma, como na planilha dos LLMs.',
+            child: Text('Por critério (Likert)'),
+          ),
+        ),
         if (mostrarEstabilidade) const DataColumn(label: Text('Estável?')),
         const DataColumn(label: Text('LLM')),
         const DataColumn(label: Text('Gabarito')),
@@ -81,6 +90,7 @@ class TabelaEstudos extends StatelessWidget {
         DataCell(Text(d == null ? '—' : d.probInclusao.toStringAsFixed(2))),
         DataCell(Text(d == null ? '—' : '${CoresDecisao.rotulo(d.escolha)} · ${pct(d.confianca)}')),
         DataCell(Text(d?.notaEsperada?.toStringAsFixed(1) ?? '—')),
+        DataCell(d == null || d.porCriterio.isEmpty ? const Text('—') : _porCriterio(d)),
         if (mostrarEstabilidade)
           DataCell(switch (r.estavel) {
             true => const Icon(Icons.check, color: CoresDecisao.incluir),
@@ -144,6 +154,30 @@ class TabelaEstudos extends StatelessWidget {
       ],
     );
   }
+
+  Widget _porCriterio(DecisaoModelo d) => Tooltip(
+    message: [
+      for (final a in d.porCriterio)
+        '${a.criterioId}: atende ${pct(a.probAtende)} · Likert ${a.likertEsperado?.toStringAsFixed(1) ?? '—'}',
+    ].join('\n'),
+    child: Text.rich(
+      TextSpan(
+        children: [
+          for (final (i, a) in d.porCriterio.indexed) ...[
+            if (i > 0) const TextSpan(text: ' · '),
+            TextSpan(
+              text: '${a.criterioId} ${a.likertEsperado?.toStringAsFixed(1) ?? '—'}',
+              style: TextStyle(color: a.probAtende >= 0.5 ? CoresDecisao.incluir : CoresDecisao.excluir),
+            ),
+          ],
+          TextSpan(
+            text: '\nΣ ${d.somaLikert?.toStringAsFixed(1) ?? '—'} de ${7 * d.porCriterio.length}',
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    ),
+  );
 
   Widget _erro(String e) => Tooltip(
     message: e,

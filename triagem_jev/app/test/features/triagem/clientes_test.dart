@@ -6,6 +6,7 @@ import 'package:http/testing.dart';
 import 'package:triagem_jev/features/triagem/data/cliente_decisao.dart';
 import 'package:triagem_jev/features/triagem/data/cliente_llm.dart';
 import 'package:triagem_jev/features/triagem/data/falha_modelo.dart';
+import 'package:triagem_jev/features/triagem/domain/decisoes.dart';
 import 'package:triagem_jev/features/triagem/domain/estudo.dart';
 
 const _estudo = Estudo(id: 'E1', titulo: 'Geração de testes com LLM', resumo: 'Um experimento.');
@@ -22,7 +23,12 @@ void main() {
       );
       expect(c['model'], 'typesafe/jev-1.14');
       final q = c['questions'] as Map<String, dynamic>;
-      expect([for (final v in q.values) v['type']], ['noul', 'choice', 'score']);
+      expect(q.keys, ['condicao', 'escolha', 'nota', 'atende_C1', 'likert_C1']);
+      expect([for (final v in q.values) v['type']], ['noul', 'choice', 'score', 'noul', 'score']);
+      // Por critério, o texto dos templates do grupo (Booleano I/E e Likert 1–7).
+      expect(q['atende_C1']['instructions'], endsWith('clearly met? C1 - Trata de geração de testes.'));
+      expect(q['likert_C1']['criteria'], hasLength(7));
+      expect((q['likert_C1']['criteria'] as List).first, '1 - Strongly disagree');
       expect((q['condicao']['criteria'] as Map).keys, ['true', 'false']);
       // A ordem das opções segue o pedido (o teste de estabilidade inverte).
       expect((q['escolha']['criteria'] as Map).keys, ['incerto', 'excluir', 'incluir']);
@@ -58,6 +64,14 @@ void main() {
               'probabilities': {'0': 0.0, '1': 0.0, '2': 0.0, '3': 0.1, '4': 0.2, '5': 0.3, '6': 0.4},
               'legend': {'0': '1: certainly exclude'},
             },
+            'atende_C1': {'type': 'noul', 'noul': 0.9},
+            'likert_C1': {
+              'type': 'score',
+              'score': 6.0,
+              'confidence': 0.8,
+              'probabilities': {'0': 0, '1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 1.0},
+            },
+            // C2 sem resposta: fica de fora.
           },
           'usage': {'input_tokens': 210, 'output_tokens': 70, 'cost': 0.0000088},
         },
@@ -65,7 +79,12 @@ void main() {
         'typesafe/jev-1.14',
         Decisao.values,
         123,
+        criterios: ['C1', 'C2'],
       );
+      expect(d.porCriterio, [
+        const AvaliacaoCriterio('C1', probAtende: 0.9, distribuicaoLikert: [0, 0, 0, 0, 0, 0, 1]),
+      ]);
+      expect(d.somaLikert, 7);
       expect(d.probInclusao, 0.83);
       expect(d.escolha, Decisao.incluir);
       expect(d.probEscolha, {Decisao.incluir: 0.7, Decisao.excluir: 0.1, Decisao.incerto: 0.2});

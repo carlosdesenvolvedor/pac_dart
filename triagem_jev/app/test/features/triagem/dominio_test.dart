@@ -231,7 +231,20 @@ void main() {
       // ignore: avoid_print
       print('simulado — etapa 1: ${m.toJson()}\nsistema: ${rodada.metricasSistema.toJson()}');
       expect(m.avaliados, 24);
-      expect(ArquivosTriagem.exportarCsv(rodada).trim().split('\n'), hasLength(25));
+      final csv = ArquivosTriagem.exportarCsv(rodada).trim().split('\n');
+      expect(csv, hasLength(25));
+      // Uma coluna de booleano e uma de Likert por critério, mais a soma (como a planilha do grupo).
+      final cabecalho = csv.first.split(';');
+      final n = p.criterios.length;
+      for (final c in p.criterios) {
+        expect(cabecalho, containsAll(['${c.id}_p_atende', '${c.id}_likert']));
+      }
+      expect(cabecalho, contains('soma_likert'));
+      for (final r in rodada.resultados) {
+        expect(r.decisao!.porCriterio, hasLength(n));
+        expect(r.decisao!.somaLikert, inInclusiveRange(1.0 * n, 7.0 * n));
+      }
+      expect(ArquivosTriagem.exportarJson(rodada), contains('"por_criterio"'));
       expect(ArquivosTriagem.exportarJson(rodada), contains('"registros"'));
     });
   });

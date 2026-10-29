@@ -29,7 +29,43 @@ class Uso extends Equatable {
   List<Object?> get props => [tokensEntrada, tokensSaida, ms, medido];
 }
 
-/// O que o modelo de decisão devolve para UM estudo: as três perguntas da seção 5 do plano.
+/// Nota esperada (1..n) de uma distribuição (índice 0 = nota 1); null se vazia ou zerada.
+double? notaEsperadaDe(List<double> distribuicao) {
+  final soma = distribuicao.fold<double>(0, (a, b) => a + b);
+  if (soma == 0) return null;
+  var e = 0.0;
+  for (var i = 0; i < distribuicao.length; i++) {
+    e += (i + 1) * distribuicao[i];
+  }
+  return e / soma;
+}
+
+/// Um critério avaliado sozinho, nos dois formatos que o grupo de pesquisa usa com LLMs:
+/// booleano (I/E → probabilidade de "atende") e Likert 1–7 (concordância com o critério).
+class AvaliacaoCriterio extends Equatable {
+  final String criterioId;
+  final double probAtende;
+
+  /// Likert 1..7 (índice 0 = 1, "discordo totalmente"). Pode vir vazia.
+  final List<double> distribuicaoLikert;
+
+  const AvaliacaoCriterio(this.criterioId, {required this.probAtende, this.distribuicaoLikert = const []});
+
+  double? get likertEsperado => notaEsperadaDe(distribuicaoLikert);
+
+  Map<String, dynamic> toJson() => {
+    'criterio_id': criterioId,
+    'prob_atende': probAtende,
+    'distribuicao_likert': distribuicaoLikert,
+    'likert_esperado': likertEsperado,
+  };
+
+  @override
+  List<Object?> get props => [criterioId, probAtende, distribuicaoLikert];
+}
+
+/// O que o modelo de decisão devolve para UM estudo: as três perguntas da seção 5 do plano e,
+/// para comparar com as planilhas do grupo, cada critério avaliado à parte.
 class DecisaoModelo extends Equatable {
   final String estudoId;
   final String modelo;
@@ -48,6 +84,9 @@ class DecisaoModelo extends Equatable {
   /// Ordem em que as opções da escolha foram enviadas (para o teste de estabilidade).
   final List<Decisao> ordemOpcoes;
 
+  /// Uma avaliação por critério, na ordem dos critérios do projeto. Pode vir vazia.
+  final List<AvaliacaoCriterio> porCriterio;
+
   final Uso uso;
   final double custo;
 
@@ -60,20 +99,25 @@ class DecisaoModelo extends Equatable {
     this.confianca = 0,
     this.distribuicaoNota = const [],
     this.ordemOpcoes = const [Decisao.incluir, Decisao.excluir, Decisao.incerto],
+    this.porCriterio = const [],
     this.uso = const Uso(),
     this.custo = 0,
   });
 
   /// Nota esperada (1..7) a partir da distribuição; null se não houver.
-  double? get notaEsperada {
-    if (distribuicaoNota.isEmpty) return null;
-    final soma = distribuicaoNota.fold<double>(0, (a, b) => a + b);
-    if (soma == 0) return null;
-    var e = 0.0;
-    for (var i = 0; i < distribuicaoNota.length; i++) {
-      e += (i + 1) * distribuicaoNota[i];
+  double? get notaEsperada => notaEsperadaDe(distribuicaoNota);
+
+  /// Soma dos Likert esperados de todos os critérios (como a coluna das planilhas do grupo:
+  /// 4 critérios → de 4 a 28). Null se algum critério ficou sem nota.
+  double? get somaLikert {
+    if (porCriterio.isEmpty) return null;
+    var s = 0.0;
+    for (final a in porCriterio) {
+      final l = a.likertEsperado;
+      if (l == null) return null;
+      s += l;
     }
-    return e / soma;
+    return s;
   }
 
   /// A probabilidade de inclusão que a regra de encaminhamento usa: a da pergunta de condição.
@@ -88,6 +132,7 @@ class DecisaoModelo extends Equatable {
     confianca: confianca,
     distribuicaoNota: distribuicaoNota,
     ordemOpcoes: ordemOpcoes,
+    porCriterio: porCriterio,
     uso: uso,
     custo: c,
   );
@@ -102,6 +147,8 @@ class DecisaoModelo extends Equatable {
     'distribuicao_nota': distribuicaoNota,
     'nota_esperada': notaEsperada,
     'ordem_opcoes': [for (final o in ordemOpcoes) o.name],
+    'por_criterio': [for (final a in porCriterio) a.toJson()],
+    'soma_likert': somaLikert,
     'uso': uso.toJson(),
     'custo_usd': custo,
   };
@@ -116,6 +163,7 @@ class DecisaoModelo extends Equatable {
     confianca,
     distribuicaoNota,
     ordemOpcoes,
+    porCriterio,
     uso,
     custo,
   ];

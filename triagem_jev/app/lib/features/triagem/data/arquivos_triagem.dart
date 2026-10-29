@@ -3,8 +3,10 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 import '../domain/config_triagem.dart';
+import '../domain/decisoes.dart';
 import '../domain/estudo.dart';
 import '../domain/orquestrador_triagem.dart';
+import '../domain/resultado_estudo.dart';
 
 /// Leitura do arquivo de entrada e da tabela de preços; exportação do resultado em JSON e CSV.
 class ArquivosTriagem {
@@ -32,6 +34,10 @@ class ArquivosTriagem {
       return s.contains(RegExp(r'[;"\n]')) ? '"${s.replaceAll('"', '""')}"' : s;
     }
 
+    final ids = [for (final c in r.projeto.criterios) c.id];
+    AvaliacaoCriterio? avaliacao(ResultadoEstudo x, String id) =>
+        x.decisao?.porCriterio.where((a) => a.criterioId == id).firstOrNull;
+
     final linhas = [
       [
         'id',
@@ -43,6 +49,8 @@ class ArquivosTriagem {
         'escolha',
         'confianca',
         'nota_esperada',
+        for (final id in ids) ...['${id}_p_atende', '${id}_likert'],
+        'soma_likert',
         'estavel',
         'llm_decisao',
         'llm_criterios',
@@ -67,6 +75,8 @@ class ArquivosTriagem {
           x.decisao?.escolha.name,
           x.decisao?.confianca,
           x.decisao?.notaEsperada,
+          for (final id in ids) ...[avaliacao(x, id)?.probAtende, avaliacao(x, id)?.likertEsperado],
+          x.decisao?.somaLikert,
           x.estavel,
           x.justificativa?.decisaoSugerida.name,
           x.justificativa?.criteriosAtendidos.join(','),

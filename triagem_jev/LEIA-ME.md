@@ -19,6 +19,7 @@ Protótipo para a reunião de orientação do mestrado: um **modelo de decisão*
 | 7. Edição da decisão humana | ✅ |
 | 8. OpenAI Decisions | ✅ estimado pelos tokens (cliente real reaproveitável: `ClienteDecisaoOpenRouter(rota: …)`) |
 | 9. Teste de estabilidade (ordem das opções invertida) | ✅ interruptor na tela |
+| Por critério, como os templates do grupo (Booleano I/E + Likert 1–7, e a soma) | ✅ mesma chamada ao Jev; coluna na tabela e no CSV |
 | Exportar JSON (com config, preços e log de cada chamada) e CSV | ✅ |
 
 ## Arquitetura
@@ -101,6 +102,7 @@ Se for publicar o Worker (`npx wrangler deploy`), defina `TOKEN_ACESSO` (`npx wr
 
 ## Regras que o código segue
 
+- **Perguntas por critério**: além das três perguntas gerais, cada critério recebe um booleano (I/E) e um Likert 1–7 com o mesmo texto dos templates que o grupo usa com os LLMs ("Assume you are a software engineering researcher…"). Tudo vai numa chamada só: o estudo é cobrado uma vez e cada pergunta a mais custa só o texto dela. A soma dos Likert (ex.: 3 critérios → de 3 a 21) fica comparável à coluna das planilhas do GPT. Por enquanto essas notas só são mostradas e exportadas: o encaminhamento continua usando a pergunta geral de condição.
 - **Incerto conta como "segue"** nas métricas, porque vai para o pesquisador ler. É isso que protege o recall.
 - Erro na etapa 1 → o estudo vira **incerto** e segue para o humano, nunca é excluído em silêncio.
 - O estado enviado ao modelo leva só tipo de fonte, título, resumo e palavras-chave (sem URL e sem gabarito), porque o Jev perde precisão com informação irrelevante.
