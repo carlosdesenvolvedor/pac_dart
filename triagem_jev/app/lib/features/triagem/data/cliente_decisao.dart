@@ -117,6 +117,8 @@ class ClienteDecisaoOpenRouter implements IDecisionModelClient {
           TipoFonte.literaturaCinzenta => 'grey literature (blog post, documentation, issue; no formal abstract)',
         },
         'title': estudo.titulo,
+        // Na literatura cinzenta o site diz muito (github.com, um blog, uma empresa); a URL inteira, não.
+        'site': ?estudo.site,
         // Literatura cinzenta não tem resumo: o que vem é um trecho do texto.
         if (estudo.resumo.isNotEmpty) estudo.tipoFonte == TipoFonte.artigo ? 'abstract' : 'text_excerpt': estudo.resumo,
         if (estudo.palavrasChave.isNotEmpty) 'keywords': estudo.palavrasChave,

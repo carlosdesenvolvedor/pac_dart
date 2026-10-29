@@ -80,10 +80,18 @@ class Estudo extends Equatable {
 
   /// O "estado" enviado aos modelos: só o que importa para a decisão (o Jev perde precisão com
   /// informação irrelevante, então nada de url nem gabarito aqui).
+  /// O site de origem da literatura cinzenta (ex.: github.com); null para artigo ou sem URL.
+  String? get site {
+    if (tipoFonte == TipoFonte.artigo || url.isEmpty) return null;
+    final h = Uri.tryParse(url)?.host ?? '';
+    return h.isEmpty ? null : h.replaceFirst(RegExp(r'^www\.'), '');
+  }
+
   String get estadoTexto {
     final b = StringBuffer()
       ..writeln('Tipo de fonte: ${tipoFonte.rotulo}')
       ..writeln('Título: $titulo');
+    if (site case final s?) b.writeln('Site: $s');
     if (resumo.isNotEmpty) b.writeln('${tipoFonte == TipoFonte.artigo ? 'Resumo' : 'Trecho do texto'}: $resumo');
     if (palavrasChave.isNotEmpty) b.writeln('Palavras-chave: ${palavrasChave.join(', ')}');
     return b.toString().trimRight();
