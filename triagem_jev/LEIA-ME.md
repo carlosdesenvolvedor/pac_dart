@@ -115,19 +115,23 @@ Jev 1.14 direto pela TypeSafe na etapa 1 (3 perguntas gerais + booleano e Likert
 |---|---|---|---|---|---|
 | [Jev + Claude Haiku 5.5](docs/rodadas/2026-10-29-jev-1.14-haiku-5.5/) | 11 de 24 | US$ 0,0033 | 28,6 s | 11 | 0 |
 | [Jev + GPT-6 Luna](docs/rodadas/2026-10-29-jev-1.14-gpt-6-luna/) | 11 de 24 | US$ 0,0025 | 32,0 s | 11 | 0 |
+| [Jev + Claude Sonnet 5.5](docs/rodadas/2026-10-29-jev-1.14-sonnet-5.5/) | 11 de 24 | US$ 0,0275 | 27,9 s | 11 | 0 |
+
+"Só LLM" (o jeito atual do grupo), **estimado** a partir das chamadas medidas: Haiku US$ 0,0037 · Luna US$ 0,0020 · **Sonnet US$ 0,0564**.
 
 Por estudo (médias medidas):
 
-| | Tokens | Custo | Tempo |
-|---|---|---|---|
-| Jev (9 perguntas) | 1.622 de entrada | US$ 0,000068 | 0,25 s |
-| Claude Haiku 5.5 | 475 + 213 | US$ 0,000154 | 2,0 s |
-| GPT-6 Luna | 276 + 110 | US$ 0,000082 | 2,4 s |
+| | Tokens | Custo | Tempo | × Jev no custo |
+|---|---|---|---|---|
+| Jev (9 perguntas) | 1.622 de entrada | US$ 0,000068 | 0,25 s | 1× |
+| GPT-6 Luna | 276 + 110 | US$ 0,000082 | 2,4 s | 1,2× |
+| Claude Haiku 5.5 | 475 + 213 | US$ 0,000154 | 2,0 s | 2,3× |
+| Claude Sonnet 5.5 | 475 + 140 | US$ 0,002348 | 2,0 s | 35× |
 
 **Leitura honesta:**
-- **Acerto:** 100% de recall e precisão nas duas rodadas, 54% dos estudos sem precisar do LLM. A amostra é fictícia e fácil: isso mostra que o caminho funciona, não que o Jev acerta. Ficaram incertos só E08 (literatura cinzenta) e E24; no E08 o LLM respondeu "não encontrei informação suficiente para C3" em vez de inventar.
+- **Acerto:** 100% de recall e precisão nas três rodadas, 54% dos estudos sem precisar do LLM. A amostra é fictícia e fácil: isso mostra que o caminho funciona, não que o Jev acerta. Ficaram incertos só E08 (literatura cinzenta) e E24; no E08 o LLM respondeu "não encontrei informação suficiente para C3" em vez de inventar.
 - **Tempo:** o Jev é ~9× mais rápido por estudo (0,25 s × 2 a 2,4 s).
-- **Custo: a vantagem depende do preço do LLM.** Com LLMs baratos (Haiku 5.5, GPT-6 Luna, US$ 0,10/M) o Jev custa quase o mesmo por estudo, e com o Luna o cenário "só LLM" saiu **mais barato** (US$ 0,0020 estimado × 0,0025). Com LLMs do nível que o grupo usa nas planilhas a conta muda: Claude Sonnet 5.5 (US$ 2/10 por M) custaria ~US$ 0,0031 por estudo, ~45× o Jev, e Jev + Sonnet sairia por cerca de metade de "só Sonnet" nesta amostra.
+- **Custo: a vantagem depende do preço do LLM.** Com LLMs baratos (Haiku 5.5, GPT-6 Luna, US$ 0,10/M) o Jev custa quase o mesmo por estudo, e com o Luna o cenário "só LLM" saiu **mais barato** (US$ 0,0020 estimado × 0,0025). Com um LLM do nível que o grupo usa nas planilhas a conta muda: com o **Claude Sonnet 5.5** (medido), cada estudo no LLM custa 35× o Jev, e **Jev + Sonnet custou 49% de "só Sonnet"** (US$ 0,0275 × 0,0564). A economia acompanha a fração de estudos que o Jev tira do LLM (aqui 54%): numa revisão real, com muito mais excluídos, ela tende a ser maior. Projeção para 1.000 estudos × 6 rodadas: US$ 6,87 × 14,09.
 - **O pedido ao Jev pode encolher:** cada uma das 9 perguntas repete o texto do template. Com só as 3 perguntas gerais, ou com a abertura do template uma vez no `state`, o custo do Jev cai bastante. Vale medir.
 
 ## Regras que o código segue
