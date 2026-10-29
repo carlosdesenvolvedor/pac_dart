@@ -134,6 +134,20 @@ Por estudo (médias medidas):
 - **Custo: a vantagem depende do preço do LLM.** Com LLMs baratos (Haiku 5.5, GPT-6 Luna, US$ 0,10/M) o Jev custa quase o mesmo por estudo, e com o Luna o cenário "só LLM" saiu **mais barato** (US$ 0,0020 estimado × 0,0025). Com um LLM do nível que o grupo usa nas planilhas a conta muda: com o **Claude Sonnet 5.5** (medido), cada estudo no LLM custa 35× o Jev, e **Jev + Sonnet custou 49% de "só Sonnet"** (US$ 0,0275 × 0,0564). A economia acompanha a fração de estudos que o Jev tira do LLM (aqui 54%): numa revisão real, com muito mais excluídos, ela tende a ser maior. Projeção para 1.000 estudos × 6 rodadas: US$ 6,87 × 14,09.
 - **O pedido ao Jev pode encolher:** cada uma das 9 perguntas repete o texto do template. Com só as 3 perguntas gerais, ou com a abertura do template uma vez no `state`, o custo do Jev cai bastante. Vale medir.
 
+### LLM local (Qwen 2.5 7B pelo Ollama, MacBook M2 16 GB)
+
+O modelo local não custa nada por chamada, mas é lento; o Jev entra para tirar dele a maior parte dos estudos. E, ao contrário do Claude e do GPT-6, o modelo local aceita **temperatura zero**, como pede o protocolo do grupo.
+
+| Rodada | Estudos no LLM | Tempo do LLM | Tempo total | Acerto vs gabarito | Custo |
+|---|---|---|---|---|---|
+| [Só Qwen local](docs/rodadas/2026-10-29-so-qwen2.5-7b-local/) (medido) | 24 | 102 s (4,25 s/estudo) | 108 s | recall 100%, **3 falsos positivos** (E04, E14 "incluir"; E07 "incerto") | US$ 0 |
+| [Jev + Qwen local](docs/rodadas/2026-10-29-jev-1.14-qwen2.5-7b-local/) | 11 | 51 s (4,6 s/estudo) | 57,5 s | recall e precisão 100% | US$ 0,0016 (só o Jev) |
+
+- **Tempo:** Jev + local levou 53% do tempo de só local. O Jev é ~16× mais rápido por estudo que o Qwen 7B nesta máquina (0,27 s × 4,25 s).
+- **Acerto:** sozinho, o Qwen 7B incluiu 2 estudos que o gabarito exclui e deixou 1 em dúvida; o Jev excluiu os três com confiança, e o local só justificou os que sobraram. Amostra fictícia: é um indício, não uma conclusão.
+- **Mil artigos × 6 rodadas** (projeção, chamadas uma a uma): só local ~7 h; Jev + local ~3 h 40 min com 46% ao LLM e ~1 h 50 min com 20%, por US$ 0,41 de Jev.
+- Como rodar: `brew install ollama`, `ollama serve`, `ollama pull qwen2.5:7b` e o app com `--dart-define=MODELO_LLM=ollama/qwen2.5:7b`. O Worker repassa `ollama/<modelo>` para `http://localhost:11434` (ou `OLLAMA_URL`); outro modelo = acrescentar em `MODELOS_PERMITIDOS` e em `assets/precos.json` com preço 0. A primeira chamada carrega o modelo (~6–8 s).
+
 ## Regras que o código segue
 
 - **Perguntas por critério**: além das três perguntas gerais, cada critério recebe um booleano (I/E) e um Likert 1–7 com o mesmo texto dos templates que o grupo usa com os LLMs ("Assume you are a software engineering researcher…"). Tudo vai numa chamada só: o estudo é cobrado uma vez e cada pergunta a mais custa só o texto dela. A soma dos Likert (ex.: 3 critérios → de 3 a 21) fica comparável à coluna das planilhas do GPT. Por enquanto essas notas só são mostradas e exportadas: o encaminhamento continua usando a pergunta geral de condição.
@@ -146,7 +160,7 @@ Por estudo (médias medidas):
 
 ```sh
 cd triagem_jev/app && flutter analyze && flutter test       # 23 testes
-cd triagem_jev/worker && npm run typecheck && npm test      # 13 testes
+cd triagem_jev/worker && npm run typecheck && npm test      # 14 testes
 ```
 
 ## Próximos passos sugeridos

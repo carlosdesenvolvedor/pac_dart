@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import { URL_CHAT, URL_DECISOES, URL_OPENAI, URL_TYPESAFE } from '../src/config';
+import { URL_CHAT, URL_DECISOES, URL_OLLAMA, URL_OPENAI, URL_TYPESAFE } from '../src/config';
 import worker, { type Env } from '../src/index';
 
 const env: Env = { OPENROUTER_API_KEY: 'sk-teste', MODELOS_PERMITIDOS: 'typesafe/jev-1.14,anthropic/claude-haiku-5.5' };
@@ -195,6 +195,20 @@ describe('worker com as chaves de cada empresa', () => {
     );
     expect(r.headers.get('Access-Control-Allow-Headers')).toContain('x-chave-anthropic');
     expect(r.headers.get('Access-Control-Allow-Headers')).toContain('x-chave-openai');
+  });
+
+  it('ollama/<modelo> vai ao Ollama local, sem chave e com o id dele', async () => {
+    const f = vi.fn(async () => new Response('{"choices":[]}', { status: 200 }));
+    vi.stubGlobal('fetch', f);
+    const r = await worker.fetch(
+      post('/llm', { model: 'ollama/qwen2.5:7b', messages: [], temperature: 0 }),
+      { MODELOS_PERMITIDOS: 'ollama/qwen2.5:7b' },
+    );
+    expect(r.status).toBe(200);
+    const c = chamada(f);
+    expect(c.url).toBe(`${URL_OLLAMA}/v1/chat/completions`);
+    expect(c.corpo).toMatchObject({ model: 'qwen2.5:7b', temperature: 0 });
+    expect(c.cabecalhos.get('authorization')).toBeNull();
   });
 
   it('sem chave direta, cai no OpenRouter', async () => {

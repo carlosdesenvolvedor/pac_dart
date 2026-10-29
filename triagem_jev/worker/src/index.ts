@@ -9,6 +9,7 @@
  *
  * O app usa sempre os ids do OpenRouter (`typesafe/jev-1.14`, `anthropic/claude-haiku-5.5`…).
  * Para cada pedido, o Worker escolhe o caminho:
+ *   0. `ollama/<modelo>` em /llm: o Ollama local (sem chave e sem custo; só com o Worker local);
  *   1. a chave da própria empresa, se existir — a digitada no painel do app (cabeçalho
  *      `x-chave-<empresa>`) ou a do .dev.vars (TYPESAFE_API_KEY, ANTHROPIC_API_KEY, OPENAI_API_KEY) —,
  *      trocando o id pelo da API dela (IDS_DIRETOS);
@@ -19,7 +20,17 @@
  */
 import Anthropic from '@anthropic-ai/sdk';
 
-import { IDS_DIRETOS, TEMPO_LIMITE_MS, URL_CHAT, URL_DECISOES, URL_OPENAI, URL_TYPESAFE } from './config';
+import {
+  IDS_DIRETOS,
+  PREFIXO_LOCAL,
+  TEMPO_LIMITE_LOCAL_MS,
+  TEMPO_LIMITE_MS,
+  URL_CHAT,
+  URL_DECISOES,
+  URL_OLLAMA,
+  URL_OPENAI,
+  URL_TYPESAFE,
+} from './config';
 
 const MAX_BYTES_CORPO = 64 * 1024;
 
@@ -31,6 +42,8 @@ export interface Env {
   TYPESAFE_API_KEY?: string;
   ANTHROPIC_API_KEY?: string;
   OPENAI_API_KEY?: string;
+  /** Endereço do Ollama para os modelos `ollama/…` (padrão: URL_OLLAMA). */
+  OLLAMA_URL?: string;
   /** Ids de modelo aceitos, separados por vírgula. Vazio = qualquer um. */
   MODELOS_PERMITIDOS?: string;
   /** Origens web extras aceitas (além de localhost), separadas por vírgula. */
@@ -148,13 +161,18 @@ function paraOpenAi(corpo: Record<string, unknown>, modelo: string): Record<stri
   };
 }
 
-async function repassar(url: string, cabecalhos: Record<string, string>, corpo: string): Promise<Response> {
+async function repassar(
+  url: string,
+  cabecalhos: Record<string, string>,
+  corpo: string,
+  limiteMs = TEMPO_LIMITE_MS,
+): Promise<Response> {
   try {
     return await fetch(url, {
       method: 'POST',
       headers: { 'content-type': 'application/json', ...cabecalhos },
       body: corpo,
-      signal: AbortSignal.timeout(TEMPO_LIMITE_MS),
+      signal: AbortSignal.timeout(limiteMs),
     });
   } catch (e) {
     return json(504, { erro: `${new URL(url).host} não respondeu: ${String(e)}` });
@@ -197,7 +215,15 @@ export default {
     const empresa = rota.empresas.find((e) => modelo.startsWith(`${e}/`));
     const chaveDireta = empresa ? req.headers.get(cabecalhoChave(empresa))?.trim() || env[CHAVES[empresa]] : undefined;
     let resp: Response;
-    if (empresa && chaveDireta) {
+    if (url.pathname === '/llm' && modelo.startsWith(PREFIXO_LOCAL)) {
+      // 0. Modelo local pelo Ollama (formato chat/completions; sem chave, sem custo). Só com o Worker local.
+      resp = await repassar(
+        `${env.OLLAMA_URL || URL_OLLAMA}/v1/chat/completions`,
+        {},
+        JSON.stringify({ ...corpo, model: modelo.slice(PREFIXO_LOCAL.length) }),
+        TEMPO_LIMITE_LOCAL_MS,
+      );
+    } else if (empresa && chaveDireta) {
       const idDireto = IDS_DIRETOS[modelo];
       if (idDireto === undefined) return json(400, { erro: `sem id direto para ${modelo} (veja IDS_DIRETOS)` }, h);
       resp =
