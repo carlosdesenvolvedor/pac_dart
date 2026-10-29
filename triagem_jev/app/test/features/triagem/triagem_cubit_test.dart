@@ -2,18 +2,37 @@ import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:triagem_jev/features/triagem/data/arquivos_triagem.dart';
+import 'package:triagem_jev/features/triagem/data/chaves_api.dart';
 import 'package:triagem_jev/features/triagem/data/clientes_simulados.dart';
 import 'package:triagem_jev/features/triagem/domain/estudo.dart';
 import 'package:triagem_jev/features/triagem/presentation/triagem_cubit.dart';
 
-TriagemCubit _cubit() => TriagemCubit(
+TriagemCubit _cubit({void Function(ChavesApi)? aoFabricar}) => TriagemCubit(
   arquivos: ArquivosTriagem(),
-  fabrica: (config, {required real}) =>
-      (SimuladoDecisionClient(atraso: Duration.zero), SimuladoLlmClient(atraso: Duration.zero)),
+  fabrica: (config, {required real, required chaves}) {
+    aoFabricar?.call(chaves);
+    return (SimuladoDecisionClient(atraso: Duration.zero), SimuladoLlmClient(atraso: Duration.zero));
+  },
 );
 
 void main() {
   final exemplo = File('assets/exemplo_triagem.json').readAsStringSync();
+
+  test('chaves do painel: vão para a fábrica, ficam fora do estado e campo vazio mantém', () async {
+    late ChavesApi recebidas;
+    final c = _cubit(aoFabricar: (k) => recebidas = k)..carregarArquivo(exemplo);
+    c.definirChaves(const ChavesApi(anthropic: 'sk-ant-1'));
+    c.definirChaves(const ChavesApi(openai: 'sk-oa-2'));
+    expect(c.state.chavesNoPainel, ['Anthropic', 'OpenAI']);
+    expect('${c.state}${c.state.props}', isNot(contains('sk-')));
+    await c.rodar();
+    expect(recebidas.cabecalhos, {'x-chave-anthropic': 'sk-ant-1', 'x-chave-openai': 'sk-oa-2'});
+    expect('$recebidas', isNot(contains('sk-')));
+    // Nada da chave no log nem na exportação.
+    expect(ArquivosTriagem.exportarJson(c.state.rodada!), isNot(contains('sk-')));
+    c.apagarChaves();
+    expect(c.state.chavesNoPainel, isEmpty);
+  });
 
   test('carregar → rodar → revisar', () async {
     final c = _cubit();

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
+import 'package:triagem_jev/features/triagem/data/chaves_api.dart';
 import 'package:triagem_jev/features/triagem/data/cliente_decisao.dart';
 import 'package:triagem_jev/features/triagem/data/cliente_llm.dart';
 import 'package:triagem_jev/features/triagem/data/falha_modelo.dart';
@@ -162,6 +163,32 @@ void main() {
       expect(r.valor.uso.tokensSaida, 40);
       // Claude atual recusa temperatura/top_p.
       expect(enviado.containsKey('temperature'), isFalse);
+    });
+
+    test('chave do painel vai em cabeçalho, nunca nos parâmetros do log', () async {
+      late http.Request enviado;
+      final c = ClienteLlmOpenRouter(
+        worker: Uri.parse('http://w'),
+        modelo: 'anthropic/claude-haiku-5.5',
+        chaves: const ChavesApi(anthropic: 'sk-ant-x'),
+        cliente: MockClient((req) async {
+          enviado = req;
+          return http.Response(
+            jsonEncode({
+              'choices': [
+                {
+                  'message': {'content': '{"decisao_sugerida":"incerto","justificativa":"x"}'},
+                },
+              ],
+            }),
+            200,
+          );
+        }),
+      );
+      await c.justificar(_estudo, _criterios);
+      expect(enviado.headers['x-chave-anthropic'], 'sk-ant-x');
+      expect(enviado.body, isNot(contains('sk-ant-x')));
+      expect('${c.parametros}', isNot(contains('sk-ant-x')));
     });
 
     test('modelos não-Claude levam temperatura e top-p zero', () {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'features/triagem/data/arquivos_triagem.dart';
+import 'features/triagem/data/chaves_api.dart';
 import 'features/triagem/data/cliente_decisao.dart';
 import 'features/triagem/data/cliente_llm.dart';
 import 'features/triagem/data/clientes_simulados.dart';
@@ -21,9 +22,9 @@ const tokenAcesso = String.fromEnvironment('TOKEN_ACESSO');
 
 const modeloLlm = String.fromEnvironment('MODELO_LLM', defaultValue: 'anthropic/claude-haiku-5.5');
 
-(ClienteDecisaoOpenRouter, ClienteLlmOpenRouter) clientesReais(Uri worker) => (
+(ClienteDecisaoOpenRouter, ClienteLlmOpenRouter) clientesReais(Uri worker, ChavesApi chaves) => (
   ClienteDecisaoOpenRouter(worker: worker, modelo: modeloDecisao, tokenAcesso: tokenAcesso),
-  ClienteLlmOpenRouter(worker: worker, modelo: modeloLlm, tokenAcesso: tokenAcesso),
+  ClienteLlmOpenRouter(worker: worker, modelo: modeloLlm, tokenAcesso: tokenAcesso, chaves: chaves),
 );
 
 void main() {
@@ -34,8 +35,8 @@ void main() {
         arquivos: ArquivosTriagem(),
         realDisponivel: worker != null,
         config: const ConfigTriagem(modeloDecisao: modeloDecisao, modeloLlm: modeloLlm),
-        fabrica: (config, {required real}) =>
-            real && worker != null ? clientesReais(worker) : (SimuladoDecisionClient(), SimuladoLlmClient()),
+        fabrica: (config, {required real, required chaves}) =>
+            real && worker != null ? clientesReais(worker, chaves) : (SimuladoDecisionClient(), SimuladoLlmClient()),
       )..iniciar(),
       child: const AppTriagem(),
     ),

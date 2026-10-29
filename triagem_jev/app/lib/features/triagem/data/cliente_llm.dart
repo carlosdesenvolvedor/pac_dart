@@ -6,6 +6,7 @@ import '../domain/decisoes.dart';
 import '../domain/estudo.dart';
 import '../domain/portas.dart';
 import '../domain/prompt_llm.dart';
+import 'chaves_api.dart';
 import 'falha_modelo.dart';
 
 /// LLM da etapa 2 pelo OpenRouter (formato chat/completions), via Worker. Qualquer modelo do
@@ -16,11 +17,19 @@ class ClienteLlmOpenRouter implements ILlmClient {
 
   /// `Authorization: Bearer …` quando o Worker tem TOKEN_ACESSO (vazio = não manda).
   final String tokenAcesso;
+
+  /// Chaves digitadas no painel (vão em cabeçalhos; nunca em [parametros], que vai para o log).
+  final ChavesApi chaves;
   @override
   final String modelo;
 
-  ClienteLlmOpenRouter({required this.worker, required this.modelo, http.Client? cliente, this.tokenAcesso = ''})
-    : _http = cliente ?? http.Client();
+  ClienteLlmOpenRouter({
+    required this.worker,
+    required this.modelo,
+    http.Client? cliente,
+    this.tokenAcesso = '',
+    this.chaves = const ChavesApi(),
+  }) : _http = cliente ?? http.Client();
 
   /// Temperatura e top-p em zero (boa prática do grupo) — exceto nos Claude atuais, que recusam
   /// parâmetros de amostragem com erro 400; neles a resposta já é pedida em JSON fixo. Os Claude
@@ -35,7 +44,11 @@ class ClienteLlmOpenRouter implements ILlmClient {
     final relogio = Stopwatch()..start();
     final resp = await _http.post(
       worker.resolve('/llm'),
-      headers: {'content-type': 'application/json', if (tokenAcesso.isNotEmpty) 'authorization': 'Bearer $tokenAcesso'},
+      headers: {
+        'content-type': 'application/json',
+        if (tokenAcesso.isNotEmpty) 'authorization': 'Bearer $tokenAcesso',
+        ...chaves.cabecalhos,
+      },
       body: jsonEncode({
         'model': modelo,
         ...parametros,

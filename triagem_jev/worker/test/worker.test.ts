@@ -174,6 +174,27 @@ describe('worker com as chaves de cada empresa', () => {
     expect(r.status).toBe(502);
   });
 
+  it('chave do painel (cabeçalho) vale mais que a do .dev.vars, e funciona sem ela', async () => {
+    const f = vi.fn(async () => new Response('{"choices":[]}', { status: 200 }));
+    vi.stubGlobal('fetch', f);
+    const pedido = () =>
+      post('/llm', { model: 'openai/gpt-6-luna', messages: [] }, { 'x-chave-openai': ' sk-do-painel ' });
+    await worker.fetch(pedido(), diretas);
+    expect(chamada(f).cabecalhos.get('authorization')).toBe('Bearer sk-do-painel');
+    f.mockClear();
+    await worker.fetch(pedido(), {});
+    expect(chamada(f).url).toBe(URL_OPENAI);
+  });
+
+  it('o preflight libera os cabeçalhos das chaves', async () => {
+    const r = await worker.fetch(
+      new Request('http://w/llm', { method: 'OPTIONS', headers: { Origin: 'http://localhost:5000' } }),
+      diretas,
+    );
+    expect(r.headers.get('Access-Control-Allow-Headers')).toContain('x-chave-anthropic');
+    expect(r.headers.get('Access-Control-Allow-Headers')).toContain('x-chave-openai');
+  });
+
   it('sem chave direta, cai no OpenRouter', async () => {
     const f = vi.fn(async () => new Response('{}', { status: 200 }));
     vi.stubGlobal('fetch', f);

@@ -75,6 +75,8 @@ Clique em **Usar exemplo** → **Rodar triagem**. A "decisão" simulada é uma h
    OPENROUTER_API_KEY=sk-or-…  # opcional: serve para todos os modelos
    ```
    Defina um **limite de gasto** em cada conta. Linha vazia conta como "sem chave". Depois de mudar o `.dev.vars`, reinicie o Worker.
+
+   **Ou pelo painel:** no modo real, o botão **Chaves de API** abre campos para as chaves da Anthropic e da OpenAI. Elas ficam só na memória da aba (somem ao recarregar), vão ao Worker no cabeçalho `x-chave-<empresa>` e têm prioridade sobre as do `.dev.vars`. Não entram no estado do Cubit, no log nem no JSON/CSV exportado (há testes para isso). Use só com o Worker local, ou com um Worker publicado em HTTPS.
 3. Suba o Worker local:
    ```sh
    cd triagem_jev/worker
@@ -116,8 +118,8 @@ Se for publicar o Worker (`npx wrangler deploy`), defina `TOKEN_ACESSO` (`npx wr
 ## Testes
 
 ```sh
-cd triagem_jev/app && flutter analyze && flutter test       # 20 testes
-cd triagem_jev/worker && npm run typecheck && npm test      # 11 testes
+cd triagem_jev/app && flutter analyze && flutter test       # 22 testes
+cd triagem_jev/worker && npm run typecheck && npm test      # 13 testes
 ```
 
 ## Próximos passos sugeridos

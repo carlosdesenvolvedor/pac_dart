@@ -9,7 +9,8 @@
  *
  * O app usa sempre os ids do OpenRouter (`typesafe/jev-1.14`, `anthropic/claude-haiku-5.5`…).
  * Para cada pedido, o Worker escolhe o caminho:
- *   1. a chave da própria empresa, se existir (TYPESAFE_API_KEY, ANTHROPIC_API_KEY, OPENAI_API_KEY),
+ *   1. a chave da própria empresa, se existir — a digitada no painel do app (cabeçalho
+ *      `x-chave-<empresa>`) ou a do .dev.vars (TYPESAFE_API_KEY, ANTHROPIC_API_KEY, OPENAI_API_KEY) —,
  *      trocando o id pelo da API dela (IDS_DIRETOS);
  *   2. senão, o OpenRouter (OPENROUTER_API_KEY), com o corpo repassado como veio.
  *
@@ -48,6 +49,10 @@ const CHAVES: Record<Empresa, keyof Env> = {
   anthropic: 'ANTHROPIC_API_KEY',
   openai: 'OPENAI_API_KEY',
 };
+const EMPRESAS = Object.keys(CHAVES) as Empresa[];
+
+/** Chave digitada no painel do app, que vem neste cabeçalho e vale mais que a do .dev.vars. */
+const cabecalhoChave = (e: Empresa): string => `x-chave-${e}`;
 const ORIGEM_LOCAL = /^http:\/\/(localhost|127\.0\.0\.1)(:\d{1,5})?$/;
 
 function lista(v: string | undefined): string[] {
@@ -67,7 +72,7 @@ function cors(origem: string | null): Record<string, string> {
   return {
     'Access-Control-Allow-Origin': origem,
     'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-    'Access-Control-Allow-Headers': 'authorization, content-type',
+    'Access-Control-Allow-Headers': `authorization, content-type, ${EMPRESAS.map(cabecalhoChave).join(', ')}`,
     'Access-Control-Max-Age': '86400',
     Vary: 'Origin',
   };
@@ -175,9 +180,9 @@ export default {
       return json(400, { erro: `modelo não permitido: ${String(modelo)}` }, h);
     }
 
-    // 1. Chave da própria empresa (o prefixo do id diz qual é).
+    // 1. Chave da própria empresa (o prefixo do id diz qual é): a do painel do app, senão a do .dev.vars.
     const empresa = rota.empresas.find((e) => modelo.startsWith(`${e}/`));
-    const chaveDireta = empresa ? env[CHAVES[empresa]] : undefined;
+    const chaveDireta = empresa ? req.headers.get(cabecalhoChave(empresa))?.trim() || env[CHAVES[empresa]] : undefined;
     let resp: Response;
     if (empresa && chaveDireta) {
       const idDireto = IDS_DIRETOS[modelo];
@@ -198,8 +203,10 @@ export default {
         texto,
       );
     } else {
-      const falta = empresa ? `${CHAVES[empresa]} ou OPENROUTER_API_KEY` : 'OPENROUTER_API_KEY';
-      return json(500, { erro: `nenhuma chave para ${modelo}: configure ${falta} no .dev.vars` }, h);
+      const falta = empresa
+        ? `a chave no painel do app, ou ${CHAVES[empresa]} ou OPENROUTER_API_KEY no .dev.vars`
+        : 'OPENROUTER_API_KEY no .dev.vars';
+      return json(500, { erro: `nenhuma chave para ${modelo}: informe ${falta}` }, h);
     }
     // Repassa status e corpo como vieram: o app registra a resposta bruta no log.
     return new Response(resp.body, {

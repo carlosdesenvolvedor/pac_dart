@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../data/arquivos_triagem.dart';
+import '../data/chaves_api.dart';
 import '../domain/config_triagem.dart';
 import '../domain/decisoes.dart';
 import '../domain/estudo.dart';
@@ -11,7 +12,9 @@ import '../domain/portas.dart';
 enum StatusTriagem { vazio, pronto, rodando, concluido }
 
 /// Monta os clientes da rodada. [real] = chamar os modelos de verdade pelo Worker; senão, simulados.
-typedef FabricaClientes = (IDecisionModelClient, ILlmClient) Function(ConfigTriagem config, {required bool real});
+/// [chaves] = as digitadas no painel (podem estar vazias: aí valem as do `.dev.vars`).
+typedef FabricaClientes =
+    (IDecisionModelClient, ILlmClient) Function(ConfigTriagem config, {required bool real, required ChavesApi chaves});
 
 class TriagemState extends Equatable {
   final StatusTriagem status;
@@ -27,6 +30,9 @@ class TriagemState extends Equatable {
 
   /// Há um Worker configurado (--dart-define=WORKER_URL=…)? Sem ele, só o modo simulado.
   final bool realDisponivel;
+
+  /// Empresas com chave digitada no painel (só os nomes; a chave fica fora do estado).
+  final List<String> chavesNoPainel;
   final String? erro;
 
   const TriagemState({
@@ -37,6 +43,7 @@ class TriagemState extends Equatable {
     this.etapa = '',
     this.modoReal = false,
     this.realDisponivel = false,
+    this.chavesNoPainel = const [],
     this.erro,
   });
 
@@ -48,6 +55,7 @@ class TriagemState extends Equatable {
     bool limparRodada = false,
     String? etapa,
     bool? modoReal,
+    List<String>? chavesNoPainel,
     String? erro,
     bool limparErro = false,
   }) => TriagemState(
@@ -58,11 +66,12 @@ class TriagemState extends Equatable {
     etapa: etapa ?? this.etapa,
     modoReal: modoReal ?? this.modoReal,
     realDisponivel: realDisponivel,
+    chavesNoPainel: chavesNoPainel ?? this.chavesNoPainel,
     erro: limparErro ? null : erro ?? this.erro,
   );
 
   @override
-  List<Object?> get props => [status, projeto, config, rodada, etapa, modoReal, realDisponivel, erro];
+  List<Object?> get props => [status, projeto, config, rodada, etapa, modoReal, realDisponivel, chavesNoPainel, erro];
 }
 
 class TriagemCubit extends Cubit<TriagemState> {
@@ -110,6 +119,20 @@ class TriagemCubit extends Cubit<TriagemState> {
     emit(state.copyWith(modoReal: real));
   }
 
+  /// Chaves do painel: fora do estado (que pode ser impresso ou comparado), só aqui na memória.
+  ChavesApi _chaves = const ChavesApi();
+
+  /// Guarda as chaves digitadas; campo vazio mantém a que já estava.
+  void definirChaves(ChavesApi novas) {
+    _chaves = _chaves.mais(novas);
+    emit(state.copyWith(chavesNoPainel: _chaves.informadas));
+  }
+
+  void apagarChaves() {
+    _chaves = const ChavesApi();
+    emit(state.copyWith(chavesNoPainel: const []));
+  }
+
   void alternarEstabilidade(bool ligado) =>
       emit(state.copyWith(config: state.config.copyWith(testeEstabilidade: ligado)));
 
@@ -128,7 +151,7 @@ class TriagemCubit extends Cubit<TriagemState> {
     final projeto = state.projeto;
     if (projeto == null || state.status == StatusTriagem.rodando) return;
     final config = state.config;
-    final (decisor, llm) = fabrica(config, real: state.modoReal);
+    final (decisor, llm) = fabrica(config, real: state.modoReal, chaves: _chaves);
     final configRodada = config.copyWith(modeloDecisao: decisor.modelo, modeloLlm: llm.modelo);
     emit(state.copyWith(status: StatusTriagem.rodando, limparRodada: true, etapa: 'Começando…', limparErro: true));
     try {
