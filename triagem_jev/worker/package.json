@@ -1,0 +1,20 @@
+{
+  "name": "triagem-jev-worker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Proxy do protótipo de triagem para o OpenRouter (Jev + LLM). A chave fica só aqui.",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261006.1",
+    "typescript": "5.9.3",
+    "vite": "8.3.2",
+    "vitest": "5.0.3",
+    "wrangler": "4.147.0"
+  }
+}

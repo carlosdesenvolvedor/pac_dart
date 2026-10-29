@@ -1,0 +1,11 @@
+# Worker do protótipo de triagem — veja ../LEIA-ME.md.
+name = "triagem-jev"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+
+# Valores públicos (NÃO coloque segredo aqui).
+# A chave do OpenRouter é segredo: local em .dev.vars; publicado com `npx wrangler secret put OPENROUTER_API_KEY`.
+[vars]
+# Só estes modelos passam (protege o crédito). Acrescente os que for comparar.
+MODELOS_PERMITIDOS = "typesafe/jev-1.13,~typesafe/jev-latest,anthropic/claude-haiku-5.5,anthropic/claude-sonnet-5.5"
+ORIGENS = ""

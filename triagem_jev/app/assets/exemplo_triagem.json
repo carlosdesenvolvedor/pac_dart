@@ -1,0 +1,207 @@
+{
+  "projeto": "Demo triagem — LLMs na geração de testes (DADOS FICTÍCIOS)",
+  "aviso": "Estudos inventados para ensaiar a demonstração (Opção B do plano). Não são referências reais. Para a reunião, prefira a Opção A: uma revisão sistemática publicada com gabarito.",
+  "criterios": [
+    { "id": "C1", "texto": "O estudo trata da geração automática de testes de software." },
+    { "id": "C2", "texto": "O estudo utiliza modelos de linguagem de grande porte (LLMs) na abordagem proposta ou avaliada." },
+    { "id": "C3", "texto": "O estudo apresenta avaliação empírica, como experimento, estudo de caso ou benchmark." }
+  ],
+  "estudos": [
+    {
+      "id": "E01",
+      "titulo": "Geração automática de testes unitários com modelos de linguagem: um experimento com projetos Java",
+      "resumo": "Propomos uma abordagem que usa modelos de linguagem de grande porte (LLMs) para a geração automática de testes unitários. Em um experimento com 40 projetos Java, os testes gerados alcançaram cobertura de ramos comparável à do EvoSuite.",
+      "palavras_chave": ["geração de testes", "LLM", "teste unitário", "experimento"],
+      "tipo_fonte": "artigo",
+      "gabarito": "incluir"
+    },
+    {
+      "id": "E02",
+      "titulo": "Um benchmark para avaliar LLMs na geração de casos de teste em Python",
+      "resumo": "Apresentamos um benchmark com 1.200 funções Python para avaliar modelos de linguagem na geração automática de casos de teste. Avaliamos seis LLMs quanto a cobertura, taxa de compilação e detecção de mutantes.",
+      "palavras_chave": ["benchmark", "modelos de linguagem", "geração de testes", "Python"],
+      "tipo_fonte": "artigo",
+      "gabarito": "incluir"
+    },
+    {
+      "id": "E03",
+      "titulo": "Refinamento iterativo de testes gerados por LLM com feedback de execução",
+      "resumo": "Testes gerados por modelos de linguagem frequentemente não compilam. Propomos um ciclo que executa os testes, coleta erros e pede correções ao LLM. Um estudo empírico com 12 projetos mostra aumento de 31% na taxa de testes válidos.",
+      "palavras_chave": ["LLM", "geração automática de testes", "feedback", "estudo empírico"],
+      "tipo_fonte": "artigo",
+      "gabarito": "incluir"
+    },
+    {
+      "id": "E04",
+      "titulo": "Geração de testes de software com busca evolutiva: uma replicação",
+      "resumo": "Replicamos um experimento clássico de geração automática de testes com algoritmos genéticos em 20 bibliotecas de código aberto e comparamos a cobertura obtida com a do estudo original.",
+      "palavras_chave": ["SBST", "algoritmos genéticos", "geração de testes", "replicação"],
+      "tipo_fonte": "artigo",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E05",
+      "titulo": "Modelos de linguagem para revisão de código: um estudo de caso industrial",
+      "resumo": "Investigamos o uso de LLMs para sugerir comentários de revisão de código em uma empresa de software. O estudo de caso, com 300 pull requests, avaliou a utilidade percebida pelos desenvolvedores.",
+      "palavras_chave": ["revisão de código", "LLM", "estudo de caso"],
+      "tipo_fonte": "artigo",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E06",
+      "titulo": "Testes de mutação guiados por modelos de linguagem",
+      "resumo": "Usamos modelos de linguagem de grande porte para gerar mutantes realistas e, a partir deles, gerar automaticamente testes que os matam. A avaliação com o benchmark Defects4J mostra ganho no escore de mutação.",
+      "palavras_chave": ["teste de mutação", "LLM", "geração de testes", "Defects4J"],
+      "tipo_fonte": "artigo",
+      "gabarito": "incluir"
+    },
+    {
+      "id": "E07",
+      "titulo": "Desafios da geração de testes com LLMs: uma visão",
+      "resumo": "Este artigo de visão discute oportunidades e riscos do uso de modelos de linguagem na geração automática de testes de software e propõe uma agenda de pesquisa.",
+      "palavras_chave": ["visão", "LLM", "geração de testes", "agenda de pesquisa"],
+      "tipo_fonte": "artigo",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E08",
+      "titulo": "Como usamos um LLM para gerar testes no nosso monorepo",
+      "resumo": "",
+      "palavras_chave": ["blog", "LLM", "testes"],
+      "tipo_fonte": "literatura_cinzenta",
+      "url": "https://exemplo.invalid/blog/llm-testes",
+      "gabarito": "incluir"
+    },
+    {
+      "id": "E09",
+      "titulo": "Detecção de code smells com aprendizado profundo",
+      "resumo": "Treinamos uma rede neural para detectar code smells em projetos Java e avaliamos a precisão em um conjunto de 5.000 classes rotuladas manualmente.",
+      "palavras_chave": ["code smells", "aprendizado profundo", "qualidade de código"],
+      "tipo_fonte": "artigo",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E10",
+      "titulo": "Geração de oráculos de teste com modelos de linguagem",
+      "resumo": "Oráculos são a parte mais difícil da geração automática de testes. Propomos usar LLMs para inferir asserções a partir da documentação e avaliamos a abordagem em um experimento controlado com 15 projetos.",
+      "palavras_chave": ["oráculo de teste", "LLM", "asserções", "experimento"],
+      "tipo_fonte": "artigo",
+      "gabarito": "incluir"
+    },
+    {
+      "id": "E11",
+      "titulo": "Priorização de casos de teste em integração contínua",
+      "resumo": "Avaliamos técnicas de priorização de casos de teste baseadas em histórico de falhas em 8 projetos com integração contínua, medindo o tempo até a primeira falha detectada.",
+      "palavras_chave": ["priorização de testes", "integração contínua"],
+      "tipo_fonte": "artigo",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E12",
+      "titulo": "Issue: suporte a geração de testes com modelo de linguagem local",
+      "resumo": "",
+      "palavras_chave": ["issue", "github", "geração de testes", "LLM"],
+      "tipo_fonte": "literatura_cinzenta",
+      "url": "https://exemplo.invalid/issues/1234",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E13",
+      "titulo": "LLMs na geração de testes de interface Android: um estudo empírico",
+      "resumo": "Avaliamos empiricamente o uso de modelos de linguagem para gerar automaticamente scripts de teste de interface para 30 aplicativos Android, comparando com ferramentas de exploração aleatória.",
+      "palavras_chave": ["Android", "teste de interface", "LLM", "estudo empírico"],
+      "tipo_fonte": "artigo",
+      "gabarito": "incluir"
+    },
+    {
+      "id": "E14",
+      "titulo": "Tradução de código entre linguagens com modelos de linguagem",
+      "resumo": "Avaliamos LLMs na tradução automática de programas de C para Rust em um benchmark com 500 funções, medindo correção funcional por meio de testes existentes.",
+      "palavras_chave": ["tradução de código", "LLM", "Rust", "benchmark"],
+      "tipo_fonte": "artigo",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E15",
+      "titulo": "Fuzzing assistido por modelos de linguagem para bibliotecas de parsing",
+      "resumo": "Usamos modelos de linguagem de grande porte para gerar entradas de fuzzing e harnesses de teste automaticamente para bibliotecas de parsing. Em um experimento, a abordagem encontrou 9 falhas novas.",
+      "palavras_chave": ["fuzzing", "LLM", "geração de testes", "experimento"],
+      "tipo_fonte": "artigo",
+      "gabarito": "incluir"
+    },
+    {
+      "id": "E16",
+      "titulo": "Percepções de desenvolvedores sobre assistentes de código",
+      "resumo": "Entrevistamos 25 desenvolvedores sobre o uso de assistentes de código baseados em LLM no dia a dia, identificando benefícios, riscos e práticas de adoção.",
+      "palavras_chave": ["entrevistas", "assistentes de código", "LLM"],
+      "tipo_fonte": "artigo",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E17",
+      "titulo": "Documentação: gerando testes com a ferramenta X",
+      "resumo": "",
+      "palavras_chave": ["documentação", "ferramenta", "testes"],
+      "tipo_fonte": "literatura_cinzenta",
+      "url": "https://exemplo.invalid/docs/gerar-testes",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E18",
+      "titulo": "Geração de testes de regressão a partir de logs de produção",
+      "resumo": "Propomos gerar automaticamente testes de regressão a partir de logs de produção, sem uso de aprendizado de máquina. Um estudo de caso em um sistema bancário mostra redução de falhas reabertas.",
+      "palavras_chave": ["testes de regressão", "logs", "estudo de caso"],
+      "tipo_fonte": "artigo",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E19",
+      "titulo": "Testes unitários gerados por LLM detectam bugs reais? Um estudo com o Defects4J",
+      "resumo": "Avaliamos se testes unitários gerados automaticamente por três modelos de linguagem detectam os bugs reais do Defects4J, comparando com testes escritos por desenvolvedores.",
+      "palavras_chave": ["LLM", "testes unitários", "Defects4J", "avaliação empírica"],
+      "tipo_fonte": "artigo",
+      "gabarito": "incluir"
+    },
+    {
+      "id": "E20",
+      "titulo": "Estimativa de esforço em projetos ágeis com redes neurais",
+      "resumo": "Comparamos modelos de redes neurais e regressão para estimar story points em 16 projetos ágeis de código aberto.",
+      "palavras_chave": ["estimativa de esforço", "ágil", "redes neurais"],
+      "tipo_fonte": "artigo",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E21",
+      "titulo": "Engenharia de prompts para geração de testes: um estudo exploratório",
+      "resumo": "Comparamos estratégias de engenharia de prompts (zero-shot, few-shot, cadeia de raciocínio) para a geração automática de testes unitários com LLMs em 10 projetos Python.",
+      "palavras_chave": ["engenharia de prompts", "LLM", "geração de testes"],
+      "tipo_fonte": "artigo",
+      "gabarito": "incluir"
+    },
+    {
+      "id": "E22",
+      "titulo": "Um mapeamento sistemático sobre teste de software com inteligência artificial",
+      "resumo": "Mapeamos 210 estudos que aplicam técnicas de inteligência artificial ao teste de software, classificando-os por atividade de teste e técnica usada.",
+      "palavras_chave": ["mapeamento sistemático", "inteligência artificial", "teste de software"],
+      "tipo_fonte": "artigo",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E23",
+      "titulo": "Thread de fórum: o Copilot escreve bons testes?",
+      "resumo": "",
+      "palavras_chave": ["fórum", "opinião", "testes"],
+      "tipo_fonte": "literatura_cinzenta",
+      "url": "https://exemplo.invalid/forum/thread/42",
+      "gabarito": "excluir"
+    },
+    {
+      "id": "E24",
+      "titulo": "Geração de dados de teste para bancos de dados com modelos de linguagem",
+      "resumo": "Propomos uma ferramenta que usa LLMs para gerar automaticamente dados de teste que respeitam restrições de esquemas relacionais e a avaliamos em um benchmark com 50 esquemas.",
+      "palavras_chave": ["dados de teste", "banco de dados", "LLM", "benchmark"],
+      "tipo_fonte": "artigo",
+      "gabarito": "incluir"
+    }
+  ]
+}
