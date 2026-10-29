@@ -1,0 +1,3502 @@
+{
+  "gerado_em": "2026-10-29T22:10:06.055Z",
+  "inicio": "2026-10-29T22:08:37.013Z",
+  "fim": "2026-10-29T22:09:09.036Z",
+  "projeto": "Demo triagem — LLMs na geração de testes (DADOS FICTÍCIOS)",
+  "criterios": [
+    {
+      "id": "C1",
+      "texto": "O estudo trata da geração automática de testes de software."
+    },
+    {
+      "id": "C2",
+      "texto": "O estudo utiliza modelos de linguagem de grande porte (LLMs) na abordagem proposta ou avaliada."
+    },
+    {
+      "id": "C3",
+      "texto": "O estudo apresenta avaliação empírica, como experimento, estudo de caso ou benchmark."
+    }
+  ],
+  "config": {
+    "limite_incluir": 0.8,
+    "limite_excluir": 0.3,
+    "modelo_decisao": "typesafe/jev-1.14",
+    "modelo_llm": "openai/gpt-6-luna",
+    "modelo_decisao_alternativo": "openai/decisions-gpt-6-luna",
+    "teste_estabilidade": false,
+    "precos": {
+      "conferido_em": "2026-10-29, na API pública de modelos do OpenRouter (openrouter.ai/api/v1/models) e na página do Jev (openrouter.ai/typesafe/jev-1.14)",
+      "modelos": {
+        "typesafe/jev-1.14": {
+          "entrada": 0.042,
+          "saida": 0
+        },
+        "typesafe/jev-1.13": {
+          "entrada": 0.042,
+          "saida": 0
+        },
+        "openai/decisions-gpt-6-luna": {
+          "entrada": 0.1,
+          "saida": 0
+        },
+        "anthropic/claude-haiku-5.5": {
+          "entrada": 0.1,
+          "saida": 0.5
+        },
+        "anthropic/claude-sonnet-5.5": {
+          "entrada": 2,
+          "saida": 10
+        },
+        "openai/gpt-6-luna": {
+          "entrada": 0.1,
+          "saida": 0.5
+        },
+        "simulado/decisao": {
+          "entrada": 0.042,
+          "saida": 0
+        },
+        "simulado/llm": {
+          "entrada": 0.1,
+          "saida": 0.5
+        }
+      }
+    }
+  },
+  "metricas": {
+    "etapa1": {
+      "vp": 11,
+      "fp": 0,
+      "fn": 0,
+      "vn": 13,
+      "avaliados": 24,
+      "recall": 1,
+      "precisao": 1,
+      "acuracia": 1,
+      "concordancia": 0.9166666666666666,
+      "kappa": 1,
+      "reducao_trabalho": 0.5416666666666666
+    },
+    "sistema": {
+      "vp": 11,
+      "fp": 0,
+      "fn": 0,
+      "vn": 13,
+      "avaliados": 24,
+      "recall": 1,
+      "precisao": 1,
+      "acuracia": 1,
+      "concordancia": 0.9583333333333334,
+      "kappa": 1,
+      "reducao_trabalho": 0.5416666666666666
+    },
+    "final": {
+      "vp": 11,
+      "fp": 0,
+      "fn": 0,
+      "vn": 13,
+      "avaliados": 24,
+      "recall": 1,
+      "precisao": 1,
+      "acuracia": 1,
+      "concordancia": 0.9583333333333334,
+      "kappa": 1,
+      "reducao_trabalho": 0.5416666666666666
+    }
+  },
+  "cenarios": [
+    {
+      "nome": "Decisão (typesafe/jev-1.14) + LLM",
+      "custo_usd": 0.002541576,
+      "ms": 31998,
+      "chamadas_llm": 11,
+      "medido": true,
+      "observacao": "LLM só nos incluídos e incertos.",
+      "projecao_usd": {
+        "1000_estudos_1_rodadas": 0.105899,
+        "1000_estudos_6_rodadas": 0.635394,
+        "5000_estudos_1_rodadas": 0.5294949999999999,
+        "5000_estudos_6_rodadas": 3.17697
+      }
+    },
+    {
+      "nome": "Só LLM (openai/gpt-6-luna)",
+      "custo_usd": 0.0019780363636363635,
+      "ms": 57733,
+      "chamadas_llm": 24,
+      "medido": false,
+      "observacao": "Estimado: média por chamada medida × todos os estudos.",
+      "projecao_usd": {
+        "1000_estudos_1_rodadas": 0.08241818181818182,
+        "1000_estudos_6_rodadas": 0.4945090909090909,
+        "5000_estudos_1_rodadas": 0.41209090909090906,
+        "5000_estudos_6_rodadas": 2.4725454545454544
+      }
+    },
+    {
+      "nome": "Decisions API (openai/decisions-gpt-6-luna) + LLM",
+      "custo_usd": 0.0047994000000000005,
+      "ms": 31998,
+      "chamadas_llm": 11,
+      "medido": false,
+      "observacao": "Estimado: mesmos tokens e mesmo encaminhamento, preço da Decisions API.",
+      "projecao_usd": {
+        "1000_estudos_1_rodadas": 0.199975,
+        "1000_estudos_6_rodadas": 1.19985,
+        "5000_estudos_1_rodadas": 0.9998750000000001,
+        "5000_estudos_6_rodadas": 5.99925
+      }
+    }
+  ],
+  "resultados": [
+    {
+      "estudo": {
+        "id": "E01",
+        "titulo": "Geração automática de testes unitários com modelos de linguagem: um experimento com projetos Java",
+        "resumo": "Propomos uma abordagem que usa modelos de linguagem de grande porte (LLMs) para a geração automática de testes unitários. Em um experimento com 40 projetos Java, os testes gerados alcançaram cobertura de ramos comparável à do EvoSuite.",
+        "palavras_chave": [
+          "geração de testes",
+          "LLM",
+          "teste unitário",
+          "experimento"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "incluir"
+      },
+      "faixa": "incluido",
+      "decisao_modelo": {
+        "estudo_id": "E01",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.98,
+        "escolha": "incluir",
+        "prob_escolha": {
+          "incluir": 1,
+          "excluir": 0,
+          "incerto": 0
+        },
+        "confianca": 1,
+        "distribuicao_nota": [
+          0.01,
+          0,
+          0,
+          0,
+          0,
+          0.01,
+          0.98
+        ],
+        "nota_esperada": 6.93,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.99,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.99,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          }
+        ],
+        "soma_likert": 20.79,
+        "uso": {
+          "tokens_entrada": 1654,
+          "tokens_saida": 181,
+          "ms": 397,
+          "medido": true
+        },
+        "custo_usd": 0.000069468
+      },
+      "justificativa_llm": {
+        "estudo_id": "E01",
+        "modelo": "openai/gpt-6-luna",
+        "decisao_sugerida": "incluir",
+        "criterios_atendidos": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "justificativa": "O estudo aborda a geração automática de testes unitários com LLMs e relata um experimento com 40 projetos Java.",
+        "uso": {
+          "tokens_entrada": 294,
+          "tokens_saida": 80,
+          "ms": 3326,
+          "medido": true
+        },
+        "custo_usd": 0.0000694
+      },
+      "decisao_humana": null,
+      "decisao_sistema": "incluir",
+      "decisao_final": "incluir"
+    },
+    {
+      "estudo": {
+        "id": "E02",
+        "titulo": "Um benchmark para avaliar LLMs na geração de casos de teste em Python",
+        "resumo": "Apresentamos um benchmark com 1.200 funções Python para avaliar modelos de linguagem na geração automática de casos de teste. Avaliamos seis LLMs quanto a cobertura, taxa de compilação e detecção de mutantes.",
+        "palavras_chave": [
+          "benchmark",
+          "modelos de linguagem",
+          "geração de testes",
+          "Python"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "incluir"
+      },
+      "faixa": "incluido",
+      "decisao_modelo": {
+        "estudo_id": "E02",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.97,
+        "escolha": "incluir",
+        "prob_escolha": {
+          "incluir": 1,
+          "excluir": 0,
+          "incerto": 0
+        },
+        "confianca": 1,
+        "distribuicao_nota": [
+          0.01,
+          0,
+          0,
+          0,
+          0,
+          0.01,
+          0.98
+        ],
+        "nota_esperada": 6.93,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.97,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0.99
+            ],
+            "likert_esperado": 6.9399999999999995
+          }
+        ],
+        "soma_likert": 20.799999999999997,
+        "uso": {
+          "tokens_entrada": 1638,
+          "tokens_saida": 181,
+          "ms": 254,
+          "medido": true
+        },
+        "custo_usd": 0.00006879600000000001
+      },
+      "justificativa_llm": {
+        "estudo_id": "E02",
+        "modelo": "openai/gpt-6-luna",
+        "decisao_sugerida": "incluir",
+        "criterios_atendidos": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "justificativa": "O estudo avalia a geração automática de casos de teste em Python usando seis LLMs. Apresenta avaliação empírica em benchmark, medindo cobertura, taxa de compilação e detecção de mutantes.",
+        "uso": {
+          "tokens_entrada": 283,
+          "tokens_saida": 120,
+          "ms": 2488,
+          "medido": true
+        },
+        "custo_usd": 0.00008829999999999999
+      },
+      "decisao_humana": null,
+      "decisao_sistema": "incluir",
+      "decisao_final": "incluir"
+    },
+    {
+      "estudo": {
+        "id": "E03",
+        "titulo": "Refinamento iterativo de testes gerados por LLM com feedback de execução",
+        "resumo": "Testes gerados por modelos de linguagem frequentemente não compilam. Propomos um ciclo que executa os testes, coleta erros e pede correções ao LLM. Um estudo empírico com 12 projetos mostra aumento de 31% na taxa de testes válidos.",
+        "palavras_chave": [
+          "LLM",
+          "geração automática de testes",
+          "feedback",
+          "estudo empírico"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "incluir"
+      },
+      "faixa": "incluido",
+      "decisao_modelo": {
+        "estudo_id": "E03",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.98,
+        "escolha": "incluir",
+        "prob_escolha": {
+          "incluir": 1,
+          "excluir": 0,
+          "incerto": 0
+        },
+        "confianca": 1,
+        "distribuicao_nota": [
+          0.01,
+          0,
+          0,
+          0,
+          0,
+          0.02,
+          0.97
+        ],
+        "nota_esperada": 6.92,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.97,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.99
+            ],
+            "likert_esperado": 6.989999999999999
+          }
+        ],
+        "soma_likert": 20.849999999999998,
+        "uso": {
+          "tokens_entrada": 1651,
+          "tokens_saida": 181,
+          "ms": 219,
+          "medido": true
+        },
+        "custo_usd": 0.000069342
+      },
+      "justificativa_llm": {
+        "estudo_id": "E03",
+        "modelo": "openai/gpt-6-luna",
+        "decisao_sugerida": "incluir",
+        "criterios_atendidos": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "justificativa": "O estudo propõe geração automática de testes com LLM e refinamento por feedback de execução. Apresenta avaliação empírica em 12 projetos.",
+        "uso": {
+          "tokens_entrada": 294,
+          "tokens_saida": 99,
+          "ms": 2260,
+          "medido": true
+        },
+        "custo_usd": 0.00007890000000000001
+      },
+      "decisao_humana": null,
+      "decisao_sistema": "incluir",
+      "decisao_final": "incluir"
+    },
+    {
+      "estudo": {
+        "id": "E04",
+        "titulo": "Geração de testes de software com busca evolutiva: uma replicação",
+        "resumo": "Replicamos um experimento clássico de geração automática de testes com algoritmos genéticos em 20 bibliotecas de código aberto e comparamos a cobertura obtida com a do estudo original.",
+        "palavras_chave": [
+          "SBST",
+          "algoritmos genéticos",
+          "geração de testes",
+          "replicação"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E04",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.06,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0,
+          "excluir": 1,
+          "incerto": 0
+        },
+        "confianca": 1,
+        "distribuicao_nota": [
+          0.61,
+          0.3,
+          0.06,
+          0,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "nota_esperada": 1.57,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.99,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.02,
+            "distribuicao_likert": [
+              0.97,
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.02
+            ],
+            "likert_esperado": 1.13
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          }
+        ],
+        "soma_likert": 14.989999999999998,
+        "uso": {
+          "tokens_entrada": 1639,
+          "tokens_saida": 182,
+          "ms": 227,
+          "medido": true
+        },
+        "custo_usd": 0.00006883800000000001
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E05",
+        "titulo": "Modelos de linguagem para revisão de código: um estudo de caso industrial",
+        "resumo": "Investigamos o uso de LLMs para sugerir comentários de revisão de código em uma empresa de software. O estudo de caso, com 300 pull requests, avaliou a utilidade percebida pelos desenvolvedores.",
+        "palavras_chave": [
+          "revisão de código",
+          "LLM",
+          "estudo de caso"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E05",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.06,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0,
+          "excluir": 0.99,
+          "incerto": 0.01
+        },
+        "confianca": 0.98,
+        "distribuicao_nota": [
+          0.58,
+          0.32,
+          0.07,
+          0,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "nota_esperada": 1.61,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.02,
+            "distribuicao_likert": [
+              0.97,
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.02
+            ],
+            "likert_esperado": 1.13
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.99
+            ],
+            "likert_esperado": 6.989999999999999
+          }
+        ],
+        "soma_likert": 15.049999999999997,
+        "uso": {
+          "tokens_entrada": 1634,
+          "tokens_saida": 182,
+          "ms": 239,
+          "medido": true
+        },
+        "custo_usd": 0.000068628
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E06",
+        "titulo": "Testes de mutação guiados por modelos de linguagem",
+        "resumo": "Usamos modelos de linguagem de grande porte para gerar mutantes realistas e, a partir deles, gerar automaticamente testes que os matam. A avaliação com o benchmark Defects4J mostra ganho no escore de mutação.",
+        "palavras_chave": [
+          "teste de mutação",
+          "LLM",
+          "geração de testes",
+          "Defects4J"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "incluir"
+      },
+      "faixa": "incluido",
+      "decisao_modelo": {
+        "estudo_id": "E06",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.97,
+        "escolha": "incluir",
+        "prob_escolha": {
+          "incluir": 1,
+          "excluir": 0,
+          "incerto": 0
+        },
+        "confianca": 1,
+        "distribuicao_nota": [
+          0.01,
+          0,
+          0,
+          0,
+          0,
+          0.02,
+          0.97
+        ],
+        "nota_esperada": 6.92,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.02,
+              0.97
+            ],
+            "likert_esperado": 6.92
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.99
+            ],
+            "likert_esperado": 6.989999999999999
+          }
+        ],
+        "soma_likert": 20.84,
+        "uso": {
+          "tokens_entrada": 1639,
+          "tokens_saida": 181,
+          "ms": 209,
+          "medido": true
+        },
+        "custo_usd": 0.00006883800000000001
+      },
+      "justificativa_llm": {
+        "estudo_id": "E06",
+        "modelo": "openai/gpt-6-luna",
+        "decisao_sugerida": "incluir",
+        "criterios_atendidos": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "justificativa": "O estudo usa LLMs para gerar automaticamente testes que matam mutantes e avalia a abordagem no benchmark Defects4J, com ganho no escore de mutação.",
+        "uso": {
+          "tokens_entrada": 283,
+          "tokens_saida": 121,
+          "ms": 2624,
+          "medido": true
+        },
+        "custo_usd": 0.0000888
+      },
+      "decisao_humana": null,
+      "decisao_sistema": "incluir",
+      "decisao_final": "incluir"
+    },
+    {
+      "estudo": {
+        "id": "E07",
+        "titulo": "Desafios da geração de testes com LLMs: uma visão",
+        "resumo": "Este artigo de visão discute oportunidades e riscos do uso de modelos de linguagem na geração automática de testes de software e propõe uma agenda de pesquisa.",
+        "palavras_chave": [
+          "visão",
+          "LLM",
+          "geração de testes",
+          "agenda de pesquisa"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E07",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.09,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0,
+          "excluir": 0.98,
+          "incerto": 0.02
+        },
+        "confianca": 0.97,
+        "distribuicao_nota": [
+          0.3,
+          0.44,
+          0.22,
+          0.01,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "nota_esperada": 2.06,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.97,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.03,
+              0.96
+            ],
+            "likert_esperado": 6.91
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.37,
+            "distribuicao_likert": [
+              0.07,
+              0.14,
+              0.17,
+              0.1,
+              0.26,
+              0.13,
+              0.13
+            ],
+            "likert_esperado": 4.250000000000001
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.04,
+            "distribuicao_likert": [
+              0.94,
+              0.04,
+              0.01,
+              0,
+              0,
+              0,
+              0.01
+            ],
+            "likert_esperado": 1.12
+          }
+        ],
+        "soma_likert": 12.280000000000001,
+        "uso": {
+          "tokens_entrada": 1614,
+          "tokens_saida": 182,
+          "ms": 202,
+          "medido": true
+        },
+        "custo_usd": 0.00006778800000000001
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E08",
+        "titulo": "Como usamos um LLM para gerar testes no nosso monorepo",
+        "resumo": "",
+        "palavras_chave": [
+          "blog",
+          "LLM",
+          "testes"
+        ],
+        "tipo_fonte": "literatura_cinzenta",
+        "url": "https://exemplo.invalid/blog/llm-testes",
+        "gabarito": "incluir"
+      },
+      "faixa": "incerto",
+      "decisao_modelo": {
+        "estudo_id": "E08",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.33,
+        "escolha": "incerto",
+        "prob_escolha": {
+          "incluir": 0.07,
+          "excluir": 0.2,
+          "incerto": 0.73
+        },
+        "confianca": 0.6,
+        "distribuicao_nota": [
+          0.03,
+          0.13,
+          0.22,
+          0.27,
+          0.19,
+          0.13,
+          0.03
+        ],
+        "nota_esperada": 3.9700000000000006,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.94,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0.01,
+              0.1,
+              0.88
+            ],
+            "likert_esperado": 6.82
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.95,
+            "distribuicao_likert": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0.06,
+              0.94
+            ],
+            "likert_esperado": 6.94
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.35,
+            "distribuicao_likert": [
+              0.03,
+              0.12,
+              0.15,
+              0.18,
+              0.38,
+              0.13,
+              0.01
+            ],
+            "likert_esperado": 4.19
+          }
+        ],
+        "soma_likert": 17.950000000000003,
+        "uso": {
+          "tokens_entrada": 1578,
+          "tokens_saida": 181,
+          "ms": 200,
+          "medido": true
+        },
+        "custo_usd": 0.00006627600000000001
+      },
+      "justificativa_llm": {
+        "estudo_id": "E08",
+        "modelo": "openai/gpt-6-luna",
+        "decisao_sugerida": "incerto",
+        "criterios_atendidos": [
+          "C1",
+          "C2"
+        ],
+        "justificativa": "O título indica geração de testes com um LLM. Não encontrei informação suficiente para determinar se o estudo apresenta avaliação empírica (C3).",
+        "uso": {
+          "tokens_entrada": 230,
+          "tokens_saida": 141,
+          "ms": 2554,
+          "medido": true
+        },
+        "custo_usd": 0.0000935
+      },
+      "decisao_humana": null,
+      "decisao_sistema": "incerto",
+      "decisao_final": "incerto"
+    },
+    {
+      "estudo": {
+        "id": "E09",
+        "titulo": "Detecção de code smells com aprendizado profundo",
+        "resumo": "Treinamos uma rede neural para detectar code smells em projetos Java e avaliamos a precisão em um conjunto de 5.000 classes rotuladas manualmente.",
+        "palavras_chave": [
+          "code smells",
+          "aprendizado profundo",
+          "qualidade de código"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E09",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.04,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0,
+          "excluir": 1,
+          "incerto": 0
+        },
+        "confianca": 1,
+        "distribuicao_nota": [
+          0.84,
+          0.13,
+          0.02,
+          0,
+          0,
+          0,
+          0.01
+        ],
+        "nota_esperada": 1.2300000000000002,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.02,
+            "distribuicao_likert": [
+              0.98,
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01
+            ],
+            "likert_esperado": 1.07
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.04,
+            "distribuicao_likert": [
+              0.75,
+              0.19,
+              0.04,
+              0.01,
+              0,
+              0,
+              0.01
+            ],
+            "likert_esperado": 1.36
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.97,
+            "distribuicao_likert": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0.04,
+              0.96
+            ],
+            "likert_esperado": 6.96
+          }
+        ],
+        "soma_likert": 9.39,
+        "uso": {
+          "tokens_entrada": 1614,
+          "tokens_saida": 182,
+          "ms": 197,
+          "medido": true
+        },
+        "custo_usd": 0.00006778800000000001
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E10",
+        "titulo": "Geração de oráculos de teste com modelos de linguagem",
+        "resumo": "Oráculos são a parte mais difícil da geração automática de testes. Propomos usar LLMs para inferir asserções a partir da documentação e avaliamos a abordagem em um experimento controlado com 15 projetos.",
+        "palavras_chave": [
+          "oráculo de teste",
+          "LLM",
+          "asserções",
+          "experimento"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "incluir"
+      },
+      "faixa": "incluido",
+      "decisao_modelo": {
+        "estudo_id": "E10",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.95,
+        "escolha": "incluir",
+        "prob_escolha": {
+          "incluir": 0.98,
+          "excluir": 0.01,
+          "incerto": 0.01
+        },
+        "confianca": 0.97,
+        "distribuicao_nota": [
+          0.01,
+          0,
+          0,
+          0,
+          0.01,
+          0.05,
+          0.93
+        ],
+        "nota_esperada": 6.870000000000001,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.94,
+            "distribuicao_likert": [
+              0.01,
+              0.01,
+              0.02,
+              0.01,
+              0.04,
+              0.19,
+              0.72
+            ],
+            "likert_esperado": 6.51
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.99
+            ],
+            "likert_esperado": 6.989999999999999
+          }
+        ],
+        "soma_likert": 20.43,
+        "uso": {
+          "tokens_entrada": 1638,
+          "tokens_saida": 181,
+          "ms": 235,
+          "medido": true
+        },
+        "custo_usd": 0.00006879600000000001
+      },
+      "justificativa_llm": {
+        "estudo_id": "E10",
+        "modelo": "openai/gpt-6-luna",
+        "decisao_sugerida": "incluir",
+        "criterios_atendidos": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "justificativa": "O estudo aborda a geração de oráculos e asserções para testes, utiliza LLMs e avalia a abordagem em um experimento controlado com 15 projetos.",
+        "uso": {
+          "tokens_entrada": 280,
+          "tokens_saida": 135,
+          "ms": 2359,
+          "medido": true
+        },
+        "custo_usd": 0.0000955
+      },
+      "decisao_humana": null,
+      "decisao_sistema": "incluir",
+      "decisao_final": "incluir"
+    },
+    {
+      "estudo": {
+        "id": "E11",
+        "titulo": "Priorização de casos de teste em integração contínua",
+        "resumo": "Avaliamos técnicas de priorização de casos de teste baseadas em histórico de falhas em 8 projetos com integração contínua, medindo o tempo até a primeira falha detectada.",
+        "palavras_chave": [
+          "priorização de testes",
+          "integração contínua"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E11",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.04,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0,
+          "excluir": 0.99,
+          "incerto": 0.01
+        },
+        "confianca": 0.98,
+        "distribuicao_nota": [
+          0.79,
+          0.18,
+          0.02,
+          0,
+          0,
+          0,
+          0.01
+        ],
+        "nota_esperada": 1.28,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.03,
+            "distribuicao_likert": [
+              0.88,
+              0.09,
+              0.02,
+              0,
+              0,
+              0,
+              0.01
+            ],
+            "likert_esperado": 1.1900000000000002
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.02,
+            "distribuicao_likert": [
+              0.97,
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.02
+            ],
+            "likert_esperado": 1.13
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.97,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.03,
+              0.96
+            ],
+            "likert_esperado": 6.91
+          }
+        ],
+        "soma_likert": 9.23,
+        "uso": {
+          "tokens_entrada": 1622,
+          "tokens_saida": 182,
+          "ms": 246,
+          "medido": true
+        },
+        "custo_usd": 0.00006812400000000001
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E12",
+        "titulo": "Issue: suporte a geração de testes com modelo de linguagem local",
+        "resumo": "",
+        "palavras_chave": [
+          "issue",
+          "github",
+          "geração de testes",
+          "LLM"
+        ],
+        "tipo_fonte": "literatura_cinzenta",
+        "url": "https://exemplo.invalid/issues/1234",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E12",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.14,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0.02,
+          "excluir": 0.57,
+          "incerto": 0.41
+        },
+        "confianca": 0.35,
+        "distribuicao_nota": [
+          0.22,
+          0.35,
+          0.24,
+          0.13,
+          0.03,
+          0.02,
+          0.01
+        ],
+        "nota_esperada": 2.5,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.91,
+            "distribuicao_likert": [
+              0.01,
+              0.01,
+              0.01,
+              0.01,
+              0.03,
+              0.2,
+              0.73
+            ],
+            "likert_esperado": 6.56
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.71,
+            "distribuicao_likert": [
+              0.01,
+              0.02,
+              0.02,
+              0.04,
+              0.18,
+              0.37,
+              0.36
+            ],
+            "likert_esperado": 5.91
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.06,
+            "distribuicao_likert": [
+              0.7,
+              0.19,
+              0.07,
+              0.02,
+              0.01,
+              0,
+              0.01
+            ],
+            "likert_esperado": 1.4900000000000002
+          }
+        ],
+        "soma_likert": 13.959999999999999,
+        "uso": {
+          "tokens_entrada": 1583,
+          "tokens_saida": 182,
+          "ms": 282,
+          "medido": true
+        },
+        "custo_usd": 0.000066486
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E13",
+        "titulo": "LLMs na geração de testes de interface Android: um estudo empírico",
+        "resumo": "Avaliamos empiricamente o uso de modelos de linguagem para gerar automaticamente scripts de teste de interface para 30 aplicativos Android, comparando com ferramentas de exploração aleatória.",
+        "palavras_chave": [
+          "Android",
+          "teste de interface",
+          "LLM",
+          "estudo empírico"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "incluir"
+      },
+      "faixa": "incluido",
+      "decisao_modelo": {
+        "estudo_id": "E13",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.97,
+        "escolha": "incluir",
+        "prob_escolha": {
+          "incluir": 1,
+          "excluir": 0,
+          "incerto": 0
+        },
+        "confianca": 1,
+        "distribuicao_nota": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0.01,
+          0.99
+        ],
+        "nota_esperada": 6.989999999999999,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.97,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          }
+        ],
+        "soma_likert": 20.79,
+        "uso": {
+          "tokens_entrada": 1629,
+          "tokens_saida": 181,
+          "ms": 220,
+          "medido": true
+        },
+        "custo_usd": 0.00006841800000000001
+      },
+      "justificativa_llm": {
+        "estudo_id": "E13",
+        "modelo": "openai/gpt-6-luna",
+        "decisao_sugerida": "incluir",
+        "criterios_atendidos": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "justificativa": "O estudo avalia a geração automática de scripts de teste de interface para aplicativos Android usando LLMs. A avaliação é empírica e compara a abordagem com ferramentas de exploração aleatória.",
+        "uso": {
+          "tokens_entrada": 273,
+          "tokens_saida": 115,
+          "ms": 2448,
+          "medido": true
+        },
+        "custo_usd": 0.0000848
+      },
+      "decisao_humana": null,
+      "decisao_sistema": "incluir",
+      "decisao_final": "incluir"
+    },
+    {
+      "estudo": {
+        "id": "E14",
+        "titulo": "Tradução de código entre linguagens com modelos de linguagem",
+        "resumo": "Avaliamos LLMs na tradução automática de programas de C para Rust em um benchmark com 500 funções, medindo correção funcional por meio de testes existentes.",
+        "palavras_chave": [
+          "tradução de código",
+          "LLM",
+          "Rust",
+          "benchmark"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E14",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.12,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0.05,
+          "excluir": 0.92,
+          "incerto": 0.03
+        },
+        "confianca": 0.88,
+        "distribuicao_nota": [
+          0.31,
+          0.38,
+          0.21,
+          0.01,
+          0.04,
+          0.03,
+          0.02
+        ],
+        "nota_esperada": 2.2600000000000002,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.05,
+            "distribuicao_likert": [
+              0.8,
+              0.13,
+              0.04,
+              0.01,
+              0.01,
+              0,
+              0.01
+            ],
+            "likert_esperado": 1.3400000000000003
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.99
+            ],
+            "likert_esperado": 6.989999999999999
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          }
+        ],
+        "soma_likert": 15.26,
+        "uso": {
+          "tokens_entrada": 1619,
+          "tokens_saida": 182,
+          "ms": 299,
+          "medido": true
+        },
+        "custo_usd": 0.00006799800000000001
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E15",
+        "titulo": "Fuzzing assistido por modelos de linguagem para bibliotecas de parsing",
+        "resumo": "Usamos modelos de linguagem de grande porte para gerar entradas de fuzzing e harnesses de teste automaticamente para bibliotecas de parsing. Em um experimento, a abordagem encontrou 9 falhas novas.",
+        "palavras_chave": [
+          "fuzzing",
+          "LLM",
+          "geração de testes",
+          "experimento"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "incluir"
+      },
+      "faixa": "incluido",
+      "decisao_modelo": {
+        "estudo_id": "E15",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.95,
+        "escolha": "incluir",
+        "prob_escolha": {
+          "incluir": 0.98,
+          "excluir": 0.01,
+          "incerto": 0.01
+        },
+        "confianca": 0.97,
+        "distribuicao_nota": [
+          0.01,
+          0,
+          0.01,
+          0,
+          0.01,
+          0.05,
+          0.92
+        ],
+        "nota_esperada": 6.83,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.96,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0.01,
+              0.08,
+              0.9
+            ],
+            "likert_esperado": 6.84
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0.02,
+              0.98
+            ],
+            "likert_esperado": 6.9799999999999995
+          }
+        ],
+        "soma_likert": 20.75,
+        "uso": {
+          "tokens_entrada": 1633,
+          "tokens_saida": 181,
+          "ms": 196,
+          "medido": true
+        },
+        "custo_usd": 0.000068586
+      },
+      "justificativa_llm": {
+        "estudo_id": "E15",
+        "modelo": "openai/gpt-6-luna",
+        "decisao_sugerida": "incluir",
+        "criterios_atendidos": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "justificativa": "O estudo usa LLMs para gerar automaticamente entradas de fuzzing e harnesses de teste. Relata um experimento que encontrou 9 falhas novas.",
+        "uso": {
+          "tokens_entrada": 276,
+          "tokens_saida": 115,
+          "ms": 2062,
+          "medido": true
+        },
+        "custo_usd": 0.0000851
+      },
+      "decisao_humana": null,
+      "decisao_sistema": "incluir",
+      "decisao_final": "incluir"
+    },
+    {
+      "estudo": {
+        "id": "E16",
+        "titulo": "Percepções de desenvolvedores sobre assistentes de código",
+        "resumo": "Entrevistamos 25 desenvolvedores sobre o uso de assistentes de código baseados em LLM no dia a dia, identificando benefícios, riscos e práticas de adoção.",
+        "palavras_chave": [
+          "entrevistas",
+          "assistentes de código",
+          "LLM"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E16",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.12,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0.01,
+          "excluir": 0.97,
+          "incerto": 0.02
+        },
+        "confianca": 0.96,
+        "distribuicao_nota": [
+          0.27,
+          0.39,
+          0.2,
+          0.02,
+          0.06,
+          0.04,
+          0.02
+        ],
+        "nota_esperada": 2.41,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.02,
+            "distribuicao_likert": [
+              0.95,
+              0.03,
+              0.01,
+              0,
+              0,
+              0,
+              0.01
+            ],
+            "likert_esperado": 1.11
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.83,
+            "distribuicao_likert": [
+              0.01,
+              0.02,
+              0.01,
+              0.01,
+              0.04,
+              0.17,
+              0.74
+            ],
+            "likert_esperado": 6.52
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.89,
+            "distribuicao_likert": [
+              0.01,
+              0.01,
+              0.01,
+              0.01,
+              0.07,
+              0.29,
+              0.6
+            ],
+            "likert_esperado": 6.390000000000001
+          }
+        ],
+        "soma_likert": 14.02,
+        "uso": {
+          "tokens_entrada": 1627,
+          "tokens_saida": 182,
+          "ms": 190,
+          "medido": true
+        },
+        "custo_usd": 0.000068334
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E17",
+        "titulo": "Documentação: gerando testes com a ferramenta X",
+        "resumo": "",
+        "palavras_chave": [
+          "documentação",
+          "ferramenta",
+          "testes"
+        ],
+        "tipo_fonte": "literatura_cinzenta",
+        "url": "https://exemplo.invalid/docs/gerar-testes",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E17",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.08,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0,
+          "excluir": 0.51,
+          "incerto": 0.49
+        },
+        "confianca": 0.26,
+        "distribuicao_nota": [
+          0.24,
+          0.39,
+          0.19,
+          0.17,
+          0.01,
+          0,
+          0
+        ],
+        "nota_esperada": 2.32,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.86,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0.04,
+              0.29,
+              0.66
+            ],
+            "likert_esperado": 6.57
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.06,
+            "distribuicao_likert": [
+              0.48,
+              0.23,
+              0.11,
+              0.17,
+              0.01,
+              0,
+              0
+            ],
+            "likert_esperado": 2
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.07,
+            "distribuicao_likert": [
+              0.64,
+              0.24,
+              0.09,
+              0.03,
+              0,
+              0,
+              0
+            ],
+            "likert_esperado": 1.5100000000000002
+          }
+        ],
+        "soma_likert": 10.08,
+        "uso": {
+          "tokens_entrada": 1583,
+          "tokens_saida": 182,
+          "ms": 207,
+          "medido": true
+        },
+        "custo_usd": 0.000066486
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E18",
+        "titulo": "Geração de testes de regressão a partir de logs de produção",
+        "resumo": "Propomos gerar automaticamente testes de regressão a partir de logs de produção, sem uso de aprendizado de máquina. Um estudo de caso em um sistema bancário mostra redução de falhas reabertas.",
+        "palavras_chave": [
+          "testes de regressão",
+          "logs",
+          "estudo de caso"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E18",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.04,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0,
+          "excluir": 1,
+          "incerto": 0
+        },
+        "confianca": 1,
+        "distribuicao_nota": [
+          0.8,
+          0.17,
+          0.01,
+          0,
+          0,
+          0.01,
+          0.01
+        ],
+        "nota_esperada": 1.3000000000000003,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.02,
+              0.97
+            ],
+            "likert_esperado": 6.92
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.03,
+            "distribuicao_likert": [
+              0.97,
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.02
+            ],
+            "likert_esperado": 1.13
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0.03,
+              0.97
+            ],
+            "likert_esperado": 6.97
+          }
+        ],
+        "soma_likert": 15.02,
+        "uso": {
+          "tokens_entrada": 1627,
+          "tokens_saida": 182,
+          "ms": 220,
+          "medido": true
+        },
+        "custo_usd": 0.000068334
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E19",
+        "titulo": "Testes unitários gerados por LLM detectam bugs reais? Um estudo com o Defects4J",
+        "resumo": "Avaliamos se testes unitários gerados automaticamente por três modelos de linguagem detectam os bugs reais do Defects4J, comparando com testes escritos por desenvolvedores.",
+        "palavras_chave": [
+          "LLM",
+          "testes unitários",
+          "Defects4J",
+          "avaliação empírica"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "incluir"
+      },
+      "faixa": "incluido",
+      "decisao_modelo": {
+        "estudo_id": "E19",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.97,
+        "escolha": "incluir",
+        "prob_escolha": {
+          "incluir": 1,
+          "excluir": 0,
+          "incerto": 0
+        },
+        "confianca": 1,
+        "distribuicao_nota": [
+          0.01,
+          0,
+          0,
+          0,
+          0,
+          0.01,
+          0.98
+        ],
+        "nota_esperada": 6.93,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.02,
+              0.97
+            ],
+            "likert_esperado": 6.92
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.97,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          }
+        ],
+        "soma_likert": 20.78,
+        "uso": {
+          "tokens_entrada": 1643,
+          "tokens_saida": 181,
+          "ms": 231,
+          "medido": true
+        },
+        "custo_usd": 0.000069006
+      },
+      "justificativa_llm": {
+        "estudo_id": "E19",
+        "modelo": "openai/gpt-6-luna",
+        "decisao_sugerida": "incluir",
+        "criterios_atendidos": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "justificativa": "O estudo avalia testes unitários gerados automaticamente por três modelos de linguagem e compara sua capacidade de detectar bugs reais do Defects4J com testes escritos por desenvolvedores.",
+        "uso": {
+          "tokens_entrada": 284,
+          "tokens_saida": 91,
+          "ms": 2208,
+          "medido": true
+        },
+        "custo_usd": 0.00007390000000000001
+      },
+      "decisao_humana": null,
+      "decisao_sistema": "incluir",
+      "decisao_final": "incluir"
+    },
+    {
+      "estudo": {
+        "id": "E20",
+        "titulo": "Estimativa de esforço em projetos ágeis com redes neurais",
+        "resumo": "Comparamos modelos de redes neurais e regressão para estimar story points em 16 projetos ágeis de código aberto.",
+        "palavras_chave": [
+          "estimativa de esforço",
+          "ágil",
+          "redes neurais"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E20",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.03,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0,
+          "excluir": 1,
+          "incerto": 0
+        },
+        "confianca": 1,
+        "distribuicao_nota": [
+          0.92,
+          0.06,
+          0.01,
+          0,
+          0,
+          0,
+          0.01
+        ],
+        "nota_esperada": 1.1400000000000001,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.02,
+            "distribuicao_likert": [
+              0.97,
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.02
+            ],
+            "likert_esperado": 1.13
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.03,
+            "distribuicao_likert": [
+              0.93,
+              0.05,
+              0.01,
+              0,
+              0,
+              0,
+              0.01
+            ],
+            "likert_esperado": 1.1300000000000001
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.96,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.06,
+              0.93
+            ],
+            "likert_esperado": 6.880000000000001
+          }
+        ],
+        "soma_likert": 9.14,
+        "uso": {
+          "tokens_entrada": 1608,
+          "tokens_saida": 182,
+          "ms": 236,
+          "medido": true
+        },
+        "custo_usd": 0.000067536
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E21",
+        "titulo": "Engenharia de prompts para geração de testes: um estudo exploratório",
+        "resumo": "Comparamos estratégias de engenharia de prompts (zero-shot, few-shot, cadeia de raciocínio) para a geração automática de testes unitários com LLMs em 10 projetos Python.",
+        "palavras_chave": [
+          "engenharia de prompts",
+          "LLM",
+          "geração de testes"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "incluir"
+      },
+      "faixa": "incluido",
+      "decisao_modelo": {
+        "estudo_id": "E21",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.96,
+        "escolha": "incluir",
+        "prob_escolha": {
+          "incluir": 0.99,
+          "excluir": 0,
+          "incerto": 0.01
+        },
+        "confianca": 0.98,
+        "distribuicao_nota": [
+          0.01,
+          0,
+          0,
+          0,
+          0.01,
+          0.05,
+          0.93
+        ],
+        "nota_esperada": 6.870000000000001,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.01,
+              0.98
+            ],
+            "likert_esperado": 6.93
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.96,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.06,
+              0.93
+            ],
+            "likert_esperado": 6.880000000000001
+          }
+        ],
+        "soma_likert": 20.740000000000002,
+        "uso": {
+          "tokens_entrada": 1626,
+          "tokens_saida": 181,
+          "ms": 194,
+          "medido": true
+        },
+        "custo_usd": 0.000068292
+      },
+      "justificativa_llm": {
+        "estudo_id": "E21",
+        "modelo": "openai/gpt-6-luna",
+        "decisao_sugerida": "incluir",
+        "criterios_atendidos": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "justificativa": "O estudo compara estratégias para gerar automaticamente testes unitários com LLMs e avalia a abordagem em 10 projetos Python.",
+        "uso": {
+          "tokens_entrada": 270,
+          "tokens_saida": 90,
+          "ms": 2393,
+          "medido": true
+        },
+        "custo_usd": 0.000072
+      },
+      "decisao_humana": null,
+      "decisao_sistema": "incluir",
+      "decisao_final": "incluir"
+    },
+    {
+      "estudo": {
+        "id": "E22",
+        "titulo": "Um mapeamento sistemático sobre teste de software com inteligência artificial",
+        "resumo": "Mapeamos 210 estudos que aplicam técnicas de inteligência artificial ao teste de software, classificando-os por atividade de teste e técnica usada.",
+        "palavras_chave": [
+          "mapeamento sistemático",
+          "inteligência artificial",
+          "teste de software"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E22",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.17,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0.05,
+          "excluir": 0.55,
+          "incerto": 0.4
+        },
+        "confianca": 0.33,
+        "distribuicao_nota": [
+          0.1,
+          0.22,
+          0.24,
+          0.1,
+          0.15,
+          0.12,
+          0.07
+        ],
+        "nota_esperada": 3.62,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.2,
+            "distribuicao_likert": [
+              0.04,
+              0.19,
+              0.27,
+              0.26,
+              0.19,
+              0.04,
+              0.01
+            ],
+            "likert_esperado": 3.53
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.06,
+            "distribuicao_likert": [
+              0.5,
+              0.31,
+              0.12,
+              0.07,
+              0,
+              0,
+              0
+            ],
+            "likert_esperado": 1.76
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.59,
+            "distribuicao_likert": [
+              0.16,
+              0.1,
+              0.07,
+              0.04,
+              0.1,
+              0.12,
+              0.41
+            ],
+            "likert_esperado": 4.819999999999999
+          }
+        ],
+        "soma_likert": 10.11,
+        "uso": {
+          "tokens_entrada": 1618,
+          "tokens_saida": 182,
+          "ms": 205,
+          "medido": true
+        },
+        "custo_usd": 0.000067956
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E23",
+        "titulo": "Thread de fórum: o Copilot escreve bons testes?",
+        "resumo": "",
+        "palavras_chave": [
+          "fórum",
+          "opinião",
+          "testes"
+        ],
+        "tipo_fonte": "literatura_cinzenta",
+        "url": "https://exemplo.invalid/forum/thread/42",
+        "gabarito": "excluir"
+      },
+      "faixa": "excluido",
+      "decisao_modelo": {
+        "estudo_id": "E23",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.08,
+        "escolha": "excluir",
+        "prob_escolha": {
+          "incluir": 0,
+          "excluir": 0.87,
+          "incerto": 0.13
+        },
+        "confianca": 0.8,
+        "distribuicao_nota": [
+          0.48,
+          0.37,
+          0.09,
+          0.03,
+          0.01,
+          0.01,
+          0.01
+        ],
+        "nota_esperada": 1.79,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.64,
+            "distribuicao_likert": [
+              0.01,
+              0.03,
+              0.04,
+              0.05,
+              0.33,
+              0.39,
+              0.15
+            ],
+            "likert_esperado": 5.43
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.58,
+            "distribuicao_likert": [
+              0.02,
+              0.06,
+              0.05,
+              0.03,
+              0.23,
+              0.32,
+              0.29
+            ],
+            "likert_esperado": 5.51
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.05,
+            "distribuicao_likert": [
+              0.84,
+              0.11,
+              0.03,
+              0.01,
+              0,
+              0,
+              0.01
+            ],
+            "likert_esperado": 1.2600000000000002
+          }
+        ],
+        "soma_likert": 12.2,
+        "uso": {
+          "tokens_entrada": 1580,
+          "tokens_saida": 182,
+          "ms": 212,
+          "medido": true
+        },
+        "custo_usd": 0.00006636
+      },
+      "justificativa_llm": null,
+      "decisao_humana": null,
+      "decisao_sistema": "excluir",
+      "decisao_final": "excluir"
+    },
+    {
+      "estudo": {
+        "id": "E24",
+        "titulo": "Geração de dados de teste para bancos de dados com modelos de linguagem",
+        "resumo": "Propomos uma ferramenta que usa LLMs para gerar automaticamente dados de teste que respeitam restrições de esquemas relacionais e a avaliamos em um benchmark com 50 esquemas.",
+        "palavras_chave": [
+          "dados de teste",
+          "banco de dados",
+          "LLM",
+          "benchmark"
+        ],
+        "tipo_fonte": "artigo",
+        "url": "",
+        "gabarito": "incluir"
+      },
+      "faixa": "incerto",
+      "decisao_modelo": {
+        "estudo_id": "E24",
+        "modelo": "typesafe/jev-1.14",
+        "prob_condicao": 0.72,
+        "escolha": "incluir",
+        "prob_escolha": {
+          "incluir": 0.71,
+          "excluir": 0.22,
+          "incerto": 0.07
+        },
+        "confianca": 0.56,
+        "distribuicao_nota": [
+          0.04,
+          0.07,
+          0.08,
+          0.01,
+          0.05,
+          0.17,
+          0.58
+        ],
+        "nota_esperada": 5.789999999999999,
+        "ordem_opcoes": [
+          "incluir",
+          "excluir",
+          "incerto"
+        ],
+        "por_criterio": [
+          {
+            "criterio_id": "C1",
+            "prob_atende": 0.71,
+            "distribuicao_likert": [
+              0.03,
+              0.05,
+              0.08,
+              0.03,
+              0.22,
+              0.29,
+              0.3
+            ],
+            "likert_esperado": 5.43
+          },
+          {
+            "criterio_id": "C2",
+            "prob_atende": 0.98,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.02,
+              0.97
+            ],
+            "likert_esperado": 6.92
+          },
+          {
+            "criterio_id": "C3",
+            "prob_atende": 0.97,
+            "distribuicao_likert": [
+              0.01,
+              0,
+              0,
+              0,
+              0,
+              0.02,
+              0.97
+            ],
+            "likert_esperado": 6.92
+          }
+        ],
+        "soma_likert": 19.27,
+        "uso": {
+          "tokens_entrada": 1631,
+          "tokens_saida": 181,
+          "ms": 220,
+          "medido": true
+        },
+        "custo_usd": 0.00006850200000000002
+      },
+      "justificativa_llm": {
+        "estudo_id": "E24",
+        "modelo": "openai/gpt-6-luna",
+        "decisao_sugerida": "incluir",
+        "criterios_atendidos": [
+          "C1",
+          "C2",
+          "C3"
+        ],
+        "justificativa": "O estudo propõe o uso de LLMs para gerar automaticamente dados de teste e avalia a ferramenta em um benchmark com 50 esquemas.",
+        "uso": {
+          "tokens_entrada": 274,
+          "tokens_saida": 98,
+          "ms": 1739,
+          "medido": true
+        },
+        "custo_usd": 0.0000764
+      },
+      "decisao_humana": null,
+      "decisao_sistema": "incluir",
+      "decisao_final": "incluir"
+    }
+  ],
+  "registros": [
+    {
+      "quando": "2026-10-29T22:08:37.412Z",
+      "etapa": "decisao",
+      "estudo_id": "E01",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Geração automática de testes unitários com modelos de linguagem: um experimento com projetos Java\nResumo: Propomos uma abordagem que usa modelos de linguagem de grande po… (454 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.98},\"escolha\":{\"type\":\"choice\",\"choice\":\"incluir\",\"confidence\":1.0,\"probabilities\":{\"incluir\":1.0,\"excluir\":0.0,\"incerto\":0.0}},\"nota\":{\"type\":\"score\",\"score\":5.94,\"confidence\":0.96,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.99},\"likert_C1\":{\"type\":\"score\",\"score\":5.92,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.99},\"likert_C2\":{\"type\":\"score\",\"score\":5.95,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C3\":{\"type\":\"score\",\"score\":5.95,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}}},\"usage\":{\"input_tokens\":1654,\"output_tokens\":181}}",
+      "uso": {
+        "tokens_entrada": 1654,
+        "tokens_saida": 181,
+        "ms": 397,
+        "medido": true
+      },
+      "custo_usd": 0.000069468
+    },
+    {
+      "quando": "2026-10-29T22:08:37.667Z",
+      "etapa": "decisao",
+      "estudo_id": "E02",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Um benchmark para avaliar LLMs na geração de casos de teste em Python\nResumo: Apresentamos um benchmark com 1.200 funções Python para avaliar modelos de linguagem na gera… (405 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.97},\"escolha\":{\"type\":\"choice\",\"choice\":\"incluir\",\"confidence\":1.0,\"probabilities\":{\"incluir\":1.0,\"excluir\":0.0,\"incerto\":0.0}},\"nota\":{\"type\":\"score\",\"score\":5.92,\"confidence\":0.96,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C1\":{\"type\":\"score\",\"score\":5.92,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.97},\"likert_C2\":{\"type\":\"score\",\"score\":5.93,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C3\":{\"type\":\"score\",\"score\":5.96,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.99}}},\"usage\":{\"input_tokens\":1638,\"output_tokens\":181}}",
+      "uso": {
+        "tokens_entrada": 1638,
+        "tokens_saida": 181,
+        "ms": 254,
+        "medido": true
+      },
+      "custo_usd": 0.00006879600000000001
+    },
+    {
+      "quando": "2026-10-29T22:08:37.886Z",
+      "etapa": "decisao",
+      "estudo_id": "E03",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Refinamento iterativo de testes gerados por LLM com feedback de execução\nResumo: Testes gerados por modelos de linguagem frequentemente não compilam. Propomos um ciclo qu… (431 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.98},\"escolha\":{\"type\":\"choice\",\"choice\":\"incluir\",\"confidence\":1.0,\"probabilities\":{\"incluir\":1.0,\"excluir\":0.0,\"incerto\":0.0}},\"nota\":{\"type\":\"score\",\"score\":5.93,\"confidence\":0.95,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.02,\"6\":0.97}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C1\":{\"type\":\"score\",\"score\":5.92,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.97},\"likert_C2\":{\"type\":\"score\",\"score\":5.92,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C3\":{\"type\":\"score\",\"score\":5.95,\"confidence\":0.99,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.0,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.99}}},\"usage\":{\"input_tokens\":1651,\"output_tokens\":181}}",
+      "uso": {
+        "tokens_entrada": 1651,
+        "tokens_saida": 181,
+        "ms": 219,
+        "medido": true
+      },
+      "custo_usd": 0.000069342
+    },
+    {
+      "quando": "2026-10-29T22:08:38.114Z",
+      "etapa": "decisao",
+      "estudo_id": "E04",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Geração de testes de software com busca evolutiva: uma replicação\nResumo: Replicamos um experimento clássico de geração automática de testes com algoritmos genéticos em 2… (378 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.06},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":1.0,\"probabilities\":{\"incluir\":0.0,\"excluir\":1.0,\"incerto\":0.0}},\"nota\":{\"type\":\"score\",\"score\":0.55,\"confidence\":0.67,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.61,\"1\":0.3,\"2\":0.06,\"3\":0.0,\"4\":0.01,\"5\":0.01,\"6\":0.01}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.99},\"likert_C1\":{\"type\":\"score\",\"score\":5.92,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.02},\"likert_C2\":{\"type\":\"score\",\"score\":0.16,\"confidence\":0.92,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.97,\"1\":0.01,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.02}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C3\":{\"type\":\"score\",\"score\":5.95,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}}},\"usage\":{\"input_tokens\":1639,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1639,
+        "tokens_saida": 182,
+        "ms": 227,
+        "medido": true
+      },
+      "custo_usd": 0.00006883800000000001
+    },
+    {
+      "quando": "2026-10-29T22:08:38.353Z",
+      "etapa": "decisao",
+      "estudo_id": "E05",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Modelos de linguagem para revisão de código: um estudo de caso industrial\nResumo: Investigamos o uso de LLMs para sugerir comentários de revisão de código em uma empresa … (369 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.06},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":0.98,\"probabilities\":{\"incluir\":0.0,\"excluir\":0.99,\"incerto\":0.01}},\"nota\":{\"type\":\"score\",\"score\":0.58,\"confidence\":0.64,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.58,\"1\":0.32,\"2\":0.07,\"3\":0.0,\"4\":0.01,\"5\":0.01,\"6\":0.01}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.02},\"likert_C1\":{\"type\":\"score\",\"score\":0.12,\"confidence\":0.92,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.97,\"1\":0.01,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.02}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C2\":{\"type\":\"score\",\"score\":5.94,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C3\":{\"type\":\"score\",\"score\":5.95,\"confidence\":0.99,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.0,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.99}}},\"usage\":{\"input_tokens\":1634,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1634,
+        "tokens_saida": 182,
+        "ms": 239,
+        "medido": true
+      },
+      "custo_usd": 0.000068628
+    },
+    {
+      "quando": "2026-10-29T22:08:38.562Z",
+      "etapa": "decisao",
+      "estudo_id": "E06",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Testes de mutação guiados por modelos de linguagem\nResumo: Usamos modelos de linguagem de grande porte para gerar mutantes realistas e, a partir deles, gerar automaticame… (376 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.97},\"escolha\":{\"type\":\"choice\",\"choice\":\"incluir\",\"confidence\":1.0,\"probabilities\":{\"incluir\":1.0,\"excluir\":0.0,\"incerto\":0.0}},\"nota\":{\"type\":\"score\",\"score\":5.92,\"confidence\":0.95,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.02,\"6\":0.97}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C1\":{\"type\":\"score\",\"score\":5.91,\"confidence\":0.95,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.02,\"6\":0.97}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C2\":{\"type\":\"score\",\"score\":5.94,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C3\":{\"type\":\"score\",\"score\":5.95,\"confidence\":0.99,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.0,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.99}}},\"usage\":{\"input_tokens\":1639,\"output_tokens\":181}}",
+      "uso": {
+        "tokens_entrada": 1639,
+        "tokens_saida": 181,
+        "ms": 209,
+        "medido": true
+      },
+      "custo_usd": 0.00006883800000000001
+    },
+    {
+      "quando": "2026-10-29T22:08:38.765Z",
+      "etapa": "decisao",
+      "estudo_id": "E07",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Desafios da geração de testes com LLMs: uma visão\nResumo: Este artigo de visão discute oportunidades e riscos do uso de modelos de linguagem na geração automática de test… (325 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.09},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":0.97,\"probabilities\":{\"incluir\":0.0,\"excluir\":0.98,\"incerto\":0.02}},\"nota\":{\"type\":\"score\",\"score\":1.06,\"confidence\":0.62,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.3,\"1\":0.44,\"2\":0.22,\"3\":0.01,\"4\":0.01,\"5\":0.01,\"6\":0.01}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.97},\"likert_C1\":{\"type\":\"score\",\"score\":5.9,\"confidence\":0.95,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.03,\"6\":0.96}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.37},\"likert_C2\":{\"type\":\"score\",\"score\":3.25,\"confidence\":0.11,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.07,\"1\":0.14,\"2\":0.17,\"3\":0.1,\"4\":0.26,\"5\":0.13,\"6\":0.13}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.04},\"likert_C3\":{\"type\":\"score\",\"score\":0.15,\"confidence\":0.93,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.94,\"1\":0.04,\"2\":0.01,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.01}}},\"usage\":{\"input_tokens\":1614,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1614,
+        "tokens_saida": 182,
+        "ms": 202,
+        "medido": true
+      },
+      "custo_usd": 0.00006778800000000001
+    },
+    {
+      "quando": "2026-10-29T22:08:38.966Z",
+      "etapa": "decisao",
+      "estudo_id": "E08",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: literatura cinzenta\nTítulo: Como usamos um LLM para gerar testes no nosso monorepo\nPalavras-chave: blog, LLM, testes",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.33},\"escolha\":{\"type\":\"choice\",\"choice\":\"incerto\",\"confidence\":0.6,\"probabilities\":{\"incluir\":0.07,\"excluir\":0.2,\"incerto\":0.73}},\"nota\":{\"type\":\"score\",\"score\":2.97,\"confidence\":0.35,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.03,\"1\":0.13,\"2\":0.22,\"3\":0.27,\"4\":0.19,\"5\":0.13,\"6\":0.03}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.94},\"likert_C1\":{\"type\":\"score\",\"score\":5.82,\"confidence\":0.9,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.01,\"5\":0.1,\"6\":0.88}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.95},\"likert_C2\":{\"type\":\"score\",\"score\":5.89,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.0,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.06,\"6\":0.94}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.35},\"likert_C3\":{\"type\":\"score\",\"score\":3.18,\"confidence\":0.35,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.03,\"1\":0.12,\"2\":0.15,\"3\":0.18,\"4\":0.38,\"5\":0.13,\"6\":0.01}}},\"usage\":{\"input_tokens\":1578,\"output_tokens\":181}}",
+      "uso": {
+        "tokens_entrada": 1578,
+        "tokens_saida": 181,
+        "ms": 200,
+        "medido": true
+      },
+      "custo_usd": 0.00006627600000000001
+    },
+    {
+      "quando": "2026-10-29T22:08:39.164Z",
+      "etapa": "decisao",
+      "estudo_id": "E09",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Detecção de code smells com aprendizado profundo\nResumo: Treinamos uma rede neural para detectar code smells em projetos Java e avaliamos a precisão em um conjunto de 5.0… (309 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.04},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":1.0,\"probabilities\":{\"incluir\":0.0,\"excluir\":1.0,\"incerto\":0.0}},\"nota\":{\"type\":\"score\",\"score\":0.27,\"confidence\":0.87,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.84,\"1\":0.13,\"2\":0.02,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.01}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.02},\"likert_C1\":{\"type\":\"score\",\"score\":0.12,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.98,\"1\":0.01,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.01}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.04},\"likert_C2\":{\"type\":\"score\",\"score\":0.35,\"confidence\":0.79,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.75,\"1\":0.19,\"2\":0.04,\"3\":0.01,\"4\":0.0,\"5\":0.0,\"6\":0.01}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.97},\"likert_C3\":{\"type\":\"score\",\"score\":5.91,\"confidence\":0.98,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.0,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.04,\"6\":0.96}}},\"usage\":{\"input_tokens\":1614,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1614,
+        "tokens_saida": 182,
+        "ms": 197,
+        "medido": true
+      },
+      "custo_usd": 0.00006778800000000001
+    },
+    {
+      "quando": "2026-10-29T22:08:39.399Z",
+      "etapa": "decisao",
+      "estudo_id": "E10",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Geração de oráculos de teste com modelos de linguagem\nResumo: Oráculos são a parte mais difícil da geração automática de testes. Propomos usar LLMs para inferir asserções… (374 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.95},\"escolha\":{\"type\":\"choice\",\"choice\":\"incluir\",\"confidence\":0.97,\"probabilities\":{\"incluir\":0.98,\"excluir\":0.01,\"incerto\":0.01}},\"nota\":{\"type\":\"score\",\"score\":5.85,\"confidence\":0.92,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.01,\"5\":0.05,\"6\":0.93}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.94},\"likert_C1\":{\"type\":\"score\",\"score\":5.56,\"confidence\":0.71,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.01,\"2\":0.02,\"3\":0.01,\"4\":0.04,\"5\":0.19,\"6\":0.72}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C2\":{\"type\":\"score\",\"score\":5.93,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C3\":{\"type\":\"score\",\"score\":5.95,\"confidence\":0.99,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.0,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.99}}},\"usage\":{\"input_tokens\":1638,\"output_tokens\":181}}",
+      "uso": {
+        "tokens_entrada": 1638,
+        "tokens_saida": 181,
+        "ms": 235,
+        "medido": true
+      },
+      "custo_usd": 0.00006879600000000001
+    },
+    {
+      "quando": "2026-10-29T22:08:39.646Z",
+      "etapa": "decisao",
+      "estudo_id": "E11",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Priorização de casos de teste em integração contínua\nResumo: Avaliamos técnicas de priorização de casos de teste baseadas em histórico de falhas em 8 projetos com integra… (339 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.04},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":0.98,\"probabilities\":{\"incluir\":0.0,\"excluir\":0.99,\"incerto\":0.01}},\"nota\":{\"type\":\"score\",\"score\":0.31,\"confidence\":0.84,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.79,\"1\":0.18,\"2\":0.02,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.01}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.03},\"likert_C1\":{\"type\":\"score\",\"score\":0.23,\"confidence\":0.89,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.88,\"1\":0.09,\"2\":0.02,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.01}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.02},\"likert_C2\":{\"type\":\"score\",\"score\":0.13,\"confidence\":0.92,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.97,\"1\":0.01,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.02}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.97},\"likert_C3\":{\"type\":\"score\",\"score\":5.91,\"confidence\":0.95,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.03,\"6\":0.96}}},\"usage\":{\"input_tokens\":1622,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1622,
+        "tokens_saida": 182,
+        "ms": 246,
+        "medido": true
+      },
+      "custo_usd": 0.00006812400000000001
+    },
+    {
+      "quando": "2026-10-29T22:08:39.929Z",
+      "etapa": "decisao",
+      "estudo_id": "E12",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: literatura cinzenta\nTítulo: Issue: suporte a geração de testes com modelo de linguagem local\nPalavras-chave: issue, github, geração de testes, LLM",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.14},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":0.35,\"probabilities\":{\"incluir\":0.02,\"excluir\":0.57,\"incerto\":0.41}},\"nota\":{\"type\":\"score\",\"score\":1.52,\"confidence\":0.45,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.22,\"1\":0.35,\"2\":0.24,\"3\":0.13,\"4\":0.03,\"5\":0.02,\"6\":0.01}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.91},\"likert_C1\":{\"type\":\"score\",\"score\":5.62,\"confidence\":0.74,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.01,\"2\":0.01,\"3\":0.01,\"4\":0.03,\"5\":0.2,\"6\":0.73}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.71},\"likert_C2\":{\"type\":\"score\",\"score\":4.93,\"confidence\":0.53,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.02,\"2\":0.02,\"3\":0.04,\"4\":0.18,\"5\":0.37,\"6\":0.36}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.06},\"likert_C3\":{\"type\":\"score\",\"score\":0.46,\"confidence\":0.71,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.7,\"1\":0.19,\"2\":0.07,\"3\":0.02,\"4\":0.01,\"5\":0.0,\"6\":0.01}}},\"usage\":{\"input_tokens\":1583,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1583,
+        "tokens_saida": 182,
+        "ms": 282,
+        "medido": true
+      },
+      "custo_usd": 0.000066486
+    },
+    {
+      "quando": "2026-10-29T22:08:40.150Z",
+      "etapa": "decisao",
+      "estudo_id": "E13",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: LLMs na geração de testes de interface Android: um estudo empírico\nResumo: Avaliamos empiricamente o uso de modelos de linguagem para gerar automaticamente scripts de tes… (370 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.97},\"escolha\":{\"type\":\"choice\",\"choice\":\"incluir\",\"confidence\":1.0,\"probabilities\":{\"incluir\":1.0,\"excluir\":0.0,\"incerto\":0.0}},\"nota\":{\"type\":\"score\",\"score\":5.95,\"confidence\":0.99,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.0,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.99}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C1\":{\"type\":\"score\",\"score\":5.93,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.97},\"likert_C2\":{\"type\":\"score\",\"score\":5.94,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C3\":{\"type\":\"score\",\"score\":5.95,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}}},\"usage\":{\"input_tokens\":1629,\"output_tokens\":181}}",
+      "uso": {
+        "tokens_entrada": 1629,
+        "tokens_saida": 181,
+        "ms": 220,
+        "medido": true
+      },
+      "custo_usd": 0.00006841800000000001
+    },
+    {
+      "quando": "2026-10-29T22:08:40.450Z",
+      "etapa": "decisao",
+      "estudo_id": "E14",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Tradução de código entre linguagens com modelos de linguagem\nResumo: Avaliamos LLMs na tradução automática de programas de C para Rust em um benchmark com 500 funções, me… (326 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.12},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":0.88,\"probabilities\":{\"incluir\":0.05,\"excluir\":0.92,\"incerto\":0.03}},\"nota\":{\"type\":\"score\",\"score\":1.25,\"confidence\":0.49,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.31,\"1\":0.38,\"2\":0.21,\"3\":0.01,\"4\":0.04,\"5\":0.03,\"6\":0.02}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.05},\"likert_C1\":{\"type\":\"score\",\"score\":0.3,\"confidence\":0.8,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.8,\"1\":0.13,\"2\":0.04,\"3\":0.01,\"4\":0.01,\"5\":0.0,\"6\":0.01}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C2\":{\"type\":\"score\",\"score\":5.95,\"confidence\":0.99,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.0,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.99}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C3\":{\"type\":\"score\",\"score\":5.94,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}}},\"usage\":{\"input_tokens\":1619,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1619,
+        "tokens_saida": 182,
+        "ms": 299,
+        "medido": true
+      },
+      "custo_usd": 0.00006799800000000001
+    },
+    {
+      "quando": "2026-10-29T22:08:40.647Z",
+      "etapa": "decisao",
+      "estudo_id": "E15",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Fuzzing assistido por modelos de linguagem para bibliotecas de parsing\nResumo: Usamos modelos de linguagem de grande porte para gerar entradas de fuzzing e harnesses de t… (370 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.95},\"escolha\":{\"type\":\"choice\",\"choice\":\"incluir\",\"confidence\":0.97,\"probabilities\":{\"incluir\":0.98,\"excluir\":0.01,\"incerto\":0.01}},\"nota\":{\"type\":\"score\",\"score\":5.84,\"confidence\":0.9,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.01,\"3\":0.0,\"4\":0.01,\"5\":0.05,\"6\":0.92}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.96},\"likert_C1\":{\"type\":\"score\",\"score\":5.81,\"confidence\":0.91,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.01,\"5\":0.08,\"6\":0.9}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C2\":{\"type\":\"score\",\"score\":5.93,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C3\":{\"type\":\"score\",\"score\":5.94,\"confidence\":0.99,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.0,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.02,\"6\":0.98}}},\"usage\":{\"input_tokens\":1633,\"output_tokens\":181}}",
+      "uso": {
+        "tokens_entrada": 1633,
+        "tokens_saida": 181,
+        "ms": 196,
+        "medido": true
+      },
+      "custo_usd": 0.000068586
+    },
+    {
+      "quando": "2026-10-29T22:08:40.837Z",
+      "etapa": "decisao",
+      "estudo_id": "E16",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Percepções de desenvolvedores sobre assistentes de código\nResumo: Entrevistamos 25 desenvolvedores sobre o uso de assistentes de código baseados em LLM no dia a dia, iden… (316 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.12},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":0.96,\"probabilities\":{\"incluir\":0.01,\"excluir\":0.97,\"incerto\":0.02}},\"nota\":{\"type\":\"score\",\"score\":1.39,\"confidence\":0.45,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.27,\"1\":0.39,\"2\":0.2,\"3\":0.02,\"4\":0.06,\"5\":0.04,\"6\":0.02}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.02},\"likert_C1\":{\"type\":\"score\",\"score\":0.13,\"confidence\":0.94,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.95,\"1\":0.03,\"2\":0.01,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.01}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.83},\"likert_C2\":{\"type\":\"score\",\"score\":5.51,\"confidence\":0.72,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.02,\"2\":0.01,\"3\":0.01,\"4\":0.04,\"5\":0.17,\"6\":0.74}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.89},\"likert_C3\":{\"type\":\"score\",\"score\":5.38,\"confidence\":0.64,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.01,\"2\":0.01,\"3\":0.01,\"4\":0.07,\"5\":0.29,\"6\":0.6}}},\"usage\":{\"input_tokens\":1627,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1627,
+        "tokens_saida": 182,
+        "ms": 190,
+        "medido": true
+      },
+      "custo_usd": 0.000068334
+    },
+    {
+      "quando": "2026-10-29T22:08:41.045Z",
+      "etapa": "decisao",
+      "estudo_id": "E17",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: literatura cinzenta\nTítulo: Documentação: gerando testes com a ferramenta X\nPalavras-chave: documentação, ferramenta, testes",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.08},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":0.26,\"probabilities\":{\"incluir\":0.0,\"excluir\":0.51,\"incerto\":0.49}},\"nota\":{\"type\":\"score\",\"score\":1.38,\"confidence\":0.53,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.24,\"1\":0.39,\"2\":0.19,\"3\":0.17,\"4\":0.01,\"5\":0.0,\"6\":0.0}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.86},\"likert_C1\":{\"type\":\"score\",\"score\":5.54,\"confidence\":0.75,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.04,\"5\":0.29,\"6\":0.66}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.06},\"likert_C2\":{\"type\":\"score\",\"score\":1.03,\"confidence\":0.42,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.48,\"1\":0.23,\"2\":0.11,\"3\":0.17,\"4\":0.01,\"5\":0.0,\"6\":0.0}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.07},\"likert_C3\":{\"type\":\"score\",\"score\":0.56,\"confidence\":0.7,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.64,\"1\":0.24,\"2\":0.09,\"3\":0.03,\"4\":0.0,\"5\":0.0,\"6\":0.0}}},\"usage\":{\"input_tokens\":1583,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1583,
+        "tokens_saida": 182,
+        "ms": 207,
+        "medido": true
+      },
+      "custo_usd": 0.000066486
+    },
+    {
+      "quando": "2026-10-29T22:08:41.265Z",
+      "etapa": "decisao",
+      "estudo_id": "E18",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Geração de testes de regressão a partir de logs de produção\nResumo: Propomos gerar automaticamente testes de regressão a partir de logs de produção, sem uso de aprendizad… (362 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.04},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":1.0,\"probabilities\":{\"incluir\":0.0,\"excluir\":1.0,\"incerto\":0.0}},\"nota\":{\"type\":\"score\",\"score\":0.33,\"confidence\":0.82,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.8,\"1\":0.17,\"2\":0.01,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.01}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C1\":{\"type\":\"score\",\"score\":5.93,\"confidence\":0.95,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.02,\"6\":0.97}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.03},\"likert_C2\":{\"type\":\"score\",\"score\":0.13,\"confidence\":0.92,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.97,\"1\":0.01,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.02}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C3\":{\"type\":\"score\",\"score\":5.93,\"confidence\":0.98,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.0,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.03,\"6\":0.97}}},\"usage\":{\"input_tokens\":1627,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1627,
+        "tokens_saida": 182,
+        "ms": 220,
+        "medido": true
+      },
+      "custo_usd": 0.000068334
+    },
+    {
+      "quando": "2026-10-29T22:08:41.496Z",
+      "etapa": "decisao",
+      "estudo_id": "E19",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Testes unitários gerados por LLM detectam bugs reais? Um estudo com o Defects4J\nResumo: Avaliamos se testes unitários gerados automaticamente por três modelos de linguage… (367 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.97},\"escolha\":{\"type\":\"choice\",\"choice\":\"incluir\",\"confidence\":1.0,\"probabilities\":{\"incluir\":1.0,\"excluir\":0.0,\"incerto\":0.0}},\"nota\":{\"type\":\"score\",\"score\":5.93,\"confidence\":0.96,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C1\":{\"type\":\"score\",\"score\":5.92,\"confidence\":0.95,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.02,\"6\":0.97}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.97},\"likert_C2\":{\"type\":\"score\",\"score\":5.92,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C3\":{\"type\":\"score\",\"score\":5.94,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}}},\"usage\":{\"input_tokens\":1643,\"output_tokens\":181}}",
+      "uso": {
+        "tokens_entrada": 1643,
+        "tokens_saida": 181,
+        "ms": 231,
+        "medido": true
+      },
+      "custo_usd": 0.000069006
+    },
+    {
+      "quando": "2026-10-29T22:08:41.733Z",
+      "etapa": "decisao",
+      "estudo_id": "E20",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Estimativa de esforço em projetos ágeis com redes neurais\nResumo: Comparamos modelos de redes neurais e regressão para estimar story points em 16 projetos ágeis de código… (275 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.03},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":1.0,\"probabilities\":{\"incluir\":0.0,\"excluir\":1.0,\"incerto\":0.0}},\"nota\":{\"type\":\"score\",\"score\":0.19,\"confidence\":0.92,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.92,\"1\":0.06,\"2\":0.01,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.01}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.02},\"likert_C1\":{\"type\":\"score\",\"score\":0.19,\"confidence\":0.92,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.97,\"1\":0.01,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.02}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.03},\"likert_C2\":{\"type\":\"score\",\"score\":0.17,\"confidence\":0.92,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.93,\"1\":0.05,\"2\":0.01,\"3\":0.0,\"4\":0.0,\"5\":0.0,\"6\":0.01}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.96},\"likert_C3\":{\"type\":\"score\",\"score\":5.87,\"confidence\":0.93,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.06,\"6\":0.93}}},\"usage\":{\"input_tokens\":1608,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1608,
+        "tokens_saida": 182,
+        "ms": 236,
+        "medido": true
+      },
+      "custo_usd": 0.000067536
+    },
+    {
+      "quando": "2026-10-29T22:08:41.927Z",
+      "etapa": "decisao",
+      "estudo_id": "E21",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Engenharia de prompts para geração de testes: um estudo exploratório\nResumo: Comparamos estratégias de engenharia de prompts (zero-shot, few-shot, cadeia de raciocínio) p… (350 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.96},\"escolha\":{\"type\":\"choice\",\"choice\":\"incluir\",\"confidence\":0.98,\"probabilities\":{\"incluir\":0.99,\"excluir\":0.0,\"incerto\":0.01}},\"nota\":{\"type\":\"score\",\"score\":5.87,\"confidence\":0.92,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.01,\"5\":0.05,\"6\":0.93}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C1\":{\"type\":\"score\",\"score\":5.92,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C2\":{\"type\":\"score\",\"score\":5.93,\"confidence\":0.96,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.01,\"6\":0.98}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.96},\"likert_C3\":{\"type\":\"score\",\"score\":5.88,\"confidence\":0.93,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.06,\"6\":0.93}}},\"usage\":{\"input_tokens\":1626,\"output_tokens\":181}}",
+      "uso": {
+        "tokens_entrada": 1626,
+        "tokens_saida": 181,
+        "ms": 194,
+        "medido": true
+      },
+      "custo_usd": 0.000068292
+    },
+    {
+      "quando": "2026-10-29T22:08:42.133Z",
+      "etapa": "decisao",
+      "estudo_id": "E22",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Um mapeamento sistemático sobre teste de software com inteligência artificial\nResumo: Mapeamos 210 estudos que aplicam técnicas de inteligência artificial ao teste de sof… (354 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.17},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":0.33,\"probabilities\":{\"incluir\":0.05,\"excluir\":0.55,\"incerto\":0.4}},\"nota\":{\"type\":\"score\",\"score\":2.61,\"confidence\":0.15,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.1,\"1\":0.22,\"2\":0.24,\"3\":0.1,\"4\":0.15,\"5\":0.12,\"6\":0.07}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.2},\"likert_C1\":{\"type\":\"score\",\"score\":2.51,\"confidence\":0.38,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.04,\"1\":0.19,\"2\":0.27,\"3\":0.26,\"4\":0.19,\"5\":0.04,\"6\":0.01}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.06},\"likert_C2\":{\"type\":\"score\",\"score\":0.82,\"confidence\":0.56,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.5,\"1\":0.31,\"2\":0.12,\"3\":0.07,\"4\":0.0,\"5\":0.0,\"6\":0.0}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.59},\"likert_C3\":{\"type\":\"score\",\"score\":3.8,\"confidence\":0.0,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.16,\"1\":0.1,\"2\":0.07,\"3\":0.04,\"4\":0.1,\"5\":0.12,\"6\":0.41}}},\"usage\":{\"input_tokens\":1618,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1618,
+        "tokens_saida": 182,
+        "ms": 205,
+        "medido": true
+      },
+      "custo_usd": 0.000067956
+    },
+    {
+      "quando": "2026-10-29T22:08:42.345Z",
+      "etapa": "decisao",
+      "estudo_id": "E23",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: literatura cinzenta\nTítulo: Thread de fórum: o Copilot escreve bons testes?\nPalavras-chave: fórum, opinião, testes",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.08},\"escolha\":{\"type\":\"choice\",\"choice\":\"excluir\",\"confidence\":0.8,\"probabilities\":{\"incluir\":0.0,\"excluir\":0.87,\"incerto\":0.13}},\"nota\":{\"type\":\"score\",\"score\":0.74,\"confidence\":0.54,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.48,\"1\":0.37,\"2\":0.09,\"3\":0.03,\"4\":0.01,\"5\":0.01,\"6\":0.01}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.64},\"likert_C1\":{\"type\":\"score\",\"score\":4.41,\"confidence\":0.49,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.03,\"2\":0.04,\"3\":0.05,\"4\":0.33,\"5\":0.39,\"6\":0.15}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.58},\"likert_C2\":{\"type\":\"score\",\"score\":4.51,\"confidence\":0.38,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.02,\"1\":0.06,\"2\":0.05,\"3\":0.03,\"4\":0.23,\"5\":0.32,\"6\":0.29}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.05},\"likert_C3\":{\"type\":\"score\",\"score\":0.25,\"confidence\":0.85,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.84,\"1\":0.11,\"2\":0.03,\"3\":0.01,\"4\":0.0,\"5\":0.0,\"6\":0.01}}},\"usage\":{\"input_tokens\":1580,\"output_tokens\":182}}",
+      "uso": {
+        "tokens_entrada": 1580,
+        "tokens_saida": 182,
+        "ms": 212,
+        "medido": true
+      },
+      "custo_usd": 0.00006636
+    },
+    {
+      "quando": "2026-10-29T22:08:42.565Z",
+      "etapa": "decisao",
+      "estudo_id": "E24",
+      "modelo": "typesafe/jev-1.14",
+      "parametros": {
+        "endpoint": "/jev",
+        "perguntas": [
+          "condicao",
+          "escolha",
+          "nota_1_7",
+          "por_criterio: booleano I/E + Likert 1-7"
+        ]
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Geração de dados de teste para bancos de dados com modelos de linguagem\nResumo: Propomos uma ferramenta que usa LLMs para gerar automaticamente dados de teste que respeit… (352 bytes)",
+      "saida": "{\"model\":\"jev-1.14.0\",\"answers\":{\"condicao\":{\"type\":\"noul\",\"noul\":0.72},\"escolha\":{\"type\":\"choice\",\"choice\":\"incluir\",\"confidence\":0.56,\"probabilities\":{\"incluir\":0.71,\"excluir\":0.22,\"incerto\":0.07}},\"nota\":{\"type\":\"score\",\"score\":4.8,\"confidence\":0.29,\"legend\":{\"0\":\"1: certainly exclude\",\"1\":\"2: very likely exclude\",\"2\":\"3: probably exclude\",\"3\":\"4: cannot tell\",\"4\":\"5: probably include\",\"5\":\"6: very likely include\",\"6\":\"7: certainly include\"},\"probabilities\":{\"0\":0.04,\"1\":0.07,\"2\":0.08,\"3\":0.01,\"4\":0.05,\"5\":0.17,\"6\":0.58}},\"atende_C1\":{\"type\":\"noul\",\"noul\":0.71},\"likert_C1\":{\"type\":\"score\",\"score\":4.37,\"confidence\":0.08,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.03,\"1\":0.05,\"2\":0.08,\"3\":0.03,\"4\":0.22,\"5\":0.29,\"6\":0.3}},\"atende_C2\":{\"type\":\"noul\",\"noul\":0.98},\"likert_C2\":{\"type\":\"score\",\"score\":5.93,\"confidence\":0.95,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.02,\"6\":0.97}},\"atende_C3\":{\"type\":\"noul\",\"noul\":0.97},\"likert_C3\":{\"type\":\"score\",\"score\":5.93,\"confidence\":0.95,\"legend\":{\"0\":\"1 - Strongly disagree\",\"1\":\"2 - Disagree\",\"2\":\"3 - Somewhat disagree\",\"3\":\"4 - Neither agree or disagree\",\"4\":\"5 - Somewhat agree\",\"5\":\"6 - Agree\",\"6\":\"7 - Strongly agree\"},\"probabilities\":{\"0\":0.01,\"1\":0.0,\"2\":0.0,\"3\":0.0,\"4\":0.0,\"5\":0.02,\"6\":0.97}}},\"usage\":{\"input_tokens\":1631,\"output_tokens\":181}}",
+      "uso": {
+        "tokens_entrada": 1631,
+        "tokens_saida": 181,
+        "ms": 220,
+        "medido": true
+      },
+      "custo_usd": 0.00006850200000000002
+    },
+    {
+      "quando": "2026-10-29T22:08:45.893Z",
+      "etapa": "llm",
+      "estudo_id": "E01",
+      "modelo": "openai/gpt-6-luna",
+      "parametros": {
+        "max_tokens": 2000
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Geração automática de testes unitários com modelos de linguagem: um experimento com projetos Java\nResumo: Propomos uma abordagem que usa modelos de linguagem de grande po… (454 bytes)",
+      "saida": "{\n  \"id\": \"chatcmpl-EeSaZIFLQKu7xz5iUrgSKxv2omPVP\",\n  \"object\": \"chat.completion\",\n  \"created\": 1793311723,\n  \"model\": \"gpt-6-luna\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"decisao_sugerida\\\":\\\"incluir\\\",\\\"criterios_atendidos\\\":[\\\"C1\\\",\\\"C2\\\",\\\"C3\\\"],\\\"justificativa\\\":\\\"O estudo aborda a geração automática de testes unitários com LLMs e relata um experimento com 40 projetos Java.\\\"}\",\n        \"refusal\": null,\n        \"annotations\": []\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 294,\n    \"completion_tokens\": 80,\n    \"total_tokens\": 374,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0,\n      \"cache_write_tokens\": 0,\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 15,\n      \"audio_tokens\": 0,\n      \"accepted_prediction_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    }\n  },\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null\n}\n",
+      "uso": {
+        "tokens_entrada": 294,
+        "tokens_saida": 80,
+        "ms": 3326,
+        "medido": true
+      },
+      "custo_usd": 0.0000694
+    },
+    {
+      "quando": "2026-10-29T22:08:48.382Z",
+      "etapa": "llm",
+      "estudo_id": "E02",
+      "modelo": "openai/gpt-6-luna",
+      "parametros": {
+        "max_tokens": 2000
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Um benchmark para avaliar LLMs na geração de casos de teste em Python\nResumo: Apresentamos um benchmark com 1.200 funções Python para avaliar modelos de linguagem na gera… (405 bytes)",
+      "saida": "{\n  \"id\": \"chatcmpl-EeSacdSrvnawVzqcyIEWA0MCKjd84\",\n  \"object\": \"chat.completion\",\n  \"created\": 1793311726,\n  \"model\": \"gpt-6-luna\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"decisao_sugerida\\\":\\\"incluir\\\",\\\"criterios_atendidos\\\":[\\\"C1\\\",\\\"C2\\\",\\\"C3\\\"],\\\"justificativa\\\":\\\"O estudo avalia a geração automática de casos de teste em Python usando seis LLMs. Apresenta avaliação empírica em benchmark, medindo cobertura, taxa de compilação e detecção de mutantes.\\\"}\",\n        \"refusal\": null,\n        \"annotations\": []\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 283,\n    \"completion_tokens\": 120,\n    \"total_tokens\": 403,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0,\n      \"cache_write_tokens\": 0,\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 36,\n      \"audio_tokens\": 0,\n      \"accepted_prediction_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    }\n  },\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null\n}\n",
+      "uso": {
+        "tokens_entrada": 283,
+        "tokens_saida": 120,
+        "ms": 2488,
+        "medido": true
+      },
+      "custo_usd": 0.00008829999999999999
+    },
+    {
+      "quando": "2026-10-29T22:08:50.643Z",
+      "etapa": "llm",
+      "estudo_id": "E03",
+      "modelo": "openai/gpt-6-luna",
+      "parametros": {
+        "max_tokens": 2000
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Refinamento iterativo de testes gerados por LLM com feedback de execução\nResumo: Testes gerados por modelos de linguagem frequentemente não compilam. Propomos um ciclo qu… (431 bytes)",
+      "saida": "{\n  \"id\": \"chatcmpl-EeSafvaHPAD9p0rnRvqxOhPGP4ADZ\",\n  \"object\": \"chat.completion\",\n  \"created\": 1793311729,\n  \"model\": \"gpt-6-luna\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"decisao_sugerida\\\":\\\"incluir\\\",\\\"criterios_atendidos\\\":[\\\"C1\\\",\\\"C2\\\",\\\"C3\\\"],\\\"justificativa\\\":\\\"O estudo propõe geração automática de testes com LLM e refinamento por feedback de execução. Apresenta avaliação empírica em 12 projetos.\\\"}\",\n        \"refusal\": null,\n        \"annotations\": []\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 294,\n    \"completion_tokens\": 99,\n    \"total_tokens\": 393,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0,\n      \"cache_write_tokens\": 0,\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 28,\n      \"audio_tokens\": 0,\n      \"accepted_prediction_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    }\n  },\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null\n}\n",
+      "uso": {
+        "tokens_entrada": 294,
+        "tokens_saida": 99,
+        "ms": 2260,
+        "medido": true
+      },
+      "custo_usd": 0.00007890000000000001
+    },
+    {
+      "quando": "2026-10-29T22:08:53.267Z",
+      "etapa": "llm",
+      "estudo_id": "E06",
+      "modelo": "openai/gpt-6-luna",
+      "parametros": {
+        "max_tokens": 2000
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Testes de mutação guiados por modelos de linguagem\nResumo: Usamos modelos de linguagem de grande porte para gerar mutantes realistas e, a partir deles, gerar automaticame… (376 bytes)",
+      "saida": "{\n  \"id\": \"chatcmpl-EeSahW6CGHc4JXn4RlngXKQqwyTAu\",\n  \"object\": \"chat.completion\",\n  \"created\": 1793311731,\n  \"model\": \"gpt-6-luna\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"decisao_sugerida\\\":\\\"incluir\\\",\\\"criterios_atendidos\\\":[\\\"C1\\\",\\\"C2\\\",\\\"C3\\\"],\\\"justificativa\\\":\\\"O estudo usa LLMs para gerar automaticamente testes que matam mutantes e avalia a abordagem no benchmark Defects4J, com ganho no escore de mutação.\\\"}\",\n        \"refusal\": null,\n        \"annotations\": []\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 283,\n    \"completion_tokens\": 121,\n    \"total_tokens\": 404,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0,\n      \"cache_write_tokens\": 0,\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 45,\n      \"audio_tokens\": 0,\n      \"accepted_prediction_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    }\n  },\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null\n}\n",
+      "uso": {
+        "tokens_entrada": 283,
+        "tokens_saida": 121,
+        "ms": 2624,
+        "medido": true
+      },
+      "custo_usd": 0.0000888
+    },
+    {
+      "quando": "2026-10-29T22:08:55.822Z",
+      "etapa": "llm",
+      "estudo_id": "E08",
+      "modelo": "openai/gpt-6-luna",
+      "parametros": {
+        "max_tokens": 2000
+      },
+      "entrada_resumida": "Tipo de fonte: literatura cinzenta\nTítulo: Como usamos um LLM para gerar testes no nosso monorepo\nPalavras-chave: blog, LLM, testes",
+      "saida": "{\n  \"id\": \"chatcmpl-EeSajZUNoLUY0OWUvMErXcu1eJK5J\",\n  \"object\": \"chat.completion\",\n  \"created\": 1793311733,\n  \"model\": \"gpt-6-luna\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"decisao_sugerida\\\":\\\"incerto\\\",\\\"criterios_atendidos\\\":[\\\"C1\\\",\\\"C2\\\"],\\\"justificativa\\\":\\\"O título indica geração de testes com um LLM. Não encontrei informação suficiente para determinar se o estudo apresenta avaliação empírica (C3).\\\"}\",\n        \"refusal\": null,\n        \"annotations\": []\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 230,\n    \"completion_tokens\": 141,\n    \"total_tokens\": 371,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0,\n      \"cache_write_tokens\": 0,\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 74,\n      \"audio_tokens\": 0,\n      \"accepted_prediction_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    }\n  },\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null\n}\n",
+      "uso": {
+        "tokens_entrada": 230,
+        "tokens_saida": 141,
+        "ms": 2554,
+        "medido": true
+      },
+      "custo_usd": 0.0000935
+    },
+    {
+      "quando": "2026-10-29T22:08:58.182Z",
+      "etapa": "llm",
+      "estudo_id": "E10",
+      "modelo": "openai/gpt-6-luna",
+      "parametros": {
+        "max_tokens": 2000
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Geração de oráculos de teste com modelos de linguagem\nResumo: Oráculos são a parte mais difícil da geração automática de testes. Propomos usar LLMs para inferir asserções… (374 bytes)",
+      "saida": "{\n  \"id\": \"chatcmpl-EeSamtbejGefOXiiwdKtfsOsfscvo\",\n  \"object\": \"chat.completion\",\n  \"created\": 1793311736,\n  \"model\": \"gpt-6-luna\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"decisao_sugerida\\\":\\\"incluir\\\",\\\"criterios_atendidos\\\":[\\\"C1\\\",\\\"C2\\\",\\\"C3\\\"],\\\"justificativa\\\":\\\"O estudo aborda a geração de oráculos e asserções para testes, utiliza LLMs e avalia a abordagem em um experimento controlado com 15 projetos.\\\"}\",\n        \"refusal\": null,\n        \"annotations\": []\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 280,\n    \"completion_tokens\": 135,\n    \"total_tokens\": 415,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0,\n      \"cache_write_tokens\": 0,\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 60,\n      \"audio_tokens\": 0,\n      \"accepted_prediction_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    }\n  },\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null\n}\n",
+      "uso": {
+        "tokens_entrada": 280,
+        "tokens_saida": 135,
+        "ms": 2359,
+        "medido": true
+      },
+      "custo_usd": 0.0000955
+    },
+    {
+      "quando": "2026-10-29T22:09:00.631Z",
+      "etapa": "llm",
+      "estudo_id": "E13",
+      "modelo": "openai/gpt-6-luna",
+      "parametros": {
+        "max_tokens": 2000
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: LLMs na geração de testes de interface Android: um estudo empírico\nResumo: Avaliamos empiricamente o uso de modelos de linguagem para gerar automaticamente scripts de tes… (370 bytes)",
+      "saida": "{\n  \"id\": \"chatcmpl-EeSaoiP29dCOOCcMzPVLAx6QcBaSV\",\n  \"object\": \"chat.completion\",\n  \"created\": 1793311738,\n  \"model\": \"gpt-6-luna\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"decisao_sugerida\\\":\\\"incluir\\\",\\\"criterios_atendidos\\\":[\\\"C1\\\",\\\"C2\\\",\\\"C3\\\"],\\\"justificativa\\\":\\\"O estudo avalia a geração automática de scripts de teste de interface para aplicativos Android usando LLMs. A avaliação é empírica e compara a abordagem com ferramentas de exploração aleatória.\\\"}\",\n        \"refusal\": null,\n        \"annotations\": []\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 273,\n    \"completion_tokens\": 115,\n    \"total_tokens\": 388,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0,\n      \"cache_write_tokens\": 0,\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 37,\n      \"audio_tokens\": 0,\n      \"accepted_prediction_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    }\n  },\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null\n}\n",
+      "uso": {
+        "tokens_entrada": 273,
+        "tokens_saida": 115,
+        "ms": 2448,
+        "medido": true
+      },
+      "custo_usd": 0.0000848
+    },
+    {
+      "quando": "2026-10-29T22:09:02.694Z",
+      "etapa": "llm",
+      "estudo_id": "E15",
+      "modelo": "openai/gpt-6-luna",
+      "parametros": {
+        "max_tokens": 2000
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Fuzzing assistido por modelos de linguagem para bibliotecas de parsing\nResumo: Usamos modelos de linguagem de grande porte para gerar entradas de fuzzing e harnesses de t… (370 bytes)",
+      "saida": "{\n  \"id\": \"chatcmpl-EeSar5xLr9xuXr6jcJSAiVZ08zDkY\",\n  \"object\": \"chat.completion\",\n  \"created\": 1793311741,\n  \"model\": \"gpt-6-luna\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"decisao_sugerida\\\":\\\"incluir\\\",\\\"criterios_atendidos\\\":[\\\"C1\\\",\\\"C2\\\",\\\"C3\\\"],\\\"justificativa\\\":\\\"O estudo usa LLMs para gerar automaticamente entradas de fuzzing e harnesses de teste. Relata um experimento que encontrou 9 falhas novas.\\\"}\",\n        \"refusal\": null,\n        \"annotations\": []\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 276,\n    \"completion_tokens\": 115,\n    \"total_tokens\": 391,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0,\n      \"cache_write_tokens\": 0,\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 43,\n      \"audio_tokens\": 0,\n      \"accepted_prediction_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    }\n  },\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null\n}\n",
+      "uso": {
+        "tokens_entrada": 276,
+        "tokens_saida": 115,
+        "ms": 2062,
+        "medido": true
+      },
+      "custo_usd": 0.0000851
+    },
+    {
+      "quando": "2026-10-29T22:09:04.902Z",
+      "etapa": "llm",
+      "estudo_id": "E19",
+      "modelo": "openai/gpt-6-luna",
+      "parametros": {
+        "max_tokens": 2000
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Testes unitários gerados por LLM detectam bugs reais? Um estudo com o Defects4J\nResumo: Avaliamos se testes unitários gerados automaticamente por três modelos de linguage… (367 bytes)",
+      "saida": "{\n  \"id\": \"chatcmpl-EeSat2lp7ooKtcoLSgb6N4HWsbo9K\",\n  \"object\": \"chat.completion\",\n  \"created\": 1793311743,\n  \"model\": \"gpt-6-luna\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"decisao_sugerida\\\":\\\"incluir\\\",\\\"criterios_atendidos\\\":[\\\"C1\\\",\\\"C2\\\",\\\"C3\\\"],\\\"justificativa\\\":\\\"O estudo avalia testes unitários gerados automaticamente por três modelos de linguagem e compara sua capacidade de detectar bugs reais do Defects4J com testes escritos por desenvolvedores.\\\"}\",\n        \"refusal\": null,\n        \"annotations\": []\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 284,\n    \"completion_tokens\": 91,\n    \"total_tokens\": 375,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0,\n      \"cache_write_tokens\": 0,\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 15,\n      \"audio_tokens\": 0,\n      \"accepted_prediction_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    }\n  },\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null\n}\n",
+      "uso": {
+        "tokens_entrada": 284,
+        "tokens_saida": 91,
+        "ms": 2208,
+        "medido": true
+      },
+      "custo_usd": 0.00007390000000000001
+    },
+    {
+      "quando": "2026-10-29T22:09:07.296Z",
+      "etapa": "llm",
+      "estudo_id": "E21",
+      "modelo": "openai/gpt-6-luna",
+      "parametros": {
+        "max_tokens": 2000
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Engenharia de prompts para geração de testes: um estudo exploratório\nResumo: Comparamos estratégias de engenharia de prompts (zero-shot, few-shot, cadeia de raciocínio) p… (350 bytes)",
+      "saida": "{\n  \"id\": \"chatcmpl-EeSawsGSfWFGoYj1a6bkqc3ZZA1QR\",\n  \"object\": \"chat.completion\",\n  \"created\": 1793311746,\n  \"model\": \"gpt-6-luna\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"decisao_sugerida\\\":\\\"incluir\\\",\\\"criterios_atendidos\\\":[\\\"C1\\\",\\\"C2\\\",\\\"C3\\\"],\\\"justificativa\\\":\\\"O estudo compara estratégias para gerar automaticamente testes unitários com LLMs e avalia a abordagem em 10 projetos Python.\\\"}\",\n        \"refusal\": null,\n        \"annotations\": []\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 270,\n    \"completion_tokens\": 90,\n    \"total_tokens\": 360,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0,\n      \"cache_write_tokens\": 0,\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 25,\n      \"audio_tokens\": 0,\n      \"accepted_prediction_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    }\n  },\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null\n}\n",
+      "uso": {
+        "tokens_entrada": 270,
+        "tokens_saida": 90,
+        "ms": 2393,
+        "medido": true
+      },
+      "custo_usd": 0.000072
+    },
+    {
+      "quando": "2026-10-29T22:09:09.036Z",
+      "etapa": "llm",
+      "estudo_id": "E24",
+      "modelo": "openai/gpt-6-luna",
+      "parametros": {
+        "max_tokens": 2000
+      },
+      "entrada_resumida": "Tipo de fonte: artigo\nTítulo: Geração de dados de teste para bancos de dados com modelos de linguagem\nResumo: Propomos uma ferramenta que usa LLMs para gerar automaticamente dados de teste que respeit… (352 bytes)",
+      "saida": "{\n  \"id\": \"chatcmpl-EeSaxgGQTDgb68OQeYRgkb0JuBdVC\",\n  \"object\": \"chat.completion\",\n  \"created\": 1793311747,\n  \"model\": \"gpt-6-luna\",\n  \"choices\": [\n    {\n      \"index\": 0,\n      \"message\": {\n        \"role\": \"assistant\",\n        \"content\": \"{\\\"decisao_sugerida\\\":\\\"incluir\\\",\\\"criterios_atendidos\\\":[\\\"C1\\\",\\\"C2\\\",\\\"C3\\\"],\\\"justificativa\\\":\\\"O estudo propõe o uso de LLMs para gerar automaticamente dados de teste e avalia a ferramenta em um benchmark com 50 esquemas.\\\"}\",\n        \"refusal\": null,\n        \"annotations\": []\n      },\n      \"finish_reason\": \"stop\"\n    }\n  ],\n  \"usage\": {\n    \"prompt_tokens\": 274,\n    \"completion_tokens\": 98,\n    \"total_tokens\": 372,\n    \"prompt_tokens_details\": {\n      \"cached_tokens\": 0,\n      \"cache_write_tokens\": 0,\n      \"audio_tokens\": 0\n    },\n    \"completion_tokens_details\": {\n      \"reasoning_tokens\": 28,\n      \"audio_tokens\": 0,\n      \"accepted_prediction_tokens\": 0,\n      \"rejected_prediction_tokens\": 0\n    }\n  },\n  \"service_tier\": \"default\",\n  \"system_fingerprint\": null\n}\n",
+      "uso": {
+        "tokens_entrada": 274,
+        "tokens_saida": 98,
+        "ms": 1739,
+        "medido": true
+      },
+      "custo_usd": 0.0000764
+    }
+  ]
+}

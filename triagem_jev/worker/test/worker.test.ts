@@ -92,10 +92,12 @@ describe('worker com as chaves de cada empresa', () => {
   it('/llm com GPT vai para a OpenAI com o id dela', async () => {
     const f = vi.fn(async () => new Response('{"choices":[]}', { status: 200 }));
     vi.stubGlobal('fetch', f);
-    await worker.fetch(post('/llm', { model: 'openai/gpt-6-luna', messages: [], temperature: 0 }), diretas);
+    await worker.fetch(post('/llm', { model: 'openai/gpt-6-luna', messages: [], max_tokens: 2000 }), diretas);
     const c = chamada(f);
     expect(c.url).toBe(URL_OPENAI);
-    expect(c.corpo).toMatchObject({ model: 'gpt-6-luna', temperature: 0 });
+    // A API direta da OpenAI recusa max_tokens nos modelos atuais.
+    expect(c.corpo).toMatchObject({ model: 'gpt-6-luna', max_completion_tokens: 2000 });
+    expect(c.corpo).not.toHaveProperty('max_tokens');
     expect(c.cabecalhos.get('authorization')).toBe('Bearer sk-oa-teste');
   });
 

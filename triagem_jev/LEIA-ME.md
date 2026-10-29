@@ -101,11 +101,34 @@ Se for publicar o Worker (`npx wrangler deploy`), defina `TOKEN_ACESSO` (`npx wr
    - resposta `{model, answers, usage: {input_tokens, output_tokens, cost}}`: noul → `noul`; choice → `choice`, `confidence`, `probabilities`; score → `score`, `confidence`, `probabilities` (`"0".."6"`) e `legend`.
    - As perguntas vão em **inglês** (o Jev é treinado em inglês e lê as instruções ao pé da letra); o estudo e os critérios vão como estão.
    - Acima de ~32 mil bytes de texto o Jev entra num modo de contexto longo, mais lento e menos preciso. Um estudo fica muito abaixo disso.
-2. **Primeira rodada real (29/10/2026), só a etapa 1:** Jev 1.14 direto pela TypeSafe, nos 24 estudos fictícios, com as perguntas por critério. US$ 0,0016 e 6,3 s no total (~1.640 tokens de entrada por estudo). Ficaram incertos só E08 (literatura cinzenta) e E24; nenhum estudo do gabarito "incluir" foi excluído. A amostra é fictícia e fácil: isso mostra que o caminho funciona, não que o Jev acerta.
+2. **Rodadas reais (29/10/2026)**: veja [Resultados das rodadas reais](#resultados-das-rodadas-reais-29102026).
 3. **Ids e preços** (API pública de modelos do OpenRouter; na TypeSafe direta o Jev 1.14 é `jev-1.14.0`, pelo mesmo preço): `typesafe/jev-1.14` a US$ 0,042/M de entrada (saída grátis; 1.13 ainda disponível pelo mesmo preço); `anthropic/claude-haiku-5.5` 0,10/0,50; `anthropic/claude-sonnet-5.5` 2,00/10,00; `openai/gpt-6-luna` 0,10/0,50. O Jev fica **fixado na 1.14** para as rodadas serem reproduzíveis (`~typesafe/jev-latest` muda sozinho).
 4. **OpenAI Decisions API:** não achei no OpenRouter. O cenário 3 continua **estimado** com 0,10/M de entrada.
-5. **Temperatura zero:** os modelos Claude atuais recusam `temperature` e `top_p` (erro 400). Para eles o cliente não envia esses parâmetros. Para os demais, envia 0. Isso fica registrado no log de cada chamada.
-6. **Claude raciocina antes de responder** (Haiku 5.5 e Sonnet 5.5) e o raciocínio conta no `max_tokens`; por isso o pedido ao Claude usa 2000. Se o Claude recusar por segurança, o estudo fica com erro e vai para o pesquisador: o Worker não troca de modelo em silêncio.
+5. **Temperatura zero:** os modelos que raciocinam antes de responder (Claude atuais, GPT-5/6) recusam `temperature` e `top_p` (erro 400; o GPT-6 Luna só aceita o padrão, 1). Para eles o cliente não envia esses parâmetros. Para os demais, envia 0. Isso fica registrado no log de cada chamada, e é uma diferença em relação ao protocolo do grupo (temperatura zero) que vale citar.
+6. **O raciocínio conta no `max_tokens`**, por isso o pedido a esses modelos usa 2000. Na API direta da OpenAI o campo se chama `max_completion_tokens` (o Worker traduz). Se o Claude recusar por segurança, o estudo fica com erro e vai para o pesquisador: o Worker não troca de modelo em silêncio.
+
+## Resultados das rodadas reais (29/10/2026)
+
+Jev 1.14 direto pela TypeSafe na etapa 1 (3 perguntas gerais + booleano e Likert por critério = 9 perguntas por estudo), nos **24 estudos fictícios** do exemplo. Arquivos exportados (JSON com o log de cada chamada, CSV e capturas) em [`docs/rodadas/`](docs/rodadas/), para mostrar sem depender de internet.
+
+| Rodada | Etapa 2 | Custo total | Tempo | Chamadas LLM | Erros |
+|---|---|---|---|---|---|
+| [Jev + Claude Haiku 5.5](docs/rodadas/2026-10-29-jev-1.14-haiku-5.5/) | 11 de 24 | US$ 0,0033 | 28,6 s | 11 | 0 |
+| [Jev + GPT-6 Luna](docs/rodadas/2026-10-29-jev-1.14-gpt-6-luna/) | 11 de 24 | US$ 0,0025 | 32,0 s | 11 | 0 |
+
+Por estudo (médias medidas):
+
+| | Tokens | Custo | Tempo |
+|---|---|---|---|
+| Jev (9 perguntas) | 1.622 de entrada | US$ 0,000068 | 0,25 s |
+| Claude Haiku 5.5 | 475 + 213 | US$ 0,000154 | 2,0 s |
+| GPT-6 Luna | 276 + 110 | US$ 0,000082 | 2,4 s |
+
+**Leitura honesta:**
+- **Acerto:** 100% de recall e precisão nas duas rodadas, 54% dos estudos sem precisar do LLM. A amostra é fictícia e fácil: isso mostra que o caminho funciona, não que o Jev acerta. Ficaram incertos só E08 (literatura cinzenta) e E24; no E08 o LLM respondeu "não encontrei informação suficiente para C3" em vez de inventar.
+- **Tempo:** o Jev é ~9× mais rápido por estudo (0,25 s × 2 a 2,4 s).
+- **Custo: a vantagem depende do preço do LLM.** Com LLMs baratos (Haiku 5.5, GPT-6 Luna, US$ 0,10/M) o Jev custa quase o mesmo por estudo, e com o Luna o cenário "só LLM" saiu **mais barato** (US$ 0,0020 estimado × 0,0025). Com LLMs do nível que o grupo usa nas planilhas a conta muda: Claude Sonnet 5.5 (US$ 2/10 por M) custaria ~US$ 0,0031 por estudo, ~45× o Jev, e Jev + Sonnet sairia por cerca de metade de "só Sonnet" nesta amostra.
+- **O pedido ao Jev pode encolher:** cada uma das 9 perguntas repete o texto do template. Com só as 3 perguntas gerais, ou com a abertura do template uma vez no `state`, o custo do Jev cai bastante. Vale medir.
 
 ## Regras que o código segue
 
@@ -118,13 +141,13 @@ Se for publicar o Worker (`npx wrangler deploy`), defina `TOKEN_ACESSO` (`npx wr
 ## Testes
 
 ```sh
-cd triagem_jev/app && flutter analyze && flutter test       # 22 testes
+cd triagem_jev/app && flutter analyze && flutter test       # 23 testes
 cd triagem_jev/worker && npm run typecheck && npm test      # 13 testes
 ```
 
 ## Próximos passos sugeridos
 
-1. Completar a rodada real com a etapa 2 (falta a chave da Anthropic ou da OpenAI no `.dev.vars`).
+1. Rodar com um LLM do nível das planilhas do grupo (ex.: Claude Sonnet 5.5) e medir o pedido ao Jev mais enxuto (veja a leitura dos resultados acima).
 2. Trocar o exemplo fictício por uma **revisão sistemática publicada** (Opção A do plano), com 20 a 40 estudos e o gabarito dela.
 3. Rodar o cenário "só LLM" de verdade em uma amostra, para trocar *estimado* por *medido*.
 4. Repetir as rodadas (o grupo usa de 6 a 10) e medir a variação.

@@ -31,13 +31,17 @@ class ClienteLlmOpenRouter implements ILlmClient {
     this.chaves = const ChavesApi(),
   }) : _http = cliente ?? http.Client();
 
-  /// Temperatura e top-p em zero (boa prática do grupo) — exceto nos Claude atuais, que recusam
-  /// parâmetros de amostragem com erro 400; neles a resposta já é pedida em JSON fixo. Os Claude
-  /// atuais raciocinam antes de responder e o raciocínio conta no max_tokens, por isso o teto maior.
+  /// Temperatura e top-p em zero (boa prática do grupo) — exceto nos modelos que raciocinam antes
+  /// de responder (Claude atuais, GPT-5/6), que recusam esses parâmetros com erro 400 (conferido em
+  /// 2026-10-29); neles a resposta já é pedida em JSON fixo, e o raciocínio conta no max_tokens,
+  /// por isso o teto maior.
   @override
-  Map<String, dynamic> get parametros => modelo.startsWith('anthropic/')
+  Map<String, dynamic> get parametros => raciocina(modelo)
       ? {'max_tokens': 2000}
       : {'temperature': 0, 'top_p': 0, 'max_tokens': 300};
+
+  static bool raciocina(String modelo) =>
+      const ['anthropic/', 'openai/gpt-5', 'openai/gpt-6'].any(modelo.startsWith);
 
   @override
   Future<Resposta<JustificativaLlm>> justificar(Estudo estudo, List<Criterio> criterios) async {

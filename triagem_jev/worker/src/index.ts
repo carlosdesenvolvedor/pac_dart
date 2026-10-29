@@ -135,6 +135,19 @@ async function chamarAnthropic(pedido: PedidoChat, modelo: string, chave: string
   }
 }
 
+/**
+ * Na API direta da OpenAI, os modelos atuais (GPT-6…) recusam `max_tokens` e pedem
+ * `max_completion_tokens` (conferido em 2026-10-29). O OpenRouter aceita os dois.
+ */
+function paraOpenAi(corpo: Record<string, unknown>, modelo: string): Record<string, unknown> {
+  const { max_tokens: maxTokens, ...resto } = corpo;
+  return {
+    ...resto,
+    model: modelo,
+    ...(maxTokens !== undefined && resto.max_completion_tokens === undefined ? { max_completion_tokens: maxTokens } : {}),
+  };
+}
+
 async function repassar(url: string, cabecalhos: Record<string, string>, corpo: string): Promise<Response> {
   try {
     return await fetch(url, {
@@ -193,7 +206,7 @@ export default {
           : await repassar(
               empresa === 'typesafe' ? URL_TYPESAFE : URL_OPENAI,
               { Authorization: `Bearer ${chaveDireta}` },
-              JSON.stringify({ ...corpo, model: idDireto }),
+              JSON.stringify(empresa === 'openai' ? paraOpenAi(corpo, idDireto) : { ...corpo, model: idDireto }),
             );
     } else if (env.OPENROUTER_API_KEY) {
       // 2. OpenRouter, com o corpo como veio.

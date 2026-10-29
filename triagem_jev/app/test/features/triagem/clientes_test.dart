@@ -191,7 +191,12 @@ void main() {
       expect('${c.parametros}', isNot(contains('sk-ant-x')));
     });
 
-    test('modelos não-Claude levam temperatura e top-p zero', () {
+    test('GPT-6 também não leva temperatura (recusa com 400) e ganha teto maior', () {
+      final c = ClienteLlmOpenRouter(worker: Uri.parse('http://w'), modelo: 'openai/gpt-6-luna');
+      expect(c.parametros, {'max_tokens': 2000});
+    });
+
+    test('modelos que não raciocinam levam temperatura e top-p zero', () {
       final c = ClienteLlmOpenRouter(worker: Uri.parse('http://w'), modelo: 'openai/gpt-x');
       expect(c.parametros['temperature'], 0);
       expect(c.parametros['top_p'], 0);
